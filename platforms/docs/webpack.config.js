@@ -25,11 +25,34 @@ Object.keys(envsDefinitions).forEach((key) => {
   envs[newKey] = JSON.stringify(envsDefinitions[key])
 })
 
+const babelConfig = {
+  presets: [
+    [
+      '@babel/preset-env',
+      {
+        bugfixes: true,
+        shippedProposals: true,
+        modules: false
+      }
+    ],
+    '@babel/preset-react',
+    '@babel/preset-typescript'
+  ],
+  plugins: [
+    [
+      '@babel/plugin-transform-runtime',
+      {
+        helpers: true
+      }
+    ]
+  ]
+}
+
 module.exports = {
   mode: isProd ? 'production' : 'development',
   bail: isProd,
   devtool: isProd ? 'source-map' : 'cheap-module-source-map',
-  entry: path.resolve(__dirname,'src/index.tsx'),
+  entry: path.resolve(__dirname, 'src/index.tsx'),
   output: {
     path: isProd ? 'dist' : undefined,
     pathinfo: !isProd,
@@ -87,7 +110,7 @@ module.exports = {
             // https://github.com/facebook/create-react-app/issues/2488
             ascii_only: true
           }
-        },
+        }
       })
     ]
   },
@@ -111,27 +134,25 @@ module.exports = {
             options: {
               babelrc: false,
               configFile: false,
-              presets: [
-                [
-                  '@babel/preset-env',
-                  {
-                    bugfixes: true,
-                    shippedProposals: true,
-                    modules: false
-                  }
-                ],
-                '@babel/preset-react',
-                '@babel/preset-typescript'
-              ],
-              plugins: [
-                [
-                  '@babel/plugin-transform-runtime',
-                  {
-                    helpers: true
-                  }
-                ]
-              ]
+              ...babelConfig
             }
+          },
+          {
+            test: [/\.md?x/],
+            exclude: '/node_modules/',
+            use: [
+              {
+                loader: require.resolve('babel-loader'),
+                options: {
+                  babelrc: false,
+                  configFile: false,
+                  ...babelConfig
+                }
+              },
+              {
+                loader: require.resolve('./mdLoader')
+              },
+            ]
           }
         ]
       }
@@ -181,6 +202,6 @@ module.exports = {
     !isProd && new CaseSensitivePathsPlugin()
   ].filter(Boolean),
   devServer: {
-    compress: true,
+    compress: true
   }
 }
