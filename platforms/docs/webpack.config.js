@@ -54,7 +54,7 @@ module.exports = {
   devtool: isProd ? 'source-map' : 'cheap-module-source-map',
   entry: path.resolve(__dirname, 'src/index.tsx'),
   output: {
-    path: isProd ? 'dist' : undefined,
+    path: isProd ? path.resolve(__dirname,'dist') : undefined,
     pathinfo: !isProd,
     filename: isProd ? 'static/js/[name].[contenthash:8].js' : 'static/js/[name].js',
     chunkFilename: isProd
@@ -128,7 +128,7 @@ module.exports = {
             }
           },
           {
-            test: [/\.js?x$/, /\.ts?x$/],
+            test: [/\.jsx?$/, /\.tsx?$/],
             loader: require.resolve('babel-loader'),
             exclude: '/node_modules/',
             options: {
@@ -138,7 +138,7 @@ module.exports = {
             }
           },
           {
-            test: [/\.md?x/],
+            test: [/\.mdx?$/],
             exclude: '/node_modules/',
             use: [
               {
@@ -150,7 +150,10 @@ module.exports = {
                 }
               },
               {
-                loader: require.resolve('./mdLoader')
+                loader: require.resolve('@mdx-js/loader'),
+                options: {
+                  remarkPlugins: [require('./demoPlugin')]
+                }
               },
             ]
           }

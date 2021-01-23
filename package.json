@@ -12,6 +12,7 @@
     "url": "git+https://github.com/xl-vision/xl-vision-next.git"
   },
   "scripts": {
+    "dev": "cd platforms/docs && npm run dev",
     "commit": "git-cz",
     "lint": "eslint . --ext .js,.ts,.jsx,.tsx --max-warnings 0",
     "version": "lerna version --exact --conventional-commits --no-push",
