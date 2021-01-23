@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ESNext",
+    "jsx": "preserve",
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "baseUrl": ".",
+    "paths": {
+      "xl-vision/styled-engine": ["./packages/styled-engine/src"],
+      "xl-vision/styled-engine/*": ["./packages/styled-engine/src/*"]
+    }
+  },
+  "exclude": ["**/node_modules"]
+}

@@ -1,0 +1,29 @@
+{
+  "name": "@xl-vision/styled-engine",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "Rhys Xia <xrs4433@outlook.com>",
+  "homepage": "https://github.com/xl-vision/xl-vision-next/tree/master/packages/styled-engine#readme",
+  "license": "MIT",
+  "main": "legacy/index.js",
+  "module": "modern/index.js",
+  "types": "legacy/index.d.ts",
+  "files": [
+    "legacy",
+    "modern"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xl-vision/xl-vision-next.git"
+  },
+  "scripts": {
+    "build": "node ../../scripts/build legacy"
+  },
+  "bugs": {
+    "url": "https://github.com/xl-vision/xl-vision-next/issues"
+  },
+  "devDependencies": {},
+  "publishConfig": {
+    "access": "public"
+  }
+}
