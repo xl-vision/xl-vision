@@ -1,1 +1,5 @@
-console.log('123')
+import React from 'react'
+
+export default () => {
+  return <h1>12345</h1>
+}

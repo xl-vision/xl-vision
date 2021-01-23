@@ -9,6 +9,7 @@
     "dev": "cross-env NODE_ENV=development webpack serve --open"
   },
   "dependencies": {
+    "@babel/runtime": "^7.12.5",
     "@mdx-js/react": "^1.6.22",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
@@ -16,6 +17,7 @@
     "react-dom": "^17.0.1"
   },
   "devDependencies": {
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/preset-typescript": "^7.12.7",
     "@mdx-js/loader": "^1.6.22",
     "babel-loader": "^8.2.2",
@@ -25,6 +27,7 @@
     "fork-ts-checker-webpack-plugin": "^6.1.0",
     "html-webpack-plugin": "^4.5.1",
     "terser-webpack-plugin": "^5.1.1",
+    "unist-util-visit": "^2.0.3",
     "url-loader": "^4.1.1",
     "webpack": "^5.17.0",
     "webpack-cli": "^4.4.0",

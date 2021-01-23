@@ -44,7 +44,8 @@ const babelConfig = {
       {
         helpers: true
       }
-    ]
+    ],
+    '@babel/plugin-syntax-dynamic-import'
   ]
 }
 
@@ -65,7 +66,9 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.md', '.mdx'],
     alias: {
-      'react-native': 'react-native-web'
+      'react-native': 'react-native-web',
+      'react': require.resolve('react'),
+      'react-dom': require.resolve('react-dom')
       // 'react-dom$': 'react-dom'
     }
   },
@@ -110,7 +113,8 @@ module.exports = {
             // https://github.com/facebook/create-react-app/issues/2488
             ascii_only: true
           }
-        }
+        },
+        parallel: true,
       })
     ]
   },
@@ -196,7 +200,7 @@ module.exports = {
       patterns: [
         {
           from: 'public',
-          to: isProd ? 'dist/public' : '/public'
+          to: isProd ? 'public' : '/public'
         }
       ]
     }),
