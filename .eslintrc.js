@@ -22,7 +22,7 @@ module.exports = {
     'import/no-extraneous-dependencies': [
       'error',
       {
-        packageDir: __dirname,
+        // packageDir: __dirname,
         devDependencies: [
           'site/**',
           'test/**',
