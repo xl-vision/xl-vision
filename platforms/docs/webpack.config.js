@@ -32,7 +32,10 @@ const babelConfig = {
       {
         bugfixes: true,
         shippedProposals: true,
-        modules: false
+        modules: false,
+        targets: {
+          esmodules: true
+        }
       }
     ],
     '@babel/preset-react',
@@ -42,7 +45,8 @@ const babelConfig = {
     [
       '@babel/plugin-transform-runtime',
       {
-        helpers: true
+        helpers: true,
+        useESModules: true
       }
     ],
     '@babel/plugin-syntax-dynamic-import'
@@ -55,7 +59,7 @@ module.exports = {
   devtool: isProd ? 'source-map' : 'cheap-module-source-map',
   entry: path.resolve(__dirname, 'src/index.tsx'),
   output: {
-    path: isProd ? path.resolve(__dirname,'dist') : undefined,
+    path: isProd ? path.resolve(__dirname, 'dist') : undefined,
     pathinfo: !isProd,
     filename: isProd ? 'static/js/[name].[contenthash:8].js' : 'static/js/[name].js',
     chunkFilename: isProd
@@ -67,7 +71,7 @@ module.exports = {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.md', '.mdx'],
     alias: {
       'react-native': 'react-native-web',
-      'react': require.resolve('react'),
+      react: require.resolve('react'),
       'react-dom': require.resolve('react-dom')
       // 'react-dom$': 'react-dom'
     }
@@ -114,7 +118,7 @@ module.exports = {
             ascii_only: true
           }
         },
-        parallel: true,
+        parallel: true
       })
     ]
   },
@@ -158,7 +162,7 @@ module.exports = {
                 options: {
                   remarkPlugins: [require('./demoPlugin')]
                 }
-              },
+              }
             ]
           }
         ]
