@@ -1,6 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+// @ts-ignore
+import { MDXProvider } from '@mdx-js/react'
+import Demo from './aa/demo.md'
+import DemoBox from './components/DemoBox'
 
-import Demo from  './aa/demo.md'
+const components = {
+  DemoBox
+}
 
-ReactDOM.render(<Demo/>, document.querySelector('#app'))
+const C = (
+  <MDXProvider components={components}>
+    <Demo />
+  </MDXProvider>
+)
+
+ReactDOM.render(C, document.querySelector('#app'))

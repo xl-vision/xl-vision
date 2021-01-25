@@ -1,10 +1,10 @@
+/* eslint-disable prefer-destructuring */
 const visit = require('unist-util-visit')
 const fs = require('fs')
 const path = require('path')
 
-const DEMO_REGEX = /^demo: *(.+)$/
 
-const i = 0
+let i = 0
 
 const TYPE = 'demo'
 
@@ -22,15 +22,44 @@ module.exports = function () {
   blockMethods.unshift(TYPE)
 
 
-  return function(tree, vfile) {
+  return function parse(tree, vfile) {
     const basePath = vfile.dirname
     visit(tree, TYPE, node => {
-      const title = node.children[0]
-      const desc = node.children[1]
       const filePath = node.path
       const absolutePath = path.isAbsolute(filePath) ? filePath : path.resolve(basePath, filePath)
       
       const code = fs.readFileSync(absolutePath)
+
+      const demoName = `Demo_${i++}`
+
+      node.type = 'element'
+
+
+      tree.children.unshift({
+        type: 'import',
+        value: `import ${demoName} from '${filePath}'`
+      })
+
+
+      node.children.unshift({
+        type: 'jsx',
+        value: '<DemoBox>'
+      })
+
+      node.children.push({
+        type: 'code',
+        value: code
+      })
+
+      node.children.push({
+        type: 'jsx',
+        value: `<${demoName} />`
+      })
+
+      node.children.push({
+        type: 'jsx',
+        value: '</DemoBox>'
+      })
       
     })
   }
