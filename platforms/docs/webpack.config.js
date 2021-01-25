@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 /* eslint-disable import/no-extraneous-dependencies */
 const TerserPlugin = require('terser-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -5,6 +6,9 @@ const webpack = require('webpack')
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+
 const path = require('path')
 
 const isProd = process.env.NODE_ENV === 'production'
@@ -53,6 +57,75 @@ const babelConfig = {
   ]
 }
 
+const getStyleLoaders = (cssOptions, preProcessor) => {
+  const loaders = [
+    !isProd
+      ? 'style-loader'
+      : {
+          loader: MiniCssExtractPlugin.loader,
+          options: {}
+        },
+    {
+      loader: 'css-loader',
+      options: { sourceMap: true, ...cssOptions }
+    },
+    {
+      loader: 'postcss-loader',
+      options: {
+        sourceMap: true
+      }
+    }
+  ].filter(Boolean)
+  if (preProcessor) {
+    const options = {
+      sourceMap: true
+    }
+    if (preProcessor === 'sass-loader') {
+      options.implementation = 'dart-sass'
+      options.sassOptions = {
+        fiber: 'fibers'
+      }
+    }
+    loaders.push({
+      loader: preProcessor,
+      options
+    })
+  }
+  return loaders
+}
+
+const getStyleRules = (test, moduleTest, cssOptions, preProcessor) => {
+  const rule1 = {
+    test: moduleTest,
+    use: getStyleLoaders(
+      {
+        esModule: true,
+        ...cssOptions,
+        modules: {
+          localIdentName: !isProd ? '[local]__[hash:base64]' : '[hash:base64]'
+        },
+        // 支持驼峰导入
+        localsConvention: 'camelCase'
+      },
+      preProcessor
+    )
+  }
+  const rule2 = {
+    test,
+    exclude: moduleTest,
+    use: getStyleLoaders(
+      {
+        esModule: true,
+        ...cssOptions,
+        modules: false
+      },
+      preProcessor
+    ),
+    sideEffects: true
+  }
+  return [rule1, rule2]
+}
+
 module.exports = {
   mode: isProd ? 'production' : 'development',
   bail: isProd,
@@ -79,6 +152,16 @@ module.exports = {
   optimization: {
     minimize: isProd,
     minimizer: [
+      new OptimizeCSSAssetsPlugin({
+        cssProcessorOptions: {
+          map: true
+            ? {
+                inline: false,
+                annotation: true
+              }
+            : false
+        }
+      }),
       // This is only used in production mode
       new TerserPlugin({
         terserOptions: {
@@ -158,13 +241,37 @@ module.exports = {
                 }
               },
               {
-                loader: require.resolve('@mdx-js/loader'),
-                options: {
-                  remarkPlugins: [require('./demoPlugin')]
-                }
+                loader: require.resolve('./mdLoader')
               }
             ]
-          }
+          },
+          ...getStyleRules(/\.css$/, /\.module\.css$/, {
+            importLoaders: 1
+          }),
+          ...getStyleRules(
+            /\.(scss|sass)$/,
+            /\.module\.(scss|sass)$/,
+            {
+              importLoaders: 2
+            },
+            'sass-loader'
+          ),
+          ...getStyleRules(
+            /\.less$/,
+            /\.module\.less$/,
+            {
+              importLoaders: 2
+            },
+            'less-loader'
+          ),
+          ...getStyleRules(
+            /\.styl$/,
+            /\.module\.styl$/,
+            {
+              importLoaders: 2
+            },
+            'stylus-loader'
+          )
         ]
       }
     ]
