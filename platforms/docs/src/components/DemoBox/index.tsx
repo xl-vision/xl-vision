@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 export type DemoBoxProps = {
-  children: [React.ReactNode, React.ReactNode, React.ReactNode, React.ReactNode]
+  children: [React.ReactNode, React.ReactNode, React.ReactNode, React.ReactNode, React.ReactNode]
 }
 
 const DemoBox: React.FunctionComponent<DemoBoxProps> = ({ children }) => {
-  const [title, desc, code, preview] = children
+  const [title, desc, tsxCode, jsxCode, preview] = children
 
   return (
     <div>
@@ -14,7 +14,9 @@ const DemoBox: React.FunctionComponent<DemoBoxProps> = ({ children }) => {
       <hr/> 
       描述: {desc}
       <hr/>
-      代码: {code}
+      tsx: {tsxCode}
+      <hr/>
+      jsx: {jsxCode}
       <hr/>
       预览: {preview}
     </div>
