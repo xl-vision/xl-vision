@@ -5,6 +5,8 @@ import { MDXProvider } from '@mdx-js/react'
 import Demo from './aa/demo.md'
 import DemoBox from './components/DemoBox'
 
+import 'prismjs/themes/prism.css'
+
 const components = {
   DemoBox
 }
