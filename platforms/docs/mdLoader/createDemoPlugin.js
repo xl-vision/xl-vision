@@ -1,7 +1,9 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable prefer-template */
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable prefer-destructuring */
+const babel = require("@babel/core")
 const fs = require('fs')
 const path = require('path')
 
@@ -35,7 +37,7 @@ module.exports = function createDemoPlugin(ctx) {
 
         const absolutePath = path.isAbsolute(filePath) ? filePath : path.resolve(basePath, filePath)
 
-        const code = await new Promise((resolve, reject) => {
+        const tsCode = await new Promise((resolve, reject) => {
           fs.readFile(absolutePath, (err, data) => {
             if (err) {
               return reject(err)
@@ -44,6 +46,14 @@ module.exports = function createDemoPlugin(ctx) {
             resolve(data)
           })
         })
+
+        const jsCode = (await babel.transformAsync(tsCode, {
+          filename: path.basename(filePath),
+          presets: [
+            // '@babel/preset-react',
+            '@babel/preset-typescript'
+          ]
+        })).code
 
         const demoName = `Demo_${i++}`
 
@@ -61,8 +71,14 @@ module.exports = function createDemoPlugin(ctx) {
 
         node.children.push({
           type: 'code',
-          value: code,
+          value: tsCode,
           lang: 'tsx'
+        })
+
+        node.children.push({
+          type: 'code',
+          value: jsCode,
+          lang: 'jsx'
         })
 
         node.children.push({

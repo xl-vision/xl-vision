@@ -154,12 +154,10 @@ module.exports = {
     minimizer: [
       new OptimizeCSSAssetsPlugin({
         cssProcessorOptions: {
-          map: true
-            ? {
-                inline: false,
-                annotation: true
-              }
-            : false
+          map: {
+            inline: false,
+            annotation: true
+          }
         }
       }),
       // This is only used in production mode
