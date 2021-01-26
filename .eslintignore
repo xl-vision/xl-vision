@@ -1,3 +1,4 @@
-packages/*/legacy/**
-packages/*/modern/**
+legacy
+modern
 dist
+node_modules

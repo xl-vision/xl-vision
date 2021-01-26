@@ -8,8 +8,9 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-
 const path = require('path')
+
+const packageResolve = packageName => path.resolve(__dirname, '../packages', packageName, 'src')
 
 const isProd = process.env.NODE_ENV === 'production'
 
@@ -145,8 +146,9 @@ module.exports = {
     alias: {
       'react-native': 'react-native-web',
       react: require.resolve('react'),
-      'react-dom': require.resolve('react-dom')
+      'react-dom': require.resolve('react-dom'),
       // 'react-dom$': 'react-dom'
+      '@xl-vision/styled-engine': packageResolve('styled-engine')
     }
   },
   optimization: {
