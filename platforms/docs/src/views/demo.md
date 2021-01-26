@@ -3,7 +3,7 @@
 
 :::demo ./demo.tsx
 
-this is demo title
+`this` is demo title
 
 this is demo desc
 

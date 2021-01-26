@@ -225,6 +225,7 @@ module.exports = {
             options: {
               babelrc: false,
               configFile: false,
+              compact: false,
               ...babelConfig
             }
           },
@@ -237,6 +238,7 @@ module.exports = {
                 options: {
                   babelrc: false,
                   configFile: false,
+                  compact: false,
                   ...babelConfig
                 }
               },
