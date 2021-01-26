@@ -315,7 +315,12 @@ module.exports = {
     }),
     new webpack.DefinePlugin(envs),
     !isProd && new webpack.HotModuleReplacementPlugin(),
-    !isProd && new CaseSensitivePathsPlugin()
+    !isProd && new CaseSensitivePathsPlugin(),
+    isProd &&
+    new MiniCssExtractPlugin({
+      filename: 'static/css/[name].[contenthash:8].css',
+      chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
+    }),
   ].filter(Boolean),
   devServer: {
     compress: true
