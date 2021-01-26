@@ -7,7 +7,7 @@ const babel = require("@babel/core")
 const fs = require('fs')
 const path = require('path')
 
-let i = 0
+let demoCount = 0
 
 const TYPE = 'demo'
 
@@ -55,7 +55,7 @@ module.exports = function createDemoPlugin(ctx) {
           ]
         })).code
 
-        const demoName = `Demo_${i++}`
+        const demoName = `Demo_${demoCount++}`
 
         node.type = 'element'
 
@@ -95,7 +95,9 @@ module.exports = function createDemoPlugin(ctx) {
   }
 }
 
-const REGEX_START = /^:::[\t\f ]*demo +(\S+)[\t\f ]*\n+(.*)\n+((.+\n+)+):::(\n|$)/
+const REGEX_START = /^:::[\t\f ]*demo[\t\f ]+(\S+)[\t\f ]*(\r?\n)+/
+
+const REGEX_CONTNET = /^[\t\n\f ]*(.+)\n+([\S\s]+)$/
 
 function blockTokenizer(eat, value) {
   const now = eat.now()
@@ -106,11 +108,33 @@ function blockTokenizer(eat, value) {
     return
   }
 
-  const matchString = matches[0]
-
   const filePath = matches[1]
-  const title = matches[2]
-  const desc = matches[3]
+
+  const lines = value.split('\n')
+
+  let i = 1
+
+  for(; i<lines.length;i++) {
+    const line = lines[i]
+    const trimLine = line.trim()
+    if(trimLine === ':::') {
+      break
+    }
+  }
+
+  if(i === lines.length) {
+    return
+  }
+
+  const content = lines.slice(1, i).join('\n')
+
+  const matchString = lines.slice(0, i+1).join('\n')
+
+  const matchContent = content.match(REGEX_CONTNET)
+
+  const title = matchContent[1]
+
+  const desc = matchContent[2]
 
   const add = eat(matchString)
 
