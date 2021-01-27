@@ -22,7 +22,7 @@ const InfoWrapper = styled.div`
   position: relative;
   font-size: 14px;
   border-top: 1px solid #f0f0f0;
-  color: rgba(0,0,0,0.85);
+  color: rgba(0, 0, 0, 0.85);
 `
 
 const TitleWrapper = styled.div`
@@ -35,7 +35,6 @@ const TitleWrapper = styled.div`
 
 const DescWrapper = styled.div`
   padding: 18px 24px 12px;
-
 `
 
 const CodeWrapper = styled.div`
@@ -51,9 +50,7 @@ const Button = styled.button`
 const DemoBox: React.FunctionComponent<DemoBoxProps> = ({ children }) => {
   const [title, desc, tsxCode, jsxCode, preview] = children
 
-
   const [isExpand, setExpand] = React.useState(false)
-
 
   return (
     <Wrapper>
@@ -63,12 +60,14 @@ const DemoBox: React.FunctionComponent<DemoBoxProps> = ({ children }) => {
         <DescWrapper>{desc}</DescWrapper>
         <Button onClick={() => setExpand(!isExpand)}>{isExpand ? '隐藏' : '展开'}</Button>
       </InfoWrapper>
-      {isExpand && <CodeWrapper>
-        <Code>
-          {tsxCode}
-          {jsxCode}
-        </Code>
-      </CodeWrapper>}
+      {isExpand && (
+        <CodeWrapper>
+          <Code>
+            {tsxCode}
+            {jsxCode}
+          </Code>
+        </CodeWrapper>
+      )}
     </Wrapper>
   )
 }

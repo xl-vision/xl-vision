@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
-    "dev": "cross-env NODE_ENV=development webpack serve --open"
+    "dev": "cross-env NODE_ENV=development webpack serve"
   },
   "dependencies": {
     "@babel/runtime": "^7.12.5",
@@ -15,7 +15,7 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/styled-components": "^5.1.7",
-    "prismjs": "^1.23.0",
+    "clsx": "^1.1.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -33,6 +33,8 @@
     "copy-webpack-plugin": "^7.0.0",
     "cross-env": "^7.0.3",
     "css-loader": "^5.0.1",
+    "dart-sass": "^1.25.0",
+    "fibers": "^5.0.0",
     "fork-ts-checker-webpack-plugin": "^6.1.0",
     "html-webpack-plugin": "^4.5.1",
     "loader-utils": "^2.0.0",
@@ -40,6 +42,7 @@
     "optimize-css-assets-webpack-plugin": "^5.0.4",
     "postcss": "^8.2.4",
     "postcss-loader": "^4.2.0",
+    "sass-loader": "^10.1.1",
     "style-loader": "^2.0.0",
     "terser-webpack-plugin": "^5.1.1",
     "url-loader": "^4.1.1",
