@@ -30,7 +30,8 @@
     "url": "https://github.com/xl-vision/xl-vision-next/issues"
   },
   "dependencies": {
-    "@babel/runtime": "^7.12.5"
+    "@babel/runtime": "^7.12.5",
+    "prop-types": "^15.7.2"
   },
   "devDependencies": {
     "@types/styled-components": "^5.1.7",
@@ -50,6 +51,7 @@
       "optional": true
     }
   },
+  "sideEffects": false,
   "publishConfig": {
     "access": "public"
   }
