@@ -1,8 +1,8 @@
 import React from 'react'
 // @ts-ignore
 import { MDXProvider } from '@mdx-js/react'
-import DemoBox from '../DemoBox'
-import Wrapper from './Wrapper'
+import DemoBox from '../demo-box'
+import Wrapper from './wrapper'
 
 export type MarkdownProps = {
   children: React.ReactNode
