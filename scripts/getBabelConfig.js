@@ -1,9 +1,9 @@
-module.exports = function getBabelConfig (style) {
-  const useESModules = style === 'modern'
+module.exports = function getBabelConfig(style) {
+  const useESModules = style === 'modern';
 
   const presets = [
     [
-     '@babel/preset-env',
+      '@babel/preset-env',
       {
         bugfixes: true,
         shippedProposals: style === 'modern',
@@ -11,7 +11,7 @@ module.exports = function getBabelConfig (style) {
       },
     ],
     '@babel/preset-react',
-  ]
+  ];
 
   const plugins = [
     [
@@ -22,10 +22,10 @@ module.exports = function getBabelConfig (style) {
         version: '^7.4.4',
       },
     ],
-  ]
+  ];
 
   return {
     presets,
     plugins,
-  }
-}
+  };
+};

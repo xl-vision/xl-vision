@@ -1,34 +1,34 @@
 /* eslint-disable global-require */
 /* eslint-disable import/no-extraneous-dependencies */
-const TerserPlugin = require('terser-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const webpack = require('webpack')
-const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const path = require('path')
+const TerserPlugin = require('terser-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const path = require('path');
 
-const packageResolve = packageName => path.resolve(__dirname, '../packages', packageName, 'src')
+const packageResolve = (packageName) => path.resolve(__dirname, '../packages', packageName, 'src');
 
-const isProd = process.env.NODE_ENV === 'production'
+const isProd = process.env.NODE_ENV === 'production';
 
-const imageInlineSizeLimit = 10000
+const imageInlineSizeLimit = 10000;
 
-const publicPath = isProd ? '/xl-vision/' : '/'
+const publicPath = isProd ? '/xl-vision/' : '/';
 
 const envsDefinitions = {
   PUBLIC_PATH: publicPath,
-  NODE_ENV: isProd ? 'production' : 'development'
-}
+  NODE_ENV: isProd ? 'production' : 'development',
+};
 
-const envs = {}
+const envs = {};
 
 Object.keys(envsDefinitions).forEach((key) => {
-  const newKey = `process.env.${key}`
-  envs[newKey] = JSON.stringify(envsDefinitions[key])
-})
+  const newKey = `process.env.${key}`;
+  envs[newKey] = JSON.stringify(envsDefinitions[key]);
+});
 
 const babelConfig = {
   presets: [
@@ -39,24 +39,24 @@ const babelConfig = {
         shippedProposals: true,
         modules: false,
         targets: {
-          esmodules: true
-        }
-      }
+          esmodules: true,
+        },
+      },
     ],
     '@babel/preset-react',
-    '@babel/preset-typescript'
+    '@babel/preset-typescript',
   ],
   plugins: [
     [
       '@babel/plugin-transform-runtime',
       {
         helpers: true,
-        useESModules: true
-      }
+        useESModules: true,
+      },
     ],
-    '@babel/plugin-syntax-dynamic-import'
-  ]
-}
+    '@babel/plugin-syntax-dynamic-import',
+  ],
+};
 
 const getStyleLoaders = (cssOptions, preProcessor) => {
   const loaders = [
@@ -64,36 +64,36 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
       ? 'style-loader'
       : {
           loader: MiniCssExtractPlugin.loader,
-          options: {}
+          options: {},
         },
     {
       loader: 'css-loader',
-      options: { sourceMap: true, ...cssOptions }
+      options: { sourceMap: true, ...cssOptions },
     },
     {
       loader: 'postcss-loader',
       options: {
-        sourceMap: true
-      }
-    }
-  ].filter(Boolean)
+        sourceMap: true,
+      },
+    },
+  ].filter(Boolean);
   if (preProcessor) {
     const options = {
-      sourceMap: true
-    }
+      sourceMap: true,
+    };
     if (preProcessor === 'sass-loader') {
-      options.implementation = require('dart-sass')
+      options.implementation = require('dart-sass');
       options.sassOptions = {
-        fiber: require('fibers')
-      }
+        fiber: require('fibers'),
+      };
     }
     loaders.push({
       loader: preProcessor,
-      options
-    })
+      options,
+    });
   }
-  return loaders
-}
+  return loaders;
+};
 
 const getStyleRules = (test, moduleTest, cssOptions, preProcessor) => {
   const rule1 = {
@@ -103,14 +103,14 @@ const getStyleRules = (test, moduleTest, cssOptions, preProcessor) => {
         esModule: true,
         ...cssOptions,
         modules: {
-          localIdentName: !isProd ? '[local]__[hash:base64]' : '[hash:base64]'
+          localIdentName: !isProd ? '[local]__[hash:base64]' : '[hash:base64]',
         },
         // 支持驼峰导入
-        localsConvention: 'camelCase'
+        localsConvention: 'camelCase',
       },
-      preProcessor
-    )
-  }
+      preProcessor,
+    ),
+  };
   const rule2 = {
     test,
     exclude: moduleTest,
@@ -118,14 +118,14 @@ const getStyleRules = (test, moduleTest, cssOptions, preProcessor) => {
       {
         esModule: true,
         ...cssOptions,
-        modules: false
+        modules: false,
       },
-      preProcessor
+      preProcessor,
     ),
-    sideEffects: true
-  }
-  return [rule1, rule2]
-}
+    sideEffects: true,
+  };
+  return [rule1, rule2];
+};
 
 module.exports = {
   mode: isProd ? 'production' : 'development',
@@ -139,7 +139,7 @@ module.exports = {
     chunkFilename: isProd
       ? 'static/js/[name].[contenthash:8].chunk.js'
       : 'static/js/[name].chunk.js',
-    publicPath
+    publicPath,
   },
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.md', '.mdx'],
@@ -148,8 +148,8 @@ module.exports = {
       react: require.resolve('react'),
       'react-dom': require.resolve('react-dom'),
       // 'react-dom$': 'react-dom'
-      '@xl-vision/styled-engine': packageResolve('styled-engine')
-    }
+      '@xl-vision/styled-engine': packageResolve('styled-engine'),
+    },
   },
   optimization: {
     minimize: isProd,
@@ -158,9 +158,9 @@ module.exports = {
         cssProcessorOptions: {
           map: {
             inline: false,
-            annotation: true
-          }
-        }
+            annotation: true,
+          },
+        },
       }),
       // This is only used in production mode
       new TerserPlugin({
@@ -171,7 +171,7 @@ module.exports = {
             // into invalid ecma 5 code. This is why the 'compress' and 'output'
             // sections only apply transformations that are ecma 5 safe
             // https://github.com/facebook/create-react-app/pull/4234
-            ecma: 8
+            ecma: 8,
           },
           compress: {
             ecma: 5,
@@ -185,10 +185,10 @@ module.exports = {
             // https://github.com/facebook/create-react-app/issues/5250
             // Pending further investigation:
             // https://github.com/terser-js/terser/issues/120
-            inline: 2
+            inline: 2,
           },
           mangle: {
-            safari10: true
+            safari10: true,
           },
           // Added for profiling in devtools
           // keep_classnames: true,
@@ -198,12 +198,12 @@ module.exports = {
             comments: false,
             // Turned on because emoji and regex is not minified properly using default
             // https://github.com/facebook/create-react-app/issues/2488
-            ascii_only: true
-          }
+            ascii_only: true,
+          },
         },
-        parallel: true
-      })
-    ]
+        parallel: true,
+      }),
+    ],
   },
   module: {
     rules: [
@@ -215,8 +215,8 @@ module.exports = {
             loader: require.resolve('url-loader'),
             options: {
               limit: imageInlineSizeLimit,
-              name: 'static/media/[name].[hash:8].[ext]'
-            }
+              name: 'static/media/[name].[hash:8].[ext]',
+            },
           },
           {
             test: [/\.jsx?$/, /\.tsx?$/],
@@ -226,8 +226,8 @@ module.exports = {
               babelrc: false,
               configFile: false,
               compact: false,
-              ...babelConfig
-            }
+              ...babelConfig,
+            },
           },
           {
             test: [/\.mdx?$/],
@@ -239,44 +239,44 @@ module.exports = {
                   babelrc: false,
                   configFile: false,
                   compact: false,
-                  ...babelConfig
-                }
+                  ...babelConfig,
+                },
               },
               {
-                loader: require.resolve('./mdLoader')
-              }
-            ]
+                loader: require.resolve('./mdLoader'),
+              },
+            ],
           },
           ...getStyleRules(/\.css$/, /\.module\.css$/, {
-            importLoaders: 1
+            importLoaders: 1,
           }),
           ...getStyleRules(
             /\.(scss|sass)$/,
             /\.module\.(scss|sass)$/,
             {
-              importLoaders: 2
+              importLoaders: 2,
             },
-            'sass-loader'
+            'sass-loader',
           ),
           ...getStyleRules(
             /\.less$/,
             /\.module\.less$/,
             {
-              importLoaders: 2
+              importLoaders: 2,
             },
-            'less-loader'
+            'less-loader',
           ),
           ...getStyleRules(
             /\.styl$/,
             /\.module\.styl$/,
             {
-              importLoaders: 2
+              importLoaders: 2,
             },
-            'stylus-loader'
-          )
-        ]
-      }
-    ]
+            'stylus-loader',
+          ),
+        ],
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -295,38 +295,38 @@ module.exports = {
               keepClosingSlash: true,
               minifyJS: true,
               minifyCSS: true,
-              minifyURLs: true
-            }
+              minifyURLs: true,
+            },
           }
-        : undefined)
+        : undefined),
     }),
     new ForkTsCheckerWebpackPlugin({
       async: !isProd,
       typescript: {
         mode: 'write-references',
         diagnosticOptions: {
-          syntactic: true
-        }
-      }
+          syntactic: true,
+        },
+      },
     }),
     new CopyWebpackPlugin({
       patterns: [
         {
           from: 'public',
-          to: isProd ? 'public' : '/public'
-        }
-      ]
+          to: isProd ? 'public' : '/public',
+        },
+      ],
     }),
     new webpack.DefinePlugin(envs),
     !isProd && new webpack.HotModuleReplacementPlugin(),
     !isProd && new CaseSensitivePathsPlugin(),
     isProd &&
-    new MiniCssExtractPlugin({
-      filename: 'static/css/[name].[contenthash:8].css',
-      chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
-    }),
+      new MiniCssExtractPlugin({
+        filename: 'static/css/[name].[contenthash:8].css',
+        chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
+      }),
   ].filter(Boolean),
   devServer: {
-    compress: true
-  }
-}
+    compress: true,
+  },
+};

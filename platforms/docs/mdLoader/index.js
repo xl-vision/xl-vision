@@ -1,35 +1,35 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable prefer-object-spread */
-const {getOptions} = require('loader-utils')
-const mdx = require('@mdx-js/mdx')
-const rehypePrism = require('@mapbox/rehype-prism')
-const createDemoPlugin = require('./createDemoPlugin')
+const { getOptions } = require('loader-utils');
+const mdx = require('@mdx-js/mdx');
+const rehypePrism = require('@mapbox/rehype-prism');
+const createDemoPlugin = require('./createDemoPlugin');
 
 const DEFAULT_RENDERER = `
 import React from 'react'
 import { mdx } from '@mdx-js/react'
-`
+`;
 
 const loader = async function demoLoader(content) {
-  const callback = this.async()
+  const callback = this.async();
   const options = Object.assign({}, getOptions(this), {
     filepath: this.resourcePath,
     remarkPlugins: [createDemoPlugin(this)],
-    rehypePlugins: [rehypePrism]
-  })
+    rehypePlugins: [rehypePrism],
+  });
 
-  let result
+  let result;
 
   try {
-    result = await mdx(content, options)
+    result = await mdx(content, options);
   } catch (err) {
-    return callback(err)
+    return callback(err);
   }
 
-  const {renderer = DEFAULT_RENDERER} = options
+  const { renderer = DEFAULT_RENDERER } = options;
 
-  const code = `${renderer}\n${result}`
-  return callback(null, code)
-}
+  const code = `${renderer}\n${result}`;
+  return callback(null, code);
+};
 
-module.exports = loader
+module.exports = loader;

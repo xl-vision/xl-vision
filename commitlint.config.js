@@ -17,10 +17,10 @@ module.exports = {
         'build',
         'ci',
         'chore',
-        'revert'
-      ]
+        'revert',
+      ],
     ],
     // 'type-case': [2, 'always', ['lower-case', 'upper-case']],
-    'scope-case': [2, 'always', ['pascal-case', 'camel-case']]
-  }
-}
+    'scope-case': [2, 'always', ['pascal-case', 'camel-case']],
+  },
+};
