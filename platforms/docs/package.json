@@ -14,6 +14,8 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/styled-components": "^5.1.7",
+    "@xl-vision/react": "^0.0.0",
+    "@xl-vision/styled-engine": "^0.0.0",
     "clsx": "^1.1.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",

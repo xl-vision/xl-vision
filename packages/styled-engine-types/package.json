@@ -1,0 +1,33 @@
+{
+  "name": "@xl-vision/styled-engine-types",
+  "version": "0.0.0",
+  "description": "xl-vision Styles types.",
+  "author": "Rhys Xia <xrs4433@outlook.com>",
+  "license": "MIT",
+  "types": "types/index.d.ts",
+  "files": [
+    "types"
+  ],
+  "keywords": [
+    "xl-vision",
+    "react",
+    "styles"
+  ],
+  "homepage": "https://github.com/xl-vision/xl-vision-next/tree/master/packages/styled-engine-types#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xl-vision/xl-vision-next.git"
+  },
+  "scripts": {},
+  "bugs": {
+    "url": "https://github.com/xl-vision/xl-vision-next/issues"
+  },
+  "dependencies": {
+    "@types/react": "^17.0.0",
+    "csstype": "^3.0.6"
+  },
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  }
+}
