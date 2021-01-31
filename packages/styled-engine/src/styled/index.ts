@@ -1,25 +1,13 @@
-import scStyled from 'styled-components'
+import { Styled } from '@xl-vision/styled-engine-types';
+import scStyled from 'styled-components';
 
-export type StyledOptions = {
-  displayName?: string
-  shouldForwardProp?: <O extends {}>(
-    prop: keyof O,
-    // eslint-disable-next-line no-shadow
-    defaultValidatorFn: (prop: keyof O) => boolean
-  ) => boolean
-}
-
-export default function styled<C extends keyof JSX.IntrinsicElements | React.ComponentType<any>>(
-  tag: C,
-  options?: StyledOptions
-) {
+const styled: Styled = (tag, options) => {
   if (options) {
-    return scStyled(tag).withConfig({
-      // @ts-ignore
-      displayName: options.displayName,
-      shouldForwardProp: options.shouldForwardProp
-    })
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    return scStyled(tag).withConfig(options) as any;
   }
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+  return scStyled(tag) as any;
+};
 
-  return scStyled(tag)
-}
+export default styled;

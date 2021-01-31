@@ -1,4 +1,4 @@
-const confusingBrowserGlobals = require('confusing-browser-globals')
+const confusingBrowserGlobals = require('confusing-browser-globals');
 
 module.exports = {
   env: {
@@ -6,17 +6,17 @@ module.exports = {
     es6: true,
     node: true,
     jest: true,
-    browser: true
+    browser: true,
   },
   settings: {
     react: {
-      version: '16.8'
-    }
+      version: '16.8',
+    },
   },
   parserOptions: {
-    ecmaVersion: 2018
+    ecmaVersion: 2018,
   },
-  extends: ['airbnb', 'airbnb/hooks', 'prettier', 'prettier/react'],
+  extends: ['airbnb', 'airbnb/hooks', 'plugin:prettier/recommended', 'prettier/react'],
   plugins: ['unicorn'],
   rules: {
     'import/no-extraneous-dependencies': [
@@ -30,9 +30,9 @@ module.exports = {
           '**/__test__/**',
           '**/*.mdx',
           '*.js',
-          '.*.js'
-        ]
-      }
+          '.*.js',
+        ],
+      },
     ],
     // Strict, airbnb is using warn; allow warn and error for dev environments
     'no-console': ['error', { allow: ['warn', 'error'] }],
@@ -47,23 +47,23 @@ module.exports = {
     'consistent-return': [
       'off',
       {
-        treatUndefinedAsUnspecified: true
-      }
+        treatUndefinedAsUnspecified: true,
+      },
     ],
     'react-hooks/exhaustive-deps': [
       'error',
       {
         // custom hooks
-        additionalHooks: '(useLayoutEffect|useUpdated)'
-      }
+        additionalHooks: '(useLayoutEffect|useUpdated)',
+      },
     ],
     'react/jsx-handler-names': [
       'error',
       {
         eventHandlerPrefix: 'handle',
         eventHandlerPropPrefix: 'on',
-        checkLocalVariables: true
-      }
+        checkLocalVariables: true,
+      },
     ],
     'react/forbid-prop-types': 'off', // todo remove
     'react/jsx-boolean-value': ['error', 'always'],
@@ -75,10 +75,10 @@ module.exports = {
       {
         cases: {
           camelCase: true,
-          pascalCase: true
+          pascalCase: true,
         },
-        ignore: [/^.*\.config.js$/, /^en-US.ts$/, /^zh-CN.ts$/]
-      }
+        ignore: [/^.*\.config.js$/, /^en-US.ts$/, /^zh-CN.ts$/],
+      },
     ],
     'unicorn/better-regex': 'error',
     'unicorn/expiring-todo-comments': 'error',
@@ -87,7 +87,7 @@ module.exports = {
     // forbid passing object as default value to props of function component
     // 'unicorn/no-object-as-default-parameter': 'error',
     'unicorn/prefer-query-selector': 'error',
-    'unicorn/no-abusive-eslint-disable': 'error'
+    'unicorn/no-abusive-eslint-disable': 'error',
   },
   overrides: [
     {
@@ -95,13 +95,13 @@ module.exports = {
       parser: '@typescript-eslint/parser',
       parserOptions: {
         ecmaVersion: 2018,
-        project: './tsconfig.json'
+        project: './tsconfig.json',
       },
       plugins: ['@typescript-eslint'],
       extends: [
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
         'plugin:import/typescript',
-        'prettier/@typescript-eslint'
+        'prettier/@typescript-eslint',
         // 'plugin:@typescript-eslint/recommended',
       ],
       rules: {
@@ -116,18 +116,18 @@ module.exports = {
             mjs: 'never',
             jsx: 'never',
             ts: 'never',
-            tsx: 'never'
-          }
+            tsx: 'never',
+          },
         ],
 
         'import/no-cycle': 'off',
         '@typescript-eslint/array-type': [
           'error',
           {
-            default: 'generic'
-          }
-        ]
-      }
-    }
-  ]
-}
+            default: 'generic',
+          },
+        ],
+      },
+    },
+  ],
+};

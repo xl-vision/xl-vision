@@ -4,9 +4,10 @@
   "description": "xl-vision Styles types.",
   "author": "Rhys Xia <xrs4433@outlook.com>",
   "license": "MIT",
-  "types": "types/index.d.ts",
+  "types": "src/index.ts",
+  "main": "src/index.ts",
   "files": [
-    "types"
+    "src"
   ],
   "keywords": [
     "xl-vision",

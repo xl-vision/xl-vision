@@ -1,26 +1,26 @@
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 export type StyledEngineProviderProps = {
-  injectFirst?: boolean
-  children: React.ReactNode
-}
+  injectFirst?: boolean;
+  children: React.ReactNode;
+};
 
 export default function StyledEngineProvider(props: StyledEngineProviderProps) {
-  const { injectFirst, children } = props
+  const { injectFirst, children } = props;
 
   if (injectFirst && typeof window !== 'undefined') {
-    const { head } = document
+    const { head } = document;
     if (!head.querySelector('[data-styled="active"]')) {
-      const injectFirstNode = document.createElement('style')
-      injectFirstNode.setAttribute('data-styled', 'active')
-      head.insertBefore(injectFirstNode, head.firstChild)
+      const injectFirstNode = document.createElement('style');
+      injectFirstNode.setAttribute('data-styled', 'active');
+      head.insertBefore(injectFirstNode, head.firstChild);
     }
   }
 
-  return children
+  return children;
 }
 
 StyledEngineProvider.propTypes = {
   children: PropTypes.node,
-  injectFirst: PropTypes.bool
-}
+  injectFirst: PropTypes.bool,
+};
