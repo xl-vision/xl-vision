@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import ReactDOM from 'react-dom';
-import useIsMounted from '../hooks/useIsMounted';
 import useEventCallback from '../hooks/useEventCallback';
 import useLayoutEffect from '../hooks/useLayoutEffect';
 import useForkRef from '../hooks/useForkRef';
+import useLifecycleState, { LifecycleState } from '../hooks/useLifecycleState';
 
 enum State {
   STATE_ENTERING, // 1
@@ -69,7 +69,9 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
     unmountOnLeave,
   } = props;
 
-  const isFirstTransitionRef = React.useRef(transitionOnFirst);
+  const child = React.Children.only(children);
+
+  const transitionOnFirstRef = React.useRef(transitionOnFirst);
 
   // 如果开启transitionOnFirst,默认使用enter和leave的生命周期方法
   const appear = _appear || enter;
@@ -80,24 +82,24 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
   const afterAppear = useEventCallback((el: HTMLElement) => {
     const fn = _afterAppear || afterEnter;
     fn && fn(el);
-    isFirstTransitionRef.current = false;
+    transitionOnFirstRef.current = false;
   });
 
   const appearCancelled = useEventCallback((el: HTMLElement) => {
     const fn = _appearCancelled || enterCancelled;
     fn && fn(el);
-    isFirstTransitionRef.current = false;
+    transitionOnFirstRef.current = false;
   });
   const afterDisappear = useEventCallback((el: HTMLElement) => {
     const fn = _afterDisappear || afterLeave;
     fn && fn(el);
-    isFirstTransitionRef.current = false;
+    transitionOnFirstRef.current = false;
   });
 
   const disappearCancelled = useEventCallback((el: HTMLElement) => {
     const fn = _disappearCancelled || leaveCancelled;
     fn && fn(el);
-    isFirstTransitionRef.current = false;
+    transitionOnFirstRef.current = false;
   });
 
   const [state, setState] = React.useState(
@@ -110,25 +112,28 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
       : State.STATE_LEAVED,
   );
 
-  // 标记当前组件是否被卸载
-  const mountStateCallback = useIsMounted();
+  const childRef = React.useRef<HTMLElement>();
 
-  const childrenNodeRef = React.useRef<HTMLElement>();
-
-  const child = React.Children.only(children);
+  const lifecycleStateRef = useLifecycleState();
 
   const forkRef = useForkRef(
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     React.isValidElement(child) ? (child as any).ref : null,
-    childrenNodeRef,
+    childRef,
   );
+
+  const findDOMElement = React.useCallback(() => {
+    // eslint-disable-next-line react/no-find-dom-node
+    return ReactDOM.findDOMNode(childRef.current) as HTMLElement;
+  }, []);
 
   // 保存回调
   const cbRef = React.useRef<() => void>();
 
   const onTransitionEnd = useEventCallback(
     (nextState: State, eventHook?: EventHook, afterEventHook?: AfterEventHook) => {
-      const afterEventHookWrap = () => afterEventHook && afterEventHook(childrenNodeRef.current!);
+      const el = findDOMElement();
+      const afterEventHookWrap = () => afterEventHook && afterEventHook(el);
       cbRef.current = afterEventHookWrap;
 
       const isCancelled = () => afterEventHookWrap !== cbRef.current;
@@ -137,7 +142,7 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
         // wrapCallback可能会在setTimeout中被调用，默认同步setState，这里强制异步处理
         // https://github.com/facebook/react/issues/19013#issuecomment-634777298
         ReactDOM.unstable_batchedUpdates(() => {
-          if (!isCancelled() && mountStateCallback()) {
+          if (!isCancelled() && lifecycleStateRef.current === LifecycleState.MOUNTED) {
             setState(nextState);
             // 必须放在后面，防止其中修改了prop in
             afterEventHookWrap();
@@ -147,7 +152,7 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
         });
       };
       if (eventHook) {
-        eventHook(childrenNodeRef.current!, wrapCallback, isCancelled);
+        eventHook(el, wrapCallback, isCancelled);
       } else {
         wrapCallback();
       }
@@ -155,20 +160,21 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
   );
 
   const stateTrigger = useEventCallback((_state: State) => {
+    const el = findDOMElement();
     // 展示
     if (inProp) {
       if (_state === State.STATE_ENTERING) {
-        const beforeHook = isFirstTransitionRef.current ? beforeAppear : beforeEnter;
-        const hook = isFirstTransitionRef.current ? appear : enter;
-        const afterHook = isFirstTransitionRef.current ? afterAppear : afterEnter;
-        beforeHook && beforeHook(childrenNodeRef.current!);
+        const beforeHook = transitionOnFirstRef.current ? beforeAppear : beforeEnter;
+        const hook = transitionOnFirstRef.current ? appear : enter;
+        const afterHook = transitionOnFirstRef.current ? afterAppear : afterEnter;
+        beforeHook && beforeHook(el);
         onTransitionEnd(State.STATE_ENTERED, hook, afterHook);
       }
     } else if (_state === State.STATE_LEAVING) {
-      const beforeHook = isFirstTransitionRef.current ? beforeDisappear : beforeLeave;
-      const hook = isFirstTransitionRef.current ? disappear : leave;
-      const afterHook = isFirstTransitionRef.current ? afterDisappear : afterLeave;
-      beforeHook && beforeHook(childrenNodeRef.current!);
+      const beforeHook = transitionOnFirstRef.current ? beforeDisappear : beforeLeave;
+      const hook = transitionOnFirstRef.current ? disappear : leave;
+      const afterHook = transitionOnFirstRef.current ? afterDisappear : afterLeave;
+      beforeHook && beforeHook(el);
       onTransitionEnd(State.STATE_LEAVED, hook, afterHook);
     }
   });
@@ -183,6 +189,7 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
   ]);
 
   const inPropTrigger = useEventCallback((_inProp: boolean) => {
+    const el = findDOMElement();
     if (_inProp && state >= State.STATE_LEAVING) {
       // 不能放到外面，会使appear和disappear失效
       cbRef.current = undefined;
@@ -190,15 +197,15 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
       setState(State.STATE_ENTERING);
 
       if (state === State.STATE_LEAVING) {
-        const cancelledHook = isFirstTransitionRef.current ? disappearCancelled : leaveCancelled;
-        cancelledHook && cancelledHook(childrenNodeRef.current!);
+        const cancelledHook = transitionOnFirstRef.current ? disappearCancelled : leaveCancelled;
+        cancelledHook && cancelledHook(el);
       }
     } else if (!_inProp && state < State.STATE_LEAVING) {
       cbRef.current = undefined;
       setState(State.STATE_LEAVING);
       if (state === State.STATE_ENTERING) {
-        const cancelledHook = isFirstTransitionRef.current ? appearCancelled : enterCancelled;
-        cancelledHook && cancelledHook(childrenNodeRef.current!);
+        const cancelledHook = transitionOnFirstRef.current ? appearCancelled : enterCancelled;
+        cancelledHook && cancelledHook(el);
       }
     }
   });
@@ -229,17 +236,9 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
     return null;
   }
 
-  const style: React.CSSProperties = {
-    ...(children as React.ReactElement<React.HTMLAttributes<HTMLElement>>).props.style,
-  };
-  if (!display) {
-    style.display = 'none';
-  }
-
   return React.cloneElement(child, {
-    ...children.props,
+    ...child.props,
     ref: forkRef,
-    style,
   });
 };
 
