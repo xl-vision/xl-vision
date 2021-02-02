@@ -12,6 +12,8 @@
     "paths": {
       "xl-vision/styled-engine": ["./packages/styled-engine/src"],
       "xl-vision/styled-engine/*": ["./packages/styled-engine/src/*"],
+      "xl-vision/react": ["./packages/react/src"],
+      "xl-vision/react/*": ["./packages/styled-engine/src/*"]
     }
   },
   "exclude": ["**/node_modules"]

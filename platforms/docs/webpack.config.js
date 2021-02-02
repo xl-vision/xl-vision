@@ -149,6 +149,7 @@ module.exports = {
       'react-dom': require.resolve('react-dom'),
       // 'react-dom$': 'react-dom'
       '@xl-vision/styled-engine': packageResolve('styled-engine'),
+      '@xl-vision/react': packageResolve('react'),
     },
   },
   optimization: {
