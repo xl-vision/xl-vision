@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 
-// eslint-disable-next-line no-shadow
 enum CodeType {
   TYPESCRIPT,
   JAVASCRIPT,

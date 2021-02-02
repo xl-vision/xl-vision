@@ -34,12 +34,17 @@
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
-    "styled-components": "^5.2.1"
+    "@types/react": "^16.8.0",
+    "@types/react-dom": "^16.8.0",
+    "@xl-vision/styled-engine": "^0.0.0",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
   },
   "peerDependencies": {
-    "@types/react": "^16.8.6 || ^17.0.0",
+    "@types/react": "^16.8.0 || ^17.0.0",
     "@xl-vision/styled-engine": "^0.0.0",
-    "react": "^16.8.0 || ^17.0.0"
+    "react": "^16.8.0 || ^17.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0"
   },
   "peerDependenciesMeta": {
     "@types/react": {
