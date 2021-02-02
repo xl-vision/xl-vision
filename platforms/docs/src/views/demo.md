@@ -1,7 +1,7 @@
 # this is a demo
 
 
-:::demo ./demo.tsx
+:::demo ./Demo.tsx
 
 `this` is demo title
 

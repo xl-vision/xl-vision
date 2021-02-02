@@ -92,12 +92,10 @@ module.exports = {
   overrides: [
     {
       files: ['*.ts', '*.tsx'],
-      parser: '@typescript-eslint/parser',
       parserOptions: {
         ecmaVersion: 2018,
         project: './tsconfig.json',
       },
-      plugins: ['@typescript-eslint'],
       extends: [
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
         'plugin:import/typescript',
@@ -108,6 +106,7 @@ module.exports = {
         'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx'] }],
         'no-unused-vars': 'off',
         'no-unused-expressions': 'off',
+        'no-shadow': 'off',
         'import/extensions': [
           'error',
           'ignorePackages',
