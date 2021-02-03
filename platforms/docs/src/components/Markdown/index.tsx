@@ -1,6 +1,5 @@
 import React from 'react';
-// @ts-ignore
-import { MDXProvider } from '@mdx-js/react';
+import { MDXProvider, Components } from '@mdx-js/react';
 import DemoBox from '../DemoBox';
 import Wrapper from './Wrapper';
 
@@ -8,7 +7,7 @@ export type MarkdownProps = {
   children: React.ReactNode;
 };
 
-const components = {
+const components: Components = {
   DemoBox,
   wrapper: Wrapper,
 };

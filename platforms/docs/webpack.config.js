@@ -8,6 +8,7 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const path = require('path');
 
 const packageResolve = (packageName) => path.join(__dirname, '../../packages', packageName, 'src');
@@ -55,7 +56,8 @@ const babelConfig = {
       },
     ],
     '@babel/plugin-syntax-dynamic-import',
-  ],
+    !isProd && require.resolve('react-refresh/babel'),
+  ].filter(Boolean),
 };
 
 const getStyleLoaders = (cssOptions, preProcessor) => {
@@ -322,6 +324,7 @@ module.exports = {
     }),
     new webpack.DefinePlugin(envs),
     !isProd && new webpack.HotModuleReplacementPlugin(),
+    !isProd && new ReactRefreshWebpackPlugin(),
     !isProd && new CaseSensitivePathsPlugin(),
     isProd &&
       new MiniCssExtractPlugin({
