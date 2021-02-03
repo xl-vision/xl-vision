@@ -23,15 +23,7 @@ module.exports = {
       'error',
       {
         // packageDir: __dirname,
-        devDependencies: [
-          'site/**',
-          'test/**',
-          'scripts/**',
-          '**/__test__/**',
-          '**/*.mdx',
-          '*.js',
-          '.*.js',
-        ],
+        devDependencies: ['scripts/**', './.*.js'],
       },
     ],
     // Strict, airbnb is using warn; allow warn and error for dev environments
@@ -126,6 +118,14 @@ module.exports = {
             default: 'generic',
           },
         ],
+      },
+    },
+    {
+      files: ['**/__test__/**', '**/__doc__/**'],
+      rules: {
+        'react/display-name': 'off',
+        'react/button-has-type': 'off',
+        'import/no-unresolved': 'off',
       },
     },
   ],

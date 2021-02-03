@@ -10,7 +10,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const path = require('path');
 
-const packageResolve = (packageName) => path.resolve(__dirname, '../packages', packageName, 'src');
+const packageResolve = (packageName) => path.join(__dirname, '../../packages', packageName, 'src');
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -147,6 +147,8 @@ module.exports = {
       'react-native': 'react-native-web',
       react: require.resolve('react'),
       'react-dom': require.resolve('react-dom'),
+      '@mdx-js/react': require.resolve('@mdx-js/react'),
+      'styled-components': require.resolve('styled-components'),
       // 'react-dom$': 'react-dom'
       '@xl-vision/styled-engine': packageResolve('styled-engine'),
       '@xl-vision/react': packageResolve('react'),

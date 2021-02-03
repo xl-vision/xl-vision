@@ -3,17 +3,17 @@
     "module": "ESNext",
     "target": "ESNext",
     "jsx": "preserve",
-    "moduleResolution": "node",
+    "moduleResolution": "Node",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "allowSyntheticDefaultImports": true,
     "declaration": true,
     "baseUrl": ".",
     "paths": {
-      "xl-vision/styled-engine": ["./packages/styled-engine/src"],
-      "xl-vision/styled-engine/*": ["./packages/styled-engine/src/*"],
-      "xl-vision/react": ["./packages/react/src"],
-      "xl-vision/react/*": ["./packages/styled-engine/src/*"]
+      "@xl-vision/styled-engine": ["./packages/styled-engine/src"],
+      "@xl-vision/styled-engine/*": ["./packages/styled-engine/src/*"],
+      "@xl-vision/react": ["./packages/react/src"],
+      "@xl-vision/react/*": ["./packages/react/src/*"]
     }
   },
   "exclude": ["**/node_modules"]

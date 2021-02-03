@@ -7,7 +7,7 @@ import useLayoutEffect from '../hooks/useLayoutEffect';
 import useForkRef from '../hooks/useForkRef';
 import useLifecycleState, { LifecycleState } from '../hooks/useLifecycleState';
 
-enum State {
+enum TransitionState {
   STATE_ENTERING, // 1
   STATE_ENTERED, // 2
   STATE_LEAVING, // 3
@@ -105,11 +105,11 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
   const [state, setState] = React.useState(
     inProp
       ? transitionOnFirst
-        ? State.STATE_ENTERING
-        : State.STATE_ENTERED
+        ? TransitionState.STATE_ENTERING
+        : TransitionState.STATE_ENTERED
       : transitionOnFirst
-      ? State.STATE_LEAVING
-      : State.STATE_LEAVED,
+      ? TransitionState.STATE_LEAVING
+      : TransitionState.STATE_LEAVED,
   );
 
   const childRef = React.useRef<HTMLElement>();
@@ -131,7 +131,7 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
   const cbRef = React.useRef<() => void>();
 
   const onTransitionEnd = useEventCallback(
-    (nextState: State, eventHook?: EventHook, afterEventHook?: AfterEventHook) => {
+    (nextState: TransitionState, eventHook?: EventHook, afterEventHook?: AfterEventHook) => {
       const el = findDOMElement();
       const afterEventHookWrap = () => afterEventHook && afterEventHook(el);
       cbRef.current = afterEventHookWrap;
@@ -159,23 +159,23 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
     },
   );
 
-  const stateTrigger = useEventCallback((_state: State) => {
+  const stateTrigger = useEventCallback((_state: TransitionState) => {
     const el = findDOMElement();
     // 展示
     if (inProp) {
-      if (_state === State.STATE_ENTERING) {
+      if (_state === TransitionState.STATE_ENTERING) {
         const beforeHook = transitionOnFirstRef.current ? beforeAppear : beforeEnter;
         const hook = transitionOnFirstRef.current ? appear : enter;
         const afterHook = transitionOnFirstRef.current ? afterAppear : afterEnter;
         beforeHook && beforeHook(el);
-        onTransitionEnd(State.STATE_ENTERED, hook, afterHook);
+        onTransitionEnd(TransitionState.STATE_ENTERED, hook, afterHook);
       }
-    } else if (_state === State.STATE_LEAVING) {
+    } else if (_state === TransitionState.STATE_LEAVING) {
       const beforeHook = transitionOnFirstRef.current ? beforeDisappear : beforeLeave;
       const hook = transitionOnFirstRef.current ? disappear : leave;
       const afterHook = transitionOnFirstRef.current ? afterDisappear : afterLeave;
       beforeHook && beforeHook(el);
-      onTransitionEnd(State.STATE_LEAVED, hook, afterHook);
+      onTransitionEnd(TransitionState.STATE_LEAVED, hook, afterHook);
     }
   });
 
@@ -190,20 +190,20 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
 
   const inPropTrigger = useEventCallback((_inProp: boolean) => {
     const el = findDOMElement();
-    if (_inProp && state >= State.STATE_LEAVING) {
+    if (_inProp && state >= TransitionState.STATE_LEAVING) {
       // 不能放到外面，会使appear和disappear失效
       cbRef.current = undefined;
       // 新的更改，之前的event取消
-      setState(State.STATE_ENTERING);
+      setState(TransitionState.STATE_ENTERING);
 
-      if (state === State.STATE_LEAVING) {
+      if (state === TransitionState.STATE_LEAVING) {
         const cancelledHook = transitionOnFirstRef.current ? disappearCancelled : leaveCancelled;
         cancelledHook && cancelledHook(el);
       }
-    } else if (!_inProp && state < State.STATE_LEAVING) {
+    } else if (!_inProp && state < TransitionState.STATE_LEAVING) {
       cbRef.current = undefined;
-      setState(State.STATE_LEAVING);
-      if (state === State.STATE_ENTERING) {
+      setState(TransitionState.STATE_LEAVING);
+      if (state === TransitionState.STATE_ENTERING) {
         const cancelledHook = transitionOnFirstRef.current ? appearCancelled : enterCancelled;
         cancelledHook && cancelledHook(el);
       }
@@ -219,7 +219,7 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
     inPropTrigger,
   ]);
 
-  const display = state !== State.STATE_LEAVED;
+  const display = state !== TransitionState.STATE_LEAVED;
 
   // 判断是否是第一次挂载
   const isFirstMountRef = React.useRef(true);
