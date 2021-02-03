@@ -22,7 +22,7 @@ function run() {
 
   const tsProject = ts.createProject(tsconfigPath);
 
-  const paths = ['src/**/*.ts?(x)', '!__docs__', '!__test__'];
+  const paths = ['src/**/*.ts?(x)', '!**/__doc__/**', '!**/__test__/**'];
 
   return new Promise((resolve, reject) => {
     const errors = [];
