@@ -76,7 +76,7 @@ export default () => {
         mountOnEnter={true}
         unmountOnLeave={true}
       >
-        <Box>Demo</Box>
+        <Box>Demo1</Box>
       </Transition>
     </div>
   );
