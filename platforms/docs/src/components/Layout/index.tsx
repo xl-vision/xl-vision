@@ -1,12 +1,23 @@
 import React from 'react';
-// eslint-disable-next-line import/no-unresolved
-import TransitionDoc from '@xl-vision/react/Transition/__doc__/index.mdx';
-import Markdown from '../Markdown';
+import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Aside from '../Aside';
+import Footer from '../Footer';
+import Header from '../Header';
+import Main from '../Main';
 
-const Layout: React.FunctionComponent<{}> = () => (
-  <Markdown>
-    <TransitionDoc />
-  </Markdown>
-);
+const Layout = () => {
+  return (
+    <Router>
+      <div>
+        <Header />
+        <div>
+          <Aside />
+          <Main />
+        </div>
+        <Footer />
+      </div>
+    </Router>
+  );
+};
 
 export default Layout;
