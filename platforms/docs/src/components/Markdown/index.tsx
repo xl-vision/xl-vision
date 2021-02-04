@@ -1,5 +1,6 @@
 import React from 'react';
 import { MDXProvider, Components } from '@mdx-js/react';
+import PropTypes from 'prop-types';
 import DemoBox from '../DemoBox';
 import Wrapper from './Wrapper';
 
@@ -12,10 +13,13 @@ const components: Components = {
   wrapper: Wrapper,
 };
 
-const Markdown: React.FunctionComponent<MarkdownProps> = (props) => (
-  <MDXProvider components={components}>
-    <div {...props} />
-  </MDXProvider>
-);
+const Markdown: React.FunctionComponent<MarkdownProps> = (props) => {
+  const { children } = props;
+  return <MDXProvider components={components}>{children}</MDXProvider>;
+};
+
+Markdown.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default Markdown;

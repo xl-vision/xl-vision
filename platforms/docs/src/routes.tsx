@@ -1,7 +1,9 @@
+import React from 'react';
+
 export type LeafRoute = {
   name: string;
   path: string;
-  component?: () => Promise<typeof import('*.mdx')>;
+  component?: () => Promise<{ default: React.ComponentType<any> }>;
 };
 
 export type NonLeafRoute = {
@@ -20,6 +22,16 @@ const route: Array<Route> = [
   {
     name: '总览1111',
     path: '/',
+  },
+  {
+    name: '动画',
+    children: [
+      {
+        name: 'Transition',
+        path: '/Transition',
+        component: () => import('@xl-vision/react/Transition/__doc__/index.mdx'),
+      },
+    ],
   },
 ];
 

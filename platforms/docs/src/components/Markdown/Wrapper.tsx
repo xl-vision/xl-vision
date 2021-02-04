@@ -1,13 +1,27 @@
+import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import React from 'react';
 import './prism-light.scss';
 import './prism-dark.scss';
 
-const Wrapper: React.FunctionComponent<any> = (props) => {
-  // eslint-disable-next-line react/prop-types, @typescript-eslint/no-unsafe-assignment
-  const { className, ...others } = props;
+export type WrapperProps = {
+  children: React.ReactNode;
+  name: string;
+};
+
+const Wrapper: React.FunctionComponent<WrapperProps> = (props) => {
+  const { children, name } = props;
 
   const [isDark, setDark] = React.useState(false);
+
+  React.useEffect(() => {
+    const { title } = document;
+    document.title = `${name}|xl-vision`;
+
+    return () => {
+      document.title = title;
+    };
+  }, [name]);
 
   const callback = React.useCallback((e: MediaQueryListEvent) => {
     setDark(e.matches);
@@ -24,9 +38,14 @@ const Wrapper: React.FunctionComponent<any> = (props) => {
     };
   }, [callback]);
 
-  const classes = clsx(['markdown', `markdown--${isDark ? 'dark' : 'light'}`, className]);
+  const classes = clsx(['markdown', `markdown--${isDark ? 'dark' : 'light'}`]);
 
-  return <div {...others} className={classes} />;
+  return <main className={classes}>{children}</main>;
+};
+
+Wrapper.propTypes = {
+  children: PropTypes.node.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 export default Wrapper;
