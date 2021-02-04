@@ -1,6 +1,7 @@
 import React from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import routes, { Route as RouteType } from '../../routes';
+import Markdown from '../Markdown';
 
 const traverseRoutes = (routes: Array<RouteType>): Array<JSX.Element> => {
   const routeElements: Array<JSX.Element> = [];
@@ -10,16 +11,15 @@ const traverseRoutes = (routes: Array<RouteType>): Array<JSX.Element> => {
       routeElements.push(...childElements);
       return;
     }
-    const { path, component } = it;
+    const { path, component, name } = it;
 
-    let route: JSX.Element;
-    if (!component) {
-      route = <Redirect to={path} key={path} />;
-    } else {
-      const lazyComponent = React.lazy(component);
-      route = <Route path={path} component={lazyComponent} key={path} />;
+    if (component) {
+      const LazyComponent = React.lazy(component);
+      const route = (
+        <Route exact={true} path={path} render={() => <LazyComponent name={name} />} key={path} />
+      );
+      routeElements.push(route);
     }
-    routeElements.push(route);
   });
 
   return routeElements;
@@ -29,11 +29,11 @@ const routeElements = traverseRoutes(routes);
 
 const Main = () => {
   return (
-    <main>
+    <Markdown>
       <React.Suspense fallback={<div>loading</div>}>
         <Switch>{routeElements}</Switch>
       </React.Suspense>
-    </main>
+    </Markdown>
   );
 };
 

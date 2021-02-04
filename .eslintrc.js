@@ -1,8 +1,8 @@
 const confusingBrowserGlobals = require('confusing-browser-globals');
 
 module.exports = {
+  root: true,
   env: {
-    commonjs: true,
     es6: true,
     node: true,
     jest: true,
@@ -16,7 +16,13 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2018,
   },
-  extends: ['airbnb', 'airbnb/hooks', 'plugin:prettier/recommended', 'prettier/react'],
+  extends: [
+    'airbnb',
+    'airbnb/hooks',
+    'plugin:prettier/recommended',
+    'prettier/unicorn',
+    'prettier/react',
+  ],
   plugins: ['unicorn'],
   rules: {
     'import/no-extraneous-dependencies': [
@@ -85,7 +91,6 @@ module.exports = {
     {
       files: ['*.ts', '*.tsx'],
       parserOptions: {
-        ecmaVersion: 2018,
         project: './tsconfig.json',
       },
       extends: [
@@ -110,7 +115,6 @@ module.exports = {
             tsx: 'never',
           },
         ],
-
         'import/no-cycle': 'off',
         '@typescript-eslint/array-type': [
           'error',

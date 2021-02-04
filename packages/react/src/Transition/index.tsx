@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import ReactDOM from 'react-dom';
 import useEventCallback from '../hooks/useEventCallback';
 import useLayoutEffect from '../hooks/useLayoutEffect';
@@ -242,7 +241,7 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
   });
 };
 
-Transition.displayName = 'Transition';
+// Transition.displayName = 'Transition';
 
 Transition.propTypes = {
   beforeAppear: PropTypes.func,

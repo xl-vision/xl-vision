@@ -6,6 +6,8 @@
     "moduleResolution": "Node",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "allowSyntheticDefaultImports": true,
     "declaration": true,
     "baseUrl": ".",
