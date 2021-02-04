@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 
 export type StyledEngineProviderProps = {
   injectFirst?: boolean;
-  children: React.ReactNode;
+  children: React.ReactElement;
 };
 
-export default function StyledEngineProvider(props: StyledEngineProviderProps) {
+const StyledEngineProvider: React.FunctionComponent<StyledEngineProviderProps> = (props) => {
   const { injectFirst, children } = props;
 
   if (injectFirst && typeof window !== 'undefined') {
@@ -18,9 +18,11 @@ export default function StyledEngineProvider(props: StyledEngineProviderProps) {
   }
 
   return children;
-}
+};
 
 StyledEngineProvider.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.element.isRequired,
   injectFirst: PropTypes.bool,
 };
+
+export default StyledEngineProvider;
