@@ -13,6 +13,7 @@
     "@mdx-js/react": "^1.6.22",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "@types/react-router-dom": "^5.1.7",
     "@types/styled-components": "^5.1.7",
     "@xl-vision/react": "^0.0.0",
     "@xl-vision/styled-engine": "^0.0.0",
@@ -20,6 +21,7 @@
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
     "styled-components": "^5.2.1"
   },
   "devDependencies": {
