@@ -284,6 +284,7 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.DefinePlugin(envs),
     new HtmlWebpackPlugin({
       inject: true,
       template: 'template/index.html',
@@ -322,7 +323,6 @@ module.exports = {
         },
       ],
     }),
-    new webpack.DefinePlugin(envs),
     !isProd && new webpack.HotModuleReplacementPlugin(),
     !isProd && new ReactRefreshWebpackPlugin(),
     !isProd && new CaseSensitivePathsPlugin(),

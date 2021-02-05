@@ -20,10 +20,6 @@ const route: Array<Route> = [
     component: () => import('./views/index.mdx'),
   },
   {
-    name: '总览1111',
-    path: '/',
-  },
-  {
     name: '动画',
     children: [
       {

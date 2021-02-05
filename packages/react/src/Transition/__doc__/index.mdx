@@ -1,11 +1,284 @@
 # Transition
 
-::: demo ./Demo1.tsx
-基本用法
+基础的过渡动画组件，通过此组件可以灵活地控制`React`组件过渡状态。
 
+> **NOTE**
 
-基本用法
-基本用法
-基本用法
+> 使用此组件时，务必注意要及时调用`appear`、`enter`、`leave`、`disappear`中的最后的回调函数，以表示动画的结束，否则动画会阻塞在中间状态。
+
+:::demo ./DemoBasic.tsx
+
+基础用法
+
+通过传入`beforeEnter`、`enter`、`afterEnter`、`enterCancelled`、`beforeLeave`、`leave`、`afterLeave`、`leaveCancelled`等钩子函数，触发相应的动画。通过改变属性`show`触发进出场钩子
 
 :::
+
+<!-- :::demo 自动触发进出场动画
+
+设置`transitionOnFirst`，会自动触发进出场动画。如果`in=true`，会触发`beforeAppear`、`apper`、`afterAppear`、`appearCancelled`钩子，如果不设置，会使用`beforeEnter`、`enter`、`afterEnter`、`enterCancelled`钩子。
+
+如果`in=false`，会触发`beforeDisappear`、`disapper`、`afterDisappear`、`disappearCancelled`钩子，如果不设置，会使用`beforeLeave`、`leave`、`afteLeave`、`leaveCancelled`钩子。
+
+```jsx
+import React from 'react'
+import { Transition, Button } from 'xl-vision'
+export default () => {
+  const className = 'transition'
+  const [show, setShow] = React.useState(true)
+
+  const beforeEnter = React.useCallback((el) => {
+    el.style.height = el.style.height || 0
+  }, [])
+
+  const enter = React.useCallback((el, done, isCancelled) => {
+    let height = Number(el.style.height.substring(0, el.style.height.indexOf('px')) || 0)
+    const timer = setInterval(() => {
+      if (isCancelled()) {
+        clearInterval(timer)
+        return
+      }
+      if (height > 200) {
+        clearInterval(timer)
+        done()
+        return
+      }
+      height += 2
+      el.style.height = `${height}px`
+    }, 20)
+  }, [])
+
+  const leave = React.useCallback((el, done, isCancelled) => {
+    let height = Number(el.style.height.substring(0, el.style.height.indexOf('px')) || 200)
+    const timer = setInterval(() => {
+      if (isCancelled()) {
+        clearInterval(timer)
+        return
+      }
+      if (height < 0) {
+        clearInterval(timer)
+        done()
+        return
+      }
+      height -= 2
+      el.style.height = `${height}px`
+    }, 20)
+  }, [])
+
+  return (
+    <div>
+      <Button theme='primary' onClick={() => setShow(!show)}>
+        Click
+      </Button>
+      <p>进场动画</p>
+      <Transition transitionOnFirst in={show} beforeEnter={beforeEnter} enter={enter} leave={leave}>
+        <div className='demo'>DEMO</div>
+      </Transition>
+      <p>出场动画</p>
+      <Transition
+        transitionOnFirst
+        in={!show}
+        beforeEnter={beforeEnter}
+        enter={enter}
+        leave={leave}
+      >
+        <div className='demo'>DEMO</div>
+      </Transition>
+    </div>
+  )
+}
+```
+
+```scss
+.demo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  color: #fff;
+  font-size: 3rem;
+  background-color: #007bff;
+}
+```
+
+:::
+
+:::demo 强制在第一次进场动画时才挂载子节点
+
+默认在第一次进场动画前保留子节点，通过`mountOnEnter`强制在第一次进场动画时才挂载子节点。
+
+```jsx
+import React from 'react'
+import { Transition, Button } from 'xl-vision'
+export default () => {
+  const className = 'transition'
+  const [show, setShow] = React.useState(false)
+
+  const beforeEnter = React.useCallback((el) => {
+    el.style.height = el.style.height || 0
+  }, [])
+
+  const enter = React.useCallback((el, done, isCancelled) => {
+    let height = Number(el.style.height.substring(0, el.style.height.indexOf('px')) || 0)
+    const timer = setInterval(() => {
+      if (isCancelled()) {
+        clearInterval(timer)
+        return
+      }
+      if (height > 200) {
+        clearInterval(timer)
+        done()
+        return
+      }
+      height += 2
+      el.style.height = `${height}px`
+    }, 20)
+  }, [])
+
+  const leave = React.useCallback((el, done, isCancelled) => {
+    let height = Number(el.style.height.substring(0, el.style.height.indexOf('px')) || 200)
+    const timer = setInterval(() => {
+      if (isCancelled()) {
+        clearInterval(timer)
+        return
+      }
+      if (height < 0) {
+        clearInterval(timer)
+        done()
+        return
+      }
+      height -= 2
+      el.style.height = `${height}px`
+    }, 20)
+  }, [])
+
+  return (
+    <div>
+      <Button theme='primary' onClick={() => setShow(!show)}>
+        Click
+      </Button>
+      <Transition mountOnEnter in={show} beforeEnter={beforeEnter} enter={enter} leave={leave}>
+        <div className='demo'>DEMO</div>
+      </Transition>
+    </div>
+  )
+}
+```
+
+```scss
+.demo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  color: #fff;
+  font-size: 3rem;
+  background-color: #007bff;
+  margin-top: 16px;
+}
+```
+
+:::
+
+:::demo 强制在出场动画后卸载子节点
+
+默认在出场动画后还保留子节点，通过`unmountOnLeave`强制在出场动画后就卸载子节点。
+
+```jsx
+import React from 'react'
+import { Transition, Button } from 'xl-vision'
+export default () => {
+  const className = 'transition'
+  const [show, setShow] = React.useState(false)
+
+  const beforeEnter = React.useCallback((el) => {
+    el.style.height = el.style.height || 0
+  }, [])
+
+  const enter = React.useCallback((el, done, isCancelled) => {
+    let height = Number(el.style.height.substring(0, el.style.height.indexOf('px')) || 0)
+    const timer = setInterval(() => {
+      if (isCancelled()) {
+        clearInterval(timer)
+        return
+      }
+      if (height > 200) {
+        clearInterval(timer)
+        done()
+        return
+      }
+      height += 2
+      el.style.height = `${height}px`
+    }, 20)
+  }, [])
+
+  const leave = React.useCallback((el, done, isCancelled) => {
+    let height = Number(el.style.height.substring(0, el.style.height.indexOf('px')) || 200)
+    const timer = setInterval(() => {
+      if (isCancelled()) {
+        clearInterval(timer)
+        return
+      }
+      if (height < 0) {
+        clearInterval(timer)
+        done()
+        return
+      }
+      height -= 2
+      el.style.height = `${height}px`
+    }, 20)
+  }, [])
+
+  return (
+    <div>
+      <Button theme='primary' onClick={() => setShow(!show)}>
+        Click
+      </Button>
+      <Transition unmountOnLeave in={show} beforeEnter={beforeEnter} enter={enter} leave={leave}>
+        <div className='demo'>DEMO</div>
+      </Transition>
+    </div>
+  )
+}
+```
+
+```scss
+.demo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  color: #fff;
+  font-size: 3rem;
+  background-color: #007bff;
+  margin-top: 16px;
+}
+```
+
+::: -->
+
+## Transition API
+
+| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
+| --- | --- | --- | --- | --- | --- |
+| in | 触发进出场动画,`true`表示进场，`false`表示出场 | boolean | - | — | true |
+| transitionOnFirst | 是否触发初次进出场钩子函数 | boolean | - | false | false |
+| beforeAppear | 初次进场前钩子，如果没有指定，会自动调用`beforeEnter`钩子函数 | (el: HTMLElement) => void | - | — | false |
+| appear | 初次进场时钩子，如果没有指定，会自动调用`enter`钩子函数 | (el: HTMLElement, done: (() => void), isCancelled: () => boolean) => void | - | — | false |
+| afterAppear | 初次进场后钩子，如果没有指定，会自动调用`afterEnter`钩子函数 | (el: HTMLElement) => void | - | — | false |
+| appearCancelled | 取消初次进场钩子，如果没有指定，会自动调用`enterCancelled`钩子函数 | (el: HTMLElement) => void | - | — | false |
+| beforeEnter | 进场前钩子 | (el: HTMLElement) => void | - | — |
+| enter | 进场时钩子 | (el: HTMLElement, done: (() => void), isCancelled: () => boolean) => void | - | — | false |
+| afterEnter | 进场后钩子 | (el: HTMLElement) => void | - | — | false |
+| enterCancelled | 取消进场钩子 | (el: HTMLElement) => void | - | — | false |
+| beforeLeave | 出场前钩子 | (el: HTMLElement) => void | - | — | false |
+| leave | 出场时钩子 | (el: HTMLElement, done: (() => void), isCancelled: () => boolean) => void | - | — | false |
+| afterLeave | 出场后钩子 | (el: HTMLElement) => void | - | — | false |
+| leaveCancelled | 取消出场钩子 | (el: HTMLElement) => void | - | — | false |
+| beforeDisppear | 初次出场前钩子，如果没有指定，会自动调用`beforeLeave`钩子函数 | (el: HTMLElement) => void | - | — | false |
+| disappear | 初次出场时钩子，如果没有指定，会自动调用`leave`钩子函数 | (el: HTMLElement, done: (() => void), isCancelled: () => boolean) => void | - | — | false |
+| afterDisappear | 初次出场后钩子，如果没有指定，会自动调用`afterLeave`钩子函数 | (el: HTMLElement) => void | - | — | false |
+| disappearCancelled | 取消初次出场钩子，如果没有指定，会自动调用`leaveCancelled`钩子函数 | (el: HTMLElement) => void | - | — | false |
+| children | 子元素 | React.ReactElement | - | — | true |
+| mountOnEnter | 当第一次进场动画时才挂载子节点 | boolean | - | false | false |
+| unmountOnLeave | 当出场动画后就卸载子节点 | boolean | - | false | false |

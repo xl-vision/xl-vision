@@ -55,7 +55,9 @@ export type StyledComponent<
   StyleProps,
   Theme extends object = {}
 > = React.FunctionComponent<InnerProps & StyleProps & { theme?: Theme }> & {
-  withComponent<Tag extends keyof JSX.IntrinsicElements | React.ComponentType<any>>(
+  withComponent<
+    Tag extends keyof JSX.IntrinsicElements | React.ComponentType<React.ComponentProps<Tag>>
+  >(
     tag: Tag,
   ): StyledComponent<ExtractProps<Tag>, StyleProps, Theme>;
 };
@@ -83,21 +85,24 @@ export type FilteringStyledOptions<Props, ForwardedProps extends keyof Props = k
   target?: string;
 };
 
-export type Styled = <
-  Tag extends keyof JSX.IntrinsicElements | React.ComponentClass<React.ComponentProps<Tag>>,
-  ForwardedProps extends keyof ExtractProps<Tag> = keyof ExtractProps<Tag>,
-  Theme extends {} = {}
->(
-  tag: Tag,
-  options?: FilteringStyledOptions<ExtractProps<Tag>, ForwardedProps>,
-) => CreateStyledComponent<Pick<ExtractProps<Tag>, ForwardedProps>, {}, Theme>;
+export interface Styled {
+  <
+    Tag extends keyof JSX.IntrinsicElements | React.ComponentType<React.ComponentProps<Tag>>,
+    ForwardedProps extends keyof ExtractProps<Tag> = keyof ExtractProps<Tag>,
+    Theme extends {} = {}
+  >(
+    tag: Tag,
+    options?: FilteringStyledOptions<ExtractProps<Tag>, ForwardedProps>,
+  ): CreateStyledComponent<Pick<ExtractProps<Tag>, ForwardedProps>, {}, Theme>;
+}
+export type GlobalStyleComponent<P, T extends {}> = React.ComponentType<P & { theme?: T }>;
 
-export type GlobalStyleComponent<P, T extends {}> = React.ComponentClass<P & { theme: T }>;
-
-export type CreateGlobalStyle<P extends object = {}, T extends object = {}> = (
-  first: TemplateStringsArray | CSSObject | FunctionInterpolation<P & { theme: T }>,
-  ...styles: Array<Interpolation<P & { theme: T }>>
-) => GlobalStyleComponent<P, T>;
+export interface CreateGlobalStyle {
+  <P extends object = {}, T extends object = {}>(
+    first: TemplateStringsArray | CSSObject | FunctionInterpolation<P & { theme: T }>,
+    ...styles: Array<Interpolation<P & { theme: T }>>
+  ): GlobalStyleComponent<P, T>;
+}
 
 export type CreateKeyframes = (
   strings: TemplateStringsArray | CSSKeyframes,

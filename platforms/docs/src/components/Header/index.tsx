@@ -6,7 +6,8 @@ const Wrapper = styled('div')`
   border-bottom: 1px solid #eee;
   display: flex;
   align-items: center;
-  margin: 0 16px;
+  margin: 0;
+  padding: 0 16px;
 `;
 
 const Logo = styled('div')`

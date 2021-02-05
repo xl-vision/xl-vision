@@ -2,4 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Layout from './components/Layout';
 
-ReactDOM.render(<Layout />, document.querySelector('#app'));
+ReactDOM.render(
+  <React.StrictMode>
+    <Layout />
+  </React.StrictMode>,
+  document.querySelector('#app'),
+);
