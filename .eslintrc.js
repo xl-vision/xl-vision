@@ -1,5 +1,11 @@
 const confusingBrowserGlobals = require('confusing-browser-globals');
 
+const ignorePackages = [
+  '^@xl-vision/styled-engine-types',
+  '^@xl-vision/styled-engine',
+  '^@xl-vision/react',
+];
+
 module.exports = {
   root: true,
   env: {
@@ -30,6 +36,12 @@ module.exports = {
       {
         // packageDir: __dirname,
         devDependencies: ['scripts/**', './.*.js'],
+      },
+    ],
+    'import/no-unresolved': [
+      'error',
+      {
+        ignore: ignorePackages,
       },
     ],
     // Strict, airbnb is using warn; allow warn and error for dev environments
@@ -120,6 +132,19 @@ module.exports = {
           'error',
           {
             default: 'generic',
+          },
+        ],
+        '@typescript-eslint/no-unused-vars': ['error', { args: 'none' }],
+        '@typescript-eslint/no-unused-expressions': 'error',
+      },
+    },
+    {
+      files: ['packages/**'],
+      rules: {
+        'import/no-unresolved': [
+          'error',
+          {
+            ignore: ignorePackages.concat(['^react', '^react-dom']),
           },
         ],
       },

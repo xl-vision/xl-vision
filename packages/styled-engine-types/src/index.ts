@@ -1,5 +1,5 @@
 import CSS from 'csstype';
-// eslint-disable-next-line import/no-unresolved
+// eslint-disable-next-line import/no-extraneous-dependencies
 import React from 'react';
 
 export type CSSProperties = CSS.Properties<string | number>;
