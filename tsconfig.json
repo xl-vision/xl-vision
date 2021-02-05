@@ -12,6 +12,8 @@
     "declaration": true,
     "baseUrl": ".",
     "paths": {
+      "@xl-vision/styled-engine-types": ["./packages/styled-engine-types/src"],
+      "@xl-vision/styled-engine-types/*": ["./packages/styled-engine-types/src/*"],
       "@xl-vision/styled-engine": ["./packages/styled-engine/src"],
       "@xl-vision/styled-engine/*": ["./packages/styled-engine/src/*"],
       "@xl-vision/react": ["./packages/react/src"],

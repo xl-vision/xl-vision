@@ -15,7 +15,6 @@ const Box = styled('div')`
 
 export default () => {
   const [show, setShow] = React.useState(false);
-  const [color, setColor] = React.useState(false);
 
   const beforeEnter = React.useCallback((el: HTMLElement) => {
     el.style.height = el.style.height || '0';

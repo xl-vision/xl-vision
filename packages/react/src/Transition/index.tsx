@@ -80,24 +80,24 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
 
   const afterAppear = useEventCallback((el: HTMLElement) => {
     const fn = _afterAppear || afterEnter;
-    fn && fn(el);
+    fn?.(el);
     transitionOnFirstRef.current = false;
   });
 
   const appearCancelled = useEventCallback((el: HTMLElement) => {
     const fn = _appearCancelled || enterCancelled;
-    fn && fn(el);
+    fn?.(el);
     transitionOnFirstRef.current = false;
   });
   const afterDisappear = useEventCallback((el: HTMLElement) => {
     const fn = _afterDisappear || afterLeave;
-    fn && fn(el);
+    fn?.(el);
     transitionOnFirstRef.current = false;
   });
 
   const disappearCancelled = useEventCallback((el: HTMLElement) => {
     const fn = _disappearCancelled || leaveCancelled;
-    fn && fn(el);
+    fn?.(el);
     transitionOnFirstRef.current = false;
   });
 
@@ -166,14 +166,14 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
         const beforeHook = transitionOnFirstRef.current ? beforeAppear : beforeEnter;
         const hook = transitionOnFirstRef.current ? appear : enter;
         const afterHook = transitionOnFirstRef.current ? afterAppear : afterEnter;
-        beforeHook && beforeHook(el);
+        beforeHook?.(el);
         onTransitionEnd(TransitionState.STATE_ENTERED, hook, afterHook);
       }
     } else if (_state === TransitionState.STATE_LEAVING) {
       const beforeHook = transitionOnFirstRef.current ? beforeDisappear : beforeLeave;
       const hook = transitionOnFirstRef.current ? disappear : leave;
       const afterHook = transitionOnFirstRef.current ? afterDisappear : afterLeave;
-      beforeHook && beforeHook(el);
+      beforeHook?.(el);
       onTransitionEnd(TransitionState.STATE_LEAVED, hook, afterHook);
     }
   });
@@ -197,14 +197,14 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
 
       if (state === TransitionState.STATE_LEAVING) {
         const cancelledHook = transitionOnFirstRef.current ? disappearCancelled : leaveCancelled;
-        cancelledHook && cancelledHook(el);
+        cancelledHook?.(el);
       }
     } else if (!_inProp && state < TransitionState.STATE_LEAVING) {
       cbRef.current = undefined;
       setState(TransitionState.STATE_LEAVING);
       if (state === TransitionState.STATE_ENTERING) {
         const cancelledHook = transitionOnFirstRef.current ? appearCancelled : enterCancelled;
-        cancelledHook && cancelledHook(el);
+        cancelledHook?.(el);
       }
     }
   });
@@ -241,7 +241,7 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
   });
 };
 
-// Transition.displayName = 'Transition';
+Transition.displayName = 'Transition';
 
 Transition.propTypes = {
   beforeAppear: PropTypes.func,
