@@ -3,9 +3,9 @@ import { Route, Switch } from 'react-router-dom';
 import routes, { Route as RouteType } from '../../routes';
 import Markdown from '../Markdown';
 
-const traverseRoutes = (routes: Array<RouteType>): Array<JSX.Element> => {
+const traverseRoutes = (routesArray: Array<RouteType>): Array<JSX.Element> => {
   const routeElements: Array<JSX.Element> = [];
-  routes.forEach((it) => {
+  routesArray.forEach((it) => {
     if ('children' in it) {
       const childElements = traverseRoutes(it.children);
       routeElements.push(...childElements);

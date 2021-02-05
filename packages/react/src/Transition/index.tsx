@@ -131,8 +131,7 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
 
   const onTransitionEnd = useEventCallback(
     (nextState: TransitionState, eventHook?: EventHook, afterEventHook?: AfterEventHook) => {
-      const el = findDOMElement();
-      const afterEventHookWrap = () => afterEventHook && afterEventHook(el);
+      const afterEventHookWrap = () => afterEventHook?.(findDOMElement());
       cbRef.current = afterEventHookWrap;
 
       const isCancelled = () => afterEventHookWrap !== cbRef.current;
@@ -151,7 +150,7 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
         });
       };
       if (eventHook) {
-        eventHook(el, wrapCallback, isCancelled);
+        eventHook(findDOMElement(), wrapCallback, isCancelled);
       } else {
         wrapCallback();
       }
@@ -159,21 +158,20 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
   );
 
   const stateTrigger = useEventCallback((_state: TransitionState) => {
-    const el = findDOMElement();
     // 展示
     if (inProp) {
       if (_state === TransitionState.STATE_ENTERING) {
         const beforeHook = transitionOnFirstRef.current ? beforeAppear : beforeEnter;
         const hook = transitionOnFirstRef.current ? appear : enter;
         const afterHook = transitionOnFirstRef.current ? afterAppear : afterEnter;
-        beforeHook?.(el);
+        beforeHook?.(findDOMElement());
         onTransitionEnd(TransitionState.STATE_ENTERED, hook, afterHook);
       }
     } else if (_state === TransitionState.STATE_LEAVING) {
       const beforeHook = transitionOnFirstRef.current ? beforeDisappear : beforeLeave;
       const hook = transitionOnFirstRef.current ? disappear : leave;
       const afterHook = transitionOnFirstRef.current ? afterDisappear : afterLeave;
-      beforeHook?.(el);
+      beforeHook?.(findDOMElement());
       onTransitionEnd(TransitionState.STATE_LEAVED, hook, afterHook);
     }
   });
@@ -240,8 +238,6 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
     ref: forkRef,
   });
 };
-
-Transition.displayName = 'Transition';
 
 Transition.propTypes = {
   beforeAppear: PropTypes.func,

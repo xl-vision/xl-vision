@@ -113,9 +113,6 @@ module.exports = {
       ],
       rules: {
         'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx'] }],
-        'no-unused-vars': 'off',
-        'no-unused-expressions': 'off',
-        'no-shadow': 'off',
         'import/extensions': [
           'error',
           'ignorePackages',
@@ -134,8 +131,12 @@ module.exports = {
             default: 'generic',
           },
         ],
-        '@typescript-eslint/no-unused-vars': ['error', { args: 'none' }],
+        'no-unused-vars': 'off',
+        '@typescript-eslint/no-unused-vars': 'error',
+        'no-unused-expressions': 'off',
         '@typescript-eslint/no-unused-expressions': 'error',
+        'no-shadow': 'off',
+        '@typescript-eslint/no-shadow': ['error'],
       },
     },
     {

@@ -3,6 +3,11 @@ import { MDXProvider, Components } from '@mdx-js/react';
 import PropTypes from 'prop-types';
 import DemoBox from '../DemoBox';
 import Wrapper from './Wrapper';
+import pre from './pre';
+import a from './a';
+import blockquote from './blockquote';
+import inlineCode from './inlineCode';
+import table from './table';
 
 export type MarkdownProps = {
   children: React.ReactNode;
@@ -11,6 +16,11 @@ export type MarkdownProps = {
 const components: Components = {
   DemoBox,
   wrapper: Wrapper,
+  pre,
+  a,
+  blockquote,
+  inlineCode,
+  table,
 };
 
 const Markdown: React.FunctionComponent<MarkdownProps> = (props) => {

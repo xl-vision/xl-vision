@@ -1,8 +1,10 @@
-.markdown--dark {
-  pre[class*='language-'],
+import { styled } from '@xl-vision/react';
+
+export default styled('pre')`
+  &[class*='language-'],
   code[class*='language-'] {
     color: #d4d4d4;
-    font-size: 13px;
+    font-size: 16px;
     text-shadow: none;
     font-family: Menlo, Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', 'Courier New', monospace;
     direction: ltr;
@@ -20,22 +22,22 @@
     hyphens: none;
   }
 
-  pre[class*='language-']::selection,
+  &[class*='language-']::selection,
   code[class*='language-']::selection,
-  pre[class*='language-'] *::selection,
+  &[class*='language-'] *::selection,
   code[class*='language-'] *::selection {
     text-shadow: none;
     background: #75a7ca;
   }
 
   @media print {
-    pre[class*='language-'],
+    &[class*='language-'],
     code[class*='language-'] {
       text-shadow: none;
     }
   }
 
-  pre[class*='language-'] {
+  &[class*='language-'] {
     padding: 1em;
     margin: 0;
     overflow: auto;
@@ -49,8 +51,8 @@
     background: #f9f2f4;
   }
   /*********************************************************
-* Tokens
-*/
+  * Tokens
+  */
   .namespace {
     opacity: 0.7;
   }
@@ -230,26 +232,25 @@
     color: #4ec9b0;
   }
   /*********************************************************
-* Language Specific
-*/
-
-  pre[class*='language-javascript'],
+  * Language Specific
+  */
+  &[class*='language-javascript'],
   code[class*='language-javascript'],
-  pre[class*='language-jsx'],
+  &[class*='language-jsx'],
   code[class*='language-jsx'],
-  pre[class*='language-typescript'],
+  &[class*='language-typescript'],
   code[class*='language-typescript'],
-  pre[class*='language-tsx'],
+  &[class*='language-tsx'],
   code[class*='language-tsx'] {
     color: #9cdcfe;
   }
 
-  pre[class*='language-css'],
+  &[class*='language-css'],
   code[class*='language-css'] {
     color: #ce9178;
   }
 
-  pre[class*='language-html'],
+  &[class*='language-html'],
   code[class*='language-html'] {
     color: #d4d4d4;
   }
@@ -264,11 +265,11 @@
   /*********************************************************
 * Line highlighting
 */
-  pre[data-line] {
+  &[data-line] {
     position: relative;
   }
 
-  pre[class*='language-'] > code[class*='language-'] {
+  &[class*='language-'] > code[class*='language-'] {
     position: relative;
     z-index: 1;
   }
@@ -286,4 +287,4 @@
     line-height: inherit;
     white-space: pre;
   }
-}
+`;
