@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-named-default
-import { default as innerStyled } from '@xl-vision/styled-engine';
 
-const styled = innerStyled;
+import styled from './styled';
+import createGlobalStyles from './createGlobalStyles';
 
-export { styled };
+export { styled, createGlobalStyles };

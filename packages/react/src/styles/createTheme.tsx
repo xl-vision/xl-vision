@@ -1,7 +1,11 @@
-export type Theme = {};
+export type Theme = {
+  color: string;
+};
 
 const createTheme = (): Theme => {
-  return {};
+  return {
+    color: 'red',
+  };
 };
 
 export default createTheme;
