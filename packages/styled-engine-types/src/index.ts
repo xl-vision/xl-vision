@@ -61,13 +61,10 @@ export type StyledComponent<InnerProps, StyleProps> = React.ComponentType<
 };
 
 export type CreateStyledComponent<ComponentProps extends object, StyleProps extends object = {}> = {
-  <AdditionalProps extends object = {}>(
-    first:
-      | TemplateStringsArray
-      | CSSObject
-      | FunctionInterpolation<ComponentProps & StyleProps & AdditionalProps>,
-    ...styles: Array<Interpolation<ComponentProps & StyleProps & AdditionalProps>>
-  ): StyledComponent<ComponentProps & AdditionalProps, StyleProps>;
+  <AdditionalProps extends object = {}, P = ComponentProps & AdditionalProps, PS = P & StyleProps>(
+    first: TemplateStringsArray | CSSObject | FunctionInterpolation<PS>,
+    ...styles: Array<Interpolation<PS>>
+  ): StyledComponent<P, StyleProps>;
 };
 
 /** Same as StyledOptions but shouldForwardProp must be a type guard */
@@ -80,11 +77,12 @@ export type FilteringStyledOptions<Props, ForwardedProps extends keyof Props = k
 export type Styled = {
   <
     Tag extends keyof JSX.IntrinsicElements | React.ComponentType<React.ComponentProps<Tag>>,
-    ForwardedProps extends keyof ExtractProps<Tag> = keyof ExtractProps<Tag>
+    ForwardedProps extends keyof ExtractProps<Tag> = keyof ExtractProps<Tag>,
+    StyleProps extends object = {}
   >(
     tag: Tag,
     options?: FilteringStyledOptions<ExtractProps<Tag>, ForwardedProps>,
-  ): CreateStyledComponent<Pick<ExtractProps<Tag>, ForwardedProps>, {}>;
+  ): CreateStyledComponent<Pick<ExtractProps<Tag>, ForwardedProps>, StyleProps>;
 };
 
 export type GlobalStyleComponent<P> = React.ComponentType<P>;

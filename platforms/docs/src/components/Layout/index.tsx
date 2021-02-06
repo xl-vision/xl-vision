@@ -1,5 +1,4 @@
-import { styled } from '@xl-vision/react';
-import { createGlobalStyles } from '@xl-vision/styled-engine';
+import { createGlobalStyles, styled } from '@xl-vision/react';
 import React from 'react';
 import { HashRouter as Router } from 'react-router-dom';
 import Aside from '../Aside';
@@ -12,7 +11,6 @@ const GlobalStyle = createGlobalStyles`
     margin: 0;
     width: 100%;
     min-height: 100%;
-    color: ${p => (p.theme as any).a}
   }
 
   #app {
