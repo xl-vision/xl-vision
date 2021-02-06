@@ -1,2 +1,6 @@
-// eslint-disable-next-line import/prefer-default-export
-export { default as styled } from '@xl-vision/styled-engine';
+// eslint-disable-next-line import/no-named-default
+import { default as innerStyled } from '@xl-vision/styled-engine';
+
+const styled = innerStyled;
+
+export { styled };
