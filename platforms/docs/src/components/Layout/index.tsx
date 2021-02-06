@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyles`
     margin: 0;
     width: 100%;
     min-height: 100%;
+    color: ${p => (p.theme as any).a}
   }
 
   #app {

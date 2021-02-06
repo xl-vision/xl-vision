@@ -38,7 +38,7 @@ export type Interpolation<P> =
   | StyledComponentInterpolation;
 
 type StyledComponentInterpolation = Pick<
-  StyledComponent<any, any, any>,
+  StyledComponent<any, any>,
   keyof StyledComponent<any, any>
 >;
 
@@ -50,33 +50,25 @@ export type ExtractProps<
   Tag extends keyof JSX.IntrinsicElements | React.ComponentType<any>
 > = Tag extends keyof JSX.IntrinsicElements ? JSX.IntrinsicElements[Tag] : PropsOf<Tag>;
 
-export type StyledComponent<
-  InnerProps,
-  StyleProps,
-  Theme extends object = {}
-> = React.FunctionComponent<InnerProps & StyleProps & { theme?: Theme }> & {
-  withComponent<
-    Tag extends keyof JSX.IntrinsicElements | React.ComponentType<React.ComponentProps<Tag>>
-  >(
-    tag: Tag,
-  ): StyledComponent<ExtractProps<Tag>, StyleProps, Theme>;
+export type StyledComponent<InnerProps, StyleProps> = React.ComponentType<
+  InnerProps & StyleProps
+> & {
+  // withComponent<
+  //   Tag extends keyof JSX.IntrinsicElements | React.ComponentType<React.ComponentProps<Tag>>
+  // >(
+  //   tag: Tag,
+  // ): StyledComponent<ExtractProps<Tag>, StyleProps>;
 };
 
-export interface CreateStyledComponent<
-  ComponentProps extends {},
-  StyleProps extends {} = {},
-  Theme extends {} = {}
-> {
-  <AdditionalProps extends {} = {}>(
+export type CreateStyledComponent<ComponentProps extends object, StyleProps extends object = {}> = {
+  <AdditionalProps extends object = {}>(
     first:
       | TemplateStringsArray
       | CSSObject
-      | FunctionInterpolation<ComponentProps & StyleProps & AdditionalProps & { theme: Theme }>,
-    ...styles: Array<
-      Interpolation<ComponentProps & StyleProps & AdditionalProps & { theme: Theme }>
-    >
-  ): StyledComponent<ComponentProps & AdditionalProps, StyleProps, Theme>;
-}
+      | FunctionInterpolation<ComponentProps & StyleProps & AdditionalProps>,
+    ...styles: Array<Interpolation<ComponentProps & StyleProps & AdditionalProps>>
+  ): StyledComponent<ComponentProps & AdditionalProps, StyleProps>;
+};
 
 /** Same as StyledOptions but shouldForwardProp must be a type guard */
 export type FilteringStyledOptions<Props, ForwardedProps extends keyof Props = keyof Props> = {
@@ -85,28 +77,26 @@ export type FilteringStyledOptions<Props, ForwardedProps extends keyof Props = k
   target?: string;
 };
 
-export interface Styled {
+export type Styled = {
   <
     Tag extends keyof JSX.IntrinsicElements | React.ComponentType<React.ComponentProps<Tag>>,
-    ForwardedProps extends keyof ExtractProps<Tag> = keyof ExtractProps<Tag>,
-    Theme extends {} = {}
+    ForwardedProps extends keyof ExtractProps<Tag> = keyof ExtractProps<Tag>
   >(
     tag: Tag,
     options?: FilteringStyledOptions<ExtractProps<Tag>, ForwardedProps>,
-  ): CreateStyledComponent<Pick<ExtractProps<Tag>, ForwardedProps>, {}, Theme>;
-}
-export type GlobalStyleComponent<P, T extends {}> = React.ComponentType<P & { theme?: T }>;
+  ): CreateStyledComponent<Pick<ExtractProps<Tag>, ForwardedProps>, {}>;
+};
 
-export interface CreateGlobalStyle {
-  <P extends object = {}, T extends object = {}>(
-    first: TemplateStringsArray | CSSObject | FunctionInterpolation<P & { theme: T }>,
-    ...styles: Array<Interpolation<P & { theme: T }>>
-  ): GlobalStyleComponent<P, T>;
-}
+export type GlobalStyleComponent<P> = React.ComponentType<P>;
+
+export type CreateGlobalStyle = {
+  <P extends object = {}>(
+    first: TemplateStringsArray | CSSObject | FunctionInterpolation<P>,
+    ...styles: Array<Interpolation<P>>
+  ): GlobalStyleComponent<P>;
+};
 
 export type CreateKeyframes = (
   strings: TemplateStringsArray | CSSKeyframes,
   ...interpolations: Array<SimpleInterpolation>
 ) => Keyframes;
-
-export type ThemeContext = React.Context<object>;

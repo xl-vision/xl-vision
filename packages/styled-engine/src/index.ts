@@ -1,5 +1,4 @@
 export { default } from './styled';
 export { default as createGlobalStyles } from './createGlobalStyles';
-export { default as ThemeContext } from './ThemeContext';
 export { default as keyframes } from './keyframes';
 export { default as StyleEngineProvider } from './StyledEngineProvider';
