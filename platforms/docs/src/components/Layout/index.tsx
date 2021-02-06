@@ -18,7 +18,7 @@ const GlobalStyle = createGlobalStyles`
   }
 `;
 
-const Content = styled('div')`
+const Content = styled('div', { displayName: 'content' })`
   display: flex;
   height: 100%;
 
