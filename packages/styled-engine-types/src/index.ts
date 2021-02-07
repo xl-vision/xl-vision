@@ -68,9 +68,9 @@ export type CreateStyledComponent<ComponentProps extends object, StyleProps exte
 };
 
 /** Same as StyledOptions but shouldForwardProp must be a type guard */
-export type FilteringStyledOptions<Props, ForwardedProps extends keyof Props = keyof Props> = {
+export type FilteringStyledOptions = {
   displayName?: string;
-  shouldForwardProp?(propName: PropertyKey): propName is ForwardedProps;
+  shouldForwardProp?(propName: PropertyKey): boolean;
   target?: string;
 };
 
@@ -81,7 +81,7 @@ export type Styled = {
     StyleProps extends object = {}
   >(
     tag: Tag,
-    options?: FilteringStyledOptions<ExtractProps<Tag>, ForwardedProps>,
+    options?: FilteringStyledOptions,
   ): CreateStyledComponent<Pick<ExtractProps<Tag>, ForwardedProps>, StyleProps>;
 };
 
