@@ -1,5 +1,8 @@
 export type Theme = {
   color: string;
+  components?: {
+    [key: string]: any;
+  };
 };
 
 const createTheme = (): Theme => {
