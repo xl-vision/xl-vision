@@ -53,11 +53,11 @@ export type ExtractProps<
 export type StyledComponent<InnerProps, StyleProps> = React.ComponentType<
   InnerProps & StyleProps
 > & {
-  // withComponent<
-  //   Tag extends keyof JSX.IntrinsicElements | React.ComponentType<React.ComponentProps<Tag>>
-  // >(
-  //   tag: Tag,
-  // ): StyledComponent<ExtractProps<Tag>, StyleProps>;
+  withComponent<
+    Tag extends keyof JSX.IntrinsicElements | React.ComponentType<React.ComponentProps<Tag>>
+  >(
+    tag: Tag,
+  ): StyledComponent<ExtractProps<Tag>, StyleProps>;
 };
 
 export type CreateStyledComponent<ComponentProps extends object, StyleProps extends object = {}> = {
@@ -69,7 +69,7 @@ export type CreateStyledComponent<ComponentProps extends object, StyleProps exte
 
 /** Same as StyledOptions but shouldForwardProp must be a type guard */
 export type FilteringStyledOptions = {
-  displayName?: string;
+  prefix?: string;
   shouldForwardProp?(propName: PropertyKey): boolean;
   target?: string;
 };
