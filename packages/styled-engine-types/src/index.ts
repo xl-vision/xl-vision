@@ -43,11 +43,11 @@ type StyledComponentInterpolation = Pick<
 >;
 
 export type PropsOf<
-  C extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>
+  C extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<React.ComponentProps<C>>
 > = JSX.LibraryManagedAttributes<C, React.ComponentProps<C>>;
 
 export type ExtractProps<
-  Tag extends keyof JSX.IntrinsicElements | React.ComponentType<any>
+  Tag extends keyof JSX.IntrinsicElements | React.ComponentType<React.ComponentProps<Tag>>
 > = Tag extends keyof JSX.IntrinsicElements ? JSX.IntrinsicElements[Tag] : PropsOf<Tag>;
 
 export type StyledComponent<InnerProps, StyleProps> = React.ComponentType<
@@ -67,21 +67,25 @@ export type CreateStyledComponent<ComponentProps extends object, StyleProps exte
   ): StyledComponent<P, StyleProps>;
 };
 
+export type ShouldForwardProp<ForwardedProps extends PropertyKey> = (
+  propName: PropertyKey,
+) => propName is ForwardedProps;
+
 /** Same as StyledOptions but shouldForwardProp must be a type guard */
-export type FilteringStyledOptions = {
+export type FilteringStyledOptions<Props, ForwardedProps extends keyof Props = keyof Props> = {
   prefix?: string;
-  shouldForwardProp?(propName: PropertyKey): boolean;
+  shouldForwardProp?: ShouldForwardProp<ForwardedProps>;
   target?: string;
 };
 
 export type Styled = {
   <
-    Tag extends keyof JSX.IntrinsicElements | React.ComponentType<React.ComponentProps<Tag>>,
+    Tag extends keyof JSX.IntrinsicElements | React.ComponentType<React.ComponentProps<any>>,
     ForwardedProps extends keyof ExtractProps<Tag> = keyof ExtractProps<Tag>,
     StyleProps extends object = {}
   >(
     tag: Tag,
-    options?: FilteringStyledOptions,
+    options?: FilteringStyledOptions<PropsOf<Tag>, ForwardedProps>,
   ): CreateStyledComponent<Pick<ExtractProps<Tag>, ForwardedProps>, StyleProps>;
 };
 

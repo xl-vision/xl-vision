@@ -1,8 +1,11 @@
 import {
   CSSObject,
   ExtractProps,
+  FilteringStyledOptions,
   FunctionInterpolation,
   Interpolation,
+  PropsOf,
+  ShouldForwardProp,
   StyledComponent,
 } from '@xl-vision/styled-engine-types';
 import innerStyled from '@xl-vision/styled-engine';
@@ -15,7 +18,7 @@ export type XlOptions = {
   slot?: string;
 };
 
-const shouldForwardProp = (prop: PropertyKey): boolean => prop !== 'theme' && prop !== 'styleProps';
+const shouldForwardProp = (prop: PropertyKey) => prop !== 'theme' && prop !== 'styleProps';
 
 const lowercaseFirstLetter = (str: string) => {
   return str.charAt(0).toLowerCase() + str.slice(1);
@@ -26,8 +29,7 @@ const styled = <
   Tag extends keyof JSX.IntrinsicElements | React.ComponentType<React.ComponentProps<Tag>> =
     | keyof JSX.IntrinsicElements
     | React.ComponentType<React.ComponentProps<any>>,
-  ForwardedProps extends keyof ExtractProps<Tag> = keyof ExtractProps<Tag>,
-  P = Pick<ExtractProps<Tag>, ForwardedProps>
+  ForwardedProps extends keyof ExtractProps<Tag> = keyof ExtractProps<Tag>
 >(
   tag: Tag,
   options?: XlOptions,
@@ -47,7 +49,7 @@ const styled = <
     ForwardedProps,
     { styleProps: StyleProps; theme: Theme }
   >(tag, {
-    shouldForwardProp,
+    shouldForwardProp: shouldForwardProp as ShouldForwardProp<ForwardedProps>,
     prefix: className || name || '',
   });
 
@@ -92,4 +94,3 @@ const A = styled<{ a: number }>('div')`
   color: ${(p) => p.styleProps.a};
 `;
 const b = <A styleProps={{ a: 1 }} />;
-
