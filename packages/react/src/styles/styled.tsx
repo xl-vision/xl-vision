@@ -57,7 +57,9 @@ const styled = <
 
     const Cmp = React.forwardRef<
       any,
-      P & (S extends undefined ? { theme?: Theme } : { styleProps: S; theme?: Theme })
+      P & {
+        as?: keyof JSX.IntrinsicElements | React.ComponentType<React.ComponentProps<any>>;
+      } & (S extends undefined ? { theme?: Theme } : { styleProps: S; theme?: Theme })
     >((props, ref) => {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, react/prop-types
       const { theme: themeProp, className, ...others } = props as any;

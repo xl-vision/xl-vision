@@ -18,7 +18,7 @@ export type EventHook = (el: HTMLElement, done: () => void, isCancelled: () => b
 export type AfterEventHook = (el: HTMLElement) => void;
 export type EventCancelledHook = (el: HTMLElement) => void;
 
-export interface TransitionProps {
+export type TransitionProps = {
   beforeAppear?: BeforeEventHook;
   appear?: EventHook;
   afterAppear?: AfterEventHook;
@@ -40,7 +40,7 @@ export interface TransitionProps {
   unmountOnLeave?: boolean;
   transitionOnFirst?: boolean;
   in: boolean;
-}
+};
 
 const Transition: React.FunctionComponent<TransitionProps> = (props) => {
   const {
