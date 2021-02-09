@@ -57,6 +57,16 @@ const babelConfig = {
       },
     ],
     '@babel/plugin-syntax-dynamic-import',
+    [
+      'babel-plugin-styled-components',
+      {
+        ssr: false,
+        displayName: !isProd,
+        minify: true,
+        transpileTemplateLiterals: true,
+        pure: true,
+      },
+    ],
     !isProd && require.resolve('react-refresh/babel'),
   ].filter(Boolean),
 };
