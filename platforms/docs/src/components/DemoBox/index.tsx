@@ -11,6 +11,7 @@ const Wrapper = styled.div`
   border-radius: 4px;
   overflow: hidden;
   border: 1px solid #f0f0f0;
+  margin: 8px 0;
 `;
 
 const Preview = styled.div`
