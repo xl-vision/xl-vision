@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { CollapseTransition } from '@xl-vision/react';
 import Code from './Code';
 
 export type DemoBoxProps = {
@@ -16,7 +17,6 @@ const Wrapper = styled.div`
 
 const Preview = styled.div`
   padding: 42px 24px 50px;
-  border-top: 1px solid #f0f0f0;
 `;
 
 const InfoWrapper = styled.div`
@@ -40,6 +40,21 @@ const DescWrapper = styled.div`
 
 const CodeWrapper = styled.div`
   border-top: 1px solid #f0f0f0;
+
+  &.slide-enter-active,
+  &.slide-leave-active {
+    transition: all 0.4s ease-in-out;
+  }
+
+  &.slide-enter,
+  &.slide-leave-to {
+    opacity: 0.4;
+  }
+
+  &.slide-enter-to,
+  &.slide-leave {
+    opacity: 1;
+  }
 `;
 
 const Button = styled.button`
@@ -61,14 +76,14 @@ const DemoBox: React.FunctionComponent<DemoBoxProps> = ({ children }) => {
         <DescWrapper>{desc}</DescWrapper>
         <Button onClick={() => setExpand(!isExpand)}>{isExpand ? '隐藏' : '展开'}</Button>
       </InfoWrapper>
-      {isExpand && (
+      <CollapseTransition in={isExpand} transitionClasses='slide'>
         <CodeWrapper>
           <Code>
             {tsxCode}
             {jsxCode}
           </Code>
         </CodeWrapper>
-      )}
+      </CollapseTransition>
     </Wrapper>
   );
 };

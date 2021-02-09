@@ -22,6 +22,7 @@ module.exports = function getBabelConfig(style) {
         version: '^7.4.4',
       },
     ],
+    'babel-plugin-styled-components',
   ];
 
   return {
