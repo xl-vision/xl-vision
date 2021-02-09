@@ -4,7 +4,6 @@ import {
   FunctionInterpolation,
   Interpolation,
   ShouldForwardProp,
-  StyledComponent,
 } from '@xl-vision/styled-engine-types';
 import innerStyled from '@xl-vision/styled-engine';
 import React from 'react';
@@ -23,10 +22,7 @@ const lowercaseFirstLetter = (str: string) => {
 };
 
 const styled = <
-  StyleProps extends object = {},
-  Tag extends keyof JSX.IntrinsicElements | React.ComponentType<React.ComponentProps<Tag>> =
-    | keyof JSX.IntrinsicElements
-    | React.ComponentType<React.ComponentProps<any>>,
+  Tag extends keyof JSX.IntrinsicElements | React.ComponentType<React.ComponentProps<Tag>>,
   ForwardedProps extends keyof ExtractProps<Tag> = keyof ExtractProps<Tag>
 >(
   tag: Tag,
@@ -42,44 +38,37 @@ const styled = <
     className = `${name}-${lowercaseFirstLetter(slot)}`;
   }
 
-  const defaultCreateStyledComponent = innerStyled<
-    Tag,
-    ForwardedProps,
-    { styleProps: StyleProps; theme: Theme }
-  >(tag, {
+  const defaultCreateStyledComponent = innerStyled<Tag, ForwardedProps>(tag, {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     shouldForwardProp: shouldForwardProp as ShouldForwardProp<ForwardedProps>,
     prefix: className || name || '',
   });
 
-  const overrideCreateStyledComponent = (
-    first:
-      | TemplateStringsArray
-      | CSSObject
-      | FunctionInterpolation<
-          Pick<ExtractProps<Tag>, ForwardedProps> & { styleProps: StyleProps; theme: Theme }
-        >,
-    ...styles: Array<
-      Interpolation<
-        Pick<ExtractProps<Tag>, ForwardedProps> & { styleProps: StyleProps; theme: Theme }
-      >
-    >
+  const overrideCreateStyledComponent = <
+    S extends {},
+    P extends Pick<ExtractProps<Tag>, ForwardedProps> = Pick<ExtractProps<Tag>, ForwardedProps>,
+    E extends { styleProps: S; theme: Theme } = { styleProps: S; theme: Theme }
+  >(
+    first: TemplateStringsArray | CSSObject | FunctionInterpolation<P & E>,
+    ...styles: Array<Interpolation<P & E>>
   ) => {
-    const DefaultComponent = defaultCreateStyledComponent(first, ...styles);
+    const DefaultComponent = defaultCreateStyledComponent<any>(first, ...styles);
 
-    const Cmp: StyledComponent<
-      Pick<ExtractProps<Tag>, ForwardedProps>,
-      { styleProps: StyleProps; theme?: Theme }
-    > = (props) => {
-      // eslint-disable-next-line react/prop-types
-      const { theme: themeProp, as, ...others } = props;
+    const Cmp = (
+      props: P &
+        Omit<E, 'theme'> & {
+          theme?: Theme;
+          as?: keyof JSX.IntrinsicElements | React.ComponentType<React.ComponentProps<any>>;
+        },
+    ) => {
+      const { theme: themeProp, ...others } = props;
 
       const defaultTheme = React.useContext(ThemeContext);
 
       const theme = themeProp || defaultTheme;
 
       // @ts-ignore
-      return <DefaultComponent {...others} as={as} theme={theme} />;
+      return <DefaultComponent {...others} theme={theme} />;
     };
 
     Cmp.displayName = displayName;
