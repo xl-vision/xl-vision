@@ -51,14 +51,11 @@ export type ExtractProps<
 > = Tag extends keyof JSX.IntrinsicElements ? JSX.IntrinsicElements[Tag] : PropsOf<Tag>;
 
 export type StyledComponent<InnerProps, StyleProps> = React.ComponentType<
-  InnerProps & StyleProps
-> & {
-  withComponent<
-    Tag extends keyof JSX.IntrinsicElements | React.ComponentType<React.ComponentProps<Tag>>
-  >(
-    tag: Tag,
-  ): StyledComponent<ExtractProps<Tag>, StyleProps>;
-};
+  InnerProps &
+    StyleProps & {
+      as?: keyof JSX.IntrinsicElements | React.ComponentType<React.ComponentProps<any>>;
+    }
+>;
 
 export type CreateStyledComponent<ComponentProps extends object, StyleProps extends object = {}> = {
   <AdditionalProps extends object = {}, P = ComponentProps & AdditionalProps, PS = P & StyleProps>(
