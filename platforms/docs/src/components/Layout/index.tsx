@@ -18,10 +18,9 @@ const GlobalStyle = createGlobalStyles`
   }
 `;
 
-const Content = styled('div', { displayName: 'content' })`
+const Content = styled('div')`
   display: flex;
   height: 100%;
-
   > main {
     margin-left: 16px;
     margin-top: 16px;

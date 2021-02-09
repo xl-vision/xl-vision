@@ -13,7 +13,7 @@ const createGlobalStyles = <P extends { theme: Theme } = { theme: Theme }>(
   first: TemplateStringsArray | CSSObject | FunctionInterpolation<P>,
   ...styles: Array<Interpolation<P>>
 ) => {
-  const DefaultGlobalStyleComponent = innerCreateGlobalStyles(first, ...styles);
+  const DefaultGlobalStyleComponent = innerCreateGlobalStyles<any>(first, ...styles);
 
   const OverrideGlobalStyleComponent: GlobalStyleComponent<Omit<P, 'theme'> & { theme?: Theme }> = (
     props,
@@ -25,7 +25,6 @@ const createGlobalStyles = <P extends { theme: Theme } = { theme: Theme }>(
 
     const theme = themeProp || defaultTheme;
 
-    // @ts-ignore
     return <DefaultGlobalStyleComponent {...others} theme={theme} />;
   };
 
