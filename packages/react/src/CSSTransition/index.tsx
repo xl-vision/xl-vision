@@ -339,18 +339,19 @@ const createBeforeEventHook = (
     if (el._originalDisplay === undefined) {
       el._originalDisplay = el.style.display;
     }
-    if (!el._cancelled) {
-      el.style.display = 'none';
-    }
+    // if (!el._cancelled) {
+    //   el.style.display = 'none';
+    // }
     if (ctc) {
       updateClass(el, ctc);
     }
+
+    // el.style.display = el._originalDisplay;
+    // el._originalDisplay = undefined;
+
     nativeHook?.(el);
 
     el._cancelled = false;
-
-    el.style.display = el._originalDisplay;
-    el._originalDisplay = undefined;
   };
 };
 

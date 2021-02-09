@@ -40,7 +40,8 @@ const babelConfig = {
         shippedProposals: true,
         modules: false,
         targets: {
-          esmodules: true,
+          // esmodules: true,
+          // browsers: ['last 2 versions', 'Firefox ESR', '> 1%', 'ie >= 11'],
         },
       },
     ],
@@ -51,8 +52,8 @@ const babelConfig = {
     [
       '@babel/plugin-transform-runtime',
       {
-        helpers: true,
-        useESModules: true,
+        helpers: false,
+        // useESModules: true,
       },
     ],
     '@babel/plugin-syntax-dynamic-import',
@@ -143,6 +144,7 @@ module.exports = {
       : 'static/js/[name].chunk.js',
     publicPath,
   },
+  target: 'web',
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.md', '.mdx'],
     alias: {
