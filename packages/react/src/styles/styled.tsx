@@ -1,10 +1,8 @@
 import {
   CSSObject,
   ExtractProps,
-  FilteringStyledOptions,
   FunctionInterpolation,
   Interpolation,
-  PropsOf,
   ShouldForwardProp,
   StyledComponent,
 } from '@xl-vision/styled-engine-types';
@@ -25,7 +23,7 @@ const lowercaseFirstLetter = (str: string) => {
 };
 
 const styled = <
-  StyleProps extends object | undefined,
+  StyleProps extends object = {},
   Tag extends keyof JSX.IntrinsicElements | React.ComponentType<React.ComponentProps<Tag>> =
     | keyof JSX.IntrinsicElements
     | React.ComponentType<React.ComponentProps<any>>,
@@ -49,6 +47,7 @@ const styled = <
     ForwardedProps,
     { styleProps: StyleProps; theme: Theme }
   >(tag, {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     shouldForwardProp: shouldForwardProp as ShouldForwardProp<ForwardedProps>,
     prefix: className || name || '',
   });
@@ -68,16 +67,19 @@ const styled = <
   ) => {
     const DefaultComponent = defaultCreateStyledComponent(first, ...styles);
 
-    const Cmp: StyledComponent<P, { styleProps: StyleProps; theme?: Theme }> = (props) => {
+    const Cmp: StyledComponent<
+      Pick<ExtractProps<Tag>, ForwardedProps>,
+      { styleProps: StyleProps; theme?: Theme }
+    > = (props) => {
       // eslint-disable-next-line react/prop-types
-      const { theme: themeProp, ...others } = props;
+      const { theme: themeProp, as, ...others } = props;
 
       const defaultTheme = React.useContext(ThemeContext);
 
       const theme = themeProp || defaultTheme;
 
       // @ts-ignore
-      return <DefaultComponent {...others} theme={theme} />;
+      return <DefaultComponent {...others} as={as} theme={theme} />;
     };
 
     Cmp.displayName = displayName;
@@ -89,8 +91,3 @@ const styled = <
 };
 
 export default styled;
-
-const A = styled<{ a: number }>('div')`
-  color: ${(p) => p.styleProps.a};
-`;
-const b = <A styleProps={{ a: 1 }} />;
