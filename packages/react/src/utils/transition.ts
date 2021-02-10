@@ -107,7 +107,7 @@ export const raf = (fn: () => void) => {
       id = undefined;
     };
   }
-  let id: number | undefined = setTimeout(fn);
+  let id: NodeJS.Timeout | undefined = setTimeout(fn, 16);
   return () => {
     if (id) {
       clearTimeout(id);
@@ -117,17 +117,11 @@ export const raf = (fn: () => void) => {
 };
 
 export const nextFrame = (fn: () => void) => {
-  let cancel2: () => void;
-  const cancel1 = raf(() => {
-    cancel2 = raf(fn);
+  let cancel = raf(() => {
+    cancel = raf(fn);
   });
 
-  return () => {
-    cancel1();
-    if (cancel2) {
-      cancel2();
-    }
-  };
+  return cancel;
 };
 
 export const forceReflow = () => {
