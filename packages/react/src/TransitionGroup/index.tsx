@@ -83,19 +83,13 @@ const TransitionGroup: React.FunctionComponent<TransitionGroupProps> = (props) =
 
   const prevChildrenRef = React.useRef<Array<React.ReactElement>>();
 
-  const childrenTransition = React.useMemo(() => {
-    return children.map((it) => {
-      return <CSSTransition key={it.key}>{it}</CSSTransition>;
-    });
+  useLayoutEffect(() => {
+    prevChildrenRef.current = children;
   }, [children]);
 
-  useLayoutEffect(() => {
-    prevChildrenRef.current = childrenTransition;
-  }, [childrenTransition]);
 
-  if (!prevChildrenRef.current) {
-    return childrenTransition;
-  }
+  const 
+
 };
 
 export default TransitionGroup;
