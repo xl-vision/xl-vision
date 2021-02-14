@@ -29,6 +29,7 @@ const Content = styled('div')`
     margin-left: 16px;
     margin-top: 16px;
     flex: 1;
+    overflow-x: scroll;
   }
 `;
 
