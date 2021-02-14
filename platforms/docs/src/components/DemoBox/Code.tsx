@@ -1,6 +1,6 @@
+import { styled } from '@xl-vision/react';
 import PropTypes from 'prop-types';
 import React from 'react';
-import styled from 'styled-components';
 
 enum CodeType {
   TYPESCRIPT,
@@ -11,21 +11,25 @@ export type CodeProps = {
   children: [React.ReactNode, React.ReactNode];
 };
 
-const Wrapper = styled.div``;
+const Wrapper = styled('div')``;
 
-const Bar = styled.div`
-  border-bottom: 1px solid #f0f0f0;
+const Bar = styled('div')(
+  ({ theme }) => `
+  border-bottom: 1px solid ${theme.color.divider};
   text-align: center;
   font-size: 14px;
-  color: rgba(0, 0, 0, 0.85);
+  color: ${theme.color.themes.primary.main};
   padding: 10px 0;
-`;
+`,
+);
 
-const Button = styled.button<{ isActive: boolean }>`
-  color: ${(props) => (props.isActive ? '#1890ff' : 'rgba(0,0,0,0.85)')};
-`;
+const Button = styled('button')<{ isActive: boolean }>(
+  ({ styleProps, theme }) => `
+  color: ${styleProps.isActive ? theme.color.themes.primary.main : theme.color.text.primary};
+`,
+);
 
-const Content = styled.div``;
+const Content = styled('div')``;
 
 const Code: React.FunctionComponent<CodeProps> = (props) => {
   const { children } = props;
@@ -38,13 +42,13 @@ const Code: React.FunctionComponent<CodeProps> = (props) => {
     <Wrapper>
       <Bar>
         <Button
-          isActive={codeType === CodeType.TYPESCRIPT}
+          styleProps={{ isActive: codeType === CodeType.TYPESCRIPT }}
           onClick={() => setCodeType(CodeType.TYPESCRIPT)}
         >
           Typescript
         </Button>
         <Button
-          isActive={codeType === CodeType.JAVASCRIPT}
+          styleProps={{ isActive: codeType === CodeType.JAVASCRIPT }}
           onClick={() => setCodeType(CodeType.JAVASCRIPT)}
         >
           Javascript

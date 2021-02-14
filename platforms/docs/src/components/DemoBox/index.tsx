@@ -1,49 +1,55 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { CollapseTransition } from '@xl-vision/react';
+import { styled, CollapseTransition } from '@xl-vision/react';
 import Code from './Code';
 
 export type DemoBoxProps = {
   children: [React.ReactNode, React.ReactNode, React.ReactNode, React.ReactNode, React.ReactNode];
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled('div')(
+  ({ theme }) => `
   border-radius: 4px;
   overflow: hidden;
-  border: 1px solid #f0f0f0;
+  border: 1px solid ${theme.color.divider};
   margin: 8px 0;
-`;
+`,
+);
 
-const Preview = styled.div`
+const Preview = styled('div')`
   padding: 42px 24px 50px;
 `;
 
-const InfoWrapper = styled.div`
+const InfoWrapper = styled('div')(
+  ({ theme }) => `
   position: relative;
   font-size: 14px;
-  border-top: 1px solid #f0f0f0;
-  color: rgba(0, 0, 0, 0.85);
-`;
+  border-top: 1px solid ${theme.color.divider};
+  color: ${theme.color.text.primary};
+`,
+);
 
-const TitleWrapper = styled.div`
+const TitleWrapper = styled('div')(
+  ({ theme }) => `
   position: absolute;
-  background-color: #fff;
+  background-color: ${theme.color.background};
   top: -12px;
   margin-left: 16px;
   padding: 0px 8px;
-`;
+`,
+);
 
-const DescWrapper = styled.div`
+const DescWrapper = styled('div')`
   padding: 18px 24px 12px;
 `;
 
-const CodeWrapper = styled.div`
-  border-top: 1px solid #f0f0f0;
+const CodeWrapper = styled('div')(
+  ({ theme }) => `
+  border-top: 1px solid ${theme.color.divider};
 
   &.slide-enter-active,
   &.slide-leave-active {
-    transition: all 0.4s ease-in-out;
+    transition: ${theme.animation.standard('all')};
   }
 
   &.slide-enter,
@@ -55,9 +61,10 @@ const CodeWrapper = styled.div`
   &.slide-leave {
     opacity: 1;
   }
-`;
+`,
+);
 
-const Button = styled.button`
+const Button = styled('button')`
   position: absolute;
   right: 10px;
   top: 10px;

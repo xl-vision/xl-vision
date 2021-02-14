@@ -11,11 +11,13 @@ const LeftNode = styled('span')`
   box-sizing: border-box;
 `;
 
-const NonLeftNode = styled(LeftNode)`
-  border-bottom: 1px solid #eee;
+const NonLeftNode = styled(LeftNode)(
+  ({ theme }) => `
+  border-bottom: 1px solid ${theme.color.divider};
   margin: 0;
-  color: rgba(0, 0, 0, 0.45);
-`;
+  color: ${theme.color.text.primary};
+`,
+);
 
 const NodeWrapper = styled('ul')`
   list-style: none;
@@ -23,26 +25,18 @@ const NodeWrapper = styled('ul')`
   padding: 0;
 `;
 
-const NavLinkWrapper = styled(NavLink)`
+const NavLinkWrapper = styled(NavLink)(
+  ({ theme }) => `
   display: inline-block;
   width: 100%;
   position: relative;
-  color: rgba(0, 0, 0, 0.85);
+  color: ${theme.color.text.primary};
   &.active {
-    background-color: #e6f7ff;
-    color: #1890ff;
-
-    &::after {
-      content: ' ';
-      position: absolute;
-      right: 0;
-      top: 0;
-      height: 100%;
-      width: 2px;
-      background-color: #1890ff;
-    }
+    background-color: ${theme.color.themes.primary.main};
+    color: ${theme.color.themes.primary.contrast.text.primary};
   }
-`;
+`,
+);
 
 const traverseRoutes = (routesArray: Array<RouteType>): JSX.Element => {
   const routeElements: Array<JSX.Element> = [];
