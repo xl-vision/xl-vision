@@ -17,11 +17,11 @@ const Link: React.FunctionComponent<React.AnchorHTMLAttributes<HTMLAnchorElement
   if (href) {
     if (/^ *\//.exec(href)) {
       // @ts-ignore
-      return <LinkWrapper as={RouteLink} to={href} {...others} />;
+      return <LinkWrapper {...others} as={RouteLink} to={href} />;
     }
   }
 
-  return <LinkWrapper href={href} {...others} />;
+  return <LinkWrapper {...others} href={href} target='_blank' />;
 };
 
 export default Link;

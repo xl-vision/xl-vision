@@ -37,6 +37,11 @@ const route: Array<Route> = [
         path: '/CollapseTransition',
         component: () => import('@xl-vision/react/CollapseTransition/__doc__/index.mdx'),
       },
+      {
+        name: 'TransitionGroup',
+        path: '/TransitionGroup',
+        component: () => import('@xl-vision/react/TransitionGroup/__doc__/index.mdx'),
+      },
     ],
   },
 ];

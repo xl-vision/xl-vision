@@ -1,7 +1,9 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import CSSTransition, { CSSTransitionClassesObject, CSSTransitionProps } from '../CSSTransition';
 import useLayoutEffect from '../hooks/useLayoutEffect';
 import { omit } from '../utils/function';
+import diff, { DiffData } from './diff';
 
 export interface TransitionGroupClassesObject
   extends Omit<
@@ -41,6 +43,7 @@ const TransitionGroup: React.FunctionComponent<TransitionGroupProps> = (props) =
   // 阻止用户故意传入appear和disappear钩子
   const others = omit(
     _others as CSSTransitionProps,
+    'in',
     'beforeAppear',
     'appear',
     'afterAppear',
@@ -83,13 +86,80 @@ const TransitionGroup: React.FunctionComponent<TransitionGroupProps> = (props) =
 
   const prevChildrenRef = React.useRef<Array<React.ReactElement>>();
 
+  const [diffArray, setDiffArray] = React.useState<Array<DiffData>>([]);
+
   useLayoutEffect(() => {
+    const prevChildren = prevChildrenRef.current;
+    if (!prevChildren) {
+      const array = React.Children.map(children, (it) => ({ prev: [it], next: [it], same: true }));
+      setDiffArray(array);
+    } else {
+      setDiffArray(diff(prevChildren, children));
+    }
     prevChildrenRef.current = children;
   }, [children]);
 
+  const nodes: Array<React.ReactElement<CSSTransitionProps>> = [];
+  diffArray.forEach((it) => {
+    if (it.same) {
+      const array = it.next.map((item) => {
+        return (
+          <CSSTransition
+            {...others}
+            key={item.key}
+            in={true}
+            transitionClasses={transitionClassesObj}
+            mountOnEnter={true}
+            unmountOnLeave={true}
+          >
+            {item}
+          </CSSTransition>
+        );
+      });
+      nodes.push(...array);
+    } else {
+      const prev = it.prev.map((item) => {
+        return (
+          <CSSTransition
+            {...others}
+            key={item.key}
+            in={false}
+            transitionOnFirst={true}
+            mountOnEnter={true}
+            unmountOnLeave={true}
+            transitionClasses={transitionClassesObj}
+          >
+            {item}
+          </CSSTransition>
+        );
+      });
 
-  const 
+      const next = it.next.map((item) => {
+        return (
+          <CSSTransition
+            {...others}
+            key={item.key}
+            in={true}
+            transitionOnFirst={true}
+            mountOnEnter={true}
+            unmountOnLeave={true}
+            transitionClasses={transitionClassesObj}
+          >
+            {item}
+          </CSSTransition>
+        );
+      });
 
+      nodes.push(...prev, ...next);
+    }
+  });
+
+  return <>{nodes}</>;
+};
+
+TransitionGroup.propTypes = {
+  children: PropTypes.arrayOf(PropTypes.element.isRequired).isRequired,
+  transitionClasses: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 };
 
 export default TransitionGroup;
