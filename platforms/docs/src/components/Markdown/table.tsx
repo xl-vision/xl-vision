@@ -1,6 +1,7 @@
 import { styled } from '@xl-vision/react';
 
-export default styled('table')`
+export default styled('table')(
+  ({ theme }) => `
   min-width: 100%;
   font-size: 1rem;
   line-height: 1.5rem;
@@ -17,7 +18,7 @@ export default styled('table')`
   td,
   th {
     padding: 1rem;
-    border-bottom: 1px solid base-color(divider);
+    border-bottom: 1px solid ${theme.color.divider};
   }
 
   th {
@@ -30,4 +31,5 @@ export default styled('table')`
   td {
     // color: $base-color;
   }
-`;
+`,
+);

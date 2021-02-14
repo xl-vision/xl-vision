@@ -6,17 +6,21 @@ import Footer from '../Footer';
 import Header from '../Header';
 import Main from '../Main';
 
-const GlobalStyle = createGlobalStyles`
+const GlobalStyle = createGlobalStyles(
+  ({ theme }) => `
   html,body {
     margin: 0;
     width: 100%;
     min-height: 100%;
+    background: ${theme.color.background};
+    color: ${theme.color.text.primary}
   }
 
   #app {
     min-height: 100%;
   }
-`;
+`,
+);
 
 const Content = styled('div')`
   display: flex;
