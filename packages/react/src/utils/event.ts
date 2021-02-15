@@ -1,7 +1,8 @@
-import { EventHandler, SyntheticEvent } from 'react';
 import { isServer } from './env';
 
-export type EventNameForElement<T extends Window | HTMLElement | Document> = T extends Window
+export type EventObject = Window | HTMLElement | Document;
+
+export type EventKeys<T extends EventObject> = T extends Window
   ? keyof WindowEventMap
   : T extends Document
   ? keyof DocumentEventMap
@@ -9,9 +10,9 @@ export type EventNameForElement<T extends Window | HTMLElement | Document> = T e
   ? keyof HTMLElementEventMap
   : never;
 
-export type EventForElement<
-  T extends Window | HTMLElement | Document,
-  K extends EventNameForElement<T>
+export type EventType<
+  T extends EventObject,
+  K extends EventKeys<T>
 > = K extends keyof WindowEventMap
   ? WindowEventMap[K]
   : K extends keyof DocumentEventMap
@@ -20,63 +21,36 @@ export type EventForElement<
   ? HTMLElementEventMap[K]
   : never;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type Listener<
-  T extends Window | HTMLElement | Document,
-  K extends EventNameForElement<T>
-> = (this: T, ev: EventForElement<T, K>, options?: boolean | AddEventListenerOptions) => any;
+export type Listener<T extends EventObject, K extends EventKeys<T>> = (
+  this: T,
+  ev: EventType<T, K>,
+  options?: boolean | AddEventListenerOptions,
+) => any;
 
-export const on = <T extends Window | HTMLElement | Document>(
-  element: T,
-  type: EventNameForElement<T>,
-  listener: Listener<T, EventNameForElement<T>>,
+export const on = <E extends EventObject, T extends EventKeys<E>>(
+  element: E,
+  type: T,
+  listener: Listener<E, T>,
   options?: boolean | AddEventListenerOptions,
 ) => {
   if (isServer) {
     return;
   }
+
+  // @ts-ignore
   element.addEventListener(type, listener, options);
 };
 
 export const off = <T extends Window | HTMLElement | Document>(
   element: T,
-  type: EventNameForElement<T>,
-  listener: Listener<T, EventNameForElement<T>>,
+  type: EventKeys<T>,
+  listener: Listener<T, EventKeys<T>>,
   options?: boolean | EventListenerOptions,
 ) => {
   if (isServer) {
     return;
   }
+
+  // @ts-ignore
   element.removeEventListener(type, listener, options);
-};
-
-export const mergeNativeEvents = <
-  T extends Window | HTMLElement | Document,
-  K extends EventNameForElement<T>
->(
-  ...listeners: Array<Listener<T, K> | undefined>
-) => {
-  return function listener(
-    this: T,
-    e: EventForElement<T, K>,
-    options?: boolean | EventListenerOptions,
-  ) {
-    listeners.forEach((it) => {
-      if (it) {
-        it.call(this, e, options);
-      }
-    });
-  };
-};
-
-export const mergeEvents = <E extends SyntheticEvent<any>>(
-  ...handlers: Array<EventHandler<E> | undefined>
-) => {
-  return (e: E) => {
-    handlers.forEach((it) => {
-      if (it) {
-        it(e);
-      }
-    });
-  };
 };

@@ -1,4 +1,12 @@
-const mixins = {
+import { CSSObject } from '@xl-vision/styled-engine-types';
+
+export type MixinName = 'clearfix';
+
+export type Mixins = {
+  [key in MixinName]: CSSObject;
+};
+
+const mixins: Mixins = {
   clearfix: {
     zoom: 1,
     '&:before, &:after': {

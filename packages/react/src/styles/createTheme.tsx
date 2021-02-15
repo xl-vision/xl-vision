@@ -3,22 +3,24 @@ import createAnimation, { Animation } from './animation';
 import createTypography, { Typography } from './typography';
 import mixins from './mixins';
 import createElevations from './elevations';
+import createBreakpoints, { Breakpoints } from './breakpoints';
 
 export type BaseTheme = Partial<{
   color: Color;
   animation: Animation;
   typography: Typography;
-  span: number;
+  breakpoints: Breakpoints;
 }>;
 
 export type Theme = ReturnType<typeof createTheme>;
 
 const createTheme = (theme: BaseTheme = {}) => {
-  const { color, animation, typography, span = 24 } = theme;
+  const { color, animation, typography, breakpoints } = theme;
 
   const outputColor = createColors(color);
   const outputAnimation = createAnimation(animation);
   const outputTypography = createTypography(typography);
+  const outputBreakpoints = createBreakpoints(breakpoints);
 
   const elevations = createElevations();
 
@@ -26,9 +28,9 @@ const createTheme = (theme: BaseTheme = {}) => {
     color: outputColor,
     animation: outputAnimation,
     typography: outputTypography,
+    breakpoints: outputBreakpoints,
     mixins,
     elevations,
-    span,
   };
 };
 
