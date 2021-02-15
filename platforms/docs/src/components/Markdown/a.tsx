@@ -4,7 +4,7 @@ import { Link as RouteLink } from 'react-router-dom';
 
 const LinkWrapper = styled('a')(
   ({ theme }) => `
-  color: ${theme.color.themes.primary.main};
+  color: ${theme.color.themes.primary.color};
   text-decoration: none;
   transition: ${theme.animation.standard('all')};
   display: inline-block;

@@ -64,11 +64,15 @@ const CodeWrapper = styled('div')(
 `,
 );
 
-const Button = styled('button')`
+const Button = styled('button')(
+  ({ theme }) => `
   position: absolute;
   right: 10px;
   top: 10px;
-`;
+  background: ${theme.color.background};
+  border: 1px solid ${theme.color.divider};
+`,
+);
 
 const DemoBox: React.FunctionComponent<DemoBoxProps> = ({ children }) => {
   const [title, desc, tsxCode, jsxCode, preview] = children;

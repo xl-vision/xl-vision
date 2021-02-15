@@ -1,6 +1,7 @@
 import { styled } from '@xl-vision/react';
 
-export default styled('pre')`
+export default styled('pre')(
+  () => `
   &[class*='language-'],
   code[class*='language-'] {
     color: #d4d4d4;
@@ -287,4 +288,5 @@ export default styled('pre')`
     line-height: inherit;
     white-space: pre;
   }
-`;
+`,
+);

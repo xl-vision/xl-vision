@@ -18,14 +18,16 @@ const Bar = styled('div')(
   border-bottom: 1px solid ${theme.color.divider};
   text-align: center;
   font-size: 14px;
-  color: ${theme.color.themes.primary.main};
+  color: ${theme.color.themes.primary.color};
   padding: 10px 0;
 `,
 );
 
 const Button = styled('button')<{ isActive: boolean }>(
   ({ styleProps, theme }) => `
-  color: ${styleProps.isActive ? theme.color.themes.primary.main : theme.color.text.primary};
+  background: ${theme.color.background};
+  border: 1px solid ${theme.color.divider};
+  color: ${styleProps.isActive ? theme.color.themes.primary.color : theme.color.text.primary};
 `,
 );
 
