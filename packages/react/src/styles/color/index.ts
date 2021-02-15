@@ -1,6 +1,6 @@
 import { isDevelopment } from '../../utils/env';
 import { dark as defaultDark, light as defaultLight, BaseColor } from './baseColor';
-import defaultThemes, { ThemeColor, ThemeColors } from './themeColor';
+import defaultThemes, { ThemeColors } from './themeColor';
 import { getContrastRatio } from '../../utils/color';
 
 export type Color = Partial<{
@@ -13,12 +13,12 @@ export type Color = Partial<{
   mode: 'dark' | 'light';
 }>;
 
-export type ThemeColorWithText = ThemeColor & {
-  contrast: BaseColor;
+export type Theme = BaseColor & {
+  color: string;
 };
 
-export type ThemesWithText = {
-  [key in keyof ThemeColors]: ThemeColorWithText;
+export type Themes = {
+  [key in keyof ThemeColors]: Theme;
 };
 
 const createColors = (color: Color = {}) => {
@@ -56,21 +56,23 @@ const createColors = (color: Color = {}) => {
     return contrastText;
   };
 
-  const themesWithText = {} as ThemesWithText;
+  const base = modes[mode];
+
+  const newThemes = {} as Themes;
 
   Object.keys(themes).forEach((key) => {
     const newKey = key as keyof ThemeColors;
     const theme = themes[newKey];
-    themesWithText[newKey] = {
-      ...theme,
-      contrast: getContrast(theme.main),
+    const themeColor = theme[mode];
+    newThemes[newKey] = {
+      color: themeColor,
+      ...getContrast(themeColor),
     };
   });
 
   return {
-    ...modes[mode],
-    themes: themesWithText,
-    contrastThreshold,
+    ...base,
+    themes: newThemes,
   };
 };
 

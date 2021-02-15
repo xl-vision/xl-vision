@@ -1,4 +1,5 @@
 import { styled } from '@xl-vision/react';
+import { mix } from '@xl-vision/react/utils/color';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import routes, { Route as RouteType } from '../../routes';
@@ -25,18 +26,22 @@ const NodeWrapper = styled('ul')`
   padding: 0;
 `;
 
-const NavLinkWrapper = styled(NavLink)(
-  ({ theme }) => `
+const NavLinkWrapper = styled(NavLink)(({ theme }) => {
+  const { themes, background, text } = theme.color;
+  return `
   display: inline-block;
   width: 100%;
   position: relative;
-  color: ${theme.color.text.primary};
-  &.active {
-    background-color: ${theme.color.themes.primary.main};
-    color: ${theme.color.themes.primary.contrast.text.primary};
+  color: ${text.primary};
+  &:hover {
+    color: ${mix(background, themes.primary.color, themes.primary.action.hover)};
   }
-`,
-);
+  &.active {
+    background-color: ${themes.primary.color};
+    color: ${theme.color.themes.primary.text.primary};
+  }
+`;
+});
 
 const traverseRoutes = (routesArray: Array<RouteType>): JSX.Element => {
   const routeElements: Array<JSX.Element> = [];
