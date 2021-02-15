@@ -122,8 +122,11 @@ const hslColorToRgbColor: (color: HSLColor) => RGBColor = (color) => {
     r: Math.round(r * 255),
     g: Math.round(g * 255),
     b: Math.round(b * 255),
-    a: color.a,
   };
+
+  if (color.a) {
+    rgbColor.a = color.a;
+  }
 
   return rgbColor;
 };
@@ -162,17 +165,43 @@ const rgbColorToHslColor: (color: RGBColor) => HSLColor = (color) => {
     h /= 6;
   }
 
-  return {
-    h: h * 360,
-    s: s * 100,
-    l: l * 100,
-    a: color.a,
+  const hslColor: HSLColor = {
+    h: Math.round(h * 360),
+    s: Math.round(s * 100),
+    l: Math.round(l * 100),
   };
+
+  if (color.a) {
+    hslColor.a = color.a;
+  }
+
+  return hslColor;
 };
 
 const toColor: (color: string | Color) => Color = (color) => {
   if (typeof color === 'object') {
-    return color;
+    if ('r' in color) {
+      const rgb: RGBColor = {
+        r: Math.round(color.r),
+        g: Math.round(color.g),
+        b: Math.round(color.b),
+      };
+
+      if (color.a) {
+        rgb.a = color.a;
+      }
+      return rgb;
+    }
+
+    const hsl: HSLColor = {
+      h: Math.round(color.h),
+      s: color.s,
+      l: color.l,
+    };
+    if (color.a) {
+      hsl.a = color.a;
+    }
+    return hsl;
   }
   const parsedColor = color.trim();
   if (parsedColor.startsWith('#')) {
