@@ -1,5 +1,6 @@
 import React from 'react';
 import { styled } from '@xl-vision/react';
+import { ThemeContext } from '../ThemeProvider';
 
 const Wrapper = styled('div')(
   ({ theme }) => `
@@ -18,9 +19,18 @@ const Logo = styled('div')`
 `;
 
 const Header = () => {
+  const theme = React.useContext(ThemeContext);
+
+  const handleTheme = React.useCallback(() => {
+    theme.setDark(!theme.isDark);
+  }, [theme]);
+
   return (
     <Wrapper>
       <Logo>XL-VISION</Logo>
+      <button onClick={handleTheme} type='button'>
+        {theme.isDark ? '白色' : '暗色'}
+      </button>
     </Wrapper>
   );
 };

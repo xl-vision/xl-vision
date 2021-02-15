@@ -5,6 +5,7 @@ import Aside from '../Aside';
 import Footer from '../Footer';
 import Header from '../Header';
 import Main from '../Main';
+import ThemeProvider from '../ThemeProvider';
 
 const GlobalStyle = createGlobalStyles(
   ({ theme }) => `
@@ -35,15 +36,17 @@ const Content = styled('div')`
 
 const Layout = () => {
   return (
-    <Router>
-      <GlobalStyle />
-      <Header />
-      <Content>
-        <Aside />
-        <Main />
-      </Content>
-      <Footer />
-    </Router>
+    <ThemeProvider>
+      <Router>
+        <GlobalStyle />
+        <Header />
+        <Content>
+          <Aside />
+          <Main />
+        </Content>
+        <Footer />
+      </Router>
+    </ThemeProvider>
   );
 };
 

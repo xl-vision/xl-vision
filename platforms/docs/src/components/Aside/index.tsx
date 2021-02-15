@@ -70,15 +70,17 @@ const traverseRoutes = (routesArray: Array<RouteType>): JSX.Element => {
 
 const el = traverseRoutes(routes);
 
-const Wrapper = styled('div')`
+const Wrapper = styled('div')(
+  ({ theme }) => `
   width: 260px;
   /* height: 100%; */
-  border-right: 1px solid #eee;
+  border-right: 1px solid ${theme.color.divider};
 
   li {
     margin-top: 8px;
   }
-`;
+`,
+);
 
 const Aside = () => {
   return <Wrapper>{el}</Wrapper>;
