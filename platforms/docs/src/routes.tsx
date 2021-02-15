@@ -20,6 +20,16 @@ const route: Array<Route> = [
     component: () => import('./views/index.mdx'),
   },
   {
+    name: '栅格',
+    children: [
+      {
+        name: 'Row',
+        path: '/Row',
+        component: () => import('@xl-vision/react/Row/__doc__/index.mdx'),
+      },
+    ],
+  },
+  {
     name: '动画',
     children: [
       {

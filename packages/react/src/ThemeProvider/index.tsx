@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import createTheme, { BaseTheme } from '../styles/createTheme';
-import ThemeContext from '../styles/ThemeContext';
+import { ThemeContext, createTheme, BaseTheme } from '../styles';
 
 export type ThemeProviderProps = {
   children: React.ReactNode;
