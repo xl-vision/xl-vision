@@ -18,8 +18,11 @@ export type XlOptions = {
 
 const shouldForwardProp = (prop: PropertyKey) => prop !== 'theme' && prop !== 'styleProps';
 
-const lowercaseFirstLetter = (str: string) => {
-  return str.charAt(0).toLowerCase() + str.slice(1);
+const middleline = (str: string) => {
+  const separator = '-';
+  const split = /(?=[A-Z])/;
+
+  return str.split(split).join(separator).toLowerCase();
 };
 
 const styled = <
@@ -36,13 +39,15 @@ const styled = <
 
   if (name) {
     displayName = name + slot;
-    defaultClassName = `${name}-${lowercaseFirstLetter(slot)}`;
+    if (slot === 'Root') {
+      defaultClassName = middleline(name);
+    }
   }
 
   const defaultCreateStyledComponent = innerStyled<Tag, ForwardedProps>(tag, {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     shouldForwardProp: shouldForwardProp as ShouldForwardProp<ForwardedProps>,
-    prefix: defaultClassName || name || undefined,
+    prefix: displayName || undefined,
   });
 
   const overrideCreateStyledComponent = <
@@ -68,11 +73,14 @@ const styled = <
 
       const theme = (themeProp || defaultTheme) as Theme;
 
+      // eslint-disable-next-line react/prop-types
+      const { clsPrefix } = theme;
+
       return (
         <DefaultComponent
           {...others}
           ref={ref}
-          className={clsx(defaultClassName, className)}
+          className={clsx(`${clsPrefix}-${defaultClassName}`, className)}
           theme={theme}
         />
       );

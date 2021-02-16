@@ -10,86 +10,15 @@
 
 :::
 
-<!-- ::: demo 偏移布局
+::: demo ./Offset.tsx
+
+偏移布局
 
 使用`offset`,`push`,`pull`实现内容的偏移
 
-```jsx
-import React from 'react';
-import { Row } from 'xl-vision';
-export default () => {
-  return (
-    <div>
-      <div className='grid-box'>
-        <Row gutter={10}>
-          <Row.Col span={6}>
-            <div className='col-box'>col1</div>
-          </Row.Col>
-          <Row.Col span={6} offset={6}>
-            <div className='col-box'>col2</div>
-          </Row.Col>
-          <Row.Col span={6}>
-            <div className='col-box'>col3</div>
-          </Row.Col>
-        </Row>
-      </div>
-      <div className='grid-box'>
-        <Row gutter={10}>
-          <Row.Col span={6}>
-            <div className='col-box'>col1</div>
-          </Row.Col>
-          <Row.Col span={6} push={6}>
-            <div className='col-box'>col2</div>
-          </Row.Col>
-          <Row.Col span={6} pull={6}>
-            <div className='col-box'>col3</div>
-          </Row.Col>
-          <Row.Col span={6}>
-            <div className='col-box'>col4</div>
-          </Row.Col>
-        </Row>
-      </div>
-      <div className='grid-box'>
-        <Row gutter={10}>
-          <Row.Col span={6} offset={6}>
-            <div className='col-box'>col1</div>
-          </Row.Col>
-          <Row.Col span={6} pull={12}>
-            <div className='col-box'>col2</div>
-          </Row.Col>
-          <Row.Col span={6}>
-            <div className='col-box'>col3</div>
-          </Row.Col>
-        </Row>
-      </div>
-    </div>
-  );
-};
-```
-
-```scss
-.grid-box {
-  padding: 0.5rem;
-  background-color: #e6e6e6;
-  border-radius: 4px;
-
-  & + & {
-    margin-top: 1rem;
-  }
-}
-
-.col-box {
-  padding: 0.5rem;
-  color: #fff;
-  text-align: center;
-  background-color: #80bdff;
-  border-radius: 5px;
-}
-```
-
 :::
 
-::: demo 响应式布局
+<!-- ::: demo 响应式布局
 
 `span`可以传入对象的形式实现不同尺寸下的布局可以设置的参数有:`xs`,`sm`,`md`,`lg`,`xl`,`xxl`。请尝试改变浏览器窗口大小。
 

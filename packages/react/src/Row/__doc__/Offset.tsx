@@ -27,18 +27,15 @@ export default () => {
   return (
     <div>
       <Wrapper>
-        <Row gutter={10} type='flex'>
-          <Row.Col column={4}>
+        <Row gutter={10}>
+          <Row.Col column={6}>
             <Box>col1</Box>
           </Row.Col>
-          <Row.Col column={5}>
+          <Row.Col column={6} offset={6}>
             <Box>col2</Box>
           </Row.Col>
-          <Row.Col column={7}>
+          <Row.Col column={6}>
             <Box>col3</Box>
-          </Row.Col>
-          <Row.Col column={8}>
-            <Box>col4</Box>
           </Row.Col>
         </Row>
       </Wrapper>
@@ -47,10 +44,10 @@ export default () => {
           <Row.Col column={6}>
             <Box>col1</Box>
           </Row.Col>
-          <Row.Col column={6}>
+          <Row.Col column={6} push={6}>
             <Box>col2</Box>
           </Row.Col>
-          <Row.Col column={6}>
+          <Row.Col column={6} pull={6}>
             <Box>col3</Box>
           </Row.Col>
           <Row.Col column={6}>
@@ -60,17 +57,14 @@ export default () => {
       </Wrapper>
       <Wrapper>
         <Row gutter={10}>
-          <Row.Col column={8}>
+          <Row.Col column={6} offset={6}>
             <Box>col1</Box>
           </Row.Col>
-          <Row.Col column={0}>
+          <Row.Col column={6} pull={12}>
             <Box>col2</Box>
           </Row.Col>
-          <Row.Col column={8}>
+          <Row.Col column={6}>
             <Box>col3</Box>
-          </Row.Col>
-          <Row.Col column={8}>
-            <Box>col4</Box>
           </Row.Col>
         </Row>
       </Wrapper>
