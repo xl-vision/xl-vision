@@ -18,32 +18,76 @@ export interface RowProps extends React.HTMLAttributes<HTMLDivElement> {
 const RowRoot = styled('div', {
   name: 'Row',
   slot: 'Root',
-})<{ align: RowProps['align']; justify: RowProps['justify']; media?: string }>(
-  ({ theme, styleProps }) => {
-    const { align, justify, media } = styleProps;
-    const { mixins } = theme;
-    return {
-      position: 'relative',
-      boxSizing: 'border-box',
-      ...mixins.clearfix,
-    };
-  },
-);
+})<{
+  align: RowProps['align'];
+  justify: RowProps['justify'];
+  type: RowProps['type'];
+  totalColumns: number;
+}>(({ theme, styleProps }) => {
+  const { align, justify, type } = styleProps;
+  const { mixins } = theme;
+
+  const base =
+    type === 'flex'
+      ? {
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: justify,
+          alignItems: align,
+          '&::after': {
+            display: 'none',
+          },
+        }
+      : {
+          position: 'relative',
+          boxSizing: 'border-box',
+          ...mixins.clearfix,
+        };
+  return {
+    ...base,
+  };
+});
 
 const Row: React.FunctionComponent<RowProps> = (props) => {
-  const { align = 'center', justify, children, ...others } = props;
+  const { align, justify, children, gutter, type, style, ...others } = props;
 
   const { breakpoints } = React.useContext(ThemeContext);
 
-  const media = useMedia(breakpoints.values, breakpoints.unit);
+  const matched = useMedia(breakpoints.values, breakpoints.unit);
+
+  const computedGutter = React.useMemo(() => {
+    if (typeof gutter === 'number') {
+      return gutter;
+    }
+    if (typeof gutter === 'object') {
+      for (let i = 0; i < matched.length; i++) {
+        const breakPoint = matched[i];
+        if (gutter[breakPoint] !== undefined) {
+          return gutter[breakPoint] as number;
+        }
+      }
+    }
+    return 0;
+  }, [matched, gutter]);
+
+  const rowStyle =
+    computedGutter > 0
+      ? {
+          marginLeft: computedGutter / -2,
+          marginRight: computedGutter / -2,
+          ...style,
+        }
+      : style;
 
   return (
     <RowRoot
       {...others}
+      style={rowStyle}
       styleProps={{
         align,
         justify,
-        media,
+        totalColumns: breakpoints.columns,
+        type,
       }}
     >
       {children}

@@ -53,12 +53,7 @@ const useMedia = (breakPoints: { [key: string]: number }, unit: string) => {
     };
   }, [breakPoints, unit]);
 
-  for (let i = 0; i < breakPointArray.length; i++) {
-    const key = breakPointArray[i];
-    if (media[key]) {
-      return key;
-    }
-  }
+  return React.useMemo(() => breakPointArray.filter((it) => media[it]), [breakPointArray, media]);
 };
 
 export default useMedia;
