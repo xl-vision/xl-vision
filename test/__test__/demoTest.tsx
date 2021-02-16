@@ -1,7 +1,6 @@
 import glob from 'glob';
 import { mount } from 'enzyme';
 import React from 'react';
-import 'jest-styled-components';
 
 const demoTest = () => {
   const files = glob.sync(`./packages/*/src/**/__doc__/*.ts?(x)`);
