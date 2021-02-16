@@ -31,7 +31,17 @@ export default () => {
           <Row.Col column={6}>
             <Box>col1</Box>
           </Row.Col>
-          <Row.Col column={6} offset={6}>
+          <Row.Col
+            column={6}
+            offset={{
+              xs: 1,
+              sm: 2,
+              md: 3,
+              lg: 4,
+              xl: 5,
+              xxl: 6,
+            }}
+          >
             <Box>col2</Box>
           </Row.Col>
           <Row.Col column={6}>
@@ -44,26 +54,44 @@ export default () => {
           <Row.Col column={6}>
             <Box>col1</Box>
           </Row.Col>
-          <Row.Col column={6} push={6}>
+          <Row.Col column={6}>
             <Box>col2</Box>
           </Row.Col>
-          <Row.Col column={6} pull={6}>
+          <Row.Col
+            column={6}
+            push={{
+              xs: 1,
+              sm: 2,
+              md: 3,
+              lg: 4,
+              xl: 5,
+              xxl: 6,
+            }}
+          >
             <Box>col3</Box>
-          </Row.Col>
-          <Row.Col column={6}>
-            <Box>col4</Box>
           </Row.Col>
         </Row>
       </Wrapper>
       <Wrapper>
         <Row gutter={10}>
-          <Row.Col column={6} offset={6}>
+          <Row.Col column={6}>
             <Box>col1</Box>
           </Row.Col>
-          <Row.Col column={6} pull={12}>
+          <Row.Col column={6}>
             <Box>col2</Box>
           </Row.Col>
-          <Row.Col column={6}>
+          <Row.Col
+            column={6}
+            pull={{
+              xs: 1,
+              sm: 2,
+              md: 3,
+              lg: 4,
+              xl: 5,
+              xxl: 6,
+            }}
+            offset={6}
+          >
             <Box>col3</Box>
           </Row.Col>
         </Row>

@@ -122,7 +122,7 @@ Row.propTypes = {
   align: PropTypes.oneOf(['top', 'middle', 'bottom']),
   justify: PropTypes.oneOf(['start', 'end', 'center', 'space-around', 'space-between']),
   type: PropTypes.oneOf(['flex']),
-  gutter: PropTypes.number,
+  gutter: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired]),
   children: PropTypes.oneOfType([
     PropTypes.element.isRequired,
     PropTypes.arrayOf(PropTypes.element.isRequired),
