@@ -5,6 +5,15 @@ if (typeof window !== 'undefined') {
     window.innerHeight = height || window.innerHeight;
     window.dispatchEvent(new Event('resize'));
   };
+  if (!window.matchMedia) {
+    Object.defineProperty(global.window, 'matchMedia', {
+      value: jest.fn((query) => ({
+        matches: query.includes('max-width'),
+        addListener: jest.fn(),
+        removeListener: jest.fn(),
+      })),
+    });
+  }
 }
 
 window.requestAnimationFrame = (cb) => setTimeout(cb, 0);
