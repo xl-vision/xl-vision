@@ -17,7 +17,8 @@
     "test": "jest",
     "lint": "eslint . --ext .js,.ts,.jsx,.tsx --max-warnings 0",
     "version": "lerna version --exact --conventional-commits --no-push",
-    "build": "lerna run --parallel --scope \"@xl-vision/*\" build"
+    "build": "lerna run --parallel --scope \"@xl-vision/*\" build",
+    "bootstrap": "lerna bootstrap"
   },
   "husky": {
     "hooks": {

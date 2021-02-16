@@ -17,7 +17,7 @@ const isProd = process.env.NODE_ENV === 'production';
 
 const imageInlineSizeLimit = 10000;
 
-const publicPath = isProd ? '/xl-vision-next/' : '/';
+const publicPath = isProd ? '/xl-vision/' : '/';
 
 const envsDefinitions = {
   PUBLIC_PATH: publicPath,
