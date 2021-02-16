@@ -156,6 +156,8 @@ module.exports = {
         'react/display-name': 'off',
         'react/button-has-type': 'off',
         'import/no-unresolved': 'off',
+        'import/no-extraneous-dependencies': 'off',
+        'import/no-named-as-default': 'off',
       },
     },
   ],
