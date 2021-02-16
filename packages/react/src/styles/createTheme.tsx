@@ -10,12 +10,13 @@ export type BaseTheme = Partial<{
   animation: Animation;
   typography: Typography;
   breakpoints: Breakpoints;
+  clsPrefix: string;
 }>;
 
 export type Theme = ReturnType<typeof createTheme>;
 
 const createTheme = (theme: BaseTheme = {}) => {
-  const { color, animation, typography, breakpoints } = theme;
+  const { color, animation, typography, breakpoints, clsPrefix = 'xl' } = theme;
 
   const outputColor = createColors(color);
   const outputAnimation = createAnimation(animation);
@@ -31,6 +32,7 @@ const createTheme = (theme: BaseTheme = {}) => {
     breakpoints: outputBreakpoints,
     mixins,
     elevations,
+    clsPrefix,
   };
 };
 

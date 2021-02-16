@@ -1,9 +1,7 @@
 export type Breakpoints = Partial<{
-  values: {
-    [key: string]: number;
-  };
+  values: Record<string, number>;
   unit: string;
-  columns: number;
+  column: number;
 }>;
 
 const createBreakpoints = (breakpoints: Breakpoints = {}) => {
@@ -15,14 +13,14 @@ const createBreakpoints = (breakpoints: Breakpoints = {}) => {
       lg: 1280,
       xl: 1920,
     },
-    columns = 24,
+    column = 24,
     unit = 'px',
   } = breakpoints;
 
   return {
     values,
     unit,
-    columns,
+    column,
   };
 };
 
