@@ -1,4 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
+
 if (typeof window !== 'undefined') {
   window.resizeTo = (width, height) => {
     window.innerWidth = width || window.innerWidth;

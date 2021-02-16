@@ -1,7 +1,6 @@
 import { render } from 'enzyme';
 import * as React from 'react';
 import Row from '..';
-import 'jest-styled-components';
 
 describe('Row', () => {
   it('基本用法', () => {

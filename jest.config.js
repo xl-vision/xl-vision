@@ -7,6 +7,7 @@ module.exports = {
   preset: 'ts-jest',
   // testEnvironment: 'node',
   setupFiles: ['./test/setup.js'],
+  setupFilesAfterEnv: ['./test/setup.env.js'],
   testMatch: ['**/test/__test__/*.{ts,tsx}', '**/packages/*/src/**/__test__/*.{ts,tsx}'],
   // collectCoverage: true,
   collectCoverageFrom: ['**/packages/*/src/**/*.{ts,tsx}', '!**/__*__/**'],
