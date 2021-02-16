@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CollapseTransition 基本使用 1`] = `null`;
+
+exports[`CollapseTransition 基本使用 2`] = `
+<div
+  class="undefined undefined"
+  data-actual-height=""
+  data-height=""
+  data-overflow=""
+  data-padding-bottom=""
+  data-padding-top=""
+  style="overflow: hidden; padding-top: 0px; padding-bottom: 0px;"
+/>
+`;
+
+exports[`CollapseTransition 测试horizontal 1`] = `null`;
+
+exports[`CollapseTransition 测试horizontal 2`] = `
+<div
+  class="undefined undefined"
+  data-actual-width=""
+  data-overflow=""
+  data-padding-left=""
+  data-padding-right=""
+  data-width=""
+  style="overflow: hidden; padding-left: 0px; padding-right: 0px;"
+/>
+`;

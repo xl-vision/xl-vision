@@ -1,0 +1,1208 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Row flex布局 1`] = `
+.c0 {
+  position: relative;
+  box-sizing: border-box;
+  zoom: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+}
+
+.c0:before,
+.c0:after {
+  display: table;
+  box-sizing: border-box;
+  content: " ";
+}
+
+.c0:after {
+  clear: both;
+}
+
+.c0::after {
+  display: none;
+}
+
+.c2 {
+  position: relative;
+  box-sizing: border-box;
+  zoom: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2:before,
+.c2:after {
+  display: table;
+  box-sizing: border-box;
+  content: " ";
+}
+
+.c2:after {
+  clear: both;
+}
+
+.c2::after {
+  display: none;
+}
+
+.c3 {
+  position: relative;
+  box-sizing: border-box;
+  zoom: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+}
+
+.c3:before,
+.c3:after {
+  display: table;
+  box-sizing: border-box;
+  content: " ";
+}
+
+.c3:after {
+  clear: both;
+}
+
+.c3::after {
+  display: none;
+}
+
+.c4 {
+  position: relative;
+  box-sizing: border-box;
+  zoom: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+.c4:before,
+.c4:after {
+  display: table;
+  box-sizing: border-box;
+  content: " ";
+}
+
+.c4:after {
+  clear: both;
+}
+
+.c4::after {
+  display: none;
+}
+
+.c5 {
+  position: relative;
+  box-sizing: border-box;
+  zoom: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c5:before,
+.c5:after {
+  display: table;
+  box-sizing: border-box;
+  content: " ";
+}
+
+.c5:after {
+  clear: both;
+}
+
+.c5::after {
+  display: none;
+}
+
+.c6 {
+  position: relative;
+  box-sizing: border-box;
+  zoom: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c6:before,
+.c6:after {
+  display: table;
+  box-sizing: border-box;
+  content: " ";
+}
+
+.c6:after {
+  clear: both;
+}
+
+.c6::after {
+  display: none;
+}
+
+.c7 {
+  position: relative;
+  box-sizing: border-box;
+  zoom: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c7:before,
+.c7:after {
+  display: table;
+  box-sizing: border-box;
+  content: " ";
+}
+
+.c7:after {
+  clear: both;
+}
+
+.c7::after {
+  display: none;
+}
+
+.c1 {
+  float: left;
+  box-sizing: border-box;
+  position: relative;
+  min-height: 1px;
+  width: 25%;
+}
+
+.c8 {
+  float: left;
+  box-sizing: border-box;
+  position: relative;
+  min-height: 1px;
+  width: 25%;
+  -webkit-order: 3;
+  -ms-flex-order: 3;
+  order: 3;
+}
+
+.c9 {
+  float: left;
+  box-sizing: border-box;
+  position: relative;
+  min-height: 1px;
+  width: 25%;
+  -webkit-order: 1;
+  -ms-flex-order: 1;
+  order: 1;
+}
+
+.c10 {
+  float: left;
+  box-sizing: border-box;
+  position: relative;
+  min-height: 1px;
+  width: 25%;
+  -webkit-order: 2;
+  -ms-flex-order: 2;
+  order: 2;
+}
+
+<div>
+  <div
+    class="box"
+  >
+    <div
+      class="c0 xl-row xl-row-root xl-row-root-flex xl-row-root-align-top"
+      style="margin-left:-5px;margin-right:-5px"
+    >
+      <div
+        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col1
+        </div>
+      </div>
+      <div
+        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col2
+        </div>
+      </div>
+      <div
+        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col3
+        </div>
+      </div>
+      <div
+        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col4
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="box"
+  >
+    <div
+      class="c2 xl-row xl-row-root xl-row-root-flex xl-row-root-align-middle"
+      style="margin-left:-5px;margin-right:-5px"
+    >
+      <div
+        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col1
+        </div>
+      </div>
+      <div
+        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col2
+        </div>
+      </div>
+      <div
+        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col3
+        </div>
+      </div>
+      <div
+        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col4
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="box"
+  >
+    <div
+      class="c3 xl-row xl-row-root xl-row-root-flex xl-row-root-align-bottom"
+      style="margin-left:-5px;margin-right:-5px"
+    >
+      <div
+        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col1
+        </div>
+      </div>
+      <div
+        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col2
+        </div>
+      </div>
+      <div
+        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col3
+        </div>
+      </div>
+      <div
+        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col4
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="box"
+  >
+    <div
+      class="c4 xl-row xl-row-root xl-row-root-flex xl-row-root-justify-start"
+      style="margin-left:-5px;margin-right:-5px"
+    >
+      <div
+        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col1
+        </div>
+      </div>
+      <div
+        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col2
+        </div>
+      </div>
+      <div
+        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col3
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="box"
+  >
+    <div
+      class="c5 xl-row xl-row-root xl-row-root-flex xl-row-root-justify-center"
+      style="margin-left:-5px;margin-right:-5px"
+    >
+      <div
+        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col1
+        </div>
+      </div>
+      <div
+        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col2
+        </div>
+      </div>
+      <div
+        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col3
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="box"
+  >
+    <div
+      class="c6 xl-row xl-row-root xl-row-root-flex xl-row-root-justify-end"
+      style="margin-left:-5px;margin-right:-5px"
+    >
+      <div
+        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col1
+        </div>
+      </div>
+      <div
+        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col2
+        </div>
+      </div>
+      <div
+        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col3
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="box"
+  >
+    <div
+      class="c7 xl-row xl-row-root xl-row-root-flex"
+      style="margin-left:-5px;margin-right:-5px"
+    >
+      <div
+        class="c8 xl-col xl-col-root xl-col-root-column-6 xl-col-root-order-3"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col1
+        </div>
+      </div>
+      <div
+        class="c9 xl-col xl-col-root xl-col-root-column-6 xl-col-root-order-1"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col2
+        </div>
+      </div>
+      <div
+        class="c10 xl-col xl-col-root xl-col-root-column-6 xl-col-root-order-2"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col3
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Row 偏移布局 1`] = `
+.c0 {
+  position: relative;
+  box-sizing: border-box;
+  zoom: 1;
+}
+
+.c0:before,
+.c0:after {
+  display: table;
+  box-sizing: border-box;
+  content: " ";
+}
+
+.c0:after {
+  clear: both;
+}
+
+.c1 {
+  float: left;
+  box-sizing: border-box;
+  position: relative;
+  min-height: 1px;
+  width: 25%;
+}
+
+.c2 {
+  float: left;
+  box-sizing: border-box;
+  position: relative;
+  min-height: 1px;
+  width: 25%;
+  margin-left: 25%;
+}
+
+.c3 {
+  float: left;
+  box-sizing: border-box;
+  position: relative;
+  min-height: 1px;
+  width: 25%;
+  left: 25%;
+}
+
+.c4 {
+  float: left;
+  box-sizing: border-box;
+  position: relative;
+  min-height: 1px;
+  width: 25%;
+  right: 25%;
+}
+
+.c5 {
+  float: left;
+  box-sizing: border-box;
+  position: relative;
+  min-height: 1px;
+  width: 25%;
+  right: 50%;
+}
+
+<div>
+  <div
+    class="box"
+  >
+    <div
+      class="c0 xl-row xl-row-root"
+      style="margin-left:-5px;margin-right:-5px"
+    >
+      <div
+        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col1
+        </div>
+      </div>
+      <div
+        class="c2 xl-col xl-col-root xl-col-root-column-6 xl-col-root-offset-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col2
+        </div>
+      </div>
+      <div
+        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col3
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="box"
+  >
+    <div
+      class="c0 xl-row xl-row-root"
+      style="margin-left:-5px;margin-right:-5px"
+    >
+      <div
+        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col1
+        </div>
+      </div>
+      <div
+        class="c3 xl-col xl-col-root xl-col-root-column-6 xl-col-root-push-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col2
+        </div>
+      </div>
+      <div
+        class="c4 xl-col xl-col-root xl-col-root-column-6 xl-col-root-pull-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col3
+        </div>
+      </div>
+      <div
+        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col4
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="box"
+  >
+    <div
+      class="c0 xl-row xl-row-root"
+      style="margin-left:-5px;margin-right:-5px"
+    >
+      <div
+        class="c2 xl-col xl-col-root xl-col-root-column-6 xl-col-root-offset-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col1
+        </div>
+      </div>
+      <div
+        class="c5 xl-col xl-col-root xl-col-root-column-6 xl-col-root-pull-12"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col2
+        </div>
+      </div>
+      <div
+        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col4
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Row 响应式偏移 1`] = `
+.c0 {
+  position: relative;
+  box-sizing: border-box;
+  zoom: 1;
+}
+
+.c0:before,
+.c0:after {
+  display: table;
+  box-sizing: border-box;
+  content: " ";
+}
+
+.c0:after {
+  clear: both;
+}
+
+.c1 {
+  float: left;
+  box-sizing: border-box;
+  position: relative;
+  min-height: 1px;
+  width: 25%;
+}
+
+.c2 {
+  float: left;
+  box-sizing: border-box;
+  position: relative;
+  min-height: 1px;
+  width: 25%;
+  margin-left: 25%;
+}
+
+<div>
+  <div
+    class="box"
+  >
+    <div
+      class="c0 xl-row xl-row-root"
+      style="margin-left:-5px;margin-right:-5px"
+    >
+      <div
+        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col1
+        </div>
+      </div>
+      <div
+        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col2
+        </div>
+      </div>
+      <div
+        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col3
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="box"
+  >
+    <div
+      class="c0 xl-row xl-row-root"
+      style="margin-left:-5px;margin-right:-5px"
+    >
+      <div
+        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col1
+        </div>
+      </div>
+      <div
+        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col2
+        </div>
+      </div>
+      <div
+        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col3
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="box"
+  >
+    <div
+      class="c0 xl-row xl-row-root"
+      style="margin-left:-5px;margin-right:-5px"
+    >
+      <div
+        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col1
+        </div>
+      </div>
+      <div
+        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col2
+        </div>
+      </div>
+      <div
+        class="c2 xl-col xl-col-root xl-col-root-column-6 xl-col-root-offset-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col3
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Row 响应式布局 1`] = `
+.c0 {
+  position: relative;
+  box-sizing: border-box;
+  zoom: 1;
+}
+
+.c0:before,
+.c0:after {
+  display: table;
+  box-sizing: border-box;
+  content: " ";
+}
+
+.c0:after {
+  clear: both;
+}
+
+.c1 {
+  float: left;
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+}
+
+<div
+  class="box"
+>
+  <div
+    class="c0 xl-row xl-row-root"
+  >
+    <div
+      class="c1 xl-col xl-col-root"
+    >
+      <div
+        class="col"
+      >
+        col1
+      </div>
+    </div>
+    <div
+      class="c1 xl-col xl-col-root"
+    >
+      <div
+        class="col"
+      >
+        col2
+      </div>
+    </div>
+    <div
+      class="c1 xl-col xl-col-root"
+    >
+      <div
+        class="col"
+      >
+        col3
+      </div>
+    </div>
+    <div
+      class="c1 xl-col xl-col-root"
+    >
+      <div
+        class="col"
+      >
+        col4
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Row 基本用法 1`] = `
+.c0 {
+  position: relative;
+  box-sizing: border-box;
+  zoom: 1;
+}
+
+.c0:before,
+.c0:after {
+  display: table;
+  box-sizing: border-box;
+  content: " ";
+}
+
+.c0:after {
+  clear: both;
+}
+
+.c1 {
+  float: left;
+  box-sizing: border-box;
+  position: relative;
+  min-height: 1px;
+  width: 16.666666666666668%;
+}
+
+.c2 {
+  float: left;
+  box-sizing: border-box;
+  position: relative;
+  min-height: 1px;
+  width: 20.833333333333332%;
+}
+
+.c3 {
+  float: left;
+  box-sizing: border-box;
+  position: relative;
+  min-height: 1px;
+  width: 29.166666666666668%;
+}
+
+.c4 {
+  float: left;
+  box-sizing: border-box;
+  position: relative;
+  min-height: 1px;
+  width: 33.333333333333336%;
+}
+
+.c5 {
+  float: left;
+  box-sizing: border-box;
+  position: relative;
+  min-height: 1px;
+  width: 25%;
+}
+
+.c6 {
+  float: left;
+  box-sizing: border-box;
+  display: none;
+  position: relative;
+  min-height: 1px;
+  width: 0%;
+}
+
+<div>
+  <div
+    class="box"
+  >
+    <div
+      class="c0 xl-row xl-row-root"
+      style="margin-left:-5px;margin-right:-5px"
+    >
+      <div
+        class="c1 xl-col xl-col-root xl-col-root-column-4"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col1
+        </div>
+      </div>
+      <div
+        class="c2 xl-col xl-col-root xl-col-root-column-5"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col2
+        </div>
+      </div>
+      <div
+        class="c3 xl-col xl-col-root xl-col-root-column-7"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col3
+        </div>
+      </div>
+      <div
+        class="c4 xl-col xl-col-root xl-col-root-column-8"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col4
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="box"
+  >
+    <div
+      class="c0 xl-row xl-row-root"
+      style="margin-left:-5px;margin-right:-5px"
+    >
+      <div
+        class="c5 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col1
+        </div>
+      </div>
+      <div
+        class="c5 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col2
+        </div>
+      </div>
+      <div
+        class="c5 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col3
+        </div>
+      </div>
+      <div
+        class="c5 xl-col xl-col-root xl-col-root-column-6"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col4
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="box"
+  >
+    <div
+      class="c0 xl-row xl-row-root"
+      style="margin-left:-5px;margin-right:-5px"
+    >
+      <div
+        class="c4 xl-col xl-col-root xl-col-root-column-8"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col1
+        </div>
+      </div>
+      <div
+        class="c6 xl-col xl-col-root"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col2
+        </div>
+      </div>
+      <div
+        class="c4 xl-col xl-col-root xl-col-root-column-8"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col3
+        </div>
+      </div>
+      <div
+        class="c4 xl-col xl-col-root xl-col-root-column-8"
+        style="padding-left:5px;padding-right:5px"
+      >
+        <div
+          class="col"
+        >
+          col4
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
