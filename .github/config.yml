@@ -1,0 +1,4 @@
+todo:
+  keyword: "@TODO"
+autoAssign: true
+caseSensitive: true

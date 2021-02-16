@@ -1,0 +1,47 @@
+name: build
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: install
+        run: npm install
+
+      - name: lerna bootstrap
+        run: npm run bootstrap -- --no-ci
+
+      - name: lint
+        run: npm run lint
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: install
+        run: npm install
+
+      - name: lerna bootstrap
+        run: npm run bootstrap -- --no-ci
+
+      - name: build
+        run: npm run build
+
+      - name: test
+        run: npm run test -- --coverage --bail
+
+      - name: codecov
+        run: bash <(curl -s https://codecov.io/bash)
+
+      - name: codacy-coverage
+        uses: codacy/codacy-coverage-reporter-action@master
+        with:
+          project-token: ${{secrets.CODACY_TOKEN}}
