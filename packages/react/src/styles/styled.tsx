@@ -47,7 +47,7 @@ const styled = <
   const defaultCreateStyledComponent = innerStyled<Tag, ForwardedProps>(tag, {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     shouldForwardProp: shouldForwardProp as ShouldForwardProp<ForwardedProps>,
-    prefix: displayName || undefined,
+    // prefix: displayName || undefined,
   });
 
   const overrideCreateStyledComponent = <
@@ -80,7 +80,7 @@ const styled = <
         <DefaultComponent
           {...others}
           ref={ref}
-          className={clsx(`${clsPrefix}-${defaultClassName}`, className)}
+          className={clsx(defaultClassName && `${clsPrefix}-${defaultClassName}`, className)}
           theme={theme}
         />
       );

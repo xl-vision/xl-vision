@@ -20,10 +20,10 @@ const route: Array<Route> = [
     component: () => import('./views/index.mdx'),
   },
   {
-    name: '栅格',
+    name: '布局',
     children: [
       {
-        name: 'Row',
+        name: '栅格',
         path: '/Row',
         component: () => import('@xl-vision/react/Row/__doc__/index.mdx'),
       },

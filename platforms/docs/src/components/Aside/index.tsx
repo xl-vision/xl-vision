@@ -15,8 +15,10 @@ const LeftNode = styled('span')`
 const NonLeftNode = styled(LeftNode)(
   ({ theme }) => `
   border-bottom: 1px solid ${theme.color.divider};
-  margin: 0;
+  margin: 12px 0 0;
   color: ${theme.color.text.primary};
+  font-weight: ${theme.typography.fontWeight.bold};
+  font-size: 16px;
 `,
 );
 

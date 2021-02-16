@@ -16,7 +16,7 @@ const Wrapper = styled('div')(
 const Box = styled('div')(
   ({ theme }) => `
   padding: 0.5rem;
-  color: ${theme.color.background};
+  color: ${theme.color.themes.primary.text.primary};
   text-align: center;
   background-color: ${theme.color.themes.primary.color};
   border-radius: 5px;

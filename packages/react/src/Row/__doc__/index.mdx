@@ -18,353 +18,34 @@
 
 :::
 
-<!-- ::: demo 响应式布局
+::: demo ./ResponsiveColumn.tsx
 
-`span`可以传入对象的形式实现不同尺寸下的布局可以设置的参数有:`xs`,`sm`,`md`,`lg`,`xl`,`xxl`。请尝试改变浏览器窗口大小。
+响应式布局
 
-```jsx
-import React from 'react';
-import { Row } from 'xl-vision';
-export default () => {
-  return (
-    <div className='grid-box'>
-      <Row
-        gutter={{
-          xs: 8,
-          sm: 10,
-          md: 15,
-          lg: 20,
-          xl: 25,
-          xxl: 30,
-        }}
-      >
-        <Row.Col
-          span={{
-            xs: 8,
-            sm: 6,
-            md: 4,
-            lg: 6,
-          }}
-        >
-          <div className='col-box'>col1</div>
-        </Row.Col>
-        <Row.Col
-          span={{
-            xs: 8,
-            sm: 6,
-            md: 5,
-            lg: 10,
-            xxl: 6,
-          }}
-        >
-          <div className='col-box'>col2</div>
-        </Row.Col>
-        <Row.Col
-          span={{
-            xs: 8,
-            sm: 6,
-            md: 7,
-            lg: 4,
-            xl: 0,
-            xxl: 6,
-          }}
-        >
-          <div className='col-box'>col3</div>
-        </Row.Col>
-        <Row.Col
-          span={{
-            xs: 0,
-            sm: 6,
-            md: 8,
-            lg: 4,
-            xl: 8,
-            xxl: 6,
-          }}
-        >
-          <div className='col-box'>col4</div>
-        </Row.Col>
-      </Row>
-    </div>
-  );
-};
-```
-
-```scss
-.grid-box {
-  padding: 0.5rem;
-  background-color: #e6e6e6;
-  border-radius: 4px;
-
-  & + & {
-    margin-top: 1rem;
-  }
-}
-
-.col-box {
-  padding: 0.5rem;
-  color: #fff;
-  text-align: center;
-  background-color: #80bdff;
-  border-radius: 5px;
-}
-```
+`span`可以传入对象的形式实现不同尺寸下的布局，默认可以设置的参数有:`xs`,`sm`,`md`,`lg`,`xl`,`xxl`。请尝试改变浏览器窗口大小。
 
 :::
 
-::: demo 响应式偏移
+::: demo ./ResponsiveOffset.tsx
 
-`offset`,`push`,`pull`也是支持响应式的。可以设置的参数有:`xs`,`sm`,`md`,`lg`,`xl`,`xxl`
+响应式偏移
 
-```jsx
-import React from 'react';
-import { Row } from 'xl-vision';
-export default () => {
-  return (
-    <div>
-      <div className='grid-box'>
-        <Row gutter={10}>
-          <Row.Col span={6}>
-            <div className='col-box'>col1</div>
-          </Row.Col>
-          <Row.Col
-            span={6}
-            offset={{
-              xs: 1,
-              sm: 2,
-              md: 3,
-              lg: 4,
-              xl: 5,
-              xxl: 6,
-            }}
-          >
-            <div className='col-box'>col2</div>
-          </Row.Col>
-          <Row.Col span={6}>
-            <div className='col-box'>col3</div>
-          </Row.Col>
-        </Row>
-      </div>
-      <div className='grid-box'>
-        <Row gutter={10}>
-          <Row.Col span={6}>
-            <div className='col-box'>col1</div>
-          </Row.Col>
-          <Row.Col span={6}>
-            <div className='col-box'>col2</div>
-          </Row.Col>
-          <Row.Col
-            span={6}
-            push={{
-              xs: 1,
-              sm: 2,
-              md: 3,
-              lg: 4,
-              xl: 5,
-              xxl: 6,
-            }}
-          >
-            <div className='col-box'>col3</div>
-          </Row.Col>
-        </Row>
-      </div>
-      <div className='grid-box'>
-        <Row gutter={10}>
-          <Row.Col span={6}>
-            <div className='col-box'>col1</div>
-          </Row.Col>
-          <Row.Col span={6}>
-            <div className='col-box'>col2</div>
-          </Row.Col>
-          <Row.Col
-            span={6}
-            pull={{
-              xs: 1,
-              sm: 2,
-              md: 3,
-              lg: 4,
-              xl: 5,
-              xxl: 6,
-            }}
-            offset={6}
-          >
-            <div className='col-box'>col3</div>
-          </Row.Col>
-        </Row>
-      </div>
-    </div>
-  );
-};
-```
-
-```scss
-.grid-box {
-  padding: 0.5rem;
-  background-color: #e6e6e6;
-  border-radius: 4px;
-
-  & + & {
-    margin-top: 1rem;
-  }
-}
-
-.col-box {
-  padding: 0.5rem;
-  color: #fff;
-  text-align: center;
-  background-color: #80bdff;
-  border-radius: 5px;
-}
-```
+`offset`,`push`,`pull`也是支持响应式的，默认可以设置的参数有:`xs`,`sm`,`md`,`lg`,`xl`,`xxl`
 
 :::
 
-::: demo `flex`布局
+::: demo ./Flex.tsx
 
-在现代浏览器中可以指定`type={'flex'}`, 然后可以使用`align`和`justify`实现水平和垂直方向的不同方式的对齐, 也可以使用`order`改变内容块的前后顺序(order 也是支持响应式的)。
+`flex`布局
 
-```jsx
-import React from 'react';
-import { Row } from 'xl-vision';
-export default () => {
-  return (
-    <div>
-      <div className='grid-box'>
-        <Row gutter={10} type={'flex'} align={'top'}>
-          <Row.Col span={6}>
-            <div className='col-box'>col1</div>
-          </Row.Col>
-          <Row.Col span={6}>
-            <div className='col-box'>col2</div>
-          </Row.Col>
-          <Row.Col span={6}>
-            <div className='col-box'>col3</div>
-          </Row.Col>
-          <Row.Col span={6}>
-            <div className='col-box'>col4</div>
-          </Row.Col>
-        </Row>
-      </div>
-      <div className='grid-box'>
-        <Row gutter={10} type={'flex'} align={'middle'}>
-          <Row.Col span={6}>
-            <div className='col-box'>col1</div>
-          </Row.Col>
-          <Row.Col span={6}>
-            <div className='col-box'>col2</div>
-          </Row.Col>
-          <Row.Col span={6}>
-            <div className='col-box'>col3</div>
-          </Row.Col>
-          <Row.Col span={6}>
-            <div className='col-box'>col4</div>
-          </Row.Col>
-        </Row>
-      </div>
-      <div className='grid-box'>
-        <Row gutter={10} type={'flex'} align={'bottom'}>
-          <Row.Col span={6}>
-            <div className='col-box'>col1</div>
-          </Row.Col>
-          <Row.Col span={6}>
-            <div className='col-box'>col2</div>
-          </Row.Col>
-          <Row.Col span={6}>
-            <div className='col-box'>col3</div>
-          </Row.Col>
-          <Row.Col span={6}>
-            <div className='col-box'>col4</div>
-          </Row.Col>
-        </Row>
-      </div>
-      <div className='grid-box'>
-        <Row gutter={10} type={'flex'} justify={'start'}>
-          <Row.Col span={6}>
-            <div className='col-box'>col1</div>
-          </Row.Col>
-          <Row.Col span={6}>
-            <div className='col-box'>col2</div>
-          </Row.Col>
-          <Row.Col span={6}>
-            <div className='col-box'>col3</div>
-          </Row.Col>
-        </Row>
-      </div>
-      <div className='grid-box'>
-        <Row gutter={10} type={'flex'} justify={'center'}>
-          <Row.Col span={6}>
-            <div className='col-box'>col1</div>
-          </Row.Col>
-          <Row.Col span={6}>
-            <div className='col-box'>col2</div>
-          </Row.Col>
-          <Row.Col span={6}>
-            <div className='col-box'>col3</div>
-          </Row.Col>
-        </Row>
-      </div>
-      <div className='grid-box'>
-        <Row gutter={10} type={'flex'} justify={'end'}>
-          <Row.Col span={6}>
-            <div className='col-box'>col1</div>
-          </Row.Col>
-          <Row.Col span={6}>
-            <div className='col-box'>col2</div>
-          </Row.Col>
-          <Row.Col span={6}>
-            <div className='col-box'>col3</div>
-          </Row.Col>
-        </Row>
-      </div>
-      <div className='grid-box'>
-        <Row gutter={10} type={'flex'}>
-          <Row.Col span={6} order={3}>
-            <div className='col-box'>col1</div>
-          </Row.Col>
-          <Row.Col span={6} order={1}>
-            <div className='col-box'>col2</div>
-          </Row.Col>
-          <Row.Col span={6} order={2}>
-            <div className='col-box'>col3</div>
-          </Row.Col>
-        </Row>
-      </div>
-    </div>
-  );
-};
-```
+在现代浏览器中可以指定`type='flex'`, 然后可以使用`align`和`justify`实现水平和垂直方向的不同方式的对齐, 也可以使用`order`改变内容块的前后顺序(`order`也是支持响应式的)。
 
-```scss
-.grid-box {
-  padding: 0.5rem;
-  background-color: #e6e6e6;
-  border-radius: 4px;
-
-  & + & {
-    margin-top: 1rem;
-  }
-  &::deep {
-    .xl-grid-flex {
-      height: 50px;
-    }
-  }
-}
-
-.col-box {
-  padding: 0.5rem;
-  color: #fff;
-  text-align: center;
-  background-color: #80bdff;
-  border-radius: 5px;
-}
-```
-
-::: -->
+:::
 
 ## Row API
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
 | --- | --- | --- | --- | --- | --- |
-| clsPrefix | 自定义类名前缀 | string | - | - | false |
 | gutter | 内容块间隙(支持响应式) | number &#x007c; object | >=0 | 0 | false |
 | type | 布局类型 | flex | - | - | false |
 | justify | 栅格左右对齐方式(在`type=flex`下有效) | string | start &#x007c; end &#x007c; center &#x007c; space-around &#x007c; space-between | — | false |
@@ -375,8 +56,7 @@ export default () => {
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
 | --- | --- | --- | --- | --- | --- |
-| clsPrefix | 自定义类名前缀 | string | - | - | false |
-| span | 栅格占据的列数(支持响应式)(**0 表示隐藏**) | number &#x007c; object | 0-24 | — | true |
+| column | 栅格占据的列数(支持响应式)(**0 表示隐藏**) | number &#x007c; object | 0-24 | — | true |
 | offset | 栅格左侧的间隔列数(支持响应式) | number &#x007c; object | 1-24 | — | false |
 | push | 栅格向右移动的列数(支持响应式) | number &#x007c; object | 1-24 | — | false |
 | pull | 栅格向左移动的列数(支持响应式) | number &#x007c; object | 1-24 | — | false |
