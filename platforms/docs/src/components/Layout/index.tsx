@@ -1,6 +1,6 @@
 import { createGlobalStyles, styled } from '@xl-vision/react';
 import React from 'react';
-import { HashRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Aside from '../Aside';
 import Footer from '../Footer';
 import Header from '../Header';
