@@ -59,7 +59,6 @@ jobs:
           publish-dir: './platforms/docs/dist'
           production-branch: master
           production-deploy: ${{ github.event.deployment }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: 'Deploy from GitHub Actions'
           enable-pull-request-comment: false
           enable-commit-comment: true
