@@ -24,8 +24,10 @@
     "url": "https://github.com/xl-vision/xl-vision-next/issues"
   },
   "dependencies": {
-    "@types/react": "^17.0.0",
     "csstype": "^3.0.6"
+  },
+  "peerDependencies": {
+    "@types/react": "^16.8.0 || ^17.0.0"
   },
   "sideEffects": false,
   "publishConfig": {
