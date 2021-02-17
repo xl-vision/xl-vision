@@ -54,19 +54,16 @@ jobs:
         run: npm run build
 
       - name: Deploy to Netlify
-        uses: nwtgck/actions-netlify@v1.1.13
+        uses: South-Paw/action-netlify-deploy@v1.0.4
         with:
-          publish-dir: './platforms/docs/dist'
-          production-branch: master
-          production-deploy: ${{ github.event_name == 'release' && github.event.action == 'created' }}
-          deploy-message: 'Deploy from GitHub Actions'
-          enable-pull-request-comment: false
-          enable-commit-comment: true
-          overwrites-pull-request-comment: true
-          netlify-config-path: ./netlify.toml
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          netlify-site-id: ${{ secrets.NETLIFY_SITE_ID }}
+          draft: ${{ github.event_name != 'release' || github.event.action != 'created' }}
+          message: 'Deploy from GitHub Actions'
+          build-dir: './platforms/docs/dist'
+          comment-on-pull-request: true
+          comment-on-commit: true
+          config-path: ./netlify.toml
         timeout-minutes: 1
 
   test:
