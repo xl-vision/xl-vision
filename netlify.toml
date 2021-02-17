@@ -1,10 +1,11 @@
 [build]
-  publish = "docs/"
-  command = "npm run docs"
+  publish = ""
+  command = ""
 [context.production]
   publish = ""
   command = ""
 
 [[redirects]]
   from = "/*"
-  to = "/"
+  to = "/index.html"
+  status = 200
