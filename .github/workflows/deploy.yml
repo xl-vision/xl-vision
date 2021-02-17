@@ -1,0 +1,25 @@
+name: deploy website
+on:
+  push:
+    tags:
+      - 'v*'
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: install
+        run: npm install
+
+      - name: build docs
+        run: npm run docs
+      - name: netlify config
+        run: cp ./netlify.toml ./docs
+      - name: deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.DEPLOY_KEY }}
+          publish_dir: ./docs
+          emptyCommits: false
