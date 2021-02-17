@@ -1,4 +1,4 @@
 todo:
-  keyword: "@TODO"
+  keyword: '@TODO'
 autoAssign: true
 caseSensitive: true
