@@ -7,32 +7,34 @@ import Header from '../Header';
 import Main from '../Main';
 import ThemeProvider from '../ThemeProvider';
 
-const GlobalStyle = createGlobalStyles(
-  ({ theme }) => `
-  html,body {
-    margin: 0;
-    width: 100%;
-    min-height: 100%;
-    background: ${theme.color.background};
-    color: ${theme.color.text.primary}
-  }
+const GlobalStyle = createGlobalStyles(({ theme }) => {
+  return {
+    'html,body': {
+      margin: 0,
+      width: '100%',
+      minHeight: '100%',
+      background: `${theme.color.background}`,
+      color: `${theme.color.text.primary}`,
+    },
 
-  #app {
-    min-height: 100%;
-  }
-`,
-);
+    '#app': {
+      minHeight: '100%',
+    },
+  };
+});
 
-const Content = styled('div')`
-  display: flex;
-  height: 100%;
-  > main {
-    margin-left: 16px;
-    margin-top: 16px;
-    flex: 1;
-    overflow-x: auto;
-  }
-`;
+const Content = styled('div')(() => {
+  return {
+    display: 'flex',
+    height: '100%',
+    flexWrap: 'wrap',
+    '> main': {
+      flex: 1,
+      overflowX: 'auto',
+      margin: '0 16px',
+    },
+  };
+});
 
 const Layout = () => {
   return (
