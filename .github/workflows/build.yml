@@ -117,6 +117,7 @@ jobs:
         uses: nwtgck/actions-netlify@v1.1
         with:
           publish-dir: './platforms/docs/dist'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           # production-branch: master
           production-deploy: ${{ github.event_name == 'release' && github.event.action == 'created' }}
           deploy-message: 'Deploy from GitHub Actions'
