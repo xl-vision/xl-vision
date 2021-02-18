@@ -24,7 +24,8 @@
   "scripts": {
     "build:legacy": "node ../../scripts/build legacy",
     "build:modern": "node ../../scripts/build modern",
-    "build": "npm run build:legacy && npm run build:modern"
+    "build": "npm run build:legacy && npm run build:modern",
+    "generate": "node ./scripts/generate.js"
   },
   "bugs": {
     "url": "https://github.com/xl-vision/xl-vision-next/issues"
@@ -49,6 +50,7 @@
     "access": "public"
   },
   "devDependencies": {
+    "fs-extra": "^9.1.0",
     "mustache": "^4.1.0",
     "svgo": "^2.0.0"
   }

@@ -15,6 +15,7 @@
   "scripts": {
     "dev": "cd platforms/docs && npm run dev",
     "docs": "cd platforms/docs && npm run docs",
+    "icon:generate": "cd packages/icons && npm run generate",
     "commit": "git-cz",
     "test": "jest",
     "lint": "eslint . --ext .js,.ts,.jsx,.tsx --max-warnings 0",

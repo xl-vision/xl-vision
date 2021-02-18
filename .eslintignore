@@ -2,3 +2,6 @@ legacy
 modern
 dist
 node_modules
+
+packages/icons/src/**
+packages/icons/third/**

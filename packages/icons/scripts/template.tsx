@@ -1,8 +1,10 @@
+/* eslint-disable */
+
 import React from 'react'
 
 const {{name}} = () => {
   return (
-    {{svg}}
+    {{&svg}}
   )
 };
 
