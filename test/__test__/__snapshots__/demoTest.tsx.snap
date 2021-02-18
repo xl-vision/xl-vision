@@ -39591,8 +39591,8 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveColumn.tsx correctly
         Object {
           "lg": 20,
           "md": 15,
-          "sm": 10,
           "xl": 25,
+          "xs": 10,
           "xxl": 30,
         }
       }
@@ -39946,7 +39946,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveColumn.tsx correctly
                 Object {
                   "lg": 6,
                   "md": 4,
-                  "sm": 0,
+                  "xs": 0,
                 }
               }
             >
@@ -40639,7 +40639,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveColumn.tsx correctly
                 Object {
                   "lg": 10,
                   "md": 5,
-                  "sm": 8,
+                  "xs": 8,
                   "xxl": 6,
                 }
               }
@@ -41333,8 +41333,8 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveColumn.tsx correctly
                 Object {
                   "lg": 4,
                   "md": 7,
-                  "sm": 8,
                   "xl": 0,
+                  "xs": 8,
                   "xxl": 6,
                 }
               }
@@ -42028,8 +42028,8 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveColumn.tsx correctly
                 Object {
                   "lg": 4,
                   "md": 8,
-                  "sm": 8,
                   "xl": 8,
+                  "xs": 8,
                   "xxl": 6,
                 }
               }
