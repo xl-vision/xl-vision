@@ -5,7 +5,7 @@
   "author": "Rhys Xia",
   "license": "MIT",
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack",
+    "docs": "cross-env NODE_ENV=production webpack",
     "dev": "cross-env NODE_ENV=development webpack serve"
   },
   "dependencies": {
