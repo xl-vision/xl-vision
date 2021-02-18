@@ -1,4 +1,4 @@
-# `@xl-vision/react`
+# `@xl-vision/icons`
 
 > TODO: description
 
