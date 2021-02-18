@@ -30,7 +30,7 @@ jobs:
       - name: lint
         uses: bradennapier/eslint-plus-action@v3.4.2
         with:
-          githut-token: ${{ secrets.GIT_TOKEN }}
+          github-token: ${{ secrets.GIT_TOKEN }}
 
   test:
     runs-on: ubuntu-latest
@@ -119,7 +119,7 @@ jobs:
         uses: nwtgck/actions-netlify@v1.1
         with:
           publish-dir: './platforms/docs/dist'
-          github_token: ${{ secrets.GIT_TOKEN }}
+          github-token: ${{ secrets.GIT_TOKEN }}
           # production-branch: master
           production-deploy: ${{ github.event_name == 'release' && github.event.action == 'created' }}
           deploy-message: 'Deploy from GitHub Actions'
