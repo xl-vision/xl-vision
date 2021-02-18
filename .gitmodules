@@ -1,0 +1,3 @@
+[submodule "packages/icons/icons/material-design-icons"]
+	path = packages/icons/icons/material-design-icons
+	url = https://github.com/google/material-design-icons.git

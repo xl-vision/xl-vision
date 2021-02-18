@@ -47,5 +47,9 @@
   "sideEffects": false,
   "publishConfig": {
     "access": "public"
+  },
+  "devDependencies": {
+    "mustache": "^4.1.0",
+    "svgo": "^2.0.0"
   }
 }
