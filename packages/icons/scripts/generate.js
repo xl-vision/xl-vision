@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-restricted-syntax */
 const path = require('path');
@@ -12,6 +13,11 @@ const metadataPath = path.resolve(__dirname, '../metadata.json');
 const destPath = path.resolve(__dirname, '../src');
 
 async function generate() {
+  const exist = fs.existsSync(destPath);
+  if (exist) {
+    await fs.remove(destPath);
+  }
+  await fs.mkdirp(destPath);
   const metadata = {};
   const files = await fs.readdir(basePath);
 

@@ -25,7 +25,6 @@ export const throttleByAnimationFrame = <Fn extends (...args: Array<any>) => any
 
   const throttle = (...args: Parameters<Fn>) => {
     if (cancel === undefined) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       cancel = raf(later(args));
     }
     return ret;

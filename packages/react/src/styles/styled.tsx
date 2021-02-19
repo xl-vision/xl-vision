@@ -45,7 +45,6 @@ const styled = <
   }
 
   const defaultCreateStyledComponent = innerStyled<Tag, ForwardedProps>(tag, {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     shouldForwardProp: shouldForwardProp as ShouldForwardProp<ForwardedProps>,
     // prefix: displayName || undefined,
   });

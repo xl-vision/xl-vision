@@ -29,6 +29,9 @@ jobs:
 
       - name: lint
         uses: bradennapier/eslint-plus-action@v3.4.2
+        with: 
+          reportWarningsAsErrors: true
+          
 
   test:
     runs-on: ubuntu-latest
