@@ -1,13 +1,5 @@
 /* eslint-disable */
+import React from 'react';
+import createIcon from './utils/createIcon';
 
-import React from 'react'
-
-const ViewColumnFilled = () => {
-  return (
-    <svg viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z" /><path d="M10 18h5V5h-5v13zm-6 0h5V5H4v13zM16 5v13h5V5h-5z" /></svg>
-  )
-};
-
-ViewColumnFilled.displayName = 'ViewColumnFilled';
-
-export default ViewColumnFilled;
+export default createIcon(<svg viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z" /><path d="M10 18h5V5h-5v13zm-6 0h5V5H4v13zM16 5v13h5V5h-5z" /></svg>, 'ViewColumnFilled');

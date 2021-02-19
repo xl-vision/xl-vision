@@ -1,13 +1,5 @@
 /* eslint-disable */
+import React from 'react';
+import createIcon from './utils/createIcon';
 
-import React from 'react'
-
-const RateReviewSharp = () => {
-  return (
-    <svg viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z" /><path d="M22 2H2v20l4-4h16V2zM6 14v-2.47l6.88-6.88c.2-.2.51-.2.71 0l1.77 1.77c.2.2.2.51 0 .71L8.47 14H6zm12 0h-7.5l2-2H18v2z" /></svg>
-  )
-};
-
-RateReviewSharp.displayName = 'RateReviewSharp';
-
-export default RateReviewSharp;
+export default createIcon(<svg viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z" /><path d="M22 2H2v20l4-4h16V2zM6 14v-2.47l6.88-6.88c.2-.2.51-.2.71 0l1.77 1.77c.2.2.2.51 0 .71L8.47 14H6zm12 0h-7.5l2-2H18v2z" /></svg>, 'RateReviewSharp');

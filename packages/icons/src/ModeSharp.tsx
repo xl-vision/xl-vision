@@ -1,13 +1,5 @@
 /* eslint-disable */
+import React from 'react';
+import createIcon from './utils/createIcon';
 
-import React from 'react'
-
-const ModeSharp = () => {
-  return (
-    <svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM21.41 6.34l-3.75-3.75-2.53 2.54 3.75 3.75 2.53-2.54z" /></svg>
-  )
-};
-
-ModeSharp.displayName = 'ModeSharp';
-
-export default ModeSharp;
+export default createIcon(<svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM21.41 6.34l-3.75-3.75-2.53 2.54 3.75 3.75 2.53-2.54z" /></svg>, 'ModeSharp');

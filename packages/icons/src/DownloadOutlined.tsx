@@ -1,13 +1,5 @@
 /* eslint-disable */
+import React from 'react';
+import createIcon from './utils/createIcon';
 
-import React from 'react'
-
-const DownloadOutlined = () => {
-  return (
-    <svg viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z" /><path d="M19 9h-4V3H9v6H5l7 7 7-7zm-8 2V5h2v6h1.17L12 13.17 9.83 11H11zm-6 7h14v2H5z" /></svg>
-  )
-};
-
-DownloadOutlined.displayName = 'DownloadOutlined';
-
-export default DownloadOutlined;
+export default createIcon(<svg viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z" /><path d="M19 9h-4V3H9v6H5l7 7 7-7zm-8 2V5h2v6h1.17L12 13.17 9.83 11H11zm-6 7h14v2H5z" /></svg>, 'DownloadOutlined');

@@ -1,13 +1,5 @@
 /* eslint-disable */
+import React from 'react';
+import createIcon from './utils/createIcon';
 
-import React from 'react'
-
-const EventBusySharp = () => {
-  return (
-    <svg viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z" /><path d="M9.31 17l2.44-2.44L14.19 17l1.06-1.06-2.44-2.44 2.44-2.44L14.19 10l-2.44 2.44L9.31 10l-1.06 1.06 2.44 2.44-2.44 2.44L9.31 17zM21 3h-3V1h-2v2H8V1H6v2H3.01L3 21h18V3zm-2 16H5V8h14v11z" /></svg>
-  )
-};
-
-EventBusySharp.displayName = 'EventBusySharp';
-
-export default EventBusySharp;
+export default createIcon(<svg viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z" /><path d="M9.31 17l2.44-2.44L14.19 17l1.06-1.06-2.44-2.44 2.44-2.44L14.19 10l-2.44 2.44L9.31 10l-1.06 1.06 2.44 2.44-2.44 2.44L9.31 17zM21 3h-3V1h-2v2H8V1H6v2H3.01L3 21h18V3zm-2 16H5V8h14v11z" /></svg>, 'EventBusySharp');
