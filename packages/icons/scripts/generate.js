@@ -12,6 +12,9 @@ const metadataPath = path.resolve(__dirname, '../metadata.json');
 
 const destPath = path.resolve(__dirname, '../src');
 
+// 有重复的文件，忽略其中一个
+const ignoreNames = ['addchart'];
+
 async function generate() {
   const exist = fs.existsSync(destPath);
   if (exist) {
@@ -31,6 +34,11 @@ async function generate() {
     for (const icon of icons) {
       const subdir = path.resolve(dir, icon);
       const iconTypes = await fs.readdir(subdir);
+
+      if (ignoreNames.includes(icon)) {
+        // eslint-disable-next-line no-continue
+        continue;
+      }
 
       for (const type of iconTypes) {
         let realType = type.replace(/^materialicons/, '');
