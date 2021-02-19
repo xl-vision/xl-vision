@@ -16,7 +16,7 @@ export default () => {
     <div>
       <Row
         gutter={{
-          sm: 10,
+          xs: 10,
           md: 15,
           lg: 20,
           xl: 25,
@@ -25,7 +25,7 @@ export default () => {
       >
         <Row.Col
           column={{
-            sm: 0,
+            xs: 0,
             md: 4,
             lg: 6,
           }}
@@ -34,7 +34,7 @@ export default () => {
         </Row.Col>
         <Row.Col
           column={{
-            sm: 8,
+            xs: 8,
             md: 5,
             lg: 10,
             xxl: 6,
@@ -44,7 +44,7 @@ export default () => {
         </Row.Col>
         <Row.Col
           column={{
-            sm: 8,
+            xs: 8,
             md: 7,
             lg: 4,
             xl: 0,
@@ -55,7 +55,7 @@ export default () => {
         </Row.Col>
         <Row.Col
           column={{
-            sm: 8,
+            xs: 8,
             md: 8,
             lg: 4,
             xl: 8,
