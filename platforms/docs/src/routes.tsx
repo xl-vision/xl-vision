@@ -21,8 +21,8 @@ const route: Array<Route> = [
   },
   {
     name: '图标',
-    path: '/icon',
-    component: () => import('./views/icon/index.mdx'),
+    path: '/Icon',
+    component: () => import('@xl-vision/react/Icon/__doc__/index.mdx'),
   },
   {
     name: '布局',

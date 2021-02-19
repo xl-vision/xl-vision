@@ -2,13 +2,16 @@
 
 exports[`check packages entry @xl-vision/react 1`] = `
 Array [
-  "styled",
-  "createGlobalStyles",
   "ThemeProvider",
   "Transition",
   "CSSTransition",
   "CollapseTransition",
   "TransitionGroup",
   "Row",
+  "Icon",
+  "styled",
+  "createGlobalStyles",
+  "ThemeContext",
+  "createTheme",
 ]
 `;

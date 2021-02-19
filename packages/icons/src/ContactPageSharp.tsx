@@ -1,13 +1,5 @@
 /* eslint-disable */
+import React from 'react';
+import createIcon from './utils/createIcon';
 
-import React from 'react'
-
-const ContactPageSharp = () => {
-  return (
-    <svg viewBox="0 0 24 24"><path fill="none" d="M0 0H24V24H0z" /><path d="M14 2H4v20h16V8l-6-6zm-2 8c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm4 8H8v-.57c0-.81.48-1.53 1.22-1.85.85-.37 1.79-.58 2.78-.58.99 0 1.93.21 2.78.58.74.32 1.22 1.04 1.22 1.85V18z" /></svg>
-  )
-};
-
-ContactPageSharp.displayName = 'ContactPageSharp';
-
-export default ContactPageSharp;
+export default createIcon(<svg viewBox="0 0 24 24"><path fill="none" d="M0 0H24V24H0z" /><path d="M14 2H4v20h16V8l-6-6zm-2 8c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm4 8H8v-.57c0-.81.48-1.53 1.22-1.85.85-.37 1.79-.58 2.78-.58.99 0 1.93.21 2.78.58.74.32 1.22 1.04 1.22 1.85V18z" /></svg>, 'ContactPageSharp');

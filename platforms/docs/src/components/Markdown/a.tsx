@@ -6,7 +6,7 @@ const LinkWrapper = styled('a')(
   ({ theme }) => `
   color: ${theme.color.themes.primary.color};
   text-decoration: none;
-  transition: ${theme.animation.standard('all')};
+  transition: ${theme.transition.standard('all')};
   display: inline-block;
   padding: 0 3px;
 `,

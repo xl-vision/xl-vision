@@ -1,13 +1,5 @@
 /* eslint-disable */
+import React from 'react';
+import createIcon from './utils/createIcon';
 
-import React from 'react'
-
-const AmpStoriesFilled = () => {
-  return (
-    <svg viewBox="0 0 24 24"><path fill="none" d="M0 0H24V24H0z" /><path d="M7 4H17V19H7z" /><path d="M3 6H5V17H3z" /><path d="M19 6H21V17H19z" /></svg>
-  )
-};
-
-AmpStoriesFilled.displayName = 'AmpStoriesFilled';
-
-export default AmpStoriesFilled;
+export default createIcon(<svg viewBox="0 0 24 24"><path fill="none" d="M0 0H24V24H0z" /><path d="M7 4H17V19H7z" /><path d="M3 6H5V17H3z" /><path d="M19 6H21V17H19z" /></svg>, 'AmpStoriesFilled');

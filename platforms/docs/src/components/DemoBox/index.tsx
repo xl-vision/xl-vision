@@ -49,7 +49,7 @@ const CodeWrapper = styled('div')(
 
   &.slide-enter-active,
   &.slide-leave-active {
-    transition: ${theme.animation.standard('all')};
+    transition: ${theme.transition.standard('all')};
   }
 
   &.slide-enter,

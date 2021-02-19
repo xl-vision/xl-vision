@@ -1,5 +1,5 @@
 import createColors, { Color } from './color';
-import createAnimation, { Animation } from './animation';
+import createTransition, { Transition } from './transition';
 import createTypography, { Typography } from './typography';
 import mixins from './mixins';
 import createElevations from './elevations';
@@ -7,7 +7,7 @@ import createBreakpoints, { Breakpoints } from './breakpoints';
 
 export type BaseTheme = Partial<{
   color: Color;
-  animation: Animation;
+  transition: Transition;
   typography: Typography;
   breakpoints: Breakpoints;
   clsPrefix: string;
@@ -16,10 +16,10 @@ export type BaseTheme = Partial<{
 export type Theme = ReturnType<typeof createTheme>;
 
 const createTheme = (theme: BaseTheme = {}) => {
-  const { color, animation, typography, breakpoints, clsPrefix = 'xl' } = theme;
+  const { color, transition, typography, breakpoints, clsPrefix = 'xl' } = theme;
 
   const outputColor = createColors(color);
-  const outputAnimation = createAnimation(animation);
+  const outputTransition = createTransition(transition);
   const outputTypography = createTypography(typography);
   const outputBreakpoints = createBreakpoints(breakpoints);
 
@@ -27,7 +27,7 @@ const createTheme = (theme: BaseTheme = {}) => {
 
   return {
     color: outputColor,
-    animation: outputAnimation,
+    transition: outputTransition,
     typography: outputTypography,
     breakpoints: outputBreakpoints,
     mixins,

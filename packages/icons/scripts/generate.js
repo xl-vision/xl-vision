@@ -12,15 +12,21 @@ const metadataPath = path.resolve(__dirname, '../metadata.json');
 
 const destPath = path.resolve(__dirname, '../src');
 
+const templatePath = path.resolve(__dirname, 'template');
+
 // 有重复的文件，忽略其中一个
 const ignoreNames = ['addchart'];
 
 async function generate() {
   await fs.emptyDir(destPath);
+  await fs.copy(path.resolve(templatePath, 'utils'), path.resolve(destPath, 'utils'), {
+    recursive: true,
+  });
+
   const metadata = {};
   const files = await fs.readdir(basePath);
 
-  const template = await fs.readFile(path.resolve(__dirname, 'template.tsx'), 'utf-8');
+  const template = await fs.readFile(path.resolve(templatePath, 'template.tsx'), 'utf-8');
 
   let indexContent = '/* eslint-disable */\n';
 
@@ -28,13 +34,13 @@ async function generate() {
     const dir = path.resolve(basePath, category);
     const icons = await fs.readdir(dir);
     for (const icon of icons) {
-      const subdir = path.resolve(dir, icon);
-      const iconTypes = await fs.readdir(subdir);
-
       if (ignoreNames.includes(icon)) {
         // eslint-disable-next-line no-continue
         continue;
       }
+
+      const subdir = path.resolve(dir, icon);
+      const iconTypes = await fs.readdir(subdir);
 
       for (const type of iconTypes) {
         let realType = type.replace(/^materialicons/, '');

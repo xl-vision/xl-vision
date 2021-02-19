@@ -1,7 +1,14 @@
-export { styled, createGlobalStyles } from './styles';
+export * from './styles';
 export { default as ThemeProvider } from './ThemeProvider';
+export * from './ThemeProvider';
 export { default as Transition } from './Transition';
+export * from './Transition';
 export { default as CSSTransition } from './CSSTransition';
+export * from './CSSTransition';
 export { default as CollapseTransition } from './CollapseTransition';
+export * from './CollapseTransition';
 export { default as TransitionGroup } from './TransitionGroup';
+export * from './TransitionGroup';
 export { default as Row } from './Row';
+export { default as Icon } from './Icon';
+export * from './Icon';
