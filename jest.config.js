@@ -13,7 +13,11 @@ module.exports = {
     '<rootDir>/packages/*/src/**/__test__/*.{ts,tsx}',
   ],
   // collectCoverage: true,
-  collectCoverageFrom: ['<rootDir>/packages/*/src/**/*.{ts,tsx}', '!**/__*__/**'],
+  collectCoverageFrom: [
+    '<rootDir>/packages/*/src/**/*.{ts,tsx}',
+    '!<rootDir>/packages/icons/**',
+    '!**/__*__/**',
+  ],
   snapshotSerializers: ['enzyme-to-json/serializer'],
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/' }),
   globals: {
