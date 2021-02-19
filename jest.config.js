@@ -8,9 +8,15 @@ module.exports = {
   // testEnvironment: 'node',
   setupFiles: ['./test/setup.js'],
   setupFilesAfterEnv: ['./test/setup.env.js'],
-  testMatch: ['**/test/__test__/*.{ts,tsx}', '**/packages/*/src/**/__test__/*.{ts,tsx}'],
+  testMatch: [
+    '<rootDir>/test/__test__/*.{ts,tsx}',
+    '<rootDir>/packages/*/src/**/__test__/*.{ts,tsx}',
+  ],
   // collectCoverage: true,
-  collectCoverageFrom: ['**/packages/*/src/**/*.{ts,tsx}', '!**/__*__/**'],
+  collectCoverageFrom: [
+    '<rootDir>/packages/*/src/**/*.{ts,tsx}',
+    '!**/__*__/**',
+  ],
   snapshotSerializers: ['enzyme-to-json/serializer'],
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/' }),
   globals: {
