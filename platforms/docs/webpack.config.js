@@ -233,6 +233,7 @@ module.exports = {
               babelrc: false,
               configFile: false,
               compact: false,
+              cacheDirectory: true,
               ...babelConfig,
             },
           },
@@ -246,6 +247,7 @@ module.exports = {
                   babelrc: false,
                   configFile: false,
                   compact: false,
+                  cacheDirectory: true,
                   ...babelConfig,
                 },
               },
@@ -337,6 +339,6 @@ module.exports = {
   devServer: {
     compress: true,
     host: '0.0.0.0',
-    historyApiFallback: true
+    historyApiFallback: true,
   },
 };

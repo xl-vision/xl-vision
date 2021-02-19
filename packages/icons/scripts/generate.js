@@ -16,11 +16,7 @@ const destPath = path.resolve(__dirname, '../src');
 const ignoreNames = ['addchart'];
 
 async function generate() {
-  const exist = fs.existsSync(destPath);
-  if (exist) {
-    await fs.remove(destPath);
-  }
-  await fs.mkdirp(destPath);
+  await fs.emptyDir(destPath);
   const metadata = {};
   const files = await fs.readdir(basePath);
 
