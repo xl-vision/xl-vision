@@ -1,0 +1,57 @@
+{
+  "name": "@xl-vision/icons",
+  "version": "0.0.0",
+  "description": "xl-vision react components for icon.",
+  "author": "Rhys Xia <xrs4433@outlook.com>",
+  "license": "MIT",
+  "main": "legacy/index.js",
+  "module": "modern/index.js",
+  "types": "legacy/index.d.ts",
+  "files": [
+    "legacy",
+    "modern"
+  ],
+  "keywords": [
+    "xl-vision",
+    "react",
+    "styles"
+  ],
+  "homepage": "https://github.com/xl-vision/xl-vision-next/tree/master/packages/react#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xl-vision/xl-vision-next.git"
+  },
+  "scripts": {
+    "build:legacy": "node ../../scripts/build legacy",
+    "build:modern": "node ../../scripts/build modern",
+    "build": "npm run build:legacy && npm run build:modern",
+    "generate": "node ./scripts/generate.js"
+  },
+  "bugs": {
+    "url": "https://github.com/xl-vision/xl-vision-next/issues"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.12.5",
+    "clsx": "^1.1.1",
+    "prop-types": "^15.7.2"
+  },
+  "peerDependencies": {
+    "@types/react": "^16.8.0 || ^17.0.0",
+    "react": "^16.8.0 || ^17.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    }
+  },
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "fs-extra": "^9.1.0",
+    "mustache": "^4.1.0",
+    "svgo": "^2.0.0"
+  }
+}

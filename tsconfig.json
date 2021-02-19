@@ -11,14 +11,17 @@
     "allowSyntheticDefaultImports": true,
     "declaration": true,
     "baseUrl": ".",
+    "resolveJsonModule": true,
     "paths": {
       "@xl-vision/styled-engine-types": ["./packages/styled-engine-types/src"],
       "@xl-vision/styled-engine-types/*": ["./packages/styled-engine-types/src/*"],
       "@xl-vision/styled-engine": ["./packages/styled-engine/src"],
       "@xl-vision/styled-engine/*": ["./packages/styled-engine/src/*"],
+      "@xl-vision/icons": ["./packages/icons/src"],
+      "@xl-vision/icons/*": ["./packages/icons/src/*"],
       "@xl-vision/react": ["./packages/react/src"],
       "@xl-vision/react/*": ["./packages/react/src/*"]
     }
   },
-  "exclude": ["**/node_modules"]
+  "exclude": ["**/node_modules", "**/modern", "**/legacy"]
 }
