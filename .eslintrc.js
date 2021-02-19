@@ -4,6 +4,7 @@ const ignorePackages = [
   '^@xl-vision/styled-engine-types',
   '^@xl-vision/styled-engine',
   '^@xl-vision/react',
+  '^@xl-vision/icons',
 ];
 
 module.exports = {
@@ -140,7 +141,7 @@ module.exports = {
       },
     },
     {
-      files: ['packages/**'],
+      files: ['packages/*/src/**/*.ts', 'packages/*/src/**/*.tsx'],
       rules: {
         'import/no-unresolved': [
           'error',
@@ -151,7 +152,7 @@ module.exports = {
       },
     },
     {
-      files: ['**/__test__/**', '**/__doc__/**'],
+      files: ['test/__test__/**', 'packages/*/src/**/__test__/**', 'packages/*/src/**/__doc__/**'],
       rules: {
         'react/display-name': 'off',
         'react/button-has-type': 'off',

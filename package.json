@@ -15,9 +15,10 @@
   "scripts": {
     "dev": "cd platforms/docs && npm run dev",
     "docs": "cd platforms/docs && npm run docs",
+    "icon:generate": "cd packages/icons && npm run generate",
     "commit": "git-cz",
     "test": "jest",
-    "lint": "eslint . --ext .js,.ts,.jsx,.tsx --max-warnings 0",
+    "lint": "eslint . --cache --report-unused-disable-directives --ext .js,.ts,.jsx,.tsx --max-warnings 0",
     "version": "lerna version --exact --conventional-commits --no-push -f",
     "build": "lerna run --parallel --scope \"@xl-vision/*\" build",
     "bootstrap": "lerna bootstrap"

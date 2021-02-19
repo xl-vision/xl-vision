@@ -156,6 +156,7 @@ module.exports = {
       // 'react-dom$': 'react-dom'
       '@xl-vision/styled-engine': packageResolve('styled-engine'),
       '@xl-vision/react': packageResolve('react'),
+      '@xl-vision/icons': packageResolve('icons'),
     },
   },
   optimization: {
@@ -214,7 +215,6 @@ module.exports = {
   },
   module: {
     rules: [
-      { parser: { requireEnsure: false } },
       {
         oneOf: [
           {
@@ -233,6 +233,7 @@ module.exports = {
               babelrc: false,
               configFile: false,
               compact: false,
+              cacheDirectory: true,
               ...babelConfig,
             },
           },
@@ -246,6 +247,7 @@ module.exports = {
                   babelrc: false,
                   configFile: false,
                   compact: false,
+                  cacheDirectory: true,
                   ...babelConfig,
                 },
               },

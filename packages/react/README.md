@@ -1,11 +1,4 @@
-# `@xl-vision/styled-engine`
+# `@xl-vision/react`
 
 > TODO: description
 
-## Usage
-
-```
-const styledEngine = require('@xl-vision/styled-engine');
-
-// TODO: DEMONSTRATE API
-```

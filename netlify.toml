@@ -1,9 +1,16 @@
 [build]
   publish = ""
   command = ""
+
 [context.production]
   publish = ""
   command = ""
+
+[[headers]]
+  for = "/*"
+
+  [headers.values]
+    cache-control = "max-age=7200"
 
 [[redirects]]
   from = "/*"

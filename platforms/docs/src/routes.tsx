@@ -20,6 +20,11 @@ const route: Array<Route> = [
     component: () => import('./views/index.mdx'),
   },
   {
+    name: '图标',
+    path: '/icon',
+    component: () => import('./views/icon/index.mdx'),
+  },
+  {
     name: '布局',
     children: [
       {
