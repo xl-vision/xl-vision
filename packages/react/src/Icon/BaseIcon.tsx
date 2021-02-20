@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { isDevelopment } from '../utils/env';
 
 export interface BaseIconProps extends React.SVGAttributes<SVGSVGElement> {
   children: React.ReactElement<React.SVGAttributes<SVGSVGElement>>;
@@ -17,6 +18,8 @@ BaseIcon.propTypes = {
   children: PropTypes.element.isRequired,
 };
 
-BaseIcon.displayName = 'BaseIcon';
+if (isDevelopment) {
+  BaseIcon.displayName = 'BaseIcon';
+}
 
 export default React.memo(BaseIcon);

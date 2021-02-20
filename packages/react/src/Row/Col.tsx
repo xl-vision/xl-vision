@@ -2,8 +2,10 @@ import { CSSObject } from '@xl-vision/styled-engine-types';
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { styled, ThemeContext } from '../styles';
+import { styled } from '../styles';
 import RowContext from './RowContext';
+import { isDevelopment } from '../utils/env';
+import ThemeContext from '../ThemeProvider/ThemeContext';
 
 export type ColSpanType = number | Partial<Record<string, number>>;
 
@@ -65,7 +67,7 @@ const ColRoot = styled('div', {
   };
 });
 
-const Col: React.FunctionComponent<ColProps> = (props) => {
+const Col = React.forwardRef<HTMLDivElement, ColProps>((props, ref) => {
   const { children, className, offset, order, pull, push, column, style, ...others } = props;
 
   const { matches, gutter } = React.useContext(RowContext);
@@ -174,11 +176,16 @@ const Col: React.FunctionComponent<ColProps> = (props) => {
         pull: computedPull,
         order: computedOrder,
       }}
+      ref={ref}
     >
       {children}
     </ColRoot>
   );
-};
+});
+
+if (isDevelopment) {
+  Col.displayName = 'Col';
+}
 
 Col.propTypes = {
   column: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired])

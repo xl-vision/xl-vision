@@ -9,6 +9,7 @@ import Transition, {
   EventHook,
   TransitionProps,
 } from '../Transition';
+import { isDevelopment } from '../utils/env';
 
 export type CSSTransitionClassesObject = {
   appear?: string;
@@ -328,6 +329,10 @@ CSSTransition.propTypes = {
   afterDisappear: PropTypes.func,
   disappearCancelled: PropTypes.func,
 };
+
+if (isDevelopment) {
+  CSSTransition.displayName = 'CSSTransition';
+}
 
 export default CSSTransition;
 

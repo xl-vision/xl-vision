@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { styled, ThemeContext } from '../styles';
+import { styled } from '../styles';
 import BaseIcon, { BaseIconProps } from './BaseIcon';
+import { isDevelopment } from '../utils/env';
+import ThemeContext from '../ThemeProvider/ThemeContext';
 
 export interface IconProps extends BaseIconProps {}
 
@@ -22,7 +24,7 @@ const SvgIcon = styled(BaseIcon, {
   };
 });
 
-const Icon: React.FunctionComponent<IconProps> = React.forwardRef((props, ref) => {
+const Icon = React.forwardRef<SVGSVGElement, IconProps>((props, ref) => {
   const { viewBox = '0 0 24 24', className, ...others } = props;
 
   const { clsPrefix } = React.useContext(ThemeContext);
@@ -39,6 +41,8 @@ Icon.propTypes = {
   className: PropTypes.string,
 };
 
-Icon.displayName = 'Icon';
+if (isDevelopment) {
+  Icon.displayName = 'Icon';
+}
 
 export default Icon;

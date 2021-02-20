@@ -5,6 +5,7 @@ import useEventCallback from '../hooks/useEventCallback';
 import useLayoutEffect from '../hooks/useLayoutEffect';
 import useForkRef from '../hooks/useForkRef';
 import useLifecycleState, { LifecycleState } from '../hooks/useLifecycleState';
+import { isDevelopment } from '../utils/env';
 
 enum TransitionState {
   STATE_ENTERING, // 1
@@ -238,6 +239,10 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
     ref: forkRef,
   });
 };
+
+if (isDevelopment) {
+  Transition.displayName = 'Transition';
+}
 
 Transition.propTypes = {
   beforeAppear: PropTypes.func,

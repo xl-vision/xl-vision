@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { ThemeContext, createTheme, BaseTheme } from '../styles';
+import { isDevelopment } from '../utils/env';
+import createTheme, { BaseTheme } from './createTheme';
+import ThemeContext from './ThemeContext';
 
 export type ThemeProviderProps = {
   children: React.ReactNode;
@@ -16,6 +18,10 @@ const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = (props) => {
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 };
+
+if (isDevelopment) {
+  ThemeProvider.displayName = 'ThemeProvider';
+}
 
 ThemeProvider.propTypes = {
   children: PropTypes.node.isRequired,
