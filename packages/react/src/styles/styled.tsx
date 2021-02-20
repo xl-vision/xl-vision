@@ -8,8 +8,9 @@ import {
 import innerStyled from '@xl-vision/styled-engine';
 import React from 'react';
 import clsx from 'clsx';
-import { Theme } from './createTheme';
-import ThemeContext from './ThemeContext';
+import { isDevelopment } from '../utils/env';
+import { Theme } from '../ThemeProvider/createTheme';
+import ThemeContext from '../ThemeProvider/ThemeContext';
 
 export type XlOptions = {
   name?: string;
@@ -85,7 +86,9 @@ const styled = <
       );
     });
 
-    Cmp.displayName = displayName;
+    if (isDevelopment) {
+      Cmp.displayName = displayName;
+    }
 
     return Cmp;
   };

@@ -6,8 +6,8 @@ import {
   Interpolation,
 } from '@xl-vision/styled-engine-types';
 import React from 'react';
-import { Theme } from './createTheme';
-import ThemeContext from './ThemeContext';
+import { Theme } from '../ThemeProvider/createTheme';
+import ThemeContext from '../ThemeProvider/ThemeContext';
 
 const createGlobalStyles = <P extends { theme: Theme } = { theme: Theme }>(
   first: TemplateStringsArray | CSSObject | FunctionInterpolation<P>,

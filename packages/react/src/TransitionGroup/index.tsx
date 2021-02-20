@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import CSSTransition, { CSSTransitionClassesObject, CSSTransitionProps } from '../CSSTransition';
 import useLayoutEffect from '../hooks/useLayoutEffect';
+import { isDevelopment } from '../utils/env';
 import { omit } from '../utils/function';
 import diff, { DiffData } from './diff';
 
@@ -156,6 +157,10 @@ const TransitionGroup: React.FunctionComponent<TransitionGroupProps> = (props) =
 
   return <>{nodes}</>;
 };
+
+if (isDevelopment) {
+  TransitionGroup.displayName = 'TransitionGroup';
+}
 
 TransitionGroup.propTypes = {
   children: PropTypes.arrayOf(PropTypes.element.isRequired).isRequired,

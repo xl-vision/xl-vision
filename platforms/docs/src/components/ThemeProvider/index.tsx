@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ThemeProvider as XlThemeProvider } from '@xl-vision/react';
-import { BaseTheme } from '@xl-vision/react/styles/createTheme';
+import { ThemeProvider as XlThemeProvider, BaseTheme } from '@xl-vision/react';
 
 export type ThemeProviderProps = {
   children: React.ReactNode;

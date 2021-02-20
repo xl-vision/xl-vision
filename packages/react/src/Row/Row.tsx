@@ -1,7 +1,9 @@
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { styled, ThemeContext } from '../styles';
+import { styled } from '../styles';
+import ThemeContext from '../ThemeProvider/ThemeContext';
+import { isDevelopment } from '../utils/env';
 import { ColProps } from './Col';
 import RowContext from './RowContext';
 import useMedia from './useMedia';
@@ -57,7 +59,7 @@ const RowRoot = styled('div', {
   };
 });
 
-const Row: React.FunctionComponent<RowProps> = (props) => {
+const Row = React.forwardRef<HTMLDivElement, RowProps>((props, ref) => {
   const { align, justify, children, gutter, type, style, className, ...others } = props;
 
   const { breakpoints, clsPrefix } = React.useContext(ThemeContext);
@@ -111,12 +113,17 @@ const Row: React.FunctionComponent<RowProps> = (props) => {
           justify,
           type,
         }}
+        ref={ref}
       >
         {children}
       </RowRoot>
     </RowContext.Provider>
   );
-};
+});
+
+if (isDevelopment) {
+  Row.displayName = 'Row';
+}
 
 Row.propTypes = {
   align: PropTypes.oneOf(['top', 'middle', 'bottom']),

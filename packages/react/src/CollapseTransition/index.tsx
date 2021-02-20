@@ -3,6 +3,7 @@ import React from 'react';
 import CSSTransition, { CSSTransitionClasses, TransitionElement } from '../CSSTransition';
 import { forceReflow } from '../utils/transition';
 import { removeClass, addClass } from '../utils/class';
+import { isDevelopment } from '../utils/env';
 
 export interface CollapseTransitionProp {
   children: React.ReactElement<React.HTMLAttributes<HTMLElement>>;
@@ -123,6 +124,10 @@ const CollapseTransition: React.FunctionComponent<CollapseTransitionProp> = (pro
     </CSSTransition>
   );
 };
+
+if (isDevelopment) {
+  CollapseTransition.displayName = 'CollapseTransition';
+}
 
 CollapseTransition.propTypes = {
   transitionClasses: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
