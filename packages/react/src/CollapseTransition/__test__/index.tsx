@@ -40,8 +40,6 @@ describe('CollapseTransition', () => {
       in: true,
     });
 
-    wrapper.update();
-
     await act(() => wait(75));
 
     expect(wrapper.render()).toMatchSnapshot();
@@ -49,8 +47,6 @@ describe('CollapseTransition', () => {
     wrapper.setProps({
       in: false,
     });
-
-    wrapper.update();
 
     await act(() => wait(75));
 
@@ -70,8 +66,6 @@ describe('CollapseTransition', () => {
       in: true,
     });
 
-    wrapper.update();
-
     await act(() => wait(75));
 
     expect(wrapper.render()).toMatchSnapshot();
@@ -79,8 +73,6 @@ describe('CollapseTransition', () => {
     wrapper.setProps({
       in: false,
     });
-
-    wrapper.update();
 
     await act(() => wait(75));
 

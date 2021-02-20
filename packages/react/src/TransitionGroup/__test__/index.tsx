@@ -44,15 +44,12 @@ describe('TransitionGroup', () => {
     const wrapper = mount(<Comp arr={prevArr} />);
     expect(fn.mock.calls.length).toBe(0);
     wrapper.setProps({ arr: nextArr });
-    wrapper.update();
     expect(fn.mock.calls.length).toBe(1);
 
     wrapper.setProps({ arr: nextArr });
-    wrapper.update();
     expect(fn.mock.calls.length).toBe(1);
 
     wrapper.setProps({ arr: nextArr2 });
-    wrapper.update();
     expect(fn.mock.calls.length).toBe(2);
   });
 });
