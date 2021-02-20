@@ -159,6 +159,7 @@ module.exports = {
         'import/no-unresolved': 'off',
         'import/no-extraneous-dependencies': 'off',
         'import/no-named-as-default': 'off',
+        'unicorn/consistent-function-scoping': 'off',
       },
     },
   ],

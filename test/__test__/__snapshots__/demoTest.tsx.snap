@@ -9103,6 +9103,1501 @@ exports[`renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
 </Component>
 `;
 
+exports[`renders ./packages/react/src/Ripple/__doc__/Advance.tsx correctly 1`] = `
+.c1 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c0 {
+  position: relative;
+  height: 100px;
+  background-color: rgba(0,0,0,0.12);
+  color: #3f51b5;
+  font-size: 26px;
+  text-align: center;
+  line-height: 100px;
+}
+
+.c0 .xl-ripple {
+  opacity: 0.5;
+}
+
+.c0 .ripple-enter-active,
+.c0 .ripple-leave-active {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+.c0 .ripple-enter,
+.c0 .ripple-leave-to {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c0 .ripple-enter-to,
+.c0 .ripple-leave {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+<Component>
+  <ForwardRef
+    onDragLeave={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+  >
+    <styled.div
+      className=""
+      onDragLeave={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      theme={
+        Object {
+          "breakpoints": Object {
+            "column": 24,
+            "unit": "px",
+            "values": Object {
+              "lg": 992,
+              "md": 768,
+              "sm": 576,
+              "xl": 1200,
+              "xs": 0,
+              "xxl": 1600,
+            },
+          },
+          "clsPrefix": "xl",
+          "color": Object {
+            "action": Object {
+              "active": 0.12,
+              "disabled": 0.38,
+              "dragged": 0.08,
+              "enabled": 0,
+              "focus": 0.12,
+              "hover": 0.04,
+              "pressed": 0.12,
+              "selected": 0.08,
+            },
+            "background": "#fafafa",
+            "divider": "rgba(0, 0, 0, 0.12)",
+            "text": Object {
+              "disabled": "rgba(0, 0, 0, 0.38)",
+              "hint": "rgba(0, 0, 0, 0.38)",
+              "icon": "rgba(0, 0, 0, 0.38)",
+              "primary": "rgba(0, 0, 0, 0.87)",
+              "secondary": "rgba(0, 0, 0, 0.54)",
+            },
+            "themes": Object {
+              "error": Object {
+                "action": Object {
+                  "active": 0.24,
+                  "disabled": 0.38,
+                  "dragged": 0.16,
+                  "enabled": 0,
+                  "focus": 0.12,
+                  "hover": 0.08,
+                  "pressed": 0.32,
+                  "selected": 0.16,
+                },
+                "background": "#303030",
+                "color": "#f44336",
+                "divider": "rgba(255, 255, 255, 0.12)",
+                "text": Object {
+                  "disabled": "rgba(255, 255, 255, 0.5)",
+                  "hint": "rgba(255, 255, 255, 0.5)",
+                  "icon": "rgba(255, 255, 255, 0.5)",
+                  "primary": "#fff",
+                  "secondary": "rgba(255, 255, 255, 0.7)",
+                },
+              },
+              "info": Object {
+                "action": Object {
+                  "active": 0.24,
+                  "disabled": 0.38,
+                  "dragged": 0.16,
+                  "enabled": 0,
+                  "focus": 0.12,
+                  "hover": 0.08,
+                  "pressed": 0.32,
+                  "selected": 0.16,
+                },
+                "background": "#303030",
+                "color": "#2196f3",
+                "divider": "rgba(255, 255, 255, 0.12)",
+                "text": Object {
+                  "disabled": "rgba(255, 255, 255, 0.5)",
+                  "hint": "rgba(255, 255, 255, 0.5)",
+                  "icon": "rgba(255, 255, 255, 0.5)",
+                  "primary": "#fff",
+                  "secondary": "rgba(255, 255, 255, 0.7)",
+                },
+              },
+              "primary": Object {
+                "action": Object {
+                  "active": 0.24,
+                  "disabled": 0.38,
+                  "dragged": 0.16,
+                  "enabled": 0,
+                  "focus": 0.12,
+                  "hover": 0.08,
+                  "pressed": 0.32,
+                  "selected": 0.16,
+                },
+                "background": "#303030",
+                "color": "#3f51b5",
+                "divider": "rgba(255, 255, 255, 0.12)",
+                "text": Object {
+                  "disabled": "rgba(255, 255, 255, 0.5)",
+                  "hint": "rgba(255, 255, 255, 0.5)",
+                  "icon": "rgba(255, 255, 255, 0.5)",
+                  "primary": "#fff",
+                  "secondary": "rgba(255, 255, 255, 0.7)",
+                },
+              },
+              "secondary": Object {
+                "action": Object {
+                  "active": 0.24,
+                  "disabled": 0.38,
+                  "dragged": 0.16,
+                  "enabled": 0,
+                  "focus": 0.12,
+                  "hover": 0.08,
+                  "pressed": 0.32,
+                  "selected": 0.16,
+                },
+                "background": "#303030",
+                "color": "#f50057",
+                "divider": "rgba(255, 255, 255, 0.12)",
+                "text": Object {
+                  "disabled": "rgba(255, 255, 255, 0.5)",
+                  "hint": "rgba(255, 255, 255, 0.5)",
+                  "icon": "rgba(255, 255, 255, 0.5)",
+                  "primary": "#fff",
+                  "secondary": "rgba(255, 255, 255, 0.7)",
+                },
+              },
+              "success": Object {
+                "action": Object {
+                  "active": 0.12,
+                  "disabled": 0.38,
+                  "dragged": 0.08,
+                  "enabled": 0,
+                  "focus": 0.12,
+                  "hover": 0.04,
+                  "pressed": 0.12,
+                  "selected": 0.08,
+                },
+                "background": "#fafafa",
+                "color": "#4caf50",
+                "divider": "rgba(0, 0, 0, 0.12)",
+                "text": Object {
+                  "disabled": "rgba(0, 0, 0, 0.38)",
+                  "hint": "rgba(0, 0, 0, 0.38)",
+                  "icon": "rgba(0, 0, 0, 0.38)",
+                  "primary": "rgba(0, 0, 0, 0.87)",
+                  "secondary": "rgba(0, 0, 0, 0.54)",
+                },
+              },
+              "warning": Object {
+                "action": Object {
+                  "active": 0.12,
+                  "disabled": 0.38,
+                  "dragged": 0.08,
+                  "enabled": 0,
+                  "focus": 0.12,
+                  "hover": 0.04,
+                  "pressed": 0.12,
+                  "selected": 0.08,
+                },
+                "background": "#fafafa",
+                "color": "#ff9800",
+                "divider": "rgba(0, 0, 0, 0.12)",
+                "text": Object {
+                  "disabled": "rgba(0, 0, 0, 0.38)",
+                  "hint": "rgba(0, 0, 0, 0.38)",
+                  "icon": "rgba(0, 0, 0, 0.38)",
+                  "primary": "rgba(0, 0, 0, 0.87)",
+                  "secondary": "rgba(0, 0, 0, 0.54)",
+                },
+              },
+            },
+          },
+          "elevations": [Function],
+          "mixins": Object {
+            "clearfix": Object {
+              "&:after": Object {
+                "clear": "both",
+              },
+              "&:before, &:after": Object {
+                "boxSizing": "border-box",
+                "content": "\\" \\"",
+                "display": "table",
+              },
+              "zoom": 1,
+            },
+          },
+          "transition": Object {
+            "durations": Object {
+              "complex": "375",
+              "enter": "225ms",
+              "leave": "195ms",
+              "short": "250ms",
+              "shorter": "200ms",
+              "shortest": "150ms",
+              "standard": "300ms",
+            },
+            "enter": [Function],
+            "functions": Object {
+              "acceleration": "cubic-bezier(0.4, 0, 1, 1)",
+              "deceleration": "cubic-bezier(0, 0, 0.2, 1)",
+              "sharp": "cubic-bezier(0.4, 0, 0.6, 1)",
+              "standard": "cubic-bezier(0.4, 0, 0.2, 1)",
+            },
+            "leavePermanent": [Function],
+            "leaveTemporary": [Function],
+            "standard": [Function],
+          },
+          "typography": Object {
+            "baseFontSize": 16,
+            "body1": Object {
+              "fontSize": "1.000rem",
+              "fontWeight": 400,
+              "letterSpacing": "0.031em",
+              "lineHeight": 1.5,
+              "textDecoration": "inherit",
+              "textTransform": "inherit",
+            },
+            "body2": Object {
+              "fontSize": "0.875rem",
+              "fontWeight": 400,
+              "letterSpacing": "0.018em",
+              "lineHeight": 1.3,
+              "textDecoration": "inherit",
+              "textTransform": "inherit",
+            },
+            "button": Object {
+              "fontSize": "0.875rem",
+              "fontWeight": 500,
+              "letterSpacing": "0.089em",
+              "lineHeight": 1.75,
+              "textDecoration": "none",
+              "textTransform": "uppercase",
+            },
+            "caption": Object {
+              "fontSize": "0.750rem",
+              "fontWeight": 400,
+              "letterSpacing": "0.033em",
+              "lineHeight": 1.66,
+              "textDecoration": "inherit",
+              "textTransform": "inherit",
+            },
+            "fontFamily": "'Roboto', 'Helvetica Neue', 'segoe ui', 'Arial', 'noto sans', sans-serif",
+            "fontWeight": Object {
+              "bold": 700,
+              "light": 300,
+              "medium": 500,
+              "regular": 400,
+            },
+            "h1": Object {
+              "fontSize": "6.000rem",
+              "fontWeight": 300,
+              "letterSpacing": "-0.016em",
+              "lineHeight": 1.167,
+              "textDecoration": "inherit",
+              "textTransform": "inherit",
+            },
+            "h2": Object {
+              "fontSize": "3.750rem",
+              "fontWeight": 300,
+              "letterSpacing": "-0.008em",
+              "lineHeight": 1.2,
+              "textDecoration": "inherit",
+              "textTransform": "inherit",
+            },
+            "h3": Object {
+              "fontSize": "3.000rem",
+              "fontWeight": 400,
+              "letterSpacing": "0.000em",
+              "lineHeight": 1.167,
+              "textDecoration": "inherit",
+              "textTransform": "inherit",
+            },
+            "h4": Object {
+              "fontSize": "2.125rem",
+              "fontWeight": 400,
+              "letterSpacing": "0.007em",
+              "lineHeight": 1.235,
+              "textDecoration": "inherit",
+              "textTransform": "inherit",
+            },
+            "h5": Object {
+              "fontSize": "1.500rem",
+              "fontWeight": 400,
+              "letterSpacing": "0.000em",
+              "lineHeight": 1.334,
+              "textDecoration": "inherit",
+              "textTransform": "inherit",
+            },
+            "h6": Object {
+              "fontSize": "1.250rem",
+              "fontWeight": 500,
+              "letterSpacing": "0.013em",
+              "lineHeight": 1.6,
+              "textDecoration": "inherit",
+              "textTransform": "inherit",
+            },
+            "overline": Object {
+              "fontSize": "0.750rem",
+              "fontWeight": 500,
+              "letterSpacing": "0.167em",
+              "lineHeight": 2.66,
+              "textDecoration": "none",
+              "textTransform": "uppercase",
+            },
+            "subtitle1": Object {
+              "fontSize": "1.000rem",
+              "fontWeight": 400,
+              "letterSpacing": "0.009em",
+              "lineHeight": 1.75,
+              "textDecoration": "inherit",
+              "textTransform": "inherit",
+            },
+            "subtitle2": Object {
+              "fontSize": "0.875rem",
+              "fontWeight": 500,
+              "letterSpacing": "0.007em",
+              "lineHeight": 1.57,
+              "textDecoration": "inherit",
+              "textTransform": "inherit",
+            },
+          },
+        }
+      }
+    >
+      <div
+        className="c0"
+        onDragLeave={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+      >
+        click me
+        <Ripple
+          leaveAfterEnter={true}
+          transitionClasses="ripple"
+        >
+          <RippleRoot
+            className="xl-ripple-root"
+          >
+            <styled.div
+              className="xl-ripple xl-ripple-root"
+              theme={
+                Object {
+                  "breakpoints": Object {
+                    "column": 24,
+                    "unit": "px",
+                    "values": Object {
+                      "lg": 992,
+                      "md": 768,
+                      "sm": 576,
+                      "xl": 1200,
+                      "xs": 0,
+                      "xxl": 1600,
+                    },
+                  },
+                  "clsPrefix": "xl",
+                  "color": Object {
+                    "action": Object {
+                      "active": 0.12,
+                      "disabled": 0.38,
+                      "dragged": 0.08,
+                      "enabled": 0,
+                      "focus": 0.12,
+                      "hover": 0.04,
+                      "pressed": 0.12,
+                      "selected": 0.08,
+                    },
+                    "background": "#fafafa",
+                    "divider": "rgba(0, 0, 0, 0.12)",
+                    "text": Object {
+                      "disabled": "rgba(0, 0, 0, 0.38)",
+                      "hint": "rgba(0, 0, 0, 0.38)",
+                      "icon": "rgba(0, 0, 0, 0.38)",
+                      "primary": "rgba(0, 0, 0, 0.87)",
+                      "secondary": "rgba(0, 0, 0, 0.54)",
+                    },
+                    "themes": Object {
+                      "error": Object {
+                        "action": Object {
+                          "active": 0.24,
+                          "disabled": 0.38,
+                          "dragged": 0.16,
+                          "enabled": 0,
+                          "focus": 0.12,
+                          "hover": 0.08,
+                          "pressed": 0.32,
+                          "selected": 0.16,
+                        },
+                        "background": "#303030",
+                        "color": "#f44336",
+                        "divider": "rgba(255, 255, 255, 0.12)",
+                        "text": Object {
+                          "disabled": "rgba(255, 255, 255, 0.5)",
+                          "hint": "rgba(255, 255, 255, 0.5)",
+                          "icon": "rgba(255, 255, 255, 0.5)",
+                          "primary": "#fff",
+                          "secondary": "rgba(255, 255, 255, 0.7)",
+                        },
+                      },
+                      "info": Object {
+                        "action": Object {
+                          "active": 0.24,
+                          "disabled": 0.38,
+                          "dragged": 0.16,
+                          "enabled": 0,
+                          "focus": 0.12,
+                          "hover": 0.08,
+                          "pressed": 0.32,
+                          "selected": 0.16,
+                        },
+                        "background": "#303030",
+                        "color": "#2196f3",
+                        "divider": "rgba(255, 255, 255, 0.12)",
+                        "text": Object {
+                          "disabled": "rgba(255, 255, 255, 0.5)",
+                          "hint": "rgba(255, 255, 255, 0.5)",
+                          "icon": "rgba(255, 255, 255, 0.5)",
+                          "primary": "#fff",
+                          "secondary": "rgba(255, 255, 255, 0.7)",
+                        },
+                      },
+                      "primary": Object {
+                        "action": Object {
+                          "active": 0.24,
+                          "disabled": 0.38,
+                          "dragged": 0.16,
+                          "enabled": 0,
+                          "focus": 0.12,
+                          "hover": 0.08,
+                          "pressed": 0.32,
+                          "selected": 0.16,
+                        },
+                        "background": "#303030",
+                        "color": "#3f51b5",
+                        "divider": "rgba(255, 255, 255, 0.12)",
+                        "text": Object {
+                          "disabled": "rgba(255, 255, 255, 0.5)",
+                          "hint": "rgba(255, 255, 255, 0.5)",
+                          "icon": "rgba(255, 255, 255, 0.5)",
+                          "primary": "#fff",
+                          "secondary": "rgba(255, 255, 255, 0.7)",
+                        },
+                      },
+                      "secondary": Object {
+                        "action": Object {
+                          "active": 0.24,
+                          "disabled": 0.38,
+                          "dragged": 0.16,
+                          "enabled": 0,
+                          "focus": 0.12,
+                          "hover": 0.08,
+                          "pressed": 0.32,
+                          "selected": 0.16,
+                        },
+                        "background": "#303030",
+                        "color": "#f50057",
+                        "divider": "rgba(255, 255, 255, 0.12)",
+                        "text": Object {
+                          "disabled": "rgba(255, 255, 255, 0.5)",
+                          "hint": "rgba(255, 255, 255, 0.5)",
+                          "icon": "rgba(255, 255, 255, 0.5)",
+                          "primary": "#fff",
+                          "secondary": "rgba(255, 255, 255, 0.7)",
+                        },
+                      },
+                      "success": Object {
+                        "action": Object {
+                          "active": 0.12,
+                          "disabled": 0.38,
+                          "dragged": 0.08,
+                          "enabled": 0,
+                          "focus": 0.12,
+                          "hover": 0.04,
+                          "pressed": 0.12,
+                          "selected": 0.08,
+                        },
+                        "background": "#fafafa",
+                        "color": "#4caf50",
+                        "divider": "rgba(0, 0, 0, 0.12)",
+                        "text": Object {
+                          "disabled": "rgba(0, 0, 0, 0.38)",
+                          "hint": "rgba(0, 0, 0, 0.38)",
+                          "icon": "rgba(0, 0, 0, 0.38)",
+                          "primary": "rgba(0, 0, 0, 0.87)",
+                          "secondary": "rgba(0, 0, 0, 0.54)",
+                        },
+                      },
+                      "warning": Object {
+                        "action": Object {
+                          "active": 0.12,
+                          "disabled": 0.38,
+                          "dragged": 0.08,
+                          "enabled": 0,
+                          "focus": 0.12,
+                          "hover": 0.04,
+                          "pressed": 0.12,
+                          "selected": 0.08,
+                        },
+                        "background": "#fafafa",
+                        "color": "#ff9800",
+                        "divider": "rgba(0, 0, 0, 0.12)",
+                        "text": Object {
+                          "disabled": "rgba(0, 0, 0, 0.38)",
+                          "hint": "rgba(0, 0, 0, 0.38)",
+                          "icon": "rgba(0, 0, 0, 0.38)",
+                          "primary": "rgba(0, 0, 0, 0.87)",
+                          "secondary": "rgba(0, 0, 0, 0.54)",
+                        },
+                      },
+                    },
+                  },
+                  "elevations": [Function],
+                  "mixins": Object {
+                    "clearfix": Object {
+                      "&:after": Object {
+                        "clear": "both",
+                      },
+                      "&:before, &:after": Object {
+                        "boxSizing": "border-box",
+                        "content": "\\" \\"",
+                        "display": "table",
+                      },
+                      "zoom": 1,
+                    },
+                  },
+                  "transition": Object {
+                    "durations": Object {
+                      "complex": "375",
+                      "enter": "225ms",
+                      "leave": "195ms",
+                      "short": "250ms",
+                      "shorter": "200ms",
+                      "shortest": "150ms",
+                      "standard": "300ms",
+                    },
+                    "enter": [Function],
+                    "functions": Object {
+                      "acceleration": "cubic-bezier(0.4, 0, 1, 1)",
+                      "deceleration": "cubic-bezier(0, 0, 0.2, 1)",
+                      "sharp": "cubic-bezier(0.4, 0, 0.6, 1)",
+                      "standard": "cubic-bezier(0.4, 0, 0.2, 1)",
+                    },
+                    "leavePermanent": [Function],
+                    "leaveTemporary": [Function],
+                    "standard": [Function],
+                  },
+                  "typography": Object {
+                    "baseFontSize": 16,
+                    "body1": Object {
+                      "fontSize": "1.000rem",
+                      "fontWeight": 400,
+                      "letterSpacing": "0.031em",
+                      "lineHeight": 1.5,
+                      "textDecoration": "inherit",
+                      "textTransform": "inherit",
+                    },
+                    "body2": Object {
+                      "fontSize": "0.875rem",
+                      "fontWeight": 400,
+                      "letterSpacing": "0.018em",
+                      "lineHeight": 1.3,
+                      "textDecoration": "inherit",
+                      "textTransform": "inherit",
+                    },
+                    "button": Object {
+                      "fontSize": "0.875rem",
+                      "fontWeight": 500,
+                      "letterSpacing": "0.089em",
+                      "lineHeight": 1.75,
+                      "textDecoration": "none",
+                      "textTransform": "uppercase",
+                    },
+                    "caption": Object {
+                      "fontSize": "0.750rem",
+                      "fontWeight": 400,
+                      "letterSpacing": "0.033em",
+                      "lineHeight": 1.66,
+                      "textDecoration": "inherit",
+                      "textTransform": "inherit",
+                    },
+                    "fontFamily": "'Roboto', 'Helvetica Neue', 'segoe ui', 'Arial', 'noto sans', sans-serif",
+                    "fontWeight": Object {
+                      "bold": 700,
+                      "light": 300,
+                      "medium": 500,
+                      "regular": 400,
+                    },
+                    "h1": Object {
+                      "fontSize": "6.000rem",
+                      "fontWeight": 300,
+                      "letterSpacing": "-0.016em",
+                      "lineHeight": 1.167,
+                      "textDecoration": "inherit",
+                      "textTransform": "inherit",
+                    },
+                    "h2": Object {
+                      "fontSize": "3.750rem",
+                      "fontWeight": 300,
+                      "letterSpacing": "-0.008em",
+                      "lineHeight": 1.2,
+                      "textDecoration": "inherit",
+                      "textTransform": "inherit",
+                    },
+                    "h3": Object {
+                      "fontSize": "3.000rem",
+                      "fontWeight": 400,
+                      "letterSpacing": "0.000em",
+                      "lineHeight": 1.167,
+                      "textDecoration": "inherit",
+                      "textTransform": "inherit",
+                    },
+                    "h4": Object {
+                      "fontSize": "2.125rem",
+                      "fontWeight": 400,
+                      "letterSpacing": "0.007em",
+                      "lineHeight": 1.235,
+                      "textDecoration": "inherit",
+                      "textTransform": "inherit",
+                    },
+                    "h5": Object {
+                      "fontSize": "1.500rem",
+                      "fontWeight": 400,
+                      "letterSpacing": "0.000em",
+                      "lineHeight": 1.334,
+                      "textDecoration": "inherit",
+                      "textTransform": "inherit",
+                    },
+                    "h6": Object {
+                      "fontSize": "1.250rem",
+                      "fontWeight": 500,
+                      "letterSpacing": "0.013em",
+                      "lineHeight": 1.6,
+                      "textDecoration": "inherit",
+                      "textTransform": "inherit",
+                    },
+                    "overline": Object {
+                      "fontSize": "0.750rem",
+                      "fontWeight": 500,
+                      "letterSpacing": "0.167em",
+                      "lineHeight": 2.66,
+                      "textDecoration": "none",
+                      "textTransform": "uppercase",
+                    },
+                    "subtitle1": Object {
+                      "fontSize": "1.000rem",
+                      "fontWeight": 400,
+                      "letterSpacing": "0.009em",
+                      "lineHeight": 1.75,
+                      "textDecoration": "inherit",
+                      "textTransform": "inherit",
+                    },
+                    "subtitle2": Object {
+                      "fontSize": "0.875rem",
+                      "fontWeight": 500,
+                      "letterSpacing": "0.007em",
+                      "lineHeight": 1.57,
+                      "textDecoration": "inherit",
+                      "textTransform": "inherit",
+                    },
+                  },
+                }
+              }
+            >
+              <div
+                className="c1 xl-ripple xl-ripple-root"
+              >
+                <TransitionGroup
+                  afterEnter={[Function]}
+                  transitionClasses="ripple"
+                />
+              </div>
+            </styled.div>
+          </RippleRoot>
+        </Ripple>
+      </div>
+    </styled.div>
+  </ForwardRef>
+</Component>
+`;
+
+exports[`renders ./packages/react/src/Ripple/__doc__/Basic.tsx correctly 1`] = `
+.c1 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c0 {
+  position: relative;
+  height: 100px;
+  background-color: rgba(0,0,0,0.12);
+  color: #3f51b5;
+  font-size: 26px;
+  text-align: center;
+  line-height: 100px;
+}
+
+.c0 .xl-ripple {
+  opacity: 0.5;
+}
+
+.c0 .ripple-enter-active,
+.c0 .ripple-leave-active {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+.c0 .ripple-enter,
+.c0 .ripple-leave-to {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c0 .ripple-enter-to,
+.c0 .ripple-leave {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+<Component>
+  <ForwardRef
+    onDragLeave={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+  >
+    <styled.div
+      className=""
+      onDragLeave={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      theme={
+        Object {
+          "breakpoints": Object {
+            "column": 24,
+            "unit": "px",
+            "values": Object {
+              "lg": 992,
+              "md": 768,
+              "sm": 576,
+              "xl": 1200,
+              "xs": 0,
+              "xxl": 1600,
+            },
+          },
+          "clsPrefix": "xl",
+          "color": Object {
+            "action": Object {
+              "active": 0.12,
+              "disabled": 0.38,
+              "dragged": 0.08,
+              "enabled": 0,
+              "focus": 0.12,
+              "hover": 0.04,
+              "pressed": 0.12,
+              "selected": 0.08,
+            },
+            "background": "#fafafa",
+            "divider": "rgba(0, 0, 0, 0.12)",
+            "text": Object {
+              "disabled": "rgba(0, 0, 0, 0.38)",
+              "hint": "rgba(0, 0, 0, 0.38)",
+              "icon": "rgba(0, 0, 0, 0.38)",
+              "primary": "rgba(0, 0, 0, 0.87)",
+              "secondary": "rgba(0, 0, 0, 0.54)",
+            },
+            "themes": Object {
+              "error": Object {
+                "action": Object {
+                  "active": 0.24,
+                  "disabled": 0.38,
+                  "dragged": 0.16,
+                  "enabled": 0,
+                  "focus": 0.12,
+                  "hover": 0.08,
+                  "pressed": 0.32,
+                  "selected": 0.16,
+                },
+                "background": "#303030",
+                "color": "#f44336",
+                "divider": "rgba(255, 255, 255, 0.12)",
+                "text": Object {
+                  "disabled": "rgba(255, 255, 255, 0.5)",
+                  "hint": "rgba(255, 255, 255, 0.5)",
+                  "icon": "rgba(255, 255, 255, 0.5)",
+                  "primary": "#fff",
+                  "secondary": "rgba(255, 255, 255, 0.7)",
+                },
+              },
+              "info": Object {
+                "action": Object {
+                  "active": 0.24,
+                  "disabled": 0.38,
+                  "dragged": 0.16,
+                  "enabled": 0,
+                  "focus": 0.12,
+                  "hover": 0.08,
+                  "pressed": 0.32,
+                  "selected": 0.16,
+                },
+                "background": "#303030",
+                "color": "#2196f3",
+                "divider": "rgba(255, 255, 255, 0.12)",
+                "text": Object {
+                  "disabled": "rgba(255, 255, 255, 0.5)",
+                  "hint": "rgba(255, 255, 255, 0.5)",
+                  "icon": "rgba(255, 255, 255, 0.5)",
+                  "primary": "#fff",
+                  "secondary": "rgba(255, 255, 255, 0.7)",
+                },
+              },
+              "primary": Object {
+                "action": Object {
+                  "active": 0.24,
+                  "disabled": 0.38,
+                  "dragged": 0.16,
+                  "enabled": 0,
+                  "focus": 0.12,
+                  "hover": 0.08,
+                  "pressed": 0.32,
+                  "selected": 0.16,
+                },
+                "background": "#303030",
+                "color": "#3f51b5",
+                "divider": "rgba(255, 255, 255, 0.12)",
+                "text": Object {
+                  "disabled": "rgba(255, 255, 255, 0.5)",
+                  "hint": "rgba(255, 255, 255, 0.5)",
+                  "icon": "rgba(255, 255, 255, 0.5)",
+                  "primary": "#fff",
+                  "secondary": "rgba(255, 255, 255, 0.7)",
+                },
+              },
+              "secondary": Object {
+                "action": Object {
+                  "active": 0.24,
+                  "disabled": 0.38,
+                  "dragged": 0.16,
+                  "enabled": 0,
+                  "focus": 0.12,
+                  "hover": 0.08,
+                  "pressed": 0.32,
+                  "selected": 0.16,
+                },
+                "background": "#303030",
+                "color": "#f50057",
+                "divider": "rgba(255, 255, 255, 0.12)",
+                "text": Object {
+                  "disabled": "rgba(255, 255, 255, 0.5)",
+                  "hint": "rgba(255, 255, 255, 0.5)",
+                  "icon": "rgba(255, 255, 255, 0.5)",
+                  "primary": "#fff",
+                  "secondary": "rgba(255, 255, 255, 0.7)",
+                },
+              },
+              "success": Object {
+                "action": Object {
+                  "active": 0.12,
+                  "disabled": 0.38,
+                  "dragged": 0.08,
+                  "enabled": 0,
+                  "focus": 0.12,
+                  "hover": 0.04,
+                  "pressed": 0.12,
+                  "selected": 0.08,
+                },
+                "background": "#fafafa",
+                "color": "#4caf50",
+                "divider": "rgba(0, 0, 0, 0.12)",
+                "text": Object {
+                  "disabled": "rgba(0, 0, 0, 0.38)",
+                  "hint": "rgba(0, 0, 0, 0.38)",
+                  "icon": "rgba(0, 0, 0, 0.38)",
+                  "primary": "rgba(0, 0, 0, 0.87)",
+                  "secondary": "rgba(0, 0, 0, 0.54)",
+                },
+              },
+              "warning": Object {
+                "action": Object {
+                  "active": 0.12,
+                  "disabled": 0.38,
+                  "dragged": 0.08,
+                  "enabled": 0,
+                  "focus": 0.12,
+                  "hover": 0.04,
+                  "pressed": 0.12,
+                  "selected": 0.08,
+                },
+                "background": "#fafafa",
+                "color": "#ff9800",
+                "divider": "rgba(0, 0, 0, 0.12)",
+                "text": Object {
+                  "disabled": "rgba(0, 0, 0, 0.38)",
+                  "hint": "rgba(0, 0, 0, 0.38)",
+                  "icon": "rgba(0, 0, 0, 0.38)",
+                  "primary": "rgba(0, 0, 0, 0.87)",
+                  "secondary": "rgba(0, 0, 0, 0.54)",
+                },
+              },
+            },
+          },
+          "elevations": [Function],
+          "mixins": Object {
+            "clearfix": Object {
+              "&:after": Object {
+                "clear": "both",
+              },
+              "&:before, &:after": Object {
+                "boxSizing": "border-box",
+                "content": "\\" \\"",
+                "display": "table",
+              },
+              "zoom": 1,
+            },
+          },
+          "transition": Object {
+            "durations": Object {
+              "complex": "375",
+              "enter": "225ms",
+              "leave": "195ms",
+              "short": "250ms",
+              "shorter": "200ms",
+              "shortest": "150ms",
+              "standard": "300ms",
+            },
+            "enter": [Function],
+            "functions": Object {
+              "acceleration": "cubic-bezier(0.4, 0, 1, 1)",
+              "deceleration": "cubic-bezier(0, 0, 0.2, 1)",
+              "sharp": "cubic-bezier(0.4, 0, 0.6, 1)",
+              "standard": "cubic-bezier(0.4, 0, 0.2, 1)",
+            },
+            "leavePermanent": [Function],
+            "leaveTemporary": [Function],
+            "standard": [Function],
+          },
+          "typography": Object {
+            "baseFontSize": 16,
+            "body1": Object {
+              "fontSize": "1.000rem",
+              "fontWeight": 400,
+              "letterSpacing": "0.031em",
+              "lineHeight": 1.5,
+              "textDecoration": "inherit",
+              "textTransform": "inherit",
+            },
+            "body2": Object {
+              "fontSize": "0.875rem",
+              "fontWeight": 400,
+              "letterSpacing": "0.018em",
+              "lineHeight": 1.3,
+              "textDecoration": "inherit",
+              "textTransform": "inherit",
+            },
+            "button": Object {
+              "fontSize": "0.875rem",
+              "fontWeight": 500,
+              "letterSpacing": "0.089em",
+              "lineHeight": 1.75,
+              "textDecoration": "none",
+              "textTransform": "uppercase",
+            },
+            "caption": Object {
+              "fontSize": "0.750rem",
+              "fontWeight": 400,
+              "letterSpacing": "0.033em",
+              "lineHeight": 1.66,
+              "textDecoration": "inherit",
+              "textTransform": "inherit",
+            },
+            "fontFamily": "'Roboto', 'Helvetica Neue', 'segoe ui', 'Arial', 'noto sans', sans-serif",
+            "fontWeight": Object {
+              "bold": 700,
+              "light": 300,
+              "medium": 500,
+              "regular": 400,
+            },
+            "h1": Object {
+              "fontSize": "6.000rem",
+              "fontWeight": 300,
+              "letterSpacing": "-0.016em",
+              "lineHeight": 1.167,
+              "textDecoration": "inherit",
+              "textTransform": "inherit",
+            },
+            "h2": Object {
+              "fontSize": "3.750rem",
+              "fontWeight": 300,
+              "letterSpacing": "-0.008em",
+              "lineHeight": 1.2,
+              "textDecoration": "inherit",
+              "textTransform": "inherit",
+            },
+            "h3": Object {
+              "fontSize": "3.000rem",
+              "fontWeight": 400,
+              "letterSpacing": "0.000em",
+              "lineHeight": 1.167,
+              "textDecoration": "inherit",
+              "textTransform": "inherit",
+            },
+            "h4": Object {
+              "fontSize": "2.125rem",
+              "fontWeight": 400,
+              "letterSpacing": "0.007em",
+              "lineHeight": 1.235,
+              "textDecoration": "inherit",
+              "textTransform": "inherit",
+            },
+            "h5": Object {
+              "fontSize": "1.500rem",
+              "fontWeight": 400,
+              "letterSpacing": "0.000em",
+              "lineHeight": 1.334,
+              "textDecoration": "inherit",
+              "textTransform": "inherit",
+            },
+            "h6": Object {
+              "fontSize": "1.250rem",
+              "fontWeight": 500,
+              "letterSpacing": "0.013em",
+              "lineHeight": 1.6,
+              "textDecoration": "inherit",
+              "textTransform": "inherit",
+            },
+            "overline": Object {
+              "fontSize": "0.750rem",
+              "fontWeight": 500,
+              "letterSpacing": "0.167em",
+              "lineHeight": 2.66,
+              "textDecoration": "none",
+              "textTransform": "uppercase",
+            },
+            "subtitle1": Object {
+              "fontSize": "1.000rem",
+              "fontWeight": 400,
+              "letterSpacing": "0.009em",
+              "lineHeight": 1.75,
+              "textDecoration": "inherit",
+              "textTransform": "inherit",
+            },
+            "subtitle2": Object {
+              "fontSize": "0.875rem",
+              "fontWeight": 500,
+              "letterSpacing": "0.007em",
+              "lineHeight": 1.57,
+              "textDecoration": "inherit",
+              "textTransform": "inherit",
+            },
+          },
+        }
+      }
+    >
+      <div
+        className="c0"
+        onDragLeave={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+      >
+        click me
+        <Ripple
+          transitionClasses="ripple"
+        >
+          <RippleRoot
+            className="xl-ripple-root"
+          >
+            <styled.div
+              className="xl-ripple xl-ripple-root"
+              theme={
+                Object {
+                  "breakpoints": Object {
+                    "column": 24,
+                    "unit": "px",
+                    "values": Object {
+                      "lg": 992,
+                      "md": 768,
+                      "sm": 576,
+                      "xl": 1200,
+                      "xs": 0,
+                      "xxl": 1600,
+                    },
+                  },
+                  "clsPrefix": "xl",
+                  "color": Object {
+                    "action": Object {
+                      "active": 0.12,
+                      "disabled": 0.38,
+                      "dragged": 0.08,
+                      "enabled": 0,
+                      "focus": 0.12,
+                      "hover": 0.04,
+                      "pressed": 0.12,
+                      "selected": 0.08,
+                    },
+                    "background": "#fafafa",
+                    "divider": "rgba(0, 0, 0, 0.12)",
+                    "text": Object {
+                      "disabled": "rgba(0, 0, 0, 0.38)",
+                      "hint": "rgba(0, 0, 0, 0.38)",
+                      "icon": "rgba(0, 0, 0, 0.38)",
+                      "primary": "rgba(0, 0, 0, 0.87)",
+                      "secondary": "rgba(0, 0, 0, 0.54)",
+                    },
+                    "themes": Object {
+                      "error": Object {
+                        "action": Object {
+                          "active": 0.24,
+                          "disabled": 0.38,
+                          "dragged": 0.16,
+                          "enabled": 0,
+                          "focus": 0.12,
+                          "hover": 0.08,
+                          "pressed": 0.32,
+                          "selected": 0.16,
+                        },
+                        "background": "#303030",
+                        "color": "#f44336",
+                        "divider": "rgba(255, 255, 255, 0.12)",
+                        "text": Object {
+                          "disabled": "rgba(255, 255, 255, 0.5)",
+                          "hint": "rgba(255, 255, 255, 0.5)",
+                          "icon": "rgba(255, 255, 255, 0.5)",
+                          "primary": "#fff",
+                          "secondary": "rgba(255, 255, 255, 0.7)",
+                        },
+                      },
+                      "info": Object {
+                        "action": Object {
+                          "active": 0.24,
+                          "disabled": 0.38,
+                          "dragged": 0.16,
+                          "enabled": 0,
+                          "focus": 0.12,
+                          "hover": 0.08,
+                          "pressed": 0.32,
+                          "selected": 0.16,
+                        },
+                        "background": "#303030",
+                        "color": "#2196f3",
+                        "divider": "rgba(255, 255, 255, 0.12)",
+                        "text": Object {
+                          "disabled": "rgba(255, 255, 255, 0.5)",
+                          "hint": "rgba(255, 255, 255, 0.5)",
+                          "icon": "rgba(255, 255, 255, 0.5)",
+                          "primary": "#fff",
+                          "secondary": "rgba(255, 255, 255, 0.7)",
+                        },
+                      },
+                      "primary": Object {
+                        "action": Object {
+                          "active": 0.24,
+                          "disabled": 0.38,
+                          "dragged": 0.16,
+                          "enabled": 0,
+                          "focus": 0.12,
+                          "hover": 0.08,
+                          "pressed": 0.32,
+                          "selected": 0.16,
+                        },
+                        "background": "#303030",
+                        "color": "#3f51b5",
+                        "divider": "rgba(255, 255, 255, 0.12)",
+                        "text": Object {
+                          "disabled": "rgba(255, 255, 255, 0.5)",
+                          "hint": "rgba(255, 255, 255, 0.5)",
+                          "icon": "rgba(255, 255, 255, 0.5)",
+                          "primary": "#fff",
+                          "secondary": "rgba(255, 255, 255, 0.7)",
+                        },
+                      },
+                      "secondary": Object {
+                        "action": Object {
+                          "active": 0.24,
+                          "disabled": 0.38,
+                          "dragged": 0.16,
+                          "enabled": 0,
+                          "focus": 0.12,
+                          "hover": 0.08,
+                          "pressed": 0.32,
+                          "selected": 0.16,
+                        },
+                        "background": "#303030",
+                        "color": "#f50057",
+                        "divider": "rgba(255, 255, 255, 0.12)",
+                        "text": Object {
+                          "disabled": "rgba(255, 255, 255, 0.5)",
+                          "hint": "rgba(255, 255, 255, 0.5)",
+                          "icon": "rgba(255, 255, 255, 0.5)",
+                          "primary": "#fff",
+                          "secondary": "rgba(255, 255, 255, 0.7)",
+                        },
+                      },
+                      "success": Object {
+                        "action": Object {
+                          "active": 0.12,
+                          "disabled": 0.38,
+                          "dragged": 0.08,
+                          "enabled": 0,
+                          "focus": 0.12,
+                          "hover": 0.04,
+                          "pressed": 0.12,
+                          "selected": 0.08,
+                        },
+                        "background": "#fafafa",
+                        "color": "#4caf50",
+                        "divider": "rgba(0, 0, 0, 0.12)",
+                        "text": Object {
+                          "disabled": "rgba(0, 0, 0, 0.38)",
+                          "hint": "rgba(0, 0, 0, 0.38)",
+                          "icon": "rgba(0, 0, 0, 0.38)",
+                          "primary": "rgba(0, 0, 0, 0.87)",
+                          "secondary": "rgba(0, 0, 0, 0.54)",
+                        },
+                      },
+                      "warning": Object {
+                        "action": Object {
+                          "active": 0.12,
+                          "disabled": 0.38,
+                          "dragged": 0.08,
+                          "enabled": 0,
+                          "focus": 0.12,
+                          "hover": 0.04,
+                          "pressed": 0.12,
+                          "selected": 0.08,
+                        },
+                        "background": "#fafafa",
+                        "color": "#ff9800",
+                        "divider": "rgba(0, 0, 0, 0.12)",
+                        "text": Object {
+                          "disabled": "rgba(0, 0, 0, 0.38)",
+                          "hint": "rgba(0, 0, 0, 0.38)",
+                          "icon": "rgba(0, 0, 0, 0.38)",
+                          "primary": "rgba(0, 0, 0, 0.87)",
+                          "secondary": "rgba(0, 0, 0, 0.54)",
+                        },
+                      },
+                    },
+                  },
+                  "elevations": [Function],
+                  "mixins": Object {
+                    "clearfix": Object {
+                      "&:after": Object {
+                        "clear": "both",
+                      },
+                      "&:before, &:after": Object {
+                        "boxSizing": "border-box",
+                        "content": "\\" \\"",
+                        "display": "table",
+                      },
+                      "zoom": 1,
+                    },
+                  },
+                  "transition": Object {
+                    "durations": Object {
+                      "complex": "375",
+                      "enter": "225ms",
+                      "leave": "195ms",
+                      "short": "250ms",
+                      "shorter": "200ms",
+                      "shortest": "150ms",
+                      "standard": "300ms",
+                    },
+                    "enter": [Function],
+                    "functions": Object {
+                      "acceleration": "cubic-bezier(0.4, 0, 1, 1)",
+                      "deceleration": "cubic-bezier(0, 0, 0.2, 1)",
+                      "sharp": "cubic-bezier(0.4, 0, 0.6, 1)",
+                      "standard": "cubic-bezier(0.4, 0, 0.2, 1)",
+                    },
+                    "leavePermanent": [Function],
+                    "leaveTemporary": [Function],
+                    "standard": [Function],
+                  },
+                  "typography": Object {
+                    "baseFontSize": 16,
+                    "body1": Object {
+                      "fontSize": "1.000rem",
+                      "fontWeight": 400,
+                      "letterSpacing": "0.031em",
+                      "lineHeight": 1.5,
+                      "textDecoration": "inherit",
+                      "textTransform": "inherit",
+                    },
+                    "body2": Object {
+                      "fontSize": "0.875rem",
+                      "fontWeight": 400,
+                      "letterSpacing": "0.018em",
+                      "lineHeight": 1.3,
+                      "textDecoration": "inherit",
+                      "textTransform": "inherit",
+                    },
+                    "button": Object {
+                      "fontSize": "0.875rem",
+                      "fontWeight": 500,
+                      "letterSpacing": "0.089em",
+                      "lineHeight": 1.75,
+                      "textDecoration": "none",
+                      "textTransform": "uppercase",
+                    },
+                    "caption": Object {
+                      "fontSize": "0.750rem",
+                      "fontWeight": 400,
+                      "letterSpacing": "0.033em",
+                      "lineHeight": 1.66,
+                      "textDecoration": "inherit",
+                      "textTransform": "inherit",
+                    },
+                    "fontFamily": "'Roboto', 'Helvetica Neue', 'segoe ui', 'Arial', 'noto sans', sans-serif",
+                    "fontWeight": Object {
+                      "bold": 700,
+                      "light": 300,
+                      "medium": 500,
+                      "regular": 400,
+                    },
+                    "h1": Object {
+                      "fontSize": "6.000rem",
+                      "fontWeight": 300,
+                      "letterSpacing": "-0.016em",
+                      "lineHeight": 1.167,
+                      "textDecoration": "inherit",
+                      "textTransform": "inherit",
+                    },
+                    "h2": Object {
+                      "fontSize": "3.750rem",
+                      "fontWeight": 300,
+                      "letterSpacing": "-0.008em",
+                      "lineHeight": 1.2,
+                      "textDecoration": "inherit",
+                      "textTransform": "inherit",
+                    },
+                    "h3": Object {
+                      "fontSize": "3.000rem",
+                      "fontWeight": 400,
+                      "letterSpacing": "0.000em",
+                      "lineHeight": 1.167,
+                      "textDecoration": "inherit",
+                      "textTransform": "inherit",
+                    },
+                    "h4": Object {
+                      "fontSize": "2.125rem",
+                      "fontWeight": 400,
+                      "letterSpacing": "0.007em",
+                      "lineHeight": 1.235,
+                      "textDecoration": "inherit",
+                      "textTransform": "inherit",
+                    },
+                    "h5": Object {
+                      "fontSize": "1.500rem",
+                      "fontWeight": 400,
+                      "letterSpacing": "0.000em",
+                      "lineHeight": 1.334,
+                      "textDecoration": "inherit",
+                      "textTransform": "inherit",
+                    },
+                    "h6": Object {
+                      "fontSize": "1.250rem",
+                      "fontWeight": 500,
+                      "letterSpacing": "0.013em",
+                      "lineHeight": 1.6,
+                      "textDecoration": "inherit",
+                      "textTransform": "inherit",
+                    },
+                    "overline": Object {
+                      "fontSize": "0.750rem",
+                      "fontWeight": 500,
+                      "letterSpacing": "0.167em",
+                      "lineHeight": 2.66,
+                      "textDecoration": "none",
+                      "textTransform": "uppercase",
+                    },
+                    "subtitle1": Object {
+                      "fontSize": "1.000rem",
+                      "fontWeight": 400,
+                      "letterSpacing": "0.009em",
+                      "lineHeight": 1.75,
+                      "textDecoration": "inherit",
+                      "textTransform": "inherit",
+                    },
+                    "subtitle2": Object {
+                      "fontSize": "0.875rem",
+                      "fontWeight": 500,
+                      "letterSpacing": "0.007em",
+                      "lineHeight": 1.57,
+                      "textDecoration": "inherit",
+                      "textTransform": "inherit",
+                    },
+                  },
+                }
+              }
+            >
+              <div
+                className="c1 xl-ripple xl-ripple-root"
+              >
+                <TransitionGroup
+                  afterEnter={[Function]}
+                  transitionClasses="ripple"
+                />
+              </div>
+            </styled.div>
+          </RippleRoot>
+        </Ripple>
+      </div>
+    </styled.div>
+  </ForwardRef>
+</Component>
+`;
+
 exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
 .c2 {
   position: relative;

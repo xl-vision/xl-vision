@@ -12,3 +12,5 @@ export * from './TransitionGroup';
 export { default as Row } from './Row';
 export { default as Icon } from './Icon';
 export * from './Icon';
+export { default as Ripple } from './Ripple';
+export * from './Ripple';

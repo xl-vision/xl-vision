@@ -8,7 +8,7 @@ import ThemeContext from '../ThemeProvider/ThemeContext';
 
 export interface IconProps extends BaseIconProps {}
 
-const SvgIcon = styled(BaseIcon, {
+const IconRoot = styled(BaseIcon, {
   name: 'Icon',
   slot: 'Root',
 })(({ theme }) => {
@@ -33,7 +33,7 @@ const Icon = React.forwardRef<SVGSVGElement, IconProps>((props, ref) => {
 
   const classes = clsx(rootClassName, className);
 
-  return <SvgIcon {...others} className={classes} viewBox={viewBox} ref={ref} />;
+  return <IconRoot {...others} className={classes} viewBox={viewBox} ref={ref} />;
 });
 
 Icon.propTypes = {
