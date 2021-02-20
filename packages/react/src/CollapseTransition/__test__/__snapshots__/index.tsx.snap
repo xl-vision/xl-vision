@@ -1,10 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CollapseTransition 基本使用 1`] = `null`;
+exports[`CollapseTransition test horizontal 1`] = `null`;
 
-exports[`CollapseTransition 基本使用 2`] = `
+exports[`CollapseTransition test horizontal 2`] = `
 <div
-  class="undefined undefined"
+  class=""
+  data-actual-width=""
+  data-overflow=""
+  data-padding-left=""
+  data-padding-right=""
+  data-width=""
+  style="overflow: hidden; padding-left: 0px; padding-right: 0px;"
+/>
+`;
+
+exports[`CollapseTransition test horizontal 3`] = `
+<div
+  class=""
+  data-actual-width=""
+  data-overflow=""
+  data-padding-left="0px"
+  data-padding-right="0px"
+  data-width=""
+  style="padding-left: 0px; padding-right: 0px; overflow: hidden; width: 0px;"
+/>
+`;
+
+exports[`CollapseTransition test render 1`] = `null`;
+
+exports[`CollapseTransition test render 2`] = `
+<div
+  class=""
   data-actual-height=""
   data-height=""
   data-overflow=""
@@ -14,16 +40,14 @@ exports[`CollapseTransition 基本使用 2`] = `
 />
 `;
 
-exports[`CollapseTransition 测试horizontal 1`] = `null`;
-
-exports[`CollapseTransition 测试horizontal 2`] = `
+exports[`CollapseTransition test render 3`] = `
 <div
-  class="undefined undefined"
-  data-actual-width=""
+  class=""
+  data-actual-height=""
+  data-height=""
   data-overflow=""
-  data-padding-left=""
-  data-padding-right=""
-  data-width=""
-  style="overflow: hidden; padding-left: 0px; padding-right: 0px;"
+  data-padding-bottom="0px"
+  data-padding-top="0px"
+  style="padding-top: 0px; padding-bottom: 0px; overflow: hidden; height: 0px;"
 />
 `;
