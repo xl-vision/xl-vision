@@ -366,38 +366,19 @@ const createEventHook = (
   nativeHook?: EventHook,
 ): EventHook => {
   return (el: TransitionElement, done: () => void, isCancelled: () => boolean) => {
-    let cancelEvent: () => void;
-    let timeoutId: NodeJS.Timeout;
-
-    const doneCb = () => {
-      el._done = undefined;
-      done();
-    };
-
-    const cancelNextFrame = nextFrame(() => {
+    nextFrame(() => {
       if (!isCancelled()) {
         if (ctc) {
           updateClass(el, ctc);
         }
         if (timeout && timeout > 0) {
-          timeoutId = setTimeout(doneCb, timeout);
+          setTimeout(done, timeout);
         } else {
-          cancelEvent = onTransitionEnd(el, doneCb);
+          onTransitionEnd(el, done);
         }
       }
     });
-    nativeHook?.(el, doneCb, isCancelled);
-
-    el._done = (cancel) => {
-      // 清除事件
-      cancelNextFrame();
-      cancelEvent?.();
-      clearTimeout(timeoutId);
-
-      if (!cancel) {
-        doneCb();
-      }
-    };
+    nativeHook?.(el, done, isCancelled);
   };
 };
 

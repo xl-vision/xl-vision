@@ -29,12 +29,12 @@ describe('CSSTransition', () => {
     onTransitionEndSpy = jest.spyOn(TransitionUtils, 'onTransitionEnd');
     // 保证动画有一定的时间
     onTransitionEndSpy.mockImplementation((_el, done: () => void) => {
-      setTimeout(done, 50);
+      setTimeout(done, 25);
     });
 
     nextFrameSpy = jest.spyOn(TransitionUtils, 'nextFrame');
     nextFrameSpy.mockImplementation((done: () => void) => {
-      const id = setTimeout(done, 50);
+      const id = setTimeout(done, 25);
       return () => {
         clearTimeout(id);
       };
@@ -113,7 +113,7 @@ describe('CSSTransition', () => {
       </CSSTransition>,
     );
     // 给动画执行时间
-    await act(() => wait(100));
+    await act(() => wait(75));
     expect(call.mock.calls.length).toBe(3);
     expect(call.mock.calls[0][0]).toBe('beforeAppear');
     expect(call.mock.calls[1][0]).toBe('appear');
@@ -123,7 +123,7 @@ describe('CSSTransition', () => {
     wrapper.setProps({
       in: false,
     });
-    await act(() => wait(100));
+    await act(() => wait(75));
 
     expect(call.mock.calls.length).toBe(3);
     expect(call.mock.calls[0][0]).toBe('beforeLeave');
@@ -134,7 +134,7 @@ describe('CSSTransition', () => {
     wrapper.setProps({
       in: true,
     });
-    await act(() => wait(100));
+    await act(() => wait(75));
 
     expect(call.mock.calls.length).toBe(3);
     expect(call.mock.calls[0][0]).toBe('beforeEnter');
@@ -216,7 +216,7 @@ describe('CSSTransition', () => {
     );
 
     // 给动画执行时间
-    await act(() => wait(100));
+    await act(() => wait(75));
     expect(call.mock.calls.length).toBe(3);
     expect(call.mock.calls[0][0]).toBe('beforeDisappear');
     expect(call.mock.calls[1][0]).toBe('disappear');
@@ -226,7 +226,7 @@ describe('CSSTransition', () => {
     wrapper.setProps({
       in: true,
     });
-    await act(() => wait(100));
+    await act(() => wait(75));
 
     expect(call.mock.calls[0][0]).toBe('beforeEnter');
     expect(call.mock.calls[1][0]).toBe('enter');
@@ -237,7 +237,7 @@ describe('CSSTransition', () => {
       in: false,
     });
 
-    await act(() => wait(100));
+    await act(() => wait(75));
 
     expect(call.mock.calls.length).toBe(3);
     expect(call.mock.calls[0][0]).toBe('beforeLeave');
@@ -249,7 +249,7 @@ describe('CSSTransition', () => {
       in: true,
     });
 
-    await act(() => wait(100));
+    await act(() => wait(75));
 
     expect(call.mock.calls.length).toBe(3);
     expect(call.mock.calls[0][0]).toBe('beforeEnter');
@@ -315,14 +315,14 @@ describe('CSSTransition', () => {
     );
 
     // 给动画执行时间
-    await act(() => wait(100));
+    await act(() => wait(75));
 
     expect(call.mock.calls.length).toBe(0);
 
     wrapper.setProps({
       in: true,
     });
-    await act(() => wait(100));
+    await act(() => wait(75));
 
     expect(call.mock.calls[0][0]).toBe('beforeEnter');
     expect(call.mock.calls[1][0]).toBe('enter');
@@ -332,7 +332,7 @@ describe('CSSTransition', () => {
     wrapper.setProps({
       in: false,
     });
-    await act(() => wait(100));
+    await act(() => wait(75));
 
     expect(call.mock.calls.length).toBe(3);
     expect(call.mock.calls[0][0]).toBe('beforeLeave');
@@ -343,7 +343,7 @@ describe('CSSTransition', () => {
     wrapper.setProps({
       in: true,
     });
-    await act(() => wait(100));
+    await act(() => wait(75));
 
     expect(call.mock.calls.length).toBe(3);
     expect(call.mock.calls[0][0]).toBe('beforeEnter');
@@ -408,14 +408,15 @@ describe('CSSTransition', () => {
       </CSSTransition>,
     );
     // 给动画执行时间
-    await act(() => wait(100));
+    await act(() => wait(75));
 
     expect(call.mock.calls.length).toBe(0);
 
     wrapper.setProps({
       in: false,
     });
-    await act(() => wait(100));
+
+    await act(() => wait(75));
 
     expect(call.mock.calls.length).toBe(3);
     expect(call.mock.calls[0][0]).toBe('beforeLeave');
@@ -426,7 +427,8 @@ describe('CSSTransition', () => {
     wrapper.setProps({
       in: true,
     });
-    await act(() => wait(100));
+
+    await act(() => wait(75));
 
     expect(call.mock.calls.length).toBe(3);
     expect(call.mock.calls[0][0]).toBe('beforeEnter');
@@ -494,7 +496,7 @@ describe('CSSTransition', () => {
       </CSSTransition>,
     );
     // 给动画执行时间
-    await act(() => wait(50));
+    await act(() => wait(25 + 5));
 
     expect(call.mock.calls.length).toBe(2);
     expect(call.mock.calls[0][0]).toBe('beforeAppear');
@@ -504,7 +506,8 @@ describe('CSSTransition', () => {
     wrapper.setProps({
       in: false,
     });
-    await act(() => wait(50));
+
+    await act(() => wait(25 + 5));
 
     expect(call.mock.calls.length).toBe(3);
     expect(call.mock.calls[0][0]).toBe('appearCancelled');
@@ -515,7 +518,8 @@ describe('CSSTransition', () => {
     wrapper.setProps({
       in: true,
     });
-    await act(() => wait(50));
+
+    await act(() => wait(25 + 5));
 
     expect(call.mock.calls.length).toBe(3);
     expect(call.mock.calls[0][0]).toBe('leaveCancelled');
@@ -526,7 +530,8 @@ describe('CSSTransition', () => {
     wrapper.setProps({
       in: false,
     });
-    await act(() => wait(50));
+
+    await act(() => wait(25 + 5));
 
     expect(call.mock.calls.length).toBe(3);
     expect(call.mock.calls[0][0]).toBe('enterCancelled');
@@ -545,16 +550,17 @@ describe('CSSTransition', () => {
     expect(wrapper.getDOMNode().classList).toContain('test-appear');
     expect(wrapper.getDOMNode().classList).toContain('test-appear-active');
 
-    await act(() => wait(50));
+    await act(() => wait(25 + 5));
 
     expect(wrapper.getDOMNode().classList).not.toContain('test-appear');
     expect(wrapper.getDOMNode().classList).toContain('test-appear-active');
     expect(wrapper.getDOMNode().classList).toContain('test-appear-to');
 
-    await act(() => wait(50));
+    await act(() => wait(25 + 5));
 
     expect(wrapper.getDOMNode().classList).not.toContain('test-appear-active');
     expect(wrapper.getDOMNode().classList).not.toContain('test-appear-to');
+    expect(wrapper.getDOMNode().classList).toContain('test-appear-done');
 
     wrapper.setProps({
       in: false,
@@ -564,42 +570,42 @@ describe('CSSTransition', () => {
     expect(wrapper.getDOMNode().classList).toContain('test-leave');
     expect(wrapper.getDOMNode().classList).toContain('test-leave-active');
 
-    await act(() => wait(50));
+    await act(() => wait(25 + 5));
 
     expect(wrapper.getDOMNode().classList).not.toContain('test-leave');
     expect(wrapper.getDOMNode().classList).toContain('test-leave-active');
     expect(wrapper.getDOMNode().classList).toContain('test-leave-to');
 
-    await act(() => wait(50));
+    await act(() => wait(25 + 5));
 
     expect(wrapper.getDOMNode().classList).not.toContain('test-leave-active');
     expect(wrapper.getDOMNode().classList).not.toContain('test-leave-to');
+    expect(wrapper.getDOMNode().classList).toContain('test-leave-done');
 
     wrapper.setProps({
       in: true,
     });
 
-    wrapper.update();
-
     // nextFrame未执行
     expect(wrapper.getDOMNode().classList).toContain('test-enter');
     expect(wrapper.getDOMNode().classList).toContain('test-enter-active');
 
-    await act(() => wait(50));
+    await act(() => wait(25 + 5));
 
     expect(wrapper.getDOMNode().classList).not.toContain('test-enter');
     expect(wrapper.getDOMNode().classList).toContain('test-enter-active');
     expect(wrapper.getDOMNode().classList).toContain('test-enter-to');
 
-    await act(() => wait(50));
+    await act(() => wait(25 + 5));
 
     expect(wrapper.getDOMNode().classList).not.toContain('test-enter-active');
     expect(wrapper.getDOMNode().classList).not.toContain('test-enter-to');
+    expect(wrapper.getDOMNode().classList).toContain('test-enter-done');
   });
 
   it('测试timeout调用时机', async () => {
     const wrapper = mount(
-      <CSSTransition transitionOnFirst={true} in={true} transitionClasses='test' timeout={10}>
+      <CSSTransition transitionOnFirst={true} in={true} transitionClasses='test' timeout={20}>
         <div />
       </CSSTransition>,
     );
@@ -607,17 +613,17 @@ describe('CSSTransition', () => {
     expect(wrapper.getDOMNode().classList).toContain('test-appear');
     expect(wrapper.getDOMNode().classList).toContain('test-appear-active');
 
-    await act(() => wait(50));
-    wrapper.update();
+    await act(() => wait(25 + 5));
 
     expect(wrapper.getDOMNode().classList).not.toContain('test-appear');
     expect(wrapper.getDOMNode().classList).toContain('test-appear-active');
     expect(wrapper.getDOMNode().classList).toContain('test-appear-to');
 
-    await act(() => wait(50));
+    await act(() => wait(15 + 5));
 
     expect(wrapper.getDOMNode().classList).not.toContain('test-appear-active');
     expect(wrapper.getDOMNode().classList).not.toContain('test-appear-to');
+    expect(wrapper.getDOMNode().classList).toContain('test-appear-done');
 
     wrapper.setProps({
       in: false,
@@ -627,36 +633,36 @@ describe('CSSTransition', () => {
     expect(wrapper.getDOMNode().classList).toContain('test-leave');
     expect(wrapper.getDOMNode().classList).toContain('test-leave-active');
 
-    await act(() => wait(50));
+    await act(() => wait(25 + 5));
 
     expect(wrapper.getDOMNode().classList).not.toContain('test-leave');
     expect(wrapper.getDOMNode().classList).toContain('test-leave-active');
     expect(wrapper.getDOMNode().classList).toContain('test-leave-to');
 
-    await act(() => wait(50));
+    await act(() => wait(15 + 5));
 
     expect(wrapper.getDOMNode().classList).not.toContain('test-leave-active');
     expect(wrapper.getDOMNode().classList).not.toContain('test-leave-to');
+    expect(wrapper.getDOMNode().classList).toContain('test-leave-done');
 
     wrapper.setProps({
       in: true,
     });
 
-    wrapper.update();
-
     // nextFrame未执行
     expect(wrapper.getDOMNode().classList).toContain('test-enter');
     expect(wrapper.getDOMNode().classList).toContain('test-enter-active');
 
-    await act(() => wait(50));
+    await act(() => wait(25 + 5));
 
     expect(wrapper.getDOMNode().classList).not.toContain('test-enter');
     expect(wrapper.getDOMNode().classList).toContain('test-enter-active');
     expect(wrapper.getDOMNode().classList).toContain('test-enter-to');
 
-    await act(() => wait(50));
+    await act(() => wait(15 + 5));
 
     expect(wrapper.getDOMNode().classList).not.toContain('test-enter-active');
     expect(wrapper.getDOMNode().classList).not.toContain('test-enter-to');
+    expect(wrapper.getDOMNode().classList).toContain('test-enter-done');
   });
 });
