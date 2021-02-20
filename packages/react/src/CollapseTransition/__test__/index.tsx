@@ -15,12 +15,12 @@ describe('CollapseTransition', () => {
     onTransitionEndSpy = jest.spyOn(TransitionUtils, 'onTransitionEnd');
     // 保证动画有一定的时间
     onTransitionEndSpy.mockImplementation((_el, done: () => void) => {
-      setTimeout(done, 50);
+      setTimeout(done, 25);
     });
 
     nextFrameSpy = jest.spyOn(TransitionUtils, 'nextFrame');
     nextFrameSpy.mockImplementation((done: () => void) => {
-      const id = setTimeout(done, 50);
+      const id = setTimeout(done, 25);
       return () => {
         clearTimeout(id);
       };
@@ -42,7 +42,7 @@ describe('CollapseTransition', () => {
 
     wrapper.update();
 
-    await act(() => wait(100));
+    await act(() => wait(75));
 
     expect(wrapper.render()).toMatchSnapshot();
 
@@ -52,7 +52,7 @@ describe('CollapseTransition', () => {
 
     wrapper.update();
 
-    await act(() => wait(100));
+    await act(() => wait(75));
 
     expect(wrapper.render()).toMatchSnapshot();
   });
@@ -72,7 +72,7 @@ describe('CollapseTransition', () => {
 
     wrapper.update();
 
-    await act(() => wait(100));
+    await act(() => wait(75));
 
     expect(wrapper.render()).toMatchSnapshot();
 
@@ -82,7 +82,7 @@ describe('CollapseTransition', () => {
 
     wrapper.update();
 
-    await act(() => wait(100));
+    await act(() => wait(75));
 
     expect(wrapper.render()).toMatchSnapshot();
   });
