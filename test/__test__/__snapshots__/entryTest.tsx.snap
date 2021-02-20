@@ -9,6 +9,7 @@ Array [
   "TransitionGroup",
   "Row",
   "Icon",
+  "Ripple",
   "styled",
   "createGlobalStyles",
   "createTheme",
