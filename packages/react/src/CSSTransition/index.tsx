@@ -427,11 +427,17 @@ const updateClass = (el: TransitionElement, ctc: CSSTransitionClassesObject) => 
   const oldCtc = el._ctc || {};
   Object.keys(oldCtc).forEach((key) => {
     const name = key as keyof CSSTransitionClassesObject;
-    removeClass(el, oldCtc[name]!);
+    const clz = oldCtc[name];
+    if (clz) {
+      removeClass(el, clz);
+    }
   });
   Object.keys(ctc).forEach((key) => {
     const name = key as keyof CSSTransitionClassesObject;
-    addClass(el, ctc[name]!);
+    const clz = ctc[name];
+    if (clz) {
+      addClass(el, clz);
+    }
   });
 
   el._ctc = ctc;

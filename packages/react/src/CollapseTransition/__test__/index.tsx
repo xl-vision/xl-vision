@@ -1,9 +1,33 @@
 import { mount } from 'enzyme';
 import React from 'react';
+import { act } from 'react-dom/test-utils';
+import wait from '../../../../../test/wait';
 import CollapseTransition from '..';
+import * as TransitionUtils from '../../utils/transition';
 
 describe('CollapseTransition', () => {
-  it('基本使用', () => {
+  let onTransitionEndSpy: jest.SpyInstance;
+  let nextFrameSpy: jest.SpyInstance;
+
+  beforeEach(() => {
+    jest.useRealTimers();
+
+    onTransitionEndSpy = jest.spyOn(TransitionUtils, 'onTransitionEnd');
+    // 保证动画有一定的时间
+    onTransitionEndSpy.mockImplementation((_el, done: () => void) => {
+      setTimeout(done, 50);
+    });
+
+    nextFrameSpy = jest.spyOn(TransitionUtils, 'nextFrame');
+    nextFrameSpy.mockImplementation((done: () => void) => {
+      const id = setTimeout(done, 50);
+      return () => {
+        clearTimeout(id);
+      };
+    });
+  });
+
+  it('test render', async () => {
     const wrapper = mount(
       <CollapseTransition in={false}>
         <div />
@@ -18,12 +42,24 @@ describe('CollapseTransition', () => {
 
     wrapper.update();
 
+    await act(() => wait(100));
+
+    expect(wrapper.render()).toMatchSnapshot();
+
+    wrapper.setProps({
+      in: false,
+    });
+
+    wrapper.update();
+
+    await act(() => wait(100));
+
     expect(wrapper.render()).toMatchSnapshot();
   });
 
-  it('测试horizontal', () => {
+  it('test horizontal', async () => {
     const wrapper = mount(
-      <CollapseTransition horizontal={true} in={false}>
+      <CollapseTransition in={false} horizontal={true}>
         <div />
       </CollapseTransition>,
     );
@@ -35,6 +71,18 @@ describe('CollapseTransition', () => {
     });
 
     wrapper.update();
+
+    await act(() => wait(100));
+
+    expect(wrapper.render()).toMatchSnapshot();
+
+    wrapper.setProps({
+      in: false,
+    });
+
+    wrapper.update();
+
+    await act(() => wait(100));
 
     expect(wrapper.render()).toMatchSnapshot();
   });
