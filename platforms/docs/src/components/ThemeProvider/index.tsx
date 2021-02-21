@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ThemeProvider as XlThemeProvider, BaseTheme } from '@xl-vision/react';
 
 export type ThemeProviderProps = {
   children: React.ReactNode;
@@ -21,20 +20,7 @@ const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = (props) => {
 
   const [isDark, setDark] = React.useState(false);
 
-  const theme = React.useMemo<BaseTheme>(() => {
-    return {
-      color: {
-        mode: isDark ? 'dark' : 'light',
-      },
-      overrideStyles: {},
-    };
-  }, [isDark]);
-
-  return (
-    <ThemeContext.Provider value={{ isDark, setDark }}>
-      <XlThemeProvider theme={theme}>{children}</XlThemeProvider>
-    </ThemeContext.Provider>
-  );
+  return <ThemeContext.Provider value={{ isDark, setDark }}>{children}</ThemeContext.Provider>;
 };
 
 ThemeProvider.propTypes = {

@@ -33,7 +33,10 @@ const isEmpty = (o: any): o is undefined => {
   return Object.keys(o).length === 0;
 };
 
-const createStyleWithTheme = <P extends { theme?: Theme }, Q = Omit<P, 'theme'> & { theme: Theme }>(
+export const createStyleWithTheme = <
+  P extends { theme?: Theme },
+  Q = Omit<P, 'theme'> & { theme: Theme }
+>(
   style: Interpolation<Q>,
 ) => (props: P) => {
   if (typeof style === 'function') {
@@ -82,8 +85,7 @@ const styled = <
     first: TemplateStringsArray | CSSObject | FunctionInterpolation<P & E>,
     ...styles: Array<Interpolation<P & E>>
   ) => {
-    const array = [first, ...styles];
-    const newArray = array.map(createStyleWithTheme);
+    const newArray = [first, ...styles].map(createStyleWithTheme);
 
     newArray.push(
       createStyleWithTheme((props) => {
