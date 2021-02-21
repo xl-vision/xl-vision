@@ -20,8 +20,10 @@ export interface RowProps extends React.HTMLAttributes<HTMLDivElement> {
   type?: 'flex';
 }
 
+const displayName = 'Row';
+
 const RowRoot = styled('div', {
-  name: 'Row',
+  name: displayName,
   slot: 'Root',
 })<{
   align: RowProps['align'];
@@ -122,7 +124,7 @@ const Row = React.forwardRef<HTMLDivElement, RowProps>((props, ref) => {
 });
 
 if (isDevelopment) {
-  Row.displayName = 'Row';
+  Row.displayName = displayName;
 }
 
 Row.propTypes = {

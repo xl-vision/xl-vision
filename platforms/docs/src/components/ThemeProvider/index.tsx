@@ -26,6 +26,7 @@ const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = (props) => {
       color: {
         mode: isDark ? 'dark' : 'light',
       },
+      overrideStyles: {},
     };
   }, [isDark]);
 

@@ -4,6 +4,7 @@ import {
   FunctionInterpolation,
   Interpolation,
   ShouldForwardProp,
+  SimpleInterpolation,
 } from '@xl-vision/styled-engine-types';
 import innerStyled from '@xl-vision/styled-engine';
 import React from 'react';
@@ -11,6 +12,7 @@ import clsx from 'clsx';
 import { isDevelopment } from '../utils/env';
 import { Theme } from '../ThemeProvider/createTheme';
 import ThemeContext from '../ThemeProvider/ThemeContext';
+import { OverrideStyles } from '../ThemeProvider/overrideStyles';
 
 export type XlOptions = {
   name?: string;
@@ -58,7 +60,36 @@ const styled = <
     first: TemplateStringsArray | CSSObject | FunctionInterpolation<P & E>,
     ...styles: Array<Interpolation<P & E>>
   ) => {
-    const DefaultComponent = defaultCreateStyledComponent<any>(first, ...styles);
+    const overrideStyle = (props: P & E) => {
+      const { theme } = props;
+
+      let styleArgs = [first, ...styles];
+
+      if (name && slot) {
+        const cmp = (theme.overrideStyles as {
+          [name: string]: {
+            [slot: string]: OverrideStyles;
+          };
+        })[name];
+        if (cmp && cmp[slot]) {
+          styleArgs = [cmp[slot]];
+        }
+      }
+
+      const array: Array<SimpleInterpolation> = [];
+
+      styleArgs.forEach((it) => {
+        if (typeof it === 'function') {
+          array.push(it(props));
+        } else {
+          array.push(it);
+        }
+      });
+
+      return array;
+    };
+
+    const DefaultComponent = defaultCreateStyledComponent<any>(overrideStyle);
 
     const Cmp = React.forwardRef<
       any,

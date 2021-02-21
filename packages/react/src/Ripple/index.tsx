@@ -5,6 +5,7 @@ import { ThemeContext } from '../ThemeProvider';
 import TransitionGroup, { TransitionGroupClasses } from '../TransitionGroup';
 import useEventCallback from '../hooks/useEventCallback';
 import { styled } from '../styles';
+import { isDevelopment } from '../utils/env';
 
 export interface RippleProps extends React.HTMLAttributes<HTMLDivElement> {
   transitionClasses?: TransitionGroupClasses;
@@ -16,8 +17,10 @@ export interface RippleRef {
   stop: () => void;
 }
 
+const displayName = 'Ripple';
+
 const RipperRoot = styled('div', {
-  name: 'Ripple',
+  name: displayName,
   slot: 'Root',
 })(() => {
   return {
@@ -33,7 +36,10 @@ const RipperRoot = styled('div', {
   };
 });
 
-const RippleInner = styled('div')(() => {
+const RippleInner = styled('div', {
+  name: displayName,
+  slot: 'Inner',
+})(() => {
   return {
     position: 'absolute',
     backgroundColor: 'currentcolor',
@@ -183,7 +189,9 @@ const Ripple = React.forwardRef<RippleRef, RippleProps>((props, ref) => {
   );
 });
 
-Ripple.displayName = 'Ripple';
+if (isDevelopment) {
+  Ripple.displayName = displayName;
+}
 
 Ripple.propTypes = {
   transitionClasses: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
