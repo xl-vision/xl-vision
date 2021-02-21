@@ -1,6 +1,8 @@
 export * from './styles';
 export { default as ThemeProvider } from './ThemeProvider';
 export * from './ThemeProvider';
+export { default as LocalizationProvider } from './LocalizationProvider';
+export * from './LocalizationProvider';
 export { default as Transition } from './Transition';
 export * from './Transition';
 export { default as CSSTransition } from './CSSTransition';
