@@ -74,11 +74,11 @@ describe('Ripple', () => {
     expect(doms[0].style.display).toBe('');
 
     wrapper.find('.box').simulate('mouseup');
-    await wait(50 + 10);
+    await wait(50 + 20);
     expect(wrapper.getDOMNode().querySelectorAll<HTMLElement>('.xl-ripple-inner').length).toBe(0);
 
     wrapper.find('.box').simulate('blur');
-    await wait(50 + 10);
+    await wait(50 + 20);
     expect(wrapper.getDOMNode().querySelectorAll<HTMLElement>('.xl-ripple-inner').length).toBe(0);
   });
 });

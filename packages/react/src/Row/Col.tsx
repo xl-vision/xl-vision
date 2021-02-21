@@ -19,8 +19,10 @@ export interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
   column: ColSpanType;
 }
 
+const displayName = 'Col';
+
 const ColRoot = styled('div', {
-  name: 'Col',
+  name: displayName,
   slot: 'Root',
 })<{
   column?: number;
@@ -184,7 +186,7 @@ const Col = React.forwardRef<HTMLDivElement, ColProps>((props, ref) => {
 });
 
 if (isDevelopment) {
-  Col.displayName = 'Col';
+  Col.displayName = displayName;
 }
 
 Col.propTypes = {

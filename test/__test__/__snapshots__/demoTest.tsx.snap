@@ -441,6 +441,7 @@ exports[`renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
                   "zoom": 1,
                 },
               },
+              "overrideStyles": Object {},
               "transition": Object {
                 "durations": Object {
                   "complex": "375",
@@ -792,6 +793,7 @@ exports[`renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
                           "zoom": 1,
                         },
                       },
+                      "overrideStyles": Object {},
                       "transition": Object {
                         "durations": Object {
                           "complex": "375",
@@ -1148,6 +1150,7 @@ exports[`renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
                           "zoom": 1,
                         },
                       },
+                      "overrideStyles": Object {},
                       "transition": Object {
                         "durations": Object {
                           "complex": "375",
@@ -1480,6 +1483,7 @@ exports[`renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
                                   "zoom": 1,
                                 },
                               },
+                              "overrideStyles": Object {},
                               "transition": Object {
                                 "durations": Object {
                                   "complex": "375",
@@ -1835,6 +1839,7 @@ exports[`renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
                                   "zoom": 1,
                                 },
                               },
+                              "overrideStyles": Object {},
                               "transition": Object {
                                 "durations": Object {
                                   "complex": "375",
@@ -2215,6 +2220,7 @@ exports[`renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
                   "zoom": 1,
                 },
               },
+              "overrideStyles": Object {},
               "transition": Object {
                 "durations": Object {
                   "complex": "375",
@@ -2566,6 +2572,7 @@ exports[`renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
                           "zoom": 1,
                         },
                       },
+                      "overrideStyles": Object {},
                       "transition": Object {
                         "durations": Object {
                           "complex": "375",
@@ -2922,6 +2929,7 @@ exports[`renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
                           "zoom": 1,
                         },
                       },
+                      "overrideStyles": Object {},
                       "transition": Object {
                         "durations": Object {
                           "complex": "375",
@@ -3254,6 +3262,7 @@ exports[`renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
                                   "zoom": 1,
                                 },
                               },
+                              "overrideStyles": Object {},
                               "transition": Object {
                                 "durations": Object {
                                   "complex": "375",
@@ -3609,6 +3618,7 @@ exports[`renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
                                   "zoom": 1,
                                 },
                               },
+                              "overrideStyles": Object {},
                               "transition": Object {
                                 "durations": Object {
                                   "complex": "375",
@@ -3985,6 +3995,7 @@ exports[`renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
                   "zoom": 1,
                 },
               },
+              "overrideStyles": Object {},
               "transition": Object {
                 "durations": Object {
                   "complex": "375",
@@ -4336,6 +4347,7 @@ exports[`renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
                           "zoom": 1,
                         },
                       },
+                      "overrideStyles": Object {},
                       "transition": Object {
                         "durations": Object {
                           "complex": "375",
@@ -4692,6 +4704,7 @@ exports[`renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
                           "zoom": 1,
                         },
                       },
+                      "overrideStyles": Object {},
                       "transition": Object {
                         "durations": Object {
                           "complex": "375",
@@ -5024,6 +5037,7 @@ exports[`renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
                                   "zoom": 1,
                                 },
                               },
+                              "overrideStyles": Object {},
                               "transition": Object {
                                 "durations": Object {
                                   "complex": "375",
@@ -5379,6 +5393,7 @@ exports[`renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
                                   "zoom": 1,
                                 },
                               },
+                              "overrideStyles": Object {},
                               "transition": Object {
                                 "durations": Object {
                                   "complex": "375",
@@ -5755,6 +5770,7 @@ exports[`renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
                   "zoom": 1,
                 },
               },
+              "overrideStyles": Object {},
               "transition": Object {
                 "durations": Object {
                   "complex": "375",
@@ -6106,6 +6122,7 @@ exports[`renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
                           "zoom": 1,
                         },
                       },
+                      "overrideStyles": Object {},
                       "transition": Object {
                         "durations": Object {
                           "complex": "375",
@@ -6462,6 +6479,7 @@ exports[`renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
                           "zoom": 1,
                         },
                       },
+                      "overrideStyles": Object {},
                       "transition": Object {
                         "durations": Object {
                           "complex": "375",
@@ -6794,6 +6812,7 @@ exports[`renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
                                   "zoom": 1,
                                 },
                               },
+                              "overrideStyles": Object {},
                               "transition": Object {
                                 "durations": Object {
                                   "complex": "375",
@@ -7153,6 +7172,7 @@ exports[`renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
                                   "zoom": 1,
                                 },
                               },
+                              "overrideStyles": Object {},
                               "transition": Object {
                                 "durations": Object {
                                   "complex": "375",
@@ -7533,6 +7553,7 @@ exports[`renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
                   "zoom": 1,
                 },
               },
+              "overrideStyles": Object {},
               "transition": Object {
                 "durations": Object {
                   "complex": "375",
@@ -7884,6 +7905,7 @@ exports[`renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
                           "zoom": 1,
                         },
                       },
+                      "overrideStyles": Object {},
                       "transition": Object {
                         "durations": Object {
                           "complex": "375",
@@ -8240,6 +8262,7 @@ exports[`renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
                           "zoom": 1,
                         },
                       },
+                      "overrideStyles": Object {},
                       "transition": Object {
                         "durations": Object {
                           "complex": "375",
@@ -8572,6 +8595,7 @@ exports[`renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
                                   "zoom": 1,
                                 },
                               },
+                              "overrideStyles": Object {},
                               "transition": Object {
                                 "durations": Object {
                                   "complex": "375",
@@ -8927,6 +8951,7 @@ exports[`renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
                                   "zoom": 1,
                                 },
                               },
+                              "overrideStyles": Object {},
                               "transition": Object {
                                 "durations": Object {
                                   "complex": "375",
@@ -9354,6 +9379,7 @@ exports[`renders ./packages/react/src/Ripple/__doc__/Advance.tsx correctly 1`] =
               "zoom": 1,
             },
           },
+          "overrideStyles": Object {},
           "transition": Object {
             "durations": Object {
               "complex": "375",
@@ -9696,6 +9722,7 @@ exports[`renders ./packages/react/src/Ripple/__doc__/Advance.tsx correctly 1`] =
                       "zoom": 1,
                     },
                   },
+                  "overrideStyles": Object {},
                   "transition": Object {
                     "durations": Object {
                       "complex": "375",
@@ -10102,6 +10129,7 @@ exports[`renders ./packages/react/src/Ripple/__doc__/Basic.tsx correctly 1`] = `
               "zoom": 1,
             },
           },
+          "overrideStyles": Object {},
           "transition": Object {
             "durations": Object {
               "complex": "375",
@@ -10443,6 +10471,7 @@ exports[`renders ./packages/react/src/Ripple/__doc__/Basic.tsx correctly 1`] = `
                       "zoom": 1,
                     },
                   },
+                  "overrideStyles": Object {},
                   "transition": Object {
                     "durations": Object {
                       "complex": "375",
@@ -10900,6 +10929,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
                 "zoom": 1,
               },
             },
+            "overrideStyles": Object {},
             "transition": Object {
               "durations": Object {
                 "complex": "375",
@@ -11260,6 +11290,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
                         "zoom": 1,
                       },
                     },
+                    "overrideStyles": Object {},
                     "transition": Object {
                       "durations": Object {
                         "complex": "375",
@@ -11629,6 +11660,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -11963,6 +11995,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -12334,6 +12367,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -12668,6 +12702,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -13039,6 +13074,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -13373,6 +13409,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -13744,6 +13781,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -14078,6 +14116,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -14421,6 +14460,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
                 "zoom": 1,
               },
             },
+            "overrideStyles": Object {},
             "transition": Object {
               "durations": Object {
                 "complex": "375",
@@ -14780,6 +14820,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
                         "zoom": 1,
                       },
                     },
+                    "overrideStyles": Object {},
                     "transition": Object {
                       "durations": Object {
                         "complex": "375",
@@ -15149,6 +15190,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -15483,6 +15525,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -15854,6 +15897,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -16188,6 +16232,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -16559,6 +16604,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -16893,6 +16939,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -17264,6 +17311,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -17598,6 +17646,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -17941,6 +17990,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
                 "zoom": 1,
               },
             },
+            "overrideStyles": Object {},
             "transition": Object {
               "durations": Object {
                 "complex": "375",
@@ -18300,6 +18350,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
                         "zoom": 1,
                       },
                     },
+                    "overrideStyles": Object {},
                     "transition": Object {
                       "durations": Object {
                         "complex": "375",
@@ -18669,6 +18720,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -19003,6 +19055,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -19374,6 +19427,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -19708,6 +19762,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -20079,6 +20134,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -20413,6 +20469,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -20784,6 +20841,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -21118,6 +21176,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -21697,6 +21756,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                 "zoom": 1,
               },
             },
+            "overrideStyles": Object {},
             "transition": Object {
               "durations": Object {
                 "complex": "375",
@@ -22058,6 +22118,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                         "zoom": 1,
                       },
                     },
+                    "overrideStyles": Object {},
                     "transition": Object {
                       "durations": Object {
                         "complex": "375",
@@ -22427,6 +22488,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -22772,6 +22834,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -23148,6 +23211,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -23493,6 +23557,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -23869,6 +23934,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -24214,6 +24280,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -24590,6 +24657,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -24935,6 +25003,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -25283,6 +25352,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                 "zoom": 1,
               },
             },
+            "overrideStyles": Object {},
             "transition": Object {
               "durations": Object {
                 "complex": "375",
@@ -25644,6 +25714,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                         "zoom": 1,
                       },
                     },
+                    "overrideStyles": Object {},
                     "transition": Object {
                       "durations": Object {
                         "complex": "375",
@@ -26013,6 +26084,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -26358,6 +26430,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -26734,6 +26807,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -27079,6 +27153,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -27455,6 +27530,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -27800,6 +27876,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -28176,6 +28253,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -28521,6 +28599,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -28869,6 +28948,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                 "zoom": 1,
               },
             },
+            "overrideStyles": Object {},
             "transition": Object {
               "durations": Object {
                 "complex": "375",
@@ -29230,6 +29310,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                         "zoom": 1,
                       },
                     },
+                    "overrideStyles": Object {},
                     "transition": Object {
                       "durations": Object {
                         "complex": "375",
@@ -29599,6 +29680,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -29944,6 +30026,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -30320,6 +30403,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -30665,6 +30749,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -31041,6 +31126,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -31386,6 +31472,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -31762,6 +31849,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -32107,6 +32195,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -32455,6 +32544,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                 "zoom": 1,
               },
             },
+            "overrideStyles": Object {},
             "transition": Object {
               "durations": Object {
                 "complex": "375",
@@ -32816,6 +32906,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                         "zoom": 1,
                       },
                     },
+                    "overrideStyles": Object {},
                     "transition": Object {
                       "durations": Object {
                         "complex": "375",
@@ -33185,6 +33276,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -33519,6 +33611,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -33890,6 +33983,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -34224,6 +34318,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -34595,6 +34690,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -34929,6 +35025,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -35272,6 +35369,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                 "zoom": 1,
               },
             },
+            "overrideStyles": Object {},
             "transition": Object {
               "durations": Object {
                 "complex": "375",
@@ -35633,6 +35731,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                         "zoom": 1,
                       },
                     },
+                    "overrideStyles": Object {},
                     "transition": Object {
                       "durations": Object {
                         "complex": "375",
@@ -36002,6 +36101,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -36336,6 +36436,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -36707,6 +36808,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -37041,6 +37143,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -37412,6 +37515,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -37746,6 +37850,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -38089,6 +38194,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                 "zoom": 1,
               },
             },
+            "overrideStyles": Object {},
             "transition": Object {
               "durations": Object {
                 "complex": "375",
@@ -38450,6 +38556,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                         "zoom": 1,
                       },
                     },
+                    "overrideStyles": Object {},
                     "transition": Object {
                       "durations": Object {
                         "complex": "375",
@@ -38819,6 +38926,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -39153,6 +39261,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -39524,6 +39633,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -39858,6 +39968,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -40229,6 +40340,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -40563,6 +40675,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -40992,6 +41105,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
                 "zoom": 1,
               },
             },
+            "overrideStyles": Object {},
             "transition": Object {
               "durations": Object {
                 "complex": "375",
@@ -41351,6 +41465,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
                         "zoom": 1,
                       },
                     },
+                    "overrideStyles": Object {},
                     "transition": Object {
                       "durations": Object {
                         "complex": "375",
@@ -41720,6 +41835,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -42054,6 +42170,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -42426,6 +42543,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -42760,6 +42878,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -43131,6 +43250,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -43465,6 +43585,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -43808,6 +43929,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
                 "zoom": 1,
               },
             },
+            "overrideStyles": Object {},
             "transition": Object {
               "durations": Object {
                 "complex": "375",
@@ -44167,6 +44289,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
                         "zoom": 1,
                       },
                     },
+                    "overrideStyles": Object {},
                     "transition": Object {
                       "durations": Object {
                         "complex": "375",
@@ -44536,6 +44659,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -44870,6 +44994,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -45242,6 +45367,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -45576,6 +45702,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -45948,6 +46075,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -46282,6 +46410,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -46653,6 +46782,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -46987,6 +47117,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -47330,6 +47461,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
                 "zoom": 1,
               },
             },
+            "overrideStyles": Object {},
             "transition": Object {
               "durations": Object {
                 "complex": "375",
@@ -47689,6 +47821,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
                         "zoom": 1,
                       },
                     },
+                    "overrideStyles": Object {},
                     "transition": Object {
                       "durations": Object {
                         "complex": "375",
@@ -48059,6 +48192,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -48393,6 +48527,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -48765,6 +48900,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -49099,6 +49235,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -49470,6 +49607,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -49804,6 +49942,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -50213,6 +50352,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveColumn.tsx correctly
                   "zoom": 1,
                 },
               },
+              "overrideStyles": Object {},
               "transition": Object {
                 "durations": Object {
                   "complex": "375",
@@ -50570,6 +50710,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveColumn.tsx correctly
                           "zoom": 1,
                         },
                       },
+                      "overrideStyles": Object {},
                       "transition": Object {
                         "durations": Object {
                           "complex": "375",
@@ -50898,6 +51039,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveColumn.tsx correctly
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -51264,6 +51406,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveColumn.tsx correctly
                           "zoom": 1,
                         },
                       },
+                      "overrideStyles": Object {},
                       "transition": Object {
                         "durations": Object {
                           "complex": "375",
@@ -51592,6 +51735,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveColumn.tsx correctly
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -51959,6 +52103,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveColumn.tsx correctly
                           "zoom": 1,
                         },
                       },
+                      "overrideStyles": Object {},
                       "transition": Object {
                         "durations": Object {
                           "complex": "375",
@@ -52287,6 +52432,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveColumn.tsx correctly
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -52654,6 +52800,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveColumn.tsx correctly
                           "zoom": 1,
                         },
                       },
+                      "overrideStyles": Object {},
                       "transition": Object {
                         "durations": Object {
                           "complex": "375",
@@ -52982,6 +53129,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveColumn.tsx correctly
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -53381,6 +53529,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx correctly
                 "zoom": 1,
               },
             },
+            "overrideStyles": Object {},
             "transition": Object {
               "durations": Object {
                 "complex": "375",
@@ -53740,6 +53889,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx correctly
                         "zoom": 1,
                       },
                     },
+                    "overrideStyles": Object {},
                     "transition": Object {
                       "durations": Object {
                         "complex": "375",
@@ -54109,6 +54259,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx correctly
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -54443,6 +54594,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx correctly
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -54824,6 +54976,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx correctly
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -55158,6 +55311,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx correctly
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -55529,6 +55683,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx correctly
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -55863,6 +56018,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx correctly
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -56206,6 +56362,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx correctly
                 "zoom": 1,
               },
             },
+            "overrideStyles": Object {},
             "transition": Object {
               "durations": Object {
                 "complex": "375",
@@ -56565,6 +56722,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx correctly
                         "zoom": 1,
                       },
                     },
+                    "overrideStyles": Object {},
                     "transition": Object {
                       "durations": Object {
                         "complex": "375",
@@ -56934,6 +57092,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx correctly
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -57268,6 +57427,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx correctly
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -57639,6 +57799,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx correctly
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -57973,6 +58134,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx correctly
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -58354,6 +58516,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx correctly
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -58688,6 +58851,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx correctly
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -59031,6 +59195,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx correctly
                 "zoom": 1,
               },
             },
+            "overrideStyles": Object {},
             "transition": Object {
               "durations": Object {
                 "complex": "375",
@@ -59390,6 +59555,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx correctly
                         "zoom": 1,
                       },
                     },
+                    "overrideStyles": Object {},
                     "transition": Object {
                       "durations": Object {
                         "complex": "375",
@@ -59759,6 +59925,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx correctly
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -60093,6 +60260,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx correctly
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -60464,6 +60632,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx correctly
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -60798,6 +60967,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx correctly
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -61180,6 +61350,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx correctly
                                 "zoom": 1,
                               },
                             },
+                            "overrideStyles": Object {},
                             "transition": Object {
                               "durations": Object {
                                 "complex": "375",
@@ -61514,6 +61685,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx correctly
                                       "zoom": 1,
                                     },
                                   },
+                                  "overrideStyles": Object {},
                                   "transition": Object {
                                     "durations": Object {
                                       "complex": "375",
@@ -61901,6 +62073,7 @@ exports[`renders ./packages/react/src/Transition/__doc__/Appear.tsx correctly 1`
                   "zoom": 1,
                 },
               },
+              "overrideStyles": Object {},
               "transition": Object {
                 "durations": Object {
                   "complex": "375",
@@ -62246,6 +62419,7 @@ exports[`renders ./packages/react/src/Transition/__doc__/Appear.tsx correctly 1`
                   "zoom": 1,
                 },
               },
+              "overrideStyles": Object {},
               "transition": Object {
                 "durations": Object {
                   "complex": "375",
@@ -62654,6 +62828,7 @@ exports[`renders ./packages/react/src/TransitionGroup/__doc__/Basic.tsx correctl
                 "zoom": 1,
               },
             },
+            "overrideStyles": Object {},
             "transition": Object {
               "durations": Object {
                 "complex": "375",
@@ -63031,6 +63206,7 @@ exports[`renders ./packages/react/src/TransitionGroup/__doc__/Basic.tsx correctl
                             "zoom": 1,
                           },
                         },
+                        "overrideStyles": Object {},
                         "transition": Object {
                           "durations": Object {
                             "complex": "375",
@@ -63411,6 +63587,7 @@ exports[`renders ./packages/react/src/TransitionGroup/__doc__/Basic.tsx correctl
                             "zoom": 1,
                           },
                         },
+                        "overrideStyles": Object {},
                         "transition": Object {
                           "durations": Object {
                             "complex": "375",
@@ -63791,6 +63968,7 @@ exports[`renders ./packages/react/src/TransitionGroup/__doc__/Basic.tsx correctl
                             "zoom": 1,
                           },
                         },
+                        "overrideStyles": Object {},
                         "transition": Object {
                           "durations": Object {
                             "complex": "375",
@@ -64171,6 +64349,7 @@ exports[`renders ./packages/react/src/TransitionGroup/__doc__/Basic.tsx correctl
                             "zoom": 1,
                           },
                         },
+                        "overrideStyles": Object {},
                         "transition": Object {
                           "durations": Object {
                             "complex": "375",
@@ -64551,6 +64730,7 @@ exports[`renders ./packages/react/src/TransitionGroup/__doc__/Basic.tsx correctl
                             "zoom": 1,
                           },
                         },
+                        "overrideStyles": Object {},
                         "transition": Object {
                           "durations": Object {
                             "complex": "375",
@@ -64931,6 +65111,7 @@ exports[`renders ./packages/react/src/TransitionGroup/__doc__/Basic.tsx correctl
                             "zoom": 1,
                           },
                         },
+                        "overrideStyles": Object {},
                         "transition": Object {
                           "durations": Object {
                             "complex": "375",
@@ -65311,6 +65492,7 @@ exports[`renders ./packages/react/src/TransitionGroup/__doc__/Basic.tsx correctl
                             "zoom": 1,
                           },
                         },
+                        "overrideStyles": Object {},
                         "transition": Object {
                           "durations": Object {
                             "complex": "375",
@@ -65691,6 +65873,7 @@ exports[`renders ./packages/react/src/TransitionGroup/__doc__/Basic.tsx correctl
                             "zoom": 1,
                           },
                         },
+                        "overrideStyles": Object {},
                         "transition": Object {
                           "durations": Object {
                             "complex": "375",
@@ -66071,6 +66254,7 @@ exports[`renders ./packages/react/src/TransitionGroup/__doc__/Basic.tsx correctl
                             "zoom": 1,
                           },
                         },
+                        "overrideStyles": Object {},
                         "transition": Object {
                           "durations": Object {
                             "complex": "375",
@@ -66451,6 +66635,7 @@ exports[`renders ./packages/react/src/TransitionGroup/__doc__/Basic.tsx correctl
                             "zoom": 1,
                           },
                         },
+                        "overrideStyles": Object {},
                         "transition": Object {
                           "durations": Object {
                             "complex": "375",

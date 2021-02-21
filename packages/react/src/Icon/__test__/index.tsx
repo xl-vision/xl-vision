@@ -11,7 +11,7 @@ describe('Icon', () => {
       </Icon>,
     );
 
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.render()).toMatchSnapshot();
   });
 
   it('test ref', () => {
