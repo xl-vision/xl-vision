@@ -64,6 +64,21 @@ const route: Array<Route> = [
       },
     ],
   },
+  {
+    name: '样式',
+    children: [
+      {
+        name: '主题',
+        path: '/ThemeProvider',
+        component: () => import('@xl-vision/react/ThemeProvider/__doc__/index.mdx'),
+      },
+    ],
+  },
+  {
+    name: '国际化',
+    path: '/LocalizationProvider',
+    component: () => import('@xl-vision/react/LocalizationProvider/__doc__/index.mdx'),
+  },
 ];
 
 export default route;

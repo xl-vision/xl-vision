@@ -16,19 +16,20 @@ const LeftNode = styled('span')(() => {
 
 const NonLeftNode = styled(LeftNode)(({ theme }) => {
   return {
-    borderBottom: `1px solid ${theme.color.divider}`,
     margin: '12px 0 0',
     color: `${theme.color.text.primary}`,
     fontWeight: `${theme.typography.fontWeight.bold}`,
     fontSize: '16px',
+    borderBottom: `1px solid ${theme.color.divider}`,
   };
 });
 
-const NodeWrapper = styled('ul')(() => {
+const NodeWrapper = styled('ul')(({ theme }) => {
   return {
     listStyle: 'none',
     margin: 0,
     padding: 0,
+    borderBottom: `1px solid ${theme.color.divider}`,
   };
 });
 

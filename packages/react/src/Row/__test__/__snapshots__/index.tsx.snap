@@ -267,11 +267,11 @@ exports[`Row flex布局 1`] = `
     class="box"
   >
     <div
-      class="c0 xl-row xl-row-root xl-row-root-flex xl-row-root-align-top"
+      class="c0 xl-row-root xl-row-root-flex xl-row-root-align-top"
       style="margin-left:-5px;margin-right:-5px"
     >
       <div
-        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        class="c1 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -281,7 +281,7 @@ exports[`Row flex布局 1`] = `
         </div>
       </div>
       <div
-        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        class="c1 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -291,7 +291,7 @@ exports[`Row flex布局 1`] = `
         </div>
       </div>
       <div
-        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        class="c1 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -301,7 +301,7 @@ exports[`Row flex布局 1`] = `
         </div>
       </div>
       <div
-        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        class="c1 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -316,11 +316,11 @@ exports[`Row flex布局 1`] = `
     class="box"
   >
     <div
-      class="c2 xl-row xl-row-root xl-row-root-flex xl-row-root-align-middle"
+      class="c2 xl-row-root xl-row-root-flex xl-row-root-align-middle"
       style="margin-left:-5px;margin-right:-5px"
     >
       <div
-        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        class="c1 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -330,7 +330,7 @@ exports[`Row flex布局 1`] = `
         </div>
       </div>
       <div
-        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        class="c1 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -340,7 +340,7 @@ exports[`Row flex布局 1`] = `
         </div>
       </div>
       <div
-        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        class="c1 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -350,7 +350,7 @@ exports[`Row flex布局 1`] = `
         </div>
       </div>
       <div
-        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        class="c1 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -365,11 +365,11 @@ exports[`Row flex布局 1`] = `
     class="box"
   >
     <div
-      class="c3 xl-row xl-row-root xl-row-root-flex xl-row-root-align-bottom"
+      class="c3 xl-row-root xl-row-root-flex xl-row-root-align-bottom"
       style="margin-left:-5px;margin-right:-5px"
     >
       <div
-        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        class="c1 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -379,7 +379,7 @@ exports[`Row flex布局 1`] = `
         </div>
       </div>
       <div
-        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        class="c1 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -389,7 +389,7 @@ exports[`Row flex布局 1`] = `
         </div>
       </div>
       <div
-        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        class="c1 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -399,7 +399,7 @@ exports[`Row flex布局 1`] = `
         </div>
       </div>
       <div
-        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        class="c1 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -414,11 +414,11 @@ exports[`Row flex布局 1`] = `
     class="box"
   >
     <div
-      class="c4 xl-row xl-row-root xl-row-root-flex xl-row-root-justify-start"
+      class="c4 xl-row-root xl-row-root-flex xl-row-root-justify-start"
       style="margin-left:-5px;margin-right:-5px"
     >
       <div
-        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        class="c1 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -428,7 +428,7 @@ exports[`Row flex布局 1`] = `
         </div>
       </div>
       <div
-        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        class="c1 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -438,7 +438,7 @@ exports[`Row flex布局 1`] = `
         </div>
       </div>
       <div
-        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        class="c1 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -453,11 +453,11 @@ exports[`Row flex布局 1`] = `
     class="box"
   >
     <div
-      class="c5 xl-row xl-row-root xl-row-root-flex xl-row-root-justify-center"
+      class="c5 xl-row-root xl-row-root-flex xl-row-root-justify-center"
       style="margin-left:-5px;margin-right:-5px"
     >
       <div
-        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        class="c1 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -467,7 +467,7 @@ exports[`Row flex布局 1`] = `
         </div>
       </div>
       <div
-        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        class="c1 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -477,7 +477,7 @@ exports[`Row flex布局 1`] = `
         </div>
       </div>
       <div
-        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        class="c1 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -492,11 +492,11 @@ exports[`Row flex布局 1`] = `
     class="box"
   >
     <div
-      class="c6 xl-row xl-row-root xl-row-root-flex xl-row-root-justify-end"
+      class="c6 xl-row-root xl-row-root-flex xl-row-root-justify-end"
       style="margin-left:-5px;margin-right:-5px"
     >
       <div
-        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        class="c1 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -506,7 +506,7 @@ exports[`Row flex布局 1`] = `
         </div>
       </div>
       <div
-        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        class="c1 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -516,7 +516,7 @@ exports[`Row flex布局 1`] = `
         </div>
       </div>
       <div
-        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        class="c1 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -531,11 +531,11 @@ exports[`Row flex布局 1`] = `
     class="box"
   >
     <div
-      class="c7 xl-row xl-row-root xl-row-root-flex"
+      class="c7 xl-row-root xl-row-root-flex"
       style="margin-left:-5px;margin-right:-5px"
     >
       <div
-        class="c8 xl-col xl-col-root xl-col-root-column-6 xl-col-root-order-3"
+        class="c8 xl-col-root xl-col-root-column-6 xl-col-root-order-3"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -545,7 +545,7 @@ exports[`Row flex布局 1`] = `
         </div>
       </div>
       <div
-        class="c9 xl-col xl-col-root xl-col-root-column-6 xl-col-root-order-1"
+        class="c9 xl-col-root xl-col-root-column-6 xl-col-root-order-1"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -555,7 +555,7 @@ exports[`Row flex布局 1`] = `
         </div>
       </div>
       <div
-        class="c10 xl-col xl-col-root xl-col-root-column-6 xl-col-root-order-2"
+        class="c10 xl-col-root xl-col-root-column-6 xl-col-root-order-2"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -636,11 +636,11 @@ exports[`Row 偏移布局 1`] = `
     class="box"
   >
     <div
-      class="c0 xl-row xl-row-root"
+      class="c0 xl-row-root"
       style="margin-left:-5px;margin-right:-5px"
     >
       <div
-        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        class="c1 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -650,7 +650,7 @@ exports[`Row 偏移布局 1`] = `
         </div>
       </div>
       <div
-        class="c2 xl-col xl-col-root xl-col-root-column-6 xl-col-root-offset-6"
+        class="c2 xl-col-root xl-col-root-column-6 xl-col-root-offset-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -660,7 +660,7 @@ exports[`Row 偏移布局 1`] = `
         </div>
       </div>
       <div
-        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        class="c1 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -675,11 +675,11 @@ exports[`Row 偏移布局 1`] = `
     class="box"
   >
     <div
-      class="c0 xl-row xl-row-root"
+      class="c0 xl-row-root"
       style="margin-left:-5px;margin-right:-5px"
     >
       <div
-        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        class="c1 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -689,7 +689,7 @@ exports[`Row 偏移布局 1`] = `
         </div>
       </div>
       <div
-        class="c3 xl-col xl-col-root xl-col-root-column-6 xl-col-root-push-6"
+        class="c3 xl-col-root xl-col-root-column-6 xl-col-root-push-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -699,7 +699,7 @@ exports[`Row 偏移布局 1`] = `
         </div>
       </div>
       <div
-        class="c4 xl-col xl-col-root xl-col-root-column-6 xl-col-root-pull-6"
+        class="c4 xl-col-root xl-col-root-column-6 xl-col-root-pull-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -709,7 +709,7 @@ exports[`Row 偏移布局 1`] = `
         </div>
       </div>
       <div
-        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        class="c1 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -724,11 +724,11 @@ exports[`Row 偏移布局 1`] = `
     class="box"
   >
     <div
-      class="c0 xl-row xl-row-root"
+      class="c0 xl-row-root"
       style="margin-left:-5px;margin-right:-5px"
     >
       <div
-        class="c2 xl-col xl-col-root xl-col-root-column-6 xl-col-root-offset-6"
+        class="c2 xl-col-root xl-col-root-column-6 xl-col-root-offset-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -738,7 +738,7 @@ exports[`Row 偏移布局 1`] = `
         </div>
       </div>
       <div
-        class="c5 xl-col xl-col-root xl-col-root-column-6 xl-col-root-pull-12"
+        class="c5 xl-col-root xl-col-root-column-6 xl-col-root-pull-12"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -748,7 +748,7 @@ exports[`Row 偏移布局 1`] = `
         </div>
       </div>
       <div
-        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        class="c1 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -802,11 +802,11 @@ exports[`Row 响应式偏移 1`] = `
     class="box"
   >
     <div
-      class="c0 xl-row xl-row-root"
+      class="c0 xl-row-root"
       style="margin-left:-5px;margin-right:-5px"
     >
       <div
-        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        class="c1 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -816,7 +816,7 @@ exports[`Row 响应式偏移 1`] = `
         </div>
       </div>
       <div
-        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        class="c1 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -826,7 +826,7 @@ exports[`Row 响应式偏移 1`] = `
         </div>
       </div>
       <div
-        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        class="c1 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -841,11 +841,11 @@ exports[`Row 响应式偏移 1`] = `
     class="box"
   >
     <div
-      class="c0 xl-row xl-row-root"
+      class="c0 xl-row-root"
       style="margin-left:-5px;margin-right:-5px"
     >
       <div
-        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        class="c1 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -855,7 +855,7 @@ exports[`Row 响应式偏移 1`] = `
         </div>
       </div>
       <div
-        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        class="c1 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -865,7 +865,7 @@ exports[`Row 响应式偏移 1`] = `
         </div>
       </div>
       <div
-        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        class="c1 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -880,11 +880,11 @@ exports[`Row 响应式偏移 1`] = `
     class="box"
   >
     <div
-      class="c0 xl-row xl-row-root"
+      class="c0 xl-row-root"
       style="margin-left:-5px;margin-right:-5px"
     >
       <div
-        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        class="c1 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -894,7 +894,7 @@ exports[`Row 响应式偏移 1`] = `
         </div>
       </div>
       <div
-        class="c1 xl-col xl-col-root xl-col-root-column-6"
+        class="c1 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -904,7 +904,7 @@ exports[`Row 响应式偏移 1`] = `
         </div>
       </div>
       <div
-        class="c2 xl-col xl-col-root xl-col-root-column-6 xl-col-root-offset-6"
+        class="c2 xl-col-root xl-col-root-column-6 xl-col-root-offset-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -947,10 +947,10 @@ exports[`Row 响应式布局 1`] = `
   class="box"
 >
   <div
-    class="c0 xl-row xl-row-root"
+    class="c0 xl-row-root"
   >
     <div
-      class="c1 xl-col xl-col-root"
+      class="c1 xl-col-root"
     >
       <div
         class="col"
@@ -959,7 +959,7 @@ exports[`Row 响应式布局 1`] = `
       </div>
     </div>
     <div
-      class="c1 xl-col xl-col-root"
+      class="c1 xl-col-root"
     >
       <div
         class="col"
@@ -968,7 +968,7 @@ exports[`Row 响应式布局 1`] = `
       </div>
     </div>
     <div
-      class="c1 xl-col xl-col-root"
+      class="c1 xl-col-root"
     >
       <div
         class="col"
@@ -977,7 +977,7 @@ exports[`Row 响应式布局 1`] = `
       </div>
     </div>
     <div
-      class="c1 xl-col xl-col-root"
+      class="c1 xl-col-root"
     >
       <div
         class="col"
@@ -1061,11 +1061,11 @@ exports[`Row 基本用法 1`] = `
     class="box"
   >
     <div
-      class="c0 xl-row xl-row-root"
+      class="c0 xl-row-root"
       style="margin-left:-5px;margin-right:-5px"
     >
       <div
-        class="c1 xl-col xl-col-root xl-col-root-column-4"
+        class="c1 xl-col-root xl-col-root-column-4"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -1075,7 +1075,7 @@ exports[`Row 基本用法 1`] = `
         </div>
       </div>
       <div
-        class="c2 xl-col xl-col-root xl-col-root-column-5"
+        class="c2 xl-col-root xl-col-root-column-5"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -1085,7 +1085,7 @@ exports[`Row 基本用法 1`] = `
         </div>
       </div>
       <div
-        class="c3 xl-col xl-col-root xl-col-root-column-7"
+        class="c3 xl-col-root xl-col-root-column-7"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -1095,7 +1095,7 @@ exports[`Row 基本用法 1`] = `
         </div>
       </div>
       <div
-        class="c4 xl-col xl-col-root xl-col-root-column-8"
+        class="c4 xl-col-root xl-col-root-column-8"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -1110,11 +1110,11 @@ exports[`Row 基本用法 1`] = `
     class="box"
   >
     <div
-      class="c0 xl-row xl-row-root"
+      class="c0 xl-row-root"
       style="margin-left:-5px;margin-right:-5px"
     >
       <div
-        class="c5 xl-col xl-col-root xl-col-root-column-6"
+        class="c5 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -1124,7 +1124,7 @@ exports[`Row 基本用法 1`] = `
         </div>
       </div>
       <div
-        class="c5 xl-col xl-col-root xl-col-root-column-6"
+        class="c5 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -1134,7 +1134,7 @@ exports[`Row 基本用法 1`] = `
         </div>
       </div>
       <div
-        class="c5 xl-col xl-col-root xl-col-root-column-6"
+        class="c5 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -1144,7 +1144,7 @@ exports[`Row 基本用法 1`] = `
         </div>
       </div>
       <div
-        class="c5 xl-col xl-col-root xl-col-root-column-6"
+        class="c5 xl-col-root xl-col-root-column-6"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -1159,11 +1159,11 @@ exports[`Row 基本用法 1`] = `
     class="box"
   >
     <div
-      class="c0 xl-row xl-row-root"
+      class="c0 xl-row-root"
       style="margin-left:-5px;margin-right:-5px"
     >
       <div
-        class="c4 xl-col xl-col-root xl-col-root-column-8"
+        class="c4 xl-col-root xl-col-root-column-8"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -1173,7 +1173,7 @@ exports[`Row 基本用法 1`] = `
         </div>
       </div>
       <div
-        class="c6 xl-col xl-col-root"
+        class="c6 xl-col-root"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -1183,7 +1183,7 @@ exports[`Row 基本用法 1`] = `
         </div>
       </div>
       <div
-        class="c4 xl-col xl-col-root xl-col-root-column-8"
+        class="c4 xl-col-root xl-col-root-column-8"
         style="padding-left:5px;padding-right:5px"
       >
         <div
@@ -1193,7 +1193,7 @@ exports[`Row 基本用法 1`] = `
         </div>
       </div>
       <div
-        class="c4 xl-col xl-col-root xl-col-root-column-8"
+        class="c4 xl-col-root xl-col-root-column-8"
         style="padding-left:5px;padding-right:5px"
       >
         <div

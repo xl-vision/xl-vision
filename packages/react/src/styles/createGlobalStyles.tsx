@@ -2,32 +2,34 @@ import { createGlobalStyles as innerCreateGlobalStyles } from '@xl-vision/styled
 import {
   CSSObject,
   FunctionInterpolation,
-  GlobalStyleComponent,
   Interpolation,
+  SimpleInterpolation,
 } from '@xl-vision/styled-engine-types';
-import React from 'react';
 import { Theme } from '../ThemeProvider/createTheme';
-import ThemeContext from '../ThemeProvider/ThemeContext';
+import defaultTheme from '../ThemeProvider/defaultTheme';
 
 const createGlobalStyles = <P extends { theme: Theme } = { theme: Theme }>(
   first: TemplateStringsArray | CSSObject | FunctionInterpolation<P>,
   ...styles: Array<Interpolation<P>>
 ) => {
-  const DefaultGlobalStyleComponent = innerCreateGlobalStyles<any>(first, ...styles);
+  const overrideStyle = <Prop extends { theme?: Theme }>(props: Prop) => {
+    const { theme = defaultTheme, ...others } = props;
 
-  const OverrideGlobalStyleComponent: GlobalStyleComponent<Omit<P, 'theme'> & { theme?: Theme }> = (
-    props,
-  ) => {
-    // eslint-disable-next-line react/prop-types
-    const { theme: themeProp, ...others } = props;
+    const styleArgs = [first, ...styles];
 
-    const defaultTheme = React.useContext(ThemeContext);
+    const array: Array<SimpleInterpolation> = [];
 
-    const theme = themeProp || defaultTheme;
+    styleArgs.forEach((it) => {
+      if (typeof it === 'function') {
+        array.push(it({ theme, ...others }));
+      } else {
+        array.push(it);
+      }
+    });
 
-    return <DefaultGlobalStyleComponent {...others} theme={theme} />;
+    return array;
   };
 
-  return OverrideGlobalStyleComponent;
+  return innerCreateGlobalStyles(overrideStyle);
 };
 export default createGlobalStyles;

@@ -4,15 +4,13 @@ import {
   FunctionInterpolation,
   Interpolation,
   ShouldForwardProp,
-  SimpleInterpolation,
 } from '@xl-vision/styled-engine-types';
 import innerStyled from '@xl-vision/styled-engine';
 import React from 'react';
-import clsx from 'clsx';
 import { isDevelopment } from '../utils/env';
 import { Theme } from '../ThemeProvider/createTheme';
-import ThemeContext from '../ThemeProvider/ThemeContext';
-import { OverrideStyles } from '../ThemeProvider/overrideStyles';
+import defaultTheme from '../ThemeProvider/defaultTheme';
+import { Style } from '../ThemeProvider/overrideStyles';
 
 export type XlOptions = {
   name?: string;
@@ -28,6 +26,29 @@ const middleline = (str: string) => {
   return str.split(split).join(separator).toLowerCase();
 };
 
+const isEmpty = (o: any): o is undefined => {
+  if (!o) {
+    return true;
+  }
+  return Object.keys(o).length === 0;
+};
+
+const createStyleWithTheme = <P extends { theme?: Theme }, Q = Omit<P, 'theme'> & { theme: Theme }>(
+  style: Interpolation<Q>,
+) => (props: P) => {
+  if (typeof style === 'function') {
+    const { theme, ...others } = props;
+    const newTheme = isEmpty(theme) ? defaultTheme : theme;
+    const newProps = {
+      theme: newTheme,
+      ...others,
+    };
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    return style((newProps as unknown) as Q);
+  }
+  return style;
+};
+
 const styled = <
   Tag extends keyof JSX.IntrinsicElements | React.ComponentType<React.ComponentProps<Tag>>,
   ForwardedProps extends keyof ExtractProps<Tag> = keyof ExtractProps<Tag>
@@ -38,90 +59,66 @@ const styled = <
   const { name, slot = 'Root' } = options || {};
 
   let displayName = '';
-  let defaultClassName = '';
+  let prefix = '';
 
   if (name) {
     displayName = name + slot;
     if (slot === 'Root') {
-      defaultClassName = middleline(name);
+      prefix = middleline(name);
     }
   }
 
   const defaultCreateStyledComponent = innerStyled<Tag, ForwardedProps>(tag, {
     shouldForwardProp: shouldForwardProp as ShouldForwardProp<ForwardedProps>,
-    // prefix: displayName || undefined,
+    prefix: prefix || undefined,
   });
 
   const overrideCreateStyledComponent = <
     S extends {} | undefined = undefined,
     P extends Pick<ExtractProps<Tag>, ForwardedProps> = Pick<ExtractProps<Tag>, ForwardedProps>,
-    E extends { styleProps: S; theme: Theme } = { styleProps: S; theme: Theme }
+    E = S extends undefined ? { theme: Theme } : { styleProps: S; theme: Theme },
+    V = Omit<E, 'theme'> & { theme?: Theme }
   >(
     first: TemplateStringsArray | CSSObject | FunctionInterpolation<P & E>,
     ...styles: Array<Interpolation<P & E>>
   ) => {
-    const overrideStyle = (props: P & E) => {
-      const { theme } = props;
+    const array = [first, ...styles];
+    const newArray = array.map(createStyleWithTheme);
 
-      let styleArgs = [first, ...styles];
-
-      if (name && slot) {
-        const cmp = (theme.overrideStyles as {
-          [name: string]: {
-            [slot: string]: OverrideStyles;
-          };
-        })[name];
-        if (cmp && cmp[slot]) {
-          styleArgs = [cmp[slot]];
+    newArray.push(
+      createStyleWithTheme((props) => {
+        const { theme } = props;
+        if (!name || !slot) {
+          return;
         }
-      }
+        const overrideStyles = theme.overrideStyles as {
+          [key: string]: Style;
+        };
 
-      const array: Array<SimpleInterpolation> = [];
+        const overrideStyle = overrideStyles[name];
 
-      styleArgs.forEach((it) => {
-        if (typeof it === 'function') {
-          array.push(it(props));
-        } else {
-          array.push(it);
+        if (!overrideStyle) {
+          return;
         }
-      });
+        const overrideSlotStyle = overrideStyles[slot];
+        if (!overrideSlotStyle) {
+          return;
+        }
+        if (typeof overrideSlotStyle === 'function') {
+          return overrideSlotStyle(props);
+        }
+        return overrideSlotStyle;
+      }),
+    );
 
-      return array;
-    };
-
-    const DefaultComponent = defaultCreateStyledComponent<any>(overrideStyle);
-
-    const Cmp = React.forwardRef<
-      any,
-      P & {
-        as?: keyof JSX.IntrinsicElements | React.ComponentType<React.ComponentProps<any>>;
-      } & (S extends undefined ? { theme?: Theme } : { styleProps: S; theme?: Theme })
-    >((props, ref) => {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, react/prop-types
-      const { theme: themeProp, className, ...others } = props as any;
-
-      const defaultTheme = React.useContext(ThemeContext);
-
-      const theme = (themeProp || defaultTheme) as Theme;
-
-      // eslint-disable-next-line react/prop-types
-      const { clsPrefix } = theme;
-
-      return (
-        <DefaultComponent
-          {...others}
-          ref={ref}
-          className={clsx(defaultClassName && `${clsPrefix}-${defaultClassName}`, className)}
-          theme={theme}
-        />
-      );
-    });
+    // @ts-ignore
+    const DefaultComponent = defaultCreateStyledComponent<P & V>(...newArray);
 
     if (isDevelopment) {
-      Cmp.displayName = displayName;
+      DefaultComponent.displayName = displayName;
     }
 
-    return Cmp;
+    return DefaultComponent;
   };
 
   return overrideCreateStyledComponent;
