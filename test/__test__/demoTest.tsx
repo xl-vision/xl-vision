@@ -9,7 +9,7 @@ const demoTest = () => {
       // eslint-disable-next-line global-require, import/no-dynamic-require,@typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
       const Demo = require(`../.${file}`).default;
       const wrapper = mount(<Demo />);
-      expect(wrapper).toMatchSnapshot();
+      expect(wrapper.render()).toMatchSnapshot();
     });
   });
 };

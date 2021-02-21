@@ -18,7 +18,7 @@ exports[`Icon test render 1`] = `
 }
 
 <svg
-  class="c0 xl-icon xl-icon-root"
+  class="c0 xl-icon-root"
   viewBox="0 0 24 24"
 >
   <path

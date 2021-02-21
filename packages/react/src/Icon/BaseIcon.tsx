@@ -6,7 +6,7 @@ export interface BaseIconProps extends React.SVGAttributes<SVGSVGElement> {
   children: React.ReactElement<React.SVGAttributes<SVGSVGElement>>;
 }
 
-const BaseIcon: React.FunctionComponent<BaseIconProps> = React.forwardRef((props, ref) => {
+const BaseIcon = React.forwardRef<SVGSVGElement, BaseIconProps>((props, ref) => {
   const { children, ...others } = props;
   return React.cloneElement(children, {
     ...others,

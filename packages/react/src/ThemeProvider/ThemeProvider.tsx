@@ -1,3 +1,4 @@
+import { ThemeContext as StyledThemeContext } from '@xl-vision/styled-engine';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { isDevelopment } from '../utils/env';
@@ -16,7 +17,12 @@ const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = (props) => {
     return createTheme(theme);
   }, [theme]);
 
-  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
+  return (
+    // both self ThemeContext and styled-engine ThemeContext
+    <ThemeContext.Provider value={value}>
+      <StyledThemeContext.Provider value={value}>{children}</StyledThemeContext.Provider>
+    </ThemeContext.Provider>
+  );
 };
 
 if (isDevelopment) {

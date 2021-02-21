@@ -126,6 +126,7 @@ module.exports = {
           },
         ],
         'import/no-cycle': 'off',
+        '@typescript-eslint/restrict-template-expressions': 'off',
         '@typescript-eslint/array-type': [
           'error',
           {

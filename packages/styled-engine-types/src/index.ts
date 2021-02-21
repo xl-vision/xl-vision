@@ -43,11 +43,11 @@ type StyledComponentInterpolation = Pick<
 >;
 
 export type PropsOf<
-  C extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<React.ComponentProps<C>>
+  C extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>
 > = JSX.LibraryManagedAttributes<C, React.ComponentProps<C>>;
 
 export type ExtractProps<
-  Tag extends keyof JSX.IntrinsicElements | React.ComponentType<React.ComponentProps<Tag>>
+  Tag extends keyof JSX.IntrinsicElements | React.ComponentType<any>
 > = Tag extends keyof JSX.IntrinsicElements ? JSX.IntrinsicElements[Tag] : PropsOf<Tag>;
 
 export type StyledComponent<InnerProps, StyleProps> = React.ComponentType<
@@ -77,7 +77,7 @@ export type FilteringStyledOptions<Props, ForwardedProps extends keyof Props = k
 
 export type Styled = {
   <
-    Tag extends keyof JSX.IntrinsicElements | React.ComponentType<React.ComponentProps<any>>,
+    Tag extends keyof JSX.IntrinsicElements | React.ComponentType<any>,
     ForwardedProps extends keyof ExtractProps<Tag> = keyof ExtractProps<Tag>
   >(
     tag: Tag,
