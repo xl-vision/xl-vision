@@ -3,6 +3,7 @@
 exports[`check packages entry @xl-vision/react 1`] = `
 Array [
   "ThemeProvider",
+  "LocalizationProvider",
   "Transition",
   "CSSTransition",
   "CollapseTransition",
