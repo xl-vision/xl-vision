@@ -6,21 +6,21 @@ import ThemeProvder, { BaseTheme } from '../../ThemeProvider';
 
 describe('styled', () => {
   it('test styled overrideStyles', () => {
-    const Demo = ({ background }: { background?: string }) => {
+    const Demo = ({ transition }: { transition?: string }) => {
       const theme: BaseTheme = React.useMemo(() => {
-        if (!background) {
+        if (!transition) {
           return {};
         }
         return {
           overrideStyles: {
             Icon: {
               Root: {
-                background,
+                transition,
               },
             },
           },
         };
-      }, [background]);
+      }, [transition]);
       return (
         <ThemeProvder theme={theme}>
           <Icon>
@@ -35,7 +35,7 @@ describe('styled', () => {
     expect(wrapper.render()).toMatchSnapshot();
 
     wrapper.setProps({
-      background: 'red',
+      transition: 'none',
     });
     expect(wrapper.render()).toMatchSnapshot();
   });
