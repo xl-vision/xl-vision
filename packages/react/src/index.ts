@@ -18,3 +18,5 @@ export { default as Ripple } from './Ripple';
 export * from './Ripple';
 export { default as Button } from './Button';
 export * from './Button';
+export { default as BaseButton } from './BaseButton';
+export * from './BaseButton';

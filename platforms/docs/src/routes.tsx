@@ -20,14 +20,24 @@ const route: Array<Route> = [
     component: () => import('./views/index.mdx'),
   },
   {
-    name: '图标',
-    path: '/Icon',
-    component: () => import('@xl-vision/react/Icon/__doc__/index.mdx'),
-  },
-  {
-    name: '按钮',
-    path: '/Button',
-    component: () => import('@xl-vision/react/Button/__doc__/index.mdx'),
+    name: '基础组件',
+    children: [
+      {
+        name: '图标',
+        path: '/Icon',
+        component: () => import('@xl-vision/react/Icon/__doc__/index.mdx'),
+      },
+      {
+        name: '按钮',
+        path: '/Button',
+        component: () => import('@xl-vision/react/Button/__doc__/index.mdx'),
+      },
+      {
+        name: '基础按钮',
+        path: '/BaseButton',
+        component: () => import('@xl-vision/react/BaseButton/__doc__/index.mdx'),
+      },
+    ],
   },
   {
     name: '布局',
