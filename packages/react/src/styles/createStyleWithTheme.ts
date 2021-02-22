@@ -2,10 +2,7 @@ import { Interpolation } from '@xl-vision/styled-engine-types';
 import { Theme } from '../ThemeProvider';
 import defaultTheme from '../ThemeProvider/defaultTheme';
 
-export const createStyleWithTheme = <
-  P extends { theme?: Theme },
-  Q = Omit<P, 'theme'> & { theme: Theme }
->(
+const createStyleWithTheme = <P extends { theme?: Theme }, Q = Omit<P, 'theme'> & { theme: Theme }>(
   style: Interpolation<Q>,
 ) => (props: P) => {
   if (typeof style === 'function') {
@@ -20,6 +17,8 @@ export const createStyleWithTheme = <
   }
   return style;
 };
+
+export default createStyleWithTheme;
 
 const isEmpty = (o: any): o is undefined => {
   if (!o) {

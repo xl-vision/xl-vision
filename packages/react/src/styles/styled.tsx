@@ -10,7 +10,7 @@ import React from 'react';
 import { isDevelopment } from '../utils/env';
 import { Theme } from '../ThemeProvider/createTheme';
 import { Style } from '../ThemeProvider/overrideStyles';
-import { createStyleWithTheme } from './createStyleWithTheme';
+import createStyleWithTheme from './createStyleWithTheme';
 
 export type XlOptions = {
   name?: string;
