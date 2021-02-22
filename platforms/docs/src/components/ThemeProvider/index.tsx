@@ -16,10 +16,23 @@ export const ThemeContext = React.createContext<ThemeContextProps>({
   setDark: () => {},
 });
 
+const KEY = 'dark_mode';
+
 const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = (props) => {
   const { children } = props;
 
-  const [isDark, setDark] = React.useState(false);
+  const [isDark, setDark] = React.useState(() => {
+    if (localStorage) {
+      const dark = Boolean(localStorage.getItem(KEY) || false);
+      return dark;
+    }
+    return false;
+  });
+
+  const setDarkWrapper = React.useCallback((dark: boolean) => {
+    localStorage.setItem(KEY, String(dark));
+    setDark(dark);
+  }, []);
 
   const theme: BaseTheme = React.useMemo(() => {
     return {
@@ -30,7 +43,7 @@ const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = (props) => {
   }, [isDark]);
 
   return (
-    <ThemeContext.Provider value={{ isDark, setDark }}>
+    <ThemeContext.Provider value={{ isDark, setDark: setDarkWrapper }}>
       <XlThemeProvider theme={theme}>{children}</XlThemeProvider>
     </ThemeContext.Provider>
   );
