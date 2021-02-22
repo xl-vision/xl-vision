@@ -2,8 +2,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import CSSTransition, { CSSTransitionClassesObject, CSSTransitionProps } from '../CSSTransition';
 import useLayoutEffect from '../hooks/useLayoutEffect';
+import { AfterEventHook } from '../Transition';
 import { isDevelopment } from '../utils/env';
 import { omit } from '../utils/function';
+import warning from '../utils/warning';
 import diff, { DiffData } from './diff';
 
 export interface TransitionGroupClassesObject
@@ -39,7 +41,7 @@ export interface TransitionGroupProps
 }
 
 const TransitionGroup: React.FunctionComponent<TransitionGroupProps> = (props) => {
-  const { children, transitionClasses, ..._others } = props;
+  const { children, transitionClasses, afterLeave, ..._others } = props;
 
   // 阻止用户故意传入appear和disappear钩子
   const others = omit(
@@ -89,15 +91,37 @@ const TransitionGroup: React.FunctionComponent<TransitionGroupProps> = (props) =
 
   const [diffArray, setDiffArray] = React.useState<Array<DiffData>>([]);
 
+  const callAfterLeave = React.useCallback(
+    (key: React.Key | null) => {
+      warning(!key, `<TransitioGroup> must has a key`);
+      const hook: AfterEventHook = (e) => {
+        afterLeave?.(e);
+        prevChildrenRef.current = prevChildrenRef.current?.filter((it) => it.key !== key);
+      };
+
+      return hook;
+    },
+    [afterLeave],
+  );
+
   useLayoutEffect(() => {
     const prevChildren = prevChildrenRef.current;
-    if (!prevChildren) {
-      const array = React.Children.map(children, (it) => ({ prev: [it], next: [it], same: true }));
-      setDiffArray(array);
-    } else {
-      setDiffArray(diff(prevChildren, children));
-    }
-    prevChildrenRef.current = children;
+    const array = prevChildren
+      ? diff(prevChildren, children)
+      : React.Children.map(children, (it) => ({ prev: [it], next: [it], same: true }));
+
+    setDiffArray(array);
+
+    const nodes: Array<React.ReactElement> = [];
+    array.forEach((it) => {
+      if (it.same) {
+        nodes.push(...it.next);
+      } else {
+        nodes.push(...it.prev, ...it.next);
+      }
+    });
+
+    prevChildrenRef.current = nodes;
   }, [children]);
 
   const nodes: Array<React.ReactElement<CSSTransitionProps>> = [];
@@ -129,6 +153,7 @@ const TransitionGroup: React.FunctionComponent<TransitionGroupProps> = (props) =
             mountOnEnter={true}
             unmountOnLeave={true}
             transitionClasses={transitionClassesObj}
+            afterLeave={callAfterLeave(item.key)}
           >
             {item}
           </CSSTransition>
@@ -164,6 +189,7 @@ if (isDevelopment) {
   TransitionGroup.propTypes = {
     children: PropTypes.arrayOf(PropTypes.element.isRequired).isRequired,
     transitionClasses: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    afterLeave: PropTypes.func,
   };
 }
 

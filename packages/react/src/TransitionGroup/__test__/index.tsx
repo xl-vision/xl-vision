@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-return */
 import { mount } from 'enzyme';
 import React from 'react';
 import TransitionGroup from '..';
@@ -22,7 +23,7 @@ describe('TransitionGroup', () => {
     expect(wrapper.text()).toBe(expectArr.map((it) => it.toString()).reduce((a, b) => a + b));
   });
 
-  it('测试afterLeave是否正确触发', () => {
+  it('test hooks', () => {
     const nextFrameSpy = jest.spyOn(TransitionUtils, 'nextFrame');
     nextFrameSpy.mockImplementation((fn: () => void) => {
       fn();
@@ -39,17 +40,27 @@ describe('TransitionGroup', () => {
         // 阻止执行leave动作
         <div key={it}>{it}</div>
       ));
-      return <TransitionGroup afterLeave={fn}>{children}</TransitionGroup>;
+      return (
+        <TransitionGroup
+          beforeEnter={() => fn('beforeEnter')}
+          enter={() => fn('enter')}
+          afterEnter={() => fn('afterEnter')}
+          beforeLeave={() => fn('beforeLeave')}
+          leave={() => fn('leave')}
+          afterLeave={() => fn('afterLeave')}
+        >
+          {children}
+        </TransitionGroup>
+      );
     };
     const wrapper = mount(<Comp arr={prevArr} />);
     expect(fn.mock.calls.length).toBe(0);
     wrapper.setProps({ arr: nextArr });
-    expect(fn.mock.calls.length).toBe(1);
-
+    expect(fn.mock.calls.length).toBe(6);
     wrapper.setProps({ arr: nextArr });
-    expect(fn.mock.calls.length).toBe(1);
+    expect(fn.mock.calls.length).toBe(6);
 
     wrapper.setProps({ arr: nextArr2 });
-    expect(fn.mock.calls.length).toBe(2);
+    expect(fn.mock.calls.length).toBe(6 * 2);
   });
 });
