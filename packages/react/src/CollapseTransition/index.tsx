@@ -127,15 +127,15 @@ const CollapseTransition: React.FunctionComponent<CollapseTransitionProp> = (pro
 
 if (isDevelopment) {
   CollapseTransition.displayName = 'CollapseTransition';
-}
 
-CollapseTransition.propTypes = {
-  transitionClasses: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  horizontal: PropTypes.bool,
-  children: PropTypes.element.isRequired,
-  in: PropTypes.bool.isRequired,
-  unmountOnLeave: PropTypes.bool,
-  transitionOnFirst: PropTypes.bool,
-};
+  CollapseTransition.propTypes = {
+    transitionClasses: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    horizontal: PropTypes.bool,
+    children: PropTypes.element.isRequired,
+    in: PropTypes.bool.isRequired,
+    unmountOnLeave: PropTypes.bool,
+    transitionOnFirst: PropTypes.bool,
+  };
+}
 
 export default CollapseTransition;

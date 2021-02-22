@@ -187,18 +187,18 @@ const Col = React.forwardRef<HTMLDivElement, ColProps>((props, ref) => {
 
 if (isDevelopment) {
   Col.displayName = displayName;
-}
 
-Col.propTypes = {
-  column: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired])
-    .isRequired,
-  offset: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired]),
-  push: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired]),
-  pull: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired]),
-  order: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired]),
-  className: PropTypes.string,
-  children: PropTypes.node,
-  style: PropTypes.object,
-};
+  Col.propTypes = {
+    column: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired])
+      .isRequired,
+    offset: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired]),
+    push: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired]),
+    pull: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired]),
+    order: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired]),
+    className: PropTypes.string,
+    children: PropTypes.node,
+    style: PropTypes.object,
+  };
+}
 
 export default Col;

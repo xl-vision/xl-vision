@@ -14,12 +14,12 @@ const BaseIcon = React.forwardRef<SVGSVGElement, BaseIconProps>((props, ref) => 
   });
 });
 
-BaseIcon.propTypes = {
-  children: PropTypes.element.isRequired,
-};
-
 if (isDevelopment) {
   BaseIcon.displayName = 'BaseIcon';
+
+  BaseIcon.propTypes = {
+    children: PropTypes.element.isRequired,
+  };
 }
 
 export default React.memo(BaseIcon);

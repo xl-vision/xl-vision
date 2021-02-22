@@ -242,30 +242,30 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
 
 if (isDevelopment) {
   Transition.displayName = 'Transition';
-}
 
-Transition.propTypes = {
-  beforeAppear: PropTypes.func,
-  appear: PropTypes.func,
-  afterAppear: PropTypes.func,
-  appearCancelled: PropTypes.func,
-  beforeEnter: PropTypes.func,
-  enter: PropTypes.func,
-  afterEnter: PropTypes.func,
-  enterCancelled: PropTypes.func,
-  beforeLeave: PropTypes.func,
-  leave: PropTypes.func,
-  afterLeave: PropTypes.func,
-  leaveCancelled: PropTypes.func,
-  beforeDisappear: PropTypes.func,
-  disappear: PropTypes.func,
-  afterDisappear: PropTypes.func,
-  disappearCancelled: PropTypes.func,
-  children: PropTypes.element.isRequired,
-  mountOnEnter: PropTypes.bool,
-  unmountOnLeave: PropTypes.bool,
-  transitionOnFirst: PropTypes.bool,
-  in: PropTypes.bool.isRequired,
-};
+  Transition.propTypes = {
+    beforeAppear: PropTypes.func,
+    appear: PropTypes.func,
+    afterAppear: PropTypes.func,
+    appearCancelled: PropTypes.func,
+    beforeEnter: PropTypes.func,
+    enter: PropTypes.func,
+    afterEnter: PropTypes.func,
+    enterCancelled: PropTypes.func,
+    beforeLeave: PropTypes.func,
+    leave: PropTypes.func,
+    afterLeave: PropTypes.func,
+    leaveCancelled: PropTypes.func,
+    beforeDisappear: PropTypes.func,
+    disappear: PropTypes.func,
+    afterDisappear: PropTypes.func,
+    disappearCancelled: PropTypes.func,
+    children: PropTypes.element.isRequired,
+    mountOnEnter: PropTypes.bool,
+    unmountOnLeave: PropTypes.bool,
+    transitionOnFirst: PropTypes.bool,
+    in: PropTypes.bool.isRequired,
+  };
+}
 
 export default Transition;

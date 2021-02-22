@@ -191,12 +191,12 @@ const Ripple = React.forwardRef<RippleRef, RippleProps>((props, ref) => {
 
 if (isDevelopment) {
   Ripple.displayName = displayName;
-}
 
-Ripple.propTypes = {
-  transitionClasses: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  leaveAfterEnter: PropTypes.bool,
-  className: PropTypes.string,
-};
+  Ripple.propTypes = {
+    transitionClasses: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+    leaveAfterEnter: PropTypes.bool,
+    className: PropTypes.string,
+  };
+}
 
 export default Ripple;

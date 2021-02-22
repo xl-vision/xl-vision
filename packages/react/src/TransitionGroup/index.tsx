@@ -160,11 +160,11 @@ const TransitionGroup: React.FunctionComponent<TransitionGroupProps> = (props) =
 
 if (isDevelopment) {
   TransitionGroup.displayName = 'TransitionGroup';
-}
 
-TransitionGroup.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element.isRequired).isRequired,
-  transitionClasses: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-};
+  TransitionGroup.propTypes = {
+    children: PropTypes.arrayOf(PropTypes.element.isRequired).isRequired,
+    transitionClasses: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  };
+}
 
 export default TransitionGroup;
