@@ -27,11 +27,11 @@ const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = (props) => {
 
 if (isDevelopment) {
   ThemeProvider.displayName = 'ThemeProvider';
-}
 
-ThemeProvider.propTypes = {
-  children: PropTypes.node.isRequired,
-  theme: PropTypes.object.isRequired,
-};
+  ThemeProvider.propTypes = {
+    children: PropTypes.node.isRequired,
+    theme: PropTypes.object.isRequired,
+  };
+}
 
 export default ThemeProvider;

@@ -125,19 +125,19 @@ const Row = React.forwardRef<HTMLDivElement, RowProps>((props, ref) => {
 
 if (isDevelopment) {
   Row.displayName = displayName;
-}
 
-Row.propTypes = {
-  align: PropTypes.oneOf(['top', 'middle', 'bottom']),
-  justify: PropTypes.oneOf(['start', 'end', 'center', 'space-around', 'space-between']),
-  type: PropTypes.oneOf(['flex']),
-  gutter: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired]),
-  children: PropTypes.oneOfType([
-    PropTypes.element.isRequired,
-    PropTypes.arrayOf(PropTypes.element.isRequired),
-  ]).isRequired,
-  style: PropTypes.object,
-  className: PropTypes.string,
-};
+  Row.propTypes = {
+    align: PropTypes.oneOf(['top', 'middle', 'bottom']),
+    justify: PropTypes.oneOf(['start', 'end', 'center', 'space-around', 'space-between']),
+    type: PropTypes.oneOf(['flex']),
+    gutter: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired]),
+    children: PropTypes.oneOfType([
+      PropTypes.element.isRequired,
+      PropTypes.arrayOf(PropTypes.element.isRequired),
+    ]).isRequired,
+    style: PropTypes.object,
+    className: PropTypes.string,
+  };
+}
 
 export default Row;

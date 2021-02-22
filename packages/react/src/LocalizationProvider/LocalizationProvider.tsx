@@ -33,12 +33,12 @@ const LocalizationProvider: React.FunctionComponent<LocalizationProviderProps> =
 
 if (isDevelopment) {
   LocalizationProvider.displayName = 'LocalizationProvider';
-}
 
-LocalizationProvider.propTypes = {
-  customLocales: PropTypes.shape({}),
-  lang: PropTypes.string.isRequired,
-  children: PropTypes.node,
-};
+  LocalizationProvider.propTypes = {
+    customLocales: PropTypes.shape({}),
+    lang: PropTypes.string.isRequired,
+    children: PropTypes.node,
+  };
+}
 
 export default LocalizationProvider;

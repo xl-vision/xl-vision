@@ -16,3 +16,5 @@ export { default as Icon } from './Icon';
 export * from './Icon';
 export { default as Ripple } from './Ripple';
 export * from './Ripple';
+export { default as Button } from './Button';
+export * from './Button';

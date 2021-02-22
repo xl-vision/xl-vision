@@ -308,30 +308,30 @@ const CSSTransition: React.FunctionComponent<CSSTransitionProps> = (props) => {
   );
 };
 
-CSSTransition.propTypes = {
-  transitionClasses: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  timeout: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
-  disableCss: PropTypes.bool,
-  beforeAppear: PropTypes.func,
-  appear: PropTypes.func,
-  afterAppear: PropTypes.func,
-  appearCancelled: PropTypes.func,
-  beforeEnter: PropTypes.func,
-  enter: PropTypes.func,
-  afterEnter: PropTypes.func,
-  enterCancelled: PropTypes.func,
-  beforeLeave: PropTypes.func,
-  leave: PropTypes.func,
-  afterLeave: PropTypes.func,
-  leaveCancelled: PropTypes.func,
-  beforeDisappear: PropTypes.func,
-  disappear: PropTypes.func,
-  afterDisappear: PropTypes.func,
-  disappearCancelled: PropTypes.func,
-};
-
 if (isDevelopment) {
   CSSTransition.displayName = 'CSSTransition';
+
+  CSSTransition.propTypes = {
+    transitionClasses: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    timeout: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
+    disableCss: PropTypes.bool,
+    beforeAppear: PropTypes.func,
+    appear: PropTypes.func,
+    afterAppear: PropTypes.func,
+    appearCancelled: PropTypes.func,
+    beforeEnter: PropTypes.func,
+    enter: PropTypes.func,
+    afterEnter: PropTypes.func,
+    enterCancelled: PropTypes.func,
+    beforeLeave: PropTypes.func,
+    leave: PropTypes.func,
+    afterLeave: PropTypes.func,
+    leaveCancelled: PropTypes.func,
+    beforeDisappear: PropTypes.func,
+    disappear: PropTypes.func,
+    afterDisappear: PropTypes.func,
+    disappearCancelled: PropTypes.func,
+  };
 }
 
 export default CSSTransition;

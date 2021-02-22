@@ -36,13 +36,13 @@ const Icon = React.forwardRef<SVGSVGElement, IconProps>((props, ref) => {
   return <IconRoot {...others} className={classes} viewBox={viewBox} ref={ref} />;
 });
 
-Icon.propTypes = {
-  viewBox: PropTypes.string,
-  className: PropTypes.string,
-};
-
 if (isDevelopment) {
   Icon.displayName = 'Icon';
+
+  Icon.propTypes = {
+    viewBox: PropTypes.string,
+    className: PropTypes.string,
+  };
 }
 
 export default Icon;
