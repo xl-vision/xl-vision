@@ -30,14 +30,18 @@ const NodeWrapper = styled('ul')(() => {
 });
 
 const NavLinkWrapper = styled(NavLink)(({ theme }) => {
-  const { themes, background, text } = theme.color;
+  const { themes, text } = theme.color;
   return {
     display: 'inline-block',
     width: '100%',
     position: 'relative',
     color: `${text.primary}`,
     '&:hover': {
-      color: `${mix(background, themes.primary.color, themes.primary.action.hover)}`,
+      color: `${mix(
+        theme.color.themes.primary.text.primary,
+        themes.primary.color,
+        themes.primary.action.hover,
+      )}`,
     },
     '&.active': {
       backgroundColor: `${themes.primary.color}`,
