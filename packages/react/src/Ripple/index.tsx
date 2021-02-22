@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { ThemeContext } from '../ThemeProvider';
 import TransitionGroup, { TransitionGroupClasses } from '../TransitionGroup';
 import useEventCallback from '../hooks/useEventCallback';
 import { styled } from '../styles';
 import { isDevelopment } from '../utils/env';
+import ThemeContext from '../ThemeProvider/ThemeContext';
 
 export interface RippleProps extends React.HTMLAttributes<HTMLDivElement> {
   transitionClasses?: TransitionGroupClasses;

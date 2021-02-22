@@ -13,7 +13,5 @@ Array [
   "Ripple",
   "styled",
   "createGlobalStyles",
-  "createTheme",
-  "ThemeContext",
 ]
 `;
