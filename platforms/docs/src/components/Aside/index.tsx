@@ -16,20 +16,16 @@ const LeftNode = styled('span')(() => {
 
 const NonLeftNode = styled(LeftNode)(({ theme }) => {
   return {
-    margin: '12px 0 0',
     color: `${theme.color.text.primary}`,
     fontWeight: `${theme.typography.fontWeight.bold}`,
-    fontSize: '16px',
-    borderBottom: `1px solid ${theme.color.divider}`,
   };
 });
 
-const NodeWrapper = styled('ul')(({ theme }) => {
+const NodeWrapper = styled('ul')(() => {
   return {
     listStyle: 'none',
-    margin: 0,
+    margin: '0 0 0 12px',
     padding: 0,
-    borderBottom: `1px solid ${theme.color.divider}`,
   };
 });
 
@@ -86,7 +82,7 @@ const Wrapper = styled('div')(({ theme }) => {
   return {
     borderRight: `1px solid ${theme.color.divider}`,
     width: '260px',
-
+    marginLeft: '-12px',
     '@media(max-width: 768px)': {
       width: '100%',
     },

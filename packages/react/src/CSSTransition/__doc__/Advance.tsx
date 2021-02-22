@@ -15,6 +15,7 @@ const Div = styled('div')`
   &.slide-enter-active,
   &.slide-leave-active {
     transition: all 2s ease;
+    overflow: hidden;
   }
 
   &.slide-enter,

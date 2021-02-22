@@ -10,7 +10,7 @@ const Div = styled('div')`
   color: #fff;
   font-size: 3rem;
   background-color: #007bff;
-
+  overflow: hidden;
   margin-top: 16px;
 `;
 
