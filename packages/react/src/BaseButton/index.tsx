@@ -71,7 +71,7 @@ const BaseButtonRoot = styled('button', {
 
 const BaseButtonInner = styled('span', {
   name: displayName,
-  slot: 'inner',
+  slot: 'Inner',
 })(() => {
   return {
     // 阻止ie下 focus时文字移动
