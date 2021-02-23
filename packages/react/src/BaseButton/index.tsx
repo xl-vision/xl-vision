@@ -7,14 +7,15 @@ import { styled } from '../styles';
 import ThemeContext from '../ThemeProvider/ThemeContext';
 import { isDevelopment } from '../utils/env';
 
-export type BaseButtonCommonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
-  React.AnchorHTMLAttributes<HTMLAnchorElement>;
+export type BaseButtonCommonProps =
+  | React.ButtonHTMLAttributes<HTMLButtonElement>
+  | React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
-export interface BaseButtonProps extends BaseButtonCommonProps {
+export type BaseButtonProps = BaseButtonCommonProps & {
   disabled?: boolean;
   loading?: boolean;
   disableRipple?: boolean;
-}
+};
 
 const displayName = 'BaseButton';
 
@@ -23,7 +24,7 @@ export type BaseButtonStyleProps = {
   disabled?: boolean;
 };
 
-const BaseButtonRoot = styled('button', {
+const BaseButtonRoot = (styled('button', {
   name: displayName,
   slot: 'Root',
 })<BaseButtonStyleProps>(({ styleProps, theme }) => {
@@ -49,7 +50,7 @@ const BaseButtonRoot = styled('button', {
     WebkitTapHighlightColor: 'transparent',
     cursor: disabled || loading ? 'not-allowed' : 'pointer',
 
-    [`.${clsPrefix}-button__ripple`]: {
+    [`.${clsPrefix}-base-button__ripple`]: {
       transform: 'scale(1)',
       opacity: color.action.pressed,
       '&-enter-active': {
@@ -67,7 +68,8 @@ const BaseButtonRoot = styled('button', {
       },
     },
   };
-});
+  // fix type warning
+}) as unknown) as React.ComponentType<any>;
 
 const BaseButtonInner = styled('span', {
   name: displayName,
@@ -82,11 +84,10 @@ const BaseButtonInner = styled('span', {
   };
 });
 
-const BaseButton = React.forwardRef<HTMLButtonElement & HTMLAnchorElement, BaseButtonProps>(
+const BaseButton = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseButtonProps>(
   (props, ref) => {
     const {
       children,
-      href,
       disabled,
       loading,
       disableRipple,
@@ -109,7 +110,7 @@ const BaseButton = React.forwardRef<HTMLButtonElement & HTMLAnchorElement, BaseB
 
     const { clsPrefix } = React.useContext(ThemeContext);
 
-    const Component = href ? 'a' : 'button';
+    const Component = ((others as unknown) as HTMLAnchorElement).href ? 'a' : 'button';
 
     const rippleRef = React.useRef<RippleRef>(null);
     const isKeyDownRef = React.useRef(false);
@@ -148,35 +149,29 @@ const BaseButton = React.forwardRef<HTMLButtonElement & HTMLAnchorElement, BaseB
     const handleTouchMove = useRippleHandler('stop', onTouchMove);
     const handleBlur = useRippleHandler('stop', onBlur, false);
 
-    const handleKeyDown = useEventCallback(
-      (e: React.KeyboardEvent<HTMLButtonElement & HTMLLinkElement>) => {
-        if (rippleRef.current && !isKeyDownRef.current && e.key === ' ') {
-          isKeyDownRef.current = true;
-          rippleRef.current.start();
-        }
+    const handleKeyDown: typeof onKeyDown = useEventCallback((e) => {
+      if (rippleRef.current && !isKeyDownRef.current && e.key === ' ') {
+        isKeyDownRef.current = true;
+        rippleRef.current.start();
+      }
 
-        onKeyDown?.(e);
-      },
-    );
-    const handleKeyUp = useEventCallback(
-      (e: React.KeyboardEvent<HTMLButtonElement & HTMLLinkElement>) => {
-        if (rippleRef.current && isKeyDownRef.current && e.key === ' ') {
-          isKeyDownRef.current = false;
-          rippleRef.current.stop();
-        }
-        onKeyUp?.(e);
-      },
-    );
+      onKeyDown?.(e);
+    });
+    const handleKeyUp: typeof onKeyUp = useEventCallback((e) => {
+      if (rippleRef.current && isKeyDownRef.current && e.key === ' ') {
+        isKeyDownRef.current = false;
+        rippleRef.current.stop();
+      }
+      onKeyUp?.(e);
+    });
 
-    const handleClick = useEventCallback(
-      (e: React.MouseEvent<HTMLButtonElement & HTMLLinkElement>) => {
-        if (loading || disabled) {
-          e.preventDefault();
-          return;
-        }
-        onClick?.(e);
-      },
-    );
+    const handleClick: typeof onClick = useEventCallback((e) => {
+      if (loading || disabled) {
+        e.preventDefault();
+        return;
+      }
+      onClick?.(e);
+    });
 
     const baseClassName = `${clsPrefix}-base-button`;
 

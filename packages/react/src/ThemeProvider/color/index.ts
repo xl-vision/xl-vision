@@ -1,7 +1,9 @@
 import { isDevelopment } from '../../utils/env';
 import { dark as defaultDark, light as defaultLight, BaseColor } from './baseColor';
 import defaultThemes, { ThemeColors } from './themeColor';
-import { getContrastRatio } from '../../utils/color';
+import { getContrastRatio, mix } from '../../utils/color';
+import { Palette } from '../palette/palette';
+import greyColor from '../palette/grey';
 
 export type Color = Partial<{
   modes: {
@@ -11,6 +13,7 @@ export type Color = Partial<{
   themes: ThemeColors;
   contrastThreshold: number;
   mode: 'dark' | 'light';
+  grey: Palette;
 }>;
 
 export type Theme = BaseColor & {
@@ -30,6 +33,7 @@ const createColors = (color: Color = {}) => {
     mode = 'light',
     contrastThreshold = 3,
     themes = defaultThemes,
+    grey = greyColor,
   } = color;
   const { dark, light } = modes;
 
@@ -70,9 +74,18 @@ const createColors = (color: Color = {}) => {
     };
   });
 
+  // eslint-disable-next-line @typescript-eslint/no-shadow
+  const applyState = (color: string, state: keyof BaseColor['action']) => {
+    // const topColor = alpha('#000000', modes[mode].action[state]);
+    return mix('#000000', color, modes[mode].action[state]);
+  };
+
   return {
     ...base,
     themes: newThemes,
+    grey,
+    getContrast,
+    applyState,
   };
 };
 

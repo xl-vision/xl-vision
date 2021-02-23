@@ -40,6 +40,7 @@ const createTypography = (typography: Typography = {}) => {
       letterSpacing: `${(letterSpacing / size).toFixed(3)}em`,
       textDecoration,
       textTransform,
+      fontFamily,
     };
   };
   const h1 = buildStyle(96, 1.167, 'light', -1.5);
