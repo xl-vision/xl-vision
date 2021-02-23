@@ -11,6 +11,8 @@ Array [
   "Row",
   "Icon",
   "Ripple",
+  "Button",
+  "BaseButton",
   "styled",
   "createGlobalStyles",
 ]

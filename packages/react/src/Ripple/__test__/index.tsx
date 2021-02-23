@@ -69,16 +69,16 @@ describe('Ripple', () => {
   it('test event', async () => {
     const wrapper = mount(<Demo />);
     wrapper.find('.box').simulate('mousedown');
-    const doms = wrapper.getDOMNode().querySelectorAll<HTMLElement>('.xl-ripple-inner');
+    const doms = wrapper.getDOMNode().querySelectorAll<HTMLElement>('.xl-ripple__inner');
     expect(doms.length).toBe(1);
     expect(doms[0].style.display).toBe('');
 
     wrapper.find('.box').simulate('mouseup');
     await wait(50 + 20);
-    expect(wrapper.getDOMNode().querySelectorAll<HTMLElement>('.xl-ripple-inner').length).toBe(0);
+    expect(wrapper.getDOMNode().querySelectorAll<HTMLElement>('.xl-ripple__inner').length).toBe(0);
 
     wrapper.find('.box').simulate('blur');
     await wait(50 + 20);
-    expect(wrapper.getDOMNode().querySelectorAll<HTMLElement>('.xl-ripple-inner').length).toBe(0);
+    expect(wrapper.getDOMNode().querySelectorAll<HTMLElement>('.xl-ripple__inner').length).toBe(0);
   });
 });

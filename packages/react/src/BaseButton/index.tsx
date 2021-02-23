@@ -1,8 +1,10 @@
+import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import React from 'react';
 import useEventCallback from '../hooks/useEventCallback';
 import Ripple, { RippleRef } from '../Ripple';
 import { styled } from '../styles';
+import ThemeContext from '../ThemeProvider/ThemeContext';
 import { isDevelopment } from '../utils/env';
 
 export type BaseButtonCommonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
@@ -16,11 +18,68 @@ export interface BaseButtonProps extends BaseButtonCommonProps {
 
 const displayName = 'BaseButton';
 
+export type BaseButtonStyleProps = {
+  loading?: boolean;
+  disabled?: boolean;
+};
+
 const BaseButtonRoot = styled('button', {
   name: displayName,
   slot: 'Root',
+})<BaseButtonStyleProps>(({ styleProps, theme }) => {
+  const { disabled, loading } = styleProps;
+  const { clsPrefix, color } = theme;
+  return {
+    position: 'relative',
+    display: 'inline-block',
+    boxSizing: 'border-box',
+    margin: 0,
+    padding: 0,
+    whiteSpace: 'nowrap',
+    textAlign: 'center',
+    textDecoration: 'none',
+    verticalAlign: 'middle',
+    backgroundColor: 'transparent',
+    border: 0,
+    borderRadius: 0,
+    outline: 0,
+    WebkitAppearance: 'none',
+    userSelect: 'none',
+    touchAction: 'manipulation',
+    WebkitTapHighlightColor: 'transparent',
+    cursor: disabled || loading ? 'not-allowed' : 'pointer',
+
+    [`.${clsPrefix}-button__ripple`]: {
+      transform: 'scale(1)',
+      opacity: color.action.pressed,
+      '&-enter-active': {
+        transition: theme.transition.enter('all'),
+      },
+      '&-leave-active': {
+        transition: theme.transition.leavePermanent('all'),
+      },
+      '&-enter': {
+        transform: 'scale(0)',
+        opacity: 0.1,
+      },
+      '&-leave-to': {
+        opacity: 0,
+      },
+    },
+  };
+});
+
+const BaseButtonInner = styled('span', {
+  name: displayName,
+  slot: 'inner',
 })(() => {
-  return {};
+  return {
+    // 阻止ie下 focus时文字移动
+    position: 'relative',
+    display: 'inline-block',
+    width: '100%',
+    height: '100%',
+  };
 });
 
 const BaseButton = React.forwardRef<HTMLButtonElement & HTMLAnchorElement, BaseButtonProps>(
@@ -31,6 +90,7 @@ const BaseButton = React.forwardRef<HTMLButtonElement & HTMLAnchorElement, BaseB
       disabled,
       loading,
       disableRipple,
+      className,
       /* eslint-disable react/prop-types */
       onClick,
       onMouseDown,
@@ -46,6 +106,8 @@ const BaseButton = React.forwardRef<HTMLButtonElement & HTMLAnchorElement, BaseB
       /* eslint-enable react/prop-types */
       ...others
     } = props;
+
+    const { clsPrefix } = React.useContext(ThemeContext);
 
     const Component = href ? 'a' : 'button';
 
@@ -69,9 +131,7 @@ const BaseButton = React.forwardRef<HTMLButtonElement & HTMLAnchorElement, BaseB
       disableRippleAction = !shouldEnableRipple,
     ) => {
       return useEventCallback((e: E) => {
-        if (defaultEventHandler) {
-          defaultEventHandler(e);
-        }
+        defaultEventHandler?.(e);
 
         if (!disableRippleAction && rippleRef.current) {
           rippleRef.current[action](e);
@@ -117,11 +177,15 @@ const BaseButton = React.forwardRef<HTMLButtonElement & HTMLAnchorElement, BaseB
         onClick?.(e);
       },
     );
+
+    const baseClassName = `${clsPrefix}-base-button`;
+
     return (
       <BaseButtonRoot
         {...others}
         as={Component}
         ref={ref}
+        className={clsx(`${baseClassName}__root`, className)}
         onClick={handleClick}
         onKeyDown={handleKeyDown}
         onKeyUp={handleKeyUp}
@@ -133,9 +197,15 @@ const BaseButton = React.forwardRef<HTMLButtonElement & HTMLAnchorElement, BaseB
         onTouchEnd={handleTouchEnd}
         onTouchMove={handleTouchMove}
         onDragLeave={handleDragLeave}
+        styleProps={{ loading, disabled }}
       >
-        {children}
-        <Ripple ref={rippleRef} leaveAfterEnter={true} />
+        <BaseButtonInner>{children}</BaseButtonInner>
+        <Ripple
+          ref={rippleRef}
+          leaveAfterEnter={true}
+          className={`${baseClassName}__ripple`}
+          transitionClasses={`${baseClassName}__ripple`}
+        />
       </BaseButtonRoot>
     );
   },
@@ -150,6 +220,7 @@ if (isDevelopment) {
     disabled: PropTypes.bool,
     disableRipple: PropTypes.bool,
     loading: PropTypes.bool,
+    className: PropTypes.string,
   };
 }
 

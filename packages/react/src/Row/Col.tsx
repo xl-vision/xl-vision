@@ -154,7 +154,7 @@ const Col = React.forwardRef<HTMLDivElement, ColProps>((props, ref) => {
         }
       : style;
 
-  const rootClassName = `${clsPrefix}-col-root`;
+  const rootClassName = `${clsPrefix}-col__root`;
 
   const classes = clsx(
     rootClassName,
