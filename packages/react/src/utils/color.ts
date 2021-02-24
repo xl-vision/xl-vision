@@ -276,27 +276,6 @@ export const mix = (color1: string, color2: string, amount = 0.5) => {
   return colorToRgb(rgbColor);
 };
 
-const overlayFn = (baseValue: number, topValue: number) => {
-  if (baseValue < 0.5) {
-    return baseValue * topValue;
-  }
-  return 1 - 2 * (1 - baseValue) * (1 - topValue);
-};
-
-export const overlay = (baseLayer: string, topLayer: string) => {
-  const { r: r1, g: g1, b: b1, a: a1 = 1 } = toRgbColor(baseLayer);
-  const { r: r2, g: g2, b: b2, a: a2 = 1 } = toRgbColor(topLayer);
-
-  const newColor = {
-    r: overlayFn(r1 / 255, r2 / 255) * 255,
-    g: overlayFn(g1 / 255, g2 / 255) * 255,
-    b: overlayFn(b1 / 255, b2 / 255) * 255,
-    a: overlayFn(a1, a2),
-  };
-
-  return colorToRgb(newColor);
-};
-
 export const darken = (color: string, amount: number) => {
   const obj = toColor(color);
 

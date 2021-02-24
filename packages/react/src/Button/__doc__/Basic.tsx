@@ -9,6 +9,20 @@ export default () => {
       <Button theme='secondary'>button</Button>
       <Button theme='error'>button</Button>
       <Button theme='warning'>button</Button>
+      <br />
+      <Button disabled={true}>button</Button>
+      <Button disabled={true} theme='primary'>
+        button
+      </Button>
+      <Button disabled={true} theme='secondary'>
+        button
+      </Button>
+      <Button disabled={true} theme='error'>
+        button
+      </Button>
+      <Button disabled={true} theme='warning'>
+        button
+      </Button>
     </div>
   );
 };
