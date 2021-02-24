@@ -10,7 +10,7 @@ import React from 'react';
 import { isDevelopment } from '../utils/env';
 import { Theme } from '../ThemeProvider/createTheme';
 import { Style } from '../ThemeProvider/overrideStyles';
-import createStyleWithTheme from './createStyleWithTheme';
+import applyTheme from './applyTheme';
 
 export type XlOptions = {
   name?: string;
@@ -59,38 +59,52 @@ const styled = <
     first: TemplateStringsArray | CSSObject | FunctionInterpolation<P & E>,
     ...styles: Array<Interpolation<P & E>>
   ) => {
-    const newArray = [first, ...styles].map(createStyleWithTheme);
-
-    newArray.push(
-      createStyleWithTheme((props) => {
-        const { theme } = props;
-        if (!name || !slot) {
-          return;
-        }
-        const overrideStyles = theme.overrideStyles as {
-          [key: string]: {
-            [key: string]: Style;
-          };
+    const applyOverrideStyle = (props: P & E & { theme: Theme }) => {
+      const { theme } = props;
+      if (!name || !slot) {
+        return;
+      }
+      const overrideStyles = theme.overrideStyles as {
+        [key: string]: {
+          [key: string]: Style;
         };
+      };
 
-        const overrideStyle = overrideStyles[name];
+      const overrideStyle = overrideStyles[name];
 
-        if (!overrideStyle) {
-          return;
-        }
-        const overrideSlotStyle = overrideStyle[slot];
-        if (!overrideSlotStyle) {
-          return;
-        }
-        if (typeof overrideSlotStyle === 'function') {
-          return overrideSlotStyle(props);
-        }
-        return overrideSlotStyle;
-      }),
-    );
+      if (!overrideStyle) {
+        return;
+      }
+      const overrideSlotStyle = overrideStyle[slot];
+      if (!overrideSlotStyle) {
+        return;
+      }
+      if (typeof overrideSlotStyle === 'function') {
+        return overrideSlotStyle(props);
+      }
+      return overrideSlotStyle;
+    };
 
-    // @ts-ignore
-    const DefaultComponent = defaultCreateStyledComponent<P & V>(...newArray);
+    const newStyles = [...styles, applyOverrideStyle].map(applyTheme);
+
+    let newFirst: any = first;
+
+    const numOfCustomFnsApplied = newStyles.length - styles.length;
+
+    if (Array.isArray(newFirst) && numOfCustomFnsApplied > 0) {
+      const placeholders = new Array<string>(numOfCustomFnsApplied).fill('');
+      // @ts-ignore
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      const raw = [...newFirst.raw, ...placeholders];
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      newFirst = [...newFirst, ...placeholders];
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      newFirst.raw = raw;
+    } else if (typeof newFirst === 'function') {
+      newFirst = applyTheme(newFirst);
+    }
+
+    const DefaultComponent = defaultCreateStyledComponent<P & V>(newFirst, ...newStyles);
 
     if (isDevelopment) {
       DefaultComponent.displayName = displayName;

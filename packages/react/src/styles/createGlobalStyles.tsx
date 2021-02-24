@@ -1,13 +1,13 @@
 import { createGlobalStyles as innerCreateGlobalStyles } from '@xl-vision/styled-engine';
 import { CSSObject, FunctionInterpolation, Interpolation } from '@xl-vision/styled-engine-types';
 import { Theme } from '../ThemeProvider/createTheme';
-import createStyleWithTheme from './createStyleWithTheme';
+import applyTheme from './applyTheme';
 
 const createGlobalStyles = <P extends { theme: Theme } = { theme: Theme }>(
   first: TemplateStringsArray | CSSObject | FunctionInterpolation<P>,
   ...styles: Array<Interpolation<P>>
 ) => {
-  const newArray = [first, ...styles].map(createStyleWithTheme);
+  const newArray = [first, ...styles].map(applyTheme);
 
   // @ts-ignore
   return innerCreateGlobalStyles(...newArray);

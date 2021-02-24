@@ -23,6 +23,21 @@ export default () => {
       <Button disabled={true} theme='warning'>
         button
       </Button>
+      <br />
+      <Button loading={true}>button</Button>
+      <Button loading={true} theme='primary'>
+        button
+      </Button>
+      <Button loading={true} theme='secondary'>
+        button
+      </Button>
+      <Button loading={true} theme='error'>
+        button
+      </Button>
+      <Button loading={true} theme='warning'>
+        button
+      </Button>
+      <br />
     </div>
   );
 };
