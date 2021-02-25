@@ -92,15 +92,15 @@ const loadingKeyframes = keyframes`
   }
 `;
 
+// This `styled()` function invokes keyframes. `styled-components` only supports keyframes
+// in string templates. Do not convert these styles in JS object as it will break.
 const Loading = styled(Icon, {
   name: displayName,
   slot: 'Loading',
-})(({ theme }) => {
-  const { transition } = theme;
-  return `
-  animation: ${loadingKeyframes} ${transition.durations.standard} linear infinite;
+})`
+  animation: ${loadingKeyframes} ${({ theme }) => theme.transition.durations.standard} linear
+    infinite;
 `;
-});
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const {
