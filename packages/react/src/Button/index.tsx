@@ -76,7 +76,7 @@ const ButtonPrefix = styled('span', {
   name: displayName,
   slot: 'Prefix',
 })(({ theme }) => {
-  const { typography } = theme;
+  const { typography, clsPrefix, transition } = theme;
   return {
     display: 'inline-block',
     verticalAlign: 'middle',
@@ -84,6 +84,10 @@ const ButtonPrefix = styled('span', {
     marginRight: '2px',
     fontSize: typography.pxToRem(18),
     lineHeight: 1,
+
+    [`.${clsPrefix}-button__prefix--loading`]: {
+      transition: transition.standard('width'),
+    },
   };
 });
 
@@ -129,6 +133,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
     }
   }, [loading]);
 
+  const afterLoadingFinished = React.useCallback(() => {
+    setLoadingIcon(undefined);
+  }, []);
+
   const baseClassName = `${clsPrefix}-button`;
 
   const rootClassName = `${baseClassName}__root`;
@@ -144,10 +152,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
     },
   );
 
-  const prefixClassName = `${clsPrefix}__prefix`;
+  const prefixClassName = `${baseClassName}__prefix`;
 
   const prefix = loadingIcon ? (
-    <CollapseTransition transitionOnFirst={true} in={!!loadingIcon} after>
+    <CollapseTransition transitionOnFirst={true} in={!!loading} afterLeave={afterLoadingFinished}>
       <ButtonPrefix className={prefixClassName}>
         <Loading className={`${prefixClassName}--loading`}>{loadingIcon}</Loading>
       </ButtonPrefix>

@@ -193,7 +193,7 @@ const BaseButton = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseB
         as={Component}
         ref={ref}
         // 非激活状态不允许选中
-        tabindex={loading || disabled ? -1 : tabIndex}
+        tabIndex={loading || disabled ? -1 : tabIndex}
         className={rootClasses}
         onClick={handleClick}
         onKeyDown={handleKeyDown}

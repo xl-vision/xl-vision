@@ -338,16 +338,9 @@ const createBeforeEventHook = (
   nativeHook?: BeforeEventHook,
 ): BeforeEventHook => {
   return (el: CSSTransitionElement) => {
-    // if (!el._cancelled) {
-    //   el.style.display = 'none';
-    // }
     if (ctc) {
       updateClass(el, ctc);
     }
-
-    // el.style.display = el._originalDisplay;
-    // el._originalDisplay = undefined;
-
     nativeHook?.(el);
   };
 };
