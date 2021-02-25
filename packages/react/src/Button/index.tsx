@@ -155,7 +155,12 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
   const prefixClassName = `${baseClassName}__prefix`;
 
   const prefix = loadingIcon ? (
-    <CollapseTransition transitionOnFirst={true} in={!!loading} afterLeave={afterLoadingFinished}>
+    <CollapseTransition
+      horizontal={true}
+      transitionOnFirst={true}
+      in={!!loading}
+      afterLeave={afterLoadingFinished}
+    >
       <ButtonPrefix className={prefixClassName}>
         <Loading className={`${prefixClassName}--loading`}>{loadingIcon}</Loading>
       </ButtonPrefix>
