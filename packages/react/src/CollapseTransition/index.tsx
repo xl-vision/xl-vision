@@ -1,17 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import CSSTransition, { CSSTransitionClasses, TransitionElement } from '../CSSTransition';
+import { CSSTransitionProps, CSSTransitionElement } from '../CSSTransition';
 import { forceReflow } from '../utils/transition';
 import { removeClass, addClass } from '../utils/class';
 import { isDevelopment } from '../utils/env';
 
-export interface CollapseTransitionProp {
+export interface CollapseTransitionProp extends Omit<CSSTransitionProps, 'mountOnEnter'> {
   children: React.ReactElement<React.HTMLAttributes<HTMLElement>>;
-  unmountOnLeave?: boolean;
-  in: boolean;
-  transitionClasses?: CSSTransitionClasses;
   horizontal?: boolean;
-  transitionOnFirst?: boolean;
 }
 
 const CollapseTransition: React.FunctionComponent<CollapseTransitionProp> = (props) => {
@@ -22,7 +18,34 @@ const CollapseTransition: React.FunctionComponent<CollapseTransitionProp> = (pro
     unmountOnLeave,
     horizontal,
     transitionOnFirst,
+    /* eslint-disable react/prop-types */
+    beforeAppear: _beforeAppear,
+    appear: _appear,
+    appearCancelled: _appearCancelled,
+    afterAppear: _afterAppear,
+    beforeEnter,
+    enter,
+    enterCancelled,
+    afterEnter,
+    beforeLeave,
+    leave,
+    leaveCancelled,
+    afterLeave,
+    beforeDisappear: _beforeDisappear,
+    disappear: _disappear,
+    disappearCancelled: _disappearCancelled,
+    afterDisappear: _afterDisappear,
+    /* eslint-enable react/prop-types */
   } = props;
+
+  const beforeAppear = _beforeAppear || beforeEnter;
+  const appear = _appear || enter;
+  const appearCancelled = _appearCancelled || enterCancelled;
+  const afterAppear = _afterAppear || afterEnter;
+  const beforeDisappear = _beforeDisappear || beforeLeave;
+  const disappear = _disappear || beforeLeave;
+  const disappearCancelled = _disappearCancelled || leaveCancelled;
+  const afterDisappear = _afterDisappear || afterLeave;
 
   const transitionEvents = React.useMemo(() => {
     const padding1 = horizontal ? 'paddingLeft' : 'paddingTop';
@@ -31,7 +54,7 @@ const CollapseTransition: React.FunctionComponent<CollapseTransitionProp> = (pro
     const actualSize = horizontal ? 'actualWidth' : 'actualHeight';
 
     return {
-      beforeEnter(el: TransitionElement) {
+      beforeEnter(el: CSSTransitionElement) {
         el.dataset[padding1] = el.style[padding1];
         el.dataset[padding2] = el.style[padding2];
         el.dataset[size] = el.style[size];
@@ -44,17 +67,17 @@ const CollapseTransition: React.FunctionComponent<CollapseTransitionProp> = (pro
           el.dataset.display = undefined;
         }
 
-        if (!el._cancelled) {
-          removeClass(el, el._ctc?.enter || '');
-          removeClass(el, el._ctc?.enterActive || '');
-          el.dataset[actualSize] = getComputedStyle(el)[size];
-        }
+        const ctc = el._ctc;
+
+        updateClass(el, {});
+        el.dataset[actualSize] = getComputedStyle(el)[size];
+
         el.style.overflow = 'hidden';
         el.style[size] = '0';
         el.style[padding1] = '0';
         el.style[padding2] = '0';
 
-        if (!el._cancelled) {
+        if (el._ctc?.enter) {
           addClass(el, el._ctc?.enter || '');
           forceReflow();
           addClass(el, el._ctc?.enterActive || '');
@@ -75,7 +98,7 @@ const CollapseTransition: React.FunctionComponent<CollapseTransitionProp> = (pro
         el.style[size] = el.dataset[size]!;
         el.style.overflow = el.dataset.overflow!;
       },
-      beforeLeave(el: TransitionElement) {
+      beforeLeave(el: CSSTransitionElement) {
         el.dataset[padding1] = el.style[padding1];
         el.dataset[padding2] = el.style[padding2];
         el.dataset[size] = el.style[size];

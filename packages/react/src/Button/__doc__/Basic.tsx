@@ -9,35 +9,9 @@ export default () => {
       <Button theme='secondary'>button</Button>
       <Button theme='error'>button</Button>
       <Button theme='warning'>button</Button>
-      <br />
-      <Button disabled={true}>button</Button>
       <Button disabled={true} theme='primary'>
-        button
+        disabled
       </Button>
-      <Button disabled={true} theme='secondary'>
-        button
-      </Button>
-      <Button disabled={true} theme='error'>
-        button
-      </Button>
-      <Button disabled={true} theme='warning'>
-        button
-      </Button>
-      <br />
-      <Button loading={true}>button</Button>
-      <Button loading={true} theme='primary'>
-        button
-      </Button>
-      <Button loading={true} theme='secondary'>
-        button
-      </Button>
-      <Button loading={true} theme='error'>
-        button
-      </Button>
-      <Button loading={true} theme='warning'>
-        button
-      </Button>
-      <br />
     </div>
   );
 };

@@ -76,6 +76,7 @@ const createTypography = (typography: Typography = {}) => {
     caption,
     button,
     overline,
+    pxToRem,
   } as const;
 };
 

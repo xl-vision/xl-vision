@@ -93,6 +93,7 @@ const BaseButton = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseB
       disableRipple,
       className,
       /* eslint-disable react/prop-types */
+      tabIndex,
       onClick,
       onMouseDown,
       onMouseUp,
@@ -175,12 +176,25 @@ const BaseButton = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseB
 
     const baseClassName = `${clsPrefix}-base-button`;
 
+    const rootClassName = `${baseClassName}__root`;
+
+    const rootClasses = clsx(
+      rootClassName,
+      {
+        [`${rootClassName}--loading`]: loading,
+        [`${rootClassName}--disabled`]: disabled,
+      },
+      className,
+    );
+
     return (
       <BaseButtonRoot
         {...others}
         as={Component}
         ref={ref}
-        className={clsx(`${baseClassName}__root`, className)}
+        // 非激活状态不允许选中
+        tabindex={loading || disabled ? -1 : tabIndex}
+        className={rootClasses}
         onClick={handleClick}
         onKeyDown={handleKeyDown}
         onKeyUp={handleKeyUp}

@@ -10,6 +10,7 @@ import { styled } from '../styles';
 import { ThemeColors } from '../ThemeProvider/color/themeColor';
 import ThemeContext from '../ThemeProvider/ThemeContext';
 import { isDevelopment } from '../utils/env';
+import CollapseTransition from '../CollapseTransition';
 
 export type ButtonTheme = keyof ThemeColors | 'default';
 
@@ -55,9 +56,8 @@ const ButtonRoot = styled(BaseButton, {
     ...typography.button,
   };
 
-  if (disabled) {
+  if (disabled || loading) {
     styles.opacity = baseColor.action.disabled;
-    styles.cursor = 'not-allowed';
   } else if (!disableElevation && !loading) {
     styles['&:hover'] = {
       backgroundColor: color.applyState(backgroundColor, 'hover'),
@@ -75,11 +75,15 @@ const ButtonRoot = styled(BaseButton, {
 const ButtonPrefix = styled('span', {
   name: displayName,
   slot: 'Prefix',
-})(() => {
+})(({ theme }) => {
+  const { typography } = theme;
   return {
     display: 'inline-block',
     verticalAlign: 'middle',
-    fontSize: '1.1em',
+    marginLeft: '-2px',
+    marginRight: '2px',
+    fontSize: typography.pxToRem(18),
+    lineHeight: 1,
   };
 });
 
@@ -117,6 +121,14 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
 
   const { clsPrefix } = React.useContext(ThemeContext);
 
+  const [loadingIcon, setLoadingIcon] = React.useState<React.ReactElement>();
+
+  React.useEffect(() => {
+    if (loading) {
+      setLoadingIcon(<LoopFilled />);
+    }
+  }, [loading]);
+
   const baseClassName = `${clsPrefix}-button`;
 
   const rootClassName = `${baseClassName}__root`;
@@ -132,22 +144,25 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
     },
   );
 
-  const actualPrefixIcon = loading ? (
-    <Loading>
-      <LoopFilled />
-    </Loading>
-  ) : (
-    prefixIcon
-  );
+  const prefixClassName = `${clsPrefix}__prefix`;
 
-  const prefix = actualPrefixIcon && <ButtonPrefix>{actualPrefixIcon}</ButtonPrefix>;
+  const prefix = loadingIcon ? (
+    <CollapseTransition transitionOnFirst={true} in={!!loadingIcon} after>
+      <ButtonPrefix className={prefixClassName}>
+        <Loading className={`${prefixClassName}--loading`}>{loadingIcon}</Loading>
+      </ButtonPrefix>
+    </CollapseTransition>
+  ) : prefixIcon ? (
+    <ButtonPrefix className={prefixClassName}>{prefixIcon}</ButtonPrefix>
+  ) : null;
 
   return (
     <ButtonRoot
       {...others}
       ref={ref}
       className={classes}
-      disableRipple={disabled}
+      loading={loading}
+      disabled={disabled}
       styleProps={{ theme, disableElevation, size, disabled, loading }}
     >
       {prefix}
