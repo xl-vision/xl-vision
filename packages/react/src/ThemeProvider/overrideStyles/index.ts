@@ -1,5 +1,6 @@
-import { RowProps } from '@xl-vision/react/Row';
 import { CSSObject, FunctionInterpolation } from '@xl-vision/styled-engine-types';
+import { BaseButtonStyleProps } from '../../BaseButton';
+import { RowProps } from '../../Row';
 import { Theme } from '../createTheme';
 
 export type Style<
@@ -31,6 +32,10 @@ export type OverrideStyles = Partial<{
   }>;
   Icon: Partial<{
     Root: Style;
+  }>;
+  BaseButton: Partial<{
+    Root: Style<BaseButtonStyleProps>;
+    Inner: Style;
   }>;
 }>;
 

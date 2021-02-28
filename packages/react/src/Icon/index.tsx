@@ -29,9 +29,9 @@ const Icon = React.forwardRef<SVGSVGElement, IconProps>((props, ref) => {
 
   const { clsPrefix } = React.useContext(ThemeContext);
 
-  const rootClassName = `${clsPrefix}-icon-root`;
+  const baseClassName = `${clsPrefix}-icon`;
 
-  const classes = clsx(rootClassName, className);
+  const classes = clsx(`${baseClassName}__root`, className);
 
   return <IconRoot {...others} className={classes} viewBox={viewBox} ref={ref} />;
 });

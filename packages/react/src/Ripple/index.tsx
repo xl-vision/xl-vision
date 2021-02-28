@@ -8,7 +8,7 @@ import { isDevelopment } from '../utils/env';
 import ThemeContext from '../ThemeProvider/ThemeContext';
 
 export interface RippleProps extends React.HTMLAttributes<HTMLDivElement> {
-  transitionClasses?: TransitionGroupClasses;
+  transitionClasses: TransitionGroupClasses;
   leaveAfterEnter?: boolean;
 }
 
@@ -89,7 +89,7 @@ const Ripple = React.forwardRef<RippleRef, RippleProps>((props, ref) => {
         left: -size / 2 + x,
       };
       const ripple = (
-        <RippleInner className={clsx(`${clsPrefix}-ripple-inner`)} key={key} style={style} />
+        <RippleInner className={clsx(`${clsPrefix}-ripple__inner`)} key={key} style={style} />
       );
       setRipples((prev) => [...prev, ripple]);
       keyRef.current++;
@@ -178,7 +178,7 @@ const Ripple = React.forwardRef<RippleRef, RippleProps>((props, ref) => {
     }
   });
 
-  const classes = clsx(`${clsPrefix}-ripple-root`, className);
+  const classes = clsx(`${clsPrefix}-ripple__root`, className);
 
   return (
     <RipperRoot {...others} className={classes} ref={containerRef}>
@@ -193,7 +193,7 @@ if (isDevelopment) {
   Ripple.displayName = displayName;
 
   Ripple.propTypes = {
-    transitionClasses: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+    transitionClasses: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
     leaveAfterEnter: PropTypes.bool,
     className: PropTypes.string,
   };

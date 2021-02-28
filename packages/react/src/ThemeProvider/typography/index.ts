@@ -1,3 +1,5 @@
+import { CSSObject, CSSProperties } from '@xl-vision/styled-engine-types';
+
 export type FontWeightKey = 'light' | 'regular' | 'medium' | 'bold';
 
 export type Typography = Partial<{
@@ -30,9 +32,9 @@ const createTypography = (typography: Typography = {}) => {
     lineHeight: number,
     fontWeightKey: FontWeightKey,
     letterSpacing: number,
-    textDecoration = 'inherit',
-    textTransform = 'inherit',
-  ) => {
+    textDecoration: CSSProperties['textDecoration'] = 'inherit',
+    textTransform: CSSProperties['textTransform'] = 'inherit',
+  ): CSSObject => {
     return {
       fontSize: pxToRem(size),
       lineHeight,
@@ -40,6 +42,7 @@ const createTypography = (typography: Typography = {}) => {
       letterSpacing: `${(letterSpacing / size).toFixed(3)}em`,
       textDecoration,
       textTransform,
+      fontFamily,
     };
   };
   const h1 = buildStyle(96, 1.167, 'light', -1.5);
@@ -73,6 +76,7 @@ const createTypography = (typography: Typography = {}) => {
     caption,
     button,
     overline,
+    pxToRem,
   } as const;
 };
 

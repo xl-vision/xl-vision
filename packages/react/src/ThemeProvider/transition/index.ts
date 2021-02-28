@@ -23,7 +23,11 @@ export type Transition = Partial<{
 const createTransition = (transition: Transition = {}) => {
   const { functions = defaultFunctions, durations = defaultDurations } = transition;
 
-  const standard = (name: string | Array<string>, duration = durations.standard, delay = '0ms') => {
+  const standard = (
+    name: keyof React.CSSProperties | Array<keyof React.CSSProperties>,
+    duration = durations.standard,
+    delay = '0ms',
+  ) => {
     if (Array.isArray(name)) {
       return name.map((it) => `${it} ${duration} ${delay} ${functions.standard}`).join(',');
     }
@@ -38,7 +42,7 @@ const createTransition = (transition: Transition = {}) => {
   };
 
   const leavePermanent = (
-    name: string | Array<string>,
+    name: keyof React.CSSProperties | Array<keyof React.CSSProperties>,
     duration = durations.leave,
     delay = '0ms',
   ) => {
@@ -49,7 +53,7 @@ const createTransition = (transition: Transition = {}) => {
   };
 
   const leaveTemporary = (
-    name: string | Array<string>,
+    name: keyof React.CSSProperties | Array<keyof React.CSSProperties>,
     duration = durations.leave,
     delay = '0ms',
   ) => {

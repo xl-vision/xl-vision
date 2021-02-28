@@ -1,7 +1,9 @@
 import { isDevelopment } from '../../utils/env';
 import { dark as defaultDark, light as defaultLight, BaseColor } from './baseColor';
 import defaultThemes, { ThemeColors } from './themeColor';
-import { getContrastRatio } from '../../utils/color';
+import { getContrastRatio, mix } from '../../utils/color';
+import { Palette } from '../palette/palette';
+import greyColor from '../palette/grey';
 
 export type Color = Partial<{
   modes: {
@@ -11,6 +13,7 @@ export type Color = Partial<{
   themes: ThemeColors;
   contrastThreshold: number;
   mode: 'dark' | 'light';
+  grey: Palette;
 }>;
 
 export type Theme = BaseColor & {
@@ -30,13 +33,14 @@ const createColors = (color: Color = {}) => {
     mode = 'light',
     contrastThreshold = 3,
     themes = defaultThemes,
+    grey = greyColor,
   } = color;
   const { dark, light } = modes;
 
   // Use the same logic as
   // Bootstrap: https://github.com/twbs/bootstrap/blob/1d6e3710dd447de1a200f29e8fa521f8a0908f70/scss/_functions.scss#L59
   // and material-components-web https://github.com/material-components/material-components-web/blob/ac46b8863c4dab9fc22c4c662dc6bd1b65dd652f/packages/mdc-theme/_functions.scss#L54
-  const getContrast = (background: string) => {
+  const getContrastText = (background: string) => {
     const contrastText =
       getContrastRatio(background, dark.text.primary) >= contrastThreshold ? dark : light;
 
@@ -66,13 +70,25 @@ const createColors = (color: Color = {}) => {
     const themeColor = theme[mode];
     newThemes[newKey] = {
       color: themeColor,
-      ...getContrast(themeColor),
+      ...getContrastText(themeColor),
     };
   });
+
+  // eslint-disable-next-line @typescript-eslint/no-shadow
+  const applyState = (color: string, state: keyof BaseColor['action']) => {
+    const bgColor =
+      getContrastRatio(color, modes.dark.background) > contrastThreshold
+        ? modes.dark.background
+        : modes.light.background;
+    return mix(bgColor, color, modes[mode].action[state]);
+  };
 
   return {
     ...base,
     themes: newThemes,
+    grey,
+    getContrastText,
+    applyState,
   };
 };
 

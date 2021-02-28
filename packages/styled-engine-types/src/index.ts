@@ -53,7 +53,7 @@ export type ExtractProps<
 export type StyledComponent<InnerProps, StyleProps> = React.ComponentType<
   InnerProps &
     StyleProps & {
-      as?: keyof JSX.IntrinsicElements | React.ComponentType<React.ComponentProps<any>>;
+      as?: keyof JSX.IntrinsicElements | React.ComponentType<any>;
     }
 >;
 
