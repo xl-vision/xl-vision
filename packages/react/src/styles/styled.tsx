@@ -47,7 +47,7 @@ const styled = <
 
   const defaultCreateStyledComponent = innerStyled<Tag, ForwardedProps>(tag, {
     shouldForwardProp: shouldForwardProp as ShouldForwardProp<ForwardedProps>,
-    prefix: prefix || undefined,
+    ...(isDevelopment && { prefix: prefix || undefined }),
   });
 
   const overrideCreateStyledComponent = <
