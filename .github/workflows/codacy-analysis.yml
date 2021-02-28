@@ -28,9 +28,8 @@ jobs:
         uses: codacy/codacy-analysis-cli-action@1.1.0
         with:
           # Check https://github.com/codacy/codacy-analysis-cli#project-token to get your project token from your Codacy repository
-          project-token: ${{secrets.CODACY_TOKEN}}
           # You can also omit the token and run the tools that support default configurations
-          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          project-token: ${{ secrets.CODACY_TOKEN }}
           verbose: true
           output: results.sarif
           format: sarif
