@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { styled, CollapseTransition } from '@xl-vision/react';
+import { styled, CollapseTransition, Button, Icon } from '@xl-vision/react';
+import Expand from '@xl-vision/icons/ExpandMoreFilled';
 import Code from './Code';
 
 export type DemoBoxProps = {
@@ -64,15 +65,21 @@ const CodeWrapper = styled('div')(
 `,
 );
 
-const Button = styled('button')(
-  ({ theme }) => `
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  background: ${theme.color.background};
-  border: 1px solid ${theme.color.divider};
-`,
-);
+const ButtonWrapper = styled('div')(() => {
+  return {
+    position: 'absolute',
+    right: 10,
+    top: 20,
+  };
+});
+
+const ExpandWrapper = styled(Expand)<{ expand: boolean }>(({ theme, styleProps }) => {
+  const { expand } = styleProps;
+  return {
+    transition: theme.transition.standard('transform'),
+    transform: `rotate(${expand ? '0deg' : '-90deg'})`,
+  };
+});
 
 const DemoBox: React.FunctionComponent<DemoBoxProps> = ({ children }) => {
   const [title, desc, tsxCode, jsxCode, preview] = children;
@@ -85,7 +92,20 @@ const DemoBox: React.FunctionComponent<DemoBoxProps> = ({ children }) => {
       <InfoWrapper>
         <TitleWrapper>{title}</TitleWrapper>
         <DescWrapper>{desc}</DescWrapper>
-        <Button onClick={() => setExpand(!isExpand)}>{isExpand ? '隐藏' : '展开'}</Button>
+        <ButtonWrapper>
+          <Button
+            theme='primary'
+            round={true}
+            size='large'
+            variant='text'
+            onClick={() => setExpand(!isExpand)}
+            prefixIcon={
+              <Icon>
+                <ExpandWrapper styleProps={{ expand: isExpand }} />
+              </Icon>
+            }
+          />
+        </ButtonWrapper>
       </InfoWrapper>
       <CollapseTransition in={isExpand} transitionClasses='slide'>
         <CodeWrapper>

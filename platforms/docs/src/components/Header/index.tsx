@@ -1,5 +1,5 @@
 import React from 'react';
-import { styled } from '@xl-vision/react';
+import { Button, styled } from '@xl-vision/react';
 import { ThemeContext } from '../ThemeProvider';
 
 const Container = styled('div')(() => {
@@ -13,7 +13,8 @@ const HeaderNav = styled('header')(({ theme }) => {
   return {
     position: 'fixed',
     top: 0,
-    width: '100%',
+    left: 0,
+    right: 0,
     zIndex: 1000,
     height: '60px',
     // borderBottom: `1px solid ${theme.color.divider}`,
@@ -22,6 +23,7 @@ const HeaderNav = styled('header')(({ theme }) => {
     margin: 0,
     padding: '0 16px',
     background: `${theme.color.background}`,
+    justifyContent: 'space-between',
     ...theme.elevations(2),
   };
 });
@@ -42,9 +44,11 @@ const Header = () => {
     <Container>
       <HeaderNav>
         <Logo>XL-VISION</Logo>
-        <button onClick={handleTheme} type='button'>
-          {theme.isDark ? '白色' : '暗色'}
-        </button>
+        <div>
+          <Button theme='primary' variant='outlined' onClick={handleTheme}>
+            {theme.isDark ? '白色' : '暗色'}
+          </Button>
+        </div>
       </HeaderNav>
     </Container>
   );
