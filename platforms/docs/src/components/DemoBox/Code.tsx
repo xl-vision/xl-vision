@@ -1,4 +1,4 @@
-import { styled } from '@xl-vision/react';
+import { Button, styled } from '@xl-vision/react';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -23,14 +23,6 @@ const Bar = styled('div')(
 `,
 );
 
-const Button = styled('button')<{ isActive: boolean }>(
-  ({ styleProps, theme }) => `
-  background: ${theme.color.background};
-  border: 1px solid ${theme.color.divider};
-  color: ${styleProps.isActive ? theme.color.themes.primary.color : theme.color.text.primary};
-`,
-);
-
 const Content = styled('div')``;
 
 const Code: React.FunctionComponent<CodeProps> = (props) => {
@@ -44,13 +36,17 @@ const Code: React.FunctionComponent<CodeProps> = (props) => {
     <Wrapper>
       <Bar>
         <Button
-          styleProps={{ isActive: codeType === CodeType.TYPESCRIPT }}
+          variant='text'
+          size='small'
+          theme={codeType === CodeType.TYPESCRIPT ? 'primary' : 'default'}
           onClick={() => setCodeType(CodeType.TYPESCRIPT)}
         >
           Typescript
         </Button>
         <Button
-          styleProps={{ isActive: codeType === CodeType.JAVASCRIPT }}
+          variant='text'
+          size='small'
+          theme={codeType === CodeType.JAVASCRIPT ? 'primary' : 'default'}
           onClick={() => setCodeType(CodeType.JAVASCRIPT)}
         >
           Javascript

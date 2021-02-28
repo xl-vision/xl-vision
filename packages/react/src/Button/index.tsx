@@ -93,7 +93,9 @@ const ButtonRoot = styled(BaseButton, {
   } else if (size === 'large') {
     styles.padding = icon ? '8px 13.5px' : '8px 22px';
     styles.fontSize = typography.pxToRem(15);
-    styles.borderRadius = 8 * 2 + 1.75 * 14;
+    if (round) {
+      styles.borderRadius = 8 * 2 + 1.75 * 14;
+    }
   }
 
   if (long) {
