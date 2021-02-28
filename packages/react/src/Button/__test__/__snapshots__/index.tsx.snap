@@ -417,7 +417,7 @@ exports[`Button test basic render 1`] = `
     />
   </button>
   <button
-    class="c0 xl-base-button__root c5 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-outlined xl-button__root--elevation"
+    class="c0 xl-base-button__root c5 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-outlined"
   >
     <span
       class="c2 xl-base-button__inner"
