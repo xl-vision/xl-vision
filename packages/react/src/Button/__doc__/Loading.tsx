@@ -1,5 +1,25 @@
 import React from 'react';
-import { Button } from '@xl-vision/react';
+import { Button, Icon, styled } from '@xl-vision/react';
+import LockFilled from '@xl-vision/icons/LockFilled';
+
+const IconWrapper = (
+  <Icon>
+    <LockFilled />
+  </Icon>
+);
+
+const Wrapper = styled('div')(() => {
+  return {
+    ':not(:last-child)': {
+      marginBottom: 10,
+    },
+    'button, a': {
+      ':not(:last-child)': {
+        marginRight: 10,
+      },
+    },
+  };
+});
 
 export default () => {
   const [loading, setLoading] = React.useState(false);
@@ -22,22 +42,22 @@ export default () => {
   }, []);
 
   return (
-    <div className='container'>
+    <Wrapper>
       <Button loading={loading} onClick={handleLoading}>
         click me
       </Button>
-      <Button loading={loading} theme='primary'>
+      <Button variant='text' loading={loading} prefixIcon={IconWrapper} theme='primary'>
         button
       </Button>
       <Button loading={loading} theme='secondary'>
         button
       </Button>
-      <Button loading={loading} theme='error'>
+      <Button variant='text' loading={loading} theme='error'>
         button
       </Button>
-      <Button loading={loading} theme='warning'>
+      <Button variant='outlined' loading={loading} theme='warning'>
         button
       </Button>
-    </div>
+    </Wrapper>
   );
 };

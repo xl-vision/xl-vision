@@ -1,17 +1,80 @@
 import React from 'react';
-import { Button } from '@xl-vision/react';
+import { Button, Icon, styled } from '@xl-vision/react';
+import SearchOutlined from '@xl-vision/icons/SearchOutlined';
+
+const IconWrapper = (
+  <Icon>
+    <SearchOutlined />
+  </Icon>
+);
+
+const Wrapper = styled('div')(() => {
+  return {
+    ':not(:last-child)': {
+      marginBottom: 10,
+    },
+    'button, a': {
+      ':not(:last-child)': {
+        marginRight: 10,
+      },
+    },
+  };
+});
 
 export default () => {
   return (
     <div className='container'>
-      <Button>button</Button>
-      <Button theme='primary'>button</Button>
-      <Button theme='secondary'>button</Button>
-      <Button theme='error'>button</Button>
-      <Button theme='warning'>button</Button>
-      <Button disabled={true} theme='primary'>
-        disabled
-      </Button>
+      <Wrapper>
+        <Button>button</Button>
+        <Button theme='primary'>button</Button>
+        <Button theme='secondary'>button</Button>
+        <Button theme='error'>button</Button>
+        <Button round={true} theme='warning'>
+          button
+        </Button>
+        <Button theme='primary' prefixIcon={IconWrapper}>
+          button
+        </Button>
+        <Button theme='primary' prefixIcon={IconWrapper} round={true} />
+      </Wrapper>
+      <Wrapper>
+        <Button variant='text'>button</Button>
+        <Button variant='text' theme='primary'>
+          button
+        </Button>
+        <Button variant='text' theme='secondary'>
+          button
+        </Button>
+        <Button variant='text' theme='error'>
+          button
+        </Button>
+        <Button round={true} variant='text' theme='warning'>
+          button
+        </Button>
+        <Button variant='text' theme='primary' prefixIcon={IconWrapper}>
+          button
+        </Button>
+        <Button theme='primary' prefixIcon={IconWrapper} round={true} />
+      </Wrapper>
+      <Wrapper>
+        <Button variant='outlined'>button</Button>
+        <Button variant='outlined' theme='primary'>
+          button
+        </Button>
+        <Button variant='outlined' theme='secondary'>
+          button
+        </Button>
+        <Button variant='outlined' theme='error'>
+          button
+        </Button>
+        <Button round={true} variant='outlined' theme='warning'>
+          button
+        </Button>
+        <Button variant='outlined' theme='primary' prefixIcon={IconWrapper}>
+          button
+        </Button>
+        <Button theme='primary' prefixIcon={IconWrapper} round={true} />
+      </Wrapper>
     </div>
   );
 };

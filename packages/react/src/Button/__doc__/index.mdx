@@ -8,6 +8,38 @@
 
 :::
 
+:::demo ./DisableElevation.tsx
+
+禁止阴影效果
+
+仅对`variant=contained`会有阴影效果
+
+:::
+
+:::demo ./DisableRipple.tsx
+
+禁止水波纹效果
+
+禁用后点击时不会出现水波纹效果
+
+:::
+
+:::demo ./Disabled.tsx
+
+禁用按钮
+
+禁用按钮时，对于`variant=contained`的水波纹效果和阴影都会失效
+
+:::
+
+:::demo ./Size.tsx
+
+不同尺寸
+
+通过`size`设置不同尺寸的按钮
+
+:::
+
 :::demo ./Loading.tsx
 
 加载中
@@ -15,3 +47,54 @@
 组件点击后，需要一段时间处理后才能继续操作
 
 :::
+
+:::demo ./Link.tsx
+
+跳转按钮
+
+通过给按钮设置`href`，可以使按钮获得`a`标签的能力
+
+:::
+
+:::demo ./Long.tsx
+
+长按钮
+
+通过给按钮设置`long`，可以使按钮占据一整行
+
+:::
+
+## Button API
+
+> 其余参数请参考**[BaseButton](/BaseButton)**
+
+| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
+| --- | --- | --- | --- | --- | --- |
+| href | 点击跳转地址，此时 button 行为与 a 标签一致 | string | - | - | false |
+| disabled | 禁止按钮 | boolean | - | false | false |
+| theme | 设置按钮主题 | string | default &#x007c; primary &#x007c; success &#x007c; warning &#x007c; error &#x007c; secondary | default | false |
+| variant | 设置按钮类型 | string | contained &#x007c; outlined &#x007c; text | contained | false |
+| long | 设置为长按钮 | boolean | - | false | false |
+| prefixIcon | 前置图标 | ReactElement | - | - | false |
+| suffixIcon | 后置图标 | ReactElement | - | - | false |
+| loading | 设置按钮为加载中 | boolean | - | - | false |
+| round | 圆角按钮 | boolean | - | - | false |
+| disableElevation | 禁止阴影效果，仅对`variant=contained` | boolean | - | - | false |
+| children | 子节点，在指定了`prefixIcon`或`suffixIcon`时可以为空 | ReactNode | - | - | false |
+| size | 设置按钮大小 | medium &#x007c; large &#x007c; small | - | middle | false |
+
+## Group API
+
+> 使用按钮组时，请不要设置`Button`的`round`和`long`属性，否则会导致显示异常。
+
+| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
+| --- | --- | --- | --- | --- | --- |
+| clsPrefix | 自定义类名前缀 | string | - | - | false |
+| round | 指定按钮组中按钮的圆角样式，仅在水平方向可用 | boolean | - | false | false |
+| disableElevation | 禁止阴影效果，仅对`variant=contained` | boolean | - | - | false |
+| disableRipple | 禁止水波纹 | boolean | - | - | false |
+| theme | 设置按钮主题 | string | default &#x007c; primary &#x007c; success &#x007c; warning &#x007c; error &#x007c; secondary | default | false |
+| variant | 设置按钮类型 | string | contained &#x007c; outlined &#x007c; text | contained | false |
+| children | 按钮数组 | Button &#x007c; Button[] | - | - | true |
+| size | 设置按钮大小 | medium &#x007c; large &#x007c; small | - | - | false |
+| direction | 按钮组方向 | vertical &#x007c; horizontal | - | horizontal | false |

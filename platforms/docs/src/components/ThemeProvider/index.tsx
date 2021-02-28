@@ -23,14 +23,14 @@ const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = (props) => {
 
   const [isDark, setDark] = React.useState(() => {
     if (localStorage) {
-      const dark = Boolean(localStorage.getItem(KEY) || false);
+      const dark = localStorage.getItem(KEY) === 'dark';
       return dark;
     }
     return false;
   });
 
   const setDarkWrapper = React.useCallback((dark: boolean) => {
-    localStorage.setItem(KEY, String(dark));
+    localStorage.setItem(KEY, dark ? 'dark' : 'light');
     setDark(dark);
   }, []);
 
