@@ -77,7 +77,8 @@ const ButtonRoot = styled(BaseButton, {
   };
 
   if (icon) {
-    styles.padding = '6px 11px';
+    styles.padding = '8.2px';
+    styles.lineHeight = 0;
   }
 
   if (round) {
@@ -85,17 +86,21 @@ const ButtonRoot = styled(BaseButton, {
   }
 
   if (size === 'small') {
-    styles.padding = icon ? '4px 8.5px' : '4px 10px';
+    styles.padding = icon ? '6.5px' : '4px 10px';
     styles.fontSize = typography.pxToRem(13);
     if (round) {
       styles.borderRadius = 4 * 2 + 1.75 * 14;
     }
   } else if (size === 'large') {
-    styles.padding = icon ? '8px 13.5px' : '8px 22px';
+    styles.padding = icon ? '10.5px' : '8px 22px';
     styles.fontSize = typography.pxToRem(15);
     if (round) {
       styles.borderRadius = 8 * 2 + 1.75 * 14;
     }
+  }
+
+  if (icon && round) {
+    styles.borderRadius = '50%';
   }
 
   if (long) {
@@ -163,9 +168,10 @@ const ButtonPrefix = styled('span', {
   const styles: CSSObject = {
     display: 'inline-block',
     verticalAlign: 'middle',
-    lineHeight: 0,
     transition: transition.standard('width'),
     padding: 0,
+    lineHeight: 0,
+    fontSize: '1.4em',
     svg: {
       lineHeight: 1,
     },
@@ -174,7 +180,6 @@ const ButtonPrefix = styled('span', {
   if (!icon) {
     styles.marginLeft = '-2px';
     styles.marginRight = '2px';
-    styles.fontSize = '1.2em';
   }
 
   return styles;

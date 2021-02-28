@@ -40,9 +40,11 @@ const TitleWrapper = styled('div')(
 `,
 );
 
-const DescWrapper = styled('div')`
-  padding: 18px 24px 12px;
-`;
+const DescWrapper = styled('div')(() => {
+  return {
+    padding: '8px 40px 8px 24px',
+  };
+});
 
 const CodeWrapper = styled('div')(
   ({ theme }) => `
@@ -68,8 +70,8 @@ const CodeWrapper = styled('div')(
 const ButtonWrapper = styled('div')(() => {
   return {
     position: 'absolute',
-    right: 10,
-    top: 20,
+    right: 5,
+    top: 10,
   };
 });
 

@@ -23,7 +23,12 @@ const Bar = styled('div')(
 `,
 );
 
-const Content = styled('div')``;
+const Content = styled('div')(() => {
+  return {
+    maxHeight: '700px',
+    overflow: 'auto',
+  };
+});
 
 const Code: React.FunctionComponent<CodeProps> = (props) => {
   const { children } = props;
