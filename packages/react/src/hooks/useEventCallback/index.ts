@@ -8,9 +8,7 @@ import useLayoutEffect from '../useLayoutEffect';
  * @param value
  */
 const useEventCallback = <P extends Array<any>, R extends any>(fn: (...args: P) => R) => {
-  const fnRef = React.useRef<(...args: P) => R>(() => {
-    throw new Error('Cannot call an event handler while rendering.');
-  });
+  const fnRef = React.useRef<(...args: P) => R>(fn);
   const getValue = React.useCallback((...args: P) => fnRef.current(...args), []);
 
   useLayoutEffect(() => {

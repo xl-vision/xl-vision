@@ -18,7 +18,7 @@ exports[`styled test styled overrideStyles 1`] = `
 }
 
 <svg
-  class="c0 xl-icon-root"
+  class="c0 xl-icon__root"
   viewBox="0 0 24 24"
 >
   <path
@@ -51,7 +51,7 @@ exports[`styled test styled overrideStyles 2`] = `
 }
 
 <svg
-  class="c0 xl-icon-root"
+  class="c0 xl-icon__root"
   viewBox="0 0 24 24"
 >
   <path

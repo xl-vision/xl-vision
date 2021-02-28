@@ -1,5 +1,3883 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`renders ./packages/react/src/BaseButton/__doc__/Advance.tsx correctly 1`] = `
+.c3 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c0 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+.c0 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+}
+
+.c0 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c0 .xl-base-button__ripple-leave-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c0 .xl-base-button__ripple-enter {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c0 .xl-base-button__ripple-leave-to {
+  opacity: 0;
+}
+
+.c2 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c1 {
+  height: 200px;
+  color: #000;
+}
+
+.c1:focus {
+  opacity: 0.85;
+}
+
+.c1 .img {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+}
+
+.c1 .title {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+<div
+  class="container"
+>
+  <button
+    class="c0 xl-base-button__root c1"
+    style="width: 40%;"
+  >
+    <span
+      class="c2"
+    >
+      <span
+        class="img"
+        style="background-image: url(test-file-stub);"
+      />
+      <span
+        class="title"
+      >
+        Breakfast
+      </span>
+    </span>
+    <div
+      class="c3 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+  <button
+    class="c0 xl-base-button__root c1"
+    style="width: 30%;"
+  >
+    <span
+      class="c2"
+    >
+      <span
+        class="img"
+        style="background-image: url(test-file-stub);"
+      />
+      <span
+        class="title"
+      >
+        Burgers
+      </span>
+    </span>
+    <div
+      class="c3 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+  <button
+    class="c0 xl-base-button__root c1"
+    style="width: 30%;"
+  >
+    <span
+      class="c2"
+    >
+      <span
+        class="img"
+        style="background-image: url(test-file-stub);"
+      />
+      <span
+        class="title"
+      >
+        Camera
+      </span>
+    </span>
+    <div
+      class="c3 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+</div>
+`;
+
+exports[`renders ./packages/react/src/BaseButton/__doc__/Basic.tsx correctly 1`] = `
+.c3 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c0 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+.c0 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+}
+
+.c0 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c0 .xl-base-button__ripple-leave-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c0 .xl-base-button__ripple-enter {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c0 .xl-base-button__ripple-leave-to {
+  opacity: 0;
+}
+
+.c2 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c1 {
+  padding: 6px 16px;
+  border-radius: 3px;
+  background-color: #9c27b0;
+  color: #fff;
+}
+
+.c1:focus {
+  opacity: 0.85;
+}
+
+<div
+  class="container"
+>
+  <button
+    class="c0 xl-base-button__root c1"
+  >
+    <span
+      class="c2"
+    >
+      custom css
+    </span>
+    <div
+      class="c3 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+</div>
+`;
+
+exports[`renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`] = `
+.c10 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentcolor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+}
+
+.c4 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+.c1 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+}
+
+.c1 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c1 .xl-base-button__ripple-leave-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c1 .xl-base-button__ripple-enter {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c1 .xl-base-button__ripple-leave-to {
+  opacity: 0;
+}
+
+.c3 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c2 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: rgba(0,0,0,0.87);
+  background-color: #e0e0e0;
+}
+
+.c2:hover {
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c2:focus {
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c5 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #3f51b5;
+}
+
+.c5:hover {
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c5:focus {
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c6 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #f50057;
+}
+
+.c6:hover {
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c6:focus {
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c7 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #f44336;
+}
+
+.c7:hover {
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c7:focus {
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c8 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 36.5px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: rgba(0,0,0,0.87);
+  background-color: #ff9800;
+}
+
+.c8:hover {
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c8:focus {
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c11 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 11px;
+  border-radius: 36.5px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #3f51b5;
+}
+
+.c11:hover {
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c11:focus {
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c13 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  background-color: transparent;
+  color: rgba(0,0,0,0.87);
+}
+
+.c13:hover {
+  background-color: rgba(0,0,0,0.04);
+}
+
+.c13:focus {
+  background-color: rgba(0,0,0,0.12);
+}
+
+.c14 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  background-color: transparent;
+  color: #3f51b5;
+}
+
+.c14:hover {
+  background-color: rgba(63,81,181,0.04);
+}
+
+.c14:focus {
+  background-color: rgba(63,81,181,0.12);
+}
+
+.c15 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  background-color: transparent;
+  color: #f50057;
+}
+
+.c15:hover {
+  background-color: rgba(245,0,87,0.04);
+}
+
+.c15:focus {
+  background-color: rgba(245,0,87,0.12);
+}
+
+.c16 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  background-color: transparent;
+  color: #f44336;
+}
+
+.c16:hover {
+  background-color: rgba(244,67,54,0.04);
+}
+
+.c16:focus {
+  background-color: rgba(244,67,54,0.12);
+}
+
+.c17 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 36.5px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  background-color: transparent;
+  color: #ff9800;
+}
+
+.c17:hover {
+  background-color: rgba(255,152,0,0.04);
+}
+
+.c17:focus {
+  background-color: rgba(255,152,0,0.12);
+}
+
+.c18 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  background-color: transparent;
+  color: rgba(0,0,0,0.87);
+  border: 1px solid rgba(0,0,0,0.5);
+}
+
+.c18:hover {
+  background-color: rgba(0,0,0,0.04);
+}
+
+.c18:focus {
+  background-color: rgba(0,0,0,0.12);
+}
+
+.c19 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  background-color: transparent;
+  color: #3f51b5;
+  border: 1px solid rgba(63,81,181,0.5);
+}
+
+.c19:hover {
+  background-color: rgba(63,81,181,0.04);
+}
+
+.c19:focus {
+  background-color: rgba(63,81,181,0.12);
+}
+
+.c20 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  background-color: transparent;
+  color: #f50057;
+  border: 1px solid rgba(245,0,87,0.5);
+}
+
+.c20:hover {
+  background-color: rgba(245,0,87,0.04);
+}
+
+.c20:focus {
+  background-color: rgba(245,0,87,0.12);
+}
+
+.c21 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  background-color: transparent;
+  color: #f44336;
+  border: 1px solid rgba(244,67,54,0.5);
+}
+
+.c21:hover {
+  background-color: rgba(244,67,54,0.04);
+}
+
+.c21:focus {
+  background-color: rgba(244,67,54,0.12);
+}
+
+.c22 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 36.5px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  background-color: transparent;
+  color: #ff9800;
+  border: 1px solid rgba(255,152,0,0.5);
+}
+
+.c22:hover {
+  background-color: rgba(255,152,0,0.04);
+}
+
+.c22:focus {
+  background-color: rgba(255,152,0,0.12);
+}
+
+.c9 {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 0;
+  -webkit-transition: width 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: width 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 0;
+  margin-left: -2px;
+  margin-right: 2px;
+  font-size: 1.2em;
+}
+
+.c9 svg {
+  line-height: 1;
+}
+
+.c12 {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 0;
+  -webkit-transition: width 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: width 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 0;
+}
+
+.c12 svg {
+  line-height: 1;
+}
+
+.c0:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.c0 button:not(:last-child),
+.c0 a:not(:last-child) {
+  margin-right: 10px;
+}
+
+<div
+  class="container"
+>
+  <div
+    class="c0"
+  >
+    <button
+      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+    >
+      <span
+        class="c3"
+      >
+        <span>
+          button
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple__root xl-base-button__ripple"
+      />
+    </button>
+    <button
+      class="c1 xl-base-button__root c5 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+    >
+      <span
+        class="c3"
+      >
+        <span>
+          button
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple__root xl-base-button__ripple"
+      />
+    </button>
+    <button
+      class="c1 xl-base-button__root c6 xl-button__root xl-button__root--size-middle xl-button__root--theme-secondary xl-button__root--variant-contained xl-button__root--elevation"
+    >
+      <span
+        class="c3"
+      >
+        <span>
+          button
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple__root xl-base-button__ripple"
+      />
+    </button>
+    <button
+      class="c1 xl-base-button__root c7 xl-button__root xl-button__root--size-middle xl-button__root--theme-error xl-button__root--variant-contained xl-button__root--elevation"
+    >
+      <span
+        class="c3"
+      >
+        <span>
+          button
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple__root xl-base-button__ripple"
+      />
+    </button>
+    <button
+      class="c1 xl-base-button__root c8 xl-button__root xl-button__root--size-middle xl-button__root--theme-warning xl-button__root--variant-contained xl-button__root--elevation xl-button__root--round"
+    >
+      <span
+        class="c3"
+      >
+        <span>
+          button
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple__root xl-base-button__ripple"
+      />
+    </button>
+    <button
+      class="c1 xl-base-button__root c5 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+    >
+      <span
+        class="c3"
+      >
+        <span
+          class="c9 xl-button__prefix"
+        >
+          <svg
+            class="c10 xl-icon__root"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M0 0h24v24H0V0z"
+              fill="none"
+            />
+            <path
+              d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+            />
+          </svg>
+        </span>
+        <span>
+          button
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple__root xl-base-button__ripple"
+      />
+    </button>
+    <button
+      class="c1 xl-base-button__root c11 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation xl-button__root--round xl-button__root--icon"
+    >
+      <span
+        class="c3"
+      >
+        <span
+          class="c12 xl-button__prefix"
+        >
+          <svg
+            class="c10 xl-icon__root"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M0 0h24v24H0V0z"
+              fill="none"
+            />
+            <path
+              d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+            />
+          </svg>
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple__root xl-base-button__ripple"
+      />
+    </button>
+  </div>
+  <div
+    class="c0"
+  >
+    <button
+      class="c1 xl-base-button__root c13 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-text xl-button__root--elevation"
+    >
+      <span
+        class="c3"
+      >
+        <span>
+          button
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple__root xl-base-button__ripple"
+      />
+    </button>
+    <button
+      class="c1 xl-base-button__root c14 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-text xl-button__root--elevation"
+    >
+      <span
+        class="c3"
+      >
+        <span>
+          button
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple__root xl-base-button__ripple"
+      />
+    </button>
+    <button
+      class="c1 xl-base-button__root c15 xl-button__root xl-button__root--size-middle xl-button__root--theme-secondary xl-button__root--variant-text xl-button__root--elevation"
+    >
+      <span
+        class="c3"
+      >
+        <span>
+          button
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple__root xl-base-button__ripple"
+      />
+    </button>
+    <button
+      class="c1 xl-base-button__root c16 xl-button__root xl-button__root--size-middle xl-button__root--theme-error xl-button__root--variant-text xl-button__root--elevation"
+    >
+      <span
+        class="c3"
+      >
+        <span>
+          button
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple__root xl-base-button__ripple"
+      />
+    </button>
+    <button
+      class="c1 xl-base-button__root c17 xl-button__root xl-button__root--size-middle xl-button__root--theme-warning xl-button__root--variant-text xl-button__root--elevation xl-button__root--round"
+    >
+      <span
+        class="c3"
+      >
+        <span>
+          button
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple__root xl-base-button__ripple"
+      />
+    </button>
+    <button
+      class="c1 xl-base-button__root c14 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-text xl-button__root--elevation"
+    >
+      <span
+        class="c3"
+      >
+        <span
+          class="c9 xl-button__prefix"
+        >
+          <svg
+            class="c10 xl-icon__root"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M0 0h24v24H0V0z"
+              fill="none"
+            />
+            <path
+              d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+            />
+          </svg>
+        </span>
+        <span>
+          button
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple__root xl-base-button__ripple"
+      />
+    </button>
+    <button
+      class="c1 xl-base-button__root c11 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation xl-button__root--round xl-button__root--icon"
+    >
+      <span
+        class="c3"
+      >
+        <span
+          class="c12 xl-button__prefix"
+        >
+          <svg
+            class="c10 xl-icon__root"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M0 0h24v24H0V0z"
+              fill="none"
+            />
+            <path
+              d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+            />
+          </svg>
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple__root xl-base-button__ripple"
+      />
+    </button>
+  </div>
+  <div
+    class="c0"
+  >
+    <button
+      class="c1 xl-base-button__root c18 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-outlined xl-button__root--elevation"
+    >
+      <span
+        class="c3"
+      >
+        <span>
+          button
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple__root xl-base-button__ripple"
+      />
+    </button>
+    <button
+      class="c1 xl-base-button__root c19 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-outlined xl-button__root--elevation"
+    >
+      <span
+        class="c3"
+      >
+        <span>
+          button
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple__root xl-base-button__ripple"
+      />
+    </button>
+    <button
+      class="c1 xl-base-button__root c20 xl-button__root xl-button__root--size-middle xl-button__root--theme-secondary xl-button__root--variant-outlined xl-button__root--elevation"
+    >
+      <span
+        class="c3"
+      >
+        <span>
+          button
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple__root xl-base-button__ripple"
+      />
+    </button>
+    <button
+      class="c1 xl-base-button__root c21 xl-button__root xl-button__root--size-middle xl-button__root--theme-error xl-button__root--variant-outlined xl-button__root--elevation"
+    >
+      <span
+        class="c3"
+      >
+        <span>
+          button
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple__root xl-base-button__ripple"
+      />
+    </button>
+    <button
+      class="c1 xl-base-button__root c22 xl-button__root xl-button__root--size-middle xl-button__root--theme-warning xl-button__root--variant-outlined xl-button__root--elevation xl-button__root--round"
+    >
+      <span
+        class="c3"
+      >
+        <span>
+          button
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple__root xl-base-button__ripple"
+      />
+    </button>
+    <button
+      class="c1 xl-base-button__root c19 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-outlined xl-button__root--elevation"
+    >
+      <span
+        class="c3"
+      >
+        <span
+          class="c9 xl-button__prefix"
+        >
+          <svg
+            class="c10 xl-icon__root"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M0 0h24v24H0V0z"
+              fill="none"
+            />
+            <path
+              d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+            />
+          </svg>
+        </span>
+        <span>
+          button
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple__root xl-base-button__ripple"
+      />
+    </button>
+    <button
+      class="c1 xl-base-button__root c11 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation xl-button__root--round xl-button__root--icon"
+    >
+      <span
+        class="c3"
+      >
+        <span
+          class="c12 xl-button__prefix"
+        >
+          <svg
+            class="c10 xl-icon__root"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M0 0h24v24H0V0z"
+              fill="none"
+            />
+            <path
+              d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+            />
+          </svg>
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple__root xl-base-button__ripple"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`renders ./packages/react/src/Button/__doc__/DisableElevation.tsx correctly 1`] = `
+.c4 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+.c1 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+}
+
+.c1 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c1 .xl-base-button__ripple-leave-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c1 .xl-base-button__ripple-enter {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c1 .xl-base-button__ripple-leave-to {
+  opacity: 0;
+}
+
+.c3 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c2 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: rgba(0,0,0,0.87);
+  background-color: #e0e0e0;
+}
+
+.c2:hover {
+  background-color: rgba(217,217,217,1);
+}
+
+.c2:focus {
+  background-color: rgba(203,203,203,1);
+}
+
+.c5 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #3f51b5;
+}
+
+.c5:hover {
+  background-color: rgba(70,88,184,1);
+}
+
+.c5:focus {
+  background-color: rgba(85,101,189,1);
+}
+
+.c6 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #f50057;
+}
+
+.c6:hover {
+  background-color: rgba(237,2,85,1);
+}
+
+.c6:focus {
+  background-color: rgba(221,6,82,1);
+}
+
+.c7 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #f44336;
+}
+
+.c7:hover {
+  background-color: rgba(236,66,54,1);
+}
+
+.c7:focus {
+  background-color: rgba(220,65,53,1);
+}
+
+.c8 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: rgba(0,0,0,0.87);
+  background-color: #ff9800;
+}
+
+.c8:hover {
+  background-color: rgba(247,148,2,1);
+}
+
+.c8:focus {
+  background-color: rgba(230,140,6,1);
+}
+
+.c0:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.c0 button:not(:last-child),
+.c0 a:not(:last-child) {
+  margin-right: 10px;
+}
+
+<div
+  class="c0"
+>
+  <button
+    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained"
+  >
+    <span
+      class="c3"
+    >
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+  <button
+    class="c1 xl-base-button__root c5 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained"
+  >
+    <span
+      class="c3"
+    >
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+  <button
+    class="c1 xl-base-button__root c6 xl-button__root xl-button__root--size-middle xl-button__root--theme-secondary xl-button__root--variant-contained"
+  >
+    <span
+      class="c3"
+    >
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+  <button
+    class="c1 xl-base-button__root c7 xl-button__root xl-button__root--size-middle xl-button__root--theme-error xl-button__root--variant-contained"
+  >
+    <span
+      class="c3"
+    >
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+  <button
+    class="c1 xl-base-button__root c8 xl-button__root xl-button__root--size-middle xl-button__root--theme-warning xl-button__root--variant-contained"
+  >
+    <span
+      class="c3"
+    >
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+</div>
+`;
+
+exports[`renders ./packages/react/src/Button/__doc__/DisableRipple.tsx correctly 1`] = `
+.c4 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+.c1 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+}
+
+.c1 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c1 .xl-base-button__ripple-leave-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c1 .xl-base-button__ripple-enter {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c1 .xl-base-button__ripple-leave-to {
+  opacity: 0;
+}
+
+.c3 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c2 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: rgba(0,0,0,0.87);
+  background-color: #e0e0e0;
+}
+
+.c2:hover {
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c2:focus {
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c5 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  background-color: transparent;
+  color: #3f51b5;
+}
+
+.c5:hover {
+  background-color: rgba(63,81,181,0.04);
+}
+
+.c5:focus {
+  background-color: rgba(63,81,181,0.12);
+}
+
+.c6 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #f50057;
+}
+
+.c6:hover {
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c6:focus {
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c7 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  background-color: transparent;
+  color: #f44336;
+}
+
+.c7:hover {
+  background-color: rgba(244,67,54,0.04);
+}
+
+.c7:focus {
+  background-color: rgba(244,67,54,0.12);
+}
+
+.c8 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  background-color: transparent;
+  color: #ff9800;
+  border: 1px solid rgba(255,152,0,0.5);
+}
+
+.c8:hover {
+  background-color: rgba(255,152,0,0.04);
+}
+
+.c8:focus {
+  background-color: rgba(255,152,0,0.12);
+}
+
+.c0:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.c0 button:not(:last-child),
+.c0 a:not(:last-child) {
+  margin-right: 10px;
+}
+
+<div
+  class="c0"
+>
+  <button
+    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+  >
+    <span
+      class="c3"
+    >
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+  <button
+    class="c1 xl-base-button__root c5 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-text xl-button__root--elevation"
+  >
+    <span
+      class="c3"
+    >
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+  <button
+    class="c1 xl-base-button__root c6 xl-button__root xl-button__root--size-middle xl-button__root--theme-secondary xl-button__root--variant-contained xl-button__root--elevation"
+  >
+    <span
+      class="c3"
+    >
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+  <button
+    class="c1 xl-base-button__root c7 xl-button__root xl-button__root--size-middle xl-button__root--theme-error xl-button__root--variant-text xl-button__root--elevation"
+  >
+    <span
+      class="c3"
+    >
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+  <button
+    class="c1 xl-base-button__root c8 xl-button__root xl-button__root--size-middle xl-button__root--theme-warning xl-button__root--variant-outlined xl-button__root--elevation"
+  >
+    <span
+      class="c3"
+    >
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+</div>
+`;
+
+exports[`renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly 1`] = `
+.c10 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentcolor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+}
+
+.c4 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: not-allowed;
+}
+
+.c1 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+}
+
+.c1 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c1 .xl-base-button__ripple-leave-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c1 .xl-base-button__ripple-enter {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c1 .xl-base-button__ripple-leave-to {
+  opacity: 0;
+}
+
+.c3 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c2 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: rgba(0,0,0,0.87);
+  background-color: #e0e0e0;
+  opacity: 0.38;
+}
+
+.c2:hover {
+  background-color: rgba(217,217,217,1);
+}
+
+.c2:focus {
+  background-color: rgba(203,203,203,1);
+}
+
+.c5 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #3f51b5;
+  opacity: 0.38;
+}
+
+.c5:hover {
+  background-color: rgba(70,88,184,1);
+}
+
+.c5:focus {
+  background-color: rgba(85,101,189,1);
+}
+
+.c6 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #f50057;
+  opacity: 0.38;
+}
+
+.c6:hover {
+  background-color: rgba(237,2,85,1);
+}
+
+.c6:focus {
+  background-color: rgba(221,6,82,1);
+}
+
+.c7 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #f44336;
+  opacity: 0.38;
+}
+
+.c7:hover {
+  background-color: rgba(236,66,54,1);
+}
+
+.c7:focus {
+  background-color: rgba(220,65,53,1);
+}
+
+.c8 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 36.5px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: rgba(0,0,0,0.87);
+  background-color: #ff9800;
+  opacity: 0.38;
+}
+
+.c8:hover {
+  background-color: rgba(247,148,2,1);
+}
+
+.c8:focus {
+  background-color: rgba(230,140,6,1);
+}
+
+.c9 {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 0;
+  -webkit-transition: width 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: width 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 0;
+  margin-left: -2px;
+  margin-right: 2px;
+  font-size: 1.2em;
+}
+
+.c9 svg {
+  line-height: 1;
+}
+
+.c0:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.c0 button:not(:last-child),
+.c0 a:not(:last-child) {
+  margin-right: 10px;
+}
+
+<div
+  class="c0"
+>
+  <button
+    class="c1 xl-base-button__root xl-base-button__root--disabled c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation xl-button__root--disabled"
+    tabindex="-1"
+  >
+    <span
+      class="c3"
+    >
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+  <button
+    class="c1 xl-base-button__root xl-base-button__root--disabled c5 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation xl-button__root--disabled"
+    tabindex="-1"
+  >
+    <span
+      class="c3"
+    >
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+  <button
+    class="c1 xl-base-button__root xl-base-button__root--disabled c6 xl-button__root xl-button__root--size-middle xl-button__root--theme-secondary xl-button__root--variant-contained xl-button__root--elevation xl-button__root--disabled"
+    tabindex="-1"
+  >
+    <span
+      class="c3"
+    >
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+  <button
+    class="c1 xl-base-button__root xl-base-button__root--disabled c7 xl-button__root xl-button__root--size-middle xl-button__root--theme-error xl-button__root--variant-contained xl-button__root--elevation xl-button__root--disabled"
+    tabindex="-1"
+  >
+    <span
+      class="c3"
+    >
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+  <button
+    class="c1 xl-base-button__root xl-base-button__root--disabled c8 xl-button__root xl-button__root--size-middle xl-button__root--theme-warning xl-button__root--variant-contained xl-button__root--elevation xl-button__root--disabled xl-button__root--round"
+    tabindex="-1"
+  >
+    <span
+      class="c3"
+    >
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+  <button
+    class="c1 xl-base-button__root xl-base-button__root--disabled c5 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation xl-button__root--disabled"
+    tabindex="-1"
+  >
+    <span
+      class="c3"
+    >
+      <span
+        class="c9 xl-button__prefix"
+      >
+        <svg
+          class="c10 xl-icon__root"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+          />
+        </svg>
+      </span>
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+</div>
+`;
+
+exports[`renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`] = `
+.c4 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+.c1 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+}
+
+.c1 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c1 .xl-base-button__ripple-leave-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c1 .xl-base-button__ripple-enter {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c1 .xl-base-button__ripple-leave-to {
+  opacity: 0;
+}
+
+.c9 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: not-allowed;
+}
+
+.c9 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+}
+
+.c9 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c9 .xl-base-button__ripple-leave-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c9 .xl-base-button__ripple-enter {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c9 .xl-base-button__ripple-leave-to {
+  opacity: 0;
+}
+
+.c3 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c2 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: rgba(0,0,0,0.87);
+  background-color: #e0e0e0;
+}
+
+.c2:hover {
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c2:focus {
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c5 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  background-color: transparent;
+  color: #3f51b5;
+}
+
+.c5:hover {
+  background-color: rgba(63,81,181,0.04);
+}
+
+.c5:focus {
+  background-color: rgba(63,81,181,0.12);
+}
+
+.c6 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #f50057;
+}
+
+.c6:hover {
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c6:focus {
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c7 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  background-color: transparent;
+  color: #f44336;
+}
+
+.c7:hover {
+  background-color: rgba(244,67,54,0.04);
+}
+
+.c7:focus {
+  background-color: rgba(244,67,54,0.12);
+}
+
+.c8 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  background-color: transparent;
+  color: #ff9800;
+  border: 1px solid rgba(255,152,0,0.5);
+}
+
+.c8:hover {
+  background-color: rgba(255,152,0,0.04);
+}
+
+.c8:focus {
+  background-color: rgba(255,152,0,0.12);
+}
+
+.c10 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #3f51b5;
+  opacity: 0.38;
+}
+
+.c10:hover {
+  background-color: rgba(70,88,184,1);
+}
+
+.c10:focus {
+  background-color: rgba(85,101,189,1);
+}
+
+.c0:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.c0 button:not(:last-child),
+.c0 a:not(:last-child) {
+  margin-right: 10px;
+}
+
+<div
+  class="c0"
+>
+  <a
+    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+    href="#"
+  >
+    <span
+      class="c3"
+    >
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </a>
+  <a
+    class="c1 xl-base-button__root c5 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-text xl-button__root--elevation"
+    href="#"
+  >
+    <span
+      class="c3"
+    >
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </a>
+  <a
+    class="c1 xl-base-button__root c6 xl-button__root xl-button__root--size-middle xl-button__root--theme-secondary xl-button__root--variant-contained xl-button__root--elevation"
+    href="#"
+  >
+    <span
+      class="c3"
+    >
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </a>
+  <a
+    class="c1 xl-base-button__root c7 xl-button__root xl-button__root--size-middle xl-button__root--theme-error xl-button__root--variant-text xl-button__root--elevation"
+    href="#"
+  >
+    <span
+      class="c3"
+    >
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </a>
+  <a
+    class="c1 xl-base-button__root c8 xl-button__root xl-button__root--size-middle xl-button__root--theme-warning xl-button__root--variant-outlined xl-button__root--elevation"
+    href="#"
+  >
+    <span
+      class="c3"
+    >
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </a>
+  <a
+    class="c9 xl-base-button__root xl-base-button__root--disabled c10 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation xl-button__root--disabled"
+    href="#"
+    tabindex="-1"
+  >
+    <span
+      class="c3"
+    >
+      <span>
+        disabled
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </a>
+</div>
+`;
+
+exports[`renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 1`] = `
+.c7 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentcolor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+}
+
+.c4 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+.c1 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+}
+
+.c1 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c1 .xl-base-button__ripple-leave-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c1 .xl-base-button__ripple-enter {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c1 .xl-base-button__ripple-leave-to {
+  opacity: 0;
+}
+
+.c3 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c2 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: rgba(0,0,0,0.87);
+  background-color: #e0e0e0;
+}
+
+.c2:hover {
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c2:focus {
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c5 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  background-color: transparent;
+  color: #3f51b5;
+}
+
+.c5:hover {
+  background-color: rgba(63,81,181,0.04);
+}
+
+.c5:focus {
+  background-color: rgba(63,81,181,0.12);
+}
+
+.c8 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #f50057;
+}
+
+.c8:hover {
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c8:focus {
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c9 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  background-color: transparent;
+  color: #f44336;
+}
+
+.c9:hover {
+  background-color: rgba(244,67,54,0.04);
+}
+
+.c9:focus {
+  background-color: rgba(244,67,54,0.12);
+}
+
+.c10 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  background-color: transparent;
+  color: #ff9800;
+  border: 1px solid rgba(255,152,0,0.5);
+}
+
+.c10:hover {
+  background-color: rgba(255,152,0,0.04);
+}
+
+.c10:focus {
+  background-color: rgba(255,152,0,0.12);
+}
+
+.c6 {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 0;
+  -webkit-transition: width 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: width 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 0;
+  margin-left: -2px;
+  margin-right: 2px;
+  font-size: 1.2em;
+}
+
+.c6 svg {
+  line-height: 1;
+}
+
+.c0:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.c0 button:not(:last-child),
+.c0 a:not(:last-child) {
+  margin-right: 10px;
+}
+
+<div
+  class="c0"
+>
+  <button
+    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+  >
+    <span
+      class="c3"
+    >
+      <span>
+        click me
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+  <button
+    class="c1 xl-base-button__root c5 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-text xl-button__root--elevation"
+  >
+    <span
+      class="c3"
+    >
+      <span
+        class="c6 xl-button__prefix"
+      >
+        <svg
+          class="c7 xl-icon__root"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+          <path
+            d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"
+          />
+        </svg>
+      </span>
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+  <button
+    class="c1 xl-base-button__root c8 xl-button__root xl-button__root--size-middle xl-button__root--theme-secondary xl-button__root--variant-contained xl-button__root--elevation"
+  >
+    <span
+      class="c3"
+    >
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+  <button
+    class="c1 xl-base-button__root c9 xl-button__root xl-button__root--size-middle xl-button__root--theme-error xl-button__root--variant-text xl-button__root--elevation"
+  >
+    <span
+      class="c3"
+    >
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+  <button
+    class="c1 xl-base-button__root c10 xl-button__root xl-button__root--size-middle xl-button__root--theme-warning xl-button__root--variant-outlined xl-button__root--elevation"
+  >
+    <span
+      class="c3"
+    >
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+</div>
+`;
+
+exports[`renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`] = `
+.c10 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentcolor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+}
+
+.c4 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+.c1 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+}
+
+.c1 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c1 .xl-base-button__ripple-leave-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c1 .xl-base-button__ripple-enter {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c1 .xl-base-button__ripple-leave-to {
+  opacity: 0;
+}
+
+.c3 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c2 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  width: 100%;
+  color: rgba(0,0,0,0.87);
+  background-color: #e0e0e0;
+}
+
+.c2:hover {
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c2:focus {
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c5 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  width: 100%;
+  background-color: transparent;
+  color: #3f51b5;
+}
+
+.c5:hover {
+  background-color: rgba(63,81,181,0.04);
+}
+
+.c5:focus {
+  background-color: rgba(63,81,181,0.12);
+}
+
+.c6 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  width: 100%;
+  background-color: transparent;
+  color: #f50057;
+  border: 1px solid rgba(245,0,87,0.5);
+}
+
+.c6:hover {
+  background-color: rgba(245,0,87,0.04);
+}
+
+.c6:focus {
+  background-color: rgba(245,0,87,0.12);
+}
+
+.c7 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 36.5px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  width: 100%;
+  color: rgba(0,0,0,0.87);
+  background-color: #ff9800;
+}
+
+.c7:hover {
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c7:focus {
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c8 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  width: 100%;
+  color: #fff;
+  background-color: #3f51b5;
+}
+
+.c8:hover {
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c8:focus {
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c9 {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 0;
+  -webkit-transition: width 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: width 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 0;
+  margin-left: -2px;
+  margin-right: 2px;
+  font-size: 1.2em;
+}
+
+.c9 svg {
+  line-height: 1;
+}
+
+.c0 button:not(:last-child),
+.c0 a:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+<div
+  class="c0"
+>
+  <button
+    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation xl-button__root--long"
+  >
+    <span
+      class="c3"
+    >
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+  <button
+    class="c1 xl-base-button__root c5 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-text xl-button__root--elevation xl-button__root--long"
+  >
+    <span
+      class="c3"
+    >
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+  <button
+    class="c1 xl-base-button__root c6 xl-button__root xl-button__root--size-middle xl-button__root--theme-secondary xl-button__root--variant-outlined xl-button__root--elevation xl-button__root--long"
+  >
+    <span
+      class="c3"
+    >
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+  <button
+    class="c1 xl-base-button__root c7 xl-button__root xl-button__root--size-middle xl-button__root--theme-warning xl-button__root--variant-contained xl-button__root--elevation xl-button__root--long xl-button__root--round"
+  >
+    <span
+      class="c3"
+    >
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+  <button
+    class="c1 xl-base-button__root c8 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation xl-button__root--long"
+  >
+    <span
+      class="c3"
+    >
+      <span
+        class="c9 xl-button__prefix"
+      >
+        <svg
+          class="c10 xl-icon__root"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+          />
+        </svg>
+      </span>
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+</div>
+`;
+
+exports[`renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`] = `
+.c12 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentcolor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+}
+
+.c4 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+.c1 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+}
+
+.c1 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c1 .xl-base-button__ripple-leave-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c1 .xl-base-button__ripple-enter {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c1 .xl-base-button__ripple-leave-to {
+  opacity: 0;
+}
+
+.c3 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c2 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: rgba(0,0,0,0.87);
+  background-color: #e0e0e0;
+}
+
+.c2:hover {
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c2:focus {
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c5 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  background-color: transparent;
+  color: #3f51b5;
+}
+
+.c5:hover {
+  background-color: rgba(63,81,181,0.04);
+}
+
+.c5:focus {
+  background-color: rgba(63,81,181,0.12);
+}
+
+.c6 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  background-color: transparent;
+  color: #f50057;
+  border: 1px solid rgba(245,0,87,0.5);
+}
+
+.c6:hover {
+  background-color: rgba(245,0,87,0.04);
+}
+
+.c6:focus {
+  background-color: rgba(245,0,87,0.12);
+}
+
+.c7 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  background-color: transparent;
+  color: #f44336;
+}
+
+.c7:hover {
+  background-color: rgba(244,67,54,0.04);
+}
+
+.c7:focus {
+  background-color: rgba(244,67,54,0.12);
+}
+
+.c8 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: rgba(0,0,0,0.87);
+  background-color: #ff9800;
+}
+
+.c8:hover {
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c8:focus {
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c9 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 36.5px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #3f51b5;
+}
+
+.c9:hover {
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c9:focus {
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c10 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 11px;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #3f51b5;
+}
+
+.c10:hover {
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c10:focus {
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c13 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 11px;
+  border-radius: 36.5px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #3f51b5;
+}
+
+.c13:hover {
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c13:focus {
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c11 {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 0;
+  -webkit-transition: width 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: width 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 0;
+}
+
+.c11 svg {
+  line-height: 1;
+}
+
+.c0:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.c0 button:not(:last-child),
+.c0 a:not(:last-child) {
+  margin-right: 10px;
+}
+
+<div
+  class="c0"
+>
+  <button
+    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+  >
+    <span
+      class="c3"
+    >
+      <span>
+        change size
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+  <button
+    class="c1 xl-base-button__root c5 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-text xl-button__root--elevation"
+  >
+    <span
+      class="c3"
+    >
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+  <button
+    class="c1 xl-base-button__root c6 xl-button__root xl-button__root--size-middle xl-button__root--theme-secondary xl-button__root--variant-outlined xl-button__root--elevation"
+  >
+    <span
+      class="c3"
+    >
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+  <button
+    class="c1 xl-base-button__root c7 xl-button__root xl-button__root--size-middle xl-button__root--theme-error xl-button__root--variant-text xl-button__root--elevation"
+  >
+    <span
+      class="c3"
+    >
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+  <button
+    class="c1 xl-base-button__root c8 xl-button__root xl-button__root--size-middle xl-button__root--theme-warning xl-button__root--variant-contained xl-button__root--elevation"
+  >
+    <span
+      class="c3"
+    >
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+  <button
+    class="c1 xl-base-button__root c9 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation xl-button__root--round"
+  >
+    <span
+      class="c3"
+    >
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+  <button
+    class="c1 xl-base-button__root c10 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation xl-button__root--icon"
+  >
+    <span
+      class="c3"
+    >
+      <span
+        class="c11 xl-button__prefix"
+      >
+        <svg
+          class="c12 xl-icon__root"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+          />
+        </svg>
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+  <button
+    class="c1 xl-base-button__root c10 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation xl-button__root--icon"
+  >
+    <span
+      class="c3"
+    >
+      <span
+        class="c11 xl-button__suffix"
+      >
+        <svg
+          class="c12 xl-icon__root"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+          />
+        </svg>
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+  <button
+    class="c1 xl-base-button__root c13 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation xl-button__root--round xl-button__root--icon"
+  >
+    <span
+      class="c3"
+    >
+      <span
+        class="c11 xl-button__prefix"
+      >
+        <svg
+          class="c12 xl-icon__root"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+          />
+        </svg>
+      </span>
+    </span>
+    <div
+      class="c4 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+</div>
+`;
+
 exports[`renders ./packages/react/src/CSSTransition/__doc__/Advance.tsx correctly 1`] = `
 <div>
   <button>
@@ -88,18 +3966,18 @@ exports[`renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
 
 <div>
   <div
-    class="c0 xl-row-root"
+    class="c0 xl-row__root"
   >
     <div
-      class="c1 xl-col-root xl-col-root-column-8"
+      class="c1 xl-col__root xl-col__root-column-8"
     >
       Filled
     </div>
     <div
-      class="c2 xl-col-root xl-col-root-column-16"
+      class="c2 xl-col__root xl-col__root-column-16"
     >
       <svg
-        class="c3 xl-icon-root"
+        class="c3 xl-icon__root"
         viewBox="0 0 24 24"
       >
         <path
@@ -111,7 +3989,7 @@ exports[`renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
         />
       </svg>
       <svg
-        class="c3 xl-icon-root"
+        class="c3 xl-icon__root"
         viewBox="0 0 24 24"
       >
         <path
@@ -129,18 +4007,18 @@ exports[`renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
     </div>
   </div>
   <div
-    class="c0 xl-row-root"
+    class="c0 xl-row__root"
   >
     <div
-      class="c1 xl-col-root xl-col-root-column-8"
+      class="c1 xl-col__root xl-col__root-column-8"
     >
       Outlined
     </div>
     <div
-      class="c2 xl-col-root xl-col-root-column-16"
+      class="c2 xl-col__root xl-col__root-column-16"
     >
       <svg
-        class="c3 xl-icon-root"
+        class="c3 xl-icon__root"
         viewBox="0 0 24 24"
       >
         <path
@@ -152,7 +4030,7 @@ exports[`renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
         />
       </svg>
       <svg
-        class="c3 xl-icon-root"
+        class="c3 xl-icon__root"
         viewBox="0 0 24 24"
       >
         <path
@@ -166,18 +4044,18 @@ exports[`renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
     </div>
   </div>
   <div
-    class="c0 xl-row-root"
+    class="c0 xl-row__root"
   >
     <div
-      class="c1 xl-col-root xl-col-root-column-8"
+      class="c1 xl-col__root xl-col__root-column-8"
     >
       Rounded
     </div>
     <div
-      class="c2 xl-col-root xl-col-root-column-16"
+      class="c2 xl-col__root xl-col__root-column-16"
     >
       <svg
-        class="c3 xl-icon-root"
+        class="c3 xl-icon__root"
         viewBox="0 0 24 24"
       >
         <path
@@ -189,7 +4067,7 @@ exports[`renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
         />
       </svg>
       <svg
-        class="c3 xl-icon-root"
+        class="c3 xl-icon__root"
         viewBox="0 0 24 24"
       >
         <path
@@ -203,18 +4081,18 @@ exports[`renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
     </div>
   </div>
   <div
-    class="c0 xl-row-root"
+    class="c0 xl-row__root"
   >
     <div
-      class="c1 xl-col-root xl-col-root-column-8"
+      class="c1 xl-col__root xl-col__root-column-8"
     >
       Two Tone
     </div>
     <div
-      class="c2 xl-col-root xl-col-root-column-16"
+      class="c2 xl-col__root xl-col__root-column-16"
     >
       <svg
-        class="c3 xl-icon-root"
+        class="c3 xl-icon__root"
         viewBox="0 0 24 24"
       >
         <path
@@ -230,7 +4108,7 @@ exports[`renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
         />
       </svg>
       <svg
-        class="c3 xl-icon-root"
+        class="c3 xl-icon__root"
         viewBox="0 0 24 24"
       >
         <path
@@ -248,18 +4126,18 @@ exports[`renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
     </div>
   </div>
   <div
-    class="c0 xl-row-root"
+    class="c0 xl-row__root"
   >
     <div
-      class="c1 xl-col-root xl-col-root-column-8"
+      class="c1 xl-col__root xl-col__root-column-8"
     >
       Sharp
     </div>
     <div
-      class="c2 xl-col-root xl-col-root-column-16"
+      class="c2 xl-col__root xl-col__root-column-16"
     >
       <svg
-        class="c3 xl-icon-root"
+        class="c3 xl-icon__root"
         viewBox="0 0 24 24"
       >
         <path
@@ -271,7 +4149,7 @@ exports[`renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
         />
       </svg>
       <svg
-        class="c3 xl-icon-root"
+        class="c3 xl-icon__root"
         viewBox="0 0 24 24"
       >
         <path
@@ -340,7 +4218,7 @@ exports[`renders ./packages/react/src/Ripple/__doc__/Advance.tsx correctly 1`] =
 >
   click me
   <div
-    class="c1 xl-ripple-root"
+    class="c1 xl-ripple__root"
   />
 </div>
 `;
@@ -398,7 +4276,7 @@ exports[`renders ./packages/react/src/Ripple/__doc__/Basic.tsx correctly 1`] = `
 >
   click me
   <div
-    class="c1 xl-ripple-root"
+    class="c1 xl-ripple__root"
   />
 </div>
 `;
@@ -521,11 +4399,11 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
     class="c0 c1"
   >
     <div
-      class="c2 xl-row-root xl-row-root-flex"
+      class="c2 xl-row__root xl-row__root-flex"
       style="margin-left: -5px; margin-right: -5px;"
     >
       <div
-        class="c3 xl-col-root xl-col-root-column-4"
+        class="c3 xl-col__root xl-col__root-column-4"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -535,7 +4413,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
         </div>
       </div>
       <div
-        class="c5 xl-col-root xl-col-root-column-5"
+        class="c5 xl-col__root xl-col__root-column-5"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -545,7 +4423,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
         </div>
       </div>
       <div
-        class="c6 xl-col-root xl-col-root-column-7"
+        class="c6 xl-col__root xl-col__root-column-7"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -555,7 +4433,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
         </div>
       </div>
       <div
-        class="c7 xl-col-root xl-col-root-column-8"
+        class="c7 xl-col__root xl-col__root-column-8"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -570,11 +4448,11 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
     class="c0 c1"
   >
     <div
-      class="c8 xl-row-root"
+      class="c8 xl-row__root"
       style="margin-left: -5px; margin-right: -5px;"
     >
       <div
-        class="c9 xl-col-root xl-col-root-column-6"
+        class="c9 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -584,7 +4462,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
         </div>
       </div>
       <div
-        class="c9 xl-col-root xl-col-root-column-6"
+        class="c9 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -594,7 +4472,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
         </div>
       </div>
       <div
-        class="c9 xl-col-root xl-col-root-column-6"
+        class="c9 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -604,7 +4482,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
         </div>
       </div>
       <div
-        class="c9 xl-col-root xl-col-root-column-6"
+        class="c9 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -619,11 +4497,11 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
     class="c0 c1"
   >
     <div
-      class="c8 xl-row-root"
+      class="c8 xl-row__root"
       style="margin-left: -5px; margin-right: -5px;"
     >
       <div
-        class="c7 xl-col-root xl-col-root-column-8"
+        class="c7 xl-col__root xl-col__root-column-8"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -633,7 +4511,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
         </div>
       </div>
       <div
-        class="c10 xl-col-root"
+        class="c10 xl-col__root"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -643,7 +4521,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
         </div>
       </div>
       <div
-        class="c7 xl-col-root xl-col-root-column-8"
+        class="c7 xl-col__root xl-col__root-column-8"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -653,7 +4531,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
         </div>
       </div>
       <div
-        class="c7 xl-col-root xl-col-root-column-8"
+        class="c7 xl-col__root xl-col__root-column-8"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -902,11 +4780,11 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
     class="c0 c1"
   >
     <div
-      class="c2 xl-row-root xl-row-root-flex xl-row-root-align-top"
+      class="c2 xl-row__root xl-row__root-flex xl-row__root-align-top"
       style="margin-left: -5px; margin-right: -5px;"
     >
       <div
-        class="c3 xl-col-root xl-col-root-column-6"
+        class="c3 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -917,7 +4795,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
         </div>
       </div>
       <div
-        class="c3 xl-col-root xl-col-root-column-6"
+        class="c3 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -928,7 +4806,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
         </div>
       </div>
       <div
-        class="c3 xl-col-root xl-col-root-column-6"
+        class="c3 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -939,7 +4817,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
         </div>
       </div>
       <div
-        class="c3 xl-col-root xl-col-root-column-6"
+        class="c3 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -955,11 +4833,11 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
     class="c0 c1"
   >
     <div
-      class="c5 xl-row-root xl-row-root-flex xl-row-root-align-middle"
+      class="c5 xl-row__root xl-row__root-flex xl-row__root-align-middle"
       style="margin-left: -5px; margin-right: -5px;"
     >
       <div
-        class="c3 xl-col-root xl-col-root-column-6"
+        class="c3 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -970,7 +4848,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
         </div>
       </div>
       <div
-        class="c3 xl-col-root xl-col-root-column-6"
+        class="c3 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -981,7 +4859,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
         </div>
       </div>
       <div
-        class="c3 xl-col-root xl-col-root-column-6"
+        class="c3 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -992,7 +4870,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
         </div>
       </div>
       <div
-        class="c3 xl-col-root xl-col-root-column-6"
+        class="c3 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -1008,11 +4886,11 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
     class="c0 c1"
   >
     <div
-      class="c6 xl-row-root xl-row-root-flex xl-row-root-align-bottom"
+      class="c6 xl-row__root xl-row__root-flex xl-row__root-align-bottom"
       style="margin-left: -5px; margin-right: -5px;"
     >
       <div
-        class="c3 xl-col-root xl-col-root-column-6"
+        class="c3 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -1023,7 +4901,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
         </div>
       </div>
       <div
-        class="c3 xl-col-root xl-col-root-column-6"
+        class="c3 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -1034,7 +4912,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
         </div>
       </div>
       <div
-        class="c3 xl-col-root xl-col-root-column-6"
+        class="c3 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -1045,7 +4923,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
         </div>
       </div>
       <div
-        class="c3 xl-col-root xl-col-root-column-6"
+        class="c3 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -1061,11 +4939,11 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
     class="c0 c1"
   >
     <div
-      class="c7 xl-row-root xl-row-root-flex xl-row-root-justify-start"
+      class="c7 xl-row__root xl-row__root-flex xl-row__root-justify-start"
       style="margin-left: -5px; margin-right: -5px;"
     >
       <div
-        class="c3 xl-col-root xl-col-root-column-6"
+        class="c3 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -1075,7 +4953,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
         </div>
       </div>
       <div
-        class="c3 xl-col-root xl-col-root-column-6"
+        class="c3 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -1085,7 +4963,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
         </div>
       </div>
       <div
-        class="c3 xl-col-root xl-col-root-column-6"
+        class="c3 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -1100,11 +4978,11 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
     class="c0 c1"
   >
     <div
-      class="c8 xl-row-root xl-row-root-flex xl-row-root-justify-center"
+      class="c8 xl-row__root xl-row__root-flex xl-row__root-justify-center"
       style="margin-left: -5px; margin-right: -5px;"
     >
       <div
-        class="c3 xl-col-root xl-col-root-column-6"
+        class="c3 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -1114,7 +4992,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
         </div>
       </div>
       <div
-        class="c3 xl-col-root xl-col-root-column-6"
+        class="c3 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -1124,7 +5002,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
         </div>
       </div>
       <div
-        class="c3 xl-col-root xl-col-root-column-6"
+        class="c3 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -1139,11 +5017,11 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
     class="c0 c1"
   >
     <div
-      class="c9 xl-row-root xl-row-root-flex xl-row-root-justify-end"
+      class="c9 xl-row__root xl-row__root-flex xl-row__root-justify-end"
       style="margin-left: -5px; margin-right: -5px;"
     >
       <div
-        class="c3 xl-col-root xl-col-root-column-6"
+        class="c3 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -1153,7 +5031,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
         </div>
       </div>
       <div
-        class="c3 xl-col-root xl-col-root-column-6"
+        class="c3 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -1163,7 +5041,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
         </div>
       </div>
       <div
-        class="c3 xl-col-root xl-col-root-column-6"
+        class="c3 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -1262,11 +5140,11 @@ exports[`renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
     class="c0 c1"
   >
     <div
-      class="c2 xl-row-root"
+      class="c2 xl-row__root"
       style="margin-left: -5px; margin-right: -5px;"
     >
       <div
-        class="c3 xl-col-root xl-col-root-column-6"
+        class="c3 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -1276,7 +5154,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
         </div>
       </div>
       <div
-        class="c5 xl-col-root xl-col-root-column-6 xl-col-root-offset-6"
+        class="c5 xl-col__root xl-col__root-column-6 xl-col__root-offset-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -1286,7 +5164,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
         </div>
       </div>
       <div
-        class="c3 xl-col-root xl-col-root-column-6"
+        class="c3 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -1301,11 +5179,11 @@ exports[`renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
     class="c0 c1"
   >
     <div
-      class="c2 xl-row-root"
+      class="c2 xl-row__root"
       style="margin-left: -5px; margin-right: -5px;"
     >
       <div
-        class="c3 xl-col-root xl-col-root-column-6"
+        class="c3 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -1315,7 +5193,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
         </div>
       </div>
       <div
-        class="c6 xl-col-root xl-col-root-column-6 xl-col-root-push-6"
+        class="c6 xl-col__root xl-col__root-column-6 xl-col__root-push-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -1325,7 +5203,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
         </div>
       </div>
       <div
-        class="c7 xl-col-root xl-col-root-column-6 xl-col-root-pull-6"
+        class="c7 xl-col__root xl-col__root-column-6 xl-col__root-pull-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -1335,7 +5213,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
         </div>
       </div>
       <div
-        class="c3 xl-col-root xl-col-root-column-6"
+        class="c3 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -1350,11 +5228,11 @@ exports[`renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
     class="c0 c1"
   >
     <div
-      class="c2 xl-row-root"
+      class="c2 xl-row__root"
       style="margin-left: -5px; margin-right: -5px;"
     >
       <div
-        class="c5 xl-col-root xl-col-root-column-6 xl-col-root-offset-6"
+        class="c5 xl-col__root xl-col__root-column-6 xl-col__root-offset-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -1364,7 +5242,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
         </div>
       </div>
       <div
-        class="c8 xl-col-root xl-col-root-column-6 xl-col-root-pull-12"
+        class="c8 xl-col__root xl-col__root-column-6 xl-col__root-pull-12"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -1374,7 +5252,7 @@ exports[`renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
         </div>
       </div>
       <div
-        class="c3 xl-col-root xl-col-root-column-6"
+        class="c3 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -1423,10 +5301,10 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveColumn.tsx correctly
 
 <div>
   <div
-    class="c0 xl-row-root"
+    class="c0 xl-row__root"
   >
     <div
-      class="c1 xl-col-root"
+      class="c1 xl-col__root"
     >
       <div
         class="c2"
@@ -1435,7 +5313,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveColumn.tsx correctly
       </div>
     </div>
     <div
-      class="c1 xl-col-root"
+      class="c1 xl-col__root"
     >
       <div
         class="c2"
@@ -1444,7 +5322,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveColumn.tsx correctly
       </div>
     </div>
     <div
-      class="c1 xl-col-root"
+      class="c1 xl-col__root"
     >
       <div
         class="c2"
@@ -1453,7 +5331,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveColumn.tsx correctly
       </div>
     </div>
     <div
-      class="c1 xl-col-root"
+      class="c1 xl-col__root"
     >
       <div
         class="c2"
@@ -1523,11 +5401,11 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx correctly
     class="c0 c1"
   >
     <div
-      class="c2 xl-row-root"
+      class="c2 xl-row__root"
       style="margin-left: -5px; margin-right: -5px;"
     >
       <div
-        class="c3 xl-col-root xl-col-root-column-6"
+        class="c3 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -1537,7 +5415,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx correctly
         </div>
       </div>
       <div
-        class="c3 xl-col-root xl-col-root-column-6"
+        class="c3 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -1547,7 +5425,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx correctly
         </div>
       </div>
       <div
-        class="c3 xl-col-root xl-col-root-column-6"
+        class="c3 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -1562,11 +5440,11 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx correctly
     class="c0 c1"
   >
     <div
-      class="c2 xl-row-root"
+      class="c2 xl-row__root"
       style="margin-left: -5px; margin-right: -5px;"
     >
       <div
-        class="c3 xl-col-root xl-col-root-column-6"
+        class="c3 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -1576,7 +5454,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx correctly
         </div>
       </div>
       <div
-        class="c3 xl-col-root xl-col-root-column-6"
+        class="c3 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -1586,7 +5464,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx correctly
         </div>
       </div>
       <div
-        class="c3 xl-col-root xl-col-root-column-6"
+        class="c3 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -1601,11 +5479,11 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx correctly
     class="c0 c1"
   >
     <div
-      class="c2 xl-row-root"
+      class="c2 xl-row__root"
       style="margin-left: -5px; margin-right: -5px;"
     >
       <div
-        class="c3 xl-col-root xl-col-root-column-6"
+        class="c3 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -1615,7 +5493,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx correctly
         </div>
       </div>
       <div
-        class="c3 xl-col-root xl-col-root-column-6"
+        class="c3 xl-col__root xl-col__root-column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -1625,7 +5503,7 @@ exports[`renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx correctly
         </div>
       </div>
       <div
-        class="c5 xl-col-root xl-col-root-column-6 xl-col-root-offset-6"
+        class="c5 xl-col__root xl-col__root-column-6 xl-col__root-offset-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div

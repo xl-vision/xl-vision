@@ -94,7 +94,7 @@ const Row = React.forwardRef<HTMLDivElement, RowProps>((props, ref) => {
 
   const isFlex = type === 'flex';
 
-  const rootClassName = `${clsPrefix}-row-root`;
+  const rootClassName = `${clsPrefix}-row__root`;
 
   const classes = clsx(
     rootClassName,

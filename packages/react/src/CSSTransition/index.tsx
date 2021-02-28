@@ -45,11 +45,8 @@ export type CSSTransitionProps = TransitionProps & {
       };
 };
 
-export type TransitionElement = HTMLElement & {
+export type CSSTransitionElement = HTMLElement & {
   _ctc?: CSSTransitionClassesObject;
-  _done?: (cancel?: boolean) => void;
-  _cancelled?: boolean;
-  _originalDisplay?: string;
 };
 
 const CSSTransition: React.FunctionComponent<CSSTransitionProps> = (props) => {
@@ -340,23 +337,11 @@ const createBeforeEventHook = (
   ctc: CSSTransitionClassesObject | false,
   nativeHook?: BeforeEventHook,
 ): BeforeEventHook => {
-  return (el: TransitionElement) => {
-    if (el._originalDisplay === undefined) {
-      el._originalDisplay = el.style.display;
-    }
-    // if (!el._cancelled) {
-    //   el.style.display = 'none';
-    // }
+  return (el: CSSTransitionElement) => {
     if (ctc) {
       updateClass(el, ctc);
     }
-
-    // el.style.display = el._originalDisplay;
-    // el._originalDisplay = undefined;
-
     nativeHook?.(el);
-
-    el._cancelled = false;
   };
 };
 
@@ -365,7 +350,7 @@ const createEventHook = (
   timeout?: number,
   nativeHook?: EventHook,
 ): EventHook => {
-  return (el: TransitionElement, done: () => void, isCancelled: () => boolean) => {
+  return (el: CSSTransitionElement, done: () => void, isCancelled: () => boolean) => {
     nextFrame(() => {
       if (!isCancelled()) {
         if (ctc) {
@@ -386,7 +371,7 @@ const createAfterEventHook = (
   ctc: CSSTransitionClassesObject | false,
   nativeHook?: AfterEventHook,
 ): AfterEventHook => {
-  return (el: TransitionElement) => {
+  return (el: CSSTransitionElement) => {
     if (ctc) {
       updateClass(el, ctc);
     }
@@ -395,16 +380,13 @@ const createAfterEventHook = (
 };
 
 const createEventCancelledHook = (nativeHook?: EventCancelledHook): EventCancelledHook => {
-  return (el: TransitionElement) => {
-    // 清除所有事件
-    el._done?.(true);
+  return (el: CSSTransitionElement) => {
     updateClass(el, {});
-    el._cancelled = true;
     nativeHook?.(el);
   };
 };
 
-const updateClass = (el: TransitionElement, ctc: CSSTransitionClassesObject) => {
+const updateClass = (el: CSSTransitionElement, ctc: CSSTransitionClassesObject) => {
   const oldCtc = el._ctc || {};
   Object.keys(oldCtc).forEach((key) => {
     const name = key as keyof CSSTransitionClassesObject;
