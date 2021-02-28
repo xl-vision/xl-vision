@@ -262,7 +262,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
     `${rootClassName}--theme-${theme}`,
     `${rootClassName}--variant-${variant}`,
     {
-      [`${rootClassName}--elevation`]: !disableElevation,
+      [`${rootClassName}--elevation`]: !disableElevation && variant === 'contained',
       [`${rootClassName}--disabled`]: disabled,
       [`${rootClassName}--loading`]: loading,
       [`${rootClassName}--long`]: long,
