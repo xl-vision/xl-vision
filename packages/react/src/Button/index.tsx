@@ -137,20 +137,16 @@ const ButtonRoot = styled(BaseButton, {
     const baseColor = colorTheme.getContrastText(backgroundColor);
     styles.color = baseColor.text.primary;
     styles.backgroundColor = backgroundColor;
-    styles['&:hover'] = {
-      backgroundColor: colorTheme.applyState(backgroundColor, 'hover'),
-    };
-    styles['&:focus'] = {
-      backgroundColor: colorTheme.applyState(backgroundColor, 'focus'),
-    };
     if (disabled || loading) {
       styles.opacity = baseColor.action.disabled;
-    } else if (!disableElevation) {
+    } else {
       styles['&:hover'] = {
-        ...elevations(4),
+        backgroundColor: colorTheme.applyState(backgroundColor, 'hover'),
+        ...(!disableElevation && elevations(4)),
       };
       styles['&:focus'] = {
-        ...elevations(8),
+        backgroundColor: colorTheme.applyState(backgroundColor, 'focus'),
+        ...(!disableElevation && elevations(8)),
       };
     }
   }
