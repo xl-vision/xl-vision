@@ -8,7 +8,7 @@ export type ThemeProviderProps = {
 
 export type ThemeContextProps = {
   isDark: boolean;
-  setDark: (value: boolean) => void;
+  setDark: (value: boolean | ((prev: boolean) => boolean)) => void;
 };
 
 export const ThemeContext = React.createContext<ThemeContextProps>({
@@ -29,9 +29,13 @@ const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = (props) => {
     return false;
   });
 
-  const setDarkWrapper = React.useCallback((dark: boolean) => {
-    localStorage.setItem(KEY, dark ? 'dark' : 'light');
-    setDark(dark);
+  const setDarkWrapper: ThemeContextProps['setDark'] = React.useCallback((dark) => {
+    const fn = typeof dark === 'function' ? dark : () => dark;
+    setDark((prev) => {
+      const result = fn(prev);
+      localStorage.setItem(KEY, result ? 'dark' : 'light');
+      return result;
+    });
   }, []);
 
   const theme: BaseTheme = React.useMemo(() => {

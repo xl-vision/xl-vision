@@ -208,7 +208,7 @@ const BaseButton = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseB
         onDragLeave={handleDragLeave}
         styleProps={{ loading, disabled }}
       >
-        <BaseButtonInner>{children}</BaseButtonInner>
+        <BaseButtonInner className={`${baseClassName}__inner`}>{children}</BaseButtonInner>
         <Ripple
           ref={rippleRef}
           leaveAfterEnter={true}

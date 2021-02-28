@@ -77,7 +77,7 @@ exports[`BaseButton basic test 1`] = `
   class="c0 xl-base-button__root"
 >
   <span
-    class="c1"
+    class="c1 xl-base-button__inner"
   >
     button
   </span>

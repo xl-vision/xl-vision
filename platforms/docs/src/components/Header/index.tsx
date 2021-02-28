@@ -1,5 +1,7 @@
 import React from 'react';
-import { Button, styled } from '@xl-vision/react';
+import { Button, styled, Icon } from '@xl-vision/react';
+import DarkMode from '@xl-vision/icons/Brightness4Filled';
+import LightkMode from '@xl-vision/icons/Brightness7Filled';
 import { ThemeContext } from '../ThemeProvider';
 
 const Container = styled('div')(() => {
@@ -36,18 +38,23 @@ const Logo = styled('div')`
 const Header = () => {
   const theme = React.useContext(ThemeContext);
 
+  const { isDark, setDark } = theme;
+
   const handleTheme = React.useCallback(() => {
-    theme.setDark(!theme.isDark);
-  }, [theme]);
+    setDark((prev) => !prev);
+  }, [setDark]);
 
   return (
     <Container>
       <HeaderNav>
         <Logo>XL-VISION</Logo>
         <div>
-          <Button theme='primary' variant='outlined' onClick={handleTheme}>
-            {theme.isDark ? '白色' : '暗色'}
-          </Button>
+          <Button
+            theme='primary'
+            variant='text'
+            onClick={handleTheme}
+            prefixIcon={<Icon>{isDark ? <LightkMode /> : <DarkMode />}</Icon>}
+          />
         </div>
       </HeaderNav>
     </Container>

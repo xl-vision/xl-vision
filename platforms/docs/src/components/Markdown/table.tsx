@@ -1,35 +1,26 @@
 import { styled } from '@xl-vision/react';
 
-export default styled('table')(
-  ({ theme }) => `
-  min-width: 100%;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  border-collapse: collapse;
-  border-spacing: 0;
-
-  // tbody{
-  //   tr{
-  //     &:nth-child(odd){
-  //       background-color: #d8d8d8;
-  //     }
-  //   }
-  // }
-  td,
-  th {
-    padding: 1rem;
-    border-bottom: 1px solid ${theme.color.divider};
-  }
-
-  th {
-    // color: $title-color;
-    font-weight: bold;
-    white-space: nowrap;
-    text-align: left;
-  }
-
-  td {
-    // color: $base-color;
-  }
-`,
-);
+export default styled('table')(({ theme }) => {
+  return {
+    width: '100%',
+    display: 'block',
+    fontSize: '1rem',
+    lineHeight: ' 1.5rem',
+    borderCollapse: 'collapse',
+    borderSpacing: 0,
+    overflow: 'auto',
+    'td, th': {
+      padding: ' 1rem',
+      borderBottom: `1px solid ${theme.color.divider}`,
+    },
+    th: {
+      // color: $title-color;
+      fontWeight: 'bold',
+      whiteSpace: 'nowrap',
+      textAlign: 'left',
+    },
+    td: {
+      // color: $base-color;
+    },
+  };
+});
