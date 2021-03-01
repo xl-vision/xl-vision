@@ -1,14 +1,21 @@
 import { styled } from '@xl-vision/react';
+import React from 'react';
 
-export default styled('table')(({ theme }) => {
+const Wrapper = styled('div')(() => {
   return {
     width: '100%',
-    display: 'block',
+    overflow: 'auto',
+  };
+});
+
+const TableWrapper = styled('table')(({ theme }) => {
+  return {
+    minWidth: '100%',
+    // display: 'block',
     fontSize: '1rem',
     lineHeight: ' 1.5rem',
     borderCollapse: 'collapse',
     borderSpacing: 0,
-    overflow: 'auto',
     'td, th': {
       padding: ' 1rem',
       borderBottom: `1px solid ${theme.color.divider}`,
@@ -24,3 +31,15 @@ export default styled('table')(({ theme }) => {
     },
   };
 });
+
+export type TableProps = React.TableHTMLAttributes<HTMLTableElement>;
+
+const Table: React.FunctionComponent<TableProps> = (props) => {
+  return (
+    <Wrapper>
+      <TableWrapper {...props} />
+    </Wrapper>
+  );
+};
+
+export default Table;
