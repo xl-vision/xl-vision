@@ -1,0 +1,5 @@
+paths:
+  - '**/src/**'
+paths-ignore:
+  - '**/__test__/**'
+  - 'packages/icons/**'
