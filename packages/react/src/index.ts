@@ -22,3 +22,4 @@ export { default as BaseButton } from './BaseButton';
 export * from './BaseButton';
 export { default as Portal } from './Portal';
 export * from './Portal';
+export { default as CssBaseline } from './CssBaseline';

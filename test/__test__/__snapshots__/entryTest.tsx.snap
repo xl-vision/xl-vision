@@ -14,6 +14,7 @@ Array [
   "Button",
   "BaseButton",
   "Portal",
+  "CssBaseline",
   "styled",
   "createGlobalStyles",
 ]

@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CssBaseline basic renders 1`] = `
+@media print {
+
+}
+
+<head>
+  <style
+    data-styled="active"
+    data-styled-version="5.2.1"
+  >
+    html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;box-sizing:border-box;-webkit-text-size-adjust:100%;}
+    *,*::before,*::after{box-sizing:inherit;}
+    strong,b{font-weight:700;}
+    body{font-size:1.000rem;line-height:1.5;font-weight:400;-webkit-letter-spacing:0.031em;-moz-letter-spacing:0.031em;-ms-letter-spacing:0.031em;letter-spacing:0.031em;-webkit-text-decoration:inherit;text-decoration:inherit;text-transform:inherit;font-family:'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;color:rgba(0,0,0,0.87);background-color:#fafafa;margin:0;}
+    body::backdrop{background-color:#fafafa;}
+    @media print{body{background-color:#ffffff;}}
+  </style>
+</head>
+`;
+
+exports[`CssBaseline supports theme overrides 1`] = `
+<head>
+  <style
+    data-styled="active"
+    data-styled-version="5.2.1"
+  >
+    html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;box-sizing:border-box;-webkit-text-size-adjust:100%;}
+    *,*::before,*::after{box-sizing:inherit;}
+    strong,b{font-weight:700;}
+    body{font-size:1.000rem;line-height:1.5;font-weight:400;-webkit-letter-spacing:0.031em;-moz-letter-spacing:0.031em;-ms-letter-spacing:0.031em;letter-spacing:0.031em;-webkit-text-decoration:inherit;text-decoration:inherit;text-transform:inherit;font-family:'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;color:rgba(0,0,0,0.87);background-color:#fafafa;margin:0;}
+    body::backdrop{background-color:#fafafa;}
+    @media print{body{background-color:#ffffff;}}
+  </style>
+  @media print {
+
+}
+
+<style
+    data-styled="active"
+    data-styled-version="5.2.1"
+  >
+    html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;box-sizing:border-box;-webkit-text-size-adjust:100%;}
+    *,*::before,*::after{box-sizing:inherit;}
+    strong,b{font-weight:700;}
+    body{font-size:1.000rem;line-height:1.5;font-weight:400;-webkit-letter-spacing:0.031em;-moz-letter-spacing:0.031em;-ms-letter-spacing:0.031em;letter-spacing:0.031em;-webkit-text-decoration:inherit;text-decoration:inherit;text-transform:inherit;font-family:'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;color:rgba(0,0,0,0.87);background-color:#fafafa;margin:0;}
+    body::backdrop{background-color:#fafafa;}
+    @media print{body{background-color:#ffffff;}}
+    body{color:#3f51b5;}
+  </style>
+</head>
+`;

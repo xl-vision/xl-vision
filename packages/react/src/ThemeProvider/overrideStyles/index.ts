@@ -1,4 +1,5 @@
 import { CSSObject, FunctionInterpolation } from '@xl-vision/styled-engine-types';
+import { ButtonPrefixStyleProps, ButtonStyleProps, ButtonSuffixStyleProps } from '../../Button';
 import { BaseButtonStyleProps } from '../../BaseButton';
 import { RowProps } from '../../Row';
 import { Theme } from '../createTheme';
@@ -10,14 +11,17 @@ export type Style<
 > = TemplateStringsArray | CSSObject | FunctionInterpolation<P & ST>;
 
 export type OverrideStyles = Partial<{
-  Row: {
+  CssBaseline: Partial<{
+    Root: (theme: Theme) => CSSObject;
+  }>;
+  Row: Partial<{
     Root: Style<{
       align: RowProps['align'];
       justify: RowProps['justify'];
       type: RowProps['type'];
     }>;
-  };
-  Col: {
+  }>;
+  Col: Partial<{
     Root: Style<{
       column?: number;
       offset?: number;
@@ -25,7 +29,7 @@ export type OverrideStyles = Partial<{
       pull?: number;
       order?: number;
     }>;
-  };
+  }>;
   Ripple: Partial<{
     Root: Style;
     Inner: Style;
@@ -36,6 +40,12 @@ export type OverrideStyles = Partial<{
   BaseButton: Partial<{
     Root: Style<BaseButtonStyleProps>;
     Inner: Style;
+  }>;
+  Button: Partial<{
+    Root: Style<ButtonStyleProps>;
+    Prefix: Style<ButtonPrefixStyleProps>;
+    Suffix: Style<ButtonSuffixStyleProps>;
+    Loading: Style;
   }>;
 }>;
 
