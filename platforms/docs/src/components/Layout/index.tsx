@@ -1,4 +1,4 @@
-import { createGlobalStyles, styled } from '@xl-vision/react';
+import { createGlobalStyles, styled, CssBaseline } from '@xl-vision/react';
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Aside from '../Aside';
@@ -7,14 +7,11 @@ import Header from '../Header';
 import Main from '../Main';
 import ThemeProvider from '../ThemeProvider';
 
-const GlobalStyle = createGlobalStyles(({ theme }) => {
+const GlobalStyle = createGlobalStyles(() => {
   return {
     'html,body': {
-      margin: 0,
       width: '100%',
       minHeight: '100%',
-      background: `${theme.color.background}`,
-      color: `${theme.color.text.primary}`,
     },
 
     '#app': {
@@ -40,6 +37,7 @@ const Layout = () => {
   return (
     <ThemeProvider>
       <Router>
+        <CssBaseline />
         <GlobalStyle />
         <Header />
         <Content>
