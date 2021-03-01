@@ -23,12 +23,6 @@
     "build": "lerna run --parallel --scope \"@xl-vision/*\" build",
     "bootstrap": "lerna bootstrap"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint && npm run test",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/plugin-transform-runtime": "^7.12.10",
