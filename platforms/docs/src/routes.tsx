@@ -82,6 +82,11 @@ const route: Array<Route> = [
         path: '/ThemeProvider',
         component: () => import('@xl-vision/react/ThemeProvider/__doc__/index.mdx'),
       },
+      {
+        name: 'CssBaseline',
+        path: '/CssBaseline',
+        component: () => import('@xl-vision/react/CssBaseline/__doc__/index.mdx'),
+      },
     ],
   },
   {
