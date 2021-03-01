@@ -1,4 +1,6 @@
 /* eslint-disable */
+
+export { default as createIcon } from './utils/createIcon'
 export { default as ThreedRotationFilled } from './ThreedRotationFilled'
 export { default as ThreedRotationOutlined } from './ThreedRotationOutlined'
 export { default as ThreedRotationRound } from './ThreedRotationRound'

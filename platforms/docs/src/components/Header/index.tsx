@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, styled, Icon } from '@xl-vision/react';
 import DarkMode from '@xl-vision/icons/Brightness4Filled';
 import LightkMode from '@xl-vision/icons/Brightness7Filled';
+import GithubIcon from './GithubIcon';
 import { ThemeContext } from '../ThemeProvider';
 
 const Container = styled('div')(() => {
@@ -50,10 +51,19 @@ const Header = () => {
         <Logo>XL-VISION</Logo>
         <div>
           <Button
-            theme='primary'
             variant='text'
             onClick={handleTheme}
             prefixIcon={<Icon>{isDark ? <LightkMode /> : <DarkMode />}</Icon>}
+          />
+          <Button
+            variant='text'
+            target='_black'
+            href='https://github.com/xl-vision/xl-vision'
+            prefixIcon={
+              <Icon>
+                <GithubIcon />
+              </Icon>
+            }
           />
         </div>
       </HeaderNav>

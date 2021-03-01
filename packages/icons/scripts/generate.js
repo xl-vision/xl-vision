@@ -28,7 +28,7 @@ async function generate() {
 
   const template = await fs.readFile(path.resolve(templatePath, 'template.tsx'), 'utf-8');
 
-  let indexContent = '/* eslint-disable */\n';
+  let indexContent = `/* eslint-disable */\n\nexport { default as createIcon } from './utils/createIcon'\n`;
 
   for (const category of files) {
     const dir = path.resolve(basePath, category);
