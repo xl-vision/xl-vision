@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Portal test mount on body 1`] = `<div />`;
+
+exports[`Portal test mount on current position 1`] = `
+<div>
+  <div>
+    123
+  </div>
+</div>
+`;

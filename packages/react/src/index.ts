@@ -20,3 +20,5 @@ export { default as Button } from './Button';
 export * from './Button';
 export { default as BaseButton } from './BaseButton';
 export * from './BaseButton';
+export { default as Portal } from './Portal';
+export * from './Portal';

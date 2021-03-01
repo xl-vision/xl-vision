@@ -20,7 +20,7 @@ const route: Array<Route> = [
     component: () => import('./views/index.mdx'),
   },
   {
-    name: '基础组件',
+    name: '通用组件',
     children: [
       {
         name: '图标',
@@ -31,11 +31,6 @@ const route: Array<Route> = [
         name: '按钮',
         path: '/Button',
         component: () => import('@xl-vision/react/Button/__doc__/index.mdx'),
-      },
-      {
-        name: '基础按钮',
-        path: '/BaseButton',
-        component: () => import('@xl-vision/react/BaseButton/__doc__/index.mdx'),
       },
     ],
   },
@@ -93,6 +88,21 @@ const route: Array<Route> = [
     name: '国际化',
     path: '/LocalizationProvider',
     component: () => import('@xl-vision/react/LocalizationProvider/__doc__/index.mdx'),
+  },
+  {
+    name: '基础组件',
+    children: [
+      {
+        name: '基础按钮',
+        path: '/BaseButton',
+        component: () => import('@xl-vision/react/BaseButton/__doc__/index.mdx'),
+      },
+      {
+        name: 'Portal',
+        path: '/Portal',
+        component: () => import('@xl-vision/react/Portal/__doc__/index.mdx'),
+      },
+    ],
   },
 ];
 
