@@ -48,8 +48,8 @@ jobs:
           ${{ runner.os }}-build-
           ${{ runner.os }}-
 
-      - name: install dependencies
-        run: npm install && npm run bootstrap -- --no-ci
+    - name: install dependencies
+      run: npm install && npm run bootstrap -- --no-ci
 
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
