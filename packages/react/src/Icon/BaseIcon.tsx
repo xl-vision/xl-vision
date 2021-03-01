@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { isDevelopment } from '../utils/env';
 
-export interface BaseIconProps extends React.SVGAttributes<SVGSVGElement> {
-  children: React.ReactElement<React.SVGAttributes<SVGSVGElement>>;
+export interface BaseIconProps extends React.SVGProps<SVGSVGElement> {
+  children: React.ReactElement<React.SVGProps<SVGSVGElement>>;
 }
 
 const BaseIcon = React.forwardRef<SVGSVGElement, BaseIconProps>((props, ref) => {

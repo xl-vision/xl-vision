@@ -25,14 +25,16 @@ const IconWrapper = styled('div')(() => {
 const IconList: React.FunctionComponent<{}> = () => {
   return (
     <div>
-      {names.map((name) => {
-        const Icon = Icons[name as keyof typeof Icons];
-        return (
-          <IconWrapper key={name} dataset-name={name}>
-            <Icon />
-          </IconWrapper>
-        );
-      })}
+      {names
+        .filter((it) => it !== 'createIcon')
+        .map((name) => {
+          const Icon = Icons[name as keyof Omit<typeof Icons, 'createIcon'>];
+          return (
+            <IconWrapper key={name} dataset-name={name}>
+              <Icon />
+            </IconWrapper>
+          );
+        })}
     </div>
   );
 };
