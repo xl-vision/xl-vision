@@ -1,6 +1,7 @@
 paths:
   - 'packages/*/src/**'
-  - 'platform/docs/src/**'
+  - 'platforms/docs/src/**'
 paths-ignore:
-  - '**/__test__/**'
+  - '**/node_modules'
+  - '**/__test__'
   - 'packages/icons/**'
