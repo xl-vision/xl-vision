@@ -1,7 +1,9 @@
 paths:
-  - 'packages/*/src/**'
+  - 'packages/styled-engine-types/src/**'
+  - 'packages/styled-engine/src/**'
+  - 'packages/icons/src/utils/**'
+  - 'packages/react/src/**'
   - 'platforms/docs/src/**'
 paths-ignore:
   - '**/node_modules'
   - '**/__test__'
-  - 'packages/icons/**'
