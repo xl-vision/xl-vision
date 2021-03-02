@@ -13,6 +13,7 @@
     "url": "git+https://github.com/xl-vision/xl-vision-next.git"
   },
   "scripts": {
+    "prepare": "husky install",
     "dev": "cd platforms/docs && npm run dev",
     "docs": "cd platforms/docs && npm run docs",
     "icon:generate": "cd packages/icons && npm run generate",
