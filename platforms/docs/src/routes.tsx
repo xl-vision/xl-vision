@@ -107,6 +107,11 @@ const route: Array<Route> = [
         path: '/Portal',
         component: () => import('@xl-vision/react/Portal/__doc__/index.mdx'),
       },
+      {
+        name: 'Popper',
+        path: '/Popper',
+        component: () => import('@xl-vision/react/Popper/__doc__/index.mdx'),
+      },
     ],
   },
 ];

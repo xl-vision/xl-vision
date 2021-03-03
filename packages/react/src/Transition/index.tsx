@@ -112,7 +112,7 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
       : TransitionState.STATE_LEAVED,
   );
 
-  const childRef = React.useRef<HTMLElement>();
+  const childRef = React.useRef<React.ReactInstance>();
 
   const lifecycleStateRef = useLifecycleState();
 
