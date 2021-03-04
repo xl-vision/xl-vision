@@ -12,6 +12,7 @@ export interface TooltipProps
   className?: string;
   transitionClassName?: string;
   bgColor?: string;
+  maxWidth?: number | string;
 }
 
 const displayName = 'Tooltip';
@@ -48,16 +49,15 @@ const GlobalStyles = createGlobalStyles(({ theme }) => {
 
 export type TooltipRootStyleProps = {
   bgColor: string;
+  hasWidth: boolean;
 };
-
-export type TooltipArrowStyleProps = TooltipRootStyleProps;
 
 const TooltipRoot = styled('div', {
   name: displayName,
   slot: 'Root',
 })<TooltipRootStyleProps>(({ theme, styleProps }) => {
   const { color, elevations, typography } = theme;
-  const { bgColor: bgcolorProp } = styleProps;
+  const { bgColor: bgcolorProp, hasWidth } = styleProps;
   return {
     backgroundColor: bgcolorProp,
     color: color.getContrastText(bgcolorProp).text.primary,
@@ -65,8 +65,18 @@ const TooltipRoot = styled('div', {
     borderRadius: '4px',
     ...typography.caption,
     ...elevations(2),
+    ...(hasWidth && {
+      whiteSpace: 'pre-wrap',
+      textAlign: 'justify',
+      wordWrap: 'break-word',
+      wordBreak: 'break-all',
+    }),
   };
 });
+
+export type TooltipArrowStyleProps = {
+  bgColor: string;
+};
 
 const TooltipArrow = styled('div', {
   name: displayName,
@@ -114,13 +124,20 @@ const Tooltip: React.FunctionComponent<TooltipProps> = (props) => {
     className,
     transitionClassName,
     bgColor = color.grey[800],
+    maxWidth,
     ...others
   } = props;
 
   const rootClassName = `${clsPrefix}-tooltip`;
 
   const popup = (
-    <TooltipRoot styleProps={{ bgColor }} className={clsx(rootClassName, className)}>
+    <TooltipRoot
+      styleProps={{ bgColor, hasWidth: maxWidth !== undefined }}
+      className={clsx(rootClassName, className, {
+        [`${rootClassName}--width`]: maxWidth !== undefined,
+      })}
+      style={{ maxWidth }}
+    >
       {content}
     </TooltipRoot>
   );
@@ -150,6 +167,7 @@ if (isDevelopment) {
     className: PropTypes.string,
     transitionClassName: PropTypes.string,
     bgColor: PropTypes.string,
+    maxWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   };
 }
 
