@@ -45,6 +45,16 @@ const route: Array<Route> = [
     ],
   },
   {
+    name: '数据展示',
+    children: [
+      {
+        name: '文字提示',
+        path: '/Tooltip',
+        component: () => import('@xl-vision/react/Tooltip/__doc__/index.mdx'),
+      },
+    ],
+  },
+  {
     name: '动画',
     children: [
       {

@@ -31,6 +31,7 @@ export type PopperProps = {
   onVisibleChange?: (visible: boolean) => void;
   arrow?: React.ReactElement;
   popupClassName?: string;
+  popupInnerClassName?: string;
 };
 
 const displayName = 'Popper';
@@ -52,6 +53,7 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
     visible: visibleProps,
     onVisibleChange,
     popupClassName,
+    popupInnerClassName,
     arrow,
   } = props;
 
@@ -62,6 +64,7 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
   const popupNodeRef = React.useRef<HTMLDivElement>(null);
   const popupInnerNodeRef = React.useRef<HTMLDivElement>(null);
   const referenceRef = React.useRef<React.ReactInstance>();
+  const arrowRef = React.useRef<HTMLDivElement>();
   const timerRef = React.useRef<NodeJS.Timeout>();
   const popperInstanceRef = React.useRef<Instance>();
 
@@ -69,6 +72,12 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     React.isValidElement(child) ? (child as any).ref : null,
     referenceRef,
+  );
+
+  const forkArrowRef = useForkRef(
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    React.isValidElement(arrow) ? (arrow as any).ref : null,
+    arrowRef,
   );
 
   const findReferenceDOM = React.useCallback(() => {
@@ -101,10 +110,6 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
     };
   }, [offset]);
 
-  const modifiers: Array<Partial<Modifier<string, any>>> = React.useMemo(() => {
-    return [offsetModifer];
-  }, [offsetModifer]);
-
   const createOrUpdatePopper = useEventCallback(() => {
     let instance = popperInstanceRef.current;
     if (!instance) {
@@ -112,11 +117,22 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
       const popupEl = popupNodeRef.current!;
       instance = popperInstanceRef.current = createPopper(referenceEl, popupEl, {
         placement,
-        modifiers,
+        modifiers: [
+          offsetModifer,
+          {
+            name: 'arrow',
+            options: {
+              element: arrowRef.current,
+            },
+          },
+        ],
       });
     }
     instance.forceUpdate();
     popupInnerNodeRef.current!.dataset.placement = instance.state.placement;
+    if (arrowRef.current) {
+      arrowRef.current.dataset.placement = instance.state.placement;
+    }
   });
 
   // eslint-disable-next-line @typescript-eslint/no-shadow
@@ -257,11 +273,18 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
     if (visibleProps !== undefined) {
       setVisible(visibleProps);
       // 第一次的时候，Popper不存在
-      if (!popperInstanceRef.current && visibleProps) {
-        createOrUpdatePopper();
-      }
+      // if (!popperInstanceRef.current && visibleProps) {
+      //   createOrUpdatePopper();
+      // }
     }
-  }, [visibleProps, createOrUpdatePopper]);
+  }, [visibleProps]);
+
+  React.useEffect(() => {
+    // 第一次的时候，Popper不存在
+    if (!popperInstanceRef.current && visible) {
+      createOrUpdatePopper();
+    }
+  }, [visible, createOrUpdatePopper]);
 
   React.useEffect(() => {
     onVisibleChange?.(visible);
@@ -275,7 +298,6 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
     el.style.display = '';
 
     createOrUpdatePopper();
-
     addClass(el, el._ctc?.enter || '');
     forceReflow();
     addClass(el, el._ctc?.enterActive || '');
@@ -288,7 +310,7 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
   const arrowNode =
     arrow &&
     React.cloneElement(arrow, {
-      'data-popper-arrow': '',
+      ref: forkArrowRef,
     });
 
   const portal = (
@@ -301,7 +323,11 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
           beforeEnter={beforeEnter}
           afterLeave={afterLeave}
         >
-          <div ref={popupInnerNodeRef} style={{ position: 'relative' }}>
+          <div
+            ref={popupInnerNodeRef}
+            style={{ position: 'relative' }}
+            className={popupInnerClassName}
+          >
             {arrowNode}
             {popup}
           </div>
@@ -356,6 +382,7 @@ if (isDevelopment) {
     onVisibleChange: PropTypes.func,
     arrow: PropTypes.element,
     popupClassName: PropTypes.string,
+    popupInnerClassName: PropTypes.string,
   };
 }
 
