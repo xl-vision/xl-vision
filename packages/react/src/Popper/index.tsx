@@ -1,14 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 import { Instance, Placement, createPopper, Modifier } from '@popperjs/core';
-import CSSTransition, { CSSTransitionProps } from '../CSSTransition';
+import CSSTransition, { CSSTransitionElement, CSSTransitionProps } from '../CSSTransition';
 import useForkRef from '../hooks/useForkRef';
 import Portal, { PortalContainerType } from '../Portal';
 import { isDevelopment } from '../utils/env';
 import { off, on } from '../utils/event';
 import useEventCallback from '../hooks/useEventCallback';
 import { include } from '../utils/dom';
-import { voidFn } from '../utils/function';
+import { addClass, removeClass } from '../utils/class';
+import { forceReflow } from '../utils/transition';
 
 export type PopperTrigger = 'hover' | 'focus' | 'click' | 'contextMenu' | 'custom';
 
@@ -23,6 +25,12 @@ export type PopperProps = {
   placement?: PopperPlacement;
   disablePopupEnter?: boolean;
   offset?: number | string;
+  showDelay?: number;
+  hideDelay?: number;
+  visible?: boolean;
+  onVisibleChange?: (visible: boolean) => void;
+  arrow?: React.ReactElement;
+  popupClassName?: string;
 };
 
 const displayName = 'Popper';
@@ -38,19 +46,26 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
     trigger = 'hover',
     disablePopupEnter,
     offset = 10,
-    // placement,
+    placement = 'auto',
+    showDelay = 0,
+    hideDelay = 0,
+    visible: visibleProps,
+    onVisibleChange,
+    popupClassName,
+    arrow,
   } = props;
 
   const child = React.Children.only(children);
 
-  const [visible, setVisible] = React.useState(false);
+  const [visible, setVisible] = React.useState(visibleProps || false);
 
   const popupNodeRef = React.useRef<HTMLDivElement>(null);
+  const popupInnerNodeRef = React.useRef<HTMLDivElement>(null);
   const referenceRef = React.useRef<React.ReactInstance>();
   const timerRef = React.useRef<NodeJS.Timeout>();
   const popperInstanceRef = React.useRef<Instance>();
 
-  const forkRef = useForkRef(
+  const forkReferenceRef = useForkRef(
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     React.isValidElement(child) ? (child as any).ref : null,
     referenceRef,
@@ -61,49 +76,96 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
     return ReactDOM.findDOMNode(referenceRef.current) as HTMLElement;
   }, []);
 
+  const offsetModifer: Modifier<string, {}> = React.useMemo(() => {
+    const offsetStr = typeof offset === 'number' ? `${offset}px` : offset;
+
+    return {
+      name: 'paddingOffset',
+      enabled: true,
+      phase: 'main',
+      fn({ state }) {
+        const style: Partial<CSSStyleDeclaration> = {};
+        // eslint-disable-next-line @typescript-eslint/no-shadow
+        const { placement, styles } = state;
+        if (/^bottom/.exec(placement)) {
+          style.paddingTop = offsetStr;
+        } else if (/^top/.exec(placement)) {
+          style.paddingBottom = offsetStr;
+        } else if (/^left/.exec(placement)) {
+          style.paddingRight = offsetStr;
+        } else {
+          style.paddingLeft = offsetStr;
+        }
+        styles.popper = { ...styles.popper, ...style };
+      },
+    };
+  }, [offset]);
+
+  const modifiers: Array<Partial<Modifier<string, any>>> = React.useMemo(() => {
+    return [offsetModifer];
+  }, [offsetModifer]);
+
+  const createOrUpdatePopper = useEventCallback(() => {
+    let instance = popperInstanceRef.current;
+    if (!instance) {
+      const referenceEl = findReferenceDOM();
+      const popupEl = popupNodeRef.current!;
+      instance = popperInstanceRef.current = createPopper(referenceEl, popupEl, {
+        placement,
+        modifiers,
+      });
+    }
+    instance.forceUpdate();
+    popupInnerNodeRef.current!.dataset.placement = instance.state.placement;
+  });
+
+  // eslint-disable-next-line @typescript-eslint/no-shadow
+  const setVisibleWrapper = useEventCallback((visible: boolean) => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+    }
+    timerRef.current = setTimeout(
+      () => {
+        setVisible(visible);
+        timerRef.current = undefined;
+      },
+      visible ? showDelay : Math.max(TIME_DELAY, hideDelay),
+    );
+  });
+
   const handleReferenceClick = useEventCallback(() => {
     if (trigger === 'click') {
-      setVisible(true);
+      setVisibleWrapper(true);
     }
   });
 
   const handleReferenceMouseEnter = useEventCallback(() => {
     if (trigger === 'hover') {
-      if (timerRef.current) {
-        clearInterval(timerRef.current);
-      }
-      setVisible(true);
+      setVisibleWrapper(true);
     }
   });
 
   const handleReferenceMouseLeave = useEventCallback(() => {
     if (trigger === 'hover') {
-      timerRef.current = setTimeout(() => {
-        setVisible(false);
-      }, TIME_DELAY);
+      setVisibleWrapper(false);
     }
   });
 
   const handleReferenceFocus = useEventCallback(() => {
     if (trigger === 'focus') {
-      if (timerRef.current) {
-        clearInterval(timerRef.current);
-      }
-      setVisible(true);
+      setVisibleWrapper(true);
     }
   });
 
   const handleReferenceBlur = useEventCallback(() => {
     if (trigger === 'focus') {
-      timerRef.current = setTimeout(() => {
-        setVisible(false);
-      }, TIME_DELAY);
+      setVisibleWrapper(false);
     }
   });
 
   const handleReferenceContextMenu = useEventCallback(() => {
     if (trigger === 'contextMenu') {
-      setVisible(true);
+      setVisibleWrapper(true);
     }
   });
 
@@ -123,7 +185,7 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
     if (include(findReferenceDOM(), el)) {
       return;
     }
-    setVisible(false);
+    setVisibleWrapper(false);
   });
 
   const handlePopupMouseEnter = useEventCallback(() => {
@@ -131,54 +193,15 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
       return;
     }
     if (trigger === 'hover') {
-      if (timerRef.current) {
-        clearInterval(timerRef.current);
-      }
+      setVisibleWrapper(true);
     }
   });
 
   const handlePopupMouseLeave = useEventCallback(() => {
     if (trigger === 'hover') {
-      timerRef.current = setTimeout(() => {
-        setVisible(false);
-      }, TIME_DELAY);
+      setVisibleWrapper(false);
     }
   });
-
-  const offsetModifer: Modifier<string, {}> = React.useMemo(() => {
-    const offsetStr = typeof offset === 'number' ? offset + 'px' : offset;
-
-    return {
-      name: 'offset2',
-      enabled: true,
-      phase: 'main',
-      fn({ state }) {
-        const style: Partial<CSSStyleDeclaration> = {};
-        const { placement, styles } = state;
-        if (/^bottom/.exec(placement)) {
-          style.paddingTop = offsetStr;
-        }
-        styles.popper = { ...styles.popper, ...style };
-      },
-    };
-  }, [offset]);
-
-  React.useEffect(() => {
-    if (!visible) {
-      return;
-    }
-    const instance = popperInstanceRef.current;
-    if (!instance) {
-      const el = findReferenceDOM();
-      const popupEl = popupNodeRef.current!;
-
-      popperInstanceRef.current = createPopper(el, popupEl, {
-        modifiers: [offsetModifer],
-      });
-    } else {
-      instance.update().then(voidFn, voidFn);
-    }
-  }, [visible, findReferenceDOM, offsetModifer]);
 
   React.useEffect(() => {
     const el = findReferenceDOM();
@@ -221,17 +244,56 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
     handlePopupMouseLeave,
   ]);
 
-  const beforeEnter = React.useCallback((el: HTMLElement) => {
-    el.style.display = '';
+  React.useEffect(() => {
+    return () => {
+      popperInstanceRef.current?.destroy();
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+      }
+    };
   }, []);
+
+  React.useEffect(() => {
+    if (visibleProps !== undefined) {
+      setVisible(visibleProps);
+      // 第一次的时候，Popper不存在
+      if (!popperInstanceRef.current && visibleProps) {
+        createOrUpdatePopper();
+      }
+    }
+  }, [visibleProps, createOrUpdatePopper]);
+
+  React.useEffect(() => {
+    onVisibleChange?.(visible);
+  }, [visible, onVisibleChange]);
+
+  const beforeEnter = useEventCallback((el: CSSTransitionElement) => {
+    // 移除transition class对定位的干扰
+    removeClass(el, el._ctc?.enterActive || '');
+    removeClass(el, el._ctc?.enter || '');
+
+    el.style.display = '';
+
+    createOrUpdatePopper();
+
+    addClass(el, el._ctc?.enter || '');
+    forceReflow();
+    addClass(el, el._ctc?.enterActive || '');
+  });
 
   const afterLeave = React.useCallback((el: HTMLElement) => {
     el.style.display = 'none';
   }, []);
 
+  const arrowNode =
+    arrow &&
+    React.cloneElement(arrow, {
+      'data-popper-arrow': '',
+    });
+
   const portal = (
     <Portal getContainer={getPopupContainer}>
-      <div ref={popupNodeRef}>
+      <div ref={popupNodeRef} style={{ position: 'absolute' }} className={popupClassName}>
         <CSSTransition
           in={visible}
           transitionClasses={transitionClasses}
@@ -239,14 +301,17 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
           beforeEnter={beforeEnter}
           afterLeave={afterLeave}
         >
-          <div style={{ position: 'relative', transformOrigin: '0 0' }}>{popup}</div>
+          <div ref={popupInnerNodeRef} style={{ position: 'relative' }}>
+            {arrowNode}
+            {popup}
+          </div>
         </CSSTransition>
       </div>
     </Portal>
   );
 
   const cloneChildren = React.cloneElement(children, {
-    ref: forkRef,
+    ref: forkReferenceRef,
   });
 
   return (
@@ -259,6 +324,39 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
 
 if (isDevelopment) {
   Popper.displayName = displayName;
+
+  Popper.propTypes = {
+    children: PropTypes.element.isRequired,
+    popup: PropTypes.element.isRequired,
+    getPopupContainer: PropTypes.func,
+    transitionClasses: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    trigger: PropTypes.oneOf<PopperTrigger>(['click', 'contextMenu', 'custom', 'focus', 'hover']),
+    disablePopupEnter: PropTypes.bool,
+    offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    placement: PropTypes.oneOf<PopperPlacement>([
+      'top',
+      'top-start',
+      'top-end',
+      'bottom',
+      'bottom-start',
+      'bottom-end',
+      'left',
+      'left-start',
+      'left-end',
+      'right',
+      'right-start',
+      'right-end',
+      'auto',
+      'auto-start',
+      'auto-end',
+    ]),
+    showDelay: PropTypes.number,
+    hideDelay: PropTypes.number,
+    visible: PropTypes.bool,
+    onVisibleChange: PropTypes.func,
+    arrow: PropTypes.element,
+    popupClassName: PropTypes.string,
+  };
 }
 
 export default Popper;

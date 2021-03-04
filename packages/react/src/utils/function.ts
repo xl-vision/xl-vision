@@ -19,12 +19,12 @@ export const omit = <T extends {}, E extends keyof T>(obj: T, ...fields: Array<E
   return copy;
 };
 
-export const merge = <Fn extends (...args: any) => any>(
+export const merge = <Fn extends (...args: Array<any>) => any>(
   ...fns: Array<Fn>
-): ((args: Parameters<Fn>) => Array<ReturnType<Fn>>) => {
-  return (args: Parameters<Fn>) => {
+): ((...args: Parameters<Fn>) => Array<ReturnType<Fn>>) => {
+  return (...args: Parameters<Fn>) => {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-    return fns.map((it) => it(args) as ReturnType<Fn>);
+    return fns.map((it) => it(...args) as ReturnType<Fn>);
   };
 };
 
@@ -43,6 +43,7 @@ export const throttleByAnimationFrame = <Fn extends (...args: Array<any>) => any
     if (cancel === undefined) {
       cancel = raf(later(args));
     }
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return ret;
   };
 
