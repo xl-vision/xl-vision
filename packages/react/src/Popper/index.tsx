@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
@@ -6,18 +7,29 @@ import CSSTransition, { CSSTransitionElement, CSSTransitionProps } from '../CSST
 import useForkRef from '../hooks/useForkRef';
 import Portal, { PortalContainerType } from '../Portal';
 import { isDevelopment } from '../utils/env';
-import { off, on } from '../utils/event';
 import useEventCallback from '../hooks/useEventCallback';
 import { include } from '../utils/dom';
 import { addClass, removeClass } from '../utils/class';
 import { forceReflow } from '../utils/transition';
+import { on } from '../utils/event';
+import PopperContext from './PopperContext';
 
 export type PopperTrigger = 'hover' | 'focus' | 'click' | 'contextMenu' | 'custom';
 
 export type PopperPlacement = Placement;
 
+export type PopperChildrenProps = {
+  onClick?: React.MouseEventHandler<any>;
+  onMouseEnter?: React.MouseEventHandler<any>;
+  onMouseLeave?: React.MouseEventHandler<any>;
+  onFocus?: React.MouseEventHandler<any>;
+  onBlur?: React.MouseEventHandler<any>;
+  onContextMenu?: React.MouseEventHandler<any>;
+  ref?: React.Ref<any>;
+};
+
 export type PopperProps = {
-  children: React.ReactElement;
+  children: React.ReactElement<PopperChildrenProps>;
   popup: React.ReactElement;
   getPopupContainer?: PortalContainerType;
   transitionClasses?: CSSTransitionProps['transitionClasses'];
@@ -57,7 +69,22 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
     arrow,
   } = props;
 
-  const child = React.Children.only(children);
+  const closeHandlersRef = React.useRef<Array<() => void>>([]);
+
+  const addCloseHandler = React.useCallback((handler: () => void) => {
+    closeHandlersRef.current.push(handler);
+  }, []);
+
+  const removeCloseHandler = React.useCallback((handler: () => void) => {
+    closeHandlersRef.current = closeHandlersRef.current.filter((it) => it !== handler);
+  }, []);
+
+  const {
+    addCloseHandler: parentAddCloseHandler,
+    removeCloseHandler: parentRemoveCloseHandler,
+  } = React.useContext(PopperContext);
+
+  const child = React.Children.only<React.ReactElement<PopperChildrenProps>>(children);
 
   const [visible, setVisible] = React.useState(visibleProps || false);
 
@@ -149,40 +176,51 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
     );
   });
 
-  const handleReferenceClick = useEventCallback(() => {
+  const closeHandler = useEventCallback(() => {
+    closeHandlersRef.current.forEach((it) => it());
+    setVisible(false);
+  });
+
+  const handleReferenceClick: React.MouseEventHandler<any> = useEventCallback((e) => {
     if (trigger === 'click') {
       setVisibleWrapper(true);
     }
+    child.props?.onClick?.(e);
   });
 
-  const handleReferenceMouseEnter = useEventCallback(() => {
+  const handleReferenceMouseEnter: React.MouseEventHandler<any> = useEventCallback((e) => {
     if (trigger === 'hover') {
       setVisibleWrapper(true);
     }
+    child.props?.onMouseEnter?.(e);
   });
 
-  const handleReferenceMouseLeave = useEventCallback(() => {
+  const handleReferenceMouseLeave: React.MouseEventHandler<any> = useEventCallback((e) => {
     if (trigger === 'hover') {
       setVisibleWrapper(false);
     }
+    child.props?.onMouseLeave?.(e);
   });
 
-  const handleReferenceFocus = useEventCallback(() => {
+  const handleReferenceFocus: React.MouseEventHandler<any> = useEventCallback((e) => {
     if (trigger === 'focus') {
       setVisibleWrapper(true);
     }
+    child.props?.onFocus?.(e);
   });
 
-  const handleReferenceBlur = useEventCallback(() => {
+  const handleReferenceBlur: React.MouseEventHandler<any> = useEventCallback((e) => {
     if (trigger === 'focus') {
       setVisibleWrapper(false);
     }
+    child.props?.onFocus?.(e);
   });
 
-  const handleReferenceContextMenu = useEventCallback(() => {
+  const handleReferenceContextMenu: React.MouseEventHandler<any> = useEventCallback((e) => {
     if (trigger === 'contextMenu') {
       setVisibleWrapper(true);
     }
+    child.props?.onContextMenu?.(e);
   });
 
   const handleClickOutside = useEventCallback((e: MouseEvent | TouchEvent) => {
@@ -193,19 +231,27 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
     if (!(el instanceof Element)) {
       return;
     }
-    if (include(popupNodeRef.current!, el)) {
-      if (!disablePopupEnter) {
-        return;
-      }
-    }
     if (include(findReferenceDOM(), el)) {
       return;
     }
     setVisibleWrapper(false);
   });
 
+  const handlePopupClick = useEventCallback(() => {
+    if (disablePopupEnter) {
+      return;
+    }
+    if (trigger !== 'click' && trigger !== 'contextMenu') {
+      return;
+    }
+    setTimeout(() => {
+      setVisibleWrapper(true);
+    }, TIME_DELAY / 2);
+  });
+
   const handlePopupMouseEnter = useEventCallback(() => {
     if (disablePopupEnter) {
+      setVisibleWrapper(false);
       return;
     }
     if (trigger === 'hover') {
@@ -220,45 +266,11 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
   });
 
   React.useEffect(() => {
-    const el = findReferenceDOM();
-    const popupEl = popupNodeRef.current!;
-
-    on(el, 'click', handleReferenceClick);
-    on(el, 'mouseenter', handleReferenceMouseEnter);
-    on(el, 'mouseleave', handleReferenceMouseLeave);
-    on(el, 'focus', handleReferenceFocus);
-    on(el, 'blur', handleReferenceBlur);
-    on(el, 'contextmenu', handleReferenceContextMenu);
-
-    on(popupEl, 'mouseenter', handlePopupMouseEnter);
-    on(popupEl, 'mouseleave', handlePopupMouseLeave);
-
-    on(window, 'click', handleClickOutside);
+    parentAddCloseHandler(closeHandler);
     return () => {
-      off(el, 'click', handleReferenceClick);
-      off(el, 'mouseenter', handleReferenceMouseEnter);
-      off(el, 'mouseleave', handleReferenceMouseLeave);
-      off(el, 'focus', handleReferenceFocus);
-      off(el, 'blur', handleReferenceBlur);
-      off(el, 'contextmenu', handleReferenceContextMenu);
-
-      off(popupEl, 'mouseenter', handlePopupMouseEnter);
-      off(popupEl, 'mouseleave', handlePopupMouseLeave);
-
-      off(window, 'click', handleClickOutside);
+      parentRemoveCloseHandler(closeHandler);
     };
-  }, [
-    findReferenceDOM,
-    handleReferenceClick,
-    handleReferenceMouseEnter,
-    handleReferenceMouseLeave,
-    handleReferenceFocus,
-    handleReferenceBlur,
-    handleReferenceContextMenu,
-    handleClickOutside,
-    handlePopupMouseEnter,
-    handlePopupMouseLeave,
-  ]);
+  }, [parentAddCloseHandler, parentRemoveCloseHandler, closeHandler]);
 
   React.useEffect(() => {
     return () => {
@@ -272,10 +284,6 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
   React.useEffect(() => {
     if (visibleProps !== undefined) {
       setVisible(visibleProps);
-      // 第一次的时候，Popper不存在
-      // if (!popperInstanceRef.current && visibleProps) {
-      //   createOrUpdatePopper();
-      // }
     }
   }, [visibleProps]);
 
@@ -289,6 +297,10 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
   React.useEffect(() => {
     onVisibleChange?.(visible);
   }, [visible, onVisibleChange]);
+
+  React.useEffect(() => {
+    on(window, 'click', handleClickOutside);
+  }, [handleClickOutside]);
 
   const beforeEnter = useEventCallback((el: CSSTransitionElement) => {
     // 移除transition class对定位的干扰
@@ -315,34 +327,45 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
 
   const portal = (
     <Portal getContainer={getPopupContainer}>
-      <div ref={popupNodeRef} style={{ position: 'absolute' }} className={popupClassName}>
-        <CSSTransition
-          in={visible}
-          transitionClasses={transitionClasses}
-          mountOnEnter={true}
-          beforeEnter={beforeEnter}
-          afterLeave={afterLeave}
-        >
-          <div
-            ref={popupInnerNodeRef}
-            style={{ position: 'relative' }}
-            className={popupInnerClassName}
+      <PopperContext.Provider value={{ addCloseHandler, removeCloseHandler }}>
+        <div ref={popupNodeRef} style={{ position: 'absolute' }} className={popupClassName}>
+          <CSSTransition
+            in={visible}
+            transitionClasses={transitionClasses}
+            mountOnEnter={true}
+            beforeEnter={beforeEnter}
+            afterLeave={afterLeave}
           >
-            {arrowNode}
-            {popup}
-          </div>
-        </CSSTransition>
-      </div>
+            <div
+              ref={popupInnerNodeRef}
+              style={{ position: 'relative' }}
+              className={popupInnerClassName}
+              onMouseEnter={handlePopupMouseEnter}
+              onMouseLeave={handlePopupMouseLeave}
+              onClick={handlePopupClick}
+            >
+              {arrowNode}
+              {popup}
+            </div>
+          </CSSTransition>
+        </div>
+      </PopperContext.Provider>
     </Portal>
   );
 
-  const cloneChildren = React.cloneElement(children, {
+  const cloneChild = React.cloneElement(child, {
     ref: forkReferenceRef,
+    onClick: handleReferenceClick,
+    onMouseEnter: handleReferenceMouseEnter,
+    onMouseLeave: handleReferenceMouseLeave,
+    onFocus: handleReferenceFocus,
+    onBlur: handleReferenceBlur,
+    onContextMenu: handleReferenceContextMenu,
   });
 
   return (
     <>
-      {cloneChildren}
+      {cloneChild}
       {portal}
     </>
   );
