@@ -44,6 +44,7 @@ export type PopperProps = {
   arrow?: React.ReactElement;
   popupClassName?: string;
   popupInnerClassName?: string;
+  destroyOnHide?: boolean;
 };
 
 const displayName = 'Popper';
@@ -66,6 +67,7 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
     onVisibleChange,
     popupClassName,
     popupInnerClassName,
+    destroyOnHide,
     arrow,
   } = props;
 
@@ -300,11 +302,14 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
     }
   }, [visibleProps]);
 
+  const isFirstVisibleRef = React.useRef(false);
+
   React.useEffect(() => {
     // 第一次的时候，Popper不存在
-    if (!popperInstanceRef.current && visible) {
+    if (visible && !isFirstVisibleRef.current) {
       createOrUpdatePopper();
     }
+    isFirstVisibleRef.current = true;
   }, [visible, createOrUpdatePopper]);
 
   React.useEffect(() => {
@@ -331,9 +336,16 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
     addClass(el, el._ctc?.enterActive || '');
   });
 
-  const afterLeave = React.useCallback((el: HTMLElement) => {
-    el.style.display = 'none';
-  }, []);
+  const afterLeave = useEventCallback((el: HTMLElement) => {
+    if (destroyOnHide) {
+      if (popperInstanceRef.current) {
+        popperInstanceRef.current.destroy();
+        popperInstanceRef.current = undefined;
+      }
+    } else {
+      el.style.display = 'none';
+    }
+  });
 
   const arrowNode =
     arrow &&
@@ -358,6 +370,7 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
             mountOnEnter={true}
             beforeEnter={beforeEnter}
             afterLeave={afterLeave}
+            unmountOnLeave={destroyOnHide}
           >
             <div
               ref={popupInnerNodeRef}
@@ -426,6 +439,7 @@ if (isDevelopment) {
     arrow: PropTypes.element,
     popupClassName: PropTypes.string,
     popupInnerClassName: PropTypes.string,
+    destroyOnHide: PropTypes.bool,
   };
 }
 
