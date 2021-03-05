@@ -169,7 +169,11 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
     }
     timerRef.current = setTimeout(
       () => {
-        setVisible(visible);
+        if (visible) {
+          setVisible(visible);
+        } else {
+          closeHandler();
+        }
         timerRef.current = undefined;
       },
       visible ? showDelay : Math.max(TIME_DELAY, hideDelay),
@@ -328,7 +332,14 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
   const portal = (
     <Portal getContainer={getPopupContainer}>
       <PopperContext.Provider value={{ addCloseHandler, removeCloseHandler }}>
-        <div ref={popupNodeRef} style={{ position: 'absolute' }} className={popupClassName}>
+        <div
+          ref={popupNodeRef}
+          style={{ position: 'absolute' }}
+          className={popupClassName}
+          onMouseEnter={handlePopupMouseEnter}
+          onMouseLeave={handlePopupMouseLeave}
+          onClick={handlePopupClick}
+        >
           <CSSTransition
             in={visible}
             transitionClasses={transitionClasses}
@@ -340,9 +351,6 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
               ref={popupInnerNodeRef}
               style={{ position: 'relative' }}
               className={popupInnerClassName}
-              onMouseEnter={handlePopupMouseEnter}
-              onMouseLeave={handlePopupMouseLeave}
-              onClick={handlePopupClick}
             >
               {arrowNode}
               {popup}
