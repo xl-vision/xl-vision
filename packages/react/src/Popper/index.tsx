@@ -13,6 +13,7 @@ import { forceReflow } from '../utils/transition';
 import { off, on } from '../utils/event';
 import PopperContext from './PopperContext';
 import useLifecycleState, { LifecycleState } from '../hooks/useLifecycleState';
+import { increaseZindex } from '../utils/zIndexManger';
 
 export type PopperTrigger = 'hover' | 'focus' | 'click' | 'contextMenu' | 'custom';
 
@@ -143,9 +144,9 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
 
   const createOrUpdatePopper = useEventCallback(() => {
     let instance = popperInstanceRef.current;
+    const popupEl = popupNodeRef.current!;
     if (!instance) {
       const referenceEl = findReferenceDOM();
-      const popupEl = popupNodeRef.current!;
       instance = popperInstanceRef.current = createPopper(referenceEl, popupEl, {
         placement,
         modifiers: [
@@ -160,6 +161,9 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
       });
     }
     instance.forceUpdate();
+
+    popupEl.style.zIndex = `${increaseZindex()}`;
+
     popupInnerNodeRef.current!.dataset.placement = instance.state.placement;
     if (arrowRef.current) {
       arrowRef.current.dataset.placement = instance.state.placement;
