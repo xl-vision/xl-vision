@@ -37,20 +37,22 @@ describe('Popper', () => {
 
   it('test trigger hover', async () => {
     wrapper = mount(
-      <Popper trigger='hover' popup={<div className='popup' />}>
+      <Popper trigger='hover' popup={<div id='popup' />}>
         <button id='btn'>button</button>
       </Popper>,
     );
+
+    wrapper.update();
 
     expect(document.querySelector('#popup')).toBeNull();
 
     wrapper.find('#btn').simulate('mouseenter');
 
-    await act(() => wait(100));
+    wrapper.update();
 
-    const popup = document.querySelector('.popup') as HTMLElement;
+    const popup = document.querySelector('#popup') as HTMLElement;
 
-    console.log(popup)
+    console.log(popup);
 
     expect(popup.style.display).toBe('');
 
