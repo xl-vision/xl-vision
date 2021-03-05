@@ -8,11 +8,11 @@ import useForkRef from '../hooks/useForkRef';
 import Portal, { PortalContainerType } from '../Portal';
 import { isDevelopment } from '../utils/env';
 import useEventCallback from '../hooks/useEventCallback';
-import { include } from '../utils/dom';
 import { addClass, removeClass } from '../utils/class';
 import { forceReflow } from '../utils/transition';
-import { on } from '../utils/event';
+import { off, on } from '../utils/event';
 import PopperContext from './PopperContext';
+import useLifecycleState, { LifecycleState } from '../hooks/useLifecycleState';
 
 export type PopperTrigger = 'hover' | 'focus' | 'click' | 'contextMenu' | 'custom';
 
@@ -48,7 +48,7 @@ export type PopperProps = {
 
 const displayName = 'Popper';
 
-const TIME_DELAY = 1000 / 60;
+const TIME_DELAY = 100;
 
 const Popper: React.FunctionComponent<PopperProps> = (props) => {
   const {
@@ -87,6 +87,8 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
   const child = React.Children.only<React.ReactElement<PopperChildrenProps>>(children);
 
   const [visible, setVisible] = React.useState(visibleProps || false);
+
+  const lifecycleStateRef = useLifecycleState();
 
   const popupNodeRef = React.useRef<HTMLDivElement>(null);
   const popupInnerNodeRef = React.useRef<HTMLDivElement>(null);
@@ -167,27 +169,38 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
     if (timerRef.current) {
       clearTimeout(timerRef.current);
     }
-    timerRef.current = setTimeout(
-      () => {
-        if (visible) {
-          setVisible(visible);
-        } else {
-          closeHandler();
-        }
-        timerRef.current = undefined;
-      },
-      visible ? showDelay : Math.max(TIME_DELAY, hideDelay),
-    );
+    timerRef.current = setTimeout(() => {
+      timerRef.current = undefined;
+      if (lifecycleStateRef.current === LifecycleState.DESTORYED) {
+        return;
+      }
+      if (!visible) {
+        closeHandlersRef.current.forEach((it) => it());
+      }
+      setVisible(visible);
+    }, Math.max(TIME_DELAY, visible ? showDelay : hideDelay));
   });
 
   const closeHandler = useEventCallback(() => {
     closeHandlersRef.current.forEach((it) => it());
-    setVisible(false);
+    setTimeout(() => {
+      if (lifecycleStateRef.current === LifecycleState.DESTORYED) {
+        return;
+      }
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+        timerRef.current = undefined;
+      }
+      setVisible(false);
+    }, TIME_DELAY / 2);
   });
 
   const handleReferenceClick: React.MouseEventHandler<any> = useEventCallback((e) => {
     if (trigger === 'click') {
-      setVisibleWrapper(true);
+      // 保证在handleClickOutside后执行
+      setTimeout(() => {
+        setVisibleWrapper(true);
+      }, 0);
     }
     child.props?.onClick?.(e);
   });
@@ -222,23 +235,16 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
 
   const handleReferenceContextMenu: React.MouseEventHandler<any> = useEventCallback((e) => {
     if (trigger === 'contextMenu') {
+      // 保证在handleClickOutside后执行
       setVisibleWrapper(true);
     }
     child.props?.onContextMenu?.(e);
   });
 
-  const handleClickOutside = useEventCallback((e: MouseEvent | TouchEvent) => {
-    if (trigger !== 'click' && trigger !== 'contextMenu') {
-      return;
+  const handleClickOutside = useEventCallback(() => {
+    if (trigger === 'click' || trigger === 'contextMenu') {
+      setVisibleWrapper(false);
     }
-    const el = e.target;
-    if (!(el instanceof Element)) {
-      return;
-    }
-    if (include(findReferenceDOM(), el)) {
-      return;
-    }
-    setVisibleWrapper(false);
   });
 
   const handlePopupClick = useEventCallback(() => {
@@ -248,9 +254,10 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
     if (trigger !== 'click' && trigger !== 'contextMenu') {
       return;
     }
+    // 保证在handleClickOutside后执行
     setTimeout(() => {
       setVisibleWrapper(true);
-    }, TIME_DELAY / 2);
+    }, 0);
   });
 
   const handlePopupMouseEnter = useEventCallback(() => {
@@ -279,8 +286,10 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
   React.useEffect(() => {
     return () => {
       popperInstanceRef.current?.destroy();
+      popperInstanceRef.current = undefined;
       if (timerRef.current) {
         clearTimeout(timerRef.current);
+        timerRef.current = undefined;
       }
     };
   }, []);
@@ -304,6 +313,9 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
 
   React.useEffect(() => {
     on(window, 'click', handleClickOutside);
+    return () => {
+      off(window, 'click', handleClickOutside);
+    };
   }, [handleClickOutside]);
 
   const beforeEnter = useEventCallback((el: CSSTransitionElement) => {
