@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { Instance, Placement, createPopper, Modifier } from '@popperjs/core';
+import clsx from 'clsx';
 import CSSTransition, { CSSTransitionElement, CSSTransitionProps } from '../CSSTransition';
 import useForkRef from '../hooks/useForkRef';
 import Portal, { PortalContainerType } from '../Portal';
@@ -14,6 +15,7 @@ import { off, on } from '../utils/event';
 import PopperContext from './PopperContext';
 import useLifecycleState, { LifecycleState } from '../hooks/useLifecycleState';
 import { increaseZindex } from '../utils/zIndexManger';
+import ThemeContext from '../ThemeProvider/ThemeContext';
 
 export type PopperTrigger = 'hover' | 'focus' | 'click' | 'contextMenu' | 'custom';
 
@@ -43,8 +45,7 @@ export type PopperProps = {
   visible?: boolean;
   onVisibleChange?: (visible: boolean) => void;
   arrow?: React.ReactElement;
-  popupClassName?: string;
-  popupInnerClassName?: string;
+  className?: string;
   destroyOnHide?: boolean;
 };
 
@@ -66,11 +67,12 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
     hideDelay = 0,
     visible: visibleProps,
     onVisibleChange,
-    popupClassName,
-    popupInnerClassName,
+    className,
     destroyOnHide,
     arrow,
   } = props;
+
+  const { clsPrefix } = React.useContext(ThemeContext);
 
   const closeHandlersRef = React.useRef<Array<() => void>>([]);
 
@@ -357,13 +359,17 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
       ref: forkArrowRef,
     });
 
+  const rootClassName = `${clsPrefix}-popper`;
+
+  const innerClassName = `${rootClassName}__inner`;
+
   const portal = (
     <Portal getContainer={getPopupContainer}>
       <PopperContext.Provider value={{ addCloseHandler, removeCloseHandler }}>
         <div
           ref={popupNodeRef}
           style={{ position: 'absolute' }}
-          className={popupClassName}
+          className={clsx(rootClassName, className)}
           onMouseEnter={handlePopupMouseEnter}
           onMouseLeave={handlePopupMouseLeave}
           onClick={handlePopupClick}
@@ -379,7 +385,7 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
             <div
               ref={popupInnerNodeRef}
               style={{ position: 'relative' }}
-              className={popupInnerClassName}
+              className={innerClassName}
             >
               {arrowNode}
               {popup}
@@ -441,8 +447,7 @@ if (isDevelopment) {
     visible: PropTypes.bool,
     onVisibleChange: PropTypes.func,
     arrow: PropTypes.element,
-    popupClassName: PropTypes.string,
-    popupInnerClassName: PropTypes.string,
+    className: PropTypes.string,
     destroyOnHide: PropTypes.bool,
   };
 }

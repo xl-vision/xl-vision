@@ -8,6 +8,7 @@ Array [
     button
   </button>,
   <div
+    class="xl-popper"
     style="position: absolute;"
   />,
 ]
@@ -21,13 +22,14 @@ Array [
     button
   </button>,
   <div
+    class="xl-popper"
     data-popper-escaped=""
     data-popper-placement="top"
     data-popper-reference-hidden=""
     style="position: absolute; left: 0px; top: 0px; margin: 0px; padding-bottom: 10px; bottom: 0px; transform: translate(0px, 0px); z-index: 1001;"
   >
     <div
-      class=""
+      class="xl-popper__inner"
       data-placement="top"
       style="position: relative;"
     >
@@ -47,13 +49,14 @@ Array [
     button
   </button>,
   <div
+    class="xl-popper"
     data-popper-escaped=""
     data-popper-placement="top"
     data-popper-reference-hidden=""
     style="position: absolute; left: 0px; top: 0px; margin: 0px; padding-bottom: 10px; bottom: 0px; transform: translate(0px, 0px); z-index: 1001;"
   >
     <div
-      class=""
+      class="xl-popper__inner"
       data-placement="top"
       style="position: relative; display: none;"
     >
@@ -73,6 +76,7 @@ Array [
     button
   </button>,
   <div
+    class="xl-popper"
     style="position: absolute;"
   />,
 ]
@@ -86,13 +90,14 @@ Array [
     button
   </button>,
   <div
+    class="xl-popper"
     data-popper-escaped=""
     data-popper-placement="top"
     data-popper-reference-hidden=""
     style="position: absolute; left: 0px; top: 0px; margin: 0px; padding-bottom: 10px; bottom: 0px; transform: translate(0px, 0px); z-index: 1002;"
   >
     <div
-      class=""
+      class="xl-popper__inner"
       data-placement="top"
       style="position: relative;"
     >
@@ -112,13 +117,14 @@ Array [
     button
   </button>,
   <div
+    class="xl-popper"
     data-popper-escaped=""
     data-popper-placement="top"
     data-popper-reference-hidden=""
     style="position: absolute; left: 0px; top: 0px; margin: 0px; padding-bottom: 10px; bottom: 0px; transform: translate(0px, 0px); z-index: 1002;"
   >
     <div
-      class=""
+      class="xl-popper__inner"
       data-placement="top"
       style="position: relative; display: none;"
     >
@@ -138,6 +144,7 @@ Array [
     button
   </button>,
   <div
+    class="xl-popper"
     style="position: absolute;"
   />,
 ]
@@ -151,13 +158,14 @@ Array [
     button
   </button>,
   <div
+    class="xl-popper"
     data-popper-escaped=""
     data-popper-placement="top"
     data-popper-reference-hidden=""
     style="position: absolute; left: 0px; top: 0px; margin: 0px; padding-bottom: 10px; bottom: 0px; transform: translate(0px, 0px); z-index: 1003;"
   >
     <div
-      class=""
+      class="xl-popper__inner"
       data-placement="top"
       style="position: relative;"
     >
@@ -177,13 +185,14 @@ Array [
     button
   </button>,
   <div
+    class="xl-popper"
     data-popper-escaped=""
     data-popper-placement="top"
     data-popper-reference-hidden=""
     style="position: absolute; left: 0px; top: 0px; margin: 0px; padding-bottom: 10px; bottom: 0px; transform: translate(0px, 0px); z-index: 1003;"
   >
     <div
-      class=""
+      class="xl-popper__inner"
       data-placement="top"
       style="position: relative; display: none;"
     >
@@ -203,6 +212,7 @@ Array [
     button
   </button>,
   <div
+    class="xl-popper"
     style="position: absolute;"
   />,
 ]
@@ -216,13 +226,14 @@ Array [
     button
   </button>,
   <div
+    class="xl-popper"
     data-popper-escaped=""
     data-popper-placement="top"
     data-popper-reference-hidden=""
     style="position: absolute; left: 0px; top: 0px; margin: 0px; padding-bottom: 10px; bottom: 0px; transform: translate(0px, 0px); z-index: 1000;"
   >
     <div
-      class=""
+      class="xl-popper__inner"
       data-placement="top"
       style="position: relative;"
     >
@@ -242,13 +253,14 @@ Array [
     button
   </button>,
   <div
+    class="xl-popper"
     data-popper-escaped=""
     data-popper-placement="top"
     data-popper-reference-hidden=""
     style="position: absolute; left: 0px; top: 0px; margin: 0px; padding-bottom: 10px; bottom: 0px; transform: translate(0px, 0px); z-index: 1000;"
   >
     <div
-      class=""
+      class="xl-popper__inner"
       data-placement="top"
       style="position: relative; display: none;"
     >

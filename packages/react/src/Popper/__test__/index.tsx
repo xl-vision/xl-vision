@@ -145,7 +145,7 @@ describe('Popper', () => {
     const wrapper = mount(
       <Popper
         trigger='hover'
-        popupClassName='popup'
+        className='popup'
         popup={<div>popup</div>}
         onVisibleChange={handleVisibleChange}
         getPopupContainer={() => document.body}
@@ -160,12 +160,13 @@ describe('Popper', () => {
     expect(handleVisibleChange).toHaveBeenLastCalledWith(true);
 
     wrapper.find('#btn').simulate('mouseleave');
-    wrapper.find('.popup').simulate('mouseenter');
+
+    wrapper.find('div.popup').simulate('mouseenter');
 
     await act(() => wait(200));
     expect(handleVisibleChange).toHaveBeenLastCalledWith(true);
 
-    wrapper.find('.popup').simulate('mouseleave');
+    wrapper.find('div.popup').simulate('mouseleave');
     await act(() => wait(200));
     expect(handleVisibleChange).toHaveBeenLastCalledWith(false);
 
@@ -179,7 +180,7 @@ describe('Popper', () => {
     expect(handleVisibleChange).toHaveBeenLastCalledWith(true);
 
     wrapper.find('#btn').simulate('mouseleave');
-    wrapper.find('.popup').simulate('mouseenter');
+    wrapper.find('div.popup').simulate('mouseenter');
 
     await act(() => wait(200));
     expect(handleVisibleChange).toHaveBeenLastCalledWith(false);
