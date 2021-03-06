@@ -1,0 +1,261 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Popper test trigger click 1`] = `
+Array [
+  <button
+    id="btn"
+  >
+    button
+  </button>,
+  <div
+    style="position: absolute;"
+  />,
+]
+`;
+
+exports[`Popper test trigger click 2`] = `
+Array [
+  <button
+    id="btn"
+  >
+    button
+  </button>,
+  <div
+    data-popper-escaped=""
+    data-popper-placement="top"
+    data-popper-reference-hidden=""
+    style="position: absolute; left: 0px; top: 0px; margin: 0px; padding-bottom: 10px; bottom: 0px; transform: translate(0px, 0px); z-index: 1001;"
+  >
+    <div
+      class=""
+      data-placement="top"
+      style="position: relative;"
+    >
+      <div>
+        popup
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`Popper test trigger click 3`] = `
+Array [
+  <button
+    id="btn"
+  >
+    button
+  </button>,
+  <div
+    data-popper-escaped=""
+    data-popper-placement="top"
+    data-popper-reference-hidden=""
+    style="position: absolute; left: 0px; top: 0px; margin: 0px; padding-bottom: 10px; bottom: 0px; transform: translate(0px, 0px); z-index: 1001;"
+  >
+    <div
+      class=""
+      data-placement="top"
+      style="position: relative; display: none;"
+    >
+      <div>
+        popup
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`Popper test trigger contextMenu 1`] = `
+Array [
+  <button
+    id="btn"
+  >
+    button
+  </button>,
+  <div
+    style="position: absolute;"
+  />,
+]
+`;
+
+exports[`Popper test trigger contextMenu 2`] = `
+Array [
+  <button
+    id="btn"
+  >
+    button
+  </button>,
+  <div
+    data-popper-escaped=""
+    data-popper-placement="top"
+    data-popper-reference-hidden=""
+    style="position: absolute; left: 0px; top: 0px; margin: 0px; padding-bottom: 10px; bottom: 0px; transform: translate(0px, 0px); z-index: 1002;"
+  >
+    <div
+      class=""
+      data-placement="top"
+      style="position: relative;"
+    >
+      <div>
+        popup
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`Popper test trigger contextMenu 3`] = `
+Array [
+  <button
+    id="btn"
+  >
+    button
+  </button>,
+  <div
+    data-popper-escaped=""
+    data-popper-placement="top"
+    data-popper-reference-hidden=""
+    style="position: absolute; left: 0px; top: 0px; margin: 0px; padding-bottom: 10px; bottom: 0px; transform: translate(0px, 0px); z-index: 1002;"
+  >
+    <div
+      class=""
+      data-placement="top"
+      style="position: relative; display: none;"
+    >
+      <div>
+        popup
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`Popper test trigger custom 1`] = `
+Array [
+  <button
+    id="btn"
+  >
+    button
+  </button>,
+  <div
+    style="position: absolute;"
+  />,
+]
+`;
+
+exports[`Popper test trigger custom 2`] = `
+Array [
+  <button
+    id="btn"
+  >
+    button
+  </button>,
+  <div
+    data-popper-escaped=""
+    data-popper-placement="top"
+    data-popper-reference-hidden=""
+    style="position: absolute; left: 0px; top: 0px; margin: 0px; padding-bottom: 10px; bottom: 0px; transform: translate(0px, 0px); z-index: 1003;"
+  >
+    <div
+      class=""
+      data-placement="top"
+      style="position: relative;"
+    >
+      <div>
+        popup
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`Popper test trigger custom 3`] = `
+Array [
+  <button
+    id="btn"
+  >
+    button
+  </button>,
+  <div
+    data-popper-escaped=""
+    data-popper-placement="top"
+    data-popper-reference-hidden=""
+    style="position: absolute; left: 0px; top: 0px; margin: 0px; padding-bottom: 10px; bottom: 0px; transform: translate(0px, 0px); z-index: 1003;"
+  >
+    <div
+      class=""
+      data-placement="top"
+      style="position: relative; display: none;"
+    >
+      <div>
+        popup
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`Popper test trigger hover 1`] = `
+Array [
+  <button
+    id="btn"
+  >
+    button
+  </button>,
+  <div
+    style="position: absolute;"
+  />,
+]
+`;
+
+exports[`Popper test trigger hover 2`] = `
+Array [
+  <button
+    id="btn"
+  >
+    button
+  </button>,
+  <div
+    data-popper-escaped=""
+    data-popper-placement="top"
+    data-popper-reference-hidden=""
+    style="position: absolute; left: 0px; top: 0px; margin: 0px; padding-bottom: 10px; bottom: 0px; transform: translate(0px, 0px); z-index: 1000;"
+  >
+    <div
+      class=""
+      data-placement="top"
+      style="position: relative;"
+    >
+      <div>
+        popup
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`Popper test trigger hover 3`] = `
+Array [
+  <button
+    id="btn"
+  >
+    button
+  </button>,
+  <div
+    data-popper-escaped=""
+    data-popper-placement="top"
+    data-popper-reference-hidden=""
+    style="position: absolute; left: 0px; top: 0px; margin: 0px; padding-bottom: 10px; bottom: 0px; transform: translate(0px, 0px); z-index: 1000;"
+  >
+    <div
+      class=""
+      data-placement="top"
+      style="position: relative; display: none;"
+    >
+      <div>
+        popup
+      </div>
+    </div>
+  </div>,
+]
+`;
