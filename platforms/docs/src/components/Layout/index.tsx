@@ -36,9 +36,9 @@ const Content = styled('div')(() => {
 const Layout = () => {
   return (
     <ThemeProvider>
+      <CssBaseline />
+      <GlobalStyle />
       <Router>
-        <CssBaseline />
-        <GlobalStyle />
         <Header />
         <Content>
           <Aside />
