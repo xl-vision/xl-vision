@@ -327,7 +327,6 @@ module.exports = {
         },
       ],
     }),
-    !isProd && new webpack.HotModuleReplacementPlugin(),
     !isProd && new ReactRefreshWebpackPlugin(),
     !isProd && new CaseSensitivePathsPlugin(),
     isProd &&
@@ -340,5 +339,6 @@ module.exports = {
     compress: true,
     historyApiFallback: true,
     host: '0.0.0.0',
+    hot: true,
   },
 };

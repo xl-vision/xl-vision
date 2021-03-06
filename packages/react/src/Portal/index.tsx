@@ -4,7 +4,7 @@ import React from 'react';
 import { isServer } from '../utils/env';
 import warning from '../utils/warning';
 
-export type PortalContainerReturnType = HTMLElement | string | undefined | null;
+export type PortalContainerReturnType = Element | string | undefined | null;
 export type PortalContainerType = PortalContainerReturnType | (() => PortalContainerReturnType);
 
 export interface PortalProp {
@@ -22,6 +22,7 @@ export interface PortalProp {
  */
 const Portal: React.FunctionComponent<PortalProp> = (props) => {
   const { children, getContainer } = props;
+
   if (isServer) {
     return null;
   }

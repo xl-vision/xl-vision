@@ -23,3 +23,8 @@ export * from './BaseButton';
 export { default as Portal } from './Portal';
 export * from './Portal';
 export { default as CssBaseline } from './CssBaseline';
+export * from './CssBaseline';
+export { default as Popper } from './Popper';
+export * from './Popper';
+export { default as Tooltip } from './Tooltip';
+export * from './Tooltip';

@@ -4,7 +4,7 @@ import Portal from '..';
 
 describe('Portal', () => {
   it('test mount on body', () => {
-    const wrapper = mount(
+    mount(
       <div>
         <Portal getContainer={() => document.body}>
           <div>123</div>
@@ -12,7 +12,7 @@ describe('Portal', () => {
       </div>,
     );
 
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(document.body).toMatchSnapshot();
   });
 
   it('test mount on current position', () => {

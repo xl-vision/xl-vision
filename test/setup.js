@@ -1,4 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
+const Enzyme = require('enzyme');
+const Adapter = require('enzyme-adapter-react-16');
 
 if (typeof window !== 'undefined') {
   window.resizeTo = (width, height) => {
@@ -21,9 +23,6 @@ window.requestAnimationFrame = (cb) => setTimeout(cb, 0);
 global.requestAnimationFrame = window.requestAnimationFrame;
 window.cancelAnimationFrame = (cb) => clearTimeout(cb);
 global.cancelAnimationFrame = window.cancelAnimationFrame;
-
-const Enzyme = require('enzyme');
-const Adapter = require('enzyme-adapter-react-16');
 
 Enzyme.configure({
   adapter: new Adapter(),

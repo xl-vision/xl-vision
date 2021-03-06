@@ -39,12 +39,13 @@ module.exports = function createDemoPlugin(ctx) {
           ? filePath
           : path.resolve(basePath, filePath);
 
+        ctx.addDependency(absolutePath);
+
         const tsCode = await new Promise((resolve, reject) => {
           fs.readFile(absolutePath, (err, data) => {
             if (err) {
               return reject(err);
             }
-            ctx.addDependency(absolutePath);
             resolve(data);
           });
         });
