@@ -7,7 +7,7 @@ import { Portal, Button, styled } from '@xl-vision/react';
 const Wrapper = styled('div')(({ theme }) => {
   return {
     '.container1, .container2': {
-      height: '100px',
+      height: '150px',
       color: '#fff',
       textAlign: 'center',
       padding: '15px',
