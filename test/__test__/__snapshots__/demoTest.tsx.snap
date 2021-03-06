@@ -4366,6 +4366,7 @@ exports[`renders ./packages/react/src/Popper/__doc__/Arrow.tsx correctly 1`] = `
     />
   </button>
   <div
+    class="xl-popper"
     style="position: absolute;"
   />
 </div>
@@ -4607,6 +4608,7 @@ exports[`renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`] = `
       />
     </button>
     <div
+      class="xl-popper"
       style="position: absolute;"
     />
     <button
@@ -4624,6 +4626,7 @@ exports[`renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`] = `
       />
     </button>
     <div
+      class="xl-popper"
       style="position: absolute;"
     />
     <button
@@ -4641,6 +4644,7 @@ exports[`renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`] = `
       />
     </button>
     <div
+      class="xl-popper"
       style="position: absolute;"
     />
     <div />
@@ -4663,6 +4667,7 @@ exports[`renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`] = `
       />
     </button>
     <div
+      class="xl-popper"
       style="position: absolute;"
     />
     <div />
@@ -4683,6 +4688,7 @@ exports[`renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`] = `
       />
     </button>
     <div
+      class="xl-popper"
       style="position: absolute;"
     />
   </div>
@@ -4704,6 +4710,7 @@ exports[`renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`] = `
       />
     </button>
     <div
+      class="xl-popper"
       style="position: absolute;"
     />
     <div />
@@ -4724,6 +4731,7 @@ exports[`renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`] = `
       />
     </button>
     <div
+      class="xl-popper"
       style="position: absolute;"
     />
   </div>
@@ -4745,6 +4753,7 @@ exports[`renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`] = `
       />
     </button>
     <div
+      class="xl-popper"
       style="position: absolute;"
     />
     <div />
@@ -4765,6 +4774,7 @@ exports[`renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`] = `
       />
     </button>
     <div
+      class="xl-popper"
       style="position: absolute;"
     />
   </div>
@@ -4787,6 +4797,7 @@ exports[`renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`] = `
       />
     </button>
     <div
+      class="xl-popper"
       style="position: absolute;"
     />
     <button
@@ -4804,6 +4815,7 @@ exports[`renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`] = `
       />
     </button>
     <div
+      class="xl-popper"
       style="position: absolute;"
     />
     <button
@@ -4821,6 +4833,7 @@ exports[`renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`] = `
       />
     </button>
     <div
+      class="xl-popper"
       style="position: absolute;"
     />
     <div />
@@ -5236,6 +5249,7 @@ exports[`renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 1`] =
     />
   </button>
   <div
+    class="xl-popper"
     style="position: absolute;"
   />
   <button
@@ -5253,6 +5267,7 @@ exports[`renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 1`] =
     />
   </button>
   <div
+    class="xl-popper"
     style="position: absolute;"
   />
   <button
@@ -5270,6 +5285,7 @@ exports[`renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 1`] =
     />
   </button>
   <div
+    class="xl-popper"
     style="position: absolute;"
   />
   <button
@@ -5287,6 +5303,7 @@ exports[`renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 1`] =
     />
   </button>
   <div
+    class="xl-popper"
     style="position: absolute;"
   />
   <button
@@ -5304,6 +5321,7 @@ exports[`renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 1`] =
     />
   </button>
   <div
+    class="xl-popper"
     style="position: absolute;"
   />
 </div>

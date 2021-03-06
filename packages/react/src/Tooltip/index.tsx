@@ -2,14 +2,13 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import React from 'react';
 import Popper, { PopperProps } from '../Popper';
-import { createGlobalStyles, styled } from '../styles';
+import { styled } from '../styles';
 import ThemeContext from '../ThemeProvider/ThemeContext';
 import { isDevelopment } from '../utils/env';
 
 export interface TooltipProps
   extends Omit<PopperProps, 'popup' | 'arrow' | 'transitionClasses' | 'arrow'> {
   content: React.ReactNode;
-  className?: string;
   transitionClassName?: string;
   bgColor?: string;
   maxWidth?: number | string;
@@ -17,7 +16,10 @@ export interface TooltipProps
 
 const displayName = 'Tooltip';
 
-const GlobalStyles = createGlobalStyles(({ theme }) => {
+const TooltipRoot = styled(Popper, {
+  name: displayName,
+  slot: 'Root',
+})(({ theme }) => {
   const { clsPrefix, transition } = theme;
 
   return {
@@ -52,9 +54,9 @@ export type TooltipRootStyleProps = {
   hasWidth: boolean;
 };
 
-const TooltipRoot = styled('div', {
+const TooltipPopup = styled('div', {
   name: displayName,
-  slot: 'Root',
+  slot: 'Popup',
 })<TooltipRootStyleProps>(({ theme, styleProps }) => {
   const { color, elevations, typography } = theme;
   const { bgColor: bgcolorProp, hasWidth } = styleProps;
@@ -131,23 +133,26 @@ const Tooltip: React.FunctionComponent<TooltipProps> = (props) => {
   const rootClassName = `${clsPrefix}-tooltip`;
 
   const popup = (
-    <TooltipRoot
+    <TooltipPopup
       styleProps={{ bgColor, hasWidth: maxWidth !== undefined }}
-      className={clsx(rootClassName, className, {
-        [`${rootClassName}--width`]: maxWidth !== undefined,
-      })}
+      className={clsx(
+        rootClassName,
+        {
+          [`${rootClassName}--width`]: maxWidth !== undefined,
+        },
+        className,
+      )}
       style={{ maxWidth }}
     >
       {content}
-    </TooltipRoot>
+    </TooltipPopup>
   );
 
   const arrow = <TooltipArrow styleProps={{ bgColor }} />;
 
   return (
     <>
-      <GlobalStyles />
-      <Popper
+      <TooltipRoot
         {...others}
         arrow={arrow}
         popup={popup}
