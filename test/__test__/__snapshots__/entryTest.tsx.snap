@@ -16,6 +16,7 @@ Array [
   "Portal",
   "CssBaseline",
   "Popper",
+  "Tooltip",
   "styled",
   "createGlobalStyles",
 ]
