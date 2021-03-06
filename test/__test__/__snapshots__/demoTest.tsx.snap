@@ -4476,7 +4476,7 @@ exports[`renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`] = `
 }
 
 .c0 {
-  margin-right: 100px;
+  margin: 0 100px;
 }
 
 .c0 .column {
@@ -5415,7 +5415,7 @@ exports[`renders ./packages/react/src/Portal/__doc__/Basic.tsx correctly 1`] = `
 
 .c0 .container1,
 .c0 .container2 {
-  height: 100px;
+  height: 150px;
   color: #fff;
   text-align: center;
   padding: 15px;

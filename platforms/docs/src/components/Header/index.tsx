@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, styled, Icon } from '@xl-vision/react';
+import { Button, styled, Icon, Tooltip } from '@xl-vision/react';
 import DarkMode from '@xl-vision/icons/Brightness4Filled';
 import LightkMode from '@xl-vision/icons/Brightness7Filled';
 import GithubIcon from './GithubIcon';
@@ -50,21 +50,25 @@ const Header = () => {
       <HeaderNav>
         <Logo>XL-VISION</Logo>
         <div>
-          <Button
-            variant='text'
-            onClick={handleTheme}
-            prefixIcon={<Icon>{isDark ? <LightkMode /> : <DarkMode />}</Icon>}
-          />
-          <Button
-            variant='text'
-            target='_black'
-            href='https://github.com/xl-vision/xl-vision'
-            prefixIcon={
-              <Icon>
-                <GithubIcon />
-              </Icon>
-            }
-          />
+          <Tooltip content='在亮色主题和暗色主题间切换' placement='bottom'>
+            <Button
+              variant='text'
+              onClick={handleTheme}
+              prefixIcon={<Icon>{isDark ? <LightkMode /> : <DarkMode />}</Icon>}
+            />
+          </Tooltip>
+          <Tooltip content='Github' placement='bottom'>
+            <Button
+              variant='text'
+              target='_black'
+              href='https://github.com/xl-vision/xl-vision'
+              prefixIcon={
+                <Icon>
+                  <GithubIcon />
+                </Icon>
+              }
+            />
+          </Tooltip>
         </div>
       </HeaderNav>
     </Container>

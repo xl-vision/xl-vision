@@ -3,7 +3,7 @@ import { Popper, Button, styled } from '@xl-vision/react';
 
 const Wrapper = styled('div')(({ theme }) => {
   return {
-    marginRight: '100px',
+    margin: '0 100px',
     '.column': {
       display: 'flex',
       justifyContent: 'space-between',

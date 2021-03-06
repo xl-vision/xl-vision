@@ -236,7 +236,7 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
     if (trigger === 'focus') {
       setVisibleWrapper(false);
     }
-    child.props?.onFocus?.(e);
+    child.props?.onBlur?.(e);
   });
 
   const handleReferenceContextMenu: React.MouseEventHandler<any> = useEventCallback((e) => {
