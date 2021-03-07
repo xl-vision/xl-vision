@@ -10,13 +10,9 @@ const IconWrapper = (
 
 const Wrapper = styled('div')(() => {
   return {
-    ':not(:last-child)': {
-      marginBottom: 10,
-    },
     'button, a': {
-      ':not(:last-child)': {
-        marginRight: 10,
-      },
+      marginRight: 10,
+      marginBottom: 10,
     },
   };
 });
