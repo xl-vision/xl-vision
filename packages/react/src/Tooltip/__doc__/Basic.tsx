@@ -3,7 +3,7 @@ import { Tooltip, Button, styled } from '@xl-vision/react';
 
 const Wrapper = styled('div')(() => {
   return {
-    marginRight: '100px',
+    margin: '0 100px',
     '.column': {
       display: 'flex',
       justifyContent: 'space-between',
@@ -22,59 +22,59 @@ export default () => {
       <div className='column'>
         <div />
         <Tooltip placement='top-start' content={content}>
-          <Button>top start</Button>
+          <Button>TS</Button>
         </Tooltip>
         <Tooltip placement='top' content={content}>
-          <Button>top</Button>
+          <Button>T</Button>
         </Tooltip>
         <Tooltip placement='top-end' content={content}>
-          <Button>top end</Button>
+          <Button>TE</Button>
         </Tooltip>
         <div />
       </div>
       <div className='column'>
         <Tooltip placement='left-start' content={content}>
-          <Button>left start</Button>
+          <Button>LS</Button>
         </Tooltip>
         <div />
         <div />
         <div />
         <Tooltip placement='right-start' content={content}>
-          <Button>right start</Button>
+          <Button>RS</Button>
         </Tooltip>
       </div>
       <div className='column'>
         <Tooltip placement='left' content={content}>
-          <Button>left</Button>
+          <Button>L</Button>
         </Tooltip>
         <div />
         <div />
         <div />
         <Tooltip placement='right' content={content}>
-          <Button>right</Button>
+          <Button>R</Button>
         </Tooltip>
       </div>
       <div className='column'>
         <Tooltip placement='left-end' content={content}>
-          <Button>left end</Button>
+          <Button>LE</Button>
         </Tooltip>
         <div />
         <div />
         <div />
         <Tooltip placement='right-end' content={content}>
-          <Button>right end</Button>
+          <Button>RE</Button>
         </Tooltip>
       </div>
       <div className='column'>
         <div />
         <Tooltip placement='bottom-start' content={content}>
-          <Button>bottom start</Button>
+          <Button>BS</Button>
         </Tooltip>
         <Tooltip placement='bottom' content={content}>
-          <Button>bottom</Button>
+          <Button>B</Button>
         </Tooltip>
         <Tooltip placement='bottom-end' content={content}>
-          <Button>bottom end</Button>
+          <Button>BE</Button>
         </Tooltip>
         <div />
       </div>
