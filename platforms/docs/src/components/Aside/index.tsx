@@ -82,9 +82,8 @@ const traverseRoutes = (routesArray: Array<RouteType>): JSX.Element => {
 
 const el = traverseRoutes(routes);
 
-const Wrapper = styled('div')(({ theme }) => {
+const Wrapper = styled('div')(() => {
   return {
-    borderRight: `1px solid ${theme.color.divider}`,
     marginLeft: '-12px',
     li: {
       marginTop: '8px',
