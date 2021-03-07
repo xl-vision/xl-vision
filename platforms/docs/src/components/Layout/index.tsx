@@ -35,21 +35,28 @@ const Content = styled('div')(() => {
 
 const AsideWrapper = styled(Aside)(({ theme }) => {
   return {
-    position: 'fixed',
-    top: 60,
-    overflowY: 'auto',
-    height: '100%',
-    width: '260px',
     backgroundColor: theme.color.background,
+
+    '@media(min-width: 768px)': {
+      position: 'fixed',
+      top: 60,
+      overflowY: 'auto',
+      height: '100%',
+      width: '260px',
+      borderRight: `1px solid ${theme.color.divider}`,
+    },
     '@media(max-width: 768px)': {
       width: '100%',
+      borderBottom: `1px solid ${theme.color.divider}`,
     },
   };
 });
 
 const MainWrapper = styled('div')(() => {
   return {
-    marginLeft: '260px',
+    '@media(min-width: 768px)': {
+      marginLeft: '260px',
+    },
   };
 });
 
