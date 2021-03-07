@@ -55,7 +55,11 @@ const AsideWrapper = styled(Aside)(({ theme }) => {
 const MainWrapper = styled('div')(() => {
   return {
     '@media(min-width: 768px)': {
-      marginLeft: '260px',
+      marginLeft: 260 - 12 + 16,
+      marginRight: 16,
+    },
+    '@media(max-width: 768px)': {
+      margin: '0 16px',
     },
   };
 });
