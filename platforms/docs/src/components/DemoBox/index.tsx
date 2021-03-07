@@ -88,6 +88,10 @@ const DemoBox: React.FunctionComponent<DemoBoxProps> = ({ children }) => {
 
   const [isExpand, setExpand] = React.useState(false);
 
+  const handleExpand = React.useCallback(() => {
+    setExpand((prev) => !prev);
+  }, []);
+
   return (
     <Wrapper>
       <Preview>{preview}</Preview>
@@ -100,7 +104,7 @@ const DemoBox: React.FunctionComponent<DemoBoxProps> = ({ children }) => {
             round={true}
             size='large'
             variant='text'
-            onClick={() => setExpand(!isExpand)}
+            onClick={handleExpand}
             prefixIcon={
               <Icon>
                 <ExpandWrapper styleProps={{ expand: isExpand }} />

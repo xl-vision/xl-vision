@@ -21,6 +21,11 @@ module.exports = function createDemoPlugin(ctx) {
     // Inject blockTokenizer
     const blockTokenizers = Parser.prototype.blockTokenizers;
     const blockMethods = Parser.prototype.blockMethods;
+
+    if (blockTokenizers[TYPE]) {
+      return;
+    }
+
     blockTokenizers[TYPE] = blockTokenizer;
 
     blockMethods.unshift(TYPE);

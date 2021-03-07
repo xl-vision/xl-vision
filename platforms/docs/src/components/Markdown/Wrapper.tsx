@@ -4,10 +4,11 @@ import React from 'react';
 export type WrapperProps = {
   children: React.ReactNode;
   name: string;
+  className?: string;
 };
 
 const Wrapper: React.FunctionComponent<WrapperProps> = (props) => {
-  const { children, name } = props;
+  const { children, name, ...others } = props;
 
   React.useEffect(() => {
     const { title } = document;
@@ -18,7 +19,7 @@ const Wrapper: React.FunctionComponent<WrapperProps> = (props) => {
     };
   }, [name]);
 
-  return <main>{children}</main>;
+  return <main {...others}>{children}</main>;
 };
 
 Wrapper.propTypes = {

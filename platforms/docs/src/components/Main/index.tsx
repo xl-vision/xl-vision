@@ -27,9 +27,9 @@ const traverseRoutes = (routesArray: Array<RouteType>): Array<JSX.Element> => {
 
 const routeElements = traverseRoutes(routes);
 
-const Main = () => {
+const Main: React.FunctionComponent<{ className?: string }> = (props) => {
   return (
-    <Markdown>
+    <Markdown {...props}>
       <React.Suspense fallback={<div>loading</div>}>
         <Switch>{routeElements}</Switch>
       </React.Suspense>

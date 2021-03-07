@@ -85,20 +85,15 @@ const el = traverseRoutes(routes);
 const Wrapper = styled('div')(({ theme }) => {
   return {
     borderRight: `1px solid ${theme.color.divider}`,
-    width: '260px',
     marginLeft: '-12px',
-    '@media(max-width: 768px)': {
-      width: '100%',
-    },
-
     li: {
       marginTop: '8px',
     },
   };
 });
 
-const Aside = () => {
-  return <Wrapper>{el}</Wrapper>;
+const Aside: React.FunctionComponent<{ className?: string }> = (props) => {
+  return <Wrapper {...props}>{el}</Wrapper>;
 };
 
 export default Aside;
