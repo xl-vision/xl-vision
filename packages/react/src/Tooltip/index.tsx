@@ -50,7 +50,6 @@ const TooltipRoot = styled(Popper, {
 });
 
 export type TooltipRootStyleProps = {
-  bgColor: string;
   hasWidth: boolean;
 };
 
@@ -59,10 +58,10 @@ const TooltipPopup = styled('div', {
   slot: 'Popup',
 })<TooltipRootStyleProps>(({ theme, styleProps }) => {
   const { color, elevations, typography } = theme;
-  const { bgColor: bgcolorProp, hasWidth } = styleProps;
+  const { hasWidth } = styleProps;
   return {
-    backgroundColor: bgcolorProp,
-    color: color.getContrastText(bgcolorProp).text.primary,
+    backgroundColor: color.grey[800],
+    color: color.getContrastText(color.grey[800]).text.primary,
     padding: '4px 8px',
     borderRadius: '4px',
     ...typography.caption,
@@ -76,20 +75,18 @@ const TooltipPopup = styled('div', {
   };
 });
 
-export type TooltipArrowStyleProps = {
-  bgColor: string;
-};
-
 const TooltipArrow = styled('div', {
   name: displayName,
   slot: 'Arrow',
-})<TooltipArrowStyleProps>(({ styleProps }) => {
-  const { bgColor: bgcolorProp } = styleProps;
+})(({ theme }) => {
+  const { color } = theme;
 
   return {
     position: 'absolute',
     width: 0,
     height: 0,
+    backgroundColor: color.grey[800],
+
     ':before': {
       position: 'absolute',
       content: '""',
@@ -98,7 +95,7 @@ const TooltipArrow = styled('div', {
       left: '-4px',
       top: '-4px',
       transform: 'rotate(45deg)',
-      backgroundColor: bgcolorProp,
+      backgroundColor: 'inherit',
     },
     '&[data-placement^="left"]': {
       right: 0,
@@ -132,9 +129,14 @@ const Tooltip: React.FunctionComponent<TooltipProps> = (props) => {
 
   const rootClassName = `${clsPrefix}-tooltip`;
 
+  const colorStyle = bgColor && {
+    backgroundColor: bgColor,
+    color: color.getContrastText(bgColor).text.primary,
+  };
+
   const popup = (
     <TooltipPopup
-      styleProps={{ bgColor, hasWidth: maxWidth !== undefined }}
+      styleProps={{ hasWidth: maxWidth !== undefined }}
       className={clsx(
         rootClassName,
         {
@@ -142,13 +144,13 @@ const Tooltip: React.FunctionComponent<TooltipProps> = (props) => {
         },
         className,
       )}
-      style={{ maxWidth }}
+      style={{ maxWidth, ...colorStyle }}
     >
       {content}
     </TooltipPopup>
   );
 
-  const arrow = <TooltipArrow styleProps={{ bgColor }} />;
+  const arrow = <TooltipArrow style={{ ...colorStyle }} />;
 
   return (
     <>
