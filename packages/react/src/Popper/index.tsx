@@ -166,6 +166,8 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
 
     popupEl.style.zIndex = `${increaseZindex()}`;
 
+    console.log(instance.state)
+
     popupInnerNodeRef.current!.dataset.placement = instance.state.placement;
     if (arrowRef.current) {
       arrowRef.current.dataset.placement = instance.state.placement;
