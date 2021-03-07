@@ -11,6 +11,7 @@ import table from './table';
 
 export type MarkdownProps = {
   children: React.ReactNode;
+  className?: string;
 };
 
 const components: Components = {
@@ -24,8 +25,12 @@ const components: Components = {
 };
 
 const Markdown: React.FunctionComponent<MarkdownProps> = (props) => {
-  const { children } = props;
-  return <MDXProvider components={components}>{children}</MDXProvider>;
+  const { children, ...others } = props;
+  return (
+    <MDXProvider {...others} components={components}>
+      {children}
+    </MDXProvider>
+  );
 };
 
 Markdown.propTypes = {

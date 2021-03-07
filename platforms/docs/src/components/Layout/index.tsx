@@ -11,25 +11,45 @@ const GlobalStyle = createGlobalStyles(() => {
   return {
     'html,body': {
       width: '100%',
-      minHeight: '100%',
+      height: '100%',
     },
 
     '#app': {
-      minHeight: '100%',
+      height: '100%',
     },
   };
 });
 
 const Content = styled('div')(() => {
   return {
-    display: 'flex',
+    // display: 'flex',
+    // height: '100%',
+    // flexWrap: 'wrap',
+    // '> main': {
+    //   flex: 1,
+    //   overflowX: 'auto',
+    //   margin: '0 16px',
+    // },
+  };
+});
+
+const AsideWrapper = styled(Aside)(({ theme }) => {
+  return {
+    position: 'fixed',
+    top: 60,
+    overflowY: 'auto',
     height: '100%',
-    flexWrap: 'wrap',
-    '> main': {
-      flex: 1,
-      overflowX: 'auto',
-      margin: '0 16px',
+    width: '260px',
+    backgroundColor: theme.color.background,
+    '@media(max-width: 768px)': {
+      width: '100%',
     },
+  };
+});
+
+const MainWrapper = styled('div')(() => {
+  return {
+    marginLeft: '260px',
   };
 });
 
@@ -41,8 +61,10 @@ const Layout = () => {
       <Router>
         <Header />
         <Content>
-          <Aside />
-          <Main />
+          <AsideWrapper />
+          <MainWrapper>
+            <Main />
+          </MainWrapper>
         </Content>
         <Footer />
       </Router>
