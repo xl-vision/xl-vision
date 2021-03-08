@@ -119,29 +119,35 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
     return ReactDOM.findDOMNode(referenceRef.current) as HTMLElement;
   }, []);
 
-  const createOrUpdatePopper = useEventCallback(() => {
+  const show = useEventCallback(() => {
     let instance = popperInstanceRef.current;
     const popupEl = popupNodeRef.current!;
-    if (!instance) {
-      const referenceEl = findReferenceDOM();
-      instance = popperInstanceRef.current = createPopper(referenceEl, popupEl, {
-        placement,
-        modifiers: [
-          {
-            name: 'offset',
-            options: {
-              offset: [0, offset],
-            },
-          },
-          {
-            name: 'arrow',
-            options: {
-              element: arrowRef.current,
-            },
-          },
-        ],
-      });
-    }
+
+    const modifiers = [
+      {
+        name: 'offset',
+        options: {
+          offset: [0, offset],
+        },
+      },
+      {
+        name: 'arrow',
+        options: {
+          element: arrowRef.current,
+        },
+      },
+      {
+        name: 'eventListeners',
+        enabled: true,
+      },
+    ];
+
+    const referenceEl = findReferenceDOM();
+    instance = popperInstanceRef.current = createPopper(referenceEl, popupEl, {
+      placement,
+      modifiers,
+    });
+
     instance.forceUpdate();
 
     popupEl.style.zIndex = `${increaseZindex()}`;
@@ -149,6 +155,14 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
     popupInnerNodeRef.current!.dataset.placement = instance.state.placement;
     if (arrowRef.current) {
       arrowRef.current.dataset.placement = instance.state.placement;
+    }
+  });
+
+  const close = useEventCallback(() => {
+    popperInstanceRef.current?.destroy();
+    popperInstanceRef.current = undefined;
+    if (popupNodeRef.current) {
+      popupNodeRef.current.style.position = 'absolute';
     }
   });
 
@@ -293,10 +307,10 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
   React.useEffect(() => {
     // 第一次的时候，Popper不存在
     if (visible && !isFirstVisibleRef.current) {
-      createOrUpdatePopper();
+      show();
     }
     isFirstVisibleRef.current = true;
-  }, [visible, createOrUpdatePopper]);
+  }, [visible, show]);
 
   React.useEffect(() => {
     onVisibleChange?.(visible);
@@ -316,21 +330,16 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
 
     el.style.display = '';
 
-    createOrUpdatePopper();
+    show();
+
     addClass(el, el._ctc?.enter || '');
     forceReflow();
     addClass(el, el._ctc?.enterActive || '');
   });
 
   const afterLeave = useEventCallback((el: HTMLElement) => {
-    if (destroyOnHide) {
-      if (popperInstanceRef.current) {
-        popperInstanceRef.current.destroy();
-        popperInstanceRef.current = undefined;
-      }
-    } else {
-      el.style.display = 'none';
-    }
+    close();
+    el.style.display = 'none';
   });
 
   const arrowNode =
