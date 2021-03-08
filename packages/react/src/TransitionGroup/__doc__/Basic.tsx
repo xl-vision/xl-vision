@@ -1,34 +1,31 @@
 import React from 'react';
-import { styled, TransitionGroup } from '@xl-vision/react';
+import { Button, styled, TransitionGroup } from '@xl-vision/react';
 
-const Wrapper = styled('div')``;
-const Demo = styled('span')`
-  display: inline-block;
-  margin-right: 10px;
+const Wrapper = styled('div')({
+  marginTop: 20,
+});
 
-  &.slide-enter-active,
-  &.slide-leave-active {
-    transition: all 1s ease-in-out;
-  }
+const Demo = styled('span')({
+  display: 'inline-block',
+  marginRight: 10,
+  '&.slide-enter-active,&.slide-leave-active': {
+    transition: 'all 1s ease-in-out',
+  },
 
-  &.slide-leave-to,
-  &.slide-enter {
-    opacity: 0;
-  }
-
-  &.slide-leave,
-  &.slide-enter-to {
-    opacity: 1;
-    transform: translateY(0px);
-  }
-
-  &.slide-enter {
-    transform: translateY(-30px);
-  }
-  &.slide-leave-to {
-    transform: translateY(30px);
-  }
-`;
+  '&.slide-leave-to, &.slide-enter': {
+    opacity: 0,
+  },
+  ' &.slide-leave, &.slide-enter-to': {
+    opacity: 1,
+    transform: 'translateY(0px)',
+  },
+  '&.slide-enter': {
+    transform: 'translateY(-30px)',
+  },
+  '&.slide-leave-to': {
+    transform: 'translateY(30px)',
+  },
+});
 
 export default () => {
   const nextNumRef = React.useRef(10);
@@ -54,8 +51,12 @@ export default () => {
   return (
     <div>
       <div>
-        <button onClick={handleAdd}>add</button>
-        <button onClick={handleRemove}>remove</button>
+        <Button theme='primary' onClick={handleAdd} style={{ marginRight: 10 }}>
+          add
+        </Button>
+        <Button theme='primary' onClick={handleRemove}>
+          remove
+        </Button>
       </div>
       <Wrapper>
         <TransitionGroup transitionClasses='slide'>

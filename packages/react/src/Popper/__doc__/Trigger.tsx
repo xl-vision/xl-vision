@@ -55,16 +55,16 @@ export default () => {
   return (
     <Wrapper>
       <Popper trigger='hover' transitionClasses='slide' placement='top' popup={popup}>
-        <Button>hover</Button>
+        <Button theme='primary'>hover</Button>
       </Popper>
       <Popper trigger='click' transitionClasses='slide' placement='top' popup={popup}>
-        <Button>click</Button>
+        <Button theme='primary'>click</Button>
       </Popper>
       <Popper trigger='focus' transitionClasses='slide' placement='top' popup={popup}>
-        <Button>focus</Button>
+        <Button theme='primary'>focus</Button>
       </Popper>
       <Popper trigger='contextMenu' transitionClasses='slide' placement='top' popup={popup}>
-        <Button>contextMenu</Button>
+        <Button theme='primary'>contextMenu</Button>
       </Popper>
       <Popper
         trigger='custom'
@@ -74,7 +74,9 @@ export default () => {
         placement='top'
         popup={popup}
       >
-        <Button onClick={handleCustomClick}>custom(click twice)</Button>
+        <Button theme='primary' onClick={handleCustomClick}>
+          custom(click twice)
+        </Button>
       </Popper>
     </Wrapper>
   );

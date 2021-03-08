@@ -1,5 +1,5 @@
 import React from 'react';
-import { CollapseTransition, styled } from '@xl-vision/react';
+import { Button, CollapseTransition, styled } from '@xl-vision/react';
 
 const Div = styled('div')`
   display: flex;
@@ -33,13 +33,14 @@ export default () => {
 
   return (
     <div className='wrapper'>
-      <button
+      <Button
+        theme='primary'
         onClick={() => {
           setActive(!active);
         }}
       >
         Click
-      </button>
+      </Button>
       <CollapseTransition in={active} transitionClasses='slide'>
         <Div>DEMO</Div>
       </CollapseTransition>

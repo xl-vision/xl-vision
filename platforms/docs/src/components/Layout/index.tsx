@@ -65,6 +65,9 @@ const MainWrapper = styled('div')(() => {
       left: asideWidth,
       right: 0,
       overflowY: 'auto',
+      main: {
+        minHeight: '100%',
+      },
     },
   };
 });

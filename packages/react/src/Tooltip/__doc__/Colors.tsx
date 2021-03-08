@@ -19,7 +19,7 @@ export default () => {
     <Wrapper>
       {colors.map((it) => (
         <Tooltip placement='top' content={content} bgColor={it} key={it}>
-          <Button>{it}</Button>
+          <Button theme='primary'>{it}</Button>
         </Tooltip>
       ))}
     </Wrapper>

@@ -67,59 +67,59 @@ export default () => {
       <div className='column'>
         <div />
         <Popper transitionClasses='slide' placement='top-start' popup={popup}>
-          <Button>TS</Button>
+          <Button theme='primary'>TS</Button>
         </Popper>
         <Popper transitionClasses='slide' placement='top' popup={popup}>
-          <Button>T</Button>
+          <Button theme='primary'>T</Button>
         </Popper>
         <Popper transitionClasses='slide' placement='top-end' popup={popup}>
-          <Button>TE</Button>
+          <Button theme='primary'>TE</Button>
         </Popper>
         <div />
       </div>
       <div className='column'>
         <Popper transitionClasses='slide' placement='left-start' popup={popup}>
-          <Button>LS</Button>
+          <Button theme='primary'>LS</Button>
         </Popper>
         <div />
         <div />
         <div />
         <Popper transitionClasses='slide' placement='right-start' popup={popup}>
-          <Button>RS</Button>
+          <Button theme='primary'>RS</Button>
         </Popper>
       </div>
       <div className='column'>
         <Popper transitionClasses='slide' placement='left' popup={popup}>
-          <Button>L</Button>
+          <Button theme='primary'>L</Button>
         </Popper>
         <div />
         <div />
         <div />
         <Popper transitionClasses='slide' placement='right' popup={popup}>
-          <Button>R</Button>
+          <Button theme='primary'>R</Button>
         </Popper>
       </div>
       <div className='column'>
         <Popper transitionClasses='slide' placement='left-end' popup={popup}>
-          <Button>LE</Button>
+          <Button theme='primary'>LE</Button>
         </Popper>
         <div />
         <div />
         <div />
         <Popper transitionClasses='slide' placement='right-end' popup={popup}>
-          <Button>RE</Button>
+          <Button theme='primary'>RE</Button>
         </Popper>
       </div>
       <div className='column'>
         <div />
         <Popper transitionClasses='slide' placement='bottom-start' popup={popup}>
-          <Button>BS</Button>
+          <Button theme='primary'>BS</Button>
         </Popper>
         <Popper transitionClasses='slide' placement='bottom' popup={popup}>
-          <Button>B</Button>
+          <Button theme='primary'>B</Button>
         </Popper>
         <Popper transitionClasses='slide' placement='bottom-end' popup={popup}>
-          <Button>BE</Button>
+          <Button theme='primary'>BE</Button>
         </Popper>
         <div />
       </div>
