@@ -74,6 +74,10 @@ const ButtonRoot = styled(BaseButton, {
     borderRadius: '4px',
     minWidth: icon ? '' : '64px',
     ...typography.button,
+    // https://github.com/facebook/react/issues/4492#issuecomment-426356566
+    svg: {
+      pointerEvents: 'none',
+    },
   };
 
   if (icon) {
