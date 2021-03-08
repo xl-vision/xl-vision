@@ -38,17 +38,20 @@ const asideWidth = 300;
 const AsideWrapper = styled(Aside)(({ theme }) => {
   return {
     backgroundColor: theme.color.background,
+    paddingRight: 12,
     '@media(max-width: 768px)': {
-      width: '100%',
       borderBottom: `1px solid ${theme.color.divider}`,
     },
     '@media(min-width: 768px)': {
       position: 'fixed',
       top: 60,
       bottom: 0,
-      overflowY: 'auto',
+      overflowY: 'hidden',
       width: asideWidth,
       borderRight: `1px solid ${theme.color.divider}`,
+      ':hover': {
+        overflowY: 'auto',
+      },
     },
   };
 });
