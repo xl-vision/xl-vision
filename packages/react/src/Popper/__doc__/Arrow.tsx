@@ -71,6 +71,7 @@ export default () => {
         placement='top'
         popup={popup}
         arrow={<div className='arrow' />}
+        offset={10}
       >
         <Button>hover</Button>
       </Popper>
