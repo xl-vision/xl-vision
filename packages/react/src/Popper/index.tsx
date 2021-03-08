@@ -51,7 +51,7 @@ export type PopperProps = {
 
 const displayName = 'Popper';
 
-const TIME_DELAY = 100;
+const TIME_DELAY = 200;
 
 const Popper: React.FunctionComponent<PopperProps> = (props) => {
   const {
@@ -61,7 +61,7 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
     transitionClasses,
     trigger = 'hover',
     disablePopupEnter,
-    offset,
+    offset = 0,
     placement = 'auto',
     showDelay = 0,
     hideDelay = 0,
@@ -92,8 +92,6 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
   const child = React.Children.only<React.ReactElement<PopperChildrenProps>>(children);
 
   const [visible, setVisible] = React.useState(visibleProps || false);
-
-  const [actualPlacement, setActualPlacement] = React.useState<PopperPlacement>(placement);
 
   const lifecycleStateRef = useLifecycleState();
 
@@ -130,6 +128,12 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
         placement,
         modifiers: [
           {
+            name: 'offset',
+            options: {
+              offset: [0, offset],
+            },
+          },
+          {
             name: 'arrow',
             options: {
               element: arrowRef.current,
@@ -139,8 +143,6 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
       });
     }
     instance.forceUpdate();
-
-    setActualPlacement(instance.state.placement);
 
     popupEl.style.zIndex = `${increaseZindex()}`;
 
@@ -341,24 +343,6 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
 
   const innerClassName = `${rootClassName}__inner`;
 
-  const popupInnerStyles: React.CSSProperties = {
-    position: 'relative',
-  };
-
-  const offsetStr = typeof offset === 'number' ? `${offset}px` : offset;
-
-  if (offsetStr) {
-    if (/^top/.exec(actualPlacement)) {
-      popupInnerStyles.marginBottom = offsetStr;
-    } else if (/^bottom/.exec(actualPlacement)) {
-      popupInnerStyles.marginTop = offsetStr;
-    } else if (/^left/.exec(actualPlacement)) {
-      popupInnerStyles.marginRight = offsetStr;
-    } else {
-      popupInnerStyles.marginLeft = offsetStr;
-    }
-  }
-
   const portal = (
     <Portal getContainer={getPopupContainer}>
       <PopperContext.Provider value={{ addCloseHandler, removeCloseHandler }}>
@@ -378,7 +362,13 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
             afterLeave={afterLeave}
             unmountOnLeave={destroyOnHide}
           >
-            <div ref={popupInnerNodeRef} style={popupInnerStyles} className={innerClassName}>
+            <div
+              ref={popupInnerNodeRef}
+              style={{
+                position: 'relative',
+              }}
+              className={innerClassName}
+            >
               {arrowNode}
               {popup}
             </div>

@@ -40,8 +40,8 @@ const AsideWrapper = styled(Aside)(({ theme }) => {
     '@media(min-width: 768px)': {
       position: 'fixed',
       top: 60,
+      bottom: 0,
       overflowY: 'auto',
-      height: '100%',
       width: '260px',
       borderRight: `1px solid ${theme.color.divider}`,
     },
