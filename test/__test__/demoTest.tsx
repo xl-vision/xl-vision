@@ -2,7 +2,7 @@ import glob from 'glob';
 import { mount } from 'enzyme';
 import React from 'react';
 
-const demoTest = () => {
+describe('Demo', () => {
   const files = glob.sync(`./packages/*/src/**/__doc__/*.ts?(x)`);
   files.forEach((file) => {
     test(`renders ${file} correctly`, () => {
@@ -12,6 +12,4 @@ const demoTest = () => {
       expect(wrapper.render()).toMatchSnapshot();
     });
   });
-};
-
-demoTest();
+});
