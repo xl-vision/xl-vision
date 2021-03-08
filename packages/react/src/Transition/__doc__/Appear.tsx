@@ -1,5 +1,5 @@
 import React from 'react';
-import { styled, Transition } from '@xl-vision/react';
+import { Button, styled, Transition } from '@xl-vision/react';
 import { BeforeEventHook, EventHook } from '@xl-vision/react/Transition';
 
 const Div = styled('div')`
@@ -65,7 +65,9 @@ export default () => {
 
   return (
     <div>
-      <button onClick={() => setShow(!show)}>Click</button>
+      <Button theme='primary' onClick={() => setShow(!show)}>
+        Click
+      </Button>
       <p>进场动画</p>
       <Transition
         transitionOnFirst={true}

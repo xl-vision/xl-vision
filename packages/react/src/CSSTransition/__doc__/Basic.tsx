@@ -1,5 +1,5 @@
 import React from 'react';
-import { CSSTransition, styled } from '@xl-vision/react';
+import { Button, CSSTransition, styled } from '@xl-vision/react';
 
 const Div = styled('div')`
   display: flex;
@@ -34,7 +34,9 @@ export default () => {
 
   return (
     <div>
-      <button onClick={() => setShow(!show)}>Click</button>
+      <Button theme='primary' onClick={() => setShow(!show)}>
+        Click
+      </Button>
       <CSSTransition in={show} transitionClasses='slide' mountOnEnter={true} unmountOnLeave={true}>
         <Div>DEMO</Div>
       </CSSTransition>

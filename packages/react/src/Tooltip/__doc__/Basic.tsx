@@ -22,59 +22,59 @@ export default () => {
       <div className='column'>
         <div />
         <Tooltip placement='top-start' content={content}>
-          <Button>TS</Button>
+          <Button theme='primary'>TS</Button>
         </Tooltip>
         <Tooltip placement='top' content={content}>
-          <Button>T</Button>
+          <Button theme='primary'>T</Button>
         </Tooltip>
         <Tooltip placement='top-end' content={content}>
-          <Button>TE</Button>
+          <Button theme='primary'>TE</Button>
         </Tooltip>
         <div />
       </div>
       <div className='column'>
         <Tooltip placement='left-start' content={content}>
-          <Button>LS</Button>
+          <Button theme='primary'>LS</Button>
         </Tooltip>
         <div />
         <div />
         <div />
         <Tooltip placement='right-start' content={content}>
-          <Button>RS</Button>
+          <Button theme='primary'>RS</Button>
         </Tooltip>
       </div>
       <div className='column'>
         <Tooltip placement='left' content={content}>
-          <Button>L</Button>
+          <Button theme='primary'>L</Button>
         </Tooltip>
         <div />
         <div />
         <div />
         <Tooltip placement='right' content={content}>
-          <Button>R</Button>
+          <Button theme='primary'>R</Button>
         </Tooltip>
       </div>
       <div className='column'>
         <Tooltip placement='left-end' content={content}>
-          <Button>LE</Button>
+          <Button theme='primary'>LE</Button>
         </Tooltip>
         <div />
         <div />
         <div />
         <Tooltip placement='right-end' content={content}>
-          <Button>RE</Button>
+          <Button theme='primary'>RE</Button>
         </Tooltip>
       </div>
       <div className='column'>
         <div />
         <Tooltip placement='bottom-start' content={content}>
-          <Button>BS</Button>
+          <Button theme='primary'>BS</Button>
         </Tooltip>
         <Tooltip placement='bottom' content={content}>
-          <Button>B</Button>
+          <Button theme='primary'>B</Button>
         </Tooltip>
         <Tooltip placement='bottom-end' content={content}>
-          <Button>BE</Button>
+          <Button theme='primary'>BE</Button>
         </Tooltip>
         <div />
       </div>

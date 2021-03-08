@@ -22,7 +22,7 @@ export default () => {
   return (
     <Wrapper>
       <Tooltip placement='top' content={content} maxWidth={200}>
-        <Button>button</Button>
+        <Button theme='primary'>button</Button>
       </Tooltip>
     </Wrapper>
   );

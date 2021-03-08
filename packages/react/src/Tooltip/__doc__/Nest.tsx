@@ -14,7 +14,7 @@ const content = (
   <span>
     parent content
     <Tooltip trigger='click' content='child content'>
-      <Button>btn</Button>
+      <Button theme='primary'>btn</Button>
     </Tooltip>
   </span>
 );
@@ -29,19 +29,21 @@ export default () => {
   return (
     <Wrapper>
       <Tooltip trigger='hover' placement='top' content={content}>
-        <Button>hover</Button>
+        <Button theme='primary'>hover</Button>
       </Tooltip>
       <Tooltip trigger='click' placement='top' content={content}>
-        <Button>click</Button>
+        <Button theme='primary'>click</Button>
       </Tooltip>
       <Tooltip trigger='focus' placement='top' content={content}>
-        <Button>focus</Button>
+        <Button theme='primary'>focus</Button>
       </Tooltip>
       <Tooltip trigger='contextMenu' placement='top' content={content}>
-        <Button>contextMenu</Button>
+        <Button theme='primary'>contextMenu</Button>
       </Tooltip>
       <Tooltip trigger='custom' visible={visible} placement='top' content={content}>
-        <Button onClick={handleCustomClick}>custom(click twice)</Button>
+        <Button theme='primary' onClick={handleCustomClick}>
+          custom(click twice)
+        </Button>
       </Tooltip>
     </Wrapper>
   );

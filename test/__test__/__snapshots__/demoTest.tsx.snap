@@ -4082,37 +4082,513 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
 `;
 
 exports[`Demo renders ./packages/react/src/CSSTransition/__doc__/Advance.tsx correctly 1`] = `
+.c3 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c0 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+.c0 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.c0 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c0 .xl-base-button__ripple-leave-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c0 .xl-base-button__ripple-enter {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c0 .xl-base-button__ripple-leave-to {
+  opacity: 0;
+}
+
+.c2 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c1 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #3f51b5;
+}
+
+.c1 svg {
+  pointer-events: none;
+}
+
+.c1:hover {
+  background-color: rgba(70,88,184,1);
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c1:focus {
+  background-color: rgba(85,101,189,1);
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
 <div>
-  <button>
-    Click
+  <button
+    class="c0 xl-base-button__root c1 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+  >
+    <span
+      class="c2 xl-base-button__inner"
+    >
+      <span>
+        Click
+      </span>
+    </span>
+    <div
+      class="c3 xl-ripple__root xl-base-button__ripple"
+    />
   </button>
 </div>
 `;
 
 exports[`Demo renders ./packages/react/src/CSSTransition/__doc__/Basic.tsx correctly 1`] = `
+.c3 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c0 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+.c0 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.c0 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c0 .xl-base-button__ripple-leave-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c0 .xl-base-button__ripple-enter {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c0 .xl-base-button__ripple-leave-to {
+  opacity: 0;
+}
+
+.c2 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c1 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #3f51b5;
+}
+
+.c1 svg {
+  pointer-events: none;
+}
+
+.c1:hover {
+  background-color: rgba(70,88,184,1);
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c1:focus {
+  background-color: rgba(85,101,189,1);
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
 <div>
-  <button>
-    Click
+  <button
+    class="c0 xl-base-button__root c1 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+  >
+    <span
+      class="c2 xl-base-button__inner"
+    >
+      <span>
+        Click
+      </span>
+    </span>
+    <div
+      class="c3 xl-ripple__root xl-base-button__ripple"
+    />
   </button>
 </div>
 `;
 
 exports[`Demo renders ./packages/react/src/CollapseTransition/__doc__/Basic.tsx correctly 1`] = `
+.c3 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c0 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+.c0 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.c0 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c0 .xl-base-button__ripple-leave-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c0 .xl-base-button__ripple-enter {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c0 .xl-base-button__ripple-leave-to {
+  opacity: 0;
+}
+
+.c2 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c1 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #3f51b5;
+}
+
+.c1 svg {
+  pointer-events: none;
+}
+
+.c1:hover {
+  background-color: rgba(70,88,184,1);
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c1:focus {
+  background-color: rgba(85,101,189,1);
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
 <div
   class="wrapper"
 >
-  <button>
-    Click
+  <button
+    class="c0 xl-base-button__root c1 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+  >
+    <span
+      class="c2 xl-base-button__inner"
+    >
+      <span>
+        Click
+      </span>
+    </span>
+    <div
+      class="c3 xl-ripple__root xl-base-button__ripple"
+    />
   </button>
 </div>
 `;
 
 exports[`Demo renders ./packages/react/src/CollapseTransition/__doc__/Horizontal.tsx correctly 1`] = `
+.c3 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c0 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+.c0 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.c0 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c0 .xl-base-button__ripple-leave-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c0 .xl-base-button__ripple-enter {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c0 .xl-base-button__ripple-leave-to {
+  opacity: 0;
+}
+
+.c2 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c1 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #3f51b5;
+}
+
+.c1 svg {
+  pointer-events: none;
+}
+
+.c1:hover {
+  background-color: rgba(70,88,184,1);
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c1:focus {
+  background-color: rgba(85,101,189,1);
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
 <div
   class="wrapper"
 >
-  <button>
-    Click
+  <button
+    class="c0 xl-base-button__root c1 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+  >
+    <span
+      class="c2 xl-base-button__inner"
+    >
+      <span>
+        Click
+      </span>
+    </span>
+    <div
+      class="c3 xl-ripple__root xl-base-button__ripple"
+    />
   </button>
 </div>
 `;
@@ -4459,8 +4935,8 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Arrow.tsx correctly 1`
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  color: rgba(0,0,0,0.87);
-  background-color: #e0e0e0;
+  color: #fff;
+  background-color: #3f51b5;
 }
 
 .c2 svg {
@@ -4468,12 +4944,12 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Arrow.tsx correctly 1`
 }
 
 .c2:hover {
-  background-color: rgba(217,217,217,1);
+  background-color: rgba(70,88,184,1);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c2:focus {
-  background-color: rgba(203,203,203,1);
+  background-color: rgba(85,101,189,1);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -4567,7 +5043,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Arrow.tsx correctly 1`
   class="c0"
 >
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -4678,8 +5154,8 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  color: rgba(0,0,0,0.87);
-  background-color: #e0e0e0;
+  color: #fff;
+  background-color: #3f51b5;
 }
 
 .c2 svg {
@@ -4687,12 +5163,12 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
 }
 
 .c2:hover {
-  background-color: rgba(217,217,217,1);
+  background-color: rgba(70,88,184,1);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c2:focus {
-  background-color: rgba(203,203,203,1);
+  background-color: rgba(85,101,189,1);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -4814,7 +5290,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
   >
     <div />
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -4832,7 +5308,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
       style="position: absolute;"
     />
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -4850,7 +5326,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
       style="position: absolute;"
     />
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -4873,7 +5349,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
     class="column"
   >
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -4894,7 +5370,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
     <div />
     <div />
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -4916,7 +5392,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
     class="column"
   >
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -4937,7 +5413,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
     <div />
     <div />
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -4959,7 +5435,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
     class="column"
   >
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -4980,7 +5456,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
     <div />
     <div />
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -5003,7 +5479,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
   >
     <div />
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -5021,7 +5497,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
       style="position: absolute;"
     />
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -5039,7 +5515,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
       style="position: absolute;"
     />
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -5152,8 +5628,8 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Nest.tsx correctly 1`]
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  color: rgba(0,0,0,0.87);
-  background-color: #e0e0e0;
+  color: #fff;
+  background-color: #3f51b5;
 }
 
 .c2 svg {
@@ -5161,12 +5637,12 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Nest.tsx correctly 1`]
 }
 
 .c2:hover {
-  background-color: rgba(217,217,217,1);
+  background-color: rgba(70,88,184,1);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c2:focus {
-  background-color: rgba(203,203,203,1);
+  background-color: rgba(85,101,189,1);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -5228,7 +5704,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Nest.tsx correctly 1`]
   class="c0"
 >
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -5242,7 +5718,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Nest.tsx correctly 1`]
     />
   </button>
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -5256,7 +5732,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Nest.tsx correctly 1`]
     />
   </button>
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -5270,7 +5746,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Nest.tsx correctly 1`]
     />
   </button>
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -5284,7 +5760,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Nest.tsx correctly 1`]
     />
   </button>
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -5391,8 +5867,8 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  color: rgba(0,0,0,0.87);
-  background-color: #e0e0e0;
+  color: #fff;
+  background-color: #3f51b5;
 }
 
 .c2 svg {
@@ -5400,12 +5876,12 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 
 }
 
 .c2:hover {
-  background-color: rgba(217,217,217,1);
+  background-color: rgba(70,88,184,1);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c2:focus {
-  background-color: rgba(203,203,203,1);
+  background-color: rgba(85,101,189,1);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -5467,7 +5943,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 
   class="c0"
 >
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -5485,7 +5961,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 
     style="position: absolute;"
   />
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -5503,7 +5979,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 
     style="position: absolute;"
   />
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -5521,7 +5997,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 
     style="position: absolute;"
   />
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -5539,7 +6015,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 
     style="position: absolute;"
   />
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -7169,8 +7645,8 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  color: rgba(0,0,0,0.87);
-  background-color: #e0e0e0;
+  color: #fff;
+  background-color: #3f51b5;
 }
 
 .c2 svg {
@@ -7178,12 +7654,12 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
 }
 
 .c2:hover {
-  background-color: rgba(217,217,217,1);
+  background-color: rgba(70,88,184,1);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c2:focus {
-  background-color: rgba(203,203,203,1);
+  background-color: rgba(85,101,189,1);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -7214,7 +7690,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
   >
     <div />
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -7228,7 +7704,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
       />
     </button>
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -7242,7 +7718,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
       />
     </button>
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -7261,7 +7737,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
     class="column"
   >
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -7278,7 +7754,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
     <div />
     <div />
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -7296,7 +7772,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
     class="column"
   >
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -7313,7 +7789,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
     <div />
     <div />
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -7331,7 +7807,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
     class="column"
   >
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -7348,7 +7824,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
     <div />
     <div />
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -7367,7 +7843,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
   >
     <div />
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -7381,7 +7857,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
       />
     </button>
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -7395,7 +7871,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
       />
     </button>
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -7504,8 +7980,8 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Colors.tsx correctly 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  color: rgba(0,0,0,0.87);
-  background-color: #e0e0e0;
+  color: #fff;
+  background-color: #3f51b5;
 }
 
 .c2 svg {
@@ -7513,12 +7989,12 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Colors.tsx correctly 
 }
 
 .c2:hover {
-  background-color: rgba(217,217,217,1);
+  background-color: rgba(70,88,184,1);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c2:focus {
-  background-color: rgba(203,203,203,1);
+  background-color: rgba(85,101,189,1);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -7531,7 +8007,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Colors.tsx correctly 
   class="c0"
 >
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -7545,7 +8021,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Colors.tsx correctly 
     />
   </button>
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -7559,7 +8035,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Colors.tsx correctly 
     />
   </button>
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -7573,7 +8049,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Colors.tsx correctly 
     />
   </button>
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -7680,8 +8156,8 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/MaxWidth.tsx correctl
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  color: rgba(0,0,0,0.87);
-  background-color: #e0e0e0;
+  color: #fff;
+  background-color: #3f51b5;
 }
 
 .c2 svg {
@@ -7689,12 +8165,12 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/MaxWidth.tsx correctl
 }
 
 .c2:hover {
-  background-color: rgba(217,217,217,1);
+  background-color: rgba(70,88,184,1);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c2:focus {
-  background-color: rgba(203,203,203,1);
+  background-color: rgba(85,101,189,1);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -7707,7 +8183,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/MaxWidth.tsx correctl
   class="c0"
 >
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -7814,8 +8290,8 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Nest.tsx correctly 1`
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  color: rgba(0,0,0,0.87);
-  background-color: #e0e0e0;
+  color: #fff;
+  background-color: #3f51b5;
 }
 
 .c2 svg {
@@ -7823,12 +8299,12 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Nest.tsx correctly 1`
 }
 
 .c2:hover {
-  background-color: rgba(217,217,217,1);
+  background-color: rgba(70,88,184,1);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c2:focus {
-  background-color: rgba(203,203,203,1);
+  background-color: rgba(85,101,189,1);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -7841,7 +8317,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Nest.tsx correctly 1`
   class="c0"
 >
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -7855,7 +8331,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Nest.tsx correctly 1`
     />
   </button>
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -7869,7 +8345,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Nest.tsx correctly 1`
     />
   </button>
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -7883,7 +8359,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Nest.tsx correctly 1`
     />
   </button>
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -7897,7 +8373,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Nest.tsx correctly 1`
     />
   </button>
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -8004,8 +8480,8 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Rich.tsx correctly 1`
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  color: rgba(0,0,0,0.87);
-  background-color: #e0e0e0;
+  color: #fff;
+  background-color: #3f51b5;
 }
 
 .c2 svg {
@@ -8013,12 +8489,12 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Rich.tsx correctly 1`
 }
 
 .c2:hover {
-  background-color: rgba(217,217,217,1);
+  background-color: rgba(70,88,184,1);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c2:focus {
-  background-color: rgba(203,203,203,1);
+  background-color: rgba(85,101,189,1);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -8031,7 +8507,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Rich.tsx correctly 1`
   class="c0"
 >
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -8048,7 +8524,115 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Rich.tsx correctly 1`
 `;
 
 exports[`Demo renders ./packages/react/src/Transition/__doc__/Appear.tsx correctly 1`] = `
+.c3 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
 .c0 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+.c0 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.c0 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c0 .xl-base-button__ripple-leave-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c0 .xl-base-button__ripple-enter {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c0 .xl-base-button__ripple-leave-to {
+  opacity: 0;
+}
+
+.c2 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c1 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #3f51b5;
+}
+
+.c1 svg {
+  pointer-events: none;
+}
+
+.c1:hover {
+  background-color: rgba(70,88,184,1);
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c1:focus {
+  background-color: rgba(85,101,189,1);
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -8070,14 +8654,25 @@ exports[`Demo renders ./packages/react/src/Transition/__doc__/Appear.tsx correct
 }
 
 <div>
-  <button>
-    Click
+  <button
+    class="c0 xl-base-button__root c1 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+  >
+    <span
+      class="c2 xl-base-button__inner"
+    >
+      <span>
+        Click
+      </span>
+    </span>
+    <div
+      class="c3 xl-ripple__root xl-base-button__ripple"
+    />
   </button>
   <p>
     进场动画
   </p>
   <div
-    class="c0"
+    class="c4"
     style="height: 0px;"
   >
     DEMO
@@ -8086,7 +8681,7 @@ exports[`Demo renders ./packages/react/src/Transition/__doc__/Appear.tsx correct
     出场动画
   </p>
   <div
-    class="c0"
+    class="c4"
   >
     DEMO
   </div>
@@ -8094,45 +8689,276 @@ exports[`Demo renders ./packages/react/src/Transition/__doc__/Appear.tsx correct
 `;
 
 exports[`Demo renders ./packages/react/src/Transition/__doc__/Basic.tsx correctly 1`] = `
+.c3 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c0 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+.c0 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.c0 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c0 .xl-base-button__ripple-leave-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c0 .xl-base-button__ripple-enter {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c0 .xl-base-button__ripple-leave-to {
+  opacity: 0;
+}
+
+.c2 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c1 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #3f51b5;
+}
+
+.c1 svg {
+  pointer-events: none;
+}
+
+.c1:hover {
+  background-color: rgba(70,88,184,1);
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c1:focus {
+  background-color: rgba(85,101,189,1);
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
 <div>
-  <button>
-    Click
+  <button
+    class="c0 xl-base-button__root c1 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+  >
+    <span
+      class="c2 xl-base-button__inner"
+    >
+      <span>
+        Click
+      </span>
+    </span>
+    <div
+      class="c3 xl-ripple__root xl-base-button__ripple"
+    />
   </button>
 </div>
 `;
 
 exports[`Demo renders ./packages/react/src/TransitionGroup/__doc__/Basic.tsx correctly 1`] = `
+.c3 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
 .c0 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+.c0 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.c0 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c0 .xl-base-button__ripple-leave-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c0 .xl-base-button__ripple-enter {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c0 .xl-base-button__ripple-leave-to {
+  opacity: 0;
+}
+
+.c2 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c1 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #3f51b5;
+}
+
+.c1 svg {
+  pointer-events: none;
+}
+
+.c1:hover {
+  background-color: rgba(70,88,184,1);
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c1:focus {
+  background-color: rgba(85,101,189,1);
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c4 {
+  margin-top: 20px;
+}
+
+.c5 {
   display: inline-block;
   margin-right: 10px;
 }
 
-.c0.slide-enter-active,
-.c0.slide-leave-active {
+.c5.slide-enter-active,
+.c5.slide-leave-active {
   -webkit-transition: all 1s ease-in-out;
   transition: all 1s ease-in-out;
 }
 
-.c0.slide-leave-to,
-.c0.slide-enter {
+.c5.slide-leave-to,
+.c5.slide-enter {
   opacity: 0;
 }
 
-.c0.slide-leave,
-.c0.slide-enter-to {
+.c5.slide-leave,
+.c5.slide-enter-to {
   opacity: 1;
   -webkit-transform: translateY(0px);
   -ms-transform: translateY(0px);
   transform: translateY(0px);
 }
 
-.c0.slide-enter {
+.c5.slide-enter {
   -webkit-transform: translateY(-30px);
   -ms-transform: translateY(-30px);
   transform: translateY(-30px);
 }
 
-.c0.slide-leave-to {
+.c5.slide-leave-to {
   -webkit-transform: translateY(30px);
   -ms-transform: translateY(30px);
   transform: translateY(30px);
@@ -8140,63 +8966,86 @@ exports[`Demo renders ./packages/react/src/TransitionGroup/__doc__/Basic.tsx cor
 
 <div>
   <div>
-    <button>
-      add
+    <button
+      class="c0 xl-base-button__root c1 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      style="margin-right: 10px;"
+    >
+      <span
+        class="c2 xl-base-button__inner"
+      >
+        <span>
+          add
+        </span>
+      </span>
+      <div
+        class="c3 xl-ripple__root xl-base-button__ripple"
+      />
     </button>
-    <button>
-      remove
+    <button
+      class="c0 xl-base-button__root c1 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+    >
+      <span
+        class="c2 xl-base-button__inner"
+      >
+        <span>
+          remove
+        </span>
+      </span>
+      <div
+        class="c3 xl-ripple__root xl-base-button__ripple"
+      />
     </button>
   </div>
   <div
-    class=""
+    class="c4"
   >
     <span
-      class="c0"
+      class="c5"
     >
       0
     </span>
     <span
-      class="c0"
+      class="c5"
     >
       1
     </span>
     <span
-      class="c0"
+      class="c5"
     >
       2
     </span>
     <span
-      class="c0"
+      class="c5"
     >
       3
     </span>
     <span
-      class="c0"
+      class="c5"
     >
       4
     </span>
     <span
-      class="c0"
+      class="c5"
     >
       5
     </span>
     <span
-      class="c0"
+      class="c5"
     >
       6
     </span>
     <span
-      class="c0"
+      class="c5"
     >
       7
     </span>
     <span
-      class="c0"
+      class="c5"
     >
       8
     </span>
     <span
-      class="c0"
+      class="c5"
     >
       9
     </span>
