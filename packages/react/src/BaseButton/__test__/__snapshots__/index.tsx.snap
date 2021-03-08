@@ -43,6 +43,7 @@ exports[`BaseButton basic test 1`] = `
   -ms-transform: scale(1);
   transform: scale(1);
   opacity: 0.12;
+  pointer-events: none;
 }
 
 .c0 .xl-base-button__ripple-enter-active {

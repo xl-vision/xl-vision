@@ -43,6 +43,7 @@ exports[`Demo renders ./packages/react/src/BaseButton/__doc__/Advance.tsx correc
   -ms-transform: scale(1);
   transform: scale(1);
   opacity: 0.12;
+  pointer-events: none;
 }
 
 .c0 .xl-base-button__ripple-enter-active {
@@ -216,6 +217,7 @@ exports[`Demo renders ./packages/react/src/BaseButton/__doc__/Basic.tsx correctl
   -ms-transform: scale(1);
   transform: scale(1);
   opacity: 0.12;
+  pointer-events: none;
 }
 
 .c0 .xl-base-button__ripple-enter-active {
@@ -334,6 +336,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   -ms-transform: scale(1);
   transform: scale(1);
   opacity: 0.12;
+  pointer-events: none;
 }
 
 .c1 .xl-base-button__ripple-enter-active {
@@ -385,6 +388,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   background-color: #e0e0e0;
 }
 
+.c2 svg {
+  pointer-events: none;
+}
+
 .c2:hover {
   background-color: rgba(217,217,217,1);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
@@ -414,6 +421,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
   background-color: #3f51b5;
+}
+
+.c5 svg {
+  pointer-events: none;
 }
 
 .c5:hover {
@@ -447,6 +458,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   background-color: #f50057;
 }
 
+.c6 svg {
+  pointer-events: none;
+}
+
 .c6:hover {
   background-color: rgba(237,2,85,1);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
@@ -476,6 +491,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
   background-color: #f44336;
+}
+
+.c7 svg {
+  pointer-events: none;
 }
 
 .c7:hover {
@@ -509,6 +528,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   background-color: #ff9800;
 }
 
+.c8 svg {
+  pointer-events: none;
+}
+
 .c8:hover {
   background-color: rgba(247,148,2,1);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
@@ -537,6 +560,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
   background-color: #3f51b5;
+}
+
+.c11 svg {
+  pointer-events: none;
 }
 
 .c11:hover {
@@ -570,6 +597,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   color: rgba(0,0,0,0.87);
 }
 
+.c13 svg {
+  pointer-events: none;
+}
+
 .c13:hover {
   background-color: rgba(0,0,0,0.04);
 }
@@ -597,6 +628,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
   color: #3f51b5;
+}
+
+.c14 svg {
+  pointer-events: none;
 }
 
 .c14:hover {
@@ -628,6 +663,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   color: #f50057;
 }
 
+.c15 svg {
+  pointer-events: none;
+}
+
 .c15:hover {
   background-color: rgba(245,0,87,0.04);
 }
@@ -657,6 +696,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   color: #f44336;
 }
 
+.c16 svg {
+  pointer-events: none;
+}
+
 .c16:hover {
   background-color: rgba(244,67,54,0.04);
 }
@@ -684,6 +727,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
   color: #ff9800;
+}
+
+.c17 svg {
+  pointer-events: none;
 }
 
 .c17:hover {
@@ -716,6 +763,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   border: 1px solid rgba(0,0,0,0.5);
 }
 
+.c18 svg {
+  pointer-events: none;
+}
+
 .c18:hover {
   background-color: rgba(0,0,0,0.04);
 }
@@ -744,6 +795,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   background-color: transparent;
   color: #3f51b5;
   border: 1px solid rgba(63,81,181,0.5);
+}
+
+.c19 svg {
+  pointer-events: none;
 }
 
 .c19:hover {
@@ -776,6 +831,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   border: 1px solid rgba(245,0,87,0.5);
 }
 
+.c20 svg {
+  pointer-events: none;
+}
+
 .c20:hover {
   background-color: rgba(245,0,87,0.04);
 }
@@ -806,6 +865,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   border: 1px solid rgba(244,67,54,0.5);
 }
 
+.c21 svg {
+  pointer-events: none;
+}
+
 .c21:hover {
   background-color: rgba(244,67,54,0.04);
 }
@@ -834,6 +897,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   background-color: transparent;
   color: #ff9800;
   border: 1px solid rgba(255,152,0,0.5);
+}
+
+.c22 svg {
+  pointer-events: none;
 }
 
 .c22:hover {
@@ -1320,6 +1387,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
   -ms-transform: scale(1);
   transform: scale(1);
   opacity: 0.12;
+  pointer-events: none;
 }
 
 .c1 .xl-base-button__ripple-enter-active {
@@ -1371,6 +1439,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
   background-color: #e0e0e0;
 }
 
+.c2 svg {
+  pointer-events: none;
+}
+
 .c2:hover {
   background-color: rgba(217,217,217,1);
 }
@@ -1398,6 +1470,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
   background-color: #3f51b5;
+}
+
+.c5 svg {
+  pointer-events: none;
 }
 
 .c5:hover {
@@ -1429,6 +1505,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
   background-color: #f50057;
 }
 
+.c6 svg {
+  pointer-events: none;
+}
+
 .c6:hover {
   background-color: rgba(237,2,85,1);
 }
@@ -1458,6 +1538,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
   background-color: #f44336;
 }
 
+.c7 svg {
+  pointer-events: none;
+}
+
 .c7:hover {
   background-color: rgba(236,66,54,1);
 }
@@ -1485,6 +1569,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: rgba(0,0,0,0.87);
   background-color: #ff9800;
+}
+
+.c8 svg {
+  pointer-events: none;
 }
 
 .c8:hover {
@@ -1620,6 +1708,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
   -ms-transform: scale(1);
   transform: scale(1);
   opacity: 0.12;
+  pointer-events: none;
 }
 
 .c1 .xl-base-button__ripple-enter-active {
@@ -1671,6 +1760,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
   background-color: #e0e0e0;
 }
 
+.c2 svg {
+  pointer-events: none;
+}
+
 .c2:hover {
   background-color: rgba(217,217,217,1);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
@@ -1702,6 +1795,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
   color: #3f51b5;
 }
 
+.c5 svg {
+  pointer-events: none;
+}
+
 .c5:hover {
   background-color: rgba(63,81,181,0.04);
 }
@@ -1729,6 +1826,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
   background-color: #f50057;
+}
+
+.c6 svg {
+  pointer-events: none;
 }
 
 .c6:hover {
@@ -1762,6 +1863,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
   color: #f44336;
 }
 
+.c7 svg {
+  pointer-events: none;
+}
+
 .c7:hover {
   background-color: rgba(244,67,54,0.04);
 }
@@ -1790,6 +1895,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
   background-color: transparent;
   color: #ff9800;
   border: 1px solid rgba(255,152,0,0.5);
+}
+
+.c8 svg {
+  pointer-events: none;
 }
 
 .c8:hover {
@@ -1941,6 +2050,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
   -ms-transform: scale(1);
   transform: scale(1);
   opacity: 0.12;
+  pointer-events: none;
 }
 
 .c1 .xl-base-button__ripple-enter-active {
@@ -1993,6 +2103,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
   opacity: 0.38;
 }
 
+.c2 svg {
+  pointer-events: none;
+}
+
 .c5 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
@@ -2013,6 +2127,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
   color: #fff;
   background-color: #3f51b5;
   opacity: 0.38;
+}
+
+.c5 svg {
+  pointer-events: none;
 }
 
 .c6 {
@@ -2037,6 +2155,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
   opacity: 0.38;
 }
 
+.c6 svg {
+  pointer-events: none;
+}
+
 .c7 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
@@ -2059,6 +2181,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
   opacity: 0.38;
 }
 
+.c7 svg {
+  pointer-events: none;
+}
+
 .c8 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
@@ -2079,6 +2205,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
   color: rgba(0,0,0,0.87);
   background-color: #ff9800;
   opacity: 0.38;
+}
+
+.c8 svg {
+  pointer-events: none;
 }
 
 .c9 {
@@ -2258,6 +2388,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
   -ms-transform: scale(1);
   transform: scale(1);
   opacity: 0.12;
+  pointer-events: none;
 }
 
 .c1 .xl-base-button__ripple-enter-active {
@@ -2311,6 +2442,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
   -ms-transform: scale(1);
   transform: scale(1);
   opacity: 0.12;
+  pointer-events: none;
 }
 
 .c9 .xl-base-button__ripple-enter-active {
@@ -2362,6 +2494,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
   background-color: #e0e0e0;
 }
 
+.c2 svg {
+  pointer-events: none;
+}
+
 .c2:hover {
   background-color: rgba(217,217,217,1);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
@@ -2393,6 +2529,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
   color: #3f51b5;
 }
 
+.c5 svg {
+  pointer-events: none;
+}
+
 .c5:hover {
   background-color: rgba(63,81,181,0.04);
 }
@@ -2420,6 +2560,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
   background-color: #f50057;
+}
+
+.c6 svg {
+  pointer-events: none;
 }
 
 .c6:hover {
@@ -2453,6 +2597,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
   color: #f44336;
 }
 
+.c7 svg {
+  pointer-events: none;
+}
+
 .c7:hover {
   background-color: rgba(244,67,54,0.04);
 }
@@ -2483,6 +2631,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
   border: 1px solid rgba(255,152,0,0.5);
 }
 
+.c8 svg {
+  pointer-events: none;
+}
+
 .c8:hover {
   background-color: rgba(255,152,0,0.04);
 }
@@ -2511,6 +2663,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
   color: #fff;
   background-color: #3f51b5;
   opacity: 0.38;
+}
+
+.c10 svg {
+  pointer-events: none;
 }
 
 .c0 button,
@@ -2675,6 +2831,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
   -ms-transform: scale(1);
   transform: scale(1);
   opacity: 0.12;
+  pointer-events: none;
 }
 
 .c1 .xl-base-button__ripple-enter-active {
@@ -2726,6 +2883,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
   background-color: #e0e0e0;
 }
 
+.c2 svg {
+  pointer-events: none;
+}
+
 .c2:hover {
   background-color: rgba(217,217,217,1);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
@@ -2757,6 +2918,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
   color: #3f51b5;
 }
 
+.c5 svg {
+  pointer-events: none;
+}
+
 .c5:hover {
   background-color: rgba(63,81,181,0.04);
 }
@@ -2784,6 +2949,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
   background-color: #f50057;
+}
+
+.c8 svg {
+  pointer-events: none;
 }
 
 .c8:hover {
@@ -2817,6 +2986,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
   color: #f44336;
 }
 
+.c9 svg {
+  pointer-events: none;
+}
+
 .c9:hover {
   background-color: rgba(244,67,54,0.04);
 }
@@ -2845,6 +3018,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
   background-color: transparent;
   color: #ff9800;
   border: 1px solid rgba(255,152,0,0.5);
+}
+
+.c10 svg {
+  pointer-events: none;
 }
 
 .c10:hover {
@@ -3028,6 +3205,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
   -ms-transform: scale(1);
   transform: scale(1);
   opacity: 0.12;
+  pointer-events: none;
 }
 
 .c1 .xl-base-button__ripple-enter-active {
@@ -3080,6 +3258,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
   background-color: #e0e0e0;
 }
 
+.c2 svg {
+  pointer-events: none;
+}
+
 .c2:hover {
   background-color: rgba(217,217,217,1);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
@@ -3110,6 +3292,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
   width: 100%;
   background-color: transparent;
   color: #3f51b5;
+}
+
+.c5 svg {
+  pointer-events: none;
 }
 
 .c5:hover {
@@ -3143,6 +3329,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
   border: 1px solid rgba(245,0,87,0.5);
 }
 
+.c6 svg {
+  pointer-events: none;
+}
+
 .c6:hover {
   background-color: rgba(245,0,87,0.04);
 }
@@ -3171,6 +3361,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
   width: 100%;
   color: rgba(0,0,0,0.87);
   background-color: #ff9800;
+}
+
+.c7 svg {
+  pointer-events: none;
 }
 
 .c7:hover {
@@ -3203,6 +3397,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
   width: 100%;
   color: #fff;
   background-color: #3f51b5;
+}
+
+.c8 svg {
+  pointer-events: none;
 }
 
 .c8:hover {
@@ -3388,6 +3586,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   -ms-transform: scale(1);
   transform: scale(1);
   opacity: 0.12;
+  pointer-events: none;
 }
 
 .c1 .xl-base-button__ripple-enter-active {
@@ -3439,6 +3638,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   background-color: #e0e0e0;
 }
 
+.c2 svg {
+  pointer-events: none;
+}
+
 .c2:hover {
   background-color: rgba(217,217,217,1);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
@@ -3468,6 +3671,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
   color: #3f51b5;
+}
+
+.c5 svg {
+  pointer-events: none;
 }
 
 .c5:hover {
@@ -3500,6 +3707,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   border: 1px solid rgba(245,0,87,0.5);
 }
 
+.c6 svg {
+  pointer-events: none;
+}
+
 .c6:hover {
   background-color: rgba(245,0,87,0.04);
 }
@@ -3529,6 +3740,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   color: #f44336;
 }
 
+.c7 svg {
+  pointer-events: none;
+}
+
 .c7:hover {
   background-color: rgba(244,67,54,0.04);
 }
@@ -3556,6 +3771,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: rgba(0,0,0,0.87);
   background-color: #ff9800;
+}
+
+.c8 svg {
+  pointer-events: none;
 }
 
 .c8:hover {
@@ -3589,6 +3808,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   background-color: #3f51b5;
 }
 
+.c9 svg {
+  pointer-events: none;
+}
+
 .c9:hover {
   background-color: rgba(70,88,184,1);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
@@ -3619,6 +3842,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   background-color: #3f51b5;
 }
 
+.c10 svg {
+  pointer-events: none;
+}
+
 .c10:hover {
   background-color: rgba(70,88,184,1);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
@@ -3647,6 +3874,10 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
   background-color: #3f51b5;
+}
+
+.c13 svg {
+  pointer-events: none;
 }
 
 .c13:hover {
@@ -4180,6 +4411,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Arrow.tsx correctly 1`
   -ms-transform: scale(1);
   transform: scale(1);
   opacity: 0.12;
+  pointer-events: none;
 }
 
 .c1 .xl-base-button__ripple-enter-active {
@@ -4229,6 +4461,10 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Arrow.tsx correctly 1`
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: rgba(0,0,0,0.87);
   background-color: #e0e0e0;
+}
+
+.c2 svg {
+  pointer-events: none;
 }
 
 .c2:hover {
@@ -4394,6 +4630,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
   -ms-transform: scale(1);
   transform: scale(1);
   opacity: 0.12;
+  pointer-events: none;
 }
 
 .c1 .xl-base-button__ripple-enter-active {
@@ -4443,6 +4680,10 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: rgba(0,0,0,0.87);
   background-color: #e0e0e0;
+}
+
+.c2 svg {
+  pointer-events: none;
 }
 
 .c2:hover {
@@ -4863,6 +5104,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Nest.tsx correctly 1`]
   -ms-transform: scale(1);
   transform: scale(1);
   opacity: 0.12;
+  pointer-events: none;
 }
 
 .c1 .xl-base-button__ripple-enter-active {
@@ -4912,6 +5154,10 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Nest.tsx correctly 1`]
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: rgba(0,0,0,0.87);
   background-color: #e0e0e0;
+}
+
+.c2 svg {
+  pointer-events: none;
 }
 
 .c2:hover {
@@ -5097,6 +5343,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 
   -ms-transform: scale(1);
   transform: scale(1);
   opacity: 0.12;
+  pointer-events: none;
 }
 
 .c1 .xl-base-button__ripple-enter-active {
@@ -5146,6 +5393,10 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: rgba(0,0,0,0.87);
   background-color: #e0e0e0;
+}
+
+.c2 svg {
+  pointer-events: none;
 }
 
 .c2:hover {
@@ -5351,6 +5602,7 @@ exports[`Demo renders ./packages/react/src/Portal/__doc__/Basic.tsx correctly 1`
   -ms-transform: scale(1);
   transform: scale(1);
   opacity: 0.12;
+  pointer-events: none;
 }
 
 .c1 .xl-base-button__ripple-enter-active {
@@ -5400,6 +5652,10 @@ exports[`Demo renders ./packages/react/src/Portal/__doc__/Basic.tsx correctly 1`
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
   background-color: #3f51b5;
+}
+
+.c2 svg {
+  pointer-events: none;
 }
 
 .c2:hover {
@@ -6865,6 +7121,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
   -ms-transform: scale(1);
   transform: scale(1);
   opacity: 0.12;
+  pointer-events: none;
 }
 
 .c1 .xl-base-button__ripple-enter-active {
@@ -6914,6 +7171,10 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: rgba(0,0,0,0.87);
   background-color: #e0e0e0;
+}
+
+.c2 svg {
+  pointer-events: none;
 }
 
 .c2:hover {
@@ -7195,6 +7456,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Colors.tsx correctly 
   -ms-transform: scale(1);
   transform: scale(1);
   opacity: 0.12;
+  pointer-events: none;
 }
 
 .c1 .xl-base-button__ripple-enter-active {
@@ -7244,6 +7506,10 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Colors.tsx correctly 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: rgba(0,0,0,0.87);
   background-color: #e0e0e0;
+}
+
+.c2 svg {
+  pointer-events: none;
 }
 
 .c2:hover {
@@ -7366,6 +7632,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/MaxWidth.tsx correctl
   -ms-transform: scale(1);
   transform: scale(1);
   opacity: 0.12;
+  pointer-events: none;
 }
 
 .c1 .xl-base-button__ripple-enter-active {
@@ -7415,6 +7682,10 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/MaxWidth.tsx correctl
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: rgba(0,0,0,0.87);
   background-color: #e0e0e0;
+}
+
+.c2 svg {
+  pointer-events: none;
 }
 
 .c2:hover {
@@ -7495,6 +7766,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Nest.tsx correctly 1`
   -ms-transform: scale(1);
   transform: scale(1);
   opacity: 0.12;
+  pointer-events: none;
 }
 
 .c1 .xl-base-button__ripple-enter-active {
@@ -7544,6 +7816,10 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Nest.tsx correctly 1`
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: rgba(0,0,0,0.87);
   background-color: #e0e0e0;
+}
+
+.c2 svg {
+  pointer-events: none;
 }
 
 .c2:hover {
@@ -7680,6 +7956,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Rich.tsx correctly 1`
   -ms-transform: scale(1);
   transform: scale(1);
   opacity: 0.12;
+  pointer-events: none;
 }
 
 .c1 .xl-base-button__ripple-enter-active {
@@ -7729,6 +8006,10 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Rich.tsx correctly 1`
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: rgba(0,0,0,0.87);
   background-color: #e0e0e0;
+}
+
+.c2 svg {
+  pointer-events: none;
 }
 
 .c2:hover {

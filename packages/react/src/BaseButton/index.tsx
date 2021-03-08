@@ -53,6 +53,7 @@ const BaseButtonRoot = (styled('button', {
     [`.${clsPrefix}-base-button__ripple`]: {
       transform: 'scale(1)',
       opacity: color.action.pressed,
+      pointerEvents: 'none',
       '&-enter-active': {
         transition: theme.transition.enter('all'),
       },
