@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { Instance, Placement, createPopper, Modifier } from '@popperjs/core';
+import { Instance, Placement, createPopper } from '@popperjs/core';
 import clsx from 'clsx';
 import CSSTransition, { CSSTransitionElement, CSSTransitionProps } from '../CSSTransition';
 import useForkRef from '../hooks/useForkRef';
@@ -61,7 +61,7 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
     transitionClasses,
     trigger = 'hover',
     disablePopupEnter,
-    offset = 10,
+    offset,
     placement = 'auto',
     showDelay = 0,
     hideDelay = 0,
@@ -93,6 +93,8 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
 
   const [visible, setVisible] = React.useState(visibleProps || false);
 
+  const [actualPlacement, setActualPlacement] = React.useState<PopperPlacement>(placement);
+
   const lifecycleStateRef = useLifecycleState();
 
   const popupNodeRef = React.useRef<HTMLDivElement>(null);
@@ -119,31 +121,6 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
     return ReactDOM.findDOMNode(referenceRef.current) as HTMLElement;
   }, []);
 
-  const offsetModifer: Modifier<string, {}> = React.useMemo(() => {
-    const offsetStr = typeof offset === 'number' ? `${offset}px` : offset;
-
-    return {
-      name: 'paddingOffset',
-      enabled: true,
-      phase: 'main',
-      fn({ state }) {
-        const style: Partial<CSSStyleDeclaration> = {};
-        // eslint-disable-next-line @typescript-eslint/no-shadow
-        const { placement, styles } = state;
-        if (/^bottom/.exec(placement)) {
-          style.paddingTop = offsetStr;
-        } else if (/^top/.exec(placement)) {
-          style.paddingBottom = offsetStr;
-        } else if (/^left/.exec(placement)) {
-          style.paddingRight = offsetStr;
-        } else {
-          style.paddingLeft = offsetStr;
-        }
-        styles.popper = { ...styles.popper, ...style };
-      },
-    };
-  }, [offset]);
-
   const createOrUpdatePopper = useEventCallback(() => {
     let instance = popperInstanceRef.current;
     const popupEl = popupNodeRef.current!;
@@ -152,7 +129,6 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
       instance = popperInstanceRef.current = createPopper(referenceEl, popupEl, {
         placement,
         modifiers: [
-          offsetModifer,
           {
             name: 'arrow',
             options: {
@@ -164,9 +140,9 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
     }
     instance.forceUpdate();
 
-    popupEl.style.zIndex = `${increaseZindex()}`;
+    setActualPlacement(instance.state.placement);
 
-    console.log(instance.state)
+    popupEl.style.zIndex = `${increaseZindex()}`;
 
     popupInnerNodeRef.current!.dataset.placement = instance.state.placement;
     if (arrowRef.current) {
@@ -365,6 +341,24 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
 
   const innerClassName = `${rootClassName}__inner`;
 
+  const popupInnerStyles: React.CSSProperties = {
+    position: 'relative',
+  };
+
+  const offsetStr = typeof offset === 'number' ? `${offset}px` : offset;
+
+  if (offsetStr) {
+    if (/^top/.exec(actualPlacement)) {
+      popupInnerStyles.marginBottom = offsetStr;
+    } else if (/^bottom/.exec(actualPlacement)) {
+      popupInnerStyles.marginTop = offsetStr;
+    } else if (/^left/.exec(actualPlacement)) {
+      popupInnerStyles.marginRight = offsetStr;
+    } else {
+      popupInnerStyles.marginLeft = offsetStr;
+    }
+  }
+
   const portal = (
     <Portal getContainer={getPopupContainer}>
       <PopperContext.Provider value={{ addCloseHandler, removeCloseHandler }}>
@@ -384,11 +378,7 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
             afterLeave={afterLeave}
             unmountOnLeave={destroyOnHide}
           >
-            <div
-              ref={popupInnerNodeRef}
-              style={{ position: 'relative' }}
-              className={innerClassName}
-            >
+            <div ref={popupInnerNodeRef} style={popupInnerStyles} className={innerClassName}>
               {arrowNode}
               {popup}
             </div>

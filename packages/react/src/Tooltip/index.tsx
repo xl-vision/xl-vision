@@ -124,6 +124,7 @@ const Tooltip: React.FunctionComponent<TooltipProps> = (props) => {
     transitionClassName,
     bgColor = color.grey[800],
     maxWidth,
+    offset = 12,
     ...others
   } = props;
 
@@ -156,6 +157,7 @@ const Tooltip: React.FunctionComponent<TooltipProps> = (props) => {
     <>
       <TooltipRoot
         {...others}
+        offset={offset}
         arrow={arrow}
         popup={popup}
         getPopupContainer={getPopupContainer}
@@ -175,6 +177,7 @@ if (isDevelopment) {
     transitionClassName: PropTypes.string,
     bgColor: PropTypes.string,
     maxWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   };
 }
 
