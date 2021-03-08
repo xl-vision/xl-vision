@@ -1,33 +1,13 @@
 import { mount } from 'enzyme';
 import React from 'react';
-import { act } from 'react-dom/test-utils';
-import wait from '../../../../../test/wait';
 import CollapseTransition from '..';
-import * as TransitionUtils from '../../utils/transition';
 
 describe('CollapseTransition', () => {
-  let onTransitionEndSpy: jest.SpyInstance;
-  let nextFrameSpy: jest.SpyInstance;
-
   beforeEach(() => {
-    jest.useRealTimers();
-
-    onTransitionEndSpy = jest.spyOn(TransitionUtils, 'onTransitionEnd');
-    // 保证动画有一定的时间
-    onTransitionEndSpy.mockImplementation((_el, done: () => void) => {
-      setTimeout(done, 25);
-    });
-
-    nextFrameSpy = jest.spyOn(TransitionUtils, 'nextFrame');
-    nextFrameSpy.mockImplementation((done: () => void) => {
-      const id = setTimeout(done, 25);
-      return () => {
-        clearTimeout(id);
-      };
-    });
+    jest.useFakeTimers();
   });
 
-  it('test render', async () => {
+  it('test render', () => {
     const wrapper = mount(
       <CollapseTransition in={false}>
         <div />
@@ -40,7 +20,7 @@ describe('CollapseTransition', () => {
       in: true,
     });
 
-    await act(() => wait(75));
+    jest.runAllTimers();
 
     expect(wrapper.render()).toMatchSnapshot();
 
@@ -48,12 +28,12 @@ describe('CollapseTransition', () => {
       in: false,
     });
 
-    await act(() => wait(75));
+    jest.runAllTimers();
 
     expect(wrapper.render()).toMatchSnapshot();
   });
 
-  it('test horizontal', async () => {
+  it('test horizontal', () => {
     const wrapper = mount(
       <CollapseTransition in={false} horizontal={true}>
         <div />
@@ -66,7 +46,7 @@ describe('CollapseTransition', () => {
       in: true,
     });
 
-    await act(() => wait(75));
+    jest.runAllTimers();
 
     expect(wrapper.render()).toMatchSnapshot();
 
@@ -74,7 +54,7 @@ describe('CollapseTransition', () => {
       in: false,
     });
 
-    await act(() => wait(75));
+    jest.runAllTimers();
 
     expect(wrapper.render()).toMatchSnapshot();
   });

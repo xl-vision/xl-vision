@@ -3,7 +3,7 @@ import React from 'react';
 
 const Wrapper = styled('footer')(({ theme }) => {
   return {
-    padding: '10px 0',
+    padding: '16px 0',
     borderTop: `1px solid ${theme.color.divider}`,
     textAlign: 'center',
   };

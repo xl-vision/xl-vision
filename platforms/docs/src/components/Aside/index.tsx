@@ -24,7 +24,7 @@ const NonLeftNode = styled(LeftNode)(({ theme }) => {
 const NodeWrapper = styled('ul')(() => {
   return {
     listStyle: 'none',
-    margin: '0 0 0 12px',
+    margin: 0,
     padding: 0,
   };
 });
@@ -50,16 +50,18 @@ const NavLinkWrapper = styled(NavLink)(({ theme }) => {
   };
 });
 
-const traverseRoutes = (routesArray: Array<RouteType>): JSX.Element => {
+const padding = 12;
+
+const traverseRoutes = (routesArray: Array<RouteType>, level = 1): JSX.Element => {
   const routeElements: Array<JSX.Element> = [];
   routesArray.forEach((it, index) => {
     const { name } = it;
     let el: JSX.Element;
     if ('children' in it) {
-      const childElements = traverseRoutes(it.children);
+      const childElements = traverseRoutes(it.children, level + 1);
       el = (
         <>
-          <NonLeftNode>{name}</NonLeftNode>
+          <NonLeftNode style={{ paddingLeft: padding * level }}>{name}</NonLeftNode>
           {childElements}
         </>
       );
@@ -67,7 +69,7 @@ const traverseRoutes = (routesArray: Array<RouteType>): JSX.Element => {
       const { path } = it;
       el = (
         <NavLinkWrapper exact={true} to={path} replace={true}>
-          <LeftNode>{name}</LeftNode>
+          <LeftNode style={{ paddingLeft: padding * level }}>{name}</LeftNode>
         </NavLinkWrapper>
       );
     }
@@ -84,7 +86,6 @@ const el = traverseRoutes(routes);
 
 const Wrapper = styled('div')(() => {
   return {
-    marginLeft: '-12px',
     li: {
       marginTop: '8px',
     },
