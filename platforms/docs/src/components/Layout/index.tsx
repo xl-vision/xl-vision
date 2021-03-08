@@ -54,12 +54,14 @@ const AsideWrapper = styled(Aside)(({ theme }) => {
 
 const MainWrapper = styled('div')(() => {
   return {
+    padding: '0 16px',
     '@media(min-width: 768px)': {
-      marginLeft: 260 - 12 + 16,
-      marginRight: 16,
-    },
-    '@media(max-width: 768px)': {
-      margin: '0 16px',
+      position: 'fixed',
+      top: 60,
+      bottom: 0,
+      left: 260 - 12,
+      right: 0,
+      overflowY: 'auto',
     },
   };
 });
@@ -75,9 +77,9 @@ const Layout = () => {
           <AsideWrapper />
           <MainWrapper>
             <Main />
+            <Footer />
           </MainWrapper>
         </Content>
-        <Footer />
       </Router>
     </ThemeProvider>
   );
