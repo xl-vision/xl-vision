@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, styled, Icon, Tooltip } from '@xl-vision/react';
 import DarkMode from '@xl-vision/icons/Brightness4Filled';
 import LightkMode from '@xl-vision/icons/Brightness7Filled';
-import { darken } from '@xl-vision/react/utils/color';
+import { darken, lighten } from '@xl-vision/react/utils/color';
 import GithubIcon from './GithubIcon';
 import { ThemeContext } from '../ThemeProvider';
 
@@ -18,7 +18,7 @@ const HeaderNav = styled('header')<{ isDark: boolean }>(({ theme, styleProps }) 
 
   const { color } = theme;
 
-  const background = isDark ? darken(color.background, 0.1) : color.themes.primary.color;
+  const background = (isDark ? darken : lighten)(color.background, 0.1);
 
   const fontColor = color.getContrastText(background).text.primary;
 
@@ -64,14 +64,14 @@ const Header = () => {
       <HeaderNav styleProps={{ isDark }}>
         <Logo>XL-VISION</Logo>
         <div>
-          <Tooltip content='在亮色主题和暗色主题间切换' placement='bottom'>
+          <Tooltip content='在亮色主题和暗色主题间切换' placement='bottom' showDelay={1000}>
             <Button
               variant='text'
               onClick={handleTheme}
               prefixIcon={<Icon>{isDark ? <LightkMode /> : <DarkMode />}</Icon>}
             />
           </Tooltip>
-          <Tooltip content='Github' placement='bottom'>
+          <Tooltip content='Github' placement='bottom' showDelay={1000}>
             <Button
               variant='text'
               target='_black'

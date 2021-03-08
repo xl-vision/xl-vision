@@ -7,38 +7,37 @@ import Header from '../Header';
 import Main from '../Main';
 import ThemeProvider from '../ThemeProvider';
 
-const GlobalStyle = createGlobalStyles(() => {
+const GlobalStyle = createGlobalStyles(({ theme }) => {
+  const { color } = theme;
   return {
     'html,body': {
       width: '100%',
       height: '100%',
     },
-
     '#app': {
       height: '100%',
+    },
+    '::-webkit-scrollbar': {
+      width: 8,
+      height: 8,
+      // backgroundColor: color.grey[500],
+    },
+    // '::-webkit-scrollbar-track': {
+    //   boxShadow: 'inset 0 0 6px rgba(0, 0, 0, 0.3)',
+    // },
+    '::-webkit-scrollbar-thumb': {
+      backgroundColor: color.grey.A100,
+      borderRadius: 5,
     },
   };
 });
 
-const Content = styled('div')(() => {
-  return {
-    // display: 'flex',
-    // height: '100%',
-    // flexWrap: 'wrap',
-    // '> main': {
-    //   flex: 1,
-    //   overflowX: 'auto',
-    //   margin: '0 16px',
-    // },
-  };
-});
-
-const asideWidth = 300;
+const asideWidth = 280;
 
 const AsideWrapper = styled(Aside)(({ theme }) => {
   return {
     backgroundColor: theme.color.background,
-    paddingRight: 12,
+    padding: '0 12px',
     '@media(max-width: 768px)': {
       borderBottom: `1px solid ${theme.color.divider}`,
     },
@@ -63,7 +62,7 @@ const MainWrapper = styled('div')(() => {
       position: 'fixed',
       top: 60,
       bottom: 0,
-      left: asideWidth - 12,
+      left: asideWidth,
       right: 0,
       overflowY: 'auto',
     },
@@ -77,13 +76,11 @@ const Layout = () => {
       <GlobalStyle />
       <Router>
         <Header />
-        <Content>
-          <AsideWrapper />
-          <MainWrapper>
-            <Main />
-            <Footer />
-          </MainWrapper>
-        </Content>
+        <AsideWrapper />
+        <MainWrapper>
+          <Main />
+          <Footer />
+        </MainWrapper>
       </Router>
     </ThemeProvider>
   );
