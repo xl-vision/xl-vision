@@ -3,7 +3,7 @@ import { Popper, Button, styled } from '@xl-vision/react';
 
 const Wrapper = styled('div')(({ theme }) => {
   return {
-    margin: '0 100px',
+    padding: '0 20px',
     '.column': {
       display: 'flex',
       justifyContent: 'space-between',
@@ -59,7 +59,7 @@ const Wrapper = styled('div')(({ theme }) => {
   };
 });
 
-const popup = <span>This is popper</span>;
+const popup = <span>content</span>;
 
 export default () => {
   return (
@@ -67,59 +67,59 @@ export default () => {
       <div className='column'>
         <div />
         <Popper transitionClasses='slide' placement='top-start' popup={popup}>
-          <Button>top start</Button>
+          <Button>TS</Button>
         </Popper>
         <Popper transitionClasses='slide' placement='top' popup={popup}>
-          <Button>top</Button>
+          <Button>T</Button>
         </Popper>
         <Popper transitionClasses='slide' placement='top-end' popup={popup}>
-          <Button>top end</Button>
+          <Button>TE</Button>
         </Popper>
         <div />
       </div>
       <div className='column'>
         <Popper transitionClasses='slide' placement='left-start' popup={popup}>
-          <Button>left start</Button>
+          <Button>LS</Button>
         </Popper>
         <div />
         <div />
         <div />
         <Popper transitionClasses='slide' placement='right-start' popup={popup}>
-          <Button>right start</Button>
+          <Button>RS</Button>
         </Popper>
       </div>
       <div className='column'>
         <Popper transitionClasses='slide' placement='left' popup={popup}>
-          <Button>left</Button>
+          <Button>L</Button>
         </Popper>
         <div />
         <div />
         <div />
         <Popper transitionClasses='slide' placement='right' popup={popup}>
-          <Button>right</Button>
+          <Button>R</Button>
         </Popper>
       </div>
       <div className='column'>
         <Popper transitionClasses='slide' placement='left-end' popup={popup}>
-          <Button>left end</Button>
+          <Button>LE</Button>
         </Popper>
         <div />
         <div />
         <div />
         <Popper transitionClasses='slide' placement='right-end' popup={popup}>
-          <Button>right end</Button>
+          <Button>RE</Button>
         </Popper>
       </div>
       <div className='column'>
         <div />
         <Popper transitionClasses='slide' placement='bottom-start' popup={popup}>
-          <Button>bottom start</Button>
+          <Button>BS</Button>
         </Popper>
         <Popper transitionClasses='slide' placement='bottom' popup={popup}>
-          <Button>bottom</Button>
+          <Button>B</Button>
         </Popper>
         <Popper transitionClasses='slide' placement='bottom-end' popup={popup}>
-          <Button>bottom end</Button>
+          <Button>BE</Button>
         </Popper>
         <div />
       </div>
