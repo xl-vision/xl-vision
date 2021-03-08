@@ -33,21 +33,22 @@ const Content = styled('div')(() => {
   };
 });
 
+const asideWidth = 300;
+
 const AsideWrapper = styled(Aside)(({ theme }) => {
   return {
     backgroundColor: theme.color.background,
-
+    '@media(max-width: 768px)': {
+      width: '100%',
+      borderBottom: `1px solid ${theme.color.divider}`,
+    },
     '@media(min-width: 768px)': {
       position: 'fixed',
       top: 60,
       bottom: 0,
       overflowY: 'auto',
-      width: '260px',
+      width: asideWidth,
       borderRight: `1px solid ${theme.color.divider}`,
-    },
-    '@media(max-width: 768px)': {
-      width: '100%',
-      borderBottom: `1px solid ${theme.color.divider}`,
     },
   };
 });
@@ -59,7 +60,7 @@ const MainWrapper = styled('div')(() => {
       position: 'fixed',
       top: 60,
       bottom: 0,
-      left: 260 - 12,
+      left: asideWidth - 12,
       right: 0,
       overflowY: 'auto',
     },

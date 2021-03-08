@@ -3,7 +3,7 @@ import { Tooltip, Button, styled } from '@xl-vision/react';
 
 const Wrapper = styled('div')(() => {
   return {
-    padding: '0 20px',
+    padding: '0 25px',
     '.column': {
       display: 'flex',
       justifyContent: 'space-between',
@@ -14,7 +14,7 @@ const Wrapper = styled('div')(() => {
   };
 });
 
-const content = <span>content</span>;
+const content = <span>msg</span>;
 
 export default () => {
   return (
