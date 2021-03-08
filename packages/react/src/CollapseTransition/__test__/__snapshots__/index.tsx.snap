@@ -37,7 +37,7 @@ exports[`CollapseTransition test render 2`] = `
   data-overflow=""
   data-padding-bottom=""
   data-padding-top=""
-  style="padding-top: 0px; padding-bottom: 0px;"
+  style="overflow: hidden; padding-top: 0px; padding-bottom: 0px;"
 />
 `;
 

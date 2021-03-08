@@ -5,6 +5,7 @@ const Wrapper = styled('div')(() => {
   return {
     button: {
       marginRight: '16px',
+      marginBottom: '16px',
     },
   };
 });

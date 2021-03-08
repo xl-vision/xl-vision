@@ -27,14 +27,14 @@ describe('Popper', () => {
 
     wrapper.find('#btn').simulate('mouseenter');
 
-    await act(() => wait(200));
+    await act(() => wait(300));
 
     expect(handleVisibleChange).toHaveBeenLastCalledWith(true);
     expect(wrapper.render()).toMatchSnapshot();
 
     wrapper.find('#btn').simulate('mouseleave');
 
-    await act(() => wait(200));
+    await act(() => wait(300));
 
     expect(handleVisibleChange).toHaveBeenLastCalledWith(false);
     expect(wrapper.render()).toMatchSnapshot();
@@ -57,14 +57,14 @@ describe('Popper', () => {
 
     wrapper.find('#btn').simulate('click');
 
-    await act(() => wait(200));
+    await act(() => wait(300));
 
     expect(handleVisibleChange).toHaveBeenLastCalledWith(true);
     expect(wrapper.render()).toMatchSnapshot();
 
     document.body.click();
 
-    await act(() => wait(200));
+    await act(() => wait(300));
 
     expect(handleVisibleChange).toHaveBeenLastCalledWith(false);
     expect(wrapper.render()).toMatchSnapshot();
@@ -87,14 +87,14 @@ describe('Popper', () => {
 
     wrapper.find('#btn').simulate('contextMenu');
 
-    await act(() => wait(200));
+    await act(() => wait(300));
 
     expect(handleVisibleChange).toHaveBeenLastCalledWith(true);
     expect(wrapper.render()).toMatchSnapshot();
 
     document.body.click();
 
-    await act(() => wait(200));
+    await act(() => wait(300));
 
     expect(handleVisibleChange).toHaveBeenLastCalledWith(false);
     expect(wrapper.render()).toMatchSnapshot();
@@ -119,7 +119,7 @@ describe('Popper', () => {
 
     wrapper.find('#btn').simulate('mouseenter');
 
-    await act(() => wait(200));
+    await act(() => wait(300));
 
     expect(handleVisibleChange.mock.calls.length).toBe(1);
 
@@ -127,7 +127,7 @@ describe('Popper', () => {
       visible: true,
     });
 
-    await act(() => wait(200));
+    await act(() => wait(300));
 
     expect(handleVisibleChange).toHaveBeenLastCalledWith(true);
     expect(wrapper.render()).toMatchSnapshot();
@@ -135,7 +135,7 @@ describe('Popper', () => {
     wrapper.setProps({
       visible: false,
     });
-    await act(() => wait(200));
+    await act(() => wait(300));
 
     expect(handleVisibleChange).toHaveBeenLastCalledWith(false);
     expect(wrapper.render()).toMatchSnapshot();
@@ -156,18 +156,18 @@ describe('Popper', () => {
 
     wrapper.find('#btn').simulate('mouseenter');
 
-    await act(() => wait(200));
+    await act(() => wait(300));
     expect(handleVisibleChange).toHaveBeenLastCalledWith(true);
 
     wrapper.find('#btn').simulate('mouseleave');
 
     wrapper.find('div.popup').simulate('mouseenter');
 
-    await act(() => wait(200));
+    await act(() => wait(300));
     expect(handleVisibleChange).toHaveBeenLastCalledWith(true);
 
     wrapper.find('div.popup').simulate('mouseleave');
-    await act(() => wait(200));
+    await act(() => wait(300));
     expect(handleVisibleChange).toHaveBeenLastCalledWith(false);
 
     wrapper.setProps({
@@ -176,13 +176,13 @@ describe('Popper', () => {
 
     wrapper.find('#btn').simulate('mouseenter');
 
-    await act(() => wait(200));
+    await act(() => wait(300));
     expect(handleVisibleChange).toHaveBeenLastCalledWith(true);
 
     wrapper.find('#btn').simulate('mouseleave');
     wrapper.find('div.popup').simulate('mouseenter');
 
-    await act(() => wait(200));
+    await act(() => wait(300));
     expect(handleVisibleChange).toHaveBeenLastCalledWith(false);
   });
 });

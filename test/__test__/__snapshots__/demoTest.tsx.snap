@@ -4243,6 +4243,7 @@ exports[`renders ./packages/react/src/Popper/__doc__/Arrow.tsx correctly 1`] = `
 
 .c0 button {
   margin-right: 16px;
+  margin-bottom: 16px;
 }
 
 .c0 .popup {
@@ -4455,7 +4456,7 @@ exports[`renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`] = `
 }
 
 .c0 {
-  margin: 0 100px;
+  padding: 0 20px;
 }
 
 .c0 .column {
@@ -4578,7 +4579,7 @@ exports[`renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`] = `
         class="c3 xl-base-button__inner"
       >
         <span>
-          top start
+          TS
         </span>
       </span>
       <div
@@ -4596,7 +4597,7 @@ exports[`renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`] = `
         class="c3 xl-base-button__inner"
       >
         <span>
-          top
+          T
         </span>
       </span>
       <div
@@ -4614,7 +4615,7 @@ exports[`renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`] = `
         class="c3 xl-base-button__inner"
       >
         <span>
-          top end
+          TE
         </span>
       </span>
       <div
@@ -4637,7 +4638,7 @@ exports[`renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`] = `
         class="c3 xl-base-button__inner"
       >
         <span>
-          left start
+          LS
         </span>
       </span>
       <div
@@ -4658,50 +4659,7 @@ exports[`renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`] = `
         class="c3 xl-base-button__inner"
       >
         <span>
-          right start
-        </span>
-      </span>
-      <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
-      />
-    </button>
-    <div
-      class="xl-popper"
-      style="position: absolute;"
-    />
-  </div>
-  <div
-    class="column"
-  >
-    <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
-    >
-      <span
-        class="c3 xl-base-button__inner"
-      >
-        <span>
-          left
-        </span>
-      </span>
-      <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
-      />
-    </button>
-    <div
-      class="xl-popper"
-      style="position: absolute;"
-    />
-    <div />
-    <div />
-    <div />
-    <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
-    >
-      <span
-        class="c3 xl-base-button__inner"
-      >
-        <span>
-          right
+          RS
         </span>
       </span>
       <div
@@ -4723,7 +4681,7 @@ exports[`renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`] = `
         class="c3 xl-base-button__inner"
       >
         <span>
-          left end
+          L
         </span>
       </span>
       <div
@@ -4744,7 +4702,50 @@ exports[`renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`] = `
         class="c3 xl-base-button__inner"
       >
         <span>
-          right end
+          R
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple__root xl-base-button__ripple"
+      />
+    </button>
+    <div
+      class="xl-popper"
+      style="position: absolute;"
+    />
+  </div>
+  <div
+    class="column"
+  >
+    <button
+      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+    >
+      <span
+        class="c3 xl-base-button__inner"
+      >
+        <span>
+          LE
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple__root xl-base-button__ripple"
+      />
+    </button>
+    <div
+      class="xl-popper"
+      style="position: absolute;"
+    />
+    <div />
+    <div />
+    <div />
+    <button
+      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+    >
+      <span
+        class="c3 xl-base-button__inner"
+      >
+        <span>
+          RE
         </span>
       </span>
       <div
@@ -4767,7 +4768,7 @@ exports[`renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`] = `
         class="c3 xl-base-button__inner"
       >
         <span>
-          bottom start
+          BS
         </span>
       </span>
       <div
@@ -4785,7 +4786,7 @@ exports[`renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`] = `
         class="c3 xl-base-button__inner"
       >
         <span>
-          bottom
+          B
         </span>
       </span>
       <div
@@ -4803,7 +4804,7 @@ exports[`renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`] = `
         class="c3 xl-base-button__inner"
       >
         <span>
-          bottom end
+          BE
         </span>
       </span>
       <div
@@ -4925,6 +4926,7 @@ exports[`renders ./packages/react/src/Popper/__doc__/Nest.tsx correctly 1`] = `
 
 .c0 button {
   margin-right: 16px;
+  margin-bottom: 16px;
 }
 
 .c0 .slide-enter-active,
@@ -5158,6 +5160,7 @@ exports[`renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 1`] =
 
 .c0 button {
   margin-right: 16px;
+  margin-bottom: 16px;
 }
 
 .c0 .slide-enter-active,
@@ -7255,6 +7258,7 @@ exports[`renders ./packages/react/src/Tooltip/__doc__/Colors.tsx correctly 1`] =
 
 .c0 button {
   margin-right: 16px;
+  margin-bottom: 16px;
 }
 
 <div
@@ -7425,6 +7429,7 @@ exports[`renders ./packages/react/src/Tooltip/__doc__/MaxWidth.tsx correctly 1`]
 
 .c0 button {
   margin-right: 16px;
+  margin-bottom: 16px;
 }
 
 <div
@@ -7553,6 +7558,7 @@ exports[`renders ./packages/react/src/Tooltip/__doc__/Nest.tsx correctly 1`] = `
 
 .c0 button {
   margin-right: 16px;
+  margin-bottom: 16px;
 }
 
 <div
@@ -7737,6 +7743,7 @@ exports[`renders ./packages/react/src/Tooltip/__doc__/Rich.tsx correctly 1`] = `
 
 .c0 button {
   margin-right: 16px;
+  margin-bottom: 16px;
 }
 
 <div

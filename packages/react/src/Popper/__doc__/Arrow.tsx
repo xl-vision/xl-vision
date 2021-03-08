@@ -5,6 +5,7 @@ const Wrapper = styled('div')(({ theme }) => {
   return {
     button: {
       marginRight: '16px',
+      marginBottom: '16px',
     },
     '.popup': {
       borderRadius: '3px',
