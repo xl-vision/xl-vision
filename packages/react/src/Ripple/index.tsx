@@ -64,6 +64,7 @@ const Ripple = React.forwardRef<RippleRef, RippleProps>((props, ref) => {
   const keyRef = React.useRef(0);
   const containerRef = React.useRef<HTMLDivElement>(null);
   const startTimerRef = React.useRef<NodeJS.Timeout>();
+  const startTimerCommitRef = React.useRef<() => void>();
   const ignoreMouseDonwRef = React.useRef(false);
 
   React.useEffect(() => {
@@ -141,9 +142,14 @@ const Ripple = React.forwardRef<RippleRef, RippleProps>((props, ref) => {
         // check that this isn't another touchstart due to multitouch
         // otherwise we will only clear a single timer when unmounting while two
         // are running
-        startTimerRef.current = setTimeout(() => {
+        startTimerCommitRef.current = () => {
           commit(x, y, size);
-          startTimerRef.current = undefined;
+        };
+        startTimerRef.current = setTimeout(() => {
+          if (startTimerCommitRef.current) {
+            startTimerCommitRef.current();
+            startTimerCommitRef.current = undefined;
+          }
         }, DELAY_RIPPLE);
       } else {
         commit(x, y, size);
@@ -156,6 +162,10 @@ const Ripple = React.forwardRef<RippleRef, RippleProps>((props, ref) => {
     if (startTimerRef.current) {
       clearTimeout(startTimerRef.current);
       startTimerRef.current = undefined;
+      if (startTimerCommitRef.current) {
+        startTimerCommitRef.current();
+        startTimerCommitRef.current = undefined;
+      }
     }
     if (leaveAfterEnter) {
       if (enteredCountRef.current > 0) {
