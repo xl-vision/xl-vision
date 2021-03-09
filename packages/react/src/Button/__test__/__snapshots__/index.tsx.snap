@@ -28,7 +28,6 @@ exports[`Button test basic render 1`] = `
   border: 0;
   border-radius: 0;
   outline: 0;
-  -webkit-appearance: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -36,6 +35,16 @@ exports[`Button test basic render 1`] = `
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
   cursor: pointer;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.c0::-moz-focus-inner {
+  border-style: none;
+}
+
+.c0 svg {
+  pointer-events: none;
 }
 
 .c0 .xl-base-button__ripple {
@@ -43,7 +52,6 @@ exports[`Button test basic render 1`] = `
   -ms-transform: scale(1);
   transform: scale(1);
   opacity: 0.12;
-  pointer-events: none;
 }
 
 .c0 .xl-base-button__ripple-enter-active {
@@ -82,7 +90,6 @@ exports[`Button test basic render 1`] = `
   border: 0;
   border-radius: 0;
   outline: 0;
-  -webkit-appearance: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -90,6 +97,16 @@ exports[`Button test basic render 1`] = `
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
   cursor: not-allowed;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.c12::-moz-focus-inner {
+  border-style: none;
+}
+
+.c12 svg {
+  pointer-events: none;
 }
 
 .c12 .xl-base-button__ripple {
@@ -97,7 +114,6 @@ exports[`Button test basic render 1`] = `
   -ms-transform: scale(1);
   transform: scale(1);
   opacity: 0.12;
-  pointer-events: none;
 }
 
 .c12 .xl-base-button__ripple-enter-active {
@@ -165,10 +181,6 @@ exports[`Button test basic render 1`] = `
   background-color: #e0e0e0;
 }
 
-.c1 svg {
-  pointer-events: none;
-}
-
 .c1:hover {
   background-color: rgba(217,217,217,1);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
@@ -198,10 +210,6 @@ exports[`Button test basic render 1`] = `
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
   background-color: #f44336;
-}
-
-.c4 svg {
-  pointer-events: none;
 }
 
 .c4:hover {
@@ -236,10 +244,6 @@ exports[`Button test basic render 1`] = `
   border: 1px solid rgba(0,0,0,0.5);
 }
 
-.c5 svg {
-  pointer-events: none;
-}
-
 .c5:hover {
   background-color: rgba(0,0,0,0.04);
 }
@@ -266,10 +270,6 @@ exports[`Button test basic render 1`] = `
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: rgba(0,0,0,0.87);
   background-color: #e0e0e0;
-}
-
-.c9 svg {
-  pointer-events: none;
 }
 
 .c9:hover {
@@ -304,10 +304,6 @@ exports[`Button test basic render 1`] = `
   background-color: #e0e0e0;
 }
 
-.c11 svg {
-  pointer-events: none;
-}
-
 .c11:hover {
   background-color: rgba(217,217,217,1);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
@@ -340,10 +336,6 @@ exports[`Button test basic render 1`] = `
   opacity: 0.38;
 }
 
-.c13 svg {
-  pointer-events: none;
-}
-
 .c15 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
@@ -363,10 +355,6 @@ exports[`Button test basic render 1`] = `
   color: rgba(0,0,0,0.87);
   background-color: #e0e0e0;
   opacity: 0.38;
-}
-
-.c15 svg {
-  pointer-events: none;
 }
 
 .c6 {

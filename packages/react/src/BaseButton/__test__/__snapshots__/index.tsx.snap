@@ -28,7 +28,6 @@ exports[`BaseButton basic test 1`] = `
   border: 0;
   border-radius: 0;
   outline: 0;
-  -webkit-appearance: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -36,6 +35,16 @@ exports[`BaseButton basic test 1`] = `
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
   cursor: pointer;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.c0::-moz-focus-inner {
+  border-style: none;
+}
+
+.c0 svg {
+  pointer-events: none;
 }
 
 .c0 .xl-base-button__ripple {
@@ -43,7 +52,6 @@ exports[`BaseButton basic test 1`] = `
   -ms-transform: scale(1);
   transform: scale(1);
   opacity: 0.12;
-  pointer-events: none;
 }
 
 .c0 .xl-base-button__ripple-enter-active {
