@@ -143,6 +143,7 @@ const Ripple = React.forwardRef<RippleRef, RippleProps>((props, ref) => {
         // are running
         startTimerRef.current = setTimeout(() => {
           commit(x, y, size);
+          startTimerRef.current = undefined;
         }, DELAY_RIPPLE);
       } else {
         commit(x, y, size);
@@ -152,6 +153,10 @@ const Ripple = React.forwardRef<RippleRef, RippleProps>((props, ref) => {
   );
 
   const stop = useEventCallback(() => {
+    if (startTimerRef.current) {
+      clearTimeout(startTimerRef.current);
+      startTimerRef.current = undefined;
+    }
     if (leaveAfterEnter) {
       if (enteredCountRef.current > 0) {
         enteredCountRef.current--;
