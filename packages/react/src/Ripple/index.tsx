@@ -99,11 +99,6 @@ const Ripple = React.forwardRef<RippleRef, RippleProps>((props, ref) => {
 
   const start = React.useCallback(
     (e: React.SyntheticEvent | object = {}) => {
-      if (startTimerRef.current) {
-        clearTimeout(startTimerRef.current);
-        startTimerRef.current = undefined;
-      }
-
       if ((e as React.MouseEvent).type === 'mousedown' && ignoreMouseDonwRef.current) {
         ignoreMouseDonwRef.current = false;
         return;
@@ -112,6 +107,12 @@ const Ripple = React.forwardRef<RippleRef, RippleProps>((props, ref) => {
       if ((e as React.TouchEvent).type === 'touchstart') {
         ignoreMouseDonwRef.current = true;
       }
+
+      if (startTimerRef.current) {
+        clearTimeout(startTimerRef.current);
+        startTimerRef.current = undefined;
+      }
+
       const el = (e as React.UIEvent).currentTarget
         ? ((e as React.UIEvent).currentTarget as HTMLElement)
         : containerRef.current;
@@ -137,6 +138,9 @@ const Ripple = React.forwardRef<RippleRef, RippleProps>((props, ref) => {
       const size = Math.round(Math.sqrt(sizeX ** 2 + sizeY ** 2));
 
       if ((e as React.TouchEvent).touches) {
+        // check that this isn't another touchstart due to multitouch
+        // otherwise we will only clear a single timer when unmounting while two
+        // are running
         startTimerRef.current = setTimeout(() => {
           commit(x, y, size);
         }, DELAY_RIPPLE);

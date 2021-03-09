@@ -44,16 +44,24 @@ const BaseButtonRoot = (styled('button', {
     border: 0,
     borderRadius: 0,
     outline: 0,
-    WebkitAppearance: 'none',
     userSelect: 'none',
     touchAction: 'manipulation',
     WebkitTapHighlightColor: 'transparent',
     cursor: disabled || loading ? 'not-allowed' : 'pointer',
+    MozAppearance: 'none',
+    WebkitAppearance: 'none',
+    '&::-moz-focus-inner': {
+      borderStyle: 'none', // Remove Firefox dotted outline.
+    },
+
+    // https://github.com/facebook/react/issues/4492#issuecomment-426356566
+    svg: {
+      pointerEvents: 'none',
+    },
 
     [`.${clsPrefix}-base-button__ripple`]: {
       transform: 'scale(1)',
       opacity: color.action.pressed,
-      pointerEvents: 'none',
       '&-enter-active': {
         transition: theme.transition.enter('all'),
       },
