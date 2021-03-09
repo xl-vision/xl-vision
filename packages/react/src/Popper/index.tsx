@@ -28,6 +28,7 @@ export type PopperChildrenProps = {
   onFocus?: React.MouseEventHandler<any>;
   onBlur?: React.MouseEventHandler<any>;
   onContextMenu?: React.MouseEventHandler<any>;
+  onTouchStart?: React.TouchEventHandler<any>;
   ref?: React.Ref<any>;
 };
 
@@ -167,7 +168,7 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
   });
 
   // eslint-disable-next-line @typescript-eslint/no-shadow
-  const setVisibleWrapper = useEventCallback((visible: boolean) => {
+  const setVisibleWrapper = useEventCallback((visible: boolean, cb?: () => void) => {
     if (timerRef.current) {
       clearTimeout(timerRef.current);
     }
@@ -180,6 +181,7 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
         closeHandlersRef.current.forEach((it) => it());
       }
       setVisible(visible);
+      cb?.();
     }, Math.max(TIME_DELAY, visible ? showDelay : hideDelay));
   });
 
@@ -244,6 +246,34 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
   });
 
   const handleClickOutside = useEventCallback(() => {
+    if (trigger === 'click' || trigger === 'contextMenu') {
+      setVisibleWrapper(false);
+    }
+  });
+
+  // trigger hover start when touch start
+  const handleTouchStart: React.TouchEventHandler<any> = useEventCallback((e) => {
+    if (trigger === 'hover') {
+      setTimeout(() => {
+        setVisibleWrapper(true);
+      }, 0);
+    }
+
+    child.props?.onTouchStart?.(e);
+  });
+
+  // trigger hover end when touch start
+  // touchend trgger this logic everywhere, so bind this event on window
+  const handleTouchEnd = useEventCallback(() => {
+    if (trigger === 'hover') {
+      // 保证在handleTouchStart后执行
+      setTimeout(() => {
+        setVisibleWrapper(false);
+      }, 0);
+    }
+  });
+
+  const handleContextMenuOutside = useEventCallback(() => {
     if (trigger === 'click' || trigger === 'contextMenu') {
       setVisibleWrapper(false);
     }
@@ -318,10 +348,14 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
 
   React.useEffect(() => {
     on(window, 'click', handleClickOutside);
+    on(window, 'contextmenu', handleContextMenuOutside);
+    on(window, 'touchend', handleTouchEnd);
     return () => {
       off(window, 'click', handleClickOutside);
+      off(window, 'contextmenu', handleContextMenuOutside);
+      off(window, 'touchmove', handleTouchEnd);
     };
-  }, [handleClickOutside]);
+  }, [handleClickOutside, handleContextMenuOutside, handleTouchEnd]);
 
   const beforeEnter = useEventCallback((el: CSSTransitionElement) => {
     // 移除transition class对定位的干扰
@@ -395,6 +429,7 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
     onFocus: handleReferenceFocus,
     onBlur: handleReferenceBlur,
     onContextMenu: handleReferenceContextMenu,
+    onTouchStart: handleTouchStart,
   });
 
   return (
