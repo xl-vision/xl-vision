@@ -33,7 +33,7 @@ const InfoWrapper = styled('div')(
 const TitleWrapper = styled('div')(
   ({ theme }) => `
   position: absolute;
-  background-color: ${theme.color.background};
+  background-color: ${theme.color.background.paper};
   top: -12px;
   margin-left: 16px;
   padding: 0px 8px;

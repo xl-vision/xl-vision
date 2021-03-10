@@ -77,14 +77,16 @@ const createColors = (color: Color = {}) => {
   // eslint-disable-next-line @typescript-eslint/no-shadow
   const applyState = (color: string, state: keyof BaseColor['action']) => {
     const bgColor =
-      getContrastRatio(color, modes.dark.background) > contrastThreshold
-        ? modes.dark.background
-        : modes.light.background;
+      getContrastRatio(color, modes.dark.background.default) > contrastThreshold
+        ? modes.dark.background.default
+        : modes.light.background.default;
     return mix(bgColor, color, modes[mode].action[state]);
   };
 
   return {
     ...base,
+    mode,
+    modes,
     themes: newThemes,
     grey,
     getContrastText,

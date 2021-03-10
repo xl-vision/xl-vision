@@ -54,7 +54,7 @@ const displayName = 'Popper';
 
 const TIME_DELAY = 200;
 
-const Popper: React.FunctionComponent<PopperProps> = (props) => {
+const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
   const {
     children,
     popup,
@@ -107,6 +107,7 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     React.isValidElement(child) ? (child as any).ref : null,
     referenceRef,
+    ref,
   );
 
   const forkArrowRef = useForkRef(
@@ -438,7 +439,7 @@ const Popper: React.FunctionComponent<PopperProps> = (props) => {
       {portal}
     </>
   );
-};
+});
 
 if (isDevelopment) {
   Popper.displayName = displayName;

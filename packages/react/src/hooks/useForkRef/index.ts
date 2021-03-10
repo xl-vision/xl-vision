@@ -1,12 +1,14 @@
 import React from 'react';
 
-export default <T>(ref1: React.Ref<T>, ref2: React.Ref<T>): React.Ref<T> => {
+export default <T>(...refs: Array<React.Ref<T>>): React.Ref<T> => {
   return React.useMemo(() => {
     return (value: T | null) => {
-      setRef(ref1, value);
-      setRef(ref2, value);
+      refs.forEach((it) => {
+        setRef(it, value);
+      });
     };
-  }, [ref1, ref2]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, refs);
 };
 
 const setRef = <T>(ref: React.Ref<T>, value: T | null) => {

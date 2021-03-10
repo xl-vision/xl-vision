@@ -1,15 +1,35 @@
 import React from 'react';
+import { styled } from '../styles';
+import Tooltip, { TooltipProps } from '../Tooltip';
 import { isDevelopment } from '../utils/env';
 
-export type PopoverProps = {};
+export interface PopoverProps extends TooltipProps {
+  title?: React.ReactNode;
+}
 
 const displayName = 'Popover';
 
-const Popover: React.FunctionComponent<PopoverProps> = (props) => {
-  const {} = props;
+const PopoverRoot = styled(Tooltip, {
+  name: displayName,
+  slot: 'Root',
+})(() => {
+  return {
+    
+  };
+});
 
-  return <div></div>;
-};
+const Popover = React.forwardRef<unknown, PopoverProps>((props, ref) => {
+  const { title, content, ...others } = props;
+
+  const popup = (
+    <>
+      {title}
+      {content}
+    </>
+  );
+
+  return <PopoverRoot {...others} ref={ref} content={popup} />;
+});
 
 if (isDevelopment) {
   Popover.displayName = displayName;

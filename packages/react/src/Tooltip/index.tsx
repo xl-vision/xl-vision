@@ -57,15 +57,17 @@ const TooltipPopup = styled('div', {
   name: displayName,
   slot: 'Popup',
 })<TooltipRootStyleProps>(({ theme, styleProps }) => {
-  const { color, elevations, typography } = theme;
+  const { color, typography } = theme;
   const { hasWidth } = styleProps;
+
+  const bgColor = color.modes.dark.background.paper;
+
   return {
-    backgroundColor: color.grey[800],
-    color: color.getContrastText(color.grey[800]).text.primary,
+    backgroundColor: bgColor,
+    color: color.getContrastText(bgColor).text.primary,
     padding: '4px 8px',
     borderRadius: '4px',
     ...typography.caption,
-    ...elevations(2),
     ...(hasWidth && {
       whiteSpace: 'pre-wrap',
       textAlign: 'justify',
@@ -114,7 +116,7 @@ const TooltipArrow = styled('div', {
 
 const defaultGetPopupContainer = () => document.body;
 
-const Tooltip: React.FunctionComponent<TooltipProps> = (props) => {
+const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
   const { clsPrefix, color } = React.useContext(ThemeContext);
 
   const {
@@ -122,7 +124,7 @@ const Tooltip: React.FunctionComponent<TooltipProps> = (props) => {
     getPopupContainer = defaultGetPopupContainer,
     className,
     transitionClassName,
-    bgColor = color.grey[800],
+    bgColor,
     maxWidth,
     offset = 12,
     ...others
@@ -151,12 +153,13 @@ const Tooltip: React.FunctionComponent<TooltipProps> = (props) => {
     </TooltipPopup>
   );
 
-  const arrow = <TooltipArrow style={{ ...colorStyle }} />;
+  const arrow = <TooltipArrow style={{ ...colorStyle }} className={`${rootClassName}__arrow`} />;
 
   return (
     <>
       <TooltipRoot
         {...others}
+        ref={ref}
         offset={offset}
         arrow={arrow}
         popup={popup}
@@ -165,7 +168,7 @@ const Tooltip: React.FunctionComponent<TooltipProps> = (props) => {
       />
     </>
   );
-};
+});
 
 if (isDevelopment) {
   Tooltip.displayName = displayName;

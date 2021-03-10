@@ -28,5 +28,5 @@ export { default as Popper } from './Popper';
 export * from './Popper';
 export { default as Tooltip } from './Tooltip';
 export * from './Tooltip';
-export { default as Poppover } from './Popover';
+export { default as Popover } from './Popover';
 export * from './Popover';
