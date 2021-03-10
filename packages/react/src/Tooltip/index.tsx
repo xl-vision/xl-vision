@@ -49,14 +49,14 @@ const TooltipRoot = styled(Popper, {
   };
 });
 
-export type TooltipRootStyleProps = {
+export type TooltipPopupStyleProps = {
   hasWidth: boolean;
 };
 
 const TooltipPopup = styled('div', {
   name: displayName,
   slot: 'Popup',
-})<TooltipRootStyleProps>(({ theme, styleProps }) => {
+})<TooltipPopupStyleProps>(({ theme, styleProps }) => {
   const { color, typography } = theme;
   const { hasWidth } = styleProps;
 
@@ -82,12 +82,13 @@ const TooltipArrow = styled('div', {
   slot: 'Arrow',
 })(({ theme }) => {
   const { color } = theme;
+  const bgColor = color.modes.dark.background.paper;
 
   return {
     position: 'absolute',
     width: 0,
     height: 0,
-    backgroundColor: color.grey[800],
+    backgroundColor: bgColor,
 
     ':before': {
       position: 'absolute',
@@ -140,13 +141,9 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
   const popup = (
     <TooltipPopup
       styleProps={{ hasWidth: maxWidth !== undefined }}
-      className={clsx(
-        rootClassName,
-        {
-          [`${rootClassName}--width`]: maxWidth !== undefined,
-        },
-        className,
-      )}
+      className={clsx(`${rootClassName}__content`, {
+        [`${rootClassName}--width`]: maxWidth !== undefined,
+      })}
       style={{ maxWidth, ...colorStyle }}
     >
       {content}
@@ -160,6 +157,7 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
       <TooltipRoot
         {...others}
         ref={ref}
+        className={clsx(rootClassName, className)}
         offset={offset}
         arrow={arrow}
         popup={popup}

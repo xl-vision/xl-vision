@@ -12,9 +12,21 @@ const displayName = 'Popover';
 const PopoverRoot = styled(Tooltip, {
   name: displayName,
   slot: 'Root',
-})(() => {
+})(({ theme }) => {
+  const { color, elevations, clsPrefix } = theme;
+
+  const bgColor = color.background.paper;
+
   return {
-    
+    [`.${clsPrefix}-tooltip__content`]: {
+      backgroundColor: bgColor,
+      color: color.getContrastText(bgColor).text.primary,
+
+      ...elevations(16),
+    },
+    [`.${clsPrefix}-tooltip__arrow`]: {
+      backgroundColor: color.background.paper,
+    },
   };
 });
 

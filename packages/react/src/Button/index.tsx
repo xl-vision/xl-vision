@@ -134,11 +134,7 @@ const ButtonRoot = styled(BaseButton, {
   } else if (variant === 'contained') {
     // 特殊处理
     const backgroundColor =
-      themeStyle === 'default'
-        ? colorTheme.mode === 'dark'
-          ? colorTheme.background.paper
-          : colorTheme.grey[200]
-        : colorTheme.themes[themeStyle].color;
+      themeStyle === 'default' ? colorTheme.background.paper : colorTheme.themes[themeStyle].color;
     const baseColor = colorTheme.getContrastText(backgroundColor);
     styles.color = baseColor.text.primary;
     styles.backgroundColor = backgroundColor;
