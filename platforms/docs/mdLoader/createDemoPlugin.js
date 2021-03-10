@@ -33,6 +33,9 @@ module.exports = function createDemoPlugin(ctx) {
     return async function parse(tree, vfile) {
       const basePath = vfile.dirname;
       const nodes = visit(tree, TYPE);
+
+      const pathSet = new Set();
+
       for (const node of nodes) {
         const filePath = node.path;
 
@@ -44,7 +47,7 @@ module.exports = function createDemoPlugin(ctx) {
           ? filePath
           : path.resolve(basePath, filePath);
 
-        ctx.addDependency(absolutePath);
+        pathSet.add(absolutePath);
 
         const tsCode = await new Promise((resolve, reject) => {
           fs.readFile(absolutePath, (err, data) => {
@@ -101,6 +104,10 @@ module.exports = function createDemoPlugin(ctx) {
           value: '</DemoBox>',
         });
       }
+
+      pathSet.forEach((filepath) => {
+        ctx.addDependency(filepath);
+      });
     };
   };
 };
