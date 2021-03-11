@@ -5,11 +5,20 @@ import Popper, { PopperProps } from '../Popper';
 import { styled } from '../styles';
 import ThemeContext from '../ThemeProvider/ThemeContext';
 import { isDevelopment } from '../utils/env';
+import Button, { ButtonProps } from '../Button';
+import LocalizationContext from '../LocalizationProvider/LocalizationContext';
 
-export interface PopconfirmProps extends Omit<PopperProps, 'popup' | 'arrow' | 'transitionClasses'> {
-  title?: React.ReactNode;
-  content: React.ReactNode;
-  transitionClassName?: string;
+export type PopconfirmButtonProps = Omit<ButtonProps, 'children' | 'onClick'>;
+export interface PopconfirmProps
+  extends Omit<PopperProps, 'popup' | 'arrow' | 'transitionClasses'> {
+  title: React.ReactNode;
+  icon?: React.ReactNode;
+  onConfirm?: () => void | Promise<void>;
+  onCancel?: () => void | Promise<void>;
+  confirmButtonProps?: PopconfirmButtonProps;
+  cancelButtonProps?: PopconfirmButtonProps;
+  confirmText?: string;
+  cancelText?: string;
 }
 
 const displayName = 'Popconfirm';
@@ -102,50 +111,33 @@ const PopconfirmPopup = styled('div', {
   };
 });
 
-const PopconfirmTitle = styled('div', {
-  name: displayName,
-  slot: 'Title',
-})(({ theme }) => {
-  const { color, typography } = theme;
-  return {
-    padding: '4px 12px',
-    borderBottom: `1px solid ${color.divider}`,
-    ...typography.subtitle2,
-  };
-});
-
-const PopconfirmContent = styled('div', {
-  name: displayName,
-  slot: 'Content',
-})(({ theme }) => {
-  const { typography } = theme;
-  return {
-    padding: '8px 12px',
-    ...typography.body2,
-  };
-});
-
 const defaultGetPopupContainer = () => document.body;
 
 const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
+  const { clsPrefix } = React.useContext(ThemeContext);
+  const { locale } = React.useContext(LocalizationContext);
+
   const {
-    title,
-    content,
     getPopupContainer = defaultGetPopupContainer,
     className,
-    transitionClassName,
     offset = 12,
+    title,
+    icon,
+    onCancel,
+    onConfirm,
+    cancelButtonProps,
+    confirmButtonProps,
+    cancelText = locale.Popconfirm.cancelText,
+    confirmText = locale.Popconfirm.confirmText,
     ...others
   } = props;
-
-  const { clsPrefix } = React.useContext(ThemeContext);
 
   const rootClassName = `${clsPrefix}-popconfirm`;
 
   const popup = (
     <PopconfirmPopup className={clsx(`${rootClassName}__popup`)}>
-      {title && <PopconfirmTitle>{title}</PopconfirmTitle>}
-      <PopconfirmContent>{content}</PopconfirmContent>
+      <Button {...cancelButtonProps}>{cancelText}</Button>
+      <Button {...confirmButtonProps}>{confirmText}</Button>
     </PopconfirmPopup>
   );
 
@@ -160,7 +152,7 @@ const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
       arrow={arrow}
       popup={popup}
       getPopupContainer={getPopupContainer}
-      transitionClasses={clsx(`${rootClassName}-slide`, transitionClassName)}
+      transitionClasses={`${rootClassName}-slide`}
     />
   );
 });
