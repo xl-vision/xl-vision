@@ -23,7 +23,6 @@ export type ButtonProps = BaseButtonProps & {
   theme?: ButtonTheme;
   disableElevation?: boolean;
   size?: ButtonSize;
-  loading?: boolean;
   prefixIcon?: React.ReactElement<React.SVGAttributes<SVGSVGElement>>;
   suffixIcon?: React.ReactElement<React.SVGAttributes<SVGSVGElement>>;
   variant?: ButtonVariant;
@@ -70,14 +69,12 @@ const ButtonRoot = styled(BaseButton, {
 
   const styles: CSSObject = {
     transition: transition.standard('all'),
-    padding: '6px 16px',
     borderRadius: '4px',
-    minWidth: icon ? '' : '64px',
+    // minWidth: icon ? '' : '64px',
     ...typography.button,
   };
 
   if (icon) {
-    styles.padding = '8.2px';
     styles.lineHeight = 0;
   }
 
@@ -85,17 +82,21 @@ const ButtonRoot = styled(BaseButton, {
     styles.borderRadius = 6 * 2 + 1.75 * 14;
   }
 
-  if (size === 'small') {
-    styles.padding = icon ? '6.5px' : '4px 10px';
-    styles.fontSize = typography.pxToRem(13);
-    if (round) {
-      styles.borderRadius = 4 * 2 + 1.75 * 14;
-    }
-  } else if (size === 'large') {
-    styles.padding = icon ? '10.5px' : '8px 22px';
-    styles.fontSize = typography.pxToRem(15);
+  let padding: Array<number>;
+
+  if (size === 'large') {
+    padding = icon ? [10.5] : [8, 22];
+    styles.fontSize = typography.pxToRem(16);
     if (round) {
       styles.borderRadius = 8 * 2 + 1.75 * 14;
+    }
+  } else if (size === 'middle') {
+    padding = icon ? [8.2] : [6, 16];
+  } else {
+    padding = icon ? [6.5] : [4, 10];
+    styles.fontSize = typography.pxToRem(12);
+    if (round) {
+      styles.borderRadius = 4 * 2 + 1.75 * 14;
     }
   }
 
@@ -116,6 +117,8 @@ const ButtonRoot = styled(BaseButton, {
 
     if (variant === 'outlined') {
       styles.border = `1px solid ${alpha(color, 0.5)}`;
+      // 保证高度一致
+      padding = padding.map((it) => it - 1);
     }
 
     if (disabled || loading) {
@@ -155,6 +158,8 @@ const ButtonRoot = styled(BaseButton, {
       };
     }
   }
+
+  styles.padding = padding.map((it) => `${it}px`).join(' ');
 
   return styles;
 });

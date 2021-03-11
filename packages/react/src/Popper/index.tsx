@@ -40,10 +40,11 @@ export type PopperProps = {
   trigger?: PopperTrigger;
   placement?: PopperPlacement;
   disablePopupEnter?: boolean;
-  offset?: number | string;
+  offset?: number;
   showDelay?: number;
   hideDelay?: number;
   visible?: boolean;
+  defaultVisible?: boolean;
   onVisibleChange?: (visible: boolean) => void;
   arrow?: React.ReactElement;
   className?: string;
@@ -75,6 +76,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     arrow,
     flip = true,
     preventOverflow = true,
+    defaultVisible = false,
   } = props;
 
   const { clsPrefix } = React.useContext(ThemeContext);
@@ -96,7 +98,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
 
   const child = React.Children.only<React.ReactElement<PopperChildrenProps>>(children);
 
-  const [visible, setVisible] = React.useState(visibleProps || false);
+  const [visible, setVisible] = React.useState(defaultVisible);
 
   const lifecycleStateRef = useLifecycleState();
 
@@ -201,7 +203,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
   });
 
   // eslint-disable-next-line @typescript-eslint/no-shadow
-  const setVisibleWrapper = useEventCallback((visible: boolean, cb?: () => void) => {
+  const setVisibleWrapper = useEventCallback((visible: boolean) => {
     if (timerRef.current) {
       clearTimeout(timerRef.current);
     }
@@ -213,8 +215,10 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
       if (!visible) {
         closeHandlersRef.current.forEach((it) => it());
       }
-      setVisible(visible);
-      cb?.();
+      if (visibleProps === undefined) {
+        setVisible(visible);
+      }
+      onVisibleChange?.(visible);
     }, Math.max(TIME_DELAY, visible ? showDelay : hideDelay));
   });
 
@@ -228,7 +232,9 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
         clearTimeout(timerRef.current);
         timerRef.current = undefined;
       }
-      setVisible(false);
+      if (visibleProps === undefined) {
+        setVisible(false);
+      }
     }, TIME_DELAY / 2);
   });
 
@@ -488,7 +494,7 @@ if (isDevelopment) {
     transitionClasses: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     trigger: PropTypes.oneOf<PopperTrigger>(['click', 'contextMenu', 'custom', 'focus', 'hover']),
     disablePopupEnter: PropTypes.bool,
-    offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    offset: PropTypes.number,
     placement: PropTypes.oneOf<PopperPlacement>([
       'top',
       'top-start',
