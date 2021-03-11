@@ -52,6 +52,11 @@ const route: Array<Route> = [
         path: '/Tooltip',
         component: () => import('@xl-vision/react/Tooltip/__doc__/index.mdx'),
       },
+      {
+        name: '气泡卡片',
+        path: '/Popover',
+        component: () => import('@xl-vision/react/Popover/__doc__/index.mdx'),
+      },
     ],
   },
   {

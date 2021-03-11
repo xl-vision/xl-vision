@@ -132,14 +132,19 @@ const ButtonRoot = styled(BaseButton, {
       };
     }
   } else if (variant === 'contained') {
+    // 特殊处理
     const backgroundColor =
-      themeStyle === 'default' ? colorTheme.grey[300] : colorTheme.themes[themeStyle].color;
+      themeStyle === 'default' ? colorTheme.background.paper : colorTheme.themes[themeStyle].color;
     const baseColor = colorTheme.getContrastText(backgroundColor);
     styles.color = baseColor.text.primary;
     styles.backgroundColor = backgroundColor;
+
     if (disabled || loading) {
       styles.opacity = baseColor.action.disabled;
     } else {
+      if (!disableElevation) {
+        styles.boxShadow = elevations(2).boxShadow;
+      }
       styles['&:hover'] = {
         backgroundColor: colorTheme.applyState(backgroundColor, 'hover'),
         ...(!disableElevation && elevations(4)),

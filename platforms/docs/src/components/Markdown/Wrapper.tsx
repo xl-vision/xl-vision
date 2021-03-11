@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 export type WrapperProps = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   name: string;
   className?: string;
 };
@@ -23,7 +23,7 @@ const Wrapper: React.FunctionComponent<WrapperProps> = (props) => {
 };
 
 Wrapper.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   name: PropTypes.string.isRequired,
 };
 
