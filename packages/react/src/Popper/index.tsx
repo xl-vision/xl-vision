@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { Instance, Placement, createPopper } from '@popperjs/core';
+import { Instance, Placement, createPopper, Modifier } from '@popperjs/core';
 import clsx from 'clsx';
 import CSSTransition, { CSSTransitionElement, CSSTransitionProps } from '../CSSTransition';
 import useForkRef from '../hooks/useForkRef';
@@ -48,6 +48,8 @@ export type PopperProps = {
   arrow?: React.ReactElement;
   className?: string;
   destroyOnHide?: boolean;
+  flip?: boolean | Record<string, any>;
+  preventOverflow?: boolean | Record<string, any>;
 };
 
 const displayName = 'Popper';
@@ -71,6 +73,8 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     className,
     destroyOnHide,
     arrow,
+    flip = true,
+    preventOverflow = true,
   } = props;
 
   const { clsPrefix } = React.useContext(ThemeContext);
@@ -125,7 +129,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     let instance = popperInstanceRef.current;
     const popupEl = popupNodeRef.current!;
 
-    const modifiers = [
+    const modifiers: Array<Partial<Modifier<any, any>>> = [
       {
         name: 'offset',
         options: {
@@ -143,6 +147,34 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
         enabled: true,
       },
     ];
+
+    const preventOverflowObj: Partial<Modifier<any, any>> = {
+      name: 'preventOverflow',
+      enabled: false,
+    };
+
+    if (preventOverflow) {
+      preventOverflowObj.enabled = true;
+      if (typeof preventOverflow === 'object') {
+        preventOverflowObj.options = preventOverflow;
+      }
+    }
+
+    modifiers.push(preventOverflowObj);
+
+    const flipObj: Partial<Modifier<any, any>> = {
+      name: 'flip',
+      enabled: false,
+    };
+
+    if (flip) {
+      flipObj.enabled = true;
+      if (typeof flip === 'object') {
+        flipObj.options = flip;
+      }
+    }
+
+    modifiers.push(flipObj);
 
     const referenceEl = findReferenceDOM();
     instance = popperInstanceRef.current = createPopper(referenceEl, popupEl, {
@@ -329,9 +361,14 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
 
   React.useEffect(() => {
     if (visibleProps !== undefined) {
-      setVisible(visibleProps);
+      // 保证最后完成
+      setTimeout(() => {
+        setTimeout(() => {
+          setVisibleWrapper(visibleProps);
+        }, 0);
+      }, 0);
     }
-  }, [visibleProps]);
+  }, [visibleProps, setVisibleWrapper]);
 
   const isFirstVisibleRef = React.useRef(false);
 
@@ -476,6 +513,8 @@ if (isDevelopment) {
     arrow: PropTypes.element,
     className: PropTypes.string,
     destroyOnHide: PropTypes.bool,
+    flip: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
+    preventOverflow: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   };
 }
 

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`check packages entry @xl-vision/react 1`] = `
+exports[`Entry @xl-vision/react 1`] = `
 Array [
   "ThemeProvider",
   "LocalizationProvider",
@@ -17,6 +17,7 @@ Array [
   "CssBaseline",
   "Popper",
   "Tooltip",
+  "Popover",
   "styled",
   "createGlobalStyles",
 ]
