@@ -6,8 +6,7 @@ import { styled } from '../styles';
 import ThemeContext from '../ThemeProvider/ThemeContext';
 import { isDevelopment } from '../utils/env';
 
-export interface TooltipProps
-  extends Omit<PopperProps, 'popup' | 'arrow' | 'transitionClasses' | 'arrow'> {
+export interface TooltipProps extends Omit<PopperProps, 'popup' | 'arrow' | 'transitionClasses'> {
   content: React.ReactNode;
   transitionClassName?: string;
   bgColor?: string;
@@ -153,18 +152,16 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
   const arrow = <TooltipArrow style={{ ...colorStyle }} className={`${rootClassName}__arrow`} />;
 
   return (
-    <>
-      <TooltipRoot
-        {...others}
-        ref={ref}
-        className={clsx(rootClassName, className)}
-        offset={offset}
-        arrow={arrow}
-        popup={popup}
-        getPopupContainer={getPopupContainer}
-        transitionClasses={clsx(`${rootClassName}-slide`, transitionClassName)}
-      />
-    </>
+    <TooltipRoot
+      {...others}
+      ref={ref}
+      className={clsx(rootClassName, className)}
+      offset={offset}
+      arrow={arrow}
+      popup={popup}
+      getPopupContainer={getPopupContainer}
+      transitionClasses={clsx(`${rootClassName}-slide`, transitionClassName)}
+    />
   );
 });
 
