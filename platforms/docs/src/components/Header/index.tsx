@@ -18,7 +18,7 @@ const HeaderNav = styled('header')<{ isDark: boolean }>(({ theme, styleProps }) 
 
   const { color } = theme;
 
-  const background = (isDark ? darken : lighten)(color.background, 0.1);
+  const background = (isDark ? darken : lighten)(color.background.paper, 0.1);
 
   const fontColor = color.getContrastText(background).text.primary;
 
@@ -37,7 +37,7 @@ const HeaderNav = styled('header')<{ isDark: boolean }>(({ theme, styleProps }) 
     background,
     color: fontColor,
     justifyContent: 'space-between',
-    ...theme.elevations(2),
+    ...theme.elevations(4),
 
     '.xl-button__root': {
       color: fontColor,

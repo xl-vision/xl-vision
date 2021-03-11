@@ -2,7 +2,10 @@ import { common } from '../palette';
 import grey from '../palette/grey';
 
 export type BaseColor = {
-  background: string;
+  background: {
+    default: string;
+    paper: string;
+  };
   text: {
     primary: string;
     secondary: string;
@@ -24,7 +27,10 @@ export type BaseColor = {
 };
 
 export const light: BaseColor = {
-  background: grey[50],
+  background: {
+    paper: common.white,
+    default: grey[50],
+  },
   text: {
     primary: 'rgba(0, 0, 0, 0.87)',
     secondary: 'rgba(0, 0, 0, 0.54)',
@@ -46,7 +52,10 @@ export const light: BaseColor = {
 };
 
 export const dark: BaseColor = {
-  background: '#303030',
+  background: {
+    paper: grey[800],
+    default: '#303030',
+  },
   text: {
     primary: common.white,
     secondary: 'rgba(255, 255, 255, 0.7)',

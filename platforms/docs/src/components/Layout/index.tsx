@@ -36,7 +36,6 @@ const asideWidth = 280;
 
 const AsideWrapper = styled(Aside)(({ theme }) => {
   return {
-    backgroundColor: theme.color.background,
     padding: '0 12px',
     '@media(max-width: 768px)': {
       borderBottom: `1px solid ${theme.color.divider}`,
