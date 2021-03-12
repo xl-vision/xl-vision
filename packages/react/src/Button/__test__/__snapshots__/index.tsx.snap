@@ -163,9 +163,7 @@ exports[`Button test basic render 1`] = `
 .c1 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -180,6 +178,7 @@ exports[`Button test basic render 1`] = `
   color: rgba(0,0,0,0.87);
   background-color: #fff;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c1:hover {
@@ -195,9 +194,7 @@ exports[`Button test basic render 1`] = `
 .c4 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -212,6 +209,7 @@ exports[`Button test basic render 1`] = `
   color: #fff;
   background-color: #f44336;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c4:hover {
@@ -227,9 +225,7 @@ exports[`Button test basic render 1`] = `
 .c5 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -244,6 +240,7 @@ exports[`Button test basic render 1`] = `
   background-color: transparent;
   color: rgba(0,0,0,0.87);
   border: 1px solid rgba(0,0,0,0.5);
+  padding: 5px 15px;
 }
 
 .c5:hover {
@@ -257,7 +254,6 @@ exports[`Button test basic render 1`] = `
 .c9 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 8.2px;
   border-radius: 4px;
   font-size: 0.875rem;
   line-height: 0;
@@ -273,6 +269,7 @@ exports[`Button test basic render 1`] = `
   color: rgba(0,0,0,0.87);
   background-color: #fff;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 8.2px;
 }
 
 .c9:hover {
@@ -288,9 +285,7 @@ exports[`Button test basic render 1`] = `
 .c11 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -306,6 +301,7 @@ exports[`Button test basic render 1`] = `
   color: rgba(0,0,0,0.87);
   background-color: #fff;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c11:hover {
@@ -321,9 +317,7 @@ exports[`Button test basic render 1`] = `
 .c13 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -338,12 +332,12 @@ exports[`Button test basic render 1`] = `
   color: rgba(0,0,0,0.87);
   background-color: #fff;
   opacity: 0.38;
+  padding: 6px 16px;
 }
 
 .c15 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 8.2px;
   border-radius: 4px;
   font-size: 0.875rem;
   line-height: 0;
@@ -359,6 +353,7 @@ exports[`Button test basic render 1`] = `
   color: rgba(0,0,0,0.87);
   background-color: #fff;
   opacity: 0.38;
+  padding: 8.2px;
 }
 
 .c6 {

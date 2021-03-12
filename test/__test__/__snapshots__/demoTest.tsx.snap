@@ -4817,7 +4817,7 @@ exports[`Demo renders ./packages/react/src/Popconfirm/__doc__/Basic.tsx correctl
       class="c2 xl-base-button__inner"
     >
       <span>
-        TS
+        button
       </span>
     </span>
     <div
