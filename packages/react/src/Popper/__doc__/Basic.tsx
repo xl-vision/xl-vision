@@ -13,18 +13,6 @@ const Wrapper = styled('div')(({ theme }) => {
     '.slide': {
       '&-enter-active, &-leave-active': {
         transition: theme.transition.standard('transform'),
-        '&[data-placement^="left"]': {
-          transformOrigin: '100% 0',
-        },
-        '&[data-placement^="right"]': {
-          transformOrigin: '0 0',
-        },
-        '&[data-placement^="top"]': {
-          transformOrigin: '0 100%',
-        },
-        '&[data-placement^="bottom"]': {
-          transformOrigin: '0 0',
-        },
       },
       '&-enter,&-leave-to': {
         '&[data-placement^="left"]': {

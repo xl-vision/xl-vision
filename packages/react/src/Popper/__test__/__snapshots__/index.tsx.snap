@@ -26,12 +26,12 @@ Array [
     data-popper-escaped=""
     data-popper-placement="top"
     data-popper-reference-hidden=""
-    style="position: absolute; left: 0px; top: 0px; margin: 0px; bottom: 0px; transform: translate(0px, 0px); z-index: 1001;"
+    style="position: absolute; left: 0px; top: 0px; margin: 0px; z-index: 1001; bottom: 0px; transform: translate(0px, 0px);"
   >
     <div
       class="xl-popper__inner"
       data-placement="top"
-      style="position: relative;"
+      style="position: relative; transform-origin: 0px 100%;"
     >
       <div>
         popup
@@ -55,7 +55,7 @@ Array [
     <div
       class="xl-popper__inner"
       data-placement="top"
-      style="position: relative; display: none;"
+      style="position: relative; transform-origin: 0px 100%; display: none;"
     >
       <div>
         popup
@@ -91,12 +91,12 @@ Array [
     data-popper-escaped=""
     data-popper-placement="top"
     data-popper-reference-hidden=""
-    style="position: absolute; left: 0px; top: 0px; margin: 0px; bottom: 0px; transform: translate(0px, 0px); z-index: 1002;"
+    style="position: absolute; left: 0px; top: 0px; margin: 0px; z-index: 1002; bottom: 0px; transform: translate(0px, 0px);"
   >
     <div
       class="xl-popper__inner"
       data-placement="top"
-      style="position: relative;"
+      style="position: relative; transform-origin: 0px 100%;"
     >
       <div>
         popup
@@ -120,7 +120,7 @@ Array [
     <div
       class="xl-popper__inner"
       data-placement="top"
-      style="position: relative; display: none;"
+      style="position: relative; transform-origin: 0px 100%; display: none;"
     >
       <div>
         popup
@@ -156,12 +156,12 @@ Array [
     data-popper-escaped=""
     data-popper-placement="top"
     data-popper-reference-hidden=""
-    style="position: absolute; left: 0px; top: 0px; margin: 0px; bottom: 0px; transform: translate(0px, 0px); z-index: 1000;"
+    style="position: absolute; left: 0px; top: 0px; margin: 0px; z-index: 1000; bottom: 0px; transform: translate(0px, 0px);"
   >
     <div
       class="xl-popper__inner"
       data-placement="top"
-      style="position: relative;"
+      style="position: relative; transform-origin: 0px 100%;"
     >
       <div>
         popup
@@ -185,7 +185,7 @@ Array [
     <div
       class="xl-popper__inner"
       data-placement="top"
-      style="position: relative; display: none;"
+      style="position: relative; transform-origin: 0px 100%; display: none;"
     >
       <div>
         popup

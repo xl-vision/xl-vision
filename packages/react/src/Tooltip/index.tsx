@@ -26,19 +26,7 @@ const TooltipRoot = styled(Popper, {
       '&-enter-active, &-leave-active': {
         transition: transition.standard(['transform', 'opacity']),
         opacity: 1,
-        transform: 'scaleX(1)',
-        '&[data-placement^="left"]': {
-          transformOrigin: '100% 50%',
-        },
-        '&[data-placement^="right"]': {
-          transformOrigin: '0 50%',
-        },
-        '&[data-placement^="top"]': {
-          transformOrigin: '50% 100%',
-        },
-        '&[data-placement^="bottom"]': {
-          transformOrigin: '50% 0',
-        },
+        transform: 'scale(1)',
       },
       '&-enter, &-leave-to': {
         opacity: 0,

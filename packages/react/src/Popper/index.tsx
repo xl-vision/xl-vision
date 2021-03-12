@@ -15,6 +15,8 @@ import { off, on } from '../utils/event';
 import useLifecycleState, { LifecycleState } from '../hooks/useLifecycleState';
 import { increaseZindex } from '../utils/zIndexManger';
 import ThemeContext from '../ThemeProvider/ThemeContext';
+import { voidFn } from '../utils/function';
+import computeTransformOrigin from './computeTransformOrigin';
 
 export type PopperTrigger = 'hover' | 'focus' | 'click' | 'contextMenu' | 'custom';
 
@@ -50,6 +52,7 @@ export type PopperProps = {
   destroyOnHide?: boolean;
   flip?: boolean | Record<string, any>;
   preventOverflow?: boolean | Record<string, any>;
+  transformOrigin?: boolean;
 };
 
 const displayName = 'Popper';
@@ -75,6 +78,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     arrow,
     flip = true,
     preventOverflow = true,
+    transformOrigin = true,
     defaultVisible = false,
   } = props;
 
@@ -121,7 +125,6 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
   }, []);
 
   const show = useEventCallback(() => {
-    let instance = popperInstanceRef.current;
     const popupEl = popupNodeRef.current!;
 
     const modifiers: Array<Partial<Modifier<any, any>>> = [
@@ -141,7 +144,38 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
         name: 'eventListeners',
         enabled: true,
       },
+
+      {
+        name: 'applyPosition',
+        enabled: true,
+        phase: 'afterWrite',
+        fn({ state }) {
+          const popupInner = popupInnerNodeRef.current;
+          if (popupInner) {
+            popupInner.dataset.placement = state.placement;
+          }
+
+          if (arrowRef.current) {
+            arrowRef.current.dataset.placement = state.placement;
+          }
+        },
+      },
     ];
+
+    if (transformOrigin) {
+      modifiers.push({
+        name: 'transformOrigin',
+        phase: 'main',
+        enabled: true,
+        fn(options) {
+          const transformOriginStyle = computeTransformOrigin(options);
+          const popupInner = popupInnerNodeRef.current;
+          if (popupInner) {
+            popupInner.style.transformOrigin = transformOriginStyle;
+          }
+        },
+      });
+    }
 
     const preventOverflowObj: Partial<Modifier<any, any>> = {
       name: 'preventOverflow',
@@ -172,22 +206,16 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     modifiers.push(flipObj);
 
     const referenceEl = findReferenceDOM();
-    instance = popperInstanceRef.current = createPopper(referenceEl, popupEl, {
-      placement,
-      modifiers,
-    });
-
-    instance.forceUpdate();
-
-    const actualPlacement = instance.state.placement;
-    const popupInner = popupInnerNodeRef.current!;
-
-    popupInner.dataset.placement = actualPlacement;
-    popupEl.style.zIndex = `${increaseZindex()}`;
-
-    if (arrowRef.current) {
-      arrowRef.current.dataset.placement = actualPlacement;
+    if (!popperInstanceRef.current) {
+      popperInstanceRef.current = createPopper(referenceEl, popupEl, {
+        placement,
+        modifiers,
+      });
+    } else {
+      popperInstanceRef.current.setOptions({ placement, modifiers }).then(voidFn, voidFn);
     }
+
+    popupEl.style.zIndex = `${increaseZindex()}`;
   });
 
   const close = useEventCallback(() => {
@@ -505,6 +533,7 @@ if (isDevelopment) {
     flip: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
     preventOverflow: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
     defaultVisible: PropTypes.bool,
+    transformOrigin: PropTypes.bool,
   };
 }
 
