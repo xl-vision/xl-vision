@@ -25,7 +25,6 @@ const Wrapper = styled('div')(({ theme }) => {
         width: '10px',
         height: '10px',
         transform: 'rotate(45deg)',
-        transformOrigin: 'center center',
         zIndex: -1,
         left: '-5px',
         bottom: '-5px',
@@ -35,12 +34,6 @@ const Wrapper = styled('div')(({ theme }) => {
     '.slide': {
       '&-enter-active, &-leave-active': {
         transition: theme.transition.standard('transform'),
-        '&[data-placement^="top"]': {
-          transformOrigin: '0 100%',
-        },
-        '&[data-placement^="bottom"]': {
-          transformOrigin: '0 0',
-        },
       },
       '&-enter,&-leave-to': {
         '&[data-placement^="top"]': {

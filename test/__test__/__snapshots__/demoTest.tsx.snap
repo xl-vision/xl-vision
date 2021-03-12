@@ -5427,37 +5427,9 @@ Array [
   -webkit-transition: transform 300ms 0ms cubic-bezier(0.4,0,0.2,1),opacity 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: transform 300ms 0ms cubic-bezier(0.4,0,0.2,1),opacity 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   opacity: 1;
-  -webkit-transform: scaleX(1);
-  -ms-transform: scaleX(1);
-  transform: scaleX(1);
-}
-
-.c0 .xl-popover-slide-enter-active[data-placement^="left"],
-.c0 .xl-popover-slide-leave-active[data-placement^="left"] {
-  -webkit-transform-origin: 100% 50%;
-  -ms-transform-origin: 100% 50%;
-  transform-origin: 100% 50%;
-}
-
-.c0 .xl-popover-slide-enter-active[data-placement^="right"],
-.c0 .xl-popover-slide-leave-active[data-placement^="right"] {
-  -webkit-transform-origin: 0 50%;
-  -ms-transform-origin: 0 50%;
-  transform-origin: 0 50%;
-}
-
-.c0 .xl-popover-slide-enter-active[data-placement^="top"],
-.c0 .xl-popover-slide-leave-active[data-placement^="top"] {
-  -webkit-transform-origin: 50% 100%;
-  -ms-transform-origin: 50% 100%;
-  transform-origin: 50% 100%;
-}
-
-.c0 .xl-popover-slide-enter-active[data-placement^="bottom"],
-.c0 .xl-popover-slide-leave-active[data-placement^="bottom"] {
-  -webkit-transform-origin: 50% 0;
-  -ms-transform-origin: 50% 0;
-  transform-origin: 50% 0;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
 }
 
 .c0 .xl-popover-slide-enter,
@@ -5616,9 +5588,6 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Arrow.tsx correctly 1`
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
-  -webkit-transform-origin: center center;
-  -ms-transform-origin: center center;
-  transform-origin: center center;
   z-index: -1;
   left: -5px;
   bottom: -5px;
@@ -5630,20 +5599,6 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Arrow.tsx correctly 1`
   -webkit-transition: -webkit-transform 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   -webkit-transition: transform 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: transform 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-}
-
-.c0 .slide-enter-active[data-placement^="top"],
-.c0 .slide-leave-active[data-placement^="top"] {
-  -webkit-transform-origin: 0 100%;
-  -ms-transform-origin: 0 100%;
-  transform-origin: 0 100%;
-}
-
-.c0 .slide-enter-active[data-placement^="bottom"],
-.c0 .slide-leave-active[data-placement^="bottom"] {
-  -webkit-transform-origin: 0 0;
-  -ms-transform-origin: 0 0;
-  transform-origin: 0 0;
 }
 
 .c0 .slide-enter[data-placement^="top"],
@@ -5831,34 +5786,6 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
   -webkit-transition: -webkit-transform 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   -webkit-transition: transform 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: transform 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-}
-
-.c0 .slide-enter-active[data-placement^="left"],
-.c0 .slide-leave-active[data-placement^="left"] {
-  -webkit-transform-origin: 100% 0;
-  -ms-transform-origin: 100% 0;
-  transform-origin: 100% 0;
-}
-
-.c0 .slide-enter-active[data-placement^="right"],
-.c0 .slide-leave-active[data-placement^="right"] {
-  -webkit-transform-origin: 0 0;
-  -ms-transform-origin: 0 0;
-  transform-origin: 0 0;
-}
-
-.c0 .slide-enter-active[data-placement^="top"],
-.c0 .slide-leave-active[data-placement^="top"] {
-  -webkit-transform-origin: 0 100%;
-  -ms-transform-origin: 0 100%;
-  transform-origin: 0 100%;
-}
-
-.c0 .slide-enter-active[data-placement^="bottom"],
-.c0 .slide-leave-active[data-placement^="bottom"] {
-  -webkit-transform-origin: 0 0;
-  -ms-transform-origin: 0 0;
-  transform-origin: 0 0;
 }
 
 .c0 .slide-enter[data-placement^="left"],
