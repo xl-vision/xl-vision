@@ -69,7 +69,10 @@ module.exports = function createDemoPlugin(ctx) {
           })
         ).code;
 
-        const prettierOptions = await prettier.resolveConfig(process.cwd(), { editorconfig: true });
+        const prettierOptions = await prettier.resolveConfig(process.cwd(), {
+          editorconfig: true,
+          useCache: true,
+        });
 
         // prettier
         jsCode = prettier.format(jsCode, {
