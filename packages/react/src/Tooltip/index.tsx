@@ -175,7 +175,7 @@ if (isDevelopment) {
     transitionClassName: PropTypes.string,
     bgColor: PropTypes.string,
     maxWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    offset: PropTypes.number,
   };
 }
 
