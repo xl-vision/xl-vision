@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable react/jsx-handler-names */
 import React from 'react';
 import { Popconfirm, Button } from '@xl-vision/react';
 
@@ -6,6 +8,7 @@ export default () => {
   const [confirmLoading, setConfirmLoading] = React.useState(false);
   const handleConfirm = React.useCallback(() => {
     setConfirmLoading(true);
+    setVisible(true);
     setTimeout(() => {
       setVisible(false);
       setConfirmLoading(false);
@@ -26,7 +29,9 @@ export default () => {
         onConfirm={handleConfirm}
         confirmButtonProps={{ loading: confirmLoading }}
       >
-        <Button theme='primary'>TS</Button>
+        <Button theme='primary' onClick={() => setVisible(true)}>
+          button
+        </Button>
       </Popconfirm>
     </div>
   );

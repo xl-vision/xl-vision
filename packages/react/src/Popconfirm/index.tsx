@@ -155,8 +155,8 @@ const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
     icon = defaultIcon,
     visible: visibleProp = false,
     onVisibleChange,
-    onCancel: handleCancel,
-    onConfirm: handleConfirm,
+    onCancel,
+    onConfirm,
     cancelButtonProps,
     confirmButtonProps,
     cancelText = locale.Popconfirm.cancelText,
@@ -175,8 +175,20 @@ const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
 
   // eslint-disable-next-line @typescript-eslint/no-shadow
   const handleVisibleChange = useEventCallback((visible: boolean) => {
-    setVisible(visible);
+    if (visibleProp === undefined) {
+      setVisible(visible);
+    }
     onVisibleChange?.(visible);
+  });
+
+  const handleCancel = useEventCallback(() => {
+    handleVisibleChange(false);
+    onCancel?.();
+  });
+
+  const handleConfirm = useEventCallback(() => {
+    handleVisibleChange(false);
+    onConfirm?.();
   });
 
   const rootClassName = `${clsPrefix}-popconfirm`;
