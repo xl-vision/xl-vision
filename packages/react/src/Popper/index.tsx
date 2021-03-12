@@ -179,11 +179,14 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
 
     instance.forceUpdate();
 
+    const actualPlacement = instance.state.placement;
+    const popupInner = popupInnerNodeRef.current!;
+
+    popupInner.dataset.placement = actualPlacement;
     popupEl.style.zIndex = `${increaseZindex()}`;
 
-    popupInnerNodeRef.current!.dataset.placement = instance.state.placement;
     if (arrowRef.current) {
-      arrowRef.current.dataset.placement = instance.state.placement;
+      arrowRef.current.dataset.placement = actualPlacement;
     }
   });
 
@@ -212,7 +215,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
         }
         onVisibleChange?.(newVisible);
       }
-    }, Math.max(TIME_DELAY, visible ? showDelay : hideDelay));
+    }, Math.max(TIME_DELAY, newVisible ? showDelay : hideDelay));
   });
 
   const handleReferenceClick: React.MouseEventHandler<any> = useEventCallback((e) => {
