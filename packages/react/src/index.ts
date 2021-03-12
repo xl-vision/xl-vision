@@ -30,3 +30,5 @@ export { default as Tooltip } from './Tooltip';
 export * from './Tooltip';
 export { default as Popover } from './Popover';
 export * from './Popover';
+export { default as Popconfirm } from './Popconfirm';
+export * from './Popconfirm';

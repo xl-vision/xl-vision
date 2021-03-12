@@ -28,7 +28,9 @@ const LocalizationProvider: React.FunctionComponent<LocalizationProviderProps> =
     );
     return locales['en-US'];
   }, [customLocales, lang]);
-  return <LocalizationContext.Provider value={{ locale }}>{children}</LocalizationContext.Provider>;
+  return (
+    <LocalizationContext.Provider value={{ locale, lang }}>{children}</LocalizationContext.Provider>
+  );
 };
 
 if (isDevelopment) {

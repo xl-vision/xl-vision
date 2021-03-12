@@ -1,5 +1,10 @@
 import { Locale } from './types';
 
-const locale: Locale = {};
+const locale: Locale = {
+  Popconfirm: {
+    cancelText: 'No',
+    confirmText: 'Yes',
+  },
+};
 
 export default locale;

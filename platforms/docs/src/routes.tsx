@@ -60,6 +60,16 @@ const route: Array<Route> = [
     ],
   },
   {
+    name: '反馈',
+    children: [
+      {
+        name: '气泡确认框',
+        path: '/Popconfirm',
+        component: () => import('@xl-vision/react/Popconfirm/__doc__/index.mdx'),
+      },
+    ],
+  },
+  {
     name: '动画',
     children: [
       {

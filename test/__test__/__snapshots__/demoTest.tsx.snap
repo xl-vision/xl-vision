@@ -394,9 +394,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
 .c2 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -411,6 +409,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   color: rgba(0,0,0,0.87);
   background-color: #fff;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c2:hover {
@@ -426,9 +425,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
 .c5 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -443,6 +440,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   color: #fff;
   background-color: #3f51b5;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c5:hover {
@@ -458,9 +456,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
 .c6 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -475,6 +471,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   color: #fff;
   background-color: #f50057;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c6:hover {
@@ -490,9 +487,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
 .c7 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -507,6 +502,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   color: #fff;
   background-color: #f44336;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c7:hover {
@@ -522,9 +518,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
 .c8 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 36.5px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -539,6 +533,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   color: rgba(0,0,0,0.87);
   background-color: #ff9800;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c8:hover {
@@ -554,7 +549,6 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
 .c11 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 8.2px;
   border-radius: 50%;
   font-size: 0.875rem;
   line-height: 0;
@@ -570,6 +564,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   color: #fff;
   background-color: #3f51b5;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 8.2px;
 }
 
 .c11:hover {
@@ -585,9 +580,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
 .c13 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -601,6 +594,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
   color: rgba(0,0,0,0.87);
+  padding: 6px 16px;
 }
 
 .c13:hover {
@@ -614,9 +608,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
 .c14 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -630,6 +622,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
   color: #3f51b5;
+  padding: 6px 16px;
 }
 
 .c14:hover {
@@ -643,9 +636,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
 .c15 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -659,6 +650,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
   color: #f50057;
+  padding: 6px 16px;
 }
 
 .c15:hover {
@@ -672,9 +664,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
 .c16 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -688,6 +678,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
   color: #f44336;
+  padding: 6px 16px;
 }
 
 .c16:hover {
@@ -701,9 +692,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
 .c17 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 36.5px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -717,6 +706,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
   color: #ff9800;
+  padding: 6px 16px;
 }
 
 .c17:hover {
@@ -730,9 +720,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
 .c18 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -747,6 +735,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   background-color: transparent;
   color: rgba(0,0,0,0.87);
   border: 1px solid rgba(0,0,0,0.5);
+  padding: 5px 15px;
 }
 
 .c18:hover {
@@ -760,9 +749,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
 .c19 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -777,6 +764,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   background-color: transparent;
   color: #3f51b5;
   border: 1px solid rgba(63,81,181,0.5);
+  padding: 5px 15px;
 }
 
 .c19:hover {
@@ -790,9 +778,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
 .c20 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -807,6 +793,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   background-color: transparent;
   color: #f50057;
   border: 1px solid rgba(245,0,87,0.5);
+  padding: 5px 15px;
 }
 
 .c20:hover {
@@ -820,9 +807,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
 .c21 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -837,6 +822,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   background-color: transparent;
   color: #f44336;
   border: 1px solid rgba(244,67,54,0.5);
+  padding: 5px 15px;
 }
 
 .c21:hover {
@@ -850,9 +836,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
 .c22 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 36.5px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -867,6 +851,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   background-color: transparent;
   color: #ff9800;
   border: 1px solid rgba(255,152,0,0.5);
+  padding: 5px 15px;
 }
 
 .c22:hover {
@@ -1395,9 +1380,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
 .c2 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -1411,6 +1394,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: rgba(0,0,0,0.87);
   background-color: #fff;
+  padding: 6px 16px;
 }
 
 .c2:hover {
@@ -1424,9 +1408,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
 .c5 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -1440,6 +1422,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
   background-color: #3f51b5;
+  padding: 6px 16px;
 }
 
 .c5:hover {
@@ -1453,9 +1436,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
 .c6 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -1469,6 +1450,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
   background-color: #f50057;
+  padding: 6px 16px;
 }
 
 .c6:hover {
@@ -1482,9 +1464,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
 .c7 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -1498,6 +1478,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
   background-color: #f44336;
+  padding: 6px 16px;
 }
 
 .c7:hover {
@@ -1511,9 +1492,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
 .c8 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -1527,6 +1506,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: rgba(0,0,0,0.87);
   background-color: #ff9800;
+  padding: 6px 16px;
 }
 
 .c8:hover {
@@ -1704,9 +1684,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
 .c2 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -1721,6 +1699,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
   color: rgba(0,0,0,0.87);
   background-color: #fff;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c2:hover {
@@ -1736,9 +1715,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
 .c5 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -1752,6 +1729,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
   color: #3f51b5;
+  padding: 6px 16px;
 }
 
 .c5:hover {
@@ -1765,9 +1743,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
 .c6 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -1782,6 +1758,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
   color: #fff;
   background-color: #f50057;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c6:hover {
@@ -1797,9 +1774,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
 .c7 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -1813,6 +1788,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
   color: #f44336;
+  padding: 6px 16px;
 }
 
 .c7:hover {
@@ -1826,9 +1802,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
 .c8 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -1843,6 +1817,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
   background-color: transparent;
   color: #ff9800;
   border: 1px solid rgba(255,152,0,0.5);
+  padding: 5px 15px;
 }
 
 .c8:hover {
@@ -2036,9 +2011,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
 .c2 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -2053,14 +2026,13 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
   color: rgba(0,0,0,0.87);
   background-color: #fff;
   opacity: 0.38;
+  padding: 6px 16px;
 }
 
 .c5 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -2075,14 +2047,13 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
   color: #fff;
   background-color: #3f51b5;
   opacity: 0.38;
+  padding: 6px 16px;
 }
 
 .c6 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -2097,14 +2068,13 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
   color: #fff;
   background-color: #f50057;
   opacity: 0.38;
+  padding: 6px 16px;
 }
 
 .c7 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -2119,14 +2089,13 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
   color: #fff;
   background-color: #f44336;
   opacity: 0.38;
+  padding: 6px 16px;
 }
 
 .c8 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 36.5px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -2141,6 +2110,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
   color: rgba(0,0,0,0.87);
   background-color: #ff9800;
   opacity: 0.38;
+  padding: 6px 16px;
 }
 
 .c9 {
@@ -2424,9 +2394,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
 .c2 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -2441,6 +2409,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
   color: rgba(0,0,0,0.87);
   background-color: #fff;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c2:hover {
@@ -2456,9 +2425,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
 .c5 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -2472,6 +2439,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
   color: #3f51b5;
+  padding: 6px 16px;
 }
 
 .c5:hover {
@@ -2485,9 +2453,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
 .c6 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -2502,6 +2468,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
   color: #fff;
   background-color: #f50057;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c6:hover {
@@ -2517,9 +2484,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
 .c7 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -2533,6 +2498,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
   color: #f44336;
+  padding: 6px 16px;
 }
 
 .c7:hover {
@@ -2546,9 +2512,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
 .c8 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -2563,6 +2527,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
   background-color: transparent;
   color: #ff9800;
   border: 1px solid rgba(255,152,0,0.5);
+  padding: 5px 15px;
 }
 
 .c8:hover {
@@ -2576,9 +2541,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
 .c10 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -2593,6 +2556,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
   color: #fff;
   background-color: #3f51b5;
   opacity: 0.38;
+  padding: 6px 16px;
 }
 
 .c0 button,
@@ -2799,9 +2763,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
 .c2 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -2816,6 +2778,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
   color: rgba(0,0,0,0.87);
   background-color: #fff;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c2:hover {
@@ -2831,9 +2794,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
 .c5 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -2847,6 +2808,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
   color: #3f51b5;
+  padding: 6px 16px;
 }
 
 .c5:hover {
@@ -2860,9 +2822,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
 .c8 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -2877,6 +2837,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
   color: #fff;
   background-color: #f50057;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c8:hover {
@@ -2892,9 +2853,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
 .c9 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -2908,6 +2867,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
   color: #f44336;
+  padding: 6px 16px;
 }
 
 .c9:hover {
@@ -2921,9 +2881,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
 .c10 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -2938,6 +2896,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
   background-color: transparent;
   color: #ff9800;
   border: 1px solid rgba(255,152,0,0.5);
+  padding: 5px 15px;
 }
 
 .c10:hover {
@@ -3163,9 +3122,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
 .c2 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -3181,6 +3138,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
   color: rgba(0,0,0,0.87);
   background-color: #fff;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c2:hover {
@@ -3196,9 +3154,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
 .c5 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -3213,6 +3169,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
   width: 100%;
   background-color: transparent;
   color: #3f51b5;
+  padding: 6px 16px;
 }
 
 .c5:hover {
@@ -3226,9 +3183,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
 .c6 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -3244,6 +3199,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
   background-color: transparent;
   color: #f50057;
   border: 1px solid rgba(245,0,87,0.5);
+  padding: 5px 15px;
 }
 
 .c6:hover {
@@ -3257,9 +3213,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
 .c7 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 36.5px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -3275,6 +3229,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
   color: rgba(0,0,0,0.87);
   background-color: #ff9800;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c7:hover {
@@ -3290,9 +3245,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
 .c8 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -3308,6 +3261,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
   color: #fff;
   background-color: #3f51b5;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c8:hover {
@@ -3535,9 +3489,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
 .c2 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -3552,6 +3504,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   color: rgba(0,0,0,0.87);
   background-color: #fff;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c2:hover {
@@ -3567,9 +3520,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
 .c5 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -3583,6 +3534,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
   color: #3f51b5;
+  padding: 6px 16px;
 }
 
 .c5:hover {
@@ -3596,9 +3548,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
 .c6 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -3613,6 +3563,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   background-color: transparent;
   color: #f50057;
   border: 1px solid rgba(245,0,87,0.5);
+  padding: 5px 15px;
 }
 
 .c6:hover {
@@ -3626,9 +3577,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
 .c7 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -3642,6 +3591,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
   color: #f44336;
+  padding: 6px 16px;
 }
 
 .c7:hover {
@@ -3655,9 +3605,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
 .c8 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -3672,6 +3620,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   color: rgba(0,0,0,0.87);
   background-color: #ff9800;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c8:hover {
@@ -3687,9 +3636,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
 .c9 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 36.5px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -3704,6 +3651,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   color: #fff;
   background-color: #3f51b5;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c9:hover {
@@ -3719,7 +3667,6 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
 .c10 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 8.2px;
   border-radius: 4px;
   font-size: 0.875rem;
   line-height: 0;
@@ -3735,6 +3682,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   color: #fff;
   background-color: #3f51b5;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 8.2px;
 }
 
 .c10:hover {
@@ -3750,7 +3698,6 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
 .c13 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 8.2px;
   border-radius: 50%;
   font-size: 0.875rem;
   line-height: 0;
@@ -3766,6 +3713,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   color: #fff;
   background-color: #3f51b5;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 8.2px;
 }
 
 .c13:hover {
@@ -4054,9 +4002,7 @@ exports[`Demo renders ./packages/react/src/CSSTransition/__doc__/Advance.tsx cor
 .c1 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -4071,6 +4017,7 @@ exports[`Demo renders ./packages/react/src/CSSTransition/__doc__/Advance.tsx cor
   color: #fff;
   background-color: #3f51b5;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c1:hover {
@@ -4186,9 +4133,7 @@ exports[`Demo renders ./packages/react/src/CSSTransition/__doc__/Basic.tsx corre
 .c1 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -4203,6 +4148,7 @@ exports[`Demo renders ./packages/react/src/CSSTransition/__doc__/Basic.tsx corre
   color: #fff;
   background-color: #3f51b5;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c1:hover {
@@ -4318,9 +4264,7 @@ exports[`Demo renders ./packages/react/src/CollapseTransition/__doc__/Basic.tsx 
 .c1 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -4335,6 +4279,7 @@ exports[`Demo renders ./packages/react/src/CollapseTransition/__doc__/Basic.tsx 
   color: #fff;
   background-color: #3f51b5;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c1:hover {
@@ -4452,9 +4397,7 @@ exports[`Demo renders ./packages/react/src/CollapseTransition/__doc__/Horizontal
 .c1 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -4469,6 +4412,7 @@ exports[`Demo renders ./packages/react/src/CollapseTransition/__doc__/Horizontal
   color: #fff;
   background-color: #3f51b5;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c1:hover {
@@ -4752,6 +4696,268 @@ exports[`Demo renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] 
 </div>
 `;
 
+exports[`Demo renders ./packages/react/src/Popconfirm/__doc__/Basic.tsx correctly 1`] = `
+.c3 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c0 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.c0::-moz-focus-inner {
+  border-style: none;
+}
+
+.c0 svg {
+  pointer-events: none;
+}
+
+.c0 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+}
+
+.c0 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c0 .xl-base-button__ripple-leave-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c0 .xl-base-button__ripple-enter {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c0 .xl-base-button__ripple-leave-to {
+  opacity: 0;
+}
+
+.c2 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c1 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  border-radius: 4px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #3f51b5;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
+}
+
+.c1:hover {
+  background-color: rgba(70,88,184,1);
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c1:focus {
+  background-color: rgba(85,101,189,1);
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+<div>
+  <button
+    class="c0 xl-base-button__root c1 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+  >
+    <span
+      class="c2 xl-base-button__inner"
+    >
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c3 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+</div>
+`;
+
+exports[`Demo renders ./packages/react/src/Popconfirm/__doc__/Promise.tsx correctly 1`] = `
+.c3 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c0 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.c0::-moz-focus-inner {
+  border-style: none;
+}
+
+.c0 svg {
+  pointer-events: none;
+}
+
+.c0 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+}
+
+.c0 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c0 .xl-base-button__ripple-leave-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c0 .xl-base-button__ripple-enter {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c0 .xl-base-button__ripple-leave-to {
+  opacity: 0;
+}
+
+.c2 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c1 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  border-radius: 4px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #3f51b5;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
+}
+
+.c1:hover {
+  background-color: rgba(70,88,184,1);
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c1:focus {
+  background-color: rgba(85,101,189,1);
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+<div>
+  <button
+    class="c0 xl-base-button__root c1 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+  >
+    <span
+      class="c2 xl-base-button__inner"
+    >
+      <span>
+        button
+      </span>
+    </span>
+    <div
+      class="c3 xl-ripple__root xl-base-button__ripple"
+    />
+  </button>
+</div>
+`;
+
 exports[`Demo renders ./packages/react/src/Popover/__doc__/Basic.tsx correctly 1`] = `
 .c4 {
   position: absolute;
@@ -4837,9 +5043,7 @@ exports[`Demo renders ./packages/react/src/Popover/__doc__/Basic.tsx correctly 1
 .c2 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -4854,6 +5058,7 @@ exports[`Demo renders ./packages/react/src/Popover/__doc__/Basic.tsx correctly 1
   color: #fff;
   background-color: #3f51b5;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c2:hover {
@@ -5174,9 +5379,7 @@ Array [
 .c1 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -5191,6 +5394,7 @@ Array [
   color: #fff;
   background-color: #3f51b5;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c1:hover {
@@ -5356,9 +5560,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Arrow.tsx correctly 1`
 .c2 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -5373,6 +5575,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Arrow.tsx correctly 1`
   color: #fff;
   background-color: #3f51b5;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c2:hover {
@@ -5580,9 +5783,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
 .c2 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -5597,6 +5798,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
   color: #fff;
   background-color: #3f51b5;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c2:hover {
@@ -5970,250 +6172,6 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Popper/__doc__/Nest.tsx correctly 1`] = `
-.c4 {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 0;
-  overflow: hidden;
-  border-radius: inherit;
-  pointer-events: none;
-}
-
-.c1 {
-  position: relative;
-  display: inline-block;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  white-space: nowrap;
-  text-align: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  vertical-align: middle;
-  background-color: transparent;
-  border: 0;
-  border-radius: 0;
-  outline: 0;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-  cursor: pointer;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-}
-
-.c1::-moz-focus-inner {
-  border-style: none;
-}
-
-.c1 svg {
-  pointer-events: none;
-}
-
-.c1 .xl-base-button__ripple {
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  opacity: 0.12;
-}
-
-.c1 .xl-base-button__ripple-enter-active {
-  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
-  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
-}
-
-.c1 .xl-base-button__ripple-leave-active {
-  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
-  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
-}
-
-.c1 .xl-base-button__ripple-enter {
-  -webkit-transform: scale(0);
-  -ms-transform: scale(0);
-  transform: scale(0);
-  opacity: 0.1;
-}
-
-.c1 .xl-base-button__ripple-leave-to {
-  opacity: 0;
-}
-
-.c3 {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-}
-
-.c2 {
-  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
-  border-radius: 4px;
-  min-width: 64px;
-  font-size: 0.875rem;
-  line-height: 1.75;
-  font-weight: 500;
-  -webkit-letter-spacing: 0.089em;
-  -moz-letter-spacing: 0.089em;
-  -ms-letter-spacing: 0.089em;
-  letter-spacing: 0.089em;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  color: #fff;
-  background-color: #3f51b5;
-  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-}
-
-.c2:hover {
-  background-color: rgba(70,88,184,1);
-  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
-}
-
-.c2:focus {
-  background-color: rgba(85,101,189,1);
-  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
-}
-
-.c0 button {
-  margin-right: 16px;
-  margin-bottom: 16px;
-}
-
-.c0 .slide-enter-active,
-.c0 .slide-leave-active {
-  -webkit-transition: -webkit-transform 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  -webkit-transition: transform 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  transition: transform 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-}
-
-.c0 .slide-enter-active[data-placement^="top"],
-.c0 .slide-leave-active[data-placement^="top"] {
-  -webkit-transform-origin: 0 100%;
-  -ms-transform-origin: 0 100%;
-  transform-origin: 0 100%;
-}
-
-.c0 .slide-enter-active[data-placement^="bottom"],
-.c0 .slide-leave-active[data-placement^="bottom"] {
-  -webkit-transform-origin: 0 0;
-  -ms-transform-origin: 0 0;
-  transform-origin: 0 0;
-}
-
-.c0 .slide-enter[data-placement^="top"],
-.c0 .slide-leave-to[data-placement^="top"] {
-  -webkit-transform: scaleY(0);
-  -ms-transform: scaleY(0);
-  transform: scaleY(0);
-}
-
-.c0 .slide-enter[data-placement^="bottom"],
-.c0 .slide-leave-to[data-placement^="bottom"] {
-  -webkit-transform: scaleY(0);
-  -ms-transform: scaleY(0);
-  transform: scaleY(0);
-}
-
-.c0 .slide-enter-to[data-placement^="top"],
-.c0 .slide-leave[data-placement^="top"] {
-  -webkit-transform: scaleY(1);
-  -ms-transform: scaleY(1);
-  transform: scaleY(1);
-}
-
-.c0 .slide-enter-to[data-placement^="bottom"],
-.c0 .slide-leave[data-placement^="bottom"] {
-  -webkit-transform: scaleY(1);
-  -ms-transform: scaleY(1);
-  transform: scaleY(1);
-}
-
-<div
-  class="c0"
->
-  <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
-  >
-    <span
-      class="c3 xl-base-button__inner"
-    >
-      <span>
-        hover
-      </span>
-    </span>
-    <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
-    />
-  </button>
-  <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
-  >
-    <span
-      class="c3 xl-base-button__inner"
-    >
-      <span>
-        click
-      </span>
-    </span>
-    <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
-    />
-  </button>
-  <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
-  >
-    <span
-      class="c3 xl-base-button__inner"
-    >
-      <span>
-        focus
-      </span>
-    </span>
-    <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
-    />
-  </button>
-  <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
-  >
-    <span
-      class="c3 xl-base-button__inner"
-    >
-      <span>
-        contextMenu
-      </span>
-    </span>
-    <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
-    />
-  </button>
-  <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
-  >
-    <span
-      class="c3 xl-base-button__inner"
-    >
-      <span>
-        custom(click twice)
-      </span>
-    </span>
-    <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
-    />
-  </button>
-</div>
-`;
-
 exports[`Demo renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 1`] = `
 .c4 {
   position: absolute;
@@ -6299,9 +6257,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 
 .c2 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -6316,6 +6272,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 
   color: #fff;
   background-color: #3f51b5;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c2:hover {
@@ -6563,9 +6520,7 @@ exports[`Demo renders ./packages/react/src/Portal/__doc__/Basic.tsx correctly 1`
 .c2 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -6580,6 +6535,7 @@ exports[`Demo renders ./packages/react/src/Portal/__doc__/Basic.tsx correctly 1`
   color: #fff;
   background-color: #3f51b5;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c2:hover {
@@ -8087,9 +8043,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
 .c2 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -8104,6 +8058,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
   color: #fff;
   background-color: #3f51b5;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c2:hover {
@@ -8423,9 +8378,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Colors.tsx correctly 
 .c2 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -8440,6 +8393,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Colors.tsx correctly 
   color: #fff;
   background-color: #3f51b5;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c2:hover {
@@ -8604,9 +8558,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/MaxWidth.tsx correctl
 .c2 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -8621,6 +8573,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/MaxWidth.tsx correctl
   color: #fff;
   background-color: #3f51b5;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c2:hover {
@@ -8649,201 +8602,6 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/MaxWidth.tsx correctl
     >
       <span>
         button
-      </span>
-    </span>
-    <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
-    />
-  </button>
-</div>
-`;
-
-exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Nest.tsx correctly 1`] = `
-.c4 {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 0;
-  overflow: hidden;
-  border-radius: inherit;
-  pointer-events: none;
-}
-
-.c1 {
-  position: relative;
-  display: inline-block;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  white-space: nowrap;
-  text-align: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  vertical-align: middle;
-  background-color: transparent;
-  border: 0;
-  border-radius: 0;
-  outline: 0;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-  cursor: pointer;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-}
-
-.c1::-moz-focus-inner {
-  border-style: none;
-}
-
-.c1 svg {
-  pointer-events: none;
-}
-
-.c1 .xl-base-button__ripple {
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  opacity: 0.12;
-}
-
-.c1 .xl-base-button__ripple-enter-active {
-  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
-  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
-}
-
-.c1 .xl-base-button__ripple-leave-active {
-  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
-  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
-}
-
-.c1 .xl-base-button__ripple-enter {
-  -webkit-transform: scale(0);
-  -ms-transform: scale(0);
-  transform: scale(0);
-  opacity: 0.1;
-}
-
-.c1 .xl-base-button__ripple-leave-to {
-  opacity: 0;
-}
-
-.c3 {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-}
-
-.c2 {
-  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
-  border-radius: 4px;
-  min-width: 64px;
-  font-size: 0.875rem;
-  line-height: 1.75;
-  font-weight: 500;
-  -webkit-letter-spacing: 0.089em;
-  -moz-letter-spacing: 0.089em;
-  -ms-letter-spacing: 0.089em;
-  letter-spacing: 0.089em;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  color: #fff;
-  background-color: #3f51b5;
-  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-}
-
-.c2:hover {
-  background-color: rgba(70,88,184,1);
-  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
-}
-
-.c2:focus {
-  background-color: rgba(85,101,189,1);
-  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
-}
-
-.c0 button {
-  margin-right: 16px;
-  margin-bottom: 16px;
-}
-
-<div
-  class="c0"
->
-  <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
-  >
-    <span
-      class="c3 xl-base-button__inner"
-    >
-      <span>
-        hover
-      </span>
-    </span>
-    <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
-    />
-  </button>
-  <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
-  >
-    <span
-      class="c3 xl-base-button__inner"
-    >
-      <span>
-        click
-      </span>
-    </span>
-    <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
-    />
-  </button>
-  <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
-  >
-    <span
-      class="c3 xl-base-button__inner"
-    >
-      <span>
-        focus
-      </span>
-    </span>
-    <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
-    />
-  </button>
-  <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
-  >
-    <span
-      class="c3 xl-base-button__inner"
-    >
-      <span>
-        contextMenu
-      </span>
-    </span>
-    <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
-    />
-  </button>
-  <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
-  >
-    <span
-      class="c3 xl-base-button__inner"
-    >
-      <span>
-        custom(click twice)
       </span>
     </span>
     <div
@@ -8938,9 +8696,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Rich.tsx correctly 1`
 .c2 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -8955,6 +8711,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Rich.tsx correctly 1`
   color: #fff;
   background-color: #3f51b5;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c2:hover {
@@ -9077,9 +8834,7 @@ exports[`Demo renders ./packages/react/src/Transition/__doc__/Appear.tsx correct
 .c1 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -9094,6 +8849,7 @@ exports[`Demo renders ./packages/react/src/Transition/__doc__/Appear.tsx correct
   color: #fff;
   background-color: #3f51b5;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c1:hover {
@@ -9247,9 +9003,7 @@ exports[`Demo renders ./packages/react/src/Transition/__doc__/Basic.tsx correctl
 .c1 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -9264,6 +9018,7 @@ exports[`Demo renders ./packages/react/src/Transition/__doc__/Basic.tsx correctl
   color: #fff;
   background-color: #3f51b5;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c1:hover {
@@ -9379,9 +9134,7 @@ exports[`Demo renders ./packages/react/src/TransitionGroup/__doc__/Basic.tsx cor
 .c1 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  padding: 6px 16px;
   border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -9396,6 +9149,7 @@ exports[`Demo renders ./packages/react/src/TransitionGroup/__doc__/Basic.tsx cor
   color: #fff;
   background-color: #3f51b5;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
 }
 
 .c1:hover {
