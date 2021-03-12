@@ -13,7 +13,7 @@ import useEventCallback from '../hooks/useEventCallback';
 
 export type PopconfirmButtonProps = Omit<ButtonProps, 'children' | 'onClick'>;
 export interface PopconfirmProps
-  extends Omit<PopperProps, 'popup' | 'arrow' | 'transitionClasses'> {
+  extends Omit<PopperProps, 'popup' | 'arrow' | 'transitionClasses' | 'disablePopupEnter'> {
   title: React.ReactNode;
   icon?: React.ReactNode;
   onConfirm?: () => void;
@@ -153,7 +153,7 @@ const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
     trigger = 'click',
     title,
     icon = defaultIcon,
-    visible: visibleProp = false,
+    visible: visibleProp,
     onVisibleChange,
     onCancel,
     onConfirm,
@@ -223,6 +223,7 @@ const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
   return (
     <PopconfirmRoot
       {...others}
+      disablePopupEnter={false}
       visible={visible}
       onVisibleChange={handleVisibleChange}
       ref={ref}

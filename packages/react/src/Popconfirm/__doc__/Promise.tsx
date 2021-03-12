@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-/* eslint-disable react/jsx-handler-names */
 import React from 'react';
 import { Popconfirm, Button } from '@xl-vision/react';
 

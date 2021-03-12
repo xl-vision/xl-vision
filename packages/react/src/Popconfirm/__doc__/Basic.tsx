@@ -5,7 +5,7 @@ export default () => {
   return (
     <div>
       <Popconfirm title='Are you sure to do it?'>
-        <Button theme='primary'>TS</Button>
+        <Button theme='primary'>button</Button>
       </Popconfirm>
     </div>
   );
