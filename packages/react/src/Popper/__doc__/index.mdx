@@ -2,7 +2,7 @@
 
 基础的弹出框实现
 
-> 这个组件很强大，使用这个组件包裹的参考组件不会在 dom 上产生任何包裹的元素，因此不会对参考组件产生任何影响。同时，这个组件也只嵌套使用，子 popper 在逻辑上就像是属于父 popper 的弹出框内容的一部分，然而实际上子 popper 在 dom 结构上可以在任何位置。这个组件的弹出框内容只在真正触发时才会挂载，因此性能有一定的保证，我们甚至可以使用这个组件实现无限层级的子父菜单项。
+> 这个组件很强大，使用这个组件包裹的参考组件不会在 dom 上产生任何包裹的元素，因此不会对参考组件产生任何影响。这个组件的弹出框内容只在真正触发时才会挂载，因此性能有一定的保证。
 
 :::demo ./Basic.tsx
 
@@ -28,14 +28,6 @@
 
 :::
 
-:::demo ./Nest.tsx
-
-嵌套
-
-嵌套
-
-:::
-
 ## Popper API
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
@@ -44,7 +36,8 @@
 | popup | 弹出框 | React.ReactElement | - | - | true |
 | placement | 指定弹出框的方位 | `auto`&#x007c;`auto-start`&#x007c;`auto-end`&#x007c;`top`&#x007c;`top-start`&#x007c;`top-end`&#x007c;`right`&#x007c;`right-start`&#x007c;`right-end`&#x007c;`bottom`&#x007c;`bottom-start`&#x007c;`bottom-end`&#x007c;`left`&#x007c;`left-start`&#x007c;`left-end` | - | `auto` | false |
 | getPopupContainer | 指定弹出框的父容器 | string &#x007c; HTMLElement &#x007c; (() => string &#x007c; HTMLElement) | - | 默认为`body` | false |
-| visible | 是否显示弹出框 | boolean | - | false | false |
+| visible | 是否显示弹出框 | boolean | - | - | false |
+| defaultVisible | 默认弹出框是否展示，当`visible`存在时，选项失效 | boolean | - | false | false |
 | onVisibleChange | 弹出框状态改变时的回调 | (visible: boolean) => void | - | - | false |
 | hideDelay | 延时关闭 | number | - | - | false |
 | showDelay | 延时显示 | number | - | - | false |
