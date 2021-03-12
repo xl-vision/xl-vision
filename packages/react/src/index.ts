@@ -32,3 +32,5 @@ export { default as Popover } from './Popover';
 export * from './Popover';
 export { default as Popconfirm } from './Popconfirm';
 export * from './Popconfirm';
+export { default as Dropdown } from './Dropdown';
+export * from './Dropdown';
