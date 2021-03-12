@@ -6,6 +6,7 @@
 const babel = require('@babel/core');
 const fs = require('fs');
 const path = require('path');
+const prettier = require('prettier');
 
 let demoCount = 0;
 
@@ -58,7 +59,7 @@ module.exports = function createDemoPlugin(ctx) {
           });
         });
 
-        const jsCode = (
+        let jsCode = (
           await babel.transformAsync(tsCode, {
             filename: path.basename(filePath),
             presets: [
@@ -67,6 +68,15 @@ module.exports = function createDemoPlugin(ctx) {
             ],
           })
         ).code;
+
+        const prettierOptions = await prettier.resolveConfig(process.cwd(), { editorconfig: true });
+
+        // prettier
+        jsCode = prettier.format(jsCode, {
+          ...prettierOptions,
+          parser: 'babel',
+          filePath: absolutePath,
+        });
 
         const demoName = `Demo_${demoCount++}`;
 
