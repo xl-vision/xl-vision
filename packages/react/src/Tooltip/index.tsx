@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import React from 'react';
-import Popper, { PopperProps } from '../Popper';
+import Popper, { PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
 import ThemeContext from '../ThemeProvider/ThemeContext';
 import { isDevelopment } from '../utils/env';
@@ -104,6 +104,8 @@ const TooltipArrow = styled('div', {
 
 const defaultGetPopupContainer = () => document.body;
 
+const defaultTrigger: Array<PopperTrigger> = ['hover', 'click'];
+
 const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
   const { clsPrefix, color } = React.useContext(ThemeContext);
 
@@ -115,6 +117,8 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
     bgColor,
     maxWidth,
     offset = 12,
+    // 支持触屏设备
+    trigger = defaultTrigger,
     ...others
   } = props;
 
@@ -143,6 +147,7 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
     <TooltipRoot
       {...others}
       ref={ref}
+      trigger={trigger}
       className={clsx(rootClassName, className)}
       offset={offset}
       arrow={arrow}
@@ -156,6 +161,14 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
 if (isDevelopment) {
   Tooltip.displayName = displayName;
 
+  const triggerPropType = PropTypes.oneOf<PopperTrigger>([
+    'click',
+    'contextMenu',
+    'custom',
+    'focus',
+    'hover',
+  ]).isRequired;
+
   Tooltip.propTypes = {
     content: PropTypes.node,
     getPopupContainer: PropTypes.func,
@@ -164,6 +177,7 @@ if (isDevelopment) {
     bgColor: PropTypes.string,
     maxWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     offset: PropTypes.number,
+    trigger: PropTypes.oneOfType([triggerPropType, PropTypes.arrayOf(triggerPropType)]),
   };
 }
 
