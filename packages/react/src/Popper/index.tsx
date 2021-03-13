@@ -220,6 +220,9 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
       popperInstanceRef.current.setOptions({ placement, modifiers }).then(voidFn, voidFn);
     }
 
+    // 强制计算位置，同步完成
+    popperInstanceRef.current.forceUpdate();
+
     popupEl.style.zIndex = `${increaseZindex()}`;
   });
 
