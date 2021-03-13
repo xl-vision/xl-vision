@@ -101,7 +101,6 @@ const BaseButton = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseB
       loading,
       disableRipple,
       className,
-      /* eslint-disable react/prop-types */
       tabIndex,
       onClick,
       onMouseDown,
@@ -114,7 +113,6 @@ const BaseButton = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseB
       onBlur,
       onKeyDown,
       onKeyUp,
-      /* eslint-enable react/prop-types */
       ...others
     } = props;
 
@@ -239,6 +237,18 @@ if (isDevelopment) {
     disableRipple: PropTypes.bool,
     loading: PropTypes.bool,
     className: PropTypes.string,
+    tabIndex: PropTypes.number,
+    onClick: PropTypes.func,
+    onMouseDown: PropTypes.func,
+    onMouseUp: PropTypes.func,
+    onMouseLeave: PropTypes.func,
+    onTouchStart: PropTypes.func,
+    onTouchEnd: PropTypes.func,
+    onTouchMove: PropTypes.func,
+    onDragLeave: PropTypes.func,
+    onBlur: PropTypes.func,
+    onKeyDown: PropTypes.func,
+    onKeyUp: PropTypes.func,
   };
 }
 

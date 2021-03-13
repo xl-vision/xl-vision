@@ -62,30 +62,26 @@ const CSSTransition: React.FunctionComponent<CSSTransitionProps> = (props) => {
     afterLeave,
     leaveCancelled,
     timeout,
+    beforeAppear: _beforeAppear,
+    appear: _appear,
+    afterAppear: _afterAppear,
+    appearCancelled: _appearCancelled,
+    beforeDisappear: _beforeDisappear,
+    disappear: _disappear,
+    afterDisappear: _afterDisappear,
+    disappearCancelled: _disappearCancelled,
     ...others
   } = props;
 
-  let {
-    beforeAppear,
-    appear,
-    appearCancelled,
-    afterAppear,
-    beforeDisappear,
-    disappear,
-    afterDisappear,
-    disappearCancelled,
-  } = props;
-
   // 如果开启transitionOnFirst,默认使用enter和leave的生命周期方法
-  beforeAppear = beforeAppear || beforeEnter;
-  appear = appear || enter;
-  afterAppear = afterAppear || afterEnter;
-  appearCancelled = appearCancelled || enterCancelled;
-
-  beforeDisappear = beforeDisappear || beforeLeave;
-  disappear = disappear || leave;
-  afterDisappear = afterDisappear || afterLeave;
-  disappearCancelled = disappearCancelled || leaveCancelled;
+  const beforeAppear = _beforeAppear || beforeEnter;
+  const appear = _appear || enter;
+  const afterAppear = _afterAppear || afterEnter;
+  const appearCancelled = _appearCancelled || enterCancelled;
+  const beforeDisappear = _beforeDisappear || beforeLeave;
+  const disappear = _disappear || leave;
+  const afterDisappear = _afterDisappear || afterLeave;
+  const disappearCancelled = _disappearCancelled || leaveCancelled;
 
   const transitionClassesObj = React.useMemo(() => {
     if (!transitionClasses) {

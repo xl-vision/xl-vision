@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React from 'react';
 import PropTypes from 'prop-types';
-import Popper, { PopperProps } from '../Popper';
+import Popper, { PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
 import ThemeContext from '../ThemeProvider/ThemeContext';
 import { isDevelopment } from '../utils/env';
@@ -115,6 +115,8 @@ const PopoverContent = styled('div', {
 
 const defaultGetPopupContainer = () => document.body;
 
+const defaultTrigger: Array<PopperTrigger> = ['hover', 'click'];
+
 const Popover = React.forwardRef<unknown, PopoverProps>((props, ref) => {
   const {
     title,
@@ -123,6 +125,8 @@ const Popover = React.forwardRef<unknown, PopoverProps>((props, ref) => {
     className,
     transitionClassName,
     offset = 12,
+    // 支持触屏设备
+    trigger = defaultTrigger,
     ...others
   } = props;
 
@@ -143,6 +147,7 @@ const Popover = React.forwardRef<unknown, PopoverProps>((props, ref) => {
     <PopoverRoot
       {...others}
       ref={ref}
+      trigger={trigger}
       className={clsx(rootClassName, className)}
       offset={offset}
       arrow={arrow}
@@ -156,6 +161,14 @@ const Popover = React.forwardRef<unknown, PopoverProps>((props, ref) => {
 if (isDevelopment) {
   Popover.displayName = displayName;
 
+  const triggerPropType = PropTypes.oneOf<PopperTrigger>([
+    'click',
+    'contextMenu',
+    'custom',
+    'focus',
+    'hover',
+  ]).isRequired;
+
   Popover.propTypes = {
     title: PropTypes.node,
     content: PropTypes.node.isRequired,
@@ -163,6 +176,7 @@ if (isDevelopment) {
     className: PropTypes.string,
     transitionClassName: PropTypes.string,
     offset: PropTypes.number,
+    trigger: PropTypes.oneOfType([triggerPropType, PropTypes.arrayOf(triggerPropType)]),
   };
 }
 

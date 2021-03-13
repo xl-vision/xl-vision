@@ -18,7 +18,6 @@ export interface CollapseTransitionElement extends CSSTransitionElement {
 const CollapseTransition: React.FunctionComponent<CollapseTransitionProp> = (props) => {
   const {
     horizontal,
-    /* eslint-disable react/prop-types */
     beforeAppear: _beforeAppear,
     appear: _appear,
     appearCancelled: _appearCancelled,
@@ -35,7 +34,6 @@ const CollapseTransition: React.FunctionComponent<CollapseTransitionProp> = (pro
     disappear: _disappear,
     disappearCancelled: _disappearCancelled,
     afterDisappear: _afterDisappear,
-    /* eslint-enable react/prop-types */
     ...others
   } = props;
 
@@ -304,6 +302,22 @@ if (isDevelopment) {
 
   CollapseTransition.propTypes = {
     horizontal: PropTypes.bool,
+    beforeAppear: PropTypes.func,
+    appear: PropTypes.func,
+    appearCancelled: PropTypes.func,
+    afterAppear: PropTypes.func,
+    beforeEnter: PropTypes.func,
+    enter: PropTypes.func,
+    enterCancelled: PropTypes.func,
+    afterEnter: PropTypes.func,
+    beforeLeave: PropTypes.func,
+    leave: PropTypes.func,
+    leaveCancelled: PropTypes.func,
+    afterLeave: PropTypes.func,
+    beforeDisappear: PropTypes.func,
+    disappear: PropTypes.func,
+    disappearCancelled: PropTypes.func,
+    afterDisappear: PropTypes.func,
   };
 }
 
