@@ -20,6 +20,16 @@ const route: Array<Route> = [
     component: () => import('./views/index.mdx'),
   },
   {
+    name: '快速上手',
+    children: [
+      {
+        name: '安装',
+        path: '/install',
+        component: () => import('./views/quickstart/install.mdx'),
+      },
+    ],
+  },
+  {
     name: '通用组件',
     children: [
       {
@@ -41,6 +51,16 @@ const route: Array<Route> = [
         name: '栅格',
         path: '/Row',
         component: () => import('@xl-vision/react/Row/__doc__/index.mdx'),
+      },
+    ],
+  },
+  {
+    name: '导航',
+    children: [
+      {
+        name: '下拉框',
+        path: '/Dropdown',
+        component: () => import('@xl-vision/react/Dropdown/__doc__/index.mdx'),
       },
     ],
   },
