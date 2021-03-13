@@ -40,5 +40,6 @@
 | --- | --- | --- | --- | --- | --- |
 | content | tooltip 内容 | React.ReactNode | - | - | true |
 | maxWidth | tooltip 最大宽度 | number | - | - | false |
-| transitionClassName | 动画 class，参看[**CSSTransition**](/CSSTransition) | string | - | `xl-tooltip-slide` | false |
+| transitionClassName | 动画 class，参看[**CSSTransition**](/CSSTransition) | string | - | 'xl-tooltip-slide' | false |
 | bgColor | 自定义背景色 | string | - | - | false |
+| trigger | 触发方式,click是为了支持触屏设备 | 'hover'&#x007c;'focus'&#x007c;'click'&#x007c;'contextMenu'&#x007c;'custom'&#x007c;array | - | ['hover','click'] | false |

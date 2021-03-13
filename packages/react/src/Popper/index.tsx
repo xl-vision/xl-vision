@@ -15,7 +15,7 @@ import { off, on } from '../utils/event';
 import useLifecycleState, { LifecycleState } from '../hooks/useLifecycleState';
 import { increaseZindex } from '../utils/zIndexManger';
 import ThemeContext from '../ThemeProvider/ThemeContext';
-import { voidFn } from '../utils/function';
+import { oneOf, voidFn } from '../utils/function';
 import computeTransformOrigin from './computeTransformOrigin';
 
 export type PopperTrigger = 'hover' | 'focus' | 'click' | 'contextMenu' | 'custom';
@@ -29,7 +29,6 @@ export type PopperChildrenProps = {
   onFocus?: React.MouseEventHandler<any>;
   onBlur?: React.MouseEventHandler<any>;
   onContextMenu?: React.MouseEventHandler<any>;
-  onTouchStart?: React.TouchEventHandler<any>;
   ref?: React.Ref<any>;
 };
 
@@ -38,7 +37,7 @@ export type PopperProps = {
   popup: React.ReactElement;
   getPopupContainer?: PortalContainerType;
   transitionClasses?: CSSTransitionProps['transitionClasses'];
-  trigger?: PopperTrigger;
+  trigger?: PopperTrigger | Array<PopperTrigger>;
   placement?: PopperPlacement;
   disablePopupEnter?: boolean;
   offset?: number;
@@ -246,8 +245,16 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     }, Math.max(TIME_DELAY, newVisible ? showDelay : hideDelay));
   });
 
+  const isTrigger = useEventCallback((checkedTrigger: PopperTrigger) => {
+    const triggers = Array.isArray(trigger) ? trigger : [trigger];
+    if (oneOf(triggers, 'custom')) {
+      return false;
+    }
+    return oneOf(triggers, checkedTrigger);
+  });
+
   const handleReferenceClick: React.MouseEventHandler<any> = useEventCallback((e) => {
-    if (trigger === 'click') {
+    if (isTrigger('click')) {
       // 保证在handleClickOutside和handleContextMenuOutside后执行
       const timer = setTimeout(() => {
         setVisibleWrapper(true);
@@ -260,61 +267,35 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
   });
 
   const handleReferenceMouseEnter: React.MouseEventHandler<any> = useEventCallback((e) => {
-    if (trigger === 'hover') {
+    if (isTrigger('hover')) {
       setVisibleWrapper(true);
     }
     child.props?.onMouseEnter?.(e);
   });
 
   const handleReferenceMouseLeave: React.MouseEventHandler<any> = useEventCallback((e) => {
-    if (trigger === 'hover') {
+    if (isTrigger('hover')) {
       setVisibleWrapper(false);
     }
     child.props?.onMouseLeave?.(e);
   });
 
   const handleReferenceFocus: React.MouseEventHandler<any> = useEventCallback((e) => {
-    if (trigger === 'focus') {
+    if (isTrigger('focus')) {
       setVisibleWrapper(true);
     }
     child.props?.onFocus?.(e);
   });
 
   const handleReferenceBlur: React.MouseEventHandler<any> = useEventCallback((e) => {
-    if (trigger === 'focus') {
+    if (isTrigger('focus')) {
       setVisibleWrapper(false);
     }
     child.props?.onBlur?.(e);
   });
 
-  // trigger hover start when touch start
-  const handleTouchStart: React.TouchEventHandler<any> = useEventCallback((e) => {
-    if (trigger === 'hover') {
-      const timer = setTimeout(() => {
-        delayTimeRef.current = delayTimeRef.current.filter((it) => it !== timer);
-        setVisibleWrapper(true);
-      }, 0);
-      delayTimeRef.current.push(timer);
-    }
-
-    child.props?.onTouchStart?.(e);
-  });
-
-  // trigger hover end when touch start
-  // touchend trgger this logic everywhere, so bind this event on window
-  const handleTouchEnd = useEventCallback(() => {
-    if (trigger === 'hover') {
-      // 保证在handleTouchStart后执行
-      const timer = setTimeout(() => {
-        delayTimeRef.current = delayTimeRef.current.filter((it) => it !== timer);
-        setVisibleWrapper(false);
-      }, 0);
-      delayTimeRef.current.push(timer);
-    }
-  });
-
   const handleReferenceContextMenu: React.MouseEventHandler<any> = useEventCallback((e) => {
-    if (trigger === 'contextMenu') {
+    if (isTrigger('contextMenu')) {
       // 保证在handleClickOutside和handleContextMenuOutside后执行
       const timer = setTimeout(() => {
         setVisibleWrapper(true);
@@ -327,7 +308,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
   });
 
   const handleClickOutside = useEventCallback(() => {
-    if (trigger === 'click' || trigger === 'contextMenu') {
+    if (isTrigger('click') || isTrigger('contextMenu')) {
       setVisibleWrapper(false);
     }
   });
@@ -338,15 +319,14 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     if (disablePopupEnter) {
       return;
     }
-    if (trigger !== 'click' && trigger !== 'contextMenu') {
-      return;
+    if (isTrigger('click') || isTrigger('contextMenu')) {
+      // 保证在handleClickOutside和handleContextMenuOutside后执行
+      const timer = setTimeout(() => {
+        delayTimeRef.current = delayTimeRef.current.filter((it) => it !== timer);
+        setVisibleWrapper(true);
+      }, 0);
+      delayTimeRef.current.push(timer);
     }
-    // 保证在handleClickOutside和handleContextMenuOutside后执行
-    const timer = setTimeout(() => {
-      delayTimeRef.current = delayTimeRef.current.filter((it) => it !== timer);
-      setVisibleWrapper(true);
-    }, 0);
-    delayTimeRef.current.push(timer);
   });
 
   const handlePopupContextClick = handlePopupClick;
@@ -356,13 +336,13 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
       setVisibleWrapper(false);
       return;
     }
-    if (trigger === 'hover') {
+    if (isTrigger('hover')) {
       setVisibleWrapper(true);
     }
   });
 
   const handlePopupMouseLeave = useEventCallback(() => {
-    if (trigger === 'hover') {
+    if (isTrigger('hover')) {
       setVisibleWrapper(false);
     }
   });
@@ -405,13 +385,11 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
   React.useEffect(() => {
     on(window, 'click', handleClickOutside);
     on(window, 'contextmenu', handleContextMenuOutside);
-    on(window, 'touchend', handleTouchEnd);
     return () => {
       off(window, 'click', handleClickOutside);
       off(window, 'contextmenu', handleContextMenuOutside);
-      off(window, 'touchmove', handleTouchEnd);
     };
-  }, [handleClickOutside, handleContextMenuOutside, handleTouchEnd]);
+  }, [handleClickOutside, handleContextMenuOutside]);
 
   const beforeEnter = useEventCallback((el: CSSTransitionElement) => {
     // 移除transition class对定位的干扰
@@ -484,7 +462,6 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     onFocus: handleReferenceFocus,
     onBlur: handleReferenceBlur,
     onContextMenu: handleReferenceContextMenu,
-    onTouchStart: handleTouchStart,
   });
 
   return (
@@ -498,12 +475,20 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
 if (isDevelopment) {
   Popper.displayName = displayName;
 
+  const triggerPropType = PropTypes.oneOf<PopperTrigger>([
+    'click',
+    'contextMenu',
+    'custom',
+    'focus',
+    'hover',
+  ]).isRequired;
+
   Popper.propTypes = {
     children: PropTypes.element.isRequired,
     popup: PropTypes.element.isRequired,
     getPopupContainer: PropTypes.func,
     transitionClasses: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-    trigger: PropTypes.oneOf<PopperTrigger>(['click', 'contextMenu', 'custom', 'focus', 'hover']),
+    trigger: PropTypes.oneOfType([triggerPropType, PropTypes.arrayOf(triggerPropType)]),
     disablePopupEnter: PropTypes.bool,
     offset: PropTypes.number,
     placement: PropTypes.oneOf<PopperPlacement>([
