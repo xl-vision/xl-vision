@@ -43,6 +43,7 @@ const DropdownItemButton = styled(BaseButton, {
     color: color.text.primary,
     // 不设置会导致有间隙，原因未知
     width: '100%',
+    textAlign: 'left',
     ...typography.body2,
   };
 
@@ -72,7 +73,7 @@ const DropdownItem = React.forwardRef<HTMLLIElement, DropdownItemProps>((props, 
   });
 
   return (
-    <DropdownItemRoot ref={ref}>
+    <DropdownItemRoot ref={ref} as='div'>
       <DropdownItemButton
         {...others}
         styleProps={{ disabled }}
