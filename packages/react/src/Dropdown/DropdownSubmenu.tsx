@@ -8,23 +8,23 @@ import ThemeContext from '../ThemeProvider/ThemeContext';
 import { isDevelopment } from '../utils/env';
 import DropdownContext from './DropdownContext';
 
-export interface DropdownProps
+export interface DropdownSubmenuProps
   extends Omit<PopperProps, 'popup' | 'arrow' | 'transitionClasses' | 'disablePopupEnter'> {
   children: React.ReactElement;
   menus: React.ReactNode;
   transitionClassName?: string;
 }
 
-const displayName = 'Dropdown';
+const displayName = 'DropdownSubmenu';
 
-const DropdownRoot = styled(Popper, {
+const DropdownSubmenuRoot = styled(Popper, {
   name: displayName,
   slot: 'Root',
 })(({ theme }) => {
   const { clsPrefix, transition } = theme;
 
   return {
-    [`.${clsPrefix}-dropdown-slide`]: {
+    [`.${clsPrefix}-dropdown-submenu-slide`]: {
       '&-enter-active, &-leave-active': {
         transition: transition.standard(['transform', 'opacity']),
         opacity: 1,
@@ -48,7 +48,7 @@ const DropdownRoot = styled(Popper, {
   };
 });
 
-const DropdownPopup = styled('ul', {
+const DropdownSubmenuPopup = styled('ul', {
   name: displayName,
   slot: 'Popup',
 })(({ theme }) => {
@@ -65,16 +65,17 @@ const DropdownPopup = styled('ul', {
   };
 });
 
+const defaultTrigger: Array<PopperTrigger> = ['click', 'hover'];
 const defaultGetPopupContainer = () => document.body;
 
-const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
+const DropdownSubmenu = React.forwardRef<HTMLDivElement, DropdownSubmenuProps>((props, ref) => {
   const {
     menus,
     children,
     placement = 'bottom',
     transitionClassName,
-    offset = 12,
-    trigger = 'click',
+    offset = 8,
+    trigger = defaultTrigger,
     visible: visibleProp,
     defaultVisible = false,
     onVisibleChange,
@@ -112,17 +113,17 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) =>
     }
   }, [visibleProp]);
 
-  const rootClassName = `${clsPrefix}-dropdown`;
+  const rootClassName = `${clsPrefix}-dropdown-submenu`;
   const popup = (
-    <DropdownPopup>
+    <DropdownSubmenuPopup>
       <DropdownContext.Provider value={{ submenuCloseHandlers: submenuCloseHandlersRef.current }}>
         {menus}
       </DropdownContext.Provider>
-    </DropdownPopup>
+    </DropdownSubmenuPopup>
   );
 
   return (
-    <DropdownRoot
+    <DropdownSubmenuRoot
       {...others}
       ref={ref}
       disablePopupEnter={false}
@@ -136,12 +137,12 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) =>
       transitionClasses={clsx(`${rootClassName}-slide`, transitionClassName)}
     >
       {children}
-    </DropdownRoot>
+    </DropdownSubmenuRoot>
   );
 });
 
 if (isDevelopment) {
-  Dropdown.displayName = displayName;
+  DropdownSubmenu.displayName = displayName;
 
   const triggerPropType = PropTypes.oneOf<PopperTrigger>([
     'click',
@@ -151,7 +152,7 @@ if (isDevelopment) {
     'hover',
   ]).isRequired;
 
-  Dropdown.propTypes = {
+  DropdownSubmenu.propTypes = {
     menus: PropTypes.node.isRequired,
     children: PropTypes.element.isRequired,
     placement: PropTypes.oneOf<PopperPlacement>([
@@ -181,4 +182,4 @@ if (isDevelopment) {
   };
 }
 
-export default Dropdown;
+export default DropdownSubmenu;

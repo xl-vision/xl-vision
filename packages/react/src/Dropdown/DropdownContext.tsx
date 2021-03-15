@@ -1,9 +1,9 @@
 import React from 'react';
 
 export type DropdownContextProps = {
-  childrenCloseHandlers: Array<() => void>;
+  submenuCloseHandlers: Array<() => void>;
 };
 
 export default React.createContext<DropdownContextProps>({
-  childrenCloseHandlers: [],
+  submenuCloseHandlers: [],
 });
