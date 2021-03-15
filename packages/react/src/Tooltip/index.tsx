@@ -23,15 +23,8 @@ const TooltipRoot = styled(Popper, {
 
   return {
     [`.${clsPrefix}-tooltip-slide`]: {
-      '&-enter-active, &-leave-active': {
-        transition: transition.standard(['transform', 'opacity']),
-        opacity: 1,
-        transform: 'scale(1)',
-      },
-      '&-enter, &-leave-to': {
-        opacity: 0,
-        transform: 'scale(0.5)',
-      },
+      ...transition.fadeIn('&'),
+      ...transition.fadeOut('&'),
     },
   };
 });
@@ -52,7 +45,7 @@ const TooltipPopup = styled('div', {
   return {
     backgroundColor: bgColor,
     color: color.getContrastText(bgColor).text.primary,
-    padding: '4px 8px',
+    padding: '2px 8px',
     borderRadius: '4px',
     ...typography.caption,
     ...(hasWidth && {
@@ -61,44 +54,6 @@ const TooltipPopup = styled('div', {
       wordWrap: 'break-word',
       wordBreak: 'break-all',
     }),
-  };
-});
-
-const TooltipArrow = styled('div', {
-  name: displayName,
-  slot: 'Arrow',
-})(({ theme }) => {
-  const { color } = theme;
-  const bgColor = color.modes.dark.background.paper;
-
-  return {
-    position: 'absolute',
-    width: 0,
-    height: 0,
-    backgroundColor: bgColor,
-
-    ':before': {
-      position: 'absolute',
-      content: '""',
-      width: '8px',
-      height: '8px',
-      left: '-4px',
-      top: '-4px',
-      transform: 'rotate(45deg)',
-      backgroundColor: 'inherit',
-    },
-    '&[data-placement^="left"]': {
-      right: 0,
-    },
-    '&[data-placement^="right"]': {
-      left: 0,
-    },
-    '&[data-placement^="top"]': {
-      bottom: 0,
-    },
-    '&[data-placement^="bottom"]': {
-      top: 0,
-    },
   };
 });
 
@@ -116,7 +71,7 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
     transitionClassName,
     bgColor,
     maxWidth,
-    offset = 12,
+    offset = 8,
     // 支持触屏设备
     trigger = defaultTrigger,
     ...others
@@ -141,8 +96,6 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
     </TooltipPopup>
   );
 
-  const arrow = <TooltipArrow style={{ ...colorStyle }} className={`${rootClassName}__arrow`} />;
-
   return (
     <TooltipRoot
       {...others}
@@ -150,7 +103,6 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
       trigger={trigger}
       className={clsx(rootClassName, className)}
       offset={offset}
-      arrow={arrow}
       popup={popup}
       getPopupContainer={getPopupContainer}
       transitionClasses={clsx(`${rootClassName}-slide`, transitionClassName)}

@@ -1,3 +1,5 @@
+import { CSSObject } from '@xl-vision/styled-engine-types';
+
 const defaultFunctions = {
   deceleration: 'cubic-bezier(0, 0, 0.2, 1)',
   standard: 'cubic-bezier(0.4, 0, 0.2, 1)',
@@ -63,6 +65,36 @@ const createTransition = (transition: Transition = {}) => {
     return `${name} ${duration} ${delay} ${functions.sharp} `;
   };
 
+  const fadeIn = (className: string, duration = defaultDurations.enter): CSSObject => {
+    return {
+      [`${className}-enter-active`]: {
+        transition: enter(['opacity', 'transform'], duration),
+      },
+      [`${className}-enter`]: {
+        opacity: 0,
+        transform: 'scale(0.8)',
+      },
+      [`${className}-enter-to`]: {
+        opacity: 1,
+        transform: 'scale(1)',
+      },
+    };
+  };
+
+  const fadeOut = (className: string, duration = defaultDurations.leave): CSSObject => {
+    return {
+      [`${className}-leave-active`]: {
+        transition: leavePermanent(['opacity'], duration),
+      },
+      [`${className}-leave`]: {
+        opacity: 1,
+      },
+      [`${className}-leave-to`]: {
+        opacity: 0,
+      },
+    };
+  };
+
   return {
     functions,
     durations,
@@ -70,6 +102,8 @@ const createTransition = (transition: Transition = {}) => {
     enter,
     leavePermanent,
     leaveTemporary,
+    fadeIn,
+    fadeOut,
   } as const;
 };
 
