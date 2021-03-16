@@ -115,8 +115,6 @@ const PopoverContent = styled('div', {
 
 const defaultGetPopupContainer = () => document.body;
 
-const defaultTrigger: Array<PopperTrigger> = ['hover', 'click'];
-
 const Popover = React.forwardRef<unknown, PopoverProps>((props, ref) => {
   const {
     title,
@@ -126,7 +124,7 @@ const Popover = React.forwardRef<unknown, PopoverProps>((props, ref) => {
     transitionClassName,
     offset = 12,
     // 支持触屏设备
-    trigger = defaultTrigger,
+    trigger = 'click',
     ...others
   } = props;
 
