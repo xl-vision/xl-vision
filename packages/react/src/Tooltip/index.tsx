@@ -6,7 +6,7 @@ import { styled } from '../styles';
 import ThemeContext from '../ThemeProvider/ThemeContext';
 import { isDevelopment } from '../utils/env';
 import useEventCallback from '../hooks/useEventCallback';
-import { oneOf } from '../utils/function';
+import { omit, oneOf } from '../utils/function';
 import usePropChange from '../hooks/usePropChange';
 
 export interface TooltipChildrenProps extends PopperChildrenProps {
@@ -139,6 +139,10 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
   } = props;
 
   const child = React.Children.only<React.ReactElement<TooltipChildrenProps>>(children);
+
+  const triggers = Array.isArray(trigger) ? trigger : [trigger];
+
+  const extraTriggers = omit(trigger, '')
 
   const [visible, handleVisibleChange] = usePropChange(
     defaultVisible,
