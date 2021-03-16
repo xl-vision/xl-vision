@@ -53,6 +53,7 @@ export type PopperProps = {
   flip?: boolean | Record<string, any>;
   preventOverflow?: boolean | Record<string, any>;
   transformOrigin?: boolean;
+  onAfterClosed?: () => void;
 };
 
 const displayName = 'Popper';
@@ -80,6 +81,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     preventOverflow = true,
     transformOrigin = true,
     defaultVisible = false,
+    onAfterClosed,
   } = props;
 
   const { clsPrefix } = React.useContext(ThemeContext);
@@ -227,6 +229,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     if (popupNodeRef.current) {
       popupNodeRef.current.style.position = 'absolute';
     }
+    onAfterClosed?.();
   });
 
   const setVisibleWrapper = useEventCallback((newVisible: boolean) => {
@@ -510,6 +513,7 @@ if (isDevelopment) {
     preventOverflow: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
     defaultVisible: PropTypes.bool,
     transformOrigin: PropTypes.bool,
+    onAfterClosed: PropTypes.func,
   };
 }
 

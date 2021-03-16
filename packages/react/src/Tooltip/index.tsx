@@ -6,7 +6,7 @@ import { styled } from '../styles';
 import ThemeContext from '../ThemeProvider/ThemeContext';
 import { isDevelopment } from '../utils/env';
 import useEventCallback from '../hooks/useEventCallback';
-import { omit, oneOf } from '../utils/function';
+import { oneOf } from '../utils/function';
 import usePropChange from '../hooks/usePropChange';
 
 export interface TooltipChildrenProps extends PopperChildrenProps {
@@ -24,7 +24,7 @@ export interface TooltipProps
   maxWidth?: number | string;
   showArrow?: boolean;
   children: React.ReactElement<TooltipChildrenProps>;
-  trigger: TooltipTrigger | Array<TooltipTrigger>;
+  trigger?: TooltipTrigger | Array<TooltipTrigger>;
   touchShowDelay?: number;
   touchHideDelay?: number;
 }
@@ -47,6 +47,7 @@ const TooltipRoot = styled(Popper, {
 
 export type TooltipPopupStyleProps = {
   hasWidth: boolean;
+  touch?: boolean;
 };
 
 const TooltipPopup = styled('div', {
@@ -54,14 +55,14 @@ const TooltipPopup = styled('div', {
   slot: 'Popup',
 })<TooltipPopupStyleProps>(({ theme, styleProps }) => {
   const { color, typography } = theme;
-  const { hasWidth } = styleProps;
+  const { hasWidth, touch } = styleProps;
 
   const bgColor = color.modes.dark.background.paper;
 
   return {
     backgroundColor: bgColor,
     color: color.getContrastText(bgColor).text.primary,
-    padding: '4px 8px',
+    padding: touch ? '8px 16px' : '4px 8px',
     borderRadius: '4px',
     ...typography.caption,
     ...(hasWidth && {
@@ -115,6 +116,8 @@ const defaultGetPopupContainer = () => document.body;
 
 const defaultTrigger: Array<TooltipTrigger> = ['hover', 'touch'];
 
+const TIME_DELAY = 300;
+
 const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
   const { clsPrefix, color } = React.useContext(ThemeContext);
 
@@ -126,8 +129,8 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
     bgColor,
     maxWidth,
     offset = 12,
-    touchHideDelay,
-    touchShowDelay,
+    touchHideDelay = 0,
+    touchShowDelay = 1500,
     // 支持触屏设备
     trigger = defaultTrigger,
     visible: visibleProp,
@@ -135,20 +138,29 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
     onVisibleChange,
     showArrow,
     children,
+    onAfterClosed,
     ...others
   } = props;
 
   const child = React.Children.only<React.ReactElement<TooltipChildrenProps>>(children);
 
-  const triggers = Array.isArray(trigger) ? trigger : [trigger];
+  const [visible, setVisible] = usePropChange(defaultVisible, visibleProp, onVisibleChange);
 
-  const extraTriggers = omit(trigger, '')
+  const [touch, setTouch] = React.useState(false);
 
-  const [visible, handleVisibleChange] = usePropChange(
-    defaultVisible,
-    visibleProp,
-    onVisibleChange,
-  );
+  const extraTriggers = React.useMemo(() => {
+    const triggers = Array.isArray(trigger) ? trigger : [trigger];
+    return triggers.filter((it) => it !== 'touch') as Array<PopperTrigger>;
+  }, [trigger]);
+
+  // eslint-disable-next-line @typescript-eslint/no-shadow
+  const handleVisibleChange = useEventCallback((visible: boolean) => {
+    // 当前正处于touch事件中，阻止其他事件
+    if (touch) {
+      return;
+    }
+    setVisible(visible);
+  });
 
   const touchDelayTimerRef = React.useRef<NodeJS.Timeout>();
 
@@ -179,9 +191,10 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
       prevUserSelectRef.current = document.body.style.webkitUserSelect;
       // Prevent iOS text selection on long-tap.
       document.body.style.webkitUserSelect = 'none';
+      setTouch(true);
       touchDelayTimerRef.current = setTimeout(() => {
         stopTouchInteraction();
-        handleVisibleChange(true);
+        setVisible(true);
       }, touchShowDelay);
     }
 
@@ -189,13 +202,30 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
   });
 
   const handleReferenceTouchEnd: React.TouchEventHandler<any> = useEventCallback((e) => {
-    // call after mouseenter
-    stopTouchInteraction();
-
-    touchDelayTimerRef.current = setTimeout(() => {}, touchHideDelay);
-    handleVisibleChange(false);
+    if (isTouchTrigger()) {
+      // call after mouseenter
+      stopTouchInteraction();
+      touchDelayTimerRef.current = setTimeout(() => {
+        setVisible(false);
+        touchDelayTimerRef.current = undefined;
+        // 移动设备也会触发mouseenter、click等事件，会有200-300ms延迟，这里阻止popper内部事件触发
+      }, Math.max(touchHideDelay, TIME_DELAY));
+    }
     child.props?.onTouchEnd?.(e);
   });
+
+  const handleAfterClosed = useEventCallback(() => {
+    if (touch) {
+      setTouch(false);
+    }
+    onAfterClosed?.();
+  });
+
+  React.useEffect(() => {
+    return () => {
+      stopTouchInteraction();
+    };
+  }, [stopTouchInteraction]);
 
   const rootClassName = `${clsPrefix}-tooltip`;
 
@@ -206,7 +236,10 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
 
   const popup = (
     <TooltipPopup
-      styleProps={{ hasWidth: maxWidth !== undefined }}
+      styleProps={{
+        hasWidth: maxWidth !== undefined,
+        touch,
+      }}
       className={clsx(`${rootClassName}__content`, {
         [`${rootClassName}--width`]: maxWidth !== undefined,
       })}
@@ -222,9 +255,10 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
     <TooltipRoot
       {...others}
       ref={ref}
+      onAfterClosed={handleAfterClosed}
       visible={visible}
       onVisibleChange={handleVisibleChange}
-      trigger={trigger}
+      trigger={extraTriggers}
       className={clsx(rootClassName, className)}
       offset={offset}
       popup={popup}
@@ -262,6 +296,13 @@ if (isDevelopment) {
     offset: PropTypes.number,
     trigger: PropTypes.oneOfType([triggerPropType, PropTypes.arrayOf(triggerPropType)]),
     showArrow: PropTypes.bool,
+    onAfterClosed: PropTypes.func,
+    touchHideDelay: PropTypes.number,
+    touchShowDelay: PropTypes.number,
+    visible: PropTypes.bool,
+    defaultVisible: PropTypes.bool,
+    onVisibleChange: PropTypes.func,
+    children: PropTypes.element.isRequired,
   };
 }
 
