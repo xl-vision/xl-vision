@@ -78,7 +78,7 @@ const PopoverPopup = styled('div', {
   name: displayName,
   slot: 'Popup',
 })(({ theme }) => {
-  const { color, typography, elevations } = theme;
+  const { color, elevations } = theme;
   const bgColor = color.background.paper;
 
   return {
@@ -86,7 +86,6 @@ const PopoverPopup = styled('div', {
     color: color.getContrastText(bgColor).text.primary,
     borderRadius: 4,
     minWidth: 160,
-    ...typography.caption,
     ...elevations(16),
   };
 });

@@ -122,13 +122,13 @@ const PopconfirmPopup = styled('div', {
   };
 });
 
-const defaultGetPopupContainer = () => document.body;
-
 const defaultIcon = (
   <Icon>
     <ErrorFilled />
   </Icon>
 );
+
+const defaultGetPopupContainer = () => document.body;
 
 const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
   const { clsPrefix } = React.useContext(ThemeContext);

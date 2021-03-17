@@ -1,19 +1,20 @@
 import Dropdown from './Dropdown';
-import DropdownMenu from './DropdownMenu';
-import DropdownSubmenu from './DropdownSubmenu';
 import DropdownDivider from './DropdownDivider';
+import DropdownItem from './DropdownItem';
 
 export * from './Dropdown';
-export * from './DropdownMenu';
+export { default as Dropdown } from './Dropdown';
+export * from './DropdownDivider';
+export { default as DropdownDivider } from './DropdownDivider';
+export * from './DropdownItem';
+export { default as DropdownItem } from './DropdownItem';
 
 const DropdownWithMenu = Dropdown as typeof Dropdown & {
-  Menu: typeof DropdownMenu;
-  Submenu: typeof DropdownSubmenu;
   Divider: typeof DropdownDivider;
+  Item: typeof DropdownItem;
 };
 
-DropdownWithMenu.Menu = DropdownMenu;
-DropdownWithMenu.Submenu = DropdownSubmenu;
 DropdownWithMenu.Divider = DropdownDivider;
+DropdownWithMenu.Item = DropdownItem;
 
 export default DropdownWithMenu;
