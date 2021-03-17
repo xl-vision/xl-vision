@@ -79,7 +79,7 @@ const PopoverPopup = styled('div', {
     color: color.getContrastText(bgColor).text.primary,
     borderRadius: 4,
     minWidth: 160,
-    ...elevations(16),
+    ...elevations(8),
   };
 });
 
