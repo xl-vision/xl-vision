@@ -27,6 +27,7 @@ describe('Tooltip', () => {
     });
 
     expect(document.querySelector('#content')).not.toBe(null);
+    wrapper.unmount();
   });
 
   it('test trigger touch', () => {
@@ -48,5 +49,6 @@ describe('Tooltip', () => {
     });
 
     expect(document.querySelector('#content')).not.toBe(null);
+    wrapper.unmount();
   });
 });
