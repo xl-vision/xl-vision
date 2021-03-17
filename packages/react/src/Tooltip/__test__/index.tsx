@@ -49,6 +49,17 @@ describe('Tooltip', () => {
     });
 
     expect(document.querySelector('#content')).not.toBe(null);
+
+    wrapper.find('#btn').simulate('touchend');
+
+    act(() => {
+      jest.runAllTimers();
+    });
+
+    expect(
+      (document.querySelector('#content')?.parentNode?.parentNode as HTMLElement).style.display,
+    ).toBe('none');
+
     wrapper.unmount();
   });
 });
