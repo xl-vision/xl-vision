@@ -1,10 +1,11 @@
 import { CSSObject } from '@xl-vision/styled-engine-types';
 import React from 'react';
+import PropTypes from 'prop-types';
 import BaseButton from '../BaseButton';
 import useEventCallback from '../hooks/useEventCallback';
 import { styled } from '../styles';
 import { isDevelopment } from '../utils/env';
-import DropdownItemContext from './DropdownItemContext';
+import DropdownContext from './DropdownContext';
 
 export type DropdownItemProps = {
   children: React.ReactNode;
@@ -60,9 +61,9 @@ const DropdownItemButton = styled(BaseButton, {
 });
 
 const DropdownItem = React.forwardRef<HTMLLIElement, DropdownItemProps>((props, ref) => {
-  const { children, onClick, disabled, ...others } = props;
+  const { children, onClick, disabled } = props;
 
-  const { setVisible } = React.useContext(DropdownItemContext);
+  const { setVisible } = React.useContext(DropdownContext);
 
   const handleClick = useEventCallback((e: React.MouseEvent<HTMLButtonElement>) => {
     if (disabled) {
@@ -73,13 +74,8 @@ const DropdownItem = React.forwardRef<HTMLLIElement, DropdownItemProps>((props, 
   });
 
   return (
-    <DropdownItemRoot ref={ref} as='div'>
-      <DropdownItemButton
-        {...others}
-        styleProps={{ disabled }}
-        disabled={disabled}
-        onClick={handleClick}
-      >
+    <DropdownItemRoot ref={ref}>
+      <DropdownItemButton styleProps={{ disabled }} disabled={disabled} onClick={handleClick}>
         {children}
       </DropdownItemButton>
     </DropdownItemRoot>
@@ -88,7 +84,11 @@ const DropdownItem = React.forwardRef<HTMLLIElement, DropdownItemProps>((props, 
 
 if (isDevelopment) {
   DropdownItem.displayName = displayName;
-  DropdownItem.propTypes = {};
+  DropdownItem.propTypes = {
+    children: PropTypes.node.isRequired,
+    onClick: PropTypes.func,
+    disabled: PropTypes.bool,
+  };
 }
 
 export default DropdownItem;

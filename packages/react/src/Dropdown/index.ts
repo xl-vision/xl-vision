@@ -15,11 +15,11 @@ export { default as DropdownSubmenu } from './DropdownSubmenu';
 const DropdownWithMenu = Dropdown as typeof Dropdown & {
   Divider: typeof DropdownDivider;
   Item: typeof DropdownItem;
-  submenu: typeof DropdownSubmenu;
+  Submenu: typeof DropdownSubmenu;
 };
 
 DropdownWithMenu.Divider = DropdownDivider;
 DropdownWithMenu.Item = DropdownItem;
-DropdownWithMenu.submenu = DropdownSubmenu;
+DropdownWithMenu.Submenu = DropdownSubmenu;
 
 export default DropdownWithMenu;

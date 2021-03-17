@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import React from 'react';
+import useEventCallback from '../hooks/useEventCallback';
 import usePropChange from '../hooks/usePropChange';
 import Popper, { PopperPlacement, PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
@@ -57,7 +58,7 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) =>
     placement = 'bottom',
     transitionClassName,
     offset = 12,
-    trigger = 'click',
+    trigger = 'hover',
     visible: visibleProp,
     defaultVisible = false,
     onVisibleChange,
@@ -80,10 +81,22 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) =>
     },
   );
 
+  const setVisibleWrapper = useEventCallback((newVisible: boolean) => {
+    if (!newVisible) {
+      submenuCloseHandlersRef.current.forEach((it) => it());
+    }
+    setVisible(newVisible);
+  });
+
   const rootClassName = `${clsPrefix}-dropdown`;
   const popup = (
     <DropdownPopup>
-      <DropdownContext.Provider value={{ submenuCloseHandlers: submenuCloseHandlersRef.current }}>
+      <DropdownContext.Provider
+        value={{
+          submenuCloseHandlers: submenuCloseHandlersRef.current,
+          setVisible: setVisibleWrapper,
+        }}
+      >
         {menus}
       </DropdownContext.Provider>
     </DropdownPopup>
