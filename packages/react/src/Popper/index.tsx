@@ -17,6 +17,7 @@ import { increaseZindex } from '../utils/zIndexManger';
 import ThemeContext from '../ThemeProvider/ThemeContext';
 import { oneOf, voidFn } from '../utils/function';
 import computeTransformOrigin from './computeTransformOrigin';
+import usePropChange from '../hooks/usePropChange';
 
 export type PopperTrigger = 'hover' | 'focus' | 'click' | 'contextMenu' | 'custom';
 
@@ -52,6 +53,7 @@ export type PopperProps = {
   flip?: boolean | Record<string, any>;
   preventOverflow?: boolean | Record<string, any>;
   transformOrigin?: boolean;
+  onAfterClosed?: () => void;
 };
 
 const displayName = 'Popper';
@@ -70,7 +72,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     placement = 'auto',
     showDelay = 0,
     hideDelay = 0,
-    visible: visibleProps,
+    visible: visibleProp,
     onVisibleChange,
     className,
     destroyOnHide,
@@ -79,17 +81,21 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     preventOverflow = true,
     transformOrigin = true,
     defaultVisible = false,
+    onAfterClosed,
   } = props;
 
   const { clsPrefix } = React.useContext(ThemeContext);
 
   const child = React.Children.only<React.ReactElement<PopperChildrenProps>>(children);
 
-  const [visible, setVisible] = React.useState(() => {
-    if (visibleProps !== undefined) {
-      return visibleProps;
+  const [visible, setVisible] = usePropChange(defaultVisible, visibleProp, onVisibleChange, () => {
+    // 清除所有延时操作
+    delayTimeRef.current.forEach(clearTimeout);
+    delayTimeRef.current = [];
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = undefined;
     }
-    return defaultVisible;
   });
 
   const lifecycleStateRef = useLifecycleState();
@@ -223,10 +229,11 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     if (popupNodeRef.current) {
       popupNodeRef.current.style.position = 'absolute';
     }
+    onAfterClosed?.();
   });
 
   const setVisibleWrapper = useEventCallback((newVisible: boolean) => {
-    if (timerRef.current) {
+    if (timerRef.current !== undefined) {
       clearTimeout(timerRef.current);
     }
     timerRef.current = setTimeout(() => {
@@ -237,7 +244,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
 
       if (newVisible !== visible) {
         // 如果有外部传入，则不处理
-        if (visibleProps === undefined) {
+        if (visibleProp === undefined) {
           setVisible(newVisible);
         }
         onVisibleChange?.(newVisible);
@@ -355,22 +362,11 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
         clearTimeout(timerRef.current);
         timerRef.current = undefined;
       }
+      delayTimeRef.current.forEach((it) => {
+        clearTimeout(it);
+      });
     };
   }, []);
-
-  React.useEffect(() => {
-    if (visibleProps !== undefined) {
-      // 清除所有延时操作
-      delayTimeRef.current.forEach(clearTimeout);
-      delayTimeRef.current = [];
-      if (timerRef.current) {
-        clearTimeout(timerRef.current);
-        timerRef.current = undefined;
-      }
-      // 保证最后完成
-      setVisible(visibleProps);
-    }
-  }, [visibleProps, setVisibleWrapper]);
 
   const isFirstVisibleRef = React.useRef(false);
 
@@ -517,6 +513,7 @@ if (isDevelopment) {
     preventOverflow: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
     defaultVisible: PropTypes.bool,
     transformOrigin: PropTypes.bool,
+    onAfterClosed: PropTypes.func,
   };
 }
 

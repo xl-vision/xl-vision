@@ -99,6 +99,36 @@ describe('Popper', () => {
     expect(handleVisibleChange).toHaveBeenLastCalledWith(false);
     expect(wrapper.render()).toMatchSnapshot();
   });
+  it('test trigger focus', async () => {
+    const handleVisibleChange = jest.fn();
+
+    const wrapper = mount(
+      <Popper
+        trigger='focus'
+        popup={<div>popup</div>}
+        onVisibleChange={handleVisibleChange}
+        getPopupContainer={() => document.body}
+      >
+        <button id='btn'>button</button>
+      </Popper>,
+    );
+
+    expect(wrapper.render()).toMatchSnapshot();
+
+    wrapper.find('#btn').simulate('focus');
+
+    await act(() => wait(300));
+
+    expect(handleVisibleChange).toHaveBeenLastCalledWith(true);
+    expect(wrapper.render()).toMatchSnapshot();
+
+    wrapper.find('#btn').simulate('blur');
+
+    await act(() => wait(300));
+
+    expect(handleVisibleChange).toHaveBeenLastCalledWith(false);
+    expect(wrapper.render()).toMatchSnapshot();
+  });
   it('test trigger custom', async () => {
     // 外部修改不触发visibleChange
     const handleVisibleChange = jest.fn();
