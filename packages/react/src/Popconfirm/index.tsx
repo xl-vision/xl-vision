@@ -36,15 +36,8 @@ const PopconfirmRoot = styled(Popper, {
 
   return {
     [`.${clsPrefix}-popconfirm-slide`]: {
-      '&-enter-active, &-leave-active': {
-        transition: transition.standard(['transform', 'opacity']),
-        opacity: 1,
-        transform: 'scale(1)',
-      },
-      '&-enter, &-leave-to': {
-        opacity: 0,
-        transform: 'scale(0.5)',
-      },
+      ...transition.fadeIn('&'),
+      ...transition.fadeOut('&'),
     },
   };
 });
