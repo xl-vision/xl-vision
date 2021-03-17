@@ -4,7 +4,6 @@ import useEventCallback from '../hooks/useEventCallback';
 import Popper, { PopperProps } from '../Popper';
 import { styled } from '../styles';
 import ThemeContext from '../ThemeProvider/ThemeContext';
-import { defaultGetPopupContainer } from '../Tooltip';
 import { isDevelopment } from '../utils/env';
 import DropdownContext from './DropdownContext';
 import DropdownItemContext from './DropdownItemContext';
@@ -103,6 +102,8 @@ const DropdownArrow = styled('div', {
     },
   };
 });
+
+const defaultGetPopupContainer = () => document.body;
 
 const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
   const {
