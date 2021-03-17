@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import React from 'react';
-import useEventCallback from '../hooks/useEventCallback';
+import usePropChange from '../hooks/usePropChange';
 import Popper, { PopperPlacement, PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
 import ThemeContext from '../ThemeProvider/ThemeContext';
@@ -25,25 +25,8 @@ const DropdownRoot = styled(Popper, {
 
   return {
     [`.${clsPrefix}-dropdown-slide`]: {
-      '&-enter-active, &-leave-active': {
-        transition: transition.standard(['transform', 'opacity']),
-        opacity: 1,
-        '&[data-placement^=top], &[data-placement^=bottom]': {
-          transform: 'scaleY(1)',
-        },
-        '&[data-placement^=left], &[data-placement^=right]': {
-          transform: 'scaleX(1)',
-        },
-      },
-      '&-enter, &-leave-to': {
-        opacity: 0,
-        '&[data-placement^=top], &[data-placement^=bottom]': {
-          transform: 'scaleY(0)',
-        },
-        '&[data-placement^=left], &[data-placement^=right]': {
-          transform: 'scaleX(0)',
-        },
-      },
+      ...transition.fadeIn('&'),
+      ...transition.fadeOut('&'),
     },
   };
 });
@@ -86,31 +69,16 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) =>
 
   const submenuCloseHandlersRef = React.useRef<Array<() => void>>([]);
 
-  const [visible, setVisible] = React.useState(() => {
-    if (visibleProp === undefined) {
-      return defaultVisible;
-    }
-    return visibleProp;
-  });
-
-  const handleVisibleChange = useEventCallback((v: boolean) => {
-    if (visibleProp === undefined) {
-      setVisible(v);
-      if (!v) {
+  const [visible, setVisible] = usePropChange(
+    defaultVisible,
+    visibleProp,
+    onVisibleChange,
+    (newVisibleProp) => {
+      if (!newVisibleProp) {
         submenuCloseHandlersRef.current.forEach((it) => it());
       }
-    }
-    onVisibleChange?.(v);
-  });
-
-  React.useEffect(() => {
-    if (visibleProp !== undefined) {
-      setVisible(visibleProp);
-      if (!visibleProp) {
-        submenuCloseHandlersRef.current.forEach((it) => it());
-      }
-    }
-  }, [visibleProp]);
+    },
+  );
 
   const rootClassName = `${clsPrefix}-dropdown`;
   const popup = (
@@ -127,7 +95,8 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) =>
       ref={ref}
       disablePopupEnter={false}
       visible={visible}
-      onVisibleChange={handleVisibleChange}
+      // eslint-disable-next-line react/jsx-handler-names
+      onVisibleChange={setVisible}
       trigger={trigger}
       placement={placement}
       popup={popup}

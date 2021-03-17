@@ -72,7 +72,7 @@ const DropdownSubmenu = React.forwardRef<HTMLDivElement, DropdownSubmenuProps>((
   const {
     menus,
     children,
-    placement = 'bottom',
+    placement = 'right-start',
     transitionClassName,
     offset = 8,
     trigger = defaultTrigger,
