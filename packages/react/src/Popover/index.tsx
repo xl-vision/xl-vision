@@ -10,6 +10,7 @@ export interface PopoverProps extends Omit<PopperProps, 'popup' | 'arrow' | 'tra
   title?: React.ReactNode;
   content: React.ReactNode;
   transitionClassName?: string;
+  showArrow?: boolean;
 }
 
 const displayName = 'Popover';
@@ -115,8 +116,6 @@ const PopoverContent = styled('div', {
 
 const defaultGetPopupContainer = () => document.body;
 
-const defaultTrigger: Array<PopperTrigger> = ['hover', 'click'];
-
 const Popover = React.forwardRef<unknown, PopoverProps>((props, ref) => {
   const {
     title,
@@ -126,7 +125,8 @@ const Popover = React.forwardRef<unknown, PopoverProps>((props, ref) => {
     transitionClassName,
     offset = 12,
     // 支持触屏设备
-    trigger = defaultTrigger,
+    trigger = 'click',
+    showArrow,
     ...others
   } = props;
 
@@ -150,7 +150,7 @@ const Popover = React.forwardRef<unknown, PopoverProps>((props, ref) => {
       trigger={trigger}
       className={clsx(rootClassName, className)}
       offset={offset}
-      arrow={arrow}
+      arrow={showArrow ? arrow : undefined}
       popup={popup}
       getPopupContainer={getPopupContainer}
       transitionClasses={clsx(`${rootClassName}-slide`, transitionClassName)}
@@ -177,6 +177,7 @@ if (isDevelopment) {
     transitionClassName: PropTypes.string,
     offset: PropTypes.number,
     trigger: PropTypes.oneOfType([triggerPropType, PropTypes.arrayOf(triggerPropType)]),
+    showArrow: PropTypes.bool,
   };
 }
 

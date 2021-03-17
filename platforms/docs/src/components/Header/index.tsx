@@ -64,14 +64,14 @@ const Header = () => {
       <HeaderNav styleProps={{ isDark }}>
         <Logo>XL-VISION</Logo>
         <div>
-          <Tooltip content='在亮色主题和暗色主题间切换' placement='bottom' showDelay={1000}>
+          <Tooltip content='在亮色主题和暗色主题间切换' placement='bottom' showDelay={1500}>
             <Button
               variant='text'
               onClick={handleTheme}
               prefixIcon={<Icon>{isDark ? <LightkMode /> : <DarkMode />}</Icon>}
             />
           </Tooltip>
-          <Tooltip content='Github' placement='bottom' showDelay={1000}>
+          <Tooltip content='Github' placement='bottom' showDelay={1500}>
             <Button
               variant='text'
               target='_black'

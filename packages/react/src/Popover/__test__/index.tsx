@@ -8,7 +8,7 @@ describe('Popover', () => {
     jest.useFakeTimers();
   });
 
-  it('test trigger hover', () => {
+  it('test trigger click', () => {
     const wrapper = mount(
       <Popover content={<span id='content'>content</span>}>
         <button id='btn'>button</button>
@@ -20,7 +20,7 @@ describe('Popover', () => {
 
     expect(document.querySelector('#content')).toBe(null);
 
-    wrapper.find('#btn').simulate('mouseenter');
+    wrapper.find('#btn').simulate('click');
 
     act(() => {
       jest.runAllTimers();
