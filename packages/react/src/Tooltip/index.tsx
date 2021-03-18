@@ -240,7 +240,7 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
         hasWidth: maxWidth !== undefined,
         touch,
       }}
-      className={clsx(`${rootClassName}__content`, {
+      className={clsx(`${rootClassName}__popup`, {
         [`${rootClassName}--width`]: maxWidth !== undefined,
       })}
       style={{ maxWidth, ...colorStyle }}

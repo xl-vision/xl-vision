@@ -6,8 +6,9 @@ import { styled } from '../styles';
 import ThemeContext from '../ThemeProvider/ThemeContext';
 import { isDevelopment } from '../utils/env';
 
-export interface PopoverProps extends Omit<PopperProps, 'popup' | 'arrow' | 'transitionClasses'> {
-  name?: React.ReactNode;
+export interface PopoverProps
+  extends Omit<PopperProps, 'popup' | 'arrow' | 'transitionClasses' | 'title'> {
+  title?: React.ReactNode;
   content: React.ReactNode;
   transitionClassName?: string;
   showArrow?: boolean;
@@ -110,7 +111,7 @@ const defaultGetPopupContainer = () => document.body;
 
 const Popover = React.forwardRef<unknown, PopoverProps>((props, ref) => {
   const {
-    name,
+    title,
     content,
     getPopupContainer = defaultGetPopupContainer,
     className,
@@ -128,8 +129,8 @@ const Popover = React.forwardRef<unknown, PopoverProps>((props, ref) => {
 
   const popup = (
     <PopoverPopup className={clsx(`${rootClassName}__popup`)}>
-      {name && <PopoverTitle>{name}</PopoverTitle>}
-      <PopoverContent>{content}</PopoverContent>
+      {title && <PopoverTitle className={`${rootClassName}__title`}>{title}</PopoverTitle>}
+      <PopoverContent className={`${rootClassName}__content`}>{content}</PopoverContent>
     </PopoverPopup>
   );
 
@@ -139,6 +140,7 @@ const Popover = React.forwardRef<unknown, PopoverProps>((props, ref) => {
 
   return (
     <PopoverRoot
+      role='tooltip'
       {...others}
       ref={ref}
       trigger={trigger}
@@ -164,7 +166,7 @@ if (isDevelopment) {
   ]).isRequired;
 
   Popover.propTypes = {
-    name: PropTypes.node,
+    title: PropTypes.node,
     content: PropTypes.node.isRequired,
     getPopupContainer: PropTypes.func,
     className: PropTypes.string,

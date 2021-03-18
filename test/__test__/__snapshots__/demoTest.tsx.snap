@@ -5946,6 +5946,7 @@ Array [
 
 <div
     class="xl-popper c0 xl-popover"
+    role="tooltip"
     style="position: absolute;"
   />,
 ]
@@ -8584,6 +8585,7 @@ Array [
 
 <div
     class="xl-popper c0 xl-tooltip"
+    role="tooltip"
     style="position: absolute;"
   />,
 ]

@@ -14,7 +14,7 @@ import usePropChange from '../hooks/usePropChange';
 
 export type PopconfirmButtonProps = Omit<ButtonProps, 'children' | 'onClick'>;
 export interface PopconfirmProps
-  extends Omit<PopperProps, 'popup' | 'arrow' | 'transitionClasses'> {
+  extends Omit<PopperProps, 'popup' | 'arrow' | 'transitionClasses' | 'title'> {
   title: React.ReactNode;
   icon?: React.ReactNode;
   onConfirm?: () => void;
@@ -194,6 +194,7 @@ const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
 
   return (
     <PopconfirmRoot
+      role='tooltip'
       {...others}
       visible={visible}
       // eslint-disable-next-line react/jsx-handler-names

@@ -16,7 +16,7 @@ import Icon from '../Icon';
 export interface DropdownSubmenuProps
   extends Omit<
     PopperProps,
-    'popup' | 'arrow' | 'transitionClasses' | 'disablePopupEnter' | 'children'
+    'popup' | 'arrow' | 'transitionClasses' | 'disablePopupEnter' | 'children' | 'title'
   > {
   children: React.ReactNode;
   transitionClassName?: string;

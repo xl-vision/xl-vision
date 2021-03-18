@@ -66,6 +66,7 @@ const Header = () => {
         <div>
           <Tooltip content='在亮色主题和暗色主题间切换' placement='bottom' showDelay={1500}>
             <Button
+              aria-label='Theme'
               variant='text'
               onClick={handleTheme}
               prefixIcon={<Icon>{isDark ? <LightkMode /> : <DarkMode />}</Icon>}
@@ -73,6 +74,7 @@ const Header = () => {
           </Tooltip>
           <Tooltip content='Github' placement='bottom' showDelay={1500}>
             <Button
+              aria-label='Github'
               variant='text'
               target='_black'
               href='https://github.com/xl-vision/xl-vision'
