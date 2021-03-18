@@ -14,8 +14,14 @@ export default () => {
         <Dropdown.Item disabled={true} onClick={() => console.log(4)}>
           4th menu item
         </Dropdown.Item>
+        <Dropdown.Submenu title='submenu'>
+          <Dropdown.Item onClick={() => console.log(3)}>3rd menu item</Dropdown.Item>
+          <Dropdown.Item disabled={true} onClick={() => console.log(4)}>
+            4th menu item
+          </Dropdown.Item>
+        </Dropdown.Submenu>
       </Dropdown.Submenu>
-      <Dropdown.Item onClick={() => console.log(5)}>5thrd menu item</Dropdown.Item>
+      <Dropdown.Item onClick={() => console.log(5)}>5th menu item</Dropdown.Item>
     </>
   );
 

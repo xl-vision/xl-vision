@@ -33,7 +33,7 @@ export type PopperChildrenProps = {
   ref?: React.Ref<any>;
 };
 
-export type PopperProps = {
+export interface PopperProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactElement<PopperChildrenProps>;
   popup: React.ReactElement;
   getPopupContainer?: PortalContainerType;
@@ -54,7 +54,7 @@ export type PopperProps = {
   preventOverflow?: boolean | Record<string, any>;
   transformOrigin?: boolean;
   onAfterClosed?: () => void;
-};
+}
 
 const displayName = 'Popper';
 
@@ -82,6 +82,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     transformOrigin = true,
     defaultVisible = false,
     onAfterClosed,
+    ...others
   } = props;
 
   const { clsPrefix } = React.useContext(ThemeContext);
@@ -422,6 +423,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
   const portal = (
     <Portal getContainer={getPopupContainer}>
       <div
+        {...others}
         ref={popupNodeRef}
         style={{ position: 'absolute' }}
         className={rootClasses}

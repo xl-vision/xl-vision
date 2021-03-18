@@ -18,7 +18,7 @@ const displayName = 'DropdownItem';
 
 const DropdownItemRoot = styled('li', {
   name: displayName,
-  slot: 'Button',
+  slot: 'Root',
 })(() => {
   return {
     display: 'block',

@@ -136,6 +136,9 @@ const DropdownSubmenu = React.forwardRef<HTMLDivElement, DropdownSubmenuProps>((
   const { submenuCloseHandlers } = React.useContext(DropdownContext);
 
   const handleVisibleChange = useEventCallback((newVisible: boolean) => {
+    if (disabled) {
+      return;
+    }
     setVisible(newVisible);
   });
 

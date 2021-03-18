@@ -9,6 +9,7 @@ export default () => {
       <Dropdown.Item disabled={true} onClick={() => console.log(2)}>
         2nd menu item
       </Dropdown.Item>
+      <Dropdown.Divider />
       <Dropdown.Item onClick={() => console.log(3)}>3rd menu item</Dropdown.Item>
     </>
   );

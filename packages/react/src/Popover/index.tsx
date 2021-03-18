@@ -7,7 +7,7 @@ import ThemeContext from '../ThemeProvider/ThemeContext';
 import { isDevelopment } from '../utils/env';
 
 export interface PopoverProps extends Omit<PopperProps, 'popup' | 'arrow' | 'transitionClasses'> {
-  title?: React.ReactNode;
+  name?: React.ReactNode;
   content: React.ReactNode;
   transitionClassName?: string;
   showArrow?: boolean;
@@ -110,7 +110,7 @@ const defaultGetPopupContainer = () => document.body;
 
 const Popover = React.forwardRef<unknown, PopoverProps>((props, ref) => {
   const {
-    title,
+    name,
     content,
     getPopupContainer = defaultGetPopupContainer,
     className,
@@ -128,7 +128,7 @@ const Popover = React.forwardRef<unknown, PopoverProps>((props, ref) => {
 
   const popup = (
     <PopoverPopup className={clsx(`${rootClassName}__popup`)}>
-      {title && <PopoverTitle>{title}</PopoverTitle>}
+      {name && <PopoverTitle>{name}</PopoverTitle>}
       <PopoverContent>{content}</PopoverContent>
     </PopoverPopup>
   );
@@ -164,7 +164,7 @@ if (isDevelopment) {
   ]).isRequired;
 
   Popover.propTypes = {
-    title: PropTypes.node,
+    name: PropTypes.node,
     content: PropTypes.node.isRequired,
     getPopupContainer: PropTypes.func,
     className: PropTypes.string,

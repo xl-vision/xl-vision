@@ -255,6 +255,7 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
 
   return (
     <TooltipRoot
+      role='tooltip'
       {...others}
       ref={ref}
       onAfterClosed={handleAfterClosed}
