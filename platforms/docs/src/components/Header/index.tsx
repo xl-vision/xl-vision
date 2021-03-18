@@ -1,10 +1,13 @@
 import React from 'react';
-import { Button, styled, Icon, Tooltip } from '@xl-vision/react';
+import { Button, styled, Icon, Tooltip, Dropdown } from '@xl-vision/react';
 import DarkMode from '@xl-vision/icons/Brightness4Filled';
 import LightkMode from '@xl-vision/icons/Brightness7Filled';
 import { darken, lighten } from '@xl-vision/react/utils/color';
+import TranslateFilled from '@xl-vision/icons/TranslateFilled';
+import ExpandMoreFilled from '@xl-vision/icons/ExpandMoreFilled';
 import GithubIcon from './GithubIcon';
 import { ThemeContext } from '../ThemeProvider';
+import { LocalizationContext } from '../LocalizationProvider';
 
 const Container = styled('div')(() => {
   return {
@@ -52,6 +55,7 @@ const Logo = styled('div')`
 
 const Header = () => {
   const theme = React.useContext(ThemeContext);
+  const { supportLocales, locale, setLang } = React.useContext(LocalizationContext);
 
   const { isDark, setDark } = theme;
 
@@ -59,11 +63,45 @@ const Header = () => {
     setDark((prev) => !prev);
   }, [setDark]);
 
+  const langs = React.useMemo(() => Object.keys(supportLocales), [supportLocales]);
+
   return (
     <Container>
       <HeaderNav styleProps={{ isDark }}>
         <Logo>XL-VISION</Logo>
         <div>
+          <Dropdown
+            menus={
+              <>
+                {langs.map((lang) => (
+                  <Dropdown.Item onClick={() => setLang(lang)} key={lang}>
+                    {supportLocales[lang].name}
+                  </Dropdown.Item>
+                ))}
+              </>
+            }
+          >
+            <span>
+              <Tooltip content={locale.header.langTooltip} placement='bottom' showDelay={1500}>
+                <Button
+                  aria-label='Language'
+                  variant='text'
+                  prefixIcon={
+                    <Icon>
+                      <TranslateFilled />
+                    </Icon>
+                  }
+                  suffixIcon={
+                    <Icon>
+                      <ExpandMoreFilled />
+                    </Icon>
+                  }
+                >
+                  {locale.name}
+                </Button>
+              </Tooltip>
+            </span>
+          </Dropdown>
           <Tooltip content='在亮色主题和暗色主题间切换' placement='bottom' showDelay={1500}>
             <Button
               aria-label='Theme'
