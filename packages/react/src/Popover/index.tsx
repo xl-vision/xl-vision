@@ -135,12 +135,14 @@ const Popover = React.forwardRef<unknown, PopoverProps>((props, ref) => {
 
   const arrow = <PopoverArrow className={`${rootClassName}__arrow`} />;
 
+  const rootClasses = clsx(rootClassName, className);
+
   return (
     <PopoverRoot
       {...others}
       ref={ref}
       trigger={trigger}
-      className={clsx(rootClassName, className)}
+      className={rootClasses}
       offset={offset}
       arrow={showArrow ? arrow : undefined}
       popup={popup}

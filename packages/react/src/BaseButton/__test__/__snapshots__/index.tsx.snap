@@ -83,7 +83,7 @@ exports[`BaseButton basic test 1`] = `
 }
 
 <button
-  class="c0 xl-base-button__root"
+  class="c0 xl-base-button"
 >
   <span
     class="c1 xl-base-button__inner"
@@ -91,7 +91,7 @@ exports[`BaseButton basic test 1`] = `
     button
   </span>
   <div
-    class="c2 xl-ripple__root xl-base-button__ripple"
+    class="c2 xl-ripple xl-base-button__ripple"
   />
 </button>
 `;

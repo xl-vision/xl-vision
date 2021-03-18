@@ -251,6 +251,8 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
 
   const arrow = <TooltipArrow style={{ ...colorStyle }} className={`${rootClassName}__arrow`} />;
 
+  const rootClasses = clsx(rootClassName, className);
+
   return (
     <TooltipRoot
       {...others}
@@ -259,7 +261,7 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
       visible={visible}
       onVisibleChange={handleVisibleChange}
       trigger={extraTriggers}
-      className={clsx(rootClassName, className)}
+      className={rootClasses}
       offset={offset}
       popup={popup}
       arrow={showArrow ? arrow : undefined}

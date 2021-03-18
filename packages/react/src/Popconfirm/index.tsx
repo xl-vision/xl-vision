@@ -190,6 +190,8 @@ const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
 
   const arrow = <PopconfirmArrow className={`${rootClassName}__arrow`} />;
 
+  const rootClasses = clsx(rootClassName, className);
+
   return (
     <PopconfirmRoot
       {...others}
@@ -198,7 +200,7 @@ const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
       onVisibleChange={setVisible}
       ref={ref}
       trigger={trigger}
-      className={clsx(rootClassName, className)}
+      className={rootClasses}
       offset={offset}
       arrow={showArrow ? arrow : undefined}
       popup={popup}

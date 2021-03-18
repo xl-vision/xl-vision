@@ -45,7 +45,7 @@ const DropdownPopup = styled('ul', {
     padding: '5px 0',
     listStyle: 'none',
     margin: 0,
-    ...elevations(16),
+    ...elevations(8),
   };
 });
 
@@ -63,6 +63,7 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) =>
     defaultVisible = false,
     onVisibleChange,
     getPopupContainer = defaultGetPopupContainer,
+    className,
     ...others
   } = props;
 
@@ -89,8 +90,11 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) =>
   });
 
   const rootClassName = `${clsPrefix}-dropdown`;
+
+  const rootClasses = clsx(rootClassName, className);
+
   const popup = (
-    <DropdownPopup>
+    <DropdownPopup className={`${rootClassName}__popup`}>
       <DropdownContext.Provider
         value={{
           submenuCloseHandlers: submenuCloseHandlersRef.current,
@@ -106,6 +110,7 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) =>
     <DropdownRoot
       {...others}
       ref={ref}
+      className={rootClasses}
       disablePopupEnter={false}
       visible={visible}
       // eslint-disable-next-line react/jsx-handler-names
@@ -154,6 +159,7 @@ if (isDevelopment) {
       'auto-end',
     ]),
     transitionClassName: PropTypes.string,
+    className: PropTypes.string,
     offset: PropTypes.number,
     trigger: PropTypes.oneOfType([triggerPropType, PropTypes.arrayOf(triggerPropType)]),
     visible: PropTypes.bool,

@@ -1,17 +1,18 @@
 import { CSSObject } from '@xl-vision/styled-engine-types';
 import React from 'react';
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
 import BaseButton from '../BaseButton';
 import useEventCallback from '../hooks/useEventCallback';
 import { styled } from '../styles';
 import { isDevelopment } from '../utils/env';
 import DropdownContext from './DropdownContext';
+import ThemeContext from '../ThemeProvider/ThemeContext';
 
-export type DropdownItemProps = {
+export interface DropdownItemProps extends React.HTMLAttributes<HTMLLIElement> {
   children: React.ReactNode;
   disabled?: boolean;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
-};
+}
 
 const displayName = 'DropdownItem';
 
@@ -61,11 +62,13 @@ const DropdownItemButton = styled(BaseButton, {
 });
 
 const DropdownItem = React.forwardRef<HTMLLIElement, DropdownItemProps>((props, ref) => {
-  const { children, onClick, disabled } = props;
+  const { children, onClick, disabled, className, ...others } = props;
+
+  const { clsPrefix } = React.useContext(ThemeContext);
 
   const { setVisible } = React.useContext(DropdownContext);
 
-  const handleClick = useEventCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = useEventCallback((e: React.MouseEvent<HTMLLIElement>) => {
     if (disabled) {
       return;
     }
@@ -73,9 +76,23 @@ const DropdownItem = React.forwardRef<HTMLLIElement, DropdownItemProps>((props, 
     onClick?.(e);
   });
 
+  const rootClassName = `${clsPrefix}-dropdown-item`;
+
+  const rootClasses = clsx(
+    rootClassName,
+    {
+      [`${rootClassName}--disabled`]: disabled,
+    },
+    className,
+  );
+
   return (
-    <DropdownItemRoot ref={ref}>
-      <DropdownItemButton styleProps={{ disabled }} disabled={disabled} onClick={handleClick}>
+    <DropdownItemRoot {...others} ref={ref} onClick={handleClick} className={rootClasses}>
+      <DropdownItemButton
+        styleProps={{ disabled }}
+        disabled={disabled}
+        className={`${rootClassName}__button`}
+      >
         {children}
       </DropdownItemButton>
     </DropdownItemRoot>
@@ -88,6 +105,7 @@ if (isDevelopment) {
     children: PropTypes.node.isRequired,
     onClick: PropTypes.func,
     disabled: PropTypes.bool,
+    className: PropTypes.string,
   };
 }
 

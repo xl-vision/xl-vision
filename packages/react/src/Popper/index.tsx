@@ -417,12 +417,14 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
 
   const innerClassName = `${rootClassName}__inner`;
 
+  const rootClasses = clsx(rootClassName, className);
+
   const portal = (
     <Portal getContainer={getPopupContainer}>
       <div
         ref={popupNodeRef}
         style={{ position: 'absolute' }}
-        className={clsx(rootClassName, className)}
+        className={rootClasses}
         onMouseEnter={handlePopupMouseEnter}
         onMouseLeave={handlePopupMouseLeave}
         onClick={handlePopupClick}

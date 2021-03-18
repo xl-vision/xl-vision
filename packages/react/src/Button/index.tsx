@@ -258,11 +258,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
     setLoadingIcon(undefined);
   }, []);
 
-  const baseClassName = `${clsPrefix}-button`;
+  const rootClassName = `${clsPrefix}-button`;
 
-  const rootClassName = `${baseClassName}__root`;
-
-  const classes = clsx(
+  const rootClasses = clsx(
     rootClassName,
     `${rootClassName}--size-${size}`,
     `${rootClassName}--theme-${theme}`,
@@ -277,7 +275,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
     },
   );
 
-  const prefixClassName = `${baseClassName}__prefix`;
+  const prefixClassName = `${rootClassName}__prefix`;
 
   let prefix: React.ReactElement<any> | undefined;
 
@@ -311,7 +309,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
     );
   }
 
-  const suffixClassName = `${baseClassName}__suffix`;
+  const suffixClassName = `${rootClassName}__suffix`;
 
   const suffix = suffixIcon && (
     <ButtonSuffix styleProps={{ icon }} className={suffixClassName}>
@@ -323,7 +321,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
     <ButtonRoot
       {...others}
       ref={ref}
-      className={classes}
+      className={rootClasses}
       loading={loading}
       disabled={disabled}
       styleProps={{
@@ -339,7 +337,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
       }}
     >
       {prefix}
-      {children && <span>{children}</span>}
+      {children && <span className={`${rootClassName}__inner`}>{children}</span>}
       {suffix}
     </ButtonRoot>
   );

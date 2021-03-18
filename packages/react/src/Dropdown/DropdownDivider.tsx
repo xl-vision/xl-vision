@@ -6,7 +6,7 @@ export type DropdownDividerProps = {};
 const displayName = 'DropdownDivider';
 
 const DropdownDivider = React.forwardRef<HTMLDivElement, DropdownDividerProps>((props, ref) => {
-  // const {} = props;
+  const {} = props;
   return <div ref={ref} />;
 });
 

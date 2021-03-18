@@ -398,49 +398,55 @@ exports[`Button test basic render 1`] = `
 
 <div>
   <button
-    class="c0 xl-base-button__root c1 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c2 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c3 xl-ripple__root xl-base-button__ripple"
+      class="c3 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c0 xl-base-button__root c4 xl-button__root xl-button__root--size-middle xl-button__root--theme-error xl-button__root--variant-contained xl-button__root--elevation"
+    class="c0 xl-base-button c4 xl-button xl-button--size-middle xl-button--theme-error xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c2 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c3 xl-ripple__root xl-base-button__ripple"
+      class="c3 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c0 xl-base-button__root c5 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-outlined"
+    class="c0 xl-base-button c5 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-outlined"
   >
     <span
       class="c2 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c3 xl-ripple__root xl-base-button__ripple"
+      class="c3 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c0 xl-base-button__root c1 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c2 xl-base-button__inner"
@@ -449,7 +455,7 @@ exports[`Button test basic render 1`] = `
         class="c6 xl-button__prefix"
       >
         <svg
-          class="c7 xl-icon__root"
+          class="c7 xl-icon"
           viewBox="0 0 24 24"
         >
           <path
@@ -461,28 +467,32 @@ exports[`Button test basic render 1`] = `
           />
         </svg>
       </span>
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c3 xl-ripple__root xl-base-button__ripple"
+      class="c3 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c0 xl-base-button__root c1 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c2 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
       <span
         class="c6 c8 xl-button__suffix"
       >
         <svg
-          class="c7 xl-icon__root"
+          class="c7 xl-icon"
           viewBox="0 0 24 24"
         >
           <path
@@ -496,11 +506,11 @@ exports[`Button test basic render 1`] = `
       </span>
     </span>
     <div
-      class="c3 xl-ripple__root xl-base-button__ripple"
+      class="c3 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c0 xl-base-button__root c9 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation xl-button__root--icon"
+    class="c0 xl-base-button c9 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation xl-button--icon"
   >
     <span
       class="c2 xl-base-button__inner"
@@ -509,7 +519,7 @@ exports[`Button test basic render 1`] = `
         class="c10 xl-button__prefix"
       >
         <svg
-          class="c7 xl-icon__root"
+          class="c7 xl-icon"
           viewBox="0 0 24 24"
         >
           <path
@@ -523,11 +533,11 @@ exports[`Button test basic render 1`] = `
       </span>
     </span>
     <div
-      class="c3 xl-ripple__root xl-base-button__ripple"
+      class="c3 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c0 xl-base-button__root c9 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation xl-button__root--icon"
+    class="c0 xl-base-button c9 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation xl-button--icon"
   >
     <span
       class="c2 xl-base-button__inner"
@@ -536,7 +546,7 @@ exports[`Button test basic render 1`] = `
         class="c10 xl-button__suffix"
       >
         <svg
-          class="c7 xl-icon__root"
+          class="c7 xl-icon"
           viewBox="0 0 24 24"
         >
           <path
@@ -550,25 +560,27 @@ exports[`Button test basic render 1`] = `
       </span>
     </span>
     <div
-      class="c3 xl-ripple__root xl-base-button__ripple"
+      class="c3 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c0 xl-base-button__root c11 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation xl-button__root--long"
+    class="c0 xl-base-button c11 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation xl-button--long"
   >
     <span
       class="c2 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c3 xl-ripple__root xl-base-button__ripple"
+      class="c3 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c12 xl-base-button__root xl-base-button__root--loading c13 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation xl-button__root--loading"
+    class="c12 xl-base-button xl-base-button--loading c13 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation xl-button--loading"
     tabindex="-1"
   >
     <span
@@ -584,7 +596,7 @@ exports[`Button test basic render 1`] = `
         style="overflow: hidden; padding-left: 0px; padding-right: 0px;"
       >
         <svg
-          class="c7 xl-icon__root c14 xl-button__prefix--loading"
+          class="c7 xl-icon c14 xl-button__prefix--loading"
           viewBox="0 0 24 24"
         >
           <path
@@ -596,16 +608,18 @@ exports[`Button test basic render 1`] = `
           />
         </svg>
       </span>
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c3 xl-ripple__root xl-base-button__ripple"
+      class="c3 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c12 xl-base-button__root xl-base-button__root--loading c15 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation xl-button__root--loading xl-button__root--icon"
+    class="c12 xl-base-button xl-base-button--loading c15 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation xl-button--loading xl-button--icon"
     tabindex="-1"
   >
     <span
@@ -615,7 +629,7 @@ exports[`Button test basic render 1`] = `
         class="c10 xl-button__prefix"
       >
         <svg
-          class="c7 xl-icon__root c14 xl-button__prefix--loading"
+          class="c7 xl-icon c14 xl-button__prefix--loading"
           viewBox="0 0 24 24"
         >
           <path
@@ -629,11 +643,11 @@ exports[`Button test basic render 1`] = `
       </span>
     </span>
     <div
-      class="c3 xl-ripple__root xl-base-button__ripple"
+      class="c3 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c12 xl-base-button__root xl-base-button__root--loading c13 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation xl-button__root--loading"
+    class="c12 xl-base-button xl-base-button--loading c13 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation xl-button--loading"
     tabindex="-1"
   >
     <span
@@ -643,7 +657,7 @@ exports[`Button test basic render 1`] = `
         class="c6 xl-button__prefix"
       >
         <svg
-          class="c7 xl-icon__root c14 xl-button__prefix--loading"
+          class="c7 xl-icon c14 xl-button__prefix--loading"
           viewBox="0 0 24 24"
         >
           <path
@@ -655,12 +669,14 @@ exports[`Button test basic render 1`] = `
           />
         </svg>
       </span>
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c3 xl-ripple__root xl-base-button__ripple"
+      class="c3 xl-ripple xl-base-button__ripple"
     />
   </button>
 </div>

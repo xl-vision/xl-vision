@@ -106,7 +106,7 @@ const DropdownSubmenuPopup = styled('ul', {
     padding: '5px 0',
     listStyle: 'none',
     margin: 0,
-    ...elevations(16),
+    ...elevations(8),
   };
 });
 
@@ -119,6 +119,7 @@ const DropdownSubmenu = React.forwardRef<HTMLDivElement, DropdownSubmenuProps>((
     children,
     placement = 'right-start',
     transitionClassName,
+    className,
     offset = 8,
     trigger = defaultTrigger,
     visible: visibleProp,
@@ -154,12 +155,23 @@ const DropdownSubmenu = React.forwardRef<HTMLDivElement, DropdownSubmenuProps>((
 
   const rootClassName = `${clsPrefix}-dropdown-submenu`;
 
-  const popup = <DropdownSubmenuPopup>{children}</DropdownSubmenuPopup>;
+  const rootClasses = clsx(
+    rootClassName,
+    {
+      [`${rootClassName}--disabled`]: disabled,
+    },
+    className,
+  );
+
+  const popup = (
+    <DropdownSubmenuPopup className={`${rootClassName}__popup`}>{children}</DropdownSubmenuPopup>
+  );
 
   return (
     <DropdownSubmenuRoot
       {...others}
       ref={ref}
+      className={rootClasses}
       disablePopupEnter={false}
       visible={visible}
       onVisibleChange={handleVisibleChange}
@@ -170,10 +182,14 @@ const DropdownSubmenu = React.forwardRef<HTMLDivElement, DropdownSubmenuProps>((
       getPopupContainer={getPopupContainer}
       transitionClasses={clsx(`${rootClassName}-slide`, transitionClassName)}
     >
-      <li>
-        <DropdownSubmenuItemButton styleProps={{ disabled }} disabled={disabled}>
+      <li className={`${rootClassName}__inner`}>
+        <DropdownSubmenuItemButton
+          styleProps={{ disabled }}
+          disabled={disabled}
+          className={`${rootClassName}__button`}
+        >
           {title}
-          <DropdownSubmenuIcon>
+          <DropdownSubmenuIcon className={`${rootClassName}__icon`}>
             <ArrowForwardIosFilled />
           </DropdownSubmenuIcon>
         </DropdownSubmenuItemButton>
@@ -221,6 +237,7 @@ if (isDevelopment) {
     disabled: PropTypes.bool,
     onVisibleChange: PropTypes.func,
     getPopupContainer: PropTypes.func,
+    className: PropTypes.string,
   };
 }
 
