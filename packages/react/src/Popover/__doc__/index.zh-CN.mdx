@@ -1,0 +1,31 @@
+# Popover
+
+:::demo ./Basic.tsx
+
+基础用法
+
+基础用法
+
+:::
+
+:::demo ./ClickInner.tsx
+
+从浮层内关闭
+
+使用`visible`控制浮层的关闭
+
+:::
+
+## Popover API
+
+> 更多参数请参考[**Popper**](/Popper)属性
+
+| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
+| --- | --- | --- | --- | --- | --- |
+| content | 内容 | React.ReactNode | - | - | true |
+| title | 标题 | React.ReactNode | - | - | false |
+| transitionClassName | 动画 class，参看[**CSSTransition**](/CSSTransition) | string | - | `xl-popover` | false |
+| getPopupContainer | 指定弹出框的父容器 | string &#x007c; HTMLElement &#x007c; (() => string &#x007c; HTMLElement) | - | 默认为`document.body` | false |
+| className | 弹出框类名 | string | - | - | false |
+| trigger | 触发方式 | 'hover'&#x007c;'focus'&#x007c;'click'&#x007c;'contextMenu'&#x007c;'custom'&#x007c;array | - | 'click' | false |
+| showArrow | 是否显示箭头 | boolean | - | - | false |

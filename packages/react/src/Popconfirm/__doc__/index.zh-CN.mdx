@@ -1,0 +1,34 @@
+# Popconfirm
+
+:::demo ./Basic.tsx
+
+基础用法
+
+基础用法
+
+:::
+
+:::demo ./Promise.tsx
+
+异步关闭
+
+异步关闭
+
+:::
+
+## Popconfirm API
+
+> 更多参数请参考[**Popper**](/Popper)属性
+
+| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
+| --- | --- | --- | --- | --- | --- |
+| title | 标题 | React.ReactNode | - | - | true |
+| icon | 自定义 icon | React.ReactNode | - | - | false |
+| onCancel | 点击取消事件 | ()=>void | - | - | false |
+| onConfirm | 点击确认事件 | ()=>void | - | - | false |
+| cancelButtonProps | 取消按钮的 props，参考[Button](/Button) | object | - | - | false |
+| confirmButtonProps | 确认按钮的 props，参考[Button](/Button) | object | - | - | false |
+| cancelText | 取消按钮文案，支持`i18n` | string | - | 取消 | false |
+| confirmText | 确认按钮文案，支持`i18n` | string | - | 确认 | false |
+| showArrow | 是否显示箭头 | boolean | - | - | false |
+| transitionClassName | 动画 class，参看[**CSSTransition**](/CSSTransition) | string | - | 'xl-popconfirm' | false |

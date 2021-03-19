@@ -1,8 +1,10 @@
+// eslint-disable-next-line unicorn/filename-case
 import React from 'react';
 
 export type LeafRoute = {
   name: string;
   path: string;
+  lang: {}
   component?: () => Promise<{ default: React.ComponentType<any> }>;
 };
 
@@ -145,7 +147,7 @@ const route: Array<Route> = [
       {
         name: '基础按钮',
         path: '/BaseButton',
-        component: () => import('@xl-vision/react/BaseButton/__doc__/index.mdx'),
+        component: () => import('@xl-vision/react/BaseButton/__doc__/index_zh-CN.mdx'),
       },
       {
         name: 'Portal',
