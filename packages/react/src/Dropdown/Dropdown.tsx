@@ -93,16 +93,16 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) =>
 
   const rootClasses = clsx(rootClassName, className);
 
+  const memorizedValue = React.useMemo(() => {
+    return {
+      submenuCloseHandlers: submenuCloseHandlersRef.current,
+      setVisible: setVisibleWrapper,
+    };
+  }, [setVisibleWrapper]);
+
   const popup = (
     <DropdownPopup className={`${rootClassName}__popup`}>
-      <DropdownContext.Provider
-        value={{
-          submenuCloseHandlers: submenuCloseHandlersRef.current,
-          setVisible: setVisibleWrapper,
-        }}
-      >
-        {menus}
-      </DropdownContext.Provider>
+      <DropdownContext.Provider value={memorizedValue}>{menus}</DropdownContext.Provider>
     </DropdownPopup>
   );
 

@@ -12,24 +12,23 @@ export type LocalizationProviderProps = {
 };
 
 const LocalizationProvider: React.FunctionComponent<LocalizationProviderProps> = (props) => {
-  const { customLocales = {}, lang = 'en-US', children } = props;
+  const { customLocales, lang = 'en-US', children } = props;
 
-  const locale = React.useMemo(() => {
-    if (customLocales[lang]) {
-      return customLocales[lang];
-    }
-    if (locales[lang]) {
-      return locales[lang];
-    }
+  const memorizedValue = React.useMemo(() => {
+    let locale = customLocales?.[lang] || locales[lang];
+
     warning(
-      true,
+      !locale,
       `The specified lang '%s' has no corresponding locale configuration, please provide the corresponding locale file, otherwise the default language (en-US) will be used`,
       lang,
     );
-    return locales['en-US'];
+    locale = locales['en-US'];
+
+    return { locale, lang };
   }, [customLocales, lang]);
+
   return (
-    <LocalizationContext.Provider value={{ locale, lang }}>{children}</LocalizationContext.Provider>
+    <LocalizationContext.Provider value={memorizedValue}>{children}</LocalizationContext.Provider>
   );
 };
 
