@@ -106,8 +106,13 @@ const Row = React.forwardRef<HTMLDivElement, RowProps>((props, ref) => {
     className,
   );
 
+  const memorizedValue = React.useMemo(() => ({ matches, gutter: computedGutter }), [
+    matches,
+    computedGutter,
+  ]);
+
   return (
-    <RowContext.Provider value={{ matches, gutter: computedGutter }}>
+    <RowContext.Provider value={memorizedValue}>
       <RowRoot
         {...others}
         style={rowStyle}

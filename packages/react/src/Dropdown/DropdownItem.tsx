@@ -90,7 +90,9 @@ const DropdownItem = React.forwardRef<HTMLLIElement, DropdownItemProps>((props, 
     <DropdownItemRoot {...others} ref={ref} onClick={handleClick} className={rootClasses}>
       <DropdownItemButton
         styleProps={{ disabled }}
-        disabled={disabled}
+        // cant use prop disabled
+        // see https://github.com/facebook/react/issues/10109
+        // disabled={disabled}
         className={`${rootClassName}__button`}
       >
         {children}

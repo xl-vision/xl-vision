@@ -197,6 +197,7 @@ const BaseButton = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseB
         {...others}
         as={Component}
         ref={ref}
+        disabled={disabled}
         // 非激活状态不允许选中
         tabIndex={loading || disabled ? -1 : tabIndex}
         className={rootClasses}
