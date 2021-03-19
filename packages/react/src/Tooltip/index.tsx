@@ -38,7 +38,7 @@ const TooltipRoot = styled(Popper, {
   const { clsPrefix, transition } = theme;
 
   return {
-    [`.${clsPrefix}-tooltip-slide`]: {
+    [`.${clsPrefix}-tooltip`]: {
       ...transition.fadeIn('&'),
       ...transition.fadeOut('&'),
     },
@@ -240,7 +240,7 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
         hasWidth: maxWidth !== undefined,
         touch,
       }}
-      className={clsx(`${rootClassName}__content`, {
+      className={clsx(`${rootClassName}__popup`, {
         [`${rootClassName}--width`]: maxWidth !== undefined,
       })}
       style={{ maxWidth, ...colorStyle }}
@@ -251,20 +251,23 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
 
   const arrow = <TooltipArrow style={{ ...colorStyle }} className={`${rootClassName}__arrow`} />;
 
+  const rootClasses = clsx(rootClassName, className);
+
   return (
     <TooltipRoot
+      role='tooltip'
       {...others}
       ref={ref}
       onAfterClosed={handleAfterClosed}
       visible={visible}
       onVisibleChange={handleVisibleChange}
       trigger={extraTriggers}
-      className={clsx(rootClassName, className)}
+      className={rootClasses}
       offset={offset}
       popup={popup}
       arrow={showArrow ? arrow : undefined}
       getPopupContainer={getPopupContainer}
-      transitionClasses={clsx(`${rootClassName}-slide`, transitionClassName)}
+      transitionClasses={clsx(rootClassName, transitionClassName)}
     >
       {React.cloneElement(child, {
         onTouchStart: handleReferenceTouchStart,

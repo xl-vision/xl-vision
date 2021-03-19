@@ -100,6 +100,7 @@ const DemoBox: React.FunctionComponent<DemoBoxProps> = ({ children }) => {
         <DescWrapper>{desc}</DescWrapper>
         <ButtonWrapper>
           <Button
+            aria-label={isExpand ? 'Expand' : 'Close'}
             theme='primary'
             round={true}
             size='large'

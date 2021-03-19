@@ -26,8 +26,12 @@ const TableWrapper = styled('table')(({ theme }) => {
       whiteSpace: 'nowrap',
       textAlign: 'left',
     },
-    td: {
-      // color: $base-color;
+    tbody: {
+      td: {
+        ':nth-child(3)': {
+          color: theme.color.themes.secondary.color,
+        },
+      },
     },
   };
 });

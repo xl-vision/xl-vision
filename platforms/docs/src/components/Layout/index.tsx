@@ -4,6 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import Aside from '../Aside';
 import Footer from '../Footer';
 import Header from '../Header';
+import LocalizationProvider from '../LocalizationProvider';
 import Main from '../Main';
 import ThemeProvider from '../ThemeProvider';
 
@@ -73,18 +74,20 @@ const MainWrapper = styled('div')(() => {
 
 const Layout = () => {
   return (
-    <ThemeProvider>
-      <CssBaseline />
-      <GlobalStyle />
-      <Router>
-        <Header />
-        <AsideWrapper />
-        <MainWrapper>
-          <Main />
-          <Footer />
-        </MainWrapper>
-      </Router>
-    </ThemeProvider>
+    <LocalizationProvider>
+      <ThemeProvider>
+        <CssBaseline />
+        <GlobalStyle />
+        <Router>
+          <Header />
+          <AsideWrapper />
+          <MainWrapper>
+            <Main />
+            <Footer />
+          </MainWrapper>
+        </Router>
+      </ThemeProvider>
+    </LocalizationProvider>
   );
 };
 

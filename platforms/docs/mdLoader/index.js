@@ -3,6 +3,7 @@
 const { getOptions } = require('loader-utils');
 const mdx = require('@mdx-js/mdx');
 const rehypePrism = require('@mapbox/rehype-prism');
+const emoji = require('remark-emoji');
 const createDemoPlugin = require('./createDemoPlugin');
 
 const DEFAULT_RENDERER = `
@@ -14,7 +15,7 @@ const loader = async function demoLoader(content) {
   const callback = this.async();
   const options = Object.assign({}, getOptions(this), {
     filepath: this.resourcePath,
-    remarkPlugins: [createDemoPlugin(this)],
+    remarkPlugins: [createDemoPlugin(this), emoji],
     rehypePlugins: [rehypePrism],
   });
 

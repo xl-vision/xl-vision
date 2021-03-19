@@ -12,9 +12,11 @@ const Wrapper = styled('div')(({ theme }) => {
         transition: theme.transition.standard('transform'),
         '&[data-placement^="top"]': {
           transformOrigin: '0 100%',
+          transform: 'scaleY(1)',
         },
         '&[data-placement^="bottom"]': {
           transformOrigin: '0 0',
+          transform: 'scaleY(1)',
         },
       },
       '&-enter,&-leave-to': {
@@ -23,14 +25,6 @@ const Wrapper = styled('div')(({ theme }) => {
         },
         '&[data-placement^="bottom"]': {
           transform: 'scaleY(0)',
-        },
-      },
-      '&-enter-to,&-leave': {
-        '&[data-placement^="top"]': {
-          transform: 'scaleY(1)',
-        },
-        '&[data-placement^="bottom"]': {
-          transform: 'scaleY(1)',
         },
       },
     },

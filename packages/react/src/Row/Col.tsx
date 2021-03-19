@@ -154,15 +154,17 @@ const Col = React.forwardRef<HTMLDivElement, ColProps>((props, ref) => {
         }
       : style;
 
-  const rootClassName = `${clsPrefix}-col__root`;
+  const rootClassName = `${clsPrefix}-col`;
 
-  const classes = clsx(
+  const rootClasses = clsx(
     rootClassName,
-    computedColumn && `${rootClassName}-column-${computedColumn}`,
-    computedOffset && `${rootClassName}-offset-${computedOffset}`,
-    computedOrder && `${rootClassName}-order-${computedOrder}`,
-    computedPull && `${rootClassName}-pull-${computedPull}`,
-    computedPush && `${rootClassName}-push-${computedPush}`,
+    {
+      [`${rootClassName}--column-${computedColumn}`]: computedColumn !== undefined,
+      [`${rootClassName}--offset-${computedOffset}`]: computedOffset !== undefined,
+      [`${rootClassName}--order-${computedOrder}`]: computedOrder !== undefined,
+      [`${rootClassName}--pull-${computedPull}`]: computedPull !== undefined,
+      [`${rootClassName}--push-${computedPush}`]: computedPush !== undefined,
+    },
     className,
   );
 
@@ -170,7 +172,7 @@ const Col = React.forwardRef<HTMLDivElement, ColProps>((props, ref) => {
     <ColRoot
       {...others}
       style={colStyle}
-      className={classes}
+      className={rootClasses}
       styleProps={{
         column: computedColumn,
         offset: computedOffset,

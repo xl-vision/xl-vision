@@ -94,13 +94,15 @@ const Row = React.forwardRef<HTMLDivElement, RowProps>((props, ref) => {
 
   const isFlex = type === 'flex';
 
-  const rootClassName = `${clsPrefix}-row__root`;
+  const rootClassName = `${clsPrefix}-row`;
 
-  const classes = clsx(
+  const rootClasses = clsx(
     rootClassName,
-    isFlex && `${rootClassName}-flex`,
-    isFlex && justify && `${rootClassName}-justify-${justify}`,
-    isFlex && align && `${rootClassName}-align-${align}`,
+    {
+      [`${rootClassName}--flex`]: isFlex,
+      [`${rootClassName}--justify-${justify}`]: isFlex && justify,
+      [`${rootClassName}--align-${align}`]: isFlex && align,
+    },
     className,
   );
 
@@ -109,7 +111,7 @@ const Row = React.forwardRef<HTMLDivElement, RowProps>((props, ref) => {
       <RowRoot
         {...others}
         style={rowStyle}
-        className={classes}
+        className={rootClasses}
         styleProps={{
           align,
           justify,

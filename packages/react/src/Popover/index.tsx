@@ -6,7 +6,8 @@ import { styled } from '../styles';
 import ThemeContext from '../ThemeProvider/ThemeContext';
 import { isDevelopment } from '../utils/env';
 
-export interface PopoverProps extends Omit<PopperProps, 'popup' | 'arrow' | 'transitionClasses'> {
+export interface PopoverProps
+  extends Omit<PopperProps, 'popup' | 'arrow' | 'transitionClasses' | 'title'> {
   title?: React.ReactNode;
   content: React.ReactNode;
   transitionClassName?: string;
@@ -22,16 +23,9 @@ const PopoverRoot = styled(Popper, {
   const { clsPrefix, transition } = theme;
 
   return {
-    [`.${clsPrefix}-popover-slide`]: {
-      '&-enter-active, &-leave-active': {
-        transition: transition.standard(['transform', 'opacity']),
-        opacity: 1,
-        transform: 'scale(1)',
-      },
-      '&-enter, &-leave-to': {
-        opacity: 0,
-        transform: 'scale(0.5)',
-      },
+    [`.${clsPrefix}-popover`]: {
+      ...transition.fadeIn('&'),
+      ...transition.fadeOut('&'),
     },
   };
 });
@@ -78,7 +72,7 @@ const PopoverPopup = styled('div', {
   name: displayName,
   slot: 'Popup',
 })(({ theme }) => {
-  const { color, typography, elevations } = theme;
+  const { color, elevations } = theme;
   const bgColor = color.background.paper;
 
   return {
@@ -86,8 +80,7 @@ const PopoverPopup = styled('div', {
     color: color.getContrastText(bgColor).text.primary,
     borderRadius: 4,
     minWidth: 160,
-    ...typography.caption,
-    ...elevations(16),
+    ...elevations(8),
   };
 });
 
@@ -136,24 +129,27 @@ const Popover = React.forwardRef<unknown, PopoverProps>((props, ref) => {
 
   const popup = (
     <PopoverPopup className={clsx(`${rootClassName}__popup`)}>
-      {title && <PopoverTitle>{title}</PopoverTitle>}
-      <PopoverContent>{content}</PopoverContent>
+      {title && <PopoverTitle className={`${rootClassName}__title`}>{title}</PopoverTitle>}
+      <PopoverContent className={`${rootClassName}__content`}>{content}</PopoverContent>
     </PopoverPopup>
   );
 
   const arrow = <PopoverArrow className={`${rootClassName}__arrow`} />;
 
+  const rootClasses = clsx(rootClassName, className);
+
   return (
     <PopoverRoot
+      role='tooltip'
       {...others}
       ref={ref}
       trigger={trigger}
-      className={clsx(rootClassName, className)}
+      className={rootClasses}
       offset={offset}
       arrow={showArrow ? arrow : undefined}
       popup={popup}
       getPopupContainer={getPopupContainer}
-      transitionClasses={clsx(`${rootClassName}-slide`, transitionClassName)}
+      transitionClasses={clsx(rootClassName, transitionClassName)}
     />
   );
 });
