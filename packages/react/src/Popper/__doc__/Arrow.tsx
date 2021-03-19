@@ -34,6 +34,12 @@ const Wrapper = styled('div')(({ theme }) => {
     '.slide': {
       '&-enter-active, &-leave-active': {
         transition: theme.transition.standard('transform'),
+        '&[data-placement^="top"]': {
+          transform: 'scaleY(1)',
+        },
+        '&[data-placement^="bottom"]': {
+          transform: 'scaleY(1)',
+        },
       },
       '&-enter,&-leave-to': {
         '&[data-placement^="top"]': {
@@ -41,14 +47,6 @@ const Wrapper = styled('div')(({ theme }) => {
         },
         '&[data-placement^="bottom"]': {
           transform: 'scaleY(0)',
-        },
-      },
-      '&-enter-to,&-leave': {
-        '&[data-placement^="top"]': {
-          transform: 'scaleY(1)',
-        },
-        '&[data-placement^="bottom"]': {
-          transform: 'scaleY(1)',
         },
       },
     },

@@ -2,6 +2,8 @@
 
 exports[`Entry @xl-vision/react 1`] = `
 Array [
+  "styled",
+  "createGlobalStyles",
   "ThemeProvider",
   "LocalizationProvider",
   "Transition",
@@ -19,7 +21,6 @@ Array [
   "Tooltip",
   "Popover",
   "Popconfirm",
-  "styled",
-  "createGlobalStyles",
+  "Dropdown",
 ]
 `;

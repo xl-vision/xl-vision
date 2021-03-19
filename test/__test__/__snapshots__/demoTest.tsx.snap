@@ -117,7 +117,7 @@ exports[`Demo renders ./packages/react/src/BaseButton/__doc__/Advance.tsx correc
   class="container"
 >
   <button
-    class="c0 xl-base-button__root c1"
+    class="c0 xl-base-button c1"
     style="width: 40%;"
   >
     <span
@@ -134,11 +134,11 @@ exports[`Demo renders ./packages/react/src/BaseButton/__doc__/Advance.tsx correc
       </span>
     </span>
     <div
-      class="c3 xl-ripple__root xl-base-button__ripple"
+      class="c3 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c0 xl-base-button__root c1"
+    class="c0 xl-base-button c1"
     style="width: 30%;"
   >
     <span
@@ -155,11 +155,11 @@ exports[`Demo renders ./packages/react/src/BaseButton/__doc__/Advance.tsx correc
       </span>
     </span>
     <div
-      class="c3 xl-ripple__root xl-base-button__ripple"
+      class="c3 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c0 xl-base-button__root c1"
+    class="c0 xl-base-button c1"
     style="width: 30%;"
   >
     <span
@@ -176,7 +176,7 @@ exports[`Demo renders ./packages/react/src/BaseButton/__doc__/Advance.tsx correc
       </span>
     </span>
     <div
-      class="c3 xl-ripple__root xl-base-button__ripple"
+      class="c3 xl-ripple xl-base-button__ripple"
     />
   </button>
 </div>
@@ -279,7 +279,7 @@ exports[`Demo renders ./packages/react/src/BaseButton/__doc__/Basic.tsx correctl
   class="container"
 >
   <button
-    class="c0 xl-base-button__root c1"
+    class="c0 xl-base-button c1"
   >
     <span
       class="c2 xl-base-button__inner"
@@ -287,7 +287,7 @@ exports[`Demo renders ./packages/react/src/BaseButton/__doc__/Basic.tsx correctl
       custom css
     </span>
     <div
-      class="c3 xl-ripple__root xl-base-button__ripple"
+      class="c3 xl-ripple xl-base-button__ripple"
     />
   </button>
 </div>
@@ -903,77 +903,87 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
     class="c0"
   >
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           button
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <button
-      class="c1 xl-base-button__root c5 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c5 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           button
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <button
-      class="c1 xl-base-button__root c6 xl-button__root xl-button__root--size-middle xl-button__root--theme-secondary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c6 xl-button xl-button--size-middle xl-button--theme-secondary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           button
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <button
-      class="c1 xl-base-button__root c7 xl-button__root xl-button__root--size-middle xl-button__root--theme-error xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c7 xl-button xl-button--size-middle xl-button--theme-error xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           button
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <button
-      class="c1 xl-base-button__root c8 xl-button__root xl-button__root--size-middle xl-button__root--theme-warning xl-button__root--variant-contained xl-button__root--elevation xl-button__root--round"
+      class="c1 xl-base-button c8 xl-button xl-button--size-middle xl-button--theme-warning xl-button--variant-contained xl-button--elevation xl-button--round"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           button
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <button
-      class="c1 xl-base-button__root c5 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c5 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -982,7 +992,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
           class="c9 xl-button__prefix"
         >
           <svg
-            class="c10 xl-icon__root"
+            class="c10 xl-icon"
             viewBox="0 0 24 24"
           >
             <path
@@ -994,16 +1004,18 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
             />
           </svg>
         </span>
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           button
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <button
-      class="c1 xl-base-button__root c11 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation xl-button__root--round xl-button__root--icon"
+      class="c1 xl-base-button c11 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation xl-button--round xl-button--icon"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -1012,7 +1024,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
           class="c12 xl-button__prefix"
         >
           <svg
-            class="c10 xl-icon__root"
+            class="c10 xl-icon"
             viewBox="0 0 24 24"
           >
             <path
@@ -1026,7 +1038,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
   </div>
@@ -1034,77 +1046,87 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
     class="c0"
   >
     <button
-      class="c1 xl-base-button__root c13 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-text"
+      class="c1 xl-base-button c13 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-text"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           button
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <button
-      class="c1 xl-base-button__root c14 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-text"
+      class="c1 xl-base-button c14 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-text"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           button
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <button
-      class="c1 xl-base-button__root c15 xl-button__root xl-button__root--size-middle xl-button__root--theme-secondary xl-button__root--variant-text"
+      class="c1 xl-base-button c15 xl-button xl-button--size-middle xl-button--theme-secondary xl-button--variant-text"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           button
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <button
-      class="c1 xl-base-button__root c16 xl-button__root xl-button__root--size-middle xl-button__root--theme-error xl-button__root--variant-text"
+      class="c1 xl-base-button c16 xl-button xl-button--size-middle xl-button--theme-error xl-button--variant-text"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           button
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <button
-      class="c1 xl-base-button__root c17 xl-button__root xl-button__root--size-middle xl-button__root--theme-warning xl-button__root--variant-text xl-button__root--round"
+      class="c1 xl-base-button c17 xl-button xl-button--size-middle xl-button--theme-warning xl-button--variant-text xl-button--round"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           button
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <button
-      class="c1 xl-base-button__root c14 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-text"
+      class="c1 xl-base-button c14 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-text"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -1113,7 +1135,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
           class="c9 xl-button__prefix"
         >
           <svg
-            class="c10 xl-icon__root"
+            class="c10 xl-icon"
             viewBox="0 0 24 24"
           >
             <path
@@ -1125,16 +1147,18 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
             />
           </svg>
         </span>
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           button
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <button
-      class="c1 xl-base-button__root c11 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation xl-button__root--round xl-button__root--icon"
+      class="c1 xl-base-button c11 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation xl-button--round xl-button--icon"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -1143,7 +1167,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
           class="c12 xl-button__prefix"
         >
           <svg
-            class="c10 xl-icon__root"
+            class="c10 xl-icon"
             viewBox="0 0 24 24"
           >
             <path
@@ -1157,7 +1181,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
   </div>
@@ -1165,77 +1189,87 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
     class="c0"
   >
     <button
-      class="c1 xl-base-button__root c18 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-outlined"
+      class="c1 xl-base-button c18 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-outlined"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           button
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <button
-      class="c1 xl-base-button__root c19 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-outlined"
+      class="c1 xl-base-button c19 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-outlined"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           button
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <button
-      class="c1 xl-base-button__root c20 xl-button__root xl-button__root--size-middle xl-button__root--theme-secondary xl-button__root--variant-outlined"
+      class="c1 xl-base-button c20 xl-button xl-button--size-middle xl-button--theme-secondary xl-button--variant-outlined"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           button
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <button
-      class="c1 xl-base-button__root c21 xl-button__root xl-button__root--size-middle xl-button__root--theme-error xl-button__root--variant-outlined"
+      class="c1 xl-base-button c21 xl-button xl-button--size-middle xl-button--theme-error xl-button--variant-outlined"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           button
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <button
-      class="c1 xl-base-button__root c22 xl-button__root xl-button__root--size-middle xl-button__root--theme-warning xl-button__root--variant-outlined xl-button__root--round"
+      class="c1 xl-base-button c22 xl-button xl-button--size-middle xl-button--theme-warning xl-button--variant-outlined xl-button--round"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           button
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <button
-      class="c1 xl-base-button__root c19 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-outlined"
+      class="c1 xl-base-button c19 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-outlined"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -1244,7 +1278,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
           class="c9 xl-button__prefix"
         >
           <svg
-            class="c10 xl-icon__root"
+            class="c10 xl-icon"
             viewBox="0 0 24 24"
           >
             <path
@@ -1256,16 +1290,18 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
             />
           </svg>
         </span>
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           button
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <button
-      class="c1 xl-base-button__root c11 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation xl-button__root--round xl-button__root--icon"
+      class="c1 xl-base-button c11 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation xl-button--round xl-button--icon"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -1274,7 +1310,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
           class="c12 xl-button__prefix"
         >
           <svg
-            class="c10 xl-icon__root"
+            class="c10 xl-icon"
             viewBox="0 0 24 24"
           >
             <path
@@ -1288,7 +1324,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
   </div>
@@ -1527,73 +1563,83 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
   class="c0"
 >
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained"
+    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c1 xl-base-button__root c5 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained"
+    class="c1 xl-base-button c5 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c1 xl-base-button__root c6 xl-button__root xl-button__root--size-middle xl-button__root--theme-secondary xl-button__root--variant-contained"
+    class="c1 xl-base-button c6 xl-button xl-button--size-middle xl-button--theme-secondary xl-button--variant-contained"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c1 xl-base-button__root c7 xl-button__root xl-button__root--size-middle xl-button__root--theme-error xl-button__root--variant-contained"
+    class="c1 xl-base-button c7 xl-button xl-button--size-middle xl-button--theme-error xl-button--variant-contained"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c1 xl-base-button__root c8 xl-button__root xl-button__root--size-middle xl-button__root--theme-warning xl-button__root--variant-contained"
+    class="c1 xl-base-button c8 xl-button xl-button--size-middle xl-button--theme-warning xl-button--variant-contained"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
 </div>
@@ -1838,73 +1884,83 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
   class="c0"
 >
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c1 xl-base-button__root c5 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-text"
+    class="c1 xl-base-button c5 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-text"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c1 xl-base-button__root c6 xl-button__root xl-button__root--size-middle xl-button__root--theme-secondary xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button c6 xl-button xl-button--size-middle xl-button--theme-secondary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c1 xl-base-button__root c7 xl-button__root xl-button__root--size-middle xl-button__root--theme-error xl-button__root--variant-text"
+    class="c1 xl-base-button c7 xl-button xl-button--size-middle xl-button--theme-error xl-button--variant-text"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c1 xl-base-button__root c8 xl-button__root xl-button__root--size-middle xl-button__root--theme-warning xl-button__root--variant-outlined"
+    class="c1 xl-base-button c8 xl-button xl-button--size-middle xl-button--theme-warning xl-button--variant-outlined"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
 </div>
@@ -2139,82 +2195,92 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
   class="c0"
 >
   <button
-    class="c1 xl-base-button__root xl-base-button__root--disabled c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation xl-button__root--disabled"
+    class="c1 xl-base-button xl-base-button--disabled c2 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation xl-button--disabled"
     tabindex="-1"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c1 xl-base-button__root xl-base-button__root--disabled c5 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation xl-button__root--disabled"
+    class="c1 xl-base-button xl-base-button--disabled c5 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation xl-button--disabled"
     tabindex="-1"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c1 xl-base-button__root xl-base-button__root--disabled c6 xl-button__root xl-button__root--size-middle xl-button__root--theme-secondary xl-button__root--variant-contained xl-button__root--elevation xl-button__root--disabled"
+    class="c1 xl-base-button xl-base-button--disabled c6 xl-button xl-button--size-middle xl-button--theme-secondary xl-button--variant-contained xl-button--elevation xl-button--disabled"
     tabindex="-1"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c1 xl-base-button__root xl-base-button__root--disabled c7 xl-button__root xl-button__root--size-middle xl-button__root--theme-error xl-button__root--variant-contained xl-button__root--elevation xl-button__root--disabled"
+    class="c1 xl-base-button xl-base-button--disabled c7 xl-button xl-button--size-middle xl-button--theme-error xl-button--variant-contained xl-button--elevation xl-button--disabled"
     tabindex="-1"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c1 xl-base-button__root xl-base-button__root--disabled c8 xl-button__root xl-button__root--size-middle xl-button__root--theme-warning xl-button__root--variant-contained xl-button__root--elevation xl-button__root--disabled xl-button__root--round"
+    class="c1 xl-base-button xl-base-button--disabled c8 xl-button xl-button--size-middle xl-button--theme-warning xl-button--variant-contained xl-button--elevation xl-button--disabled xl-button--round"
     tabindex="-1"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c1 xl-base-button__root xl-base-button__root--disabled c5 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation xl-button__root--disabled"
+    class="c1 xl-base-button xl-base-button--disabled c5 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation xl-button--disabled"
     tabindex="-1"
   >
     <span
@@ -2224,7 +2290,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
         class="c9 xl-button__prefix"
       >
         <svg
-          class="c10 xl-icon__root"
+          class="c10 xl-icon"
           viewBox="0 0 24 24"
         >
           <path
@@ -2236,12 +2302,14 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
           />
         </svg>
       </span>
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
 </div>
@@ -2569,94 +2637,106 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
   class="c0"
 >
   <a
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation"
     href="#"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </a>
   <a
-    class="c1 xl-base-button__root c5 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-text"
+    class="c1 xl-base-button c5 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-text"
     href="#"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </a>
   <a
-    class="c1 xl-base-button__root c6 xl-button__root xl-button__root--size-middle xl-button__root--theme-secondary xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button c6 xl-button xl-button--size-middle xl-button--theme-secondary xl-button--variant-contained xl-button--elevation"
     href="#"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </a>
   <a
-    class="c1 xl-base-button__root c7 xl-button__root xl-button__root--size-middle xl-button__root--theme-error xl-button__root--variant-text"
+    class="c1 xl-base-button c7 xl-button xl-button--size-middle xl-button--theme-error xl-button--variant-text"
     href="#"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </a>
   <a
-    class="c1 xl-base-button__root c8 xl-button__root xl-button__root--size-middle xl-button__root--theme-warning xl-button__root--variant-outlined"
+    class="c1 xl-base-button c8 xl-button xl-button--size-middle xl-button--theme-warning xl-button--variant-outlined"
     href="#"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </a>
   <a
-    class="c9 xl-base-button__root xl-base-button__root--disabled c10 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation xl-button__root--disabled"
+    class="c9 xl-base-button xl-base-button--disabled c10 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation xl-button--disabled"
     href="#"
     tabindex="-1"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         disabled
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </a>
 </div>
@@ -2933,21 +3013,23 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
   class="c0"
 >
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         click me
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c1 xl-base-button__root c5 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-text"
+    class="c1 xl-base-button c5 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-text"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -2956,7 +3038,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
         class="c6 xl-button__prefix"
       >
         <svg
-          class="c7 xl-icon__root"
+          class="c7 xl-icon"
           viewBox="0 0 24 24"
         >
           <path
@@ -2968,54 +3050,62 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
           />
         </svg>
       </span>
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c1 xl-base-button__root c8 xl-button__root xl-button__root--size-middle xl-button__root--theme-secondary xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button c8 xl-button xl-button--size-middle xl-button--theme-secondary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c1 xl-base-button__root c9 xl-button__root xl-button__root--size-middle xl-button__root--theme-error xl-button__root--variant-text"
+    class="c1 xl-base-button c9 xl-button xl-button--size-middle xl-button--theme-error xl-button--variant-text"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c1 xl-base-button__root c10 xl-button__root xl-button__root--size-middle xl-button__root--theme-warning xl-button__root--variant-outlined"
+    class="c1 xl-base-button c10 xl-button xl-button--size-middle xl-button--theme-warning xl-button--variant-outlined"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
 </div>
@@ -3300,63 +3390,71 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
   class="c0"
 >
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation xl-button__root--long"
+    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation xl-button--long"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c1 xl-base-button__root c5 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-text xl-button__root--long"
+    class="c1 xl-base-button c5 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-text xl-button--long"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c1 xl-base-button__root c6 xl-button__root xl-button__root--size-middle xl-button__root--theme-secondary xl-button__root--variant-outlined xl-button__root--long"
+    class="c1 xl-base-button c6 xl-button xl-button--size-middle xl-button--theme-secondary xl-button--variant-outlined xl-button--long"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c1 xl-base-button__root c7 xl-button__root xl-button__root--size-middle xl-button__root--theme-warning xl-button__root--variant-contained xl-button__root--elevation xl-button__root--long xl-button__root--round"
+    class="c1 xl-base-button c7 xl-button xl-button--size-middle xl-button--theme-warning xl-button--variant-contained xl-button--elevation xl-button--long xl-button--round"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c1 xl-base-button__root c8 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation xl-button__root--long"
+    class="c1 xl-base-button c8 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation xl-button--long"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -3365,7 +3463,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
         class="c9 xl-button__prefix"
       >
         <svg
-          class="c10 xl-icon__root"
+          class="c10 xl-icon"
           viewBox="0 0 24 24"
         >
           <path
@@ -3377,12 +3475,14 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
           />
         </svg>
       </span>
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
 </div>
@@ -3750,91 +3850,103 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   class="c0"
 >
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-default xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         change size
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c1 xl-base-button__root c5 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-text"
+    class="c1 xl-base-button c5 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-text"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c1 xl-base-button__root c6 xl-button__root xl-button__root--size-middle xl-button__root--theme-secondary xl-button__root--variant-outlined"
+    class="c1 xl-base-button c6 xl-button xl-button--size-middle xl-button--theme-secondary xl-button--variant-outlined"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c1 xl-base-button__root c7 xl-button__root xl-button__root--size-middle xl-button__root--theme-error xl-button__root--variant-text"
+    class="c1 xl-base-button c7 xl-button xl-button--size-middle xl-button--theme-error xl-button--variant-text"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c1 xl-base-button__root c8 xl-button__root xl-button__root--size-middle xl-button__root--theme-warning xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button c8 xl-button xl-button--size-middle xl-button--theme-warning xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c1 xl-base-button__root c9 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation xl-button__root--round"
+    class="c1 xl-base-button c9 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation xl-button--round"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c1 xl-base-button__root c10 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation xl-button__root--icon"
+    class="c1 xl-base-button c10 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation xl-button--icon"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -3843,7 +3955,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
         class="c11 xl-button__prefix"
       >
         <svg
-          class="c12 xl-icon__root"
+          class="c12 xl-icon"
           viewBox="0 0 24 24"
         >
           <path
@@ -3857,11 +3969,11 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c1 xl-base-button__root c10 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation xl-button__root--icon"
+    class="c1 xl-base-button c10 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation xl-button--icon"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -3870,7 +3982,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
         class="c11 xl-button__suffix"
       >
         <svg
-          class="c12 xl-icon__root"
+          class="c12 xl-icon"
           viewBox="0 0 24 24"
         >
           <path
@@ -3884,11 +3996,11 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c1 xl-base-button__root c13 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation xl-button__root--round xl-button__root--icon"
+    class="c1 xl-base-button c13 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation xl-button--round xl-button--icon"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -3897,7 +4009,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
         class="c11 xl-button__prefix"
       >
         <svg
-          class="c12 xl-icon__root"
+          class="c12 xl-icon"
           viewBox="0 0 24 24"
         >
           <path
@@ -3911,7 +4023,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
 </div>
@@ -4032,17 +4144,19 @@ exports[`Demo renders ./packages/react/src/CSSTransition/__doc__/Advance.tsx cor
 
 <div>
   <button
-    class="c0 xl-base-button__root c1 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c2 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         Click
       </span>
     </span>
     <div
-      class="c3 xl-ripple__root xl-base-button__ripple"
+      class="c3 xl-ripple xl-base-button__ripple"
     />
   </button>
 </div>
@@ -4163,17 +4277,19 @@ exports[`Demo renders ./packages/react/src/CSSTransition/__doc__/Basic.tsx corre
 
 <div>
   <button
-    class="c0 xl-base-button__root c1 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c2 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         Click
       </span>
     </span>
     <div
-      class="c3 xl-ripple__root xl-base-button__ripple"
+      class="c3 xl-ripple xl-base-button__ripple"
     />
   </button>
 </div>
@@ -4296,17 +4412,19 @@ exports[`Demo renders ./packages/react/src/CollapseTransition/__doc__/Basic.tsx 
   class="wrapper"
 >
   <button
-    class="c0 xl-base-button__root c1 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c2 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         Click
       </span>
     </span>
     <div
-      class="c3 xl-ripple__root xl-base-button__ripple"
+      class="c3 xl-ripple xl-base-button__ripple"
     />
   </button>
 </div>
@@ -4429,20 +4547,570 @@ exports[`Demo renders ./packages/react/src/CollapseTransition/__doc__/Horizontal
   class="wrapper"
 >
   <button
-    class="c0 xl-base-button__root c1 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c2 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         Click
       </span>
     </span>
     <div
-      class="c3 xl-ripple__root xl-base-button__ripple"
+      class="c3 xl-ripple xl-base-button__ripple"
     />
   </button>
 </div>
+`;
+
+exports[`Demo renders ./packages/react/src/Dropdown/__doc__/Advance.tsx correctly 1`] = `
+Array [
+  .c3 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c0 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.c0::-moz-focus-inner {
+  border-style: none;
+}
+
+.c0 svg {
+  pointer-events: none;
+}
+
+.c0 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+}
+
+.c0 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c0 .xl-base-button__ripple-leave-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c0 .xl-base-button__ripple-enter {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c0 .xl-base-button__ripple-leave-to {
+  opacity: 0;
+}
+
+.c2 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c1 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  border-radius: 4px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #3f51b5;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
+}
+
+.c1:hover {
+  background-color: rgba(70,88,184,1);
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c1:focus {
+  background-color: rgba(85,101,189,1);
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+<button
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+  >
+    <span
+      class="c2 xl-base-button__inner"
+    >
+      <span
+        class="xl-button__inner"
+      >
+        hover or click
+      </span>
+    </span>
+    <div
+      class="c3 xl-ripple xl-base-button__ripple"
+    />
+  </button>,
+  .c0 .xl-tooltip-enter-active {
+  -webkit-transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),-webkit-transform 225ms 0ms cubic-bezier(0,0,0.2,1);
+  -webkit-transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c0 .xl-tooltip-enter {
+  opacity: 0;
+  -webkit-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  transform: scale(0.8);
+}
+
+.c0 .xl-tooltip-enter-to {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.c0 .xl-tooltip-leave-active {
+  -webkit-transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c0 .xl-tooltip-leave {
+  opacity: 1;
+}
+
+.c0 .xl-tooltip-leave-to {
+  opacity: 0;
+}
+
+<div
+    class="xl-popper c0 xl-tooltip"
+    role="tooltip"
+    style="position: absolute;"
+  />,
+  .c0 .xl-dropdown-enter-active {
+  -webkit-transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),-webkit-transform 225ms 0ms cubic-bezier(0,0,0.2,1);
+  -webkit-transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c0 .xl-dropdown-enter {
+  opacity: 0;
+  -webkit-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  transform: scale(0.8);
+}
+
+.c0 .xl-dropdown-enter-to {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.c0 .xl-dropdown-leave-active {
+  -webkit-transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c0 .xl-dropdown-leave {
+  opacity: 1;
+}
+
+.c0 .xl-dropdown-leave-to {
+  opacity: 0;
+}
+
+<div
+    class="xl-popper c0 xl-dropdown"
+    style="position: absolute;"
+  />,
+]
+`;
+
+exports[`Demo renders ./packages/react/src/Dropdown/__doc__/Basic.tsx correctly 1`] = `
+Array [
+  .c3 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c0 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.c0::-moz-focus-inner {
+  border-style: none;
+}
+
+.c0 svg {
+  pointer-events: none;
+}
+
+.c0 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+}
+
+.c0 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c0 .xl-base-button__ripple-leave-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c0 .xl-base-button__ripple-enter {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c0 .xl-base-button__ripple-leave-to {
+  opacity: 0;
+}
+
+.c2 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c1 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  border-radius: 4px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #3f51b5;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
+}
+
+.c1:hover {
+  background-color: rgba(70,88,184,1);
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c1:focus {
+  background-color: rgba(85,101,189,1);
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+<button
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+  >
+    <span
+      class="c2 xl-base-button__inner"
+    >
+      <span
+        class="xl-button__inner"
+      >
+        button
+      </span>
+    </span>
+    <div
+      class="c3 xl-ripple xl-base-button__ripple"
+    />
+  </button>,
+  .c0 .xl-dropdown-enter-active {
+  -webkit-transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),-webkit-transform 225ms 0ms cubic-bezier(0,0,0.2,1);
+  -webkit-transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c0 .xl-dropdown-enter {
+  opacity: 0;
+  -webkit-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  transform: scale(0.8);
+}
+
+.c0 .xl-dropdown-enter-to {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.c0 .xl-dropdown-leave-active {
+  -webkit-transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c0 .xl-dropdown-leave {
+  opacity: 1;
+}
+
+.c0 .xl-dropdown-leave-to {
+  opacity: 0;
+}
+
+<div
+    class="xl-popper c0 xl-dropdown"
+    style="position: absolute;"
+  />,
+]
+`;
+
+exports[`Demo renders ./packages/react/src/Dropdown/__doc__/Cascade.tsx correctly 1`] = `
+Array [
+  .c3 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c0 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.c0::-moz-focus-inner {
+  border-style: none;
+}
+
+.c0 svg {
+  pointer-events: none;
+}
+
+.c0 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+}
+
+.c0 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c0 .xl-base-button__ripple-leave-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c0 .xl-base-button__ripple-enter {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c0 .xl-base-button__ripple-leave-to {
+  opacity: 0;
+}
+
+.c2 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c1 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  border-radius: 4px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #3f51b5;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 16px;
+}
+
+.c1:hover {
+  background-color: rgba(70,88,184,1);
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c1:focus {
+  background-color: rgba(85,101,189,1);
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+<button
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+  >
+    <span
+      class="c2 xl-base-button__inner"
+    >
+      <span
+        class="xl-button__inner"
+      >
+        button
+      </span>
+    </span>
+    <div
+      class="c3 xl-ripple xl-base-button__ripple"
+    />
+  </button>,
+  .c0 .xl-dropdown-enter-active {
+  -webkit-transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),-webkit-transform 225ms 0ms cubic-bezier(0,0,0.2,1);
+  -webkit-transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c0 .xl-dropdown-enter {
+  opacity: 0;
+  -webkit-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  transform: scale(0.8);
+}
+
+.c0 .xl-dropdown-enter-to {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.c0 .xl-dropdown-leave-active {
+  -webkit-transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c0 .xl-dropdown-leave {
+  opacity: 1;
+}
+
+.c0 .xl-dropdown-leave-to {
+  opacity: 0;
+}
+
+<div
+    class="xl-popper c0 xl-dropdown"
+    style="position: absolute;"
+  />,
+]
 `;
 
 exports[`Demo renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] = `
@@ -4497,18 +5165,18 @@ exports[`Demo renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] 
 
 <div>
   <div
-    class="c0 xl-row__root"
+    class="c0 xl-row"
   >
     <div
-      class="c1 xl-col__root xl-col__root-column-8"
+      class="c1 xl-col xl-col--column-8"
     >
       Filled
     </div>
     <div
-      class="c2 xl-col__root xl-col__root-column-16"
+      class="c2 xl-col xl-col--column-16"
     >
       <svg
-        class="c3 xl-icon__root"
+        class="c3 xl-icon"
         viewBox="0 0 24 24"
       >
         <path
@@ -4520,7 +5188,7 @@ exports[`Demo renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] 
         />
       </svg>
       <svg
-        class="c3 xl-icon__root"
+        class="c3 xl-icon"
         viewBox="0 0 24 24"
       >
         <path
@@ -4538,18 +5206,18 @@ exports[`Demo renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] 
     </div>
   </div>
   <div
-    class="c0 xl-row__root"
+    class="c0 xl-row"
   >
     <div
-      class="c1 xl-col__root xl-col__root-column-8"
+      class="c1 xl-col xl-col--column-8"
     >
       Outlined
     </div>
     <div
-      class="c2 xl-col__root xl-col__root-column-16"
+      class="c2 xl-col xl-col--column-16"
     >
       <svg
-        class="c3 xl-icon__root"
+        class="c3 xl-icon"
         viewBox="0 0 24 24"
       >
         <path
@@ -4561,7 +5229,7 @@ exports[`Demo renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] 
         />
       </svg>
       <svg
-        class="c3 xl-icon__root"
+        class="c3 xl-icon"
         viewBox="0 0 24 24"
       >
         <path
@@ -4575,18 +5243,18 @@ exports[`Demo renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] 
     </div>
   </div>
   <div
-    class="c0 xl-row__root"
+    class="c0 xl-row"
   >
     <div
-      class="c1 xl-col__root xl-col__root-column-8"
+      class="c1 xl-col xl-col--column-8"
     >
       Rounded
     </div>
     <div
-      class="c2 xl-col__root xl-col__root-column-16"
+      class="c2 xl-col xl-col--column-16"
     >
       <svg
-        class="c3 xl-icon__root"
+        class="c3 xl-icon"
         viewBox="0 0 24 24"
       >
         <path
@@ -4598,7 +5266,7 @@ exports[`Demo renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] 
         />
       </svg>
       <svg
-        class="c3 xl-icon__root"
+        class="c3 xl-icon"
         viewBox="0 0 24 24"
       >
         <path
@@ -4612,18 +5280,18 @@ exports[`Demo renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] 
     </div>
   </div>
   <div
-    class="c0 xl-row__root"
+    class="c0 xl-row"
   >
     <div
-      class="c1 xl-col__root xl-col__root-column-8"
+      class="c1 xl-col xl-col--column-8"
     >
       Two Tone
     </div>
     <div
-      class="c2 xl-col__root xl-col__root-column-16"
+      class="c2 xl-col xl-col--column-16"
     >
       <svg
-        class="c3 xl-icon__root"
+        class="c3 xl-icon"
         viewBox="0 0 24 24"
       >
         <path
@@ -4639,7 +5307,7 @@ exports[`Demo renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] 
         />
       </svg>
       <svg
-        class="c3 xl-icon__root"
+        class="c3 xl-icon"
         viewBox="0 0 24 24"
       >
         <path
@@ -4657,18 +5325,18 @@ exports[`Demo renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] 
     </div>
   </div>
   <div
-    class="c0 xl-row__root"
+    class="c0 xl-row"
   >
     <div
-      class="c1 xl-col__root xl-col__root-column-8"
+      class="c1 xl-col xl-col--column-8"
     >
       Sharp
     </div>
     <div
-      class="c2 xl-col__root xl-col__root-column-16"
+      class="c2 xl-col xl-col--column-16"
     >
       <svg
-        class="c3 xl-icon__root"
+        class="c3 xl-icon"
         viewBox="0 0 24 24"
       >
         <path
@@ -4680,7 +5348,7 @@ exports[`Demo renders ./packages/react/src/Icon/__doc__/Basic.tsx correctly 1`] 
         />
       </svg>
       <svg
-        class="c3 xl-icon__root"
+        class="c3 xl-icon"
         viewBox="0 0 24 24"
       >
         <path
@@ -4811,17 +5479,19 @@ exports[`Demo renders ./packages/react/src/Popconfirm/__doc__/Basic.tsx correctl
 
 <div>
   <button
-    class="c0 xl-base-button__root c1 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c2 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c3 xl-ripple__root xl-base-button__ripple"
+      class="c3 xl-ripple xl-base-button__ripple"
     />
   </button>
 </div>
@@ -4942,17 +5612,19 @@ exports[`Demo renders ./packages/react/src/Popconfirm/__doc__/Promise.tsx correc
 
 <div>
   <button
-    class="c0 xl-base-button__root c1 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c2 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c3 xl-ripple__root xl-base-button__ripple"
+      class="c3 xl-ripple xl-base-button__ripple"
     />
   </button>
 </div>
@@ -5094,45 +5766,51 @@ exports[`Demo renders ./packages/react/src/Popover/__doc__/Basic.tsx correctly 1
   >
     <div />
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           TS
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           T
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           TE
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <div />
@@ -5141,34 +5819,38 @@ exports[`Demo renders ./packages/react/src/Popover/__doc__/Basic.tsx correctly 1
     class="column"
   >
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           LS
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <div />
     <div />
     <div />
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           RS
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
   </div>
@@ -5176,34 +5858,38 @@ exports[`Demo renders ./packages/react/src/Popover/__doc__/Basic.tsx correctly 1
     class="column"
   >
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           L
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <div />
     <div />
     <div />
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           R
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
   </div>
@@ -5211,34 +5897,38 @@ exports[`Demo renders ./packages/react/src/Popover/__doc__/Basic.tsx correctly 1
     class="column"
   >
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           LE
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <div />
     <div />
     <div />
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           RE
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
   </div>
@@ -5247,45 +5937,51 @@ exports[`Demo renders ./packages/react/src/Popover/__doc__/Basic.tsx correctly 1
   >
     <div />
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           BS
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           B
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           BE
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <div />
@@ -5408,40 +6104,57 @@ Array [
 }
 
 <button
-    class="c0 xl-base-button__root c1 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c2 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         click
       </span>
     </span>
     <div
-      class="c3 xl-ripple__root xl-base-button__ripple"
+      class="c3 xl-ripple xl-base-button__ripple"
     />
   </button>,
-  .c0 .xl-popover-slide-enter-active,
-.c0 .xl-popover-slide-leave-active {
-  -webkit-transition: -webkit-transform 300ms 0ms cubic-bezier(0.4,0,0.2,1),opacity 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  -webkit-transition: transform 300ms 0ms cubic-bezier(0.4,0,0.2,1),opacity 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  transition: transform 300ms 0ms cubic-bezier(0.4,0,0.2,1),opacity 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  .c0 .xl-popover-enter-active {
+  -webkit-transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),-webkit-transform 225ms 0ms cubic-bezier(0,0,0.2,1);
+  -webkit-transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c0 .xl-popover-enter {
+  opacity: 0;
+  -webkit-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  transform: scale(0.8);
+}
+
+.c0 .xl-popover-enter-to {
   opacity: 1;
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
 }
 
-.c0 .xl-popover-slide-enter,
-.c0 .xl-popover-slide-leave-to {
+.c0 .xl-popover-leave-active {
+  -webkit-transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c0 .xl-popover-leave {
+  opacity: 1;
+}
+
+.c0 .xl-popover-leave-to {
   opacity: 0;
-  -webkit-transform: scale(0.5);
-  -ms-transform: scale(0.5);
-  transform: scale(0.5);
 }
 
 <div
     class="xl-popper c0 xl-popover"
+    role="tooltip"
     style="position: absolute;"
   />,
 ]
@@ -5601,6 +6314,20 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Arrow.tsx correctly 1`
   transition: transform 300ms 0ms cubic-bezier(0.4,0,0.2,1);
 }
 
+.c0 .slide-enter-active[data-placement^="top"],
+.c0 .slide-leave-active[data-placement^="top"] {
+  -webkit-transform: scaleY(1);
+  -ms-transform: scaleY(1);
+  transform: scaleY(1);
+}
+
+.c0 .slide-enter-active[data-placement^="bottom"],
+.c0 .slide-leave-active[data-placement^="bottom"] {
+  -webkit-transform: scaleY(1);
+  -ms-transform: scaleY(1);
+  transform: scaleY(1);
+}
+
 .c0 .slide-enter[data-placement^="top"],
 .c0 .slide-leave-to[data-placement^="top"] {
   -webkit-transform: scaleY(0);
@@ -5615,35 +6342,23 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Arrow.tsx correctly 1`
   transform: scaleY(0);
 }
 
-.c0 .slide-enter-to[data-placement^="top"],
-.c0 .slide-leave[data-placement^="top"] {
-  -webkit-transform: scaleY(1);
-  -ms-transform: scaleY(1);
-  transform: scaleY(1);
-}
-
-.c0 .slide-enter-to[data-placement^="bottom"],
-.c0 .slide-leave[data-placement^="bottom"] {
-  -webkit-transform: scaleY(1);
-  -ms-transform: scaleY(1);
-  transform: scaleY(1);
-}
-
 <div
   class="c0"
 >
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         hover
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <div
@@ -5788,6 +6503,34 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
   transition: transform 300ms 0ms cubic-bezier(0.4,0,0.2,1);
 }
 
+.c0 .slide-enter-active[data-placement^="left"],
+.c0 .slide-leave-active[data-placement^="left"] {
+  -webkit-transform: scaleX(1);
+  -ms-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+.c0 .slide-enter-active[data-placement^="right"],
+.c0 .slide-leave-active[data-placement^="right"] {
+  -webkit-transform: scaleX(1);
+  -ms-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+.c0 .slide-enter-active[data-placement^="top"],
+.c0 .slide-leave-active[data-placement^="top"] {
+  -webkit-transform: scaleY(1);
+  -ms-transform: scaleY(1);
+  transform: scaleY(1);
+}
+
+.c0 .slide-enter-active[data-placement^="bottom"],
+.c0 .slide-leave-active[data-placement^="bottom"] {
+  -webkit-transform: scaleY(1);
+  -ms-transform: scaleY(1);
+  transform: scaleY(1);
+}
+
 .c0 .slide-enter[data-placement^="left"],
 .c0 .slide-leave-to[data-placement^="left"] {
   -webkit-transform: scaleX(0);
@@ -5816,34 +6559,6 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
   transform: scaleY(0);
 }
 
-.c0 .slide-enter-to[data-placement^="left"],
-.c0 .slide-leave[data-placement^="left"] {
-  -webkit-transform: scaleX(1);
-  -ms-transform: scaleX(1);
-  transform: scaleX(1);
-}
-
-.c0 .slide-enter-to[data-placement^="right"],
-.c0 .slide-leave[data-placement^="right"] {
-  -webkit-transform: scaleX(1);
-  -ms-transform: scaleX(1);
-  transform: scaleX(1);
-}
-
-.c0 .slide-enter-to[data-placement^="top"],
-.c0 .slide-leave[data-placement^="top"] {
-  -webkit-transform: scaleY(1);
-  -ms-transform: scaleY(1);
-  transform: scaleY(1);
-}
-
-.c0 .slide-enter-to[data-placement^="bottom"],
-.c0 .slide-leave[data-placement^="bottom"] {
-  -webkit-transform: scaleY(1);
-  -ms-transform: scaleY(1);
-  transform: scaleY(1);
-}
-
 <div
   class="c0"
 >
@@ -5852,17 +6567,19 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
   >
     <div />
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           TS
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <div
@@ -5870,17 +6587,19 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
       style="position: absolute;"
     />
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           T
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <div
@@ -5888,17 +6607,19 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
       style="position: absolute;"
     />
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           TE
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <div
@@ -5911,17 +6632,19 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
     class="column"
   >
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           LS
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <div
@@ -5932,17 +6655,19 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
     <div />
     <div />
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           RS
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <div
@@ -5954,17 +6679,19 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
     class="column"
   >
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           L
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <div
@@ -5975,17 +6702,19 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
     <div />
     <div />
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           R
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <div
@@ -5997,17 +6726,19 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
     class="column"
   >
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           LE
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <div
@@ -6018,17 +6749,19 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
     <div />
     <div />
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           RE
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <div
@@ -6041,17 +6774,19 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
   >
     <div />
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           BS
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <div
@@ -6059,17 +6794,19 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
       style="position: absolute;"
     />
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           B
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <div
@@ -6077,17 +6814,19 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
       style="position: absolute;"
     />
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           BE
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <div
@@ -6229,6 +6968,9 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 
   -webkit-transform-origin: 0 100%;
   -ms-transform-origin: 0 100%;
   transform-origin: 0 100%;
+  -webkit-transform: scaleY(1);
+  -ms-transform: scaleY(1);
+  transform: scaleY(1);
 }
 
 .c0 .slide-enter-active[data-placement^="bottom"],
@@ -6236,6 +6978,9 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 
   -webkit-transform-origin: 0 0;
   -ms-transform-origin: 0 0;
   transform-origin: 0 0;
+  -webkit-transform: scaleY(1);
+  -ms-transform: scaleY(1);
+  transform: scaleY(1);
 }
 
 .c0 .slide-enter[data-placement^="top"],
@@ -6252,35 +6997,23 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 
   transform: scaleY(0);
 }
 
-.c0 .slide-enter-to[data-placement^="top"],
-.c0 .slide-leave[data-placement^="top"] {
-  -webkit-transform: scaleY(1);
-  -ms-transform: scaleY(1);
-  transform: scaleY(1);
-}
-
-.c0 .slide-enter-to[data-placement^="bottom"],
-.c0 .slide-leave[data-placement^="bottom"] {
-  -webkit-transform: scaleY(1);
-  -ms-transform: scaleY(1);
-  transform: scaleY(1);
-}
-
 <div
   class="c0"
 >
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         hover
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <div
@@ -6288,17 +7021,19 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 
     style="position: absolute;"
   />
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         click
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <div
@@ -6306,17 +7041,19 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 
     style="position: absolute;"
   />
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         focus
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <div
@@ -6324,17 +7061,19 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 
     style="position: absolute;"
   />
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         contextMenu
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <div
@@ -6342,17 +7081,19 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 
     style="position: absolute;"
   />
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         custom(click twice)
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <div
@@ -6516,17 +7257,19 @@ exports[`Demo renders ./packages/react/src/Portal/__doc__/Basic.tsx correctly 1`
       container2
     </p>
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           点击
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
   </div>
@@ -6586,7 +7329,7 @@ exports[`Demo renders ./packages/react/src/Ripple/__doc__/Advance.tsx correctly 
 >
   click me
   <div
-    class="c1 xl-ripple__root"
+    class="c1 xl-ripple"
   />
 </div>
 `;
@@ -6644,7 +7387,7 @@ exports[`Demo renders ./packages/react/src/Ripple/__doc__/Basic.tsx correctly 1`
 >
   click me
   <div
-    class="c1 xl-ripple__root"
+    class="c1 xl-ripple"
   />
 </div>
 `;
@@ -6767,11 +7510,11 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] =
     class="c0 c1"
   >
     <div
-      class="c2 xl-row__root xl-row__root-flex"
+      class="c2 xl-row xl-row--flex"
       style="margin-left: -5px; margin-right: -5px;"
     >
       <div
-        class="c3 xl-col__root xl-col__root-column-4"
+        class="c3 xl-col xl-col--column-4"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -6781,7 +7524,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] =
         </div>
       </div>
       <div
-        class="c5 xl-col__root xl-col__root-column-5"
+        class="c5 xl-col xl-col--column-5"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -6791,7 +7534,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] =
         </div>
       </div>
       <div
-        class="c6 xl-col__root xl-col__root-column-7"
+        class="c6 xl-col xl-col--column-7"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -6801,7 +7544,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] =
         </div>
       </div>
       <div
-        class="c7 xl-col__root xl-col__root-column-8"
+        class="c7 xl-col xl-col--column-8"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -6816,11 +7559,11 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] =
     class="c0 c1"
   >
     <div
-      class="c8 xl-row__root"
+      class="c8 xl-row"
       style="margin-left: -5px; margin-right: -5px;"
     >
       <div
-        class="c9 xl-col__root xl-col__root-column-6"
+        class="c9 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -6830,7 +7573,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] =
         </div>
       </div>
       <div
-        class="c9 xl-col__root xl-col__root-column-6"
+        class="c9 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -6840,7 +7583,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] =
         </div>
       </div>
       <div
-        class="c9 xl-col__root xl-col__root-column-6"
+        class="c9 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -6850,7 +7593,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] =
         </div>
       </div>
       <div
-        class="c9 xl-col__root xl-col__root-column-6"
+        class="c9 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -6865,11 +7608,11 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] =
     class="c0 c1"
   >
     <div
-      class="c8 xl-row__root"
+      class="c8 xl-row"
       style="margin-left: -5px; margin-right: -5px;"
     >
       <div
-        class="c7 xl-col__root xl-col__root-column-8"
+        class="c7 xl-col xl-col--column-8"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -6879,7 +7622,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] =
         </div>
       </div>
       <div
-        class="c10 xl-col__root"
+        class="c10 xl-col xl-col--column-0"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -6889,7 +7632,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] =
         </div>
       </div>
       <div
-        class="c7 xl-col__root xl-col__root-column-8"
+        class="c7 xl-col xl-col--column-8"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -6899,7 +7642,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] =
         </div>
       </div>
       <div
-        class="c7 xl-col__root xl-col__root-column-8"
+        class="c7 xl-col xl-col--column-8"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7148,11 +7891,11 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = 
     class="c0 c1"
   >
     <div
-      class="c2 xl-row__root xl-row__root-flex xl-row__root-align-top"
+      class="c2 xl-row xl-row--flex xl-row--align-top"
       style="margin-left: -5px; margin-right: -5px;"
     >
       <div
-        class="c3 xl-col__root xl-col__root-column-6"
+        class="c3 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7163,7 +7906,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = 
         </div>
       </div>
       <div
-        class="c3 xl-col__root xl-col__root-column-6"
+        class="c3 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7174,7 +7917,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = 
         </div>
       </div>
       <div
-        class="c3 xl-col__root xl-col__root-column-6"
+        class="c3 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7185,7 +7928,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = 
         </div>
       </div>
       <div
-        class="c3 xl-col__root xl-col__root-column-6"
+        class="c3 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7201,11 +7944,11 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = 
     class="c0 c1"
   >
     <div
-      class="c5 xl-row__root xl-row__root-flex xl-row__root-align-middle"
+      class="c5 xl-row xl-row--flex xl-row--align-middle"
       style="margin-left: -5px; margin-right: -5px;"
     >
       <div
-        class="c3 xl-col__root xl-col__root-column-6"
+        class="c3 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7216,7 +7959,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = 
         </div>
       </div>
       <div
-        class="c3 xl-col__root xl-col__root-column-6"
+        class="c3 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7227,7 +7970,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = 
         </div>
       </div>
       <div
-        class="c3 xl-col__root xl-col__root-column-6"
+        class="c3 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7238,7 +7981,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = 
         </div>
       </div>
       <div
-        class="c3 xl-col__root xl-col__root-column-6"
+        class="c3 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7254,11 +7997,11 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = 
     class="c0 c1"
   >
     <div
-      class="c6 xl-row__root xl-row__root-flex xl-row__root-align-bottom"
+      class="c6 xl-row xl-row--flex xl-row--align-bottom"
       style="margin-left: -5px; margin-right: -5px;"
     >
       <div
-        class="c3 xl-col__root xl-col__root-column-6"
+        class="c3 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7269,7 +8012,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = 
         </div>
       </div>
       <div
-        class="c3 xl-col__root xl-col__root-column-6"
+        class="c3 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7280,7 +8023,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = 
         </div>
       </div>
       <div
-        class="c3 xl-col__root xl-col__root-column-6"
+        class="c3 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7291,7 +8034,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = 
         </div>
       </div>
       <div
-        class="c3 xl-col__root xl-col__root-column-6"
+        class="c3 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7307,11 +8050,11 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = 
     class="c0 c1"
   >
     <div
-      class="c7 xl-row__root xl-row__root-flex xl-row__root-justify-start"
+      class="c7 xl-row xl-row--flex xl-row--justify-start"
       style="margin-left: -5px; margin-right: -5px;"
     >
       <div
-        class="c3 xl-col__root xl-col__root-column-6"
+        class="c3 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7321,7 +8064,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = 
         </div>
       </div>
       <div
-        class="c3 xl-col__root xl-col__root-column-6"
+        class="c3 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7331,7 +8074,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = 
         </div>
       </div>
       <div
-        class="c3 xl-col__root xl-col__root-column-6"
+        class="c3 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7346,11 +8089,11 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = 
     class="c0 c1"
   >
     <div
-      class="c8 xl-row__root xl-row__root-flex xl-row__root-justify-center"
+      class="c8 xl-row xl-row--flex xl-row--justify-center"
       style="margin-left: -5px; margin-right: -5px;"
     >
       <div
-        class="c3 xl-col__root xl-col__root-column-6"
+        class="c3 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7360,7 +8103,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = 
         </div>
       </div>
       <div
-        class="c3 xl-col__root xl-col__root-column-6"
+        class="c3 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7370,7 +8113,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = 
         </div>
       </div>
       <div
-        class="c3 xl-col__root xl-col__root-column-6"
+        class="c3 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7385,11 +8128,11 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = 
     class="c0 c1"
   >
     <div
-      class="c9 xl-row__root xl-row__root-flex xl-row__root-justify-end"
+      class="c9 xl-row xl-row--flex xl-row--justify-end"
       style="margin-left: -5px; margin-right: -5px;"
     >
       <div
-        class="c3 xl-col__root xl-col__root-column-6"
+        class="c3 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7399,7 +8142,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = 
         </div>
       </div>
       <div
-        class="c3 xl-col__root xl-col__root-column-6"
+        class="c3 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7409,7 +8152,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = 
         </div>
       </div>
       <div
-        class="c3 xl-col__root xl-col__root-column-6"
+        class="c3 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7508,11 +8251,11 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] 
     class="c0 c1"
   >
     <div
-      class="c2 xl-row__root"
+      class="c2 xl-row"
       style="margin-left: -5px; margin-right: -5px;"
     >
       <div
-        class="c3 xl-col__root xl-col__root-column-6"
+        class="c3 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7522,7 +8265,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] 
         </div>
       </div>
       <div
-        class="c5 xl-col__root xl-col__root-column-6 xl-col__root-offset-6"
+        class="c5 xl-col xl-col--column-6 xl-col--offset-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7532,7 +8275,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] 
         </div>
       </div>
       <div
-        class="c3 xl-col__root xl-col__root-column-6"
+        class="c3 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7547,11 +8290,11 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] 
     class="c0 c1"
   >
     <div
-      class="c2 xl-row__root"
+      class="c2 xl-row"
       style="margin-left: -5px; margin-right: -5px;"
     >
       <div
-        class="c3 xl-col__root xl-col__root-column-6"
+        class="c3 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7561,7 +8304,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] 
         </div>
       </div>
       <div
-        class="c6 xl-col__root xl-col__root-column-6 xl-col__root-push-6"
+        class="c6 xl-col xl-col--column-6 xl-col--push-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7571,7 +8314,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] 
         </div>
       </div>
       <div
-        class="c7 xl-col__root xl-col__root-column-6 xl-col__root-pull-6"
+        class="c7 xl-col xl-col--column-6 xl-col--pull-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7581,7 +8324,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] 
         </div>
       </div>
       <div
-        class="c3 xl-col__root xl-col__root-column-6"
+        class="c3 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7596,11 +8339,11 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] 
     class="c0 c1"
   >
     <div
-      class="c2 xl-row__root"
+      class="c2 xl-row"
       style="margin-left: -5px; margin-right: -5px;"
     >
       <div
-        class="c5 xl-col__root xl-col__root-column-6 xl-col__root-offset-6"
+        class="c5 xl-col xl-col--column-6 xl-col--offset-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7610,7 +8353,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] 
         </div>
       </div>
       <div
-        class="c8 xl-col__root xl-col__root-column-6 xl-col__root-pull-12"
+        class="c8 xl-col xl-col--column-6 xl-col--pull-12"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7620,7 +8363,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] 
         </div>
       </div>
       <div
-        class="c3 xl-col__root xl-col__root-column-6"
+        class="c3 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7669,10 +8412,10 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/ResponsiveColumn.tsx corr
 
 <div>
   <div
-    class="c0 xl-row__root"
+    class="c0 xl-row"
   >
     <div
-      class="c1 xl-col__root"
+      class="c1 xl-col"
     >
       <div
         class="c2"
@@ -7681,7 +8424,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/ResponsiveColumn.tsx corr
       </div>
     </div>
     <div
-      class="c1 xl-col__root"
+      class="c1 xl-col"
     >
       <div
         class="c2"
@@ -7690,7 +8433,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/ResponsiveColumn.tsx corr
       </div>
     </div>
     <div
-      class="c1 xl-col__root"
+      class="c1 xl-col"
     >
       <div
         class="c2"
@@ -7699,7 +8442,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/ResponsiveColumn.tsx corr
       </div>
     </div>
     <div
-      class="c1 xl-col__root"
+      class="c1 xl-col"
     >
       <div
         class="c2"
@@ -7769,11 +8512,11 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx corr
     class="c0 c1"
   >
     <div
-      class="c2 xl-row__root"
+      class="c2 xl-row"
       style="margin-left: -5px; margin-right: -5px;"
     >
       <div
-        class="c3 xl-col__root xl-col__root-column-6"
+        class="c3 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7783,7 +8526,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx corr
         </div>
       </div>
       <div
-        class="c3 xl-col__root xl-col__root-column-6"
+        class="c3 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7793,7 +8536,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx corr
         </div>
       </div>
       <div
-        class="c3 xl-col__root xl-col__root-column-6"
+        class="c3 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7808,11 +8551,11 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx corr
     class="c0 c1"
   >
     <div
-      class="c2 xl-row__root"
+      class="c2 xl-row"
       style="margin-left: -5px; margin-right: -5px;"
     >
       <div
-        class="c3 xl-col__root xl-col__root-column-6"
+        class="c3 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7822,7 +8565,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx corr
         </div>
       </div>
       <div
-        class="c3 xl-col__root xl-col__root-column-6"
+        class="c3 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7832,7 +8575,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx corr
         </div>
       </div>
       <div
-        class="c3 xl-col__root xl-col__root-column-6"
+        class="c3 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7847,11 +8590,11 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx corr
     class="c0 c1"
   >
     <div
-      class="c2 xl-row__root"
+      class="c2 xl-row"
       style="margin-left: -5px; margin-right: -5px;"
     >
       <div
-        class="c3 xl-col__root xl-col__root-column-6"
+        class="c3 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7861,7 +8604,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx corr
         </div>
       </div>
       <div
-        class="c3 xl-col__root xl-col__root-column-6"
+        class="c3 xl-col xl-col--column-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -7871,7 +8614,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx corr
         </div>
       </div>
       <div
-        class="c5 xl-col__root xl-col__root-column-6 xl-col__root-offset-6"
+        class="c5 xl-col xl-col--column-6 xl-col--offset-6"
         style="padding-left: 5px; padding-right: 5px;"
       >
         <div
@@ -8000,54 +8743,57 @@ Array [
 }
 
 <button
-    class="c0 xl-base-button__root c1 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c2 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c3 xl-ripple__root xl-base-button__ripple"
+      class="c3 xl-ripple xl-base-button__ripple"
     />
   </button>,
-  .c0 .xl-tooltip-slide-enter-active {
+  .c0 .xl-tooltip-enter-active {
   -webkit-transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),-webkit-transform 225ms 0ms cubic-bezier(0,0,0.2,1);
   -webkit-transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
   transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
 }
 
-.c0 .xl-tooltip-slide-enter {
+.c0 .xl-tooltip-enter {
   opacity: 0;
   -webkit-transform: scale(0.8);
   -ms-transform: scale(0.8);
   transform: scale(0.8);
 }
 
-.c0 .xl-tooltip-slide-enter-to {
+.c0 .xl-tooltip-enter-to {
   opacity: 1;
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
 }
 
-.c0 .xl-tooltip-slide-leave-active {
+.c0 .xl-tooltip-leave-active {
   -webkit-transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1);
   transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c0 .xl-tooltip-slide-leave {
+.c0 .xl-tooltip-leave {
   opacity: 1;
 }
 
-.c0 .xl-tooltip-slide-leave-to {
+.c0 .xl-tooltip-leave-to {
   opacity: 0;
 }
 
 <div
     class="xl-popper c0 xl-tooltip"
+    role="tooltip"
     style="position: absolute;"
   />,
 ]
@@ -8189,45 +8935,51 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
   >
     <div />
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           TS
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           T
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           TE
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <div />
@@ -8236,34 +8988,38 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
     class="column"
   >
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           LS
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <div />
     <div />
     <div />
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           RS
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
   </div>
@@ -8271,34 +9027,38 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
     class="column"
   >
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           L
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <div />
     <div />
     <div />
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           R
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
   </div>
@@ -8306,34 +9066,38 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
     class="column"
   >
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           LE
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <div />
     <div />
     <div />
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           RE
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
   </div>
@@ -8342,45 +9106,51 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
   >
     <div />
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           BS
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           B
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <button
-      class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           BE
         </span>
       </span>
       <div
-        class="c4 xl-ripple__root xl-base-button__ripple"
+        class="c4 xl-ripple xl-base-button__ripple"
       />
     </button>
     <div />
@@ -8510,59 +9280,67 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Colors.tsx correctly 
   class="c0"
 >
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         #f50
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         #2db7f5
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         #87d068
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         #108ee9
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
 </div>
@@ -8690,17 +9468,19 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/MaxWidth.tsx correctl
   class="c0"
 >
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
 </div>
@@ -8828,17 +9608,19 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Rich.tsx correctly 1`
   class="c0"
 >
   <button
-    class="c1 xl-base-button__root c2 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         button
       </span>
     </span>
     <div
-      class="c4 xl-ripple__root xl-base-button__ripple"
+      class="c4 xl-ripple xl-base-button__ripple"
     />
   </button>
 </div>
@@ -8980,17 +9762,19 @@ exports[`Demo renders ./packages/react/src/Transition/__doc__/Appear.tsx correct
 
 <div>
   <button
-    class="c0 xl-base-button__root c1 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c2 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         Click
       </span>
     </span>
     <div
-      class="c3 xl-ripple__root xl-base-button__ripple"
+      class="c3 xl-ripple xl-base-button__ripple"
     />
   </button>
   <p>
@@ -9128,17 +9912,19 @@ exports[`Demo renders ./packages/react/src/Transition/__doc__/Basic.tsx correctl
 
 <div>
   <button
-    class="c0 xl-base-button__root c1 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c2 xl-base-button__inner"
     >
-      <span>
+      <span
+        class="xl-button__inner"
+      >
         Click
       </span>
     </span>
     <div
-      class="c3 xl-ripple__root xl-base-button__ripple"
+      class="c3 xl-ripple xl-base-button__ripple"
     />
   </button>
 </div>
@@ -9300,32 +10086,36 @@ exports[`Demo renders ./packages/react/src/TransitionGroup/__doc__/Basic.tsx cor
 <div>
   <div>
     <button
-      class="c0 xl-base-button__root c1 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
       style="margin-right: 10px;"
     >
       <span
         class="c2 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           add
         </span>
       </span>
       <div
-        class="c3 xl-ripple__root xl-base-button__ripple"
+        class="c3 xl-ripple xl-base-button__ripple"
       />
     </button>
     <button
-      class="c0 xl-base-button__root c1 xl-button__root xl-button__root--size-middle xl-button__root--theme-primary xl-button__root--variant-contained xl-button__root--elevation"
+      class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c2 xl-base-button__inner"
       >
-        <span>
+        <span
+          class="xl-button__inner"
+        >
           remove
         </span>
       </span>
       <div
-        class="c3 xl-ripple__root xl-base-button__ripple"
+        class="c3 xl-ripple xl-base-button__ripple"
       />
     </button>
   </div>

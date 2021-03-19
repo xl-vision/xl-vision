@@ -18,6 +18,7 @@ module.exports = {
         'ci',
         'chore',
         'revert',
+        'merge',
       ],
     ],
     // 'type-case': [2, 'always', ['lower-case', 'upper-case']],

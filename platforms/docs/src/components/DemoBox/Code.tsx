@@ -27,6 +27,9 @@ const Content = styled('div')(() => {
   return {
     maxHeight: '700px',
     overflow: 'auto',
+    pre: {
+      borderRadius: '0 !important',
+    },
   };
 });
 

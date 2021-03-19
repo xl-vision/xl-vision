@@ -10,10 +10,11 @@ import Button, { ButtonProps } from '../Button';
 import LocalizationContext from '../LocalizationProvider/LocalizationContext';
 import Icon from '../Icon';
 import useEventCallback from '../hooks/useEventCallback';
+import usePropChange from '../hooks/usePropChange';
 
 export type PopconfirmButtonProps = Omit<ButtonProps, 'children' | 'onClick'>;
 export interface PopconfirmProps
-  extends Omit<PopperProps, 'popup' | 'arrow' | 'transitionClasses' | 'disablePopupEnter'> {
+  extends Omit<PopperProps, 'popup' | 'arrow' | 'transitionClasses' | 'title'> {
   title: React.ReactNode;
   icon?: React.ReactNode;
   onConfirm?: () => void;
@@ -22,6 +23,8 @@ export interface PopconfirmProps
   cancelButtonProps?: PopconfirmButtonProps;
   confirmText?: string;
   cancelText?: string;
+  showArrow?: boolean;
+  transitionClassName?: string;
 }
 
 const displayName = 'Popconfirm';
@@ -33,16 +36,9 @@ const PopconfirmRoot = styled(Popper, {
   const { clsPrefix, transition } = theme;
 
   return {
-    [`.${clsPrefix}-popconfirm-slide`]: {
-      '&-enter-active, &-leave-active': {
-        transition: transition.standard(['transform', 'opacity']),
-        opacity: 1,
-        transform: 'scale(1)',
-      },
-      '&-enter, &-leave-to': {
-        opacity: 0,
-        transform: 'scale(0.5)',
-      },
+    [`.${clsPrefix}-popconfirm`]: {
+      ...transition.fadeIn('&'),
+      ...transition.fadeOut('&'),
     },
   };
 });
@@ -97,7 +93,7 @@ const PopconfirmPopup = styled('div', {
     color: color.getContrastText(bgColor).text.primary,
     borderRadius: 4,
     padding: '12px 16px',
-    ...elevations(16),
+    ...elevations(8),
     [`.${clsPrefix}-popconfirm__content`]: {
       position: 'relative',
       padding: '4px 0px 12px',
@@ -122,13 +118,13 @@ const PopconfirmPopup = styled('div', {
   };
 });
 
-const defaultGetPopupContainer = () => document.body;
-
 const defaultIcon = (
   <Icon>
     <ErrorFilled />
   </Icon>
 );
+
+const defaultGetPopupContainer = () => document.body;
 
 const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
   const { clsPrefix } = React.useContext(ThemeContext);
@@ -145,37 +141,25 @@ const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
     onVisibleChange,
     onCancel,
     onConfirm,
+    defaultVisible = false,
     cancelButtonProps,
     confirmButtonProps,
     cancelText = locale.Popconfirm.cancelText,
     confirmText = locale.Popconfirm.confirmText,
+    showArrow,
+    transitionClassName,
     ...others
   } = props;
 
-  const [visible, setVisible] = React.useState(visibleProp);
-
-  React.useEffect(() => {
-    if (visibleProp === undefined) {
-      return;
-    }
-    setVisible(visibleProp);
-  }, [visibleProp]);
-
-  // eslint-disable-next-line @typescript-eslint/no-shadow
-  const handleVisibleChange = useEventCallback((visible: boolean) => {
-    if (visibleProp === undefined) {
-      setVisible(visible);
-    }
-    onVisibleChange?.(visible);
-  });
+  const [visible, setVisible] = usePropChange(defaultVisible, visibleProp, onVisibleChange);
 
   const handleCancel = useEventCallback(() => {
-    handleVisibleChange(false);
+    setVisible(false);
     onCancel?.();
   });
 
   const handleConfirm = useEventCallback(() => {
-    handleVisibleChange(false);
+    setVisible(false);
     onConfirm?.();
   });
 
@@ -208,26 +192,37 @@ const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
 
   const arrow = <PopconfirmArrow className={`${rootClassName}__arrow`} />;
 
+  const rootClasses = clsx(rootClassName, className);
+
   return (
     <PopconfirmRoot
+      role='tooltip'
       {...others}
-      disablePopupEnter={false}
       visible={visible}
-      onVisibleChange={handleVisibleChange}
+      // eslint-disable-next-line react/jsx-handler-names
+      onVisibleChange={setVisible}
       ref={ref}
       trigger={trigger}
-      className={clsx(rootClassName, className)}
+      className={rootClasses}
       offset={offset}
-      arrow={arrow}
+      arrow={showArrow ? arrow : undefined}
       popup={popup}
       getPopupContainer={getPopupContainer}
-      transitionClasses={`${rootClassName}-slide`}
+      transitionClasses={clsx(rootClassName, transitionClassName)}
     />
   );
 });
 
 if (isDevelopment) {
   Popconfirm.displayName = displayName;
+
+  const triggerPropType = PropTypes.oneOf<PopperTrigger>([
+    'click',
+    'contextMenu',
+    'custom',
+    'focus',
+    'hover',
+  ]).isRequired;
 
   Popconfirm.propTypes = {
     getPopupContainer: PropTypes.func,
@@ -236,7 +231,7 @@ if (isDevelopment) {
     title: PropTypes.node,
     className: PropTypes.string,
     offset: PropTypes.number,
-    trigger: PropTypes.oneOf<PopperTrigger>(['click', 'contextMenu', 'custom', 'focus', 'hover']),
+    trigger: PropTypes.oneOfType([triggerPropType, PropTypes.arrayOf(triggerPropType)]),
     icon: PropTypes.node,
     onCancel: PropTypes.func,
     onConfirm: PropTypes.func,
@@ -244,6 +239,9 @@ if (isDevelopment) {
     confirmButtonProps: PropTypes.object,
     cancelText: PropTypes.string,
     confirmText: PropTypes.string,
+    defaultVisible: PropTypes.bool,
+    showArrow: PropTypes.bool,
+    transitionClassName: PropTypes.string,
   };
 }
 

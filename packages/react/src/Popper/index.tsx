@@ -33,7 +33,7 @@ export type PopperChildrenProps = {
   ref?: React.Ref<any>;
 };
 
-export type PopperProps = {
+export interface PopperProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactElement<PopperChildrenProps>;
   popup: React.ReactElement;
   getPopupContainer?: PortalContainerType;
@@ -54,7 +54,7 @@ export type PopperProps = {
   preventOverflow?: boolean | Record<string, any>;
   transformOrigin?: boolean;
   onAfterClosed?: () => void;
-};
+}
 
 const displayName = 'Popper';
 
@@ -82,6 +82,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     transformOrigin = true,
     defaultVisible = false,
     onAfterClosed,
+    ...others
   } = props;
 
   const { clsPrefix } = React.useContext(ThemeContext);
@@ -219,6 +220,9 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     } else {
       popperInstanceRef.current.setOptions({ placement, modifiers }).then(voidFn, voidFn);
     }
+
+    // 强制计算位置，同步完成
+    popperInstanceRef.current.forceUpdate();
 
     popupEl.style.zIndex = `${increaseZindex()}`;
   });
@@ -414,12 +418,15 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
 
   const innerClassName = `${rootClassName}__inner`;
 
+  const rootClasses = clsx(rootClassName, className);
+
   const portal = (
     <Portal getContainer={getPopupContainer}>
       <div
+        {...others}
         ref={popupNodeRef}
         style={{ position: 'absolute' }}
-        className={clsx(rootClassName, className)}
+        className={rootClasses}
         onMouseEnter={handlePopupMouseEnter}
         onMouseLeave={handlePopupMouseLeave}
         onClick={handlePopupClick}

@@ -197,10 +197,12 @@ const Ripple = React.forwardRef<RippleRef, RippleProps>((props, ref) => {
     }
   });
 
-  const classes = clsx(`${clsPrefix}-ripple__root`, className);
+  const rootClassName = `${clsPrefix}-ripple`;
+
+  const rootClasses = clsx(rootClassName, className);
 
   return (
-    <RipperRoot {...others} className={classes} ref={containerRef}>
+    <RipperRoot {...others} className={rootClasses} ref={containerRef}>
       <TransitionGroup transitionClasses={transitionClasses} afterEnter={afterEnter}>
         {ripples}
       </TransitionGroup>

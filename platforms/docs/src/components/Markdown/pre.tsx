@@ -2,6 +2,10 @@ import { styled } from '@xl-vision/react';
 
 export default styled('pre')(
   () => `
+  &[class*='language-'] {
+    border-radius: 8px;
+    overflow: hidden;
+  }
   &[class*='language-'],
   code[class*='language-'] {
     color: #d4d4d4;

@@ -181,9 +181,7 @@ const BaseButton = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseB
       onClick?.(e);
     });
 
-    const baseClassName = `${clsPrefix}-base-button`;
-
-    const rootClassName = `${baseClassName}__root`;
+    const rootClassName = `${clsPrefix}-base-button`;
 
     const rootClasses = clsx(
       rootClassName,
@@ -215,12 +213,12 @@ const BaseButton = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseB
         onDragLeave={handleDragLeave}
         styleProps={{ loading, disabled }}
       >
-        <BaseButtonInner className={`${baseClassName}__inner`}>{children}</BaseButtonInner>
+        <BaseButtonInner className={`${rootClassName}__inner`}>{children}</BaseButtonInner>
         <Ripple
           ref={rippleRef}
           leaveAfterEnter={true}
-          className={`${baseClassName}__ripple`}
-          transitionClasses={`${baseClassName}__ripple`}
+          className={`${rootClassName}__ripple`}
+          transitionClasses={`${rootClassName}__ripple`}
         />
       </BaseButtonRoot>
     );
