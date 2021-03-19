@@ -23,7 +23,7 @@ const PopoverRoot = styled(Popper, {
   const { clsPrefix, transition } = theme;
 
   return {
-    [`.${clsPrefix}-popover-slide`]: {
+    [`.${clsPrefix}-popover`]: {
       ...transition.fadeIn('&'),
       ...transition.fadeOut('&'),
     },
@@ -149,7 +149,7 @@ const Popover = React.forwardRef<unknown, PopoverProps>((props, ref) => {
       arrow={showArrow ? arrow : undefined}
       popup={popup}
       getPopupContainer={getPopupContainer}
-      transitionClasses={clsx(`${rootClassName}-slide`, transitionClassName)}
+      transitionClasses={clsx(rootClassName, transitionClassName)}
     />
   );
 });

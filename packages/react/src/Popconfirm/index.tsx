@@ -24,6 +24,7 @@ export interface PopconfirmProps
   confirmText?: string;
   cancelText?: string;
   showArrow?: boolean;
+  transitionClassName?: string;
 }
 
 const displayName = 'Popconfirm';
@@ -35,7 +36,7 @@ const PopconfirmRoot = styled(Popper, {
   const { clsPrefix, transition } = theme;
 
   return {
-    [`.${clsPrefix}-popconfirm-slide`]: {
+    [`.${clsPrefix}-popconfirm`]: {
       ...transition.fadeIn('&'),
       ...transition.fadeOut('&'),
     },
@@ -146,6 +147,7 @@ const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
     cancelText = locale.Popconfirm.cancelText,
     confirmText = locale.Popconfirm.confirmText,
     showArrow,
+    transitionClassName,
     ...others
   } = props;
 
@@ -206,7 +208,7 @@ const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
       arrow={showArrow ? arrow : undefined}
       popup={popup}
       getPopupContainer={getPopupContainer}
-      transitionClasses={`${rootClassName}-slide`}
+      transitionClasses={clsx(rootClassName, transitionClassName)}
     />
   );
 });
@@ -239,6 +241,7 @@ if (isDevelopment) {
     confirmText: PropTypes.string,
     defaultVisible: PropTypes.bool,
     showArrow: PropTypes.bool,
+    transitionClassName: PropTypes.string,
   };
 }
 

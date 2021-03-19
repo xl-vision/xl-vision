@@ -25,7 +25,7 @@ const DropdownRoot = styled(Popper, {
   const { clsPrefix, transition } = theme;
 
   return {
-    [`.${clsPrefix}-dropdown-slide`]: {
+    [`.${clsPrefix}-dropdown`]: {
       ...transition.fadeIn('&'),
       ...transition.fadeOut('&'),
     },
@@ -120,7 +120,7 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) =>
       popup={popup}
       offset={offset}
       getPopupContainer={getPopupContainer}
-      transitionClasses={clsx(`${rootClassName}-slide`, transitionClassName)}
+      transitionClasses={clsx(rootClassName, transitionClassName)}
     >
       {children}
     </DropdownRoot>

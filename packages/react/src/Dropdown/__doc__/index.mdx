@@ -15,3 +15,40 @@
 多级菜单
 
 :::
+
+::: demo ./Advance.tsx
+
+配合 tooltip 使用
+
+由于 tooltip 并不会透传父组件`props`给子组件，所以需要一层封装，保证相关事件能够被正确传递。类似的组件还有[Popover](/popover)、[Popconfirm](/Popconfirm)以及[Popper](/Popper)。
+
+:::
+
+# Dropdown API
+
+> 更多参数请参考[**Popper**](/Popper)属性
+
+| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
+| --- | --- | --- | --- | --- | --- |
+| children | 子元素 | React.ReactElement | - | - | true |
+| menus | 下拉菜单 | React.ReactNode | - | - | true |
+| transitionClassName | 动画 class，参看[**CSSTransition**](/CSSTransition) | string | - | `xl-dropdown` | false |
+
+# DropdownSubmenu API
+
+> 更多参数请参考[**Popper**](/Popper)属性
+
+| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
+| --- | --- | --- | --- | --- | --- |
+| children | 子元素 | React.ReactElement | - | - | true |
+| title | 标题 | React.ReactNode | - | - | true |
+| transitionClassName | 动画 class，参看[**CSSTransition**](/CSSTransition) | string | - | `xl-dropdown-submenu` | false |
+| disabled | 禁用 | boolean | - | - | false |
+
+# DropdownItem API
+
+| 参数     | 说明     | 类型               | 可选值 | 默认值 | 是否必填 |
+| -------- | -------- | ------------------ | ------ | ------ | -------- |
+| children | 子元素   | React.ReactElement | -      | -      | true     |
+| disabled | 禁用     | boolean            | -      | -      | false    |
+| onClick  | 点击事件 | function           | -      | -      | false    |

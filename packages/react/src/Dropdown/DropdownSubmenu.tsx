@@ -33,7 +33,7 @@ const DropdownSubmenuRoot = styled(Popper, {
   const { clsPrefix, transition } = theme;
 
   return {
-    [`.${clsPrefix}-dropdown-submenu-slide`]: {
+    [`.${clsPrefix}-dropdown-submenu`]: {
       ...transition.fadeIn('&'),
       ...transition.fadeOut('&'),
     },
@@ -183,7 +183,7 @@ const DropdownSubmenu = React.forwardRef<HTMLDivElement, DropdownSubmenuProps>((
       popup={popup}
       offset={offset}
       getPopupContainer={getPopupContainer}
-      transitionClasses={clsx(`${rootClassName}-slide`, transitionClassName)}
+      transitionClasses={clsx(rootClassName, transitionClassName)}
     >
       <li className={`${rootClassName}__inner`}>
         <DropdownSubmenuItemButton
