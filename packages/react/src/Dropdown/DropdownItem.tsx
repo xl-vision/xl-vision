@@ -93,6 +93,7 @@ const DropdownItem = React.forwardRef<HTMLLIElement, DropdownItemProps>((props, 
         // cant use prop disabled
         // see https://github.com/facebook/react/issues/10109
         // disabled={disabled}
+        disableRipple={disabled}
         className={`${rootClassName}__button`}
       >
         {children}
