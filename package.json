@@ -20,7 +20,7 @@
     "commit": "git-cz",
     "test": "jest",
     "lint": "eslint . --cache --report-unused-disable-directives --ext .js,.ts,.jsx,.tsx --max-warnings 0",
-    "version": "lerna version --exact --conventional-commits --no-push -f",
+    "version": "lerna version --exact --conventional-commits --no-push",
     "build": "lerna run --parallel --scope \"@xl-vision/*\" build",
     "bootstrap": "lerna bootstrap"
   },
