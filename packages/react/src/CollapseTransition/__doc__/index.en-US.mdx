@@ -1,31 +1,31 @@
 # CollapseTransition
 
-可以方便地对于不定高度或者宽度的内容进行折叠或者展开的动画组件。
+An animation component that can easily fold or unfold content with variable height or width.
 
 :::demo ./Basic.tsx
 
-基础用法
+Basic
 
-通过`CollaseTrannsition`包裹对应的元素来触发折叠和展开的动画效果。通过`transitionClassName`自定义动画方式。如果不指定，将使用默认动画`width/height 1s ease`
+The corresponding elements are wrapped by `CollaseTrannsition` to trigger the folding and unfolding animation effects. Customize the animation method through `transitionClassName`. If not specified, the default animation `width/height 1s ease` will be used.
 
 :::
 
 ::: demo ./Horizontal.tsx
 
-水平展开
+Expand horizontally
 
-水平方向展开和折叠
+Expand and collapse horizontally
 
 :::
 
 ## CollapseTransition API
 
-| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
+| Property | Description | Type | Optional Value | Default | Require |
 | --- | --- | --- | --- | --- | --- |
-| in | 触发进出场动画,`true`表示进场，`false`表示出场 | boolean | - | — | true |
-| transitionClasses | 指定动画过程中的`class`名,参考<Link to="CSSTransition">`CSSTransition`</Link> | string | - | - | false |
-| children | 子元素 | React.ReactElement | - | — | true |
-| horizontal | 是否横向 | boolean | - | — | - |
-| transitionOnFirst | 是否初始化完成时就触发动画 | boolean | - | false | false |
-| mountOnEnter | 当第一次进场动画时才挂载子节点，见<Link to="Transition">**Transition**</Link> | boolean | - | false | false |
-| unmountOnLeave | 当出场动画后就卸载子节点，见<Link to="Transition">**Transition**</Link> | boolean | - | false | false |
+| in | Trigger the entering and exiting animation, `true` means entering, `false` means leaving | boolean | - | — | true |
+| transitionClasses | Specify the `class` name during the animation, refer to [CSSTransition](/CSSTransition) | string | - | - | false |
+| children | Child node | React.ReactElement | - | — | true |
+| horizontal | Horizontal mode | boolean | - | — | - |
+| transitionOnFirst | Whether to trigger the animation when the initialization is complete | boolean | - | false | false |
+| mountOnEnter | The child nodes are only mounted when the animation is entered for the first time, see [Transition](/Transition) | boolean | - | false | false |
+| unmountOnLeave | Unload the child node after the animation is out, see [Transition](/Transition) | boolean | - | false | false |

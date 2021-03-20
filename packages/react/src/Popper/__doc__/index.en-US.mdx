@@ -1,55 +1,55 @@
 # Popper
 
-基础的弹出框实现
+Basic pop-up box implementation.
 
-> 这个组件很强大，使用这个组件包裹的参考组件不会在 dom 上产生任何包裹的元素，因此不会对参考组件产生任何影响。这个组件的弹出框内容只在真正触发时才会挂载，因此性能有一定的保证。
+> This component is very powerful. The reference component wrapped by this component will not produce any wrapped elements on the dom, so it will not have any impact on the reference component. The content of the pop-up box of this component will only be mounted when it is actually triggered, so performance is guaranteed.
 
 :::demo ./Basic.tsx
 
-基础用法
+Basic
 
-基础用法
+Basic
 
 :::
 
 :::demo ./Trigger.tsx
 
-不同的触发方式
+Different trigger methods
 
-支持不同触发方式
+Different trigger methods
 
 :::
 
 :::demo ./Arrow.tsx
 
-设置箭头
+Arrow
 
-设置箭头
+Arrow
 
 :::
 
 ## Popper API
 
-> 使用此组件，需要子组件暴露`ref`实例和`onClick`、`onMouseEnter`、`onMouseLeave`、`onFocus`、`onBlur`、`onContextMenu`事件。
+> To use this component, the child component needs to expose the `ref` instance and the events of `onClick`, `onMouseEnter`, `onMouseLeave`, `onFocus`, `onBlur`, and `onContextMenu`.
 
-| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
+| Property | Description | Type | Optional Value | Default | Require |
 | --- | --- | --- | --- | --- | --- |
-| children | 子元素 | React.ReactElement | - | — | true |
-| popup | 弹出框 | React.ReactElement | - | - | true |
-| placement | 指定弹出框的方位 | `auto`&#x007c;`auto-start`&#x007c;`auto-end`&#x007c;`top`&#x007c;`top-start`&#x007c;`top-end`&#x007c;`right`&#x007c;`right-start`&#x007c;`right-end`&#x007c;`bottom`&#x007c;`bottom-start`&#x007c;`bottom-end`&#x007c;`left`&#x007c;`left-start`&#x007c;`left-end` | - | `auto` | false |
-| getPopupContainer | 指定弹出框的父容器 | string &#x007c; HTMLElement &#x007c; (() => string &#x007c; HTMLElement) | - | 默认为`body` | false |
-| visible | 是否显示弹出框 | boolean | - | - | false |
-| defaultVisible | 默认弹出框是否展示，当`visible`存在时，选项失效 | boolean | - | false | false |
-| onVisibleChange | 弹出框状态改变时的回调 | (visible: boolean) => void | - | - | false |
-| hideDelay | 延时关闭 | number | - | - | false |
-| showDelay | 延时显示 | number | - | - | false |
-| trigger | 触发方式 | 'hover'&#x007c;'focus'&#x007c;'click'&#x007c;'contextMenu'&#x007c;'custom'&#x007c;array | - | 'hover' | false |
-| disablePopupEnter | 禁止鼠标进入弹出框 | boolean | - | - | false |
-| transitionClasses | 动画 class，参看<Link to='CSSTransition'>CSSTransition</Link> | boolean | - | - | false |
-| arrow | 箭头 | React.ReactElement | - | - | false |
-| offset | 弹出框偏移 | number | - | 0 | false |
-| className | 弹出框 class | string | - | 0 | false |
-| flip | [参考 popperjs](https://popper.js.org/docs/v2/modifiers/flip/) | boolean&#x007c;object | - | true | false |
-| preventOverflow | [参考 popperjs](https://popper.js.org/docs/v2/modifiers/prevent-overflow/) | boolean&#x007c;object | - | true | false |
-| transformOrigin | 自动计算 transformOrigin 位置 | boolean | - | true | false |
-| onAfterClosed | popup 关闭完成时的回调 | function | - | - | false |
+| children | Child node | React.ReactElement | - | — | true |
+| popup | Pop-up box | React.ReactElement | - | - | true |
+| placement | Specify the orientation of the pop-up box | `auto`&#x007c;`auto-start`&#x007c;`auto-end`&#x007c;`top`&#x007c;`top-start`&#x007c;`top-end`&#x007c;`right`&#x007c;`right-start`&#x007c;`right-end`&#x007c;`bottom`&#x007c;`bottom-start`&#x007c;`bottom-end`&#x007c;`left`&#x007c;`left-start`&#x007c;`left-end` | - | `auto` | false |
+| getPopupContainer | Specify the parent container of the pop-up box | string &#x007c; HTMLElement &#x007c; (() => string &#x007c; HTMLElement) | - | 默认为`body` | false |
+| visible | Whether to show pop-up box | boolean | - | - | false |
+| defaultVisible | Whether the default pop-up box is displayed, when `visible` exists, the option is invalid | boolean | - | false | false |
+| onVisibleChange | Callback when the status of the popup box changes | (visible: boolean) => void | - | - | false |
+| hideDelay | Delay hide | number | - | - | false |
+| showDelay | Delay show | number | - | - | false |
+| trigger | Trigger method | 'hover'&#x007c;'focus'&#x007c;'click'&#x007c;'contextMenu'&#x007c;'custom'&#x007c;array | - | 'hover' | false |
+| disablePopupEnter | Prevent the mouse from entering the pop-up box | boolean | - | - | false |
+| transitionClasses | Animation class, see [CSSTransition](/CSSTransition) | boolean | - | - | false |
+| arrow | Arrow | React.ReactElement | - | - | false |
+| offset | Pop-up box offset | number | - | 0 | false |
+| className | Pop-up box class name | string | - | 0 | false |
+| flip | Reference [popperjs](https://popper.js.org/docs/v2/modifiers/flip/) | boolean&#x007c;object | - | true | false |
+| preventOverflow | Reference [popperjs](https://popper.js.org/docs/v2/modifiers/prevent-overflow/) | boolean&#x007c;object | - | true | false |
+| transformOrigin | Automatic calculation of transformOrigin position | boolean | - | true | false |
+| onAfterClosed | Callback when popup is closed | function | - | - | false |

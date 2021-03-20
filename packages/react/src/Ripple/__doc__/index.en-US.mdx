@@ -1,37 +1,37 @@
 # Ripple
 
-非常方便地实现点击时涟漪动画效果
+It is very convenient to realize the ripple animation effect when clicked.
 
 :::demo ./Basic.tsx
 
-基本用法
+Basic
 
-将`Ripple`放在想要使用涟漪效果的容器中，配合一定的样式就可以很方便地实现点击时涟漪动画效果
+Put `Ripple` in the container where you want to use the ripple effect. With a certain style, you can easily achieve the ripple animation effect when clicked.
 
 :::
 
 :::demo ./Advance.tsx
 
-强制进场动画结束再触发出场动画
+Force the entrance animation to end and then trigger the exit animation
 
-通过设置`leaveAfterEnter`，可以等到进场动画结束时才触发出场动画。
+By setting `leaveAfterEnter`, you can wait until the end of the entering animation before triggering the exit animation.
 
-在一些我们需要进场动画完整展示时使用，比如`Button`中需要完整的涟漪效果，即使我们快速点击和取消。
+It is used when we need to fully display the approach animation, such as the complete ripple effect in `Button`, even if we quickly click and cancel.
 
-您可以通过快速点击，和上面例子对比，看看动画的变化。
+You can quickly click and compare with the above example to see how the animation changes.
 
 :::
 
 ## Ripple API
 
-| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
+| Property | Description | Type | Optional Value | Default | Require |
 | --- | --- | --- | --- | --- | --- |
-| transitionClasses | 自定义动画过渡 class | string &#x007c; object | - | - | false |
-| leaveAfterEnter | 是否进场动画结束后再开始出场动画，而不是在取消动画时就结束 | boolean | - | - | false |
+| transitionClasses | Custom animation transition class name | string &#x007c; object | - | - | false |
+| leaveAfterEnter | Whether to start the exit animation after the entry animation ends, instead of ending when the animation is canceled | boolean | - | - | false |
 
 ## Ripple 方法
 
-| 参数  | 说明     |
-| ----- | -------- |
-| start | 开始动画 |
-| stop  | 结束动画 |
+| Property | Description     |
+| -------- | --------------- |
+| start    | Start animation |
+| stop     | Stop animation  |

@@ -1,64 +1,64 @@
-# 栅格系统
+# Grid
 
-参考`bootstrap`的栅格系统
+Refer to the grid system of `bootstrap`.
 
 ::: demo ./Basic.tsx
 
-基础用法
+Basic
 
-使用`span`,`gutter`实现基本的布局（`span`设置为 0 可以实现内容块的隐藏)。
+Use `span`, `gutter` to achieve basic layout (`span` set to 0 can realize the hiding of the content block).
 
 :::
 
 ::: demo ./Offset.tsx
 
-偏移布局
+Offset
 
-使用`offset`,`push`,`pull`实现内容的偏移
+Use `offset`, `push`, `pull` to achieve content offset.
 
 :::
 
 ::: demo ./ResponsiveColumn.tsx
 
-响应式布局
+Responsive
 
-`span`可以传入对象的形式实现不同尺寸下的布局，默认可以设置的参数有:`xs`,`sm`,`md`,`lg`,`xl`,`xxl`。请尝试改变浏览器窗口大小。
+`span` can be passed in the form of objects to realize the layout of different sizes, the default parameters that can be set are: `xs`, `sm`, `md`, `lg`, `xl`, `xxl`. Please try to change the browser window size.
 
 :::
 
 ::: demo ./ResponsiveOffset.tsx
 
-响应式偏移
+Responsive Offset
 
-`offset`,`push`,`pull`也是支持响应式的，默认可以设置的参数有:`xs`,`sm`,`md`,`lg`,`xl`,`xxl`
+`offset`, `push`, `pull` also support responsiveness. The default parameters that can be set are: `xs`,`sm`,`md`,`lg`,`xl`,`xxl`. 
 
 :::
 
 ::: demo ./Flex.tsx
 
-`flex`布局
+`flex` layout
 
-在现代浏览器中可以指定`type='flex'`, 然后可以使用`align`和`justify`实现水平和垂直方向的不同方式的对齐, 也可以使用`order`改变内容块的前后顺序(`order`也是支持响应式的)。
+In modern browsers, you can specify `type='flex'`, and then you can use `align` and `justify` to achieve horizontal and vertical alignment in different ways, and you can also use `order` to change the order of content blocks (` order` also supports responsive).
 
 :::
 
 ## Row API
 
-| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
+| Property | Description | Type | Optional Value | Default | Require |
 | --- | --- | --- | --- | --- | --- |
-| gutter | 内容块间隙(支持响应式) | number &#x007c; object | >=0 | 0 | false |
-| type | 布局类型 | flex | - | - | false |
-| justify | 栅格左右对齐方式(在`type=flex`下有效) | string | start &#x007c; end &#x007c; center &#x007c; space-around &#x007c; space-between | — | false |
-| align | 栅格上下对齐方式(在`type=flex`下有效) | string | top &#x007c; middle &#x007c; bottom | — | false |
-| children | `Col`数组 | Col &#x007c; Col[] | - | - | true |
+| gutter | Content block gap (support responsive) | number &#x007c; object | >=0 | 0 | false |
+| type | Layout type | flex | - | - | false |
+| justify | Grid left and right alignment (valid under `type=flex`) | string | start &#x007c; end &#x007c; center &#x007c; space-around &#x007c; space-between | — | false |
+| align | Grid up and down alignment (valid under `type=flex`) | string | top &#x007c; middle &#x007c; bottom | — | false |
+| children | `Col` Array | Col &#x007c; Col[] | - | - | true |
 
 ## Col API
 
-| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
+| Property | Description | Type | Optional Value | Default | Require |
 | --- | --- | --- | --- | --- | --- |
-| column | 栅格占据的列数(支持响应式)(**0 表示隐藏**) | number &#x007c; object | 0-24 | — | true |
-| offset | 栅格左侧的间隔列数(支持响应式) | number &#x007c; object | 1-24 | — | false |
-| push | 栅格向右移动的列数(支持响应式) | number &#x007c; object | 1-24 | — | false |
-| pull | 栅格向左移动的列数(支持响应式) | number &#x007c; object | 1-24 | — | false |
-| order | 栅格顺序，flex 布局模式下有效(支持响应式) | number &#x007c; object | 1-24 | — | false |
-| children | 子节点 | ReactNode | - | - | false |
+| column | The number of columns occupied by the grid (support responsive) (**0 means hidden**) | number &#x007c; object | 0-24 | — | true |
+| offset | The number of interval columns on the left side of the grid (support responsive) | number &#x007c; object | 1-24 | — | false |
+| push | The number of columns to move the grid to the right (support responsive) | number &#x007c; object | 1-24 | — | false |
+| pull | The number of columns to move the grid to the left (support responsive) | number &#x007c; object | 1-24 | — | false |
+| order | Grid order, valid in flex layout mode (support responsive) | number &#x007c; object | 1-24 | — | false |
+| children | Child node | ReactNode | - | - | false |

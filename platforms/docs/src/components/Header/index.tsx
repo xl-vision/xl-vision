@@ -55,7 +55,7 @@ const Logo = styled('div')`
 
 const Header = () => {
   const theme = React.useContext(ThemeContext);
-  const { supportLocales, locale, setLang } = React.useContext(LocalizationContext);
+  const { supportLocales, locale, setLanguage } = React.useContext(LocalizationContext);
 
   const { isDark, setDark } = theme;
 
@@ -74,7 +74,7 @@ const Header = () => {
             menus={
               <>
                 {langs.map((lang) => (
-                  <Dropdown.Item onClick={() => setLang(lang)} key={lang}>
+                  <Dropdown.Item onClick={() => setLanguage(lang)} key={lang}>
                     {supportLocales[lang].name}
                   </Dropdown.Item>
                 ))}

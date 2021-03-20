@@ -1,19 +1,18 @@
 # Portal
 
-可以灵活方便地将子组件挂载到其他位置的组件
+Sub-components can be flexibly and conveniently mounted to components in other locations.
 
 :::demo ./Basic.tsx
 
-基础用法
+Basic
 
-按钮在`react`的树形结构中是属于`container1`的，在`dom`结构上属于`container2`,
-你可以尝试点击按钮，事件会被`container1`捕获。
+The button belongs to `container1` in the tree structure of `react`, and belongs to `container2` in the structure of `dom`, You can try to click the button and the event will be captured by `container1`.
 
 :::
 
 ## Portal API
 
-| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
+| Property | Description | Type | Optional Value | Default | Require |
 | --- | --- | --- | --- | --- | --- |
-| getContainer | 指定挂载的父节点，支持字符串，节点实例或返回这些的函数 | string &#x007c; HTMLElement &#x007c; (() => string &#x007c; HTMLElement) | - | - | false |
-| children | 子元素 | ReactNode | - | — | true |
+| getContainer | Specify the parent node to mount, support strings, node instances or functions that return these | string &#x007c; HTMLElement &#x007c; (() => string &#x007c; HTMLElement) | - | - | false |
+| children | Child node | ReactNode | - | — | true |

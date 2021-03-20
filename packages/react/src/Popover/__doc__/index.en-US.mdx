@@ -2,30 +2,30 @@
 
 :::demo ./Basic.tsx
 
-基础用法
+Basic
 
-基础用法
+Basic
 
 :::
 
 :::demo ./ClickInner.tsx
 
-从浮层内关闭
+Closed from within the floating layer
 
-使用`visible`控制浮层的关闭
+Use `visible` to control the closing of the floating layer.
 
 :::
 
 ## Popover API
 
-> 更多参数请参考[**Popper**](/Popper)属性
+> For more parameters, please refer to [Popper](/Popper) properties
 
-| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
+| Property | Description | Type | Optional Value | Default | Require |
 | --- | --- | --- | --- | --- | --- |
-| content | 内容 | React.ReactNode | - | - | true |
-| title | 标题 | React.ReactNode | - | - | false |
-| transitionClassName | 动画 class，参看[**CSSTransition**](/CSSTransition) | string | - | `xl-popover` | false |
-| getPopupContainer | 指定弹出框的父容器 | string &#x007c; HTMLElement &#x007c; (() => string &#x007c; HTMLElement) | - | 默认为`document.body` | false |
-| className | 弹出框类名 | string | - | - | false |
-| trigger | 触发方式 | 'hover'&#x007c;'focus'&#x007c;'click'&#x007c;'contextMenu'&#x007c;'custom'&#x007c;array | - | 'click' | false |
-| showArrow | 是否显示箭头 | boolean | - | - | false |
+| content | Content | React.ReactNode | - | - | true |
+| title | Title | React.ReactNode | - | - | false |
+| transitionClassName | Animation class, see [CSSTransition](/CSSTransition) | string | - | `xl-popover` | false |
+| getPopupContainer | Specify the parent container of the pop-up box | string &#x007c; HTMLElement &#x007c; (() => string &#x007c; HTMLElement) | - | 默认为`document.body` | false |
+| className | Pop-up box class name | string | - | - | false |
+| trigger | Trigger method | 'hover'&#x007c;'focus'&#x007c;'click'&#x007c;'contextMenu'&#x007c;'custom'&#x007c;array | - | 'click' | false |
+| showArrow | Show arrow | boolean | - | - | false |

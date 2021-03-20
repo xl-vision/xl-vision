@@ -1,84 +1,84 @@
-# 按钮
+# Button
 
 :::demo ./Basic.tsx
 
-基础用法
+Basic
 
-基础用法
+Basic
 
 :::
 
 :::demo ./DisableElevation.tsx
 
-禁止阴影效果
+Disabled elevation
 
-仅对`variant=contained`会有阴影效果
+Disabled elevation effect, only work on `variant=contained`.
 
 :::
 
 :::demo ./DisableRipple.tsx
 
-禁止水波纹效果
+Disabled ripple
 
-禁用后点击时不会出现水波纹效果
+Disabled ripple.
 
 :::
 
 :::demo ./Disabled.tsx
 
-禁用按钮
+Disabled state
 
-禁用按钮时，对于`variant=contained`的水波纹效果和阴影都会失效
+When the button is disabled, the ripple effect and shadow of `variant=contained` will not work.
 
 :::
 
 :::demo ./Size.tsx
 
-不同尺寸
+Size
 
-通过`size`设置不同尺寸的按钮
+Set buttons of different sizes by `size`.
 
 :::
 
 :::demo ./Loading.tsx
 
-加载中
+Loading
 
-组件点击后，需要一段时间处理后才能继续操作
+The loading state is used for scenarios that require a period of processing to continue operation
 
 :::
 
 :::demo ./Link.tsx
 
-跳转按钮
+Link
 
-通过给按钮设置`href`，可以使按钮获得`a`标签的能力
+By setting `href` to the button, the button can get the ability of the `a` tag.
 
 :::
 
 :::demo ./Long.tsx
 
-长按钮
+Long
 
-通过给按钮设置`long`，可以使按钮占据一整行
+By setting `long` to the button, the button can occupy a whole row.
 
 :::
 
 ## Button API
 
-> 其余参数请参考**[BaseButton](/BaseButton)**
+> For other parameters, please refer to [BaseButton](/BaseButton)
 
-| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
+| Property | Description | Type | Optional Value | Default | Require |
 | --- | --- | --- | --- | --- | --- |
-| href | 点击跳转地址，此时 button 行为与 a 标签一致 | string | - | - | false |
-| disabled | 禁止按钮 | boolean | - | false | false |
-| theme | 设置按钮主题 | string | default &#x007c; primary &#x007c; success &#x007c; warning &#x007c; error &#x007c; secondary | default | false |
-| variant | 设置按钮类型 | string | contained &#x007c; outlined &#x007c; text | contained | false |
-| long | 设置为长按钮 | boolean | - | false | false |
-| prefixIcon | 前置图标 | ReactElement | - | - | false |
-| suffixIcon | 后置图标 | ReactElement | - | - | false |
-| loading | 设置按钮为加载中 | boolean | - | - | false |
-| round | 圆角按钮 | boolean | - | - | false |
-| disableElevation | 禁止阴影效果，仅对`variant=contained` | boolean | - | - | false |
-| children | 子节点，在指定了`prefixIcon`或`suffixIcon`时可以为空 | ReactNode | - | - | false |
-| size | 设置按钮大小 | medium &#x007c; large &#x007c; small | - | middle | false |
+| href | Click the jump address, the button behavior is the same as the a tag | string | - | - | false |
+| disabled | Disable State | boolean | - | false | false |
+| theme | Set button theme color | string | default &#x007c; primary &#x007c; success &#x007c; warning &#x007c; error &#x007c; secondary | default | false |
+| variant | Set button type | string | contained &#x007c; outlined &#x007c; text | contained | false |
+| long | Long button | boolean | - | false | false |
+| prefixIcon | Prefix icon | ReactElement | - | - | false |
+| suffixIcon | Suffix icon | ReactElement | - | - | false |
+| loading | Set the button as loading state | boolean | - | - | false |
+| round | Round button | boolean | - | - | false |
+| disableElevation | Shadow effect is forbidden, only valid for `variant=contained` | boolean | - | - | false |
+| children | Child node, can be empty when `prefixIcon` or `suffixIcon` is specified | ReactNode | - | - | false |
+| size | Button Size | medium &#x007c; large &#x007c; small | - | middle | false |
