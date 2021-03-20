@@ -1,0 +1,54 @@
+# Dropdown
+
+::: demo ./Basic.tsx
+
+Basic
+
+Basic
+
+:::
+
+::: demo ./Cascade.tsx
+
+Multi-level menu
+
+Multi-level menu
+
+:::
+
+::: demo ./Advance.tsx
+
+Use with tooltip
+
+Since the tooltip does not pass the parent component `props` to the child components, a layer of encapsulation is needed to ensure that related events can be correctly delivered. Similar components include [Popover](/popover), [Popconfirm](/Popconfirm) and [Popper](/Popper).
+
+:::
+
+# Dropdown API
+
+> For more parameters, please refer to [Popper](/Popper) properties.
+
+| Property | Description | Type | Optional Value | Default | Require |
+| --- | --- | --- | --- | --- | --- |
+| children | Child node | React.ReactElement | - | - | true |
+| menus | Drop-down menu | React.ReactNode | - | - | true |
+| transitionClassName | Animation class, see [CSSTransition](/CSSTransition) | string | - | `xl-dropdown` | false |
+
+# DropdownSubmenu API
+
+> For more parameters, please refer to [Popper](/Popper) properties.
+
+| Property | Description | Type | Optional Value | Default | Require |
+| --- | --- | --- | --- | --- | --- |
+| children | Child node | React.ReactElement | - | - | true |
+| title | Title | React.ReactNode | - | - | true |
+| transitionClassName | Animation class, see [CSSTransition](/CSSTransition) | string | - | `xl-dropdown-submenu` | false |
+| disabled | Disabled state | boolean | - | - | false |
+
+# DropdownItem API
+
+| Property | Description    | Type               | Optional Value | Default | Require |
+| -------- | -------------- | ------------------ | -------------- | ------- | ------- |
+| children | Child node     | React.ReactElement | -              | -       | true    |
+| disabled | Disabled state | boolean            | -              | -       | false   |
+| onClick  | Click event    | function           | -              | -       | false   |

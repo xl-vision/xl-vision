@@ -1,0 +1,56 @@
+# Tooltip
+
+:::demo ./Basic.tsx
+
+Basic
+
+Basic.
+
+:::
+
+:::demo ./Arrow.tsx
+
+Arrow
+
+Show Arrow.
+
+:::
+
+:::demo ./Colors.tsx
+
+Custom color
+
+Custom color.
+
+:::
+
+:::demo ./MaxWidth.tsx
+
+Limit the maximum width
+
+Limit the maximum width.
+
+:::
+
+:::demo ./Rich.tsx
+
+Rich text content
+
+Custom rich text content.
+
+:::
+
+## Tooltip API
+
+> For more parameters, please refer to [Popper](/Popper) properties.
+
+| Property | Description | Type | Optional Value | Default | Require |
+| --- | --- | --- | --- | --- | --- |
+| content | Tooltip content | React.ReactNode | - | - | true |
+| maxWidth | Tooltip max width | number | - | - | false |
+| transitionClassName | Animation class name, see [CSSTransition](/CSSTransition) | string | - | 'xl-tooltip' | false |
+| bgColor | Custom background color | string | - | - | false |
+| trigger | Trigger method | 'touch'&#x007c;'hover'&#x007c;'focus'&#x007c;'click'&#x007c;'contextMenu'&#x007c;'custom'&#x007c;array | - | ['hover','touch'] | false |
+| showArrow | Show arrow | boolean | - | - | false |
+| touchShowDelay | Delayed display time on touch screen | number | - | 1500 | false |
+| touchHideDelay | Delayed hidden time on touch screen | number | - | 0 | false |

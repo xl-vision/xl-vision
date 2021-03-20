@@ -1,0 +1,27 @@
+# CSSTransition
+
+::: demo ./Basic.tsx
+
+Basic
+
+Basic usage, if you don’t want the component to be rendered at the beginning, please set mountOnEnter=true.
+
+:::
+
+::: demo ./Advance.tsx
+
+Do not uninstall components
+
+If you want the component not to be unloaded after it comes out, you can do this by not setting `unmountOnLeave` and cooperating with css.
+
+:::
+
+## CSSTransition API
+
+> CSSTransition inherits all [Transition](/Transition) properties
+
+| Property | Description | Type | Optional Value | Default | Require |
+| --- | --- | --- | --- | --- | --- |
+| transitionClasses | Specify the `class` name during the animation | string &#x007c; object | - | - | false |
+| timeout | Specify the time required for the animation | string &#x007c; object | - | - | false |
+| disableCss | Disable css animation. If you want to use js for animation control and avoid the interference of css animation, you can set this property to `true` | boolean | - | - | false |

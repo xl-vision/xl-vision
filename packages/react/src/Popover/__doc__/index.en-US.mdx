@@ -1,0 +1,31 @@
+# Popover
+
+:::demo ./Basic.tsx
+
+Basic
+
+Basic
+
+:::
+
+:::demo ./ClickInner.tsx
+
+Closed from within the floating layer
+
+Use `visible` to control the closing of the floating layer.
+
+:::
+
+## Popover API
+
+> For more parameters, please refer to [Popper](/Popper) properties
+
+| Property | Description | Type | Optional Value | Default | Require |
+| --- | --- | --- | --- | --- | --- |
+| content | Content | React.ReactNode | - | - | true |
+| title | Title | React.ReactNode | - | - | false |
+| transitionClassName | Animation class, see [CSSTransition](/CSSTransition) | string | - | `xl-popover` | false |
+| getPopupContainer | Specify the parent container of the pop-up box | string &#x007c; HTMLElement &#x007c; (() => string &#x007c; HTMLElement) | - | 默认为`document.body` | false |
+| className | Pop-up box class name | string | - | - | false |
+| trigger | Trigger method | 'hover'&#x007c;'focus'&#x007c;'click'&#x007c;'contextMenu'&#x007c;'custom'&#x007c;array | - | 'click' | false |
+| showArrow | Show arrow | boolean | - | - | false |

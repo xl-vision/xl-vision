@@ -2,7 +2,8 @@ import { styled } from '@xl-vision/react';
 import { mix } from '@xl-vision/react/utils/color';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import routes, { Route as RouteType } from '../../routes';
+import routeMap, { Route as RouteType } from '../../routes';
+import { LocalizationContext } from '../LocalizationProvider';
 
 const LeftNode = styled('span')(() => {
   return {
@@ -82,8 +83,6 @@ const traverseRoutes = (routesArray: Array<RouteType>, level = 1): JSX.Element =
   return <NodeWrapper>{routeElements}</NodeWrapper>;
 };
 
-const el = traverseRoutes(routes);
-
 const Wrapper = styled('div')(() => {
   return {
     li: {
@@ -93,7 +92,14 @@ const Wrapper = styled('div')(() => {
 });
 
 const Aside: React.FunctionComponent<{ className?: string }> = (props) => {
-  return <Wrapper {...props}>{el}</Wrapper>;
+  const { language } = React.useContext(LocalizationContext);
+
+  const nodes = React.useMemo(() => {
+    const routes = routeMap[language];
+    return traverseRoutes(routes);
+  }, [language]);
+
+  return <Wrapper {...props}>{nodes}</Wrapper>;
 };
 
 export default Aside;

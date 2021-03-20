@@ -1,0 +1,84 @@
+# Button
+
+:::demo ./Basic.tsx
+
+Basic
+
+Basic
+
+:::
+
+:::demo ./DisableElevation.tsx
+
+Disabled elevation
+
+Disabled elevation effect, only work on `variant=contained`.
+
+:::
+
+:::demo ./DisableRipple.tsx
+
+Disabled ripple
+
+Disabled ripple.
+
+:::
+
+:::demo ./Disabled.tsx
+
+Disabled state
+
+When the button is disabled, the ripple effect and shadow of `variant=contained` will not work.
+
+:::
+
+:::demo ./Size.tsx
+
+Size
+
+Set buttons of different sizes by `size`.
+
+:::
+
+:::demo ./Loading.tsx
+
+Loading
+
+The loading state is used for scenarios that require a period of processing to continue operation
+
+:::
+
+:::demo ./Link.tsx
+
+Link
+
+By setting `href` to the button, the button can get the ability of the `a` tag.
+
+:::
+
+:::demo ./Long.tsx
+
+Long
+
+By setting `long` to the button, the button can occupy a whole row.
+
+:::
+
+## Button API
+
+> For other parameters, please refer to [BaseButton](/BaseButton)
+
+| Property | Description | Type | Optional Value | Default | Require |
+| --- | --- | --- | --- | --- | --- |
+| href | Click the jump address, the button behavior is the same as the a tag | string | - | - | false |
+| disabled | Disable State | boolean | - | false | false |
+| theme | Set button theme color | string | default &#x007c; primary &#x007c; success &#x007c; warning &#x007c; error &#x007c; secondary | default | false |
+| variant | Set button type | string | contained &#x007c; outlined &#x007c; text | contained | false |
+| long | Long button | boolean | - | false | false |
+| prefixIcon | Prefix icon | ReactElement | - | - | false |
+| suffixIcon | Suffix icon | ReactElement | - | - | false |
+| loading | Set the button as loading state | boolean | - | - | false |
+| round | Round button | boolean | - | - | false |
+| disableElevation | Shadow effect is forbidden, only valid for `variant=contained` | boolean | - | - | false |
+| children | Child node, can be empty when `prefixIcon` or `suffixIcon` is specified | ReactNode | - | - | false |
+| size | Button Size | medium &#x007c; large &#x007c; small | - | middle | false |

@@ -1,7 +1,8 @@
 export type Locale = {
   name: string;
   header: {
-    langTooltip: string;
+    themeTooltip: string;
+    githubTooltip: string;
   };
 };
 
@@ -9,13 +10,15 @@ const locales: Record<string, Locale> = {
   'zh-CN': {
     name: '中文',
     header: {
-      langTooltip: '切换语言',
+      themeTooltip: '在亮色主题和暗色主题间切换',
+      githubTooltip: 'Github',
     },
   },
   'en-US': {
     name: 'English',
     header: {
-      langTooltip: 'switch language',
+      themeTooltip: 'Switch between light mode and dark mode',
+      githubTooltip: 'Github',
     },
   },
 };

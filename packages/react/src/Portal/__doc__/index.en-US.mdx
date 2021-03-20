@@ -1,0 +1,18 @@
+# Portal
+
+Sub-components can be flexibly and conveniently mounted to components in other locations.
+
+:::demo ./Basic.tsx
+
+Basic
+
+The button belongs to `container1` in the tree structure of `react`, and belongs to `container2` in the structure of `dom`, You can try to click the button and the event will be captured by `container1`.
+
+:::
+
+## Portal API
+
+| Property | Description | Type | Optional Value | Default | Require |
+| --- | --- | --- | --- | --- | --- |
+| getContainer | Specify the parent node to mount, support strings, node instances or functions that return these | string &#x007c; HTMLElement &#x007c; (() => string &#x007c; HTMLElement) | - | - | false |
+| children | Child node | ReactNode | - | — | true |
