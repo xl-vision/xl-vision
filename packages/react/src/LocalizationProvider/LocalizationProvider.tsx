@@ -7,25 +7,25 @@ import LocalizationContext from './LocalizationContext';
 
 export type LocalizationProviderProps = {
   customLocales?: Locales;
-  lang: string;
+  language: string;
   children: React.ReactNode;
 };
 
 const LocalizationProvider: React.FunctionComponent<LocalizationProviderProps> = (props) => {
-  const { customLocales, lang = 'en-US', children } = props;
+  const { customLocales, language = 'en-US', children } = props;
 
   const memorizedValue = React.useMemo(() => {
-    let locale = customLocales?.[lang] || locales[lang];
+    let locale = customLocales?.[language] || locales[language];
 
     warning(
       !locale,
       `The specified lang '%s' has no corresponding locale configuration, please provide the corresponding locale file, otherwise the default language (en-US) will be used`,
-      lang,
+      language,
     );
     locale = locales['en-US'];
 
-    return { locale, lang };
-  }, [customLocales, lang]);
+    return { locale, language };
+  }, [customLocales, language]);
 
   return (
     <LocalizationContext.Provider value={memorizedValue}>{children}</LocalizationContext.Provider>
@@ -37,7 +37,7 @@ if (isDevelopment) {
 
   LocalizationProvider.propTypes = {
     customLocales: PropTypes.shape({}),
-    lang: PropTypes.string.isRequired,
+    language: PropTypes.string.isRequired,
     children: PropTypes.node,
   };
 }

@@ -55,7 +55,7 @@ const Logo = styled('div')`
 
 const Header = () => {
   const theme = React.useContext(ThemeContext);
-  const { supportLocales, locale, setLang } = React.useContext(LocalizationContext);
+  const { supportLocales, locale, setLanguage } = React.useContext(LocalizationContext);
 
   const { isDark, setDark } = theme;
 
@@ -74,7 +74,7 @@ const Header = () => {
             menus={
               <>
                 {langs.map((lang) => (
-                  <Dropdown.Item onClick={() => setLang(lang)} key={lang}>
+                  <Dropdown.Item onClick={() => setLanguage(lang)} key={lang}>
                     {supportLocales[lang].name}
                   </Dropdown.Item>
                 ))}
@@ -82,27 +82,25 @@ const Header = () => {
             }
           >
             <span>
-              <Tooltip content={locale.header.langTooltip} placement='bottom' showDelay={1500}>
-                <Button
-                  aria-label='Language'
-                  variant='text'
-                  prefixIcon={
-                    <Icon>
-                      <TranslateFilled />
-                    </Icon>
-                  }
-                  suffixIcon={
-                    <Icon>
-                      <ExpandMoreFilled />
-                    </Icon>
-                  }
-                >
-                  {locale.name}
-                </Button>
-              </Tooltip>
+              <Button
+                aria-label='Language'
+                variant='text'
+                prefixIcon={
+                  <Icon>
+                    <TranslateFilled />
+                  </Icon>
+                }
+                suffixIcon={
+                  <Icon>
+                    <ExpandMoreFilled />
+                  </Icon>
+                }
+              >
+                {locale.name}
+              </Button>
             </span>
           </Dropdown>
-          <Tooltip content='在亮色主题和暗色主题间切换' placement='bottom' showDelay={1500}>
+          <Tooltip content={locale.header.themeTooltip} placement='bottom' showDelay={1500}>
             <Button
               aria-label='Theme'
               variant='text'
@@ -110,7 +108,7 @@ const Header = () => {
               prefixIcon={<Icon>{isDark ? <LightkMode /> : <DarkMode />}</Icon>}
             />
           </Tooltip>
-          <Tooltip content='Github' placement='bottom' showDelay={1500}>
+          <Tooltip content={locale.header.githubTooltip} placement='bottom' showDelay={1500}>
             <Button
               aria-label='Github'
               variant='text'

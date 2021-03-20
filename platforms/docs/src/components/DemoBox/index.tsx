@@ -30,15 +30,16 @@ const InfoWrapper = styled('div')(
 `,
 );
 
-const TitleWrapper = styled('div')(
-  ({ theme }) => `
-  position: absolute;
-  background-color: ${theme.color.background.paper};
-  top: -12px;
-  margin-left: 16px;
-  padding: 0px 8px;
-`,
-);
+const TitleWrapper = styled('div')(({ theme }) => {
+  return {
+    position: 'absolute',
+    backgroundColor: theme.color.background.paper,
+    top: -12,
+    marginLeft: 16,
+    padding: '0px 8px',
+    ...theme.typography.subtitle2,
+  };
+});
 
 const DescWrapper = styled('div')(() => {
   return {

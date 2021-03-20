@@ -1,0 +1,37 @@
+# Ripple
+
+It is very convenient to realize the ripple animation effect when clicked.
+
+:::demo ./Basic.tsx
+
+Basic
+
+Put `Ripple` in the container where you want to use the ripple effect. With a certain style, you can easily achieve the ripple animation effect when clicked.
+
+:::
+
+:::demo ./Advance.tsx
+
+Force the entrance animation to end and then trigger the exit animation
+
+By setting `leaveAfterEnter`, you can wait until the end of the entering animation before triggering the exit animation.
+
+It is used when we need to fully display the approach animation, such as the complete ripple effect in `Button`, even if we quickly click and cancel.
+
+You can quickly click and compare with the above example to see how the animation changes.
+
+:::
+
+## Ripple API
+
+| Property | Description | Type | Optional Value | Default | Require |
+| --- | --- | --- | --- | --- | --- |
+| transitionClasses | Custom animation transition class name | string &#x007c; object | - | - | false |
+| leaveAfterEnter | Whether to start the exit animation after the entry animation ends, instead of ending when the animation is canceled | boolean | - | - | false |
+
+## Ripple 方法
+
+| Property | Description     |
+| -------- | --------------- |
+| start    | Start animation |
+| stop     | Stop animation  |

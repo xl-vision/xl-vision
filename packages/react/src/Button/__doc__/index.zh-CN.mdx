@@ -44,7 +44,7 @@
 
 加载中
 
-组件点击后，需要一段时间处理后才能继续操作
+加载中状态用于需要一段时间处理后才能继续操作的场景。
 
 :::
 
@@ -66,7 +66,7 @@
 
 ## Button API
 
-> 其余参数请参考**[BaseButton](/BaseButton)**
+> 其余参数请参考[BaseButton](/BaseButton)
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
 | --- | --- | --- | --- | --- | --- |
@@ -79,6 +79,6 @@
 | suffixIcon | 后置图标 | ReactElement | - | - | false |
 | loading | 设置按钮为加载中 | boolean | - | - | false |
 | round | 圆角按钮 | boolean | - | - | false |
-| disableElevation | 禁止阴影效果，仅对`variant=contained` | boolean | - | - | false |
+| disableElevation | 禁止阴影效果，仅对`variant=contained`有效 | boolean | - | - | false |
 | children | 子节点，在指定了`prefixIcon`或`suffixIcon`时可以为空 | ReactNode | - | - | false |
 | size | 设置按钮大小 | medium &#x007c; large &#x007c; small | - | middle | false |

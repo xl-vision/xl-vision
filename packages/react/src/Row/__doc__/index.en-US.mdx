@@ -1,0 +1,64 @@
+# Grid
+
+Refer to the grid system of `bootstrap`.
+
+::: demo ./Basic.tsx
+
+Basic
+
+Use `span`, `gutter` to achieve basic layout (`span` set to 0 can realize the hiding of the content block).
+
+:::
+
+::: demo ./Offset.tsx
+
+Offset
+
+Use `offset`, `push`, `pull` to achieve content offset.
+
+:::
+
+::: demo ./ResponsiveColumn.tsx
+
+Responsive
+
+`span` can be passed in the form of objects to realize the layout of different sizes, the default parameters that can be set are: `xs`, `sm`, `md`, `lg`, `xl`, `xxl`. Please try to change the browser window size.
+
+:::
+
+::: demo ./ResponsiveOffset.tsx
+
+Responsive Offset
+
+`offset`, `push`, `pull` also support responsiveness. The default parameters that can be set are: `xs`,`sm`,`md`,`lg`,`xl`,`xxl`. 
+
+:::
+
+::: demo ./Flex.tsx
+
+`flex` layout
+
+In modern browsers, you can specify `type='flex'`, and then you can use `align` and `justify` to achieve horizontal and vertical alignment in different ways, and you can also use `order` to change the order of content blocks (` order` also supports responsive).
+
+:::
+
+## Row API
+
+| Property | Description | Type | Optional Value | Default | Require |
+| --- | --- | --- | --- | --- | --- |
+| gutter | Content block gap (support responsive) | number &#x007c; object | >=0 | 0 | false |
+| type | Layout type | flex | - | - | false |
+| justify | Grid left and right alignment (valid under `type=flex`) | string | start &#x007c; end &#x007c; center &#x007c; space-around &#x007c; space-between | — | false |
+| align | Grid up and down alignment (valid under `type=flex`) | string | top &#x007c; middle &#x007c; bottom | — | false |
+| children | `Col` Array | Col &#x007c; Col[] | - | - | true |
+
+## Col API
+
+| Property | Description | Type | Optional Value | Default | Require |
+| --- | --- | --- | --- | --- | --- |
+| column | The number of columns occupied by the grid (support responsive) (**0 means hidden**) | number &#x007c; object | 0-24 | — | true |
+| offset | The number of interval columns on the left side of the grid (support responsive) | number &#x007c; object | 1-24 | — | false |
+| push | The number of columns to move the grid to the right (support responsive) | number &#x007c; object | 1-24 | — | false |
+| pull | The number of columns to move the grid to the left (support responsive) | number &#x007c; object | 1-24 | — | false |
+| order | Grid order, valid in flex layout mode (support responsive) | number &#x007c; object | 1-24 | — | false |
+| children | Child node | ReactNode | - | - | false |

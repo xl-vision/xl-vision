@@ -1,0 +1,55 @@
+# Popper
+
+Basic pop-up box implementation.
+
+> This component is very powerful. The reference component wrapped by this component will not produce any wrapped elements on the dom, so it will not have any impact on the reference component. The content of the pop-up box of this component will only be mounted when it is actually triggered, so performance is guaranteed.
+
+:::demo ./Basic.tsx
+
+Basic
+
+Basic
+
+:::
+
+:::demo ./Trigger.tsx
+
+Different trigger methods
+
+Different trigger methods
+
+:::
+
+:::demo ./Arrow.tsx
+
+Arrow
+
+Arrow
+
+:::
+
+## Popper API
+
+> To use this component, the child component needs to expose the `ref` instance and the events of `onClick`, `onMouseEnter`, `onMouseLeave`, `onFocus`, `onBlur`, and `onContextMenu`.
+
+| Property | Description | Type | Optional Value | Default | Require |
+| --- | --- | --- | --- | --- | --- |
+| children | Child node | React.ReactElement | - | — | true |
+| popup | Pop-up box | React.ReactElement | - | - | true |
+| placement | Specify the orientation of the pop-up box | `auto`&#x007c;`auto-start`&#x007c;`auto-end`&#x007c;`top`&#x007c;`top-start`&#x007c;`top-end`&#x007c;`right`&#x007c;`right-start`&#x007c;`right-end`&#x007c;`bottom`&#x007c;`bottom-start`&#x007c;`bottom-end`&#x007c;`left`&#x007c;`left-start`&#x007c;`left-end` | - | `auto` | false |
+| getPopupContainer | Specify the parent container of the pop-up box | string &#x007c; HTMLElement &#x007c; (() => string &#x007c; HTMLElement) | - | 默认为`body` | false |
+| visible | Whether to show pop-up box | boolean | - | - | false |
+| defaultVisible | Whether the default pop-up box is displayed, when `visible` exists, the option is invalid | boolean | - | false | false |
+| onVisibleChange | Callback when the status of the popup box changes | (visible: boolean) => void | - | - | false |
+| hideDelay | Delay hide | number | - | - | false |
+| showDelay | Delay show | number | - | - | false |
+| trigger | Trigger method | 'hover'&#x007c;'focus'&#x007c;'click'&#x007c;'contextMenu'&#x007c;'custom'&#x007c;array | - | 'hover' | false |
+| disablePopupEnter | Prevent the mouse from entering the pop-up box | boolean | - | - | false |
+| transitionClasses | Animation class, see [CSSTransition](/CSSTransition) | boolean | - | - | false |
+| arrow | Arrow | React.ReactElement | - | - | false |
+| offset | Pop-up box offset | number | - | 0 | false |
+| className | Pop-up box class name | string | - | 0 | false |
+| flip | Reference [popperjs](https://popper.js.org/docs/v2/modifiers/flip/) | boolean&#x007c;object | - | true | false |
+| preventOverflow | Reference [popperjs](https://popper.js.org/docs/v2/modifiers/prevent-overflow/) | boolean&#x007c;object | - | true | false |
+| transformOrigin | Automatic calculation of transformOrigin position | boolean | - | true | false |
+| onAfterClosed | Callback when popup is closed | function | - | - | false |
