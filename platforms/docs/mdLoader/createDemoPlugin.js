@@ -130,12 +130,10 @@ const REGEX_START = /^:::[\t\f ]*demo[\t\f ]+(\S+)[\t\f ]*(\r?\n)+/;
 const REGEX_CONTNET = /^[\t\n\f ]*(.+)\n+([\S\s]+)$/;
 
 function blockTokenizer(eat, value) {
-  const now = eat.now();
-
   const matches = value.match(REGEX_START);
 
   if (!matches) {
-    return;
+    return false;
   }
 
   const filePath = matches[1];
@@ -153,8 +151,11 @@ function blockTokenizer(eat, value) {
   }
 
   if (i === lines.length) {
-    return;
+    return false;
   }
+
+  const now = eat.now();
+  const exit = this.enterBlock();
 
   const content = lines.slice(1, i).join('\n');
 
@@ -168,25 +169,22 @@ function blockTokenizer(eat, value) {
 
   const add = eat(matchString);
 
-  const exit = this.enterBlock();
-
   const descContent = {
     type: TYPE_DESC,
     children: this.tokenizeBlock(desc, now),
   };
-
-  exit();
 
   const titleContent = {
     type: TYPE_TITLE,
     children: this.tokenizeInline(title, now),
   };
 
-  return add({
+  add({
     type: TYPE,
     path: filePath,
     children: [titleContent, descContent],
   });
+  exit();
 }
 
 function visit(tree, type) {
