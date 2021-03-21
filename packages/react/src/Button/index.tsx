@@ -2,7 +2,7 @@ import { CSSObject } from '@xl-vision/styled-engine-types';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import React from 'react';
-import LoopFilled from '@xl-vision/icons/LoopFilled';
+import { LoopFilled } from '@xl-vision/icons';
 import { keyframes } from '@xl-vision/styled-engine';
 import BaseButton, { BaseButtonProps } from '../BaseButton';
 import Icon from '../Icon';

@@ -1,6 +1,6 @@
 import { mount } from 'enzyme';
 import React from 'react';
-import DeleteFilled from '@xl-vision/icons/DeleteFilled';
+import { DeleteFilled } from '@xl-vision/icons';
 import Icon from '../../Icon';
 import ThemeProvder, { BaseTheme } from '../../ThemeProvider';
 
