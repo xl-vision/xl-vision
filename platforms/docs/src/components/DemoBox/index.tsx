@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { styled, CollapseTransition, Button, Icon } from '@xl-vision/react';
-import Expand from '@xl-vision/icons/ExpandMoreFilled';
+import { ExpandMoreFilled } from '@xl-vision/icons';
 import Code from './Code';
 
 export type DemoBoxProps = {
@@ -76,7 +76,7 @@ const ButtonWrapper = styled('div')(() => {
   };
 });
 
-const ExpandWrapper = styled(Expand)<{ expand: boolean }>(({ theme, styleProps }) => {
+const ExpandWrapper = styled(ExpandMoreFilled)<{ expand: boolean }>(({ theme, styleProps }) => {
   const { expand } = styleProps;
   return {
     transition: theme.transition.standard('transform'),

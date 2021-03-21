@@ -1,10 +1,13 @@
 import React from 'react';
 import { Button, styled, Icon, Tooltip, Dropdown } from '@xl-vision/react';
-import DarkMode from '@xl-vision/icons/Brightness4Filled';
-import LightkMode from '@xl-vision/icons/Brightness7Filled';
+import {
+  Brightness4Filled,
+  Brightness7Filled,
+  TranslateFilled,
+  ExpandMoreFilled,
+} from '@xl-vision/icons';
+
 import { darken, lighten } from '@xl-vision/react/utils/color';
-import TranslateFilled from '@xl-vision/icons/TranslateFilled';
-import ExpandMoreFilled from '@xl-vision/icons/ExpandMoreFilled';
 import GithubIcon from './GithubIcon';
 import { ThemeContext } from '../ThemeProvider';
 import { LocalizationContext } from '../LocalizationProvider';
@@ -105,7 +108,7 @@ const Header = () => {
               aria-label='Theme'
               variant='text'
               onClick={handleTheme}
-              prefixIcon={<Icon>{isDark ? <LightkMode /> : <DarkMode />}</Icon>}
+              prefixIcon={<Icon>{isDark ? <Brightness7Filled /> : <Brightness4Filled />}</Icon>}
             />
           </Tooltip>
           <Tooltip content={locale.header.githubTooltip} placement='bottom' showDelay={1500}>

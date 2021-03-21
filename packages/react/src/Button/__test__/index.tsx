@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import CloseFilled from '@xl-vision/icons/CloseFilled';
+import { CloseFilled } from '@xl-vision/icons';
 import Button from '..';
 import Icon from '../../Icon';
 

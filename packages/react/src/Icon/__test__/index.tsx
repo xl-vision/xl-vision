@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import DeleteFilled from '@xl-vision/icons/DeleteFilled';
+import { DeleteFilled } from '@xl-vision/icons';
 import Icon from '..';
 
 describe('Icon', () => {
