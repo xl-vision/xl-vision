@@ -29,9 +29,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **styled:** fix function styled that could not use component selector ([8f8b5d8](https://github.com/xl-vision/xl-vision/commit/8f8b5d8f437b0b4ad398dd57c22c314a74e19788))
 * **TransitionGroup:** fix transition bug ([6492d6c](https://github.com/xl-vision/xl-vision/commit/6492d6cd0b636a41bd0d267aee9e60a31303d3ce))
 * fix some bugs ([56d33b4](https://github.com/xl-vision/xl-vision/commit/56d33b4e74123a54ff63541d6b5acb0e1747bbb5))
-* remove same name icon ([28e3620](https://github.com/xl-vision/xl-vision/commit/28e36204e012886f443e5f3a94665eff6e31770c))
-* upper file name ([a3c0887](https://github.com/xl-vision/xl-vision/commit/a3c08874c821fb0b2a37efa8229f8d2d4feeea14))
-* webpack config bug fix ([8837e11](https://github.com/xl-vision/xl-vision/commit/8837e116b59439cd190e1558df91586228910ea8))
 
 
 ### Features
@@ -57,11 +54,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **ToolTip:** optimize animation and style according to md ([#8](https://github.com/xl-vision/xl-vision/issues/8)) ([78df026](https://github.com/xl-vision/xl-vision/commit/78df0268859c442f8f3104dee0adbed8c7026ec1))
 * add Popper and Tooltop ([#5](https://github.com/xl-vision/xl-vision/issues/5)) ([2b29f68](https://github.com/xl-vision/xl-vision/commit/2b29f68df889e6fb50e7c9e8bb2f0d7eaf67830f))
 * add test ([8b61302](https://github.com/xl-vision/xl-vision/commit/8b613021e6405e5b6c7258321ac3a945f469aa85))
-* init ([6caffd3](https://github.com/xl-vision/xl-vision/commit/6caffd3e86aafd85e56ee5c86a3aa1c4cfdfa9ba))
 * provide ThemeProvider ([b7e4546](https://github.com/xl-vision/xl-vision/commit/b7e454687ada2bfc91960370b7f858ad6d8c3e2e))
 * update ([c317722](https://github.com/xl-vision/xl-vision/commit/c3177228aa7c69d2dc54e8ae160bb239c93efa01))
 * update ([f8e3a9c](https://github.com/xl-vision/xl-vision/commit/f8e3a9c152743578644ca5ce25888f668eca7605))
-* update styles ([b8ee0d8](https://github.com/xl-vision/xl-vision/commit/b8ee0d87f9d3c92aa12555ec28f0a7b492996f33))
 * update styles ([c1411b6](https://github.com/xl-vision/xl-vision/commit/c1411b68e43223022d84bbaa9a02dfa137e60e6a))
 * update theme color ([b8b90b1](https://github.com/xl-vision/xl-vision/commit/b8b90b1f58d47dd2f227e43c12adea193e32e6e9))
 * **Transition:** add Transition ([5cd1daa](https://github.com/xl-vision/xl-vision/commit/5cd1daac6de5224fc47822aa3da7f89bb8094bd1))
@@ -73,14 +68,3 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * **Popper:** destroy popper on hidden ([b640a76](https://github.com/xl-vision/xl-vision/commit/b640a76571e07a1c396a9b856748c75d7f7f541c))
 * **Tooltip:** use style color to replace css color ([2b5d990](https://github.com/xl-vision/xl-vision/commit/2b5d9908645d593407ffd0ef74942ecb37d80330))
-
-
-
-
-
-#  (2021-01-23)
-
-
-### Features
-
-* init ([6caffd3](https://github.com/xl-vision/xl-vision-next/commit/6caffd3e86aafd85e56ee5c86a3aa1c4cfdfa9ba))
