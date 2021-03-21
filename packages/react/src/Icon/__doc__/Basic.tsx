@@ -1,15 +1,17 @@
 import React from 'react';
 import { Icon, Row } from '@xl-vision/react';
-import DeleteFilled from '@xl-vision/icons/DeleteFilled';
-import DeleteRound from '@xl-vision/icons/DeleteRound';
-import DeleteSharp from '@xl-vision/icons/DeleteSharp';
-import DeleteTwotone from '@xl-vision/icons/DeleteTwotone';
-import DeleteOutlined from '@xl-vision/icons/DeleteOutlined';
-import DeleteForeverFilled from '@xl-vision/icons/DeleteForeverFilled';
-import DeleteForeverRound from '@xl-vision/icons/DeleteForeverRound';
-import DeleteForeverSharp from '@xl-vision/icons/DeleteForeverSharp';
-import DeleteForeverTwotone from '@xl-vision/icons/DeleteForeverTwotone';
-import DeleteForeverOutlined from '@xl-vision/icons/DeleteForeverOutlined';
+import {
+  DeleteFilled,
+  DeleteRound,
+  DeleteSharp,
+  DeleteTwotone,
+  DeleteOutlined,
+  DeleteForeverFilled,
+  DeleteForeverRound,
+  DeleteForeverSharp,
+  DeleteForeverTwotone,
+  DeleteForeverOutlined,
+} from '@xl-vision/icons';
 
 export default () => {
   return (
