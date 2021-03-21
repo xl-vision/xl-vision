@@ -16,10 +16,10 @@
     "react",
     "styles"
   ],
-  "homepage": "https://github.com/xl-vision/xl-vision-next/tree/master/packages/react#readme",
+  "homepage": "https://github.com/xl-vision/xl-vision/tree/master/packages/react#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xl-vision/xl-vision-next.git"
+    "url": "git+https://github.com/xl-vision/xl-vision.git"
   },
   "scripts": {
     "build:legacy": "node ../../scripts/build legacy",
@@ -27,18 +27,18 @@
     "build": "npm run build:legacy && npm run build:modern"
   },
   "bugs": {
-    "url": "https://github.com/xl-vision/xl-vision-next/issues"
+    "url": "https://github.com/xl-vision/xl-vision/issues"
   },
   "dependencies": {
     "@babel/runtime": "^7.12.5",
     "@popperjs/core": "^2.9.0",
+    "@xl-vision/icons": "^0.0.0",
     "clsx": "^1.1.1",
     "prop-types": "^15.7.2"
   },
   "peerDependencies": {
     "@types/react": "^16.8.0 || ^17.0.0",
     "@xl-vision/styled-engine": "^0.0.0",
-    "@xl-vision/icons": "^0.0.0",
     "react": "^16.8.0 || ^17.0.0",
     "react-dom": "^16.8.0 || ^17.0.0"
   },

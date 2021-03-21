@@ -16,10 +16,10 @@
     "react",
     "styles"
   ],
-  "homepage": "https://github.com/xl-vision/xl-vision-next/tree/master/packages/styled-engine#readme",
+  "homepage": "https://github.com/xl-vision/xl-vision/tree/master/packages/styled-engine#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xl-vision/xl-vision-next.git"
+    "url": "git+https://github.com/xl-vision/xl-vision.git"
   },
   "scripts": {
     "build:legacy": "node ../../scripts/build legacy",
@@ -27,18 +27,18 @@
     "build": "npm run build:legacy && npm run build:modern"
   },
   "bugs": {
-    "url": "https://github.com/xl-vision/xl-vision-next/issues"
+    "url": "https://github.com/xl-vision/xl-vision/issues"
   },
   "dependencies": {
     "@babel/runtime": "^7.12.5",
-    "prop-types": "^15.7.2"
+    "prop-types": "^15.7.2",
+    "styled-components": "^5.2.1"
   },
   "peerDependencies": {
     "@types/react": "^16.8.0 || ^17.0.0",
     "@types/styled-components": "^5.1.7",
     "@xl-vision/styled-engine-types": "^0.0.0",
-    "react": "^16.8.0 || ^17.0.0",
-    "styled-components": "^5.2.1"
+    "react": "^16.8.0 || ^17.0.0"
   },
   "peerDependenciesMeta": {
     "@types/react": {
