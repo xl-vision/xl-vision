@@ -19,8 +19,9 @@
     "icon:generate": "cd packages/icons && npm run generate",
     "commit": "git-cz",
     "test": "jest",
+    "clean": "node ./scripts/cleanDist.js",
     "lint": "eslint . --cache --report-unused-disable-directives --ext .js,.ts,.jsx,.tsx --max-warnings 0",
-    "build": "lerna run --parallel --scope \"@xl-vision/*\" build",
+    "build": "npm run clean && lerna run --parallel --scope \"@xl-vision/*\" build",
     "release:version": "lerna version --exact --conventional-commits --no-push",
     "release:publish": "lerna publish from-package --dist-tag beta",
     "bootstrap": "lerna bootstrap"
@@ -57,6 +58,7 @@
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-unicorn": "^27.0.0",
+    "fs-extra": "^9.1.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-typescript": "^6.0.0-alpha.1",
