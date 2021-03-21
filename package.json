@@ -4,13 +4,13 @@
   "private": true,
   "author": "Rhys Xia",
   "license": "MIT",
-  "homepage": "https://github.com/xl-vision/xl-vision-next#readme",
+  "homepage": "https://github.com/xl-vision/xl-vision#readme",
   "bugs": {
-    "url": "https://github.com/xl-vision/xl-vision-next/issues"
+    "url": "https://github.com/xl-vision/xl-vision/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xl-vision/xl-vision-next.git"
+    "url": "git+https://github.com/xl-vision/xl-vision.git"
   },
   "scripts": {
     "prepare": "husky install",
@@ -20,7 +20,7 @@
     "commit": "git-cz",
     "test": "jest",
     "lint": "eslint . --cache --report-unused-disable-directives --ext .js,.ts,.jsx,.tsx --max-warnings 0",
-    "release:build": "lerna run --parallel --scope \"@xl-vision/*\" build",
+    "build": "lerna run --parallel --scope \"@xl-vision/*\" build",
     "release:version": "lerna version --exact --conventional-commits --no-push",
     "release:publish": "lerna publish from-package --dist-tag beta",
     "bootstrap": "lerna bootstrap"

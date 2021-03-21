@@ -16,10 +16,10 @@
     "react",
     "styles"
   ],
-  "homepage": "https://github.com/xl-vision/xl-vision-next/tree/master/packages/react#readme",
+  "homepage": "https://github.com/xl-vision/xl-vision/tree/master/packages/react#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xl-vision/xl-vision-next.git"
+    "url": "git+https://github.com/xl-vision/xl-vision.git"
   },
   "scripts": {
     "build:legacy": "node ../../scripts/build legacy",
@@ -28,7 +28,7 @@
     "generate": "node ./scripts/generate.js"
   },
   "bugs": {
-    "url": "https://github.com/xl-vision/xl-vision-next/issues"
+    "url": "https://github.com/xl-vision/xl-vision/issues"
   },
   "dependencies": {
     "@babel/runtime": "^7.12.5",
