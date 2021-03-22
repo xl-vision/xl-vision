@@ -2,7 +2,7 @@ import { CSSObject } from '@xl-vision/styled-engine-types';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { ArrowForwardIosFilled } from '@xl-vision/icons';
+import { RightOutlined } from '@xl-vision/icons';
 import BaseButton from '../BaseButton';
 import useEventCallback from '../hooks/useEventCallback';
 import usePropChange from '../hooks/usePropChange';
@@ -196,7 +196,7 @@ const DropdownSubmenu = React.forwardRef<HTMLDivElement, DropdownSubmenuProps>((
         >
           {title}
           <DropdownSubmenuIcon className={`${rootClassName}__icon`}>
-            <ArrowForwardIosFilled />
+            <RightOutlined />
           </DropdownSubmenuIcon>
         </DropdownSubmenuItemButton>
       </li>

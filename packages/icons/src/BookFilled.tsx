@@ -2,4 +2,4 @@
 import React from 'react';
 import createIcon from './utils/createIcon';
 
-export default createIcon(<svg viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z" /><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z" /></svg>, 'BookFilled');
+export default createIcon(<svg viewBox="0 0 1024 1024"><path d="M832 64H192c-17.7 0-32 14.3-32 32v832c0 17.7 14.3 32 32 32h640c17.7 0 32-14.3 32-32V96c0-17.7-14.3-32-32-32zM668 345.9 621.5 312 572 347.4V124h96v221.9z" /></svg>, 'BookFilled');

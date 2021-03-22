@@ -6,4 +6,8 @@ describe('Entry', () => {
     const components = require('../../packages/react/src');
     expect(Object.keys(components)).toMatchSnapshot();
   });
+  it('@xl-vision/icons', () => {
+    const components = require('../../packages/icons/src');
+    expect(Object.keys(components)).toMatchSnapshot();
+  });
 });

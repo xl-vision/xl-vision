@@ -48,11 +48,7 @@ const config = {
 };
 
 module.exports = async (data) => {
-  const input = data
-    .replace(/ fill="#010101"/g, '')
-    .replace(/<rect fill="none" width="24" height="24"\/>/g, '')
-    .replace(/<rect id="SVGID_1_" width="24" height="24"\/>/g, '');
-  const result = await svgo.optimize(input, config);
+  const result = await svgo.optimize(data, config);
 
   const svg = result.data
     .replace(/"\/>/g, '" />')
@@ -61,7 +57,9 @@ module.exports = async (data) => {
     .replace(/clip-rule=/g, 'clipRule=')
     .replace(/fill-rule=/g, 'fillRule=')
     .replace(/ clip-path=".+?"/g, '') // Fix visibility issue and save some bytes.
-    .replace(/<clipPath.+?<\/clipPath>/g, ''); // Remove unused definitions
+    .replace(/<clipPath.+?<\/clipPath>/g, '')
+    .replace(/ fill=".+?"/g, '')
+    .replace(/ class=".+?"/g, '');
 
   return svg;
 };

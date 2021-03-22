@@ -2,4 +2,4 @@
 import React from 'react';
 import createIcon from './utils/createIcon';
 
-export default createIcon(<svg viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z" /><path d="M12.36 6l.4 2H18v6h-3.36l-.4-2H7V6h5.36M14 4H5v17h2v-7h5.6l.4 2h7V6h-5.6L14 4z" /></svg>, 'FlagOutlined');
+export default createIcon(<svg viewBox="0 0 1024 1024"><path d="M880 305H624V192c0-17.7-14.3-32-32-32H184v-40c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v784c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V640h248v113c0 17.7 14.3 32 32 32h416c17.7 0 32-14.3 32-32V337c0-17.7-14.3-32-32-32zM184 568V232h368v336H184zm656 145H504v-73h112c4.4 0 8-3.6 8-8V377h216v336z" /></svg>, 'FlagOutlined');
