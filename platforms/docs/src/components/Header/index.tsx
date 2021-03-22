@@ -1,8 +1,7 @@
 import React from 'react';
 import { Button, styled, Icon, Tooltip, Dropdown } from '@xl-vision/react';
-import { DownOutlined } from '@xl-vision/icons';
+import { DownOutlined, GithubFilled } from '@xl-vision/icons';
 import { darken, lighten } from '@xl-vision/react/utils/color';
-import GithubIcon from './GithubIcon';
 import LightTheme from './LightTheme';
 import DarkTheme from './DarkTheme';
 import Translate from './Translate';
@@ -116,7 +115,7 @@ const Header = () => {
               href='https://github.com/xl-vision/xl-vision'
               prefixIcon={
                 <Icon>
-                  <GithubIcon />
+                  <GithubFilled />
                 </Icon>
               }
             />
