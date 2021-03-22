@@ -6,7 +6,7 @@ const fs = require('fs-extra');
 const Mustache = require('mustache');
 const format = require('./format');
 
-const basePath = path.resolve(__dirname, '../third/material-design-icons/src');
+const basePath = path.resolve(__dirname, '../svg');
 
 const metadataPath = path.resolve(__dirname, '../metadata.json');
 
@@ -15,7 +15,7 @@ const destPath = path.resolve(__dirname, '../src');
 const templatePath = path.resolve(__dirname, 'template');
 
 // 有重复的文件，忽略其中一个
-const ignoreNames = ['addchart'];
+const ignoreNames = [];
 
 async function generate() {
   await fs.emptyDir(destPath);
@@ -30,46 +30,38 @@ async function generate() {
 
   let indexContent = `/* eslint-disable */\n\nexport { default as createIcon } from './utils/createIcon'\n`;
 
-  for (const category of files) {
-    const dir = path.resolve(basePath, category);
+  for (const iconType of files) {
+    const dir = path.resolve(basePath, iconType);
     const icons = await fs.readdir(dir);
     for (const icon of icons) {
-      if (ignoreNames.includes(icon)) {
+      const iconBaseName = icon.replace(/.svg$/, '');
+      if (ignoreNames.includes(iconBaseName)) {
         // eslint-disable-next-line no-continue
         continue;
       }
 
-      const subdir = path.resolve(dir, icon);
-      const iconTypes = await fs.readdir(subdir);
+      const iconFile = path.resolve(dir, icon);
 
-      for (const type of iconTypes) {
-        let realType = type.replace(/^materialicons/, '');
+      const iconName = toCamel(`${iconBaseName}-${iconType}`);
 
-        if (!realType) {
-          realType = 'filled';
-        }
+      const iconContent = await fs.readFile(iconFile, 'utf-8');
 
-        const iconName = toCamel(`${icon}_${realType}`);
+      const svg = await format(iconContent);
 
-        const data = await fs.readFile(path.resolve(subdir, type, '24px.svg'), 'utf-8');
+      const component = Mustache.render(template, {
+        svg,
+        name: iconName,
+      });
 
-        const svg = await format(data);
+      const array = metadata[iconType] || [];
 
-        const component = Mustache.render(template, {
-          svg,
-          name: iconName,
-        });
+      array.push(iconName);
 
-        const array = metadata[category] || [];
+      metadata[iconType] = array;
 
-        array.push(iconName);
+      indexContent += `export { default as ${iconName} } from './${iconName}'\n`;
 
-        metadata[category] = array;
-
-        indexContent += `export { default as ${iconName} } from './${iconName}'\n`;
-
-        await fs.writeFile(path.resolve(destPath, `${iconName}.tsx`), component);
-      }
+      await fs.writeFile(path.resolve(destPath, `${iconName}.tsx`), component);
     }
   }
 
@@ -95,7 +87,7 @@ function toCamel(name) {
   name = name.replace(/^\d+/, (match) => num2Char(match));
 
   // 下划线转驼峰
-  name = name.replace(/_(.)/g, (_, char) => {
+  name = name.replace(/-(.)/g, (_, char) => {
     return char.toUpperCase();
   });
 
