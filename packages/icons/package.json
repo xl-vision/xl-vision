@@ -16,10 +16,11 @@
     "react",
     "styles"
   ],
-  "homepage": "https://github.com/xl-vision/xl-vision/tree/master/packages/react#readme",
+  "homepage": "https://xl-vision.8910.xyz/Icon",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xl-vision/xl-vision.git"
+    "url": "git+https://github.com/xl-vision/xl-vision.git",
+    "directory": "packages/icons"
   },
   "scripts": {
     "build:legacy": "node ../../scripts/build legacy",
