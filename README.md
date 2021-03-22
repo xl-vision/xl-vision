@@ -21,7 +21,8 @@
 # :package: Install
 
 ```
-npm install xl-vision
+npm install styled-components
+npm install @xl-vision/react
 ```
 
 # :hammer: Usage
