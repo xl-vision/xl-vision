@@ -23,13 +23,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2018,
   },
-  extends: [
-    'airbnb',
-    'airbnb/hooks',
-    'plugin:prettier/recommended',
-    'prettier/unicorn',
-    'prettier/react',
-  ],
+  extends: ['airbnb', 'airbnb/hooks', 'plugin:prettier/recommended', 'prettier'],
   plugins: ['unicorn'],
   rules: {
     'import/no-extraneous-dependencies': [
@@ -109,7 +103,6 @@ module.exports = {
       extends: [
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
         'plugin:import/typescript',
-        'prettier/@typescript-eslint',
         // 'plugin:@typescript-eslint/recommended',
       ],
       rules: {
