@@ -2,4 +2,4 @@
 import React from 'react';
 import createIcon from './utils/createIcon';
 
-export default createIcon(<svg viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z" /><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" /></svg>, 'PauseOutlined');
+export default createIcon(<svg viewBox="0 0 1024 1024"><path d="M304 176h80v672h-80zm408 0h-64c-4.4 0-8 3.6-8 8v656c0 4.4 3.6 8 8 8h64c4.4 0 8-3.6 8-8V184c0-4.4-3.6-8-8-8z" /></svg>, 'PauseOutlined');

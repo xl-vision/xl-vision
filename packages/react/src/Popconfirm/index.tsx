@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ErrorFilled } from '@xl-vision/icons';
+import { ExclamationCircleOutlined } from '@xl-vision/icons';
 import Popper, { PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
 import ThemeContext from '../ThemeProvider/ThemeContext';
@@ -120,7 +120,7 @@ const PopconfirmPopup = styled('div', {
 
 const defaultIcon = (
   <Icon>
-    <ErrorFilled />
+    <ExclamationCircleOutlined />
   </Icon>
 );
 

@@ -25,7 +25,7 @@ const IconRoot = styled(BaseIcon, {
 });
 
 const Icon = React.forwardRef<SVGSVGElement, IconProps>((props, ref) => {
-  const { viewBox = '0 0 24 24', className, ...others } = props;
+  const { className, ...others } = props;
 
   const { clsPrefix } = React.useContext(ThemeContext);
 
@@ -33,7 +33,7 @@ const Icon = React.forwardRef<SVGSVGElement, IconProps>((props, ref) => {
 
   const rootClasses = clsx(rootClassName, className);
 
-  return <IconRoot {...others} className={rootClasses} viewBox={viewBox} ref={ref} />;
+  return <IconRoot {...others} className={rootClasses} ref={ref} />;
 });
 
 if (isDevelopment) {
