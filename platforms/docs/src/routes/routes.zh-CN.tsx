@@ -121,7 +121,7 @@ const routes: Array<Route> = [
         component: () => import('@xl-vision/react/ThemeProvider/__doc__/index.zh-CN.mdx'),
       },
       {
-        name: 'CssBaseline',
+        name: 'CSS基线',
         path: '/CssBaseline',
         component: () => import('@xl-vision/react/CssBaseline/__doc__/index.zh-CN.mdx'),
       },
