@@ -5478,7 +5478,7 @@ exports[`Demo renders ./packages/react/src/Icon/__doc__/IconSearch.tsx correctly
       </button>
     </div>
     <input
-      placeholder="在此搜索图标"
+      placeholder="Seach icon here"
       value=""
     />
   </div>
