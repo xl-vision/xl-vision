@@ -8,6 +8,7 @@ Array [
     button
   </button>,
   <div
+    aria-hidden="true"
     class="xl-popper"
     style="position: absolute;"
   />,
@@ -22,6 +23,7 @@ Array [
     button
   </button>,
   <div
+    aria-hidden="false"
     class="xl-popper"
     data-popper-escaped=""
     data-popper-placement="top"
@@ -49,6 +51,7 @@ Array [
     button
   </button>,
   <div
+    aria-hidden="true"
     class="xl-popper"
     style="z-index: 1001; position: absolute;"
   >
@@ -73,6 +76,7 @@ Array [
     button
   </button>,
   <div
+    aria-hidden="true"
     class="xl-popper"
     style="position: absolute;"
   />,
@@ -87,6 +91,7 @@ Array [
     button
   </button>,
   <div
+    aria-hidden="false"
     class="xl-popper"
     data-popper-escaped=""
     data-popper-placement="top"
@@ -114,6 +119,7 @@ Array [
     button
   </button>,
   <div
+    aria-hidden="true"
     class="xl-popper"
     style="z-index: 1002; position: absolute;"
   >
@@ -138,6 +144,7 @@ Array [
     button
   </button>,
   <div
+    aria-hidden="true"
     class="xl-popper"
     style="position: absolute;"
   />,
@@ -152,6 +159,7 @@ Array [
     button
   </button>,
   <div
+    aria-hidden="false"
     class="xl-popper"
     data-popper-escaped=""
     data-popper-placement="top"
@@ -179,6 +187,7 @@ Array [
     button
   </button>,
   <div
+    aria-hidden="true"
     class="xl-popper"
     style="z-index: 1003; position: absolute;"
   >
@@ -203,6 +212,7 @@ Array [
     button
   </button>,
   <div
+    aria-hidden="true"
     class="xl-popper"
     style="position: absolute;"
   />,
@@ -217,6 +227,7 @@ Array [
     button
   </button>,
   <div
+    aria-hidden="false"
     class="xl-popper"
     data-popper-escaped=""
     data-popper-placement="top"
@@ -244,6 +255,7 @@ Array [
     button
   </button>,
   <div
+    aria-hidden="true"
     class="xl-popper"
     style="z-index: 1000; position: absolute;"
   >
