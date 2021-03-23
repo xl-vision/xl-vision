@@ -2,6 +2,7 @@ import React from 'react';
 import * as Icons from '@xl-vision/icons';
 import { Button, Icon, styled } from '@xl-vision/react';
 import ClipboardJs from 'clipboard';
+import { LocalizationContext } from '../../../../../platforms/docs/src/components/LocalizationProvider';
 
 export type IconComponentMap = {
   [key: string]: React.ComponentType;
@@ -75,6 +76,7 @@ const IconWrapper = styled('div')(({ theme }) => {
 });
 
 const IconSearch: React.FunctionComponent<void> = () => {
+  const { locale } = React.useContext(LocalizationContext);
   const [iconType, setIconType] = React.useState<IconType>(IconType.OUTLINED);
 
   const [search, setSearch] = React.useState('');
@@ -147,7 +149,11 @@ const IconSearch: React.FunctionComponent<void> = () => {
             Filled
           </Button>
         </div>
-        <input value={search} onChange={handleSearch} placeholder='在此搜索图标' />
+        <input
+          value={search}
+          onChange={handleSearch}
+          placeholder={locale.pages.Icons.seachPlaceholder}
+        />
       </div>
       <div className='bottom'>{icons}</div>
     </Wrapper>
