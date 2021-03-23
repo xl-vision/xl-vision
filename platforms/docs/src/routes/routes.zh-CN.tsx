@@ -75,11 +75,6 @@ const routes: Array<Route> = [
         path: '/Popconfirm',
         component: () => import('@xl-vision/react/Popconfirm/__doc__/index.zh-CN.mdx'),
       },
-      {
-        name: '对话框',
-        path: '/Modal',
-        component: () => import('@xl-vision/react/Modal/__doc__/index.zh-CN.mdx'),
-      },
     ],
   },
   {
@@ -149,6 +144,11 @@ const routes: Array<Route> = [
         name: '基础弹出框',
         path: '/Popper',
         component: () => import('@xl-vision/react/Popper/__doc__/index.zh-CN.mdx'),
+      },
+      {
+        name: '模态框',
+        path: '/Modal',
+        component: () => import('@xl-vision/react/Modal/__doc__/index.zh-CN.mdx'),
       },
     ],
   },

@@ -75,11 +75,6 @@ const routes: Array<Route> = [
         path: '/Popconfirm',
         component: () => import('@xl-vision/react/Popconfirm/__doc__/index.en-US.mdx'),
       },
-      {
-        name: 'Modal',
-        path: '/Modal',
-        component: () => import('@xl-vision/react/Modal/__doc__/index.en-US.mdx'),
-      },
     ],
   },
   {
@@ -149,6 +144,11 @@ const routes: Array<Route> = [
         name: 'Popper',
         path: '/Popper',
         component: () => import('@xl-vision/react/Popper/__doc__/index.en-US.mdx'),
+      },
+      {
+        name: 'Modal',
+        path: '/Modal',
+        component: () => import('@xl-vision/react/Modal/__doc__/index.en-US.mdx'),
       },
     ],
   },
