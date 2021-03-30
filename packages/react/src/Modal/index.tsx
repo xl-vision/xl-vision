@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import Portal, { PortalContainerType } from '../Portal';
-import { isDevelopment } from '../utils/env';
+import { isBrowser, isDevelopment } from '../utils/env';
 import usePropChange from '../hooks/usePropChange';
 import CSSTransition, { CSSTransitionClasses } from '../CSSTransition';
 import ThemeContext from '../ThemeProvider/ThemeContext';
@@ -54,6 +54,26 @@ const ModalRoot = styled('div')(({ theme }) => {
   };
 });
 
+let mousePosition: { x: number; y: number } | null;
+
+const getClickPosition = (e: MouseEvent) => {
+  mousePosition = {
+    x: e.pageX,
+    y: e.pageY,
+  };
+  // 100ms 内发生过点击事件，则从点击位置动画展示
+  // 否则直接 zoom 展示
+  // 这样可以兼容非点击方式展开
+  setTimeout(() => {
+    mousePosition = null;
+  }, 100);
+};
+
+// 只有点击事件支持从鼠标位置动画展开
+if (isBrowser) {
+  document.documentElement.addEventListener('click', getClickPosition, true);
+}
+
 const defaultGetContainer = () => document.body;
 
 const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
@@ -77,6 +97,8 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
   const [zIndex, setZIndex] = React.useState<number>();
 
+  const bodyRef = React.useRef<HTMLDivElement>(null);
+
   React.useEffect(() => {
     if (visible) {
       setZIndex(increaseZindex());
@@ -84,6 +106,9 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   }, [visible]);
 
   const beforeEnter = useEventCallback((el: HTMLElement) => {
+    if (mousePosition && bodyRef.current) {
+      bodyRef.current.style.transformOrigin = `${mousePosition.x}px ${mousePosition.y}px`;
+    }
     el.style.display = '';
   });
 
@@ -116,9 +141,15 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
           ref={ref}
           style={{ ...style, zIndex }}
         >
-          <div aria-hidden={true} className={`${rootClassName}__mask`} onClick={handleMaskClick} />
-          <div className={`${rootClassName}__wrap`}>
-            <div className={`${rootClassName}__body`}>{children}</div>
+          <div aria-hidden={true} className={`${rootClassName}__mask`} />
+          <div className={`${rootClassName}__wrap`} onClick={handleMaskClick}>
+            <div
+              ref={bodyRef}
+              className={`${rootClassName}__body`}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {children}
+            </div>
           </div>
         </ModalRoot>
       </CSSTransition>
