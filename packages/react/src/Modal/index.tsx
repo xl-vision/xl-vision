@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import Portal, { PortalContainerType } from '../Portal';
 import { isBrowser, isDevelopment } from '../utils/env';
 import usePropChange from '../hooks/usePropChange';
-import CSSTransition, { CSSTransitionClasses } from '../CSSTransition';
+import CSSTransition from '../CSSTransition';
 import ThemeContext from '../ThemeProvider/ThemeContext';
 import { styled } from '../styles';
 import { increaseZindex } from '../utils/zIndexManger';
@@ -17,8 +17,7 @@ export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   visible?: boolean;
   onVisibleChange?: (visible: boolean) => void;
   destroyOnClose?: boolean;
-  forceRender?: boolean;
-  transitionClasses?: CSSTransitionClasses;
+  mountOnOpen?: boolean;
 }
 
 const displayName = 'Modal';
@@ -84,9 +83,8 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     visible: visibleProp,
     onVisibleChange,
     destroyOnClose,
-    forceRender,
+    mountOnOpen,
     className,
-    transitionClasses,
     style,
     ...others
   } = props;
@@ -97,6 +95,8 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
   const [zIndex, setZIndex] = React.useState<number>();
 
+  const isFirstMountRef = React.useRef(true);
+
   const bodyRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
@@ -105,7 +105,11 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     }
   }, [visible]);
 
-  const beforeEnter = useEventCallback((el: HTMLElement) => {
+  const maskBeforeEnter = useEventCallback((el: HTMLElement) => {
+    el.style.display = '';
+  });
+
+  const modalBeforeEnter = useEventCallback((el: HTMLElement) => {
     if (mousePosition && bodyRef.current) {
       bodyRef.current.style.transformOrigin = `${mousePosition.x}px ${mousePosition.y}px`;
     }
@@ -120,29 +124,46 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     setVisible(false);
   });
 
+  if (visible) {
+    isFirstMountRef.current = false;
+  }
+
+  if (isFirstMountRef.current) {
+    if (mountOnOpen && !visible) {
+      return null;
+    }
+  } else if (destroyOnClose && !visible) {
+    return null;
+  }
+
   const rootClassName = `${clsPrefix}-modal`;
 
   const rootClasses = clsx(rootClassName, className);
 
   return (
     <Portal getContainer={getContainer}>
-      <CSSTransition
-        transitionClasses={transitionClasses}
-        in={visible}
-        mountOnEnter={!forceRender}
-        unmountOnLeave={destroyOnClose}
-        afterLeave={afterLeave}
-        beforeEnter={beforeEnter}
+      <ModalRoot
+        aria-hidden={!visible}
+        {...others}
+        className={rootClasses}
+        ref={ref}
+        style={{ ...style, zIndex, display: visible ? '' : 'none' }}
       >
-        <ModalRoot
-          aria-hidden={!visible}
-          {...others}
-          className={rootClasses}
-          ref={ref}
-          style={{ ...style, zIndex }}
+        <CSSTransition
+          transitionClasses={`${rootClassName}__mask`}
+          in={visible}
+          afterLeave={afterLeave}
+          beforeEnter={maskBeforeEnter}
         >
           <div aria-hidden={true} className={`${rootClassName}__mask`} />
-          <div className={`${rootClassName}__wrap`} onClick={handleMaskClick}>
+        </CSSTransition>
+        <div className={`${rootClassName}__wrap`} onClick={handleMaskClick}>
+          <CSSTransition
+            transitionClasses={`${rootClassName}__body`}
+            in={visible}
+            afterLeave={afterLeave}
+            beforeEnter={modalBeforeEnter}
+          >
             <div
               ref={bodyRef}
               className={`${rootClassName}__body`}
@@ -150,9 +171,9 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
             >
               {children}
             </div>
-          </div>
-        </ModalRoot>
-      </CSSTransition>
+          </CSSTransition>
+        </div>
+      </ModalRoot>
     </Portal>
   );
 });
