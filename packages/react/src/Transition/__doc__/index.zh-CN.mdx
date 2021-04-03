@@ -30,22 +30,14 @@
 | --- | --- | --- | --- | --- | --- |
 | in | 触发进出场动画,`true`表示进场，`false`表示出场 | boolean | - | — | true |
 | transitionOnFirst | 是否触发初次进出场钩子函数 | boolean | - | false | false |
-| beforeAppear | 初次进场前钩子，如果没有指定，会自动调用`beforeEnter`钩子函数 | (el: HTMLElement) => void | - | — | false |
-| appear | 初次进场时钩子，如果没有指定，会自动调用`enter`钩子函数 | (el: HTMLElement, done: (() => void), isCancelled: () => boolean) => void | - | — | false |
-| afterAppear | 初次进场后钩子，如果没有指定，会自动调用`afterEnter`钩子函数 | (el: HTMLElement) => void | - | — | false |
-| appearCancelled | 取消初次进场钩子，如果没有指定，会自动调用`enterCancelled`钩子函数 | (el: HTMLElement) => void | - | — | false |
-| beforeEnter | 进场前钩子 | (el: HTMLElement) => void | - | — |
-| enter | 进场时钩子 | (el: HTMLElement, done: (() => void), isCancelled: () => boolean) => void | - | — | false |
-| afterEnter | 进场后钩子 | (el: HTMLElement) => void | - | — | false |
-| enterCancelled | 取消进场钩子 | (el: HTMLElement) => void | - | — | false |
-| beforeLeave | 出场前钩子 | (el: HTMLElement) => void | - | — | false |
-| leave | 出场时钩子 | (el: HTMLElement, done: (() => void), isCancelled: () => boolean) => void | - | — | false |
-| afterLeave | 出场后钩子 | (el: HTMLElement) => void | - | — | false |
-| leaveCancelled | 取消出场钩子 | (el: HTMLElement) => void | - | — | false |
-| beforeDisppear | 初次出场前钩子，如果没有指定，会自动调用`beforeLeave`钩子函数 | (el: HTMLElement) => void | - | — | false |
-| disappear | 初次出场时钩子，如果没有指定，会自动调用`leave`钩子函数 | (el: HTMLElement, done: (() => void), isCancelled: () => boolean) => void | - | — | false |
-| afterDisappear | 初次出场后钩子，如果没有指定，会自动调用`afterLeave`钩子函数 | (el: HTMLElement) => void | - | — | false |
-| disappearCancelled | 取消初次出场钩子，如果没有指定，会自动调用`leaveCancelled`钩子函数 | (el: HTMLElement) => void | - | — | false |
+| beforeEnter | 进场前钩子 | (el: HTMLElement, transitionOnFirst: boolean) => void | - | — |
+| enter | 进场时钩子 | (el: HTMLElement, done: (() => void), isCancelled: () => boolean, transitionOnFirst: boolean) => void | - | — | false |
+| afterEnter | 进场后钩子 | (el: HTMLElement, transitionOnFirst: boolean) => void | - | — | false |
+| enterCancelled | 取消进场钩子 | (el: HTMLElement, transitionOnFirst: boolean) => void | - | — | false |
+| beforeLeave | 出场前钩子 | (el: HTMLElement, transitionOnFirst: boolean) => void | - | — | false |
+| leave | 出场时钩子 | (el: HTMLElement, done: (() => void), isCancelled: () => boolean, transitionOnFirst: boolean) => void | - | — | false |
+| afterLeave | 出场后钩子 | (el: HTMLElement, transitionOnFirst: boolean) => void | - | — | false |
+| leaveCancelled | 取消出场钩子 | (el: HTMLElement, transitionOnFirst: boolean) => void | - | — | false |
 | children | 子元素 | React.ReactElement | - | — | true |
 | mountOnEnter | 当第一次进场动画时才挂载子节点，后续组件会一直挂载在 dom 上，即使进行出场动画， 除非又设置了`unmountOnLeave` | boolean | - | false | false |
 | unmountOnLeave | 当出场动画后就卸载子节点 | boolean | - | false | false |

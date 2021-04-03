@@ -5,6 +5,7 @@ import { forceReflow } from '../utils/transition';
 import { removeClass, addClass } from '../utils/class';
 import { isDevelopment } from '../utils/env';
 import useEventCallback from '../hooks/useEventCallback';
+import { AfterEventHook, BeforeEventHook, EventCancelledHook, EventHook } from '../Transition';
 
 export interface CollapseTransitionProp extends Omit<CSSTransitionProps, 'mountOnEnter'> {
   children: React.ReactElement<React.HTMLAttributes<HTMLElement>>;
@@ -18,10 +19,6 @@ export interface CollapseTransitionElement extends CSSTransitionElement {
 const CollapseTransition: React.FunctionComponent<CollapseTransitionProp> = (props) => {
   const {
     horizontal,
-    beforeAppear: _beforeAppear,
-    appear: _appear,
-    appearCancelled: _appearCancelled,
-    afterAppear: _afterAppear,
     beforeEnter,
     enter,
     enterCancelled,
@@ -30,21 +27,9 @@ const CollapseTransition: React.FunctionComponent<CollapseTransitionProp> = (pro
     leave,
     leaveCancelled,
     afterLeave,
-    beforeDisappear: _beforeDisappear,
-    disappear: _disappear,
-    disappearCancelled: _disappearCancelled,
-    afterDisappear: _afterDisappear,
+
     ...others
   } = props;
-
-  const beforeAppear = _beforeAppear || beforeEnter;
-  const appear = _appear || enter;
-  const appearCancelled = _appearCancelled || enterCancelled;
-  const afterAppear = _afterAppear || afterEnter;
-  const beforeDisappear = _beforeDisappear || beforeLeave;
-  const disappear = _disappear || beforeLeave;
-  const disappearCancelled = _disappearCancelled || leaveCancelled;
-  const afterDisappear = _afterDisappear || afterLeave;
 
   const mappings = React.useMemo(() => {
     const padding1: keyof React.CSSProperties = horizontal ? 'paddingLeft' : 'paddingTop';
@@ -60,14 +45,13 @@ const CollapseTransition: React.FunctionComponent<CollapseTransitionProp> = (pro
     };
   }, [horizontal]);
 
-  const beforeEnterOrAppear = useEventCallback((isAppear?: boolean) => {
-    const { padding1, padding2, size, actualSize } = mappings;
-    const hook = isAppear ? beforeAppear : beforeEnter;
+  const beforeEnterWrapper: BeforeEventHook = useEventCallback(
+    (el: CollapseTransitionElement, transitionOnFirst) => {
+      const { padding1, padding2, size, actualSize } = mappings;
 
-    const className1 = isAppear ? 'appear' : 'enter';
-    const className2 = isAppear ? 'appearActive' : 'enterActive';
+      const className1 = transitionOnFirst ? 'appearFrom' : 'enterFrom';
+      const className2 = transitionOnFirst ? 'appearActive' : 'enterActive';
 
-    return (el: CollapseTransitionElement) => {
       el.dataset[padding1] = el.style[padding1];
       el.dataset[padding2] = el.style[padding2];
       el.dataset[size] = el.style[size];
@@ -98,56 +82,54 @@ const CollapseTransition: React.FunctionComponent<CollapseTransitionProp> = (pro
 
       el._cancelled__ = false;
 
-      hook?.(el);
-    };
-  });
+      beforeEnter?.(el, transitionOnFirst);
+    },
+  );
 
-  const enterOrAppear = useEventCallback((isAppear?: boolean) => {
-    const { padding1, padding2, size, actualSize } = mappings;
-    const hook = isAppear ? appear : enter;
+  const enterWrapper: EventHook = useEventCallback(
+    (
+      el: CollapseTransitionElement,
+      done: () => void,
+      isCancelled: () => boolean,
+      transitionOnFirst,
+    ) => {
+      const { padding1, padding2, size, actualSize } = mappings;
 
-    return (el: CollapseTransitionElement, done: () => void, isCancelled: () => boolean) => {
       el.style[size] = `${el.dataset[actualSize]!}`;
       el.style[padding1] = el.dataset[padding1]!;
       el.style[padding2] = el.dataset[padding2]!;
 
-      hook?.(el, done, isCancelled);
-    };
-  });
+      enter?.(el, done, isCancelled, transitionOnFirst);
+    },
+  );
 
-  const afterEnterOrAppear = useEventCallback((isAppear?: boolean) => {
-    const { size } = mappings;
-    const hook = isAppear ? afterAppear : afterEnter;
+  const afterEnterWrapper: AfterEventHook = useEventCallback(
+    (el: CollapseTransitionElement, transitionOnFirst) => {
+      const { size } = mappings;
 
-    return (el: CollapseTransitionElement) => {
       el.style[size] = el.dataset[size]!;
       el.style.overflow = el.dataset.overflow!;
 
-      hook?.(el);
-    };
-  });
+      afterEnter?.(el, transitionOnFirst);
+    },
+  );
 
-  const enterOrAppearCancelled = useEventCallback((isAppear?: boolean) => {
-    const { padding1, padding2, size } = mappings;
-
-    const hook = isAppear ? appearCancelled : enterCancelled;
-
-    return (el: CollapseTransitionElement) => {
+  const enterCancelledWrapper: EventCancelledHook = useEventCallback(
+    (el: CollapseTransitionElement, transitionOnFirst) => {
+      const { padding1, padding2, size } = mappings;
       el._cancelled__ = true;
       el.style[padding1] = el.dataset[padding1]!;
       el.style[padding2] = el.dataset[padding2]!;
       el.style[size] = el.dataset[size]!;
       el.style.overflow = el.dataset.overflow!;
-      hook?.(el);
-    };
-  });
+      enterCancelled?.(el, transitionOnFirst);
+    },
+  );
 
-  const beforeLeaveOrDisappear = useEventCallback((isAppear?: boolean) => {
-    const { padding1, padding2, size, actualSize } = mappings;
+  const beforeLeaveWrapper: BeforeEventHook = useEventCallback(
+    (el: CollapseTransitionElement, transitionOnFirst) => {
+      const { padding1, padding2, size, actualSize } = mappings;
 
-    const hook = isAppear ? beforeDisappear : beforeLeave;
-
-    return (el: CollapseTransitionElement) => {
       el.dataset[padding1] = el.style[padding1];
       el.dataset[padding2] = el.style[padding2];
       el.dataset[size] = el.style[size];
@@ -160,126 +142,57 @@ const CollapseTransition: React.FunctionComponent<CollapseTransitionProp> = (pro
       el.style.overflow = 'hidden';
 
       el._cancelled__ = false;
-      hook?.(el);
-    };
-  });
+      beforeLeave?.(el, transitionOnFirst);
+    },
+  );
 
-  const leaveOrDisappear = useEventCallback((isAppear?: boolean) => {
-    const { padding1, padding2, size } = mappings;
+  const leaveWrapper: EventHook = useEventCallback(
+    (
+      el: CollapseTransitionElement,
+      done: () => void,
+      isCancelled: () => boolean,
+      transitionOnFirst,
+    ) => {
+      const { padding1, padding2, size } = mappings;
 
-    const hook = isAppear ? disappear : leave;
-
-    return (el: CollapseTransitionElement, done: () => void, isCancelled: () => boolean) => {
       forceReflow();
       el.style[padding1] = '0';
       el.style[padding2] = '0';
       el.style[size] = '0';
-      hook?.(el, done, isCancelled);
-    };
-  });
+      leave?.(el, done, isCancelled, transitionOnFirst);
+    },
+  );
 
-  const afterLeaveOrDisappear = useEventCallback((isAppear?: boolean) => {
-    const { padding1, padding2, size } = mappings;
+  const afterLeaveWrapper: AfterEventHook = useEventCallback(
+    (el: CollapseTransitionElement, transitionOnFirst) => {
+      const { padding1, padding2, size } = mappings;
 
-    const hook = isAppear ? afterDisappear : afterLeave;
-
-    return (el: CollapseTransitionElement) => {
       el.style[padding1] = el.dataset[padding1]!;
       el.style[padding2] = el.dataset[padding2]!;
       el.style[size] = el.dataset[size]!;
       el.style.overflow = el.dataset.overflow!;
       el.dataset.display = el.style.display || '';
       el.style.display = 'none';
-      hook?.(el);
-    };
-  });
+      afterLeave?.(el, transitionOnFirst);
+    },
+  );
 
-  const leaveOrDisappearCancelled = useEventCallback((isAppear?: boolean) => {
-    const { padding1, padding2, size } = mappings;
+  const leaveCancelledWrapper: EventCancelledHook = useEventCallback(
+    (el: CollapseTransitionElement, transitionOnFirst) => {
+      const { padding1, padding2, size } = mappings;
 
-    const hook = isAppear ? disappearCancelled : leaveCancelled;
-
-    return (el: CollapseTransitionElement) => {
       el._cancelled__ = true;
       el.style[padding1] = el.dataset[padding1]!;
       el.style[padding2] = el.dataset[padding2]!;
       el.style[size] = el.dataset[size]!;
       el.style.overflow = el.dataset.overflow!;
-      hook?.(el);
-    };
-  });
-
-  const beforeAppearWrapper = React.useMemo(() => {
-    return beforeEnterOrAppear(true);
-  }, [beforeEnterOrAppear]);
-
-  const appearWrapper = React.useMemo(() => {
-    return enterOrAppear(true);
-  }, [enterOrAppear]);
-
-  const afterAppearWrapper = React.useMemo(() => {
-    return afterEnterOrAppear(true);
-  }, [afterEnterOrAppear]);
-
-  const appearCancelledWrapper = React.useMemo(() => {
-    return enterOrAppearCancelled(true);
-  }, [enterOrAppearCancelled]);
-
-  const beforeDisappearWrapper = React.useMemo(() => {
-    return beforeLeaveOrDisappear(true);
-  }, [beforeLeaveOrDisappear]);
-
-  const disappearWrapper = React.useMemo(() => {
-    return leaveOrDisappear(true);
-  }, [leaveOrDisappear]);
-
-  const afterDisappearWrapper = React.useMemo(() => {
-    return afterLeaveOrDisappear(true);
-  }, [afterLeaveOrDisappear]);
-
-  const disappearCancelledWrapper = React.useMemo(() => {
-    return leaveOrDisappearCancelled(true);
-  }, [leaveOrDisappearCancelled]);
-
-  const beforeEnterWrapper = React.useMemo(() => {
-    return beforeEnterOrAppear();
-  }, [beforeEnterOrAppear]);
-
-  const enterWrapper = React.useMemo(() => {
-    return enterOrAppear();
-  }, [enterOrAppear]);
-
-  const afterEnterWrapper = React.useMemo(() => {
-    return afterEnterOrAppear();
-  }, [afterEnterOrAppear]);
-
-  const enterCancelledWrapper = React.useMemo(() => {
-    return enterOrAppearCancelled();
-  }, [enterOrAppearCancelled]);
-
-  const beforeLeaveWrapper = React.useMemo(() => {
-    return beforeLeaveOrDisappear();
-  }, [beforeLeaveOrDisappear]);
-
-  const leaveWrapper = React.useMemo(() => {
-    return leaveOrDisappear();
-  }, [leaveOrDisappear]);
-
-  const afterLeaveWrapper = React.useMemo(() => {
-    return afterLeaveOrDisappear();
-  }, [afterLeaveOrDisappear]);
-
-  const leaveCancelledWrapper = React.useMemo(() => {
-    return leaveOrDisappearCancelled();
-  }, [leaveOrDisappearCancelled]);
+      leaveCancelled?.(el, transitionOnFirst);
+    },
+  );
 
   return (
     <CSSTransition
       {...others}
-      beforeAppear={beforeAppearWrapper}
-      appear={appearWrapper}
-      afterAppear={afterAppearWrapper}
-      appearCancelled={appearCancelledWrapper}
       beforeEnter={beforeEnterWrapper}
       enter={enterWrapper}
       afterEnter={afterEnterWrapper}
@@ -288,10 +201,6 @@ const CollapseTransition: React.FunctionComponent<CollapseTransitionProp> = (pro
       leave={leaveWrapper}
       afterLeave={afterLeaveWrapper}
       leaveCancelled={leaveCancelledWrapper}
-      beforeDisappear={beforeDisappearWrapper}
-      disappear={disappearWrapper}
-      afterDisappear={afterDisappearWrapper}
-      disappearCancelled={disappearCancelledWrapper}
       mountOnEnter={true}
     />
   );
@@ -302,10 +211,6 @@ if (isDevelopment) {
 
   CollapseTransition.propTypes = {
     horizontal: PropTypes.bool,
-    beforeAppear: PropTypes.func,
-    appear: PropTypes.func,
-    appearCancelled: PropTypes.func,
-    afterAppear: PropTypes.func,
     beforeEnter: PropTypes.func,
     enter: PropTypes.func,
     enterCancelled: PropTypes.func,
@@ -314,10 +219,6 @@ if (isDevelopment) {
     leave: PropTypes.func,
     leaveCancelled: PropTypes.func,
     afterLeave: PropTypes.func,
-    beforeDisappear: PropTypes.func,
-    disappear: PropTypes.func,
-    disappearCancelled: PropTypes.func,
-    afterDisappear: PropTypes.func,
   };
 }
 
