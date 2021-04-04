@@ -8,22 +8,23 @@ import useLifecycleState, { LifecycleState } from '../hooks/useLifecycleState';
 import { isDevelopment } from '../utils/env';
 
 enum TransitionState {
-  STATE_ENTERING, // 1
-  STATE_ENTERED, // 2
-  STATE_LEAVING, // 3
-  STATE_LEAVED, // 4
+  STATE_ENTERING, // 0
+  STATE_ENTERED, // 1
+  STATE_LEAVING, // 2
+  STATE_LEAVED, // 3
 }
 
-export type BeforeEventHook = (el: HTMLElement) => void;
-export type EventHook = (el: HTMLElement, done: () => void, isCancelled: () => boolean) => void;
-export type AfterEventHook = (el: HTMLElement) => void;
-export type EventCancelledHook = (el: HTMLElement) => void;
+export type BeforeEventHook = (el: HTMLElement, transitionOnFirst: boolean) => void;
+export type EventHook = (
+  el: HTMLElement,
+  done: () => void,
+  isCancelled: () => boolean,
+  transitionOnFirst: boolean,
+) => void;
+export type AfterEventHook = (el: HTMLElement, transitionOnFirst: boolean) => void;
+export type EventCancelledHook = (el: HTMLElement, transitionOnFirst: boolean) => void;
 
 export type TransitionProps = {
-  beforeAppear?: BeforeEventHook;
-  appear?: EventHook;
-  afterAppear?: AfterEventHook;
-  appearCancelled?: EventCancelledHook;
   beforeEnter?: BeforeEventHook;
   enter?: EventHook;
   afterEnter?: AfterEventHook;
@@ -32,10 +33,6 @@ export type TransitionProps = {
   leave?: EventHook;
   afterLeave?: AfterEventHook;
   leaveCancelled?: EventCancelledHook;
-  beforeDisappear?: BeforeEventHook;
-  disappear?: EventHook;
-  afterDisappear?: AfterEventHook;
-  disappearCancelled?: EventCancelledHook;
   children: React.ReactElement;
   mountOnEnter?: boolean;
   unmountOnLeave?: boolean;
@@ -47,7 +44,7 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
   const {
     in: inProp,
     // 初次挂载时，如果是进入状态，是否触发appear动画
-    transitionOnFirst,
+    transitionOnFirst = false,
     afterEnter,
     afterLeave,
     beforeEnter,
@@ -56,51 +53,14 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
     enterCancelled,
     leave,
     leaveCancelled,
-    beforeAppear: _beforeAppear,
-    appear: _appear,
-    appearCancelled: _appearCancelled,
-    afterAppear: _afterAppear,
-    beforeDisappear: _beforeDisappear,
-    disappear: _disappear,
-    afterDisappear: _afterDisappear,
-    disappearCancelled: _disappearCancelled,
     children,
     mountOnEnter,
     unmountOnLeave,
   } = props;
 
-  const child = React.Children.only(children);
-
   const transitionOnFirstRef = React.useRef(transitionOnFirst);
 
-  // 如果开启transitionOnFirst,默认使用enter和leave的生命周期方法
-  const appear = _appear || enter;
-  const disappear = _disappear || leave;
-  const beforeAppear = _beforeAppear || beforeEnter;
-  const beforeDisappear = _beforeDisappear || beforeLeave;
-
-  const afterAppear = useEventCallback((el: HTMLElement) => {
-    const fn = _afterAppear || afterEnter;
-    fn?.(el);
-    transitionOnFirstRef.current = false;
-  });
-
-  const appearCancelled = useEventCallback((el: HTMLElement) => {
-    const fn = _appearCancelled || enterCancelled;
-    fn?.(el);
-    transitionOnFirstRef.current = false;
-  });
-  const afterDisappear = useEventCallback((el: HTMLElement) => {
-    const fn = _afterDisappear || afterLeave;
-    fn?.(el);
-    transitionOnFirstRef.current = false;
-  });
-
-  const disappearCancelled = useEventCallback((el: HTMLElement) => {
-    const fn = _disappearCancelled || leaveCancelled;
-    fn?.(el);
-    transitionOnFirstRef.current = false;
-  });
+  const child = React.Children.only(children);
 
   const [state, setState] = React.useState(
     inProp
@@ -132,10 +92,6 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
 
   const onTransitionEnd = useEventCallback(
     (nextState: TransitionState, eventHook?: EventHook, afterEventHook?: AfterEventHook) => {
-      const afterEventHookWrap = () => afterEventHook?.(findDOMElement());
-      cbRef.current = afterEventHookWrap;
-
-      const isCancelled = () => afterEventHookWrap !== cbRef.current;
       // 判断回调是否执行了
       const wrapCallback = () => {
         // wrapCallback可能会在setTimeout中被调用，默认同步setState，这里强制异步处理
@@ -144,14 +100,21 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
           if (!isCancelled() && lifecycleStateRef.current === LifecycleState.MOUNTED) {
             setState(nextState);
             // 必须放在后面，防止其中修改了prop in
-            afterEventHookWrap();
+            afterEventHook?.(findDOMElement(), transitionOnFirstRef.current);
+            transitionOnFirstRef.current = false;
+
             // 避免多次触发
             cbRef.current = undefined;
           }
         });
       };
+
+      cbRef.current = wrapCallback;
+
+      const isCancelled = () => wrapCallback !== cbRef.current;
+
       if (eventHook) {
-        eventHook(findDOMElement(), wrapCallback, isCancelled);
+        eventHook(findDOMElement(), wrapCallback, isCancelled, transitionOnFirstRef.current);
       } else {
         wrapCallback();
       }
@@ -160,20 +123,12 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
 
   const stateTrigger = useEventCallback((_state: TransitionState) => {
     // 展示
-    if (inProp) {
-      if (_state === TransitionState.STATE_ENTERING) {
-        const beforeHook = transitionOnFirstRef.current ? beforeAppear : beforeEnter;
-        const hook = transitionOnFirstRef.current ? appear : enter;
-        const afterHook = transitionOnFirstRef.current ? afterAppear : afterEnter;
-        beforeHook?.(findDOMElement());
-        onTransitionEnd(TransitionState.STATE_ENTERED, hook, afterHook);
-      }
-    } else if (_state === TransitionState.STATE_LEAVING) {
-      const beforeHook = transitionOnFirstRef.current ? beforeDisappear : beforeLeave;
-      const hook = transitionOnFirstRef.current ? disappear : leave;
-      const afterHook = transitionOnFirstRef.current ? afterDisappear : afterLeave;
-      beforeHook?.(findDOMElement());
-      onTransitionEnd(TransitionState.STATE_LEAVED, hook, afterHook);
+    if (inProp && _state === TransitionState.STATE_ENTERING) {
+      beforeEnter?.(findDOMElement(), transitionOnFirstRef.current);
+      onTransitionEnd(TransitionState.STATE_ENTERED, enter, afterEnter);
+    } else if (!inProp && _state === TransitionState.STATE_LEAVING) {
+      beforeLeave?.(findDOMElement(), transitionOnFirstRef.current);
+      onTransitionEnd(TransitionState.STATE_LEAVED, leave, afterLeave);
     }
   });
 
@@ -188,22 +143,27 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
 
   const inPropTrigger = useEventCallback((_inProp: boolean) => {
     const el = findDOMElement();
-    if (_inProp && state >= TransitionState.STATE_LEAVING) {
-      // 不能放到外面，会使appear和disappear失效
+    if (
+      _inProp &&
+      (state === TransitionState.STATE_LEAVING || state === TransitionState.STATE_LEAVED)
+    ) {
       cbRef.current = undefined;
       // 新的更改，之前的event取消
       setState(TransitionState.STATE_ENTERING);
 
       if (state === TransitionState.STATE_LEAVING) {
-        const cancelledHook = transitionOnFirstRef.current ? disappearCancelled : leaveCancelled;
-        cancelledHook?.(el);
+        leaveCancelled?.(el, transitionOnFirstRef.current);
+        transitionOnFirstRef.current = false;
       }
-    } else if (!_inProp && state < TransitionState.STATE_LEAVING) {
+    } else if (
+      !_inProp &&
+      (state === TransitionState.STATE_ENTERING || state === TransitionState.STATE_ENTERED)
+    ) {
       cbRef.current = undefined;
       setState(TransitionState.STATE_LEAVING);
       if (state === TransitionState.STATE_ENTERING) {
-        const cancelledHook = transitionOnFirstRef.current ? appearCancelled : enterCancelled;
-        cancelledHook?.(el);
+        enterCancelled?.(el, transitionOnFirstRef.current);
+        transitionOnFirstRef.current = false;
       }
     }
   });
@@ -244,10 +204,6 @@ if (isDevelopment) {
   Transition.displayName = 'Transition';
 
   Transition.propTypes = {
-    beforeAppear: PropTypes.func,
-    appear: PropTypes.func,
-    afterAppear: PropTypes.func,
-    appearCancelled: PropTypes.func,
     beforeEnter: PropTypes.func,
     enter: PropTypes.func,
     afterEnter: PropTypes.func,
@@ -256,10 +212,6 @@ if (isDevelopment) {
     leave: PropTypes.func,
     afterLeave: PropTypes.func,
     leaveCancelled: PropTypes.func,
-    beforeDisappear: PropTypes.func,
-    disappear: PropTypes.func,
-    afterDisappear: PropTypes.func,
-    disappearCancelled: PropTypes.func,
     children: PropTypes.element.isRequired,
     mountOnEnter: PropTypes.bool,
     unmountOnLeave: PropTypes.bool,

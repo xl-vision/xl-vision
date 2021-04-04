@@ -56,13 +56,13 @@ const CodeWrapper = styled('div')(
     transition: ${theme.transition.standard('all')};
   }
 
-  &.slide-enter,
+  &.slide-enter-from,
   &.slide-leave-to {
     opacity: 0.4;
   }
 
   &.slide-enter-to,
-  &.slide-leave {
+  &.slide-leave-from {
     opacity: 1;
   }
 `,

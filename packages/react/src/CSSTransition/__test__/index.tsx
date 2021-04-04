@@ -8,15 +8,18 @@ import * as TransitionUtils from '../../utils/transition';
 import { voidFn } from '../../utils/function';
 
 const classnameMap: CSSTransitionClasses = {
-  appear: 'appear',
+  appearFrom: 'appearFrom',
   appearActive: 'appearActive',
   appearTo: 'appearTo',
-  enter: 'enter',
+  enterFrom: 'enterFrom',
   enterActive: 'enterActive',
   enterTo: 'enterTo',
-  leave: 'leave',
+  leaveFrom: 'leaveFrom',
   leaveActive: 'leaveActive',
   leaveTo: 'leavtTo',
+  disappearFrom: 'disappearFrom',
+  disappearActive: 'disappearActive',
+  disappearTo: 'disappearTo',
 };
 
 describe('CSSTransition', () => {
@@ -47,66 +50,33 @@ describe('CSSTransition', () => {
       <CSSTransition
         in={true}
         transitionOnFirst={true}
-        beforeAppear={() => {
-          call('beforeAppear');
+        beforeEnter={(_el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'beforeAppear' : 'beforeEnter');
         }}
-        transitionClasses={classnameMap}
-        appear={(_el, done, isCancelled) => {
+        enter={(_el, _done, isCancelled, transitionOnFirst) => {
           if (!isCancelled()) {
-            call(`appear`);
-            done();
+            call(transitionOnFirst ? 'appear' : 'enter');
           }
         }}
-        afterAppear={() => {
-          call('afterAppear');
+        afterEnter={(_el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'afterAppear' : 'afterEnter');
         }}
-        appearCancelled={() => {
-          call('appearCancelled');
+        enterCancelled={(_el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'appearCancelled' : 'enterCancelled');
         }}
-        beforeEnter={() => {
-          call('beforeEnter');
+        beforeLeave={(_el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'beforeDisappear' : 'beforeLeave');
         }}
-        enter={(_el, done, isCancelled) => {
+        leave={(_el, _done, isCancelled, transitionOnFirst) => {
           if (!isCancelled()) {
-            call(`enter`);
-            done();
+            call(transitionOnFirst ? 'disappear' : 'leave');
           }
         }}
-        afterEnter={() => {
-          call('afterEnter');
+        afterLeave={(_el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'afterDisappear' : 'afterLeave');
         }}
-        enterCancelled={() => {
-          call('enterCancelled');
-        }}
-        beforeLeave={() => {
-          call('beforeLeave');
-        }}
-        leave={(_el, done, isCancelled) => {
-          if (!isCancelled()) {
-            call(`leave`);
-            done();
-          }
-        }}
-        afterLeave={() => {
-          call('afterLeave');
-        }}
-        leaveCancelled={() => {
-          call('leaveCancelled');
-        }}
-        beforeDisappear={(el) => {
-          call('beforeDisappear', el);
-        }}
-        disappear={(el, done, isCancelled) => {
-          if (!isCancelled()) {
-            call(`disappear`, el);
-            done();
-          }
-        }}
-        afterDisappear={(el) => {
-          call('afterDisappear', el);
-        }}
-        disappearCancelled={(el) => {
-          call('disappearCancelled', el);
+        leaveCancelled={(_el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'disappearCancelled' : 'leaveCancelled');
         }}
       >
         <div />
@@ -150,65 +120,33 @@ describe('CSSTransition', () => {
         in={false}
         transitionOnFirst={true}
         transitionClasses={classnameMap}
-        beforeAppear={() => {
-          call('beforeAppear');
+        beforeEnter={(_el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'beforeAppear' : 'beforeEnter');
         }}
-        appear={(_el, done, isCancelled) => {
+        enter={(_el, _done, isCancelled, transitionOnFirst) => {
           if (!isCancelled()) {
-            call(`appear`);
-            done();
+            call(transitionOnFirst ? 'appear' : 'enter');
           }
         }}
-        afterAppear={() => {
-          call('afterAppear');
+        afterEnter={(_el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'afterAppear' : 'afterEnter');
         }}
-        appearCancelled={() => {
-          call('appearCancelled');
+        enterCancelled={(_el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'appearCancelled' : 'enterCancelled');
         }}
-        beforeEnter={() => {
-          call('beforeEnter');
+        beforeLeave={(_el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'beforeDisappear' : 'beforeLeave');
         }}
-        enter={(_el, done, isCancelled) => {
+        leave={(_el, _done, isCancelled, transitionOnFirst) => {
           if (!isCancelled()) {
-            call(`enter`);
-            done();
+            call(transitionOnFirst ? 'disappear' : 'leave');
           }
         }}
-        afterEnter={() => {
-          call('afterEnter');
+        afterLeave={(_el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'afterDisappear' : 'afterLeave');
         }}
-        enterCancelled={() => {
-          call('enterCancelled');
-        }}
-        beforeLeave={() => {
-          call('beforeLeave');
-        }}
-        leave={(_el, done, isCancelled) => {
-          if (!isCancelled()) {
-            call(`leave`);
-            done();
-          }
-        }}
-        afterLeave={() => {
-          call('afterLeave');
-        }}
-        leaveCancelled={() => {
-          call('leaveCancelled');
-        }}
-        beforeDisappear={(el) => {
-          call('beforeDisappear', el);
-        }}
-        disappear={(el, done, isCancelled) => {
-          if (!isCancelled()) {
-            call(`disappear`, el);
-            done();
-          }
-        }}
-        afterDisappear={(el) => {
-          call('afterDisappear', el);
-        }}
-        disappearCancelled={(el) => {
-          call('disappearCancelled', el);
+        leaveCancelled={(_el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'disappearCancelled' : 'leaveCancelled');
         }}
       >
         <div />
@@ -264,50 +202,33 @@ describe('CSSTransition', () => {
       <CSSTransition
         in={false}
         transitionClasses={classnameMap}
-        beforeAppear={() => {
-          call('beforeAppear');
+        beforeEnter={(_el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'beforeAppear' : 'beforeEnter');
         }}
-        appear={(_el, done, isCancelled) => {
+        enter={(_el, _done, isCancelled, transitionOnFirst) => {
           if (!isCancelled()) {
-            call(`appear`);
-            done();
+            call(transitionOnFirst ? 'appear' : 'enter');
           }
         }}
-        afterAppear={() => {
-          call('afterAppear');
+        afterEnter={(_el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'afterAppear' : 'afterEnter');
         }}
-        appearCancelled={() => {
-          call('appearCancelled');
+        enterCancelled={(_el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'appearCancelled' : 'enterCancelled');
         }}
-        beforeEnter={() => {
-          call('beforeEnter');
+        beforeLeave={(_el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'beforeDisappear' : 'beforeLeave');
         }}
-        enter={(_el, done, isCancelled) => {
+        leave={(_el, _done, isCancelled, transitionOnFirst) => {
           if (!isCancelled()) {
-            call(`enter`);
-            done();
+            call(transitionOnFirst ? 'disappear' : 'leave');
           }
         }}
-        afterEnter={() => {
-          call('afterEnter');
+        afterLeave={(_el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'afterDisappear' : 'afterLeave');
         }}
-        enterCancelled={() => {
-          call('enterCancelled');
-        }}
-        beforeLeave={() => {
-          call('beforeLeave');
-        }}
-        leave={(_el, done, isCancelled) => {
-          if (!isCancelled()) {
-            call(`leave`);
-            done();
-          }
-        }}
-        afterLeave={() => {
-          call('afterLeave');
-        }}
-        leaveCancelled={() => {
-          call('leaveCancelled');
+        leaveCancelled={(_el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'disappearCancelled' : 'leaveCancelled');
         }}
       >
         <div />
@@ -358,50 +279,33 @@ describe('CSSTransition', () => {
       <CSSTransition
         in={true}
         transitionClasses={classnameMap}
-        beforeAppear={() => {
-          call('beforeAppear');
+        beforeEnter={(_el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'beforeAppear' : 'beforeEnter');
         }}
-        appear={(_el, done, isCancelled) => {
+        enter={(_el, _done, isCancelled, transitionOnFirst) => {
           if (!isCancelled()) {
-            call(`appear`);
-            done();
+            call(transitionOnFirst ? 'appear' : 'enter');
           }
         }}
-        afterAppear={() => {
-          call('afterAppear');
+        afterEnter={(_el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'afterAppear' : 'afterEnter');
         }}
-        appearCancelled={() => {
-          call('appearCancelled');
+        enterCancelled={(_el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'appearCancelled' : 'enterCancelled');
         }}
-        beforeEnter={() => {
-          call('beforeEnter');
+        beforeLeave={(_el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'beforeDisappear' : 'beforeLeave');
         }}
-        enter={(_el, done, isCancelled) => {
+        leave={(_el, _done, isCancelled, transitionOnFirst) => {
           if (!isCancelled()) {
-            call(`enter`);
-            done();
+            call(transitionOnFirst ? 'disappear' : 'leave');
           }
         }}
-        afterEnter={() => {
-          call('afterEnter');
+        afterLeave={(_el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'afterDisappear' : 'afterLeave');
         }}
-        enterCancelled={() => {
-          call('enterCancelled');
-        }}
-        beforeLeave={() => {
-          call('beforeLeave');
-        }}
-        leave={(_el, done, isCancelled) => {
-          if (!isCancelled()) {
-            call(`leave`);
-            done();
-          }
-        }}
-        afterLeave={() => {
-          call('afterLeave');
-        }}
-        leaveCancelled={() => {
-          call('leaveCancelled');
+        leaveCancelled={(_el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'disappearCancelled' : 'leaveCancelled');
         }}
       >
         <div />
@@ -446,50 +350,33 @@ describe('CSSTransition', () => {
         in={true}
         transitionOnFirst={true}
         transitionClasses={classnameMap}
-        beforeAppear={() => {
-          call('beforeAppear');
+        beforeEnter={(_el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'beforeAppear' : 'beforeEnter');
         }}
-        appear={(_el, _done, isCancelled) => {
+        enter={(_el, _done, isCancelled, transitionOnFirst) => {
           if (!isCancelled()) {
-            call(`appear`);
-            // done()
+            call(transitionOnFirst ? 'appear' : 'enter');
           }
         }}
-        afterAppear={() => {
-          call('afterAppear');
+        afterEnter={(_el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'afterAppear' : 'afterEnter');
         }}
-        appearCancelled={() => {
-          call('appearCancelled');
+        enterCancelled={(_el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'appearCancelled' : 'enterCancelled');
         }}
-        beforeEnter={() => {
-          call('beforeEnter');
+        beforeLeave={(_el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'beforeDisappear' : 'beforeLeave');
         }}
-        enter={(_el, _done, isCancelled) => {
+        leave={(_el, _done, isCancelled, transitionOnFirst) => {
           if (!isCancelled()) {
-            call(`enter`);
-            // done()
+            call(transitionOnFirst ? 'disappear' : 'leave');
           }
         }}
-        afterEnter={() => {
-          call('afterEnter');
+        afterLeave={(_el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'afterDisappear' : 'afterLeave');
         }}
-        enterCancelled={() => {
-          call('enterCancelled');
-        }}
-        beforeLeave={() => {
-          call('beforeLeave');
-        }}
-        leave={(_el, _done, isCancelled) => {
-          if (!isCancelled()) {
-            call(`leave`);
-            // done()
-          }
-        }}
-        afterLeave={() => {
-          call('afterLeave');
-        }}
-        leaveCancelled={() => {
-          call('leaveCancelled');
+        leaveCancelled={(_el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'disappearCancelled' : 'leaveCancelled');
         }}
       >
         <div />
@@ -547,12 +434,12 @@ describe('CSSTransition', () => {
       </CSSTransition>,
     );
     // nextFrame未执行
-    expect(wrapper.getDOMNode().classList).toContain('test-appear');
+    expect(wrapper.getDOMNode().classList).toContain('test-appear-from');
     expect(wrapper.getDOMNode().classList).toContain('test-appear-active');
 
     await act(() => wait(25 + 5));
 
-    expect(wrapper.getDOMNode().classList).not.toContain('test-appear');
+    expect(wrapper.getDOMNode().classList).not.toContain('test-appear-from');
     expect(wrapper.getDOMNode().classList).toContain('test-appear-active');
     expect(wrapper.getDOMNode().classList).toContain('test-appear-to');
 
@@ -560,19 +447,18 @@ describe('CSSTransition', () => {
 
     expect(wrapper.getDOMNode().classList).not.toContain('test-appear-active');
     expect(wrapper.getDOMNode().classList).not.toContain('test-appear-to');
-    expect(wrapper.getDOMNode().classList).toContain('test-appear-done');
 
     wrapper.setProps({
       in: false,
     });
 
     // nextFrame未执行
-    expect(wrapper.getDOMNode().classList).toContain('test-leave');
+    expect(wrapper.getDOMNode().classList).toContain('test-leave-from');
     expect(wrapper.getDOMNode().classList).toContain('test-leave-active');
 
     await act(() => wait(25 + 5));
 
-    expect(wrapper.getDOMNode().classList).not.toContain('test-leave');
+    expect(wrapper.getDOMNode().classList).not.toContain('test-leave-from');
     expect(wrapper.getDOMNode().classList).toContain('test-leave-active');
     expect(wrapper.getDOMNode().classList).toContain('test-leave-to');
 
@@ -580,19 +466,18 @@ describe('CSSTransition', () => {
 
     expect(wrapper.getDOMNode().classList).not.toContain('test-leave-active');
     expect(wrapper.getDOMNode().classList).not.toContain('test-leave-to');
-    expect(wrapper.getDOMNode().classList).toContain('test-leave-done');
 
     wrapper.setProps({
       in: true,
     });
 
     // nextFrame未执行
-    expect(wrapper.getDOMNode().classList).toContain('test-enter');
+    expect(wrapper.getDOMNode().classList).toContain('test-enter-from');
     expect(wrapper.getDOMNode().classList).toContain('test-enter-active');
 
     await act(() => wait(25 + 5));
 
-    expect(wrapper.getDOMNode().classList).not.toContain('test-enter');
+    expect(wrapper.getDOMNode().classList).not.toContain('test-enter-from');
     expect(wrapper.getDOMNode().classList).toContain('test-enter-active');
     expect(wrapper.getDOMNode().classList).toContain('test-enter-to');
 
@@ -600,7 +485,6 @@ describe('CSSTransition', () => {
 
     expect(wrapper.getDOMNode().classList).not.toContain('test-enter-active');
     expect(wrapper.getDOMNode().classList).not.toContain('test-enter-to');
-    expect(wrapper.getDOMNode().classList).toContain('test-enter-done');
   });
 
   it('测试timeout调用时机', async () => {
@@ -610,12 +494,12 @@ describe('CSSTransition', () => {
       </CSSTransition>,
     );
     // nextFrame未执行
-    expect(wrapper.getDOMNode().classList).toContain('test-appear');
+    expect(wrapper.getDOMNode().classList).toContain('test-appear-from');
     expect(wrapper.getDOMNode().classList).toContain('test-appear-active');
 
     await act(() => wait(25 + 5));
 
-    expect(wrapper.getDOMNode().classList).not.toContain('test-appear');
+    expect(wrapper.getDOMNode().classList).not.toContain('test-appear-from');
     expect(wrapper.getDOMNode().classList).toContain('test-appear-active');
     expect(wrapper.getDOMNode().classList).toContain('test-appear-to');
 
@@ -623,19 +507,18 @@ describe('CSSTransition', () => {
 
     expect(wrapper.getDOMNode().classList).not.toContain('test-appear-active');
     expect(wrapper.getDOMNode().classList).not.toContain('test-appear-to');
-    expect(wrapper.getDOMNode().classList).toContain('test-appear-done');
 
     wrapper.setProps({
       in: false,
     });
 
     // nextFrame未执行
-    expect(wrapper.getDOMNode().classList).toContain('test-leave');
+    expect(wrapper.getDOMNode().classList).toContain('test-leave-from');
     expect(wrapper.getDOMNode().classList).toContain('test-leave-active');
 
     await act(() => wait(25 + 5));
 
-    expect(wrapper.getDOMNode().classList).not.toContain('test-leave');
+    expect(wrapper.getDOMNode().classList).not.toContain('test-leave-from');
     expect(wrapper.getDOMNode().classList).toContain('test-leave-active');
     expect(wrapper.getDOMNode().classList).toContain('test-leave-to');
 
@@ -643,19 +526,18 @@ describe('CSSTransition', () => {
 
     expect(wrapper.getDOMNode().classList).not.toContain('test-leave-active');
     expect(wrapper.getDOMNode().classList).not.toContain('test-leave-to');
-    expect(wrapper.getDOMNode().classList).toContain('test-leave-done');
 
     wrapper.setProps({
       in: true,
     });
 
     // nextFrame未执行
-    expect(wrapper.getDOMNode().classList).toContain('test-enter');
+    expect(wrapper.getDOMNode().classList).toContain('test-enter-from');
     expect(wrapper.getDOMNode().classList).toContain('test-enter-active');
 
     await act(() => wait(25 + 5));
 
-    expect(wrapper.getDOMNode().classList).not.toContain('test-enter');
+    expect(wrapper.getDOMNode().classList).not.toContain('test-enter-from');
     expect(wrapper.getDOMNode().classList).toContain('test-enter-active');
     expect(wrapper.getDOMNode().classList).toContain('test-enter-to');
 
@@ -663,6 +545,5 @@ describe('CSSTransition', () => {
 
     expect(wrapper.getDOMNode().classList).not.toContain('test-enter-active');
     expect(wrapper.getDOMNode().classList).not.toContain('test-enter-to');
-    expect(wrapper.getDOMNode().classList).toContain('test-enter-done');
   });
 });

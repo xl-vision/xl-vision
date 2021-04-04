@@ -70,7 +70,7 @@ const createTransition = (transition: Transition = {}) => {
       [`${className}-enter-active`]: {
         transition: enter(['opacity', 'transform'], duration),
       },
-      [`${className}-enter`]: {
+      [`${className}-enter-from`]: {
         opacity: 0,
         transform: 'scale(0.8)',
       },
@@ -86,7 +86,7 @@ const createTransition = (transition: Transition = {}) => {
       [`${className}-leave-active`]: {
         transition: leavePermanent(['opacity'], duration),
       },
-      [`${className}-leave`]: {
+      [`${className}-leave-from`]: {
         opacity: 1,
       },
       [`${className}-leave-to`]: {

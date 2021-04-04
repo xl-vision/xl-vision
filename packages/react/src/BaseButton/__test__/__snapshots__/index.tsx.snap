@@ -64,7 +64,7 @@ exports[`BaseButton basic test 1`] = `
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c0 .xl-base-button__ripple-enter {
+.c0 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
