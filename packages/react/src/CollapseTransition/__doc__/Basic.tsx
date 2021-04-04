@@ -17,13 +17,13 @@ const Div = styled('div')`
     transition: all 2s ease;
   }
 
-  &.slide-enter,
+  &.slide-enter-from,
   &.slide-leave-to {
     opacity: 0;
   }
 
   &.slide-enter-to,
-  &.slide-leave {
+  &.slide-leave-from {
     opacity: 1;
   }
 `;

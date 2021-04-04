@@ -9,23 +9,17 @@ const Div = styled('div')`
   color: #fff;
   font-size: 3rem;
   background-color: #007bff;
-
+  overflow: hidden;
   margin-top: 16px;
 
   &.slide-enter-active,
   &.slide-leave-active {
     transition: all 2s ease;
-    overflow: hidden;
   }
 
-  &.slide-enter,
+  &.slide-enter-from,
   &.slide-leave-to {
     height: 0;
-  }
-
-  &.slide-enter-to,
-  &.slide-leave {
-    height: 200px;
   }
 `;
 

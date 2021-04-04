@@ -394,11 +394,11 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
   const beforeEnter = useEventCallback((el: CSSTransitionElement) => {
     // 移除transition class对定位的干扰
     removeClass(el, el._ctc?.enterActive || '');
-    removeClass(el, el._ctc?.enter || '');
+    removeClass(el, el._ctc?.enterFrom || '');
 
     el.style.display = '';
     show();
-    addClass(el, el._ctc?.enter || '');
+    addClass(el, el._ctc?.enterFrom || '');
     forceReflow();
     addClass(el, el._ctc?.enterActive || '');
   });

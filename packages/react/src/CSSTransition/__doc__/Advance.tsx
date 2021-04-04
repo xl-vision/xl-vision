@@ -18,31 +18,38 @@ const Div = styled('div')`
     overflow: hidden;
   }
 
-  &.slide-enter,
+  &.slide-enter-from,
   &.slide-leave-to {
     height: 0;
-  }
-
-  &.slide-enter-to,
-  &.slide-leave {
-    height: 200px;
-  }
-
-  &.slide-leave-done {
-    display: none;
   }
 `;
 
 export default () => {
   const [show, setShow] = React.useState(false);
 
+  const [display, setDisplay] = React.useState(false);
+
+  const beforeEnter = React.useCallback(() => {
+    setDisplay(true);
+  }, []);
+
+  const afterLeave = React.useCallback(() => {
+    setDisplay(false);
+  }, []);
+
   return (
     <div>
       <Button theme='primary' onClick={() => setShow(!show)}>
         Click
       </Button>
-      <CSSTransition in={show} transitionClasses='slide' mountOnEnter={true}>
-        <Div>DEMO</Div>
+      <CSSTransition
+        in={show}
+        transitionClasses='slide'
+        mountOnEnter={true}
+        beforeEnter={beforeEnter}
+        afterLeave={afterLeave}
+      >
+        <Div style={{ display: display ? '' : 'none' }}>DEMO</Div>
       </CSSTransition>
     </div>
   );

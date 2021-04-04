@@ -64,7 +64,7 @@ exports[`Demo renders ./packages/react/src/BaseButton/__doc__/Advance.tsx correc
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c0 .xl-base-button__ripple-enter {
+.c0 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -246,7 +246,7 @@ exports[`Demo renders ./packages/react/src/BaseButton/__doc__/Basic.tsx correctl
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c0 .xl-base-button__ripple-enter {
+.c0 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -373,7 +373,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c1 .xl-base-button__ripple-enter {
+.c1 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -1371,7 +1371,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c1 .xl-base-button__ripple-enter {
+.c1 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -1685,7 +1685,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c1 .xl-base-button__ripple-enter {
+.c1 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -2022,7 +2022,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c1 .xl-base-button__ripple-enter {
+.c1 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -2357,7 +2357,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c1 .xl-base-button__ripple-enter {
+.c1 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -2419,7 +2419,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c9 .xl-base-button__ripple-enter {
+.c9 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -2801,7 +2801,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c1 .xl-base-button__ripple-enter {
+.c1 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -3166,7 +3166,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c1 .xl-base-button__ripple-enter {
+.c1 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -3539,7 +3539,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c1 .xl-base-button__ripple-enter {
+.c1 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -4052,7 +4052,7 @@ exports[`Demo renders ./packages/react/src/CSSTransition/__doc__/Advance.tsx cor
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c0 .xl-base-button__ripple-enter {
+.c0 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -4185,7 +4185,7 @@ exports[`Demo renders ./packages/react/src/CSSTransition/__doc__/Basic.tsx corre
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c0 .xl-base-button__ripple-enter {
+.c0 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -4318,7 +4318,7 @@ exports[`Demo renders ./packages/react/src/CollapseTransition/__doc__/Basic.tsx 
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c0 .xl-base-button__ripple-enter {
+.c0 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -4453,7 +4453,7 @@ exports[`Demo renders ./packages/react/src/CollapseTransition/__doc__/Horizontal
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c0 .xl-base-button__ripple-enter {
+.c0 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -4589,7 +4589,7 @@ Array [
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c0 .xl-base-button__ripple-enter {
+.c0 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -4660,7 +4660,7 @@ Array [
   transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
 }
 
-.c0 .xl-tooltip-enter {
+.c0 .xl-tooltip-enter-from {
   opacity: 0;
   -webkit-transform: scale(0.8);
   -ms-transform: scale(0.8);
@@ -4679,7 +4679,7 @@ Array [
   transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c0 .xl-tooltip-leave {
+.c0 .xl-tooltip-leave-from {
   opacity: 1;
 }
 
@@ -4699,7 +4699,7 @@ Array [
   transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
 }
 
-.c0 .xl-dropdown-enter {
+.c0 .xl-dropdown-enter-from {
   opacity: 0;
   -webkit-transform: scale(0.8);
   -ms-transform: scale(0.8);
@@ -4718,7 +4718,7 @@ Array [
   transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c0 .xl-dropdown-leave {
+.c0 .xl-dropdown-leave-from {
   opacity: 1;
 }
 
@@ -4799,7 +4799,7 @@ Array [
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c0 .xl-base-button__ripple-enter {
+.c0 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -4870,7 +4870,7 @@ Array [
   transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
 }
 
-.c0 .xl-dropdown-enter {
+.c0 .xl-dropdown-enter-from {
   opacity: 0;
   -webkit-transform: scale(0.8);
   -ms-transform: scale(0.8);
@@ -4889,7 +4889,7 @@ Array [
   transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c0 .xl-dropdown-leave {
+.c0 .xl-dropdown-leave-from {
   opacity: 1;
 }
 
@@ -4970,7 +4970,7 @@ Array [
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c0 .xl-base-button__ripple-enter {
+.c0 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -5041,7 +5041,7 @@ Array [
   transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
 }
 
-.c0 .xl-dropdown-enter {
+.c0 .xl-dropdown-enter-from {
   opacity: 0;
   -webkit-transform: scale(0.8);
   -ms-transform: scale(0.8);
@@ -5060,7 +5060,7 @@ Array [
   transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c0 .xl-dropdown-leave {
+.c0 .xl-dropdown-leave-from {
   opacity: 1;
 }
 
@@ -5252,7 +5252,7 @@ exports[`Demo renders ./packages/react/src/Icon/__doc__/IconSearch.tsx correctly
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c1 .xl-base-button__ripple-enter {
+.c1 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -12504,7 +12504,7 @@ exports[`Demo renders ./packages/react/src/Modal/__doc__/Basic.tsx correctly 1`]
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c0 .xl-base-button__ripple-enter {
+.c0 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -12635,7 +12635,7 @@ exports[`Demo renders ./packages/react/src/Popconfirm/__doc__/Basic.tsx correctl
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c0 .xl-base-button__ripple-enter {
+.c0 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -12901,7 +12901,7 @@ exports[`Demo renders ./packages/react/src/Popover/__doc__/Basic.tsx correctly 1
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c1 .xl-base-button__ripple-enter {
+.c1 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -13261,7 +13261,7 @@ Array [
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c0 .xl-base-button__ripple-enter {
+.c0 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -13332,7 +13332,7 @@ Array [
   transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
 }
 
-.c0 .xl-popover-enter {
+.c0 .xl-popover-enter-from {
   opacity: 0;
   -webkit-transform: scale(0.8);
   -ms-transform: scale(0.8);
@@ -13351,7 +13351,7 @@ Array [
   transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c0 .xl-popover-leave {
+.c0 .xl-popover-leave-from {
   opacity: 1;
 }
 
@@ -13432,7 +13432,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Arrow.tsx correctly 1`
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c1 .xl-base-button__ripple-enter {
+.c1 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -13536,14 +13536,14 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Arrow.tsx correctly 1`
   transform: scaleY(1);
 }
 
-.c0 .slide-enter[data-placement^="top"],
+.c0 .slide-enter-from[data-placement^="top"],
 .c0 .slide-leave-to[data-placement^="top"] {
   -webkit-transform: scaleY(0);
   -ms-transform: scaleY(0);
   transform: scaleY(0);
 }
 
-.c0 .slide-enter[data-placement^="bottom"],
+.c0 .slide-enter-from[data-placement^="bottom"],
 .c0 .slide-leave-to[data-placement^="bottom"] {
   -webkit-transform: scaleY(0);
   -ms-transform: scaleY(0);
@@ -13641,7 +13641,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c1 .xl-base-button__ripple-enter {
+.c1 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -13740,28 +13740,28 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
   transform: scaleY(1);
 }
 
-.c0 .slide-enter[data-placement^="left"],
+.c0 .slide-enter-from[data-placement^="left"],
 .c0 .slide-leave-to[data-placement^="left"] {
   -webkit-transform: scaleX(0);
   -ms-transform: scaleX(0);
   transform: scaleX(0);
 }
 
-.c0 .slide-enter[data-placement^="right"],
+.c0 .slide-enter-from[data-placement^="right"],
 .c0 .slide-leave-to[data-placement^="right"] {
   -webkit-transform: scaleX(0);
   -ms-transform: scaleX(0);
   transform: scaleX(0);
 }
 
-.c0 .slide-enter[data-placement^="top"],
+.c0 .slide-enter-from[data-placement^="top"],
 .c0 .slide-leave-to[data-placement^="top"] {
   -webkit-transform: scaleY(0);
   -ms-transform: scaleY(0);
   transform: scaleY(0);
 }
 
-.c0 .slide-enter[data-placement^="bottom"],
+.c0 .slide-enter-from[data-placement^="bottom"],
 .c0 .slide-leave-to[data-placement^="bottom"] {
   -webkit-transform: scaleY(0);
   -ms-transform: scaleY(0);
@@ -14123,7 +14123,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c1 .xl-base-button__ripple-enter {
+.c1 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -14204,14 +14204,14 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 
   transform: scaleY(1);
 }
 
-.c0 .slide-enter[data-placement^="top"],
+.c0 .slide-enter-from[data-placement^="top"],
 .c0 .slide-leave-to[data-placement^="top"] {
   -webkit-transform: scaleY(0);
   -ms-transform: scaleY(0);
   transform: scaleY(0);
 }
 
-.c0 .slide-enter[data-placement^="bottom"],
+.c0 .slide-enter-from[data-placement^="bottom"],
 .c0 .slide-leave-to[data-placement^="bottom"] {
   -webkit-transform: scaleY(0);
   -ms-transform: scaleY(0);
@@ -14393,7 +14393,7 @@ exports[`Demo renders ./packages/react/src/Portal/__doc__/Basic.tsx correctly 1`
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c1 .xl-base-button__ripple-enter {
+.c1 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -14535,7 +14535,7 @@ exports[`Demo renders ./packages/react/src/Ripple/__doc__/Advance.tsx correctly 
   transition: all 0.4s ease;
 }
 
-.c0 .ripple-enter,
+.c0 .ripple-enter-from,
 .c0 .ripple-leave-to {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
@@ -14544,7 +14544,7 @@ exports[`Demo renders ./packages/react/src/Ripple/__doc__/Advance.tsx correctly 
 }
 
 .c0 .ripple-enter-to,
-.c0 .ripple-leave {
+.c0 .ripple-leave-from {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
@@ -14593,7 +14593,7 @@ exports[`Demo renders ./packages/react/src/Ripple/__doc__/Basic.tsx correctly 1`
   transition: all 0.4s ease;
 }
 
-.c0 .ripple-enter,
+.c0 .ripple-enter-from,
 .c0 .ripple-leave-to {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
@@ -14602,7 +14602,7 @@ exports[`Demo renders ./packages/react/src/Ripple/__doc__/Basic.tsx correctly 1`
 }
 
 .c0 .ripple-enter-to,
-.c0 .ripple-leave {
+.c0 .ripple-leave-from {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
@@ -15919,7 +15919,7 @@ Array [
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c0 .xl-base-button__ripple-enter {
+.c0 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -15990,7 +15990,7 @@ Array [
   transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
 }
 
-.c0 .xl-tooltip-enter {
+.c0 .xl-tooltip-enter-from {
   opacity: 0;
   -webkit-transform: scale(0.8);
   -ms-transform: scale(0.8);
@@ -16009,7 +16009,7 @@ Array [
   transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c0 .xl-tooltip-leave {
+.c0 .xl-tooltip-leave-from {
   opacity: 1;
 }
 
@@ -16090,7 +16090,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c1 .xl-base-button__ripple-enter {
+.c1 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -16449,7 +16449,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Colors.tsx correctly 
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c1 .xl-base-button__ripple-enter {
+.c1 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -16637,7 +16637,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/MaxWidth.tsx correctl
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c1 .xl-base-button__ripple-enter {
+.c1 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -16777,7 +16777,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Rich.tsx correctly 1`
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c1 .xl-base-button__ripple-enter {
+.c1 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -16917,7 +16917,7 @@ exports[`Demo renders ./packages/react/src/Transition/__doc__/Appear.tsx correct
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c0 .xl-base-button__ripple-enter {
+.c0 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -17088,7 +17088,7 @@ exports[`Demo renders ./packages/react/src/Transition/__doc__/Basic.tsx correctl
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c0 .xl-base-button__ripple-enter {
+.c0 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -17221,7 +17221,7 @@ exports[`Demo renders ./packages/react/src/TransitionGroup/__doc__/Basic.tsx cor
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c0 .xl-base-button__ripple-enter {
+.c0 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -17286,11 +17286,11 @@ exports[`Demo renders ./packages/react/src/TransitionGroup/__doc__/Basic.tsx cor
 }
 
 .c5.slide-leave-to,
-.c5.slide-enter {
+.c5.slide-enter-from {
   opacity: 0;
 }
 
-.c5.slide-leave,
+.c5.slide-leave-from,
 .c5.slide-enter-to {
   opacity: 1;
   -webkit-transform: translateY(0px);
@@ -17298,7 +17298,7 @@ exports[`Demo renders ./packages/react/src/TransitionGroup/__doc__/Basic.tsx cor
   transform: translateY(0px);
 }
 
-.c5.slide-enter {
+.c5.slide-enter-from {
   -webkit-transform: translateY(-30px);
   -ms-transform: translateY(-30px);
   transform: translateY(-30px);
