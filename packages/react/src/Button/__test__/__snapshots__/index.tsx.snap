@@ -64,7 +64,7 @@ exports[`Button test basic render 1`] = `
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c0 .xl-base-button__ripple-enter {
+.c0 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -126,7 +126,7 @@ exports[`Button test basic render 1`] = `
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c12 .xl-base-button__ripple-enter {
+.c12 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -571,7 +571,7 @@ exports[`Button test basic render 1`] = `
       class="c2 xl-base-button__inner"
     >
       <span
-        class="c6 xl-button__prefix xl-button__prefix-appear xl-button__prefix-appear-active"
+        class="c6 xl-button__prefix xl-button__prefix-appear-from xl-button__prefix-appear-active"
         data-actual-width=""
         data-overflow=""
         data-padding-left=""

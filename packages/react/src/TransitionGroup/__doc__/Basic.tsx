@@ -12,14 +12,14 @@ const Demo = styled('span')({
     transition: 'all 1s ease-in-out',
   },
 
-  '&.slide-leave-to, &.slide-enter': {
+  '&.slide-leave-to, &.slide-enter-from': {
     opacity: 0,
   },
-  ' &.slide-leave, &.slide-enter-to': {
+  ' &.slide-leave-from, &.slide-enter-to': {
     opacity: 1,
     transform: 'translateY(0px)',
   },
-  '&.slide-enter': {
+  '&.slide-enter-from': {
     transform: 'translateY(-30px)',
   },
   '&.slide-leave-to': {

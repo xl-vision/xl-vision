@@ -18,13 +18,13 @@ const Box = styled('div')(
   .ripple-leave-active {
     transition: all 0.4s ease;
   }
-  .ripple-enter,
+  .ripple-enter-from,
   .ripple-leave-to {
     transform: scale(0);
     opacity: 0.1;
   }
   .ripple-enter-to,
-  .ripple-leave {
+  .ripple-leave-from {
     transform: scale(1);
   }
 `,

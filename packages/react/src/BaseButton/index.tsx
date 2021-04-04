@@ -68,7 +68,7 @@ const BaseButtonRoot = (styled('button', {
       '&-leave-active': {
         transition: theme.transition.leavePermanent('all'),
       },
-      '&-enter': {
+      '&-enter-from': {
         transform: 'scale(0)',
         opacity: 0.1,
       },

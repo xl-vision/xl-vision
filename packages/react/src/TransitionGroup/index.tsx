@@ -11,7 +11,7 @@ import diff, { DiffData } from './diff';
 export interface TransitionGroupClassesObject
   extends Omit<
     CSSTransitionClassesObject,
-    'appear' | 'appearActive' | 'appearTo' | 'disappear' | 'disappearActive' | 'disappearTo'
+    'appearFrom' | 'appearActive' | 'appearTo' | 'disappearFrom' | 'disappearActive' | 'disappearTo'
   > {
   move?: string;
 }
@@ -21,20 +21,7 @@ export type TransitionGroupClasses = string | TransitionGroupClassesObject;
 export interface TransitionGroupProps
   extends Omit<
     CSSTransitionProps,
-    | 'beforeAppear'
-    | 'appear'
-    | 'afterAppear'
-    | 'appearCancelled'
-    | 'beforeDisappear'
-    | 'disappear'
-    | 'afterDisappear'
-    | 'disappearCancelled'
-    | 'children'
-    | 'transitionOnFirst'
-    | 'in'
-    | 'classNames'
-    | 'mountOnEnter'
-    | 'unmountOnLeave'
+    'children' | 'transitionOnFirst' | 'in' | 'classNames' | 'mountOnEnter' | 'unmountOnLeave'
   > {
   children: Array<CSSTransitionProps['children']>;
   transitionClasses?: TransitionGroupClasses;
@@ -44,21 +31,10 @@ const TransitionGroup: React.FunctionComponent<TransitionGroupProps> = (props) =
   const { children, transitionClasses, afterLeave, ..._others } = props;
 
   // 阻止用户故意传入appear和disappear钩子
-  const others = omit(
-    _others as CSSTransitionProps,
-    'in',
-    'beforeAppear',
-    'appear',
-    'afterAppear',
-    'appearCancelled',
-    'beforeDisappear',
-    'disappear',
-    'afterDisappear',
-    'disappearCancelled',
-  );
+  const others = omit(_others as CSSTransitionProps, 'in');
 
   const transitionClassesObj = React.useMemo(() => {
-    let obj: CSSTransitionClassesObject & { move?: string } = {};
+    let obj: CSSTransitionClassesObject = {};
 
     if (!transitionClasses) {
       return {};
@@ -67,21 +43,20 @@ const TransitionGroup: React.FunctionComponent<TransitionGroupProps> = (props) =
     // 所以这里需要将enter和leave的class设置到appear和disappear上
     if (typeof transitionClasses === 'object') {
       obj = { ...transitionClasses };
-      obj.appear = obj.enter;
+      obj.appearFrom = obj.enterFrom;
       obj.appearActive = obj.enterActive;
       obj.appearTo = obj.enterTo;
 
-      obj.disappear = obj.leave;
+      obj.disappearFrom = obj.leaveFrom;
       obj.disappearActive = obj.leaveActive;
       obj.disappearTo = obj.leaveTo;
     } else {
-      obj.appear = obj.enter = `${transitionClasses}-enter`;
+      obj.appearFrom = obj.enterFrom = `${transitionClasses}-enter-from`;
       obj.appearTo = obj.enterTo = `${transitionClasses}-enter-to`;
       obj.appearActive = obj.enterActive = `${transitionClasses}-enter-active`;
-      obj.disappear = obj.leave = `${transitionClasses}-leave`;
+      obj.disappearFrom = obj.leaveFrom = `${transitionClasses}-leave-from`;
       obj.disappearTo = obj.leaveTo = `${transitionClasses}-leave-to`;
       obj.disappearActive = obj.leaveActive = `${transitionClasses}-leave-active`;
-      obj.move = `${transitionClasses}-move`;
     }
 
     return obj;
@@ -94,8 +69,8 @@ const TransitionGroup: React.FunctionComponent<TransitionGroupProps> = (props) =
   const callAfterLeave = React.useCallback(
     (key: React.Key | null) => {
       warning(!key, `<TransitioGroup> must has a key`);
-      const hook: AfterEventHook = (e) => {
-        afterLeave?.(e);
+      const hook: AfterEventHook = (e, transitionOnFirst) => {
+        afterLeave?.(e, transitionOnFirst);
         prevChildrenRef.current = prevChildrenRef.current?.filter((it) => it.key !== key);
       };
 
