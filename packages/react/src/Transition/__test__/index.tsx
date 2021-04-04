@@ -10,65 +10,35 @@ describe('Transition', () => {
       <Transition
         in={true}
         transitionOnFirst={true}
-        beforeAppear={(el) => {
-          call('beforeAppear', el);
+        beforeEnter={(el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'beforeAppear' : 'beforeEnter', el);
         }}
-        appear={(el, done, isCancelled) => {
+        enter={(el, done, isCancelled, transitionOnFirst) => {
           if (!isCancelled()) {
-            call(`appear`, el);
+            call(transitionOnFirst ? 'appear' : 'enter', el);
             done();
           }
         }}
-        afterAppear={(el) => {
-          call('afterAppear', el);
+        afterEnter={(el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'afterAppear' : 'afterEnter', el);
         }}
-        appearCancelled={(el) => {
-          call('appearCancelled', el);
+        enterCancelled={(el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'appearCancelled' : 'enterCancelled', el);
         }}
-        beforeEnter={(el) => {
-          call('beforeEnter', el);
+        beforeLeave={(el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'beforeDisappear' : 'beforeLeave', el);
         }}
-        enter={(el, done, isCancelled) => {
+        leave={(el, done, isCancelled, transitionOnFirst) => {
           if (!isCancelled()) {
-            call(`enter`, el);
+            call(transitionOnFirst ? 'disappear' : 'leave', el);
             done();
           }
         }}
-        afterEnter={(el) => {
-          call('afterEnter', el);
+        afterLeave={(el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'afterDisappear' : 'afterLeave', el);
         }}
-        enterCancelled={(el) => {
-          call('enterCancelled', el);
-        }}
-        beforeLeave={(el) => {
-          call('beforeLeave', el);
-        }}
-        leave={(el, done, isCancelled) => {
-          if (!isCancelled()) {
-            call(`leave`, el);
-            done();
-          }
-        }}
-        afterLeave={(el) => {
-          call('afterLeave', el);
-        }}
-        leaveCancelled={(el) => {
-          call('leaveCancelled', el);
-        }}
-        beforeDisappear={(el) => {
-          call('beforeDisappear', el);
-        }}
-        disappear={(el, done, isCancelled) => {
-          if (!isCancelled()) {
-            call(`disappear`, el);
-            done();
-          }
-        }}
-        afterDisappear={(el) => {
-          call('afterDisappear', el);
-        }}
-        disappearCancelled={(el) => {
-          call('disappearCancelled', el);
+        leaveCancelled={(el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'disappearCancelled' : 'leaveCancelled', el);
         }}
       >
         <div />
@@ -116,65 +86,35 @@ describe('Transition', () => {
       <Transition
         in={false}
         transitionOnFirst={true}
-        beforeAppear={(el) => {
-          call('beforeAppear', el);
+        beforeEnter={(el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'beforeAppear' : 'beforeEnter', el);
         }}
-        appear={(el, done, isCancelled) => {
+        enter={(el, done, isCancelled, transitionOnFirst) => {
           if (!isCancelled()) {
-            call(`appear`, el);
+            call(transitionOnFirst ? 'appear' : 'enter', el);
             done();
           }
         }}
-        afterAppear={(el) => {
-          call('afterAppear', el);
+        afterEnter={(el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'afterAppear' : 'afterEnter', el);
         }}
-        appearCancelled={(el) => {
-          call('appearCancelled', el);
+        enterCancelled={(el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'appearCancelled' : 'enterCancelled', el);
         }}
-        beforeEnter={(el) => {
-          call('beforeEnter', el);
+        beforeLeave={(el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'beforeDisappear' : 'beforeLeave', el);
         }}
-        enter={(el, done, isCancelled) => {
+        leave={(el, done, isCancelled, transitionOnFirst) => {
           if (!isCancelled()) {
-            call(`enter`, el);
+            call(transitionOnFirst ? 'disappear' : 'leave', el);
             done();
           }
         }}
-        afterEnter={(el) => {
-          call('afterEnter', el);
+        afterLeave={(el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'afterDisappear' : 'afterLeave', el);
         }}
-        enterCancelled={(el) => {
-          call('enterCancelled', el);
-        }}
-        beforeLeave={(el) => {
-          call('beforeLeave', el);
-        }}
-        leave={(el, done, isCancelled) => {
-          if (!isCancelled()) {
-            call(`leave`, el);
-            done();
-          }
-        }}
-        afterLeave={(el) => {
-          call('afterLeave', el);
-        }}
-        leaveCancelled={(el) => {
-          call('leaveCancelled', el);
-        }}
-        beforeDisappear={(el) => {
-          call('beforeDisappear', el);
-        }}
-        disappear={(el, done, isCancelled) => {
-          if (!isCancelled()) {
-            call(`disappear`, el);
-            done();
-          }
-        }}
-        afterDisappear={(el) => {
-          call('afterDisappear', el);
-        }}
-        disappearCancelled={(el) => {
-          call('disappearCancelled', el);
+        leaveCancelled={(el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'disappearCancelled' : 'leaveCancelled', el);
         }}
       >
         <div />
@@ -233,65 +173,35 @@ describe('Transition', () => {
     const wrapper = mount(
       <Transition
         in={false}
-        beforeAppear={(el) => {
-          call('beforeAppear', el);
+        beforeEnter={(el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'beforeAppear' : 'beforeEnter', el);
         }}
-        appear={(el, done, isCancelled) => {
+        enter={(el, done, isCancelled, transitionOnFirst) => {
           if (!isCancelled()) {
-            call(`appear`, el);
+            call(transitionOnFirst ? 'appear' : 'enter', el);
             done();
           }
         }}
-        afterAppear={(el) => {
-          call('afterAppear', el);
+        afterEnter={(el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'afterAppear' : 'afterEnter', el);
         }}
-        appearCancelled={(el) => {
-          call('appearCancelled', el);
+        enterCancelled={(el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'appearCancelled' : 'enterCancelled', el);
         }}
-        beforeEnter={(el) => {
-          call('beforeEnter', el);
+        beforeLeave={(el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'beforeDisappear' : 'beforeLeave', el);
         }}
-        enter={(el, done, isCancelled) => {
+        leave={(el, done, isCancelled, transitionOnFirst) => {
           if (!isCancelled()) {
-            call(`enter`, el);
+            call(transitionOnFirst ? 'disappear' : 'leave', el);
             done();
           }
         }}
-        afterEnter={(el) => {
-          call('afterEnter', el);
+        afterLeave={(el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'afterDisappear' : 'afterLeave', el);
         }}
-        enterCancelled={(el) => {
-          call('enterCancelled', el);
-        }}
-        beforeLeave={(el) => {
-          call('beforeLeave', el);
-        }}
-        leave={(el, done, isCancelled) => {
-          if (!isCancelled()) {
-            call(`leave`, el);
-            done();
-          }
-        }}
-        afterLeave={(el) => {
-          call('afterLeave', el);
-        }}
-        leaveCancelled={(el) => {
-          call('leaveCancelled', el);
-        }}
-        beforeDisappear={(el) => {
-          call('beforeDisappear', el);
-        }}
-        disappear={(el, done, isCancelled) => {
-          if (!isCancelled()) {
-            call(`disappear`, el);
-            done();
-          }
-        }}
-        afterDisappear={(el) => {
-          call('afterDisappear', el);
-        }}
-        disappearCancelled={(el) => {
-          call('disappearCancelled', el);
+        leaveCancelled={(el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'disappearCancelled' : 'leaveCancelled', el);
         }}
       >
         <div />
@@ -342,65 +252,35 @@ describe('Transition', () => {
     const wrapper = mount(
       <Transition
         in={true}
-        beforeAppear={(el) => {
-          call('beforeAppear', el);
+        beforeEnter={(el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'beforeAppear' : 'beforeEnter', el);
         }}
-        appear={(el, done, isCancelled) => {
+        enter={(el, done, isCancelled, transitionOnFirst) => {
           if (!isCancelled()) {
-            call(`appear`, el);
+            call(transitionOnFirst ? 'appear' : 'enter', el);
             done();
           }
         }}
-        afterAppear={(el) => {
-          call('afterAppear', el);
+        afterEnter={(el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'afterAppear' : 'afterEnter', el);
         }}
-        appearCancelled={(el) => {
-          call('appearCancelled', el);
+        enterCancelled={(el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'appearCancelled' : 'enterCancelled', el);
         }}
-        beforeEnter={(el) => {
-          call('beforeEnter', el);
+        beforeLeave={(el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'beforeDisappear' : 'beforeLeave', el);
         }}
-        enter={(el, done, isCancelled) => {
+        leave={(el, done, isCancelled, transitionOnFirst) => {
           if (!isCancelled()) {
-            call(`enter`, el);
+            call(transitionOnFirst ? 'disappear' : 'leave', el);
             done();
           }
         }}
-        afterEnter={(el) => {
-          call('afterEnter', el);
+        afterLeave={(el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'afterDisappear' : 'afterLeave', el);
         }}
-        enterCancelled={(el) => {
-          call('enterCancelled', el);
-        }}
-        beforeLeave={(el) => {
-          call('beforeLeave', el);
-        }}
-        leave={(el, done, isCancelled) => {
-          if (!isCancelled()) {
-            call(`leave`, el);
-            done();
-          }
-        }}
-        afterLeave={(el) => {
-          call('afterLeave', el);
-        }}
-        leaveCancelled={(el) => {
-          call('leaveCancelled', el);
-        }}
-        beforeDisappear={(el) => {
-          call('beforeDisappear', el);
-        }}
-        disappear={(el, done, isCancelled) => {
-          if (!isCancelled()) {
-            call(`disappear`, el);
-            done();
-          }
-        }}
-        afterDisappear={(el) => {
-          call('afterDisappear', el);
-        }}
-        disappearCancelled={(el) => {
-          call('disappearCancelled', el);
+        leaveCancelled={(el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'disappearCancelled' : 'leaveCancelled', el);
         }}
       >
         <div />
@@ -439,65 +319,33 @@ describe('Transition', () => {
       <Transition
         transitionOnFirst={true}
         in={true}
-        beforeAppear={(el) => {
-          call('beforeAppear', el);
+        beforeEnter={(el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'beforeAppear' : 'beforeEnter', el);
         }}
-        appear={(el, _done, isCancelled) => {
+        enter={(el, _done, isCancelled, transitionOnFirst) => {
           if (!isCancelled()) {
-            call(`appear`, el);
-            // done()
+            call(transitionOnFirst ? 'appear' : 'enter', el);
           }
         }}
-        afterAppear={(el) => {
-          call('afterAppear', el);
+        afterEnter={(el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'afterAppear' : 'afterEnter', el);
         }}
-        appearCancelled={(el) => {
-          call('appearCancelled', el);
+        enterCancelled={(el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'appearCancelled' : 'enterCancelled', el);
         }}
-        beforeEnter={(el) => {
-          call('beforeEnter', el);
+        beforeLeave={(el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'beforeDisappear' : 'beforeLeave', el);
         }}
-        enter={(el, _done, isCancelled) => {
+        leave={(el, _done, isCancelled, transitionOnFirst) => {
           if (!isCancelled()) {
-            call(`enter`, el);
-            // done()
+            call(transitionOnFirst ? 'disappear' : 'leave', el);
           }
         }}
-        afterEnter={(el) => {
-          call('afterEnter', el);
+        afterLeave={(el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'afterDisappear' : 'afterLeave', el);
         }}
-        enterCancelled={(el) => {
-          call('enterCancelled', el);
-        }}
-        beforeLeave={(el) => {
-          call('beforeLeave', el);
-        }}
-        leave={(el, _done, isCancelled) => {
-          if (!isCancelled()) {
-            call(`leave`, el);
-            // done()
-          }
-        }}
-        afterLeave={(el) => {
-          call('afterLeave', el);
-        }}
-        leaveCancelled={(el) => {
-          call('leaveCancelled', el);
-        }}
-        beforeDisappear={(el) => {
-          call('beforeDisappear', el);
-        }}
-        disappear={(el, _done, isCancelled) => {
-          if (!isCancelled()) {
-            call(`disappear`, el);
-            // done()
-          }
-        }}
-        afterDisappear={(el) => {
-          call('afterDisappear', el);
-        }}
-        disappearCancelled={(el) => {
-          call('disappearCancelled', el);
+        leaveCancelled={(el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'disappearCancelled' : 'leaveCancelled', el);
         }}
       >
         <div />
@@ -558,65 +406,35 @@ describe('Transition', () => {
       <Transition
         transitionOnFirst={true}
         in={false}
-        beforeAppear={(el) => {
-          call('beforeAppear', el);
+        beforeEnter={(el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'beforeAppear' : 'beforeEnter', el);
         }}
-        appear={(el, _done, isCancelled) => {
+        enter={(el, _done, isCancelled, transitionOnFirst) => {
           if (!isCancelled()) {
-            call(`appear`, el);
-            // done()
+            call(transitionOnFirst ? 'appear' : 'enter', el);
+            // done();
           }
         }}
-        afterAppear={(el) => {
-          call('afterAppear', el);
+        afterEnter={(el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'afterAppear' : 'afterEnter', el);
         }}
-        appearCancelled={(el) => {
-          call('appearCancelled', el);
+        enterCancelled={(el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'appearCancelled' : 'enterCancelled', el);
         }}
-        beforeEnter={(el) => {
-          call('beforeEnter', el);
+        beforeLeave={(el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'beforeDisappear' : 'beforeLeave', el);
         }}
-        enter={(el, _done, isCancelled) => {
+        leave={(el, _done, isCancelled, transitionOnFirst) => {
           if (!isCancelled()) {
-            call(`enter`, el);
-            // done()
+            call(transitionOnFirst ? 'disappear' : 'leave', el);
+            // done();
           }
         }}
-        afterEnter={(el) => {
-          call('afterEnter', el);
+        afterLeave={(el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'afterDisappear' : 'afterLeave', el);
         }}
-        enterCancelled={(el) => {
-          call('enterCancelled', el);
-        }}
-        beforeLeave={(el) => {
-          call('beforeLeave', el);
-        }}
-        leave={(el, _done, isCancelled) => {
-          if (!isCancelled()) {
-            call(`leave`, el);
-            // done()
-          }
-        }}
-        afterLeave={(el) => {
-          call('afterLeave', el);
-        }}
-        leaveCancelled={(el) => {
-          call('leaveCancelled', el);
-        }}
-        beforeDisappear={(el) => {
-          call('beforeDisappear', el);
-        }}
-        disappear={(el, _done, isCancelled) => {
-          if (!isCancelled()) {
-            call(`disappear`, el);
-            // done()
-          }
-        }}
-        afterDisappear={(el) => {
-          call('afterDisappear', el);
-        }}
-        disappearCancelled={(el) => {
-          call('disappearCancelled', el);
+        leaveCancelled={(el, transitionOnFirst) => {
+          call(transitionOnFirst ? 'disappearCancelled' : 'leaveCancelled', el);
         }}
       >
         <div />

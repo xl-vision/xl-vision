@@ -41,7 +41,7 @@ const Wrapper = styled('div')(({ theme }) => {
           transform: 'scaleY(1)',
         },
       },
-      '&-enter,&-leave-to': {
+      '&-enter-from,&-leave-to': {
         '&[data-placement^="top"]': {
           transform: 'scaleY(0)',
         },

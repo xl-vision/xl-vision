@@ -101,6 +101,7 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
             setState(nextState);
             // 必须放在后面，防止其中修改了prop in
             afterEventHook?.(findDOMElement(), transitionOnFirstRef.current);
+            transitionOnFirstRef.current = false;
 
             // 避免多次触发
             cbRef.current = undefined;
