@@ -11,6 +11,7 @@ import { increaseZindex } from '../utils/zIndexManger';
 import useEventCallback from '../hooks/useEventCallback';
 import { addClass, removeClass } from '../utils/class';
 import { forceReflow } from '../utils/transition';
+import ScrollLocker from '../utils/ScrollLocker';
 
 export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   getContainer?: PortalContainerType;
@@ -78,7 +79,7 @@ const ModalRoot = styled('div')(({ theme }) => {
         opacity: 1,
       },
       '&-enter-from': {
-        transform: 'scale(0.8)',
+        transform: 'scale(0)',
       },
       '&-enter-to': {
         transform: 'scale(1)',
@@ -109,6 +110,8 @@ if (isBrowser) {
 
 const defaultGetContainer = () => document.body;
 
+const scrollLocker = new ScrollLocker({ getContainer: defaultGetContainer });
+
 const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   const {
     getContainer = defaultGetContainer,
@@ -136,10 +139,14 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   const transitionCount = React.useRef(0);
 
   React.useEffect(() => {
+    setAnimatedVisible(visible);
     if (visible) {
       setZIndex(increaseZindex());
+      scrollLocker.lock();
+      return () => {
+        scrollLocker.unlock();
+      };
     }
-    setAnimatedVisible(visible);
   }, [visible]);
 
   const modalBeforeEnter = useEventCallback((el: HTMLElement) => {
