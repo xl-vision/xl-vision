@@ -9,6 +9,8 @@ import ThemeContext from '../ThemeProvider/ThemeContext';
 import { styled } from '../styles';
 import { increaseZindex } from '../utils/zIndexManger';
 import useEventCallback from '../hooks/useEventCallback';
+import { addClass, removeClass } from '../utils/class';
+import { forceReflow } from '../utils/transition';
 
 export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   getContainer?: PortalContainerType;
@@ -36,8 +38,8 @@ const ModalRoot = styled('div')(({ theme }) => {
       position: 'absolute',
       left: 0,
       top: 0,
-      width: '100%',
-      height: '100%',
+      right: 0,
+      bottom: 0,
       zIndex: -1,
       backgroundColor: 'rgba(0,0,0,0.5)',
       '&-enter-active': {
@@ -46,15 +48,14 @@ const ModalRoot = styled('div')(({ theme }) => {
       '&-leave-active': {
         transition: transition.leavePermanent('opacity'),
       },
-      '&-enter,&-leave-to': {
+      '&-enter-from,&-leave-to': {
         opacity: 0,
       },
-      '&-leave,&-enter-to': {
+      '&-leave-from,&-enter-to': {
         opacity: 1,
       },
     },
     [`.${clsPrefix}-modal__wrap`]: {
-      position: 'relative',
       width: '100%',
       height: '100%',
       display: 'flex',
@@ -65,18 +66,18 @@ const ModalRoot = styled('div')(({ theme }) => {
       position: 'relative',
 
       '&-enter-active': {
-        transition: transition.enter(['opacity', 'transition']),
+        transition: transition.enter(['opacity', 'transform']),
       },
       '&-leave-active': {
-        transition: transition.leavePermanent(['opacity', 'transition']),
+        transition: transition.leavePermanent(['opacity', 'transform']),
       },
-      '&-enter,&-leave-to': {
+      '&-enter-from,&-leave-to': {
         opacity: 0,
       },
-      '&-leave,&-enter-to': {
+      '&-leave-from,&-enter-to': {
         opacity: 1,
       },
-      '&-enter': {
+      '&-enter-from': {
         transform: 'scale(0.8)',
       },
       '&-enter-to': {
@@ -132,8 +133,6 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
   const isFirstMountRef = React.useRef(true);
 
-  const bodyRef = React.useRef<HTMLDivElement>(null);
-
   const transitionCount = React.useRef(0);
 
   React.useEffect(() => {
@@ -144,10 +143,15 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   }, [visible]);
 
   const modalBeforeEnter = useEventCallback((el: HTMLElement) => {
-    if (mousePosition && bodyRef.current) {
-      bodyRef.current.style.transformOrigin = `${mousePosition.x}px ${mousePosition.y}px`;
+    if (mousePosition) {
+      removeClass(el, `${bodyTransitionClasses}-enter-from`);
+      removeClass(el, `${bodyTransitionClasses}-enter-active`);
+      const { x, y } = el.getBoundingClientRect();
+      el.style.transformOrigin = `${mousePosition.x - x}px ${mousePosition.y - y}px`;
+      addClass(el, `${bodyTransitionClasses}-enter-from`);
+      forceReflow();
+      addClass(el, `${bodyTransitionClasses}-enter-active`);
     }
-    el.style.display = '';
   });
 
   const afterLeave = useEventCallback(() => {
@@ -178,6 +182,8 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
   const rootClasses = clsx(rootClassName, className);
 
+  const bodyTransitionClasses = `${rootClassName}__body`;
+
   return (
     <Portal getContainer={getContainer}>
       <ModalRoot
@@ -190,22 +196,20 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
         <CSSTransition
           transitionClasses={`${rootClassName}__mask`}
           in={animatedVisible}
+          mountOnEnter={true}
           afterLeave={afterLeave}
         >
           <div aria-hidden={true} className={`${rootClassName}__mask`} />
         </CSSTransition>
         <div className={`${rootClassName}__wrap`} onClick={handleMaskClick}>
           <CSSTransition
-            transitionClasses={`${rootClassName}__body`}
+            transitionClasses={bodyTransitionClasses}
             in={animatedVisible}
+            mountOnEnter={true}
             beforeEnter={modalBeforeEnter}
             afterLeave={afterLeave}
           >
-            <div
-              ref={bodyRef}
-              className={`${rootClassName}__body`}
-              onClick={(e) => e.stopPropagation()}
-            >
+            <div className={`${rootClassName}__body`} onClick={(e) => e.stopPropagation()}>
               {children}
             </div>
           </CSSTransition>
