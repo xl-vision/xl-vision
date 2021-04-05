@@ -138,6 +138,8 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
   const transitionCount = React.useRef(0);
 
+  const bodyRef = React.useRef<HTMLDivElement>(null);
+
   React.useEffect(() => {
     setAnimatedVisible(visible);
     if (visible) {
@@ -159,6 +161,8 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
       forceReflow();
       addClass(el, `${bodyTransitionClasses}-enter-active`);
     }
+
+    el.focus();
   });
 
   const afterLeave = useEventCallback(() => {
@@ -171,6 +175,14 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
   const handleMaskClick = useEventCallback(() => {
     setAnimatedVisible(false);
+  });
+
+  const handleKeyDown = useEventCallback((e: React.KeyboardEvent) => {
+    if (visible) {
+      if (e.key === 'Tab') {
+        bodyRef.current?.focus();
+      }
+    }
   });
 
   if (visible) {
@@ -208,7 +220,12 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
         >
           <div aria-hidden={true} className={`${rootClassName}__mask`} />
         </CSSTransition>
-        <div className={`${rootClassName}__wrap`} onClick={handleMaskClick}>
+        <div
+          className={`${rootClassName}__wrap`}
+          onClick={handleMaskClick}
+          onKeyDown={handleKeyDown}
+        >
+          <div tabIndex={0} />
           <CSSTransition
             transitionClasses={bodyTransitionClasses}
             in={animatedVisible}
@@ -216,10 +233,16 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
             beforeEnter={modalBeforeEnter}
             afterLeave={afterLeave}
           >
-            <div className={`${rootClassName}__body`} onClick={(e) => e.stopPropagation()}>
+            <div
+              tabIndex={-1}
+              className={`${rootClassName}__body`}
+              onClick={(e) => e.stopPropagation()}
+              ref={bodyRef}
+            >
               {children}
             </div>
           </CSSTransition>
+          <div tabIndex={0} />
         </div>
       </ModalRoot>
     </Portal>
