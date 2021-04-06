@@ -108,6 +108,8 @@ if (isBrowser) {
   document.documentElement.addEventListener('click', getClickPosition, true);
 }
 
+let modalManagers: Array<HTMLElement> = [];
+
 const defaultGetContainer = () => document.body;
 
 const scrollLocker = new ScrollLocker({ getContainer: defaultGetContainer });
@@ -140,6 +142,26 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
   const bodyRef = React.useRef<HTMLDivElement>(null);
 
+  const isTop = useEventCallback(() => {
+    return modalManagers[modalManagers.length - 1] === bodyRef.current;
+  });
+
+  React.useEffect(() => {
+    const el = bodyRef.current;
+
+    if (!animatedVisible || !el) {
+      return;
+    }
+    modalManagers.push(el);
+    el.focus();
+    return () => {
+      modalManagers = modalManagers.filter((it) => it !== el);
+      if (modalManagers.length) {
+        modalManagers[modalManagers.length - 1].focus();
+      }
+    };
+  }, [animatedVisible]);
+
   React.useEffect(() => {
     setAnimatedVisible(visible);
     if (visible) {
@@ -161,8 +183,6 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
       forceReflow();
       addClass(el, `${bodyTransitionClasses}-enter-active`);
     }
-
-    el.focus();
   });
 
   const afterLeave = useEventCallback(() => {
@@ -178,10 +198,8 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   });
 
   const handleKeyDown = useEventCallback((e: React.KeyboardEvent) => {
-    if (visible) {
-      if (e.key === 'Tab') {
-        bodyRef.current?.focus();
-      }
+    if (e.key === 'Escape' && isTop()) {
+      setAnimatedVisible(false);
     }
   });
 
@@ -211,6 +229,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
         className={rootClasses}
         ref={ref}
         style={{ ...style, zIndex, display: visible ? '' : 'none' }}
+        onKeyDown={handleKeyDown}
       >
         <CSSTransition
           transitionClasses={`${rootClassName}__mask`}
@@ -220,12 +239,8 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
         >
           <div aria-hidden={true} className={`${rootClassName}__mask`} />
         </CSSTransition>
-        <div
-          className={`${rootClassName}__wrap`}
-          onClick={handleMaskClick}
-          onKeyDown={handleKeyDown}
-        >
-          <div tabIndex={0} />
+        <div className={`${rootClassName}__wrap`} onClick={handleMaskClick}>
+          <div tabIndex={0} onFocus={() => bodyRef.current?.focus()} />
           <CSSTransition
             transitionClasses={bodyTransitionClasses}
             in={animatedVisible}
@@ -242,7 +257,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
               {children}
             </div>
           </CSSTransition>
-          <div tabIndex={0} />
+          <div tabIndex={0} onFocus={() => bodyRef.current?.focus()} />
         </div>
       </ModalRoot>
     </Portal>
