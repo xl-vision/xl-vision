@@ -8,10 +8,11 @@ import CSSTransition from '../CSSTransition';
 import ThemeContext from '../ThemeProvider/ThemeContext';
 import { styled } from '../styles';
 import { increaseZindex } from '../utils/zIndexManger';
-import useEventCallback from '../hooks/useEventCallback';
 import { addClass, removeClass } from '../utils/class';
 import { forceReflow } from '../utils/transition';
 import ScrollLocker from '../utils/ScrollLocker';
+import useForkRef from '../hooks/useForkRef';
+import { contain } from '../utils/dom';
 
 export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   getContainer?: PortalContainerType;
@@ -65,6 +66,7 @@ const ModalRoot = styled('div')(({ theme }) => {
     },
     [`.${clsPrefix}-modal__body`]: {
       position: 'relative',
+      outline: 0,
 
       '&-enter-active': {
         transition: transition.enter(['opacity', 'transform']),
@@ -91,6 +93,11 @@ const ModalRoot = styled('div')(({ theme }) => {
 let mousePosition: { x: number; y: number } | null;
 
 const getClickPosition = (e: MouseEvent) => {
+  // key enter trigger click
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+  if ((e as any).pointerType !== 'mouse') {
+    return;
+  }
   mousePosition = {
     x: e.pageX,
     y: e.pageY,
@@ -111,6 +118,8 @@ if (isBrowser) {
 let modalManagers: Array<HTMLElement> = [];
 
 const defaultGetContainer = () => document.body;
+
+const sentinelStyle = { width: 0, height: 0, overflow: 'hidden', outline: 'none' };
 
 const scrollLocker = new ScrollLocker({ getContainer: defaultGetContainer });
 
@@ -142,9 +151,13 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
   const bodyRef = React.useRef<HTMLDivElement>(null);
 
-  const isTop = useEventCallback(() => {
+  const containerRef = React.useRef<HTMLDivElement>(null);
+
+  const forkRef = useForkRef(containerRef, ref);
+
+  const isTop = React.useCallback(() => {
     return modalManagers[modalManagers.length - 1] === bodyRef.current;
-  });
+  }, []);
 
   React.useEffect(() => {
     const el = bodyRef.current;
@@ -152,12 +165,28 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     if (!animatedVisible || !el) {
       return;
     }
-    modalManagers.push(el);
+
+    let activeElement: HTMLElement;
+    if (
+      containerRef.current &&
+      document.activeElement &&
+      !contain(containerRef.current, document.activeElement)
+    ) {
+      activeElement = document.activeElement as HTMLElement;
+    }
     el.focus();
+    modalManagers.push(el);
     return () => {
       modalManagers = modalManagers.filter((it) => it !== el);
       if (modalManagers.length) {
-        modalManagers[modalManagers.length - 1].focus();
+        const modalEl = modalManagers[modalManagers.length - 1];
+        if (activeElement && contain(modalEl, activeElement)) {
+          activeElement.focus();
+        } else {
+          modalEl.focus();
+        }
+      } else {
+        activeElement?.focus();
       }
     };
   }, [animatedVisible]);
@@ -173,35 +202,51 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     }
   }, [visible]);
 
-  const modalBeforeEnter = useEventCallback((el: HTMLElement) => {
-    if (mousePosition) {
+  const rootClassName = `${clsPrefix}-modal`;
+
+  const rootClasses = clsx(rootClassName, className);
+
+  const bodyTransitionClasses = `${rootClassName}__body`;
+
+  const modalBeforeEnter = React.useCallback(
+    (el: HTMLElement) => {
       removeClass(el, `${bodyTransitionClasses}-enter-from`);
       removeClass(el, `${bodyTransitionClasses}-enter-active`);
       const { x, y } = el.getBoundingClientRect();
-      el.style.transformOrigin = `${mousePosition.x - x}px ${mousePosition.y - y}px`;
+      el.style.transformOrigin = mousePosition
+        ? `${mousePosition.x - x}px ${mousePosition.y - y}px`
+        : '50% 50%';
       addClass(el, `${bodyTransitionClasses}-enter-from`);
       forceReflow();
       addClass(el, `${bodyTransitionClasses}-enter-active`);
-    }
-  });
+    },
+    [bodyTransitionClasses],
+  );
 
-  const afterLeave = useEventCallback(() => {
+  const afterLeave = React.useCallback(() => {
     transitionCount.current++;
     if (transitionCount.current === 2) {
       transitionCount.current = 0;
       setVisible(false);
     }
-  });
+  }, [setVisible]);
 
-  const handleMaskClick = useEventCallback(() => {
+  const handleMaskClick = React.useCallback(() => {
     setAnimatedVisible(false);
-  });
+  }, []);
 
-  const handleKeyDown = useEventCallback((e: React.KeyboardEvent) => {
-    if (e.key === 'Escape' && isTop()) {
-      setAnimatedVisible(false);
-    }
-  });
+  const handleKeyDown = React.useCallback(
+    (e: React.KeyboardEvent) => {
+      if (e.key === 'Escape' && isTop()) {
+        setAnimatedVisible(false);
+      }
+    },
+    [isTop],
+  );
+
+  const handleSentinelFocus = React.useCallback(() => {
+    bodyRef.current?.focus();
+  }, []);
 
   if (visible) {
     isFirstMountRef.current = false;
@@ -215,19 +260,13 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     return null;
   }
 
-  const rootClassName = `${clsPrefix}-modal`;
-
-  const rootClasses = clsx(rootClassName, className);
-
-  const bodyTransitionClasses = `${rootClassName}__body`;
-
   return (
     <Portal getContainer={getContainer}>
       <ModalRoot
         aria-hidden={!visible}
         {...others}
         className={rootClasses}
-        ref={ref}
+        ref={forkRef}
         style={{ ...style, zIndex, display: visible ? '' : 'none' }}
         onKeyDown={handleKeyDown}
       >
@@ -239,8 +278,15 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
         >
           <div aria-hidden={true} className={`${rootClassName}__mask`} />
         </CSSTransition>
-        <div className={`${rootClassName}__wrap`} onClick={handleMaskClick}>
-          <div tabIndex={0} onFocus={() => bodyRef.current?.focus()} />
+        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions */}
+        <div className={`${rootClassName}__wrap`} role='dialog' onClick={handleMaskClick}>
+          <div
+            aria-hidden='true'
+            // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+            tabIndex={0}
+            style={sentinelStyle}
+            onFocus={handleSentinelFocus}
+          />
           <CSSTransition
             transitionClasses={bodyTransitionClasses}
             in={animatedVisible}
@@ -248,6 +294,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
             beforeEnter={modalBeforeEnter}
             afterLeave={afterLeave}
           >
+            {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,jsx-a11y/no-static-element-interactions */}
             <div
               tabIndex={-1}
               className={`${rootClassName}__body`}
@@ -257,7 +304,13 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
               {children}
             </div>
           </CSSTransition>
-          <div tabIndex={0} onFocus={() => bodyRef.current?.focus()} />
+          <div
+            aria-hidden='true'
+            // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+            tabIndex={0}
+            style={sentinelStyle}
+            onFocus={handleSentinelFocus}
+          />
         </div>
       </ModalRoot>
     </Portal>
