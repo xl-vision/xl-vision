@@ -133,7 +133,7 @@ function blockTokenizer(eat, value) {
   const matches = value.match(REGEX_START);
 
   if (!matches) {
-    return false;
+    return;
   }
 
   const filePath = matches[1];
@@ -151,7 +151,7 @@ function blockTokenizer(eat, value) {
   }
 
   if (i === lines.length) {
-    return false;
+    return;
   }
 
   const now = eat.now();

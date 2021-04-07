@@ -145,6 +145,11 @@ const routes: Array<Route> = [
         path: '/Popper',
         component: () => import('@xl-vision/react/Popper/__doc__/index.en-US.mdx'),
       },
+      {
+        name: 'Modal',
+        path: '/Modal',
+        component: () => import('@xl-vision/react/Modal/__doc__/index.en-US.mdx'),
+      },
     ],
   },
 ];

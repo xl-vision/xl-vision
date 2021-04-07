@@ -666,5 +666,6 @@ Array [
   "Popover",
   "Popconfirm",
   "Dropdown",
+  "Modal",
 ]
 `;

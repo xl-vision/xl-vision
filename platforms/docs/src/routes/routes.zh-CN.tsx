@@ -116,7 +116,7 @@ const routes: Array<Route> = [
         component: () => import('@xl-vision/react/ThemeProvider/__doc__/index.zh-CN.mdx'),
       },
       {
-        name: 'CssBaseline',
+        name: 'CSS基线',
         path: '/CssBaseline',
         component: () => import('@xl-vision/react/CssBaseline/__doc__/index.zh-CN.mdx'),
       },
@@ -144,6 +144,11 @@ const routes: Array<Route> = [
         name: '基础弹出框',
         path: '/Popper',
         component: () => import('@xl-vision/react/Popper/__doc__/index.zh-CN.mdx'),
+      },
+      {
+        name: '模态框',
+        path: '/Modal',
+        component: () => import('@xl-vision/react/Modal/__doc__/index.zh-CN.mdx'),
       },
     ],
   },
