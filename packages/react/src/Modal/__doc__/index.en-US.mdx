@@ -15,3 +15,14 @@ Nest
 Nest
 
 :::
+
+## Modal API
+
+| Property | Description | Type | Optional Value | Default | Require |
+| --- | --- | --- | --- | --- | --- |
+| getContainer | Specify the parent container of the modal | string &#x007c; HTMLElement &#x007c; (() => string &#x007c; HTMLElement) | - | - | false |
+| defaultVisible | Whether the default modal is displayed, when `visible` exists, the option is invalid | boolean | - | false | false |
+| onVisibleChange | Callback when the status of the modal changes | (visible: boolean) => void | - | - | false |
+| visible | Whether to show modal | boolean | - | - | false |
+| destroyOnClose | Destroy dom when close modal | boolean | - | - | false |
+| mountOnOpen | Mount dom when open modal | boolean | - | true | false |

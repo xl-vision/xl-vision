@@ -15,3 +15,14 @@
 嵌套
 
 :::
+
+## Modal API
+
+| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
+| --- | --- | --- | --- | --- | --- |
+| getContainer | 指定挂载的父节点，支持字符串，节点实例或返回这些的函数 | string &#x007c; HTMLElement &#x007c; (() => string &#x007c; HTMLElement) | - | - | false |
+| defaultVisible | 模态框默认是否展示，当`visible`存在时，选项失效 | boolean | - | false | false |
+| onVisibleChange | 模态框状态改变时的回调 | (visible: boolean) => void | - | - | false |
+| visible | 是否显示模态框 | boolean | - | - | false |
+| destroyOnClose | close 时是否销毁 dom 实例 | boolean | - | - | false |
+| mountOnOpen | 是否显示时才挂载 | boolean | - | true | false |
