@@ -12,7 +12,7 @@ import { addClass, removeClass } from '../utils/class';
 import { forceReflow } from '../utils/transition';
 import ScrollLocker from '../utils/ScrollLocker';
 import useForkRef from '../hooks/useForkRef';
-import { contain } from '../utils/dom';
+import { contains } from '../utils/dom';
 
 export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   getContainer?: PortalContainerType;
@@ -36,6 +36,9 @@ const ModalRoot = styled('div')(({ theme }) => {
     top: 0,
     right: 0,
     bottom: 0,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     [`.${clsPrefix}-modal__mask`]: {
       position: 'absolute',
       left: 0,
@@ -56,13 +59,6 @@ const ModalRoot = styled('div')(({ theme }) => {
       '&-leave-from,&-enter-to': {
         opacity: 1,
       },
-    },
-    [`.${clsPrefix}-modal__wrap`]: {
-      width: '100%',
-      height: '100%',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
     },
     [`.${clsPrefix}-modal__body`]: {
       position: 'relative',
@@ -93,9 +89,8 @@ const ModalRoot = styled('div')(({ theme }) => {
 let mousePosition: { x: number; y: number } | null;
 
 const getClickPosition = (e: MouseEvent) => {
-  // key enter trigger click
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-  if ((e as any).pointerType !== 'mouse') {
+  // fix bug when click event triggered by press key enter
+  if (!e.pageX && !e.pageY) {
     return;
   }
   mousePosition = {
@@ -118,8 +113,6 @@ if (isBrowser) {
 let modalManagers: Array<HTMLElement> = [];
 
 const defaultGetContainer = () => document.body;
-
-const sentinelStyle = { width: 0, height: 0, overflow: 'hidden', outline: 'none' };
 
 const scrollLocker = new ScrollLocker({ getContainer: defaultGetContainer });
 
@@ -160,27 +153,36 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   }, []);
 
   React.useEffect(() => {
-    const el = bodyRef.current;
+    const body = bodyRef.current;
+    const container = containerRef.current;
 
-    if (!animatedVisible || !el) {
+    if (!animatedVisible || !body || !container) {
       return;
     }
 
     let activeElement: HTMLElement;
-    if (
-      containerRef.current &&
-      document.activeElement &&
-      !contain(containerRef.current, document.activeElement)
-    ) {
+    if (!contains(container, document.activeElement)) {
       activeElement = document.activeElement as HTMLElement;
     }
-    el.focus();
-    modalManagers.push(el);
+    body.focus();
+    modalManagers.push(body);
+    const handleFocusIn = (e: FocusEvent) => {
+      if (!isTop()) {
+        return;
+      }
+      const target = e.target as Element;
+      if (contains(container, target)) {
+        return;
+      }
+      body.focus();
+    };
+    document.addEventListener('focusin', handleFocusIn, true);
     return () => {
-      modalManagers = modalManagers.filter((it) => it !== el);
+      document.removeEventListener('focusin', handleFocusIn, true);
+      modalManagers = modalManagers.filter((it) => it !== body);
       if (modalManagers.length) {
         const modalEl = modalManagers[modalManagers.length - 1];
-        if (activeElement && contain(modalEl, activeElement)) {
+        if (contains(modalEl, activeElement)) {
           activeElement.focus();
         } else {
           modalEl.focus();
@@ -189,17 +191,18 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
         activeElement?.focus();
       }
     };
-  }, [animatedVisible]);
+  }, [animatedVisible, isTop]);
 
   React.useEffect(() => {
     setAnimatedVisible(visible);
-    if (visible) {
-      setZIndex(increaseZindex());
-      scrollLocker.lock();
-      return () => {
-        scrollLocker.unlock();
-      };
+    if (!visible) {
+      return;
     }
+    setZIndex(increaseZindex());
+    scrollLocker.lock();
+    return () => {
+      scrollLocker.unlock();
+    };
   }, [visible]);
 
   const rootClassName = `${clsPrefix}-modal`;
@@ -208,8 +211,13 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
   const bodyTransitionClasses = `${rootClassName}__body`;
 
+  const maskBeforeEnter = React.useCallback((el: HTMLElement) => {
+    el.style.display = '';
+  }, []);
+
   const modalBeforeEnter = React.useCallback(
     (el: HTMLElement) => {
+      el.style.display = '';
       removeClass(el, `${bodyTransitionClasses}-enter-from`);
       removeClass(el, `${bodyTransitionClasses}-enter-active`);
       const { x, y } = el.getBoundingClientRect();
@@ -219,17 +227,22 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
       addClass(el, `${bodyTransitionClasses}-enter-from`);
       forceReflow();
       addClass(el, `${bodyTransitionClasses}-enter-active`);
+      el.focus();
     },
     [bodyTransitionClasses],
   );
 
-  const afterLeave = React.useCallback(() => {
-    transitionCount.current++;
-    if (transitionCount.current === 2) {
-      transitionCount.current = 0;
-      setVisible(false);
-    }
-  }, [setVisible]);
+  const afterLeave = React.useCallback(
+    (el: HTMLElement) => {
+      transitionCount.current++;
+      if (transitionCount.current === 2) {
+        transitionCount.current = 0;
+        setVisible(false);
+      }
+      el.style.display = 'none';
+    },
+    [setVisible],
+  );
 
   const handleMaskClick = React.useCallback(() => {
     setAnimatedVisible(false);
@@ -243,10 +256,6 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     },
     [isTop],
   );
-
-  const handleSentinelFocus = React.useCallback(() => {
-    bodyRef.current?.focus();
-  }, []);
 
   if (visible) {
     isFirstMountRef.current = false;
@@ -274,44 +283,22 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
           transitionClasses={`${rootClassName}__mask`}
           in={animatedVisible}
           mountOnEnter={true}
+          beforeEnter={maskBeforeEnter}
           afterLeave={afterLeave}
         >
-          <div aria-hidden={true} className={`${rootClassName}__mask`} />
+          <div aria-hidden={true} className={`${rootClassName}__mask`} onClick={handleMaskClick} />
         </CSSTransition>
-        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions */}
-        <div className={`${rootClassName}__wrap`} role='dialog' onClick={handleMaskClick}>
-          <div
-            aria-hidden='true'
-            // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-            tabIndex={0}
-            style={sentinelStyle}
-            onFocus={handleSentinelFocus}
-          />
-          <CSSTransition
-            transitionClasses={bodyTransitionClasses}
-            in={animatedVisible}
-            mountOnEnter={true}
-            beforeEnter={modalBeforeEnter}
-            afterLeave={afterLeave}
-          >
-            {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,jsx-a11y/no-static-element-interactions */}
-            <div
-              tabIndex={-1}
-              className={`${rootClassName}__body`}
-              onClick={(e) => e.stopPropagation()}
-              ref={bodyRef}
-            >
-              {children}
-            </div>
-          </CSSTransition>
-          <div
-            aria-hidden='true'
-            // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-            tabIndex={0}
-            style={sentinelStyle}
-            onFocus={handleSentinelFocus}
-          />
-        </div>
+        <CSSTransition
+          transitionClasses={bodyTransitionClasses}
+          in={animatedVisible}
+          mountOnEnter={true}
+          beforeEnter={modalBeforeEnter}
+          afterLeave={afterLeave}
+        >
+          <div tabIndex={-1} className={`${rootClassName}__body`} ref={bodyRef}>
+            {children}
+          </div>
+        </CSSTransition>
       </ModalRoot>
     </Portal>
   );
@@ -325,6 +312,10 @@ if (isDevelopment) {
     defaultVisible: PropTypes.bool,
     visible: PropTypes.bool,
     onVisibleChange: PropTypes.func,
+    destroyOnClose: PropTypes.bool,
+    mountOnOpen: PropTypes.bool,
+    className: PropTypes.string,
+    style: PropTypes.object,
   };
 }
 
