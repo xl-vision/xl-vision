@@ -22,6 +22,9 @@ export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   onVisibleChange?: (visible: boolean) => void;
   destroyOnClose?: boolean;
   mountOnOpen?: boolean;
+  escClosable?: boolean;
+  mask?: boolean;
+  maskClosable?: boolean;
 }
 
 const displayName = 'Modal';
@@ -125,6 +128,9 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     onVisibleChange,
     destroyOnClose,
     mountOnOpen = true,
+    mask = true,
+    maskClosable = true,
+    escClosable = true,
     className,
     style,
     ...others
@@ -235,27 +241,39 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   const afterLeave = React.useCallback(
     (el: HTMLElement) => {
       transitionCount.current++;
-      if (transitionCount.current === 2) {
+      const total = mask ? 2 : 1;
+      if (transitionCount.current >= total) {
         transitionCount.current = 0;
         setVisible(false);
       }
       el.style.display = 'none';
     },
-    [setVisible],
+    [setVisible, mask],
   );
 
   const handleMaskClick = React.useCallback(() => {
+    if (!maskClosable) {
+      return;
+    }
     setAnimatedVisible(false);
-  }, []);
+  }, [maskClosable]);
 
   const handleKeyDown = React.useCallback(
     (e: React.KeyboardEvent) => {
-      if (e.key === 'Escape' && isTop()) {
+      if (escClosable && e.key === 'Escape' && isTop()) {
         setAnimatedVisible(false);
       }
     },
-    [isTop],
+    [isTop, escClosable],
   );
+
+  const handleClick = React.useCallback((e: React.MouseEvent) => {
+    const target = e.target as HTMLElement;
+    if (bodyRef.current && contains(bodyRef.current, target)) {
+      return;
+    }
+    bodyRef.current?.focus();
+  }, []);
 
   if (visible) {
     isFirstMountRef.current = false;
@@ -278,16 +296,23 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
         ref={forkRef}
         style={{ ...style, zIndex, display: visible ? '' : 'none' }}
         onKeyDown={handleKeyDown}
+        onClick={handleClick}
       >
-        <CSSTransition
-          transitionClasses={`${rootClassName}__mask`}
-          in={animatedVisible}
-          mountOnEnter={true}
-          beforeEnter={maskBeforeEnter}
-          afterLeave={afterLeave}
-        >
-          <div aria-hidden={true} className={`${rootClassName}__mask`} onClick={handleMaskClick} />
-        </CSSTransition>
+        {mask && (
+          <CSSTransition
+            transitionClasses={`${rootClassName}__mask`}
+            in={animatedVisible}
+            mountOnEnter={true}
+            beforeEnter={maskBeforeEnter}
+            afterLeave={afterLeave}
+          >
+            <div
+              aria-hidden={true}
+              className={`${rootClassName}__mask`}
+              onClick={handleMaskClick}
+            />
+          </CSSTransition>
+        )}
         <CSSTransition
           transitionClasses={bodyTransitionClasses}
           in={animatedVisible}
@@ -316,6 +341,9 @@ if (isDevelopment) {
     mountOnOpen: PropTypes.bool,
     className: PropTypes.string,
     style: PropTypes.object,
+    mask: PropTypes.bool,
+    maskClosable: PropTypes.bool,
+    escClosable: PropTypes.bool,
   };
 }
 

@@ -16,6 +16,30 @@
 
 :::
 
+:::demo ./MaskClosable.tsx
+
+禁止点击遮罩
+
+禁止点击遮罩关闭弹出框
+
+:::
+
+:::demo ./HideMask.tsx
+
+隐藏遮罩
+
+隐藏遮罩层
+
+:::
+
+:::demo ./EscClosable.tsx
+
+禁止 esc
+
+禁止使用 esc 键关闭遮罩
+
+:::
+
 ## Modal API
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
@@ -26,3 +50,6 @@
 | visible | 是否显示模态框 | boolean | - | - | false |
 | destroyOnClose | close 时是否销毁 dom 实例 | boolean | - | - | false |
 | mountOnOpen | 是否显示时才挂载 | boolean | - | true | false |
+| mask | 是否显示遮罩 | boolean | - | true | false |
+| maskClosable | 是否点击遮罩关闭弹出框 | boolean | - | true | false |
+| escClosable | 是否键盘输入 esc 键关闭弹出框 | boolean | - | true | false |
