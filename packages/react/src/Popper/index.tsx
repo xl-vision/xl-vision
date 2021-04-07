@@ -423,6 +423,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
   const portal = (
     <Portal getContainer={getPopupContainer}>
       <div
+        aria-hidden={!visible}
         {...others}
         ref={popupNodeRef}
         style={{ position: 'absolute' }}

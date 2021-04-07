@@ -1,5 +1,8 @@
 // eslint-disable-next-line import/prefer-default-export
-export const include = (parent: Element, child: Element) => {
+export const contains = (parent: Element, child: Element | null) => {
+  if (parent.contains) {
+    return parent.contains(child);
+  }
   let temp: Element | null = child;
   while (temp) {
     if (temp === parent) {

@@ -1,8 +1,6 @@
 import { mount } from 'enzyme';
 import React from 'react';
 import Ripple, { RippleRef } from '..';
-import wait from '../../../../../test/wait';
-import * as TransitionUtils from '../../utils/transition';
 
 const Demo = ({ leaveAfterEnter }: { leaveAfterEnter?: boolean }) => {
   const rippleRef = React.useRef<RippleRef>(null);
@@ -35,26 +33,10 @@ const Demo = ({ leaveAfterEnter }: { leaveAfterEnter?: boolean }) => {
 };
 
 describe('Ripple', () => {
-  let onTransitionEndSpy: jest.SpyInstance;
-  let nextFrameSpy: jest.SpyInstance;
-
-  beforeEach(() => {
-    jest.useRealTimers();
-
-    onTransitionEndSpy = jest.spyOn(TransitionUtils, 'onTransitionEnd');
-    // 保证动画有一定的时间
-    onTransitionEndSpy.mockImplementation((_el, done: () => void) => {
-      setTimeout(done, 25);
-    });
-
-    nextFrameSpy = jest.spyOn(TransitionUtils, 'nextFrame');
-    nextFrameSpy.mockImplementation((done: () => void) => {
-      const id = setTimeout(done, 25);
-      return () => {
-        clearTimeout(id);
-      };
-    });
+  beforeAll(() => {
+    jest.useFakeTimers();
   });
+
   it('test render', () => {
     const wrapper = mount(
       <div>
@@ -62,23 +44,30 @@ describe('Ripple', () => {
         <Ripple transitionClasses='ripple' />
       </div>,
     );
+    jest.runAllTimers();
 
     expect(wrapper.render()).toMatchSnapshot();
   });
 
-  it('test event', async () => {
+  it('test event', () => {
     const wrapper = mount(<Demo />);
     wrapper.find('.box').simulate('mousedown');
+
+    jest.runAllTimers();
+
     const doms = wrapper.getDOMNode().querySelectorAll<HTMLElement>('.xl-ripple__inner');
     expect(doms.length).toBe(1);
     expect(doms[0].style.display).toBe('');
 
     wrapper.find('.box').simulate('mouseup');
-    await wait(50 + 20);
+
+    jest.runAllTimers();
+
     expect(wrapper.getDOMNode().querySelectorAll<HTMLElement>('.xl-ripple__inner').length).toBe(0);
 
     wrapper.find('.box').simulate('blur');
-    await wait(50 + 20);
+    jest.runAllTimers();
+
     expect(wrapper.getDOMNode().querySelectorAll<HTMLElement>('.xl-ripple__inner').length).toBe(0);
   });
 });
