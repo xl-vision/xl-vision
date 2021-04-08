@@ -173,7 +173,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     if (!contains(container, document.activeElement)) {
       activeElement = document.activeElement as HTMLElement;
     }
-    body.focus();
+
     modalManagers.push(body);
     const handleFocusIn = (e: FocusEvent) => {
       if (!isTop()) {
@@ -236,6 +236,8 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
       addClass(el, `${bodyTransitionClasses}-enter-from`);
       forceReflow();
       addClass(el, `${bodyTransitionClasses}-enter-active`);
+
+      el.focus();
     },
     [bodyTransitionClasses],
   );
