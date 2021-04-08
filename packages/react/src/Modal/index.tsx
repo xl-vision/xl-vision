@@ -236,7 +236,6 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
       addClass(el, `${bodyTransitionClasses}-enter-from`);
       forceReflow();
       addClass(el, `${bodyTransitionClasses}-enter-active`);
-      el.focus();
     },
     [bodyTransitionClasses],
   );
