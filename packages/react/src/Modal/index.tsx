@@ -29,7 +29,10 @@ export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const displayName = 'Modal';
 
-const ModalRoot = styled('div')(({ theme }) => {
+const ModalRoot = styled('div', {
+  name: displayName,
+  slot: 'Root',
+})(({ theme }) => {
   const { clsPrefix, transition } = theme;
 
   return {

@@ -1,0 +1,18 @@
+# Dialog
+
+
+
+## Dialog API
+
+| Property | Description | Type | Optional Value | Default | Require |
+| --- | --- | --- | --- | --- | --- |
+| title | Title | React.ReactNode | - | - | true |
+| icon | Custom icon | React.ReactNode | - | - | false |
+| onCancel | Click to cancel the event | ()=>void | - | - | false |
+| onConfirm | Click to confirm event | ()=>void | - | - | false |
+| cancelButtonProps | The props of the cancel button, refer to [Button](/Button) | object | - | - | false |
+| confirmButtonProps | The props of the confirm button, refer to [Button](/Button) | object | - | - | false |
+| cancelText | Cancel button text, support `i18n` | string | - | 取消 | false |
+| confirmText | Confirm button text, support `i18n` | string | - | 确认 | false |
+| showArrow | Show arrow | boolean | - | - | false |
+| transitionClassName | Animation class, see [CSSTransition](/CSSTransition) | string | - | 'xl-popconfirm' | false |
