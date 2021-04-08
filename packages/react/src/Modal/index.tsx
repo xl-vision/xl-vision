@@ -93,12 +93,12 @@ let mousePosition: { x: number; y: number } | null;
 
 const getClickPosition = (e: MouseEvent) => {
   // fix bug when click event triggered by press key enter
-  if (!e.pageX && !e.pageY) {
+  if (!e.clientX && !e.clientY) {
     return;
   }
   mousePosition = {
-    x: e.pageX,
-    y: e.pageY,
+    x: e.clientX,
+    y: e.clientY,
   };
   // 100ms 内发生过点击事件，则从点击位置动画展示
   // 否则直接 zoom 展示
