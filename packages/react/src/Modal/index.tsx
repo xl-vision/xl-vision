@@ -33,9 +33,7 @@ const displayName = 'Modal';
 const ModalRoot = styled('div', {
   name: displayName,
   slot: 'Root',
-})(({ theme }) => {
-  const { clsPrefix, transition } = theme;
-
+})(() => {
   return {
     position: 'fixed',
     inset: 0,
@@ -46,14 +44,23 @@ const ModalRoot = styled('div', {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    [`.${clsPrefix}-modal__mask`]: {
-      position: 'absolute',
-      left: 0,
-      top: 0,
-      right: 0,
-      bottom: 0,
-      zIndex: -1,
-      backgroundColor: 'rgba(0,0,0,0.5)',
+  };
+});
+
+const ModalMask = styled('div', {
+  name: displayName,
+  slot: 'Mask',
+})(({ theme }) => {
+  const { clsPrefix, transition } = theme;
+  return {
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    right: 0,
+    bottom: 0,
+    zIndex: -1,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    [`&.${clsPrefix}-modal__mask`]: {
       '&-enter-active': {
         transition: transition.enter('opacity'),
       },
@@ -67,10 +74,18 @@ const ModalRoot = styled('div', {
         opacity: 1,
       },
     },
-    [`.${clsPrefix}-modal__body`]: {
-      position: 'relative',
-      outline: 0,
+  };
+});
 
+const ModalContent = styled('div', {
+  name: displayName,
+  slot: 'Content',
+})(({ theme }) => {
+  const { clsPrefix, transition } = theme;
+  return {
+    position: 'relative',
+    outline: 0,
+    [`&.${clsPrefix}-modal`]: {
       '&-enter-active': {
         transition: transition.enter(['opacity', 'transform']),
       },
@@ -218,10 +233,6 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
   const rootClassName = `${clsPrefix}-modal`;
 
-  const rootClasses = clsx(rootClassName, className);
-
-  const bodyTransitionClasses = `${rootClassName}__body`;
-
   const maskBeforeEnter = React.useCallback((el: HTMLElement) => {
     el.style.display = '';
   }, []);
@@ -229,19 +240,19 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   const modalBeforeEnter = React.useCallback(
     (el: HTMLElement) => {
       el.style.display = '';
-      removeClass(el, `${bodyTransitionClasses}-enter-from`);
-      removeClass(el, `${bodyTransitionClasses}-enter-active`);
+      removeClass(el, `${rootClassName}-enter-from`);
+      removeClass(el, `${rootClassName}-enter-active`);
       const { x, y } = el.getBoundingClientRect();
       el.style.transformOrigin = mousePosition
         ? `${mousePosition.x - x}px ${mousePosition.y - y}px`
         : '50% 50%';
-      addClass(el, `${bodyTransitionClasses}-enter-from`);
+      addClass(el, `${rootClassName}-enter-from`);
       forceReflow();
-      addClass(el, `${bodyTransitionClasses}-enter-active`);
+      addClass(el, `${rootClassName}-enter-active`);
 
       el.focus();
     },
-    [bodyTransitionClasses],
+    [rootClassName],
   );
 
   const afterLeave = React.useCallback(
@@ -297,7 +308,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     <Portal getContainer={getContainer}>
       <ModalRoot
         aria-hidden={!visible}
-        className={clsx(rootClasses, wrapperClassName)}
+        className={clsx(`${rootClassName}__wrapper`, wrapperClassName)}
         ref={forkRef}
         style={{ ...style, zIndex, display: visible ? '' : 'none' }}
         onKeyDown={handleKeyDown}
@@ -311,7 +322,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
             beforeEnter={maskBeforeEnter}
             afterLeave={afterLeave}
           >
-            <div
+            <ModalMask
               aria-hidden={true}
               className={`${rootClassName}__mask`}
               onClick={handleMaskClick}
@@ -319,15 +330,20 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
           </CSSTransition>
         )}
         <CSSTransition
-          transitionClasses={bodyTransitionClasses}
+          transitionClasses={rootClassName}
           in={animatedVisible}
           mountOnEnter={true}
           beforeEnter={modalBeforeEnter}
           afterLeave={afterLeave}
         >
-          <div {...others} tabIndex={-1} className={`${rootClassName}__body`} ref={bodyRef}>
+          <ModalContent
+            {...others}
+            tabIndex={-1}
+            className={clsx(rootClassName, className)}
+            ref={bodyRef}
+          >
             {children}
-          </div>
+          </ModalContent>
         </CSSTransition>
       </ModalRoot>
     </Portal>
