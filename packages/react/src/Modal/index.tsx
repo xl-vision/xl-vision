@@ -25,6 +25,7 @@ export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   escClosable?: boolean;
   mask?: boolean;
   maskClosable?: boolean;
+  wrapperClassName?: string;
 }
 
 const displayName = 'Modal';
@@ -136,6 +137,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     escClosable = true,
     className,
     style,
+    wrapperClassName,
     ...others
   } = props;
 
@@ -295,8 +297,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     <Portal getContainer={getContainer}>
       <ModalRoot
         aria-hidden={!visible}
-        {...others}
-        className={rootClasses}
+        className={clsx(rootClasses, wrapperClassName)}
         ref={forkRef}
         style={{ ...style, zIndex, display: visible ? '' : 'none' }}
         onKeyDown={handleKeyDown}
@@ -324,7 +325,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
           beforeEnter={modalBeforeEnter}
           afterLeave={afterLeave}
         >
-          <div tabIndex={-1} className={`${rootClassName}__body`} ref={bodyRef}>
+          <div {...others} tabIndex={-1} className={`${rootClassName}__body`} ref={bodyRef}>
             {children}
           </div>
         </CSSTransition>
@@ -348,6 +349,7 @@ if (isDevelopment) {
     mask: PropTypes.bool,
     maskClosable: PropTypes.bool,
     escClosable: PropTypes.bool,
+    wrapperClassName: PropTypes.string,
   };
 }
 
