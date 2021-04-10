@@ -25,13 +25,15 @@ export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   escClosable?: boolean;
   mask?: boolean;
   maskClosable?: boolean;
+  wrapperClassName?: string;
 }
 
 const displayName = 'Modal';
 
-const ModalRoot = styled('div')(({ theme }) => {
-  const { clsPrefix, transition } = theme;
-
+const ModalRoot = styled('div', {
+  name: displayName,
+  slot: 'Root',
+})(() => {
   return {
     position: 'fixed',
     inset: 0,
@@ -42,14 +44,23 @@ const ModalRoot = styled('div')(({ theme }) => {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    [`.${clsPrefix}-modal__mask`]: {
-      position: 'absolute',
-      left: 0,
-      top: 0,
-      right: 0,
-      bottom: 0,
-      zIndex: -1,
-      backgroundColor: 'rgba(0,0,0,0.5)',
+  };
+});
+
+const ModalMask = styled('div', {
+  name: displayName,
+  slot: 'Mask',
+})(({ theme }) => {
+  const { clsPrefix, transition } = theme;
+  return {
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    right: 0,
+    bottom: 0,
+    zIndex: -1,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    [`&.${clsPrefix}-modal__mask`]: {
       '&-enter-active': {
         transition: transition.enter('opacity'),
       },
@@ -63,10 +74,18 @@ const ModalRoot = styled('div')(({ theme }) => {
         opacity: 1,
       },
     },
-    [`.${clsPrefix}-modal__body`]: {
-      position: 'relative',
-      outline: 0,
+  };
+});
 
+const ModalContent = styled('div', {
+  name: displayName,
+  slot: 'Content',
+})(({ theme }) => {
+  const { clsPrefix, transition } = theme;
+  return {
+    position: 'relative',
+    outline: 0,
+    [`&.${clsPrefix}-modal__body`]: {
       '&-enter-active': {
         transition: transition.enter(['opacity', 'transform']),
       },
@@ -133,6 +152,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     escClosable = true,
     className,
     style,
+    wrapperClassName,
     ...others
   } = props;
 
@@ -144,11 +164,10 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
   const [zIndex, setZIndex] = React.useState<number>();
 
-  const isFirstMountRef = React.useRef(true);
-
   const transitionCount = React.useRef(0);
 
   const bodyRef = React.useRef<HTMLDivElement>(null);
+  const isFirstMountRef = React.useRef(true);
 
   const containerRef = React.useRef<HTMLDivElement>(null);
 
@@ -158,20 +177,22 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     return modalManagers[modalManagers.length - 1] === bodyRef.current;
   }, []);
 
+  const inProp = visible ? animatedVisible : false;
+
   React.useEffect(() => {
     const body = bodyRef.current;
     const container = containerRef.current;
 
-    if (!animatedVisible || !body || !container) {
+    if (!inProp || !body || !container) {
       return;
     }
+    modalManagers.push(body);
 
     let activeElement: HTMLElement;
     if (!contains(container, document.activeElement)) {
       activeElement = document.activeElement as HTMLElement;
     }
 
-    modalManagers.push(body);
     const handleFocusIn = (e: FocusEvent) => {
       if (!isTop()) {
         return;
@@ -182,10 +203,11 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
       }
       body.focus();
     };
+
     document.addEventListener('focusin', handleFocusIn, true);
     return () => {
-      document.removeEventListener('focusin', handleFocusIn, true);
       modalManagers = modalManagers.filter((it) => it !== body);
+      document.removeEventListener('focusin', handleFocusIn, true);
       if (modalManagers.length) {
         const modalEl = modalManagers[modalManagers.length - 1];
         if (contains(modalEl, activeElement)) {
@@ -197,13 +219,13 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
         activeElement?.focus();
       }
     };
-  }, [animatedVisible, isTop]);
+  }, [inProp, isTop]);
 
   React.useEffect(() => {
-    setAnimatedVisible(visible);
     if (!visible) {
       return;
     }
+    setAnimatedVisible(true);
     setZIndex(increaseZindex());
     scrollLocker.lock();
     return () => {
@@ -213,59 +235,57 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
   const rootClassName = `${clsPrefix}-modal`;
 
-  const rootClasses = clsx(rootClassName, className);
-
-  const bodyTransitionClasses = `${rootClassName}__body`;
-
-  const maskBeforeEnter = React.useCallback((el: HTMLElement) => {
+  const beforeEnter = React.useCallback((el: HTMLElement) => {
     el.style.display = '';
+    transitionCount.current++;
   }, []);
+
+  const bodyClassName = `${rootClassName}__body`;
 
   const modalBeforeEnter = React.useCallback(
     (el: HTMLElement) => {
-      el.style.display = '';
-      removeClass(el, `${bodyTransitionClasses}-enter-from`);
-      removeClass(el, `${bodyTransitionClasses}-enter-active`);
+      beforeEnter(el);
+      removeClass(el, `${bodyClassName}-enter-from`);
+      removeClass(el, `${bodyClassName}-enter-active`);
       const { x, y } = el.getBoundingClientRect();
       el.style.transformOrigin = mousePosition
         ? `${mousePosition.x - x}px ${mousePosition.y - y}px`
         : '50% 50%';
-      addClass(el, `${bodyTransitionClasses}-enter-from`);
+      addClass(el, `${bodyClassName}-enter-from`);
       forceReflow();
-      addClass(el, `${bodyTransitionClasses}-enter-active`);
+      addClass(el, `${bodyClassName}-enter-active`);
 
       el.focus();
     },
-    [bodyTransitionClasses],
+    [bodyClassName, beforeEnter],
   );
 
   const afterLeave = React.useCallback(
     (el: HTMLElement) => {
-      transitionCount.current++;
-      const total = mask ? 2 : 1;
-      if (transitionCount.current >= total) {
+      transitionCount.current--;
+      if (transitionCount.current <= 0) {
         transitionCount.current = 0;
-        setVisible(false);
+        setAnimatedVisible(false);
       }
       el.style.display = 'none';
     },
-    [setVisible, mask],
+    [setAnimatedVisible],
   );
 
   const handleMaskClick = React.useCallback(() => {
     if (!maskClosable) {
       return;
     }
-    setAnimatedVisible(false);
-  }, [maskClosable]);
+    setVisible(false);
+  }, [setVisible, maskClosable]);
 
   const handleKeyDown = React.useCallback(
     (e: React.KeyboardEvent) => {
       if (escClosable && e.key === 'Escape' && isTop()) {
-        setAnimatedVisible(false);
+        setVisible(false);
       }
     },
-    [isTop, escClosable],
+    [isTop, escClosable, setVisible],
   );
 
   const handleClick = React.useCallback((e: React.MouseEvent) => {
@@ -276,15 +296,17 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     bodyRef.current?.focus();
   }, []);
 
-  if (visible) {
+  const hidden = !visible && !animatedVisible;
+
+  if (!hidden) {
     isFirstMountRef.current = false;
   }
 
   if (isFirstMountRef.current) {
-    if (mountOnOpen && !visible) {
+    if (mountOnOpen && hidden) {
       return null;
     }
-  } else if (destroyOnClose && !visible) {
+  } else if (destroyOnClose && hidden) {
     return null;
   }
 
@@ -292,22 +314,21 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     <Portal getContainer={getContainer}>
       <ModalRoot
         aria-hidden={!visible}
-        {...others}
-        className={rootClasses}
+        className={clsx(rootClassName, wrapperClassName)}
         ref={forkRef}
-        style={{ ...style, zIndex, display: visible ? '' : 'none' }}
+        style={{ ...style, zIndex, display: hidden ? 'none' : '' }}
         onKeyDown={handleKeyDown}
         onClick={handleClick}
       >
         {mask && (
           <CSSTransition
             transitionClasses={`${rootClassName}__mask`}
-            in={animatedVisible}
+            in={inProp}
             mountOnEnter={true}
-            beforeEnter={maskBeforeEnter}
+            beforeEnter={beforeEnter}
             afterLeave={afterLeave}
           >
-            <div
+            <ModalMask
               aria-hidden={true}
               className={`${rootClassName}__mask`}
               onClick={handleMaskClick}
@@ -315,15 +336,20 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
           </CSSTransition>
         )}
         <CSSTransition
-          transitionClasses={bodyTransitionClasses}
-          in={animatedVisible}
+          transitionClasses={bodyClassName}
+          in={inProp}
           mountOnEnter={true}
           beforeEnter={modalBeforeEnter}
           afterLeave={afterLeave}
         >
-          <div tabIndex={-1} className={`${rootClassName}__body`} ref={bodyRef}>
+          <ModalContent
+            {...others}
+            tabIndex={-1}
+            className={clsx(bodyClassName, className)}
+            ref={bodyRef}
+          >
             {children}
-          </div>
+          </ModalContent>
         </CSSTransition>
       </ModalRoot>
     </Portal>
@@ -345,6 +371,7 @@ if (isDevelopment) {
     mask: PropTypes.bool,
     maskClosable: PropTypes.bool,
     escClosable: PropTypes.bool,
+    wrapperClassName: PropTypes.string,
   };
 }
 

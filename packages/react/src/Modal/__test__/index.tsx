@@ -35,5 +35,7 @@ describe('Modal', () => {
     expect(document.querySelector('.xl-modal')).not.toBe(null);
     expect(document.querySelector<HTMLElement>('.xl-modal__mask')?.style.display).toBe('none');
     expect(document.querySelector<HTMLElement>('.xl-modal__body')?.style.display).toBe('none');
+
+    wrapper.unmount();
   });
 });

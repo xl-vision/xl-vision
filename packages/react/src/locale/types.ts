@@ -3,6 +3,10 @@ export type Locale = {
     confirmText: string;
     cancelText: string;
   };
+  Dialog: {
+    confirmText: string;
+    cancelText: string;
+  };
 };
 export type Locales = {
   [lang: string]: Locale;

@@ -210,7 +210,7 @@ const loadingKeyframes = keyframes`
     transform: rotate(0deg);
   }
   100% {
-    transform: rotate(180deg);
+    transform: rotate(360deg);
   }
 `;
 
@@ -220,8 +220,7 @@ const Loading = styled(Icon, {
   name: displayName,
   slot: 'Loading',
 })`
-  animation: ${loadingKeyframes} ${({ theme }) => theme.transition.durations.standard} linear
-    infinite;
+  animation: ${loadingKeyframes} 1s linear infinite;
 `;
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
