@@ -1,16 +1,24 @@
 import React from 'react';
 import clsx from 'clsx';
+import Proptypes from 'prop-types';
 import { isDevelopment } from '../utils/env';
 import Modal, { ModalProps } from '../Modal';
 import ThemeContext from '../ThemeProvider/ThemeContext';
 import { styled } from '../styles';
-import Button from '../Button';
+import Button, { ButtonProps } from '../Button';
 import usePropChange from '../hooks/usePropChange';
 import useEventCallback from '../hooks/useEventCallback';
+import LocalizationContext from '../LocalizationProvider/LocalizationContext';
+
+export type DialogButtonProps = Omit<ButtonProps, 'children' | 'onClick'>;
 
 export interface DialogProps extends Omit<ModalProps, 'bodyProps' | 'title'> {
-  title?: React.ReactNode;
+  title: React.ReactNode;
   footer?: React.ReactNode;
+  confirmButtonProps?: DialogButtonProps;
+  cancelButtonProps?: DialogButtonProps;
+  confirmText?: string;
+  cancelText?: string;
   onConfirm?: () => void;
   onCancel?: () => void;
 }
@@ -40,8 +48,8 @@ const DialogHeader = styled('div', {
 })(({ theme }) => {
   const { clsPrefix, typography, color } = theme;
   return {
-    padding: '16px 24px',
     color: color.text.primary,
+    padding: '16px 24px',
     [`.${clsPrefix}-dialog__title`]: {
       ...typography.h6,
       margin: 0,
@@ -77,6 +85,8 @@ const DialogFooter = styled('div', {
 let uuid = 0;
 
 const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
+  const { locale } = React.useContext(LocalizationContext);
+
   const {
     children,
     title,
@@ -87,6 +97,10 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
     defaultVisible: defaultVisibleProp = false,
     onConfirm,
     onCancel,
+    cancelText = locale.Dialog.cancelText,
+    confirmText = locale.Dialog.confirmText,
+    cancelButtonProps,
+    confirmButtonProps,
     ...others
   } = props;
 
@@ -111,13 +125,22 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
     setVisible(false);
   });
 
+  const handleVisibleChange = useEventCallback((_visible: boolean) => {
+    setVisible(_visible);
+    if (!_visible) {
+      onCancel?.();
+    }
+  });
+
   const defaultFooterNode = (
     <div>
-      <Button theme='primary' variant='text' onClick={handleConfirm}>
-        确认
+      {/** @ts-ignore */}
+      <Button theme='primary' variant='text' {...cancelButtonProps} onClick={handleCancel}>
+        {cancelText}
       </Button>
-      <Button theme='primary' variant='text' onClick={handleCancel}>
-        取消
+      {/** @ts-ignore */}
+      <Button theme='primary' variant='text' {...confirmButtonProps} onClick={handleConfirm}>
+        {confirmText}
       </Button>
     </div>
   );
@@ -130,19 +153,12 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
       aria-labelledby={dialogTitleId}
       {...others}
       className={clsx(rootClassName, className)}
-      // eslint-disable-next-line react/jsx-handler-names
-      onVisibleChange={setVisible}
+      onVisibleChange={handleVisibleChange}
       visible={visible}
     >
-      {title != null && (
-        <DialogHeader id={dialogTitleId} className={`${rootClassName}__header`}>
-          {typeof title === 'string' ? (
-            <h6 className={`${rootClassName}__title`}>{title}</h6>
-          ) : (
-            title
-          )}
-        </DialogHeader>
-      )}
+      <DialogHeader id={dialogTitleId} className={`${rootClassName}__header`}>
+        {typeof title === 'string' ? <h6 className={`${rootClassName}__title`}>{title}</h6> : title}
+      </DialogHeader>
       <DialogContent className={`${rootClassName}__content`}>{children}</DialogContent>
       {footer !== null && (
         <DialogFooter className={`${rootClassName}__footer`}>
@@ -155,7 +171,21 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
 
 if (isDevelopment) {
   Dialog.displayName = displayName;
-  Dialog.propTypes = {};
+  Dialog.propTypes = {
+    children: Proptypes.node.isRequired,
+    title: Proptypes.node.isRequired,
+    footer: Proptypes.node,
+    className: Proptypes.string,
+    visible: Proptypes.bool,
+    onVisibleChange: Proptypes.func,
+    defaultVisible: Proptypes.bool,
+    onConfirm: Proptypes.func,
+    onCancel: Proptypes.func,
+    cancelText: Proptypes.string,
+    confirmText: Proptypes.string,
+    cancelButtonProps: Proptypes.object,
+    confirmButtonProps: Proptypes.object,
+  };
 }
 
 export default Dialog;

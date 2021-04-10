@@ -17,12 +17,14 @@ const LocalizationProvider: React.FunctionComponent<LocalizationProviderProps> =
   const memorizedValue = React.useMemo(() => {
     let locale = customLocales?.[language] || locales[language];
 
-    warning(
-      !locale,
-      `The specified lang '%s' has no corresponding locale configuration, please provide the corresponding locale file, otherwise the default language (en-US) will be used`,
-      language,
-    );
-    locale = locales['en-US'];
+    if (!locale) {
+      warning(
+        true,
+        `The specified lang '%s' has no corresponding locale configuration, please provide the corresponding locale file, otherwise the default language (en-US) will be used`,
+        language,
+      );
+      locale = locales['en-US'];
+    }
 
     return { locale, language };
   }, [customLocales, language]);

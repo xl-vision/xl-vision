@@ -164,11 +164,10 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
   const [zIndex, setZIndex] = React.useState<number>();
 
-  const isFirstMountRef = React.useRef(true);
-
   const transitionCount = React.useRef(0);
 
   const bodyRef = React.useRef<HTMLDivElement>(null);
+  const isFirstMountRef = React.useRef(true);
 
   const containerRef = React.useRef<HTMLDivElement>(null);
 
@@ -178,20 +177,22 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     return modalManagers[modalManagers.length - 1] === bodyRef.current;
   }, []);
 
+  const inProp = visible ? animatedVisible : false;
+
   React.useEffect(() => {
     const body = bodyRef.current;
     const container = containerRef.current;
 
-    if (!visible || !body || !container) {
+    if (!inProp || !body || !container) {
       return;
     }
+    modalManagers.push(body);
 
     let activeElement: HTMLElement;
     if (!contains(container, document.activeElement)) {
       activeElement = document.activeElement as HTMLElement;
     }
 
-    modalManagers.push(body);
     const handleFocusIn = (e: FocusEvent) => {
       if (!isTop()) {
         return;
@@ -202,10 +203,11 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
       }
       body.focus();
     };
+
     document.addEventListener('focusin', handleFocusIn, true);
     return () => {
-      document.removeEventListener('focusin', handleFocusIn, true);
       modalManagers = modalManagers.filter((it) => it !== body);
+      document.removeEventListener('focusin', handleFocusIn, true);
       if (modalManagers.length) {
         const modalEl = modalManagers[modalManagers.length - 1];
         if (contains(modalEl, activeElement)) {
@@ -217,12 +219,13 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
         activeElement?.focus();
       }
     };
-  }, [visible, isTop]);
+  }, [inProp, isTop]);
 
   React.useEffect(() => {
     if (!visible) {
       return;
     }
+    setAnimatedVisible(true);
     setZIndex(increaseZindex());
     scrollLocker.lock();
     return () => {
@@ -234,9 +237,6 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
   const beforeEnter = React.useCallback((el: HTMLElement) => {
     el.style.display = '';
-    if (transitionCount.current <= 0) {
-      setAnimatedVisible(true);
-    }
     transitionCount.current++;
   }, []);
 
@@ -260,14 +260,17 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     [bodyClassName, beforeEnter],
   );
 
-  const afterLeave = React.useCallback((el: HTMLElement) => {
-    transitionCount.current--;
-    if (transitionCount.current <= 0) {
-      transitionCount.current = 0;
-      setAnimatedVisible(false);
-    }
-    el.style.display = 'none';
-  }, []);
+  const afterLeave = React.useCallback(
+    (el: HTMLElement) => {
+      transitionCount.current--;
+      if (transitionCount.current <= 0) {
+        transitionCount.current = 0;
+        setAnimatedVisible(false);
+      }
+      el.style.display = 'none';
+    },
+    [setAnimatedVisible],
+  );
 
   const handleMaskClick = React.useCallback(() => {
     if (!maskClosable) {
@@ -295,7 +298,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
   const hidden = !visible && !animatedVisible;
 
-  if (hidden) {
+  if (!hidden) {
     isFirstMountRef.current = false;
   }
 
@@ -310,7 +313,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   return (
     <Portal getContainer={getContainer}>
       <ModalRoot
-        aria-hidden={hidden}
+        aria-hidden={!visible}
         className={clsx(rootClassName, wrapperClassName)}
         ref={forkRef}
         style={{ ...style, zIndex, display: hidden ? 'none' : '' }}
@@ -320,7 +323,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
         {mask && (
           <CSSTransition
             transitionClasses={`${rootClassName}__mask`}
-            in={visible}
+            in={inProp}
             mountOnEnter={true}
             beforeEnter={beforeEnter}
             afterLeave={afterLeave}
@@ -334,7 +337,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
         )}
         <CSSTransition
           transitionClasses={bodyClassName}
-          in={visible}
+          in={inProp}
           mountOnEnter={true}
           beforeEnter={modalBeforeEnter}
           afterLeave={afterLeave}

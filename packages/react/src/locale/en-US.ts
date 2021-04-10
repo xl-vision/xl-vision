@@ -5,6 +5,10 @@ const locale: Locale = {
     cancelText: 'No',
     confirmText: 'Yes',
   },
+  Dialog: {
+    cancelText: 'No',
+    confirmText: 'Yes',
+  },
 };
 
 export default locale;

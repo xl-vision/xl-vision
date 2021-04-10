@@ -182,7 +182,7 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
   // 判断是否是第一次挂载
   const isFirstMountRef = React.useRef(true);
 
-  if (transitionOnFirst || inProp) {
+  if (inProp) {
     isFirstMountRef.current = false;
   }
 
