@@ -4,9 +4,9 @@ import { Locales } from './types';
 
 export * from './types';
 
-const locales: Locales = {
+export const locales: Locales = {
   'zh-CN': zhCN,
   'en-US': enUS,
 };
 
-export default locales;
+export const defaultLanguage = 'en-US';

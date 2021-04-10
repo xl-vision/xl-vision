@@ -75,6 +75,11 @@ const routes: Array<Route> = [
         path: '/Popconfirm',
         component: () => import('@xl-vision/react/Popconfirm/__doc__/index.zh-CN.mdx'),
       },
+      {
+        name: '对话框',
+        path: '/Dialog',
+        component: () => import('@xl-vision/react/Dialog/__doc__/index.zh-CN.mdx'),
+      },
     ],
   },
   {

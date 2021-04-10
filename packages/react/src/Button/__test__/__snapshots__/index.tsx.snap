@@ -392,8 +392,8 @@ exports[`Button test basic render 1`] = `
 }
 
 .c14 {
-  -webkit-animation: fRjbcp 300ms linear infinite;
-  animation: fRjbcp 300ms linear infinite;
+  -webkit-animation: cilQsd 1s linear infinite;
+  animation: cilQsd 1s linear infinite;
 }
 
 <div>
