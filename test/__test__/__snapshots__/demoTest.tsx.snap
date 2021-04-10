@@ -12799,24 +12799,24 @@ exports[`Demo renders ./packages/react/src/Modal/__doc__/Basic.tsx correctly 1`]
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  color: rgba(0,0,0,0.87);
-  background-color: #fff;
+  color: #fff;
+  background-color: #3f51b5;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(247,247,247,1);
+  background-color: rgba(70,88,184,1);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(230,230,230,1);
+  background-color: rgba(85,101,189,1);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
 <button
-  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation"
+  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
 >
   <span
     class="c2 xl-base-button__inner"
@@ -12930,24 +12930,24 @@ exports[`Demo renders ./packages/react/src/Modal/__doc__/EscClosable.tsx correct
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  color: rgba(0,0,0,0.87);
-  background-color: #fff;
+  color: #fff;
+  background-color: #3f51b5;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(247,247,247,1);
+  background-color: rgba(70,88,184,1);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(230,230,230,1);
+  background-color: rgba(85,101,189,1);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
 <button
-  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation"
+  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
 >
   <span
     class="c2 xl-base-button__inner"
@@ -13061,24 +13061,24 @@ exports[`Demo renders ./packages/react/src/Modal/__doc__/HideMask.tsx correctly 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  color: rgba(0,0,0,0.87);
-  background-color: #fff;
+  color: #fff;
+  background-color: #3f51b5;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(247,247,247,1);
+  background-color: rgba(70,88,184,1);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(230,230,230,1);
+  background-color: rgba(85,101,189,1);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
 <button
-  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation"
+  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
 >
   <span
     class="c2 xl-base-button__inner"
@@ -13192,24 +13192,24 @@ exports[`Demo renders ./packages/react/src/Modal/__doc__/MaskClosable.tsx correc
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  color: rgba(0,0,0,0.87);
-  background-color: #fff;
+  color: #fff;
+  background-color: #3f51b5;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(247,247,247,1);
+  background-color: rgba(70,88,184,1);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(230,230,230,1);
+  background-color: rgba(85,101,189,1);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
 <button
-  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation"
+  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
 >
   <span
     class="c2 xl-base-button__inner"
@@ -13323,24 +13323,24 @@ exports[`Demo renders ./packages/react/src/Modal/__doc__/Nest.tsx correctly 1`] 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  color: rgba(0,0,0,0.87);
-  background-color: #fff;
+  color: #fff;
+  background-color: #3f51b5;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(247,247,247,1);
+  background-color: rgba(70,88,184,1);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(230,230,230,1);
+  background-color: rgba(85,101,189,1);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
 <button
-  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation"
+  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
 >
   <span
     class="c2 xl-base-button__inner"
