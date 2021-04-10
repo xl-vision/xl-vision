@@ -151,7 +151,6 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     maskClosable = true,
     escClosable = true,
     className,
-    style,
     wrapperClassName,
     ...others
   } = props;
@@ -316,7 +315,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
         aria-hidden={!visible}
         className={clsx(rootClassName, wrapperClassName)}
         ref={forkRef}
-        style={{ ...style, zIndex, display: hidden ? 'none' : '' }}
+        style={{ zIndex, display: hidden ? 'none' : '' }}
         onKeyDown={handleKeyDown}
         onClick={handleClick}
       >

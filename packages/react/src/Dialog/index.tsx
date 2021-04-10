@@ -82,6 +82,18 @@ const DialogFooter = styled('div', {
   };
 });
 
+const DialogActions = styled('div', {
+  name: displayName,
+  slot: 'Actions',
+})(() => {
+  return {
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    flexWrap: 'wrap-reverse',
+  };
+});
+
 let uuid = 0;
 
 const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
@@ -133,7 +145,7 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
   });
 
   const defaultFooterNode = (
-    <div>
+    <DialogActions>
       {/** @ts-ignore */}
       <Button theme='primary' variant='text' {...cancelButtonProps} onClick={handleCancel}>
         {cancelText}
@@ -142,7 +154,7 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
       <Button theme='primary' variant='text' {...confirmButtonProps} onClick={handleConfirm}>
         {confirmText}
       </Button>
-    </div>
+    </DialogActions>
   );
 
   const rootClassName = `${clsPrefix}-dialog`;
