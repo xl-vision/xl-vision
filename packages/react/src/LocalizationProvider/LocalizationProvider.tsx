@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import locales, { Locales } from '../locale';
+import { defaultLanguage, locales, Locales } from '../locale';
 import { isDevelopment } from '../utils/env';
 import warning from '../utils/warning';
 import LocalizationContext from './LocalizationContext';
@@ -12,10 +12,10 @@ export type LocalizationProviderProps = {
 };
 
 const LocalizationProvider: React.FunctionComponent<LocalizationProviderProps> = (props) => {
-  const { customLocales, language = 'en-US', children } = props;
+  const { customLocales, language = defaultLanguage, children } = props;
 
   const memorizedValue = React.useMemo(() => {
-    let locale = customLocales?.[language] || locales[language];
+    const locale = customLocales?.[language] || locales[language];
 
     if (!locale) {
       warning(
@@ -23,7 +23,7 @@ const LocalizationProvider: React.FunctionComponent<LocalizationProviderProps> =
         `The specified lang '%s' has no corresponding locale configuration, please provide the corresponding locale file, otherwise the default language (en-US) will be used`,
         language,
       );
-      locale = locales['en-US'];
+      return { locale: locales[defaultLanguage], language: defaultLanguage };
     }
 
     return { locale, language };
