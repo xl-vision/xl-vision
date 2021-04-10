@@ -14,8 +14,10 @@ export default () => {
       <Button theme='primary' onClick={handleClick}>
         click
       </Button>
-      <Dialog title='This is a demo' visible={visible} onVisibleChange={setVisible}>
-        <div>This is dialog content</div>
+      <Dialog title='Are you sure?' visible={visible} onVisibleChange={setVisible}>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod maiores quidem fugiat
+        aspernatur, odio, quo esse molestias porro maxime sit itaque quam soluta autem illo,
+        corporis nihil alias sint tempora.
       </Dialog>
     </>
   );

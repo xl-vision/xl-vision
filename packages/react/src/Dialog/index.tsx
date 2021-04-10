@@ -5,10 +5,14 @@ import Modal, { ModalProps } from '../Modal';
 import ThemeContext from '../ThemeProvider/ThemeContext';
 import { styled } from '../styles';
 import Button from '../Button';
+import usePropChange from '../hooks/usePropChange';
+import useEventCallback from '../hooks/useEventCallback';
 
 export interface DialogProps extends Omit<ModalProps, 'bodyProps' | 'title'> {
-  title: React.ReactNode;
+  title?: React.ReactNode;
   footer?: React.ReactNode;
+  onConfirm?: () => void;
+  onCancel?: () => void;
 }
 
 const displayName = 'Dialog';
@@ -21,6 +25,11 @@ const DialogRoot = styled(Modal, {
   return {
     backgroundColor: color.background.paper,
     borderRadius: 8,
+    maxWidth: 560,
+    margin: 32,
+    maxHeight: 'calc(100% - 64px)',
+    display: 'flex',
+    flexDirection: 'column',
     ...elevations(24),
   };
 });
@@ -49,6 +58,7 @@ const DialogContent = styled('div', {
   return {
     padding: '8px 24px',
     overflowY: 'auto',
+    flex: 1,
     color: color.text.secondary,
     ...typography.body1,
   };
@@ -58,13 +68,29 @@ const DialogFooter = styled('div', {
   name: displayName,
   slot: 'Footer',
 })(() => {
-  return {};
+  return {
+    padding: 8,
+    textAlign: 'right',
+  };
 });
 
 let uuid = 0;
 
 const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
-  const { children, title, footer, className, ...others } = props;
+  const {
+    children,
+    title,
+    footer,
+    className,
+    visible: visibleProp,
+    onVisibleChange: onVisibleChangeProp,
+    defaultVisible: defaultVisibleProp = false,
+    onConfirm,
+    onCancel,
+    ...others
+  } = props;
+
+  const [visible, setVisible] = usePropChange(defaultVisibleProp, visibleProp, onVisibleChangeProp);
 
   const { clsPrefix } = React.useContext(ThemeContext);
 
@@ -75,12 +101,22 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
     uuid++;
   }, [clsPrefix]);
 
+  const handleConfirm = useEventCallback(() => {
+    onConfirm?.();
+    setVisible(false);
+  });
+
+  const handleCancel = useEventCallback(() => {
+    onCancel?.();
+    setVisible(false);
+  });
+
   const defaultFooterNode = (
     <div>
-      <Button theme='primary' variant='text'>
+      <Button theme='primary' variant='text' onClick={handleConfirm}>
         确认
       </Button>
-      <Button theme='primary' variant='text'>
+      <Button theme='primary' variant='text' onClick={handleCancel}>
         取消
       </Button>
     </div>
@@ -91,17 +127,28 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
   return (
     <DialogRoot
       ref={ref}
+      aria-labelledby={dialogTitleId}
       {...others}
       className={clsx(rootClassName, className)}
-      aria-labelledby={dialogTitleId}
+      // eslint-disable-next-line react/jsx-handler-names
+      onVisibleChange={setVisible}
+      visible={visible}
     >
-      <DialogHeader id={dialogTitleId} className={`${rootClassName}__header`}>
-        <h6 className={`${rootClassName}__title`}>{title}</h6>
-      </DialogHeader>
+      {title != null && (
+        <DialogHeader id={dialogTitleId} className={`${rootClassName}__header`}>
+          {typeof title === 'string' ? (
+            <h6 className={`${rootClassName}__title`}>{title}</h6>
+          ) : (
+            title
+          )}
+        </DialogHeader>
+      )}
       <DialogContent className={`${rootClassName}__content`}>{children}</DialogContent>
-      <DialogFooter className={`${rootClassName}__footer`}>
-        {footer || defaultFooterNode}
-      </DialogFooter>
+      {footer !== null && (
+        <DialogFooter className={`${rootClassName}__footer`}>
+          {footer || defaultFooterNode}
+        </DialogFooter>
+      )}
     </DialogRoot>
   );
 });
