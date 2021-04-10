@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-handler-names */
 import { mount } from 'enzyme';
 import React from 'react';
 import Modal from '..';
@@ -36,6 +37,27 @@ describe('Modal', () => {
     expect(document.querySelector<HTMLElement>('.xl-modal__mask')?.style.display).toBe('none');
     expect(document.querySelector<HTMLElement>('.xl-modal__body')?.style.display).toBe('none');
 
+    wrapper.unmount();
+  });
+
+  it('test onClosed', () => {
+    const fn = jest.fn();
+    const wrapper = mount(
+      <Modal visible={true} onClosed={fn}>
+        <div>body</div>
+      </Modal>,
+    );
+
+    jest.runAllTimers();
+    expect(fn.mock.calls.length).toBe(0);
+
+    wrapper.setProps({
+      visible: false,
+    });
+
+    jest.runAllTimers();
+
+    expect(fn.mock.calls.length).toBe(1);
     wrapper.unmount();
   });
 });

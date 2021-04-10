@@ -26,6 +26,7 @@ export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   mask?: boolean;
   maskClosable?: boolean;
   wrapperClassName?: string;
+  onClosed?: () => void;
 }
 
 const displayName = 'Modal';
@@ -152,6 +153,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     escClosable = true,
     className,
     wrapperClassName,
+    onClosed,
     ...others
   } = props;
 
@@ -162,8 +164,6 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   const [animatedVisible, setAnimatedVisible] = React.useState(visible);
 
   const [zIndex, setZIndex] = React.useState<number>();
-
-  const transitionCount = React.useRef(0);
 
   const bodyRef = React.useRef<HTMLDivElement>(null);
   const isFirstMountRef = React.useRef(true);
@@ -177,6 +177,8 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   }, []);
 
   const inProp = visible ? animatedVisible : false;
+
+  const transitionCount = React.useRef(inProp ? (mask ? 2 : 1) : 0);
 
   React.useEffect(() => {
     const body = bodyRef.current;
@@ -265,10 +267,11 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
       if (transitionCount.current <= 0) {
         transitionCount.current = 0;
         setAnimatedVisible(false);
+        onClosed?.();
       }
       el.style.display = 'none';
     },
-    [setAnimatedVisible],
+    [setAnimatedVisible, onClosed],
   );
 
   const handleMaskClick = React.useCallback(() => {
@@ -371,6 +374,7 @@ if (isDevelopment) {
     maskClosable: PropTypes.bool,
     escClosable: PropTypes.bool,
     wrapperClassName: PropTypes.string,
+    onClosed: PropTypes.func,
   };
 }
 
