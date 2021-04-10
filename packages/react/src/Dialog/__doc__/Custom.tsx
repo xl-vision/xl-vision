@@ -12,7 +12,7 @@ const CustomHeader = styled('div')(({ theme }) => {
     justifyContent: 'space-between',
     borderBottom: `1px solid ${color.divider}`,
     margin: '-16px -24px',
-    padding: '8px 24px',
+    padding: '8px 8px 8px 24px',
     h6: {
       ...typography.h6,
       margin: 0,

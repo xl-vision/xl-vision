@@ -16,7 +16,9 @@ export default () => {
 
   return (
     <>
-      <Button onClick={() => setVisible(true)}>show</Button>
+      <Button theme='primary' onClick={() => setVisible(true)}>
+        show
+      </Button>
       <Modal visible={visible} onVisibleChange={setVisible} maskClosable={false}>
         <Body>
           <p>This is modal content</p>
