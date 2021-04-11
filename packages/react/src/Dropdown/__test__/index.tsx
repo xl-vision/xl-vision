@@ -35,7 +35,7 @@ describe('Dropdown', () => {
       jest.runAllTimers();
     });
 
-    expect(document.querySelector('div#popup')!.firstChild as HTMLDivElement).toBe(null);
+    expect(document.querySelector('div#popup')).toBe(null);
 
     wrapper.find('button#btn').simulate('mouseenter');
 
