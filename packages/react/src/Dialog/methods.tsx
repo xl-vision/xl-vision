@@ -116,10 +116,16 @@ export const info = (props: DialogMethodProps) => {
   const {
     themeContext = defaultThemeContext,
     localeContext = defaultLocaleContext,
+    onClosed,
     ...others
   } = props;
 
-  return method({
+  const onClosedWrapper = () => {
+    onClosed?.();
+    ret.destroy();
+  };
+
+  const ret = method({
     icon: (
       <Icon style={{ color: themeContext.color.themes.info.color }}>
         <InfoCircleOutlined />
@@ -130,18 +136,27 @@ export const info = (props: DialogMethodProps) => {
     localeContext,
     themeContext,
     defaultVisible: true,
+    onClosed: onClosedWrapper,
     ...others,
   });
+
+  return ret;
 };
 
 export const success = (props: DialogMethodProps) => {
   const {
     themeContext = defaultThemeContext,
     localeContext = defaultLocaleContext,
+    onClosed,
     ...others
   } = props;
 
-  return method({
+  const onClosedWrapper = () => {
+    onClosed?.();
+    ret.destroy();
+  };
+
+  const ret = method({
     icon: (
       <Icon style={{ color: themeContext.color.themes.primary.color }}>
         <CheckCircleOutlined />
@@ -152,18 +167,27 @@ export const success = (props: DialogMethodProps) => {
     localeContext,
     themeContext,
     defaultVisible: true,
+    onClosed: onClosedWrapper,
     ...others,
   });
+
+  return ret;
 };
 
 export const error = (props: DialogMethodProps) => {
   const {
     themeContext = defaultThemeContext,
     localeContext = defaultLocaleContext,
+    onClosed,
     ...others
   } = props;
 
-  return method({
+  const onClosedWrapper = () => {
+    onClosed?.();
+    ret.destroy();
+  };
+
+  const ret = method({
     icon: (
       <Icon style={{ color: themeContext.color.themes.error.color }}>
         <CloseCircleOutlined />
@@ -174,18 +198,26 @@ export const error = (props: DialogMethodProps) => {
     localeContext,
     themeContext,
     defaultVisible: true,
+    onClosed: onClosedWrapper,
     ...others,
   });
+  return ret;
 };
 
 export const warning = (props: DialogMethodProps) => {
   const {
     themeContext = defaultThemeContext,
     localeContext = defaultLocaleContext,
+    onClosed,
     ...others
   } = props;
 
-  return method({
+  const onClosedWrapper = () => {
+    onClosed?.();
+    ret.destroy();
+  };
+
+  const ret = method({
     icon: (
       <Icon style={{ color: themeContext.color.themes.warning.color }}>
         <ExclamationCircleOutlined />
@@ -196,18 +228,26 @@ export const warning = (props: DialogMethodProps) => {
     localeContext,
     themeContext,
     defaultVisible: true,
+    onClosed: onClosedWrapper,
     ...others,
   });
+  return ret;
 };
 
 export const confirm = (props: DialogMethodProps) => {
   const {
     themeContext = defaultThemeContext,
     localeContext = defaultLocaleContext,
+    onClosed,
     ...others
   } = props;
 
-  return method({
+  const onClosedWrapper = () => {
+    onClosed?.();
+    ret.destroy();
+  };
+
+  const ret = method({
     icon: (
       <Icon style={{ color: themeContext.color.themes.primary.color }}>
         <ExclamationCircleOutlined />
@@ -218,6 +258,8 @@ export const confirm = (props: DialogMethodProps) => {
     localeContext,
     themeContext,
     defaultVisible: true,
+    onClosed: onClosedWrapper,
     ...others,
   });
+  return ret;
 };
