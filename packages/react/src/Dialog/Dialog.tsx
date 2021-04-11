@@ -12,8 +12,9 @@ import LocalizationContext from '../LocalizationProvider/LocalizationContext';
 
 export type DialogButtonProps = Omit<ButtonProps, 'children' | 'onClick'>;
 
-export interface DialogProps extends Omit<ModalProps, 'bodyProps' | 'title'> {
+export interface DialogProps extends Omit<ModalProps, 'bodyProps' | 'title' | 'children'> {
   title: React.ReactNode;
+  children?: React.ReactNode;
   footer?: React.ReactNode;
   prompt?: boolean;
   confirmButtonProps?: DialogButtonProps;
@@ -175,7 +176,9 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
       <DialogHeader id={dialogTitleId} className={`${rootClassName}__header`}>
         {typeof title === 'string' ? <h6 className={`${rootClassName}__title`}>{title}</h6> : title}
       </DialogHeader>
-      <DialogContent className={`${rootClassName}__content`}>{children}</DialogContent>
+      {children && (
+        <DialogContent className={`${rootClassName}__content`}>{children}</DialogContent>
+      )}
       {footer !== null && (
         <DialogFooter className={`${rootClassName}__footer`}>
           {footer || defaultFooterNode}
@@ -188,7 +191,7 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
 if (isDevelopment) {
   Dialog.displayName = displayName;
   Dialog.propTypes = {
-    children: Proptypes.node.isRequired,
+    children: Proptypes.node,
     title: Proptypes.node.isRequired,
     footer: Proptypes.node,
     className: Proptypes.string,

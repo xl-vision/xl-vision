@@ -1,15 +1,21 @@
 /* eslint-disable no-console */
 /* eslint-disable react/jsx-handler-names */
-import { Button, Dialog } from '@xl-vision/react';
+import { WarningOutlined } from '@xl-vision/icons';
+import { Button, Dialog, Icon } from '@xl-vision/react';
 import React from 'react';
 
 export default () => {
   const handleClick = React.useCallback(() => {
     let i = 5;
     const { destroy, update } = Dialog.method({
-      visible: true,
+      defaultVisible: true,
       title: 'This is a method dialog',
-      children: `This dialog will close after ${i}s.`,
+      content: `This dialog will close after ${i}s.`,
+      icon: (
+        <Icon>
+          <WarningOutlined />
+        </Icon>
+      ),
     });
 
     const timer = setInterval(() => {
@@ -19,7 +25,7 @@ export default () => {
         destroy();
         clearInterval(timer);
       } else {
-        update({ children: `This dialog will close after ${i}s.` });
+        update({ content: `This dialog will close after ${i}s.` });
       }
     }, 1000);
   }, []);

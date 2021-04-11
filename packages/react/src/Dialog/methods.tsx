@@ -1,5 +1,12 @@
+import {
+  CheckCircleOutlined,
+  CloseCircleOutlined,
+  ExclamationCircleOutlined,
+  InfoCircleOutlined,
+} from '@xl-vision/icons';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Icon from '../Icon';
 import { defaultLanguage, locales } from '../locale';
 import { LocalizationContextProps } from '../LocalizationProvider';
 import LocalizationContext from '../LocalizationProvider/LocalizationContext';
@@ -8,20 +15,19 @@ import defaultTheme from '../ThemeProvider/defaultTheme';
 import ThemeContext from '../ThemeProvider/ThemeContext';
 import { isServer } from '../utils/env';
 import { voidFn } from '../utils/function';
-import { DialogProps } from './Dialog';
-import MethodDialog from './MethodDialog';
+import MethodDialog, { MethodDialogProps } from './MethodDialog';
 
 let destoryFunctions: Array<() => void> = [];
 
-export type DialogMethodReturnType = {
-  destroy: () => void;
-  update: (props: Partial<DialogProps>) => void;
-};
-
-export interface DialogMethodProps extends DialogProps {
+export interface DialogMethodProps extends MethodDialogProps {
   localeContext?: LocalizationContextProps;
   themeContext?: Theme;
 }
+
+export type DialogMethodReturnType = {
+  destroy: () => void;
+  update: (props: Partial<DialogMethodProps>) => void;
+};
 
 const defaultLocaleContext: LocalizationContextProps = {
   locale: locales[defaultLanguage],
@@ -95,4 +101,123 @@ export const method = (props: DialogMethodProps): DialogMethodReturnType => {
     destroy,
     update,
   };
+};
+
+export const destroyAll = () => {
+  let fn = destoryFunctions.pop();
+
+  while (fn) {
+    fn();
+    fn = destoryFunctions.pop();
+  }
+};
+
+export const info = (props: DialogMethodProps) => {
+  const {
+    themeContext = defaultThemeContext,
+    localeContext = defaultLocaleContext,
+    ...others
+  } = props;
+
+  return method({
+    icon: (
+      <Icon style={{ color: themeContext.color.themes.info.color }}>
+        <InfoCircleOutlined />
+      </Icon>
+    ),
+    confirmText: localeContext.locale.MethodDialog.infoText,
+    prompt: true,
+    localeContext,
+    themeContext,
+    defaultVisible: true,
+    ...others,
+  });
+};
+
+export const success = (props: DialogMethodProps) => {
+  const {
+    themeContext = defaultThemeContext,
+    localeContext = defaultLocaleContext,
+    ...others
+  } = props;
+
+  return method({
+    icon: (
+      <Icon style={{ color: themeContext.color.themes.primary.color }}>
+        <CheckCircleOutlined />
+      </Icon>
+    ),
+    confirmText: localeContext.locale.MethodDialog.successText,
+    prompt: true,
+    localeContext,
+    themeContext,
+    defaultVisible: true,
+    ...others,
+  });
+};
+
+export const error = (props: DialogMethodProps) => {
+  const {
+    themeContext = defaultThemeContext,
+    localeContext = defaultLocaleContext,
+    ...others
+  } = props;
+
+  return method({
+    icon: (
+      <Icon style={{ color: themeContext.color.themes.error.color }}>
+        <CloseCircleOutlined />
+      </Icon>
+    ),
+    confirmText: localeContext.locale.MethodDialog.errorText,
+    prompt: true,
+    localeContext,
+    themeContext,
+    defaultVisible: true,
+    ...others,
+  });
+};
+
+export const warning = (props: DialogMethodProps) => {
+  const {
+    themeContext = defaultThemeContext,
+    localeContext = defaultLocaleContext,
+    ...others
+  } = props;
+
+  return method({
+    icon: (
+      <Icon style={{ color: themeContext.color.themes.warning.color }}>
+        <ExclamationCircleOutlined />
+      </Icon>
+    ),
+    confirmText: localeContext.locale.MethodDialog.warningText,
+    prompt: true,
+    localeContext,
+    themeContext,
+    defaultVisible: true,
+    ...others,
+  });
+};
+
+export const confirm = (props: DialogMethodProps) => {
+  const {
+    themeContext = defaultThemeContext,
+    localeContext = defaultLocaleContext,
+    ...others
+  } = props;
+
+  return method({
+    icon: (
+      <Icon style={{ color: themeContext.color.themes.primary.color }}>
+        <ExclamationCircleOutlined />
+      </Icon>
+    ),
+    confirmText: localeContext.locale.MethodDialog.confirm.confirmText,
+    cancelText: localeContext.locale.MethodDialog.confirm.cancelText,
+    localeContext,
+    themeContext,
+    defaultVisible: true,
+    ...others,
+  });
 };

@@ -1,8 +1,8 @@
 export { styled, createGlobalStyles } from './styles';
 export type { XlOptions } from './styles';
-export { default as ThemeProvider } from './ThemeProvider';
+export { default as ThemeProvider, ThemeContext } from './ThemeProvider';
 export type { ThemeProviderProps, Theme, BaseTheme } from './ThemeProvider';
-export { default as LocalizationProvider } from './LocalizationProvider';
+export { default as LocalizationProvider, LocalizationContext } from './LocalizationProvider';
 export type { LocalizationProviderProps, LocalizationContextProps } from './LocalizationProvider';
 export { default as Transition } from './Transition';
 export type {
