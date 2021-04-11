@@ -4,13 +4,8 @@ import usePropChange from '../hooks/usePropChange';
 import { isDevelopment } from '../utils/env';
 import Dialog, { DialogProps } from './Dialog';
 
-export interface MethodDialogProps extends DialogProps {
-  init?: boolean;
-}
-
-const MethodDialog = React.forwardRef<HTMLDivElement, MethodDialogProps>((props, ref) => {
+const MethodDialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
   const {
-    init = false,
     visible: visibleProp,
     defaultVisible: defaultVisibleProp = true,
     onVisibleChange: onVisibleChangeProp,
@@ -19,7 +14,7 @@ const MethodDialog = React.forwardRef<HTMLDivElement, MethodDialogProps>((props,
 
   const [visible, setVisible] = usePropChange(defaultVisibleProp, visibleProp, onVisibleChangeProp);
 
-  const [first, setFirst] = React.useState(init);
+  const [first, setFirst] = React.useState(true);
 
   React.useEffect(() => {
     setFirst(false);
@@ -35,7 +30,6 @@ if (isDevelopment) {
     visible: Proptypes.bool,
     onVisibleChange: Proptypes.func,
     defaultVisible: Proptypes.bool,
-    init: Proptypes.bool,
   };
 }
 

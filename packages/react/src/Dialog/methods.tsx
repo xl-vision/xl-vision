@@ -11,11 +11,11 @@ import { voidFn } from '../utils/function';
 import { DialogProps } from './Dialog';
 import MethodDialog from './MethodDialog';
 
-const destoryFunctions: Array<() => void> = [];
+let destoryFunctions: Array<() => void> = [];
 
 export type DialogMethodReturnType = {
   destroy: () => void;
-  update: (props: DialogProps) => void;
+  update: (props: Partial<DialogProps>) => void;
 };
 
 export interface DialogMethodProps extends DialogProps {
@@ -37,20 +37,23 @@ export const method = (props: DialogMethodProps): DialogMethodReturnType => {
     };
   }
 
+  const div = document.createElement('div');
+  document.body.appendChild(div);
+
   let currentProps = props;
 
-  const render = (renderProps: DialogMethodProps, init?: boolean) => {
+  const render = () => {
     setTimeout(() => {
       const {
         localeContext = defaultLocaleContext,
         themeContext = defaultThemeContext,
         ...others
-      } = renderProps;
+      } = currentProps;
 
       ReactDOM.render(
         <LocalizationContext.Provider value={localeContext}>
           <ThemeContext.Provider value={themeContext}>
-            <MethodDialog getContainer={null} {...others} init={init} />
+            <MethodDialog getContainer={null} {...others} />
           </ThemeContext.Provider>
         </LocalizationContext.Provider>,
         div,
@@ -58,15 +61,38 @@ export const method = (props: DialogMethodProps): DialogMethodReturnType => {
     });
   };
 
-  const div = document.createElement('div');
-  document.body.appendChild(div);
+  const update = (renderProps: Partial<DialogMethodProps>) => {
+    currentProps = { ...currentProps, ...renderProps };
+    render();
+  };
 
   const destroyDOM = () => {
+    destoryFunctions = destoryFunctions.filter((it) => it !== destroy);
     const unmountResult = ReactDOM.unmountComponentAtNode(div);
     if (unmountResult && div.parentNode) {
       div.parentNode.removeChild(div);
     }
   };
 
-  const destroy = () => {};
+  const destroy = () => {
+    if (!currentProps.visible) {
+      destroyDOM();
+      return;
+    }
+    update({
+      visible: false,
+      onClosed: () => {
+        destroyDOM();
+      },
+    });
+  };
+
+  destoryFunctions.push(destroy);
+
+  render();
+
+  return {
+    destroy,
+    update,
+  };
 };
