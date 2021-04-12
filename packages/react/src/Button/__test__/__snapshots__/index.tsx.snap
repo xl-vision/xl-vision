@@ -358,7 +358,6 @@ exports[`Button test basic render 1`] = `
 
 .c6 {
   display: inline-block;
-  vertical-align: middle;
   -webkit-transition: width 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: width 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   padding: 0;
@@ -369,12 +368,11 @@ exports[`Button test basic render 1`] = `
 }
 
 .c6 svg {
-  line-height: 1;
+  vertical-align: middle;
 }
 
 .c10 {
   display: inline-block;
-  vertical-align: middle;
   -webkit-transition: width 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: width 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   padding: 0;
@@ -383,7 +381,7 @@ exports[`Button test basic render 1`] = `
 }
 
 .c10 svg {
-  line-height: 1;
+  vertical-align: middle;
 }
 
 .c8 {
