@@ -53,6 +53,8 @@ export interface PopperProps extends React.HTMLAttributes<HTMLDivElement> {
   flip?: boolean | Record<string, any>;
   preventOverflow?: boolean | Record<string, any>;
   transformOrigin?: boolean;
+  mountOnShow?: boolean;
+  unmountOnHide?: boolean;
   onAfterClosed?: () => void;
 }
 
@@ -75,12 +77,13 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     visible: visibleProp,
     onVisibleChange,
     className,
-    destroyOnHide,
     arrow,
     flip = true,
     preventOverflow = true,
     transformOrigin = true,
     defaultVisible = false,
+    mountOnShow = true,
+    unmountOnHide,
     onAfterClosed,
     ...others
   } = props;
@@ -99,6 +102,10 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     }
   });
 
+  const [animatedVisible, setAnimatedVisible] = React.useState(visible);
+
+  const inProp = visible && animatedVisible;
+
   const lifecycleStateRef = useLifecycleState();
 
   const popupNodeRef = React.useRef<HTMLDivElement>(null);
@@ -107,6 +114,8 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
   const arrowRef = React.useRef<HTMLDivElement>();
 
   const popperInstanceRef = React.useRef<Instance>();
+
+  const isFirstMountRef = React.useRef(true);
 
   // 触发变更计时器
   const timerRef = React.useRef<NodeJS.Timeout>();
@@ -375,12 +384,18 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
   const isFirstVisibleRef = React.useRef(false);
 
   React.useEffect(() => {
+    if (visible) {
+      setAnimatedVisible(true);
+    }
+  }, [visible]);
+
+  React.useEffect(() => {
     // 第一次的时候，Popper不存在,触发一次
-    if (visible && !isFirstVisibleRef.current) {
+    if (inProp && !isFirstVisibleRef.current) {
       show();
     }
     isFirstVisibleRef.current = true;
-  }, [visible, show]);
+  }, [inProp, show]);
 
   React.useEffect(() => {
     on(window, 'click', handleClickOutside);
@@ -406,12 +421,39 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
   const afterLeave = useEventCallback((el: HTMLElement) => {
     close();
     el.style.display = 'none';
+    setAnimatedVisible(false);
   });
+
+  const cloneChild = React.cloneElement(child, {
+    ref: forkReferenceRef,
+    onClick: handleReferenceClick,
+    onMouseEnter: handleReferenceMouseEnter,
+    onMouseLeave: handleReferenceMouseLeave,
+    onFocus: handleReferenceFocus,
+    onBlur: handleReferenceBlur,
+    onContextMenu: handleReferenceContextMenu,
+  });
+
+  const hidden = !visible && !animatedVisible;
+
+  if (!hidden) {
+    isFirstMountRef.current = false;
+  }
+
+  if (isFirstMountRef.current) {
+    if (mountOnShow && hidden) {
+      return cloneChild;
+    }
+  } else if (unmountOnHide && hidden) {
+    return cloneChild;
+  }
 
   const arrowNode =
     arrow &&
     React.cloneElement(arrow, {
       ref: forkArrowRef,
+      'aria-hidden': true,
+      ...arrow.props,
     });
 
   const rootClassName = `${clsPrefix}-popper`;
@@ -426,7 +468,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
         aria-hidden={!visible}
         {...others}
         ref={popupNodeRef}
-        style={{ position: 'absolute' }}
+        style={{ position: 'absolute', display: hidden ? 'none' : '' }}
         className={rootClasses}
         onMouseEnter={handlePopupMouseEnter}
         onMouseLeave={handlePopupMouseLeave}
@@ -434,12 +476,11 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
         onContextMenu={handlePopupContextClick}
       >
         <CSSTransition
-          in={visible}
+          in={inProp}
           transitionClasses={transitionClasses}
-          mountOnEnter={true}
           beforeEnter={beforeEnter}
           afterLeave={afterLeave}
-          unmountOnLeave={destroyOnHide}
+          mountOnEnter={true}
         >
           <div
             ref={popupInnerNodeRef}
@@ -455,16 +496,6 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
       </div>
     </Portal>
   );
-
-  const cloneChild = React.cloneElement(child, {
-    ref: forkReferenceRef,
-    onClick: handleReferenceClick,
-    onMouseEnter: handleReferenceMouseEnter,
-    onMouseLeave: handleReferenceMouseLeave,
-    onFocus: handleReferenceFocus,
-    onBlur: handleReferenceBlur,
-    onContextMenu: handleReferenceContextMenu,
-  });
 
   return (
     <>
@@ -486,6 +517,8 @@ if (isDevelopment) {
   ]).isRequired;
 
   Popper.propTypes = {
+    mountOnShow: PropTypes.bool,
+    unmountOnHide: PropTypes.bool,
     children: PropTypes.element.isRequired,
     popup: PropTypes.element.isRequired,
     getPopupContainer: PropTypes.func,

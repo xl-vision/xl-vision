@@ -20,12 +20,13 @@ export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   defaultVisible?: boolean;
   visible?: boolean;
   onVisibleChange?: (visible: boolean) => void;
-  destroyOnClose?: boolean;
-  mountOnOpen?: boolean;
+  unmountOnHide?: boolean;
+  mountOnShow?: boolean;
   escClosable?: boolean;
   mask?: boolean;
   maskClosable?: boolean;
   wrapperClassName?: string;
+  onClosed?: () => void;
 }
 
 const displayName = 'Modal';
@@ -145,13 +146,14 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     defaultVisible = false,
     visible: visibleProp,
     onVisibleChange,
-    destroyOnClose,
-    mountOnOpen = true,
+    unmountOnHide,
+    mountOnShow = true,
     mask = true,
     maskClosable = true,
     escClosable = true,
     className,
     wrapperClassName,
+    onClosed,
     ...others
   } = props;
 
@@ -162,8 +164,6 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   const [animatedVisible, setAnimatedVisible] = React.useState(visible);
 
   const [zIndex, setZIndex] = React.useState<number>();
-
-  const transitionCount = React.useRef(0);
 
   const bodyRef = React.useRef<HTMLDivElement>(null);
   const isFirstMountRef = React.useRef(true);
@@ -176,7 +176,9 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     return modalManagers[modalManagers.length - 1] === bodyRef.current;
   }, []);
 
-  const inProp = visible ? animatedVisible : false;
+  const inProp = visible && animatedVisible;
+
+  const transitionCount = React.useRef(inProp ? (mask ? 2 : 1) : 0);
 
   React.useEffect(() => {
     const body = bodyRef.current;
@@ -265,10 +267,11 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
       if (transitionCount.current <= 0) {
         transitionCount.current = 0;
         setAnimatedVisible(false);
+        onClosed?.();
       }
       el.style.display = 'none';
     },
-    [setAnimatedVisible],
+    [setAnimatedVisible, onClosed],
   );
 
   const handleMaskClick = React.useCallback(() => {
@@ -302,10 +305,10 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   }
 
   if (isFirstMountRef.current) {
-    if (mountOnOpen && hidden) {
+    if (mountOnShow && hidden) {
       return null;
     }
-  } else if (destroyOnClose && hidden) {
+  } else if (unmountOnHide && hidden) {
     return null;
   }
 
@@ -363,14 +366,15 @@ if (isDevelopment) {
     defaultVisible: PropTypes.bool,
     visible: PropTypes.bool,
     onVisibleChange: PropTypes.func,
-    destroyOnClose: PropTypes.bool,
-    mountOnOpen: PropTypes.bool,
+    unmountOnHide: PropTypes.bool,
+    mountOnShow: PropTypes.bool,
     className: PropTypes.string,
     style: PropTypes.object,
     mask: PropTypes.bool,
     maskClosable: PropTypes.bool,
     escClosable: PropTypes.bool,
     wrapperClassName: PropTypes.string,
+    onClosed: PropTypes.func,
   };
 }
 

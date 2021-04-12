@@ -48,9 +48,10 @@ Disable close modal when press key esc.
 | defaultVisible | Whether the default modal is displayed, when `visible` exists, the option is invalid | boolean | - | false | false |
 | onVisibleChange | Callback when the status of the modal changes | (visible: boolean) => void | - | - | false |
 | visible | Whether to show modal | boolean | - | - | false |
-| destroyOnClose | Destroy dom when close modal | boolean | - | - | false |
-| mountOnOpen | Mount dom when open modal | boolean | - | true | false |
+| unmountOnHide | Destroy dom when close modal | boolean | - | - | false |
+| mountOnShow | Mount dom when open modal | boolean | - | true | false |
 | mask | Whether show modal layer | boolean | - | true | false |
 | maskClosable | Whether close modal when click mask layer | boolean | - | true | false |
 | escClosable | Whether close modal when press key esc | boolean | - | true | false |
-| wrapperClassName | modal wrapper className | string | - | - | false |
+| wrapperClassName | Modal wrapper className | string | - | - | false |
+| onClosed | The hook when modal closed. At this time, modal animation ends too | ()=>void | - | - | false |
