@@ -1,4 +1,6 @@
 /* eslint-disable no-return-assign */
+import { locales } from '@xl-vision/react/locale';
+import LocalizationProvider from '@xl-vision/react/LocalizationProvider';
 import { mount } from 'enzyme';
 import React from 'react';
 import useHooks from '../useHooks';
@@ -167,6 +169,51 @@ describe('DialogHooks', () => {
     jest.runAllTimers();
 
     el = document.querySelector('#confirm');
+    expect(el).toBe(null);
+  });
+
+  it('test context update', () => {
+    let refs!: ReturnType<typeof useHooks>;
+    const wrapper = mount(
+      <LocalizationProvider language='en-US'>
+        <Demo
+          ref={(it) => {
+            return (refs = it!);
+          }}
+        />
+      </LocalizationProvider>,
+    );
+
+    expect(refs).not.toBe(null);
+
+    let el = document.querySelector('#info');
+    expect(el).toBe(null);
+
+    refs.info({
+      defaultVisible: true,
+      title: 'title',
+      content: 'content',
+      id: 'info',
+    });
+
+    jest.runAllTimers();
+
+    el = document.querySelector('#info');
+    expect(el).not.toBe(null);
+    expect(el!.querySelector('button')!.textContent).toBe(locales['en-US'].MethodDialog.infoText);
+
+    wrapper.setProps({
+      language: 'zh-CN',
+    });
+
+    jest.runAllTimers();
+
+    expect(el!.querySelector('button')!.textContent).toBe(locales['zh-CN'].MethodDialog.infoText);
+
+    wrapper.unmount();
+    jest.runAllTimers();
+
+    el = document.querySelector('#info');
     expect(el).toBe(null);
   });
 });

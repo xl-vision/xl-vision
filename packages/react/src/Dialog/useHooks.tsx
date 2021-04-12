@@ -12,172 +12,185 @@ import {
   confirm,
 } from './methods';
 
+export type MethodDialogHookProps = Omit<
+  MethodDialogFunctionProps,
+  'themeContext' | 'localeContext'
+>;
+
 export default () => {
   const defaultThemeContext = React.useContext(ThemeContext);
   const defaultLocaleContext = React.useContext(LocalizationContext);
 
-  const destroyFunctions = React.useRef<Array<() => void>>([]);
+  const modals = React.useRef<
+    Array<{ destroy: () => void; update: (props: Partial<MethodDialogHookProps>) => void }>
+  >([]);
 
   React.useEffect(() => {
     return () => {
-      destroyFunctions.current.forEach((it) => it());
+      modals.current.forEach((it) => it.destroy());
     };
   }, []);
 
-  const methodWrapper = useEventCallback((props: MethodDialogFunctionProps) => {
-    const {
-      themeContext = defaultThemeContext,
-      localeContext = defaultLocaleContext,
-      ...others
-    } = props;
+  React.useEffect(() => {
+    // 全局context修改，这里要更新
+    modals.current.forEach((it) => it.update({}));
+  }, [defaultThemeContext, defaultLocaleContext]);
 
+  const methodWrapper = useEventCallback((props: MethodDialogHookProps) => {
     const { update, destroy } = method({
-      themeContext,
-      localeContext,
-      ...others,
+      ...props,
+      themeContext: defaultThemeContext,
+      localeContext: defaultLocaleContext,
     });
 
     const destroyWrapper = () => {
-      destroyFunctions.current = destroyFunctions.current.filter((it) => it !== destroyWrapper);
+      modals.current = modals.current.filter((it) => it !== ret);
       destroy();
     };
 
-    destroyFunctions.current.push(destroyWrapper);
+    const updateWrapper = (_props: Partial<MethodDialogHookProps>) => {
+      update({ ..._props, themeContext: defaultThemeContext, localeContext: defaultLocaleContext });
+    };
 
-    return {
-      update,
+    const ret = {
+      update: updateWrapper,
       destroy: destroyWrapper,
     };
+
+    modals.current.push(ret);
+
+    return ret;
   });
 
-  const infoWrapper = useEventCallback((props: MethodDialogFunctionProps) => {
-    const {
-      themeContext = defaultThemeContext,
-      localeContext = defaultLocaleContext,
-      ...others
-    } = props;
-
+  const infoWrapper = useEventCallback((props: MethodDialogHookProps) => {
     const { update, destroy } = info({
-      themeContext,
-      localeContext,
-      ...others,
+      ...props,
+      themeContext: defaultThemeContext,
+      localeContext: defaultLocaleContext,
     });
 
     const destroyWrapper = () => {
-      destroyFunctions.current = destroyFunctions.current.filter((it) => it !== destroyWrapper);
+      modals.current = modals.current.filter((it) => it !== ret);
       destroy();
     };
 
-    destroyFunctions.current.push(destroyWrapper);
+    const updateWrapper = (_props: Partial<MethodDialogHookProps>) => {
+      console.log(defaultLocaleContext);
+      update({ ..._props, themeContext: defaultThemeContext, localeContext: defaultLocaleContext });
+    };
 
-    return {
-      update,
+    const ret = {
+      update: updateWrapper,
       destroy: destroyWrapper,
     };
+
+    modals.current.push(ret);
+
+    return ret;
   });
 
-  const successWrapper = useEventCallback((props: MethodDialogFunctionProps) => {
-    const {
-      themeContext = defaultThemeContext,
-      localeContext = defaultLocaleContext,
-      ...others
-    } = props;
-
+  const successWrapper = useEventCallback((props: MethodDialogHookProps) => {
     const { update, destroy } = success({
-      themeContext,
-      localeContext,
-      ...others,
+      ...props,
+      themeContext: defaultThemeContext,
+      localeContext: defaultLocaleContext,
     });
 
     const destroyWrapper = () => {
-      destroyFunctions.current = destroyFunctions.current.filter((it) => it !== destroyWrapper);
+      modals.current = modals.current.filter((it) => it !== ret);
       destroy();
     };
 
-    destroyFunctions.current.push(destroyWrapper);
+    const updateWrapper = (_props: Partial<MethodDialogHookProps>) => {
+      update({ ..._props, themeContext: defaultThemeContext, localeContext: defaultLocaleContext });
+    };
 
-    return {
-      update,
+    const ret = {
+      update: updateWrapper,
       destroy: destroyWrapper,
     };
+
+    modals.current.push(ret);
+
+    return ret;
   });
 
-  const errorWrapper = useEventCallback((props: MethodDialogFunctionProps) => {
-    const {
-      themeContext = defaultThemeContext,
-      localeContext = defaultLocaleContext,
-      ...others
-    } = props;
-
+  const errorWrapper = useEventCallback((props: MethodDialogHookProps) => {
     const { update, destroy } = error({
-      themeContext,
-      localeContext,
-      ...others,
+      ...props,
+      themeContext: defaultThemeContext,
+      localeContext: defaultLocaleContext,
     });
 
     const destroyWrapper = () => {
-      destroyFunctions.current = destroyFunctions.current.filter((it) => it !== destroyWrapper);
+      modals.current = modals.current.filter((it) => it !== ret);
       destroy();
     };
 
-    destroyFunctions.current.push(destroyWrapper);
+    const updateWrapper = (_props: Partial<MethodDialogHookProps>) => {
+      update({ ..._props, themeContext: defaultThemeContext, localeContext: defaultLocaleContext });
+    };
 
-    return {
-      update,
+    const ret = {
+      update: updateWrapper,
       destroy: destroyWrapper,
     };
+
+    modals.current.push(ret);
+
+    return ret;
   });
 
-  const warningWrapper = useEventCallback((props: MethodDialogFunctionProps) => {
-    const {
-      themeContext = defaultThemeContext,
-      localeContext = defaultLocaleContext,
-      ...others
-    } = props;
-
+  const warningWrapper = useEventCallback((props: MethodDialogHookProps) => {
     const { update, destroy } = warning({
-      themeContext,
-      localeContext,
-      ...others,
+      ...props,
+      themeContext: defaultThemeContext,
+      localeContext: defaultLocaleContext,
     });
 
     const destroyWrapper = () => {
-      destroyFunctions.current = destroyFunctions.current.filter((it) => it !== destroyWrapper);
+      modals.current = modals.current.filter((it) => it !== ret);
       destroy();
     };
 
-    destroyFunctions.current.push(destroyWrapper);
+    const updateWrapper = (_props: Partial<MethodDialogHookProps>) => {
+      update({ ..._props, themeContext: defaultThemeContext, localeContext: defaultLocaleContext });
+    };
 
-    return {
-      update,
+    const ret = {
+      update: updateWrapper,
       destroy: destroyWrapper,
     };
+
+    modals.current.push(ret);
+
+    return ret;
   });
 
-  const confirmWrapper = useEventCallback((props: MethodDialogFunctionProps) => {
-    const {
-      themeContext = defaultThemeContext,
-      localeContext = defaultLocaleContext,
-      ...others
-    } = props;
-
+  const confirmWrapper = useEventCallback((props: MethodDialogHookProps) => {
     const { update, destroy } = confirm({
-      themeContext,
-      localeContext,
-      ...others,
+      ...props,
+      themeContext: defaultThemeContext,
+      localeContext: defaultLocaleContext,
     });
 
     const destroyWrapper = () => {
-      destroyFunctions.current = destroyFunctions.current.filter((it) => it !== destroyWrapper);
+      modals.current = modals.current.filter((it) => it !== ret);
       destroy();
     };
 
-    destroyFunctions.current.push(destroyWrapper);
+    const updateWrapper = (_props: Partial<MethodDialogHookProps>) => {
+      update({ ..._props, themeContext: defaultThemeContext, localeContext: defaultLocaleContext });
+    };
 
-    return {
-      update,
+    const ret = {
+      update: updateWrapper,
       destroy: destroyWrapper,
     };
+
+    modals.current.push(ret);
+
+    return ret;
   });
 
   return React.useMemo(

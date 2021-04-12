@@ -5,6 +5,7 @@ import useHooks from './useHooks';
 export * from './Dialog';
 export type { MethodDialogFunctionProps, DialogMethodReturnType } from './methods';
 export type { MethodDialogProps } from './MethodDialog';
+export type { MethodDialogHookProps } from './useHooks';
 
 const DialogEnhancer = Dialog as typeof Dialog & {
   method: typeof method;
