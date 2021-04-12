@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable react/jsx-handler-names */
 import { WarningOutlined } from '@xl-vision/icons';
 import { Button, Dialog, Icon } from '@xl-vision/react';
 import React from 'react';

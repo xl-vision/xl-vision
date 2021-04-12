@@ -1,8 +1,10 @@
 import Dialog from './Dialog';
 import { method, destroyAll, success, info, error, warning, confirm } from './methods';
+import useHooks from './useHooks';
 
 export * from './Dialog';
-export type { DialogMethodProps, DialogMethodReturnType } from './methods';
+export type { MethodDialogFunctionProps, DialogMethodReturnType } from './methods';
+export type { MethodDialogProps } from './MethodDialog';
 
 const DialogEnhancer = Dialog as typeof Dialog & {
   method: typeof method;
@@ -12,6 +14,7 @@ const DialogEnhancer = Dialog as typeof Dialog & {
   error: typeof error;
   warning: typeof warning;
   confirm: typeof confirm;
+  useHooks: typeof useHooks;
 };
 
 DialogEnhancer.method = method;
@@ -21,5 +24,6 @@ DialogEnhancer.info = info;
 DialogEnhancer.error = error;
 DialogEnhancer.warning = warning;
 DialogEnhancer.confirm = confirm;
+DialogEnhancer.useHooks = useHooks;
 
 export default DialogEnhancer;

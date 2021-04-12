@@ -7,10 +7,14 @@ import { isDevelopment } from '../utils/env';
 import Dialog, { DialogProps } from './Dialog';
 import { styled } from '../styles';
 import ThemeContext from '../ThemeProvider/ThemeContext';
+import { LocalizationContext, LocalizationContextProps } from '../LocalizationProvider';
+import { Theme } from '../ThemeProvider';
 
 export interface MethodDialogProps extends Omit<DialogProps, 'children'> {
   content?: React.ReactNode;
   icon?: React.ReactNode;
+  localeContext: LocalizationContextProps;
+  themeContext: Theme;
 }
 
 const displayName = 'MethodDialog';
@@ -62,6 +66,8 @@ const MethodDialogContent = styled('div', {
 
 const MethodDialog = React.forwardRef<HTMLDivElement, MethodDialogProps>((props, ref) => {
   const {
+    localeContext,
+    themeContext,
     visible: visibleProp,
     defaultVisible: defaultVisibleProp = true,
     onVisibleChange: onVisibleChangeProp,
@@ -92,25 +98,31 @@ const MethodDialog = React.forwardRef<HTMLDivElement, MethodDialogProps>((props,
   );
 
   return (
-    <Dialog
-      {...others}
-      className={clsx(className, rootClassName)}
-      title={titleWrapper}
-      ref={ref}
-      visible={!first && visible}
-      // eslint-disable-next-line react/jsx-handler-names
-      onVisibleChange={setVisible}
-    >
-      {content && (
-        <MethodDialogContent styleProps={{ icon: !!icon }}>{content}</MethodDialogContent>
-      )}
-    </Dialog>
+    <LocalizationContext.Provider value={localeContext}>
+      <ThemeContext.Provider value={themeContext}>
+        <Dialog
+          {...others}
+          className={clsx(className, rootClassName)}
+          title={titleWrapper}
+          ref={ref}
+          visible={!first && visible}
+          // eslint-disable-next-line react/jsx-handler-names
+          onVisibleChange={setVisible}
+        >
+          {content && (
+            <MethodDialogContent styleProps={{ icon: !!icon }}>{content}</MethodDialogContent>
+          )}
+        </Dialog>
+      </ThemeContext.Provider>
+    </LocalizationContext.Provider>
   );
 });
 
 if (isDevelopment) {
   MethodDialog.displayName = displayName;
   MethodDialog.propTypes = {
+    themeContext: Proptypes.any.isRequired,
+    localeContext: Proptypes.any.isRequired,
     visible: Proptypes.bool,
     onVisibleChange: Proptypes.func,
     defaultVisible: Proptypes.bool,

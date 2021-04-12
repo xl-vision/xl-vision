@@ -77,7 +77,6 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     visible: visibleProp,
     onVisibleChange,
     className,
-    destroyOnHide,
     arrow,
     flip = true,
     preventOverflow = true,

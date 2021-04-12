@@ -9,24 +9,23 @@ import ReactDOM from 'react-dom';
 import Icon from '../Icon';
 import { defaultLanguage, locales } from '../locale';
 import { LocalizationContextProps } from '../LocalizationProvider';
-import LocalizationContext from '../LocalizationProvider/LocalizationContext';
-import { Theme } from '../ThemeProvider/createTheme';
+import { Theme } from '../ThemeProvider';
 import defaultTheme from '../ThemeProvider/defaultTheme';
-import ThemeContext from '../ThemeProvider/ThemeContext';
 import { isServer } from '../utils/env';
 import { voidFn } from '../utils/function';
 import MethodDialog, { MethodDialogProps } from './MethodDialog';
 
 let destoryFunctions: Array<() => void> = [];
 
-export interface DialogMethodProps extends MethodDialogProps {
+export interface MethodDialogFunctionProps
+  extends Omit<MethodDialogProps, 'themeContext' | 'localeContext'> {
   localeContext?: LocalizationContextProps;
   themeContext?: Theme;
 }
 
 export type DialogMethodReturnType = {
   destroy: () => void;
-  update: (props: Partial<DialogMethodProps>) => void;
+  update: (props: Partial<MethodDialogFunctionProps>) => void;
 };
 
 const defaultLocaleContext: LocalizationContextProps = {
@@ -35,7 +34,7 @@ const defaultLocaleContext: LocalizationContextProps = {
 };
 const defaultThemeContext = defaultTheme;
 
-export const method = (props: DialogMethodProps): DialogMethodReturnType => {
+export const method = (props: MethodDialogFunctionProps): DialogMethodReturnType => {
   if (isServer) {
     return {
       destroy: voidFn,
@@ -57,17 +56,18 @@ export const method = (props: DialogMethodProps): DialogMethodReturnType => {
       } = currentProps;
 
       ReactDOM.render(
-        <LocalizationContext.Provider value={localeContext}>
-          <ThemeContext.Provider value={themeContext}>
-            <MethodDialog getContainer={null} {...others} />
-          </ThemeContext.Provider>
-        </LocalizationContext.Provider>,
+        <MethodDialog
+          getContainer={null}
+          localeContext={localeContext}
+          themeContext={themeContext}
+          {...others}
+        />,
         div,
       );
     });
   };
 
-  const update = (renderProps: Partial<DialogMethodProps>) => {
+  const update = (renderProps: Partial<MethodDialogFunctionProps>) => {
     currentProps = { ...currentProps, ...renderProps };
     render();
   };
@@ -112,7 +112,7 @@ export const destroyAll = () => {
   }
 };
 
-export const info = (props: DialogMethodProps) => {
+export const info = (props: MethodDialogFunctionProps) => {
   const {
     themeContext = defaultThemeContext,
     localeContext = defaultLocaleContext,
@@ -143,7 +143,7 @@ export const info = (props: DialogMethodProps) => {
   return ret;
 };
 
-export const success = (props: DialogMethodProps) => {
+export const success = (props: MethodDialogFunctionProps) => {
   const {
     themeContext = defaultThemeContext,
     localeContext = defaultLocaleContext,
@@ -174,7 +174,7 @@ export const success = (props: DialogMethodProps) => {
   return ret;
 };
 
-export const error = (props: DialogMethodProps) => {
+export const error = (props: MethodDialogFunctionProps) => {
   const {
     themeContext = defaultThemeContext,
     localeContext = defaultLocaleContext,
@@ -204,7 +204,7 @@ export const error = (props: DialogMethodProps) => {
   return ret;
 };
 
-export const warning = (props: DialogMethodProps) => {
+export const warning = (props: MethodDialogFunctionProps) => {
   const {
     themeContext = defaultThemeContext,
     localeContext = defaultLocaleContext,
@@ -234,7 +234,7 @@ export const warning = (props: DialogMethodProps) => {
   return ret;
 };
 
-export const confirm = (props: DialogMethodProps) => {
+export const confirm = (props: MethodDialogFunctionProps) => {
   const {
     themeContext = defaultThemeContext,
     localeContext = defaultLocaleContext,
