@@ -65,7 +65,7 @@ In this way, you need to pass in ThemeContext and LocalizationContext, otherwise
 | Property | Description | Type | Optional Value | Default | Require |
 | --- | --- | --- | --- | --- | --- |
 | title | Title | React.ReactNode | - | - | true |
-| children | Dialog content | React.ReactNode | - | - | true |
+| children | Dialog content | React.ReactNode | - | - | false |
 | footer | Dialog footer, if pass `null`, footer will be hidden | React.ReactNode | - | - | false |
 | onCancel | Click to cancel the event | ()=>void | - | - | false |
 | onConfirm | Click to confirm event | ()=>void | - | - | false |
@@ -74,3 +74,75 @@ In this way, you need to pass in ThemeContext and LocalizationContext, otherwise
 | cancelText | Cancel button text, support `i18n` | string | - | 取消 | false |
 | confirmText | Confirm button text, support `i18n` | string | - | 确认 | false |
 | prompt | Prompt dialog, only confirm button | boolean | - | - | false |
+
+## Dialog.method
+
+In addition to the basic Dialog.method, it also includes
+
+- Dialog.info
+- Dialog.success
+- Dialog.error
+- Dialog.warning
+- Dialog.confirm
+
+The above are all functions, the parameter is object, and the specific attributes are as follows
+
+| Property      | Description  | Type            | Optional Value | Default | Require |
+| ------------- | ------------ | --------------- | -------------- | ------- | ------- |
+| icon          | Icon         | React.ReactNode | -              | -       | false   |
+| content       | Content      | React.ReactNode | -              | -       | false   |
+| themeContext  | Theme        | object          | -              | -       | false   |
+| localeContext | Localization | object          | -              | -       | false   |
+
+> Dialog.method inherits all the parameters of Dialog, among which children is renamed to content.
+
+> If you want to modify the theme and internationalization information of the dialog box created by method, you need to pass in themeContext and localeContext, otherwise the system default theme and internationalization information will be used.
+
+After the above function is called, a reference will be returned, and the pop-up window can be updated and closed by this reference.
+
+```tsx
+const dialog = Dialog.info();
+
+dialog.update({
+  title: 'title',
+  content: 'content',
+});
+
+dialog.update((prevConfig) => ({
+  ...prevConfig,
+  title: `${prevConfig.title}(new)`,
+}));
+
+dialog.destroy();
+```
+
+- Dialog.destroyAll
+
+Use `Dialog.destroyAll()` to destroy the pop-up confirmation window (ie the above-mentioned `Dialog.info`, `Dialog.success`, `Dialog.error`, `Dialog.warning`, `Dialog.confirm`). It is usually used in routing monitoring to deal with the problem that the confirmation dialog cannot be destroyed when routing forward and backward, instead of using the return value of the instance to close it (`Dialog.destroy()` is suitable for active closing, not passive routing like this shut down)
+
+```tsx
+import { browserHistory } from 'react-router';
+
+// router change
+browserHistory.listen(() => {
+  Dialog.destroyAll();
+});
+```
+
+## Dialog.useHooks
+
+> Dialog.useHooks has almost the same parameters and methods as method, but does not need to pass in themeContext and localeContext.
+
+> We recommend using useHooks. This method can ensure that the theme and internationalization are consistent with the context, and will automatically destroy the dialog box when the parent component is destroyed, reducing the mental burden when using it.
+
+```tsx
+const dialog = Dialog.useHooks();
+
+React.useEffect(() => {
+  dialog.confirm({
+    // ...
+  });
+}, []);
+
+return <div>content</div>;
+```
