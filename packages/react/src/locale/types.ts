@@ -7,6 +7,16 @@ export type Locale = {
     confirmText: string;
     cancelText: string;
   };
+  MethodDialog: {
+    successText: string;
+    infoText: string;
+    errorText: string;
+    warningText: string;
+    confirm: {
+      confirmText: string;
+      cancelText: string;
+    };
+  };
 };
 export type Locales = {
   [lang: string]: Locale;

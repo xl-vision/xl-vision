@@ -5,7 +5,7 @@ import Popper from '..';
 import wait from '../../../../../test/wait';
 
 describe('Popper', () => {
-  beforeAll(() => {
+  beforeEach(() => {
     jest.useRealTimers();
   });
 
@@ -38,6 +38,8 @@ describe('Popper', () => {
 
     expect(handleVisibleChange).toHaveBeenLastCalledWith(false);
     expect(wrapper.render()).toMatchSnapshot();
+
+    wrapper.unmount();
   });
   it('test trigger click', async () => {
     const handleVisibleChange = jest.fn();
@@ -68,6 +70,7 @@ describe('Popper', () => {
 
     expect(handleVisibleChange).toHaveBeenLastCalledWith(false);
     expect(wrapper.render()).toMatchSnapshot();
+    wrapper.unmount();
   });
   it('test trigger contextMenu', async () => {
     const handleVisibleChange = jest.fn();
@@ -98,6 +101,7 @@ describe('Popper', () => {
 
     expect(handleVisibleChange).toHaveBeenLastCalledWith(false);
     expect(wrapper.render()).toMatchSnapshot();
+    wrapper.unmount();
   });
   it('test trigger focus', async () => {
     const handleVisibleChange = jest.fn();
@@ -128,6 +132,7 @@ describe('Popper', () => {
 
     expect(handleVisibleChange).toHaveBeenLastCalledWith(false);
     expect(wrapper.render()).toMatchSnapshot();
+    wrapper.unmount();
   });
   it('test trigger custom', async () => {
     // 外部修改不触发visibleChange
@@ -173,6 +178,7 @@ describe('Popper', () => {
     el = document.querySelector('#popup')!.parentElement!;
     expect(el).not.toBeNull();
     expect(el.style.display).toBe('none');
+    wrapper.unmount();
   });
   it('test prop disablePopupEnter', async () => {
     const handleVisibleChange = jest.fn();
@@ -218,5 +224,114 @@ describe('Popper', () => {
 
     await act(() => wait(300));
     expect(handleVisibleChange).toHaveBeenLastCalledWith(false);
+    wrapper.unmount();
+  });
+
+  it('test mountOnShow', () => {
+    jest.useFakeTimers();
+    const wrapper = mount(
+      <Popper
+        trigger='hover'
+        id='popup'
+        popup={<div>popup</div>}
+        getPopupContainer={() => document.body}
+      >
+        <button id='btn'>button</button>
+      </Popper>,
+    );
+
+    act(() => {
+      jest.runAllTimers();
+    });
+
+    let el = document.querySelector('#popup');
+
+    expect(el).toBe(null);
+
+    wrapper.find('#btn').simulate('mouseenter');
+    act(() => {
+      jest.runAllTimers();
+    });
+
+    el = document.querySelector('#popup');
+    expect(el).not.toBe(null);
+
+    wrapper.unmount();
+
+    wrapper.setProps({
+      mountOnShow: false,
+    });
+    wrapper.mount();
+    act(() => {
+      jest.runAllTimers();
+    });
+    el = document.querySelector('#popup');
+
+    expect(el).not.toBe(null);
+
+    wrapper.unmount();
+  });
+
+  it('test unmountOnHide', () => {
+    jest.useFakeTimers();
+    const wrapper = mount(
+      <Popper
+        trigger='hover'
+        id='popup'
+        popup={<div>popup</div>}
+        getPopupContainer={() => document.body}
+      >
+        <button id='btn'>button</button>
+      </Popper>,
+    );
+
+    act(() => {
+      jest.runAllTimers();
+    });
+
+    let el = document.querySelector('#popup');
+
+    expect(el).toBe(null);
+
+    wrapper.find('#btn').simulate('mouseenter');
+    act(() => {
+      jest.runAllTimers();
+    });
+
+    wrapper.find('#btn').simulate('mouseleave');
+    act(() => {
+      jest.runAllTimers();
+    });
+
+    el = document.querySelector('#popup');
+    expect(el).not.toBe(null);
+
+    wrapper.unmount();
+
+    wrapper.setProps({
+      unmountOnHide: true,
+    });
+    wrapper.mount();
+    act(() => {
+      jest.runAllTimers();
+    });
+    el = document.querySelector('#popup');
+
+    expect(el).toBe(null);
+
+    wrapper.find('#btn').simulate('mouseenter');
+    act(() => {
+      jest.runAllTimers();
+    });
+
+    wrapper.find('#btn').simulate('mouseleave');
+    act(() => {
+      jest.runAllTimers();
+    });
+
+    el = document.querySelector('#popup');
+    expect(el).toBe(null);
+
+    wrapper.unmount();
   });
 });

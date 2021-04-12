@@ -173,13 +173,13 @@ const ButtonPrefix = styled('span', {
 
   const styles: CSSObject = {
     display: 'inline-block',
-    verticalAlign: 'middle',
     transition: transition.standard('width'),
     padding: 0,
     lineHeight: 0,
     fontSize: '1.4em',
     svg: {
-      lineHeight: 1,
+      // lineHeight: 1,
+      verticalAlign: 'middle',
     },
   };
 
