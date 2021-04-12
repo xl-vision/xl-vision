@@ -1,0 +1,2082 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DialogMethod test confirm 1`] = `
+.c5 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentcolor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+}
+
+.c0 {
+  position: relative;
+  outline: 0;
+}
+
+.c0.xl-modal__body-enter-active {
+  -webkit-transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),-webkit-transform 225ms 0ms cubic-bezier(0,0,0.2,1);
+  -webkit-transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c0.xl-modal__body-leave-active {
+  -webkit-transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1),-webkit-transform 195ms 0ms cubic-bezier(0.4,0,1,1);
+  -webkit-transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1),transform 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1),transform 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c0.xl-modal__body-enter-from,
+.c0.xl-modal__body-leave-to {
+  opacity: 0;
+}
+
+.c0.xl-modal__body-leave-from,
+.c0.xl-modal__body-enter-to {
+  opacity: 1;
+}
+
+.c0.xl-modal__body-enter-from {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+}
+
+.c0.xl-modal__body-enter-to {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.c13 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c10 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.c10::-moz-focus-inner {
+  border-style: none;
+}
+
+.c10 svg {
+  pointer-events: none;
+}
+
+.c10 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+}
+
+.c10 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c10 .xl-base-button__ripple-leave-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c10 .xl-base-button__ripple-enter-from {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c10 .xl-base-button__ripple-leave-to {
+  opacity: 0;
+}
+
+.c12 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c11 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  border-radius: 4px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  background-color: transparent;
+  color: #3f51b5;
+  padding: 6px 16px;
+}
+
+.c11:hover {
+  background-color: rgba(63,81,181,0.04);
+}
+
+.c11:focus {
+  background-color: rgba(63,81,181,0.12);
+}
+
+.c1 {
+  background-color: #fff;
+  border-radius: 8px;
+  max-width: 560px;
+  margin: 32px;
+  max-height: calc(100% - 64px);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  box-shadow: 0px 11px 15px -7px rgba(0,0,0,0.2),0px 24px 38px 3px rgba(0,0,0,0.14),0px 9px 46px 8px rgba(0,0,0,0.12);
+}
+
+.c2 {
+  color: rgba(0,0,0,0.87);
+  padding: 16px 24px;
+}
+
+.c2 .xl-dialog__title {
+  font-size: 1.250rem;
+  line-height: 1.6;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.013em;
+  -moz-letter-spacing: 0.013em;
+  -ms-letter-spacing: 0.013em;
+  letter-spacing: 0.013em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  margin: 0;
+}
+
+.c6 {
+  padding: 8px 24px;
+  overflow-y: auto;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  color: rgba(0,0,0,0.54);
+  font-size: 1.000rem;
+  line-height: 1.5;
+  font-weight: 400;
+  -webkit-letter-spacing: 0.031em;
+  -moz-letter-spacing: 0.031em;
+  -ms-letter-spacing: 0.031em;
+  letter-spacing: 0.031em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+}
+
+.c8 {
+  padding: 8px;
+  text-align: right;
+}
+
+.c9 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-flex-wrap: wrap-reverse;
+  -ms-flex-wrap: wrap-reverse;
+  flex-wrap: wrap-reverse;
+}
+
+.c3 {
+  font-size: 1.250rem;
+  line-height: 1.6;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.013em;
+  -moz-letter-spacing: 0.013em;
+  -ms-letter-spacing: 0.013em;
+  letter-spacing: 0.013em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  margin: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c4 {
+  line-height: 1;
+  padding-right: 5px;
+}
+
+.c4 svg {
+  vertical-align: middle;
+}
+
+.c7 {
+  padding-left: 25px;
+}
+
+<div
+  aria-labelledby="xlDialogTitle5"
+  class="c0 xl-modal__body c1 xl-dialog xl-method-dialog"
+  id="confirm"
+  style="transform-origin: 50% 50%;"
+  tabindex="-1"
+>
+  <div
+    class="c2 xl-dialog__header"
+    id="xlDialogTitle5"
+  >
+    <h6
+      class="c3 xl-method-dialog__title"
+    >
+      <span
+        class="c4 xl-method-dialog__icon"
+      >
+        <svg
+          class="c5 xl-icon"
+          style="color: rgb(63, 81, 181);"
+          viewBox="0 0 1024 1024"
+        >
+          <path
+            d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+          />
+          <path
+            d="M464 688a48 48 0 1 0 96 0 48 48 0 1 0-96 0zm24-112h48c4.4 0 8-3.6 8-8V296c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8z"
+          />
+        </svg>
+      </span>
+      title
+    </h6>
+  </div>
+  <div
+    class="c6 xl-dialog__content"
+  >
+    <div
+      class="c7"
+    >
+      content
+    </div>
+  </div>
+  <div
+    class="c8 xl-dialog__footer"
+  >
+    <div
+      class="c9"
+    >
+      <button
+        class="c10 xl-base-button c11 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-text"
+      >
+        <span
+          class="c12 xl-base-button__inner"
+        >
+          <span
+            class="xl-button__inner"
+          >
+            No
+          </span>
+        </span>
+        <div
+          class="c13 xl-ripple xl-base-button__ripple"
+        />
+      </button>
+      <button
+        class="c10 xl-base-button c11 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-text"
+      >
+        <span
+          class="c12 xl-base-button__inner"
+        >
+          <span
+            class="xl-button__inner"
+          >
+            Yes
+          </span>
+        </span>
+        <div
+          class="c13 xl-ripple xl-base-button__ripple"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DialogMethod test error 1`] = `
+.c5 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentcolor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+}
+
+.c0 {
+  position: relative;
+  outline: 0;
+}
+
+.c0.xl-modal__body-enter-active {
+  -webkit-transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),-webkit-transform 225ms 0ms cubic-bezier(0,0,0.2,1);
+  -webkit-transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c0.xl-modal__body-leave-active {
+  -webkit-transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1),-webkit-transform 195ms 0ms cubic-bezier(0.4,0,1,1);
+  -webkit-transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1),transform 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1),transform 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c0.xl-modal__body-enter-from,
+.c0.xl-modal__body-leave-to {
+  opacity: 0;
+}
+
+.c0.xl-modal__body-leave-from,
+.c0.xl-modal__body-enter-to {
+  opacity: 1;
+}
+
+.c0.xl-modal__body-enter-from {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+}
+
+.c0.xl-modal__body-enter-to {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.c13 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c10 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.c10::-moz-focus-inner {
+  border-style: none;
+}
+
+.c10 svg {
+  pointer-events: none;
+}
+
+.c10 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+}
+
+.c10 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c10 .xl-base-button__ripple-leave-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c10 .xl-base-button__ripple-enter-from {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c10 .xl-base-button__ripple-leave-to {
+  opacity: 0;
+}
+
+.c12 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c11 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  border-radius: 4px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  background-color: transparent;
+  color: #3f51b5;
+  padding: 6px 16px;
+}
+
+.c11:hover {
+  background-color: rgba(63,81,181,0.04);
+}
+
+.c11:focus {
+  background-color: rgba(63,81,181,0.12);
+}
+
+.c1 {
+  background-color: #fff;
+  border-radius: 8px;
+  max-width: 560px;
+  margin: 32px;
+  max-height: calc(100% - 64px);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  box-shadow: 0px 11px 15px -7px rgba(0,0,0,0.2),0px 24px 38px 3px rgba(0,0,0,0.14),0px 9px 46px 8px rgba(0,0,0,0.12);
+}
+
+.c2 {
+  color: rgba(0,0,0,0.87);
+  padding: 16px 24px;
+}
+
+.c2 .xl-dialog__title {
+  font-size: 1.250rem;
+  line-height: 1.6;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.013em;
+  -moz-letter-spacing: 0.013em;
+  -ms-letter-spacing: 0.013em;
+  letter-spacing: 0.013em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  margin: 0;
+}
+
+.c6 {
+  padding: 8px 24px;
+  overflow-y: auto;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  color: rgba(0,0,0,0.54);
+  font-size: 1.000rem;
+  line-height: 1.5;
+  font-weight: 400;
+  -webkit-letter-spacing: 0.031em;
+  -moz-letter-spacing: 0.031em;
+  -ms-letter-spacing: 0.031em;
+  letter-spacing: 0.031em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+}
+
+.c8 {
+  padding: 8px;
+  text-align: right;
+}
+
+.c9 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-flex-wrap: wrap-reverse;
+  -ms-flex-wrap: wrap-reverse;
+  flex-wrap: wrap-reverse;
+}
+
+.c3 {
+  font-size: 1.250rem;
+  line-height: 1.6;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.013em;
+  -moz-letter-spacing: 0.013em;
+  -ms-letter-spacing: 0.013em;
+  letter-spacing: 0.013em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  margin: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c4 {
+  line-height: 1;
+  padding-right: 5px;
+}
+
+.c4 svg {
+  vertical-align: middle;
+}
+
+.c7 {
+  padding-left: 25px;
+}
+
+<div
+  aria-labelledby="xlDialogTitle3"
+  class="c0 xl-modal__body c1 xl-dialog xl-method-dialog"
+  id="error"
+  style="transform-origin: 50% 50%;"
+  tabindex="-1"
+>
+  <div
+    class="c2 xl-dialog__header"
+    id="xlDialogTitle3"
+  >
+    <h6
+      class="c3 xl-method-dialog__title"
+    >
+      <span
+        class="c4 xl-method-dialog__icon"
+      >
+        <svg
+          class="c5 xl-icon"
+          style="color: rgb(244, 67, 54);"
+          viewBox="0 0 1024 1024"
+        >
+          <path
+            d="M685.4 354.8c0-4.4-3.6-8-8-8l-66 .3L512 465.6l-99.3-118.4-66.1-.3c-4.4 0-8 3.5-8 8 0 1.9.7 3.7 1.9 5.2l130.1 155L340.5 670a8.32 8.32 0 0 0-1.9 5.2c0 4.4 3.6 8 8 8l66.1-.3L512 564.4l99.3 118.4 66 .3c4.4 0 8-3.5 8-8 0-1.9-.7-3.7-1.9-5.2L553.5 515l130.1-155c1.2-1.4 1.8-3.3 1.8-5.2z"
+          />
+          <path
+            d="M512 65C264.6 65 64 265.6 64 513s200.6 448 448 448 448-200.6 448-448S759.4 65 512 65zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+          />
+        </svg>
+      </span>
+      title
+    </h6>
+  </div>
+  <div
+    class="c6 xl-dialog__content"
+  >
+    <div
+      class="c7"
+    >
+      content
+    </div>
+  </div>
+  <div
+    class="c8 xl-dialog__footer"
+  >
+    <div
+      class="c9"
+    >
+      <button
+        class="c10 xl-base-button c11 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-text"
+      >
+        <span
+          class="c12 xl-base-button__inner"
+        >
+          <span
+            class="xl-button__inner"
+          >
+            OK
+          </span>
+        </span>
+        <div
+          class="c13 xl-ripple xl-base-button__ripple"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DialogMethod test info 1`] = `
+.c5 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentcolor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+}
+
+.c0 {
+  position: relative;
+  outline: 0;
+}
+
+.c0.xl-modal__body-enter-active {
+  -webkit-transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),-webkit-transform 225ms 0ms cubic-bezier(0,0,0.2,1);
+  -webkit-transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c0.xl-modal__body-leave-active {
+  -webkit-transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1),-webkit-transform 195ms 0ms cubic-bezier(0.4,0,1,1);
+  -webkit-transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1),transform 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1),transform 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c0.xl-modal__body-enter-from,
+.c0.xl-modal__body-leave-to {
+  opacity: 0;
+}
+
+.c0.xl-modal__body-leave-from,
+.c0.xl-modal__body-enter-to {
+  opacity: 1;
+}
+
+.c0.xl-modal__body-enter-from {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+}
+
+.c0.xl-modal__body-enter-to {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.c13 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c10 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.c10::-moz-focus-inner {
+  border-style: none;
+}
+
+.c10 svg {
+  pointer-events: none;
+}
+
+.c10 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+}
+
+.c10 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c10 .xl-base-button__ripple-leave-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c10 .xl-base-button__ripple-enter-from {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c10 .xl-base-button__ripple-leave-to {
+  opacity: 0;
+}
+
+.c12 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c11 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  border-radius: 4px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  background-color: transparent;
+  color: #3f51b5;
+  padding: 6px 16px;
+}
+
+.c11:hover {
+  background-color: rgba(63,81,181,0.04);
+}
+
+.c11:focus {
+  background-color: rgba(63,81,181,0.12);
+}
+
+.c1 {
+  background-color: #fff;
+  border-radius: 8px;
+  max-width: 560px;
+  margin: 32px;
+  max-height: calc(100% - 64px);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  box-shadow: 0px 11px 15px -7px rgba(0,0,0,0.2),0px 24px 38px 3px rgba(0,0,0,0.14),0px 9px 46px 8px rgba(0,0,0,0.12);
+}
+
+.c2 {
+  color: rgba(0,0,0,0.87);
+  padding: 16px 24px;
+}
+
+.c2 .xl-dialog__title {
+  font-size: 1.250rem;
+  line-height: 1.6;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.013em;
+  -moz-letter-spacing: 0.013em;
+  -ms-letter-spacing: 0.013em;
+  letter-spacing: 0.013em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  margin: 0;
+}
+
+.c6 {
+  padding: 8px 24px;
+  overflow-y: auto;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  color: rgba(0,0,0,0.54);
+  font-size: 1.000rem;
+  line-height: 1.5;
+  font-weight: 400;
+  -webkit-letter-spacing: 0.031em;
+  -moz-letter-spacing: 0.031em;
+  -ms-letter-spacing: 0.031em;
+  letter-spacing: 0.031em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+}
+
+.c8 {
+  padding: 8px;
+  text-align: right;
+}
+
+.c9 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-flex-wrap: wrap-reverse;
+  -ms-flex-wrap: wrap-reverse;
+  flex-wrap: wrap-reverse;
+}
+
+.c3 {
+  font-size: 1.250rem;
+  line-height: 1.6;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.013em;
+  -moz-letter-spacing: 0.013em;
+  -ms-letter-spacing: 0.013em;
+  letter-spacing: 0.013em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  margin: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c4 {
+  line-height: 1;
+  padding-right: 5px;
+}
+
+.c4 svg {
+  vertical-align: middle;
+}
+
+.c7 {
+  padding-left: 25px;
+}
+
+<div
+  aria-labelledby="xlDialogTitle1"
+  class="c0 xl-modal__body c1 xl-dialog xl-method-dialog"
+  id="info"
+  style="transform-origin: 50% 50%;"
+  tabindex="-1"
+>
+  <div
+    class="c2 xl-dialog__header"
+    id="xlDialogTitle1"
+  >
+    <h6
+      class="c3 xl-method-dialog__title"
+    >
+      <span
+        class="c4 xl-method-dialog__icon"
+      >
+        <svg
+          class="c5 xl-icon"
+          style="color: rgb(33, 150, 243);"
+          viewBox="0 0 1024 1024"
+        >
+          <path
+            d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+          />
+          <path
+            d="M464 336a48 48 0 1 0 96 0 48 48 0 1 0-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+          />
+        </svg>
+      </span>
+      title
+    </h6>
+  </div>
+  <div
+    class="c6 xl-dialog__content"
+  >
+    <div
+      class="c7"
+    >
+      content
+    </div>
+  </div>
+  <div
+    class="c8 xl-dialog__footer"
+  >
+    <div
+      class="c9"
+    >
+      <button
+        class="c10 xl-base-button c11 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-text"
+      >
+        <span
+          class="c12 xl-base-button__inner"
+        >
+          <span
+            class="xl-button__inner"
+          >
+            OK
+          </span>
+        </span>
+        <div
+          class="c13 xl-ripple xl-base-button__ripple"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DialogMethod test method 1`] = `
+.c0 {
+  position: relative;
+  outline: 0;
+}
+
+.c0.xl-modal__body-enter-active {
+  -webkit-transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),-webkit-transform 225ms 0ms cubic-bezier(0,0,0.2,1);
+  -webkit-transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c0.xl-modal__body-leave-active {
+  -webkit-transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1),-webkit-transform 195ms 0ms cubic-bezier(0.4,0,1,1);
+  -webkit-transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1),transform 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1),transform 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c0.xl-modal__body-enter-from,
+.c0.xl-modal__body-leave-to {
+  opacity: 0;
+}
+
+.c0.xl-modal__body-leave-from,
+.c0.xl-modal__body-enter-to {
+  opacity: 1;
+}
+
+.c0.xl-modal__body-enter-from {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+}
+
+.c0.xl-modal__body-enter-to {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.c10 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c7 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.c7::-moz-focus-inner {
+  border-style: none;
+}
+
+.c7 svg {
+  pointer-events: none;
+}
+
+.c7 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+}
+
+.c7 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c7 .xl-base-button__ripple-leave-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c7 .xl-base-button__ripple-enter-from {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c7 .xl-base-button__ripple-leave-to {
+  opacity: 0;
+}
+
+.c9 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c8 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  border-radius: 4px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  background-color: transparent;
+  color: #3f51b5;
+  padding: 6px 16px;
+}
+
+.c8:hover {
+  background-color: rgba(63,81,181,0.04);
+}
+
+.c8:focus {
+  background-color: rgba(63,81,181,0.12);
+}
+
+.c1 {
+  background-color: #fff;
+  border-radius: 8px;
+  max-width: 560px;
+  margin: 32px;
+  max-height: calc(100% - 64px);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  box-shadow: 0px 11px 15px -7px rgba(0,0,0,0.2),0px 24px 38px 3px rgba(0,0,0,0.14),0px 9px 46px 8px rgba(0,0,0,0.12);
+}
+
+.c2 {
+  color: rgba(0,0,0,0.87);
+  padding: 16px 24px;
+}
+
+.c2 .xl-dialog__title {
+  font-size: 1.250rem;
+  line-height: 1.6;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.013em;
+  -moz-letter-spacing: 0.013em;
+  -ms-letter-spacing: 0.013em;
+  letter-spacing: 0.013em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  margin: 0;
+}
+
+.c4 {
+  padding: 8px 24px;
+  overflow-y: auto;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  color: rgba(0,0,0,0.54);
+  font-size: 1.000rem;
+  line-height: 1.5;
+  font-weight: 400;
+  -webkit-letter-spacing: 0.031em;
+  -moz-letter-spacing: 0.031em;
+  -ms-letter-spacing: 0.031em;
+  letter-spacing: 0.031em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+}
+
+.c5 {
+  padding: 8px;
+  text-align: right;
+}
+
+.c6 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-flex-wrap: wrap-reverse;
+  -ms-flex-wrap: wrap-reverse;
+  flex-wrap: wrap-reverse;
+}
+
+.c3 {
+  font-size: 1.250rem;
+  line-height: 1.6;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.013em;
+  -moz-letter-spacing: 0.013em;
+  -ms-letter-spacing: 0.013em;
+  letter-spacing: 0.013em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  margin: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+<div
+  aria-labelledby="xlDialogTitle0"
+  class="c0 xl-modal__body c1 xl-dialog xl-method-dialog"
+  id="method"
+  style="transform-origin: 50% 50%;"
+  tabindex="-1"
+>
+  <div
+    class="c2 xl-dialog__header"
+    id="xlDialogTitle0"
+  >
+    <h6
+      class="c3 xl-method-dialog__title"
+    >
+      title
+    </h6>
+  </div>
+  <div
+    class="c4 xl-dialog__content"
+  >
+    <div
+      class=""
+    >
+      content
+    </div>
+  </div>
+  <div
+    class="c5 xl-dialog__footer"
+  >
+    <div
+      class="c6"
+    >
+      <button
+        class="c7 xl-base-button c8 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-text"
+      >
+        <span
+          class="c9 xl-base-button__inner"
+        >
+          <span
+            class="xl-button__inner"
+          >
+            No
+          </span>
+        </span>
+        <div
+          class="c10 xl-ripple xl-base-button__ripple"
+        />
+      </button>
+      <button
+        class="c7 xl-base-button c8 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-text"
+      >
+        <span
+          class="c9 xl-base-button__inner"
+        >
+          <span
+            class="xl-button__inner"
+          >
+            Yes
+          </span>
+        </span>
+        <div
+          class="c10 xl-ripple xl-base-button__ripple"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DialogMethod test success 1`] = `
+.c5 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentcolor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+}
+
+.c0 {
+  position: relative;
+  outline: 0;
+}
+
+.c0.xl-modal__body-enter-active {
+  -webkit-transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),-webkit-transform 225ms 0ms cubic-bezier(0,0,0.2,1);
+  -webkit-transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c0.xl-modal__body-leave-active {
+  -webkit-transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1),-webkit-transform 195ms 0ms cubic-bezier(0.4,0,1,1);
+  -webkit-transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1),transform 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1),transform 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c0.xl-modal__body-enter-from,
+.c0.xl-modal__body-leave-to {
+  opacity: 0;
+}
+
+.c0.xl-modal__body-leave-from,
+.c0.xl-modal__body-enter-to {
+  opacity: 1;
+}
+
+.c0.xl-modal__body-enter-from {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+}
+
+.c0.xl-modal__body-enter-to {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.c13 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c10 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.c10::-moz-focus-inner {
+  border-style: none;
+}
+
+.c10 svg {
+  pointer-events: none;
+}
+
+.c10 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+}
+
+.c10 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c10 .xl-base-button__ripple-leave-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c10 .xl-base-button__ripple-enter-from {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c10 .xl-base-button__ripple-leave-to {
+  opacity: 0;
+}
+
+.c12 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c11 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  border-radius: 4px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  background-color: transparent;
+  color: #3f51b5;
+  padding: 6px 16px;
+}
+
+.c11:hover {
+  background-color: rgba(63,81,181,0.04);
+}
+
+.c11:focus {
+  background-color: rgba(63,81,181,0.12);
+}
+
+.c1 {
+  background-color: #fff;
+  border-radius: 8px;
+  max-width: 560px;
+  margin: 32px;
+  max-height: calc(100% - 64px);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  box-shadow: 0px 11px 15px -7px rgba(0,0,0,0.2),0px 24px 38px 3px rgba(0,0,0,0.14),0px 9px 46px 8px rgba(0,0,0,0.12);
+}
+
+.c2 {
+  color: rgba(0,0,0,0.87);
+  padding: 16px 24px;
+}
+
+.c2 .xl-dialog__title {
+  font-size: 1.250rem;
+  line-height: 1.6;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.013em;
+  -moz-letter-spacing: 0.013em;
+  -ms-letter-spacing: 0.013em;
+  letter-spacing: 0.013em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  margin: 0;
+}
+
+.c6 {
+  padding: 8px 24px;
+  overflow-y: auto;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  color: rgba(0,0,0,0.54);
+  font-size: 1.000rem;
+  line-height: 1.5;
+  font-weight: 400;
+  -webkit-letter-spacing: 0.031em;
+  -moz-letter-spacing: 0.031em;
+  -ms-letter-spacing: 0.031em;
+  letter-spacing: 0.031em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+}
+
+.c8 {
+  padding: 8px;
+  text-align: right;
+}
+
+.c9 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-flex-wrap: wrap-reverse;
+  -ms-flex-wrap: wrap-reverse;
+  flex-wrap: wrap-reverse;
+}
+
+.c3 {
+  font-size: 1.250rem;
+  line-height: 1.6;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.013em;
+  -moz-letter-spacing: 0.013em;
+  -ms-letter-spacing: 0.013em;
+  letter-spacing: 0.013em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  margin: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c4 {
+  line-height: 1;
+  padding-right: 5px;
+}
+
+.c4 svg {
+  vertical-align: middle;
+}
+
+.c7 {
+  padding-left: 25px;
+}
+
+<div
+  aria-labelledby="xlDialogTitle2"
+  class="c0 xl-modal__body c1 xl-dialog xl-method-dialog"
+  id="success"
+  style="transform-origin: 50% 50%;"
+  tabindex="-1"
+>
+  <div
+    class="c2 xl-dialog__header"
+    id="xlDialogTitle2"
+  >
+    <h6
+      class="c3 xl-method-dialog__title"
+    >
+      <span
+        class="c4 xl-method-dialog__icon"
+      >
+        <svg
+          class="c5 xl-icon"
+          style="color: rgb(63, 81, 181);"
+          viewBox="0 0 1024 1024"
+        >
+          <path
+            d="M699 353h-46.9c-10.2 0-19.9 4.9-25.9 13.3L469 584.3l-71.2-98.8c-6-8.3-15.6-13.3-25.9-13.3H325c-6.5 0-10.3 7.4-6.5 12.7l124.6 172.8a31.8 31.8 0 0 0 51.7 0l210.6-292c3.9-5.3.1-12.7-6.4-12.7z"
+          />
+          <path
+            d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+          />
+        </svg>
+      </span>
+      title
+    </h6>
+  </div>
+  <div
+    class="c6 xl-dialog__content"
+  >
+    <div
+      class="c7"
+    >
+      content
+    </div>
+  </div>
+  <div
+    class="c8 xl-dialog__footer"
+  >
+    <div
+      class="c9"
+    >
+      <button
+        class="c10 xl-base-button c11 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-text"
+      >
+        <span
+          class="c12 xl-base-button__inner"
+        >
+          <span
+            class="xl-button__inner"
+          >
+            OK
+          </span>
+        </span>
+        <div
+          class="c13 xl-ripple xl-base-button__ripple"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DialogMethod test warning 1`] = `
+.c5 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentcolor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+}
+
+.c0 {
+  position: relative;
+  outline: 0;
+}
+
+.c0.xl-modal__body-enter-active {
+  -webkit-transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),-webkit-transform 225ms 0ms cubic-bezier(0,0,0.2,1);
+  -webkit-transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c0.xl-modal__body-leave-active {
+  -webkit-transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1),-webkit-transform 195ms 0ms cubic-bezier(0.4,0,1,1);
+  -webkit-transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1),transform 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1),transform 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c0.xl-modal__body-enter-from,
+.c0.xl-modal__body-leave-to {
+  opacity: 0;
+}
+
+.c0.xl-modal__body-leave-from,
+.c0.xl-modal__body-enter-to {
+  opacity: 1;
+}
+
+.c0.xl-modal__body-enter-from {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+}
+
+.c0.xl-modal__body-enter-to {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.c13 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c10 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.c10::-moz-focus-inner {
+  border-style: none;
+}
+
+.c10 svg {
+  pointer-events: none;
+}
+
+.c10 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+}
+
+.c10 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c10 .xl-base-button__ripple-leave-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c10 .xl-base-button__ripple-enter-from {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c10 .xl-base-button__ripple-leave-to {
+  opacity: 0;
+}
+
+.c12 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c11 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  border-radius: 4px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  background-color: transparent;
+  color: #3f51b5;
+  padding: 6px 16px;
+}
+
+.c11:hover {
+  background-color: rgba(63,81,181,0.04);
+}
+
+.c11:focus {
+  background-color: rgba(63,81,181,0.12);
+}
+
+.c1 {
+  background-color: #fff;
+  border-radius: 8px;
+  max-width: 560px;
+  margin: 32px;
+  max-height: calc(100% - 64px);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  box-shadow: 0px 11px 15px -7px rgba(0,0,0,0.2),0px 24px 38px 3px rgba(0,0,0,0.14),0px 9px 46px 8px rgba(0,0,0,0.12);
+}
+
+.c2 {
+  color: rgba(0,0,0,0.87);
+  padding: 16px 24px;
+}
+
+.c2 .xl-dialog__title {
+  font-size: 1.250rem;
+  line-height: 1.6;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.013em;
+  -moz-letter-spacing: 0.013em;
+  -ms-letter-spacing: 0.013em;
+  letter-spacing: 0.013em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  margin: 0;
+}
+
+.c6 {
+  padding: 8px 24px;
+  overflow-y: auto;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  color: rgba(0,0,0,0.54);
+  font-size: 1.000rem;
+  line-height: 1.5;
+  font-weight: 400;
+  -webkit-letter-spacing: 0.031em;
+  -moz-letter-spacing: 0.031em;
+  -ms-letter-spacing: 0.031em;
+  letter-spacing: 0.031em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+}
+
+.c8 {
+  padding: 8px;
+  text-align: right;
+}
+
+.c9 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-flex-wrap: wrap-reverse;
+  -ms-flex-wrap: wrap-reverse;
+  flex-wrap: wrap-reverse;
+}
+
+.c3 {
+  font-size: 1.250rem;
+  line-height: 1.6;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.013em;
+  -moz-letter-spacing: 0.013em;
+  -ms-letter-spacing: 0.013em;
+  letter-spacing: 0.013em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  margin: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c4 {
+  line-height: 1;
+  padding-right: 5px;
+}
+
+.c4 svg {
+  vertical-align: middle;
+}
+
+.c7 {
+  padding-left: 25px;
+}
+
+<div
+  aria-labelledby="xlDialogTitle4"
+  class="c0 xl-modal__body c1 xl-dialog xl-method-dialog"
+  id="warning"
+  style="transform-origin: 50% 50%;"
+  tabindex="-1"
+>
+  <div
+    class="c2 xl-dialog__header"
+    id="xlDialogTitle4"
+  >
+    <h6
+      class="c3 xl-method-dialog__title"
+    >
+      <span
+        class="c4 xl-method-dialog__icon"
+      >
+        <svg
+          class="c5 xl-icon"
+          style="color: rgb(255, 152, 0);"
+          viewBox="0 0 1024 1024"
+        >
+          <path
+            d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+          />
+          <path
+            d="M464 688a48 48 0 1 0 96 0 48 48 0 1 0-96 0zm24-112h48c4.4 0 8-3.6 8-8V296c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8z"
+          />
+        </svg>
+      </span>
+      title
+    </h6>
+  </div>
+  <div
+    class="c6 xl-dialog__content"
+  >
+    <div
+      class="c7"
+    >
+      content
+    </div>
+  </div>
+  <div
+    class="c8 xl-dialog__footer"
+  >
+    <div
+      class="c9"
+    >
+      <button
+        class="c10 xl-base-button c11 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-text"
+      >
+        <span
+          class="c12 xl-base-button__inner"
+        >
+          <span
+            class="xl-button__inner"
+          >
+            OK
+          </span>
+        </span>
+        <div
+          class="c13 xl-ripple xl-base-button__ripple"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;

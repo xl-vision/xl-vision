@@ -46,7 +46,7 @@ export default () => {
 
     return {
       update,
-      destory: destroyWrapper,
+      destroy: destroyWrapper,
     };
   });
 
@@ -72,7 +72,7 @@ export default () => {
 
     return {
       update,
-      destory: destroyWrapper,
+      destroy: destroyWrapper,
     };
   });
 
@@ -98,7 +98,7 @@ export default () => {
 
     return {
       update,
-      destory: destroyWrapper,
+      destroy: destroyWrapper,
     };
   });
 
@@ -124,7 +124,7 @@ export default () => {
 
     return {
       update,
-      destory: destroyWrapper,
+      destroy: destroyWrapper,
     };
   });
 
@@ -150,7 +150,7 @@ export default () => {
 
     return {
       update,
-      destory: destroyWrapper,
+      destroy: destroyWrapper,
     };
   });
 
@@ -176,7 +176,7 @@ export default () => {
 
     return {
       update,
-      destory: destroyWrapper,
+      destroy: destroyWrapper,
     };
   });
 
