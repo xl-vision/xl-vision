@@ -2,13 +2,13 @@ import React from 'react';
 import Proptypes from 'prop-types';
 import clsx from 'clsx';
 import { CSSObject } from '@xl-vision/styled-engine-types';
+import { ThemeContext as StyledThemeContext } from '@xl-vision/styled-engine';
 import usePropChange from '../hooks/usePropChange';
 import { isDevelopment } from '../utils/env';
 import Dialog, { DialogProps } from './Dialog';
 import { styled } from '../styles';
-import ThemeContext from '../ThemeProvider/ThemeContext';
 import { LocalizationContext, LocalizationContextProps } from '../LocalizationProvider';
-import { Theme } from '../ThemeProvider';
+import { Theme, ThemeContext } from '../ThemeProvider';
 
 export interface MethodDialogProps extends Omit<DialogProps, 'children'> {
   content?: React.ReactNode;
@@ -100,19 +100,21 @@ const MethodDialog = React.forwardRef<HTMLDivElement, MethodDialogProps>((props,
   return (
     <LocalizationContext.Provider value={localeContext}>
       <ThemeContext.Provider value={themeContext}>
-        <Dialog
-          {...others}
-          className={clsx(className, rootClassName)}
-          title={titleWrapper}
-          ref={ref}
-          visible={!first && visible}
-          // eslint-disable-next-line react/jsx-handler-names
-          onVisibleChange={setVisible}
-        >
-          {content && (
-            <MethodDialogContent styleProps={{ icon: !!icon }}>{content}</MethodDialogContent>
-          )}
-        </Dialog>
+        <StyledThemeContext.Provider value={themeContext}>
+          <Dialog
+            {...others}
+            className={clsx(className, rootClassName)}
+            title={titleWrapper}
+            ref={ref}
+            visible={!first && visible}
+            // eslint-disable-next-line react/jsx-handler-names
+            onVisibleChange={setVisible}
+          >
+            {content && (
+              <MethodDialogContent styleProps={{ icon: !!icon }}>{content}</MethodDialogContent>
+            )}
+          </Dialog>
+        </StyledThemeContext.Provider>
       </ThemeContext.Provider>
     </LocalizationContext.Provider>
   );

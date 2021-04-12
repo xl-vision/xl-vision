@@ -21,6 +21,9 @@ export default () => {
   const defaultThemeContext = React.useContext(ThemeContext);
   const defaultLocaleContext = React.useContext(LocalizationContext);
 
+  const defaultThemeContextRef = React.useRef(defaultThemeContext);
+  const defaultLocaleContextRef = React.useRef(defaultLocaleContext);
+
   const modals = React.useRef<
     Array<{ destroy: () => void; update: (props: Partial<MethodDialogHookProps>) => void }>
   >([]);
@@ -32,6 +35,8 @@ export default () => {
   }, []);
 
   React.useEffect(() => {
+    defaultThemeContextRef.current = defaultThemeContext;
+    defaultLocaleContextRef.current = defaultLocaleContext;
     // 全局context修改，这里要更新
     modals.current.forEach((it) => it.update({}));
   }, [defaultThemeContext, defaultLocaleContext]);
@@ -39,8 +44,8 @@ export default () => {
   const methodWrapper = useEventCallback((props: MethodDialogHookProps) => {
     const { update, destroy } = method({
       ...props,
-      themeContext: defaultThemeContext,
-      localeContext: defaultLocaleContext,
+      themeContext: defaultThemeContextRef.current,
+      localeContext: defaultLocaleContextRef.current,
     });
 
     const destroyWrapper = () => {
@@ -49,7 +54,11 @@ export default () => {
     };
 
     const updateWrapper = (_props: Partial<MethodDialogHookProps>) => {
-      update({ ..._props, themeContext: defaultThemeContext, localeContext: defaultLocaleContext });
+      update({
+        ..._props,
+        themeContext: defaultThemeContextRef.current,
+        localeContext: defaultLocaleContextRef.current,
+      });
     };
 
     const ret = {
@@ -65,8 +74,8 @@ export default () => {
   const infoWrapper = useEventCallback((props: MethodDialogHookProps) => {
     const { update, destroy } = info({
       ...props,
-      themeContext: defaultThemeContext,
-      localeContext: defaultLocaleContext,
+      themeContext: defaultThemeContextRef.current,
+      localeContext: defaultLocaleContextRef.current,
     });
 
     const destroyWrapper = () => {
@@ -75,8 +84,11 @@ export default () => {
     };
 
     const updateWrapper = (_props: Partial<MethodDialogHookProps>) => {
-      console.log(defaultLocaleContext);
-      update({ ..._props, themeContext: defaultThemeContext, localeContext: defaultLocaleContext });
+      update({
+        ..._props,
+        themeContext: defaultThemeContextRef.current,
+        localeContext: defaultLocaleContextRef.current,
+      });
     };
 
     const ret = {
@@ -92,8 +104,8 @@ export default () => {
   const successWrapper = useEventCallback((props: MethodDialogHookProps) => {
     const { update, destroy } = success({
       ...props,
-      themeContext: defaultThemeContext,
-      localeContext: defaultLocaleContext,
+      themeContext: defaultThemeContextRef.current,
+      localeContext: defaultLocaleContextRef.current,
     });
 
     const destroyWrapper = () => {
@@ -102,7 +114,11 @@ export default () => {
     };
 
     const updateWrapper = (_props: Partial<MethodDialogHookProps>) => {
-      update({ ..._props, themeContext: defaultThemeContext, localeContext: defaultLocaleContext });
+      update({
+        ..._props,
+        themeContext: defaultThemeContextRef.current,
+        localeContext: defaultLocaleContextRef.current,
+      });
     };
 
     const ret = {
@@ -118,8 +134,8 @@ export default () => {
   const errorWrapper = useEventCallback((props: MethodDialogHookProps) => {
     const { update, destroy } = error({
       ...props,
-      themeContext: defaultThemeContext,
-      localeContext: defaultLocaleContext,
+      themeContext: defaultThemeContextRef.current,
+      localeContext: defaultLocaleContextRef.current,
     });
 
     const destroyWrapper = () => {
@@ -128,7 +144,11 @@ export default () => {
     };
 
     const updateWrapper = (_props: Partial<MethodDialogHookProps>) => {
-      update({ ..._props, themeContext: defaultThemeContext, localeContext: defaultLocaleContext });
+      update({
+        ..._props,
+        themeContext: defaultThemeContextRef.current,
+        localeContext: defaultLocaleContextRef.current,
+      });
     };
 
     const ret = {
@@ -144,8 +164,8 @@ export default () => {
   const warningWrapper = useEventCallback((props: MethodDialogHookProps) => {
     const { update, destroy } = warning({
       ...props,
-      themeContext: defaultThemeContext,
-      localeContext: defaultLocaleContext,
+      themeContext: defaultThemeContextRef.current,
+      localeContext: defaultLocaleContextRef.current,
     });
 
     const destroyWrapper = () => {
@@ -154,7 +174,11 @@ export default () => {
     };
 
     const updateWrapper = (_props: Partial<MethodDialogHookProps>) => {
-      update({ ..._props, themeContext: defaultThemeContext, localeContext: defaultLocaleContext });
+      update({
+        ..._props,
+        themeContext: defaultThemeContextRef.current,
+        localeContext: defaultLocaleContextRef.current,
+      });
     };
 
     const ret = {
@@ -170,8 +194,8 @@ export default () => {
   const confirmWrapper = useEventCallback((props: MethodDialogHookProps) => {
     const { update, destroy } = confirm({
       ...props,
-      themeContext: defaultThemeContext,
-      localeContext: defaultLocaleContext,
+      themeContext: defaultThemeContextRef.current,
+      localeContext: defaultLocaleContextRef.current,
     });
 
     const destroyWrapper = () => {
@@ -180,7 +204,11 @@ export default () => {
     };
 
     const updateWrapper = (_props: Partial<MethodDialogHookProps>) => {
-      update({ ..._props, themeContext: defaultThemeContext, localeContext: defaultLocaleContext });
+      update({
+        ..._props,
+        themeContext: defaultThemeContextRef.current,
+        localeContext: defaultLocaleContextRef.current,
+      });
     };
 
     const ret = {

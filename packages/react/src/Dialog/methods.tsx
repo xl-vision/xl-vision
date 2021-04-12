@@ -112,7 +112,7 @@ export const destroyAll = () => {
   }
 };
 
-export const info = (props: MethodDialogFunctionProps) => {
+export const info = (props: MethodDialogFunctionProps): DialogMethodReturnType => {
   const {
     themeContext = defaultThemeContext,
     localeContext = defaultLocaleContext,
@@ -122,10 +122,10 @@ export const info = (props: MethodDialogFunctionProps) => {
 
   const onClosedWrapper = () => {
     onClosed?.();
-    ret.destroy();
+    destroy();
   };
 
-  const ret = method({
+  const { destroy, update } = method({
     icon: (
       <Icon style={{ color: themeContext.color.themes.info.color }}>
         <InfoCircleOutlined />
@@ -140,10 +140,16 @@ export const info = (props: MethodDialogFunctionProps) => {
     ...others,
   });
 
-  return ret;
+  return {
+    destroy,
+    update(_props) {
+      const confirmText = _props.localeContext?.locale.MethodDialog.infoText;
+      update({ confirmText, ..._props });
+    },
+  };
 };
 
-export const success = (props: MethodDialogFunctionProps) => {
+export const success = (props: MethodDialogFunctionProps): DialogMethodReturnType => {
   const {
     themeContext = defaultThemeContext,
     localeContext = defaultLocaleContext,
@@ -153,10 +159,10 @@ export const success = (props: MethodDialogFunctionProps) => {
 
   const onClosedWrapper = () => {
     onClosed?.();
-    ret.destroy();
+    destroy();
   };
 
-  const ret = method({
+  const { destroy, update } = method({
     icon: (
       <Icon style={{ color: themeContext.color.themes.primary.color }}>
         <CheckCircleOutlined />
@@ -171,10 +177,16 @@ export const success = (props: MethodDialogFunctionProps) => {
     ...others,
   });
 
-  return ret;
+  return {
+    destroy,
+    update(_props) {
+      const confirmText = _props.localeContext?.locale.MethodDialog.successText;
+      update({ confirmText, ..._props });
+    },
+  };
 };
 
-export const error = (props: MethodDialogFunctionProps) => {
+export const error = (props: MethodDialogFunctionProps): DialogMethodReturnType => {
   const {
     themeContext = defaultThemeContext,
     localeContext = defaultLocaleContext,
@@ -184,10 +196,10 @@ export const error = (props: MethodDialogFunctionProps) => {
 
   const onClosedWrapper = () => {
     onClosed?.();
-    ret.destroy();
+    destroy();
   };
 
-  const ret = method({
+  const { destroy, update } = method({
     icon: (
       <Icon style={{ color: themeContext.color.themes.error.color }}>
         <CloseCircleOutlined />
@@ -201,10 +213,17 @@ export const error = (props: MethodDialogFunctionProps) => {
     onClosed: onClosedWrapper,
     ...others,
   });
-  return ret;
+
+  return {
+    destroy,
+    update(_props) {
+      const confirmText = _props.localeContext?.locale.MethodDialog.errorText;
+      update({ confirmText, ..._props });
+    },
+  };
 };
 
-export const warning = (props: MethodDialogFunctionProps) => {
+export const warning = (props: MethodDialogFunctionProps): DialogMethodReturnType => {
   const {
     themeContext = defaultThemeContext,
     localeContext = defaultLocaleContext,
@@ -214,10 +233,10 @@ export const warning = (props: MethodDialogFunctionProps) => {
 
   const onClosedWrapper = () => {
     onClosed?.();
-    ret.destroy();
+    destroy();
   };
 
-  const ret = method({
+  const { destroy, update } = method({
     icon: (
       <Icon style={{ color: themeContext.color.themes.warning.color }}>
         <ExclamationCircleOutlined />
@@ -231,10 +250,17 @@ export const warning = (props: MethodDialogFunctionProps) => {
     onClosed: onClosedWrapper,
     ...others,
   });
-  return ret;
+
+  return {
+    destroy,
+    update(_props) {
+      const confirmText = _props.localeContext?.locale.MethodDialog.warningText;
+      update({ confirmText, ..._props });
+    },
+  };
 };
 
-export const confirm = (props: MethodDialogFunctionProps) => {
+export const confirm = (props: MethodDialogFunctionProps): DialogMethodReturnType => {
   const {
     themeContext = defaultThemeContext,
     localeContext = defaultLocaleContext,
@@ -244,10 +270,10 @@ export const confirm = (props: MethodDialogFunctionProps) => {
 
   const onClosedWrapper = () => {
     onClosed?.();
-    ret.destroy();
+    destroy();
   };
 
-  const ret = method({
+  const { destroy, update } = method({
     icon: (
       <Icon style={{ color: themeContext.color.themes.primary.color }}>
         <ExclamationCircleOutlined />
@@ -261,5 +287,13 @@ export const confirm = (props: MethodDialogFunctionProps) => {
     onClosed: onClosedWrapper,
     ...others,
   });
-  return ret;
+
+  return {
+    destroy,
+    update(_props) {
+      const confirmText = _props.localeContext?.locale.MethodDialog.confirm.confirmText;
+      const cancelText = _props.localeContext?.locale.MethodDialog.confirm.cancelText;
+      update({ confirmText, cancelText, ..._props });
+    },
+  };
 };

@@ -208,6 +208,7 @@ describe('DialogHooks', () => {
 
     jest.runAllTimers();
 
+    el = document.querySelector('#info');
     expect(el!.querySelector('button')!.textContent).toBe(locales['zh-CN'].MethodDialog.infoText);
 
     wrapper.unmount();
