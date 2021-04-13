@@ -51,6 +51,14 @@ export const method = (props: MethodDialogFunctionProps): DialogMethodReturnType
 
   let currentProps = props;
 
+  const handleVisibleChange = (visible: boolean) => {
+    // 如果visible!=undefined，内部状态完全由外部决定，不需要设置回来
+    if (currentProps.visible === undefined) {
+      currentProps.visible = visible;
+    }
+    currentProps.onVisibleChange?.(visible);
+  };
+
   const render = () => {
     setTimeout(() => {
       const {
@@ -65,6 +73,7 @@ export const method = (props: MethodDialogFunctionProps): DialogMethodReturnType
           localeContext={localeContext}
           themeContext={themeContext}
           {...others}
+          onVisibleChange={handleVisibleChange}
         />,
         div,
       );
@@ -90,10 +99,16 @@ export const method = (props: MethodDialogFunctionProps): DialogMethodReturnType
   };
 
   const destroy = () => {
-    if (!currentProps.visible) {
+    if (currentProps.visible) {
       destroyDOM();
       return;
     }
+
+    if (currentProps.defaultVisible && currentProps.visible === undefined) {
+      destroyDOM();
+      return;
+    }
+
     update({
       visible: false,
       onClosed: () => {
