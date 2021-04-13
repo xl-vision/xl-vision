@@ -32,7 +32,7 @@
 
 :::
 
-:::demo ./UseHooks.tsx
+:::demo ./UseDialog.tsx
 
 hooks
 
@@ -131,14 +131,14 @@ browserHistory.listen(() => {
 });
 ```
 
-## Dialog.useHooks
+## Dialog.useDialog
 
-> Dialog.useHooks 拥有和 method 几乎相同的参数和方法，但是不需要传入 themeContext 和 localeContext。
+> Dialog.useDialog 拥有和 method 几乎相同的参数和方法，但是不需要传入 themeContext 和 localeContext。
 
-> 我们推荐使用 useHooks，这种方式可以保证主题和国际化与上下文一致，也会在父组件销毁的时候自动销毁对话框，降低了使用时的心智负担。
+> 我们推荐使用 useDialog，这种方式可以保证主题和国际化与上下文一致，也会在父组件销毁的时候自动销毁对话框，降低了使用时的心智负担。
 
 ```tsx
-const dialog = Dialog.useHooks();
+const dialog = Dialog.useDialog();
 
 React.useEffect(() => {
   dialog.confirm({
