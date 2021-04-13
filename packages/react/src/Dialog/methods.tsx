@@ -18,7 +18,7 @@ import MethodDialog, { MethodDialogProps } from './MethodDialog';
 let destoryFunctions: Array<() => void> = [];
 
 export interface MethodDialogFunctionProps
-  extends Omit<MethodDialogProps, 'themeContext' | 'localeContext'> {
+  extends Omit<MethodDialogProps, 'themeContext' | 'localeContext' | 'visible' | 'defaultVisible'> {
   localeContext?: LocalizationContextProps;
   themeContext?: Theme;
 }
@@ -49,34 +49,17 @@ export const method = (props: MethodDialogFunctionProps): DialogMethodReturnType
   const div = document.createElement('div');
   document.body.appendChild(div);
 
-  let currentProps = props;
-
-  const handleVisibleChange = (visible: boolean) => {
-    // 如果visible!=undefined，内部状态完全由外部决定，不需要设置回来
-    if (currentProps.visible === undefined) {
-      currentProps.visible = visible;
-    }
-    currentProps.onVisibleChange?.(visible);
+  let currentProps: MethodDialogProps = {
+    themeContext: defaultThemeContext,
+    localeContext: defaultLocaleContext,
+    ...props,
+    visible: undefined,
+    defaultVisible: true,
   };
 
   const render = () => {
     setTimeout(() => {
-      const {
-        localeContext = defaultLocaleContext,
-        themeContext = defaultThemeContext,
-        ...others
-      } = currentProps;
-
-      ReactDOM.render(
-        <MethodDialog
-          getContainer={null}
-          localeContext={localeContext}
-          themeContext={themeContext}
-          {...others}
-          onVisibleChange={handleVisibleChange}
-        />,
-        div,
-      );
+      ReactDOM.render(<MethodDialog getContainer={null} {...currentProps} />, div);
     });
   };
 
@@ -86,7 +69,7 @@ export const method = (props: MethodDialogFunctionProps): DialogMethodReturnType
       | ((prev: MethodDialogFunctionProps) => Partial<MethodDialogFunctionProps>),
   ) => {
     const newProps = typeof renderProps === 'function' ? renderProps(currentProps) : renderProps;
-    currentProps = { ...currentProps, ...newProps };
+    currentProps = { ...currentProps, ...newProps, visible: undefined, defaultVisible: true };
     render();
   };
 
@@ -99,23 +82,16 @@ export const method = (props: MethodDialogFunctionProps): DialogMethodReturnType
   };
 
   const destroy = () => {
-    if (currentProps.visible) {
-      destroyDOM();
-      return;
-    }
-
-    if (currentProps.defaultVisible && currentProps.visible === undefined) {
-      destroyDOM();
-      return;
-    }
-
-    update({
+    const { onClosed } = currentProps;
+    currentProps = {
+      ...currentProps,
       visible: false,
       onClosed: () => {
-        currentProps?.onClosed?.();
+        onClosed?.();
         destroyDOM();
       },
-    });
+    };
+    render();
   };
 
   destoryFunctions.push(destroy);

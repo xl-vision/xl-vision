@@ -3,18 +3,20 @@ import Proptypes from 'prop-types';
 import clsx from 'clsx';
 import { CSSObject } from '@xl-vision/styled-engine-types';
 import { ThemeContext as StyledThemeContext } from '@xl-vision/styled-engine';
-import usePropChange from '../hooks/usePropChange';
-import { isDevelopment } from '../utils/env';
-import Dialog, { DialogProps } from './Dialog';
-import { styled } from '../styles';
-import { LocalizationContext, LocalizationContextProps } from '../LocalizationProvider';
-import { Theme, ThemeContext } from '../ThemeProvider';
+import usePropChange from '../../hooks/usePropChange';
+import { isDevelopment } from '../../utils/env';
+import Dialog, { DialogProps } from '../Dialog';
+import { styled } from '../../styles';
+import { LocalizationContext, LocalizationContextProps } from '../../LocalizationProvider';
+import { Theme, ThemeContext } from '../../ThemeProvider';
+import defaultTheme from '../../ThemeProvider/defaultTheme';
+import { defaultLanguage, locales } from '../../locale';
 
 export interface MethodDialogProps extends Omit<DialogProps, 'children'> {
   content?: React.ReactNode;
   icon?: React.ReactNode;
-  localeContext: LocalizationContextProps;
-  themeContext: Theme;
+  localeContext?: LocalizationContextProps;
+  themeContext?: Theme;
 }
 
 const displayName = 'MethodDialog';
@@ -75,10 +77,16 @@ const MethodDialogContent = styled('div', {
   return styles;
 });
 
+const defaultLocaleContext: LocalizationContextProps = {
+  locale: locales[defaultLanguage],
+  language: defaultLanguage,
+};
+const defaultThemeContext = defaultTheme;
+
 const MethodDialog = React.forwardRef<HTMLDivElement, MethodDialogProps>((props, ref) => {
   const {
-    localeContext,
-    themeContext,
+    localeContext = defaultLocaleContext,
+    themeContext = defaultThemeContext,
     visible: visibleProp,
     defaultVisible: defaultVisibleProp = true,
     onVisibleChange: onVisibleChangeProp,
