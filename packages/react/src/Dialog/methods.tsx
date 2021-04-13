@@ -112,6 +112,7 @@ export const method = (props: MethodDialogFunctionProps): DialogMethodReturnType
     update({
       visible: false,
       onClosed: () => {
+        currentProps?.onClosed?.();
         destroyDOM();
       },
     });
@@ -171,6 +172,10 @@ export const info = (props: MethodDialogFunctionProps): DialogMethodReturnType =
         const ret = typeof _props === 'function' ? _props(prev) : _props;
         return {
           confirmText: ret.localeContext?.locale.MethodDialog.infoText,
+          onClosed() {
+            ret.onClosed?.();
+            destroy();
+          },
           ...ret,
         };
       });
@@ -213,6 +218,10 @@ export const success = (props: MethodDialogFunctionProps): DialogMethodReturnTyp
         const ret = typeof _props === 'function' ? _props(prev) : _props;
         return {
           confirmText: ret.localeContext?.locale.MethodDialog.successText,
+          onClosed() {
+            ret.onClosed?.();
+            destroy();
+          },
           ...ret,
         };
       });
@@ -255,6 +264,10 @@ export const error = (props: MethodDialogFunctionProps): DialogMethodReturnType 
         const ret = typeof _props === 'function' ? _props(prev) : _props;
         return {
           confirmText: ret.localeContext?.locale.MethodDialog.errorText,
+          onClosed() {
+            ret.onClosed?.();
+            destroy();
+          },
           ...ret,
         };
       });
@@ -297,6 +310,10 @@ export const warning = (props: MethodDialogFunctionProps): DialogMethodReturnTyp
         const ret = typeof _props === 'function' ? _props(prev) : _props;
         return {
           confirmText: ret.localeContext?.locale.MethodDialog.warningText,
+          onClosed() {
+            ret.onClosed?.();
+            destroy();
+          },
           ...ret,
         };
       });
@@ -340,6 +357,10 @@ export const confirm = (props: MethodDialogFunctionProps): DialogMethodReturnTyp
         return {
           confirmText: localeContext.locale.MethodDialog.confirm.confirmText,
           cancelText: localeContext.locale.MethodDialog.confirm.cancelText,
+          onClosed() {
+            ret.onClosed?.();
+            destroy();
+          },
           ...ret,
         };
       });
