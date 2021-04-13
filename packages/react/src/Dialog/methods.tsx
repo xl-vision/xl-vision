@@ -25,7 +25,11 @@ export interface MethodDialogFunctionProps
 
 export type DialogMethodReturnType = {
   destroy: () => void;
-  update: (props: Partial<MethodDialogFunctionProps>) => void;
+  update: (
+    props:
+      | Partial<MethodDialogFunctionProps>
+      | ((prev: MethodDialogFunctionProps) => Partial<MethodDialogFunctionProps>),
+  ) => void;
 };
 
 const defaultLocaleContext: LocalizationContextProps = {
@@ -67,8 +71,13 @@ export const method = (props: MethodDialogFunctionProps): DialogMethodReturnType
     });
   };
 
-  const update = (renderProps: Partial<MethodDialogFunctionProps>) => {
-    currentProps = { ...currentProps, ...renderProps };
+  const update = (
+    renderProps:
+      | Partial<MethodDialogFunctionProps>
+      | ((prev: MethodDialogFunctionProps) => Partial<MethodDialogFunctionProps>),
+  ) => {
+    const newProps = typeof renderProps === 'function' ? renderProps(currentProps) : renderProps;
+    currentProps = { ...currentProps, ...newProps };
     render();
   };
 
@@ -143,8 +152,13 @@ export const info = (props: MethodDialogFunctionProps): DialogMethodReturnType =
   return {
     destroy,
     update(_props) {
-      const confirmText = _props.localeContext?.locale.MethodDialog.infoText;
-      update({ confirmText, ..._props });
+      update((prev) => {
+        const ret = typeof _props === 'function' ? _props(prev) : _props;
+        return {
+          confirmText: ret.localeContext?.locale.MethodDialog.infoText,
+          ...ret,
+        };
+      });
     },
   };
 };
@@ -180,8 +194,13 @@ export const success = (props: MethodDialogFunctionProps): DialogMethodReturnTyp
   return {
     destroy,
     update(_props) {
-      const confirmText = _props.localeContext?.locale.MethodDialog.successText;
-      update({ confirmText, ..._props });
+      update((prev) => {
+        const ret = typeof _props === 'function' ? _props(prev) : _props;
+        return {
+          confirmText: ret.localeContext?.locale.MethodDialog.successText,
+          ...ret,
+        };
+      });
     },
   };
 };
@@ -217,8 +236,13 @@ export const error = (props: MethodDialogFunctionProps): DialogMethodReturnType 
   return {
     destroy,
     update(_props) {
-      const confirmText = _props.localeContext?.locale.MethodDialog.errorText;
-      update({ confirmText, ..._props });
+      update((prev) => {
+        const ret = typeof _props === 'function' ? _props(prev) : _props;
+        return {
+          confirmText: ret.localeContext?.locale.MethodDialog.errorText,
+          ...ret,
+        };
+      });
     },
   };
 };
@@ -254,8 +278,13 @@ export const warning = (props: MethodDialogFunctionProps): DialogMethodReturnTyp
   return {
     destroy,
     update(_props) {
-      const confirmText = _props.localeContext?.locale.MethodDialog.warningText;
-      update({ confirmText, ..._props });
+      update((prev) => {
+        const ret = typeof _props === 'function' ? _props(prev) : _props;
+        return {
+          confirmText: ret.localeContext?.locale.MethodDialog.warningText,
+          ...ret,
+        };
+      });
     },
   };
 };
@@ -291,9 +320,14 @@ export const confirm = (props: MethodDialogFunctionProps): DialogMethodReturnTyp
   return {
     destroy,
     update(_props) {
-      const confirmText = _props.localeContext?.locale.MethodDialog.confirm.confirmText;
-      const cancelText = _props.localeContext?.locale.MethodDialog.confirm.cancelText;
-      update({ confirmText, cancelText, ..._props });
+      update((prev) => {
+        const ret = typeof _props === 'function' ? _props(prev) : _props;
+        return {
+          confirmText: localeContext.locale.MethodDialog.confirm.confirmText,
+          cancelText: localeContext.locale.MethodDialog.confirm.cancelText,
+          ...ret,
+        };
+      });
     },
   };
 };

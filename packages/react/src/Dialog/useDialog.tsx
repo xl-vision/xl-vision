@@ -53,12 +53,16 @@ export default () => {
       destroy();
     };
 
-    const updateWrapper = (_props: Partial<MethodDialogHookProps>) => {
-      update({
-        ..._props,
+    const updateWrapper = (
+      _props:
+        | Partial<MethodDialogHookProps>
+        | ((prev: MethodDialogHookProps) => Partial<MethodDialogHookProps>),
+    ) => {
+      update((prev) => ({
+        ...(typeof _props === 'function' ? _props(prev) : _props),
         themeContext: defaultThemeContextRef.current,
         localeContext: defaultLocaleContextRef.current,
-      });
+      }));
     };
 
     const ret = {
@@ -83,12 +87,16 @@ export default () => {
       destroy();
     };
 
-    const updateWrapper = (_props: Partial<MethodDialogHookProps>) => {
-      update({
-        ..._props,
+    const updateWrapper = (
+      _props:
+        | Partial<MethodDialogHookProps>
+        | ((prev: MethodDialogHookProps) => Partial<MethodDialogHookProps>),
+    ) => {
+      update((prev) => ({
+        ...(typeof _props === 'function' ? _props(prev) : _props),
         themeContext: defaultThemeContextRef.current,
         localeContext: defaultLocaleContextRef.current,
-      });
+      }));
     };
 
     const ret = {
@@ -113,12 +121,16 @@ export default () => {
       destroy();
     };
 
-    const updateWrapper = (_props: Partial<MethodDialogHookProps>) => {
-      update({
-        ..._props,
+    const updateWrapper = (
+      _props:
+        | Partial<MethodDialogHookProps>
+        | ((prev: MethodDialogHookProps) => Partial<MethodDialogHookProps>),
+    ) => {
+      update((prev) => ({
+        ...(typeof _props === 'function' ? _props(prev) : _props),
         themeContext: defaultThemeContextRef.current,
         localeContext: defaultLocaleContextRef.current,
-      });
+      }));
     };
 
     const ret = {
@@ -143,12 +155,16 @@ export default () => {
       destroy();
     };
 
-    const updateWrapper = (_props: Partial<MethodDialogHookProps>) => {
-      update({
-        ..._props,
+    const updateWrapper = (
+      _props:
+        | Partial<MethodDialogHookProps>
+        | ((prev: MethodDialogHookProps) => Partial<MethodDialogHookProps>),
+    ) => {
+      update((prev) => ({
+        ...(typeof _props === 'function' ? _props(prev) : _props),
         themeContext: defaultThemeContextRef.current,
         localeContext: defaultLocaleContextRef.current,
-      });
+      }));
     };
 
     const ret = {
@@ -173,12 +189,16 @@ export default () => {
       destroy();
     };
 
-    const updateWrapper = (_props: Partial<MethodDialogHookProps>) => {
-      update({
-        ..._props,
+    const updateWrapper = (
+      _props:
+        | Partial<MethodDialogHookProps>
+        | ((prev: MethodDialogHookProps) => Partial<MethodDialogHookProps>),
+    ) => {
+      update((prev) => ({
+        ...(typeof _props === 'function' ? _props(prev) : _props),
         themeContext: defaultThemeContextRef.current,
         localeContext: defaultLocaleContextRef.current,
-      });
+      }));
     };
 
     const ret = {
@@ -203,12 +223,16 @@ export default () => {
       destroy();
     };
 
-    const updateWrapper = (_props: Partial<MethodDialogHookProps>) => {
-      update({
-        ..._props,
+    const updateWrapper = (
+      _props:
+        | Partial<MethodDialogHookProps>
+        | ((prev: MethodDialogHookProps) => Partial<MethodDialogHookProps>),
+    ) => {
+      update((prev) => ({
+        ...(typeof _props === 'function' ? _props(prev) : _props),
         themeContext: defaultThemeContextRef.current,
         localeContext: defaultLocaleContextRef.current,
-      });
+      }));
     };
 
     const ret = {
