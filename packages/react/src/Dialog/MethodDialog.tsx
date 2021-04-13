@@ -19,9 +19,9 @@ export interface MethodDialogProps extends Omit<DialogProps, 'children'> {
 
 const displayName = 'MethodDialog';
 
-const MethodDialogTitle = styled('h6', {
+const MethodDialogHeader = styled('h6', {
   name: displayName,
-  slot: 'Title',
+  slot: 'Header',
 })(({ theme }) => {
   const { typography } = theme;
 
@@ -29,7 +29,19 @@ const MethodDialogTitle = styled('h6', {
     ...typography.h6,
     margin: 0,
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'flex-start',
+    // alignItems: 'center',
+  };
+});
+
+const MethodDialogTitle = styled('span', {
+  name: displayName,
+  slot: 'Title',
+})(() => {
+  return {
+    display: 'inline-block',
+    // display: 'flex',
+    // alignItems: 'center',
   };
 });
 
@@ -38,7 +50,6 @@ const MethodDialogIcon = styled('span', {
   slot: 'Icon',
 })(() => {
   return {
-    lineHeight: 1,
     paddingRight: 5,
     svg: {
       verticalAlign: 'middle',
@@ -90,11 +101,11 @@ const MethodDialog = React.forwardRef<HTMLDivElement, MethodDialogProps>((props,
 
   const rootClassName = `${clsPrefix}-method-dialog`;
 
-  const titleWrapper = (
-    <MethodDialogTitle className={`${rootClassName}__title`}>
+  const headerWrapper = (
+    <MethodDialogHeader className={`${rootClassName}__title`}>
       {icon && <MethodDialogIcon className={`${rootClassName}__icon`}>{icon}</MethodDialogIcon>}
-      {title}
-    </MethodDialogTitle>
+      <MethodDialogTitle>{title}</MethodDialogTitle>
+    </MethodDialogHeader>
   );
 
   return (
@@ -104,7 +115,7 @@ const MethodDialog = React.forwardRef<HTMLDivElement, MethodDialogProps>((props,
           <Dialog
             {...others}
             className={clsx(className, rootClassName)}
-            title={titleWrapper}
+            title={headerWrapper}
             ref={ref}
             visible={!first && visible}
             // eslint-disable-next-line react/jsx-handler-names
