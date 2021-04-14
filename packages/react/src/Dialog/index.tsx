@@ -3,9 +3,8 @@ import { method, destroyAll, success, info, error, warning, confirm } from './me
 import useDialog from './useDialog';
 
 export * from './Dialog';
-export type { MethodDialogFunctionProps, DialogMethodReturnType } from './methods';
-export type { MethodDialogProps } from './message';
-export type { MethodDialogHookProps } from './useDialog';
+export type { MessageDialogFunctionReturnType, MessageDialogFunctionUpdate } from './message';
+export type { MessageDialogHooksProps } from './useDialog';
 
 const DialogEnhancer = Dialog as typeof Dialog & {
   method: typeof method;

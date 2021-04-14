@@ -5,11 +5,12 @@ import {
   InfoCircleOutlined,
 } from '@xl-vision/icons';
 import React from 'react';
-import message, { MessageDialogFunctionProps, MessageDialogFunctionReturnType } from './message';
+import message, { MessageDialogFunctionReturnType } from './message';
 import Icon from '../Icon';
 import { defaultLanguage, locales } from '../locale';
 import { LocalizationContextProps } from '../LocalizationProvider';
 import defaultTheme from '../ThemeProvider/defaultTheme';
+import { MessageDialogProps } from './message/MessageDialog';
 
 let destoryFunctions: Array<() => void> = [];
 
@@ -19,7 +20,7 @@ const defaultLocaleContext: LocalizationContextProps = {
 };
 const defaultThemeContext = defaultTheme;
 
-export const method = (props: MessageDialogFunctionProps): MessageDialogFunctionReturnType => {
+export const method = (props: MessageDialogProps): MessageDialogFunctionReturnType => {
   const { update, destroy } = message(props);
 
   const destroyWrapper = () => {
@@ -44,7 +45,7 @@ export const destroyAll = () => {
   }
 };
 
-export const info = (props: MessageDialogFunctionProps): MessageDialogFunctionReturnType => {
+export const info = (props: MessageDialogProps): MessageDialogFunctionReturnType => {
   const {
     themeContext = defaultThemeContext,
     localeContext = defaultLocaleContext,
@@ -78,7 +79,7 @@ export const info = (props: MessageDialogFunctionProps): MessageDialogFunctionRe
   };
 };
 
-export const success = (props: MessageDialogFunctionProps): MessageDialogFunctionReturnType => {
+export const success = (props: MessageDialogProps): MessageDialogFunctionReturnType => {
   const {
     themeContext = defaultThemeContext,
     localeContext = defaultLocaleContext,
@@ -112,7 +113,7 @@ export const success = (props: MessageDialogFunctionProps): MessageDialogFunctio
   };
 };
 
-export const error = (props: MessageDialogFunctionProps): MessageDialogFunctionReturnType => {
+export const error = (props: MessageDialogProps): MessageDialogFunctionReturnType => {
   const {
     themeContext = defaultThemeContext,
     localeContext = defaultLocaleContext,
@@ -150,7 +151,7 @@ export const error = (props: MessageDialogFunctionProps): MessageDialogFunctionR
   };
 };
 
-export const warning = (props: MessageDialogFunctionProps): MessageDialogFunctionReturnType => {
+export const warning = (props: MessageDialogProps): MessageDialogFunctionReturnType => {
   const {
     themeContext = defaultThemeContext,
     localeContext = defaultLocaleContext,
@@ -196,7 +197,7 @@ export const warning = (props: MessageDialogFunctionProps): MessageDialogFunctio
   };
 };
 
-export const confirm = (props: MessageDialogFunctionProps): MessageDialogFunctionReturnType => {
+export const confirm = (props: MessageDialogProps): MessageDialogFunctionReturnType => {
   const {
     themeContext = defaultThemeContext,
     localeContext = defaultLocaleContext,

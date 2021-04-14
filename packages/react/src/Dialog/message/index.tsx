@@ -31,9 +31,11 @@ export default (props: MessageDialogProps): MessageDialogFunctionReturnType => {
 
   let isDestoryed = false;
 
-  let messgaeDialogRef: () => MessageDialogRef;
+  const messgaeDialogRef: {
+    current: MessageDialogRef | null;
+  } = { current: null };
 
-  const render = () => {
+  const render = (renderProps: MessageDialogProps) => {
     if (isDestoryed) {
       return warning(
         true,
@@ -42,7 +44,7 @@ export default (props: MessageDialogProps): MessageDialogFunctionReturnType => {
     }
     setTimeout(() => {
       ReactDOM.render(
-        <MessageDialog getContainer={null} {...currentProps} ref={messgaeDialogRef} />,
+        <MessageDialog getContainer={null} {...renderProps} ref={messgaeDialogRef} />,
         div,
       );
     });
@@ -52,7 +54,7 @@ export default (props: MessageDialogProps): MessageDialogFunctionReturnType => {
     const newProps = typeof updateProps === 'function' ? updateProps(currentProps) : updateProps;
     currentProps = { ...currentProps, ...newProps };
 
-    render();
+    render(currentProps);
   };
 
   const destroyDOM = () => {
@@ -63,25 +65,23 @@ export default (props: MessageDialogProps): MessageDialogFunctionReturnType => {
   };
 
   const destroy = () => {
-    if (!messgaeDialogRef || !messgaeDialogRef().visible) {
-      destroyDOM();
-    } else {
-      const { onClosed } = currentProps;
-      currentProps = {
-        ...currentProps,
-        visible: false,
-        onClosed: () => {
-          onClosed?.();
-          destroyDOM();
-        },
-      };
-      render();
-    }
-
     isDestoryed = true;
+    if (messgaeDialogRef.current?.visible) {
+      destroyDOM();
+      return;
+    }
+    const { onClosed } = currentProps;
+    render({
+      ...currentProps,
+      visible: false,
+      onClosed: () => {
+        onClosed?.();
+        destroyDOM();
+      },
+    });
   };
 
-  render();
+  render(currentProps);
 
   return {
     destroy,

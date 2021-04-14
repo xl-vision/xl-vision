@@ -2,20 +2,10 @@ import React from 'react';
 import useEventCallback from '../hooks/useEventCallback';
 import { LocalizationContext } from '../LocalizationProvider';
 import { ThemeContext } from '../ThemeProvider';
-import {
-  error,
-  info,
-  method,
-  MethodDialogFunctionProps,
-  success,
-  warning,
-  confirm,
-} from './methods';
+import { MessageDialogProps } from './message/MessageDialog';
+import { error, info, method, success, warning, confirm } from './methods';
 
-export type MethodDialogHookProps = Omit<
-  MethodDialogFunctionProps,
-  'themeContext' | 'localeContext'
->;
+export type MessageDialogHooksProps = Omit<MessageDialogProps, 'themeContext' | 'localeContext'>;
 
 export default () => {
   const defaultThemeContext = React.useContext(ThemeContext);
@@ -25,7 +15,7 @@ export default () => {
   const defaultLocaleContextRef = React.useRef(defaultLocaleContext);
 
   const modals = React.useRef<
-    Array<{ destroy: () => void; update: (props: Partial<MethodDialogHookProps>) => void }>
+    Array<{ destroy: () => void; update: (props: Partial<MessageDialogHooksProps>) => void }>
   >([]);
 
   React.useEffect(() => {
@@ -41,7 +31,7 @@ export default () => {
     modals.current.forEach((it) => it.update({}));
   }, [defaultThemeContext, defaultLocaleContext]);
 
-  const methodWrapper = useEventCallback((props: MethodDialogHookProps) => {
+  const methodWrapper = useEventCallback((props: MessageDialogHooksProps) => {
     const { update, destroy } = method({
       ...props,
       themeContext: defaultThemeContextRef.current,
@@ -55,8 +45,8 @@ export default () => {
 
     const updateWrapper = (
       _props:
-        | Partial<MethodDialogHookProps>
-        | ((prev: MethodDialogHookProps) => Partial<MethodDialogHookProps>),
+        | Partial<MessageDialogHooksProps>
+        | ((prev: MessageDialogHooksProps) => Partial<MessageDialogHooksProps>),
     ) => {
       update((prev) => ({
         ...(typeof _props === 'function' ? _props(prev) : _props),
@@ -75,7 +65,7 @@ export default () => {
     return ret;
   });
 
-  const infoWrapper = useEventCallback((props: MethodDialogHookProps) => {
+  const infoWrapper = useEventCallback((props: MessageDialogHooksProps) => {
     const { update, destroy } = info({
       ...props,
       themeContext: defaultThemeContextRef.current,
@@ -89,8 +79,8 @@ export default () => {
 
     const updateWrapper = (
       _props:
-        | Partial<MethodDialogHookProps>
-        | ((prev: MethodDialogHookProps) => Partial<MethodDialogHookProps>),
+        | Partial<MessageDialogHooksProps>
+        | ((prev: MessageDialogHooksProps) => Partial<MessageDialogHooksProps>),
     ) => {
       update((prev) => ({
         ...(typeof _props === 'function' ? _props(prev) : _props),
@@ -109,7 +99,7 @@ export default () => {
     return ret;
   });
 
-  const successWrapper = useEventCallback((props: MethodDialogHookProps) => {
+  const successWrapper = useEventCallback((props: MessageDialogHooksProps) => {
     const { update, destroy } = success({
       ...props,
       themeContext: defaultThemeContextRef.current,
@@ -123,8 +113,8 @@ export default () => {
 
     const updateWrapper = (
       _props:
-        | Partial<MethodDialogHookProps>
-        | ((prev: MethodDialogHookProps) => Partial<MethodDialogHookProps>),
+        | Partial<MessageDialogHooksProps>
+        | ((prev: MessageDialogHooksProps) => Partial<MessageDialogHooksProps>),
     ) => {
       update((prev) => ({
         ...(typeof _props === 'function' ? _props(prev) : _props),
@@ -143,7 +133,7 @@ export default () => {
     return ret;
   });
 
-  const errorWrapper = useEventCallback((props: MethodDialogHookProps) => {
+  const errorWrapper = useEventCallback((props: MessageDialogHooksProps) => {
     const { update, destroy } = error({
       ...props,
       themeContext: defaultThemeContextRef.current,
@@ -157,8 +147,8 @@ export default () => {
 
     const updateWrapper = (
       _props:
-        | Partial<MethodDialogHookProps>
-        | ((prev: MethodDialogHookProps) => Partial<MethodDialogHookProps>),
+        | Partial<MessageDialogHooksProps>
+        | ((prev: MessageDialogHooksProps) => Partial<MessageDialogHooksProps>),
     ) => {
       update((prev) => ({
         ...(typeof _props === 'function' ? _props(prev) : _props),
@@ -177,7 +167,7 @@ export default () => {
     return ret;
   });
 
-  const warningWrapper = useEventCallback((props: MethodDialogHookProps) => {
+  const warningWrapper = useEventCallback((props: MessageDialogHooksProps) => {
     const { update, destroy } = warning({
       ...props,
       themeContext: defaultThemeContextRef.current,
@@ -191,8 +181,8 @@ export default () => {
 
     const updateWrapper = (
       _props:
-        | Partial<MethodDialogHookProps>
-        | ((prev: MethodDialogHookProps) => Partial<MethodDialogHookProps>),
+        | Partial<MessageDialogHooksProps>
+        | ((prev: MessageDialogHooksProps) => Partial<MessageDialogHooksProps>),
     ) => {
       update((prev) => ({
         ...(typeof _props === 'function' ? _props(prev) : _props),
@@ -211,7 +201,7 @@ export default () => {
     return ret;
   });
 
-  const confirmWrapper = useEventCallback((props: MethodDialogHookProps) => {
+  const confirmWrapper = useEventCallback((props: MessageDialogHooksProps) => {
     const { update, destroy } = confirm({
       ...props,
       themeContext: defaultThemeContextRef.current,
@@ -225,8 +215,8 @@ export default () => {
 
     const updateWrapper = (
       _props:
-        | Partial<MethodDialogHookProps>
-        | ((prev: MethodDialogHookProps) => Partial<MethodDialogHookProps>),
+        | Partial<MessageDialogHooksProps>
+        | ((prev: MessageDialogHooksProps) => Partial<MessageDialogHooksProps>),
     ) => {
       update((prev) => ({
         ...(typeof _props === 'function' ? _props(prev) : _props),
