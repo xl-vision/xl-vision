@@ -8,15 +8,13 @@ import Dialog, { DialogProps } from '../Dialog';
 import { styled } from '../../styles';
 import { LocalizationContext, LocalizationContextProps } from '../../LocalizationProvider';
 import { Theme, ThemeContext } from '../../ThemeProvider';
-import defaultTheme from '../../ThemeProvider/defaultTheme';
-import { defaultLanguage, locales } from '../../locale';
 import usePropChange from '../../hooks/usePropChange';
 
 export interface MessageDialogProps extends Omit<DialogProps, 'children'> {
   content?: React.ReactNode;
   icon?: React.ReactNode;
-  localeContext?: LocalizationContextProps;
-  themeContext?: Theme;
+  localeContext: LocalizationContextProps;
+  themeContext: Theme;
 }
 
 const displayName = 'MessageDialog';
@@ -77,20 +75,14 @@ const MessageDialogContent = styled('div', {
   return styles;
 });
 
-const defaultLocaleContext: LocalizationContextProps = {
-  locale: locales[defaultLanguage],
-  language: defaultLanguage,
-};
-const defaultThemeContext = defaultTheme;
-
 export type MessageDialogRef = {
   visible: boolean;
 };
 
 const MessageDialog = React.forwardRef<MessageDialogRef, MessageDialogProps>((props, ref) => {
   const {
-    localeContext = defaultLocaleContext,
-    themeContext = defaultThemeContext,
+    localeContext,
+    themeContext,
     visible: visibleProp,
     defaultVisible: defaultVisibleProp = false,
     onVisibleChange: onVisibleChangeProp,

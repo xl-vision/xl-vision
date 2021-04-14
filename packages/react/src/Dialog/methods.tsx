@@ -5,12 +5,19 @@ import {
   InfoCircleOutlined,
 } from '@xl-vision/icons';
 import React from 'react';
-import message, { MessageDialogFunctionReturnType } from './message';
+import message, { MessageDialogFunctionProps, MessageDialogFunctionReturnType } from './message';
 import Icon from '../Icon';
 import { defaultLanguage, locales } from '../locale';
 import { LocalizationContextProps } from '../LocalizationProvider';
 import defaultTheme from '../ThemeProvider/defaultTheme';
 import { MessageDialogProps } from './message/MessageDialog';
+import { Theme } from '../ThemeProvider';
+
+export interface MethodDialogFunctionProps
+  extends Omit<MessageDialogFunctionProps, 'localeContext' | 'themeContext'> {
+  localeContext?: LocalizationContextProps;
+  themeContext?: Theme;
+}
 
 let destoryFunctions: Array<() => void> = [];
 
@@ -20,15 +27,13 @@ const defaultLocaleContext: LocalizationContextProps = {
 };
 const defaultThemeContext = defaultTheme;
 
-export const method = (props: MessageDialogProps): MessageDialogFunctionReturnType => {
-  const { update, destroy } = message(props);
+export const method = (props: MethodDialogFunctionProps): MessageDialogFunctionReturnType => {
+  const { update, destroy } = message<'localeContext' | 'themeContext'>(props, {
+    localeContext: defaultLocaleContext,
+    themeContext: defaultThemeContext,
+  });
 
-  const destroyWrapper = () => {
-    destoryFunctions = destoryFunctions.filter((it) => it !== destroyWrapper);
-    destroy();
-  };
-
-  destoryFunctions.push(destroyWrapper);
+  destoryFunctions.push(destroy);
 
   return {
     destroy: destroyWrapper,

@@ -5,16 +5,18 @@ import MessageDialog, { MessageDialogProps, MessageDialogRef } from './MessageDi
 import { voidFn } from '../../utils/function';
 import warning from '../../utils/warning';
 
-export type MessageDialogFunctionUpdate = (
-  props: Partial<MessageDialogProps> | ((prev: MessageDialogProps) => Partial<MessageDialogProps>),
-) => void;
+export interface MessageDialogFunctionProps extends MessageDialogProps {
+  onClosed?: (isDestroy?: true) => void;
+}
 
-export type MessageDialogFunctionReturnType = {
-  destroy: () => void;
-  update: MessageDialogFunctionUpdate;
-};
-
-export default (props: MessageDialogProps): MessageDialogFunctionReturnType => {
+export default <
+  K extends keyof MessageDialogFunctionProps,
+  D = Pick<MessageDialogFunctionProps, K>,
+  P = Omit<MessageDialogFunctionProps, K> & Partial<D>
+>(
+  props: P,
+  defaultProps: D,
+) => {
   if (isServer) {
     return {
       destroy: voidFn,
@@ -25,7 +27,8 @@ export default (props: MessageDialogProps): MessageDialogFunctionReturnType => {
   const div = document.createElement('div');
   document.body.appendChild(div);
 
-  let currentProps: MessageDialogProps = {
+  let currentProps: MessageDialogFunctionProps = {
+    ...defaultProps,
     ...props,
   };
 
@@ -50,7 +53,7 @@ export default (props: MessageDialogProps): MessageDialogFunctionReturnType => {
     });
   };
 
-  const update: MessageDialogFunctionUpdate = (updateProps) => {
+  const update = (updateProps: P | ((p: MessageDialogFunctionProps) => P)) => {
     const newProps = typeof updateProps === 'function' ? updateProps(currentProps) : updateProps;
     currentProps = { ...currentProps, ...newProps };
 
@@ -75,7 +78,7 @@ export default (props: MessageDialogProps): MessageDialogFunctionReturnType => {
       ...currentProps,
       visible: false,
       onClosed: () => {
-        onClosed?.();
+        onClosed?.(true);
         destroyDOM();
       },
     });
