@@ -3,7 +3,6 @@ import Proptypes from 'prop-types';
 import clsx from 'clsx';
 import { CSSObject } from '@xl-vision/styled-engine-types';
 import { ThemeContext as StyledThemeContext } from '@xl-vision/styled-engine';
-import usePropChange from '../../hooks/usePropChange';
 import { isDevelopment } from '../../utils/env';
 import Dialog, { DialogProps } from '../Dialog';
 import { styled } from '../../styles';
@@ -11,17 +10,18 @@ import { LocalizationContext, LocalizationContextProps } from '../../Localizatio
 import { Theme, ThemeContext } from '../../ThemeProvider';
 import defaultTheme from '../../ThemeProvider/defaultTheme';
 import { defaultLanguage, locales } from '../../locale';
+import usePropChange from '../../hooks/usePropChange';
 
-export interface MethodDialogProps extends Omit<DialogProps, 'children'> {
+export interface MessageDialogProps extends Omit<DialogProps, 'children'> {
   content?: React.ReactNode;
   icon?: React.ReactNode;
   localeContext?: LocalizationContextProps;
   themeContext?: Theme;
 }
 
-const displayName = 'MethodDialog';
+const displayName = 'MessageDialog';
 
-const MethodDialogHeader = styled('h6', {
+const MessageDialogHeader = styled('h6', {
   name: displayName,
   slot: 'Header',
 })(({ theme }) => {
@@ -36,7 +36,7 @@ const MethodDialogHeader = styled('h6', {
   };
 });
 
-const MethodDialogTitle = styled('span', {
+const MessageDialogTitle = styled('span', {
   name: displayName,
   slot: 'Title',
 })(() => {
@@ -47,7 +47,7 @@ const MethodDialogTitle = styled('span', {
   };
 });
 
-const MethodDialogIcon = styled('span', {
+const MessageDialogIcon = styled('span', {
   name: displayName,
   slot: 'Icon',
 })(() => {
@@ -59,14 +59,14 @@ const MethodDialogIcon = styled('span', {
   };
 });
 
-export type MethodDialogContentStyleProps = {
+export type MessageDialogContentStyleProps = {
   icon: boolean;
 };
 
-const MethodDialogContent = styled('div', {
+const MessageDialogContent = styled('div', {
   name: displayName,
   slot: 'Content',
-})<MethodDialogContentStyleProps>(({ styleProps }) => {
+})<MessageDialogContentStyleProps>(({ styleProps }) => {
   const { icon } = styleProps;
   const styles: CSSObject = {};
 
@@ -83,12 +83,16 @@ const defaultLocaleContext: LocalizationContextProps = {
 };
 const defaultThemeContext = defaultTheme;
 
-const MethodDialog = React.forwardRef<HTMLDivElement, MethodDialogProps>((props, ref) => {
+export type MessageDialogRef = {
+  visible: boolean;
+};
+
+const MessageDialog = React.forwardRef<MessageDialogRef, MessageDialogProps>((props, ref) => {
   const {
     localeContext = defaultLocaleContext,
     themeContext = defaultThemeContext,
     visible: visibleProp,
-    defaultVisible: defaultVisibleProp = true,
+    defaultVisible: defaultVisibleProp = false,
     onVisibleChange: onVisibleChangeProp,
     content,
     icon,
@@ -97,23 +101,34 @@ const MethodDialog = React.forwardRef<HTMLDivElement, MethodDialogProps>((props,
     ...others
   } = props;
 
-  const [visible, setVisible] = usePropChange(defaultVisibleProp, visibleProp, onVisibleChangeProp);
+  const [visible, handleVisibleChange] = usePropChange(
+    defaultVisibleProp,
+    visibleProp,
+    onVisibleChangeProp,
+  );
 
   const [first, setFirst] = React.useState(true);
 
   const { clsPrefix } = React.useContext(ThemeContext);
 
+  React.useImperativeHandle(ref, () => {
+    return {
+      visible,
+    };
+  });
+
+  // 保证有对话框弹出的动画效果
   React.useEffect(() => {
     setFirst(false);
   }, []);
 
-  const rootClassName = `${clsPrefix}-method-dialog`;
+  const rootClassName = `${clsPrefix}-message-dialog`;
 
   const headerWrapper = (
-    <MethodDialogHeader className={`${rootClassName}__title`}>
-      {icon && <MethodDialogIcon className={`${rootClassName}__icon`}>{icon}</MethodDialogIcon>}
-      <MethodDialogTitle>{title}</MethodDialogTitle>
-    </MethodDialogHeader>
+    <MessageDialogHeader className={`${rootClassName}__title`}>
+      {icon && <MessageDialogIcon className={`${rootClassName}__icon`}>{icon}</MessageDialogIcon>}
+      <MessageDialogTitle>{title}</MessageDialogTitle>
+    </MessageDialogHeader>
   );
 
   return (
@@ -124,13 +139,11 @@ const MethodDialog = React.forwardRef<HTMLDivElement, MethodDialogProps>((props,
             {...others}
             className={clsx(className, rootClassName)}
             title={headerWrapper}
-            ref={ref}
             visible={!first && visible}
-            // eslint-disable-next-line react/jsx-handler-names
-            onVisibleChange={setVisible}
+            onVisibleChange={handleVisibleChange}
           >
             {content && (
-              <MethodDialogContent styleProps={{ icon: !!icon }}>{content}</MethodDialogContent>
+              <MessageDialogContent styleProps={{ icon: !!icon }}>{content}</MessageDialogContent>
             )}
           </Dialog>
         </StyledThemeContext.Provider>
@@ -140,13 +153,13 @@ const MethodDialog = React.forwardRef<HTMLDivElement, MethodDialogProps>((props,
 });
 
 if (isDevelopment) {
-  MethodDialog.displayName = displayName;
-  MethodDialog.propTypes = {
+  MessageDialog.displayName = displayName;
+  MessageDialog.propTypes = {
     themeContext: Proptypes.any.isRequired,
     localeContext: Proptypes.any.isRequired,
     visible: Proptypes.bool,
-    onVisibleChange: Proptypes.func,
     defaultVisible: Proptypes.bool,
+    onVisibleChange: Proptypes.func,
     content: Proptypes.node,
     icon: Proptypes.node,
     title: Proptypes.node,
@@ -154,4 +167,4 @@ if (isDevelopment) {
   };
 }
 
-export default MethodDialog;
+export default MessageDialog;

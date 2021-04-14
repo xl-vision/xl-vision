@@ -4,7 +4,7 @@ import useDialog from './useDialog';
 
 export * from './Dialog';
 export type { MethodDialogFunctionProps, DialogMethodReturnType } from './methods';
-export type { MethodDialogProps } from './MethodDialog';
+export type { MethodDialogProps } from './message';
 export type { MethodDialogHookProps } from './useDialog';
 
 const DialogEnhancer = Dialog as typeof Dialog & {

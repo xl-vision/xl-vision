@@ -5,32 +5,13 @@ import {
   InfoCircleOutlined,
 } from '@xl-vision/icons';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import message, { MessageDialogFunctionProps, MessageDialogFunctionReturnType } from './message';
 import Icon from '../Icon';
 import { defaultLanguage, locales } from '../locale';
 import { LocalizationContextProps } from '../LocalizationProvider';
-import { Theme } from '../ThemeProvider';
 import defaultTheme from '../ThemeProvider/defaultTheme';
-import { isServer } from '../utils/env';
-import { voidFn } from '../utils/function';
-import MethodDialog, { MethodDialogProps } from './MethodDialog';
 
 let destoryFunctions: Array<() => void> = [];
-
-export interface MethodDialogFunctionProps
-  extends Omit<MethodDialogProps, 'themeContext' | 'localeContext' | 'visible' | 'defaultVisible'> {
-  localeContext?: LocalizationContextProps;
-  themeContext?: Theme;
-}
-
-export type DialogMethodReturnType = {
-  destroy: () => void;
-  update: (
-    props:
-      | Partial<MethodDialogFunctionProps>
-      | ((prev: MethodDialogFunctionProps) => Partial<MethodDialogFunctionProps>),
-  ) => void;
-};
 
 const defaultLocaleContext: LocalizationContextProps = {
   locale: locales[defaultLanguage],
@@ -38,68 +19,18 @@ const defaultLocaleContext: LocalizationContextProps = {
 };
 const defaultThemeContext = defaultTheme;
 
-export const method = (props: MethodDialogFunctionProps): DialogMethodReturnType => {
-  if (isServer) {
-    return {
-      destroy: voidFn,
-      update: voidFn,
-    };
-  }
+export const method = (props: MessageDialogFunctionProps): MessageDialogFunctionReturnType => {
+  const { update, destroy } = message(props);
 
-  const div = document.createElement('div');
-  document.body.appendChild(div);
-
-  let currentProps: MethodDialogProps = {
-    themeContext: defaultThemeContext,
-    localeContext: defaultLocaleContext,
-    ...props,
-    visible: undefined,
-    defaultVisible: true,
+  const destroyWrapper = () => {
+    destoryFunctions = destoryFunctions.filter((it) => it !== destroyWrapper);
+    destroy();
   };
 
-  const render = () => {
-    setTimeout(() => {
-      ReactDOM.render(<MethodDialog getContainer={null} {...currentProps} />, div);
-    });
-  };
-
-  const update = (
-    renderProps:
-      | Partial<MethodDialogFunctionProps>
-      | ((prev: MethodDialogFunctionProps) => Partial<MethodDialogFunctionProps>),
-  ) => {
-    const newProps = typeof renderProps === 'function' ? renderProps(currentProps) : renderProps;
-    currentProps = { ...currentProps, ...newProps, visible: undefined, defaultVisible: true };
-    render();
-  };
-
-  const destroyDOM = () => {
-    destoryFunctions = destoryFunctions.filter((it) => it !== destroy);
-    const unmountResult = ReactDOM.unmountComponentAtNode(div);
-    if (unmountResult && div.parentNode) {
-      div.parentNode.removeChild(div);
-    }
-  };
-
-  const destroy = () => {
-    const { onClosed } = currentProps;
-    currentProps = {
-      ...currentProps,
-      visible: false,
-      onClosed: () => {
-        onClosed?.();
-        destroyDOM();
-      },
-    };
-    render();
-  };
-
-  destoryFunctions.push(destroy);
-
-  render();
+  destoryFunctions.push(destroyWrapper);
 
   return {
-    destroy,
+    destroy: destroyWrapper,
     update,
   };
 };
@@ -113,18 +44,12 @@ export const destroyAll = () => {
   }
 };
 
-export const info = (props: MethodDialogFunctionProps): DialogMethodReturnType => {
+export const info = (props: MessageDialogFunctionProps): MessageDialogFunctionReturnType => {
   const {
     themeContext = defaultThemeContext,
     localeContext = defaultLocaleContext,
-    onClosed,
     ...others
   } = props;
-
-  const onClosedWrapper = () => {
-    onClosed?.();
-    destroy();
-  };
 
   const { destroy, update } = method({
     icon: (
@@ -136,8 +61,6 @@ export const info = (props: MethodDialogFunctionProps): DialogMethodReturnType =
     prompt: true,
     localeContext,
     themeContext,
-    defaultVisible: true,
-    onClosed: onClosedWrapper,
     ...others,
   });
 
@@ -148,10 +71,6 @@ export const info = (props: MethodDialogFunctionProps): DialogMethodReturnType =
         const ret = typeof _props === 'function' ? _props(prev) : _props;
         return {
           confirmText: ret.localeContext?.locale.MethodDialog.infoText,
-          onClosed() {
-            ret.onClosed?.();
-            destroy();
-          },
           ...ret,
         };
       });
@@ -159,18 +78,12 @@ export const info = (props: MethodDialogFunctionProps): DialogMethodReturnType =
   };
 };
 
-export const success = (props: MethodDialogFunctionProps): DialogMethodReturnType => {
+export const success = (props: MessageDialogFunctionProps): MessageDialogFunctionReturnType => {
   const {
     themeContext = defaultThemeContext,
     localeContext = defaultLocaleContext,
-    onClosed,
     ...others
   } = props;
-
-  const onClosedWrapper = () => {
-    onClosed?.();
-    destroy();
-  };
 
   const { destroy, update } = method({
     icon: (
@@ -182,8 +95,6 @@ export const success = (props: MethodDialogFunctionProps): DialogMethodReturnTyp
     prompt: true,
     localeContext,
     themeContext,
-    defaultVisible: true,
-    onClosed: onClosedWrapper,
     ...others,
   });
 
@@ -194,10 +105,6 @@ export const success = (props: MethodDialogFunctionProps): DialogMethodReturnTyp
         const ret = typeof _props === 'function' ? _props(prev) : _props;
         return {
           confirmText: ret.localeContext?.locale.MethodDialog.successText,
-          onClosed() {
-            ret.onClosed?.();
-            destroy();
-          },
           ...ret,
         };
       });
@@ -205,18 +112,12 @@ export const success = (props: MethodDialogFunctionProps): DialogMethodReturnTyp
   };
 };
 
-export const error = (props: MethodDialogFunctionProps): DialogMethodReturnType => {
+export const error = (props: MessageDialogFunctionProps): MessageDialogFunctionReturnType => {
   const {
     themeContext = defaultThemeContext,
     localeContext = defaultLocaleContext,
-    onClosed,
     ...others
   } = props;
-
-  const onClosedWrapper = () => {
-    onClosed?.();
-    destroy();
-  };
 
   const { destroy, update } = method({
     icon: (
@@ -228,8 +129,6 @@ export const error = (props: MethodDialogFunctionProps): DialogMethodReturnType 
     prompt: true,
     localeContext,
     themeContext,
-    defaultVisible: true,
-    onClosed: onClosedWrapper,
     ...others,
   });
 
@@ -251,7 +150,7 @@ export const error = (props: MethodDialogFunctionProps): DialogMethodReturnType 
   };
 };
 
-export const warning = (props: MethodDialogFunctionProps): DialogMethodReturnType => {
+export const warning = (props: MessageDialogFunctionProps): MessageDialogFunctionReturnType => {
   const {
     themeContext = defaultThemeContext,
     localeContext = defaultLocaleContext,
@@ -297,7 +196,7 @@ export const warning = (props: MethodDialogFunctionProps): DialogMethodReturnTyp
   };
 };
 
-export const confirm = (props: MethodDialogFunctionProps): DialogMethodReturnType => {
+export const confirm = (props: MessageDialogFunctionProps): MessageDialogFunctionReturnType => {
   const {
     themeContext = defaultThemeContext,
     localeContext = defaultLocaleContext,
