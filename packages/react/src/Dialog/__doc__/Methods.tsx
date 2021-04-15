@@ -5,8 +5,7 @@ import React from 'react';
 export default () => {
   const handleClick = React.useCallback(() => {
     let i = 5;
-    const { destroy, update } = Dialog.method({
-      defaultVisible: true,
+    const { destroy, update } = Dialog.open({
       title: 'This is a method dialog',
       content: `This dialog will close after ${i}s.`,
       icon: (
