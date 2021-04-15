@@ -57,8 +57,8 @@ const method = (
     ...props,
     visible: false,
     defaultVisible: true,
-    afterClose: () => {
-      props.afterClose?.();
+    onAfterClosed: () => {
+      props.onAfterClosed?.();
       destroyDOM();
     },
   };
@@ -90,9 +90,9 @@ const method = (
       ...newProps,
     };
 
-    const { afterClose } = currentProps;
+    const { onAfterClosed: afterClose } = currentProps;
 
-    currentProps.afterClose = () => {
+    currentProps.onAfterClosed = () => {
       afterClose?.();
       destroyDOM();
     };
@@ -119,11 +119,11 @@ const method = (
   };
 
   const destroy = () => {
-    const { afterClose } = currentProps;
+    const { onAfterClosed: afterClose } = currentProps;
     render({
       ...currentProps,
       visible: false,
-      afterClose: () => {
+      onAfterClosed: () => {
         destroyState = true;
         afterClose?.();
         destroyDOM();
