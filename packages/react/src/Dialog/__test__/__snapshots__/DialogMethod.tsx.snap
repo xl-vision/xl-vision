@@ -1,22 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DialogMethod test confirm 1`] = `
-.c5 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  width: 1em;
-  height: 1em;
-  display: inline-block;
-  fill: currentcolor;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-}
-
 .c0 {
   position: relative;
   outline: 0;
@@ -135,6 +119,22 @@ exports[`DialogMethod test confirm 1`] = `
   display: inline-block;
   width: 100%;
   height: 100%;
+}
+
+.c5 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentcolor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
 }
 
 .c12 {
@@ -285,7 +285,7 @@ exports[`DialogMethod test confirm 1`] = `
 
 <div
   aria-labelledby="xlDialogTitle5"
-  class="c0 xl-modal__body c1 xl-dialog xl-method-dialog"
+  class="c0 xl-modal__body c1 xl-dialog xl-message-dialog"
   id="confirm"
   style="transform-origin: 50% 50%;"
   tabindex="-1"
@@ -295,10 +295,10 @@ exports[`DialogMethod test confirm 1`] = `
     id="xlDialogTitle5"
   >
     <h6
-      class="c3 xl-method-dialog__title"
+      class="c3 xl-message-dialog__title"
     >
       <span
-        class="c4 xl-method-dialog__icon"
+        class="c4 xl-message-dialog__icon"
       >
         <svg
           class="c5 xl-icon"
@@ -373,22 +373,6 @@ exports[`DialogMethod test confirm 1`] = `
 `;
 
 exports[`DialogMethod test error 1`] = `
-.c5 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  width: 1em;
-  height: 1em;
-  display: inline-block;
-  fill: currentcolor;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-}
-
 .c0 {
   position: relative;
   outline: 0;
@@ -507,6 +491,22 @@ exports[`DialogMethod test error 1`] = `
   display: inline-block;
   width: 100%;
   height: 100%;
+}
+
+.c5 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentcolor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
 }
 
 .c12 {
@@ -657,7 +657,7 @@ exports[`DialogMethod test error 1`] = `
 
 <div
   aria-labelledby="xlDialogTitle3"
-  class="c0 xl-modal__body c1 xl-dialog xl-method-dialog"
+  class="c0 xl-modal__body c1 xl-dialog xl-message-dialog"
   id="error"
   style="transform-origin: 50% 50%;"
   tabindex="-1"
@@ -667,10 +667,10 @@ exports[`DialogMethod test error 1`] = `
     id="xlDialogTitle3"
   >
     <h6
-      class="c3 xl-method-dialog__title"
+      class="c3 xl-message-dialog__title"
     >
       <span
-        class="c4 xl-method-dialog__icon"
+        class="c4 xl-message-dialog__icon"
       >
         <svg
           class="c5 xl-icon"
@@ -729,22 +729,6 @@ exports[`DialogMethod test error 1`] = `
 `;
 
 exports[`DialogMethod test info 1`] = `
-.c5 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  width: 1em;
-  height: 1em;
-  display: inline-block;
-  fill: currentcolor;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-}
-
 .c0 {
   position: relative;
   outline: 0;
@@ -863,6 +847,22 @@ exports[`DialogMethod test info 1`] = `
   display: inline-block;
   width: 100%;
   height: 100%;
+}
+
+.c5 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentcolor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
 }
 
 .c12 {
@@ -1013,7 +1013,7 @@ exports[`DialogMethod test info 1`] = `
 
 <div
   aria-labelledby="xlDialogTitle1"
-  class="c0 xl-modal__body c1 xl-dialog xl-method-dialog"
+  class="c0 xl-modal__body c1 xl-dialog xl-message-dialog"
   id="info"
   style="transform-origin: 50% 50%;"
   tabindex="-1"
@@ -1023,10 +1023,10 @@ exports[`DialogMethod test info 1`] = `
     id="xlDialogTitle1"
   >
     <h6
-      class="c3 xl-method-dialog__title"
+      class="c3 xl-message-dialog__title"
     >
       <span
-        class="c4 xl-method-dialog__icon"
+        class="c4 xl-message-dialog__icon"
       >
         <svg
           class="c5 xl-icon"
@@ -1341,7 +1341,7 @@ exports[`DialogMethod test method 1`] = `
 
 <div
   aria-labelledby="xlDialogTitle0"
-  class="c0 xl-modal__body c1 xl-dialog xl-method-dialog"
+  class="c0 xl-modal__body c1 xl-dialog xl-message-dialog"
   id="method"
   style="transform-origin: 50% 50%;"
   tabindex="-1"
@@ -1351,7 +1351,7 @@ exports[`DialogMethod test method 1`] = `
     id="xlDialogTitle0"
   >
     <h6
-      class="c3 xl-method-dialog__title"
+      class="c3 xl-message-dialog__title"
     >
       <span
         class="c4"
@@ -1413,22 +1413,6 @@ exports[`DialogMethod test method 1`] = `
 `;
 
 exports[`DialogMethod test success 1`] = `
-.c5 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  width: 1em;
-  height: 1em;
-  display: inline-block;
-  fill: currentcolor;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-}
-
 .c0 {
   position: relative;
   outline: 0;
@@ -1547,6 +1531,22 @@ exports[`DialogMethod test success 1`] = `
   display: inline-block;
   width: 100%;
   height: 100%;
+}
+
+.c5 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentcolor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
 }
 
 .c12 {
@@ -1697,7 +1697,7 @@ exports[`DialogMethod test success 1`] = `
 
 <div
   aria-labelledby="xlDialogTitle2"
-  class="c0 xl-modal__body c1 xl-dialog xl-method-dialog"
+  class="c0 xl-modal__body c1 xl-dialog xl-message-dialog"
   id="success"
   style="transform-origin: 50% 50%;"
   tabindex="-1"
@@ -1707,10 +1707,10 @@ exports[`DialogMethod test success 1`] = `
     id="xlDialogTitle2"
   >
     <h6
-      class="c3 xl-method-dialog__title"
+      class="c3 xl-message-dialog__title"
     >
       <span
-        class="c4 xl-method-dialog__icon"
+        class="c4 xl-message-dialog__icon"
       >
         <svg
           class="c5 xl-icon"
@@ -1769,22 +1769,6 @@ exports[`DialogMethod test success 1`] = `
 `;
 
 exports[`DialogMethod test warning 1`] = `
-.c5 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  width: 1em;
-  height: 1em;
-  display: inline-block;
-  fill: currentcolor;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-}
-
 .c0 {
   position: relative;
   outline: 0;
@@ -1903,6 +1887,22 @@ exports[`DialogMethod test warning 1`] = `
   display: inline-block;
   width: 100%;
   height: 100%;
+}
+
+.c5 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentcolor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
 }
 
 .c12 {
@@ -2053,7 +2053,7 @@ exports[`DialogMethod test warning 1`] = `
 
 <div
   aria-labelledby="xlDialogTitle4"
-  class="c0 xl-modal__body c1 xl-dialog xl-method-dialog"
+  class="c0 xl-modal__body c1 xl-dialog xl-message-dialog"
   id="warning"
   style="transform-origin: 50% 50%;"
   tabindex="-1"
@@ -2063,10 +2063,10 @@ exports[`DialogMethod test warning 1`] = `
     id="xlDialogTitle4"
   >
     <h6
-      class="c3 xl-method-dialog__title"
+      class="c3 xl-message-dialog__title"
     >
       <span
-        class="c4 xl-method-dialog__icon"
+        class="c4 xl-message-dialog__icon"
       >
         <svg
           class="c5 xl-icon"
