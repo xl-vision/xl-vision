@@ -9,14 +9,18 @@ export interface MessageDialogFunctionProps extends MessageDialogProps {
   onClosed?: (isDestroy?: true) => void;
 }
 
-export default <
-  K extends keyof MessageDialogFunctionProps,
-  D = Pick<MessageDialogFunctionProps, K>,
-  P = Omit<MessageDialogFunctionProps, K> & Partial<D>
->(
-  props: P,
-  defaultProps: D,
-) => {
+export type MessageDialogFunctionUpdate = (
+  props:
+    | Partial<MessageDialogFunctionProps>
+    | ((prev: MessageDialogFunctionProps) => Partial<MessageDialogFunctionProps>),
+) => void;
+
+export type MessageDialogFunctionReturnType = {
+  destroy: () => void;
+  update: MessageDialogFunctionUpdate;
+};
+
+export default (props: MessageDialogFunctionProps): MessageDialogFunctionReturnType => {
   if (isServer) {
     return {
       destroy: voidFn,
@@ -28,18 +32,17 @@ export default <
   document.body.appendChild(div);
 
   let currentProps: MessageDialogFunctionProps = {
-    ...defaultProps,
     ...props,
   };
 
-  let isDestoryed = false;
+  let destroyState = false;
 
   const messgaeDialogRef: {
     current: MessageDialogRef | null;
   } = { current: null };
 
   const render = (renderProps: MessageDialogProps) => {
-    if (isDestoryed) {
+    if (destroyState) {
       return warning(
         true,
         `The dialog instance was destroyed, please do not update or destroy it again.`,
@@ -53,7 +56,7 @@ export default <
     });
   };
 
-  const update = (updateProps: P | ((p: MessageDialogFunctionProps) => P)) => {
+  const update: MessageDialogFunctionUpdate = (updateProps) => {
     const newProps = typeof updateProps === 'function' ? updateProps(currentProps) : updateProps;
     currentProps = { ...currentProps, ...newProps };
 
@@ -68,8 +71,8 @@ export default <
   };
 
   const destroy = () => {
-    isDestoryed = true;
-    if (messgaeDialogRef.current?.visible) {
+    if (!messgaeDialogRef.current?.visible) {
+      destroyState = true;
       destroyDOM();
       return;
     }
@@ -78,6 +81,7 @@ export default <
       ...currentProps,
       visible: false,
       onClosed: () => {
+        destroyState = true;
         onClosed?.(true);
         destroyDOM();
       },

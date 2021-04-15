@@ -5,7 +5,11 @@ import {
   InfoCircleOutlined,
 } from '@xl-vision/icons';
 import React from 'react';
-import message, { MessageDialogFunctionProps, MessageDialogFunctionReturnType } from './message';
+import message, {
+  MessageDialogFunctionProps,
+  MessageDialogFunctionReturnType,
+  MessageDialogFunctionUpdate,
+} from './message';
 import Icon from '../Icon';
 import { defaultLanguage, locales } from '../locale';
 import { LocalizationContextProps } from '../LocalizationProvider';
@@ -14,7 +18,10 @@ import { MessageDialogProps } from './message/MessageDialog';
 import { Theme } from '../ThemeProvider';
 
 export interface MethodDialogFunctionProps
-  extends Omit<MessageDialogFunctionProps, 'localeContext' | 'themeContext'> {
+  extends Omit<
+    MessageDialogFunctionProps,
+    'localeContext' | 'themeContext' | 'defaultVisible' | 'visible'
+  > {
   localeContext?: LocalizationContextProps;
   themeContext?: Theme;
 }
@@ -28,16 +35,41 @@ const defaultLocaleContext: LocalizationContextProps = {
 const defaultThemeContext = defaultTheme;
 
 export const method = (props: MethodDialogFunctionProps): MessageDialogFunctionReturnType => {
-  const { update, destroy } = message<'localeContext' | 'themeContext'>(props, {
+  const createHandleClosed = (onClosed?: (isDestory?: true) => void) => (isDestroy?: true) => {
+    onClosed?.(isDestroy);
+    destoryFunctions = destoryFunctions.filter((it) => it !== destroy);
+    if (isDestroy) {
+      return;
+    }
+    destroy();
+  };
+
+  const { update, destroy } = message({
     localeContext: defaultLocaleContext,
     themeContext: defaultThemeContext,
+    ...props,
+    defaultVisible: true,
+    visible: undefined,
+    onClosed: createHandleClosed(props.onClosed),
   });
+
+  const updateWrapper: MessageDialogFunctionUpdate = (updateProps) => {
+    return update((prev) => {
+      const newProps = typeof updateProps === 'function' ? updateProps(prev) : updateProps;
+      return {
+        ...newProps,
+        defaultVisible: true,
+        visible: undefined,
+        onClosed: createHandleClosed(newProps.onClosed),
+      };
+    });
+  };
 
   destoryFunctions.push(destroy);
 
   return {
-    destroy: destroyWrapper,
-    update,
+    destroy,
+    update: updateWrapper,
   };
 };
 
