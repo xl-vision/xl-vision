@@ -16,7 +16,7 @@ export type MessageDialogType = 'success' | 'error' | 'warning' | 'info' | 'conf
 export * from './MessageDialog';
 
 const createMessageDialog = (type?: MessageDialogType) => {
-  const Dialog = React.forwardRef<MessageDialogRef, MessageDialogProps>((props, ref) => {
+  const Dialog: React.FunctionComponent<MessageDialogProps> = (props) => {
     const themeContext = React.useContext(ThemeContext);
     const localizationContext = React.useContext(LocalizationContext);
 
@@ -83,8 +83,8 @@ const createMessageDialog = (type?: MessageDialogType) => {
       }
     }, [themeContext, localizationContext]);
 
-    return <MessageDialog {...defaultProps} {...props} ref={ref} />;
-  });
+    return <MessageDialog {...defaultProps} {...props} />;
+  };
 
   if (isDevelopment) {
     const displayName = type

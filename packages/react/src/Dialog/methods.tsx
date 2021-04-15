@@ -17,15 +17,15 @@ export interface MethodDialogFunctionRenderProps extends MessageDialogProps, Mes
 export interface MethodDialogFunctionProps
   extends Omit<MethodDialogFunctionRenderProps, 'visible' | 'defaultVisible'> {}
 
-export type MessageDialogFunctionUpdate = (
+export type MethodDialogFunctionUpdate = (
   props:
     | Partial<MethodDialogFunctionProps>
     | ((prev: MethodDialogFunctionProps) => Partial<MethodDialogFunctionProps>),
 ) => void;
 
-export type MessageDialogFunctionReturnType = {
+export type MethodDialogFunctionReturnType = {
   destroy: () => void;
-  update: MessageDialogFunctionUpdate;
+  update: MethodDialogFunctionUpdate;
 };
 
 const defaultThemeContext: Theme = defaultTheme;
@@ -40,7 +40,7 @@ const destroyFunctions: Array<() => void> = [];
 const method = (
   props: MethodDialogFunctionProps,
   type?: MessageDialogType,
-): MessageDialogFunctionReturnType => {
+): MethodDialogFunctionReturnType => {
   if (isServer) {
     return {
       destroy: voidFn,
@@ -66,6 +66,12 @@ const method = (
   let destroyState = false;
 
   const render = (renderProps: MethodDialogFunctionRenderProps) => {
+    if (destroyState) {
+      return warningLog(
+        true,
+        `The dialog instance was destroyed, please do not update or destroy it again.`,
+      );
+    }
     const { localizationContext, themeContext, ...others } = renderProps;
 
     setTimeout(() => {
@@ -82,7 +88,7 @@ const method = (
     });
   };
 
-  const update: MessageDialogFunctionUpdate = (updateProps) => {
+  const update: MethodDialogFunctionUpdate = (updateProps) => {
     const newProps = typeof updateProps === 'function' ? updateProps(currentProps) : updateProps;
 
     currentProps = {
@@ -101,13 +107,6 @@ const method = (
   };
 
   const destroyDOM = () => {
-    if (destroyState) {
-      return warningLog(
-        true,
-        `The dialog instance was destroyed, please do not update or destroy it again.`,
-      );
-    }
-    destroyState = true;
     const unmountResult = ReactDOM.unmountComponentAtNode(div);
     if (unmountResult && div.parentNode) {
       div.parentNode.removeChild(div);
@@ -124,11 +123,11 @@ const method = (
       ...currentProps,
       visible: false,
       onAfterClosed: () => {
-        destroyState = true;
         afterClose?.();
         destroyDOM();
       },
     });
+    destroyState = true;
   };
 
   destroyFunctions.push(destroy);
@@ -147,3 +146,11 @@ export const success = (props: MethodDialogFunctionProps) => method(props, 'succ
 export const warning = (props: MethodDialogFunctionProps) => method(props, 'warning');
 export const error = (props: MethodDialogFunctionProps) => method(props, 'error');
 export const confirm = (props: MethodDialogFunctionProps) => method(props, 'confirm');
+
+export const destroyAll = () => {
+  let fn = destroyFunctions.pop();
+  while (fn) {
+    fn();
+    fn = destroyFunctions.pop();
+  }
+};

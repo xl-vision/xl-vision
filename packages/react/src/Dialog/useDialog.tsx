@@ -1,84 +1,120 @@
 import React from 'react';
 import useEventCallback from '../hooks/useEventCallback';
-import { LocalizationContext } from '../LocalizationProvider';
-import { ThemeContext } from '../ThemeProvider';
-import message, { MessageDialogFunctionProps } from './message';
-import { MessageDialogType } from './message/createMessageDialog';
+import { isDevelopment } from '../utils/env';
+import createMessageDialog, { MessageDialogProps, MessageDialogType } from './message';
+import { MethodDialogFunctionProps, MethodDialogFunctionUpdate } from './methods';
+import warningLog from '../utils/warning';
 
-export interface MessageDialogHooksProps
-  extends Omit<MessageDialogFunctionProps, 'localizationContext' | 'themeContext'> {}
+type HookMessageDialogRef = {
+  update: (updateProps: MessageDialogProps) => void;
+};
+
+const createHookMessageDialog = (props: MessageDialogProps, type?: MessageDialogType) => {
+  const Dialog = createMessageDialog(type);
+
+  const HookMessageDialog = React.forwardRef<HookMessageDialogRef>((_, ref) => {
+    const [innerConfig, setInnerConfig] = React.useState<MessageDialogProps>(props);
+
+    React.useImperativeHandle(ref, () => {
+      return {
+        update(updateProps) {
+          setInnerConfig(updateProps);
+        },
+      };
+    });
+
+    return <Dialog {...innerConfig} />;
+  });
+
+  if (isDevelopment) {
+    HookMessageDialog.displayName = 'HookMessageDialog';
+  }
+
+  return HookMessageDialog;
+};
 
 export default () => {
-  const defaultThemeContext = React.useContext(ThemeContext);
-  const defaultLocalizationContext = React.useContext(LocalizationContext);
+  const [dialogs, setDialogs] = React.useState<Array<React.ReactElement>>([]);
 
-  const defaultThemeContextRef = React.useRef(defaultThemeContext);
-  const defaultLocalizationContextRef = React.useRef(defaultLocalizationContext);
-
-  const modals = React.useRef<
-    Array<{ destroy: () => void; update: (props: Partial<MessageDialogHooksProps>) => void }>
-  >([]);
-
-  React.useEffect(() => {
-    return () => {
-      modals.current.forEach((it) => it.destroy());
-    };
-  }, []);
-
-  React.useEffect(() => {
-    defaultThemeContextRef.current = defaultThemeContext;
-    defaultLocalizationContextRef.current = defaultLocalizationContext;
-    // 全局context修改，这里要更新
-    modals.current.forEach((it) => it.update({}));
-  }, [defaultThemeContext, defaultLocalizationContext]);
-
-  const method = useEventCallback((props: MessageDialogHooksProps, type?: MessageDialogType) => {
-    const { update, destroy } = message(
-      {
-        defaultVisible: true,
-        ...props,
-        themeContext: defaultThemeContextRef.current,
-        localizationContext: defaultLocalizationContextRef.current,
+  const method = useEventCallback((props: MethodDialogFunctionProps, type?: MessageDialogType) => {
+    let currentProps: MessageDialogProps = {
+      ...props,
+      visible: undefined,
+      defaultVisible: true,
+      onAfterClosed: () => {
+        props.onAfterClosed?.();
+        destroyDOM();
       },
+    };
+    const Dialog = createHookMessageDialog(
+      { ...props, visible: undefined, defaultVisible: true, onAfterClosed: () => {} },
       type,
     );
 
-    const destroyWrapper = () => {
-      modals.current = modals.current.filter((it) => it !== ret);
-      destroy();
+    const ref = React.createRef<HookMessageDialogRef>();
+
+    let destroyState = false;
+
+    const dialog = <Dialog ref={ref} />;
+
+    const destroyDOM = () => {
+      setDialogs((prev) => prev.filter((it) => it !== dialog));
     };
 
-    const updateWrapper = (
-      _props:
-        | Partial<MessageDialogHooksProps>
-        | ((prev: MessageDialogHooksProps) => Partial<MessageDialogHooksProps>),
-    ) => {
-      update((prev) => ({
-        ...(typeof _props === 'function' ? _props(prev) : _props),
-        themeContext: defaultThemeContextRef.current,
-        localizationContext: defaultLocalizationContextRef.current,
-      }));
+    const render = (renderProps: MessageDialogProps) => {
+      if (destroyState) {
+        return warningLog(
+          true,
+          `The dialog instance was destroyed, please do not update or destroy it again.`,
+        );
+      }
+      ref.current?.update(renderProps);
     };
 
-    const ret = {
-      update: updateWrapper,
-      destroy: destroyWrapper,
+    const update: MethodDialogFunctionUpdate = (updateProps) => {
+      const newProps = typeof updateProps === 'function' ? updateProps(currentProps) : updateProps;
+      currentProps = { ...currentProps, ...newProps, visible: undefined, defaultVisible: true };
+
+      const { onAfterClosed } = currentProps;
+
+      currentProps.onAfterClosed = () => {
+        onAfterClosed?.();
+        destroyDOM();
+      };
+      render(currentProps);
     };
 
-    modals.current.push(ret);
+    const destroy = () => {
+      render({
+        ...currentProps,
+        visible: false,
+        onAfterClosed() {
+          currentProps.onAfterClosed?.();
+          destroyDOM();
+        },
+      });
+      destroyState = true;
+    };
 
-    return ret;
+    setDialogs((prev) => [...prev, dialog]);
+
+    return {
+      update,
+      destroy,
+    };
   });
 
-  return React.useMemo(
+  const methods = React.useMemo(
     () => ({
-      open: (props: MessageDialogHooksProps) => method(props),
-      confirm: (props: MessageDialogHooksProps) => method(props, 'confirm'),
-      error: (props: MessageDialogHooksProps) => method(props, 'error'),
-      info: (props: MessageDialogHooksProps) => method(props, 'info'),
-      success: (props: MessageDialogHooksProps) => method(props, 'success'),
-      warning: (props: MessageDialogHooksProps) => method(props, 'warning'),
+      open: (props: MethodDialogFunctionProps) => method(props),
+      confirm: (props: MethodDialogFunctionProps) => method(props, 'confirm'),
+      error: (props: MethodDialogFunctionProps) => method(props, 'error'),
+      info: (props: MethodDialogFunctionProps) => method(props, 'info'),
+      success: (props: MethodDialogFunctionProps) => method(props, 'success'),
+      warning: (props: MethodDialogFunctionProps) => method(props, 'warning'),
     }),
     [method],
   );
+
+  return [methods, dialogs];
 };

@@ -4,7 +4,12 @@ import useDialog from './useDialog';
 
 export * from './Dialog';
 export * from './message';
-export * from './useDialog';
+export {
+  MethodDialogFunctionUpdate,
+  MethodDialogFunctionProps,
+  MethodDialogFunctionRenderProps,
+  MethodDialogFunctionReturnType,
+} from './methods';
 
 const DialogEnhancer = Dialog as typeof Dialog & {
   open: typeof open;
