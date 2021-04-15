@@ -44,7 +44,7 @@ describe('Modal', () => {
   it('test onClosed', () => {
     const fn = jest.fn();
     const wrapper = mount(
-      <Modal visible={true} onClosed={fn}>
+      <Modal visible={true} afterClose={fn}>
         <div>body</div>
       </Modal>,
     );

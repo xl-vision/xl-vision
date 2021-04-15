@@ -26,7 +26,7 @@ export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   mask?: boolean;
   maskClosable?: boolean;
   wrapperClassName?: string;
-  onClosed?: () => void;
+  afterClose?: () => void;
 }
 
 const displayName = 'Modal';
@@ -153,7 +153,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     escClosable = true,
     className,
     wrapperClassName,
-    onClosed,
+    afterClose,
     ...others
   } = props;
 
@@ -267,11 +267,11 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
       if (transitionCount.current <= 0) {
         transitionCount.current = 0;
         setAnimatedVisible(false);
-        onClosed?.();
+        afterClose?.();
       }
       el.style.display = 'none';
     },
-    [setAnimatedVisible, onClosed],
+    [setAnimatedVisible, afterClose],
   );
 
   const handleMaskClick = React.useCallback(() => {
@@ -374,7 +374,7 @@ if (isDevelopment) {
     maskClosable: PropTypes.bool,
     escClosable: PropTypes.bool,
     wrapperClassName: PropTypes.string,
-    onClosed: PropTypes.func,
+    afterClose: PropTypes.func,
   };
 }
 
