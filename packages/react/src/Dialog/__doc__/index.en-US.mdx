@@ -137,8 +137,6 @@ browserHistory.listen(() => {
 
 > We recommend using `Dialog.useDialog`, this method can ensure that the theme and internationalization are consistent with the context, and will automatically destroy the dialog box when the parent component is destroyed, reducing the mental burden when using it.
 
-> The dialog created by `Dialog.useDialog` will not be automatically destroyed when it is closed, but when the container is destroyed, so it can still be displayed using the `update` method. Of course, you can also call `destroy` to destroy.
-
 ```tsx
 const dialog = Dialog.useDialog();
 

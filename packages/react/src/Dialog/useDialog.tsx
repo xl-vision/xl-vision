@@ -2,11 +2,9 @@ import React from 'react';
 import useEventCallback from '../hooks/useEventCallback';
 import { LocalizationContext } from '../LocalizationProvider';
 import { ThemeContext } from '../ThemeProvider';
-import message, { MessageDialogFunctionProps } from './message';
+import message from './message';
 import { MessageDialogType } from './message/createMessageDialog';
-
-export interface MessageDialogHooksProps
-  extends Omit<MessageDialogFunctionProps, 'localizationContext' | 'themeContext'> {}
+import { MethodDialogFunctionProps } from './methods';
 
 export default () => {
   const defaultThemeContext = React.useContext(ThemeContext);
@@ -16,7 +14,7 @@ export default () => {
   const defaultLocalizationContextRef = React.useRef(defaultLocalizationContext);
 
   const modals = React.useRef<
-    Array<{ destroy: () => void; update: (props: Partial<MessageDialogHooksProps>) => void }>
+    Array<{ destroy: () => void; update: (props: Partial<MethodDialogFunctionProps>) => void }>
   >([]);
 
   React.useEffect(() => {
@@ -32,13 +30,23 @@ export default () => {
     modals.current.forEach((it) => it.update({}));
   }, [defaultThemeContext, defaultLocalizationContext]);
 
-  const method = useEventCallback((props: MessageDialogHooksProps, type?: MessageDialogType) => {
+  const method = useEventCallback((props: MethodDialogFunctionProps, type?: MessageDialogType) => {
+    const createHandleClosed = (onClosed?: (isDestory?: true) => void) => (isDestroy?: true) => {
+      onClosed?.(isDestroy);
+      modals.current = modals.current.filter((it) => it !== ret);
+      if (isDestroy) {
+        return;
+      }
+      destroy();
+    };
     const { update, destroy } = message(
       {
-        defaultVisible: true,
         ...props,
         themeContext: defaultThemeContextRef.current,
         localizationContext: defaultLocalizationContextRef.current,
+        defaultVisible: true,
+        visible: undefined,
+        onClosed: createHandleClosed(props.onClosed),
       },
       type,
     );
@@ -49,15 +57,21 @@ export default () => {
     };
 
     const updateWrapper = (
-      _props:
-        | Partial<MessageDialogHooksProps>
-        | ((prev: MessageDialogHooksProps) => Partial<MessageDialogHooksProps>),
+      updateProps:
+        | Partial<MethodDialogFunctionProps>
+        | ((prev: MethodDialogFunctionProps) => Partial<MethodDialogFunctionProps>),
     ) => {
-      update((prev) => ({
-        ...(typeof _props === 'function' ? _props(prev) : _props),
-        themeContext: defaultThemeContextRef.current,
-        localizationContext: defaultLocalizationContextRef.current,
-      }));
+      update((prev) => {
+        const newProps = typeof updateProps === 'function' ? updateProps(prev) : updateProps;
+        return {
+          ...newProps,
+          themeContext: defaultThemeContextRef.current,
+          localizationContext: defaultLocalizationContextRef.current,
+          defaultVisible: true,
+          visible: undefined,
+          onClosed: createHandleClosed(newProps.onClosed),
+        };
+      });
     };
 
     const ret = {
@@ -72,12 +86,12 @@ export default () => {
 
   return React.useMemo(
     () => ({
-      open: (props: MessageDialogHooksProps) => method(props),
-      confirm: (props: MessageDialogHooksProps) => method(props, 'confirm'),
-      error: (props: MessageDialogHooksProps) => method(props, 'error'),
-      info: (props: MessageDialogHooksProps) => method(props, 'info'),
-      success: (props: MessageDialogHooksProps) => method(props, 'success'),
-      warning: (props: MessageDialogHooksProps) => method(props, 'warning'),
+      open: (props: MethodDialogFunctionProps) => method(props),
+      confirm: (props: MethodDialogFunctionProps) => method(props, 'confirm'),
+      error: (props: MethodDialogFunctionProps) => method(props, 'error'),
+      info: (props: MethodDialogFunctionProps) => method(props, 'info'),
+      success: (props: MethodDialogFunctionProps) => method(props, 'success'),
+      warning: (props: MethodDialogFunctionProps) => method(props, 'warning'),
     }),
     [method],
   );

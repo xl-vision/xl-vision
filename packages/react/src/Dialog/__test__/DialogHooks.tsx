@@ -36,7 +36,6 @@ describe('DialogHooks', () => {
     expect(el).toBe(null);
 
     const confirmRet = dialogRef.confirm({
-      defaultVisible: true,
       title: 'title',
       content: 'content',
       id: 'confirm',
@@ -57,7 +56,6 @@ describe('DialogHooks', () => {
     expect(el).toBe(null);
 
     const infoRet = dialogRef.info({
-      defaultVisible: true,
       title: 'title',
       content: 'content',
       id: 'info',
@@ -78,7 +76,6 @@ describe('DialogHooks', () => {
     expect(el).toBe(null);
 
     const successRet = dialogRef.success({
-      defaultVisible: true,
       title: 'title',
       content: 'content',
       id: 'success',
@@ -99,7 +96,6 @@ describe('DialogHooks', () => {
     expect(el).toBe(null);
 
     const errorRet = dialogRef.error({
-      defaultVisible: true,
       title: 'title',
       content: 'content',
       id: 'error',
@@ -120,7 +116,6 @@ describe('DialogHooks', () => {
     expect(el).toBe(null);
 
     const warningRet = dialogRef.warning({
-      defaultVisible: true,
       title: 'title',
       content: 'content',
       id: 'warning',
@@ -154,7 +149,6 @@ describe('DialogHooks', () => {
     expect(el).toBe(null);
 
     dialogRef.confirm({
-      defaultVisible: true,
       title: 'title',
       content: 'content',
       id: 'confirm',
@@ -190,7 +184,6 @@ describe('DialogHooks', () => {
     expect(el).toBe(null);
 
     dialogRef.info({
-      defaultVisible: true,
       title: 'title',
       content: 'content',
       id: 'info',
