@@ -7,7 +7,7 @@ import {
 } from '@xl-vision/icons';
 import { isDevelopment } from '../../utils/env';
 import { ThemeContext } from '../../ThemeProvider';
-import MessageDialog, { MessageDialogProps, MessageDialogRef } from './MessageDialog';
+import MessageDialog, { MessageDialogProps } from './MessageDialog';
 import { LocalizationContext } from '../../LocalizationProvider';
 import Icon from '../../Icon';
 

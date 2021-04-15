@@ -135,12 +135,10 @@ browserHistory.listen(() => {
 
 > `Dialog.useDialog` has almost the same parameters and methods as `Dialog.open`, but there is no need to pass in `themeContext` and `localizationContext`.
 
-> We recommend using `Dialog.useDialog`, this method can ensure that the theme and internationalization are consistent with the context, and will automatically destroy the dialog box when the parent component is destroyed, reducing the mental burden when using it.
-
-> The dialog created by `Dialog.useDialog` will not be automatically destroyed when it is closed, but when the container is destroyed, so it can still be displayed using the `update` method. Of course, you can also call `destroy` to destroy.
+> We recommend using `Dialog.useDialog`. By inserting `holder` in the corresponding position, dialog can get the `context` of the inserted position, such as `ThemeContext` and `LocalizationContext`.
 
 ```tsx
-const dialog = Dialog.useDialog();
+const [dialog, holder] = Dialog.useDialog();
 
 React.useEffect(() => {
   dialog.confirm({
@@ -148,5 +146,10 @@ React.useEffect(() => {
   });
 }, []);
 
-return <div>content</div>;
+return (
+  <div>
+    {holder}
+    content
+  </div>
+);
 ```

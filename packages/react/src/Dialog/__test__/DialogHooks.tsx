@@ -5,14 +5,14 @@ import { mount } from 'enzyme';
 import React from 'react';
 import useDialog from '../useDialog';
 
-const Demo = React.forwardRef<ReturnType<typeof useDialog>, {}>((_, ref) => {
-  const dialog = useDialog();
+const Demo = React.forwardRef<ReturnType<typeof useDialog>[0], {}>((_, ref) => {
+  const [dialog, holder] = useDialog();
 
   React.useImperativeHandle(ref, () => {
     return { ...dialog };
   });
 
-  return <div />;
+  return <div>{holder}</div>;
 });
 
 describe('DialogHooks', () => {
@@ -21,7 +21,7 @@ describe('DialogHooks', () => {
   });
 
   it('test hooks', () => {
-    let dialogRef!: ReturnType<typeof useDialog>;
+    let dialogRef!: ReturnType<typeof useDialog>[0];
     mount(
       <Demo
         ref={(it) => {
@@ -36,7 +36,6 @@ describe('DialogHooks', () => {
     expect(el).toBe(null);
 
     const confirmRet = dialogRef.confirm({
-      defaultVisible: true,
       title: 'title',
       content: 'content',
       id: 'confirm',
@@ -57,7 +56,6 @@ describe('DialogHooks', () => {
     expect(el).toBe(null);
 
     const infoRet = dialogRef.info({
-      defaultVisible: true,
       title: 'title',
       content: 'content',
       id: 'info',
@@ -78,7 +76,6 @@ describe('DialogHooks', () => {
     expect(el).toBe(null);
 
     const successRet = dialogRef.success({
-      defaultVisible: true,
       title: 'title',
       content: 'content',
       id: 'success',
@@ -99,7 +96,6 @@ describe('DialogHooks', () => {
     expect(el).toBe(null);
 
     const errorRet = dialogRef.error({
-      defaultVisible: true,
       title: 'title',
       content: 'content',
       id: 'error',
@@ -120,7 +116,6 @@ describe('DialogHooks', () => {
     expect(el).toBe(null);
 
     const warningRet = dialogRef.warning({
-      defaultVisible: true,
       title: 'title',
       content: 'content',
       id: 'warning',
@@ -139,7 +134,7 @@ describe('DialogHooks', () => {
   });
 
   it('test destroy automic', () => {
-    let dialogRef!: ReturnType<typeof useDialog>;
+    let dialogRef!: ReturnType<typeof useDialog>[0];
     const wrapper = mount(
       <Demo
         ref={(it) => {
@@ -154,7 +149,6 @@ describe('DialogHooks', () => {
     expect(el).toBe(null);
 
     dialogRef.confirm({
-      defaultVisible: true,
       title: 'title',
       content: 'content',
       id: 'confirm',
@@ -173,7 +167,7 @@ describe('DialogHooks', () => {
   });
 
   it('test context update', () => {
-    let dialogRef!: ReturnType<typeof useDialog>;
+    let dialogRef!: ReturnType<typeof useDialog>[0];
     const wrapper = mount(
       <LocalizationProvider language='en-US'>
         <Demo
@@ -190,7 +184,6 @@ describe('DialogHooks', () => {
     expect(el).toBe(null);
 
     dialogRef.info({
-      defaultVisible: true,
       title: 'title',
       content: 'content',
       id: 'info',
