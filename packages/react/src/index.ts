@@ -73,4 +73,15 @@ export type {
 export { default as Modal } from './Modal';
 export type { ModalProps } from './Modal';
 export { default as Dialog } from './Dialog';
-export type { DialogProps, DialogButtonProps } from './Dialog';
+export type {
+  DialogProps,
+  DialogButtonProps,
+  MessageDialogContentStyleProps,
+  MessageDialogFunctionProps,
+  MessageDialogFunctionReturnType,
+  MessageDialogFunctionUpdate,
+  MessageDialogHooksProps,
+  MessageDialogProps,
+  MessageDialogRef,
+  MessageDialogType,
+} from './Dialog';

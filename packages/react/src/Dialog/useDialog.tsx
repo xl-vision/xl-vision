@@ -2,17 +2,18 @@ import React from 'react';
 import useEventCallback from '../hooks/useEventCallback';
 import { LocalizationContext } from '../LocalizationProvider';
 import { ThemeContext } from '../ThemeProvider';
-import { MessageDialogProps } from './message/MessageDialog';
-import { error, info, method, success, warning, confirm } from './methods';
+import message, { MessageDialogFunctionProps } from './message';
+import { MessageDialogType } from './message/createMessageDialog';
 
-export type MessageDialogHooksProps = Omit<MessageDialogProps, 'themeContext' | 'localeContext'>;
+export interface MessageDialogHooksProps
+  extends Omit<MessageDialogFunctionProps, 'localizationContext' | 'themeContext'> {}
 
 export default () => {
   const defaultThemeContext = React.useContext(ThemeContext);
-  const defaultLocaleContext = React.useContext(LocalizationContext);
+  const defaultLocalizationContext = React.useContext(LocalizationContext);
 
   const defaultThemeContextRef = React.useRef(defaultThemeContext);
-  const defaultLocaleContextRef = React.useRef(defaultLocaleContext);
+  const defaultLocalizationContextRef = React.useRef(defaultLocalizationContext);
 
   const modals = React.useRef<
     Array<{ destroy: () => void; update: (props: Partial<MessageDialogHooksProps>) => void }>
@@ -26,17 +27,21 @@ export default () => {
 
   React.useEffect(() => {
     defaultThemeContextRef.current = defaultThemeContext;
-    defaultLocaleContextRef.current = defaultLocaleContext;
+    defaultLocalizationContextRef.current = defaultLocalizationContext;
     // 全局context修改，这里要更新
     modals.current.forEach((it) => it.update({}));
-  }, [defaultThemeContext, defaultLocaleContext]);
+  }, [defaultThemeContext, defaultLocalizationContext]);
 
-  const methodWrapper = useEventCallback((props: MessageDialogHooksProps) => {
-    const { update, destroy } = method({
-      ...props,
-      themeContext: defaultThemeContextRef.current,
-      localeContext: defaultLocaleContextRef.current,
-    });
+  const method = useEventCallback((props: MessageDialogHooksProps, type?: MessageDialogType) => {
+    const { update, destroy } = message(
+      {
+        defaultVisible: true,
+        ...props,
+        themeContext: defaultThemeContextRef.current,
+        localizationContext: defaultLocalizationContextRef.current,
+      },
+      type,
+    );
 
     const destroyWrapper = () => {
       modals.current = modals.current.filter((it) => it !== ret);
@@ -51,177 +56,7 @@ export default () => {
       update((prev) => ({
         ...(typeof _props === 'function' ? _props(prev) : _props),
         themeContext: defaultThemeContextRef.current,
-        localeContext: defaultLocaleContextRef.current,
-      }));
-    };
-
-    const ret = {
-      update: updateWrapper,
-      destroy: destroyWrapper,
-    };
-
-    modals.current.push(ret);
-
-    return ret;
-  });
-
-  const infoWrapper = useEventCallback((props: MessageDialogHooksProps) => {
-    const { update, destroy } = info({
-      ...props,
-      themeContext: defaultThemeContextRef.current,
-      localeContext: defaultLocaleContextRef.current,
-    });
-
-    const destroyWrapper = () => {
-      modals.current = modals.current.filter((it) => it !== ret);
-      destroy();
-    };
-
-    const updateWrapper = (
-      _props:
-        | Partial<MessageDialogHooksProps>
-        | ((prev: MessageDialogHooksProps) => Partial<MessageDialogHooksProps>),
-    ) => {
-      update((prev) => ({
-        ...(typeof _props === 'function' ? _props(prev) : _props),
-        themeContext: defaultThemeContextRef.current,
-        localeContext: defaultLocaleContextRef.current,
-      }));
-    };
-
-    const ret = {
-      update: updateWrapper,
-      destroy: destroyWrapper,
-    };
-
-    modals.current.push(ret);
-
-    return ret;
-  });
-
-  const successWrapper = useEventCallback((props: MessageDialogHooksProps) => {
-    const { update, destroy } = success({
-      ...props,
-      themeContext: defaultThemeContextRef.current,
-      localeContext: defaultLocaleContextRef.current,
-    });
-
-    const destroyWrapper = () => {
-      modals.current = modals.current.filter((it) => it !== ret);
-      destroy();
-    };
-
-    const updateWrapper = (
-      _props:
-        | Partial<MessageDialogHooksProps>
-        | ((prev: MessageDialogHooksProps) => Partial<MessageDialogHooksProps>),
-    ) => {
-      update((prev) => ({
-        ...(typeof _props === 'function' ? _props(prev) : _props),
-        themeContext: defaultThemeContextRef.current,
-        localeContext: defaultLocaleContextRef.current,
-      }));
-    };
-
-    const ret = {
-      update: updateWrapper,
-      destroy: destroyWrapper,
-    };
-
-    modals.current.push(ret);
-
-    return ret;
-  });
-
-  const errorWrapper = useEventCallback((props: MessageDialogHooksProps) => {
-    const { update, destroy } = error({
-      ...props,
-      themeContext: defaultThemeContextRef.current,
-      localeContext: defaultLocaleContextRef.current,
-    });
-
-    const destroyWrapper = () => {
-      modals.current = modals.current.filter((it) => it !== ret);
-      destroy();
-    };
-
-    const updateWrapper = (
-      _props:
-        | Partial<MessageDialogHooksProps>
-        | ((prev: MessageDialogHooksProps) => Partial<MessageDialogHooksProps>),
-    ) => {
-      update((prev) => ({
-        ...(typeof _props === 'function' ? _props(prev) : _props),
-        themeContext: defaultThemeContextRef.current,
-        localeContext: defaultLocaleContextRef.current,
-      }));
-    };
-
-    const ret = {
-      update: updateWrapper,
-      destroy: destroyWrapper,
-    };
-
-    modals.current.push(ret);
-
-    return ret;
-  });
-
-  const warningWrapper = useEventCallback((props: MessageDialogHooksProps) => {
-    const { update, destroy } = warning({
-      ...props,
-      themeContext: defaultThemeContextRef.current,
-      localeContext: defaultLocaleContextRef.current,
-    });
-
-    const destroyWrapper = () => {
-      modals.current = modals.current.filter((it) => it !== ret);
-      destroy();
-    };
-
-    const updateWrapper = (
-      _props:
-        | Partial<MessageDialogHooksProps>
-        | ((prev: MessageDialogHooksProps) => Partial<MessageDialogHooksProps>),
-    ) => {
-      update((prev) => ({
-        ...(typeof _props === 'function' ? _props(prev) : _props),
-        themeContext: defaultThemeContextRef.current,
-        localeContext: defaultLocaleContextRef.current,
-      }));
-    };
-
-    const ret = {
-      update: updateWrapper,
-      destroy: destroyWrapper,
-    };
-
-    modals.current.push(ret);
-
-    return ret;
-  });
-
-  const confirmWrapper = useEventCallback((props: MessageDialogHooksProps) => {
-    const { update, destroy } = confirm({
-      ...props,
-      themeContext: defaultThemeContextRef.current,
-      localeContext: defaultLocaleContextRef.current,
-    });
-
-    const destroyWrapper = () => {
-      modals.current = modals.current.filter((it) => it !== ret);
-      destroy();
-    };
-
-    const updateWrapper = (
-      _props:
-        | Partial<MessageDialogHooksProps>
-        | ((prev: MessageDialogHooksProps) => Partial<MessageDialogHooksProps>),
-    ) => {
-      update((prev) => ({
-        ...(typeof _props === 'function' ? _props(prev) : _props),
-        themeContext: defaultThemeContextRef.current,
-        localeContext: defaultLocaleContextRef.current,
+        localizationContext: defaultLocalizationContextRef.current,
       }));
     };
 
@@ -237,13 +72,13 @@ export default () => {
 
   return React.useMemo(
     () => ({
-      method: methodWrapper,
-      info: infoWrapper,
-      success: successWrapper,
-      error: errorWrapper,
-      warning: warningWrapper,
-      confirm: confirmWrapper,
+      open: (props: MessageDialogHooksProps) => method(props),
+      confirm: (props: MessageDialogHooksProps) => method(props, 'confirm'),
+      error: (props: MessageDialogHooksProps) => method(props, 'error'),
+      info: (props: MessageDialogHooksProps) => method(props, 'info'),
+      success: (props: MessageDialogHooksProps) => method(props, 'success'),
+      warning: (props: MessageDialogHooksProps) => method(props, 'warning'),
     }),
-    [methodWrapper, infoWrapper, successWrapper, errorWrapper, warningWrapper, confirmWrapper],
+    [method],
   );
 };

@@ -2,19 +2,15 @@ import React from 'react';
 import Proptypes from 'prop-types';
 import clsx from 'clsx';
 import { CSSObject } from '@xl-vision/styled-engine-types';
-import { ThemeContext as StyledThemeContext } from '@xl-vision/styled-engine';
 import { isDevelopment } from '../../utils/env';
 import Dialog, { DialogProps } from '../Dialog';
 import { styled } from '../../styles';
-import { LocalizationContext, LocalizationContextProps } from '../../LocalizationProvider';
-import { Theme, ThemeContext } from '../../ThemeProvider';
+import { ThemeContext } from '../../ThemeProvider';
 import usePropChange from '../../hooks/usePropChange';
 
 export interface MessageDialogProps extends Omit<DialogProps, 'children'> {
   content?: React.ReactNode;
   icon?: React.ReactNode;
-  localeContext: LocalizationContextProps;
-  themeContext: Theme;
 }
 
 const displayName = 'MessageDialog';
@@ -81,8 +77,6 @@ export type MessageDialogRef = {
 
 const MessageDialog = React.forwardRef<MessageDialogRef, MessageDialogProps>((props, ref) => {
   const {
-    localeContext,
-    themeContext,
     visible: visibleProp,
     defaultVisible: defaultVisibleProp = false,
     onVisibleChange: onVisibleChangeProp,
@@ -124,31 +118,23 @@ const MessageDialog = React.forwardRef<MessageDialogRef, MessageDialogProps>((pr
   );
 
   return (
-    <LocalizationContext.Provider value={localeContext}>
-      <ThemeContext.Provider value={themeContext}>
-        <StyledThemeContext.Provider value={themeContext}>
-          <Dialog
-            {...others}
-            className={clsx(className, rootClassName)}
-            title={headerWrapper}
-            visible={!first && visible}
-            onVisibleChange={handleVisibleChange}
-          >
-            {content && (
-              <MessageDialogContent styleProps={{ icon: !!icon }}>{content}</MessageDialogContent>
-            )}
-          </Dialog>
-        </StyledThemeContext.Provider>
-      </ThemeContext.Provider>
-    </LocalizationContext.Provider>
+    <Dialog
+      {...others}
+      className={clsx(className, rootClassName)}
+      title={headerWrapper}
+      visible={!first && visible}
+      onVisibleChange={handleVisibleChange}
+    >
+      {content && (
+        <MessageDialogContent styleProps={{ icon: !!icon }}>{content}</MessageDialogContent>
+      )}
+    </Dialog>
   );
 });
 
 if (isDevelopment) {
   MessageDialog.displayName = displayName;
   MessageDialog.propTypes = {
-    themeContext: Proptypes.any.isRequired,
-    localeContext: Proptypes.any.isRequired,
     visible: Proptypes.bool,
     defaultVisible: Proptypes.bool,
     onVisibleChange: Proptypes.func,

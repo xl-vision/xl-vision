@@ -6,15 +6,15 @@ export type Locale = {
   Dialog: {
     confirmText: string;
     cancelText: string;
-  };
-  MethodDialog: {
-    successText: string;
-    infoText: string;
-    errorText: string;
-    warningText: string;
-    confirm: {
-      confirmText: string;
-      cancelText: string;
+    messages: {
+      successText: string;
+      infoText: string;
+      errorText: string;
+      warningText: string;
+      confirm: {
+        confirmText: string;
+        cancelText: string;
+      };
     };
   };
 };
