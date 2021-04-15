@@ -398,11 +398,12 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
   }, [inProp, show]);
 
   React.useEffect(() => {
-    on(window, 'click', handleClickOutside);
-    on(window, 'contextmenu', handleContextMenuOutside);
+    // 在捕获阶段拦截，防止元素禁止冒泡导致监听不到
+    on(window, 'click', handleClickOutside, true);
+    on(window, 'contextmenu', handleContextMenuOutside, true);
     return () => {
-      off(window, 'click', handleClickOutside);
-      off(window, 'contextmenu', handleContextMenuOutside);
+      off(window, 'click', handleClickOutside, true);
+      off(window, 'contextmenu', handleContextMenuOutside, true);
     };
   }, [handleClickOutside, handleContextMenuOutside]);
 
