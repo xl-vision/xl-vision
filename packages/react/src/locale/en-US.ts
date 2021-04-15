@@ -8,15 +8,15 @@ const locale: Locale = {
   Dialog: {
     cancelText: 'No',
     confirmText: 'Yes',
-  },
-  MethodDialog: {
-    successText: 'OK',
-    infoText: 'OK',
-    errorText: 'OK',
-    warningText: 'OK',
-    confirm: {
-      confirmText: 'Yes',
-      cancelText: 'No',
+    messages: {
+      successText: 'OK',
+      infoText: 'OK',
+      errorText: 'OK',
+      warningText: 'OK',
+      confirm: {
+        confirmText: 'Yes',
+        cancelText: 'No',
+      },
     },
   },
 };

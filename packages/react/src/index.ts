@@ -76,8 +76,12 @@ export { default as Dialog } from './Dialog';
 export type {
   DialogProps,
   DialogButtonProps,
-  MethodDialogFunctionProps,
-  MethodDialogHookProps,
-  MethodDialogProps,
-  DialogMethodReturnType,
+  MessageDialogContentStyleProps,
+  MessageDialogFunctionProps,
+  MessageDialogFunctionReturnType,
+  MessageDialogFunctionUpdate,
+  MessageDialogHooksProps,
+  MessageDialogProps,
+  MessageDialogRef,
+  MessageDialogType,
 } from './Dialog';

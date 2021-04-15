@@ -199,8 +199,11 @@ describe('DialogHooks', () => {
     jest.runAllTimers();
 
     el = document.querySelector('#info');
+
     expect(el).not.toBe(null);
-    expect(el!.querySelector('button')!.textContent).toBe(locales['en-US'].MethodDialog.infoText);
+    expect(el!.querySelector('button')!.textContent).toBe(
+      locales['en-US'].Dialog.messages.infoText,
+    );
 
     wrapper.setProps({
       language: 'zh-CN',
@@ -209,7 +212,9 @@ describe('DialogHooks', () => {
     jest.runAllTimers();
 
     el = document.querySelector('#info');
-    expect(el!.querySelector('button')!.textContent).toBe(locales['zh-CN'].MethodDialog.infoText);
+    expect(el!.querySelector('button')!.textContent).toBe(
+      locales['zh-CN'].Dialog.messages.infoText,
+    );
 
     wrapper.unmount();
     jest.runAllTimers();
