@@ -8,15 +8,15 @@ const locale: Locale = {
   Dialog: {
     cancelText: '取消',
     confirmText: '确认',
-  },
-  MethodDialog: {
-    successText: '知道了',
-    infoText: '知道了',
-    errorText: '知道了',
-    warningText: '知道了',
-    confirm: {
-      confirmText: '确认',
-      cancelText: '取消',
+    messages: {
+      successText: '知道了',
+      infoText: '知道了',
+      errorText: '知道了',
+      warningText: '知道了',
+      confirm: {
+        confirmText: '确认',
+        cancelText: '取消',
+      },
     },
   },
 };

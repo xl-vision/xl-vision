@@ -1,5 +1,5 @@
 import React from 'react';
-import { method, info, success, error, warning, confirm } from '../methods';
+import { open, info, success, error, warning, confirm } from '../methods';
 
 describe('DialogMethod', () => {
   beforeAll(() => {
@@ -9,8 +9,7 @@ describe('DialogMethod', () => {
     let el = document.querySelector('#method');
     expect(el).toBe(null);
 
-    const { destroy } = method({
-      defaultVisible: true,
+    const { destroy } = open({
       title: 'title',
       content: 'content',
       id: 'method',
@@ -37,7 +36,6 @@ describe('DialogMethod', () => {
     expect(el).toBe(null);
 
     const { destroy } = info({
-      defaultVisible: true,
       title: 'title',
       content: 'content',
       id: 'info',
@@ -64,7 +62,6 @@ describe('DialogMethod', () => {
     expect(el).toBe(null);
 
     const { destroy } = success({
-      defaultVisible: true,
       title: 'title',
       content: 'content',
       id: 'success',
@@ -91,7 +88,6 @@ describe('DialogMethod', () => {
     expect(el).toBe(null);
 
     const { destroy } = error({
-      defaultVisible: true,
       title: 'title',
       content: 'content',
       id: 'error',
@@ -118,7 +114,6 @@ describe('DialogMethod', () => {
     expect(el).toBe(null);
 
     const { destroy } = warning({
-      defaultVisible: true,
       title: 'title',
       content: 'content',
       id: 'warning',
@@ -145,7 +140,6 @@ describe('DialogMethod', () => {
     expect(el).toBe(null);
 
     const { destroy } = confirm({
-      defaultVisible: true,
       title: 'title',
       content: 'content',
       id: 'confirm',
@@ -172,7 +166,6 @@ describe('DialogMethod', () => {
     expect(el).toBe(null);
 
     const { destroy, update } = confirm({
-      defaultVisible: true,
       title: 'title',
       content: <div id='content'>content</div>,
       id: 'confirm',

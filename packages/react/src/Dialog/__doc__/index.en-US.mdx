@@ -75,30 +75,32 @@ In this way, you need to pass in ThemeContext and LocalizationContext, otherwise
 | confirmText | Confirm button text, support `i18n` | string | - | 确认 | false |
 | prompt | Prompt dialog, only confirm button | boolean | - | - | false |
 
-## Dialog.method
+## Dialog.open
 
-In addition to the basic Dialog.method, it also includes
+In addition to the basic`Dialog.open`, it also includes
 
-- Dialog.info
-- Dialog.success
-- Dialog.error
-- Dialog.warning
-- Dialog.confirm
+- `Dialog.info`
+- `Dialog.success`
+- `Dialog.error`
+- `Dialog.warning`
+- `Dialog.confirm`
 
 The above are all functions, the parameter is object, and the specific attributes are as follows
 
-| Property      | Description  | Type            | Optional Value | Default | Require |
-| ------------- | ------------ | --------------- | -------------- | ------- | ------- |
-| icon          | Icon         | React.ReactNode | -              | -       | false   |
-| content       | Content      | React.ReactNode | -              | -       | false   |
-| themeContext  | Theme        | object          | -              | -       | false   |
-| localeContext | Localization | object          | -              | -       | false   |
+| Property            | Description  | Type            | Optional Value | Default | Require |
+| ------------------- | ------------ | --------------- | -------------- | ------- | ------- |
+| icon                | Icon         | React.ReactNode | -              | -       | false   |
+| content             | Content      | React.ReactNode | -              | -       | false   |
+| themeContext        | Theme        | object          | -              | -       | false   |
+| localizationContext | Localization | object          | -              | -       | false   |
 
-> Dialog.method inherits all the parameters of Dialog, among which children is renamed to content.
+> `Dialog.open` inherits most of the parameters of `Dialog`, except for `visible` and `defaultVisile`, where `children` is renamed to `content`.
 
-> If you want to modify the theme and internationalization information of the dialog box created by method, you need to pass in themeContext and localeContext, otherwise the system default theme and internationalization information will be used.
+> If you want to modify the theme and internationalization information of the dialog box created by `Dialog.open`, you need to pass in `themeContext` and `localizationContext`, otherwise the system default theme and internationalization information will be used.
 
-After the above function is called, a reference will be returned, and the pop-up window can be updated and closed by this reference.
+> When the dialog box is closed, it will be destroyed automatically.
+
+After the above function is called, a reference will be returned, and the dialog can be updated and closed by this reference.
 
 ```tsx
 const dialog = Dialog.info();
@@ -118,7 +120,7 @@ dialog.destroy();
 
 - Dialog.destroyAll
 
-Use `Dialog.destroyAll()` to destroy the pop-up confirmation window (ie the above-mentioned `Dialog.info`, `Dialog.success`, `Dialog.error`, `Dialog.warning`, `Dialog.confirm`). It is usually used in routing monitoring to deal with the problem that the confirmation dialog cannot be destroyed when routing forward and backward, instead of using the return value of the instance to close it (`Dialog.destroy()` is suitable for active closing, not passive routing like this shut down)
+Use `Dialog.destroyAll()` to destroy the pop-up confirmation window (ie the above-mentioned `Dialog.open`, `Dialog.info`, `Dialog.success`, `Dialog.error`, `Dialog.warning`, `Dialog.confirm`). It is usually used in routing monitoring to deal with the problem that the confirmation dialog cannot be destroyed when routing forward and backward, instead of using the return value of the instance to close it (`Dialog.destroy()` is suitable for active closing, not passive routing like closed)
 
 ```tsx
 import { browserHistory } from 'react-router';
@@ -131,9 +133,11 @@ browserHistory.listen(() => {
 
 ## Dialog.useDialog
 
-> Dialog.useDialog has almost the same parameters and methods as method, but does not need to pass in themeContext and localeContext.
+> `Dialog.useDialog` has almost the same parameters and methods as `Dialog.open`, but there is no need to pass in `themeContext` and `localizationContext`.
 
-> We recommend using useDialog. This method can ensure that the theme and internationalization are consistent with the context, and will automatically destroy the dialog box when the parent component is destroyed, reducing the mental burden when using it.
+> We recommend using `Dialog.useDialog`, this method can ensure that the theme and internationalization are consistent with the context, and will automatically destroy the dialog box when the parent component is destroyed, reducing the mental burden when using it.
+
+> The dialog created by `Dialog.useDialog` will not be automatically destroyed when it is closed, but when the container is destroyed, so it can still be displayed using the `update` method. Of course, you can also call `destroy` to destroy.
 
 ```tsx
 const dialog = Dialog.useDialog();

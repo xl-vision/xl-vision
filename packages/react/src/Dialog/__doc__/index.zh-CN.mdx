@@ -77,30 +77,32 @@ hooks
 | confirmText | 确认按钮文案，支持`i18n` | string | - | 确认 | false |
 | prompt | 提示型对话框，只有确认按钮 | boolean | - | - | false |
 
-## Dialog.method
+## Dialog.open
 
-除了基础的 Dialog.method 外，还包括
+除了基础的`Dialog.open`外，还包括
 
-- Dialog.info
-- Dialog.success
-- Dialog.error
-- Dialog.warning
-- Dialog.confirm
+- `Dialog.info`
+- `Dialog.success`
+- `Dialog.error`
+- `Dialog.warning`
+- `Dialog.confirm`
 
 以上均为函数，参数为 object，具体属性如下
 
-| 参数          | 说明               | 类型            | 可选值 | 默认值 | 是否必填 |
-| ------------- | ------------------ | --------------- | ------ | ------ | -------- |
-| icon          | 图标               | React.ReactNode | -      | -      | false    |
-| content       | 自定义内容         | React.ReactNode | -      | -      | false    |
-| themeContext  | 自定义主题上下文   | object          | -      | -      | false    |
-| localeContext | 自定义国际化上下文 | object          | -      | -      | false    |
+| 参数                | 说明               | 类型            | 可选值 | 默认值 | 是否必填 |
+| ------------------- | ------------------ | --------------- | ------ | ------ | -------- |
+| icon                | 图标               | React.ReactNode | -      | -      | false    |
+| content             | 自定义内容         | React.ReactNode | -      | -      | false    |
+| themeContext        | 自定义主题上下文   | object          | -      | -      | false    |
+| localizationContext | 自定义国际化上下文 | object          | -      | -      | false    |
 
-> Dialog.method 继承 Dialog 的所有参数，其中 children 被重命名为 content。
+> `Dialog.open`继承`Dialog`的绝大多数参数，除了`visible`和`defaultVisile`，其中`children`被重命名为`content`。
 
-> 如果要修改 method 创建的对话框的主题和国际化信息，需要传入 themeContext 和 localeContext，否则将使用系统的默认主题和国际化信息。
+> 如果要修改`Dialog.open`创建的对话框的主题和国际化信息，需要传入`themeContext`和`localizationContext`，否则将使用系统的默认主题和国际化信息。
 
-以上函数调用后，会返回一个引用，可以通过该引用更新和关闭弹窗。
+> 对话框关闭时会自动进行销毁。
+
+以上函数调用后，会返回一个引用，可以通过该引用更新和关闭对话框。
 
 ```tsx
 const dialog = Dialog.info();
@@ -120,7 +122,7 @@ dialog.destroy();
 
 - Dialog.destroyAll
 
-使用`Dialog.destroyAll()`可以销毁弹出的确认窗（即上述的`Dialog.info`、`Dialog.success`、`Dialog.error`、`Dialog.warning`、`Dialog.confirm`）。通常用于路由监听当中，处理路由前进、后退不能销毁确认对话框的问题，而不用各处去使用实例的返回值进行关闭（`Dialog.destroy()` 适用于主动关闭，而不是路由这样被动关闭）
+使用`Dialog.destroyAll()`可以销毁弹出的确认窗（即上述的`Dialog.open`、`Dialog.info`、`Dialog.success`、`Dialog.error`、`Dialog.warning`、`Dialog.confirm`）。通常用于路由监听当中，处理路由前进、后退不能销毁确认对话框的问题，而不用各处去使用实例的返回值进行关闭（`Dialog.destroy()` 适用于主动关闭，而不是路由这样被动关闭）
 
 ```tsx
 import { browserHistory } from 'react-router';
@@ -133,9 +135,11 @@ browserHistory.listen(() => {
 
 ## Dialog.useDialog
 
-> Dialog.useDialog 拥有和 method 几乎相同的参数和方法，但是不需要传入 themeContext 和 localeContext。
+> `Dialog.useDialog`拥有和`Dialog.open`几乎相同的参数和方法，但是不需要传入`themeContext`和`localizationContext`。
 
-> 我们推荐使用 useDialog，这种方式可以保证主题和国际化与上下文一致，也会在父组件销毁的时候自动销毁对话框，降低了使用时的心智负担。
+> 我们推荐使用`Dialog.useDialog`，这种方式可以保证主题和国际化与上下文一致，也会在父组件销毁的时候自动销毁对话框，降低了使用时的心智负担。
+
+> `Dialog.useDialog`创建的对话框不会在关闭时自动销毁，而是在容器销毁时自动销毁，所以依然可以使用`update`方法显示出来。当然你也可以调用`destroy`来进行销毁。
 
 ```tsx
 const dialog = Dialog.useDialog();
