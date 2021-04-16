@@ -71,11 +71,7 @@ const MessageDialogContent = styled('div', {
   return styles;
 });
 
-export type MessageDialogRef = {
-  visible: boolean;
-};
-
-const MessageDialog = React.forwardRef<MessageDialogRef, MessageDialogProps>((props, ref) => {
+const MessageDialog: React.FunctionComponent<MessageDialogProps> = (props) => {
   const {
     visible: visibleProp,
     defaultVisible: defaultVisibleProp = false,
@@ -96,12 +92,6 @@ const MessageDialog = React.forwardRef<MessageDialogRef, MessageDialogProps>((pr
   const [first, setFirst] = React.useState(true);
 
   const { clsPrefix } = React.useContext(ThemeContext);
-
-  React.useImperativeHandle(ref, () => {
-    return {
-      visible,
-    };
-  });
 
   // 保证有对话框弹出的动画效果
   React.useEffect(() => {
@@ -130,7 +120,7 @@ const MessageDialog = React.forwardRef<MessageDialogRef, MessageDialogProps>((pr
       )}
     </Dialog>
   );
-});
+};
 
 if (isDevelopment) {
   MessageDialog.displayName = displayName;

@@ -2,7 +2,7 @@ import { Button, Dialog } from '@xl-vision/react';
 import React from 'react';
 
 export default () => {
-  const dialog = Dialog.useDialog();
+  const [dialog, holders] = Dialog.useDialog();
 
   const handleInfo = React.useCallback(() => {
     dialog.info({
@@ -41,6 +41,7 @@ export default () => {
 
   return (
     <>
+      {holders}
       <Button theme='primary' onClick={handleInfo}>
         info
       </Button>
