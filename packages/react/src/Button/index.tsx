@@ -177,8 +177,9 @@ const ButtonPrefix = styled('span', {
     padding: 0,
     lineHeight: 0,
     fontSize: '1.4em',
+    verticalAlign: 'middle',
     svg: {
-      // lineHeight: 1,
+      lineHeight: 1,
       verticalAlign: 'middle',
     },
   };
