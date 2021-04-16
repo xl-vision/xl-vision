@@ -19,6 +19,11 @@ export type MethodDialogHookUpdate = (
     | ((prev: MessageDialogHookProps) => Partial<MessageDialogHookProps>),
 ) => void;
 
+export type MessageDialogHookReturnType = {
+  destroy: () => void;
+  update: MethodDialogHookUpdate;
+};
+
 const createHookMessageDialog = (props: MessageDialogProps, type?: MessageDialogType) => {
   const Dialog = createMessageDialog(type);
 
@@ -48,70 +53,74 @@ let uuid = 0;
 export default () => {
   const [dialogs, setDialogs] = React.useState<Array<React.ReactElement>>([]);
 
-  const method = React.useCallback((props: MessageDialogHookProps, type?: MessageDialogType) => {
-    let currentProps: MessageDialogProps = {
-      ...props,
-      visible: undefined,
-      defaultVisible: true,
-      onAfterClosed: () => {
-        props.onAfterClosed?.();
-        destroyDOM();
-      },
-    };
-    const Dialog = createHookMessageDialog(currentProps, type);
-
-    const ref = React.createRef<HookMessageDialogRef>();
-
-    let destroyState = false;
-
-    const dialog = <Dialog key={`dialog${uuid++}`} ref={ref} />;
-
-    const destroyDOM = () => {
-      setDialogs((prev) => prev.filter((it) => it !== dialog));
-    };
-
-    const render = (renderProps: MessageDialogProps) => {
-      if (destroyState) {
-        return warningLog(
-          true,
-          `The dialog instance was destroyed, please do not update or destroy it again.`,
-        );
-      }
-      ref.current?.update(renderProps);
-    };
-
-    const update: MethodDialogHookUpdate = (updateProps) => {
-      const newProps = typeof updateProps === 'function' ? updateProps(currentProps) : updateProps;
-      currentProps = { ...currentProps, ...newProps, visible: undefined, defaultVisible: true };
-
-      const { onAfterClosed } = currentProps;
-
-      currentProps.onAfterClosed = () => {
-        onAfterClosed?.();
-        destroyDOM();
-      };
-      render(currentProps);
-    };
-
-    const destroy = () => {
-      render({
-        ...currentProps,
-        visible: false,
-        onAfterClosed() {
-          currentProps.onAfterClosed?.();
+  const method = React.useCallback(
+    (props: MessageDialogHookProps, type?: MessageDialogType): MessageDialogHookReturnType => {
+      let currentProps: MessageDialogProps = {
+        ...props,
+        visible: undefined,
+        defaultVisible: true,
+        onAfterClosed: () => {
+          props.onAfterClosed?.();
           destroyDOM();
         },
-      });
-      destroyState = true;
-    };
+      };
+      const Dialog = createHookMessageDialog(currentProps, type);
 
-    setDialogs((prev) => [...prev, dialog]);
+      const ref = React.createRef<HookMessageDialogRef>();
 
-    return {
-      update,
-      destroy,
-    };
-  }, []);
+      let destroyState = false;
+
+      const dialog = <Dialog key={`dialog${uuid++}`} ref={ref} />;
+
+      const destroyDOM = () => {
+        setDialogs((prev) => prev.filter((it) => it !== dialog));
+      };
+
+      const render = (renderProps: MessageDialogProps) => {
+        if (destroyState) {
+          return warningLog(
+            true,
+            `The dialog instance was destroyed, please do not update or destroy it again.`,
+          );
+        }
+        ref.current?.update(renderProps);
+      };
+
+      const update: MethodDialogHookUpdate = (updateProps) => {
+        const newProps =
+          typeof updateProps === 'function' ? updateProps(currentProps) : updateProps;
+        currentProps = { ...currentProps, ...newProps, visible: undefined, defaultVisible: true };
+
+        const { onAfterClosed } = currentProps;
+
+        currentProps.onAfterClosed = () => {
+          onAfterClosed?.();
+          destroyDOM();
+        };
+        render(currentProps);
+      };
+
+      const destroy = () => {
+        render({
+          ...currentProps,
+          visible: false,
+          onAfterClosed() {
+            currentProps.onAfterClosed?.();
+            destroyDOM();
+          },
+        });
+        destroyState = true;
+      };
+
+      setDialogs((prev) => [...prev, dialog]);
+
+      return {
+        update,
+        destroy,
+      };
+    },
+    [],
+  );
 
   const methods = React.useMemo(
     () => ({

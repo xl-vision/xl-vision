@@ -3,7 +3,8 @@ import { locales } from '@xl-vision/react/locale';
 import LocalizationProvider from '@xl-vision/react/LocalizationProvider';
 import { mount } from 'enzyme';
 import React from 'react';
-import useDialog from '../useDialog';
+import { act } from 'react-dom/test-utils';
+import useDialog, { MessageDialogHookReturnType } from '../useDialog';
 
 const Demo = React.forwardRef<ReturnType<typeof useDialog>[0], {}>((_, ref) => {
   const [dialog, holder] = useDialog();
@@ -35,10 +36,14 @@ describe('DialogHooks', () => {
     let el = document.querySelector('#confirm');
     expect(el).toBe(null);
 
-    const confirmRet = dialogRef.confirm({
-      title: 'title',
-      content: 'content',
-      id: 'confirm',
+    let confirmRet: MessageDialogHookReturnType;
+
+    act(() => {
+      confirmRet = dialogRef.confirm({
+        title: 'title',
+        content: 'content',
+        id: 'confirm',
+      });
     });
 
     jest.runAllTimers();
@@ -46,7 +51,9 @@ describe('DialogHooks', () => {
     el = document.querySelector('#confirm');
     expect(el).not.toBe(null);
 
-    confirmRet.destroy();
+    act(() => {
+      confirmRet.destroy();
+    });
     jest.runAllTimers();
 
     el = document.querySelector('#confirm');
@@ -55,10 +62,13 @@ describe('DialogHooks', () => {
     el = document.querySelector('#info');
     expect(el).toBe(null);
 
-    const infoRet = dialogRef.info({
-      title: 'title',
-      content: 'content',
-      id: 'info',
+    let infoRet: MessageDialogHookReturnType;
+    act(() => {
+      infoRet = dialogRef.info({
+        title: 'title',
+        content: 'content',
+        id: 'info',
+      });
     });
 
     jest.runAllTimers();
@@ -66,7 +76,9 @@ describe('DialogHooks', () => {
     el = document.querySelector('#info');
     expect(el).not.toBe(null);
 
-    infoRet.destroy();
+    act(() => {
+      infoRet.destroy();
+    });
     jest.runAllTimers();
 
     el = document.querySelector('#info');
@@ -75,10 +87,14 @@ describe('DialogHooks', () => {
     el = document.querySelector('#success');
     expect(el).toBe(null);
 
-    const successRet = dialogRef.success({
-      title: 'title',
-      content: 'content',
-      id: 'success',
+    let successRet: MessageDialogHookReturnType;
+
+    act(() => {
+      successRet = dialogRef.success({
+        title: 'title',
+        content: 'content',
+        id: 'success',
+      });
     });
 
     jest.runAllTimers();
@@ -86,7 +102,9 @@ describe('DialogHooks', () => {
     el = document.querySelector('#success');
     expect(el).not.toBe(null);
 
-    successRet.destroy();
+    act(() => {
+      successRet.destroy();
+    });
     jest.runAllTimers();
 
     el = document.querySelector('#success');
@@ -95,10 +113,14 @@ describe('DialogHooks', () => {
     el = document.querySelector('#error');
     expect(el).toBe(null);
 
-    const errorRet = dialogRef.error({
-      title: 'title',
-      content: 'content',
-      id: 'error',
+    let errorRet: MessageDialogHookReturnType;
+
+    act(() => {
+      errorRet = dialogRef.error({
+        title: 'title',
+        content: 'content',
+        id: 'error',
+      });
     });
 
     jest.runAllTimers();
@@ -106,7 +128,9 @@ describe('DialogHooks', () => {
     el = document.querySelector('#error');
     expect(el).not.toBe(null);
 
-    errorRet.destroy();
+    act(() => {
+      errorRet.destroy();
+    });
     jest.runAllTimers();
 
     el = document.querySelector('#error');
@@ -115,10 +139,13 @@ describe('DialogHooks', () => {
     el = document.querySelector('#warning');
     expect(el).toBe(null);
 
-    const warningRet = dialogRef.warning({
-      title: 'title',
-      content: 'content',
-      id: 'warning',
+    let warningRet: MessageDialogHookReturnType;
+    act(() => {
+      warningRet = dialogRef.warning({
+        title: 'title',
+        content: 'content',
+        id: 'warning',
+      });
     });
 
     jest.runAllTimers();
@@ -126,7 +153,9 @@ describe('DialogHooks', () => {
     el = document.querySelector('#warning');
     expect(el).not.toBe(null);
 
-    warningRet.destroy();
+    act(() => {
+      warningRet.destroy();
+    });
     jest.runAllTimers();
 
     el = document.querySelector('#warning');
@@ -148,10 +177,12 @@ describe('DialogHooks', () => {
     let el = document.querySelector('#confirm');
     expect(el).toBe(null);
 
-    dialogRef.confirm({
-      title: 'title',
-      content: 'content',
-      id: 'confirm',
+    act(() => {
+      dialogRef.confirm({
+        title: 'title',
+        content: 'content',
+        id: 'confirm',
+      });
     });
 
     jest.runAllTimers();
@@ -183,10 +214,12 @@ describe('DialogHooks', () => {
     let el = document.querySelector('#info');
     expect(el).toBe(null);
 
-    dialogRef.info({
-      title: 'title',
-      content: 'content',
-      id: 'info',
+    act(() => {
+      dialogRef.info({
+        title: 'title',
+        content: 'content',
+        id: 'info',
+      });
     });
 
     jest.runAllTimers();

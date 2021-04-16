@@ -85,4 +85,5 @@ export type {
   MessageDialogFunctionUpdate,
   MessageDialogHookProps,
   MethodDialogHookUpdate,
+  MessageDialogHookReturnType,
 } from './Dialog';
