@@ -36,4 +36,6 @@ describe('Dialog', () => {
 
     wrapper.unmount();
   });
+
+  it.todo('test delay close');
 });
