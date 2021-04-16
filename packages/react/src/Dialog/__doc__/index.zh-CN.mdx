@@ -137,12 +137,10 @@ browserHistory.listen(() => {
 
 > `Dialog.useDialog`拥有和`Dialog.open`几乎相同的参数和方法，但是不需要传入`themeContext`和`localizationContext`。
 
-> 我们推荐使用`Dialog.useDialog`，这种方式可以保证主题和国际化与上下文一致，也会在父组件销毁的时候自动销毁对话框，降低了使用时的心智负担。
-
-> `Dialog.useDialog`创建的对话框不会在关闭时自动销毁，而是在容器销毁时自动销毁，所以依然可以使用`update`方法显示出来。当然你也可以调用`destroy`来进行销毁。
+> 我们推荐使用`Dialog.useDialog`，通过插入`holder`在相应位置可以使 dialog 获得插入位置的`context`，例如`ThemeContext`和`LocalizationContext`。
 
 ```tsx
-const dialog = Dialog.useDialog();
+const [dialog, holder] = Dialog.useDialog();
 
 React.useEffect(() => {
   dialog.confirm({
@@ -150,5 +148,10 @@ React.useEffect(() => {
   });
 }, []);
 
-return <div>content</div>;
+return (
+  <div>
+    {holder}
+    content
+  </div>
+);
 ```

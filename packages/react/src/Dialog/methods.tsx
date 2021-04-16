@@ -1,72 +1,158 @@
-import message, {
-  MessageDialogFunctionProps,
-  MessageDialogFunctionReturnType,
-  MessageDialogFunctionUpdate,
-} from './message';
-import { MessageDialogType } from './message/createMessageDialog';
+import ReactDOM from 'react-dom';
+import React from 'react';
+import { ThemeContext as StyledThemeContext } from '@xl-vision/styled-engine';
+import { isServer } from '../utils/env';
+import createMessageDialog, { MessageDialogType, MessageDialogProps } from './message';
+import { voidFn } from '../utils/function';
+import warningLog from '../utils/warning';
+import { Theme, ThemeContext } from '../ThemeProvider';
+import { LocalizationContext, LocalizationContextProps } from '../LocalizationProvider';
+import defaultTheme from '../ThemeProvider/defaultTheme';
+import { locales, defaultLanguage } from '../locale';
 
-export type MethodDialogFunctionProps = Omit<
-  MessageDialogFunctionProps,
-  'defaultVisible' | 'visible'
->;
-let destoryFunctions: Array<() => void> = [];
+export interface MessageDialogFunctionRenderProps extends MessageDialogProps, MessageDialogProps {
+  themeContext?: Theme;
+  localizationContext?: LocalizationContextProps;
+}
+export interface MessageDialogFunctionProps
+  extends Omit<MessageDialogFunctionRenderProps, 'visible' | 'defaultVisible'> {}
 
-const _method = (
-  props: MethodDialogFunctionProps,
+export type MessageDialogFunctionUpdate = (
+  props:
+    | Partial<MessageDialogFunctionProps>
+    | ((prev: MessageDialogFunctionProps) => Partial<MessageDialogFunctionProps>),
+) => void;
+
+export type MessageDialogFunctionReturnType = {
+  destroy: () => void;
+  update: MessageDialogFunctionUpdate;
+};
+
+const defaultThemeContext: Theme = defaultTheme;
+
+const defaultLocalizationContext: LocalizationContextProps = {
+  locale: locales[defaultLanguage],
+  language: defaultLanguage,
+};
+
+const destroyFunctions: Array<() => void> = [];
+
+const method = (
+  props: MessageDialogFunctionProps,
   type?: MessageDialogType,
 ): MessageDialogFunctionReturnType => {
-  const createHandleClosed = (onClosed?: (isDestory?: true) => void) => (isDestroy?: true) => {
-    onClosed?.(isDestroy);
-    destoryFunctions = destoryFunctions.filter((it) => it !== destroy);
-    if (isDestroy) {
-      return;
-    }
-    destroy();
+  if (isServer) {
+    return {
+      destroy: voidFn,
+      update: voidFn,
+    };
+  }
+
+  const Dialog = createMessageDialog(type);
+
+  const div = document.createElement('div');
+  document.body.appendChild(div);
+
+  let currentProps: MessageDialogFunctionRenderProps = {
+    ...props,
+    visible: undefined,
+    defaultVisible: true,
+    onAfterClosed: () => {
+      props.onAfterClosed?.();
+      destroyDOM();
+    },
   };
 
-  const { update, destroy } = message(
-    {
-      ...props,
-      defaultVisible: true,
-      visible: undefined,
-      onClosed: createHandleClosed(props.onClosed),
-    },
-    type,
-  );
+  let destroyState = false;
 
-  const updateWrapper: MessageDialogFunctionUpdate = (updateProps) => {
-    return update((prev) => {
-      const newProps = typeof updateProps === 'function' ? updateProps(prev) : updateProps;
-      return {
-        ...newProps,
-        defaultVisible: true,
-        visible: undefined,
-        onClosed: createHandleClosed(newProps.onClosed),
-      };
+  const render = (renderProps: MessageDialogFunctionRenderProps) => {
+    if (destroyState) {
+      return warningLog(
+        true,
+        `The dialog instance was destroyed, please do not update or destroy it again.`,
+      );
+    }
+    const { localizationContext, themeContext, ...others } = renderProps;
+
+    setTimeout(() => {
+      ReactDOM.render(
+        <LocalizationContext.Provider value={localizationContext || defaultLocalizationContext}>
+          <ThemeContext.Provider value={themeContext || defaultThemeContext}>
+            <StyledThemeContext.Provider value={themeContext || defaultThemeContext}>
+              <Dialog getContainer={null} {...others} />
+            </StyledThemeContext.Provider>
+          </ThemeContext.Provider>
+        </LocalizationContext.Provider>,
+        div,
+      );
     });
   };
 
-  destoryFunctions.push(destroy);
+  const update: MessageDialogFunctionUpdate = (updateProps) => {
+    const newProps = typeof updateProps === 'function' ? updateProps(currentProps) : updateProps;
+
+    currentProps = {
+      ...currentProps,
+      ...newProps,
+      visible: undefined,
+      defaultVisible: true,
+    };
+
+    const { onAfterClosed: afterClose } = currentProps;
+
+    currentProps.onAfterClosed = () => {
+      afterClose?.();
+      destroyDOM();
+    };
+
+    render(currentProps);
+  };
+
+  const destroyDOM = () => {
+    const unmountResult = ReactDOM.unmountComponentAtNode(div);
+    if (unmountResult && div.parentNode) {
+      div.parentNode.removeChild(div);
+    }
+    const i = destroyFunctions.indexOf(destroy);
+    if (i > -1) {
+      destroyFunctions.splice(i, 1);
+    }
+  };
+
+  const destroy = () => {
+    const { onAfterClosed: afterClose } = currentProps;
+    render({
+      ...currentProps,
+      visible: false,
+      onAfterClosed: () => {
+        afterClose?.();
+        destroyDOM();
+      },
+    });
+    destroyState = true;
+  };
+
+  destroyFunctions.push(destroy);
+
+  render(currentProps);
 
   return {
     destroy,
-    update: updateWrapper,
+    update,
   };
 };
 
-export const destroyAll = () => {
-  let fn = destoryFunctions.pop();
+export const open = (props: MessageDialogFunctionProps) => method(props);
+export const info = (props: MessageDialogFunctionProps) => method(props, 'info');
+export const success = (props: MessageDialogFunctionProps) => method(props, 'success');
+export const warning = (props: MessageDialogFunctionProps) => method(props, 'warning');
+export const error = (props: MessageDialogFunctionProps) => method(props, 'error');
+export const confirm = (props: MessageDialogFunctionProps) => method(props, 'confirm');
 
+export const destroyAll = () => {
+  let fn = destroyFunctions.pop();
   while (fn) {
     fn();
-    fn = destoryFunctions.pop();
+    fn = destroyFunctions.pop();
   }
 };
-
-export const open = (props: MethodDialogFunctionProps) => _method(props);
-
-export const info = (props: MethodDialogFunctionProps) => _method(props, 'info');
-export const success = (props: MethodDialogFunctionProps) => _method(props, 'success');
-export const error = (props: MethodDialogFunctionProps) => _method(props, 'error');
-export const warning = (props: MethodDialogFunctionProps) => _method(props, 'warning');
-export const confirm = (props: MethodDialogFunctionProps) => _method(props, 'confirm');

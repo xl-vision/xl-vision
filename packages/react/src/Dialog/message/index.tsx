@@ -1,129 +1,99 @@
-import ReactDOM from 'react-dom';
 import React from 'react';
-import { ThemeContext as StyledThemeContext } from '@xl-vision/styled-engine';
-import { isServer } from '../../utils/env';
-import { MessageDialogProps, MessageDialogRef } from './MessageDialog';
-import { voidFn } from '../../utils/function';
-import warning from '../../utils/warning';
-import createMessageDialog, { MessageDialogType } from './createMessageDialog';
-import { Theme, ThemeContext } from '../../ThemeProvider';
-import { LocalizationContext, LocalizationContextProps } from '../../LocalizationProvider';
-import defaultTheme from '../../ThemeProvider/defaultTheme';
-import { locales, defaultLanguage } from '../../locale';
+import {
+  CheckCircleOutlined,
+  CloseCircleOutlined,
+  ExclamationCircleOutlined,
+  InfoCircleOutlined,
+} from '@xl-vision/icons';
+import { isDevelopment } from '../../utils/env';
+import { ThemeContext } from '../../ThemeProvider';
+import MessageDialog, { MessageDialogProps } from './MessageDialog';
+import { LocalizationContext } from '../../LocalizationProvider';
+import Icon from '../../Icon';
+
+export type MessageDialogType = 'success' | 'error' | 'warning' | 'info' | 'confirm';
 
 export * from './MessageDialog';
-export * from './createMessageDialog';
 
-export interface MessageDialogFunctionProps extends MessageDialogProps {
-  onClosed?: (isDestroy?: true) => void;
-  themeContext?: Theme;
-  localizationContext?: LocalizationContextProps;
-}
+const createMessageDialog = (type?: MessageDialogType) => {
+  const Dialog: React.FunctionComponent<MessageDialogProps> = (props) => {
+    const themeContext = React.useContext(ThemeContext);
+    const localizationContext = React.useContext(LocalizationContext);
 
-export type MessageDialogFunctionUpdate = (
-  props:
-    | Partial<MessageDialogFunctionProps>
-    | ((prev: MessageDialogFunctionProps) => Partial<MessageDialogFunctionProps>),
-) => void;
+    const defaultProps: Partial<MessageDialogProps> = React.useMemo(() => {
+      switch (type) {
+        case 'success': {
+          return {
+            icon: (
+              <Icon style={{ color: themeContext.color.themes.primary.color }}>
+                <CheckCircleOutlined />
+              </Icon>
+            ),
+            confirmText: localizationContext.locale.Dialog.messages.successText,
+            prompt: true,
+          };
+        }
+        case 'error': {
+          return {
+            icon: (
+              <Icon style={{ color: themeContext.color.themes.error.color }}>
+                <CloseCircleOutlined />
+              </Icon>
+            ),
+            confirmText: localizationContext.locale.Dialog.messages.errorText,
+            prompt: true,
+          };
+        }
+        case 'warning': {
+          return {
+            icon: (
+              <Icon style={{ color: themeContext.color.themes.warning.color }}>
+                <ExclamationCircleOutlined />
+              </Icon>
+            ),
+            confirmText: localizationContext.locale.Dialog.messages.warningText,
+            prompt: true,
+          };
+        }
+        case 'info': {
+          return {
+            icon: (
+              <Icon style={{ color: themeContext.color.themes.info.color }}>
+                <InfoCircleOutlined />
+              </Icon>
+            ),
+            confirmText: localizationContext.locale.Dialog.messages.infoText,
+            prompt: true,
+          };
+        }
+        case 'confirm': {
+          return {
+            icon: (
+              <Icon style={{ color: themeContext.color.themes.primary.color }}>
+                <ExclamationCircleOutlined />
+              </Icon>
+            ),
+            confirmText: localizationContext.locale.Dialog.messages.confirm.confirmText,
+            cancelText: localizationContext.locale.Dialog.messages.confirm.cancelText,
+          };
+        }
+        default: {
+          return {};
+        }
+      }
+    }, [themeContext, localizationContext]);
 
-export type MessageDialogFunctionReturnType = {
-  destroy: () => void;
-  update: MessageDialogFunctionUpdate;
-};
+    return <MessageDialog {...defaultProps} {...props} />;
+  };
 
-const defaultThemeContext: Theme = defaultTheme;
-
-const defaultLocalizationContext: LocalizationContextProps = {
-  locale: locales[defaultLanguage],
-  language: defaultLanguage,
-};
-
-export default (
-  props: MessageDialogFunctionProps,
-  type?: MessageDialogType,
-): MessageDialogFunctionReturnType => {
-  if (isServer) {
-    return {
-      destroy: voidFn,
-      update: voidFn,
-    };
+  if (isDevelopment) {
+    const displayName = type
+      ? `${type.replace(/^./, (match) => match.toUpperCase())}Dialog`
+      : 'CustomMessageDialog';
+    Dialog.displayName = displayName;
   }
 
-  const Dialog = createMessageDialog(type);
-
-  const div = document.createElement('div');
-  document.body.appendChild(div);
-
-  let currentProps: MessageDialogFunctionProps = {
-    ...props,
-  };
-
-  let destroyState = false;
-
-  const messgaeDialogRef: {
-    current: MessageDialogRef | null;
-  } = { current: null };
-
-  const render = (renderProps: MessageDialogFunctionProps) => {
-    if (destroyState) {
-      return warning(
-        true,
-        `The dialog instance was destroyed, please do not update or destroy it again.`,
-      );
-    }
-
-    const { localizationContext, themeContext, ...others } = renderProps;
-
-    setTimeout(() => {
-      ReactDOM.render(
-        <LocalizationContext.Provider value={localizationContext || defaultLocalizationContext}>
-          <ThemeContext.Provider value={themeContext || defaultThemeContext}>
-            <StyledThemeContext.Provider value={themeContext || defaultThemeContext}>
-              <Dialog getContainer={null} {...others} ref={messgaeDialogRef} />
-            </StyledThemeContext.Provider>
-          </ThemeContext.Provider>
-        </LocalizationContext.Provider>,
-        div,
-      );
-    });
-  };
-
-  const update: MessageDialogFunctionUpdate = (updateProps) => {
-    const newProps = typeof updateProps === 'function' ? updateProps(currentProps) : updateProps;
-    currentProps = { ...currentProps, ...newProps };
-
-    render(currentProps);
-  };
-
-  const destroyDOM = () => {
-    const unmountResult = ReactDOM.unmountComponentAtNode(div);
-    if (unmountResult && div.parentNode) {
-      div.parentNode.removeChild(div);
-    }
-  };
-
-  const destroy = () => {
-    if (!messgaeDialogRef.current?.visible) {
-      destroyState = true;
-      destroyDOM();
-      return;
-    }
-    const { onClosed } = currentProps;
-    render({
-      ...currentProps,
-      visible: false,
-      onClosed: () => {
-        destroyState = true;
-        onClosed?.(true);
-        destroyDOM();
-      },
-    });
-  };
-
-  render(currentProps);
-
-  return {
-    destroy,
-    update,
-  };
+  return Dialog;
 };
+
+export default createMessageDialog;
