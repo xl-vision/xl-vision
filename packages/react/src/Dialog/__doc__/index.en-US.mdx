@@ -8,6 +8,14 @@ Basic.
 
 :::
 
+:::demo ./Promise.tsx
+
+Delay close
+
+It is suitable for closing after clicking the confirm or cancel button and waiting for the processing to complete.
+
+:::
+
 :::demo ./Prompt.tsx
 
 Prompt Dialog
@@ -67,8 +75,8 @@ In this way, you need to pass in ThemeContext and LocalizationContext, otherwise
 | title | Title | React.ReactNode | - | - | true |
 | children | Dialog content | React.ReactNode | - | - | false |
 | footer | Dialog footer, if pass `null`, footer will be hidden | React.ReactNode | - | - | false |
-| onCancel | Click to cancel the event | ()=>void | - | - | false |
-| onConfirm | Click to confirm event | ()=>void | - | - | false |
+| onCancel | Click to cancel the event | ()=>(void &#x007c; Promise) | - | - | false |
+| onConfirm | Click to confirm event | ()=>(void &#x007c; Promise) | - | - | false |
 | cancelButtonProps | The props of the cancel button, refer to [Button](/Button) | object | - | - | false |
 | confirmButtonProps | The props of the confirm button, refer to [Button](/Button) | object | - | - | false |
 | cancelText | Cancel button text, support `i18n` | string | - | 取消 | false |

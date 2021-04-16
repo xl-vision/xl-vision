@@ -8,6 +8,14 @@
 
 :::
 
+:::demo ./Promise.tsx
+
+延迟关闭
+
+适用于点击确认或者取消按钮后等待处理完成后再关闭。
+
+:::
+
 :::demo ./Prompt.tsx
 
 信息提示
@@ -69,8 +77,8 @@ hooks
 | title | 标题，如果不是`string`类型，需自行添加样式 | React.ReactNode | - | - | true |
 | children | 自定义内容 | React.ReactNode | - | - | false |
 | footer | 自定义页脚操作区，传入`null`隐藏页脚 | React.ReactNode | - | - | false |
-| onCancel | 点击取消事件 | ()=>void | - | - | false |
-| onConfirm | 点击确认事件 | ()=>void | - | - | false |
+| onCancel | 点击取消事件 | ()=>(void &#x007c; Promise) | - | - | false |
+| onConfirm | 点击确认事件 | ()=>(void &#x007c; Promise) | - | - | false |
 | cancelButtonProps | 取消按钮的 props，参考[Button](/Button) | object | - | - | false |
 | confirmButtonProps | 确认按钮的 props，参考[Button](/Button) | object | - | - | false |
 | cancelText | 取消按钮文案，支持`i18n` | string | - | 取消 | false |
