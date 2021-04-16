@@ -21,8 +21,8 @@ export interface DialogProps extends Omit<ModalProps, 'bodyProps' | 'title' | 'c
   cancelButtonProps?: DialogButtonProps;
   confirmText?: string;
   cancelText?: string;
-  onConfirm?: () => void;
-  onCancel?: () => void;
+  onConfirm?: () => void | Promise<void>;
+  onCancel?: () => void | Promise<void>;
 }
 
 const displayName = 'Dialog';
@@ -120,6 +120,8 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
   } = props;
 
   const [visible, setVisible] = usePropChange(defaultVisibleProp, visibleProp, onVisibleChangeProp);
+  const [confirmLoading, setConfirmLoading] = React.useState(false);
+  const [cancelLoading, setCancelLoading] = React.useState(false);
 
   const { clsPrefix } = React.useContext(ThemeContext);
 
@@ -131,12 +133,36 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
   }, [clsPrefix]);
 
   const handleConfirm = useEventCallback(() => {
-    onConfirm?.();
+    if (onConfirm) {
+      const p = onConfirm();
+      if (p && p.then) {
+        setConfirmLoading(true);
+        p.then(() => {
+          setVisible(false);
+          setConfirmLoading(false);
+        }).catch(() => {
+          setConfirmLoading(false);
+        });
+        return;
+      }
+    }
     setVisible(false);
   });
 
   const handleCancel = useEventCallback(() => {
-    onCancel?.();
+    if (onCancel) {
+      const p = onCancel();
+      if (p && p.then) {
+        setCancelLoading(true);
+        p.then(() => {
+          setVisible(false);
+          setCancelLoading(false);
+        }).catch(() => {
+          setCancelLoading(false);
+        });
+        return;
+      }
+    }
     setVisible(false);
   });
 
@@ -151,12 +177,24 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
     <DialogActions>
       {!prompt && (
         /** @ts-ignore */
-        <Button theme='primary' variant='text' {...cancelButtonProps} onClick={handleCancel}>
+        <Button
+          theme='primary'
+          variant='text'
+          {...cancelButtonProps}
+          loading={cancelLoading}
+          onClick={handleCancel}
+        >
           {cancelText}
         </Button>
       )}
       {/** @ts-ignore */}
-      <Button theme='primary' variant='text' {...confirmButtonProps} onClick={handleConfirm}>
+      <Button
+        theme='primary'
+        variant='text'
+        {...confirmButtonProps}
+        loading={confirmLoading}
+        onClick={handleConfirm}
+      >
         {confirmText}
       </Button>
     </DialogActions>
