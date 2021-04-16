@@ -363,11 +363,13 @@ exports[`Button test basic render 1`] = `
   padding: 0;
   line-height: 0;
   font-size: 1.4em;
+  vertical-align: middle;
   margin-left: -2px;
   margin-right: 2px;
 }
 
 .c6 svg {
+  line-height: 1;
   vertical-align: middle;
 }
 
@@ -378,9 +380,11 @@ exports[`Button test basic render 1`] = `
   padding: 0;
   line-height: 0;
   font-size: 1.4em;
+  vertical-align: middle;
 }
 
 .c10 svg {
+  line-height: 1;
   vertical-align: middle;
 }
 
