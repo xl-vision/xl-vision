@@ -70,7 +70,7 @@ const ButtonRoot = styled(BaseButton, {
   const styles: CSSObject = {
     transition: transition.standard('all'),
     borderRadius: '4px',
-    // minWidth: icon ? '' : '64px',
+    minWidth: icon ? '' : '64px',
     ...typography.button,
   };
 

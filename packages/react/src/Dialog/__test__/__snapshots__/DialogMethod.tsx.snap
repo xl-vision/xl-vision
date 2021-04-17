@@ -141,6 +141,7 @@ exports[`DialogMethod test confirm 1`] = `
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -513,6 +514,7 @@ exports[`DialogMethod test error 1`] = `
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -869,6 +871,7 @@ exports[`DialogMethod test info 1`] = `
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -1209,6 +1212,7 @@ exports[`DialogMethod test method 1`] = `
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -1553,6 +1557,7 @@ exports[`DialogMethod test success 1`] = `
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -1909,6 +1914,7 @@ exports[`DialogMethod test warning 1`] = `
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
