@@ -17,27 +17,27 @@ export type ThemeColors = {
 const themes: ThemeColors = {
   primary: {
     light: indigo[500],
-    dark: indigo[700],
+    dark: indigo[200],
   },
   secondary: {
-    light: pink.A400,
-    dark: pink.A700,
+    light: pink[500],
+    dark: pink[200],
   },
   error: {
     light: red[500],
-    dark: red[700],
+    dark: red[200],
   },
   warning: {
     light: orange[500],
-    dark: orange[700],
+    dark: orange[200],
   },
   info: {
     light: blue[500],
-    dark: blue[700],
+    dark: blue[200],
   },
   success: {
     light: green[500],
-    dark: green[700],
+    dark: green[200],
   },
 };
 

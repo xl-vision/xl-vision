@@ -395,6 +395,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -426,6 +427,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -457,6 +459,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -469,18 +472,18 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #f50057;
+  background-color: #e91e63;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c6:hover {
-  background-color: rgba(237,2,85,1);
+  background-color: rgba(226,31,97,1);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c6:focus {
-  background-color: rgba(221,6,82,1);
+  background-color: rgba(211,32,93,1);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -488,6 +491,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -519,6 +523,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 36.5px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -581,6 +586,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -609,6 +615,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -637,6 +644,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -649,22 +657,23 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
-  color: #f50057;
+  color: #e91e63;
   padding: 6px 16px;
 }
 
 .c15:hover {
-  background-color: rgba(245,0,87,0.04);
+  background-color: rgba(233,30,99,0.04);
 }
 
 .c15:focus {
-  background-color: rgba(245,0,87,0.12);
+  background-color: rgba(233,30,99,0.12);
 }
 
 .c16 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -693,6 +702,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 36.5px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -721,6 +731,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -750,6 +761,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -779,6 +791,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -791,23 +804,24 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
-  color: #f50057;
-  border: 1px solid rgba(245,0,87,0.5);
+  color: #e91e63;
+  border: 1px solid rgba(233,30,99,0.5);
   padding: 5px 15px;
 }
 
 .c20:hover {
-  background-color: rgba(245,0,87,0.04);
+  background-color: rgba(233,30,99,0.04);
 }
 
 .c20:focus {
-  background-color: rgba(245,0,87,0.12);
+  background-color: rgba(233,30,99,0.12);
 }
 
 .c21 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -837,6 +851,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 36.5px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -1395,6 +1410,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -1423,6 +1439,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -1451,6 +1468,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -1463,22 +1481,23 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #f50057;
+  background-color: #e91e63;
   padding: 6px 16px;
 }
 
 .c6:hover {
-  background-color: rgba(237,2,85,1);
+  background-color: rgba(226,31,97,1);
 }
 
 .c6:focus {
-  background-color: rgba(221,6,82,1);
+  background-color: rgba(211,32,93,1);
 }
 
 .c7 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -1507,6 +1526,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -1709,6 +1729,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -1740,6 +1761,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -1768,6 +1790,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -1780,18 +1803,18 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #f50057;
+  background-color: #e91e63;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c6:hover {
-  background-color: rgba(237,2,85,1);
+  background-color: rgba(226,31,97,1);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c6:focus {
-  background-color: rgba(221,6,82,1);
+  background-color: rgba(211,32,93,1);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -1799,6 +1822,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -1827,6 +1851,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -2046,6 +2071,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -2067,6 +2093,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -2088,6 +2115,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -2100,7 +2128,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #f50057;
+  background-color: #e91e63;
   opacity: 0.38;
   padding: 6px 16px;
 }
@@ -2109,6 +2137,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -2130,6 +2159,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 36.5px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -2444,6 +2474,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -2475,6 +2506,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -2503,6 +2535,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -2515,18 +2548,18 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #f50057;
+  background-color: #e91e63;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c6:hover {
-  background-color: rgba(237,2,85,1);
+  background-color: rgba(226,31,97,1);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c6:focus {
-  background-color: rgba(221,6,82,1);
+  background-color: rgba(211,32,93,1);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -2534,6 +2567,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -2562,6 +2596,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -2591,6 +2626,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -2826,6 +2862,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -2857,6 +2894,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -2885,6 +2923,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -2897,18 +2936,18 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #f50057;
+  background-color: #e91e63;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c8:hover {
-  background-color: rgba(237,2,85,1);
+  background-color: rgba(226,31,97,1);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c8:focus {
-  background-color: rgba(221,6,82,1);
+  background-color: rgba(211,32,93,1);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -2916,6 +2955,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -2944,6 +2984,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -3192,6 +3233,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -3224,6 +3266,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -3253,6 +3296,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -3266,23 +3310,24 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   width: 100%;
   background-color: transparent;
-  color: #f50057;
-  border: 1px solid rgba(245,0,87,0.5);
+  color: #e91e63;
+  border: 1px solid rgba(233,30,99,0.5);
   padding: 5px 15px;
 }
 
 .c6:hover {
-  background-color: rgba(245,0,87,0.04);
+  background-color: rgba(233,30,99,0.04);
 }
 
 .c6:focus {
-  background-color: rgba(245,0,87,0.12);
+  background-color: rgba(233,30,99,0.12);
 }
 
 .c7 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 36.5px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -3315,6 +3360,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -3566,6 +3612,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -3597,6 +3644,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -3625,6 +3673,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -3637,23 +3686,24 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
-  color: #f50057;
-  border: 1px solid rgba(245,0,87,0.5);
+  color: #e91e63;
+  border: 1px solid rgba(233,30,99,0.5);
   padding: 5px 15px;
 }
 
 .c6:hover {
-  background-color: rgba(245,0,87,0.04);
+  background-color: rgba(233,30,99,0.04);
 }
 
 .c6:focus {
-  background-color: rgba(245,0,87,0.12);
+  background-color: rgba(233,30,99,0.12);
 }
 
 .c7 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -3682,6 +3732,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -3713,6 +3764,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 36.5px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -4080,6 +4132,7 @@ exports[`Demo renders ./packages/react/src/CSSTransition/__doc__/Advance.tsx cor
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -4213,6 +4266,7 @@ exports[`Demo renders ./packages/react/src/CSSTransition/__doc__/Basic.tsx corre
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -4346,6 +4400,7 @@ exports[`Demo renders ./packages/react/src/CollapseTransition/__doc__/Basic.tsx 
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -4481,6 +4536,7 @@ exports[`Demo renders ./packages/react/src/CollapseTransition/__doc__/Horizontal
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -4616,6 +4672,7 @@ exports[`Demo renders ./packages/react/src/Dialog/__doc__/Basic.tsx correctly 1`
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -4747,6 +4804,7 @@ exports[`Demo renders ./packages/react/src/Dialog/__doc__/Custom.tsx correctly 1
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -4878,6 +4936,7 @@ exports[`Demo renders ./packages/react/src/Dialog/__doc__/Methods.tsx correctly 
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -5009,6 +5068,7 @@ exports[`Demo renders ./packages/react/src/Dialog/__doc__/Promise.tsx correctly 
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -5140,6 +5200,7 @@ exports[`Demo renders ./packages/react/src/Dialog/__doc__/Prompt.tsx correctly 1
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -5272,6 +5333,7 @@ Array [
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -5400,6 +5462,7 @@ Array [
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -5528,6 +5591,7 @@ Array [
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -5656,6 +5720,7 @@ Array [
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -5784,6 +5849,7 @@ Array [
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -5917,6 +5983,7 @@ Array [
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -6045,6 +6112,7 @@ Array [
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -6173,6 +6241,7 @@ Array [
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -6301,6 +6370,7 @@ Array [
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -6429,6 +6499,7 @@ Array [
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -6561,6 +6632,7 @@ exports[`Demo renders ./packages/react/src/Dialog/__doc__/Width.tsx correctly 1`
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -6692,6 +6764,7 @@ exports[`Demo renders ./packages/react/src/Dropdown/__doc__/Advance.tsx correctl
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -6823,6 +6896,7 @@ exports[`Demo renders ./packages/react/src/Dropdown/__doc__/Basic.tsx correctly 
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -6954,6 +7028,7 @@ exports[`Demo renders ./packages/react/src/Dropdown/__doc__/Cascade.tsx correctl
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -7197,6 +7272,7 @@ exports[`Demo renders ./packages/react/src/Icon/__doc__/IconSearch.tsx correctly
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -7228,6 +7304,7 @@ exports[`Demo renders ./packages/react/src/Icon/__doc__/IconSearch.tsx correctly
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -14449,6 +14526,7 @@ exports[`Demo renders ./packages/react/src/Modal/__doc__/Basic.tsx correctly 1`]
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -14580,6 +14658,7 @@ exports[`Demo renders ./packages/react/src/Modal/__doc__/EscClosable.tsx correct
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -14711,6 +14790,7 @@ exports[`Demo renders ./packages/react/src/Modal/__doc__/HideMask.tsx correctly 
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -14842,6 +14922,7 @@ exports[`Demo renders ./packages/react/src/Modal/__doc__/MaskClosable.tsx correc
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -14973,6 +15054,7 @@ exports[`Demo renders ./packages/react/src/Modal/__doc__/Nest.tsx correctly 1`] 
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -15104,6 +15186,7 @@ exports[`Demo renders ./packages/react/src/Popconfirm/__doc__/Basic.tsx correctl
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -15237,6 +15320,7 @@ exports[`Demo renders ./packages/react/src/Popconfirm/__doc__/Promise.tsx correc
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -15370,6 +15454,7 @@ exports[`Demo renders ./packages/react/src/Popover/__doc__/Basic.tsx correctly 1
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -15729,6 +15814,7 @@ exports[`Demo renders ./packages/react/src/Popover/__doc__/ClickInner.tsx correc
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -15860,6 +15946,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Arrow.tsx correctly 1`
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -16064,6 +16151,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -16486,6 +16574,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -16731,6 +16820,7 @@ exports[`Demo renders ./packages/react/src/Portal/__doc__/Basic.tsx correctly 1`
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -16779,7 +16869,7 @@ exports[`Demo renders ./packages/react/src/Portal/__doc__/Basic.tsx correctly 1`
 
 .c0 .container2 {
   margin-top: 16px;
-  background-color: #f50057;
+  background-color: #e91e63;
 }
 
 <div
@@ -18256,6 +18346,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Arrow.tsx correctly 1
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -18387,6 +18478,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -18746,6 +18838,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Colors.tsx correctly 
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -18934,6 +19027,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/MaxWidth.tsx correctl
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -19074,6 +19168,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Rich.tsx correctly 1`
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -19214,6 +19309,7 @@ exports[`Demo renders ./packages/react/src/Transition/__doc__/Appear.tsx correct
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -19385,6 +19481,7 @@ exports[`Demo renders ./packages/react/src/Transition/__doc__/Basic.tsx correctl
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -19518,6 +19615,7 @@ exports[`Demo renders ./packages/react/src/TransitionGroup/__doc__/Basic.tsx cor
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;

@@ -173,11 +173,19 @@ const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
       </div>
       <div className={`${rootClassName}__footer`}>
         {/** @ts-ignore */}
-        <Button size='small' variant='text' {...cancelButtonProps} onClick={handleCancel}>
+        <Button
+          style={{ minWidth: 0 }}
+          size='small'
+          theme='primary'
+          variant='text'
+          {...cancelButtonProps}
+          onClick={handleCancel}
+        >
           {cancelText}
         </Button>
         {/** @ts-ignore */}
         <Button
+          style={{ minWidth: 0 }}
           size='small'
           theme='primary'
           variant='text'

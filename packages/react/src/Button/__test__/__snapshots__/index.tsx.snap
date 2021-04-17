@@ -164,6 +164,7 @@ exports[`Button test basic render 1`] = `
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -195,6 +196,7 @@ exports[`Button test basic render 1`] = `
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -226,6 +228,7 @@ exports[`Button test basic render 1`] = `
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -286,6 +289,7 @@ exports[`Button test basic render 1`] = `
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -318,6 +322,7 @@ exports[`Button test basic render 1`] = `
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
+  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
