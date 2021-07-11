@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1-alpha.1](https://github.com/xl-vision/xl-vision/compare/v0.1.1-alpha.0...v0.1.1-alpha.1) (2021-07-11)
+
+
+### Bug Fixes
+
+* **Dialog:** fix the problem that the title is not vertically centered ([3a27f8f](https://github.com/xl-vision/xl-vision/commit/3a27f8fa531bf02d1b139315dcf75d10006d29e5))
+
+
+
+
+
+
 ## [0.1.1-alpha.0](https://github.com/xl-vision/xl-vision/compare/v0.1.0...v0.1.1-alpha.0) (2021-07-11)
 
 
