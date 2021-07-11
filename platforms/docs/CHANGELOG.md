@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1-alpha.0](https://github.com/xl-vision/xl-vision/compare/v0.1.0...v0.1.1-alpha.0) (2021-07-11)
+
+
+### Features
+
+* **Dialog:** add Dialog ([#13](https://github.com/xl-vision/xl-vision/issues/13)) ([cac925e](https://github.com/xl-vision/xl-vision/commit/cac925e83719f70d61e07478ba731704e8dce39b))
+* **Icon:** update icon svgs ([d073aab](https://github.com/xl-vision/xl-vision/commit/d073aab9b959de4956f5712d9b4da4b08c5774e9))
+* **Modal:** add Modal ([a0702e1](https://github.com/xl-vision/xl-vision/commit/a0702e116aaab753c86554651b683bf6394f3cca)), closes [#11](https://github.com/xl-vision/xl-vision/issues/11)
+
+
+
+
+
+
 # 0.1.0 (2021-03-21)
 
 

@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1-alpha.0](https://github.com/xl-vision/xl-vision/compare/v0.1.0...v0.1.1-alpha.0) (2021-07-11)
+
+
+### Bug Fixes
+
+* fix peer dependences ([b38aa85](https://github.com/xl-vision/xl-vision/commit/b38aa85ae72962d797f76fba3f93d8a223ab8628))
+* **Button:** fix button height change when state changes to loading ([#19](https://github.com/xl-vision/xl-vision/issues/19)) ([2d6a21e](https://github.com/xl-vision/xl-vision/commit/2d6a21efb61ead4fe8a5a00c3492ae81e4107c1d))
+* **Dialog:** bug fix ([f72c197](https://github.com/xl-vision/xl-vision/commit/f72c1976a251a819f37c0d1993e343192dbb93a5))
+* **Dialog:** fix MethodDialog icon wrong position ([2a7baa1](https://github.com/xl-vision/xl-vision/commit/2a7baa1822aa36b8e0a4024c9673432c5d920b95))
+* **Modal:** bug fix ([58f8602](https://github.com/xl-vision/xl-vision/commit/58f8602a8286f8b2038452bc4f7dae9f27b2d9bf))
+* **Modal:** bug fix ([1195c72](https://github.com/xl-vision/xl-vision/commit/1195c720ab4dd9398f604cadaf64bf2b85147715))
+* **Modal:** fix transform origin error ([7b02fa2](https://github.com/xl-vision/xl-vision/commit/7b02fa24dc0d6e3dedb754ef5bf2dd845ae3aa2c))
+* **Popper:** fix click outside event does not trigger sometimes ([a50d7f8](https://github.com/xl-vision/xl-vision/commit/a50d7f8345ca3803cfdc8439e40c47dc5d9bce16))
+
+
+### Features
+
+* update theme color ([650f9e8](https://github.com/xl-vision/xl-vision/commit/650f9e8da8f0972e267fd3e229198686b56f76fb))
+* **Dialog:** add Dialog ([#13](https://github.com/xl-vision/xl-vision/issues/13)) ([cac925e](https://github.com/xl-vision/xl-vision/commit/cac925e83719f70d61e07478ba731704e8dce39b))
+* **Dialog:** add Dialog ([#14](https://github.com/xl-vision/xl-vision/issues/14)) ([8b12b4b](https://github.com/xl-vision/xl-vision/commit/8b12b4bc36dfa5a0dc5756f9ee1d47e524d04931))
+* **Dialog:** method and useDialog support callback on update function ([f3d6f3f](https://github.com/xl-vision/xl-vision/commit/f3d6f3f774f3175433fbd0b5e51a5bdd3c5e8a86))
+* **Dialog:** refactor methods and hooks, improve documentation and test cases ([#15](https://github.com/xl-vision/xl-vision/issues/15)) ([a0226ef](https://github.com/xl-vision/xl-vision/commit/a0226efcabe687cdacbc28a168a4ddabab14efa5))
+* **Dialog:** support promise ([#18](https://github.com/xl-vision/xl-vision/issues/18)) ([1e285f6](https://github.com/xl-vision/xl-vision/commit/1e285f631af3b72a2fbb67ec5ee1c1b518c5f57f))
+* **Dialog:** the position of the button adapts to the width of the button ([06d80a4](https://github.com/xl-vision/xl-vision/commit/06d80a46310d97eb4e262127ae68852ffd7e874e))
+* **Dropdown:** ehanced a11y ([9c8163a](https://github.com/xl-vision/xl-vision/commit/9c8163a3989111731c90f211eed3c81eec0706b6))
+* **Icon:** update icon svgs ([d073aab](https://github.com/xl-vision/xl-vision/commit/d073aab9b959de4956f5712d9b4da4b08c5774e9))
+* **Modal:** add Modal ([a0702e1](https://github.com/xl-vision/xl-vision/commit/a0702e116aaab753c86554651b683bf6394f3cca)), closes [#11](https://github.com/xl-vision/xl-vision/issues/11)
+
+
+
+
+
+
 # 0.1.0 (2021-03-21)
 
 
