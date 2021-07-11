@@ -1,12 +1,17 @@
 import React from 'react';
 import { Popper, Button, styled } from '@xl-vision/react';
 
-const Wrapper = styled('div')(({ theme }) => {
+const Wrapper = styled('div')(() => {
   return {
     button: {
       marginRight: '16px',
       marginBottom: '16px',
     },
+  };
+});
+
+const PopperRoot = styled(Popper)(({ theme }) => {
+  return {
     '.popup': {
       borderRadius: '3px',
       backgroundColor: theme.color.grey[300],
@@ -33,21 +38,19 @@ const Wrapper = styled('div')(({ theme }) => {
     },
     '.slide': {
       '&-enter-active, &-leave-active': {
-        transition: theme.transition.standard('transform'),
+        transition: theme.transition.standard('all'),
         '&[data-placement^="top"]': {
-          transform: 'scaleY(1)',
+          transformOrigin: '0 100%',
         },
         '&[data-placement^="bottom"]': {
-          transform: 'scaleY(1)',
+          transformOrigin: '0 0',
         },
       },
       '&-enter-from,&-leave-to': {
-        '&[data-placement^="top"]': {
-          transform: 'scaleY(0)',
-        },
-        '&[data-placement^="bottom"]': {
-          transform: 'scaleY(0)',
-        },
+        transform: 'scaleY(0)',
+      },
+      '&-enter-to,&-leave-from': {
+        transform: 'scaleY(1)',
       },
     },
   };
@@ -58,7 +61,7 @@ const popup = <span className='popup'>This is popper</span>;
 export default () => {
   return (
     <Wrapper>
-      <Popper
+      <PopperRoot
         transitionClasses='slide'
         placement='top'
         popup={popup}
@@ -66,7 +69,7 @@ export default () => {
         offset={10}
       >
         <Button theme='primary'>hover</Button>
-      </Popper>
+      </PopperRoot>
     </Wrapper>
   );
 };

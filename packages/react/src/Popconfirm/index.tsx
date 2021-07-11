@@ -124,14 +124,12 @@ const defaultIcon = (
   </Icon>
 );
 
-const defaultGetPopupContainer = () => document.body;
-
 const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
   const { clsPrefix } = React.useContext(ThemeContext);
   const { locale } = React.useContext(LocalizationContext);
 
   const {
-    getPopupContainer = defaultGetPopupContainer,
+    getPopupContainer,
     className,
     offset = 12,
     trigger = 'click',
@@ -217,7 +215,7 @@ const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
       arrow={showArrow ? arrow : undefined}
       popup={popup}
       getPopupContainer={getPopupContainer}
-      transitionClasses={clsx(rootClassName, transitionClassName)}
+      transitionClasses={transitionClassName || rootClassName}
     />
   );
 });
