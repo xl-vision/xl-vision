@@ -15,9 +15,9 @@
     "@types/react-dom": "^17.0.0",
     "@types/react-router-dom": "^5.1.7",
     "@types/styled-components": "^5.1.7",
-    "@xl-vision/icons": "0.1.0",
-    "@xl-vision/react": "0.1.0",
-    "@xl-vision/styled-engine": "0.1.0",
+    "@xl-vision/icons": "0.1.1-alpha.0",
+    "@xl-vision/react": "0.1.1-alpha.0",
+    "@xl-vision/styled-engine": "0.1.1-alpha.0",
     "clsx": "^1.1.1",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",
@@ -58,5 +58,5 @@
     "webpack-cli": "^4.4.0",
     "webpack-dev-server": "^3.11.2"
   },
-  "version": "0.1.0"
+  "version": "0.1.1-alpha.0"
 }
