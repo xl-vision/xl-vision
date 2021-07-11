@@ -107,13 +107,11 @@ const PopoverContent = styled('div', {
   };
 });
 
-const defaultGetPopupContainer = () => document.body;
-
 const Popover = React.forwardRef<unknown, PopoverProps>((props, ref) => {
   const {
     title,
     content,
-    getPopupContainer = defaultGetPopupContainer,
+    getPopupContainer,
     className,
     transitionClassName,
     offset = 12,
@@ -149,7 +147,7 @@ const Popover = React.forwardRef<unknown, PopoverProps>((props, ref) => {
       arrow={showArrow ? arrow : undefined}
       popup={popup}
       getPopupContainer={getPopupContainer}
-      transitionClasses={clsx(rootClassName, transitionClassName)}
+      transitionClasses={transitionClassName || rootClassName}
     />
   );
 });

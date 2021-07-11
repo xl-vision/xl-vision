@@ -112,8 +112,6 @@ const TooltipArrow = styled('div', {
   };
 });
 
-const defaultGetPopupContainer = () => document.body;
-
 const defaultTrigger: Array<TooltipTrigger> = ['hover', 'touch'];
 
 const TIME_DELAY = 300;
@@ -123,7 +121,7 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
 
   const {
     content,
-    getPopupContainer = defaultGetPopupContainer,
+    getPopupContainer,
     className,
     transitionClassName,
     bgColor,
@@ -267,7 +265,7 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
       popup={popup}
       arrow={showArrow ? arrow : undefined}
       getPopupContainer={getPopupContainer}
-      transitionClasses={clsx(rootClassName, transitionClassName)}
+      transitionClasses={transitionClassName || rootClassName}
     >
       {React.cloneElement(child, {
         onTouchStart: handleReferenceTouchStart,

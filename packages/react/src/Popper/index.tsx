@@ -62,11 +62,13 @@ const displayName = 'Popper';
 
 const TIME_DELAY = 200;
 
+const defaultGetPopupContainer = () => document.body;
+
 const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
   const {
     children,
     popup,
-    getPopupContainer,
+    getPopupContainer = defaultGetPopupContainer,
     transitionClasses,
     trigger = 'hover',
     disablePopupEnter,
@@ -481,7 +483,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
           transitionClasses={transitionClasses}
           beforeEnter={beforeEnter}
           afterLeave={afterLeave}
-          mountOnEnter={true}
+          mountOnEnter={mountOnShow}
         >
           <div
             ref={popupInnerNodeRef}

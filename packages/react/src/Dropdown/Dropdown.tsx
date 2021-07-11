@@ -49,8 +49,6 @@ const DropdownPopup = styled('ul', {
   };
 });
 
-const defaultGetPopupContainer = () => document.body;
-
 const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
   const {
     menus,
@@ -62,7 +60,7 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) =>
     visible: visibleProp,
     defaultVisible = false,
     onVisibleChange,
-    getPopupContainer = defaultGetPopupContainer,
+    getPopupContainer,
     className,
     ...others
   } = props;
@@ -120,7 +118,7 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) =>
       popup={popup}
       offset={offset}
       getPopupContainer={getPopupContainer}
-      transitionClasses={clsx(rootClassName, transitionClassName)}
+      transitionClasses={transitionClassName || rootClassName}
     >
       {children}
     </DropdownRoot>
