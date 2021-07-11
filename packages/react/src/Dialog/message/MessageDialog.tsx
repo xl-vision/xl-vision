@@ -24,9 +24,6 @@ const MessageDialogHeader = styled('h6', {
   return {
     ...typography.h6,
     margin: 0,
-    display: 'flex',
-    alignItems: 'flex-start',
-    // alignItems: 'center',
   };
 });
 
@@ -35,9 +32,7 @@ const MessageDialogTitle = styled('span', {
   slot: 'Title',
 })(() => {
   return {
-    display: 'inline-block',
-    // display: 'flex',
-    // alignItems: 'center',
+    verticalAlign: 'middle',
   };
 });
 

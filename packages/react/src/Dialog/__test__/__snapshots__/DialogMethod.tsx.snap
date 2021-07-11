@@ -258,18 +258,10 @@ exports[`DialogMethod test confirm 1`] = `
   text-transform: inherit;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   margin: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
 }
 
 .c6 {
-  display: inline-block;
+  vertical-align: middle;
 }
 
 .c4 {
@@ -631,18 +623,10 @@ exports[`DialogMethod test error 1`] = `
   text-transform: inherit;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   margin: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
 }
 
 .c6 {
-  display: inline-block;
+  vertical-align: middle;
 }
 
 .c4 {
@@ -988,18 +972,10 @@ exports[`DialogMethod test info 1`] = `
   text-transform: inherit;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   margin: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
 }
 
 .c6 {
-  display: inline-block;
+  vertical-align: middle;
 }
 
 .c4 {
@@ -1329,18 +1305,10 @@ exports[`DialogMethod test method 1`] = `
   text-transform: inherit;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   margin: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
 }
 
 .c4 {
-  display: inline-block;
+  vertical-align: middle;
 }
 
 <div
@@ -1674,18 +1642,10 @@ exports[`DialogMethod test success 1`] = `
   text-transform: inherit;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   margin: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
 }
 
 .c6 {
-  display: inline-block;
+  vertical-align: middle;
 }
 
 .c4 {
@@ -2031,18 +1991,10 @@ exports[`DialogMethod test warning 1`] = `
   text-transform: inherit;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   margin: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
 }
 
 .c6 {
-  display: inline-block;
+  vertical-align: middle;
 }
 
 .c4 {
