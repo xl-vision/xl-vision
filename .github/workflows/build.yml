@@ -25,13 +25,13 @@ jobs:
             ${{ runner.os }}-
 
       - name: install dependencies
-        run: npm install && npm run bootstrap -- --no-ci
+        run: npm ci && npm run bootstrap -- --no-ci
 
       - name: lint
         uses: bradennapier/eslint-plus-action@master
-        with: 
+        with:
           reportWarningsAsErrors: true
-          
+
 
   test:
     runs-on: ubuntu-latest
@@ -53,7 +53,7 @@ jobs:
             ${{ runner.os }}-
 
       - name: install dependencies
-        run: npm install && npm run bootstrap -- --no-ci
+        run: npm ci && npm run bootstrap -- --no-ci
 
       - name: test
         run: npm run test -- --coverage --bail
@@ -86,7 +86,7 @@ jobs:
             ${{ runner.os }}-
 
       - name: install dependencies
-        run: npm install && npm run bootstrap -- --no-ci
+        run: npm ci && npm run bootstrap -- --no-ci
 
       - name: build
         run: npm run build
@@ -111,7 +111,7 @@ jobs:
             ${{ runner.os }}-
 
       - name: install dependencies
-        run: npm install && npm run bootstrap -- --no-ci
+        run: npm ci && npm run bootstrap -- --no-ci
 
       - name: docs
         run: npm run docs
