@@ -45,7 +45,7 @@ $ npm run bootstrap
 $ npm run dev
 ```
 
-Open your browser and visit http://localhost:3000.
+Open your browser and visit http://localhost:8000.
 
 # :handshake: Contributing And Issue
 

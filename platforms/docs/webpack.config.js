@@ -10,6 +10,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const path = require('path');
+const portfinder = require('portfinder');
+const { merge } = require('webpack-merge');
 
 const packageResolve = (packageName) => path.join(__dirname, '../../packages', packageName, 'src');
 
@@ -130,7 +132,7 @@ const getStyleRules = (test, moduleTest, cssOptions, preProcessor) => {
   return [rule1, rule2];
 };
 
-module.exports = {
+const defaultConfig = {
   mode: isProd ? 'production' : 'development',
   bail: isProd,
   devtool: isProd ? 'source-map' : 'cheap-module-source-map',
@@ -347,4 +349,13 @@ module.exports = {
     host: '0.0.0.0',
     hot: true,
   },
+};
+
+module.exports = async () => {
+  const port = await portfinder.getPortPromise();
+  return merge(defaultConfig, {
+    devServer: {
+      port,
+    },
+  });
 };
