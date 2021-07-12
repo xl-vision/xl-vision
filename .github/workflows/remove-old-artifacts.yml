@@ -4,6 +4,8 @@ on:
   schedule:
     # Every day at 1am
     - cron: '0 1 * * *'
+  push:
+  pull_request:
 
 jobs:
   remove-old-artifacts:
