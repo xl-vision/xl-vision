@@ -87,3 +87,5 @@ export type {
   MethodDialogHookUpdate,
   MessageDialogHookReturnType,
 } from './Dialog';
+export { default as Avatar } from './Avatar';
+export type { AvatarGroupProps, AvatarProps, AvatarShape, AvatarSize } from './Avatar';
