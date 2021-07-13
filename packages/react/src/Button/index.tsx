@@ -237,6 +237,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
     variant = 'contained',
     long,
     round,
+    className,
     ...others
   } = props;
 
@@ -273,6 +274,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
       [`${rootClassName}--round`]: round,
       [`${rootClassName}--icon`]: icon,
     },
+    className,
   );
 
   const prefixClassName = `${rootClassName}__prefix`;
@@ -358,6 +360,7 @@ if (isDevelopment) {
     prefixIcon: PropTypes.element,
     suffixIcon: PropTypes.element,
     variant: PropTypes.oneOf<ButtonVariant>(['contained', 'outlined', 'text']),
+    className: PropTypes.string,
   };
 }
 

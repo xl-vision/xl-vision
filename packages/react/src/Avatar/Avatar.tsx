@@ -1,6 +1,8 @@
 import { CSSObject } from '@xl-vision/styled-engine-types';
+import clsx from 'clsx';
 import React from 'react';
 import { styled } from '../styles';
+import ThemeContext from '../ThemeProvider/ThemeContext';
 import { isDevelopment } from '../utils/env';
 
 export type AvatarShape = 'circle' | 'square';
@@ -15,38 +17,44 @@ export type AvatarProps = React.HTMLAttributes<HTMLSpanElement> & {
 
 const displayName = 'Avatar';
 
-const AvatarRoot = styled('span')<{ shape: AvatarShape; size?: AvatarSize }>(
-  ({ theme, styleProps }) => {
-    const { shape, size } = styleProps;
-    const { color } = theme;
-    const style: CSSObject = {
-      display: 'inline-block',
-      boxSizing: 'border-box',
-      textAlign: 'center',
-      verticalAlign: 'middle',
-      overflow: 'hidden',
-      whiteSpace: 'nowrap',
-      color: color.background.paper,
-      backgroundColor: color.text.icon,
-    };
+const AvatarRoot = styled('span', {
+  name: 'Avatar',
+  slot: 'Root',
+})<{ shape: AvatarShape; size?: AvatarSize }>(({ theme, styleProps }) => {
+  const { shape, size } = styleProps;
+  const { color } = theme;
+  const style: CSSObject = {
+    display: 'inline-block',
+    boxSizing: 'border-box',
+    textAlign: 'center',
+    verticalAlign: 'middle',
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+    color: color.background.paper,
+    backgroundColor: color.text.icon,
+  };
 
-    if (shape === 'circle') {
-      style.borderRadius = '50%';
-    }
+  if (shape === 'circle') {
+    style.borderRadius = '50%';
+  }
 
-    if (size) {
-      const sizeNumber = size === 'large' ? 40 : size === 'default' ? 32 : 24;
-      style.width = sizeNumber;
-      style.height = sizeNumber;
-      style.lineHeight = `${sizeNumber}px`;
-    }
+  if (size) {
+    const sizeNumber = size === 'large' ? 40 : size === 'default' ? 32 : 24;
+    style.width = sizeNumber;
+    style.height = sizeNumber;
+    style.lineHeight = `${sizeNumber}px`;
+  }
 
-    return style;
-  },
-);
+  return style;
+});
 
 const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
-  const { children, icon, shape = 'circle', size = 'default', src, ...others } = props;
+  const { children, icon, shape = 'circle', size = 'default', src, className, ...others } = props;
+  const { clsPrefix } = React.useContext(ThemeContext);
+
+  const rootClassName = `${clsPrefix}-button`;
+
+  const rootClasses = clsx(rootClassName, className);
 
   const rootStyle = React.useMemo(() => {
     if (typeof size === 'number') {
@@ -65,6 +73,7 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
   return (
     <AvatarRoot
       {...others}
+      className={rootClasses}
       styleProps={{
         shape,
         size: rootSize,
