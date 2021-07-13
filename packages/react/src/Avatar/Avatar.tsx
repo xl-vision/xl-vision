@@ -18,7 +18,7 @@ export type AvatarProps = React.HTMLAttributes<HTMLSpanElement> & {
 const displayName = 'Avatar';
 
 const AvatarRoot = styled('span', {
-  name: 'Avatar',
+  name: displayName,
   slot: 'Root',
 })<{ shape: AvatarShape; size?: AvatarSize }>(({ theme, styleProps }) => {
   const { shape, size } = styleProps;
