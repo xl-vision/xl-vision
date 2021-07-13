@@ -160,11 +160,6 @@ const routes: Array<Route> = [
         path: '/Modal',
         component: () => import('@xl-vision/react/Modal/__doc__/index.zh-CN.mdx'),
       },
-      {
-        name: 'ResizeObserver',
-        path: '/ResizeObserver',
-        component: () => import('@xl-vision/react/ResizeObserver/__doc__/index.zh-CN.mdx'),
-      },
     ],
   },
 ];

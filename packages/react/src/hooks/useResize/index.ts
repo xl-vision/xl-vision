@@ -1,32 +1,20 @@
+import findDomNode from '@xl-vision/react/utils/findDomNode';
 import React from 'react';
 import ROP from 'resize-observer-polyfill';
-import useForkRef from '../hooks/useForkRef';
-import { isDevelopment } from '../utils/env';
-import findDomNode from '../utils/findDomNode';
 
-export type ResizeObserverProps = {
-  children: React.ReactElement;
-  onResize: (props: { width: number; height: number }, element: HTMLElement) => void;
-};
-
-const displayName = 'ResizeObserver';
-
-const ResizeObserver = React.forwardRef<HTMLElement, ResizeObserverProps>((props, ref) => {
-  const { children, onResize } = props;
-
-  const domRef = React.useRef<HTMLElement>();
-
-  const elementRef = React.useRef<HTMLElement | null>();
-
-  const forkRef = useForkRef(ref, domRef);
-
+export default <T extends HTMLElement>(
+  ref: React.RefObject<T>,
+  onResize: (state: { width: number; height: number }, target: T) => void,
+) => {
   const resizeObserverRef = React.useRef<ResizeObserver>();
+  const elementRef = React.useRef<HTMLElement | null>();
 
   const handleResize: ResizeObserverCallback = React.useCallback(
     (entries: Array<ResizeObserverEntry>) => {
-      const target = entries[0].target as HTMLElement;
+      const entry = entries[0];
+      const target = entry.target as T;
 
-      const { width, height } = target.getBoundingClientRect();
+      const { width, height } = entry.contentRect;
 
       if (onResize) {
         // defer the callback but not defer to next frame
@@ -54,7 +42,7 @@ const ResizeObserver = React.forwardRef<HTMLElement, ResizeObserverProps>((props
   }, []);
 
   const createOrUpdateObserver = React.useCallback(() => {
-    const element: HTMLElement | null = findDomNode(domRef.current);
+    const element: HTMLElement | null = findDomNode(ref.current);
     if (element !== elementRef.current) {
       destroyObserver();
       elementRef.current = element;
@@ -64,23 +52,16 @@ const ResizeObserver = React.forwardRef<HTMLElement, ResizeObserverProps>((props
       observer.observe(element);
       resizeObserverRef.current = observer;
     }
-  }, [destroyObserver, handleResize]);
+  }, [destroyObserver, handleResize, ref]);
 
   React.useEffect(() => {
     createOrUpdateObserver();
     return () => {
       destroyObserver();
     };
-  }, [children, createOrUpdateObserver, destroyObserver]);
+  }, [createOrUpdateObserver, destroyObserver]);
 
-  return React.cloneElement(children, {
-    ref: forkRef,
+  React.useEffect(() => {
+    createOrUpdateObserver();
   });
-});
-
-if (isDevelopment) {
-  ResizeObserver.displayName = displayName;
-  ResizeObserver.propTypes = {};
-}
-
-export default ResizeObserver;
+};
