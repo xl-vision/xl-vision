@@ -89,5 +89,3 @@ export type {
 } from './Dialog';
 export { default as Avatar } from './Avatar';
 export type { AvatarGroupProps, AvatarProps, AvatarShape, AvatarSize } from './Avatar';
-export { default as ResizeObserver } from './ResizeObserver';
-export type { ResizeObserverProps } from './ResizeObserver';
