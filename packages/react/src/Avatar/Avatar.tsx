@@ -1,13 +1,15 @@
 import { CSSObject } from '@xl-vision/styled-engine-types';
 import clsx from 'clsx';
 import React from 'react';
+import PropTypes from 'prop-types';
 import useForkRef from '../hooks/useForkRef';
-import useResize, { ResizeObserverHandler } from '../hooks/useResizeObserver';
+import useResize from '../hooks/useResizeObserver';
 import { styled } from '../styles';
 import ThemeContext from '../ThemeProvider/ThemeContext';
 import { isDevelopment } from '../utils/env';
+import useEventCallback from '../hooks/useEventCallback';
 
-export type AvatarShape = 'circle' | 'square';
+export type AvatarShape = 'circle' | 'square' | 'round';
 export type AvatarSize = 'small' | 'default' | 'large';
 
 export type AvatarProps = React.HTMLAttributes<HTMLSpanElement> & {
@@ -26,9 +28,9 @@ const displayName = 'Avatar';
 const AvatarRoot = styled('span', {
   name: displayName,
   slot: 'Root',
-})<{ shape: AvatarShape; size?: AvatarSize }>(({ theme, styleProps }) => {
-  const { shape, size } = styleProps;
-  const { color } = theme;
+})<{ shape: AvatarShape; size?: AvatarSize; isImage: boolean }>(({ theme, styleProps }) => {
+  const { shape: shapeType, size, isImage } = styleProps;
+  const { color, shape } = theme;
   const style: CSSObject = {
     position: 'relative',
     display: 'inline-flex',
@@ -40,10 +42,24 @@ const AvatarRoot = styled('span', {
     backgroundColor: color.text.icon,
     alignItems: 'center',
     justifyContent: 'center',
+    userSelect: 'none',
+    '> img': {
+      display: 'block',
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+      borderStyle: 'none',
+    },
   };
 
-  if (shape === 'circle') {
+  if (isImage) {
+    style.background = '0 0';
+  }
+
+  if (shapeType === 'circle') {
     style.borderRadius = '50%';
+  } else if (shapeType === 'round') {
+    style.borderRadius = shape.borderRadius.md;
   }
 
   if (size) {
@@ -80,41 +96,47 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
     className,
     gap = 4,
     onError,
+    style,
     ...others
   } = props;
   const { clsPrefix } = React.useContext(ThemeContext);
 
-  const childRef = React.useRef<HTMLSpanElement>(null);
+  const nodeRef = React.useRef<HTMLSpanElement>(null);
+  const forkRef = useForkRef(nodeRef, ref);
 
   const [scale, setScale] = React.useState(1);
 
   const [isImgExist, setImgExist] = React.useState(true);
 
-  const handleResize: ResizeObserverHandler<HTMLSpanElement> = React.useCallback(
-    (_, target) => {
-      const childEl = childRef.current;
-      if (!childEl) {
-        return;
-      }
-      const { offsetWidth, offsetHeight } = target;
+  const handleResize = useEventCallback(() => {
+    const node = nodeRef.current;
+    const child = childRef.current;
+    if (!node || !child) {
+      return;
+    }
+    const { offsetWidth, offsetHeight } = node;
 
-      const { offsetHeight: childOffsetHeight, offsetWidth: childOffsetWidth } = childEl;
+    const { offsetHeight: childOffsetHeight, offsetWidth: childOffsetWidth } = child;
 
-      const scaleX = (offsetWidth - 2 * gap) / childOffsetWidth;
-      const scaleY = (offsetHeight - 2 * gap) / childOffsetHeight;
+    const scaleX = (offsetWidth - 2 * gap) / childOffsetWidth;
+    const scaleY = (offsetHeight - 2 * gap) / childOffsetHeight;
 
-      if (scaleX <= 0 || scaleY <= 0) {
-        return;
-      }
+    if (scaleX <= 0 || scaleY <= 0) {
+      return;
+    }
 
-      setScale(Math.min(scaleX, scaleY));
-    },
-    [gap],
-  );
+    setScale(Math.min(scaleX, scaleY));
+  });
 
-  const nodeRef = useResize<HTMLSpanElement>(handleResize);
+  const childResizeRef = useResize<HTMLSpanElement>(handleResize);
 
-  const forkRef = useForkRef(nodeRef, ref);
+  const childRef = React.useRef<HTMLSpanElement>(null);
+
+  const forkChildRef = useForkRef(childResizeRef, childRef);
+
+  React.useEffect(() => {
+    handleResize();
+  }, [gap, handleResize]);
 
   const handleImgError = React.useCallback(() => {
     const errorFlag = onError?.();
@@ -139,17 +161,19 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
       transform: transformString,
     };
     childNode = (
-      <AvatarInner ref={childRef} style={childrenStyle}>
+      <AvatarInner ref={forkChildRef} style={childrenStyle}>
         {icon || children}
       </AvatarInner>
     );
   }
 
+  const isImage = (src && isImgExist) || hasImageElement;
+
   const rootClassName = `${clsPrefix}-button`;
 
   const rootClasses = clsx(rootClassName, className);
 
-  const rootStyle = React.useMemo(() => {
+  const rootSizeStyle = React.useMemo(() => {
     if (typeof size === 'number') {
       return {
         width: `${size}px`,
@@ -170,8 +194,12 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
       styleProps={{
         shape,
         size: rootSize,
+        isImage,
       }}
-      style={rootStyle}
+      style={{
+        ...rootSizeStyle,
+        ...style,
+      }}
       ref={forkRef}
     >
       {childNode}
@@ -181,7 +209,19 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
 
 if (isDevelopment) {
   Avatar.displayName = displayName;
-  Avatar.propTypes = {};
+  Avatar.propTypes = {
+    children: PropTypes.node,
+    icon: PropTypes.element,
+    shape: PropTypes.oneOf<AvatarShape>(['round', 'circle', 'square']),
+    size: PropTypes.oneOf<AvatarSize>(['small', 'default', 'large']),
+    src: PropTypes.node,
+    srcSet: PropTypes.string,
+    alt: PropTypes.string,
+    className: PropTypes.string,
+    gap: PropTypes.number,
+    onError: PropTypes.func,
+    style: PropTypes.object,
+  };
 }
 
 export default Avatar;

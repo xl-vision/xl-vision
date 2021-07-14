@@ -31,10 +31,10 @@ const DialogRoot = styled(Modal, {
   name: displayName,
   slot: 'Root',
 })(({ theme }) => {
-  const { color, elevations } = theme;
+  const { color, elevations, shape } = theme;
   return {
     backgroundColor: color.background.paper,
-    borderRadius: 8,
+    borderRadius: shape.borderRadius.md,
     maxWidth: 560,
     margin: 32,
     maxHeight: 'calc(100% - 64px)',

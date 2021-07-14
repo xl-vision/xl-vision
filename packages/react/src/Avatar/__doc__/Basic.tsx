@@ -1,12 +1,11 @@
 import React from 'react';
-import { Avatar, Icon } from '@xl-vision/react';
+import { Avatar, Icon, styled } from '@xl-vision/react';
 import { UserOutlined } from '@xl-vision/icons';
-import { styled } from '@xl-vision/react/styles';
 
 const Wrapper = styled('div')(() => {
   return {
     '>*': {
-      margin: 8,
+      margin: 4,
     },
   };
 });
@@ -39,6 +38,43 @@ export default () => {
           }
         />
         <Avatar
+          size='small'
+          icon={
+            <Icon>
+              <UserOutlined />
+            </Icon>
+          }
+        />
+      </Wrapper>
+      <Wrapper>
+        <Avatar
+          size={64}
+          shape='round'
+          icon={
+            <Icon>
+              <UserOutlined />
+            </Icon>
+          }
+        />
+        <Avatar
+          size='large'
+          shape='round'
+          icon={
+            <Icon>
+              <UserOutlined />
+            </Icon>
+          }
+        />
+        <Avatar
+          shape='round'
+          icon={
+            <Icon>
+              <UserOutlined />
+            </Icon>
+          }
+        />
+        <Avatar
+          shape='round'
           size='small'
           icon={
             <Icon>

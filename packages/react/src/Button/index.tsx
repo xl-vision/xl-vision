@@ -54,7 +54,7 @@ const ButtonRoot = styled(BaseButton, {
   name: displayName,
   slot: 'Root',
 })<ButtonStyleProps>(({ theme, styleProps }) => {
-  const { color: colorTheme, transition, typography, elevations } = theme;
+  const { color: colorTheme, transition, typography, elevations, shape } = theme;
   const {
     theme: themeStyle,
     disableElevation,
@@ -69,7 +69,7 @@ const ButtonRoot = styled(BaseButton, {
 
   const styles: CSSObject = {
     transition: transition.standard('all'),
-    borderRadius: '4px',
+    borderRadius: shape.borderRadius.md,
     minWidth: icon ? '' : '64px',
     ...typography.button,
   };

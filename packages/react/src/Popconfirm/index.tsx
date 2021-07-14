@@ -85,13 +85,13 @@ const PopconfirmPopup = styled('div', {
   name: displayName,
   slot: 'Popup',
 })(({ theme }) => {
-  const { color, typography, elevations, clsPrefix } = theme;
+  const { color, typography, elevations, clsPrefix, shape } = theme;
   const bgColor = color.background.paper;
 
   return {
     backgroundColor: bgColor,
     color: color.getContrastText(bgColor).text.primary,
-    borderRadius: 4,
+    borderRadius: shape.borderRadius.md,
     padding: '12px 16px',
     ...elevations(8),
     [`.${clsPrefix}-popconfirm__content`]: {
