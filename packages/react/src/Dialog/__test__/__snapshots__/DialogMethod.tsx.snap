@@ -168,7 +168,7 @@ exports[`DialogMethod test confirm 1`] = `
 
 .c1 {
   background-color: #fff;
-  border-radius: 8px;
+  border-radius: 4px;
   max-width: 560px;
   margin: 32px;
   max-height: calc(100% - 64px);
@@ -533,7 +533,7 @@ exports[`DialogMethod test error 1`] = `
 
 .c1 {
   background-color: #fff;
-  border-radius: 8px;
+  border-radius: 4px;
   max-width: 560px;
   margin: 32px;
   max-height: calc(100% - 64px);
@@ -882,7 +882,7 @@ exports[`DialogMethod test info 1`] = `
 
 .c1 {
   background-color: #fff;
-  border-radius: 8px;
+  border-radius: 4px;
   max-width: 560px;
   margin: 32px;
   max-height: calc(100% - 64px);
@@ -1215,7 +1215,7 @@ exports[`DialogMethod test method 1`] = `
 
 .c1 {
   background-color: #fff;
-  border-radius: 8px;
+  border-radius: 4px;
   max-width: 560px;
   margin: 32px;
   max-height: calc(100% - 64px);
@@ -1552,7 +1552,7 @@ exports[`DialogMethod test success 1`] = `
 
 .c1 {
   background-color: #fff;
-  border-radius: 8px;
+  border-radius: 4px;
   max-width: 560px;
   margin: 32px;
   max-height: calc(100% - 64px);
@@ -1901,7 +1901,7 @@ exports[`DialogMethod test warning 1`] = `
 
 .c1 {
   background-color: #fff;
-  border-radius: 8px;
+  border-radius: 4px;
   max-width: 560px;
   margin: 32px;
   max-height: calc(100% - 64px);

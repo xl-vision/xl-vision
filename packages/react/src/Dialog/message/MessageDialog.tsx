@@ -105,7 +105,7 @@ const MessageDialog: React.FunctionComponent<MessageDialogProps> = (props) => {
   return (
     <Dialog
       {...others}
-      className={clsx(className, rootClassName)}
+      className={clsx(rootClassName, className)}
       title={headerWrapper}
       visible={!first && visible}
       onVisibleChange={handleVisibleChange}

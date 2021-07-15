@@ -346,7 +346,7 @@ const defaultConfig = {
   devServer: {
     compress: true,
     historyApiFallback: true,
-    host: '0.0.0.0',
+    host: 'localhost',
     hot: true,
   },
 };

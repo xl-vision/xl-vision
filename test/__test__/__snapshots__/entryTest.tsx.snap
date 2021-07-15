@@ -670,5 +670,6 @@ Array [
   "Dropdown",
   "Modal",
   "Dialog",
+  "Avatar",
 ]
 `;

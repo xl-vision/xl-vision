@@ -69,7 +69,7 @@ const traverseRoutes = (routesArray: Array<RouteType>, level = 1): JSX.Element =
     } else {
       const { path } = it;
       el = (
-        <NavLinkWrapper exact={true} to={path} replace={true}>
+        <NavLinkWrapper exact={true} to={path}>
           <LeftNode style={{ paddingLeft: padding * level }}>{name}</LeftNode>
         </NavLinkWrapper>
       );
