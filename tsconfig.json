@@ -12,6 +12,7 @@
     "declaration": true,
     "baseUrl": ".",
     "resolveJsonModule": true,
+    "skipLibCheck": true,
     "paths": {
       "@xl-vision/styled-engine-types": ["./packages/styled-engine-types/src"],
       "@xl-vision/styled-engine-types/*": ["./packages/styled-engine-types/src/*"],
