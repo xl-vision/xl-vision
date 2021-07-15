@@ -154,9 +154,19 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
 
   const rootClassName = `${clsPrefix}-avatar`;
 
-  const rootClasses = clsx(rootClassName, className);
-
   const hasImageElement = React.isValidElement(src);
+
+  const isImage = (src && isImgExist) || hasImageElement;
+
+  const rootClasses = clsx(
+    rootClassName,
+    `${rootClassName}--${shape}`,
+    {
+      [`${rootClassName}--${size}`]: typeof size === 'string',
+      [`${rootClassName}--isImage`]: isImage,
+    },
+    className,
+  );
 
   if (typeof src === 'string' && isImgExist) {
     childNode = <img src={src} srcSet={srcSet} alt={alt} onError={handleImgError} />;
@@ -175,8 +185,6 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
       </AvatarInner>
     );
   }
-
-  const isImage = (src && isImgExist) || hasImageElement;
 
   const rootSizeStyle = React.useMemo(() => {
     if (typeof size === 'number') {

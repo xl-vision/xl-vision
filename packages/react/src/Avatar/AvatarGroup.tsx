@@ -14,7 +14,7 @@ export type AvatarGroupProps = React.HTMLAttributes<HTMLDivElement> & {
   maxCount?: number;
   popupPlacement?: AvatarGroupPopupPlacement;
   size?: AvatarSize;
-  children: Array<React.ReactElement<AvatarProps>>;
+  children: React.ReactElement<AvatarProps> | Array<React.ReactElement<AvatarProps>>;
   maxStyle?: React.CSSProperties;
   shape?: AvatarShape;
 };
