@@ -8,14 +8,17 @@ import { styled } from '../styles';
 import ThemeContext from '../ThemeProvider/ThemeContext';
 import { isDevelopment } from '../utils/env';
 import useEventCallback from '../hooks/useEventCallback';
+import AvatarContext from './AvatarContext';
 
 export type AvatarShape = 'circle' | 'square' | 'round';
-export type AvatarSize = 'small' | 'default' | 'large';
+
+export type AvatarSizeType = 'small' | 'default' | 'large';
+export type AvatarSize = AvatarSizeType | number;
 
 export type AvatarProps = React.HTMLAttributes<HTMLSpanElement> & {
   icon?: React.ReactElement<React.SVGAttributes<SVGSVGElement>>;
   shape?: AvatarShape;
-  size?: number | AvatarSize;
+  size?: AvatarSize;
   src?: React.ReactNode;
   gap?: number;
   srcSet?: string;
@@ -28,7 +31,7 @@ const displayName = 'Avatar';
 const AvatarRoot = styled('span', {
   name: displayName,
   slot: 'Root',
-})<{ shape: AvatarShape; size?: AvatarSize; isImage: boolean }>(({ theme, styleProps }) => {
+})<{ shape: AvatarShape; size?: AvatarSizeType; isImage: boolean }>(({ theme, styleProps }) => {
   const { shape: shapeType, size, isImage } = styleProps;
   const { color, shape } = theme;
   const style: CSSObject = {
@@ -39,7 +42,7 @@ const AvatarRoot = styled('span', {
     whiteSpace: 'nowrap',
     verticalAlign: 'middle',
     color: color.background.paper,
-    backgroundColor: color.text.icon,
+    backgroundColor: color.mode === 'light' ? color.grey['400'] : color.grey['600'],
     alignItems: 'center',
     justifyContent: 'center',
     userSelect: 'none',
@@ -85,11 +88,13 @@ const AvatarInner = styled('span', {
 });
 
 const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
+  const { size: contextSize, shape: contextShape } = React.useContext(AvatarContext);
+
   const {
     children,
     icon,
-    shape = 'circle',
-    size = 'default',
+    shape = contextShape || 'circle',
+    size = contextSize || 'default',
     src,
     srcSet,
     alt,
@@ -147,6 +152,10 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
 
   let childNode: React.ReactNode;
 
+  const rootClassName = `${clsPrefix}-avatar`;
+
+  const rootClasses = clsx(rootClassName, className);
+
   const hasImageElement = React.isValidElement(src);
 
   if (typeof src === 'string' && isImgExist) {
@@ -161,17 +170,13 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
       transform: transformString,
     };
     childNode = (
-      <AvatarInner ref={forkChildRef} style={childrenStyle}>
+      <AvatarInner ref={forkChildRef} style={childrenStyle} className={`${rootClassName}__inner`}>
         {icon || children}
       </AvatarInner>
     );
   }
 
   const isImage = (src && isImgExist) || hasImageElement;
-
-  const rootClassName = `${clsPrefix}-button`;
-
-  const rootClasses = clsx(rootClassName, className);
 
   const rootSizeStyle = React.useMemo(() => {
     if (typeof size === 'number') {
@@ -184,7 +189,7 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
   }, [size]);
 
   const rootSize = React.useMemo(() => {
-    return (typeof size === 'string' && size) as AvatarSize;
+    return (typeof size === 'string' && size) as AvatarSizeType;
   }, [size]);
 
   return (
@@ -213,7 +218,10 @@ if (isDevelopment) {
     children: PropTypes.node,
     icon: PropTypes.element,
     shape: PropTypes.oneOf<AvatarShape>(['round', 'circle', 'square']),
-    size: PropTypes.oneOf<AvatarSize>(['small', 'default', 'large']),
+    size: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.oneOf<AvatarSizeType>(['small', 'default', 'large']),
+    ]),
     src: PropTypes.node,
     srcSet: PropTypes.string,
     alt: PropTypes.string,

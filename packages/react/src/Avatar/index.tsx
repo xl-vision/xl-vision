@@ -4,8 +4,8 @@ import AvatarGroup from './AvatarGroup';
 export * from './Avatar';
 export * from './AvatarGroup';
 
-const AvatarWithGroup = Avatar as typeof Avatar & { group: any };
+const AvatarWithGroup = Avatar as typeof Avatar & { Group: typeof AvatarGroup };
 
-AvatarWithGroup.group = AvatarGroup;
+AvatarWithGroup.Group = AvatarGroup;
 
 export default AvatarWithGroup;

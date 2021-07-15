@@ -88,4 +88,11 @@ export type {
   MessageDialogHookReturnType,
 } from './Dialog';
 export { default as Avatar } from './Avatar';
-export type { AvatarGroupProps, AvatarProps, AvatarShape, AvatarSize } from './Avatar';
+export type {
+  AvatarGroupProps,
+  AvatarProps,
+  AvatarShape,
+  AvatarSize,
+  AvatarGroupPopupPlacement,
+  AvatarSizeType,
+} from './Avatar';
