@@ -97,12 +97,12 @@ const DropdownSubmenuPopup = styled('ul', {
   name: displayName,
   slot: 'Popup',
 })(({ theme }) => {
-  const { color, elevations } = theme;
+  const { color, elevations, shape } = theme;
 
   return {
     backgroundColor: color.background.paper,
     color: color.text.primary,
-    borderRadius: 4,
+    borderRadius: shape.borderRadius.md,
     padding: '5px 0',
     listStyle: 'none',
     margin: 0,

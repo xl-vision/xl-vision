@@ -54,7 +54,7 @@ const ButtonRoot = styled(BaseButton, {
   name: displayName,
   slot: 'Root',
 })<ButtonStyleProps>(({ theme, styleProps }) => {
-  const { color: colorTheme, transition, typography, elevations } = theme;
+  const { color: colorTheme, transition, typography, elevations, shape } = theme;
   const {
     theme: themeStyle,
     disableElevation,
@@ -69,7 +69,7 @@ const ButtonRoot = styled(BaseButton, {
 
   const styles: CSSObject = {
     transition: transition.standard('all'),
-    borderRadius: '4px',
+    borderRadius: shape.borderRadius.md,
     minWidth: icon ? '' : '64px',
     ...typography.button,
   };
@@ -237,6 +237,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
     variant = 'contained',
     long,
     round,
+    className,
     ...others
   } = props;
 
@@ -273,6 +274,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
       [`${rootClassName}--round`]: round,
       [`${rootClassName}--icon`]: icon,
     },
+    className,
   );
 
   const prefixClassName = `${rootClassName}__prefix`;
@@ -358,6 +360,7 @@ if (isDevelopment) {
     prefixIcon: PropTypes.element,
     suffixIcon: PropTypes.element,
     variant: PropTypes.oneOf<ButtonVariant>(['contained', 'outlined', 'text']),
+    className: PropTypes.string,
   };
 }
 

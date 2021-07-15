@@ -6,6 +6,7 @@ import useLayoutEffect from '../hooks/useLayoutEffect';
 import useForkRef from '../hooks/useForkRef';
 import useLifecycleState, { LifecycleState } from '../hooks/useLifecycleState';
 import { isDevelopment } from '../utils/env';
+import findDomNode from '../utils/findDomNode';
 
 enum TransitionState {
   STATE_ENTERING, // 0
@@ -82,11 +83,6 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
     childRef,
   );
 
-  const findDOMElement = React.useCallback(() => {
-    // eslint-disable-next-line react/no-find-dom-node
-    return ReactDOM.findDOMNode(childRef.current) as HTMLElement;
-  }, []);
-
   // 保存回调
   const cbRef = React.useRef<() => void>();
 
@@ -100,7 +96,7 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
           if (!isCancelled() && lifecycleStateRef.current === LifecycleState.MOUNTED) {
             setState(nextState);
             // 必须放在后面，防止其中修改了prop in
-            afterEventHook?.(findDOMElement(), transitionOnFirstRef.current);
+            afterEventHook?.(findDomNode(childRef.current), transitionOnFirstRef.current);
             transitionOnFirstRef.current = false;
 
             // 避免多次触发
@@ -114,7 +110,12 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
       const isCancelled = () => wrapCallback !== cbRef.current;
 
       if (eventHook) {
-        eventHook(findDOMElement(), wrapCallback, isCancelled, transitionOnFirstRef.current);
+        eventHook(
+          findDomNode(childRef.current),
+          wrapCallback,
+          isCancelled,
+          transitionOnFirstRef.current,
+        );
       } else {
         wrapCallback();
       }
@@ -124,10 +125,10 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
   const stateTrigger = useEventCallback((_state: TransitionState) => {
     // 展示
     if (inProp && _state === TransitionState.STATE_ENTERING) {
-      beforeEnter?.(findDOMElement(), transitionOnFirstRef.current);
+      beforeEnter?.(findDomNode(childRef.current), transitionOnFirstRef.current);
       onTransitionEnd(TransitionState.STATE_ENTERED, enter, afterEnter);
     } else if (!inProp && _state === TransitionState.STATE_LEAVING) {
-      beforeLeave?.(findDOMElement(), transitionOnFirstRef.current);
+      beforeLeave?.(findDomNode(childRef.current), transitionOnFirstRef.current);
       onTransitionEnd(TransitionState.STATE_LEAVED, leave, afterLeave);
     }
   });
@@ -142,7 +143,7 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
   ]);
 
   const inPropTrigger = useEventCallback((_inProp: boolean) => {
-    const el = findDOMElement();
+    const el: HTMLElement = findDomNode(childRef.current);
     if (
       _inProp &&
       (state === TransitionState.STATE_LEAVING || state === TransitionState.STATE_LEAVED)

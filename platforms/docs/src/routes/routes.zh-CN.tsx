@@ -65,6 +65,11 @@ const routes: Array<Route> = [
         path: '/Popover',
         component: () => import('@xl-vision/react/Popover/__doc__/index.zh-CN.mdx'),
       },
+      {
+        name: '头像',
+        path: '/Avatar',
+        component: () => import('@xl-vision/react/Avatar/__doc__/index.zh-CN.mdx'),
+      },
     ],
   },
   {
