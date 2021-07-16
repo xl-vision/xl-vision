@@ -3,6 +3,7 @@ const babel = require('gulp-babel');
 const gulp = require('gulp');
 const path = require('path');
 const ts = require('gulp-typescript');
+const fs = require('fs-extra');
 const getBabelConfig = require('./getBabelConfig');
 
 const defaultReporter = ts.reporter.defaultReporter();
@@ -17,8 +18,11 @@ if (!style) {
 
 run();
 
-function run() {
-  const tsconfigPath = path.resolve(process.cwd(), 'tsconfig.json');
+async function run() {
+  const basePath = process.cwd();
+  await fs.remove(path.resolve(basePath, style));
+
+  const tsconfigPath = path.resolve(basePath, 'tsconfig.json');
 
   const tsProject = ts.createProject(tsconfigPath);
 
