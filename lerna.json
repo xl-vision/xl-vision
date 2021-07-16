@@ -4,6 +4,7 @@
     "platforms/*"
   ],
   "version": "0.1.1-alpha.3",
+  "granularPathspec": false,
   "command": {
     "bootstrap": {
       "npmClientArgs": [
