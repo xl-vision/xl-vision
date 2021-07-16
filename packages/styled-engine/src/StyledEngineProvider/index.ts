@@ -20,9 +20,12 @@ const StyledEngineProvider: React.FunctionComponent<StyledEngineProviderProps> =
   return children;
 };
 
-StyledEngineProvider.propTypes = {
-  children: PropTypes.element.isRequired,
-  injectFirst: PropTypes.bool,
-};
+if (process.env.NODE_ENV !== 'production') {
+  StyledEngineProvider.displayName = 'StyledEngineProvider';
+  StyledEngineProvider.propTypes = {
+    children: PropTypes.element.isRequired,
+    injectFirst: PropTypes.bool,
+  };
+}
 
 export default StyledEngineProvider;
