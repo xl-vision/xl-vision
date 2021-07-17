@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, styled, Icon, Tooltip, Dropdown } from '@xl-vision/react';
 import { DownOutlined, GithubFilled } from '@xl-vision/icons';
 import { darken, lighten } from '@xl-vision/react/utils/color';
+import { NavLink } from 'react-router-dom';
 import LightTheme from './LightTheme';
 import DarkTheme from './DarkTheme';
 import Translate from './Translate';
@@ -47,10 +48,34 @@ const HeaderNav = styled('header')<{ isDark: boolean }>(({ theme, styleProps }) 
   };
 });
 
-const Logo = styled('div')`
-  font-size: 18px;
-  font-weight: bolder;
-`;
+const Logo = styled('div')(({ theme }) => {
+  return {
+    fontSize: 18,
+    fontWeight: theme.typography.fontWeight.bold,
+  };
+});
+
+const Menus = styled('ul')(({ theme }) => {
+  return {
+    listStyle: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    flex: 1,
+    li: {
+      a: {
+        display: 'block',
+        color: theme.color.text.primary,
+        fontWeight: theme.typography.fontWeight.medium,
+        textDecoration: 'none',
+        padding: '6px 12px',
+        transition: theme.transition.standard('all'),
+        '&.active, &:hover': {
+          color: theme.color.themes.primary.color,
+        },
+      },
+    },
+  };
+});
 
 const Header = () => {
   const theme = React.useContext(ThemeContext);
@@ -68,6 +93,14 @@ const Header = () => {
     <Container>
       <HeaderNav styleProps={{ isDark }}>
         <Logo>XL-VISION</Logo>
+        <Menus>
+          <li>
+            <NavLink to='/components'>{locale.header.component}</NavLink>
+          </li>
+          <li>
+            <NavLink to='/editor'>{locale.header.editor}</NavLink>
+          </li>
+        </Menus>
         <div>
           <Dropdown
             menus={

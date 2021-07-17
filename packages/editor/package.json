@@ -1,7 +1,7 @@
 {
-  "name": "@xl-vision/react",
+  "name": "@xl-vision/editor",
   "version": "0.1.1-alpha.6",
-  "description": "xl-vision react components.",
+  "description": "xl-vision react editor.",
   "author": "Rhys Xia <xrs4433@outlook.com>",
   "license": "MIT",
   "main": "legacy/index.js",
@@ -16,7 +16,7 @@
     "react",
     "styles"
   ],
-  "homepage": "https://xl-vision.8910.xyz/react",
+  "homepage": "https://xl-vision.8910.xyz/editor",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xl-vision/xl-vision.git",
@@ -33,15 +33,11 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.12.5",
-    "@popperjs/core": "^2.9.0",
-    "@xl-vision/icons": "^0.1.1-alpha.5",
     "clsx": "^1.1.1",
-    "prop-types": "^15.7.2",
-    "resize-observer-polyfill": "^1.5.1"
+    "prop-types": "^15.7.2"
   },
   "peerDependencies": {
     "@types/react": "^16.8.0 || ^17.0.0",
-    "@xl-vision/styled-engine": "^0.1.1-alpha.5",
     "react": "^16.8.0 || ^17.0.0",
     "react-dom": "^16.8.0 || ^17.0.0"
   },

@@ -3,6 +3,8 @@ export type Locale = {
   header: {
     themeTooltip: string;
     githubTooltip: string;
+    component: string;
+    editor: string;
   };
   pages: {
     Icons: {
@@ -17,6 +19,8 @@ const locales: Record<string, Locale> = {
     header: {
       themeTooltip: '在亮色主题和暗色主题间切换',
       githubTooltip: 'Github',
+      component: '组件',
+      editor: '编辑器',
     },
     pages: {
       Icons: {
@@ -29,6 +33,8 @@ const locales: Record<string, Locale> = {
     header: {
       themeTooltip: 'Switch between light mode and dark mode',
       githubTooltip: 'Github',
+      component: 'component',
+      editor: 'editor',
     },
     pages: {
       Icons: {

@@ -1,11 +1,11 @@
 // eslint-disable-next-line unicorn/filename-case
-import { Route } from './types';
+import { Route } from '../types';
 
 const routes: Array<Route> = [
   {
     name: '总览',
     path: '/',
-    component: () => import('../views/index.zh-CN.mdx'),
+    component: () => import('../../views/components/index.zh-CN.mdx'),
   },
   {
     name: '快速上手',
@@ -13,7 +13,7 @@ const routes: Array<Route> = [
       {
         name: '安装',
         path: '/install',
-        component: () => import('../views/quickstart/install.zh-CN.mdx'),
+        component: () => import('../../views/components/quickstart/install.zh-CN.mdx'),
       },
     ],
   },
