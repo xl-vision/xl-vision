@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1-alpha.6](https://github.com/xl-vision/xl-vision/compare/v0.1.1-alpha.5...v0.1.1-alpha.6) (2021-07-17)
+
+
+### Bug Fixes
+
+* **Avatar:** fix bug when  src is empty string ([e4513c1](https://github.com/xl-vision/xl-vision/commit/e4513c1b6ac7cde535d99d516a80fe26a2d45dde))
+
+
+
+
+
 ## [0.1.1-alpha.5](https://github.com/xl-vision/xl-vision/compare/v0.1.1-alpha.4...v0.1.1-alpha.5) (2021-07-16)
 
 **Note:** Version bump only for package @xl-vision/react
