@@ -1,15 +1,14 @@
 {
-  "packages": [
-    "packages/*",
-    "platforms/*"
-  ],
+  "packages": ["packages/*", "platforms/*"],
   "version": "0.1.1-alpha.5",
   "granularPathspec": false,
   "command": {
+    "publish": {
+      "ignoreChanges": ["*.mdx"],
+      "message": "chore(release): publish"
+    },
     "bootstrap": {
-      "npmClientArgs": [
-        "--no-package-lock"
-      ]
+      "npmClientArgs": ["--no-package-lock"]
     }
   }
 }

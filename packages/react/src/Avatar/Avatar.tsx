@@ -168,7 +168,7 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
     className,
   );
 
-  if (typeof src === 'string' && isImgExist) {
+  if (typeof src === 'string' && src && isImgExist) {
     childNode = <img src={src} srcSet={srcSet} alt={alt} onError={handleImgError} />;
   } else if (hasImageElement) {
     childNode = src;
