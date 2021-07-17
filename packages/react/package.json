@@ -34,14 +34,14 @@
   "dependencies": {
     "@babel/runtime": "^7.12.5",
     "@popperjs/core": "^2.9.0",
-    "@xl-vision/icons": "0.1.1-alpha.5",
+    "@xl-vision/icons": "^0.1.1-alpha.5",
     "clsx": "^1.1.1",
     "prop-types": "^15.7.2",
     "resize-observer-polyfill": "^1.5.1"
   },
   "peerDependencies": {
     "@types/react": "^16.8.0 || ^17.0.0",
-    "@xl-vision/styled-engine": "^0.1.0",
+    "@xl-vision/styled-engine": "^0.1.1-alpha.5",
     "react": "^16.8.0 || ^17.0.0",
     "react-dom": "^16.8.0 || ^17.0.0"
   },
