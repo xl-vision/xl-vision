@@ -1,9 +1,8 @@
-import { styled } from '@xl-vision/react';
+import { LocalizationContext, styled } from '@xl-vision/react';
 import { mix } from '@xl-vision/react/utils/color';
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import routeMap, { Route as RouteType } from '../../routes';
-import { LocalizationContext } from '../LocalizationProvider';
 
 const LeftNode = styled('span')(() => {
   return {
@@ -53,13 +52,17 @@ const NavLinkWrapper = styled(NavLink)(({ theme }) => {
 
 const padding = 12;
 
-const traverseRoutes = (routesArray: Array<RouteType>, level = 1): JSX.Element => {
+const traverseRoutes = (
+  basePath: string,
+  routesArray: Array<RouteType>,
+  level = 1,
+): JSX.Element => {
   const routeElements: Array<JSX.Element> = [];
   routesArray.forEach((it, index) => {
     const { name } = it;
     let el: JSX.Element;
     if ('children' in it) {
-      const childElements = traverseRoutes(it.children, level + 1);
+      const childElements = traverseRoutes(basePath, it.children, level + 1);
       el = (
         <>
           <NonLeftNode style={{ paddingLeft: padding * level }}>{name}</NonLeftNode>
@@ -69,7 +72,7 @@ const traverseRoutes = (routesArray: Array<RouteType>, level = 1): JSX.Element =
     } else {
       const { path } = it;
       el = (
-        <NavLinkWrapper exact={true} to={path}>
+        <NavLinkWrapper exact={true} to={`/${basePath}${path}`}>
           <LeftNode style={{ paddingLeft: padding * level }}>{name}</LeftNode>
         </NavLinkWrapper>
       );
@@ -94,10 +97,23 @@ const Wrapper = styled('div')(() => {
 const Aside: React.FunctionComponent<{ className?: string }> = (props) => {
   const { language } = React.useContext(LocalizationContext);
 
+  const { pathname } = useLocation();
+
+  const key = React.useMemo(() => {
+    return Object.keys(routeMap).find((it) => pathname.startsWith(`/${it}`));
+  }, [pathname]);
+
   const nodes = React.useMemo(() => {
-    const routes = routeMap[language];
-    return traverseRoutes(routes);
-  }, [language]);
+    if (!key) {
+      return null;
+    }
+    const routes = routeMap[key as keyof typeof routeMap][language];
+    return traverseRoutes(key, routes);
+  }, [key, language]);
+
+  if (!nodes) {
+    return null;
+  }
 
   return <Wrapper {...props}>{nodes}</Wrapper>;
 };
