@@ -22,7 +22,7 @@
     "clean": "node ./scripts/cleanDist.js",
     "lint": "eslint . --cache --report-unused-disable-directives --ext .js,.ts,.jsx,.tsx --max-warnings 0",
     "build": "npm run clean && lerna run --parallel --scope \"@xl-vision/*\" build",
-    "publish": "lerna publish prerelease --exact --conventional-commits --no-commit-hooks",
+    "publish": "lerna publish prerelease --exact --conventional-commits",
     "bootstrap": "lerna bootstrap"
   },
   "devDependencies": {
