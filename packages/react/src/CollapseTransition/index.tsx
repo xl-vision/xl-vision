@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { env } from '@xl-vision/utils';
+import { useEventCallback } from '@xl-vision/hooks';
 import CSSTransition, { CSSTransitionProps, CSSTransitionElement } from '../CSSTransition';
 import { forceReflow } from '../utils/transition';
 import { removeClass, addClass } from '../utils/class';
-import { isDevelopment } from '../utils/env';
-import useEventCallback from '../hooks/useEventCallback';
 import { AfterEventHook, BeforeEventHook, EventCancelledHook, EventHook } from '../Transition';
 
 export interface CollapseTransitionProp extends Omit<CSSTransitionProps, 'mountOnEnter'> {
@@ -206,7 +206,7 @@ const CollapseTransition: React.FunctionComponent<CollapseTransitionProp> = (pro
   );
 };
 
-if (isDevelopment) {
+if (env.isDevelopment) {
   CollapseTransition.displayName = 'CollapseTransition';
 
   CollapseTransition.propTypes = {

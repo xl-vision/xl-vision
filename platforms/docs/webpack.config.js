@@ -12,8 +12,48 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 const path = require('path');
 const portfinder = require('portfinder');
 const { merge } = require('webpack-merge');
+const fs = require('fs-extra');
 
-const packageResolve = (packageName) => path.join(__dirname, '../../packages', packageName, 'src');
+const resolvePackageAlias = async () => {
+  const basePath = path.join(__dirname, '../../packages');
+
+  const files = await fs.readdir(basePath);
+
+  const packageNamePromises = files
+    .map((it) => path.join(basePath, it, 'package.json'))
+    .map((it) =>
+      fs
+        .pathExists(it)
+        .then((exist) => {
+          if (!exist) {
+            return;
+          }
+          return fs.readJSON(it);
+        })
+        .then((json) => {
+          if (!json) {
+            return;
+          }
+          return json.name;
+        }),
+    );
+
+  const existsSrcPromises = files
+    .map((it) => path.join(basePath, it, 'src'))
+    .map((it) => fs.pathExists(it));
+
+  const packageNames = await Promise.all(packageNamePromises);
+  const srcExists = await Promise.all(existsSrcPromises);
+
+  const aliasMap = {};
+  for (let i = 0; i < files.length; i++) {
+    if (packageNames[i] && srcExists[i]) {
+      aliasMap[packageNames[i]] = path.join(basePath, files[i], 'src');
+    }
+  }
+
+  return aliasMap;
+};
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -155,10 +195,6 @@ const defaultConfig = {
       'react-dom': require.resolve('react-dom'),
       '@mdx-js/react': require.resolve('@mdx-js/react'),
       'styled-components': require.resolve('styled-components'),
-      // 'react-dom$': 'react-dom'
-      '@xl-vision/styled-engine': packageResolve('styled-engine'),
-      '@xl-vision/react': packageResolve('react'),
-      '@xl-vision/icons': packageResolve('icons'),
     },
   },
   optimization: {
@@ -353,7 +389,12 @@ const defaultConfig = {
 
 module.exports = async () => {
   const port = await portfinder.getPortPromise();
+  const alias = await resolvePackageAlias();
+
   return merge(defaultConfig, {
+    resolve: {
+      alias,
+    },
     devServer: {
       port,
     },

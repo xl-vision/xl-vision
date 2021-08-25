@@ -1,11 +1,36 @@
 const confusingBrowserGlobals = require('confusing-browser-globals');
+const path = require('path');
+const fs = require('fs-extra');
 
-const ignorePackages = [
-  '^@xl-vision/styled-engine-types',
-  '^@xl-vision/styled-engine',
-  '^@xl-vision/react',
-  '^@xl-vision/icons',
-];
+const resolvePackageNames = () => {
+  const basePath = path.join(__dirname, 'packages');
+
+  const files = fs.readdirSync(basePath);
+
+  const packageNames = files
+    .map((it) => path.join(basePath, it, 'package.json'))
+    .map((it) => {
+      if (fs.pathExistsSync(it)) {
+        return fs.readJSONSync(it).name;
+      }
+      return undefined;
+    });
+
+  const existsSrcs = files
+    .map((it) => path.join(basePath, it, 'src'))
+    .map((it) => fs.pathExistsSync(it));
+
+  const ignores = [];
+  for (let i = 0; i < files.length; i++) {
+    if (packageNames[i] && existsSrcs[i]) {
+      ignores.push(packageNames[i]);
+    }
+  }
+
+  return ignores;
+};
+
+const ignorePackages = resolvePackageNames();
 
 module.exports = {
   root: true,

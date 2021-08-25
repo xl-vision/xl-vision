@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import React from 'react';
-import { isServer } from '../utils/env';
+import { env } from '@xl-vision/utils';
 import warning from '../utils/warning';
 
 export type PortalContainerReturnType = Element | string | undefined | null;
@@ -23,7 +23,7 @@ export interface PortalProp {
 const Portal: React.FunctionComponent<PortalProp> = (props) => {
   const { children, getContainer } = props;
 
-  if (isServer) {
+  if (env.isServer) {
     return null;
   }
 
