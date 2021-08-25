@@ -1,16 +1,17 @@
 const fs = require('fs-extra');
 const path = require('path');
 
-const resolve = (...dir) => path.resolve(__dirname, '..', ...dir);
-
 async function clean() {
-  await fs.remove(resolve('packages/styled-engine/legacy'));
-  await fs.remove(resolve('packages/styled-engine/modern'));
-  await fs.remove(resolve('packages/icons/legacy'));
-  await fs.remove(resolve('packages/icons/modern'));
-  await fs.remove(resolve('packages/react/legacy'));
-  await fs.remove(resolve('packages/react/modern'));
-  await fs.remove(resolve('platforms/docs/dist'));
+  const basePath = path.join(__dirname, '../packages');
+  const files = await fs.readdir(basePath);
+
+  const promises = files.map((it) => {
+    return fs.remove(path.join(basePath, it, 'legacy')).then(() => {
+      fs.remove(path.join(basePath, it, 'modern'));
+    });
+  });
+
+  return Promise.all(promises);
 }
 
 clean();
