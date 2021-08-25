@@ -1,5 +1,5 @@
 import React from 'react';
-import useLayoutEffect from '../useLayoutEffect';
+import { useLayoutEffect } from '@xl-vision/hooks';
 
 export enum LifecycleState {
   BEFORE_MOUNTED,

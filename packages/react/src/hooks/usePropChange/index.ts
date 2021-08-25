@@ -1,5 +1,5 @@
 import React from 'react';
-import useEventCallback from '../useEventCallback';
+import { useEventCallback } from '@xl-vision/hooks';
 
 export default <T>(
   defaultProp: T,

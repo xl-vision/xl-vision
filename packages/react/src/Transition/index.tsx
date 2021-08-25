@@ -1,11 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import useEventCallback from '../hooks/useEventCallback';
-import useLayoutEffect from '../hooks/useLayoutEffect';
-import useForkRef from '../hooks/useForkRef';
+import { env } from '@xl-vision/utils';
+import { useEventCallback, useLayoutEffect, useForkRef } from '@xl-vision/hooks';
 import useLifecycleState, { LifecycleState } from '../hooks/useLifecycleState';
-import { isDevelopment } from '../utils/env';
 import findDomNode from '../utils/findDomNode';
 
 enum TransitionState {
@@ -201,7 +199,7 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
   });
 };
 
-if (isDevelopment) {
+if (env.isDevelopment) {
   Transition.displayName = 'Transition';
 
   Transition.propTypes = {

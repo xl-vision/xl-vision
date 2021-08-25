@@ -1,13 +1,13 @@
 import React from 'react';
 import clsx from 'clsx';
 import Proptypes from 'prop-types';
-import { isDevelopment } from '../utils/env';
+import { env } from '@xl-vision/utils';
+import { useEventCallback } from '@xl-vision/hooks';
 import Modal, { ModalProps } from '../Modal';
 import ThemeContext from '../ThemeProvider/ThemeContext';
 import { styled } from '../styles';
 import Button, { ButtonProps } from '../Button';
 import usePropChange from '../hooks/usePropChange';
-import useEventCallback from '../hooks/useEventCallback';
 import LocalizationContext from '../LocalizationProvider/LocalizationContext';
 
 export type DialogButtonProps = Omit<ButtonProps, 'children' | 'onClick'>;
@@ -226,7 +226,7 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
   );
 });
 
-if (isDevelopment) {
+if (env.isDevelopment) {
   Dialog.displayName = displayName;
   Dialog.propTypes = {
     children: Proptypes.node,

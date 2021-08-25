@@ -2,12 +2,11 @@ import { CSSObject } from '@xl-vision/styled-engine-types';
 import clsx from 'clsx';
 import React from 'react';
 import PropTypes from 'prop-types';
-import useForkRef from '../hooks/useForkRef';
+import { env } from '@xl-vision/utils';
+import { useEventCallback, useForkRef } from '@xl-vision/hooks';
 import useResize from '../hooks/useResizeObserver';
 import { styled } from '../styles';
 import ThemeContext from '../ThemeProvider/ThemeContext';
-import { isDevelopment } from '../utils/env';
-import useEventCallback from '../hooks/useEventCallback';
 import AvatarContext from './AvatarContext';
 
 export type AvatarShape = 'circle' | 'square' | 'round';
@@ -220,7 +219,7 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
   );
 });
 
-if (isDevelopment) {
+if (env.isDevelopment) {
   Avatar.displayName = displayName;
   Avatar.propTypes = {
     children: PropTypes.node,

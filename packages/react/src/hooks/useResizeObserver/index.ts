@@ -1,6 +1,6 @@
 import React from 'react';
 import ROP from 'resize-observer-polyfill';
-import useEventCallback from '../useEventCallback';
+import { useEventCallback } from '@xl-vision/hooks';
 
 export type ResizeObserverHandler<T extends HTMLElement> = (
   state: { width: number; height: number },

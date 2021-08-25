@@ -18,6 +18,8 @@
     "@xl-vision/icons": "0.1.1-alpha.5",
     "@xl-vision/react": "^0.1.1-alpha.6",
     "@xl-vision/styled-engine": "^0.1.1-alpha.6",
+    "@xl-vision/utils": "^0.1.1-alpha.0",
+    "@xl-vision/hooks": "^0.1.1-alpha.0",
     "clsx": "^1.1.1",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",

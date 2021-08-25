@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { env } from '@xl-vision/utils';
+import { useEventCallback } from '@xl-vision/hooks';
 import { addClass, removeClass } from '../utils/class';
 import { nextFrame, onTransitionEnd } from '../utils/transition';
 import Transition, {
@@ -9,8 +11,6 @@ import Transition, {
   EventHook,
   TransitionProps,
 } from '../Transition';
-import { isDevelopment } from '../utils/env';
-import useEventCallback from '../hooks/useEventCallback';
 
 export type CSSTransitionClassesObject = {
   appearFrom?: string;
@@ -293,7 +293,7 @@ const CSSTransition: React.FunctionComponent<CSSTransitionProps> = (props) => {
   );
 };
 
-if (isDevelopment) {
+if (env.isDevelopment) {
   CSSTransition.displayName = 'CSSTransition';
 
   CSSTransition.propTypes = {

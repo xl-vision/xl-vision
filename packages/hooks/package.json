@@ -1,7 +1,7 @@
 {
-  "name": "@xl-vision/editor",
-  "version": "0.1.1-alpha.6",
-  "description": "xl-vision react editor.",
+  "name": "@xl-vision/hooks",
+  "version": "0.1.1-alpha.0",
+  "description": "The common hooks.",
   "author": "Rhys Xia <xrs4433@outlook.com>",
   "license": "MIT",
   "main": "legacy/index.js",
@@ -14,13 +14,13 @@
   "keywords": [
     "xl-vision",
     "react",
-    "styles"
+    "hooks"
   ],
-  "homepage": "https://xl-vision.8910.xyz/editor",
+  "homepage": "https://xl-vision.8910.xyz/hooks",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xl-vision/xl-vision.git",
-    "directory": "packages/react"
+    "directory": "packages/hooks"
   },
   "scripts": {
     "build:legacy": "node ../../scripts/build legacy",
@@ -31,15 +31,10 @@
   "bugs": {
     "url": "https://github.com/xl-vision/xl-vision/issues"
   },
-  "dependencies": {
-    "@babel/runtime": "^7.12.5",
-    "clsx": "^1.1.1",
-    "prop-types": "^15.7.2"
-  },
+  "dependencies": {},
   "peerDependencies": {
     "@types/react": "^16.8.0 || ^17.0.0",
-    "react": "^16.8.0 || ^17.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0"
+    "react": "^16.8.0 || ^17.0.0"
   },
   "peerDependenciesMeta": {
     "@types/react": {
