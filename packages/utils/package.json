@@ -1,6 +1,6 @@
 {
   "name": "@xl-vision/utils",
-  "version": "0.1.1-alpha.0",
+  "version": "0.1.1-alpha.7",
   "description": "The common utils.",
   "author": "Rhys Xia <xrs4433@outlook.com>",
   "license": "MIT",
@@ -31,8 +31,6 @@
   "bugs": {
     "url": "https://github.com/xl-vision/xl-vision/issues"
   },
-  "dependencies": {},
-  "peerDependencies": {},
   "peerDependenciesMeta": {},
   "sideEffects": false,
   "publishConfig": {

@@ -3,7 +3,7 @@
     "packages/*",
     "platforms/*"
   ],
-  "version": "0.1.1-alpha.6",
+  "version": "0.1.1-alpha.7",
   "granularPathspec": false,
   "command": {
     "publish": {
