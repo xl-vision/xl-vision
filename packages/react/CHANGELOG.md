@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1-alpha.7](https://github.com/xl-vision/xl-vision/compare/v0.1.1-alpha.6...v0.1.1-alpha.7) (2021-08-27)
+
+
+### Bug Fixes
+
+* types fixed ([86d1aaa](https://github.com/xl-vision/xl-vision/commit/86d1aaa1ac3515bc6a92d212020ffb7bb063e2ef))
+
+
+
+
+
 ## [0.1.1-alpha.6](https://github.com/xl-vision/xl-vision/compare/v0.1.1-alpha.5...v0.1.1-alpha.6) (2021-07-17)
 
 
