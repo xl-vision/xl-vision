@@ -1,5 +1,5 @@
 import React from 'react';
-import useLayoutEffect from '../useLayoutEffect';
+import { useLayoutEffect } from '@xl-vision/hooks';
 
 export default <T>(value: T) => {
   const ref = React.useRef<T>();
