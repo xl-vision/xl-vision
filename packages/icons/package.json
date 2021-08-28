@@ -1,6 +1,6 @@
 {
   "name": "@xl-vision/icons",
-  "version": "0.1.1-alpha.7",
+  "version": "0.1.1-alpha.9",
   "description": "xl-vision react components for icon.",
   "author": "Rhys Xia <xrs4433@outlook.com>",
   "license": "MIT",
@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.12.5",
-    "@xl-vision/utils": "^0.1.1-alpha.7",
+    "@xl-vision/utils": "^0.1.1-alpha.9",
     "clsx": "^1.1.1",
     "prop-types": "^15.7.2"
   },
