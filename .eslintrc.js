@@ -2,35 +2,31 @@ const confusingBrowserGlobals = require('confusing-browser-globals');
 const path = require('path');
 const fs = require('fs-extra');
 
-const resolvePackageNames = () => {
+const resolveAlias = () => {
   const basePath = path.join(__dirname, 'packages');
 
   const files = fs.readdirSync(basePath);
 
-  const packageNames = files
-    .map((it) => path.join(basePath, it, 'package.json'))
+  return files
+    .map((it) => path.join(basePath, it))
     .map((it) => {
-      if (fs.pathExistsSync(it)) {
-        return fs.readJSONSync(it).name;
+      const pkgPath = path.join(it, 'package.json');
+      const srcPath = path.join(it, 'src');
+      if (fs.pathExistsSync(pkgPath)) {
+        return {
+          name: fs.readJSONSync(pkgPath).name,
+          path: srcPath,
+        };
       }
       return undefined;
-    });
-
-  const existsSrcs = files
-    .map((it) => path.join(basePath, it, 'src'))
-    .map((it) => fs.pathExistsSync(it));
-
-  const ignores = [];
-  for (let i = 0; i < files.length; i++) {
-    if (packageNames[i] && existsSrcs[i]) {
-      ignores.push(packageNames[i]);
-    }
-  }
-
-  return ignores;
+    })
+    .filter(Boolean)
+    .reduce((a, b) => ({ ...a, [b.name]: b.path }), {});
 };
 
-const ignorePackages = resolvePackageNames();
+const ignorePackages = [];
+
+const alias = resolveAlias();
 
 module.exports = {
   root: true,
@@ -43,6 +39,13 @@ module.exports = {
   settings: {
     react: {
       version: '16.8',
+    },
+    'import/resolver': {
+      'eslint-import-resolver-custom-alias': {
+        alias,
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        packages: ['packages/*'],
+      },
     },
   },
   parserOptions: {
@@ -58,12 +61,7 @@ module.exports = {
         devDependencies: ['scripts/**', './.*.js'],
       },
     ],
-    'import/no-unresolved': [
-      'error',
-      {
-        ignore: ignorePackages,
-      },
-    ],
+    'import/no-unresolved': ['error'],
     // Strict, airbnb is using warn; allow warn and error for dev environments
     'no-console': ['error', { allow: ['warn', 'error'] }],
     'nonblock-statement-body-position': 'error',
