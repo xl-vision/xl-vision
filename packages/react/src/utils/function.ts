@@ -76,7 +76,7 @@ export default function deepMerge<T>(
   if (isPlainObject(target) && isPlainObject(source)) {
     Object.keys(source).forEach((key) => {
       // Avoid prototype pollution
-      if (key === '__proto__') {
+      if (key === '__proto__' || key === 'constructor') {
         return;
       }
 
