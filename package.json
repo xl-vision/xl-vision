@@ -19,10 +19,9 @@
     "icon:generate": "cd packages/icons && npm run generate",
     "commit": "git-cz",
     "test": "jest",
-    "clean": "node ./scripts/cleanDist.js",
     "lint": "eslint . --cache --report-unused-disable-directives --ext .js,.ts,.jsx,.tsx --max-warnings 0",
-    "build": "npm run clean && lerna run --parallel --scope \"@xl-vision/*\" build",
-    "publish": "npm run build && lerna publish prerelease --conventional-commits",
+    "build": "lerna run --parallel --scope \"@xl-vision/*\" build",
+    "publish": "lerna publish prerelease --conventional-commits",
     "bootstrap": "lerna bootstrap"
   },
   "devDependencies": {

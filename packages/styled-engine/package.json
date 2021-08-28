@@ -48,9 +48,6 @@
     },
     "@types/styled-components": {
       "optional": true
-    },
-    "@xl-vision/styled-engine-types": {
-      "optional": true
     }
   },
   "sideEffects": false,
