@@ -97,9 +97,9 @@ const Header = () => {
           <li>
             <NavLink to='/components'>{locale.header.component}</NavLink>
           </li>
-          {/* <li>
-            <NavLink to='/editor'>{locale.header.editor}</NavLink>
-          </li> */}
+          <li>
+            <NavLink to='/hooks'>{locale.header.hooks}</NavLink>
+          </li>
         </Menus>
         <div>
           <Dropdown

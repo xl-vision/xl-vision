@@ -1,9 +1,9 @@
 import components from './components';
-// import editor from './editor';
+import hooks from './hooks';
 
 export * from './types';
 
 export default {
   components,
-  // editor,
+  hooks,
 };

@@ -1,7 +1,7 @@
 {
   "name": "@xl-vision/utils",
   "version": "0.1.1-alpha.7",
-  "description": "The common utils.",
+  "description": "xl-vision useful utilities.",
   "author": "Rhys Xia <xrs4433@outlook.com>",
   "license": "MIT",
   "main": "legacy/index.js",

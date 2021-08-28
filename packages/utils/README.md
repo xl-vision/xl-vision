@@ -1,11 +1,11 @@
-# `@xl-vision/styled-engine`
+# `@xl-vision/utils`
 
 > TODO: description
 
 ## Usage
 
 ```
-const styledEngine = require('@xl-vision/styled-engine');
+import { env } from '@xl-vision/utils'
 
 // TODO: DEMONSTRATE API
 ```

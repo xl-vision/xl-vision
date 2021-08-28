@@ -18,7 +18,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xl-vision/xl-vision.git",
-    "directory": "packages/styled-engine"
+    "directory": "packages/styled-engine-types"
   },
   "scripts": {},
   "bugs": {
