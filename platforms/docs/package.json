@@ -15,11 +15,11 @@
     "@types/react-dom": "^17.0.0",
     "@types/react-router-dom": "^5.1.7",
     "@types/styled-components": "^5.1.7",
-    "@xl-vision/hooks": "^0.1.1-alpha.7",
-    "@xl-vision/icons": "^0.1.1-alpha.7",
-    "@xl-vision/react": "^0.1.1-alpha.8",
-    "@xl-vision/styled-engine": "^0.1.1-alpha.8",
-    "@xl-vision/utils": "^0.1.1-alpha.7",
+    "@xl-vision/hooks": "^0.1.1-alpha.9",
+    "@xl-vision/icons": "^0.1.1-alpha.9",
+    "@xl-vision/react": "^0.1.1-alpha.9",
+    "@xl-vision/styled-engine": "^0.1.1-alpha.9",
+    "@xl-vision/utils": "^0.1.1-alpha.9",
     "clsx": "^1.1.1",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",
@@ -62,5 +62,5 @@
     "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.8.0"
   },
-  "version": "0.1.1-alpha.8"
+  "version": "0.1.1-alpha.9"
 }
