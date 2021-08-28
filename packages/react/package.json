@@ -34,6 +34,7 @@
   "dependencies": {
     "@babel/runtime": "^7.12.5",
     "@popperjs/core": "^2.9.0",
+    "@xl-vision/hooks": "^0.1.1-alpha.9",
     "@xl-vision/icons": "^0.1.1-alpha.9",
     "@xl-vision/styled-engine": "^0.1.1-alpha.9",
     "@xl-vision/utils": "^0.1.1-alpha.9",
