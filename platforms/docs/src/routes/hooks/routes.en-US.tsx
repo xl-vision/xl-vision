@@ -5,7 +5,7 @@ const routes: Array<Route> = [
   {
     name: 'Overview',
     path: '/',
-    component: () => import('../../views/editor/index.en-US.mdx'),
+    component: () => import('../../views/hooks/index.en-US.mdx'),
   },
 ];
 

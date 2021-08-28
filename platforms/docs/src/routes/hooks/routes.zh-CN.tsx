@@ -5,7 +5,7 @@ const routes: Array<Route> = [
   {
     name: '总览',
     path: '/',
-    component: () => import('../../views/editor/index.zh-CN.mdx'),
+    component: () => import('../../views/hooks/index.zh-CN.mdx'),
   },
 ];
 
