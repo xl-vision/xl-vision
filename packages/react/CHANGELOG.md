@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1-alpha.10](https://github.com/xl-vision/xl-vision/compare/v0.1.1-alpha.9...v0.1.1-alpha.10) (2021-08-28)
+
+**Note:** Version bump only for package @xl-vision/react
+
+
+
+
+
 ## [0.1.1-alpha.9](https://github.com/xl-vision/xl-vision/compare/v0.1.1-alpha.8...v0.1.1-alpha.9) (2021-08-28)
 
 **Note:** Version bump only for package @xl-vision/react
