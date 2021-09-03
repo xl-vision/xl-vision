@@ -25,7 +25,7 @@
     "url": "https://github.com/xl-vision/xl-vision/issues"
   },
   "dependencies": {
-    "csstype": "^3.0.6"
+    "csstype": "^3.0.8"
   },
   "peerDependencies": {
     "@types/react": "^16.8.0 || ^17.0.0"

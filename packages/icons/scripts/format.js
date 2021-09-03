@@ -39,11 +39,10 @@ const config = {
     'convertShapeToPath',
     'sortAttrs',
     'removeDimensions',
-    'removeAttrs',
     'removeElementsByAttr',
     'removeStyleElement',
     'removeScriptElement',
-    { name: 'removeAttrs', attrs: '(stroke|fill)' },
+    { name: 'removeAttrs', params: { attrs: '(stroke|fill)' } },
   ],
 };
 
