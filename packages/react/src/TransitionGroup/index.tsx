@@ -83,7 +83,11 @@ const TransitionGroup: React.FunctionComponent<TransitionGroupProps> = (props) =
     const prevChildren = prevChildrenRef.current;
     const array = prevChildren
       ? diff(prevChildren, children)
-      : React.Children.map(children, (it) => ({ prev: [it], next: [it], same: true }));
+      : React.Children.map<DiffData, React.ReactElement>(children, (it) => ({
+          prev: [it],
+          next: [it],
+          same: true,
+        }));
 
     setDiffArray(array);
 

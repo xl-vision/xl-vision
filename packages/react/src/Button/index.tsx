@@ -1,9 +1,8 @@
-import { CSSObject } from '@xl-vision/styled-engine-types';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { LoadingOutlined } from '@xl-vision/icons';
-import { keyframes } from '@xl-vision/styled-engine';
+import { keyframes, CSSObject } from '@xl-vision/styled-engine';
 import { env } from '@xl-vision/utils';
 import BaseButton, { BaseButtonProps } from '../BaseButton';
 import Icon from '../Icon';

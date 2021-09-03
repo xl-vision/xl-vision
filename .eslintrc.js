@@ -43,7 +43,7 @@ module.exports = {
     'import/resolver': {
       'eslint-import-resolver-custom-alias': {
         alias,
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
         packages: ['packages/*'],
       },
     },

@@ -1,7 +1,7 @@
 import React from 'react';
 import Proptypes from 'prop-types';
 import clsx from 'clsx';
-import { CSSObject } from '@xl-vision/styled-engine-types';
+import { CSSObject } from '@xl-vision/styled-engine';
 import { env } from '@xl-vision/utils';
 import Dialog, { DialogProps } from '../Dialog';
 import { styled } from '../../styles';

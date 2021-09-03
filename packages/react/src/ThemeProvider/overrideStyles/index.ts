@@ -1,4 +1,4 @@
-import { CSSObject, FunctionInterpolation } from '@xl-vision/styled-engine-types';
+import { CSSObject, FunctionInterpolation } from '@xl-vision/styled-engine';
 import { ButtonPrefixStyleProps, ButtonStyleProps, ButtonSuffixStyleProps } from '../../Button';
 import { BaseButtonStyleProps } from '../../BaseButton';
 import { RowProps } from '../../Row';
@@ -7,7 +7,7 @@ import { Theme } from '../createTheme';
 export type Style<
   S extends {} | undefined = undefined,
   P extends {} = {},
-  ST = S extends undefined ? { theme: Theme } : { styleProps: S; theme: Theme }
+  ST = S extends undefined ? { theme: Theme } : { styleProps: S; theme: Theme },
 > = TemplateStringsArray | CSSObject | FunctionInterpolation<P & ST>;
 
 export type OverrideStyles = Partial<{

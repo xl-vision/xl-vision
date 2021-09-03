@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 const { pathsToModuleNameMapper } = require('ts-jest/utils');
-const { compilerOptions } = require('./tsconfig');
+const { compilerOptions } = require('./tsconfig.json');
 
 module.exports = {
   verbose: true,

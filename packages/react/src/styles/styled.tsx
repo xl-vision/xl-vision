@@ -1,11 +1,10 @@
-import {
+import innerStyled, {
   CSSObject,
   ExtractProps,
   FunctionInterpolation,
   Interpolation,
   ShouldForwardProp,
-} from '@xl-vision/styled-engine-types';
-import innerStyled from '@xl-vision/styled-engine';
+} from '@xl-vision/styled-engine';
 import React from 'react';
 import { env } from '@xl-vision/utils';
 import { Theme } from '../ThemeProvider/createTheme';
@@ -28,7 +27,7 @@ const middleline = (str: string) => {
 
 const styled = <
   Tag extends keyof JSX.IntrinsicElements | React.ComponentType<React.ComponentProps<Tag>>,
-  ForwardedProps extends keyof ExtractProps<Tag> = keyof ExtractProps<Tag>
+  ForwardedProps extends keyof ExtractProps<Tag> = keyof ExtractProps<Tag>,
 >(
   tag: Tag,
   options?: XlOptions,
@@ -54,7 +53,7 @@ const styled = <
     S extends {} | undefined = undefined,
     P extends Pick<ExtractProps<Tag>, ForwardedProps> = Pick<ExtractProps<Tag>, ForwardedProps>,
     E = S extends undefined ? { theme: Theme } : { styleProps: S; theme: Theme },
-    V = Omit<E, 'theme'> & { theme?: Theme }
+    V = Omit<E, 'theme'> & { theme?: Theme },
   >(
     first: TemplateStringsArray | CSSObject | FunctionInterpolation<P & E>,
     ...styles: Array<Interpolation<P & E>>

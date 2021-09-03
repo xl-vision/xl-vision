@@ -1,4 +1,4 @@
-import { CSSObject, CSSProperties } from '@xl-vision/styled-engine-types';
+import { CSSObject, CSSProperties } from '@xl-vision/styled-engine';
 
 export type FontWeightKey = 'light' | 'regular' | 'medium' | 'bold';
 

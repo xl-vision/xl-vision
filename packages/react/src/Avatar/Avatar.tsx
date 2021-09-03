@@ -1,4 +1,4 @@
-import { CSSObject } from '@xl-vision/styled-engine-types';
+import { CSSObject } from '@xl-vision/styled-engine';
 import clsx from 'clsx';
 import React from 'react';
 import PropTypes from 'prop-types';
