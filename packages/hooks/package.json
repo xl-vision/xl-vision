@@ -1,6 +1,6 @@
 {
   "name": "@xl-vision/hooks",
-  "version": "0.1.1-alpha.9",
+  "version": "0.1.1-alpha.11",
   "description": "xl-vision useful hooks.",
   "author": "Rhys Xia <xrs4433@outlook.com>",
   "license": "MIT",
@@ -32,7 +32,7 @@
     "url": "https://github.com/xl-vision/xl-vision/issues"
   },
   "dependencies": {
-    "@xl-vision/utils": "^0.1.1-alpha.9"
+    "@xl-vision/utils": "^0.1.1-alpha.11"
   },
   "peerDependencies": {
     "@babel/runtime": "^7.15.4",

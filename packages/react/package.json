@@ -1,6 +1,6 @@
 {
   "name": "@xl-vision/react",
-  "version": "0.1.1-alpha.10",
+  "version": "0.1.1-alpha.11",
   "description": "xl-vision react components.",
   "author": "Rhys Xia <xrs4433@outlook.com>",
   "license": "MIT",
@@ -33,10 +33,10 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.10.1",
-    "@xl-vision/hooks": "^0.1.1-alpha.9",
-    "@xl-vision/icons": "^0.1.1-alpha.9",
-    "@xl-vision/styled-engine": "^0.1.1-alpha.10",
-    "@xl-vision/utils": "^0.1.1-alpha.9",
+    "@xl-vision/hooks": "^0.1.1-alpha.11",
+    "@xl-vision/icons": "^0.1.1-alpha.11",
+    "@xl-vision/styled-engine": "^0.1.1-alpha.11",
+    "@xl-vision/utils": "^0.1.1-alpha.11",
     "clsx": "^1.1.1",
     "prop-types": "^15.7.2",
     "resize-observer-polyfill": "^1.5.1"
