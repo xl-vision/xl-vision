@@ -1,6 +1,6 @@
 {
   "name": "@xl-vision/styled-engine",
-  "version": "0.1.1-alpha.10",
+  "version": "0.1.1-alpha.11",
   "description": "xl-vision Styles - The styling solution of xl-vision.",
   "author": "Rhys Xia <xrs4433@outlook.com>",
   "license": "MIT",
@@ -35,7 +35,7 @@
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
-    "@xl-vision/styled-engine-types": "^0.1.1-alpha.9"
+    "@xl-vision/styled-engine-types": "^0.1.1-alpha.11"
   },
   "peerDependencies": {
     "@babel/runtime": "^7.15.4",
