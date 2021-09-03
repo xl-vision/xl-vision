@@ -32,8 +32,7 @@
     "url": "https://github.com/xl-vision/xl-vision/issues"
   },
   "dependencies": {
-    "@babel/runtime": "^7.12.5",
-    "@popperjs/core": "^2.9.0",
+    "@popperjs/core": "^2.10.1",
     "@xl-vision/hooks": "^0.1.1-alpha.9",
     "@xl-vision/icons": "^0.1.1-alpha.9",
     "@xl-vision/styled-engine": "^0.1.1-alpha.10",
@@ -43,6 +42,7 @@
     "resize-observer-polyfill": "^1.5.1"
   },
   "peerDependencies": {
+    "@babel/runtime": "^7.15.4",
     "@types/react": "^16.8.0 || ^17.0.0",
     "react": "^16.8.0 || ^17.0.0",
     "react-dom": "^16.8.0 || ^17.0.0"

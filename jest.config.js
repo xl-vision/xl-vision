@@ -8,6 +8,7 @@ module.exports = {
   // testEnvironment: 'node',
   setupFiles: ['./test/setup.js'],
   setupFilesAfterEnv: ['./test/setup.env.js'],
+  testEnvironment: 'jsdom',
   testMatch: [
     '<rootDir>/test/__test__/*.{ts,tsx}',
     '<rootDir>/packages/*/src/**/__test__/*.{ts,tsx}',

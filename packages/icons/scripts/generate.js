@@ -65,7 +65,9 @@ async function generate() {
     }
   }
 
-  await fs.writeJSON(metadataPath, metadata);
+  await fs.writeJSON(metadataPath, metadata, {
+    spaces: 2,
+  });
 
   await fs.writeFile(path.resolve(destPath, 'index.ts'), indexContent);
 }
