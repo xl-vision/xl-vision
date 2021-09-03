@@ -8,7 +8,9 @@
   "command": {
     "publish": {
       "ignoreChanges": [
-        "*.mdx"
+        "*.mdx",
+        "**/test/**",
+        "platforms/**"
       ],
       "message": "chore(release): publish"
     },

@@ -112,7 +112,7 @@ const IconSearch: React.FunctionComponent<void> = () => {
         return false;
       })
       .map((iconName) => {
-        const Comp = ((Icons as unknown) as IconComponentMap)[iconName];
+        const Comp = (Icons as unknown as IconComponentMap)[iconName];
         return (
           <IconWrapper
             key={iconName}

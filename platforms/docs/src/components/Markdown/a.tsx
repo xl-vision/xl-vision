@@ -13,7 +13,6 @@ const LinkWrapper = styled('a')(
 );
 
 const Link: React.FunctionComponent<React.AnchorHTMLAttributes<HTMLAnchorElement>> = (props) => {
-  // eslint-disable-next-line react/prop-types
   const { href, ...others } = props;
 
   if (href) {

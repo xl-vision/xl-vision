@@ -24,7 +24,7 @@ export type BaseButtonStyleProps = {
   disabled?: boolean;
 };
 
-const BaseButtonRoot = (styled('button', {
+const BaseButtonRoot = styled('button', {
   name: displayName,
   slot: 'Root',
 })<BaseButtonStyleProps>(({ styleProps, theme }) => {
@@ -78,7 +78,7 @@ const BaseButtonRoot = (styled('button', {
     },
   };
   // fix type warning
-}) as unknown) as React.ComponentType<any>;
+}) as unknown as React.ComponentType<any>;
 
 const BaseButtonInner = styled('span', {
   name: displayName,
@@ -118,7 +118,7 @@ const BaseButton = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseB
 
     const { clsPrefix } = React.useContext(ThemeContext);
 
-    const Component = ((others as unknown) as HTMLAnchorElement).href ? 'a' : 'button';
+    const Component = (others as unknown as HTMLAnchorElement).href ? 'a' : 'button';
 
     const rippleRef = React.useRef<RippleRef>(null);
     const isKeyDownRef = React.useRef(false);

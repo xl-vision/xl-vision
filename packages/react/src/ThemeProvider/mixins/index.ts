@@ -1,4 +1,4 @@
-import { CSSObject } from '@xl-vision/styled-engine-types';
+import { CSSObject } from '@xl-vision/styled-engine';
 
 export type MixinName = 'clearfix';
 

@@ -33,12 +33,15 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.12.5",
-    "@xl-vision/styled-engine-types": "^0.1.1-alpha.9",
     "prop-types": "^15.7.2"
+  },
+  "devDependencies": {
+    "@xl-vision/styled-engine-types": "^0.1.1-alpha.9"
   },
   "peerDependencies": {
     "@types/react": "^16.8.0 || ^17.0.0",
     "@types/styled-components": "^5.1.7",
+    "@xl-vision/styled-engine-types": "^0.1.1-alpha.9",
     "react": "^16.8.0 || ^17.0.0",
     "styled-components": "^5.2.1"
   },
@@ -47,6 +50,9 @@
       "optional": true
     },
     "@types/styled-components": {
+      "optional": true
+    },
+    "@xl-vision/styled-engine-types": {
       "optional": true
     }
   },

@@ -1,4 +1,4 @@
-import { CSSObject } from '@xl-vision/styled-engine-types';
+import { CSSObject } from '@xl-vision/styled-engine';
 
 const defaultFunctions = {
   deceleration: 'cubic-bezier(0, 0, 0.2, 1)',

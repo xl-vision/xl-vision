@@ -12,7 +12,7 @@ export type EventMap<T extends EventObject> = T extends Window
 
 export type EventType<
   T extends EventObject,
-  K extends keyof EventMap<T>
+  K extends keyof EventMap<T>,
 > = K extends keyof WindowEventMap
   ? WindowEventMap[K]
   : K extends keyof DocumentEventMap
