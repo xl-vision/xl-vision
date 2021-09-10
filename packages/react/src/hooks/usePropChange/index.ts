@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEventCallback } from '@xl-vision/hooks';
+import { useConstantFn } from '@xl-vision/hooks';
 
 export default <T>(
   defaultProp: T,
@@ -14,7 +14,7 @@ export default <T>(
     return defaultProp;
   });
 
-  const handleChange = useEventCallback((newValue: T) => {
+  const handleChange = useConstantFn((newValue: T) => {
     if (prop === undefined) {
       setValue(newValue);
     }
@@ -24,7 +24,7 @@ export default <T>(
   });
 
   // eslint-disable-next-line @typescript-eslint/no-shadow
-  const prePropChangeHandlerWrapper = useEventCallback((prop: T) => {
+  const prePropChangeHandlerWrapper = useConstantFn((prop: T) => {
     prePropChangeHandler?.(prop);
     setValue(prop);
   });

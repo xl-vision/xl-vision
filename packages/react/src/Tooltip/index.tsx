@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import React from 'react';
 import { env } from '@xl-vision/utils';
-import { useEventCallback } from '@xl-vision/hooks';
+import { useConstantFn } from '@xl-vision/hooks';
 import Popper, { PopperChildrenProps, PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
 import ThemeContext from '../ThemeProvider/ThemeContext';
@@ -153,7 +153,7 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
   }, [trigger]);
 
   // eslint-disable-next-line @typescript-eslint/no-shadow
-  const handleVisibleChange = useEventCallback((visible: boolean) => {
+  const handleVisibleChange = useConstantFn((visible: boolean) => {
     // 当前正处于touch事件中，阻止其他事件
     if (touch) {
       return;
@@ -176,7 +176,7 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
     }
   }, []);
 
-  const isTouchTrigger = useEventCallback(() => {
+  const isTouchTrigger = useConstantFn(() => {
     const triggers = Array.isArray(trigger) ? trigger : [trigger];
     if (oneOf(triggers, 'custom')) {
       return false;
@@ -184,7 +184,7 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
     return oneOf(triggers, 'touch');
   });
 
-  const handleReferenceTouchStart: React.TouchEventHandler<any> = useEventCallback((e) => {
+  const handleReferenceTouchStart: React.TouchEventHandler<any> = useConstantFn((e) => {
     if (isTouchTrigger()) {
       stopTouchInteraction();
       prevUserSelectRef.current = document.body.style.webkitUserSelect;
@@ -200,7 +200,7 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
     child.props?.onTouchStart?.(e);
   });
 
-  const handleReferenceTouchEnd: React.TouchEventHandler<any> = useEventCallback((e) => {
+  const handleReferenceTouchEnd: React.TouchEventHandler<any> = useConstantFn((e) => {
     if (isTouchTrigger()) {
       // call after mouseenter
       stopTouchInteraction();
@@ -213,7 +213,7 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
     child.props?.onTouchEnd?.(e);
   });
 
-  const handleAfterClosed = useEventCallback(() => {
+  const handleAfterClosed = useConstantFn(() => {
     if (touch) {
       setTouch(false);
     }

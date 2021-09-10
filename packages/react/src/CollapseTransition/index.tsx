@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { env } from '@xl-vision/utils';
-import { useEventCallback } from '@xl-vision/hooks';
+import { useConstantFn } from '@xl-vision/hooks';
 import CSSTransition, { CSSTransitionProps, CSSTransitionElement } from '../CSSTransition';
 import { forceReflow } from '../utils/transition';
 import { removeClass, addClass } from '../utils/class';
@@ -45,7 +45,7 @@ const CollapseTransition: React.FunctionComponent<CollapseTransitionProp> = (pro
     };
   }, [horizontal]);
 
-  const beforeEnterWrapper: BeforeEventHook = useEventCallback(
+  const beforeEnterWrapper: BeforeEventHook = useConstantFn(
     (el: CollapseTransitionElement, transitionOnFirst) => {
       const { padding1, padding2, size, actualSize } = mappings;
 
@@ -86,7 +86,7 @@ const CollapseTransition: React.FunctionComponent<CollapseTransitionProp> = (pro
     },
   );
 
-  const enterWrapper: EventHook = useEventCallback(
+  const enterWrapper: EventHook = useConstantFn(
     (
       el: CollapseTransitionElement,
       done: () => void,
@@ -103,7 +103,7 @@ const CollapseTransition: React.FunctionComponent<CollapseTransitionProp> = (pro
     },
   );
 
-  const afterEnterWrapper: AfterEventHook = useEventCallback(
+  const afterEnterWrapper: AfterEventHook = useConstantFn(
     (el: CollapseTransitionElement, transitionOnFirst) => {
       const { size } = mappings;
 
@@ -114,7 +114,7 @@ const CollapseTransition: React.FunctionComponent<CollapseTransitionProp> = (pro
     },
   );
 
-  const enterCancelledWrapper: EventCancelledHook = useEventCallback(
+  const enterCancelledWrapper: EventCancelledHook = useConstantFn(
     (el: CollapseTransitionElement, transitionOnFirst) => {
       const { padding1, padding2, size } = mappings;
       el._cancelled__ = true;
@@ -126,7 +126,7 @@ const CollapseTransition: React.FunctionComponent<CollapseTransitionProp> = (pro
     },
   );
 
-  const beforeLeaveWrapper: BeforeEventHook = useEventCallback(
+  const beforeLeaveWrapper: BeforeEventHook = useConstantFn(
     (el: CollapseTransitionElement, transitionOnFirst) => {
       const { padding1, padding2, size, actualSize } = mappings;
 
@@ -146,7 +146,7 @@ const CollapseTransition: React.FunctionComponent<CollapseTransitionProp> = (pro
     },
   );
 
-  const leaveWrapper: EventHook = useEventCallback(
+  const leaveWrapper: EventHook = useConstantFn(
     (
       el: CollapseTransitionElement,
       done: () => void,
@@ -163,7 +163,7 @@ const CollapseTransition: React.FunctionComponent<CollapseTransitionProp> = (pro
     },
   );
 
-  const afterLeaveWrapper: AfterEventHook = useEventCallback(
+  const afterLeaveWrapper: AfterEventHook = useConstantFn(
     (el: CollapseTransitionElement, transitionOnFirst) => {
       const { padding1, padding2, size } = mappings;
 
@@ -177,7 +177,7 @@ const CollapseTransition: React.FunctionComponent<CollapseTransitionProp> = (pro
     },
   );
 
-  const leaveCancelledWrapper: EventCancelledHook = useEventCallback(
+  const leaveCancelledWrapper: EventCancelledHook = useConstantFn(
     (el: CollapseTransitionElement, transitionOnFirst) => {
       const { padding1, padding2, size } = mappings;
 

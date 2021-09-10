@@ -2,7 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 import Proptypes from 'prop-types';
 import { env } from '@xl-vision/utils';
-import { useEventCallback } from '@xl-vision/hooks';
+import { useConstantFn } from '@xl-vision/hooks';
 import Modal, { ModalProps } from '../Modal';
 import ThemeContext from '../ThemeProvider/ThemeContext';
 import { styled } from '../styles';
@@ -132,7 +132,7 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
     uuid++;
   }, [clsPrefix]);
 
-  const handleConfirm = useEventCallback(() => {
+  const handleConfirm = useConstantFn(() => {
     if (onConfirm) {
       const p = onConfirm();
       if (p && p.then) {
@@ -149,7 +149,7 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
     setVisible(false);
   });
 
-  const handleCancel = useEventCallback(() => {
+  const handleCancel = useConstantFn(() => {
     if (onCancel) {
       const p = onCancel();
       if (p && p.then) {
@@ -166,7 +166,7 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
     setVisible(false);
   });
 
-  const handleVisibleChange = useEventCallback((_visible: boolean) => {
+  const handleVisibleChange = useConstantFn((_visible: boolean) => {
     setVisible(_visible);
     if (!_visible) {
       onCancel?.();

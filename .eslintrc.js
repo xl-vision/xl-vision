@@ -105,7 +105,7 @@ module.exports = {
           camelCase: true,
           pascalCase: true,
         },
-        ignore: [/^.*\.config.js$/, /^en-US.ts$/, /^zh-CN.ts$/],
+        ignore: [/^.*\.config\.js$/, /^en-US\.ts$/, /^zh-CN\.ts$/],
       },
     ],
     'unicorn/better-regex': 'error',
@@ -177,6 +177,21 @@ module.exports = {
         'import/no-extraneous-dependencies': 'off',
         'import/no-named-as-default': 'off',
         'unicorn/consistent-function-scoping': 'off',
+      },
+    },
+    {
+      files: ['platforms/docs/src/**/*.ts', 'platforms/docs/src/**/*.tsx'],
+      rules: {
+        'unicorn/filename-case': [
+          'error',
+          {
+            cases: {
+              camelCase: true,
+              pascalCase: true,
+            },
+            ignore: [/^routes\.([A-Za-z]|-)+\.tsx?$/],
+          },
+        ],
       },
     },
   ],

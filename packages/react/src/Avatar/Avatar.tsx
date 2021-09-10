@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { env } from '@xl-vision/utils';
-import { useEventCallback, useForkRef } from '@xl-vision/hooks';
+import { useConstantFn, useForkRef } from '@xl-vision/hooks';
 import useResize from '../hooks/useResizeObserver';
 import { styled } from '../styles';
 import ThemeContext from '../ThemeProvider/ThemeContext';
@@ -112,7 +112,7 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
 
   const [isImgExist, setImgExist] = React.useState(true);
 
-  const handleResize = useEventCallback(() => {
+  const handleResize = useConstantFn(() => {
     const node = nodeRef.current;
     const child = childRef.current;
     if (!node || !child) {

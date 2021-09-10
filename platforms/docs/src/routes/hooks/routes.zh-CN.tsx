@@ -1,4 +1,3 @@
-// eslint-disable-next-line unicorn/filename-case
 import { Route } from '../types';
 
 const routes: Array<Route> = [

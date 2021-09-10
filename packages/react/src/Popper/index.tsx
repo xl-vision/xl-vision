@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { Instance, Placement, createPopper, Modifier } from '@popperjs/core';
 import clsx from 'clsx';
 import { env } from '@xl-vision/utils';
-import { useForkRef, useEventCallback } from '@xl-vision/hooks';
+import { useForkRef, useConstantFn } from '@xl-vision/hooks';
 import CSSTransition, { CSSTransitionElement, CSSTransitionProps } from '../CSSTransition';
 import Portal, { PortalContainerType } from '../Portal';
 import { addClass, removeClass } from '../utils/class';
@@ -140,7 +140,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     return ReactDOM.findDOMNode(referenceRef.current) as HTMLElement;
   }, []);
 
-  const show = useEventCallback(() => {
+  const show = useConstantFn(() => {
     const popupEl = popupNodeRef.current!;
 
     const modifiers: Array<Partial<Modifier<any, any>>> = [
@@ -237,7 +237,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     popupEl.style.zIndex = `${increaseZindex()}`;
   });
 
-  const close = useEventCallback(() => {
+  const close = useConstantFn(() => {
     popperInstanceRef.current?.destroy();
     popperInstanceRef.current = undefined;
     if (popupNodeRef.current) {
@@ -246,7 +246,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     onAfterClosed?.();
   });
 
-  const setVisibleWrapper = useEventCallback((newVisible: boolean) => {
+  const setVisibleWrapper = useConstantFn((newVisible: boolean) => {
     if (timerRef.current !== undefined) {
       clearTimeout(timerRef.current);
     }
@@ -266,7 +266,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     }, Math.max(TIME_DELAY, newVisible ? showDelay : hideDelay));
   });
 
-  const isTrigger = useEventCallback((checkedTrigger: PopperTrigger) => {
+  const isTrigger = useConstantFn((checkedTrigger: PopperTrigger) => {
     const triggers = Array.isArray(trigger) ? trigger : [trigger];
     if (oneOf(triggers, 'custom')) {
       return false;
@@ -274,7 +274,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     return oneOf(triggers, checkedTrigger);
   });
 
-  const handleReferenceClick: React.MouseEventHandler<any> = useEventCallback((e) => {
+  const handleReferenceClick: React.MouseEventHandler<any> = useConstantFn((e) => {
     if (isTrigger('click')) {
       // 保证在handleClickOutside和handleContextMenuOutside后执行
       const timer = setTimeout(() => {
@@ -287,35 +287,35 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     child.props?.onClick?.(e);
   });
 
-  const handleReferenceMouseEnter: React.MouseEventHandler<any> = useEventCallback((e) => {
+  const handleReferenceMouseEnter: React.MouseEventHandler<any> = useConstantFn((e) => {
     if (isTrigger('hover')) {
       setVisibleWrapper(true);
     }
     child.props?.onMouseEnter?.(e);
   });
 
-  const handleReferenceMouseLeave: React.MouseEventHandler<any> = useEventCallback((e) => {
+  const handleReferenceMouseLeave: React.MouseEventHandler<any> = useConstantFn((e) => {
     if (isTrigger('hover')) {
       setVisibleWrapper(false);
     }
     child.props?.onMouseLeave?.(e);
   });
 
-  const handleReferenceFocus: React.MouseEventHandler<any> = useEventCallback((e) => {
+  const handleReferenceFocus: React.MouseEventHandler<any> = useConstantFn((e) => {
     if (isTrigger('focus')) {
       setVisibleWrapper(true);
     }
     child.props?.onFocus?.(e);
   });
 
-  const handleReferenceBlur: React.MouseEventHandler<any> = useEventCallback((e) => {
+  const handleReferenceBlur: React.MouseEventHandler<any> = useConstantFn((e) => {
     if (isTrigger('focus')) {
       setVisibleWrapper(false);
     }
     child.props?.onBlur?.(e);
   });
 
-  const handleReferenceContextMenu: React.MouseEventHandler<any> = useEventCallback((e) => {
+  const handleReferenceContextMenu: React.MouseEventHandler<any> = useConstantFn((e) => {
     if (isTrigger('contextMenu')) {
       // 保证在handleClickOutside和handleContextMenuOutside后执行
       const timer = setTimeout(() => {
@@ -328,7 +328,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     child.props?.onContextMenu?.(e);
   });
 
-  const handleClickOutside = useEventCallback(() => {
+  const handleClickOutside = useConstantFn(() => {
     if (isTrigger('click') || isTrigger('contextMenu')) {
       setVisibleWrapper(false);
     }
@@ -336,7 +336,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
 
   const handleContextMenuOutside = handleClickOutside;
 
-  const handlePopupClick = useEventCallback(() => {
+  const handlePopupClick = useConstantFn(() => {
     if (disablePopupEnter) {
       return;
     }
@@ -352,7 +352,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
 
   const handlePopupContextClick = handlePopupClick;
 
-  const handlePopupMouseEnter = useEventCallback(() => {
+  const handlePopupMouseEnter = useConstantFn(() => {
     if (disablePopupEnter) {
       setVisibleWrapper(false);
       return;
@@ -362,7 +362,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     }
   });
 
-  const handlePopupMouseLeave = useEventCallback(() => {
+  const handlePopupMouseLeave = useConstantFn(() => {
     if (isTrigger('hover')) {
       setVisibleWrapper(false);
     }
@@ -408,7 +408,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     };
   }, [handleClickOutside, handleContextMenuOutside]);
 
-  const beforeEnter = useEventCallback((el: CSSTransitionElement) => {
+  const beforeEnter = useConstantFn((el: CSSTransitionElement) => {
     // 移除transition class对定位的干扰
     removeClass(el, el._ctc?.enterActive || '');
     removeClass(el, el._ctc?.enterFrom || '');
@@ -420,7 +420,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     addClass(el, el._ctc?.enterActive || '');
   });
 
-  const afterLeave = useEventCallback((el: HTMLElement) => {
+  const afterLeave = useConstantFn((el: HTMLElement) => {
     close();
     el.style.display = 'none';
     setAnimatedVisible(false);
