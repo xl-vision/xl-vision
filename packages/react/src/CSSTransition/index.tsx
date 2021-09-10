@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { env } from '@xl-vision/utils';
-import { useEventCallback } from '@xl-vision/hooks';
+import { useConstantFn } from '@xl-vision/hooks';
 import { addClass, removeClass } from '../utils/class';
 import { nextFrame, onTransitionEnd } from '../utils/transition';
 import Transition, {
@@ -100,7 +100,7 @@ const CSSTransition: React.FunctionComponent<CSSTransitionProps> = (props) => {
     };
   }, [timeout]);
 
-  const beforeEnterWrapper: BeforeEventHook = useEventCallback(
+  const beforeEnterWrapper: BeforeEventHook = useConstantFn(
     (el: CSSTransitionElement, transitionOnFirst) => {
       if (!disableCss) {
         if (transitionOnFirst) {
@@ -123,7 +123,7 @@ const CSSTransition: React.FunctionComponent<CSSTransitionProps> = (props) => {
     },
   );
 
-  const enterWrapper: EventHook = useEventCallback(
+  const enterWrapper: EventHook = useConstantFn(
     (el: CSSTransitionElement, done, isCancelled, transitionOnFirst) => {
       nextFrame(() => {
         if (!isCancelled()) {
@@ -156,7 +156,7 @@ const CSSTransition: React.FunctionComponent<CSSTransitionProps> = (props) => {
       enter?.(el, done, isCancelled, transitionOnFirst);
     },
   );
-  const afterEnterWrapper: AfterEventHook = useEventCallback(
+  const afterEnterWrapper: AfterEventHook = useConstantFn(
     (el: CSSTransitionElement, transitionOnFirst) => {
       if (!disableCss) {
         if (transitionOnFirst) {
@@ -171,7 +171,7 @@ const CSSTransition: React.FunctionComponent<CSSTransitionProps> = (props) => {
       afterEnter?.(el, transitionOnFirst);
     },
   );
-  const enterCancelledWrapper: EventCancelledHook = useEventCallback(
+  const enterCancelledWrapper: EventCancelledHook = useConstantFn(
     (el: CSSTransitionElement, transitionOnFirst) => {
       if (!disableCss) {
         if (transitionOnFirst) {
@@ -189,7 +189,7 @@ const CSSTransition: React.FunctionComponent<CSSTransitionProps> = (props) => {
     },
   );
 
-  const beforeLeaveWrapper: BeforeEventHook = useEventCallback(
+  const beforeLeaveWrapper: BeforeEventHook = useConstantFn(
     (el: CSSTransitionElement, transitionOnFirst) => {
       if (!disableCss) {
         if (transitionOnFirst) {
@@ -212,7 +212,7 @@ const CSSTransition: React.FunctionComponent<CSSTransitionProps> = (props) => {
     },
   );
 
-  const leaveWrapper: EventHook = useEventCallback(
+  const leaveWrapper: EventHook = useConstantFn(
     (el: CSSTransitionElement, done, isCancelled, transitionOnFirst) => {
       nextFrame(() => {
         if (!isCancelled()) {
@@ -245,7 +245,7 @@ const CSSTransition: React.FunctionComponent<CSSTransitionProps> = (props) => {
       leave?.(el, done, isCancelled, transitionOnFirst);
     },
   );
-  const afterLeaveWrapper: AfterEventHook = useEventCallback(
+  const afterLeaveWrapper: AfterEventHook = useConstantFn(
     (el: CSSTransitionElement, transitionOnFirst) => {
       if (!disableCss) {
         if (transitionOnFirst) {
@@ -260,7 +260,7 @@ const CSSTransition: React.FunctionComponent<CSSTransitionProps> = (props) => {
       afterLeave?.(el, transitionOnFirst);
     },
   );
-  const leaveCancelledWrapper: EventCancelledHook = useEventCallback(
+  const leaveCancelledWrapper: EventCancelledHook = useConstantFn(
     (el: CSSTransitionElement, transitionOnFirst) => {
       if (!disableCss) {
         if (transitionOnFirst) {

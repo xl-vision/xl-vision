@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { RightOutlined } from '@xl-vision/icons';
 import { env } from '@xl-vision/utils';
-import { useEventCallback } from '@xl-vision/hooks';
+import { useConstantFn } from '@xl-vision/hooks';
 import BaseButton from '../BaseButton';
 import usePropChange from '../hooks/usePropChange';
 import Popper, { PopperPlacement, PopperProps, PopperTrigger } from '../Popper';
@@ -135,7 +135,7 @@ const DropdownSubmenu = React.forwardRef<HTMLDivElement, DropdownSubmenuProps>((
   const { clsPrefix } = React.useContext(ThemeContext);
   const { submenuCloseHandlers } = React.useContext(DropdownContext);
 
-  const handleVisibleChange = useEventCallback((newVisible: boolean) => {
+  const handleVisibleChange = useConstantFn((newVisible: boolean) => {
     if (disabled) {
       return;
     }

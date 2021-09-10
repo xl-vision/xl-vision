@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { env } from '@xl-vision/utils';
-import { useEventCallback } from '@xl-vision/hooks';
+import { useConstantFn } from '@xl-vision/hooks';
 import BaseButton from '../BaseButton';
 import { styled } from '../styles';
 import DropdownContext from './DropdownContext';
@@ -68,7 +68,7 @@ const DropdownItem = React.forwardRef<HTMLLIElement, DropdownItemProps>((props, 
 
   const { setVisible } = React.useContext(DropdownContext);
 
-  const handleClick = useEventCallback((e: React.MouseEvent<HTMLLIElement>) => {
+  const handleClick = useConstantFn((e: React.MouseEvent<HTMLLIElement>) => {
     if (disabled) {
       return;
     }

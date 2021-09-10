@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { env } from '@xl-vision/utils';
-import { useEventCallback } from '@xl-vision/hooks';
+import { useConstantFn } from '@xl-vision/hooks';
 import usePropChange from '../hooks/usePropChange';
 import Popper, { PopperPlacement, PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
@@ -80,7 +80,7 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) =>
     },
   );
 
-  const setVisibleWrapper = useEventCallback((newVisible: boolean) => {
+  const setVisibleWrapper = useConstantFn((newVisible: boolean) => {
     if (!newVisible) {
       submenuCloseHandlersRef.current.forEach((it) => it());
     }

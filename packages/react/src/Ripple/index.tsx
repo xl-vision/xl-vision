@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { env } from '@xl-vision/utils';
-import { useEventCallback } from '@xl-vision/hooks';
+import { useConstantFn } from '@xl-vision/hooks';
 import TransitionGroup, { TransitionGroupClasses } from '../TransitionGroup';
 import { styled } from '../styles';
 import ThemeContext from '../ThemeProvider/ThemeContext';
@@ -158,7 +158,7 @@ const Ripple = React.forwardRef<RippleRef, RippleProps>((props, ref) => {
     [commit],
   );
 
-  const stop = useEventCallback(() => {
+  const stop = useConstantFn(() => {
     if (startTimerRef.current) {
       clearTimeout(startTimerRef.current);
       startTimerRef.current = undefined;
@@ -186,7 +186,7 @@ const Ripple = React.forwardRef<RippleRef, RippleProps>((props, ref) => {
     }
   });
 
-  const afterEnter = useEventCallback(() => {
+  const afterEnter = useConstantFn(() => {
     if (leaveAfterEnter) {
       if (waitLeaveCountRef.current > 0) {
         waitLeaveCountRef.current--;

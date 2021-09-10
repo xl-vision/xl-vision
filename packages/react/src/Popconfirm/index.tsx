@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ExclamationCircleOutlined } from '@xl-vision/icons';
 import { env } from '@xl-vision/utils';
-import { useEventCallback } from '@xl-vision/hooks';
+import { useConstantFn } from '@xl-vision/hooks';
 import Popper, { PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
 import ThemeContext from '../ThemeProvider/ThemeContext';
@@ -151,12 +151,12 @@ const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
 
   const [visible, setVisible] = usePropChange(defaultVisible, visibleProp, onVisibleChange);
 
-  const handleCancel = useEventCallback(() => {
+  const handleCancel = useConstantFn(() => {
     setVisible(false);
     onCancel?.();
   });
 
-  const handleConfirm = useEventCallback(() => {
+  const handleConfirm = useConstantFn(() => {
     setVisible(false);
     onConfirm?.();
   });

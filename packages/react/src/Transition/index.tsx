@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { env } from '@xl-vision/utils';
-import { useEventCallback, useLayoutEffect, useForkRef } from '@xl-vision/hooks';
+import { useConstantFn, useLayoutEffect, useForkRef } from '@xl-vision/hooks';
 import useLifecycleState, { LifecycleState } from '../hooks/useLifecycleState';
 import findDomNode from '../utils/findDomNode';
 
@@ -84,7 +84,7 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
   // 保存回调
   const cbRef = React.useRef<() => void>();
 
-  const onTransitionEnd = useEventCallback(
+  const onTransitionEnd = useConstantFn(
     (nextState: TransitionState, eventHook?: EventHook, afterEventHook?: AfterEventHook) => {
       // 判断回调是否执行了
       const wrapCallback = () => {
@@ -120,7 +120,7 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
     },
   );
 
-  const stateTrigger = useEventCallback((_state: TransitionState) => {
+  const stateTrigger = useConstantFn((_state: TransitionState) => {
     // 展示
     if (inProp && _state === TransitionState.STATE_ENTERING) {
       beforeEnter?.(findDomNode(childRef.current), transitionOnFirstRef.current);
@@ -140,7 +140,7 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
     stateTrigger,
   ]);
 
-  const inPropTrigger = useEventCallback((_inProp: boolean) => {
+  const inPropTrigger = useConstantFn((_inProp: boolean) => {
     const el: HTMLElement = findDomNode(childRef.current);
     if (
       _inProp &&
