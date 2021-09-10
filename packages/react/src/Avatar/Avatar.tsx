@@ -142,12 +142,12 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
     handleResize();
   }, [gap, handleResize]);
 
-  const handleImgError = React.useCallback(() => {
+  const handleImgError = useConstantFn(() => {
     const errorFlag = onError?.();
     if (errorFlag !== false) {
       setImgExist(false);
     }
-  }, [onError]);
+  });
 
   let childNode: React.ReactNode;
 
