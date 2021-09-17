@@ -19,7 +19,7 @@
     "icon:generate": "cd packages/icons && npm run generate",
     "commit": "git-cz",
     "test": "jest",
-    "lint": "eslint . --cache --report-unused-disable-directives --ext .js,.ts,.jsx,.tsx --max-warnings 0",
+    "lint": "eslint . --report-unused-disable-directives --ext .js,.ts,.jsx,.tsx --max-warnings 0",
     "build": "lerna run --parallel --scope \"@xl-vision/*\" build",
     "publish": "lerna publish prerelease --conventional-commits",
     "bootstrap": "lerna bootstrap"
@@ -35,7 +35,7 @@
     "@types/enzyme": "^3.10.9",
     "@types/glob": "^7.1.4",
     "@types/jest": "^27.0.1",
-    "@types/react": "^17.0.19",
+    "@types/react": "^17.0.21",
     "@types/react-dom": "^17.0.9",
     "@types/styled-components": "^5.1.13",
     "@typescript-eslint/eslint-plugin": "^4.30.0",

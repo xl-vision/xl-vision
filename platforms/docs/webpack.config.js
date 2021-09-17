@@ -7,7 +7,7 @@ const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const path = require('path');
 const portfinder = require('portfinder');
@@ -200,13 +200,13 @@ const defaultConfig = {
   optimization: {
     minimize: isProd,
     minimizer: [
-      new OptimizeCSSAssetsPlugin({
-        cssProcessorOptions: {
-          map: {
-            inline: false,
-            annotation: true,
-          },
-        },
+      new CssMinimizerPlugin({
+        // processorOptions: {
+        //   map: {
+        //     inline: false,
+        //     annotation: true,
+        //   },
+        // },
       }),
       // This is only used in production mode
       new TerserPlugin({

@@ -24,8 +24,6 @@ const resolveAlias = () => {
     .reduce((a, b) => ({ ...a, [b.name]: b.path }), {});
 };
 
-const ignorePackages = [];
-
 const alias = resolveAlias();
 
 module.exports = {
@@ -160,12 +158,12 @@ module.exports = {
     {
       files: ['packages/*/src/**/*.ts', 'packages/*/src/**/*.tsx'],
       rules: {
-        'import/no-unresolved': [
-          'error',
-          {
-            ignore: ignorePackages.concat(['^react', '^react-dom']),
-          },
-        ],
+        // 'import/no-unresolved': [
+        //   'error',
+        //   {
+        //     ignore: ['^react', '^react-dom'],
+        //   },
+        // ],
       },
     },
     {
