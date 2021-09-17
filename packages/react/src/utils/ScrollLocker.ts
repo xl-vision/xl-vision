@@ -40,9 +40,8 @@ export default class ScrollLocker {
     let scrollbarSize = 0;
 
     if (
-      (container === document.body &&
-        window.innerWidth - document.documentElement.clientWidth > 0) ||
-      container.scrollHeight > container.clientHeight
+      container === document.body &&
+      window.innerWidth - document.documentElement.clientWidth > 0
     ) {
       scrollbarSize = getScrollbarSize();
     }
