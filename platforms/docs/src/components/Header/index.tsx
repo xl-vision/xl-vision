@@ -8,6 +8,7 @@ import DarkTheme from './DarkTheme';
 import Translate from './Translate';
 import { ThemeContext } from '../ThemeProvider';
 import { LocalizationContext } from '../LocalizationProvider';
+import Logo from '../Logo';
 
 const Container = styled('div')(() => {
   return {
@@ -48,10 +49,22 @@ const HeaderNav = styled('header')<{ isDark: boolean }>(({ theme, styleProps }) 
   };
 });
 
-const Logo = styled('div')(({ theme }) => {
+const LogoWrapper = styled(NavLink)(({ theme }) => {
   return {
-    fontSize: 18,
-    fontWeight: theme.typography.fontWeight.bold,
+    display: 'inline-flex',
+    height: '100%',
+    alignItems: 'center',
+    textDecoration: 0,
+    color: theme.color.text.primary,
+
+    svg: {
+      height: 32,
+    },
+    span: {
+      fontSize: 18,
+      marginLeft: 12,
+      fontWeight: theme.typography.fontWeight.bold,
+    },
   };
 });
 
@@ -61,6 +74,8 @@ const Menus = styled('ul')(({ theme }) => {
     display: 'flex',
     alignItems: 'center',
     flex: 1,
+    padding: 0,
+    marginLeft: 100,
     li: {
       a: {
         display: 'block',
@@ -92,7 +107,10 @@ const Header = () => {
   return (
     <Container>
       <HeaderNav styleProps={{ isDark }}>
-        <Logo>XL-VISION</Logo>
+        <LogoWrapper to='/'>
+          <Logo />
+          <span>xl vision</span>
+        </LogoWrapper>
         <Menus>
           <li>
             <NavLink to='/components'>{locale.header.component}</NavLink>
