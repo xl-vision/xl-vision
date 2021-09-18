@@ -78,9 +78,9 @@ const Menus = styled('ul')(({ theme }) => {
     marginLeft: 100,
     li: {
       a: {
+        fontSize: 14,
         display: 'block',
         color: theme.color.text.primary,
-        fontWeight: theme.typography.fontWeight.medium,
         textDecoration: 'none',
         padding: '6px 12px',
         transition: theme.transition.standard('all'),
@@ -112,6 +112,9 @@ const Header = () => {
           <span>xl vision</span>
         </LogoWrapper>
         <Menus>
+          <li>
+            <NavLink to='/'>{locale.header.index}</NavLink>
+          </li>
           <li>
             <NavLink to='/components'>{locale.header.component}</NavLink>
           </li>

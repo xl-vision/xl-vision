@@ -5,6 +5,7 @@ export type Locale = {
     githubTooltip: string;
     component: string;
     hooks: string;
+    index: string;
   };
   pages: {
     Icons: {
@@ -21,6 +22,7 @@ const locales: Record<string, Locale> = {
       githubTooltip: 'Github',
       component: '组件',
       hooks: 'React Hooks',
+      index: '首页',
     },
     pages: {
       Icons: {
@@ -35,6 +37,7 @@ const locales: Record<string, Locale> = {
       githubTooltip: 'Github',
       component: 'component',
       hooks: 'React Hooks',
+      index: 'index',
     },
     pages: {
       Icons: {

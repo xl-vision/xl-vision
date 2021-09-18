@@ -100,6 +100,9 @@ const Aside: React.FunctionComponent<{ className?: string }> = (props) => {
   const { pathname } = useLocation();
 
   const key = React.useMemo(() => {
+    if (pathname === '/') {
+      return 'index';
+    }
     return Object.keys(routeMap).find((it) => pathname.startsWith(`/${it}`));
   }, [pathname]);
 
@@ -107,7 +110,10 @@ const Aside: React.FunctionComponent<{ className?: string }> = (props) => {
     if (!key) {
       return null;
     }
-    const routes = routeMap[key as keyof typeof routeMap][language];
+    if (key === 'index') {
+      return null;
+    }
+    const routes = routeMap[key][language];
     return traverseRoutes(key, routes);
   }, [key, language]);
 

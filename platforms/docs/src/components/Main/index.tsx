@@ -15,6 +15,10 @@ const traverseRoutes = (basePath: string, routesArray: Array<RouteType>): Array<
 
     const { path, name } = it;
 
+    if (basePath === 'index') {
+      basePath = '';
+    }
+
     const fullPath = `/${basePath}${path}`;
 
     if ('component' in it) {
@@ -53,17 +57,12 @@ const Main: React.FunctionComponent<{ className?: string }> = (props) => {
   const nodes = React.useMemo(() => {
     const computedNodes = Object.keys(routeMap)
       .map((basePath) => {
-        const map = routeMap[basePath as keyof typeof routeMap];
+        const map = routeMap[basePath];
         return traverseRoutes(basePath, map[language]);
       })
       .reduce((arr1, arr2) => arr1.concat(arr2));
 
-    return computedNodes.concat(
-      // 内置默认重定向
-      <Route exact={true} path='/' key='/'>
-        <Redirect to='/components' />
-      </Route>,
-    );
+    return computedNodes;
   }, [language]);
 
   return (

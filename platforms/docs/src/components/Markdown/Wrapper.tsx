@@ -12,7 +12,7 @@ const Wrapper: React.FunctionComponent<WrapperProps> = (props) => {
 
   React.useEffect(() => {
     const { title } = document;
-    document.title = `${name} | xl-vision`;
+    document.title = `${name} | xl vision`;
 
     return () => {
       document.title = title;

@@ -1,37 +1,10 @@
-import { createGlobalStyles, styled, CssBaseline } from '@xl-vision/react';
+import { styled } from '@xl-vision/react';
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import Aside from '../Aside';
 import Footer from '../Footer';
 import Header from '../Header';
-import LocalizationProvider from '../LocalizationProvider';
 import Main from '../Main';
-import ThemeProvider from '../ThemeProvider';
-
-const GlobalStyle = createGlobalStyles(({ theme }) => {
-  const { color } = theme;
-  return {
-    'html,body': {
-      width: '100%',
-      height: '100%',
-    },
-    '#app': {
-      height: '100%',
-    },
-    '::-webkit-scrollbar': {
-      width: 8,
-      height: 8,
-      // backgroundColor: color.grey[500],
-    },
-    // '::-webkit-scrollbar-track': {
-    //   boxShadow: 'inset 0 0 6px rgba(0, 0, 0, 0.3)',
-    // },
-    '::-webkit-scrollbar-thumb': {
-      backgroundColor: color.grey.A100,
-      borderRadius: 5,
-    },
-  };
-});
 
 const asideWidth = 280;
 
@@ -55,14 +28,15 @@ const AsideWrapper = styled(Aside)(({ theme }) => {
   };
 });
 
-const MainWrapper = styled('div')(() => {
+const MainWrapper = styled('div')<{ isIndex: boolean }>(({ styleProps }) => {
+  const { isIndex } = styleProps;
   return {
     padding: '0 16px',
     '@media(min-width: 768px)': {
       position: 'fixed',
       top: 60,
       bottom: 0,
-      left: asideWidth,
+      left: isIndex ? 0 : asideWidth,
       right: 0,
       overflowY: 'auto',
       main: {
@@ -73,21 +47,19 @@ const MainWrapper = styled('div')(() => {
 });
 
 const Layout = () => {
+  const { pathname } = useLocation();
+
+  const isIndex = pathname === '/';
+
   return (
-    <LocalizationProvider>
-      <ThemeProvider>
-        <CssBaseline />
-        <GlobalStyle />
-        <Router>
-          <Header />
-          <AsideWrapper />
-          <MainWrapper>
-            <Main />
-            <Footer />
-          </MainWrapper>
-        </Router>
-      </ThemeProvider>
-    </LocalizationProvider>
+    <>
+      <Header />
+      {!isIndex && <AsideWrapper />}
+      <MainWrapper styleProps={{ isIndex }}>
+        <Main />
+        <Footer />
+      </MainWrapper>
+    </>
   );
 };
 

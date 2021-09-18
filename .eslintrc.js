@@ -187,7 +187,7 @@ module.exports = {
               camelCase: true,
               pascalCase: true,
             },
-            ignore: [/^routes\.([A-Za-z]|-)+\.tsx?$/],
+            ignore: [/^[A-Za-z]+\.([A-Za-z]|-)+\.tsx?$/],
           },
         ],
       },
