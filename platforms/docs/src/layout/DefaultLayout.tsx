@@ -1,10 +1,12 @@
 import { styled } from '@xl-vision/react';
 import React from 'react';
-import { useLocation } from 'react-router-dom';
-import Aside from '../Aside';
-import Footer from '../Footer';
-import Header from '../Header';
-import Main from '../Main';
+import Aside from '../components/Aside';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+
+export type DefaultLayoutProps = {
+  children: React.ReactNode;
+};
 
 const asideWidth = 280;
 
@@ -28,39 +30,31 @@ const AsideWrapper = styled(Aside)(({ theme }) => {
   };
 });
 
-const MainWrapper = styled('div')<{ isIndex: boolean }>(({ styleProps }) => {
-  const { isIndex } = styleProps;
+const MainWrapper = styled('div')(() => {
   return {
     padding: '0 16px',
     '@media(min-width: 768px)': {
       position: 'fixed',
       top: 60,
       bottom: 0,
-      left: isIndex ? 0 : asideWidth,
+      left: asideWidth,
       right: 0,
       overflowY: 'auto',
-      main: {
-        minHeight: '100%',
-      },
     },
   };
 });
 
-const Layout = () => {
-  const { pathname } = useLocation();
-
-  const isIndex = pathname === '/';
-
+const DefaultLayout: React.FunctionComponent<DefaultLayoutProps> = ({ children }) => {
   return (
     <>
       <Header />
-      {!isIndex && <AsideWrapper />}
-      <MainWrapper styleProps={{ isIndex }}>
-        <Main />
+      <AsideWrapper />
+      <MainWrapper>
+        {children}
         <Footer />
       </MainWrapper>
     </>
   );
 };
 
-export default Layout;
+export default DefaultLayout;

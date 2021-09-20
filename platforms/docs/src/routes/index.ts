@@ -10,16 +10,18 @@ const routes: Record<string, Record<string, Array<Route>>> = {
   index: {
     'zh-CN': [
       {
-        name: 'Overview',
+        name: '首页',
         path: '/',
-        component: () => import('../views/index.zh-CN'),
+        layout: 'empty',
+        component: () => import('../views/index'),
       },
     ],
     'en-US': [
       {
-        name: 'Overview',
+        name: 'Index',
         path: '/',
-        component: () => import('../views/index.en-US'),
+        layout: 'empty',
+        component: () => import('../views/index'),
       },
     ],
   },

@@ -185,6 +185,7 @@ const defaultConfig = {
       ? 'static/js/[name].[contenthash:8].chunk.js'
       : 'static/js/[name].chunk.js',
     publicPath,
+    clean: true,
   },
   target: 'web',
   resolve: {

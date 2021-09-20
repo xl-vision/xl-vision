@@ -59,6 +59,7 @@ const LogoWrapper = styled(NavLink)(({ theme }) => {
 
     svg: {
       height: 32,
+      width: 32,
     },
     span: {
       fontSize: 18,
@@ -92,7 +93,7 @@ const Menus = styled('ul')(({ theme }) => {
   };
 });
 
-const Header = () => {
+const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (props) => {
   const theme = React.useContext(ThemeContext);
   const { supportLocales, locale, setLanguage } = React.useContext(LocalizationContext);
 
@@ -105,7 +106,7 @@ const Header = () => {
   const langs = React.useMemo(() => Object.keys(supportLocales), [supportLocales]);
 
   return (
-    <Container>
+    <Container {...props}>
       <HeaderNav styleProps={{ isDark }}>
         <LogoWrapper to='/'>
           <Logo />
@@ -113,7 +114,9 @@ const Header = () => {
         </LogoWrapper>
         <Menus>
           <li>
-            <NavLink to='/'>{locale.header.index}</NavLink>
+            <NavLink exact={true} to='/'>
+              {locale.header.index}
+            </NavLink>
           </li>
           <li>
             <NavLink to='/components'>{locale.header.component}</NavLink>

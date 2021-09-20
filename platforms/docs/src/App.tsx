@@ -1,10 +1,12 @@
-import { createGlobalStyles, CssBaseline } from '@xl-vision/react';
+import { createGlobalStyles, CssBaseline, LocalizationContext } from '@xl-vision/react';
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import Layout from './components/Layout';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import LocalizationProvider from './components/LocalizationProvider';
 import ThemeProvider from './components/ThemeProvider';
-
+import routeMap, { Route as RouteType } from './routes';
+import layouts from './layout';
+import Markdown from './components/Markdown';
+import Loading from './components/Loading';
 const GlobalStyle = createGlobalStyles(({ theme }) => {
   const { color } = theme;
   return {
@@ -32,16 +34,106 @@ const GlobalStyle = createGlobalStyles(({ theme }) => {
 
 const App = () => {
   return (
-    <LocalizationProvider>
-      <ThemeProvider>
-        <CssBaseline />
-        <GlobalStyle />
-        <Router>
-          <Layout />
-        </Router>
-      </ThemeProvider>
-    </LocalizationProvider>
+    <React.StrictMode>
+      <LocalizationProvider>
+        <ThemeProvider>
+          <CssBaseline />
+          <GlobalStyle />
+          <Router>
+            <AppInner />
+          </Router>
+        </ThemeProvider>
+      </LocalizationProvider>
+    </React.StrictMode>
   );
 };
 
 export default App;
+
+const RouteWrapper: React.FunctionComponent<{ name: string; children: React.ReactNode }> = ({
+  name,
+  children,
+}) => {
+  React.useEffect(() => {
+    document.title = `${name} | xl vision`;
+  }, [name]);
+
+  return <>{children}</>;
+};
+
+const traverseRoutes = (basePath: string, routesArray: Array<RouteType>): Array<JSX.Element> => {
+  const routeElements: Array<JSX.Element> = [];
+  routesArray.forEach((it) => {
+    if ('children' in it) {
+      const childElements = traverseRoutes(basePath, it.children);
+      routeElements.push(...childElements);
+      return;
+    }
+
+    const { path, name } = it;
+
+    if (basePath === 'index') {
+      basePath = '';
+    }
+
+    const fullPath = `/${basePath}${path}`;
+
+    if ('component' in it) {
+      const { component, layout = 'default' } = it;
+      const LayoutComponent = layouts[layout];
+      const LazyComponent = React.lazy(component);
+      const route = (
+        <Route
+          exact={true}
+          path={fullPath}
+          render={() => (
+            <RouteWrapper name={name}>
+              <LayoutComponent>
+                <LazyComponent />
+              </LayoutComponent>
+            </RouteWrapper>
+          )}
+          key={fullPath}
+        />
+      );
+
+      routeElements.push(route);
+      return;
+    }
+    const { redirect } = it;
+
+    const fullRedirect = `/${basePath}${redirect}`;
+
+    const route = (
+      <Route exact={true} path={fullPath} key={fullPath}>
+        <Redirect to={fullRedirect} />
+      </Route>
+    );
+    routeElements.push(route);
+  });
+
+  return routeElements;
+};
+
+const AppInner = () => {
+  const { language } = React.useContext(LocalizationContext);
+
+  const nodes = React.useMemo(() => {
+    const computedNodes = Object.keys(routeMap)
+      .map((basePath) => {
+        const map = routeMap[basePath];
+        return traverseRoutes(basePath, map[language]);
+      })
+      .reduce((arr1, arr2) => arr1.concat(arr2));
+
+    return computedNodes;
+  }, [language]);
+
+  return (
+    <Markdown>
+      <React.Suspense fallback={<Loading />}>
+        <Switch>{nodes}</Switch>
+      </React.Suspense>
+    </Markdown>
+  );
+};

@@ -4,7 +4,7 @@ export type LogoProps = {};
 
 const Logo: React.FunctionComponent<LogoProps> = () => {
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 126 126'>
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 126 126' width='100%' height='100%'>
       <g transform='translate(0, 22)'>
         <g>
           <path d='M0 65.85h31.36v16.47H0zm63.28 0H43.23L5.82 16.46h20.05z' fill='#fdda00' />
