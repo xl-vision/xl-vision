@@ -4,7 +4,7 @@ const routes: Array<Route> = [
   {
     name: 'Overview',
     path: '/',
-    component: () => import('../../views/components/index.en-US.mdx'),
+    component: () => import('../../views/components/overview/index.en-US.mdx'),
   },
   {
     name: 'Getting Start',

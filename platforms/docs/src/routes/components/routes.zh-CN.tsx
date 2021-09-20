@@ -4,7 +4,7 @@ const routes: Array<Route> = [
   {
     name: '总览',
     path: '/',
-    component: () => import('../../views/components/index.zh-CN.mdx'),
+    component: () => import('../../views/components/overview/index.zh-CN.mdx'),
   },
   {
     name: '快速上手',

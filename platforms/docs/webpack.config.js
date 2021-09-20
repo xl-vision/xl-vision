@@ -185,16 +185,17 @@ const defaultConfig = {
       ? 'static/js/[name].[contenthash:8].chunk.js'
       : 'static/js/[name].chunk.js',
     publicPath,
+    clean: true,
   },
   target: 'web',
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.md', '.mdx'],
     alias: {
       'react-native': 'react-native-web',
-      react: require.resolve('react'),
-      'react-dom': require.resolve('react-dom'),
+      // react: require.resolve('react'),
+      // 'react-dom': require.resolve('react-dom'),
       '@mdx-js/react': require.resolve('@mdx-js/react'),
-      'styled-components': require.resolve('styled-components'),
+      // 'styled-components': require.resolve('styled-components'),
     },
   },
   optimization: {

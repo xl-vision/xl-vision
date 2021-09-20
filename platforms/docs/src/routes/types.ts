@@ -1,4 +1,5 @@
 import React from 'react';
+import layouts from '../layout';
 
 export type BaseLeftRoute = {
   name: string;
@@ -7,6 +8,7 @@ export type BaseLeftRoute = {
 
 export type ComponentLeftRoute = BaseLeftRoute & {
   component: () => Promise<{ default: React.ComponentType<any> }>;
+  layout?: keyof typeof layouts;
 };
 
 export type RedirectLeftRoute = BaseLeftRoute & {

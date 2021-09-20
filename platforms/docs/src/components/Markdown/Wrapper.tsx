@@ -1,30 +1,26 @@
+import { styled } from '@xl-vision/react';
 import PropTypes from 'prop-types';
 import React from 'react';
 
 export type WrapperProps = {
   children?: React.ReactNode;
-  name: string;
   className?: string;
 };
 
+const Root = styled('main')(() => {
+  return {
+    minHeight: '100%',
+  };
+});
+
 const Wrapper: React.FunctionComponent<WrapperProps> = (props) => {
-  const { children, name, ...others } = props;
+  const { children, ...others } = props;
 
-  React.useEffect(() => {
-    const { title } = document;
-    document.title = `${name} | xl-vision`;
-
-    return () => {
-      document.title = title;
-    };
-  }, [name]);
-
-  return <main {...others}>{children}</main>;
+  return <Root {...others}>{children}</Root>;
 };
 
 Wrapper.propTypes = {
   children: PropTypes.node,
-  name: PropTypes.string.isRequired,
 };
 
 export default Wrapper;
