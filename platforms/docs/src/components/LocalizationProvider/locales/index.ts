@@ -45,9 +45,9 @@ const locales: Record<string, Locale> = {
     header: {
       themeTooltip: 'Switch between light mode and dark mode',
       githubTooltip: 'Github',
-      component: 'component',
+      component: 'Component',
       hooks: 'React Hooks',
-      index: 'index',
+      index: 'Home',
     },
     pages: {
       index: {
