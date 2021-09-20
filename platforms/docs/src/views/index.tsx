@@ -1,11 +1,11 @@
 import { styled, Button } from '@xl-vision/react';
+import { useHistory } from 'react-router-dom';
 import React from 'react';
 import Logo from '../components/Logo';
 import Header from '../components/Header';
 import { LocalizationContext } from '../components/LocalizationProvider';
 import 'particles.js';
 import { ThemeContext } from '../components/ThemeProvider';
-import { useHistory } from 'react-router';
 
 export type IndexTemplateProps = {};
 

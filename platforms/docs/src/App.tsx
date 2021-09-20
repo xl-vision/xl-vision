@@ -7,6 +7,7 @@ import routeMap, { Route as RouteType } from './routes';
 import layouts from './layout';
 import Markdown from './components/Markdown';
 import Loading from './components/Loading';
+
 const GlobalStyle = createGlobalStyles(({ theme }) => {
   const { color } = theme;
   return {
