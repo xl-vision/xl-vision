@@ -1,7 +1,7 @@
 import { createGlobalStyles, CssBaseline, LocalizationContext } from '@xl-vision/react';
 import React from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import LocalizationProvider from './components/LocalizationProvider';
 import ThemeProvider from './components/ThemeProvider';
 import routeMap, { Route as RouteType } from './routes';
@@ -47,25 +47,27 @@ const baiduAnalysis = [
 const App = () => {
   return (
     <React.StrictMode>
-      <Helmet>
-        <meta name='description' content='xl-vision,react,library,component,组件,组件库,hooks' />
-        <link
-          rel='stylesheet'
-          href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap'
-        />
-        <link rel='icon' type='image/svg+xml' href='/public/favicon.svg' />
-        <link rel='icon' type='image/png' href='/public/favicon.png' />
-        <script>{baiduAnalysis}</script>
-      </Helmet>
-      <LocalizationProvider>
-        <ThemeProvider>
-          <CssBaseline />
-          <GlobalStyle />
-          <Router>
-            <AppInner />
-          </Router>
-        </ThemeProvider>
-      </LocalizationProvider>
+      <HelmetProvider>
+        <Helmet>
+          <meta name='description' content='xl-vision,react,library,component,组件,组件库,hooks' />
+          <link
+            rel='stylesheet'
+            href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap'
+          />
+          <link rel='icon' type='image/svg+xml' href='/public/favicon.svg' />
+          <link rel='icon' type='image/png' href='/public/favicon.png' />
+          <script>{baiduAnalysis}</script>
+        </Helmet>
+        <LocalizationProvider>
+          <ThemeProvider>
+            <CssBaseline />
+            <GlobalStyle />
+            <Router>
+              <AppInner />
+            </Router>
+          </ThemeProvider>
+        </LocalizationProvider>
+      </HelmetProvider>
     </React.StrictMode>
   );
 };
