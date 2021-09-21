@@ -1,6 +1,7 @@
 import { createGlobalStyles, CssBaseline, LocalizationContext } from '@xl-vision/react';
 import React from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import LocalizationProvider from './components/LocalizationProvider';
 import ThemeProvider from './components/ThemeProvider';
 import routeMap, { Route as RouteType } from './routes';
@@ -33,9 +34,29 @@ const GlobalStyle = createGlobalStyles(({ theme }) => {
   };
 });
 
+const baiduAnalysis = [
+  'var _hmt = _hmt || [];',
+  '(function () {',
+  '   var hm = document.createElement("script");',
+  '   hm.src = "https://hm.baidu.com/hm.js?f8befb1d0df5c99624a66291ce9cf662";',
+  '   var s = document.getElementsByTagName("script")[0];',
+  '   s.parentNode.insertBefore(hm, s);',
+  '})()',
+].join('\n');
+
 const App = () => {
   return (
     <React.StrictMode>
+      <Helmet>
+        <meta name='description' content='xl-vision,react,library,component,组件,组件库,hooks' />
+        <link
+          rel='stylesheet'
+          href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap'
+        />
+        <link rel='icon' type='image/svg+xml' href='/public/favicon.svg' />
+        <link rel='icon' type='image/png' href='/public/favicon.png' />
+        <script>{baiduAnalysis}</script>
+      </Helmet>
       <LocalizationProvider>
         <ThemeProvider>
           <CssBaseline />
@@ -50,17 +71,6 @@ const App = () => {
 };
 
 export default App;
-
-const RouteWrapper: React.FunctionComponent<{ name: string; children: React.ReactNode }> = ({
-  name,
-  children,
-}) => {
-  React.useEffect(() => {
-    document.title = `${name} | xl vision`;
-  }, [name]);
-
-  return <>{children}</>;
-};
 
 const traverseRoutes = (basePath: string, routesArray: Array<RouteType>): Array<JSX.Element> => {
   const routeElements: Array<JSX.Element> = [];
@@ -88,11 +98,12 @@ const traverseRoutes = (basePath: string, routesArray: Array<RouteType>): Array<
           exact={true}
           path={fullPath}
           render={() => (
-            <RouteWrapper name={name}>
-              <LayoutComponent>
-                <LazyComponent />
-              </LayoutComponent>
-            </RouteWrapper>
+            <LayoutComponent>
+              <Helmet>
+                <title>{name} | xl vision</title>
+              </Helmet>
+              <LazyComponent />
+            </LayoutComponent>
           )}
           key={fullPath}
         />
