@@ -205,6 +205,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
       body.focus();
     };
 
+    // TODO: 这个写法可能会导致modal内部的Dropdown无法focus
     document.addEventListener('focusin', handleFocusIn, true);
     return () => {
       modalManagers = modalManagers.filter((it) => it !== body);

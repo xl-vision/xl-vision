@@ -170,6 +170,7 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
               variant='text'
               target='_black'
               href='https://github.com/xl-vision/xl-vision'
+              rel='noopener'
               prefixIcon={
                 <Icon>
                   <GithubFilled />
