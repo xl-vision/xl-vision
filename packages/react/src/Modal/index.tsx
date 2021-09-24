@@ -172,6 +172,8 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
   const forkRef = useForkRef(containerRef, ref);
 
+  const innerFocusRef = React.useRef(false);
+
   const isTop = React.useCallback(() => {
     return modalManagers[modalManagers.length - 1] === bodyRef.current;
   }, []);
@@ -195,6 +197,10 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     }
 
     const handleFocusIn = (e: FocusEvent) => {
+      if (innerFocusRef.current) {
+        innerFocusRef.current = false;
+        return;
+      }
       if (!isTop()) {
         return;
       }
@@ -205,7 +211,6 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
       body.focus();
     };
 
-    // TODO [2021-10-01]: 这个写法可能会导致modal内部的Dropdown无法focus
     document.addEventListener('focusin', handleFocusIn, true);
     return () => {
       modalManagers = modalManagers.filter((it) => it !== body);
@@ -299,6 +304,10 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     bodyRef.current?.focus();
   }, []);
 
+  const handleInnerFocus = React.useCallback(() => {
+    innerFocusRef.current = true;
+  }, []);
+
   const hidden = !visible && !animatedVisible;
 
   if (!hidden) {
@@ -316,6 +325,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   return (
     <Portal getContainer={getContainer}>
       <ModalRoot
+        onFocus={handleInnerFocus}
         aria-hidden={!visible}
         className={clsx(rootClassName, wrapperClassName)}
         ref={forkRef}
