@@ -160,7 +160,7 @@ const AppInner = () => {
   }, [routeInfoMap]);
 
   const Layout = React.useMemo(() => {
-    return routeInfoMap[pathname]?.layout || React.Fragment;
+    return routeInfoMap[pathname]?.layout || routeInfoMap[`${pathname}/`]?.layout || React.Fragment;
   }, [routeInfoMap, pathname]);
 
   return (

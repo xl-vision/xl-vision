@@ -71,8 +71,9 @@ const traverseRoutes = (
       );
     } else {
       const { path } = it;
+      const routePath = path === '/' ? `/${basePath}` : `/${basePath}${path}`;
       el = (
-        <NavLinkWrapper exact={true} to={`/${basePath}${path}`}>
+        <NavLinkWrapper exact={true} to={routePath}>
           <LeftNode style={{ paddingLeft: padding * level }}>{name}</LeftNode>
         </NavLinkWrapper>
       );
