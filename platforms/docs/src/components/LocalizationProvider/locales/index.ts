@@ -16,6 +16,9 @@ export type Locale = {
     Icons: {
       seachPlaceholder: string;
     };
+    404: {
+      link: string;
+    };
   };
 };
 
@@ -38,6 +41,9 @@ const locales: Record<string, Locale> = {
       Icons: {
         seachPlaceholder: '在这里搜索图标',
       },
+      404: {
+        link: '返回首页',
+      },
     },
   },
   'en-US': {
@@ -57,6 +63,9 @@ const locales: Record<string, Locale> = {
       },
       Icons: {
         seachPlaceholder: 'Seach icon here',
+      },
+      404: {
+        link: 'Return Home Page',
       },
     },
   },
