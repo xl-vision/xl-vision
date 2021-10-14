@@ -15,6 +15,12 @@ const routes: Record<string, Record<string, Array<Route>>> = {
         layout: 'empty',
         component: () => import('../views/index'),
       },
+      {
+        name: '404',
+        path: '/**',
+        layout: 'empty',
+        component: () => import('../views/404'),
+      },
     ],
     'en-US': [
       {
@@ -22,6 +28,12 @@ const routes: Record<string, Record<string, Array<Route>>> = {
         path: '/',
         layout: 'empty',
         component: () => import('../views/index'),
+      },
+      {
+        name: '404',
+        path: '/**',
+        layout: 'empty',
+        component: () => import('../views/404'),
       },
     ],
   },

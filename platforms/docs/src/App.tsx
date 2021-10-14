@@ -93,11 +93,8 @@ const traverseRoutes = (basePath: string, routesArray: Array<RouteType>, map: Ro
 
     const { path, name } = it;
 
-    if (basePath === 'index') {
-      basePath = '';
-    }
-
-    const fullPath = `/${basePath}${path}`;
+    const fullPath =
+      basePath === 'index' ? path : path === '/' ? `/${basePath}` : `/${basePath}${path}`;
 
     if ('component' in it) {
       const { component, layout = 'default' } = it;
