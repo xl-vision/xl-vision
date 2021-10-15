@@ -15,6 +15,8 @@
     "skipLibCheck": true,
     "rootDir": ".",
     "paths": {
+      "react": ["./node_modules/@types/react"],
+      "react-dom": ["./node_modules/@types/react-dom"],
       "@xl-vision/styled-engine-types": ["./packages/styled-engine-types/src"],
       "@xl-vision/styled-engine-types/*": ["./packages/styled-engine-types/src/*"],
       "@xl-vision/utils": ["./packages/utils/src"],
