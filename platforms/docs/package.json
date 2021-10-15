@@ -1,5 +1,6 @@
 {
   "name": "@xl-vision/docs",
+  "version": "0.1.1-alpha.12",
   "description": "docs for xl-vision",
   "private": "true",
   "author": "Rhys Xia",
@@ -42,7 +43,6 @@
     "css-loader": "^5.0.1",
     "css-minimizer-webpack-plugin": "^3.0.2",
     "dart-sass": "^1.25.0",
-    "fibers": "^5.0.0",
     "file-loader": "^6.2.0",
     "fork-ts-checker-webpack-plugin": "^6.1.0",
     "html-webpack-plugin": "^5.1.0",
@@ -61,6 +61,5 @@
     "webpack-cli": "^4.4.0",
     "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.8.0"
-  },
-  "version": "0.1.1-alpha.12"
+  }
 }
