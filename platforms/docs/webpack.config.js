@@ -128,9 +128,9 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
     };
     if (preProcessor === 'sass-loader') {
       options.implementation = require('dart-sass');
-      options.sassOptions = {
-        fiber: require('fibers'),
-      };
+      // options.sassOptions = {
+      //   fiber: require('fibers'),
+      // };
     }
     loaders.push({
       loader: preProcessor,
