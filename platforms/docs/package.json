@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "docs": "cross-env NODE_ENV=production webpack",
-    "dev": "cross-env NODE_ENV=development webpack serve --open"
+    "dev": "cross-env NODE_ENV=development webpack serve"
   },
   "dependencies": {
     "@babel/runtime": "^7.15.4",
@@ -32,8 +32,8 @@
     "@mapbox/rehype-prism": "^0.5.0",
     "@mdx-js/mdx": "^1.6.22",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
-    "@types/react": "17.0.24",
-    "@types/react-dom": "17.0.9",
+    "@types/react": "^17.0.24",
+    "@types/react-dom": "^17.0.9",
     "@types/react-router-dom": "^5.1.7",
     "autoprefixer": "^10.2.3",
     "babel-loader": "^8.2.2",
