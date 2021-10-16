@@ -123,14 +123,14 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
   const delayTimeRef = React.useRef<Array<NodeJS.Timeout>>([]);
 
   const forkReferenceRef = useForkRef(
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-argument
     React.isValidElement(child) ? (child as any).ref : null,
     referenceRef,
     ref,
   );
 
   const forkArrowRef = useForkRef(
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-argument
     React.isValidElement(arrow) ? (arrow as any).ref : null,
     arrowRef,
   );
@@ -452,6 +452,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
 
   const arrowNode =
     arrow &&
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     React.cloneElement(arrow, {
       ref: forkArrowRef,
       'aria-hidden': true,
