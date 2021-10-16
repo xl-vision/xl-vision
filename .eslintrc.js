@@ -180,7 +180,7 @@ module.exports = {
       },
     },
     {
-      files: ['platforms/docs/src/**/*.ts', 'platforms/docs/src/**/*.tsx'],
+      files: ['platforms/docs/**/*.ts', 'platforms/docs/**/*.tsx'],
       rules: {
         'unicorn/filename-case': [
           'error',
@@ -189,7 +189,7 @@ module.exports = {
               camelCase: true,
               pascalCase: true,
             },
-            ignore: [/^routes\.([A-Za-z]|-)+\.tsx?$/],
+            ignore: [/^routes\.([A-Za-z]|-)+\.tsx?$/, 'next-env.d.ts'],
           },
         ],
       },
