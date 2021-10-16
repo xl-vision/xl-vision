@@ -368,7 +368,7 @@ const defaultConfig = {
       patterns: [
         {
           from: 'public',
-          to: isProd ? 'public' : '/public',
+          to: 'public',
         },
       ],
     }),
