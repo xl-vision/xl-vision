@@ -70,6 +70,7 @@ module.exports = {
     'no-nested-ternary': 'off',
     'no-use-before-define': 'off',
     'no-multi-assign': 'off',
+    'no-continue': 'off',
     'consistent-return': [
       'off',
       {
@@ -175,6 +176,7 @@ module.exports = {
         'import/no-extraneous-dependencies': 'off',
         'import/no-named-as-default': 'off',
         'unicorn/consistent-function-scoping': 'off',
+        'no-console': 'off',
       },
     },
     {
@@ -187,7 +189,7 @@ module.exports = {
               camelCase: true,
               pascalCase: true,
             },
-            ignore: [/^[A-Za-z]+\.([A-Za-z]|-)+\.tsx?$/],
+            ignore: [/^routes\.([A-Za-z]|-)+\.tsx?$/],
           },
         ],
       },

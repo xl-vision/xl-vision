@@ -55,19 +55,15 @@ const styled = <
     E = S extends undefined ? { theme: Theme } : { styleProps: S; theme: Theme },
     V = Omit<E, 'theme'> & { theme?: Theme },
   >(
-    first: TemplateStringsArray | CSSObject | FunctionInterpolation<P & E>,
-    ...styles: Array<Interpolation<P & E>>
+    first: TemplateStringsArray | CSSObject | FunctionInterpolation<P, E>,
+    ...styles: Array<Interpolation<P, E>>
   ) => {
     const applyOverrideStyle = (props: P & E & { theme: Theme }) => {
       const { theme } = props;
       if (!name || !slot) {
         return;
       }
-      const overrideStyles = theme.overrideStyles as {
-        [key: string]: {
-          [key: string]: Style;
-        };
-      };
+      const overrideStyles = theme.overrideStyles as Record<string, Record<string, Style<S, P>>>;
 
       const overrideStyle = overrideStyles[name];
 
@@ -79,7 +75,8 @@ const styled = <
         return;
       }
       if (typeof overrideSlotStyle === 'function') {
-        return overrideSlotStyle(props);
+        // TODO: type fix
+        return (overrideSlotStyle as unknown as FunctionInterpolation<P, E>)(props);
       }
       return overrideSlotStyle;
     };
@@ -91,12 +88,10 @@ const styled = <
     const numOfCustomFnsApplied = newStyles.length - styles.length;
 
     if (Array.isArray(newFirst) && numOfCustomFnsApplied > 0) {
+      const newFirstArray = newFirst as unknown as TemplateStringsArray;
       const placeholders = new Array<string>(numOfCustomFnsApplied).fill('');
-      // @ts-ignore
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      const raw = [...newFirst.raw, ...placeholders];
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      newFirst = [...newFirst, ...placeholders];
+      const raw = [...newFirstArray.raw, ...placeholders];
+      newFirst = [...newFirstArray, ...placeholders];
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       newFirst.raw = raw;
     } else if (typeof newFirst === 'function') {
@@ -105,7 +100,7 @@ const styled = <
     }
 
     const DefaultComponent = defaultCreateStyledComponent<P & V>(
-      newFirst as TemplateStringsArray | CSSObject | FunctionInterpolation<P & V>,
+      newFirst as TemplateStringsArray | CSSObject | FunctionInterpolation<P, V>,
       ...newStyles,
     );
 

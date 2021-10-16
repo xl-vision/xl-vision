@@ -31,10 +31,11 @@ export default <T extends HTMLElement>(onResizeObserver: ResizeObserverHandler<T
         return;
       }
 
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      Promise.resolve().then(() => {
-        onResizeObserver({ width: fixedWidth, height: fixedHeight }, target);
-      });
+      Promise.resolve()
+        .then(() => {
+          onResizeObserver({ width: fixedWidth, height: fixedHeight }, target);
+        })
+        .catch(() => {});
     },
   );
 

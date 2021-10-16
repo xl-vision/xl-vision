@@ -23,10 +23,9 @@ export default <T>(
     }
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-shadow
-  const prePropChangeHandlerWrapper = useConstantFn((prop: T) => {
-    prePropChangeHandler?.(prop);
-    setValue(prop);
+  const prePropChangeHandlerWrapper = useConstantFn((_prop: T) => {
+    prePropChangeHandler?.(_prop);
+    setValue(_prop);
   });
 
   React.useEffect(() => {

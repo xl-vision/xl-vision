@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable react/jsx-handler-names */
 import { Button, Dialog } from '@xl-vision/react';
 import React from 'react';

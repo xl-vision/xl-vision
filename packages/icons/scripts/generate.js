@@ -36,7 +36,6 @@ async function generate() {
     for (const icon of icons) {
       const iconBaseName = icon.replace(/.svg$/, '');
       if (ignoreNames.includes(iconBaseName)) {
-        // eslint-disable-next-line no-continue
         continue;
       }
 
