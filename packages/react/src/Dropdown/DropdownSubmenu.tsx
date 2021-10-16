@@ -142,11 +142,11 @@ const DropdownSubmenu = React.forwardRef<HTMLDivElement, DropdownSubmenuProps>((
     setVisible(newVisible);
   });
 
+  const closeHandler = React.useCallback(() => {
+    return setVisible(false);
+  }, [setVisible]);
+
   React.useEffect(() => {
-    // eslint-disable-next-line unicorn/consistent-function-scoping
-    const closeHandler = () => {
-      return setVisible(false);
-    };
     submenuCloseHandlers.push(closeHandler);
     return () => {
       const index = submenuCloseHandlers.indexOf(closeHandler);
@@ -154,7 +154,7 @@ const DropdownSubmenu = React.forwardRef<HTMLDivElement, DropdownSubmenuProps>((
         submenuCloseHandlers.splice(index, 1);
       }
     };
-  }, [submenuCloseHandlers, setVisible]);
+  }, [submenuCloseHandlers, closeHandler]);
 
   const rootClassName = `${clsPrefix}-dropdown-submenu`;
 

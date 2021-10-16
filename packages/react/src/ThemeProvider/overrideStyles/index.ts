@@ -8,7 +8,7 @@ export type Style<
   S extends {} | undefined = undefined,
   P extends {} = {},
   ST = S extends undefined ? { theme: Theme } : { styleProps: S; theme: Theme },
-> = TemplateStringsArray | CSSObject | FunctionInterpolation<P & ST>;
+> = TemplateStringsArray | CSSObject | FunctionInterpolation<P, ST>;
 
 export type OverrideStyles = Partial<{
   CssBaseline: Partial<{

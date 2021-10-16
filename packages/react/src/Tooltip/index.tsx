@@ -152,13 +152,12 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
     return triggers.filter((it) => it !== 'touch') as Array<PopperTrigger>;
   }, [trigger]);
 
-  // eslint-disable-next-line @typescript-eslint/no-shadow
-  const handleVisibleChange = useConstantFn((visible: boolean) => {
+  const handleVisibleChange = useConstantFn((_visible: boolean) => {
     // 当前正处于touch事件中，阻止其他事件
     if (touch) {
       return;
     }
-    setVisible(visible);
+    setVisible(_visible);
   });
 
   const touchDelayTimerRef = React.useRef<NodeJS.Timeout>();

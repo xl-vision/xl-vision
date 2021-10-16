@@ -40,10 +40,8 @@ export default () => {
     setVisible((prev) => !prev);
   }, []);
 
-  // eslint-disable-next-line @typescript-eslint/no-shadow
-  const handleVisible = React.useCallback((visible: boolean) => {
-    // eslint-disable-next-line no-console
-    console.log(visible);
+  const handleVisible = React.useCallback((_visible: boolean) => {
+    console.log(_visible);
   }, []);
 
   return (

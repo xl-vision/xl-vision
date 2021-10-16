@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events */
 import React from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { Instance, Placement, createPopper, Modifier } from '@popperjs/core';
 import clsx from 'clsx';
@@ -17,6 +16,7 @@ import ThemeContext from '../ThemeProvider/ThemeContext';
 import { oneOf, voidFn } from '../utils/function';
 import computeTransformOrigin from './computeTransformOrigin';
 import usePropChange from '../hooks/usePropChange';
+import findDomNode from '../utils/findDomNode';
 
 export type PopperTrigger = 'hover' | 'focus' | 'click' | 'contextMenu' | 'custom';
 
@@ -136,8 +136,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
   );
 
   const findReferenceDOM = React.useCallback(() => {
-    // eslint-disable-next-line react/no-find-dom-node
-    return ReactDOM.findDOMNode(referenceRef.current) as HTMLElement;
+    return findDomNode<HTMLElement>(referenceRef.current);
   }, []);
 
   const show = useConstantFn(() => {

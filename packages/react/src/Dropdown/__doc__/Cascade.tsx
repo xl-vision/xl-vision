@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { Button, Dropdown } from '@xl-vision/react';
 import React from 'react';
 

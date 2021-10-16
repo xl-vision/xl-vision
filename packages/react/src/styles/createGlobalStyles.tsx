@@ -9,15 +9,15 @@ import applyTheme from './applyTheme';
 
 const createGlobalStyles = <
   S extends {} | undefined = undefined,
+  P extends {} = {},
   E = S extends undefined ? { theme: Theme } : { styleProps: S; theme: Theme },
-  V = Omit<E, 'theme'> & { theme?: Theme },
+  V extends {} = Omit<E, 'theme'> & { theme?: Theme },
 >(
-  first: TemplateStringsArray | CSSObject | FunctionInterpolation<E>,
-  ...styles: Array<Interpolation<E>>
+  first: TemplateStringsArray | CSSObject | FunctionInterpolation<P, E>,
+  ...styles: Array<Interpolation<P, E>>
 ) => {
-  const newArray = [first, ...styles].map(applyTheme);
+  const [newFirst, ...newStyles] = [first, ...styles].map(applyTheme);
 
-  // @ts-ignore
-  return innerCreateGlobalStyles<V>(...newArray);
+  return innerCreateGlobalStyles<P, V>(newFirst, ...newStyles);
 };
 export default createGlobalStyles;

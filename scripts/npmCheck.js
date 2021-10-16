@@ -94,9 +94,7 @@ async function check(options) {
 
     await staticOutput(currentState);
 
-    console.log('\n');
-    console.log(chalk.green(msg));
-    console.log('\n\n');
+    console.log('\n\n\n');
   } catch (err) {
     console.log(err.message);
     process.exit(1);

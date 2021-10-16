@@ -25,22 +25,24 @@ export type InterpolationPrimitive =
 
 export type Keyframes = {};
 
-export type FunctionInterpolation<P> = (props: P) => Interpolation<P>;
+export type FunctionInterpolation<P extends {}, S extends {}> = (
+  props: P & S,
+) => Interpolation<P, S>;
 
-export type SimpleInterpolation =
+export type SimpleInterpolation<P extends {}, S extends {}> =
   | InterpolationPrimitive
-  | StyledComponentInterpolation
-  | Array<SimpleInterpolation>;
+  | StyledComponentInterpolation<P, S>
+  | Array<SimpleInterpolation<P, S>>;
 
-export type Interpolation<P> =
+export type Interpolation<P extends {}, S extends {}> =
   | InterpolationPrimitive
-  | Array<Interpolation<P>>
-  | FunctionInterpolation<P>
-  | StyledComponentInterpolation;
+  | Array<Interpolation<P, S>>
+  | FunctionInterpolation<P, S>
+  | StyledComponentInterpolation<P, S>;
 
-type StyledComponentInterpolation = Pick<
-  StyledComponent<any, any>,
-  keyof StyledComponent<any, any>
+type StyledComponentInterpolation<P extends {}, S extends {}> = Pick<
+  StyledComponent<P, S>,
+  keyof StyledComponent<P, S>
 >;
 
 export type PropsOf<C extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>> =
@@ -49,17 +51,17 @@ export type PropsOf<C extends keyof JSX.IntrinsicElements | React.JSXElementCons
 export type ExtractProps<Tag extends keyof JSX.IntrinsicElements | React.ComponentType<any>> =
   Tag extends keyof JSX.IntrinsicElements ? JSX.IntrinsicElements[Tag] : PropsOf<Tag>;
 
-export type StyledComponent<InnerProps, StyleProps> = React.ComponentType<
+export type StyledComponent<InnerProps extends {}, StyleProps extends {}> = React.ComponentType<
   InnerProps &
     StyleProps & {
-      as?: keyof JSX.IntrinsicElements | React.ComponentType<any>;
+      as?: keyof JSX.IntrinsicElements | React.ComponentType<InnerProps>;
     }
 >;
 
-export type CreateStyledComponent<ComponentProps extends object> = {
+export type CreateStyledComponent<ComponentProps extends {}> = {
   <StyleProps extends object = {}>(
-    first: TemplateStringsArray | CSSObject | FunctionInterpolation<ComponentProps & StyleProps>,
-    ...styles: Array<Interpolation<ComponentProps & StyleProps>>
+    first: TemplateStringsArray | CSSObject | FunctionInterpolation<ComponentProps, StyleProps>,
+    ...styles: Array<Interpolation<ComponentProps, StyleProps>>
   ): StyledComponent<ComponentProps, StyleProps>;
 };
 
@@ -87,13 +89,13 @@ export type Styled = {
 export type GlobalStyleComponent<P> = React.ComponentType<P>;
 
 export type CreateGlobalStyle = {
-  <P extends object = {}>(
-    first: TemplateStringsArray | CSSObject | FunctionInterpolation<P>,
-    ...styles: Array<Interpolation<P>>
-  ): GlobalStyleComponent<P>;
+  <P extends object = {}, S extends object = {}>(
+    first: TemplateStringsArray | CSSObject | FunctionInterpolation<P, S>,
+    ...styles: Array<Interpolation<P, S>>
+  ): GlobalStyleComponent<P & S>;
 };
 
 export type CreateKeyframes = (
-  strings: TemplateStringsArray | CSSKeyframes,
-  ...interpolations: Array<SimpleInterpolation>
+  first: TemplateStringsArray | CSSKeyframes,
+  ...interpolations: Array<SimpleInterpolation<{}, {}>>
 ) => Keyframes;
