@@ -26,5 +26,6 @@ yarn-error.log*
 
 legacy
 modern
-
 dist
+
+platforms/docs/.next
