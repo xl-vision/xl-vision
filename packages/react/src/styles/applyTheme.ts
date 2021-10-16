@@ -13,7 +13,7 @@ const applyTheme =
         ...others,
       };
       // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-      return style(newProps as any);
+      return style(newProps as P);
     }
     return style;
   };
@@ -24,5 +24,6 @@ const isEmpty = (o: any): o is undefined => {
   if (!o) {
     return true;
   }
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   return Object.keys(o).length === 0;
 };

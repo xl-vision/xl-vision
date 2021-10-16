@@ -37,7 +37,7 @@ export const on = <E extends EventObject, K extends keyof EventMap<E>>(
     return;
   }
 
-  element.addEventListener(type as any, listener as any, options);
+  element.addEventListener(type as string, listener as EventListener, options);
 };
 
 export const off = <E extends EventObject, K extends keyof EventMap<E>>(
@@ -50,5 +50,5 @@ export const off = <E extends EventObject, K extends keyof EventMap<E>>(
     return;
   }
 
-  element.removeEventListener(type as any, listener as any, options);
+  element.removeEventListener(type as string, listener as EventListener, options);
 };

@@ -18,7 +18,6 @@ const hexToColor: (color: string) => Color = (color) => {
   const parsedColor = color.substring(1);
 
   const re = new RegExp(`.{1,${parsedColor.length >= 6 ? 2 : 1}}`, 'g');
-  // eslint-disable-next-line @typescript-eslint/prefer-regexp-exec
   let colors: Array<string> | RegExpMatchArray | null = parsedColor.match(re);
 
   if (!colors || colors.length < 3) {

@@ -100,10 +100,14 @@ const styled = <
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       newFirst.raw = raw;
     } else if (typeof newFirst === 'function') {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       newFirst = applyTheme(newFirst);
     }
 
-    const DefaultComponent = defaultCreateStyledComponent<P & V>(newFirst, ...newStyles);
+    const DefaultComponent = defaultCreateStyledComponent<P & V>(
+      newFirst as TemplateStringsArray | CSSObject | FunctionInterpolation<P & V>,
+      ...newStyles,
+    );
 
     if (env.isDevelopment) {
       DefaultComponent.displayName = displayName;
