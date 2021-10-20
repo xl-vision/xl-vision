@@ -1,5 +1,5 @@
 import React from 'react';
-import layouts from '../layout';
+import layouts from '../../layout';
 
 export type BaseLeftRoute = {
   name: string;

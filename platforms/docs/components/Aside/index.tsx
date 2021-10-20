@@ -2,7 +2,7 @@ import { LocalizationContext, styled } from '@xl-vision/react';
 import { mix } from '@xl-vision/react/utils/color';
 import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import routeMap, { Route as RouteType } from '../../routes';
+import routeMap, { Route as RouteType } from '../../src/routes';
 
 const LeftNode = styled('span')(() => {
   return {

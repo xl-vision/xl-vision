@@ -6,11 +6,19 @@ const { merge } = require('webpack-merge');
 
 module.exports = () => {
   return {
-    webpack: (config, options) => {
+    reactStrictMode: true,
+    webpack: (config, { defaultLoaders }) => {
       const alias = resolvePackageAlias();
+      config.module.rules[1].include.push(path.join(__dirname, '../../packages'));
+
       return merge(config, {
         resolve: {
-          alias,
+          alias: {
+            ...alias,
+            react: path.join(__dirname, '../../node_modules/react'),
+            'react-dom': path.join(__dirname, '../../node_modules/react-dom'),
+            'styled-components': path.join(__dirname, '../../node_modules/styled-components'),
+          },
         },
         module: {
           rules: [
@@ -18,9 +26,13 @@ module.exports = () => {
               test: [/\.mdx?$/],
               exclude: '/node_modules/',
               use: [
-                options.defaultLoaders.babel,
+                defaultLoaders.babel,
                 {
+<<<<<<< HEAD
                   loader: require.resolve('./scripts/webpack/mdLoader'),
+=======
+                  loader: require.resolve('./scripts/mdLoader'),
+>>>>>>> docs: working on ssr
                 },
               ],
             },

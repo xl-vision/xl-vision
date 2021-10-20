@@ -1,6 +1,6 @@
 import { styled } from '@xl-vision/react';
 import React from 'react';
-import { Link as RouteLink } from 'react-router-dom';
+import NextLink from 'next/link';
 
 const LinkWrapper = styled('a')(
   ({ theme }) => `
@@ -18,7 +18,7 @@ const Link: React.FunctionComponent<React.AnchorHTMLAttributes<HTMLAnchorElement
   if (href) {
     if (/^ *\//.exec(href)) {
       // @ts-ignore
-      return <LinkWrapper {...others} as={RouteLink} to={href} />;
+      return <LinkWrapper {...others} href={href} as={NextLink} />;
     }
   }
 
