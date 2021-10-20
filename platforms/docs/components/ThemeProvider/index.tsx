@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { BaseTheme, ThemeProvider as XlThemeProvider } from '@xl-vision/react';
+import { useLayoutEffect } from '@xl-vision/hooks';
 
 export type ThemeProviderProps = {
   children: React.ReactNode;
@@ -21,13 +22,14 @@ const KEY = 'dark_mode';
 const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = (props) => {
   const { children } = props;
 
-  const [isDark, setDark] = React.useState(() => {
+  const [isDark, setDark] = React.useState(false);
+
+  useLayoutEffect(() => {
     if (localStorage) {
       const dark = localStorage.getItem(KEY) === 'dark';
-      return dark;
+      setDark(dark);
     }
-    return false;
-  });
+  }, []);
 
   const setDarkWrapper: ThemeContextProps['setDark'] = React.useCallback((dark) => {
     const fn = typeof dark === 'function' ? dark : () => dark;

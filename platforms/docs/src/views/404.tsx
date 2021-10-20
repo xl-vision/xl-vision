@@ -2,7 +2,7 @@ import { styled } from '@xl-vision/react';
 import { keyframes } from '@xl-vision/styled-engine';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { LocalizationContext } from '../components/LocalizationProvider';
+import { LocalizationContext } from '../../components/LocalizationProvider';
 
 const bgShadow = keyframes`
     0% {

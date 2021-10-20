@@ -2,12 +2,12 @@ import { createGlobalStyles, CssBaseline, LocalizationContext } from '@xl-vision
 import React from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch, useLocation } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import LocalizationProvider from './components/LocalizationProvider';
-import ThemeProvider from './components/ThemeProvider';
+import LocalizationProvider from '../components/LocalizationProvider';
+import ThemeProvider from '../components/ThemeProvider';
 import routeMap, { Route as RouteType } from './routes';
-import layouts from './layout';
-import Markdown from './components/Markdown';
-import Loading from './components/Loading';
+import layouts from '../layout';
+import Markdown from '../components/Markdown';
+import Loading from '../components/Loading';
 
 const GlobalStyle = createGlobalStyles(({ theme }) => {
   const { color } = theme;

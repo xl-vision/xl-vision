@@ -1,5 +1,6 @@
 import React from 'react';
 import { LocalizationProvider as XlLocalizationProvider } from '@xl-vision/react';
+import { useLayoutEffect } from '@xl-vision/hooks';
 import { env } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import warning from '@xl-vision/react/utils/warning';
@@ -32,28 +33,11 @@ const langs = Object.keys(locales);
 const LocalizationProvider: React.FunctionComponent<LocalizationProviderProps> = (props) => {
   const { children } = props;
 
-  const [language, setLanguage] = React.useState<string>(() => {
-    let lang: string | null | undefined = localStorage.getItem(KEY);
-    if (lang) {
-      return lang;
-    }
+  const [language, setLanguage] = React.useState(defaultLanguage);
 
-    lang = navigator.language;
-
-    if (langs.indexOf(lang) > -1) {
-      return lang;
-    }
-
-    const prefix = lang.split('-')[0];
-
-    lang = langs.find((it) => it.startsWith(prefix));
-
-    if (lang) {
-      return lang;
-    }
-
-    return defaultLanguage;
-  });
+  useLayoutEffect(() => {
+    setLanguage(getDefaultLang());
+  }, []);
 
   const setLanguageWrapper = React.useCallback((lang: string) => {
     localStorage.setItem(KEY, lang);
@@ -87,5 +71,28 @@ if (env.isDevelopment) {
     children: PropTypes.node,
   };
 }
+
+const getDefaultLang = () => {
+  let lang: string | null | undefined = localStorage.getItem(KEY);
+  if (lang) {
+    return lang;
+  }
+
+  lang = navigator.language;
+
+  if (langs.indexOf(lang) > -1) {
+    return lang;
+  }
+
+  const prefix = lang.split('-')[0];
+
+  lang = langs.find((it) => it.startsWith(prefix));
+
+  if (lang) {
+    return lang;
+  }
+
+  return defaultLanguage;
+};
 
 export default LocalizationProvider;
