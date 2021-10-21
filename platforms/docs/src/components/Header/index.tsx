@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, styled, Icon, Tooltip, Dropdown } from '@xl-vision/react';
 import { DownOutlined, GithubFilled } from '@xl-vision/icons';
 import { darken, lighten } from '@xl-vision/react/utils/color';
-import { NavLink } from 'react-router-dom';
+import Link from 'next/link';
 import LightTheme from './LightTheme';
 import DarkTheme from './DarkTheme';
 import Translate from './Translate';
@@ -49,7 +49,7 @@ const HeaderNav = styled('header')<{ isDark: boolean }>(({ theme, styleProps }) 
   };
 });
 
-const LogoWrapper = styled(NavLink)(({ theme }) => {
+const LogoWrapper = styled('a')(({ theme }) => {
   return {
     display: 'inline-flex',
     height: '100%',
@@ -108,21 +108,27 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
   return (
     <Container {...props}>
       <HeaderNav styleProps={{ isDark }}>
-        <LogoWrapper to='/'>
-          <Logo />
-          <span>xl vision</span>
-        </LogoWrapper>
+        <Link href='/'>
+          <LogoWrapper>
+            <Logo />
+            <span>xl vision</span>
+          </LogoWrapper>
+        </Link>
         <Menus>
           <li>
-            <NavLink exact={true} to='/'>
-              {locale.header.index}
-            </NavLink>
+            <Link href='/'>
+              <a>{locale.header.index}</a>
+            </Link>
           </li>
           <li>
-            <NavLink to='/components'>{locale.header.component}</NavLink>
+            <Link href='/components'>
+              <a>{locale.header.component}</a>
+            </Link>
           </li>
           <li>
-            <NavLink to='/hooks'>{locale.header.hooks}</NavLink>
+            <Link href='/hooks'>
+              <a>{locale.header.hooks}</a>
+            </Link>
           </li>
         </Menus>
         <div>

@@ -4,6 +4,7 @@ import { AppProps } from 'next/app';
 import LocalizationProvider from '../components/LocalizationProvider';
 import ThemeProvider from '../components/ThemeProvider';
 import Markdown from '../components/Markdown';
+import LayoutMap, { LayoutKey } from '../layout';
 
 const GlobalStyle = createGlobalStyles(({ theme }) => {
   const { color } = theme;
@@ -12,7 +13,7 @@ const GlobalStyle = createGlobalStyles(({ theme }) => {
       width: '100%',
       height: '100%',
     },
-    '#app': {
+    '#__next': {
       height: '100%',
     },
     '::-webkit-scrollbar': {
@@ -31,18 +32,23 @@ const GlobalStyle = createGlobalStyles(({ theme }) => {
 });
 
 const App = ({ Component, pageProps }: AppProps) => {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const { layout = 'default', ...others } = pageProps;
+
+  const Layout = LayoutMap[layout as LayoutKey];
+
   return (
-    <React.StrictMode>
-      <LocalizationProvider>
-        <ThemeProvider>
-          <CssBaseline />
-          <GlobalStyle />
-          <Markdown>
-            <Component {...pageProps} />
-          </Markdown>
-        </ThemeProvider>
-      </LocalizationProvider>
-    </React.StrictMode>
+    <LocalizationProvider>
+      <ThemeProvider>
+        <CssBaseline />
+        <GlobalStyle />
+        <Markdown>
+          <Layout>
+            <Component {...others} />
+          </Layout>
+        </Markdown>
+      </ThemeProvider>
+    </LocalizationProvider>
   );
 };
 

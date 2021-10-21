@@ -1,7 +1,7 @@
 import { styled } from '@xl-vision/react';
 import { emphasize } from '@xl-vision/react/utils/color';
 
-export default styled('blockquote')(({ theme }) => {
+const Blockquote = styled('blockquote')(({ theme }) => {
   return {
     margin: '1rem 0',
     padding: '0.25rem 0 0.25rem 1rem',
@@ -18,3 +18,5 @@ export default styled('blockquote')(({ theme }) => {
     },
   };
 });
+
+export default Blockquote;

@@ -50,7 +50,7 @@ const createHookMessageDialog = (props: MessageDialogProps, type?: MessageDialog
 
 let uuid = 0;
 
-export default () => {
+const useDialog = () => {
   const [dialogs, setDialogs] = React.useState<Array<React.ReactElement>>([]);
 
   const method = React.useCallback(
@@ -136,3 +136,5 @@ export default () => {
 
   return [methods, dialogs] as const;
 };
+
+export default useDialog;
