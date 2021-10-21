@@ -26,13 +26,6 @@ legacy
 modern
 dist
 
-<<<<<<< HEAD
-platforms/docs/.next
-=======
-dist
-
 packages/**/package-lock.json
 platforms/**/package-lock.json
-
-plaforms/docs/.next
->>>>>>> docs: working on ssr
+platforms/docs/.next

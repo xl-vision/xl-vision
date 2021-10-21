@@ -1,5 +1,3 @@
-declare module '*.md';
-declare module '*.css';
 declare module '*.mdx' {
   const MDXComponent: React.ComponentType<any>;
   export default MDXComponent;
@@ -45,22 +43,4 @@ declare module '@mdx-js/react' {
   }
   // eslint-disable-next-line react/prefer-stateless-function
   export class MDXProvider extends React.Component<MDXProviderProps> {}
-}
-
-declare module '*.jpg';
-
-interface Window {
-  particlesJS: {
-    load: (id: string, url: string, cb?: () => void) => void;
-  };
-  pJSDom: Array<{
-    pJS: {
-      canvas: { el: HTMLCanvasElement };
-      fn: {
-        vendors: {
-          destroypJS: () => void;
-        };
-      };
-    };
-  }>;
 }

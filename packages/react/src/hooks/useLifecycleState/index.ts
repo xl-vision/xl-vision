@@ -7,7 +7,7 @@ export enum LifecycleState {
   DESTORYED,
 }
 
-export default () => {
+const useLifecycleState = () => {
   const stateRef = React.useRef(LifecycleState.BEFORE_MOUNTED);
 
   useLayoutEffect(() => {
@@ -19,3 +19,5 @@ export default () => {
 
   return stateRef;
 };
+
+export default useLifecycleState;

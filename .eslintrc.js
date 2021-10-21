@@ -181,6 +181,7 @@ module.exports = {
     },
     {
       files: ['platforms/docs/**/*.ts', 'platforms/docs/**/*.tsx'],
+      extends: ['next'],
       rules: {
         'unicorn/filename-case': [
           'error',
@@ -192,6 +193,8 @@ module.exports = {
             ignore: [/^routes\.([A-Za-z]|-)+\.tsx?$/, 'next-env.d.ts'],
           },
         ],
+        '@typescript-eslint/require-await': 'off',
+        'jsx-a11y/anchor-is-valid': 'off',
       },
     },
   ],
