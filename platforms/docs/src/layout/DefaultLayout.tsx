@@ -7,14 +7,17 @@ export type DefaultLayoutProps = {
 };
 
 const Root = styled('div')(() => {
-  return {};
+  return {
+    display: 'flex',
+    flexDirection: 'column',
+  };
 });
 
 const DefaultLayout: React.FunctionComponent<DefaultLayoutProps> = ({ children }) => {
   return (
     <Root>
       <Header />
-      {children}
+      <div className='main'>{children}</div>
     </Root>
   );
 };

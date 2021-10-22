@@ -6,6 +6,10 @@ const { merge } = require('webpack-merge');
 
 module.exports = () => {
   return {
+    i18n: {
+      locales: ['en-US', 'zh-CN'],
+      defaultLocale: 'en-US',
+    },
     reactStrictMode: true,
     webpack: (config, { defaultLoaders }) => {
       const alias = resolvePackageAlias();
