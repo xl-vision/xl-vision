@@ -1,9 +1,10 @@
 import React from 'react';
 import { LocalizationProvider as XlLocalizationProvider } from '@xl-vision/react';
-import { useLayoutEffect } from '@xl-vision/hooks';
 import { env } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import warning from '@xl-vision/react/utils/warning';
+import { useRouter } from 'next/router';
+import { defaultLanguage } from '@xl-vision/react/locale';
 import locales, { Locale } from './locales';
 
 export type LocalizationProviderProps = {
@@ -12,37 +13,20 @@ export type LocalizationProviderProps = {
 
 export type LocalizationContextProps = {
   language: string;
-  setLanguage: (lang: string) => void;
   supportLocales: Record<string, Locale>;
   locale: Locale;
 };
 
-const defaultLanguage = 'en-US';
-
 export const LocalizationContext = React.createContext<LocalizationContextProps>({
   language: defaultLanguage,
-  setLanguage: () => {},
   supportLocales: locales,
   locale: locales[defaultLanguage],
 });
 
-const KEY = 'lang';
-
-const langs = Object.keys(locales);
-
 const LocalizationProvider: React.FunctionComponent<LocalizationProviderProps> = (props) => {
   const { children } = props;
 
-  const [language, setLanguage] = React.useState(defaultLanguage);
-
-  useLayoutEffect(() => {
-    setLanguage(getDefaultLang());
-  }, []);
-
-  const setLanguageWrapper = React.useCallback((lang: string) => {
-    localStorage.setItem(KEY, lang);
-    setLanguage(lang);
-  }, []);
+  const { locale: language = defaultLanguage } = useRouter();
 
   const locale = React.useMemo(() => {
     if (locales[language]) {
@@ -57,9 +41,7 @@ const LocalizationProvider: React.FunctionComponent<LocalizationProviderProps> =
   }, [language]);
 
   return (
-    <LocalizationContext.Provider
-      value={{ language, setLanguage: setLanguageWrapper, supportLocales: locales, locale }}
-    >
+    <LocalizationContext.Provider value={{ language, supportLocales: locales, locale }}>
       <XlLocalizationProvider language={language}>{children}</XlLocalizationProvider>
     </LocalizationContext.Provider>
   );
@@ -71,28 +53,5 @@ if (env.isDevelopment) {
     children: PropTypes.node,
   };
 }
-
-const getDefaultLang = () => {
-  let lang: string | null | undefined = localStorage.getItem(KEY);
-  if (lang) {
-    return lang;
-  }
-
-  lang = navigator.language;
-
-  if (langs.indexOf(lang) > -1) {
-    return lang;
-  }
-
-  const prefix = lang.split('-')[0];
-
-  lang = langs.find((it) => it.startsWith(prefix));
-
-  if (lang) {
-    return lang;
-  }
-
-  return defaultLanguage;
-};
 
 export default LocalizationProvider;

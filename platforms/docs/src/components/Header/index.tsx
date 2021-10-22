@@ -3,6 +3,8 @@ import { Button, styled, Icon, Tooltip, Dropdown } from '@xl-vision/react';
 import { DownOutlined, GithubFilled } from '@xl-vision/icons';
 import { darken, lighten } from '@xl-vision/react/utils/color';
 import Link from 'next/link';
+import { useConstantFn } from '@xl-vision/hooks';
+import { useRouter } from 'next/router';
 import LightTheme from './LightTheme';
 import DarkTheme from './DarkTheme';
 import Translate from './Translate';
@@ -95,7 +97,8 @@ const Menus = styled('ul')(({ theme }) => {
 
 const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (props) => {
   const theme = React.useContext(ThemeContext);
-  const { supportLocales, locale, setLanguage } = React.useContext(LocalizationContext);
+  const { supportLocales, locale } = React.useContext(LocalizationContext);
+  const router = useRouter();
 
   const { isDark, setDark } = theme;
 
@@ -105,10 +108,15 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
 
   const langs = React.useMemo(() => Object.keys(supportLocales), [supportLocales]);
 
+  const handleLangChange = useConstantFn((lang: string) => {
+    const { pathname, asPath, query } = router;
+    router.push({ pathname, query }, asPath, { locale: lang }).catch(() => {});
+  });
+
   return (
     <Container {...props}>
       <HeaderNav styleProps={{ isDark }}>
-        <Link href='/'>
+        <Link href='/' passHref={true}>
           <LogoWrapper>
             <Logo />
             <span>xl vision</span>
@@ -136,7 +144,7 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
             menus={
               <>
                 {langs.map((lang) => (
-                  <Dropdown.Item onClick={() => setLanguage(lang)} key={lang}>
+                  <Dropdown.Item onClick={() => handleLangChange(lang)} key={lang}>
                     {supportLocales[lang].name}
                   </Dropdown.Item>
                 ))}
