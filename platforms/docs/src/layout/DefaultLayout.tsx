@@ -1,10 +1,7 @@
 import { styled } from '@xl-vision/react';
 import React from 'react';
 import Header from '../components/Header';
-
-export type DefaultLayoutProps = {
-  children: React.ReactNode;
-};
+import { Layout } from './Layout';
 
 const Root = styled('div')(() => {
   return {
@@ -13,7 +10,7 @@ const Root = styled('div')(() => {
   };
 });
 
-const DefaultLayout: React.FunctionComponent<DefaultLayoutProps> = ({ children }) => {
+const DefaultLayout: Layout = ({ children }) => {
   return (
     <Root>
       <Header />
