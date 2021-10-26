@@ -6,6 +6,9 @@ const { merge } = require('webpack-merge');
 
 module.exports = () => {
   return {
+    eslint: {
+      ignoreDuringBuilds: true,
+    },
     i18n: {
       locales: ['en-US', 'zh-CN'],
       defaultLocale: 'en-US',
