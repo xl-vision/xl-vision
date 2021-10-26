@@ -1,10 +1,7 @@
 import React from 'react';
+import { Layout } from './Layout';
 
-export type EmptyLayoutProps = {
-  children: React.ReactNode;
-};
-
-const EmptyLayout: React.FunctionComponent<EmptyLayoutProps> = ({ children }) => {
+const EmptyLayout: Layout = ({ children }) => {
   return <>{children}</>;
 };
 
