@@ -5,7 +5,7 @@ import { env } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
 import TransitionGroup, { TransitionGroupClasses } from '../TransitionGroup';
 import { styled } from '../styles';
-import ThemeContext from '../ThemeProvider/ThemeContext';
+import { useTheme } from '../ThemeProvider';
 
 export interface RippleProps extends React.HTMLAttributes<HTMLDivElement> {
   transitionClasses: TransitionGroupClasses;
@@ -52,7 +52,7 @@ const DELAY_RIPPLE = 80;
 const Ripple = React.forwardRef<RippleRef, RippleProps>((props, ref) => {
   const { transitionClasses, leaveAfterEnter, className, ...others } = props;
 
-  const { clsPrefix } = React.useContext(ThemeContext);
+  const { clsPrefix } = useTheme();
 
   const [ripples, setRipples] = React.useState<Array<React.ReactElement>>([]);
 

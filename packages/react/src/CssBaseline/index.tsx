@@ -3,8 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { env } from '@xl-vision/utils';
 import { createGlobalStyles } from '../styles';
-import { Theme } from '../ThemeProvider';
-import ThemeContext from '../ThemeProvider/ThemeContext';
+import { Theme, useTheme } from '../ThemeProvider';
 
 export type CssBaselineProps = {
   children?: React.ReactNode;
@@ -54,7 +53,7 @@ const GlobalStyles = createGlobalStyles<CssBaselineStyleProps>(({ theme, stylePr
 
 const CssBaseline: React.FunctionComponent<CssBaselineProps> = (props) => {
   const { children } = props;
-  const { overrideStyles } = React.useContext(ThemeContext);
+  const { overrideStyles } = useTheme();
 
   const overrideStyle = overrideStyles.CssBaseline?.Root;
 

@@ -6,13 +6,13 @@ import { useForkRef } from '@xl-vision/hooks';
 import Portal, { PortalContainerType } from '../Portal';
 import usePropChange from '../hooks/usePropChange';
 import CSSTransition from '../CSSTransition';
-import ThemeContext from '../ThemeProvider/ThemeContext';
 import { styled } from '../styles';
 import { increaseZindex } from '../utils/zIndexManger';
 import { addClass, removeClass } from '../utils/class';
 import { forceReflow } from '../utils/transition';
 import ScrollLocker from '../utils/ScrollLocker';
 import { contains } from '../utils/dom';
+import { useTheme } from '../ThemeProvider';
 
 export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   getContainer?: PortalContainerType;
@@ -157,7 +157,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     ...others
   } = props;
 
-  const { clsPrefix } = React.useContext(ThemeContext);
+  const { clsPrefix } = useTheme();
 
   const [visible, setVisible] = usePropChange(defaultVisible, visibleProp, onVisibleChange);
 

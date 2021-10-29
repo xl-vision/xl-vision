@@ -7,7 +7,7 @@ import { useConstantFn } from '@xl-vision/hooks';
 import BaseButton from '../BaseButton';
 import { styled } from '../styles';
 import DropdownContext from './DropdownContext';
-import ThemeContext from '../ThemeProvider/ThemeContext';
+import { useTheme } from '../ThemeProvider';
 
 export interface DropdownItemProps extends React.HTMLAttributes<HTMLLIElement> {
   children: React.ReactNode;
@@ -64,7 +64,7 @@ const DropdownItemButton = styled(BaseButton, {
 const DropdownItem = React.forwardRef<HTMLLIElement, DropdownItemProps>((props, ref) => {
   const { children, onClick, disabled, className, ...others } = props;
 
-  const { clsPrefix } = React.useContext(ThemeContext);
+  const { clsPrefix } = useTheme();
 
   const { setVisible } = React.useContext(DropdownContext);
 

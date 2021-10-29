@@ -6,7 +6,7 @@ import Avatar, { AvatarProps, AvatarShape, AvatarSize, AvatarSizeType } from './
 import Popover from '../Popover';
 import { styled } from '../styles';
 import AvatarContext from './AvatarContext';
-import ThemeContext from '../ThemeProvider/ThemeContext';
+import { useTheme } from '../ThemeProvider';
 
 export type AvatarGroupPopupPlacement = 'none' | 'top' | 'bottom';
 
@@ -63,7 +63,7 @@ const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>((props, r
     ...others
   } = props;
 
-  const { clsPrefix } = React.useContext(ThemeContext);
+  const { clsPrefix } = useTheme();
 
   const childArray = React.Children.map<React.ReactElement, React.ReactElement>(
     children,

@@ -5,8 +5,8 @@ import { CSSObject } from '@xl-vision/styled-engine';
 import { env } from '@xl-vision/utils';
 import Dialog, { DialogProps } from '../Dialog';
 import { styled } from '../../styles';
-import { ThemeContext } from '../../ThemeProvider';
 import usePropChange from '../../hooks/usePropChange';
+import { useTheme } from '../../ThemeProvider';
 
 export interface MessageDialogProps extends Omit<DialogProps, 'children'> {
   content?: React.ReactNode;
@@ -86,7 +86,7 @@ const MessageDialog: React.FunctionComponent<MessageDialogProps> = (props) => {
 
   const [first, setFirst] = React.useState(true);
 
-  const { clsPrefix } = React.useContext(ThemeContext);
+  const { clsPrefix } = useTheme();
 
   // 保证有对话框弹出的动画效果
   React.useEffect(() => {

@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import { env } from '@xl-vision/utils';
 import { styled } from '../styles';
 import BaseIcon, { BaseIconProps } from './BaseIcon';
-import ThemeContext from '../ThemeProvider/ThemeContext';
+import { useTheme } from '../ThemeProvider';
 
 export interface IconProps extends BaseIconProps {}
 
@@ -27,7 +27,7 @@ const IconRoot = styled(BaseIcon, {
 const Icon = React.forwardRef<SVGSVGElement, IconProps>((props, ref) => {
   const { className, ...others } = props;
 
-  const { clsPrefix } = React.useContext(ThemeContext);
+  const { clsPrefix } = useTheme();
 
   const rootClassName = `${clsPrefix}-icon`;
 
