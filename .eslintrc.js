@@ -196,6 +196,7 @@ module.exports = {
         '@typescript-eslint/require-await': 'off',
         'jsx-a11y/anchor-is-valid': 'off',
         '@next/next/link-passhref': 'error',
+        'import/prefer-default-export': 'off'
       },
     },
   ],

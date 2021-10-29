@@ -1,9 +1,11 @@
-import EmptyLayout from './EmptyLayout';
 import DefaultLayout from './DefaultLayout';
+import HeaderLayout from './HeaderLayout';
+import ComponentLayout from './ComponentLayout';
 
 const LayoutMap = {
   default: DefaultLayout,
-  empty: EmptyLayout,
+  header: HeaderLayout,
+  component: ComponentLayout,
 };
 
 export default LayoutMap;
