@@ -133,7 +133,7 @@ export default HOME;
 export const getStaticProps: GetStaticProps<{ layout: LayoutKey }> = () => {
   return {
     props: {
-      layout: 'empty',
+      layout: 'header',
     },
   };
 };

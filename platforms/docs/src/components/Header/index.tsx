@@ -10,7 +10,7 @@ import LightTheme from './LightTheme';
 import DarkTheme from './DarkTheme';
 import Translate from './Translate';
 import { ThemeContext } from '../ThemeProvider';
-import { LocalizationContext } from '../LocalizationProvider';
+import { useLocale } from '../LocalizationProvider';
 import Logo from '../Logo';
 
 const Container = styled('div')(() => {
@@ -98,7 +98,7 @@ const Menus = styled('ul')(({ theme }) => {
 
 const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (props) => {
   const theme = React.useContext(ThemeContext);
-  const { supportLocales, locale } = React.useContext(LocalizationContext);
+  const { supportLocales, locale } = useLocale();
   const router = useRouter();
 
   const { isDark, setDark } = theme;

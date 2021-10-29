@@ -23,6 +23,10 @@ export const LocalizationContext = React.createContext<LocalizationContextProps>
   locale: locales[defaultLanguage],
 });
 
+export const useLocale = () => {
+  return React.useContext(LocalizationContext);
+};
+
 const LocalizationProvider: React.FunctionComponent<LocalizationProviderProps> = (props) => {
   const { children } = props;
 

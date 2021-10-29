@@ -203,11 +203,3 @@ const NotFound: NextPage = () => {
 };
 
 export default NotFound;
-
-export const getStaticProps: GetStaticProps<{ layout: LayoutKey }> = () => {
-  return {
-    props: {
-      layout: 'empty',
-    },
-  };
-};
