@@ -1,6 +1,5 @@
 import React from 'react';
-import { Locale } from '../locale';
-import locale from '../locale/en-US';
+import { Locale, defaultLocale } from '../locale';
 
 export type LocalizationContextProps = {
   locale: Locale;
@@ -8,6 +7,6 @@ export type LocalizationContextProps = {
 };
 
 export default React.createContext<LocalizationContextProps>({
-  locale,
+  locale: defaultLocale,
   language: 'en-US',
 });

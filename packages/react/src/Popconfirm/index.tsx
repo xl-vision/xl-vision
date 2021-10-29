@@ -6,11 +6,11 @@ import { env } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
 import Popper, { PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
-import ThemeContext from '../ThemeProvider/ThemeContext';
 import Button, { ButtonProps } from '../Button';
-import LocalizationContext from '../LocalizationProvider/LocalizationContext';
 import Icon from '../Icon';
 import usePropChange from '../hooks/usePropChange';
+import { useTheme } from '../ThemeProvider';
+import { useLocale } from '../LocalizationProvider';
 
 export type PopconfirmButtonProps = Omit<ButtonProps, 'children' | 'onClick'>;
 export interface PopconfirmProps
@@ -125,8 +125,8 @@ const defaultIcon = (
 );
 
 const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
-  const { clsPrefix } = React.useContext(ThemeContext);
-  const { locale } = React.useContext(LocalizationContext);
+  const { clsPrefix } = useTheme();
+  const { locale } = useLocale();
 
   const {
     getPopupContainer,

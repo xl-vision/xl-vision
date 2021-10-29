@@ -1,13 +1,13 @@
 import { CSSObject } from '@xl-vision/styled-engine';
 import clsx from 'clsx';
-import React from 'react';
 import PropTypes from 'prop-types';
 import { env } from '@xl-vision/utils';
 import { useConstantFn, useForkRef } from '@xl-vision/hooks';
+import React from 'react';
 import useResize from '../hooks/useResizeObserver';
 import { styled } from '../styles';
-import ThemeContext from '../ThemeProvider/ThemeContext';
 import AvatarContext from './AvatarContext';
+import { useTheme } from '../ThemeProvider';
 
 export type AvatarShape = 'circle' | 'square' | 'round';
 
@@ -103,7 +103,8 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
     style,
     ...others
   } = props;
-  const { clsPrefix } = React.useContext(ThemeContext);
+
+  const { clsPrefix } = useTheme();
 
   const nodeRef = React.useRef<HTMLSpanElement>(null);
   const forkRef = useForkRef(nodeRef, ref);

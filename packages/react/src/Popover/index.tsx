@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { env } from '@xl-vision/utils';
 import Popper, { PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
-import ThemeContext from '../ThemeProvider/ThemeContext';
+import { useTheme } from '../ThemeProvider';
 
 export interface PopoverProps
   extends Omit<PopperProps, 'popup' | 'arrow' | 'transitionClasses' | 'title'> {
@@ -121,7 +121,7 @@ const Popover = React.forwardRef<unknown, PopoverProps>((props, ref) => {
     ...others
   } = props;
 
-  const { clsPrefix } = React.useContext(ThemeContext);
+  const { clsPrefix } = useTheme();
 
   const rootClassName = `${clsPrefix}-popover`;
 

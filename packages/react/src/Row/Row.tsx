@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { env } from '@xl-vision/utils';
 import { styled } from '../styles';
-import ThemeContext from '../ThemeProvider/ThemeContext';
 import { ColProps } from './Col';
 import RowContext from './RowContext';
 import useMedia from './useMedia';
+import { useTheme } from '../ThemeProvider';
 
 export type RowAlign = 'top' | 'middle' | 'bottom';
 export type RowJustify = 'start' | 'end' | 'center' | 'space-around' | 'space-between';
@@ -64,7 +64,7 @@ const RowRoot = styled('div', {
 const Row = React.forwardRef<HTMLDivElement, RowProps>((props, ref) => {
   const { align, justify, children, gutter, type, style, className, ...others } = props;
 
-  const { breakpoints, clsPrefix } = React.useContext(ThemeContext);
+  const { breakpoints, clsPrefix } = useTheme();
 
   const matches = useMedia(breakpoints.values, breakpoints.unit);
 

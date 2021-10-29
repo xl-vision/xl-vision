@@ -9,9 +9,9 @@ import BaseButton from '../BaseButton';
 import usePropChange from '../hooks/usePropChange';
 import Popper, { PopperPlacement, PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
-import ThemeContext from '../ThemeProvider/ThemeContext';
-import DropdownContext from './DropdownContext';
 import Icon from '../Icon';
+import { useTheme } from '../ThemeProvider';
+import DropdownContext from './DropdownContext';
 
 export interface DropdownSubmenuProps
   extends Omit<
@@ -132,7 +132,7 @@ const DropdownSubmenu = React.forwardRef<HTMLDivElement, DropdownSubmenuProps>((
 
   const [visible, setVisible] = usePropChange(defaultVisible, visibleProp, onVisibleChange);
 
-  const { clsPrefix } = React.useContext(ThemeContext);
+  const { clsPrefix } = useTheme();
   const { submenuCloseHandlers } = React.useContext(DropdownContext);
 
   const handleVisibleChange = useConstantFn((newVisible: boolean) => {

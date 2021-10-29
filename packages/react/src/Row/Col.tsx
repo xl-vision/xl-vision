@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import { env } from '@xl-vision/utils';
 import { styled } from '../styles';
 import RowContext from './RowContext';
-import ThemeContext from '../ThemeProvider/ThemeContext';
+import { useTheme } from '../ThemeProvider';
 
 export type ColSpanType = number | Partial<Record<string, number>>;
 
@@ -73,7 +73,7 @@ const Col = React.forwardRef<HTMLDivElement, ColProps>((props, ref) => {
   const { children, className, offset, order, pull, push, column, style, ...others } = props;
 
   const { matches, gutter } = React.useContext(RowContext);
-  const { clsPrefix } = React.useContext(ThemeContext);
+  const { clsPrefix } = useTheme();
 
   const computedColumn = React.useMemo(() => {
     if (typeof column === 'number') {

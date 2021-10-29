@@ -8,7 +8,7 @@ import ThemeContext from '../ThemeProvider/ThemeContext';
 import { styled } from '../styles';
 import Button, { ButtonProps } from '../Button';
 import usePropChange from '../hooks/usePropChange';
-import LocalizationContext from '../LocalizationProvider/LocalizationContext';
+import { useLocale } from '../LocalizationProvider';
 
 export type DialogButtonProps = Omit<ButtonProps, 'children' | 'onClick'>;
 
@@ -99,7 +99,7 @@ const DialogActions = styled('div', {
 let uuid = 0;
 
 const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
-  const { locale } = React.useContext(LocalizationContext);
+  const { locale } = useLocale();
 
   const {
     children,
