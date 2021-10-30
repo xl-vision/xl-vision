@@ -2,7 +2,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
 const fs = require('fs-extra');
-const { merge } = require('webpack-merge');
+const { mergeWithRules } = require('webpack-merge');
 
 module.exports = () => {
   return {
@@ -16,9 +16,17 @@ module.exports = () => {
     reactStrictMode: true,
     webpack: (config, { defaultLoaders }) => {
       const alias = resolvePackageAlias();
-      config.module.rules[1].include.push(path.join(__dirname, '../../packages'));
 
-      return merge(config, {
+      config = mergeWithRules({
+        module: {
+          rules: {
+            oneOf: {
+              test: 'match',
+              include: 'append',
+            },
+          },
+        },
+      })(config, {
         resolve: {
           alias: {
             ...alias,
@@ -30,22 +38,29 @@ module.exports = () => {
         module: {
           rules: [
             {
-              test: [/\.mdx?$/],
-              exclude: '/node_modules/',
-              use: [
-                defaultLoaders.babel,
+              oneOf: [
                 {
-<<<<<<< HEAD
                   loader: require.resolve('./scripts/webpack/mdLoader'),
-=======
-                  loader: require.resolve('./scripts/mdLoader'),
->>>>>>> docs: working on ssr
+                  test: /\.mdx?$/,
+                  exclude: '/node_modules/',
+                  use: [
+                    defaultLoaders.babel,
+                    {
+                      loader: require.resolve('./scripts/mdLoader'),
+                    },
+                  ],
+                },
+                {
+                  test: /\.(tsx|ts|js|cjs|mjs|jsx)$/,
+                  include: [path.join(__dirname, '../../packages')],
                 },
               ],
             },
           ],
         },
       });
+
+      return config;
     },
   };
 };

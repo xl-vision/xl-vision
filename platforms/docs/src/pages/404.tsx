@@ -1,10 +1,9 @@
 import { styled } from '@xl-vision/react';
 import { keyframes } from '@xl-vision/styled-engine';
-import { GetStaticProps, NextPage } from 'next';
+import { NextPage } from 'next';
 import Link from 'next/link';
 import React from 'react';
 import { LocalizationContext } from '../components/LocalizationProvider';
-import { LayoutKey } from '../layout';
 
 const bgShadow = keyframes`
     0% {
