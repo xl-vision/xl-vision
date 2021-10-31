@@ -1,10 +1,10 @@
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 
-const Demo: NextPage = () => {
+const Docs: NextPage = () => {
   const router = useRouter();
 
-  return <h1>{router.asPath}</h1>;
+  return <div>{router.asPath}</div>;
 };
 
-export default Demo;
+export default Docs;
