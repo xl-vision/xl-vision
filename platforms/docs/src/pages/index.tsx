@@ -115,7 +115,7 @@ const HOME: NextPage = () => {
           </div>
           <div className='desc'>{locale.pages.index.desc}</div>
           <div className='action'>
-            <Link href='/components' passHref={true}>
+            <Link href='/docs/components' passHref={true}>
               <Button theme='primary'>{locale.pages.index.btnStart}</Button>
             </Link>
             <Button theme='default' target='_blank' href='https://github.com/xl-vision/xl-vision'>
