@@ -1,6 +1,6 @@
 import { styled } from '@xl-vision/react';
 import React from 'react';
-import ComponentAside from '../components/ComponentAside';
+import Aside, { RouteType } from '../components/Aside';
 import Header from '../components/Header';
 import { Layout } from './Layout';
 
@@ -11,12 +11,22 @@ const Root = styled('div')(() => {
   };
 });
 
+const routes: Array<RouteType> = [
+  {
+    names: {
+      'en-US': 'Overview',
+      'zh-CN': '总览',
+    },
+    path: '/components',
+  },
+];
+
 const ComponentLayout: Layout = ({ children }) => {
   return (
     <Root>
       <Header />
       <div className='main'>
-        <ComponentAside />
+        <Aside routes={routes} />
         {children}
       </div>
     </Root>
