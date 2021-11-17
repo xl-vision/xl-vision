@@ -2,12 +2,11 @@ import { styled, Button } from '@xl-vision/react';
 import React from 'react';
 import Link from 'next/link';
 import { env } from '@xl-vision/utils';
-import { GetStaticProps, NextPage } from 'next';
+import { NextPage } from 'next';
 import Logo from '../components/Logo';
 import Header from '../components/Header';
 import { LocalizationContext } from '../components/LocalizationProvider';
 import { ThemeContext } from '../components/ThemeProvider';
-import { LayoutKey } from '../layout';
 
 if (env.isBrowser) {
   // eslint-disable-next-line global-require
@@ -129,11 +128,3 @@ const HOME: NextPage = () => {
 };
 
 export default HOME;
-
-export const getStaticProps: GetStaticProps<{ layout: LayoutKey }> = () => {
-  return {
-    props: {
-      layout: 'header',
-    },
-  };
-};
