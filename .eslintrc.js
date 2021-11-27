@@ -179,25 +179,5 @@ module.exports = {
         'no-console': 'off',
       },
     },
-    {
-      files: ['platforms/docs/**/*.ts', 'platforms/docs/**/*.tsx'],
-      extends: ['next'],
-      rules: {
-        'unicorn/filename-case': [
-          'error',
-          {
-            cases: {
-              camelCase: true,
-              pascalCase: true,
-            },
-            ignore: [/^routes\.([A-Za-z]|-)+\.tsx?$/, 'next-env.d.ts'],
-          },
-        ],
-        '@typescript-eslint/require-await': 'off',
-        'jsx-a11y/anchor-is-valid': 'off',
-        '@next/next/link-passhref': 'error',
-        'import/prefer-default-export': 'off'
-      },
-    },
   ],
 };

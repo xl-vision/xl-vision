@@ -2,7 +2,7 @@ import { env } from '@xl-vision/utils';
 
 let cached: number;
 
-export default (refresh?: boolean) => {
+const getScrollbarSize = (refresh?: boolean) => {
   if (env.isServer) {
     return 0;
   }
@@ -42,3 +42,5 @@ export default (refresh?: boolean) => {
 
   return cached;
 };
+
+export default getScrollbarSize;
