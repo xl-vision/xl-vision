@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
 
-export default <T = Element | null | Text>(
+const findDomNode = <T = Element | null | Text>(
   node: React.ReactInstance | HTMLElement | null | undefined,
 ): T => {
   if (node instanceof HTMLElement) {
@@ -9,3 +9,5 @@ export default <T = Element | null | Text>(
   // eslint-disable-next-line react/no-find-dom-node
   return ReactDOM.findDOMNode(node) as unknown as T;
 };
+
+export default findDomNode;

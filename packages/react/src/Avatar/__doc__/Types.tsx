@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React from 'react';
 import { Avatar, Icon, styled } from '@xl-vision/react';
 import { UserOutlined } from '@xl-vision/icons';

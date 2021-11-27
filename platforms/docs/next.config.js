@@ -1,8 +1,7 @@
-/* eslint-disable global-require */
 /* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
 const fs = require('fs-extra');
-const { mergeWithRules } = require('webpack-merge');
+const { merge } = require('webpack-merge');
 
 module.exports = () => {
   return {
@@ -17,16 +16,7 @@ module.exports = () => {
     webpack: (config, { defaultLoaders }) => {
       const alias = resolvePackageAlias();
 
-      config = mergeWithRules({
-        module: {
-          rules: {
-            oneOf: {
-              test: 'match',
-              include: 'append',
-            },
-          },
-        },
-      })(config, {
+      config = merge(config, {
         resolve: {
           alias: {
             ...alias,
@@ -39,23 +29,33 @@ module.exports = () => {
         module: {
           rules: [
             {
+              test: /\.mdx?$/,
+              exclude: '/node_modules/',
               oneOf: [
                 {
-                  loader: require.resolve('./scripts/webpack/mdLoader'),
-                  test: /\.mdx?$/,
-                  exclude: '/node_modules/',
+                  resourceQuery: /locale/,
                   use: [
                     defaultLoaders.babel,
                     {
-                      loader: require.resolve('./scripts/mdLoader'),
+                      loader: require.resolve('./scripts/webpack/localeLoader'),
                     },
                   ],
                 },
                 {
-                  test: /\.(tsx|ts|js|cjs|mjs|jsx)$/,
-                  include: [path.join(__dirname, '../../packages')],
+                  use: [
+                    defaultLoaders.babel,
+                    {
+                      loader: require.resolve('./scripts/webpack/mdLoader'),
+                    },
+                  ],
                 },
               ],
+            },
+            {
+              test: /\.(tsx|ts|js|jsx)$/,
+              include: [path.join(__dirname, '../../packages')],
+              exclude: /node_module/,
+              use: defaultLoaders.babel,
             },
           ],
         },
