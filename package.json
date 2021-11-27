@@ -16,6 +16,7 @@
     "prepare": "husky install",
     "dev": "cd platforms/docs && npm run dev",
     "docs": "cd platforms/docs && npm run docs",
+    "start": "cd platforms/docs && npm run start",
     "icon:generate": "cd packages/icons && npm run generate",
     "commit": "git-cz",
     "test": "jest",
