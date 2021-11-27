@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default <T>(...refs: Array<React.Ref<T>>): React.Ref<T> => {
+const useForkRef = <T>(...refs: Array<React.Ref<T>>): React.Ref<T> => {
   return React.useMemo(() => {
     return (value: T | null) => {
       refs.forEach((it) => {
@@ -18,3 +18,5 @@ const setRef = <T>(ref: React.Ref<T>, value: T | null) => {
     (ref.current as any) = value;
   }
 };
+
+export default useForkRef;

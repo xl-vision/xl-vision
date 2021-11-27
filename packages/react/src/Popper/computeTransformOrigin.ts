@@ -1,6 +1,6 @@
 import { ModifierArguments, Options } from '@popperjs/core';
 
-export default ({ state }: ModifierArguments<Options>) => {
+const computeTransformOrigin = ({ state }: ModifierArguments<Options>) => {
   const { modifiersData, placement, rects } = state;
 
   const { popperOffsets } = modifiersData;
@@ -35,3 +35,5 @@ export default ({ state }: ModifierArguments<Options>) => {
   }
   return `${center}px ${other}`;
 };
+
+export default computeTransformOrigin;

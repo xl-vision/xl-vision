@@ -1,7 +1,9 @@
 import { styled } from '@xl-vision/react';
+import { defaultLanguage } from '@xl-vision/react/locale';
 import { mix } from '@xl-vision/react/utils/color';
 import Link from 'next/link';
 import React from 'react';
+import route, { Route, RouteType } from '../../routes';
 import { useLocale } from '../LocalizationProvider';
 
 const LeftNode = styled('span')(() => {
@@ -53,30 +55,33 @@ const A = styled('a')(({ theme }) => {
 const padding = 12;
 
 const traverseRoutes = (
+  routeName: string,
   routesArray: Array<RouteType>,
   language: string,
   level = 1,
 ): JSX.Element => {
   const routeElements: Array<JSX.Element> = [];
   routesArray.forEach((it, index) => {
-    const { names } = it;
-    const name = names[language];
+    const { titleMap } = it;
+    const title = titleMap[language] || titleMap[defaultLanguage];
     let el: JSX.Element;
     if ('children' in it) {
-      const childElements = traverseRoutes(it.children, language, level + 1);
+      const childElements = traverseRoutes(routeName, it.children, language, level + 1);
       el = (
         <>
-          <NonLeftNode style={{ paddingLeft: padding * level }}>{name}</NonLeftNode>
+          <NonLeftNode style={{ paddingLeft: padding * level }}>{title}</NonLeftNode>
           {childElements}
         </>
       );
     } else {
       const { path } = it;
 
+      const fullPath = `/${routeName}${path}`;
+
       el = (
-        <Link passHref={true} href={path}>
+        <Link passHref={true} href={fullPath}>
           <A>
-            <LeftNode style={{ paddingLeft: padding * level }}>{name}</LeftNode>
+            <LeftNode style={{ paddingLeft: padding * level }}>{title}</LeftNode>
           </A>
         </Link>
       );
@@ -90,20 +95,6 @@ const traverseRoutes = (
   return <NodeWrapper>{routeElements}</NodeWrapper>;
 };
 
-export type BaseRoute = {
-  names: Record<string, string>;
-};
-
-export type NonLeftRoute = BaseRoute & {
-  children: Array<RouteType>;
-};
-
-export type LeftRoute = BaseRoute & {
-  path: string;
-};
-
-export type RouteType = LeftRoute | NonLeftRoute;
-
 const Wrapper = styled('div')(() => {
   return {
     li: {
@@ -113,23 +104,23 @@ const Wrapper = styled('div')(() => {
 });
 
 export type AsideProps = {
-  routes: Array<RouteType>;
+  routeName: keyof Route;
 };
 
 const Aside: React.FunctionComponent<AsideProps> = (props) => {
-  const { routes } = props;
-
   const { language } = useLocale();
 
+  const { routeName, ...others } = props;
+
   const nodes = React.useMemo(() => {
-    return traverseRoutes(routes, language);
-  }, [routes, language]);
+    return traverseRoutes(routeName, route[routeName], language);
+  }, [routeName, language]);
 
   if (!nodes) {
     return null;
   }
 
-  return <Wrapper {...props}>{nodes}</Wrapper>;
+  return <Wrapper {...others}>{nodes}</Wrapper>;
 };
 
 export default Aside;

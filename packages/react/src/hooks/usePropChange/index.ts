@@ -1,7 +1,7 @@
 import React from 'react';
 import { useConstantFn } from '@xl-vision/hooks';
 
-export default <T>(
+const usePropChange = <T>(
   defaultProp: T,
   prop: T | undefined,
   onChange: ((prop: T) => void) | undefined,
@@ -36,3 +36,5 @@ export default <T>(
 
   return [value, handleChange] as const;
 };
+
+export default usePropChange;
