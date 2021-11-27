@@ -4,7 +4,7 @@ const { getOptions } = require('loader-utils');
 const mdx = require('@mdx-js/mdx');
 const rehypePrism = require('@mapbox/rehype-prism');
 const emoji = require('remark-emoji');
-const createDemoPlugin = require('./createDemoPlugin');
+const demoPlugin = require('./demoPlugin');
 
 const DEFAULT_RENDERER = `
 import React from 'react'
@@ -15,22 +15,17 @@ const loader = async function demoLoader(content) {
   const callback = this.async();
   const options = Object.assign({}, getOptions(this), {
     filepath: this.resourcePath,
-    remarkPlugins: [createDemoPlugin(this), emoji],
+    remarkPlugins: [demoPlugin, emoji],
     rehypePlugins: [rehypePrism],
   });
 
-  let result;
-
   try {
-    result = await mdx(content, options);
+    const { renderer = DEFAULT_RENDERER } = options;
+    const result = await mdx(content, options);
+    return callback(null, `${renderer}\n${result}`);
   } catch (err) {
     return callback(err);
   }
-
-  const { renderer = DEFAULT_RENDERER } = options;
-
-  const code = `${renderer}\n${result}`;
-  return callback(null, code);
 };
 
 module.exports = loader;

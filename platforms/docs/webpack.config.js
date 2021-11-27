@@ -297,7 +297,7 @@ const defaultConfig = {
                 },
               },
               {
-                loader: require.resolve('./mdLoader'),
+                loader: require.resolve('./scripts/webpack/mdLoader'),
               },
             ],
           },
