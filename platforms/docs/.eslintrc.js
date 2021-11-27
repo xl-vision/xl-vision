@@ -1,5 +1,10 @@
 module.exports = {
-  extends: ['../../.eslintrc.js'],
+  extends: ['../../.eslintrc.js', 'plugin:@next/next/recommended'],
+  settings: {
+    next: {
+      rootDir: __dirname,
+    },
+  },
   rules: {
     'unicorn/filename-case': [
       'error',
@@ -15,6 +20,7 @@ module.exports = {
     'jsx-a11y/anchor-is-valid': 'off',
     'import/prefer-default-export': 'off',
     'react/prop-types': 'off',
+    '@next/next/link-passhref': 'error',
   },
   overrides: [
     {

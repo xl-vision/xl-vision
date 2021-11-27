@@ -131,12 +131,12 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
             </Link>
           </li>
           <li>
-            <Link href='/docs/components'>
+            <Link href='/components'>
               <a>{locale.header.component}</a>
             </Link>
           </li>
           <li>
-            <Link href='/docs/hooks'>
+            <Link href='/hooks'>
               <a>{locale.header.hooks}</a>
             </Link>
           </li>
