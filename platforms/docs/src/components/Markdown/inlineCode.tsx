@@ -1,7 +1,7 @@
 import { styled } from '@xl-vision/react';
 import { emphasize } from '@xl-vision/react/utils/color';
 
-export default styled('code')(
+const InlineCode = styled('code')(
   ({ theme }) => `
   display: inline-block;
   margin: 0 0.2em;
@@ -12,3 +12,5 @@ export default styled('code')(
   border-radius: 3px;
 `,
 );
+
+export default InlineCode;

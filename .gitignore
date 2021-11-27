@@ -14,8 +14,6 @@
 node_modules
 coverage
 
-packages/**/package-lock.json
-platforms/**/package-lock.json
 ./**/yarn.lock
 
 npm-debug.log*
@@ -26,5 +24,8 @@ yarn-error.log*
 
 legacy
 modern
-
 dist
+
+packages/**/package-lock.json
+platforms/**/package-lock.json
+platforms/docs/.next

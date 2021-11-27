@@ -179,20 +179,5 @@ module.exports = {
         'no-console': 'off',
       },
     },
-    {
-      files: ['platforms/docs/src/**/*.ts', 'platforms/docs/src/**/*.tsx'],
-      rules: {
-        'unicorn/filename-case': [
-          'error',
-          {
-            cases: {
-              camelCase: true,
-              pascalCase: true,
-            },
-            ignore: [/^routes\.([A-Za-z]|-)+\.tsx?$/],
-          },
-        ],
-      },
-    },
   ],
 };

@@ -5,9 +5,9 @@ import { env } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
 import Popper, { PopperChildrenProps, PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
-import ThemeContext from '../ThemeProvider/ThemeContext';
 import { oneOf } from '../utils/function';
 import usePropChange from '../hooks/usePropChange';
+import { useTheme } from '../ThemeProvider';
 
 export interface TooltipChildrenProps extends PopperChildrenProps {
   onTouchStart?: React.TouchEventHandler<any>;
@@ -118,7 +118,7 @@ const defaultTrigger: Array<TooltipTrigger> = ['hover', 'touch'];
 const TIME_DELAY = 300;
 
 const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
-  const { clsPrefix, color } = React.useContext(ThemeContext);
+  const { clsPrefix, color } = useTheme();
 
   const {
     content,

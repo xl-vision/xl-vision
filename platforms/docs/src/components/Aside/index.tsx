@@ -1,8 +1,10 @@
-import { LocalizationContext, styled } from '@xl-vision/react';
+import { styled } from '@xl-vision/react';
+import { defaultLanguage } from '@xl-vision/react/locale';
 import { mix } from '@xl-vision/react/utils/color';
+import Link from 'next/link';
 import React from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
-import routeMap, { Route as RouteType } from '../../routes';
+import route, { BaseRoute, Route, RouteType } from '../../routes';
+import { useLocale } from '../LocalizationProvider';
 
 const LeftNode = styled('span')(() => {
   return {
@@ -29,7 +31,7 @@ const NodeWrapper = styled('ul')(() => {
   };
 });
 
-const NavLinkWrapper = styled(NavLink)(({ theme }) => {
+const A = styled('a')(({ theme }) => {
   const { themes, text } = theme.color;
   return {
     display: 'inline-block',
@@ -53,32 +55,35 @@ const NavLinkWrapper = styled(NavLink)(({ theme }) => {
 const padding = 12;
 
 const traverseRoutes = (
-  basePath: string,
+  routeName: string,
   routesArray: Array<RouteType>,
+  language: string,
   level = 1,
 ): JSX.Element => {
   const routeElements: Array<JSX.Element> = [];
   routesArray.forEach((it, index) => {
-    const { name } = it;
+    const { titleMap } = it;
+    const title = titleMap[language as keyof BaseRoute['titleMap']] || titleMap[defaultLanguage];
     let el: JSX.Element;
     if ('children' in it) {
-      const childElements = traverseRoutes(basePath, it.children, level + 1);
+      const childElements = traverseRoutes(routeName, it.children, language, level + 1);
       el = (
         <>
-          <NonLeftNode style={{ paddingLeft: padding * level }}>{name}</NonLeftNode>
+          <NonLeftNode style={{ paddingLeft: padding * level }}>{title}</NonLeftNode>
           {childElements}
         </>
       );
     } else {
       const { path } = it;
 
-      const routePath =
-        basePath === 'index' ? path : path === '/' ? `/${basePath}` : `/${basePath}${path}`;
+      const fullPath = `/${routeName}${path}`;
 
       el = (
-        <NavLinkWrapper exact={true} to={routePath}>
-          <LeftNode style={{ paddingLeft: padding * level }}>{name}</LeftNode>
-        </NavLinkWrapper>
+        <Link passHref={true} href={fullPath}>
+          <A>
+            <LeftNode style={{ paddingLeft: padding * level }}>{title}</LeftNode>
+          </A>
+        </Link>
       );
     }
     routeElements.push(
@@ -98,34 +103,24 @@ const Wrapper = styled('div')(() => {
   };
 });
 
-const Aside: React.FunctionComponent<{ className?: string }> = (props) => {
-  const { language } = React.useContext(LocalizationContext);
+export type AsideProps = {
+  routeName: keyof Route;
+};
 
-  const { pathname } = useLocation();
+const Aside: React.FunctionComponent<AsideProps> = (props) => {
+  const { language } = useLocale();
 
-  const key = React.useMemo(() => {
-    if (pathname === '/') {
-      return 'index';
-    }
-    return Object.keys(routeMap).find((it) => pathname.startsWith(`/${it}`));
-  }, [pathname]);
+  const { routeName, ...others } = props;
 
   const nodes = React.useMemo(() => {
-    if (!key) {
-      return null;
-    }
-    if (key === 'index') {
-      return null;
-    }
-    const routes = routeMap[key][language];
-    return traverseRoutes(key, routes);
-  }, [key, language]);
+    return traverseRoutes(routeName, route[routeName], language);
+  }, [routeName, language]);
 
   if (!nodes) {
     return null;
   }
 
-  return <Wrapper {...props}>{nodes}</Wrapper>;
+  return <Wrapper {...others}>{nodes}</Wrapper>;
 };
 
 export default Aside;

@@ -8,9 +8,9 @@ import BaseButton, { BaseButtonProps } from '../BaseButton';
 import Icon from '../Icon';
 import { styled } from '../styles';
 import { ThemeColors } from '../ThemeProvider/color/themeColor';
-import ThemeContext from '../ThemeProvider/ThemeContext';
 import CollapseTransition from '../CollapseTransition';
 import { alpha } from '../utils/color';
+import { useTheme } from '../ThemeProvider';
 
 export type ButtonTheme = keyof ThemeColors | 'default';
 
@@ -240,7 +240,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
     ...others
   } = props;
 
-  const { clsPrefix } = React.useContext(ThemeContext);
+  const { clsPrefix } = useTheme();
 
   const [loadingIcon, setLoadingIcon] = React.useState<React.ReactElement>();
 

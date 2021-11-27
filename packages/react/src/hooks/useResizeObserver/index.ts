@@ -7,7 +7,7 @@ export type ResizeObserverHandler<T extends HTMLElement> = (
   target: T,
 ) => void;
 
-export default <T extends HTMLElement>(onResizeObserver: ResizeObserverHandler<T>) => {
+const useResizeObserver = <T extends HTMLElement>(onResizeObserver: ResizeObserverHandler<T>) => {
   const resizeObserverRef = React.useRef<ResizeObserver>();
   const prevElementRef = React.useRef<T | null>();
   const widthRef = React.useRef<number>();
@@ -70,3 +70,5 @@ export default <T extends HTMLElement>(onResizeObserver: ResizeObserverHandler<T
 
   return refCallback;
 };
+
+export default useResizeObserver;

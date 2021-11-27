@@ -12,11 +12,11 @@ import { forceReflow } from '../utils/transition';
 import { off, on } from '../utils/event';
 import useLifecycleState, { LifecycleState } from '../hooks/useLifecycleState';
 import { increaseZindex } from '../utils/zIndexManger';
-import ThemeContext from '../ThemeProvider/ThemeContext';
 import { oneOf, voidFn } from '../utils/function';
 import computeTransformOrigin from './computeTransformOrigin';
 import usePropChange from '../hooks/usePropChange';
 import findDomNode from '../utils/findDomNode';
+import { useTheme } from '../ThemeProvider';
 
 export type PopperTrigger = 'hover' | 'focus' | 'click' | 'contextMenu' | 'custom';
 
@@ -89,7 +89,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     ...others
   } = props;
 
-  const { clsPrefix } = React.useContext(ThemeContext);
+  const { clsPrefix } = useTheme();
 
   const child = React.Children.only<React.ReactElement<PopperChildrenProps>>(children);
 

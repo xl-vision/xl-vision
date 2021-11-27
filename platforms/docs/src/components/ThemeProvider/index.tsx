@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { BaseTheme, ThemeProvider as XlThemeProvider } from '@xl-vision/react';
+import { useLayoutEffect } from '@xl-vision/hooks';
+import Cookies from 'js-cookie';
 
 export type ThemeProviderProps = {
   children: React.ReactNode;
@@ -16,24 +18,23 @@ export const ThemeContext = React.createContext<ThemeContextProps>({
   setDark: () => {},
 });
 
-const KEY = 'dark_mode';
+const KEY = 'DARK_MODE';
 
 const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = (props) => {
   const { children } = props;
 
-  const [isDark, setDark] = React.useState(() => {
-    if (localStorage) {
-      const dark = localStorage.getItem(KEY) === 'dark';
-      return dark;
-    }
-    return false;
-  });
+  const [isDark, setDark] = React.useState(false);
+
+  useLayoutEffect(() => {
+    const dark = Cookies.get(KEY) === 'dark';
+    setDark(dark);
+  }, []);
 
   const setDarkWrapper: ThemeContextProps['setDark'] = React.useCallback((dark) => {
     const fn = typeof dark === 'function' ? dark : () => dark;
     setDark((prev) => {
       const result = fn(prev);
-      localStorage.setItem(KEY, result ? 'dark' : 'light');
+      Cookies.set(KEY, result ? 'dark' : 'light', { expires: 30 });
       return result;
     });
   }, []);
