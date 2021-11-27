@@ -17,6 +17,7 @@
     "paths": {
       "react": ["./node_modules/@types/react", "./node_modules/react"],
       "react-dom": ["./node_modules/@types/react-dom", "./node_modules/react-dom"],
+      "styled-components": ["./node_modules/styled-components"],
       "@xl-vision/styled-engine-types": ["./packages/styled-engine-types/src"],
       "@xl-vision/styled-engine-types/*": ["./packages/styled-engine-types/src/*"],
       "@xl-vision/utils": ["./packages/utils/src"],

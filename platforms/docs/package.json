@@ -51,6 +51,7 @@
     "portfinder": "^1.0.28",
     "postcss": "^8.2.4",
     "postcss-loader": "^6.2.0",
+    "prismjs": "^1.25.0",
     "react-refresh": "^0.10.0",
     "remark-emoji": "^2.2.0",
     "sass-loader": "^12.2.0",
