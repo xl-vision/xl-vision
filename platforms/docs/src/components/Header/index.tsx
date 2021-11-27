@@ -2,12 +2,15 @@ import React from 'react';
 import { Button, styled, Icon, Tooltip, Dropdown } from '@xl-vision/react';
 import { DownOutlined, GithubFilled } from '@xl-vision/icons';
 import { darken, lighten } from '@xl-vision/react/utils/color';
-import { NavLink } from 'react-router-dom';
+import Link from 'next/link';
+import { useConstantFn } from '@xl-vision/hooks';
+import { useRouter } from 'next/router';
+import Cookie from 'js-cookie';
 import LightTheme from './LightTheme';
 import DarkTheme from './DarkTheme';
 import Translate from './Translate';
 import { ThemeContext } from '../ThemeProvider';
-import { LocalizationContext } from '../LocalizationProvider';
+import { useLocale } from '../LocalizationProvider';
 import Logo from '../Logo';
 
 const Container = styled('div')(() => {
@@ -49,7 +52,7 @@ const HeaderNav = styled('header')<{ isDark: boolean }>(({ theme, styleProps }) 
   };
 });
 
-const LogoWrapper = styled(NavLink)(({ theme }) => {
+const LogoWrapper = styled('a')(({ theme }) => {
   return {
     display: 'inline-flex',
     height: '100%',
@@ -95,7 +98,8 @@ const Menus = styled('ul')(({ theme }) => {
 
 const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (props) => {
   const theme = React.useContext(ThemeContext);
-  const { supportLocales, locale, setLanguage } = React.useContext(LocalizationContext);
+  const { supportLocales, locale } = useLocale();
+  const router = useRouter();
 
   const { isDark, setDark } = theme;
 
@@ -105,24 +109,36 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
 
   const langs = React.useMemo(() => Object.keys(supportLocales), [supportLocales]);
 
+  const handleLangChange = useConstantFn((lang: string) => {
+    const { pathname, asPath, query } = router;
+    router.push({ pathname, query }, asPath, { locale: lang }).catch(() => {});
+    Cookie.set('NEXT_LOCALE', lang, { expires: 30 });
+  });
+
   return (
     <Container {...props}>
       <HeaderNav styleProps={{ isDark }}>
-        <LogoWrapper to='/'>
-          <Logo />
-          <span>xl vision</span>
-        </LogoWrapper>
+        <Link href='/' passHref={true}>
+          <LogoWrapper>
+            <Logo />
+            <span>xl vision</span>
+          </LogoWrapper>
+        </Link>
         <Menus>
           <li>
-            <NavLink exact={true} to='/'>
-              {locale.header.index}
-            </NavLink>
+            <Link href='/'>
+              <a>{locale.header.index}</a>
+            </Link>
           </li>
           <li>
-            <NavLink to='/components'>{locale.header.component}</NavLink>
+            <Link href='/components'>
+              <a>{locale.header.component}</a>
+            </Link>
           </li>
           <li>
-            <NavLink to='/hooks'>{locale.header.hooks}</NavLink>
+            <Link href='/hooks'>
+              <a>{locale.header.hooks}</a>
+            </Link>
           </li>
         </Menus>
         <div>
@@ -130,7 +146,7 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
             menus={
               <>
                 {langs.map((lang) => (
-                  <Dropdown.Item onClick={() => setLanguage(lang)} key={lang}>
+                  <Dropdown.Item onClick={() => handleLangChange(lang)} key={lang}>
                     {supportLocales[lang].name}
                   </Dropdown.Item>
                 ))}

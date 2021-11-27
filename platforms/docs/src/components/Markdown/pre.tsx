@@ -1,6 +1,6 @@
 import { styled } from '@xl-vision/react';
 
-export default styled('pre')(
+const Pre = styled('pre')(
   () => `
   &[class*='language-'] {
     border-radius: 8px;
@@ -294,3 +294,5 @@ export default styled('pre')(
   }
 `,
 );
+
+export default Pre;

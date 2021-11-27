@@ -5,7 +5,7 @@ import { env } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
 import Ripple, { RippleRef } from '../Ripple';
 import { styled } from '../styles';
-import ThemeContext from '../ThemeProvider/ThemeContext';
+import { useTheme } from '../ThemeProvider';
 
 export type BaseButtonCommonProps =
   | React.ButtonHTMLAttributes<HTMLButtonElement>
@@ -116,7 +116,7 @@ const BaseButton = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseB
       ...others
     } = props;
 
-    const { clsPrefix } = React.useContext(ThemeContext);
+    const { clsPrefix } = useTheme();
 
     const Component = (others as unknown as HTMLAnchorElement).href ? 'a' : 'button';
 

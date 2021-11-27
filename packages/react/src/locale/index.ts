@@ -10,3 +10,5 @@ export const locales: Locales = {
 };
 
 export const defaultLanguage = 'en-US';
+
+export const defaultLocale = locales[defaultLanguage];
