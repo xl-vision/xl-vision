@@ -2,69 +2,72 @@
 const path = require('path');
 const fs = require('fs-extra');
 const { merge } = require('webpack-merge');
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
 
-module.exports = () => {
-  return {
-    eslint: {
-      ignoreDuringBuilds: true,
-    },
-    i18n: {
-      locales: ['en-US', 'zh-CN'],
-      defaultLocale: 'en-US',
-    },
-    reactStrictMode: true,
-    webpack: (config, { defaultLoaders }) => {
-      const alias = resolvePackageAlias();
+const nextConfig = {
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  i18n: {
+    locales: ['en-US', 'zh-CN'],
+    defaultLocale: 'en-US',
+  },
+  reactStrictMode: true,
+  webpack: (config, { defaultLoaders }) => {
+    const alias = resolvePackageAlias();
 
-      config = merge(config, {
-        resolve: {
-          alias: {
-            ...alias,
-            '@mdx-js/react': require.resolve('@mdx-js/react'),
-            react: path.join(__dirname, '../../node_modules/react'),
-            'react-dom': path.join(__dirname, '../../node_modules/react-dom'),
-            'styled-components': path.join(__dirname, '../../node_modules/styled-components'),
+    config = merge(config, {
+      resolve: {
+        alias: {
+          ...alias,
+          '@mdx-js/react': require.resolve('@mdx-js/react'),
+          react: path.join(__dirname, '../../node_modules/react'),
+          'react-dom': path.join(__dirname, '../../node_modules/react-dom'),
+          'styled-components': path.join(__dirname, '../../node_modules/styled-components'),
+        },
+      },
+      module: {
+        rules: [
+          {
+            test: /\.mdx?$/,
+            exclude: '/node_modules/',
+            oneOf: [
+              {
+                resourceQuery: /locale/,
+                use: [
+                  defaultLoaders.babel,
+                  {
+                    loader: require.resolve('./scripts/webpack/localeLoader'),
+                  },
+                ],
+              },
+              {
+                use: [
+                  defaultLoaders.babel,
+                  {
+                    loader: require.resolve('./scripts/webpack/mdLoader'),
+                  },
+                ],
+              },
+            ],
           },
-        },
-        module: {
-          rules: [
-            {
-              test: /\.mdx?$/,
-              exclude: '/node_modules/',
-              oneOf: [
-                {
-                  resourceQuery: /locale/,
-                  use: [
-                    defaultLoaders.babel,
-                    {
-                      loader: require.resolve('./scripts/webpack/localeLoader'),
-                    },
-                  ],
-                },
-                {
-                  use: [
-                    defaultLoaders.babel,
-                    {
-                      loader: require.resolve('./scripts/webpack/mdLoader'),
-                    },
-                  ],
-                },
-              ],
-            },
-            {
-              test: /\.(tsx|ts|js|jsx)$/,
-              include: [path.join(__dirname, '../../packages')],
-              exclude: /node_module/,
-              use: defaultLoaders.babel,
-            },
-          ],
-        },
-      });
+          {
+            test: /\.(tsx|ts|js|jsx)$/,
+            include: [path.join(__dirname, '../../packages')],
+            exclude: /node_module/,
+            use: defaultLoaders.babel,
+          },
+        ],
+      },
+    });
 
-      return config;
-    },
-  };
+    return config;
+  },
 };
+
+module.exports = withBundleAnalyzer(nextConfig);
 
 function resolvePackageAlias() {
   const basePath = path.join(__dirname, '../../packages');

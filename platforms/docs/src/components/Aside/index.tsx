@@ -3,7 +3,7 @@ import { defaultLanguage } from '@xl-vision/react/locale';
 import { mix } from '@xl-vision/react/utils/color';
 import Link from 'next/link';
 import React from 'react';
-import route, { Route, RouteType } from '../../routes';
+import route, { BaseRoute, Route, RouteType } from '../../routes';
 import { useLocale } from '../LocalizationProvider';
 
 const LeftNode = styled('span')(() => {
@@ -63,7 +63,7 @@ const traverseRoutes = (
   const routeElements: Array<JSX.Element> = [];
   routesArray.forEach((it, index) => {
     const { titleMap } = it;
-    const title = titleMap[language] || titleMap[defaultLanguage];
+    const title = titleMap[language as keyof BaseRoute['titleMap']] || titleMap[defaultLanguage];
     let el: JSX.Element;
     if ('children' in it) {
       const childElements = traverseRoutes(routeName, it.children, language, level + 1);
