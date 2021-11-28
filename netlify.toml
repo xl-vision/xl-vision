@@ -1,16 +1,16 @@
 [build]
   publish = ""
-  command = "npm install next && npm intall @netlify/plugin-nextjs && npm run docs"
+  command = "npm run docs"
 
-[context.production]
-  publish = ""
-  command = ""
+# [context.production]
+#   publish = ""
+#   command = ""
 
-[[headers]]
-  for = "/*"
+# [[headers]]
+#   for = "/*"
 
-  [headers.values]
-    cache-control = "max-age=7200"
+#   [headers.values]
+#     cache-control = "max-age=7200"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
