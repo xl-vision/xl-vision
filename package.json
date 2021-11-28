@@ -35,6 +35,7 @@
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
     "@commitlint/format": "^13.1.0",
+    "@netlify/plugin-nextjs": "^4.0.0-beta.11",
     "@types/enzyme": "^3.10.9",
     "@types/glob": "^7.1.4",
     "@types/jest": "^27.0.1",

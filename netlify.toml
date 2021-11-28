@@ -1,10 +1,10 @@
 [build]
-  publish = ".next"
-  # command = ""
+  publish = "/platforms/docs/.next"
+  command = "npm install && npm run bootstrap && npm run docs"
 
-# [context.production]
-#   publish = ""
-#   command = ""
+[context.production]
+  publish = ""
+  command = ""
 
 # [[headers]]
 #   for = "/*"
