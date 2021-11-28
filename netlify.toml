@@ -12,7 +12,10 @@
   [headers.values]
     cache-control = "max-age=7200"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# [[redirects]]
+#   from = "/*"
+#   to = "/index.html"
+#   status = 200
