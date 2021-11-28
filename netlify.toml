@@ -1,6 +1,6 @@
 [build]
-  publish = ".next"
-  command = ""
+  publish = ""
+  command = "npm install next && npm intall @netlify/plugin-nextjs && npm run docs"
 
 [context.production]
   publish = ""
