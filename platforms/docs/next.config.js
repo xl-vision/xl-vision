@@ -14,9 +14,6 @@ const nextConfig = {
     locales: ['en-US', 'zh-CN'],
     defaultLocale: 'en-US',
   },
-  experimental: {
-    outputFileTracing: true,
-  },
   reactStrictMode: true,
   webpack: (config, { defaultLoaders }) => {
     const alias = resolvePackageAlias();
