@@ -116,21 +116,21 @@ jobs:
       - name: docs
         run: npm run docs
 
-      - name: Deploy to Netlify
-        uses: nwtgck/actions-netlify@v1.1
-        with:
-          publish-dir: './platforms/docs'
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          # production-branch: master
-          production-deploy: ${{ github.event_name == 'release' && github.event.action == 'created' }}
-          deploy-message: 'Deploy from GitHub Actions'
-          enable-pull-request-comment: true
-          enable-commit-comment: true
-          overwrites-pull-request-comment: true
-          netlify-config-path: ./netlify.toml
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        timeout-minutes: 1
+      # - name: Deploy to Netlify
+      #   uses: nwtgck/actions-netlify@v1.1
+      #   with:
+      #     publish-dir: './platforms/docs'
+      #     github-token: ${{ secrets.GITHUB_TOKEN }}
+      #     # production-branch: master
+      #     production-deploy: ${{ github.event_name == 'release' && github.event.action == 'created' }}
+      #     deploy-message: 'Deploy from GitHub Actions'
+      #     enable-pull-request-comment: true
+      #     enable-commit-comment: true
+      #     overwrites-pull-request-comment: true
+      #     netlify-config-path: ./netlify.toml
+      #   env:
+      #     NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      #     NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      #   timeout-minutes: 1
 
 
