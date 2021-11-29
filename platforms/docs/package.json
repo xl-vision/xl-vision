@@ -13,6 +13,11 @@
   },
   "dependencies": {
     "@mdx-js/react": "^1.6.22",
+    "@xl-vision/hooks": "^0.1.1-alpha.11",
+    "@xl-vision/icons": "^0.1.1-alpha.11",
+    "@xl-vision/react": "^0.1.1-alpha.12",
+    "@xl-vision/styled-engine": "^0.1.1-alpha.12",
+    "@xl-vision/utils": "^0.1.1-alpha.11",
     "clsx": "^1.1.1",
     "js-cookie": "^3.0.1",
     "next": "^12.0.1",
@@ -20,12 +25,6 @@
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
-    "@netlify/plugin-nextjs": "^4.0.0-beta.11",
-    "@xl-vision/hooks": "^0.1.1-alpha.11",
-    "@xl-vision/icons": "^0.1.1-alpha.11",
-    "@xl-vision/react": "^0.1.1-alpha.12",
-    "@xl-vision/styled-engine": "^0.1.1-alpha.12",
-    "@xl-vision/utils": "^0.1.1-alpha.11",
     "@babel/core": "^7.12.10",
     "@babel/preset-typescript": "^7.12.7",
     "@mapbox/rehype-prism": "^0.8.0",
