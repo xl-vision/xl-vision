@@ -24,8 +24,7 @@
     "lint": "eslint . --report-unused-disable-directives --ext .js,.ts,.jsx,.tsx --max-warnings 0",
     "build": "lerna run --parallel --scope \"@xl-vision/*\" build",
     "publish": "lerna publish prerelease --conventional-commits",
-    "bootstrap": "lerna bootstrap",
-    "npmCheck": "node scripts/npmCheck.js"
+    "bootstrap": "lerna bootstrap"
   },
   "devDependencies": {
     "@babel/core": "^7.15.4",
@@ -72,7 +71,6 @@
     "jest-styled-components": "^7.0.5",
     "lerna": "^4.0.0",
     "minimist": "^1.2.5",
-    "npm-check": "^5.9.2",
     "prettier": "^2.3.2",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
