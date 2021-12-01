@@ -18,7 +18,6 @@ const nextConfig = {
   //   locales: ['en-US', 'zh-CN'],
   //   defaultLocale: 'en-US',
   // },
-  reactStrictMode: true,
   webpack: (config, { defaultLoaders }) => {
     const alias = resolvePackageAlias();
 

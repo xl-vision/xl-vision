@@ -21,19 +21,23 @@ async function findFiles(baseDir = pageDir) {
   return result.flat();
 }
 
-const ignoreFiles = ['/_app', '/_document'];
+const ignoreFiles = ['_app', '_document'];
 
 async function findPages() {
   const paths = (await findFiles())
     .map((it) => {
-      const p1 = path
+      return path
         .relative(pageDir, it)
         .replace(new RegExp(`\\${path.sep}`, 'g'), '/')
         .replace('.tsx', '')
-        .replace('.ts', '');
-      return `/${p1}`.replace(/^\/index$/, '/').replace(/\/index$/, '');
+        .replace('.ts', '')
+        .replace(/^index$/, '')
+        .replace(/\/index$/, '');
     })
-    .filter((it) => !ignoreFiles.includes(it));
+    .filter((it) => !ignoreFiles.includes(it))
+    .map((it) => `/${it}`);
+
+  console.log(paths);
 
   return paths;
 }
