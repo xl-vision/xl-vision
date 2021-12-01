@@ -2,19 +2,21 @@
 const path = require('path');
 const fs = require('fs-extra');
 const { merge } = require('webpack-merge');
+const findPages = require('./scripts/findPages');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 
 const nextConfig = {
+  trailingSlash: true,
   outputFileTracing: false,
   eslint: {
     ignoreDuringBuilds: true,
   },
-  i18n: {
-    locales: ['en-US', 'zh-CN'],
-    defaultLocale: 'en-US',
-  },
+  // i18n: {
+  //   locales: ['en-US', 'zh-CN'],
+  //   defaultLocale: 'en-US',
+  // },
   reactStrictMode: true,
   webpack: (config, { defaultLoaders }) => {
     const alias = resolvePackageAlias();
@@ -65,6 +67,21 @@ const nextConfig = {
     });
 
     return config;
+  },
+  exportPathMap: async () => {
+    const pages = await findPages();
+    const map = {};
+
+    const locales = ['en_US', 'zh_CN'];
+
+    locales.forEach((locale) => {
+      const prefix = locale === locales[0] ? '' : `/${locale}`;
+      pages.forEach((page) => {
+        map[`${prefix}${page}`] = { page };
+      });
+    });
+
+    return map;
   },
 };
 

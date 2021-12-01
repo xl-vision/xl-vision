@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "next dev",
     "docs": "next build",
+    "export": "next export",
     "start": "next start",
     "analyze": "cross-env ANALYZE=true npm run docs"
   },
@@ -35,6 +36,7 @@
     "@types/node": "16.11.11",
     "babel-plugin-styled-components": "^2.0.1",
     "cross-env": "^7.0.3",
+    "fs-extra": "^10.0.0",
     "loader-utils": "^2.0.0",
     "prismjs": "^1.25.0",
     "remark-emoji": "^2.2.0",
