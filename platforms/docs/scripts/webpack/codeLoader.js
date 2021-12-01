@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 const babel = require('@babel/core');
 const prettier = require('prettier');
 const path = require('path');

@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable prefer-object-spread */
 const { getOptions } = require('loader-utils');
 const mdx = require('@mdx-js/mdx');
