@@ -7,10 +7,10 @@
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
-    "docs": "next build",
+    "build": "next build",
     "export": "next export",
     "start": "next start",
-    "analyze": "cross-env ANALYZE=true npm run docs"
+    "analyze": "cross-env ANALYZE=true npm run build"
   },
   "dependencies": {
     "@mdx-js/react": "^1.6.22",

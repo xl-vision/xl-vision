@@ -1,6 +1,5 @@
 const path = require('path');
 const fs = require('fs-extra');
-const { func } = require('prop-types');
 
 const pageDir = path.join(__dirname, '../src/pages');
 

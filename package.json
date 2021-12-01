@@ -15,14 +15,14 @@
   "scripts": {
     "prepare": "husky install",
     "dev": "cd platforms/docs && npm run dev",
-    "docs": "cd platforms/docs && npm run docs",
+    "docs": "cd platforms/docs && npm run build && npm run export",
     "start": "cd platforms/docs && npm run start",
     "icon:generate": "cd packages/icons && npm run generate",
     "commit": "git-cz",
     "test": "jest",
     "clean": "node scripts/clean.js",
     "lint": "eslint . --report-unused-disable-directives --ext .js,.ts,.jsx,.tsx --max-warnings 0",
-    "build": "lerna run --parallel --scope \"@xl-vision/*\" build",
+    "build": "lerna run --parallel --ignore \"@xl-vision/docs\" build",
     "publish": "lerna publish prerelease --conventional-commits",
     "bootstrap": "lerna bootstrap"
   },

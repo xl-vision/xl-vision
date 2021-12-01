@@ -1,9 +1,10 @@
-/* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
 const fs = require('fs-extra');
 const { merge } = require('webpack-merge');
+const Analyzer = require('@next/bundle-analyzer');
 const findPages = require('./scripts/findPages');
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
+
+const withBundleAnalyzer = Analyzer({
   enabled: process.env.ANALYZE === 'true',
 });
 

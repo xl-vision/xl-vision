@@ -6,13 +6,7 @@ module.exports = {
     },
   },
   rules: {
-    'import/no-extraneous-dependencies': [
-      'error',
-      {
-        // packageDir: __dirname,
-        devDependencies: ['./scripts/**', './.*.js'],
-      },
-    ],
+    'import/no-extraneous-dependencies': 'off',
     'unicorn/filename-case': [
       'error',
       {

@@ -1,5 +1,5 @@
 [build]
-  publish = ".next"
+  publish = ""
   command = ""
 
 [context.production]
@@ -11,9 +11,6 @@
 
 #   [headers.values]
 #     cache-control = "max-age=7200"
-
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
 
 # [[redirects]]
 #   from = "/*"
