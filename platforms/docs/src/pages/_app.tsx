@@ -5,6 +5,7 @@ import LocalizationProvider from '../components/LocalizationProvider';
 import ThemeProvider from '../components/ThemeProvider';
 import Markdown from '../components/Markdown';
 import LayoutMap, { LayoutKey } from '../layout';
+import BaiduAnalytics from '../components/BaiduAnalytics';
 
 const GlobalStyle = createGlobalStyles(({ theme }) => {
   const { color } = theme;
@@ -38,17 +39,20 @@ const App = ({ Component, pageProps }: AppProps) => {
   const Layout = LayoutMap[layout as LayoutKey];
 
   return (
-    <LocalizationProvider>
-      <ThemeProvider>
-        <CssBaseline />
-        <GlobalStyle />
-        <Markdown>
-          <Layout>
-            <Component {...others} />
-          </Layout>
-        </Markdown>
-      </ThemeProvider>
-    </LocalizationProvider>
+    <>
+      <LocalizationProvider>
+        <ThemeProvider>
+          <CssBaseline />
+          <GlobalStyle />
+          <Markdown>
+            <Layout>
+              <Component {...others} />
+            </Layout>
+          </Markdown>
+        </ThemeProvider>
+      </LocalizationProvider>
+      <BaiduAnalytics />
+    </>
   );
 };
 
