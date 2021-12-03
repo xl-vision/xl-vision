@@ -1,17 +1,16 @@
 import { styled } from '@xl-vision/react';
 import React from 'react';
 
-const Wrapper = styled('footer')(({ theme }) => {
+const Wrapper = styled('footer')(() => {
   return {
     padding: '16px 0',
-    borderTop: `1px solid ${theme.color.divider}`,
     textAlign: 'center',
   };
 });
 
-const Footer = () => {
+const Footer: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (props) => {
   return (
-    <Wrapper>
+    <Wrapper {...props}>
       <span>Copyright © 2020-2021 Rhys Xia</span>
     </Wrapper>
   );

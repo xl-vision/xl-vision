@@ -6,29 +6,30 @@ import { useLocale } from '../LocalizationProvider';
 
 const Root = styled('div')(({ theme }) => {
   return {
-    margin: '100px 0 0 0',
-    padding: '20px 20px',
-    backgroundColor: theme.color.themes.primary.color,
-    color: theme.color.themes.primary.text.primary,
+    backgroundColor: theme.color.background.default,
+    color: theme.color.text.secondary,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
 
     '.list': {
-      display: 'flex',
-      flexDirection: 'row',
       alignItems: 'center',
+      maxWidth: 520,
     },
 
-    '.card': {
-      width: 250,
-      height: 200,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
+    a: {
+      display: 'inline-block',
+      margin: '20px 15px 0',
     },
   };
 });
 
-const Title = styled('h1')(() => {
-  return {};
+const Title = styled('h5')(({ theme }) => {
+  return {
+    ...theme.typography.h5,
+    margin: '10px 0',
+  };
 });
 
 const Sponsorship: React.FunctionComponent = () => {
@@ -38,13 +39,11 @@ const Sponsorship: React.FunctionComponent = () => {
     <Root>
       <Title>{locale.sponsorship.title}</Title>
       <div className='list'>
-        <div className='card'>
-          <Link href='https://vercel.com?utm_source=xl-vision&utm_campaign=oss'>
-            <a target='_black' rel='noopener'>
-              <Image src='/sponsorship/vercel.svg' alt='vercel' width={212} height={44} />
-            </a>
-          </Link>
-        </div>
+        <Link href='https://vercel.com?utm_source=xl-vision&utm_campaign=oss'>
+          <a target='_black' rel='noopener'>
+            <Image src='/sponsorship/vercel.svg' alt='vercel' width={160} height={44} />
+          </a>
+        </Link>
       </div>
     </Root>
   );

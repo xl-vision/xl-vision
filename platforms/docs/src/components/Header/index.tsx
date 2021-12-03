@@ -1,11 +1,11 @@
 import React from 'react';
 import { Button, styled, Icon, Tooltip, Dropdown } from '@xl-vision/react';
 import { DownOutlined, GithubFilled } from '@xl-vision/icons';
-import { darken, lighten } from '@xl-vision/react/utils/color';
 import Link from 'next/link';
 import { useConstantFn } from '@xl-vision/hooks';
 import { useRouter } from 'next/router';
 import Cookie from 'js-cookie';
+import { alpha } from '@xl-vision/react/utils/color';
 import LightTheme from './LightTheme';
 import DarkTheme from './DarkTheme';
 import Translate from './Translate';
@@ -15,17 +15,17 @@ import Logo from '../Logo';
 
 const Container = styled('div')(() => {
   return {
+    display: 'fixed',
+    top: 0,
     width: '100%',
     height: '60px',
   };
 });
 
-const HeaderNav = styled('header')<{ isDark: boolean }>(({ theme, styleProps }) => {
-  const { isDark } = styleProps;
-
+const HeaderNav = styled('header')(({ theme }) => {
   const { color } = theme;
 
-  const background = (isDark ? darken : lighten)(color.background.paper, 0.1);
+  const background = color.background.paper;
 
   const fontColor = color.getContrastText(background).text.primary;
 
@@ -41,10 +41,11 @@ const HeaderNav = styled('header')<{ isDark: boolean }>(({ theme, styleProps }) 
     alignItems: 'center',
     margin: 0,
     padding: '0 16px',
-    background,
+    backgroundColor: alpha(background, 0.72),
     color: fontColor,
     justifyContent: 'space-between',
-    ...theme.elevations(4),
+    borderBottom: `1px solid ${color.divider}`,
+    backdropFilter: 'blur(20px)',
 
     '.xl-button__root': {
       color: fontColor,
@@ -117,7 +118,7 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
 
   return (
     <Container {...props}>
-      <HeaderNav styleProps={{ isDark }}>
+      <HeaderNav>
         <Link href='/' passHref={true}>
           <LogoWrapper>
             <Logo />
