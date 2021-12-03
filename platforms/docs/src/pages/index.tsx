@@ -7,6 +7,7 @@ import Logo from '../components/Logo';
 import Header from '../components/Header';
 import { LocalizationContext } from '../components/LocalizationProvider';
 import { ThemeContext } from '../components/ThemeProvider';
+import Sponsorship from '../components/Sponsorship';
 
 if (env.isBrowser) {
   // eslint-disable-next-line global-require
@@ -29,14 +30,14 @@ const Root = styled('div')(() => {
     left: 0,
     right: 0,
     bottom: 0,
-    textAlign: 'center',
+    overflow: 'auto',
   };
 });
 
 const Main = styled('div')(({ theme }) => {
   return {
     position: 'relative',
-    marginTop: 400,
+    minHeight: '100%',
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column',
@@ -78,7 +79,7 @@ const Particle = styled('div')(({ theme }) => {
   };
 });
 
-const HOME: NextPage = () => {
+const Home: NextPage = () => {
   const { locale } = React.useContext(LocalizationContext);
 
   const { isDark } = React.useContext(ThemeContext);
@@ -105,8 +106,8 @@ const HOME: NextPage = () => {
   return (
     <>
       <HeaderWrapper />
+      <Particle id='particles' />
       <Root>
-        <Particle id='particles' />
         <Main>
           <div className='logo'>
             <Logo />
@@ -114,7 +115,7 @@ const HOME: NextPage = () => {
           </div>
           <div className='desc'>{locale.pages.index.desc}</div>
           <div className='action'>
-            <Link href='/docs/components' passHref={true}>
+            <Link href='/components' passHref={true}>
               <Button theme='primary'>{locale.pages.index.btnStart}</Button>
             </Link>
             <Button theme='default' target='_blank' href='https://github.com/xl-vision/xl-vision'>
@@ -122,9 +123,10 @@ const HOME: NextPage = () => {
             </Button>
           </div>
         </Main>
+        <Sponsorship />
       </Root>
     </>
   );
 };
 
-export default HOME;
+export default Home;

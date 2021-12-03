@@ -62,4 +62,4 @@ The project is still under development and we welcome anyone's contribution to t
 
 # :heart: Sponsors
 
-[![Vercel](https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg)](https://vercel.com?utm_source=[xl-vision]&utm_campaign=oss)
+[![Vercel](https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg)](https://vercel.com?utm_source=xl-vision&utm_campaign=oss)
