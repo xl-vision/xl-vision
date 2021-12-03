@@ -7,6 +7,9 @@ export type Locale = {
     hooks: string;
     index: string;
   };
+  sponsorship: {
+    title: string;
+  };
   pages: {
     index: {
       desc: string;
@@ -32,6 +35,9 @@ const locales: Record<string, Locale> = {
       hooks: 'React Hooks',
       index: '首页',
     },
+    sponsorship: {
+      title: '赞助方',
+    },
     pages: {
       index: {
         desc: '不可错过的React组件库',
@@ -54,6 +60,9 @@ const locales: Record<string, Locale> = {
       component: 'Component',
       hooks: 'React Hooks',
       index: 'Home',
+    },
+    sponsorship: {
+      title: 'Our sponsors',
     },
     pages: {
       index: {
