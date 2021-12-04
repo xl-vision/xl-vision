@@ -35,7 +35,7 @@
     "babel-plugin-styled-components": "^2.0.1",
     "cross-env": "^7.0.3",
     "prismjs": "^1.25.0",
-    "remark-emoji": "^2.2.0",
+    "remark-emoji": "^3.0.2",
     "webpack-merge": "^5.8.0"
   },
   "peerDependencies": {
