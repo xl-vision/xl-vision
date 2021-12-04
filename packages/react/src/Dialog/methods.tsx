@@ -3,7 +3,7 @@ import React from 'react';
 import { ThemeContext as StyledThemeContext } from '@xl-vision/styled-engine';
 import { env } from '@xl-vision/utils';
 import createMessageDialog, { MessageDialogType, MessageDialogProps } from './message';
-import { voidFn } from '../utils/function';
+import { noop } from '../utils/function';
 import warningLog from '../utils/warning';
 import { Theme, ThemeContext } from '../ThemeProvider';
 import { LocalizationContext, LocalizationContextProps } from '../LocalizationProvider';
@@ -43,8 +43,8 @@ const method = (
 ): MessageDialogFunctionReturnType => {
   if (env.isServer) {
     return {
-      destroy: voidFn,
-      update: voidFn,
+      destroy: noop,
+      update: noop,
     };
   }
 

@@ -1,6 +1,6 @@
 import { raf } from './transition';
 
-export const voidFn = () => {};
+export const noop = () => {};
 
 export const oneOf = <T>(array: Array<T>, item: T) => {
   return array.indexOf(item) > -1;
@@ -57,7 +57,7 @@ export function isPlainObject(item: unknown): item is Record<keyof any, unknown>
     item !== null &&
     typeof item === 'object' &&
     // TS thinks `item is possibly null` even though this was our first guard.
-    item!.constructor === Object
+    item.constructor === Object
   );
 }
 

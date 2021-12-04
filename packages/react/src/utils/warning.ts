@@ -1,5 +1,5 @@
 import { env } from '@xl-vision/utils';
-import { voidFn } from './function';
+import { noop } from './function';
 
 export default env.isDevelopment
   ? (condition: boolean, format: string, ...args: Array<string>) => {
@@ -7,7 +7,7 @@ export default env.isDevelopment
         printWarning(format, args);
       }
     }
-  : voidFn;
+  : noop;
 
 const printWarning = (format: string, args: Array<string>) => {
   let index = 0;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { voidFn } from '../utils/function';
+import { noop } from '../utils/function';
 
 export type DropdownContextProps = {
   submenuCloseHandlers: Array<() => void>;
@@ -8,5 +8,5 @@ export type DropdownContextProps = {
 
 export default React.createContext<DropdownContextProps>({
   submenuCloseHandlers: [],
-  setVisible: voidFn,
+  setVisible: noop,
 });

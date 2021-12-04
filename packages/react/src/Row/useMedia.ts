@@ -1,13 +1,13 @@
 import React from 'react';
 import { env } from '@xl-vision/utils';
-import { voidFn } from '../utils/function';
+import { noop } from '../utils/function';
 
 const matchMedia = (query: string) => {
   if (env.isServer) {
     return {
-      addListener: voidFn,
+      addListener: noop,
       matches: false,
-      removeListener: voidFn,
+      removeListener: noop,
     };
   }
   return window.matchMedia(query);

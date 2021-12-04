@@ -5,8 +5,6 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/b9d004e0c43541db8bbb96b895f9eb82)](https://www.codacy.com/gh/xl-vision/xl-vision/dashboard?utm_source=github.com&utm_medium=referral&utm_content=xl-vision/xl-vision&utm_campaign=Badge_Grade)
 [![codecov](https://codecov.io/gh/xl-vision/xl-vision/branch/master/graph/badge.svg?token=ogpRs9nLpU)](https://codecov.io/gh/xl-vision/xl-vision)
 [![Build Status](https://github.com/xl-vision/xl-vision/workflows/build/badge.svg)](https://github.com/xl-vision/xl-vision/actions)
-[![Dependencies](https://david-dm.org/xl-vision/xl-vision/status.svg)](https://david-dm.org/xl-vision/xl-vision)
-[![DevDependencies](https://david-dm.org/xl-vision/xl-vision/dev-status.svg)](https://david-dm.org/xl-vision/xl-vision?type=dev)
 [![npm package](https://img.shields.io/npm/v/@xl-vision/react.svg)](https://www.npmjs.org/package/@xl-vision/react)
 [![NPM downloads](http://img.shields.io/npm/dm/@xl-vision/react.svg)](https://www.npmjs.org/package/@xl-vision/react)
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/xl-vision/xl-vision.svg)](http://isitmaintained.com/project/xl-vision/xl-vision 'Average time to resolve an issue')
