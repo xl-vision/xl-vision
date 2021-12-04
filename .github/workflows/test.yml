@@ -1,0 +1,143 @@
+name: Test
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+
+      - name: cache package-lock.json
+        uses: actions/cache@v2
+        with:
+          path: package-temp-dir
+          key: lock-${{ github.sha }}
+
+      - name: create package-lock.json
+        run: npm i --package-lock-only --ignore-scripts
+
+      - name: hack for single file
+        run: |
+          if [ ! -d "package-temp-dir" ]; then
+            mkdir package-temp-dir
+          fi
+          cp package-lock.json package-temp-dir
+
+      - name: cache node_modules
+        id: node_modules_cache_id
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node_modules-${{ hashFiles('**/package-temp-dir/package-lock.json') }}
+
+      - name: install
+        if: steps.node_modules_cache_id.outputs.cache-hit != 'true'
+        run: npm ci
+
+  lint:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: restore cache from package-lock.json
+        uses: actions/cache@v2
+        with:
+          path: package-temp-dir
+          key: lock-${{ github.sha }}
+
+      - name: bootstrap
+        run: npm run bootstrap
+
+      - name: run lint
+        run: npm run lint
+
+  build_library:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: restore cache from package-lock.json
+        uses: actions/cache@v2
+        with:
+          path: package-temp-dir
+          key: lock-${{ github.sha }}
+
+      - name: bootstrap
+        run: npm run bootstrap
+
+      - name: build library
+        run: npm run build
+
+  build_docs:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: restore cache from package-lock.json
+        uses: actions/cache@v2
+        with:
+          path: package-temp-dir
+          key: lock-${{ github.sha }}
+
+      - name: bootstrap
+        run: npm run bootstrap
+
+      - name: build docs
+        run: npm run docs
+
+  test:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: restore cache from package-lock.json
+        uses: actions/cache@v2
+        with:
+          path: package-temp-dir
+          key: lock-${{ github.sha }}
+
+      - name: bootstrap
+        run: npm run bootstrap
+
+      - name: run test
+        run: npm run test -- --coverage --bail
+
+      - name: codecov
+        run: bash <(curl -s https://codecov.io/bash)
+
+      - name: codacy-coverage
+        if: ${{ github.event_name == 'push' }}
+        uses: codacy/codacy-coverage-reporter-action@master
+        with:
+          project-token: ${{secrets.CODACY_TOKEN}}
+
+      - name: upload coverage artifact
+        if: ${{ github.event_name == 'push_request' }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage
+          path: coverage/
+          retention-days: 5
+
+      - name: save PR number
+        if: ${{ github.event_name == 'push_request' }}
+        run: echo ${{ github.event.number }} > ./pr-id.txt
+
+      - name: upload PR number
+        if: ${{ github.event_name == 'push_request' }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: pr
+          path: ./pr-id.txt
