@@ -5,7 +5,7 @@ import { act } from 'react-dom/test-utils';
 import CSSTransition, { CSSTransitionClasses } from '..';
 import wait from '../../../../../test/wait';
 import * as TransitionUtils from '../../utils/transition';
-import { voidFn } from '../../utils/function';
+import { noop } from '../../utils/function';
 
 const classnameMap: CSSTransitionClasses = {
   appearFrom: 'appearFrom',
@@ -343,7 +343,7 @@ describe('CSSTransition', () => {
 
   it('测试包含cancelled的生命周期', async () => {
     // 阻止onTransitionEnd完成
-    onTransitionEndSpy.mockImplementation(voidFn);
+    onTransitionEndSpy.mockImplementation(noop);
     const call = jest.fn();
     const wrapper = mount(
       <CSSTransition

@@ -12,7 +12,7 @@ import { forceReflow } from '../utils/transition';
 import { off, on } from '../utils/event';
 import useLifecycleState, { LifecycleState } from '../hooks/useLifecycleState';
 import { increaseZindex } from '../utils/zIndexManger';
-import { oneOf, voidFn } from '../utils/function';
+import { oneOf, noop } from '../utils/function';
 import computeTransformOrigin from './computeTransformOrigin';
 import usePropChange from '../hooks/usePropChange';
 import findDomNode from '../utils/findDomNode';
@@ -227,7 +227,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
         modifiers,
       });
     } else {
-      popperInstanceRef.current.setOptions({ placement, modifiers }).then(voidFn, voidFn);
+      popperInstanceRef.current.setOptions({ placement, modifiers }).then(noop, noop);
     }
 
     // 强制计算位置，同步完成

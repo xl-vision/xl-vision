@@ -9,6 +9,7 @@ import { styled } from '../styles';
 import Button, { ButtonProps } from '../Button';
 import usePropChange from '../hooks/usePropChange';
 import { useLocale } from '../LocalizationProvider';
+import { noop } from '../utils/function';
 
 export type DialogButtonProps = Omit<ButtonProps, 'children' | 'onClick'>;
 
@@ -169,7 +170,7 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
   const handleVisibleChange = useConstantFn((_visible: boolean) => {
     setVisible(_visible);
     if (!_visible) {
-      onCancel?.();
+      onCancel?.()?.catch(noop);
     }
   });
 

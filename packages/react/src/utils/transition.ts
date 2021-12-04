@@ -1,5 +1,5 @@
 import { env } from '@xl-vision/utils';
-import { voidFn } from './function';
+import { noop } from './function';
 
 let TRANSITION_NAME = 'transition';
 let ANIMATION_NAME = 'animation';
@@ -57,7 +57,7 @@ export const onTransitionEnd = (el: HTMLElement, done: () => void) => {
 
   if (timeout <= 0) {
     done();
-    return voidFn;
+    return noop;
   }
 
   const eventName = `${type!}end`;
@@ -96,7 +96,7 @@ export const onTransitionEnd = (el: HTMLElement, done: () => void) => {
 export const raf = (fn: () => void) => {
   if (env.isServer) {
     fn();
-    return voidFn;
+    return noop;
   }
   if (window.requestAnimationFrame) {
     let id: number | undefined = window.requestAnimationFrame(fn);
