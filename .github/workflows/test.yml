@@ -52,7 +52,7 @@ jobs:
           key: lock-${{ github.sha }}
 
       - name: bootstrap
-        run: npm run bootstrap
+        run: npm run bootstrap -- --no-ci
 
       - name: run lint
         run: npm run lint
@@ -71,7 +71,7 @@ jobs:
           key: lock-${{ github.sha }}
 
       - name: bootstrap
-        run: npm run bootstrap
+        run: npm run bootstrap  -- --no-ci
 
       - name: build library
         run: npm run build
@@ -90,7 +90,7 @@ jobs:
           key: lock-${{ github.sha }}
 
       - name: bootstrap
-        run: npm run bootstrap
+        run: npm run bootstrap  -- --no-ci
 
       - name: build docs
         run: npm run docs
@@ -109,7 +109,7 @@ jobs:
           key: lock-${{ github.sha }}
 
       - name: bootstrap
-        run: npm run bootstrap
+        run: npm run bootstrap  -- --no-ci
 
       - name: run test
         run: npm run test -- --coverage --bail
