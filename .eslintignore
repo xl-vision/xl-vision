@@ -3,9 +3,12 @@ modern
 dist
 coverage
 node_modules
+.next
+out
 
 /packages/icons/src
 /packages/icons/third
 /packages/icons/scripts/template
 
-/platforms/docs/.next
+# disable this file, because import() is not supported by eslint.
+/platforms/docs/scripts/webpack/mdLoader/index.js
