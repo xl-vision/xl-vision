@@ -21,6 +21,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'react/prop-types': 'off',
     '@next/next/link-passhref': 'error',
+    'react/display-name': 'off',
   },
   overrides: [
     {

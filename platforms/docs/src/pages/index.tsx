@@ -26,6 +26,9 @@ const Main = styled('div')(({ theme }) => {
       display: 'inline-flex',
       flexDirection: 'row',
       alignItems: 'center',
+      svg: {
+        width: 90,
+      },
       span: {
         fontSize: 80,
         fontWeight: theme.typography.fontWeight.bold,
@@ -41,6 +44,20 @@ const Main = styled('div')(({ theme }) => {
       marginTop: 16,
       a: {
         margin: '0 16px',
+      },
+    },
+    '@media(max-width: 576px)': {
+      '.logo': {
+        height: 50,
+        svg: {
+          width: 50,
+        },
+        span: {
+          fontSize: 45,
+        },
+      },
+      '.desc': {
+        fontSize: 18,
       },
     },
   };
