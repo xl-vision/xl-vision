@@ -30,13 +30,7 @@ const HeaderNav = styled('header')(({ theme }) => {
   const fontColor = color.getContrastText(background).text.primary;
 
   return {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    right: 0,
     zIndex: 1000,
-    height: '60px',
-    // borderBottom: `1px solid ${theme.color.divider}`,
     display: 'flex',
     alignItems: 'center',
     margin: 0,
