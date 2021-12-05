@@ -127,11 +127,6 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
         </Link>
         <Menus>
           <li>
-            <Link href='/'>
-              <a>{locale.header.index}</a>
-            </Link>
-          </li>
-          <li>
             <Link href='/components'>
               <a>{locale.header.component}</a>
             </Link>
