@@ -1,9 +1,11 @@
-import { styled } from '@xl-vision/react';
+import { styled, Row } from '@xl-vision/react';
 import { keyframes } from '@xl-vision/styled-engine';
 import { NextPage } from 'next';
 import Link from 'next/link';
 import React from 'react';
 import { LocalizationContext } from '../components/LocalizationProvider';
+
+const { useBreakPoints } = Row;
 
 const bgShadow = keyframes`
     0% {
@@ -32,6 +34,8 @@ const Root = styled('div')`
     font-family: 'Catamaran', sans-serif;
     font-weight: 800;
     margin: 70px 15px;
+    white-space: nowrap;
+
     & > span {
       display: inline-block;
       position: relative;
@@ -40,6 +44,7 @@ const Root = styled('div')`
       width: 136px;
       height: 43px;
       border-radius: 999px;
+
       background: linear-gradient(
           140deg,
           rgba(0, 0, 0, 0.1) 0%,
@@ -173,15 +178,33 @@ const Root = styled('div')`
     text-decoration: none;
     margin-top: 50px;
     letter-spacing: 1px;
+
+    @media (max-width: 576px) {
+      margin-top: 20px;
+    }
   }
 `;
 
 const NotFound: NextPage = () => {
   const { locale } = React.useContext(LocalizationContext);
 
+  const breakPoints = useBreakPoints();
+
+  const isBelowMd = React.useMemo(() => {
+    const md = breakPoints.find((it) => it[0] === 'md');
+    if (md) {
+      return !md[1];
+    }
+    return false;
+  }, [breakPoints]);
+
+  const styles = {
+    transform: `scale(${isBelowMd ? 0.7 : 1})`,
+  };
+
   return (
     <Root>
-      <section className='error-container'>
+      <section className='error-container' style={styles}>
         <span className='four'>
           <span className='screen-reader-text'>4</span>
         </span>
