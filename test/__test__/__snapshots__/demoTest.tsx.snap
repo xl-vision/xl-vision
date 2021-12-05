@@ -19862,6 +19862,8 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx corr
 </div>
 `;
 
+exports[`Demo renders ./packages/react/src/Row/__doc__/useBreakPoints.tsx correctly 1`] = `null`;
+
 exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Arrow.tsx correctly 1`] = `
 .c3 {
   position: absolute;
