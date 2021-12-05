@@ -107,20 +107,26 @@ export type AsideProps = {
   routeName: keyof Route;
 };
 
-const Aside: React.FunctionComponent<AsideProps> = (props) => {
-  const { language } = useLocale();
+const Aside: React.FunctionComponent<AsideProps> = React.forwardRef<HTMLDivElement, AsideProps>(
+  (props, ref) => {
+    const { language } = useLocale();
 
-  const { routeName, ...others } = props;
+    const { routeName, ...others } = props;
 
-  const nodes = React.useMemo(() => {
-    return traverseRoutes(routeName, route[routeName], language);
-  }, [routeName, language]);
+    const nodes = React.useMemo(() => {
+      return traverseRoutes(routeName, route[routeName], language);
+    }, [routeName, language]);
 
-  if (!nodes) {
-    return null;
-  }
+    if (!nodes) {
+      return null;
+    }
 
-  return <Wrapper {...others}>{nodes}</Wrapper>;
-};
+    return (
+      <Wrapper {...others} ref={ref}>
+        {nodes}
+      </Wrapper>
+    );
+  },
+);
 
 export default Aside;

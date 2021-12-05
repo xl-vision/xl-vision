@@ -10,6 +10,11 @@ export type Locale = {
   sponsorship: {
     title: string;
   };
+  layout: {
+    component: {
+      mobileAsideButton: string;
+    };
+  };
   pages: {
     index: {
       desc: string;
@@ -38,6 +43,11 @@ const locales: Record<string, Locale> = {
     sponsorship: {
       title: '赞助方',
     },
+    layout: {
+      component: {
+        mobileAsideButton: '菜单',
+      },
+    },
     pages: {
       index: {
         desc: '不可错过的React组件库',
@@ -63,6 +73,11 @@ const locales: Record<string, Locale> = {
     },
     sponsorship: {
       title: 'Our sponsors',
+    },
+    layout: {
+      component: {
+        mobileAsideButton: 'Menus',
+      },
     },
     pages: {
       index: {
