@@ -11,18 +11,6 @@ jobs:
       github.event.workflow_run.event == 'pull_request' &&
       github.event.workflow_run.conclusion == 'success'
     steps:
-      # We need get PR id first
-      - name: download pr artifact
-        uses: dawidd6/action-download-artifact@v2
-        with:
-          workflow: ${{ github.event.workflow_run.workflow_id }}
-          name: pr
-
-      # Save PR id to output
-      - name: save PR id
-        id: pr
-        run: echo "::set-output name=id::$(<pr-id.txt)"
-
       # Download site artifact
       - name: download coverage artifact
         uses: dawidd6/action-download-artifact@v2
