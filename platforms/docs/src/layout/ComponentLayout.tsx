@@ -2,7 +2,7 @@ import { styled, Row, CollapseTransition, Button } from '@xl-vision/react';
 import React from 'react';
 import Aside from '../components/Aside';
 import Footer from '../components/Footer';
-import Header from '../components/Header';
+import Header, { height } from '../components/Header';
 import { useLocale } from '../components/LocalizationProvider';
 import { Layout } from './Layout';
 
@@ -12,13 +12,12 @@ const asideWidth = 280;
 
 const AsideWrapper = styled(Aside)(({ theme }) => {
   return {
-    padding: '0 12px',
     // '@media(max-width: 768px)': {
     //   borderBottom: `1px solid ${theme.color.divider}`,
     // },
     '@media(min-width: 768px)': {
       position: 'fixed',
-      top: 60,
+      top: height,
       bottom: 0,
       overflowY: 'hidden',
       width: asideWidth,
@@ -101,7 +100,7 @@ const ComponentLayout: Layout = ({ children }) => {
   }, []);
 
   return (
-    <Root>
+    <Root style={{ marginTop: isBelowMd ? height : 0 }}>
       <Header />
       {isBelowMd ? (
         <>

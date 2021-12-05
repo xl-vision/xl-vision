@@ -15,12 +15,15 @@ import Logo from '../Logo';
 
 const { useBreakPoints } = Row;
 
+export const height = 60;
+
 const Container = styled('div')(() => {
   return {
-    display: 'fixed',
+    position: 'fixed',
     top: 0,
     width: '100%',
-    height: '60px',
+    height,
+    zIndex: 1000,
   };
 });
 
@@ -32,10 +35,10 @@ const HeaderNav = styled('header')(({ theme }) => {
   const fontColor = color.getContrastText(background).text.primary;
 
   return {
-    zIndex: 1000,
     display: 'flex',
     alignItems: 'center',
     margin: 0,
+    height,
     width: '100%',
     padding: '0 16px',
     backgroundColor: alpha(background, 0.72),
