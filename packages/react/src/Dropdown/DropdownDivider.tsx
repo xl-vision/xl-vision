@@ -33,7 +33,7 @@ const DropdownDivider = React.forwardRef<HTMLDivElement, DropdownDividerProps>((
   return <DropdownDividerRoot {...others} ref={ref} className={rootClasses} />;
 });
 
-if (env.isDevelopment) {
+if (!env.isProduction) {
   DropdownDivider.displayName = displayName;
   DropdownDivider.propTypes = {
     className: PropTypes.string,

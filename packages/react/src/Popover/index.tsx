@@ -152,7 +152,7 @@ const Popover = React.forwardRef<unknown, PopoverProps>((props, ref) => {
   );
 });
 
-if (env.isDevelopment) {
+if (!env.isProduction) {
   Popover.displayName = displayName;
 
   const triggerPropType = PropTypes.oneOf<PopperTrigger>([

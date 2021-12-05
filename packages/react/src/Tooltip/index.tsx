@@ -275,7 +275,7 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
   );
 });
 
-if (env.isDevelopment) {
+if (!env.isProduction) {
   Tooltip.displayName = displayName;
 
   const triggerPropType = PropTypes.oneOf<TooltipTrigger>([

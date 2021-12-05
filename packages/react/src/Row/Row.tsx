@@ -130,7 +130,7 @@ const Row = React.forwardRef<HTMLDivElement, RowProps>((props, ref) => {
   );
 });
 
-if (env.isDevelopment) {
+if (!env.isProduction) {
   Row.displayName = displayName;
 
   Row.propTypes = {

@@ -34,7 +34,7 @@ const LocalizationProvider: React.FunctionComponent<LocalizationProviderProps> =
   );
 };
 
-if (env.isDevelopment) {
+if (!env.isProduction) {
   LocalizationProvider.displayName = 'LocalizationProvider';
 
   LocalizationProvider.propTypes = {

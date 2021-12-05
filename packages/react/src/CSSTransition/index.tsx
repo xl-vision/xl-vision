@@ -293,7 +293,7 @@ const CSSTransition: React.FunctionComponent<CSSTransitionProps> = (props) => {
   );
 };
 
-if (env.isDevelopment) {
+if (!env.isProduction) {
   CSSTransition.displayName = 'CSSTransition';
 
   CSSTransition.propTypes = {

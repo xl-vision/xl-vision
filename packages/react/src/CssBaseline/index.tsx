@@ -65,7 +65,7 @@ const CssBaseline: React.FunctionComponent<CssBaselineProps> = (props) => {
   );
 };
 
-if (env.isDevelopment) {
+if (!env.isProduction) {
   CssBaseline.displayName = 'CssBaseline';
   CssBaseline.propTypes = {
     children: PropTypes.node,

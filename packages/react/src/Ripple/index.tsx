@@ -210,7 +210,7 @@ const Ripple = React.forwardRef<RippleRef, RippleProps>((props, ref) => {
   );
 });
 
-if (env.isDevelopment) {
+if (!env.isProduction) {
   Ripple.displayName = displayName;
 
   Ripple.propTypes = {

@@ -162,7 +162,7 @@ const TransitionGroup: React.FunctionComponent<TransitionGroupProps> = (props) =
   return <>{nodes}</>;
 };
 
-if (env.isDevelopment) {
+if (!env.isProduction) {
   TransitionGroup.displayName = 'TransitionGroup';
 
   TransitionGroup.propTypes = {

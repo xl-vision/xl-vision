@@ -103,7 +103,7 @@ const DropdownItem = React.forwardRef<HTMLLIElement, DropdownItemProps>((props, 
   );
 });
 
-if (env.isDevelopment) {
+if (!env.isProduction) {
   DropdownItem.displayName = displayName;
   DropdownItem.propTypes = {
     children: PropTypes.node.isRequired,

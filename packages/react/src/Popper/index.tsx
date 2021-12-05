@@ -507,7 +507,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
   );
 });
 
-if (env.isDevelopment) {
+if (!env.isProduction) {
   Popper.displayName = displayName;
 
   const triggerPropType = PropTypes.oneOf<PopperTrigger>([

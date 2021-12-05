@@ -200,7 +200,7 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
   });
 };
 
-if (env.isDevelopment) {
+if (!env.isProduction) {
   Transition.displayName = 'Transition';
 
   Transition.propTypes = {

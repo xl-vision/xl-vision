@@ -344,7 +344,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
   );
 });
 
-if (env.isDevelopment) {
+if (!env.isProduction) {
   Button.displayName = displayName;
 
   Button.propTypes = {

@@ -114,7 +114,7 @@ const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>((props, r
   );
 });
 
-if (env.isDevelopment) {
+if (!env.isProduction) {
   AvatarGroup.displayName = displayName;
   AvatarGroup.propTypes = {
     children: PropTypes.arrayOf(PropTypes.element.isRequired).isRequired,

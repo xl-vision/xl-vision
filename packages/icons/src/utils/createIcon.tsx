@@ -12,7 +12,7 @@ const createIcon = (
     });
   });
 
-  if (env.isDevelopment) {
+  if (!env.isProduction) {
     Component.displayName = displayName;
   }
   return Component;
