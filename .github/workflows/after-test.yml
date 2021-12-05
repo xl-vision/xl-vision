@@ -5,7 +5,8 @@ on:
     types:
       - completed
 jobs:
-  test:
+  upload_codacy:
+    name: upload codacy
     runs-on: ubuntu-latest
     if: >
       github.event.workflow_run.event == 'pull_request' &&
