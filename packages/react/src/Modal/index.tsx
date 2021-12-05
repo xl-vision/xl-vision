@@ -369,7 +369,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   );
 });
 
-if (env.isDevelopment) {
+if (!env.isProduction) {
   Modal.displayName = displayName;
   Modal.propTypes = {
     getContainer: PropTypes.any,

@@ -104,7 +104,7 @@ const styled = <
       ...newStyles,
     );
 
-    if (env.isDevelopment) {
+    if (!env.isProduction) {
       DefaultComponent.displayName = displayName;
     }
 

@@ -206,7 +206,7 @@ const CollapseTransition: React.FunctionComponent<CollapseTransitionProp> = (pro
   );
 };
 
-if (env.isDevelopment) {
+if (!env.isProduction) {
   CollapseTransition.displayName = 'CollapseTransition';
 
   CollapseTransition.propTypes = {

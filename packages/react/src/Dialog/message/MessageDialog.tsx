@@ -117,7 +117,7 @@ const MessageDialog: React.FunctionComponent<MessageDialogProps> = (props) => {
   );
 };
 
-if (env.isDevelopment) {
+if (!env.isProduction) {
   MessageDialog.displayName = displayName;
   MessageDialog.propTypes = {
     visible: Proptypes.bool,

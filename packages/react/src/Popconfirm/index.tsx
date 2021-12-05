@@ -220,7 +220,7 @@ const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
   );
 });
 
-if (env.isDevelopment) {
+if (!env.isProduction) {
   Popconfirm.displayName = displayName;
 
   const triggerPropType = PropTypes.oneOf<PopperTrigger>([

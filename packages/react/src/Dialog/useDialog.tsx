@@ -41,7 +41,7 @@ const createHookMessageDialog = (props: MessageDialogProps, type?: MessageDialog
     return <Dialog {...innerConfig} />;
   });
 
-  if (env.isDevelopment) {
+  if (!env.isProduction) {
     HookMessageDialog.displayName = 'HookMessageDialog';
   }
 

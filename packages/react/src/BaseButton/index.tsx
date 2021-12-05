@@ -226,7 +226,7 @@ const BaseButton = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseB
   },
 );
 
-if (env.isDevelopment) {
+if (!env.isProduction) {
   BaseButton.displayName = displayName;
 
   BaseButton.propTypes = {

@@ -205,7 +205,7 @@ const DropdownSubmenu = React.forwardRef<HTMLDivElement, DropdownSubmenuProps>((
   );
 });
 
-if (env.isDevelopment) {
+if (!env.isProduction) {
   DropdownSubmenu.displayName = displayName;
 
   const triggerPropType = PropTypes.oneOf<PopperTrigger>([

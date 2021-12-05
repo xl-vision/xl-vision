@@ -187,7 +187,7 @@ const Col = React.forwardRef<HTMLDivElement, ColProps>((props, ref) => {
   );
 });
 
-if (env.isDevelopment) {
+if (!env.isProduction) {
   Col.displayName = displayName;
 
   Col.propTypes = {

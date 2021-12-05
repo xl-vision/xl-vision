@@ -220,7 +220,7 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
   );
 });
 
-if (env.isDevelopment) {
+if (!env.isProduction) {
   Avatar.displayName = displayName;
   Avatar.propTypes = {
     children: PropTypes.node,

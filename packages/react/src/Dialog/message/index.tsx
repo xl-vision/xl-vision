@@ -86,7 +86,7 @@ const createMessageDialog = (type?: MessageDialogType) => {
     return <MessageDialog {...defaultProps} {...props} />;
   };
 
-  if (env.isDevelopment) {
+  if (!env.isProduction) {
     const displayName = type
       ? `${type.replace(/^./, (match) => match.toUpperCase())}Dialog`
       : 'CustomMessageDialog';

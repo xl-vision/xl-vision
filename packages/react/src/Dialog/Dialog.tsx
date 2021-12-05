@@ -227,7 +227,7 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
   );
 });
 
-if (env.isDevelopment) {
+if (!env.isProduction) {
   Dialog.displayName = displayName;
   Dialog.propTypes = {
     children: Proptypes.node,

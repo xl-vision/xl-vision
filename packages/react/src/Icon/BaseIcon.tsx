@@ -14,7 +14,7 @@ const BaseIcon = React.forwardRef<SVGSVGElement, BaseIconProps>((props, ref) => 
   });
 });
 
-if (env.isDevelopment) {
+if (!env.isProduction) {
   BaseIcon.displayName = 'BaseIcon';
 
   BaseIcon.propTypes = {

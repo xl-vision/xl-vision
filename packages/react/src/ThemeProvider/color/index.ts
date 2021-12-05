@@ -44,7 +44,7 @@ const createColors = (color: Color = {}) => {
     const contrastText =
       getContrastRatio(background, dark.text.primary) >= contrastThreshold ? dark : light;
 
-    if (env.isDevelopment) {
+    if (!env.isProduction) {
       const contrast = getContrastRatio(background, contrastText.text.primary);
       if (contrast < 3) {
         console.error(

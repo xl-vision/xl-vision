@@ -25,7 +25,7 @@ const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = (props) => {
   );
 };
 
-if (env.isDevelopment) {
+if (!env.isProduction) {
   ThemeProvider.displayName = 'ThemeProvider';
 
   ThemeProvider.propTypes = {
