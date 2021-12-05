@@ -16,7 +16,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: node_modules
-          key: node_modules-${{ hashFiles('package-lock.json') }}
+          key: node_modules-${{ hashFiles('**/package-lock.json') }}
 
       - name: install
         if: steps.node_modules_cache_id.outputs.cache-hit != 'true'
@@ -29,11 +29,11 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
 
-      - name: restore cache from package-lock.json
+      - name: restore cache
         uses: actions/cache@v2
         with:
-          path: package-temp-dir
-          key: lock-${{ github.sha }}
+          path: node_modules
+          key: node_modules-${{ hashFiles('package-lock.json') }}
 
       - name: bootstrap
         run: npm run bootstrap -- --no-ci
@@ -114,14 +114,3 @@ jobs:
           name: coverage
           path: coverage/
           retention-days: 5
-
-      - name: save PR number
-        if: ${{ github.event_name == 'push_request' }}
-        run: echo ${{ github.event.number }} > ./pr-id.txt
-
-      - name: upload PR number
-        if: ${{ github.event_name == 'push_request' }}
-        uses: actions/upload-artifact@v2
-        with:
-          name: pr
-          path: ./pr-id.txt
