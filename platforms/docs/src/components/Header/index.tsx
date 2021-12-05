@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, styled, Icon, Tooltip, Dropdown } from '@xl-vision/react';
-import { DownOutlined, GithubFilled } from '@xl-vision/icons';
+import { Button, styled, Icon, Tooltip, Dropdown, Row } from '@xl-vision/react';
+import { DownOutlined, GithubFilled, MenuOutlined } from '@xl-vision/icons';
 import Link from 'next/link';
 import { useConstantFn } from '@xl-vision/hooks';
 import { useRouter } from 'next/router';
@@ -12,6 +12,8 @@ import Translate from './Translate';
 import { ThemeContext } from '../ThemeProvider';
 import { useLocale } from '../LocalizationProvider';
 import Logo from '../Logo';
+
+const { useBreakPoints } = Row;
 
 const Container = styled('div')(() => {
   return {
@@ -34,6 +36,7 @@ const HeaderNav = styled('header')(({ theme }) => {
     display: 'flex',
     alignItems: 'center',
     margin: 0,
+    width: '100%',
     padding: '0 16px',
     backgroundColor: alpha(background, 0.72),
     color: fontColor,
@@ -43,6 +46,15 @@ const HeaderNav = styled('header')(({ theme }) => {
 
     '.xl-button__root': {
       color: fontColor,
+    },
+
+    '.left': {
+      display: 'flex',
+      alignItems: 'center',
+
+      button: {
+        marginRight: 12,
+      },
     },
   };
 });
@@ -91,10 +103,39 @@ const Menus = styled('ul')(({ theme }) => {
   };
 });
 
+const MobileDropdownItem = styled(Dropdown.Item)(({ theme }) => {
+  const { themes } = theme.color;
+  return {
+    minWidth: 250,
+    a: {
+      display: 'block',
+      width: '100%',
+      textDecoration: 'none',
+      color: 'inherit',
+      padding: '6px 0',
+    },
+    '&.active': {
+      button: {
+        backgroundColor: themes.primary.color,
+        color: themes.primary.text.primary,
+      },
+    },
+  };
+});
+
 const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (props) => {
   const theme = React.useContext(ThemeContext);
   const { supportLocales, locale } = useLocale();
   const router = useRouter();
+  const breakPoints = useBreakPoints();
+
+  const isBelowMd = React.useMemo(() => {
+    const md = breakPoints.find((it) => it[0] === 'md');
+    if (md) {
+      return !md[1];
+    }
+    return false;
+  }, [breakPoints]);
 
   const { isDark, setDark } = theme;
 
@@ -110,27 +151,63 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
     Cookie.set('NEXT_LOCALE', lang, { expires: 30 });
   });
 
+  const setActiveClassName = useConstantFn((pathname: string) => {
+    return router.pathname.startsWith(pathname) ? 'active' : '';
+  });
+
+  const mobileMenus = (
+    <>
+      <MobileDropdownItem className={setActiveClassName('/components')}>
+        <Link href='/components'>
+          <a>{locale.header.component}</a>
+        </Link>
+      </MobileDropdownItem>
+      <MobileDropdownItem className={setActiveClassName('/hooks')}>
+        <Link href='/hooks'>
+          <a>{locale.header.hooks}</a>
+        </Link>
+      </MobileDropdownItem>
+    </>
+  );
+
   return (
     <Container {...props}>
       <HeaderNav>
-        <Link href='/' passHref={true}>
-          <LogoWrapper>
-            <Logo />
-            <span>xl vision</span>
-          </LogoWrapper>
-        </Link>
-        <Menus>
-          <li>
-            <Link href='/components'>
-              <a>{locale.header.component}</a>
-            </Link>
-          </li>
-          <li>
-            <Link href='/hooks'>
-              <a>{locale.header.hooks}</a>
-            </Link>
-          </li>
-        </Menus>
+        <div className='left'>
+          {isBelowMd && (
+            <Dropdown menus={mobileMenus} trigger='click'>
+              <Button
+                aria-label='Menus'
+                variant='text'
+                prefixIcon={
+                  <Icon>
+                    <MenuOutlined />
+                  </Icon>
+                }
+              />
+            </Dropdown>
+          )}
+          <Link href='/' passHref={true}>
+            <LogoWrapper>
+              <Logo />
+              {!isBelowMd && <span>xl vision</span>}
+            </LogoWrapper>
+          </Link>
+        </div>
+        {!isBelowMd && (
+          <Menus>
+            <li>
+              <Link href='/components'>
+                <a className={setActiveClassName('/components')}>{locale.header.component}</a>
+              </Link>
+            </li>
+            <li>
+              <Link href='/hooks'>
+                <a className={setActiveClassName('/hooks')}>{locale.header.hooks}</a>
+              </Link>
+            </li>
+          </Menus>
+        )}
         <div>
           <Dropdown
             menus={
@@ -143,24 +220,22 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
               </>
             }
           >
-            <span>
-              <Button
-                aria-label='Language'
-                variant='text'
-                prefixIcon={
-                  <Icon>
-                    <Translate />
-                  </Icon>
-                }
-                suffixIcon={
-                  <Icon>
-                    <DownOutlined />
-                  </Icon>
-                }
-              >
-                {locale.name}
-              </Button>
-            </span>
+            <Button
+              aria-label='Language'
+              variant='text'
+              prefixIcon={
+                <Icon>
+                  <Translate />
+                </Icon>
+              }
+              suffixIcon={
+                <Icon>
+                  <DownOutlined />
+                </Icon>
+              }
+            >
+              {!isBelowMd && locale.name}
+            </Button>
           </Dropdown>
           <Tooltip content={locale.header.themeTooltip} placement='bottom' showDelay={1500}>
             <Button
