@@ -16,7 +16,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: node_modules
-          key: node_modules-${{ hashFiles('**/package-lock.json') }}
+          key: node_modules-${{ hashFiles('package-lock.json') }}
 
       - name: install
         if: steps.node_modules_cache_id.outputs.cache-hit != 'true'
