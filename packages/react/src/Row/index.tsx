@@ -1,15 +1,19 @@
 import Row from './Row';
 import Col from './Col';
+import useBreakPoints from './useBreakPoints';
 
 export { default as Row } from './Row';
 export { default as Col } from './Col';
+export { default as useBreakPoints } from './useBreakPoints';
 export * from './Row';
 export * from './Col';
 
-const RowWithCol = Row as typeof Row & {
+const obj = Row as typeof Row & {
   Col: typeof Col;
+  useBreakPoints: typeof useBreakPoints;
 };
 
-RowWithCol.Col = Col;
+obj.Col = Col;
+obj.useBreakPoints = useBreakPoints;
 
-export default RowWithCol;
+export default obj;

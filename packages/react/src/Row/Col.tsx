@@ -72,7 +72,7 @@ const ColRoot = styled('div', {
 const Col = React.forwardRef<HTMLDivElement, ColProps>((props, ref) => {
   const { children, className, offset, order, pull, push, column, style, ...others } = props;
 
-  const { matches, gutter } = React.useContext(RowContext);
+  const { breakPoints, gutter } = React.useContext(RowContext);
   const { clsPrefix } = useTheme();
 
   const computedColumn = React.useMemo(() => {
@@ -80,70 +80,70 @@ const Col = React.forwardRef<HTMLDivElement, ColProps>((props, ref) => {
       return column;
     }
     if (typeof column === 'object') {
-      for (let i = 0; i < matches.length; i++) {
-        const breakPoint = matches[i];
-        if (column[breakPoint] !== undefined) {
+      for (let i = 0; i < breakPoints.length; i++) {
+        const [breakPoint, match] = breakPoints[i];
+        if (match && column[breakPoint] !== undefined) {
           return column[breakPoint] as number;
         }
       }
     }
-  }, [column, matches]);
+  }, [column, breakPoints]);
 
   const computedOffset = React.useMemo(() => {
     if (typeof offset === 'number') {
       return offset;
     }
     if (typeof offset === 'object') {
-      for (let i = 0; i < matches.length; i++) {
-        const breakPoint = matches[i];
-        if (offset[breakPoint] !== undefined) {
+      for (let i = 0; i < breakPoints.length; i++) {
+        const [breakPoint, match] = breakPoints[i];
+        if (match && offset[breakPoint] !== undefined) {
           return offset[breakPoint] as number;
         }
       }
     }
-  }, [offset, matches]);
+  }, [offset, breakPoints]);
 
   const computedPull = React.useMemo(() => {
     if (typeof pull === 'number') {
       return pull;
     }
     if (typeof pull === 'object') {
-      for (let i = 0; i < matches.length; i++) {
-        const breakPoint = matches[i];
-        if (pull[breakPoint] !== undefined) {
+      for (let i = 0; i < breakPoints.length; i++) {
+        const [breakPoint, match] = breakPoints[i];
+        if (match && pull[breakPoint] !== undefined) {
           return pull[breakPoint] as number;
         }
       }
     }
-  }, [pull, matches]);
+  }, [pull, breakPoints]);
 
   const computedPush = React.useMemo(() => {
     if (typeof push === 'number') {
       return push;
     }
     if (typeof push === 'object') {
-      for (let i = 0; i < matches.length; i++) {
-        const breakPoint = matches[i];
-        if (push[breakPoint] !== undefined) {
+      for (let i = 0; i < breakPoints.length; i++) {
+        const [breakPoint, match] = breakPoints[i];
+        if (match && push[breakPoint] !== undefined) {
           return push[breakPoint] as number;
         }
       }
     }
-  }, [push, matches]);
+  }, [push, breakPoints]);
 
   const computedOrder = React.useMemo(() => {
     if (typeof order === 'number') {
       return order;
     }
     if (typeof order === 'object') {
-      for (let i = 0; i < matches.length; i++) {
-        const breakPoint = matches[i];
-        if (order[breakPoint] !== undefined) {
+      for (let i = 0; i < breakPoints.length; i++) {
+        const [breakPoint, match] = breakPoints[i];
+        if (match && order[breakPoint] !== undefined) {
           return order[breakPoint] as number;
         }
       }
     }
-  }, [order, matches]);
+  }, [order, breakPoints]);
 
   const colStyle =
     gutter > 0

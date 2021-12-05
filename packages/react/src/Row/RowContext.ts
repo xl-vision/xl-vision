@@ -1,9 +1,9 @@
 import React from 'react';
 
 export default React.createContext<{
-  matches: Array<string>;
+  breakPoints: Array<[string, boolean]>;
   gutter: number;
 }>({
-  matches: [],
+  breakPoints: [],
   gutter: 0,
 });

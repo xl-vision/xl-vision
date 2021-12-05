@@ -5,7 +5,7 @@ import { env } from '@xl-vision/utils';
 import { styled } from '../styles';
 import { ColProps } from './Col';
 import RowContext from './RowContext';
-import useMedia from './useMedia';
+import useBreakPoints from './useBreakPoints';
 import { useTheme } from '../ThemeProvider';
 
 export type RowAlign = 'top' | 'middle' | 'bottom';
@@ -64,24 +64,24 @@ const RowRoot = styled('div', {
 const Row = React.forwardRef<HTMLDivElement, RowProps>((props, ref) => {
   const { align, justify, children, gutter, type, style, className, ...others } = props;
 
-  const { breakpoints, clsPrefix } = useTheme();
+  const { clsPrefix } = useTheme();
 
-  const matches = useMedia(breakpoints.values, breakpoints.unit);
+  const breakPoints = useBreakPoints();
 
   const computedGutter = React.useMemo(() => {
     if (typeof gutter === 'number') {
       return gutter;
     }
     if (typeof gutter === 'object') {
-      for (let i = 0; i < matches.length; i++) {
-        const breakPoint = matches[i];
-        if (gutter[breakPoint] !== undefined) {
+      for (let i = 0; i < breakPoints.length; i++) {
+        const [breakPoint, match] = breakPoints[i];
+        if (match && gutter[breakPoint] !== undefined) {
           return gutter[breakPoint] as number;
         }
       }
     }
     return 0;
-  }, [matches, gutter]);
+  }, [breakPoints, gutter]);
 
   const rowStyle =
     computedGutter > 0
@@ -107,8 +107,8 @@ const Row = React.forwardRef<HTMLDivElement, RowProps>((props, ref) => {
   );
 
   const memorizedValue = React.useMemo(
-    () => ({ matches, gutter: computedGutter }),
-    [matches, computedGutter],
+    () => ({ breakPoints, gutter: computedGutter }),
+    [breakPoints, computedGutter],
   );
 
   return (
