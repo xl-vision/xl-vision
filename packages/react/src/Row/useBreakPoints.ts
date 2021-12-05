@@ -1,24 +1,16 @@
 import React from 'react';
-import { env } from '@xl-vision/utils';
-import { noop } from '../utils/function';
+import useTheme from '../ThemeProvider/useTheme';
 
-const matchMedia = (query: string) => {
-  if (env.isServer) {
-    return {
-      addListener: noop,
-      matches: false,
-      removeListener: noop,
-    };
-  }
-  return window.matchMedia(query);
-};
+const useBreakPoints = () => {
+  const { breakpoints } = useTheme();
 
-const useMedia = (breakPoints: { [key: string]: number }, unit: string) => {
+  const { values, unit } = breakpoints;
+
   const [media, setMedia] = React.useState<{ [key: string]: boolean }>({});
 
   const breakPointArray = React.useMemo(() => {
-    return Object.keys(breakPoints).sort((a, b) => breakPoints[b] - breakPoints[a]);
-  }, [breakPoints]);
+    return Object.keys(values).sort((a, b) => values[b] - values[a]);
+  }, [values]);
 
   React.useEffect(() => {
     const handlerMap: {
@@ -27,9 +19,9 @@ const useMedia = (breakPoints: { [key: string]: number }, unit: string) => {
         mediaQuery: ReturnType<typeof matchMedia>;
       };
     } = {};
-    const keys = Object.keys(breakPoints);
+    const keys = Object.keys(values);
     keys.forEach((key) => {
-      const size = breakPoints[key];
+      const size = values[key];
       const query = `(min-width: ${size}${unit})`;
       const mql = matchMedia(query);
       const onChange = () => {
@@ -51,9 +43,12 @@ const useMedia = (breakPoints: { [key: string]: number }, unit: string) => {
         mediaQuery.removeListener(listener);
       });
     };
-  }, [breakPoints, unit]);
+  }, [values, unit]);
 
-  return React.useMemo(() => breakPointArray.filter((it) => media[it]), [breakPointArray, media]);
+  return React.useMemo<Array<[string, boolean]>>(
+    () => breakPointArray.map((key) => [key, media[key]]),
+    [breakPointArray, media],
+  );
 };
 
-export default useMedia;
+export default useBreakPoints;
