@@ -55,15 +55,20 @@ const Root = styled('div')(() => {
   };
 });
 
-const MobileMenuButtonWrapper = styled('div')(() => {
+const MobileMenu = styled('div')(({ theme }) => {
   return {
     position: 'fixed',
     zIndex: 1000,
-    top: 70,
-    right: 0,
+    top: height,
+    width: '100%',
+    backgroundColor: theme.color.background.paper,
     button: {
+      position: 'absolute',
+      top: 10,
+      right: 0,
       borderTopRightRadius: 0,
       borderBottomRightRadius: 0,
+      zIndex: 1,
     },
   };
 });
@@ -104,14 +109,14 @@ const ComponentLayout: Layout = ({ children }) => {
       <Header />
       {isBelowMd ? (
         <>
-          <MobileMenuButtonWrapper>
+          <MobileMenu>
             <Button onClick={handleAsideVisible} theme='primary'>
               {locale.layout.component.mobileAsideButton}
             </Button>
-          </MobileMenuButtonWrapper>
-          <CollapseTransition in={asideVisible} transitionClasses='aside'>
-            <AsideWrapper routeName='components' />
-          </CollapseTransition>
+            <CollapseTransition in={asideVisible} transitionClasses='aside'>
+              <AsideWrapper routeName='components' />
+            </CollapseTransition>
+          </MobileMenu>
         </>
       ) : (
         <AsideWrapper routeName='components' />
