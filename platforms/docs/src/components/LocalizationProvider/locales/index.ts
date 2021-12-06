@@ -7,6 +7,10 @@ export type Locale = {
     hooks: string;
     index: string;
   };
+  meta: {
+    keywords: Array<string>;
+    description: string;
+  };
   sponsorship: {
     title: string;
   };
@@ -31,39 +35,13 @@ export type Locale = {
 };
 
 const locales: Record<string, Locale> = {
-  'zh-CN': {
-    name: '中文',
-    header: {
-      themeTooltip: '在亮色主题和暗色主题间切换',
-      githubTooltip: 'Github',
-      component: '组件',
-      hooks: 'React Hooks',
-      index: '首页',
-    },
-    sponsorship: {
-      title: '赞助方',
-    },
-    layout: {
-      component: {
-        mobileAsideButton: '菜单',
-      },
-    },
-    pages: {
-      index: {
-        desc: '不可错过的React组件库',
-        btnStart: '开始使用',
-        btnGithub: 'Github',
-      },
-      Icons: {
-        seachPlaceholder: '在这里搜索图标',
-      },
-      404: {
-        link: '返回首页',
-      },
-    },
-  },
   'en-US': {
     name: 'English',
+
+    meta: {
+      keywords: ['xl-vision', 'react', 'library', 'components', 'docs', 'styled-components'],
+      description: 'react library',
+    },
     header: {
       themeTooltip: 'Switch between light mode and dark mode',
       githubTooltip: 'Github',
@@ -90,6 +68,41 @@ const locales: Record<string, Locale> = {
       },
       404: {
         link: 'Return Home Page',
+      },
+    },
+  },
+  'zh-CN': {
+    name: '中文',
+    meta: {
+      keywords: ['xl-vision', 'react', '组件库', '文档', 'styled-components'],
+      description: 'react组件库',
+    },
+    header: {
+      themeTooltip: '在亮色主题和暗色主题间切换',
+      githubTooltip: 'Github',
+      component: '组件',
+      hooks: 'React Hooks',
+      index: '首页',
+    },
+    sponsorship: {
+      title: '赞助方',
+    },
+    layout: {
+      component: {
+        mobileAsideButton: '菜单',
+      },
+    },
+    pages: {
+      index: {
+        desc: '不可错过的React组件库',
+        btnStart: '开始使用',
+        btnGithub: 'Github',
+      },
+      Icons: {
+        seachPlaceholder: '在这里搜索图标',
+      },
+      404: {
+        link: '返回首页',
       },
     },
   },
