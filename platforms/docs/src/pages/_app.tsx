@@ -1,11 +1,13 @@
 import { createGlobalStyles, CssBaseline } from '@xl-vision/react';
 import React from 'react';
 import { AppProps } from 'next/app';
-import LocalizationProvider from '../components/LocalizationProvider';
+import Head from 'next/head';
+import LocalizationProvider, { useLocale } from '../components/LocalizationProvider';
 import ThemeProvider from '../components/ThemeProvider';
 import Markdown from '../components/Markdown';
 import LayoutMap, { LayoutKey } from '../layout';
 import BaiduAnalytics from '../components/BaiduAnalytics';
+import GoogleAnalytics from '../components/GoogleAnalytics';
 
 const GlobalStyle = createGlobalStyles(({ theme }) => {
   const { color } = theme;
@@ -41,6 +43,7 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <LocalizationProvider>
+        <Meta />
         <ThemeProvider>
           <CssBaseline />
           <GlobalStyle />
@@ -52,8 +55,22 @@ const App = ({ Component, pageProps }: AppProps) => {
         </ThemeProvider>
       </LocalizationProvider>
       <BaiduAnalytics />
+      <GoogleAnalytics />
     </>
   );
 };
 
 export default App;
+
+const Meta = () => {
+  const { locale } = useLocale();
+
+  const { meta } = locale;
+
+  return (
+    <Head>
+      <meta name='keywords' content={meta.keywords.join(',')} />
+      <meta name='description' content={meta.description} />
+    </Head>
+  );
+};

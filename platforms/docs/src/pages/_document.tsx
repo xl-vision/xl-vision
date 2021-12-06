@@ -7,7 +7,6 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <meta name='description' content='xl-vision docs' />
           <link rel='icon' href='/favicon.svg' />
         </Head>
         <body>
