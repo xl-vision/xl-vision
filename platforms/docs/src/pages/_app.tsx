@@ -7,6 +7,7 @@ import Markdown from '../components/Markdown';
 import LayoutMap, { LayoutKey } from '../layout';
 import BaiduAnalytics from '../components/BaiduAnalytics';
 import Head from 'next/head';
+import GoogleAnalytics from '../components/GoogleAnalytics';
 
 const GlobalStyle = createGlobalStyles(({ theme }) => {
   const { color } = theme;
@@ -54,6 +55,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         </ThemeProvider>
       </LocalizationProvider>
       <BaiduAnalytics />
+      <GoogleAnalytics />
     </>
   );
 };
