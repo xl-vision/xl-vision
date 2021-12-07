@@ -2,7 +2,7 @@ import React from 'react';
 import * as Icons from '@xl-vision/icons';
 import { Button, Icon, styled } from '@xl-vision/react';
 import ClipboardJs from 'clipboard';
-import { LocalizationContext } from '../../../../../platforms/docs/src/components/LocalizationProvider';
+import { useLocale } from '../../../../../platforms/docs/src/components/LocalizationProvider';
 
 export type IconComponentMap = {
   [key: string]: React.ComponentType;
@@ -76,7 +76,7 @@ const IconWrapper = styled('div')(({ theme }) => {
 });
 
 const IconSearch: React.FunctionComponent<void> = () => {
-  const { locale } = React.useContext(LocalizationContext);
+  const { locale } = useLocale();
   const [iconType, setIconType] = React.useState<IconType>(IconType.OUTLINED);
 
   const [search, setSearch] = React.useState('');
@@ -88,7 +88,7 @@ const IconSearch: React.FunctionComponent<void> = () => {
     clipboard.on('success', () => {
       clipboard.destroy();
       // eslint-disable-next-line no-alert
-      alert('复制成功');
+      alert('Copy success');
     });
   }, []);
 

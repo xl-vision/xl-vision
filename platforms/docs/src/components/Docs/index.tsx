@@ -49,7 +49,7 @@ const Docs: React.FunctionComponent<DocsProps> = ({ locales }) => {
 
   return (
     <>
-      <Head>{title && <title>{title}</title>}</Head>
+      <Head>{title && <title>{title} | xl-vision</title>}</Head>
       {Instance}
     </>
   );

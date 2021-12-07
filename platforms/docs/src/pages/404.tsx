@@ -1,6 +1,7 @@
 import { styled, Row } from '@xl-vision/react';
 import { keyframes } from '@xl-vision/styled-engine';
 import { NextPage } from 'next';
+import Head from 'next/head';
 import Link from 'next/link';
 import React from 'react';
 import { LocalizationContext } from '../components/LocalizationProvider';
@@ -204,6 +205,9 @@ const NotFound: NextPage = () => {
 
   return (
     <Root>
+      <Head>
+        <title>{locale.pages[404].title} | xl-vision</title>
+      </Head>
       <section className='error-container' style={styles}>
         <span className='four'>
           <span className='screen-reader-text'>4</span>
