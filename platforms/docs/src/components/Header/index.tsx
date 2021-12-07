@@ -171,7 +171,7 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
     <Container {...props}>
       <HeaderNav>
         <Row>
-          <Col column={{ xs: 0, md: 2 }}>
+          <Col column={{ xs: 2, md: 0 }}>
             <Dropdown menus={mobileMenus} trigger='click'>
               <Button
                 aria-label='Menus'
