@@ -22,8 +22,6 @@ const images = [
   },
 ];
 
-console.log(images)
-
 const CustomButton = styled(BaseButton)(() => {
   return {
     height: 200,

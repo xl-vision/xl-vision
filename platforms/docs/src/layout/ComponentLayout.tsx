@@ -1,12 +1,11 @@
-import { styled, Row, CollapseTransition, Button } from '@xl-vision/react';
+import { styled, CollapseTransition, Button } from '@xl-vision/react';
 import React from 'react';
 import Aside from '../components/Aside';
 import Footer from '../components/Footer';
 import Header, { height } from '../components/Header';
 import { useLocale } from '../components/LocalizationProvider';
+import useSizeBelow from '../hooks/useSizeBelow';
 import { Layout } from './Layout';
-
-const { useBreakPoints } = Row;
 
 const asideWidth = 280;
 
@@ -74,19 +73,11 @@ const MobileMenu = styled('div')(({ theme }) => {
 });
 
 const ComponentLayout: Layout = ({ children }) => {
-  const breakPoints = useBreakPoints();
-
   const { locale } = useLocale();
 
   const [asideVisible, setAsideVisible] = React.useState(false);
 
-  const isBelowMd = React.useMemo(() => {
-    const md = breakPoints.find((it) => it[0] === 'md');
-    if (md) {
-      return !md[1];
-    }
-    return false;
-  }, [breakPoints]);
+  const isBelowMd = useSizeBelow('md');
 
   const handleAsideVisible = React.useCallback((e: React.MouseEvent) => {
     setAsideVisible((prev) => !prev);
