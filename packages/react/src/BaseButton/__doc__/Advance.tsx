@@ -6,21 +6,23 @@ import Camera from './camera.jpg';
 
 const images = [
   {
-    url: Breakfast,
+    image: Breakfast,
     title: 'Breakfast',
     width: '40%',
   },
   {
-    url: Burgers,
+    image: Burgers,
     title: 'Burgers',
     width: '30%',
   },
   {
-    url: Camera,
+    image: Camera,
     title: 'Camera',
     width: '30%',
   },
 ];
+
+console.log(images)
 
 const CustomButton = styled(BaseButton)(() => {
   return {
@@ -63,7 +65,7 @@ export default () => {
           <span
             className='img'
             style={{
-              backgroundImage: `url(${it.url})`,
+              backgroundImage: `url(${it.image.src})`,
             }}
           />
           <span className='title'>{it.title}</span>
