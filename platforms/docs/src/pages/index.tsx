@@ -7,6 +7,7 @@ import Header from '../components/Header';
 import { LocalizationContext } from '../components/LocalizationProvider';
 import Sponsorship from '../components/Sponsorship';
 import Footer from '../components/Footer';
+import Head from 'next/head';
 
 const HeaderWrapper = styled(Header)(() => {
   return {};
@@ -75,6 +76,9 @@ const Home: NextPage = () => {
 
   return (
     <>
+      <Head>
+        <title>{locale.pages.index.title} | xl-vision</title>
+      </Head>
       <HeaderWrapper />
       <Main>
         <div className='logo'>

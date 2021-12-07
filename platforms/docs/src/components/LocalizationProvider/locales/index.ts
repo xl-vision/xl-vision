@@ -21,6 +21,7 @@ export type Locale = {
   };
   pages: {
     index: {
+      title: string;
       desc: string;
       btnStart: string;
       btnGithub: string;
@@ -29,6 +30,7 @@ export type Locale = {
       seachPlaceholder: string;
     };
     404: {
+      title: string;
       link: string;
     };
   };
@@ -59,6 +61,7 @@ const locales: Record<string, Locale> = {
     },
     pages: {
       index: {
+        title: 'Home',
         desc: 'React component library not to be missed',
         btnStart: 'Get Started',
         btnGithub: 'Github',
@@ -67,6 +70,7 @@ const locales: Record<string, Locale> = {
         seachPlaceholder: 'Seach icon here',
       },
       404: {
+        title: 'Not Found',
         link: 'Return Home Page',
       },
     },
@@ -94,6 +98,7 @@ const locales: Record<string, Locale> = {
     },
     pages: {
       index: {
+        title: '首页',
         desc: '不可错过的React组件库',
         btnStart: '开始使用',
         btnGithub: 'Github',
@@ -102,6 +107,7 @@ const locales: Record<string, Locale> = {
         seachPlaceholder: '在这里搜索图标',
       },
       404: {
+        title: '找不到页面',
         link: '返回首页',
       },
     },
