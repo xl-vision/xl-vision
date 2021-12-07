@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, styled, Icon, Tooltip, Dropdown, Row } from '@xl-vision/react';
+import { Button, styled, Icon, Tooltip, Dropdown } from '@xl-vision/react';
 import { DownOutlined, GithubFilled, MenuOutlined } from '@xl-vision/icons';
 import Link from 'next/link';
 import { useConstantFn } from '@xl-vision/hooks';
@@ -12,8 +12,7 @@ import Translate from './Translate';
 import { ThemeContext } from '../ThemeProvider';
 import { useLocale } from '../LocalizationProvider';
 import Logo from '../Logo';
-
-const { useBreakPoints } = Row;
+import useSizeBelow from '../../hooks/useSizeBelow';
 
 export const height = 60;
 
@@ -130,15 +129,8 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
   const theme = React.useContext(ThemeContext);
   const { supportLocales, locale } = useLocale();
   const router = useRouter();
-  const breakPoints = useBreakPoints();
 
-  const isBelowMd = React.useMemo(() => {
-    const md = breakPoints.find((it) => it[0] === 'md');
-    if (md) {
-      return !md[1];
-    }
-    return false;
-  }, [breakPoints]);
+  const isBelowMd = useSizeBelow('md');
 
   const { isDark, setDark } = theme;
 

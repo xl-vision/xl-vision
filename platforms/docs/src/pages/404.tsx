@@ -1,12 +1,11 @@
-import { styled, Row } from '@xl-vision/react';
+import { styled } from '@xl-vision/react';
 import { keyframes } from '@xl-vision/styled-engine';
 import { NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import React from 'react';
 import { LocalizationContext } from '../components/LocalizationProvider';
-
-const { useBreakPoints } = Row;
+import useSizeBelow from '../hooks/useSizeBelow';
 
 const bgShadow = keyframes`
     0% {
@@ -189,15 +188,7 @@ const Root = styled('div')`
 const NotFound: NextPage = () => {
   const { locale } = React.useContext(LocalizationContext);
 
-  const breakPoints = useBreakPoints();
-
-  const isBelowMd = React.useMemo(() => {
-    const md = breakPoints.find((it) => it[0] === 'md');
-    if (md) {
-      return !md[1];
-    }
-    return false;
-  }, [breakPoints]);
+  const isBelowMd = useSizeBelow('md');
 
   const styles = {
     transform: `scale(${isBelowMd ? 0.7 : 1})`,
