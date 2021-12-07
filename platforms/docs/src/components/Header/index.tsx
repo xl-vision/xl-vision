@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, styled, Icon, Tooltip, Dropdown } from '@xl-vision/react';
+import { Button, styled, Icon, Tooltip, Dropdown, Row } from '@xl-vision/react';
 import { DownOutlined, GithubFilled, MenuOutlined } from '@xl-vision/icons';
 import Link from 'next/link';
 import { useConstantFn } from '@xl-vision/hooks';
@@ -15,6 +15,8 @@ import Logo from '../Logo';
 import useSizeBelow from '../../hooks/useSizeBelow';
 
 export const height = 60;
+
+const { Col } = Row;
 
 const Container = styled('div')(() => {
   return {
@@ -168,8 +170,8 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
   return (
     <Container {...props}>
       <HeaderNav>
-        <div className='left'>
-          {isBelowMd && (
+        <Row>
+          <Col column={{ xs: 0, md: 2 }}>
             <Dropdown menus={mobileMenus} trigger='click'>
               <Button
                 aria-label='Menus'
@@ -181,7 +183,9 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
                 }
               />
             </Dropdown>
-          )}
+          </Col>
+        </Row>
+        <div className='left'>
           <Link href='/' passHref={true}>
             <LogoWrapper>
               <Logo />
