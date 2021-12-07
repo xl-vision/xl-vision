@@ -18,10 +18,14 @@ const createBreakpoints = (breakpoints: Breakpoints = {}) => {
     unit = 'px',
   } = breakpoints;
 
+  // 关键点，从小到大排序
+  const points = Object.keys(values).sort((k1, k2) => values[k1] - values[k2]);
+
   return {
     values,
     unit,
     column,
+    points,
   };
 };
 

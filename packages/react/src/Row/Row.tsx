@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { env } from '@xl-vision/utils';
+import { CSSObject } from '@xl-vision/styled-engine';
 import { styled } from '../styles';
 import { ColProps } from './Col';
 import RowContext from './RowContext';
@@ -31,7 +32,46 @@ const RowRoot = styled('div', {
   type: RowProps['type'];
 }>(({ theme, styleProps }) => {
   const { align, justify, type } = styleProps;
-  const { mixins } = theme;
+  const { clsPrefix, mixins, breakpoints } = theme;
+
+  const { column, unit, values, points } = breakpoints;
+
+  const colRootClassName = `.${clsPrefix}-col`;
+
+  const cssObject: CSSObject = {};
+
+  points.forEach((point) => {
+    const value = values[point];
+    const mediaQuery = `@media (min-width: ${value}${unit})`;
+    const queryObject: CSSObject = {};
+
+    cssObject[mediaQuery] = queryObject;
+
+    for (let i = 0; i <= column; i++) {
+      cssObject[`${colRootClassName}-column-${i}`] = {
+        display: i === 0 ? 'none' : undefined,
+        minHeight: 1,
+        width: `${(i / column) * 100}%`,
+      };
+      queryObject[`${colRootClassName}-column-${point}-${i}`] = {
+        display: i === 0 ? 'none' : undefined,
+        minHeight: 1,
+        width: `${(i / column) * 100}%`,
+      };
+      queryObject[`${colRootClassName}-offset-${point}-${i}`] = {
+        marginLeft: `${(i / column) * 100}%`,
+      };
+      queryObject[`${colRootClassName}-push-${point}-${i}`] = {
+        left: `${(i / column) * 100}%`,
+      };
+      queryObject[`${colRootClassName}-pull-${point}-${i}`] = {
+        right: `${(i / column) * 100}%`,
+      };
+      queryObject[`${colRootClassName}-order-${point}-${i}`] = {
+        order: `${(i / column) * 100}%`,
+      };
+    }
+  });
 
   const alignItems =
     align === 'top'
@@ -58,6 +98,7 @@ const RowRoot = styled('div', {
         display: 'none',
       },
     }),
+    ...cssObject,
   };
 });
 
@@ -106,10 +147,7 @@ const Row = React.forwardRef<HTMLDivElement, RowProps>((props, ref) => {
     className,
   );
 
-  const memorizedValue = React.useMemo(
-    () => ({ breakPoints, gutter: computedGutter }),
-    [breakPoints, computedGutter],
-  );
+  const memorizedValue = React.useMemo(() => ({ gutter: computedGutter }), [computedGutter]);
 
   return (
     <RowContext.Provider value={memorizedValue}>

@@ -2,12 +2,12 @@ import { styled, Button } from '@xl-vision/react';
 import React from 'react';
 import Link from 'next/link';
 import { NextPage } from 'next';
+import Head from 'next/head';
 import Logo from '../components/Logo';
 import Header from '../components/Header';
 import { LocalizationContext } from '../components/LocalizationProvider';
 import Sponsorship from '../components/Sponsorship';
 import Footer from '../components/Footer';
-import Head from 'next/head';
 
 const HeaderWrapper = styled(Header)(() => {
   return {};
