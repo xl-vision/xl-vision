@@ -16,8 +16,6 @@ import useSizeBelow from '../../hooks/useSizeBelow';
 
 export const height = 60;
 
-const { Col } = Row;
-
 const Container = styled('div')(() => {
   return {
     position: 'fixed',
@@ -36,29 +34,17 @@ const HeaderNav = styled('header')(({ theme }) => {
   const fontColor = color.getContrastText(background).text.primary;
 
   return {
-    display: 'flex',
-    alignItems: 'center',
     margin: 0,
     height,
     width: '100%',
     padding: '0 16px',
     backgroundColor: alpha(background, 0.72),
     color: fontColor,
-    justifyContent: 'space-between',
     borderBottom: `1px solid ${color.divider}`,
     backdropFilter: 'blur(20px)',
 
     '.xl-button__root': {
       color: fontColor,
-    },
-
-    '.left': {
-      display: 'flex',
-      alignItems: 'center',
-
-      button: {
-        marginRight: 12,
-      },
     },
   };
 });
@@ -171,7 +157,7 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
     <Container {...props}>
       <HeaderNav>
         <Row>
-          <Col column={{ xs: 2, md: 0 }}>
+          <Row.Col column={{ xs: 3, md: 0 }}>
             <Dropdown menus={mobileMenus} trigger='click'>
               <Button
                 aria-label='Menus'
@@ -183,7 +169,7 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
                 }
               />
             </Dropdown>
-          </Col>
+          </Row.Col>
         </Row>
         <div className='left'>
           <Link href='/' passHref={true}>
