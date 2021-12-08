@@ -26,17 +26,13 @@ const displayName = 'Row';
 const RowRoot = styled('div', {
   name: displayName,
   slot: 'Root',
-})<{
-  align: RowProps['align'];
-  justify: RowProps['justify'];
-  type: RowProps['type'];
-}>(({ theme, styleProps }) => {
-  const { align, justify, type } = styleProps;
+})(({ theme }) => {
   const { clsPrefix, mixins, breakpoints } = theme;
 
   const { column, unit, values, points } = breakpoints;
 
   const colRootClassName = `.${clsPrefix}-col`;
+  const rowRootClassName = `.${clsPrefix}-row`;
 
   const cssObject: CSSObject = {};
 
@@ -73,32 +69,42 @@ const RowRoot = styled('div', {
     }
   });
 
-  const alignItems =
-    align === 'top'
-      ? 'flex-start'
-      : align === 'middle'
-      ? 'center'
-      : align === 'bottom'
-      ? 'flex-end'
-      : undefined;
-
-  const justifyContent =
-    justify === 'start' ? 'flex-start' : justify === 'end' ? 'flex-end' : justify;
-
   return {
     position: 'relative',
     boxSizing: 'border-box',
     ...mixins.clearfix,
-    ...(type === 'flex' && {
+    ...cssObject,
+    [`&${rowRootClassName}--flex`]: {
       display: 'flex',
       flexDirection: 'row',
-      justifyContent,
-      alignItems,
       '&::after': {
         display: 'none',
       },
-    }),
-    ...cssObject,
+    },
+    [`&${rowRootClassName}--justify-start`]: {
+      justifyContent: 'flex-start',
+    },
+    [`&${rowRootClassName}--justify-center`]: {
+      justifyContent: 'center',
+    },
+    [`&${rowRootClassName}--justify-end`]: {
+      justifyContent: 'flex-end',
+    },
+    [`&${rowRootClassName}--justify-space-around`]: {
+      justifyContent: 'space-around',
+    },
+    [`&${rowRootClassName}--justify-space-between`]: {
+      justifyContent: 'space-between',
+    },
+    [`&${rowRootClassName}--align-top`]: {
+      alignItems: 'flex-start',
+    },
+    [`&${rowRootClassName}--align-middle`]: {
+      alignItems: 'center',
+    },
+    [`&${rowRootClassName}--align-botton`]: {
+      alignItems: 'flex-end',
+    },
   };
 });
 
@@ -151,17 +157,7 @@ const Row = React.forwardRef<HTMLDivElement, RowProps>((props, ref) => {
 
   return (
     <RowContext.Provider value={memorizedValue}>
-      <RowRoot
-        {...others}
-        style={rowStyle}
-        className={rootClasses}
-        styleProps={{
-          align,
-          justify,
-          type,
-        }}
-        ref={ref}
-      >
+      <RowRoot {...others} style={rowStyle} className={rootClasses} ref={ref}>
         {children}
       </RowRoot>
     </RowContext.Provider>
