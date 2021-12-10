@@ -27,7 +27,7 @@ export default () => {
   return (
     <Dropdown menus={menus} trigger='click'>
       <Wrapper tooltipProps={{ content: 'this is a tooltip' }}>
-        <Button theme='primary'>hover or click</Button>
+        <Button color='primary'>hover or click</Button>
       </Wrapper>
     </Dropdown>
   );

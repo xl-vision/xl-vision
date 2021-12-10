@@ -14,16 +14,16 @@ export default () => {
   return (
     <Wrapper>
       <Button disableRipple={true}>button</Button>
-      <Button variant='text' disableRipple={true} theme='primary'>
+      <Button variant='text' disableRipple={true} color='primary'>
         button
       </Button>
-      <Button disableRipple={true} theme='secondary'>
+      <Button disableRipple={true} color='secondary'>
         button
       </Button>
-      <Button variant='text' disableRipple={true} theme='error'>
+      <Button variant='text' disableRipple={true} color='error'>
         button
       </Button>
-      <Button variant='outlined' disableRipple={true} theme='warning'>
+      <Button variant='outlined' disableRipple={true} color='warning'>
         button
       </Button>
     </Wrapper>

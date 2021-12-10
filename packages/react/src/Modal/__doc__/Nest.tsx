@@ -17,7 +17,7 @@ export default () => {
 
   return (
     <>
-      <Button theme='primary' onClick={() => setVisible1(true)}>
+      <Button color='primary' onClick={() => setVisible1(true)}>
         show
       </Button>
       <Modal visible={visible1} onVisibleChange={setVisible1}>

@@ -34,7 +34,7 @@ export default () => {
   return (
     <div className='wrapper'>
       <Button
-        theme='primary'
+        color='primary'
         onClick={() => {
           setActive(!active);
         }}

@@ -102,7 +102,7 @@ const DemoBox: React.FunctionComponent<DemoBoxProps> = ({ children }) => {
         <ButtonWrapper>
           <Button
             aria-label={isExpand ? 'Expand' : 'Close'}
-            theme='primary'
+            color='primary'
             round={true}
             size='large'
             variant='text'

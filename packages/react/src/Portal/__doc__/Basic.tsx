@@ -39,7 +39,7 @@ export default () => {
   React.useEffect(() => {
     const portal = (
       <Portal getContainer={() => ref.current}>
-        <Button theme='primary' className='content'>
+        <Button color='primary' className='content'>
           点击
         </Button>
       </Portal>
