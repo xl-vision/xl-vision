@@ -285,4 +285,14 @@ describe('Row', () => {
     );
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('自定义标签', () => {
+    const wrapper = render(
+      <Row component='header'>
+        <Row.Col column={5}>hello</Row.Col>
+      </Row>,
+    );
+
+    expect(wrapper.is('header')).toBe(true);
+  });
 });
