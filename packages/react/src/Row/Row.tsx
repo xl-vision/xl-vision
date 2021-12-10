@@ -19,7 +19,7 @@ export interface RowProps extends React.HTMLAttributes<HTMLDivElement> {
   gutter?: number | Partial<Record<string, number>>;
   justify?: RowJustify;
   type?: 'flex';
-  component?: string;
+  component?: keyof JSX.IntrinsicElements | React.ComponentType;
 }
 
 const displayName = 'Row';
@@ -189,7 +189,7 @@ if (!env.isProduction) {
     ]).isRequired,
     style: PropTypes.object,
     className: PropTypes.string,
-    component: PropTypes.string,
+    component: PropTypes.any,
   };
 }
 
