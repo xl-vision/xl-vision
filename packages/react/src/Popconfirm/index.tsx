@@ -174,7 +174,7 @@ const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
         <Button
           style={{ minWidth: 0 }}
           size='small'
-          theme='primary'
+          color='primary'
           variant='text'
           {...cancelButtonProps}
           onClick={handleCancel}
@@ -185,7 +185,7 @@ const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
         <Button
           style={{ minWidth: 0 }}
           size='small'
-          theme='primary'
+          color='primary'
           variant='text'
           disableElevation={true}
           {...confirmButtonProps}

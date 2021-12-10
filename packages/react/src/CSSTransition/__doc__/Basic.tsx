@@ -28,7 +28,7 @@ export default () => {
 
   return (
     <div>
-      <Button theme='primary' onClick={() => setShow(!show)}>
+      <Button color='primary' onClick={() => setShow(!show)}>
         Click
       </Button>
       <CSSTransition in={show} transitionClasses='slide' mountOnEnter={true} unmountOnLeave={true}>

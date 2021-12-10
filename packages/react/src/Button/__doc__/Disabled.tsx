@@ -21,19 +21,19 @@ export default () => {
   return (
     <Wrapper>
       <Button disabled={true}>button</Button>
-      <Button disabled={true} theme='primary'>
+      <Button disabled={true} color='primary'>
         button
       </Button>
-      <Button disabled={true} theme='secondary'>
+      <Button disabled={true} color='secondary'>
         button
       </Button>
-      <Button disabled={true} theme='error'>
+      <Button disabled={true} color='error'>
         button
       </Button>
-      <Button disabled={true} round={true} theme='warning'>
+      <Button disabled={true} round={true} color='warning'>
         button
       </Button>
-      <Button disabled={true} theme='primary' prefixIcon={IconWrapper}>
+      <Button disabled={true} color='primary' prefixIcon={IconWrapper}>
         button
       </Button>
     </Wrapper>

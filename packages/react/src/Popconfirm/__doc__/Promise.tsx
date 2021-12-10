@@ -27,7 +27,7 @@ export default () => {
         onConfirm={handleConfirm}
         confirmButtonProps={{ loading: confirmLoading }}
       >
-        <Button theme='primary' onClick={() => setVisible(true)}>
+        <Button color='primary' onClick={() => setVisible(true)}>
           button
         </Button>
       </Popconfirm>

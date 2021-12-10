@@ -46,7 +46,7 @@ const Code: React.FunctionComponent<CodeProps> = (props) => {
         <Button
           variant='text'
           size='small'
-          theme={codeType === CodeType.TYPESCRIPT ? 'primary' : 'default'}
+          color={codeType === CodeType.TYPESCRIPT ? 'primary' : 'default'}
           onClick={() => setCodeType(CodeType.TYPESCRIPT)}
         >
           Typescript
@@ -54,7 +54,7 @@ const Code: React.FunctionComponent<CodeProps> = (props) => {
         <Button
           variant='text'
           size='small'
-          theme={codeType === CodeType.JAVASCRIPT ? 'primary' : 'default'}
+          color={codeType === CodeType.JAVASCRIPT ? 'primary' : 'default'}
           onClick={() => setCodeType(CodeType.JAVASCRIPT)}
         >
           Javascript

@@ -22,54 +22,54 @@ export default () => {
     <div>
       <Wrapper>
         <Button>button</Button>
-        <Button theme='primary'>button</Button>
-        <Button theme='secondary'>button</Button>
-        <Button theme='error'>button</Button>
-        <Button round={true} theme='warning'>
+        <Button color='primary'>button</Button>
+        <Button color='secondary'>button</Button>
+        <Button color='error'>button</Button>
+        <Button round={true} color='warning'>
           button
         </Button>
-        <Button theme='primary' prefixIcon={IconWrapper}>
+        <Button color='primary' prefixIcon={IconWrapper}>
           button
         </Button>
-        <Button theme='primary' prefixIcon={IconWrapper} round={true} />
+        <Button color='primary' prefixIcon={IconWrapper} round={true} />
       </Wrapper>
       <Wrapper>
         <Button variant='text'>button</Button>
-        <Button variant='text' theme='primary'>
+        <Button variant='text' color='primary'>
           button
         </Button>
-        <Button variant='text' theme='secondary'>
+        <Button variant='text' color='secondary'>
           button
         </Button>
-        <Button variant='text' theme='error'>
+        <Button variant='text' color='error'>
           button
         </Button>
-        <Button round={true} variant='text' theme='warning'>
+        <Button round={true} variant='text' color='warning'>
           button
         </Button>
-        <Button variant='text' theme='primary' prefixIcon={IconWrapper}>
+        <Button variant='text' color='primary' prefixIcon={IconWrapper}>
           button
         </Button>
-        <Button theme='primary' prefixIcon={IconWrapper} round={true} />
+        <Button color='primary' prefixIcon={IconWrapper} round={true} />
       </Wrapper>
       <Wrapper>
         <Button variant='outlined'>button</Button>
-        <Button variant='outlined' theme='primary'>
+        <Button variant='outlined' color='primary'>
           button
         </Button>
-        <Button variant='outlined' theme='secondary'>
+        <Button variant='outlined' color='secondary'>
           button
         </Button>
-        <Button variant='outlined' theme='error'>
+        <Button variant='outlined' color='error'>
           button
         </Button>
-        <Button round={true} variant='outlined' theme='warning'>
+        <Button round={true} variant='outlined' color='warning'>
           button
         </Button>
-        <Button variant='outlined' theme='primary' prefixIcon={IconWrapper}>
+        <Button variant='outlined' color='primary' prefixIcon={IconWrapper}>
           button
         </Button>
-        <Button theme='primary' prefixIcon={IconWrapper} round={true} />
+        <Button color='primary' prefixIcon={IconWrapper} round={true} />
       </Wrapper>
     </div>
   );

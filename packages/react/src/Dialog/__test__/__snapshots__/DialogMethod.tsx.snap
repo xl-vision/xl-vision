@@ -329,7 +329,7 @@ exports[`DialogMethod test confirm 1`] = `
       class="c10"
     >
       <button
-        class="c11 xl-base-button c12 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-text"
+        class="c11 xl-base-button c12 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-text"
       >
         <span
           class="c13 xl-base-button__inner"
@@ -345,7 +345,7 @@ exports[`DialogMethod test confirm 1`] = `
         />
       </button>
       <button
-        class="c11 xl-base-button c12 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-text"
+        class="c11 xl-base-button c12 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-text"
       >
         <span
           class="c13 xl-base-button__inner"
@@ -694,7 +694,7 @@ exports[`DialogMethod test error 1`] = `
       class="c10"
     >
       <button
-        class="c11 xl-base-button c12 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-text"
+        class="c11 xl-base-button c12 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-text"
       >
         <span
           class="c13 xl-base-button__inner"
@@ -1043,7 +1043,7 @@ exports[`DialogMethod test info 1`] = `
       class="c10"
     >
       <button
-        class="c11 xl-base-button c12 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-text"
+        class="c11 xl-base-button c12 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-text"
       >
         <span
           class="c13 xl-base-button__inner"
@@ -1348,7 +1348,7 @@ exports[`DialogMethod test method 1`] = `
       class="c7"
     >
       <button
-        class="c8 xl-base-button c9 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-text"
+        class="c8 xl-base-button c9 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-text"
       >
         <span
           class="c10 xl-base-button__inner"
@@ -1364,7 +1364,7 @@ exports[`DialogMethod test method 1`] = `
         />
       </button>
       <button
-        class="c8 xl-base-button c9 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-text"
+        class="c8 xl-base-button c9 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-text"
       >
         <span
           class="c10 xl-base-button__inner"
@@ -1713,7 +1713,7 @@ exports[`DialogMethod test success 1`] = `
       class="c10"
     >
       <button
-        class="c11 xl-base-button c12 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-text"
+        class="c11 xl-base-button c12 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-text"
       >
         <span
           class="c13 xl-base-button__inner"
@@ -2062,7 +2062,7 @@ exports[`DialogMethod test warning 1`] = `
       class="c10"
     >
       <button
-        class="c11 xl-base-button c12 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-text"
+        class="c11 xl-base-button c12 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-text"
       >
         <span
           class="c13 xl-base-button__inner"

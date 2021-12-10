@@ -15,7 +15,7 @@ export default () => {
 
   return (
     <Dropdown menus={menus}>
-      <Button theme='primary'>button</Button>
+      <Button color='primary'>button</Button>
     </Dropdown>
   );
 };
