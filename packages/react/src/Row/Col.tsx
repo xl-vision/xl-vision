@@ -1,4 +1,3 @@
-import { CSSObject } from '@xl-vision/styled-engine';
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
@@ -24,126 +23,22 @@ const displayName = 'Col';
 const ColRoot = styled('div', {
   name: displayName,
   slot: 'Root',
-})<{
-  column?: number;
-  offset?: number;
-  push?: number;
-  pull?: number;
-  order?: number;
-}>(({ theme, styleProps }) => {
-  const { column, offset, push, pull, order } = styleProps;
-  const { breakpoints } = theme;
-
-  const columnStyle: CSSObject | boolean = column !== undefined && {
-    display: column === 0 ? 'none' : undefined,
-    minHeight: 1,
-    width: `${(100 * column) / breakpoints.column}%`,
-  };
-
-  const offsetStyle: CSSObject | boolean = offset !== undefined && {
-    marginLeft: `${(100 * offset) / breakpoints.column}%`,
-  };
-
-  const pushStyle: CSSObject | boolean = push !== undefined && {
-    left: `${(100 * push) / breakpoints.column}%`,
-  };
-
-  const pullStyle: CSSObject | boolean = pull !== undefined && {
-    right: `${(100 * pull) / breakpoints.column}%`,
-  };
-
-  const orderStyle: CSSObject | boolean = order !== undefined && {
-    order,
-  };
-
+})(() => {
   return {
     float: 'left',
     boxSizing: 'border-box',
     display: 'block',
     position: 'relative',
-    ...columnStyle,
-    ...offsetStyle,
-    ...pushStyle,
-    ...pullStyle,
-    ...orderStyle,
   };
 });
 
 const Col = React.forwardRef<HTMLDivElement, ColProps>((props, ref) => {
   const { children, className, offset, order, pull, push, column, style, ...others } = props;
 
-  const { breakPoints, gutter } = React.useContext(RowContext);
+  const { gutter } = React.useContext(RowContext);
   const { clsPrefix } = useTheme();
 
-  const computedColumn = React.useMemo(() => {
-    if (typeof column === 'number') {
-      return column;
-    }
-    if (typeof column === 'object') {
-      for (let i = 0; i < breakPoints.length; i++) {
-        const [breakPoint, match] = breakPoints[i];
-        if (match && column[breakPoint] !== undefined) {
-          return column[breakPoint] as number;
-        }
-      }
-    }
-  }, [column, breakPoints]);
-
-  const computedOffset = React.useMemo(() => {
-    if (typeof offset === 'number') {
-      return offset;
-    }
-    if (typeof offset === 'object') {
-      for (let i = 0; i < breakPoints.length; i++) {
-        const [breakPoint, match] = breakPoints[i];
-        if (match && offset[breakPoint] !== undefined) {
-          return offset[breakPoint] as number;
-        }
-      }
-    }
-  }, [offset, breakPoints]);
-
-  const computedPull = React.useMemo(() => {
-    if (typeof pull === 'number') {
-      return pull;
-    }
-    if (typeof pull === 'object') {
-      for (let i = 0; i < breakPoints.length; i++) {
-        const [breakPoint, match] = breakPoints[i];
-        if (match && pull[breakPoint] !== undefined) {
-          return pull[breakPoint] as number;
-        }
-      }
-    }
-  }, [pull, breakPoints]);
-
-  const computedPush = React.useMemo(() => {
-    if (typeof push === 'number') {
-      return push;
-    }
-    if (typeof push === 'object') {
-      for (let i = 0; i < breakPoints.length; i++) {
-        const [breakPoint, match] = breakPoints[i];
-        if (match && push[breakPoint] !== undefined) {
-          return push[breakPoint] as number;
-        }
-      }
-    }
-  }, [push, breakPoints]);
-
-  const computedOrder = React.useMemo(() => {
-    if (typeof order === 'number') {
-      return order;
-    }
-    if (typeof order === 'object') {
-      for (let i = 0; i < breakPoints.length; i++) {
-        const [breakPoint, match] = breakPoints[i];
-        if (match && order[breakPoint] !== undefined) {
-          return order[breakPoint] as number;
-        }
-      }
-    }
-  }, [order, breakPoints]);
+  const rootClassName = `${clsPrefix}-col`;
 
   const colStyle =
     gutter > 0
@@ -154,34 +49,20 @@ const Col = React.forwardRef<HTMLDivElement, ColProps>((props, ref) => {
         }
       : style;
 
-  const rootClassName = `${clsPrefix}-col`;
-
   const rootClasses = clsx(
     rootClassName,
-    {
-      [`${rootClassName}--column-${computedColumn}`]: computedColumn !== undefined,
-      [`${rootClassName}--offset-${computedOffset}`]: computedOffset !== undefined,
-      [`${rootClassName}--order-${computedOrder}`]: computedOrder !== undefined,
-      [`${rootClassName}--pull-${computedPull}`]: computedPull !== undefined,
-      [`${rootClassName}--push-${computedPush}`]: computedPush !== undefined,
-    },
+    [
+      getClasses(`${rootClassName}-column`, column),
+      getClasses(`${rootClassName}-offset`, offset),
+      getClasses(`${rootClassName}-order`, order),
+      getClasses(`${rootClassName}-pull`, pull),
+      getClasses(`${rootClassName}-push`, push),
+    ],
     className,
   );
 
   return (
-    <ColRoot
-      {...others}
-      style={colStyle}
-      className={rootClasses}
-      styleProps={{
-        column: computedColumn,
-        offset: computedOffset,
-        push: computedPush,
-        pull: computedPull,
-        order: computedOrder,
-      }}
-      ref={ref}
-    >
+    <ColRoot {...others} style={colStyle} className={rootClasses} ref={ref}>
       {children}
     </ColRoot>
   );
@@ -204,3 +85,17 @@ if (!env.isProduction) {
 }
 
 export default Col;
+
+const getClasses = (baseClassName: string, value?: ColSpanType): string => {
+  if (typeof value === 'number') {
+    return `${baseClassName}-${value}`;
+  }
+  if (typeof value === 'object') {
+    const classes: Array<string> = [];
+    Object.keys(value).forEach((key) => {
+      classes.push(`${baseClassName}-${key}-${value[key]}`);
+    });
+    return classes.join(' ');
+  }
+  return '';
+};

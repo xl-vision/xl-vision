@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { env } from '@xl-vision/utils';
+import { CSSObject } from '@xl-vision/styled-engine';
 import { styled } from '../styles';
 import { ColProps } from './Col';
 import RowContext from './RowContext';
@@ -18,6 +19,7 @@ export interface RowProps extends React.HTMLAttributes<HTMLDivElement> {
   gutter?: number | Partial<Record<string, number>>;
   justify?: RowJustify;
   type?: 'flex';
+  component?: keyof JSX.IntrinsicElements | React.ComponentType;
 }
 
 const displayName = 'Row';
@@ -25,44 +27,100 @@ const displayName = 'Row';
 const RowRoot = styled('div', {
   name: displayName,
   slot: 'Root',
-})<{
-  align: RowProps['align'];
-  justify: RowProps['justify'];
-  type: RowProps['type'];
-}>(({ theme, styleProps }) => {
-  const { align, justify, type } = styleProps;
-  const { mixins } = theme;
+})(({ theme }) => {
+  const { clsPrefix, mixins, breakpoints } = theme;
 
-  const alignItems =
-    align === 'top'
-      ? 'flex-start'
-      : align === 'middle'
-      ? 'center'
-      : align === 'bottom'
-      ? 'flex-end'
-      : undefined;
+  const { column, unit, values, points } = breakpoints;
 
-  const justifyContent =
-    justify === 'start' ? 'flex-start' : justify === 'end' ? 'flex-end' : justify;
+  const colRootClassName = `.${clsPrefix}-col`;
+  const rowRootClassName = `.${clsPrefix}-row`;
+
+  const cssObject: CSSObject = {};
+
+  points.forEach((point) => {
+    const value = values[point];
+    const mediaQuery = `@media (min-width: ${value}${unit})`;
+    const queryObject: CSSObject = {};
+
+    cssObject[mediaQuery] = queryObject;
+
+    for (let i = 0; i <= column; i++) {
+      cssObject[`${colRootClassName}-column-${i}`] = {
+        display: i === 0 ? 'none' : 'block',
+        minHeight: 1,
+        width: `${(i / column) * 100}%`,
+      };
+      queryObject[`${colRootClassName}-column-${point}-${i}`] = {
+        display: i === 0 ? 'none' : 'block',
+        minHeight: 1,
+        width: `${(i / column) * 100}%`,
+      };
+      queryObject[`${colRootClassName}-offset-${point}-${i}`] = {
+        marginLeft: `${(i / column) * 100}%`,
+      };
+      queryObject[`${colRootClassName}-push-${point}-${i}`] = {
+        left: `${(i / column) * 100}%`,
+      };
+      queryObject[`${colRootClassName}-pull-${point}-${i}`] = {
+        right: `${(i / column) * 100}%`,
+      };
+      queryObject[`${colRootClassName}-order-${point}-${i}`] = {
+        order: `${(i / column) * 100}%`,
+      };
+    }
+  });
 
   return {
     position: 'relative',
     boxSizing: 'border-box',
     ...mixins.clearfix,
-    ...(type === 'flex' && {
+    ...cssObject,
+    [`&${rowRootClassName}--flex`]: {
       display: 'flex',
       flexDirection: 'row',
-      justifyContent,
-      alignItems,
       '&::after': {
         display: 'none',
       },
-    }),
+    },
+    [`&${rowRootClassName}--justify-start`]: {
+      justifyContent: 'flex-start',
+    },
+    [`&${rowRootClassName}--justify-center`]: {
+      justifyContent: 'center',
+    },
+    [`&${rowRootClassName}--justify-end`]: {
+      justifyContent: 'flex-end',
+    },
+    [`&${rowRootClassName}--justify-space-around`]: {
+      justifyContent: 'space-around',
+    },
+    [`&${rowRootClassName}--justify-space-between`]: {
+      justifyContent: 'space-between',
+    },
+    [`&${rowRootClassName}--align-top`]: {
+      alignItems: 'flex-start',
+    },
+    [`&${rowRootClassName}--align-middle`]: {
+      alignItems: 'center',
+    },
+    [`&${rowRootClassName}--align-botton`]: {
+      alignItems: 'flex-end',
+    },
   };
 });
 
 const Row = React.forwardRef<HTMLDivElement, RowProps>((props, ref) => {
-  const { align, justify, children, gutter, type, style, className, ...others } = props;
+  const {
+    align,
+    justify,
+    children,
+    gutter,
+    type,
+    style,
+    className,
+    component = 'div',
+    ...others
+  } = props;
 
   const { clsPrefix } = useTheme();
 
@@ -106,24 +164,11 @@ const Row = React.forwardRef<HTMLDivElement, RowProps>((props, ref) => {
     className,
   );
 
-  const memorizedValue = React.useMemo(
-    () => ({ breakPoints, gutter: computedGutter }),
-    [breakPoints, computedGutter],
-  );
+  const memorizedValue = React.useMemo(() => ({ gutter: computedGutter }), [computedGutter]);
 
   return (
     <RowContext.Provider value={memorizedValue}>
-      <RowRoot
-        {...others}
-        style={rowStyle}
-        className={rootClasses}
-        styleProps={{
-          align,
-          justify,
-          type,
-        }}
-        ref={ref}
-      >
+      <RowRoot {...others} style={rowStyle} className={rootClasses} ref={ref} as={component}>
         {children}
       </RowRoot>
     </RowContext.Provider>
@@ -144,6 +189,7 @@ if (!env.isProduction) {
     ]).isRequired,
     style: PropTypes.object,
     className: PropTypes.string,
+    component: PropTypes.any,
   };
 }
 
