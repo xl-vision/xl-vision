@@ -10,7 +10,10 @@ import BaiduAnalytics from '../components/BaiduAnalytics';
 import GoogleAnalytics from '../components/GoogleAnalytics';
 
 const GlobalStyle = createGlobalStyles(({ theme }) => {
-  const { color } = theme;
+  const { color, breakpoints } = theme;
+
+  const { values, unit } = breakpoints;
+
   return {
     'html,body': {
       width: '100%',
@@ -30,6 +33,26 @@ const GlobalStyle = createGlobalStyles(({ theme }) => {
     '::-webkit-scrollbar-thumb': {
       backgroundColor: color.grey.A100,
       borderRadius: 5,
+    },
+    '.sm-down': {
+      [`@media (min-width: ${values.sm + 1}${unit})`]: {
+        display: 'none',
+      },
+    },
+    '.sm-up': {
+      [`@media (max-width: ${values.sm}${unit})`]: {
+        display: 'none',
+      },
+    },
+    '.md-down': {
+      [`@media (min-width: ${values.md + 1}${unit})`]: {
+        display: 'none',
+      },
+    },
+    '.md-up': {
+      [`@media (max-width: ${values.md}${unit})`]: {
+        display: 'none',
+      },
     },
   };
 });
