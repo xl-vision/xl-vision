@@ -14,6 +14,12 @@ const HeaderWrapper = styled(Header)(() => {
 });
 
 const Main = styled('div')(({ theme }) => {
+  const { breakpoints } = theme;
+
+  const { values, unit } = breakpoints;
+
+  const mobileWidth = `${values.sm}${unit}`;
+
   return {
     position: 'relative',
     minHeight: '100%',
@@ -47,7 +53,7 @@ const Main = styled('div')(({ theme }) => {
         margin: '0 16px',
       },
     },
-    '@media(max-width: 576px)': {
+    [`@media(max-width: ${mobileWidth})`]: {
       '.logo': {
         height: 50,
         svg: {

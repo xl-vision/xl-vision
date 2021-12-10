@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, styled, Icon, Tooltip, Dropdown, Row } from '@xl-vision/react';
+import { Button, styled, Icon, Tooltip, Dropdown } from '@xl-vision/react';
 import { DownOutlined, GithubFilled, MenuOutlined } from '@xl-vision/icons';
 import Link from 'next/link';
 import { useConstantFn } from '@xl-vision/hooks';
@@ -12,7 +12,6 @@ import Translate from './Translate';
 import { ThemeContext } from '../ThemeProvider';
 import { useLocale } from '../LocalizationProvider';
 import Logo from '../Logo';
-import useSizeBelow from '../../hooks/useSizeBelow';
 
 export const height = 60;
 
@@ -34,6 +33,9 @@ const HeaderNav = styled('header')(({ theme }) => {
   const fontColor = color.getContrastText(background).text.primary;
 
   return {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     margin: 0,
     height,
     width: '100%',
@@ -42,6 +44,16 @@ const HeaderNav = styled('header')(({ theme }) => {
     color: fontColor,
     borderBottom: `1px solid ${color.divider}`,
     backdropFilter: 'blur(20px)',
+
+    '.left': {
+      display: 'flex',
+      alignItems: 'center',
+    },
+
+    '.right': {
+      display: 'flex',
+      alignItems: 'center',
+    },
 
     '.xl-button__root': {
       color: fontColor,
@@ -74,9 +86,7 @@ const Menus = styled('ul')(({ theme }) => {
     listStyle: 'none',
     display: 'flex',
     alignItems: 'center',
-    flex: 1,
-    padding: 0,
-    marginLeft: 100,
+    paddingRight: 16,
     li: {
       a: {
         fontSize: 14,
@@ -118,8 +128,6 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
   const { supportLocales, locale } = useLocale();
   const router = useRouter();
 
-  const isBelowMd = useSizeBelow('md');
-
   const { isDark, setDark } = theme;
 
   const handleTheme = React.useCallback(() => {
@@ -156,31 +164,28 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
   return (
     <Container {...props}>
       <HeaderNav>
-        <Row>
-          <Row.Col column={{ xs: 3, md: 0 }}>
-            <Dropdown menus={mobileMenus} trigger='click'>
-              <Button
-                aria-label='Menus'
-                variant='text'
-                prefixIcon={
-                  <Icon>
-                    <MenuOutlined />
-                  </Icon>
-                }
-              />
-            </Dropdown>
-          </Row.Col>
-        </Row>
         <div className='left'>
+          <Dropdown menus={mobileMenus} trigger='click'>
+            <Button
+              className='sm-down'
+              aria-label='Menus'
+              variant='text'
+              prefixIcon={
+                <Icon>
+                  <MenuOutlined />
+                </Icon>
+              }
+            />
+          </Dropdown>
           <Link href='/' passHref={true}>
             <LogoWrapper>
               <Logo />
-              {!isBelowMd && <span>xl vision</span>}
+              <span>xl vision</span>
             </LogoWrapper>
           </Link>
         </div>
-        {!isBelowMd && (
-          <Menus>
+        <div className='right'>
+          <Menus className='sm-up'>
             <li>
               <Link href='/components'>
                 <a className={setActiveClassName('/components')}>{locale.header.component}</a>
@@ -192,8 +197,6 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
               </Link>
             </li>
           </Menus>
-        )}
-        <div>
           <Dropdown
             menus={
               <>
@@ -219,7 +222,7 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
                 </Icon>
               }
             >
-              {!isBelowMd && locale.name}
+              <span className='sm-up'>{locale.name}</span>
             </Button>
           </Dropdown>
           <Tooltip content={locale.header.themeTooltip} placement='bottom' showDelay={1500}>

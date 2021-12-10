@@ -19,6 +19,7 @@ export interface RowProps extends React.HTMLAttributes<HTMLDivElement> {
   gutter?: number | Partial<Record<string, number>>;
   justify?: RowJustify;
   type?: 'flex';
+  component?: string;
 }
 
 const displayName = 'Row';
@@ -45,12 +46,12 @@ const RowRoot = styled('div', {
 
     for (let i = 0; i <= column; i++) {
       cssObject[`${colRootClassName}-column-${i}`] = {
-        display: i === 0 ? 'none' : undefined,
+        display: i === 0 ? 'none' : 'block',
         minHeight: 1,
         width: `${(i / column) * 100}%`,
       };
       queryObject[`${colRootClassName}-column-${point}-${i}`] = {
-        display: i === 0 ? 'none' : undefined,
+        display: i === 0 ? 'none' : 'block',
         minHeight: 1,
         width: `${(i / column) * 100}%`,
       };
@@ -109,7 +110,17 @@ const RowRoot = styled('div', {
 });
 
 const Row = React.forwardRef<HTMLDivElement, RowProps>((props, ref) => {
-  const { align, justify, children, gutter, type, style, className, ...others } = props;
+  const {
+    align,
+    justify,
+    children,
+    gutter,
+    type,
+    style,
+    className,
+    component = 'div',
+    ...others
+  } = props;
 
   const { clsPrefix } = useTheme();
 
@@ -157,7 +168,7 @@ const Row = React.forwardRef<HTMLDivElement, RowProps>((props, ref) => {
 
   return (
     <RowContext.Provider value={memorizedValue}>
-      <RowRoot {...others} style={rowStyle} className={rootClasses} ref={ref}>
+      <RowRoot {...others} style={rowStyle} className={rootClasses} ref={ref} as={component}>
         {children}
       </RowRoot>
     </RowContext.Provider>
@@ -178,6 +189,7 @@ if (!env.isProduction) {
     ]).isRequired,
     style: PropTypes.object,
     className: PropTypes.string,
+    component: PropTypes.string,
   };
 }
 
