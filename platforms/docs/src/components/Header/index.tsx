@@ -12,7 +12,6 @@ import Translate from './Translate';
 import { ThemeContext } from '../ThemeProvider';
 import { useLocale } from '../LocalizationProvider';
 import Logo from '../Logo';
-import useSizeBelow from '../../hooks/useSizeBelow';
 
 export const height = 60;
 
@@ -36,27 +35,28 @@ const HeaderNav = styled('header')(({ theme }) => {
   return {
     display: 'flex',
     alignItems: 'center',
+    justifyContent: 'space-between',
     margin: 0,
     height,
     width: '100%',
     padding: '0 16px',
     backgroundColor: alpha(background, 0.72),
     color: fontColor,
-    justifyContent: 'space-between',
     borderBottom: `1px solid ${color.divider}`,
     backdropFilter: 'blur(20px)',
-
-    '.xl-button__root': {
-      color: fontColor,
-    },
 
     '.left': {
       display: 'flex',
       alignItems: 'center',
+    },
 
-      button: {
-        marginRight: 12,
-      },
+    '.right': {
+      display: 'flex',
+      alignItems: 'center',
+    },
+
+    '.xl-button__root': {
+      color: fontColor,
     },
   };
 });
@@ -86,9 +86,7 @@ const Menus = styled('ul')(({ theme }) => {
     listStyle: 'none',
     display: 'flex',
     alignItems: 'center',
-    flex: 1,
-    padding: 0,
-    marginLeft: 100,
+    paddingRight: 16,
     li: {
       a: {
         fontSize: 14,
@@ -130,8 +128,6 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
   const { supportLocales, locale } = useLocale();
   const router = useRouter();
 
-  const isBelowMd = useSizeBelow('md');
-
   const { isDark, setDark } = theme;
 
   const handleTheme = React.useCallback(() => {
@@ -169,28 +165,27 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
     <Container {...props}>
       <HeaderNav>
         <div className='left'>
-          {isBelowMd && (
-            <Dropdown menus={mobileMenus} trigger='click'>
-              <Button
-                aria-label='Menus'
-                variant='text'
-                prefixIcon={
-                  <Icon>
-                    <MenuOutlined />
-                  </Icon>
-                }
-              />
-            </Dropdown>
-          )}
+          <Dropdown menus={mobileMenus} trigger='click'>
+            <Button
+              className='sm-down'
+              aria-label='Menus'
+              variant='text'
+              prefixIcon={
+                <Icon>
+                  <MenuOutlined />
+                </Icon>
+              }
+            />
+          </Dropdown>
           <Link href='/' passHref={true}>
             <LogoWrapper>
               <Logo />
-              {!isBelowMd && <span>xl vision</span>}
+              <span>xl vision</span>
             </LogoWrapper>
           </Link>
         </div>
-        {!isBelowMd && (
-          <Menus>
+        <div className='right'>
+          <Menus className='sm-up'>
             <li>
               <Link href='/components'>
                 <a className={setActiveClassName('/components')}>{locale.header.component}</a>
@@ -202,8 +197,6 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
               </Link>
             </li>
           </Menus>
-        )}
-        <div>
           <Dropdown
             menus={
               <>
@@ -229,7 +222,7 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
                 </Icon>
               }
             >
-              {!isBelowMd && locale.name}
+              <span className='sm-up'>{locale.name}</span>
             </Button>
           </Dropdown>
           <Tooltip content={locale.header.themeTooltip} placement='bottom' showDelay={1500}>

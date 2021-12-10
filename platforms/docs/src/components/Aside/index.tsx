@@ -103,7 +103,7 @@ const Wrapper = styled('div')(() => {
   };
 });
 
-export type AsideProps = {
+export type AsideProps = React.HTMLAttributes<HTMLDivElement> & {
   routeName: keyof Route;
 };
 

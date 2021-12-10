@@ -4,17 +4,24 @@ import Aside from '../components/Aside';
 import Footer from '../components/Footer';
 import Header, { height } from '../components/Header';
 import { useLocale } from '../components/LocalizationProvider';
-import useSizeBelow from '../hooks/useSizeBelow';
 import { Layout } from './Layout';
 
 const asideWidth = 280;
 
 const AsideWrapper = styled(Aside)(({ theme }) => {
+  const { breakpoints } = theme;
+
+  const { values, unit } = breakpoints;
+
+  const mobileWidth = `${values.md}${unit}`;
+
   return {
     // '@media(max-width: 768px)': {
     //   borderBottom: `1px solid ${theme.color.divider}`,
     // },
-    '@media(min-width: 768px)': {
+    width: '100%',
+    backgroundColor: theme.color.background.paper,
+    [`@media(min-width: ${mobileWidth})`]: {
       position: 'fixed',
       top: height,
       bottom: 0,
@@ -28,12 +35,21 @@ const AsideWrapper = styled(Aside)(({ theme }) => {
   };
 });
 
-const MainWrapper = styled('div')(() => {
+const MainWrapper = styled('div')(({ theme }) => {
+  const { breakpoints } = theme;
+
+  const { values, unit } = breakpoints;
+
+  const mobileWidth = `${values.md}${unit}`;
+
   return {
     // padding: '0 16px',
-    '@media(min-width: 768px)': {
+    marginTop: height,
+    backgroundColor: theme.color.background.paper,
+    [`@media(min-width: ${mobileWidth})`]: {
+      marginTop: 0,
       position: 'fixed',
-      top: 60,
+      top: height,
       bottom: 0,
       left: asideWidth,
       right: 0,
@@ -54,13 +70,12 @@ const Root = styled('div')(() => {
   };
 });
 
-const MobileMenu = styled('div')(({ theme }) => {
+const MobileMenu = styled('div')(() => {
   return {
     position: 'fixed',
     zIndex: 1000,
     top: height,
     width: '100%',
-    backgroundColor: theme.color.background.paper,
     button: {
       position: 'absolute',
       top: 10,
@@ -76,8 +91,6 @@ const ComponentLayout: Layout = ({ children }) => {
   const { locale } = useLocale();
 
   const [asideVisible, setAsideVisible] = React.useState(false);
-
-  const isBelowMd = useSizeBelow('md');
 
   const handleAsideVisible = React.useCallback((e: React.MouseEvent) => {
     setAsideVisible((prev) => !prev);
@@ -96,22 +109,17 @@ const ComponentLayout: Layout = ({ children }) => {
   }, []);
 
   return (
-    <Root style={{ marginTop: isBelowMd ? height : 0 }}>
+    <Root>
       <Header />
-      {isBelowMd ? (
-        <>
-          <MobileMenu>
-            <Button onClick={handleAsideVisible} theme='primary'>
-              {locale.layout.component.mobileAsideButton}
-            </Button>
-            <CollapseTransition in={asideVisible} transitionClasses='aside'>
-              <AsideWrapper routeName='components' />
-            </CollapseTransition>
-          </MobileMenu>
-        </>
-      ) : (
-        <AsideWrapper routeName='components' />
-      )}
+      <MobileMenu className='md-down'>
+        <Button onClick={handleAsideVisible} theme='primary'>
+          {locale.layout.component.mobileAsideButton}
+        </Button>
+        <CollapseTransition in={asideVisible} transitionClasses='aside'>
+          <AsideWrapper routeName='components' />
+        </CollapseTransition>
+      </MobileMenu>
+      <AsideWrapper className='md-up' routeName='components' />
       <MainWrapper>
         {children}
         <Footer />
