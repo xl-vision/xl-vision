@@ -1,4 +1,5 @@
 import { styled, CollapseTransition, Button } from '@xl-vision/react';
+import { useRouter } from 'next/router';
 import React from 'react';
 import Aside from '../components/Aside';
 import Footer from '../components/Footer';
@@ -56,6 +57,7 @@ const AsideWrapper = styled(Aside)(({ theme }) => {
       bottom: 0,
       width: asideWidth,
       borderRight: `1px solid ${theme.color.divider}`,
+      overflowY: 'hidden',
       ':hover': {
         overflowY: 'auto',
       },
@@ -89,12 +91,21 @@ const MainWrapper = styled('div')(({ theme }) => {
 const ComponentLayout: Layout = ({ children }) => {
   const { locale } = useLocale();
 
+  const asideRef = React.useRef<HTMLDivElement>(null);
+
+  const { pathname } = useRouter();
+
   const [asideVisible, setAsideVisible] = React.useState(false);
 
   const handleAsideVisible = React.useCallback((e: React.MouseEvent) => {
     setAsideVisible((prev) => !prev);
     e.stopPropagation();
   }, []);
+
+  // 滚回顶部
+  React.useEffect(() => {
+    asideRef.current?.scrollTo({ top: 0, left: 0 });
+  }, [pathname]);
 
   React.useEffect(() => {
     // eslint-disable-next-line unicorn/consistent-function-scoping
@@ -122,7 +133,7 @@ const ComponentLayout: Layout = ({ children }) => {
         </CollapseTransition>
       </div>
       <AsideWrapper className='md-up' routeName='components' />
-      <MainWrapper style={{ overflowY: asideVisible ? 'hidden' : undefined }}>
+      <MainWrapper ref={asideRef} style={{ overflowY: asideVisible ? 'hidden' : undefined }}>
         {children}
         <Footer />
       </MainWrapper>
