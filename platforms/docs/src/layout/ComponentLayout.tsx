@@ -13,12 +13,14 @@ const AsideWrapper = styled(Aside)(({ theme }) => {
 
   const { values, unit } = breakpoints;
 
-  const mobileWidth = `${values.sm}${unit}`;
+  const mobileWidth = `${values.md}${unit}`;
 
   return {
     // '@media(max-width: 768px)': {
     //   borderBottom: `1px solid ${theme.color.divider}`,
     // },
+    width: '100%',
+    backgroundColor: theme.color.background.paper,
     [`@media(min-width: ${mobileWidth})`]: {
       position: 'fixed',
       top: height,
@@ -43,6 +45,7 @@ const MainWrapper = styled('div')(({ theme }) => {
   return {
     // padding: '0 16px',
     marginTop: height,
+    backgroundColor: theme.color.background.paper,
     [`@media(min-width: ${mobileWidth})`]: {
       marginTop: 0,
       position: 'fixed',
@@ -67,13 +70,12 @@ const Root = styled('div')(() => {
   };
 });
 
-const MobileMenu = styled('div')(({ theme }) => {
+const MobileMenu = styled('div')(() => {
   return {
     position: 'fixed',
     zIndex: 1000,
     top: height,
     width: '100%',
-    backgroundColor: theme.color.background.paper,
     button: {
       position: 'absolute',
       top: 10,
