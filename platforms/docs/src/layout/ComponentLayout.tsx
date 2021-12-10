@@ -25,7 +25,6 @@ const AsideWrapper = styled(Aside)(({ theme }) => {
       position: 'fixed',
       top: height,
       bottom: 0,
-      overflowY: 'hidden',
       width: asideWidth,
       borderRight: `1px solid ${theme.color.divider}`,
       ':hover': {
@@ -75,7 +74,12 @@ const MobileMenu = styled('div')(() => {
     position: 'fixed',
     zIndex: 1000,
     top: height,
+    bottom: 0,
     width: '100%',
+    '.wrap': {
+      overflowY: 'auto',
+      height: '100%',
+    },
     button: {
       position: 'absolute',
       top: 10,
@@ -115,12 +119,14 @@ const ComponentLayout: Layout = ({ children }) => {
         <Button onClick={handleAsideVisible} theme='primary'>
           {locale.layout.component.mobileAsideButton}
         </Button>
-        <CollapseTransition in={asideVisible} transitionClasses='aside'>
-          <AsideWrapper routeName='components' />
-        </CollapseTransition>
+        <div className='wrap'>
+          <CollapseTransition in={asideVisible} transitionClasses='aside'>
+            <AsideWrapper routeName='components' />
+          </CollapseTransition>
+        </div>
       </MobileMenu>
       <AsideWrapper className='md-up' routeName='components' />
-      <MainWrapper>
+      <MainWrapper style={{ overflow: asideVisible ? 'hidden' : '' }}>
         {children}
         <Footer />
       </MainWrapper>
