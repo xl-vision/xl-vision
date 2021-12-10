@@ -185,7 +185,7 @@ exports[`Demo renders ./packages/react/src/Avatar/__doc__/AutoSize.tsx correctly
     </span>
   </span>
   <button
-    class="c3 xl-base-button c4 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation"
+    class="c3 xl-base-button c4 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c5 xl-base-button__inner"
@@ -201,7 +201,7 @@ exports[`Demo renders ./packages/react/src/Avatar/__doc__/AutoSize.tsx correctly
     />
   </button>
   <button
-    class="c3 xl-base-button c4 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation"
+    class="c3 xl-base-button c4 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c5 xl-base-button__inner"
@@ -2517,7 +2517,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
     class="c0"
   >
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -2533,7 +2533,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
       />
     </button>
     <button
-      class="c1 xl-base-button c5 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c5 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -2549,7 +2549,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
       />
     </button>
     <button
-      class="c1 xl-base-button c6 xl-button xl-button--size-middle xl-button--theme-secondary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c6 xl-button xl-button--size-middle xl-button--color-secondary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -2565,7 +2565,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
       />
     </button>
     <button
-      class="c1 xl-base-button c7 xl-button xl-button--size-middle xl-button--theme-error xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c7 xl-button xl-button--size-middle xl-button--color-error xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -2581,7 +2581,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
       />
     </button>
     <button
-      class="c1 xl-base-button c8 xl-button xl-button--size-middle xl-button--theme-warning xl-button--variant-contained xl-button--elevation xl-button--round"
+      class="c1 xl-base-button c8 xl-button xl-button--size-middle xl-button--color-warning xl-button--variant-contained xl-button--elevation xl-button--round"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -2597,7 +2597,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
       />
     </button>
     <button
-      class="c1 xl-base-button c5 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c5 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -2625,7 +2625,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
       />
     </button>
     <button
-      class="c1 xl-base-button c11 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation xl-button--round xl-button--icon"
+      class="c1 xl-base-button c11 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation xl-button--round xl-button--icon"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -2652,7 +2652,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
     class="c0"
   >
     <button
-      class="c1 xl-base-button c13 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-text"
+      class="c1 xl-base-button c13 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-text"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -2668,7 +2668,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
       />
     </button>
     <button
-      class="c1 xl-base-button c14 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-text"
+      class="c1 xl-base-button c14 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-text"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -2684,7 +2684,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
       />
     </button>
     <button
-      class="c1 xl-base-button c15 xl-button xl-button--size-middle xl-button--theme-secondary xl-button--variant-text"
+      class="c1 xl-base-button c15 xl-button xl-button--size-middle xl-button--color-secondary xl-button--variant-text"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -2700,7 +2700,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
       />
     </button>
     <button
-      class="c1 xl-base-button c16 xl-button xl-button--size-middle xl-button--theme-error xl-button--variant-text"
+      class="c1 xl-base-button c16 xl-button xl-button--size-middle xl-button--color-error xl-button--variant-text"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -2716,7 +2716,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
       />
     </button>
     <button
-      class="c1 xl-base-button c17 xl-button xl-button--size-middle xl-button--theme-warning xl-button--variant-text xl-button--round"
+      class="c1 xl-base-button c17 xl-button xl-button--size-middle xl-button--color-warning xl-button--variant-text xl-button--round"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -2732,7 +2732,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
       />
     </button>
     <button
-      class="c1 xl-base-button c14 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-text"
+      class="c1 xl-base-button c14 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-text"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -2760,7 +2760,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
       />
     </button>
     <button
-      class="c1 xl-base-button c11 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation xl-button--round xl-button--icon"
+      class="c1 xl-base-button c11 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation xl-button--round xl-button--icon"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -2787,7 +2787,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
     class="c0"
   >
     <button
-      class="c1 xl-base-button c18 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-outlined"
+      class="c1 xl-base-button c18 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-outlined"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -2803,7 +2803,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
       />
     </button>
     <button
-      class="c1 xl-base-button c19 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-outlined"
+      class="c1 xl-base-button c19 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-outlined"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -2819,7 +2819,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
       />
     </button>
     <button
-      class="c1 xl-base-button c20 xl-button xl-button--size-middle xl-button--theme-secondary xl-button--variant-outlined"
+      class="c1 xl-base-button c20 xl-button xl-button--size-middle xl-button--color-secondary xl-button--variant-outlined"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -2835,7 +2835,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
       />
     </button>
     <button
-      class="c1 xl-base-button c21 xl-button xl-button--size-middle xl-button--theme-error xl-button--variant-outlined"
+      class="c1 xl-base-button c21 xl-button xl-button--size-middle xl-button--color-error xl-button--variant-outlined"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -2851,7 +2851,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
       />
     </button>
     <button
-      class="c1 xl-base-button c22 xl-button xl-button--size-middle xl-button--theme-warning xl-button--variant-outlined xl-button--round"
+      class="c1 xl-base-button c22 xl-button xl-button--size-middle xl-button--color-warning xl-button--variant-outlined xl-button--round"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -2867,7 +2867,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
       />
     </button>
     <button
-      class="c1 xl-base-button c19 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-outlined"
+      class="c1 xl-base-button c19 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-outlined"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -2895,7 +2895,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
       />
     </button>
     <button
-      class="c1 xl-base-button c11 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation xl-button--round xl-button--icon"
+      class="c1 xl-base-button c11 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation xl-button--round xl-button--icon"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -3158,7 +3158,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
   class="c0"
 >
   <button
-    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained"
+    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -3174,7 +3174,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
     />
   </button>
   <button
-    class="c1 xl-base-button c5 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained"
+    class="c1 xl-base-button c5 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -3190,7 +3190,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
     />
   </button>
   <button
-    class="c1 xl-base-button c6 xl-button xl-button--size-middle xl-button--theme-secondary xl-button--variant-contained"
+    class="c1 xl-base-button c6 xl-button xl-button--size-middle xl-button--color-secondary xl-button--variant-contained"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -3206,7 +3206,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
     />
   </button>
   <button
-    class="c1 xl-base-button c7 xl-button xl-button--size-middle xl-button--theme-error xl-button--variant-contained"
+    class="c1 xl-base-button c7 xl-button xl-button--size-middle xl-button--color-error xl-button--variant-contained"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -3222,7 +3222,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
     />
   </button>
   <button
-    class="c1 xl-base-button c8 xl-button xl-button--size-middle xl-button--theme-warning xl-button--variant-contained"
+    class="c1 xl-base-button c8 xl-button xl-button--size-middle xl-button--color-warning xl-button--variant-contained"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -3484,7 +3484,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
   class="c0"
 >
   <button
-    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation"
+    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -3500,7 +3500,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
     />
   </button>
   <button
-    class="c1 xl-base-button c5 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-text"
+    class="c1 xl-base-button c5 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-text"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -3516,7 +3516,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
     />
   </button>
   <button
-    class="c1 xl-base-button c6 xl-button xl-button--size-middle xl-button--theme-secondary xl-button--variant-contained xl-button--elevation"
+    class="c1 xl-base-button c6 xl-button xl-button--size-middle xl-button--color-secondary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -3532,7 +3532,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
     />
   </button>
   <button
-    class="c1 xl-base-button c7 xl-button xl-button--size-middle xl-button--theme-error xl-button--variant-text"
+    class="c1 xl-base-button c7 xl-button xl-button--size-middle xl-button--color-error xl-button--variant-text"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -3548,7 +3548,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
     />
   </button>
   <button
-    class="c1 xl-base-button c8 xl-button xl-button--size-middle xl-button--theme-warning xl-button--variant-outlined"
+    class="c1 xl-base-button c8 xl-button xl-button--size-middle xl-button--color-warning xl-button--variant-outlined"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -3801,7 +3801,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
   class="c0"
 >
   <button
-    class="c1 xl-base-button xl-base-button--disabled c2 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation xl-button--disabled"
+    class="c1 xl-base-button xl-base-button--disabled c2 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--elevation xl-button--disabled"
     disabled=""
     tabindex="-1"
   >
@@ -3819,7 +3819,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
     />
   </button>
   <button
-    class="c1 xl-base-button xl-base-button--disabled c5 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation xl-button--disabled"
+    class="c1 xl-base-button xl-base-button--disabled c5 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation xl-button--disabled"
     disabled=""
     tabindex="-1"
   >
@@ -3837,7 +3837,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
     />
   </button>
   <button
-    class="c1 xl-base-button xl-base-button--disabled c6 xl-button xl-button--size-middle xl-button--theme-secondary xl-button--variant-contained xl-button--elevation xl-button--disabled"
+    class="c1 xl-base-button xl-base-button--disabled c6 xl-button xl-button--size-middle xl-button--color-secondary xl-button--variant-contained xl-button--elevation xl-button--disabled"
     disabled=""
     tabindex="-1"
   >
@@ -3855,7 +3855,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
     />
   </button>
   <button
-    class="c1 xl-base-button xl-base-button--disabled c7 xl-button xl-button--size-middle xl-button--theme-error xl-button--variant-contained xl-button--elevation xl-button--disabled"
+    class="c1 xl-base-button xl-base-button--disabled c7 xl-button xl-button--size-middle xl-button--color-error xl-button--variant-contained xl-button--elevation xl-button--disabled"
     disabled=""
     tabindex="-1"
   >
@@ -3873,7 +3873,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
     />
   </button>
   <button
-    class="c1 xl-base-button xl-base-button--disabled c8 xl-button xl-button--size-middle xl-button--theme-warning xl-button--variant-contained xl-button--elevation xl-button--disabled xl-button--round"
+    class="c1 xl-base-button xl-base-button--disabled c8 xl-button xl-button--size-middle xl-button--color-warning xl-button--variant-contained xl-button--elevation xl-button--disabled xl-button--round"
     disabled=""
     tabindex="-1"
   >
@@ -3891,7 +3891,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
     />
   </button>
   <button
-    class="c1 xl-base-button xl-base-button--disabled c5 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation xl-button--disabled"
+    class="c1 xl-base-button xl-base-button--disabled c5 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation xl-button--disabled"
     disabled=""
     tabindex="-1"
   >
@@ -4251,7 +4251,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
   class="c0"
 >
   <a
-    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation"
+    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--elevation"
     href="#"
   >
     <span
@@ -4268,7 +4268,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
     />
   </a>
   <a
-    class="c1 xl-base-button c5 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-text"
+    class="c1 xl-base-button c5 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-text"
     href="#"
   >
     <span
@@ -4285,7 +4285,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
     />
   </a>
   <a
-    class="c1 xl-base-button c6 xl-button xl-button--size-middle xl-button--theme-secondary xl-button--variant-contained xl-button--elevation"
+    class="c1 xl-base-button c6 xl-button xl-button--size-middle xl-button--color-secondary xl-button--variant-contained xl-button--elevation"
     href="#"
   >
     <span
@@ -4302,7 +4302,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
     />
   </a>
   <a
-    class="c1 xl-base-button c7 xl-button xl-button--size-middle xl-button--theme-error xl-button--variant-text"
+    class="c1 xl-base-button c7 xl-button xl-button--size-middle xl-button--color-error xl-button--variant-text"
     href="#"
   >
     <span
@@ -4319,7 +4319,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
     />
   </a>
   <a
-    class="c1 xl-base-button c8 xl-button xl-button--size-middle xl-button--theme-warning xl-button--variant-outlined"
+    class="c1 xl-base-button c8 xl-button xl-button--size-middle xl-button--color-warning xl-button--variant-outlined"
     href="#"
   >
     <span
@@ -4336,7 +4336,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
     />
   </a>
   <a
-    class="c9 xl-base-button xl-base-button--disabled c10 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation xl-button--disabled"
+    class="c9 xl-base-button xl-base-button--disabled c10 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation xl-button--disabled"
     disabled=""
     href="#"
     tabindex="-1"
@@ -4634,7 +4634,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
   class="c0"
 >
   <button
-    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation"
+    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -4650,7 +4650,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
     />
   </button>
   <button
-    class="c1 xl-base-button c5 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-text"
+    class="c1 xl-base-button c5 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-text"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -4678,7 +4678,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
     />
   </button>
   <button
-    class="c1 xl-base-button c8 xl-button xl-button--size-middle xl-button--theme-secondary xl-button--variant-contained xl-button--elevation"
+    class="c1 xl-base-button c8 xl-button xl-button--size-middle xl-button--color-secondary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -4694,7 +4694,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
     />
   </button>
   <button
-    class="c1 xl-base-button c9 xl-button xl-button--size-middle xl-button--theme-error xl-button--variant-text"
+    class="c1 xl-base-button c9 xl-button xl-button--size-middle xl-button--color-error xl-button--variant-text"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -4710,7 +4710,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
     />
   </button>
   <button
-    class="c1 xl-base-button c10 xl-button xl-button--size-middle xl-button--theme-warning xl-button--variant-outlined"
+    class="c1 xl-base-button c10 xl-button xl-button--size-middle xl-button--color-warning xl-button--variant-outlined"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -5013,7 +5013,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
   class="c0"
 >
   <button
-    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation xl-button--long"
+    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--elevation xl-button--long"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -5029,7 +5029,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
     />
   </button>
   <button
-    class="c1 xl-base-button c5 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-text xl-button--long"
+    class="c1 xl-base-button c5 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-text xl-button--long"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -5045,7 +5045,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
     />
   </button>
   <button
-    class="c1 xl-base-button c6 xl-button xl-button--size-middle xl-button--theme-secondary xl-button--variant-outlined xl-button--long"
+    class="c1 xl-base-button c6 xl-button xl-button--size-middle xl-button--color-secondary xl-button--variant-outlined xl-button--long"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -5061,7 +5061,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
     />
   </button>
   <button
-    class="c1 xl-base-button c7 xl-button xl-button--size-middle xl-button--theme-warning xl-button--variant-contained xl-button--elevation xl-button--long xl-button--round"
+    class="c1 xl-base-button c7 xl-button xl-button--size-middle xl-button--color-warning xl-button--variant-contained xl-button--elevation xl-button--long xl-button--round"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -5077,7 +5077,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
     />
   </button>
   <button
-    class="c1 xl-base-button c8 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation xl-button--long"
+    class="c1 xl-base-button c8 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation xl-button--long"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -5476,7 +5476,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   class="c0"
 >
   <button
-    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation"
+    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -5492,7 +5492,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
     />
   </button>
   <button
-    class="c1 xl-base-button c5 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-text"
+    class="c1 xl-base-button c5 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-text"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -5508,7 +5508,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
     />
   </button>
   <button
-    class="c1 xl-base-button c6 xl-button xl-button--size-middle xl-button--theme-secondary xl-button--variant-outlined"
+    class="c1 xl-base-button c6 xl-button xl-button--size-middle xl-button--color-secondary xl-button--variant-outlined"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -5524,7 +5524,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
     />
   </button>
   <button
-    class="c1 xl-base-button c7 xl-button xl-button--size-middle xl-button--theme-error xl-button--variant-text"
+    class="c1 xl-base-button c7 xl-button xl-button--size-middle xl-button--color-error xl-button--variant-text"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -5540,7 +5540,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
     />
   </button>
   <button
-    class="c1 xl-base-button c8 xl-button xl-button--size-middle xl-button--theme-warning xl-button--variant-contained xl-button--elevation"
+    class="c1 xl-base-button c8 xl-button xl-button--size-middle xl-button--color-warning xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -5556,7 +5556,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
     />
   </button>
   <button
-    class="c1 xl-base-button c9 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation xl-button--round"
+    class="c1 xl-base-button c9 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation xl-button--round"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -5572,7 +5572,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
     />
   </button>
   <button
-    class="c1 xl-base-button c10 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation xl-button--icon"
+    class="c1 xl-base-button c10 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation xl-button--icon"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -5595,7 +5595,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
     />
   </button>
   <button
-    class="c1 xl-base-button c10 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation xl-button--icon"
+    class="c1 xl-base-button c10 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation xl-button--icon"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -5618,7 +5618,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
     />
   </button>
   <button
-    class="c1 xl-base-button c13 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation xl-button--round xl-button--icon"
+    class="c1 xl-base-button c13 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation xl-button--round xl-button--icon"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -5759,7 +5759,7 @@ exports[`Demo renders ./packages/react/src/CSSTransition/__doc__/Advance.tsx cor
 
 <div>
   <button
-    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c2 xl-base-button__inner"
@@ -5893,7 +5893,7 @@ exports[`Demo renders ./packages/react/src/CSSTransition/__doc__/Basic.tsx corre
 
 <div>
   <button
-    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c2 xl-base-button__inner"
@@ -6029,7 +6029,7 @@ exports[`Demo renders ./packages/react/src/CollapseTransition/__doc__/Basic.tsx 
   class="wrapper"
 >
   <button
-    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c2 xl-base-button__inner"
@@ -6165,7 +6165,7 @@ exports[`Demo renders ./packages/react/src/CollapseTransition/__doc__/Horizontal
   class="wrapper"
 >
   <button
-    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c2 xl-base-button__inner"
@@ -6298,7 +6298,7 @@ exports[`Demo renders ./packages/react/src/Dialog/__doc__/Basic.tsx correctly 1`
 }
 
 <button
-  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
 >
   <span
     class="c2 xl-base-button__inner"
@@ -6430,7 +6430,7 @@ exports[`Demo renders ./packages/react/src/Dialog/__doc__/Custom.tsx correctly 1
 }
 
 <button
-  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
 >
   <span
     class="c2 xl-base-button__inner"
@@ -6562,7 +6562,7 @@ exports[`Demo renders ./packages/react/src/Dialog/__doc__/Methods.tsx correctly 
 }
 
 <button
-  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
 >
   <span
     class="c2 xl-base-button__inner"
@@ -6694,7 +6694,7 @@ exports[`Demo renders ./packages/react/src/Dialog/__doc__/Promise.tsx correctly 
 }
 
 <button
-  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
 >
   <span
     class="c2 xl-base-button__inner"
@@ -6826,7 +6826,7 @@ exports[`Demo renders ./packages/react/src/Dialog/__doc__/Prompt.tsx correctly 1
 }
 
 <button
-  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
 >
   <span
     class="c2 xl-base-button__inner"
@@ -6959,7 +6959,7 @@ Array [
 }
 
 <button
-    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c2 xl-base-button__inner"
@@ -7088,7 +7088,7 @@ Array [
 }
 
 <button
-    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c2 xl-base-button__inner"
@@ -7217,7 +7217,7 @@ Array [
 }
 
 <button
-    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c2 xl-base-button__inner"
@@ -7346,7 +7346,7 @@ Array [
 }
 
 <button
-    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c2 xl-base-button__inner"
@@ -7475,7 +7475,7 @@ Array [
 }
 
 <button
-    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c2 xl-base-button__inner"
@@ -7609,7 +7609,7 @@ Array [
 }
 
 <button
-    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c2 xl-base-button__inner"
@@ -7738,7 +7738,7 @@ Array [
 }
 
 <button
-    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c2 xl-base-button__inner"
@@ -7867,7 +7867,7 @@ Array [
 }
 
 <button
-    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c2 xl-base-button__inner"
@@ -7996,7 +7996,7 @@ Array [
 }
 
 <button
-    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c2 xl-base-button__inner"
@@ -8125,7 +8125,7 @@ Array [
 }
 
 <button
-    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c2 xl-base-button__inner"
@@ -8258,7 +8258,7 @@ exports[`Demo renders ./packages/react/src/Dialog/__doc__/Width.tsx correctly 1`
 }
 
 <button
-  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
 >
   <span
     class="c2 xl-base-button__inner"
@@ -8390,7 +8390,7 @@ exports[`Demo renders ./packages/react/src/Dropdown/__doc__/Advance.tsx correctl
 }
 
 <button
-  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
 >
   <span
     class="c2 xl-base-button__inner"
@@ -8522,7 +8522,7 @@ exports[`Demo renders ./packages/react/src/Dropdown/__doc__/Basic.tsx correctly 
 }
 
 <button
-  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
 >
   <span
     class="c2 xl-base-button__inner"
@@ -8654,7 +8654,7 @@ exports[`Demo renders ./packages/react/src/Dropdown/__doc__/Cascade.tsx correctl
 }
 
 <button
-  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
 >
   <span
     class="c2 xl-base-button__inner"
@@ -12869,7 +12869,7 @@ exports[`Demo renders ./packages/react/src/Icon/__doc__/IconSearch.tsx correctly
       class="left"
     >
       <button
-        class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+        class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
       >
         <span
           class="c3 xl-base-button__inner"
@@ -12885,7 +12885,7 @@ exports[`Demo renders ./packages/react/src/Icon/__doc__/IconSearch.tsx correctly
         />
       </button>
       <button
-        class="c1 xl-base-button c5 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation"
+        class="c1 xl-base-button c5 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--elevation"
       >
         <span
           class="c3 xl-base-button__inner"
@@ -19975,7 +19975,7 @@ exports[`Demo renders ./packages/react/src/Modal/__doc__/Basic.tsx correctly 1`]
 }
 
 <button
-  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
 >
   <span
     class="c2 xl-base-button__inner"
@@ -20107,7 +20107,7 @@ exports[`Demo renders ./packages/react/src/Modal/__doc__/EscClosable.tsx correct
 }
 
 <button
-  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
 >
   <span
     class="c2 xl-base-button__inner"
@@ -20239,7 +20239,7 @@ exports[`Demo renders ./packages/react/src/Modal/__doc__/HideMask.tsx correctly 
 }
 
 <button
-  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
 >
   <span
     class="c2 xl-base-button__inner"
@@ -20371,7 +20371,7 @@ exports[`Demo renders ./packages/react/src/Modal/__doc__/MaskClosable.tsx correc
 }
 
 <button
-  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
 >
   <span
     class="c2 xl-base-button__inner"
@@ -20503,7 +20503,7 @@ exports[`Demo renders ./packages/react/src/Modal/__doc__/Nest.tsx correctly 1`] 
 }
 
 <button
-  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
 >
   <span
     class="c2 xl-base-button__inner"
@@ -20635,7 +20635,7 @@ exports[`Demo renders ./packages/react/src/Modal/__doc__/Shortcut.tsx correctly 
 }
 
 <button
-  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
 >
   <span
     class="c2 xl-base-button__inner"
@@ -20768,7 +20768,7 @@ exports[`Demo renders ./packages/react/src/Popconfirm/__doc__/Basic.tsx correctl
 
 <div>
   <button
-    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c2 xl-base-button__inner"
@@ -20902,7 +20902,7 @@ exports[`Demo renders ./packages/react/src/Popconfirm/__doc__/Promise.tsx correc
 
 <div>
   <button
-    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c2 xl-base-button__inner"
@@ -21057,7 +21057,7 @@ exports[`Demo renders ./packages/react/src/Popover/__doc__/Basic.tsx correctly 1
   >
     <div />
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -21073,7 +21073,7 @@ exports[`Demo renders ./packages/react/src/Popover/__doc__/Basic.tsx correctly 1
       />
     </button>
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -21089,7 +21089,7 @@ exports[`Demo renders ./packages/react/src/Popover/__doc__/Basic.tsx correctly 1
       />
     </button>
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -21110,7 +21110,7 @@ exports[`Demo renders ./packages/react/src/Popover/__doc__/Basic.tsx correctly 1
     class="column"
   >
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -21129,7 +21129,7 @@ exports[`Demo renders ./packages/react/src/Popover/__doc__/Basic.tsx correctly 1
     <div />
     <div />
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -21149,7 +21149,7 @@ exports[`Demo renders ./packages/react/src/Popover/__doc__/Basic.tsx correctly 1
     class="column"
   >
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -21168,7 +21168,7 @@ exports[`Demo renders ./packages/react/src/Popover/__doc__/Basic.tsx correctly 1
     <div />
     <div />
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -21188,7 +21188,7 @@ exports[`Demo renders ./packages/react/src/Popover/__doc__/Basic.tsx correctly 1
     class="column"
   >
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -21207,7 +21207,7 @@ exports[`Demo renders ./packages/react/src/Popover/__doc__/Basic.tsx correctly 1
     <div />
     <div />
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -21228,7 +21228,7 @@ exports[`Demo renders ./packages/react/src/Popover/__doc__/Basic.tsx correctly 1
   >
     <div />
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -21244,7 +21244,7 @@ exports[`Demo renders ./packages/react/src/Popover/__doc__/Basic.tsx correctly 1
       />
     </button>
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -21260,7 +21260,7 @@ exports[`Demo renders ./packages/react/src/Popover/__doc__/Basic.tsx correctly 1
       />
     </button>
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -21395,7 +21395,7 @@ exports[`Demo renders ./packages/react/src/Popover/__doc__/ClickInner.tsx correc
 }
 
 <button
-  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
 >
   <span
     class="c2 xl-base-button__inner"
@@ -21535,7 +21535,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Arrow.tsx correctly 1`
   class="c0"
 >
   <button
-    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -21690,7 +21690,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
   >
     <div />
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -21706,7 +21706,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
       />
     </button>
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -21722,7 +21722,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
       />
     </button>
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -21743,7 +21743,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
     class="column"
   >
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -21762,7 +21762,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
     <div />
     <div />
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -21782,7 +21782,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
     class="column"
   >
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -21801,7 +21801,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
     <div />
     <div />
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -21821,7 +21821,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
     class="column"
   >
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -21840,7 +21840,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
     <div />
     <div />
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -21861,7 +21861,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
   >
     <div />
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -21877,7 +21877,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
       />
     </button>
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -21893,7 +21893,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
       />
     </button>
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -22077,7 +22077,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 
   class="c0"
 >
   <button
-    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -22093,7 +22093,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 
     />
   </button>
   <button
-    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -22109,7 +22109,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 
     />
   </button>
   <button
-    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -22125,7 +22125,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 
     />
   </button>
   <button
-    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -22141,7 +22141,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 
     />
   </button>
   <button
-    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -22314,7 +22314,7 @@ exports[`Demo renders ./packages/react/src/Portal/__doc__/Basic.tsx correctly 1`
       container2
     </p>
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation content"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation content"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -42669,7 +42669,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Arrow.tsx correctly 1
 }
 
 <button
-  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+  class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
 >
   <span
     class="c2 xl-base-button__inner"
@@ -42823,7 +42823,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
   >
     <div />
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -42839,7 +42839,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
       />
     </button>
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -42855,7 +42855,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
       />
     </button>
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -42876,7 +42876,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
     class="column"
   >
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -42895,7 +42895,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
     <div />
     <div />
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -42915,7 +42915,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
     class="column"
   >
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -42934,7 +42934,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
     <div />
     <div />
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -42954,7 +42954,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
     class="column"
   >
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -42973,7 +42973,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
     <div />
     <div />
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -42994,7 +42994,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
   >
     <div />
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -43010,7 +43010,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
       />
     </button>
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -43026,7 +43026,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
       />
     </button>
     <button
-      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c3 xl-base-button__inner"
@@ -43169,7 +43169,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Colors.tsx correctly 
   class="c0"
 >
   <button
-    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -43185,7 +43185,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Colors.tsx correctly 
     />
   </button>
   <button
-    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -43201,7 +43201,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Colors.tsx correctly 
     />
   </button>
   <button
-    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -43217,7 +43217,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Colors.tsx correctly 
     />
   </button>
   <button
-    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -43358,7 +43358,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/MaxWidth.tsx correctl
   class="c0"
 >
   <button
-    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -43499,7 +43499,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Rich.tsx correctly 1`
   class="c0"
 >
   <button
-    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+    class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c3 xl-base-button__inner"
@@ -43654,7 +43654,7 @@ exports[`Demo renders ./packages/react/src/Transition/__doc__/Appear.tsx correct
 
 <div>
   <button
-    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c2 xl-base-button__inner"
@@ -43805,7 +43805,7 @@ exports[`Demo renders ./packages/react/src/Transition/__doc__/Basic.tsx correctl
 
 <div>
   <button
-    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c2 xl-base-button__inner"
@@ -43980,7 +43980,7 @@ exports[`Demo renders ./packages/react/src/TransitionGroup/__doc__/Basic.tsx cor
 <div>
   <div>
     <button
-      class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
       style="margin-right: 10px;"
     >
       <span
@@ -43997,7 +43997,7 @@ exports[`Demo renders ./packages/react/src/TransitionGroup/__doc__/Basic.tsx cor
       />
     </button>
     <button
-      class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-primary xl-button--variant-contained xl-button--elevation"
+      class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
     >
       <span
         class="c2 xl-base-button__inner"

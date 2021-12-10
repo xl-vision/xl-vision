@@ -65,7 +65,7 @@ export default () => {
 
   return (
     <div>
-      <Button theme='primary' onClick={() => setShow(!show)}>
+      <Button color='primary' onClick={() => setShow(!show)}>
         Click
       </Button>
       <p>进场动画</p>

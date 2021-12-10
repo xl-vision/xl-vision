@@ -11,7 +11,7 @@ export default () => {
 
   return (
     <>
-      <Button theme='primary' onClick={handleClick}>
+      <Button color='primary' onClick={handleClick}>
         click
       </Button>
       <Dialog prompt={true} title='Message' visible={visible} onVisibleChange={setVisible}>

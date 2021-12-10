@@ -6,7 +6,7 @@ export default () => {
   const [visible, setVisible] = React.useState(false);
 
   const content = (
-    <Button variant='text' onClick={() => setVisible(false)} theme='primary'>
+    <Button variant='text' onClick={() => setVisible(false)} color='primary'>
       close
     </Button>
   );
@@ -19,7 +19,7 @@ export default () => {
       title='title'
       content={content}
     >
-      <Button theme='primary'>click</Button>
+      <Button color='primary'>click</Button>
     </Popover>
   );
 };

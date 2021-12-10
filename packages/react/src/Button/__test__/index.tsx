@@ -15,7 +15,7 @@ describe('Button', () => {
     const wrapper = mount(
       <div>
         <Button>button</Button>
-        <Button theme='error'>button</Button>
+        <Button color='error'>button</Button>
         <Button variant='outlined'>button</Button>
         <Button prefixIcon={CloseWrapper}>button</Button>
         <Button suffixIcon={CloseWrapper}>button</Button>

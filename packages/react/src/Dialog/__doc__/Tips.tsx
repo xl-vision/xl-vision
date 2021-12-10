@@ -39,19 +39,19 @@ export default () => {
 
   return (
     <>
-      <Button theme='primary' onClick={handleInfo}>
+      <Button color='primary' onClick={handleInfo}>
         info
       </Button>
-      <Button theme='primary' onClick={handleSuccess}>
+      <Button color='primary' onClick={handleSuccess}>
         success
       </Button>
-      <Button theme='primary' onClick={handleError}>
+      <Button color='primary' onClick={handleError}>
         error
       </Button>
-      <Button theme='primary' onClick={handleWarning}>
+      <Button color='primary' onClick={handleWarning}>
         warning
       </Button>
-      <Button theme='primary' onClick={handleConfirm}>
+      <Button color='primary' onClick={handleConfirm}>
         confirm
       </Button>
     </>

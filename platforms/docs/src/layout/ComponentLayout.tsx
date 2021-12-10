@@ -8,6 +8,19 @@ import { Layout } from './Layout';
 
 const asideWidth = 280;
 
+const Root = styled('div')(() => {
+  return {
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100%',
+    '.aside': {
+      '&-enter-active, &-leave-active': {
+        transition: 'height 0.4s ease',
+      },
+    },
+  };
+});
+
 const AsideWrapper = styled(Aside)(({ theme }) => {
   const { breakpoints } = theme;
 
@@ -45,6 +58,7 @@ const MainWrapper = styled('div')(({ theme }) => {
     // padding: '0 16px',
     marginTop: height,
     backgroundColor: theme.color.background.paper,
+    overflowY: 'auto',
     [`@media(min-width: ${mobileWidth})`]: {
       marginTop: 0,
       position: 'fixed',
@@ -52,42 +66,17 @@ const MainWrapper = styled('div')(({ theme }) => {
       bottom: 0,
       left: asideWidth,
       right: 0,
-      overflowY: 'auto',
     },
   };
 });
 
-const Root = styled('div')(() => {
-  return {
-    display: 'flex',
-    flexDirection: 'column',
-    '.aside': {
-      '&-enter-active, &-leave-active': {
-        transition: 'height 0.4s ease',
-      },
-    },
-  };
-});
-
-const MobileMenu = styled('div')(() => {
+const AisdeButton = styled(Button)(() => {
   return {
     position: 'fixed',
-    zIndex: 1000,
-    top: height,
-    bottom: 0,
-    width: '100%',
-    '.wrap': {
-      overflowY: 'auto',
-      height: '100%',
-    },
-    button: {
-      position: 'absolute',
-      top: 10,
-      right: 0,
-      borderTopRightRadius: 0,
-      borderBottomRightRadius: 0,
-      zIndex: 1,
-    },
+    top: height + 10,
+    right: 0,
+    borderTopRightRadius: 0,
+    borderBottomRightRadius: 0,
   };
 });
 
@@ -115,18 +104,16 @@ const ComponentLayout: Layout = ({ children }) => {
   return (
     <Root>
       <Header />
-      <MobileMenu className='md-down'>
-        <Button onClick={handleAsideVisible} theme='primary'>
-          {locale.layout.component.mobileAsideButton}
-        </Button>
-        <div className='wrap'>
-          <CollapseTransition in={asideVisible} transitionClasses='aside'>
-            <AsideWrapper routeName='components' />
-          </CollapseTransition>
-        </div>
-      </MobileMenu>
+      <AisdeButton onClick={handleAsideVisible} color='primary'>
+        {locale.layout.component.mobileAsideButton}
+      </AisdeButton>
+      <div className='wrap'>
+        <CollapseTransition in={asideVisible} transitionClasses='aside'>
+          <AsideWrapper routeName='components' />
+        </CollapseTransition>
+      </div>
       <AsideWrapper className='md-up' routeName='components' />
-      <MainWrapper style={{ overflow: asideVisible ? 'hidden' : '' }}>
+      <MainWrapper>
         {children}
         <Footer />
       </MainWrapper>
