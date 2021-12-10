@@ -21,59 +21,59 @@ export default () => {
       <div className='column'>
         <div />
         <Popover placement='top-start' title='title' content={content} flip={false}>
-          <Button theme='primary'>TS</Button>
+          <Button color='primary'>TS</Button>
         </Popover>
         <Popover placement='top' title='title' content={content} flip={false}>
-          <Button theme='primary'>T</Button>
+          <Button color='primary'>T</Button>
         </Popover>
         <Popover placement='top-end' title='title' content={content} flip={false}>
-          <Button theme='primary'>TE</Button>
+          <Button color='primary'>TE</Button>
         </Popover>
         <div />
       </div>
       <div className='column'>
         <Popover placement='left-start' title='title' content={content} flip={false}>
-          <Button theme='primary'>LS</Button>
+          <Button color='primary'>LS</Button>
         </Popover>
         <div />
         <div />
         <div />
         <Popover placement='right-start' title='title' content={content} flip={false}>
-          <Button theme='primary'>RS</Button>
+          <Button color='primary'>RS</Button>
         </Popover>
       </div>
       <div className='column'>
         <Popover placement='left' title='title' content={content} flip={false}>
-          <Button theme='primary'>L</Button>
+          <Button color='primary'>L</Button>
         </Popover>
         <div />
         <div />
         <div />
         <Popover placement='right' title='title' content={content} flip={false}>
-          <Button theme='primary'>R</Button>
+          <Button color='primary'>R</Button>
         </Popover>
       </div>
       <div className='column'>
         <Popover placement='left-end' title='title' content={content} flip={false}>
-          <Button theme='primary'>LE</Button>
+          <Button color='primary'>LE</Button>
         </Popover>
         <div />
         <div />
         <div />
         <Popover placement='right-end' title='title' content={content} flip={false}>
-          <Button theme='primary'>RE</Button>
+          <Button color='primary'>RE</Button>
         </Popover>
       </div>
       <div className='column'>
         <div />
         <Popover placement='bottom-start' title='title' content={content} flip={false}>
-          <Button theme='primary'>BS</Button>
+          <Button color='primary'>BS</Button>
         </Popover>
         <Popover placement='bottom' title='title' content={content} flip={false}>
-          <Button theme='primary'>B</Button>
+          <Button color='primary'>B</Button>
         </Popover>
         <Popover placement='bottom-end' title='title' content={content} flip={false}>
-          <Button theme='primary'>BE</Button>
+          <Button color='primary'>BE</Button>
         </Popover>
         <div />
       </div>

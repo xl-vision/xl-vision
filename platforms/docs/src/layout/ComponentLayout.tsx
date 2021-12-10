@@ -8,12 +8,40 @@ import { Layout } from './Layout';
 
 const asideWidth = 280;
 
+const Root = styled('div')(({ theme }) => {
+  return {
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100%',
+    backgroundColor: theme.color.background.paper,
+    '.menu-button': {
+      position: 'fixed',
+      zIndex: 1000,
+      right: 0,
+      top: height + 10,
+      borderTopRightRadius: 0,
+      borderBottomRightRadius: 0,
+    },
+    '.mobile-menus': {
+      position: 'fixed',
+      top: height,
+      width: '100%',
+      height: '100%',
+      overflowY: 'auto',
+      zIndex: 1,
+    },
+    '.aside': {
+      '&-enter-active, &-leave-active': {
+        transition: 'height 0.4s ease',
+      },
+    },
+  };
+});
+
 const AsideWrapper = styled(Aside)(({ theme }) => {
   const { breakpoints } = theme;
 
   const { values, unit } = breakpoints;
-
-  const mobileWidth = `${values.md}${unit}`;
 
   return {
     // '@media(max-width: 768px)': {
@@ -21,7 +49,8 @@ const AsideWrapper = styled(Aside)(({ theme }) => {
     // },
     width: '100%',
     backgroundColor: theme.color.background.paper,
-    [`@media(min-width: ${mobileWidth})`]: {
+
+    [`@media(min-width: ${values.md}${unit})`]: {
       position: 'fixed',
       top: height,
       bottom: 0,
@@ -45,6 +74,7 @@ const MainWrapper = styled('div')(({ theme }) => {
     // padding: '0 16px',
     marginTop: height,
     backgroundColor: theme.color.background.paper,
+    overflowY: 'auto',
     [`@media(min-width: ${mobileWidth})`]: {
       marginTop: 0,
       position: 'fixed',
@@ -52,41 +82,6 @@ const MainWrapper = styled('div')(({ theme }) => {
       bottom: 0,
       left: asideWidth,
       right: 0,
-      overflowY: 'auto',
-    },
-  };
-});
-
-const Root = styled('div')(() => {
-  return {
-    display: 'flex',
-    flexDirection: 'column',
-    '.aside': {
-      '&-enter-active, &-leave-active': {
-        transition: 'height 0.4s ease',
-      },
-    },
-  };
-});
-
-const MobileMenu = styled('div')(() => {
-  return {
-    position: 'fixed',
-    zIndex: 1000,
-    top: height,
-    bottom: 0,
-    width: '100%',
-    '.wrap': {
-      overflowY: 'auto',
-      height: '100%',
-    },
-    button: {
-      position: 'absolute',
-      top: 10,
-      right: 0,
-      borderTopRightRadius: 0,
-      borderBottomRightRadius: 0,
-      zIndex: 1,
     },
   };
 });
@@ -115,18 +110,19 @@ const ComponentLayout: Layout = ({ children }) => {
   return (
     <Root>
       <Header />
-      <MobileMenu className='md-down'>
-        <Button onClick={handleAsideVisible} theme='primary'>
-          {locale.layout.component.mobileAsideButton}
-        </Button>
-        <div className='wrap'>
-          <CollapseTransition in={asideVisible} transitionClasses='aside'>
-            <AsideWrapper routeName='components' />
-          </CollapseTransition>
-        </div>
-      </MobileMenu>
+      <Button className='menu-button md-down' onClick={handleAsideVisible} color='primary'>
+        {locale.layout.component.mobileAsideButton}
+      </Button>
+      <div
+        className='mobile-menus md-down'
+        style={{ pointerEvents: asideVisible ? undefined : 'none' }}
+      >
+        <CollapseTransition in={asideVisible} transitionClasses='aside'>
+          <AsideWrapper routeName='components' />
+        </CollapseTransition>
+      </div>
       <AsideWrapper className='md-up' routeName='components' />
-      <MainWrapper style={{ overflow: asideVisible ? 'hidden' : '' }}>
+      <MainWrapper style={{ overflowY: asideVisible ? 'hidden' : undefined }}>
         {children}
         <Footer />
       </MainWrapper>

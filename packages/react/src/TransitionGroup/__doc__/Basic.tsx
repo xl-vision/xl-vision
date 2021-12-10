@@ -51,10 +51,10 @@ export default () => {
   return (
     <div>
       <div>
-        <Button theme='primary' onClick={handleAdd} style={{ marginRight: 10 }}>
+        <Button color='primary' onClick={handleAdd} style={{ marginRight: 10 }}>
           add
         </Button>
-        <Button theme='primary' onClick={handleRemove}>
+        <Button color='primary' onClick={handleRemove}>
           remove
         </Button>
       </div>

@@ -94,11 +94,11 @@ const Home: NextPage = () => {
         <div className='desc'>{locale.pages.index.desc}</div>
         <div className='action'>
           <Link href='/components' passHref={true}>
-            <Button theme='primary' rel='noopener'>
+            <Button color='primary' rel='noopener'>
               {locale.pages.index.btnStart}
             </Button>
           </Link>
-          <Button theme='default' target='_blank' href='https://github.com/xl-vision/xl-vision'>
+          <Button color='default' target='_blank' href='https://github.com/xl-vision/xl-vision'>
             {locale.pages.index.btnGithub}
           </Button>
         </div>

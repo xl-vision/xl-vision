@@ -14,16 +14,16 @@ export default () => {
   return (
     <Wrapper>
       <Button disableElevation={true}>button</Button>
-      <Button disableElevation={true} theme='primary'>
+      <Button disableElevation={true} color='primary'>
         button
       </Button>
-      <Button disableElevation={true} theme='secondary'>
+      <Button disableElevation={true} color='secondary'>
         button
       </Button>
-      <Button disableElevation={true} theme='error'>
+      <Button disableElevation={true} color='error'>
         button
       </Button>
-      <Button disableElevation={true} theme='warning'>
+      <Button disableElevation={true} color='warning'>
         button
       </Button>
     </Wrapper>

@@ -405,7 +405,7 @@ exports[`Button test basic render 1`] = `
 
 <div>
   <button
-    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation"
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c2 xl-base-button__inner"
@@ -421,7 +421,7 @@ exports[`Button test basic render 1`] = `
     />
   </button>
   <button
-    class="c0 xl-base-button c4 xl-button xl-button--size-middle xl-button--theme-error xl-button--variant-contained xl-button--elevation"
+    class="c0 xl-base-button c4 xl-button xl-button--size-middle xl-button--color-error xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c2 xl-base-button__inner"
@@ -437,7 +437,7 @@ exports[`Button test basic render 1`] = `
     />
   </button>
   <button
-    class="c0 xl-base-button c5 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-outlined"
+    class="c0 xl-base-button c5 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-outlined"
   >
     <span
       class="c2 xl-base-button__inner"
@@ -453,7 +453,7 @@ exports[`Button test basic render 1`] = `
     />
   </button>
   <button
-    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation"
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c2 xl-base-button__inner"
@@ -481,7 +481,7 @@ exports[`Button test basic render 1`] = `
     />
   </button>
   <button
-    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation"
+    class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--elevation"
   >
     <span
       class="c2 xl-base-button__inner"
@@ -509,7 +509,7 @@ exports[`Button test basic render 1`] = `
     />
   </button>
   <button
-    class="c0 xl-base-button c9 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation xl-button--icon"
+    class="c0 xl-base-button c9 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--elevation xl-button--icon"
   >
     <span
       class="c2 xl-base-button__inner"
@@ -532,7 +532,7 @@ exports[`Button test basic render 1`] = `
     />
   </button>
   <button
-    class="c0 xl-base-button c9 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation xl-button--icon"
+    class="c0 xl-base-button c9 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--elevation xl-button--icon"
   >
     <span
       class="c2 xl-base-button__inner"
@@ -555,7 +555,7 @@ exports[`Button test basic render 1`] = `
     />
   </button>
   <button
-    class="c0 xl-base-button c11 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation xl-button--long"
+    class="c0 xl-base-button c11 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--elevation xl-button--long"
   >
     <span
       class="c2 xl-base-button__inner"
@@ -571,7 +571,7 @@ exports[`Button test basic render 1`] = `
     />
   </button>
   <button
-    class="c12 xl-base-button xl-base-button--loading c13 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation xl-button--loading"
+    class="c12 xl-base-button xl-base-button--loading c13 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--elevation xl-button--loading"
     tabindex="-1"
   >
     <span
@@ -606,7 +606,7 @@ exports[`Button test basic render 1`] = `
     />
   </button>
   <button
-    class="c12 xl-base-button xl-base-button--loading c15 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation xl-button--loading xl-button--icon"
+    class="c12 xl-base-button xl-base-button--loading c15 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--elevation xl-button--loading xl-button--icon"
     tabindex="-1"
   >
     <span
@@ -630,7 +630,7 @@ exports[`Button test basic render 1`] = `
     />
   </button>
   <button
-    class="c12 xl-base-button xl-base-button--loading c13 xl-button xl-button--size-middle xl-button--theme-default xl-button--variant-contained xl-button--elevation xl-button--loading"
+    class="c12 xl-base-button xl-base-button--loading c13 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--elevation xl-button--loading"
     tabindex="-1"
   >
     <span

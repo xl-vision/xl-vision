@@ -21,16 +21,16 @@ export default () => {
   return (
     <Wrapper>
       <Button long={true}>button</Button>
-      <Button long={true} variant='text' theme='primary'>
+      <Button long={true} variant='text' color='primary'>
         button
       </Button>
-      <Button long={true} variant='outlined' theme='secondary'>
+      <Button long={true} variant='outlined' color='secondary'>
         button
       </Button>
-      <Button long={true} round={true} theme='warning'>
+      <Button long={true} round={true} color='warning'>
         button
       </Button>
-      <Button long={true} theme='primary' prefixIcon={IconWrapper}>
+      <Button long={true} color='primary' prefixIcon={IconWrapper}>
         button
       </Button>
     </Wrapper>

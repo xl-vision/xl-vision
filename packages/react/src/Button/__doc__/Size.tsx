@@ -37,24 +37,24 @@ export default () => {
       <Button onClick={handleSizeChange} size={size}>
         change size
       </Button>
-      <Button variant='text' theme='primary' size={size}>
+      <Button variant='text' color='primary' size={size}>
         button
       </Button>
-      <Button variant='outlined' theme='secondary' size={size}>
+      <Button variant='outlined' color='secondary' size={size}>
         button
       </Button>
-      <Button variant='text' theme='error' size={size}>
+      <Button variant='text' color='error' size={size}>
         button
       </Button>
-      <Button theme='warning' size={size}>
+      <Button color='warning' size={size}>
         button
       </Button>
-      <Button round={true} theme='primary' size={size}>
+      <Button round={true} color='primary' size={size}>
         button
       </Button>
-      <Button theme='primary' size={size} prefixIcon={IconWrapper} />
-      <Button theme='primary' size={size} suffixIcon={IconWrapper} />
-      <Button round={true} theme='primary' size={size} prefixIcon={IconWrapper} />
+      <Button color='primary' size={size} prefixIcon={IconWrapper} />
+      <Button color='primary' size={size} suffixIcon={IconWrapper} />
+      <Button round={true} color='primary' size={size} prefixIcon={IconWrapper} />
     </Wrapper>
   );
 };

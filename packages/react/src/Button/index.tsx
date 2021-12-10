@@ -12,14 +12,14 @@ import CollapseTransition from '../CollapseTransition';
 import { alpha } from '../utils/color';
 import { useTheme } from '../ThemeProvider';
 
-export type ButtonTheme = keyof ThemeColors | 'default';
+export type ButtonColor = keyof ThemeColors | 'default';
 
 export type ButtonSize = 'small' | 'middle' | 'large';
 
 export type ButtonVariant = 'contained' | 'outlined' | 'text';
 
 export type ButtonProps = BaseButtonProps & {
-  theme?: ButtonTheme;
+  color?: ButtonColor;
   disableElevation?: boolean;
   size?: ButtonSize;
   prefixIcon?: React.ReactElement<React.SVGAttributes<SVGSVGElement>>;
@@ -32,7 +32,7 @@ export type ButtonProps = BaseButtonProps & {
 const displayName = 'Button';
 
 export type ButtonStyleProps = {
-  theme: ButtonTheme;
+  color: ButtonColor;
   disableElevation: boolean;
   size: ButtonSize;
   disabled?: boolean;
@@ -53,9 +53,9 @@ const ButtonRoot = styled(BaseButton, {
   name: displayName,
   slot: 'Root',
 })<ButtonStyleProps>(({ theme, styleProps }) => {
-  const { color: colorTheme, transition, typography, elevations, shape } = theme;
+  const { color: themeColor, transition, typography, elevations, shape } = theme;
   const {
-    theme: themeStyle,
+    color: colorStyle,
     disableElevation,
     disabled,
     loading,
@@ -111,7 +111,7 @@ const ButtonRoot = styled(BaseButton, {
     styles.backgroundColor = 'transparent';
 
     const color =
-      themeStyle === 'default' ? colorTheme.text.primary : colorTheme.themes[themeStyle].color;
+      colorStyle === 'default' ? themeColor.text.primary : themeColor.themes[colorStyle].color;
     styles.color = color;
 
     if (variant === 'outlined') {
@@ -122,22 +122,22 @@ const ButtonRoot = styled(BaseButton, {
 
     if (disabled || loading) {
       styles.opacity =
-        themeStyle === 'default'
-          ? colorTheme.action.disabled
-          : colorTheme.themes[themeStyle].action.disabled;
+        colorStyle === 'default'
+          ? themeColor.action.disabled
+          : themeColor.themes[colorStyle].action.disabled;
     } else {
       styles['&:hover'] = {
-        backgroundColor: alpha(color, colorTheme.action.hover),
+        backgroundColor: alpha(color, themeColor.action.hover),
       };
       styles['&:focus'] = {
-        backgroundColor: alpha(color, colorTheme.action.focus),
+        backgroundColor: alpha(color, themeColor.action.focus),
       };
     }
   } else if (variant === 'contained') {
     // 特殊处理
     const backgroundColor =
-      themeStyle === 'default' ? colorTheme.background.paper : colorTheme.themes[themeStyle].color;
-    const baseColor = colorTheme.getContrastText(backgroundColor);
+      colorStyle === 'default' ? themeColor.background.paper : themeColor.themes[colorStyle].color;
+    const baseColor = themeColor.getContrastText(backgroundColor);
     styles.color = baseColor.text.primary;
     styles.backgroundColor = backgroundColor;
 
@@ -148,11 +148,11 @@ const ButtonRoot = styled(BaseButton, {
         styles.boxShadow = elevations(2).boxShadow;
       }
       styles['&:hover'] = {
-        backgroundColor: colorTheme.applyState(backgroundColor, 'hover'),
+        backgroundColor: themeColor.applyState(backgroundColor, 'hover'),
         ...(!disableElevation && elevations(4)),
       };
       styles['&:focus'] = {
-        backgroundColor: colorTheme.applyState(backgroundColor, 'focus'),
+        backgroundColor: themeColor.applyState(backgroundColor, 'focus'),
         ...(!disableElevation && elevations(8)),
       };
     }
@@ -225,7 +225,7 @@ const Loading = styled(Icon, {
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const {
-    theme = 'default',
+    color = 'default',
     disableElevation = false,
     size = 'middle',
     disabled,
@@ -263,7 +263,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
   const rootClasses = clsx(
     rootClassName,
     `${rootClassName}--size-${size}`,
-    `${rootClassName}--theme-${theme}`,
+    `${rootClassName}--color-${color}`,
     `${rootClassName}--variant-${variant}`,
     {
       [`${rootClassName}--elevation`]: !disableElevation && variant === 'contained',
@@ -326,7 +326,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
       loading={loading}
       disabled={disabled}
       styleProps={{
-        theme,
+        color,
         disableElevation,
         size,
         disabled,
@@ -348,7 +348,7 @@ if (!env.isProduction) {
   Button.displayName = displayName;
 
   Button.propTypes = {
-    theme: PropTypes.oneOf<ButtonTheme>(['default', 'error', 'primary', 'secondary', 'warning']),
+    color: PropTypes.oneOf<ButtonColor>(['default', 'error', 'primary', 'secondary', 'warning']),
     disableElevation: PropTypes.bool,
     loading: PropTypes.bool,
     disabled: PropTypes.bool,

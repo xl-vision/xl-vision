@@ -68,7 +68,7 @@ export default () => {
         arrow={<div className='arrow' />}
         offset={10}
       >
-        <Button theme='primary'>hover</Button>
+        <Button color='primary'>hover</Button>
       </PopperRoot>
     </Wrapper>
   );

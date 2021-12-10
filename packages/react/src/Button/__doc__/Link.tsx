@@ -14,19 +14,19 @@ export default () => {
   return (
     <Wrapper>
       <Button href='#'>button</Button>
-      <Button variant='text' href='#' theme='primary'>
+      <Button variant='text' href='#' color='primary'>
         button
       </Button>
-      <Button href='#' theme='secondary'>
+      <Button href='#' color='secondary'>
         button
       </Button>
-      <Button variant='text' href='#' theme='error'>
+      <Button variant='text' href='#' color='error'>
         button
       </Button>
-      <Button variant='outlined' href='#' theme='warning'>
+      <Button variant='outlined' href='#' color='warning'>
         button
       </Button>
-      <Button href='#' disabled={true} theme='primary'>
+      <Button href='#' disabled={true} color='primary'>
         disabled
       </Button>
     </Wrapper>

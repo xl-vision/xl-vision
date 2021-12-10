@@ -20,7 +20,7 @@ export default () => {
   return (
     <Wrapper>
       <Tooltip placement='top' content={content}>
-        <Button theme='primary'>button</Button>
+        <Button color='primary'>button</Button>
       </Tooltip>
     </Wrapper>
   );

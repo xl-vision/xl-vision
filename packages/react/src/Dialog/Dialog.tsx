@@ -179,7 +179,7 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
       {!prompt && (
         /** @ts-ignore */
         <Button
-          theme='primary'
+          color='primary'
           variant='text'
           {...cancelButtonProps}
           loading={cancelLoading}
@@ -190,7 +190,7 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
       )}
       {/** @ts-ignore */}
       <Button
-        theme='primary'
+        color='primary'
         variant='text'
         {...confirmButtonProps}
         loading={confirmLoading}

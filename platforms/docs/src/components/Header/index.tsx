@@ -93,7 +93,7 @@ const Menus = styled('ul')(({ theme }) => {
         display: 'block',
         color: theme.color.text.primary,
         textDecoration: 'none',
-        padding: '6px 12px',
+        padding: '0 6px',
         transition: theme.transition.standard('all'),
         '&.active, &:hover': {
           color: theme.color.themes.primary.color,
@@ -167,7 +167,7 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
         <div className='left'>
           <Dropdown menus={mobileMenus} trigger='click'>
             <Button
-              className='sm-down'
+              className='md-down'
               aria-label='Menus'
               variant='text'
               prefixIcon={
@@ -180,12 +180,12 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
           <Link href='/' passHref={true}>
             <LogoWrapper>
               <Logo />
-              <span>xl vision</span>
+              <span className='sm-up'>xl vision</span>
             </LogoWrapper>
           </Link>
         </div>
         <div className='right'>
-          <Menus className='sm-up'>
+          <Menus className='md-up'>
             <li>
               <Link href='/components'>
                 <a className={setActiveClassName('/components')}>{locale.header.component}</a>

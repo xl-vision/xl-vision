@@ -137,13 +137,13 @@ const IconSearch: React.FunctionComponent<void> = () => {
       <div className='top'>
         <div className='left'>
           <Button
-            theme={iconType === IconType.OUTLINED ? 'primary' : 'default'}
+            color={iconType === IconType.OUTLINED ? 'primary' : 'default'}
             onClick={() => setIconType(IconType.OUTLINED)}
           >
             Outlined
           </Button>
           <Button
-            theme={iconType === IconType.FILLED ? 'primary' : 'default'}
+            color={iconType === IconType.FILLED ? 'primary' : 'default'}
             onClick={() => setIconType(IconType.FILLED)}
           >
             Filled

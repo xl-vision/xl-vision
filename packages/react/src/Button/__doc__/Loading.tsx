@@ -42,16 +42,16 @@ export default () => {
       <Button loading={loading} onClick={handleLoading}>
         click me
       </Button>
-      <Button variant='text' loading={loading} prefixIcon={IconWrapper} theme='primary'>
+      <Button variant='text' loading={loading} prefixIcon={IconWrapper} color='primary'>
         button
       </Button>
-      <Button loading={loading} theme='secondary'>
+      <Button loading={loading} color='secondary'>
         button
       </Button>
-      <Button variant='text' loading={loading} theme='error'>
+      <Button variant='text' loading={loading} color='error'>
         button
       </Button>
-      <Button variant='outlined' loading={loading} theme='warning'>
+      <Button variant='outlined' loading={loading} color='warning'>
         button
       </Button>
     </Wrapper>

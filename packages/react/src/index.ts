@@ -43,7 +43,7 @@ export type {
   ButtonSize,
   ButtonStyleProps,
   ButtonSuffixStyleProps,
-  ButtonTheme,
+  ButtonColor,
   ButtonVariant,
 } from './Button';
 export { default as BaseButton } from './BaseButton';

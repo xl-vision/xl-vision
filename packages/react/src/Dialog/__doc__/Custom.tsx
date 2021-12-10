@@ -64,7 +64,7 @@ export default () => {
         Cancel
       </Button>
       <Button
-        theme='primary'
+        color='primary'
         disableElevation={true}
         onClick={handleClose}
         style={{ marginRight: 8 }}
@@ -76,7 +76,7 @@ export default () => {
 
   return (
     <>
-      <Button theme='primary' onClick={handleClick}>
+      <Button color='primary' onClick={handleClick}>
         click
       </Button>
       <Dialog title={title} visible={visible} onVisibleChange={setVisible} footer={footer}>
