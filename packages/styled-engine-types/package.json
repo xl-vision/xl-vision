@@ -27,6 +27,9 @@
   "dependencies": {
     "csstype": "^3.0.8"
   },
+  "devDependencies": {
+    "@types/react": ">=16.8.0"
+  },
   "peerDependencies": {
     "@types/react": ">=16.8.0"
   },
