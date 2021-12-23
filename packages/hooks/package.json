@@ -32,7 +32,10 @@
     "url": "https://github.com/xl-vision/xl-vision/issues"
   },
   "dependencies": {
-    "@xl-vision/utils": "^0.1.1-alpha.11"
+    "@xl-vision/utils": "workspace:^"
+  },
+  "devDependencies": {
+    "@types/react": ">=16.8.0"
   },
   "peerDependencies": {
     "@babel/runtime": "^7.15.4",

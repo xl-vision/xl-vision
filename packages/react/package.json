@@ -33,16 +33,17 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.10.1",
-    "@xl-vision/hooks": "^0.1.1-alpha.11",
-    "@xl-vision/icons": "^0.1.1-alpha.11",
-    "@xl-vision/styled-engine": "^0.1.1-alpha.12",
-    "@xl-vision/utils": "^0.1.1-alpha.11",
+    "@xl-vision/hooks": "workspace:^",
+    "@xl-vision/icons": "workspace:^",
+    "@xl-vision/styled-engine": "workspace:^",
+    "@xl-vision/utils": "workspace:^",
     "clsx": "^1.1.1",
     "prop-types": "^15.7.2",
     "resize-observer-polyfill": "^1.5.1"
   },
   "devDependencies": {
-    "@types/prop-types": "^15.7.4"
+    "@types/prop-types": "^15.7.4",
+    "@types/react": ">=16.8.0"
   },
   "peerDependencies": {
     "@babel/runtime": "^7.15.4",

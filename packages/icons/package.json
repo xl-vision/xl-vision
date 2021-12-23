@@ -33,9 +33,15 @@
     "url": "https://github.com/xl-vision/xl-vision/issues"
   },
   "dependencies": {
-    "@xl-vision/utils": "^0.1.1-alpha.11",
+    "@xl-vision/utils": "workspace:^",
     "clsx": "^1.1.1",
     "prop-types": "^15.7.2"
+  },
+  "devDependencies": {
+    "@types/react": ">=16.8.0",
+    "fs-extra": "^10.0.0",
+    "mustache": "^4.1.0",
+    "svgo": "^2.0.0"
   },
   "peerDependencies": {
     "@babel/runtime": "^7.15.4",
@@ -50,10 +56,5 @@
   "sideEffects": false,
   "publishConfig": {
     "access": "public"
-  },
-  "devDependencies": {
-    "fs-extra": "^10.0.0",
-    "mustache": "^4.1.0",
-    "svgo": "^2.0.0"
   }
 }
