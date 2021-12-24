@@ -1,3 +1,7 @@
+import styled from './styled';
+
+export default styled;
+
 export type {
   ShouldForwardProp,
   SimpleInterpolation,
@@ -20,7 +24,6 @@ export type {
   ExtractProps,
 } from '@xl-vision/styled-engine-types';
 
-export { default } from './styled';
 export { default as createGlobalStyles } from './createGlobalStyles';
 export { default as keyframes } from './keyframes';
 export { default as StyleEngineProvider } from './StyledEngineProvider';

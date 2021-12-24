@@ -1,7 +1,7 @@
 import { Button, Dialog } from '@xl-vision/react';
 import React from 'react';
 
-export default () => {
+const Tips = () => {
   const handleInfo = React.useCallback(() => {
     Dialog.info({
       title: 'some messages...some messages...',
@@ -57,3 +57,5 @@ export default () => {
     </>
   );
 };
+
+export default Tips;

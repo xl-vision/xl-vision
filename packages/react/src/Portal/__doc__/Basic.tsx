@@ -27,7 +27,7 @@ const Wrapper = styled('div')(({ theme }) => {
   };
 });
 
-export default () => {
+const Basic = () => {
   const handleClick = React.useCallback(() => {
     alert('You clicked container1!');
   }, []);
@@ -59,3 +59,5 @@ export default () => {
     </Wrapper>
   );
 };
+
+export default Basic;

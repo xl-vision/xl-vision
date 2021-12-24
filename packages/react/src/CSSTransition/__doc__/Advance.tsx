@@ -24,7 +24,7 @@ const Div = styled('div')`
   }
 `;
 
-export default () => {
+const Advance = () => {
   const [show, setShow] = React.useState(false);
 
   const [display, setDisplay] = React.useState(false);
@@ -54,3 +54,5 @@ export default () => {
     </div>
   );
 };
+
+export default Advance;

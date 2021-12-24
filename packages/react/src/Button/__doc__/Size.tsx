@@ -17,7 +17,7 @@ const Wrapper = styled('div')(() => {
   };
 });
 
-export default () => {
+const Size = () => {
   const [size, setSize] = React.useState<ButtonSize>('middle');
 
   const handleSizeChange = React.useCallback(() => {
@@ -58,3 +58,5 @@ export default () => {
     </Wrapper>
   );
 };
+
+export default Size;

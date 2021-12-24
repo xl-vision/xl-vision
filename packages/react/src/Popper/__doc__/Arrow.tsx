@@ -58,7 +58,7 @@ const PopperRoot = styled(Popper)(({ theme }) => {
 
 const popup = <span className='popup'>This is popper</span>;
 
-export default () => {
+const Arrow = () => {
   return (
     <Wrapper>
       <PopperRoot
@@ -73,3 +73,5 @@ export default () => {
     </Wrapper>
   );
 };
+
+export default Arrow;

@@ -2,7 +2,7 @@
 import { Button, Dialog } from '@xl-vision/react';
 import React from 'react';
 
-export default () => {
+const Width = () => {
   const [visible, setVisible] = React.useState(false);
 
   const handleClick = React.useCallback(() => {
@@ -31,3 +31,5 @@ export default () => {
     </>
   );
 };
+
+export default Width;

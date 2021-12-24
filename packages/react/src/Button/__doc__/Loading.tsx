@@ -17,7 +17,7 @@ const Wrapper = styled('div')(() => {
   };
 });
 
-export default () => {
+const Loading = () => {
   const [loading, setLoading] = React.useState(false);
 
   const timerRef = React.useRef<NodeJS.Timeout>();
@@ -57,3 +57,5 @@ export default () => {
     </Wrapper>
   );
 };
+
+export default Loading;

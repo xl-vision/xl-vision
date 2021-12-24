@@ -34,9 +34,6 @@
   "dependencies": {
     "@xl-vision/utils": "workspace:^"
   },
-  "devDependencies": {
-    "@types/react": ">=16.8.0"
-  },
   "peerDependencies": {
     "@babel/runtime": "^7.15.4",
     "@types/react": ">=16.8.0",

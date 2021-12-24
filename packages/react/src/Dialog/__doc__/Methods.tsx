@@ -2,7 +2,7 @@ import { WarningOutlined } from '@xl-vision/icons';
 import { Button, Dialog, Icon } from '@xl-vision/react';
 import React from 'react';
 
-export default () => {
+const Methods = () => {
   const handleClick = React.useCallback(() => {
     let i = 5;
     const { destroy, update } = Dialog.open({
@@ -28,10 +28,10 @@ export default () => {
   }, []);
 
   return (
-    <>
-      <Button color='primary' onClick={handleClick}>
-        click
-      </Button>
-    </>
+    <Button color='primary' onClick={handleClick}>
+      click
+    </Button>
   );
 };
+
+export default Methods;

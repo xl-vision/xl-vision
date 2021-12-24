@@ -23,7 +23,7 @@ const Div = styled('div')`
   }
 `;
 
-export default () => {
+const Basic = () => {
   const [show, setShow] = React.useState(false);
 
   return (
@@ -37,3 +37,5 @@ export default () => {
     </div>
   );
 };
+
+export default Basic;

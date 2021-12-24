@@ -10,7 +10,7 @@ const Wrapper = styled('div')(() => {
   };
 });
 
-export default () => {
+const DisableElevation = () => {
   return (
     <Wrapper>
       <Button disableElevation={true}>button</Button>
@@ -29,3 +29,5 @@ export default () => {
     </Wrapper>
   );
 };
+
+export default DisableElevation;
