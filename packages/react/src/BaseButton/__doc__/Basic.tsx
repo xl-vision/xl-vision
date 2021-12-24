@@ -13,10 +13,12 @@ const CustomButton = styled(BaseButton)(() => {
   };
 });
 
-export default () => {
+const Basic = () => {
   return (
     <div className='container'>
       <CustomButton>custom css</CustomButton>
     </div>
   );
 };
+
+export default Basic;

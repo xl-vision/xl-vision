@@ -13,7 +13,7 @@ const textArray = ['Tom', 'Green', 'U', 'xl-vision'];
 
 const gapArray = [1, 2, 3, 4, 5];
 
-export default () => {
+const AutoSize = () => {
   const [index, setIndex] = React.useState(0);
   const [gapIndex, setGapIndex] = React.useState(0);
 
@@ -36,3 +36,5 @@ export default () => {
     </Wrapper>
   );
 };
+
+export default AutoSize;

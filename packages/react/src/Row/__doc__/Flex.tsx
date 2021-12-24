@@ -25,7 +25,7 @@ const Box = styled('div')(
 `,
 );
 
-export default () => {
+const Flex = () => {
   return (
     <div>
       <Wrapper>
@@ -118,3 +118,5 @@ export default () => {
     </div>
   );
 };
+
+export default Flex;

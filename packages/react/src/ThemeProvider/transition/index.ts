@@ -1,4 +1,5 @@
 import { CSSObject } from '@xl-vision/styled-engine';
+import React from 'react';
 
 const defaultFunctions = {
   deceleration: 'cubic-bezier(0, 0, 0.2, 1)',

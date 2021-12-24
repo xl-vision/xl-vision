@@ -2,7 +2,7 @@ import { DesktopOutlined, UserOutlined } from '@xl-vision/icons';
 import { Avatar, Icon, Tooltip } from '@xl-vision/react';
 import React from 'react';
 
-export default () => {
+const Group = () => {
   return (
     <>
       <Avatar.Group>
@@ -82,3 +82,5 @@ export default () => {
     </>
   );
 };
+
+export default Group;

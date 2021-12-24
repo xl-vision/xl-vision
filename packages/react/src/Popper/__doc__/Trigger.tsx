@@ -33,7 +33,7 @@ const Wrapper = styled('div')(({ theme }) => {
 
 const popup = <span>This is popper</span>;
 
-export default () => {
+const Trigger = () => {
   const [visible, setVisible] = React.useState(false);
 
   const handleCustomClick = React.useCallback(() => {
@@ -73,3 +73,5 @@ export default () => {
     </Wrapper>
   );
 };
+
+export default Trigger;

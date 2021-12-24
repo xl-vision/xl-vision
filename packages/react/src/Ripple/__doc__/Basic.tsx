@@ -30,7 +30,7 @@ const Box = styled('div')(
 `,
 );
 
-export default () => {
+const Basic = () => {
   const rippleRef = React.useRef<RippleRef>(null);
 
   const events = React.useMemo(() => {
@@ -58,3 +58,5 @@ export default () => {
     </Box>
   );
 };
+
+export default Basic;

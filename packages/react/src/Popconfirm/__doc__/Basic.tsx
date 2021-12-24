@@ -1,7 +1,7 @@
 import React from 'react';
 import { Popconfirm, Button } from '@xl-vision/react';
 
-export default () => {
+const Basic = () => {
   return (
     <div>
       <Popconfirm title='Are you sure to do it?'>
@@ -10,3 +10,5 @@ export default () => {
     </div>
   );
 };
+
+export default Basic;

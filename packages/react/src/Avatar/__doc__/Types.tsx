@@ -11,7 +11,7 @@ const Wrapper = styled('div')(() => {
   };
 });
 
-export default () => {
+const Types = () => {
   return (
     <Wrapper>
       <Avatar
@@ -34,3 +34,5 @@ export default () => {
     </Wrapper>
   );
 };
+
+export default Types;

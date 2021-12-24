@@ -18,7 +18,7 @@ const content = (
   </span>
 );
 
-export default () => {
+const MaxWidth = () => {
   return (
     <Wrapper>
       <Tooltip placement='top' content={content} maxWidth={200}>
@@ -27,3 +27,5 @@ export default () => {
     </Wrapper>
   );
 };
+
+export default MaxWidth;

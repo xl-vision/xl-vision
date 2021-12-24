@@ -51,7 +51,7 @@ const PopperRoot = styled(Popper)(({ theme }) => {
 
 const popup = <span>content</span>;
 
-export default () => {
+const Basic = () => {
   return (
     <Wrapper>
       <div className='column'>
@@ -116,3 +116,5 @@ export default () => {
     </Wrapper>
   );
 };
+
+export default Basic;

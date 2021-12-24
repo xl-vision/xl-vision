@@ -50,7 +50,7 @@ const CustomButton = styled(BaseButton)(() => {
   };
 });
 
-export default () => {
+const Advance = () => {
   return (
     <div className='container'>
       {images.map((it) => (
@@ -72,3 +72,5 @@ export default () => {
     </div>
   );
 };
+
+export default Advance;

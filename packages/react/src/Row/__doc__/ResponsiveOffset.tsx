@@ -23,7 +23,7 @@ const Box = styled('div')(
 `,
 );
 
-export default () => {
+const ResponsiveOffset = () => {
   return (
     <div>
       <Wrapper>
@@ -99,3 +99,5 @@ export default () => {
     </div>
   );
 };
+
+export default ResponsiveOffset;

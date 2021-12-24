@@ -2,7 +2,7 @@ import React from 'react';
 import { Icon, Row } from '@xl-vision/react';
 import { DeleteFilled, DeleteOutlined } from '@xl-vision/icons';
 
-export default () => {
+const Basic = () => {
   return (
     <div>
       <Row>
@@ -24,3 +24,5 @@ export default () => {
     </div>
   );
 };
+
+export default Basic;

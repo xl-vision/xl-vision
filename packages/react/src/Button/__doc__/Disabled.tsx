@@ -17,7 +17,7 @@ const Wrapper = styled('div')(() => {
   };
 });
 
-export default () => {
+const Disabled = () => {
   return (
     <Wrapper>
       <Button disabled={true}>button</Button>
@@ -39,3 +39,5 @@ export default () => {
     </Wrapper>
   );
 };
+
+export default Disabled;

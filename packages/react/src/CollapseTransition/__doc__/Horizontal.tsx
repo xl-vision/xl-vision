@@ -28,7 +28,7 @@ const Div = styled('div')`
   }
 `;
 
-export default () => {
+const Horizontal = () => {
   const [active, setActive] = React.useState(false);
 
   return (
@@ -47,3 +47,5 @@ export default () => {
     </div>
   );
 };
+
+export default Horizontal;
