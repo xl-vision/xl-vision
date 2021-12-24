@@ -92,6 +92,8 @@ module.exports = {
         checkLocalVariables: true,
       },
     ],
+    'react/function-component-definition': ['error', { namedComponents: 'arrow-function' }],
+    'react/jsx-no-useless-fragment': ['error', { allowExpressions: true }],
     'react/forbid-prop-types': 'off', // todo remove
     'react/jsx-boolean-value': ['error', 'always'],
     'react/display-name': 'error',
@@ -177,6 +179,7 @@ module.exports = {
         'import/no-named-as-default': 'off',
         'unicorn/consistent-function-scoping': 'off',
         'no-console': 'off',
+        'import/no-relative-packages': 'off',
       },
     },
   ],

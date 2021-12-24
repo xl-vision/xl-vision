@@ -17,7 +17,7 @@ const Wrapper = styled('div')(() => {
   };
 });
 
-export default () => {
+const Basic = () => {
   return (
     <div>
       <Wrapper>
@@ -74,3 +74,5 @@ export default () => {
     </div>
   );
 };
+
+export default Basic;

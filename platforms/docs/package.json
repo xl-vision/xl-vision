@@ -13,15 +13,18 @@
   },
   "dependencies": {
     "@mdx-js/react": "^1.6.22",
-    "@xl-vision/hooks": "^0.1.1-alpha.11",
-    "@xl-vision/icons": "^0.1.1-alpha.11",
-    "@xl-vision/react": "^0.1.1-alpha.12",
-    "@xl-vision/styled-engine": "^0.1.1-alpha.12",
-    "@xl-vision/utils": "^0.1.1-alpha.11",
+    "@xl-vision/hooks": "workspace:^",
+    "@xl-vision/icons": "workspace:^",
+    "@xl-vision/react": "workspace:^",
+    "@xl-vision/styled-engine": "workspace:^",
+    "@xl-vision/utils": "workspace:^",
     "clsx": "^1.1.1",
     "js-cookie": "^3.0.1",
     "next": "^12.0.7",
-    "prop-types": "^15.7.2"
+    "prop-types": "^15.7.2",
+    "react": ">=17.0.2",
+    "react-dom": ">=17.0.2",
+    "styled-components": "^5.3.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
@@ -37,10 +40,5 @@
     "prismjs": "^1.25.0",
     "remark-emoji": "^3.0.2",
     "webpack-merge": "^5.8.0"
-  },
-  "peerDependencies": {
-    "react": "^16.8.0 || ^17.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0",
-    "styled-components": "^5.3.1"
   }
 }

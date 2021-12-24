@@ -11,7 +11,7 @@ const Body = styled('div')(({ theme }) => {
   };
 });
 
-export default () => {
+const HideMask = () => {
   const [visible, setVisible] = React.useState(false);
 
   return (
@@ -27,3 +27,4 @@ export default () => {
     </>
   );
 };
+export default HideMask;

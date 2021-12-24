@@ -16,7 +16,7 @@ const content = (
   </span>
 );
 
-export default () => {
+const Rich = () => {
   return (
     <Wrapper>
       <Tooltip placement='top' content={content}>
@@ -25,3 +25,5 @@ export default () => {
     </Wrapper>
   );
 };
+
+export default Rich;

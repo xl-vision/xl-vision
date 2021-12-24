@@ -2,7 +2,7 @@
 import { Button, Popover } from '@xl-vision/react';
 import React from 'react';
 
-export default () => {
+const ClickInner = () => {
   const [visible, setVisible] = React.useState(false);
 
   const content = (
@@ -23,3 +23,5 @@ export default () => {
     </Popover>
   );
 };
+
+export default ClickInner;

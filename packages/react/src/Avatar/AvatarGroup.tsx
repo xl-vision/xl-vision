@@ -5,7 +5,7 @@ import { env } from '@xl-vision/utils';
 import Avatar, { AvatarProps, AvatarShape, AvatarSize, AvatarSizeType } from './Avatar';
 import Popover from '../Popover';
 import { styled } from '../styles';
-import AvatarContext from './AvatarContext';
+import AvatarContext, { AvatarContextProps } from './AvatarContext';
 import { useTheme } from '../ThemeProvider';
 
 export type AvatarGroupPopupPlacement = 'none' | 'top' | 'bottom';
@@ -105,8 +105,10 @@ const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>((props, r
 
   const rootClasses = clsx(rootClassName, className);
 
+  const ctx = React.useMemo<AvatarContextProps>(() => ({ size, shape }), [size, shape]);
+
   return (
-    <AvatarContext.Provider value={{ size, shape }}>
+    <AvatarContext.Provider value={ctx}>
       <AvatarGroupRoot {...others} className={rootClasses} ref={ref}>
         {showedChildren}
       </AvatarGroupRoot>

@@ -32,7 +32,7 @@
     "url": "https://github.com/xl-vision/xl-vision/issues"
   },
   "dependencies": {
-    "@xl-vision/styled-engine-types": "^0.1.1-alpha.11",
+    "@xl-vision/styled-engine-types": "workspace:^",
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
@@ -41,9 +41,9 @@
   "peerDependencies": {
     "@babel/runtime": "^7.15.4",
     "@types/react": ">=16.8.0",
-    "@types/styled-components": "^5.1.7",
+    "@types/styled-components": "^5.1.13",
     "react": ">=16.8.0",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.3.3"
   },
   "peerDependenciesMeta": {
     "@types/react": {

@@ -15,7 +15,7 @@ const Wrapper = styled('div')(() => {
 
 const content = <span>msg</span>;
 
-export default () => {
+const Basic = () => {
   return (
     <Wrapper>
       <div className='column'>
@@ -80,3 +80,5 @@ export default () => {
     </Wrapper>
   );
 };
+
+export default Basic;

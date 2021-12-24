@@ -1,7 +1,7 @@
 import { Button, Dialog } from '@xl-vision/react';
 import React from 'react';
 
-export default () => {
+const UseDialog = () => {
   const [dialog, holders] = Dialog.useDialog();
 
   const handleInfo = React.useCallback(() => {
@@ -60,3 +60,4 @@ export default () => {
     </>
   );
 };
+export default UseDialog;

@@ -31,7 +31,7 @@ const CustomFooter = styled('div')(({ theme }) => {
   };
 });
 
-export default () => {
+const Custom = () => {
   const [visible, setVisible] = React.useState(false);
 
   const handleClick = React.useCallback(() => {
@@ -87,3 +87,5 @@ export default () => {
     </>
   );
 };
+
+export default Custom;

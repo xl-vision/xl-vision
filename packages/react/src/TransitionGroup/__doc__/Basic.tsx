@@ -27,7 +27,7 @@ const Demo = styled('span')({
   },
 });
 
-export default () => {
+const Basic = () => {
   const nextNumRef = React.useRef(10);
 
   const [items, setItems] = React.useState([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
@@ -68,3 +68,5 @@ export default () => {
     </div>
   );
 };
+
+export default Basic;
