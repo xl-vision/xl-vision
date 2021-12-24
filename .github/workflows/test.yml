@@ -5,27 +5,7 @@ on:
     branches:
       - master
 jobs:
-  setup:
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-
-      - uses: pnpm/action-setup@v2.0.1
-        with:
-          version: 6
-      - name: Use Node.js 14
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
-          cache: 'pnpm'
-      - name: Install dependencies
-        run: pnpm install
-
   lint:
-    needs: setup
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -48,7 +28,6 @@ jobs:
         run: npm run lint
 
   build_library:
-    needs: setup
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -71,7 +50,6 @@ jobs:
         run: npm run build
 
   build_docs:
-    needs: setup
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -94,7 +72,6 @@ jobs:
         run: npm run docs
 
   test:
-    needs: setup
     runs-on: ubuntu-latest
     steps:
       - name: checkout
