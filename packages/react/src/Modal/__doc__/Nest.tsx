@@ -11,7 +11,7 @@ const Body = styled('div')(({ theme }) => {
   };
 });
 
-export default () => {
+const Nest = () => {
   const [visible1, setVisible1] = React.useState(false);
   const [visible2, setVisible2] = React.useState(false);
 
@@ -36,3 +36,5 @@ export default () => {
     </>
   );
 };
+
+export default Nest;

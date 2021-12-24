@@ -14,7 +14,7 @@ const Div = styled('div')`
   margin-top: 16px;
 `;
 
-export default () => {
+const Appear = () => {
   const [show, setShow] = React.useState(true);
 
   const beforeEnter: BeforeEventHook = React.useCallback((el) => {
@@ -95,3 +95,5 @@ export default () => {
     </div>
   );
 };
+
+export default Appear;

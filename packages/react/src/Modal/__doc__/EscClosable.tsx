@@ -11,7 +11,7 @@ const Body = styled('div')(({ theme }) => {
   };
 });
 
-export default () => {
+const EscClosable = () => {
   const [visible, setVisible] = React.useState(false);
 
   return (
@@ -27,3 +27,5 @@ export default () => {
     </>
   );
 };
+
+export default EscClosable;

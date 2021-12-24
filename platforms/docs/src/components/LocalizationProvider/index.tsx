@@ -44,8 +44,13 @@ const LocalizationProvider: React.FunctionComponent<LocalizationProviderProps> =
     return locales[defaultLanguage];
   }, [language]);
 
+  const ctx = React.useMemo<LocalizationContextProps>(
+    () => ({ language, supportLocales: locales, locale }),
+    [language, locale],
+  );
+
   return (
-    <LocalizationContext.Provider value={{ language, supportLocales: locales, locale }}>
+    <LocalizationContext.Provider value={ctx}>
       <XlLocalizationProvider language={language}>{children}</XlLocalizationProvider>
     </LocalizationContext.Provider>
   );

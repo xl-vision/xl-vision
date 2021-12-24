@@ -1,7 +1,7 @@
 import { Button, Dropdown } from '@xl-vision/react';
 import React from 'react';
 
-export default () => {
+const Basic = () => {
   const menus = (
     <>
       <Dropdown.Item onClick={() => console.log(1)}>1st menu item</Dropdown.Item>
@@ -19,3 +19,5 @@ export default () => {
     </Dropdown>
   );
 };
+
+export default Basic;

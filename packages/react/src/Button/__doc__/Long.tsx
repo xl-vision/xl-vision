@@ -17,7 +17,7 @@ const Wrapper = styled('div')(() => {
   };
 });
 
-export default () => {
+const Long = () => {
   return (
     <Wrapper>
       <Button long={true}>button</Button>
@@ -36,3 +36,5 @@ export default () => {
     </Wrapper>
   );
 };
+
+export default Long;

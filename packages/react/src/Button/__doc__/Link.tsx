@@ -10,7 +10,7 @@ const Wrapper = styled('div')(() => {
   };
 });
 
-export default () => {
+const Link = () => {
   return (
     <Wrapper>
       <Button href='#'>button</Button>
@@ -32,3 +32,5 @@ export default () => {
     </Wrapper>
   );
 };
+
+export default Link;

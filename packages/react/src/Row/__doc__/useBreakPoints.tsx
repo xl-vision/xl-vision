@@ -3,7 +3,7 @@ import { Row } from '@xl-vision/react';
 
 const { useBreakPoints } = Row;
 
-export default () => {
+const UseBreakPoints = () => {
   const breakPoints = useBreakPoints();
 
   return (
@@ -16,3 +16,5 @@ export default () => {
     </>
   );
 };
+
+export default UseBreakPoints;

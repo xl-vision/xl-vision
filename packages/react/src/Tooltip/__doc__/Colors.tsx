@@ -14,7 +14,7 @@ const content = <span>This is content</span>;
 
 const colors = ['#f50', '#2db7f5', '#87d068', '#108ee9'];
 
-export default () => {
+const Colors = () => {
   return (
     <Wrapper>
       {colors.map((it) => (
@@ -25,3 +25,5 @@ export default () => {
     </Wrapper>
   );
 };
+
+export default Colors;

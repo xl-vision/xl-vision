@@ -14,7 +14,7 @@ const Wrapper = React.forwardRef<unknown, WrapperProps>((props, ref) => {
   return <Tooltip {...tooltipProps}>{React.cloneElement(children, { ...others, ref })}</Tooltip>;
 });
 
-export default () => {
+const Advance = () => {
   const menus = (
     <>
       <Dropdown.Item>1st menu item</Dropdown.Item>
@@ -32,3 +32,5 @@ export default () => {
     </Dropdown>
   );
 };
+
+export default Advance;

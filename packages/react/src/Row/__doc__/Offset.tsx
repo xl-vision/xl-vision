@@ -23,7 +23,7 @@ const Box = styled('div')(
 `,
 );
 
-export default () => {
+const Offset = () => {
   return (
     <div>
       <Wrapper>
@@ -71,3 +71,5 @@ export default () => {
     </div>
   );
 };
+
+export default Offset;

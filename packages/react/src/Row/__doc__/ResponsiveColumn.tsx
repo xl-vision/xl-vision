@@ -11,7 +11,7 @@ const Box = styled('div')(
 `,
 );
 
-export default () => {
+const ResponsiveColumn = () => {
   return (
     <div>
       <Row
@@ -68,3 +68,5 @@ export default () => {
     </div>
   );
 };
+
+export default ResponsiveColumn;

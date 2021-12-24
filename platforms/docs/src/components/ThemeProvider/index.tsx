@@ -47,8 +47,16 @@ const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = (props) => {
     };
   }, [isDark]);
 
+  const ctx = React.useMemo<ThemeContextProps>(
+    () => ({
+      isDark,
+      setDark: setDarkWrapper,
+    }),
+    [isDark, setDarkWrapper],
+  );
+
   return (
-    <ThemeContext.Provider value={{ isDark, setDark: setDarkWrapper }}>
+    <ThemeContext.Provider value={ctx}>
       <XlThemeProvider theme={theme}>{children}</XlThemeProvider>
     </ThemeContext.Provider>
   );
