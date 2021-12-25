@@ -47,12 +47,11 @@ Please refer to the [documentation](https://xl-vision.8910.xyz) for detailed usa
 ```bash
 $ git clone git@github.com:xl-vision/xl-vision.git
 $ cd xl-vision
-$ npm install
-$ npm run bootstrap
+$ pnpm i
 $ npm run dev
 ```
 
-Open your browser and visit http://localhost:8000.
+Open your browser and visit http://localhost:3000.
 
 # :handshake: Contributing And Issue
 
