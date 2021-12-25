@@ -28,3 +28,7 @@ modern
 dist
 out
 .next
+
+# Automatic generated
+/platforms/docs/public/robots.txt
+/platforms/docs/public/sitemap.xml
