@@ -7,8 +7,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
-    "docs": "next build",
+    "docs": "next build && npm run sitemap",
     "start": "next start",
+    "sitemap": "next-sitemap --config sitemap.js",
     "analyze": "cross-env ANALYZE=true npm run docs"
   },
   "dependencies": {
@@ -37,6 +38,7 @@
     "@types/node": "17.0.4",
     "babel-plugin-styled-components": "^2.0.1",
     "cross-env": "^7.0.3",
+    "next-sitemap": "^1.6.203",
     "prismjs": "^1.25.0",
     "remark-emoji": "^3.0.2",
     "webpack-merge": "^5.8.0"
