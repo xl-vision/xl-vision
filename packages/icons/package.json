@@ -35,12 +35,12 @@
   "dependencies": {
     "@xl-vision/utils": "workspace:^",
     "clsx": "^1.1.1",
-    "prop-types": "^15.7.2"
+    "prop-types": "^15.8.0"
   },
   "devDependencies": {
     "fs-extra": "^10.0.0",
-    "mustache": "^4.1.0",
-    "svgo": "^2.0.0"
+    "mustache": "^4.2.0",
+    "svgo": "^2.8.0"
   },
   "peerDependencies": {
     "@babel/runtime": "^7.15.4",
