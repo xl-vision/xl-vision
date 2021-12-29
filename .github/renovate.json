@@ -29,17 +29,20 @@
     {
       "matchPaths": ["+(package.json)"],
       "matchUpdateTypes": ["minor", "patch"],
-      "excludePackageNames": ["react", "react-dom", "@types/react", "@types/react-dom"],
       "groupName": "root(non-major)"
     },
     {
       "matchPaths": ["+(package.json)"],
       "matchUpdateTypes": ["major"],
-      "excludePackageNames": ["react", "react-dom", "@types/react", "@types/react-dom"],
       "groupName": "root(major)"
     },
     {
       "depTypeList": ["peerDependencies"],
+      "enabled": false
+    },
+    {
+      "matchPaths": ["+(package.json)"],
+      "matchPackageNames": ["react", "react-dom", "@types/react", "@types/react-dom"],
       "enabled": false
     }
   ],
