@@ -2,40 +2,10 @@
   "extends": ["config:base", "schedule:weekly"],
   "labels": ["dependencies"],
   "ignorePaths": [],
-  "pin": false,
+  "pin": true,
   "rangeStrategy": "bump",
   "node": false,
   "packageRules": [
-    {
-      "matchPaths": ["packages/**"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "groupName": "packages(non-major)"
-    },
-    {
-      "matchPaths": ["packages/**"],
-      "matchUpdateTypes": ["major"],
-      "groupName": "packages(major)"
-    },
-    {
-      "matchPaths": ["platforms/**"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "groupName": "platforms(non-major)"
-    },
-    {
-      "matchPaths": ["platforms/**"],
-      "matchUpdateTypes": ["major"],
-      "groupName": "platforms(major)"
-    },
-    {
-      "matchPaths": ["+(package.json)"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "groupName": "root(non-major)"
-    },
-    {
-      "matchPaths": ["+(package.json)"],
-      "matchUpdateTypes": ["major"],
-      "groupName": "root(major)"
-    },
     {
       "depTypeList": ["peerDependencies"],
       "enabled": false
