@@ -41,7 +41,6 @@
       "enabled": false
     },
     {
-      "matchPaths": ["+(package.json)"],
       "matchPackageNames": ["react", "react-dom", "@types/react", "@types/react-dom"],
       "enabled": false
     }
