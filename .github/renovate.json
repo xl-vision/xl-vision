@@ -29,12 +29,13 @@
     {
       "matchPaths": ["+(package.json)"],
       "matchUpdateTypes": ["minor", "patch"],
+      "excludePackageNames": ["react", "react-dom", "@types/react", "@types/react-dom"],
       "groupName": "root(non-major)"
     },
     {
       "matchPaths": ["+(package.json)"],
       "matchUpdateTypes": ["major"],
-      "excludePackageNames": ["^react", "^@types/react"],
+      "excludePackageNames": ["react", "react-dom", "@types/react", "@types/react-dom"],
       "groupName": "root(major)"
     },
     {
