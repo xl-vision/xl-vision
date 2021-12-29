@@ -34,6 +34,7 @@
     {
       "matchPaths": ["+(package.json)"],
       "matchUpdateTypes": ["major"],
+      "excludePackageNames": ["^react", "^@types/react"],
       "groupName": "root(major)"
     },
     {
