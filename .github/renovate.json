@@ -7,22 +7,22 @@
   "node": false,
   "packageRules": [
     {
-      "matchPaths": ["+(packages/**/package.json)"],
+      "matchPaths": ["packages/**"],
       "matchUpdateTypes": ["minor", "patch"],
       "groupName": "packages(non-major)"
     },
     {
-      "matchPaths": ["+(packages/**/package.json)"],
+      "matchPaths": ["packages/**"],
       "matchUpdateTypes": ["major"],
       "groupName": "packages(major)"
     },
     {
-      "matchPaths": ["+(platforms/**/package.json)"],
+      "matchPaths": ["platforms/**"],
       "matchUpdateTypes": ["minor", "patch"],
       "groupName": "platforms(non-major)"
     },
     {
-      "matchPaths": ["+(platforms/**/package.json)"],
+      "matchPaths": ["platforms/**"],
       "matchUpdateTypes": ["major"],
       "groupName": "platforms(major)"
     },
