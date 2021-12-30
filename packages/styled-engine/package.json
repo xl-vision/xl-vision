@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@xl-vision/styled-engine-types": "workspace:^",
-    "prop-types": "^15.7.2"
+    "prop-types": "^15.8.0"
   },
   "devDependencies": {
     "@types/prop-types": "^15.7.4"
