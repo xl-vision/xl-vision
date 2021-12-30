@@ -131,7 +131,7 @@ importers:
 
   packages/react:
     specifiers:
-      '@popperjs/core': ^2.10.1
+      '@popperjs/core': ^2.11.0
       '@types/prop-types': ^15.7.4
       '@xl-vision/hooks': workspace:^
       '@xl-vision/icons': workspace:^
