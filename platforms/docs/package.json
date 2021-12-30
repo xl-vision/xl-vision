@@ -28,8 +28,8 @@
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/preset-typescript": "^7.12.7",
+    "@babel/core": "^7.16.5",
+    "@babel/preset-typescript": "^7.16.5",
     "@mapbox/rehype-prism": "^0.8.0",
     "@mdx-js/mdx": "^1.6.22",
     "@next/bundle-analyzer": "^12.0.4",
