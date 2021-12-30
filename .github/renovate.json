@@ -6,6 +6,7 @@
   "dependencyDashboardApproval": true,
   "rangeStrategy": "bump",
   "node": false,
+  "prConcurrentLimit": 5,
   "packageRules": [
     {
       "depTypeList": ["peerDependencies"],
