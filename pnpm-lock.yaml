@@ -188,7 +188,7 @@ importers:
       '@xl-vision/react': workspace:^
       '@xl-vision/styled-engine': workspace:^
       '@xl-vision/utils': workspace:^
-      babel-plugin-styled-components: ^2.0.1
+      babel-plugin-styled-components: ^2.0.2
       clsx: ^1.1.1
       cross-env: ^7.0.3
       js-cookie: ^3.0.1
