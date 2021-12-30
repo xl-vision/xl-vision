@@ -44,7 +44,7 @@ importers:
       gulp: ^4.0.2
       gulp-babel: ^8.0.0
       gulp-typescript: ^5.0.1
-      husky: ^7.0.2
+      husky: ^7.0.4
       jest: ^27.1.0
       jest-styled-components: ^7.0.5
       minimist: ^1.2.5
