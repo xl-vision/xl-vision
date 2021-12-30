@@ -34,7 +34,7 @@
     "@commitlint/cli": "^16.0.1",
     "@commitlint/config-conventional": "^16.0.0",
     "@commitlint/format": "^16.0.0",
-    "@types/enzyme": "^3.10.9",
+    "@types/enzyme": "^3.10.10",
     "@types/glob": "^7.1.4",
     "@types/jest": "^27.0.1",
     "@types/react": "^17.0.24",
