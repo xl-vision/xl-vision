@@ -22,7 +22,7 @@ importers:
       chalk: ^4.1.2
       clipboard: ^2.0.8
       commitizen: ^4.2.4
-      confusing-browser-globals: ^1.0.10
+      confusing-browser-globals: ^1.0.11
       csstype: ^3.0.2
       cz-conventional-changelog: ^3.3.0
       enzyme: ^3.11.0
