@@ -119,7 +119,7 @@ importers:
       fs-extra: ^10.0.0
       mustache: ^4.1.0
       prop-types: ^15.8.0
-      svgo: ^2.0.0
+      svgo: ^2.8.0
     dependencies:
       '@xl-vision/utils': link:../utils
       clsx: 1.1.1
