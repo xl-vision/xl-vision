@@ -11,7 +11,7 @@
       "enabled": false
     },
     {
-      "matchPackageNames": ["react", "react-dom", "@types/react", "@types/react-dom"],
+      "matchPackageNames": ["react", "react-dom", "@types/react", "@types/react-dom", "csstype"],
       "enabled": false
     }
   ],
