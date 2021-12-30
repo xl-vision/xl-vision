@@ -32,7 +32,7 @@
     "url": "https://github.com/xl-vision/xl-vision/issues"
   },
   "dependencies": {
-    "@popperjs/core": "^2.10.1",
+    "@popperjs/core": "^2.11.0",
     "@xl-vision/hooks": "workspace:^",
     "@xl-vision/icons": "workspace:^",
     "@xl-vision/styled-engine": "workspace:^",
