@@ -14,6 +14,10 @@
     {
       "matchPackageNames": ["react", "react-dom", "@types/react", "@types/react-dom", "csstype"],
       "enabled": false
+    },
+    {
+      "matchDatasources": ["npm"],
+      "stabilityDays": 3
     }
   ],
   "ignoreDeps": []
