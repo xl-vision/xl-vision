@@ -4,7 +4,6 @@
   "ignorePaths": [],
   "pin": true,
   "rangeStrategy": "bump",
-  "node": false,
   "prConcurrentLimit": 5,
   "packageRules": [
     {
