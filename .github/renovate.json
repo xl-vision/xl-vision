@@ -3,7 +3,6 @@
   "labels": ["dependencies"],
   "ignorePaths": [],
   "pin": true,
-  "dependencyDashboardApproval": true,
   "rangeStrategy": "bump",
   "node": false,
   "prConcurrentLimit": 5,
