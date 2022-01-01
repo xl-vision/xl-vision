@@ -42,7 +42,7 @@
     "@types/styled-components": "^5.1.19",
     "@typescript-eslint/eslint-plugin": "^5.8.1",
     "@typescript-eslint/parser": "^5.8.1",
-    "chalk": "^4.1.2",
+    "chalk": "^5.0.0",
     "clipboard": "^2.0.8",
     "commitizen": "^4.2.4",
     "confusing-browser-globals": "^1.0.11",
