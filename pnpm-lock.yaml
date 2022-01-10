@@ -8,7 +8,7 @@ importers:
       '@babel/plugin-transform-runtime': ^7.16.7
       '@babel/preset-env': ^7.16.7
       '@babel/preset-react': ^7.16.7
-      '@commitlint/cli': ^16.0.1
+      '@commitlint/cli': ^16.0.2
       '@commitlint/config-conventional': ^16.0.0
       '@commitlint/format': ^16.0.0
       '@types/enzyme': ^3.10.11
@@ -59,7 +59,7 @@ importers:
       '@babel/plugin-transform-runtime': 7.16.7_@babel+core@7.16.7
       '@babel/preset-env': 7.16.7_@babel+core@7.16.7
       '@babel/preset-react': 7.16.7_@babel+core@7.16.7
-      '@commitlint/cli': 16.0.1
+      '@commitlint/cli': 16.0.2
       '@commitlint/config-conventional': 16.0.0
       '@commitlint/format': 16.0.0
       '@types/enzyme': 3.10.11
@@ -243,7 +243,7 @@ packages:
     resolution: {integrity: sha512-IF4EOMEV+bfYwOmNxGzSnjR2EmQod7f1UXOpZM3l4i4o4QNwzjtJAu/HxdjHq0aYBvdqMuQEY1eg0nqW9ZPORA==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/highlight': 7.16.0
+      '@babel/highlight': 7.16.7
 
   /@babel/code-frame/7.16.7:
     resolution: {integrity: sha512-iAXqUn8IIeBTNd72xsFlgaXHkMBMt6y4HJp1tIaK465CWLT/fG1aqB7ykr95gHHmlBdGbFeWWfyB4NJJ0nmeIg==}
@@ -573,6 +573,7 @@ packages:
       '@babel/helper-validator-identifier': 7.16.7
       chalk: 2.4.2
       js-tokens: 4.0.0
+    dev: false
 
   /@babel/highlight/7.16.7:
     resolution: {integrity: sha512-aKpPMfLvGO3Q97V0qhw/V2SWNWlwfJknuwAunU7wZLSfrM4xTBvg7E5opUVi1kJTBKihE38CPg4nBiqX83PWYw==}
@@ -1688,8 +1689,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@commitlint/cli/16.0.1:
-    resolution: {integrity: sha512-61gGRy65WiVDRsqP0dAR2fAgE3qrTBW3fgz9MySv32y5Ib3ZXXDDq6bGyQqi2dSaPuDYzNCRwwlC7mmQM73T/g==}
+  /@commitlint/cli/16.0.2:
+    resolution: {integrity: sha512-Jt7iaBjoLGC5Nq4dHPTvTYnqPGkElFPBtTXTvBpTgatZApczyjI2plE0oG4GYWPp1suHIS/VdVDOMpPZjGVusg==}
     engines: {node: '>=v12'}
     hasBin: true
     dependencies:
