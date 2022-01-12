@@ -131,7 +131,7 @@ importers:
 
   packages/react:
     specifiers:
-      '@popperjs/core': ^2.11.0
+      '@popperjs/core': ^2.11.2
       '@types/prop-types': ^15.7.4
       '@xl-vision/hooks': workspace:^
       '@xl-vision/icons': workspace:^
@@ -141,7 +141,7 @@ importers:
       prop-types: ^15.8.0
       resize-observer-polyfill: ^1.5.1
     dependencies:
-      '@popperjs/core': 2.11.0
+      '@popperjs/core': 2.11.2
       '@xl-vision/hooks': link:../hooks
       '@xl-vision/icons': link:../icons
       '@xl-vision/styled-engine': link:../styled-engine
@@ -2344,8 +2344,8 @@ packages:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
 
-  /@popperjs/core/2.11.0:
-    resolution: {integrity: sha512-zrsUxjLOKAzdewIDRWy9nsV1GQsKBCWaGwsZQlCgr6/q+vjyZhFgqedLfFBuI9anTPEUT4APq9Mu0SZBTzIcGQ==}
+  /@popperjs/core/2.11.2:
+    resolution: {integrity: sha512-92FRmppjjqz29VMJ2dn+xdyXZBrMlE42AV6Kq6BwjWV7CNUW1hs2FtxSNLQE+gJhaZ6AAmYuO9y8dshhcBl7vA==}
     dev: false
 
   /@sindresorhus/is/0.14.0:
