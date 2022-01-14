@@ -35,7 +35,7 @@
   "dependencies": {
     "@xl-vision/utils": "workspace:^",
     "clsx": "^1.1.1",
-    "prop-types": "^15.8.0"
+    "prop-types": "^15.8.1"
   },
   "devDependencies": {
     "fs-extra": "^10.0.0",

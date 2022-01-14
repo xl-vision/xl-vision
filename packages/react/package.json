@@ -38,7 +38,7 @@
     "@xl-vision/styled-engine": "workspace:^",
     "@xl-vision/utils": "workspace:^",
     "clsx": "^1.1.1",
-    "prop-types": "^15.8.0",
+    "prop-types": "^15.8.1",
     "resize-observer-polyfill": "^1.5.1"
   },
   "devDependencies": {
