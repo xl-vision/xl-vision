@@ -27,6 +27,7 @@ module.exports = async function demoLoader(content) {
     const tsCode = content;
     let jsCode = (
       await babel.transformAsync(tsCode, {
+        configFile: false,
         filename: absolutePath,
         presets: [
           // '@babel/preset-react',
