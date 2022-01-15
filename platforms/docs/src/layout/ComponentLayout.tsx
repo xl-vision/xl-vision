@@ -1,4 +1,4 @@
-import { styled, CollapseTransition, Button } from '@xl-vision/react';
+import { styled, CollapseTransition, Button, useTheme } from '@xl-vision/react';
 import { useRouter } from 'next/router';
 import React from 'react';
 import Aside from '../components/Aside';
@@ -29,7 +29,7 @@ const Root = styled('div')(({ theme }) => {
       width: '100%',
       height: '100%',
       overflowY: 'auto',
-      zIndex: 1,
+      zIndex: 10,
     },
     '.aside': {
       '&-enter-active, &-leave-active': {
@@ -97,6 +97,8 @@ const ComponentLayout: Layout = ({ children }) => {
 
   const [asideVisible, setAsideVisible] = React.useState(false);
 
+  const theme = useTheme();
+
   const handleAsideVisible = React.useCallback((e: React.MouseEvent) => {
     setAsideVisible((prev) => !prev);
     e.stopPropagation();
@@ -126,7 +128,10 @@ const ComponentLayout: Layout = ({ children }) => {
       </Button>
       <div
         className='mobile-menus md-down'
-        style={{ pointerEvents: asideVisible ? undefined : 'none' }}
+        style={{
+          pointerEvents: asideVisible ? undefined : 'none',
+          backgroundColor: asideVisible ? theme.color.background.paper : 'transparent',
+        }}
       >
         <CollapseTransition in={asideVisible} transitionClasses='aside'>
           <AsideWrapper routeName='components' />
