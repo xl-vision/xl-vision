@@ -110,7 +110,6 @@ const ComponentLayout: Layout = ({ children }) => {
   }, [pathname]);
 
   React.useEffect(() => {
-    // eslint-disable-next-line unicorn/consistent-function-scoping
     const fn = () => {
       setAsideVisible(false);
     };
