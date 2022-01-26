@@ -100,3 +100,5 @@ export type {
   AvatarGroupPopupPlacement,
   AvatarSizeType,
 } from './Avatar';
+export type { InputProps } from './Input';
+export { default as Input } from './Input';
