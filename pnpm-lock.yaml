@@ -194,7 +194,7 @@ importers:
       js-cookie: ^3.0.1
       next: ^12.0.8
       next-sitemap: ^1.6.203
-      prismjs: ^1.25.0
+      prismjs: ^1.26.0
       prop-types: ^15.8.1
       react: '>=17.0.2'
       react-dom: '>=17.0.2'
@@ -227,7 +227,7 @@ importers:
       babel-plugin-styled-components: 2.0.2_styled-components@5.3.3
       cross-env: 7.0.3
       next-sitemap: 1.6.203_next@12.0.8
-      prismjs: 1.25.0
+      prismjs: 1.26.0
       remark-emoji: 3.0.2
       webpack-merge: 5.8.0
 
@@ -8636,6 +8636,11 @@ packages:
 
   /prismjs/1.25.0:
     resolution: {integrity: sha512-WCjJHl1KEWbnkQom1+SzftbtXMKQoezOCYs5rECqMN+jP+apI7ftoflyqigqzopSO3hMhTEb0mFClA8lkolgEg==}
+    dev: true
+
+  /prismjs/1.26.0:
+    resolution: {integrity: sha512-HUoH9C5Z3jKkl3UunCyiD5jwk0+Hz0fIgQ2nbwU2Oo/ceuTAQAg+pPVnfdt2TJWRVLcxKh9iuoYDUSc8clb5UQ==}
+    engines: {node: '>=6'}
     dev: true
 
   /process-nextick-args/2.0.1:
