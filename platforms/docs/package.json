@@ -38,7 +38,7 @@
     "@types/node": "17.0.4",
     "babel-plugin-styled-components": "^2.0.2",
     "cross-env": "^7.0.3",
-    "next-sitemap": "^1.6.203",
+    "next-sitemap": "^2.0.7",
     "prismjs": "^1.26.0",
     "remark-emoji": "^3.0.2",
     "webpack-merge": "^5.8.0"
