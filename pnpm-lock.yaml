@@ -193,7 +193,7 @@ importers:
       cross-env: ^7.0.3
       js-cookie: ^3.0.1
       next: ^12.0.8
-      next-sitemap: ^1.6.203
+      next-sitemap: ^2.0.7
       prismjs: ^1.26.0
       prop-types: ^15.8.1
       react: '>=17.0.2'
@@ -226,7 +226,7 @@ importers:
       '@types/node': 17.0.4
       babel-plugin-styled-components: 2.0.2_styled-components@5.3.3
       cross-env: 7.0.3
-      next-sitemap: 1.6.203_next@12.0.8
+      next-sitemap: 2.0.7_next@12.0.8
       prismjs: 1.26.0
       remark-emoji: 3.0.2
       webpack-merge: 5.8.0
@@ -7605,13 +7605,6 @@ packages:
       stack-trace: 0.0.10
     dev: true
 
-  /matcher/4.0.0:
-    resolution: {integrity: sha512-S6x5wmcDmsDRRU/c2dkccDwQPXoFczc5+HpQ2lON8pnvHlnvHAHj5WlLVvw6n6vNyHuVugYrFohYxbS+pvFpKQ==}
-    engines: {node: '>=10'}
-    dependencies:
-      escape-string-regexp: 4.0.0
-    dev: true
-
   /mdast-squeeze-paragraphs/4.0.0:
     resolution: {integrity: sha512-zxdPn69hkQ1rm4J+2Cs2j6wDEv7O17TfXTJ33tl/+JPIoEmtV9t2ZzBM5LPHE8QlHsmVD8t3vPKCyY3oH+H8MQ==}
     dependencies:
@@ -7896,14 +7889,14 @@ packages:
       randexp: 0.4.6
     dev: true
 
-  /next-sitemap/1.6.203_next@12.0.8:
-    resolution: {integrity: sha512-WigcoqIUNbXQa2GnwOiCOydGx/XHCS4kRtIPNEsc8DGX2XvJtbAJKRxcidZZ2KihTAtwwCu1XQ4Hbof4mJbvLg==}
+  /next-sitemap/2.0.7_next@12.0.8:
+    resolution: {integrity: sha512-QuB0j34a61FjSqOLab+57nBb9rfPEUewgpggs/BUR4CkXgglqn2eLorT0gh2lv9NA1j2rMmVH5xZTJpRlURyow==}
+    engines: {node: '>=14'}
     hasBin: true
     peerDependencies:
       next: '*'
     dependencies:
       '@corex/deepmerge': 2.6.148
-      matcher: 4.0.0
       minimist: 1.2.5
       next: 12.0.8_11ff11544d2bce3b43fc9d53812dafa4
     dev: true
