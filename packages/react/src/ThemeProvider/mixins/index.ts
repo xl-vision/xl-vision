@@ -1,13 +1,8 @@
 import { CSSObject } from '@xl-vision/styled-engine';
+import { ThemeWithoutMixins } from '../createTheme';
 
-export type MixinName = 'clearfix';
-
-export type Mixins = {
-  [key in MixinName]: CSSObject;
-};
-
-const mixins: Mixins = {
-  clearfix: {
+const createMixins = (theme: ThemeWithoutMixins) => {
+  const clearfix: CSSObject = {
     zoom: 1,
     '&:before, &:after': {
       display: 'table',
@@ -17,7 +12,27 @@ const mixins: Mixins = {
     '&:after': {
       clear: 'both',
     },
-  },
+  };
+
+  const placeholder = (color: string = theme.color.text.hint) => {
+    return {
+      '&::-moz-placeholder': {
+        opacity: 1,
+      },
+      '&::placeholder': {
+        color,
+        userSelect: 'none',
+      },
+      '&:placeholder-shown': {
+        textOverflow: 'ellipsis',
+      },
+    } as CSSObject;
+  };
+
+  return {
+    clearfix,
+    placeholder,
+  };
 };
 
-export default mixins;
+export default createMixins;
