@@ -13,10 +13,12 @@ const Root = styled('input', {
   name: displayName,
   slot: 'Root',
 })(({ theme }) => {
-  const { color, shape, typography } = theme;
+  const { color, shape, typography, mixins } = theme;
 
   return {
     ...typography.body1,
+    ...mixins.placeholder(),
+    display: 'inline-block',
     outline: 0,
     borderRadius: shape.borderRadius.md,
     border: `1px solid ${color.divider}`,
@@ -25,6 +27,12 @@ const Root = styled('input', {
     width: '100%',
     minWidth: 0,
     padding: '4px 11px',
+    backgroundColor: color.background.paper,
+    transition: 'all 0.3s',
+
+    '&:hover': {
+      borderColor: color.themes.primary.hover,
+    },
   };
 });
 

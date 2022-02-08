@@ -16,9 +16,10 @@ export type Color = Partial<{
   grey: Palette;
 }>;
 
-export type Theme = BaseColor & {
-  color: string;
-};
+export type Theme = BaseColor &
+  Record<keyof BaseColor['action'], string> & {
+    color: string;
+  };
 
 export type Themes = {
   [key in keyof ThemeColors]: Theme;
@@ -60,6 +61,14 @@ const createColors = (color: Color = {}) => {
     return contrastText;
   };
 
+  const applyState = (_color: string, state: keyof BaseColor['action']) => {
+    const bgColor =
+      getContrastRatio(_color, modes.dark.background.default) > contrastThreshold
+        ? modes.dark.background.default
+        : modes.light.background.default;
+    return mix(bgColor, _color, modes[mode].action[state]);
+  };
+
   const base = modes[mode];
 
   const newThemes = {} as Themes;
@@ -68,19 +77,20 @@ const createColors = (color: Color = {}) => {
     const newKey = key as keyof ThemeColors;
     const theme = themes[newKey];
     const themeColor = theme[mode];
+
     newThemes[newKey] = {
       color: themeColor,
+      hover: applyState(themeColor, 'hover'),
+      pressed: applyState(themeColor, 'pressed'),
+      active: applyState(themeColor, 'active'),
+      disabled: applyState(themeColor, 'disabled'),
+      dragged: applyState(themeColor, 'dragged'),
+      enabled: applyState(themeColor, 'enabled'),
+      focus: applyState(themeColor, 'focus'),
+      selected: applyState(themeColor, 'selected'),
       ...getContrastText(themeColor),
     };
   });
-
-  const applyState = (_color: string, state: keyof BaseColor['action']) => {
-    const bgColor =
-      getContrastRatio(_color, modes.dark.background.default) > contrastThreshold
-        ? modes.dark.background.default
-        : modes.light.background.default;
-    return mix(bgColor, _color, modes[mode].action[state]);
-  };
 
   return {
     ...base,

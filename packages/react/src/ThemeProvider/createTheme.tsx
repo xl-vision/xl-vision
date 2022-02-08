@@ -1,7 +1,7 @@
 import createColors, { Color } from './color';
 import createTransition, { Transition } from './transition';
 import createTypography, { Typography } from './typography';
-import mixins from './mixins';
+import createMixins from './mixins';
 import createElevations from './elevations';
 import createBreakpoints, { Breakpoints } from './breakpoints';
 import createOverrideStyles, { OverrideStyles } from './overrideStyles';
@@ -17,9 +17,11 @@ export type BaseTheme = Partial<{
   shape: Shape;
 }>;
 
+export type ThemeWithoutMixins = ReturnType<typeof createThemeWithoutMixins>;
+
 export type Theme = ReturnType<typeof createTheme>;
 
-const createTheme = (theme: BaseTheme = {}) => {
+const createThemeWithoutMixins = (theme: BaseTheme = {}) => {
   const {
     color,
     transition,
@@ -45,11 +47,21 @@ const createTheme = (theme: BaseTheme = {}) => {
     transition: outputTransition,
     typography: outputTypography,
     breakpoints: outputBreakpoints,
-    mixins,
     elevations,
     clsPrefix,
     overrideStyles: outputOverrideStyles,
     shape: outputShape,
+  };
+};
+
+const createTheme = (theme: BaseTheme = {}) => {
+  const themeWithoutMixins = createThemeWithoutMixins(theme);
+
+  const mixins = createMixins(themeWithoutMixins);
+
+  return {
+    ...themeWithoutMixins,
+    mixins,
   };
 };
 
