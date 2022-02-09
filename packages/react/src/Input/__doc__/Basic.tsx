@@ -6,7 +6,13 @@ const Basic = () => {
 
   return (
     <div>
-      <Input placeholder='Basic usage' value={value} onChange={handleValue} maxLength={5} />
+      <Input
+        placeholder='Basic usage'
+        value={value}
+        onChange={handleValue}
+        maxLength={5}
+        showCount={true}
+      />
       <p>{value}</p>
     </div>
   );
