@@ -1,5 +1,5 @@
 import { env } from '@xl-vision/utils';
-import React from 'react';
+import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { useConstantFn } from '@xl-vision/hooks';
@@ -52,7 +52,7 @@ const InputRoot = styled('span', {
 
   return {
     ...typography.body1,
-    display: 'inline-block',
+    display: 'inline-flex',
     borderRadius: shape.borderRadius.md,
     border: `1px solid ${color.divider}`,
     width: '100%',
@@ -75,6 +75,8 @@ const InputInner = styled('input', {
   return {
     ...typography.body1,
     ...mixins.placeholder(),
+    touchAction: 'manipulation',
+    fontVariant: 'tabular-nums',
     display: 'inline-block',
     minWidth: 0,
     width: '100%',
@@ -87,7 +89,21 @@ const InputInner = styled('input', {
   };
 });
 
-const Input: React.FunctionComponent<InputProps> = (props) => {
+const InputSuffix = styled('span', {
+  name: displayName,
+  slot: 'Suffix',
+})(({ theme }) => {
+  const { color } = theme;
+
+  return {
+    display: 'flex',
+    flex: 'none',
+    alignItems: 'center',
+    color: color.text.hint,
+  };
+});
+
+const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
   const {
     className,
     prefix,
@@ -97,6 +113,7 @@ const Input: React.FunctionComponent<InputProps> = (props) => {
     showCount,
     value: valueProp,
     onChange,
+    type = 'text',
     ...others
   } = props;
 
@@ -105,29 +122,45 @@ const Input: React.FunctionComponent<InputProps> = (props) => {
   const [value, handlePropChange] = usePropChange(defaultValue, valueProp, onChange);
 
   const handleChange = useConstantFn((e: React.ChangeEvent<HTMLInputElement>) => {
-    handlePropChange(e.target.value);
+    let v = e.target.value;
+    if (typeof v === 'undefined' || v === null) {
+      v = '';
+    }
+
+    handlePropChange(v);
   });
 
   const rootClassName = `${clsPrefix}-input`;
 
   const rootClasses = clsx(rootClassName, className);
 
+  let suffixInner: ReactNode;
+
+  if (showCount) {
+    const { length } = value;
+    suffixInner = maxLength ? `${length}/${maxLength}` : length;
+  } else {
+    suffixInner = suffix;
+  }
+
   return (
-    <InputRoot className={rootClasses}>
+    <InputRoot className={rootClasses} ref={ref}>
       <InputInner
         {...others}
+        type={type}
         className={`${rootClassName}__inner`}
         maxLength={maxLength}
         value={value}
         onChange={handleChange}
       />
+      {suffixInner && <InputSuffix>{suffixInner}</InputSuffix>}
     </InputRoot>
   );
-};
+});
 
 if (!env.isProduction) {
-  InputInner.displayName = displayName;
-  InputInner.propTypes = {
+  Input.displayName = displayName;
+  Input.propTypes = {
     className: PropTypes.string,
   };
 }

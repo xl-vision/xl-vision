@@ -91,23 +91,24 @@ const createColors = (color: Color = {}) => {
 
   const newThemes = {} as Themes;
 
-  Object.keys(themes).forEach((key) => {
-    const newKey = key as keyof ThemeColors;
-    const theme = themes[newKey];
+  const { action } = baseTheme;
+
+  Object.keys(themes).forEach((_themeKey) => {
+    const themeKey = _themeKey as keyof ThemeColors;
+    const theme = themes[themeKey];
     const themeColor = theme[mode];
 
-    newThemes[newKey] = {
+    const obj = {
       color: themeColor,
-      hover: applyState(themeColor, 'hover'),
-      pressed: applyState(themeColor, 'pressed'),
-      active: applyState(themeColor, 'active'),
-      disabled: applyState(themeColor, 'disabled'),
-      dragged: applyState(themeColor, 'dragged'),
-      enabled: applyState(themeColor, 'enabled'),
-      focus: applyState(themeColor, 'focus'),
-      selected: applyState(themeColor, 'selected'),
       ...getContrastColor(themeColor),
-    };
+    } as Theme;
+
+    Object.keys(action).forEach((key) => {
+      const actionKey = key as keyof BaseColor['action'];
+      obj[actionKey] = applyState(themeColor, actionKey);
+    });
+
+    newThemes[themeKey] = obj;
   });
 
   return {
