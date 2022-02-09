@@ -139,7 +139,7 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
   const handleLangChange = useConstantFn((lang: string) => {
     const { pathname, asPath, query } = router;
     router.push({ pathname, query }, asPath, { locale: lang }).catch(() => {});
-    Cookie.set('NEXT_LOCALE', lang, { expires: 30 });
+    Cookie.set('NEXT_LOCALE', lang, { expires: 30, sameSite: 'Strict' });
   });
 
   const setActiveClassName = useConstantFn((pathname: string) => {
