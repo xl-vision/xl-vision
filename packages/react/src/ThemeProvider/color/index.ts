@@ -1,7 +1,7 @@
 import { env } from '@xl-vision/utils';
 import { dark as defaultDark, light as defaultLight, BaseColor } from './baseColor';
 import defaultThemes, { ThemeColors } from './themeColor';
-import { getContrastRatio, mix } from '../../utils/color';
+import { darken, getContrastRatio, lighten } from '../../utils/color';
 import { Palette } from '../palette/palette';
 import greyColor from '../palette/grey';
 
@@ -38,19 +38,26 @@ const createColors = (color: Color = {}) => {
   } = color;
   const { dark, light } = modes;
 
-  // Use the same logic as
-  // Bootstrap: https://github.com/twbs/bootstrap/blob/1d6e3710dd447de1a200f29e8fa521f8a0908f70/scss/_functions.scss#L59
-  // and material-components-web https://github.com/material-components/material-components-web/blob/ac46b8863c4dab9fc22c4c662dc6bd1b65dd652f/packages/mdc-theme/_functions.scss#L54
-  const getContrastText = (background: string) => {
-    const contrastText =
-      getContrastRatio(background, dark.text.primary) >= contrastThreshold ? dark : light;
+  const baseTheme = modes[mode];
+
+  const constrastColorMap = new Map<string, BaseColor>();
+
+  const getContrastColor = (background: string) => {
+    let contrastColor = constrastColorMap.get(background);
+
+    if (!contrastColor) {
+      contrastColor =
+        getContrastRatio(background, dark.text.primary) >= contrastThreshold ? dark : light;
+
+      constrastColorMap.set(background, contrastColor);
+    }
 
     if (!env.isProduction) {
-      const contrast = getContrastRatio(background, contrastText.text.primary);
+      const contrast = getContrastRatio(background, contrastColor.text.primary);
       if (contrast < 3) {
         console.error(
           [
-            `XL-VISION: The contrast ratio of ${contrast}:1 for ${contrastText.text.primary} on ${background}`,
+            `XL-VISION: The contrast ratio of ${contrast}:1 for ${contrastColor.text.primary} on ${background}`,
             'falls below the WCAG recommended absolute minimum contrast ratio of 3:1.',
             'https://www.w3.org/TR/2008/REC-WCAG20-20081211/#visual-audio-contrast-contrast',
           ].join('\n'),
@@ -58,18 +65,29 @@ const createColors = (color: Color = {}) => {
       }
     }
 
-    return contrastText;
+    return contrastColor;
   };
 
-  const applyState = (_color: string, state: keyof BaseColor['action']) => {
-    const bgColor =
-      getContrastRatio(_color, modes.dark.background.default) > contrastThreshold
-        ? modes.dark.background.default
-        : modes.light.background.default;
-    return mix(bgColor, _color, modes[mode].action[state]);
-  };
+  const stateMap = new Map<string, Map<string, string>>();
 
-  const base = modes[mode];
+  const applyState = (bgColor: string, state: keyof BaseColor['action']) => {
+    let actionMap = stateMap.get(bgColor);
+
+    if (!actionMap) {
+      actionMap = new Map();
+      stateMap.set(bgColor, actionMap);
+    }
+
+    let stateColor = actionMap.get(state);
+
+    if (!stateColor) {
+      const getColor = mode === 'dark' ? lighten : darken;
+      stateColor = getColor(bgColor, baseTheme.action[state]);
+      actionMap.set(state, stateColor);
+    }
+
+    return stateColor;
+  };
 
   const newThemes = {} as Themes;
 
@@ -88,17 +106,17 @@ const createColors = (color: Color = {}) => {
       enabled: applyState(themeColor, 'enabled'),
       focus: applyState(themeColor, 'focus'),
       selected: applyState(themeColor, 'selected'),
-      ...getContrastText(themeColor),
+      ...getContrastColor(themeColor),
     };
   });
 
   return {
-    ...base,
+    ...baseTheme,
     mode,
     modes,
     themes: newThemes,
     grey,
-    getContrastText,
+    getContrastColor,
     applyState,
   };
 };

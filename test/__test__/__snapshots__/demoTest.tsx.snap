@@ -105,12 +105,12 @@ exports[`Demo renders ./packages/react/src/Avatar/__doc__/AutoSize.tsx correctly
 }
 
 .c4:hover {
-  background-color: rgba(247,247,247,1);
+  background-color: rgb(235,235,235);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c4:focus {
-  background-color: rgba(230,230,230,1);
+  background-color: rgb(224,224,224);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -2011,12 +2011,12 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
 }
 
 .c2:hover {
-  background-color: rgba(247,247,247,1);
+  background-color: rgb(235,235,235);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c2:focus {
-  background-color: rgba(230,230,230,1);
+  background-color: rgb(224,224,224);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -2037,18 +2037,18 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c5:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c5:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -2069,18 +2069,18 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #e91e63;
+  background-color: #ba68c8;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c6:hover {
-  background-color: rgba(226,31,97,1);
+  background-color: rgb(171,96,184);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c6:focus {
-  background-color: rgba(211,32,93,1);
+  background-color: rgb(164,92,176);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -2101,18 +2101,18 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #f44336;
+  background-color: #ef5350;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c7:hover {
-  background-color: rgba(236,66,54,1);
+  background-color: rgb(220,76,74);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c7:focus {
-  background-color: rgba(220,65,53,1);
+  background-color: rgb(210,73,70);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -2139,12 +2139,12 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
 }
 
 .c8:hover {
-  background-color: rgba(247,148,2,1);
+  background-color: rgb(235,140,0);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c8:focus {
-  background-color: rgba(230,140,6,1);
+  background-color: rgb(224,134,0);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -2164,18 +2164,18 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 8.2px;
 }
 
 .c11:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c11:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -2201,7 +2201,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
 }
 
 .c13:hover {
-  background-color: rgba(0,0,0,0.04);
+  background-color: rgba(0,0,0,0.08);
 }
 
 .c13:focus {
@@ -2225,16 +2225,16 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
-  color: #3f51b5;
+  color: #1976d2;
   padding: 6px 16px;
 }
 
 .c14:hover {
-  background-color: rgba(63,81,181,0.04);
+  background-color: rgba(25,118,210,0.08);
 }
 
 .c14:focus {
-  background-color: rgba(63,81,181,0.12);
+  background-color: rgba(25,118,210,0.12);
 }
 
 .c15 {
@@ -2254,16 +2254,16 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
-  color: #e91e63;
+  color: #ba68c8;
   padding: 6px 16px;
 }
 
 .c15:hover {
-  background-color: rgba(233,30,99,0.04);
+  background-color: rgba(186,104,200,0.08);
 }
 
 .c15:focus {
-  background-color: rgba(233,30,99,0.12);
+  background-color: rgba(186,104,200,0.12);
 }
 
 .c16 {
@@ -2283,16 +2283,16 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
-  color: #f44336;
+  color: #ef5350;
   padding: 6px 16px;
 }
 
 .c16:hover {
-  background-color: rgba(244,67,54,0.04);
+  background-color: rgba(239,83,80,0.08);
 }
 
 .c16:focus {
-  background-color: rgba(244,67,54,0.12);
+  background-color: rgba(239,83,80,0.12);
 }
 
 .c17 {
@@ -2317,7 +2317,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
 }
 
 .c17:hover {
-  background-color: rgba(255,152,0,0.04);
+  background-color: rgba(255,152,0,0.08);
 }
 
 .c17:focus {
@@ -2347,7 +2347,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
 }
 
 .c18:hover {
-  background-color: rgba(0,0,0,0.04);
+  background-color: rgba(0,0,0,0.08);
 }
 
 .c18:focus {
@@ -2371,17 +2371,17 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
-  color: #3f51b5;
-  border: 1px solid rgba(63,81,181,0.5);
+  color: #1976d2;
+  border: 1px solid rgba(25,118,210,0.5);
   padding: 5px 15px;
 }
 
 .c19:hover {
-  background-color: rgba(63,81,181,0.04);
+  background-color: rgba(25,118,210,0.08);
 }
 
 .c19:focus {
-  background-color: rgba(63,81,181,0.12);
+  background-color: rgba(25,118,210,0.12);
 }
 
 .c20 {
@@ -2401,17 +2401,17 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
-  color: #e91e63;
-  border: 1px solid rgba(233,30,99,0.5);
+  color: #ba68c8;
+  border: 1px solid rgba(186,104,200,0.5);
   padding: 5px 15px;
 }
 
 .c20:hover {
-  background-color: rgba(233,30,99,0.04);
+  background-color: rgba(186,104,200,0.08);
 }
 
 .c20:focus {
-  background-color: rgba(233,30,99,0.12);
+  background-color: rgba(186,104,200,0.12);
 }
 
 .c21 {
@@ -2431,17 +2431,17 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
-  color: #f44336;
-  border: 1px solid rgba(244,67,54,0.5);
+  color: #ef5350;
+  border: 1px solid rgba(239,83,80,0.5);
   padding: 5px 15px;
 }
 
 .c21:hover {
-  background-color: rgba(244,67,54,0.04);
+  background-color: rgba(239,83,80,0.08);
 }
 
 .c21:focus {
-  background-color: rgba(244,67,54,0.12);
+  background-color: rgba(239,83,80,0.12);
 }
 
 .c22 {
@@ -2467,7 +2467,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
 }
 
 .c22:hover {
-  background-color: rgba(255,152,0,0.04);
+  background-color: rgba(255,152,0,0.08);
 }
 
 .c22:focus {
@@ -3025,11 +3025,11 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
 }
 
 .c2:hover {
-  background-color: rgba(247,247,247,1);
+  background-color: rgb(235,235,235);
 }
 
 .c2:focus {
-  background-color: rgba(230,230,230,1);
+  background-color: rgb(224,224,224);
 }
 
 .c5 {
@@ -3049,16 +3049,16 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   padding: 6px 16px;
 }
 
 .c5:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
 }
 
 .c5:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
 }
 
 .c6 {
@@ -3078,16 +3078,16 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #e91e63;
+  background-color: #ba68c8;
   padding: 6px 16px;
 }
 
 .c6:hover {
-  background-color: rgba(226,31,97,1);
+  background-color: rgb(171,96,184);
 }
 
 .c6:focus {
-  background-color: rgba(211,32,93,1);
+  background-color: rgb(164,92,176);
 }
 
 .c7 {
@@ -3107,16 +3107,16 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #f44336;
+  background-color: #ef5350;
   padding: 6px 16px;
 }
 
 .c7:hover {
-  background-color: rgba(236,66,54,1);
+  background-color: rgb(220,76,74);
 }
 
 .c7:focus {
-  background-color: rgba(220,65,53,1);
+  background-color: rgb(210,73,70);
 }
 
 .c8 {
@@ -3141,11 +3141,11 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
 }
 
 .c8:hover {
-  background-color: rgba(247,148,2,1);
+  background-color: rgb(235,140,0);
 }
 
 .c8:focus {
-  background-color: rgba(230,140,6,1);
+  background-color: rgb(224,134,0);
 }
 
 .c0 button,
@@ -3345,12 +3345,12 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
 }
 
 .c2:hover {
-  background-color: rgba(247,247,247,1);
+  background-color: rgb(235,235,235);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c2:focus {
-  background-color: rgba(230,230,230,1);
+  background-color: rgb(224,224,224);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -3371,16 +3371,16 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
-  color: #3f51b5;
+  color: #1976d2;
   padding: 6px 16px;
 }
 
 .c5:hover {
-  background-color: rgba(63,81,181,0.04);
+  background-color: rgba(25,118,210,0.08);
 }
 
 .c5:focus {
-  background-color: rgba(63,81,181,0.12);
+  background-color: rgba(25,118,210,0.12);
 }
 
 .c6 {
@@ -3400,18 +3400,18 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #e91e63;
+  background-color: #ba68c8;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c6:hover {
-  background-color: rgba(226,31,97,1);
+  background-color: rgb(171,96,184);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c6:focus {
-  background-color: rgba(211,32,93,1);
+  background-color: rgb(164,92,176);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -3432,16 +3432,16 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
-  color: #f44336;
+  color: #ef5350;
   padding: 6px 16px;
 }
 
 .c7:hover {
-  background-color: rgba(244,67,54,0.04);
+  background-color: rgba(239,83,80,0.08);
 }
 
 .c7:focus {
-  background-color: rgba(244,67,54,0.12);
+  background-color: rgba(239,83,80,0.12);
 }
 
 .c8 {
@@ -3467,7 +3467,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
 }
 
 .c8:hover {
-  background-color: rgba(255,152,0,0.04);
+  background-color: rgba(255,152,0,0.08);
 }
 
 .c8:focus {
@@ -3703,7 +3703,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   opacity: 0.38;
   padding: 6px 16px;
 }
@@ -3725,7 +3725,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #e91e63;
+  background-color: #ba68c8;
   opacity: 0.38;
   padding: 6px 16px;
 }
@@ -3747,7 +3747,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #f44336;
+  background-color: #ef5350;
   opacity: 0.38;
   padding: 6px 16px;
 }
@@ -4090,12 +4090,12 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
 }
 
 .c2:hover {
-  background-color: rgba(247,247,247,1);
+  background-color: rgb(235,235,235);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c2:focus {
-  background-color: rgba(230,230,230,1);
+  background-color: rgb(224,224,224);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -4116,16 +4116,16 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
-  color: #3f51b5;
+  color: #1976d2;
   padding: 6px 16px;
 }
 
 .c5:hover {
-  background-color: rgba(63,81,181,0.04);
+  background-color: rgba(25,118,210,0.08);
 }
 
 .c5:focus {
-  background-color: rgba(63,81,181,0.12);
+  background-color: rgba(25,118,210,0.12);
 }
 
 .c6 {
@@ -4145,18 +4145,18 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #e91e63;
+  background-color: #ba68c8;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c6:hover {
-  background-color: rgba(226,31,97,1);
+  background-color: rgb(171,96,184);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c6:focus {
-  background-color: rgba(211,32,93,1);
+  background-color: rgb(164,92,176);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -4177,16 +4177,16 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
-  color: #f44336;
+  color: #ef5350;
   padding: 6px 16px;
 }
 
 .c7:hover {
-  background-color: rgba(244,67,54,0.04);
+  background-color: rgba(239,83,80,0.08);
 }
 
 .c7:focus {
-  background-color: rgba(244,67,54,0.12);
+  background-color: rgba(239,83,80,0.12);
 }
 
 .c8 {
@@ -4212,7 +4212,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
 }
 
 .c8:hover {
-  background-color: rgba(255,152,0,0.04);
+  background-color: rgba(255,152,0,0.08);
 }
 
 .c8:focus {
@@ -4236,7 +4236,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   opacity: 0.38;
   padding: 6px 16px;
 }
@@ -4478,12 +4478,12 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
 }
 
 .c2:hover {
-  background-color: rgba(247,247,247,1);
+  background-color: rgb(235,235,235);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c2:focus {
-  background-color: rgba(230,230,230,1);
+  background-color: rgb(224,224,224);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -4504,16 +4504,16 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
-  color: #3f51b5;
+  color: #1976d2;
   padding: 6px 16px;
 }
 
 .c5:hover {
-  background-color: rgba(63,81,181,0.04);
+  background-color: rgba(25,118,210,0.08);
 }
 
 .c5:focus {
-  background-color: rgba(63,81,181,0.12);
+  background-color: rgba(25,118,210,0.12);
 }
 
 .c8 {
@@ -4533,18 +4533,18 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #e91e63;
+  background-color: #ba68c8;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c8:hover {
-  background-color: rgba(226,31,97,1);
+  background-color: rgb(171,96,184);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c8:focus {
-  background-color: rgba(211,32,93,1);
+  background-color: rgb(164,92,176);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -4565,16 +4565,16 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
-  color: #f44336;
+  color: #ef5350;
   padding: 6px 16px;
 }
 
 .c9:hover {
-  background-color: rgba(244,67,54,0.04);
+  background-color: rgba(239,83,80,0.08);
 }
 
 .c9:focus {
-  background-color: rgba(244,67,54,0.12);
+  background-color: rgba(239,83,80,0.12);
 }
 
 .c10 {
@@ -4600,7 +4600,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
 }
 
 .c10:hover {
-  background-color: rgba(255,152,0,0.04);
+  background-color: rgba(255,152,0,0.08);
 }
 
 .c10:focus {
@@ -4850,12 +4850,12 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
 }
 
 .c2:hover {
-  background-color: rgba(247,247,247,1);
+  background-color: rgb(235,235,235);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c2:focus {
-  background-color: rgba(230,230,230,1);
+  background-color: rgb(224,224,224);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -4877,16 +4877,16 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   width: 100%;
   background-color: transparent;
-  color: #3f51b5;
+  color: #1976d2;
   padding: 6px 16px;
 }
 
 .c5:hover {
-  background-color: rgba(63,81,181,0.04);
+  background-color: rgba(25,118,210,0.08);
 }
 
 .c5:focus {
-  background-color: rgba(63,81,181,0.12);
+  background-color: rgba(25,118,210,0.12);
 }
 
 .c6 {
@@ -4907,17 +4907,17 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   width: 100%;
   background-color: transparent;
-  color: #e91e63;
-  border: 1px solid rgba(233,30,99,0.5);
+  color: #ba68c8;
+  border: 1px solid rgba(186,104,200,0.5);
   padding: 5px 15px;
 }
 
 .c6:hover {
-  background-color: rgba(233,30,99,0.04);
+  background-color: rgba(186,104,200,0.08);
 }
 
 .c6:focus {
-  background-color: rgba(233,30,99,0.12);
+  background-color: rgba(186,104,200,0.12);
 }
 
 .c7 {
@@ -4944,12 +4944,12 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
 }
 
 .c7:hover {
-  background-color: rgba(247,148,2,1);
+  background-color: rgb(235,140,0);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c7:focus {
-  background-color: rgba(230,140,6,1);
+  background-color: rgb(224,134,0);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -4971,18 +4971,18 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   width: 100%;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c8:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c8:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -5228,12 +5228,12 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
 }
 
 .c2:hover {
-  background-color: rgba(247,247,247,1);
+  background-color: rgb(235,235,235);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c2:focus {
-  background-color: rgba(230,230,230,1);
+  background-color: rgb(224,224,224);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -5254,16 +5254,16 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
-  color: #3f51b5;
+  color: #1976d2;
   padding: 6px 16px;
 }
 
 .c5:hover {
-  background-color: rgba(63,81,181,0.04);
+  background-color: rgba(25,118,210,0.08);
 }
 
 .c5:focus {
-  background-color: rgba(63,81,181,0.12);
+  background-color: rgba(25,118,210,0.12);
 }
 
 .c6 {
@@ -5283,17 +5283,17 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
-  color: #e91e63;
-  border: 1px solid rgba(233,30,99,0.5);
+  color: #ba68c8;
+  border: 1px solid rgba(186,104,200,0.5);
   padding: 5px 15px;
 }
 
 .c6:hover {
-  background-color: rgba(233,30,99,0.04);
+  background-color: rgba(186,104,200,0.08);
 }
 
 .c6:focus {
-  background-color: rgba(233,30,99,0.12);
+  background-color: rgba(186,104,200,0.12);
 }
 
 .c7 {
@@ -5313,16 +5313,16 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
-  color: #f44336;
+  color: #ef5350;
   padding: 6px 16px;
 }
 
 .c7:hover {
-  background-color: rgba(244,67,54,0.04);
+  background-color: rgba(239,83,80,0.08);
 }
 
 .c7:focus {
-  background-color: rgba(244,67,54,0.12);
+  background-color: rgba(239,83,80,0.12);
 }
 
 .c8 {
@@ -5348,12 +5348,12 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
 }
 
 .c8:hover {
-  background-color: rgba(247,148,2,1);
+  background-color: rgb(235,140,0);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c8:focus {
-  background-color: rgba(230,140,6,1);
+  background-color: rgb(224,134,0);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -5374,18 +5374,18 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c9:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c9:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -5405,18 +5405,18 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 8.2px;
 }
 
 .c10:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c10:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -5436,18 +5436,18 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 8.2px;
 }
 
 .c13:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c13:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -5742,18 +5742,18 @@ exports[`Demo renders ./packages/react/src/CSSTransition/__doc__/Advance.tsx cor
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -5876,18 +5876,18 @@ exports[`Demo renders ./packages/react/src/CSSTransition/__doc__/Basic.tsx corre
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -6010,18 +6010,18 @@ exports[`Demo renders ./packages/react/src/CollapseTransition/__doc__/Basic.tsx 
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -6146,18 +6146,18 @@ exports[`Demo renders ./packages/react/src/CollapseTransition/__doc__/Horizontal
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -6282,18 +6282,18 @@ exports[`Demo renders ./packages/react/src/Dialog/__doc__/Basic.tsx correctly 1`
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -6414,18 +6414,18 @@ exports[`Demo renders ./packages/react/src/Dialog/__doc__/Custom.tsx correctly 1
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -6546,18 +6546,18 @@ exports[`Demo renders ./packages/react/src/Dialog/__doc__/Methods.tsx correctly 
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -6678,18 +6678,18 @@ exports[`Demo renders ./packages/react/src/Dialog/__doc__/Promise.tsx correctly 
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -6810,18 +6810,18 @@ exports[`Demo renders ./packages/react/src/Dialog/__doc__/Prompt.tsx correctly 1
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -6943,18 +6943,18 @@ Array [
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -7072,18 +7072,18 @@ Array [
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -7201,18 +7201,18 @@ Array [
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -7330,18 +7330,18 @@ Array [
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -7459,18 +7459,18 @@ Array [
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -7593,18 +7593,18 @@ Array [
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -7722,18 +7722,18 @@ Array [
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -7851,18 +7851,18 @@ Array [
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -7980,18 +7980,18 @@ Array [
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -8109,18 +8109,18 @@ Array [
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -8242,18 +8242,18 @@ exports[`Demo renders ./packages/react/src/Dialog/__doc__/Width.tsx correctly 1`
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -8374,18 +8374,18 @@ exports[`Demo renders ./packages/react/src/Dropdown/__doc__/Advance.tsx correctl
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -8506,18 +8506,18 @@ exports[`Demo renders ./packages/react/src/Dropdown/__doc__/Basic.tsx correctly 
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -8638,18 +8638,18 @@ exports[`Demo renders ./packages/react/src/Dropdown/__doc__/Cascade.tsx correctl
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -12705,18 +12705,18 @@ exports[`Demo renders ./packages/react/src/Icon/__doc__/IconSearch.tsx correctly
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c2:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c2:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -12743,12 +12743,12 @@ exports[`Demo renders ./packages/react/src/Icon/__doc__/IconSearch.tsx correctly
 }
 
 .c5:hover {
-  background-color: rgba(247,247,247,1);
+  background-color: rgb(235,235,235);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c5:focus {
-  background-color: rgba(230,230,230,1);
+  background-color: rgb(224,224,224);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -12856,7 +12856,7 @@ exports[`Demo renders ./packages/react/src/Icon/__doc__/IconSearch.tsx correctly
 
 .c6:hover {
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
 }
 
 <div
@@ -19860,6 +19860,83 @@ exports[`Demo renders ./packages/react/src/Icon/__doc__/IconSearch.tsx correctly
 </div>
 `;
 
+exports[`Demo renders ./packages/react/src/Input/__doc__/Basic.tsx correctly 1`] = `
+.c0 {
+  font-size: 1.000rem;
+  line-height: 1.5;
+  font-weight: 400;
+  -webkit-letter-spacing: 0.031em;
+  -moz-letter-spacing: 0.031em;
+  -ms-letter-spacing: 0.031em;
+  letter-spacing: 0.031em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  display: inline-block;
+  outline: 0;
+  border-radius: 4px;
+  border: 1px solid rgba(0,0,0,0.12);
+  -webkit-appearance: none;
+  color: rgba(0,0,0,0.87);
+  width: 100%;
+  min-width: 0;
+  padding: 4px 11px;
+  background-color: #fff;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.c0::-moz-placeholder {
+  opacity: 1;
+}
+
+.c0::-webkit-input-placeholder {
+  color: rgba(0,0,0,0.38);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c0::-moz-placeholder {
+  color: rgba(0,0,0,0.38);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c0:-ms-input-placeholder {
+  color: rgba(0,0,0,0.38);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c0::placeholder {
+  color: rgba(0,0,0,0.38);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c0:placeholder-shown {
+  text-overflow: ellipsis;
+}
+
+.c0:hover {
+  border-color: rgb(23,109,193);
+}
+
+<input
+  class="c0 xl-input"
+  placeholder="Basic usage"
+/>
+`;
+
 exports[`Demo renders ./packages/react/src/Modal/__doc__/Basic.tsx correctly 1`] = `
 .c3 {
   position: absolute;
@@ -19959,18 +20036,18 @@ exports[`Demo renders ./packages/react/src/Modal/__doc__/Basic.tsx correctly 1`]
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -20091,18 +20168,18 @@ exports[`Demo renders ./packages/react/src/Modal/__doc__/EscClosable.tsx correct
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -20223,18 +20300,18 @@ exports[`Demo renders ./packages/react/src/Modal/__doc__/HideMask.tsx correctly 
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -20355,18 +20432,18 @@ exports[`Demo renders ./packages/react/src/Modal/__doc__/MaskClosable.tsx correc
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -20487,18 +20564,18 @@ exports[`Demo renders ./packages/react/src/Modal/__doc__/Nest.tsx correctly 1`] 
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -20619,18 +20696,18 @@ exports[`Demo renders ./packages/react/src/Modal/__doc__/Shortcut.tsx correctly 
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -20751,18 +20828,18 @@ exports[`Demo renders ./packages/react/src/Popconfirm/__doc__/Basic.tsx correctl
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -20885,18 +20962,18 @@ exports[`Demo renders ./packages/react/src/Popconfirm/__doc__/Promise.tsx correc
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -21019,18 +21096,18 @@ exports[`Demo renders ./packages/react/src/Popover/__doc__/Basic.tsx correctly 1
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c2:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c2:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -21379,18 +21456,18 @@ exports[`Demo renders ./packages/react/src/Popover/__doc__/ClickInner.tsx correc
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -21511,18 +21588,18 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Arrow.tsx correctly 1`
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c2:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c2:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -21652,18 +21729,18 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c2:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c2:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -22012,18 +22089,18 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c2:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c2:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -22258,18 +22335,18 @@ exports[`Demo renders ./packages/react/src/Portal/__doc__/Basic.tsx correctly 1`
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c2:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c2:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -22289,12 +22366,12 @@ exports[`Demo renders ./packages/react/src/Portal/__doc__/Basic.tsx correctly 1`
 }
 
 .c0 .container1 {
-  background-color: #3f51b5;
+  background-color: #1976d2;
 }
 
 .c0 .container2 {
   margin-top: 16px;
-  background-color: #e91e63;
+  background-color: #ba68c8;
 }
 
 <div
@@ -22350,7 +22427,7 @@ exports[`Demo renders ./packages/react/src/Ripple/__doc__/Advance.tsx correctly 
   position: relative;
   height: 100px;
   background-color: rgba(0,0,0,0.12);
-  color: #3f51b5;
+  color: #1976d2;
   font-size: 26px;
   text-align: center;
   line-height: 100px;
@@ -22408,7 +22485,7 @@ exports[`Demo renders ./packages/react/src/Ripple/__doc__/Basic.tsx correctly 1`
   position: relative;
   height: 100px;
   background-color: rgba(0,0,0,0.12);
-  color: #3f51b5;
+  color: #1976d2;
   font-size: 26px;
   text-align: center;
   line-height: 100px;
@@ -22708,7 +22785,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] =
   padding: 0.5rem;
   color: #fff;
   text-align: center;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   border-radius: 5px;
 }
 
@@ -26745,7 +26822,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = 
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   border-radius: 5px;
 }
 
@@ -30900,7 +30977,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] 
   padding: 0.5rem;
   color: #fff;
   text-align: center;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   border-radius: 5px;
 }
 
@@ -34896,7 +34973,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/ResponsiveColumn.tsx corr
   padding: 0.5rem;
   color: #fff;
   text-align: center;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   border-radius: 5px;
 }
 
@@ -38815,7 +38892,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx corr
   padding: 0.5rem;
   color: #fff;
   text-align: center;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   border-radius: 5px;
 }
 
@@ -42653,18 +42730,18 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Arrow.tsx correctly 1
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -42785,18 +42862,18 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c2:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c2:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -43145,18 +43222,18 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Colors.tsx correctly 
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c2:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c2:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -43334,18 +43411,18 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/MaxWidth.tsx correctl
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c2:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c2:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -43475,18 +43552,18 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Rich.tsx correctly 1`
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c2:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c2:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -43616,18 +43693,18 @@ exports[`Demo renders ./packages/react/src/Transition/__doc__/Appear.tsx correct
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -43788,18 +43865,18 @@ exports[`Demo renders ./packages/react/src/Transition/__doc__/Basic.tsx correctl
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
@@ -43922,18 +43999,18 @@ exports[`Demo renders ./packages/react/src/TransitionGroup/__doc__/Basic.tsx cor
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #1976d2;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
   padding: 6px 16px;
 }
 
 .c1:hover {
-  background-color: rgba(70,88,184,1);
+  background-color: rgb(23,109,193);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .c1:focus {
-  background-color: rgba(85,101,189,1);
+  background-color: rgb(22,104,185);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 

@@ -90,7 +90,7 @@ const PopconfirmPopup = styled('div', {
 
   return {
     backgroundColor: bgColor,
-    color: color.getContrastText(bgColor).text.primary,
+    color: color.getContrastColor(bgColor).text.primary,
     borderRadius: shape.borderRadius.md,
     padding: '12px 16px',
     ...elevations(8),

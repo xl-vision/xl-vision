@@ -154,16 +154,16 @@ exports[`DialogMethod test confirm 1`] = `
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
-  color: #3f51b5;
+  color: #1976d2;
   padding: 6px 16px;
 }
 
 .c12:hover {
-  background-color: rgba(63,81,181,0.04);
+  background-color: rgba(25,118,210,0.08);
 }
 
 .c12:focus {
-  background-color: rgba(63,81,181,0.12);
+  background-color: rgba(25,118,210,0.12);
 }
 
 .c1 {
@@ -295,7 +295,7 @@ exports[`DialogMethod test confirm 1`] = `
       >
         <svg
           class="c5 xl-icon"
-          style="color: rgb(63, 81, 181);"
+          style="color: rgb(25, 118, 210);"
           viewBox="0 0 1024 1024"
         >
           <path
@@ -519,16 +519,16 @@ exports[`DialogMethod test error 1`] = `
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
-  color: #3f51b5;
+  color: #1976d2;
   padding: 6px 16px;
 }
 
 .c12:hover {
-  background-color: rgba(63,81,181,0.04);
+  background-color: rgba(25,118,210,0.08);
 }
 
 .c12:focus {
-  background-color: rgba(63,81,181,0.12);
+  background-color: rgba(25,118,210,0.12);
 }
 
 .c1 {
@@ -660,7 +660,7 @@ exports[`DialogMethod test error 1`] = `
       >
         <svg
           class="c5 xl-icon"
-          style="color: rgb(244, 67, 54);"
+          style="color: rgb(239, 83, 80);"
           viewBox="0 0 1024 1024"
         >
           <path
@@ -868,16 +868,16 @@ exports[`DialogMethod test info 1`] = `
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
-  color: #3f51b5;
+  color: #1976d2;
   padding: 6px 16px;
 }
 
 .c12:hover {
-  background-color: rgba(63,81,181,0.04);
+  background-color: rgba(25,118,210,0.08);
 }
 
 .c12:focus {
-  background-color: rgba(63,81,181,0.12);
+  background-color: rgba(25,118,210,0.12);
 }
 
 .c1 {
@@ -1009,7 +1009,7 @@ exports[`DialogMethod test info 1`] = `
       >
         <svg
           class="c5 xl-icon"
-          style="color: rgb(33, 150, 243);"
+          style="color: rgb(3, 169, 244);"
           viewBox="0 0 1024 1024"
         >
           <path
@@ -1201,16 +1201,16 @@ exports[`DialogMethod test method 1`] = `
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
-  color: #3f51b5;
+  color: #1976d2;
   padding: 6px 16px;
 }
 
 .c9:hover {
-  background-color: rgba(63,81,181,0.04);
+  background-color: rgba(25,118,210,0.08);
 }
 
 .c9:focus {
-  background-color: rgba(63,81,181,0.12);
+  background-color: rgba(25,118,210,0.12);
 }
 
 .c1 {
@@ -1538,16 +1538,16 @@ exports[`DialogMethod test success 1`] = `
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
-  color: #3f51b5;
+  color: #1976d2;
   padding: 6px 16px;
 }
 
 .c12:hover {
-  background-color: rgba(63,81,181,0.04);
+  background-color: rgba(25,118,210,0.08);
 }
 
 .c12:focus {
-  background-color: rgba(63,81,181,0.12);
+  background-color: rgba(25,118,210,0.12);
 }
 
 .c1 {
@@ -1679,7 +1679,7 @@ exports[`DialogMethod test success 1`] = `
       >
         <svg
           class="c5 xl-icon"
-          style="color: rgb(63, 81, 181);"
+          style="color: rgb(25, 118, 210);"
           viewBox="0 0 1024 1024"
         >
           <path
@@ -1887,16 +1887,16 @@ exports[`DialogMethod test warning 1`] = `
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
-  color: #3f51b5;
+  color: #1976d2;
   padding: 6px 16px;
 }
 
 .c12:hover {
-  background-color: rgba(63,81,181,0.04);
+  background-color: rgba(25,118,210,0.08);
 }
 
 .c12:focus {
-  background-color: rgba(63,81,181,0.12);
+  background-color: rgba(25,118,210,0.12);
 }
 
 .c1 {

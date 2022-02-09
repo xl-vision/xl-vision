@@ -673,5 +673,6 @@ Array [
   "Modal",
   "Dialog",
   "Avatar",
+  "Input",
 ]
 `;
