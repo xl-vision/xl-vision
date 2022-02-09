@@ -30,7 +30,7 @@ const HeaderNav = styled('header')(({ theme }) => {
 
   const background = color.background.paper;
 
-  const fontColor = color.getContrastText(background).text.primary;
+  const fontColor = color.getContrastColor(background).text.primary;
 
   return {
     display: 'flex',

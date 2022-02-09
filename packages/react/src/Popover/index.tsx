@@ -77,7 +77,7 @@ const PopoverPopup = styled('div', {
 
   return {
     backgroundColor: bgColor,
-    color: color.getContrastText(bgColor).text.primary,
+    color: color.getContrastColor(bgColor).text.primary,
     borderRadius: 4,
     minWidth: 160,
     ...elevations(8),

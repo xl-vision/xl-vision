@@ -137,7 +137,7 @@ const ButtonRoot = styled(BaseButton, {
     // 特殊处理
     const backgroundColor =
       colorStyle === 'default' ? themeColor.background.paper : themeColor.themes[colorStyle].color;
-    const baseColor = themeColor.getContrastText(backgroundColor);
+    const baseColor = themeColor.getContrastColor(backgroundColor);
     styles.color = baseColor.text.primary;
     styles.backgroundColor = backgroundColor;
 
