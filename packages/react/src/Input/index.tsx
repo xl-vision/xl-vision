@@ -130,12 +130,6 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     }
 
     handlePropChange(v);
-
-    const input = inputRef.current;
-
-    if (input) {
-      input.value = v;
-    }
   });
 
   const rootClassName = `${clsPrefix}-input`;

@@ -5,36 +5,23 @@ const usePropChange = <T>(
   defaultProp: T,
   prop: T | undefined,
   onChange: ((prop: T) => void) | undefined,
-  prePropChangeHandler?: (prop: T) => void,
 ) => {
-  const [value, setValue] = React.useState<T>(() => {
-    if (prop !== undefined) {
-      return prop;
-    }
-    return defaultProp;
-  });
+  const [value, setValue] = React.useState<T>(defaultProp);
+
+  const hasProp = typeof prop !== 'undefined';
 
   const handleChange = useConstantFn((newValue: T) => {
-    if (prop === undefined) {
-      setValue(newValue);
-    }
     if (newValue !== value) {
+      if (!hasProp) {
+        setValue(newValue);
+      }
       onChange?.(newValue);
     }
   });
 
-  const prePropChangeHandlerWrapper = useConstantFn((_prop: T) => {
-    prePropChangeHandler?.(_prop);
-    setValue(_prop);
-  });
+  const actualValue = hasProp ? prop : value;
 
-  React.useEffect(() => {
-    if (typeof prop !== 'undefined') {
-      prePropChangeHandlerWrapper(prop);
-    }
-  }, [prop, prePropChangeHandlerWrapper]);
-
-  return [value, handleChange] as const;
+  return [actualValue, handleChange] as const;
 };
 
 export default usePropChange;

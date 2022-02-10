@@ -70,16 +70,7 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) =>
 
   const submenuCloseHandlersRef = React.useRef<Array<() => void>>([]);
 
-  const [visible, setVisible] = usePropChange(
-    defaultVisible,
-    visibleProp,
-    onVisibleChange,
-    (newVisibleProp) => {
-      if (!newVisibleProp) {
-        submenuCloseHandlersRef.current.forEach((it) => it());
-      }
-    },
-  );
+  const [visible, setVisible] = usePropChange(defaultVisible, visibleProp, onVisibleChange);
 
   const setVisibleWrapper = useConstantFn((newVisible: boolean) => {
     if (!newVisible) {
@@ -87,6 +78,12 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) =>
     }
     setVisible(newVisible);
   });
+
+  React.useEffect(() => {
+    if (!visible) {
+      submenuCloseHandlersRef.current.forEach((it) => it());
+    }
+  }, [visible]);
 
   const rootClassName = `${clsPrefix}-dropdown`;
 
