@@ -2,7 +2,7 @@ import React from 'react';
 import { Input } from '@xl-vision/react';
 
 const Basic = () => {
-  const [value, handleValue] = React.useState('');
+  const [value, handleValue] = React.useState<string>();
 
   return (
     <div>
