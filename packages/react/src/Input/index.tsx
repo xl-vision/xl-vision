@@ -9,7 +9,7 @@ import usePropChange from '../hooks/usePropChange';
 
 export type InputProps = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
-  'type' | 'onChange' | 'value' | 'defaultValue'
+  'type' | 'onChange' | 'value' | 'defaultValue' | 'prefix'
 > & {
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
@@ -89,9 +89,9 @@ const InputInner = styled('input', {
   };
 });
 
-const InputSuffix = styled('span', {
+const InputPrefix = styled('span', {
   name: displayName,
-  slot: 'Suffix',
+  slot: 'Prefix',
 })(({ theme }) => {
   const { color } = theme;
 
@@ -100,6 +100,17 @@ const InputSuffix = styled('span', {
     flex: 'none',
     alignItems: 'center',
     color: color.text.hint,
+    marginRight: 4,
+  };
+});
+
+const InputSuffix = styled(InputPrefix, {
+  name: displayName,
+  slot: 'Suffix',
+})(() => {
+  return {
+    marginRight: 0,
+    marginLeft: 4,
   };
 });
 
@@ -119,9 +130,9 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
 
   const { clsPrefix } = useTheme();
 
-  const inputRef = React.useRef<HTMLInputElement>(null);
-
   const [value, handlePropChange] = usePropChange(defaultValue, valueProp, onChange);
+
+  const [focused, setFocused] = React.useState(false);
 
   const handleChange = useConstantFn((e: React.ChangeEvent<HTMLInputElement>) => {
     let v = e.target.value;
@@ -140,23 +151,28 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
 
   if (showCount) {
     const { length } = value;
-    suffixInner = maxLength ? `${length}/${maxLength}` : length;
+    const msg = `${length}${maxLength ? `/${maxLength}` : ''}`;
+    suffixInner = msg;
   } else {
     suffixInner = suffix;
   }
 
   return (
-    <InputRoot className={rootClasses} ref={ref}>
+    <InputRoot className={rootClasses} ref={ref} onFocus={() => {console.log(1)}}>
+      {typeof prefix !== 'undefined' && (
+        <InputPrefix className={`${rootClassName}__prefix`}>{prefix}</InputPrefix>
+      )}
       <InputInner
         {...others}
-        ref={inputRef}
         type={type}
         className={`${rootClassName}__inner`}
         maxLength={maxLength}
         value={value}
         onChange={handleChange}
       />
-      {suffixInner && <InputSuffix>{suffixInner}</InputSuffix>}
+      {typeof suffixInner !== 'undefined' && (
+        <InputSuffix className={`${rootClassName}__suffix`}>{suffixInner}</InputSuffix>
+      )}
     </InputRoot>
   );
 });
