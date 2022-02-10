@@ -12,6 +12,7 @@ const Basic = () => {
         onChange={handleValue}
         maxLength={5}
         showCount={true}
+        defaultValue='123'
       />
       <p>{value}</p>
     </div>
