@@ -29,7 +29,7 @@ const usePropChange = <T>(
   });
 
   React.useEffect(() => {
-    if (prop !== undefined) {
+    if (typeof prop !== 'undefined') {
       prePropChangeHandlerWrapper(prop);
     }
   }, [prop, prePropChangeHandlerWrapper]);

@@ -159,7 +159,7 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
         type={type}
         className={`${rootClassName}__inner`}
         maxLength={maxLength}
-        value={valueProp}
+        value={value}
         onChange={handleChange}
       />
       {suffixInner && <InputSuffix>{suffixInner}</InputSuffix>}
