@@ -93,15 +93,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
 
   const child = React.Children.only<React.ReactElement<PopperChildrenProps>>(children);
 
-  const [visible, setVisible] = usePropChange(defaultVisible, visibleProp, onVisibleChange, () => {
-    // 清除所有延时操作
-    delayTimeRef.current.forEach(clearTimeout);
-    delayTimeRef.current = [];
-    if (timerRef.current) {
-      clearTimeout(timerRef.current);
-      timerRef.current = undefined;
-    }
-  });
+  const [visible, setVisible] = usePropChange(defaultVisible, visibleProp, onVisibleChange);
 
   const [animatedVisible, setAnimatedVisible] = React.useState(visible);
 
@@ -386,6 +378,14 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
   React.useEffect(() => {
     if (visible) {
       setAnimatedVisible(true);
+    }
+
+    // 清除所有延时操作
+    delayTimeRef.current.forEach(clearTimeout);
+    delayTimeRef.current = [];
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = undefined;
     }
   }, [visible]);
 
