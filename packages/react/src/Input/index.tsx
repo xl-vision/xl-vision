@@ -119,6 +119,8 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
 
   const { clsPrefix } = useTheme();
 
+  const inputRef = React.useRef<HTMLInputElement>(null);
+
   const [value, handlePropChange] = usePropChange(defaultValue, valueProp, onChange);
 
   const handleChange = useConstantFn((e: React.ChangeEvent<HTMLInputElement>) => {
@@ -128,6 +130,12 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     }
 
     handlePropChange(v);
+
+    const input = inputRef.current;
+
+    if (input) {
+      input.value = v;
+    }
   });
 
   const rootClassName = `${clsPrefix}-input`;
@@ -147,10 +155,11 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     <InputRoot className={rootClasses} ref={ref}>
       <InputInner
         {...others}
+        ref={inputRef}
         type={type}
         className={`${rootClassName}__inner`}
         maxLength={maxLength}
-        value={value}
+        value={valueProp}
         onChange={handleChange}
       />
       {suffixInner && <InputSuffix>{suffixInner}</InputSuffix>}
