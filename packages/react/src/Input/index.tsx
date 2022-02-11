@@ -1,11 +1,13 @@
 import { env } from '@xl-vision/utils';
-import React, { ReactNode } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { useConstantFn } from '@xl-vision/hooks';
+import { useConstantFn, useForkRef } from '@xl-vision/hooks';
+import { CSSObject } from '@xl-vision/styled-engine';
 import useTheme from '../ThemeProvider/useTheme';
 import { styled } from '../styles';
 import usePropChange from '../hooks/usePropChange';
+import { contains } from '../utils/dom';
 
 export type InputProps = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
@@ -47,8 +49,17 @@ const displayName = 'Input';
 const InputRoot = styled('span', {
   name: displayName,
   slot: 'Root',
-})(({ theme }) => {
+})<{ focused: boolean }>(({ theme, styleProps }) => {
   const { color, shape, transition, typography } = theme;
+
+  const { focused } = styleProps;
+
+  const focusColor = color.themes.primary.focus;
+
+  const focusedStyle: CSSObject = {
+    borderColor: focusColor,
+    boxShadow: `0 0 2px ${focusColor}`,
+  };
 
   return {
     ...typography.body1,
@@ -60,10 +71,11 @@ const InputRoot = styled('span', {
     color: color.text.primary,
     backgroundColor: color.background.paper,
     transition: transition.standard('all'),
-
     '&:hover': {
       borderColor: color.themes.primary.hover,
     },
+
+    ...(focused && focusedStyle),
   };
 });
 
@@ -134,6 +146,12 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
 
   const [focused, setFocused] = React.useState(false);
 
+  const rootRef = React.useRef<HTMLSpanElement>(null);
+
+  const forkRef = useForkRef(rootRef, ref);
+
+  const inputRef = React.useRef<HTMLInputElement>(null);
+
   const handleChange = useConstantFn((e: React.ChangeEvent<HTMLInputElement>) => {
     let v = e.target.value;
     if (typeof v === 'undefined' || v === null) {
@@ -143,11 +161,46 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     handlePropChange(v);
   });
 
+  const focus = React.useCallback(() => {
+    inputRef.current?.focus();
+  }, []);
+
+  const handleMouseUp = useConstantFn((e: React.MouseEvent) => {
+    const el = rootRef.current;
+    if (!el) {
+      return;
+    }
+    if (contains(el, e.target as Element)) {
+      focus();
+    }
+  });
+
+  const handleFocus = React.useCallback(() => {
+    setFocused(true);
+  }, []);
+
+  const handleBlur = React.useCallback(() => {
+    setFocused(false);
+  }, []);
+
+  // 将input focus绑定到span上
+  React.useEffect(() => {
+    if (rootRef.current) {
+      rootRef.current.focus = focus;
+    }
+  }, [focus]);
+
   const rootClassName = `${clsPrefix}-input`;
 
-  const rootClasses = clsx(rootClassName, className);
+  const rootClasses = clsx(
+    rootClassName,
+    {
+      [`${rootClassName}--focused`]: focused,
+    },
+    className,
+  );
 
-  let suffixInner: ReactNode;
+  let suffixInner: React.ReactNode;
 
   if (showCount) {
     const { length } = value;
@@ -158,12 +211,20 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
   }
 
   return (
-    <InputRoot className={rootClasses} ref={ref} onFocus={() => {console.log(1)}}>
+    <InputRoot
+      styleProps={{ focused }}
+      className={rootClasses}
+      ref={forkRef}
+      onMouseUp={handleMouseUp}
+    >
       {typeof prefix !== 'undefined' && (
         <InputPrefix className={`${rootClassName}__prefix`}>{prefix}</InputPrefix>
       )}
       <InputInner
         {...others}
+        ref={inputRef}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
         type={type}
         className={`${rootClassName}__inner`}
         maxLength={maxLength}
