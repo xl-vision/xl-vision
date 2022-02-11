@@ -26,10 +26,11 @@ module.exports = function demoPlugin() {
   blockMethods.unshift(TYPE);
 
   return async function parse(tree) {
-    const nodes = [];
-    visit(tree, TYPE, nodes);
+    visit(tree, TYPE, (node, parent) => {
+      if (!parent) {
+        return;
+      }
 
-    for (const node of nodes) {
       const filePath = node.path;
 
       const demoName = `Demo_${demoCount++}`;
@@ -37,6 +38,8 @@ module.exports = function demoPlugin() {
       const demo = demoName;
       const jsCode = `${demoName}_js`;
       const tsCode = `${demoName}_ts`;
+
+      const nodes = [...node.children];
 
       node.type = 'element';
 
@@ -50,31 +53,39 @@ module.exports = function demoPlugin() {
         value: `import ${demo} from '${filePath}'`,
       });
 
-      node.children.unshift({
+      nodes.unshift({
         type: 'jsx',
         value: '<DemoBox>',
       });
 
-      node.children.push({
+      nodes.push({
         type: 'jsx',
         value: `<pre className='language-tsx'>{${tsCode}}</pre>`,
       });
 
-      node.children.push({
+      nodes.push({
         type: 'jsx',
         value: `<pre className='language-jsx'>{${jsCode}}</pre>`,
       });
 
-      node.children.push({
+      nodes.push({
         type: 'jsx',
         value: `<${demo} />`,
       });
 
-      node.children.push({
+      nodes.push({
         type: 'jsx',
         value: '</DemoBox>',
       });
-    }
+
+      const children = parent.children;
+
+      for (let i = 0; i < children.length; i++) {
+        if (children[i] === node) {
+          children.splice(i, 1, ...nodes);
+        }
+      }
+    });
   };
 };
 
@@ -140,17 +151,17 @@ function blockTokenizer(eat, value) {
   exit();
 }
 
-function visit(tree, type, nodes) {
+function visit(tree, type, cb, parent) {
   if (!tree) {
     return;
   }
 
   if (tree.type === type) {
-    nodes.push(tree);
+    cb(tree, parent);
   }
 
   const children = tree.children || [];
   for (const child of children) {
-    visit(child, type, nodes);
+    visit(child, type, cb, tree);
   }
 }
