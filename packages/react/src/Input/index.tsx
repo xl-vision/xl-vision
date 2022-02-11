@@ -2,7 +2,7 @@ import { env } from '@xl-vision/utils';
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { useConstantFn, useForkRef } from '@xl-vision/hooks';
+import { useConstantFn, useForkRef, useUnmount } from '@xl-vision/hooks';
 import { CSSObject } from '@xl-vision/styled-engine';
 import useTheme from '../ThemeProvider/useTheme';
 import { styled } from '../styles';
@@ -16,6 +16,8 @@ export type InputProps = Omit<
 > & {
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
+  addonAfter?: React.ReactNode;
+  addonBefore?: React.ReactNode;
   onChange?: (value: string) => void;
   value?: string;
   defaultValue?: string;
@@ -50,8 +52,55 @@ const displayName = 'Input';
 const InputRoot = styled('span', {
   name: displayName,
   slot: 'Root',
+})(({ theme }) => {
+  const { typography } = theme;
+
+  return {
+    ...typography.body1,
+    width: '100%',
+    display: 'inline-flex',
+  };
+});
+
+const InputAddonBefore = styled('span', {
+  name: displayName,
+  slot: 'AddonBefore',
+})(({ theme }) => {
+  const { color, shape } = theme;
+
+  return {
+    display: 'flex',
+    flex: 'none',
+    alignItems: 'center',
+    backgroundColor: color.emphasize(color.background.paper, 0.05),
+    padding: '0 8px',
+    border: `1px solid ${color.divider}`,
+    borderRightWidth: 0,
+    borderTopLeftRadius: shape.borderRadius.md,
+    borderBottomLeftRadius: shape.borderRadius.md,
+  };
+});
+
+const InputAddonAfter = styled(InputAddonBefore, {
+  name: displayName,
+  slot: 'AddonAfter',
+})(({ theme }) => {
+  const { shape } = theme;
+  return {
+    borderLeftWidth: 0,
+    borderRightWidth: 1,
+    borderTopLeftRadius: 0,
+    borderBottomLeftRadius: 0,
+    borderTopRightRadius: shape.borderRadius.md,
+    borderBottomRightRadius: shape.borderRadius.md,
+  };
+});
+
+const InputWrapper = styled('span', {
+  name: displayName,
+  slot: 'Wrapper',
 })<{ focused: boolean }>(({ theme, styleProps }) => {
-  const { color, shape, transition, typography } = theme;
+  const { color, shape, transition } = theme;
 
   const { focused } = styleProps;
 
@@ -63,7 +112,6 @@ const InputRoot = styled('span', {
   };
 
   return {
-    ...typography.body1,
     display: 'inline-flex',
     borderRadius: shape.borderRadius.md,
     border: `1px solid ${color.divider}`,
@@ -71,7 +119,18 @@ const InputRoot = styled('span', {
     padding: '4px 11px',
     color: color.text.primary,
     backgroundColor: color.background.paper,
-    transition: transition.standard(['border-color', 'box-shadow']),
+    transition: transition.standard(['borderColor', 'boxShadow']),
+    zIndex: 1,
+
+    '&:not(:first-child)': {
+      borderTopLeftRadius: 0,
+      borderBottomLeftRadius: 0,
+    },
+    '&:not(:last-child)': {
+      borderTopRightRadius: 0,
+      borderBottomRightRadius: 0,
+    },
+
     '&:hover': {
       borderColor: color.themes.primary.hover,
     },
@@ -84,7 +143,7 @@ const InputInner = styled('input', {
   name: displayName,
   slot: 'Inner',
 })(({ theme }) => {
-  const { color, typography, mixins } = theme;
+  const { color, typography, mixins, transition } = theme;
   return {
     ...typography.body1,
     ...mixins.placeholder(),
@@ -99,6 +158,7 @@ const InputInner = styled('input', {
     WebkitAppearance: 'none',
     color: color.text.primary,
     backgroundColor: color.background.paper,
+    transition: transition.standard(['borderColor', 'boxShadow']),
   };
 });
 
@@ -134,6 +194,8 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     style,
     prefix,
     suffix,
+    addonBefore,
+    addonAfter,
     defaultValue = '',
     maxLength,
     showCount,
@@ -156,6 +218,8 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
   const forkRef = useForkRef(rootRef, ref);
 
   const inputRef = React.useRef<HTMLInputElement>(null);
+
+  const removePasswordTimerRef = React.useRef<NodeJS.Timeout>();
 
   const handleChange = useConstantFn((e: React.ChangeEvent<HTMLInputElement>) => {
     let v = e.target.value;
@@ -197,6 +261,23 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     }
   }, [focus]);
 
+  // 检测是否type=password,并删除value，避免密码泄露
+  React.useEffect(() => {
+    removePasswordTimerRef.current = setTimeout(() => {
+      const input = inputRef.current;
+      if (input && input.getAttribute('type') === 'password' && input.hasAttribute('value')) {
+        input.removeAttribute('value');
+      }
+    });
+  });
+
+  useUnmount(() => {
+    const timer = removePasswordTimerRef.current;
+    if (timer) {
+      clearTimeout(timer);
+    }
+  });
+
   const rootClassName = `${clsPrefix}-input`;
 
   const rootClasses = clsx(
@@ -218,30 +299,32 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
   }
 
   return (
-    <InputRoot
-      style={style}
-      styleProps={{ focused }}
-      className={rootClasses}
-      ref={forkRef}
-      onMouseUp={handleMouseUp}
-    >
-      {typeof prefix !== 'undefined' && (
-        <InputPrefix className={`${rootClassName}__prefix`}>{prefix}</InputPrefix>
-      )}
-      <InputInner
-        {...others}
-        ref={inputRef}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        type={type}
-        className={`${rootClassName}__inner`}
-        maxLength={maxLength}
-        value={value}
-        onChange={handleChange}
-      />
-      {typeof suffixInner !== 'undefined' && (
-        <InputSuffix className={`${rootClassName}__suffix`}>{suffixInner}</InputSuffix>
-      )}
+    <InputRoot style={style} className={rootClasses} ref={forkRef}>
+      {typeof addonBefore !== 'undefined' && <InputAddonBefore>{addonBefore}</InputAddonBefore>}
+      <InputWrapper
+        className={`${rootClassName}__wrapper`}
+        styleProps={{ focused }}
+        onMouseUp={handleMouseUp}
+      >
+        {typeof prefix !== 'undefined' && (
+          <InputPrefix className={`${rootClassName}__prefix`}>{prefix}</InputPrefix>
+        )}
+        <InputInner
+          {...others}
+          ref={inputRef}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          type={type}
+          className={`${rootClassName}__inner`}
+          maxLength={maxLength}
+          value={value}
+          onChange={handleChange}
+        />
+        {typeof suffixInner !== 'undefined' && (
+          <InputSuffix className={`${rootClassName}__suffix`}>{suffixInner}</InputSuffix>
+        )}
+      </InputWrapper>
+      {typeof addonAfter !== 'undefined' && <InputAddonAfter>{addonAfter}</InputAddonAfter>}
     </InputRoot>
   );
 });
