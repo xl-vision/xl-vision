@@ -71,7 +71,7 @@ const InputRoot = styled('span', {
     padding: '4px 11px',
     color: color.text.primary,
     backgroundColor: color.background.paper,
-    transition: transition.standard('all'),
+    transition: transition.standard(['border-color', 'box-shadow']),
     '&:hover': {
       borderColor: color.themes.primary.hover,
     },
