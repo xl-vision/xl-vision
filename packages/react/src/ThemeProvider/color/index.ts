@@ -68,25 +68,28 @@ const createColors = (color: Color = {}) => {
     return contrastColor;
   };
 
-  const stateMap = new Map<string, Map<string, string>>();
+  const emphasizedMap = new Map<string, Map<number, string>>();
 
-  const applyState = (bgColor: string, state: keyof BaseColor['action']) => {
-    let actionMap = stateMap.get(bgColor);
-
+  const emphasize = (bgColor: string, coefficient = 0.1) => {
+    let actionMap = emphasizedMap.get(bgColor);
     if (!actionMap) {
       actionMap = new Map();
-      stateMap.set(bgColor, actionMap);
+      emphasizedMap.set(bgColor, actionMap);
     }
 
-    let stateColor = actionMap.get(state);
+    let stateColor = actionMap.get(coefficient);
 
     if (!stateColor) {
       const getColor = mode === 'dark' ? lighten : darken;
-      stateColor = getColor(bgColor, baseTheme.action[state]);
-      actionMap.set(state, stateColor);
+      stateColor = getColor(bgColor, coefficient);
+      actionMap.set(coefficient, stateColor);
     }
 
     return stateColor;
+  };
+
+  const applyState = (bgColor: string, state: keyof BaseColor['action']) => {
+    return emphasize(bgColor, baseTheme.action[state]);
   };
 
   const newThemes = {} as Themes;
@@ -118,6 +121,7 @@ const createColors = (color: Color = {}) => {
     themes: newThemes,
     grey,
     getContrastColor,
+    emphasize,
     applyState,
   };
 };

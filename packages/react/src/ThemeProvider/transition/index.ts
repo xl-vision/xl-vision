@@ -30,7 +30,10 @@ const genTransition = (
   delay: string = '',
 ) => {
   const names = Array.isArray(name) ? name : [name];
-  return names.map(it => it.replace(/([A-Z])/g)).map((it) => `${it} ${duration} ${delay} ${func}`).join(',');
+  return names
+    .map((it) => it.replace(/\B([A-Z])/g, (letter) => `-${letter.toLowerCase()}`))
+    .map((it) => `${it} ${duration} ${delay} ${func}`)
+    .join(',');
 };
 
 const createTransition = (transition: Transition = {}) => {

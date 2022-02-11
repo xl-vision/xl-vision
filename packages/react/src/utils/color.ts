@@ -308,10 +308,6 @@ export const lighten = (color: string, amount: number) => {
   return colorToHsl(obj);
 };
 
-export const emphasize = (color: string, coefficient = 0.1) => {
-  return getLuminance(color) > 0.5 ? darken(color, coefficient) : lighten(color, coefficient);
-};
-
 export const alpha = (color: string, opacity: number) => {
   const obj = toColor(color);
   obj.a = opacity;
