@@ -24,13 +24,13 @@ const Demo = () => {
       <Input
         placeholder='Basic usage'
         suffix={
-          <Icon>
+          <Icon style={{ color: 'rgba(0,0,0,0.2)' }}>
             <SearchOutlined />
           </Icon>
         }
       />
 
-      <Input placeholder='Basic usage' suffix='RMB' />
+      <Input style={{ color: 'rgba(0,0,0,0.2)' }} placeholder='Basic usage' suffix='RMB' />
     </Root>
   );
 };

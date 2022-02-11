@@ -8,6 +8,7 @@ import useTheme from '../ThemeProvider/useTheme';
 import { styled } from '../styles';
 import usePropChange from '../hooks/usePropChange';
 import { contains } from '../utils/dom';
+import { alpha } from '../utils/color';
 
 export type InputProps = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
@@ -58,7 +59,7 @@ const InputRoot = styled('span', {
 
   const focusedStyle: CSSObject = {
     borderColor: focusColor,
-    boxShadow: `0 0 2px ${focusColor}`,
+    boxShadow: `0 0 0 2px ${alpha(focusColor, 0.2)}`,
   };
 
   return {
@@ -104,14 +105,11 @@ const InputInner = styled('input', {
 const InputPrefix = styled('span', {
   name: displayName,
   slot: 'Prefix',
-})(({ theme }) => {
-  const { color } = theme;
-
+})(() => {
   return {
     display: 'flex',
     flex: 'none',
     alignItems: 'center',
-    color: color.text.hint,
     marginRight: 4,
   };
 });
@@ -119,16 +117,21 @@ const InputPrefix = styled('span', {
 const InputSuffix = styled(InputPrefix, {
   name: displayName,
   slot: 'Suffix',
-})(() => {
+})(({ theme }) => {
+  const { clsPrefix, color } = theme;
   return {
     marginRight: 0,
     marginLeft: 4,
+    [`.${clsPrefix}-input__suffix-count`]: {
+      color: color.text.hint,
+    },
   };
 });
 
 const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
   const {
     className,
+    style,
     prefix,
     suffix,
     defaultValue = '',
@@ -137,6 +140,8 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     value: valueProp,
     onChange,
     type = 'text',
+    onBlur,
+    onFocus,
     ...others
   } = props;
 
@@ -175,13 +180,15 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     }
   });
 
-  const handleFocus = React.useCallback(() => {
+  const handleFocus = useConstantFn((e: React.FocusEvent<HTMLInputElement>) => {
     setFocused(true);
-  }, []);
+    onFocus?.(e);
+  });
 
-  const handleBlur = React.useCallback(() => {
+  const handleBlur = useConstantFn((e: React.FocusEvent<HTMLInputElement>) => {
     setFocused(false);
-  }, []);
+    onBlur?.(e);
+  });
 
   // 将input focus绑定到span上
   React.useEffect(() => {
@@ -205,13 +212,14 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
   if (showCount) {
     const { length } = value;
     const msg = `${length}${maxLength ? `/${maxLength}` : ''}`;
-    suffixInner = msg;
+    suffixInner = <span className={`${rootClassName}__suffix-count`}>{msg}</span>;
   } else {
     suffixInner = suffix;
   }
 
   return (
     <InputRoot
+      style={style}
       styleProps={{ focused }}
       className={rootClasses}
       ref={forkRef}
