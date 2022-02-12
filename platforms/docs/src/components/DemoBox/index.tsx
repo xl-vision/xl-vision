@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { styled, CollapseTransition, Button, Icon } from '@xl-vision/react';
+import { styled, CollapseTransition, Button } from '@xl-vision/react';
 import { DownOutlined } from '@xl-vision/icons';
 import Code from './Code';
 
@@ -107,11 +107,7 @@ const DemoBox: React.FunctionComponent<DemoBoxProps> = ({ children }) => {
             size='large'
             variant='text'
             onClick={handleExpand}
-            prefixIcon={
-              <Icon>
-                <ExpandWrapper styleProps={{ expand: isExpand }} />
-              </Icon>
-            }
+            prefixIcon={<ExpandWrapper styleProps={{ expand: isExpand }} />}
           />
         </ButtonWrapper>
       </InfoWrapper>

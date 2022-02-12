@@ -1,5 +1,5 @@
-import React from 'react';
 import { useLayoutEffect } from '@xl-vision/hooks';
+import { useRef } from 'react';
 
 export enum LifecycleState {
   BEFORE_MOUNTED,
@@ -8,7 +8,7 @@ export enum LifecycleState {
 }
 
 const useLifecycleState = () => {
-  const stateRef = React.useRef(LifecycleState.BEFORE_MOUNTED);
+  const stateRef = useRef(LifecycleState.BEFORE_MOUNTED);
 
   useLayoutEffect(() => {
     stateRef.current = LifecycleState.MOUNTED;

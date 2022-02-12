@@ -1,4 +1,4 @@
-import { red, blue, green, orange, purple, lightBlue } from '../palette';
+import { red, blue, green, orange, purple, blueGrey } from '../palette';
 
 export type ThemeColor = {
   light: string;
@@ -16,27 +16,27 @@ export type ThemeColors = {
 
 const themes: ThemeColors = {
   primary: {
-    light: blue[700],
-    dark: blue[800],
+    light: blue[500],
+    dark: blue[700],
   },
   secondary: {
-    light: purple[300],
-    dark: purple[700],
+    light: purple[400],
+    dark: purple[500],
   },
   error: {
     light: red[400],
-    dark: red[800],
+    dark: red[700],
   },
   warning: {
     light: orange[500],
     dark: orange[900],
   },
   info: {
-    light: lightBlue[500],
-    dark: lightBlue[900],
+    light: blueGrey[500],
+    dark: blueGrey[600],
   },
   success: {
-    light: green[500],
+    light: green[700],
     dark: green[900],
   },
 };

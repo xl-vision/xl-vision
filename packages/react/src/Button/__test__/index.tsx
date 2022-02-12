@@ -2,13 +2,8 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { CloseCircleFilled } from '@xl-vision/icons';
 import Button from '..';
-import Icon from '../../Icon';
 
-const CloseWrapper = (
-  <Icon>
-    <CloseCircleFilled />
-  </Icon>
-);
+const CloseWrapper = <CloseCircleFilled />;
 
 describe('Button', () => {
   it('test basic render', () => {

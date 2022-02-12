@@ -9,7 +9,6 @@ import BaseButton from '../BaseButton';
 import usePropChange from '../hooks/usePropChange';
 import Popper, { PopperPlacement, PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
-import Icon from '../Icon';
 import { useTheme } from '../ThemeProvider';
 import DropdownContext from './DropdownContext';
 
@@ -82,7 +81,7 @@ const DropdownSubmenuItemButton = styled(BaseButton, {
   return styles;
 });
 
-const DropdownSubmenuIcon = styled(Icon, {
+const DropdownSubmenuIcon = styled(RightOutlined, {
   name: displayName,
   slot: 'Icon',
 })(() => {
@@ -196,9 +195,7 @@ const DropdownSubmenu = React.forwardRef<HTMLDivElement, DropdownSubmenuProps>((
           className={`${rootClassName}__button`}
         >
           {title}
-          <DropdownSubmenuIcon className={`${rootClassName}__icon`}>
-            <RightOutlined />
-          </DropdownSubmenuIcon>
+          <DropdownSubmenuIcon className={`${rootClassName}__icon`} />
         </DropdownSubmenuItemButton>
       </li>
     </DropdownSubmenuRoot>

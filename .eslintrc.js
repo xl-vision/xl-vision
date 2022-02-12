@@ -170,7 +170,7 @@ module.exports = {
       },
     },
     {
-      files: ['test/__test__/**', 'packages/*/src/**/__test__/**', 'packages/*/src/**/__doc__/**'],
+      files: ['test/__test__/**', 'packages/**/__test__/**', 'packages/**/__doc__/**'],
       rules: {
         'react/display-name': 'off',
         'react/button-has-type': 'off',

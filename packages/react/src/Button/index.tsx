@@ -5,7 +5,6 @@ import { LoadingOutlined } from '@xl-vision/icons';
 import { keyframes, CSSObject } from '@xl-vision/styled-engine';
 import { env } from '@xl-vision/utils';
 import BaseButton, { BaseButtonProps } from '../BaseButton';
-import Icon from '../Icon';
 import { styled } from '../styles';
 import { ThemeColors } from '../ThemeProvider/color/themeColor';
 import CollapseTransition from '../CollapseTransition';
@@ -216,9 +215,9 @@ const loadingKeyframes = keyframes`
 
 // This `styled()` function invokes keyframes. `styled-components` only supports keyframes
 // in string templates. Do not convert these styles in JS object as it will break.
-const Loading = styled(Icon, {
+const DefaultLoadingIcon = styled(LoadingOutlined, {
   name: displayName,
-  slot: 'Loading',
+  slot: 'LoadingIcon',
 })`
   animation: ${loadingKeyframes} 1s linear infinite;
 `;
@@ -242,13 +241,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
 
   const { clsPrefix } = useTheme();
 
-  const [loadingIcon, setLoadingIcon] = React.useState<React.ReactElement>();
+  const [LoadingIcon, setLoadingIcon] = React.useState<React.ComponentType<any>>();
 
   const icon = !children;
 
   React.useEffect(() => {
     if (loading) {
-      setLoadingIcon(<LoadingOutlined />);
+      setLoadingIcon(DefaultLoadingIcon);
     } else if (prefixIcon) {
       setLoadingIcon(undefined);
     }
@@ -280,14 +279,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
 
   let prefix: React.ReactElement<any> | undefined;
 
-  if (loadingIcon) {
-    if (prefixIcon) {
-      prefix = (
-        <ButtonPrefix styleProps={{ icon }} className={prefixClassName}>
-          <Loading className={`${prefixClassName}--loading`}>{loadingIcon}</Loading>
-        </ButtonPrefix>
-      );
-    } else {
+  if (LoadingIcon) {
+    prefix = (
+      <ButtonPrefix styleProps={{ icon }} className={prefixClassName}>
+        <LoadingIcon className={`${prefixClassName}--loading`} />
+      </ButtonPrefix>
+    );
+    if (!prefixIcon) {
       prefix = (
         <CollapseTransition
           horizontal={true}
@@ -296,9 +294,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
           afterLeave={afterLoadingFinished}
           transitionClasses={prefixClassName}
         >
-          <ButtonPrefix styleProps={{ icon }} className={prefixClassName}>
-            <Loading className={`${prefixClassName}--loading`}>{loadingIcon}</Loading>
-          </ButtonPrefix>
+          {prefix}
         </CollapseTransition>
       );
     }

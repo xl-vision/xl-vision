@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, Row } from '@xl-vision/react';
+import { Row } from '@xl-vision/react';
 import { DeleteFilled, DeleteOutlined } from '@xl-vision/icons';
 
 const Basic = () => {
@@ -8,17 +8,13 @@ const Basic = () => {
       <Row>
         <Row.Col column={8}>Filled</Row.Col>
         <Row.Col column={16}>
-          <Icon>
-            <DeleteFilled />
-          </Icon>
+          <DeleteFilled />
         </Row.Col>
       </Row>
       <Row>
         <Row.Col column={8}>Outlined</Row.Col>
         <Row.Col column={16}>
-          <Icon>
-            <DeleteOutlined />
-          </Icon>
+          <DeleteOutlined />
         </Row.Col>
       </Row>
     </div>

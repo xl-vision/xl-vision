@@ -1,12 +1,12 @@
-import React from 'react';
 import { useConstantFn } from '@xl-vision/hooks';
+import { useState } from 'react';
 
 const usePropChange = <T>(
   defaultProp: T,
   prop: T | undefined,
   onChange: ((prop: T) => void) | undefined,
 ) => {
-  const [value, setValue] = React.useState<T>(defaultProp);
+  const [value, setValue] = useState<T>(defaultProp);
 
   const hasProp = typeof prop !== 'undefined';
 

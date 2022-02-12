@@ -32,8 +32,6 @@ export type {
 } from './TransitionGroup';
 export { default as Row } from './Row';
 export type { RowAlign, RowJustify, RowProps, ColProps, ColSpanType } from './Row';
-export { default as Icon } from './Icon';
-export type { IconProps } from './Icon';
 export { default as Ripple } from './Ripple';
 export type { RippleProps, RippleRef } from './Ripple';
 export { default as Button } from './Button';

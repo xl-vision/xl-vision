@@ -1,6 +1,6 @@
 import { GetStaticProps, NextPage } from 'next';
 import React from 'react';
-import Docs from '@xl-vision/react/Icon/__doc__/index.en-US.mdx?locale';
+import Docs from '../../docs/components/icon/index.en-US.mdx?locale';
 import { LayoutKey } from '../../layout';
 
 const ComponentHome: NextPage = () => {
