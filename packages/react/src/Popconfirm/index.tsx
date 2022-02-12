@@ -7,7 +7,6 @@ import { useConstantFn } from '@xl-vision/hooks';
 import Popper, { PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
 import Button, { ButtonProps } from '../Button';
-import Icon from '../Icon';
 import usePropChange from '../hooks/usePropChange';
 import { useTheme } from '../ThemeProvider';
 import { useLocale } from '../LocalizationProvider';
@@ -118,11 +117,7 @@ const PopconfirmPopup = styled('div', {
   };
 });
 
-const defaultIcon = (
-  <Icon>
-    <ExclamationCircleOutlined />
-  </Icon>
-);
+const defaultIcon = <ExclamationCircleOutlined />;
 
 const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
   const { clsPrefix } = useTheme();

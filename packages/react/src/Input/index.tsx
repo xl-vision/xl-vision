@@ -22,6 +22,7 @@ export type InputProps = Omit<
   value?: string;
   defaultValue?: string;
   showCount?: boolean;
+  allowClear?: boolean;
   type?:
     | 'button'
     | 'checkbox'
@@ -199,6 +200,7 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     defaultValue = '',
     maxLength,
     showCount,
+    allowClear,
     value: valueProp,
     onChange,
     type = 'text',
@@ -289,6 +291,10 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
   );
 
   let suffixInner: React.ReactNode;
+
+  if (suffix || showCount || (allowClear && value.length)) {
+    suffixInner = <>{allowClear && value.length && <span></span>}</>;
+  }
 
   if (showCount) {
     const { length } = value;

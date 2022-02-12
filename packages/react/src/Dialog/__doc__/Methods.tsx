@@ -1,5 +1,5 @@
 import { WarningOutlined } from '@xl-vision/icons';
-import { Button, Dialog, Icon } from '@xl-vision/react';
+import { Button, Dialog } from '@xl-vision/react';
 import React from 'react';
 
 const Methods = () => {
@@ -8,11 +8,7 @@ const Methods = () => {
     const { destroy, update } = Dialog.open({
       title: 'This is a method dialog',
       content: `This dialog will close after ${i}s.`,
-      icon: (
-        <Icon>
-          <WarningOutlined />
-        </Icon>
-      ),
+      icon: <WarningOutlined />,
     });
 
     const timer = setInterval(() => {

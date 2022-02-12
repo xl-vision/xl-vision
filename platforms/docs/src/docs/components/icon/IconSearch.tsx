@@ -1,8 +1,8 @@
 import React from 'react';
 import * as Icons from '@xl-vision/icons';
-import { Button, Icon, styled } from '@xl-vision/react';
+import { Button, styled } from '@xl-vision/react';
 import ClipboardJs from 'clipboard';
-import { useLocale } from '../../../../../platforms/docs/src/components/LocalizationProvider';
+import { useLocale } from '../../../components/LocalizationProvider';
 
 export type IconComponentMap = {
   [key: string]: React.ComponentType;
@@ -117,11 +117,9 @@ const IconSearch: React.FunctionComponent<void> = () => {
           <IconWrapper
             key={iconName}
             onMouseDown={handleCopy}
-            data-clipboard-text={`<Icon><${iconName} /></Icon>`}
+            data-clipboard-text={`<${iconName} />`}
           >
-            <Icon>
-              <Comp />
-            </Icon>
+            <Comp />
             <div>{iconName}</div>
           </IconWrapper>
         );

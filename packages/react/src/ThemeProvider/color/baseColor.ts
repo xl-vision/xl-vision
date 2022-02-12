@@ -53,7 +53,7 @@ export const light: BaseColor = {
 
 export const dark: BaseColor = {
   background: {
-    paper: grey[800],
+    paper: grey[900],
     default: '#303030',
   },
   text: {

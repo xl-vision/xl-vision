@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-handler-names */
 import { CloseOutlined } from '@xl-vision/icons';
-import { Button, Dialog, Icon, styled } from '@xl-vision/react';
+import { Button, Dialog, styled } from '@xl-vision/react';
 import React from 'react';
 
 const CustomHeader = styled('div')(({ theme }) => {
@@ -49,11 +49,7 @@ const Custom = () => {
         onClick={handleClose}
         className='close-btn'
         variant='text'
-        prefixIcon={
-          <Icon>
-            <CloseOutlined />
-          </Icon>
-        }
+        prefixIcon={<CloseOutlined />}
       />
     </CustomHeader>
   );

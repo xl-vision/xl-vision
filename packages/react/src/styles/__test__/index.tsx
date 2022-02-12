@@ -1,7 +1,6 @@
 import { mount } from 'enzyme';
 import React from 'react';
 import { DeleteFilled } from '@xl-vision/icons';
-import Icon from '../../Icon';
 import ThemeProvder, { BaseTheme } from '../../ThemeProvider';
 
 describe('styled', () => {
@@ -23,9 +22,7 @@ describe('styled', () => {
       }, [transition]);
       return (
         <ThemeProvder theme={theme}>
-          <Icon>
-            <DeleteFilled />
-          </Icon>
+          <DeleteFilled />
         </ThemeProvder>
       );
     };

@@ -7,7 +7,6 @@ import {
 } from '@xl-vision/icons';
 import { env } from '@xl-vision/utils';
 import MessageDialog, { MessageDialogProps } from './MessageDialog';
-import Icon from '../../Icon';
 import { useTheme } from '../../ThemeProvider';
 import { useLocale } from '../../LocalizationProvider';
 
@@ -24,55 +23,35 @@ const createMessageDialog = (type?: MessageDialogType) => {
       switch (type) {
         case 'success': {
           return {
-            icon: (
-              <Icon style={{ color: color.themes.primary.color }}>
-                <CheckCircleOutlined />
-              </Icon>
-            ),
+            icon: <CheckCircleOutlined style={{ color: color.themes.primary.color }} />,
             confirmText: locale.Dialog.messages.successText,
             prompt: true,
           };
         }
         case 'error': {
           return {
-            icon: (
-              <Icon style={{ color: color.themes.error.color }}>
-                <CloseCircleOutlined />
-              </Icon>
-            ),
+            icon: <CloseCircleOutlined style={{ color: color.themes.error.color }} />,
             confirmText: locale.Dialog.messages.errorText,
             prompt: true,
           };
         }
         case 'warning': {
           return {
-            icon: (
-              <Icon style={{ color: color.themes.warning.color }}>
-                <ExclamationCircleOutlined />
-              </Icon>
-            ),
+            icon: <ExclamationCircleOutlined style={{ color: color.themes.warning.color }} />,
             confirmText: locale.Dialog.messages.warningText,
             prompt: true,
           };
         }
         case 'info': {
           return {
-            icon: (
-              <Icon style={{ color: color.themes.info.color }}>
-                <InfoCircleOutlined />
-              </Icon>
-            ),
+            icon: <InfoCircleOutlined style={{ color: color.themes.info.color }} />,
             confirmText: locale.Dialog.messages.infoText,
             prompt: true,
           };
         }
         case 'confirm': {
           return {
-            icon: (
-              <Icon style={{ color: color.themes.primary.color }}>
-                <ExclamationCircleOutlined />
-              </Icon>
-            ),
+            icon: <ExclamationCircleOutlined style={{ color: color.themes.primary.color }} />,
             confirmText: locale.Dialog.messages.confirm.confirmText,
             cancelText: locale.Dialog.messages.confirm.cancelText,
           };

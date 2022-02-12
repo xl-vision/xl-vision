@@ -9,10 +9,7 @@ module.exports = {
   setupFiles: ['./test/setup.js'],
   setupFilesAfterEnv: ['./test/setup.env.js'],
   testEnvironment: 'jsdom',
-  testMatch: [
-    '<rootDir>/test/__test__/*.{ts,tsx}',
-    '<rootDir>/packages/*/src/**/__test__/*.{ts,tsx}',
-  ],
+  testMatch: ['<rootDir>/test/__test__/*.{ts,tsx}', '<rootDir>/packages/**/__test__/*.{ts,tsx}'],
   // collectCoverage: true,
   collectCoverageFrom: [
     '<rootDir>/packages/*/src/**/*.{ts,tsx}',

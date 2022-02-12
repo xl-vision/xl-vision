@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, Input } from '@xl-vision/react';
+import { Input } from '@xl-vision/react';
 import { SettingOutlined } from '@xl-vision/icons';
 
 const Demo = () => {
@@ -16,11 +16,7 @@ const Demo = () => {
         placeholder='Basic usage'
         defaultValue='xl-vision.8910.xyz'
         addonBefore='https://'
-        addonAfter={
-          <Icon>
-            <SettingOutlined />
-          </Icon>
-        }
+        addonAfter={<SettingOutlined />}
       />
     </div>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, Input, styled } from '@xl-vision/react';
+import { Input, styled } from '@xl-vision/react';
 import { SearchOutlined, UserOutlined } from '@xl-vision/icons';
 
 const Root = styled('div')(() => {
@@ -13,21 +13,10 @@ const Root = styled('div')(() => {
 const Demo = () => {
   return (
     <Root>
+      <Input placeholder='Basic usage' prefix={<UserOutlined />} />
       <Input
         placeholder='Basic usage'
-        prefix={
-          <Icon>
-            <UserOutlined />
-          </Icon>
-        }
-      />
-      <Input
-        placeholder='Basic usage'
-        suffix={
-          <Icon style={{ color: 'rgba(0,0,0,0.2)' }}>
-            <SearchOutlined />
-          </Icon>
-        }
+        suffix={<SearchOutlined style={{ color: 'rgba(0,0,0,0.2)' }} />}
       />
 
       <Input style={{ color: 'rgba(0,0,0,0.2)' }} placeholder='Basic usage' suffix='RMB' />
