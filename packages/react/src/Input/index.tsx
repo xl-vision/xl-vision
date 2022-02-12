@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { useConstantFn, useForkRef, useUnmount } from '@xl-vision/hooks';
+import { CloseCircleFilled } from '@xl-vision/icons';
 import { CSSObject } from '@xl-vision/styled-engine';
 import useTheme from '../ThemeProvider/useTheme';
 import { styled } from '../styles';
@@ -179,12 +180,25 @@ const InputSuffix = styled(InputPrefix, {
   name: displayName,
   slot: 'Suffix',
 })(({ theme }) => {
-  const { clsPrefix, color } = theme;
+  const { clsPrefix, color, transition } = theme;
   return {
     marginRight: 0,
     marginLeft: 4,
-    [`.${clsPrefix}-input__suffix-count`]: {
+    [`.${clsPrefix}-input__suffix--has-suffix`]: {
+      marginRight: 4,
+    },
+    [`.${clsPrefix}-input__suffix-count, .${clsPrefix}-input__suffix-clear`]: {
+      display: 'inline-flex',
+      lineHeight: 1,
+      alignItems: 'center',
       color: color.text.hint,
+    },
+    [`.${clsPrefix}-input__suffix-clear`]: {
+      cursor: 'pointer',
+      transition: transition.standard('color'),
+      '&:hover': {
+        color: color.text.secondary,
+      },
     },
   };
 });
@@ -256,6 +270,10 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     onBlur?.(e);
   });
 
+  const handleReset = useConstantFn(() => {
+    handlePropChange('');
+  });
+
   // 将input focus绑定到span上
   React.useEffect(() => {
     if (rootRef.current) {
@@ -290,18 +308,32 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     className,
   );
 
-  let suffixInner: React.ReactNode;
-
-  if (suffix || showCount || (allowClear && value.length)) {
-    suffixInner = <>{allowClear && value.length && <span></span>}</>;
-  }
+  let showCountNode: React.ReactNode;
 
   if (showCount) {
     const { length } = value;
     const msg = `${length}${maxLength ? `/${maxLength}` : ''}`;
-    suffixInner = <span className={`${rootClassName}__suffix-count`}>{msg}</span>;
-  } else {
-    suffixInner = suffix;
+
+    const countClasses = clsx(`${rootClassName}__suffix-count`, {
+      [`${rootClassName}__suffix--has-suffix`]: typeof suffix !== 'undefined',
+    });
+
+    showCountNode = <span className={countClasses}>{msg}</span>;
+  }
+
+  let allowClearNode: React.ReactNode;
+
+  if (allowClear && value.length) {
+    const clearClasses = clsx(`${rootClassName}__suffix-clear`, {
+      [`${rootClassName}__suffix--has-suffix`]: showCountNode,
+    });
+
+    allowClearNode = (
+      // eslint-disable-next-line jsx-a11y/click-events-have-key-events
+      <span role='button' tabIndex={-1} className={clearClasses} onClick={handleReset}>
+        <CloseCircleFilled />
+      </span>
+    );
   }
 
   return (
@@ -326,8 +358,12 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
           value={value}
           onChange={handleChange}
         />
-        {typeof suffixInner !== 'undefined' && (
-          <InputSuffix className={`${rootClassName}__suffix`}>{suffixInner}</InputSuffix>
+        {(allowClearNode || showCountNode || typeof suffix !== 'undefined') && (
+          <InputSuffix className={`${rootClassName}__suffix`}>
+            {allowClearNode}
+            {showCountNode}
+            {suffix}
+          </InputSuffix>
         )}
       </InputWrapper>
       {typeof addonAfter !== 'undefined' && <InputAddonAfter>{addonAfter}</InputAddonAfter>}
