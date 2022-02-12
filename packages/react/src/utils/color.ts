@@ -297,13 +297,13 @@ export const lighten = (color: string, amount: number) => {
 
   if ('r' in obj) {
     return colorToRgb({
-      r: obj.r * (1 + amount),
-      g: obj.g * (1 + amount),
-      b: obj.b * (1 + amount),
+      r: obj.r + (255 - obj.r) * amount,
+      g: obj.g + (255 - obj.g) * amount,
+      b: obj.b + (255 - obj.b) * amount,
       a: obj.a,
     });
   }
-  obj.l *= 1 + amount;
+  obj.l += (100 - obj.l) * amount;
 
   return colorToHsl(obj);
 };
