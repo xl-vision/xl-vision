@@ -5,7 +5,6 @@ const Demo = () => {
   const ref = React.useRef<HTMLSpanElement>(null);
 
   const handleClick = React.useCallback(() => {
-    console.log(ref.current);
     ref.current?.focus();
   }, []);
 
