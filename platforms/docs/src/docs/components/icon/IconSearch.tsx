@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Icons from '@xl-vision/icons';
-import { Button, styled } from '@xl-vision/react';
+import { Button, Input, styled } from '@xl-vision/react';
 import ClipboardJs from 'clipboard';
 import { useLocale } from '../../../components/LocalizationProvider';
 
@@ -14,37 +14,8 @@ enum IconType {
   OUTLINED,
   FILLED,
 }
-const Wrapper = styled('div')(({ theme }) => {
-  const { color, typography, styleSize } = theme;
-  return {
-    '.top': {
-      display: 'flex',
-      alignItems: 'center',
-      marginBottom: 26,
-      '.left': {
-        marginRight: 16,
-        button: {
-          ':not(:last-child)': {
-            borderTopRightRadius: 0,
-            borderBottomRightRadius: 0,
-          },
-          ':not(:first-child)': {
-            borderTopLeftRadius: 0,
-            borderBottomLeftRadius: 0,
-          },
-        },
-      },
-      input: {
-        display: 'inline-block',
-        flex: 1,
-        outline: 'none',
-        border: `${styleSize.middle.border}px solid ${color.divider}`,
-        padding: '8px',
-        borderRadius: 4,
-        ...typography.body2.style,
-      },
-    },
-  };
+const Wrapper = styled('div')(() => {
+  return {};
 });
 
 const IconWrapper = styled('div')(({ theme }) => {
@@ -126,33 +97,34 @@ const IconSearch: React.FunctionComponent<void> = () => {
       });
   }, [iconType, search, handleCopy]);
 
-  const handleSearch = React.useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value);
+  const handleSearch = React.useCallback((value: string) => {
+    setSearch(value);
   }, []);
 
   return (
     <Wrapper>
-      <div className='top'>
-        <div className='left'>
-          <Button
-            color={iconType === IconType.OUTLINED ? 'primary' : 'default'}
-            onClick={() => setIconType(IconType.OUTLINED)}
-          >
-            Outlined
-          </Button>
-          <Button
-            color={iconType === IconType.FILLED ? 'primary' : 'default'}
-            onClick={() => setIconType(IconType.FILLED)}
-          >
-            Filled
-          </Button>
-        </div>
-        <input
+      <Input.Group style={{ marginBottom: 20 }}>
+        <Button
+          color={iconType === IconType.OUTLINED ? 'primary' : 'default'}
+          onClick={() => setIconType(IconType.OUTLINED)}
+        >
+          Outlined
+        </Button>
+        <Button
+          color={iconType === IconType.FILLED ? 'primary' : 'default'}
+          onClick={() => setIconType(IconType.FILLED)}
+        >
+          Filled
+        </Button>
+        <Input
+          style={{
+            flex: 1,
+          }}
           value={search}
           onChange={handleSearch}
           placeholder={locale.pages.Icons.seachPlaceholder}
         />
-      </div>
+      </Input.Group>
       <div className='bottom'>{icons}</div>
     </Wrapper>
   );
