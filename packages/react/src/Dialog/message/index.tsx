@@ -8,7 +8,7 @@ import {
 import { env } from '@xl-vision/utils';
 import MessageDialog, { MessageDialogProps } from './MessageDialog';
 import { useTheme } from '../../ThemeProvider';
-import { useLocale } from '../../LocalizationProvider';
+import { useConfig } from '../../ConfigProvider';
 
 export type MessageDialogType = 'success' | 'error' | 'warning' | 'info' | 'confirm';
 
@@ -17,7 +17,7 @@ export * from './MessageDialog';
 const createMessageDialog = (type?: MessageDialogType) => {
   const Dialog: React.FunctionComponent<MessageDialogProps> = (props) => {
     const { color } = useTheme();
-    const { locale } = useLocale();
+    const { locale } = useConfig();
 
     const defaultProps: Partial<MessageDialogProps> = React.useMemo(() => {
       switch (type) {

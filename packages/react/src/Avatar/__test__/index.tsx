@@ -50,7 +50,7 @@ describe('AvatarGroup', () => {
       </Avatar.Group>,
     );
 
-    expect(wrapper.find('span.xl-avatar--large').length).toBe(2);
+    expect(wrapper.find('span.xl-avatar--size-large').length).toBe(2);
   });
 
   it('render shape', () => {
@@ -61,6 +61,6 @@ describe('AvatarGroup', () => {
       </Avatar.Group>,
     );
 
-    expect(wrapper.find('span.xl-avatar--square').length).toBe(2);
+    expect(wrapper.find('span.xl-avatar--shape-square').length).toBe(2);
   });
 });

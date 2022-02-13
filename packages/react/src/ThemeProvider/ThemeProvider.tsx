@@ -7,14 +7,14 @@ import ThemeContext from './ThemeContext';
 
 export type ThemeProviderProps = {
   children: React.ReactNode;
-  theme: BaseTheme;
+  theme?: BaseTheme;
 };
 
 const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = (props) => {
   const { children, theme } = props;
 
   const value = React.useMemo(() => {
-    return createTheme(theme);
+    return createTheme(theme || {});
   }, [theme]);
 
   return (
@@ -30,7 +30,7 @@ if (!env.isProduction) {
 
   ThemeProvider.propTypes = {
     children: PropTypes.node.isRequired,
-    theme: PropTypes.object.isRequired,
+    theme: PropTypes.object,
   };
 }
 

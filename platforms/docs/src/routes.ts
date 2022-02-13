@@ -229,10 +229,10 @@ const route: Route = {
     },
     {
       titleMap: {
-        'en-US': 'Localization',
-        'zh-CN': '国际化',
+        'en-US': 'Global Config',
+        'zh-CN': '全局配置',
       },
-      path: '/LocalizationProvider',
+      path: '/ConfigProvider',
     },
     {
       titleMap: {

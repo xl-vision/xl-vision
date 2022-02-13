@@ -153,7 +153,7 @@ exports[`DialogMethod test confirm 1`] = `
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
   color: #2196f3;
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c12:hover {
@@ -516,7 +516,7 @@ exports[`DialogMethod test error 1`] = `
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
   color: #2196f3;
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c12:hover {
@@ -863,7 +863,7 @@ exports[`DialogMethod test info 1`] = `
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
   color: #2196f3;
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c12:hover {
@@ -1196,7 +1196,7 @@ exports[`DialogMethod test method 1`] = `
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
   color: #2196f3;
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c9:hover {
@@ -1531,7 +1531,7 @@ exports[`DialogMethod test success 1`] = `
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
   color: #2196f3;
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c12:hover {
@@ -1878,7 +1878,7 @@ exports[`DialogMethod test warning 1`] = `
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
   color: #2196f3;
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c12:hover {

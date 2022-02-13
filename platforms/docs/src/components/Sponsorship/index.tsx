@@ -27,7 +27,7 @@ const Root = styled('div')(({ theme }) => {
 
 const Title = styled('h5')(({ theme }) => {
   return {
-    ...theme.typography.h5,
+    ...theme.typography.h5.style,
     margin: '10px 0',
   };
 });

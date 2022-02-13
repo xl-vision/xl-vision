@@ -15,7 +15,7 @@ const Wrapper = styled('div')``;
 
 const Bar = styled('div')(
   ({ theme }) => `
-  border-bottom: 1px solid ${theme.color.divider};
+  border-bottom: ${theme.styleSize.middle.border}px solid ${theme.color.divider};
   text-align: center;
   font-size: 14px;
   color: ${theme.color.themes.primary.color};

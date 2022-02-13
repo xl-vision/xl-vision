@@ -12,7 +12,7 @@ const Wrapper = styled('div')(
   ({ theme }) => `
   border-radius: 4px;
   overflow: hidden;
-  border: 1px solid ${theme.color.divider};
+  border: ${theme.styleSize.middle.border}px solid ${theme.color.divider};
   margin: 8px 0;
 `,
 );
@@ -25,7 +25,7 @@ const InfoWrapper = styled('div')(
   ({ theme }) => `
   position: relative;
   font-size: 14px;
-  border-top: 1px solid ${theme.color.divider};
+  border-top: ${theme.styleSize.middle.border}px solid ${theme.color.divider};
   color: ${theme.color.text.primary};
 `,
 );
@@ -37,7 +37,7 @@ const TitleWrapper = styled('div')(({ theme }) => {
     top: -12,
     marginLeft: 16,
     padding: '0px 8px',
-    ...theme.typography.subtitle2,
+    ...theme.typography.subtitle2.style,
   };
 });
 
@@ -49,7 +49,7 @@ const DescWrapper = styled('div')(() => {
 
 const CodeWrapper = styled('div')(
   ({ theme }) => `
-  border-top: 1px solid ${theme.color.divider};
+  border-top: ${theme.styleSize.middle.border}px solid ${theme.color.divider};
 
   &.slide-enter-active,
   &.slide-leave-active {

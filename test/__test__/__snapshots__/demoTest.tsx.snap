@@ -101,7 +101,7 @@ exports[`Demo renders ./packages/react/src/Avatar/__doc__/AutoSize.tsx correctly
   color: rgba(0,0,0,0.87);
   background-color: #fff;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c4:hover {
@@ -139,8 +139,8 @@ exports[`Demo renders ./packages/react/src/Avatar/__doc__/AutoSize.tsx correctly
   -ms-user-select: none;
   user-select: none;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  height: 36.8px;
+  width: 36.8px;
 }
 
 .c1 > img {
@@ -164,7 +164,7 @@ exports[`Demo renders ./packages/react/src/Avatar/__doc__/AutoSize.tsx correctly
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .c0 >* {
@@ -175,7 +175,7 @@ exports[`Demo renders ./packages/react/src/Avatar/__doc__/AutoSize.tsx correctly
   class="c0"
 >
   <span
-    class="c1 xl-avatar xl-avatar--circle xl-avatar--large"
+    class="c1 xl-avatar xl-avatar--shape-circle xl-avatar--size-large"
   >
     <span
       class="c2 xl-avatar__inner"
@@ -295,8 +295,8 @@ Array [
   -ms-user-select: none;
   user-select: none;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  height: 36.8px;
+  width: 36.8px;
 }
 
 .c4 > img {
@@ -332,8 +332,8 @@ Array [
   -ms-user-select: none;
   user-select: none;
   border-radius: 50%;
-  width: 32px;
   height: 32px;
+  width: 32px;
 }
 
 .c5 > img {
@@ -369,8 +369,8 @@ Array [
   -ms-user-select: none;
   user-select: none;
   border-radius: 50%;
-  width: 24px;
   height: 24px;
+  width: 24px;
 }
 
 .c6 > img {
@@ -394,7 +394,7 @@ Array [
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .c0 >* {
@@ -405,7 +405,7 @@ Array [
     class="c0"
   >
     <span
-      class="c1 xl-avatar xl-avatar--circle"
+      class="c1 xl-avatar xl-avatar--shape-circle"
       style="width: 64px; height: 64px;"
     >
       <span
@@ -423,7 +423,7 @@ Array [
       </span>
     </span>
     <span
-      class="c4 xl-avatar xl-avatar--circle xl-avatar--large"
+      class="c4 xl-avatar xl-avatar--shape-circle xl-avatar--size-large"
     >
       <span
         class="c2 xl-avatar__inner"
@@ -440,7 +440,7 @@ Array [
       </span>
     </span>
     <span
-      class="c5 xl-avatar xl-avatar--circle xl-avatar--default"
+      class="c5 xl-avatar xl-avatar--shape-circle xl-avatar--size-middle"
     >
       <span
         class="c2 xl-avatar__inner"
@@ -457,7 +457,7 @@ Array [
       </span>
     </span>
     <span
-      class="c6 xl-avatar xl-avatar--circle xl-avatar--small"
+      class="c6 xl-avatar xl-avatar--shape-circle xl-avatar--size-small"
     >
       <span
         class="c2 xl-avatar__inner"
@@ -548,8 +548,8 @@ Array [
   -ms-user-select: none;
   user-select: none;
   border-radius: 4px;
-  width: 40px;
-  height: 40px;
+  height: 36.8px;
+  width: 36.8px;
 }
 
 .c4 > img {
@@ -585,8 +585,8 @@ Array [
   -ms-user-select: none;
   user-select: none;
   border-radius: 4px;
-  width: 32px;
   height: 32px;
+  width: 32px;
 }
 
 .c5 > img {
@@ -622,8 +622,8 @@ Array [
   -ms-user-select: none;
   user-select: none;
   border-radius: 4px;
-  width: 24px;
   height: 24px;
+  width: 24px;
 }
 
 .c6 > img {
@@ -647,7 +647,7 @@ Array [
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .c0 >* {
@@ -658,7 +658,7 @@ Array [
     class="c0"
   >
     <span
-      class="c1 xl-avatar xl-avatar--round"
+      class="c1 xl-avatar xl-avatar--shape-round"
       style="width: 64px; height: 64px;"
     >
       <span
@@ -676,7 +676,7 @@ Array [
       </span>
     </span>
     <span
-      class="c4 xl-avatar xl-avatar--round xl-avatar--large"
+      class="c4 xl-avatar xl-avatar--shape-round xl-avatar--size-large"
     >
       <span
         class="c2 xl-avatar__inner"
@@ -693,7 +693,7 @@ Array [
       </span>
     </span>
     <span
-      class="c5 xl-avatar xl-avatar--round xl-avatar--default"
+      class="c5 xl-avatar xl-avatar--shape-round xl-avatar--size-middle"
     >
       <span
         class="c2 xl-avatar__inner"
@@ -710,7 +710,7 @@ Array [
       </span>
     </span>
     <span
-      class="c6 xl-avatar xl-avatar--round xl-avatar--small"
+      class="c6 xl-avatar xl-avatar--shape-round xl-avatar--size-small"
     >
       <span
         class="c2 xl-avatar__inner"
@@ -799,8 +799,8 @@ Array [
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  width: 40px;
-  height: 40px;
+  height: 36.8px;
+  width: 36.8px;
 }
 
 .c4 > img {
@@ -835,8 +835,8 @@ Array [
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  width: 32px;
   height: 32px;
+  width: 32px;
 }
 
 .c5 > img {
@@ -871,8 +871,8 @@ Array [
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  width: 24px;
   height: 24px;
+  width: 24px;
 }
 
 .c6 > img {
@@ -896,7 +896,7 @@ Array [
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .c0 >* {
@@ -907,7 +907,7 @@ Array [
     class="c0"
   >
     <span
-      class="c1 xl-avatar xl-avatar--square"
+      class="c1 xl-avatar xl-avatar--shape-square"
       style="width: 64px; height: 64px;"
     >
       <span
@@ -925,7 +925,7 @@ Array [
       </span>
     </span>
     <span
-      class="c4 xl-avatar xl-avatar--square xl-avatar--large"
+      class="c4 xl-avatar xl-avatar--shape-square xl-avatar--size-large"
     >
       <span
         class="c2 xl-avatar__inner"
@@ -942,7 +942,7 @@ Array [
       </span>
     </span>
     <span
-      class="c5 xl-avatar xl-avatar--square xl-avatar--default"
+      class="c5 xl-avatar xl-avatar--shape-square xl-avatar--size-middle"
     >
       <span
         class="c2 xl-avatar__inner"
@@ -959,7 +959,7 @@ Array [
       </span>
     </span>
     <span
-      class="c6 xl-avatar xl-avatar--square xl-avatar--small"
+      class="c6 xl-avatar xl-avatar--shape-square xl-avatar--size-small"
     >
       <span
         class="c2 xl-avatar__inner"
@@ -1021,8 +1021,8 @@ Array [
   user-select: none;
   background: 0 0;
   border-radius: 50%;
-  width: 32px;
   height: 32px;
+  width: 32px;
 }
 
 .c1 > img {
@@ -1058,8 +1058,8 @@ Array [
   -ms-user-select: none;
   user-select: none;
   border-radius: 50%;
-  width: 32px;
   height: 32px;
+  width: 32px;
 }
 
 .c2 > img {
@@ -1083,7 +1083,7 @@ Array [
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .c0 .xl-avatar {
@@ -1095,17 +1095,17 @@ Array [
 }
 
 <div
-    class="c0 xl-avatar-group"
+    class="c0 xl-avatar-group xl-avatar-group--shape-circle xl-avatar-group--size-middle"
   >
     <span
-      class="c1 xl-avatar xl-avatar--circle xl-avatar--default xl-avatar--isImage"
+      class="c1 xl-avatar xl-avatar--shape-circle xl-avatar--size-middle xl-avatar--has-image"
     >
       <img
         src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
       />
     </span>
     <span
-      class="c2 xl-avatar xl-avatar--circle xl-avatar--default"
+      class="c2 xl-avatar xl-avatar--shape-circle xl-avatar--size-middle"
       style="background-color: rgb(245, 106, 0);"
     >
       <span
@@ -1116,7 +1116,7 @@ Array [
       </span>
     </span>
     <span
-      class="c2 xl-avatar xl-avatar--circle xl-avatar--default"
+      class="c2 xl-avatar xl-avatar--shape-circle xl-avatar--size-middle"
       style="background-color: rgb(135, 208, 104);"
     >
       <span
@@ -1134,7 +1134,7 @@ Array [
       </span>
     </span>
     <span
-      class="c2 xl-avatar xl-avatar--circle xl-avatar--default"
+      class="c2 xl-avatar xl-avatar--shape-circle xl-avatar--size-middle"
       style="background-color: rgb(24, 144, 255);"
     >
       <span
@@ -1178,8 +1178,8 @@ Array [
   user-select: none;
   background: 0 0;
   border-radius: 4px;
-  width: 32px;
   height: 32px;
+  width: 32px;
 }
 
 .c1 > img {
@@ -1215,8 +1215,8 @@ Array [
   -ms-user-select: none;
   user-select: none;
   border-radius: 4px;
-  width: 32px;
   height: 32px;
+  width: 32px;
 }
 
 .c2 > img {
@@ -1240,7 +1240,7 @@ Array [
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .c0 .xl-avatar {
@@ -1252,17 +1252,17 @@ Array [
 }
 
 <div
-    class="c0 xl-avatar-group"
+    class="c0 xl-avatar-group xl-avatar-group--shape-round xl-avatar-group--size-middle"
   >
     <span
-      class="c1 xl-avatar xl-avatar--round xl-avatar--default xl-avatar--isImage"
+      class="c1 xl-avatar xl-avatar--shape-round xl-avatar--size-middle xl-avatar--has-image"
     >
       <img
         src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
       />
     </span>
     <span
-      class="c2 xl-avatar xl-avatar--round xl-avatar--default"
+      class="c2 xl-avatar xl-avatar--shape-round xl-avatar--size-middle"
       style="background-color: rgb(245, 106, 0);"
     >
       <span
@@ -1273,7 +1273,7 @@ Array [
       </span>
     </span>
     <span
-      class="c2 xl-avatar xl-avatar--round xl-avatar--default xl-avatar-group__max"
+      class="c2 xl-avatar xl-avatar--shape-round xl-avatar--size-middle xl-avatar-group__max"
       style="color: rgb(245, 106, 0); background-color: rgb(253, 227, 207);"
     >
       <span
@@ -1310,8 +1310,8 @@ Array [
   user-select: none;
   background: 0 0;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  height: 36.8px;
+  width: 36.8px;
 }
 
 .c1 > img {
@@ -1347,8 +1347,8 @@ Array [
   -ms-user-select: none;
   user-select: none;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  height: 36.8px;
+  width: 36.8px;
 }
 
 .c2 > img {
@@ -1372,7 +1372,7 @@ Array [
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .c0 .xl-avatar {
@@ -1384,17 +1384,17 @@ Array [
 }
 
 <div
-    class="c0 xl-avatar-group"
+    class="c0 xl-avatar-group xl-avatar-group--shape-circle xl-avatar-group--size-large"
   >
     <span
-      class="c1 xl-avatar xl-avatar--circle xl-avatar--large xl-avatar--isImage"
+      class="c1 xl-avatar xl-avatar--shape-circle xl-avatar--size-large xl-avatar--has-image"
     >
       <img
         src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
       />
     </span>
     <span
-      class="c2 xl-avatar xl-avatar--circle xl-avatar--large"
+      class="c2 xl-avatar xl-avatar--shape-circle xl-avatar--size-large"
       style="background-color: rgb(245, 106, 0);"
     >
       <span
@@ -1405,7 +1405,7 @@ Array [
       </span>
     </span>
     <span
-      class="c2 xl-avatar xl-avatar--circle xl-avatar--large xl-avatar-group__max"
+      class="c2 xl-avatar xl-avatar--shape-circle xl-avatar--size-large xl-avatar-group__max"
       style="color: rgb(245, 106, 0); background-color: rgb(253, 227, 207);"
     >
       <span
@@ -1459,49 +1459,11 @@ exports[`Demo renders ./packages/react/src/Avatar/__doc__/Types.tsx correctly 1`
   -ms-user-select: none;
   user-select: none;
   border-radius: 50%;
-  width: 32px;
   height: 32px;
+  width: 32px;
 }
 
 .c1 > img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-style: none;
-}
-
-.c4 {
-  position: relative;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  box-sizing: border-box;
-  overflow: hidden;
-  white-space: nowrap;
-  vertical-align: middle;
-  color: #fff;
-  background-color: #bdbdbd;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  background: 0 0;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-}
-
-.c4 > img {
   display: block;
   width: 100%;
   height: 100%;
@@ -1522,7 +1484,7 @@ exports[`Demo renders ./packages/react/src/Avatar/__doc__/Types.tsx correctly 1`
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .c0 >* {
@@ -1533,7 +1495,7 @@ exports[`Demo renders ./packages/react/src/Avatar/__doc__/Types.tsx correctly 1`
   class="c0"
 >
   <span
-    class="c1 xl-avatar xl-avatar--circle xl-avatar--default"
+    class="c1 xl-avatar xl-avatar--shape-circle xl-avatar--size-middle"
   >
     <span
       class="c2 xl-avatar__inner"
@@ -1550,7 +1512,7 @@ exports[`Demo renders ./packages/react/src/Avatar/__doc__/Types.tsx correctly 1`
     </span>
   </span>
   <span
-    class="c1 xl-avatar xl-avatar--circle xl-avatar--default"
+    class="c1 xl-avatar xl-avatar--shape-circle xl-avatar--size-middle"
   >
     <span
       class="c2 xl-avatar__inner"
@@ -1560,14 +1522,10 @@ exports[`Demo renders ./packages/react/src/Avatar/__doc__/Types.tsx correctly 1`
     </span>
   </span>
   <span
-    class="c4 xl-avatar xl-avatar--circle xl-avatar--default xl-avatar--isImage"
-  >
-    <img
-      src="test-file-stub"
-    />
-  </span>
+    class="c1 xl-avatar xl-avatar--shape-circle xl-avatar--size-middle"
+  />
   <span
-    class="c1 xl-avatar xl-avatar--circle xl-avatar--default"
+    class="c1 xl-avatar xl-avatar--shape-circle xl-avatar--size-middle"
     style="background-color: rgb(135, 208, 104);"
   >
     <span
@@ -1981,7 +1939,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   color: rgba(0,0,0,0.87);
   background-color: #fff;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c2:hover {
@@ -2013,7 +1971,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c5:hover {
@@ -2045,7 +2003,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   color: #fff;
   background-color: #ab47bc;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c6:hover {
@@ -2077,7 +2035,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   color: #fff;
   background-color: #607d8b;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c7:hover {
@@ -2109,7 +2067,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   color: #fff;
   background-color: #ef5350;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c8:hover {
@@ -2141,7 +2099,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   color: rgba(0,0,0,0.87);
   background-color: #ff9800;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c9:hover {
@@ -2172,7 +2130,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
   color: rgba(0,0,0,0.87);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c10:hover {
@@ -2201,7 +2159,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
   color: #2196f3;
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c11:hover {
@@ -2230,7 +2188,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
   color: #ab47bc;
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c12:hover {
@@ -2259,7 +2217,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
   color: #607d8b;
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c13:hover {
@@ -2288,7 +2246,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
   color: #ef5350;
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c14:hover {
@@ -2317,7 +2275,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
   color: #ff9800;
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c15:hover {
@@ -2347,7 +2305,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   background-color: transparent;
   color: rgba(0,0,0,0.87);
   border: 1px solid rgba(0,0,0,0.5);
-  padding: 5px 15px;
+  padding: 5px 11px;
 }
 
 .c16:hover {
@@ -2377,7 +2335,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   background-color: transparent;
   color: #2196f3;
   border: 1px solid rgba(33,150,243,0.5);
-  padding: 5px 15px;
+  padding: 5px 11px;
 }
 
 .c17:hover {
@@ -2407,7 +2365,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   background-color: transparent;
   color: #ab47bc;
   border: 1px solid rgba(171,71,188,0.5);
-  padding: 5px 15px;
+  padding: 5px 11px;
 }
 
 .c18:hover {
@@ -2437,7 +2395,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   background-color: transparent;
   color: #607d8b;
   border: 1px solid rgba(96,125,139,0.5);
-  padding: 5px 15px;
+  padding: 5px 11px;
 }
 
 .c19:hover {
@@ -2467,7 +2425,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   background-color: transparent;
   color: #ef5350;
   border: 1px solid rgba(239,83,80,0.5);
-  padding: 5px 15px;
+  padding: 5px 11px;
 }
 
 .c20:hover {
@@ -2497,7 +2455,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
   background-color: transparent;
   color: #ff9800;
   border: 1px solid rgba(255,152,0,0.5);
-  padding: 5px 15px;
+  padding: 5px 11px;
 }
 
 .c21:hover {
@@ -2918,7 +2876,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: rgba(0,0,0,0.87);
   background-color: #fff;
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c2:hover {
@@ -2947,7 +2905,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
   background-color: #2196f3;
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c5:hover {
@@ -2976,7 +2934,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
   background-color: #ab47bc;
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c6:hover {
@@ -3005,7 +2963,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: #fff;
   background-color: #ef5350;
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c7:hover {
@@ -3034,7 +2992,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   color: rgba(0,0,0,0.87);
   background-color: #ff9800;
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c8:hover {
@@ -3238,7 +3196,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
   color: rgba(0,0,0,0.87);
   background-color: #fff;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c2:hover {
@@ -3269,7 +3227,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
   color: #2196f3;
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c5:hover {
@@ -3299,7 +3257,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
   color: #fff;
   background-color: #ab47bc;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c6:hover {
@@ -3330,7 +3288,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
   color: #ef5350;
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c7:hover {
@@ -3360,7 +3318,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
   background-color: transparent;
   color: #ff9800;
   border: 1px solid rgba(255,152,0,0.5);
-  padding: 5px 15px;
+  padding: 5px 11px;
 }
 
 .c8:hover {
@@ -3578,7 +3536,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
   color: rgba(0,0,0,0.87);
   background-color: #fff;
   opacity: 0.38;
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c5 {
@@ -3600,7 +3558,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
   color: #fff;
   background-color: #2196f3;
   opacity: 0.38;
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c6 {
@@ -3622,7 +3580,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
   color: #fff;
   background-color: #ab47bc;
   opacity: 0.38;
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c7 {
@@ -3644,7 +3602,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
   color: #fff;
   background-color: #ef5350;
   opacity: 0.38;
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c8 {
@@ -3666,7 +3624,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
   color: rgba(0,0,0,0.87);
   background-color: #ff9800;
   opacity: 0.38;
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c9 {
@@ -3981,7 +3939,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
   color: rgba(0,0,0,0.87);
   background-color: #fff;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c2:hover {
@@ -4012,7 +3970,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
   color: #2196f3;
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c5:hover {
@@ -4042,7 +4000,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
   color: #fff;
   background-color: #ab47bc;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c6:hover {
@@ -4073,7 +4031,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
   color: #ef5350;
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c7:hover {
@@ -4103,7 +4061,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
   background-color: transparent;
   color: #ff9800;
   border: 1px solid rgba(255,152,0,0.5);
-  padding: 5px 15px;
+  padding: 5px 11px;
 }
 
 .c8:hover {
@@ -4133,7 +4091,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
   color: #fff;
   background-color: #2196f3;
   opacity: 0.38;
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c0 button,
@@ -4367,7 +4325,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
   color: rgba(0,0,0,0.87);
   background-color: #fff;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c2:hover {
@@ -4398,7 +4356,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
   color: #2196f3;
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c5:hover {
@@ -4428,7 +4386,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
   color: #fff;
   background-color: #ab47bc;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c8:hover {
@@ -4459,7 +4417,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
   color: #ef5350;
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c9:hover {
@@ -4489,7 +4447,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
   background-color: transparent;
   color: #ff9800;
   border: 1px solid rgba(255,152,0,0.5);
-  padding: 5px 15px;
+  padding: 5px 11px;
 }
 
 .c10:hover {
@@ -4737,7 +4695,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
   color: rgba(0,0,0,0.87);
   background-color: #fff;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c2:hover {
@@ -4769,7 +4727,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
   width: 100%;
   background-color: transparent;
   color: #2196f3;
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c5:hover {
@@ -4800,7 +4758,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
   background-color: transparent;
   color: #ab47bc;
   border: 1px solid rgba(171,71,188,0.5);
-  padding: 5px 15px;
+  padding: 5px 11px;
 }
 
 .c6:hover {
@@ -4831,7 +4789,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
   color: rgba(0,0,0,0.87);
   background-color: #ff9800;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c7:hover {
@@ -4864,7 +4822,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c8:hover {
@@ -5113,7 +5071,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   color: rgba(0,0,0,0.87);
   background-color: #fff;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c2:hover {
@@ -5144,7 +5102,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
   color: #2196f3;
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c5:hover {
@@ -5174,7 +5132,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   background-color: transparent;
   color: #ab47bc;
   border: 1px solid rgba(171,71,188,0.5);
-  padding: 5px 15px;
+  padding: 5px 11px;
 }
 
 .c6:hover {
@@ -5203,7 +5161,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
   color: #ef5350;
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c7:hover {
@@ -5233,7 +5191,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   color: rgba(0,0,0,0.87);
   background-color: #ff9800;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c8:hover {
@@ -5265,7 +5223,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c9:hover {
@@ -5296,7 +5254,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 8.2px;
+  padding: 8.450000000000001px;
 }
 
 .c10:hover {
@@ -5327,7 +5285,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 8.2px;
+  padding: 8.450000000000001px;
 }
 
 .c13:hover {
@@ -5633,7 +5591,7 @@ exports[`Demo renders ./packages/react/src/CSSTransition/__doc__/Advance.tsx cor
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c1:hover {
@@ -5767,7 +5725,7 @@ exports[`Demo renders ./packages/react/src/CSSTransition/__doc__/Basic.tsx corre
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c1:hover {
@@ -5901,7 +5859,7 @@ exports[`Demo renders ./packages/react/src/CollapseTransition/__doc__/Basic.tsx 
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c1:hover {
@@ -6037,7 +5995,7 @@ exports[`Demo renders ./packages/react/src/CollapseTransition/__doc__/Horizontal
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c1:hover {
@@ -6173,7 +6131,7 @@ exports[`Demo renders ./packages/react/src/Dialog/__doc__/Basic.tsx correctly 1`
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c1:hover {
@@ -6305,7 +6263,7 @@ exports[`Demo renders ./packages/react/src/Dialog/__doc__/Custom.tsx correctly 1
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c1:hover {
@@ -6437,7 +6395,7 @@ exports[`Demo renders ./packages/react/src/Dialog/__doc__/Methods.tsx correctly 
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c1:hover {
@@ -6569,7 +6527,7 @@ exports[`Demo renders ./packages/react/src/Dialog/__doc__/Promise.tsx correctly 
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c1:hover {
@@ -6701,7 +6659,7 @@ exports[`Demo renders ./packages/react/src/Dialog/__doc__/Prompt.tsx correctly 1
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c1:hover {
@@ -6834,7 +6792,7 @@ Array [
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c1:hover {
@@ -6963,7 +6921,7 @@ Array [
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c1:hover {
@@ -7092,7 +7050,7 @@ Array [
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c1:hover {
@@ -7221,7 +7179,7 @@ Array [
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c1:hover {
@@ -7350,7 +7308,7 @@ Array [
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c1:hover {
@@ -7484,7 +7442,7 @@ Array [
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c1:hover {
@@ -7613,7 +7571,7 @@ Array [
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c1:hover {
@@ -7742,7 +7700,7 @@ Array [
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c1:hover {
@@ -7871,7 +7829,7 @@ Array [
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c1:hover {
@@ -8000,7 +7958,7 @@ Array [
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c1:hover {
@@ -8133,7 +8091,7 @@ exports[`Demo renders ./packages/react/src/Dialog/__doc__/Width.tsx correctly 1`
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c1:hover {
@@ -8265,7 +8223,7 @@ exports[`Demo renders ./packages/react/src/Dropdown/__doc__/Advance.tsx correctl
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c1:hover {
@@ -8397,7 +8355,7 @@ exports[`Demo renders ./packages/react/src/Dropdown/__doc__/Basic.tsx correctly 
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c1:hover {
@@ -8529,7 +8487,7 @@ exports[`Demo renders ./packages/react/src/Dropdown/__doc__/Cascade.tsx correctl
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c1:hover {
@@ -8607,7 +8565,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Addon.tsx correctly 1`]
   -ms-flex-align: center;
   align-items: center;
   background-color: rgb(242,242,242);
-  padding: 0 8px;
+  padding: 0 12px;
   border: 1px solid rgba(0,0,0,0.12);
   border-right-width: 0;
   border-top-left-radius: 4px;
@@ -8631,12 +8589,13 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Addon.tsx correctly 1`]
   border-radius: 4px;
   border: 1px solid rgba(0,0,0,0.12);
   width: 100%;
-  padding: 4px 11px;
+  padding: 6px 12px;
   color: rgba(0,0,0,0.87);
   background-color: #fff;
   -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   z-index: 1;
+  font-size: inherit;
 }
 
 .c2:not(:first-child) {
@@ -8654,7 +8613,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Addon.tsx correctly 1`]
 }
 
 .c3 {
-  font-size: 1.000rem;
+  font-size: inherit;
   line-height: 1.5;
   font-weight: 400;
   -webkit-letter-spacing: 0.031em;
@@ -8722,10 +8681,10 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Addon.tsx correctly 1`]
 
 <div>
   <span
-    class="c0 xl-input"
+    class="c0 xl-input xl-input--size-middle"
   >
     <span
-      class="c1"
+      class="c1 xl-input__addon-before"
     >
       https://
     </span>
@@ -8740,17 +8699,17 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Addon.tsx correctly 1`]
       />
     </span>
     <span
-      class="c1 c4"
+      class="c1 c4 xl-input__addon-after"
     >
       .xyz
     </span>
   </span>
   <span
-    class="c0 xl-input"
+    class="c0 xl-input xl-input--size-middle"
     style="margin-top: 10px;"
   >
     <span
-      class="c1"
+      class="c1 xl-input__addon-before"
     >
       https://
     </span>
@@ -8765,7 +8724,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Addon.tsx correctly 1`]
       />
     </span>
     <span
-      class="c1 c4"
+      class="c1 c4 xl-input__addon-after"
     >
       <svg
         class="xl-base-icon c5"
@@ -8808,12 +8767,13 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Basic.tsx correctly 1`]
   border-radius: 4px;
   border: 1px solid rgba(0,0,0,0.12);
   width: 100%;
-  padding: 4px 11px;
+  padding: 6px 12px;
   color: rgba(0,0,0,0.87);
   background-color: #fff;
   -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   z-index: 1;
+  font-size: inherit;
 }
 
 .c1:not(:first-child) {
@@ -8831,7 +8791,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Basic.tsx correctly 1`]
 }
 
 .c2 {
-  font-size: 1.000rem;
+  font-size: inherit;
   line-height: 1.5;
   font-weight: 400;
   -webkit-letter-spacing: 0.031em;
@@ -8899,7 +8859,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Basic.tsx correctly 1`]
 
 <div>
   <span
-    class="c0 xl-input"
+    class="c0 xl-input xl-input--size-middle"
   >
     <span
       class="c1 xl-input__wrapper"
@@ -8907,9 +8867,225 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Basic.tsx correctly 1`]
       <input
         class="c2 xl-input__inner"
         placeholder="Basic usage"
-        type="password"
-        value="12344"
+        type="text"
+        value=""
       />
+    </span>
+  </span>
+</div>
+`;
+
+exports[`Demo renders ./packages/react/src/Input/__doc__/Clearable.tsx correctly 1`] = `
+.c5 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentcolor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c0 {
+  font-size: 1.000rem;
+  line-height: 1.5;
+  font-weight: 400;
+  -webkit-letter-spacing: 0.031em;
+  -moz-letter-spacing: 0.031em;
+  -ms-letter-spacing: 0.031em;
+  letter-spacing: 0.031em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  width: 100%;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c1 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  border-radius: 4px;
+  border: 1px solid rgba(0,0,0,0.12);
+  width: 100%;
+  padding: 6px 12px;
+  color: rgba(0,0,0,0.87);
+  background-color: #fff;
+  -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  z-index: 1;
+  font-size: inherit;
+}
+
+.c1:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.c1:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.c1:hover {
+  border-color: rgb(30,138,224);
+}
+
+.c2 {
+  font-size: inherit;
+  line-height: 1.5;
+  font-weight: 400;
+  -webkit-letter-spacing: 0.031em;
+  -moz-letter-spacing: 0.031em;
+  -ms-letter-spacing: 0.031em;
+  letter-spacing: 0.031em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  touch-action: manipulation;
+  font-variant: tabular-nums;
+  display: inline-block;
+  min-width: 0;
+  width: 100%;
+  border: 0;
+  outline: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  color: rgba(0,0,0,0.87);
+  background-color: #fff;
+  -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+}
+
+.c2::-moz-placeholder {
+  opacity: 1;
+}
+
+.c2::-webkit-input-placeholder {
+  color: rgba(0,0,0,0.38);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c2::-moz-placeholder {
+  color: rgba(0,0,0,0.38);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c2:-ms-input-placeholder {
+  color: rgba(0,0,0,0.38);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c2::placeholder {
+  color: rgba(0,0,0,0.38);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c2:placeholder-shown {
+  text-overflow: ellipsis;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-right: 4px;
+}
+
+.c4 {
+  margin-right: 0;
+  margin-left: 4px;
+}
+
+.c4 .xl-input__suffix--has-suffix {
+  margin-right: 4px;
+}
+
+.c4 .xl-input__suffix-count,
+.c4 .xl-input__suffix-clear {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  line-height: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: rgba(0,0,0,0.38);
+}
+
+.c4 .xl-input__suffix-clear {
+  cursor: pointer;
+  -webkit-transition: color 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: color 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+}
+
+.c4 .xl-input__suffix-clear:hover {
+  color: rgba(0,0,0,0.54);
+}
+
+<div>
+  <span
+    class="c0 xl-input xl-input--size-middle"
+  >
+    <span
+      class="c1 xl-input__wrapper"
+    >
+      <input
+        class="c2 xl-input__inner"
+        placeholder="Basic usage"
+        type="text"
+        value="hello"
+      />
+      <span
+        class="c3 c4 xl-input__suffix"
+      >
+        <span
+          class="xl-input__suffix-clear"
+          role="button"
+          tabindex="-1"
+        >
+          <svg
+            class="xl-base-icon c5"
+            viewBox="0 0 1024 1024"
+          >
+            <path
+              d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm165.4 618.2-66-.3L512 563.4l-99.3 118.4-66.1.3c-4.4 0-8-3.5-8-8 0-1.9.7-3.7 1.9-5.2l130.1-155L340.5 359a8.32 8.32 0 0 1-1.9-5.2c0-4.4 3.6-8 8-8l66.1.3L512 464.6l99.3-118.4 66-.3c4.4 0 8 3.5 8 8 0 1.9-.7 3.7-1.9 5.2L553.5 514l130 155c1.2 1.5 1.9 3.3 1.9 5.2 0 4.4-3.6 8-8 8z"
+            />
+          </svg>
+        </span>
+      </span>
     </span>
   </span>
 </div>
@@ -9016,7 +9192,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Focus.tsx correctly 1`]
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c4:hover {
@@ -9056,12 +9232,13 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Focus.tsx correctly 1`]
   border-radius: 4px;
   border: 1px solid rgba(0,0,0,0.12);
   width: 100%;
-  padding: 4px 11px;
+  padding: 6px 12px;
   color: rgba(0,0,0,0.87);
   background-color: #fff;
   -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   z-index: 1;
+  font-size: inherit;
 }
 
 .c1:not(:first-child) {
@@ -9079,7 +9256,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Focus.tsx correctly 1`]
 }
 
 .c2 {
-  font-size: 1.000rem;
+  font-size: inherit;
   line-height: 1.5;
   font-weight: 400;
   -webkit-letter-spacing: 0.031em;
@@ -9147,7 +9324,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Focus.tsx correctly 1`]
 
 <div>
   <span
-    class="c0 xl-input"
+    class="c0 xl-input xl-input--size-middle"
   >
     <span
       class="c1 xl-input__wrapper"
@@ -9177,6 +9354,862 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Focus.tsx correctly 1`]
       class="c6 xl-ripple xl-base-button__ripple"
     />
   </button>
+</div>
+`;
+
+exports[`Demo renders ./packages/react/src/Input/__doc__/Group.tsx correctly 1`] = `
+.c8 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c5 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.c5::-moz-focus-inner {
+  border-style: none;
+}
+
+.c5 svg {
+  pointer-events: none;
+}
+
+.c5 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+}
+
+.c5 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c5 .xl-base-button__ripple-leave-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c5 .xl-base-button__ripple-enter-from {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c5 .xl-base-button__ripple-leave-to {
+  opacity: 0;
+}
+
+.c7 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c6 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.656rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #2196f3;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 4px 10px;
+}
+
+.c6:hover {
+  background-color: rgb(30,138,224);
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c6:focus {
+  background-color: rgb(29,132,214);
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c12 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #2196f3;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 12px;
+}
+
+.c12:hover {
+  background-color: rgb(30,138,224);
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c12:focus {
+  background-color: rgb(29,132,214);
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c16 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 1.006rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #2196f3;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 8px 22px;
+}
+
+.c16:hover {
+  background-color: rgb(30,138,224);
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c16:focus {
+  background-color: rgb(29,132,214);
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c1 {
+  font-size: 0.750rem;
+  line-height: 1.5;
+  font-weight: 400;
+  -webkit-letter-spacing: 0.031em;
+  -moz-letter-spacing: 0.031em;
+  -ms-letter-spacing: 0.031em;
+  letter-spacing: 0.031em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  width: 100%;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c9 {
+  font-size: 1.000rem;
+  line-height: 1.5;
+  font-weight: 400;
+  -webkit-letter-spacing: 0.031em;
+  -moz-letter-spacing: 0.031em;
+  -ms-letter-spacing: 0.031em;
+  letter-spacing: 0.031em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  width: 100%;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c13 {
+  font-size: 1.150rem;
+  line-height: 1.5;
+  font-weight: 400;
+  -webkit-letter-spacing: 0.031em;
+  -moz-letter-spacing: 0.031em;
+  -ms-letter-spacing: 0.031em;
+  letter-spacing: 0.031em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  width: 100%;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: rgb(242,242,242);
+  padding: 0 10px;
+  border: 1px solid rgba(0,0,0,0.12);
+  border-right-width: 0;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: rgb(242,242,242);
+  padding: 0 12px;
+  border: 1px solid rgba(0,0,0,0.12);
+  border-right-width: 0;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.c14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: rgb(242,242,242);
+  padding: 0 22px;
+  border: 1px solid rgba(0,0,0,0.12);
+  border-right-width: 0;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  border-radius: 4px;
+  border: 1px solid rgba(0,0,0,0.12);
+  width: 100%;
+  padding: 4px 10px;
+  color: rgba(0,0,0,0.87);
+  background-color: #fff;
+  -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  z-index: 1;
+  font-size: inherit;
+}
+
+.c3:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.c3:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.c3:hover {
+  border-color: rgb(30,138,224);
+}
+
+.c11 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  border-radius: 4px;
+  border: 1px solid rgba(0,0,0,0.12);
+  width: 100%;
+  padding: 6px 12px;
+  color: rgba(0,0,0,0.87);
+  background-color: #fff;
+  -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  z-index: 1;
+  font-size: inherit;
+}
+
+.c11:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.c11:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.c11:hover {
+  border-color: rgb(30,138,224);
+}
+
+.c15 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  border-radius: 4px;
+  border: 1px solid rgba(0,0,0,0.12);
+  width: 100%;
+  padding: 8px 22px;
+  color: rgba(0,0,0,0.87);
+  background-color: #fff;
+  -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  z-index: 1;
+  font-size: inherit;
+}
+
+.c15:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.c15:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.c15:hover {
+  border-color: rgb(30,138,224);
+}
+
+.c4 {
+  font-size: inherit;
+  line-height: 1.5;
+  font-weight: 400;
+  -webkit-letter-spacing: 0.031em;
+  -moz-letter-spacing: 0.031em;
+  -ms-letter-spacing: 0.031em;
+  letter-spacing: 0.031em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  touch-action: manipulation;
+  font-variant: tabular-nums;
+  display: inline-block;
+  min-width: 0;
+  width: 100%;
+  border: 0;
+  outline: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  color: rgba(0,0,0,0.87);
+  background-color: #fff;
+  -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+}
+
+.c4::-moz-placeholder {
+  opacity: 1;
+}
+
+.c4::-webkit-input-placeholder {
+  color: rgba(0,0,0,0.38);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c4::-moz-placeholder {
+  color: rgba(0,0,0,0.38);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c4:-ms-input-placeholder {
+  color: rgba(0,0,0,0.38);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c4::placeholder {
+  color: rgba(0,0,0,0.38);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c4:placeholder-shown {
+  text-overflow: ellipsis;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c0 > * {
+  border-radius: 0;
+}
+
+.c0 > *:not(:last-child) {
+  margin-right: -1px;
+}
+
+.c0 > *:first-child {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.c0 > *:last-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.c0 .xl-input > * {
+  border-radius: 0;
+}
+
+.c0 .xl-input:first-child > *:first-child {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.c0 .xl-input:last-child > *:last-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+<div>
+  <div
+    class="c0 xl-input-group xl-input-group--size-small"
+  >
+    <span
+      class="c1 xl-input xl-input--size-small"
+    >
+      <span
+        class="c2 xl-input__addon-before"
+      >
+        URL
+      </span>
+      <span
+        class="c3 xl-input__wrapper"
+      >
+        <input
+          class="c4 xl-input__inner"
+          placeholder="Basic usage"
+          type="text"
+          value=""
+        />
+      </span>
+    </span>
+    <button
+      class="c5 xl-base-button c6 xl-button xl-button--size-small xl-button--color-primary xl-button--variant-contained xl-button--elevation"
+    >
+      <span
+        class="c7 xl-base-button__inner"
+      >
+        <span
+          class="xl-button__inner"
+        >
+          search
+        </span>
+      </span>
+      <div
+        class="c8 xl-ripple xl-base-button__ripple"
+      />
+    </button>
+  </div>
+  <div
+    class="c0 xl-input-group xl-input-group--size-middle"
+    style="margin-top: 10px;"
+  >
+    <span
+      class="c9 xl-input xl-input--size-middle"
+    >
+      <span
+        class="c10 xl-input__addon-before"
+      >
+        URL
+      </span>
+      <span
+        class="c11 xl-input__wrapper"
+      >
+        <input
+          class="c4 xl-input__inner"
+          placeholder="Basic usage"
+          type="text"
+          value=""
+        />
+      </span>
+    </span>
+    <button
+      class="c5 xl-base-button c12 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
+    >
+      <span
+        class="c7 xl-base-button__inner"
+      >
+        <span
+          class="xl-button__inner"
+        >
+          search
+        </span>
+      </span>
+      <div
+        class="c8 xl-ripple xl-base-button__ripple"
+      />
+    </button>
+  </div>
+  <div
+    class="c0 xl-input-group xl-input-group--size-large"
+    style="margin-top: 10px;"
+  >
+    <span
+      class="c13 xl-input xl-input--size-large"
+    >
+      <span
+        class="c14 xl-input__addon-before"
+      >
+        URL
+      </span>
+      <span
+        class="c15 xl-input__wrapper"
+      >
+        <input
+          class="c4 xl-input__inner"
+          placeholder="Basic usage"
+          type="text"
+          value=""
+        />
+      </span>
+    </span>
+    <button
+      class="c5 xl-base-button c16 xl-button xl-button--size-large xl-button--color-primary xl-button--variant-contained xl-button--elevation"
+    >
+      <span
+        class="c7 xl-base-button__inner"
+      >
+        <span
+          class="xl-button__inner"
+        >
+          search
+        </span>
+      </span>
+      <div
+        class="c8 xl-ripple xl-base-button__ripple"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Demo renders ./packages/react/src/Input/__doc__/Password.tsx correctly 1`] = `
+.c6 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentcolor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c0 {
+  font-size: 1.000rem;
+  line-height: 1.5;
+  font-weight: 400;
+  -webkit-letter-spacing: 0.031em;
+  -moz-letter-spacing: 0.031em;
+  -ms-letter-spacing: 0.031em;
+  letter-spacing: 0.031em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  width: 100%;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c1 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  border-radius: 4px;
+  border: 1px solid rgba(0,0,0,0.12);
+  width: 100%;
+  padding: 6px 12px;
+  color: rgba(0,0,0,0.87);
+  background-color: #fff;
+  -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  z-index: 1;
+  font-size: inherit;
+}
+
+.c1:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.c1:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.c1:hover {
+  border-color: rgb(30,138,224);
+}
+
+.c2 {
+  font-size: inherit;
+  line-height: 1.5;
+  font-weight: 400;
+  -webkit-letter-spacing: 0.031em;
+  -moz-letter-spacing: 0.031em;
+  -ms-letter-spacing: 0.031em;
+  letter-spacing: 0.031em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  touch-action: manipulation;
+  font-variant: tabular-nums;
+  display: inline-block;
+  min-width: 0;
+  width: 100%;
+  border: 0;
+  outline: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  color: rgba(0,0,0,0.87);
+  background-color: #fff;
+  -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+}
+
+.c2::-moz-placeholder {
+  opacity: 1;
+}
+
+.c2::-webkit-input-placeholder {
+  color: rgba(0,0,0,0.38);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c2::-moz-placeholder {
+  color: rgba(0,0,0,0.38);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c2:-ms-input-placeholder {
+  color: rgba(0,0,0,0.38);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c2::placeholder {
+  color: rgba(0,0,0,0.38);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c2:placeholder-shown {
+  text-overflow: ellipsis;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-right: 4px;
+}
+
+.c4 {
+  margin-right: 0;
+  margin-left: 4px;
+}
+
+.c4 .xl-input__suffix--has-suffix {
+  margin-right: 4px;
+}
+
+.c4 .xl-input__suffix-count,
+.c4 .xl-input__suffix-clear {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  line-height: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: rgba(0,0,0,0.38);
+}
+
+.c4 .xl-input__suffix-clear {
+  cursor: pointer;
+  -webkit-transition: color 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: color 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+}
+
+.c4 .xl-input__suffix-clear:hover {
+  color: rgba(0,0,0,0.54);
+}
+
+.c5 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  line-height: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+  -webkit-transition: color 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: color 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  color: rgba(0,0,0,0.38);
+}
+
+.c5:hover {
+  color: rgba(0,0,0,0.54);
+}
+
+<div>
+  <span
+    class="c0 xl-input xl-input--size-middle"
+  >
+    <span
+      class="c1 xl-input__wrapper"
+    >
+      <input
+        class="c2 xl-input__inner"
+        placeholder="password"
+        type="password"
+        value=""
+      />
+      <span
+        class="c3 c4 xl-input__suffix"
+      >
+        <span
+          class="c5"
+          role="button"
+          tabindex="-1"
+        >
+          <svg
+            class="xl-base-icon c6"
+            viewBox="0 0 1024 1024"
+          >
+            <path
+              d="M942.2 486.2C847.4 286.5 704.1 186 512 186c-192.2 0-335.4 100.5-430.2 300.3a60.3 60.3 0 0 0 0 51.5C176.6 737.5 319.9 838 512 838c192.2 0 335.4-100.5 430.2-300.3 7.7-16.2 7.7-35 0-51.5zM512 766c-161.3 0-279.4-81.8-362.7-254C232.6 339.8 350.7 258 512 258c161.3 0 279.4 81.8 362.7 254C791.5 684.2 673.4 766 512 766zm-4-430c-97.2 0-176 78.8-176 176s78.8 176 176 176 176-78.8 176-176-78.8-176-176-176zm0 288c-61.9 0-112-50.1-112-112s50.1-112 112-112 112 50.1 112 112-50.1 112-112 112z"
+            />
+          </svg>
+        </span>
+      </span>
+    </span>
+  </span>
 </div>
 `;
 
@@ -9222,12 +10255,13 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/PrefixAndSuffix.tsx cor
   border-radius: 4px;
   border: 1px solid rgba(0,0,0,0.12);
   width: 100%;
-  padding: 4px 11px;
+  padding: 6px 12px;
   color: rgba(0,0,0,0.87);
   background-color: #fff;
   -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   z-index: 1;
+  font-size: inherit;
 }
 
 .c2:not(:first-child) {
@@ -9245,7 +10279,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/PrefixAndSuffix.tsx cor
 }
 
 .c5 {
-  font-size: 1.000rem;
+  font-size: inherit;
   line-height: 1.5;
   font-weight: 400;
   -webkit-letter-spacing: 0.031em;
@@ -9331,8 +10365,32 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/PrefixAndSuffix.tsx cor
   margin-left: 4px;
 }
 
-.c6 .xl-input__suffix-count {
+.c6 .xl-input__suffix--has-suffix {
+  margin-right: 4px;
+}
+
+.c6 .xl-input__suffix-count,
+.c6 .xl-input__suffix-clear {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  line-height: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   color: rgba(0,0,0,0.38);
+}
+
+.c6 .xl-input__suffix-clear {
+  cursor: pointer;
+  -webkit-transition: color 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: color 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+}
+
+.c6 .xl-input__suffix-clear:hover {
+  color: rgba(0,0,0,0.54);
 }
 
 .c0 .xl-input {
@@ -9343,7 +10401,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/PrefixAndSuffix.tsx cor
   class="c0"
 >
   <span
-    class="c1 xl-input"
+    class="c1 xl-input xl-input--size-middle"
   >
     <span
       class="c2 xl-input__wrapper"
@@ -9369,7 +10427,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/PrefixAndSuffix.tsx cor
     </span>
   </span>
   <span
-    class="c1 xl-input"
+    class="c1 xl-input xl-input--size-middle"
   >
     <span
       class="c2 xl-input__wrapper"
@@ -9396,7 +10454,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/PrefixAndSuffix.tsx cor
     </span>
   </span>
   <span
-    class="c1 xl-input"
+    class="c1 xl-input xl-input--size-middle"
     style="color: rgba(0, 0, 0, 0.2);"
   >
     <span
@@ -9446,12 +10504,13 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/ShowCount.tsx correctly
   border-radius: 4px;
   border: 1px solid rgba(0,0,0,0.12);
   width: 100%;
-  padding: 4px 11px;
+  padding: 6px 12px;
   color: rgba(0,0,0,0.87);
   background-color: #fff;
   -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   z-index: 1;
+  font-size: inherit;
 }
 
 .c1:not(:first-child) {
@@ -9469,7 +10528,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/ShowCount.tsx correctly
 }
 
 .c2 {
-  font-size: 1.000rem;
+  font-size: inherit;
   line-height: 1.5;
   font-weight: 400;
   -webkit-letter-spacing: 0.031em;
@@ -9555,13 +10614,37 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/ShowCount.tsx correctly
   margin-left: 4px;
 }
 
-.c4 .xl-input__suffix-count {
+.c4 .xl-input__suffix--has-suffix {
+  margin-right: 4px;
+}
+
+.c4 .xl-input__suffix-count,
+.c4 .xl-input__suffix-clear {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  line-height: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   color: rgba(0,0,0,0.38);
+}
+
+.c4 .xl-input__suffix-clear {
+  cursor: pointer;
+  -webkit-transition: color 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: color 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+}
+
+.c4 .xl-input__suffix-clear:hover {
+  color: rgba(0,0,0,0.54);
 }
 
 <div>
   <span
-    class="c0 xl-input"
+    class="c0 xl-input xl-input--size-middle"
   >
     <span
       class="c1 xl-input__wrapper"
@@ -9585,7 +10668,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/ShowCount.tsx correctly
     </span>
   </span>
   <span
-    class="c0 xl-input"
+    class="c0 xl-input xl-input--size-middle"
     style="margin-top: 20px;"
   >
     <span
@@ -9606,6 +10689,273 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/ShowCount.tsx correctly
           0
         </span>
       </span>
+    </span>
+  </span>
+</div>
+`;
+
+exports[`Demo renders ./packages/react/src/Input/__doc__/Size.tsx correctly 1`] = `
+.c0 {
+  font-size: 0.750rem;
+  line-height: 1.5;
+  font-weight: 400;
+  -webkit-letter-spacing: 0.031em;
+  -moz-letter-spacing: 0.031em;
+  -ms-letter-spacing: 0.031em;
+  letter-spacing: 0.031em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  width: 100%;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c3 {
+  font-size: 1.000rem;
+  line-height: 1.5;
+  font-weight: 400;
+  -webkit-letter-spacing: 0.031em;
+  -moz-letter-spacing: 0.031em;
+  -ms-letter-spacing: 0.031em;
+  letter-spacing: 0.031em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  width: 100%;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c5 {
+  font-size: 1.150rem;
+  line-height: 1.5;
+  font-weight: 400;
+  -webkit-letter-spacing: 0.031em;
+  -moz-letter-spacing: 0.031em;
+  -ms-letter-spacing: 0.031em;
+  letter-spacing: 0.031em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  width: 100%;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c1 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  border-radius: 4px;
+  border: 1px solid rgba(0,0,0,0.12);
+  width: 100%;
+  padding: 4px 10px;
+  color: rgba(0,0,0,0.87);
+  background-color: #fff;
+  -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  z-index: 1;
+  font-size: inherit;
+}
+
+.c1:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.c1:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.c1:hover {
+  border-color: rgb(30,138,224);
+}
+
+.c4 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  border-radius: 4px;
+  border: 1px solid rgba(0,0,0,0.12);
+  width: 100%;
+  padding: 6px 12px;
+  color: rgba(0,0,0,0.87);
+  background-color: #fff;
+  -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  z-index: 1;
+  font-size: inherit;
+}
+
+.c4:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.c4:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.c4:hover {
+  border-color: rgb(30,138,224);
+}
+
+.c6 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  border-radius: 4px;
+  border: 1px solid rgba(0,0,0,0.12);
+  width: 100%;
+  padding: 8px 22px;
+  color: rgba(0,0,0,0.87);
+  background-color: #fff;
+  -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  z-index: 1;
+  font-size: inherit;
+}
+
+.c6:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.c6:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.c6:hover {
+  border-color: rgb(30,138,224);
+}
+
+.c2 {
+  font-size: inherit;
+  line-height: 1.5;
+  font-weight: 400;
+  -webkit-letter-spacing: 0.031em;
+  -moz-letter-spacing: 0.031em;
+  -ms-letter-spacing: 0.031em;
+  letter-spacing: 0.031em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  touch-action: manipulation;
+  font-variant: tabular-nums;
+  display: inline-block;
+  min-width: 0;
+  width: 100%;
+  border: 0;
+  outline: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  color: rgba(0,0,0,0.87);
+  background-color: #fff;
+  -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+}
+
+.c2::-moz-placeholder {
+  opacity: 1;
+}
+
+.c2::-webkit-input-placeholder {
+  color: rgba(0,0,0,0.38);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c2::-moz-placeholder {
+  color: rgba(0,0,0,0.38);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c2:-ms-input-placeholder {
+  color: rgba(0,0,0,0.38);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c2::placeholder {
+  color: rgba(0,0,0,0.38);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c2:placeholder-shown {
+  text-overflow: ellipsis;
+}
+
+<div>
+  <span
+    class="c0 xl-input xl-input--size-small"
+  >
+    <span
+      class="c1 xl-input__wrapper"
+    >
+      <input
+        class="c2 xl-input__inner"
+        placeholder="Basic usage"
+        type="text"
+        value=""
+      />
+    </span>
+  </span>
+   
+  <span
+    class="c3 xl-input xl-input--size-middle"
+    style="margin-top: 10px;"
+  >
+    <span
+      class="c4 xl-input__wrapper"
+    >
+      <input
+        class="c2 xl-input__inner"
+        placeholder="Basic usage"
+        type="text"
+        value=""
+      />
+    </span>
+  </span>
+  <span
+    class="c5 xl-input xl-input--size-large"
+    style="margin-top: 10px;"
+  >
+    <span
+      class="c6 xl-input__wrapper"
+    >
+      <input
+        class="c2 xl-input__inner"
+        placeholder="Basic usage"
+        type="text"
+        value=""
+      />
     </span>
   </span>
 </div>
@@ -9712,7 +11062,7 @@ exports[`Demo renders ./packages/react/src/Modal/__doc__/Basic.tsx correctly 1`]
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c1:hover {
@@ -9844,7 +11194,7 @@ exports[`Demo renders ./packages/react/src/Modal/__doc__/EscClosable.tsx correct
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c1:hover {
@@ -9976,7 +11326,7 @@ exports[`Demo renders ./packages/react/src/Modal/__doc__/HideMask.tsx correctly 
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c1:hover {
@@ -10108,7 +11458,7 @@ exports[`Demo renders ./packages/react/src/Modal/__doc__/MaskClosable.tsx correc
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c1:hover {
@@ -10240,7 +11590,7 @@ exports[`Demo renders ./packages/react/src/Modal/__doc__/Nest.tsx correctly 1`] 
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c1:hover {
@@ -10372,7 +11722,7 @@ exports[`Demo renders ./packages/react/src/Modal/__doc__/Shortcut.tsx correctly 
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c1:hover {
@@ -10504,7 +11854,7 @@ exports[`Demo renders ./packages/react/src/Popconfirm/__doc__/Basic.tsx correctl
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c1:hover {
@@ -10638,7 +11988,7 @@ exports[`Demo renders ./packages/react/src/Popconfirm/__doc__/Promise.tsx correc
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c1:hover {
@@ -10772,7 +12122,7 @@ exports[`Demo renders ./packages/react/src/Popover/__doc__/Basic.tsx correctly 1
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c2:hover {
@@ -11132,7 +12482,7 @@ exports[`Demo renders ./packages/react/src/Popover/__doc__/ClickInner.tsx correc
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c1:hover {
@@ -11264,7 +12614,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Arrow.tsx correctly 1`
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c2:hover {
@@ -11405,7 +12755,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c2:hover {
@@ -11765,7 +13115,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c2:hover {
@@ -12011,7 +13361,7 @@ exports[`Demo renders ./packages/react/src/Portal/__doc__/Basic.tsx correctly 1`
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c2:hover {
@@ -32406,7 +33756,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Arrow.tsx correctly 1
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c1:hover {
@@ -32538,7 +33888,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c2:hover {
@@ -32898,7 +34248,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Colors.tsx correctly 
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c2:hover {
@@ -33087,7 +34437,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/MaxWidth.tsx correctl
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c2:hover {
@@ -33228,7 +34578,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Rich.tsx correctly 1`
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c2:hover {
@@ -33369,7 +34719,7 @@ exports[`Demo renders ./packages/react/src/Transition/__doc__/Appear.tsx correct
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c1:hover {
@@ -33541,7 +34891,7 @@ exports[`Demo renders ./packages/react/src/Transition/__doc__/Basic.tsx correctl
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c1:hover {
@@ -33675,7 +35025,7 @@ exports[`Demo renders ./packages/react/src/TransitionGroup/__doc__/Basic.tsx cor
   color: #fff;
   background-color: #2196f3;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
-  padding: 6px 16px;
+  padding: 6px 12px;
 }
 
 .c1:hover {

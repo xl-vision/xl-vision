@@ -9,7 +9,7 @@ import { styled } from '../styles';
 import Button, { ButtonProps } from '../Button';
 import usePropChange from '../hooks/usePropChange';
 import { useTheme } from '../ThemeProvider';
-import { useLocale } from '../LocalizationProvider';
+import { useConfig } from '../ConfigProvider';
 
 export type PopconfirmButtonProps = Omit<ButtonProps, 'children' | 'onClick'>;
 export interface PopconfirmProps
@@ -84,20 +84,20 @@ const PopconfirmPopup = styled('div', {
   name: displayName,
   slot: 'Popup',
 })(({ theme }) => {
-  const { color, typography, elevations, clsPrefix, shape } = theme;
+  const { color, typography, elevations, clsPrefix, styleSize } = theme;
   const bgColor = color.background.paper;
 
   return {
     backgroundColor: bgColor,
     color: color.getContrastColor(bgColor).text.primary,
-    borderRadius: shape.borderRadius.md,
+    borderRadius: styleSize.middle.borderRadius,
     padding: '12px 16px',
     ...elevations(8),
     [`.${clsPrefix}-popconfirm__content`]: {
       position: 'relative',
       padding: '4px 0px 12px',
       minWidth: 110,
-      ...typography.body1,
+      ...typography.body1.style,
     },
     [`.${clsPrefix}-popconfirm__icon`]: {
       position: 'absolute',
@@ -121,7 +121,7 @@ const defaultIcon = <ExclamationCircleOutlined />;
 
 const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
   const { clsPrefix } = useTheme();
-  const { locale } = useLocale();
+  const { locale } = useConfig();
 
   const {
     getPopupContainer,

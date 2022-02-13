@@ -1,15 +1,15 @@
 import { defaultLanguage } from '@xl-vision/react/locale';
 import { mount } from 'enzyme';
 import React from 'react';
-import LocalizationContext from '../LocalizationContext';
-import LocalizationProvider from '../LocalizationProvider';
+import useConfig from '../useConfig';
+import ConfigProvider from '../ConfigProvider';
 
-describe('LocalizationProvider', () => {
+describe('ConfigProvider', () => {
   it('Get language', () => {
     const fn = jest.fn<any, Array<any>>();
 
     const Demo = () => {
-      const { language, locale } = React.useContext(LocalizationContext);
+      const { language, locale } = useConfig();
 
       React.useEffect(() => {
         fn(language, locale);
@@ -19,9 +19,9 @@ describe('LocalizationProvider', () => {
     };
 
     const wrapper = mount(
-      <LocalizationProvider language='en-US'>
+      <ConfigProvider language='en-US'>
         <Demo />
-      </LocalizationProvider>,
+      </ConfigProvider>,
     );
 
     expect(fn.mock.calls.length).toBe(1);

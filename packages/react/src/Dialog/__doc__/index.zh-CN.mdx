@@ -97,16 +97,16 @@ hooks
 
 以上均为函数，参数为 object，具体属性如下
 
-| 参数                | 说明               | 类型            | 可选值 | 默认值 | 是否必填 |
-| ------------------- | ------------------ | --------------- | ------ | ------ | -------- |
-| icon                | 图标               | React.ReactNode | -      | -      | false    |
-| content             | 自定义内容         | React.ReactNode | -      | -      | false    |
-| themeContext        | 自定义主题上下文   | object          | -      | -      | false    |
-| localizationContext | 自定义国际化上下文 | object          | -      | -      | false    |
+| 参数                | 说明       | 类型            | 可选值 | 默认值 | 是否必填 |
+| ------------------- | ---------- | --------------- | ------ | ------ | -------- |
+| icon                | 图标       | React.ReactNode | -      | -      | false    |
+| content             | 自定义内容 | React.ReactNode | -      | -      | false    |
+| themeProviderProps  | 自定义主题 | object          | -      | -      | false    |
+| configProviderProps | 自定义配置 | object          | -      | -      | false    |
 
 > `Dialog.open`继承`Dialog`的绝大多数参数，除了`visible`和`defaultVisile`，其中`children`被重命名为`content`。
 
-> 如果要修改`Dialog.open`创建的对话框的主题和国际化信息，需要传入`themeContext`和`localizationContext`，否则将使用系统的默认主题和国际化信息。
+> 如果要修改`Dialog.open`创建的对话框的主题和国际化信息，需要传入`themeProviderProps`和`configProviderProps`，否则将使用系统的默认主题和国际化信息。
 
 > 对话框关闭时会自动进行销毁。
 
@@ -143,9 +143,9 @@ browserHistory.listen(() => {
 
 ## Dialog.useDialog
 
-> `Dialog.useDialog`拥有和`Dialog.open`几乎相同的参数和方法，但是不需要传入`themeContext`和`localizationContext`。
+> `Dialog.useDialog`拥有和`Dialog.open`几乎相同的参数和方法，但是不需要传入`themeProviderProps`和`configProviderProps`。
 
-> 我们推荐使用`Dialog.useDialog`，通过插入`holder`在相应位置可以使 dialog 获得插入位置的`context`，例如`ThemeContext`和`LocalizationContext`。
+> 我们推荐使用`Dialog.useDialog`，通过插入`holder`在相应位置可以使 dialog 获得插入位置的`context`，例如`themeProviderProps`和`configProviderProps`。
 
 ```tsx
 const [dialog, holder] = Dialog.useDialog();

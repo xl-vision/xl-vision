@@ -9,18 +9,16 @@ import { styled } from '../styles';
 import { ThemeColors } from '../ThemeProvider/color/themeColor';
 import CollapseTransition from '../CollapseTransition';
 import { alpha } from '../utils/color';
-import { useTheme } from '../ThemeProvider';
+import { ComponentSize, useTheme } from '../ThemeProvider';
 
 export type ButtonColor = keyof ThemeColors | 'default';
-
-export type ButtonSize = 'small' | 'middle' | 'large';
 
 export type ButtonVariant = 'contained' | 'outlined' | 'text';
 
 export type ButtonProps = BaseButtonProps & {
   color?: ButtonColor;
   disableElevation?: boolean;
-  size?: ButtonSize;
+  size?: ComponentSize;
   prefixIcon?: React.ReactElement<React.SVGAttributes<SVGSVGElement>>;
   suffixIcon?: React.ReactElement<React.SVGAttributes<SVGSVGElement>>;
   variant?: ButtonVariant;
@@ -33,7 +31,7 @@ const displayName = 'Button';
 export type ButtonStyleProps = {
   color: ButtonColor;
   disableElevation: boolean;
-  size: ButtonSize;
+  size: ComponentSize;
   disabled?: boolean;
   loading?: boolean;
   variant: ButtonVariant;
@@ -48,11 +46,16 @@ export type ButtonPrefixStyleProps = {
 
 export type ButtonSuffixStyleProps = ButtonPrefixStyleProps;
 
+const iconSize = 1.4;
+
 const ButtonRoot = styled(BaseButton, {
   name: displayName,
   slot: 'Root',
 })<ButtonStyleProps>(({ theme, styleProps }) => {
-  const { color: themeColor, transition, typography, elevations, shape } = theme;
+  const { color: themeColor, transition, typography, elevations, styleSize } = theme;
+
+  const { info: buttonInfo, style: buttonStyle } = typography.button;
+
   const {
     color: colorStyle,
     disableElevation,
@@ -65,41 +68,36 @@ const ButtonRoot = styled(BaseButton, {
     icon,
   } = styleProps;
 
+  const themeSize = styleSize[size];
+
+  const baseFontSize = buttonInfo.size * themeSize.fontSize;
+
   const styles: CSSObject = {
     transition: transition.standard('all'),
-    borderRadius: shape.borderRadius.md,
+    borderRadius: themeSize.borderRadius,
     minWidth: icon ? '' : '64px',
-    ...typography.button,
+    ...buttonStyle,
+    fontSize: typography.pxToRem(baseFontSize),
   };
 
   if (icon) {
     styles.lineHeight = 0;
   }
 
+  const buttonHeight = themeSize.padding.y * 2 + buttonInfo.lineHeight * baseFontSize;
+
+  const iconHeight = baseFontSize * iconSize;
+
+  let padding = icon
+    ? [(buttonHeight - iconHeight) / 2]
+    : [themeSize.padding.y, themeSize.padding.x];
+
   if (round) {
-    styles.borderRadius = 6 * 2 + 1.75 * 14;
-  }
-
-  let padding: Array<number>;
-
-  if (size === 'large') {
-    padding = icon ? [10.5] : [8, 22];
-    styles.fontSize = typography.pxToRem(16);
-    if (round) {
-      styles.borderRadius = 8 * 2 + 1.75 * 14;
+    if (icon) {
+      styles.borderRadius = '50%';
+    } else {
+      styles.borderRadius = themeSize.padding.y * 2 + buttonInfo.lineHeight * baseFontSize;
     }
-  } else if (size === 'middle') {
-    padding = icon ? [8.2] : [6, 16];
-  } else {
-    padding = icon ? [6.5] : [4, 10];
-    styles.fontSize = typography.pxToRem(12);
-    if (round) {
-      styles.borderRadius = 4 * 2 + 1.75 * 14;
-    }
-  }
-
-  if (icon && round) {
-    styles.borderRadius = '50%';
   }
 
   if (long) {
@@ -114,9 +112,9 @@ const ButtonRoot = styled(BaseButton, {
     styles.color = color;
 
     if (variant === 'outlined') {
-      styles.border = `1px solid ${alpha(color, 0.5)}`;
+      styles.border = `${themeSize.border}px solid ${alpha(color, 0.5)}`;
       // 保证高度一致
-      padding = padding.map((it) => it - 1);
+      padding = padding.map((it) => it - themeSize.border);
     }
 
     if (disabled || loading) {
@@ -174,7 +172,7 @@ const ButtonPrefix = styled('span', {
     transition: transition.standard('width'),
     padding: 0,
     lineHeight: 0,
-    fontSize: '1.4em',
+    fontSize: `${iconSize}em`,
     verticalAlign: 'middle',
     svg: {
       lineHeight: 1,
@@ -223,10 +221,12 @@ const DefaultLoadingIcon = styled(LoadingOutlined, {
 `;
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
+  const { clsPrefix, componentSize } = useTheme();
+
   const {
     color = 'default',
     disableElevation = false,
-    size = 'middle',
+    size = componentSize,
     disabled,
     loading,
     prefixIcon,
@@ -238,8 +238,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
     className,
     ...others
   } = props;
-
-  const { clsPrefix } = useTheme();
 
   const [LoadingIcon, setLoadingIcon] = React.useState<React.ComponentType<any>>();
 
@@ -344,13 +342,20 @@ if (!env.isProduction) {
   Button.displayName = displayName;
 
   Button.propTypes = {
-    color: PropTypes.oneOf<ButtonColor>(['default', 'error', 'primary', 'secondary', 'warning']),
+    color: PropTypes.oneOf<ButtonColor>([
+      'default',
+      'error',
+      'primary',
+      'secondary',
+      'warning',
+      'info',
+    ]),
     disableElevation: PropTypes.bool,
     loading: PropTypes.bool,
     disabled: PropTypes.bool,
     long: PropTypes.bool,
     round: PropTypes.bool,
-    size: PropTypes.oneOf<ButtonSize>(['large', 'middle', 'small']),
+    size: PropTypes.oneOf<ComponentSize>(['large', 'middle', 'small']),
     children: PropTypes.node,
     prefixIcon: PropTypes.element,
     suffixIcon: PropTypes.element,

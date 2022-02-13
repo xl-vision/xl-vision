@@ -88,11 +88,11 @@ const PopoverTitle = styled('div', {
   name: displayName,
   slot: 'Title',
 })(({ theme }) => {
-  const { color, typography } = theme;
+  const { color, typography, styleSize } = theme;
   return {
     padding: '4px 12px',
-    borderBottom: `1px solid ${color.divider}`,
-    ...typography.subtitle2,
+    borderBottom: `${styleSize.middle.border}px solid ${color.divider}`,
+    ...typography.subtitle2.style,
   };
 });
 
@@ -103,7 +103,7 @@ const PopoverContent = styled('div', {
   const { typography } = theme;
   return {
     padding: '8px 12px',
-    ...typography.body2,
+    ...typography.body2.style,
   };
 });
 

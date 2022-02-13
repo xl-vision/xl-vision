@@ -26,7 +26,7 @@ const Container = styled('div')(() => {
 });
 
 const HeaderNav = styled('header')(({ theme }) => {
-  const { color } = theme;
+  const { color, styleSize } = theme;
 
   const background = color.background.paper;
 
@@ -42,7 +42,7 @@ const HeaderNav = styled('header')(({ theme }) => {
     padding: '0 16px',
     backgroundColor: alpha(background, 0.72),
     color: fontColor,
-    borderBottom: `1px solid ${color.divider}`,
+    borderBottom: `${styleSize.middle.border}px solid ${color.divider}`,
     backdropFilter: 'blur(20px)',
 
     '.left': {

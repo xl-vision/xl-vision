@@ -54,7 +54,7 @@ const TooltipPopup = styled('div', {
   name: displayName,
   slot: 'Popup',
 })<TooltipPopupStyleProps>(({ theme, styleProps }) => {
-  const { color, typography, shape } = theme;
+  const { color, typography, styleSize } = theme;
   const { hasWidth, touch } = styleProps;
 
   const bgColor = color.modes.dark.background.paper;
@@ -63,9 +63,9 @@ const TooltipPopup = styled('div', {
     backgroundColor: bgColor,
     color: color.getContrastColor(bgColor).text.primary,
     padding: touch ? '8px 16px' : '4px 8px',
-    borderRadius: shape.borderRadius.md,
+    borderRadius: styleSize.middle.borderRadius,
 
-    ...typography.caption,
+    ...typography.caption.style,
     ...(hasWidth && {
       whiteSpace: 'pre-wrap',
       textAlign: 'justify',
