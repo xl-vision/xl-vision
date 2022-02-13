@@ -31,4 +31,4 @@ out
 
 # Automatic generated
 /platforms/docs/public/robots.txt
-/platforms/docs/public/sitemap.xml
+/platforms/docs/public/sitemap*.xml
