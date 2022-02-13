@@ -39,7 +39,6 @@ const InputGroupRoot = styled('div', {
         borderBottomRightRadius: themeSize.borderRadius,
       },
     },
-
     [`.${clsPrefix}-input`]: {
       '& > *': {
         borderRadius: 0,
