@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, styled, Icon, Tooltip, Dropdown } from '@xl-vision/react';
+import { Button, styled, Tooltip, Dropdown } from '@xl-vision/react';
 import { DownOutlined, GithubFilled, MenuOutlined } from '@xl-vision/icons';
 import Link from 'next/link';
 import { useConstantFn } from '@xl-vision/hooks';
@@ -26,11 +26,11 @@ const Container = styled('div')(() => {
 });
 
 const HeaderNav = styled('header')(({ theme }) => {
-  const { color } = theme;
+  const { color, styleSize } = theme;
 
   const background = color.background.paper;
 
-  const fontColor = color.getContrastText(background).text.primary;
+  const fontColor = color.getContrastColor(background).text.primary;
 
   return {
     display: 'flex',
@@ -42,7 +42,7 @@ const HeaderNav = styled('header')(({ theme }) => {
     padding: '0 16px',
     backgroundColor: alpha(background, 0.72),
     color: fontColor,
-    borderBottom: `1px solid ${color.divider}`,
+    borderBottom: `${styleSize.middle.border}px solid ${color.divider}`,
     backdropFilter: 'blur(20px)',
 
     '.left': {
@@ -139,7 +139,7 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
   const handleLangChange = useConstantFn((lang: string) => {
     const { pathname, asPath, query } = router;
     router.push({ pathname, query }, asPath, { locale: lang }).catch(() => {});
-    Cookie.set('NEXT_LOCALE', lang, { expires: 30 });
+    Cookie.set('NEXT_LOCALE', lang, { expires: 30, sameSite: 'Strict' });
   });
 
   const setActiveClassName = useConstantFn((pathname: string) => {
@@ -170,11 +170,7 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
               className='md-down'
               aria-label='Menus'
               variant='text'
-              prefixIcon={
-                <Icon>
-                  <MenuOutlined />
-                </Icon>
-              }
+              prefixIcon={<MenuOutlined />}
             />
           </Dropdown>
           <Link href='/' passHref={true}>
@@ -211,16 +207,8 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
             <Button
               aria-label='Language'
               variant='text'
-              prefixIcon={
-                <Icon>
-                  <Translate />
-                </Icon>
-              }
-              suffixIcon={
-                <Icon>
-                  <DownOutlined />
-                </Icon>
-              }
+              prefixIcon={<Translate />}
+              suffixIcon={<DownOutlined />}
             >
               <span className='sm-up'>{locale.name}</span>
             </Button>
@@ -230,7 +218,7 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
               aria-label='Theme'
               variant='text'
               onClick={handleTheme}
-              prefixIcon={<Icon>{isDark ? <LightTheme /> : <DarkTheme />}</Icon>}
+              prefixIcon={isDark ? <LightTheme /> : <DarkTheme />}
             />
           </Tooltip>
           <Tooltip content={locale.header.githubTooltip} placement='bottom' showDelay={1500}>
@@ -240,11 +228,7 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
               target='_black'
               href='https://github.com/xl-vision/xl-vision'
               rel='noopener'
-              prefixIcon={
-                <Icon>
-                  <GithubFilled />
-                </Icon>
-              }
+              prefixIcon={<GithubFilled />}
             />
           </Tooltip>
         </div>

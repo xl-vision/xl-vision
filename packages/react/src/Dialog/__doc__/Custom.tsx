@@ -1,20 +1,20 @@
 /* eslint-disable react/jsx-handler-names */
 import { CloseOutlined } from '@xl-vision/icons';
-import { Button, Dialog, Icon, styled } from '@xl-vision/react';
+import { Button, Dialog, styled } from '@xl-vision/react';
 import React from 'react';
 
 const CustomHeader = styled('div')(({ theme }) => {
-  const { typography, color } = theme;
+  const { typography, color, styleSize } = theme;
   return {
     position: 'relative',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    borderBottom: `1px solid ${color.divider}`,
+    borderBottom: `${styleSize.middle.border}px solid ${color.divider}`,
     margin: '-16px -24px',
     padding: '8px 8px 8px 24px',
     h6: {
-      ...typography.h6,
+      ...typography.h6.style,
       margin: 0,
       flex: 1,
     },
@@ -23,9 +23,9 @@ const CustomHeader = styled('div')(({ theme }) => {
 });
 
 const CustomFooter = styled('div')(({ theme }) => {
-  const { color } = theme;
+  const { color, styleSize } = theme;
   return {
-    borderTop: `1px solid ${color.divider}`,
+    borderTop: `${styleSize.middle.border}px solid ${color.divider}`,
     margin: -8,
     padding: 8,
   };
@@ -49,11 +49,7 @@ const Custom = () => {
         onClick={handleClose}
         className='close-btn'
         variant='text'
-        prefixIcon={
-          <Icon>
-            <CloseOutlined />
-          </Icon>
-        }
+        prefixIcon={<CloseOutlined />}
       />
     </CustomHeader>
   );

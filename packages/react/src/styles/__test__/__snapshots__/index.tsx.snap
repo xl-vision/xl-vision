@@ -13,12 +13,10 @@ exports[`styled test styled overrideStyles 1`] = `
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  -webkit-transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
 }
 
 <svg
-  class="c0 xl-icon"
+  class="xl-base-icon c0"
   viewBox="0 0 1024 1024"
 >
   <path
@@ -40,14 +38,10 @@ exports[`styled test styled overrideStyles 2`] = `
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  -webkit-transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  -webkit-transition: none;
-  transition: none;
 }
 
 <svg
-  class="c0 xl-icon"
+  class="xl-base-icon c0"
   viewBox="0 0 1024 1024"
 >
   <path

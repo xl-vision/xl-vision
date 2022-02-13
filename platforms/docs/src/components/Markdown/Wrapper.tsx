@@ -10,7 +10,7 @@ export type WrapperProps = {
 const Root = styled('main')(() => {
   return {
     minHeight: '100%',
-    padding: '0 16px',
+    margin: '0 16px',
   };
 });
 

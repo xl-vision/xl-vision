@@ -5,8 +5,8 @@ import innerStyled, {
   Interpolation,
   ShouldForwardProp,
 } from '@xl-vision/styled-engine';
-import React from 'react';
 import { env } from '@xl-vision/utils';
+import { ComponentProps, ComponentType } from 'react';
 import { Theme } from '../ThemeProvider/createTheme';
 import { Style } from '../ThemeProvider/overrideStyles';
 import applyTheme from './applyTheme';
@@ -26,7 +26,7 @@ const middleline = (str: string) => {
 };
 
 const styled = <
-  Tag extends keyof JSX.IntrinsicElements | React.ComponentType<React.ComponentProps<Tag>>,
+  Tag extends keyof JSX.IntrinsicElements | ComponentType<ComponentProps<Tag>>,
   ForwardedProps extends keyof ExtractProps<Tag> = keyof ExtractProps<Tag>,
 >(
   tag: Tag,

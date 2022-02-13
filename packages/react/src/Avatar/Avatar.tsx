@@ -7,12 +7,11 @@ import React from 'react';
 import useResize from '../hooks/useResizeObserver';
 import { styled } from '../styles';
 import AvatarContext from './AvatarContext';
-import { useTheme } from '../ThemeProvider';
+import { ComponentSize, useTheme } from '../ThemeProvider';
 
 export type AvatarShape = 'circle' | 'square' | 'round';
 
-export type AvatarSizeType = 'small' | 'default' | 'large';
-export type AvatarSize = AvatarSizeType | number;
+export type AvatarSize = ComponentSize | number;
 
 export type AvatarProps = React.HTMLAttributes<HTMLSpanElement> & {
   icon?: React.ReactElement<React.SVGAttributes<SVGSVGElement>>;
@@ -30,9 +29,9 @@ const displayName = 'Avatar';
 const AvatarRoot = styled('span', {
   name: displayName,
   slot: 'Root',
-})<{ shape: AvatarShape; size?: AvatarSizeType; isImage: boolean }>(({ theme, styleProps }) => {
+})<{ shape: AvatarShape; size?: ComponentSize; isImage: boolean }>(({ theme, styleProps }) => {
   const { shape: shapeType, size, isImage } = styleProps;
-  const { color, shape } = theme;
+  const { color, styleSize } = theme;
   const style: CSSObject = {
     position: 'relative',
     display: 'inline-flex',
@@ -61,13 +60,12 @@ const AvatarRoot = styled('span', {
   if (shapeType === 'circle') {
     style.borderRadius = '50%';
   } else if (shapeType === 'round') {
-    style.borderRadius = shape.borderRadius.md;
+    style.borderRadius = styleSize[size || 'middle'].borderRadius;
   }
 
   if (size) {
-    const sizeNumber = size === 'large' ? 40 : size === 'default' ? 32 : 24;
-    style.width = sizeNumber;
-    style.height = sizeNumber;
+    const themeSize = styleSize[size];
+    style.width = style.height = 32 * themeSize.fontSize;
   }
 
   return style;
@@ -76,24 +74,24 @@ const AvatarRoot = styled('span', {
 const AvatarInner = styled('span', {
   name: displayName,
   slot: 'Inner',
-})(({ theme }) => {
-  const { typography } = theme;
+})(() => {
   return {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    fontSize: typography.baseFontSize,
+    fontSize: '1rem',
   };
 });
 
 const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
   const { size: contextSize, shape: contextShape } = React.useContext(AvatarContext);
+  const { clsPrefix, componentSize } = useTheme();
 
   const {
     children,
     icon,
     shape = contextShape || 'circle',
-    size = contextSize || 'default',
+    size = contextSize || componentSize,
     src,
     srcSet,
     alt,
@@ -103,8 +101,6 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
     style,
     ...others
   } = props;
-
-  const { clsPrefix } = useTheme();
 
   const nodeRef = React.useRef<HTMLSpanElement>(null);
   const forkRef = useForkRef(nodeRef, ref);
@@ -160,10 +156,10 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
 
   const rootClasses = clsx(
     rootClassName,
-    `${rootClassName}--${shape}`,
+    `${rootClassName}--shape-${shape}`,
     {
-      [`${rootClassName}--${size}`]: typeof size === 'string',
-      [`${rootClassName}--isImage`]: isImage,
+      [`${rootClassName}--size-${size}`]: typeof size === 'string' && size,
+      [`${rootClassName}--has-image`]: isImage,
     },
     className,
   );
@@ -197,7 +193,7 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
   }, [size]);
 
   const rootSize = React.useMemo(() => {
-    return (typeof size === 'string' && size) as AvatarSizeType;
+    return (typeof size === 'string' && size) as ComponentSize;
   }, [size]);
 
   return (
@@ -228,7 +224,7 @@ if (!env.isProduction) {
     shape: PropTypes.oneOf<AvatarShape>(['round', 'circle', 'square']),
     size: PropTypes.oneOfType([
       PropTypes.number,
-      PropTypes.oneOf<AvatarSizeType>(['small', 'default', 'large']),
+      PropTypes.oneOf<ComponentSize>(['small', 'middle', 'large']),
     ]),
     src: PropTypes.node,
     srcSet: PropTypes.string,

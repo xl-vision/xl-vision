@@ -1,12 +1,8 @@
 import React from 'react';
-import { Button, Icon, styled } from '@xl-vision/react';
+import { Button, styled } from '@xl-vision/react';
 import { LockFilled } from '@xl-vision/icons';
 
-const IconWrapper = (
-  <Icon>
-    <LockFilled />
-  </Icon>
-);
+const IconWrapper = <LockFilled />;
 
 const Wrapper = styled('div')(() => {
   return {

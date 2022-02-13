@@ -1,12 +1,5 @@
 import React from 'react';
-import { Button, Icon, styled } from '@xl-vision/react';
-import { SearchOutlined } from '@xl-vision/icons';
-
-const IconWrapper = (
-  <Icon>
-    <SearchOutlined />
-  </Icon>
-);
+import { Button, styled } from '@xl-vision/react';
 
 const Wrapper = styled('div')(() => {
   return {
@@ -21,55 +14,48 @@ const Basic = () => {
   return (
     <div>
       <Wrapper>
-        <Button>button</Button>
-        <Button color='primary'>button</Button>
-        <Button color='secondary'>button</Button>
-        <Button color='error'>button</Button>
-        <Button round={true} color='warning'>
-          button
-        </Button>
-        <Button color='primary' prefixIcon={IconWrapper}>
-          button
-        </Button>
-        <Button color='primary' prefixIcon={IconWrapper} round={true} />
+        <Button>default</Button>
+        <Button color='primary'>primary</Button>
+        <Button color='secondary'>secondary</Button>
+        <Button color='info'>info</Button>
+        <Button color='error'>error</Button>
+        <Button color='warning'>warning</Button>
       </Wrapper>
       <Wrapper>
-        <Button variant='text'>button</Button>
+        <Button variant='text'>default</Button>
         <Button variant='text' color='primary'>
-          button
+          primary
         </Button>
         <Button variant='text' color='secondary'>
-          button
+          secondary
+        </Button>
+        <Button variant='text' color='info'>
+          info
         </Button>
         <Button variant='text' color='error'>
-          button
+          error
         </Button>
-        <Button round={true} variant='text' color='warning'>
-          button
+        <Button variant='text' color='warning'>
+          warning
         </Button>
-        <Button variant='text' color='primary' prefixIcon={IconWrapper}>
-          button
-        </Button>
-        <Button color='primary' prefixIcon={IconWrapper} round={true} />
       </Wrapper>
       <Wrapper>
-        <Button variant='outlined'>button</Button>
+        <Button variant='outlined'>default</Button>
         <Button variant='outlined' color='primary'>
-          button
+          primary
         </Button>
         <Button variant='outlined' color='secondary'>
-          button
+          secondary
+        </Button>
+        <Button variant='outlined' color='info'>
+          info
         </Button>
         <Button variant='outlined' color='error'>
-          button
+          error
         </Button>
-        <Button round={true} variant='outlined' color='warning'>
-          button
+        <Button variant='outlined' color='warning'>
+          warning
         </Button>
-        <Button variant='outlined' color='primary' prefixIcon={IconWrapper}>
-          button
-        </Button>
-        <Button color='primary' prefixIcon={IconWrapper} round={true} />
       </Wrapper>
     </div>
   );

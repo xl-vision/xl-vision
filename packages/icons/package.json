@@ -33,6 +33,7 @@
     "url": "https://github.com/xl-vision/xl-vision/issues"
   },
   "dependencies": {
+    "@xl-vision/styled-engine": "workspace:^",
     "@xl-vision/utils": "workspace:^",
     "clsx": "^1.1.1",
     "prop-types": "^15.8.1"

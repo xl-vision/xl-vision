@@ -45,19 +45,52 @@ const createTypography = (typography: Typography = {}) => {
       fontFamily,
     };
   };
-  const h1 = buildStyle(96, 1.167, 'light', -1.5);
-  const h2 = buildStyle(60, 1.2, 'light', -0.5);
-  const h3 = buildStyle(48, 1.167, 'regular', 0);
-  const h4 = buildStyle(34, 1.235, 'regular', 0.25);
-  const h5 = buildStyle(24, 1.334, 'regular', 0);
-  const h6 = buildStyle(20, 1.6, 'medium', 0.25);
-  const subtitle1 = buildStyle(16, 1.75, 'regular', 0.15);
-  const subtitle2 = buildStyle(14, 1.57, 'medium', 0.1);
-  const body1 = buildStyle(16, 1.5, 'regular', 0.5);
-  const body2 = buildStyle(14, 1.3, 'regular', 0.25);
-  const caption = buildStyle(12, 1.66, 'regular', 0.4);
-  const button = buildStyle(14, 1.75, 'medium', 1.25, 'none', 'uppercase');
-  const overline = buildStyle(12, 2.66, 'medium', 2, 'none', 'uppercase');
+
+  const buildStyleInfo = (
+    size: number,
+    lineHeight: number,
+    fontWeightKey: FontWeightKey,
+    letterSpacing: number,
+    textDecoration: CSSProperties['textDecoration'] = 'inherit',
+    textTransform: CSSProperties['textTransform'] = 'inherit',
+  ) => {
+    const info = {
+      size,
+      lineHeight,
+      fontWeightKey,
+      letterSpacing,
+      textDecoration,
+      textTransform,
+    };
+
+    const style = buildStyle(
+      size,
+      lineHeight,
+      fontWeightKey,
+      letterSpacing,
+      textDecoration,
+      textTransform,
+    );
+
+    return {
+      info,
+      style,
+    };
+  };
+
+  const h1 = buildStyleInfo(96, 1.167, 'light', -1.5);
+  const h2 = buildStyleInfo(60, 1.2, 'light', -0.5);
+  const h3 = buildStyleInfo(48, 1.167, 'regular', 0);
+  const h4 = buildStyleInfo(34, 1.235, 'regular', 0.25);
+  const h5 = buildStyleInfo(24, 1.334, 'regular', 0);
+  const h6 = buildStyleInfo(20, 1.6, 'medium', 0.25);
+  const subtitle1 = buildStyleInfo(16, 1.75, 'regular', 0.15);
+  const subtitle2 = buildStyleInfo(14, 1.57, 'medium', 0.1);
+  const body1 = buildStyleInfo(16, 1.5, 'regular', 0.5);
+  const body2 = buildStyleInfo(14, 1.3, 'regular', 0.25);
+  const caption = buildStyleInfo(12, 1.66, 'regular', 0.4);
+  const button = buildStyleInfo(14, 1.75, 'medium', 1.25, 'none', 'uppercase');
+  const overline = buildStyleInfo(12, 2.66, 'medium', 2, 'none', 'uppercase');
 
   return {
     baseFontSize,

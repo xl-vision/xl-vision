@@ -1,5 +1,4 @@
 import { styled } from '@xl-vision/react';
-import { emphasize } from '@xl-vision/react/utils/color';
 
 const InlineCode = styled('code')(
   ({ theme }) => `
@@ -8,7 +7,7 @@ const InlineCode = styled('code')(
   padding: 0.1em 0.4em;
   font-size: 0.8em;
   font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
-  background-color: ${emphasize(theme.color.background.paper, 0.18)};
+  background-color: ${theme.color.emphasize(theme.color.background.paper, 0.18)};
   border-radius: 3px;
 `,
 );

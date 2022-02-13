@@ -1,6 +1,6 @@
 /* eslint-disable no-return-assign */
+import { ConfigProvider } from '@xl-vision/react';
 import { locales } from '@xl-vision/react/locale';
-import LocalizationProvider from '@xl-vision/react/LocalizationProvider';
 import { mount } from 'enzyme';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
@@ -200,13 +200,13 @@ describe('DialogHooks', () => {
   it('test context update', () => {
     let dialogRef!: ReturnType<typeof useDialog>[0];
     const wrapper = mount(
-      <LocalizationProvider language='en-US'>
+      <ConfigProvider language='en-US'>
         <Demo
           ref={(it) => {
             return (dialogRef = it!);
           }}
         />
-      </LocalizationProvider>,
+      </ConfigProvider>,
     );
 
     expect(dialogRef).not.toBe(null);

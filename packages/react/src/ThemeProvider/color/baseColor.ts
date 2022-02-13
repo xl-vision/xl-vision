@@ -41,7 +41,7 @@ export const light: BaseColor = {
   divider: 'rgba(0, 0, 0, 0.12)',
   action: {
     enabled: 0,
-    hover: 0.04,
+    hover: 0.08,
     focus: 0.12,
     selected: 0.08,
     active: 0.12,
@@ -53,7 +53,7 @@ export const light: BaseColor = {
 
 export const dark: BaseColor = {
   background: {
-    paper: grey[800],
+    paper: grey[900],
     default: '#303030',
   },
   text: {

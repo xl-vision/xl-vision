@@ -23,6 +23,19 @@ export type Transition = Partial<{
   durations: typeof defaultDurations;
 }>;
 
+const genTransition = (
+  name: keyof React.CSSProperties | Array<keyof React.CSSProperties>,
+  duration: string,
+  func: string,
+  delay: string = '',
+) => {
+  const names = Array.isArray(name) ? name : [name];
+  return names
+    .map((it) => it.replace(/\B([A-Z])/g, (letter) => `-${letter.toLowerCase()}`))
+    .map((it) => `${it} ${duration} ${delay} ${func}`)
+    .join(',');
+};
+
 const createTransition = (transition: Transition = {}) => {
   const { functions = defaultFunctions, durations = defaultDurations } = transition;
 
@@ -30,41 +43,25 @@ const createTransition = (transition: Transition = {}) => {
     name: keyof React.CSSProperties | Array<keyof React.CSSProperties>,
     duration = durations.standard,
     delay = '0ms',
-  ) => {
-    if (Array.isArray(name)) {
-      return name.map((it) => `${it} ${duration} ${delay} ${functions.standard}`).join(',');
-    }
-    return `${name} ${duration} ${delay} ${functions.standard}`;
-  };
+  ) => genTransition(name, duration, functions.standard, delay);
 
-  const enter = (name: string | Array<string>, duration = durations.enter, delay = '0ms') => {
-    if (Array.isArray(name)) {
-      return name.map((it) => `${it} ${duration} ${delay} ${functions.deceleration}`).join(',');
-    }
-    return `${name} ${duration} ${delay} ${functions.deceleration} `;
-  };
+  const enter = (
+    name: keyof React.CSSProperties | Array<keyof React.CSSProperties>,
+    duration = durations.enter,
+    delay = '0ms',
+  ) => genTransition(name, duration, functions.deceleration, delay);
 
   const leavePermanent = (
     name: keyof React.CSSProperties | Array<keyof React.CSSProperties>,
     duration = durations.leave,
     delay = '0ms',
-  ) => {
-    if (Array.isArray(name)) {
-      return name.map((it) => `${it} ${duration} ${delay} ${functions.acceleration}`).join(',');
-    }
-    return `${name} ${duration} ${delay} ${functions.acceleration} `;
-  };
+  ) => genTransition(name, duration, functions.acceleration, delay);
 
   const leaveTemporary = (
     name: keyof React.CSSProperties | Array<keyof React.CSSProperties>,
     duration = durations.leave,
     delay = '0ms',
-  ) => {
-    if (Array.isArray(name)) {
-      return name.map((it) => `${it} ${duration} ${delay} ${functions.sharp}`).join(',');
-    }
-    return `${name} ${duration} ${delay} ${functions.sharp} `;
-  };
+  ) => genTransition(name, duration, functions.sharp, delay);
 
   const fadeIn = (className: string, duration = defaultDurations.enter): CSSObject => {
     return {

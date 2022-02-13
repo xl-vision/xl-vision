@@ -8,7 +8,7 @@ import ThemeContext from '../ThemeProvider/ThemeContext';
 import { styled } from '../styles';
 import Button, { ButtonProps } from '../Button';
 import usePropChange from '../hooks/usePropChange';
-import { useLocale } from '../LocalizationProvider';
+import { useConfig } from '../ConfigProvider';
 import { noop } from '../utils/function';
 
 export type DialogButtonProps = Omit<ButtonProps, 'children' | 'onClick'>;
@@ -32,10 +32,10 @@ const DialogRoot = styled(Modal, {
   name: displayName,
   slot: 'Root',
 })(({ theme }) => {
-  const { color, elevations, shape } = theme;
+  const { color, elevations, styleSize } = theme;
   return {
     backgroundColor: color.background.paper,
-    borderRadius: shape.borderRadius.md,
+    borderRadius: styleSize.middle.borderRadius,
     maxWidth: 560,
     margin: 32,
     maxHeight: 'calc(100% - 64px)',
@@ -54,7 +54,7 @@ const DialogHeader = styled('div', {
     color: color.text.primary,
     padding: '16px 24px',
     [`.${clsPrefix}-dialog__title`]: {
-      ...typography.h6,
+      ...typography.h6.style,
       margin: 0,
     },
   };
@@ -71,7 +71,7 @@ const DialogContent = styled('div', {
     overflowY: 'auto',
     flex: 1,
     color: color.text.secondary,
-    ...typography.body1,
+    ...typography.body1.style,
   };
 });
 
@@ -100,7 +100,7 @@ const DialogActions = styled('div', {
 let uuid = 0;
 
 const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
-  const { locale } = useLocale();
+  const { locale } = useConfig();
 
   const {
     children,

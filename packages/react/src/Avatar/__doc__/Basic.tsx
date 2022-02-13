@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar, Icon, styled } from '@xl-vision/react';
+import { Avatar, styled } from '@xl-vision/react';
 import { UserOutlined } from '@xl-vision/icons';
 
 const Wrapper = styled('div')(() => {
@@ -14,111 +14,22 @@ const Basic = () => {
   return (
     <>
       <Wrapper>
-        <Avatar
-          size={64}
-          icon={
-            <Icon>
-              <UserOutlined />
-            </Icon>
-          }
-        />
-        <Avatar
-          size='large'
-          icon={
-            <Icon>
-              <UserOutlined />
-            </Icon>
-          }
-        />
-        <Avatar
-          icon={
-            <Icon>
-              <UserOutlined />
-            </Icon>
-          }
-        />
-        <Avatar
-          size='small'
-          icon={
-            <Icon>
-              <UserOutlined />
-            </Icon>
-          }
-        />
+        <Avatar size={64} icon={<UserOutlined />} />
+        <Avatar size='large' icon={<UserOutlined />} />
+        <Avatar size='middle' icon={<UserOutlined />} />
+        <Avatar size='small' icon={<UserOutlined />} />
       </Wrapper>
       <Wrapper>
-        <Avatar
-          size={64}
-          shape='round'
-          icon={
-            <Icon>
-              <UserOutlined />
-            </Icon>
-          }
-        />
-        <Avatar
-          size='large'
-          shape='round'
-          icon={
-            <Icon>
-              <UserOutlined />
-            </Icon>
-          }
-        />
-        <Avatar
-          shape='round'
-          icon={
-            <Icon>
-              <UserOutlined />
-            </Icon>
-          }
-        />
-        <Avatar
-          shape='round'
-          size='small'
-          icon={
-            <Icon>
-              <UserOutlined />
-            </Icon>
-          }
-        />
+        <Avatar size={64} shape='round' icon={<UserOutlined />} />
+        <Avatar size='large' shape='round' icon={<UserOutlined />} />
+        <Avatar size='middle' shape='round' icon={<UserOutlined />} />
+        <Avatar size='small' shape='round' icon={<UserOutlined />} />
       </Wrapper>
       <Wrapper>
-        <Avatar
-          shape='square'
-          size={64}
-          icon={
-            <Icon>
-              <UserOutlined />
-            </Icon>
-          }
-        />
-        <Avatar
-          shape='square'
-          size='large'
-          icon={
-            <Icon>
-              <UserOutlined />
-            </Icon>
-          }
-        />
-        <Avatar
-          shape='square'
-          icon={
-            <Icon>
-              <UserOutlined />
-            </Icon>
-          }
-        />
-        <Avatar
-          shape='square'
-          size='small'
-          icon={
-            <Icon>
-              <UserOutlined />
-            </Icon>
-          }
-        />
+        <Avatar size={64} shape='square' icon={<UserOutlined />} />
+        <Avatar size='large' shape='square' icon={<UserOutlined />} />
+        <Avatar size='middle' shape='square' icon={<UserOutlined />} />
+        <Avatar size='small' shape='square' icon={<UserOutlined />} />
       </Wrapper>
     </>
   );
