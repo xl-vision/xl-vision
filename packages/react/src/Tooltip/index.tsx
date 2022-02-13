@@ -57,7 +57,7 @@ const TooltipPopup = styled('div', {
   const { color, typography, styleSize } = theme;
   const { hasWidth, touch } = styleProps;
 
-  const bgColor = color.modes.dark.background.paper;
+  const bgColor = color.emphasize(color.modes.dark.background.paper, 0.1);
 
   return {
     backgroundColor: bgColor,
