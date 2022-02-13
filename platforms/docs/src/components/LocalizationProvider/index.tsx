@@ -1,5 +1,5 @@
 import React from 'react';
-import { LocalizationProvider as XlLocalizationProvider } from '@xl-vision/react';
+import { ConfigProvider } from '@xl-vision/react';
 import { env } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import warning from '@xl-vision/react/utils/warning';
@@ -51,7 +51,7 @@ const LocalizationProvider: React.FunctionComponent<LocalizationProviderProps> =
 
   return (
     <LocalizationContext.Provider value={ctx}>
-      <XlLocalizationProvider language={language}>{children}</XlLocalizationProvider>
+      <ConfigProvider language={language}>{children}</ConfigProvider>
     </LocalizationContext.Provider>
   );
 };

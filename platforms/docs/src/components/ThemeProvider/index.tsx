@@ -34,7 +34,7 @@ const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = (props) => {
     const fn = typeof dark === 'function' ? dark : () => dark;
     setDark((prev) => {
       const result = fn(prev);
-      Cookies.set(KEY, result ? 'dark' : 'light', { expires: 30 });
+      Cookies.set(KEY, result ? 'dark' : 'light', { expires: 30, sameSite: 'strict' });
       return result;
     });
   }, []);

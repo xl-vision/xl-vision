@@ -23,7 +23,7 @@ module.exports = async function localeLoader() {
   const dir = path.dirname(filePath);
 
   try {
-    const imports = [`import Docs from '${docsPath}'`];
+    const imports = [`import Docs from '${docsPath}'`, `import dynamic from 'next/dynamic'`];
 
     this.addDependency(docsPath);
 
@@ -48,7 +48,7 @@ module.exports = async function localeLoader() {
       })
       .forEach((it) => {
         const contentName = `Locale_${it.parts[1].replace(/-/g, '_')}`;
-        imports.push(`import ${contentName} from './${it.fileName}'`);
+        imports.push(`const ${contentName} = dynamic(() => import('./${it.fileName}'))`);
         locales.push(`'${it.parts[1]}': ${contentName}`);
         if (it.fileName !== fileName) {
           this.addDependency(path.join(dir, it.fileName));

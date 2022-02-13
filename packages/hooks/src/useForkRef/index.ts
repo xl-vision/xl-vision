@@ -1,7 +1,7 @@
-import React from 'react';
+import { Ref, useMemo } from 'react';
 
-const useForkRef = <T>(...refs: Array<React.Ref<T>>): React.Ref<T> => {
-  return React.useMemo(() => {
+const useForkRef = <T>(...refs: Array<Ref<T>>): Ref<T> => {
+  return useMemo(() => {
     return (value: T | null) => {
       refs.forEach((it) => {
         setRef(it, value);
@@ -11,7 +11,7 @@ const useForkRef = <T>(...refs: Array<React.Ref<T>>): React.Ref<T> => {
   }, refs);
 };
 
-const setRef = <T>(ref: React.Ref<T>, value: T | null) => {
+const setRef = <T>(ref: Ref<T>, value: T | null) => {
   if (typeof ref === 'function') {
     ref(value);
   } else if (ref) {

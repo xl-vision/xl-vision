@@ -36,12 +36,12 @@ const DropdownPopup = styled('ul', {
   name: displayName,
   slot: 'Popup',
 })(({ theme }) => {
-  const { color, elevations, shape } = theme;
+  const { color, elevations, styleSize } = theme;
 
   return {
     backgroundColor: color.background.paper,
     color: color.text.primary,
-    borderRadius: shape.borderRadius.md,
+    borderRadius: styleSize.middle.borderRadius,
     padding: '5px 0',
     listStyle: 'none',
     margin: 0,
@@ -70,16 +70,7 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) =>
 
   const submenuCloseHandlersRef = React.useRef<Array<() => void>>([]);
 
-  const [visible, setVisible] = usePropChange(
-    defaultVisible,
-    visibleProp,
-    onVisibleChange,
-    (newVisibleProp) => {
-      if (!newVisibleProp) {
-        submenuCloseHandlersRef.current.forEach((it) => it());
-      }
-    },
-  );
+  const [visible, setVisible] = usePropChange(defaultVisible, visibleProp, onVisibleChange);
 
   const setVisibleWrapper = useConstantFn((newVisible: boolean) => {
     if (!newVisible) {
@@ -87,6 +78,12 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) =>
     }
     setVisible(newVisible);
   });
+
+  React.useEffect(() => {
+    if (!visible) {
+      submenuCloseHandlersRef.current.forEach((it) => it());
+    }
+  }, [visible]);
 
   const rootClassName = `${clsPrefix}-dropdown`;
 

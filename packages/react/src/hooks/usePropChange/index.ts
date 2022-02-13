@@ -1,40 +1,25 @@
-import React from 'react';
 import { useConstantFn } from '@xl-vision/hooks';
+import { useState } from 'react';
 
 const usePropChange = <T>(
   defaultProp: T,
   prop: T | undefined,
   onChange: ((prop: T) => void) | undefined,
-  prePropChangeHandler?: (prop: T) => void,
 ) => {
-  const [value, setValue] = React.useState<T>(() => {
-    if (prop !== undefined) {
-      return prop;
-    }
-    return defaultProp;
-  });
+  const [value, setValue] = useState<T>(defaultProp);
+
+  const hasProp = typeof prop !== 'undefined';
 
   const handleChange = useConstantFn((newValue: T) => {
-    if (prop === undefined) {
+    if (!hasProp) {
       setValue(newValue);
     }
-    if (newValue !== value) {
-      onChange?.(newValue);
-    }
+    onChange?.(newValue);
   });
 
-  const prePropChangeHandlerWrapper = useConstantFn((_prop: T) => {
-    prePropChangeHandler?.(_prop);
-    setValue(_prop);
-  });
+  const actualValue = hasProp ? prop : value;
 
-  React.useEffect(() => {
-    if (prop !== undefined) {
-      prePropChangeHandlerWrapper(prop);
-    }
-  }, [prop, prePropChangeHandlerWrapper]);
-
-  return [value, handleChange] as const;
+  return [actualValue, handleChange] as const;
 };
 
 export default usePropChange;

@@ -1,6 +1,6 @@
-import React from 'react';
 import ROP from 'resize-observer-polyfill';
 import { useConstantFn } from '@xl-vision/hooks';
+import { RefCallback, useCallback, useEffect, useRef } from 'react';
 
 export type ResizeObserverHandler<T extends HTMLElement> = (
   state: { width: number; height: number },
@@ -8,10 +8,10 @@ export type ResizeObserverHandler<T extends HTMLElement> = (
 ) => void;
 
 const useResizeObserver = <T extends HTMLElement>(onResizeObserver: ResizeObserverHandler<T>) => {
-  const resizeObserverRef = React.useRef<ResizeObserver>();
-  const prevElementRef = React.useRef<T | null>();
-  const widthRef = React.useRef<number>();
-  const heightRef = React.useRef<number>();
+  const resizeObserverRef = useRef<ResizeObserver>();
+  const prevElementRef = useRef<T | null>();
+  const widthRef = useRef<number>();
+  const heightRef = useRef<number>();
 
   const handleResizeObserver: ResizeObserverCallback = useConstantFn(
     (entries: Array<ResizeObserverEntry>) => {
@@ -39,7 +39,7 @@ const useResizeObserver = <T extends HTMLElement>(onResizeObserver: ResizeObserv
     },
   );
 
-  const refCallback: React.RefCallback<T> = React.useCallback(
+  const refCallback: RefCallback<T> = useCallback(
     (el) => {
       if (prevElementRef.current === el) {
         return;
@@ -62,7 +62,7 @@ const useResizeObserver = <T extends HTMLElement>(onResizeObserver: ResizeObserv
     [handleResizeObserver],
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     return () => {
       resizeObserverRef.current?.disconnect();
     };

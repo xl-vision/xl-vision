@@ -1,6 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DialogMethod test confirm 1`] = `
+.c5 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentcolor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
 .c0 {
   position: relative;
   outline: 0;
@@ -121,22 +135,6 @@ exports[`DialogMethod test confirm 1`] = `
   height: 100%;
 }
 
-.c5 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  width: 1em;
-  height: 1em;
-  display: inline-block;
-  fill: currentcolor;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-}
-
 .c12 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
@@ -154,16 +152,16 @@ exports[`DialogMethod test confirm 1`] = `
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
-  color: #3f51b5;
-  padding: 6px 16px;
+  color: #2196f3;
+  padding: 6px 12px;
 }
 
 .c12:hover {
-  background-color: rgba(63,81,181,0.04);
+  background-color: rgba(33,150,243,0.08);
 }
 
 .c12:focus {
-  background-color: rgba(63,81,181,0.12);
+  background-color: rgba(33,150,243,0.12);
 }
 
 .c1 {
@@ -294,8 +292,8 @@ exports[`DialogMethod test confirm 1`] = `
         class="c4 xl-message-dialog__icon"
       >
         <svg
-          class="c5 xl-icon"
-          style="color: rgb(63, 81, 181);"
+          class="xl-base-icon c5"
+          style="color: rgb(33, 150, 243);"
           viewBox="0 0 1024 1024"
         >
           <path
@@ -366,6 +364,20 @@ exports[`DialogMethod test confirm 1`] = `
 `;
 
 exports[`DialogMethod test error 1`] = `
+.c5 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentcolor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
 .c0 {
   position: relative;
   outline: 0;
@@ -486,22 +498,6 @@ exports[`DialogMethod test error 1`] = `
   height: 100%;
 }
 
-.c5 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  width: 1em;
-  height: 1em;
-  display: inline-block;
-  fill: currentcolor;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-}
-
 .c12 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
@@ -519,16 +515,16 @@ exports[`DialogMethod test error 1`] = `
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
-  color: #3f51b5;
-  padding: 6px 16px;
+  color: #2196f3;
+  padding: 6px 12px;
 }
 
 .c12:hover {
-  background-color: rgba(63,81,181,0.04);
+  background-color: rgba(33,150,243,0.08);
 }
 
 .c12:focus {
-  background-color: rgba(63,81,181,0.12);
+  background-color: rgba(33,150,243,0.12);
 }
 
 .c1 {
@@ -659,8 +655,8 @@ exports[`DialogMethod test error 1`] = `
         class="c4 xl-message-dialog__icon"
       >
         <svg
-          class="c5 xl-icon"
-          style="color: rgb(244, 67, 54);"
+          class="xl-base-icon c5"
+          style="color: rgb(239, 83, 80);"
           viewBox="0 0 1024 1024"
         >
           <path
@@ -715,6 +711,20 @@ exports[`DialogMethod test error 1`] = `
 `;
 
 exports[`DialogMethod test info 1`] = `
+.c5 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentcolor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
 .c0 {
   position: relative;
   outline: 0;
@@ -835,22 +845,6 @@ exports[`DialogMethod test info 1`] = `
   height: 100%;
 }
 
-.c5 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  width: 1em;
-  height: 1em;
-  display: inline-block;
-  fill: currentcolor;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-}
-
 .c12 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
@@ -868,16 +862,16 @@ exports[`DialogMethod test info 1`] = `
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
-  color: #3f51b5;
-  padding: 6px 16px;
+  color: #2196f3;
+  padding: 6px 12px;
 }
 
 .c12:hover {
-  background-color: rgba(63,81,181,0.04);
+  background-color: rgba(33,150,243,0.08);
 }
 
 .c12:focus {
-  background-color: rgba(63,81,181,0.12);
+  background-color: rgba(33,150,243,0.12);
 }
 
 .c1 {
@@ -1008,8 +1002,8 @@ exports[`DialogMethod test info 1`] = `
         class="c4 xl-message-dialog__icon"
       >
         <svg
-          class="c5 xl-icon"
-          style="color: rgb(33, 150, 243);"
+          class="xl-base-icon c5"
+          style="color: rgb(96, 125, 139);"
           viewBox="0 0 1024 1024"
         >
           <path
@@ -1201,16 +1195,16 @@ exports[`DialogMethod test method 1`] = `
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
-  color: #3f51b5;
-  padding: 6px 16px;
+  color: #2196f3;
+  padding: 6px 12px;
 }
 
 .c9:hover {
-  background-color: rgba(63,81,181,0.04);
+  background-color: rgba(33,150,243,0.08);
 }
 
 .c9:focus {
-  background-color: rgba(63,81,181,0.12);
+  background-color: rgba(33,150,243,0.12);
 }
 
 .c1 {
@@ -1385,6 +1379,20 @@ exports[`DialogMethod test method 1`] = `
 `;
 
 exports[`DialogMethod test success 1`] = `
+.c5 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentcolor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
 .c0 {
   position: relative;
   outline: 0;
@@ -1505,22 +1513,6 @@ exports[`DialogMethod test success 1`] = `
   height: 100%;
 }
 
-.c5 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  width: 1em;
-  height: 1em;
-  display: inline-block;
-  fill: currentcolor;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-}
-
 .c12 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
@@ -1538,16 +1530,16 @@ exports[`DialogMethod test success 1`] = `
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
-  color: #3f51b5;
-  padding: 6px 16px;
+  color: #2196f3;
+  padding: 6px 12px;
 }
 
 .c12:hover {
-  background-color: rgba(63,81,181,0.04);
+  background-color: rgba(33,150,243,0.08);
 }
 
 .c12:focus {
-  background-color: rgba(63,81,181,0.12);
+  background-color: rgba(33,150,243,0.12);
 }
 
 .c1 {
@@ -1678,8 +1670,8 @@ exports[`DialogMethod test success 1`] = `
         class="c4 xl-message-dialog__icon"
       >
         <svg
-          class="c5 xl-icon"
-          style="color: rgb(63, 81, 181);"
+          class="xl-base-icon c5"
+          style="color: rgb(33, 150, 243);"
           viewBox="0 0 1024 1024"
         >
           <path
@@ -1734,6 +1726,20 @@ exports[`DialogMethod test success 1`] = `
 `;
 
 exports[`DialogMethod test warning 1`] = `
+.c5 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentcolor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
 .c0 {
   position: relative;
   outline: 0;
@@ -1854,22 +1860,6 @@ exports[`DialogMethod test warning 1`] = `
   height: 100%;
 }
 
-.c5 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  width: 1em;
-  height: 1em;
-  display: inline-block;
-  fill: currentcolor;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  transition: fill 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-}
-
 .c12 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
@@ -1887,16 +1877,16 @@ exports[`DialogMethod test warning 1`] = `
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   background-color: transparent;
-  color: #3f51b5;
-  padding: 6px 16px;
+  color: #2196f3;
+  padding: 6px 12px;
 }
 
 .c12:hover {
-  background-color: rgba(63,81,181,0.04);
+  background-color: rgba(33,150,243,0.08);
 }
 
 .c12:focus {
-  background-color: rgba(63,81,181,0.12);
+  background-color: rgba(33,150,243,0.12);
 }
 
 .c1 {
@@ -2027,7 +2017,7 @@ exports[`DialogMethod test warning 1`] = `
         class="c4 xl-message-dialog__icon"
       >
         <svg
-          class="c5 xl-icon"
+          class="xl-base-icon c5"
           style="color: rgb(255, 152, 0);"
           viewBox="0 0 1024 1024"
         >

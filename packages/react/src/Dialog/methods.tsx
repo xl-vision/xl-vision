@@ -1,18 +1,15 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import { ThemeContext as StyledThemeContext } from '@xl-vision/styled-engine';
 import { env } from '@xl-vision/utils';
 import createMessageDialog, { MessageDialogType, MessageDialogProps } from './message';
 import { noop } from '../utils/function';
 import warningLog from '../utils/warning';
-import { Theme, ThemeContext } from '../ThemeProvider';
-import { LocalizationContext, LocalizationContextProps } from '../LocalizationProvider';
-import defaultTheme from '../ThemeProvider/defaultTheme';
-import { locales, defaultLanguage } from '../locale';
+import ThemeProvider, { ThemeProviderProps } from '../ThemeProvider';
+import ConfigProvider, { ConfigProviderProps } from '../ConfigProvider';
 
 export interface MessageDialogFunctionRenderProps extends MessageDialogProps, MessageDialogProps {
-  themeContext?: Theme;
-  localizationContext?: LocalizationContextProps;
+  themeProviderProps?: Omit<ThemeProviderProps, 'children'>;
+  configProviderProps?: Omit<ConfigProviderProps, 'children'>;
 }
 export interface MessageDialogFunctionProps
   extends Omit<MessageDialogFunctionRenderProps, 'visible' | 'defaultVisible'> {}
@@ -26,13 +23,6 @@ export type MessageDialogFunctionUpdate = (
 export type MessageDialogFunctionReturnType = {
   destroy: () => void;
   update: MessageDialogFunctionUpdate;
-};
-
-const defaultThemeContext: Theme = defaultTheme;
-
-const defaultLocalizationContext: LocalizationContextProps = {
-  locale: locales[defaultLanguage],
-  language: defaultLanguage,
 };
 
 const destroyFunctions: Array<() => void> = [];
@@ -72,17 +62,15 @@ const method = (
         `The dialog instance was destroyed, please do not update or destroy it again.`,
       );
     }
-    const { localizationContext, themeContext, ...others } = renderProps;
+    const { configProviderProps, themeProviderProps, ...others } = renderProps;
 
     setTimeout(() => {
       ReactDOM.render(
-        <LocalizationContext.Provider value={localizationContext || defaultLocalizationContext}>
-          <ThemeContext.Provider value={themeContext || defaultThemeContext}>
-            <StyledThemeContext.Provider value={themeContext || defaultThemeContext}>
-              <Dialog getContainer={null} {...others} />
-            </StyledThemeContext.Provider>
-          </ThemeContext.Provider>
-        </LocalizationContext.Provider>,
+        <ConfigProvider {...configProviderProps}>
+          <ThemeProvider {...themeProviderProps}>
+            <Dialog getContainer={null} {...others} />
+          </ThemeProvider>
+        </ConfigProvider>,
         div,
       );
     });

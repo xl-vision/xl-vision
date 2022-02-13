@@ -1,11 +1,11 @@
 import createColors, { Color } from './color';
 import createTransition, { Transition } from './transition';
 import createTypography, { Typography } from './typography';
-import mixins from './mixins';
+import createMixins from './mixins';
 import createElevations from './elevations';
 import createBreakpoints, { Breakpoints } from './breakpoints';
 import createOverrideStyles, { OverrideStyles } from './overrideStyles';
-import createShape, { Shape } from './shape';
+import createStyleSize, { ComponentSize, StyleSize } from './styleSize';
 
 export type BaseTheme = Partial<{
   color: Color;
@@ -14,12 +14,15 @@ export type BaseTheme = Partial<{
   breakpoints: Breakpoints;
   clsPrefix: string;
   overrideStyles: OverrideStyles;
-  shape: Shape;
+  styleSize: StyleSize;
+  componentSize: ComponentSize;
 }>;
+
+export type ThemeWithoutMixins = ReturnType<typeof createThemeWithoutMixins>;
 
 export type Theme = ReturnType<typeof createTheme>;
 
-const createTheme = (theme: BaseTheme = {}) => {
+const createThemeWithoutMixins = (theme: BaseTheme = {}) => {
   const {
     color,
     transition,
@@ -27,7 +30,8 @@ const createTheme = (theme: BaseTheme = {}) => {
     breakpoints,
     overrideStyles = {},
     clsPrefix = 'xl',
-    shape,
+    componentSize = 'middle',
+    styleSize,
   } = theme;
 
   const outputColor = createColors(color);
@@ -36,20 +40,31 @@ const createTheme = (theme: BaseTheme = {}) => {
   const outputBreakpoints = createBreakpoints(breakpoints);
   const outputOverrideStyles = createOverrideStyles(overrideStyles);
 
-  const outputShape = createShape(shape);
+  const outputStyleSize = createStyleSize(styleSize);
 
   const elevations = createElevations();
 
   return {
+    componentSize,
     color: outputColor,
     transition: outputTransition,
     typography: outputTypography,
     breakpoints: outputBreakpoints,
-    mixins,
     elevations,
     clsPrefix,
     overrideStyles: outputOverrideStyles,
-    shape: outputShape,
+    styleSize: outputStyleSize,
+  };
+};
+
+const createTheme = (theme: BaseTheme = {}) => {
+  const themeWithoutMixins = createThemeWithoutMixins(theme);
+
+  const mixins = createMixins(themeWithoutMixins);
+
+  return {
+    ...themeWithoutMixins,
+    mixins,
   };
 };
 

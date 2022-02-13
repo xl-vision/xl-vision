@@ -9,6 +9,7 @@ const LinkWrapper = styled('a')(
   transition: ${theme.transition.standard('all')};
   display: inline-block;
   padding: 0 3px;
+  cursor: pointer;
 `,
 );
 
@@ -18,7 +19,11 @@ const Link: React.FunctionComponent<React.AnchorHTMLAttributes<HTMLAnchorElement
   if (href) {
     if (/^ *\//.exec(href)) {
       // @ts-ignore
-      return <LinkWrapper {...others} href={href} as={NextLink} />;
+      return (
+        <NextLink href={href}>
+          <LinkWrapper {...others} />
+        </NextLink>
+      );
     }
   }
 

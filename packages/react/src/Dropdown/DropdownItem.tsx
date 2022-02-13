@@ -46,7 +46,7 @@ const DropdownItemButton = styled(BaseButton, {
     // 不设置会导致有间隙，原因未知
     width: '100%',
     textAlign: 'left',
-    ...typography.body2,
+    ...typography.body2.style,
   };
 
   if (disabled) {

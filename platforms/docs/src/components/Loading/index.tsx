@@ -1,4 +1,4 @@
-import { styled, Icon } from '@xl-vision/react';
+import { styled } from '@xl-vision/react';
 import React from 'react';
 import { LoadingOutlined } from '@xl-vision/icons';
 import { keyframes } from '@xl-vision/styled-engine';
@@ -23,7 +23,7 @@ const rotate = keyframes`
   }
 `;
 
-const IconWrapper = styled(Icon)`
+const Icon = styled(LoadingOutlined)`
   animation: ${rotate} 1s linear infinite;
   color: ${({ theme }) => theme.color.themes.primary.color};
   font-size: 48px;
@@ -32,9 +32,7 @@ const IconWrapper = styled(Icon)`
 const Loading: React.FunctionComponent<React.HTMLAttributes<HTMLDivElement>> = (props) => {
   return (
     <Root {...props}>
-      <IconWrapper>
-        <LoadingOutlined />
-      </IconWrapper>
+      <Icon />
     </Root>
   );
 };

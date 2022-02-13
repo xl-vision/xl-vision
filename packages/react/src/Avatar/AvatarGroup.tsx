@@ -2,11 +2,11 @@ import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { env } from '@xl-vision/utils';
-import Avatar, { AvatarProps, AvatarShape, AvatarSize, AvatarSizeType } from './Avatar';
+import Avatar, { AvatarProps, AvatarShape, AvatarSize } from './Avatar';
 import Popover from '../Popover';
 import { styled } from '../styles';
 import AvatarContext, { AvatarContextProps } from './AvatarContext';
-import { useTheme } from '../ThemeProvider';
+import { ComponentSize, useTheme } from '../ThemeProvider';
 
 export type AvatarGroupPopupPlacement = 'none' | 'top' | 'bottom';
 
@@ -25,10 +25,11 @@ const AvatarGroupRoot = styled('div', {
   name: displayName,
   slot: 'Root',
 })(({ theme }) => {
-  const { clsPrefix, color } = theme;
+  const { clsPrefix, color, styleSize } = theme;
+
   return {
     [`.${clsPrefix}-avatar`]: {
-      border: `1px solid ${color.background.paper}`,
+      border: `${styleSize.middle.border}px solid ${color.background.paper}`,
       '&:not(:first-child)': {
         marginLeft: -8,
       },
@@ -52,18 +53,18 @@ const AvatarPopup = styled(Popover, {
 });
 
 const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>((props, ref) => {
+  const { clsPrefix, componentSize } = useTheme();
+
   const {
     children,
     className,
     maxCount,
     popupPlacement = 'top',
-    size,
-    shape,
+    size = componentSize,
+    shape = 'circle',
     maxStyle,
     ...others
   } = props;
-
-  const { clsPrefix } = useTheme();
 
   const childArray = React.Children.map<React.ReactElement, React.ReactElement>(
     children,
@@ -103,12 +104,19 @@ const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>((props, r
     }
   }
 
-  const rootClasses = clsx(rootClassName, className);
+  const rootClasses = clsx(
+    rootClassName,
+    `${rootClassName}--shape-${shape}`,
+    {
+      [`${rootClassName}--size-${size}`]: typeof size === 'string' && size,
+    },
+    className,
+  );
 
-  const ctx = React.useMemo<AvatarContextProps>(() => ({ size, shape }), [size, shape]);
+  const contextValue = React.useMemo<AvatarContextProps>(() => ({ size, shape }), [size, shape]);
 
   return (
-    <AvatarContext.Provider value={ctx}>
+    <AvatarContext.Provider value={contextValue}>
       <AvatarGroupRoot {...others} className={rootClasses} ref={ref}>
         {showedChildren}
       </AvatarGroupRoot>
@@ -125,7 +133,7 @@ if (!env.isProduction) {
     popupPlacement: PropTypes.oneOf<AvatarGroupPopupPlacement>(['none', 'top', 'bottom']),
     size: PropTypes.oneOfType([
       PropTypes.number,
-      PropTypes.oneOf<AvatarSizeType>(['small', 'default', 'large']),
+      PropTypes.oneOf<ComponentSize>(['small', 'middle', 'large']),
     ]),
     shape: PropTypes.oneOf<AvatarShape>(['round', 'circle', 'square']),
     maxStyle: PropTypes.object,

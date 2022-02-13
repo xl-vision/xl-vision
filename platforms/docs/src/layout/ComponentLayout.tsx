@@ -45,9 +45,6 @@ const AsideWrapper = styled(Aside)(({ theme }) => {
   const { values, unit } = breakpoints;
 
   return {
-    // '@media(max-width: 768px)': {
-    //   borderBottom: `1px solid ${theme.color.divider}`,
-    // },
     width: '100%',
     backgroundColor: theme.color.background.paper,
 
@@ -56,7 +53,7 @@ const AsideWrapper = styled(Aside)(({ theme }) => {
       top: height,
       bottom: 0,
       width: asideWidth,
-      borderRight: `1px solid ${theme.color.divider}`,
+      borderRight: `${theme.styleSize.middle.border}px solid ${theme.color.divider}`,
       overflowY: 'hidden',
       ':hover': {
         overflowY: 'auto',
