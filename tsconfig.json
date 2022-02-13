@@ -15,6 +15,7 @@
     "skipLibCheck": true,
     "rootDir": ".",
     "paths": {
+      "csstype": ["./node_modules/csstype"],
       "react": ["./node_modules/@types/react", "./node_modules/react"],
       "react-dom": ["./node_modules/@types/react-dom", "./node_modules/react-dom"],
       "styled-components": [

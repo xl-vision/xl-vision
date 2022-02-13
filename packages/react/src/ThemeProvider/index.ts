@@ -1,6 +1,6 @@
 import ThemeProvider from './ThemeProvider';
 
-export { ComponentSize } from './styleSize';
+export type { ComponentSize } from './styleSize';
 export * from './ThemeProvider';
 export * from './createTheme';
 export default ThemeProvider;

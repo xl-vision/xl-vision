@@ -24,9 +24,11 @@
   "bugs": {
     "url": "https://github.com/xl-vision/xl-vision/issues"
   },
-  "peerDependencies": {
-    "@types/react": ">=16.8.0",
+  "dependencies": {
     "csstype": "^3.0.8"
+  },
+  "peerDependencies": {
+    "@types/react": ">=16.8.0"
   },
   "sideEffects": false,
   "publishConfig": {

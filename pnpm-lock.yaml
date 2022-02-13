@@ -166,7 +166,10 @@ importers:
       '@types/prop-types': 15.7.4
 
   packages/styled-engine-types:
-    specifiers: {}
+    specifiers:
+      csstype: ^3.0.8
+    dependencies:
+      csstype: 3.0.10
 
   packages/utils:
     specifiers: {}
@@ -4056,7 +4059,6 @@ packages:
 
   /csstype/3.0.10:
     resolution: {integrity: sha512-2u44ZG2OcNUO9HDp/Jl8C07x6pU/eTR3ncV91SiK3dhG9TWvRVsCoJw14Ckx5DgWkzGA3waZWO3d7pgqpUI/XA==}
-    dev: true
 
   /cz-conventional-changelog/3.2.0_@types+node@17.0.4:
     resolution: {integrity: sha512-yAYxeGpVi27hqIilG1nh4A9Bnx4J3Ov+eXy4koL3drrR+IO9GaWPsKjik20ht608Asqi8TQPf0mczhEeyAtMzg==}
