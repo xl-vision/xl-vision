@@ -16,20 +16,20 @@ const Basic = () => {
       <Wrapper>
         <Avatar size={64} icon={<UserOutlined />} />
         <Avatar size='large' icon={<UserOutlined />} />
-        <Avatar icon={<UserOutlined />} />
+        <Avatar size='middle' icon={<UserOutlined />} />
         <Avatar size='small' icon={<UserOutlined />} />
       </Wrapper>
       <Wrapper>
         <Avatar size={64} shape='round' icon={<UserOutlined />} />
         <Avatar size='large' shape='round' icon={<UserOutlined />} />
-        <Avatar shape='round' icon={<UserOutlined />} />
-        <Avatar shape='round' size='small' icon={<UserOutlined />} />
+        <Avatar size='middle' shape='round' icon={<UserOutlined />} />
+        <Avatar size='small' shape='round' icon={<UserOutlined />} />
       </Wrapper>
       <Wrapper>
-        <Avatar shape='square' size={64} icon={<UserOutlined />} />
-        <Avatar shape='square' size='large' icon={<UserOutlined />} />
-        <Avatar shape='square' icon={<UserOutlined />} />
-        <Avatar shape='square' size='small' icon={<UserOutlined />} />
+        <Avatar size={64} shape='square' icon={<UserOutlined />} />
+        <Avatar size='large' shape='square' icon={<UserOutlined />} />
+        <Avatar size='middle' shape='square' icon={<UserOutlined />} />
+        <Avatar size='small' shape='square' icon={<UserOutlined />} />
       </Wrapper>
     </>
   );

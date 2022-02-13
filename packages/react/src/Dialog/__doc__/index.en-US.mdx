@@ -95,16 +95,16 @@ In addition to the basic`Dialog.open`, it also includes
 
 The above are all functions, the parameter is object, and the specific attributes are as follows
 
-| Property            | Description  | Type            | Optional Value | Default | Require |
-| ------------------- | ------------ | --------------- | -------------- | ------- | ------- |
-| icon                | Icon         | React.ReactNode | -              | -       | false   |
-| content             | Content      | React.ReactNode | -              | -       | false   |
-| themeContext        | Theme        | object          | -              | -       | false   |
-| localizationContext | Localization | object          | -              | -       | false   |
+| Property            | Description   | Type            | Optional Value | Default | Require |
+| ------------------- | ------------- | --------------- | -------------- | ------- | ------- |
+| icon                | Icon          | React.ReactNode | -              | -       | false   |
+| content             | Content       | React.ReactNode | -              | -       | false   |
+| themeProviderProps  | Theme         | object          | -              | -       | false   |
+| configProviderProps | Global Config | object          | -              | -       | false   |
 
 > `Dialog.open` inherits most of the parameters of `Dialog`, except for `visible` and `defaultVisile`, where `children` is renamed to `content`.
 
-> If you want to modify the theme and internationalization information of the dialog box created by `Dialog.open`, you need to pass in `themeContext` and `localizationContext`, otherwise the system default theme and internationalization information will be used.
+> If you want to modify the theme and internationalization information of the dialog box created by `Dialog.open`, you need to pass in `themeProviderProps` and `configProviderProps`, otherwise the system default theme and internationalization information will be used.
 
 > When the dialog box is closed, it will be destroyed automatically.
 
@@ -141,9 +141,9 @@ browserHistory.listen(() => {
 
 ## Dialog.useDialog
 
-> `Dialog.useDialog` has almost the same parameters and methods as `Dialog.open`, but there is no need to pass in `themeContext` and `localizationContext`.
+> `Dialog.useDialog` has almost the same parameters and methods as `Dialog.open`, but there is no need to pass in `themeProviderProps` and `configProviderProps`.
 
-> We recommend using `Dialog.useDialog`. By inserting `holder` in the corresponding position, dialog can get the `context` of the inserted position, such as `ThemeContext` and `LocalizationContext`.
+> We recommend using `Dialog.useDialog`. By inserting `holder` in the corresponding position, dialog can get the `context` of the inserted position, such as `themeProviderProps` and `configProviderProps`.
 
 ```tsx
 const [dialog, holder] = Dialog.useDialog();

@@ -22,7 +22,7 @@ const MessageDialogHeader = styled('h6', {
   const { typography } = theme;
 
   return {
-    ...typography.h6,
+    ...typography.h6.style,
     margin: 0,
   };
 });

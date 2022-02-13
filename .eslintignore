@@ -9,3 +9,6 @@ out
 /packages/icons/src
 /packages/icons/third
 /packages/icons/scripts/template
+
+# disable this file, because import() is not supported by eslint.
+/platforms/docs/scripts/webpack/mdLoader/index.js

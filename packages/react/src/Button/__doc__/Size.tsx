@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, ButtonSize, styled } from '@xl-vision/react';
+import { Button, ComponentSize, styled } from '@xl-vision/react';
 import { SearchOutlined } from '@xl-vision/icons';
 
 const IconWrapper = <SearchOutlined />;
@@ -14,7 +14,7 @@ const Wrapper = styled('div')(() => {
 });
 
 const Size = () => {
-  const [size, setSize] = React.useState<ButtonSize>('middle');
+  const [size, setSize] = React.useState<ComponentSize>('middle');
 
   const handleSizeChange = React.useCallback(() => {
     setSize((prev) => {

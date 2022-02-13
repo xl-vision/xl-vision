@@ -34,7 +34,7 @@ const GlobalStyles = createGlobalStyles<CssBaselineStyleProps>(({ theme, stylePr
         fontWeight: theme.typography.fontWeight.bold,
       },
       body: {
-        ...theme.typography.body1,
+        ...theme.typography.body1.style,
         color: theme.color.text.primary,
         backgroundColor: theme.color.background.default,
         margin: 0,

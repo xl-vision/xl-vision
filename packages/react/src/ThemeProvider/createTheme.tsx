@@ -5,7 +5,7 @@ import createMixins from './mixins';
 import createElevations from './elevations';
 import createBreakpoints, { Breakpoints } from './breakpoints';
 import createOverrideStyles, { OverrideStyles } from './overrideStyles';
-import createShape, { Shape } from './shape';
+import createStyleSize, { ComponentSize, StyleSize } from './styleSize';
 
 export type BaseTheme = Partial<{
   color: Color;
@@ -14,7 +14,8 @@ export type BaseTheme = Partial<{
   breakpoints: Breakpoints;
   clsPrefix: string;
   overrideStyles: OverrideStyles;
-  shape: Shape;
+  styleSize: StyleSize;
+  componentSize: ComponentSize;
 }>;
 
 export type ThemeWithoutMixins = ReturnType<typeof createThemeWithoutMixins>;
@@ -29,7 +30,8 @@ const createThemeWithoutMixins = (theme: BaseTheme = {}) => {
     breakpoints,
     overrideStyles = {},
     clsPrefix = 'xl',
-    shape,
+    componentSize = 'middle',
+    styleSize,
   } = theme;
 
   const outputColor = createColors(color);
@@ -38,11 +40,12 @@ const createThemeWithoutMixins = (theme: BaseTheme = {}) => {
   const outputBreakpoints = createBreakpoints(breakpoints);
   const outputOverrideStyles = createOverrideStyles(overrideStyles);
 
-  const outputShape = createShape(shape);
+  const outputStyleSize = createStyleSize(styleSize);
 
   const elevations = createElevations();
 
   return {
+    componentSize,
     color: outputColor,
     transition: outputTransition,
     typography: outputTypography,
@@ -50,7 +53,7 @@ const createThemeWithoutMixins = (theme: BaseTheme = {}) => {
     elevations,
     clsPrefix,
     overrideStyles: outputOverrideStyles,
-    shape: outputShape,
+    styleSize: outputStyleSize,
   };
 };
 

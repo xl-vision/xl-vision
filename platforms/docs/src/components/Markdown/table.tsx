@@ -18,7 +18,7 @@ const TableWrapper = styled('table')(({ theme }) => {
     borderSpacing: 0,
     'td, th': {
       padding: ' 1rem',
-      borderBottom: `1px solid ${theme.color.divider}`,
+      borderBottom: `${theme.styleSize.middle.border}px solid ${theme.color.divider}`,
     },
     th: {
       // color: $title-color;

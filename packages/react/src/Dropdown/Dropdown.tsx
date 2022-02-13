@@ -36,12 +36,12 @@ const DropdownPopup = styled('ul', {
   name: displayName,
   slot: 'Popup',
 })(({ theme }) => {
-  const { color, elevations, shape } = theme;
+  const { color, elevations, styleSize } = theme;
 
   return {
     backgroundColor: color.background.paper,
     color: color.text.primary,
-    borderRadius: shape.borderRadius.md,
+    borderRadius: styleSize.middle.borderRadius,
     padding: '5px 0',
     listStyle: 'none',
     margin: 0,

@@ -15,7 +15,7 @@ enum IconType {
   FILLED,
 }
 const Wrapper = styled('div')(({ theme }) => {
-  const { color, typography } = theme;
+  const { color, typography, styleSize } = theme;
   return {
     '.top': {
       display: 'flex',
@@ -38,10 +38,10 @@ const Wrapper = styled('div')(({ theme }) => {
         display: 'inline-block',
         flex: 1,
         outline: 'none',
-        border: `1px solid ${color.divider}`,
+        border: `${styleSize.middle.border}px solid ${color.divider}`,
         padding: '8px',
         borderRadius: 4,
-        ...typography.body2,
+        ...typography.body2.style,
       },
     },
   };
@@ -63,10 +63,10 @@ const IconWrapper = styled('div')(({ theme }) => {
     margin: 16,
 
     svg: {
-      ...typography.h3,
+      ...typography.h3.style,
     },
     div: {
-      ...typography.subtitle2,
+      ...typography.subtitle2.style,
     },
     ':hover': {
       color: color.themes.primary.text.primary,

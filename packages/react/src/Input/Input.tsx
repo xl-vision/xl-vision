@@ -10,10 +10,11 @@ import { styled } from '../styles';
 import usePropChange from '../hooks/usePropChange';
 import { contains } from '../utils/dom';
 import { alpha } from '../utils/color';
+import { ComponentSize } from '../ThemeProvider';
 
 export type InputProps = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
-  'type' | 'onChange' | 'value' | 'defaultValue' | 'prefix'
+  'type' | 'onChange' | 'value' | 'defaultValue' | 'prefix' | 'size'
 > & {
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
@@ -24,6 +25,7 @@ export type InputProps = Omit<
   defaultValue?: string;
   showCount?: boolean;
   allowClear?: boolean;
+  size?: ComponentSize;
   type?:
     | 'button'
     | 'checkbox'
@@ -54,32 +56,40 @@ const displayName = 'Input';
 const InputRoot = styled('span', {
   name: displayName,
   slot: 'Root',
-})(({ theme }) => {
-  const { typography } = theme;
+})<{ size: ComponentSize }>(({ theme, styleProps }) => {
+  const { typography, styleSize } = theme;
+  const { size } = styleProps;
+
+  const themeSize = styleSize[size];
 
   return {
-    ...typography.body1,
+    ...typography.body1.style,
     width: '100%',
     display: 'inline-flex',
+    fontSize: typography.pxToRem(typography.body1.info.size * themeSize.fontSize),
   };
 });
 
 const InputAddonBefore = styled('span', {
   name: displayName,
   slot: 'AddonBefore',
-})(({ theme }) => {
-  const { color, shape } = theme;
+})<{ size: ComponentSize }>(({ theme, styleProps }) => {
+  const { color, styleSize } = theme;
+
+  const { size } = styleProps;
+
+  const themeSize = styleSize[size];
 
   return {
     display: 'flex',
     flex: 'none',
     alignItems: 'center',
     backgroundColor: color.emphasize(color.background.paper, 0.05),
-    padding: '0 8px',
-    border: `1px solid ${color.divider}`,
+    padding: `0 ${themeSize.padding.x}px`,
+    border: `${themeSize.border}px solid ${color.divider}`,
     borderRightWidth: 0,
-    borderTopLeftRadius: shape.borderRadius.md,
-    borderBottomLeftRadius: shape.borderRadius.md,
+    borderTopLeftRadius: themeSize.borderRadius,
+    borderBottomLeftRadius: themeSize.borderRadius,
   };
 });
 
@@ -87,24 +97,26 @@ const InputAddonAfter = styled(InputAddonBefore, {
   name: displayName,
   slot: 'AddonAfter',
 })(({ theme }) => {
-  const { shape } = theme;
+  const { styleSize } = theme;
   return {
     borderLeftWidth: 0,
-    borderRightWidth: 1,
+    borderRightWidth: styleSize.middle.border,
     borderTopLeftRadius: 0,
     borderBottomLeftRadius: 0,
-    borderTopRightRadius: shape.borderRadius.md,
-    borderBottomRightRadius: shape.borderRadius.md,
+    borderTopRightRadius: styleSize.middle.borderRadius,
+    borderBottomRightRadius: styleSize.middle.borderRadius,
   };
 });
 
 const InputWrapper = styled('span', {
   name: displayName,
   slot: 'Wrapper',
-})<{ focused: boolean }>(({ theme, styleProps }) => {
-  const { color, shape, transition } = theme;
+})<{ focused: boolean; size: ComponentSize }>(({ theme, styleProps }) => {
+  const { color, styleSize, transition } = theme;
 
-  const { focused } = styleProps;
+  const { focused, size } = styleProps;
+
+  const themeSize = styleSize[size];
 
   const focusColor = color.themes.primary.focus;
 
@@ -115,14 +127,15 @@ const InputWrapper = styled('span', {
 
   return {
     display: 'inline-flex',
-    borderRadius: shape.borderRadius.md,
-    border: `1px solid ${color.divider}`,
+    borderRadius: themeSize.borderRadius,
+    border: `${themeSize.border}px solid ${color.divider}`,
     width: '100%',
-    padding: '4px 11px',
+    padding: `${themeSize.padding.y}px ${themeSize.padding.x}px`,
     color: color.text.primary,
     backgroundColor: color.background.paper,
     transition: transition.standard(['borderColor', 'boxShadow']),
     zIndex: 1,
+    fontSize: 'inherit',
 
     '&:not(:first-child)': {
       borderTopLeftRadius: 0,
@@ -147,8 +160,9 @@ const InputInner = styled('input', {
 })(({ theme }) => {
   const { color, typography, mixins, transition } = theme;
   return {
-    ...typography.body1,
     ...mixins.placeholder(),
+    ...typography.body1.style,
+    fontSize: 'inherit',
     touchAction: 'manipulation',
     fontVariant: 'tabular-nums',
     display: 'inline-block',
@@ -204,9 +218,12 @@ const InputSuffix = styled(InputPrefix, {
 });
 
 const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
+  const { clsPrefix, componentSize } = useTheme();
+
   const {
     className,
     style,
+    size = componentSize,
     prefix,
     suffix,
     addonBefore,
@@ -222,8 +239,6 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     onFocus,
     ...others
   } = props;
-
-  const { clsPrefix } = useTheme();
 
   const [value, handlePropChange] = usePropChange(defaultValue, valueProp, onChange);
 
@@ -302,6 +317,7 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
 
   const rootClasses = clsx(
     rootClassName,
+    `${rootClassName}--size-${size}`,
     {
       [`${rootClassName}--focused`]: focused,
     },
@@ -337,11 +353,15 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
   }
 
   return (
-    <InputRoot style={style} className={rootClasses} ref={forkRef}>
-      {typeof addonBefore !== 'undefined' && <InputAddonBefore>{addonBefore}</InputAddonBefore>}
+    <InputRoot style={style} styleProps={{ size }} className={rootClasses} ref={forkRef}>
+      {typeof addonBefore !== 'undefined' && (
+        <InputAddonBefore styleProps={{ size }} className={`${rootClassName}__addon-before`}>
+          {addonBefore}
+        </InputAddonBefore>
+      )}
       <InputWrapper
         className={`${rootClassName}__wrapper`}
-        styleProps={{ focused }}
+        styleProps={{ focused, size }}
         onMouseUp={handleMouseUp}
       >
         {typeof prefix !== 'undefined' && (
@@ -366,7 +386,11 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
           </InputSuffix>
         )}
       </InputWrapper>
-      {typeof addonAfter !== 'undefined' && <InputAddonAfter>{addonAfter}</InputAddonAfter>}
+      {typeof addonAfter !== 'undefined' && (
+        <InputAddonAfter styleProps={{ size }} className={`${rootClassName}__addon-after`}>
+          {addonAfter}
+        </InputAddonAfter>
+      )}
     </InputRoot>
   );
 });
@@ -385,6 +409,7 @@ if (!env.isProduction) {
     maxLength: PropTypes.number,
     showCount: PropTypes.bool,
     allowClear: PropTypes.bool,
+    size: PropTypes.oneOf<ComponentSize>(['large', 'middle', 'small']),
     type: PropTypes.oneOf([
       'button',
       'checkbox',

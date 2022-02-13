@@ -11,13 +11,13 @@ import {
 } from '@xl-vision/react/ThemeProvider/palette';
 
 const Pre = styled('pre')(({ theme }) => {
-  const { color, shape } = theme;
+  const { color, styleSize } = theme;
 
   const isDark = color.mode === 'dark';
 
   return {
     '&[class*="language-"]': {
-      borderRadius: shape.borderRadius.md,
+      borderRadius: styleSize.middle.border,
       overflow: 'hidden',
       margin: 0,
       padding: '6px 12px',
