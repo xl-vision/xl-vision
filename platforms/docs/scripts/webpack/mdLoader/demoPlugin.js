@@ -32,6 +32,7 @@ module.exports = function demoPlugin() {
       }
 
       const filePath = node.path;
+      const options = node.options;
 
       const demoName = `Demo_${demoCount++}`;
 
@@ -53,9 +54,16 @@ module.exports = function demoPlugin() {
         value: `import ${demo} from '${filePath}'`,
       });
 
+      const paramsString = Object.keys(options)
+        .map((k) => {
+          const v = options[k];
+          return `${k}={${JSON.stringify(v)}}`;
+        })
+        .join(' ');
+
       nodes.unshift({
         type: 'jsx',
-        value: '<DemoBox>',
+        value: `<DemoBox ${paramsString}>`,
       });
 
       nodes.push({
@@ -89,7 +97,7 @@ module.exports = function demoPlugin() {
   };
 };
 
-const REGEX_START = /^:::[\t\f ]*demo[\t\f ]+(\S+)[\t\f ]*(\r?\n)+/;
+const REGEX_START = /^:::[\t\f ]*demo[\t\f ]+(.+)[\t\f ]*(\r?\n)+/;
 
 const REGEX_CONTNET = /^[\t\n\f ]*(.+)\n+([\S\s]+)$/;
 
@@ -100,7 +108,25 @@ function blockTokenizer(eat, value) {
     return;
   }
 
-  const filePath = matches[1];
+  const params = matches[1]
+    .trim()
+    .replace(/\s*=\s*/g, '=')
+    .split(/\s+/);
+
+  if (!params.length) {
+    return;
+  }
+
+  const [filePath, ...others] = params;
+
+  const options = {};
+
+  others.forEach((field) => {
+    const [k, v] = field.split('=').map((it) => (it || '').trim());
+    if (k) {
+      options[k] = v || true;
+    }
+  });
 
   const lines = value.split('\n');
 
@@ -146,6 +172,7 @@ function blockTokenizer(eat, value) {
   add({
     type: TYPE,
     path: filePath,
+    options,
     children: [titleContent, descContent],
   });
   exit();
