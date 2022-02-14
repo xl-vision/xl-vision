@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { CloseCircleFilled } from '@xl-vision/icons';
-import Button from '..';
+import { ThemeProvider, Button } from '@xl-vision/react';
 
 const CloseWrapper = <CloseCircleFilled />;
 
@@ -51,6 +51,23 @@ describe('Button', () => {
     wrapper.simulate('click');
 
     expect(handleClick.mock.calls.length).toBe(1);
+  });
+
+  it('test component size', () => {
+    const componentSizes = ['small', 'middle', 'large'];
+
+    const wrapper = mount(
+      <ThemeProvider>
+        <Button>button</Button>
+      </ThemeProvider>,
+    );
+
+    componentSizes.forEach((componentSize) => {
+      wrapper.setProps({
+        theme: { componentSize },
+      });
+      expect(wrapper.find(`.xl-button--size-${componentSize}`)).not.toBe(null);
+    });
   });
 });
 

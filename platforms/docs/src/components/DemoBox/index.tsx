@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { styled, CollapseTransition, Button } from '@xl-vision/react';
 import { DownOutlined } from '@xl-vision/icons';
 import { env } from '@xl-vision/utils';
-import Code from './Code';
 import { useRouter } from 'next/router';
+import Code from './Code';
 
 export type DemoBoxProps = {
   children: [React.ReactNode, React.ReactNode, React.ReactNode, React.ReactNode, React.ReactNode];
