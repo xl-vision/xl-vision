@@ -2,33 +2,48 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { styled, CollapseTransition, Button } from '@xl-vision/react';
 import { DownOutlined } from '@xl-vision/icons';
+import { env } from '@xl-vision/utils';
 import Code from './Code';
+import { useRouter } from 'next/router';
 
 export type DemoBoxProps = {
   children: [React.ReactNode, React.ReactNode, React.ReactNode, React.ReactNode, React.ReactNode];
+  debug?: boolean;
 };
 
-const Wrapper = styled('div')(
-  ({ theme }) => `
-  border-radius: 4px;
-  overflow: hidden;
-  border: ${theme.styleSize.middle.border}px solid ${theme.color.divider};
-  margin: 8px 0;
-`,
-);
+const Wrapper = styled('div')<{ debug: boolean }>(({ theme, styleProps }) => {
+  const { styleSize, color } = theme;
+
+  const { debug } = styleProps;
+
+  return {
+    borderRadius: 4,
+    overflow: 'hidden',
+    border: `${styleSize.middle.border}px solid ${
+      debug ? color.themes.error.color : color.divider
+    }`,
+    margin: `8px 0`,
+  };
+});
 
 const Preview = styled('div')`
   padding: 42px 24px 50px;
 `;
 
-const InfoWrapper = styled('div')(
-  ({ theme }) => `
-  position: relative;
-  font-size: 14px;
-  border-top: ${theme.styleSize.middle.border}px solid ${theme.color.divider};
-  color: ${theme.color.text.primary};
-`,
-);
+const InfoWrapper = styled('div')<{ debug: boolean }>(({ theme, styleProps }) => {
+  const { styleSize, color } = theme;
+
+  const { debug } = styleProps;
+
+  return {
+    position: 'relative',
+    fontSize: 14,
+    borderTop: `${styleSize.middle.border}px solid ${
+      debug ? color.themes.error.color : color.divider
+    }`,
+    color: color.text.primary,
+  };
+});
 
 const TitleWrapper = styled('div')(({ theme }) => {
   return {
@@ -84,8 +99,10 @@ const ExpandWrapper = styled(DownOutlined)<{ expand: boolean }>(({ theme, styleP
   };
 });
 
-const DemoBox: React.FunctionComponent<DemoBoxProps> = ({ children }) => {
+const DemoBox: React.FunctionComponent<DemoBoxProps> = ({ children, debug = false }) => {
   const [title, desc, tsxCode, jsxCode, preview] = children;
+
+  const { query } = useRouter();
 
   const [isExpand, setExpand] = React.useState(false);
 
@@ -93,10 +110,14 @@ const DemoBox: React.FunctionComponent<DemoBoxProps> = ({ children }) => {
     setExpand((prev) => !prev);
   }, []);
 
+  if (debug && !env.isDevelopment && !('debug' in query)) {
+    return null;
+  }
+
   return (
-    <Wrapper>
+    <Wrapper styleProps={{ debug }}>
       <Preview>{preview}</Preview>
-      <InfoWrapper>
+      <InfoWrapper styleProps={{ debug }}>
         <TitleWrapper>{title}</TitleWrapper>
         <DescWrapper>{desc}</DescWrapper>
         <ButtonWrapper>
