@@ -5,7 +5,6 @@ import { ComponentSize, useTheme, ThemeContext } from '../ThemeProvider';
 import { styled } from '../styles';
 
 export type InputGroupProps = React.HTMLAttributes<HTMLDivElement> & {
-  compact?: boolean;
   size?: ComponentSize;
 };
 
