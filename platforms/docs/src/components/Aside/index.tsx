@@ -1,8 +1,10 @@
 import { styled } from '@xl-vision/react';
 import { defaultLanguage } from '@xl-vision/react/locale';
 import { mix } from '@xl-vision/react/utils/color';
-import Link from 'next/link';
+import Link, { LinkProps } from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react';
+import clsx from 'clsx';
 import route, { BaseRoute, Route, RouteType } from '../../routes';
 import { useLocale } from '../LocalizationProvider';
 
@@ -10,7 +12,7 @@ const LeftNode = styled('span')(() => {
   return {
     width: '100%',
     display: 'inline-block',
-    padding: '12px 40px',
+    padding: '8px 40px',
     fontSize: '14px',
     boxSizing: 'border-box',
   };
@@ -31,6 +33,29 @@ const NodeWrapper = styled('ul')(() => {
   };
 });
 
+const ActiveLink: React.FunctionComponent<LinkProps> = (props) => {
+  const { children, href, ...others } = props;
+  const { pathname } = useRouter();
+
+  const child: any = React.Children.only(children);
+
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
+  const classes = clsx(child.className, {
+    active: href === pathname,
+  });
+
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+  const newChild = React.cloneElement(child, {
+    className: classes,
+  });
+
+  return (
+    <Link {...others} href={href}>
+      {newChild}
+    </Link>
+  );
+};
+
 const A = styled('a')(({ theme }) => {
   const { themes, text } = theme.color;
   return {
@@ -46,7 +71,7 @@ const A = styled('a')(({ theme }) => {
       )}`,
     },
     '&.active': {
-      backgroundColor: `${themes.primary.color}`,
+      backgroundColor: `${themes.primary.hover}`,
       color: `${theme.color.themes.primary.text.primary}`,
     },
   };
@@ -79,11 +104,11 @@ const traverseRoutes = (
       const fullPath = `/${routeName}${path}`;
 
       el = (
-        <Link passHref={true} href={fullPath}>
+        <ActiveLink passHref={true} href={fullPath}>
           <A>
             <LeftNode style={{ paddingLeft: padding * level }}>{title}</LeftNode>
           </A>
-        </Link>
+        </ActiveLink>
       );
     }
     routeElements.push(
