@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { env } from '@xl-vision/utils';
 import { useLayoutEffect } from '@xl-vision/hooks';
-import CSSTransition, { CSSTransitionClassesObject, CSSTransitionProps } from '../CSSTransition';
+import CssTransition, { CssTransitionClassesObject, CssTransitionProps } from '../CssTransition';
 import { AfterEventHook } from '../Transition';
 import { omit } from '../utils/function';
 import warning from '../utils/warning';
@@ -10,7 +10,7 @@ import diff, { DiffData } from './diff';
 
 export interface TransitionGroupClassesObject
   extends Omit<
-    CSSTransitionClassesObject,
+    CssTransitionClassesObject,
     'appearFrom' | 'appearActive' | 'appearTo' | 'disappearFrom' | 'disappearActive' | 'disappearTo'
   > {
   move?: string;
@@ -20,10 +20,10 @@ export type TransitionGroupClasses = string | TransitionGroupClassesObject;
 
 export interface TransitionGroupProps
   extends Omit<
-    CSSTransitionProps,
+    CssTransitionProps,
     'children' | 'transitionOnFirst' | 'in' | 'classNames' | 'mountOnEnter' | 'unmountOnLeave'
   > {
-  children: Array<CSSTransitionProps['children']>;
+  children: Array<CssTransitionProps['children']>;
   transitionClasses?: TransitionGroupClasses;
 }
 
@@ -31,15 +31,15 @@ const TransitionGroup: React.FunctionComponent<TransitionGroupProps> = (props) =
   const { children, transitionClasses, afterLeave, ..._others } = props;
 
   // 阻止用户故意传入appear和disappear钩子
-  const others = omit(_others as CSSTransitionProps, 'in');
+  const others = omit(_others as CssTransitionProps, 'in');
 
   const transitionClassesObj = React.useMemo(() => {
-    let obj: CSSTransitionClassesObject = {};
+    let obj: CssTransitionClassesObject = {};
 
     if (!transitionClasses) {
       return {};
     }
-    // 组件实际上是使用CSSTransition的appear和disappear钩子实现动画，但是向用户隐藏实现细节，
+    // 组件实际上是使用CssTransition的appear和disappear钩子实现动画，但是向用户隐藏实现细节，
     // 所以这里需要将enter和leave的class设置到appear和disappear上
     if (typeof transitionClasses === 'object') {
       obj = { ...transitionClasses };
@@ -103,12 +103,12 @@ const TransitionGroup: React.FunctionComponent<TransitionGroupProps> = (props) =
     prevChildrenRef.current = nodes;
   }, [children]);
 
-  const nodes: Array<React.ReactElement<CSSTransitionProps>> = [];
+  const nodes: Array<React.ReactElement<CssTransitionProps>> = [];
   diffArray.forEach((it) => {
     if (it.same) {
       const array = it.next.map((item) => {
         return (
-          <CSSTransition
+          <CssTransition
             {...others}
             key={item.key}
             in={true}
@@ -117,14 +117,14 @@ const TransitionGroup: React.FunctionComponent<TransitionGroupProps> = (props) =
             unmountOnLeave={true}
           >
             {item}
-          </CSSTransition>
+          </CssTransition>
         );
       });
       nodes.push(...array);
     } else {
       const prev = it.prev.map((item) => {
         return (
-          <CSSTransition
+          <CssTransition
             {...others}
             key={item.key}
             in={false}
@@ -135,13 +135,13 @@ const TransitionGroup: React.FunctionComponent<TransitionGroupProps> = (props) =
             afterLeave={callAfterLeave(item.key)}
           >
             {item}
-          </CSSTransition>
+          </CssTransition>
         );
       });
 
       const next = it.next.map((item) => {
         return (
-          <CSSTransition
+          <CssTransition
             {...others}
             key={item.key}
             in={true}
@@ -151,7 +151,7 @@ const TransitionGroup: React.FunctionComponent<TransitionGroupProps> = (props) =
             transitionClasses={transitionClassesObj}
           >
             {item}
-          </CSSTransition>
+          </CssTransition>
         );
       });
 

@@ -2,17 +2,17 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { env } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
-import CSSTransition, { CSSTransitionProps, CSSTransitionElement } from '../CSSTransition';
+import CssTransition, { CssTransitionProps, CssTransitionElement } from '../CssTransition';
 import { forceReflow } from '../utils/transition';
 import { removeClass, addClass } from '../utils/class';
 import { AfterEventHook, BeforeEventHook, EventCancelledHook, EventHook } from '../Transition';
 
-export interface CollapseTransitionProp extends Omit<CSSTransitionProps, 'mountOnEnter'> {
+export interface CollapseTransitionProp extends Omit<CssTransitionProps, 'mountOnEnter'> {
   children: React.ReactElement<React.HTMLAttributes<HTMLElement>>;
   horizontal?: boolean;
 }
 
-export interface CollapseTransitionElement extends CSSTransitionElement {
+export interface CollapseTransitionElement extends CssTransitionElement {
   _cancelled__?: boolean;
 }
 
@@ -191,7 +191,7 @@ const CollapseTransition: React.FunctionComponent<CollapseTransitionProp> = (pro
   );
 
   return (
-    <CSSTransition
+    <CssTransition
       {...others}
       beforeEnter={beforeEnterWrapper}
       enter={enterWrapper}

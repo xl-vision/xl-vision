@@ -5,7 +5,7 @@ import { env } from '@xl-vision/utils';
 import { useForkRef } from '@xl-vision/hooks';
 import Portal, { PortalContainerType } from '../Portal';
 import usePropChange from '../hooks/usePropChange';
-import CSSTransition from '../CSSTransition';
+import CssTransition from '../CssTransition';
 import { styled } from '../styles';
 import { increaseZindex } from '../utils/zIndexManger';
 import { addClass, removeClass } from '../utils/class';
@@ -334,7 +334,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
         onClick={handleClick}
       >
         {mask && (
-          <CSSTransition
+          <CssTransition
             transitionClasses={`${rootClassName}__mask`}
             in={inProp}
             mountOnEnter={true}
@@ -346,9 +346,9 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
               className={`${rootClassName}__mask`}
               onClick={handleMaskClick}
             />
-          </CSSTransition>
+          </CssTransition>
         )}
-        <CSSTransition
+        <CssTransition
           transitionClasses={bodyClassName}
           in={inProp}
           mountOnEnter={true}
@@ -363,7 +363,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
           >
             {children}
           </ModalContent>
-        </CSSTransition>
+        </CssTransition>
       </ModalRoot>
     </Portal>
   );

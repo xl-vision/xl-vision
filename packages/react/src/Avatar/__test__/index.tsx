@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-handler-names */
 import React from 'react';
 import { mount } from 'enzyme';
-import Avatar from '..';
+import { Avatar } from '@xl-vision/react';
 
 describe('Avatar', () => {
   it('Render string', () => {

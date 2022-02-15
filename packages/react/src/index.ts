@@ -21,12 +21,12 @@ export type {
   EventCancelledHook,
 } from './Transition';
 
-export { default as CSSTransition } from './CSSTransition';
+export { default as CssTransition } from './CssTransition';
 export type {
-  CSSTransitionClasses,
-  CSSTransitionClassesObject,
-  CSSTransitionProps,
-} from './CSSTransition';
+  CssTransitionClasses,
+  CssTransitionClassesObject,
+  CssTransitionProps,
+} from './CssTransition';
 
 export { default as CollapseTransition } from './CollapseTransition';
 export type { CollapseTransitionProp } from './CollapseTransition';

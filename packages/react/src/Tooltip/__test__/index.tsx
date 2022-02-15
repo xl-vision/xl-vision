@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
-import Tooltip from '..';
+import { Tooltip } from '@xl-vision/react';
 
 describe('Tooltip', () => {
   beforeAll(() => {

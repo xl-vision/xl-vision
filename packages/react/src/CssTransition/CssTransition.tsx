@@ -12,7 +12,7 @@ import Transition, {
   TransitionProps,
 } from '../Transition';
 
-export type CSSTransitionClassesObject = {
+export type CssTransitionClassesObject = {
   appearFrom?: string;
   appearActive?: string;
   appearTo?: string;
@@ -27,11 +27,11 @@ export type CSSTransitionClassesObject = {
   disappearTo?: string;
 };
 
-export type CSSTransitionClasses = CSSTransitionClassesObject | string;
+export type CssTransitionClasses = CssTransitionClassesObject | string;
 
-export type CSSTransitionProps = TransitionProps & {
+export type CssTransitionProps = TransitionProps & {
   disableCss?: boolean;
-  transitionClasses?: CSSTransitionClasses;
+  transitionClasses?: CssTransitionClasses;
   timeout?:
     | number
     | {
@@ -42,11 +42,11 @@ export type CSSTransitionProps = TransitionProps & {
       };
 };
 
-export type CSSTransitionElement = HTMLElement & {
-  _ctc?: CSSTransitionClassesObject;
+export type CssTransitionElement = HTMLElement & {
+  _ctc?: CssTransitionClassesObject;
 };
 
-const CSSTransition: React.FunctionComponent<CSSTransitionProps> = (props) => {
+const CssTransition: React.FunctionComponent<CssTransitionProps> = (props) => {
   const {
     disableCss,
     transitionClasses,
@@ -62,7 +62,7 @@ const CSSTransition: React.FunctionComponent<CSSTransitionProps> = (props) => {
     ...others
   } = props;
 
-  const transitionClassesObject: CSSTransitionClassesObject = React.useMemo(() => {
+  const transitionClassesObject: CssTransitionClassesObject = React.useMemo(() => {
     if (!transitionClasses) {
       return {};
     }
@@ -101,7 +101,7 @@ const CSSTransition: React.FunctionComponent<CSSTransitionProps> = (props) => {
   }, [timeout]);
 
   const beforeEnterWrapper: BeforeEventHook = useConstantFn(
-    (el: CSSTransitionElement, transitionOnFirst) => {
+    (el: CssTransitionElement, transitionOnFirst) => {
       if (!disableCss) {
         if (transitionOnFirst) {
           addClass(el, transitionClassesObject.appearFrom || '');
@@ -124,7 +124,7 @@ const CSSTransition: React.FunctionComponent<CSSTransitionProps> = (props) => {
   );
 
   const enterWrapper: EventHook = useConstantFn(
-    (el: CSSTransitionElement, done, isCancelled, transitionOnFirst) => {
+    (el: CssTransitionElement, done, isCancelled, transitionOnFirst) => {
       nextFrame(() => {
         if (!isCancelled()) {
           if (!disableCss) {
@@ -157,7 +157,7 @@ const CSSTransition: React.FunctionComponent<CSSTransitionProps> = (props) => {
     },
   );
   const afterEnterWrapper: AfterEventHook = useConstantFn(
-    (el: CSSTransitionElement, transitionOnFirst) => {
+    (el: CssTransitionElement, transitionOnFirst) => {
       if (!disableCss) {
         if (transitionOnFirst) {
           removeClass(el, el._ctc?.appearActive || '');
@@ -172,7 +172,7 @@ const CSSTransition: React.FunctionComponent<CSSTransitionProps> = (props) => {
     },
   );
   const enterCancelledWrapper: EventCancelledHook = useConstantFn(
-    (el: CSSTransitionElement, transitionOnFirst) => {
+    (el: CssTransitionElement, transitionOnFirst) => {
       if (!disableCss) {
         if (transitionOnFirst) {
           removeClass(el, el._ctc?.appearActive || '');
@@ -190,7 +190,7 @@ const CSSTransition: React.FunctionComponent<CSSTransitionProps> = (props) => {
   );
 
   const beforeLeaveWrapper: BeforeEventHook = useConstantFn(
-    (el: CSSTransitionElement, transitionOnFirst) => {
+    (el: CssTransitionElement, transitionOnFirst) => {
       if (!disableCss) {
         if (transitionOnFirst) {
           addClass(el, transitionClassesObject.disappearFrom || '');
@@ -213,7 +213,7 @@ const CSSTransition: React.FunctionComponent<CSSTransitionProps> = (props) => {
   );
 
   const leaveWrapper: EventHook = useConstantFn(
-    (el: CSSTransitionElement, done, isCancelled, transitionOnFirst) => {
+    (el: CssTransitionElement, done, isCancelled, transitionOnFirst) => {
       nextFrame(() => {
         if (!isCancelled()) {
           if (!disableCss) {
@@ -246,7 +246,7 @@ const CSSTransition: React.FunctionComponent<CSSTransitionProps> = (props) => {
     },
   );
   const afterLeaveWrapper: AfterEventHook = useConstantFn(
-    (el: CSSTransitionElement, transitionOnFirst) => {
+    (el: CssTransitionElement, transitionOnFirst) => {
       if (!disableCss) {
         if (transitionOnFirst) {
           removeClass(el, el._ctc?.disappearActive || '');
@@ -261,7 +261,7 @@ const CSSTransition: React.FunctionComponent<CSSTransitionProps> = (props) => {
     },
   );
   const leaveCancelledWrapper: EventCancelledHook = useConstantFn(
-    (el: CSSTransitionElement, transitionOnFirst) => {
+    (el: CssTransitionElement, transitionOnFirst) => {
       if (!disableCss) {
         if (transitionOnFirst) {
           removeClass(el, el._ctc?.disappearActive || '');
@@ -294,9 +294,9 @@ const CSSTransition: React.FunctionComponent<CSSTransitionProps> = (props) => {
 };
 
 if (!env.isProduction) {
-  CSSTransition.displayName = 'CSSTransition';
+  CssTransition.displayName = 'CssTransition';
 
-  CSSTransition.propTypes = {
+  CssTransition.propTypes = {
     transitionClasses: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     timeout: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
     disableCss: PropTypes.bool,
@@ -311,4 +311,4 @@ if (!env.isProduction) {
   };
 }
 
-export default CSSTransition;
+export default CssTransition;

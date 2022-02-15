@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
-import Dropdown from '..';
+import { Dropdown } from '@xl-vision/react';
 
 const menus = (
   <>

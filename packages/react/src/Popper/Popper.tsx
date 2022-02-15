@@ -5,7 +5,7 @@ import { Instance, Placement, createPopper, Modifier } from '@popperjs/core';
 import clsx from 'clsx';
 import { env } from '@xl-vision/utils';
 import { useForkRef, useConstantFn } from '@xl-vision/hooks';
-import CSSTransition, { CSSTransitionElement, CSSTransitionProps } from '../CSSTransition';
+import CssTransition, { CssTransitionElement, CssTransitionProps } from '../CssTransition';
 import Portal, { PortalContainerType } from '../Portal';
 import { addClass, removeClass } from '../utils/class';
 import { forceReflow } from '../utils/transition';
@@ -36,7 +36,7 @@ export interface PopperProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactElement<PopperChildrenProps>;
   popup: React.ReactElement;
   getPopupContainer?: PortalContainerType;
-  transitionClasses?: CSSTransitionProps['transitionClasses'];
+  transitionClasses?: CssTransitionProps['transitionClasses'];
   trigger?: PopperTrigger | Array<PopperTrigger>;
   placement?: PopperPlacement;
   disablePopupEnter?: boolean;
@@ -407,7 +407,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     };
   }, [handleClickOutside, handleContextMenuOutside]);
 
-  const beforeEnter = useConstantFn((el: CSSTransitionElement) => {
+  const beforeEnter = useConstantFn((el: CssTransitionElement) => {
     // 移除transition class对定位的干扰
     removeClass(el, el._ctc?.enterActive || '');
     removeClass(el, el._ctc?.enterFrom || '');
@@ -477,7 +477,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
         onClick={handlePopupClick}
         onContextMenu={handlePopupContextClick}
       >
-        <CSSTransition
+        <CssTransition
           in={inProp}
           transitionClasses={transitionClasses}
           beforeEnter={beforeEnter}
@@ -494,7 +494,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
             {arrowNode}
             {popup}
           </div>
-        </CSSTransition>
+        </CssTransition>
       </div>
     </Portal>
   );

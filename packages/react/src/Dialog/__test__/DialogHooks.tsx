@@ -1,10 +1,11 @@
 /* eslint-disable no-return-assign */
-import { ConfigProvider } from '@xl-vision/react';
 import { locales } from '@xl-vision/react/locale';
 import { mount } from 'enzyme';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
-import useDialog, { MessageDialogHookReturnType } from '../useDialog';
+import { Dialog, MessageDialogHookReturnType, ConfigProvider } from '@xl-vision/react';
+
+const { useDialog } = Dialog;
 
 const Demo = React.forwardRef<ReturnType<typeof useDialog>[0], {}>((_, ref) => {
   const [dialog, holder] = useDialog();
