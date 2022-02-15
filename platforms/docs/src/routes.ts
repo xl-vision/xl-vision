@@ -94,6 +94,13 @@ const route: Route = {
           },
           path: '/Input',
         },
+        {
+          titleMap: {
+            'en-US': 'TextArea',
+            'zh-CN': '多行文本框',
+          },
+          path: '/TextArea',
+        },
       ],
     },
     {
