@@ -1,7 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import CssBaseline from '..';
-import ThemeProvider, { BaseTheme } from '../../ThemeProvider';
+import { ThemeProvider, CssBaseline, BaseTheme } from '@xl-vision/react';
 
 describe('CssBaseline', () => {
   it.todo('todo here');

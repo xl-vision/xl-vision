@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
-import Popper from '..';
+import { Popper } from '@xl-vision/react';
 import wait from '../../../../../test/wait';
 
 describe('Popper', () => {

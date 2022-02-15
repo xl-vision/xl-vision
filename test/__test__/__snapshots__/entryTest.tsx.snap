@@ -656,7 +656,7 @@ Array [
   "useConfig",
   "defaultConfigContext",
   "Transition",
-  "CSSTransition",
+  "CssTransition",
   "CollapseTransition",
   "TransitionGroup",
   "Row",

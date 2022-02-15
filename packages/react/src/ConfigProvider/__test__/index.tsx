@@ -1,8 +1,7 @@
 import { defaultLanguage } from '@xl-vision/react/locale';
 import { mount } from 'enzyme';
 import React from 'react';
-import useConfig from '../useConfig';
-import ConfigProvider from '../ConfigProvider';
+import { ConfigProvider, useConfig } from '@xl-vision/react';
 
 describe('ConfigProvider', () => {
   it('Get language', () => {

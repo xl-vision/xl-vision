@@ -177,7 +177,7 @@ const route: Route = {
         },
         {
           titleMap: {
-            'en-US': 'CSSTransition',
+            'en-US': 'CssTransition',
             'zh-CN': 'CSS过渡动画',
           },
           path: '/CssTransition',

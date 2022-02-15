@@ -1,6 +1,6 @@
 import { mount } from 'enzyme';
 import React from 'react';
-import CollapseTransition from '..';
+import { CollapseTransition } from '@xl-vision/react';
 
 describe('CollapseTransition', () => {
   beforeEach(() => {

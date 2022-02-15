@@ -1,6 +1,6 @@
 import { mount } from 'enzyme';
 import React from 'react';
-import Ripple, { RippleRef } from '..';
+import { Ripple, RippleRef } from '@xl-vision/react';
 
 const Demo = ({ leaveAfterEnter }: { leaveAfterEnter?: boolean }) => {
   const rippleRef = React.useRef<RippleRef>(null);

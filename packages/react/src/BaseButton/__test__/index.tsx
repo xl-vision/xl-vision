@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import BaseButton from '..';
+import { BaseButton } from '@xl-vision/react';
 
 describe('BaseButton', () => {
   it('basic test', () => {

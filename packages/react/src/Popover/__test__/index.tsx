@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
-import Popover from '..';
+import { Popover } from '@xl-vision/react';
 
 describe('Popover', () => {
   beforeAll(() => {
