@@ -121,7 +121,11 @@ export const nextFrame = (fn: () => void) => {
     cancel = raf(fn);
   });
 
-  return cancel;
+  const doCancel = () => {
+    cancel();
+  };
+
+  return doCancel;
 };
 
 export const forceReflow = () => {
