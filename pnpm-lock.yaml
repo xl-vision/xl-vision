@@ -75,7 +75,7 @@ importers:
       commitizen: 4.2.4
       confusing-browser-globals: 1.0.11
       csstype: 3.0.10
-      cz-conventional-changelog: 3.3.0_@types+node@17.0.4
+      cz-conventional-changelog: 3.3.0
       enzyme: 3.11.0
       enzyme-adapter-react-16: 1.15.6_4f82faf5e8cab057bc46d4d95079ec42
       enzyme-to-json: 3.6.2_enzyme@3.11.0
@@ -109,8 +109,10 @@ importers:
   packages/hooks:
     specifiers:
       '@xl-vision/utils': workspace:^
+      resize-observer-polyfill: ^1.5.1
     dependencies:
       '@xl-vision/utils': link:../utils
+      resize-observer-polyfill: 1.5.1
 
   packages/icons:
     specifiers:
@@ -141,7 +143,6 @@ importers:
       '@xl-vision/utils': workspace:^
       clsx: ^1.1.1
       prop-types: ^15.8.1
-      resize-observer-polyfill: ^1.5.1
     dependencies:
       '@popperjs/core': 2.11.2
       '@xl-vision/hooks': link:../hooks
@@ -150,7 +151,6 @@ importers:
       '@xl-vision/utils': link:../utils
       clsx: 1.1.1
       prop-types: 15.8.1
-      resize-observer-polyfill: 1.5.1
     devDependencies:
       '@types/prop-types': 15.7.4
 
@@ -1699,15 +1699,6 @@ packages:
       conventional-changelog-conventionalcommits: 4.6.1
     dev: true
 
-  /@commitlint/config-validator/16.1.0:
-    resolution: {integrity: sha512-2cHeZPNTuf1JWbMqyA46MkExor5HMSgv8JrdmzEakUbJHUreh35/wN00FJf57qGs134exQW2thiSQ1IJUsVx2Q==}
-    engines: {node: '>=v12'}
-    dependencies:
-      '@commitlint/types': 16.2.1
-      ajv: 6.12.6
-    dev: true
-    optional: true
-
   /@commitlint/config-validator/16.2.1:
     resolution: {integrity: sha512-hogSe0WGg7CKmp4IfNbdNES3Rq3UEI4XRPB8JL4EPgo/ORq5nrGTVzxJh78omibNuB8Ho4501Czb1Er1MoDWpw==}
     engines: {node: '>=v12'}
@@ -1723,12 +1714,6 @@ packages:
       '@commitlint/types': 16.2.1
       lodash: 4.17.21
     dev: true
-
-  /@commitlint/execute-rule/16.0.0:
-    resolution: {integrity: sha512-8edcCibmBb386x5JTHSPHINwA5L0xPkHQFY8TAuDEt5QyRZY/o5DF8OPHSa5Hx2xJvGaxxuIz4UtAT6IiRDYkw==}
-    engines: {node: '>=v12'}
-    dev: true
-    optional: true
 
   /@commitlint/execute-rule/16.2.1:
     resolution: {integrity: sha512-oSls82fmUTLM6cl5V3epdVo4gHhbmBFvCvQGHBRdQ50H/690Uq1Dyd7hXMuKITCIdcnr9umyDkr8r5C6HZDF3g==}
@@ -1761,31 +1746,10 @@ packages:
       '@commitlint/types': 16.2.1
     dev: true
 
-  /@commitlint/load/16.1.0_@types+node@17.0.4:
-    resolution: {integrity: sha512-MtlEhKjP8jAF85jjX4mw8DUUwCxKsCgAc865hhpnwxjrfBcmGP7Up2AFE/M3ZMGDmSl1X1TMybQk/zohj8Cqdg==}
-    engines: {node: '>=v12'}
-    requiresBuild: true
-    dependencies:
-      '@commitlint/config-validator': 16.1.0
-      '@commitlint/execute-rule': 16.0.0
-      '@commitlint/resolve-extends': 16.1.0
-      '@commitlint/types': 16.2.1
-      chalk: 4.1.2
-      cosmiconfig: 7.0.1
-      cosmiconfig-typescript-loader: 1.0.2_7d56ccf540cc6aef5e4322d1a9624425
-      lodash: 4.17.21
-      resolve-from: 5.0.0
-      typescript: 4.5.5
-    transitivePeerDependencies:
-      - '@swc/core'
-      - '@swc/wasm'
-      - '@types/node'
-    dev: true
-    optional: true
-
   /@commitlint/load/16.2.1:
     resolution: {integrity: sha512-oSpz0jTyVI/A1AIImxJINTLDOMB8YF7lWGm+Jg5wVWM0r7ucpuhyViVvpSRTgvL0z09oIxlctyFGWUQQpI42uw==}
     engines: {node: '>=v12'}
+    requiresBuild: true
     dependencies:
       '@commitlint/config-validator': 16.2.1
       '@commitlint/execute-rule': 16.2.1
@@ -1826,19 +1790,6 @@ packages:
       fs-extra: 10.0.0
       git-raw-commits: 2.0.10
     dev: true
-
-  /@commitlint/resolve-extends/16.1.0:
-    resolution: {integrity: sha512-8182s6AFoUFX6+FT1PgQDt15nO2ogdR/EN8SYVAdhNXw1rLz8kT5saB/ICw567GuRAUgFTUMGCXy3ctMOXPEDg==}
-    engines: {node: '>=v12'}
-    dependencies:
-      '@commitlint/config-validator': 16.2.1
-      '@commitlint/types': 16.2.1
-      import-fresh: 3.3.0
-      lodash: 4.17.21
-      resolve-from: 5.0.0
-      resolve-global: 1.0.0
-    dev: true
-    optional: true
 
   /@commitlint/resolve-extends/16.2.1:
     resolution: {integrity: sha512-NbbCMPKTFf2J805kwfP9EO+vV+XvnaHRcBy6ud5dF35dxMsvdJqke54W3XazXF1ZAxC4a3LBy4i/GNVBAthsEg==}
@@ -4163,7 +4114,7 @@ packages:
       - '@swc/wasm'
     dev: true
 
-  /cz-conventional-changelog/3.3.0_@types+node@17.0.4:
+  /cz-conventional-changelog/3.3.0:
     resolution: {integrity: sha512-U466fIzU5U22eES5lTNiNbZ+d8dfcHcssH4o7QsdWaCcRs/feIPCxKYSWkYBNs5mny7MvEfwpTLWjvbm94hecw==}
     engines: {node: '>= 10'}
     dependencies:
@@ -4174,11 +4125,10 @@ packages:
       longest: 2.0.1
       word-wrap: 1.2.3
     optionalDependencies:
-      '@commitlint/load': 16.1.0_@types+node@17.0.4
+      '@commitlint/load': 16.2.1
     transitivePeerDependencies:
       - '@swc/core'
       - '@swc/wasm'
-      - '@types/node'
     dev: true
 
   /d/1.0.1:

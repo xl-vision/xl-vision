@@ -32,7 +32,8 @@
     "url": "https://github.com/xl-vision/xl-vision/issues"
   },
   "dependencies": {
-    "@xl-vision/utils": "workspace:^"
+    "@xl-vision/utils": "workspace:^",
+    "resize-observer-polyfill": "^1.5.1"
   },
   "peerDependencies": {
     "@babel/runtime": "^7.15.4",

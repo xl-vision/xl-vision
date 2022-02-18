@@ -2,9 +2,8 @@ import { CSSObject } from '@xl-vision/styled-engine';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { env } from '@xl-vision/utils';
-import { useConstantFn, useForkRef } from '@xl-vision/hooks';
+import { useConstantFn, useForkRef, useResizeObserver } from '@xl-vision/hooks';
 import React from 'react';
-import useResize from '../hooks/useResizeObserver';
 import { styled } from '../styles';
 import AvatarContext from './AvatarContext';
 import { ComponentSize, useTheme } from '../ThemeProvider';
@@ -129,7 +128,7 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
     setScale(Math.min(scaleX, scaleY));
   });
 
-  const childResizeRef = useResize<HTMLSpanElement>(handleResize);
+  const childResizeRef = useResizeObserver<HTMLSpanElement>(handleResize);
 
   const childRef = React.useRef<HTMLSpanElement>(null);
 
