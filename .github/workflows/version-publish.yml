@@ -1,0 +1,6 @@
+name: Version Publish
+on:
+  push:
+    branches:
+      - master
+      

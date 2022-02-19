@@ -3,6 +3,7 @@ const glob = require('glob');
 const fs = require('fs-extra');
 const path = require('path');
 const { default: simpleGit } = require('simple-git');
+const conventionalChangelog = require('conventional-changelog');
 
 function findPackages(cwd) {
   return new Promise((resolve, reject) => {
@@ -55,9 +56,17 @@ async function createReleasePR(releaseType) {
 
   await promise;
 
+  conventionalChangelog({
+    preset: 'angular',
+  }).pipe(
+    fs.createWriteStream(path.resolve(cwd, 'CHANGELOG.md'), {
+      flags: 'r+',
+    }),
+  );
+
   await git.add('.');
 
-  await git.commit(`chore: bump version to ${nextVersion}`);
+  await git.commit(`chore: bump version to v${nextVersion}`);
 }
 
 createReleasePR();
