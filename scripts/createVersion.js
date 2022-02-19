@@ -44,10 +44,10 @@ function createChangelog(cwd, prevVersion) {
 }
 
 async function createReleasePR(releaseType) {
-  const githubToken = process.env.github.token;
+  const token = process.env.TOKEN;
   const git = simpleGit({
     config: [
-      `Authorization: token ${githubToken}`,
+      `Authorization: token ${token}`,
       'user.email=github-actions[bot]@users.noreply.github.com',
       'user.name=github-actions[bot]',
     ],

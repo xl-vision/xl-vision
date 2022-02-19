@@ -32,4 +32,5 @@ jobs:
       - name: Create changes
         run: |
           export RELEASE_TYPE=${{matrix.type}}
+          export TOKEN=${{GITHUB_TOKEN}}
           node ./scripts/createVersion.js
