@@ -1,8 +1,8 @@
 name: Version Update
-# on:
-#   push:
-#     branches:
-#       - master
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   build:
@@ -25,12 +25,3 @@ jobs:
         with:
           node-version: 14
           cache: 'pnpm'
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Create changes
-        run: |
-          export RELEASE_TYPE=${{matrix.type}}
-          export TOKEN=${{secrets.PRIVATE_ACCESS_TOKEN}}
-          node ./scripts/createVersion.js

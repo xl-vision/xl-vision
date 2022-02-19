@@ -1,9 +1,11 @@
+/* eslint-disable no-console */
 const semver = require('semver');
 const glob = require('glob');
 const fs = require('fs-extra');
 const path = require('path');
 const { default: simpleGit } = require('simple-git');
 const conventionalChangelog = require('conventional-changelog');
+const { Octokit, App } = require('octokit');
 
 function findPackages(cwd) {
   return new Promise((resolve, reject) => {
@@ -23,29 +25,33 @@ function findPackages(cwd) {
   });
 }
 
-function createChangelog(cwd, prevVersion) {
+function streamToString(stream) {
+  const chunks = [];
   return new Promise((resolve, reject) => {
-    conventionalChangelog(
-      {
-        preset: 'angular',
-      },
-      {
-        previousTag: `v${prevVersion}`,
-      },
-    )
-      .pipe(
-        fs.createWriteStream(path.resolve(cwd, 'CHANGELOG.md'), {
-          flags: 'r+',
-        }),
-      )
-      .on('error', reject)
-      .on('finish', resolve);
+    stream.on('data', (chunk) => chunks.push(Buffer.from(chunk)));
+    stream.on('error', (err) => reject(err));
+    stream.on('end', () => resolve(Buffer.concat(chunks).toString('utf8')));
   });
 }
 
+function createChangelog(prevVersion) {
+  const stream = conventionalChangelog(
+    {
+      preset: 'angular',
+    },
+    {
+      previousTag: `v${prevVersion}`,
+    },
+  );
+
+  return streamToString(stream);
+}
+
 async function createReleasePR(releaseType) {
+  const token = process.env.TOKEN;
   const git = simpleGit({
     config: [
+      `Authorization: token ${token}`,
       'user.email=github-actions[bot]@users.noreply.github.com',
       'user.name=github-actions[bot]',
     ],
@@ -84,11 +90,58 @@ async function createReleasePR(releaseType) {
 
   await promise;
 
-  await createChangelog(cwd, baseVersion);
+  console.log(`\nchange package.json version from '${baseVersion}' to '${nextVersion}'\n`);
+
+  const content = await createChangelog(baseVersion);
+
+  await fs.writeFile(path.resolve(cwd, 'CHANGELOG.md'), content, {
+    encoding: 'utf8',
+    flag: 'r+',
+  });
+
+  console.log(`\ncreate changelog\n`);
 
   await git.add('.');
 
   await git.commit(`chore: bump version to v${nextVersion}`, ['-n']);
+
+  await git.push('origin', `version/${releaseType}`, ['--force']);
+
+  const octokit = new Octokit({ auth: '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' });
+
+  const res = await octokit.request('GET /repos/{owner}/{repo}/pulls', {
+    owner: 'xl-vision',
+    repo: 'xl-vision',
+    base: 'master',
+    state: 'open',
+    head: `version/${releaseType}`,
+  });
+
+  const pullNumber = res.data.length ? res.data[0].number : null;
+
+  const title = `chore(${releaseType}): bump to v${nextVersion}`;
+
+  const newContent = `### Changelogs\n\n${content}`;
+
+  if (pullNumber !== null) {
+    await octokit.request('PATCH /repos/{owner}/{repo}/pulls/{pull_number}', {
+      owner: 'xl-vision',
+      repo: 'xl-vision',
+      pull_number: pullNumber,
+      title,
+      body: newContent,
+      state: 'open',
+    });
+  } else {
+    await octokit.request('POST /repos/{owner}/{repo}/pulls', {
+      owner: 'xl-vision',
+      repo: 'xl-vision',
+      head: `version/${releaseType}`,
+      base: 'master',
+      title,
+      body: newContent,
+    });
+  }
 }
 
 createReleasePR();
