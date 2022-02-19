@@ -1,0 +1,39 @@
+name: Version Update
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        type: ['prerelease', 'patch']
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6
+      - name: Use Node.js 14
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Create changes
+        run: |
+          export RELEASE_TYPE=${{matrix.type}}
+          node ./scripts/version.js
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: version/${{matrix.type}}
