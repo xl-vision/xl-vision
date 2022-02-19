@@ -65,7 +65,9 @@ async function createReleasePR(releaseType) {
       .then(() => fs.readJSON(filePath))
       .then((packageJson) => {
         packageJson.version = nextVersion;
-        return fs.writeJSON(filePath, packageJson);
+        return fs.writeJSON(filePath, packageJson, {
+          spaces: 2,
+        });
       });
   });
 

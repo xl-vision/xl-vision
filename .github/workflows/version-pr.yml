@@ -1,9 +1,8 @@
 name: Version PR
-
 on:
   push:
     branches:
-      - 'version/*' # Support wildcard matching
+      - version/* # Support wildcard matching
 jobs:
   pull-request:
     runs-on: ubuntu-latest
