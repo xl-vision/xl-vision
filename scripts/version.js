@@ -23,11 +23,16 @@ function findPackages(cwd) {
   });
 }
 
-function createChangelog(cwd) {
+function createChangelog(cwd, prevVersion) {
   return new Promise((resolve, reject) => {
-    conventionalChangelog({
-      preset: 'angular',
-    })
+    conventionalChangelog(
+      {
+        preset: 'angular',
+      },
+      {
+        previousTag: `v${prevVersion}`,
+      },
+    )
       .pipe(
         fs.createWriteStream(path.resolve(cwd, 'CHANGELOG.md'), {
           flags: 'r+',
@@ -79,7 +84,7 @@ async function createReleasePR(releaseType) {
 
   await promise;
 
-  await createChangelog(cwd);
+  await createChangelog(cwd, baseVersion);
 
   await git.add('.');
 
