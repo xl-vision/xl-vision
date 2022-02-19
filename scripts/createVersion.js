@@ -44,7 +44,7 @@ function createChangelog(cwd, prevVersion) {
 }
 
 async function createReleasePR(releaseType) {
-  const token = process.env.GITHUB_TOKEN;
+  const token = process.env.INPUT_GITHUB_TOKEN;
   const git = simpleGit({
     config: [
       `Authorization: token ${token}`,
