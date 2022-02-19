@@ -41,13 +41,12 @@ jobs:
           branch: version/${{matrix.type}}
           force: true
 
-      - uses: actions/checkout@v2
       - name: pull-request
         uses: repo-sync/pull-request@v2
         with:
-          source_branch: '' # If blank, default: triggered branch
+          source_branch: 'version/${{matrix.type}}' # If blank, default: triggered branch
           destination_branch: 'master' # If blank, default: master
-          pr_title: 'merge: mergin ${{ github.ref }} into master' # Title of pull request
+          pr_title: 'merge: merge version/${{matrix.type}} into master' # Title of pull request
           pr_body: ':crown: *An automated PR*' # Full markdown support, requires pr_title to be set
           # pr_template: '.github/PULL_REQUEST_TEMPLATE.md' # Path to pull request template, requires pr_title to be set, excludes pr_body
           pr_reviewer: 'rhysxia' # Comma-separated list (no spaces)
