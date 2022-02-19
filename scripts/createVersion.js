@@ -44,8 +44,10 @@ function createChangelog(cwd, prevVersion) {
 }
 
 async function createReleasePR(releaseType) {
+  const token = process.env.GITHUB_TOKEN;
   const git = simpleGit({
     config: [
+      `Authorization: token ${token}`,
       'user.email=github-actions[bot]@users.noreply.github.com',
       'user.name=github-actions[bot]',
     ],
@@ -89,6 +91,8 @@ async function createReleasePR(releaseType) {
   await git.add('.');
 
   await git.commit(`chore: bump version to v${nextVersion}`, ['-n']);
+
+  await git.push('origin', `version/${releaseType}`, ['--force']);
 }
 
 createReleasePR();

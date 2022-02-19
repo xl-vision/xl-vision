@@ -19,6 +19,7 @@ jobs:
       - uses: pnpm/action-setup@v2.0.1
         with:
           version: 6
+
       - name: Use Node.js 14
         uses: actions/setup-node@v2
         with:
@@ -31,11 +32,4 @@ jobs:
       - name: Create changes
         run: |
           export RELEASE_TYPE=${{matrix.type}}
-          node ./scripts/version.js
-
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: version/${{matrix.type}}
-          force: true
+          node ./scripts/createVersion.js
