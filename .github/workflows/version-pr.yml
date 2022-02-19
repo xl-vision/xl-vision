@@ -2,9 +2,7 @@ name: Version PR
 on:
   push:
     branches:
-      - version/prerelease
-      - version/patch
-
+      - version/*
 jobs:
   pull-request:
     runs-on: ubuntu-latest
