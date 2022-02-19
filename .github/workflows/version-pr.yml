@@ -2,7 +2,9 @@ name: Version PR
 on:
   push:
     branches:
-      - version/* # Support wildcard matching
+      - version/prerelease
+      - version/patch
+
 jobs:
   pull-request:
     runs-on: ubuntu-latest

@@ -1,14 +1,17 @@
 name: Auto Assign
 on:
   pull_request:
-    types: [opened, ready_for_review]
+    types:
+      - opened
+      - ready_for_review
+    branches:
+      - master
 
 jobs:
   add-reviews:
     name: add reviews
     runs-on: ubuntu-latest
     steps:
-
       - name: auto-assign
         uses: kentaro-m/auto-assign-action@v1.2.1
         # with:
