@@ -23,6 +23,21 @@ function findPackages(cwd) {
   });
 }
 
+function createChangelog(cwd) {
+  return new Promise((resolve, reject) => {
+    conventionalChangelog({
+      preset: 'angular',
+    })
+      .pipe(
+        fs.createWriteStream(path.resolve(cwd, 'CHANGELOG.md'), {
+          flags: 'r+',
+        }),
+      )
+      .on('error', reject)
+      .on('finish', resolve);
+  });
+}
+
 async function createReleasePR(releaseType) {
   const git = simpleGit({
     config: [
@@ -56,13 +71,7 @@ async function createReleasePR(releaseType) {
 
   await promise;
 
-  conventionalChangelog({
-    preset: 'angular',
-  }).pipe(
-    fs.createWriteStream(path.resolve(cwd, 'CHANGELOG.md'), {
-      flags: 'r+',
-    }),
-  );
+  await createChangelog(cwd);
 
   await git.add('.');
 
