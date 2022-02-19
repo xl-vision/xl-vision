@@ -49,13 +49,18 @@ async function createReleasePR(releaseType) {
   releaseType = releaseType || process.env.RELEASE_TYPE;
 
   const cwd = process.cwd();
-  const basePackageJson = await fs.readJSON(path.resolve(cwd, 'package.json'));
+
+  const basePackagePath = path.resolve(cwd, 'package.json');
+
+  const basePackageJson = await fs.readJSON(basePackagePath);
 
   const baseVersion = basePackageJson.version;
 
   const nextVersion = semver.inc(baseVersion, releaseType);
 
   const files = await findPackages(cwd);
+
+  files.push(basePackagePath);
 
   let promise = Promise.resolve();
 
@@ -67,6 +72,7 @@ async function createReleasePR(releaseType) {
         packageJson.version = nextVersion;
         return fs.writeJSON(filePath, packageJson, {
           spaces: 2,
+          EOL: '\n',
         });
       });
   });
@@ -77,7 +83,7 @@ async function createReleasePR(releaseType) {
 
   await git.add('.');
 
-  await git.commit(`chore: bump version to v${nextVersion}`);
+  await git.commit(`chore: bump version to v${nextVersion}`, ['-n']);
 }
 
 createReleasePR();
