@@ -25,7 +25,7 @@
     "lint": "eslint . --report-unused-disable-directives --ext .js,.ts,.jsx,.tsx --max-warnings 0",
     "build": "pnpm run build --parallel --filter \"@xl-vision/*\"",
     "updateVersion": "node ./scripts/updateVersion",
-    "release": " && pnpm publish --filter ./packages"
+    "release": "pnpm publish --filter ./packages"
   },
   "devDependencies": {
     "@babel/core": "^7.17.2",
