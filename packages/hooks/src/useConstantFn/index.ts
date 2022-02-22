@@ -5,15 +5,16 @@ import { useRef } from 'react';
  * 将给定的函数常量化
  * @param value
  */
-const useConstantFn = <P extends Array<any>, R extends any>(fn: (...args: P) => R) => {
-  const fnRef = useRef<(...args: P) => R>(fn);
+const useConstantFn = <Fn extends (...args: any) => any>(fn: Fn) => {
+  const fnRef = useRef<Fn>(fn);
 
   fnRef.current = fn;
 
-  const constantFnRef = useRef<(...args: P) => R>();
+  const constantFnRef = useRef<Fn>();
 
   if (!constantFnRef.current) {
-    constantFnRef.current = (...args: P) => fnRef.current(...args);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-argument
+    constantFnRef.current = ((...args: any) => fnRef.current(...args)) as Fn;
   }
 
   return constantFnRef.current;

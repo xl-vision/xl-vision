@@ -157,7 +157,7 @@ const BaseButton = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseB
     const handleTouchMove = useRippleHandler('stop', onTouchMove);
     const handleBlur = useRippleHandler('stop', onBlur, false);
 
-    const handleKeyDown: typeof onKeyDown = useConstantFn((e) => {
+    const handleKeyDown: React.KeyboardEventHandler<any> = useConstantFn((e) => {
       if (rippleRef.current && !isKeyDownRef.current && e.key === ' ') {
         isKeyDownRef.current = true;
         rippleRef.current.start();
@@ -165,7 +165,7 @@ const BaseButton = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseB
 
       onKeyDown?.(e);
     });
-    const handleKeyUp: typeof onKeyUp = useConstantFn((e) => {
+    const handleKeyUp: React.KeyboardEventHandler<any> = useConstantFn((e) => {
       if (rippleRef.current && isKeyDownRef.current && e.key === ' ') {
         isKeyDownRef.current = false;
         rippleRef.current.stop();
@@ -173,7 +173,7 @@ const BaseButton = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseB
       onKeyUp?.(e);
     });
 
-    const handleClick: typeof onClick = useConstantFn((e) => {
+    const handleClick: React.MouseEventHandler<any> = useConstantFn((e) => {
       if (loading || disabled) {
         e.preventDefault();
         return;

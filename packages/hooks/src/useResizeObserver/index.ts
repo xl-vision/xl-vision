@@ -13,31 +13,29 @@ const useResizeObserver = <T extends HTMLElement>(onResizeObserver: ResizeObserv
   const widthRef = useRef<number>();
   const heightRef = useRef<number>();
 
-  const handleResizeObserver: ResizeObserverCallback = useConstantFn(
-    (entries: Array<ResizeObserverEntry>) => {
-      if (!entries.length) {
-        return;
-      }
-      const entry = entries[0];
+  const handleResizeObserver: ResizeObserverCallback = useConstantFn((entries) => {
+    if (!entries.length) {
+      return;
+    }
+    const entry = entries[0];
 
-      const target = entry.target as T;
+    const target = entry.target as T;
 
-      const { width, height } = entry.contentRect;
+    const { width, height } = entry.contentRect;
 
-      const fixedWidth = Math.round(width);
-      const fixedHeight = Math.round(height);
+    const fixedWidth = Math.round(width);
+    const fixedHeight = Math.round(height);
 
-      if (widthRef.current === fixedWidth && heightRef.current === fixedHeight) {
-        return;
-      }
+    if (widthRef.current === fixedWidth && heightRef.current === fixedHeight) {
+      return;
+    }
 
-      Promise.resolve()
-        .then(() => {
-          onResizeObserver({ width: fixedWidth, height: fixedHeight }, target);
-        })
-        .catch(() => {});
-    },
-  );
+    Promise.resolve()
+      .then(() => {
+        onResizeObserver({ width: fixedWidth, height: fixedHeight }, target);
+      })
+      .catch(() => {});
+  });
 
   const refCallback: RefCallback<T> = useCallback(
     (el) => {
