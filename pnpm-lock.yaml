@@ -39,7 +39,7 @@ importers:
       eslint-plugin-react: ^7.28.0
       eslint-plugin-react-hooks: ^4.3.0
       eslint-plugin-unicorn: ^40.1.0
-      fs-extra: ^10.0.0
+      fs-extra: ^10.0.1
       glob: ^7.2.0
       gulp: ^4.0.2
       gulp-babel: ^8.0.0
@@ -91,7 +91,7 @@ importers:
       eslint-plugin-react: 7.28.0_eslint@8.7.0
       eslint-plugin-react-hooks: 4.3.0_eslint@8.7.0
       eslint-plugin-unicorn: 40.1.0_eslint@8.7.0
-      fs-extra: 10.0.0
+      fs-extra: 10.0.1
       glob: 7.2.0
       gulp: 4.0.2
       gulp-babel: 8.0.0_@babel+core@7.17.5
@@ -121,7 +121,7 @@ importers:
       '@xl-vision/styled-engine': workspace:^
       '@xl-vision/utils': workspace:^
       clsx: ^1.1.1
-      fs-extra: ^10.0.0
+      fs-extra: ^10.0.1
       mustache: ^4.2.0
       prop-types: ^15.8.1
       svgo: ^2.8.0
@@ -131,7 +131,7 @@ importers:
       clsx: 1.1.1
       prop-types: 15.8.1
     devDependencies:
-      fs-extra: 10.0.0
+      fs-extra: 10.0.1
       mustache: 4.2.0
       svgo: 2.8.0
 
@@ -1804,7 +1804,7 @@ packages:
     dependencies:
       '@commitlint/top-level': 16.2.1
       '@commitlint/types': 16.2.1
-      fs-extra: 10.0.0
+      fs-extra: 10.0.1
       git-raw-commits: 2.0.10
     dev: true
 
@@ -5361,8 +5361,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /fs-extra/10.0.0:
-    resolution: {integrity: sha512-C5owb14u9eJwizKGdchcDUQeFtlSHHthBk8pbX9Vc1PFZrLombudjDnNns88aYslCyF6IY5SUw3Roz6xShcEIQ==}
+  /fs-extra/10.0.1:
+    resolution: {integrity: sha512-NbdoVMZso2Lsrn/QwLXOy6rm0ufY2zEOKCDzJR/0kBsb0E6qed0P3iYK+Ath3BfvXEeu4JhEtXLgILx5psUfag==}
     engines: {node: '>=12'}
     dependencies:
       graceful-fs: 4.2.8
