@@ -17,7 +17,7 @@ importers:
       '@types/node': 17.0.4
       '@types/react': ^17.0.24
       '@types/react-dom': ^17.0.9
-      '@types/styled-components': ^5.1.23
+      '@types/styled-components': ^5.1.24
       '@typescript-eslint/eslint-plugin': ^5.11.0
       '@typescript-eslint/parser': ^5.11.0
       chalk: ^4.1.2
@@ -69,7 +69,7 @@ importers:
       '@types/node': 17.0.4
       '@types/react': 17.0.38
       '@types/react-dom': 17.0.11
-      '@types/styled-components': 5.1.23
+      '@types/styled-components': 5.1.24
       '@typescript-eslint/eslint-plugin': 5.11.0_d24544f1344c460949812fdace99b313
       '@typescript-eslint/parser': 5.11.0_eslint@8.7.0+typescript@4.5.5
       chalk: 4.1.2
@@ -2527,8 +2527,8 @@ packages:
     resolution: {integrity: sha512-Hl219/BT5fLAaz6NDkSuhzasy49dwQS/DSdu4MdggFB8zcXv7vflBI3xp7FEmkmdDkBUI2bPUNeMttp2knYdxw==}
     dev: true
 
-  /@types/styled-components/5.1.23:
-    resolution: {integrity: sha512-zt8oQGU6XB4LH1Xpq169YnAVmt22+swzHJvyKMyTZu/z8+afvgKjjg0s79aAodgNSf36ZOEG6DyVAW/JhLH2Nw==}
+  /@types/styled-components/5.1.24:
+    resolution: {integrity: sha512-mz0fzq2nez+Lq5IuYammYwWgyLUE6OMAJTQL9D8hFLP4Pkh7gVYJii/VQWxq8/TK34g/OrkehXaFNdcEKcItug==}
     dependencies:
       '@types/hoist-non-react-statics': 3.3.1
       '@types/react': 17.0.38
@@ -7278,7 +7278,7 @@ packages:
     dependencies:
       universalify: 2.0.0
     optionalDependencies:
-      graceful-fs: 4.2.8
+      graceful-fs: 4.2.9
     dev: true
 
   /jsonparse/1.3.1:
