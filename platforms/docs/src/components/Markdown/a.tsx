@@ -20,7 +20,7 @@ const Link: React.FunctionComponent<React.AnchorHTMLAttributes<HTMLAnchorElement
     if (/^ *\//.exec(href)) {
       // @ts-ignore
       return (
-        <NextLink href={href}>
+        <NextLink href={href} passHref={true}>
           <LinkWrapper {...others} />
         </NextLink>
       );

@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { Button, Dropdown, Tooltip, TooltipProps } from '@xl-vision/react';
 import React from 'react';
 

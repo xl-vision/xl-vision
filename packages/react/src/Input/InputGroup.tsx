@@ -1,5 +1,6 @@
 import { env } from '@xl-vision/utils';
 import React from 'react';
+import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { ComponentSize, useTheme, ThemeContext } from '../ThemeProvider';
 import { styled } from '../styles';
@@ -92,7 +93,9 @@ const InputGroup: React.FunctionComponent<InputGroupProps> = (props) => {
 
 if (env.isDevelopment) {
   InputGroup.displayName = displayName;
-  InputGroup.propTypes = {};
+  InputGroup.propTypes = {
+    className: PropTypes.string,
+  };
 }
 
 export default InputGroup;
