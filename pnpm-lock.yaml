@@ -198,7 +198,7 @@ importers:
       cross-env: ^7.0.3
       js-cookie: ^3.0.1
       next: ^12.0.10
-      next-sitemap: ^2.0.7
+      next-sitemap: ^2.5.7
       prismjs: ^1.26.0
       prop-types: ^15.8.1
       react: '>=17.0.2'
@@ -232,7 +232,7 @@ importers:
       '@types/node': 17.0.4
       babel-plugin-styled-components: 2.0.6_styled-components@5.3.3
       cross-env: 7.0.3
-      next-sitemap: 2.0.7_next@12.0.10
+      next-sitemap: 2.5.7_next@12.0.10
       prismjs: 1.26.0
       remark-emoji: 3.0.2
       webpack-merge: 5.8.0
@@ -7908,9 +7908,9 @@ packages:
       randexp: 0.4.6
     dev: true
 
-  /next-sitemap/2.0.7_next@12.0.10:
-    resolution: {integrity: sha512-QuB0j34a61FjSqOLab+57nBb9rfPEUewgpggs/BUR4CkXgglqn2eLorT0gh2lv9NA1j2rMmVH5xZTJpRlURyow==}
-    engines: {node: '>=14'}
+  /next-sitemap/2.5.7_next@12.0.10:
+    resolution: {integrity: sha512-snyIWKwzy4QfLrZmXk2fT7ue5RYc1GNqrMfvC/VQJWyPX5QRZnYJLVScd9jmfdVlN5l6M5sFY3VSuFmCQUZ5Vg==}
+    engines: {node: '>=14.18.3'}
     hasBin: true
     peerDependencies:
       next: '*'
