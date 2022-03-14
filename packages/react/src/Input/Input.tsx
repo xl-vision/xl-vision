@@ -266,10 +266,6 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
       v = '';
     }
 
-    if (maxLength && maxLength > 0) {
-      v = v.slice(0, maxLength);
-    }
-
     handleValueChange(v);
   });
 

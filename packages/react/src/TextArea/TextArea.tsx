@@ -23,12 +23,12 @@ export type TextAreaProps = Omit<
 
 const displayName = 'TextArea';
 
-const TextAreaRoot = styled('div', {
+const TextAreaRoot = styled('span', {
   name: displayName,
   slot: 'Root',
 })<{ size: ComponentSize; focused: boolean; disabled?: boolean; readOnly?: boolean }>(
   ({ theme, styleProps }) => {
-    const { color, styleSize, typography, transition } = theme;
+    const { color, styleSize, typography, transition, clsPrefix } = theme;
 
     const { size, focused, disabled, readOnly } = styleProps;
 
@@ -36,10 +36,16 @@ const TextAreaRoot = styled('div', {
 
     const styles: CSSObject = {
       ...typography.body1.style,
-      padding: `${themeSize.padding.y}px ${themeSize.padding.x}px`,
+      display: 'inline-block',
+      width: '100%',
+      position: 'relative',
+      backgroundColor: color.background.paper,
       border: `${themeSize.border}px solid ${color.divider}`,
       borderRadius: themeSize.borderRadius,
       transition: transition.standard(['borderColor', 'boxShadow']),
+      [`.${clsPrefix}-textarea__inner`]: {
+        padding: `${themeSize.padding.y}px ${themeSize.padding.x}px`,
+      },
     };
 
     if (disabled) {
@@ -71,7 +77,11 @@ const TextAreaInner = styled('textarea', {
     ...mixins.placeholder(),
     border: 0,
     outline: 0,
-    padding: 0,
+    backgroundColor: 'transparent',
+    width: '100%',
+    boxSizing: 'border-box',
+    verticalAlign: 'bottom',
+    resize: 'vertical',
   };
 });
 
@@ -114,10 +124,6 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
       v = '';
     }
 
-    if (maxLength && maxLength > 0) {
-      v = v.slice(0, maxLength);
-    }
-
     handleValueChange(v);
   });
 
@@ -145,6 +151,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
         aria-disabled={disabled}
         aria-readonly={readOnly}
         {...others}
+        className={`${rootClassName}__inner`}
         value={value}
         onChange={handleChange}
         onFocus={handleFocus}
