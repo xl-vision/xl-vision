@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { CSSObject } from '@xl-vision/styled-engine';
 import { useConstantFn } from '@xl-vision/hooks';
+import { CloseCircleFilled } from '@xl-vision/icons';
 import { styled } from '../styles';
 import { ComponentSize, useTheme } from '../ThemeProvider';
 import { alpha } from '../utils/color';
@@ -28,7 +29,7 @@ const TextAreaRoot = styled('span', {
   slot: 'Root',
 })<{ size: ComponentSize; focused: boolean; disabled?: boolean; readOnly?: boolean }>(
   ({ theme, styleProps }) => {
-    const { color, styleSize, typography, transition, clsPrefix } = theme;
+    const { color, styleSize, typography, transition, clsPrefix, mixins } = theme;
 
     const { size, focused, disabled, readOnly } = styleProps;
 
@@ -45,6 +46,23 @@ const TextAreaRoot = styled('span', {
       transition: transition.standard(['borderColor', 'boxShadow']),
       [`.${clsPrefix}-textarea__inner`]: {
         padding: `${themeSize.padding.y}px ${themeSize.padding.x}px`,
+      },
+      [`.${clsPrefix}-textarea__suffix`]: {
+        position: 'absolute',
+        top: 0,
+        right: themeSize.padding.x,
+        padding: `${themeSize.padding.y}px 0`,
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        flexWrap: 'wrap',
+        justifyContent: 'space-between',
+      },
+      [`.${clsPrefix}-textarea__clear`]: {
+        color: color.text.secondary,
+      },
+      [`.${clsPrefix}-textarea__count`]: {
+        color: color.text.hint,
       },
     };
 
@@ -101,6 +119,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
     className,
     onFocus,
     onBlur,
+    style,
     ...others
   } = props;
 
@@ -127,6 +146,10 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
     handleValueChange(v);
   });
 
+  const handleReset = useConstantFn(() => {
+    handleValueChange('');
+  });
+
   React.useEffect(() => {
     if (disabled || readOnly) {
       setFocused(false);
@@ -145,8 +168,35 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
     className,
   );
 
+  let showCountNode: React.ReactNode;
+
+  if (showCount) {
+    const { length } = value;
+    const msg = `${length}${maxLength ? `/${maxLength}` : ''}`;
+
+    showCountNode = <span className={`${rootClassName}__count`}>{msg}</span>;
+  }
+
+  const showClearNode = allowClear && (
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
+    <span role='button' tabIndex={-1} className={`${rootClassName}__clear`} onClick={handleReset}>
+      <CloseCircleFilled />
+    </span>
+  );
+
+  const suffixNode = (showClearNode || showCountNode) && (
+    <span className={`${rootClassName}__suffix`}>
+      {showClearNode || <span />}
+      {showCountNode || <span />}
+    </span>
+  );
+
   return (
-    <TextAreaRoot styleProps={{ focused, size, disabled, readOnly }} className={rootClasses}>
+    <TextAreaRoot
+      style={style}
+      styleProps={{ focused, size, disabled, readOnly }}
+      className={rootClasses}
+    >
       <TextAreaInner
         aria-disabled={disabled}
         aria-readonly={readOnly}
@@ -158,6 +208,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
         onBlur={handleBlur}
         ref={ref}
       />
+      {suffixNode}
     </TextAreaRoot>
   );
 });
@@ -174,6 +225,7 @@ if (env.isDevelopment) {
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
     className: PropTypes.string,
+    style: PropTypes.object,
   };
 }
 
