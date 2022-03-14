@@ -29,7 +29,7 @@ const TextAreaRoot = styled('span', {
   slot: 'Root',
 })<{ size: ComponentSize; focused: boolean; disabled?: boolean; readOnly?: boolean }>(
   ({ theme, styleProps }) => {
-    const { color, styleSize, typography, transition, clsPrefix, mixins } = theme;
+    const { color, styleSize, typography, transition, clsPrefix } = theme;
 
     const { size, focused, disabled, readOnly } = styleProps;
 
