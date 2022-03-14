@@ -36,22 +36,22 @@ const GlobalStyle = createGlobalStyles(({ theme }) => {
     },
     '.sm-down': {
       [`@media (min-width: ${values.sm + 1}${unit})`]: {
-        display: 'none',
+        display: 'none !important',
       },
     },
     '.sm-up': {
       [`@media (max-width: ${values.sm}${unit})`]: {
-        display: 'none',
+        display: 'none !important',
       },
     },
     '.md-down': {
       [`@media (min-width: ${values.md + 1}${unit})`]: {
-        display: 'none',
+        display: 'none !important',
       },
     },
     '.md-up': {
       [`@media (max-width: ${values.md}${unit})`]: {
-        display: 'none',
+        display: 'none !important',
       },
     },
   };
