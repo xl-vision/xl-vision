@@ -245,6 +245,8 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     onChange,
     onBlur,
     onFocus,
+    onCompositionStart,
+    onCompositionEnd,
     ...others
   } = props;
 
@@ -260,13 +262,56 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
 
   const removePasswordTimerRef = React.useRef<NodeJS.Timeout>();
 
+  const isCompositingRef = React.useRef<boolean>(false);
+  const oldCompositionValueRef = React.useRef<string>();
+  const oldSelectionStartRef = React.useRef<number | null>();
+
+  const hasMaxLength = Number(maxLength) > 0;
+
   const handleChange = useConstantFn((e: React.ChangeEvent<HTMLInputElement>) => {
     let v = e.target.value;
     if (typeof v === 'undefined' || v === null) {
       v = '';
     }
 
+    // 处理emoji, '👏'.length === 2
+    if (!isCompositingRef.current && hasMaxLength) {
+      console.log('handleChange1');
+      v = getFixedString(value, maxLength!).value;
+    }
+    console.log('handleChange');
+
     handleValueChange(v);
+  });
+
+  const handleCompositionStart = useConstantFn((e: React.CompositionEvent<HTMLInputElement>) => {
+    oldCompositionValueRef.current = value;
+    oldSelectionStartRef.current = e.currentTarget.selectionStart;
+    isCompositingRef.current = true;
+    onCompositionStart?.(e);
+    console.log('handleCompositionStart');
+  });
+
+  const handleCompositionEnd = useConstantFn((e: React.CompositionEvent<HTMLInputElement>) => {
+    isCompositingRef.current = false;
+    let triggerValue = e.currentTarget.value;
+    if (hasMaxLength) {
+      const isCursorEnd =
+        oldSelectionStartRef.current! >= maxLength! + 1 ||
+        oldSelectionStartRef.current === oldCompositionValueRef.current!.length;
+      triggerValue = getCompositionValue(
+        triggerValue,
+        oldCompositionValueRef.current!,
+        maxLength!,
+        isCursorEnd,
+      );
+    }
+
+    handleValueChange(triggerValue);
+
+    console.log('handleCompositionEnd');
+
+    onCompositionEnd?.(e);
   });
 
   const focus = useConstantFn(() => {
@@ -348,9 +393,18 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
 
   let showCountNode: React.ReactNode;
 
+  let actualValue = value;
+
   if (showCount) {
-    const { length } = value;
-    const msg = `${length}${maxLength ? `/${maxLength}` : ''}`;
+    let length = 0;
+
+    if (hasMaxLength) {
+      const fixedString = getFixedString(value, maxLength!);
+      actualValue = fixedString.value;
+      length = fixedString.length;
+    }
+
+    const msg = `${length}${hasMaxLength ? `/${maxLength}` : ''}`;
 
     const countClasses = clsx(`${rootClassName}__suffix-count`, {
       [`${rootClassName}__suffix--has-suffix`]: typeof suffix !== 'undefined',
@@ -393,6 +447,8 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
           aria-disabled={disabled}
           aria-readonly={readOnly}
           {...others}
+          onCompositionStart={handleCompositionStart}
+          onCompositionEnd={handleCompositionEnd}
           disabled={disabled}
           readOnly={readOnly}
           ref={inputRef}
@@ -400,8 +456,7 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
           onBlur={handleBlur}
           type={type}
           className={`${rootClassName}__inner`}
-          maxLength={maxLength}
-          value={value}
+          value={actualValue}
           onChange={handleChange}
         />
         {(allowClearNode || showCountNode || typeof suffix !== 'undefined') && (
@@ -469,3 +524,29 @@ if (!env.isProduction) {
 }
 
 export default Input;
+
+const getCompositionValue = (
+  currentValue: string,
+  prevValue: string,
+  maxLength: number,
+  isCursorEnd: boolean,
+) => {
+  const { value, length } = getFixedString(currentValue, maxLength);
+  if (isCursorEnd) {
+    return value;
+  }
+  if (length < maxLength) {
+    return value;
+  }
+
+  return prevValue;
+};
+
+const getFixedString = (value: string, maxLength: number) => {
+  const array = [...value].slice(0, maxLength);
+
+  return {
+    value: array.join(''),
+    length: array.length,
+  };
+};
