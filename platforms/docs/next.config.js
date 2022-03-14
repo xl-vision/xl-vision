@@ -27,9 +27,9 @@ const nextConfig = {
         alias: {
           ...alias,
           '@mdx-js/react': require.resolve('@mdx-js/react'),
-          react: path.join(__dirname, '../../node_modules/react'),
-          'react-dom': path.join(__dirname, '../../node_modules/react-dom'),
-          'styled-components': path.join(__dirname, '../../node_modules/styled-components'),
+          react: path.resolve(__dirname, '../../node_modules/react'),
+          'react-dom': path.resolve(__dirname, '../../node_modules/react-dom'),
+          'styled-components': path.resolve(__dirname, '../../node_modules/styled-components'),
         },
       },
       module: {
