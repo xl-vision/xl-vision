@@ -1,5 +1,5 @@
 import React from 'react';
-import useTheme from '../ThemeProvider/useTheme';
+import { useTheme } from '../ThemeProvider';
 
 const useBreakPoints = () => {
   const { breakpoints } = useTheme();

@@ -21,6 +21,24 @@ describe('Input', () => {
       expect(wrapper.find(`.xl-input--size-${componentSize}`)).not.toBe(null);
     });
   });
+
+  it('test disabled state', () => {
+    const wrapper = mount(<Input />);
+
+    wrapper.find('input').simulate('focus');
+
+    expect(wrapper.find('.xl-input--focused').exists()).toBe(true);
+    expect(wrapper.find('.xl-input--disabled').exists()).toBe(false);
+
+    wrapper
+      .setProps({
+        disabled: true,
+      })
+      .update();
+
+    expect(wrapper.find('.xl-input--disabled').exists()).toBe(true);
+    expect(wrapper.find('.xl-input--focused').exists()).toBe(false);
+  });
 });
 
 describe('InputGroup', () => {
