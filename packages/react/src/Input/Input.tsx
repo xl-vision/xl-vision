@@ -61,12 +61,14 @@ const InputRoot = styled('span', {
 
   const themeSize = styleSize[size];
 
-  return {
+  const styles: CSSObject = {
     ...typography.body1.style,
     width: '100%',
     display: 'inline-flex',
     fontSize: typography.pxToRem(typography.body1.info.size * themeSize.fontSize),
   };
+
+  return styles;
 });
 
 const InputAddonBefore = styled('span', {
@@ -262,7 +264,7 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
 
   const removePasswordTimerRef = React.useRef<NodeJS.Timeout>();
 
-  const isCompositingRef = React.useRef<boolean>(false);
+  const [isCompositing, setCompositing] = React.useState(false);
   const oldCompositionValueRef = React.useRef<string>();
   const oldSelectionStartRef = React.useRef<number | null>();
 
@@ -275,11 +277,9 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     }
 
     // 处理emoji, '👏'.length === 2
-    if (!isCompositingRef.current && hasMaxLength) {
-      console.log('handleChange1');
-      v = getFixedString(value, maxLength!).value;
+    if (!isCompositing && hasMaxLength) {
+      v = getFixedString(v, maxLength!).value;
     }
-    console.log('handleChange');
 
     handleValueChange(v);
   });
@@ -287,13 +287,12 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
   const handleCompositionStart = useConstantFn((e: React.CompositionEvent<HTMLInputElement>) => {
     oldCompositionValueRef.current = value;
     oldSelectionStartRef.current = e.currentTarget.selectionStart;
-    isCompositingRef.current = true;
+    setCompositing(true);
     onCompositionStart?.(e);
-    console.log('handleCompositionStart');
   });
 
   const handleCompositionEnd = useConstantFn((e: React.CompositionEvent<HTMLInputElement>) => {
-    isCompositingRef.current = false;
+    setCompositing(false);
     let triggerValue = e.currentTarget.value;
     if (hasMaxLength) {
       const isCursorEnd =
@@ -308,8 +307,6 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     }
 
     handleValueChange(triggerValue);
-
-    console.log('handleCompositionEnd');
 
     onCompositionEnd?.(e);
   });
@@ -396,15 +393,15 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
   let actualValue = value;
 
   if (showCount) {
-    let length = 0;
+    let actualLength = [...value].length;
 
-    if (hasMaxLength) {
+    if (!isCompositing && hasMaxLength) {
       const fixedString = getFixedString(value, maxLength!);
       actualValue = fixedString.value;
-      length = fixedString.length;
+      actualLength = fixedString.length;
     }
 
-    const msg = `${length}${hasMaxLength ? `/${maxLength}` : ''}`;
+    const msg = `${actualLength}${hasMaxLength ? `/${maxLength}` : ''}`;
 
     const countClasses = clsx(`${rootClassName}__suffix-count`, {
       [`${rootClassName}__suffix--has-suffix`]: typeof suffix !== 'undefined',
@@ -520,6 +517,8 @@ if (!env.isProduction) {
     onChange: PropTypes.func,
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
+    onCompositionStart: PropTypes.func,
+    onCompositionEnd: PropTypes.func,
   };
 }
 
