@@ -3,12 +3,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { CSSObject } from '@xl-vision/styled-engine';
-import { useConstantFn } from '@xl-vision/hooks';
+import { useConstantFn, useForkRef } from '@xl-vision/hooks';
 import { CloseCircleFilled } from '@xl-vision/icons';
 import { styled } from '../styles';
 import { ComponentSize, useTheme } from '../ThemeProvider';
 import { alpha } from '../utils/color';
 import usePropChange from '../hooks/usePropChange';
+import useInput from '../hooks/useInput';
 
 export type TextAreaProps = Omit<
   React.TextareaHTMLAttributes<HTMLTextAreaElement>,
@@ -125,10 +126,22 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
 
   const [value, handleValueChange] = usePropChange(defaultValue, valueProp, onChange);
 
+  const {
+    hasMaxLength,
+    ref: textareaRef,
+    getWordInfo,
+  } = useInput<HTMLTextAreaElement>({ setValue: handleValueChange, maxLength });
+
   const [focused, setFocused] = React.useState(false);
 
+  const rootRef = React.useRef<HTMLSpanElement>(null);
+
+  const forkRef = useForkRef(rootRef, ref);
+
   const handleFocus = useConstantFn((e: React.FocusEvent<HTMLTextAreaElement>) => {
-    setFocused(true);
+    if (!disabled && !readOnly) {
+      setFocused(true);
+    }
     onFocus?.(e);
   });
 
@@ -143,12 +156,27 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
       v = '';
     }
 
+    v = getWordInfo(v).value;
+
     handleValueChange(v);
+  });
+
+  const focus = useConstantFn(() => {
+    if (!disabled && !readOnly) {
+      textareaRef.current?.focus();
+    }
   });
 
   const handleReset = useConstantFn(() => {
     handleValueChange('');
   });
+
+  // 将textarea focus绑定到span上
+  React.useEffect(() => {
+    if (rootRef.current) {
+      rootRef.current.focus = focus;
+    }
+  }, [focus]);
 
   React.useEffect(() => {
     if (disabled || readOnly) {
@@ -168,16 +196,17 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
     className,
   );
 
+  const { value: actualValue, wordCount } = getWordInfo(value);
+
   let showCountNode: React.ReactNode;
 
   if (showCount) {
-    const { length } = value;
-    const msg = `${length}${maxLength ? `/${maxLength}` : ''}`;
+    const msg = `${wordCount}${hasMaxLength ? `/${maxLength}` : ''}`;
 
     showCountNode = <span className={`${rootClassName}__count`}>{msg}</span>;
   }
 
-  const showClearNode = allowClear && (
+  const showClearNode = !disabled && !readOnly && allowClear && (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <span role='button' tabIndex={-1} className={`${rootClassName}__clear`} onClick={handleReset}>
       <CloseCircleFilled />
@@ -193,6 +222,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
 
   return (
     <TextAreaRoot
+      ref={forkRef}
       style={style}
       styleProps={{ focused, size, disabled, readOnly }}
       className={rootClasses}
@@ -201,12 +231,14 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
         aria-disabled={disabled}
         aria-readonly={readOnly}
         {...others}
+        ref={textareaRef}
         className={`${rootClassName}__inner`}
-        value={value}
+        value={actualValue}
+        readOnly={readOnly}
+        disabled={disabled}
         onChange={handleChange}
         onFocus={handleFocus}
         onBlur={handleBlur}
-        ref={ref}
       />
       {suffixNode}
     </TextAreaRoot>
@@ -221,6 +253,9 @@ if (env.isDevelopment) {
     onChange: PropTypes.func,
     showCount: PropTypes.bool,
     allowClear: PropTypes.bool,
+    maxLength: PropTypes.number,
+    disabled: PropTypes.bool,
+    readOnly: PropTypes.bool,
     size: PropTypes.oneOf<ComponentSize>(['large', 'middle', 'small']),
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,

@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import useConstantFn from '../../../../hooks/src/useConstantFn';
+import { useConstantFn } from '@xl-vision/hooks';
 
 export type InputProps = {
   setValue: (v: string) => void;
@@ -15,6 +15,7 @@ const useInput = <E extends HTMLElement>({ setValue, maxLength }: InputProps) =>
 
   const oldCompositionValueRef = React.useRef<string>();
   const oldSelectionStartRef = React.useRef<number>();
+  const oldSelectionEndRef = React.useRef<number>();
 
   const hasMaxLength = Number(maxLength) > 0;
 
@@ -24,6 +25,8 @@ const useInput = <E extends HTMLElement>({ setValue, maxLength }: InputProps) =>
     oldCompositionValueRef.current = (e.target as any).value;
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
     oldSelectionStartRef.current = (e.target as any).selectionStart;
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+    oldSelectionEndRef.current = (e.target as any).selectionEnd;
   });
 
   const handleCompositionEnd = useConstantFn((e: CompositionEvent) => {
@@ -31,9 +34,15 @@ const useInput = <E extends HTMLElement>({ setValue, maxLength }: InputProps) =>
     let triggerValue: string = (e.target as any).value || '';
 
     if (hasMaxLength) {
+      const oldSelectionStart = oldSelectionStartRef.current;
+      const oldSelectionEnd = oldSelectionEndRef.current;
+      const oldCompositionValue = oldCompositionValueRef.current;
+
       const isCursorEnd =
-        oldSelectionStartRef.current! >= maxLength! + 1 ||
-        oldSelectionStartRef.current === oldCompositionValueRef.current!.length;
+        oldSelectionStart! >= maxLength! + 1 ||
+        oldSelectionStart === oldCompositionValue!.length ||
+        // 选中内容到结尾
+        oldSelectionEnd === oldCompositionValue!.length;
       triggerValue = getCompositionValue(
         triggerValue,
         oldCompositionValueRef.current!,
@@ -83,7 +92,7 @@ const getCompositionValue = (
   if (isCursorEnd) {
     return value;
   }
-  if (wordCount < maxLength) {
+  if (wordCount <= maxLength) {
     return value;
   }
 

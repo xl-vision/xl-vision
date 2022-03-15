@@ -9,7 +9,7 @@ const Demo = () => {
         rows={1}
         allowClear={true}
         showCount={true}
-        maxLength={200000000}
+        maxLength={20}
       />
       <TextArea placeholder='Basic usage' showCount={true} style={{ marginTop: 10 }} />
     </div>

@@ -279,7 +279,7 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
   });
 
   const focus = useConstantFn(() => {
-    if (!disabled) {
+    if (!disabled && !readOnly) {
       inputRef.current?.focus();
     }
   });
@@ -302,9 +302,7 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
   });
 
   const handleBlur = useConstantFn((e: React.FocusEvent<HTMLInputElement>) => {
-    if (!disabled && !readOnly) {
-      setFocused(false);
-    }
+    setFocused(false);
     onBlur?.(e);
   });
 
@@ -371,7 +369,7 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
 
   let allowClearNode: React.ReactNode;
 
-  if (allowClear && value.length) {
+  if (!disabled && !readOnly && allowClear && actualValue.length) {
     const clearClasses = clsx(`${rootClassName}__suffix-clear`, {
       [`${rootClassName}__suffix--has-suffix`]: showCountNode,
     });
