@@ -10,6 +10,7 @@ import usePropChange from '../hooks/usePropChange';
 import { contains } from '../utils/dom';
 import { alpha } from '../utils/color';
 import { ComponentSize, useTheme } from '../ThemeProvider';
+import useInput from '../hooks/useInput';
 
 export type InputProps = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
@@ -247,12 +248,16 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     onChange,
     onBlur,
     onFocus,
-    onCompositionStart,
-    onCompositionEnd,
     ...others
   } = props;
 
   const [value, handleValueChange] = usePropChange(defaultValue, valueProp, onChange);
+
+  const {
+    hasMaxLength,
+    ref: inputRef,
+    getWordInfo,
+  } = useInput<HTMLInputElement>({ setValue: handleValueChange, maxLength });
 
   const [focused, setFocused] = React.useState(false);
 
@@ -260,15 +265,7 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
 
   const forkRef = useForkRef(rootRef, ref);
 
-  const inputRef = React.useRef<HTMLInputElement>(null);
-
   const removePasswordTimerRef = React.useRef<NodeJS.Timeout>();
-
-  const [isCompositing, setCompositing] = React.useState(false);
-  const oldCompositionValueRef = React.useRef<string>();
-  const oldSelectionStartRef = React.useRef<number | null>();
-
-  const hasMaxLength = Number(maxLength) > 0;
 
   const handleChange = useConstantFn((e: React.ChangeEvent<HTMLInputElement>) => {
     let v = e.target.value;
@@ -276,39 +273,9 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
       v = '';
     }
 
-    // 处理emoji, '👏'.length === 2
-    if (!isCompositing && hasMaxLength) {
-      v = getFixedString(v, maxLength!).value;
-    }
+    v = getWordInfo(v).value;
 
     handleValueChange(v);
-  });
-
-  const handleCompositionStart = useConstantFn((e: React.CompositionEvent<HTMLInputElement>) => {
-    oldCompositionValueRef.current = value;
-    oldSelectionStartRef.current = e.currentTarget.selectionStart;
-    setCompositing(true);
-    onCompositionStart?.(e);
-  });
-
-  const handleCompositionEnd = useConstantFn((e: React.CompositionEvent<HTMLInputElement>) => {
-    setCompositing(false);
-    let triggerValue = e.currentTarget.value;
-    if (hasMaxLength) {
-      const isCursorEnd =
-        oldSelectionStartRef.current! >= maxLength! + 1 ||
-        oldSelectionStartRef.current === oldCompositionValueRef.current!.length;
-      triggerValue = getCompositionValue(
-        triggerValue,
-        oldCompositionValueRef.current!,
-        maxLength!,
-        isCursorEnd,
-      );
-    }
-
-    handleValueChange(triggerValue);
-
-    onCompositionEnd?.(e);
   });
 
   const focus = useConstantFn(() => {
@@ -390,18 +357,10 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
 
   let showCountNode: React.ReactNode;
 
-  let actualValue = value;
+  const { value: actualValue, wordCount } = getWordInfo(value);
 
   if (showCount) {
-    let actualLength = [...value].length;
-
-    if (!isCompositing && hasMaxLength) {
-      const fixedString = getFixedString(value, maxLength!);
-      actualValue = fixedString.value;
-      actualLength = fixedString.length;
-    }
-
-    const msg = `${actualLength}${hasMaxLength ? `/${maxLength}` : ''}`;
+    const msg = `${wordCount}${hasMaxLength ? `/${maxLength}` : ''}`;
 
     const countClasses = clsx(`${rootClassName}__suffix-count`, {
       [`${rootClassName}__suffix--has-suffix`]: typeof suffix !== 'undefined',
@@ -444,8 +403,6 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
           aria-disabled={disabled}
           aria-readonly={readOnly}
           {...others}
-          onCompositionStart={handleCompositionStart}
-          onCompositionEnd={handleCompositionEnd}
           disabled={disabled}
           readOnly={readOnly}
           ref={inputRef}
@@ -517,35 +474,7 @@ if (!env.isProduction) {
     onChange: PropTypes.func,
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
-    onCompositionStart: PropTypes.func,
-    onCompositionEnd: PropTypes.func,
   };
 }
 
 export default Input;
-
-const getCompositionValue = (
-  currentValue: string,
-  prevValue: string,
-  maxLength: number,
-  isCursorEnd: boolean,
-) => {
-  const { value, length } = getFixedString(currentValue, maxLength);
-  if (isCursorEnd) {
-    return value;
-  }
-  if (length < maxLength) {
-    return value;
-  }
-
-  return prevValue;
-};
-
-const getFixedString = (value: string, maxLength: number) => {
-  const array = [...value].slice(0, maxLength);
-
-  return {
-    value: array.join(''),
-    length: array.length,
-  };
-};
