@@ -10,6 +10,7 @@ import { ComponentSize, useTheme } from '../ThemeProvider';
 import { alpha } from '../utils/color';
 import usePropChange from '../hooks/usePropChange';
 import useInput from '../hooks/useInput';
+import calculateNodeHeight from './calculateNodeHeight';
 
 export type TextAreaProps = Omit<
   React.TextareaHTMLAttributes<HTMLTextAreaElement>,
@@ -48,6 +49,9 @@ const TextAreaRoot = styled('span', {
       transition: transition.standard(['borderColor', 'boxShadow']),
       [`.${clsPrefix}-textarea__inner`]: {
         padding: `${themeSize.padding.y}px ${themeSize.padding.x}px`,
+        // 高度最低为一行高度
+        minHeight:
+          themeSize.padding.y * 2 + typography.body1.info.size * typography.body1.info.lineHeight,
       },
       [`.${clsPrefix}-textarea__suffix`]: {
         position: 'absolute',
@@ -90,19 +94,29 @@ const TextAreaRoot = styled('span', {
 const TextAreaInner = styled('textarea', {
   name: displayName,
   slot: 'Inner',
-})(({ theme }) => {
+})<{ autoSize?: boolean }>(({ theme, styleProps }) => {
   const { mixins, typography } = theme;
-  return {
+
+  const { autoSize } = styleProps;
+
+  const styles: CSSObject = {
     ...typography.body1.style,
     ...mixins.placeholder(),
     border: 0,
     outline: 0,
     backgroundColor: 'transparent',
     width: '100%',
+    height: '100%',
     boxSizing: 'border-box',
     verticalAlign: 'bottom',
     resize: 'vertical',
   };
+
+  if (autoSize) {
+    styles.resize = 'none';
+  }
+
+  return styles;
 });
 
 const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => {
@@ -122,6 +136,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
     onFocus,
     onBlur,
     style,
+    autoSize,
     ...others
   } = props;
 
@@ -130,6 +145,8 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
   const prevValue = usePrevious(value);
 
   const [focused, setFocused] = React.useState(false);
+
+  const [textAreaStyles, setTextAreaStyle] = React.useState<React.CSSProperties>();
 
   const {
     hasMaxLength,
@@ -164,11 +181,25 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
     if (v === prevValue) {
       return;
     }
+
+    const textarea = textareaRef.current;
+
+    if (!textarea) {
+      return;
+    }
+
+    const minRows = typeof autoSize === 'object' ? autoSize.minRows : null;
+    const maxRows = typeof autoSize === 'object' ? autoSize.maxRows : null;
+
+    const styles = calculateNodeHeight(textarea, minRows, maxRows);
+    setTextAreaStyle(styles);
   });
 
   React.useEffect(() => {
-    handleResize(value);
-  }, [value, handleResize]);
+    if (autoSize) {
+      handleResize(value);
+    }
+  }, [value, autoSize, handleResize]);
 
   const handleFocus = useConstantFn((e: React.FocusEvent<HTMLTextAreaElement>) => {
     if (!disabled && !readOnly) {
@@ -205,6 +236,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
       [`${rootClassName}--focused`]: focused,
       [`${rootClassName}--disabled`]: disabled,
       [`${rootClassName}--readonly`]: readOnly,
+      [`${rootClassName}--autoSize`]: autoSize,
     },
     className,
   );
@@ -245,6 +277,9 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
         aria-disabled={disabled}
         aria-readonly={readOnly}
         {...others}
+        // 取消autoSize时，立刻移除样式
+        style={autoSize ? textAreaStyles : {}}
+        styleProps={{ autoSize: !!autoSize }}
         ref={textareaRef}
         className={`${rootClassName}__inner`}
         value={actualValue}
