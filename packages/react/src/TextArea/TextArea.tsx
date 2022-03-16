@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { CSSObject } from '@xl-vision/styled-engine';
-import { useConstantFn, useForkRef } from '@xl-vision/hooks';
+import { useConstantFn, useForkRef, usePrevious } from '@xl-vision/hooks';
 import { CloseCircleFilled } from '@xl-vision/icons';
 import { styled } from '../styles';
 import { ComponentSize, useTheme } from '../ThemeProvider';
@@ -21,6 +21,7 @@ export type TextAreaProps = Omit<
   showCount?: boolean;
   allowClear?: boolean;
   size?: ComponentSize;
+  autoSize?: boolean | { minRows?: number; maxRows?: number };
 };
 
 const displayName = 'TextArea';
@@ -126,17 +127,48 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
 
   const [value, handleValueChange] = usePropChange(defaultValue, valueProp, onChange);
 
+  const prevValue = usePrevious(value);
+
+  const [focused, setFocused] = React.useState(false);
+
   const {
     hasMaxLength,
     ref: textareaRef,
     getWordInfo,
   } = useInput<HTMLTextAreaElement>({ setValue: handleValueChange, maxLength });
 
-  const [focused, setFocused] = React.useState(false);
-
   const rootRef = React.useRef<HTMLSpanElement>(null);
 
   const forkRef = useForkRef(rootRef, ref);
+
+  const focus = useConstantFn(() => {
+    if (!disabled && !readOnly) {
+      textareaRef.current?.focus();
+    }
+  });
+
+  // 将textarea focus绑定到span上
+  React.useEffect(() => {
+    if (rootRef.current) {
+      rootRef.current.focus = focus;
+    }
+  }, [focus]);
+
+  React.useEffect(() => {
+    if (disabled || readOnly) {
+      setFocused(false);
+    }
+  }, [disabled, readOnly]);
+
+  const handleResize = useConstantFn((v: string) => {
+    if (v === prevValue) {
+      return;
+    }
+  });
+
+  React.useEffect(() => {
+    handleResize(value);
+  }, [value, handleResize]);
 
   const handleFocus = useConstantFn((e: React.FocusEvent<HTMLTextAreaElement>) => {
     if (!disabled && !readOnly) {
@@ -161,28 +193,9 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
     handleValueChange(v);
   });
 
-  const focus = useConstantFn(() => {
-    if (!disabled && !readOnly) {
-      textareaRef.current?.focus();
-    }
-  });
-
   const handleReset = useConstantFn(() => {
     handleValueChange('');
   });
-
-  // 将textarea focus绑定到span上
-  React.useEffect(() => {
-    if (rootRef.current) {
-      rootRef.current.focus = focus;
-    }
-  }, [focus]);
-
-  React.useEffect(() => {
-    if (disabled || readOnly) {
-      setFocused(false);
-    }
-  }, [disabled, readOnly]);
 
   const rootClassName = `${clsPrefix}-textarea`;
 
