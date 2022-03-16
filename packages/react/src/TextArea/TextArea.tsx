@@ -196,7 +196,8 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
     className,
   );
 
-  const { value: actualValue, wordCount } = getWordInfo(value);
+  // 始终按照受控显示
+  const { value: actualValue, wordCount } = getWordInfo(value, true);
 
   let showCountNode: React.ReactNode;
 

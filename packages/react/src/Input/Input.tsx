@@ -355,7 +355,8 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
 
   let showCountNode: React.ReactNode;
 
-  const { value: actualValue, wordCount } = getWordInfo(value);
+  // 始终按照受控显示
+  const { value: actualValue, wordCount } = getWordInfo(value, true);
 
   if (showCount) {
     const msg = `${wordCount}${hasMaxLength ? `/${maxLength}` : ''}`;

@@ -14,7 +14,6 @@ const useInput = <E extends HTMLElement>({ setValue, maxLength }: InputProps) =>
   const [isCompositing, setCompositing] = useState(false);
 
   const oldCompositionValueRef = React.useRef<string>();
-  const oldSelectionStartRef = React.useRef<number>();
   const oldSelectionEndRef = React.useRef<number>();
 
   const hasMaxLength = Number(maxLength) > 0;
@@ -24,8 +23,6 @@ const useInput = <E extends HTMLElement>({ setValue, maxLength }: InputProps) =>
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
     oldCompositionValueRef.current = (e.target as any).value;
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-    oldSelectionStartRef.current = (e.target as any).selectionStart;
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
     oldSelectionEndRef.current = (e.target as any).selectionEnd;
   });
 
@@ -34,18 +31,15 @@ const useInput = <E extends HTMLElement>({ setValue, maxLength }: InputProps) =>
     let triggerValue: string = (e.target as any).value || '';
 
     if (hasMaxLength) {
-      const oldSelectionStart = oldSelectionStartRef.current;
-      const oldSelectionEnd = oldSelectionEndRef.current;
-      const oldCompositionValue = oldCompositionValueRef.current;
+      const oldSelectionEnd = oldSelectionEndRef.current!;
+      const oldCompositionValue = oldCompositionValueRef.current!;
 
       const isCursorEnd =
-        oldSelectionStart! >= maxLength! + 1 ||
-        oldSelectionStart === oldCompositionValue!.length ||
         // 选中内容到结尾
-        oldSelectionEnd === oldCompositionValue!.length;
+        oldSelectionEnd >= oldCompositionValue.length;
       triggerValue = getCompositionValue(
         triggerValue,
-        oldCompositionValueRef.current!,
+        oldCompositionValue,
         maxLength!,
         isCursorEnd,
       );
@@ -70,8 +64,8 @@ const useInput = <E extends HTMLElement>({ setValue, maxLength }: InputProps) =>
     };
   }, [handleCompositionStart, handleCompositionEnd]);
 
-  const getWordInfo = useConstantFn((words: string) => {
-    if (!isCompositing && hasMaxLength) {
+  const getWordInfo = useConstantFn((words: string, ignoreMaxLength?: boolean) => {
+    if (!ignoreMaxLength && !isCompositing && hasMaxLength) {
       return getFixedStringInfo(words, maxLength);
     }
     return getFixedStringInfo(words);
