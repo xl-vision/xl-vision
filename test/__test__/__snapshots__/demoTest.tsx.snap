@@ -34559,7 +34559,7 @@ exports[`Demo renders ./packages/react/src/TextArea/__doc__/ShowCount.tsx correc
   >
     <textarea
       class="c2 xl-textarea__inner"
-      placeholder="Basic usage"
+      placeholder="Default one row"
       rows="1"
     />
     <span
@@ -34569,7 +34569,7 @@ exports[`Demo renders ./packages/react/src/TextArea/__doc__/ShowCount.tsx correc
       <span
         class="xl-textarea__count"
       >
-        0
+        0/20
       </span>
     </span>
   </span>
@@ -34579,7 +34579,7 @@ exports[`Demo renders ./packages/react/src/TextArea/__doc__/ShowCount.tsx correc
   >
     <textarea
       class="c2 xl-textarea__inner"
-      placeholder="Basic usage"
+      placeholder="Default mutiple rows"
     />
     <span
       class="xl-textarea__suffix"

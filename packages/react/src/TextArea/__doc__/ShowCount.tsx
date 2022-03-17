@@ -5,13 +5,14 @@ const Demo = () => {
   return (
     <div>
       <TextArea
-        placeholder='Basic usage'
+        placeholder='Default one row'
         rows={1}
+        maxLength={20}
         allowClear={true}
         showCount={true}
       />
       <TextArea
-        placeholder='Basic usage'
+        placeholder='Default mutiple rows'
         allowClear={true}
         maxLength={20}
         showCount={true}
