@@ -11,6 +11,7 @@ import { alpha } from '../utils/color';
 import usePropChange from '../hooks/usePropChange';
 import useInput from '../hooks/useInput';
 import calculateNodeHeight from './calculateNodeHeight';
+import TextAreaSuffix from './TextAreaSuffix';
 
 export type TextAreaProps = Omit<
   React.TextareaHTMLAttributes<HTMLTextAreaElement>,
@@ -55,20 +56,39 @@ const TextAreaRoot = styled('span', {
       },
       [`.${clsPrefix}-textarea__suffix`]: {
         position: 'absolute',
+        zIndex: 1,
         top: 0,
         right: themeSize.padding.x,
         padding: `${themeSize.padding.y}px 0`,
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
-        flexWrap: 'wrap',
         justifyContent: 'space-between',
+        alignItems: 'flex-end',
+        '&--overflow': {
+          flexDirection: 'row',
+          alignItems: 'center',
+        },
+        '&:not(&--overflow)': {
+          [`.${clsPrefix}-textarea__count`]: {
+            marginTop: 'auto',
+          },
+        },
       },
       [`.${clsPrefix}-textarea__clear`]: {
-        color: color.text.secondary,
+        color: color.text.hint,
+        display: 'inline-flex',
+        alignItems: 'center',
+        cursor: 'pointer',
+        transition: transition.standard('color'),
+        '&:hover': {
+          color: color.text.secondary,
+        },
       },
       [`.${clsPrefix}-textarea__count`]: {
         color: color.text.hint,
+        backgroundColor: color.background.paper,
+        marginLeft: 4,
       },
     };
 
@@ -240,6 +260,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
 
   const rootClasses = clsx(
     rootClassName,
+    `${rootClassName}--size-${size}`,
     {
       [`${rootClassName}--focused`]: focused,
       [`${rootClassName}--disabled`]: disabled,
@@ -260,7 +281,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
     showCountNode = <span className={`${rootClassName}__count`}>{msg}</span>;
   }
 
-  const showClearNode = !disabled && !readOnly && allowClear && (
+  const showClearNode = !disabled && !readOnly && allowClear && wordCount > 0 && (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <span role='button' tabIndex={-1} className={`${rootClassName}__clear`} onClick={handleReset}>
       <CloseCircleFilled />
@@ -268,10 +289,10 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
   );
 
   const suffixNode = (showClearNode || showCountNode) && (
-    <span className={`${rootClassName}__suffix`}>
-      {showClearNode || <span />}
-      {showCountNode || <span />}
-    </span>
+    <TextAreaSuffix>
+      {showClearNode}
+      {showCountNode}
+    </TextAreaSuffix>
   );
 
   return (

@@ -9,9 +9,14 @@ const Demo = () => {
         rows={1}
         allowClear={true}
         showCount={true}
-        maxLength={20}
       />
-      <TextArea placeholder='Basic usage' showCount={true} style={{ marginTop: 10 }} />
+      <TextArea
+        placeholder='Basic usage'
+        allowClear={true}
+        maxLength={20}
+        showCount={true}
+        style={{ marginTop: 10 }}
+      />
     </div>
   );
 };

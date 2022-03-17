@@ -20,23 +20,6 @@ describe('Input', () => {
     });
   });
 
-  it('test component size', () => {
-    const componentSizes = ['small', 'middle', 'large'];
-
-    const wrapper = mount(
-      <ThemeProvider>
-        <Input />
-      </ThemeProvider>,
-    );
-
-    componentSizes.forEach((componentSize) => {
-      wrapper.setProps({
-        theme: { componentSize },
-      });
-      expect(wrapper.find(`.xl-input--size-${componentSize}`)).not.toBe(null);
-    });
-  });
-
   it('test disabled state', () => {
     const wrapper = mount(<Input />);
 
