@@ -52,24 +52,24 @@ export const throttleByAnimationFrame = <Fn extends (...args: Array<any>) => any
   return throttle;
 };
 
-export function isPlainObject(item: unknown): item is Record<keyof any, unknown> {
+export const isPlainObject = (item: unknown): item is Record<keyof any, unknown> => {
   return (
     item !== null &&
     typeof item === 'object' &&
     // TS thinks `item is possibly null` even though this was our first guard.
     item.constructor === Object
   );
-}
+};
 
-export interface DeepmergeOptions {
+export type DeepmergeOptions = {
   clone?: boolean;
-}
+};
 
-export default function deepMerge<T>(
+export const deepMerge = <T>(
   target: T,
   source: unknown,
   options: DeepmergeOptions = { clone: true },
-): T {
+): T => {
   const output = options.clone ? { ...target } : target;
 
   if (isPlainObject(target) && isPlainObject(source)) {
@@ -89,4 +89,42 @@ export default function deepMerge<T>(
   }
 
   return output;
-}
+};
+
+const defaultCompare = (left: any, right: any) => Object.is(left, right);
+
+export const shallowEqual = (left: any, right: any, compare = defaultCompare) => {
+  if (compare(left, right)) {
+    return true;
+  }
+
+  if (typeof left !== 'object' || !left || typeof right !== 'object' || !right) {
+    return false;
+  }
+
+  const keysLeft = Object.keys(left as object);
+  const keysRight = Object.keys(right as object);
+
+  if (keysLeft.length !== keysRight.length) {
+    return false;
+  }
+
+  const rightOwnProperty = Object.prototype.hasOwnProperty.bind(right);
+
+  for (let i = 0; i < keysLeft.length; i++) {
+    const key = keysLeft[i];
+    if (!rightOwnProperty(key)) {
+      return false;
+    }
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+    const leftValue = left[key];
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+    const rightalue = right[key];
+
+    if (!compare(leftValue, rightalue)) {
+      return false;
+    }
+  }
+
+  return true;
+};

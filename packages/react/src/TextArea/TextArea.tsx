@@ -119,6 +119,11 @@ const TextAreaInner = styled('textarea', {
   return styles;
 });
 
+export enum ResizeStatus {
+  RESIZING,
+  RESIZED,
+}
+
 const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => {
   const { clsPrefix, componentSize } = useTheme();
 
@@ -177,8 +182,8 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
     }
   }, [disabled, readOnly]);
 
-  const handleResize = useConstantFn((v: string) => {
-    if (v === prevValue) {
+  const handleResize = useConstantFn((_value: string) => {
+    if (prevValue === _value) {
       return;
     }
 
@@ -198,6 +203,9 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
   React.useEffect(() => {
     if (autoSize) {
       handleResize(value);
+    } else {
+      // 清除样式，避免下次开启autoSize时，尺寸抖动
+      setTextAreaStyle({});
     }
   }, [value, autoSize, handleResize]);
 
