@@ -18,7 +18,10 @@ const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = (props) => {
 
   // 可能存在多个主题嵌套的情况，子主题应该继承父主题
   const mergedThemeProps = React.useMemo(() => {
-    return deepMerge(parentTheme, theme);
+    if (parentTheme) {
+      return deepMerge(parentTheme, theme);
+    }
+    return theme;
   }, [theme, parentTheme]);
 
   const value = React.useMemo(() => {
@@ -46,4 +49,4 @@ if (!env.isProduction) {
 
 export default ThemeProvider;
 
-const ThemePropsContext = React.createContext<BaseTheme>({});
+const ThemePropsContext = React.createContext<BaseTheme | undefined>(undefined);
