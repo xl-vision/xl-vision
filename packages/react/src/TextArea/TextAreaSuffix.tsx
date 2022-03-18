@@ -13,7 +13,7 @@ export type TextAreaSuffixProps = React.HTMLAttributes<HTMLSpanElement> & {
 const displayName = 'TextAreaSuffix';
 
 const TextAreaSuffix: React.FunctionComponent<TextAreaSuffixProps> = (props) => {
-  const { className, style, value, ...others } = props;
+  const { className, value, style, ...others } = props;
 
   const { clsPrefix } = useTheme();
 
@@ -34,14 +34,19 @@ const TextAreaSuffix: React.FunctionComponent<TextAreaSuffixProps> = (props) => 
 
       const height = el.clientHeight;
 
+      const computedStyle = window.getComputedStyle(el);
+
+      const paddingTop = parseFloat(computedStyle.paddingTop);
+      const paddingBottom = parseFloat(computedStyle.paddingBottom);
+
       const children = el.childNodes;
       let totalHeight = 0;
 
       children.forEach((child) => {
-        totalHeight += (child as HTMLElement).offsetHeight;
+        totalHeight += (child as HTMLElement).clientHeight;
       });
 
-      setOverflow(height < totalHeight);
+      setOverflow(height < totalHeight + paddingTop + paddingBottom);
     });
   });
 
