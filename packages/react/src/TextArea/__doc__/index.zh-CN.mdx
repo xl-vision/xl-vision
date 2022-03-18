@@ -23,3 +23,32 @@
 适应文本高度。
 
 :::
+
+::: demo ./Size
+
+不同尺寸
+
+不同尺寸。
+
+:::
+
+::: demo ./DebugSuffix debug
+
+debug
+
+debug
+
+:::
+
+# TextArea API
+
+| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
+| --- | --- | --- | --- | --- | --- |
+| onChange | 值改变事件 | function | - | - | false |
+| value | 值 | string | - | - | false |
+| defaultValue | 默认值 | string | - | - | false |
+| showCount | 是否显示字数 | boolean | - | - | false |
+| allowClear | 是否展示清空图标 | boolean | - | - | false |
+| size | 输入框大小 | middle &#x007c; large &#x007c; small | - | middle | false |
+| maxLength | 限制最大长度 | number | - | - | false |
+| autoHeight | 根据内容自动改变高度 | boolean &#x007c; {minRows?: number, maxRows?: number} | - | - | false |

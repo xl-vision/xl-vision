@@ -23,7 +23,7 @@ export type TextAreaProps = Omit<
   showCount?: boolean;
   allowClear?: boolean;
   size?: ComponentSize;
-  autoSize?: boolean | { minRows?: number; maxRows?: number };
+  autoHeight?: boolean | { minRows?: number; maxRows?: number };
 };
 
 const displayName = 'TextArea';
@@ -41,6 +41,7 @@ const TextAreaRoot = styled('span', {
 
     const styles: CSSObject = {
       ...typography.body1.style,
+      fontSize: typography.pxToRem(typography.body1.info.size * themeSize.fontSize),
       display: 'inline-block',
       width: '100%',
       position: 'relative',
@@ -114,14 +115,15 @@ const TextAreaRoot = styled('span', {
 const TextAreaInner = styled('textarea', {
   name: displayName,
   slot: 'Inner',
-})<{ autoSize?: boolean }>(({ theme, styleProps }) => {
+})<{ autoHeight?: boolean }>(({ theme, styleProps }) => {
   const { mixins, typography } = theme;
 
-  const { autoSize } = styleProps;
+  const { autoHeight } = styleProps;
 
   const styles: CSSObject = {
     ...typography.body1.style,
     ...mixins.placeholder(),
+    fontSize: 'inherit',
     border: 0,
     outline: 0,
     backgroundColor: 'transparent',
@@ -132,7 +134,7 @@ const TextAreaInner = styled('textarea', {
     resize: 'vertical',
   };
 
-  if (autoSize) {
+  if (autoHeight) {
     styles.resize = 'none';
   }
 
@@ -161,7 +163,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
     onFocus,
     onBlur,
     style,
-    autoSize,
+    autoHeight,
     ...others
   } = props;
 
@@ -213,21 +215,21 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
       return;
     }
 
-    const minRows = typeof autoSize === 'object' ? autoSize.minRows : null;
-    const maxRows = typeof autoSize === 'object' ? autoSize.maxRows : null;
+    const minRows = typeof autoHeight === 'object' ? autoHeight.minRows : null;
+    const maxRows = typeof autoHeight === 'object' ? autoHeight.maxRows : null;
 
     const styles = calculateNodeHeight(textarea, minRows, maxRows);
     setTextAreaStyle(styles);
   });
 
   React.useEffect(() => {
-    if (autoSize) {
+    if (autoHeight) {
       handleResize(value);
     } else {
-      // 清除样式，避免下次开启autoSize时，尺寸抖动
+      // 清除样式，避免下次开启autoHeight时，尺寸抖动
       setTextAreaStyle({});
     }
-  }, [value, autoSize, handleResize]);
+  }, [value, autoHeight, handleResize]);
 
   const handleFocus = useConstantFn((e: React.FocusEvent<HTMLTextAreaElement>) => {
     if (!disabled && !readOnly) {
@@ -265,7 +267,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
       [`${rootClassName}--focused`]: focused,
       [`${rootClassName}--disabled`]: disabled,
       [`${rootClassName}--readonly`]: readOnly,
-      [`${rootClassName}--autoSize`]: autoSize,
+      [`${rootClassName}--auto-height`]: autoHeight,
     },
     className,
   );
@@ -306,9 +308,9 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
         aria-disabled={disabled}
         aria-readonly={readOnly}
         {...others}
-        // 取消autoSize时，立刻移除样式
-        style={autoSize ? textAreaStyles : {}}
-        styleProps={{ autoSize: !!autoSize }}
+        // 取消autoHeight时，立刻移除样式
+        style={autoHeight ? textAreaStyles : {}}
+        styleProps={{ autoHeight: !!autoHeight }}
         ref={textareaRef}
         className={`${rootClassName}__inner`}
         value={actualValue}
@@ -334,6 +336,13 @@ if (env.isDevelopment) {
     maxLength: PropTypes.number,
     disabled: PropTypes.bool,
     readOnly: PropTypes.bool,
+    autoHeight: PropTypes.oneOfType([
+      PropTypes.bool.isRequired,
+      PropTypes.shape({
+        minRows: PropTypes.number.isRequired,
+        maxRows: PropTypes.number.isRequired,
+      }),
+    ]),
     size: PropTypes.oneOf<ComponentSize>(['large', 'middle', 'small']),
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,

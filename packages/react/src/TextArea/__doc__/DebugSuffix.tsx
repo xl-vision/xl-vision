@@ -10,20 +10,14 @@ const Demo = () => {
 
   return (
     <div>
-      <TextArea placeholder='Basic usage' autoHeight={true} value={value} onChange={handleValue} />
       <TextArea
-        style={{ marginTop: 10 }}
         placeholder='Basic usage'
-        autoHeight={{ minRows: 3, maxRows: 6 }}
         value={value}
         onChange={handleValue}
-      />
-      <TextArea
-        style={{ marginTop: 10 }}
-        placeholder='Basic usage'
-        autoHeight={{ minRows: 3 }}
-        value={value}
-        onChange={handleValue}
+        allowClear={true}
+        maxLength={20}
+        showCount={true}
+        autoHeight={true}
       />
     </div>
   );
