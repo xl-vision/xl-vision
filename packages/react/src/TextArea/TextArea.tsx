@@ -336,12 +336,14 @@ if (env.isDevelopment) {
     maxLength: PropTypes.number,
     disabled: PropTypes.bool,
     readOnly: PropTypes.bool,
+    // TODO [2022-04-01]: types fix
+    // @ts-ignore
     autoHeight: PropTypes.oneOfType([
       PropTypes.bool.isRequired,
       PropTypes.shape({
-        minRows: PropTypes.number.isRequired,
-        maxRows: PropTypes.number.isRequired,
-      }),
+        minRows: PropTypes.number,
+        maxRows: PropTypes.number,
+      }).isRequired,
     ]),
     size: PropTypes.oneOf<ComponentSize>(['large', 'middle', 'small']),
     onFocus: PropTypes.func,
