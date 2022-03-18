@@ -291,7 +291,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
   );
 
   const suffixNode = (showClearNode || showCountNode) && (
-    <TextAreaSuffix>
+    <TextAreaSuffix value={actualValue}>
       {showClearNode}
       {showCountNode}
     </TextAreaSuffix>
