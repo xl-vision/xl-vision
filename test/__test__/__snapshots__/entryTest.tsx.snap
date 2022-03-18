@@ -674,5 +674,6 @@ Array [
   "Dialog",
   "Avatar",
   "Input",
+  "TextArea",
 ]
 `;

@@ -1,0 +1,54 @@
+# TextArea
+
+::: demo ./Basic
+
+Basic
+
+Basic
+
+:::
+
+::: demo ./ShowCount
+
+Show word count
+
+Show word count.
+
+:::
+
+::: demo ./AutoSize
+
+Auto size
+
+Justify size according to content.
+
+:::
+
+::: demo ./Size
+
+Mutiple size
+
+Mutiple size.
+
+:::
+
+::: demo ./DebugSuffix debug
+
+debug
+
+debug
+
+:::
+
+# TextArea API
+
+| Property | Description | Type | Optional Value | Default | Require |
+| --- | --- | --- | --- | --- | --- |
+| onChange | value change event | function | - | - | false |
+| value | value | string | - | - | false |
+| defaultValue | default value | string | - | - | false |
+| showCount | show value length count | boolean | - | - | false |
+| allowClear | show icon for clear value | boolean | - | - | false |
+| size | size | middle &#x007c; large &#x007c; small | - | middle | false |
+| maxLength | value max length | number | - | - | false |
+| autoHeight | auto justify height according to content | boolean &#x007c; {minRows?: number, maxRows?: number} | - | - | false |

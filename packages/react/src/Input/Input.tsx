@@ -5,12 +5,12 @@ import clsx from 'clsx';
 import { useConstantFn, useForkRef, useUnmount } from '@xl-vision/hooks';
 import { CloseCircleFilled } from '@xl-vision/icons';
 import { CSSObject } from '@xl-vision/styled-engine';
-import useTheme from '../ThemeProvider/useTheme';
 import { styled } from '../styles';
 import usePropChange from '../hooks/usePropChange';
 import { contains } from '../utils/dom';
 import { alpha } from '../utils/color';
-import { ComponentSize } from '../ThemeProvider';
+import { ComponentSize, useTheme } from '../ThemeProvider';
+import useInput from '../hooks/useInput';
 
 export type InputProps = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
@@ -62,12 +62,14 @@ const InputRoot = styled('span', {
 
   const themeSize = styleSize[size];
 
-  return {
+  const styles: CSSObject = {
     ...typography.body1.style,
     width: '100%',
     display: 'inline-flex',
     fontSize: typography.pxToRem(typography.body1.info.size * themeSize.fontSize),
   };
+
+  return styles;
 });
 
 const InputAddonBefore = styled('span', {
@@ -111,48 +113,54 @@ const InputAddonAfter = styled(InputAddonBefore, {
 const InputWrapper = styled('span', {
   name: displayName,
   slot: 'Wrapper',
-})<{ focused: boolean; size: ComponentSize }>(({ theme, styleProps }) => {
-  const { color, styleSize, transition } = theme;
+})<{ focused: boolean; size: ComponentSize; disabled?: boolean; readOnly?: boolean }>(
+  ({ theme, styleProps }) => {
+    const { color, styleSize, transition } = theme;
 
-  const { focused, size } = styleProps;
+    const { focused, size, disabled, readOnly } = styleProps;
 
-  const themeSize = styleSize[size];
+    const themeSize = styleSize[size];
 
-  const focusColor = color.themes.primary.focus;
+    const styles: CSSObject = {
+      display: 'inline-flex',
+      borderRadius: themeSize.borderRadius,
+      border: `${themeSize.border}px solid ${color.divider}`,
+      width: '100%',
+      padding: `${themeSize.padding.y}px ${themeSize.padding.x}px`,
+      color: color.text.primary,
+      backgroundColor: color.background.paper,
+      transition: transition.standard(['borderColor', 'boxShadow']),
+      zIndex: 1,
+      fontSize: 'inherit',
 
-  const focusedStyle: CSSObject = {
-    borderColor: focusColor,
-    boxShadow: `0 0 0 2px ${alpha(focusColor, 0.2)}`,
-  };
+      '&:not(:first-child)': {
+        borderTopLeftRadius: 0,
+        borderBottomLeftRadius: 0,
+      },
+      '&:not(:last-child)': {
+        borderTopRightRadius: 0,
+        borderBottomRightRadius: 0,
+      },
+    };
 
-  return {
-    display: 'inline-flex',
-    borderRadius: themeSize.borderRadius,
-    border: `${themeSize.border}px solid ${color.divider}`,
-    width: '100%',
-    padding: `${themeSize.padding.y}px ${themeSize.padding.x}px`,
-    color: color.text.primary,
-    backgroundColor: color.background.paper,
-    transition: transition.standard(['borderColor', 'boxShadow']),
-    zIndex: 1,
-    fontSize: 'inherit',
+    if (disabled) {
+      styles.opacity = color.action.disabled;
+      styles.cursor = 'not-allowed';
+    } else if (!readOnly) {
+      if (focused) {
+        const focusColor = color.themes.primary.focus;
+        styles.borderColor = focusColor;
+        styles.boxShadow = `0 0 0 2px ${alpha(focusColor, 0.2)}`;
+      } else {
+        styles['&:hover'] = {
+          borderColor: color.themes.primary.hover,
+        };
+      }
+    }
 
-    '&:not(:first-child)': {
-      borderTopLeftRadius: 0,
-      borderBottomLeftRadius: 0,
-    },
-    '&:not(:last-child)': {
-      borderTopRightRadius: 0,
-      borderBottomRightRadius: 0,
-    },
-
-    '&:hover': {
-      borderColor: color.themes.primary.hover,
-    },
-
-    ...(focused && focusedStyle),
-  };
-});
+    return styles;
+  },
+);
 
 const InputInner = styled('input', {
   name: displayName,
@@ -162,6 +170,7 @@ const InputInner = styled('input', {
   return {
     ...mixins.placeholder(),
     ...typography.body1.style,
+    cursor: 'inherit',
     fontSize: 'inherit',
     touchAction: 'manipulation',
     fontVariant: 'tabular-nums',
@@ -231,6 +240,8 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     defaultValue = '',
     value: valueProp,
     maxLength,
+    disabled,
+    readOnly,
     showCount,
     allowClear,
     type = 'text',
@@ -240,15 +251,19 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     ...others
   } = props;
 
-  const [value, handlePropChange] = usePropChange(defaultValue, valueProp, onChange);
+  const [value, handleValueChange] = usePropChange(defaultValue, valueProp, onChange);
+
+  const {
+    hasMaxLength,
+    ref: inputRef,
+    getWordInfo,
+  } = useInput<HTMLInputElement>({ setValue: handleValueChange, maxLength });
 
   const [focused, setFocused] = React.useState(false);
 
   const rootRef = React.useRef<HTMLSpanElement>(null);
 
   const forkRef = useForkRef(rootRef, ref);
-
-  const inputRef = React.useRef<HTMLInputElement>(null);
 
   const removePasswordTimerRef = React.useRef<NodeJS.Timeout>();
 
@@ -258,12 +273,16 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
       v = '';
     }
 
-    handlePropChange(v);
+    v = getWordInfo(v).value;
+
+    handleValueChange(v);
   });
 
-  const focus = React.useCallback(() => {
-    inputRef.current?.focus();
-  }, []);
+  const focus = useConstantFn(() => {
+    if (!disabled && !readOnly) {
+      inputRef.current?.focus();
+    }
+  });
 
   const handleMouseUp = useConstantFn((e: React.MouseEvent) => {
     const el = rootRef.current;
@@ -276,7 +295,9 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
   });
 
   const handleFocus = useConstantFn((e: React.FocusEvent<HTMLInputElement>) => {
-    setFocused(true);
+    if (!disabled && !readOnly) {
+      setFocused(true);
+    }
     onFocus?.(e);
   });
 
@@ -286,7 +307,7 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
   });
 
   const handleReset = useConstantFn(() => {
-    handlePropChange('');
+    handleValueChange('');
   });
 
   // 将input focus绑定到span上
@@ -295,6 +316,12 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
       rootRef.current.focus = focus;
     }
   }, [focus]);
+
+  React.useEffect(() => {
+    if (disabled || readOnly) {
+      setFocused(false);
+    }
+  }, [disabled, readOnly]);
 
   // 检测是否type=password,并删除value，避免密码泄露
   React.useEffect(() => {
@@ -320,15 +347,19 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     `${rootClassName}--size-${size}`,
     {
       [`${rootClassName}--focused`]: focused,
+      [`${rootClassName}--disabled`]: disabled,
+      [`${rootClassName}--readonly`]: readOnly,
     },
     className,
   );
 
   let showCountNode: React.ReactNode;
 
+  // 始终按照受控显示
+  const { value: actualValue, wordCount } = getWordInfo(value, true);
+
   if (showCount) {
-    const { length } = value;
-    const msg = `${length}${maxLength ? `/${maxLength}` : ''}`;
+    const msg = `${wordCount}${hasMaxLength ? `/${maxLength}` : ''}`;
 
     const countClasses = clsx(`${rootClassName}__suffix-count`, {
       [`${rootClassName}__suffix--has-suffix`]: typeof suffix !== 'undefined',
@@ -339,7 +370,7 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
 
   let allowClearNode: React.ReactNode;
 
-  if (allowClear && value.length) {
+  if (!disabled && !readOnly && allowClear && actualValue.length) {
     const clearClasses = clsx(`${rootClassName}__suffix-clear`, {
       [`${rootClassName}__suffix--has-suffix`]: showCountNode,
     });
@@ -361,21 +392,24 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
       )}
       <InputWrapper
         className={`${rootClassName}__wrapper`}
-        styleProps={{ focused, size }}
+        styleProps={{ focused, size, disabled, readOnly }}
         onMouseUp={handleMouseUp}
       >
         {typeof prefix !== 'undefined' && (
           <InputPrefix className={`${rootClassName}__prefix`}>{prefix}</InputPrefix>
         )}
         <InputInner
+          aria-disabled={disabled}
+          aria-readonly={readOnly}
           {...others}
+          disabled={disabled}
+          readOnly={readOnly}
           ref={inputRef}
           onFocus={handleFocus}
           onBlur={handleBlur}
           type={type}
           className={`${rootClassName}__inner`}
-          maxLength={maxLength}
-          value={value}
+          value={actualValue}
           onChange={handleChange}
         />
         {(allowClearNode || showCountNode || typeof suffix !== 'undefined') && (
@@ -409,6 +443,8 @@ if (!env.isProduction) {
     maxLength: PropTypes.number,
     showCount: PropTypes.bool,
     allowClear: PropTypes.bool,
+    disabled: PropTypes.bool,
+    readOnly: PropTypes.bool,
     size: PropTypes.oneOf<ComponentSize>(['large', 'middle', 'small']),
     type: PropTypes.oneOf([
       'button',

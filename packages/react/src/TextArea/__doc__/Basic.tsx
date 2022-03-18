@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input } from '@xl-vision/react';
+import { TextArea } from '@xl-vision/react';
 
 const Demo = () => {
   const [value, handleValue] = React.useState<string>();
@@ -10,7 +10,7 @@ const Demo = () => {
 
   return (
     <div>
-      <Input placeholder='Basic usage' value={value} onChange={handleValue} />
+      <TextArea placeholder='Basic usage' value={value} onChange={handleValue} />
     </div>
   );
 };

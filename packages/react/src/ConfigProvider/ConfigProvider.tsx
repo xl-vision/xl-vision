@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { env } from '@xl-vision/utils';
-import ConfigContext from './ConfigContext';
+import ConfigContext, { defaultConfigContext } from './ConfigContext';
 import { defaultLanguage, locales, Locales } from '../locale';
 import warning from '../utils/warning';
-import { defaultConfigContext } from '.';
 
 export type ConfigProviderProps = {
   children: React.ReactNode;
