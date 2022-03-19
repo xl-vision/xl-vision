@@ -1,37 +1,25 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
 import React from 'react';
-import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import { styled } from '@xl-vision/react';
 import Header, { height } from '../../components/Header';
 import { LocalizationContext } from '../../components/LocalizationProvider';
+import Playground from '../../components/Playground';
 
-const Main = styled('div')(({ theme }) => {
-  const { color } = theme;
-
+const Main = styled('div')(() => {
   return {
-    marginTop: height,
+    paddingTop: height,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'flex-start',
     height: '100%',
-
-    '> *': {
-      width: '50%',
-      height: '100%',
-    },
-
-    '.editor': {
-      borderRight: `1px solid ${color.divider}`,
-    },
-    '.preview': {
-      width: '50%',
-    },
   };
 });
 
-const Playground: NextPage = () => {
+const PlaygroundPage: NextPage = () => {
   const { locale } = React.useContext(LocalizationContext);
+
+  const code = 'export default () => <h1>hello</h1>';
 
   return (
     <>
@@ -40,18 +28,10 @@ const Playground: NextPage = () => {
       </Head>
       <Header />
       <Main>
-        <LiveProvider code='<strong>Hello World!</strong>'>
-          <div className='editor'>
-            <LiveEditor />
-          </div>
-          <div className='preview'>
-            <LivePreview />
-            <LiveError />
-          </div>
-        </LiveProvider>
+        <Playground defaultCode={code} />
       </Main>
     </>
   );
 };
 
-export default Playground;
+export default PlaygroundPage;

@@ -13,6 +13,7 @@
     "analyze": "cross-env ANALYZE=true npm run docs"
   },
   "dependencies": {
+    "@babel/standalone": "^7.17.8",
     "@mdx-js/react": "^1.6.22",
     "@xl-vision/hooks": "workspace:^",
     "@xl-vision/icons": "workspace:^",
@@ -21,12 +22,13 @@
     "@xl-vision/utils": "workspace:^",
     "clipboard": "^2.0.10",
     "clsx": "^1.1.1",
+    "codemirror": "^5.65.2",
     "js-cookie": "^3.0.1",
     "next": "^12.1.0",
     "prop-types": "^15.8.1",
     "react": ">=17.0.2",
+    "react-codemirror2": "^7.2.1",
     "react-dom": ">=17.0.2",
-    "react-live": "^2.4.1",
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
@@ -36,6 +38,7 @@
     "@mdx-js/mdx": "^1.6.22",
     "@next/bundle-analyzer": "^12.1.0",
     "@next/eslint-plugin-next": "^12.1.0",
+    "@types/codemirror": "^5.60.5",
     "@types/js-cookie": "^3.0.1",
     "@types/node": "17.0.4",
     "babel-plugin-styled-components": "^2.0.6",
