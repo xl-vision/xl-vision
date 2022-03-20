@@ -5,8 +5,7 @@ import Sandbox from './Sandbox';
 
 export type PreviewProps = {
   code: string;
-  exec?: string;
-  resources?: Array<string>;
+  scripts?: Record<string, string>;
 };
 
 const Root = styled('div')(({ theme }) => {
@@ -36,7 +35,7 @@ const Root = styled('div')(({ theme }) => {
 });
 
 const Preview: React.FunctionComponent<PreviewProps> = (props) => {
-  const { code, exec, resources } = props;
+  const { code, scripts } = props;
 
   const [parsedCode, setParsedCode] = React.useState('');
   const [error, setError] = React.useState<string>();
@@ -51,18 +50,18 @@ const Preview: React.FunctionComponent<PreviewProps> = (props) => {
           // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
           const result: { code: string } = Babel.transform(code, {
             presets: [
+              'react',
               [
                 'env',
                 {
-                  modules: 'umd',
+                  modules: 'amd',
                 },
               ],
-              'react',
             ],
             filename: 'Demo',
           });
 
-          setParsedCode(result.code);
+          setParsedCode(`${result.code.replace(/^define\(/, 'require(')}`);
           setError('');
         })
         .catch((err) => {
@@ -95,7 +94,7 @@ const Preview: React.FunctionComponent<PreviewProps> = (props) => {
       ) : (
         parsedCode && (
           <div className='demo'>
-            <Sandbox code={parsedCode} resources={resources} exec={exec} />
+            <Sandbox code={parsedCode} scripts={scripts} />
           </div>
         )
       )}

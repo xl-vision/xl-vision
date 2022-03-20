@@ -3,8 +3,7 @@ import React from 'react';
 
 export type SandboxProps = {
   code: string;
-  exec?: string;
-  resources?: Array<string>;
+  scripts?: Record<string, string>;
 };
 
 const Root = styled('iframe')(() => {
@@ -19,19 +18,22 @@ const Root = styled('iframe')(() => {
 });
 
 const Sandbox: React.FunctionComponent<SandboxProps> = (props) => {
-  const { code, exec, resources } = props;
+  const { code, scripts } = props;
 
   const srcDoc = React.useMemo(() => {
-    const headNodes = (resources || [])?.map((it) =>
-      /\.css$/.test(it)
-        ? `<link type='text/css' rel='stylesheet' href='${it}'></link>`
-        : `<script src='${it}'></script>`,
-    );
+    const tailNodes = [`<script>${code}</script>`];
 
-    const tailNodes = [`<script>${code};${exec}</script>`];
-
-    return [...headNodes, `<div id='sandbox'></div>`, ...tailNodes].join('\n');
-  }, [code, resources, exec]);
+    return [
+      `<script src='https://requirejs.org/docs/release/2.3.6/minified/require.js'></script>`,
+      `<script>
+        requirejs.config({
+          paths: ${JSON.stringify(scripts)}
+        })
+      </script>`,
+      `<div id='sandbox'></div>`,
+      ...tailNodes,
+    ].join('\n');
+  }, [code, scripts]);
 
   return <Root srcDoc={srcDoc} />;
 };

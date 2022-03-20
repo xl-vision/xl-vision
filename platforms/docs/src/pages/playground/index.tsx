@@ -17,8 +17,6 @@ const Main = styled('div')(() => {
   };
 });
 
-const EXEC = `ReactDOM.render(React.createElement(Demo.default), document.querySelector('#sandbox'))`;
-
 const PlaygroundPage: NextPage = () => {
   const { locale } = React.useContext(LocalizationContext);
 
@@ -29,6 +27,7 @@ const PlaygroundPage: NextPage = () => {
   const code = React.useMemo(() => {
     if (!defaultCode) {
       return [
+        `import React from 'react';`,
         `import { Button } from '@xl-vision/react';`,
         '',
         `export default () => {`,
@@ -39,11 +38,14 @@ const PlaygroundPage: NextPage = () => {
     return window.decodeURIComponent(defaultCode);
   }, [defaultCode]);
 
-  const resources = React.useMemo(() => {
-    return [
-      'https://unpkg.com/react@17.0.2/umd/react.development.js',
-      'https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js',
-    ];
+  const scripts = React.useMemo(() => {
+    return {
+      react: 'https://unpkg.com/react@17.0.2/umd/react.development.js?callback=defined',
+      'react-dom':
+        'https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js?callback=defined',
+      '@xl-vision/react':
+        'https://unpkg.com/@xl-vision/react@0.1.1-alpha.15/dist/index.production.min.js?callback=defined',
+    };
   }, []);
 
   return (
@@ -53,7 +55,7 @@ const PlaygroundPage: NextPage = () => {
       </Head>
       <Header />
       <Main>
-        <Playground defaultCode={code} resources={resources} exec={EXEC} />
+        <Playground defaultCode={code} scripts={scripts} />
       </Main>
     </>
   );
