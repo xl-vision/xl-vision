@@ -1,60 +1,93 @@
 const rollup = require('rollup');
-const babel = require('@rollup/plugin-babel');
+const { getBabelInputPlugin } = require('@rollup/plugin-babel');
 const replace = require('@rollup/plugin-replace');
+const alias = require('@rollup/plugin-alias');
+const { nodeResolve } = require('@rollup/plugin-node-resolve');
+const commonjs = require('@rollup/plugin-commonjs');
 const argv = require('minimist')(process.argv.slice(2));
 const path = require('path');
-const ts = require('gulp-typescript');
+const glob = require('glob');
 const { terser } = require('rollup-plugin-terser');
+const fs = require('fs-extra');
 const getBabelConfig = require('./getBabelConfig');
-
-const defaultReporter = ts.reporter.defaultReporter();
 
 const entry = argv.entry || 'src/index.ts';
 
-async function run() {
+function build(isProd) {
   const basePath = process.cwd();
 
   const input = path.resolve(basePath, entry);
 
-  const build = await rollup.rollup({
-    input,
-    external: ['react', 'react-dom'],
-    plugins: [
-      babel({
-        ...getBabelConfig('modern'),
-      }),
-    ],
+  // eslint-disable-next-line global-require, import/no-dynamic-require
+  const packageName = require(path.resolve(basePath, 'package.json')).name;
+
+  const extensions = ['.js', '.jsx', '.es6', '.es', '.mjs', '.ts', '.tsx'];
+
+  const babelConfig = getBabelConfig('modern', false);
+
+  const aliasEntries = {};
+
+  const packages = glob.sync('../*');
+
+  packages.forEach((it) => {
+    if (it === 'packages/styled-engine-types') {
+      return;
+    }
+    const packagePath = path.resolve(basePath, it);
+    if (packagePath === basePath) {
+      return;
+    }
+    const { name } = fs.readJSONSync(path.resolve(packagePath, 'package.json'));
+    aliasEntries[name] = path.resolve(packagePath, 'src');
   });
 
-  const outputConfig = {
-    dir: path.resolve(basePath, 'dist'),
-    format: 'umd',
-    globals: {
-      react: 'React',
-      'react-dom': 'ReactDOM',
-    },
-  };
-
-  const p1 = await build.write({
-    ...outputConfig,
-    file: 'index.production.min.js',
-    plugins: [
-      replace({
-        'process.env.NODE_ENV': JSON.stringify('production'),
+  return rollup
+    .rollup({
+      input,
+      external: ['react', 'react-dom'],
+      plugins: [
+        alias({
+          entries: aliasEntries,
+        }),
+        replace({
+          preventAssignment: true,
+          'process.env.NODE_ENV': JSON.stringify(isProd ? 'production' : 'development'),
+        }),
+        nodeResolve({
+          extensions,
+        }),
+        commonjs({
+          include: /node_modules/,
+        }),
+        getBabelInputPlugin({
+          extensions,
+          plugins: babelConfig.plugins,
+          presets: [...babelConfig.presets, '@babel/preset-typescript'],
+          babelHelpers: 'bundled',
+        }),
+      ],
+    })
+    .then((it) =>
+      it.write({
+        format: 'umd',
+        name: packageName,
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDOM',
+        },
+        file: path.resolve(
+          basePath,
+          'dist',
+          isProd ? 'index.production.min.js' : 'index.development.js',
+        ),
+        sourcemap: true,
+        plugins: [isProd && terser()].filter(Boolean),
       }),
-      terser(),
-    ],
-  });
-
-  const p2 = await build.write({
-    ...outputConfig,
-    file: 'index.development.js',
-    plugins: [
-      replace({
-        'process.env.NODE_ENV': JSON.stringify('development'),
-      }),
-    ],
-  });
-
-  return Promise.all(p1, p2);
+    );
 }
+
+function run() {
+  return Promise.all([build(), build(true)]);
+}
+
+run();

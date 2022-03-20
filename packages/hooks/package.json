@@ -1,13 +1,13 @@
 {
   "name": "@xl-vision/hooks",
-  "version": "0.1.1-alpha.14",
+  "version": "0.1.1-alpha.15",
   "description": "xl-vision useful hooks.",
   "author": "Rhys Xia <xrs4433@outlook.com>",
   "license": "MIT",
   "main": "legacy/index.js",
   "module": "modern/index.js",
   "types": "legacy/index.d.ts",
-  "unpkg": "dist/index.min.js",
+  "unpkg": "dist/index.production.min.js",
   "files": [
     "legacy",
     "modern",
@@ -28,7 +28,7 @@
     "build:legacy": "node ../../scripts/compile legacy",
     "build:modern": "node ../../scripts/compile modern",
     "build:dist": "node ../../scripts/build",
-    "build": "npm run build:legacy && npm run build:modern",
+    "build": "npm run build:legacy && npm run build:modern && npm run build:dist",
     "prepublishOnly": "npm run build"
   },
   "bugs": {

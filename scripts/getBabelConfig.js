@@ -1,4 +1,4 @@
-module.exports = function getBabelConfig(style) {
+module.exports = function getBabelConfig(style, runtime = true) {
   const useESModules = style === 'modern';
 
   const presets = [
@@ -14,7 +14,7 @@ module.exports = function getBabelConfig(style) {
   ];
 
   const plugins = [
-    [
+    runtime && [
       '@babel/plugin-transform-runtime',
       {
         useESModules,
@@ -22,7 +22,7 @@ module.exports = function getBabelConfig(style) {
         version: '^7.4.4',
       },
     ],
-  ];
+  ].filter(Boolean);
 
   return {
     presets,
