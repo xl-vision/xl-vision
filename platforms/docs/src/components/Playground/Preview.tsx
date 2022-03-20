@@ -1,14 +1,15 @@
-import * as xlVisionReact from '@xl-vision/react';
-// import * as xlVisionIcon from '@xl-vision/icons';
+import { styled } from '@xl-vision/react';
 import { useUnmount } from '@xl-vision/hooks';
 import React from 'react';
-import evalCode from './evalCode';
+import Sandbox from './Sandbox';
 
 export type PreviewProps = {
-  value: string;
+  code: string;
+  exec?: string;
+  resources?: Array<string>;
 };
 
-const Root = xlVisionReact.styled('div')(({ theme }) => {
+const Root = styled('div')(({ theme }) => {
   const { color, styleSize } = theme;
   return {
     backgroundColor: color.background.paper,
@@ -16,6 +17,9 @@ const Root = xlVisionReact.styled('div')(({ theme }) => {
     overflowY: 'auto',
     width: '100%',
     height: '100%',
+    '.demo': {
+      height: '100%',
+    },
     '.error, .demo': {
       padding: `${styleSize.middle.padding.y}px ${styleSize.middle.padding.x}px`,
     },
@@ -32,9 +36,9 @@ const Root = xlVisionReact.styled('div')(({ theme }) => {
 });
 
 const Preview: React.FunctionComponent<PreviewProps> = (props) => {
-  const { value } = props;
+  const { code, exec, resources } = props;
 
-  const [parsedCode, setParsedCode] = React.useState<string>();
+  const [parsedCode, setParsedCode] = React.useState('');
   const [error, setError] = React.useState<string>();
 
   const timerRef = React.useRef<number>();
@@ -45,22 +49,24 @@ const Preview: React.FunctionComponent<PreviewProps> = (props) => {
       import('@babel/standalone')
         .then((Babel) => {
           // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-          const result: { code: string } = Babel.transform(value, {
+          const result: { code: string } = Babel.transform(code, {
             presets: [
               [
                 'env',
                 {
-                  modules: 'auto',
+                  modules: 'umd',
                 },
               ],
               'react',
             ],
+            filename: 'Demo',
           });
 
           setParsedCode(result.code);
           setError('');
         })
         .catch((err) => {
+          setParsedCode('');
           setError((err as Error).toString());
         });
     };
@@ -74,34 +80,11 @@ const Preview: React.FunctionComponent<PreviewProps> = (props) => {
       window.clearTimeout(timer);
       timerRef.current = window.setTimeout(cb, 500);
     }
-  }, [value]);
+  }, [code]);
 
   useUnmount(() => {
     window.clearTimeout(timerRef.current);
   });
-
-  const demoInstance = React.useMemo(() => {
-    if (!parsedCode) {
-      return null;
-    }
-    try {
-      const Component = evalCode<React.ComponentType>(
-        `var exports={};${parsedCode};return exports.default`,
-        {
-          React,
-          // '@xl-vision/react': xlVisionReact,
-          // '@xl-vision/icon': xlVisionIcon,
-        },
-      );
-
-      const demo = React.createElement(Component);
-
-      return demo;
-    } catch (err) {
-      console.error(err);
-      setError((err as Error).toString());
-    }
-  }, [parsedCode]);
 
   return (
     <Root>
@@ -110,7 +93,11 @@ const Preview: React.FunctionComponent<PreviewProps> = (props) => {
           <code>{error}</code>
         </pre>
       ) : (
-        <div className='demo'>{demoInstance}</div>
+        parsedCode && (
+          <div className='demo'>
+            <Sandbox code={parsedCode} resources={resources} exec={exec} />
+          </div>
+        )
       )}
     </Root>
   );

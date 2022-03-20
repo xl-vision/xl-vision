@@ -7,6 +7,8 @@ const Editor = dynamic(() => import('./Editor'), { ssr: false });
 
 export type PlaygroundProps = {
   defaultCode: string;
+  resources?: Array<string>;
+  exec?: string;
 };
 
 const Root = styled('div')(({ theme }) => {
@@ -28,7 +30,7 @@ const Root = styled('div')(({ theme }) => {
 });
 
 const Playground: React.FunctionComponent<PlaygroundProps> = (props) => {
-  const { defaultCode } = props;
+  const { defaultCode, resources, exec } = props;
 
   const [code, handleChange] = React.useState(defaultCode);
 
@@ -38,7 +40,7 @@ const Playground: React.FunctionComponent<PlaygroundProps> = (props) => {
         <Editor value={code} onChange={handleChange} />
       </div>
       <div className='preview'>
-        <Preview value={code} />
+        <Preview code={code} resources={resources} exec={exec} />
       </div>
     </Root>
   );

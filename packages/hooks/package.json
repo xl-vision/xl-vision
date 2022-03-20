@@ -7,9 +7,11 @@
   "main": "legacy/index.js",
   "module": "modern/index.js",
   "types": "legacy/index.d.ts",
+  "unpkg": "dist/index.min.js",
   "files": [
     "legacy",
-    "modern"
+    "modern",
+    "dist"
   ],
   "keywords": [
     "xl-vision",
@@ -23,8 +25,9 @@
     "directory": "packages/hooks"
   },
   "scripts": {
-    "build:legacy": "node ../../scripts/build legacy",
-    "build:modern": "node ../../scripts/build modern",
+    "build:legacy": "node ../../scripts/compile legacy",
+    "build:modern": "node ../../scripts/compile modern",
+    "build:dist": "node ../../scripts/build",
     "build": "npm run build:legacy && npm run build:modern",
     "prepublishOnly": "npm run build"
   },

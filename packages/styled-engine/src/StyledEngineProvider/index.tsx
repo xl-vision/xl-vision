@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
+import React from 'react';
 
 export type StyledEngineProviderProps = {
   injectFirst?: boolean;
-  children: React.ReactElement;
+  children: React.ReactNode;
 };
 
 const StyledEngineProvider: React.FunctionComponent<StyledEngineProviderProps> = (props) => {
@@ -17,7 +18,7 @@ const StyledEngineProvider: React.FunctionComponent<StyledEngineProviderProps> =
     }
   }
 
-  return children;
+  return <>{children}</>;
 };
 
 if (process.env.NODE_ENV !== 'production') {

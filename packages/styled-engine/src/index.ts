@@ -26,5 +26,5 @@ export type {
 
 export { default as createGlobalStyles } from './createGlobalStyles';
 export { default as keyframes } from './keyframes';
-export { default as StyleEngineProvider } from './StyledEngineProvider';
+export { default as StyledEngineProvider } from './StyledEngineProvider';
 export { default as ThemeContext } from './ThemeContext';
