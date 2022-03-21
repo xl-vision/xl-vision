@@ -42,10 +42,14 @@ module.exports = async function demoLoader(content) {
       filePath: absolutePath,
     });
 
-    const result = `import React from 'react';export const tsCode = ${highlight(
-      tsCode,
-      'tsx',
-    )};export const jsCode = ${highlight(jsCode, 'jsx')}`;
+    const result = `
+import React from 'react';
+
+export const tsCodeNode = ${highlight(tsCode, 'tsx')};
+export const jsCodeNode = ${highlight(jsCode, 'jsx')};
+export const tsCode = ${JSON.stringify(tsCode)};
+export const jsCode = ${JSON.stringify(jsCode)};
+`;
 
     return callback(null, result);
   } catch (err) {

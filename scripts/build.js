@@ -1,50 +1,93 @@
+const rollup = require('rollup');
+const { getBabelInputPlugin } = require('@rollup/plugin-babel');
+const replace = require('@rollup/plugin-replace');
+const alias = require('@rollup/plugin-alias');
+const { nodeResolve } = require('@rollup/plugin-node-resolve');
+const commonjs = require('@rollup/plugin-commonjs');
 const argv = require('minimist')(process.argv.slice(2));
-const babel = require('gulp-babel');
-const gulp = require('gulp');
 const path = require('path');
-const ts = require('gulp-typescript');
+const glob = require('glob');
+const { terser } = require('rollup-plugin-terser');
 const fs = require('fs-extra');
 const getBabelConfig = require('./getBabelConfig');
 
-const defaultReporter = ts.reporter.defaultReporter();
+const entry = argv.entry || 'src/index.ts';
 
-const styles = ['modern', 'legacy'];
+function build(isProd) {
+  const basePath = process.cwd();
 
-const style = (argv._ || []).find((it) => styles.includes(it));
+  const input = path.resolve(basePath, entry);
 
-if (!style) {
-  throw new TypeError(`Please provide one build style.`);
+  // eslint-disable-next-line global-require, import/no-dynamic-require
+  const packageName = require(path.resolve(basePath, 'package.json')).name;
+
+  const extensions = ['.js', '.jsx', '.es6', '.es', '.mjs', '.ts', '.tsx'];
+
+  const babelConfig = getBabelConfig('modern', false);
+
+  const aliasEntries = {};
+
+  const packages = glob.sync('../*');
+
+  packages.forEach((it) => {
+    if (it === 'packages/styled-engine-types') {
+      return;
+    }
+    const packagePath = path.resolve(basePath, it);
+    if (packagePath === basePath) {
+      return;
+    }
+    const { name } = fs.readJSONSync(path.resolve(packagePath, 'package.json'));
+    aliasEntries[name] = path.resolve(packagePath, 'src');
+  });
+
+  return rollup
+    .rollup({
+      input,
+      external: ['react', 'react-dom'],
+      plugins: [
+        alias({
+          entries: aliasEntries,
+        }),
+        replace({
+          preventAssignment: true,
+          'process.env.NODE_ENV': JSON.stringify(isProd ? 'production' : 'development'),
+        }),
+        nodeResolve({
+          extensions,
+        }),
+        commonjs({
+          include: /node_modules/,
+        }),
+        getBabelInputPlugin({
+          extensions,
+          plugins: babelConfig.plugins,
+          presets: [...babelConfig.presets, '@babel/preset-typescript'],
+          babelHelpers: 'bundled',
+        }),
+      ],
+    })
+    .then((it) =>
+      it.write({
+        format: 'umd',
+        name: packageName,
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDOM',
+        },
+        file: path.resolve(
+          basePath,
+          'dist',
+          isProd ? 'index.production.min.js' : 'index.development.js',
+        ),
+        sourcemap: true,
+        plugins: [isProd && terser()].filter(Boolean),
+      }),
+    );
+}
+
+function run() {
+  return Promise.all([build(), build(true)]);
 }
 
 run();
-
-async function run() {
-  const basePath = process.cwd();
-  await fs.remove(path.resolve(basePath, style));
-
-  const tsconfigPath = path.resolve(basePath, 'tsconfig.json');
-
-  const tsProject = ts.createProject(tsconfigPath);
-
-  const paths = ['src/**/*.ts?(x)', '!**/__doc__/**', '!**/__test__/**'];
-
-  return new Promise((resolve, reject) => {
-    const errors = [];
-    const tsResult = gulp.src(paths).pipe(
-      tsProject({
-        error(err, instance) {
-          defaultReporter.error(err, instance);
-          errors.push(err);
-        },
-        finish() {
-          if (errors.length > 0) {
-            return reject(errors);
-          }
-          return resolve();
-        },
-      }),
-    );
-    tsResult.dts.pipe(gulp.dest(style));
-    tsResult.js.pipe(babel(getBabelConfig(style))).pipe(gulp.dest(style));
-  });
-}

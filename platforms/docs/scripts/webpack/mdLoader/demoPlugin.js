@@ -38,7 +38,9 @@ module.exports = function demoPlugin() {
 
       const demo = demoName;
       const jsCode = `${demoName}_js`;
+      const jsCodeNode = `${jsCode}_node`;
       const tsCode = `${demoName}_ts`;
+      const tsCodeNode = `${tsCode}_node`;
 
       const nodes = [...node.children];
 
@@ -46,7 +48,7 @@ module.exports = function demoPlugin() {
 
       tree.children.unshift({
         type: 'import',
-        value: `import {tsCode as ${tsCode}, jsCode as ${jsCode}} from '${filePath}.jsx!=!${codeLoaderPath}!${filePath}'`,
+        value: `import {tsCode as ${tsCode}, tsCodeNode as ${tsCodeNode}, jsCode as ${jsCode}, jsCodeNode as ${jsCodeNode}} from '${filePath}.jsx!=!${codeLoaderPath}!${filePath}'`,
       });
 
       tree.children.unshift({
@@ -63,17 +65,17 @@ module.exports = function demoPlugin() {
 
       nodes.unshift({
         type: 'jsx',
-        value: `<DemoBox ${paramsString}>`,
+        value: `<DemoBox ${paramsString} tsCode={${tsCode}} jsCode={${jsCode}}>`,
       });
 
       nodes.push({
         type: 'jsx',
-        value: `<pre className='language-tsx'>{${tsCode}}</pre>`,
+        value: `<pre className='language-tsx'>{${tsCodeNode}}</pre>`,
       });
 
       nodes.push({
         type: 'jsx',
-        value: `<pre className='language-jsx'>{${jsCode}}</pre>`,
+        value: `<pre className='language-jsx'>{${jsCodeNode}}</pre>`,
       });
 
       nodes.push({

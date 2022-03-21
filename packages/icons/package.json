@@ -1,15 +1,17 @@
 {
   "name": "@xl-vision/icons",
-  "version": "0.1.1-alpha.14",
+  "version": "0.1.1-alpha.15",
   "description": "xl-vision react components for icon.",
   "author": "Rhys Xia <xrs4433@outlook.com>",
   "license": "MIT",
   "main": "legacy/index.js",
   "module": "modern/index.js",
   "types": "legacy/index.d.ts",
+  "unpkg": "dist/index.production.min.js",
   "files": [
     "legacy",
-    "modern"
+    "modern",
+    "dist"
   ],
   "keywords": [
     "xl-vision",
@@ -23,9 +25,10 @@
     "directory": "packages/icons"
   },
   "scripts": {
-    "build:legacy": "node ../../scripts/build legacy",
-    "build:modern": "node ../../scripts/build modern",
-    "build": "npm run build:legacy && npm run build:modern",
+    "build:legacy": "node ../../scripts/compile legacy",
+    "build:modern": "node ../../scripts/compile modern",
+    "build:dist": "node ../../scripts/build",
+    "build": "npm run build:legacy && npm run build:modern && npm run build:dist",
     "generate": "node ./scripts/generate.js",
     "prepublishOnly": "npm run build"
   },
