@@ -49,7 +49,7 @@ const PlaygroundPage: NextPage = () => {
       </Head>
       <Header />
       <Main>
-        <Playground defaultCode={code} scripts={scripts} />
+        <Playground code={code} scripts={scripts} />
       </Main>
     </>
   );

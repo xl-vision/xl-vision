@@ -6,7 +6,7 @@ import Preview from './Preview';
 const Editor = dynamic(() => import('./Editor'), { ssr: false });
 
 export type PlaygroundProps = {
-  defaultCode: string;
+  code: string;
   scripts?: Record<string, string>;
 };
 
@@ -29,9 +29,13 @@ const Root = styled('div')(({ theme }) => {
 });
 
 const Playground: React.FunctionComponent<PlaygroundProps> = (props) => {
-  const { defaultCode, scripts } = props;
+  const { code: codeProp, scripts } = props;
 
-  const [code, handleChange] = React.useState(defaultCode);
+  const [code, handleChange] = React.useState('');
+
+  React.useEffect(() => {
+    handleChange(codeProp);
+  }, [codeProp]);
 
   return (
     <Root>

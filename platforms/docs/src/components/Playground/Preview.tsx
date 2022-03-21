@@ -37,8 +37,14 @@ const Root = styled('div')(({ theme }) => {
 });
 
 const DEFAULT_EXEC = `
-require(['react','react-dom', 'demo'], function(React,ReactDOM, Demo) {
-  ReactDOM.render(React.createElement(Demo.default), document.querySelector('#sandbox'))
+require(['react','react-dom', '@xl-vision/react', 'demo'], function(React,ReactDOM, vision, Demo) {
+  var demo = React.createElement(Demo.default);
+  var CssBaseline = vision.CssBaseline;
+  var css = React.createElement(CssBaseline, {
+    children: demo
+  });
+
+  ReactDOM.render(css, document.querySelector('#sandbox'))
 })
 `;
 
