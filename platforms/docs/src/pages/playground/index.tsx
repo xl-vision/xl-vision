@@ -45,7 +45,7 @@ const PlaygroundPage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>{locale.pages.index.title} | xl-vision</title>
+        <title>{locale.pages.playground.title} | xl-vision</title>
       </Head>
       <Header />
       <Main>

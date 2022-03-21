@@ -27,6 +27,9 @@ export type Locale = {
       btnStart: string;
       btnGithub: string;
     };
+    playground: {
+      title: string;
+    };
     Icons: {
       seachPlaceholder: string;
     };
@@ -68,6 +71,9 @@ const locales: Record<string, Locale> = {
         btnStart: 'Get Started',
         btnGithub: 'Github',
       },
+      playground: {
+        title: 'Playground',
+      },
       Icons: {
         seachPlaceholder: 'Seach icon here',
       },
@@ -105,6 +111,9 @@ const locales: Record<string, Locale> = {
         desc: '不可错过的React组件库',
         btnStart: '开始使用',
         btnGithub: 'Github',
+      },
+      playground: {
+        title: 'Playground',
       },
       Icons: {
         seachPlaceholder: '在这里搜索图标',
