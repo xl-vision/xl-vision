@@ -45,7 +45,7 @@ importers:
       eslint-plugin-promise: 6.0.0
       eslint-plugin-react: ^7.29.4
       eslint-plugin-react-hooks: ^4.3.0
-      eslint-plugin-unicorn: ^41.0.0
+      eslint-plugin-unicorn: ^41.0.1
       fs-extra: ^10.0.1
       glob: ^7.2.0
       gulp: ^4.0.2
@@ -106,7 +106,7 @@ importers:
       eslint-plugin-promise: 6.0.0_eslint@8.10.0
       eslint-plugin-react: 7.29.4_eslint@8.10.0
       eslint-plugin-react-hooks: 4.3.0_eslint@8.10.0
-      eslint-plugin-unicorn: 41.0.0_eslint@8.10.0
+      eslint-plugin-unicorn: 41.0.1_eslint@8.10.0
       fs-extra: 10.0.1
       glob: 7.2.0
       gulp: 4.0.2
@@ -5008,8 +5008,8 @@ packages:
       string.prototype.matchall: 4.0.6
     dev: true
 
-  /eslint-plugin-unicorn/41.0.0_eslint@8.10.0:
-    resolution: {integrity: sha512-xoJCaRc1uy5REg9DkVga1BkZV57jJxoqOcrU28QHZB89Lk5LdSqdVyTIt9JQVfHNKaiyJ7X+3iLlIn+VEHWEzA==}
+  /eslint-plugin-unicorn/41.0.1_eslint@8.10.0:
+    resolution: {integrity: sha512-gF5vo2dIj0YdNMQ/IMegiBkQdQ22GBFFVpdkJP+0og3w7XD4ypea0xQVRv6iofkLVR2w0phAdikcnU01ybd4Ow==}
     engines: {node: '>=12'}
     peerDependencies:
       eslint: '>=8.8.0'
