@@ -1,15 +1,14 @@
-import { NextPage } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import React from 'react';
 import { styled } from '@xl-vision/react';
 import { useRouter } from 'next/router';
-import Header, { height } from '../../components/Header';
 import { LocalizationContext } from '../../components/LocalizationProvider';
 import Playground from '../../components/Playground';
+import { LayoutKey } from '../../layout';
 
 const Main = styled('div')(() => {
   return {
-    paddingTop: height,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'flex-start',
@@ -47,12 +46,19 @@ const PlaygroundPage: NextPage = () => {
       <Head>
         <title>{locale.pages.playground.title} | xl-vision</title>
       </Head>
-      <Header />
       <Main>
         <Playground code={code} scripts={scripts} />
       </Main>
     </>
   );
+};
+
+export const getStaticProps: GetStaticProps<{ layout: LayoutKey }> = () => {
+  return {
+    props: {
+      layout: 'header',
+    },
+  };
 };
 
 export default PlaygroundPage;

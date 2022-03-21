@@ -62,7 +62,6 @@ html {
     onLoad?.(win);
   });
 
-  // eslint-disable-next-line react/jsx-handler-names
   return <Root srcDoc={srcDoc} ref={ref} onLoad={handleLoad} />;
 };
 

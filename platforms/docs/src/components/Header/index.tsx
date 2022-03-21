@@ -158,6 +158,11 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
           <a>{locale.header.hooks}</a>
         </Link>
       </MobileDropdownItem>
+      <MobileDropdownItem className={setActiveClassName('/playground')}>
+        <Link href='/playground'>
+          <a>{locale.header.playground}</a>
+        </Link>
+      </MobileDropdownItem>
     </>
   );
 
