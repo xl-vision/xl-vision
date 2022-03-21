@@ -1,3 +1,4 @@
+import { useConstantFn } from '@xl-vision/hooks';
 import { styled } from '@xl-vision/react';
 import React from 'react';
 
@@ -5,6 +6,7 @@ export type SandboxProps = {
   demo: string;
   scripts?: Record<string, string>;
   exec?: string;
+  onLoad?: (win: Window) => void;
 };
 
 const Root = styled('iframe')(() => {
@@ -19,9 +21,11 @@ const Root = styled('iframe')(() => {
 });
 
 const Sandbox: React.FunctionComponent<SandboxProps> = (props) => {
-  const { demo, scripts, exec } = props;
+  const { demo, scripts, exec, onLoad } = props;
+  const ref = React.useRef<HTMLIFrameElement>(null);
 
   const srcDoc = React.useMemo(() => {
+    // TODO [2022-05-01]: styled components在iframe中全局样式不生效
     return `
 <style>
 html {
@@ -47,7 +51,19 @@ html {
 <script>${exec}</script>`;
   }, [demo, scripts, exec]);
 
-  return <Root srcDoc={srcDoc} />;
+  const handleLoad = useConstantFn(() => {
+    const iframe = ref.current;
+    if (!iframe) {
+      return;
+    }
+
+    const win = iframe.contentWindow!;
+
+    onLoad?.(win);
+  });
+
+  // eslint-disable-next-line react/jsx-handler-names
+  return <Root srcDoc={srcDoc} ref={ref} onLoad={handleLoad} />;
 };
 
 export default Sandbox;
