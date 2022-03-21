@@ -3,6 +3,8 @@ import { useUnmount } from '@xl-vision/hooks';
 import React from 'react';
 import Sandbox from './Sandbox';
 
+const babelPromise = import('@babel/standalone');
+
 export type PreviewProps = {
   reactVersion?: string;
   libVersion?: string;
@@ -64,6 +66,7 @@ const Preview: React.FunctionComponent<PreviewProps> = (props) => {
       react: `https://unpkg.com/react${_reactVersion}/umd/react.development.js?callback=defined`,
       'react-dom': `https://unpkg.com/react-dom${_reactVersion}/umd/react-dom.development.js?callback=defined`,
       '@xl-vision/react': `https://unpkg.com/@xl-vision/react${_libVersion}/dist/index.production.min.js?callback=defined`,
+      '@xl-vision/icons': `https://unpkg.com/@xl-vision/icons${_libVersion}/dist/index.production.min.js?callback=defined`,
     };
   }, [reactVersion, libVersion]);
 
@@ -76,7 +79,7 @@ const Preview: React.FunctionComponent<PreviewProps> = (props) => {
 
   React.useEffect(() => {
     const cb = () => {
-      import('@babel/standalone')
+      babelPromise
         .then((Babel) => {
           // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
           const result: { code: string } = Babel.transform(code, {
