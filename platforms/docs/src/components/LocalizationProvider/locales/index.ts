@@ -6,6 +6,7 @@ export type Locale = {
     component: string;
     hooks: string;
     index: string;
+    playground: string;
   };
   meta: {
     keywords: Array<string>;
@@ -50,6 +51,7 @@ const locales: Record<string, Locale> = {
       component: 'Component',
       hooks: 'React Hooks',
       index: 'Home',
+      playground: 'Playground',
     },
     sponsorship: {
       title: 'Our sponsors',
@@ -87,6 +89,7 @@ const locales: Record<string, Locale> = {
       component: '组件',
       hooks: 'React Hooks',
       index: '首页',
+      playground: 'Playground',
     },
     sponsorship: {
       title: '赞助方',

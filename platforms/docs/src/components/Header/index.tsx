@@ -192,6 +192,11 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
                 <a className={setActiveClassName('/hooks')}>{locale.header.hooks}</a>
               </Link>
             </li>
+            <li>
+              <Link href='/playground'>
+                <a className={setActiveClassName('/playground')}>{locale.header.playground}</a>
+              </Link>
+            </li>
           </Menus>
           <Dropdown
             menus={

@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { styled, CollapseTransition, Button } from '@xl-vision/react';
-import { DownOutlined } from '@xl-vision/icons';
+import { styled, CollapseTransition, Button, Tooltip } from '@xl-vision/react';
+import { CodeOutlined, DownOutlined } from '@xl-vision/icons';
 import { env } from '@xl-vision/utils';
 import { useRouter } from 'next/router';
+import { useConstantFn } from '@xl-vision/hooks';
 import Code from './Code';
 
 export type DemoBoxProps = {
   children: [React.ReactNode, React.ReactNode, React.ReactNode, React.ReactNode, React.ReactNode];
+  jsCode: string;
   debug?: boolean;
 };
 
@@ -99,18 +101,29 @@ const ExpandWrapper = styled(DownOutlined)<{ expand: boolean }>(({ theme, styleP
   };
 });
 
-const DemoBox: React.FunctionComponent<DemoBoxProps> = ({ children, debug = false }) => {
-  const [title, desc, tsxCode, jsxCode, preview] = children;
+const DemoBox: React.FunctionComponent<DemoBoxProps> = ({ children, jsCode, debug = false }) => {
+  const [title, desc, tsCodeNode, jsCodeNode, preview] = children;
 
-  const { query } = useRouter();
+  const router = useRouter();
 
   const [isExpand, setExpand] = React.useState(false);
+
+  const handleCode = useConstantFn(() => {
+    router
+      .push({
+        pathname: '/playground',
+        query: {
+          code: Buffer.from(jsCode).toString('base64'),
+        },
+      })
+      .catch(console.error);
+  });
 
   const handleExpand = React.useCallback(() => {
     setExpand((prev) => !prev);
   }, []);
 
-  if (debug && !env.isDevelopment && !('debug' in query)) {
+  if (debug && !env.isDevelopment && !('debug' in router.query)) {
     return null;
   }
 
@@ -121,11 +134,19 @@ const DemoBox: React.FunctionComponent<DemoBoxProps> = ({ children, debug = fals
         <TitleWrapper>{title}</TitleWrapper>
         <DescWrapper>{desc}</DescWrapper>
         <ButtonWrapper>
+          <Tooltip content='Playground'>
+            <Button
+              color='primary'
+              round={true}
+              variant='text'
+              prefixIcon={<CodeOutlined />}
+              onClick={handleCode}
+            />
+          </Tooltip>
           <Button
             aria-label={isExpand ? 'Expand' : 'Close'}
             color='primary'
             round={true}
-            size='large'
             variant='text'
             onClick={handleExpand}
             prefixIcon={<ExpandWrapper styleProps={{ expand: isExpand }} />}
@@ -135,8 +156,8 @@ const DemoBox: React.FunctionComponent<DemoBoxProps> = ({ children, debug = fals
       <CollapseTransition in={isExpand} transitionClasses='slide'>
         <CodeWrapper>
           <Code>
-            {tsxCode}
-            {jsxCode}
+            {tsCodeNode}
+            {jsCodeNode}
           </Code>
         </CodeWrapper>
       </CollapseTransition>

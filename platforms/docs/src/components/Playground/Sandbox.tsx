@@ -2,8 +2,9 @@ import { styled } from '@xl-vision/react';
 import React from 'react';
 
 export type SandboxProps = {
-  code: string;
+  demo: string;
   scripts?: Record<string, string>;
+  exec?: string;
 };
 
 const Root = styled('iframe')(() => {
@@ -18,22 +19,22 @@ const Root = styled('iframe')(() => {
 });
 
 const Sandbox: React.FunctionComponent<SandboxProps> = (props) => {
-  const { code, scripts } = props;
+  const { demo, scripts, exec } = props;
 
   const srcDoc = React.useMemo(() => {
-    const tailNodes = [`<script>${code}</script>`];
-
-    return [
-      `<script src='https://requirejs.org/docs/release/2.3.6/minified/require.js'></script>`,
-      `<script>
-        requirejs.config({
-          paths: ${JSON.stringify(scripts)}
-        })
-      </script>`,
-      `<div id='sandbox'></div>`,
-      ...tailNodes,
-    ].join('\n');
-  }, [code, scripts]);
+    return `
+<script src='https://requirejs.org/docs/release/2.3.6/minified/require.js'></script>
+<script>
+  requirejs.config({
+    paths: ${JSON.stringify({
+      ...scripts,
+      demo: `data:text/javascript;base64,${Buffer.from(demo).toString('base64')}`,
+    })},
+  })
+</script>
+<div id='sandbox'></div>
+<script>${exec}</script>`;
+  }, [demo, scripts, exec]);
 
   return <Root srcDoc={srcDoc} />;
 };

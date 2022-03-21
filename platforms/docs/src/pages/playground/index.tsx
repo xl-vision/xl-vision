@@ -1,11 +1,11 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
 import React from 'react';
-import { Dropdown, styled } from '@xl-vision/react';
+import { styled } from '@xl-vision/react';
+import { useRouter } from 'next/router';
 import Header, { height } from '../../components/Header';
 import { LocalizationContext } from '../../components/LocalizationProvider';
 import Playground from '../../components/Playground';
-import { useRouter } from 'next/router';
 
 const Main = styled('div')(() => {
   return {
@@ -35,17 +35,11 @@ const PlaygroundPage: NextPage = () => {
         `}`,
       ].join('\n');
     }
-    return window.decodeURIComponent(defaultCode);
+    return Buffer.from(defaultCode, 'base64').toString();
   }, [defaultCode]);
 
   const scripts = React.useMemo(() => {
-    return {
-      react: 'https://unpkg.com/react@17.0.2/umd/react.development.js?callback=defined',
-      'react-dom':
-        'https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js?callback=defined',
-      '@xl-vision/react':
-        'https://unpkg.com/@xl-vision/react@0.1.1-alpha.15/dist/index.production.min.js?callback=defined',
-    };
+    return {};
   }, []);
 
   return (

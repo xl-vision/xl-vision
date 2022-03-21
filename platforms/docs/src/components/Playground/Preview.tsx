@@ -4,6 +4,8 @@ import React from 'react';
 import Sandbox from './Sandbox';
 
 export type PreviewProps = {
+  reactVersion?: string;
+  libVersion?: string;
   code: string;
   scripts?: Record<string, string>;
 };
@@ -34,14 +36,37 @@ const Root = styled('div')(({ theme }) => {
   };
 });
 
+const DEFAULT_EXEC = `
+require(['react','react-dom', 'demo'], function(React,ReactDOM, Demo) {
+  ReactDOM.render(React.createElement(Demo.default), document.querySelector('#sandbox'))
+})
+`;
+
 const Preview: React.FunctionComponent<PreviewProps> = (props) => {
-  const { code, scripts } = props;
+  const { code, scripts, reactVersion, libVersion } = props;
 
   const [parsedCode, setParsedCode] = React.useState('');
   const [error, setError] = React.useState<string>();
 
   const timerRef = React.useRef<number>();
   const isFirstRef = React.useRef(true);
+
+  const builtinDeps = React.useMemo(() => {
+    const _reactVersion = reactVersion ? `@${reactVersion}` : '';
+    const _libVersion = libVersion ? `@${libVersion}` : '';
+    return {
+      react: `https://unpkg.com/react${_reactVersion}/umd/react.development.js?callback=defined`,
+      'react-dom': `https://unpkg.com/react-dom${_reactVersion}/umd/react-dom.development.js?callback=defined`,
+      '@xl-vision/react': `https://unpkg.com/@xl-vision/react${_libVersion}/dist/index.production.min.js?callback=defined`,
+    };
+  }, [reactVersion, libVersion]);
+
+  const allScripts = React.useMemo(() => {
+    return {
+      ...builtinDeps,
+      ...scripts,
+    };
+  }, [builtinDeps, scripts]);
 
   React.useEffect(() => {
     const cb = () => {
@@ -54,11 +79,10 @@ const Preview: React.FunctionComponent<PreviewProps> = (props) => {
               [
                 'env',
                 {
-                  modules: 'amd',
+                  modules: 'umd',
                 },
               ],
             ],
-            filename: 'Demo',
           });
 
           setParsedCode(`${result.code.replace(/^define\(/, 'require(')}`);
@@ -94,7 +118,7 @@ const Preview: React.FunctionComponent<PreviewProps> = (props) => {
       ) : (
         parsedCode && (
           <div className='demo'>
-            <Sandbox code={parsedCode} scripts={scripts} />
+            <Sandbox demo={parsedCode} scripts={allScripts} exec={DEFAULT_EXEC} />
           </div>
         )
       )}
