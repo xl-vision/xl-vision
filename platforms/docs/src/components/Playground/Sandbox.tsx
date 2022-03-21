@@ -23,6 +23,17 @@ const Sandbox: React.FunctionComponent<SandboxProps> = (props) => {
 
   const srcDoc = React.useMemo(() => {
     return `
+<style>
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  -webkit-text-size-adjust: 100%;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+</style>
 <script src='https://requirejs.org/docs/release/2.3.6/minified/require.js'></script>
 <script>
   requirejs.config({
