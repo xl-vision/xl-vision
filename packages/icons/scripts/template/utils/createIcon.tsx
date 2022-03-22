@@ -1,10 +1,10 @@
 import React from 'react';
-import { env } from '@xl-vision/utils';
+import { env } from '@xl-vision/utils'
 import BaseIcon from './BaseIcon';
 
 const createIcon = (
   svg: React.ReactElement<React.SVGProps<SVGSVGElement>>,
-  displayName: string,
+  displayName: false | string,
 ) => {
   const cloneComponent = React.forwardRef<SVGSVGElement, React.SVGProps<SVGSVGElement>>(
     (props, ref) => {
@@ -16,7 +16,7 @@ const createIcon = (
     },
   );
 
-  if (!env.isProduction) {
+  if (!env.isProduction && displayName) {
     cloneComponent.displayName = displayName;
   }
   return cloneComponent;
