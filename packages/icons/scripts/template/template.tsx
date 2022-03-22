@@ -3,4 +3,6 @@ import React from 'react'
 import { env } from '@xl-vision/utils'
 import createIcon from './utils/createIcon';
 
-export default createIcon({{&svg}}, !env.isProduction && '{{name}}');
+const svg = ({{&svg}})
+
+export default !env.isProduction ? createIcon(svg, '{{name}}') : createIcon(svg);

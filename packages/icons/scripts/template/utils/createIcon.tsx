@@ -4,7 +4,7 @@ import BaseIcon from './BaseIcon';
 
 const createIcon = (
   svg: React.ReactElement<React.SVGProps<SVGSVGElement>>,
-  displayName: false | string,
+  displayName?: string,
 ) => {
   const cloneComponent = React.forwardRef<SVGSVGElement, React.SVGProps<SVGSVGElement>>(
     (props, ref) => {
