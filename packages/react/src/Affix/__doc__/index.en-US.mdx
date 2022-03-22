@@ -1,0 +1,15 @@
+# Affix
+
+## Affix API
+
+| Property | Description | Type | Optional Value | Default | Require |
+| --- | --- | --- | --- | --- | --- |
+| children | content, have to be string type | string | - | - | false |
+| icon | icon | React.ReactNode | - | - | false |
+| shape | shape | string | circle &#x007c; square &#x007c; round | circle | false |
+| size | size, could also customize | string &#x007c; number | small &#x007c; middle &#x007c; large | middle | false |
+| src | source for image or image component instance | string &#x007c; React.ReactNode |  | - | false |
+| srcSet | srcSet for image | string |  | - | false |
+| onError | invoke when image loads failed, default hide image when image loads failed, but if return false, image will always show | function |  | 4 | false |
+| alt | alt for image | string |  | - | false |
+| gap | gap between border and content | number |  | 4 | false |

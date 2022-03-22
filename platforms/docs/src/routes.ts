@@ -116,6 +116,13 @@ const route: Route = {
           },
           path: '/Dropdown',
         },
+        {
+          titleMap: {
+            'en-US': 'Affix',
+            'zh-CN': '固订',
+          },
+          path: '/Affix',
+        },
       ],
     },
     {
