@@ -32,7 +32,7 @@
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.5",
+    "@babel/core": "^7.17.8",
     "@babel/preset-typescript": "^7.16.7",
     "@mapbox/rehype-prism": "^0.8.0",
     "@mdx-js/mdx": "^1.6.22",
