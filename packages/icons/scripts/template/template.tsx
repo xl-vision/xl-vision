@@ -1,6 +1,6 @@
 /* eslint-disable */
-import React from 'react'
-import { env } from '@xl-vision/utils'
+import React from 'react';
+import { env } from '@xl-vision/utils';
 import createIcon from './utils/createIcon';
 
 const svg = ({{&svg}})

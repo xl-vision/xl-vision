@@ -1,5 +1,5 @@
 import React from 'react';
-import { env } from '@xl-vision/utils'
+import { env } from '@xl-vision/utils';
 import BaseIcon from './BaseIcon';
 
 const createIcon = (
