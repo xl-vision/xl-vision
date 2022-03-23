@@ -126,3 +126,6 @@ export type { TextAreaProps } from './TextArea';
 
 export { default as Affix } from './Affix';
 export type { AffixProps } from './Affix';
+
+export { default as ResizeObserver } from './ResizeObserver';
+export type { ResizeObserverProps } from './ResizeObserver';

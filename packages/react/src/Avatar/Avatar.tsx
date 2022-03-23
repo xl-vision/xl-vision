@@ -2,11 +2,12 @@ import { CSSObject } from '@xl-vision/styled-engine';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { env } from '@xl-vision/utils';
-import { useConstantFn, useForkRef, useResizeObserver } from '@xl-vision/hooks';
+import { useConstantFn, useForkRef } from '@xl-vision/hooks';
 import React from 'react';
 import { styled } from '../styles';
 import AvatarContext from './AvatarContext';
 import { ComponentSize, useTheme } from '../ThemeProvider';
+import ResizeObserver from '../ResizeObserver';
 
 export type AvatarShape = 'circle' | 'square' | 'round';
 
@@ -128,11 +129,7 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
     setScale(Math.min(scaleX, scaleY));
   });
 
-  const childResizeRef = useResizeObserver<HTMLSpanElement>(handleResize);
-
   const childRef = React.useRef<HTMLSpanElement>(null);
-
-  const forkChildRef = useForkRef(childResizeRef, childRef);
 
   React.useEffect(() => {
     handleResize();
@@ -175,9 +172,11 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
       transform: transformString,
     };
     childNode = (
-      <AvatarInner ref={forkChildRef} style={childrenStyle} className={`${rootClassName}__inner`}>
-        {icon || children}
-      </AvatarInner>
+      <ResizeObserver onResizeObserver={handleResize}>
+        <AvatarInner ref={childRef} style={childrenStyle} className={`${rootClassName}__inner`}>
+          {icon || children}
+        </AvatarInner>
+      </ResizeObserver>
     );
   }
 

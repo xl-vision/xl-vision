@@ -1,34 +1,45 @@
 import React from 'react';
-import { ResizeObserverHandler, useConstantFn, useResizeObserver } from '@xl-vision/hooks';
+import {
+  ResizeObserverHandler,
+  useConstantFn,
+  useForkRef,
+  useResizeObserver,
+} from '@xl-vision/hooks';
 import { env } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
-import DomWrapper from '../base/DomWrapper';
-import findDomNode from '../utils/findDomNode';
+import { supportRef } from '../utils/ref';
+import warning from '../utils/warning';
 
 export type SingleResizeObserverProps = {
   children: React.ReactElement;
   onResizeObserver?: ResizeObserverHandler;
 };
 
-const SingleResizeObserver: React.FunctionComponent<SingleResizeObserverProps> = (props) => {
+const displayName = 'SingleResizeObserver';
+
+const SingleResizeObserver = React.forwardRef<unknown, SingleResizeObserverProps>((props, ref) => {
   const { children, onResizeObserver } = props;
 
   const handleResizeObserver: ResizeObserverHandler = useConstantFn((state, target) => {
     onResizeObserver?.(state, target);
   });
 
-  const ref = useResizeObserver(handleResizeObserver);
+  const resizeRef = useResizeObserver(handleResizeObserver);
 
-  const refCallback = useConstantFn((instance: DomWrapper) => {
-    const element = findDomNode(instance);
-    ref(element instanceof Element ? element : null);
+  const child = React.Children.only(children);
+
+  warning(!supportRef(child), '<%s>: child does not support ref', displayName);
+
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
+  const forkRef = useForkRef(resizeRef, ref, (child as any).ref);
+
+  return React.cloneElement(child, {
+    ref: forkRef,
   });
-
-  return <DomWrapper ref={refCallback}>{children}</DomWrapper>;
-};
+});
 
 if (!env.isProduction) {
-  SingleResizeObserver.displayName = 'SingleResizeObserver';
+  SingleResizeObserver.displayName = displayName;
   SingleResizeObserver.propTypes = {
     children: PropTypes.element.isRequired,
     onResizeObserver: PropTypes.func,

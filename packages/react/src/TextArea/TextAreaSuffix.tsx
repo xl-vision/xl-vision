@@ -1,10 +1,11 @@
-import { useConstantFn, useResizeObserver, useUnmount, useForkRef } from '@xl-vision/hooks';
+import { useConstantFn, useUnmount } from '@xl-vision/hooks';
 import React from 'react';
 import clsx from 'clsx';
 import { env } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { useTheme } from '../ThemeProvider';
 import { raf } from '../utils/transition';
+import ResizeObserver from '../ResizeObserver';
 
 export type TextAreaSuffixProps = React.HTMLAttributes<HTMLSpanElement> & {
   value?: string;
@@ -23,7 +24,7 @@ const TextAreaSuffix: React.FunctionComponent<TextAreaSuffixProps> = (props) => 
 
   const rafCancelFnRef = React.useRef<() => void>();
 
-  const checkOverflow = useConstantFn(() => {
+  const handleOverflow = useConstantFn(() => {
     rafCancelFnRef.current?.();
 
     rafCancelFnRef.current = raf(() => {
@@ -50,13 +51,9 @@ const TextAreaSuffix: React.FunctionComponent<TextAreaSuffixProps> = (props) => 
     });
   });
 
-  const resizeRef = useResizeObserver<HTMLSpanElement>(checkOverflow);
-
-  const forkRef = useForkRef(resizeRef, ref);
-
   React.useEffect(() => {
-    checkOverflow();
-  }, [value, checkOverflow]);
+    handleOverflow();
+  }, [value, handleOverflow]);
 
   useUnmount(() => {
     rafCancelFnRef.current?.();
@@ -73,7 +70,9 @@ const TextAreaSuffix: React.FunctionComponent<TextAreaSuffixProps> = (props) => 
   );
 
   return (
-    <span {...others} className={classes} style={{ height: '100%', ...style }} ref={forkRef} />
+    <ResizeObserver onResizeObserver={handleOverflow}>
+      <span {...others} className={classes} style={{ height: '100%', ...style }} ref={ref} />
+    </ResizeObserver>
   );
 };
 

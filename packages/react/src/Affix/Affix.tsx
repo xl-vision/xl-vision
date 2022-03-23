@@ -1,7 +1,7 @@
 import { env } from '@xl-vision/utils';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useConstantFn, useResizeObserver } from '@xl-vision/hooks';
+import { useConstantFn, useForkRef } from '@xl-vision/hooks';
 import clsx from 'clsx';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
@@ -13,6 +13,7 @@ import {
   getTargetRect,
 } from './utils';
 import { throttleByAnimationFrame } from '../utils/perf';
+import ResizeObserver from '../ResizeObserver';
 
 export type AffixProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'target' | 'onChange'> & {
   target?: Window | HTMLElement | (() => Window | HTMLElement);
@@ -42,7 +43,7 @@ enum AffixStatus {
   NONE,
 }
 
-const Affix: React.FunctionComponent<AffixProps> = (props) => {
+const Affix = React.forwardRef<HTMLDivElement, AffixProps>((props, ref) => {
   const { clsPrefix } = useTheme();
 
   const {
@@ -58,7 +59,10 @@ const Affix: React.FunctionComponent<AffixProps> = (props) => {
   const [affixStyle, setAffixStyle] = React.useState<React.CSSProperties>();
   const [placeholderStyle, setPlaceholderStyle] = React.useState<React.CSSProperties>();
 
-  const ref = React.useRef<HTMLDivElement>(null);
+  const rootRef = React.useRef<HTMLDivElement>(null);
+
+  const forkRef = useForkRef(ref, rootRef);
+
   const [currentTarget, setCurrentTarget] = React.useState<Window | HTMLElement>();
 
   const [isAffixed, setAffixed] = React.useState<boolean>();
@@ -73,7 +77,7 @@ const Affix: React.FunctionComponent<AffixProps> = (props) => {
   });
 
   // 当尺寸信息发生变化时，需要清空样式重新计算
-  const prepareMeaure = useConstantFn(
+  const handleResizeChange = useConstantFn(
     throttleByAnimationFrame(() => {
       setPlaceholderStyle(undefined);
       setAffixStyle(undefined);
@@ -82,7 +86,7 @@ const Affix: React.FunctionComponent<AffixProps> = (props) => {
   );
 
   const measure = useConstantFn(() => {
-    const affixNode = ref.current;
+    const affixNode = rootRef.current;
     if (!affixNode || !currentTarget) {
       return;
     }
@@ -134,8 +138,6 @@ const Affix: React.FunctionComponent<AffixProps> = (props) => {
     }
   }, [status, measure]);
 
-  const resizeObserverRef = useResizeObserver<HTMLDivElement>(prepareMeaure);
-
   // eslint-disable-next-line react-hooks/exhaustive-deps
   React.useEffect(() => {
     const nextTarget = getTarget();
@@ -163,7 +165,7 @@ const Affix: React.FunctionComponent<AffixProps> = (props) => {
   const classes = clsx(rootClassName, className);
 
   return (
-    <AffixRoot {...others} className={classes} ref={ref}>
+    <AffixRoot {...others} className={classes} ref={forkRef}>
       {placeholderStyle && (
         <div
           className={`${rootClassName}__placeholder`}
@@ -172,11 +174,11 @@ const Affix: React.FunctionComponent<AffixProps> = (props) => {
         />
       )}
       <div style={affixStyle} className={`${rootClassName}__inner`}>
-        <div ref={resizeObserverRef}>{children}</div>
+        <ResizeObserver onResizeObserver={handleResizeChange}>{children}</ResizeObserver>
       </div>
     </AffixRoot>
   );
-};
+});
 
 if (!env.isProduction) {
   Affix.displayName = displayName;
