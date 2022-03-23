@@ -97,7 +97,7 @@ const RowRoot = styled('div', {
     [`&${rowRootClassName}--align-middle`]: {
       alignItems: 'center',
     },
-    [`&${rowRootClassName}--align-botton`]: {
+    [`&${rowRootClassName}--align-bottom`]: {
       alignItems: 'flex-end',
     },
     [`&${rowRootClassName}--wrap`]: {
