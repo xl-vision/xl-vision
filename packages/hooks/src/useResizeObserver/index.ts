@@ -2,12 +2,12 @@ import ROP from 'resize-observer-polyfill';
 import { RefCallback, useCallback, useEffect, useRef } from 'react';
 import useConstantFn from '../useConstantFn';
 
-export type ResizeObserverHandler<T extends HTMLElement> = (
+export type ResizeObserverHandler<T extends Element = Element> = (
   state: { width: number; height: number },
   target: T,
 ) => void;
 
-const useResizeObserver = <T extends HTMLElement>(onResizeObserver: ResizeObserverHandler<T>) => {
+const useResizeObserver = <T extends Element>(onResizeObserver: ResizeObserverHandler<T>) => {
   const resizeObserverRef = useRef<ResizeObserver>();
   const prevElementRef = useRef<T | null>();
   const widthRef = useRef<number>();
