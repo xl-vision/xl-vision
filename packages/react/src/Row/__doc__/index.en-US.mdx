@@ -38,7 +38,7 @@ Responsive Offset
 
 `flex` layout
 
-In modern browsers, you can specify `type='flex'`, and then you can use `align` and `justify` to achieve horizontal and vertical alignment in different ways, and you can also use `order` to change the order of content blocks (` order` also supports responsive).
+In modern browsers, you can use `align` and `justify` to achieve horizontal and vertical alignment in different ways, and you can also use `order` to change the order of content blocks (` order` also supports responsive).
 
 :::
 
@@ -55,7 +55,6 @@ Use `useBreakpoint` Hook provide personalized layout.
 | Property | Description | Type | Optional Value | Default | Require |
 | --- | --- | --- | --- | --- | --- |
 | gutter | Content block gap (support responsive) | number &#x007c; object | >=0 | 0 | false |
-| type | Layout type | flex | - | - | false |
 | justify | Grid left and right alignment (valid under `type=flex`) | string | start &#x007c; end &#x007c; center &#x007c; space-around &#x007c; space-between | — | false |
 | align | Grid up and down alignment (valid under `type=flex`) | string | top &#x007c; middle &#x007c; bottom | — | false |
 | children | `Col` Array | Col &#x007c; Col[] | - | - | true |

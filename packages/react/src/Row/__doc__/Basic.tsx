@@ -27,7 +27,7 @@ const Basic = () => {
   return (
     <div>
       <Wrapper>
-        <Row gutter={10} type='flex'>
+        <Row gutter={10}>
           <Row.Col column={4}>
             <Box>col1</Box>
           </Row.Col>

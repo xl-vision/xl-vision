@@ -1,5 +1,7 @@
+export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+
 export type Breakpoints = Partial<{
-  values: Record<string, number>;
+  values: Record<Breakpoint, number>;
   unit: string;
   column: number;
 }>;
@@ -19,7 +21,9 @@ const createBreakpoints = (breakpoints: Breakpoints = {}) => {
   } = breakpoints;
 
   // 关键点，从小到大排序
-  const points = Object.keys(values).sort((k1, k2) => values[k1] - values[k2]);
+  const points = Object.keys(values).sort(
+    (k1, k2) => values[k1 as Breakpoint] - values[k2 as Breakpoint],
+  );
 
   return {
     values,

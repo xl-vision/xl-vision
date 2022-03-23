@@ -8,6 +8,7 @@ import { ColProps } from './Col';
 import RowContext from './RowContext';
 import useBreakPoints from './useBreakPoints';
 import { useTheme } from '../ThemeProvider';
+import { Breakpoint } from '../ThemeProvider/breakpoints';
 
 export type RowAlign = 'top' | 'middle' | 'bottom';
 export type RowJustify = 'start' | 'end' | 'center' | 'space-around' | 'space-between';
@@ -16,10 +17,10 @@ export interface RowProps extends React.HTMLAttributes<HTMLDivElement> {
   align?: RowAlign;
   children: React.ReactElement<ColProps> | Array<React.ReactElement<ColProps>>;
   className?: string;
-  gutter?: number | Partial<Record<string, number>>;
+  gutter?: number | Partial<Record<Breakpoint, number>>;
   justify?: RowJustify;
-  type?: 'flex';
   component?: keyof JSX.IntrinsicElements | React.ComponentType;
+  wrap?: boolean;
 }
 
 const displayName = 'Row';
@@ -28,7 +29,7 @@ const RowRoot = styled('div', {
   name: displayName,
   slot: 'Root',
 })(({ theme }) => {
-  const { clsPrefix, mixins, breakpoints } = theme;
+  const { clsPrefix, breakpoints } = theme;
 
   const { column, unit, values, points } = breakpoints;
 
@@ -38,7 +39,7 @@ const RowRoot = styled('div', {
   const cssObject: CSSObject = {};
 
   points.forEach((point) => {
-    const value = values[point];
+    const value = values[point as Breakpoint];
     const mediaQuery = `@media (min-width: ${value}${unit})`;
     const queryObject: CSSObject = {};
 
@@ -71,17 +72,10 @@ const RowRoot = styled('div', {
   });
 
   return {
-    position: 'relative',
-    boxSizing: 'border-box',
-    ...mixins.clearfix,
     ...cssObject,
-    [`&${rowRootClassName}--flex`]: {
-      display: 'flex',
-      flexDirection: 'row',
-      '&::after': {
-        display: 'none',
-      },
-    },
+    boxSizing: 'border-box',
+    display: 'flex',
+    flexDirection: 'row',
     [`&${rowRootClassName}--justify-start`]: {
       justifyContent: 'flex-start',
     },
@@ -106,6 +100,9 @@ const RowRoot = styled('div', {
     [`&${rowRootClassName}--align-botton`]: {
       alignItems: 'flex-end',
     },
+    [`&${rowRootClassName}--wrap`]: {
+      flexWrap: 'wrap',
+    },
   };
 });
 
@@ -115,9 +112,9 @@ const Row = React.forwardRef<HTMLDivElement, RowProps>((props, ref) => {
     justify,
     children,
     gutter,
-    type,
     style,
     className,
+    wrap,
     component = 'div',
     ...others
   } = props;
@@ -150,16 +147,14 @@ const Row = React.forwardRef<HTMLDivElement, RowProps>((props, ref) => {
         }
       : style;
 
-  const isFlex = type === 'flex';
-
   const rootClassName = `${clsPrefix}-row`;
 
   const rootClasses = clsx(
     rootClassName,
     {
-      [`${rootClassName}--flex`]: isFlex,
-      [`${rootClassName}--justify-${justify}`]: isFlex && justify,
-      [`${rootClassName}--align-${align}`]: isFlex && align,
+      [`${rootClassName}--justify-${justify}`]: justify,
+      [`${rootClassName}--align-${align}`]: align,
+      [`${rootClassName}--wrap`]: wrap,
     },
     className,
   );
@@ -181,8 +176,8 @@ if (!env.isProduction) {
   Row.propTypes = {
     align: PropTypes.oneOf(['top', 'middle', 'bottom']),
     justify: PropTypes.oneOf(['start', 'end', 'center', 'space-around', 'space-between']),
-    type: PropTypes.oneOf(['flex']),
     gutter: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired]),
+    wrap: PropTypes.bool,
     children: PropTypes.oneOfType([
       PropTypes.element.isRequired,
       PropTypes.arrayOf(PropTypes.element.isRequired),

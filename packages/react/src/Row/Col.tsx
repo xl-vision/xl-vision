@@ -5,8 +5,9 @@ import { env } from '@xl-vision/utils';
 import { styled } from '../styles';
 import RowContext from './RowContext';
 import { useTheme } from '../ThemeProvider';
+import { Breakpoint } from '../ThemeProvider/breakpoints';
 
-export type ColSpanType = number | Partial<Record<string, number>>;
+export type ColSpanType = number | Partial<Record<Breakpoint, number>>;
 
 export interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
@@ -25,7 +26,6 @@ const ColRoot = styled('div', {
   slot: 'Root',
 })(() => {
   return {
-    float: 'left',
     boxSizing: 'border-box',
     display: 'block',
     position: 'relative',
@@ -93,7 +93,7 @@ const getClasses = (baseClassName: string, value?: ColSpanType): string => {
   if (typeof value === 'object') {
     const classes: Array<string> = [];
     Object.keys(value).forEach((key) => {
-      classes.push(`${baseClassName}-${key}-${value[key]}`);
+      classes.push(`${baseClassName}-${key}-${value[key as Breakpoint]}`);
     });
     return classes.join(' ');
   }
