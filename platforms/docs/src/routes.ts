@@ -282,6 +282,13 @@ const route: Route = {
           },
           path: '/Modal',
         },
+        {
+          titleMap: {
+            'en-US': 'ResizeObserver',
+            'zh-CN': 'ResizeObserver',
+          },
+          path: '/ResizeObserver',
+        },
       ],
     },
   ],

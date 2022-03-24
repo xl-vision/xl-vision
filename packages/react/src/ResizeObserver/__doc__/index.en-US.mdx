@@ -1,18 +1,18 @@
-# Portal
+# ResizeObserver
 
-Sub-components can be flexibly and conveniently mounted to components in other locations.
+A basic component that can easily monitor the width and height of internal elements. Based on [useResizeObserver](/hooks/useResizeObserver), this component does not limit the number of internal elements, and can monitor changes in the size of multiple elements at the same time.
 
 :::demo ./Basic
 
 Basic
 
-The button belongs to `container1` in the tree structure of `react`, and belongs to `container2` in the structure of `dom`, You can try to click the button and the event will be captured by `container1`.
+Basic
 
 :::
 
-## Portal API
+## ResizeObserver API
 
 | Property | Description | Type | Optional Value | Default | Require |
 | --- | --- | --- | --- | --- | --- |
-| getContainer | Specify the parent node to mount, support strings, node instances or functions that return these | string &#x007c; HTMLElement &#x007c; (() => string &#x007c; HTMLElement) | - | - | false |
-| children | Child node | ReactNode | - | — | true |
+| children | Children | ReactNode | - | — | true |
+| onResizeObserver | Callback for size change | (state:{width:number,height:number},target: Element) => void | - | — | false |

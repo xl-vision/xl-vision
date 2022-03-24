@@ -17,7 +17,7 @@ export const height = 60;
 
 const Container = styled('div')(() => {
   return {
-    position: 'fixed',
+    position: 'sticky',
     top: 0,
     width: '100%',
     height,

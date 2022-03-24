@@ -1,3 +1,3 @@
 describe('ResizeObserver', () => {
-  it.todo('Test content size change', () => {});
+  it.todo('Test content size change');
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ResizeObserver, ResizeObserverHandler, TextArea, Input } from '@xl-vision/react';
+import { ResizeObserver, ResizeObserverHandler, Input } from '@xl-vision/react';
 
 const Demo = () => {
   const [size, setSize] = React.useState<{ height: number; width: number }>({
@@ -13,12 +13,10 @@ const Demo = () => {
 
   return (
     <>
-      <Input.Group>
-        <Input prefix='height' value={`${size.height}`} />
-        <Input prefix='width' value={`${size.width}`} />
-      </Input.Group>
+      <Input readOnly={true} addonBefore='height' addonAfter='px' value={`${size.height}`} />
+      <Input readOnly={true} addonBefore='width' addonAfter='px' value={`${size.width}`} />
       <ResizeObserver onResizeObserver={handleResize}>
-        <TextArea />
+        <textarea placeholder='drag me' />
       </ResizeObserver>
     </>
   );

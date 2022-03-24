@@ -10,8 +10,9 @@
 
 :::
 
-## Portal API
+## ResizeObserver API
 
-| 参数     | 说明   | 类型      | 可选值 | 默认值 | 是否必填 |
-| -------- | ------ | --------- | ------ | ------ | -------- |
-| children | 子元素 | ReactNode | -      | —      | true     |
+| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
+| --- | --- | --- | --- | --- | --- |
+| children | 子元素 | ReactNode | - | — | true |
+| onResizeObserver | 尺寸变化的回调 | (state:{width:number,height:number},target: Element) => void | - | — | false |

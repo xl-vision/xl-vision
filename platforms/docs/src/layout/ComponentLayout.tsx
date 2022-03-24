@@ -44,7 +44,7 @@ const AsideWrapper = styled(Aside)(({ theme }) => {
     // width: '100%',
     backgroundColor: theme.color.background.paper,
     height: '100%',
-    maxHeight: '100vh',
+    maxHeight: `calc(100vh - ${height}px)`,
     overflowY: 'hidden',
     ':hover': {
       overflowY: 'auto',
@@ -135,7 +135,7 @@ const ComponentLayout: Layout = ({ children }) => {
           <AsideWrapper routeName='components' />
         </CollapseTransition>
       </div> */}
-      <Row style={{ marginTop: height }} removeOnUnvisible={true}>
+      <Row removeOnUnvisible={true}>
         <Row.Col column={{ xs: 0, md: 6, xl: 5, xxl: 4 }}>
           <Affix offsetTop={height}>
             <div>
