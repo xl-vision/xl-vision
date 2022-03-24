@@ -1,0 +1,50 @@
+# 固订
+
+:::demo ./Basic
+
+基础用法
+
+基础用法
+
+:::
+
+:::demo ./Change
+
+回调
+
+Affix 状态改变时的回调。
+
+:::
+
+:::demo ./Container
+
+指定父容器
+
+指定定位的父容器。
+
+:::
+
+:::demo ./Debug debug
+
+Debug
+
+Debug
+
+:::
+
+## Affix API
+
+| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
+| --- | --- | --- | --- | --- | --- |
+| children | - | React.ReactNode | - | - | false |
+| target | 设置需要监听其滚动事件的元素，值为一个返回对应 DOM 元素的函数 | Window &#x007c; HTMLElement &#x007c;(() => Window &#x007c; HTMLElement) | - | - | false |
+| offsetTop | 距离窗口顶部达到指定偏移量后触发 | number | - | - | false |
+| offsetBottom | 距离窗口底部达到指定偏移量后触发 | number | - | - | false |
+| offsetBottom | 距离窗口底部达到指定偏移量后触发 | number | - | - | false |
+| onChange | 固定状态改变时触发的回调函数 | - | - | false |
+
+## FAQ
+
+### `Affix`使用`target`绑定容器时，元素会跑到容器外
+
+From a performance perspective, we only listen for container scroll events. If you have other needs, you can manually call the `handleEventEmit` and `handleSizeChange` methods of `Affix`.

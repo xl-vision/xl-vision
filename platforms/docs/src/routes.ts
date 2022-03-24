@@ -116,6 +116,13 @@ const route: Route = {
           },
           path: '/Dropdown',
         },
+        {
+          titleMap: {
+            'en-US': 'Affix',
+            'zh-CN': '固订',
+          },
+          path: '/Affix',
+        },
       ],
     },
     {
@@ -274,6 +281,13 @@ const route: Route = {
             'zh-CN': '模态框',
           },
           path: '/Modal',
+        },
+        {
+          titleMap: {
+            'en-US': 'ResizeObserver',
+            'zh-CN': 'ResizeObserver',
+          },
+          path: '/ResizeObserver',
         },
       ],
     },

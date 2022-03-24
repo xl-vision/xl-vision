@@ -675,5 +675,7 @@ Array [
   "Avatar",
   "Input",
   "TextArea",
+  "Affix",
+  "ResizeObserver",
 ]
 `;

@@ -5,6 +5,8 @@ import { env } from '@xl-vision/utils';
 import { useConstantFn, useLayoutEffect, useForkRef } from '@xl-vision/hooks';
 import useLifecycleState, { LifecycleState } from '../hooks/useLifecycleState';
 import findDomNode from '../utils/findDomNode';
+import warning from '../utils/warning';
+import { supportRef } from '../utils/ref';
 
 enum TransitionState {
   STATE_ENTERING, // 0
@@ -39,6 +41,8 @@ export type TransitionProps = {
   in: boolean;
 };
 
+const displayName = 'Transition';
+
 const Transition: React.FunctionComponent<TransitionProps> = (props) => {
   const {
     in: inProp,
@@ -60,6 +64,8 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
   const transitionOnFirstRef = React.useRef(transitionOnFirst);
 
   const child = React.Children.only(children);
+
+  warning(!supportRef(child), '<%s>: child does not support ref', displayName);
 
   const [state, setState] = React.useState(
     inProp
@@ -201,7 +207,7 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
 };
 
 if (!env.isProduction) {
-  Transition.displayName = 'Transition';
+  Transition.displayName = displayName;
 
   Transition.propTypes = {
     beforeEnter: PropTypes.func,

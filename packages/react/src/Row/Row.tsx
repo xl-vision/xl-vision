@@ -2,12 +2,12 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { env } from '@xl-vision/utils';
-import { CSSObject } from '@xl-vision/styled-engine';
 import { styled } from '../styles';
 import { ColProps } from './Col';
 import RowContext from './RowContext';
 import useBreakPoints from './useBreakPoints';
 import { useTheme } from '../ThemeProvider';
+import { Breakpoint } from '../ThemeProvider/breakpoints';
 
 export type RowAlign = 'top' | 'middle' | 'bottom';
 export type RowJustify = 'start' | 'end' | 'center' | 'space-around' | 'space-between';
@@ -16,10 +16,11 @@ export interface RowProps extends React.HTMLAttributes<HTMLDivElement> {
   align?: RowAlign;
   children: React.ReactElement<ColProps> | Array<React.ReactElement<ColProps>>;
   className?: string;
-  gutter?: number | Partial<Record<string, number>>;
+  gutter?: number | Partial<Record<Breakpoint, number>>;
   justify?: RowJustify;
-  type?: 'flex';
   component?: keyof JSX.IntrinsicElements | React.ComponentType;
+  wrap?: boolean;
+  removeOnUnvisible?: boolean;
 }
 
 const displayName = 'Row';
@@ -28,83 +29,40 @@ const RowRoot = styled('div', {
   name: displayName,
   slot: 'Root',
 })(({ theme }) => {
-  const { clsPrefix, mixins, breakpoints } = theme;
+  const { clsPrefix } = theme;
 
-  const { column, unit, values, points } = breakpoints;
-
-  const colRootClassName = `.${clsPrefix}-col`;
-  const rowRootClassName = `.${clsPrefix}-row`;
-
-  const cssObject: CSSObject = {};
-
-  points.forEach((point) => {
-    const value = values[point];
-    const mediaQuery = `@media (min-width: ${value}${unit})`;
-    const queryObject: CSSObject = {};
-
-    cssObject[mediaQuery] = queryObject;
-
-    for (let i = 0; i <= column; i++) {
-      cssObject[`${colRootClassName}-column-${i}`] = {
-        display: i === 0 ? 'none' : 'block',
-        minHeight: 1,
-        width: `${(i / column) * 100}%`,
-      };
-      queryObject[`${colRootClassName}-column-${point}-${i}`] = {
-        display: i === 0 ? 'none' : 'block',
-        minHeight: 1,
-        width: `${(i / column) * 100}%`,
-      };
-      queryObject[`${colRootClassName}-offset-${point}-${i}`] = {
-        marginLeft: `${(i / column) * 100}%`,
-      };
-      queryObject[`${colRootClassName}-push-${point}-${i}`] = {
-        left: `${(i / column) * 100}%`,
-      };
-      queryObject[`${colRootClassName}-pull-${point}-${i}`] = {
-        right: `${(i / column) * 100}%`,
-      };
-      queryObject[`${colRootClassName}-order-${point}-${i}`] = {
-        order: `${(i / column) * 100}%`,
-      };
-    }
-  });
+  const rootClassName = `&.${clsPrefix}-row`;
 
   return {
-    position: 'relative',
     boxSizing: 'border-box',
-    ...mixins.clearfix,
-    ...cssObject,
-    [`&${rowRootClassName}--flex`]: {
-      display: 'flex',
-      flexDirection: 'row',
-      '&::after': {
-        display: 'none',
-      },
-    },
-    [`&${rowRootClassName}--justify-start`]: {
+    display: 'flex',
+    flexDirection: 'row',
+    [`${rootClassName}--justify-start`]: {
       justifyContent: 'flex-start',
     },
-    [`&${rowRootClassName}--justify-center`]: {
+    [`${rootClassName}--justify-center`]: {
       justifyContent: 'center',
     },
-    [`&${rowRootClassName}--justify-end`]: {
+    [`${rootClassName}--justify-end`]: {
       justifyContent: 'flex-end',
     },
-    [`&${rowRootClassName}--justify-space-around`]: {
+    [`${rootClassName}--justify-space-around`]: {
       justifyContent: 'space-around',
     },
-    [`&${rowRootClassName}--justify-space-between`]: {
+    [`${rootClassName}--justify-space-between`]: {
       justifyContent: 'space-between',
     },
-    [`&${rowRootClassName}--align-top`]: {
+    [`${rootClassName}--align-top`]: {
       alignItems: 'flex-start',
     },
-    [`&${rowRootClassName}--align-middle`]: {
+    [`${rootClassName}--align-middle`]: {
       alignItems: 'center',
     },
-    [`&${rowRootClassName}--align-botton`]: {
+    [`${rootClassName}--align-bottom`]: {
       alignItems: 'flex-end',
+    },
+    [`${rootClassName}--wrap`]: {
+      flexWrap: 'wrap',
     },
   };
 });
@@ -115,9 +73,10 @@ const Row = React.forwardRef<HTMLDivElement, RowProps>((props, ref) => {
     justify,
     children,
     gutter,
-    type,
     style,
     className,
+    wrap,
+    removeOnUnvisible,
     component = 'div',
     ...others
   } = props;
@@ -150,21 +109,22 @@ const Row = React.forwardRef<HTMLDivElement, RowProps>((props, ref) => {
         }
       : style;
 
-  const isFlex = type === 'flex';
-
   const rootClassName = `${clsPrefix}-row`;
 
   const rootClasses = clsx(
     rootClassName,
     {
-      [`${rootClassName}--flex`]: isFlex,
-      [`${rootClassName}--justify-${justify}`]: isFlex && justify,
-      [`${rootClassName}--align-${align}`]: isFlex && align,
+      [`${rootClassName}--justify-${justify}`]: justify,
+      [`${rootClassName}--align-${align}`]: align,
+      [`${rootClassName}--wrap`]: wrap,
     },
     className,
   );
 
-  const memorizedValue = React.useMemo(() => ({ gutter: computedGutter }), [computedGutter]);
+  const memorizedValue = React.useMemo(
+    () => ({ gutter: computedGutter, breakPoints, removeOnUnvisible }),
+    [computedGutter, breakPoints, removeOnUnvisible],
+  );
 
   return (
     <RowContext.Provider value={memorizedValue}>
@@ -181,8 +141,8 @@ if (!env.isProduction) {
   Row.propTypes = {
     align: PropTypes.oneOf(['top', 'middle', 'bottom']),
     justify: PropTypes.oneOf(['start', 'end', 'center', 'space-around', 'space-between']),
-    type: PropTypes.oneOf(['flex']),
     gutter: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired]),
+    wrap: PropTypes.bool,
     children: PropTypes.oneOfType([
       PropTypes.element.isRequired,
       PropTypes.arrayOf(PropTypes.element.isRequired),
@@ -190,6 +150,7 @@ if (!env.isProduction) {
     style: PropTypes.object,
     className: PropTypes.string,
     component: PropTypes.any,
+    removeOnUnvisible: PropTypes.bool,
   };
 }
 

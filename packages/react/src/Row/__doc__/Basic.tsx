@@ -27,7 +27,7 @@ const Basic = () => {
   return (
     <div>
       <Wrapper>
-        <Row gutter={10} type='flex'>
+        <Row gutter={10}>
           <Row.Col column={4}>
             <Box>col1</Box>
           </Row.Col>
@@ -60,6 +60,22 @@ const Basic = () => {
       </Wrapper>
       <Wrapper>
         <Row gutter={10}>
+          <Row.Col column={8}>
+            <Box>col1</Box>
+          </Row.Col>
+          <Row.Col column={0}>
+            <Box>col2</Box>
+          </Row.Col>
+          <Row.Col column={8}>
+            <Box>col3</Box>
+          </Row.Col>
+          <Row.Col column={8}>
+            <Box>col4</Box>
+          </Row.Col>
+        </Row>
+      </Wrapper>
+      <Wrapper>
+        <Row gutter={10} removeOnUnvisible={true}>
           <Row.Col column={8}>
             <Box>col1</Box>
           </Row.Col>

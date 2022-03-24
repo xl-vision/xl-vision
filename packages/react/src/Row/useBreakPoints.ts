@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTheme } from '../ThemeProvider';
+import { Breakpoint } from '../ThemeProvider/breakpoints';
 
 const useBreakPoints = () => {
   const { breakpoints } = useTheme();
@@ -9,7 +10,7 @@ const useBreakPoints = () => {
   const [media, setMedia] = React.useState<{ [key: string]: boolean }>({});
 
   const breakPointArray = React.useMemo(() => {
-    return Object.keys(values).sort((a, b) => values[b] - values[a]);
+    return Object.keys(values).sort((a, b) => values[b as Breakpoint] - values[a as Breakpoint]);
   }, [values]);
 
   React.useEffect(() => {
@@ -21,7 +22,7 @@ const useBreakPoints = () => {
     } = {};
     const keys = Object.keys(values);
     keys.forEach((key) => {
-      const size = values[key];
+      const size = values[key as Breakpoint];
       const query = `(min-width: ${size}${unit})`;
       const mql = matchMedia(query);
       const onChange = () => {
@@ -45,8 +46,8 @@ const useBreakPoints = () => {
     };
   }, [values, unit]);
 
-  return React.useMemo<Array<[string, boolean]>>(
-    () => breakPointArray.map((key) => [key, media[key]]),
+  return React.useMemo<Array<[Breakpoint, boolean]>>(
+    () => breakPointArray.map((key) => [key as Breakpoint, media[key]]),
     [breakPointArray, media],
   );
 };

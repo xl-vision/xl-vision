@@ -18,7 +18,7 @@ export type OverrideStyles = Partial<{
     Root: Style<{
       align: RowProps['align'];
       justify: RowProps['justify'];
-      type: RowProps['type'];
+      wrap: RowProps['wrap'];
     }>;
   }>;
   Col: Partial<{

@@ -1,5 +1,5 @@
-import { render } from 'enzyme';
-import * as React from 'react';
+import { mount, render } from 'enzyme';
+import React from 'react';
 import { Row } from '@xl-vision/react';
 
 describe('Row', () => {
@@ -178,114 +178,6 @@ describe('Row', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('flex布局', () => {
-    const wrapper = render(
-      <div>
-        <div className='box'>
-          <Row gutter={10} type='flex' align='top'>
-            <Row.Col column={6}>
-              <div className='col'>col1</div>
-            </Row.Col>
-            <Row.Col column={6}>
-              <div className='col'>col2</div>
-            </Row.Col>
-            <Row.Col column={6}>
-              <div className='col'>col3</div>
-            </Row.Col>
-            <Row.Col column={6}>
-              <div className='col'>col4</div>
-            </Row.Col>
-          </Row>
-        </div>
-        <div className='box'>
-          <Row gutter={10} type='flex' align='middle'>
-            <Row.Col column={6}>
-              <div className='col'>col1</div>
-            </Row.Col>
-            <Row.Col column={6}>
-              <div className='col'>col2</div>
-            </Row.Col>
-            <Row.Col column={6}>
-              <div className='col'>col3</div>
-            </Row.Col>
-            <Row.Col column={6}>
-              <div className='col'>col4</div>
-            </Row.Col>
-          </Row>
-        </div>
-        <div className='box'>
-          <Row gutter={10} type='flex' align='bottom'>
-            <Row.Col column={6}>
-              <div className='col'>col1</div>
-            </Row.Col>
-            <Row.Col column={6}>
-              <div className='col'>col2</div>
-            </Row.Col>
-            <Row.Col column={6}>
-              <div className='col'>col3</div>
-            </Row.Col>
-            <Row.Col column={6}>
-              <div className='col'>col4</div>
-            </Row.Col>
-          </Row>
-        </div>
-        <div className='box'>
-          <Row gutter={10} type='flex' justify='start'>
-            <Row.Col column={6}>
-              <div className='col'>col1</div>
-            </Row.Col>
-            <Row.Col column={6}>
-              <div className='col'>col2</div>
-            </Row.Col>
-            <Row.Col column={6}>
-              <div className='col'>col3</div>
-            </Row.Col>
-          </Row>
-        </div>
-        <div className='box'>
-          <Row gutter={10} type='flex' justify='center'>
-            <Row.Col column={6}>
-              <div className='col'>col1</div>
-            </Row.Col>
-            <Row.Col column={6}>
-              <div className='col'>col2</div>
-            </Row.Col>
-            <Row.Col column={6}>
-              <div className='col'>col3</div>
-            </Row.Col>
-          </Row>
-        </div>
-        <div className='box'>
-          <Row gutter={10} type='flex' justify='end'>
-            <Row.Col column={6}>
-              <div className='col'>col1</div>
-            </Row.Col>
-            <Row.Col column={6}>
-              <div className='col'>col2</div>
-            </Row.Col>
-            <Row.Col column={6}>
-              <div className='col'>col3</div>
-            </Row.Col>
-          </Row>
-        </div>
-        <div className='box'>
-          <Row gutter={10} type='flex'>
-            <Row.Col column={6} order={3}>
-              <div className='col'>col1</div>
-            </Row.Col>
-            <Row.Col column={6} order={1}>
-              <div className='col'>col2</div>
-            </Row.Col>
-            <Row.Col column={6} order={2}>
-              <div className='col'>col3</div>
-            </Row.Col>
-          </Row>
-        </div>
-      </div>,
-    );
-    expect(wrapper).toMatchSnapshot();
-  });
-
   it('自定义标签', () => {
     const wrapper = render(
       <Row component='header'>
@@ -294,5 +186,23 @@ describe('Row', () => {
     );
 
     expect(wrapper.is('header')).toBe(true);
+  });
+
+  it('test removeOnUnvisible', () => {
+    const wrapper = mount(
+      <Row component='header'>
+        <Row.Col column={0}>hello</Row.Col>
+      </Row>,
+    );
+
+    expect(wrapper.exists('.xl-col')).toBe(true);
+
+    wrapper
+      .setProps({
+        removeOnUnvisible: true,
+      })
+      .update();
+
+    expect(wrapper.exists('.xl-col')).toBe(false);
   });
 });
