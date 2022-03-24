@@ -1,4 +1,4 @@
-import { styled, Row, Affix } from '@xl-vision/react';
+import { styled, Row, Affix, BackTop } from '@xl-vision/react';
 import { useRouter } from 'next/router';
 import React from 'react';
 import Aside from '../components/Aside';
@@ -135,6 +135,7 @@ const ComponentLayout: Layout = ({ children }) => {
           <AsideWrapper routeName='components' />
         </CollapseTransition>
       </div> */}
+      <BackTop />
       <Row removeOnUnvisible={true}>
         <Row.Col column={{ xs: 0, md: 6, xl: 5, xxl: 4 }}>
           <Affix offsetTop={height}>

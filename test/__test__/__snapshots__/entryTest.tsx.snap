@@ -677,5 +677,6 @@ Array [
   "TextArea",
   "Affix",
   "ResizeObserver",
+  "BackTop",
 ]
 `;

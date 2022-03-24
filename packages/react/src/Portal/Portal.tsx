@@ -8,7 +8,7 @@ export type PortalContainerReturnType = Element | string | undefined | null;
 export type PortalContainerType = PortalContainerReturnType | (() => PortalContainerReturnType);
 
 export interface PortalProp {
-  children: React.ReactElement;
+  children?: React.ReactNode;
   getContainer?: PortalContainerType;
 }
 
@@ -36,7 +36,7 @@ const Portal: React.FunctionComponent<PortalProp> = (props) => {
   }
 
   if (!container) {
-    return children;
+    return <>{children}</>;
   }
 
   if (typeof container === 'string') {

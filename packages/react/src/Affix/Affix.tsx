@@ -24,7 +24,10 @@ export type AffixProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'target' | '
 
 const displayName = 'Affix';
 
-const AffixRoot = styled('div')(({ theme }) => {
+const AffixRoot = styled('div', {
+  name: displayName,
+  slot: 'Root',
+})(({ theme }) => {
   const { clsPrefix } = theme;
 
   return {
@@ -222,7 +225,12 @@ const Affix = React.forwardRef<AffixIntance, AffixProps>((props, ref) => {
 if (!env.isProduction) {
   Affix.displayName = displayName;
   Affix.propTypes = {
-    target: PropTypes.func,
+    target: PropTypes.oneOfType([
+      PropTypes.func,
+      ...(env.isServer
+        ? [PropTypes.any]
+        : [PropTypes.instanceOf(Window), PropTypes.instanceOf(HTMLElement)]),
+    ]),
     onChange: PropTypes.func,
     offsetButtom: PropTypes.number,
     offsetTop: PropTypes.number,
