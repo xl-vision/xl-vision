@@ -2,7 +2,7 @@
 import { isMemo } from 'react-is';
 
 export const supportRef = (nodeOrComponent: any): boolean => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
   const type = isMemo(nodeOrComponent) ? nodeOrComponent.type.type : nodeOrComponent.type;
 
   // Function component node
