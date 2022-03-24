@@ -1,5 +1,5 @@
 import Affix from './Affix';
 
-export { AffixProps, AffixIntance } from './Affix';
+export * from './Affix';
 
 export default Affix;

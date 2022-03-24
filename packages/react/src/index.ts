@@ -125,7 +125,7 @@ export { default as TextArea } from './TextArea';
 export type { TextAreaProps } from './TextArea';
 
 export { default as Affix } from './Affix';
-export type { AffixProps } from './Affix';
+export type { AffixProps, AffixIntance } from './Affix';
 
 export { default as ResizeObserver } from './ResizeObserver';
-export type { ResizeObserverProps } from './ResizeObserver';
+export type { ResizeObserverProps, ResizeObserverHandler } from './ResizeObserver';

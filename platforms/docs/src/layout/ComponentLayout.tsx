@@ -1,13 +1,10 @@
-import { styled, CollapseTransition, Button, useTheme, Row, Affix } from '@xl-vision/react';
+import { styled, Row, Affix } from '@xl-vision/react';
 import { useRouter } from 'next/router';
 import React from 'react';
 import Aside from '../components/Aside';
 import Footer from '../components/Footer';
 import Header, { height } from '../components/Header';
-import { useLocale } from '../components/LocalizationProvider';
 import { Layout } from './Layout';
-
-const asideWidth = 280;
 
 const Root = styled('div')(({ theme }) => {
   return {
@@ -39,9 +36,9 @@ const Root = styled('div')(({ theme }) => {
 });
 
 const AsideWrapper = styled(Aside)(({ theme }) => {
-  const { breakpoints } = theme;
+  // const { breakpoints } = theme;
 
-  const { values, unit } = breakpoints;
+  // const { values, unit } = breakpoints;
 
   return {
     // width: '100%',
@@ -68,11 +65,11 @@ const AsideWrapper = styled(Aside)(({ theme }) => {
 });
 
 const MainWrapper = styled('div')(({ theme }) => {
-  const { breakpoints } = theme;
+  // const { breakpoints } = theme;
 
-  const { values, unit } = breakpoints;
+  // const { values, unit } = breakpoints;
 
-  const mobileWidth = `${values.md}${unit}`;
+  // const mobileWidth = `${values.md}${unit}`;
 
   return {
     // padding: '0 16px',
@@ -91,35 +88,35 @@ const MainWrapper = styled('div')(({ theme }) => {
 });
 
 const ComponentLayout: Layout = ({ children }) => {
-  const { locale } = useLocale();
+  // const { locale } = useLocale();
 
   const asideRef = React.useRef<HTMLDivElement>(null);
 
   const { pathname } = useRouter();
 
-  const [asideVisible, setAsideVisible] = React.useState(false);
+  // const [asideVisible, setAsideVisible] = React.useState(false);
 
-  const theme = useTheme();
+  // const theme = useTheme();
 
-  const handleAsideVisible = React.useCallback((e: React.MouseEvent) => {
-    setAsideVisible((prev) => !prev);
-    e.stopPropagation();
-  }, []);
+  // const handleAsideVisible = React.useCallback((e: React.MouseEvent) => {
+  //   setAsideVisible((prev) => !prev);
+  //   e.stopPropagation();
+  // }, []);
 
   // 滚回顶部
   React.useEffect(() => {
     asideRef.current?.scrollTo({ top: 0, left: 0 });
   }, [pathname]);
 
-  React.useEffect(() => {
-    const fn = () => {
-      setAsideVisible(false);
-    };
-    window.addEventListener('click', fn);
-    return () => {
-      window.removeEventListener('click', fn);
-    };
-  }, []);
+  // React.useEffect(() => {
+  //   const fn = () => {
+  //     setAsideVisible(false);
+  //   };
+  //   window.addEventListener('click', fn);
+  //   return () => {
+  //     window.removeEventListener('click', fn);
+  //   };
+  // }, []);
 
   return (
     <Root>
@@ -147,7 +144,7 @@ const ComponentLayout: Layout = ({ children }) => {
           </Affix>
         </Row.Col>
         <Row.Col column={{ xs: 24, md: 18, xl: 19, xxl: 20 }}>
-          <MainWrapper ref={asideRef} style={{ overflowY: asideVisible ? 'hidden' : undefined }}>
+          <MainWrapper>
             {children}
             <Footer />
           </MainWrapper>

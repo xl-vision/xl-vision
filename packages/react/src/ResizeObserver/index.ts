@@ -1,5 +1,5 @@
 import ResizeObserver from './ResizeObserver';
 
-export { ResizeObserverProps } from './ResizeObserver';
+export * from './ResizeObserver';
 
 export default ResizeObserver;
