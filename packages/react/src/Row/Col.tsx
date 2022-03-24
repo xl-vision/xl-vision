@@ -93,8 +93,25 @@ const ColRoot = styled('div', {
 const Col = React.forwardRef<HTMLDivElement, ColProps>((props, ref) => {
   const { children, className, offset, order, pull, push, column, style, ...others } = props;
 
-  const { gutter } = React.useContext(RowContext);
+  const { gutter, breakPoints, removeOnUnvisible } = React.useContext(RowContext);
   const { clsPrefix } = useTheme();
+
+  if (removeOnUnvisible && breakPoints) {
+    if (typeof column === 'object') {
+      for (let i = 0; i < breakPoints.length; i++) {
+        const [breakPoint, match] = breakPoints[i];
+        const col = column[breakPoint];
+        if (match && col !== undefined) {
+          if (col === 0) {
+            return null;
+          }
+          break;
+        }
+      }
+    } else if (column === 0) {
+      return null;
+    }
+  }
 
   const rootClassName = `${clsPrefix}-col`;
 

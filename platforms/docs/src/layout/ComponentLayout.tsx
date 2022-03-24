@@ -138,7 +138,7 @@ const ComponentLayout: Layout = ({ children }) => {
           <AsideWrapper routeName='components' />
         </CollapseTransition>
       </div> */}
-      <Row style={{ marginTop: height }}>
+      <Row style={{ marginTop: height }} removeOnUnvisible={true}>
         <Row.Col column={{ xs: 0, md: 6, xl: 5, xxl: 4 }}>
           <Affix offsetTop={height}>
             <div>

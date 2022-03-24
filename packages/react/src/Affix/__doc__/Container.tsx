@@ -7,6 +7,7 @@ const Root = styled('div')(() => {
     overflowY: 'auto',
     '.block': {
       height: 500,
+      backgroundImage: `url('https://zos.alipayobjects.com/rmsportal/RmjwQiJorKyobvI.jpg')`,
     },
   };
 });

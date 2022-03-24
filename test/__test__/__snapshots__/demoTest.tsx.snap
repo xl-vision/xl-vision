@@ -556,6 +556,7 @@ exports[`Demo renders ./packages/react/src/Affix/__doc__/Container.tsx correctly
 
 .c0 .block {
   height: 500px;
+  background-image: url('https://zos.alipayobjects.com/rmsportal/RmjwQiJorKyobvI.jpg');
 }
 
 <div

@@ -187,4 +187,6 @@ describe('Row', () => {
 
     expect(wrapper.is('header')).toBe(true);
   });
+
+  it.todo('test removeOnUnvisible');
 });

@@ -20,6 +20,7 @@ export interface RowProps extends React.HTMLAttributes<HTMLDivElement> {
   justify?: RowJustify;
   component?: keyof JSX.IntrinsicElements | React.ComponentType;
   wrap?: boolean;
+  removeOnUnvisible?: boolean;
 }
 
 const displayName = 'Row';
@@ -75,6 +76,7 @@ const Row = React.forwardRef<HTMLDivElement, RowProps>((props, ref) => {
     style,
     className,
     wrap,
+    removeOnUnvisible,
     component = 'div',
     ...others
   } = props;
@@ -119,7 +121,10 @@ const Row = React.forwardRef<HTMLDivElement, RowProps>((props, ref) => {
     className,
   );
 
-  const memorizedValue = React.useMemo(() => ({ gutter: computedGutter }), [computedGutter]);
+  const memorizedValue = React.useMemo(
+    () => ({ gutter: computedGutter, breakPoints, removeOnUnvisible }),
+    [computedGutter, breakPoints, removeOnUnvisible],
+  );
 
   return (
     <RowContext.Provider value={memorizedValue}>
@@ -145,6 +150,7 @@ if (!env.isProduction) {
     style: PropTypes.object,
     className: PropTypes.string,
     component: PropTypes.any,
+    removeOnUnvisible: PropTypes.bool,
   };
 }
 
