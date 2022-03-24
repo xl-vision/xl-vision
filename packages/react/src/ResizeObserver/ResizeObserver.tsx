@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import SingleResizeObserver from './SingleResizeObserver';
 
-export { ResizeObserverHandler };
+export type { ResizeObserverHandler };
 
 export type ResizeObserverProps = {
   children: React.ReactNode;
