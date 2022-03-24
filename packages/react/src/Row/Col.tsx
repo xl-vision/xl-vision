@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { env } from '@xl-vision/utils';
+import { CSSObject } from '@xl-vision/styled-engine';
 import { styled } from '../styles';
 import RowContext from './RowContext';
 import { useTheme } from '../ThemeProvider';
@@ -24,11 +25,68 @@ const displayName = 'Col';
 const ColRoot = styled('div', {
   name: displayName,
   slot: 'Root',
-})(() => {
+})(({ theme }) => {
+  const { clsPrefix, breakpoints } = theme;
+
+  const { column, unit, values, points } = breakpoints;
+
+  const rootClassName = `&.${clsPrefix}-col`;
+
+  const cssObject: CSSObject = {};
+
+  for (let i = 0; i <= column; i++) {
+    cssObject[`${rootClassName}-column-${i}`] = {
+      display: i === 0 ? 'none' : 'block',
+      minHeight: 1,
+      width: `${(i / column) * 100}%`,
+    };
+    cssObject[`${rootClassName}-offset-${i}`] = {
+      marginLeft: `${(i / column) * 100}%`,
+    };
+    cssObject[`${rootClassName}-push-${i}`] = {
+      left: `${(i / column) * 100}%`,
+    };
+    cssObject[`${rootClassName}-pull-${i}`] = {
+      right: `${(i / column) * 100}%`,
+    };
+    cssObject[`${rootClassName}-order-${i}`] = {
+      order: `${(i / column) * 100}%`,
+    };
+  }
+
+  points.forEach((point) => {
+    const value = values[point as Breakpoint];
+    const mediaQuery = `@media (min-width: ${value}${unit})`;
+
+    const mediaObject: CSSObject = {};
+
+    cssObject[mediaQuery] = mediaObject;
+    for (let i = 0; i <= column; i++) {
+      mediaObject[`${rootClassName}-column-${point}-${i}`] = {
+        display: i === 0 ? 'none' : 'block',
+        minHeight: 1,
+        width: `${(i / column) * 100}%`,
+      };
+      mediaObject[`${rootClassName}-offset-${point}-${i}`] = {
+        marginLeft: `${(i / column) * 100}%`,
+      };
+      mediaObject[`${rootClassName}-push-${point}-${i}`] = {
+        left: `${(i / column) * 100}%`,
+      };
+      mediaObject[`${rootClassName}-pull-${point}-${i}`] = {
+        right: `${(i / column) * 100}%`,
+      };
+      mediaObject[`${rootClassName}-order-${point}-${i}`] = {
+        order: `${(i / column) * 100}%`,
+      };
+    }
+  });
+
   return {
     boxSizing: 'border-box',
     display: 'block',
     position: 'relative',
+    ...cssObject,
   };
 });
 

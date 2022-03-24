@@ -2,7 +2,6 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { env } from '@xl-vision/utils';
-import { CSSObject } from '@xl-vision/styled-engine';
 import { styled } from '../styles';
 import { ColProps } from './Col';
 import RowContext from './RowContext';
@@ -29,78 +28,39 @@ const RowRoot = styled('div', {
   name: displayName,
   slot: 'Root',
 })(({ theme }) => {
-  const { clsPrefix, breakpoints } = theme;
+  const { clsPrefix } = theme;
 
-  const { column, unit, values, points } = breakpoints;
-
-  const colRootClassName = `.${clsPrefix}-col`;
-  const rowRootClassName = `.${clsPrefix}-row`;
-
-  const cssObject: CSSObject = {};
-
-  points.forEach((point) => {
-    const value = values[point as Breakpoint];
-    const mediaQuery = `@media (min-width: ${value}${unit})`;
-    const queryObject: CSSObject = {};
-
-    cssObject[mediaQuery] = queryObject;
-
-    for (let i = 0; i <= column; i++) {
-      cssObject[`${colRootClassName}-column-${i}`] = {
-        display: i === 0 ? 'none' : 'block',
-        minHeight: 1,
-        width: `${(i / column) * 100}%`,
-      };
-      queryObject[`${colRootClassName}-column-${point}-${i}`] = {
-        display: i === 0 ? 'none' : 'block',
-        minHeight: 1,
-        width: `${(i / column) * 100}%`,
-      };
-      queryObject[`${colRootClassName}-offset-${point}-${i}`] = {
-        marginLeft: `${(i / column) * 100}%`,
-      };
-      queryObject[`${colRootClassName}-push-${point}-${i}`] = {
-        left: `${(i / column) * 100}%`,
-      };
-      queryObject[`${colRootClassName}-pull-${point}-${i}`] = {
-        right: `${(i / column) * 100}%`,
-      };
-      queryObject[`${colRootClassName}-order-${point}-${i}`] = {
-        order: `${(i / column) * 100}%`,
-      };
-    }
-  });
+  const rootClassName = `&.${clsPrefix}-row`;
 
   return {
-    ...cssObject,
     boxSizing: 'border-box',
     display: 'flex',
     flexDirection: 'row',
-    [`&${rowRootClassName}--justify-start`]: {
+    [`${rootClassName}--justify-start`]: {
       justifyContent: 'flex-start',
     },
-    [`&${rowRootClassName}--justify-center`]: {
+    [`${rootClassName}--justify-center`]: {
       justifyContent: 'center',
     },
-    [`&${rowRootClassName}--justify-end`]: {
+    [`${rootClassName}--justify-end`]: {
       justifyContent: 'flex-end',
     },
-    [`&${rowRootClassName}--justify-space-around`]: {
+    [`${rootClassName}--justify-space-around`]: {
       justifyContent: 'space-around',
     },
-    [`&${rowRootClassName}--justify-space-between`]: {
+    [`${rootClassName}--justify-space-between`]: {
       justifyContent: 'space-between',
     },
-    [`&${rowRootClassName}--align-top`]: {
+    [`${rootClassName}--align-top`]: {
       alignItems: 'flex-start',
     },
-    [`&${rowRootClassName}--align-middle`]: {
+    [`${rootClassName}--align-middle`]: {
       alignItems: 'center',
     },
-    [`&${rowRootClassName}--align-bottom`]: {
+    [`${rootClassName}--align-bottom`]: {
       alignItems: 'flex-end',
     },
-    [`&${rowRootClassName}--wrap`]: {
+    [`${rootClassName}--wrap`]: {
       flexWrap: 'wrap',
     },
   };

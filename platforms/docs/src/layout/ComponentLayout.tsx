@@ -13,7 +13,6 @@ const Root = styled('div')(({ theme }) => {
   return {
     display: 'flex',
     flexDirection: 'column',
-    height: '100%',
     backgroundColor: theme.color.background.paper,
     // '.menu-button': {
     //   position: 'fixed',
@@ -47,6 +46,12 @@ const AsideWrapper = styled(Aside)(({ theme }) => {
   return {
     // width: '100%',
     backgroundColor: theme.color.background.paper,
+    height: '100%',
+    maxHeight: '100vh',
+    overflowY: 'hidden',
+    ':hover': {
+      overflowY: 'auto',
+    },
 
     // [`@media(min-width: ${values.md}${unit})`]: {
     //   position: 'fixed',
@@ -136,7 +141,9 @@ const ComponentLayout: Layout = ({ children }) => {
       <Row style={{ marginTop: height }}>
         <Row.Col column={{ xs: 0, md: 6, xl: 5, xxl: 4 }}>
           <Affix offsetTop={height}>
-            <AsideWrapper className='md-up' routeName='components' />
+            <div>
+              <AsideWrapper routeName='components' />
+            </div>
           </Affix>
         </Row.Col>
         <Row.Col column={{ xs: 24, md: 18, xl: 19, xxl: 20 }}>

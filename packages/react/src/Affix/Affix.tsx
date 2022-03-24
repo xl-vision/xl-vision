@@ -1,7 +1,7 @@
 import { env } from '@xl-vision/utils';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useConstantFn, useForkRef } from '@xl-vision/hooks';
+import { useConstantFn, useForkRef, useLayoutEffect } from '@xl-vision/hooks';
 import clsx from 'clsx';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
@@ -19,7 +19,7 @@ export type AffixProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'target' | '
   target?: Window | HTMLElement | (() => Window | HTMLElement);
   offsetTop?: number;
   offsetButtom?: number;
-  onChange?: (affixed?: boolean) => void;
+  onChange?: (affixed: boolean) => void;
 };
 
 const displayName = 'Affix';
@@ -43,7 +43,12 @@ enum AffixStatus {
   NONE,
 }
 
-const Affix = React.forwardRef<HTMLDivElement, AffixProps>((props, ref) => {
+export type AffixIntance = HTMLDivElement & {
+  handleEventEmit: () => void;
+  handleSizeChange: () => void;
+};
+
+const Affix = React.forwardRef<AffixIntance, AffixProps>((props, ref) => {
   const { clsPrefix } = useTheme();
 
   const {
@@ -59,7 +64,7 @@ const Affix = React.forwardRef<HTMLDivElement, AffixProps>((props, ref) => {
   const [affixStyle, setAffixStyle] = React.useState<React.CSSProperties>();
   const [placeholderStyle, setPlaceholderStyle] = React.useState<React.CSSProperties>();
 
-  const rootRef = React.useRef<HTMLDivElement>(null);
+  const rootRef = React.useRef<AffixIntance>(null);
 
   const forkRef = useForkRef(ref, rootRef);
 
@@ -75,15 +80,6 @@ const Affix = React.forwardRef<HTMLDivElement, AffixProps>((props, ref) => {
     }
     return target;
   });
-
-  // 当尺寸信息发生变化时，需要清空样式重新计算
-  const handleResizeChange = useConstantFn(
-    throttleByAnimationFrame(() => {
-      setPlaceholderStyle(undefined);
-      setAffixStyle(undefined);
-      setStatus(AffixStatus.PREPARE);
-    }),
-  );
 
   const measure = useConstantFn(() => {
     const affixNode = rootRef.current;
@@ -131,10 +127,47 @@ const Affix = React.forwardRef<HTMLDivElement, AffixProps>((props, ref) => {
     }
   });
 
+  // 当尺寸信息发生变化时，需要清空样式重新计算
+  const handleSizeChange = React.useMemo(() => {
+    return throttleByAnimationFrame(() => {
+      setPlaceholderStyle(undefined);
+      setAffixStyle(undefined);
+      setStatus(AffixStatus.PREPARE);
+    });
+  }, []);
+
+  const handleEventEmit = React.useMemo(() => {
+    return throttleByAnimationFrame(() => {
+      setStatus(AffixStatus.PREPARE);
+    });
+  }, []);
+
   React.useEffect(() => {
+    const node = rootRef.current;
+    if (!node) {
+      return;
+    }
+    node.handleEventEmit = handleEventEmit;
+    node.handleSizeChange = handleSizeChange;
+  }, [handleEventEmit, handleSizeChange]);
+
+  React.useEffect(() => {
+    return () => {
+      handleSizeChange.cancel?.();
+    };
+  }, [handleSizeChange]);
+
+  React.useEffect(() => {
+    return () => {
+      handleEventEmit.cancel?.();
+    };
+  }, [handleEventEmit]);
+
+  // 保证同步更新，避免闪烁
+  useLayoutEffect(() => {
     if (status === AffixStatus.PREPARE) {
-      measure();
       setStatus(AffixStatus.NONE);
+      measure();
     }
   }, [status, measure]);
 
@@ -152,31 +185,37 @@ const Affix = React.forwardRef<HTMLDivElement, AffixProps>((props, ref) => {
       return;
     }
 
-    const throttleMeasure = throttleByAnimationFrame(measure);
-
-    addTargetObserver(currentTarget, throttleMeasure);
+    addTargetObserver(currentTarget, handleEventEmit);
     return () => {
-      removeTargetObserver(currentTarget, throttleMeasure);
+      removeTargetObserver(currentTarget, handleEventEmit);
     };
-  }, [currentTarget, measure]);
+  }, [currentTarget, handleEventEmit]);
 
   const rootClassName = `${clsPrefix}-affix`;
 
-  const classes = clsx(rootClassName, className);
+  const classes = clsx(
+    rootClassName,
+    {
+      [`${rootClassName}--fixed`]: !!affixStyle,
+    },
+    className,
+  );
 
   return (
-    <AffixRoot {...others} className={classes} ref={forkRef}>
-      {placeholderStyle && (
-        <div
-          className={`${rootClassName}__placeholder`}
-          style={placeholderStyle}
-          aria-hidden={true}
-        />
-      )}
-      <div style={affixStyle} className={`${rootClassName}__inner`}>
-        <ResizeObserver onResizeObserver={handleResizeChange}>{children}</ResizeObserver>
-      </div>
-    </AffixRoot>
+    <ResizeObserver onResizeObserver={handleSizeChange}>
+      <AffixRoot {...others} className={classes} ref={forkRef}>
+        {placeholderStyle && (
+          <div
+            className={`${rootClassName}__placeholder`}
+            style={placeholderStyle}
+            aria-hidden={true}
+          />
+        )}
+        <div style={affixStyle} className={`${rootClassName}__inner`}>
+          <ResizeObserver onResizeObserver={handleSizeChange}>{children}</ResizeObserver>
+        </div>
+      </AffixRoot>
+    </ResizeObserver>
   );
 });
 
