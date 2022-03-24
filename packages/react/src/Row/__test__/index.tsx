@@ -1,5 +1,5 @@
-import { render } from 'enzyme';
-import * as React from 'react';
+import { mount, render } from 'enzyme';
+import React from 'react';
 import { Row } from '@xl-vision/react';
 
 describe('Row', () => {
@@ -188,5 +188,21 @@ describe('Row', () => {
     expect(wrapper.is('header')).toBe(true);
   });
 
-  it.todo('test removeOnUnvisible');
+  it('test removeOnUnvisible', () => {
+    const wrapper = mount(
+      <Row component='header'>
+        <Row.Col column={0}>hello</Row.Col>
+      </Row>,
+    );
+
+    expect(wrapper.exists('.xl-col')).toBe(true);
+
+    wrapper
+      .setProps({
+        removeOnUnvisible: true,
+      })
+      .update();
+
+    expect(wrapper.exists('.xl-col')).toBe(false);
+  });
 });
