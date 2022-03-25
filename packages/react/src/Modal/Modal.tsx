@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { env } from '@xl-vision/utils';
 import { useForkRef } from '@xl-vision/hooks';
-import Portal, { PortalContainerType } from '../Portal';
+import Portal from '../Portal';
 import usePropChange from '../hooks/usePropChange';
 import CssTransition from '../CssTransition';
 import { styled } from '../styles';
@@ -15,7 +15,7 @@ import { contains } from '../utils/dom';
 import { useTheme } from '../ThemeProvider';
 
 export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
-  getContainer?: PortalContainerType;
+  getContainer?: HTMLElement | (() => HTMLElement);
   children: React.ReactNode;
   defaultVisible?: boolean;
   visible?: boolean;
@@ -137,8 +137,6 @@ let modalManagers: Array<HTMLElement> = [];
 
 const defaultGetContainer = () => document.body;
 
-const scrollLocker = new ScrollLocker({ getContainer: defaultGetContainer });
-
 const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   const {
     getContainer = defaultGetContainer,
@@ -173,6 +171,8 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   const forkRef = useForkRef(containerRef, ref);
 
   const innerFocusRef = React.useRef(false);
+
+  const scrollLockerRef = React.useRef<ScrollLocker>();
 
   const isTop = React.useCallback(() => {
     return modalManagers[modalManagers.length - 1] === bodyRef.current;
@@ -229,16 +229,26 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   }, [inProp, isTop]);
 
   React.useEffect(() => {
+    const _getContainer = typeof getContainer === 'function' ? getContainer : () => getContainer;
+    const scrollLocker = new ScrollLocker({ getContainer: _getContainer });
+    scrollLockerRef.current = scrollLocker;
+    return () => {
+      if (scrollLocker.locked) {
+        scrollLocker.unlock();
+      }
+    };
+  }, [getContainer]);
+
+  React.useEffect(() => {
     if (!visible) {
       return;
     }
     setAnimatedVisible(true);
     setZIndex(increaseZindex());
-    scrollLocker.lock();
-    return () => {
-      scrollLocker.unlock();
-    };
+    scrollLockerRef.current?.lock();
   }, [visible]);
+
+  React.useEffect(() => {});
 
   const rootClassName = `${clsPrefix}-modal`;
 
@@ -274,6 +284,8 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
         transitionCount.current = 0;
         setAnimatedVisible(false);
         onAfterClosed?.();
+        // 动画结束后解除锁定
+        scrollLockerRef.current?.unlock();
       }
       el.style.display = 'none';
     },

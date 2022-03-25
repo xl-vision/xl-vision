@@ -1,4 +1,5 @@
-import innerStyled, {
+import {
+  styled as innerStyled,
   CSSObject,
   ExtractProps,
   FunctionInterpolation,

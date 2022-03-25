@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import { env } from '@xl-vision/utils';
-import styled from '@xl-vision/styled-engine';
+import { styled } from '@xl-vision/styled-engine';
 
 export interface IconProps extends React.SVGProps<SVGSVGElement> {
   children: React.ReactElement<React.SVGProps<SVGSVGElement>>;

@@ -1,4 +1,5 @@
 import getScrollbarSize from './getScrollbarSize';
+import warning from './warning';
 
 export type ScrollLockerOptions = {
   getContainer?: () => HTMLElement;
@@ -20,8 +21,11 @@ const locks = new Map<
 export default class ScrollLocker {
   private options: ScrollLockerOptions;
 
+  locked: boolean;
+
   constructor(options: ScrollLockerOptions) {
     this.options = options;
+    this.locked = false;
   }
 
   private getContainer() {
@@ -29,9 +33,16 @@ export default class ScrollLocker {
   }
 
   lock() {
+    if (this.locked) {
+      warning(true, `<ScrollLocker>: is locked already, please do not lock again.`);
+      return;
+    }
+    this.locked = true;
+
     const container = this.getContainer();
 
     const detail = locks.get(container);
+
     if (detail) {
       detail.count++;
       return;
@@ -64,6 +75,12 @@ export default class ScrollLocker {
   }
 
   unlock() {
+    if (!this.locked) {
+      warning(true, `<ScrollLocker>: is unlocked already, please do not unlock again.`);
+      return;
+    }
+    this.locked = false;
+
     const container = this.getContainer();
 
     const detail = locks.get(container);

@@ -41833,6 +41833,7 @@ exports[`Demo renders ./packages/react/src/TextArea/__doc__/AutoSize.tsx correct
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  box-sizing: border-box;
 }
 
 .c1 .xl-textarea__suffix--overflow {
@@ -42023,6 +42024,7 @@ exports[`Demo renders ./packages/react/src/TextArea/__doc__/Basic.tsx correctly 
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  box-sizing: border-box;
 }
 
 .c1 .xl-textarea__suffix--overflow {
@@ -42192,6 +42194,7 @@ exports[`Demo renders ./packages/react/src/TextArea/__doc__/DebugSuffix.tsx corr
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  box-sizing: border-box;
 }
 
 .c1 .xl-textarea__suffix--overflow {
@@ -42372,6 +42375,7 @@ exports[`Demo renders ./packages/react/src/TextArea/__doc__/ShowCount.tsx correc
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  box-sizing: border-box;
 }
 
 .c1 .xl-textarea__suffix--overflow {
@@ -42571,6 +42575,7 @@ exports[`Demo renders ./packages/react/src/TextArea/__doc__/Size.tsx correctly 1
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  box-sizing: border-box;
 }
 
 .c1 .xl-textarea__suffix--overflow {
@@ -42665,6 +42670,7 @@ exports[`Demo renders ./packages/react/src/TextArea/__doc__/Size.tsx correctly 1
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  box-sizing: border-box;
 }
 
 .c3 .xl-textarea__suffix--overflow {
@@ -42759,6 +42765,7 @@ exports[`Demo renders ./packages/react/src/TextArea/__doc__/Size.tsx correctly 1
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  box-sizing: border-box;
 }
 
 .c4 .xl-textarea__suffix--overflow {

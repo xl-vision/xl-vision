@@ -66,6 +66,7 @@ const TextAreaRoot = styled('span', {
         flexDirection: 'column',
         justifyContent: 'space-between',
         alignItems: 'flex-end',
+        boxSizing: 'border-box',
         '&--overflow': {
           flexDirection: 'row',
           alignItems: 'center',
