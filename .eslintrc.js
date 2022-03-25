@@ -182,5 +182,11 @@ module.exports = {
         'import/no-relative-packages': 'off',
       },
     },
+    {
+      files: ['test/__test__/**', 'packages/**/__test__/**'],
+      rules: {
+        'react/jsx-handler-names': 'off',
+      },
+    },
   ],
 };
