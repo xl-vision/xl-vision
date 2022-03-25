@@ -1,3 +1,4 @@
+import { isWindow } from '../utils/dom';
 import { EventMap, off, on } from '../utils/event';
 
 export type DOMVerticalDistance = {
@@ -6,7 +7,7 @@ export type DOMVerticalDistance = {
 };
 
 export const getTargetRect = (target: Window | HTMLElement): DOMVerticalDistance => {
-  if (target instanceof Window) {
+  if (isWindow(target)) {
     return {
       top: 0,
       bottom: window.innerHeight,
