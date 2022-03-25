@@ -16,7 +16,7 @@ import { throttleByAnimationFrame } from '../utils/perf';
 
 export type BackTopProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'target' | 'onChange'> & {
   target?: Window | HTMLElement | (() => Window | HTMLElement);
-  container?: HTMLElement | (() => HTMLElement);
+  container?: Element | (() => Element);
   bottom?: number | string;
   right?: number | string;
   show?: boolean;
