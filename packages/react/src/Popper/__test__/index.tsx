@@ -17,7 +17,7 @@ describe('Popper', () => {
         trigger='hover'
         popup={<div>popup</div>}
         onVisibleChange={handleVisibleChange}
-        getPopupContainer={() => document.body}
+        popupContainer={() => document.body}
       >
         <button id='btn'>button</button>
       </Popper>,
@@ -49,7 +49,7 @@ describe('Popper', () => {
         trigger='click'
         popup={<div>popup</div>}
         onVisibleChange={handleVisibleChange}
-        getPopupContainer={() => document.body}
+        popupContainer={() => document.body}
       >
         <button id='btn'>button</button>
       </Popper>,
@@ -80,7 +80,7 @@ describe('Popper', () => {
         trigger='contextMenu'
         popup={<div>popup</div>}
         onVisibleChange={handleVisibleChange}
-        getPopupContainer={() => document.body}
+        popupContainer={() => document.body}
       >
         <button id='btn'>button</button>
       </Popper>,
@@ -111,7 +111,7 @@ describe('Popper', () => {
         trigger='focus'
         popup={<div>popup</div>}
         onVisibleChange={handleVisibleChange}
-        getPopupContainer={() => document.body}
+        popupContainer={() => document.body}
       >
         <button id='btn'>button</button>
       </Popper>,
@@ -143,7 +143,7 @@ describe('Popper', () => {
         trigger='custom'
         popup={<div id='popup'>popup</div>}
         onVisibleChange={handleVisibleChange}
-        getPopupContainer={() => document.body}
+        popupContainer={() => document.body}
         visible={false}
       >
         <button id='btn'>button</button>
@@ -188,7 +188,7 @@ describe('Popper', () => {
         className='popup'
         popup={<div>popup</div>}
         onVisibleChange={handleVisibleChange}
-        getPopupContainer={() => document.body}
+        popupContainer={() => document.body}
       >
         <button id='btn'>button</button>
       </Popper>,
@@ -234,7 +234,7 @@ describe('Popper', () => {
         trigger='hover'
         id='popup'
         popup={<div>popup</div>}
-        getPopupContainer={() => document.body}
+        popupContainer={() => document.body}
       >
         <button id='btn'>button</button>
       </Popper>,
@@ -279,7 +279,7 @@ describe('Popper', () => {
         trigger='hover'
         id='popup'
         popup={<div>popup</div>}
-        getPopupContainer={() => document.body}
+        popupContainer={() => document.body}
       >
         <button id='btn'>button</button>
       </Popper>,

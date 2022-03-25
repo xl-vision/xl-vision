@@ -122,7 +122,7 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
 
   const {
     content,
-    getPopupContainer,
+    popupContainer,
     className,
     transitionClassName,
     bgColor,
@@ -264,7 +264,7 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
       offset={offset}
       popup={popup}
       arrow={showArrow ? arrow : undefined}
-      getPopupContainer={getPopupContainer}
+      popupContainer={popupContainer}
       transitionClasses={transitionClassName || rootClassName}
     >
       {React.cloneElement(child, {
@@ -289,7 +289,11 @@ if (!env.isProduction) {
 
   Tooltip.propTypes = {
     content: PropTypes.node,
-    getPopupContainer: PropTypes.func,
+    popupContainer: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.string,
+      env.isServer ? PropTypes.any : PropTypes.instanceOf(Element),
+    ]),
     className: PropTypes.string,
     transitionClassName: PropTypes.string,
     bgColor: PropTypes.string,

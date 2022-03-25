@@ -35,7 +35,7 @@ export type PopperChildrenProps = {
 export interface PopperProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactElement<PopperChildrenProps>;
   popup: React.ReactElement;
-  getPopupContainer?: PortalContainerType;
+  popupContainer?: PortalContainerType;
   transitionClasses?: CssTransitionProps['transitionClasses'];
   trigger?: PopperTrigger | Array<PopperTrigger>;
   placement?: PopperPlacement;
@@ -67,7 +67,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
   const {
     children,
     popup,
-    getPopupContainer = defaultGetPopupContainer,
+    popupContainer = defaultGetPopupContainer,
     transitionClasses,
     trigger = 'hover',
     disablePopupEnter,
@@ -465,7 +465,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
   const rootClasses = clsx(rootClassName, className);
 
   const portal = (
-    <Portal getContainer={getPopupContainer}>
+    <Portal container={popupContainer}>
       <div
         aria-hidden={!visible}
         {...others}
@@ -523,7 +523,11 @@ if (!env.isProduction) {
     unmountOnHide: PropTypes.bool,
     children: PropTypes.element.isRequired,
     popup: PropTypes.element.isRequired,
-    getPopupContainer: PropTypes.func,
+    popupContainer: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.string,
+      env.isServer ? PropTypes.any : PropTypes.instanceOf(Element),
+    ]),
     transitionClasses: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     trigger: PropTypes.oneOfType([triggerPropType, PropTypes.arrayOf(triggerPropType)]),
     disablePopupEnter: PropTypes.bool,

@@ -61,7 +61,7 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) =>
     visible: visibleProp,
     defaultVisible = false,
     onVisibleChange,
-    getPopupContainer,
+    popupContainer,
     className,
     ...others
   } = props;
@@ -115,7 +115,7 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) =>
       placement={placement}
       popup={popup}
       offset={offset}
-      getPopupContainer={getPopupContainer}
+      popupContainer={popupContainer}
       transitionClasses={transitionClassName || rootClassName}
     >
       {children}
@@ -161,7 +161,11 @@ if (!env.isProduction) {
     visible: PropTypes.bool,
     defaultVisible: PropTypes.bool,
     onVisibleChange: PropTypes.func,
-    getPopupContainer: PropTypes.func,
+    popupContainer: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.string,
+      env.isServer ? PropTypes.any : PropTypes.instanceOf(Element),
+    ]),
   };
 }
 

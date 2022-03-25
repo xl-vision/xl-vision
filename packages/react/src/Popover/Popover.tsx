@@ -111,7 +111,7 @@ const Popover = React.forwardRef<unknown, PopoverProps>((props, ref) => {
   const {
     title,
     content,
-    getPopupContainer,
+    popupContainer,
     className,
     transitionClassName,
     offset = 12,
@@ -146,7 +146,7 @@ const Popover = React.forwardRef<unknown, PopoverProps>((props, ref) => {
       offset={offset}
       arrow={showArrow ? arrow : undefined}
       popup={popup}
-      getPopupContainer={getPopupContainer}
+      popupContainer={popupContainer}
       transitionClasses={transitionClassName || rootClassName}
     />
   );
@@ -166,7 +166,11 @@ if (!env.isProduction) {
   Popover.propTypes = {
     title: PropTypes.node,
     content: PropTypes.node.isRequired,
-    getPopupContainer: PropTypes.func,
+    popupContainer: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.string,
+      env.isServer ? PropTypes.any : PropTypes.instanceOf(Element),
+    ]),
     className: PropTypes.string,
     transitionClassName: PropTypes.string,
     offset: PropTypes.number,

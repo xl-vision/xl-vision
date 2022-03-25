@@ -124,7 +124,7 @@ const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
   const { locale } = useConfig();
 
   const {
-    getPopupContainer,
+    popupContainer,
     className,
     offset = 12,
     trigger = 'click',
@@ -209,7 +209,7 @@ const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
       offset={offset}
       arrow={showArrow ? arrow : undefined}
       popup={popup}
-      getPopupContainer={getPopupContainer}
+      popupContainer={popupContainer}
       transitionClasses={transitionClassName || rootClassName}
     />
   );
@@ -227,7 +227,11 @@ if (!env.isProduction) {
   ]).isRequired;
 
   Popconfirm.propTypes = {
-    getPopupContainer: PropTypes.func,
+    popupContainer: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.string,
+      env.isServer ? PropTypes.any : PropTypes.instanceOf(Element),
+    ]),
     onVisibleChange: PropTypes.func,
     visible: PropTypes.bool,
     title: PropTypes.node,

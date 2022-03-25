@@ -6,7 +6,7 @@ describe('Portal', () => {
   it('test mount on body', () => {
     mount(
       <div>
-        <Portal getContainer={() => document.body}>
+        <Portal container={() => document.body}>
           <div>123</div>
         </Portal>
       </div>,
@@ -18,7 +18,7 @@ describe('Portal', () => {
   it('test mount on current position', () => {
     const wrapper = mount(
       <div>
-        <Portal getContainer={null}>
+        <Portal container={null}>
           <div>123</div>
         </Portal>
       </div>,

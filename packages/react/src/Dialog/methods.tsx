@@ -68,7 +68,7 @@ const method = (
       ReactDOM.render(
         <ConfigProvider {...configProviderProps}>
           <ThemeProvider {...themeProviderProps}>
-            <Dialog getContainer={null} {...others} />
+            <Dialog container={null} {...others} />
           </ThemeProvider>
         </ConfigProvider>,
         div,

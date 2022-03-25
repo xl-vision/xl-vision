@@ -52,7 +52,7 @@ Support the focus of the internal Popper element. Note that the Popper is actual
 
 | Property | Description | Type | Optional Value | Default | Require |
 | --- | --- | --- | --- | --- | --- |
-| getContainer | Specify the parent container of the modal | HTMLElement &#x007c; (() => HTMLElement) | - | - | false |
+| container | Specify the parent container of the modal | string &#x007c; HTMLElement &#x007c; (() => string &#x007c; HTMLElement) | - | - | false |
 | defaultVisible | Whether the default modal is displayed, when `visible` exists, the option is invalid | boolean | - | false | false |
 | onVisibleChange | Callback when the status of the modal changes | (visible: boolean) => void | - | - | false |
 | visible | Whether to show modal | boolean | - | - | false |

@@ -2,14 +2,16 @@ import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import React from 'react';
 import { env } from '@xl-vision/utils';
-import warning from '../utils/warning';
+import getContainer, { ContainerReturnType, ContainerType } from '../utils/getContainer';
 
-export type PortalContainerReturnType = Element | string | undefined | null;
-export type PortalContainerType = PortalContainerReturnType | (() => PortalContainerReturnType);
+export type {
+  ContainerType as PortalContainerType,
+  ContainerReturnType as PortalContainerReturnType,
+};
 
 export interface PortalProp {
   children?: React.ReactNode;
-  getContainer?: PortalContainerType;
+  container?: ContainerType;
 }
 
 /**
@@ -21,28 +23,16 @@ export interface PortalProp {
  * @constructor
  */
 const Portal: React.FunctionComponent<PortalProp> = (props) => {
-  const { children, getContainer } = props;
+  const { children, container: containerProp } = props;
 
   if (env.isServer) {
     return null;
   }
 
-  let container: PortalContainerType;
-
-  if (typeof getContainer === 'function') {
-    container = getContainer();
-  } else {
-    container = getContainer;
-  }
+  const container = getContainer(containerProp);
 
   if (!container) {
     return <>{children}</>;
-  }
-
-  if (typeof container === 'string') {
-    const selector = document.querySelector(container);
-    warning(!selector, '<Portal> querySelector "%s" is null', container);
-    return ReactDOM.createPortal(children, selector!);
   }
 
   return ReactDOM.createPortal(children, container);
@@ -52,7 +42,11 @@ Portal.displayName = 'Portal';
 
 Portal.propTypes = {
   children: PropTypes.element.isRequired,
-  getContainer: PropTypes.any,
+  container: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.string,
+    env.isServer ? PropTypes.any : PropTypes.instanceOf(Element),
+  ]),
 };
 
 export default Portal;

@@ -16,7 +16,7 @@ import { throttleByAnimationFrame } from '../utils/perf';
 
 export type BackTopProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'target' | 'onChange'> & {
   target?: Window | HTMLElement | (() => Window | HTMLElement);
-  container?: Element | (() => Element);
+  container?: HTMLElement | (() => HTMLElement);
   bottom?: number | string;
   right?: number | string;
   show?: boolean;
@@ -170,7 +170,7 @@ const BackTop = React.forwardRef<HTMLDivElement, BackTopProps>((props, ref) => {
     </CssTransition>
   );
 
-  return <Portal getContainer={containerProp}>{node}</Portal>;
+  return <Portal container={containerProp}>{node}</Portal>;
 });
 
 if (!env.isProduction) {

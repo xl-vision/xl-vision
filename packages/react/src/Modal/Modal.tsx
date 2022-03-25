@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { env } from '@xl-vision/utils';
 import { useForkRef } from '@xl-vision/hooks';
-import Portal from '../Portal';
+import Portal, { PortalContainerType } from '../Portal';
 import usePropChange from '../hooks/usePropChange';
 import CssTransition from '../CssTransition';
 import { styled } from '../styles';
@@ -13,9 +13,11 @@ import { forceReflow } from '../utils/transition';
 import ScrollLocker from '../utils/ScrollLocker';
 import { contains } from '../utils/dom';
 import { useTheme } from '../ThemeProvider';
+import getContainer from '../utils/getContainer';
+import warning from '../utils/warning';
 
 export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
-  getContainer?: HTMLElement | (() => HTMLElement);
+  container?: PortalContainerType<HTMLElement>;
   children: React.ReactNode;
   defaultVisible?: boolean;
   visible?: boolean;
@@ -139,7 +141,7 @@ const defaultGetContainer = () => document.body;
 
 const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   const {
-    getContainer = defaultGetContainer,
+    container: containerProp = defaultGetContainer,
     children,
     defaultVisible = false,
     visible: visibleProp,
@@ -166,13 +168,15 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   const bodyRef = React.useRef<HTMLDivElement>(null);
   const isFirstMountRef = React.useRef(true);
 
-  const containerRef = React.useRef<HTMLDivElement>(null);
+  const modalRef = React.useRef<HTMLDivElement>(null);
 
-  const forkRef = useForkRef(containerRef, ref);
+  const forkRef = useForkRef(modalRef, ref);
 
   const innerFocusRef = React.useRef(false);
 
   const scrollLockerRef = React.useRef<ScrollLocker>();
+
+  const [container, setContainer] = React.useState<HTMLElement>();
 
   const isTop = React.useCallback(() => {
     return modalManagers[modalManagers.length - 1] === bodyRef.current;
@@ -182,17 +186,32 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
   const transitionCount = React.useRef(inProp ? (mask ? 2 : 1) : 0);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  React.useEffect(() => {
+    let node = getContainer(containerProp);
+
+    if (node == null) {
+      node = modalRef.current?.parentElement!;
+      warning(!node, `<Modal> parentElement is undefined`);
+    }
+
+    if (node === container) {
+      return;
+    }
+    setContainer(node);
+  });
+
   React.useEffect(() => {
     const body = bodyRef.current;
-    const container = containerRef.current;
+    const modalNode = modalRef.current;
 
-    if (!inProp || !body || !container) {
+    if (!inProp || !body || !modalNode) {
       return;
     }
     modalManagers.push(body);
 
     let activeElement: HTMLElement;
-    if (!contains(container, document.activeElement)) {
+    if (!contains(modalNode, document.activeElement)) {
       activeElement = document.activeElement as HTMLElement;
     }
 
@@ -205,7 +224,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
         return;
       }
       const target = e.target as Element;
-      if (contains(container, target)) {
+      if (contains(modalNode, target)) {
         return;
       }
       body.focus();
@@ -229,15 +248,17 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   }, [inProp, isTop]);
 
   React.useEffect(() => {
-    const _getContainer = typeof getContainer === 'function' ? getContainer : () => getContainer;
-    const scrollLocker = new ScrollLocker({ getContainer: _getContainer });
+    if (!container) {
+      return;
+    }
+    const scrollLocker = new ScrollLocker({ getContainer: () => container });
     scrollLockerRef.current = scrollLocker;
     return () => {
       if (scrollLocker.locked) {
         scrollLocker.unlock();
       }
     };
-  }, [getContainer]);
+  }, [container]);
 
   React.useEffect(() => {
     if (!visible) {
@@ -335,7 +356,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   }
 
   return (
-    <Portal getContainer={getContainer}>
+    <Portal container={containerProp}>
       <ModalRoot
         onFocus={handleInnerFocus}
         aria-hidden={!visible}
@@ -384,7 +405,11 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 if (!env.isProduction) {
   Modal.displayName = displayName;
   Modal.propTypes = {
-    getContainer: PropTypes.any,
+    container: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.string,
+      env.isServer ? PropTypes.any : PropTypes.instanceOf(HTMLElement),
+    ]),
     children: PropTypes.node.isRequired,
     defaultVisible: PropTypes.bool,
     visible: PropTypes.bool,
