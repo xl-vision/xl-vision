@@ -132,3 +132,6 @@ export type { ResizeObserverProps, ResizeObserverHandler } from './ResizeObserve
 
 export { default as BackTop } from './BackTop';
 export type { BackTopProps } from './BackTop';
+
+export { default as Anchor } from './Anchor';
+export type { AnchorProps } from './Anchor';

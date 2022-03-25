@@ -130,6 +130,13 @@ const route: Route = {
           },
           path: '/BackTop',
         },
+        {
+          titleMap: {
+            'en-US': 'Anchor',
+            'zh-CN': '锚点',
+          },
+          path: '/Anchor',
+        },
       ],
     },
     {
