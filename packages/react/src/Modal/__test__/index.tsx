@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-handler-names */
 import { mount } from 'enzyme';
 import React from 'react';
 import { act } from 'react-dom/test-utils';

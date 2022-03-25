@@ -88,8 +88,12 @@ const traverseRoutes = (
   const routeElements: Array<JSX.Element> = [];
   routesArray.forEach((it, index) => {
     const { titleMap } = it;
-    const title = titleMap[language as keyof BaseRoute['titleMap']] || titleMap[defaultLanguage];
+
+    const lang = language || defaultLanguage;
+
+    let title = titleMap[lang as keyof BaseRoute['titleMap']];
     let el: JSX.Element;
+
     if ('children' in it) {
       const childElements = traverseRoutes(routeName, it.children, language, level + 1);
       el = (
@@ -102,6 +106,9 @@ const traverseRoutes = (
       const { path } = it;
 
       const fullPath = `/${routeName}${path}`;
+
+      const enUsName = titleMap['en-US'];
+      title = lang === 'en-US' ? enUsName : `${title} ${enUsName}`;
 
       el = (
         <ActiveLink passHref={true} href={fullPath}>

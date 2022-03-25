@@ -1,0 +1,38 @@
+# 回到顶部
+
+:::demo ./Basic
+
+基本用法
+
+基本用法
+
+:::
+
+:::demo ./Custom
+
+自定义内容
+
+自定义内容
+
+:::
+
+:::demo ./Controlled
+
+受控状态
+
+受控状态下，`BackTop`的显示状态完全由用户控制。
+
+:::
+
+## BackTop API
+
+| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
+| --- | --- | --- | --- | --- | --- |
+| target | 设置需要监听其滚动事件的元素，值为一个返回对应 DOM 元素的函数 | Window &#x007c; HTMLElement &#x007c;(() => Window &#x007c; HTMLElement) | - | () => window | false |
+| container | 指定`BackTop`渲染的容器 | Element &#x007c; (() => Element); | - | () => document.body | false |
+| bottom | 距离底部的距离 | number | - | 40 | false |
+| right | 距离右边的距离 | number | - | 40 | false |
+| show | 指定是否展示，受控模式 | boolean | - | - | false |
+| onChange | `BackTop`的状态改变回调 | (show:boolean) => void | - | - | false |
+| visibilityHeight | 滚动时触发显示回到顶部的高度 | number | - | 300 | false |
+| children | 自定义元素 | React.ReactNode | - | - | false |

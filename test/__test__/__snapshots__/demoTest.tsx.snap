@@ -2289,6 +2289,113 @@ exports[`Demo renders ./packages/react/src/Avatar/__doc__/Types.tsx correctly 1`
 </div>
 `;
 
+exports[`Demo renders ./packages/react/src/BackTop/__doc__/Basic.tsx correctly 1`] = `null`;
+
+exports[`Demo renders ./packages/react/src/BackTop/__doc__/Controlled.tsx correctly 1`] = `
+Array [
+  "BackTop keeps showing",
+  .c1 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentcolor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c0 {
+  position: fixed;
+  z-index: 10;
+}
+
+.c0.xl-back-top-enter-active {
+  -webkit-transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),-webkit-transform 225ms 0ms cubic-bezier(0,0,0.2,1);
+  -webkit-transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c0.xl-back-top-enter-from {
+  opacity: 0;
+  -webkit-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  transform: scale(0.8);
+}
+
+.c0.xl-back-top-enter-to {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.c0.xl-back-top-leave-active {
+  -webkit-transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c0.xl-back-top-leave-from {
+  opacity: 1;
+}
+
+.c0.xl-back-top-leave-to {
+  opacity: 0;
+}
+
+.c0 .xl-back-top__inner {
+  font-size: 24px;
+  background-color: rgba(0,0,0,0.4);
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-transition: background-color 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: background-color 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+}
+
+.c0 .xl-back-top__inner:hover {
+  background-color: rgba(0,0,0,0.7);
+}
+
+<div
+    class="c0 xl-back-top"
+    style="right: 100px; bottom: 100px;"
+  >
+    <div
+      class="xl-back-top__inner"
+    >
+      <svg
+        class="xl-base-icon c1"
+        viewBox="0 0 1024 1024"
+      >
+        <path
+          d="M859.9 168H164.1c-4.5 0-8.1 3.6-8.1 8v60c0 4.4 3.6 8 8.1 8h695.8c4.5 0 8.1-3.6 8.1-8v-60c0-4.4-3.6-8-8.1-8zM518.3 355a8 8 0 0 0-12.6 0l-112 141.7a7.98 7.98 0 0 0 6.3 12.9h73.9V848c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V509.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 355z"
+        />
+      </svg>
+    </div>
+  </div>,
+]
+`;
+
+exports[`Demo renders ./packages/react/src/BackTop/__doc__/Custom.tsx correctly 1`] = `null`;
+
 exports[`Demo renders ./packages/react/src/BaseButton/__doc__/Advance.tsx correctly 1`] = `
 .c3 {
   position: absolute;

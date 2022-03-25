@@ -1,0 +1,40 @@
+# BackTop
+
+Basic button with ripple effect.
+
+:::demo ./Basic
+
+Basic usage
+
+Basic usage
+
+:::
+
+:::demo ./Custom
+
+Custom content
+
+Custom content
+
+:::
+
+:::demo ./Controlled
+
+Controlled state
+
+In the controlled state, the display state of `BackTop` is completely controlled by the user.
+
+:::
+
+## BackTop API
+
+| Property | Description | Type | Optional Value | Default | Require |
+| --- | --- | --- | --- | --- | --- |
+| target | Set the element whose scroll event needs to be listened to. The value is a function that returns the corresponding DOM element | Window &#x007c; HTMLElement &#x007c;(() => Window &#x007c; HTMLElement) | - | () => window | false |
+| container | Specifies the container for `BackTop` rendering | Element &#x007c; (() => Element); | - | () => document.body | false |
+| bottom | distance from bottom | number | - | 40 | false |
+| right | distance to the right | number | - | 40 | false |
+| show | Specify whether to display, controlled mode | boolean | - | - | false |
+| onChange | `BackTop` state change callback | (show:boolean) => void | - | - | false |
+| visibilityHeight | The height that triggers the display to return to the top when scrolling | number | - | 300 | false |
+| children | custom element | React.ReactNode | - | - | false |

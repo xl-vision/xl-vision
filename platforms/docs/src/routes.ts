@@ -123,6 +123,13 @@ const route: Route = {
           },
           path: '/Affix',
         },
+        {
+          titleMap: {
+            'en-US': 'BackTop',
+            'zh-CN': '返回顶部',
+          },
+          path: '/BackTop',
+        },
       ],
     },
     {
@@ -185,7 +192,7 @@ const route: Route = {
         {
           titleMap: {
             'en-US': 'Transition',
-            'zh-CN': 'Transition',
+            'zh-CN': '过渡动画',
           },
           path: '/Transition',
         },
@@ -199,7 +206,7 @@ const route: Route = {
         {
           titleMap: {
             'en-US': 'Transition Group',
-            'zh-CN': 'TransitionGroup',
+            'zh-CN': '过渡动画组',
           },
           path: '/TransitionGroup',
         },
@@ -246,7 +253,15 @@ const route: Route = {
         'en-US': 'Global Config',
         'zh-CN': '全局配置',
       },
-      path: '/ConfigProvider',
+      children: [
+        {
+          titleMap: {
+            'en-US': 'Global Config',
+            'zh-CN': '全局配置',
+          },
+          path: '/ConfigProvider',
+        },
+      ],
     },
     {
       titleMap: {
@@ -264,7 +279,7 @@ const route: Route = {
         {
           titleMap: {
             'en-US': 'Portal',
-            'zh-CN': 'Portal',
+            'zh-CN': '门户',
           },
           path: '/Portal',
         },
@@ -285,7 +300,7 @@ const route: Route = {
         {
           titleMap: {
             'en-US': 'ResizeObserver',
-            'zh-CN': 'ResizeObserver',
+            'zh-CN': '尺寸观察',
           },
           path: '/ResizeObserver',
         },

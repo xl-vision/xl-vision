@@ -129,3 +129,6 @@ export type { AffixProps, AffixIntance } from './Affix';
 
 export { default as ResizeObserver } from './ResizeObserver';
 export type { ResizeObserverProps, ResizeObserverHandler } from './ResizeObserver';
+
+export { default as BackTop } from './BackTop';
+export type { BackTopProps } from './BackTop';

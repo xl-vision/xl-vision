@@ -1,3 +1,5 @@
+import { EventMap, off, on } from '../utils/event';
+
 export type DOMVerticalDistance = {
   top: number;
   bottom: number;
@@ -45,16 +47,16 @@ const TRIGGER_EVENTS = [
   'touchend',
   'pageshow',
   'load',
-];
+] as const;
 
 export const addTargetObserver = (target: Window | HTMLElement, fn: () => void) => {
   TRIGGER_EVENTS.forEach((name) => {
-    target.addEventListener(name, fn);
+    on(target, name as keyof EventMap<Window | HTMLElement>, fn);
   });
 };
 
 export const removeTargetObserver = (target: Window | HTMLElement, fn: () => void) => {
   TRIGGER_EVENTS.forEach((name) => {
-    target.removeEventListener(name, fn);
+    off(target, name as keyof EventMap<Window | HTMLElement>, fn);
   });
 };
