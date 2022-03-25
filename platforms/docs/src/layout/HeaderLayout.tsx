@@ -1,6 +1,6 @@
 import { styled } from '@xl-vision/react';
 import React from 'react';
-import Header, { height } from '../components/Header';
+import Header from '../components/Header';
 import { Layout } from './Layout';
 
 const Root = styled('div')(() => {
@@ -10,7 +10,6 @@ const Root = styled('div')(() => {
     height: '100%',
     '.main': {
       flex: 1,
-      paddingTop: height,
     },
   };
 });
