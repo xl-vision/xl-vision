@@ -85,13 +85,18 @@ require(['react','react-dom', '@xl-vision/react', 'demo'], function(React,ReactD
   // 拦截错误和加载完成事件
   class Wrapper extends React.Component {
     componentDidMount() {
-      window && window.$$onLoaded();
+      window.$$onLoaded && window.$$onLoaded();
+      window.$$mounted = true
     }
-  
+
+    componentWillUnmount() {
+      window.$$mounted = false
+    }
+
     componentDidCatch(error, errorInfo) {
-      window && window.$$onError(error, errorInfo);
+      window.$$onError && window.$$onError(error, errorInfo);
     }
-  
+
     render() {
       var demo = React.createElement(Demo.default);
       var CssBaseline = vision.CssBaseline;
@@ -189,6 +194,11 @@ const Preview: React.FunctionComponent<PreviewProps> = (props) => {
       setError(`${err.toString()}\n${info.componentStack}`);
     };
     const onLoaded = () => setLoading(false);
+
+    // 防止组件渲染在load触发前
+    if ((win as unknown as { $$mounted?: boolean }).$$mounted) {
+      onLoaded();
+    }
 
     (win as unknown as { $$onError: any }).$$onError = onError;
     (win as unknown as { $$onLoaded: any }).$$onLoaded = onLoaded;
