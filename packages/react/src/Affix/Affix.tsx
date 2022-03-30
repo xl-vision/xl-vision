@@ -18,7 +18,7 @@ import ResizeObserver from '../ResizeObserver';
 export type AffixProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'target' | 'onChange'> & {
   target?: Window | HTMLElement | (() => Window | HTMLElement);
   offsetTop?: number;
-  offsetButtom?: number;
+  offsetBottom?: number;
   onChange?: (affixed: boolean) => void;
 };
 
@@ -57,7 +57,7 @@ const Affix = React.forwardRef<AffixIntance, AffixProps>((props, ref) => {
   const {
     target = getDefaultTarget,
     onChange,
-    offsetButtom,
+    offsetBottom,
     offsetTop,
     className,
     children,
@@ -77,13 +77,6 @@ const Affix = React.forwardRef<AffixIntance, AffixProps>((props, ref) => {
 
   const [status, setStatus] = React.useState(AffixStatus.NONE);
 
-  const getTarget = useConstantFn(() => {
-    if (typeof target === 'function') {
-      return target();
-    }
-    return target;
-  });
-
   const measure = useConstantFn(() => {
     const affixNode = rootRef.current;
     if (!affixNode || !currentTarget) {
@@ -93,7 +86,7 @@ const Affix = React.forwardRef<AffixIntance, AffixProps>((props, ref) => {
     const targetRect = getTargetRect(currentTarget);
     const affixRect = affixNode.getBoundingClientRect();
     const top = getFixedTop(affixRect, targetRect, offsetTop);
-    const bottom = getFixedBottom(affixRect, targetRect, offsetButtom);
+    const bottom = getFixedBottom(affixRect, targetRect, offsetBottom);
 
     let isCurrentAffixed = false;
 
@@ -176,7 +169,8 @@ const Affix = React.forwardRef<AffixIntance, AffixProps>((props, ref) => {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   React.useEffect(() => {
-    const nextTarget = getTarget();
+    const nextTarget = typeof target === 'function' ? target() : target;
+
     if (currentTarget === nextTarget) {
       return;
     }
@@ -232,7 +226,7 @@ if (!env.isProduction) {
         : [PropTypes.instanceOf(Window), PropTypes.instanceOf(HTMLElement)]),
     ]),
     onChange: PropTypes.func,
-    offsetButtom: PropTypes.number,
+    offsetBottom: PropTypes.number,
     offsetTop: PropTypes.number,
     children: PropTypes.node,
     className: PropTypes.string,

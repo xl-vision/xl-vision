@@ -1,4 +1,6 @@
 import { env } from '@xl-vision/utils';
+import { easeInOutCubic } from './easings';
+import { raf } from './transition';
 
 export const contains = (parent: Element, child: Element | null) => {
   if (parent.contains) {
@@ -37,4 +39,38 @@ export const getScroll = (target: HTMLElement | Window | Document | null, top: b
     }
   }
   return result;
+};
+
+type ScrollToOptions = {
+  /** Scroll container, default as window */
+  container?: HTMLElement | Window | Document;
+  /** Scroll end callback */
+  callback?: () => any;
+  /** Animation duration, default as 450 */
+  duration?: number;
+};
+
+export const scrollTo = (y: number, options: ScrollToOptions = {}) => {
+  const { container = window, callback, duration = 450 } = options;
+  const scrollTop = getScroll(container, true);
+  const startTime = Date.now();
+
+  const frameFunc = () => {
+    const timestamp = Date.now();
+    const time = timestamp - startTime;
+    const nextScrollTop = easeInOutCubic(time > duration ? duration : time, scrollTop, y, duration);
+    if (isWindow(container)) {
+      container.scrollTo(window.pageXOffset, nextScrollTop);
+    } else if (container instanceof HTMLDocument || container.constructor.name === 'HTMLDocument') {
+      (container as HTMLDocument).documentElement.scrollTop = nextScrollTop;
+    } else {
+      (container as HTMLElement).scrollTop = nextScrollTop;
+    }
+    if (time < duration) {
+      raf(frameFunc);
+    } else if (typeof callback === 'function') {
+      callback();
+    }
+  };
+  raf(frameFunc);
 };
