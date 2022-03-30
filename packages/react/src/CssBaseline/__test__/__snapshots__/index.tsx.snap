@@ -4,7 +4,7 @@ exports[`CssBaseline basic renders 1`] = `
 <head>
   <style
     data-styled="active"
-    data-styled-version="5.3.3"
+    data-styled-version="5.3.5"
   />
 </head>
 `;
@@ -13,7 +13,7 @@ exports[`CssBaseline supports theme overrides 1`] = `
 <head>
   <style
     data-styled="active"
-    data-styled-version="5.3.3"
+    data-styled-version="5.3.5"
   />
 </head>
 `;
