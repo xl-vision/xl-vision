@@ -10,6 +10,9 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
+  compiler: {
+    styledComponents: true,
+  },
   outputFileTracing: false,
   eslint: {
     ignoreDuringBuilds: true,
