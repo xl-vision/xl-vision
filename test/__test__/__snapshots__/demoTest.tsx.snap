@@ -744,6 +744,20 @@ Array [
 ]
 `;
 
+exports[`Demo renders ./packages/react/src/Anchor/__doc__/Basic.tsx correctly 1`] = `
+.c0 .xl-affix__inner {
+  z-index: 1;
+}
+
+<div
+  class="c0 xl-affix"
+>
+  <div
+    class="xl-affix__inner"
+  />
+</div>
+`;
+
 exports[`Demo renders ./packages/react/src/Avatar/__doc__/AutoSize.tsx correctly 1`] = `
 .c6 {
   position: absolute;

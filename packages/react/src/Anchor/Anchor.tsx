@@ -8,6 +8,7 @@ import { oneOf } from '../utils/function';
 import isWindow from '../utils/isWindow';
 import { throttleByAnimationFrame } from '../utils/perf';
 import { getScroll, scrollTo } from '../utils/scroll';
+import AnchorContext from './AnchorContext';
 
 export type AnchorProps = {
   affix?: boolean;
@@ -36,8 +37,8 @@ const getDefaultTarget = () => window;
 const Anchor = React.forwardRef<AffixIntance & HTMLDivElement, AnchorProps>((props, ref) => {
   const {
     affix = true,
-    affixTarget = getDefaultTarget,
-    scrollTarget = getDefaultTarget,
+    affixTarget: affixTargetProp,
+    scrollTarget: scrollTargetProp,
     offsetBottom,
     offsetTop,
     onChange,
@@ -45,6 +46,10 @@ const Anchor = React.forwardRef<AffixIntance & HTMLDivElement, AnchorProps>((pro
     targetOffset = 0,
     ...others
   } = props;
+
+  // 默认affixTarget和scrollTarget相同
+  const affixTarget = affixTargetProp || scrollTargetProp || getDefaultTarget;
+  const scrollTarget = scrollTargetProp || affixTarget;
 
   const [currentScrollTarget, setCurrentScrollTarget] = React.useState<Window | HTMLElement>();
 
@@ -58,6 +63,7 @@ const Anchor = React.forwardRef<AffixIntance & HTMLDivElement, AnchorProps>((pro
     setLinks((prev) => [...prev, link]);
   }, []);
 
+  // @ts-ignore
   const unregisterLink = React.useCallback((link: string) => {
     setLinks((prev) => prev.filter((it) => it !== link));
   }, []);
@@ -90,7 +96,7 @@ const Anchor = React.forwardRef<AffixIntance & HTMLDivElement, AnchorProps>((pro
       if (!matched) {
         return;
       }
-      const element = document.getElementById(matched[1]);
+      const element = document.querySelector<HTMLElement>(matched[1]);
       if (!element) {
         return;
       }
@@ -132,7 +138,7 @@ const Anchor = React.forwardRef<AffixIntance & HTMLDivElement, AnchorProps>((pro
       return;
     }
 
-    const targetElement = document.getElementById(matched[1]);
+    const targetElement = document.querySelector<HTMLElement>(matched[1]);
     if (!targetElement) {
       return;
     }
@@ -152,6 +158,10 @@ const Anchor = React.forwardRef<AffixIntance & HTMLDivElement, AnchorProps>((pro
   });
 
   React.useEffect(() => {
+    onChange?.(activeLink);
+  }, [activeLink, onChange]);
+
+  React.useEffect(() => {
     if (!currentScrollTarget) {
       return;
     }
@@ -166,18 +176,30 @@ const Anchor = React.forwardRef<AffixIntance & HTMLDivElement, AnchorProps>((pro
     };
   }, [currentScrollTarget, handleScroll]);
 
-  if (affix) {
-    return (
-      <Affix
-        {...others}
-        target={affixTarget}
-        offsetBottom={offsetBottom}
-        offsetTop={offsetTop}
-        ref={ref}
-      />
-    );
-  }
-  return <Root {...others} ref={ref}></Root>;
+  const value = React.useMemo(() => {
+    return {
+      registerLink,
+      unregisterLink,
+      activeLink,
+      scrollTo: handleScrollTo,
+    };
+  }, [activeLink, handleScrollTo, registerLink, unregisterLink]);
+
+  return (
+    <AnchorContext.Provider value={value}>
+      {affix ? (
+        <Affix
+          {...others}
+          target={affixTarget}
+          offsetBottom={offsetBottom}
+          offsetTop={offsetTop}
+          ref={ref}
+        />
+      ) : (
+        <Root {...others} ref={ref} />
+      )}
+    </AnchorContext.Provider>
+  );
 });
 
 if (!env.isProduction) {

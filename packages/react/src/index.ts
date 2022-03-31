@@ -134,4 +134,4 @@ export { default as BackTop } from './BackTop';
 export type { BackTopProps } from './BackTop';
 
 export { default as Anchor } from './Anchor';
-export type { AnchorProps } from './Anchor';
+export type { AnchorProps, AnchorLinkProps } from './Anchor';
