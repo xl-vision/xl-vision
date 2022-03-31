@@ -17,7 +17,7 @@ const displayName = 'AnchorLink';
 const Root = styled('a', {
   name: displayName,
   slot: 'Root',
-})<{ isActive: boolean }>(({ theme, styleProps }) => {
+})<{ isActive: boolean }>(() => {
   return {};
 });
 

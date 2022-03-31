@@ -1,5 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable prefer-destructuring */
+const pinyin = require('pinyin');
 
 let demoCount = 0;
 
@@ -33,6 +35,8 @@ module.exports = function demoPlugin() {
 
       const filePath = node.path;
       const options = node.options;
+      const title = node.title;
+      const id = node.id;
 
       const demoName = `Demo_${demoCount++}`;
 
@@ -44,8 +48,6 @@ module.exports = function demoPlugin() {
 
       const nodes = [...node.children];
 
-      node.type = 'element';
-
       tree.children.unshift({
         type: 'import',
         value: `import {tsCode as ${tsCode}, tsCodeNode as ${tsCodeNode}, jsCode as ${jsCode}, jsCodeNode as ${jsCodeNode}} from '${filePath}.jsx!=!${codeLoaderPath}!${filePath}'`,
@@ -56,9 +58,11 @@ module.exports = function demoPlugin() {
         value: `import ${demo} from '${filePath}'`,
       });
 
-      const paramsString = Object.keys(options)
+      const allOptions = { ...options, id, title };
+
+      const paramsString = Object.keys(allOptions)
         .map((k) => {
-          const v = options[k];
+          const v = allOptions[k];
           return `${k}={${JSON.stringify(v)}}`;
         })
         .join(' ');
@@ -171,10 +175,14 @@ function blockTokenizer(eat, value) {
     children: this.tokenizeInline(title, now),
   };
 
+  const id = genId(title);
+
   add({
     type: TYPE,
     path: filePath,
     options,
+    title,
+    id,
     children: [titleContent, descContent],
   });
   exit();
@@ -185,7 +193,9 @@ function visit(tree, type, cb, parent) {
     return;
   }
 
-  if (tree.type === type) {
+  type = Array.isArray(type) ? type : [type];
+
+  if (type.indexOf(tree.type) > -1) {
     cb(tree, parent);
   }
 
@@ -193,4 +203,43 @@ function visit(tree, type, cb, parent) {
   for (const child of children) {
     visit(child, type, cb, tree);
   }
+}
+
+function genId(text) {
+  return pinyin(text, {
+    style: pinyin.STYLE_NORMAL,
+  })
+    .join('')
+    .replace(/\s*/, '');
+}
+
+function getText(node) {
+  if (node.value) {
+    return node.value;
+  }
+  const children = node.children || [];
+
+  return children.map(getText).join('');
+}
+
+function genOutline(node) {
+  if (node.type === 'heading') {
+    const title = getText(node);
+    const id = genId(title);
+    return [
+      {
+        title,
+        id,
+        level: node.depth,
+      },
+    ];
+  }
+  if (node.type === TYPE) {
+    return {
+      title: node.title,
+      id: node.id,
+      level: 3,
+    };
+  }
+  const children = node.children || [];
 }

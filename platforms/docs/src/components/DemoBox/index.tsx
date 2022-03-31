@@ -11,6 +11,8 @@ export type DemoBoxProps = {
   children: [React.ReactNode, React.ReactNode, React.ReactNode, React.ReactNode, React.ReactNode];
   jsCode: string;
   debug?: boolean;
+  title?: string;
+  id?: string;
 };
 
 const Wrapper = styled('div')<{ debug: boolean }>(({ theme, styleProps }) => {
@@ -101,8 +103,15 @@ const ExpandWrapper = styled(DownOutlined)<{ expand: boolean }>(({ theme, styleP
   };
 });
 
-const DemoBox: React.FunctionComponent<DemoBoxProps> = ({ children, jsCode, debug = false }) => {
-  const [title, desc, tsCodeNode, jsCodeNode, preview] = children;
+const DemoBox: React.FunctionComponent<DemoBoxProps> = ({
+  id,
+  // title,
+  children,
+  jsCode,
+  debug = false,
+}) => {
+
+  const [titleNode, descNode, tsCodeNode, jsCodeNode, previewNode] = children;
 
   const router = useRouter();
 
@@ -128,11 +137,11 @@ const DemoBox: React.FunctionComponent<DemoBoxProps> = ({ children, jsCode, debu
   }
 
   return (
-    <Wrapper styleProps={{ debug }}>
-      <Preview>{preview}</Preview>
+    <Wrapper styleProps={{ debug }} id={id}>
+      <Preview>{previewNode}</Preview>
       <InfoWrapper styleProps={{ debug }}>
-        <TitleWrapper>{title}</TitleWrapper>
-        <DescWrapper>{desc}</DescWrapper>
+        <TitleWrapper>{titleNode}</TitleWrapper>
+        <DescWrapper>{descNode}</DescWrapper>
         <ButtonWrapper>
           <Tooltip content='Playground'>
             <Button
