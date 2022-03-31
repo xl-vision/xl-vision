@@ -3,7 +3,7 @@ import React from 'react';
 import { env } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
 import { addClass, removeClass } from '../utils/class';
-import { nextFrame, onTransitionEnd } from '../utils/transition';
+import { onTransitionEnd } from '../utils/transition';
 import Transition, {
   AfterEventHook,
   BeforeEventHook,
@@ -11,6 +11,7 @@ import Transition, {
   EventHook,
   TransitionProps,
 } from '../Transition';
+import nextFrame from '../utils/nextFrame';
 
 export type CssTransitionClassesObject = {
   appearFrom?: string;

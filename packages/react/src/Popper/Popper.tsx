@@ -8,7 +8,7 @@ import { useForkRef, useConstantFn } from '@xl-vision/hooks';
 import CssTransition, { CssTransitionElement, CssTransitionProps } from '../CssTransition';
 import Portal, { PortalContainerType } from '../Portal';
 import { addClass, removeClass } from '../utils/class';
-import { forceReflow } from '../utils/transition';
+import { forceReflow } from '../utils/dom';
 import { off, on } from '../utils/event';
 import useLifecycleState, { LifecycleState } from '../hooks/useLifecycleState';
 import { increaseZindex } from '../utils/zIndexManger';

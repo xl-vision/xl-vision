@@ -10,7 +10,7 @@ import Portal from '../Portal';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 import { alpha } from '../utils/color';
-import { getScroll, scrollTo } from '../utils/dom';
+import { getScroll, scrollTo } from '../utils/scroll';
 import { off, on } from '../utils/event';
 import { throttleByAnimationFrame } from '../utils/perf';
 

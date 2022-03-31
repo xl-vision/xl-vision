@@ -4,6 +4,7 @@ import React from 'react';
 import { CssTransition, CssTransitionClasses } from '@xl-vision/react';
 import { noop } from '@xl-vision/react/utils/function';
 import * as TransitionUtils from '../../utils/transition';
+import * as nextFrame from '../../utils/nextFrame';
 
 const classnameMap: CssTransitionClasses = {
   appearFrom: 'appearFrom',
@@ -22,7 +23,7 @@ const classnameMap: CssTransitionClasses = {
 
 describe('CssTransition', () => {
   const onTransitionEndSpy = jest.spyOn(TransitionUtils, 'onTransitionEnd').mockImplementation();
-  const nextFrameSpy = jest.spyOn(TransitionUtils, 'nextFrame').mockImplementation();
+  const nextFrameSpy = jest.spyOn(nextFrame, 'default').mockImplementation();
   const call = jest.fn();
 
   afterEach(() => {

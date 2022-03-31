@@ -9,7 +9,7 @@ import CssTransition from '../CssTransition';
 import { styled } from '../styles';
 import { increaseZindex } from '../utils/zIndexManger';
 import { addClass, removeClass } from '../utils/class';
-import { forceReflow } from '../utils/transition';
+import { forceReflow } from '../utils/dom';
 import ScrollLocker from '../utils/ScrollLocker';
 import { contains } from '../utils/dom';
 import { useTheme } from '../ThemeProvider';

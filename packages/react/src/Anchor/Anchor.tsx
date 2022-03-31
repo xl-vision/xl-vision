@@ -3,10 +3,11 @@ import { env } from '@xl-vision/utils';
 import React from 'react';
 import Affix, { AffixIntance } from '../Affix';
 import { styled } from '../styles';
-import { getScroll, isWindow, scrollTo } from '../utils/dom';
 import { off, on } from '../utils/event';
 import { oneOf } from '../utils/function';
+import isWindow from '../utils/isWindow';
 import { throttleByAnimationFrame } from '../utils/perf';
+import { getScroll, scrollTo } from '../utils/scroll';
 
 export type AnchorProps = {
   affix?: boolean;
@@ -176,7 +177,7 @@ const Anchor = React.forwardRef<AffixIntance & HTMLDivElement, AnchorProps>((pro
       />
     );
   }
-  return <div {...others} ref={ref}></div>;
+  return <Root {...others} ref={ref}></Root>;
 });
 
 if (!env.isProduction) {

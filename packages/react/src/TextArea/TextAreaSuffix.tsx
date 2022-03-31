@@ -4,8 +4,8 @@ import clsx from 'clsx';
 import { env } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { useTheme } from '../ThemeProvider';
-import { raf } from '../utils/transition';
 import ResizeObserver from '../ResizeObserver';
+import raf from '../utils/raf';
 
 export type TextAreaSuffixProps = React.HTMLAttributes<HTMLSpanElement> & {
   value?: string;

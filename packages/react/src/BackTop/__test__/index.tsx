@@ -3,6 +3,7 @@ import React from 'react';
 import { act } from 'react-dom/test-utils';
 import BackTop from '../BackTop';
 import * as TransitionUtils from '../../utils/transition';
+import * as nextFrame from '../../utils/nextFrame';
 import { noop } from '../../utils/function';
 import wait from '../../../../../test/wait';
 
@@ -16,7 +17,7 @@ jest.spyOn(window, 'scrollTo').mockImplementation((x, y) => {
   document.documentElement.scrollTop = y;
 });
 
-jest.spyOn(TransitionUtils, 'nextFrame').mockImplementation((fn) => {
+jest.spyOn(nextFrame, 'default').mockImplementation((fn) => {
   fn();
   return noop;
 });
