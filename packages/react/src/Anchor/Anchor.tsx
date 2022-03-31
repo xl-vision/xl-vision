@@ -1,8 +1,11 @@
 import { useConstantFn } from '@xl-vision/hooks';
 import { env } from '@xl-vision/utils';
+import clsx from 'clsx';
 import React from 'react';
+import PropTypes from 'prop-types';
 import Affix, { AffixIntance } from '../Affix';
 import { styled } from '../styles';
+import { useTheme } from '../ThemeProvider';
 import { off, on } from '../utils/event';
 import { oneOf } from '../utils/function';
 import isWindow from '../utils/isWindow';
@@ -10,7 +13,7 @@ import { throttleByAnimationFrame } from '../utils/perf';
 import { getScroll, scrollTo } from '../utils/scroll';
 import AnchorContext from './AnchorContext';
 
-export type AnchorProps = {
+export type AnchorProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> & {
   affix?: boolean;
   scrollTarget?: Window | HTMLElement | (() => Window | HTMLElement);
   affixTarget?: Window | HTMLElement | (() => Window | HTMLElement);
@@ -35,6 +38,8 @@ const HREF_MATCHER_REGX = /#([\S ]+)$/;
 const getDefaultTarget = () => window;
 
 const Anchor = React.forwardRef<AffixIntance & HTMLDivElement, AnchorProps>((props, ref) => {
+  const { clsPrefix } = useTheme();
+
   const {
     affix = true,
     affixTarget: affixTargetProp,
@@ -44,6 +49,7 @@ const Anchor = React.forwardRef<AffixIntance & HTMLDivElement, AnchorProps>((pro
     onChange,
     bounds = 5,
     targetOffset = 0,
+    className,
     ...others
   } = props;
 
@@ -185,6 +191,12 @@ const Anchor = React.forwardRef<AffixIntance & HTMLDivElement, AnchorProps>((pro
     };
   }, [activeLink, handleScrollTo, registerLink, unregisterLink]);
 
+  const rootClassName = `${clsPrefix}-anchor`;
+
+  const rootClasses = clsx(rootClassName, className);
+
+  const content = <Root {...others} className={rootClasses} ref={ref} />;
+
   return (
     <AnchorContext.Provider value={value}>
       {affix ? (
@@ -194,9 +206,11 @@ const Anchor = React.forwardRef<AffixIntance & HTMLDivElement, AnchorProps>((pro
           offsetBottom={offsetBottom}
           offsetTop={offsetTop}
           ref={ref}
-        />
+        >
+          {content}
+        </Affix>
       ) : (
-        <Root {...others} ref={ref} />
+        content
       )}
     </AnchorContext.Provider>
   );
@@ -204,7 +218,27 @@ const Anchor = React.forwardRef<AffixIntance & HTMLDivElement, AnchorProps>((pro
 
 if (!env.isProduction) {
   Anchor.displayName = displayName;
-  Anchor.propTypes = {};
+  Anchor.propTypes = {
+    affix: PropTypes.bool,
+    affixTarget: PropTypes.oneOfType([
+      PropTypes.func,
+      ...(env.isServer
+        ? [PropTypes.any]
+        : [PropTypes.instanceOf(Window), PropTypes.instanceOf(HTMLElement)]),
+    ]),
+    scrollTarget: PropTypes.oneOfType([
+      PropTypes.func,
+      ...(env.isServer
+        ? [PropTypes.any]
+        : [PropTypes.instanceOf(Window), PropTypes.instanceOf(HTMLElement)]),
+    ]),
+    offsetBottom: PropTypes.number,
+    offsetTop: PropTypes.number,
+    bounds: PropTypes.number,
+    targetOffset: PropTypes.number,
+    onChange: PropTypes.func,
+    className: PropTypes.string,
+  };
 }
 
 export default Anchor;
