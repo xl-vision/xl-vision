@@ -8,6 +8,7 @@ import a from './a';
 import blockquote from './blockquote';
 import inlineCode from './inlineCode';
 import table from './table';
+import Outline from './Outline';
 
 export type MarkdownProps = {
   children: React.ReactNode;
@@ -15,6 +16,7 @@ export type MarkdownProps = {
 };
 
 const components: Components = {
+  Outline,
   DemoBox,
   wrapper: Wrapper,
   pre,

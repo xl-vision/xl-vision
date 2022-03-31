@@ -28,6 +28,13 @@ module.exports = function demoPlugin() {
   blockMethods.unshift(TYPE);
 
   return async function parse(tree) {
+    const outline = genOutline(tree);
+
+    tree.children.unshift({
+      type: 'jsx',
+      value: `<Outline value={${JSON.stringify(outline)}} />`,
+    });
+
     visit(tree, TYPE, (node, parent) => {
       if (!parent) {
         return;
@@ -35,7 +42,6 @@ module.exports = function demoPlugin() {
 
       const filePath = node.path;
       const options = node.options;
-      const title = node.title;
       const id = node.id;
 
       const demoName = `Demo_${demoCount++}`;
@@ -58,7 +64,7 @@ module.exports = function demoPlugin() {
         value: `import ${demo} from '${filePath}'`,
       });
 
-      const allOptions = { ...options, id, title };
+      const allOptions = { ...options, id };
 
       const paramsString = Object.keys(allOptions)
         .map((k) => {
@@ -222,24 +228,31 @@ function getText(node) {
   return children.map(getText).join('');
 }
 
-function genOutline(node) {
-  if (node.type === 'heading') {
-    const title = getText(node);
-    const id = genId(title);
-    return [
-      {
-        title,
+function genOutline(root) {
+  const outline = [];
+  const nodes = root.children;
+
+  nodes.forEach((it) => {
+    if (it.type === 'heading') {
+      const title = getText(it);
+      const id = genId(title);
+
+      it.id = id;
+
+      outline.push({
         id,
-        level: node.depth,
-      },
-    ];
-  }
-  if (node.type === TYPE) {
-    return {
-      title: node.title,
-      id: node.id,
-      level: 3,
-    };
-  }
-  const children = node.children || [];
+        title,
+        level: it.depth,
+      });
+    }
+    if (it.type === TYPE) {
+      outline.push({
+        id: it.id,
+        title: it.title,
+        level: 2,
+      });
+    }
+  });
+
+  return outline;
 }

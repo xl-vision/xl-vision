@@ -11,7 +11,6 @@ export type DemoBoxProps = {
   children: [React.ReactNode, React.ReactNode, React.ReactNode, React.ReactNode, React.ReactNode];
   jsCode: string;
   debug?: boolean;
-  title?: string;
   id?: string;
 };
 
@@ -110,7 +109,6 @@ const DemoBox: React.FunctionComponent<DemoBoxProps> = ({
   jsCode,
   debug = false,
 }) => {
-
   const [titleNode, descNode, tsCodeNode, jsCodeNode, previewNode] = children;
 
   const router = useRouter();

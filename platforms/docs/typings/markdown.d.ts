@@ -32,6 +32,7 @@ declare module '@mdx-js/react' {
     | 'tr'
     | 'ul'
     | 'wrapper'
+    | 'Outline'
     | 'DemoBox';
 
   export type Components = {
