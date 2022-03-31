@@ -56,15 +56,16 @@ export const scrollTo = (y: number, options: ScrollToOptions = {}) => {
   const startTime = Date.now();
 
   const frameFunc = () => {
-    const timestamp = Date.now();
-    const time = timestamp - startTime;
-    const nextScrollTop = easeInOutCubic(time > duration ? duration : time, scrollTop, y, duration);
+    const currentTime = Date.now();
+    const time = currentTime - startTime;
+
+    const nextScrollTop = easeInOutCubic(time > duration ? duration : time, duration, scrollTop, y);
     if (isWindow(container)) {
       container.scrollTo(window.pageXOffset, nextScrollTop);
-    } else if (container instanceof HTMLDocument || container.constructor.name === 'HTMLDocument') {
-      (container as HTMLDocument).documentElement.scrollTop = nextScrollTop;
+    } else if (container instanceof Document || container.constructor.name === 'HTMLDocument') {
+      (container as Document).documentElement.scrollTop = nextScrollTop;
     } else {
-      (container as HTMLElement).scrollTop = nextScrollTop;
+      container.scrollTop = nextScrollTop;
     }
     if (time < duration) {
       raf(frameFunc);

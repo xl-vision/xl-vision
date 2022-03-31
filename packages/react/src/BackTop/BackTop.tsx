@@ -126,7 +126,9 @@ const BackTop = React.forwardRef<HTMLDivElement, BackTopProps>((props, ref) => {
     if (!currentTarget) {
       return;
     }
-    scrollTo(0);
+    scrollTo(0, {
+      container: currentTarget,
+    });
   });
 
   const rootClassName = `${clsPrefix}-back-top`;
