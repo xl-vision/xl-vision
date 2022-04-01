@@ -54,7 +54,11 @@ const nextConfig = {
                 use: [
                   defaultLoaders.babel,
                   {
-                    loader: require.resolve('./scripts/webpack/mdLoader'),
+                    loader: require.resolve('@mdx-js/loader'),
+                    /** @type {import('@mdx-js/loader').Options} */
+                    options: {
+                      remarkPlugins: [require('./scripts/webpack/mdx/demoPlugin')],
+                    },
                   },
                 ],
               },

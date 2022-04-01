@@ -1,5 +1,5 @@
 import React from 'react';
-import { MDXProvider, Components } from '@mdx-js/react';
+import { MDXProvider } from '@mdx-js/react';
 import PropTypes from 'prop-types';
 import DemoBox from '../DemoBox';
 import Wrapper from './Wrapper';
@@ -14,7 +14,7 @@ export type MarkdownProps = {
   className?: string;
 };
 
-const components: Components = {
+const components: any = {
   DemoBox,
   wrapper: Wrapper,
   pre,
@@ -27,6 +27,7 @@ const components: Components = {
 const Markdown: React.FunctionComponent<MarkdownProps> = (props) => {
   const { children, ...others } = props;
   return (
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     <MDXProvider {...others} components={components}>
       {children}
     </MDXProvider>
