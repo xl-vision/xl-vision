@@ -28,13 +28,6 @@ module.exports = function demoPlugin() {
   blockMethods.unshift(TYPE);
 
   return async function parse(tree) {
-    const outline = genOutline(tree);
-
-    tree.children.unshift({
-      type: 'jsx',
-      value: `<Outline value={${JSON.stringify(outline)}} />`,
-    });
-
     visit(tree, TYPE, (node, parent) => {
       if (!parent) {
         return;
@@ -217,42 +210,4 @@ function genId(text) {
   })
     .join('')
     .replace(/\s*/, '');
-}
-
-function getText(node) {
-  if (node.value) {
-    return node.value;
-  }
-  const children = node.children || [];
-
-  return children.map(getText).join('');
-}
-
-function genOutline(root) {
-  const outline = [];
-  const nodes = root.children;
-
-  nodes.forEach((it) => {
-    if (it.type === 'heading') {
-      const title = getText(it);
-      const id = genId(title);
-
-      it.id = id;
-
-      outline.push({
-        id,
-        title,
-        level: it.depth,
-      });
-    }
-    if (it.type === TYPE) {
-      outline.push({
-        id: it.id,
-        title: it.title,
-        level: 2,
-      });
-    }
-  });
-
-  return outline;
 }
