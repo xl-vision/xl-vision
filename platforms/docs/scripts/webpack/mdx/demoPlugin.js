@@ -6,10 +6,7 @@ let demoCount = 0;
 const codeLoaderPath = require.resolve('../codeLoader').replace(/\\/g, '\\\\');
 
 module.exports = function demoPlugin() {
-
-  const that = this
-
-  console.log(this)
+  const that = this;
 
   return (tree) => {
     const { children } = tree;
@@ -74,8 +71,8 @@ module.exports = function demoPlugin() {
       }
     }
 
-    const titleNode = that.stringify(children[titleIndex]);
-    const descNode = that.stringify(children.slice(titleIndex + 1, endIndex));
+    // const titleNode = children[titleIndex];
+    // const descNode = children.slice(titleIndex + 1, endIndex);
 
     const demoName = `Demo_${demoCount++}`;
 
@@ -84,76 +81,19 @@ module.exports = function demoPlugin() {
     const tsCode = `${demoName}_ts`;
     const tsCodeNode = `${tsCode}_node`;
 
-    const importInfoNode = {
-      type: 'mdxjsEsm',
-      value: `import {tsCode as ${tsCode}, tsCodeNode as ${tsCodeNode}, jsCode as ${jsCode}, jsCodeNode as ${jsCodeNode}} from '${filePath}.jsx!=!${codeLoaderPath}!${filePath}'`,
-    };
+    const importInfoNode = that.parse(
+      `import {tsCode as ${tsCode}, tsCodeNode as ${tsCodeNode}, jsCode as ${jsCode}, jsCodeNode as ${jsCodeNode}} from '${filePath}.jsx!=!${codeLoaderPath}!${filePath}'`,
+    ).children[0];
 
-    const importDemoNode = {
-      type: 'mdxjsEsm',
-      value: `import ${demoName} from '${filePath}'`,
-    };
+    const importDemoNode = that.parse(`import ${demoName} from '${filePath}'`).children[0];
 
-    const node = {
-      type: 'mdxJsxFlowElement',
-      name: 'DemoBox',
-      data: {
-        _mdxExplicitJsx: true,
-      },
-      attributes: [
-        ...options.map((it) => {
-          const [key, value] = it.split('=');
-          return {
-            type: 'mdxJsxAttribute',
-            name: key,
-            value,
-          };
-        }),
-        {
-          type: 'mdxJsxAttribute',
-          name: 'tsCode',
-          value: {
-            type: 'mdxJsxAttributeValueExpression',
-            value: tsCode,
-          },
-        },
-        {
-          type: 'mdxJsxAttribute',
-          name: 'jsCode',
-          value: {
-            type: 'mdxJsxAttributeValueExpression',
-            value: jsCode,
-          },
-        },
-        {
-          type: 'mdxJsxAttribute',
-          name: 'jsCodeNode',
-          value: {
-            type: 'mdxJsxAttributeValueExpression',
-            value: jsCodeNode,
-          },
-        },
-        {
-          type: 'mdxJsxAttribute',
-          name: 'tsCodeNode',
-          value: {
-            type: 'mdxJsxAttributeValueExpression',
-            value: tsCodeNode,
-          },
-        },
-      ],
-      children: [
-        {
-          type: 'mdxJsxFlowElement',
-          name: demoName,
-          data: {
-            _mdxExplicitJsx: true,
-          },
-          attributes: [],
-          children: [],
-        },
-      ],
-    };
+    const nodeWrap = that.parse(
+      `<DemoBox tsCode={A} jsCode={${jsCode}} tsCodeNode={${tsCodeNode}} jsCodeNode={${jsCodeNode}}>{${demoName}}</DemoBox>`,
+    ).children;
+
+    const node = nodeWrap[0].children[0];
+
+    node.type = 'mdxJsxFlowElement';
 
     children.splice(startIndex, endIndex - startIndex, node);
     children.unshift(importInfoNode, importDemoNode);
