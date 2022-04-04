@@ -144,7 +144,8 @@ const Anchor = React.forwardRef<AffixIntance & HTMLDivElement, AnchorProps>((pro
       return;
     }
 
-    const targetElement = document.querySelector<HTMLElement>(matched[1]);
+    const targetElement = document.getElementById(matched[1]);
+
     if (!targetElement) {
       return;
     }

@@ -8,13 +8,11 @@ import { useConstantFn } from '@xl-vision/hooks';
 import Code from './Code';
 
 export type DemoBoxProps = {
-  children: React.ReactNode;
+  children: [React.ReactNode, React.ReactNode, React.ReactNode];
   jsCode: string;
   tsCode: string;
   tsCodeNode: React.ReactNode;
   jsCodeNode: React.ReactNode;
-  titleNode: React.ReactNode;
-  descNode: React.ReactNode;
   debug?: boolean;
   id?: string;
 };
@@ -109,15 +107,16 @@ const ExpandWrapper = styled(DownOutlined)<{ expand: boolean }>(({ theme, styleP
 
 const DemoBox: React.FunctionComponent<DemoBoxProps> = ({
   id,
-  titleNode,
   jsCodeNode,
   tsCodeNode,
-  descNode,
   children,
   jsCode,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   tsCode,
   debug = false,
 }) => {
+  const [titleNode, descNode, preview] = children;
+
   const router = useRouter();
 
   const [isExpand, setExpand] = React.useState(false);
@@ -143,7 +142,7 @@ const DemoBox: React.FunctionComponent<DemoBoxProps> = ({
 
   return (
     <Wrapper styleProps={{ debug }} id={id}>
-      <Preview>{children}</Preview>
+      <Preview>{preview}</Preview>
       <InfoWrapper styleProps={{ debug }}>
         <TitleWrapper>{titleNode}</TitleWrapper>
         <DescWrapper>{descNode}</DescWrapper>

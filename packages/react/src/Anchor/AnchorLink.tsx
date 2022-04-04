@@ -24,7 +24,7 @@ const Root = styled('a', {
 const AnchorLink = React.forwardRef<HTMLAnchorElement, AnchorLinkProps>((props, ref) => {
   const { clsPrefix } = useTheme();
 
-  const { title, href, onClick, className, ...others } = props;
+  const { title, href, onClick, className, children, ...others } = props;
 
   const { activeLink, registerLink, unregisterLink, scrollTo } = React.useContext(AnchorContext);
 
@@ -53,15 +53,18 @@ const AnchorLink = React.forwardRef<HTMLAnchorElement, AnchorLinkProps>((props, 
   );
 
   return (
-    <Root
-      {...others}
-      styleProps={{ isActive }}
-      className={rootClasses}
-      onClick={handleClick}
-      ref={ref}
-    >
-      {title}
-    </Root>
+    <>
+      <Root
+        {...others}
+        styleProps={{ isActive }}
+        className={rootClasses}
+        onClick={handleClick}
+        ref={ref}
+      >
+        {title}
+      </Root>
+      {children}
+    </>
   );
 });
 

@@ -5,8 +5,8 @@ import DemoBox from '../DemoBox';
 import Wrapper from './Wrapper';
 import pre from './pre';
 import a from './a';
+import code from './code';
 import blockquote from './blockquote';
-import inlineCode from './inlineCode';
 import table from './table';
 
 export type MarkdownProps = {
@@ -20,7 +20,7 @@ const components: any = {
   pre,
   a,
   blockquote,
-  inlineCode,
+  code,
   table,
 };
 
