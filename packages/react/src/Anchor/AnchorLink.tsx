@@ -7,29 +7,50 @@ import { styled } from '../styles';
 import AnchorContext from './AnchorContext';
 import { useTheme } from '../ThemeProvider';
 
-export type AnchorLinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
-  title: string;
+export type AnchorLinkProps = React.HTMLAttributes<HTMLDivElement> & {
+  title: React.ReactNode;
   href: string;
 };
 
 const displayName = 'AnchorLink';
 
-const Root = styled('a', {
+const AnchorLinkRoot = styled('div', {
   name: displayName,
   slot: 'Root',
-})<{ isActive: boolean }>(() => {
-  return {};
+})(() => {
+  return {
+    padding: '4px 0 4px 12px',
+    lineHeight: 1,
+  };
 });
 
-const AnchorLink = React.forwardRef<HTMLAnchorElement, AnchorLinkProps>((props, ref) => {
+const AnchorLinkTitle = styled('a', {
+  name: displayName,
+  slot: 'title',
+})<{ isActive: boolean }>(({ theme, styleProps }) => {
+  const { color, typography, transition } = theme;
+
+  const { isActive } = styleProps;
+
+  return {
+    ...typography.subtitle2.style,
+    color: isActive ? color.themes.primary.color : color.text.primary,
+    textDecoration: 'none',
+    transition: transition.standard('color'),
+    '&:hover': {
+      color: color.themes.primary.color,
+    },
+  };
+});
+
+const AnchorLink = React.forwardRef<HTMLDivElement, AnchorLinkProps>((props, ref) => {
   const { clsPrefix } = useTheme();
 
-  const { title, href, onClick, className, children, ...others } = props;
+  const { title, href, className, children, ...others } = props;
 
   const { activeLink, registerLink, unregisterLink, scrollTo } = React.useContext(AnchorContext);
 
-  const handleClick = useConstantFn((e: React.MouseEvent<HTMLAnchorElement>) => {
-    onClick?.(e);
+  const handleClick = useConstantFn(() => {
     scrollTo(href);
   });
 
@@ -52,19 +73,24 @@ const AnchorLink = React.forwardRef<HTMLAnchorElement, AnchorLinkProps>((props, 
     className,
   );
 
+  const titleClassName = `${rootClassName}__title`;
+  const titleClasses = clsx(titleClassName, {
+    [`${titleClassName}--active`]: isActive,
+  });
+
   return (
-    <>
-      <Root
-        {...others}
+    <AnchorLinkRoot {...others} className={rootClasses} ref={ref}>
+      <AnchorLinkTitle
         styleProps={{ isActive }}
-        className={rootClasses}
+        title={typeof title === 'string' ? title : ''}
+        className={titleClasses}
         onClick={handleClick}
-        ref={ref}
+        href={href}
       >
         {title}
-      </Root>
+      </AnchorLinkTitle>
       {children}
-    </>
+    </AnchorLinkRoot>
   );
 });
 

@@ -3,6 +3,7 @@ import { env } from '@xl-vision/utils';
 import clsx from 'clsx';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { CSSObject } from '@xl-vision/styled-engine';
 import Affix, { AffixIntance } from '../Affix';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
@@ -13,6 +14,8 @@ import { throttleByAnimationFrame } from '../utils/perf';
 import { getScroll, scrollTo } from '../utils/scroll';
 import AnchorContext from './AnchorContext';
 
+export type AnchorType = 'block' | 'rail';
+
 export type AnchorProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> & {
   affix?: boolean;
   scrollTarget?: Window | HTMLElement | (() => Window | HTMLElement);
@@ -22,15 +25,48 @@ export type AnchorProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
   onChange?: (currentActiveLink: string) => void;
   bounds?: number;
   targetOffset?: number;
+  type?: AnchorType;
 };
 
 const displayName = 'Anchor';
 
-const Root = styled('div', {
+const AnchorRoot = styled('div', {
   name: displayName,
   slot: 'Root',
-})(() => {
-  return {};
+})<{ type: AnchorType }>(({ theme, styleProps }) => {
+  const { type } = styleProps;
+
+  const { color } = theme;
+
+  const style: CSSObject = {
+    position: 'relative',
+  };
+
+  if (type === 'rail') {
+    style.borderLeft = `2px solid ${color.divider}`;
+  }
+
+  return style;
+});
+
+const AnchorInk = styled('div', {
+  name: displayName,
+  slot: 'Ink',
+})(({ theme }) => {
+  const { color, transition } = theme;
+
+  return {
+    position: 'absolute',
+    left: -10 / 2 - 1,
+    border: `2px solid ${color.themes.primary.color}`,
+    width: 10,
+    height: 10,
+    // link paddingTop = 4
+    marginTop: 4,
+    borderRadius: '50%',
+    background: color.background.paper,
+    transition: transition.standard('top'),
+  };
 });
 
 const HREF_MATCHER_REGX = /#([\S ]+)$/;
@@ -50,6 +86,8 @@ const Anchor = React.forwardRef<AffixIntance & HTMLDivElement, AnchorProps>((pro
     bounds = 5,
     targetOffset = 0,
     className,
+    type = 'rail',
+    children,
     ...others
   } = props;
 
@@ -64,6 +102,8 @@ const Anchor = React.forwardRef<AffixIntance & HTMLDivElement, AnchorProps>((pro
   const [activeLink, setActiveLink] = React.useState('');
 
   const isScollingRef = React.useRef(false);
+
+  const [inkTop, setInkTop] = React.useState<number | undefined>();
 
   const registerLink = React.useCallback((link: string) => {
     setLinks((prev) => [...prev, link]);
@@ -102,7 +142,7 @@ const Anchor = React.forwardRef<AffixIntance & HTMLDivElement, AnchorProps>((pro
       if (!matched) {
         return;
       }
-      const element = document.querySelector<HTMLElement>(matched[1]);
+      const element = document.getElementById(matched[1]);
       if (!element) {
         return;
       }
@@ -164,9 +204,23 @@ const Anchor = React.forwardRef<AffixIntance & HTMLDivElement, AnchorProps>((pro
     });
   });
 
+  const updateInk = useConstantFn(() => {
+    const activeNode = document.querySelector<HTMLAnchorElement>(
+      `.${clsPrefix}-anchor-link__title--active`,
+    );
+    if (!activeNode) {
+      setInkTop(undefined);
+    } else {
+      const top = activeNode.offsetTop + activeNode.clientHeight / 2;
+      setInkTop(top);
+    }
+  });
+
   React.useEffect(() => {
     onChange?.(activeLink);
-  }, [activeLink, onChange]);
+
+    updateInk();
+  }, [activeLink, onChange, updateInk]);
 
   React.useEffect(() => {
     if (!currentScrollTarget) {
@@ -194,9 +248,19 @@ const Anchor = React.forwardRef<AffixIntance & HTMLDivElement, AnchorProps>((pro
 
   const rootClassName = `${clsPrefix}-anchor`;
 
-  const rootClasses = clsx(rootClassName, className);
+  const rootClasses = clsx(rootClassName, `${rootClassName}--${type}`, className);
 
-  const content = <Root {...others} className={rootClasses} ref={ref} />;
+  const inkNode =
+    type === 'rail' && inkTop !== undefined ? (
+      <AnchorInk className={`${rootClassName}__ink`} style={{ top: inkTop }} />
+    ) : null;
+
+  const content = (
+    <AnchorRoot {...others} styleProps={{ type }} className={rootClasses} ref={ref}>
+      {inkNode}
+      {children}
+    </AnchorRoot>
+  );
 
   return (
     <AnchorContext.Provider value={value}>
@@ -239,6 +303,8 @@ if (!env.isProduction) {
     targetOffset: PropTypes.number,
     onChange: PropTypes.func,
     className: PropTypes.string,
+    type: PropTypes.oneOf(['rail', 'block']),
+    children: PropTypes.node,
   };
 }
 

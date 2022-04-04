@@ -46,8 +46,13 @@ module.exports = {
       },
     },
   },
+  parser: '@babel/eslint-parser',
   parserOptions: {
     ecmaVersion: 2018,
+    requireConfigFile: false,
+    babelOptions: {
+      plugins: [],
+    },
   },
   extends: ['airbnb', 'airbnb/hooks', 'plugin:prettier/recommended', 'prettier'],
   plugins: ['unicorn'],

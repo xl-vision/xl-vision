@@ -6,10 +6,17 @@ import { useConstantFn } from '@xl-vision/hooks';
 import { Anchor, Row } from '@xl-vision/react';
 import { useLocale } from '../LocalizationProvider';
 import routes, { Route, RouteType } from '../../routes';
+import { height } from '../Header';
 
 export type DocsProps = {
-  locales: Record<string, { component: React.ComponentType; outlinePromise: Promise<Array<any>> }>;
+  locales: Record<string, { component: React.ComponentType; outlinePromise: Promise<Outline> }>;
 };
+
+export type Outline = Array<{
+  id: string;
+  title: string;
+  children: Outline;
+}>;
 
 const visitRoute = (
   baseName: keyof Route,
@@ -41,7 +48,7 @@ const Docs: React.FunctionComponent<DocsProps> = ({ locales }) => {
 
   const { pathname } = useRouter();
 
-  const [outline, setOutline] = React.useState<Array<any>>([]);
+  const [outline, setOutline] = React.useState<Outline>([]);
 
   const titleMap = routeMap[pathname];
 
@@ -49,9 +56,10 @@ const Docs: React.FunctionComponent<DocsProps> = ({ locales }) => {
 
   const { component: Component, outlinePromise } = locales[language] || locales[defaultLanguage];
 
-  const updateOutline = useConstantFn((p: Promise<Array<any>>) => {
+  const updateOutline = useConstantFn((p: Promise<Outline>) => {
     p.then((data) => {
       if (p === outlinePromise) {
+        data = data.length === 1 ? data[0].children : data;
         setOutline(data);
       }
     }).catch((e) => console.error(e));
@@ -66,10 +74,12 @@ const Docs: React.FunctionComponent<DocsProps> = ({ locales }) => {
   return (
     <>
       <Head>{title && <title>{title} | xl-vision</title>}</Head>
-      <Row>
-        <Row.Col column={18}>{Instance}</Row.Col>
-        <Row.Col column={6}>
-          <Anchor offsetTop={100}>{genMenus(outline)}</Anchor>
+      <Row removeOnUnvisible={true}>
+        <Row.Col column={{ xs: 24, lg: 20, xxl: 21 }}>{Instance}</Row.Col>
+        <Row.Col column={{ xs: 0, lg: 4, xxl: 3 }}>
+          <Anchor offsetTop={height + 20} targetOffset={height}>
+            {genMenus(outline)}
+          </Anchor>
         </Row.Col>
       </Row>
     </>
@@ -78,7 +88,7 @@ const Docs: React.FunctionComponent<DocsProps> = ({ locales }) => {
 
 export default Docs;
 
-const genMenus = (outline: Array<any>) => {
+const genMenus = (outline: Outline) => {
   return outline.map((it) => (
     <Anchor.Link key={it.id} href={`#${it.id}`} title={it.title}>
       {genMenus(it.children || [])}

@@ -749,12 +749,21 @@ exports[`Demo renders ./packages/react/src/Anchor/__doc__/Basic.tsx correctly 1`
   z-index: 1;
 }
 
+.c1 {
+  position: relative;
+  border-left: 2px solid rgba(0,0,0,0.12);
+}
+
 <div
   class="c0 xl-affix"
 >
   <div
     class="xl-affix__inner"
-  />
+  >
+    <div
+      class="c1 xl-anchor xl-anchor--rail"
+    />
+  </div>
 </div>
 `;
 
