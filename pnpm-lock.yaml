@@ -218,9 +218,7 @@ importers:
       clsx: ^1.1.1
       codemirror: ^5.65.2
       cross-env: ^7.0.3
-      hast-util-to-html: ^8.0.3
       js-cookie: ^3.0.1
-      mdast-util-to-hast: ^12.1.1
       next: ^12.1.2
       next-sitemap: ^2.5.10
       pinyin: ^2.11.1
@@ -262,8 +260,6 @@ importers:
       '@types/js-cookie': 3.0.1
       '@types/node': 17.0.4
       cross-env: 7.0.3
-      hast-util-to-html: 8.0.3
-      mdast-util-to-hast: 12.1.1
       next-sitemap: 2.5.10_next@12.1.2
       pinyin: 2.11.1
       prismjs: 1.27.0
@@ -2627,7 +2623,7 @@ packages:
     dev: true
 
   /@types/mdx/2.0.1:
-    resolution: {integrity: sha1-5MBdNV0JLXtY2xq/5GDlP0EQKsg=}
+    resolution: {integrity: sha512-JPEv4iAl0I+o7g8yVWDwk30es8mfVrjkvh5UeVR2sYPpZCK44vrAPsbJpIS+rJAUxLgaSAMKTEH5Vn5qd9XsrQ==}
 
   /@types/minimatch/3.0.5:
     resolution: {integrity: sha512-Klz949h02Gz2uZCMGwDUSDS1YBlTdDDgbWHi+81l29tQALUtvz4rAYi5uoVhE5Lagoq6DeqAUlbrHvW/mXDgdQ==}
@@ -6182,13 +6178,6 @@ packages:
       function-bind: 1.1.1
     dev: true
 
-  /hast-util-is-element/2.1.2:
-    resolution: {integrity: sha512-thjnlGAnwP8ef/GSO1Q8BfVk2gundnc2peGQqEg2kUt/IqesiGg/5mSwN2fE7nLzy61pg88NG6xV+UrGOrx9EA==}
-    dependencies:
-      '@types/hast': 2.3.4
-      '@types/unist': 2.0.6
-    dev: true
-
   /hast-util-parse-selector/2.2.5:
     resolution: {integrity: sha512-7j6mrk/qqkSehsM92wQjdIgWM2/BW61u/53G6xmC8i1OmEdKLHbk419QKQUjz6LglWsfqoiHmyMRkP1BGjecNQ==}
     dev: true
@@ -6212,21 +6201,6 @@ packages:
       zwitch: 2.0.2
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /hast-util-to-html/8.0.3:
-    resolution: {integrity: sha512-/D/E5ymdPYhHpPkuTHOUkSatxr4w1ZKrZsG0Zv/3C2SRVT0JFJG53VS45AMrBtYk0wp5A7ksEhiC8QaOZM95+A==}
-    dependencies:
-      '@types/hast': 2.3.4
-      ccount: 2.0.1
-      comma-separated-tokens: 2.0.2
-      hast-util-is-element: 2.1.2
-      hast-util-whitespace: 2.0.0
-      html-void-elements: 2.0.1
-      property-information: 6.1.1
-      space-separated-tokens: 2.0.1
-      stringify-entities: 4.0.2
-      unist-util-is: 5.1.1
     dev: true
 
   /hast-util-to-string/1.0.4:
@@ -6286,10 +6260,6 @@ packages:
 
   /html-escaper/2.0.2:
     resolution: {integrity: sha512-H2iMtd0I4Mt5eYiapRdIDjp+XzelXQ0tFE4JS7YFwFevXXMmOp9myNrUvCg0D6ws8iqkRPBfKHgbwig1SmlLfg==}
-    dev: true
-
-  /html-void-elements/2.0.1:
-    resolution: {integrity: sha512-0quDb7s97CfemeJAnW9wC0hw78MtW7NU3hqtCD75g2vFlDLt36llsYD7uB7SUzojLMP24N5IatXf7ylGXiGG9A==}
     dev: true
 
   /htmlparser2/6.1.0:

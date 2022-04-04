@@ -112,7 +112,7 @@ const DemoBox: React.FunctionComponent<DemoBoxProps> = ({
   children,
   jsCode,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  tsCode,
+  tsCode: _,
   debug = false,
 }) => {
   const [titleNode, descNode, preview] = children;
