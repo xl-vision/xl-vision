@@ -61,8 +61,7 @@ const AnchorInk = styled('div', {
     border: `2px solid ${color.themes.primary.color}`,
     width: 10,
     height: 10,
-    // link paddingTop = 4
-    marginTop: 4,
+    marginTop: -10 / 2,
     borderRadius: '50%',
     background: color.background.paper,
     transition: transition.standard('top'),

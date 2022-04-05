@@ -36,7 +36,12 @@ const AnchorLinkTitle = styled('a', {
     ...typography.subtitle2.style,
     color: isActive ? color.themes.primary.color : color.text.primary,
     textDecoration: 'none',
+    display: 'block',
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
+    overflow: 'hidden',
     transition: transition.standard('color'),
+
     '&:hover': {
       color: color.themes.primary.color,
     },
