@@ -101,6 +101,7 @@ if (!env.isProduction) {
     href: PropTypes.string.isRequired,
     className: PropTypes.string,
     onClick: PropTypes.func,
+    children: PropTypes.node,
   };
 }
 
