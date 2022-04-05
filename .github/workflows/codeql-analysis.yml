@@ -21,15 +21,6 @@ jobs:
   analyze:
     name: analyze
     runs-on: ubuntu-latest
-
-    strategy:
-      fail-fast: false
-      matrix:
-        language: ['javascript']
-        # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python' ]
-        # Learn more:
-        # https://docs.github.com/en/free-pro-team@latest/github/finding-security-vulnerabilities-and-errors-in-your-code/configuring-code-scanning#changing-the-languages-that-are-analyzed
-
     steps:
       - name: checkout
         uses: actions/checkout@v2
@@ -40,7 +31,7 @@ jobs:
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v2
         with:
-          languages: ${{ matrix.language }}
+          languages: javascript, typescript
           config-file: ./.github/codeql-config.yml
 
       - name: perform analysis

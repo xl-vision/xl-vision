@@ -1,11 +1,11 @@
 paths:
-  - 'packages/styled-engine-types/src/**'
-  - 'packages/styled-engine/src/**'
-  - 'packages/utils/src/**'
-  - 'packages/hooks/src/**'
-  - 'packages/icons/src/utils/**'
-  - 'packages/react/src/**'
-  - 'platforms/docs/src/**'
+  - 'packages/styled-engine-types/src/'
+  - 'packages/styled-engine/src/'
+  - 'packages/utils/src/'
+  - 'packages/hooks/src/'
+  - 'packages/icons/src/utils/'
+  - 'packages/react/src/'
+  - 'platforms/docs/src/'
 paths-ignore:
   - '**/node_modules'
   - '**/__test__'
