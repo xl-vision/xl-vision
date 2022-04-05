@@ -7,6 +7,7 @@ import { Anchor, Row } from '@xl-vision/react';
 import { useLocale } from '../LocalizationProvider';
 import routes, { Route, RouteType } from '../../routes';
 import { height } from '../Header';
+import useIsDebugMode from '../../hooks/useIsDebugMode';
 
 export type DocsProps = {
   locales: Record<string, { component: React.ComponentType; outlinePromise: Promise<Outline> }>;
@@ -16,6 +17,7 @@ export type Outline = Array<{
   id: string;
   title: string;
   children: Outline;
+  debug?: boolean;
 }>;
 
 const visitRoute = (
@@ -56,6 +58,8 @@ const Docs: React.FunctionComponent<DocsProps> = ({ locales }) => {
 
   const { component: Component, outlinePromise } = locales[language] || locales[defaultLanguage];
 
+  const isDebugMode = useIsDebugMode();
+
   const updateOutline = useConstantFn((p: Promise<Outline>) => {
     p.then((data) => {
       if (p === outlinePromise) {
@@ -78,7 +82,7 @@ const Docs: React.FunctionComponent<DocsProps> = ({ locales }) => {
         <Row.Col column={{ xs: 24, lg: 20, xxl: 21 }}>{Instance}</Row.Col>
         <Row.Col column={{ xs: 0, lg: 4, xxl: 3 }}>
           <Anchor offsetTop={height + 20} targetOffset={height}>
-            {genMenus(outline)}
+            {genMenus(outline, isDebugMode)}
           </Anchor>
         </Row.Col>
       </Row>
@@ -88,10 +92,14 @@ const Docs: React.FunctionComponent<DocsProps> = ({ locales }) => {
 
 export default Docs;
 
-const genMenus = (outline: Outline) => {
+const genMenus = (outline: Outline, isDebugMode: boolean) => {
+  if (!isDebugMode) {
+    outline = outline.filter((it) => !it.debug);
+  }
+
   return outline.map((it) => (
     <Anchor.Link key={it.id} href={`#${it.id}`} title={it.title}>
-      {genMenus(it.children || [])}
+      {genMenus(it.children || [], isDebugMode)}
     </Anchor.Link>
   ));
 };

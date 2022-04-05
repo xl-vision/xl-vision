@@ -7,7 +7,7 @@ import { styled } from '../styles';
 import AnchorContext from './AnchorContext';
 import { useTheme } from '../ThemeProvider';
 
-export type AnchorLinkProps = React.HTMLAttributes<HTMLDivElement> & {
+export type AnchorLinkProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> & {
   title: React.ReactNode;
   href: string;
 };

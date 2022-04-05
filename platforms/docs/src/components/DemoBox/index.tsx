@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { styled, CollapseTransition, Button, Tooltip } from '@xl-vision/react';
 import { CodeOutlined, DownOutlined } from '@xl-vision/icons';
-import { env } from '@xl-vision/utils';
 import { useRouter } from 'next/router';
 import { useConstantFn } from '@xl-vision/hooks';
 import Code from './Code';
+import useIsDebugMode from '../../hooks/useIsDebugMode';
 
 export type DemoBoxProps = {
   children: [React.ReactNode, React.ReactNode, React.ReactNode];
@@ -136,7 +136,9 @@ const DemoBox: React.FunctionComponent<DemoBoxProps> = ({
     setExpand((prev) => !prev);
   }, []);
 
-  if (debug && !env.isDevelopment && !('debug' in router.query)) {
+  const isDebugMode = useIsDebugMode();
+
+  if (debug && !isDebugMode) {
     return null;
   }
 

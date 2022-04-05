@@ -49,6 +49,7 @@ module.exports = function demoPlugin() {
           id: node.id,
           title: node.title,
           level: 3,
+          debug: node.debug,
         });
       }
     }
@@ -201,6 +202,7 @@ function createDemoBox(nodes, start, ctx) {
 
   demoBox.id = id;
   demoBox.title = title;
+  demoBox.debug = options.indexOf('debug') > -1;
 
   const demoBoxChildren = demoBox.children;
 
