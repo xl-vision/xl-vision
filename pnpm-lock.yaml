@@ -54,7 +54,7 @@ importers:
       husky: ^7.0.4
       jest: ^27.5.1
       jest-styled-components: ^7.0.8
-      minimist: ^1.2.5
+      minimist: ^1.2.6
       prettier: ^2.5.1
       react: ^16.8.0
       react-dom: ^16.8.0
@@ -115,7 +115,7 @@ importers:
       husky: 7.0.4
       jest: 27.5.1
       jest-styled-components: 7.0.8_styled-components@5.3.5
-      minimist: 1.2.5
+      minimist: 1.2.6
       prettier: 2.5.1
       react: 16.14.0
       react-dom: 16.14.0_react@16.14.0
@@ -7569,7 +7569,7 @@ packages:
     resolution: {integrity: sha512-aKS4WQjPenRxiQsC93MNfjx+nbF4PAdYzmd/1JIj8HYzqfbu86beTuNgXDzPknWk0n0uARlyewZo4s++ES36Ow==}
     hasBin: true
     dependencies:
-      minimist: 1.2.5
+      minimist: 1.2.6
     dev: true
 
   /json5/2.2.0:
@@ -7577,7 +7577,7 @@ packages:
     engines: {node: '>=6'}
     hasBin: true
     dependencies:
-      minimist: 1.2.5
+      minimist: 1.2.6
     dev: true
 
   /jsonfile/4.0.0:
@@ -11203,7 +11203,7 @@ packages:
     dependencies:
       '@types/json5': 0.0.29
       json5: 1.0.1
-      minimist: 1.2.5
+      minimist: 1.2.6
       strip-bom: 3.0.0
     dev: true
 
