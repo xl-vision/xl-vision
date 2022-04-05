@@ -1,6 +1,8 @@
 # Dropdown
 
-## Demos
+A list that pops down.
+
+## Examples
 
 ::: demo ./Basic
 
@@ -30,27 +32,27 @@ Since the tooltip does not pass the parent component `props` to the child compon
 
 > For more parameters, please refer to [Popper](/components/Popper) properties.
 
-| Property | Description | Type | Optional Value | Default | Require |
-| --- | --- | --- | --- | --- | --- |
-| children | Child node | React.ReactElement | - | - | true |
-| menus | Drop-down menu | React.ReactNode | - | - | true |
-| transitionClassName | Animation class, will override default animation, see [CssTransition](/components/CssTransition) | string | - | `xl-dropdown` | false |
+| Property | Description | Type | Default | Require |
+| --- | --- | --- | --- | --- |
+| children | Child node | React.ReactElement | - | true |
+| menus | Drop-down menu | React.ReactNode | - | true |
+| transitionClassName | Animation class, will override default animation, see [CssTransition](/components/CssTransition) | string | `xl-dropdown` | false |
 
 # DropdownSubmenu API
 
 > For more parameters, please refer to [Popper](/components/Popper) properties.
 
-| Property | Description | Type | Optional Value | Default | Require |
-| --- | --- | --- | --- | --- | --- |
-| children | Child node | React.ReactElement | - | - | true |
-| title | Title | React.ReactNode | - | - | true |
-| transitionClassName | Animation class, see [CssTransition](/components/CssTransition) | string | - | `xl-dropdown-submenu` | false |
-| disabled | Disabled state | boolean | - | - | false |
+| Property | Description | Type | Default | Require |
+| --- | --- | --- | --- | --- |
+| children | Child node | React.ReactElement | - | true |
+| title | Title | React.ReactNode | - | true |
+| transitionClassName | Animation class, see [CssTransition](/components/CssTransition) | string | `xl-dropdown-submenu` | false |
+| disabled | Disabled state | boolean | - | false |
 
 # DropdownItem API
 
-| Property | Description    | Type               | Optional Value | Default | Require |
-| -------- | -------------- | ------------------ | -------------- | ------- | ------- |
-| children | Child node     | React.ReactElement | -              | -       | true    |
-| disabled | Disabled state | boolean            | -              | -       | false   |
-| onClick  | Click event    | function           | -              | -       | false   |
+| Property | Description    | Type               | Default | Require |
+| -------- | -------------- | ------------------ | ------- | ------- |
+| children | Child node     | React.ReactElement | -       | true    |
+| disabled | Disabled state | boolean            | -       | false   |
+| onClick  | Click event    | function           | -       | false   |

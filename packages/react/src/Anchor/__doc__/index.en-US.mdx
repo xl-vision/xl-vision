@@ -1,25 +1,57 @@
 # Anchor
 
-## Demos
+Used to jump to the specified location on the page.
 
-:::demo ./Basic
+## Examples
 
-Baisc stage
+:::demo ./AffixEn
 
-Baisc Stage
+Fixed position
+
+Anchor position can be fixed by setting `affix` and `offsetTop` or `offsetBottom`
+
+:::
+
+:::demo ./UnAffixEn
+
+Not fixed position
+
+It can also be displayed in an unfixed position.
+
+:::
+
+:::demo ./TargetOffsetEn
+
+Set offset
+
+The highlight is activated when the scroll offset of the anchor target is within the set offset of the container element.
 
 :::
 
 ## Anchor API
 
-| Property | Description | Type | Optional Value | Default | Require |
-| --- | --- | --- | --- | --- | --- |
-| children | content, have to be string type | string | - | - | false |
-| icon | icon | React.ReactNode | - | - | false |
-| shape | shape | string | circle &#x007c; square &#x007c; round | circle | false |
-| size | size, could also customize | string &#x007c; number | small &#x007c; middle &#x007c; large | middle | false |
-| src | source for image or image component instance | string &#x007c; React.ReactNode |  | - | false |
-| srcSet | srcSet for image | string |  | - | false |
-| onError | invoke when image loads failed, default hide image when image loads failed, but if return false, image will always show | function |  | 4 | false |
-| alt | alt for image | string |  | - | false |
-| gap | gap between border and content | number |  | 4 | false |
+> When `affix` is enabled, the effect is the same as [Affix](/Affix)
+
+| Property | Description | Type | Default | Require |
+| --- | --- | --- | --- | --- |
+| affix | Whether to enable fixed mode | boolean | true | false |
+| affixTarget | The element referenced when fixed, the same as `scrollTarget` when not passed | Window \| HTMLElement \| (() => Window \| HTMLElement) | () => window | false |
+| scrollTarget | Container when scrolling, same as `scrollTarget` when not passed | Window \| HTMLElement \| (() => Window \| HTMLElement) | () => window | false |
+| offsetTop | Reference[Affix](/components/Affix) | number | - | false |
+| offsetBottom | Reference[Affix](/components/Affix) | number | - | false |
+| bounds | Anchor Region Boundary | number | 5 | false |
+| targetOffset | Anchor scroll offset | number | 0 | false |
+| onChange | Listen for anchor link changes | (currentActiveLink: string) => void | - | false |
+
+## Anchor Methods
+
+| Method   | Description                  | Type                         | Default |
+| -------- | ---------------------------- | ---------------------------- | ------- |
+| scrollTo | scroll to the specified link | (activeLink: string) => void | -       |
+
+## AnchorLink API
+
+| Property | Description | Type   | Default | Require |
+| -------- | ----------- | ------ | ------- | ------- |
+| title    | Title       | string | -       | true    |
+| href     | Anchor href | string | -       | true    |

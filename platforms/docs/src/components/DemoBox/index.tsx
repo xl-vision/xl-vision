@@ -28,7 +28,7 @@ const Wrapper = styled('div')<{ debug: boolean }>(({ theme, styleProps }) => {
     border: `${styleSize.middle.border}px solid ${
       debug ? color.themes.error.color : color.divider
     }`,
-    margin: `8px 0`,
+    margin: `32px 0`,
   };
 });
 

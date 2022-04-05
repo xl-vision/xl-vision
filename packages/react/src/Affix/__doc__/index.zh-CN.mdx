@@ -1,6 +1,8 @@
 # 固订
 
-## 演示
+将页面元素钉在可视范围。
+
+## 示例
 
 :::demo ./Basic
 
@@ -36,16 +38,16 @@ Debug
 
 ## Affix API
 
-| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
-| --- | --- | --- | --- | --- | --- |
-| children | - | React.ReactNode | - | - | false |
-| target | 设置需要监听其滚动事件的元素，值为一个返回对应 DOM 元素的函数 | Window &#x007c; HTMLElement &#x007c;(() => Window &#x007c; HTMLElement) | - | () => window | false |
-| offsetTop | 距离窗口顶部达到指定偏移量后触发 | number | - | - | false |
-| offsetBottom | 距离窗口底部达到指定偏移量后触发 | number | - | - | false |
-| onChange | 固定状态改变时触发的回调函数 | - | - | false |
+| 参数 | 说明 | 类型 | 默认值 | 是否必填 |
+| --- | --- | --- | --- | --- |
+| children | - | React.ReactNode | - | false |
+| target | 设置需要监听其滚动事件的元素，值为一个返回对应 DOM 元素的函数 | Window \| HTMLElement \| (() => Window \| HTMLElement) | () => window | false |
+| offsetTop | 距离窗口顶部达到指定偏移量后触发 | number | - | false |
+| offsetBottom | 距离窗口底部达到指定偏移量后触发 | number | - | false |
+| onChange | 固定状态改变时触发的回调函数 | (affixed: boolean) => void | - | false |
 
 ## FAQ
 
-### `Affix`使用`target`绑定容器时，元素会跑到容器外
+### 1、`Affix`使用`target`绑定容器时，元素会跑到容器外
 
-From a performance perspective, we only listen for container scroll events. If you have other needs, you can manually call the `handleEventEmit` and `handleSizeChange` methods of `Affix`.
+从性能角度考虑，我们只监听容器滚动事件。如果希望任意滚动，你可以在窗体添加滚动监听

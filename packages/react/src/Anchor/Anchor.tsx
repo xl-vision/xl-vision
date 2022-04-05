@@ -1,10 +1,10 @@
-import { useConstantFn } from '@xl-vision/hooks';
+import { useConstantFn, useForkRef } from '@xl-vision/hooks';
 import { env } from '@xl-vision/utils';
 import clsx from 'clsx';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CSSObject } from '@xl-vision/styled-engine';
-import Affix, { AffixIntance } from '../Affix';
+import Affix from '../Affix';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 import { off, on } from '../utils/event';
@@ -73,7 +73,11 @@ const HREF_MATCHER_REGX = /#([\S ]+)$/;
 
 const getDefaultTarget = () => window;
 
-const Anchor = React.forwardRef<AffixIntance & HTMLDivElement, AnchorProps>((props, ref) => {
+export type AnchorInstance = Omit<HTMLDivElement, 'scrollTo'> & {
+  scrollTo: (link: string) => void;
+};
+
+const Anchor = React.forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
   const { clsPrefix } = useTheme();
 
   const {
@@ -95,6 +99,10 @@ const Anchor = React.forwardRef<AffixIntance & HTMLDivElement, AnchorProps>((pro
   const affixTarget = affixTargetProp || scrollTargetProp || getDefaultTarget;
   const scrollTarget = scrollTargetProp || affixTarget;
 
+  const rootRef = React.useRef<AnchorInstance>(null);
+
+  const forkRef = useForkRef(ref, rootRef);
+
   const [currentScrollTarget, setCurrentScrollTarget] = React.useState<Window | HTMLElement>();
 
   const [links, setLinks] = React.useState<Array<string>>([]);
@@ -103,16 +111,7 @@ const Anchor = React.forwardRef<AffixIntance & HTMLDivElement, AnchorProps>((pro
 
   const isScollingRef = React.useRef(false);
 
-  const [inkTop, setInkTop] = React.useState<number | undefined>();
-
-  const registerLink = React.useCallback((link: string) => {
-    setLinks((prev) => [...prev, link]);
-  }, []);
-
-  // @ts-ignore
-  const unregisterLink = React.useCallback((link: string) => {
-    setLinks((prev) => prev.filter((it) => it !== link));
-  }, []);
+  const inkNodeRef = React.useRef<HTMLDivElement>(null);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   React.useEffect(() => {
@@ -161,10 +160,22 @@ const Anchor = React.forwardRef<AffixIntance & HTMLDivElement, AnchorProps>((pro
       }
     });
 
-    if (activeLinkInfo) {
-      setActiveLink(activeLinkInfo.link);
-    }
+    setActiveLink(activeLinkInfo ? activeLinkInfo.link : '');
   });
+
+  const throttleHandleScroll = React.useMemo(
+    () => throttleByAnimationFrame(handleScroll),
+    [handleScroll],
+  );
+
+  const registerLink = React.useCallback((link: string) => {
+    setLinks((prev) => [...prev, link]);
+  }, []);
+
+  const unregisterLink = React.useCallback((link: string) => {
+    setLinks((prev) => prev.filter((it) => it !== link));
+    setActiveLink((prev) => (prev === link ? '' : prev));
+  }, []);
 
   const handleScrollTo = useConstantFn((link: string) => {
     if (!currentScrollTarget) {
@@ -204,30 +215,45 @@ const Anchor = React.forwardRef<AffixIntance & HTMLDivElement, AnchorProps>((pro
     });
   });
 
-  const updateInk = useConstantFn(() => {
-    const activeNode = document.querySelector<HTMLAnchorElement>(
+  const updateInkNode = useConstantFn(() => {
+    const rootNode = rootRef.current;
+
+    const inkNode = inkNodeRef.current;
+
+    if (!rootNode || !inkNode) {
+      return;
+    }
+
+    const activeNode = rootNode.querySelector<HTMLAnchorElement>(
       `.${clsPrefix}-anchor-link__title--active`,
     );
-    if (!activeNode) {
-      setInkTop(undefined);
-    } else {
+
+    if (activeNode) {
       const top = activeNode.offsetTop + activeNode.clientHeight / 2;
-      setInkTop(top);
+      inkNode.style.top = `${top}px`;
     }
   });
 
-  React.useEffect(() => {
-    onChange?.(activeLink);
+  const handleActiveLinkChange = useConstantFn((link: string) => {
+    onChange?.(link);
+    updateInkNode();
+  });
 
-    updateInk();
-  }, [activeLink, onChange, updateInk]);
+  React.useEffect(() => {
+    handleActiveLinkChange(activeLink);
+  }, [activeLink, handleActiveLinkChange]);
+
+  // 将input focus绑定到span上
+  React.useEffect(() => {
+    if (rootRef.current) {
+      rootRef.current.scrollTo = throttleHandleScroll;
+    }
+  }, [throttleHandleScroll]);
 
   React.useEffect(() => {
     if (!currentScrollTarget) {
       return;
     }
-
-    const throttleHandleScroll = throttleByAnimationFrame(handleScroll);
 
     throttleHandleScroll();
     on(currentScrollTarget, 'scroll', throttleHandleScroll);
@@ -235,7 +261,12 @@ const Anchor = React.forwardRef<AffixIntance & HTMLDivElement, AnchorProps>((pro
       throttleHandleScroll.cancel?.();
       off(currentScrollTarget, 'scroll', throttleHandleScroll);
     };
-  }, [currentScrollTarget, handleScroll]);
+  }, [currentScrollTarget, throttleHandleScroll]);
+
+  // 内容改变时，需要重新定位
+  React.useEffect(() => {
+    throttleHandleScroll();
+  }, [children, throttleHandleScroll]);
 
   const value = React.useMemo(() => {
     return {
@@ -251,12 +282,17 @@ const Anchor = React.forwardRef<AffixIntance & HTMLDivElement, AnchorProps>((pro
   const rootClasses = clsx(rootClassName, `${rootClassName}--${type}`, className);
 
   const inkNode =
-    type === 'rail' && inkTop !== undefined ? (
-      <AnchorInk className={`${rootClassName}__ink`} style={{ top: inkTop }} />
+    type === 'rail' && activeLink ? (
+      <AnchorInk className={`${rootClassName}__ink`} ref={inkNodeRef} />
     ) : null;
 
   const content = (
-    <AnchorRoot {...others} styleProps={{ type }} className={rootClasses} ref={ref}>
+    <AnchorRoot
+      {...others}
+      styleProps={{ type }}
+      className={rootClasses}
+      ref={forkRef as React.LegacyRef<HTMLDivElement>}
+    >
       {inkNode}
       {children}
     </AnchorRoot>
@@ -265,13 +301,7 @@ const Anchor = React.forwardRef<AffixIntance & HTMLDivElement, AnchorProps>((pro
   return (
     <AnchorContext.Provider value={value}>
       {affix ? (
-        <Affix
-          {...others}
-          target={affixTarget}
-          offsetBottom={offsetBottom}
-          offsetTop={offsetTop}
-          ref={ref}
-        >
+        <Affix {...others} target={affixTarget} offsetBottom={offsetBottom} offsetTop={offsetTop}>
           {content}
         </Affix>
       ) : (

@@ -1,6 +1,8 @@
 # Tooltip
 
-## Demos
+Simple text prompt bubbles.
+
+## Examples
 
 :::demo ./Basic
 
@@ -46,13 +48,13 @@ Custom rich text content.
 
 > For more parameters, please refer to [Popper](/components/Popper) properties.
 
-| Property | Description | Type | Optional Value | Default | Require |
-| --- | --- | --- | --- | --- | --- |
-| content | Tooltip content | React.ReactNode | - | - | true |
-| maxWidth | Tooltip max width | number | - | - | false |
-| transitionClassName | Animation class name, will override default animation, see [CssTransition](/components/CssTransition) | string | - | 'xl-tooltip' | false |
-| bgColor | Custom background color | string | - | - | false |
-| trigger | Trigger method | 'touch'&#x007c;'hover'&#x007c;'focus'&#x007c;'click'&#x007c;'contextMenu'&#x007c;'custom'&#x007c;array | - | ['hover','touch'] | false |
-| showArrow | Show arrow | boolean | - | - | false |
-| touchShowDelay | Delayed display time on touch screen | number | - | 1500 | false |
-| touchHideDelay | Delayed hidden time on touch screen | number | - | 0 | false |
+| Property | Description | Type | Default | Require |
+| --- | --- | --- | --- | --- |
+| content | Tooltip content | React.ReactNode | - | true |
+| maxWidth | Tooltip max width | number | - | false |
+| transitionClassName | Animation class name, will override default animation, see [CssTransition](/components/CssTransition) | string | `xl-tooltip` | false |
+| bgColor | Custom background color | string | - | false |
+| trigger | Trigger method | `touch` \| `hover` \| `focus` \| `click` \| `contextMenu` \| `custom` \| array | [`hover`,`touch`] | false |
+| showArrow | Show arrow | boolean | - | false |
+| touchShowDelay | Delayed display time on touch screen | number | 1500 | false |
+| touchHideDelay | Delayed hidden time on touch screen | number | 0 | false |

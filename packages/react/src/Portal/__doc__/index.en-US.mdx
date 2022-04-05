@@ -2,7 +2,7 @@
 
 Sub-components can be flexibly and conveniently mounted to components in other locations.
 
-## Demos
+## Examples
 
 :::demo ./Basic
 
@@ -14,7 +14,7 @@ The button belongs to `container1` in the tree structure of `react`, and belongs
 
 ## Portal API
 
-| Property | Description | Type | Optional Value | Default | Require |
-| --- | --- | --- | --- | --- | --- |
-| container | Specify the parent node to mount, support strings, node instances or functions that return these | string &#x007c; Element &#x007c; (() => string &#x007c; Element) | - | - | false |
-| children | Child node | ReactNode | - | — | true |
+| Property | Description | Type | Default | Require |
+| --- | --- | --- | --- | --- |
+| container | Specify the parent node to mount, support strings, node instances or functions that return these | string \| Element \| (() => string \| Element) | - | false |
+| children | Child node | ReactNode | - | true |

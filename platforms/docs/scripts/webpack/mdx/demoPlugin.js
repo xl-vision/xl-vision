@@ -240,5 +240,7 @@ function getText(node) {
 function getId(text) {
   return pinyin(text, {
     style: pinyin.STYLE_NORMAL,
-  }).join('');
+  })
+    .join('')
+    .replace(/\s+/g, '');
 }

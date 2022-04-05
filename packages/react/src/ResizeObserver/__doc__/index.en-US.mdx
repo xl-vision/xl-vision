@@ -2,7 +2,7 @@
 
 A basic component that can easily monitor the width and height of internal elements. Based on [useResizeObserver](/hooks/useResizeObserver), this component does not limit the number of internal elements, and can monitor changes in the size of multiple elements at the same time.
 
-## Demos
+## Examples
 
 :::demo ./Basic
 
@@ -14,7 +14,7 @@ Basic
 
 ## ResizeObserver API
 
-| Property | Description | Type | Optional Value | Default | Require |
-| --- | --- | --- | --- | --- | --- |
-| children | Children | ReactNode | - | — | true |
-| onResizeObserver | Callback for size change | (state:{'{'}width:number,height:number{'}'},target: Element) => void | - | — | false |
+| Property | Description | Type | Default | Require |
+| --- | --- | --- | --- | --- |
+| children | Children | ReactNode | - | true |
+| onResizeObserver | Callback for size change | (state: \{ width:number, height: number \}, target: Element) => void | - | false |

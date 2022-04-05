@@ -1,6 +1,8 @@
 # 按钮
 
-## 演示
+按钮用来触发一些操作。
+
+## 示例
 
 :::demo ./Basic
 
@@ -70,17 +72,17 @@
 
 > 其余参数请参考[BaseButton](/components/BaseButton)
 
-| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
-| --- | --- | --- | --- | --- | --- |
-| href | 点击跳转地址，此时 button 行为与 a 标签一致 | string | - | - | false |
-| disabled | 禁止按钮 | boolean | - | false | false |
-| color | 设置按钮主题 | string | default &#x007c; primary &#x007c; success &#x007c; warning &#x007c; error &#x007c; secondary | default | false |
-| variant | 设置按钮类型 | string | contained &#x007c; outlined &#x007c; text | contained | false |
-| long | 设置为长按钮 | boolean | - | false | false |
-| prefixIcon | 前置图标 | ReactElement | - | - | false |
-| suffixIcon | 后置图标 | ReactElement | - | - | false |
-| loading | 设置按钮为加载中 | boolean | - | - | false |
-| round | 圆角按钮 | boolean | - | - | false |
-| disableElevation | 禁止阴影效果，仅对`variant=contained`有效 | boolean | - | - | false |
-| children | 子节点，在指定了`prefixIcon`或`suffixIcon`时可以为空 | ReactNode | - | - | false |
-| size | 设置按钮大小 | string | middle &#x007c; large &#x007c; small | middle | false |
+| 参数 | 说明 | 类型 | 默认值 | 是否必填 |
+| --- | --- | --- | --- | --- |
+| href | 点击跳转地址，此时 button 行为与 a 标签一致 | string | - | false |
+| disabled | 禁止按钮 | boolean | false | false |
+| color | 设置按钮主题 | `default` \| `primary` \| `success` \| `warning` \| `error` \| `secondary` | `default` | false |
+| variant | 设置按钮类型 | `contained` \| `outlined` \| `text` | `contained` | false |
+| long | 设置为长按钮 | boolean | false | false |
+| prefixIcon | 前置图标 | React.ReactElement | - | false |
+| suffixIcon | 后置图标 | React.ReactElement | - | false |
+| loading | 设置按钮为加载中 | boolean | - | false |
+| round | 圆角按钮 | boolean | - | false |
+| disableElevation | 禁止阴影效果，仅对`variant=contained`有效 | boolean | - | false |
+| children | 子节点，在指定了`prefixIcon`或`suffixIcon`时可以为空 | React.ReactNode | - | false |
+| size | 设置按钮大小 | `middle` \| `large` \| `small` | `middle` | false |

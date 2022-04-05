@@ -2,7 +2,7 @@
 
 参考`bootstrap`的栅格系统
 
-## 演示
+## 示例
 
 ::: demo ./Basic
 
@@ -64,21 +64,21 @@ useBreakpoint Hook
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
 | --- | --- | --- | --- | --- | --- |
-| gutter | 内容块间隙(支持响应式) | number &#x007c; object | >=0 | 0 | false |
+| gutter | 内容块间隙(支持响应式) | number \| \{ xs?: number, sm?: number, md?: number, lg?: number, xl?: number, xxl?: number \} | 0 | false |
 | wrap | 允许折行 | boolean | - | false | false |
-| removeOnUnvisible | `Col`栅格列数为 0 时不渲染 | boolean | - | false | false |
-| justify | 栅格左右对齐方式(在`type=flex`下有效) | string | start &#x007c; end &#x007c; center &#x007c; space-around &#x007c; space-between | — | false |
-| align | 栅格上下对齐方式(在`type=flex`下有效) | string | top &#x007c; middle &#x007c; bottom | — | false |
-| children | `Col`数组 | Col &#x007c; Col[] | - | - | true |
-| component | 自定义 row 标签 | `ComponentType` | - | - | `div` |
+| removeOnUnvisible | `Col`栅格列数为 0 时不渲染 | boolean | false | false |
+| justify | 栅格左右对齐方式(在`type=flex`下有效) | `start` \| `end` \| `center` \| `space-around` \| `space-between` | - | false |
+| align | 栅格上下对齐方式(在`type=flex`下有效) | `top` \| `middle` \| `bottom` | - | false |
+| children | `Col`数组 | Col \| Array\<Col\> | - | true |
+| component | 自定义 row 标签 | React.ComponentType | - | `div` |
 
 ## Col API
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
 | --- | --- | --- | --- | --- | --- |
-| column | 栅格占据的列数(支持响应式)(**0 表示隐藏**) | number &#x007c; object | 0-24 | — | true |
-| offset | 栅格左侧的间隔列数(支持响应式) | number &#x007c; object | 1-24 | — | false |
-| push | 栅格向右移动的列数(支持响应式) | number &#x007c; object | 1-24 | — | false |
-| pull | 栅格向左移动的列数(支持响应式) | number &#x007c; object | 1-24 | — | false |
-| order | 栅格顺序，flex 布局模式下有效(支持响应式) | number &#x007c; object | 1-24 | — | false |
-| children | 子节点 | ReactNode | - | - | false |
+| column | 栅格占据的列数(支持响应式)(**0 表示隐藏**) | number \| \{ xs?: number, sm?: number, md?: number, lg?: number, xl?: number, xxl?: number \} | - | true |
+| offset | 栅格左侧的间隔列数(支持响应式) | number \| \{ xs?: number, sm?: number, md?: number, lg?: number, xl?: number, xxl?: number \} | - | false |
+| push | 栅格向右移动的列数(支持响应式) | number \| \{ xs?: number, sm?: number, md?: number, lg?: number, xl?: number, xxl?: number \} | - | false |
+| pull | 栅格向左移动的列数(支持响应式) | number \| \{ xs?: number, sm?: number, md?: number, lg?: number, xl?: number, xxl?: number \} | - | false |
+| order | 栅格顺序，flex 布局模式下有效(支持响应式) | number \| \{ xs?: number, sm?: number, md?: number, lg?: number, xl?: number, xxl?: number \} | - | false |
+| children | 子节点 | React.ReactNode | - | - | false |

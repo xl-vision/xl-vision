@@ -1,6 +1,8 @@
 # Dialog
 
-## Demos
+A modal box that masks other content pops up, carrying operations that require the user's priority.
+
+## Examples
 
 :::demo ./Basic
 
@@ -72,18 +74,18 @@ In this way, you need to pass in ThemeContext and LocalizationContext, otherwise
 
 ## Dialog API
 
-| Property | Description | Type | Optional Value | Default | Require |
-| --- | --- | --- | --- | --- | --- |
-| title | Title | React.ReactNode | - | - | true |
-| children | Dialog content | React.ReactNode | - | - | false |
-| footer | Dialog footer, if pass `null`, footer will be hidden | React.ReactNode | - | - | false |
-| onCancel | Click to cancel the event | ()=>(void &#x007c; Promise) | - | - | false |
-| onConfirm | Click to confirm event | ()=>(void &#x007c; Promise) | - | - | false |
-| cancelButtonProps | The props of the cancel button, refer to [Button](/components/Button) | object | - | - | false |
-| confirmButtonProps | The props of the confirm button, refer to [Button](/components/Button) | object | - | - | false |
-| cancelText | Cancel button text, support `i18n` | string | - | 取消 | false |
-| confirmText | Confirm button text, support `i18n` | string | - | 确认 | false |
-| prompt | Prompt dialog, only confirm button | boolean | - | - | false |
+| Property | Description | Type | Default | Require |
+| --- | --- | --- | --- | --- |
+| title | Title | React.ReactNode | - | true |
+| children | Dialog content | React.ReactNode | - | false |
+| footer | Dialog footer, if pass `null`, footer will be hidden | React.ReactNode | - | false |
+| onCancel | Click to cancel the event | ()=>(void \| Promise\<void\>) | - | false |
+| onConfirm | Click to confirm event | ()=>(void \| Promise\<void\>) | - | false |
+| cancelButtonProps | The props of the cancel button, refer to [Button](/components/Button) | object | - | false |
+| confirmButtonProps | The props of the confirm button, refer to [Button](/components/Button) | object | - | false |
+| cancelText | Cancel button text, support `i18n` | string | 取消 | false |
+| confirmText | Confirm button text, support `i18n` | string | 确认 | false |
+| prompt | Prompt dialog, only confirm button | boolean | - | false |
 
 ## Dialog.open
 
@@ -97,12 +99,14 @@ In addition to the basic`Dialog.open`, it also includes
 
 The above are all functions, the parameter is object, and the specific attributes are as follows
 
-| Property            | Description   | Type            | Optional Value | Default | Require |
-| ------------------- | ------------- | --------------- | -------------- | ------- | ------- |
-| icon                | Icon          | React.ReactNode | -              | -       | false   |
-| content             | Content       | React.ReactNode | -              | -       | false   |
-| themeProviderProps  | Theme         | object          | -              | -       | false   |
-| configProviderProps | Global Config | object          | -              | -       | false   |
+### Dialog.open API
+
+| Property | Description | Type | Default | Require |
+| --- | --- | --- | --- | --- |
+| icon | Icon | React.ReactNode | - | false |
+| content | Content | React.ReactNode | - | false |
+| themeProviderProps | Theme, see [ThemeProvider](/components/ThemeProvider) | object | - | false |
+| configProviderProps | Global Config [ConfigProvider](//componentsConfigProvider) | object | - | false |
 
 > `Dialog.open` inherits most of the parameters of `Dialog`, except for `visible` and `defaultVisile`, where `children` is renamed to `content`.
 

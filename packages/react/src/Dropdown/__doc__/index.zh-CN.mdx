@@ -1,6 +1,8 @@
 # 下拉框
 
-## 演示
+向下弹出的列表。
+
+## 示例
 
 ::: demo ./Basic
 
@@ -30,27 +32,27 @@
 
 > 更多参数请参考[Popper](/components/Popper)属性。
 
-| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
-| --- | --- | --- | --- | --- | --- |
-| children | 子元素 | React.ReactElement | - | - | true |
-| menus | 下拉菜单 | React.ReactNode | - | - | true |
-| transitionClassName | 动画 class，会覆盖默认动画，参看[CssTransition](/components/CssTransition) | string | - | `xl-dropdown` | false |
+| 参数 | 说明 | 类型 | 默认值 | 是否必填 |
+| --- | --- | --- | --- | --- |
+| children | 子元素 | React.ReactElement | - | true |
+| menus | 下拉菜单 | React.ReactNode | - | true |
+| transitionClassName | 动画 class，会覆盖默认动画，参看[CssTransition](/components/CssTransition) | string | `xl-dropdown` | false |
 
 # DropdownSubmenu API
 
 > 更多参数请参考[Popper](/components/Popper)属性。
 
-| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
-| --- | --- | --- | --- | --- | --- |
-| children | 子元素 | React.ReactElement | - | - | true |
-| title | 标题 | React.ReactNode | - | - | true |
-| transitionClassName | 动画 class，参看[CssTransition](/components/CssTransition) | string | - | `xl-dropdown-submenu` | false |
-| disabled | 禁用 | boolean | - | - | false |
+| 参数 | 说明 | 类型 | 默认值 | 是否必填 |
+| --- | --- | --- | --- | --- |
+| children | 子元素 | React.ReactElement | - | true |
+| title | 标题 | React.ReactNode | - | true |
+| transitionClassName | 动画 class，参看[CssTransition](/components/CssTransition) | string | `xl-dropdown-submenu` | false |
+| disabled | 禁用 | boolean | - | false |
 
 # DropdownItem API
 
-| 参数     | 说明     | 类型               | 可选值 | 默认值 | 是否必填 |
-| -------- | -------- | ------------------ | ------ | ------ | -------- |
-| children | 子元素   | React.ReactElement | -      | -      | true     |
-| disabled | 禁用     | boolean            | -      | -      | false    |
-| onClick  | 点击事件 | function           | -      | -      | false    |
+| 参数     | 说明     | 类型               | 默认值 | 是否必填 |
+| -------- | -------- | ------------------ | ------ | -------- |
+| children | 子元素   | React.ReactElement | -      | true     |
+| disabled | 禁用     | boolean            | -      | false    |
+| onClick  | 点击事件 | function           | -      | false    |

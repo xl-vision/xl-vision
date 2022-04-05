@@ -1,6 +1,8 @@
 # 输入框
 
-## 演示
+通过鼠标或键盘输入内容，是最基础的表单域的包装。
+
+## 示例
 
 ::: demo ./Basic
 
@@ -92,32 +94,32 @@ focus
 
 # Input API
 
-| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
-| --- | --- | --- | --- | --- | --- |
-| prefix | 前缀 | React.ReactNode | - | - | false |
-| suffix | 后缀 | React.ReactNode | - | - | false |
-| addonBefore | 前置元素 | React.ReactNode | - | - | false |
-| addonAfter | 后置元素 | React.ReactNode | - | - | false |
-| onChange | 值改变事件 | function | - | - | false |
-| value | 值 | string | - | - | false |
-| defaultValue | 默认值 | string | - | - | false |
-| showCount | 是否显示字数 | boolean | - | - | false |
-| allowClear | 是否展示清空图标 | boolean | - | - | false |
-| size | 输入框大小 | middle &#x007c; large &#x007c; small | - | middle | false |
-| maxLength | 限制最大长度 | number | - | - | false |
+| 参数         | 说明             | 类型                           | 默认值   | 是否必填 |
+| ------------ | ---------------- | ------------------------------ | -------- | -------- |
+| prefix       | 前缀             | React.ReactNode                | -        | false    |
+| suffix       | 后缀             | React.ReactNode                | -        | false    |
+| addonBefore  | 前置元素         | React.ReactNode                | -        | false    |
+| addonAfter   | 后置元素         | React.ReactNode                | -        | false    |
+| onChange     | 值改变事件       | function                       | -        | false    |
+| value        | 值               | string                         | -        | false    |
+| defaultValue | 默认值           | string                         | -        | false    |
+| showCount    | 是否显示字数     | boolean                        | -        | false    |
+| allowClear   | 是否展示清空图标 | boolean                        | -        | false    |
+| size         | 输入框大小       | `middle` \| `large` \| `small` | `middle` | false    |
+| maxLength    | 限制最大长度     | number                         | -        | false    |
 
 # Password API
 
 > 其余参数请参考`Input`
 
-| 参数       | 说明        | 类型     | 可选值 | 默认值 | 是否必填 |
-| ---------- | ----------- | -------- | ------ | ------ | -------- |
-| renderIcon | 自定义 icon | function | -      | -      | false    |
+| 参数       | 说明        | 类型                                  | 默认值 | 是否必填 |
+| ---------- | ----------- | ------------------------------------- | ------ | -------- |
+| renderIcon | 自定义 icon | (visible: boolean) => React.ReactNode | -      | false    |
 
 # InputGroup API
 
 > 其余参数请参考`Input`
 
-| 参数 | 说明         | 类型                                 | 可选值 | 默认值 | 是否必填 |
-| ---- | ------------ | ------------------------------------ | ------ | ------ | -------- |
-| size | 内部组件大小 | middle &#x007c; large &#x007c; small | -      | middle | false    |
+| 参数 | 说明         | 类型                           | 默认值   | 是否必填 |
+| ---- | ------------ | ------------------------------ | -------- | -------- |
+| size | 内部组件大小 | `middle` \| `large` \| `small` | `middle` | false    |

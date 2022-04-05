@@ -1,25 +1,57 @@
 # 锚点
 
-## 演示
+用于跳转到页面指定位置。
 
-:::demo ./Basic
+## 示例
 
-基础用法
+:::demo ./AffixCn
 
-基础用法
+固定位置
+
+通过设置`affix`和`offsetTop`或`offsetBottom`，可以固定锚点位置
+
+:::
+
+:::demo ./UnAffixCn
+
+不固定位置
+
+也可以不固定位置展示
+
+:::
+
+:::demo ./TargetOffsetCn
+
+设置偏移量
+
+锚点目标距离容器元素的滚动偏移量在设置的偏移量以内时就激活高亮
 
 :::
 
 ## Anchor API
 
-| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
-| --- | --- | --- | --- | --- | --- |
-| children | 内容，需要是字符串 | string | - | - | false |
-| icon | 图标 | React.ReactNode | - | - | false |
-| shape | 形状 | string | circle &#x007c; square &#x007c; round | circle | false |
-| size | 尺寸，可以自定义大小 | string &#x007c; number | small &#x007c; middle &#x007c; large | middle | false |
-| src | 设置图片地址或图片组件实例 | string &#x007c; React.ReactNode |  | - | false |
-| srcSet | 图片的 srcSet | string |  | - | false |
-| onError | 图片加载失败回调，默认图片加载失败会不显示图片，返回 false 时将始终展示图片 | function |  | 4 | false |
-| alt | 图片的 alt | string |  | - | false |
-| gap | 内容和边框的间隙 | number |  | 4 | false |
+> 启用`affix`时，效果同[Affix](/Affix)
+
+| 参数 | 说明 | 类型 | 默认值 | 是否必填 |
+| --- | --- | --- | --- | --- |
+| affix | 是否固定 | boolean | true | false |
+| affixTarget | 固定时参考的元素，不传时和`scrollTarget`相同 | Window \| HTMLElement \| (() => Window \| HTMLElement) | () => window | false |
+| scrollTarget | 滚动时的容器，不传时和`scrollTarget`相同 | Window \| HTMLElement \| (() => Window \| HTMLElement) | () => window | false |
+| offsetTop | 参考[Affix](/components/Affix) | number | - | false |
+| offsetBottom | 参考[Affix](/components/Affix) | number | - | false |
+| bounds | 锚点区域边界 | number | 5 | false |
+| targetOffset | 锚点滚动偏移量 | number | 0 | false |
+| onChange | 监听锚点链接改变 | (currentActiveLink: string) => void | - | false |
+
+## Anchor Methods
+
+| 方法     | 说明               | 类型                         | 默认值 |
+| -------- | ------------------ | ---------------------------- | ------ |
+| scrollTo | 滚动到指定的链接处 | (activeLink: string) => void | -      |
+
+## AnchorLink API
+
+| 参数  | 说明     | 类型   | 默认值 | 是否必填 |
+| ----- | -------- | ------ | ------ | -------- |
+| title | 标题     | string | -      | true     |
+| href  | 锚点链接 | string | -      | true     |

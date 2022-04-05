@@ -1,6 +1,8 @@
 # 多行文本框
 
-## 演示
+用于多行输入。
+
+## 示例
 
 ::: demo ./Basic
 
@@ -44,13 +46,13 @@ debug
 
 # TextArea API
 
-| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
-| --- | --- | --- | --- | --- | --- |
-| onChange | 值改变事件 | function | - | - | false |
-| value | 值 | string | - | - | false |
-| defaultValue | 默认值 | string | - | - | false |
-| showCount | 是否显示字数 | boolean | - | - | false |
-| allowClear | 是否展示清空图标 | boolean | - | - | false |
-| size | 输入框大小 | middle &#x007c; large &#x007c; small | - | middle | false |
-| maxLength | 限制最大长度 | number | - | - | false |
-| autoHeight | 根据内容自动改变高度 | boolean &#x007c; {'{'}minRows?: number, maxRows?: number{'}'} | - | - | false |
+| 参数 | 说明 | 类型 | 默认值 | 是否必填 |
+| --- | --- | --- | --- | --- |
+| onChange | 值改变事件 | (value: string) => void | - | false |
+| value | 值 | string | - | false |
+| defaultValue | 默认值 | string | - | false |
+| showCount | 是否显示字数 | boolean | - | false |
+| allowClear | 是否展示清空图标 | boolean | - | false |
+| size | 输入框大小 | `middle` \| `large` \| `small` | `middle` | false |
+| maxLength | 限制最大长度 | number | - | false |
+| autoHeight | 根据内容自动改变高度 | boolean \| \{ minRows?: number, maxRows?: number \} | - | false |
