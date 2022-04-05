@@ -54,7 +54,7 @@ importers:
       husky: ^7.0.4
       jest: ^27.5.1
       jest-styled-components: ^7.0.8
-      minimist: ^1.2.5
+      minimist: ^1.2.6
       prettier: ^2.5.1
       react: ^16.8.0
       react-dom: ^16.8.0
@@ -115,7 +115,7 @@ importers:
       husky: 7.0.4
       jest: 27.5.1
       jest-styled-components: 7.0.8_styled-components@5.3.5
-      minimist: 1.2.5
+      minimist: 1.2.6
       prettier: 2.5.1
       react: 16.14.0
       react-dom: 16.14.0_react@16.14.0
@@ -3370,7 +3370,7 @@ packages:
       babel-plugin-syntax-jsx: 6.18.0
       lodash: 4.17.21
       picomatch: 2.3.0
-      styled-components: 5.3.5_react-dom@16.14.0+react@16.14.0
+      styled-components: 5.3.5_281a4fa50a045c9112baf635f3bc27a7
 
   /babel-plugin-syntax-jsx/6.18.0:
     resolution: {integrity: sha1-CvMqmm4Tyno/1QaeYtew9Y0NiUY=}
@@ -7569,7 +7569,7 @@ packages:
     resolution: {integrity: sha512-aKS4WQjPenRxiQsC93MNfjx+nbF4PAdYzmd/1JIj8HYzqfbu86beTuNgXDzPknWk0n0uARlyewZo4s++ES36Ow==}
     hasBin: true
     dependencies:
-      minimist: 1.2.5
+      minimist: 1.2.6
     dev: true
 
   /json5/2.2.0:
@@ -7577,7 +7577,7 @@ packages:
     engines: {node: '>=6'}
     hasBin: true
     dependencies:
-      minimist: 1.2.5
+      minimist: 1.2.6
     dev: true
 
   /jsonfile/4.0.0:
@@ -8582,6 +8582,10 @@ packages:
 
   /minimist/1.2.5:
     resolution: {integrity: sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==}
+    dev: true
+
+  /minimist/1.2.6:
+    resolution: {integrity: sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==}
     dev: true
 
   /minipass/3.1.6:
@@ -11199,7 +11203,7 @@ packages:
     dependencies:
       '@types/json5': 0.0.29
       json5: 1.0.1
-      minimist: 1.2.5
+      minimist: 1.2.6
       strip-bom: 3.0.0
     dev: true
 
