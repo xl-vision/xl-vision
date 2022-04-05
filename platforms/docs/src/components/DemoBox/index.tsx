@@ -64,7 +64,7 @@ const TitleWrapper = styled('div')(({ theme }) => {
 
 const DescWrapper = styled('div')(() => {
   return {
-    padding: '8px 40px 8px 24px',
+    padding: '8px 70px 8px 24px',
   };
 });
 
