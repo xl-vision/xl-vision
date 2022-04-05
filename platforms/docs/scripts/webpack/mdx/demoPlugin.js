@@ -189,7 +189,7 @@ function createDemoBox(nodes, start, ctx) {
     `<DemoBox`,
     options.join('\n'),
     `  id='${id}'`,
-    `  tsCode={${tsCode}}`,
+    // `  tsCode={${tsCode}}`,
     `  jsCode={${jsCode}}`,
     `  tsCodeNode={<pre className='language-tsx'>{${tsCodeNode}}</pre>}`,
     `  jsCodeNode={<pre className='language-jsx'>{${jsCodeNode}}</pre>}`,

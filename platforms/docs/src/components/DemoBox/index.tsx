@@ -10,7 +10,7 @@ import useIsDebugMode from '../../hooks/useIsDebugMode';
 export type DemoBoxProps = {
   children: [React.ReactNode, React.ReactNode, React.ReactNode];
   jsCode: string;
-  tsCode: string;
+  // tsCode: string;
   tsCodeNode: React.ReactNode;
   jsCodeNode: React.ReactNode;
   debug?: boolean;
@@ -111,8 +111,6 @@ const DemoBox: React.FunctionComponent<DemoBoxProps> = ({
   tsCodeNode,
   children,
   jsCode,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  tsCode: _,
   debug = false,
 }) => {
   const [titleNode, descNode, preview] = children;
