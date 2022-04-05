@@ -1,5 +1,9 @@
 # 模态框
 
+基础模态框
+
+## 示例
+
 :::demo ./Basic
 
 基本用法
@@ -50,16 +54,16 @@
 
 ## Modal API
 
-| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
-| --- | --- | --- | --- | --- | --- |
-| container | 指定挂载的父节点，支持字符串，节点实例或返回这些的函数 | string &#x007c; HTMLElement &#x007c; (() => string &#x007c; HTMLElement) | - | - | false |
-| defaultVisible | 模态框默认是否展示，当`visible`存在时，选项失效 | boolean | - | false | false |
-| onVisibleChange | 模态框状态改变时的回调 | (visible: boolean) => void | - | - | false |
-| visible | 是否显示模态框 | boolean | - | - | false |
-| unmountOnHide | close 时是否销毁 dom 实例 | boolean | - | - | false |
-| mountOnShow | 是否显示时才挂载 | boolean | - | true | false |
-| mask | 是否显示遮罩 | boolean | - | true | false |
-| maskClosable | 是否点击遮罩关闭弹出框 | boolean | - | true | false |
-| escClosable | 是否键盘输入 esc 键关闭弹出框 | boolean | - | true | false |
-| wrapperClassName | 弹出框外层容器的类名 | string | - | - | false |
-| onAfterClosed | modal 关闭后的回调，此时动画也结束了 | ()=>void | - | - | false |
+| 参数 | 说明 | 类型 | 默认值 | 是否必填 |
+| --- | --- | --- | --- | --- |
+| container | 指定挂载的父节点，支持字符串，节点实例或返回这些的函数 | string \| HTMLElement \| (() => string \| HTMLElement) | - | false |
+| defaultVisible | 模态框默认是否展示，当`visible`存在时，选项失效 | boolean | false | false |
+| onVisibleChange | 模态框状态改变时的回调 | (visible: boolean) => void | - | false |
+| visible | 是否显示模态框 | boolean | - | false |
+| unmountOnHide | close 时是否销毁 dom 实例 | boolean | - | false |
+| mountOnShow | 是否显示时才挂载 | boolean | true | false |
+| mask | 是否显示遮罩 | boolean | true | false |
+| maskClosable | 是否点击遮罩关闭弹出框 | boolean | true | false |
+| escClosable | 是否键盘输入 esc 键关闭弹出框 | boolean | true | false |
+| wrapperClassName | 弹出框外层容器的类名 | string | - | false |
+| onAfterClosed | modal 关闭后的回调，此时动画也结束了 | () => void | - | false |

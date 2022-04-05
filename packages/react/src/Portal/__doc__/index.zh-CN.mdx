@@ -2,6 +2,8 @@
 
 可以灵活方便地将子组件挂载到其他位置的组件
 
+## 示例
+
 :::demo ./Basic
 
 基础用法
@@ -12,7 +14,7 @@
 
 ## Portal API
 
-| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
-| --- | --- | --- | --- | --- | --- |
-| container | 指定挂载的父节点，支持字符串，节点实例或返回这些的函数 | string &#x007c; Element &#x007c; (() => string &#x007c; Element) | - | - | false |
-| children | 子元素 | ReactNode | - | — | true |
+| 参数 | 说明 | 类型 | 默认值 | 是否必填 |
+| --- | --- | --- | --- | --- |
+| container | 指定挂载的父节点，支持字符串，节点实例或返回这些的函数 | string \| Element \| (() => string \| Element) | - | false |
+| children | 子元素 | ReactNode | - | true |

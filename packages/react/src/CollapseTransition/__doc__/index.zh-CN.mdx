@@ -2,6 +2,8 @@
 
 可以方便地对于不定高度或者宽度的内容进行折叠或者展开的动画组件。
 
+## 示例
+
 :::demo ./Basic
 
 基础用法
@@ -20,12 +22,12 @@
 
 ## CollapseTransition API
 
-| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
-| --- | --- | --- | --- | --- | --- |
-| in | 触发进出场动画,`true`表示进场，`false`表示出场 | boolean | - | — | true |
-| transitionClasses | 指定动画过程中的`class`名,参考[CssTransition](/components/CssTransition) | string | - | - | false |
-| children | 子元素 | React.ReactElement | - | — | true |
-| horizontal | 是否横向 | boolean | - | — | - |
-| transitionOnFirst | 是否初始化完成时就触发动画 | boolean | - | false | false |
-| mountOnEnter | 当第一次进场动画时才挂载子节点，见[Transition](/components/Transition) | boolean | - | false | false |
-| unmountOnLeave | 当出场动画后就卸载子节点，见[Transition](/components/Transition) | boolean | - | false | false |
+| 参数 | 说明 | 类型 | 默认值 | 是否必填 |
+| --- | --- | --- | --- | --- |
+| in | 触发进出场动画,`true`表示进场，`false`表示出场 | boolean | - | true |
+| transitionClasses | 指定动画过程中的`class`名,参考[CssTransition](/components/CssTransition) | string | - | false |
+| children | 子元素 | React.ReactElement | - | true |
+| horizontal | 是否横向 | boolean | - | - |
+| transitionOnFirst | 是否初始化完成时就触发动画 | boolean | false | false |
+| mountOnEnter | 当第一次进场动画时才挂载子节点，见[Transition](/components/Transition) | boolean | false | false |
+| unmountOnLeave | 当出场动画后就卸载子节点，见[Transition](/components/Transition) | boolean | false | false |

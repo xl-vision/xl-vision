@@ -1,5 +1,9 @@
 # Input
 
+Entering content through the mouse or keyboard is the most basic form field wrapper.
+
+## Examples
+
 ::: demo ./Basic
 
 Basic
@@ -90,16 +94,32 @@ Group
 
 # Input API
 
-| Property | Description | Type | Optional Value | Default | Require |
-| --- | --- | --- | --- | --- | --- |
-| prefix | prefix | React.ReactNode | - | - | false |
-| suffix | suffix | React.ReactNode | - | - | false |
-| addonBefore | node addon before | React.ReactNode | - | - | false |
-| addonAfter | node addon after | React.ReactNode | - | - | false |
-| onChange | value change event | function | - | - | false |
-| value | value | string | - | - | false |
-| defaultValue | default value | string | - | - | false |
-| showCount | show value length count | boolean | - | - | false |
-| allowClear | show icon for clear value | boolean | - | - | false |
-| size | size | middle &#x007c; large &#x007c; small | - | middle | false |
-| maxLength | value max length | number | - | - | false |
+| Property     | Description               | Type                           | Default  | Require |
+| ------------ | ------------------------- | ------------------------------ | -------- | ------- |
+| prefix       | prefix                    | React.ReactNode                | -        | false   |
+| suffix       | suffix                    | React.ReactNode                | -        | false   |
+| addonBefore  | node addon before         | React.ReactNode                | -        | false   |
+| addonAfter   | node addon after          | React.ReactNode                | -        | false   |
+| onChange     | value change event        | function                       | -        | false   |
+| value        | value                     | string                         | -        | false   |
+| defaultValue | default value             | string                         | -        | false   |
+| showCount    | show value length count   | boolean                        | -        | false   |
+| allowClear   | show icon for clear value | boolean                        | -        | false   |
+| size         | size                      | `middle` \| `large` \| `small` | `middle` | false   |
+| maxLength    | value max length          | number                         | -        | false   |
+
+# Password API
+
+> For other parameters, please refer to `Input`
+
+| Property   | Description | Type                                  | Default | Require |
+| ---------- | ----------- | ------------------------------------- | ------- | ------- |
+| renderIcon | custom icon | (visible: boolean) => React.ReactNode | -       | false   |
+
+# InputGroup API
+
+> For other parameters, please refer to `Input`
+
+| Property | Description             | Type                           | Default  | Require |
+| -------- | ----------------------- | ------------------------------ | -------- | ------- |
+| size     | Internal component size | `middle` \| `large` \| `small` | `middle` | false   |

@@ -3,7 +3,7 @@ import React from 'react';
 import { env } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
 import CssTransition, { CssTransitionProps, CssTransitionElement } from '../CssTransition';
-import { forceReflow } from '../utils/transition';
+import { forceReflow } from '../utils/dom';
 import { removeClass, addClass } from '../utils/class';
 import { AfterEventHook, BeforeEventHook, EventCancelledHook, EventHook } from '../Transition';
 

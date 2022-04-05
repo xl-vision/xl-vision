@@ -1,5 +1,5 @@
-import { isWindow } from '../utils/dom';
 import { EventMap, off, on } from '../utils/event';
+import isWindow from '../utils/isWindow';
 
 export type DOMVerticalDistance = {
   top: number;

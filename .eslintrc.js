@@ -46,8 +46,13 @@ module.exports = {
       },
     },
   },
+  parser: '@babel/eslint-parser',
   parserOptions: {
     ecmaVersion: 2018,
+    requireConfigFile: false,
+    babelOptions: {
+      plugins: [],
+    },
   },
   extends: ['airbnb', 'airbnb/hooks', 'plugin:prettier/recommended', 'prettier'],
   plugins: ['unicorn'],
@@ -115,7 +120,7 @@ module.exports = {
     'unicorn/import-index': 'error',
     // forbid passing object as default value to props of function component
     // 'unicorn/no-object-as-default-parameter': 'error',
-    'unicorn/prefer-query-selector': 'error',
+    'unicorn/prefer-query-selector': 'off',
     'unicorn/no-abusive-eslint-disable': 'error',
   },
   overrides: [

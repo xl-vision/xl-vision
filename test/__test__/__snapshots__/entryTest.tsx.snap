@@ -678,5 +678,6 @@ Array [
   "Affix",
   "ResizeObserver",
   "BackTop",
+  "Anchor",
 ]
 `;

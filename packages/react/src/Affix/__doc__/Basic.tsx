@@ -7,7 +7,7 @@ const Demo = () => {
       <Affix offsetTop={100}>
         <Button>offset top 100</Button>
       </Affix>
-      <Affix offsetButtom={100}>
+      <Affix offsetBottom={100}>
         <Button>offset bottom 100</Button>
       </Affix>
     </>

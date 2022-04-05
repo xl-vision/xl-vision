@@ -10,7 +10,7 @@ import Portal from '../Portal';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 import { alpha } from '../utils/color';
-import { getScroll } from '../utils/dom';
+import { getScroll, scrollTo } from '../utils/scroll';
 import { off, on } from '../utils/event';
 import { throttleByAnimationFrame } from '../utils/perf';
 
@@ -126,14 +126,9 @@ const BackTop = React.forwardRef<HTMLDivElement, BackTopProps>((props, ref) => {
     if (!currentTarget) {
       return;
     }
-    if (currentTarget.scrollTo) {
-      currentTarget.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      });
-    } else {
-      (currentTarget as HTMLElement).scrollTop = 0;
-    }
+    scrollTo(0, {
+      container: currentTarget,
+    });
   });
 
   const rootClassName = `${clsPrefix}-back-top`;

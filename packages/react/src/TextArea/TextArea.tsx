@@ -337,7 +337,7 @@ if (env.isDevelopment) {
     maxLength: PropTypes.number,
     disabled: PropTypes.bool,
     readOnly: PropTypes.bool,
-    // TODO [2022-04-01]: types fix
+    // TODO [2022-05-01]: types fix
     // @ts-ignore
     autoHeight: PropTypes.oneOfType([
       PropTypes.bool.isRequired,

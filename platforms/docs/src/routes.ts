@@ -130,6 +130,13 @@ const route: Route = {
           },
           path: '/BackTop',
         },
+        {
+          titleMap: {
+            'en-US': 'Anchor',
+            'zh-CN': '锚点',
+          },
+          path: '/Anchor',
+        },
       ],
     },
     {
@@ -205,14 +212,14 @@ const route: Route = {
         },
         {
           titleMap: {
-            'en-US': 'Transition Group',
+            'en-US': 'TransitionGroup',
             'zh-CN': '过渡动画组',
           },
           path: '/TransitionGroup',
         },
         {
           titleMap: {
-            'en-US': 'Collapse Transition',
+            'en-US': 'CollapseTransition',
             'zh-CN': '折叠动画',
           },
           path: '/CollapseTransition',
@@ -256,7 +263,7 @@ const route: Route = {
       children: [
         {
           titleMap: {
-            'en-US': 'Global Config',
+            'en-US': 'ConfigProvider',
             'zh-CN': '全局配置',
           },
           path: '/ConfigProvider',
@@ -271,7 +278,7 @@ const route: Route = {
       children: [
         {
           titleMap: {
-            'en-US': 'Base Button',
+            'en-US': 'BaseButton',
             'zh-CN': '基础按钮',
           },
           path: '/BaseButton',

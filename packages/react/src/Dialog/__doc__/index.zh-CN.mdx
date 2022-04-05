@@ -1,5 +1,9 @@
 # 对话框
 
+弹出遮罩其他内容的模态框，承载需要用户优先考虑的操作。
+
+## 示例
+
 :::demo ./Basic
 
 基础
@@ -72,18 +76,18 @@ hooks
 
 > 更多参数请参考[Modal](/components/Modal)属性
 
-| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
-| --- | --- | --- | --- | --- | --- |
-| title | 标题，如果不是`string`类型，需自行添加样式 | React.ReactNode | - | - | true |
-| children | 自定义内容 | React.ReactNode | - | - | false |
-| footer | 自定义页脚操作区，传入`null`隐藏页脚 | React.ReactNode | - | - | false |
-| onCancel | 点击取消事件 | ()=>(void &#x007c; Promise) | - | - | false |
-| onConfirm | 点击确认事件 | ()=>(void &#x007c; Promise) | - | - | false |
-| cancelButtonProps | 取消按钮的 props，参考[Button](/components/Button) | object | - | - | false |
-| confirmButtonProps | 确认按钮的 props，参考[Button](/components/Button) | object | - | - | false |
-| cancelText | 取消按钮文案，支持`i18n` | string | - | 取消 | false |
-| confirmText | 确认按钮文案，支持`i18n` | string | - | 确认 | false |
-| prompt | 提示型对话框，只有确认按钮 | boolean | - | - | false |
+| 参数 | 说明 | 类型 | 默认值 | 是否必填 |
+| --- | --- | --- | --- | --- |
+| title | 标题，如果不是`string`类型，需自行添加样式 | React.ReactNode | - | true |
+| children | 自定义内容 | React.ReactNode | - | false |
+| footer | 自定义页脚操作区，传入`null`隐藏页脚 | React.ReactNode | - | false |
+| onCancel | 点击取消事件 | ()=>(void \| Promise) | - | false |
+| onConfirm | 点击确认事件 | ()=>(void \| Promise) | - | false |
+| cancelButtonProps | 取消按钮的 props，参考[Button](/components/Button) | object | - | false |
+| confirmButtonProps | 确认按钮的 props，参考[Button](/components/Button) | object | - | false |
+| cancelText | 取消按钮文案，支持`i18n` | string | 取消 | false |
+| confirmText | 确认按钮文案，支持`i18n` | string | 确认 | false |
+| prompt | 提示型对话框，只有确认按钮 | boolean | - | false |
 
 ## Dialog.open
 
@@ -97,12 +101,14 @@ hooks
 
 以上均为函数，参数为 object，具体属性如下
 
-| 参数                | 说明       | 类型            | 可选值 | 默认值 | 是否必填 |
-| ------------------- | ---------- | --------------- | ------ | ------ | -------- |
-| icon                | 图标       | React.ReactNode | -      | -      | false    |
-| content             | 自定义内容 | React.ReactNode | -      | -      | false    |
-| themeProviderProps  | 自定义主题 | object          | -      | -      | false    |
-| configProviderProps | 自定义配置 | object          | -      | -      | false    |
+### Dialog.open API
+
+| 参数 | 说明 | 类型 | 默认值 | 是否必填 |
+| --- | --- | --- | --- | --- |
+| icon | 图标 | React.ReactNode | - | false |
+| content | 自定义内容 | React.ReactNode | - | false |
+| themeProviderProps | 自定义主题，参见[ThemeProvider](/components/ThemeProvider) | object | - | false |
+| configProviderProps | 自定义配置，参见[ConfigProvider](/components/ConfigProvider) | object | - | false |
 
 > `Dialog.open`继承`Dialog`的绝大多数参数，除了`visible`和`defaultVisile`，其中`children`被重命名为`content`。
 

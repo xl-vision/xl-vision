@@ -2,6 +2,8 @@
 
 An animation component that can easily fold or unfold content with variable height or width.
 
+## Examples
+
 :::demo ./Basic
 
 Basic
@@ -20,12 +22,12 @@ Expand and collapse horizontally
 
 ## CollapseTransition API
 
-| Property | Description | Type | Optional Value | Default | Require |
-| --- | --- | --- | --- | --- | --- |
-| in | Trigger the entering and exiting animation, `true` means entering, `false` means leaving | boolean | - | — | true |
-| transitionClasses | Specify the `class` name during the animation, refer to [CssTransition](/components/CssTransition) | string | - | - | false |
-| children | Child node | React.ReactElement | - | — | true |
-| horizontal | Horizontal mode | boolean | - | — | - |
-| transitionOnFirst | Whether to trigger the animation when the initialization is complete | boolean | - | false | false |
-| mountOnEnter | The child nodes are only mounted when the animation is entered for the first time, see [Transition](/components/Transition) | boolean | - | false | false |
-| unmountOnLeave | Unload the child node after the animation is out, see [Transition](/components/Transition) | boolean | - | false | false |
+| Property | Description | Type | Default | Require |
+| --- | --- | --- | --- | --- |
+| in | Trigger the entering and exiting animation, `true` means entering, `false` means leaving | boolean | - | true |
+| transitionClasses | Specify the `class` name during the animation, refer to [CssTransition](/components/CssTransition) | string | - | false |
+| children | Child node | React.ReactElement | - | true |
+| horizontal | Horizontal mode | boolean | - | - |
+| transitionOnFirst | Whether to trigger the animation when the initialization is complete | boolean | false | false |
+| mountOnEnter | The child nodes are only mounted when the animation is entered for the first time, see [Transition](/components/Transition) | boolean | false | false |
+| unmountOnLeave | Unload the child node after the animation is out, see [Transition](/components/Transition) | boolean | false | false |

@@ -2,6 +2,8 @@
 
 Refer to the grid system of `bootstrap`.
 
+## Examples
+
 ::: demo ./Basic
 
 Basic
@@ -60,23 +62,23 @@ Use `useBreakpoint` Hook provide personalized layout.
 
 ## Row API
 
-| Property | Description | Type | Optional Value | Default | Require |
-| --- | --- | --- | --- | --- | --- |
-| gutter | Content block gap (support responsive) | number &#x007c; object | >=0 | 0 | false |
-| wrap | Allow line wrap | boolean | - | false | false |
-| removeOnUnvisible | Do not render child `Col` when column is 0 | boolean | - | false | false |
-| justify | Grid left and right alignment (valid under `type=flex`) | string | start &#x007c; end &#x007c; center &#x007c; space-around &#x007c; space-between | — | false |
-| align | Grid up and down alignment (valid under `type=flex`) | string | top &#x007c; middle &#x007c; bottom | — | false |
-| children | `Col` Array | Col &#x007c; Col[] | - | - | true |
-| component | custom row tag | `ComponentType` | - | - | `div` |
+| Property | Description | Type | Default | Require |
+| --- | --- | --- | --- | --- |
+| gutter | Content block gap (support responsive) | number \| \{ xs?: number, sm?: number, md?: number, lg?: number, xl?: number, xxl?: number \} | 0 | false |
+| wrap | Allow line wrap | boolean | - | false |
+| removeOnUnvisible | Do not render child `Col` when column is 0 | boolean | false | false |
+| justify | Grid left and right alignment (valid under `type=flex`) | `start` \| `end` \| `center` \| `space-around` \| `space-between` | - | false |
+| align | Grid up and down alignment (valid under `type=flex`) | `top` \| `middle` \| `bottom` | - | false |
+| children | `Col` Array | Col \| Array\<Col\> | - | true |
+| component | custom row tag | React.ComponentType | - | `div` |
 
 ## Col API
 
-| Property | Description | Type | Optional Value | Default | Require |
-| --- | --- | --- | --- | --- | --- |
-| column | The number of columns occupied by the grid (support responsive) (**0 means hidden**) | number &#x007c; object | 0-24 | — | true |
-| offset | The number of interval columns on the left side of the grid (support responsive) | number &#x007c; object | 1-24 | — | false |
-| push | The number of columns to move the grid to the right (support responsive) | number &#x007c; object | 1-24 | — | false |
-| pull | The number of columns to move the grid to the left (support responsive) | number &#x007c; object | 1-24 | — | false |
-| order | Grid order, valid in flex layout mode (support responsive) | number &#x007c; object | 1-24 | — | false |
-| children | Child node | ReactNode | - | - | false |
+| Property | Description | Type | Default | Require |
+| --- | --- | --- | --- | --- |
+| column | The number of columns occupied by the grid (support responsive) (**0 means hidden**) | number \| \{ xs?: number, sm?: number, md?: number, lg?: number, xl?: number, xxl?: number \} | - | true |
+| offset | The number of interval columns on the left side of the grid (support responsive) | \{ xxs?: number, xs?: number, md?: number, xl?: number, xxl?: number \} | - | false |
+| push | The number of columns to move the grid to the right (support responsive) | \{ xxs?: number, xs?: number, md?: number, xl?: number, xxl?: number \} | - | false |
+| pull | The number of columns to move the grid to the left (support responsive) | \{ xxs?: number, xs?: number, md?: number, xl?: number, xxl?: number \} | - | false |
+| order | Grid order, valid in flex layout mode (support responsive) | \{ xxs?: number, xs?: number, md?: number, xl?: number, xxl?: number \} | - | false |
+| children | Child node | React.ReactNode | - | false |

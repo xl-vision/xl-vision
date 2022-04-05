@@ -6,6 +6,8 @@ The basic transition animation component, through which the transition state of 
 
 > When using this component, be sure to call the last callback function in `appear`, `enter`, `leave`, and `disappear` in time to indicate the end of the animation, otherwise the animation will be blocked in an intermediate state.
 
+## Examples
+
 :::demo ./Basic
 
 Basic
@@ -26,18 +28,18 @@ If `in=false`, the hooks of `beforeDisappear`, `disapper`, `afterDisappear`, and
 
 ## Transition API
 
-| Property | Description | Type | Optional Value | Default | Require |
-| --- | --- | --- | --- | --- | --- |
-| in | Trigger the entering and exiting animation, `true` means entering, `false` means leaving | boolean | - | — | true |
-| transitionOnFirst | Whether to trigger the first entry and exit hook function | boolean | - | false | false |
-| beforeEnter | Before enter hook | (el: HTMLElement, transitionOnFirst: boolean) => void | - | — |
-| enter | Enter hook | (el: HTMLElement, done: (() => void), isCancelled: () => boolean, transitionOnFirst: boolean) => void | - | — | false |
-| afterEnter | After enter hook | (el: HTMLElement, transitionOnFirst: boolean) => void | - | — | false |
-| enterCancelled | Enter cancelled hook | (el: HTMLElement, transitionOnFirst: boolean) => void | - | — | false |
-| beforeLeave | Before leave hook | (el: HTMLElement, transitionOnFirst: boolean) => void | - | — | false |
-| leave | Leave hook | (el: HTMLElement, done: (() => void), isCancelled: () => boolean, transitionOnFirst: boolean) => void | - | — | false |
-| afterLeave | After leave hook | (el: HTMLElement, transitionOnFirst: boolean) => void | - | — | false |
-| leaveCancelled | Leave cancelled hook | (el: HTMLElement, transitionOnFirst: boolean) => void | - | — | false |
-| children | Child node | React.ReactElement | - | — | true |
-| mountOnEnter | The child node is only mounted when the animation is entered for the first time, and subsequent components will always be mounted on the dom, even if the animation is performed, unless `unmountOnLeave` is also set | boolean | - | false | false |
-| unmountOnLeave | Unload the child node after the animation | boolean | - | false | false |
+| Property | Description | Type | Default | Require |
+| --- | --- | --- | --- | --- |
+| in | Trigger the entering and exiting animation, `true` means entering, `false` means leaving | boolean | - | true |
+| transitionOnFirst | Whether to trigger the first entry and exit hook function | boolean | - | false |
+| beforeEnter | Before enter hook | (el: HTMLElement, transitionOnFirst: boolean) => void | - | false |
+| enter | Enter hook | (el: HTMLElement, done: (() => void), isCancelled: () => boolean, transitionOnFirst: boolean) => void | - | false |
+| afterEnter | After enter hook | (el: HTMLElement, transitionOnFirst: boolean) => void | - | false |
+| enterCancelled | Enter cancelled hook | (el: HTMLElement, transitionOnFirst: boolean) => void | - | false |
+| beforeLeave | Before leave hook | (el: HTMLElement, transitionOnFirst: boolean) => void | - | false |
+| leave | Leave hook | (el: HTMLElement, done: (() => void), isCancelled: () => boolean, transitionOnFirst: boolean) => void | - | false |
+| afterLeave | After leave hook | (el: HTMLElement, transitionOnFirst: boolean) => void | - | false |
+| leaveCancelled | Leave cancelled hook | (el: HTMLElement, transitionOnFirst: boolean) => void | - | false |
+| children | Child node | React.ReactElement | - | true |
+| mountOnEnter | The child node is only mounted when the animation is entered for the first time, and subsequent components will always be mounted on the dom, even if the animation is performed, unless `unmountOnLeave` is also set | boolean | false | false |
+| unmountOnLeave | Unload the child node after the animation | boolean | false | false |

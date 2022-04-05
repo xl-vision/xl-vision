@@ -93,48 +93,6 @@ export const onTransitionEnd = (el: HTMLElement, done: () => void) => {
   return cancelCb;
 };
 
-export const raf = (fn: () => void) => {
-  if (env.isServer) {
-    fn();
-    return noop;
-  }
-  if (window.requestAnimationFrame) {
-    let id: number | undefined = window.requestAnimationFrame(fn);
-    return () => {
-      if (id) {
-        window.cancelAnimationFrame(id);
-      }
-      id = undefined;
-    };
-  }
-  let id: NodeJS.Timeout | undefined = setTimeout(fn, 16);
-  return () => {
-    if (id) {
-      clearTimeout(id);
-    }
-    id = undefined;
-  };
-};
-
-export const nextFrame = (fn: () => void) => {
-  let cancel = raf(() => {
-    cancel = raf(fn);
-  });
-
-  const doCancel = () => {
-    cancel();
-  };
-
-  return doCancel;
-};
-
-export const forceReflow = () => {
-  if (env.isBrowser) {
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    document.body.scrollHeight;
-  }
-};
-
 const _getTimeout = (_delays: Array<string>, durations: Array<string>) => {
   let delays = _delays;
   while (delays.length < durations.length) {

@@ -2,7 +2,7 @@
 import { mount } from 'enzyme';
 import React from 'react';
 import TransitionGroup from '..';
-import * as TransitionUtils from '../../utils/transition';
+import * as nextFrame from '../../utils/nextFrame';
 import { noop } from '../../utils/function';
 
 describe('TransitionGroup', () => {
@@ -24,7 +24,7 @@ describe('TransitionGroup', () => {
   });
 
   it('test hooks', () => {
-    const nextFrameSpy = jest.spyOn(TransitionUtils, 'nextFrame');
+    const nextFrameSpy = jest.spyOn(nextFrame, 'default');
     nextFrameSpy.mockImplementation((fn: () => void) => {
       fn();
       return noop;

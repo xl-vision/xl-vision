@@ -2,79 +2,92 @@
 const path = require('path');
 const fs = require('fs-extra');
 const { merge } = require('webpack-merge');
+const rehypePrism = require('@mapbox/rehype-prism');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
+const demoPlugin = require('./scripts/webpack/mdx/demoPlugin');
 
 /**
  * @type {import('next').NextConfig}
  */
-const nextConfig = {
-  compiler: {
-    styledComponents: true,
-  },
-  outputFileTracing: false,
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  i18n: {
-    locales: ['en-US', 'zh-CN'],
-    defaultLocale: 'en-US',
-  },
-  reactStrictMode: true,
-  webpack: (config, { defaultLoaders }) => {
-    const alias = resolvePackageAlias();
 
-    config = merge(config, {
-      resolve: {
-        alias: {
-          ...alias,
-          '@mdx-js/react': require.resolve('@mdx-js/react'),
-          react: path.resolve(__dirname, '../../node_modules/react'),
-          'react-dom': path.resolve(__dirname, '../../node_modules/react-dom'),
-          'styled-components': path.resolve(__dirname, '../../node_modules/styled-components'),
+module.exports = async () => {
+  const remarkGfm = (await import('remark-gfm')).default;
+  const remarkEmoji = (await import('remark-emoji')).default;
+
+  const nextConfig = {
+    compiler: {
+      styledComponents: true,
+    },
+    outputFileTracing: false,
+    eslint: {
+      ignoreDuringBuilds: true,
+    },
+    i18n: {
+      locales: ['en-US', 'zh-CN'],
+      defaultLocale: 'en-US',
+    },
+    reactStrictMode: true,
+    webpack: (config, { defaultLoaders }) => {
+      const alias = resolvePackageAlias();
+
+      config = merge(config, {
+        resolve: {
+          alias: {
+            ...alias,
+            '@mdx-js/react': require.resolve('@mdx-js/react'),
+            react: path.resolve(__dirname, '../../node_modules/react'),
+            'react-dom': path.resolve(__dirname, '../../node_modules/react-dom'),
+            'styled-components': path.resolve(__dirname, '../../node_modules/styled-components'),
+          },
         },
-      },
-      module: {
-        rules: [
-          {
-            test: /\.mdx?$/,
-            exclude: '/node_modules/',
-            oneOf: [
-              {
-                resourceQuery: /locale/,
-                use: [
-                  defaultLoaders.babel,
-                  {
-                    loader: require.resolve('./scripts/webpack/localeLoader'),
-                  },
-                ],
-              },
-              {
-                use: [
-                  defaultLoaders.babel,
-                  {
-                    loader: require.resolve('./scripts/webpack/mdLoader'),
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            test: /\.(tsx|ts|js|jsx)$/,
-            include: [path.join(__dirname, '../../packages')],
-            exclude: /node_module/,
-            use: defaultLoaders.babel,
-          },
-        ],
-      },
-    });
+        module: {
+          rules: [
+            {
+              test: /\.mdx?$/,
+              exclude: '/node_modules/',
+              oneOf: [
+                {
+                  resourceQuery: /locale/,
+                  use: [
+                    defaultLoaders.babel,
+                    {
+                      loader: require.resolve('./scripts/webpack/localeLoader'),
+                    },
+                  ],
+                },
+                {
+                  use: [
+                    defaultLoaders.babel,
+                    {
+                      loader: require.resolve('@mdx-js/loader'),
+                      /** @type {import('@mdx-js/loader').Options} */
+                      options: {
+                        providerImportSource: '@mdx-js/react',
+                        rehypePlugins: [rehypePrism],
+                        remarkPlugins: [remarkGfm, remarkEmoji, demoPlugin],
+                      },
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              test: /\.(tsx|ts|js|jsx)$/,
+              include: [path.join(__dirname, '../../packages')],
+              exclude: /node_module/,
+              use: defaultLoaders.babel,
+            },
+          ],
+        },
+      });
 
-    return config;
-  },
+      return config;
+    },
+  };
+  return withBundleAnalyzer(nextConfig);
 };
-
-module.exports = withBundleAnalyzer(nextConfig);
 
 function resolvePackageAlias() {
   const basePath = path.join(__dirname, '../../packages');

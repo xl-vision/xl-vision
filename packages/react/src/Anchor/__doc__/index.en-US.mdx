@@ -1,0 +1,57 @@
+# Anchor
+
+Used to jump to the specified location on the page.
+
+## Examples
+
+:::demo ./AffixEn
+
+Fixed position
+
+Anchor position can be fixed by setting `affix` and `offsetTop` or `offsetBottom`
+
+:::
+
+:::demo ./UnAffixEn
+
+Not fixed position
+
+It can also be displayed in an unfixed position.
+
+:::
+
+:::demo ./TargetOffsetEn
+
+Set offset
+
+The highlight is activated when the scroll offset of the anchor target is within the set offset of the container element.
+
+:::
+
+## Anchor API
+
+> When `affix` is enabled, the effect is the same as [Affix](/Affix)
+
+| Property | Description | Type | Default | Require |
+| --- | --- | --- | --- | --- |
+| affix | Whether to enable fixed mode | boolean | true | false |
+| affixTarget | The element referenced when fixed, the same as `scrollTarget` when not passed | Window \| HTMLElement \| (() => Window \| HTMLElement) | () => window | false |
+| scrollTarget | Container when scrolling, same as `scrollTarget` when not passed | Window \| HTMLElement \| (() => Window \| HTMLElement) | () => window | false |
+| offsetTop | Reference[Affix](/components/Affix) | number | - | false |
+| offsetBottom | Reference[Affix](/components/Affix) | number | - | false |
+| bounds | Anchor Region Boundary | number | 5 | false |
+| targetOffset | Anchor scroll offset | number | 0 | false |
+| onChange | Listen for anchor link changes | (currentActiveLink: string) => void | - | false |
+
+## Anchor Methods
+
+| Method   | Description                  | Type                         | Default |
+| -------- | ---------------------------- | ---------------------------- | ------- |
+| scrollTo | scroll to the specified link | (activeLink: string) => void | -       |
+
+## AnchorLink API
+
+| Property | Description | Type   | Default | Require |
+| -------- | ----------- | ------ | ------- | ------- |
+| title    | Title       | string | -       | true    |
+| href     | Anchor href | string | -       | true    |

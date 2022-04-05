@@ -2,15 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { styled, CollapseTransition, Button, Tooltip } from '@xl-vision/react';
 import { CodeOutlined, DownOutlined } from '@xl-vision/icons';
-import { env } from '@xl-vision/utils';
 import { useRouter } from 'next/router';
 import { useConstantFn } from '@xl-vision/hooks';
 import Code from './Code';
+import useIsDebugMode from '../../hooks/useIsDebugMode';
 
 export type DemoBoxProps = {
-  children: [React.ReactNode, React.ReactNode, React.ReactNode, React.ReactNode, React.ReactNode];
+  children: [React.ReactNode, React.ReactNode, React.ReactNode];
   jsCode: string;
+  // tsCode: string;
+  tsCodeNode: React.ReactNode;
+  jsCodeNode: React.ReactNode;
   debug?: boolean;
+  id?: string;
 };
 
 const Wrapper = styled('div')<{ debug: boolean }>(({ theme, styleProps }) => {
@@ -24,7 +28,7 @@ const Wrapper = styled('div')<{ debug: boolean }>(({ theme, styleProps }) => {
     border: `${styleSize.middle.border}px solid ${
       debug ? color.themes.error.color : color.divider
     }`,
-    margin: `8px 0`,
+    margin: `32px 0`,
   };
 });
 
@@ -101,8 +105,15 @@ const ExpandWrapper = styled(DownOutlined)<{ expand: boolean }>(({ theme, styleP
   };
 });
 
-const DemoBox: React.FunctionComponent<DemoBoxProps> = ({ children, jsCode, debug = false }) => {
-  const [title, desc, tsCodeNode, jsCodeNode, preview] = children;
+const DemoBox: React.FunctionComponent<DemoBoxProps> = ({
+  id,
+  jsCodeNode,
+  tsCodeNode,
+  children,
+  jsCode,
+  debug = false,
+}) => {
+  const [titleNode, descNode, preview] = children;
 
   const router = useRouter();
 
@@ -123,16 +134,18 @@ const DemoBox: React.FunctionComponent<DemoBoxProps> = ({ children, jsCode, debu
     setExpand((prev) => !prev);
   }, []);
 
-  if (debug && !env.isDevelopment && !('debug' in router.query)) {
+  const isDebugMode = useIsDebugMode();
+
+  if (debug && !isDebugMode) {
     return null;
   }
 
   return (
-    <Wrapper styleProps={{ debug }}>
+    <Wrapper styleProps={{ debug }} id={id}>
       <Preview>{preview}</Preview>
       <InfoWrapper styleProps={{ debug }}>
-        <TitleWrapper>{title}</TitleWrapper>
-        <DescWrapper>{desc}</DescWrapper>
+        <TitleWrapper>{titleNode}</TitleWrapper>
+        <DescWrapper>{descNode}</DescWrapper>
         <ButtonWrapper>
           <Tooltip content='Playground'>
             <Button

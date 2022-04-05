@@ -1,5 +1,9 @@
 # TextArea
 
+For multi-line input.
+
+## Examples
+
 ::: demo ./Basic
 
 Basic
@@ -42,13 +46,13 @@ debug
 
 # TextArea API
 
-| Property | Description | Type | Optional Value | Default | Require |
-| --- | --- | --- | --- | --- | --- |
-| onChange | value change event | function | - | - | false |
-| value | value | string | - | - | false |
-| defaultValue | default value | string | - | - | false |
-| showCount | show value length count | boolean | - | - | false |
-| allowClear | show icon for clear value | boolean | - | - | false |
-| size | size | middle &#x007c; large &#x007c; small | - | middle | false |
-| maxLength | value max length | number | - | - | false |
-| autoHeight | auto justify height according to content | boolean &#x007c; {minRows?: number, maxRows?: number} | - | - | false |
+| Property | Description | Type | Default | Require |
+| --- | --- | --- | --- | --- |
+| onChange | value change event | (value: string) => void | - | false |
+| value | value | string | - | false |
+| defaultValue | default value | string | - | false |
+| showCount | show value length count | boolean | - | false |
+| allowClear | show icon for clear value | boolean | - | false |
+| size | size | `middle` \| `large` \| `small` | `middle` | false |
+| maxLength | value max length | number | - | false |
+| autoHeight | auto justify height according to content | boolean \| \{ minRows?: number, maxRows?: number \} | - | false |

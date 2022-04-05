@@ -1,5 +1,9 @@
 # Modal
 
+Base modal
+
+## Examples
+
 :::demo ./Basic
 
 Basic
@@ -50,16 +54,16 @@ Support the focus of the internal Popper element. Note that the Popper is actual
 
 ## Modal API
 
-| Property | Description | Type | Optional Value | Default | Require |
-| --- | --- | --- | --- | --- | --- |
-| container | Specify the parent container of the modal | string &#x007c; HTMLElement &#x007c; (() => string &#x007c; HTMLElement) | - | - | false |
-| defaultVisible | Whether the default modal is displayed, when `visible` exists, the option is invalid | boolean | - | false | false |
-| onVisibleChange | Callback when the status of the modal changes | (visible: boolean) => void | - | - | false |
-| visible | Whether to show modal | boolean | - | - | false |
-| unmountOnHide | Destroy dom when close modal | boolean | - | - | false |
-| mountOnShow | Mount dom when open modal | boolean | - | true | false |
-| mask | Whether show modal layer | boolean | - | true | false |
-| maskClosable | Whether close modal when click mask layer | boolean | - | true | false |
-| escClosable | Whether close modal when press key esc | boolean | - | true | false |
-| wrapperClassName | Modal wrapper className | string | - | - | false |
-| onAfterClosed | The hook when modal closed. At this time, modal animation ends too | ()=>void | - | - | false |
+| Property | Description | Type | Default | Require |
+| --- | --- | --- | --- | --- |
+| container | Specify the parent container of the modal | string \| HTMLElement \| (() => string \| HTMLElement) | - | false |
+| defaultVisible | Whether the default modal is displayed, when `visible` exists, the option is invalid | boolean | false | false |
+| onVisibleChange | Callback when the status of the modal changes | (visible: boolean) => void | - | false |
+| visible | Whether to show modal | boolean | - | false |
+| unmountOnHide | Destroy dom when close modal | boolean | - | false |
+| mountOnShow | Mount dom when open modal | boolean | true | false |
+| mask | Whether show modal layer | boolean | true | false |
+| maskClosable | Whether close modal when click mask layer | boolean | true | false |
+| escClosable | Whether close modal when press key esc | boolean | true | false |
+| wrapperClassName | Modal wrapper className | string | - | false |
+| onAfterClosed | The hook when modal closed. At this time, modal animation ends too | () => void | - | false |
