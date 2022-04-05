@@ -19,7 +19,7 @@ on:
 
 jobs:
   analyze:
-    name: analyze
+    name: codeql-analyze
     runs-on: ubuntu-latest
     steps:
       - name: checkout
