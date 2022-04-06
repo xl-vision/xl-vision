@@ -1,6 +1,6 @@
 {
   "name": "@xl-vision/utils",
-  "version": "0.1.1-alpha.17",
+  "version": "0.1.1-alpha.18",
   "description": "xl-vision useful utilities.",
   "author": "Rhys Xia <xrs4433@outlook.com>",
   "license": "MIT",
@@ -23,8 +23,8 @@
     "directory": "packages/utils"
   },
   "scripts": {
-    "build:legacy": "node ../../scripts/build legacy",
-    "build:modern": "node ../../scripts/build modern",
+    "build:legacy": "node ../../scripts/compile legacy",
+    "build:modern": "node ../../scripts/compile modern",
     "build": "npm run build:legacy && npm run build:modern",
     "prepublishOnly": "npm run build"
   },
