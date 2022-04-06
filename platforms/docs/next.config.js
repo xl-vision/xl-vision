@@ -8,14 +8,13 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 });
 const demoPlugin = require('./scripts/webpack/mdx/demoPlugin');
 
-/**
- * @type {import('next').NextConfig}
- */
-
 module.exports = async () => {
   const remarkGfm = (await import('remark-gfm')).default;
   const remarkEmoji = (await import('remark-emoji')).default;
 
+  /**
+   * @type {import('next').NextConfig}
+   */
   const nextConfig = {
     compiler: {
       styledComponents: true,
