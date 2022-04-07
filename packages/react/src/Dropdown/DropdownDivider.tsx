@@ -5,7 +5,7 @@ import { isProduction } from '@xl-vision/utils';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 
-export interface DropdownDividerProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type DropdownDividerProps = React.HTMLAttributes<HTMLDivElement>;
 
 const displayName = 'DropdownDivider';
 

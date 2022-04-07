@@ -165,6 +165,7 @@ const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
         <span className={`${rootClassName}__title`}>{title}</span>
       </div>
       <div className={`${rootClassName}__footer`}>
+        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
         {/** @ts-ignore */}
         <Button
           style={{ minWidth: 0 }}
@@ -176,6 +177,7 @@ const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
         >
           {cancelText}
         </Button>
+        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
         {/** @ts-ignore */}
         <Button
           style={{ minWidth: 0 }}

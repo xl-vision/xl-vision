@@ -6,6 +6,7 @@ import { useConstantFn } from '@xl-vision/hooks';
 import { useRouter } from 'next/router';
 import Cookie from 'js-cookie';
 import { alpha } from '@xl-vision/react/utils/color';
+import { noop } from '@xl-vision/utils';
 import LightTheme from './LightTheme';
 import DarkTheme from './DarkTheme';
 import Translate from './Translate';
@@ -138,7 +139,7 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
 
   const handleLangChange = useConstantFn((lang: string) => {
     const { pathname, asPath, query } = router;
-    router.push({ pathname, query }, asPath, { locale: lang }).catch(() => {});
+    router.push({ pathname, query }, asPath, { locale: lang }).catch(noop);
     Cookie.set('NEXT_LOCALE', lang, { expires: 30, sameSite: 'Strict' });
   });
 

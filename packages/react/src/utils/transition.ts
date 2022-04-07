@@ -31,8 +31,7 @@ export const getTransitionInfo = (el: HTMLElement) => {
 
   const timeout = Math.max(transitionTimeout, animationTimeout);
 
-  const type =
-    timeout > 0 ? (transitionTimeout > animationTimeout ? TRANSITION_NAME : ANIMATION_NAME) : null;
+  const type = transitionTimeout > animationTimeout ? TRANSITION_NAME : ANIMATION_NAME;
   const durationCount = type
     ? type === TRANSITION_NAME
       ? transitionDurations.length
@@ -59,7 +58,7 @@ export const onTransitionEnd = (el: HTMLElement, done: () => void) => {
     return noop;
   }
 
-  const eventName = `${type!}end`;
+  const eventName = `${type}end`;
 
   let count = 0;
 

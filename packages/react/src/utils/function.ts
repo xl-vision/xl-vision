@@ -24,7 +24,7 @@ export const functionMerge = <Fn extends (...args: Array<any>) => any>(
   };
 };
 
-export const isPlainObject = (item: unknown): item is Record<keyof any, unknown> => {
+export const isPlainObject = (item: unknown): item is Record<PropertyKey, unknown> => {
   return (
     item !== null &&
     typeof item === 'object' &&
@@ -53,9 +53,13 @@ export const deepMerge = <T>(
 
       if (isPlainObject(source[key]) && key in target && isPlainObject(target[key])) {
         // Since `output` is a clone of `target` and we have narrowed `target` in this block we can cast to the same type.
-        (output as Record<keyof any, unknown>)[key] = deepMerge(target[key], source[key], options);
+        (output as Record<PropertyKey, unknown>)[key] = deepMerge(
+          target[key],
+          source[key],
+          options,
+        );
       } else {
-        (output as Record<keyof any, unknown>)[key] = source[key];
+        (output as Record<PropertyKey, unknown>)[key] = source[key];
       }
     });
   }

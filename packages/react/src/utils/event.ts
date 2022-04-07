@@ -25,7 +25,7 @@ export type Listener<T extends EventObject, K extends keyof EventMap<T>> = (
   this: T,
   ev: EventType<T, K>,
   options?: boolean | AddEventListenerOptions,
-) => any;
+) => void;
 
 export const on = <E extends EventObject, K extends keyof EventMap<E>>(
   element: E,

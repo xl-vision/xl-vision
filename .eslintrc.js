@@ -131,8 +131,8 @@ module.exports = {
       },
       extends: [
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
+        'plugin:@typescript-eslint/recommended',
         'plugin:import/typescript',
-        // 'plugin:@typescript-eslint/recommended',
       ],
       rules: {
         'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx'] }],
@@ -161,7 +161,17 @@ module.exports = {
         '@typescript-eslint/no-unused-expressions': 'error',
         'no-shadow': 'off',
         '@typescript-eslint/no-shadow': ['error'],
-        '@typescript-eslint/no-empty-function': ['error'],
+        '@typescript-eslint/ban-types': [
+          'error',
+          {
+            extendDefaults: true,
+            types: {
+              '{}': false,
+            },
+          },
+        ],
+        '@typescript-eslint/no-explicit-any': ['off'],
+        '@typescript-eslint/no-non-null-assertion': 'off',
       },
     },
     {

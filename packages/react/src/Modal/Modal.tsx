@@ -189,7 +189,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     let node = getContainer(containerProp);
 
     if (node == null) {
-      node = modalRef.current?.parentElement!;
+      node = modalRef.current!.parentElement!;
       warning(!node, `<Modal> parentElement is undefined`);
     }
 
@@ -266,8 +266,6 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     setZIndex(increaseZindex());
     scrollLockerRef.current?.lock();
   }, [visible]);
-
-  React.useEffect(() => {});
 
   const rootClassName = `${clsPrefix}-modal`;
 

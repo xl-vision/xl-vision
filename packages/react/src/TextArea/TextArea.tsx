@@ -338,6 +338,7 @@ if (!isProduction) {
     disabled: PropTypes.bool,
     readOnly: PropTypes.bool,
     // TODO [2022-05-01]: types fix
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     autoHeight: PropTypes.oneOfType([
       PropTypes.bool.isRequired,

@@ -9,8 +9,10 @@ export interface MessageDialogFunctionRenderProps extends MessageDialogProps, Me
   themeProviderProps?: Omit<ThemeProviderProps, 'children'>;
   configProviderProps?: Omit<ConfigProviderProps, 'children'>;
 }
-export interface MessageDialogFunctionProps
-  extends Omit<MessageDialogFunctionRenderProps, 'visible' | 'defaultVisible'> {}
+export type MessageDialogFunctionProps = Omit<
+  MessageDialogFunctionRenderProps,
+  'visible' | 'defaultVisible'
+>;
 
 export type MessageDialogFunctionUpdate = (
   props:

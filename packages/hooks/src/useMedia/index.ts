@@ -1,7 +1,7 @@
 import { isBrowser } from '@xl-vision/utils';
 import { useEffect, useState } from 'react';
 
-const useMedia = (query: string, defaultState: boolean = false) => {
+const useMedia = (query: string, defaultState = false) => {
   const [state, setState] = useState(
     isBrowser ? () => window.matchMedia(query).matches : defaultState,
   );

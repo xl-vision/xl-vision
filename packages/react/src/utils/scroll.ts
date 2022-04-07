@@ -25,7 +25,7 @@ type ScrollToOptions = {
   /** Scroll container, default as window */
   container?: HTMLElement | Window | Document;
   /** Scroll end callback */
-  callback?: () => any;
+  callback?: () => void;
   /** Animation duration, default as 450 */
   duration?: number;
 };
