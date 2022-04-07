@@ -1,6 +1,5 @@
-import { isServer, isWindow } from '@xl-vision/utils';
+import { isServer, isWindow, raf } from '@xl-vision/utils';
 import { easeInOutCubic } from './easings';
-import raf from './raf';
 
 export const getScroll = (target: HTMLElement | Window | Document | null, top: boolean): number => {
   if (isServer || !target) {

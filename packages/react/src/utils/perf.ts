@@ -1,4 +1,4 @@
-import raf from './raf';
+import { raf } from '@xl-vision/utils';
 
 // eslint-disable-next-line import/prefer-default-export
 export const throttleByAnimationFrame = <Fn extends (...args: Array<any>) => any>(fn: Fn) => {

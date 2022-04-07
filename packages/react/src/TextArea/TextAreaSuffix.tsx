@@ -1,11 +1,10 @@
 import { useConstantFn, useUnmount } from '@xl-vision/hooks';
 import React from 'react';
 import clsx from 'clsx';
-import { isProduction } from '@xl-vision/utils';
+import { isProduction, raf } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { useTheme } from '../ThemeProvider';
 import ResizeObserver from '../ResizeObserver';
-import raf from '../utils/raf';
 
 export type TextAreaSuffixProps = React.HTMLAttributes<HTMLSpanElement> & {
   value?: string;

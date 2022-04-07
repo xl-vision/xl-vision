@@ -1,4 +1,4 @@
-import raf from './raf';
+import { raf } from '@xl-vision/utils';
 
 export default (fn: () => void) => {
   let cancel = raf(() => {
