@@ -161,6 +161,7 @@ module.exports = {
         '@typescript-eslint/no-unused-expressions': 'error',
         'no-shadow': 'off',
         '@typescript-eslint/no-shadow': ['error'],
+        '@typescript-eslint/no-empty-function': ['error'],
       },
     },
     {
