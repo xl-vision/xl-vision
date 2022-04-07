@@ -64,7 +64,7 @@ module.exports = {
         devDependencies: ['scripts/**', './.*.js'],
       },
     ],
-    'import/no-unresolved': ['error'],
+    'import/no-unresolved': 'error',
     // Strict, airbnb is using warn; allow warn and error for dev environments
     'no-console': ['error', { allow: ['warn', 'error'] }],
     'nonblock-statement-body-position': 'error',
@@ -160,7 +160,7 @@ module.exports = {
         'no-unused-expressions': 'off',
         '@typescript-eslint/no-unused-expressions': 'error',
         'no-shadow': 'off',
-        '@typescript-eslint/no-shadow': ['error'],
+        '@typescript-eslint/no-shadow': 'error',
         '@typescript-eslint/ban-types': [
           'error',
           {
@@ -170,7 +170,7 @@ module.exports = {
             },
           },
         ],
-        '@typescript-eslint/no-explicit-any': ['off'],
+        '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
       },
     },
@@ -194,7 +194,6 @@ module.exports = {
         'import/no-extraneous-dependencies': 'off',
         'import/no-named-as-default': 'off',
         'unicorn/consistent-function-scoping': 'off',
-        'no-console': 'off',
         'import/no-relative-packages': 'off',
       },
     },
@@ -202,6 +201,12 @@ module.exports = {
       files: ['test/__test__/**', 'packages/**/__test__/**'],
       rules: {
         'react/jsx-handler-names': 'off',
+      },
+    },
+    {
+      files: ['packages/**/__doc__/**'],
+      rules: {
+        'no-console': 'off',
       },
     },
   ],
