@@ -1,5 +1,4 @@
-import { isServer } from '@xl-vision/utils';
-import warning from './warning';
+import { isServer, warning } from '@xl-vision/utils';
 
 export type ContainerReturnType<E extends Element = Element> = E | string | undefined | null;
 export type ContainerType<E extends Element = Element> =

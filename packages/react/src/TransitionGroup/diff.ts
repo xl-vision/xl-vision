@@ -1,4 +1,4 @@
-import warning from '../utils/warning';
+import { warning } from '@xl-vision/utils';
 
 export type DiffData = {
   prev: Array<React.ReactElement>;

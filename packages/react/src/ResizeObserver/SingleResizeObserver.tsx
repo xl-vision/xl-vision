@@ -5,10 +5,9 @@ import {
   useForkRef,
   useResizeObserver,
 } from '@xl-vision/hooks';
-import { isProduction } from '@xl-vision/utils';
+import { isProduction, warning } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { supportRef } from '../utils/ref';
-import warning from '../utils/warning';
 
 export type SingleResizeObserverProps = {
   children: React.ReactElement;

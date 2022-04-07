@@ -1,5 +1,4 @@
-import { isServer } from '@xl-vision/utils';
-import { noop } from './function';
+import { isServer, noop } from '@xl-vision/utils';
 
 export default (fn: () => void) => {
   if (isServer) {

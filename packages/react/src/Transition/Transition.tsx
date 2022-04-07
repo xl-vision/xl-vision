@@ -1,11 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { isProduction } from '@xl-vision/utils';
+import { isProduction, warning } from '@xl-vision/utils';
 import { useConstantFn, useLayoutEffect, useForkRef } from '@xl-vision/hooks';
 import useLifecycleState, { LifecycleState } from '../hooks/useLifecycleState';
 import findDomNode from '../utils/findDomNode';
-import warning from '../utils/warning';
 import { supportRef } from '../utils/ref';
 
 enum TransitionState {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { noop } from '../utils/function';
+import { noop } from '@xl-vision/utils';
 
 export type AnchorContextProps = {
   registerLink: (link: string) => void;

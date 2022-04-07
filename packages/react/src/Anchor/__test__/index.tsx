@@ -2,8 +2,8 @@ import React from 'react';
 import { Anchor } from '@xl-vision/react';
 import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
+import { noop } from '@xl-vision/utils';
 import * as perf from '../../utils/perf';
-import { noop } from '../../utils/function';
 import wait from '../../../../../test/wait';
 
 describe('Anchor', () => {

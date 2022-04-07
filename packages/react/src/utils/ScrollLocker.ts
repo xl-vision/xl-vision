@@ -1,5 +1,5 @@
+import { warning } from '@xl-vision/utils';
 import getScrollbarSize from './getScrollbarSize';
-import warning from './warning';
 
 export type ScrollLockerOptions = {
   getContainer?: () => HTMLElement;

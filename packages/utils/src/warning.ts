@@ -1,5 +1,5 @@
-import { isProduction } from '@xl-vision/utils';
-import { noop } from './function';
+import { isProduction } from './env';
+import noop from './noop';
 
 export default !isProduction
   ? (condition: boolean, format: string, ...args: Array<string>) => {

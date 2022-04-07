@@ -1,5 +1,3 @@
-export const noop = () => {};
-
 export const oneOf = <T>(array: Array<T>, item: T) => {
   return array.indexOf(item) > -1;
 };

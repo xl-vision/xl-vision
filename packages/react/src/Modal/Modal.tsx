@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { isBrowser, isProduction, isServer } from '@xl-vision/utils';
+import { isBrowser, isProduction, isServer, warning } from '@xl-vision/utils';
 import { useForkRef } from '@xl-vision/hooks';
 import Portal, { PortalContainerType } from '../Portal';
 import usePropChange from '../hooks/usePropChange';
@@ -13,7 +13,6 @@ import { forceReflow, contains } from '../utils/dom';
 import ScrollLocker from '../utils/ScrollLocker';
 import { useTheme } from '../ThemeProvider';
 import getContainer from '../utils/getContainer';
-import warning from '../utils/warning';
 
 export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   container?: PortalContainerType<HTMLElement>;

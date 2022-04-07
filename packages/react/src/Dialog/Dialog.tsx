@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import Proptypes from 'prop-types';
-import { isProduction } from '@xl-vision/utils';
+import { isProduction, noop } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
 import Modal, { ModalProps } from '../Modal';
 import ThemeContext from '../ThemeProvider/ThemeContext';
@@ -9,7 +9,6 @@ import { styled } from '../styles';
 import Button, { ButtonProps } from '../Button';
 import usePropChange from '../hooks/usePropChange';
 import { useConfig } from '../ConfigProvider';
-import { noop } from '../utils/function';
 
 export type DialogButtonProps = Omit<ButtonProps, 'children' | 'onClick'>;
 

@@ -6,12 +6,14 @@ const usePopper = () => {
   const popperRef = useRef<HTMLElement | null>();
 
   if (isProduction) {
+    // eslint-disable-next-line no-console
     console.log(1);
   }
 
   const update = useCallback(() => {
     if (!referenceRef.current || !popperRef) {
-      return;
+      // eslint-disable-next-line no-console
+      console.log(1);
     }
   }, []);
 

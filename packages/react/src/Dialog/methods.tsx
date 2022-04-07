@@ -1,9 +1,7 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import { isServer } from '@xl-vision/utils';
+import { isServer, noop, warning as warningLog } from '@xl-vision/utils';
 import createMessageDialog, { MessageDialogType, MessageDialogProps } from './message';
-import { noop } from '../utils/function';
-import warningLog from '../utils/warning';
 import ThemeProvider, { ThemeProviderProps } from '../ThemeProvider';
 import ConfigProvider, { ConfigProviderProps } from '../ConfigProvider';
 

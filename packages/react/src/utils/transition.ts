@@ -1,5 +1,4 @@
-import { isBrowser } from '@xl-vision/utils';
-import { noop } from './function';
+import { isBrowser, noop } from '@xl-vision/utils';
 
 let TRANSITION_NAME = 'transition';
 let ANIMATION_NAME = 'animation';

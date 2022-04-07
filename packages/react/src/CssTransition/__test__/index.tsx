@@ -2,7 +2,7 @@
 import { mount } from 'enzyme';
 import React from 'react';
 import { CssTransition, CssTransitionClasses } from '@xl-vision/react';
-import { noop } from '@xl-vision/react/utils/function';
+import { noop } from '@xl-vision/utils';
 import * as TransitionUtils from '../../utils/transition';
 import * as nextFrame from '../../utils/nextFrame';
 
