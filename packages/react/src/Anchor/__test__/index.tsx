@@ -17,8 +17,7 @@ describe('Anchor', () => {
     const throttleByAnimationFrameSpy = jest.spyOn(perf, 'throttleByAnimationFrame');
 
     throttleByAnimationFrameSpy.mockImplementation((fn) => {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      const cb = fn as any;
+      const cb: any = fn;
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       cb.cancel = noop;
       // eslint-disable-next-line @typescript-eslint/no-unsafe-return
