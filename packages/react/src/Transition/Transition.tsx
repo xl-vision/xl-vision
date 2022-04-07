@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { env } from '@xl-vision/utils';
+import { isProduction } from '@xl-vision/utils';
 import { useConstantFn, useLayoutEffect, useForkRef } from '@xl-vision/hooks';
 import useLifecycleState, { LifecycleState } from '../hooks/useLifecycleState';
 import findDomNode from '../utils/findDomNode';
@@ -206,7 +206,7 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
   });
 };
 
-if (!env.isProduction) {
+if (!isProduction) {
   Transition.displayName = displayName;
 
   Transition.propTypes = {

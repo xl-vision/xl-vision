@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { LoadingOutlined } from '@xl-vision/icons';
 import { keyframes, CSSObject } from '@xl-vision/styled-engine';
-import { env } from '@xl-vision/utils';
+import { isProduction } from '@xl-vision/utils';
 import BaseButton, { BaseButtonProps } from '../BaseButton';
 import { styled } from '../styles';
 import { ThemeColors } from '../ThemeProvider/color/themeColor';
@@ -338,7 +338,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
   );
 });
 
-if (!env.isProduction) {
+if (!isProduction) {
   Button.displayName = displayName;
 
   Button.propTypes = {

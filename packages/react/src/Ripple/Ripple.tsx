@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { env } from '@xl-vision/utils';
+import { isProduction } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
 import TransitionGroup, { TransitionGroupClasses } from '../TransitionGroup';
 import { styled } from '../styles';
@@ -210,7 +210,7 @@ const Ripple = React.forwardRef<RippleRef, RippleProps>((props, ref) => {
   );
 });
 
-if (!env.isProduction) {
+if (!isProduction) {
   Ripple.displayName = displayName;
 
   Ripple.propTypes = {

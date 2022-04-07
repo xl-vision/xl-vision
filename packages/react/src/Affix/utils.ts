@@ -1,5 +1,5 @@
+import { isWindow } from '@xl-vision/utils';
 import { EventMap, off, on } from '../utils/event';
-import isWindow from '../utils/isWindow';
 
 export type DOMVerticalDistance = {
   top: number;

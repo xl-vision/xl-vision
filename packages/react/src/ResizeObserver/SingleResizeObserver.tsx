@@ -5,7 +5,7 @@ import {
   useForkRef,
   useResizeObserver,
 } from '@xl-vision/hooks';
-import { env } from '@xl-vision/utils';
+import { isProduction } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { supportRef } from '../utils/ref';
 import warning from '../utils/warning';
@@ -38,7 +38,7 @@ const SingleResizeObserver = React.forwardRef<unknown, SingleResizeObserverProps
   });
 });
 
-if (!env.isProduction) {
+if (!isProduction) {
   SingleResizeObserver.displayName = displayName;
   SingleResizeObserver.propTypes = {
     children: PropTypes.element.isRequired,

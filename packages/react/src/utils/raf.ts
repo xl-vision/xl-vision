@@ -1,8 +1,8 @@
-import { env } from '@xl-vision/utils';
+import { isServer } from '@xl-vision/utils';
 import { noop } from './function';
 
 export default (fn: () => void) => {
-  if (env.isServer) {
+  if (isServer) {
     fn();
     return noop;
   }

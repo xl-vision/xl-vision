@@ -1,4 +1,4 @@
-import { env } from '@xl-vision/utils';
+import { isBrowser } from '@xl-vision/utils';
 
 export const contains = (parent: Element, child: Element | null) => {
   if (parent.contains) {
@@ -15,7 +15,7 @@ export const contains = (parent: Element, child: Element | null) => {
 };
 
 export const forceReflow = () => {
-  if (env.isBrowser) {
+  if (isBrowser) {
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     document.body.scrollHeight;
   }

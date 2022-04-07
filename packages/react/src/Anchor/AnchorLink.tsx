@@ -1,4 +1,4 @@
-import { env } from '@xl-vision/utils';
+import { isProduction } from '@xl-vision/utils';
 import React from 'react';
 import { useConstantFn } from '@xl-vision/hooks';
 import clsx from 'clsx';
@@ -99,7 +99,7 @@ const AnchorLink = React.forwardRef<HTMLDivElement, AnchorLinkProps>((props, ref
   );
 });
 
-if (!env.isProduction) {
+if (!isProduction) {
   AnchorLink.displayName = displayName;
   AnchorLink.propTypes = {
     title: PropTypes.string.isRequired,

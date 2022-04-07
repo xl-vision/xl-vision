@@ -1,4 +1,4 @@
-import { env } from '@xl-vision/utils';
+import { isProduction } from '@xl-vision/utils';
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
@@ -326,7 +326,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
   );
 });
 
-if (env.isDevelopment) {
+if (!isProduction) {
   TextArea.displayName = displayName;
   TextArea.propTypes = {
     value: PropTypes.string,

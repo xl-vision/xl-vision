@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { env } from '@xl-vision/utils';
+import { isProduction, isServer } from '@xl-vision/utils';
 import Popper, { PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
@@ -152,7 +152,7 @@ const Popover = React.forwardRef<unknown, PopoverProps>((props, ref) => {
   );
 });
 
-if (!env.isProduction) {
+if (!isProduction) {
   Popover.displayName = displayName;
 
   const triggerPropType = PropTypes.oneOf<PopperTrigger>([
@@ -169,7 +169,7 @@ if (!env.isProduction) {
     popupContainer: PropTypes.oneOfType([
       PropTypes.func,
       PropTypes.string,
-      env.isServer ? PropTypes.any : PropTypes.instanceOf(Element),
+      isServer ? PropTypes.any : PropTypes.instanceOf(Element),
     ]),
     className: PropTypes.string,
     transitionClassName: PropTypes.string,

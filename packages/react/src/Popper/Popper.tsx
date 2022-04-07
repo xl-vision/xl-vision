@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Instance, Placement, createPopper, Modifier } from '@popperjs/core';
 import clsx from 'clsx';
-import { env } from '@xl-vision/utils';
+import { isProduction, isServer } from '@xl-vision/utils';
 import { useForkRef, useConstantFn } from '@xl-vision/hooks';
 import CssTransition, { CssTransitionElement, CssTransitionProps } from '../CssTransition';
 import Portal, { PortalContainerType } from '../Portal';
@@ -507,7 +507,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
   );
 });
 
-if (!env.isProduction) {
+if (!isProduction) {
   Popper.displayName = displayName;
 
   const triggerPropType = PropTypes.oneOf<PopperTrigger>([
@@ -526,7 +526,7 @@ if (!env.isProduction) {
     popupContainer: PropTypes.oneOfType([
       PropTypes.func,
       PropTypes.string,
-      env.isServer ? PropTypes.any : PropTypes.instanceOf(Element),
+      isServer ? PropTypes.any : PropTypes.instanceOf(Element),
     ]),
     transitionClasses: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     trigger: PropTypes.oneOfType([triggerPropType, PropTypes.arrayOf(triggerPropType)]),

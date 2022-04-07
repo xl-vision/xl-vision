@@ -1,6 +1,6 @@
 import { useConstantFn } from '@xl-vision/hooks';
 import { VerticalAlignTopOutlined } from '@xl-vision/icons';
-import { env } from '@xl-vision/utils';
+import { isProduction, isServer } from '@xl-vision/utils';
 import clsx from 'clsx';
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -168,18 +168,18 @@ const BackTop = React.forwardRef<HTMLDivElement, BackTopProps>((props, ref) => {
   return <Portal container={containerProp}>{node}</Portal>;
 });
 
-if (!env.isProduction) {
+if (!isProduction) {
   BackTop.displayName = displayName;
   BackTop.propTypes = {
     target: PropTypes.oneOfType([
       PropTypes.func,
-      ...(env.isServer
+      ...(isServer
         ? [PropTypes.any]
         : [PropTypes.instanceOf(Window), PropTypes.instanceOf(HTMLElement)]),
     ]),
     container: PropTypes.oneOfType([
       PropTypes.func,
-      ...(env.isServer ? [PropTypes.any] : [PropTypes.instanceOf(Element)]),
+      ...(isServer ? [PropTypes.any] : [PropTypes.instanceOf(Element)]),
     ]),
     bottom: PropTypes.number,
     right: PropTypes.number,

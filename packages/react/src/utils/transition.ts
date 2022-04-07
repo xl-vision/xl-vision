@@ -1,10 +1,10 @@
-import { env } from '@xl-vision/utils';
+import { isBrowser } from '@xl-vision/utils';
 import { noop } from './function';
 
 let TRANSITION_NAME = 'transition';
 let ANIMATION_NAME = 'animation';
 
-if (env.isBrowser) {
+if (isBrowser) {
   if (!('ontransitionend' in window) && 'onwebkittransitionend' in window) {
     TRANSITION_NAME = 'webkitTransition';
   }

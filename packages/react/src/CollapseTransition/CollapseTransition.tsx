@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { env } from '@xl-vision/utils';
+import { isProduction } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
 import CssTransition, { CssTransitionProps, CssTransitionElement } from '../CssTransition';
 import { forceReflow } from '../utils/dom';
@@ -206,7 +206,7 @@ const CollapseTransition: React.FunctionComponent<CollapseTransitionProp> = (pro
   );
 };
 
-if (!env.isProduction) {
+if (!isProduction) {
   CollapseTransition.displayName = 'CollapseTransition';
 
   CollapseTransition.propTypes = {

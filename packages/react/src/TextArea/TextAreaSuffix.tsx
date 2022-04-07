@@ -1,7 +1,7 @@
 import { useConstantFn, useUnmount } from '@xl-vision/hooks';
 import React from 'react';
 import clsx from 'clsx';
-import { env } from '@xl-vision/utils';
+import { isProduction } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { useTheme } from '../ThemeProvider';
 import ResizeObserver from '../ResizeObserver';
@@ -76,7 +76,7 @@ const TextAreaSuffix: React.FunctionComponent<TextAreaSuffixProps> = (props) => 
   );
 };
 
-if (env.isDevelopment) {
+if (!isProduction) {
   TextAreaSuffix.displayName = displayName;
   TextAreaSuffix.propTypes = {
     className: PropTypes.string,

@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import { env } from '@xl-vision/utils';
+import { isServer } from '@xl-vision/utils';
 import createMessageDialog, { MessageDialogType, MessageDialogProps } from './message';
 import { noop } from '../utils/function';
 import warningLog from '../utils/warning';
@@ -31,7 +31,7 @@ const method = (
   props: MessageDialogFunctionProps,
   type?: MessageDialogType,
 ): MessageDialogFunctionReturnType => {
-  if (env.isServer) {
+  if (isServer) {
     return {
       destroy: noop,
       update: noop,

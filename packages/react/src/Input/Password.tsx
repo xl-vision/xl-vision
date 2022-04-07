@@ -1,5 +1,5 @@
 import { EyeInvisibleOutlined, EyeOutlined } from '@xl-vision/icons';
-import { env } from '@xl-vision/utils';
+import { isProduction } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -64,7 +64,7 @@ const Password = React.forwardRef<HTMLSpanElement, PasswordProps>((props, ref) =
   return <Input {...others} type={type} ref={ref} suffix={suffix} />;
 });
 
-if (env.isDevelopment) {
+if (!isProduction) {
   Password.displayName = displayName;
   Password.propTypes = {
     renderIcon: PropTypes.func,

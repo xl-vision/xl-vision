@@ -1,15 +1,14 @@
 import { useConstantFn, useForkRef } from '@xl-vision/hooks';
-import { env } from '@xl-vision/utils';
 import clsx from 'clsx';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CSSObject } from '@xl-vision/styled-engine';
+import { isProduction, isServer, isWindow } from '@xl-vision/utils';
 import Affix from '../Affix';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 import { off, on } from '../utils/event';
 import { oneOf } from '../utils/function';
-import isWindow from '../utils/isWindow';
 import { throttleByAnimationFrame } from '../utils/perf';
 import { getScroll, scrollTo } from '../utils/scroll';
 import AnchorContext from './AnchorContext';
@@ -310,19 +309,19 @@ const Anchor = React.forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
   );
 });
 
-if (!env.isProduction) {
+if (!isProduction) {
   Anchor.displayName = displayName;
   Anchor.propTypes = {
     affix: PropTypes.bool,
     affixTarget: PropTypes.oneOfType([
       PropTypes.func,
-      ...(env.isServer
+      ...(isServer
         ? [PropTypes.any]
         : [PropTypes.instanceOf(Window), PropTypes.instanceOf(HTMLElement)]),
     ]),
     scrollTarget: PropTypes.oneOfType([
       PropTypes.func,
-      ...(env.isServer
+      ...(isServer
         ? [PropTypes.any]
         : [PropTypes.instanceOf(Window), PropTypes.instanceOf(HTMLElement)]),
     ]),

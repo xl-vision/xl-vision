@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import React from 'react';
-import { env } from '@xl-vision/utils';
+import { isProduction, isServer } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
 import Popper, { PopperChildrenProps, PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
@@ -275,7 +275,7 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
   );
 });
 
-if (!env.isProduction) {
+if (!isProduction) {
   Tooltip.displayName = displayName;
 
   const triggerPropType = PropTypes.oneOf<TooltipTrigger>([
@@ -292,7 +292,7 @@ if (!env.isProduction) {
     popupContainer: PropTypes.oneOfType([
       PropTypes.func,
       PropTypes.string,
-      env.isServer ? PropTypes.any : PropTypes.instanceOf(Element),
+      isServer ? PropTypes.any : PropTypes.instanceOf(Element),
     ]),
     className: PropTypes.string,
     transitionClassName: PropTypes.string,

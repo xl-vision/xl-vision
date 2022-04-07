@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import React from 'react';
-import { env } from '@xl-vision/utils';
+import { isProduction, isServer } from '@xl-vision/utils';
 import getContainer, { ContainerReturnType, ContainerType } from '../utils/getContainer';
 
 export type {
@@ -25,7 +25,7 @@ export interface PortalProp {
 const Portal: React.FunctionComponent<PortalProp> = (props) => {
   const { children, container: containerProp } = props;
 
-  if (env.isServer) {
+  if (isServer) {
     return null;
   }
 
@@ -38,15 +38,17 @@ const Portal: React.FunctionComponent<PortalProp> = (props) => {
   return ReactDOM.createPortal(children, container);
 };
 
-Portal.displayName = 'Portal';
+if (!isProduction) {
+  Portal.displayName = 'Portal';
 
-Portal.propTypes = {
-  children: PropTypes.element.isRequired,
-  container: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.string,
-    env.isServer ? PropTypes.any : PropTypes.instanceOf(Element),
-  ]),
-};
+  Portal.propTypes = {
+    children: PropTypes.element.isRequired,
+    container: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.string,
+      isServer ? PropTypes.any : PropTypes.instanceOf(Element),
+    ]),
+  };
+}
 
 export default Portal;

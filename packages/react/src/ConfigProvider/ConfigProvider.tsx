@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { env } from '@xl-vision/utils';
+import { isProduction } from '@xl-vision/utils';
 import ConfigContext, { defaultConfigContext } from './ConfigContext';
 import { defaultLanguage, locales, Locales } from '../locale';
 import warning from '../utils/warning';
@@ -39,7 +39,7 @@ const ConfigProvider: React.FunctionComponent<ConfigProviderProps> = (props) => 
   return <ConfigContext.Provider value={memorizedValue}>{children}</ConfigContext.Provider>;
 };
 
-if (!env.isProduction) {
+if (!isProduction) {
   ConfigProvider.displayName = 'ConfigProvider';
 
   ConfigProvider.propTypes = {

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { env } from '@xl-vision/utils';
+import { isProduction, isServer } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
 import usePropChange from '../hooks/usePropChange';
 import Popper, { PopperPlacement, PopperProps, PopperTrigger } from '../Popper';
@@ -123,7 +123,7 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) =>
   );
 });
 
-if (!env.isProduction) {
+if (!isProduction) {
   Dropdown.displayName = displayName;
 
   const triggerPropType = PropTypes.oneOf<PopperTrigger>([
@@ -164,7 +164,7 @@ if (!env.isProduction) {
     popupContainer: PropTypes.oneOfType([
       PropTypes.func,
       PropTypes.string,
-      env.isServer ? PropTypes.any : PropTypes.instanceOf(Element),
+      isServer ? PropTypes.any : PropTypes.instanceOf(Element),
     ]),
   };
 }

@@ -1,10 +1,9 @@
-import { env } from '@xl-vision/utils';
+import { isServer, isWindow } from '@xl-vision/utils';
 import { easeInOutCubic } from './easings';
-import isWindow from './isWindow';
 import raf from './raf';
 
 export const getScroll = (target: HTMLElement | Window | Document | null, top: boolean): number => {
-  if (env.isServer || !target) {
+  if (isServer || !target) {
     return 0;
   }
   const method = top ? 'scrollTop' : 'scrollLeft';

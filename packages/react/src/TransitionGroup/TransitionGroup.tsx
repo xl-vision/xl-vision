@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { env } from '@xl-vision/utils';
+import { isProduction } from '@xl-vision/utils';
 import { useLayoutEffect } from '@xl-vision/hooks';
 import CssTransition, { CssTransitionClassesObject, CssTransitionProps } from '../CssTransition';
 import { AfterEventHook } from '../Transition';
@@ -162,7 +162,7 @@ const TransitionGroup: React.FunctionComponent<TransitionGroupProps> = (props) =
   return <>{nodes}</>;
 };
 
-if (!env.isProduction) {
+if (!isProduction) {
   TransitionGroup.displayName = 'TransitionGroup';
 
   TransitionGroup.propTypes = {

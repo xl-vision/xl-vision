@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ExclamationCircleOutlined } from '@xl-vision/icons';
-import { env } from '@xl-vision/utils';
+import { isProduction, isServer } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
 import Popper, { PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
@@ -215,7 +215,7 @@ const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
   );
 });
 
-if (!env.isProduction) {
+if (!isProduction) {
   Popconfirm.displayName = displayName;
 
   const triggerPropType = PropTypes.oneOf<PopperTrigger>([
@@ -230,7 +230,7 @@ if (!env.isProduction) {
     popupContainer: PropTypes.oneOfType([
       PropTypes.func,
       PropTypes.string,
-      env.isServer ? PropTypes.any : PropTypes.instanceOf(Element),
+      isServer ? PropTypes.any : PropTypes.instanceOf(Element),
     ]),
     onVisibleChange: PropTypes.func,
     visible: PropTypes.bool,

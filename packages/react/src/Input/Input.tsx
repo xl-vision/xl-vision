@@ -1,4 +1,4 @@
-import { env } from '@xl-vision/utils';
+import { isProduction } from '@xl-vision/utils';
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
@@ -429,7 +429,7 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
   );
 });
 
-if (!env.isProduction) {
+if (!isProduction) {
   Input.displayName = displayName;
   Input.propTypes = {
     className: PropTypes.string,

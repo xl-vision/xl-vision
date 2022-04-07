@@ -1,8 +1,8 @@
-import { env } from '@xl-vision/utils';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useConstantFn, useForkRef, useLayoutEffect } from '@xl-vision/hooks';
 import clsx from 'clsx';
+import { isProduction, isServer } from '@xl-vision/utils';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 import {
@@ -216,12 +216,12 @@ const Affix = React.forwardRef<AffixIntance, AffixProps>((props, ref) => {
   );
 });
 
-if (!env.isProduction) {
+if (!isProduction) {
   Affix.displayName = displayName;
   Affix.propTypes = {
     target: PropTypes.oneOfType([
       PropTypes.func,
-      ...(env.isServer
+      ...(isServer
         ? [PropTypes.any]
         : [PropTypes.instanceOf(Window), PropTypes.instanceOf(HTMLElement)]),
     ]),

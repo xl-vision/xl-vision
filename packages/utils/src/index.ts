@@ -1,1 +1,2 @@
-export * as env from './env';
+export * from './env';
+export { default as isWindow } from './isWindow';
