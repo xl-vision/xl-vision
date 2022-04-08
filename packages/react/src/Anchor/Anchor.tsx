@@ -111,15 +111,11 @@ const Anchor = React.forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
 
   const inkNodeRef = React.useRef<HTMLDivElement>(null);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   React.useEffect(() => {
     const nextScrollTarget = typeof scrollTarget === 'function' ? scrollTarget() : scrollTarget;
 
-    if (currentScrollTarget === nextScrollTarget) {
-      return;
-    }
     setCurrentScrollTarget(nextScrollTarget);
-  });
+  }, [scrollTarget]);
 
   const handleScroll = useConstantFn(() => {
     if (isScollingRef.current) {

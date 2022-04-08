@@ -81,8 +81,7 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
   const lifecycleStateRef = useLifecycleState();
 
   const forkRef = useForkRef(
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
-    React.isValidElement(child) ? (child as any).ref : null,
+    React.isValidElement(child) ? (child as { ref?: React.Ref<unknown> }).ref : null,
     childRef,
   );
 
@@ -198,9 +197,8 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
     return null;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   return React.cloneElement(child, {
-    ...child.props,
+    ...(child as { props?: {} }).props,
     ref: forkRef,
   });
 };

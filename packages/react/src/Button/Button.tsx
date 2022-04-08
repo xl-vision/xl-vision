@@ -220,123 +220,125 @@ const DefaultLoadingIcon = styled(LoadingOutlined, {
   animation: ${loadingKeyframes} 1s linear infinite;
 `;
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
-  const { clsPrefix, componentSize } = useTheme();
+const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
+  (props, ref) => {
+    const { clsPrefix, componentSize } = useTheme();
 
-  const {
-    color = 'default',
-    disableElevation = false,
-    size = componentSize,
-    disabled,
-    loading,
-    prefixIcon,
-    suffixIcon,
-    children,
-    variant = 'contained',
-    long,
-    round,
-    className,
-    ...others
-  } = props;
+    const {
+      color = 'default',
+      disableElevation = false,
+      size = componentSize,
+      disabled,
+      loading,
+      prefixIcon,
+      suffixIcon,
+      children,
+      variant = 'contained',
+      long,
+      round,
+      className,
+      ...others
+    } = props;
 
-  const [LoadingIcon, setLoadingIcon] = React.useState<React.ComponentType<any>>();
+    const [LoadingIcon, setLoadingIcon] = React.useState<React.ComponentType<any>>();
 
-  const icon = !children;
+    const icon = !children;
 
-  React.useEffect(() => {
-    if (loading) {
-      setLoadingIcon(DefaultLoadingIcon);
-    } else if (prefixIcon) {
+    React.useEffect(() => {
+      if (loading) {
+        setLoadingIcon(DefaultLoadingIcon);
+      } else if (prefixIcon) {
+        setLoadingIcon(undefined);
+      }
+    }, [loading, prefixIcon]);
+
+    const afterLoadingFinished = React.useCallback(() => {
       setLoadingIcon(undefined);
-    }
-  }, [loading, prefixIcon]);
+    }, []);
 
-  const afterLoadingFinished = React.useCallback(() => {
-    setLoadingIcon(undefined);
-  }, []);
+    const rootClassName = `${clsPrefix}-button`;
 
-  const rootClassName = `${clsPrefix}-button`;
-
-  const rootClasses = clsx(
-    rootClassName,
-    `${rootClassName}--size-${size}`,
-    `${rootClassName}--color-${color}`,
-    `${rootClassName}--variant-${variant}`,
-    {
-      [`${rootClassName}--elevation`]: !disableElevation && variant === 'contained',
-      [`${rootClassName}--disabled`]: disabled,
-      [`${rootClassName}--loading`]: loading,
-      [`${rootClassName}--long`]: long,
-      [`${rootClassName}--round`]: round,
-      [`${rootClassName}--icon`]: icon,
-    },
-    className,
-  );
-
-  const prefixClassName = `${rootClassName}__prefix`;
-
-  let prefix: React.ReactElement<any> | undefined;
-
-  if (LoadingIcon) {
-    prefix = (
-      <ButtonPrefix styleProps={{ icon }} className={prefixClassName}>
-        <LoadingIcon className={`${prefixClassName}--loading`} />
-      </ButtonPrefix>
+    const rootClasses = clsx(
+      rootClassName,
+      `${rootClassName}--size-${size}`,
+      `${rootClassName}--color-${color}`,
+      `${rootClassName}--variant-${variant}`,
+      {
+        [`${rootClassName}--elevation`]: !disableElevation && variant === 'contained',
+        [`${rootClassName}--disabled`]: disabled,
+        [`${rootClassName}--loading`]: loading,
+        [`${rootClassName}--long`]: long,
+        [`${rootClassName}--round`]: round,
+        [`${rootClassName}--icon`]: icon,
+      },
+      className,
     );
-    if (!prefixIcon) {
+
+    const prefixClassName = `${rootClassName}__prefix`;
+
+    let prefix: React.ReactElement<any> | undefined;
+
+    if (LoadingIcon) {
       prefix = (
-        <CollapseTransition
-          horizontal={true}
-          transitionOnFirst={true}
-          in={!!loading}
-          afterLeave={afterLoadingFinished}
-          transitionClasses={prefixClassName}
-        >
-          {prefix}
-        </CollapseTransition>
+        <ButtonPrefix styleProps={{ icon }} className={prefixClassName}>
+          <LoadingIcon className={`${prefixClassName}--loading`} />
+        </ButtonPrefix>
+      );
+      if (!prefixIcon) {
+        prefix = (
+          <CollapseTransition
+            horizontal={true}
+            transitionOnFirst={true}
+            in={!!loading}
+            afterLeave={afterLoadingFinished}
+            transitionClasses={prefixClassName}
+          >
+            {prefix}
+          </CollapseTransition>
+        );
+      }
+    } else if (prefixIcon) {
+      prefix = (
+        <ButtonPrefix styleProps={{ icon }} className={prefixClassName}>
+          {prefixIcon}
+        </ButtonPrefix>
       );
     }
-  } else if (prefixIcon) {
-    prefix = (
-      <ButtonPrefix styleProps={{ icon }} className={prefixClassName}>
-        {prefixIcon}
-      </ButtonPrefix>
+
+    const suffixClassName = `${rootClassName}__suffix`;
+
+    const suffix = suffixIcon && (
+      <ButtonSuffix styleProps={{ icon }} className={suffixClassName}>
+        {suffixIcon}
+      </ButtonSuffix>
     );
-  }
 
-  const suffixClassName = `${rootClassName}__suffix`;
-
-  const suffix = suffixIcon && (
-    <ButtonSuffix styleProps={{ icon }} className={suffixClassName}>
-      {suffixIcon}
-    </ButtonSuffix>
-  );
-
-  return (
-    <ButtonRoot
-      {...others}
-      ref={ref}
-      className={rootClasses}
-      loading={loading}
-      disabled={disabled}
-      styleProps={{
-        color,
-        disableElevation,
-        size,
-        disabled,
-        loading,
-        variant,
-        long,
-        round,
-        icon,
-      }}
-    >
-      {prefix}
-      {children && <span className={`${rootClassName}__inner`}>{children}</span>}
-      {suffix}
-    </ButtonRoot>
-  );
-});
+    return (
+      <ButtonRoot
+        {...others}
+        ref={ref}
+        className={rootClasses}
+        loading={loading}
+        disabled={disabled}
+        styleProps={{
+          color,
+          disableElevation,
+          size,
+          disabled,
+          loading,
+          variant,
+          long,
+          round,
+          icon,
+        }}
+      >
+        {prefix}
+        {children && <span className={`${rootClassName}__inner`}>{children}</span>}
+        {suffix}
+      </ButtonRoot>
+    );
+  },
+);
 
 if (!isProduction) {
   Button.displayName = displayName;

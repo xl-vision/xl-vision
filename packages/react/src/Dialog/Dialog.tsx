@@ -176,24 +176,20 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
   const defaultFooterNode = (
     <DialogActions>
       {!prompt && (
-        /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
-        /** @ts-ignore */
         <Button
           color='primary'
           variant='text'
-          {...cancelButtonProps}
+          {...(cancelButtonProps as ButtonProps)}
           loading={cancelLoading}
           onClick={handleCancel}
         >
           {cancelText}
         </Button>
       )}
-      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-      {/** @ts-ignore */}
       <Button
         color='primary'
         variant='text'
-        {...confirmButtonProps}
+        {...(confirmButtonProps as ButtonProps)}
         loading={confirmLoading}
         onClick={handleConfirm}
       >

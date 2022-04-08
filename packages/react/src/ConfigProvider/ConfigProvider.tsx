@@ -11,10 +11,7 @@ export type ConfigProviderProps = {
 };
 
 const ConfigProvider: React.FunctionComponent<ConfigProviderProps> = (props) => {
-  const { customLocales, language, children } = {
-    ...defaultConfigContext,
-    ...props,
-  };
+  const { customLocales, language = defaultConfigContext.language, children } = props;
 
   const memorizedValue = React.useMemo(() => {
     let actualLanguage = language;
@@ -42,11 +39,8 @@ if (!isProduction) {
   ConfigProvider.displayName = 'ConfigProvider';
 
   ConfigProvider.propTypes = {
-    // eslint-disable-next-line react/no-unused-prop-types
     children: PropTypes.node.isRequired,
-    // eslint-disable-next-line react/no-unused-prop-types
     language: PropTypes.string,
-    // eslint-disable-next-line react/no-unused-prop-types
     customLocales: PropTypes.objectOf(PropTypes.any),
   };
 }

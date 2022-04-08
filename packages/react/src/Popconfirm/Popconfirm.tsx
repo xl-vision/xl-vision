@@ -165,27 +165,23 @@ const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
         <span className={`${rootClassName}__title`}>{title}</span>
       </div>
       <div className={`${rootClassName}__footer`}>
-        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-        {/** @ts-ignore */}
         <Button
           style={{ minWidth: 0 }}
           size='small'
           color='primary'
           variant='text'
-          {...cancelButtonProps}
+          {...(cancelButtonProps as ButtonProps)}
           onClick={handleCancel}
         >
           {cancelText}
         </Button>
-        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-        {/** @ts-ignore */}
         <Button
           style={{ minWidth: 0 }}
           size='small'
           color='primary'
           variant='text'
           disableElevation={true}
-          {...confirmButtonProps}
+          {...(confirmButtonProps as ButtonProps)}
           onClick={handleConfirm}
         >
           {confirmText}

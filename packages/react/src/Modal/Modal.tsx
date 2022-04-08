@@ -174,7 +174,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
   const scrollLockerRef = React.useRef<ScrollLocker>();
 
-  const [container, setContainer] = React.useState<HTMLElement>();
+  const [container, setContainer] = React.useState<HTMLElement | null>();
 
   const isTop = React.useCallback(() => {
     return modalManagers[modalManagers.length - 1] === bodyRef.current;
@@ -184,20 +184,16 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
   const transitionCount = React.useRef(inProp ? (mask ? 2 : 1) : 0);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   React.useEffect(() => {
-    let node = getContainer(containerProp);
+    let node: HTMLElement | null | undefined = getContainer(containerProp);
 
     if (node == null) {
-      node = modalRef.current!.parentElement!;
+      node = modalRef.current?.parentElement;
       warning(!node, `<Modal> parentElement is undefined`);
     }
 
-    if (node === container) {
-      return;
-    }
     setContainer(node);
-  });
+  }, [containerProp]);
 
   React.useEffect(() => {
     const body = bodyRef.current;

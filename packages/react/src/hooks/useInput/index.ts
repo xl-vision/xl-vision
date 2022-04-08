@@ -20,15 +20,12 @@ const useInput = <E extends HTMLElement>({ setValue, maxLength }: InputProps) =>
 
   const handleCompositionStart = useConstantFn((e: CompositionEvent) => {
     setCompositing(true);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-    oldCompositionValueRef.current = (e.target as any).value;
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-    oldSelectionEndRef.current = (e.target as any).selectionEnd;
+    oldCompositionValueRef.current = (e.target as HTMLInputElement | HTMLTextAreaElement).value;
+    oldSelectionEndRef.current = (e.target as HTMLInputElement | HTMLTextAreaElement).selectionEnd!;
   });
 
   const handleCompositionEnd = useConstantFn((e: CompositionEvent) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-    let triggerValue: string = (e.target as any).value || '';
+    let triggerValue: string = (e.target as HTMLInputElement | HTMLTextAreaElement).value || '';
 
     if (hasMaxLength) {
       const oldSelectionEnd = oldSelectionEndRef.current!;

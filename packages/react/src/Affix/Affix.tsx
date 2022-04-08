@@ -167,15 +167,10 @@ const Affix = React.forwardRef<AffixIntance, AffixProps>((props, ref) => {
     }
   }, [status, measure]);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   React.useEffect(() => {
     const nextTarget = typeof target === 'function' ? target() : target;
-
-    if (currentTarget === nextTarget) {
-      return;
-    }
     setCurrentTarget(nextTarget);
-  });
+  }, [target]);
 
   React.useEffect(() => {
     if (!currentTarget) {
