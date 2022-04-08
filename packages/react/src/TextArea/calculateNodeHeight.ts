@@ -1,5 +1,6 @@
 // Thanks to https://github.com/react-component/textarea/blob/master/src/calculateNodeHeight.tsx
 
+import { getComputedStyle } from '@xl-vision/utils';
 import React from 'react';
 
 const HIDDEN_TEXTAREA_STYLE = `
@@ -98,7 +99,7 @@ export default (
 };
 
 function calculateNodeStyling(node: HTMLElement) {
-  const style = window.getComputedStyle(node);
+  const style = getComputedStyle(node);
 
   const boxSizing =
     style.getPropertyValue('box-sizing') ||

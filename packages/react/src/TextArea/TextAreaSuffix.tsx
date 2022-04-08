@@ -1,7 +1,7 @@
 import { useConstantFn, useUnmount } from '@xl-vision/hooks';
 import React from 'react';
 import clsx from 'clsx';
-import { isProduction, raf } from '@xl-vision/utils';
+import { getComputedStyle, isProduction, raf } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { useTheme } from '../ThemeProvider';
 import ResizeObserver from '../ResizeObserver';
@@ -34,7 +34,7 @@ const TextAreaSuffix: React.FunctionComponent<TextAreaSuffixProps> = (props) => 
 
       const height = el.clientHeight;
 
-      const computedStyle = window.getComputedStyle(el);
+      const computedStyle = getComputedStyle(el);
 
       const paddingTop = parseFloat(computedStyle.paddingTop);
       const paddingBottom = parseFloat(computedStyle.paddingBottom);

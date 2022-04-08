@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { isProduction } from '@xl-vision/utils';
+import { getComputedStyle, isProduction } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
 import CssTransition, { CssTransitionProps, CssTransitionElement } from '../CssTransition';
 import { forceReflow } from '../utils/dom';

@@ -1,4 +1,4 @@
-import { isBrowser, noop } from '@xl-vision/utils';
+import { getComputedStyle, isBrowser, noop } from '@xl-vision/utils';
 
 let TRANSITION_NAME = 'transition';
 let ANIMATION_NAME = 'animation';
