@@ -1,11 +1,10 @@
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import React from 'react';
-import { isProduction, isServer } from '@xl-vision/utils';
+import { isProduction, isServer, oneOf } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
 import Popper, { PopperChildrenProps, PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
-import { oneOf } from '../utils/function';
 import usePropChange from '../hooks/usePropChange';
 import { useTheme } from '../ThemeProvider';
 

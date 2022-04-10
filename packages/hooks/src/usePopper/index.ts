@@ -1,20 +1,35 @@
-import { isProduction } from '@xl-vision/utils';
-import { RefCallback, useCallback, useRef } from 'react';
+import { RefCallback, useCallback, useRef, useState } from 'react';
+import useLayoutEffect from '../useLayoutEffect';
+import getRelativePosition from './getRelativePosition';
+import { Mode } from './types';
+
+export type PopperData = {
+  x: number | undefined;
+  y: number | undefined;
+  mode: Mode;
+};
 
 const usePopper = () => {
   const referenceRef = useRef<HTMLElement | null>();
   const popperRef = useRef<HTMLElement | null>();
 
-  if (isProduction) {
-    // eslint-disable-next-line no-console
-    console.log(1);
-  }
+  const [data, setData] = useState<PopperData>({
+    x: undefined,
+    y: undefined,
+    mode: 'absolute',
+  });
 
   const update = useCallback(() => {
-    if (!referenceRef.current || !popperRef) {
-      // eslint-disable-next-line no-console
-      console.log(1);
+    const reference = referenceRef.current;
+    const popper = popperRef.current;
+
+    if (!reference || !popper) {
+      return;
     }
+
+    const { x, y } = getRelativePosition(reference, popper);
+
+    setData((prev) => ({ ...prev, x, y }));
   }, []);
 
   const setReference: RefCallback<HTMLElement> = useCallback(
@@ -32,9 +47,14 @@ const usePopper = () => {
     [update],
   );
 
+  useLayoutEffect(() => {
+    update();
+  }, [update]);
+
   return {
     reference: setReference,
     popper: setPopper,
+    data,
   };
 };
 

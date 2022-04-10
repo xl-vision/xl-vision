@@ -1,6 +1,4 @@
-export const oneOf = <T>(array: Array<T>, item: T) => {
-  return array.indexOf(item) > -1;
-};
+import { oneOf } from '@xl-vision/utils';
 
 export const omit = <T extends {}, E extends keyof T>(obj: T, ...fields: Array<E>): Omit<T, E> => {
   const copy = {} as Omit<T, E>;

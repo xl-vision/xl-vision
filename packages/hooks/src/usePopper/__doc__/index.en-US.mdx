@@ -1,0 +1,25 @@
+# usePopper
+
+Pins page elements to the visible range.
+
+## Examples
+
+
+
+:::
+
+## API
+
+| Property | Description | Type | Default | Require |
+| --- | --- | --- | --- | --- |
+| children | - | React.ReactNode | - | false |
+| target | Specifies the scrollable area DOM node | Window \| HTMLElement \|(() => Window \| HTMLElement) | () => window | false |
+| offsetTop | Offset from the top of the viewport (in pixels) | number | - | false |
+| offsetBottom | Offset from the bottom of the viewport (in pixels) | number | - | false |
+| onChange | Callback for when Affix state is changed | (affixed: boolean) => void | - | false |
+
+## FAQ
+
+### 1. When binding container with target in Affix, elements sometimes move out of the container.
+
+From a performance perspective, we only listen for container scroll events. If you have other needs, you can manually call the `handleEventEmit` and `handleSizeChange` methods of `Affix`.

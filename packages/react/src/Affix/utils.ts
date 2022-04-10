@@ -10,7 +10,7 @@ export const getTargetRect = (target: Window | HTMLElement): DOMVerticalDistance
   if (isWindow(target)) {
     return {
       top: 0,
-      bottom: window.innerHeight,
+      bottom: target.innerHeight,
     };
   }
 

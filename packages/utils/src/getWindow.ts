@@ -1,7 +1,4 @@
-export const isWindow = (obj: unknown): obj is Window => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-  return obj !== null && obj !== undefined && obj === (obj as any).window;
-};
+import { isWindow } from './is';
 
 /**
  * Get the window associated with the node
@@ -9,7 +6,7 @@ export const isWindow = (obj: unknown): obj is Window => {
  * @param node
  * @returns
  */
-export const getWindow = (node?: Node | Window): Window => {
+export default (node?: Node | Window): Window => {
   if (!node) {
     return window;
   }

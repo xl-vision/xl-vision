@@ -314,7 +314,22 @@ const route: Route = {
       ],
     },
   ],
-  hooks: [],
+  hooks: [
+    {
+      titleMap: {
+        'en-US': 'Overview',
+        'zh-CN': '总览',
+      },
+      path: '/',
+    },
+    {
+      titleMap: {
+        'en-US': 'usePopper',
+        'zh-CN': 'usePopper',
+      },
+      path: '/UsePopper',
+    },
+  ],
 };
 
 export default route;
