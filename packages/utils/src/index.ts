@@ -2,7 +2,7 @@ export * from './env';
 export * from './is';
 export * from './array';
 export * from './device';
-export { default as getWindow } from './getWindow';
+export * from './window';
 export { default as warning } from './warning';
 export { default as noop } from './noop';
 export { default as raf } from './raf';

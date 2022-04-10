@@ -1,5 +1,4 @@
-import { isFirefox } from './device';
-import getWindow from './getWindow';
+import { getWindow } from './window';
 
 declare global {
   interface Window {
@@ -9,11 +8,6 @@ declare global {
     ShadowRoot: any;
   }
 }
-
-export const isWindow = (obj: unknown): obj is Window => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-  return obj !== null && obj !== undefined && obj === (obj as any).window;
-};
 
 export const isHTMLElement = (value: Node): value is HTMLElement => {
   return value instanceof getWindow(value).HTMLElement;
