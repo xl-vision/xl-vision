@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { getDocumentElement, isBrowser, isProduction, isServer, warning } from '@xl-vision/utils';
+import { isBrowser, isProduction, isServer, warning } from '@xl-vision/utils';
 import { useForkRef } from '@xl-vision/hooks';
 import Portal, { PortalContainerType } from '../Portal';
 import usePropChange from '../hooks/usePropChange';
@@ -130,7 +130,7 @@ const getClickPosition = (e: MouseEvent) => {
 
 // 只有点击事件支持从鼠标位置动画展开
 if (isBrowser) {
-  getDocumentElement().addEventListener('click', getClickPosition, true);
+  document.addEventListener('click', getClickPosition, true);
 }
 
 let modalManagers: Array<HTMLElement> = [];

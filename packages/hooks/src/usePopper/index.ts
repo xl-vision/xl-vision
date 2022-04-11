@@ -1,22 +1,22 @@
 import { RefCallback, useCallback, useRef, useState } from 'react';
 import useLayoutEffect from '../useLayoutEffect';
 import getRelativePosition from './getRelativePosition';
-import { Mode } from './types';
+import { Mode, Placement, PopperData } from './types';
 
-export type PopperData = {
-  x: number | undefined;
-  y: number | undefined;
+export type PopperOptions = {
+  placement: Placement;
   mode: Mode;
 };
 
-const usePopper = () => {
+const usePopper = ({ placement, mode }: PopperOptions) => {
   const referenceRef = useRef<HTMLElement | null>();
   const popperRef = useRef<HTMLElement | null>();
 
   const [data, setData] = useState<PopperData>({
     x: undefined,
     y: undefined,
-    mode: 'absolute',
+    mode,
+    placement,
   });
 
   const update = useCallback(() => {
@@ -27,7 +27,7 @@ const usePopper = () => {
       return;
     }
 
-    const { x, y } = getRelativePosition(reference, popper);
+    const { x, y, width, height } = getRelativePosition(reference, popper);
 
     setData((prev) => ({ ...prev, x, y }));
   }, []);

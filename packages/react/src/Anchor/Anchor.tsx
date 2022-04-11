@@ -342,8 +342,7 @@ const getOffsetTop = (element: HTMLElement, container: Window | HTMLElement): nu
 
   if (rect.width || rect.height) {
     if (isWindow(container)) {
-      container = getDocumentElement(element);
-      return rect.top - container.clientTop;
+      return rect.top - getDocumentElement(container.document).clientTop;
     }
     return rect.top - container.getBoundingClientRect().top;
   }

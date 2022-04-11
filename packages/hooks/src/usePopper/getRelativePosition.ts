@@ -1,7 +1,14 @@
 import getOffsetParentRect from './getOffsetParentRect';
 import { Reference } from './types';
 
-export default (reference: Reference, popper: Element) => {
+export type RelativeRect = {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+};
+
+export default (reference: Reference, popper: Element): RelativeRect => {
   const { parent: offsetParent, left, top } = getOffsetParentRect(popper);
 
   const offsetRect = offsetParent.getBoundingClientRect();
