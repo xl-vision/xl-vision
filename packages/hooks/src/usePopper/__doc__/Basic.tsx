@@ -9,19 +9,22 @@ const Root = styled('div')(({ theme }) => {
     borderRadius: 4,
     height: 200,
     padding: 20,
+    overflow: 'auto',
+    button: {
+      marginTop: 250,
+    },
   };
 });
 
 const PopperWrapper = styled('div')(() => {
   return {
-    position: 'fixed',
     top: 200,
     left: 100,
   };
 });
 
 const Demo = () => {
-  const { reference, popper, data } = usePopper();
+  const { reference, popper, data, update } = usePopper();
 
   const container = React.useCallback(() => document.body, []);
 
@@ -32,7 +35,7 @@ const Demo = () => {
   };
 
   return (
-    <Root>
+    <Root onScroll={update}>
       <Button className='reference' color='primary' ref={reference}>
         reference
       </Button>

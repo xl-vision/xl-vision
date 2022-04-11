@@ -7,4 +7,4 @@ export { default as warning } from './warning';
 export { default as noop } from './noop';
 export { default as raf } from './raf';
 export { default as getComputedStyle } from './getComputedStyle';
-export { default as getOffsetParent } from './getOffsetParent';
+export { default as getDocumentElement } from './getDocumentElement';

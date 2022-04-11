@@ -1,4 +1,4 @@
-import { isServer, isWindow, raf } from '@xl-vision/utils';
+import { getDocumentElement, isDocument, isServer, isWindow, raf } from '@xl-vision/utils';
 import { easeInOutCubic } from './easings';
 
 export const getScroll = (target: HTMLElement | Window | Document | null, top: boolean): number => {
@@ -9,13 +9,13 @@ export const getScroll = (target: HTMLElement | Window | Document | null, top: b
   let result = 0;
   if (isWindow(target)) {
     result = target[top ? 'pageYOffset' : 'pageXOffset'];
-  } else if (target instanceof Document) {
-    result = target.documentElement[method];
+  } else if (isDocument(target)) {
+    result = document.documentElement[method];
   } else if (target) {
     result = target[method];
 
     if (typeof result !== 'number') {
-      result = target.ownerDocument.documentElement?.[method];
+      result = getDocumentElement(target)[method];
     }
   }
   return result;
@@ -42,8 +42,8 @@ export const scrollTo = (y: number, options: ScrollToOptions = {}) => {
     const nextScrollTop = easeInOutCubic(time > duration ? duration : time, duration, scrollTop, y);
     if (isWindow(container)) {
       container.scrollTo(window.pageXOffset, nextScrollTop);
-    } else if (container instanceof Document || container.constructor.name === 'HTMLDocument') {
-      (container as Document).documentElement.scrollTop = nextScrollTop;
+    } else if (isDocument(container)) {
+      container.documentElement.scrollTop = nextScrollTop;
     } else {
       container.scrollTop = nextScrollTop;
     }

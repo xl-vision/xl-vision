@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CSSObject } from '@xl-vision/styled-engine';
-import { isProduction, isServer, isWindow, oneOf } from '@xl-vision/utils';
+import { getDocumentElement, isProduction, isServer, isWindow, oneOf } from '@xl-vision/utils';
 import Affix from '../Affix';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
@@ -342,7 +342,7 @@ const getOffsetTop = (element: HTMLElement, container: Window | HTMLElement): nu
 
   if (rect.width || rect.height) {
     if (isWindow(container)) {
-      container = element.ownerDocument.documentElement;
+      container = getDocumentElement(element);
       return rect.top - container.clientTop;
     }
     return rect.top - container.getBoundingClientRect().top;

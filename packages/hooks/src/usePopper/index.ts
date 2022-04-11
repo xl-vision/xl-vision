@@ -52,6 +52,7 @@ const usePopper = () => {
   }, [update]);
 
   return {
+    update,
     reference: setReference,
     popper: setPopper,
     data,

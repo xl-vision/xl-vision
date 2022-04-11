@@ -20,5 +20,7 @@ export const getWindow = (node?: Node | Window): Window => {
 
   const { ownerDocument } = node;
 
-  return ownerDocument ? ownerDocument.defaultView || window : window;
+  return ownerDocument
+    ? ownerDocument.defaultView || (node as Document).defaultView || window
+    : window;
 };
