@@ -1,7 +1,7 @@
 export type Mode = 'fixed' | 'absolute';
 
 export type Reference = {
-  getBoundingClientRect: () => { x: number; y: number; width: number; height: number };
+  getBoundingClientRect: () => Rect;
 };
 
 export type Alignment = 'start' | 'end';
@@ -11,33 +11,38 @@ export type AlignedPlacement = `${Side}-${Alignment}`;
 export type Placement = Side | AlignedPlacement;
 
 export type PopperData = {
-  x: number | undefined;
-  y: number | undefined;
+  x: number;
+  y: number;
   mode: Mode;
   placement: Placement;
 };
 
-export type PlacementData = {
-  offsetX: number | undefined;
-  offsetY: number | undefined;
-  popper: {
-    width: number;
-    height: number;
-  };
-  reference: {
-    width: number;
-    height: number;
-  };
-  placement: Placement;
+export type Rect = {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
 };
 
-export type MiddlewareData = PlacementData & {
+export type MiddlewareData = {
+  x: number;
+  y: number;
+  placement: Placement;
+  extra: Record<string, any>;
+};
+
+export type MiddlewareParameter = MiddlewareData & {
+  popperRect: Rect;
+  referenceRect: Rect;
+  popper: Element;
+  reference: Reference;
   mode: Mode;
   initialPlacement: Placement;
-} & Record<string, any>;
+};
 
-export type Middleware = {
+export type Middleware<T> = {
   name: string;
   order: number;
-  fn: (data: MiddlewareData) => MiddlewareData;
+  options: T;
+  fn: (data: MiddlewareParameter, options: T) => Partial<MiddlewareData> | void;
 };

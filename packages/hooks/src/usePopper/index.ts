@@ -1,25 +1,30 @@
 import { RefCallback, useCallback, useRef, useState } from 'react';
+import useConstantFn from '../useConstantFn';
 import useLayoutEffect from '../useLayoutEffect';
-import getRelativePosition from './getRelativePosition';
-import { Mode, Placement, PopperData } from './types';
+import computePosition from './computePosition';
+import base from './middlewares/base';
+import { Middleware, Mode, Placement, PopperData } from './types';
 
 export type PopperOptions = {
   placement: Placement;
-  mode: Mode;
+  mode?: Mode;
+  middlewares?: Array<Middleware<any>>;
 };
 
-const usePopper = ({ placement, mode }: PopperOptions) => {
+const innerMiddlewares: Array<Middleware<any>> = [base];
+
+const usePopper = ({ placement, mode = 'fixed', middlewares }: PopperOptions) => {
   const referenceRef = useRef<HTMLElement | null>();
   const popperRef = useRef<HTMLElement | null>();
 
   const [data, setData] = useState<PopperData>({
-    x: undefined,
-    y: undefined,
+    x: 0,
+    y: 0,
     mode,
     placement,
   });
 
-  const update = useCallback(() => {
+  const update = useConstantFn(() => {
     const reference = referenceRef.current;
     const popper = popperRef.current;
 
@@ -27,10 +32,16 @@ const usePopper = ({ placement, mode }: PopperOptions) => {
       return;
     }
 
-    const { x, y, width, height } = getRelativePosition(reference, popper);
+    const newData = computePosition({
+      reference,
+      popper,
+      placement,
+      mode,
+      middlewares: [...innerMiddlewares, ...(middlewares || [])],
+    });
 
-    setData((prev) => ({ ...prev, x, y }));
-  }, []);
+    setData((prev) => ({ ...prev, ...newData }));
+  });
 
   const setReference: RefCallback<HTMLElement> = useCallback(
     (el) => {

@@ -16,15 +16,26 @@ const Root = styled('div')(({ theme }) => {
   };
 });
 
-const PopperWrapper = styled('div')(() => {
+const PopperWrapper = styled('div')(({ theme }) => {
   return {
     top: 200,
     left: 100,
+    position: 'absolute',
+
+    '.popper': {
+      padding: 8,
+      borderRadius: 3,
+      backgroundColor: theme.color.themes.success.color,
+      cColor: theme.color.themes.success.text.primary,
+    },
   };
 });
 
 const Demo = () => {
-  const { reference, popper, data, update } = usePopper();
+  const { reference, popper, data, update } = usePopper({
+    placement: 'left-end',
+    mode: 'absolute',
+  });
 
   const container = React.useCallback(() => document.body, []);
 
@@ -42,7 +53,7 @@ const Demo = () => {
       <Portal container={container}>
         <PopperWrapper>
           <div className='popper' ref={popper} style={style}>
-            popper
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto quae possimus tempore
           </div>
         </PopperWrapper>
       </Portal>
