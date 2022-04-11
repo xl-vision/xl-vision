@@ -1,13 +1,11 @@
 import { oneOf } from '@xl-vision/utils';
 import { Middleware } from '../types';
 
-const base: Middleware<void> = {
+const base: Middleware = {
   name: 'base',
   order: 0,
   fn({ x, y, referenceRect, popperRect, placement }) {
     const [position, axis] = placement.split('-');
-
-    console.log(position, axis);
 
     let coords: { x: number; y: number };
 

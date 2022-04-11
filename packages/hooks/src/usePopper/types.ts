@@ -40,9 +40,9 @@ export type MiddlewareParameter = MiddlewareData & {
   initialPlacement: Placement;
 };
 
-export type Middleware<T> = {
+export type Middleware<T = any> = {
   name: string;
   order: number;
-  options: T;
-  fn: (data: MiddlewareParameter, options: T) => Partial<MiddlewareData> | void;
+  options?: T;
+  fn: (data: MiddlewareParameter, options?: T) => Partial<MiddlewareData> | void;
 };
