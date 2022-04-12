@@ -1,4 +1,4 @@
-import { isProduction } from '@xl-vision/utils';
+import { contains, isProduction } from '@xl-vision/utils';
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
@@ -7,7 +7,6 @@ import { CloseCircleFilled } from '@xl-vision/icons';
 import { CSSObject } from '@xl-vision/styled-engine';
 import { styled } from '../styles';
 import usePropChange from '../hooks/usePropChange';
-import { contains } from '../utils/dom';
 import { alpha } from '../utils/color';
 import { ComponentSize, useTheme } from '../ThemeProvider';
 import useInput from '../hooks/useInput';

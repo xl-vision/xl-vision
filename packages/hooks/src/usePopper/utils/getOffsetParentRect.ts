@@ -3,10 +3,11 @@ import {
   isElement,
   isFirefox,
   isHTMLElement,
-  isShadowRoot,
   getComputedStyle,
   oneOf,
 } from '@xl-vision/utils';
+import getNodeName from './getNodeName';
+import getParentNode from './getParentNode';
 
 export type OffsetParentRect = { parent: Element; left: number; top: number };
 
@@ -64,8 +65,6 @@ const isTableElement = (node: Node): node is HTMLElement => {
   return oneOf(['table', 'td', 'th'], getNodeName(node));
 };
 
-const getNodeName = (element: Node) => (element.nodeName || '').toLowerCase();
-
 // https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block
 const isContainingBlock = (element: Element, parent: Element): boolean => {
   const elementCss = getComputedStyle(element);
@@ -118,19 +117,4 @@ const getContainingBlockRect = (element: Element): OffsetParentRect => {
     left: parentEl.clientLeft,
     top: parentEl.clientTop,
   };
-};
-
-const getParentNode = (node: Node): Node => {
-  if (getNodeName(node) === 'html') {
-    return node;
-  }
-
-  return (
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    (node.assignedSlot as Node) ||
-    node.parentNode ||
-    (isShadowRoot(node) && node.host) ||
-    getDocumentElement(node)
-  );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { isBrowser, isProduction, isServer, warning } from '@xl-vision/utils';
+import { contains, isBrowser, isProduction, isServer, warning } from '@xl-vision/utils';
 import { useForkRef } from '@xl-vision/hooks';
 import Portal, { PortalContainerType } from '../Portal';
 import usePropChange from '../hooks/usePropChange';
@@ -9,7 +9,7 @@ import CssTransition from '../CssTransition';
 import { styled } from '../styles';
 import { increaseZindex } from '../utils/zIndexManger';
 import { addClass, removeClass } from '../utils/class';
-import { forceReflow, contains } from '../utils/dom';
+import { forceReflow } from '../utils/dom';
 import ScrollLocker from '../utils/ScrollLocker';
 import { useTheme } from '../ThemeProvider';
 import getContainer from '../utils/getContainer';

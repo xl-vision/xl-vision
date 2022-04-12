@@ -32,8 +32,3 @@ export const isNode = (value: unknown): value is Node => {
 export const isDocument = (value: Node): value is Document => {
   return value instanceof getWindow(value).Document;
 };
-
-export const isWindow = (obj: unknown): obj is Window => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-  return obj !== null && obj !== undefined && obj === (obj as any).window;
-};

@@ -50,3 +50,6 @@ export type Middleware = {
   name: string;
   fn: (data: MiddlewareParameter) => MiddlewareReturn | void;
 };
+
+export type Boundary = 'clippingAncestors' | Element | Array<Element>;
+export type RootBoundary = 'viewport' | 'document';

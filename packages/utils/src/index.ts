@@ -3,6 +3,7 @@ export * from './is';
 export * from './array';
 export * from './device';
 export * from './window';
+export * from './dom';
 export { default as warning } from './warning';
 export { default as noop } from './noop';
 export { default as raf } from './raf';

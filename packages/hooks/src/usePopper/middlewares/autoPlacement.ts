@@ -1,8 +1,10 @@
 import { Middleware } from '../types';
 
-export default (boundary: number): Middleware => {
+export type Boundary = 'clippingAncestors' | Element | Array<Element>;
+
+export default (): Middleware => {
   return {
-    name: 'offset',
+    name: 'autoPlacement',
     fn({ x, y, referenceRect, popperRect, placement }) {},
   };
 };
