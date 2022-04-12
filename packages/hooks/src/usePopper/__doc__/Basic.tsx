@@ -1,6 +1,8 @@
 import React from 'react';
-import { usePopper, offset } from '@xl-vision/hooks';
+import { usePopper, popperMiddlewares } from '@xl-vision/hooks';
 import { styled, Button, Portal } from '@xl-vision/react';
+
+const { offset } = popperMiddlewares;
 
 const Root = styled('div')(({ theme }) => {
   const { color } = theme;

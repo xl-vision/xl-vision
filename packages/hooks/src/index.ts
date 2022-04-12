@@ -9,4 +9,4 @@ export { default as useUnmount } from './useUnmount';
 export { default as useResizeObserver } from './useResizeObserver';
 export type { ResizeObserverHandler } from './useResizeObserver';
 
-export { usePopper, offset } from './usePopper';
+export { usePopper, middlewares as popperMiddlewares } from './usePopper';
