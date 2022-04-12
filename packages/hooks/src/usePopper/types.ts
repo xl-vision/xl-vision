@@ -13,7 +13,6 @@ export type Placement = Side | AlignedPlacement;
 export type PopperData = {
   x: number;
   y: number;
-  mode: Mode;
   placement: Placement;
 };
 
@@ -24,25 +23,32 @@ export type Rect = {
   height: number;
 };
 
-export type MiddlewareData = {
-  x: number;
-  y: number;
-  placement: Placement;
-  extra: Record<string, any>;
+export type MiddlewareData = PopperData & {
+  extra: Record<string, Record<string, any>>;
+  popperRect: Rect;
+  referenceRect: Rect;
 };
 
 export type MiddlewareParameter = MiddlewareData & {
-  popperRect: Rect;
-  referenceRect: Rect;
   popper: Element;
   reference: Reference;
   mode: Mode;
-  initialPlacement: Placement;
+  initial: {
+    popperRect: Rect;
+    referenceRect: Rect;
+    placement: Placement;
+  };
 };
+
+export type MiddlewareReturn = Partial<
+  PopperData & {
+    data: Record<string, any>;
+  }
+>;
 
 export type Middleware<T = any> = {
   name: string;
   order: number;
   options?: T;
-  fn: (data: MiddlewareParameter, options?: T) => Partial<MiddlewareData> | void;
+  fn: (data: MiddlewareParameter, options?: T) => MiddlewareReturn | void;
 };

@@ -6,7 +6,8 @@ import {
   Mode,
   Placement,
   Reference,
-} from './types';
+} from '../types';
+import computeCoordsFromPlacement from './computeCoordsFromPlacement';
 
 export type Options = {
   popper: Element;
@@ -32,13 +33,19 @@ export default ({ popper, reference, placement, middlewares, mode }: Options) =>
     x: 0,
     y: 0,
     placement,
+    referenceRect,
+    popperRect,
     extra: {},
   };
 
   sortedMiddlewares.forEach((middleware) => {
     const middlewareParameter: MiddlewareParameter = {
       ...data,
-      initialPlacement: placement,
+      initial: {
+        referenceRect,
+        popperRect,
+        placement,
+      },
       mode,
       reference,
       popper,
@@ -47,17 +54,32 @@ export default ({ popper, reference, placement, middlewares, mode }: Options) =>
     };
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    const { fn, options } = middleware;
+    const { name, fn, options } = middleware;
     const result = fn(middlewareParameter, options);
 
     if (result) {
-      data = { ...data, ...result };
+      const { data: middlewareData, ...others } = result;
+      const { extra, ...otherData } = data;
+
+      data = {
+        ...otherData,
+        ...others,
+        extra: {
+          ...extra,
+          [name]: {
+            ...(extra[name] || {}),
+            ...(middlewareData || {}),
+          },
+        },
+      };
     }
   });
 
+  const { x, y } = computeCoordsFromPlacement(data);
+
   return {
-    x: offsetX + data.x,
-    y: offsetY + data.y,
+    x: offsetX + x,
+    y: offsetY + y,
     placement: data.placement,
   };
 };

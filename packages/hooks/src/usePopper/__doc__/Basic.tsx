@@ -32,7 +32,7 @@ const PopperWrapper = styled('div')(({ theme }) => {
 });
 
 const Demo = () => {
-  const { reference, popper, data, update } = usePopper({
+  const { reference, popper, x, y, mode, update } = usePopper({
     placement: 'left-end',
     mode: 'absolute',
   });
@@ -40,9 +40,9 @@ const Demo = () => {
   const container = React.useCallback(() => document.body, []);
 
   const style = {
-    position: data.mode,
-    top: data.y,
-    left: data.x,
+    position: mode,
+    top: y,
+    left: x,
   };
 
   return (
