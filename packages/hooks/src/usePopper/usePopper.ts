@@ -7,7 +7,7 @@ import { Middleware, Mode, Placement, PopperData } from './types';
 export type PopperOptions = {
   placement: Placement;
   mode?: Mode;
-  middlewares?: Array<Middleware<any>>;
+  middlewares?: Array<Middleware>;
 };
 
 const usePopper = ({ placement, mode = 'fixed', middlewares }: PopperOptions) => {

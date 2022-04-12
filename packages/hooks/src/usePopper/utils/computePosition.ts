@@ -13,7 +13,7 @@ export type Options = {
   popper: Element;
   reference: Reference;
   placement: Placement;
-  middlewares: Array<Middleware<any>>;
+  middlewares: Array<Middleware>;
   mode: Mode;
 };
 
@@ -27,38 +27,36 @@ export default ({ popper, reference, placement, middlewares, mode }: Options) =>
   const offsetX = referenceRect.x - (offsetRect.x + left);
   const offsetY = referenceRect.y - (offsetRect.y + top);
 
-  const sortedMiddlewares = middlewares.sort((item1, item2) => item1.order - item2.order);
-
-  let data: MiddlewareData = {
-    x: 0,
-    y: 0,
+  const { x, y } = computeCoordsFromPlacement({
     placement,
     referenceRect,
     popperRect,
+  });
+
+  let data: MiddlewareData = {
+    placement,
+    x,
+    y,
     extra: {},
   };
 
-  sortedMiddlewares.forEach((middleware) => {
+  middlewares.forEach((middleware) => {
     const middlewareParameter: MiddlewareParameter = {
       ...data,
-      initial: {
-        referenceRect,
-        popperRect,
-        placement,
-      },
+      referenceRect,
+      popperRect,
+      initialPlacement: placement,
       mode,
       reference,
       popper,
-      referenceRect,
-      popperRect,
     };
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    const { name, fn, options } = middleware;
-    const result = fn(middlewareParameter, options);
+    const { name, fn } = middleware;
+    const result = fn(middlewareParameter);
 
     if (result) {
-      const { data: middlewareData, ...others } = result;
+      const { data: middlewareData, reset, ...others } = result;
       const { extra, ...otherData } = data;
 
       data = {
@@ -72,14 +70,23 @@ export default ({ popper, reference, placement, middlewares, mode }: Options) =>
           },
         },
       };
+
+      if (reset) {
+        const { x: newX, y: newY } = computeCoordsFromPlacement({
+          placement: data.placement,
+          referenceRect,
+          popperRect,
+        });
+
+        data.x = newX;
+        data.y = newY;
+      }
     }
   });
 
-  const { x, y } = computeCoordsFromPlacement(data);
-
   return {
-    x: offsetX + x,
-    y: offsetY + y,
+    x: offsetX + data.x,
+    y: offsetY + data.y,
     placement: data.placement,
   };
 };

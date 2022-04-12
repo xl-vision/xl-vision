@@ -1,5 +1,5 @@
 import React from 'react';
-import { usePopper } from '@xl-vision/hooks';
+import { usePopper, offset } from '@xl-vision/hooks';
 import { styled, Button, Portal } from '@xl-vision/react';
 
 const Root = styled('div')(({ theme }) => {
@@ -33,8 +33,9 @@ const PopperWrapper = styled('div')(({ theme }) => {
 
 const Demo = () => {
   const { reference, popper, x, y, mode, update } = usePopper({
-    placement: 'left-end',
+    placement: 'right-end',
     mode: 'absolute',
+    middlewares: [offset(10)],
   });
 
   const container = React.useCallback(() => document.body, []);

@@ -23,32 +23,30 @@ export type Rect = {
   height: number;
 };
 
-export type MiddlewareData = PopperData & {
+export type MiddlewareData = {
+  x: number;
+  y: number;
+  placement: Placement;
   extra: Record<string, Record<string, any>>;
-  popperRect: Rect;
-  referenceRect: Rect;
 };
 
 export type MiddlewareParameter = MiddlewareData & {
   popper: Element;
   reference: Reference;
+  popperRect: Rect;
+  referenceRect: Rect;
   mode: Mode;
-  initial: {
-    popperRect: Rect;
-    referenceRect: Rect;
-    placement: Placement;
-  };
+  initialPlacement: Placement;
 };
 
 export type MiddlewareReturn = Partial<
-  PopperData & {
+  MiddlewareData & {
+    reset: boolean;
     data: Record<string, any>;
   }
 >;
 
-export type Middleware<T = any> = {
+export type Middleware = {
   name: string;
-  order: number;
-  options?: T;
-  fn: (data: MiddlewareParameter, options?: T) => MiddlewareReturn | void;
+  fn: (data: MiddlewareParameter) => MiddlewareReturn | void;
 };
