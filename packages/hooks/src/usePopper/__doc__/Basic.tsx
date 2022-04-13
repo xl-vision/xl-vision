@@ -2,7 +2,7 @@ import React from 'react';
 import { usePopper, popperMiddlewares } from '@xl-vision/hooks';
 import { styled, Button, Portal } from '@xl-vision/react';
 
-const { offset } = popperMiddlewares;
+const { offset, autoPlacement } = popperMiddlewares;
 
 const Root = styled('div')(({ theme }) => {
   const { color } = theme;
@@ -37,7 +37,7 @@ const Demo = () => {
   const { reference, popper, x, y, mode, update } = usePopper({
     placement: 'right-end',
     mode: 'absolute',
-    middlewares: [offset(10)],
+    middlewares: [autoPlacement(), offset(10)],
   });
 
   const container = React.useCallback(() => document.body, []);

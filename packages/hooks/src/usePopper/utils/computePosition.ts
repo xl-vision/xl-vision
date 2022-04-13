@@ -34,7 +34,7 @@ export default ({ popper, reference, placement, middlewares, mode }: Options) =>
     popperRect,
   });
 
-  let data: MiddlewareData = {
+  let middlewareData: MiddlewareData = {
     placement,
     x,
     y,
@@ -60,7 +60,7 @@ export default ({ popper, reference, placement, middlewares, mode }: Options) =>
     const middleware = middlewares[i];
 
     const middlewareParameter: MiddlewareParameter = {
-      ...data,
+      ...middlewareData,
       referenceRect,
       popperRect,
       initialPlacement: placement,
@@ -73,38 +73,32 @@ export default ({ popper, reference, placement, middlewares, mode }: Options) =>
     const result = fn(middlewareParameter);
 
     if (result) {
-      const { data: middlewareData, reset, ...others } = result;
-      const { extra, ...otherData } = data;
+      const { data, reset, ...others } = result;
 
-      data = {
-        ...otherData,
+      middlewareData = {
+        ...middlewareData,
         ...others,
-        extra: {
-          ...extra,
-          [name]: {
-            ...(extra[name] || {}),
-            ...(middlewareData || {}),
-          },
-        },
       };
+
+      middlewareData.extra[name] = data || {};
 
       if (reset) {
         const { x: newX, y: newY } = computeCoordsFromPlacement({
-          placement: data.placement,
+          placement: middlewareData.placement,
           referenceRect,
           popperRect,
         });
 
-        data.x = newX;
-        data.y = newY;
+        middlewareData.x = newX;
+        middlewareData.y = newY;
         i--;
       }
     }
   }
 
   return {
-    x: offsetX + data.x,
-    y: offsetY + data.y,
-    placement: data.placement,
+    x: offsetX + middlewareData.x,
+    y: offsetY + middlewareData.y,
+    placement: middlewareData.placement,
   };
 };

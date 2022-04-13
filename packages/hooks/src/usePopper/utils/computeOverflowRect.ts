@@ -15,11 +15,11 @@ export type Options = {
   boundary: Boundary;
   rootBoundary: RootBoundary;
   element: Element;
-  referenceRect: Rect;
+  elementRect: Rect;
   padding: number | Partial<{ top: number; right: number; left: number; bottom: number }>;
 };
 
-export default ({ boundary, rootBoundary, element, padding, referenceRect }: Options) => {
+export default ({ boundary, rootBoundary, element, padding, elementRect }: Options) => {
   const ancestors: Array<Element | RootBoundary> =
     boundary === 'clippingAncestors'
       ? getFiltedOverflowAncestors(element)
@@ -62,7 +62,7 @@ export default ({ boundary, rootBoundary, element, padding, referenceRect }: Opt
       ? { left: padding, top: padding, right: padding, bottom: padding }
       : { left: 0, top: 0, right: 0, bottom: 0, ...padding };
 
-  const { x, y, width, height } = referenceRect;
+  const { x, y, width, height } = elementRect;
 
   return {
     left: clipRect.left + paddingObject.left - x,
