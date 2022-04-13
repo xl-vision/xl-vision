@@ -29,7 +29,6 @@ const PopperWrapper = styled('div')(({ theme }) => {
       borderRadius: 3,
       backgroundColor: theme.color.themes.success.color,
       cColor: theme.color.themes.success.text.primary,
-      transform: 'scale(1.2)',
     },
   };
 });

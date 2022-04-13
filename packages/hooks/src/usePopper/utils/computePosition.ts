@@ -25,14 +25,6 @@ export default ({ popper, reference, placement, middlewares, mode }: Options) =>
   const referenceRect = reference.getBoundingClientRect();
   const popperRect = popper.getBoundingClientRect();
 
-  let scaleX = 1;
-  let scaleY = 1;
-
-  if (isHTMLElement(popper)) {
-    scaleX = popperRect.width / (popper.offsetWidth || 1);
-    scaleY = popperRect.height / (popper.offsetHeight || 1);
-  }
-
   const offsetX = referenceRect.x - (offsetRect.x + left);
   const offsetY = referenceRect.y - (offsetRect.y + top);
 
