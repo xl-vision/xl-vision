@@ -1,5 +1,6 @@
 import {
   contains,
+  getBoundingClientRect,
   getComputedStyle,
   getWindow,
   isElement,
@@ -14,30 +15,61 @@ export type Options = {
   boundary: Boundary;
   rootBoundary: RootBoundary;
   element: Element;
+  referenceRect: Rect;
   padding: number | Partial<{ top: number; right: number; left: number; bottom: number }>;
 };
 
-export default ({ boundary, rootBoundary, element, padding }: Options) => {
+export default ({ boundary, rootBoundary, element, padding, referenceRect }: Options) => {
   const ancestors: Array<Element | RootBoundary> =
-    boundary === 'clippingAncestors' ? getFiltedOverflowAncestors(element) : [].concat(boundary);
+    boundary === 'clippingAncestors'
+      ? getFiltedOverflowAncestors(element)
+      : Array.isArray(boundary)
+      ? boundary
+      : [boundary];
 
   ancestors.push(rootBoundary);
 
   const win = getWindow(element);
 
-  ancestors.reduce((rect, ancestor) => {
-    let nextRect: Rect;
-    if (ancestor === 'viewport') {
-      const vv = win.visualViewport;
-      nextRect = {
-        x: vv.offsetLeft,
-        y: vv.offsetTop,
-        width: vv.width,
-        height: vv.height,
+  const clipRect = ancestors
+    .map((it) => {
+      if (it === 'viewport') {
+        const vv = win.visualViewport;
+        return {
+          left: vv.offsetLeft,
+          top: vv.offsetTop,
+          right: vv.width + vv.offsetLeft,
+          bottom: vv.height + vv.offsetTop,
+        };
+      }
+      return getBoundingClientRect(it as Element);
+    })
+    .reduce((accRect, rect) => {
+      const left = Math.max(accRect.left, rect.left);
+      const right = Math.min(accRect.right, rect.right);
+      const top = Math.max(accRect.top, rect.top);
+      const bottom = Math.min(accRect.bottom, rect.bottom);
+      return {
+        left,
+        right,
+        top,
+        bottom,
       };
-    } else {
-    }
-  });
+    });
+
+  const paddingObject =
+    typeof padding === 'number'
+      ? { left: padding, top: padding, right: padding, bottom: padding }
+      : { left: 0, top: 0, right: 0, bottom: 0, ...padding };
+
+  const { x, y, width, height } = referenceRect;
+
+  return {
+    left: clipRect.left + paddingObject.left - x,
+    top: clipRect.top + paddingObject.top - y,
+    bottom: y + height - clipRect.bottom + paddingObject.bottom,
+    right: x + width - clipRect.right + paddingObject.right,
+  };
 };
 
 const getFiltedOverflowAncestors = (element: Element): Array<Element> => {

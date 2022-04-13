@@ -1,3 +1,4 @@
+import { getBoundingClientRect, isProduction } from '@xl-vision/utils';
 import getOffsetParentRect from './getOffsetParentRect';
 import {
   Middleware,
@@ -8,7 +9,6 @@ import {
   Reference,
 } from '../types';
 import computeCoordsFromPlacement from './computeCoordsFromPlacement';
-import { isHTMLElement } from '@xl-vision/utils';
 
 export type Options = {
   popper: Element;
@@ -21,9 +21,9 @@ export type Options = {
 export default ({ popper, reference, placement, middlewares, mode }: Options) => {
   const { parent: offsetParent, left, top } = getOffsetParentRect(popper);
 
-  const offsetRect = offsetParent.getBoundingClientRect();
+  const offsetRect = getBoundingClientRect(offsetParent);
   const referenceRect = reference.getBoundingClientRect();
-  const popperRect = popper.getBoundingClientRect();
+  const popperRect = getBoundingClientRect(popper);
 
   const offsetX = referenceRect.x - (offsetRect.x + left);
   const offsetY = referenceRect.y - (offsetRect.y + top);
@@ -41,7 +41,24 @@ export default ({ popper, reference, placement, middlewares, mode }: Options) =>
     extra: {},
   };
 
-  middlewares.forEach((middleware) => {
+  let debugCount = 0;
+
+  for (let i = 0; i < middlewares.length; i++) {
+    if (!isProduction) {
+      debugCount++;
+      if (debugCount > 100) {
+        throw new Error(
+          [
+            'usePopper: The middleware lifecycle appears to be',
+            'running in an infinite loop. This is usually caused by a `reset`',
+            'continually being returned without a break condition.',
+          ].join(' '),
+        );
+      }
+    }
+
+    const middleware = middlewares[i];
+
     const middlewareParameter: MiddlewareParameter = {
       ...data,
       referenceRect,
@@ -52,7 +69,6 @@ export default ({ popper, reference, placement, middlewares, mode }: Options) =>
       popper,
     };
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const { name, fn } = middleware;
     const result = fn(middlewareParameter);
 
@@ -81,9 +97,10 @@ export default ({ popper, reference, placement, middlewares, mode }: Options) =>
 
         data.x = newX;
         data.y = newY;
+        i--;
       }
     }
-  });
+  }
 
   return {
     x: offsetX + data.x,

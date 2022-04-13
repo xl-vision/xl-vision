@@ -1,4 +1,4 @@
-import { isWindow } from '@xl-vision/utils';
+import { getBoundingClientRect, isWindow } from '@xl-vision/utils';
 import { EventMap, off, on } from '../utils/event';
 
 export type DOMVerticalDistance = {
@@ -14,7 +14,7 @@ export const getTargetRect = (target: Window | HTMLElement): DOMVerticalDistance
     };
   }
 
-  return target.getBoundingClientRect();
+  return getBoundingClientRect(target);
 };
 
 export function getFixedTop(

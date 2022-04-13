@@ -1,7 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { contains, isBrowser, isProduction, isServer, warning } from '@xl-vision/utils';
+import {
+  contains,
+  getBoundingClientRect,
+  isBrowser,
+  isProduction,
+  isServer,
+  warning,
+} from '@xl-vision/utils';
 import { useForkRef } from '@xl-vision/hooks';
 import Portal, { PortalContainerType } from '../Portal';
 import usePropChange from '../hooks/usePropChange';
@@ -277,7 +284,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
       beforeEnter(el);
       removeClass(el, `${bodyClassName}-enter-from`);
       removeClass(el, `${bodyClassName}-enter-active`);
-      const { x, y } = el.getBoundingClientRect();
+      const { x, y } = getBoundingClientRect(el);
       el.style.transformOrigin = mousePosition
         ? `${mousePosition.x - x}px ${mousePosition.y - y}px`
         : '50% 50%';
