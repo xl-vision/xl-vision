@@ -31,7 +31,7 @@ export default ({ boundary, rootBoundary, padding }: ShiftOptions = {}): Middlew
         console.log(s, value);
         if (value > 0) {
           console.log(1, s, value);
-          pos[key] += value;
+          pos[key] += i % 2 ? -value : value;
           break;
         }
       }

@@ -45,7 +45,7 @@ const Demo = () => {
   const { reference, popper, x, y, mode, update } = usePopper({
     placement: 'right',
     mode: 'absolute',
-    middlewares: [shift(), autoPlacement(),],
+    middlewares: [shift({ padding: 10 }), autoPlacement({ padding: 10 }), offset(10)],
   });
 
   const container = React.useCallback(() => document.body, []);
@@ -73,9 +73,7 @@ const Demo = () => {
         <Portal container={container}>
           <PopperWrapper>
             <div className='popper' ref={popper} style={style}>
-              tooltip
-              tooltip
-              tooltip
+              tooltip tooltip tooltip
             </div>
           </PopperWrapper>
         </Portal>
