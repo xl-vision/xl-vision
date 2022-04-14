@@ -1,10 +1,9 @@
 import { ThemeContext as StyledThemeContext } from '@xl-vision/styled-engine';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { isProduction } from '@xl-vision/utils';
+import { isProduction, deepMerge } from '@xl-vision/utils';
 import createTheme, { BaseTheme } from './createTheme';
 import ThemeContext from './ThemeContext';
-import { deepMerge } from '../utils/function';
 
 export type ThemeProviderProps = {
   children: React.ReactNode;

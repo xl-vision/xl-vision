@@ -22,49 +22,6 @@ export const functionMerge = <Fn extends (...args: Array<any>) => any>(
   };
 };
 
-export const isPlainObject = (item: unknown): item is Record<PropertyKey, unknown> => {
-  return (
-    item !== null &&
-    typeof item === 'object' &&
-    // TS thinks `item is possibly null` even though this was our first guard.
-    item.constructor === Object
-  );
-};
-
-export type DeepmergeOptions = {
-  clone?: boolean;
-};
-
-export const deepMerge = <T>(
-  target: T,
-  source: unknown,
-  options: DeepmergeOptions = { clone: true },
-): T => {
-  const output = options.clone ? { ...target } : target;
-
-  if (isPlainObject(target) && isPlainObject(source)) {
-    Object.keys(source).forEach((key) => {
-      // Avoid prototype pollution
-      if (key === '__proto__' || key === 'constructor') {
-        return;
-      }
-
-      if (isPlainObject(source[key]) && key in target && isPlainObject(target[key])) {
-        // Since `output` is a clone of `target` and we have narrowed `target` in this block we can cast to the same type.
-        (output as Record<PropertyKey, unknown>)[key] = deepMerge(
-          target[key],
-          source[key],
-          options,
-        );
-      } else {
-        (output as Record<PropertyKey, unknown>)[key] = source[key];
-      }
-    });
-  }
-
-  return output;
-};
-
 const defaultCompare = (left: any, right: any) => Object.is(left, right);
 
 export const shallowEqual = (left: any, right: any, compare = defaultCompare) => {

@@ -1,4 +1,4 @@
-import { deepMerge } from '../../utils/function';
+import { deepMerge } from '@xl-vision/utils';
 import { DeepPartial } from '../../utils/types';
 
 export type ComponentSize = 'small' | 'middle' | 'large';

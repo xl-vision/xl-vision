@@ -1,4 +1,4 @@
-import { getBoundingClientRect, isProduction } from '@xl-vision/utils';
+import { deepFreeze, deepMerge, getBoundingClientRect, isProduction } from '@xl-vision/utils';
 import getOffsetParentRect from './utils/getOffsetParentRect';
 import {
   Alignment,
@@ -22,6 +22,13 @@ export type Options = {
 };
 
 export default ({ popper, reference, placement, middlewares, mode }: Options): PopperData => {
+  if (!isProduction) {
+    const names = middlewares.map((it) => it.name);
+    if (names.length !== new Set(names).size) {
+      throw new Error('[usePopper] middlewares should have unique names');
+    }
+  }
+
   const { side, alignment } = splitPlacement(placement);
 
   const { parent: offsetParent, left, top } = getOffsetParentRect(popper);
@@ -56,7 +63,7 @@ export default ({ popper, reference, placement, middlewares, mode }: Options): P
       if (debugCount > 100) {
         throw new Error(
           [
-            'usePopper: The middleware lifecycle appears to be',
+            '[usePopper] The middleware lifecycle appears to be',
             'running in an infinite loop. This is usually caused by a `reset`',
             'continually being returned without a break condition.',
           ].join(' '),
@@ -66,7 +73,7 @@ export default ({ popper, reference, placement, middlewares, mode }: Options): P
 
     const middleware = middlewares[i];
 
-    const middlewareParameter: MiddlewareParameter = {
+    let middlewareParameter: MiddlewareParameter = {
       ...middlewareData,
       referenceRect,
       popperRect,
@@ -77,22 +84,26 @@ export default ({ popper, reference, placement, middlewares, mode }: Options): P
       popper,
     };
 
-    const { fn } = middleware;
+    if (!isProduction) {
+      middlewareParameter = deepMerge({}, middlewareParameter);
+      // deepFreeze(middlewareParameter);
+    }
+
+    const { fn, name } = middleware;
     const result = fn(middlewareParameter);
 
     if (result) {
-      const { extra, reset, ...others } = result;
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      const { data, reset, ...others } = result;
 
       middlewareData = {
         ...middlewareData,
         ...others,
       };
 
-      if (extra) {
-        middlewareData.extra = {
-          ...middlewareData.extra,
-          ...extra,
-        };
+      if (data) {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        middlewareData.extra[name] = data;
       }
 
       if (reset) {

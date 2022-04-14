@@ -8,18 +8,16 @@ export default ({ boundary, rootBoundary, padding }: ShiftOptions = {}): Middlew
   return {
     name: 'shift',
     fn(ctx) {
-      const { x, y, side, extra } = ctx;
+      const { x, y, side } = ctx;
 
       const isVertical = oneOf(['top', 'bottom'], side);
 
-      const overflowRect =
-        extra.overflowRect ||
-        computeOverflowRect({
-          boundary,
-          rootBoundary,
-          padding,
-          ctx,
-        });
+      const overflowRect = computeOverflowRect({
+        boundary,
+        rootBoundary,
+        padding,
+        ctx,
+      });
 
       const sides: Array<Side> = isVertical ? ['left', 'right'] : ['top', 'bottom'];
 
@@ -36,12 +34,7 @@ export default ({ boundary, rootBoundary, padding }: ShiftOptions = {}): Middlew
         }
       }
 
-      return {
-        ...pos,
-        extra: {
-          overflowRect,
-        },
-      };
+      return pos;
     },
   };
 };

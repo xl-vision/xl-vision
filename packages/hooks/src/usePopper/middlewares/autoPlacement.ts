@@ -10,25 +10,19 @@ export default ({ boundary, rootBoundary, padding }: AutoPlacementOptions = {}):
     fn(ctx) {
       const { side, extra } = ctx;
 
-      const overflowRect =
-        extra.overflowRect ||
-        computeOverflowRect({
-          boundary,
-          rootBoundary,
-          padding,
-          ctx,
-        });
+      const overflowRect = computeOverflowRect({
+        boundary,
+        rootBoundary,
+        padding,
+        ctx,
+      });
 
       if (
         Object.keys(overflowRect)
           .map((key) => overflowRect[key as keyof typeof overflowRect])
           .every((value) => value <= 0)
       ) {
-        return {
-          extra: {
-            overflowRect,
-          },
-        };
+        return;
       }
 
       let { autoPlacement } = extra;
@@ -49,21 +43,14 @@ export default ({ boundary, rootBoundary, padding }: AutoPlacementOptions = {}):
       const nextSide = sides[index];
 
       if (!nextSide) {
-        return {
-          extra: {
-            overflowRect,
-          },
-        };
+        return;
       }
 
       return {
         side: nextSide,
-        extra: {
-          overflowRect,
-          autoPlacement: {
-            sides,
-            index: index + 1,
-          },
+        data: {
+          sides,
+          index: index + 1,
         },
         reset: true,
       };

@@ -7,29 +7,24 @@ export default ({ boundary, rootBoundary, padding }: AutoPlacementOptions = {}):
   return {
     name: 'hide',
     fn(ctx) {
-      const { extra, referenceRect } = ctx;
+      const { referenceRect } = ctx;
 
-      const overflowRect =
-        extra.overflowRect ||
-        computeOverflowRect({
-          boundary,
-          rootBoundary,
-          padding,
-          ctx,
-        });
+      const overflowRect = computeOverflowRect({
+        boundary,
+        rootBoundary,
+        padding,
+        ctx,
+      });
 
       const { width, height } = referenceRect;
 
       return {
-        extra: {
-          overflowRect,
-          hide: {
-            referenceHidden:
-              width <= overflowRect.left ||
-              width <= overflowRect.right ||
-              height < overflowRect.top ||
-              height < overflowRect.bottom,
-          },
+        data: {
+          referenceHidden:
+            width <= overflowRect.left ||
+            width <= overflowRect.right ||
+            height < overflowRect.top ||
+            height < overflowRect.bottom,
         },
       };
     },
