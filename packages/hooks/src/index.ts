@@ -10,3 +10,24 @@ export { default as useResizeObserver } from './useResizeObserver';
 export type { ResizeObserverHandler } from './useResizeObserver';
 
 export { usePopper, middlewares as popperMiddlewares } from './usePopper';
+export type {
+  Middleware,
+  MiddlewareData,
+  MiddlewareExtra,
+  Padding,
+  Placement,
+  PopperData,
+  PopperOptions,
+  AlignedPlacement,
+  MiddlewareParameter,
+  MiddlewareReturn,
+  Alignment,
+  Side,
+  Boundary,
+  RootBoundary,
+  OverflowOptions,
+  Rect,
+  Mode,
+  VirtualElement,
+  OverflowRect,
+} from './usePopper';

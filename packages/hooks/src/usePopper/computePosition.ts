@@ -77,18 +77,23 @@ export default ({ popper, reference, placement, middlewares, mode }: Options): P
       popper,
     };
 
-    const { name, fn } = middleware;
+    const { fn } = middleware;
     const result = fn(middlewareParameter);
 
     if (result) {
-      const { data, reset, ...others } = result;
+      const { extra, reset, ...others } = result;
 
       middlewareData = {
         ...middlewareData,
         ...others,
       };
 
-      middlewareData.extra[name] = data;
+      if (extra) {
+        middlewareData.extra = {
+          ...middlewareData.extra,
+          ...extra,
+        };
+      }
 
       if (reset) {
         const { x: newX, y: newY } = computeCoordsFromPlacement({

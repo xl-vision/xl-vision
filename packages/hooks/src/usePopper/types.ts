@@ -18,11 +18,22 @@ export type Rect = {
   height: number;
 };
 
+export type OverflowRect = {
+  left: number;
+  top: number;
+  bottom: number;
+  right: number;
+};
+
 export type MiddlewareExtra = {
   [key: string]: any;
+  overflowRect?: OverflowRect;
   autoPlacement?: {
     sides: Array<Side>;
     index: number;
+  };
+  hide?: {
+    referenceHidden: boolean;
   };
 };
 
@@ -54,7 +65,6 @@ export type MiddlewareParameter = MiddlewareData & {
 export type MiddlewareReturn = Partial<
   MiddlewareData & {
     reset: boolean;
-    data: Record<string, any>;
   }
 >;
 
@@ -72,5 +82,5 @@ export type Padding =
 export type OverflowOptions = Partial<{
   boundary: Boundary;
   rootBoundary: RootBoundary;
-  padding: Padding;
+  padding: Padding | ((data: { side: Side; alignment?: Alignment }) => Padding);
 }>;

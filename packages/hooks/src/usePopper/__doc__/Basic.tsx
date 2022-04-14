@@ -1,6 +1,7 @@
 import React from 'react';
-import { usePopper, popperMiddlewares } from '@xl-vision/hooks';
+import { usePopper, popperMiddlewares, Side } from '@xl-vision/hooks';
 import { styled, Button, Portal } from '@xl-vision/react';
+import { Padding } from '../types';
 
 const { offset, autoPlacement, shift } = popperMiddlewares;
 
@@ -41,11 +42,29 @@ const PopperWrapper = styled('div')(({ theme }) => {
   };
 });
 
+const paddingFn = ({ side }: { side: Side }): Padding => {
+  switch (side) {
+    case 'top':
+    case 'bottom': {
+      return {
+        bottom: 10,
+        top: 10,
+      };
+    }
+    default: {
+      return {
+        left: 10,
+        right: 10,
+      };
+    }
+  }
+};
+
 const Demo = () => {
   const { reference, popper, x, y, mode, update } = usePopper({
     placement: 'right',
     mode: 'absolute',
-    middlewares: [shift({ padding: 10 }), autoPlacement({ padding: 10 }), offset(10)],
+    middlewares: [shift({ padding: paddingFn }), autoPlacement({ padding: paddingFn }), offset(10)],
   });
 
   const container = React.useCallback(() => document.body, []);

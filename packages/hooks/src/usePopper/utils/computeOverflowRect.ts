@@ -8,7 +8,7 @@ import {
   isHTMLElement,
   oneOf,
 } from '@xl-vision/utils';
-import { MiddlewareParameter, OverflowOptions, RootBoundary } from '../types';
+import { MiddlewareParameter, OverflowOptions, OverflowRect, RootBoundary } from '../types';
 import getNodeName from './getNodeName';
 import getParentNode from './getParentNode';
 
@@ -21,8 +21,8 @@ export default ({
   rootBoundary = 'viewport',
   padding = 0,
   ctx,
-}: Options) => {
-  const { reference, popper, popperRect, x, y, referenceRect } = ctx;
+}: Options): OverflowRect => {
+  const { reference, popper, popperRect, x, y, referenceRect, side, alignment } = ctx;
 
   const element = isElement(reference)
     ? reference
@@ -74,6 +74,8 @@ export default ({
         bottom,
       };
     });
+
+  padding = typeof padding === 'function' ? padding({ side, alignment }) : padding;
 
   const paddingObject =
     typeof padding === 'number'
