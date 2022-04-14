@@ -18,6 +18,7 @@ const usePopper = ({ placement, mode = 'fixed', middlewares }: PopperOptions) =>
     x: 0,
     y: 0,
     placement,
+    extra: {},
   });
 
   const update = useConstantFn(() => {
@@ -59,11 +60,11 @@ const usePopper = ({ placement, mode = 'fixed', middlewares }: PopperOptions) =>
   }, [update]);
 
   return {
+    ...data,
     update,
     reference: setReference,
     popper: setPopper,
     mode,
-    ...data,
   };
 };
 

@@ -7,6 +7,7 @@ import {
   MiddlewareParameter,
   Mode,
   Placement,
+  PopperData,
   Side,
   VirtualElement,
 } from './types';
@@ -20,7 +21,7 @@ export type Options = {
   mode: Mode;
 };
 
-export default ({ popper, reference, placement, middlewares, mode }: Options) => {
+export default ({ popper, reference, placement, middlewares, mode }: Options): PopperData => {
   const { side, alignment } = splitPlacement(placement);
 
   const { parent: offsetParent, left, top } = getOffsetParentRect(popper);
@@ -87,7 +88,7 @@ export default ({ popper, reference, placement, middlewares, mode }: Options) =>
         ...others,
       };
 
-      middlewareData.extra[name] = data || {};
+      middlewareData.extra[name] = data;
 
       if (reset) {
         const { x: newX, y: newY } = computeCoordsFromPlacement({
@@ -110,9 +111,8 @@ export default ({ popper, reference, placement, middlewares, mode }: Options) =>
   return {
     x: offsetX + middlewareData.x,
     y: offsetY + middlewareData.y,
-    side: actualSide,
-    alignment: actualAlignment,
     placement: (actualSide + (actualAlignment ? `-${actualAlignment}` : '')) as Placement,
+    extra: middlewareData.extra,
   };
 };
 

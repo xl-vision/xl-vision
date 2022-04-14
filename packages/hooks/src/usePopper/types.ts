@@ -11,12 +11,6 @@ export type AlignedPlacement = `${Side}-${Alignment}`;
 
 export type Placement = Side | AlignedPlacement;
 
-export type PopperData = {
-  x: number;
-  y: number;
-  placement: Placement;
-};
-
 export type Rect = {
   x: number;
   y: number;
@@ -24,12 +18,27 @@ export type Rect = {
   height: number;
 };
 
+export type MiddlewareExtra = {
+  [key: string]: any;
+  autoPlacement?: {
+    sides: Array<Side>;
+    index: number;
+  };
+};
+
 export type MiddlewareData = {
   x: number;
   y: number;
   side: Side;
   alignment?: Alignment;
-  extra: Record<string, Record<string, any>>;
+  extra: MiddlewareExtra;
+};
+
+export type PopperData = {
+  x: number;
+  y: number;
+  placement: Placement;
+  extra: MiddlewareExtra;
 };
 
 export type MiddlewareParameter = MiddlewareData & {

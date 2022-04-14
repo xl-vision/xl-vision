@@ -36,9 +36,9 @@ export default ({ boundary, rootBoundary, padding }: AutoPlacementOptions = {}):
         };
       }
 
-      const sides = overflowData.sides as Array<Side>;
+      const { sides } = overflowData;
 
-      const index = overflowData.index as number;
+      const { index } = overflowData;
 
       const nextSide = sides[index];
 
