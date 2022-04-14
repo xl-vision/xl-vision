@@ -8,18 +8,20 @@ import {
   isHTMLElement,
   oneOf,
 } from '@xl-vision/utils';
-import { Boundary, MiddlewareParameter, RootBoundary } from '../types';
+import { MiddlewareParameter, OverflowOptions, RootBoundary } from '../types';
 import getNodeName from './getNodeName';
 import getParentNode from './getParentNode';
 
-export type Options = {
-  boundary: Boundary;
-  rootBoundary: RootBoundary;
-  padding: number | Partial<{ top: number; right: number; left: number; bottom: number }>;
+export type Options = OverflowOptions & {
   ctx: MiddlewareParameter;
 };
 
-export default ({ boundary, rootBoundary, padding, ctx }: Options) => {
+export default ({
+  boundary = 'clippingAncestors',
+  rootBoundary = 'viewport',
+  padding = 0,
+  ctx,
+}: Options) => {
   const { reference, popper, popperRect, x, y, referenceRect } = ctx;
 
   const element = isElement(reference)

@@ -1,14 +1,16 @@
 import { getBoundingClientRect, isProduction } from '@xl-vision/utils';
-import getOffsetParentRect from './getOffsetParentRect';
+import getOffsetParentRect from './utils/getOffsetParentRect';
 import {
+  Alignment,
   Middleware,
   MiddlewareData,
   MiddlewareParameter,
   Mode,
   Placement,
+  Side,
   VirtualElement,
-} from '../types';
-import computeCoordsFromPlacement from './computeCoordsFromPlacement';
+} from './types';
+import computeCoordsFromPlacement from './utils/computeCoordsFromPlacement';
 
 export type Options = {
   popper: Element;
@@ -19,6 +21,8 @@ export type Options = {
 };
 
 export default ({ popper, reference, placement, middlewares, mode }: Options) => {
+  const { side, alignment } = splitPlacement(placement);
+
   const { parent: offsetParent, left, top } = getOffsetParentRect(popper);
 
   const offsetRect = getBoundingClientRect(offsetParent);
@@ -29,13 +33,15 @@ export default ({ popper, reference, placement, middlewares, mode }: Options) =>
   const offsetY = referenceRect.y - (offsetRect.y + top);
 
   const { x, y } = computeCoordsFromPlacement({
-    placement,
+    side,
+    alignment,
     referenceRect,
     popperRect,
   });
 
   let middlewareData: MiddlewareData = {
-    placement,
+    side,
+    alignment,
     x,
     y,
     extra: {},
@@ -63,7 +69,8 @@ export default ({ popper, reference, placement, middlewares, mode }: Options) =>
       ...middlewareData,
       referenceRect,
       popperRect,
-      initialPlacement: placement,
+      initialSide: side,
+      initialAlignment: alignment,
       mode,
       reference,
       popper,
@@ -84,7 +91,8 @@ export default ({ popper, reference, placement, middlewares, mode }: Options) =>
 
       if (reset) {
         const { x: newX, y: newY } = computeCoordsFromPlacement({
-          placement: middlewareData.placement,
+          side: middlewareData.side,
+          alignment: middlewareData.alignment,
           referenceRect,
           popperRect,
         });
@@ -96,9 +104,23 @@ export default ({ popper, reference, placement, middlewares, mode }: Options) =>
     }
   }
 
+  const actualSide = middlewareData.side;
+  const actualAlignment = middlewareData.alignment;
+
   return {
     x: offsetX + middlewareData.x,
     y: offsetY + middlewareData.y,
-    placement: middlewareData.placement,
+    side: actualSide,
+    alignment: actualAlignment,
+    placement: (actualSide + (actualAlignment ? `-${actualAlignment}` : '')) as Placement,
+  };
+};
+
+const splitPlacement = (placement: Placement) => {
+  const [side, alignment] = placement.split('-');
+
+  return {
+    side: side as Side,
+    alignment: alignment as Alignment | undefined,
   };
 };

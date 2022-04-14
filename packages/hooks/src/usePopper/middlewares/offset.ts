@@ -3,10 +3,8 @@ import { Middleware } from '../types';
 export default (offset: number): Middleware => {
   return {
     name: 'offset',
-    fn({ x, y, placement }) {
-      const [position] = placement.split('-');
-
-      switch (position) {
+    fn({ x, y, side }) {
+      switch (side) {
         case 'top': {
           y -= offset;
           break;

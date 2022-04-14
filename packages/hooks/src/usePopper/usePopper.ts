@@ -1,7 +1,7 @@
 import { RefCallback, useCallback, useRef, useState } from 'react';
 import useConstantFn from '../useConstantFn';
 import useLayoutEffect from '../useLayoutEffect';
-import computePosition from './utils/computePosition';
+import computePosition from './computePosition';
 import { Middleware, Mode, Placement, PopperData, VirtualElement } from './types';
 
 export type PopperOptions = {

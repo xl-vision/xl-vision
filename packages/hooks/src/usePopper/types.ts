@@ -27,7 +27,8 @@ export type Rect = {
 export type MiddlewareData = {
   x: number;
   y: number;
-  placement: Placement;
+  side: Side;
+  alignment?: Alignment;
   extra: Record<string, Record<string, any>>;
 };
 
@@ -37,7 +38,8 @@ export type MiddlewareParameter = MiddlewareData & {
   popperRect: Rect;
   referenceRect: Rect;
   mode: Mode;
-  initialPlacement: Placement;
+  initialSide: Side;
+  initialAlignment?: Alignment;
 };
 
 export type MiddlewareReturn = Partial<
@@ -54,3 +56,12 @@ export type Middleware = {
 
 export type Boundary = 'clippingAncestors' | Element | Array<Element>;
 export type RootBoundary = 'viewport' | 'document';
+export type Padding =
+  | number
+  | Partial<{ top: number; right: number; left: number; bottom: number }>;
+
+export type OverflowOptions = Partial<{
+  boundary: Boundary;
+  rootBoundary: RootBoundary;
+  padding: Padding;
+}>;

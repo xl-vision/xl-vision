@@ -1,18 +1,17 @@
 import { oneOf } from '@xl-vision/utils';
-import { Placement, Rect } from '../types';
+import { Alignment, Rect, Side } from '../types';
 
 export type Options = {
-  placement: Placement;
+  side: Side;
+  alignment?: Alignment;
   referenceRect: Rect;
   popperRect: Rect;
 };
 
-export default ({ placement, referenceRect, popperRect }: Options) => {
-  const [position, axis] = placement.split('-');
-
+export default ({ side, alignment, referenceRect, popperRect }: Options) => {
   let coords: { x: number; y: number };
 
-  switch (position) {
+  switch (side) {
     case 'top': {
       coords = {
         x: (referenceRect.width - popperRect.width) / 2,
@@ -49,13 +48,13 @@ export default ({ placement, referenceRect, popperRect }: Options) => {
     }
   }
 
-  const isVertical = oneOf(['top', 'bottom'], position);
+  const isVertical = oneOf(['top', 'bottom'], side);
 
   const mainAxis = isVertical ? 'x' : 'y';
 
   const direction = isVertical ? 'width' : 'height';
 
-  switch (axis) {
+  switch (alignment) {
     case 'start': {
       coords[mainAxis] -= (referenceRect[direction] - popperRect[direction]) / 2;
       break;

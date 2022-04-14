@@ -1,55 +1,55 @@
 import { oneOf } from '@xl-vision/utils';
-import { Middleware, Placement } from '../types';
+import { Middleware, OverflowOptions, Side } from '../types';
 import computeOverflowRect from '../utils/computeOverflowRect';
 
-export type Boundary = 'clippingAncestors' | Element | Array<Element>;
+export type AutoPlacementOptions = OverflowOptions & {};
 
-export default (): Middleware => {
+export default ({ boundary, rootBoundary, padding }: AutoPlacementOptions = {}): Middleware => {
   return {
     name: 'autoPlacement',
     fn(ctx) {
       const overflowRect = computeOverflowRect({
-        boundary: 'clippingAncestors',
-        rootBoundary: 'viewport',
-        padding: 0,
+        boundary,
+        rootBoundary,
+        padding,
         ctx,
       });
 
       if (
         Object.keys(overflowRect)
           .map((key) => overflowRect[key as keyof typeof overflowRect])
-          .every((value) => value < 0)
+          .every((value) => value <= 0)
       ) {
         return;
       }
 
-      const { placement, extra } = ctx;
+      const { side, extra } = ctx;
 
       let overflowData = extra.autoPlacement;
 
       if (!overflowData) {
-        const placements = getNextPlacements(placement);
+        const sides = getNextSides(side);
         const index = 0;
         overflowData = {
-          placements,
+          sides,
           index,
         };
       }
 
-      const placements = overflowData.placements as Array<Placement>;
+      const sides = overflowData.sides as Array<Side>;
 
       const index = overflowData.index as number;
 
-      const nextPlacement = placements[index];
+      const nextSide = sides[index];
 
-      if (!nextPlacement) {
+      if (!nextSide) {
         return;
       }
 
       return {
-        placement: nextPlacement,
+        side: nextSide,
         data: {
-          placements,
+          sides,
           index: index + 1,
         },
         reset: true,
@@ -58,32 +58,27 @@ export default (): Middleware => {
   };
 };
 
-const directionMap: Record<string, string> = {
+const sideMap: Record<Side, Side> = {
   left: 'right',
   right: 'left',
   top: 'bottom',
   bottom: 'top',
 };
 
-const getNextPlacements = (placement: Placement) => {
-  const [direction, side] = placement.split('-');
-  const placements: Array<string> = [];
+const getNextSides = (side: Side) => {
+  const sides: Array<Side> = [];
 
-  placements.push(genPlacement(directionMap[direction], side));
+  sides.push(sideMap[side]);
 
-  if (oneOf(['top', 'bottom'], direction)) {
-    placements.push(genPlacement('left', side));
-    placements.push(genPlacement('right', side));
+  if (oneOf(['top', 'bottom'], side)) {
+    sides.push('left');
+    sides.push('right');
   } else {
-    placements.push(genPlacement('top', side));
-    placements.push(genPlacement('bottom', side));
+    sides.push('top');
+    sides.push('bottom');
   }
 
-  placements.push(placement);
+  sides.push(side);
 
-  return placements as Array<Placement>;
-};
-
-const genPlacement = (direcition: string, side?: string): Placement => {
-  return `${direcition}${side ? `-${side}` : ''}` as Placement;
+  return sides;
 };
