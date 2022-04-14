@@ -10,18 +10,6 @@ declare global {
   }
 }
 
-export const isHTMLElement = (value: Node): value is HTMLElement => {
-  return value instanceof getWindow(value).HTMLElement;
-};
-
-export const isElement = (value: Node): value is Element => {
-  return value instanceof getWindow(value).Element;
-};
-
-export const isShadowRoot = (value: Node): value is ShadowRoot => {
-  return value instanceof getWindow(value).ShadowRoot;
-};
-
 export const isNode = (value: unknown): value is Node => {
   if (typeof value !== 'object') {
     return false;
@@ -29,6 +17,18 @@ export const isNode = (value: unknown): value is Node => {
   return (value as Node).nodeType > 0 && value instanceof getWindow(value as Node).Node;
 };
 
-export const isDocument = (value: Node): value is Document => {
-  return value instanceof getWindow(value).Document;
+export const isHTMLElement = (value: unknown): value is HTMLElement => {
+  return isNode(value) && value instanceof getWindow(value).HTMLElement;
+};
+
+export const isElement = (value: unknown): value is Element => {
+  return isNode(value) && value instanceof getWindow(value).Element;
+};
+
+export const isShadowRoot = (value: unknown): value is ShadowRoot => {
+  return isNode(value) && value instanceof getWindow(value).ShadowRoot;
+};
+
+export const isDocument = (value: unknown): value is Document => {
+  return isNode(value) && value instanceof getWindow(value).Document;
 };

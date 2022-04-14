@@ -2,7 +2,7 @@ import { RefCallback, useCallback, useRef, useState } from 'react';
 import useConstantFn from '../useConstantFn';
 import useLayoutEffect from '../useLayoutEffect';
 import computePosition from './utils/computePosition';
-import { Middleware, Mode, Placement, PopperData } from './types';
+import { Middleware, Mode, Placement, PopperData, VirtualElement } from './types';
 
 export type PopperOptions = {
   placement: Placement;
@@ -11,8 +11,8 @@ export type PopperOptions = {
 };
 
 const usePopper = ({ placement, mode = 'fixed', middlewares }: PopperOptions) => {
-  const referenceRef = useRef<HTMLElement | null>();
-  const popperRef = useRef<HTMLElement | null>();
+  const referenceRef = useRef<Element | VirtualElement | null>();
+  const popperRef = useRef<Element | null>();
 
   const [data, setData] = useState<PopperData>({
     x: 0,

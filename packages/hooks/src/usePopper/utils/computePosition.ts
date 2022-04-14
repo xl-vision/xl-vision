@@ -6,13 +6,13 @@ import {
   MiddlewareParameter,
   Mode,
   Placement,
-  Reference,
+  VirtualElement,
 } from '../types';
 import computeCoordsFromPlacement from './computeCoordsFromPlacement';
 
 export type Options = {
   popper: Element;
-  reference: Reference;
+  reference: Element | VirtualElement;
   placement: Placement;
   middlewares: Array<Middleware>;
   mode: Mode;

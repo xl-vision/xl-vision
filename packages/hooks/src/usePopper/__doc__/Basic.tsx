@@ -7,13 +7,14 @@ const { offset, autoPlacement } = popperMiddlewares;
 const Root = styled('div')(({ theme }) => {
   const { color } = theme;
   return {
+    marginTop: 250,
     backgroundColor: color.grey[400],
     borderRadius: 4,
     height: 200,
     padding: 20,
-    overflow: 'auto',
+    // overflow: 'auto',
     button: {
-      marginTop: 250,
+      // marginTop: 250,
     },
   };
 });
@@ -35,7 +36,7 @@ const PopperWrapper = styled('div')(({ theme }) => {
 
 const Demo = () => {
   const { reference, popper, x, y, mode, update } = usePopper({
-    placement: 'right-end',
+    placement: 'bottom',
     mode: 'absolute',
     middlewares: [autoPlacement(), offset(10)],
   });
@@ -48,15 +49,22 @@ const Demo = () => {
     left: x,
   };
 
+  React.useEffect(() => {
+    document.addEventListener('scroll', update);
+    return () => {
+      document.removeEventListener('scroll', update);
+    };
+  }, []);
+
   return (
-    <Root onScroll={update}>
+    <Root>
       <Button className='reference' color='primary' ref={reference}>
         reference
       </Button>
       <Portal container={container}>
         <PopperWrapper>
           <div className='popper' ref={popper} style={style}>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto quae possimus tempore
+            Lorem, ipsum dolor sit
           </div>
         </PopperWrapper>
       </Portal>

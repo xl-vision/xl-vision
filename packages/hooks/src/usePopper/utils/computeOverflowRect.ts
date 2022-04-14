@@ -2,24 +2,30 @@ import {
   contains,
   getBoundingClientRect,
   getComputedStyle,
+  getDocumentElement,
   getWindow,
   isElement,
   isHTMLElement,
   oneOf,
 } from '@xl-vision/utils';
-import { Boundary, Rect, RootBoundary } from '../types';
+import { Boundary, MiddlewareParameter, RootBoundary } from '../types';
 import getNodeName from './getNodeName';
 import getParentNode from './getParentNode';
 
 export type Options = {
   boundary: Boundary;
   rootBoundary: RootBoundary;
-  element: Element;
-  elementRect: Rect;
   padding: number | Partial<{ top: number; right: number; left: number; bottom: number }>;
+  ctx: MiddlewareParameter;
 };
 
-export default ({ boundary, rootBoundary, element, padding, elementRect }: Options) => {
+export default ({ boundary, rootBoundary, padding, ctx }: Options) => {
+  const { reference, popper, popperRect, x, y, referenceRect } = ctx;
+
+  const element = isElement(reference)
+    ? reference
+    : reference.elementContext || getDocumentElement(popper);
+
   const ancestors: Array<Element | RootBoundary> =
     boundary === 'clippingAncestors'
       ? getFiltedOverflowAncestors(element)
@@ -42,7 +48,17 @@ export default ({ boundary, rootBoundary, element, padding, elementRect }: Optio
           bottom: vv.height + vv.offsetTop,
         };
       }
-      return getBoundingClientRect(it as Element);
+      const { left, top } = getBoundingClientRect(it as Element);
+
+      const innerLeft = left + (it as Element).clientLeft;
+      const innerTop = top + (it as Element).clientTop;
+
+      return {
+        left: innerLeft,
+        top: innerTop,
+        bottom: innerTop + (it as Element).clientHeight,
+        right: innerLeft + (it as Element).clientWidth,
+      };
     })
     .reduce((accRect, rect) => {
       const left = Math.max(accRect.left, rect.left);
@@ -62,13 +78,16 @@ export default ({ boundary, rootBoundary, element, padding, elementRect }: Optio
       ? { left: padding, top: padding, right: padding, bottom: padding }
       : { left: 0, top: 0, right: 0, bottom: 0, ...padding };
 
-  const { x, y, width, height } = elementRect;
+  const nextPopperRectLeft = referenceRect.x + x;
+  const nextPopperRectTop = referenceRect.y + y;
+  const nextPopperRectRight = nextPopperRectLeft + popperRect.width;
+  const nextPopperRectBottom = nextPopperRectTop + popperRect.height;
 
   return {
-    left: clipRect.left + paddingObject.left - x,
-    top: clipRect.top + paddingObject.top - y,
-    bottom: y + height - clipRect.bottom + paddingObject.bottom,
-    right: x + width - clipRect.right + paddingObject.right,
+    left: clipRect.left + paddingObject.left - nextPopperRectLeft,
+    top: clipRect.top + paddingObject.top - nextPopperRectTop,
+    bottom: nextPopperRectBottom - clipRect.bottom + paddingObject.bottom,
+    right: nextPopperRectRight - clipRect.right + paddingObject.right,
   };
 };
 
@@ -91,7 +110,7 @@ const getOverflowAncestors = (node: Node): Array<Element> => {
 
   const scrollableAncestor = getNearestOverflowAncestor(node);
 
-  if (scrollableAncestor) {
+  if (scrollableAncestor && scrollableAncestor !== scrollableAncestor.ownerDocument.body) {
     list.push(scrollableAncestor);
     list.push(...getOverflowAncestors(scrollableAncestor));
   }

@@ -7,12 +7,29 @@ export type Boundary = 'clippingAncestors' | Element | Array<Element>;
 export default (): Middleware => {
   return {
     name: 'autoPlacement',
-    fn({ popper, popperRect, placement, extra }) {
+    fn(ctx) {
+      const overflowRect = computeOverflowRect({
+        boundary: 'clippingAncestors',
+        rootBoundary: 'viewport',
+        padding: 0,
+        ctx,
+      });
+
+      if (
+        Object.keys(overflowRect)
+          .map((key) => overflowRect[key as keyof typeof overflowRect])
+          .every((value) => value < 0)
+      ) {
+        return;
+      }
+
+      const { placement, extra } = ctx;
+
       let overflowData = extra.autoPlacement;
 
       if (!overflowData) {
         const placements = getNextPlacements(placement);
-        const index = -1;
+        const index = 0;
         overflowData = {
           placements,
           index,
@@ -21,36 +38,22 @@ export default (): Middleware => {
 
       const placements = overflowData.placements as Array<Placement>;
 
-      const nextIndex = (overflowData.index as number) + 1;
+      const index = overflowData.index as number;
 
-      const nextPlacement = placements[nextIndex];
+      const nextPlacement = placements[index];
 
       if (!nextPlacement) {
         return;
       }
 
-      const overflowRect = computeOverflowRect({
-        boundary: 'clippingAncestors',
-        rootBoundary: 'viewport',
-        padding: 0,
-        element: popper,
-        elementRect: popperRect,
-      });
-
-      if (
-        Object.keys(overflowRect)
-          .map((key) => overflowRect[key as keyof typeof overflowRect])
-          .every((value) => value < 0)
-      ) {
-        return {
-          placement: nextPlacement,
-          data: {
-            placements,
-            index: nextIndex,
-          },
-          reset: true,
-        };
-      }
+      return {
+        placement: nextPlacement,
+        data: {
+          placements,
+          index: index + 1,
+        },
+        reset: true,
+      };
     },
   };
 };
@@ -75,6 +78,8 @@ const getNextPlacements = (placement: Placement) => {
     placements.push(genPlacement('top', side));
     placements.push(genPlacement('bottom', side));
   }
+
+  placements.push(placement);
 
   return placements as Array<Placement>;
 };
