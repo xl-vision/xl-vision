@@ -1,9 +1,9 @@
 import { Middleware, OverflowOptions } from '../types';
 import computeOverflowRect from '../utils/computeOverflowRect';
 
-export type AutoPlacementOptions = OverflowOptions & {};
+export type HideOptions = OverflowOptions & {};
 
-export default ({ boundary, rootBoundary, padding }: AutoPlacementOptions = {}): Middleware => {
+export default ({ boundary, rootBoundary, padding }: HideOptions = {}): Middleware => {
   return {
     name: 'hide',
     fn(ctx) {
