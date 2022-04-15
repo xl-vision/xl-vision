@@ -1,112 +1,108 @@
 import React from 'react';
-import { usePopper, popperMiddlewares, Side } from '@xl-vision/hooks';
+import { usePopper } from '@xl-vision/hooks';
 import { styled, Button, Portal } from '@xl-vision/react';
-import { Padding } from '../types';
 
-const { offset, autoPlacement, shift, hide } = popperMiddlewares;
-
-const Root = styled('div')(({ theme }) => {
-  const { color } = theme;
-  return {
-    backgroundColor: color.grey[400],
-    borderRadius: 4,
-    height: 200,
-    padding: 20,
-    overflow: 'auto',
-    '.container': {
-      height: 800,
-    },
-
-    '.box': {
-      height: 300,
-    },
-
-    button: {
-      // marginTop: 250,
-    },
-  };
-});
-
-const PopperWrapper = styled('div')(({ theme }) => {
-  return {
-    top: 200,
-    left: 100,
-    position: 'absolute',
-
-    '.popper': {
-      padding: 8,
-      borderRadius: 3,
-      backgroundColor: theme.color.themes.success.color,
-      cColor: theme.color.themes.success.text.primary,
-    },
-  };
-});
-
-const paddingFn = ({ side }: { side: Side }): Padding => {
-  switch (side) {
-    case 'top':
-    case 'bottom': {
-      return {
-        bottom: 10,
-        top: 10,
-      };
-    }
-    default: {
-      return {
-        left: 10,
-        right: 10,
-      };
-    }
-  }
-};
+const container = () => document.body;
 
 const Demo = () => {
-  const { reference, popper, x, y, mode, update, extra } = usePopper({
-    placement: 'right',
+  const rafIdRef = React.useRef<number | undefined>();
+
+  const { reference, popper, x, y, mode, update } = usePopper({
+    placement: 'top',
     mode: 'absolute',
-    middlewares: [
-      shift({ padding: paddingFn }),
-      autoPlacement({ padding: paddingFn }),
-      offset(10),
-      hide(),
-    ],
   });
 
-  const hidden = extra.hide?.referenceHidden;
+  const handleUpdate = React.useMemo(() => {
+    // 节流
+    const throttle = () => {
+      if (rafIdRef.current !== undefined) {
+        return;
+      }
+      rafIdRef.current = requestAnimationFrame(() => {
+        update();
+        rafIdRef.current = undefined;
+      });
+    };
+    return throttle;
+  }, [update]);
 
-  const container = React.useCallback(() => document.body, []);
+  React.useEffect(() => {
+    return () => {
+      if (rafIdRef.current !== undefined) {
+        cancelAnimationFrame(rafIdRef.current);
+      }
+    };
+  }, []);
+
+  React.useEffect(() => {
+    document.addEventListener('scroll', handleUpdate);
+    return () => {
+      document.removeEventListener('scroll', handleUpdate);
+    };
+  }, [handleUpdate]);
 
   const style = {
     position: mode,
     top: y,
     left: x,
-    display: hidden ? 'none' : 'block',
   };
 
-  React.useEffect(() => {
-    document.addEventListener('scroll', update);
-    return () => {
-      document.removeEventListener('scroll', update);
-    };
-  }, [update]);
-
   return (
-    <Root onScroll={update}>
-      <div className='container'>
-        <div className='box' />
+    <>
+      <Root onScroll={handleUpdate}>
         <Button className='reference' color='primary' ref={reference}>
           reference
         </Button>
-        <Portal container={container}>
-          <PopperWrapper>
-            <div className='popper' ref={popper} style={style}>
-              tooltip tooltip tooltip
-            </div>
-          </PopperWrapper>
-        </Portal>
-      </div>
-    </Root>
+      </Root>
+      <Portal container={container}>
+        <Popper ref={popper} style={style}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae pellentesque elit,
+          in dapibus enim. Aliquam hendrerit iaculis facilisis.
+        </Popper>
+      </Portal>
+    </>
   );
 };
 
 export default Demo;
+
+const Root = styled('div')(({ theme }) => {
+  const { color } = theme;
+  return {
+    position: 'relative',
+    height: 400,
+    border: `1px solid ${color.divider}`,
+    overflow: 'auto',
+
+    '&:before': {
+      display: 'block',
+      content: '" "',
+      height: 300,
+      width: '100%',
+    },
+    '&:after': {
+      display: 'block',
+      content: '" "',
+      height: 300,
+      width: '100%',
+    },
+
+    '.reference': {
+      marginLeft: 'calc(50% - 60px)',
+    },
+  };
+});
+
+const Popper = styled('div')(({ theme }) => {
+  const { color } = theme;
+
+  const baseColor = color.mode === 'dark' ? color.modes.light : color.modes.dark;
+
+  return {
+    padding: 8,
+    borderRadius: 4,
+    maxWidth: 200,
+    color: baseColor.text.primary,
+    backgroundColor: color.emphasize(baseColor.background.paper, 0.1),
+  };
+});
