@@ -1,4 +1,4 @@
-import { deepFreeze, deepMerge, getBoundingClientRect, isProduction } from '@xl-vision/utils';
+import { getBoundingClientRect, isProduction } from '@xl-vision/utils';
 import getOffsetParentRect from './utils/getOffsetParentRect';
 import {
   Alignment,
@@ -73,7 +73,7 @@ export default ({ popper, reference, placement, middlewares, mode }: Options): P
 
     const middleware = middlewares[i];
 
-    let middlewareParameter: MiddlewareParameter = {
+    const middlewareParameter: MiddlewareParameter = {
       ...middlewareData,
       referenceRect,
       popperRect,
@@ -83,11 +83,6 @@ export default ({ popper, reference, placement, middlewares, mode }: Options): P
       reference,
       popper,
     };
-
-    if (!isProduction) {
-      middlewareParameter = deepMerge({}, middlewareParameter);
-      // deepFreeze(middlewareParameter);
-    }
 
     const { fn, name } = middleware;
     const result = fn(middlewareParameter);

@@ -3,7 +3,7 @@ import { usePopper, popperMiddlewares, Side } from '@xl-vision/hooks';
 import { styled, Button, Portal } from '@xl-vision/react';
 import { Padding } from '../types';
 
-const { offset, autoPlacement, shift } = popperMiddlewares;
+const { offset, autoPlacement, shift, hide } = popperMiddlewares;
 
 const Root = styled('div')(({ theme }) => {
   const { color } = theme;
@@ -61,11 +61,18 @@ const paddingFn = ({ side }: { side: Side }): Padding => {
 };
 
 const Demo = () => {
-  const { reference, popper, x, y, mode, update } = usePopper({
+  const { reference, popper, x, y, mode, update, extra } = usePopper({
     placement: 'right',
     mode: 'absolute',
-    middlewares: [shift({ padding: paddingFn }), autoPlacement({ padding: paddingFn }), offset(10)],
+    middlewares: [
+      shift({ padding: paddingFn }),
+      autoPlacement({ padding: paddingFn }),
+      offset(10),
+      hide(),
+    ],
   });
+
+  const hidden = extra.hide?.referenceHidden;
 
   const container = React.useCallback(() => document.body, []);
 
@@ -73,6 +80,7 @@ const Demo = () => {
     position: mode,
     top: y,
     left: x,
+    display: hidden ? 'none' : 'block',
   };
 
   React.useEffect(() => {

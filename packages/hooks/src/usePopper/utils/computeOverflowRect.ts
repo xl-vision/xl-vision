@@ -8,18 +8,20 @@ import {
   isHTMLElement,
   oneOf,
 } from '@xl-vision/utils';
-import { MiddlewareParameter, OverflowOptions, OverflowRect, RootBoundary } from '../types';
+import { MiddlewareParameter, OverflowOptions, OverflowRect, Rect, RootBoundary } from '../types';
 import getNodeName from './getNodeName';
 import getParentNode from './getParentNode';
 
 export type Options = OverflowOptions & {
   ctx: MiddlewareParameter;
+  target?: 'reference' | 'popper';
 };
 
 export default ({
   boundary = 'clippingAncestors',
   rootBoundary = 'viewport',
   padding = 0,
+  target = 'popper',
   ctx,
 }: Options): OverflowRect => {
   const { reference, popper, popperRect, x, y, referenceRect, side, alignment } = ctx;
@@ -82,16 +84,20 @@ export default ({
       ? { left: padding, top: padding, right: padding, bottom: padding }
       : { left: 0, top: 0, right: 0, bottom: 0, ...padding };
 
-  const nextPopperRectLeft = referenceRect.x + x;
-  const nextPopperRectTop = referenceRect.y + y;
-  const nextPopperRectRight = nextPopperRectLeft + popperRect.width;
-  const nextPopperRectBottom = nextPopperRectTop + popperRect.height;
+  const rect: Rect =
+    target === 'reference'
+      ? referenceRect
+      : {
+          ...popperRect,
+          x: referenceRect.x + x,
+          y: referenceRect.y + y,
+        };
 
   return {
-    left: clipRect.left + paddingObject.left - nextPopperRectLeft,
-    top: clipRect.top + paddingObject.top - nextPopperRectTop,
-    bottom: nextPopperRectBottom - clipRect.bottom + paddingObject.bottom,
-    right: nextPopperRectRight - clipRect.right + paddingObject.right,
+    left: clipRect.left + paddingObject.left - rect.x,
+    top: clipRect.top + paddingObject.top - rect.y,
+    bottom: rect.y + rect.height - clipRect.bottom + paddingObject.bottom,
+    right: rect.x + rect.width - clipRect.right + paddingObject.right,
   };
 };
 

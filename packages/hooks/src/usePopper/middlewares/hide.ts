@@ -13,6 +13,7 @@ export default ({ boundary, rootBoundary, padding }: AutoPlacementOptions = {}):
         boundary,
         rootBoundary,
         padding,
+        target: 'reference',
         ctx,
       });
 
