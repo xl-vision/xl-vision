@@ -8,7 +8,7 @@ import {
   isHTMLElement,
   oneOf,
 } from '@xl-vision/utils';
-import { MiddlewareParameter, OverflowOptions, OverflowRect, Rect, RootBoundary } from '../types';
+import { MiddlewareParameter, OverflowOptions, OverflowRect, RootBoundary } from '../types';
 import getNodeName from './getNodeName';
 import getParentNode from './getParentNode';
 
@@ -84,7 +84,7 @@ export default ({
       ? { left: padding, top: padding, right: padding, bottom: padding }
       : { left: 0, top: 0, right: 0, bottom: 0, ...padding };
 
-  const rect: Rect =
+  const rect =
     target === 'reference'
       ? referenceRect
       : {

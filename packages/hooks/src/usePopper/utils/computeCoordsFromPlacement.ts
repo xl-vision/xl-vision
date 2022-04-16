@@ -1,11 +1,11 @@
 import { oneOf } from '@xl-vision/utils';
-import { Alignment, Rect, Side } from '../types';
+import { Alignment, PopperRect, ReferenceRect, Side } from '../types';
 
 export type Options = {
   side: Side;
   alignment?: Alignment;
-  referenceRect: Rect;
-  popperRect: Rect;
+  referenceRect: ReferenceRect;
+  popperRect: PopperRect;
 };
 
 export default ({ side, alignment, referenceRect, popperRect }: Options) => {

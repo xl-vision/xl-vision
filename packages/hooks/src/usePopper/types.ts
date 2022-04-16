@@ -1,7 +1,7 @@
 export type Mode = 'fixed' | 'absolute';
 
 export type VirtualElement = {
-  getBoundingClientRect: () => Rect;
+  getBoundingClientRect: () => ReferenceRect;
   elementContext?: Element;
 };
 
@@ -11,9 +11,14 @@ export type AlignedPlacement = `${Side}-${Alignment}`;
 
 export type Placement = Side | AlignedPlacement;
 
-export type Rect = {
+export type ReferenceRect = {
   x: number;
   y: number;
+  width: number;
+  height: number;
+};
+
+export type PopperRect = {
   width: number;
   height: number;
 };
@@ -51,8 +56,8 @@ export type MiddlewareData = Omit<PopperData, 'placement'> & {
 export type MiddlewareParameter = MiddlewareData & {
   popper: Element;
   reference: Element | VirtualElement;
-  popperRect: Rect;
-  referenceRect: Rect;
+  popperRect: PopperRect;
+  referenceRect: ReferenceRect;
   mode: Mode;
   initialSide: Side;
   initialAlignment?: Alignment;

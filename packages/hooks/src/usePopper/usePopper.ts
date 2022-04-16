@@ -39,14 +39,14 @@ const usePopper = ({ placement, mode = 'fixed', middlewares }: PopperOptions) =>
     setData((prev) => ({ ...prev, ...newData }));
   }, [placement, mode, middlewares]);
 
-  const setReference: RefCallback<HTMLElement> = useCallback(
+  const setReference: RefCallback<Element | VirtualElement> = useCallback(
     (el) => {
       referenceRef.current = el;
       update();
     },
     [update],
   );
-  const setPopper: RefCallback<HTMLElement> = useCallback(
+  const setPopper: RefCallback<Element> = useCallback(
     (el) => {
       popperRef.current = el;
       update();

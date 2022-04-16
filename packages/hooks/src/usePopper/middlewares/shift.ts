@@ -2,7 +2,9 @@ import { oneOf } from '@xl-vision/utils';
 import { Middleware, OverflowOptions, Side } from '../types';
 import computeOverflowRect from '../utils/computeOverflowRect';
 
-export type ShiftOptions = OverflowOptions & {};
+export type ShiftOptions = OverflowOptions & {
+  main
+};
 
 export default ({ boundary, rootBoundary, padding }: ShiftOptions = {}): Middleware => {
   return {

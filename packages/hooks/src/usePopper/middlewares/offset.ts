@@ -1,24 +1,45 @@
 import { Middleware } from '../types';
 
-export default (offset: number): Middleware => {
+export type OffsetAxes = {
+  mainAxis?: number;
+  crossAxis?: number;
+};
+
+export type OffsetOptions = number | OffsetAxes;
+
+export default (offset: OffsetOptions): Middleware => {
+  let mainAxis = 0;
+  let crossAxis = 0;
+
+  if (typeof offset === 'number') {
+    mainAxis = offset;
+  } else {
+    mainAxis = offset.mainAxis || 0;
+    crossAxis = offset.crossAxis || 0;
+  }
+
   return {
     name: 'offset',
     fn({ x, y, side }) {
       switch (side) {
         case 'top': {
-          y -= offset;
+          y -= mainAxis;
+          x -= crossAxis;
           break;
         }
         case 'bottom': {
-          y += offset;
+          y += mainAxis;
+          x += crossAxis;
           break;
         }
         case 'left': {
-          x -= offset;
+          x -= mainAxis;
+          y -= crossAxis;
           break;
         }
         case 'right': {
-          x += offset;
+          x += mainAxis;
+          y += crossAxis;
           break;
         }
         default:

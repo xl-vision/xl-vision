@@ -1,4 +1,4 @@
-import { getBoundingClientRect, isProduction } from '@xl-vision/utils';
+import { getBoundingClientRect, isHTMLElement, isProduction } from '@xl-vision/utils';
 import getOffsetParentRect from './utils/getOffsetParentRect';
 import {
   Alignment,
@@ -8,6 +8,7 @@ import {
   Mode,
   Placement,
   PopperData,
+  PopperRect,
   Side,
   VirtualElement,
 } from './types';
@@ -35,7 +36,7 @@ export default ({ popper, reference, placement, middlewares, mode }: Options): P
 
   const offsetRect = getBoundingClientRect(offsetParent);
   const referenceRect = reference.getBoundingClientRect();
-  const popperRect = getBoundingClientRect(popper);
+  const popperRect = getPopperRect(popper);
 
   const offsetX = referenceRect.x - (offsetRect.x + left);
   const offsetY = referenceRect.y - (offsetRect.y + top);
@@ -133,5 +134,21 @@ const splitPlacement = (placement: Placement) => {
   return {
     side: side as Side,
     alignment: alignment as Alignment | undefined,
+  };
+};
+
+const getPopperRect = (popper: Element): PopperRect => {
+  if (isHTMLElement(popper)) {
+    return {
+      width: popper.offsetWidth,
+      height: popper.offsetHeight,
+    };
+  }
+
+  const rect = getBoundingClientRect(popper);
+
+  return {
+    width: rect.width,
+    height: rect.height,
   };
 };
