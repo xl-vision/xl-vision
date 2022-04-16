@@ -1,4 +1,4 @@
-import { useLayoutEffect } from '@xl-vision/hooks';
+import { useIsomorphicLayoutEffect } from '@xl-vision/hooks';
 import { useRef } from 'react';
 
 export enum LifecycleState {
@@ -10,7 +10,7 @@ export enum LifecycleState {
 const useLifecycleState = () => {
   const stateRef = useRef(LifecycleState.BEFORE_MOUNTED);
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     stateRef.current = LifecycleState.MOUNTED;
     return () => {
       stateRef.current = LifecycleState.DESTORYED;

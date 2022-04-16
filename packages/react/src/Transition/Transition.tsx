@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { isProduction, warning } from '@xl-vision/utils';
-import { useConstantFn, useLayoutEffect, useForkRef } from '@xl-vision/hooks';
+import { useConstantFn, useIsomorphicLayoutEffect, useForkRef } from '@xl-vision/hooks';
 import useLifecycleState, { LifecycleState } from '../hooks/useLifecycleState';
 import findDomNode from '../utils/findDomNode';
 import { supportRef } from '../utils/ref';
@@ -136,7 +136,7 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
   });
 
   // 必须同步执行，否则可能由于浏览器性能问题，导致延后调用，会出现界面一直停留在还没有初始化之前
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     stateTrigger(state);
   }, [
     state,
@@ -172,7 +172,7 @@ const Transition: React.FunctionComponent<TransitionProps> = (props) => {
   });
 
   // 保证动画立即开始
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     inPropTrigger(inProp);
   }, [
     inProp,

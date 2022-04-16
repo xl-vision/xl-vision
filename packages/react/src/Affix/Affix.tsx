@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useConstantFn, useForkRef, useLayoutEffect } from '@xl-vision/hooks';
+import { useConstantFn, useForkRef, useIsomorphicLayoutEffect } from '@xl-vision/hooks';
 import clsx from 'clsx';
 import { getBoundingClientRect, isProduction, isServer } from '@xl-vision/utils';
 import { styled } from '../styles';
@@ -160,7 +160,7 @@ const Affix = React.forwardRef<AffixIntance, AffixProps>((props, ref) => {
   }, [handleEventEmit]);
 
   // 保证同步更新，避免闪烁
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (status === AffixStatus.PREPARE) {
       setStatus(AffixStatus.NONE);
       measure();

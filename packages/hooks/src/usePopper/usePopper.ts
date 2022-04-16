@@ -1,6 +1,5 @@
 import { RefCallback, useCallback, useRef, useState } from 'react';
-import useConstantFn from '../useConstantFn';
-import useLayoutEffect from '../useLayoutEffect';
+import useLayoutEffect from '../useIsomorphicLayoutEffect';
 import computePosition from './computePosition';
 import { Middleware, Mode, Placement, PopperData, VirtualElement } from './types';
 
@@ -21,7 +20,7 @@ const usePopper = ({ placement, mode = 'fixed', middlewares }: PopperOptions) =>
     extra: {},
   });
 
-  const update = useConstantFn(() => {
+  const update = useCallback(() => {
     const reference = referenceRef.current;
     const popper = popperRef.current;
 
@@ -38,7 +37,7 @@ const usePopper = ({ placement, mode = 'fixed', middlewares }: PopperOptions) =>
     });
 
     setData((prev) => ({ ...prev, ...newData }));
-  });
+  }, [placement, mode, middlewares]);
 
   const setReference: RefCallback<HTMLElement> = useCallback(
     (el) => {

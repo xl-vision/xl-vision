@@ -1,6 +1,6 @@
 export { default as useConstantFn } from './useConstantFn';
 export { default as useForkRef } from './useForkRef';
-export { default as useLayoutEffect } from './useLayoutEffect';
+export { default as useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 export { default as useMedia } from './useMedia';
 export { default as usePrevious } from './usePrevious';
 export { default as useMount } from './useMount';

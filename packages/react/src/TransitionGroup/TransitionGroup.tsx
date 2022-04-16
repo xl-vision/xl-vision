@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { isProduction, warning } from '@xl-vision/utils';
-import { useLayoutEffect } from '@xl-vision/hooks';
+import { useIsomorphicLayoutEffect } from '@xl-vision/hooks';
 import CssTransition, { CssTransitionClassesObject, CssTransitionProps } from '../CssTransition';
 import { AfterEventHook } from '../Transition';
 import { omit } from '../utils/function';
@@ -78,7 +78,7 @@ const TransitionGroup: React.FunctionComponent<TransitionGroupProps> = (props) =
     [afterLeave],
   );
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const prevChildren = prevChildrenRef.current;
     const array = prevChildren
       ? diff(prevChildren, children)
