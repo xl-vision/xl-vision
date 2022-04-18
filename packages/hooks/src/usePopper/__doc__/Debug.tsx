@@ -1,5 +1,5 @@
 import React from 'react';
-import { usePopper, popperMiddlewares, Side } from '@xl-vision/hooks';
+import { usePopper, popperMiddlewares, Side, PopperOptions } from '@xl-vision/hooks';
 import { styled, Button, Portal } from '@xl-vision/react';
 import { Padding } from '../types';
 
@@ -61,37 +61,41 @@ const paddingFn = ({ side }: { side: Side }): Padding => {
 };
 
 const Demo = () => {
-  const { reference, popper, x, y, mode, update, extra } = usePopper({
-    placement: 'right',
-    mode: 'absolute',
-    middlewares: [
-      shift({ padding: paddingFn }),
-      autoPlacement({ padding: paddingFn }),
-      offset(10),
-      hide(),
-    ],
-  });
+  const popperOptions = React.useMemo<PopperOptions>(() => {
+    return {
+      placement: 'right',
+      mode: 'absolute',
+      middlewares: [
+        shift({ padding: paddingFn }),
+        autoPlacement({ padding: paddingFn }),
+        offset(10),
+        hide(),
+      ],
+    };
+  }, []);
+
+  const { reference, popper, x, y, mode, update: handleUpdate, extra } = usePopper(popperOptions);
 
   const hidden = extra.hide?.referenceHidden;
 
   const container = React.useCallback(() => document.body, []);
 
-  const style = {
+  const style: React.CSSProperties = {
     position: mode,
     top: y,
     left: x,
-    display: hidden ? 'none' : 'block',
+    visibility: hidden ? 'hidden' : 'visible',
   };
 
   React.useEffect(() => {
-    document.addEventListener('scroll', update);
+    document.addEventListener('scroll', handleUpdate);
     return () => {
-      document.removeEventListener('scroll', update);
+      document.removeEventListener('scroll', handleUpdate);
     };
-  }, [update]);
+  }, [handleUpdate]);
 
   return (
-    <Root onScroll={update}>
+    <Root onScroll={handleUpdate}>
       <div className='container'>
         <div className='box' />
         <Button className='reference' color='primary' ref={reference}>

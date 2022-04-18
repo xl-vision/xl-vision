@@ -9,7 +9,15 @@ const Demo = () => {
   const popper2Ref = React.useRef<CustomPopperInstance>(null);
   const popper3Ref = React.useRef<CustomPopperInstance>(null);
 
-  const middlewares: Array<Middleware> = React.useMemo(() => {
+  const middlewares1: Array<Middleware> = React.useMemo(() => {
+    return [shift()];
+  }, []);
+
+  const middlewares2: Array<Middleware> = React.useMemo(() => {
+    return [shift({ crossAxis: true })];
+  }, []);
+
+  const middlewares3: Array<Middleware> = React.useMemo(() => {
     return [shift()];
   }, []);
 
@@ -23,13 +31,13 @@ const Demo = () => {
     <DemoRoot onScroll={handleScroll}>
       <Row>
         <Row.Col column={6} offset={3}>
-          <CustomPopper ref={popper1Ref} placement='left' middlewares={middlewares} />
+          <CustomPopper ref={popper1Ref} placement='left' middlewares={middlewares1} />
         </Row.Col>
         <Row.Col column={6}>
-          <CustomPopper ref={popper2Ref} placement='top' middlewares={middlewares} />
+          <CustomPopper ref={popper2Ref} placement='top' middlewares={middlewares2} />
         </Row.Col>
         <Row.Col column={6}>
-          <CustomPopper ref={popper3Ref} placement='right' middlewares={middlewares} />
+          <CustomPopper ref={popper3Ref} placement='right' middlewares={middlewares3} />
         </Row.Col>
       </Row>
     </DemoRoot>

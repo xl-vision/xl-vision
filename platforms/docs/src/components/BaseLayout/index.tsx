@@ -93,7 +93,11 @@ const MainWrapper = styled('div')(({ theme }) => {
   };
 });
 
-const BaseLayout: React.FunctionComponent<BaseLayoutProps> = ({ children, routeName, appendEn }) => {
+const BaseLayout: React.FunctionComponent<BaseLayoutProps> = ({
+  children,
+  routeName,
+  appendEn,
+}) => {
   // const { locale } = useLocale();
 
   const asideRef = React.useRef<HTMLDivElement>(null);
