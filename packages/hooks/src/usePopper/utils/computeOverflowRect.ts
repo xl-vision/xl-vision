@@ -45,11 +45,23 @@ export default ({
     .map((it) => {
       if (it === 'viewport') {
         const vv = win.visualViewport;
+
+        if (vv) {
+          return {
+            left: vv.offsetLeft,
+            top: vv.offsetTop,
+            right: vv.width + vv.offsetLeft,
+            bottom: vv.height + vv.offsetTop,
+          };
+        }
+
+        const html = getDocumentElement(element);
+
         return {
-          left: vv.offsetLeft,
-          top: vv.offsetTop,
-          right: vv.width + vv.offsetLeft,
-          bottom: vv.height + vv.offsetTop,
+          left: 0,
+          top: 0,
+          right: html.clientWidth,
+          bottom: html.clientHeight,
         };
       }
       const { left, top } = getBoundingClientRect(it as Element);
