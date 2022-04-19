@@ -3375,7 +3375,7 @@ packages:
       babel-plugin-syntax-jsx: 6.18.0
       lodash: 4.17.21
       picomatch: 2.3.0
-      styled-components: 5.3.5_281a4fa50a045c9112baf635f3bc27a7
+      styled-components: 5.3.5_07c3f46f02454abeb4a4ede5be11f9b7
 
   /babel-plugin-syntax-jsx/6.18.0:
     resolution: {integrity: sha1-CvMqmm4Tyno/1QaeYtew9Y0NiUY=}
