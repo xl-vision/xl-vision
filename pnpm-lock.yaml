@@ -160,7 +160,7 @@ importers:
   packages/react:
     specifiers:
       '@popperjs/core': ^2.11.4
-      '@types/prop-types': ^15.7.4
+      '@types/prop-types': ^15.7.5
       '@types/react-is': ^17.0.3
       '@xl-vision/hooks': workspace:^
       '@xl-vision/icons': workspace:^
@@ -179,19 +179,19 @@ importers:
       prop-types: 15.8.1
       react-is: 17.0.2
     devDependencies:
-      '@types/prop-types': 15.7.4
+      '@types/prop-types': 15.7.5
       '@types/react-is': 17.0.3
 
   packages/styled-engine:
     specifiers:
-      '@types/prop-types': ^15.7.4
+      '@types/prop-types': ^15.7.5
       '@xl-vision/styled-engine-types': workspace:^
       prop-types: ^15.8.1
     dependencies:
       '@xl-vision/styled-engine-types': link:../styled-engine-types
       prop-types: 15.8.1
     devDependencies:
-      '@types/prop-types': 15.7.4
+      '@types/prop-types': 15.7.5
 
   packages/styled-engine-types:
     specifiers:
@@ -2656,6 +2656,10 @@ packages:
 
   /@types/prop-types/15.7.4:
     resolution: {integrity: sha512-rZ5drC/jWjrArrS8BR6SIr4cWpW09RNTYt9AMZo3Jwwif+iacXAqgVjm0B0Bv/S1jhDXKHqRVNCbACkJ89RAnQ==}
+
+  /@types/prop-types/15.7.5:
+    resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
+    dev: true
 
   /@types/react-dom/17.0.11:
     resolution: {integrity: sha512-f96K3k+24RaLGVu/Y2Ng3e1EbZ8/cVJvypZWd7cy0ofCBaf2lcM46xNhycMZ2xGwbBjRql7hOlZ+e2WlJ5MH3Q==}
