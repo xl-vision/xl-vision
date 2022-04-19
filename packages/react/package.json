@@ -45,7 +45,7 @@
     "react-is": "^17.0.2"
   },
   "devDependencies": {
-    "@types/prop-types": "^15.7.4",
+    "@types/prop-types": "^15.7.5",
     "@types/react-is": "^17.0.3"
   },
   "peerDependencies": {
