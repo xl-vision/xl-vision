@@ -130,6 +130,7 @@ const Preview: React.FunctionComponent<PreviewProps> = (props) => {
       'react-dom': `https://unpkg.com/react-dom${_reactVersion}/umd/react-dom.production.min.js?callback=defined`,
       '@xl-vision/react': `https://unpkg.com/@xl-vision/react${_libVersion}/dist/index.production.min.js?callback=defined`,
       '@xl-vision/icons': `https://unpkg.com/@xl-vision/icons${_libVersion}/dist/index.production.min.js?callback=defined`,
+      '@xl-vision/hooks': `https://unpkg.com/@xl-vision/hooks${_libVersion}/dist/index.production.min.js?callback=defined`,
     };
   }, [reactVersion, libVersion]);
 
