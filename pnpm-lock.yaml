@@ -24,7 +24,7 @@ importers:
       '@types/node': 17.0.4
       '@types/react': ^17.0.24
       '@types/react-dom': ^17.0.9
-      '@types/styled-components': ^5.1.24
+      '@types/styled-components': ^5.1.25
       '@typescript-eslint/eslint-plugin': ^5.18.0
       '@typescript-eslint/parser': ^5.18.0
       chalk: ^4.1.2
@@ -86,7 +86,7 @@ importers:
       '@types/node': 17.0.4
       '@types/react': 17.0.38
       '@types/react-dom': 17.0.11
-      '@types/styled-components': 5.1.24
+      '@types/styled-components': 5.1.25
       '@typescript-eslint/eslint-plugin': 5.18.0_f76bd3b698b5acf2440f554528079c82
       '@typescript-eslint/parser': 5.18.0_eslint@8.12.0+typescript@4.6.2
       chalk: 4.1.2
@@ -2693,8 +2693,8 @@ packages:
     resolution: {integrity: sha512-Hl219/BT5fLAaz6NDkSuhzasy49dwQS/DSdu4MdggFB8zcXv7vflBI3xp7FEmkmdDkBUI2bPUNeMttp2knYdxw==}
     dev: true
 
-  /@types/styled-components/5.1.24:
-    resolution: {integrity: sha512-mz0fzq2nez+Lq5IuYammYwWgyLUE6OMAJTQL9D8hFLP4Pkh7gVYJii/VQWxq8/TK34g/OrkehXaFNdcEKcItug==}
+  /@types/styled-components/5.1.25:
+    resolution: {integrity: sha512-fgwl+0Pa8pdkwXRoVPP9JbqF0Ivo9llnmsm+7TCI330kbPIFd9qv1Lrhr37shf4tnxCOSu+/IgqM7uJXLWZZNQ==}
     dependencies:
       '@types/hoist-non-react-statics': 3.3.1
       '@types/react': 17.0.38
@@ -6227,7 +6227,7 @@ packages:
     dev: true
 
   /hoist-non-react-statics/3.3.2:
-    resolution: {integrity: sha1-7OCsr3HWLClpwuxZ/v9CpLGoW0U=}
+    resolution: {integrity: sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==}
     dependencies:
       react-is: 16.13.1
 
