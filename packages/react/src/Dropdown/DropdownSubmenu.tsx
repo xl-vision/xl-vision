@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { RightOutlined } from '@xl-vision/icons';
-import { env } from '@xl-vision/utils';
+import { isProduction, isServer } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
 import BaseButton from '../BaseButton';
 import usePropChange from '../hooks/usePropChange';
@@ -202,7 +202,7 @@ const DropdownSubmenu = React.forwardRef<HTMLDivElement, DropdownSubmenuProps>((
   );
 });
 
-if (!env.isProduction) {
+if (!isProduction) {
   DropdownSubmenu.displayName = displayName;
 
   const triggerPropType = PropTypes.oneOf<PopperTrigger>([
@@ -243,7 +243,7 @@ if (!env.isProduction) {
     popupContainer: PropTypes.oneOfType([
       PropTypes.func,
       PropTypes.string,
-      env.isServer ? PropTypes.any : PropTypes.instanceOf(Element),
+      isServer ? PropTypes.any : PropTypes.instanceOf(Element),
     ]),
     className: PropTypes.string,
   };

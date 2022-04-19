@@ -1,5 +1,4 @@
-import { env } from '@xl-vision/utils';
-import warning from './warning';
+import { isServer, warning } from '@xl-vision/utils';
 
 export type ContainerReturnType<E extends Element = Element> = E | string | undefined | null;
 export type ContainerType<E extends Element = Element> =
@@ -7,7 +6,7 @@ export type ContainerType<E extends Element = Element> =
   | (() => ContainerReturnType<E>);
 
 export default <E extends Element = Element>(container: ContainerType<E>): E | null => {
-  if (env.isServer) {
+  if (isServer) {
     return null;
   }
 

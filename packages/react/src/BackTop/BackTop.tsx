@@ -1,6 +1,6 @@
 import { useConstantFn } from '@xl-vision/hooks';
 import { VerticalAlignTopOutlined } from '@xl-vision/icons';
-import { env } from '@xl-vision/utils';
+import { isProduction, isServer } from '@xl-vision/utils';
 import clsx from 'clsx';
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -69,7 +69,7 @@ const BackTop = React.forwardRef<HTMLDivElement, BackTopProps>((props, ref) => {
   const { clsPrefix } = useTheme();
 
   const {
-    target: targetProp = getDefaultTarget,
+    target = getDefaultTarget,
     container: containerProp = getDefaultContainer,
     bottom = 40,
     right = 40,
@@ -87,18 +87,11 @@ const BackTop = React.forwardRef<HTMLDivElement, BackTopProps>((props, ref) => {
 
   const [currentTarget, setCurrentTarget] = React.useState<Window | HTMLElement>();
 
-  const getTarget = useConstantFn(() => {
-    return typeof targetProp === 'function' ? targetProp() : targetProp;
-  });
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   React.useEffect(() => {
-    const nextTarget = getTarget();
-    if (currentTarget === nextTarget) {
-      return;
-    }
+    const nextTarget = typeof target === 'function' ? target() : target;
+
     setCurrentTarget(nextTarget);
-  });
+  }, [target]);
 
   React.useEffect(() => {
     if (!currentTarget) {
@@ -168,18 +161,18 @@ const BackTop = React.forwardRef<HTMLDivElement, BackTopProps>((props, ref) => {
   return <Portal container={containerProp}>{node}</Portal>;
 });
 
-if (!env.isProduction) {
+if (!isProduction) {
   BackTop.displayName = displayName;
   BackTop.propTypes = {
     target: PropTypes.oneOfType([
       PropTypes.func,
-      ...(env.isServer
+      ...(isServer
         ? [PropTypes.any]
         : [PropTypes.instanceOf(Window), PropTypes.instanceOf(HTMLElement)]),
     ]),
     container: PropTypes.oneOfType([
       PropTypes.func,
-      ...(env.isServer ? [PropTypes.any] : [PropTypes.instanceOf(Element)]),
+      ...(isServer ? [PropTypes.any] : [PropTypes.instanceOf(Element)]),
     ]),
     bottom: PropTypes.number,
     right: PropTypes.number,

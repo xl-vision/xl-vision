@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { env } from '@xl-vision/utils';
+import { getBoundingClientRect, isProduction } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
 import TransitionGroup, { TransitionGroupClasses } from '../TransitionGroup';
 import { styled } from '../styles';
@@ -118,7 +118,7 @@ const Ripple = React.forwardRef<RippleRef, RippleProps>((props, ref) => {
         ? ((e as React.UIEvent).currentTarget as HTMLElement)
         : containerRef.current;
       const rect = el
-        ? el.getBoundingClientRect()
+        ? getBoundingClientRect(el)
         : {
             left: 0,
             top: 0,
@@ -210,7 +210,7 @@ const Ripple = React.forwardRef<RippleRef, RippleProps>((props, ref) => {
   );
 });
 
-if (!env.isProduction) {
+if (!isProduction) {
   Ripple.displayName = displayName;
 
   Ripple.propTypes = {

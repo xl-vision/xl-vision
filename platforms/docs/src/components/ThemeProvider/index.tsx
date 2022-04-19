@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { BaseTheme, ThemeProvider as XlThemeProvider } from '@xl-vision/react';
-import { useLayoutEffect } from '@xl-vision/hooks';
+import { useIsomorphicLayoutEffect } from '@xl-vision/hooks';
 import Cookies from 'js-cookie';
+import { noop } from '@xl-vision/utils';
 
 export type ThemeProviderProps = {
   children: React.ReactNode;
@@ -15,7 +16,7 @@ export type ThemeContextProps = {
 
 export const ThemeContext = React.createContext<ThemeContextProps>({
   isDark: false,
-  setDark: () => {},
+  setDark: noop,
 });
 
 const KEY = 'DARK_MODE';
@@ -25,7 +26,7 @@ const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = (props) => {
 
   const [isDark, setDark] = React.useState(false);
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const dark = Cookies.get(KEY) === 'dark';
     setDark(dark);
   }, []);

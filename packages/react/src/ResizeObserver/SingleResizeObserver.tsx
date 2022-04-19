@@ -5,10 +5,9 @@ import {
   useForkRef,
   useResizeObserver,
 } from '@xl-vision/hooks';
-import { env } from '@xl-vision/utils';
+import { isProduction, warning } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { supportRef } from '../utils/ref';
-import warning from '../utils/warning';
 
 export type SingleResizeObserverProps = {
   children: React.ReactElement;
@@ -26,19 +25,22 @@ const SingleResizeObserver = React.forwardRef<unknown, SingleResizeObserverProps
 
   const resizeRef = useResizeObserver(handleResizeObserver);
 
-  const child = React.Children.only(children);
+  const child: React.ReactElement = React.Children.only(children);
 
   warning(!supportRef(child), '<%s>: child does not support ref', displayName);
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
-  const forkRef = useForkRef(resizeRef, ref, (child as any).ref);
+  const forkRef = useForkRef(
+    resizeRef,
+    ref,
+    (child as unknown as { ref?: React.Ref<unknown> }).ref,
+  );
 
   return React.cloneElement(child, {
     ref: forkRef,
   });
 });
 
-if (!env.isProduction) {
+if (!isProduction) {
   SingleResizeObserver.displayName = displayName;
   SingleResizeObserver.propTypes = {
     children: PropTypes.element.isRequired,

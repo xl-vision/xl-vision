@@ -41,7 +41,7 @@ const ActiveLink: React.FunctionComponent<LinkProps> = (props) => {
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
   const classes = clsx(child.className, {
-    active: href === pathname,
+    active: (href as string).replace(/\/$/, '') === pathname,
   });
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
@@ -83,6 +83,7 @@ const traverseRoutes = (
   routeName: string,
   routesArray: Array<RouteType>,
   language: string,
+  appendEn: boolean,
   level = 1,
 ): JSX.Element => {
   const routeElements: Array<JSX.Element> = [];
@@ -95,7 +96,7 @@ const traverseRoutes = (
     let el: JSX.Element;
 
     if ('children' in it) {
-      const childElements = traverseRoutes(routeName, it.children, language, level + 1);
+      const childElements = traverseRoutes(routeName, it.children, language, appendEn, level + 1);
       el = (
         <>
           <NonLeftNode style={{ paddingLeft: padding * level }}>{title}</NonLeftNode>
@@ -108,7 +109,7 @@ const traverseRoutes = (
       const fullPath = `/${routeName}${path}`;
 
       const enUsName = titleMap['en-US'];
-      title = lang === 'en-US' ? enUsName : `${title} ${enUsName}`;
+      title = lang === 'en-US' ? enUsName : appendEn ? `${title} ${enUsName}` : title;
 
       el = (
         <ActiveLink passHref={true} href={fullPath}>
@@ -137,17 +138,18 @@ const Wrapper = styled('div')(() => {
 
 export type AsideProps = React.HTMLAttributes<HTMLDivElement> & {
   routeName: keyof Route;
+  appendEn?: boolean;
 };
 
 const Aside: React.FunctionComponent<AsideProps> = React.forwardRef<HTMLDivElement, AsideProps>(
   (props, ref) => {
     const { language } = useLocale();
 
-    const { routeName, ...others } = props;
+    const { routeName, appendEn = true, ...others } = props;
 
     const nodes = React.useMemo(() => {
-      return traverseRoutes(routeName, route[routeName], language);
-    }, [routeName, language]);
+      return traverseRoutes(routeName, route[routeName], language, appendEn);
+    }, [routeName, language, appendEn]);
 
     if (!nodes) {
       return null;

@@ -1,0 +1,61 @@
+# usePopper
+
+方便地创建 tooltip、popover 等组件的 Hook
+
+## 示例
+
+:::demo ./Basic
+
+基本用法
+
+基础用法
+
+:::
+
+:::demo ./Offset
+
+偏移
+
+通过设置`offset`，控制 popper 与 reference 之间的间距。
+
+:::
+
+:::demo ./Shift
+
+保持弹框在可视区
+
+通过对 popper 位置进行一定的偏移，保证其始终在可视区域内。当 reference 全部离开可视区时，popper 也会跟随。也就是说 popper 是优先程度地保持在可视区中。
+
+:::
+
+:::demo ./AutoPlacement
+
+自动计算位置
+
+指定方向的可视空间不足时，会自动选择有足够空间的方向进行展示，`autoPlacement`和`shift`不可混用。
+
+:::
+
+:::demo ./Hide
+
+隐藏
+
+reference 超出可视区域后，自动隐藏 popper。
+
+:::
+
+:::demo ./Debug debug
+
+Debug
+
+Debug
+
+:::
+
+## usePopper API
+
+| 参数 | 说明 | 类型 | 默认值 | 是否必填 |
+| --- | --- | --- | --- | --- |
+| placement | popper 的位置 | `top` \| `top-start` \| `top-end `\| `right` \| `right-start` \| `right-end` \| `bottom` \| `bottom-start` \| `bottom-end` \| `left` \| `left-start` \| `left-end` | - | true |
+| mode | 定位模式 | `fixed` \| `absolute` | `fixed` | false |
+| middlewares | 中间件 | Array\<Middleware\> | - | false |

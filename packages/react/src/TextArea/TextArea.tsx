@@ -1,4 +1,4 @@
-import { env } from '@xl-vision/utils';
+import { isProduction } from '@xl-vision/utils';
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
@@ -326,7 +326,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
   );
 });
 
-if (env.isDevelopment) {
+if (!isProduction) {
   TextArea.displayName = displayName;
   TextArea.propTypes = {
     value: PropTypes.string,
@@ -338,6 +338,7 @@ if (env.isDevelopment) {
     disabled: PropTypes.bool,
     readOnly: PropTypes.bool,
     // TODO [2022-05-01]: types fix
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     autoHeight: PropTypes.oneOfType([
       PropTypes.bool.isRequired,

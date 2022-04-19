@@ -200,8 +200,8 @@ const Preview: React.FunctionComponent<PreviewProps> = (props) => {
       onLoaded();
     }
 
-    (win as unknown as { $$onError: any }).$$onError = onError;
-    (win as unknown as { $$onLoaded: any }).$$onLoaded = onLoaded;
+    (win as unknown as { $$onError: typeof onError }).$$onError = onError;
+    (win as unknown as { $$onLoaded: typeof onLoaded }).$$onLoaded = onLoaded;
   }, []);
 
   return (

@@ -1,15 +1,20 @@
 import { useConstantFn, useForkRef } from '@xl-vision/hooks';
-import { env } from '@xl-vision/utils';
 import clsx from 'clsx';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CSSObject } from '@xl-vision/styled-engine';
+import {
+  getBoundingClientRect,
+  getDocumentElement,
+  isProduction,
+  isServer,
+  isWindow,
+  oneOf,
+} from '@xl-vision/utils';
 import Affix from '../Affix';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 import { off, on } from '../utils/event';
-import { oneOf } from '../utils/function';
-import isWindow from '../utils/isWindow';
 import { throttleByAnimationFrame } from '../utils/perf';
 import { getScroll, scrollTo } from '../utils/scroll';
 import AnchorContext from './AnchorContext';
@@ -112,15 +117,11 @@ const Anchor = React.forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
 
   const inkNodeRef = React.useRef<HTMLDivElement>(null);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   React.useEffect(() => {
     const nextScrollTarget = typeof scrollTarget === 'function' ? scrollTarget() : scrollTarget;
 
-    if (currentScrollTarget === nextScrollTarget) {
-      return;
-    }
     setCurrentScrollTarget(nextScrollTarget);
-  });
+  }, [scrollTarget]);
 
   const handleScroll = useConstantFn(() => {
     if (isScollingRef.current) {
@@ -310,19 +311,19 @@ const Anchor = React.forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
   );
 });
 
-if (!env.isProduction) {
+if (!isProduction) {
   Anchor.displayName = displayName;
   Anchor.propTypes = {
     affix: PropTypes.bool,
     affixTarget: PropTypes.oneOfType([
       PropTypes.func,
-      ...(env.isServer
+      ...(isServer
         ? [PropTypes.any]
         : [PropTypes.instanceOf(Window), PropTypes.instanceOf(HTMLElement)]),
     ]),
     scrollTarget: PropTypes.oneOfType([
       PropTypes.func,
-      ...(env.isServer
+      ...(isServer
         ? [PropTypes.any]
         : [PropTypes.instanceOf(Window), PropTypes.instanceOf(HTMLElement)]),
     ]),
@@ -344,14 +345,13 @@ const getOffsetTop = (element: HTMLElement, container: Window | HTMLElement): nu
     return 0;
   }
 
-  const rect = element.getBoundingClientRect();
+  const rect = getBoundingClientRect(element);
 
   if (rect.width || rect.height) {
     if (isWindow(container)) {
-      container = element.ownerDocument.documentElement;
-      return rect.top - container.clientTop;
+      return rect.top - getDocumentElement(container.document).clientTop;
     }
-    return rect.top - container.getBoundingClientRect().top;
+    return rect.top - getBoundingClientRect(container).top;
   }
 
   return rect.top;

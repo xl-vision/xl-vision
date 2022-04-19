@@ -1,7 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { env } from '@xl-vision/utils';
+import {
+  contains,
+  getBoundingClientRect,
+  isBrowser,
+  isProduction,
+  isServer,
+  warning,
+} from '@xl-vision/utils';
 import { useForkRef } from '@xl-vision/hooks';
 import Portal, { PortalContainerType } from '../Portal';
 import usePropChange from '../hooks/usePropChange';
@@ -9,11 +16,10 @@ import CssTransition from '../CssTransition';
 import { styled } from '../styles';
 import { increaseZindex } from '../utils/zIndexManger';
 import { addClass, removeClass } from '../utils/class';
-import { forceReflow, contains } from '../utils/dom';
+import { forceReflow } from '../utils/dom';
 import ScrollLocker from '../utils/ScrollLocker';
 import { useTheme } from '../ThemeProvider';
 import getContainer from '../utils/getContainer';
-import warning from '../utils/warning';
 
 export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   container?: PortalContainerType<HTMLElement>;
@@ -130,8 +136,8 @@ const getClickPosition = (e: MouseEvent) => {
 };
 
 // 只有点击事件支持从鼠标位置动画展开
-if (env.isBrowser) {
-  document.documentElement.addEventListener('click', getClickPosition, true);
+if (isBrowser) {
+  document.addEventListener('click', getClickPosition, true);
 }
 
 let modalManagers: Array<HTMLElement> = [];
@@ -175,7 +181,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
   const scrollLockerRef = React.useRef<ScrollLocker>();
 
-  const [container, setContainer] = React.useState<HTMLElement>();
+  const [container, setContainer] = React.useState<HTMLElement | null>();
 
   const isTop = React.useCallback(() => {
     return modalManagers[modalManagers.length - 1] === bodyRef.current;
@@ -185,20 +191,16 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
   const transitionCount = React.useRef(inProp ? (mask ? 2 : 1) : 0);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   React.useEffect(() => {
-    let node = getContainer(containerProp);
+    let node: HTMLElement | null | undefined = getContainer(containerProp);
 
     if (node == null) {
-      node = modalRef.current?.parentElement!;
+      node = modalRef.current?.parentElement;
       warning(!node, `<Modal> parentElement is undefined`);
     }
 
-    if (node === container) {
-      return;
-    }
     setContainer(node);
-  });
+  }, [containerProp]);
 
   React.useEffect(() => {
     const body = bodyRef.current;
@@ -268,8 +270,6 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     scrollLockerRef.current?.lock();
   }, [visible]);
 
-  React.useEffect(() => {});
-
   const rootClassName = `${clsPrefix}-modal`;
 
   const beforeEnter = React.useCallback((el: HTMLElement) => {
@@ -284,7 +284,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
       beforeEnter(el);
       removeClass(el, `${bodyClassName}-enter-from`);
       removeClass(el, `${bodyClassName}-enter-active`);
-      const { x, y } = el.getBoundingClientRect();
+      const { x, y } = getBoundingClientRect(el);
       el.style.transformOrigin = mousePosition
         ? `${mousePosition.x - x}px ${mousePosition.y - y}px`
         : '50% 50%';
@@ -401,13 +401,13 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   );
 });
 
-if (!env.isProduction) {
+if (!isProduction) {
   Modal.displayName = displayName;
   Modal.propTypes = {
     container: PropTypes.oneOfType([
       PropTypes.func,
       PropTypes.string,
-      env.isServer ? PropTypes.any : PropTypes.instanceOf(HTMLElement),
+      isServer ? PropTypes.any : PropTypes.instanceOf(HTMLElement),
     ]),
     children: PropTypes.node.isRequired,
     defaultVisible: PropTypes.bool,

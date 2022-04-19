@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import Proptypes from 'prop-types';
-import { env } from '@xl-vision/utils';
+import { isProduction, noop } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
 import Modal, { ModalProps } from '../Modal';
 import ThemeContext from '../ThemeProvider/ThemeContext';
@@ -9,7 +9,6 @@ import { styled } from '../styles';
 import Button, { ButtonProps } from '../Button';
 import usePropChange from '../hooks/usePropChange';
 import { useConfig } from '../ConfigProvider';
-import { noop } from '../utils/function';
 
 export type DialogButtonProps = Omit<ButtonProps, 'children' | 'onClick'>;
 
@@ -177,22 +176,20 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
   const defaultFooterNode = (
     <DialogActions>
       {!prompt && (
-        /** @ts-ignore */
         <Button
           color='primary'
           variant='text'
-          {...cancelButtonProps}
+          {...(cancelButtonProps as ButtonProps)}
           loading={cancelLoading}
           onClick={handleCancel}
         >
           {cancelText}
         </Button>
       )}
-      {/** @ts-ignore */}
       <Button
         color='primary'
         variant='text'
-        {...confirmButtonProps}
+        {...(confirmButtonProps as ButtonProps)}
         loading={confirmLoading}
         onClick={handleConfirm}
       >
@@ -227,7 +224,7 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
   );
 });
 
-if (!env.isProduction) {
+if (!isProduction) {
   Dialog.displayName = displayName;
   Dialog.propTypes = {
     children: Proptypes.node,

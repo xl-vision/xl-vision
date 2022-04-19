@@ -1,7 +1,7 @@
 import { CSSObject } from '@xl-vision/styled-engine';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { env } from '@xl-vision/utils';
+import { isProduction } from '@xl-vision/utils';
 import { useConstantFn, useForkRef } from '@xl-vision/hooks';
 import React from 'react';
 import { styled } from '../styles';
@@ -214,7 +214,7 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
   );
 });
 
-if (!env.isProduction) {
+if (!isProduction) {
   Avatar.displayName = displayName;
   Avatar.propTypes = {
     children: PropTypes.node,

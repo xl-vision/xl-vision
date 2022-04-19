@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import { env } from '@xl-vision/utils';
+import { isProduction } from '@xl-vision/utils';
 import { styled } from '@xl-vision/styled-engine';
 
 export interface IconProps extends React.SVGProps<SVGSVGElement> {
@@ -30,7 +30,7 @@ const BaseIcon = styled(InnerIcon)(() => {
   };
 });
 
-if (!env.isProduction) {
+if (!isProduction) {
   BaseIcon.displayName = 'BaseIcon';
 }
 

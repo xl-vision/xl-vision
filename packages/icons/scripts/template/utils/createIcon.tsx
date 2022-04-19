@@ -1,5 +1,5 @@
 import React from 'react';
-import { env } from '@xl-vision/utils';
+import { isProduction } from '@xl-vision/utils';
 import BaseIcon from './BaseIcon';
 
 const createIcon = (
@@ -16,7 +16,7 @@ const createIcon = (
     },
   );
 
-  if (!env.isProduction && displayName) {
+  if (!isProduction && displayName) {
     cloneComponent.displayName = displayName;
   }
   return cloneComponent;

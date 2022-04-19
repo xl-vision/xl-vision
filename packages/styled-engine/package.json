@@ -27,8 +27,7 @@
   "scripts": {
     "build:legacy": "node ../../scripts/compile legacy",
     "build:modern": "node ../../scripts/compile modern",
-    "build:dist": "node ../../scripts/build",
-    "build": "npm run build:legacy && npm run build:modern && npm run build:dist",
+    "build": "npm run build:legacy && npm run build:modern",
     "prepublishOnly": "npm run build"
   },
   "bugs": {
@@ -46,6 +45,7 @@
     "@types/react": ">=16.8.0",
     "@types/styled-components": "^5.1.13",
     "react": ">=16.8.0",
+    "react-is": "^17.0.2",
     "styled-components": "^5.3.5"
   },
   "peerDependenciesMeta": {

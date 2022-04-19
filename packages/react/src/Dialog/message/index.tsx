@@ -5,7 +5,7 @@ import {
   ExclamationCircleOutlined,
   InfoCircleOutlined,
 } from '@xl-vision/icons';
-import { env } from '@xl-vision/utils';
+import { isProduction } from '@xl-vision/utils';
 import MessageDialog, { MessageDialogProps } from './MessageDialog';
 import { useTheme } from '../../ThemeProvider';
 import { useConfig } from '../../ConfigProvider';
@@ -65,7 +65,7 @@ const createMessageDialog = (type?: MessageDialogType) => {
     return <MessageDialog {...defaultProps} {...props} />;
   };
 
-  if (!env.isProduction) {
+  if (!isProduction) {
     const displayName = type
       ? `${type.replace(/^./, (match) => match.toUpperCase())}Dialog`
       : 'CustomMessageDialog';

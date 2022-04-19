@@ -6,7 +6,7 @@ import {
   Interpolation,
   ShouldForwardProp,
 } from '@xl-vision/styled-engine';
-import { env } from '@xl-vision/utils';
+import { isProduction } from '@xl-vision/utils';
 import { ComponentProps, ComponentType } from 'react';
 import { Theme } from '../ThemeProvider/createTheme';
 import { Style } from '../ThemeProvider/overrideStyles';
@@ -47,7 +47,7 @@ const styled = <
 
   const defaultCreateStyledComponent = innerStyled<Tag, ForwardedProps>(tag, {
     shouldForwardProp: shouldForwardProp as ShouldForwardProp<ForwardedProps>,
-    ...(env.isDevelopment && { prefix: prefix || undefined }),
+    ...(!isProduction && { prefix: prefix || undefined }),
   });
 
   const overrideCreateStyledComponent = <
@@ -105,7 +105,7 @@ const styled = <
       ...newStyles,
     );
 
-    if (!env.isProduction) {
+    if (!isProduction) {
       DefaultComponent.displayName = displayName;
     }
 

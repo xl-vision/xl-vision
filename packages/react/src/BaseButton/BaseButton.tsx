@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { env } from '@xl-vision/utils';
+import { isProduction } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
 import Ripple, { RippleRef } from '../Ripple';
 import { styled } from '../styles';
@@ -226,7 +226,7 @@ const BaseButton = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseB
   },
 );
 
-if (!env.isProduction) {
+if (!isProduction) {
   BaseButton.displayName = displayName;
 
   BaseButton.propTypes = {

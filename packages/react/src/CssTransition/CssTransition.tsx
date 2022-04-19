@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { env } from '@xl-vision/utils';
+import { isProduction } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
 import { addClass, removeClass } from '../utils/class';
 import { onTransitionEnd } from '../utils/transition';
@@ -294,7 +294,7 @@ const CssTransition: React.FunctionComponent<CssTransitionProps> = (props) => {
   );
 };
 
-if (!env.isProduction) {
+if (!isProduction) {
   CssTransition.displayName = 'CssTransition';
 
   CssTransition.propTypes = {

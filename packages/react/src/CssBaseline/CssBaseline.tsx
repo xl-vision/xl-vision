@@ -1,7 +1,7 @@
 import { CSSObject } from '@xl-vision/styled-engine';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { env } from '@xl-vision/utils';
+import { isProduction } from '@xl-vision/utils';
 import { createGlobalStyles } from '../styles';
 import { Theme, useTheme } from '../ThemeProvider';
 
@@ -65,7 +65,7 @@ const CssBaseline: React.FunctionComponent<CssBaselineProps> = (props) => {
   );
 };
 
-if (!env.isProduction) {
+if (!isProduction) {
   CssBaseline.displayName = 'CssBaseline';
   CssBaseline.propTypes = {
     children: PropTypes.node,

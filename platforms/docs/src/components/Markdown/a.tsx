@@ -18,7 +18,6 @@ const Link: React.FunctionComponent<React.AnchorHTMLAttributes<HTMLAnchorElement
 
   if (href) {
     if (/^ *\//.exec(href)) {
-      // @ts-ignore
       return (
         <NextLink href={href} passHref={true}>
           <LinkWrapper {...others} />

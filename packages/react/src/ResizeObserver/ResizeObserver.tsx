@@ -1,5 +1,5 @@
 import { ResizeObserverHandler } from '@xl-vision/hooks';
-import { env } from '@xl-vision/utils';
+import { isProduction } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import React from 'react';
 import SingleResizeObserver from './SingleResizeObserver';
@@ -31,7 +31,7 @@ const ResizeObserver: React.FunctionComponent<ResizeObserverProps> = (props) => 
   return <>{parsedChildren}</>;
 };
 
-if (!env.isProduction) {
+if (!isProduction) {
   ResizeObserver.displayName = 'ResizeObserver';
   ResizeObserver.propTypes = {
     children: PropTypes.node.isRequired,

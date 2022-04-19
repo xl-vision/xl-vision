@@ -1,8 +1,7 @@
 import React from 'react';
-import { env } from '@xl-vision/utils';
+import { isProduction, warning as warningLog } from '@xl-vision/utils';
 import createMessageDialog, { MessageDialogProps, MessageDialogType } from './message';
 import { MessageDialogFunctionProps } from './methods';
-import warningLog from '../utils/warning';
 
 type HookMessageDialogRef = {
   update: (updateProps: MessageDialogProps) => void;
@@ -41,7 +40,7 @@ const createHookMessageDialog = (props: MessageDialogProps, type?: MessageDialog
     return <Dialog {...innerConfig} />;
   });
 
-  if (!env.isProduction) {
+  if (!isProduction) {
     HookMessageDialog.displayName = 'HookMessageDialog';
   }
 

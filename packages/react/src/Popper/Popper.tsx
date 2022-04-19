@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Instance, Placement, createPopper, Modifier } from '@popperjs/core';
 import clsx from 'clsx';
-import { env } from '@xl-vision/utils';
+import { isProduction, isServer, noop, oneOf } from '@xl-vision/utils';
 import { useForkRef, useConstantFn } from '@xl-vision/hooks';
 import CssTransition, { CssTransitionElement, CssTransitionProps } from '../CssTransition';
 import Portal, { PortalContainerType } from '../Portal';
@@ -12,7 +12,6 @@ import { forceReflow } from '../utils/dom';
 import { off, on } from '../utils/event';
 import useLifecycleState, { LifecycleState } from '../hooks/useLifecycleState';
 import { increaseZindex } from '../utils/zIndexManger';
-import { oneOf, noop } from '../utils/function';
 import computeTransformOrigin from './computeTransformOrigin';
 import usePropChange from '../hooks/usePropChange';
 import findDomNode from '../utils/findDomNode';
@@ -115,15 +114,13 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
   const delayTimeRef = React.useRef<Array<NodeJS.Timeout>>([]);
 
   const forkReferenceRef = useForkRef(
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-argument
-    React.isValidElement(child) ? (child as any).ref : null,
+    React.isValidElement(child) ? (child as { ref?: React.Ref<unknown> }).ref : null,
     referenceRef,
     ref,
   );
 
   const forkArrowRef = useForkRef(
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-argument
-    React.isValidElement(arrow) ? (arrow as any).ref : null,
+    React.isValidElement(arrow) ? (arrow as { ref?: React.Ref<unknown> }).ref : null,
     arrowRef,
   );
 
@@ -451,11 +448,10 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
 
   const arrowNode =
     arrow &&
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     React.cloneElement(arrow, {
       ref: forkArrowRef,
       'aria-hidden': true,
-      ...arrow.props,
+      ...(arrow as { props?: {} }).props,
     });
 
   const rootClassName = `${clsPrefix}-popper`;
@@ -507,7 +503,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
   );
 });
 
-if (!env.isProduction) {
+if (!isProduction) {
   Popper.displayName = displayName;
 
   const triggerPropType = PropTypes.oneOf<PopperTrigger>([
@@ -526,7 +522,7 @@ if (!env.isProduction) {
     popupContainer: PropTypes.oneOfType([
       PropTypes.func,
       PropTypes.string,
-      env.isServer ? PropTypes.any : PropTypes.instanceOf(Element),
+      isServer ? PropTypes.any : PropTypes.instanceOf(Element),
     ]),
     transitionClasses: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     trigger: PropTypes.oneOfType([triggerPropType, PropTypes.arrayOf(triggerPropType)]),

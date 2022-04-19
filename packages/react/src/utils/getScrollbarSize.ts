@@ -1,9 +1,9 @@
-import { env } from '@xl-vision/utils';
+import { isServer } from '@xl-vision/utils';
 
 let cached: number;
 
 const getScrollbarSize = (refresh?: boolean) => {
-  if (env.isServer) {
+  if (isServer) {
     return 0;
   }
   if (!refresh && cached) {

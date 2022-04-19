@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 import { mount } from 'enzyme';
 import React from 'react';
+import { noop } from '@xl-vision/utils';
 import TransitionGroup from '..';
 import * as nextFrame from '../../utils/nextFrame';
-import { noop } from '../../utils/function';
 
 describe('TransitionGroup', () => {
   it('测试顺序是否正确', () => {

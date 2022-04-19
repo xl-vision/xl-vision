@@ -1,4 +1,4 @@
-import { env } from '@xl-vision/utils';
+import { isProduction } from '@xl-vision/utils';
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
@@ -91,7 +91,7 @@ const InputGroup: React.FunctionComponent<InputGroupProps> = (props) => {
   );
 };
 
-if (env.isDevelopment) {
+if (!isProduction) {
   InputGroup.displayName = displayName;
   InputGroup.propTypes = {
     className: PropTypes.string,

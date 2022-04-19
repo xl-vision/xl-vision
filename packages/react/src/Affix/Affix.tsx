@@ -1,8 +1,8 @@
-import { env } from '@xl-vision/utils';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useConstantFn, useForkRef, useLayoutEffect } from '@xl-vision/hooks';
+import { useConstantFn, useForkRef, useIsomorphicLayoutEffect } from '@xl-vision/hooks';
 import clsx from 'clsx';
+import { getBoundingClientRect, isProduction, isServer } from '@xl-vision/utils';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 import {
@@ -84,7 +84,7 @@ const Affix = React.forwardRef<AffixIntance, AffixProps>((props, ref) => {
     }
 
     const targetRect = getTargetRect(currentTarget);
-    const affixRect = affixNode.getBoundingClientRect();
+    const affixRect = getBoundingClientRect(affixNode);
     const top = getFixedTop(affixRect, targetRect, offsetTop);
     const bottom = getFixedBottom(affixRect, targetRect, offsetBottom);
 
@@ -160,22 +160,17 @@ const Affix = React.forwardRef<AffixIntance, AffixProps>((props, ref) => {
   }, [handleEventEmit]);
 
   // 保证同步更新，避免闪烁
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (status === AffixStatus.PREPARE) {
       setStatus(AffixStatus.NONE);
       measure();
     }
   }, [status, measure]);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   React.useEffect(() => {
     const nextTarget = typeof target === 'function' ? target() : target;
-
-    if (currentTarget === nextTarget) {
-      return;
-    }
     setCurrentTarget(nextTarget);
-  });
+  }, [target]);
 
   React.useEffect(() => {
     if (!currentTarget) {
@@ -216,12 +211,12 @@ const Affix = React.forwardRef<AffixIntance, AffixProps>((props, ref) => {
   );
 });
 
-if (!env.isProduction) {
+if (!isProduction) {
   Affix.displayName = displayName;
   Affix.propTypes = {
     target: PropTypes.oneOfType([
       PropTypes.func,
-      ...(env.isServer
+      ...(isServer
         ? [PropTypes.any]
         : [PropTypes.instanceOf(Window), PropTypes.instanceOf(HTMLElement)]),
     ]),

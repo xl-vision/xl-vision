@@ -1,10 +1,9 @@
 import { ThemeContext as StyledThemeContext } from '@xl-vision/styled-engine';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { env } from '@xl-vision/utils';
+import { isProduction, deepMerge } from '@xl-vision/utils';
 import createTheme, { BaseTheme } from './createTheme';
 import ThemeContext from './ThemeContext';
-import { deepMerge } from '../utils/function';
 
 export type ThemeProviderProps = {
   children: React.ReactNode;
@@ -38,7 +37,7 @@ const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = (props) => {
   );
 };
 
-if (!env.isProduction) {
+if (!isProduction) {
   ThemeProvider.displayName = 'ThemeProvider';
 
   ThemeProvider.propTypes = {

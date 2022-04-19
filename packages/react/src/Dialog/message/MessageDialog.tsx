@@ -2,7 +2,7 @@ import React from 'react';
 import Proptypes from 'prop-types';
 import clsx from 'clsx';
 import { CSSObject } from '@xl-vision/styled-engine';
-import { env } from '@xl-vision/utils';
+import { isProduction } from '@xl-vision/utils';
 import Dialog, { DialogProps } from '../Dialog';
 import { styled } from '../../styles';
 import usePropChange from '../../hooks/usePropChange';
@@ -117,7 +117,7 @@ const MessageDialog: React.FunctionComponent<MessageDialogProps> = (props) => {
   );
 };
 
-if (!env.isProduction) {
+if (!isProduction) {
   MessageDialog.displayName = displayName;
   MessageDialog.propTypes = {
     visible: Proptypes.bool,

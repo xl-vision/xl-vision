@@ -1,5 +1,5 @@
+import { getDocumentElement, warning } from '@xl-vision/utils';
 import getScrollbarSize from './getScrollbarSize';
-import warning from './warning';
 
 export type ScrollLockerOptions = {
   getContainer?: () => HTMLElement;
@@ -52,7 +52,7 @@ export default class ScrollLocker {
 
     if (
       container === document.body &&
-      window.innerWidth - document.documentElement.clientWidth > 0
+      window.innerWidth - getDocumentElement(container).clientWidth > 0
     ) {
       scrollbarSize = getScrollbarSize();
     }

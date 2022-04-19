@@ -1,9 +1,9 @@
+import { isBrowser } from '@xl-vision/utils';
 import { useEffect, useState } from 'react';
-import { env } from '@xl-vision/utils';
 
-const useMedia = (query: string, defaultState: boolean = false) => {
+const useMedia = (query: string, defaultState = false) => {
   const [state, setState] = useState(
-    env.isBrowser ? () => window.matchMedia(query).matches : defaultState,
+    isBrowser ? () => window.matchMedia(query).matches : defaultState,
   );
 
   useEffect(() => {

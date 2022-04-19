@@ -1,5 +1,6 @@
 // Thanks to https://github.com/react-component/textarea/blob/master/src/calculateNodeHeight.tsx
 
+import { getComputedStyle } from '@xl-vision/utils';
 import React from 'react';
 
 const HIDDEN_TEXTAREA_STYLE = `
@@ -64,7 +65,7 @@ export default (
   let minHeight = Number.MIN_SAFE_INTEGER;
   let maxHeight = Number.MAX_SAFE_INTEGER;
   let height = hiddenTextarea.scrollHeight;
-  let overflowY: any;
+  let overflowY: React.CSSProperties['overflowY'];
 
   if (boxSizing === 'border-box') {
     // border-box: add border, since height = content + padding + border
@@ -90,16 +91,15 @@ export default (
       if (boxSizing === 'border-box') {
         maxHeight = maxHeight + paddingSize + borderSize;
       }
-      overflowY = height > maxHeight ? '' : 'hidden';
+      overflowY = height > maxHeight ? undefined : 'hidden';
       height = Math.min(maxHeight, height);
     }
   }
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   return { height, minHeight, maxHeight, overflowY };
 };
 
 function calculateNodeStyling(node: HTMLElement) {
-  const style = window.getComputedStyle(node);
+  const style = getComputedStyle(node);
 
   const boxSizing =
     style.getPropertyValue('box-sizing') ||

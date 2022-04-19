@@ -1,6 +1,6 @@
 import React from 'react';
 
-export type LogoProps = React.HTMLAttributes<HTMLOrSVGElement> & {};
+export type LogoProps = React.HTMLAttributes<HTMLOrSVGElement>;
 
 const Logo: React.FunctionComponent<LogoProps> = (props) => {
   return (

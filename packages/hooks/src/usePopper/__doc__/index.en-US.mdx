@@ -1,0 +1,61 @@
+# usePopper
+
+Easily create Hooks for tooltip, popover and other components
+
+## Examples
+
+:::demo ./Basic
+
+Basic usage
+
+Basic usage
+
+:::
+
+:::demo ./Offset
+
+Offset
+
+Control the spacing between the popper and the reference by setting `offset`.
+
+:::
+
+:::demo ./Shift
+
+Keep the popup in the visible area
+
+By offsetting the popper position to a certain extent, it is guaranteed that it is always within the visible area. When the references all leave the viewport, the popper follows. That is to say, the popper is kept in the viewable area with priority.
+
+:::
+
+:::demo ./AutoPlacement
+
+Automatically calculate location
+
+When the visible space in the specified direction is insufficient, the direction with sufficient space will be automatically selected for display
+
+:::
+
+:::demo ./Hide
+
+Hide
+
+The popper is automatically hidden when the reference goes beyond the visible area.
+
+:::
+
+:::demo ./Debug debug
+
+Debug
+
+Debug
+
+:::
+
+## API
+
+| Property | Description | Type | Default | Require |
+| --- | --- | --- | --- | --- |
+| placement | popper position | `top` \| `top-start` \| `top-end `\| `right` \| `right-start` \| `right-end` \| `bottom` \| `bottom-start` \| `bottom-end` \| `left` \| `left-start` \| `left-end` | - | true |
+| mode | positioning mode | `fixed` \| `absolute` | `fixed` | false |
+| middlewares | middleware | Array\<Middleware\> | - | false |

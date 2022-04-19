@@ -1,4 +1,4 @@
-import { env } from '@xl-vision/utils';
+import { isProduction } from '@xl-vision/utils';
 import { dark as defaultDark, light as defaultLight, BaseColor } from './baseColor';
 import defaultThemes, { ThemeColors } from './themeColor';
 import { darken, getContrastRatio, lighten } from '../../utils/color';
@@ -52,7 +52,7 @@ const createColors = (color: Color = {}) => {
       constrastColorMap.set(background, contrastColor);
     }
 
-    if (!env.isProduction) {
+    if (!isProduction) {
       const contrast = getContrastRatio(background, contrastColor.text.primary);
       if (contrast < 3) {
         console.error(

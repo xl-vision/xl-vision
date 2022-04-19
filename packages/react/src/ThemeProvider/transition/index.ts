@@ -27,7 +27,7 @@ const genTransition = (
   name: keyof React.CSSProperties | Array<keyof React.CSSProperties>,
   duration: string,
   func: string,
-  delay: string = '',
+  delay = '',
 ) => {
   const names = Array.isArray(name) ? name : [name];
   return names
