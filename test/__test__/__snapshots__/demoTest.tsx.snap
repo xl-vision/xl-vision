@@ -18296,6 +18296,19 @@ exports[`Demo renders ./packages/hooks/src/usePopper/__doc__/Shift.tsx correctly
 </div>
 `;
 
+exports[`Demo renders ./packages/hooks/src/usePopper/__doc__/VirtualElement.tsx correctly 1`] = `
+.c0 {
+  position: relative;
+  height: 200px;
+  overflow: auto;
+  background-color: #fafafa;
+}
+
+<div
+  class="c0"
+/>
+`;
+
 exports[`Demo renders ./packages/react/src/Affix/__doc__/Basic.tsx correctly 1`] = `
 Array [
   .c4 {
