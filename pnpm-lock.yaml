@@ -226,7 +226,7 @@ importers:
       next: ^12.1.5
       next-sitemap: ^2.5.20
       pinyin: ^2.11.2
-      prismjs: ^1.27.0
+      prismjs: ^1.28.0
       prop-types: ^15.8.1
       react: '>=17.0.2'
       react-codemirror2: ^7.2.1
@@ -266,7 +266,7 @@ importers:
       cross-env: 7.0.3
       next-sitemap: 2.5.20_next@12.1.5
       pinyin: 2.11.2
-      prismjs: 1.27.0
+      prismjs: 1.28.0
       remark-emoji: 3.0.2
       remark-gfm: 3.0.1
       webpack-merge: 5.8.0
@@ -9574,11 +9574,11 @@ packages:
     dev: true
 
   /prismjs/1.25.0:
-    resolution: {integrity: sha1-b4It8b2tllc0sxCzFaIzFc+Zl1Y=}
+    resolution: {integrity: sha512-WCjJHl1KEWbnkQom1+SzftbtXMKQoezOCYs5rECqMN+jP+apI7ftoflyqigqzopSO3hMhTEb0mFClA8lkolgEg==}
     dev: true
 
-  /prismjs/1.27.0:
-    resolution: {integrity: sha512-t13BGPUlFDR7wRB5kQDG4jjl7XeuH6jbJGt11JHPL96qwsEHNX2+68tFXqc1/k+/jALsbSWJKUOT/hcYAZ5LkA==}
+  /prismjs/1.28.0:
+    resolution: {integrity: sha512-8aaXdYvl1F7iC7Xm1spqSaY/OJBpYW3v+KJ+F17iYxvdc8sfjW194COK5wVhMZX45tGteiBQgdvD/nhxcRwylw==}
     engines: {node: '>=6'}
     dev: true
 

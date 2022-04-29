@@ -43,7 +43,7 @@
     "cross-env": "^7.0.3",
     "next-sitemap": "^2.5.20",
     "pinyin": "^2.11.2",
-    "prismjs": "^1.27.0",
+    "prismjs": "^1.28.0",
     "remark-emoji": "^3.0.2",
     "remark-gfm": "^3.0.1",
     "webpack-merge": "^5.8.0"
