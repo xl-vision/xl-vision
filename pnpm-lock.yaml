@@ -220,7 +220,7 @@ importers:
       '@xl-vision/utils': workspace:^
       clipboard: ^2.0.10
       clsx: ^1.1.1
-      codemirror: ^5.65.2
+      codemirror: ^5.65.3
       cross-env: ^7.0.3
       js-cookie: ^3.0.1
       next: ^12.1.5
@@ -246,12 +246,12 @@ importers:
       '@xl-vision/utils': link:../../packages/utils
       clipboard: 2.0.10
       clsx: 1.1.1
-      codemirror: 5.65.2
+      codemirror: 5.65.3
       js-cookie: 3.0.1
       next: 12.1.5_f370f735164a03a12cea0cc89593cbee
       prop-types: 15.8.1
       react: 17.0.2
-      react-codemirror2: 7.2.1_codemirror@5.65.2+react@17.0.2
+      react-codemirror2: 7.2.1_codemirror@5.65.3+react@17.0.2
       react-dom: 17.0.2_react@17.0.2
       react-is: 17.0.2
       styled-components: 5.3.5_281a4fa50a045c9112baf635f3bc27a7
@@ -3933,8 +3933,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /codemirror/5.65.2:
-    resolution: {integrity: sha512-SZM4Zq7XEC8Fhroqe3LxbEEX1zUPWH1wMr5zxiBuiUF64iYOUH/JI88v4tBag8MiBS8B8gRv8O1pPXGYXQ4ErA==}
+  /codemirror/5.65.3:
+    resolution: {integrity: sha512-kCC0iwGZOVZXHEKW3NDTObvM7pTIyowjty4BUqeREROc/3I6bWbgZDA3fGDwlA+rbgRjvnRnfqs9SfXynel1AQ==}
     dev: false
 
   /collect-v8-coverage/1.0.1:
@@ -9723,13 +9723,13 @@ packages:
       strip-json-comments: 2.0.1
     dev: true
 
-  /react-codemirror2/7.2.1_codemirror@5.65.2+react@17.0.2:
+  /react-codemirror2/7.2.1_codemirror@5.65.3+react@17.0.2:
     resolution: {integrity: sha512-t7YFmz1AXdlImgHXA9Ja0T6AWuopilub24jRaQdPVbzUJVNKIYuy3uCFZYa7CE5S3UW6SrSa5nAqVQvtzRF9gw==}
     peerDependencies:
       codemirror: 5.x
       react: '>=15.5 <=16.x'
     dependencies:
-      codemirror: 5.65.2
+      codemirror: 5.65.3
       react: 17.0.2
     dev: false
 
