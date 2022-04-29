@@ -17,7 +17,7 @@ jobs:
         with:
           version: 6
       - name: Use Node.js 14
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 14
           cache: 'pnpm'
@@ -39,7 +39,7 @@ jobs:
         with:
           version: 6
       - name: Use Node.js 14
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 14
           cache: 'pnpm'
@@ -61,7 +61,7 @@ jobs:
         with:
           version: 6
       - name: Use Node.js 14
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 14
           cache: 'pnpm'
@@ -83,7 +83,7 @@ jobs:
         with:
           version: 6
       - name: Use Node.js 14
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 14
           cache: 'pnpm'
