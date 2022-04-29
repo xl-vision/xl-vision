@@ -68,7 +68,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "6.0.0",
     "eslint-plugin-react": "^7.29.4",
-    "eslint-plugin-react-hooks": "^4.4.0",
+    "eslint-plugin-react-hooks": "^4.5.0",
     "eslint-plugin-unicorn": "^42.0.0",
     "fs-extra": "^10.1.0",
     "glob": "^8.0.1",
