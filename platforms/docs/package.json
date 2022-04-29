@@ -42,7 +42,7 @@
     "@types/node": "17.0.4",
     "cross-env": "^7.0.3",
     "next-sitemap": "^2.5.20",
-    "pinyin": "^2.11.1",
+    "pinyin": "^2.11.2",
     "prismjs": "^1.27.0",
     "remark-emoji": "^3.0.2",
     "remark-gfm": "^3.0.1",
