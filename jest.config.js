@@ -2,6 +2,9 @@
 const { pathsToModuleNameMapper } = require('ts-jest');
 const { compilerOptions } = require('./tsconfig.json');
 
+/**
+ * @type {import('@jest/types').Config.InitialOptions}
+ */
 module.exports = {
   verbose: true,
   preset: 'ts-jest',
@@ -29,5 +32,7 @@ module.exports = {
       diagnostics: true,
     },
   },
-  testURL: 'http://localhost',
+  testEnvironmentOptions: {
+    url: 'http://localhost',
+  },
 };
