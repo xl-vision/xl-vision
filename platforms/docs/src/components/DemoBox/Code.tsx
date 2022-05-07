@@ -1,5 +1,4 @@
 import { Button, styled } from '@xl-vision/react';
-import PropTypes from 'prop-types';
 import React from 'react';
 
 enum CodeType {
@@ -63,10 +62,6 @@ const Code: React.FunctionComponent<CodeProps> = (props) => {
       <Content>{codeType === CodeType.TYPESCRIPT ? tsx : jsx}</Content>
     </Wrapper>
   );
-};
-
-Code.propTypes = {
-  children: PropTypes.any,
 };
 
 export default Code;
