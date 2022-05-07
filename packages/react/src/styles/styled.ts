@@ -76,7 +76,7 @@ const styled = <
         return;
       }
       if (typeof overrideSlotStyle === 'function') {
-        // TODO [2022-05-01]: type fix
+        // TODO [2022-06-01]: type fix
         return (overrideSlotStyle as unknown as FunctionInterpolation<P, E>)(props);
       }
       return overrideSlotStyle;

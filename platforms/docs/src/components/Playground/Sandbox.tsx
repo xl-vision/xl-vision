@@ -25,7 +25,7 @@ const Sandbox: React.FunctionComponent<SandboxProps> = (props) => {
   const ref = React.useRef<HTMLIFrameElement>(null);
 
   const srcDoc = React.useMemo(() => {
-    // TODO [2022-05-01]: styled components在iframe中全局样式不生效
+    // TODO [2022-06-01]: styled components在iframe中全局样式不生效
     return `
 <style>
 html {
