@@ -221,7 +221,7 @@ importers:
       '@xl-vision/react': workspace:^
       '@xl-vision/styled-engine': workspace:^
       '@xl-vision/utils': workspace:^
-      clipboard: ^2.0.10
+      clipboard: ^2.0.11
       clsx: ^1.1.1
       codemirror: ^5.65.3
       cross-env: ^7.0.3
@@ -247,7 +247,7 @@ importers:
       '@xl-vision/react': link:../../packages/react
       '@xl-vision/styled-engine': link:../../packages/styled-engine
       '@xl-vision/utils': link:../../packages/utils
-      clipboard: 2.0.10
+      clipboard: 2.0.11
       clsx: 1.1.1
       codemirror: 5.65.3
       js-cookie: 3.0.1
@@ -3938,8 +3938,8 @@ packages:
     engines: {node: '>= 10'}
     dev: true
 
-  /clipboard/2.0.10:
-    resolution: {integrity: sha512-cz3m2YVwFz95qSEbCDi2fzLN/epEN9zXBvfgAoGkvGOJZATMl9gtTDVOtBYkx2ODUJl2kvmud7n32sV2BpYR4g==}
+  /clipboard/2.0.11:
+    resolution: {integrity: sha512-C+0bbOqkezLIsmWSvlsXS0Q0bmkugu7jcfMIACB+RDEntIzQIkdr148we28AfSloQLRdZlYL/QYyrq05j/3Faw==}
     dependencies:
       good-listener: 1.2.2
       select: 1.1.2
