@@ -16,10 +16,10 @@ jobs:
       - uses: pnpm/action-setup@v2.2.1
         with:
           version: 7
-      - name: Use Node.js 15
+      - name: Use Node.js 14.19.0
         uses: actions/setup-node@v3
         with:
-          node-version: 15
+          node-version: 14.19.0
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
@@ -38,10 +38,10 @@ jobs:
       - uses: pnpm/action-setup@v2.2.1
         with:
           version: 7
-      - name: Use Node.js 15
+      - name: Use Node.js 14.19.0
         uses: actions/setup-node@v3
         with:
-          node-version: 15
+          node-version: 14.19.0
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
@@ -60,10 +60,10 @@ jobs:
       - uses: pnpm/action-setup@v2.2.1
         with:
           version: 7
-      - name: Use Node.js 15
+      - name: Use Node.js 14.19.0
         uses: actions/setup-node@v3
         with:
-          node-version: 15
+          node-version: 14.19.0
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
@@ -81,10 +81,10 @@ jobs:
       - uses: pnpm/action-setup@v2.2.1
         with:
           version: 7
-      - name: Use Node.js 15
+      - name: Use Node.js 14.19.0
         uses: actions/setup-node@v3
         with:
-          node-version: 15
+          node-version: 14.19.0
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
