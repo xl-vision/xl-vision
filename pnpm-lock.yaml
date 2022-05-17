@@ -51,7 +51,7 @@ importers:
       gulp: ^4.0.2
       gulp-babel: ^8.0.0
       gulp-typescript: ^5.0.1
-      husky: ^7.0.4
+      husky: ^8.0.1
       jest: ^28.1.0
       jest-environment-jsdom: ^28.1.0
       jest-styled-components: ^7.0.8
@@ -114,7 +114,7 @@ importers:
       gulp: 4.0.2
       gulp-babel: 8.0.0_@babel+core@7.17.10
       gulp-typescript: 5.0.1_typescript@4.6.4
-      husky: 7.0.4
+      husky: 8.0.1
       jest: 28.1.0_@types+node@17.0.4
       jest-environment-jsdom: 28.1.0
       jest-styled-components: 7.0.8_styled-components@5.3.5
@@ -6537,9 +6537,9 @@ packages:
     engines: {node: '>=10.17.0'}
     dev: true
 
-  /husky/7.0.4:
-    resolution: {integrity: sha512-vbaCKN2QLtP/vD4yvs6iz6hBEo6wkSzs8HpRah1Z6aGmF2KW5PdYuAd7uX5a+OyBZHBhd+TFLqgjUgytQr4RvQ==}
-    engines: {node: '>=12'}
+  /husky/8.0.1:
+    resolution: {integrity: sha512-xs7/chUH/CKdOCs7Zy0Aev9e/dKOMZf3K1Az1nar3tzlv0jfqnYtu235bstsWTmXOR0EfINrPa97yy4Lz6RiKw==}
+    engines: {node: '>=14'}
     hasBin: true
     dev: true
 
