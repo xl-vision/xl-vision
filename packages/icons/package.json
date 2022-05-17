@@ -40,7 +40,7 @@
     "@xl-vision/utils": "workspace:^",
     "clsx": "^1.1.1",
     "prop-types": "^15.8.1",
-    "react-is": "^17.0.2"
+    "react-is": "^18.1.0"
   },
   "devDependencies": {
     "fs-extra": "^10.1.0",

@@ -59,7 +59,7 @@ importers:
       prettier: ^2.6.2
       react: ^16.8.0
       react-dom: ^16.8.0
-      react-is: ^17.0.2
+      react-is: ^18.1.0
       rollup: ^2.73.0
       rollup-plugin-terser: ^7.0.2
       semver: ^7.3.7
@@ -122,11 +122,11 @@ importers:
       prettier: 2.6.2
       react: 16.14.0
       react-dom: 16.14.0_react@16.14.0
-      react-is: 17.0.2
+      react-is: 18.1.0
       rollup: 2.73.0
       rollup-plugin-terser: 7.0.2_rollup@2.73.0
       semver: 7.3.7
-      styled-components: 5.3.5_a7b7i3ycivfl5nfe5xs34epzw4
+      styled-components: 5.3.5_62uyfyg2bj4vfpqt7ubwdlbtki
       ts-jest: 28.0.2_7ba6w3dqujb3z2hhr3kd3ksuge
       typescript: 4.6.4
 
@@ -146,14 +146,14 @@ importers:
       fs-extra: ^10.1.0
       mustache: ^4.2.0
       prop-types: ^15.8.1
-      react-is: ^17.0.2
+      react-is: ^18.1.0
       svgo: ^2.8.0
     dependencies:
       '@xl-vision/styled-engine': link:../styled-engine
       '@xl-vision/utils': link:../utils
       clsx: 1.1.1
       prop-types: 15.8.1
-      react-is: 17.0.2
+      react-is: 18.1.0
     devDependencies:
       fs-extra: 10.1.0
       mustache: 4.2.0
@@ -170,7 +170,7 @@ importers:
       '@xl-vision/utils': workspace:^
       clsx: ^1.1.1
       prop-types: ^15.8.1
-      react-is: ^17.0.2
+      react-is: ^18.1.0
     dependencies:
       '@popperjs/core': 2.11.4
       '@xl-vision/hooks': link:../hooks
@@ -179,7 +179,7 @@ importers:
       '@xl-vision/utils': link:../utils
       clsx: 1.1.1
       prop-types: 15.8.1
-      react-is: 17.0.2
+      react-is: 18.1.0
     devDependencies:
       '@types/prop-types': 15.7.5
       '@types/react-is': 17.0.3
@@ -234,7 +234,7 @@ importers:
       react: '>=17.0.2'
       react-codemirror2: ^7.2.1
       react-dom: '>=17.0.2'
-      react-is: ^17.0.2
+      react-is: ^18.1.0
       remark-emoji: ^3.0.2
       remark-gfm: ^3.0.1
       styled-components: ^5.3.5
@@ -256,8 +256,8 @@ importers:
       react: 17.0.2
       react-codemirror2: 7.2.1_cacytrd3b2wtrseetmmowfqejq
       react-dom: 17.0.2_react@17.0.2
-      react-is: 17.0.2
-      styled-components: 5.3.5_fane7jikarojcev26y27hpbhu4
+      react-is: 18.1.0
+      styled-components: 5.3.5_ukrbqhh2t6r2q67fyfhmpyy5um
     devDependencies:
       '@mapbox/rehype-prism': 0.8.0
       '@mdx-js/loader': 2.1.1
@@ -3468,7 +3468,7 @@ packages:
       babel-plugin-syntax-jsx: 6.18.0
       lodash: 4.17.21
       picomatch: 2.3.0
-      styled-components: 5.3.5_fane7jikarojcev26y27hpbhu4
+      styled-components: 5.3.5_ukrbqhh2t6r2q67fyfhmpyy5um
 
   /babel-plugin-syntax-jsx/6.18.0:
     resolution: {integrity: sha1-CvMqmm4Tyno/1QaeYtew9Y0NiUY=}
@@ -7518,7 +7518,7 @@ packages:
       styled-components: '>= 5'
     dependencies:
       css: 3.0.0
-      styled-components: 5.3.5_a7b7i3ycivfl5nfe5xs34epzw4
+      styled-components: 5.3.5_62uyfyg2bj4vfpqt7ubwdlbtki
     dev: true
 
   /jest-util/28.1.0:
@@ -9889,11 +9889,11 @@ packages:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
   /react-is/17.0.2:
-    resolution: {integrity: sha1-5pHUqOnHiTZWVVOas3J2Kw77VPA=}
+    resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}
+    dev: true
 
   /react-is/18.1.0:
     resolution: {integrity: sha512-Fl7FuabXsJnV5Q1qIOQwx/sagGF18kogb4gpfcG4gjLBWO0WDiiz1ko/ExayuxE7InyQkBLkxRFG5oxY6Uu3Kg==}
-    dev: true
 
   /react-test-renderer/16.14.0_react@16.14.0:
     resolution: {integrity: sha512-L8yPjqPE5CZO6rKsKXRO/rVPiaCOy0tQQJbC+UjPNlobl5mad59lvPjwFsQHTvL03caVDIVr9x9/OSgDe6I5Eg==}
@@ -11004,7 +11004,7 @@ packages:
       inline-style-parser: 0.1.1
     dev: true
 
-  /styled-components/5.3.5_a7b7i3ycivfl5nfe5xs34epzw4:
+  /styled-components/5.3.5_62uyfyg2bj4vfpqt7ubwdlbtki:
     resolution: {integrity: sha512-ndETJ9RKaaL6q41B69WudeqLzOpY1A/ET/glXkNZ2T7dPjPqpPCXXQjDFYZWwNnE5co0wX+gTCqx9mfxTmSIPg==}
     engines: {node: '>=10'}
     requiresBuild: true
@@ -11023,12 +11023,12 @@ packages:
       hoist-non-react-statics: 3.3.2
       react: 16.14.0
       react-dom: 16.14.0_react@16.14.0
-      react-is: 17.0.2
+      react-is: 18.1.0
       shallowequal: 1.1.0
       supports-color: 5.5.0
     dev: true
 
-  /styled-components/5.3.5_fane7jikarojcev26y27hpbhu4:
+  /styled-components/5.3.5_ukrbqhh2t6r2q67fyfhmpyy5um:
     resolution: {integrity: sha512-ndETJ9RKaaL6q41B69WudeqLzOpY1A/ET/glXkNZ2T7dPjPqpPCXXQjDFYZWwNnE5co0wX+gTCqx9mfxTmSIPg==}
     engines: {node: '>=10'}
     requiresBuild: true
@@ -11047,7 +11047,7 @@ packages:
       hoist-non-react-statics: 3.3.2
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-      react-is: 17.0.2
+      react-is: 18.1.0
       shallowequal: 1.1.0
       supports-color: 5.5.0
     dev: false
