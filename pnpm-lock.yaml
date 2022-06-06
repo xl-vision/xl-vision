@@ -20,7 +20,7 @@ importers:
       '@rollup/plugin-replace': ^4.0.0
       '@types/enzyme': ^3.10.12
       '@types/glob': ^7.2.0
-      '@types/jest': ^27.5.1
+      '@types/jest': ^27.5.2
       '@types/node': 17.0.4
       '@types/react': ^17.0.24
       '@types/react-dom': ^17.0.9
@@ -83,7 +83,7 @@ importers:
       '@rollup/plugin-replace': 4.0.0_rollup@2.74.1
       '@types/enzyme': 3.10.12
       '@types/glob': 7.2.0
-      '@types/jest': 27.5.1
+      '@types/jest': 27.5.2
       '@types/node': 17.0.4
       '@types/react': 17.0.38
       '@types/react-dom': 17.0.11
@@ -127,7 +127,7 @@ importers:
       rollup-plugin-terser: 7.0.2_rollup@2.74.1
       semver: 7.3.7
       styled-components: 5.3.5_62uyfyg2bj4vfpqt7ubwdlbtki
-      ts-jest: 28.0.3_7ba6w3dqujb3z2hhr3kd3ksuge
+      ts-jest: 28.0.3_gitacl35ms74fx7q32e7g4nyxu
       typescript: 4.6.4
 
   packages/hooks:
@@ -2633,8 +2633,8 @@ packages:
       '@types/istanbul-lib-report': 3.0.0
     dev: true
 
-  /@types/jest/27.5.1:
-    resolution: {integrity: sha512-fUy7YRpT+rHXto1YlL+J9rs0uLGyiqVt3ZOTQR+4ROc47yNl8WLdVLgUloBRhOxP1PZvguHl44T3H0wAWxahYQ==}
+  /@types/jest/27.5.2:
+    resolution: {integrity: sha512-mpT8LJJ4CMeeahobofYWIjFo0xonRS/HfxnVEPMPFSQdGUt1uHCnoPT7Zhb+sjDU2wz0oKV0OLUR0WzrHNgfeA==}
     dependencies:
       jest-matcher-utils: 27.4.6
       pretty-format: 27.4.6
@@ -3457,7 +3457,7 @@ packages:
       babel-plugin-syntax-jsx: 6.18.0
       lodash: 4.17.21
       picomatch: 2.3.0
-      styled-components: 5.3.5_ukrbqhh2t6r2q67fyfhmpyy5um
+      styled-components: 5.3.5_62uyfyg2bj4vfpqt7ubwdlbtki
 
   /babel-plugin-syntax-jsx/6.18.0:
     resolution: {integrity: sha1-CvMqmm4Tyno/1QaeYtew9Y0NiUY=}
@@ -9728,7 +9728,6 @@ packages:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       react-is: 16.13.1
-    dev: true
 
   /prop-types/15.8.1:
     resolution: {integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==}
@@ -9857,7 +9856,6 @@ packages:
       prop-types: 15.8.0
       react: 16.14.0
       scheduler: 0.19.1
-    dev: true
 
   /react-dom/17.0.2_react@17.0.2:
     resolution: {integrity: sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA==}
@@ -9898,7 +9896,6 @@ packages:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       prop-types: 15.8.0
-    dev: true
 
   /react/17.0.2:
     resolution: {integrity: sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==}
@@ -10459,7 +10456,6 @@ packages:
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
-    dev: true
 
   /scheduler/0.20.2:
     resolution: {integrity: sha512-2eWfGgAqqWFGqtdMmcL5zCMK1U8KlXv8SQFGglL3CEtd0aDVDWgeF/YoCmvln55m5zSk3J/20hTaSBeSObsQDQ==}
@@ -11007,7 +11003,6 @@ packages:
       react-is: 18.1.0
       shallowequal: 1.1.0
       supports-color: 5.5.0
-    dev: true
 
   /styled-components/5.3.5_ukrbqhh2t6r2q67fyfhmpyy5um:
     resolution: {integrity: sha512-ndETJ9RKaaL6q41B69WudeqLzOpY1A/ET/glXkNZ2T7dPjPqpPCXXQjDFYZWwNnE5co0wX+gTCqx9mfxTmSIPg==}
@@ -11031,6 +11026,7 @@ packages:
       react-is: 18.1.0
       shallowequal: 1.1.0
       supports-color: 5.5.0
+    dev: false
 
   /styled-jsx/5.0.2_react@17.0.2:
     resolution: {integrity: sha512-LqPQrbBh3egD57NBcHET4qcgshPks+yblyhPlH2GY8oaDgKs8SK4C3dBh3oSJjgzJ3G5t1SYEZGHkP+QEpX9EQ==}
@@ -11323,7 +11319,7 @@ packages:
     resolution: {integrity: sha512-AqTiAOLcj85xS7vQ8QkAV41hPDIJ71XJB4RCUrzo/1GM2CQwhkJGaf9Hgr7BOugMRpgGUrqRg/DrBDl4H40+8g==}
     dev: true
 
-  /ts-jest/28.0.3_7ba6w3dqujb3z2hhr3kd3ksuge:
+  /ts-jest/28.0.3_gitacl35ms74fx7q32e7g4nyxu:
     resolution: {integrity: sha512-HzgbEDQ2KgVtDmpXToqAcKTyGHdHsG23i/iUjfxji92G5eT09S1m9UHZd7csF0Bfgh9txM4JzwHnv7r1waFPlw==}
     engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
     hasBin: true
@@ -11345,7 +11341,7 @@ packages:
         optional: true
     dependencies:
       '@babel/core': 7.17.10
-      '@types/jest': 27.5.1
+      '@types/jest': 27.5.2
       bs-logger: 0.2.6
       fast-json-stable-stringify: 2.1.0
       jest: 28.1.0_@types+node@17.0.4
