@@ -32,3 +32,18 @@ export type {
   VirtualElement,
   OverflowRect,
 } from './usePopper';
+
+export { default as useTransition } from './useTransition';
+export type {
+  TransitionOptions,
+  TransitionStartingHook,
+  TransitionEndHook,
+  TransitionStartHook,
+} from './useTransition';
+
+export {
+  default as useCssTransition,
+  CssTransitionClassNameObject,
+  CssTransitionClassNames,
+  CssTransitionOptions,
+} from './useCssTransition';

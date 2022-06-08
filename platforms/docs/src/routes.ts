@@ -327,7 +327,21 @@ const route: Route = {
         'en-US': 'usePopper',
         'zh-CN': 'usePopper',
       },
-      path: '/UsePopper',
+      path: '/usePopper',
+    },
+    {
+      titleMap: {
+        'en-US': 'useTransition',
+        'zh-CN': 'useTransition',
+      },
+      path: '/useTransition',
+    },
+    {
+      titleMap: {
+        'en-US': 'useCssTransition',
+        'zh-CN': 'useCssTransition',
+      },
+      path: '/useCssTransition',
     },
   ],
 };

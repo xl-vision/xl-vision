@@ -14,8 +14,8 @@ import useLifecycleState, { LifecycleState } from '../hooks/useLifecycleState';
 import { increaseZindex } from '../utils/zIndexManger';
 import computeTransformOrigin from './computeTransformOrigin';
 import usePropChange from '../hooks/usePropChange';
-import findDomNode from '../utils/findDomNode';
 import { useTheme } from '../ThemeProvider';
+import findDomNode from '../utils/findDomNode';
 
 export type PopperTrigger = 'hover' | 'focus' | 'click' | 'contextMenu' | 'custom';
 
