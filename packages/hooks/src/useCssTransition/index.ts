@@ -1,6 +1,7 @@
 import { nextFrame } from '@xl-vision/utils';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import useConstantFn from '../useConstantFn';
+import useIsomorphicLayoutEffect from '../useIsomorphicLayoutEffect';
 import useTransition, {
   TransitionEndHook,
   TransitionOptions,
@@ -11,7 +12,7 @@ import { onTransitionEnd } from './transitionUtils';
 
 export type CssTransitionAction = 'appear' | 'enter' | 'exit' | 'disappear';
 
-export type CssTransitionState = `${CssTransitionAction}${'' | 'ing'}`;
+export type CssTransitionState = `${CssTransitionAction}${'' | 'ing' | 'ed'}`;
 
 export type CssTransitionClassNameRecord = Partial<
   Record<`${CssTransitionAction}${'' | 'Active' | 'ing'}`, string>
@@ -104,29 +105,21 @@ const useCssTransition = (options: CssTransitionOptions) => {
       onEntering?.(el, done, transitionOnFirst, isCancelled);
 
       const cb = () => {
+        doneRef.current = undefined;
         nextFrame(() => {
-          console.log(123)
           if (isCancelled()) {
             return;
           }
           setState(transitionOnFirst ? 'appearing' : 'entering');
         });
-        onTransitionEnd(el, () => {
-          done();
-        });
-        doneRef.current = undefined;
+        onTransitionEnd(el, done);
       };
       doneRef.current = cb;
-
-      const prevState: CssTransitionState = transitionOnFirst ? 'appear' : 'enter';
-      if (state !== prevState) {
-        cb();
-      }
     },
   );
 
   const handleEntered: TransitionEndHook = useConstantFn((el, transitionOnFirst) => {
-    setState(undefined);
+    setState(transitionOnFirst ? 'appeared' : 'entered');
     onEntered?.(el, transitionOnFirst);
   });
 
@@ -145,6 +138,7 @@ const useCssTransition = (options: CssTransitionOptions) => {
       onExiting?.(el, done, transitionOnFirst, isCancelled);
 
       const cb = () => {
+        doneRef.current = undefined;
         nextFrame(() => {
           if (isCancelled()) {
             return;
@@ -152,20 +146,14 @@ const useCssTransition = (options: CssTransitionOptions) => {
           setState(transitionOnFirst ? 'disappearing' : 'exiting');
         });
         onTransitionEnd(el, done);
-        doneRef.current = undefined;
       };
 
       doneRef.current = cb;
-
-      const prevState: CssTransitionState = transitionOnFirst ? 'disappear' : 'exit';
-      if (state !== prevState) {
-        cb();
-      }
     },
   );
 
   const handleExited: TransitionEndHook = useConstantFn((el, transitionOnFirst) => {
-    setState(undefined);
+    setState(transitionOnFirst ? 'disappeared' : 'exited');
     onExited?.(el, transitionOnFirst);
   });
 
@@ -179,17 +167,23 @@ const useCssTransition = (options: CssTransitionOptions) => {
     onExited: handleExited,
   });
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     doneRef.current?.();
-    console.log("state", state);
   }, [state]);
 
   const classes: Array<string | undefined> = [];
 
   if (state) {
-    const action = state.replace(/ing$/, '') as CssTransitionAction;
-    classes.push(transitionClassNameRecord[`${action}Active`]);
-    classes.push(transitionClassNameRecord[state]);
+    const action = state.replace(/ing|ed$/, '') as CssTransitionAction;
+    if (state.match(/ed$/)) {
+      classes.push(transitionClassNameRecord[`${action}ing`]);
+    } else if (state.match(/ing$/)) {
+      classes.push(transitionClassNameRecord[`${action}Active`]);
+      classes.push(transitionClassNameRecord[`${action}ing`]);
+    } else {
+      classes.push(transitionClassNameRecord[`${action}Active`]);
+      classes.push(transitionClassNameRecord[action]);
+    }
   }
 
   return {

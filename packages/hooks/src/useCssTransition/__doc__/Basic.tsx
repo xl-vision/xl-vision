@@ -12,7 +12,7 @@ const Root = styled('div')(() => {
         opacity: 0,
         transform: `translateX(100px)`,
       },
-      '&-appear-to, &-disappear, &-exit-to, &-exit': {
+      '&-appear-to, &-disappear, &-enter-to, &-exit': {
         opacity: 1,
         transform: `translateX(0px)`,
       },

@@ -86,7 +86,7 @@ module.exports = {
       'error',
       {
         // custom hooks
-        additionalHooks: '(useLayoutEffect|useUpdated)',
+        additionalHooks: '(useIsomorphicLayoutEffect)',
       },
     ],
     'react/jsx-handler-names': [

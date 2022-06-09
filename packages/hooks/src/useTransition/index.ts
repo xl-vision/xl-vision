@@ -1,6 +1,7 @@
-import { ReactInstance, RefCallback, useCallback, useRef } from 'react';
+import { ReactInstance, RefCallback, useCallback, useEffect, useRef } from 'react';
 // eslint-disable-next-line camelcase
 import { findDOMNode } from 'react-dom';
+import useConstantFn from '../useConstantFn';
 import useIsomorphicLayoutEffect from '../useIsomorphicLayoutEffect';
 
 export type TransitionStartHook = (el: Element, transitionOnFirst: boolean) => void;
@@ -87,7 +88,7 @@ const useTransition = (options: TransitionOptions) => {
 
   const isFirstUpdateRef = useRef(true);
 
-  useIsomorphicLayoutEffect(() => {
+  const handleInOptionChange = useConstantFn((value: boolean) => {
     const el = elementRef.current;
 
     if (!el) {
@@ -101,12 +102,16 @@ const useTransition = (options: TransitionOptions) => {
       return;
     }
 
-    if (inOption) {
+    if (value) {
       onTransitionEnd(el, onEnter, onEntering, onEntered);
     } else {
       onTransitionEnd(el, onExit, onExiting, onExited);
     }
-  }, [inOption, onTransitionEnd]);
+  });
+
+  useEffect(() => {
+    handleInOptionChange(inOption);
+  }, [inOption, handleInOptionChange]);
 
   const nodeRef: RefCallback<ReactInstance> = useCallback((el) => {
     // eslint-disable-next-line react/no-find-dom-node
