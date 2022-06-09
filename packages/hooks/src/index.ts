@@ -43,7 +43,7 @@ export type {
 
 export {
   default as useCssTransition,
-  CssTransitionClassNameObject,
-  CssTransitionClassNames,
+  CssTransitionClassNameRecord as CssTransitionClassNameObject,
+  CssTransitionClassName as CssTransitionClassNames,
   CssTransitionOptions,
 } from './useCssTransition';

@@ -5,14 +5,14 @@ import { Button, styled } from '@xl-vision/react';
 const Root = styled('div')(() => {
   return {
     '.demo': {
-      '&-appear-active, &-disappear-active, &-enter-active, &-leave-active': {
+      '&-appear-active, &-disappear-active, &-enter-active, &-exit-active': {
         transition: 'all 2s ease-in-out',
       },
-      '&-appear-from, &-disappear-to, &-disappear-done, &-enter-from, &-leave-to, &-leave-done': {
+      '&-appear, &-disappear-to, &-enter, &-exit-to': {
         opacity: 0,
         transform: `translateX(100px)`,
       },
-      '&-appear-to, &-appear-done, &-disappear-from, &-enter-to, &-enter-done, &-leave-from': {
+      '&-appear-to, &-disappear, &-exit-to, &-exit': {
         opacity: 1,
         transform: `translateX(0px)`,
       },
@@ -25,7 +25,7 @@ const Demo = () => {
 
   const { activeClassName, nodeRef } = useCssTransition({
     in: show,
-    transitionClasseNames: 'demo',
+    transitionClasseName: 'demo',
     transitionOnFirst: true,
   });
 

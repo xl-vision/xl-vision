@@ -7,45 +7,45 @@ import {
 } from '@xl-vision/hooks';
 import { Button } from '@xl-vision/react';
 
-type State = 'enter' | 'entering' | 'entered' | 'leave' | 'leaving' | 'leaved';
+type State = 'enter' | 'entering' | 'entered' | 'exit' | 'exiting' | 'exited';
 
 const Demo = () => {
   const [show, setShow] = React.useState(false);
 
-  const [state, setState] = React.useState<State>(show ? 'entered' : 'leaved');
+  const [state, setState] = React.useState<State>(show ? 'entered' : 'exited');
 
   const handleEnter: TransitionStartHook = React.useCallback(() => {
     setState('enter');
   }, []);
 
-  const handleEntering: TransitionStartingHook = React.useCallback((_1, done, _2, isCancelled) => {
+  const handleEntering: TransitionStartingHook = React.useCallback((_1, done) => {
     setTimeout(() => {
-      if (!isCancelled()) {
-        setState('entering');
+      setState('entering');
+      setTimeout(() => {
         done();
-      }
-    }, 1000);
+      });
+    });
   }, []);
 
   const handleEntered: TransitionEndHook = React.useCallback(() => {
     setState('entered');
   }, []);
 
-  const handleLeave: TransitionStartHook = React.useCallback(() => {
-    setState('leave');
+  const handleExit: TransitionStartHook = React.useCallback(() => {
+    setState('exit');
   }, []);
 
-  const handleLeaving: TransitionStartingHook = React.useCallback((_1, done, _2, isCancelled) => {
+  const handleExiting: TransitionStartingHook = React.useCallback((_1, done) => {
     setTimeout(() => {
-      if (!isCancelled()) {
-        setState('leaving');
+      setState('exiting');
+      setTimeout(() => {
         done();
-      }
-    }, 1000);
+      });
+    });
   }, []);
 
-  const handleLeaved: TransitionEndHook = React.useCallback(() => {
-    setState('leaved');
+  const handleExited: TransitionEndHook = React.useCallback(() => {
+    setState('exited');
   }, []);
 
   const { nodeRef } = useTransition({
@@ -54,17 +54,17 @@ const Demo = () => {
     onEnter: handleEnter,
     onEntering: handleEntering,
     onEntered: handleEntered,
-    onLeave: handleLeave,
-    onLeaving: handleLeaving,
-    onLeaved: handleLeaved,
+    onExit: handleExit,
+    onExiting: handleExiting,
+    onExited: handleExited,
   });
 
   React.useEffect(() => {
-    console.log(state);
+    console.log(`state:${state}`);
   }, [state]);
 
   const defaultStyle = {
-    transition: `all .3s ease-in-out`,
+    transition: `all 300ms ease-in-out`,
     marginTop: 10,
   };
 
@@ -72,9 +72,9 @@ const Demo = () => {
     enter: { opacity: 0, transform: `translateX(10px)` },
     entering: { opacity: 1, transform: `translateX(0)` },
     entered: { opacity: 1, transform: `translateX(0)` },
-    leave: { opacity: 1, transform: `translateX(0)` },
-    leaving: { opacity: 0, transform: `translateX(10px)` },
-    leaved: { opacity: 0, transform: `translateX(10px)` },
+    exit: { opacity: 1, transform: `translateX(0)` },
+    exiting: { opacity: 0, transform: `translateX(10px)` },
+    exited: { opacity: 0, transform: `translateX(10px)` },
   };
 
   return (

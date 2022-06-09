@@ -1,6 +1,6 @@
 import { ReactInstance, RefCallback, useCallback, useRef } from 'react';
 // eslint-disable-next-line camelcase
-import { findDOMNode, unstable_batchedUpdates } from 'react-dom';
+import { findDOMNode } from 'react-dom';
 import useIsomorphicLayoutEffect from '../useIsomorphicLayoutEffect';
 
 export type TransitionStartHook = (el: Element, transitionOnFirst: boolean) => void;
@@ -16,9 +16,9 @@ export type TransitionOptions = {
   onEnter?: TransitionStartHook;
   onEntering?: TransitionStartingHook;
   onEntered?: TransitionEndHook;
-  onLeave?: TransitionStartHook;
-  onLeaving?: TransitionStartingHook;
-  onLeaved?: TransitionEndHook;
+  onExit?: TransitionStartHook;
+  onExiting?: TransitionStartingHook;
+  onExited?: TransitionEndHook;
 
   in: boolean;
   transitionOnFirst?: boolean;
@@ -29,9 +29,9 @@ const useTransition = (options: TransitionOptions) => {
     onEnter,
     onEntering,
     onEntered,
-    onLeave,
-    onLeaving,
-    onLeaved,
+    onExit,
+    onExiting,
+    onExited,
     in: inOption,
     transitionOnFirst = false,
   } = options;
@@ -64,15 +64,11 @@ const useTransition = (options: TransitionOptions) => {
 
       // 判断回调是否执行了
       const wrapCallback = () => {
-        // wrapCallback可能会在setTimeout中被调用，默认同步setState，这里强制异步处理
-        // https://github.com/facebook/react/issues/19013#issuecomment-634777298
-        unstable_batchedUpdates(() => {
-          if (!isCancelled() && !isDestoryedRef.current) {
-            // 避免多次触发
-            cbRef.current = undefined;
-            endHook?.(el, isFirst);
-          }
-        });
+        if (!isCancelled() && !isDestoryedRef.current) {
+          // 避免多次触发
+          cbRef.current = undefined;
+          endHook?.(el, isFirst);
+        }
       };
 
       cbRef.current = wrapCallback;
@@ -108,7 +104,7 @@ const useTransition = (options: TransitionOptions) => {
     if (inOption) {
       onTransitionEnd(el, onEnter, onEntering, onEntered);
     } else {
-      onTransitionEnd(el, onLeave, onLeaving, onLeaved);
+      onTransitionEnd(el, onExit, onExiting, onExited);
     }
   }, [inOption, onTransitionEnd]);
 
