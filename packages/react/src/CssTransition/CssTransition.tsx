@@ -1,314 +1,68 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { isProduction } from '@xl-vision/utils';
-import { useConstantFn } from '@xl-vision/hooks';
-import { addClass, removeClass } from '../utils/class';
-import { onTransitionEnd } from '../utils/transition';
-import Transition, {
-  AfterEventHook,
-  BeforeEventHook,
-  EventCancelledHook,
-  EventHook,
-  TransitionProps,
-} from '../Transition';
-import nextFrame from '../utils/nextFrame';
+import { isProduction, warning } from '@xl-vision/utils';
+import { CssTransitionOptions, useCssTransition, useForkRef } from '@xl-vision/hooks';
+import clsx from 'clsx';
+import { supportRef } from '../utils/ref';
 
-export type CssTransitionClassesObject = {
-  appearFrom?: string;
-  appearActive?: string;
-  appearTo?: string;
-  enterFrom?: string;
-  enterActive?: string;
-  enterTo?: string;
-  leaveFrom?: string;
-  leaveActive?: string;
-  leaveTo?: string;
-  disappearFrom?: string;
-  disappearActive?: string;
-  disappearTo?: string;
+export type CssTransitionProps = CssTransitionOptions & {
+  children: React.ReactElement | ((show: boolean) => React.ReactElement);
+  mountOnEnter?: boolean;
+  unmountOnExit?: boolean;
 };
 
-export type CssTransitionClasses = CssTransitionClassesObject | string;
-
-export type CssTransitionProps = TransitionProps & {
-  disableCss?: boolean;
-  transitionClasses?: CssTransitionClasses;
-  timeout?:
-    | number
-    | {
-        appear?: number;
-        enter?: number;
-        leave?: number;
-        disappear?: number;
-      };
-};
-
-export type CssTransitionElement = HTMLElement & {
-  _ctc?: CssTransitionClassesObject;
-};
+const displayName = 'CssTransition';
 
 const CssTransition: React.FunctionComponent<CssTransitionProps> = (props) => {
-  const {
-    disableCss,
-    transitionClasses,
-    beforeEnter,
-    enter,
-    afterEnter,
-    enterCancelled,
-    beforeLeave,
-    leave,
-    afterLeave,
-    leaveCancelled,
-    timeout,
-    ...others
-  } = props;
+  const { children, mountOnEnter, unmountOnExit, in: inProp, ...others } = props;
 
-  const transitionClassesObject: CssTransitionClassesObject = React.useMemo(() => {
-    if (!transitionClasses) {
-      return {};
+  const { nodeRef, activeClassName, show } = useCssTransition({
+    ...others,
+    in: inProp,
+  });
+
+  const child = React.Children.only(
+    typeof children === 'function' ? children(show) : (children as React.ReactElement),
+  );
+
+  warning(!supportRef(child), '<%s>: child does not support ref', displayName);
+
+  const forkRef = useForkRef(
+    React.isValidElement<React.ReactInstance>(child)
+      ? (child as { ref?: React.Ref<unknown> }).ref
+      : null,
+    nodeRef,
+  );
+
+  // 判断是否是第一次挂载
+  const isFirstMountRef = React.useRef(true);
+
+  if (show) {
+    isFirstMountRef.current = false;
+  } else {
+    if (mountOnEnter && isFirstMountRef.current) {
+      return null;
     }
-    if (typeof transitionClasses === 'object') {
-      return transitionClasses;
+    if (unmountOnExit) {
+      return null;
     }
-    return {
-      appearFrom: `${transitionClasses}-appear-from`,
-      appearActive: `${transitionClasses}-appear-active`,
-      appearTo: `${transitionClasses}-appear-to`,
-      enterFrom: `${transitionClasses}-enter-from`,
-      enterActive: `${transitionClasses}-enter-active`,
-      enterTo: `${transitionClasses}-enter-to`,
-      leaveFrom: `${transitionClasses}-leave-from`,
-      leaveActive: `${transitionClasses}-leave-active`,
-      leaveTo: `${transitionClasses}-leave-to`,
-      disappearFrom: `${transitionClasses}-disappear-from`,
-      disappearActive: `${transitionClasses}-disappear-active`,
-      disappearTo: `${transitionClasses}-disappear-to`,
-    };
-  }, [transitionClasses]);
+  }
 
-  const timeoutObject = React.useMemo(() => {
-    if (!timeout) {
-      return {};
-    }
-    if (typeof timeout === 'object') {
-      return timeout;
-    }
-    return {
-      appear: timeout,
-      enter: timeout,
-      leave: timeout,
-      disappear: timeout,
-    };
-  }, [timeout]);
+  const prevClassName = (child.props as { className?: string }).className;
 
-  const beforeEnterWrapper: BeforeEventHook = useConstantFn(
-    (el: CssTransitionElement, transitionOnFirst) => {
-      if (!disableCss) {
-        if (transitionOnFirst) {
-          addClass(el, transitionClassesObject.appearFrom || '');
-          addClass(el, transitionClassesObject.appearActive || '');
-          el._ctc = {
-            appearFrom: transitionClassesObject.appearFrom,
-            appearActive: transitionClassesObject.appearActive,
-          };
-        } else {
-          addClass(el, transitionClassesObject.enterFrom || '');
-          addClass(el, transitionClassesObject.enterActive || '');
-          el._ctc = {
-            enterFrom: transitionClassesObject.enterFrom,
-            enterActive: transitionClassesObject.enterActive,
-          };
-        }
-      }
-      beforeEnter?.(el, transitionOnFirst);
-    },
-  );
+  const className = clsx(prevClassName, activeClassName);
 
-  const enterWrapper: EventHook = useConstantFn(
-    (el: CssTransitionElement, done, isCancelled, transitionOnFirst) => {
-      nextFrame(() => {
-        if (!isCancelled()) {
-          if (!disableCss) {
-            if (transitionOnFirst) {
-              addClass(el, transitionClassesObject.appearTo || '');
-              removeClass(el, el._ctc?.appearFrom || '');
-              el._ctc = {
-                appearActive: el._ctc?.appearActive,
-                appearTo: transitionClassesObject.appearTo,
-              };
-            } else {
-              addClass(el, transitionClassesObject.enterTo || '');
-              removeClass(el, el._ctc?.enterFrom || '');
-              el._ctc = {
-                enterActive: el._ctc?.enterActive,
-                enterTo: transitionClassesObject.enterTo,
-              };
-            }
-          }
-          const duration = transitionOnFirst ? timeoutObject.appear : timeoutObject.enter;
-
-          if (duration && duration > 0) {
-            setTimeout(done, duration);
-          } else if (!disableCss) {
-            onTransitionEnd(el, done);
-          }
-        }
-      });
-      enter?.(el, done, isCancelled, transitionOnFirst);
-    },
-  );
-  const afterEnterWrapper: AfterEventHook = useConstantFn(
-    (el: CssTransitionElement, transitionOnFirst) => {
-      if (!disableCss) {
-        if (transitionOnFirst) {
-          removeClass(el, el._ctc?.appearActive || '');
-          removeClass(el, el._ctc?.appearTo || '');
-        } else {
-          removeClass(el, el._ctc?.enterActive || '');
-          removeClass(el, el._ctc?.enterTo || '');
-        }
-        el._ctc = undefined;
-      }
-      afterEnter?.(el, transitionOnFirst);
-    },
-  );
-  const enterCancelledWrapper: EventCancelledHook = useConstantFn(
-    (el: CssTransitionElement, transitionOnFirst) => {
-      if (!disableCss) {
-        if (transitionOnFirst) {
-          removeClass(el, el._ctc?.appearActive || '');
-          removeClass(el, el._ctc?.appearTo || '');
-          removeClass(el, el._ctc?.appearFrom || '');
-        } else {
-          removeClass(el, el._ctc?.enterActive || '');
-          removeClass(el, el._ctc?.enterTo || '');
-          removeClass(el, el._ctc?.enterFrom || '');
-        }
-        el._ctc = undefined;
-      }
-      enterCancelled?.(el, transitionOnFirst);
-    },
-  );
-
-  const beforeLeaveWrapper: BeforeEventHook = useConstantFn(
-    (el: CssTransitionElement, transitionOnFirst) => {
-      if (!disableCss) {
-        if (transitionOnFirst) {
-          addClass(el, transitionClassesObject.disappearFrom || '');
-          addClass(el, transitionClassesObject.disappearActive || '');
-          el._ctc = {
-            disappearFrom: transitionClassesObject.disappearFrom,
-            disappearActive: transitionClassesObject.disappearActive,
-          };
-        } else {
-          addClass(el, transitionClassesObject.leaveFrom || '');
-          addClass(el, transitionClassesObject.leaveActive || '');
-          el._ctc = {
-            leaveFrom: transitionClassesObject.leaveFrom,
-            leaveActive: transitionClassesObject.leaveActive,
-          };
-        }
-      }
-      beforeLeave?.(el, transitionOnFirst);
-    },
-  );
-
-  const leaveWrapper: EventHook = useConstantFn(
-    (el: CssTransitionElement, done, isCancelled, transitionOnFirst) => {
-      nextFrame(() => {
-        if (!isCancelled()) {
-          if (!disableCss) {
-            if (transitionOnFirst) {
-              removeClass(el, el._ctc?.disappearFrom || '');
-              addClass(el, transitionClassesObject.disappearTo || '');
-              el._ctc = {
-                disappearFrom: el._ctc?.disappearFrom,
-                disappearTo: transitionClassesObject.disappearTo,
-              };
-            } else {
-              removeClass(el, el._ctc?.leaveFrom || '');
-              addClass(el, transitionClassesObject.leaveTo || '');
-              el._ctc = {
-                leaveActive: el._ctc?.leaveActive,
-                leaveTo: transitionClassesObject.leaveTo,
-              };
-            }
-          }
-          const duration = transitionOnFirst ? timeoutObject.disappear : timeoutObject.leave;
-
-          if (duration && duration > 0) {
-            setTimeout(done, duration);
-          } else if (!disableCss) {
-            onTransitionEnd(el, done);
-          }
-        }
-      });
-      leave?.(el, done, isCancelled, transitionOnFirst);
-    },
-  );
-  const afterLeaveWrapper: AfterEventHook = useConstantFn(
-    (el: CssTransitionElement, transitionOnFirst) => {
-      if (!disableCss) {
-        if (transitionOnFirst) {
-          removeClass(el, el._ctc?.disappearActive || '');
-          removeClass(el, el._ctc?.disappearTo || '');
-        } else {
-          removeClass(el, el._ctc?.leaveActive || '');
-          removeClass(el, el._ctc?.leaveTo || '');
-        }
-        el._ctc = undefined;
-      }
-      afterLeave?.(el, transitionOnFirst);
-    },
-  );
-  const leaveCancelledWrapper: EventCancelledHook = useConstantFn(
-    (el: CssTransitionElement, transitionOnFirst) => {
-      if (!disableCss) {
-        if (transitionOnFirst) {
-          removeClass(el, el._ctc?.disappearActive || '');
-          removeClass(el, el._ctc?.disappearTo || '');
-          removeClass(el, el._ctc?.disappearFrom || '');
-        } else {
-          removeClass(el, el._ctc?.leaveActive || '');
-          removeClass(el, el._ctc?.leaveTo || '');
-          removeClass(el, el._ctc?.leaveFrom || '');
-        }
-        el._ctc = undefined;
-      }
-      leaveCancelled?.(el, transitionOnFirst);
-    },
-  );
-
-  return (
-    <Transition
-      {...others}
-      beforeEnter={beforeEnterWrapper}
-      enter={enterWrapper}
-      afterEnter={afterEnterWrapper}
-      enterCancelled={enterCancelledWrapper}
-      beforeLeave={beforeLeaveWrapper}
-      leave={leaveWrapper}
-      afterLeave={afterLeaveWrapper}
-      leaveCancelled={leaveCancelledWrapper}
-    />
-  );
+  return React.cloneElement(child, {
+    ref: forkRef,
+    className,
+  });
 };
 
 if (!isProduction) {
-  CssTransition.displayName = 'CssTransition';
+  CssTransition.displayName = displayName;
 
   CssTransition.propTypes = {
-    transitionClasses: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-    timeout: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
-    disableCss: PropTypes.bool,
-    beforeEnter: PropTypes.func,
-    enter: PropTypes.func,
-    afterEnter: PropTypes.func,
-    enterCancelled: PropTypes.func,
-    beforeLeave: PropTypes.func,
-    leave: PropTypes.func,
-    afterLeave: PropTypes.func,
-    leaveCancelled: PropTypes.func,
+    children: PropTypes.oneOfType([PropTypes.element.isRequired, PropTypes.func.isRequired]),
   };
 }
 

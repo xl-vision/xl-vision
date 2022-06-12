@@ -73,17 +73,17 @@ const CodeWrapper = styled('div')(
   border-top: ${theme.styleSize.middle.border}px solid ${theme.color.divider};
 
   &.slide-enter-active,
-  &.slide-leave-active {
-    transition: ${theme.transition.standard('all')};
+  &.slide-exit-active {
+    transition: all 2s ease-in-out;
   }
 
-  &.slide-enter-from,
-  &.slide-leave-to {
+  &.slide-enter,
+  &.slide-exit-to {
     opacity: 0.4;
   }
 
   &.slide-enter-to,
-  &.slide-leave-from {
+  &.slide-exit {
     opacity: 1;
   }
 `,
@@ -166,7 +166,7 @@ const DemoBox: React.FunctionComponent<DemoBoxProps> = ({
           />
         </ButtonWrapper>
       </InfoWrapper>
-      <CollapseTransition in={isExpand} transitionClasses='slide'>
+      <CollapseTransition in={isExpand} transitionClassName='slide'>
         <CodeWrapper>
           <Code>
             {tsCodeNode}

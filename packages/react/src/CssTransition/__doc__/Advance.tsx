@@ -13,43 +13,36 @@ const Div = styled('div')`
   margin-top: 16px;
 
   &.slide-enter-active,
-  &.slide-leave-active {
+  &.slide-appear-active,
+  &.slide-exit-active,
+  &.slide-disappear-active {
     transition: all 2s ease;
     overflow: hidden;
   }
 
-  &.slide-enter-from,
-  &.slide-leave-to {
+  &.slide-enter,
+  &.slide-appear,
+  &.slide-exit-to,
+  &.slide-disappear-to {
     height: 0;
   }
 `;
 
 const Advance = () => {
-  const [show, setShow] = React.useState(false);
-
-  const [display, setDisplay] = React.useState(false);
-
-  const beforeEnter = React.useCallback(() => {
-    setDisplay(true);
-  }, []);
-
-  const afterLeave = React.useCallback(() => {
-    setDisplay(false);
-  }, []);
+  const [inOption, setInOption] = React.useState(false);
 
   return (
     <div>
-      <Button color='primary' onClick={() => setShow(!show)}>
+      <Button color='primary' onClick={() => setInOption((prev) => !prev)}>
         Click
       </Button>
       <CssTransition
-        in={show}
-        transitionClasses='slide'
+        in={inOption}
+        transitionOnFirst={true}
+        transitionClassName='slide'
         mountOnEnter={true}
-        beforeEnter={beforeEnter}
-        afterLeave={afterLeave}
       >
-        <Div style={{ display: display ? '' : 'none' }}>DEMO</Div>
+        {(show) => <Div style={{ display: show ? '' : 'none' }}>DEMO</Div>}
       </CssTransition>
     </div>
   );

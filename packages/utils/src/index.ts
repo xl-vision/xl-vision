@@ -12,3 +12,4 @@ export { default as getComputedStyle } from './getComputedStyle';
 export { default as getDocumentElement } from './getDocumentElement';
 export { default as getBoundingClientRect } from './getBoundingClientRect';
 export { default as deepMerge } from './deepMerge';
+export { onTransitionEnd, getTransitionInfo } from './transition';

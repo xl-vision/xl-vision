@@ -22,10 +22,9 @@ If you want the component not to be unloaded after it comes out, you can do this
 
 ## CssTransition API
 
-> CssTransition inherits all [Transition](/components/Transition) properties
+> CssTransition inherits all [useCssTransition](/hooks/useCssTransition) properties
 
 | Property | Description | Type | Default | Require |
 | --- | --- | --- | --- | --- |
-| transitionClasses | Specify the `class` name during the animation | string \| object | - | false |
-| timeout | Specify the time required for the animation | string \| object | - | false |
-| disableCss | Disable css animation. If you want to use js for animation control and avoid the interference of css animation, you can set this property to `true` | boolean | - | false |
+| mountOnEnter | The child element is only mounted when the transition is executed for the first time, and will remain mounted unless `unmountOnExit` is used. | boolean | - | false |
+| unmountOnExit | Unmount child element when leaving transition | boolean | - | false |

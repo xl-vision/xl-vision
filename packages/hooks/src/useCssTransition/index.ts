@@ -1,4 +1,4 @@
-import { nextFrame } from '@xl-vision/utils';
+import { nextFrame, onTransitionEnd } from '@xl-vision/utils';
 import { useMemo, useRef, useState } from 'react';
 import useConstantFn from '../useConstantFn';
 import useIsomorphicLayoutEffect from '../useIsomorphicLayoutEffect';
@@ -8,11 +8,10 @@ import useTransition, {
   TransitionStartHook,
   TransitionStartingHook,
 } from '../useTransition';
-import { onTransitionEnd } from './transitionUtils';
 
 export type CssTransitionAction = 'appear' | 'enter' | 'exit' | 'disappear';
 
-export type CssTransitionState = `${CssTransitionAction}${'' | 'ing' | 'ed'}`;
+export type CssTransitionState = `${CssTransitionAction}${'' | 'ing'}`;
 
 export type CssTransitionClassNameRecord = Partial<
   Record<`${CssTransitionAction}${'' | 'Active' | 'ing'}`, string>
@@ -29,15 +28,17 @@ export type CssTransitionTimeoutRecord = Partial<{
 
 export type CssTransitionTimeout = CssTransitionTimeoutRecord | number;
 
-export type CssTransitionOptions = TransitionOptions & {
+export type CssTransitionOptions<T extends Element = Element> = TransitionOptions<T> & {
   timeout?: CssTransitionTimeout;
-  transitionClasseName?: CssTransitionClassName;
+  disableCss?: boolean;
+  transitionClassName?: CssTransitionClassName;
 };
 
-const useCssTransition = (options: CssTransitionOptions) => {
+const useCssTransition = <T extends Element = Element>(options: CssTransitionOptions<T>) => {
   const {
     timeout,
-    transitionClasseName,
+    transitionClassName,
+    disableCss,
     onEnter,
     onEntering,
     onEntered,
@@ -48,28 +49,28 @@ const useCssTransition = (options: CssTransitionOptions) => {
   } = options;
 
   const transitionClassNameRecord: CssTransitionClassNameRecord = useMemo(() => {
-    if (!transitionClasseName) {
+    if (!transitionClassName) {
       return {};
     }
-    if (typeof transitionClasseName === 'object') {
-      return transitionClasseName;
+    if (typeof transitionClassName === 'object') {
+      return transitionClassName;
     }
     const ret: Required<CssTransitionClassNameRecord> = {
-      appearActive: `${transitionClasseName}-appear-active`,
-      appear: `${transitionClasseName}-appear`,
-      appearing: `${transitionClasseName}-appear-to`,
-      enterActive: `${transitionClasseName}-enter-active`,
-      enter: `${transitionClasseName}-enter`,
-      entering: `${transitionClasseName}-enter-to`,
-      disappearActive: `${transitionClasseName}-disappear-active`,
-      disappear: `${transitionClasseName}-disappear`,
-      disappearing: `${transitionClasseName}-disappear-to`,
-      exitActive: `${transitionClasseName}-exit-active`,
-      exit: `${transitionClasseName}-exit`,
-      exiting: `${transitionClasseName}-exit-to`,
+      appearActive: `${transitionClassName}-appear-active`,
+      appear: `${transitionClassName}-appear`,
+      appearing: `${transitionClassName}-appear-to`,
+      enterActive: `${transitionClassName}-enter-active`,
+      enter: `${transitionClassName}-enter`,
+      entering: `${transitionClassName}-enter-to`,
+      disappearActive: `${transitionClassName}-disappear-active`,
+      disappear: `${transitionClassName}-disappear`,
+      disappearing: `${transitionClassName}-disappear-to`,
+      exitActive: `${transitionClassName}-exit-active`,
+      exit: `${transitionClassName}-exit`,
+      exiting: `${transitionClassName}-exit-to`,
     };
     return ret;
-  }, [transitionClasseName]);
+  }, [transitionClassName]);
 
   const timeoutRecord: CssTransitionTimeoutRecord = useMemo(() => {
     if (typeof timeout === 'number' || typeof timeout === 'undefined') {
@@ -90,74 +91,90 @@ const useCssTransition = (options: CssTransitionOptions) => {
 
   const doneRef = useRef<() => void>();
 
-  const handleEnter: TransitionStartHook = useConstantFn((el, transitionOnFirst) => {
+  const handleEnter: TransitionStartHook<T> = useConstantFn((el, transitionOnFirst) => {
     setState(transitionOnFirst ? 'appear' : 'enter');
     onEnter?.(el, transitionOnFirst);
   });
 
-  const handleEntering: TransitionStartingHook = useConstantFn(
+  const handleEntering: TransitionStartingHook<T> = useConstantFn(
     (el, done, transitionOnFirst, isCancelled) => {
       const time = transitionOnFirst ? timeoutRecord.appear : timeoutRecord.enter;
-      if (Number(time) >= 0) {
+      const useTime = Number(time) >= 0;
+      if (useTime) {
         setTimeout(done, time);
       }
 
-      onEntering?.(el, done, transitionOnFirst, isCancelled);
-
       const cb = () => {
         doneRef.current = undefined;
+        if (isCancelled()) {
+          return;
+        }
         nextFrame(() => {
           if (isCancelled()) {
             return;
           }
           setState(transitionOnFirst ? 'appearing' : 'entering');
+          if (!disableCss && !useTime) {
+            console.log('onTransitionEnd start', el.cloneNode());
+            const start = performance.now();
+            onTransitionEnd(el, () => {
+              done();
+              console.log('spend', performance.now() - start);
+            });
+          }
         });
-        onTransitionEnd(el, done);
+        onEntering?.(el, done, transitionOnFirst, isCancelled);
       };
       doneRef.current = cb;
     },
   );
 
-  const handleEntered: TransitionEndHook = useConstantFn((el, transitionOnFirst) => {
-    setState(transitionOnFirst ? 'appeared' : 'entered');
+  const handleEntered: TransitionEndHook<T> = useConstantFn((el, transitionOnFirst) => {
+    setState(undefined);
     onEntered?.(el, transitionOnFirst);
   });
 
-  const handleExit: TransitionStartHook = useConstantFn((el, transitionOnFirst) => {
+  const handleExit: TransitionStartHook<T> = useConstantFn((el, transitionOnFirst) => {
     setState(transitionOnFirst ? 'disappear' : 'exit');
     onExit?.(el, transitionOnFirst);
   });
 
-  const handleExiting: TransitionStartingHook = useConstantFn(
+  const handleExiting: TransitionStartingHook<T> = useConstantFn(
     (el, done, transitionOnFirst, isCancelled) => {
       const time = transitionOnFirst ? timeoutRecord.disappear : timeoutRecord.exit;
-      if (Number(time) >= 0) {
+      const useTime = Number(time) >= 0;
+      if (useTime) {
         setTimeout(done, time);
       }
 
-      onExiting?.(el, done, transitionOnFirst, isCancelled);
-
       const cb = () => {
         doneRef.current = undefined;
+        if (isCancelled()) {
+          return;
+        }
+
         nextFrame(() => {
           if (isCancelled()) {
             return;
           }
           setState(transitionOnFirst ? 'disappearing' : 'exiting');
+          if (!disableCss && !useTime) {
+            onTransitionEnd(el, done);
+          }
         });
-        onTransitionEnd(el, done);
+        onExiting?.(el, done, transitionOnFirst, isCancelled);
       };
 
       doneRef.current = cb;
     },
   );
 
-  const handleExited: TransitionEndHook = useConstantFn((el, transitionOnFirst) => {
-    setState(transitionOnFirst ? 'disappeared' : 'exited');
+  const handleExited: TransitionEndHook<T> = useConstantFn((el, transitionOnFirst) => {
+    setState(undefined);
     onExited?.(el, transitionOnFirst);
   });
 
-  const { nodeRef, transitionOnFirst } = useTransition({
+  const data = useTransition<T>({
     ...others,
     onEnter: handleEnter,
     onEntering: handleEntering,
@@ -173,22 +190,14 @@ const useCssTransition = (options: CssTransitionOptions) => {
 
   const classes: Array<string | undefined> = [];
 
-  if (state) {
-    const action = state.replace(/ing|ed$/, '') as CssTransitionAction;
-    if (state.match(/ed$/)) {
-      classes.push(transitionClassNameRecord[`${action}ing`]);
-    } else if (state.match(/ing$/)) {
-      classes.push(transitionClassNameRecord[`${action}Active`]);
-      classes.push(transitionClassNameRecord[`${action}ing`]);
-    } else {
-      classes.push(transitionClassNameRecord[`${action}Active`]);
-      classes.push(transitionClassNameRecord[action]);
-    }
+  if (!disableCss && state) {
+    const action = state.replace(/ing$/, '') as CssTransitionAction;
+    classes.push(transitionClassNameRecord[`${action}Active`]);
+    classes.push(transitionClassNameRecord[state]);
   }
 
   return {
-    nodeRef,
-    transitionOnFirst,
+    ...data,
     state,
     activeClassName: classes.filter(Boolean).join(' '),
   };

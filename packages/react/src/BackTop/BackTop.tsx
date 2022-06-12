@@ -143,8 +143,8 @@ const BackTop = React.forwardRef<HTMLDivElement, BackTopProps>((props, ref) => {
     <CssTransition
       in={show}
       mountOnEnter={true}
-      unmountOnLeave={true}
-      transitionClasses={rootClassName}
+      unmountOnExit={true}
+      transitionClassName={rootClassName}
     >
       <Root
         {...others}

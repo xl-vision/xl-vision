@@ -198,13 +198,6 @@ const route: Route = {
       children: [
         {
           titleMap: {
-            'en-US': 'Transition',
-            'zh-CN': '过渡动画',
-          },
-          path: '/Transition',
-        },
-        {
-          titleMap: {
             'en-US': 'CssTransition',
             'zh-CN': 'CSS过渡动画',
           },

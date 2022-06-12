@@ -1,4 +1,5 @@
-import { getComputedStyle, isBrowser, noop } from '@xl-vision/utils';
+import { isBrowser } from './env';
+import noop from './noop';
 
 let TRANSITION_NAME = 'transition';
 let ANIMATION_NAME = 'animation';
@@ -12,7 +13,7 @@ if (isBrowser) {
   }
 }
 
-export const getTransitionInfo = (el: HTMLElement) => {
+export const getTransitionInfo = (el: Element) => {
   const styles = getComputedStyle(el);
 
   const getStyleProperties = (
@@ -50,7 +51,7 @@ export const getTransitionInfo = (el: HTMLElement) => {
   };
 };
 
-export const onTransitionEnd = (el: HTMLElement, done: () => void) => {
+export const onTransitionEnd = (el: Element, done: () => void) => {
   const { timeout, durationCount, type } = getTransitionInfo(el);
 
   if (timeout <= 0) {

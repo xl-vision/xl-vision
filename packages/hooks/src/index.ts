@@ -39,11 +39,16 @@ export type {
   TransitionStartingHook,
   TransitionEndHook,
   TransitionStartHook,
+  TransitionCancelledHook,
 } from './useTransition';
 
-export {
-  default as useCssTransition,
-  CssTransitionClassNameRecord as CssTransitionClassNameObject,
-  CssTransitionClassName as CssTransitionClassNames,
+export { default as useCssTransition } from './useCssTransition';
+export type {
+  CssTransitionClassNameRecord,
+  CssTransitionClassName,
   CssTransitionOptions,
+  CssTransitionAction,
+  CssTransitionState,
+  CssTransitionTimeout,
+  CssTransitionTimeoutRecord,
 } from './useCssTransition';

@@ -12,35 +12,32 @@ const Root = styled('div')(() => {
         opacity: 0,
         transform: `translateX(100px)`,
       },
-      '&-appear-to, &-disappear, &-enter-to, &-exit': {
-        opacity: 1,
-        transform: `translateX(0px)`,
-      },
     },
   };
 });
 
 const Demo = () => {
-  const [show, setShow] = React.useState(true);
+  const [inOption, setInOption] = React.useState(false);
 
-  const { activeClassName, nodeRef } = useCssTransition({
-    in: show,
-    transitionClasseName: 'demo',
+  const { activeClassName, nodeRef, show } = useCssTransition({
+    in: inOption,
+    transitionClassName: 'demo',
     transitionOnFirst: true,
   });
 
-  React.useEffect(() => {
-    console.log(activeClassName);
-  }, [activeClassName]);
-
   return (
     <Root>
-      <Button color='primary' onClick={() => setShow((prev) => !prev)}>
+      <Button color='primary' onClick={() => setInOption((prev) => !prev)}>
         click
       </Button>
-      <div className={activeClassName} ref={nodeRef}>
-        hello
+      <div className={activeClassName} ref={nodeRef} style={{ display: show ? '' : 'none' }}>
+        always in dom
       </div>
+      {show && (
+        <div className={activeClassName} ref={nodeRef}>
+          remove when exit
+        </div>
+      )}
     </Root>
   );
 };

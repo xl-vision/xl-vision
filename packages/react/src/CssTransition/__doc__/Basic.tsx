@@ -13,12 +13,12 @@ const Div = styled('div')`
   margin-top: 16px;
 
   &.slide-enter-active,
-  &.slide-leave-active {
+  &.slide-exit-active {
     transition: all 2s ease;
   }
 
-  &.slide-enter-from,
-  &.slide-leave-to {
+  &.slide-enter,
+  &.slide-exit-to {
     height: 0;
   }
 `;
@@ -31,7 +31,7 @@ const Basic = () => {
       <Button color='primary' onClick={() => setShow(!show)}>
         Click
       </Button>
-      <CssTransition in={show} transitionClasses='slide' mountOnEnter={true} unmountOnLeave={true}>
+      <CssTransition in={show} transitionClassName='slide' mountOnEnter={true} unmountOnExit={true}>
         <Div>DEMO</Div>
       </CssTransition>
     </div>

@@ -22,10 +22,9 @@ Css 过渡动画
 
 ## CssTransition API
 
-> CssTransition 继承所有[Transition](/components/Transition)属性
+> CssTransition 继承所有[useCssTransition](/hooks/useCssTransition)属性
 
-| 参数 | 说明 | 类型 | 默认值 | 是否必填 |
-| --- | --- | --- | --- | --- |
-| transitionClasses | 指定动画过程中的`class`名 | string \| object | - | false |
-| timeout | 指定动画需要的时间 | string \| object | - | false |
-| disableCss | 禁用 css 动画，如果想使用 js 进行动画控制，避免 css 动画的干扰，可以将此属性置为`true` | boolean | - | false |
+| 参数          | 说明                   | 类型    | 默认值 | 是否必填 |
+| ------------- | ---------------------- | ------- | ------ | -------- |
+| mountOnEnter  | 第一次执行进入过渡时才挂载子元素，后续会保持挂载状态，除非使用`unmountOnExit` | boolean | -      | false    |
+| unmountOnExit | 离开过渡时会卸载子元素 | boolean | -      | false    |

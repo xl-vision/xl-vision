@@ -12,21 +12,8 @@ export {
 } from './ConfigProvider';
 export type { ConfigProviderProps, ConfigContextProps } from './ConfigProvider';
 
-export { default as Transition } from './Transition';
-export type {
-  TransitionProps,
-  BeforeEventHook,
-  EventHook,
-  AfterEventHook,
-  EventCancelledHook,
-} from './Transition';
-
 export { default as CssTransition } from './CssTransition';
-export type {
-  CssTransitionClasses,
-  CssTransitionClassesObject,
-  CssTransitionProps,
-} from './CssTransition';
+export type { CssTransitionProps } from './CssTransition';
 
 export { default as CollapseTransition } from './CollapseTransition';
 export type { CollapseTransitionProp } from './CollapseTransition';
