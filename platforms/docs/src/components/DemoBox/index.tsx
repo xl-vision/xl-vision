@@ -74,16 +74,16 @@ const CodeWrapper = styled('div')(
 
   &.slide-enter-active,
   &.slide-exit-active {
-    transition: all 2s ease-in-out;
+    transition: all 1s ease-in-out;
   }
 
-  &.slide-enter,
+  &.slide-enter-from,
   &.slide-exit-to {
     opacity: 0.4;
   }
 
   &.slide-enter-to,
-  &.slide-exit {
+  &.slide-exit-to {
     opacity: 1;
   }
 `,

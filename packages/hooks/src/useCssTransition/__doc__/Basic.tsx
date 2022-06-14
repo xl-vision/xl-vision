@@ -8,7 +8,7 @@ const Root = styled('div')(() => {
       '&-appear-active, &-disappear-active, &-enter-active, &-exit-active': {
         transition: 'all 2s ease-in-out',
       },
-      '&-appear, &-disappear-to, &-enter, &-exit-to': {
+      '&-appear-from, &-disappear-to, &-enter-from, &-exit-to': {
         opacity: 0,
         transform: `translateX(100px)`,
       },
@@ -19,7 +19,13 @@ const Root = styled('div')(() => {
 const Demo = () => {
   const [inOption, setInOption] = React.useState(false);
 
-  const { activeClassName, nodeRef, show } = useCssTransition({
+  const { nodeRef: node1Ref, show: show1 } = useCssTransition({
+    in: inOption,
+    transitionClassName: 'demo',
+    transitionOnFirst: true,
+  });
+
+  const { nodeRef: node2Ref, show: show2 } = useCssTransition({
     in: inOption,
     transitionClassName: 'demo',
     transitionOnFirst: true,
@@ -30,14 +36,10 @@ const Demo = () => {
       <Button color='primary' onClick={() => setInOption((prev) => !prev)}>
         click
       </Button>
-      <div className={activeClassName} ref={nodeRef} style={{ display: show ? '' : 'none' }}>
+      <div ref={node1Ref} style={{ display: show1 ? '' : 'none' }}>
         always in dom
       </div>
-      {show && (
-        <div className={activeClassName} ref={nodeRef}>
-          remove when exit
-        </div>
-      )}
+      {show2 && <div ref={node2Ref}>remove when exit</div>}
     </Root>
   );
 };

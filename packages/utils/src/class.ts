@@ -1,13 +1,13 @@
-export const getClasses = (element: HTMLElement) => {
+export const getClasses = (element: Element) => {
   const classes = (element.className || '').trim();
   return classes.split(/\s+/);
 };
 
-export const containClass = (element: HTMLElement, className: string) => {
+export const containClass = (element: Element, className: string) => {
   return getClasses(element).some((it) => it === className);
 };
 
-export const addClass = (element: HTMLElement, className: string) => {
+export const addClass = (element: Element, className: string) => {
   if (containClass(element, className)) {
     return;
   }
@@ -15,7 +15,7 @@ export const addClass = (element: HTMLElement, className: string) => {
   element.className = _className.replace(/\s+/, ' ').trim();
 };
 
-export const removeClass = (element: HTMLElement, className: string) => {
+export const removeClass = (element: Element, className: string) => {
   if (!containClass(element, className)) {
     return;
   }

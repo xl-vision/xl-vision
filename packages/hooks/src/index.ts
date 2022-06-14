@@ -48,7 +48,6 @@ export type {
   CssTransitionClassName,
   CssTransitionOptions,
   CssTransitionAction,
-  CssTransitionState,
   CssTransitionTimeout,
   CssTransitionTimeoutRecord,
 } from './useCssTransition';

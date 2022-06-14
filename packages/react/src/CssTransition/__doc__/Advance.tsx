@@ -20,8 +20,8 @@ const Div = styled('div')`
     overflow: hidden;
   }
 
-  &.slide-enter,
-  &.slide-appear,
+  &.slide-enter-from,
+  &.slide-appear-from,
   &.slide-exit-to,
   &.slide-disappear-to {
     height: 0;

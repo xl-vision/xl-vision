@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { isProduction, warning } from '@xl-vision/utils';
 import { CssTransitionOptions, useCssTransition, useForkRef } from '@xl-vision/hooks';
-import clsx from 'clsx';
 import { supportRef } from '../utils/ref';
 
 export type CssTransitionProps = CssTransitionOptions & {
@@ -16,7 +15,7 @@ const displayName = 'CssTransition';
 const CssTransition: React.FunctionComponent<CssTransitionProps> = (props) => {
   const { children, mountOnEnter, unmountOnExit, in: inProp, ...others } = props;
 
-  const { nodeRef, activeClassName, show } = useCssTransition({
+  const { nodeRef, show } = useCssTransition({
     ...others,
     in: inProp,
   });
@@ -48,13 +47,8 @@ const CssTransition: React.FunctionComponent<CssTransitionProps> = (props) => {
     }
   }
 
-  const prevClassName = (child.props as { className?: string }).className;
-
-  const className = clsx(prevClassName, activeClassName);
-
   return React.cloneElement(child, {
     ref: forkRef,
-    className,
   });
 };
 

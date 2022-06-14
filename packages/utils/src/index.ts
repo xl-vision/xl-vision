@@ -13,3 +13,4 @@ export { default as getDocumentElement } from './getDocumentElement';
 export { default as getBoundingClientRect } from './getBoundingClientRect';
 export { default as deepMerge } from './deepMerge';
 export { onTransitionEnd, getTransitionInfo } from './transition';
+export { addClass, getClasses, removeClass, containClass } from './class';

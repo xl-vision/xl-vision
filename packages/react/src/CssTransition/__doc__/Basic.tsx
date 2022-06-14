@@ -17,7 +17,7 @@ const Div = styled('div')`
     transition: all 2s ease;
   }
 
-  &.slide-enter,
+  &.slide-enter-from,
   &.slide-exit-to {
     height: 0;
   }
