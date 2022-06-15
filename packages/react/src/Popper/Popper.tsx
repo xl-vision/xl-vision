@@ -3,11 +3,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Instance, Placement, createPopper, Modifier } from '@popperjs/core';
 import clsx from 'clsx';
-import { isProduction, isServer, noop, oneOf, addClass, removeClass } from '@xl-vision/utils';
+import { isProduction, isServer, noop, oneOf } from '@xl-vision/utils';
 import { useForkRef, useConstantFn } from '@xl-vision/hooks';
-import CssTransition, { CssTransitionElement, CssTransitionProps } from '../CssTransition';
+import CssTransition, { CssTransitionProps } from '../CssTransition';
 import Portal, { PortalContainerType } from '../Portal';
-import { forceReflow } from '../utils/dom';
 import { off, on } from '../utils/event';
 import useLifecycleState, { LifecycleState } from '../hooks/useLifecycleState';
 import { increaseZindex } from '../utils/zIndexManger';
@@ -34,7 +33,7 @@ export interface PopperProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactElement<PopperChildrenProps>;
   popup: React.ReactElement;
   popupContainer?: PortalContainerType;
-  transitionClasses?: CssTransitionProps['transitionClasses'];
+  transitionClassName?: CssTransitionProps['transitionClassName'];
   trigger?: PopperTrigger | Array<PopperTrigger>;
   placement?: PopperPlacement;
   disablePopupEnter?: boolean;
@@ -66,7 +65,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     children,
     popup,
     popupContainer = defaultGetPopupContainer,
-    transitionClasses,
+    transitionClassName,
     trigger = 'hover',
     disablePopupEnter,
     offset = 0,
@@ -403,21 +402,20 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     };
   }, [handleClickOutside, handleContextMenuOutside]);
 
-  const beforeEnter = useConstantFn((el: CssTransitionElement) => {
-    // 移除transition class对定位的干扰
-    removeClass(el, el._ctc?.enterActive || '');
-    removeClass(el, el._ctc?.enterFrom || '');
-
-    el.style.display = '';
-    show();
-    addClass(el, el._ctc?.enterFrom || '');
-    forceReflow();
-    addClass(el, el._ctc?.enterActive || '');
+  const handleEnter = useConstantFn(() => {
+    // // 移除transition class对定位的干扰
+    // removeClass(el, el._ctc?.enterActive || '');
+    // removeClass(el, el._ctc?.enterFrom || '');
+    // el.style.display = '';
+    // show();
+    // addClass(el, el._ctc?.enterFrom || '');
+    // forceReflow();
+    // addClass(el, el._ctc?.enterActive || '');
   });
 
-  const afterLeave = useConstantFn((el: HTMLElement) => {
+  const handleExited = useConstantFn((el: Element) => {
     close();
-    el.style.display = 'none';
+    (el as HTMLElement).style.display = 'none';
     setAnimatedVisible(false);
   });
 
@@ -474,9 +472,9 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
       >
         <CssTransition
           in={inProp}
-          transitionClasses={transitionClasses}
-          beforeEnter={beforeEnter}
-          afterLeave={afterLeave}
+          transitionClassName={transitionClassName}
+          onEnter={handleEnter}
+          onExited={handleExited}
           mountOnEnter={mountOnShow}
         >
           <div
@@ -523,7 +521,7 @@ if (!isProduction) {
       PropTypes.string,
       isServer ? PropTypes.any : PropTypes.instanceOf(Element),
     ]),
-    transitionClasses: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    transitionClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     trigger: PropTypes.oneOfType([triggerPropType, PropTypes.arrayOf(triggerPropType)]),
     disablePopupEnter: PropTypes.bool,
     offset: PropTypes.number,

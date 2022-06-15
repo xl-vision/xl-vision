@@ -27,7 +27,7 @@ const Demo = ({ leaveAfterEnter }: { leaveAfterEnter?: boolean }) => {
   return (
     <div className='box' {...events}>
       click me
-      <Ripple leaveAfterEnter={leaveAfterEnter} transitionClasses='ripple' ref={rippleRef} />
+      <Ripple leaveAfterEnter={leaveAfterEnter} transitionClassName='ripple' ref={rippleRef} />
     </div>
   );
 };
@@ -41,7 +41,7 @@ describe('Ripple', () => {
     const wrapper = mount(
       <div>
         click me
-        <Ripple transitionClasses='ripple' />
+        <Ripple transitionClassName='ripple' />
       </div>,
     );
     jest.runAllTimers();

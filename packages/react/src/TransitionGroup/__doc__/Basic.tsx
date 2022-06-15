@@ -8,21 +8,21 @@ const Wrapper = styled('div')({
 const Demo = styled('span')({
   display: 'inline-block',
   marginRight: 10,
-  '&.slide-enter-active,&.slide-leave-active': {
+  '&.slide-enter-active,&.slide-exit-active': {
     transition: 'all 1s ease-in-out',
   },
 
-  '&.slide-leave-to, &.slide-enter-from': {
+  '&.slide-exit-to, &.slide-enter-from': {
     opacity: 0,
   },
-  ' &.slide-leave-from, &.slide-enter-to': {
+  ' &.slide-exit-from, &.slide-enter-to': {
     opacity: 1,
     transform: 'translateY(0px)',
   },
   '&.slide-enter-from': {
     transform: 'translateY(-30px)',
   },
-  '&.slide-leave-to': {
+  '&.slide-exit-to': {
     transform: 'translateY(30px)',
   },
 });
@@ -59,7 +59,7 @@ const Basic = () => {
         </Button>
       </div>
       <Wrapper>
-        <TransitionGroup transitionClasses='slide'>
+        <TransitionGroup transitionClassName='slide'>
           {items.map((it) => (
             <Demo key={it}>{it}</Demo>
           ))}

@@ -65,14 +65,14 @@ const BaseButtonRoot = styled('button', {
       '&-enter-active': {
         transition: theme.transition.enter('all'),
       },
-      '&-leave-active': {
+      '&-exit-active': {
         transition: theme.transition.leavePermanent('all'),
       },
       '&-enter-from': {
         transform: 'scale(0)',
         opacity: 0.1,
       },
-      '&-leave-to': {
+      '&-exit-to': {
         opacity: 0,
       },
     },
@@ -219,7 +219,7 @@ const BaseButton = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseB
           ref={rippleRef}
           leaveAfterEnter={true}
           className={`${rootClassName}__ripple`}
-          transitionClasses={`${rootClassName}__ripple`}
+          transitionClassName={`${rootClassName}__ripple`}
         />
       </BaseButtonRoot>
     );

@@ -20,8 +20,8 @@ export type { CollapseTransitionProp } from './CollapseTransition';
 
 export { default as TransitionGroup } from './TransitionGroup';
 export type {
-  TransitionGroupClasses,
-  TransitionGroupClassesObject,
+  TransitionGroupClassName,
+  TransitionGroupClassNameRecord,
   TransitionGroupProps,
 } from './TransitionGroup';
 

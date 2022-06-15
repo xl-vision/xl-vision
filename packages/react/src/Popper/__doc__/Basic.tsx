@@ -56,59 +56,59 @@ const Basic = () => {
     <Wrapper>
       <div className='column'>
         <div />
-        <PopperRoot transitionClasses='slide' placement='top-start' popup={popup} flip={false}>
+        <PopperRoot transitionClassName='slide' placement='top-start' popup={popup} flip={false}>
           <Button color='primary'>TS</Button>
         </PopperRoot>
-        <PopperRoot transitionClasses='slide' placement='top' popup={popup} flip={false}>
+        <PopperRoot transitionClassName='slide' placement='top' popup={popup} flip={false}>
           <Button color='primary'>T</Button>
         </PopperRoot>
-        <PopperRoot transitionClasses='slide' placement='top-end' popup={popup} flip={false}>
+        <PopperRoot transitionClassName='slide' placement='top-end' popup={popup} flip={false}>
           <Button color='primary'>TE</Button>
         </PopperRoot>
         <div />
       </div>
       <div className='column'>
-        <PopperRoot transitionClasses='slide' placement='left-start' popup={popup} flip={false}>
+        <PopperRoot transitionClassName='slide' placement='left-start' popup={popup} flip={false}>
           <Button color='primary'>LS</Button>
         </PopperRoot>
         <div />
         <div />
         <div />
-        <PopperRoot transitionClasses='slide' placement='right-start' popup={popup} flip={false}>
+        <PopperRoot transitionClassName='slide' placement='right-start' popup={popup} flip={false}>
           <Button color='primary'>RS</Button>
         </PopperRoot>
       </div>
       <div className='column'>
-        <PopperRoot transitionClasses='slide' placement='left' popup={popup} flip={false}>
+        <PopperRoot transitionClassName='slide' placement='left' popup={popup} flip={false}>
           <Button color='primary'>L</Button>
         </PopperRoot>
         <div />
         <div />
         <div />
-        <PopperRoot transitionClasses='slide' placement='right' popup={popup} flip={false}>
+        <PopperRoot transitionClassName='slide' placement='right' popup={popup} flip={false}>
           <Button color='primary'>R</Button>
         </PopperRoot>
       </div>
       <div className='column'>
-        <PopperRoot transitionClasses='slide' placement='left-end' popup={popup} flip={false}>
+        <PopperRoot transitionClassName='slide' placement='left-end' popup={popup} flip={false}>
           <Button color='primary'>LE</Button>
         </PopperRoot>
         <div />
         <div />
         <div />
-        <PopperRoot transitionClasses='slide' placement='right-end' popup={popup} flip={false}>
+        <PopperRoot transitionClassName='slide' placement='right-end' popup={popup} flip={false}>
           <Button color='primary'>RE</Button>
         </PopperRoot>
       </div>
       <div className='column'>
         <div />
-        <PopperRoot transitionClasses='slide' placement='bottom-start' popup={popup} flip={false}>
+        <PopperRoot transitionClassName='slide' placement='bottom-start' popup={popup} flip={false}>
           <Button color='primary'>BS</Button>
         </PopperRoot>
-        <PopperRoot transitionClasses='slide' placement='bottom' popup={popup} flip={false}>
+        <PopperRoot transitionClassName='slide' placement='bottom' popup={popup} flip={false}>
           <Button color='primary'>B</Button>
         </PopperRoot>
-        <PopperRoot transitionClasses='slide' placement='bottom-end' popup={popup} flip={false}>
+        <PopperRoot transitionClassName='slide' placement='bottom-end' popup={popup} flip={false}>
           <Button color='primary'>BE</Button>
         </PopperRoot>
         <div />

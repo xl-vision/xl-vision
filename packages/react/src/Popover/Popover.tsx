@@ -147,7 +147,7 @@ const Popover = React.forwardRef<unknown, PopoverProps>((props, ref) => {
       arrow={showArrow ? arrow : undefined}
       popup={popup}
       popupContainer={popupContainer}
-      transitionClasses={transitionClassName || rootClassName}
+      transitionClassName={transitionClassName || rootClassName}
     />
   );
 });

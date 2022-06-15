@@ -57,6 +57,46 @@ if (!isProduction) {
 
   CssTransition.propTypes = {
     children: PropTypes.oneOfType([PropTypes.element.isRequired, PropTypes.func.isRequired]),
+    mountOnEnter: PropTypes.bool,
+    unmountOnExit: PropTypes.bool,
+    onEnter: PropTypes.func,
+    onEntering: PropTypes.func,
+    onEntered: PropTypes.func,
+    onEnterCancelled: PropTypes.func,
+    onExit: PropTypes.func,
+    onExiting: PropTypes.func,
+    onExited: PropTypes.func,
+    onExitCancelled: PropTypes.func,
+
+    in: PropTypes.bool,
+    transitionOnFirst: PropTypes.bool,
+    disableCss: PropTypes.bool,
+    timeout: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.exact({
+        appear: PropTypes.number,
+        enter: PropTypes.number,
+        exit: PropTypes.number,
+        disappear: PropTypes.number,
+      }),
+    ]),
+    transitionClassName: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.exact({
+        appearActive: PropTypes.string,
+        appearFrom: PropTypes.string,
+        appearTo: PropTypes.string,
+        enterActive: PropTypes.string,
+        enterFrom: PropTypes.string,
+        enterTo: PropTypes.string,
+        exitActive: PropTypes.string,
+        exitFrom: PropTypes.string,
+        exitTo: PropTypes.string,
+        disappearActive: PropTypes.string,
+        disappearFrom: PropTypes.string,
+        disappearTo: PropTypes.string,
+      }),
+    ]),
   };
 }
 

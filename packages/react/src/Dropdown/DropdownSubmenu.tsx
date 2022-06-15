@@ -182,7 +182,7 @@ const DropdownSubmenu = React.forwardRef<HTMLDivElement, DropdownSubmenuProps>((
       popup={popup}
       offset={offset}
       popupContainer={popupContainer}
-      transitionClasses={clsx(rootClassName, transitionClassName)}
+      transitionClassName={clsx(rootClassName, transitionClassName)}
     >
       <li className={`${rootClassName}__inner`}>
         <DropdownSubmenuItemButton

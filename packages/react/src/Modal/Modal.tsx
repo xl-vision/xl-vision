@@ -73,13 +73,13 @@ const ModalMask = styled('div', {
       '&-enter-active': {
         transition: transition.enter('opacity'),
       },
-      '&-leave-active': {
+      '&-exit-active': {
         transition: transition.leavePermanent('opacity'),
       },
-      '&-enter-from,&-leave-to': {
+      '&-enter-from,&-exit-to': {
         opacity: 0,
       },
-      '&-leave-from,&-enter-to': {
+      '&-exit-from,&-enter-to': {
         opacity: 1,
       },
     },
@@ -273,16 +273,17 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
   const rootClassName = `${clsPrefix}-modal`;
 
-  const beforeEnter = React.useCallback((el: HTMLElement) => {
-    el.style.display = '';
+  const handleEnter = React.useCallback((el: Element) => {
+    (el as HTMLElement).style.display = '';
     transitionCount.current++;
   }, []);
 
   const bodyClassName = `${rootClassName}__body`;
 
-  const modalBeforeEnter = React.useCallback(
-    (el: HTMLElement) => {
-      beforeEnter(el);
+  const handleModalEnter = React.useCallback(
+    (nativeEl: Element) => {
+      const el = nativeEl as HTMLElement;
+      handleEnter(el);
       removeClass(el, `${bodyClassName}-enter-from`);
       removeClass(el, `${bodyClassName}-enter-active`);
       const { x, y } = getBoundingClientRect(el);
@@ -295,11 +296,11 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
       el.focus();
     },
-    [bodyClassName, beforeEnter],
+    [bodyClassName, handleEnter],
   );
 
-  const afterLeave = React.useCallback(
-    (el: HTMLElement) => {
+  const handleExited = React.useCallback(
+    (el: Element) => {
       transitionCount.current--;
       if (transitionCount.current <= 0) {
         transitionCount.current = 0;
@@ -308,7 +309,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
         // 动画结束后解除锁定
         scrollLockerRef.current?.unlock();
       }
-      el.style.display = 'none';
+      (el as HTMLElement).style.display = 'none';
     },
     [setAnimatedVisible, onAfterClosed],
   );
@@ -368,11 +369,11 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
       >
         {mask && (
           <CssTransition
-            transitionClasses={`${rootClassName}__mask`}
+            transitionClassName={`${rootClassName}__mask`}
             in={inProp}
             mountOnEnter={true}
-            beforeEnter={beforeEnter}
-            afterLeave={afterLeave}
+            onEnter={handleEnter}
+            onExited={handleExited}
           >
             <ModalMask
               aria-hidden={true}
@@ -382,11 +383,11 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
           </CssTransition>
         )}
         <CssTransition
-          transitionClasses={bodyClassName}
+          transitionClassName={bodyClassName}
           in={inProp}
           mountOnEnter={true}
-          beforeEnter={modalBeforeEnter}
-          afterLeave={afterLeave}
+          onEnter={handleModalEnter}
+          onExited={handleExited}
         >
           <ModalContent
             {...others}

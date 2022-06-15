@@ -264,7 +264,7 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
       popup={popup}
       arrow={showArrow ? arrow : undefined}
       popupContainer={popupContainer}
-      transitionClasses={transitionClassName || rootClassName}
+      transitionClassName={transitionClassName || rootClassName}
     >
       {React.cloneElement(child, {
         onTouchStart: handleReferenceTouchStart,

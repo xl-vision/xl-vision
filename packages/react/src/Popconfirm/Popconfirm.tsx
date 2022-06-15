@@ -208,7 +208,7 @@ const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
       arrow={showArrow ? arrow : undefined}
       popup={popup}
       popupContainer={popupContainer}
-      transitionClasses={transitionClassName || rootClassName}
+      transitionClassName={transitionClassName || rootClassName}
     />
   );
 });

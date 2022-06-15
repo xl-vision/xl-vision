@@ -5,11 +5,6 @@ exports[`CollapseTransition test horizontal 1`] = `null`;
 exports[`CollapseTransition test horizontal 2`] = `
 <div
   class=""
-  data-actual-width=""
-  data-overflow=""
-  data-padding-left=""
-  data-padding-right=""
-  data-width=""
   style="padding-left: 0px; padding-right: 0px;"
 />
 `;
@@ -17,12 +12,6 @@ exports[`CollapseTransition test horizontal 2`] = `
 exports[`CollapseTransition test horizontal 3`] = `
 <div
   class=""
-  data-actual-width=""
-  data-display=""
-  data-overflow=""
-  data-padding-left="0px"
-  data-padding-right="0px"
-  data-width=""
   style="padding-left: 0px; padding-right: 0px; display: none;"
 />
 `;
@@ -32,11 +21,6 @@ exports[`CollapseTransition test render 1`] = `null`;
 exports[`CollapseTransition test render 2`] = `
 <div
   class=""
-  data-actual-height=""
-  data-height=""
-  data-overflow=""
-  data-padding-bottom=""
-  data-padding-top=""
   style="padding-top: 0px; padding-bottom: 0px;"
 />
 `;
@@ -44,12 +28,6 @@ exports[`CollapseTransition test render 2`] = `
 exports[`CollapseTransition test render 3`] = `
 <div
   class=""
-  data-actual-height=""
-  data-display=""
-  data-height=""
-  data-overflow=""
-  data-padding-bottom="0px"
-  data-padding-top="0px"
   style="padding-top: 0px; padding-bottom: 0px; display: none;"
 />
 `;

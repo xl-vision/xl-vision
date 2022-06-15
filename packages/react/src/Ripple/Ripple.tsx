@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { getBoundingClientRect, isProduction } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
-import TransitionGroup, { TransitionGroupClasses } from '../TransitionGroup';
+import TransitionGroup, { TransitionGroupClassName } from '../TransitionGroup';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 
 export interface RippleProps extends React.HTMLAttributes<HTMLDivElement> {
-  transitionClasses: TransitionGroupClasses;
+  transitionClassName: TransitionGroupClassName;
   leaveAfterEnter?: boolean;
 }
 
@@ -50,7 +50,7 @@ const RippleInner = styled('div', {
 const DELAY_RIPPLE = 80;
 
 const Ripple = React.forwardRef<RippleRef, RippleProps>((props, ref) => {
-  const { transitionClasses, leaveAfterEnter, className, ...others } = props;
+  const { transitionClassName, leaveAfterEnter, className, ...others } = props;
 
   const { clsPrefix } = useTheme();
 
@@ -186,7 +186,7 @@ const Ripple = React.forwardRef<RippleRef, RippleProps>((props, ref) => {
     }
   });
 
-  const afterEnter = useConstantFn(() => {
+  const handleEnter = useConstantFn(() => {
     if (leaveAfterEnter) {
       if (waitLeaveCountRef.current > 0) {
         waitLeaveCountRef.current--;
@@ -203,7 +203,7 @@ const Ripple = React.forwardRef<RippleRef, RippleProps>((props, ref) => {
 
   return (
     <RipperRoot {...others} className={rootClasses} ref={containerRef}>
-      <TransitionGroup transitionClasses={transitionClasses} afterEnter={afterEnter}>
+      <TransitionGroup transitionClassName={transitionClassName} onEntered={handleEnter}>
         {ripples}
       </TransitionGroup>
     </RipperRoot>
@@ -214,7 +214,7 @@ if (!isProduction) {
   Ripple.displayName = displayName;
 
   Ripple.propTypes = {
-    transitionClasses: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
+    transitionClassName: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
     leaveAfterEnter: PropTypes.bool,
     className: PropTypes.string,
   };

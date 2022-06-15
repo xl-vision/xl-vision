@@ -2,9 +2,8 @@ import { mount } from 'enzyme';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 import { noop } from '@xl-vision/utils';
+import * as utils from '@xl-vision/utils';
 import BackTop from '../BackTop';
-import * as TransitionUtils from '../../utils/transition';
-import * as nextFrame from '../../utils/nextFrame';
 import wait from '../../../../../test/wait';
 
 jest.spyOn(window, 'scrollTo').mockImplementation((x, y) => {
@@ -17,11 +16,11 @@ jest.spyOn(window, 'scrollTo').mockImplementation((x, y) => {
   document.documentElement.scrollTop = y;
 });
 
-jest.spyOn(nextFrame, 'default').mockImplementation((fn) => {
+jest.spyOn(utils, 'nextFrame').mockImplementation((fn) => {
   fn();
   return noop;
 });
-jest.spyOn(TransitionUtils, 'onTransitionEnd').mockImplementation((_, done) => {
+jest.spyOn(utils, 'onTransitionEnd').mockImplementation((_, done) => {
   done();
   return noop;
 });

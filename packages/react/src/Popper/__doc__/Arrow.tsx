@@ -62,7 +62,7 @@ const Arrow = () => {
   return (
     <Wrapper>
       <PopperRoot
-        transitionClasses='slide'
+        transitionClassName='slide'
         placement='top'
         popup={popup}
         arrow={<div className='arrow' />}

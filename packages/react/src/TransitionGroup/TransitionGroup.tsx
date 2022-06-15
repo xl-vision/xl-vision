@@ -1,39 +1,47 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { isProduction, warning } from '@xl-vision/utils';
-import { useIsomorphicLayoutEffect } from '@xl-vision/hooks';
-import CssTransition, { CssTransitionClassesObject, CssTransitionProps } from '../CssTransition';
-import { AfterEventHook } from '../Transition';
+import {
+  CssTransitionClassNameRecord,
+  TransitionEndHook,
+  useIsomorphicLayoutEffect,
+} from '@xl-vision/hooks';
+import CssTransition, { CssTransitionProps } from '../CssTransition';
 import { omit } from '../utils/function';
 import diff, { DiffData } from './diff';
 
-export interface TransitionGroupClassesObject
+export interface TransitionGroupClassNameRecord
   extends Omit<
-    CssTransitionClassesObject,
+    CssTransitionClassNameRecord,
     'appearFrom' | 'appearActive' | 'appearTo' | 'disappearFrom' | 'disappearActive' | 'disappearTo'
   > {
   move?: string;
 }
 
-export type TransitionGroupClasses = string | TransitionGroupClassesObject;
+export type TransitionGroupClassName = string | TransitionGroupClassNameRecord;
 
 export interface TransitionGroupProps
   extends Omit<
     CssTransitionProps,
-    'children' | 'transitionOnFirst' | 'in' | 'classNames' | 'mountOnEnter' | 'unmountOnLeave'
+    | 'children'
+    | 'transitionOnFirst'
+    | 'in'
+    | 'transitionClassName'
+    | 'mountOnEnter'
+    | 'unmountOnLeave'
   > {
-  children: Array<CssTransitionProps['children']>;
-  transitionClasses?: TransitionGroupClasses;
+  children: Array<React.ReactElement>;
+  transitionClassName?: TransitionGroupClassName;
 }
 
 const TransitionGroup: React.FunctionComponent<TransitionGroupProps> = (props) => {
-  const { children, transitionClasses, afterLeave, ..._others } = props;
+  const { children, transitionClassName: transitionClasses, onExited, ..._others } = props;
 
   // 阻止用户故意传入appear和disappear钩子
   const others = omit(_others as CssTransitionProps, 'in');
 
-  const transitionClassesObj = React.useMemo(() => {
-    let obj: CssTransitionClassesObject = {};
+  const transitionClassesRecord = React.useMemo(() => {
+    let obj: CssTransitionClassNameRecord = {};
 
     if (!transitionClasses) {
       return {};
@@ -46,16 +54,16 @@ const TransitionGroup: React.FunctionComponent<TransitionGroupProps> = (props) =
       obj.appearActive = obj.enterActive;
       obj.appearTo = obj.enterTo;
 
-      obj.disappearFrom = obj.leaveFrom;
-      obj.disappearActive = obj.leaveActive;
-      obj.disappearTo = obj.leaveTo;
+      obj.disappearFrom = obj.exitFrom;
+      obj.disappearActive = obj.exitActive;
+      obj.disappearTo = obj.exitTo;
     } else {
       obj.appearFrom = obj.enterFrom = `${transitionClasses}-enter-from`;
       obj.appearTo = obj.enterTo = `${transitionClasses}-enter-to`;
       obj.appearActive = obj.enterActive = `${transitionClasses}-enter-active`;
-      obj.disappearFrom = obj.leaveFrom = `${transitionClasses}-leave-from`;
-      obj.disappearTo = obj.leaveTo = `${transitionClasses}-leave-to`;
-      obj.disappearActive = obj.leaveActive = `${transitionClasses}-leave-active`;
+      obj.disappearFrom = obj.exitFrom = `${transitionClasses}-exit-from`;
+      obj.disappearTo = obj.exitTo = `${transitionClasses}-exit-to`;
+      obj.disappearActive = obj.exitActive = `${transitionClasses}-exit-active`;
     }
 
     return obj;
@@ -65,17 +73,17 @@ const TransitionGroup: React.FunctionComponent<TransitionGroupProps> = (props) =
 
   const [diffArray, setDiffArray] = React.useState<Array<DiffData>>([]);
 
-  const callAfterLeave = React.useCallback(
+  const handleExited = React.useCallback(
     (key: React.Key | null) => {
       warning(!key, `<TransitioGroup> must has a key`);
-      const hook: AfterEventHook = (e, transitionOnFirst) => {
-        afterLeave?.(e, transitionOnFirst);
+      const hook: TransitionEndHook = (e, transitionOnFirst) => {
+        onExited?.(e, transitionOnFirst);
         prevChildrenRef.current = prevChildrenRef.current?.filter((it) => it.key !== key);
       };
 
       return hook;
     },
-    [afterLeave],
+    [onExited],
   );
 
   useIsomorphicLayoutEffect(() => {
@@ -111,9 +119,9 @@ const TransitionGroup: React.FunctionComponent<TransitionGroupProps> = (props) =
             {...others}
             key={item.key}
             in={true}
-            transitionClasses={transitionClassesObj}
+            transitionClassName={transitionClassesRecord}
             mountOnEnter={true}
-            unmountOnLeave={true}
+            unmountOnExit={true}
           >
             {item}
           </CssTransition>
@@ -129,9 +137,9 @@ const TransitionGroup: React.FunctionComponent<TransitionGroupProps> = (props) =
             in={false}
             transitionOnFirst={true}
             mountOnEnter={true}
-            unmountOnLeave={true}
-            transitionClasses={transitionClassesObj}
-            afterLeave={callAfterLeave(item.key)}
+            unmountOnExit={true}
+            transitionClassName={transitionClassesRecord}
+            onExited={handleExited(item.key)}
           >
             {item}
           </CssTransition>
@@ -146,8 +154,8 @@ const TransitionGroup: React.FunctionComponent<TransitionGroupProps> = (props) =
             in={true}
             transitionOnFirst={true}
             mountOnEnter={true}
-            unmountOnLeave={true}
-            transitionClasses={transitionClassesObj}
+            unmountOnExit={true}
+            transitionClassName={transitionClassesRecord}
           >
             {item}
           </CssTransition>
@@ -166,8 +174,8 @@ if (!isProduction) {
 
   TransitionGroup.propTypes = {
     children: PropTypes.arrayOf(PropTypes.element.isRequired).isRequired,
-    transitionClasses: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-    afterLeave: PropTypes.func,
+    transitionClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    onExited: PropTypes.func,
   };
 }
 

@@ -74,12 +74,11 @@ Array [
   <div
     aria-hidden="true"
     class="xl-popper"
-    style="z-index: 1003; position: absolute; display: none;"
+    style="position: absolute; display: none;"
   >
     <div
       class="xl-popper__inner"
-      data-placement="top"
-      style="position: relative; transform-origin: 0px 100%; display: none;"
+      style="position: relative; display: none;"
     >
       <div>
         popup
@@ -115,12 +114,11 @@ Array [
   <div
     aria-hidden="true"
     class="xl-popper"
-    style="z-index: 1000; position: absolute; display: none;"
+    style="position: absolute; display: none;"
   >
     <div
       class="xl-popper__inner"
-      data-placement="top"
-      style="position: relative; transform-origin: 0px 100%; display: none;"
+      style="position: relative; display: none;"
     >
       <div>
         popup

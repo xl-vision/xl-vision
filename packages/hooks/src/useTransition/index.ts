@@ -24,7 +24,7 @@ export type TransitionCancelledHook<T extends Element = Element> = (
   transitionOnFirst: boolean,
 ) => void;
 
-export type TransitionOptions<T extends Element = Element> = {
+export type TransitionOptions<T extends Element> = {
   onEnter?: TransitionStartHook<T>;
   onEntering?: TransitionStartingHook<T>;
   onEntered?: TransitionEndHook<T>;

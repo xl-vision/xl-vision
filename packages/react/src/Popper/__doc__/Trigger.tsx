@@ -46,23 +46,23 @@ const Trigger = () => {
 
   return (
     <Wrapper>
-      <Popper trigger='hover' transitionClasses='slide' placement='top' popup={popup}>
+      <Popper trigger='hover' transitionClassName='slide' placement='top' popup={popup}>
         <Button color='primary'>hover</Button>
       </Popper>
-      <Popper trigger='click' transitionClasses='slide' placement='top' popup={popup}>
+      <Popper trigger='click' transitionClassName='slide' placement='top' popup={popup}>
         <Button color='primary'>click</Button>
       </Popper>
-      <Popper trigger='focus' transitionClasses='slide' placement='top' popup={popup}>
+      <Popper trigger='focus' transitionClassName='slide' placement='top' popup={popup}>
         <Button color='primary'>focus</Button>
       </Popper>
-      <Popper trigger='contextMenu' transitionClasses='slide' placement='top' popup={popup}>
+      <Popper trigger='contextMenu' transitionClassName='slide' placement='top' popup={popup}>
         <Button color='primary'>contextMenu</Button>
       </Popper>
       <Popper
         trigger='custom'
         visible={visible}
         onVisibleChange={handleVisible}
-        transitionClasses='slide'
+        transitionClassName='slide'
         placement='top'
         popup={popup}
       >

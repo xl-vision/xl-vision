@@ -252,7 +252,7 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
       }
     }, [loading, prefixIcon]);
 
-    const afterLoadingFinished = React.useCallback(() => {
+    const handleLoadingFinished = React.useCallback(() => {
       setLoadingIcon(undefined);
     }, []);
 
@@ -290,8 +290,8 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
             horizontal={true}
             transitionOnFirst={true}
             in={!!loading}
-            afterLeave={afterLoadingFinished}
-            transitionClasses={prefixClassName}
+            onExited={handleLoadingFinished}
+            transitionClassName={prefixClassName}
           >
             {prefix}
           </CollapseTransition>

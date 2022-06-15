@@ -116,7 +116,7 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) =>
       popup={popup}
       offset={offset}
       popupContainer={popupContainer}
-      transitionClasses={transitionClassName || rootClassName}
+      transitionClassName={transitionClassName || rootClassName}
     >
       {children}
     </DropdownRoot>
