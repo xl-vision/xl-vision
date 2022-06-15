@@ -83,7 +83,7 @@ const CodeWrapper = styled('div')(
   }
 
   &.slide-enter-to,
-  &.slide-exit-to {
+  &.slide-exit {
     opacity: 1;
   }
 `,

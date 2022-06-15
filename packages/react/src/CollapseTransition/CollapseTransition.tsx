@@ -1,13 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import {
-  addClass,
-  getComputedStyle,
-  isProduction,
-  nextFrame,
-  removeClass,
-  warning,
-} from '@xl-vision/utils';
+import { addClass, getComputedStyle, isProduction, removeClass, warning } from '@xl-vision/utils';
 import {
   CssTransitionOptions,
   TransitionCancelledHook,
@@ -74,27 +67,29 @@ const CollapseTransition: React.FunctionComponent<CollapseTransitionProp> = (pro
 
     const { padding1, padding2, size } = mappings;
 
-    if (!isCancelledRef.current) {
-      padding1Ref.current = el.style[padding1];
-      padding2Ref.current = el.style[padding2];
-      sizeRef.current = el.style[size];
-      overflowRef.current = el.style.overflow;
+    padding1Ref.current = el.style[padding1];
+    padding2Ref.current = el.style[padding2];
+    sizeRef.current = el.style[size];
+    overflowRef.current = el.style.overflow;
 
+    if (!isCancelledRef.current) {
       removeClass(el, transitionClassesRef.current.activeClass || '');
       removeClass(el, transitionClassesRef.current.fromClass || '');
       actualSizeRef.current = getComputedStyle(el)[size];
+    }
 
-      el.style.overflow = 'hidden';
-      el.style[padding1] = '0';
-      el.style[padding2] = '0';
-      el.style[size] = '0';
+    el.style.overflow = 'hidden';
+    el.style[padding1] = '0';
+    el.style[padding2] = '0';
+    el.style[size] = '0';
+
+    if (!isCancelledRef.current) {
       addClass(el, transitionClassesRef.current.fromClass || '');
       forceReflow();
       addClass(el, transitionClassesRef.current.activeClass || '');
     }
 
     isCancelledRef.current = false;
-
     onEnter?.(nativeEl, transitionOnFirst);
   });
 
@@ -123,15 +118,15 @@ const CollapseTransition: React.FunctionComponent<CollapseTransitionProp> = (pro
 
   const handleEnterCancelled: TransitionCancelledHook = useConstantFn(
     (nativeEl, transitionOnFirst) => {
-      // const el = nativeEl as HTMLElement;
-      // const { padding1, padding2, size } = mappings;
+      const el = nativeEl as HTMLElement;
+      const { padding1, padding2, size } = mappings;
 
       isCancelledRef.current = true;
 
-      // el.style[padding1] = padding1Ref.current!;
-      // el.style[padding2] = padding2Ref.current!;
-      // el.style[size] = sizeRef.current!;
-      // el.style.overflow = overflowRef.current!;
+      el.style[padding1] = padding1Ref.current!;
+      el.style[padding2] = padding2Ref.current!;
+      el.style[size] = sizeRef.current!;
+      el.style.overflow = overflowRef.current!;
 
       onEnterCancelled?.(nativeEl, transitionOnFirst);
     },
@@ -142,16 +137,16 @@ const CollapseTransition: React.FunctionComponent<CollapseTransitionProp> = (pro
 
     const { padding1, padding2, size } = mappings;
 
-    if (!isCancelledRef.current) {
-      padding1Ref.current = el.style[padding1];
-      padding2Ref.current = el.style[padding2];
-      sizeRef.current = el.style[size];
-      overflowRef.current = el.style.overflow;
+    padding1Ref.current = el.style[padding1];
+    padding2Ref.current = el.style[padding2];
+    sizeRef.current = el.style[size];
+    overflowRef.current = el.style.overflow;
 
+    if (!isCancelledRef.current) {
       actualSizeRef.current = getComputedStyle(el)[size];
-      el.style[size] = actualSizeRef.current!;
-      el.style.overflow = 'hidden';
     }
+    el.style[size] = actualSizeRef.current!;
+    el.style.overflow = 'hidden';
 
     isCancelledRef.current = false;
 
@@ -185,18 +180,19 @@ const CollapseTransition: React.FunctionComponent<CollapseTransitionProp> = (pro
 
     onExited?.(nativeEl, transitionOnFirst);
 
+    // setTransitionStyle({});
   });
 
   const handleExitCancelled: TransitionCancelledHook = useConstantFn(
     (nativeEl, transitionOnFirst) => {
       const el = nativeEl as HTMLElement;
-      // const { padding1, padding2, size } = mappings;
+      const { padding1, padding2, size } = mappings;
 
       isCancelledRef.current = true;
-      // el.style[padding1] = padding1Ref.current!;
-      // el.style[padding2] = padding2Ref.current!;
-      // el.style[size] = sizeRef.current!;
-      // el.style.overflow = overflowRef.current!;
+      el.style[padding1] = padding1Ref.current!;
+      el.style[padding2] = padding2Ref.current!;
+      el.style[size] = sizeRef.current!;
+      el.style.overflow = overflowRef.current!;
 
       onExitCancelled?.(nativeEl, transitionOnFirst);
     },

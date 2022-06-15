@@ -131,12 +131,14 @@ const useCssTransition = <T extends Element = Element>(options: CssTransitionOpt
   );
 
   const handleEntered: TransitionEndHook<T> = useConstantFn((el, transitionOnFirst) => {
-    const { toClass, activeClass } = transitionClassesRef.current;
+    const { toClass, activeClass, fromClass } = transitionClassesRef.current;
 
-    removeClass(el, toClass || '');
-    delete transitionClassesRef.current.toClass;
     removeClass(el, activeClass || '');
     delete transitionClassesRef.current.activeClass;
+    removeClass(el, toClass || '');
+    delete transitionClassesRef.current.toClass;
+    removeClass(el, fromClass || '');
+    delete transitionClassesRef.current.fromClass;
 
     onEntered?.(el, transitionOnFirst);
   });
