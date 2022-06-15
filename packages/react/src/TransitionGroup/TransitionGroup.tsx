@@ -7,7 +7,6 @@ import {
   useIsomorphicLayoutEffect,
 } from '@xl-vision/hooks';
 import CssTransition, { CssTransitionProps } from '../CssTransition';
-import { omit } from '../utils/function';
 import diff, { DiffData } from './diff';
 
 export interface TransitionGroupClassNameRecord
@@ -28,17 +27,14 @@ export interface TransitionGroupProps
     | 'in'
     | 'transitionClassName'
     | 'mountOnEnter'
-    | 'unmountOnLeave'
+    | 'unmountOnExit'
   > {
   children: Array<React.ReactElement>;
   transitionClassName?: TransitionGroupClassName;
 }
 
 const TransitionGroup: React.FunctionComponent<TransitionGroupProps> = (props) => {
-  const { children, transitionClassName: transitionClasses, onExited, ..._others } = props;
-
-  // 阻止用户故意传入appear和disappear钩子
-  const others = omit(_others as CssTransitionProps, 'in');
+  const { children, transitionClassName: transitionClasses, onExited, ...others } = props;
 
   const transitionClassesRecord = React.useMemo(() => {
     let obj: CssTransitionClassNameRecord = {};
@@ -77,6 +73,7 @@ const TransitionGroup: React.FunctionComponent<TransitionGroupProps> = (props) =
     (key: React.Key | null) => {
       warning(!key, `<TransitioGroup> must has a key`);
       const hook: TransitionEndHook = (e, transitionOnFirst) => {
+        console.log('====')
         onExited?.(e, transitionOnFirst);
         prevChildrenRef.current = prevChildrenRef.current?.filter((it) => it.key !== key);
       };

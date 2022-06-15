@@ -51,12 +51,12 @@ const Basic = () => {
   return (
     <div>
       <div>
-        <Button color='primary' onClick={handleAdd} style={{ marginRight: 10 }}>
+        <button color='primary' onClick={handleAdd} style={{ marginRight: 10 }}>
           add
-        </Button>
-        <Button color='primary' onClick={handleRemove}>
+        </button>
+        <button color='primary' onClick={handleRemove}>
           remove
-        </Button>
+        </button>
       </div>
       <Wrapper>
         <TransitionGroup transitionClassName='slide'>

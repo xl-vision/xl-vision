@@ -84,9 +84,6 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
 
       // 判断回调是否执行了
       const wrapCallback = () => {
-        if (isDestoryedRef.current) {
-          return;
-        }
         if (isCancelled()) {
           return;
         }
@@ -106,7 +103,7 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
 
       cbRef.current = cancelCallback;
 
-      const isCancelled = () => cancelCallback !== cbRef.current;
+      const isCancelled = () => isDestoryedRef.current || cancelCallback !== cbRef.current;
 
       startHook?.(el, isFirst);
       if (startingHook) {
@@ -152,8 +149,8 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
         onExit,
         onExiting,
         (elOption, transitionOnFirstOption) => {
-          setInTransition(false);
           onExited?.(elOption, transitionOnFirstOption);
+          setInTransition(false);
         },
         onExitCancelled,
       );
