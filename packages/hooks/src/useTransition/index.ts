@@ -52,13 +52,6 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
     transitionOnFirst = false,
   } = options;
 
-  const elementRef = useRef<T | null>();
-
-  const transitionOnFirstRef = useRef(transitionOnFirst);
-
-  // 是否处于enter和exited之间的状态
-  const [inTransition, setInTransition] = useState(transitionOnFirst);
-
   // 保存回调
   const cbRef = useRef<() => void>();
 
@@ -70,18 +63,15 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
     };
   }, []);
 
-  const onTransitionEnd = useCallback(
+  const doTransition = useCallback(
     (
       el: T,
+      isFirst: boolean,
       startHook: TransitionStartHook<T> | undefined,
       startingHook: TransitionStartingHook<T> | undefined,
       endHook: TransitionEndHook<T> | undefined,
       cancelHook: TransitionCancelledHook<T> | undefined,
     ) => {
-      const isFirst = transitionOnFirstRef.current;
-
-      transitionOnFirstRef.current = false;
-
       // 判断回调是否执行了
       const wrapCallback = () => {
         if (isCancelled()) {
@@ -115,13 +105,22 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
     [],
   );
 
+  const elementRef = useRef<T | null>();
+
+  // 是否处于enter和exited之间的状态
+  const [inTransition, setInTransition] = useState(transitionOnFirst);
+
   const isFirstUpdateRef = useRef(true);
+  const transitionOnFirstRef = useRef(transitionOnFirst);
 
   const handleInOptionChange = useConstantFn((value: boolean) => {
-    const isFirst = isFirstUpdateRef.current;
-    isFirstUpdateRef.current = false;
+    const isFirstUpdate = isFirstUpdateRef.current;
+    const isTransitionOnFirst = transitionOnFirstRef.current;
 
-    if (!transitionOnFirstRef.current && isFirst) {
+    isFirstUpdateRef.current = false;
+    transitionOnFirstRef.current = false;
+
+    if (!isTransitionOnFirst && isFirstUpdate) {
       return;
     }
 
@@ -133,8 +132,9 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
     }
 
     if (value) {
-      onTransitionEnd(
+      doTransition(
         el,
+        isTransitionOnFirst,
         (elOption, transitionOnFirstOption) => {
           setInTransition(true);
           onEnter?.(elOption, transitionOnFirstOption);
@@ -144,8 +144,9 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
         onEnterCancelled,
       );
     } else {
-      onTransitionEnd(
+      doTransition(
         el,
+        isTransitionOnFirst,
         onExit,
         onExiting,
         (elOption, transitionOnFirstOption) => {

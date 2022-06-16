@@ -36,9 +36,7 @@ const CssTransition: React.FunctionComponent<CssTransitionProps> = (props) => {
   // 判断是否是第一次挂载
   const isFirstMountRef = React.useRef(true);
 
-  if (show) {
-    isFirstMountRef.current = false;
-  } else {
+  if (!show) {
     if (mountOnEnter && isFirstMountRef.current) {
       return null;
     }
@@ -46,6 +44,7 @@ const CssTransition: React.FunctionComponent<CssTransitionProps> = (props) => {
       return null;
     }
   }
+  isFirstMountRef.current = false;
 
   return React.cloneElement(child, {
     ref: forkRef,
