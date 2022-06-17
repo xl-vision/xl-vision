@@ -8,7 +8,7 @@ const Wrapper = styled('div')(({ theme }) => {
       marginBottom: '16px',
     },
     '.slide': {
-      '&-enter-active, &-leave-active': {
+      '&-enter-active, &-exit-active': {
         transition: theme.transition.standard('transform'),
         '&[data-placement^="top"]': {
           transformOrigin: '0 100%',
@@ -19,7 +19,7 @@ const Wrapper = styled('div')(({ theme }) => {
           transform: 'scaleY(1)',
         },
       },
-      '&-enter-from,&-leave-to': {
+      '&-enter-from,&-exit-to': {
         '&[data-placement^="top"]': {
           transform: 'scaleY(0)',
         },

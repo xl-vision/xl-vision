@@ -14,7 +14,7 @@ import {
 import { useForkRef } from '@xl-vision/hooks';
 import Portal, { PortalContainerType } from '../Portal';
 import usePropChange from '../hooks/usePropChange';
-import CssTransition from '../CssTransition';
+import Transition from '../Transition';
 import { styled } from '../styles';
 import { increaseZindex } from '../utils/zIndexManger';
 import { forceReflow } from '../utils/dom';
@@ -98,13 +98,13 @@ const ModalContent = styled('div', {
       '&-enter-active': {
         transition: transition.enter(['opacity', 'transform']),
       },
-      '&-leave-active': {
+      '&-exit-active': {
         transition: transition.leavePermanent(['opacity', 'transform']),
       },
-      '&-enter-from,&-leave-to': {
+      '&-enter-from,&-exit-to': {
         opacity: 0,
       },
-      '&-leave-from,&-enter-to': {
+      '&-exit-from,&-enter-to': {
         opacity: 1,
       },
       '&-enter-from': {
@@ -368,7 +368,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
         onClick={handleClick}
       >
         {mask && (
-          <CssTransition
+          <Transition
             transitionClassName={`${rootClassName}__mask`}
             in={inProp}
             mountOnEnter={true}
@@ -380,9 +380,9 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
               className={`${rootClassName}__mask`}
               onClick={handleMaskClick}
             />
-          </CssTransition>
+          </Transition>
         )}
-        <CssTransition
+        <Transition
           transitionClassName={bodyClassName}
           in={inProp}
           mountOnEnter={true}
@@ -397,7 +397,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
           >
             {children}
           </ModalContent>
-        </CssTransition>
+        </Transition>
       </ModalRoot>
     </Portal>
   );

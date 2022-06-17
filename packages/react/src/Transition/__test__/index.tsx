@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { mount } from 'enzyme';
 import React from 'react';
-import { CssTransition } from '@xl-vision/react';
+import { Transition } from '@xl-vision/react';
 import { noop } from '@xl-vision/utils';
 import * as utils from '@xl-vision/utils';
 import { CssTransitionClassNameRecord } from '@xl-vision/hooks';
@@ -21,7 +21,7 @@ const classnameMap: CssTransitionClassNameRecord = {
   disappearTo: 'disappearTo',
 };
 
-describe('CssTransition', () => {
+describe('Transition', () => {
   const onTransitionEndSpy = jest.spyOn(utils, 'onTransitionEnd').mockImplementation();
   const nextFrameSpy = jest.spyOn(utils, 'nextFrame').mockImplementation();
   const call = jest.fn();
@@ -34,7 +34,7 @@ describe('CssTransition', () => {
 
   it('测试设置transitionOnFirst为true且in为true生命周期', () => {
     const wrapper = mount(
-      <CssTransition
+      <Transition
         in={true}
         transitionOnFirst={true}
         onEnter={(_el, transitionOnFirst) => {
@@ -67,7 +67,7 @@ describe('CssTransition', () => {
         }}
       >
         <div />
-      </CssTransition>,
+      </Transition>,
     );
 
     let nextFrameCalls = nextFrameSpy.mock.calls;
@@ -136,7 +136,7 @@ describe('CssTransition', () => {
 
   it('测试设置transitionOnFirst为true且in为false生命周期', () => {
     const wrapper = mount(
-      <CssTransition
+      <Transition
         in={false}
         transitionOnFirst={true}
         transitionClassName={classnameMap}
@@ -170,7 +170,7 @@ describe('CssTransition', () => {
         }}
       >
         <div />
-      </CssTransition>,
+      </Transition>,
     );
 
     let nextFrameCalls = nextFrameSpy.mock.calls;
@@ -263,7 +263,7 @@ describe('CssTransition', () => {
 
   it('测试不设置transitionOnFirst且in为false时的生命周期', () => {
     const wrapper = mount(
-      <CssTransition
+      <Transition
         in={false}
         transitionClassName={classnameMap}
         onEnter={(_el, transitionOnFirst) => {
@@ -296,7 +296,7 @@ describe('CssTransition', () => {
         }}
       >
         <div />
-      </CssTransition>,
+      </Transition>,
     );
 
     let nextFrameCalls = nextFrameSpy.mock.calls;
@@ -377,7 +377,7 @@ describe('CssTransition', () => {
 
   it('测试不设置transitionOnFirst且in为true生命周期', () => {
     const wrapper = mount(
-      <CssTransition
+      <Transition
         in={true}
         transitionClassName={classnameMap}
         onEnter={(_el, transitionOnFirst) => {
@@ -410,7 +410,7 @@ describe('CssTransition', () => {
         }}
       >
         <div />
-      </CssTransition>,
+      </Transition>,
     );
 
     let nextFrameCalls = nextFrameSpy.mock.calls;
@@ -467,7 +467,7 @@ describe('CssTransition', () => {
 
   it('测试包含cancelled的生命周期', () => {
     const wrapper = mount(
-      <CssTransition
+      <Transition
         in={true}
         transitionOnFirst={true}
         transitionClassName={classnameMap}
@@ -501,7 +501,7 @@ describe('CssTransition', () => {
         }}
       >
         <div />
-      </CssTransition>,
+      </Transition>,
     );
 
     let nextFrameCalls = nextFrameSpy.mock.calls;
@@ -585,9 +585,9 @@ describe('CssTransition', () => {
 
   it('测试包含className调用时机', () => {
     const wrapper = mount(
-      <CssTransition transitionOnFirst={true} in={true} transitionClassName='test'>
+      <Transition transitionOnFirst={true} in={true} transitionClassName='test'>
         <div />
-      </CssTransition>,
+      </Transition>,
     );
     // nextFrame未执行
     expect(wrapper.getDOMNode().classList).toContain('test-appear-from');
@@ -678,9 +678,9 @@ describe('CssTransition', () => {
 
     jest.useFakeTimers();
     const wrapper = mount(
-      <CssTransition transitionOnFirst={true} in={true} transitionClassName='test' timeout={20}>
+      <Transition transitionOnFirst={true} in={true} transitionClassName='test' timeout={20}>
         <div />
-      </CssTransition>,
+      </Transition>,
     );
 
     expect(wrapper.getDOMNode().classList).toContain('test-appear-from');

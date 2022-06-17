@@ -4,15 +4,15 @@ import { isProduction, warning } from '@xl-vision/utils';
 import { CssTransitionOptions, useCssTransition, useForkRef } from '@xl-vision/hooks';
 import { supportRef } from '../utils/ref';
 
-export type CssTransitionProps = CssTransitionOptions & {
+export type TransitionProps = CssTransitionOptions & {
   children: React.ReactElement | ((show: boolean) => React.ReactElement);
   mountOnEnter?: boolean;
   unmountOnExit?: boolean;
 };
 
-const displayName = 'CssTransition';
+const displayName = 'Transition';
 
-const CssTransition: React.FunctionComponent<CssTransitionProps> = (props) => {
+const Transition: React.FunctionComponent<TransitionProps> = (props) => {
   const { children, mountOnEnter, unmountOnExit, in: inProp, ...others } = props;
 
   const { nodeRef, show } = useCssTransition({
@@ -52,9 +52,9 @@ const CssTransition: React.FunctionComponent<CssTransitionProps> = (props) => {
 };
 
 if (!isProduction) {
-  CssTransition.displayName = displayName;
+  Transition.displayName = displayName;
 
-  CssTransition.propTypes = {
+  Transition.propTypes = {
     children: PropTypes.oneOfType([PropTypes.element.isRequired, PropTypes.func.isRequired]),
     mountOnEnter: PropTypes.bool,
     unmountOnExit: PropTypes.bool,
@@ -99,4 +99,4 @@ if (!isProduction) {
   };
 }
 
-export default CssTransition;
+export default Transition;

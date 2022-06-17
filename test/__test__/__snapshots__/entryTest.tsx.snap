@@ -672,7 +672,7 @@ Array [
   "ConfigContext",
   "useConfig",
   "defaultConfigContext",
-  "CssTransition",
+  "Transition",
   "CollapseTransition",
   "TransitionGroup",
   "Row",

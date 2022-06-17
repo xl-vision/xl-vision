@@ -37,7 +37,7 @@ const PopperRoot = styled(Popper)(({ theme }) => {
       },
     },
     '.slide': {
-      '&-enter-active, &-leave-active': {
+      '&-enter-active, &-exit-active': {
         transition: theme.transition.standard('all'),
         '&[data-placement^="top"]': {
           transformOrigin: '0 100%',
@@ -46,10 +46,10 @@ const PopperRoot = styled(Popper)(({ theme }) => {
           transformOrigin: '0 0',
         },
       },
-      '&-enter-from,&-leave-to': {
+      '&-enter-from,&-exit-to': {
         transform: 'scaleY(0)',
       },
-      '&-enter-to,&-leave-from': {
+      '&-enter-to,&-exit-from': {
         transform: 'scaleY(1)',
       },
     },

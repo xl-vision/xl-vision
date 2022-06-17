@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, CssTransition, styled } from '@xl-vision/react';
+import { Button, Transition, styled } from '@xl-vision/react';
 
 const Div = styled('div')`
   display: flex;
@@ -31,9 +31,9 @@ const Basic = () => {
       <Button color='primary' onClick={() => setShow(!show)}>
         Click
       </Button>
-      <CssTransition in={show} transitionClassName='slide' mountOnEnter={true} unmountOnExit={true}>
+      <Transition in={show} transitionClassName='slide' mountOnEnter={true} unmountOnExit={true}>
         <Div>DEMO</Div>
-      </CssTransition>
+      </Transition>
     </div>
   );
 };

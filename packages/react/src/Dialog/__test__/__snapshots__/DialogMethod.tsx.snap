@@ -26,18 +26,18 @@ exports[`DialogMethod test confirm 1`] = `
   transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
 }
 
-.c0.xl-modal__body-leave-active {
+.c0.xl-modal__body-exit-active {
   -webkit-transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1),-webkit-transform 195ms 0ms cubic-bezier(0.4,0,1,1);
   -webkit-transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1),transform 195ms 0ms cubic-bezier(0.4,0,1,1);
   transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1),transform 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
 .c0.xl-modal__body-enter-from,
-.c0.xl-modal__body-leave-to {
+.c0.xl-modal__body-exit-to {
   opacity: 0;
 }
 
-.c0.xl-modal__body-leave-from,
+.c0.xl-modal__body-exit-from,
 .c0.xl-modal__body-enter-to {
   opacity: 1;
 }
@@ -389,18 +389,18 @@ exports[`DialogMethod test error 1`] = `
   transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
 }
 
-.c0.xl-modal__body-leave-active {
+.c0.xl-modal__body-exit-active {
   -webkit-transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1),-webkit-transform 195ms 0ms cubic-bezier(0.4,0,1,1);
   -webkit-transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1),transform 195ms 0ms cubic-bezier(0.4,0,1,1);
   transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1),transform 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
 .c0.xl-modal__body-enter-from,
-.c0.xl-modal__body-leave-to {
+.c0.xl-modal__body-exit-to {
   opacity: 0;
 }
 
-.c0.xl-modal__body-leave-from,
+.c0.xl-modal__body-exit-from,
 .c0.xl-modal__body-enter-to {
   opacity: 1;
 }
@@ -736,18 +736,18 @@ exports[`DialogMethod test info 1`] = `
   transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
 }
 
-.c0.xl-modal__body-leave-active {
+.c0.xl-modal__body-exit-active {
   -webkit-transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1),-webkit-transform 195ms 0ms cubic-bezier(0.4,0,1,1);
   -webkit-transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1),transform 195ms 0ms cubic-bezier(0.4,0,1,1);
   transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1),transform 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
 .c0.xl-modal__body-enter-from,
-.c0.xl-modal__body-leave-to {
+.c0.xl-modal__body-exit-to {
   opacity: 0;
 }
 
-.c0.xl-modal__body-leave-from,
+.c0.xl-modal__body-exit-from,
 .c0.xl-modal__body-enter-to {
   opacity: 1;
 }
@@ -1069,18 +1069,18 @@ exports[`DialogMethod test method 1`] = `
   transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
 }
 
-.c0.xl-modal__body-leave-active {
+.c0.xl-modal__body-exit-active {
   -webkit-transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1),-webkit-transform 195ms 0ms cubic-bezier(0.4,0,1,1);
   -webkit-transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1),transform 195ms 0ms cubic-bezier(0.4,0,1,1);
   transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1),transform 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
 .c0.xl-modal__body-enter-from,
-.c0.xl-modal__body-leave-to {
+.c0.xl-modal__body-exit-to {
   opacity: 0;
 }
 
-.c0.xl-modal__body-leave-from,
+.c0.xl-modal__body-exit-from,
 .c0.xl-modal__body-enter-to {
   opacity: 1;
 }
@@ -1404,18 +1404,18 @@ exports[`DialogMethod test success 1`] = `
   transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
 }
 
-.c0.xl-modal__body-leave-active {
+.c0.xl-modal__body-exit-active {
   -webkit-transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1),-webkit-transform 195ms 0ms cubic-bezier(0.4,0,1,1);
   -webkit-transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1),transform 195ms 0ms cubic-bezier(0.4,0,1,1);
   transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1),transform 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
 .c0.xl-modal__body-enter-from,
-.c0.xl-modal__body-leave-to {
+.c0.xl-modal__body-exit-to {
   opacity: 0;
 }
 
-.c0.xl-modal__body-leave-from,
+.c0.xl-modal__body-exit-from,
 .c0.xl-modal__body-enter-to {
   opacity: 1;
 }
@@ -1751,18 +1751,18 @@ exports[`DialogMethod test warning 1`] = `
   transition: opacity 225ms 0ms cubic-bezier(0,0,0.2,1),transform 225ms 0ms cubic-bezier(0,0,0.2,1);
 }
 
-.c0.xl-modal__body-leave-active {
+.c0.xl-modal__body-exit-active {
   -webkit-transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1),-webkit-transform 195ms 0ms cubic-bezier(0.4,0,1,1);
   -webkit-transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1),transform 195ms 0ms cubic-bezier(0.4,0,1,1);
   transition: opacity 195ms 0ms cubic-bezier(0.4,0,1,1),transform 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
 .c0.xl-modal__body-enter-from,
-.c0.xl-modal__body-leave-to {
+.c0.xl-modal__body-exit-to {
   opacity: 0;
 }
 
-.c0.xl-modal__body-leave-from,
+.c0.xl-modal__body-exit-from,
 .c0.xl-modal__body-enter-to {
   opacity: 1;
 }

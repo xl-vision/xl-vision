@@ -12,8 +12,8 @@ export {
 } from './ConfigProvider';
 export type { ConfigProviderProps, ConfigContextProps } from './ConfigProvider';
 
-export { default as CssTransition } from './CssTransition';
-export type { CssTransitionProps } from './CssTransition';
+export { default as Transition } from './Transition';
+export type { TransitionProps } from './Transition';
 
 export { default as CollapseTransition } from './CollapseTransition';
 export type { CollapseTransitionProp } from './CollapseTransition';

@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { isProduction, warning } from '@xl-vision/utils';
+import { isProduction, noop, warning } from '@xl-vision/utils';
 import {
   CssTransitionClassNameRecord,
   TransitionEndHook,
   useConstantFn,
   useIsomorphicLayoutEffect,
 } from '@xl-vision/hooks';
-import CssTransition, { CssTransitionProps } from '../CssTransition';
+import Transition, { TransitionProps } from '../Transition';
 import diff from './diff';
 
 export interface TransitionGroupClassNameRecord
@@ -22,7 +22,7 @@ export type TransitionGroupClassName = string | TransitionGroupClassNameRecord;
 
 export interface TransitionGroupProps
   extends Omit<
-    CssTransitionProps,
+    TransitionProps,
     | 'children'
     | 'transitionOnFirst'
     | 'in'
@@ -73,7 +73,15 @@ const TransitionGroup: React.FunctionComponent<TransitionGroupProps> = (props) =
       warning(!key, `<TransitioGroup> must has a key`);
       const hook: TransitionEndHook = (e, transitionOnFirst) => {
         onExited?.(e, transitionOnFirst);
-        setNodes((prev) => prev?.filter((it) => it.key !== key));
+        Promise.resolve()
+          .then(() => {
+            return setNodes((prev) =>
+              prev?.filter((it) => {
+                return it.key !== key;
+              }),
+            );
+          })
+          .catch(noop);
       };
 
       return hook;
@@ -82,9 +90,9 @@ const TransitionGroup: React.FunctionComponent<TransitionGroupProps> = (props) =
   );
 
   const handleChildrenChange = useConstantFn((value: Array<React.ReactElement>) => {
-    const nextChildren = React.Children.map(value, (it) => {
+    const nextChildren = value.map((it) => {
       return (
-        <CssTransition
+        <Transition
           {...others}
           key={it.key}
           in={true}
@@ -92,9 +100,10 @@ const TransitionGroup: React.FunctionComponent<TransitionGroupProps> = (props) =
           mountOnEnter={true}
           unmountOnExit={true}
           onExited={handleExited(it.key)}
+          // transitionOnFirst={true}
         >
           {it}
-        </CssTransition>
+        </Transition>
       );
     });
 

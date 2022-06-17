@@ -5,7 +5,7 @@ import { Instance, Placement, createPopper, Modifier } from '@popperjs/core';
 import clsx from 'clsx';
 import { isProduction, isServer, noop, oneOf } from '@xl-vision/utils';
 import { useForkRef, useConstantFn } from '@xl-vision/hooks';
-import CssTransition, { CssTransitionProps } from '../CssTransition';
+import Transition, { TransitionProps } from '../Transition';
 import Portal, { PortalContainerType } from '../Portal';
 import { off, on } from '../utils/event';
 import useLifecycleState, { LifecycleState } from '../hooks/useLifecycleState';
@@ -33,7 +33,7 @@ export interface PopperProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactElement<PopperChildrenProps>;
   popup: React.ReactElement;
   popupContainer?: PortalContainerType;
-  transitionClassName?: CssTransitionProps['transitionClassName'];
+  transitionClassName?: TransitionProps['transitionClassName'];
   trigger?: PopperTrigger | Array<PopperTrigger>;
   placement?: PopperPlacement;
   disablePopupEnter?: boolean;
@@ -470,7 +470,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
         onClick={handlePopupClick}
         onContextMenu={handlePopupContextClick}
       >
-        <CssTransition
+        <Transition
           in={inProp}
           transitionClassName={transitionClassName}
           onEnter={handleEnter}
@@ -487,7 +487,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
             {arrowNode}
             {popup}
           </div>
-        </CssTransition>
+        </Transition>
       </div>
     </Portal>
   );

@@ -16,7 +16,7 @@ const Wrapper = styled('div')(() => {
 const PopperRoot = styled(Popper)(({ theme }) => {
   return {
     '.slide': {
-      '&-enter-active, &-leave-active': {
+      '&-enter-active, &-exit-active': {
         transition: theme.transition.standard('transform'),
         '&[data-placement^="left"]': {
           transform: 'scaleX(1)',
@@ -31,7 +31,7 @@ const PopperRoot = styled(Popper)(({ theme }) => {
           transform: 'scaleY(1)',
         },
       },
-      '&-enter-from,&-leave-to': {
+      '&-enter-from,&-exit-to': {
         '&[data-placement^="left"]': {
           transform: 'scaleX(0)',
         },

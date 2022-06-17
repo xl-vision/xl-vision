@@ -4,7 +4,7 @@ import { isProduction, isServer } from '@xl-vision/utils';
 import clsx from 'clsx';
 import React from 'react';
 import PropTypes from 'prop-types';
-import CssTransition from '../CssTransition';
+import Transition from '../Transition';
 import usePropChange from '../hooks/usePropChange';
 import Portal from '../Portal';
 import { styled } from '../styles';
@@ -140,7 +140,7 @@ const BackTop = React.forwardRef<HTMLDivElement, BackTopProps>((props, ref) => {
   };
 
   const node = (
-    <CssTransition
+    <Transition
       in={show}
       mountOnEnter={true}
       unmountOnExit={true}
@@ -155,7 +155,7 @@ const BackTop = React.forwardRef<HTMLDivElement, BackTopProps>((props, ref) => {
       >
         {children || defaultElement}
       </Root>
-    </CssTransition>
+    </Transition>
   );
 
   return <Portal container={containerProp}>{node}</Portal>;

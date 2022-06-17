@@ -107,8 +107,8 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
 
   const elementRef = useRef<T | null>();
 
-  // 是否处于enter和exited之间的状态
-  const [inTransition, setInTransition] = useState(transitionOnFirst);
+  // 是否处于enter和exited之间的状态，只要children在显示中，就为true
+  const [inTransition, setInTransition] = useState(inOption || transitionOnFirst);
 
   const isFirstUpdateRef = useRef(true);
   const transitionOnFirstRef = useRef(transitionOnFirst);

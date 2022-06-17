@@ -34,7 +34,7 @@ const Root = styled('div')(({ theme }) => {
     //   zIndex: 10,
     // },
     // '.aside': {
-    //   '&-enter-active, &-leave-active': {
+    //   '&-enter-active, &-exit-active': {
     //     transition: 'height 0.4s ease',
     //   },
     // },
