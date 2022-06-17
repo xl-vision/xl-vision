@@ -74,7 +74,7 @@ const ModalMask = styled('div', {
         transition: transition.enter('opacity'),
       },
       '&-exit-active': {
-        transition: transition.leavePermanent('opacity'),
+        transition: transition.exitPermanent('opacity'),
       },
       '&-enter-from,&-exit-to': {
         opacity: 0,
@@ -99,7 +99,7 @@ const ModalContent = styled('div', {
         transition: transition.enter(['opacity', 'transform']),
       },
       '&-exit-active': {
-        transition: transition.leavePermanent(['opacity', 'transform']),
+        transition: transition.exitPermanent(['opacity', 'transform']),
       },
       '&-enter-from,&-exit-to': {
         opacity: 0,

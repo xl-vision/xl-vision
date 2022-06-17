@@ -407,7 +407,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     // removeClass(el, el._ctc?.enterActive || '');
     // removeClass(el, el._ctc?.enterFrom || '');
     // el.style.display = '';
-    // show();
+    show();
     // addClass(el, el._ctc?.enterFrom || '');
     // forceReflow();
     // addClass(el, el._ctc?.enterActive || '');

@@ -2,7 +2,7 @@ import { mount } from 'enzyme';
 import React from 'react';
 import { Ripple, RippleRef } from '@xl-vision/react';
 
-const Demo = ({ leaveAfterEnter }: { leaveAfterEnter?: boolean }) => {
+const Demo = ({ exitAfterEnter }: { exitAfterEnter?: boolean }) => {
   const rippleRef = React.useRef<RippleRef>(null);
 
   const events = React.useMemo(() => {
@@ -27,7 +27,7 @@ const Demo = ({ leaveAfterEnter }: { leaveAfterEnter?: boolean }) => {
   return (
     <div className='box' {...events}>
       click me
-      <Ripple leaveAfterEnter={leaveAfterEnter} transitionClassName='ripple' ref={rippleRef} />
+      <Ripple exitAfterEnter={exitAfterEnter} transitionClassName='ripple' ref={rippleRef} />
     </div>
   );
 };

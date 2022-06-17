@@ -37,7 +37,7 @@ describe('TransitionGroup', () => {
     const Comp = (props: { arr: Array<number> }) => {
       const { arr } = props;
       const children = arr.map((it) => (
-        // 阻止执行leave动作
+        // 阻止执行exit动作
         <div key={it}>{it}</div>
       ));
       return (

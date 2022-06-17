@@ -9,7 +9,7 @@ import { useTheme } from '../ThemeProvider';
 
 export interface RippleProps extends React.HTMLAttributes<HTMLDivElement> {
   transitionClassName: TransitionGroupClassName;
-  leaveAfterEnter?: boolean;
+  exitAfterEnter?: boolean;
 }
 
 export interface RippleRef {
@@ -50,7 +50,7 @@ const RippleInner = styled('div', {
 const DELAY_RIPPLE = 80;
 
 const Ripple = React.forwardRef<RippleRef, RippleProps>((props, ref) => {
-  const { transitionClassName, leaveAfterEnter, className, ...others } = props;
+  const { transitionClassName, exitAfterEnter, className, ...others } = props;
 
   const { clsPrefix } = useTheme();
 
@@ -167,7 +167,7 @@ const Ripple = React.forwardRef<RippleRef, RippleProps>((props, ref) => {
         startTimerCommitRef.current = undefined;
       }
     }
-    if (leaveAfterEnter) {
+    if (exitAfterEnter) {
       if (enteredCountRef.current > 0) {
         enteredCountRef.current--;
         setRipples((prev) => prev.slice(1));
@@ -187,7 +187,7 @@ const Ripple = React.forwardRef<RippleRef, RippleProps>((props, ref) => {
   });
 
   const handleEnter = useConstantFn(() => {
-    if (leaveAfterEnter) {
+    if (exitAfterEnter) {
       if (waitLeaveCountRef.current > 0) {
         waitLeaveCountRef.current--;
         setRipples((prev) => prev.slice(1));
@@ -215,7 +215,7 @@ if (!isProduction) {
 
   Ripple.propTypes = {
     transitionClassName: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
-    leaveAfterEnter: PropTypes.bool,
+    exitAfterEnter: PropTypes.bool,
     className: PropTypes.string,
   };
 }

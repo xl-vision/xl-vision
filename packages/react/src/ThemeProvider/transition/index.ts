@@ -15,7 +15,7 @@ const defaultDurations = {
   standard: '300ms',
   complex: '375',
   enter: '225ms',
-  leave: '195ms',
+  exit: '195ms',
 };
 
 export type Transition = Partial<{
@@ -51,15 +51,15 @@ const createTransition = (transition: Transition = {}) => {
     delay = '0ms',
   ) => genTransition(name, duration, functions.deceleration, delay);
 
-  const leavePermanent = (
+  const exitPermanent = (
     name: keyof React.CSSProperties | Array<keyof React.CSSProperties>,
-    duration = durations.leave,
+    duration = durations.exit,
     delay = '0ms',
   ) => genTransition(name, duration, functions.acceleration, delay);
 
-  const leaveTemporary = (
+  const exitTemporary = (
     name: keyof React.CSSProperties | Array<keyof React.CSSProperties>,
-    duration = durations.leave,
+    duration = durations.exit,
     delay = '0ms',
   ) => genTransition(name, duration, functions.sharp, delay);
 
@@ -79,10 +79,10 @@ const createTransition = (transition: Transition = {}) => {
     };
   };
 
-  const fadeOut = (className: string, duration = defaultDurations.leave): CSSObject => {
+  const fadeOut = (className: string, duration = defaultDurations.exit): CSSObject => {
     return {
       [`${className}-exit-active`]: {
-        transition: leavePermanent(['opacity'], duration),
+        transition: exitPermanent(['opacity'], duration),
       },
       [`${className}-exit-from`]: {
         opacity: 1,
@@ -98,8 +98,8 @@ const createTransition = (transition: Transition = {}) => {
     durations,
     standard,
     enter,
-    leavePermanent,
-    leaveTemporary,
+    exitPermanent,
+    exitTemporary,
     fadeIn,
     fadeOut,
   } as const;
