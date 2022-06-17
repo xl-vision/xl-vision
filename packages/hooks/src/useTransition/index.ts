@@ -33,7 +33,6 @@ export type TransitionOptions<T extends Element> = {
   onExiting?: TransitionStartingHook<T>;
   onExited?: TransitionEndHook<T>;
   onExitCancelled?: TransitionCancelledHook<T>;
-
   in: boolean;
   transitionOnFirst?: boolean;
 };

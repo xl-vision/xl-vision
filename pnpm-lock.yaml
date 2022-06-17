@@ -48,6 +48,7 @@ importers:
       eslint-plugin-unicorn: ^42.0.0
       fs-extra: ^10.1.0
       glob: ^8.0.3
+      gsap: ^3.10.4
       gulp: ^4.0.2
       gulp-babel: ^8.0.0
       gulp-typescript: ^5.0.1
@@ -66,6 +67,8 @@ importers:
       styled-components: ^5.3.5
       ts-jest: ^28.0.2
       typescript: ^4.6.4
+    dependencies:
+      gsap: 3.10.4
     devDependencies:
       '@babel/core': 7.17.10
       '@babel/eslint-parser': 7.17.0_annt2i75qyqp7sfsklqkwkfeaa
@@ -3469,7 +3472,7 @@ packages:
       babel-plugin-syntax-jsx: 6.18.0
       lodash: 4.17.21
       picomatch: 2.3.0
-      styled-components: 5.3.5_ukrbqhh2t6r2q67fyfhmpyy5um
+      styled-components: 5.3.5_62uyfyg2bj4vfpqt7ubwdlbtki
 
   /babel-plugin-syntax-jsx/6.18.0:
     resolution: {integrity: sha1-CvMqmm4Tyno/1QaeYtew9Y0NiUY=}
@@ -6183,6 +6186,10 @@ packages:
   /graceful-fs/4.2.9:
     resolution: {integrity: sha512-NtNxqUcXgpW2iMrfqSfR73Glt39K+BLwWsPs94yR63v45T0Wbej7eRmL5cWfwEgqXnmjQp3zaJTshdRW/qC2ZQ==}
     dev: true
+
+  /gsap/3.10.4:
+    resolution: {integrity: sha512-6QatdkKxXCMfvCW4rM++0RqyLQAzFX5nwl3yHS0XPgkZBkiSEY3VZVbMltrdtsbER/xZonLtyHt684wRp4erlQ==}
+    dev: false
 
   /gulp-babel/8.0.0_@babel+core@7.17.10:
     resolution: {integrity: sha512-oomaIqDXxFkg7lbpBou/gnUkX51/Y/M2ZfSjL2hdqXTAlSWZcgZtd2o0cOH0r/eE8LWD0+Q/PsLsr2DKOoqToQ==}

@@ -94,5 +94,8 @@
   "engines": {
     "node": ">=14.19.0",
     "pnpm": ">=7"
+  },
+  "dependencies": {
+    "gsap": "^3.10.4"
   }
 }

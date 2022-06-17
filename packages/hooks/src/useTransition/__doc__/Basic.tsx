@@ -1,96 +1,70 @@
 import React from 'react';
-import {
-  useTransition,
-  TransitionStartHook,
-  TransitionStartingHook,
-  TransitionEndHook,
-} from '@xl-vision/hooks';
-import { Button } from '@xl-vision/react';
+import { useTransition, TransitionStartHook, TransitionStartingHook } from '@xl-vision/hooks';
+import { Button, styled } from '@xl-vision/react';
+import { gsap } from 'gsap';
 
-type State = 'enter' | 'entering' | 'entered' | 'exit' | 'exiting' | 'exited';
+const Box = styled('div')(({ theme }) => {
+  return {
+    width: 30,
+    height: 30,
+    borderRadius: '50%',
+    marginTop: 20,
+    backgroundColor: theme.color.themes.secondary.color,
+  };
+});
 
 const Demo = () => {
-  const [show, setShow] = React.useState(false);
+  const [inOption, setInOption] = React.useState(false);
 
-  const [state, setState] = React.useState<State>(show ? 'entered' : 'exited');
-
-  const handleEnter: TransitionStartHook = React.useCallback(() => {
-    setState('enter');
-  }, []);
-
-  const handleEntering: TransitionStartingHook = React.useCallback((_1, done) => {
-    setTimeout(() => {
-      setState('entering');
-      setTimeout(() => {
-        done();
-      });
+  const handleEnter: TransitionStartHook = React.useCallback((el) => {
+    console.log(el);
+    gsap.set(el, {
+      scaleX: 0.25,
+      scaleY: 0.25,
+      opacity: 1,
     });
   }, []);
 
-  const handleEntered: TransitionEndHook = React.useCallback(() => {
-    setState('entered');
-  }, []);
-
-  const handleExit: TransitionStartHook = React.useCallback(() => {
-    setState('exit');
-  }, []);
-
-  const handleExiting: TransitionStartingHook = React.useCallback((_1, done) => {
-    setTimeout(() => {
-      setState('exiting');
-      setTimeout(() => {
-        done();
-      });
+  const handleEntering: TransitionStartingHook = React.useCallback((el, done) => {
+    gsap.to(el, {
+      duration: 1,
+      scaleX: 1,
+      scaleY: 1,
+      opacity: 1,
+      ease: 'elastic.inOut(2.5, 1)',
+      onComplete: done,
     });
   }, []);
 
-  const handleExited: TransitionEndHook = React.useCallback(() => {
-    setState('exited');
+  const handleExiting: TransitionStartingHook = React.useCallback((el, done) => {
+    gsap.to(el, {
+      duration: 0.7,
+      scaleX: 1,
+      scaleY: 1,
+      x: 300,
+      ease: 'elastic.inOut(2.5, 1)',
+    });
+    gsap.to(el, {
+      duration: 0.2,
+      delay: 0.5,
+      opacity: 0,
+      onComplete: done,
+    });
   }, []);
 
-  const { nodeRef } = useTransition({
-    in: show,
-    transitionOnFirst: true,
+  const { nodeRef, show } = useTransition({
+    in: inOption,
     onEnter: handleEnter,
     onEntering: handleEntering,
-    onEntered: handleEntered,
-    onExit: handleExit,
     onExiting: handleExiting,
-    onExited: handleExited,
   });
-
-  React.useEffect(() => {
-    console.log(`state:${state}`);
-  }, [state]);
-
-  const defaultStyle = {
-    transition: `all 300ms ease-in-out`,
-    marginTop: 10,
-  };
-
-  const transitionStyles: Record<State, React.CSSProperties> = {
-    enter: { opacity: 0, transform: `translateX(10px)` },
-    entering: { opacity: 1, transform: `translateX(0)` },
-    entered: { opacity: 1, transform: `translateX(0)` },
-    exit: { opacity: 1, transform: `translateX(0)` },
-    exiting: { opacity: 0, transform: `translateX(10px)` },
-    exited: { opacity: 0, transform: `translateX(10px)` },
-  };
 
   return (
     <div>
-      <Button color='primary' onClick={() => setShow((prev) => !prev)}>
+      <Button color='primary' onClick={() => setInOption((prev) => !prev)}>
         click
       </Button>
-      <div
-        style={{
-          ...defaultStyle,
-          ...transitionStyles[state],
-        }}
-        ref={nodeRef}
-      >
-        hello
-      </div>
+      {show && <Box ref={nodeRef} />}
     </div>
   );
 };

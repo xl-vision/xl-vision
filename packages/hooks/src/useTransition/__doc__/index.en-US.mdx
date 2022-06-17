@@ -14,8 +14,42 @@ Basic usage
 
 ## API
 
+```ts
+type TransitionOptions<T extends Element> = {
+  onEnter?: TransitionStartHook<T>;
+  onEntering?: TransitionStartingHook<T>;
+  onEntered?: TransitionEndHook<T>;
+  onEnterCancelled?: TransitionCancelledHook<T>;
+  onExit?: TransitionStartHook<T>;
+  onExiting?: TransitionStartingHook<T>;
+  onExited?: TransitionEndHook<T>;
+  onExitCancelled?: TransitionCancelledHook<T>;
+  in: boolean;
+  transitionOnFirst?: boolean;
+};
+
+const {show: boolean, nodeRef: Ref} = useTransition(options: TransitionOptions)
+
+```
+
+### 参数
+
 | Property | Description | Type | Default | Require |
 | --- | --- | --- | --- | --- |
-| placement | popper position | `top` \| `top-start` \| `top-end `\| `right` \| `right-start` \| `right-end` \| `bottom` \| `bottom-start` \| `bottom-end` \| `left` \| `left-start` \| `left-end` | - | true |
-| mode | positioning mode | `fixed` \| `absolute` | `fixed` | false |
-| middlewares | middleware | Array\<Middleware\> | - | false |
+| in | Trigger the entering and exiting animation, `true` means entering, `false` means exiting | boolean | - | true |
+| transitionOnFirst | Whether to trigger the first entry and exit hook function | boolean | false | false |
+| onEnter | Before enter hook | (el: Element, transitionOnFirst: boolean) => void | - |
+| onEntering | Enter hook | (el: Element, done: (() => void), transitionOnFirst: boolean, isCancelled: () => boolean) => void | - | false |
+| onEntered | After enter hook | (el:Element, transitionOnFirst: boolean) => void | - | false |
+| onEnterCancelled | Enter cancelled hook | (el:Element, transitionOnFirst: boolean) => void | - | false |
+| onExit | Before exit hook | (el: Element, transitionOnFirst: boolean) => void | - | false |
+| onExiting | Exit hook | (el: Element, done: (() => void), transitionOnFirst: boolean, isCancelled: () => boolean) => void | - | false |
+| onExited | After exit hook | (el:Element, transitionOnFirst: boolean) => void | - | false |
+| onExitCancelled | Exit cancelled hoo | (el: Element, transitionOnFirst: boolean) => void | - | false |
+
+### 返回值
+
+| Return | Description | Type |
+| --- | --- | --- |
+| show | Whether the control component is displayed or hidden during the display process | boolean |
+| nodeRef | Bind to the element, specify the animation element | boolean |
