@@ -164,7 +164,6 @@ importers:
 
   packages/react:
     specifiers:
-      '@popperjs/core': ^2.11.4
       '@types/prop-types': ^15.7.5
       '@types/react-is': ^17.0.3
       '@xl-vision/hooks': workspace:^
@@ -175,7 +174,6 @@ importers:
       prop-types: ^15.8.1
       react-is: ^18.1.0
     dependencies:
-      '@popperjs/core': 2.11.4
       '@xl-vision/hooks': link:../hooks
       '@xl-vision/icons': link:../icons
       '@xl-vision/styled-engine': link:../styled-engine
@@ -2386,10 +2384,6 @@ packages:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
 
-  /@popperjs/core/2.11.4:
-    resolution: {integrity: sha512-q/ytXxO5NKvyT37pmisQAItCFqA7FD/vNb8dgaJy3/630Fsc+Mz9/9f2SziBoIZ30TJooXyTwZmhi1zjXmObYg==}
-    dev: false
-
   /@rollup/plugin-alias/3.1.9_rollup@2.74.1:
     resolution: {integrity: sha512-QI5fsEvm9bDzt32k39wpOwZhVzRcL5ydcffUHMyLVaVaLeC70I8TJZ17F1z1eMoLu4E/UOcH9BWVkKpIKdrfiw==}
     engines: {node: '>=8.0.0'}
@@ -3472,7 +3466,7 @@ packages:
       babel-plugin-syntax-jsx: 6.18.0
       lodash: 4.17.21
       picomatch: 2.3.0
-      styled-components: 5.3.5_62uyfyg2bj4vfpqt7ubwdlbtki
+      styled-components: 5.3.5_ukrbqhh2t6r2q67fyfhmpyy5um
 
   /babel-plugin-syntax-jsx/6.18.0:
     resolution: {integrity: sha1-CvMqmm4Tyno/1QaeYtew9Y0NiUY=}
