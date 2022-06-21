@@ -150,7 +150,9 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
         onExiting,
         (elOption, transitionOnFirstOption) => {
           onExited?.(elOption, transitionOnFirstOption);
-          setInTransition(false);
+          if (!isDestoryedRef.current) {
+            setInTransition(false);
+          }
         },
         onExitCancelled,
       );
