@@ -1,6 +1,6 @@
 # useCssTransition
 
-方便地创建 tooltip、popover 等组件的 Hook
+基于[useTransition](/hooks/useTransition)，能够更加方便地进行 css 过渡动画的 hooks。
 
 ## 示例
 
@@ -12,10 +12,36 @@
 
 :::
 
-## usePopper API
+## API
+
+```ts
+type CssTransitionAction = 'appear' | 'enter' | 'exit' | 'disappear';
+
+type CssTransitionClassNameRecord = Partial<
+  Record<`${CssTransitionAction}${'Active' | 'From' | 'To'}`, string>
+>;
+
+type CssTransitionClassName = CssTransitionClassNameRecord | string;
+
+type CssTransitionTimeoutRecord = Partial<Record<CssTransitionAction, number>>;
+
+type CssTransitionTimeout = CssTransitionTimeoutRecord | number;
+
+const {
+    transitionClassesRef,
+    // useTransition returns
+} = useCssTransition({
+    timeout?: CssTransitionTimeout
+    disableCss?: boolean
+    transitionClassName?: CssTransitionClassName
+    // all useTransition Properties
+})
+```
+
+### 参数
 
 | 参数 | 说明 | 类型 | 默认值 | 是否必填 |
 | --- | --- | --- | --- | --- |
-| placement | popper 的位置 | `top` \| `top-start` \| `top-end `\| `right` \| `right-start` \| `right-end` \| `bottom` \| `bottom-start` \| `bottom-end` \| `left` \| `left-start` \| `left-end` | - | true |
-| mode | 定位模式 | `fixed` \| `absolute` | `fixed` | false |
-| middlewares | 中间件 | Array\<Middleware\> | - | false |
+| timeout | 自定义过渡时间 | - | - | false |
+| disableCss | 禁用系统默认对 `css` 的控制，设置后 `timeout` 也会失效，由用户自己控制过渡动画的完成 | - | - | false |
+| transitionClassName | 配置过渡动画中的 `className` | - | - | false |

@@ -1,6 +1,6 @@
 # useCssTransition
 
-Easily create Hooks for tooltip, popover and other components
+Based on [useTransition](/hooks/useTransition), hooks for css transition animation can be performed more conveniently.
 
 ## Examples
 
@@ -14,8 +14,34 @@ Basic usage
 
 ## API
 
+```ts
+type CssTransitionAction = 'appear' | 'enter' | 'exit' | 'disappear';
+
+type CssTransitionClassNameRecord = Partial<
+  Record<`${CssTransitionAction}${'Active' | 'From' | 'To'}`, string>
+>;
+
+type CssTransitionClassName = CssTransitionClassNameRecord | string;
+
+type CssTransitionTimeoutRecord = Partial<Record<CssTransitionAction, number>>;
+
+type CssTransitionTimeout = CssTransitionTimeoutRecord | number;
+
+const {
+    transitionClassesRef,
+    // useTransition returns
+} = useCssTransition({
+    timeout?: CssTransitionTimeout
+    disableCss?: boolean
+    transitionClassName?: CssTransitionClassName
+    // all useTransition Properties
+})
+```
+
+### Properties
+
 | Property | Description | Type | Default | Require |
 | --- | --- | --- | --- | --- |
-| placement | popper position | `top` \| `top-start` \| `top-end `\| `right` \| `right-start` \| `right-end` \| `bottom` \| `bottom-start` \| `bottom-end` \| `left` \| `left-start` \| `left-end` | - | true |
-| mode | positioning mode | `fixed` \| `absolute` | `fixed` | false |
-| middlewares | middleware | Array\<Middleware\> | - | false |
+| timeout | Customize how long it takes to transition | - | - | false |
+| disableCss | Disable the default control of `css` by the system. After setting, `timeout` will also be invalid, and the completion of the transition animation is controlled by the user | - | - | false |
+| transitionClassName | Configure `className` in transition animation | - | - | false |
