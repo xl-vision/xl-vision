@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { isProduction, noop, warning } from '@xl-vision/utils';
+import { isProduction, warning } from '@xl-vision/utils';
 import {
   CssTransitionClassNameRecord,
   TransitionEndHook,

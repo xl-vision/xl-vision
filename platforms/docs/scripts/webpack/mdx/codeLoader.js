@@ -29,6 +29,8 @@ module.exports = async function demoLoader(content) {
       await babel.transformAsync(tsCode, {
         configFile: false,
         filename: absolutePath,
+        compact: false,
+        retainLines: true,
         presets: [
           // '@babel/preset-react',
           '@babel/preset-typescript',
