@@ -34,7 +34,7 @@ export interface TransitionGroupProps
   transitionClassName?: TransitionGroupClassName;
 }
 
-const TransitionGroup: React.FunctionComponent<TransitionGroupProps> = (props) => {
+const TransitionGroup: React.FC<TransitionGroupProps> = (props) => {
   const { children, transitionClassName: transitionClasses, onExited, ...others } = props;
 
   const transitionClassesRecord = React.useMemo(() => {

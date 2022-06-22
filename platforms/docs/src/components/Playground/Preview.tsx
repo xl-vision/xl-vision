@@ -111,7 +111,7 @@ require(['react','react-dom', '@xl-vision/react', 'demo'], function(React,ReactD
 })
 `;
 
-const Preview: React.FunctionComponent<PreviewProps> = (props) => {
+const Preview: React.FC<PreviewProps> = (props) => {
   const { code, scripts, reactVersion, libVersion } = props;
 
   const [parsedCode, setParsedCode] = React.useState('');

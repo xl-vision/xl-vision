@@ -13,7 +13,7 @@ const LinkWrapper = styled('a')(
 `,
 );
 
-const Link: React.FunctionComponent<React.AnchorHTMLAttributes<HTMLAnchorElement>> = (props) => {
+const Link: React.FC<React.AnchorHTMLAttributes<HTMLAnchorElement>> = (props) => {
   const { href, ...others } = props;
 
   if (href) {

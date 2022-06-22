@@ -124,7 +124,7 @@ const MobileDropdownItem = styled(Dropdown.Item)(({ theme }) => {
   };
 });
 
-const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (props) => {
+const Header: React.FC<React.HTMLAttributes<HTMLElement>> = (props) => {
   const theme = React.useContext(ThemeContext);
   const { supportLocales, locale } = useLocale();
   const router = useRouter();

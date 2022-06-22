@@ -10,7 +10,7 @@ export type ThemeProviderProps = {
   theme?: BaseTheme;
 };
 
-const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = (props) => {
+const ThemeProvider: React.FC<ThemeProviderProps> = (props) => {
   const { children, theme } = props;
 
   const parentTheme = React.useContext(ThemePropsContext);

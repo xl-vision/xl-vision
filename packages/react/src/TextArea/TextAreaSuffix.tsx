@@ -12,7 +12,7 @@ export type TextAreaSuffixProps = React.HTMLAttributes<HTMLSpanElement> & {
 
 const displayName = 'TextAreaSuffix';
 
-const TextAreaSuffix: React.FunctionComponent<TextAreaSuffixProps> = (props) => {
+const TextAreaSuffix: React.FC<TextAreaSuffixProps> = (props) => {
   const { className, value, style, ...others } = props;
 
   const { clsPrefix } = useTheme();

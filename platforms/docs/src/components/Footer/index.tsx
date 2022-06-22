@@ -8,7 +8,7 @@ const Wrapper = styled('footer')(() => {
   };
 });
 
-const Footer: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (props) => {
+const Footer: React.FC<React.HTMLAttributes<HTMLElement>> = (props) => {
   return (
     <Wrapper {...props}>
       <span>Copyright © 2020-2021 Rhys Xia</span>

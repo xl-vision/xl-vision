@@ -46,7 +46,7 @@ const IconWrapper = styled('div')(({ theme }) => {
   };
 });
 
-const IconSearch: React.FunctionComponent<void> = () => {
+const IconSearch: React.FC<void> = () => {
   const { locale } = useLocale();
   const [iconType, setIconType] = React.useState<IconType>(IconType.OUTLINED);
 

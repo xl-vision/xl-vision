@@ -63,7 +63,7 @@ const InputGroupRoot = styled('div', {
   };
 });
 
-const InputGroup: React.FunctionComponent<InputGroupProps> = (props) => {
+const InputGroup: React.FC<InputGroupProps> = (props) => {
   const theme = useTheme();
 
   const { clsPrefix, componentSize } = theme;

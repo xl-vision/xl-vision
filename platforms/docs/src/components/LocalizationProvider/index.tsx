@@ -26,7 +26,7 @@ export const useLocale = () => {
   return React.useContext(LocalizationContext);
 };
 
-const LocalizationProvider: React.FunctionComponent<LocalizationProviderProps> = (props) => {
+const LocalizationProvider: React.FC<LocalizationProviderProps> = (props) => {
   const { children } = props;
 
   const { locale: language = defaultLanguage } = useRouter();

@@ -33,7 +33,7 @@ const NodeWrapper = styled('ul')(() => {
   };
 });
 
-const ActiveLink: React.FunctionComponent<LinkProps> = (props) => {
+const ActiveLink: React.FC<LinkProps> = (props) => {
   const { children, href, ...others } = props;
   const { pathname } = useRouter();
 
@@ -141,7 +141,7 @@ export type AsideProps = React.HTMLAttributes<HTMLDivElement> & {
   appendEn?: boolean;
 };
 
-const Aside: React.FunctionComponent<AsideProps> = React.forwardRef<HTMLDivElement, AsideProps>(
+const Aside: React.FC<AsideProps> = React.forwardRef<HTMLDivElement, AsideProps>(
   (props, ref) => {
     const { language } = useLocale();
 

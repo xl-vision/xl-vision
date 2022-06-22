@@ -105,7 +105,7 @@ const ExpandWrapper = styled(DownOutlined)<{ expand: boolean }>(({ theme, styleP
   };
 });
 
-const DemoBox: React.FunctionComponent<DemoBoxProps> = ({
+const DemoBox: React.FC<DemoBoxProps> = ({
   id,
   jsCodeNode,
   tsCodeNode,

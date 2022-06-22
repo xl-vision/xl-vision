@@ -22,7 +22,7 @@ export interface PortalProp {
  * @param props
  * @constructor
  */
-const Portal: React.FunctionComponent<PortalProp> = (props) => {
+const Portal: React.FC<PortalProp> = (props) => {
   const { children, container: containerProp } = props;
 
   if (isServer) {

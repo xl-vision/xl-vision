@@ -28,7 +28,7 @@ const Root = styled('main')(
 `,
 );
 
-const Wrapper: React.FunctionComponent<WrapperProps> = (props) => {
+const Wrapper: React.FC<WrapperProps> = (props) => {
   const { children, ...others } = props;
 
   return <Root {...others}>{children}</Root>;

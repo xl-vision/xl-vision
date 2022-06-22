@@ -15,7 +15,7 @@ export type MessageDialogType = 'success' | 'error' | 'warning' | 'info' | 'conf
 export * from './MessageDialog';
 
 const createMessageDialog = (type?: MessageDialogType) => {
-  const Dialog: React.FunctionComponent<MessageDialogProps> = (props) => {
+  const Dialog: React.FC<MessageDialogProps> = (props) => {
     const { color } = useTheme();
     const { locale } = useConfig();
 

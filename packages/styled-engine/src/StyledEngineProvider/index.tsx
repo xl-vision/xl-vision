@@ -6,7 +6,7 @@ export type StyledEngineProviderProps = {
   children: React.ReactNode;
 };
 
-const StyledEngineProvider: React.FunctionComponent<StyledEngineProviderProps> = (props) => {
+const StyledEngineProvider: React.FC<StyledEngineProviderProps> = (props) => {
   const { injectFirst, children } = props;
 
   if (injectFirst && typeof window !== 'undefined') {

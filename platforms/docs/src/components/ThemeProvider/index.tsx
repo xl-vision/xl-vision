@@ -21,7 +21,7 @@ export const ThemeContext = React.createContext<ThemeContextProps>({
 
 const KEY = 'DARK_MODE';
 
-const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = (props) => {
+const ThemeProvider: React.FC<ThemeProviderProps> = (props) => {
   const { children } = props;
 
   const [isDark, setDark] = React.useState(false);

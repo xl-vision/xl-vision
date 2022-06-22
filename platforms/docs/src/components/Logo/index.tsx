@@ -2,7 +2,7 @@ import React from 'react';
 
 export type LogoProps = React.HTMLAttributes<HTMLOrSVGElement>;
 
-const Logo: React.FunctionComponent<LogoProps> = (props) => {
+const Logo: React.FC<LogoProps> = (props) => {
   return (
     <svg
       {...props}

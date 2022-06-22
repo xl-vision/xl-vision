@@ -41,7 +41,7 @@ const TableWrapper = styled('table')(({ theme }) => {
 
 export type TableProps = React.TableHTMLAttributes<HTMLTableElement>;
 
-const Table: React.FunctionComponent<TableProps> = (props) => {
+const Table: React.FC<TableProps> = (props) => {
   return (
     <Wrapper>
       <TableWrapper {...props} />

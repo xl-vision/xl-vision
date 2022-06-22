@@ -10,7 +10,7 @@ export type ConfigProviderProps = {
   language?: string;
 };
 
-const ConfigProvider: React.FunctionComponent<ConfigProviderProps> = (props) => {
+const ConfigProvider: React.FC<ConfigProviderProps> = (props) => {
   const { customLocales, language = defaultConfigContext.language, children } = props;
 
   const memorizedValue = React.useMemo(() => {

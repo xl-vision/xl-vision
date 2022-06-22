@@ -24,7 +24,7 @@ const components: any = {
   table,
 };
 
-const Markdown: React.FunctionComponent<MarkdownProps> = (props) => {
+const Markdown: React.FC<MarkdownProps> = (props) => {
   const { children, ...others } = props;
   return (
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment

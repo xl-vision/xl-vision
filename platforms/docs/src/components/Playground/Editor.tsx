@@ -25,7 +25,7 @@ const CodeMirrorEditor = styled(CodeMirror)(({ theme }) => {
   };
 });
 
-const Editor: React.FunctionComponent<EditorProps> = (props) => {
+const Editor: React.FC<EditorProps> = (props) => {
   const { value, onChange } = props;
 
   const { color } = useTheme();

@@ -1,7 +1,7 @@
 import React from 'react';
 import Script from 'next/script';
 
-const BaiduAnalytics: React.FunctionComponent = () => {
+const BaiduAnalytics: React.FC = () => {
   return (
     <Script
       id='baidu-analytics'

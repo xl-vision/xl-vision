@@ -11,8 +11,6 @@ import { useTheme } from '../ThemeProvider';
 
 export type PopperTrigger = 'hover' | 'focus' | 'click' | 'contextMenu' | 'custom';
 
-export type PopperPlacement = Placement;
-
 export type PopperChildrenProps = {
   onClick?: React.MouseEventHandler<any>;
   onMouseEnter?: React.MouseEventHandler<any>;
@@ -29,7 +27,7 @@ export interface PopperProps extends React.HTMLAttributes<HTMLDivElement> {
   popupContainer?: PortalContainerType;
   transitionClassName?: TransitionProps['transitionClassName'];
   trigger?: PopperTrigger | Array<PopperTrigger>;
-  placement?: PopperPlacement;
+  placement?: Placement;
   disablePopupEnter?: boolean;
   offset?: number;
   showDelay?: number;
@@ -88,7 +86,6 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
 
   const [animatedVisible, setAnimatedVisible] = React.useState(visible);
 
-
   const popupNodeRef = React.useRef<HTMLDivElement>(null);
 
   const middlewares = React.useMemo(() => {
@@ -105,6 +102,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
 
   const show = useConstantFn(() => {
     update();
+    setAnimatedVisible(true);
   });
 
   const hide = useConstantFn(() => {});

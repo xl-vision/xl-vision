@@ -13,7 +13,7 @@ export type ResizeObserverProps = {
 
 const INTERNAL_KEY_PREFIX = '$$resize_observer';
 
-const ResizeObserver: React.FunctionComponent<ResizeObserverProps> = (props) => {
+const ResizeObserver: React.FC<ResizeObserverProps> = (props) => {
   const { children, onResizeObserver: handleResizeObserver } = props;
 
   const parsedChildren = React.Children.map(children, (child, index) => {

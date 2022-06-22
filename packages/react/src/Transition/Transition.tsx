@@ -12,7 +12,7 @@ export type TransitionProps = CssTransitionOptions & {
 
 const displayName = 'Transition';
 
-const Transition: React.FunctionComponent<TransitionProps> = (props) => {
+const Transition: React.FC<TransitionProps> = (props) => {
   const { children, mountOnEnter, unmountOnExit, in: inProp, ...others } = props;
 
   const { nodeRef, show } = useCssTransition({

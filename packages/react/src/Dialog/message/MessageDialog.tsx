@@ -66,7 +66,7 @@ const MessageDialogContent = styled('div', {
   return styles;
 });
 
-const MessageDialog: React.FunctionComponent<MessageDialogProps> = (props) => {
+const MessageDialog: React.FC<MessageDialogProps> = (props) => {
   const {
     visible: visibleProp,
     defaultVisible: defaultVisibleProp = false,

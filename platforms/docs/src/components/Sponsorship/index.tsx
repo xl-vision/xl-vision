@@ -32,7 +32,7 @@ const Title = styled('h5')(({ theme }) => {
   };
 });
 
-const Sponsorship: React.FunctionComponent = () => {
+const Sponsorship: React.FC = () => {
   const { locale } = useLocale();
 
   return (

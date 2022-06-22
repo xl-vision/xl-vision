@@ -20,7 +20,7 @@ const Root = styled('iframe')(() => {
   };
 });
 
-const Sandbox: React.FunctionComponent<SandboxProps> = (props) => {
+const Sandbox: React.FC<SandboxProps> = (props) => {
   const { demo, scripts, exec, onLoad } = props;
   const ref = React.useRef<HTMLIFrameElement>(null);
 

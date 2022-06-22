@@ -28,7 +28,7 @@ const Root = styled('div')(({ theme }) => {
   };
 });
 
-const Playground: React.FunctionComponent<PlaygroundProps> = (props) => {
+const Playground: React.FC<PlaygroundProps> = (props) => {
   const { code: codeProp, scripts } = props;
 
   const [code, handleChange] = React.useState('');

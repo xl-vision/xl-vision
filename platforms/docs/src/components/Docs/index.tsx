@@ -45,7 +45,7 @@ Object.keys(routes).forEach((baseName) => {
   visitRoute(name, route, routeMap);
 });
 
-const Docs: React.FunctionComponent<DocsProps> = ({ locales }) => {
+const Docs: React.FC<DocsProps> = ({ locales }) => {
   const { language } = useLocale();
 
   const { pathname } = useRouter();

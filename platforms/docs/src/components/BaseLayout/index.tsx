@@ -93,7 +93,7 @@ const MainWrapper = styled('div')(({ theme }) => {
   };
 });
 
-const BaseLayout: React.FunctionComponent<BaseLayoutProps> = ({
+const BaseLayout: React.FC<BaseLayoutProps> = ({
   children,
   routeName,
   appendEn,

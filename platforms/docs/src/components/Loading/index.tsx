@@ -29,7 +29,7 @@ const Icon = styled(LoadingOutlined)`
   font-size: 48px;
 `;
 
-const Loading: React.FunctionComponent<React.HTMLAttributes<HTMLDivElement>> = (props) => {
+const Loading: React.FC<React.HTMLAttributes<HTMLDivElement>> = (props) => {
   return (
     <Root {...props}>
       <Icon />

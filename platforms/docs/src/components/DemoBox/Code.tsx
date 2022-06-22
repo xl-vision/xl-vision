@@ -32,7 +32,7 @@ const Content = styled('div')(() => {
   };
 });
 
-const Code: React.FunctionComponent<CodeProps> = (props) => {
+const Code: React.FC<CodeProps> = (props) => {
   const { children } = props;
 
   const [tsx, jsx] = children;

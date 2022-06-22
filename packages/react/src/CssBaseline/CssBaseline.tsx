@@ -51,7 +51,7 @@ const GlobalStyles = createGlobalStyles<CssBaselineStyleProps>(({ theme, stylePr
   ];
 });
 
-const CssBaseline: React.FunctionComponent<CssBaselineProps> = (props) => {
+const CssBaseline: React.FC<CssBaselineProps> = (props) => {
   const { children } = props;
   const { overrideStyles } = useTheme();
 

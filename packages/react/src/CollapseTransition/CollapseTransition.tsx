@@ -22,7 +22,7 @@ export type CollapseTransitionProp = CssTransitionOptions & {
 
 const displayName = 'CollapseTransition';
 
-const CollapseTransition: React.FunctionComponent<CollapseTransitionProp> = (props) => {
+const CollapseTransition: React.FC<CollapseTransitionProp> = (props) => {
   const {
     horizontal,
     onEnter,
