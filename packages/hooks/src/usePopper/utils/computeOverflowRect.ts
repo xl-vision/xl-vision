@@ -8,11 +8,11 @@ import {
   isHTMLElement,
   oneOf,
 } from '@xl-vision/utils';
-import { MiddlewareParameter, OverflowOptions, OverflowRect, RootBoundary } from '../types';
+import { MiddlewareContext, OverflowOptions, OverflowRect, RootBoundary } from '../types';
 import getOverflowAncestors from './getOverflowAncestors';
 
 export type Options = OverflowOptions & {
-  ctx: MiddlewareParameter;
+  ctx: MiddlewareContext;
   target?: 'reference' | 'popper';
 };
 

@@ -19,7 +19,7 @@ export type {
   PopperData,
   PopperOptions,
   AlignedPlacement,
-  MiddlewareParameter,
+  MiddlewareContext,
   MiddlewareReturn,
   Alignment,
   Side,

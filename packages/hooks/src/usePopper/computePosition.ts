@@ -4,7 +4,7 @@ import {
   Alignment,
   Middleware,
   MiddlewareData,
-  MiddlewareParameter,
+  MiddlewareContext,
   Mode,
   Placement,
   PopperData,
@@ -79,7 +79,7 @@ export default ({ popper, reference, placement, middlewares, mode }: Options): P
 
     const middleware = middlewares[i];
 
-    const middlewareParameter: MiddlewareParameter = {
+    const middlewareContext: MiddlewareContext = {
       ...middlewareData,
       referenceRect,
       popperRect,
@@ -91,7 +91,7 @@ export default ({ popper, reference, placement, middlewares, mode }: Options): P
     };
 
     const { fn, name } = middleware;
-    const result = fn(middlewareParameter);
+    const result = fn(middlewareContext);
 
     if (result) {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment

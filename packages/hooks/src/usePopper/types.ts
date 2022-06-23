@@ -53,7 +53,7 @@ export type MiddlewareData = Omit<PopperData, 'placement'> & {
   alignment?: Alignment;
 };
 
-export type MiddlewareParameter = MiddlewareData & {
+export type MiddlewareContext = MiddlewareData & {
   popper: Element;
   reference: Element | VirtualElement;
   popperRect: PopperRect;
@@ -72,7 +72,7 @@ export type MiddlewareReturn = Partial<
 
 export type Middleware = {
   name: string;
-  fn: (data: MiddlewareParameter) => MiddlewareReturn | void;
+  fn: (ctx: MiddlewareContext) => MiddlewareReturn | void;
 };
 
 export type Boundary = 'clippingAncestors' | Element | Array<Element>;
