@@ -38,8 +38,13 @@ export default ({ popper, reference, placement, middlewares, mode }: Options): P
   const referenceRect = reference.getBoundingClientRect();
   const popperRect = getPopperRect(popper);
 
-  const offsetX = referenceRect.x - (offsetRect.x + left);
-  const offsetY = referenceRect.y - (offsetRect.y + top);
+  const scroll =
+    mode === 'fixed'
+      ? { top: offsetParent.scrollTop, left: offsetParent.scrollLeft }
+      : { top: 0, left: 0 };
+
+  const offsetX = referenceRect.x - (offsetRect.x + left + scroll.left);
+  const offsetY = referenceRect.y - (offsetRect.y + top + scroll.top);
 
   const { x, y } = computeCoordsFromPlacement({
     side,

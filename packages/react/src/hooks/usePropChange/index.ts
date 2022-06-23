@@ -11,6 +11,9 @@ const usePropChange = <T>(
   const hasProp = typeof prop !== 'undefined';
 
   const handleChange = useConstantFn((newValue: T) => {
+    if (newValue === value) {
+      return;
+    }
     if (!hasProp) {
       setValue(newValue);
     }
