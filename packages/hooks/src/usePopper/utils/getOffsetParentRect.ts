@@ -18,7 +18,7 @@ export type OffsetParentRect = { parent: Element; left: number; top: number };
  */
 const getOffsetParentRect = (element: Element): OffsetParentRect => {
   if (isHTMLElement(element)) {
-    let offsetParent = getTrueOffsetParent(element);
+    let { offsetParent } = element;
 
     // parent为table时，即使为static，也会返回table，这里处理一下
     while (
@@ -26,7 +26,7 @@ const getOffsetParentRect = (element: Element): OffsetParentRect => {
       isTableElement(offsetParent) &&
       getComputedStyle(offsetParent).position === 'static'
     ) {
-      offsetParent = getTrueOffsetParent(offsetParent);
+      offsetParent = offsetParent.offsetParent;
     }
 
     // 屏蔽浏览器在返回body还是html之间的差异，统一返回html
@@ -60,14 +60,6 @@ const getOffsetParentRect = (element: Element): OffsetParentRect => {
 };
 
 export default getOffsetParentRect;
-
-const getTrueOffsetParent = (element: HTMLElement): Element | null => {
-  if (getComputedStyle(element).position === 'fixed') {
-    return null;
-  }
-
-  return element.offsetParent;
-};
 
 const isTableElement = (node: Node): node is HTMLElement => {
   return oneOf(['table', 'td', 'th'], getNodeName(node));
