@@ -1,6 +1,6 @@
 import { RefCallback, useCallback, useRef, useState } from 'react';
 import useLayoutEffect from '../useIsomorphicLayoutEffect';
-import computePosition from './computePosition';
+import computePosition from './utils/computePosition';
 import { Middleware, Mode, Placement, PopperData, VirtualElement } from './types';
 
 export type PopperOptions = {

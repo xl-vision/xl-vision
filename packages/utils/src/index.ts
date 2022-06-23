@@ -14,3 +14,5 @@ export { default as getBoundingClientRect } from './getBoundingClientRect';
 export { default as deepMerge } from './deepMerge';
 export { onTransitionEnd, getTransitionInfo } from './transition';
 export { addClass, getClasses, removeClass, containClass } from './class';
+export { on, off } from './event';
+export type { EventMap, EventObject, EventType, Listener } from './event';

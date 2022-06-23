@@ -1,6 +1,6 @@
 import { useConstantFn } from '@xl-vision/hooks';
 import { VerticalAlignTopOutlined } from '@xl-vision/icons';
-import { isProduction, isServer } from '@xl-vision/utils';
+import { isProduction, isServer, off, on } from '@xl-vision/utils';
 import clsx from 'clsx';
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -11,7 +11,6 @@ import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 import { alpha } from '../utils/color';
 import { getScroll, scrollTo } from '../utils/scroll';
-import { off, on } from '../utils/event';
 import { throttleByAnimationFrame } from '../utils/perf';
 
 export type BackTopProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'target' | 'onChange'> & {

@@ -2,14 +2,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { isProduction, isServer, oneOf } from '@xl-vision/utils';
+import { isProduction, isServer, oneOf, off, on } from '@xl-vision/utils';
 import { useForkRef, Placement, usePopper, useConstantFn } from '@xl-vision/hooks';
 import Transition, { TransitionProps } from '../Transition';
 import Portal, { PortalContainerType } from '../Portal';
 import usePropChange from '../hooks/usePropChange';
 import { useTheme } from '../ThemeProvider';
 import useLifecycleState, { LifecycleState } from '../hooks/useLifecycleState';
-import { off, on } from '../utils/event';
 
 export type PopperTrigger = 'hover' | 'focus' | 'click' | 'contextMenu' | 'custom';
 
@@ -137,7 +136,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
 
   React.useEffect(() => {
     if (visible) {
-      console.log(1)
+      console.log(1);
       show();
     }
   }, [visible, show]);

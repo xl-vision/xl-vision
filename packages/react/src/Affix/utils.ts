@@ -1,5 +1,4 @@
-import { getBoundingClientRect, isWindow } from '@xl-vision/utils';
-import { EventMap, off, on } from '../utils/event';
+import { getBoundingClientRect, isWindow, off, on, EventMap } from '@xl-vision/utils';
 
 export type DOMVerticalDistance = {
   top: number;

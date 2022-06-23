@@ -10,11 +10,12 @@ import {
   isServer,
   isWindow,
   oneOf,
+  off,
+  on,
 } from '@xl-vision/utils';
 import Affix from '../Affix';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
-import { off, on } from '../utils/event';
 import { throttleByAnimationFrame } from '../utils/perf';
 import { getScroll, scrollTo } from '../utils/scroll';
 import AnchorContext from './AnchorContext';

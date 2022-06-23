@@ -1,6 +1,6 @@
-import { isServer } from '@xl-vision/utils';
+import { isServer } from './env';
 
-export type EventObject = Window | HTMLElement | Document;
+export type EventObject = Window | HTMLElement | Element | Document;
 
 export type EventMap<T extends EventObject> = T extends Window
   ? WindowEventMap
@@ -8,6 +8,8 @@ export type EventMap<T extends EventObject> = T extends Window
   ? DocumentEventMap
   : T extends HTMLElement
   ? HTMLElementEventMap
+  : T extends Element
+  ? ElementEventMap
   : never;
 
 export type EventType<
@@ -19,6 +21,8 @@ export type EventType<
   ? DocumentEventMap[K]
   : K extends keyof HTMLElementEventMap
   ? HTMLElementEventMap[K]
+  : K extends keyof ElementEventMap
+  ? ElementEventMap[K]
   : never;
 
 export type Listener<T extends EventObject, K extends keyof EventMap<T>> = (
