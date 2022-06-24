@@ -1,9 +1,15 @@
 import React from 'react';
-import { usePopper, popperMiddlewares, Side, PopperOptions } from '@xl-vision/hooks';
+import {
+  usePopper,
+  offset,
+  autoPlacement,
+  shift,
+  hide,
+  Side,
+  PopperOptions,
+} from '@xl-vision/hooks';
 import { styled, Button, Portal } from '@xl-vision/react';
 import { Padding } from '../types';
-
-const { offset, autoPlacement, shift, hide } = popperMiddlewares;
 
 const Root = styled('div')(({ theme }) => {
   const { color } = theme;

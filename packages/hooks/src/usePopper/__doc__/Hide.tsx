@@ -1,8 +1,6 @@
 import React from 'react';
-import { usePopper, popperMiddlewares, Middleware } from '@xl-vision/hooks';
+import { usePopper, hide, Middleware } from '@xl-vision/hooks';
 import { styled, Button, Portal, Row } from '@xl-vision/react';
-
-const { hide } = popperMiddlewares;
 
 const container = () => document.body;
 

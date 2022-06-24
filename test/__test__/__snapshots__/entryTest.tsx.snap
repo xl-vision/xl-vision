@@ -2,6 +2,7 @@
 
 exports[`Entry @xl-vision/hooks 1`] = `
 Array [
+  "useLatestRef",
   "useConstantFn",
   "useForkRef",
   "useIsomorphicLayoutEffect",
@@ -11,7 +12,11 @@ Array [
   "useUnmount",
   "useResizeObserver",
   "usePopper",
-  "popperMiddlewares",
+  "autoUpdate",
+  "shift",
+  "offset",
+  "autoPlacement",
+  "hide",
   "useTransition",
   "useCssTransition",
 ]
@@ -724,6 +729,8 @@ Array [
   "getClasses",
   "removeClass",
   "containClass",
+  "on",
+  "off",
   "isBrowser",
   "isServer",
   "isProduction",

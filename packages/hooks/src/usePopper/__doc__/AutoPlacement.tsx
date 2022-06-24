@@ -1,10 +1,8 @@
 import React from 'react';
-import { usePopper, Middleware, popperMiddlewares } from '@xl-vision/hooks';
+import { usePopper, Middleware, autoPlacement } from '@xl-vision/hooks';
 import { styled, Button, Portal } from '@xl-vision/react';
 
 const container = () => document.body;
-
-const { autoPlacement } = popperMiddlewares;
 
 const Demo = () => {
   const rafIdRef = React.useRef<number | undefined>();

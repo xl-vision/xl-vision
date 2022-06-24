@@ -36,10 +36,15 @@ const autoUpdate = (
       : [];
 
   ancestors.forEach((ancestor) => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    ancestorScroll && on(ancestor as HTMLElement, 'scroll', update, { passive: true });
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    ancestorResize && on(ancestor as HTMLElement, 'resize', update);
+    if (ancestorScroll) {
+      // https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#improving_scrolling_performance_with_passive_listeners
+      on(ancestor as HTMLElement, 'scroll', update, { passive: true });
+      on(window, 'scroll', update, { passive: true });
+    }
+    if (ancestorResize) {
+      on(ancestor as HTMLElement, 'resize', update, { passive: true });
+      on(window, 'resize', update, { passive: true });
+    }
   });
 
   let observer: ResizeObserver | undefined;
@@ -97,6 +102,8 @@ const autoUpdate = (
 
     frameLoop();
   }
+
+  update();
 
   return () => {
     ancestors.forEach((ancestor) => {

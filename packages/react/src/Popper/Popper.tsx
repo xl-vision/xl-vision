@@ -4,13 +4,15 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { isProduction, isServer, oneOf, off, on } from '@xl-vision/utils';
 import { useForkRef, Placement, usePopper, useConstantFn } from '@xl-vision/hooks';
-import Transition, { TransitionProps } from '../Transition';
+import { TransitionProps } from '../Transition';
 import Portal, { PortalContainerType } from '../Portal';
 import usePropChange from '../hooks/usePropChange';
 import { useTheme } from '../ThemeProvider';
 import useLifecycleState, { LifecycleState } from '../hooks/useLifecycleState';
 
 export type PopperTrigger = 'hover' | 'focus' | 'click' | 'contextMenu' | 'custom';
+
+export type PopperPlacement = Placement;
 
 export type PopperChildrenProps = {
   onClick?: React.MouseEventHandler<any>;
@@ -28,7 +30,7 @@ export interface PopperProps extends React.HTMLAttributes<HTMLDivElement> {
   popupContainer?: PortalContainerType;
   transitionClassName?: TransitionProps['transitionClassName'];
   trigger?: PopperTrigger | Array<PopperTrigger>;
-  placement?: Placement;
+  placement?: PopperPlacement;
   disablePopupEnter?: boolean;
   offset?: number;
   showDelay?: number;
@@ -132,11 +134,10 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     update();
   });
 
-  const hide = useConstantFn(() => {});
+  // const hide = useConstantFn(() => {});
 
   React.useEffect(() => {
     if (visible) {
-      console.log(1);
       show();
     }
   }, [visible, show]);
@@ -354,9 +355,6 @@ if (!isProduction) {
       'right',
       'right-start',
       'right-end',
-      'auto',
-      'auto-start',
-      'auto-end',
     ]),
     showDelay: PropTypes.number,
     hideDelay: PropTypes.number,

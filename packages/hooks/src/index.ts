@@ -1,3 +1,4 @@
+export { default as useLatestRef } from './useLatestRef';
 export { default as useConstantFn } from './useConstantFn';
 export { default as useForkRef } from './useForkRef';
 export { default as useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
@@ -9,7 +10,7 @@ export { default as useUnmount } from './useUnmount';
 export { default as useResizeObserver } from './useResizeObserver';
 export type { ResizeObserverHandler } from './useResizeObserver';
 
-export { usePopper, middlewares as popperMiddlewares } from './usePopper';
+export { usePopper, autoUpdate, shift, offset, autoPlacement, hide } from './usePopper';
 export type {
   Middleware,
   MiddlewareData,
@@ -17,7 +18,6 @@ export type {
   Padding,
   Placement,
   PopperData,
-  PopperOptions,
   AlignedPlacement,
   MiddlewareContext,
   MiddlewareReturn,
@@ -31,6 +31,13 @@ export type {
   Mode,
   VirtualElement,
   OverflowRect,
+  PopperOptions,
+  AutoUpdateOptions,
+  AutoPlacementOptions,
+  ShiftOptions,
+  OffsetAxes,
+  OffsetOptions,
+  HideOptions,
 } from './usePopper';
 
 export { default as useTransition } from './useTransition';
