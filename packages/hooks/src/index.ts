@@ -28,7 +28,7 @@ export type {
   OverflowOptions,
   ReferenceRect,
   PopperRect,
-  Mode,
+  PopperMode,
   VirtualElement,
   OverflowRect,
   PopperOptions,
@@ -38,6 +38,7 @@ export type {
   OffsetAxes,
   OffsetOptions,
   HideOptions,
+  PopperElementMountedEvent,
 } from './usePopper';
 
 export { default as useTransition } from './useTransition';

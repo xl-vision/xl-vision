@@ -1,18 +1,20 @@
 import { RefCallback, useCallback, useRef, useState } from 'react';
 import useLayoutEffect from '../useIsomorphicLayoutEffect';
 import computePosition from './utils/computePosition';
-import { Middleware, Mode, Placement, PopperData, VirtualElement } from './types';
+import { Middleware, PopperMode, Placement, PopperData, VirtualElement } from './types';
 import useConstantFn from '../useConstantFn';
+
+export type PopperElementMountedEvent = (
+  reference: Element | VirtualElement,
+  popper: Element,
+  update: () => void,
+) => void | (() => void);
 
 export type PopperOptions = {
   placement: Placement;
-  mode?: Mode;
+  mode?: PopperMode;
   middlewares?: Array<Middleware>;
-  onElementMounted?: (
-    reference: Element | VirtualElement,
-    popper: Element,
-    update: () => void,
-  ) => void | (() => void);
+  onElementMounted?: PopperElementMountedEvent;
 };
 
 const usePopper = ({ placement, mode = 'fixed', middlewares, onElementMounted }: PopperOptions) => {

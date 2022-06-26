@@ -2,13 +2,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { isProduction, isServer, oneOf, off, on } from '@xl-vision/utils';
-import { useForkRef, Placement, usePopper, useConstantFn } from '@xl-vision/hooks';
-import { TransitionProps } from '../Transition';
+import { isProduction, isServer } from '@xl-vision/utils';
+import {
+  useForkRef,
+  Placement,
+  usePopper,
+  autoUpdate,
+  PopperMode,
+  PopperElementMountedEvent,
+} from '@xl-vision/hooks';
+import Transition, { TransitionProps } from '../Transition';
 import Portal, { PortalContainerType } from '../Portal';
 import usePropChange from '../hooks/usePropChange';
 import { useTheme } from '../ThemeProvider';
-import useLifecycleState, { LifecycleState } from '../hooks/useLifecycleState';
 
 export type PopperTrigger = 'hover' | 'focus' | 'click' | 'contextMenu' | 'custom';
 
@@ -47,6 +53,7 @@ export interface PopperProps extends React.HTMLAttributes<HTMLDivElement> {
   mountOnShow?: boolean;
   unmountOnHide?: boolean;
   onAfterClosed?: () => void;
+  mode?: PopperMode;
 }
 
 const displayName = 'Popper';
@@ -87,172 +94,31 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
 
   const [visible, setVisible] = usePropChange(defaultVisible, visibleProp, onVisibleChange);
 
+  const [transitionVisible, setTransitionVisible] = React.useState(visible);
+
   const middlewares = React.useMemo(() => {
     return [];
   }, []);
 
-  const { update, reference, popper, x, y, mode } = usePopper({
+  const handleElementMounted: PopperElementMountedEvent = React.useCallback(
+    (referenceEl, popperEl, update) => {
+      return autoUpdate(referenceEl, popperEl, update, {});
+    },
+    [],
+  );
+
+  const { reference, popper, x, y, mode } = usePopper({
     placement,
-    mode: 'fixed',
+    mode: 'absolute',
     middlewares,
+    onElementMounted: handleElementMounted,
   });
 
   const forkRef = useForkRef((child as { ref?: React.Ref<unknown> }).ref, ref, reference);
 
-  const timerRef = React.useRef<NodeJS.Timeout>();
-  const delayTimeRef = React.useRef<Array<NodeJS.Timeout>>([]);
-
-  React.useEffect(() => {
-    return () => {
-      if (timerRef.current) {
-        clearTimeout(timerRef.current);
-        timerRef.current = undefined;
-      }
-      delayTimeRef.current.forEach((it) => {
-        clearTimeout(it);
-      });
-    };
-  }, []);
-
-  const lifecycleStateRef = useLifecycleState();
-
-  const setVisibleWrapper = useConstantFn((newVisible: boolean) => {
-    if (timerRef.current !== undefined) {
-      clearTimeout(timerRef.current);
-    }
-    timerRef.current = setTimeout(() => {
-      timerRef.current = undefined;
-      if (lifecycleStateRef.current === LifecycleState.DESTORYED) {
-        return;
-      }
-
-      setVisible(newVisible);
-    }, Math.max(TIME_DELAY, newVisible ? showDelay : hideDelay));
-  });
-
-  const show = useConstantFn(() => {
-    update();
-  });
-
-  // const hide = useConstantFn(() => {});
-
-  React.useEffect(() => {
-    if (visible) {
-      show();
-    }
-  }, [visible, show]);
-
-  const isTrigger = useConstantFn((checkedTrigger: PopperTrigger) => {
-    const triggers = Array.isArray(trigger) ? trigger : [trigger];
-    if (oneOf(triggers, 'custom')) {
-      return false;
-    }
-    return oneOf(triggers, checkedTrigger);
-  });
-
-  const handleReferenceClick: React.MouseEventHandler<any> = useConstantFn((e) => {
-    if (isTrigger('click')) {
-      // 保证在handleClickOutside和handleContextMenuOutside后执行
-      const timer = setTimeout(() => {
-        setVisibleWrapper(true);
-        delayTimeRef.current = delayTimeRef.current.filter((it) => it !== timer);
-      }, 0);
-
-      delayTimeRef.current.push(timer);
-    }
-    child.props?.onClick?.(e);
-  });
-
-  const handleReferenceMouseEnter: React.MouseEventHandler<any> = useConstantFn((e) => {
-    if (isTrigger('hover')) {
-      setVisibleWrapper(true);
-    }
-    child.props?.onMouseEnter?.(e);
-  });
-
-  const handleReferenceMouseLeave: React.MouseEventHandler<any> = useConstantFn((e) => {
-    if (isTrigger('hover')) {
-      setVisibleWrapper(false);
-    }
-    child.props?.onMouseLeave?.(e);
-  });
-
-  const handleReferenceFocus: React.MouseEventHandler<any> = useConstantFn((e) => {
-    if (isTrigger('focus')) {
-      setVisibleWrapper(true);
-    }
-    child.props?.onFocus?.(e);
-  });
-
-  const handleReferenceBlur: React.MouseEventHandler<any> = useConstantFn((e) => {
-    if (isTrigger('focus')) {
-      setVisibleWrapper(false);
-    }
-    child.props?.onBlur?.(e);
-  });
-
-  const handleReferenceContextMenu: React.MouseEventHandler<any> = useConstantFn((e) => {
-    if (isTrigger('contextMenu')) {
-      // 保证在handleClickOutside和handleContextMenuOutside后执行
-      const timer = setTimeout(() => {
-        setVisibleWrapper(true);
-        delayTimeRef.current = delayTimeRef.current.filter((it) => it !== timer);
-      }, 0);
-
-      delayTimeRef.current.push(timer);
-    }
-    child.props?.onContextMenu?.(e);
-  });
-
-  const handleClickOutside = useConstantFn(() => {
-    if (isTrigger('click') || isTrigger('contextMenu')) {
-      setVisibleWrapper(false);
-    }
-  });
-
-  const handleContextMenuOutside = handleClickOutside;
-
-  const handlePopupClick = useConstantFn(() => {
-    if (disablePopupEnter) {
-      return;
-    }
-    if (isTrigger('click') || isTrigger('contextMenu')) {
-      // 保证在handleClickOutside和handleContextMenuOutside后执行
-      const timer = setTimeout(() => {
-        delayTimeRef.current = delayTimeRef.current.filter((it) => it !== timer);
-        setVisibleWrapper(true);
-      }, 0);
-      delayTimeRef.current.push(timer);
-    }
-  });
-
-  const handlePopupContextClick = handlePopupClick;
-
-  const handlePopupMouseEnter = useConstantFn(() => {
-    if (disablePopupEnter) {
-      setVisibleWrapper(false);
-      return;
-    }
-    if (isTrigger('hover')) {
-      setVisibleWrapper(true);
-    }
-  });
-
-  const handlePopupMouseLeave = useConstantFn(() => {
-    if (isTrigger('hover')) {
-      setVisibleWrapper(false);
-    }
-  });
-
-  React.useEffect(() => {
-    // 在捕获阶段拦截，防止元素禁止冒泡导致监听不到
-    on(window, 'click', handleClickOutside, true);
-    on(window, 'contextmenu', handleContextMenuOutside, true);
-    return () => {
-      off(window, 'click', handleClickOutside, true);
-      off(window, 'contextmenu', handleContextMenuOutside, true);
-    };
-  }, [handleClickOutside, handleContextMenuOutside]);
+  const handleTransitionExit = React.useCallback(() => {
+    setVisible(false);
+  }, [setVisible]);
 
   const arrowNode =
     arrow &&
@@ -269,8 +135,9 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
 
   const popperStyle: React.CSSProperties = {
     position: mode,
-    left: x,
-    top: y,
+    left: 0,
+    top: 0,
+    transform: `translate3D(${Math.round(x)}px, ${Math.round(y)}px, 0)`,
   };
 
   const portal = (
@@ -281,32 +148,28 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
         ref={popper}
         style={popperStyle}
         className={rootClasses}
-        onMouseEnter={handlePopupMouseEnter}
-        onMouseLeave={handlePopupMouseLeave}
-        onClick={handlePopupClick}
-        onContextMenu={handlePopupContextClick}
       >
-        <div
-          style={{
-            position: 'relative',
-          }}
-          className={innerClassName}
+        <Transition
+          onExited={handleTransitionExit}
+          in={transitionVisible}
+          transitionClassName={transitionClassName}
         >
-          {arrowNode}
-          {popup}
-        </div>
+          <div
+            style={{
+              position: 'relative',
+            }}
+            className={innerClassName}
+          >
+            {arrowNode}
+            {popup}
+          </div>
+        </Transition>
       </div>
     </Portal>
   );
 
   const cloneChild = React.cloneElement(child, {
     ref: forkRef,
-    onClick: handleReferenceClick,
-    onMouseEnter: handleReferenceMouseEnter,
-    onMouseLeave: handleReferenceMouseLeave,
-    onFocus: handleReferenceFocus,
-    onBlur: handleReferenceBlur,
-    onContextMenu: handleReferenceContextMenu,
   });
 
   return (

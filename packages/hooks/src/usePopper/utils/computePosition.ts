@@ -5,7 +5,7 @@ import {
   Middleware,
   MiddlewareData,
   MiddlewareContext,
-  Mode,
+  PopperMode,
   Placement,
   PopperData,
   PopperRect,
@@ -19,7 +19,7 @@ export type Options = {
   reference: Element | VirtualElement;
   placement: Placement;
   middlewares: Array<Middleware>;
-  mode: Mode;
+  mode: PopperMode;
 };
 
 export default ({ popper, reference, placement, middlewares, mode }: Options): PopperData => {

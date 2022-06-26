@@ -35,17 +35,20 @@ const autoUpdate = (
         ]
       : [];
 
-  ancestors.forEach((ancestor) => {
-    if (ancestorScroll) {
+  if (ancestorScroll) {
+    ancestors.forEach((ancestor) => {
       // https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#improving_scrolling_performance_with_passive_listeners
       on(ancestor as HTMLElement, 'scroll', update, { passive: true });
-      on(window, 'scroll', update, { passive: true });
-    }
-    if (ancestorResize) {
+    });
+    on(window, 'scroll', update, { passive: true });
+  }
+
+  if (ancestorResize) {
+    ancestors.forEach((ancestor) => {
       on(ancestor as HTMLElement, 'resize', update, { passive: true });
-      on(window, 'resize', update, { passive: true });
-    }
-  });
+    });
+    on(window, 'resize', update, { passive: true });
+  }
 
   let observer: ResizeObserver | undefined;
 
@@ -106,12 +109,19 @@ const autoUpdate = (
   update();
 
   return () => {
-    ancestors.forEach((ancestor) => {
-      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-      ancestorScroll && off(ancestor as HTMLElement, 'scroll', update, { passive: true });
-      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-      ancestorResize && off(ancestor as HTMLElement, 'resize', update);
-    });
+    if (ancestorScroll) {
+      ancestors.forEach((ancestor) => {
+        off(ancestor as HTMLElement, 'scroll', update);
+      });
+      off(window, 'scroll', update);
+    }
+
+    if (ancestorResize) {
+      ancestors.forEach((ancestor) => {
+        off(ancestor as HTMLElement, 'resize', update);
+      });
+      off(window, 'resize', update);
+    }
 
     observer?.disconnect();
     observer = undefined;

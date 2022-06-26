@@ -1,4 +1,4 @@
-export type Mode = 'fixed' | 'absolute';
+export type PopperMode = 'fixed' | 'absolute';
 
 export type VirtualElement = {
   getBoundingClientRect: () => ReferenceRect;
@@ -58,7 +58,7 @@ export type MiddlewareContext = MiddlewareData & {
   reference: Element | VirtualElement;
   popperRect: PopperRect;
   referenceRect: ReferenceRect;
-  mode: Mode;
+  mode: PopperMode;
   initialSide: Side;
   initialAlignment?: Alignment;
 };
