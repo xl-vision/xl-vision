@@ -1,4 +1,4 @@
-import { autoUpdate, usePopper } from '@xl-vision/hooks';
+import { useAutoUpdatePopper } from '@xl-vision/hooks';
 import { Button, Portal, styled } from '@xl-vision/react';
 import React from 'react';
 
@@ -32,12 +32,15 @@ const DemoRoot = styled('div')(({ theme }) => {
 const container = () => document.body;
 
 const Demo = () => {
-  const { reference, popper, x, y, mode } = usePopper({
+  const [enable, setEnable] = React.useState(true);
+
+  const { reference, popper, x, y, mode } = useAutoUpdatePopper({
     placement: 'top',
     mode: 'absolute',
-    onElementMounted(referenceEl, popperEl, updateCb) {
-      return autoUpdate(referenceEl, popperEl, updateCb);
-    },
+    ancestorResize: enable,
+    ancestorScroll: enable,
+    elementResize: enable,
+    animationFrame: false,
   });
 
   const style = {
@@ -48,16 +51,25 @@ const Demo = () => {
   };
 
   return (
-    <DemoRoot>
-      <Button className='reference' color='primary' ref={reference}>
-        reference
+    <>
+      <Button
+        color='primary'
+        style={{ marginBottom: 10 }}
+        onClick={() => setEnable((prev) => !prev)}
+      >
+        {enable ? '禁用' : '启用'}
       </Button>
-      <Portal container={container}>
-        <div ref={popper} style={style}>
-          Lorem ipsum dolor sit amet.
-        </div>
-      </Portal>
-    </DemoRoot>
+      <DemoRoot>
+        <Button className='reference' color='primary' ref={reference}>
+          reference
+        </Button>
+        <Portal container={container}>
+          <div ref={popper} style={style}>
+            Lorem ipsum dolor sit amet.
+          </div>
+        </Portal>
+      </DemoRoot>
+    </>
   );
 };
 

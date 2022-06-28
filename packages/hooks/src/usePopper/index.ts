@@ -1,7 +1,7 @@
-export { default as usePopper } from './usePopper';
+import usePopper from './usePopper';
+
+export default usePopper;
+
 export * from './types';
 export * from './usePopper';
 export * from './middlewares';
-
-export { default as autoUpdate } from './autoUpdate';
-export * from './autoUpdate';

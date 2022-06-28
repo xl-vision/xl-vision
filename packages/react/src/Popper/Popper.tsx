@@ -7,7 +7,6 @@ import {
   useForkRef,
   Placement,
   usePopper,
-  autoUpdate,
   PopperMode,
   PopperElementMountedEvent,
 } from '@xl-vision/hooks';
@@ -100,18 +99,18 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     return [];
   }, []);
 
-  const handleElementMounted: PopperElementMountedEvent = React.useCallback(
-    (referenceEl, popperEl, update) => {
-      return autoUpdate(referenceEl, popperEl, update, {});
-    },
-    [],
-  );
+  // const handleElementMounted: PopperElementMountedEvent = React.useCallback(
+  //   (referenceEl, popperEl, update) => {
+  //     return autoUpdate(referenceEl, popperEl, update, {});
+  //   },
+  //   [],
+  // );
 
   const { reference, popper, x, y, mode } = usePopper({
     placement,
     mode: 'absolute',
     middlewares,
-    onElementMounted: handleElementMounted,
+    // onElementMounted: handleElementMounted,
   });
 
   const forkRef = useForkRef((child as { ref?: React.Ref<unknown> }).ref, ref, reference);

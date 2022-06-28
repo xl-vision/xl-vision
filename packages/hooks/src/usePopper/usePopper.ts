@@ -1,8 +1,6 @@
 import { RefCallback, useCallback, useRef, useState } from 'react';
-import useLayoutEffect from '../useIsomorphicLayoutEffect';
 import computePosition from './utils/computePosition';
 import { Middleware, PopperMode, Placement, PopperData, VirtualElement } from './types';
-import useConstantFn from '../useConstantFn';
 
 export type PopperElementMountedEvent = (
   reference: Element | VirtualElement,
@@ -14,14 +12,11 @@ export type PopperOptions = {
   placement: Placement;
   mode?: PopperMode;
   middlewares?: Array<Middleware>;
-  onElementMounted?: PopperElementMountedEvent;
 };
 
-const usePopper = ({ placement, mode = 'fixed', middlewares, onElementMounted }: PopperOptions) => {
+const usePopper = ({ placement, mode = 'fixed', middlewares }: PopperOptions) => {
   const referenceRef = useRef<Element | VirtualElement | null>();
   const popperRef = useRef<Element | null>();
-
-  const cleanupElementMountedRef = useRef<() => void>();
 
   const [data, setData] = useState<PopperData>({
     x: 0,
@@ -49,42 +44,20 @@ const usePopper = ({ placement, mode = 'fixed', middlewares, onElementMounted }:
     setData((prev) => ({ ...prev, ...newData }));
   }, [placement, mode, middlewares]);
 
-  const handleElementMount = useConstantFn(() => {
-    if (cleanupElementMountedRef.current) {
-      cleanupElementMountedRef.current();
-      cleanupElementMountedRef.current = undefined;
-    }
-
-    if (referenceRef.current && popperRef.current) {
-      if (onElementMounted) {
-        const cleanupFn = onElementMounted(referenceRef.current, popperRef.current, update);
-        if (typeof cleanupFn === 'function') {
-          cleanupElementMountedRef.current = cleanupFn;
-        }
-      } else {
-        update();
-      }
-    }
-  });
-
   const setReference: RefCallback<Element | VirtualElement> = useCallback(
     (el) => {
       referenceRef.current = el;
-      handleElementMount();
+      update();
     },
-    [handleElementMount],
+    [update],
   );
   const setPopper: RefCallback<Element> = useCallback(
     (el) => {
       popperRef.current = el;
-      handleElementMount();
+      update();
     },
-    [handleElementMount],
+    [update],
   );
-
-  useLayoutEffect(() => {
-    handleElementMount();
-  }, [handleElementMount]);
 
   return {
     ...data,

@@ -1,7 +1,7 @@
 import { getBoundingClientRect, isElement, off, on, raf } from '@xl-vision/utils';
 import ROP from 'resize-observer-polyfill';
-import { VirtualElement } from './types';
-import getOverflowAncestors from './utils/getOverflowAncestors';
+import { VirtualElement } from '../usePopper/types';
+import getOverflowAncestors from '../usePopper/utils/getOverflowAncestors';
 
 export type AutoUpdateOptions = {
   ancestorScroll?: boolean;
@@ -105,8 +105,6 @@ const autoUpdate = (
 
     frameLoop();
   }
-
-  update();
 
   return () => {
     if (ancestorScroll) {
