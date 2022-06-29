@@ -7,7 +7,7 @@ import {
   hide,
   Side,
   PopperOptions,
-} from '@xl-vision/hooks';
+} from '@xl-vision/popper';
 import { styled, Button, Portal } from '@xl-vision/react';
 import { Padding } from '../types';
 

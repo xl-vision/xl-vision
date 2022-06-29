@@ -1,5 +1,5 @@
 import React from 'react';
-import { usePopper, PopperOptions, offset, Middleware } from '@xl-vision/hooks';
+import { usePopper, PopperOptions, offset, Middleware } from '@xl-vision/popper';
 import { styled, Button, Portal, Row } from '@xl-vision/react';
 
 const Demo = () => {

@@ -1,6 +1,7 @@
 import { RefCallback, useCallback, useRef } from 'react';
-import usePopper, { PopperOptions, VirtualElement } from '../usePopper';
-import autoUpdate, { AutoUpdateOptions } from './autoUpdate';
+import { VirtualElement } from './types';
+import usePopper, { PopperOptions } from './usePopper';
+import autoUpdate, { AutoUpdateOptions } from './utils/autoUpdate';
 
 export type AutoUpdatePopperOptions = PopperOptions & AutoUpdateOptions;
 

@@ -32,6 +32,8 @@
       "@xl-vision/styled-engine/*": ["./packages/styled-engine/src/*"],
       "@xl-vision/hooks": ["./packages/hooks/src"],
       "@xl-vision/hooks/*": ["./packages/hooks/src/*"],
+      "@xl-vision/popper": ["./packages/popper/src"],
+      "@xl-vision/popper/*": ["./packages/popper/src/*"],
       "@xl-vision/icons": ["./packages/icons/src"],
       "@xl-vision/icons/*": ["./packages/icons/src/*"],
       "@xl-vision/react": ["./packages/react/src"],

@@ -10,40 +10,6 @@ export { default as useUnmount } from './useUnmount';
 export { default as useResizeObserver } from './useResizeObserver';
 export type { ResizeObserverHandler } from './useResizeObserver';
 
-export { default as usePopper, shift, offset, autoPlacement, hide } from './usePopper';
-export type {
-  Middleware,
-  MiddlewareData,
-  MiddlewareExtra,
-  Padding,
-  Placement,
-  PopperData,
-  AlignedPlacement,
-  MiddlewareContext,
-  MiddlewareReturn,
-  Alignment,
-  Side,
-  Boundary,
-  RootBoundary,
-  OverflowOptions,
-  ReferenceRect,
-  PopperRect,
-  PopperMode,
-  VirtualElement,
-  OverflowRect,
-  PopperOptions,
-  AutoPlacementOptions,
-  ShiftOptions,
-  OffsetAxes,
-  OffsetOptions,
-  HideOptions,
-  PopperElementMountedEvent,
-} from './usePopper';
-
-export { default as useAutoUpdatePopper, autoUpdate } from './useAutoUpdatePopper';
-
-export type { AutoUpdateOptions, AutoUpdatePopperOptions } from './useAutoUpdatePopper';
-
 export { default as useTransition } from './useTransition';
 export type {
   TransitionOptions,

@@ -1,7 +1,7 @@
 {
-  "name": "@xl-vision/react",
+  "name": "@xl-vision/popper",
   "version": "0.1.1-alpha.19",
-  "description": "xl-vision react components.",
+  "description": "xl-vision useful hooks.",
   "author": "Rhys Xia <xrs4433@outlook.com>",
   "license": "MIT",
   "main": "legacy/index.js",
@@ -16,13 +16,13 @@
   "keywords": [
     "xl-vision",
     "react",
-    "styles"
+    "hooks"
   ],
-  "homepage": "https://xl-vision.8910.xyz/components",
+  "homepage": "https://xl-vision.8910.xyz/hooks",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xl-vision/xl-vision.git",
-    "directory": "packages/react"
+    "directory": "packages/hooks"
   },
   "scripts": {
     "build:legacy": "node ../../scripts/compile legacy",
@@ -35,31 +35,18 @@
     "url": "https://github.com/xl-vision/xl-vision/issues"
   },
   "dependencies": {
-    "@xl-vision/hooks": "workspace:^",
-    "@xl-vision/popper": "workspace:^",
-    "@xl-vision/icons": "workspace:^",
-    "@xl-vision/styled-engine": "workspace:^",
     "@xl-vision/utils": "workspace:^",
-    "clsx": "^1.1.1",
-    "prop-types": "^15.8.1",
-    "react-is": "^18.1.0"
-  },
-  "devDependencies": {
-    "@types/prop-types": "^15.7.5",
-    "@types/react-is": "^17.0.3"
+    "@xl-vision/hooks": "workspace:^",
+    "resize-observer-polyfill": "^1.5.1"
   },
   "peerDependencies": {
     "@babel/runtime": "^7.15.4",
     "@types/react": ">=16.8.0",
-    "@types/react-dom": ">=16.8.0",
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
   },
   "peerDependenciesMeta": {
     "@types/react": {
-      "optional": true
-    },
-    "@types/react-dom": {
       "optional": true
     }
   },

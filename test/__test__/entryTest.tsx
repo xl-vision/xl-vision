@@ -12,6 +12,10 @@ describe('Entry', () => {
     const components = require('../../packages/hooks/src');
     expect(Object.keys(components)).toMatchSnapshot();
   });
+  it('@xl-vision/popper', () => {
+    const components = require('../../packages/popper/src');
+    expect(Object.keys(components)).toMatchSnapshot();
+  });
   it('@xl-vision/styled-engine', () => {
     const components = require('../../packages/styled-engine/src');
     expect(Object.keys(components)).toMatchSnapshot();

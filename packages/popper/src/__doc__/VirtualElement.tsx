@@ -1,5 +1,5 @@
 import React from 'react';
-import { usePopper, ReferenceRect } from '@xl-vision/hooks';
+import { usePopper, ReferenceRect } from '@xl-vision/popper';
 import { styled, Portal } from '@xl-vision/react';
 
 const getContainer = () => document.body;

@@ -3,13 +3,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { isProduction, isServer } from '@xl-vision/utils';
-import {
-  useForkRef,
-  Placement,
-  usePopper,
-  PopperMode,
-  PopperElementMountedEvent,
-} from '@xl-vision/hooks';
+import { Placement, usePopper, PopperMode } from '@xl-vision/popper';
+import { useForkRef } from '@xl-vision/hooks';
 import Transition, { TransitionProps } from '../Transition';
 import Portal, { PortalContainerType } from '../Portal';
 import usePropChange from '../hooks/usePropChange';

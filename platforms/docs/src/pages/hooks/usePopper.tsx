@@ -1,6 +1,6 @@
 import { GetStaticProps, NextPage } from 'next';
 import React from 'react';
-import Docs from '@xl-vision/hooks/usePopper/__doc__/index.en-US.mdx?locale';
+import Docs from '@xl-vision/popper/__doc__/index.en-US.mdx?locale';
 import { LayoutKey } from '../../layout';
 
 const ComponentHome: NextPage = () => {
