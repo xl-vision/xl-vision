@@ -2,10 +2,7 @@ import { RefCallback, useCallback, useRef } from 'react';
 import usePopper, { PopperOptions, VirtualElement } from '../usePopper';
 import autoUpdate, { AutoUpdateOptions } from './autoUpdate';
 
-export type AutoUpdatePopperOptions = PopperOptions &
-  AutoUpdateOptions & {
-    enable?: boolean;
-  };
+export type AutoUpdatePopperOptions = PopperOptions & AutoUpdateOptions;
 
 const useAutoUpdatePopper = (options: AutoUpdatePopperOptions) => {
   const { ancestorScroll, ancestorResize, elementResize, animationFrame, ...otherOptions } =
