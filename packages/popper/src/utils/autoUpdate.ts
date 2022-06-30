@@ -1,6 +1,6 @@
 import { getBoundingClientRect, isElement, off, on, raf } from '@xl-vision/utils';
 import ROP from 'resize-observer-polyfill';
-import { VirtualElement } from '../types';
+import { Reference } from '../types';
 import getOverflowAncestors from './getOverflowAncestors';
 
 export type AutoUpdateOptions = {
@@ -11,7 +11,7 @@ export type AutoUpdateOptions = {
 };
 
 const autoUpdate = (
-  reference: Element | VirtualElement,
+  reference: Reference,
   popper: Element,
   update: () => void,
   options: AutoUpdateOptions = {},

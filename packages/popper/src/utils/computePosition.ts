@@ -10,13 +10,13 @@ import {
   PopperData,
   PopperRect,
   Side,
-  VirtualElement,
+  Reference,
 } from '../types';
 import computeCoordsFromPlacement from './computeCoordsFromPlacement';
 
 export type Options = {
   popper: Element;
-  reference: Element | VirtualElement;
+  reference: Reference;
   placement: Placement;
   middlewares: Array<Middleware>;
   mode: PopperMode;

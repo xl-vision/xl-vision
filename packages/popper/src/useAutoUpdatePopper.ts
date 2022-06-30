@@ -1,5 +1,5 @@
 import { RefCallback, useCallback, useRef } from 'react';
-import { VirtualElement } from './types';
+import { Reference } from './types';
 import usePopper, { PopperOptions } from './usePopper';
 import autoUpdate, { AutoUpdateOptions } from './utils/autoUpdate';
 
@@ -11,7 +11,7 @@ const useAutoUpdatePopper = (options: AutoUpdatePopperOptions) => {
 
   const { reference, popper, update, ...others } = usePopper(otherOptions);
 
-  const referenceRef = useRef<Element | VirtualElement | null>();
+  const referenceRef = useRef<Reference | null>();
   const popperRef = useRef<Element | null>();
 
   const cleanUpRef = useRef<() => void>();
@@ -36,7 +36,7 @@ const useAutoUpdatePopper = (options: AutoUpdatePopperOptions) => {
     });
   }, [update, ancestorResize, ancestorScroll, animationFrame, elementResize]);
 
-  const setReference: RefCallback<Element | VirtualElement> = useCallback(
+  const setReference: RefCallback<Reference> = useCallback(
     (el) => {
       referenceRef.current = el;
       handleAutoUpdate();

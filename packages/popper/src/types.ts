@@ -5,6 +5,8 @@ export type VirtualElement = {
   elementContext?: Element;
 };
 
+export type Reference = Element | VirtualElement;
+
 export type Alignment = 'start' | 'end';
 export type Side = 'top' | 'right' | 'bottom' | 'left';
 export type AlignedPlacement = `${Side}-${Alignment}`;
@@ -55,7 +57,7 @@ export type MiddlewareData = Omit<PopperData, 'placement'> & {
 
 export type MiddlewareContext = MiddlewareData & {
   popper: Element;
-  reference: Element | VirtualElement;
+  reference: Reference;
   popperRect: PopperRect;
   referenceRect: ReferenceRect;
   mode: PopperMode;
