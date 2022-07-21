@@ -1,5 +1,10 @@
 import React from 'react';
-import { useAutoUpdatePopper, useHover, useInteractions } from '@xl-vision/popper';
+import {
+  useAutoUpdatePopper,
+  useHover,
+  useInteractions,
+  InteractionContext,
+} from '@xl-vision/popper';
 import { Button, Portal } from '@xl-vision/react';
 
 const container = () => document.body;
@@ -10,6 +15,14 @@ const Demo = () => {
     mode: 'absolute',
   });
 
+  const [open, setOpen] = React.useState(false);
+
+  const interactionContext: InteractionContext = {
+    ...context,
+    open,
+    setOpen,
+  };
+
   const style = {
     position: mode,
     top: 0,
@@ -17,18 +30,20 @@ const Demo = () => {
     transform: `translate3d(${Math.round(x)}px, ${Math.round(y)}px, 0)`,
   };
 
-  const { getPopperProps, getReferenceProps } = useInteractions(useHover(context));
+  const { getPopperProps, getReferenceProps } = useInteractions(useHover(interactionContext));
 
   return (
     <>
       <Button {...getReferenceProps({})} ref={reference} className='reference' color='primary'>
         reference
       </Button>
-      <Portal container={container}>
-        <div {...getPopperProps({ style })} ref={popper}>
-          Lorem ipsum dolor sit amet.
-        </div>
-      </Portal>
+      {open && (
+        <Portal container={container}>
+          <div {...getPopperProps({ style })} ref={popper}>
+            Lorem ipsum dolor sit amet.
+          </div>
+        </Portal>
+      )}
     </>
   );
 };

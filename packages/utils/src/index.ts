@@ -17,3 +17,4 @@ export { addClass, getClasses, removeClass, containClass } from './class';
 export { on, off } from './event';
 export type { EventMap, EventObject, EventType, Listener } from './event';
 export { default as setRef } from './setRef';
+export { default as EventEmitter } from './EventEmitter';

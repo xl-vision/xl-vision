@@ -1,13 +1,7 @@
 import { RefCallback, useCallback, useMemo, useRef, useState } from 'react';
+import { EventEmitter, noop } from '@xl-vision/utils';
 import computePosition from './utils/computePosition';
-import {
-  Middleware,
-  PopperMode,
-  Placement,
-  PopperData,
-  Reference,
-  InteractionContext,
-} from './types';
+import { Middleware, PopperMode, Placement, PopperData, Reference, PopperContext } from './types';
 
 export type PopperElementMountedEvent = (
   reference: Reference,
@@ -31,6 +25,8 @@ const usePopper = ({ placement, mode = 'fixed', middlewares }: PopperOptions) =>
     placement,
     extra: {},
   });
+
+  const [eventEmitter] = useState(() => new EventEmitter());
 
   const update = useCallback(() => {
     const reference = referenceRef.current;
@@ -66,13 +62,14 @@ const usePopper = ({ placement, mode = 'fixed', middlewares }: PopperOptions) =>
     [update],
   );
 
-  const context: InteractionContext = useMemo(() => {
+  const context: PopperContext = useMemo(() => {
     return {
       reference: referenceRef,
       popper: popperRef,
       update,
+      eventEmitter,
     };
-  }, [update]);
+  }, [update, eventEmitter]);
 
   return {
     ...data,

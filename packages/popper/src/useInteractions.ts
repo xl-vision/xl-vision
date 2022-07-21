@@ -1,13 +1,23 @@
 import { useConstantFn } from '@xl-vision/hooks';
+import { isDevelopment } from '@xl-vision/utils';
 import { HTMLProps } from 'react';
-import { InteractionContext } from './types';
+import { PopperContext } from './types';
 
 export type InteractionReturn = {
   reference?: HTMLProps<Element>;
   popper?: HTMLProps<Element>;
 };
 
-export type InteractionHook = (ctx: InteractionContext, disable?: boolean) => InteractionReturn;
+export type InteractionContext = PopperContext & {
+  disable?: boolean;
+  open?: boolean;
+  setOpen?: (open: boolean) => void;
+};
+
+export type InteractionHook<T extends any | void = void> = (
+  ctx: InteractionContext,
+  options: T,
+) => InteractionReturn;
 
 const useInteractions = (...hookReturns: Array<InteractionReturn>) => {
   const getReferenceProps = useConstantFn((userProps?: HTMLProps<Element>) => {
@@ -53,6 +63,11 @@ const mergeProps = (
 
   return [userProps || {}, ...propsList[target]].reduce((acc: Record<string, unknown>, props) => {
     Object.entries(props).forEach(([key, value]) => {
+      if (isDevelopment) {
+        if (key === 'ref') {
+          throw new Error('ref is not allowed in props');
+        }
+      }
       if (key.indexOf('on') === 0) {
         if (!map.has(key)) {
           map.set(key, []);
