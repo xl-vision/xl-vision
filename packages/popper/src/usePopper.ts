@@ -1,6 +1,13 @@
-import { RefCallback, useCallback, useRef, useState } from 'react';
+import { RefCallback, useCallback, useMemo, useRef, useState } from 'react';
 import computePosition from './utils/computePosition';
-import { Middleware, PopperMode, Placement, PopperData, Reference } from './types';
+import {
+  Middleware,
+  PopperMode,
+  Placement,
+  PopperData,
+  Reference,
+  InteractionContext,
+} from './types';
 
 export type PopperElementMountedEvent = (
   reference: Reference,
@@ -15,8 +22,8 @@ export type PopperOptions = {
 };
 
 const usePopper = ({ placement, mode = 'fixed', middlewares }: PopperOptions) => {
-  const referenceRef = useRef<Reference | null>();
-  const popperRef = useRef<Element | null>();
+  const referenceRef = useRef<Reference | null>(null);
+  const popperRef = useRef<Element | null>(null);
 
   const [data, setData] = useState<PopperData>({
     x: 0,
@@ -59,12 +66,21 @@ const usePopper = ({ placement, mode = 'fixed', middlewares }: PopperOptions) =>
     [update],
   );
 
+  const context: InteractionContext = useMemo(() => {
+    return {
+      reference: referenceRef,
+      popper: popperRef,
+      update,
+    };
+  }, [update]);
+
   return {
     ...data,
     update,
     reference: setReference,
     popper: setPopper,
     mode,
+    context,
   };
 };
 

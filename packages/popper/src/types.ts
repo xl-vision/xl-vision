@@ -1,3 +1,5 @@
+import { MutableRefObject } from 'react';
+
 export type PopperMode = 'fixed' | 'absolute';
 
 export type VirtualElement = {
@@ -88,3 +90,9 @@ export type OverflowOptions = Partial<{
   rootBoundary: RootBoundary;
   padding: Padding | ((data: { side: Side; alignment?: Alignment }) => Padding);
 }>;
+
+export type InteractionContext = {
+  reference: MutableRefObject<Reference | null>;
+  popper: MutableRefObject<Element | null>;
+  update: () => void;
+};

@@ -1,93 +1,22 @@
-import { setRef } from '@xl-vision/utils';
-import { HTMLProps, MutableRefObject, Ref, RefCallback, useCallback, useMemo, useRef } from 'react';
-
-export type InteractionContext = {
-  reference: RefCallback<Element>;
-  popper: RefCallback<Element>;
-  update: () => void;
-};
+import { useConstantFn } from '@xl-vision/hooks';
+import { HTMLProps } from 'react';
+import { InteractionContext } from './types';
 
 export type InteractionReturn = {
   reference?: HTMLProps<Element>;
   popper?: HTMLProps<Element>;
 };
 
-export type InteractionHookOptions = {
-  reference: MutableRefObject<Element | null>;
-  popper: MutableRefObject<Element | null>;
-  update: () => void;
-};
+export type InteractionHook = (ctx: InteractionContext, disable?: boolean) => InteractionReturn;
 
-export type InteractionHook = (options: InteractionHookOptions) => InteractionReturn;
+const useInteractions = (...hookReturns: Array<InteractionReturn>) => {
+  const getReferenceProps = useConstantFn((userProps?: HTMLProps<Element>) => {
+    return mergeProps(userProps, hookReturns, 'reference');
+  });
 
-const useInteractions = (interactionContext: InteractionContext, hooks: Array<InteractionHook>) => {
-  const { reference, popper, update } = interactionContext;
-
-  const referenceRef = useRef<Element | null>(null);
-  const popperRef = useRef<Element | null>(null);
-
-  const setReference: RefCallback<Element> = useCallback(
-    (el) => {
-      referenceRef.current = el;
-      reference(el);
-    },
-    [reference],
-  );
-  const setPopper: RefCallback<Element> = useCallback(
-    (el) => {
-      popperRef.current = el;
-      popper(el);
-    },
-    [popper],
-  );
-
-  const hookProps = useMemo(() => {
-    return hooks
-      .map((it) => it({ reference: referenceRef, popper: popperRef, update }))
-      .reduce(
-        (
-          prev: { reference: Array<HTMLProps<Element>>; popper: Array<HTMLProps<Element>> },
-          value,
-        ) => {
-          const { reference: referenceValue, popper: popperValue } = value;
-          if (referenceValue) {
-            prev.reference.push(referenceValue);
-          }
-          if (popperValue) {
-            prev.popper.push(popperValue);
-          }
-
-          return prev;
-        },
-        {
-          reference: [
-            {
-              ref: setReference,
-            },
-          ],
-          popper: [
-            {
-              ref: setPopper,
-            },
-          ],
-        },
-      );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [...hooks]);
-
-  const getReferenceProps = useCallback(
-    (userProps?: HTMLProps<Element>) => {
-      return mergeProps(userProps, hookProps.reference);
-    },
-    [hookProps],
-  );
-
-  const getPopperProps = useCallback(
-    (userProps?: HTMLProps<Element>) => {
-      return mergeProps(userProps, hookProps.popper);
-    },
-    [hookProps],
-  );
+  const getPopperProps = useConstantFn((userProps?: HTMLProps<Element>) => {
+    return mergeProps(userProps, hookReturns, 'popper');
+  });
 
   return {
     getReferenceProps,
@@ -99,13 +28,30 @@ export default useInteractions;
 
 const mergeProps = (
   userProps: HTMLProps<Element> | undefined,
-  propsList: Array<HTMLProps<Element>>,
+  hookReturns: Array<InteractionReturn>,
+  target: 'reference' | 'popper',
 ): Record<string, unknown> => {
   const map = new Map<string, Array<(...args: Array<unknown>) => void>>();
 
-  const refs: Array<Ref<Element>> = [];
+  const propsList = hookReturns.reduce(
+    (prev: { reference: Array<HTMLProps<Element>>; popper: Array<HTMLProps<Element>> }, value) => {
+      const { reference: referenceValue, popper: popperValue } = value;
+      if (referenceValue) {
+        prev.reference.push(referenceValue);
+      }
+      if (popperValue) {
+        prev.popper.push(popperValue);
+      }
 
-  return [userProps || {}, ...propsList].reduce((acc: Record<string, unknown>, props) => {
+      return prev;
+    },
+    {
+      reference: [{}],
+      popper: [{}],
+    },
+  );
+
+  return [userProps || {}, ...propsList[target]].reduce((acc: Record<string, unknown>, props) => {
     Object.entries(props).forEach(([key, value]) => {
       if (key.indexOf('on') === 0) {
         if (!map.has(key)) {
@@ -119,14 +65,6 @@ const mergeProps = (
         // @ts-ignore
         acc[key] = (...args: Array<unknown>) => {
           map.get(key)?.forEach((fn) => fn(...args));
-        };
-      } else if (key === 'ref') {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-        refs.push(value);
-        acc[key] = (node: Element) => {
-          refs.forEach((it) => {
-            setRef(it, node);
-          });
         };
       } else {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment

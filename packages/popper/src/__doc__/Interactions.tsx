@@ -5,7 +5,7 @@ import { Button, Portal } from '@xl-vision/react';
 const container = () => document.body;
 
 const Demo = () => {
-  const { reference, popper, update, x, y, mode } = useAutoUpdatePopper({
+  const { reference, popper, x, y, mode, context } = useAutoUpdatePopper({
     placement: 'top',
     mode: 'absolute',
   });
@@ -17,17 +17,17 @@ const Demo = () => {
     transform: `translate3d(${Math.round(x)}px, ${Math.round(y)}px, 0)`,
   };
 
-  const { getPopperProps, getReferenceProps } = useInteractions({ reference, popper, update }, [
-    useHover(),
-  ]);
+  const { getPopperProps, getReferenceProps } = useInteractions(useHover(context));
 
   return (
     <>
-      <Button {...getReferenceProps({})} className='reference' color='primary'>
+      <Button {...getReferenceProps({})} ref={reference} className='reference' color='primary'>
         reference
       </Button>
       <Portal container={container}>
-        <div {...getPopperProps({ style })}>Lorem ipsum dolor sit amet.</div>
+        <div {...getPopperProps({ style })} ref={popper}>
+          Lorem ipsum dolor sit amet.
+        </div>
       </Portal>
     </>
   );
