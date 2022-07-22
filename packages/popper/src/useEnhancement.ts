@@ -3,23 +3,23 @@ import { isDevelopment } from '@xl-vision/utils';
 import { HTMLProps } from 'react';
 import { PopperContext } from './types';
 
-export type InteractionReturn = {
+export type EnhancementReturn = {
   reference?: HTMLProps<Element>;
   popper?: HTMLProps<Element>;
 };
 
-export type InteractionContext = PopperContext & {
+export type EnhancementContext = PopperContext & {
   disable?: boolean;
   open?: boolean;
   setOpen?: (open: boolean) => void;
 };
 
-export type InteractionHook<T extends any | void = void> = (
-  ctx: InteractionContext,
+export type EnhancementHook<T extends any | void = void> = (
+  ctx: EnhancementContext,
   options: T,
-) => InteractionReturn;
+) => EnhancementReturn | void;
 
-const useInteractions = (...hookReturns: Array<InteractionReturn>) => {
+const useEnhancement = (...hookReturns: Array<EnhancementReturn | void>) => {
   const getReferenceProps = useConstantFn((userProps?: HTMLProps<Element>) => {
     return mergeProps(userProps, hookReturns, 'reference');
   });
@@ -34,18 +34,18 @@ const useInteractions = (...hookReturns: Array<InteractionReturn>) => {
   };
 };
 
-export default useInteractions;
+export default useEnhancement;
 
 const mergeProps = (
   userProps: HTMLProps<Element> | undefined,
-  hookReturns: Array<InteractionReturn>,
+  hookReturns: Array<EnhancementReturn | void>,
   target: 'reference' | 'popper',
 ): Record<string, unknown> => {
   const map = new Map<string, Array<(...args: Array<unknown>) => void>>();
 
   const propsList = hookReturns.reduce(
     (prev: { reference: Array<HTMLProps<Element>>; popper: Array<HTMLProps<Element>> }, value) => {
-      const { reference: referenceValue, popper: popperValue } = value;
+      const { reference: referenceValue, popper: popperValue } = value || {};
       if (referenceValue) {
         prev.reference.push(referenceValue);
       }

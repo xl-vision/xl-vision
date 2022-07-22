@@ -92,7 +92,9 @@ export type OverflowOptions = Partial<{
 }>;
 
 export type PopperContext = {
-  reference: MutableRefObject<Reference | null>;
-  popper: MutableRefObject<Element | null>;
   update: () => void;
+  refs: {
+    reference: MutableRefObject<Reference | null>;
+    popper: MutableRefObject<Element | null>;
+  };
 };
