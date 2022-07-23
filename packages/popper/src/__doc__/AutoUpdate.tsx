@@ -1,4 +1,4 @@
-import { usePopper, useEnhancement, useAutoUpdate } from '@xl-vision/popper';
+import { useAutoUpdatePopper, useEnhancement } from '@xl-vision/popper';
 import { Button, Portal, styled } from '@xl-vision/react';
 import React from 'react';
 
@@ -34,22 +34,14 @@ const container = () => document.body;
 const Demo = () => {
   const [enable, setEnable] = React.useState(true);
 
-  const { reference, popper, x, y, mode, update, refs } = usePopper({
+  const { reference, popper, x, y, mode } = useAutoUpdatePopper({
     placement: 'top',
     mode: 'absolute',
+    ancestorResize: enable,
+    ancestorScroll: enable,
+    elementResize: enable,
+    animationFrame: false,
   });
-
-  useEnhancement(
-    useAutoUpdate(
-      { update, refs },
-      {
-        ancestorResize: enable,
-        ancestorScroll: enable,
-        elementResize: enable,
-        animationFrame: false,
-      },
-    ),
-  );
 
   const style = {
     position: mode,

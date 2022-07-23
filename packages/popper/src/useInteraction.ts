@@ -1,25 +1,19 @@
 import { useConstantFn } from '@xl-vision/hooks';
 import { isDevelopment } from '@xl-vision/utils';
 import { HTMLProps } from 'react';
-import { PopperContext } from './types';
+import { InteractionContext } from './useConnectInteraction';
 
-export type EnhancementReturn = {
+export type InteractionReturn = {
   reference?: HTMLProps<Element>;
   popper?: HTMLProps<Element>;
 };
 
-export type EnhancementContext = PopperContext & {
-  disable?: boolean;
-  open?: boolean;
-  setOpen?: (open: boolean) => void;
-};
+export type InteractionHook<T extends any | void = void> = (
+  ctx: InteractionContext,
+  options?: T & { disabled?: boolean },
+) => InteractionReturn | void;
 
-export type EnhancementHook<T extends any | void = void> = (
-  ctx: EnhancementContext,
-  options: T,
-) => EnhancementReturn | void;
-
-const useEnhancement = (...hookReturns: Array<EnhancementReturn | void>) => {
+const useInteraction = (...hookReturns: Array<InteractionReturn | void>) => {
   const getReferenceProps = useConstantFn((userProps?: HTMLProps<Element>) => {
     return mergeProps(userProps, hookReturns, 'reference');
   });
@@ -34,11 +28,11 @@ const useEnhancement = (...hookReturns: Array<EnhancementReturn | void>) => {
   };
 };
 
-export default useEnhancement;
+export default useInteraction;
 
 const mergeProps = (
   userProps: HTMLProps<Element> | undefined,
-  hookReturns: Array<EnhancementReturn | void>,
+  hookReturns: Array<InteractionReturn | void>,
   target: 'reference' | 'popper',
 ): Record<string, unknown> => {
   const map = new Map<string, Array<(...args: Array<unknown>) => void>>();

@@ -1,14 +1,14 @@
 import { useConstantFn } from '@xl-vision/hooks';
-import { EnhancementHook } from '../useEnhancement';
+import { InteractionHook } from '../useInteraction';
 
 export type HoverOptions = {
   enablePopperEnter?: boolean;
   delay?: number | { open: number; close: number };
 };
 
-const useHover: EnhancementHook<HoverOptions | void> = (
-  { reference, popper, update, open, setOpen },
-  { enablePopperEnter, delay } = {},
+const useHover: InteractionHook<HoverOptions | void> = (
+  { refs, update, open, setOpen },
+  { enablePopperEnter, delay, disable } = {},
 ) => {
   const handleReferenceMouseEnter = useConstantFn(() => {
     setOpen?.(true);

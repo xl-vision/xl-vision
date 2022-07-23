@@ -90,11 +90,3 @@ export type OverflowOptions = Partial<{
   rootBoundary: RootBoundary;
   padding: Padding | ((data: { side: Side; alignment?: Alignment }) => Padding);
 }>;
-
-export type PopperContext = {
-  update: () => void;
-  refs: {
-    reference: MutableRefObject<Reference | null>;
-    popper: MutableRefObject<Element | null>;
-  };
-};

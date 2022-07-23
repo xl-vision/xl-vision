@@ -6,7 +6,13 @@ export * from './middlewares';
 
 export * from './utils/autoUpdate';
 
-export { default as useEnhancement } from './useEnhancement';
-export * from './useEnhancement';
+export * from './useAutoUpdatePopper';
+export { default as useAutoUpdatePopper } from './useAutoUpdatePopper';
+
+export { default as useConnectInteraction } from './useConnectInteraction';
+export * from './useConnectInteraction';
+
+export { default as useInteraction } from './useInteraction';
+export * from './useInteraction';
 
 export * from './hooks';

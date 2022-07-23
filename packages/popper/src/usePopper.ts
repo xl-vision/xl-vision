@@ -1,4 +1,4 @@
-import { RefCallback, useCallback, useMemo, useRef, useState } from 'react';
+import { RefCallback, useCallback, useRef, useState } from 'react';
 import computePosition from './utils/computePosition';
 import { Middleware, PopperMode, Placement, PopperData, Reference } from './types';
 
@@ -65,7 +65,6 @@ const usePopper = ({ placement, mode = 'fixed', middlewares }: PopperOptions) =>
     reference: setReference,
     popper: setPopper,
     mode,
-    refs: useMemo(() => ({ reference: referenceRef, popper: popperRef }), []),
   };
 };
 
