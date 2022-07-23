@@ -1,4 +1,4 @@
-import { useAutoUpdatePopper, useEnhancement } from '@xl-vision/popper';
+import { useAutoUpdatePopper } from '@xl-vision/popper';
 import { Button, Portal, styled } from '@xl-vision/react';
 import React from 'react';
 

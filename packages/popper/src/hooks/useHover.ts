@@ -7,14 +7,20 @@ export type HoverOptions = {
 };
 
 const useHover: InteractionHook<HoverOptions | void> = (
-  { refs, update, open, setOpen },
+  { refs, update, open, setOpen, eventEmitter },
   { enablePopperEnter, delay, disable } = {},
 ) => {
   const handleReferenceMouseEnter = useConstantFn(() => {
+    if (disable) {
+      return;
+    }
     setOpen?.(true);
   });
 
   const handleReferenceMouseLeave = useConstantFn(() => {
+    if (disable) {
+      return;
+    }
     setOpen?.(false);
   });
 
