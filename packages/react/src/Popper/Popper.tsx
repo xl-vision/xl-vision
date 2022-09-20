@@ -2,8 +2,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { isProduction, isServer } from '@xl-vision/utils';
-import { Placement, usePopper, PopperMode } from '@xl-vision/popper';
+import { isProduction, isServer, oneOf } from '@xl-vision/utils';
+import {
+  Placement,
+  PopperMode,
+  useConnectInteraction,
+  useAutoUpdatePopper,
+  shift,
+  offset,
+  arrow,
+  Middleware,
+  OffsetOptions,
+  useInteraction,
+  useHover,
+} from '@xl-vision/popper';
 import { useForkRef } from '@xl-vision/hooks';
 import Transition, { TransitionProps } from '../Transition';
 import Portal, { PortalContainerType } from '../Portal';
@@ -32,7 +44,7 @@ export interface PopperProps extends React.HTMLAttributes<HTMLDivElement> {
   trigger?: PopperTrigger | Array<PopperTrigger>;
   placement?: PopperPlacement;
   disablePopupEnter?: boolean;
-  offset?: number;
+  offset?: OffsetOptions;
   showDelay?: number;
   hideDelay?: number;
   visible?: boolean;
@@ -64,14 +76,14 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     transitionClassName,
     trigger = 'hover',
     disablePopupEnter,
-    offset = 0,
-    placement = 'top',
+    offset: offsetProp = 0,
+    placement: initialPlacement = 'top',
     showDelay = 0,
     hideDelay = 0,
     visible: visibleProp,
     onVisibleChange,
     className,
-    arrow,
+    arrow: arrowProp,
     flip = true,
     preventOverflow = true,
     transformOrigin = true,
@@ -84,29 +96,48 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
 
   const { clsPrefix } = useTheme();
 
+  const triggers = React.useMemo(() => {
+    return Array.isArray(trigger) ? trigger : [trigger];
+  }, [trigger]);
+
   const child: React.ReactElement<PopperChildrenProps> = React.Children.only(children);
 
   const [visible, setVisible] = usePropChange(defaultVisible, visibleProp, onVisibleChange);
 
   const [transitionVisible, setTransitionVisible] = React.useState(visible);
 
-  const middlewares = React.useMemo(() => {
-    return [];
-  }, []);
+  const middlewares = React.useMemo<Array<Middleware>>(() => {
+    return [shift(), offset(offsetProp), arrow()];
+  }, [offsetProp]);
 
-  // const handleElementMounted: PopperElementMountedEvent = React.useCallback(
-  //   (referenceEl, popperEl, update) => {
-  //     return autoUpdate(referenceEl, popperEl, update, {});
-  //   },
-  //   [],
-  // );
+  const { reference, popper, x, y, mode, context, extra, placement } = useConnectInteraction(
+    useAutoUpdatePopper({
+      placement: initialPlacement,
+      mode: 'absolute',
+      middlewares,
+    }),
+    {
+      open: visible,
+      setOpen: setVisible,
+    },
+  );
 
-  const { reference, popper, x, y, mode } = usePopper({
-    placement,
-    mode: 'absolute',
-    middlewares,
-    // onElementMounted: handleElementMounted,
-  });
+  const getPopper = React.useCallback(
+    (el: HTMLElement | null) => {
+      if (visible) {
+        popper(el);
+      } else {
+        popper(null);
+      }
+    },
+    [visible, popper],
+  );
+
+  const { getPopperProps, getReferenceProps } = useInteraction(
+    useHover(context, {
+      skip: !oneOf(triggers, 'hover'),
+    }),
+  );
 
   const forkRef = useForkRef((child as { ref?: React.Ref<unknown> }).ref, ref, reference);
 
@@ -114,11 +145,24 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     setVisible(false);
   }, [setVisible]);
 
+  React.useEffect(() => {
+    if (visible) {
+      setTransitionVisible(true);
+    }
+  }, [visible]);
+
+  const arrowStyle = {
+    position: 'absolute',
+    left: extra.arrow?.x,
+    top: extra.arrow?.y,
+  };
+
   const arrowNode =
-    arrow &&
-    React.cloneElement(arrow, {
+    arrowProp &&
+    React.cloneElement(arrowProp, {
       'aria-hidden': true,
-      ...(arrow as { props?: {} }).props,
+      ...(arrowProp as { props?: {} }).props,
+      style: arrowStyle,
     });
 
   const rootClassName = `${clsPrefix}-popper`;
@@ -139,24 +183,29 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
       <div
         aria-hidden={!visible}
         {...others}
-        ref={popper}
-        style={popperStyle}
+        {...getPopperProps({ style: popperStyle })}
+        ref={getPopper}
         className={rootClasses}
       >
         <Transition
+          mountOnEnter={mountOnShow}
+          unmountOnExit={unmountOnHide}
           onExited={handleTransitionExit}
-          in={transitionVisible}
+          in={visible || transitionVisible}
           transitionClassName={transitionClassName}
         >
-          <div
-            style={{
-              position: 'relative',
-            }}
-            className={innerClassName}
-          >
-            {arrowNode}
-            {popup}
-          </div>
+          {(show) => (
+            <div
+              style={{
+                position: 'relative',
+                display: show ? '' : 'none',
+              }}
+              className={innerClassName}
+            >
+              {arrowNode}
+              {popup}
+            </div>
+          )}
         </Transition>
       </div>
     </Portal>
@@ -164,12 +213,13 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
 
   const cloneChild = React.cloneElement(child, {
     ref: forkRef,
+    ...getReferenceProps({}),
   });
 
   return (
     <>
       {cloneChild}
-      {portal}
+      {visible && portal}
     </>
   );
 });

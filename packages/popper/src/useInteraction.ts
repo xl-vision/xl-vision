@@ -10,7 +10,7 @@ export type InteractionReturn = {
 
 export type InteractionHook<T extends any | void = void> = (
   ctx: InteractionContext,
-  options?: T & { disabled?: boolean },
+  options?: T & { skip?: boolean },
 ) => InteractionReturn | void;
 
 const useInteraction = (...hookReturns: Array<InteractionReturn | void>) => {

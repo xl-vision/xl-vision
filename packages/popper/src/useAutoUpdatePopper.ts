@@ -1,4 +1,4 @@
-import { RefCallback, useCallback, useRef } from 'react';
+import React, { RefCallback, useCallback, useRef } from 'react';
 import { Reference } from './types';
 import usePopper, { PopperOptions } from './usePopper';
 import autoUpdate, { AutoUpdateOptions } from './utils/autoUpdate';
@@ -35,6 +35,12 @@ const useAutoUpdatePopper = (options: AutoUpdatePopperOptions) => {
       elementResize,
     });
   }, [update, ancestorResize, ancestorScroll, animationFrame, elementResize]);
+
+  React.useEffect(() => {
+    return () => {
+      cleanUpRef.current?.();
+    };
+  }, []);
 
   const setReference: RefCallback<Reference> = useCallback(
     (el) => {
