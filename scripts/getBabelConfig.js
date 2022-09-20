@@ -10,7 +10,12 @@ module.exports = function getBabelConfig(style, runtime = true) {
         modules: useESModules ? false : 'commonjs',
       },
     ],
-    '@babel/preset-react',
+    [
+      '@babel/preset-react',
+      {
+        runtime: 'automatic',
+      },
+    ],
   ];
 
   const plugins = [
