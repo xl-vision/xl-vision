@@ -1,5 +1,4 @@
 import ReactDOM from 'react-dom';
-import React from 'react';
 import { isServer, noop, warning as warningLog } from '@xl-vision/utils';
 import createMessageDialog, { MessageDialogType, MessageDialogProps } from './message';
 import ThemeProvider, { ThemeProviderProps } from '../ThemeProvider';

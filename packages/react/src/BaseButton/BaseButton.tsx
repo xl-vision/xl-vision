@@ -1,15 +1,26 @@
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import React from 'react';
 import { isProduction } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
+import {
+  AnchorHTMLAttributes,
+  ButtonHTMLAttributes,
+  ComponentType,
+  EventHandler,
+  forwardRef,
+  KeyboardEventHandler,
+  MouseEventHandler,
+  SyntheticEvent,
+  useEffect,
+  useRef,
+} from 'react';
 import Ripple, { RippleRef } from '../Ripple';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 
 export type BaseButtonCommonProps =
-  | React.ButtonHTMLAttributes<HTMLButtonElement>
-  | React.AnchorHTMLAttributes<HTMLAnchorElement>;
+  | ButtonHTMLAttributes<HTMLButtonElement>
+  | AnchorHTMLAttributes<HTMLAnchorElement>;
 
 export type BaseButtonProps = BaseButtonCommonProps & {
   disabled?: boolean;
@@ -78,7 +89,7 @@ const BaseButtonRoot = styled('button', {
     },
   };
   // fix type warning
-}) as unknown as React.ComponentType<any>;
+}) as unknown as ComponentType<any>;
 
 const BaseButtonInner = styled('span', {
   name: displayName,
@@ -93,7 +104,7 @@ const BaseButtonInner = styled('span', {
   };
 });
 
-const BaseButton = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseButtonProps>(
+const BaseButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseButtonProps>(
   (props, ref) => {
     const {
       children,
@@ -120,11 +131,11 @@ const BaseButton = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseB
 
     const Component = (others as unknown as HTMLAnchorElement).href ? 'a' : 'button';
 
-    const rippleRef = React.useRef<RippleRef>(null);
-    const isKeyDownRef = React.useRef(false);
+    const rippleRef = useRef<RippleRef>(null);
+    const isKeyDownRef = useRef(false);
 
     // 按钮切换到loading或者disabled时，强制触发stop
-    React.useEffect(() => {
+    useEffect(() => {
       if (loading || disabled) {
         if (rippleRef.current) {
           rippleRef.current.stop();
@@ -134,7 +145,7 @@ const BaseButton = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseB
 
     const shouldEnableRipple = !disableRipple && !disabled && !loading;
 
-    const useRippleHandler = <E extends React.SyntheticEvent, H extends React.EventHandler<E>>(
+    const useRippleHandler = <E extends SyntheticEvent, H extends EventHandler<E>>(
       action: keyof RippleRef,
       defaultEventHandler?: H,
       disableRippleAction = !shouldEnableRipple,
@@ -157,7 +168,7 @@ const BaseButton = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseB
     const handleTouchMove = useRippleHandler('stop', onTouchMove);
     const handleBlur = useRippleHandler('stop', onBlur, false);
 
-    const handleKeyDown: React.KeyboardEventHandler<any> = useConstantFn((e) => {
+    const handleKeyDown: KeyboardEventHandler<any> = useConstantFn((e) => {
       if (rippleRef.current && !isKeyDownRef.current && e.key === ' ') {
         isKeyDownRef.current = true;
         rippleRef.current.start();
@@ -165,7 +176,7 @@ const BaseButton = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseB
 
       onKeyDown?.(e);
     });
-    const handleKeyUp: React.KeyboardEventHandler<any> = useConstantFn((e) => {
+    const handleKeyUp: KeyboardEventHandler<any> = useConstantFn((e) => {
       if (rippleRef.current && isKeyDownRef.current && e.key === ' ') {
         isKeyDownRef.current = false;
         rippleRef.current.stop();
@@ -173,7 +184,7 @@ const BaseButton = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseB
       onKeyUp?.(e);
     });
 
-    const handleClick: React.MouseEventHandler<any> = useConstantFn((e) => {
+    const handleClick: MouseEventHandler<any> = useConstantFn((e) => {
       if (loading || disabled) {
         e.preventDefault();
         return;

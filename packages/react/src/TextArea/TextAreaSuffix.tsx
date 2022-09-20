@@ -1,27 +1,27 @@
 import { useConstantFn, useUnmount } from '@xl-vision/hooks';
-import React from 'react';
 import clsx from 'clsx';
 import { getComputedStyle, isProduction, raf } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
+import { HTMLAttributes, FC, useState, useRef, useEffect } from 'react';
 import { useTheme } from '../ThemeProvider';
 import ResizeObserver from '../ResizeObserver';
 
-export type TextAreaSuffixProps = React.HTMLAttributes<HTMLSpanElement> & {
+export type TextAreaSuffixProps = HTMLAttributes<HTMLSpanElement> & {
   value?: string;
 };
 
 const displayName = 'TextAreaSuffix';
 
-const TextAreaSuffix: React.FC<TextAreaSuffixProps> = (props) => {
+const TextAreaSuffix: FC<TextAreaSuffixProps> = (props) => {
   const { className, value, style, ...others } = props;
 
   const { clsPrefix } = useTheme();
 
-  const [overflow, setOverflow] = React.useState(false);
+  const [overflow, setOverflow] = useState(false);
 
-  const ref = React.useRef<HTMLSpanElement>(null);
+  const ref = useRef<HTMLSpanElement>(null);
 
-  const rafCancelFnRef = React.useRef<() => void>();
+  const rafCancelFnRef = useRef<() => void>();
 
   const handleOverflow = useConstantFn(() => {
     rafCancelFnRef.current?.();
@@ -50,7 +50,7 @@ const TextAreaSuffix: React.FC<TextAreaSuffixProps> = (props) => {
     });
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     handleOverflow();
   }, [value, handleOverflow]);
 

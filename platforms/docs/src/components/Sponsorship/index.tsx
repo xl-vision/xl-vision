@@ -1,7 +1,7 @@
-import React from 'react';
 import { styled } from '@xl-vision/react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { FC } from 'react';
 import { useLocale } from '../LocalizationProvider';
 
 const Root = styled('div')(({ theme }) => {
@@ -32,7 +32,7 @@ const Title = styled('h5')(({ theme }) => {
   };
 });
 
-const Sponsorship: React.FC = () => {
+const Sponsorship: FC = () => {
   const { locale } = useLocale();
 
   return (

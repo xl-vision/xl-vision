@@ -1,11 +1,11 @@
 import { mount } from 'enzyme';
-import React from 'react';
 import { Ripple, RippleRef } from '@xl-vision/react';
+import { useRef, useMemo } from 'react';
 
 const Demo = ({ exitAfterEnter }: { exitAfterEnter?: boolean }) => {
-  const rippleRef = React.useRef<RippleRef>(null);
+  const rippleRef = useRef<RippleRef>(null);
 
-  const events = React.useMemo(() => {
+  const events = useMemo(() => {
     const start = (e: any) => {
       rippleRef.current?.start(e);
     };

@@ -1,10 +1,10 @@
-import React from 'react';
 import { Button, Input } from '@xl-vision/react';
+import { useRef, useCallback } from 'react';
 
 const Demo = () => {
-  const ref = React.useRef<HTMLSpanElement>(null);
+  const ref = useRef<HTMLSpanElement>(null);
 
-  const handleClick = React.useCallback(() => {
+  const handleClick = useCallback(() => {
     ref.current?.focus();
   }, []);
 

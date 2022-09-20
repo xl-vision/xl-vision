@@ -1,8 +1,8 @@
 /* eslint-disable no-alert */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React from 'react';
 import { Portal, Button, styled } from '@xl-vision/react';
+import { useCallback, useState, ReactElement, useRef, useEffect } from 'react';
 
 const Wrapper = styled('div')(({ theme }) => {
   return {
@@ -28,15 +28,15 @@ const Wrapper = styled('div')(({ theme }) => {
 });
 
 const Basic = () => {
-  const handleClick = React.useCallback(() => {
+  const handleClick = useCallback(() => {
     alert('You clicked container1!');
   }, []);
 
-  const [node, setNode] = React.useState<React.ReactElement>();
+  const [node, setNode] = useState<ReactElement>();
 
-  const ref = React.useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const portal = (
       <Portal container={() => ref.current}>
         <Button color='primary' className='content'>

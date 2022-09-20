@@ -1,5 +1,4 @@
 import { mount } from 'enzyme';
-import React from 'react';
 import { act } from 'react-dom/test-utils';
 import { Modal } from '@xl-vision/react';
 

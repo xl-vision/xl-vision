@@ -1,12 +1,12 @@
 import { CSSObject } from '@xl-vision/styled-engine';
-import React from 'react';
 import PropTypes from 'prop-types';
 import { isProduction } from '@xl-vision/utils';
+import { ReactNode, FC } from 'react';
 import { createGlobalStyles } from '../styles';
 import { Theme, useTheme } from '../ThemeProvider';
 
 export type CssBaselineProps = {
-  children?: React.ReactNode;
+  children?: ReactNode;
 };
 
 export type CssBaselineStyleProps = { overrideStyle?: (theme: Theme) => CSSObject };
@@ -51,7 +51,7 @@ const GlobalStyles = createGlobalStyles<CssBaselineStyleProps>(({ theme, stylePr
   ];
 });
 
-const CssBaseline: React.FC<CssBaselineProps> = (props) => {
+const CssBaseline: FC<CssBaselineProps> = (props) => {
   const { children } = props;
   const { overrideStyles } = useTheme();
 

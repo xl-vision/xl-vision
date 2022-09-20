@@ -1,4 +1,3 @@
-import React from 'react';
 import { createIcon } from '@xl-vision/icons';
 
 const Translate = createIcon(

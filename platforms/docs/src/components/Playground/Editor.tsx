@@ -1,11 +1,10 @@
 import { useConstantFn } from '@xl-vision/hooks';
 import { styled, useTheme } from '@xl-vision/react';
-import React from 'react';
 import { Controlled as CodeMirror } from 'react-codemirror2';
 import codemirror from 'codemirror';
+import { FC, useMemo } from 'react';
 
 require('codemirror/mode/jsx/jsx');
-
 require('codemirror/lib/codemirror.css');
 require('codemirror/theme/material-darker.css');
 
@@ -25,7 +24,7 @@ const CodeMirrorEditor = styled(CodeMirror)(({ theme }) => {
   };
 });
 
-const Editor: React.FC<EditorProps> = (props) => {
+const Editor: FC<EditorProps> = (props) => {
   const { value, onChange } = props;
 
   const { color } = useTheme();
@@ -38,7 +37,7 @@ const Editor: React.FC<EditorProps> = (props) => {
     },
   );
 
-  const options = React.useMemo(() => {
+  const options = useMemo(() => {
     return {
       smartIndent: true,
       indentUnit: 2,

@@ -1,5 +1,5 @@
 import { styled } from '@xl-vision/react';
-import React from 'react';
+import { TableHTMLAttributes, FC } from 'react';
 
 const Wrapper = styled('div')(() => {
   return {
@@ -39,9 +39,9 @@ const TableWrapper = styled('table')(({ theme }) => {
   };
 });
 
-export type TableProps = React.TableHTMLAttributes<HTMLTableElement>;
+export type TableProps = TableHTMLAttributes<HTMLTableElement>;
 
-const Table: React.FC<TableProps> = (props) => {
+const Table: FC<TableProps> = (props) => {
   return (
     <Wrapper>
       <TableWrapper {...props} />

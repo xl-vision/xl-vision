@@ -1,8 +1,8 @@
 import { styled } from '@xl-vision/react';
 import { useUnmount } from '@xl-vision/hooks';
-import React from 'react';
 import { LoadingOutlined } from '@xl-vision/icons';
 import { keyframes } from '@xl-vision/styled-engine';
+import { FC, useState, useRef, useMemo, useEffect, useCallback } from 'react';
 import Sandbox from './Sandbox';
 
 const babelPromise = import('@babel/standalone');
@@ -83,7 +83,7 @@ const Root = styled('div')`
 const DEFAULT_EXEC = `
 require(['react','react-dom', '@xl-vision/react', 'demo'], function(React,ReactDOM, vision, Demo) {
   // 拦截错误和加载完成事件
-  class Wrapper extends React.Component {
+  class Wrapper extends Component {
     componentDidMount() {
       window.$$onLoaded && window.$$onLoaded();
       window.$$mounted = true
@@ -98,31 +98,31 @@ require(['react','react-dom', '@xl-vision/react', 'demo'], function(React,ReactD
     }
 
     render() {
-      var demo = React.createElement(Demo.default);
+      var demo = createElement(Demo.default);
       var CssBaseline = vision.CssBaseline;
-      var css = React.createElement(CssBaseline, {
+      var css = createElement(CssBaseline, {
         children: demo
       });
       return css
     }
   }
 
-  ReactDOM.render(React.createElement(Wrapper), document.querySelector('#sandbox'))
+  ReactDOM.render(createElement(Wrapper), document.querySelector('#sandbox'))
 })
 `;
 
-const Preview: React.FC<PreviewProps> = (props) => {
+const Preview: FC<PreviewProps> = (props) => {
   const { code, scripts, reactVersion, libVersion } = props;
 
-  const [parsedCode, setParsedCode] = React.useState('');
-  const [error, setError] = React.useState<string>();
+  const [parsedCode, setParsedCode] = useState('');
+  const [error, setError] = useState<string>();
 
-  const timerRef = React.useRef<number>();
-  const isFirstRef = React.useRef(true);
+  const timerRef = useRef<number>();
+  const isFirstRef = useRef(true);
 
-  const [loading, setLoading] = React.useState(true);
+  const [loading, setLoading] = useState(true);
 
-  const builtinDeps = React.useMemo(() => {
+  const builtinDeps = useMemo(() => {
     const _reactVersion = reactVersion ? `@${reactVersion}` : '';
     const _libVersion = libVersion ? `@${libVersion}` : '';
     return {
@@ -134,14 +134,14 @@ const Preview: React.FC<PreviewProps> = (props) => {
     };
   }, [reactVersion, libVersion]);
 
-  const allScripts = React.useMemo(() => {
+  const allScripts = useMemo(() => {
     return {
       ...builtinDeps,
       ...scripts,
     };
   }, [builtinDeps, scripts]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setLoading(true);
     const cb = () => {
       babelPromise
@@ -190,7 +190,7 @@ const Preview: React.FC<PreviewProps> = (props) => {
     window.clearTimeout(timerRef.current);
   });
 
-  const handleLoad = React.useCallback((win: Window) => {
+  const handleLoad = useCallback((win: Window) => {
     const onError = (err: Error, info: { componentStack: string }) => {
       setError(`${err.toString()}\n${info.componentStack}`);
     };

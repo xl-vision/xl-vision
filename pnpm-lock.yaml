@@ -6,7 +6,6 @@ importers:
     specifiers:
       '@babel/core': ^7.17.10
       '@babel/eslint-parser': ^7.17.0
-      '@babel/plugin-transform-react-jsx': ^7.19.0
       '@babel/plugin-transform-runtime': ^7.17.10
       '@babel/preset-env': ^7.17.10
       '@babel/preset-react': ^7.16.7
@@ -73,7 +72,6 @@ importers:
     devDependencies:
       '@babel/core': 7.17.10
       '@babel/eslint-parser': 7.17.0_annt2i75qyqp7sfsklqkwkfeaa
-      '@babel/plugin-transform-react-jsx': 7.19.0_@babel+core@7.17.10
       '@babel/plugin-transform-runtime': 7.17.10_@babel+core@7.17.10
       '@babel/preset-env': 7.17.10_@babel+core@7.17.10
       '@babel/preset-react': 7.16.7_@babel+core@7.17.10
@@ -3508,7 +3506,7 @@ packages:
       babel-plugin-syntax-jsx: 6.18.0
       lodash: 4.17.21
       picomatch: 2.3.0
-      styled-components: 5.3.5_fane7jikarojcev26y27hpbhu4
+      styled-components: 5.3.5_ukrbqhh2t6r2q67fyfhmpyy5um
 
   /babel-plugin-syntax-jsx/6.18.0:
     resolution: {integrity: sha1-CvMqmm4Tyno/1QaeYtew9Y0NiUY=}
@@ -9027,7 +9025,7 @@ packages:
     dev: true
 
   /nodejieba/2.5.2:
-    resolution: {integrity: sha1-/JKe4p+Twoxjlpa6wDGbrBFqKWo=}
+    resolution: {integrity: sha512-ByskJvaBrQ2eV+5M0OeD80S5NKoGaHc9zi3Z/PTKl/95eac2YF8RmWduq9AknLpkQLrLAIcqurrtC6BzjpKwwg==}
     engines: {node: '>= 10.20.0'}
     requiresBuild: true
     dependencies:
@@ -9917,6 +9915,7 @@ packages:
 
   /react-is/17.0.2:
     resolution: {integrity: sha1-5pHUqOnHiTZWVVOas3J2Kw77VPA=}
+    dev: true
 
   /react-is/18.1.0:
     resolution: {integrity: sha512-Fl7FuabXsJnV5Q1qIOQwx/sagGF18kogb4gpfcG4gjLBWO0WDiiz1ko/ExayuxE7InyQkBLkxRFG5oxY6Uu3Kg==}
@@ -11040,6 +11039,7 @@ packages:
       react-is: 17.0.2
       shallowequal: 1.1.0
       supports-color: 5.5.0
+    dev: true
 
   /styled-components/5.3.5_ukrbqhh2t6r2q67fyfhmpyy5um:
     resolution: {integrity: sha512-ndETJ9RKaaL6q41B69WudeqLzOpY1A/ET/glXkNZ2T7dPjPqpPCXXQjDFYZWwNnE5co0wX+gTCqx9mfxTmSIPg==}
@@ -11063,7 +11063,6 @@ packages:
       react-is: 18.1.0
       shallowequal: 1.1.0
       supports-color: 5.5.0
-    dev: false
 
   /styled-jsx/5.0.2_react@17.0.2:
     resolution: {integrity: sha512-LqPQrbBh3egD57NBcHET4qcgshPks+yblyhPlH2GY8oaDgKs8SK4C3dBh3oSJjgzJ3G5t1SYEZGHkP+QEpX9EQ==}

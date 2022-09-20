@@ -1,23 +1,24 @@
 import { ResizeObserverHandler } from '@xl-vision/hooks';
 import { isProduction } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
-import React from 'react';
+import { ReactNode, FC, Children, isValidElement } from 'react';
+
 import SingleResizeObserver from './SingleResizeObserver';
 
 export type { ResizeObserverHandler };
 
 export type ResizeObserverProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   onResizeObserver?: ResizeObserverHandler;
 };
 
 const INTERNAL_KEY_PREFIX = '$$resize_observer';
 
-const ResizeObserver: React.FC<ResizeObserverProps> = (props) => {
+const ResizeObserver: FC<ResizeObserverProps> = (props) => {
   const { children, onResizeObserver: handleResizeObserver } = props;
 
-  const parsedChildren = React.Children.map(children, (child, index) => {
-    if (React.isValidElement(child)) {
+  const parsedChildren = Children.map(children, (child, index) => {
+    if (isValidElement(child)) {
       const key = child.key || `${INTERNAL_KEY_PREFIX}-${index}`;
       return (
         <SingleResizeObserver key={key} onResizeObserver={handleResizeObserver}>

@@ -1,7 +1,7 @@
-import React from 'react';
 import { useTransition, TransitionStartHook, TransitionStartingHook } from '@xl-vision/hooks';
 import { Button, styled } from '@xl-vision/react';
 import { gsap } from 'gsap';
+import { useState, useCallback } from 'react';
 
 const Box = styled('div')(({ theme }) => {
   return {
@@ -14,9 +14,9 @@ const Box = styled('div')(({ theme }) => {
 });
 
 const Demo = () => {
-  const [inOption, setInOption] = React.useState(false);
+  const [inOption, setInOption] = useState(false);
 
-  const handleEnter: TransitionStartHook = React.useCallback((el) => {
+  const handleEnter: TransitionStartHook = useCallback((el) => {
     console.log(el);
     gsap.set(el, {
       scaleX: 0.25,
@@ -25,7 +25,7 @@ const Demo = () => {
     });
   }, []);
 
-  const handleEntering: TransitionStartingHook = React.useCallback((el, done) => {
+  const handleEntering: TransitionStartingHook = useCallback((el, done) => {
     gsap.to(el, {
       duration: 1,
       scaleX: 1,
@@ -36,7 +36,7 @@ const Demo = () => {
     });
   }, []);
 
-  const handleExiting: TransitionStartingHook = React.useCallback((el, done) => {
+  const handleExiting: TransitionStartingHook = useCallback((el, done) => {
     gsap.to(el, {
       duration: 0.7,
       scaleX: 1,

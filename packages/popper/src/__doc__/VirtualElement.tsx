@@ -1,6 +1,6 @@
-import React from 'react';
 import { usePopper, ReferenceRect } from '@xl-vision/popper';
 import { styled, Portal } from '@xl-vision/react';
+import { useRef, useEffect, useCallback } from 'react';
 
 const getContainer = () => document.body;
 
@@ -10,21 +10,21 @@ const Demo = () => {
     placement: 'top',
   });
 
-  const referenceRectRef = React.useRef<ReferenceRect>({
+  const referenceRectRef = useRef<ReferenceRect>({
     x: 0,
     y: 0,
     width: 0,
     height: 0,
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     reference({
       getBoundingClientRect: () => referenceRectRef.current,
     });
   }, [reference]);
 
-  const handleMouseMove = React.useCallback(
-    (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseMove = useCallback(
+    (e: MouseEvent<HTMLDivElement>) => {
       referenceRectRef.current = {
         x: e.clientX,
         y: e.clientY,

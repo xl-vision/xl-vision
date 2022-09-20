@@ -1,5 +1,5 @@
-import React from 'react';
 import { Button, Transition, styled } from '@xl-vision/react';
+import { useState } from 'react';
 
 const Div = styled('div')`
   display: flex;
@@ -24,7 +24,7 @@ const Div = styled('div')`
 `;
 
 const Basic = () => {
-  const [show, setShow] = React.useState(false);
+  const [show, setShow] = useState(false);
 
   return (
     <div>

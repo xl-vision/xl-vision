@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import React from 'react';
 import { addClass, getComputedStyle, isProduction, removeClass, warning } from '@xl-vision/utils';
 import {
   CssTransitionOptions,
@@ -11,18 +10,30 @@ import {
   useCssTransition,
   useForkRef,
 } from '@xl-vision/hooks';
+import {
+  ReactElement,
+  FC,
+  Children,
+  useMemo,
+  CSSProperties,
+  useRef,
+  isValidElement,
+  ReactInstance,
+  Ref,
+  cloneElement,
+} from 'react';
 import { supportRef } from '../utils/ref';
 import { forceReflow } from '../utils/dom';
 
 export type CollapseTransitionProp = CssTransitionOptions & {
-  children: React.ReactElement;
+  children: ReactElement;
   horizontal?: true;
   unmountOnExit?: boolean;
 };
 
 const displayName = 'CollapseTransition';
 
-const CollapseTransition: React.FC<CollapseTransitionProp> = (props) => {
+const CollapseTransition: FC<CollapseTransitionProp> = (props) => {
   const {
     horizontal,
     onEnter,
@@ -38,14 +49,14 @@ const CollapseTransition: React.FC<CollapseTransitionProp> = (props) => {
     ...others
   } = props;
 
-  const child = React.Children.only(children);
+  const child = Children.only(children);
 
   warning(!supportRef(child), '<%s>: child does not support ref', displayName);
 
-  const mappings = React.useMemo(() => {
-    const padding1: keyof React.CSSProperties = horizontal ? 'paddingLeft' : 'paddingTop';
-    const padding2: keyof React.CSSProperties = horizontal ? 'paddingRight' : 'paddingBottom';
-    const size: keyof React.CSSProperties = horizontal ? 'width' : 'height';
+  const mappings = useMemo(() => {
+    const padding1: keyof CSSProperties = horizontal ? 'paddingLeft' : 'paddingTop';
+    const padding2: keyof CSSProperties = horizontal ? 'paddingRight' : 'paddingBottom';
+    const size: keyof CSSProperties = horizontal ? 'width' : 'height';
 
     return {
       padding1,
@@ -54,13 +65,13 @@ const CollapseTransition: React.FC<CollapseTransitionProp> = (props) => {
     };
   }, [horizontal]);
 
-  const actualSizeRef = React.useRef<string>();
-  const padding1Ref = React.useRef<string>();
-  const padding2Ref = React.useRef<string>();
-  const sizeRef = React.useRef<string>();
-  const overflowRef = React.useRef<string>();
+  const actualSizeRef = useRef<string>();
+  const padding1Ref = useRef<string>();
+  const padding2Ref = useRef<string>();
+  const sizeRef = useRef<string>();
+  const overflowRef = useRef<string>();
 
-  const isCancelledRef = React.useRef(false);
+  const isCancelledRef = useRef(false);
 
   const handleEnter: TransitionStartHook = useConstantFn((nativeEl, transitionOnFirst) => {
     const el = nativeEl as HTMLElement;
@@ -211,14 +222,12 @@ const CollapseTransition: React.FC<CollapseTransitionProp> = (props) => {
   });
 
   const forkRef = useForkRef(
-    React.isValidElement<React.ReactInstance>(child)
-      ? (child as { ref?: React.Ref<unknown> }).ref
-      : null,
+    isValidElement<ReactInstance>(child) ? (child as { ref?: Ref<unknown> }).ref : null,
     nodeRef,
   );
 
   // 判断是否是第一次挂载
-  const isFirstMountRef = React.useRef(true);
+  const isFirstMountRef = useRef(true);
 
   if (show) {
     isFirstMountRef.current = false;
@@ -233,7 +242,7 @@ const CollapseTransition: React.FC<CollapseTransitionProp> = (props) => {
 
   const style = { ...(child.props as { style?: {} }).style, display: show ? '' : 'none' };
 
-  return React.cloneElement(child, {
+  return cloneElement(child, {
     ref: forkRef,
     style,
   });

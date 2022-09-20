@@ -1,4 +1,3 @@
-import React from 'react';
 import { mount } from 'enzyme';
 import { CloseCircleFilled } from '@xl-vision/icons';
 import { ThemeProvider, Button } from '@xl-vision/react';

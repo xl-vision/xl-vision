@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useConstantFn } from '@xl-vision/hooks';
 
 export type InputProps = {
@@ -13,8 +13,8 @@ const useInput = <E extends HTMLElement>({ setValue, maxLength }: InputProps) =>
   const ref = useRef<E>(null);
   const [isCompositing, setCompositing] = useState(false);
 
-  const oldCompositionValueRef = React.useRef<string>();
-  const oldSelectionEndRef = React.useRef<number>();
+  const oldCompositionValueRef = useRef<string>();
+  const oldSelectionEndRef = useRef<number>();
 
   const hasMaxLength = Number(maxLength) > 0;
 
@@ -46,7 +46,7 @@ const useInput = <E extends HTMLElement>({ setValue, maxLength }: InputProps) =>
     setCompositing(false);
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     const el = ref.current;
     if (!el) {
       return;

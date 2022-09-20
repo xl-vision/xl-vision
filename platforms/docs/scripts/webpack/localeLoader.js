@@ -50,7 +50,7 @@ module.exports = async function localeLoader() {
         const contentName = `Locale_${it.parts[1].replace(/-/g, '_')}`;
         imports.push(`const ${contentName}Import = () => import('./${it.fileName}')`);
         imports.push(`const ${contentName} = dynamic(${contentName}Import)`);
-        // TODO: [2022-06-10] 不够优雅，待改造
+        // TODO: [2022-12-10] 不够优雅，待改造
         locales.push(
           `'${it.parts[1]}': {
             component: ${contentName},

@@ -1,5 +1,4 @@
-import { CSSObject } from '@xl-vision/styled-engine';
-import React from 'react';
+import { CSSObject, CSSProperties } from '@xl-vision/styled-engine';
 
 const defaultFunctions = {
   deceleration: 'cubic-bezier(0, 0, 0.2, 1)',
@@ -24,7 +23,7 @@ export type Transition = Partial<{
 }>;
 
 const genTransition = (
-  name: keyof React.CSSProperties | Array<keyof React.CSSProperties>,
+  name: keyof CSSProperties | Array<keyof CSSProperties>,
   duration: string,
   func: string,
   delay = '',
@@ -40,25 +39,25 @@ const createTransition = (transition: Transition = {}) => {
   const { functions = defaultFunctions, durations = defaultDurations } = transition;
 
   const standard = (
-    name: keyof React.CSSProperties | Array<keyof React.CSSProperties>,
+    name: keyof CSSProperties | Array<keyof CSSProperties>,
     duration = durations.standard,
     delay = '0ms',
   ) => genTransition(name, duration, functions.standard, delay);
 
   const enter = (
-    name: keyof React.CSSProperties | Array<keyof React.CSSProperties>,
+    name: keyof CSSProperties | Array<keyof CSSProperties>,
     duration = durations.enter,
     delay = '0ms',
   ) => genTransition(name, duration, functions.deceleration, delay);
 
   const exitPermanent = (
-    name: keyof React.CSSProperties | Array<keyof React.CSSProperties>,
+    name: keyof CSSProperties | Array<keyof CSSProperties>,
     duration = durations.exit,
     delay = '0ms',
   ) => genTransition(name, duration, functions.acceleration, delay);
 
   const exitTemporary = (
-    name: keyof React.CSSProperties | Array<keyof React.CSSProperties>,
+    name: keyof CSSProperties | Array<keyof CSSProperties>,
     duration = durations.exit,
     delay = '0ms',
   ) => genTransition(name, duration, functions.sharp, delay);

@@ -1,6 +1,6 @@
 import { Row } from '@xl-vision/react';
 import { isBrowser } from '@xl-vision/utils';
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const { useBreakPoints } = Row;
 
@@ -9,7 +9,7 @@ const useSizeBelow = (breakpoint: string) => {
 
   const [state, setState] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     let isBelow = false;
     if (isBrowser) {
       const md = breakPoints.find((it) => it[0] === breakpoint);

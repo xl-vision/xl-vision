@@ -1,5 +1,4 @@
 import { GetStaticProps, NextPage } from 'next';
-import React from 'react';
 import Docs from '../../docs/components/quickstart/install.en-US.mdx?locale';
 import { LayoutKey } from '../../layout';
 

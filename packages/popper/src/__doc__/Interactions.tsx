@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   useAutoUpdatePopper,
   useConnectInteraction,
@@ -6,11 +5,12 @@ import {
   useInteraction,
 } from '@xl-vision/popper';
 import { Button, Portal } from '@xl-vision/react';
+import { useState } from 'react';
 
 const container = () => document.body;
 
 const Demo = () => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const { reference, popper, x, y, mode, context } = useConnectInteraction(
     useAutoUpdatePopper({

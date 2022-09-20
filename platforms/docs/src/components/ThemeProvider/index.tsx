@@ -1,12 +1,12 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { BaseTheme, ThemeProvider as XlThemeProvider } from '@xl-vision/react';
 import { useIsomorphicLayoutEffect } from '@xl-vision/hooks';
 import Cookies from 'js-cookie';
 import { noop } from '@xl-vision/utils';
+import { ReactNode, createContext, FC, useState, useCallback, useMemo } from 'react';
 
 export type ThemeProviderProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 export type ThemeContextProps = {
@@ -14,24 +14,24 @@ export type ThemeContextProps = {
   setDark: (value: boolean | ((prev: boolean) => boolean)) => void;
 };
 
-export const ThemeContext = React.createContext<ThemeContextProps>({
+export const ThemeContext = createContext<ThemeContextProps>({
   isDark: false,
   setDark: noop,
 });
 
 const KEY = 'DARK_MODE';
 
-const ThemeProvider: React.FC<ThemeProviderProps> = (props) => {
+const ThemeProvider: FC<ThemeProviderProps> = (props) => {
   const { children } = props;
 
-  const [isDark, setDark] = React.useState(false);
+  const [isDark, setDark] = useState(false);
 
   useIsomorphicLayoutEffect(() => {
     const dark = Cookies.get(KEY) === 'dark';
     setDark(dark);
   }, []);
 
-  const setDarkWrapper: ThemeContextProps['setDark'] = React.useCallback((dark) => {
+  const setDarkWrapper: ThemeContextProps['setDark'] = useCallback((dark) => {
     const fn = typeof dark === 'function' ? dark : () => dark;
     setDark((prev) => {
       const result = fn(prev);
@@ -40,7 +40,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = (props) => {
     });
   }, []);
 
-  const theme: BaseTheme = React.useMemo(() => {
+  const theme: BaseTheme = useMemo(() => {
     return {
       color: {
         mode: isDark ? 'dark' : 'light',
@@ -48,7 +48,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = (props) => {
     };
   }, [isDark]);
 
-  const ctx = React.useMemo<ThemeContextProps>(
+  const ctx = useMemo<ThemeContextProps>(
     () => ({
       isDark,
       setDark: setDarkWrapper,

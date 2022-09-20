@@ -1,9 +1,9 @@
 // eslint-disable-next-line import/no-unresolved
 import CSS from 'csstype';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import React from 'react';
+import { ComponentProps, ComponentType, JSXElementConstructor } from 'react';
 
-export type CSSProperties = CSS.Properties<string | number>;
+export type CSSProperties = CSS.PropertiesFallback<string | number>;
 
 export type CSSPseudos = { [K in CSS.Pseudos]?: CSSObject };
 
@@ -25,40 +25,40 @@ export type InterpolationPrimitive =
 
 export type Keyframes = {};
 
-export type FunctionInterpolation<P extends {}, S extends {}> = (
+export type FunctionInterpolation<P extends object, S extends object> = (
   props: P & S,
 ) => Interpolation<P, S>;
 
-export type SimpleInterpolation<P extends {}, S extends {}> =
+export type SimpleInterpolation<P extends object, S extends object> =
   | InterpolationPrimitive
   | StyledComponentInterpolation<P, S>
   | Array<SimpleInterpolation<P, S>>;
 
-export type Interpolation<P extends {}, S extends {}> =
+export type Interpolation<P extends object, S extends object> =
   | InterpolationPrimitive
   | Array<Interpolation<P, S>>
   | FunctionInterpolation<P, S>
   | StyledComponentInterpolation<P, S>;
 
-type StyledComponentInterpolation<P extends {}, S extends {}> = Pick<
+type StyledComponentInterpolation<P extends object, S extends object> = Pick<
   StyledComponent<P, S>,
   keyof StyledComponent<P, S>
 >;
 
-export type PropsOf<C extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>> =
-  JSX.LibraryManagedAttributes<C, React.ComponentProps<C>>;
+export type PropsOf<C extends keyof JSX.IntrinsicElements | JSXElementConstructor<any>> =
+  JSX.LibraryManagedAttributes<C, ComponentProps<C>>;
 
-export type ExtractProps<Tag extends keyof JSX.IntrinsicElements | React.ComponentType<any>> =
+export type ExtractProps<Tag extends keyof JSX.IntrinsicElements | ComponentType<any>> =
   Tag extends keyof JSX.IntrinsicElements ? JSX.IntrinsicElements[Tag] : PropsOf<Tag>;
 
-export type StyledComponent<InnerProps extends {}, StyleProps extends {}> = React.ComponentType<
+export type StyledComponent<InnerProps extends object, StyleProps extends object> = ComponentType<
   InnerProps &
     StyleProps & {
-      as?: keyof JSX.IntrinsicElements | React.ComponentType<InnerProps>;
+      as?: keyof JSX.IntrinsicElements | ComponentType<InnerProps>;
     }
 >;
 
-export type CreateStyledComponent<ComponentProps extends {}> = {
+export type CreateStyledComponent<ComponentProps extends object> = {
   <StyleProps extends object = {}>(
     first: TemplateStringsArray | CSSObject | FunctionInterpolation<ComponentProps, StyleProps>,
     ...styles: Array<Interpolation<ComponentProps, StyleProps>>
@@ -78,7 +78,7 @@ export type FilteringStyledOptions<Props, ForwardedProps extends keyof Props = k
 
 export type Styled = {
   <
-    Tag extends keyof JSX.IntrinsicElements | React.ComponentType<any>,
+    Tag extends keyof JSX.IntrinsicElements | ComponentType<any>,
     ForwardedProps extends keyof ExtractProps<Tag> = keyof ExtractProps<Tag>,
   >(
     tag: Tag,
@@ -86,7 +86,7 @@ export type Styled = {
   ): CreateStyledComponent<Pick<ExtractProps<Tag>, ForwardedProps>>;
 };
 
-export type GlobalStyleComponent<P> = React.ComponentType<P>;
+export type GlobalStyleComponent<P> = ComponentType<P>;
 
 export type CreateGlobalStyle = {
   <P extends object = {}, S extends object = {}>(

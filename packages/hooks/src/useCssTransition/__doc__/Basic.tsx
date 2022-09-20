@@ -1,6 +1,6 @@
-import React from 'react';
 import { useCssTransition } from '@xl-vision/hooks';
 import { Button, styled } from '@xl-vision/react';
+import { useState } from 'react';
 
 const Root = styled('div')(() => {
   return {
@@ -17,7 +17,7 @@ const Root = styled('div')(() => {
 });
 
 const Demo = () => {
-  const [inOption, setInOption] = React.useState(false);
+  const [inOption, setInOption] = useState(false);
 
   const { nodeRef: node1Ref, show: show1 } = useCssTransition({
     in: inOption,

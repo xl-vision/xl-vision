@@ -1,4 +1,4 @@
-import React from 'react';
+import { createContext } from 'react';
 import { AvatarShape, AvatarSize } from './Avatar';
 
 export type AvatarContextProps = {
@@ -6,4 +6,4 @@ export type AvatarContextProps = {
   shape?: AvatarShape;
 };
 
-export default React.createContext<AvatarContextProps>({});
+export default createContext<AvatarContextProps>({});

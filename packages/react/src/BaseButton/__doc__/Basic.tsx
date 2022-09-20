@@ -1,4 +1,3 @@
-import React from 'react';
 import { BaseButton, styled } from '@xl-vision/react';
 
 const CustomButton = styled(BaseButton)(() => {

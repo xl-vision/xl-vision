@@ -1,7 +1,7 @@
-import React from 'react';
 import Script from 'next/script';
+import { FC } from 'react';
 
-const BaiduAnalytics: React.FC = () => {
+const BaiduAnalytics: FC = () => {
   return (
     <Script
       id='baidu-analytics'

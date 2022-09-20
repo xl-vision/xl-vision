@@ -1,13 +1,13 @@
-import React from 'react';
 import { ResizeObserver, ResizeObserverHandler, Input } from '@xl-vision/react';
+import { useState, useCallback } from 'react';
 
 const Demo = () => {
-  const [size, setSize] = React.useState<{ height: number; width: number }>({
+  const [size, setSize] = useState<{ height: number; width: number }>({
     width: 0,
     height: 0,
   });
 
-  const handleResize: ResizeObserverHandler = React.useCallback((state) => {
+  const handleResize: ResizeObserverHandler = useCallback((state) => {
     setSize(state);
   }, []);
 

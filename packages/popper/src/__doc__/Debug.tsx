@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   usePopper,
   offset,
@@ -9,6 +8,7 @@ import {
   PopperOptions,
 } from '@xl-vision/popper';
 import { styled, Button, Portal } from '@xl-vision/react';
+import { useMemo, useCallback, CSSProperties, useEffect } from 'react';
 import { Padding } from '../types';
 
 const Root = styled('div')(({ theme }) => {
@@ -67,7 +67,7 @@ const paddingFn = ({ side }: { side: Side }): Padding => {
 };
 
 const Demo = () => {
-  const popperOptions = React.useMemo<PopperOptions>(() => {
+  const popperOptions = useMemo<PopperOptions>(() => {
     return {
       placement: 'right',
       mode: 'absolute',
@@ -84,16 +84,16 @@ const Demo = () => {
 
   const hidden = extra.hide?.referenceHidden;
 
-  const container = React.useCallback(() => document.body, []);
+  const container = useCallback(() => document.body, []);
 
-  const style: React.CSSProperties = {
+  const style: CSSProperties = {
     position: mode,
     top: y,
     left: x,
     visibility: hidden ? 'hidden' : 'visible',
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     document.addEventListener('scroll', handleUpdate);
     return () => {
       document.removeEventListener('scroll', handleUpdate);

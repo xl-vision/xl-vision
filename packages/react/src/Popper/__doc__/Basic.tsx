@@ -1,4 +1,3 @@
-import React from 'react';
 import { Popper, Button, styled } from '@xl-vision/react';
 
 const Wrapper = styled('div')(() => {

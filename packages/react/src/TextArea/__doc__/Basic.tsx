@@ -1,10 +1,10 @@
-import React from 'react';
 import { TextArea } from '@xl-vision/react';
+import { useState, useEffect } from 'react';
 
 const Demo = () => {
-  const [value, handleValue] = React.useState<string>();
+  const [value, handleValue] = useState<string>();
 
-  React.useEffect(() => {
+  useEffect(() => {
     console.log(value);
   }, [value]);
 

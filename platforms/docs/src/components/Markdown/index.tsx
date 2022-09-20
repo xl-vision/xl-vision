@@ -1,6 +1,6 @@
-import React from 'react';
 import { MDXProvider } from '@mdx-js/react';
 import PropTypes from 'prop-types';
+import { ReactNode, FC } from 'react';
 import DemoBox from '../DemoBox';
 import Wrapper from './Wrapper';
 import pre from './pre';
@@ -10,7 +10,7 @@ import blockquote from './blockquote';
 import table from './table';
 
 export type MarkdownProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
 };
 
@@ -24,7 +24,7 @@ const components: any = {
   table,
 };
 
-const Markdown: React.FC<MarkdownProps> = (props) => {
+const Markdown: FC<MarkdownProps> = (props) => {
   const { children, ...others } = props;
   return (
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment

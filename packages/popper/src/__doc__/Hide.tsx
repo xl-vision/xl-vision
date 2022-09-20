@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { CSSProperties, useEffect, useMemo, useRef } from 'react';
 import { usePopper, hide, Middleware } from '@xl-vision/popper';
 import { styled, Button, Portal, Row } from '@xl-vision/react';
 
 const container = () => document.body;
 
 const Demo = () => {
-  const middlewares: Array<Middleware> = React.useMemo(() => {
+  const middlewares: Array<Middleware> = useMemo(() => {
     return [hide()];
   }, []);
 
@@ -15,9 +15,9 @@ const Demo = () => {
     middlewares,
   });
 
-  const rafIdRef = React.useRef<number | undefined>();
+  const rafIdRef = useRef<number | undefined>();
 
-  const handleUpdate = React.useMemo(() => {
+  const handleUpdate = useMemo(() => {
     // 节流
     const throttle = () => {
       if (rafIdRef.current !== undefined) {
@@ -31,7 +31,7 @@ const Demo = () => {
     return throttle;
   }, [update]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     document.addEventListener('scroll', handleUpdate);
     return () => {
       document.removeEventListener('scroll', handleUpdate);
@@ -40,7 +40,7 @@ const Demo = () => {
 
   const hidden = extra.hide?.referenceHidden;
 
-  const style: React.CSSProperties = {
+  const style: CSSProperties = {
     position: mode,
     top: 0,
     left: 0,

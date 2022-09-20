@@ -1,8 +1,7 @@
-import React from 'react';
 import { Affix, Button } from '@xl-vision/react';
 
 const Demo = () => {
-  const handleChange = React.useCallback((affixed: boolean) => {
+  const handleChange = useCallback((affixed: boolean) => {
     console.log(affixed);
   }, []);
 

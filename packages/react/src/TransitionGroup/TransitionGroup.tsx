@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import React from 'react';
 import { isProduction, warning } from '@xl-vision/utils';
 import {
   CssTransitionClassNameRecord,
@@ -7,6 +6,7 @@ import {
   useConstantFn,
   useIsomorphicLayoutEffect,
 } from '@xl-vision/hooks';
+import { ReactElement, FC, useMemo, useState, useCallback, Key, cloneElement } from 'react';
 import Transition, { TransitionProps } from '../Transition';
 import diff from './diff';
 
@@ -30,14 +30,14 @@ export interface TransitionGroupProps
     | 'mountOnEnter'
     | 'unmountOnExit'
   > {
-  children: Array<React.ReactElement>;
+  children: Array<ReactElement>;
   transitionClassName?: TransitionGroupClassName;
 }
 
-const TransitionGroup: React.FC<TransitionGroupProps> = (props) => {
+const TransitionGroup: FC<TransitionGroupProps> = (props) => {
   const { children, transitionClassName: transitionClasses, onExited, ...others } = props;
 
-  const transitionClassesRecord = React.useMemo(() => {
+  const transitionClassesRecord = useMemo(() => {
     let obj: CssTransitionClassNameRecord = {};
 
     if (!transitionClasses) {
@@ -66,10 +66,10 @@ const TransitionGroup: React.FC<TransitionGroupProps> = (props) => {
     return obj;
   }, [transitionClasses]);
 
-  const [nodes, setNodes] = React.useState<Array<React.ReactElement>>();
+  const [nodes, setNodes] = useState<Array<ReactElement>>();
 
-  const handleExited = React.useCallback(
-    (key: React.Key | null) => {
+  const handleExited = useCallback(
+    (key: Key | null) => {
       warning(!key, `<TransitioGroup> must has a key`);
       const hook: TransitionEndHook = (e, transitionOnFirst) => {
         onExited?.(e, transitionOnFirst);
@@ -85,7 +85,7 @@ const TransitionGroup: React.FC<TransitionGroupProps> = (props) => {
     [onExited],
   );
 
-  const handleChildrenChange = useConstantFn((value: Array<React.ReactElement>) => {
+  const handleChildrenChange = useConstantFn((value: Array<ReactElement>) => {
     const nextChildren = value.map((it) => {
       return (
         <Transition
@@ -113,18 +113,18 @@ const TransitionGroup: React.FC<TransitionGroupProps> = (props) => {
           };
         });
 
-    const nextNodes: Array<React.ReactElement> = [];
+    const nextNodes: Array<ReactElement> = [];
     array.forEach((it) => {
       if (it.same) {
         nextNodes.push(...it.next);
       } else {
         const prev = it.prev.map((item) => {
-          return React.cloneElement(item, {
+          return cloneElement(item, {
             in: false,
           });
         });
         const next = it.next.map((item) => {
-          return React.cloneElement(item, {
+          return cloneElement(item, {
             in: true,
             transitionOnFirst: true,
           });

@@ -1,13 +1,25 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { getBoundingClientRect, isProduction } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
+import {
+  HTMLAttributes,
+  forwardRef,
+  useState,
+  ReactElement,
+  useRef,
+  useEffect,
+  useImperativeHandle,
+  useCallback,
+  CSSProperties,
+  SyntheticEvent,
+  TouchEvent,
+} from 'react';
 import TransitionGroup, { TransitionGroupClassName } from '../TransitionGroup';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 
-export interface RippleProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface RippleProps extends HTMLAttributes<HTMLDivElement> {
   transitionClassName: TransitionGroupClassName;
   exitAfterEnter?: boolean;
 }
@@ -49,25 +61,25 @@ const RippleInner = styled('div', {
 
 const DELAY_RIPPLE = 80;
 
-const Ripple = React.forwardRef<RippleRef, RippleProps>((props, ref) => {
+const Ripple = forwardRef<RippleRef, RippleProps>((props, ref) => {
   const { transitionClassName, exitAfterEnter, className, ...others } = props;
 
   const { clsPrefix } = useTheme();
 
-  const [ripples, setRipples] = React.useState<Array<React.ReactElement>>([]);
+  const [ripples, setRipples] = useState<Array<ReactElement>>([]);
 
   // 等待出场动画计数器
-  const waitLeaveCountRef = React.useRef(0);
+  const waitLeaveCountRef = useRef(0);
   // 已经完成进场动画计数器
-  const enteredCountRef = React.useRef(0);
+  const enteredCountRef = useRef(0);
   // key
-  const keyRef = React.useRef(0);
-  const containerRef = React.useRef<HTMLDivElement>(null);
-  const startTimerRef = React.useRef<NodeJS.Timeout>();
-  const startTimerCommitRef = React.useRef<() => void>();
-  const ignoreMouseDonwRef = React.useRef(false);
+  const keyRef = useRef(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const startTimerRef = useRef<NodeJS.Timeout>();
+  const startTimerCommitRef = useRef<() => void>();
+  const ignoreMouseDonwRef = useRef(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     return () => {
       if (startTimerRef.current) {
         clearTimeout(startTimerRef.current);
@@ -75,15 +87,15 @@ const Ripple = React.forwardRef<RippleRef, RippleProps>((props, ref) => {
     };
   }, []);
 
-  React.useImperativeHandle(ref, () => ({
+  useImperativeHandle(ref, () => ({
     start,
     stop,
   }));
 
-  const commit = React.useCallback(
+  const commit = useCallback(
     (x: number, y: number, size: number) => {
       const key = keyRef.current;
-      const style: React.CSSProperties = {
+      const style: CSSProperties = {
         width: size,
         height: size,
         top: -size / 2 + y,
@@ -98,14 +110,14 @@ const Ripple = React.forwardRef<RippleRef, RippleProps>((props, ref) => {
     [clsPrefix],
   );
 
-  const start = React.useCallback(
-    (e: React.SyntheticEvent | object = {}) => {
-      if ((e as React.MouseEvent).type === 'mousedown' && ignoreMouseDonwRef.current) {
+  const start = useCallback(
+    (e: SyntheticEvent | object = {}) => {
+      if ((e as MouseEvent).type === 'mousedown' && ignoreMouseDonwRef.current) {
         ignoreMouseDonwRef.current = false;
         return;
       }
 
-      if ((e as React.TouchEvent).type === 'touchstart') {
+      if ((e as TouchEvent).type === 'touchstart') {
         ignoreMouseDonwRef.current = true;
       }
 
@@ -114,8 +126,8 @@ const Ripple = React.forwardRef<RippleRef, RippleProps>((props, ref) => {
         startTimerRef.current = undefined;
       }
 
-      const el = (e as React.UIEvent).currentTarget
-        ? ((e as React.UIEvent).currentTarget as HTMLElement)
+      const el = (e as UIEvent).currentTarget
+        ? ((e as UIEvent).currentTarget as HTMLElement)
         : containerRef.current;
       const rect = el
         ? getBoundingClientRect(el)
@@ -129,7 +141,7 @@ const Ripple = React.forwardRef<RippleRef, RippleProps>((props, ref) => {
       const clientWidth = el ? el.clientWidth : 0;
       const clientHeight = el ? el.clientHeight : 0;
 
-      const { clientX, clientY } = (e as React.TouchEvent<HTMLDivElement>).touches
+      const { clientX, clientY } = (e as TouchEvent<HTMLDivElement>).touches
         ? (e as TouchEvent).touches[0]
         : (e as MouseEvent);
       const x = Math.round(typeof clientX === 'undefined' ? clientWidth / 2 : clientX - rect.left);
@@ -138,7 +150,7 @@ const Ripple = React.forwardRef<RippleRef, RippleProps>((props, ref) => {
       const sizeY = Math.max(Math.abs(clientHeight - y), y) * 2 + 2;
       const size = Math.round(Math.sqrt(sizeX ** 2 + sizeY ** 2));
 
-      if ((e as React.TouchEvent).touches) {
+      if ((e as TouchEvent).touches) {
         // check that this isn't another touchstart due to multitouch
         // otherwise we will only clear a single timer when unmounting while two
         // are running

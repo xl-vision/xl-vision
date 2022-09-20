@@ -1,12 +1,12 @@
 import { mount } from 'enzyme';
-import React from 'react';
+import { useMemo } from 'react';
 import { DeleteFilled } from '@xl-vision/icons';
 import ThemeProvder, { BaseTheme } from '../../ThemeProvider';
 
 describe('styled', () => {
   it('test styled overrideStyles', () => {
     const Demo = ({ transition }: { transition?: string }) => {
-      const theme: BaseTheme = React.useMemo(() => {
+      const theme: BaseTheme = useMemo(() => {
         if (!transition) {
           return {};
         }

@@ -1,14 +1,15 @@
 import { isProduction } from '@xl-vision/utils';
-import React from 'react';
+
 import { useConstantFn } from '@xl-vision/hooks';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
+import { HTMLAttributes, ReactNode, forwardRef, useContext, useEffect } from 'react';
 import { styled } from '../styles';
 import AnchorContext from './AnchorContext';
 import { useTheme } from '../ThemeProvider';
 
-export type AnchorLinkProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> & {
-  title: React.ReactNode;
+export type AnchorLinkProps = Omit<HTMLAttributes<HTMLDivElement>, 'title'> & {
+  title: ReactNode;
   href: string;
 };
 
@@ -48,18 +49,18 @@ const AnchorLinkTitle = styled('a', {
   };
 });
 
-const AnchorLink = React.forwardRef<HTMLDivElement, AnchorLinkProps>((props, ref) => {
+const AnchorLink = forwardRef<HTMLDivElement, AnchorLinkProps>((props, ref) => {
   const { clsPrefix } = useTheme();
 
   const { title, href, className, children, ...others } = props;
 
-  const { activeLink, registerLink, unregisterLink, scrollTo } = React.useContext(AnchorContext);
+  const { activeLink, registerLink, unregisterLink, scrollTo } = useContext(AnchorContext);
 
   const handleClick = useConstantFn(() => {
     scrollTo(href);
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     registerLink(href);
     return () => {
       unregisterLink(href);

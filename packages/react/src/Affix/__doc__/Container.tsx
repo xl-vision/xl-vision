@@ -1,5 +1,5 @@
-import React from 'react';
 import { Affix, Button, styled } from '@xl-vision/react';
+import { useCallback, useRef } from 'react';
 
 const Root = styled('div')(() => {
   return {
@@ -13,9 +13,9 @@ const Root = styled('div')(() => {
 });
 
 const Demo = () => {
-  const ref = React.useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
 
-  const target = React.useCallback(() => {
+  const target = useCallback(() => {
     return ref.current!;
   }, []);
 

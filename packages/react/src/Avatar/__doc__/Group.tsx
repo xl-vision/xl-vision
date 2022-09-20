@@ -1,6 +1,5 @@
 import { DesktopOutlined, UserOutlined } from '@xl-vision/icons';
 import { Avatar, Tooltip } from '@xl-vision/react';
-import React from 'react';
 
 const Group = () => {
   return (

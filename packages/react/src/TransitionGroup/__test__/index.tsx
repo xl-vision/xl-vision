@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 import { mount } from 'enzyme';
-import React from 'react';
 import { noop } from '@xl-vision/utils';
 import * as utils from '@xl-vision/utils';
 import TransitionGroup from '..';

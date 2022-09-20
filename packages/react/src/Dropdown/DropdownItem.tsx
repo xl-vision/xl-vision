@@ -1,16 +1,16 @@
 import { CSSObject } from '@xl-vision/styled-engine';
-import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { isProduction } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
+import { forwardRef, HTMLAttributes, ReactNode, useContext } from 'react';
 import BaseButton from '../BaseButton';
 import { styled } from '../styles';
 import DropdownContext from './DropdownContext';
 import { useTheme } from '../ThemeProvider';
 
-export interface DropdownItemProps extends React.HTMLAttributes<HTMLLIElement> {
-  children: React.ReactNode;
+export interface DropdownItemProps extends HTMLAttributes<HTMLLIElement> {
+  children: ReactNode;
   disabled?: boolean;
 }
 
@@ -61,14 +61,14 @@ const DropdownItemButton = styled(BaseButton, {
   return styles;
 });
 
-const DropdownItem = React.forwardRef<HTMLLIElement, DropdownItemProps>((props, ref) => {
+const DropdownItem = forwardRef<HTMLLIElement, DropdownItemProps>((props, ref) => {
   const { children, onClick, disabled, className, ...others } = props;
 
   const { clsPrefix } = useTheme();
 
-  const { setVisible } = React.useContext(DropdownContext);
+  const { setVisible } = useContext(DropdownContext);
 
-  const handleClick = useConstantFn((e: React.MouseEvent<HTMLLIElement>) => {
+  const handleClick = useConstantFn((e: MouseEvent<HTMLLIElement>) => {
     if (disabled) {
       return;
     }

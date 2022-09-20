@@ -51,10 +51,10 @@ const styled = <
   });
 
   const overrideCreateStyledComponent = <
-    S extends {} | undefined = undefined,
+    S extends object | undefined = undefined,
     P extends Pick<ExtractProps<Tag>, ForwardedProps> = Pick<ExtractProps<Tag>, ForwardedProps>,
-    E = S extends undefined ? { theme: Theme } : { styleProps: S; theme: Theme },
-    V = Omit<E, 'theme'> & { theme?: Theme },
+    E extends object = S extends undefined ? { theme: Theme } : { styleProps: S; theme: Theme },
+    V extends object = Omit<E, 'theme'> & { theme?: Theme },
   >(
     first: TemplateStringsArray | CSSObject | FunctionInterpolation<P, E>,
     ...styles: Array<Interpolation<P, E>>
@@ -76,7 +76,7 @@ const styled = <
         return;
       }
       if (typeof overrideSlotStyle === 'function') {
-        // TODO [2022-06-01]: type fix
+        // TODO [2022-12-01]: type fix
         return (overrideSlotStyle as unknown as FunctionInterpolation<P, E>)(props);
       }
       return overrideSlotStyle;
@@ -99,6 +99,7 @@ const styled = <
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       newFirst = applyTheme(newFirst);
     }
+
 
     const DefaultComponent = defaultCreateStyledComponent<P & V>(
       newFirst as TemplateStringsArray | CSSObject | FunctionInterpolation<P, V>,

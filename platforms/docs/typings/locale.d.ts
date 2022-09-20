@@ -1,4 +1,6 @@
 declare module '*.mdx?locale' {
-  const component: React.ComponentType;
+  import { ComponentType } from 'react';
+
+  const component: ComponentType;
   export default component;
 }

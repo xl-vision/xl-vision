@@ -1,5 +1,5 @@
-import React from 'react';
 import { Button, styled, TransitionGroup } from '@xl-vision/react';
+import { useRef, useState, useCallback } from 'react';
 
 const Wrapper = styled('div')({
   marginTop: 20,
@@ -28,11 +28,11 @@ const Demo = styled('span')({
 });
 
 const Basic = () => {
-  const nextNumRef = React.useRef(10);
+  const nextNumRef = useRef(10);
 
-  const [items, setItems] = React.useState([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  const [items, setItems] = useState([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 
-  const handleAdd = React.useCallback(() => {
+  const handleAdd = useCallback(() => {
     setItems((prev) => {
       const index = Math.round(Math.random() * prev.length);
       prev.splice(index, 0, nextNumRef.current++);
@@ -40,7 +40,7 @@ const Basic = () => {
     });
   }, []);
 
-  const handleRemove = React.useCallback(() => {
+  const handleRemove = useCallback(() => {
     setItems((prev) => {
       const index = Math.round(Math.random() * prev.length);
       prev.splice(index, 1);

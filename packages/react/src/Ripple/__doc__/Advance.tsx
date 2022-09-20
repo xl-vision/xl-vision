@@ -1,5 +1,5 @@
-import React from 'react';
 import { Ripple, RippleRef, styled } from '@xl-vision/react';
+import { useRef, useMemo, SyntheticEvent } from 'react';
 
 const Box = styled('div')(
   ({ theme }) => `
@@ -31,10 +31,10 @@ const Box = styled('div')(
 );
 
 const Advance = () => {
-  const rippleRef = React.useRef<RippleRef>(null);
+  const rippleRef = useRef<RippleRef>(null);
 
-  const events = React.useMemo(() => {
-    const start = (e: React.SyntheticEvent) => {
+  const events = useMemo(() => {
+    const start = (e: SyntheticEvent) => {
       rippleRef.current?.start(e);
     };
     const stop = () => {

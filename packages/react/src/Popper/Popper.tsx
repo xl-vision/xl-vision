@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events */
-import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { isProduction, isServer, oneOf } from '@xl-vision/utils';
@@ -17,6 +15,20 @@ import {
   useHover,
 } from '@xl-vision/popper';
 import { useForkRef } from '@xl-vision/hooks';
+import {
+  MouseEventHandler,
+  Ref,
+  HTMLAttributes,
+  ReactElement,
+  forwardRef,
+  useMemo,
+  Children,
+  useState,
+  useCallback,
+  useEffect,
+  cloneElement,
+  CSSProperties,
+} from 'react';
 import Transition, { TransitionProps } from '../Transition';
 import Portal, { PortalContainerType } from '../Portal';
 import usePropChange from '../hooks/usePropChange';
@@ -27,18 +39,18 @@ export type PopperTrigger = 'hover' | 'focus' | 'click' | 'contextMenu' | 'custo
 export type PopperPlacement = Placement;
 
 export type PopperChildrenProps = {
-  onClick?: React.MouseEventHandler<any>;
-  onMouseEnter?: React.MouseEventHandler<any>;
-  onMouseLeave?: React.MouseEventHandler<any>;
-  onFocus?: React.MouseEventHandler<any>;
-  onBlur?: React.MouseEventHandler<any>;
-  onContextMenu?: React.MouseEventHandler<any>;
-  ref?: React.Ref<any>;
+  onClick?: MouseEventHandler<any>;
+  onMouseEnter?: MouseEventHandler<any>;
+  onMouseLeave?: MouseEventHandler<any>;
+  onFocus?: MouseEventHandler<any>;
+  onBlur?: MouseEventHandler<any>;
+  onContextMenu?: MouseEventHandler<any>;
+  ref?: Ref<any>;
 };
 
-export interface PopperProps extends React.HTMLAttributes<HTMLDivElement> {
-  children: React.ReactElement<PopperChildrenProps>;
-  popup: React.ReactElement;
+export interface PopperProps extends HTMLAttributes<HTMLDivElement> {
+  children: ReactElement<PopperChildrenProps>;
+  popup: ReactElement;
   popupContainer?: PortalContainerType;
   transitionClassName?: TransitionProps['transitionClassName'];
   trigger?: PopperTrigger | Array<PopperTrigger>;
@@ -50,7 +62,7 @@ export interface PopperProps extends React.HTMLAttributes<HTMLDivElement> {
   visible?: boolean;
   defaultVisible?: boolean;
   onVisibleChange?: (visible: boolean) => void;
-  arrow?: React.ReactElement;
+  arrow?: ReactElement;
   className?: string;
   destroyOnHide?: boolean;
   flip?: boolean | Record<string, any>;
@@ -68,7 +80,7 @@ const TIME_DELAY = 200;
 
 const defaultGetPopupContainer = () => document.body;
 
-const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
+const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
   const {
     children,
     popup,
@@ -96,17 +108,17 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
 
   const { clsPrefix } = useTheme();
 
-  const triggers = React.useMemo(() => {
+  const triggers = useMemo(() => {
     return Array.isArray(trigger) ? trigger : [trigger];
   }, [trigger]);
 
-  const child: React.ReactElement<PopperChildrenProps> = React.Children.only(children);
+  const child: ReactElement<PopperChildrenProps> = Children.only(children);
 
   const [visible, setVisible] = usePropChange(defaultVisible, visibleProp, onVisibleChange);
 
-  const [transitionVisible, setTransitionVisible] = React.useState(visible);
+  const [transitionVisible, setTransitionVisible] = useState(visible);
 
-  const middlewares = React.useMemo<Array<Middleware>>(() => {
+  const middlewares = useMemo<Array<Middleware>>(() => {
     return [shift(), offset(offsetProp), arrow()];
   }, [offsetProp]);
 
@@ -122,7 +134,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     },
   );
 
-  const getPopper = React.useCallback(
+  const getPopper = useCallback(
     (el: HTMLElement | null) => {
       if (visible) {
         popper(el);
@@ -139,13 +151,13 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     }),
   );
 
-  const forkRef = useForkRef((child as { ref?: React.Ref<unknown> }).ref, ref, reference);
+  const forkRef = useForkRef((child as { ref?: Ref<unknown> }).ref, ref, reference);
 
-  const handleTransitionExit = React.useCallback(() => {
+  const handleTransitionExit = useCallback(() => {
     setVisible(false);
   }, [setVisible]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (visible) {
       setTransitionVisible(true);
     }
@@ -159,7 +171,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
 
   const arrowNode =
     arrowProp &&
-    React.cloneElement(arrowProp, {
+    cloneElement(arrowProp, {
       'aria-hidden': true,
       ...(arrowProp as { props?: {} }).props,
       style: arrowStyle,
@@ -171,7 +183,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
 
   const rootClasses = clsx(rootClassName, className);
 
-  const popperStyle: React.CSSProperties = {
+  const popperStyle: CSSProperties = {
     position: mode,
     left: 0,
     top: 0,
@@ -211,7 +223,7 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
     </Portal>
   );
 
-  const cloneChild = React.cloneElement(child, {
+  const cloneChild = cloneElement(child, {
     ref: forkRef,
     ...getReferenceProps({}),
   });

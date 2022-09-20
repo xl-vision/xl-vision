@@ -1,25 +1,25 @@
-import React from 'react';
 import { usePopper, PopperOptions, shift, Middleware } from '@xl-vision/popper';
 import { styled, Button, Portal, Row } from '@xl-vision/react';
+import { useRef, useMemo, useCallback, forwardRef, useImperativeHandle, useEffect } from 'react';
 
 const Demo = () => {
-  const popper1Ref = React.useRef<CustomPopperInstance>(null);
-  const popper2Ref = React.useRef<CustomPopperInstance>(null);
-  const popper3Ref = React.useRef<CustomPopperInstance>(null);
+  const popper1Ref = useRef<CustomPopperInstance>(null);
+  const popper2Ref = useRef<CustomPopperInstance>(null);
+  const popper3Ref = useRef<CustomPopperInstance>(null);
 
-  const middlewares1: Array<Middleware> = React.useMemo(() => {
+  const middlewares1: Array<Middleware> = useMemo(() => {
     return [shift()];
   }, []);
 
-  const middlewares2: Array<Middleware> = React.useMemo(() => {
+  const middlewares2: Array<Middleware> = useMemo(() => {
     return [shift({ crossAxis: true })];
   }, []);
 
-  const middlewares3: Array<Middleware> = React.useMemo(() => {
+  const middlewares3: Array<Middleware> = useMemo(() => {
     return [shift()];
   }, []);
 
-  const handleScroll = React.useCallback(() => {
+  const handleScroll = useCallback(() => {
     popper1Ref.current?.update();
     popper2Ref.current?.update();
     popper3Ref.current?.update();
@@ -79,8 +79,8 @@ type CustomPopperInstance = {
   update: () => void;
 };
 
-const CustomPopper = React.forwardRef<CustomPopperInstance, CustomPopperProps>((props, ref) => {
-  const rafIdRef = React.useRef<number | undefined>();
+const CustomPopper = forwardRef<CustomPopperInstance, CustomPopperProps>((props, ref) => {
+  const rafIdRef = useRef<number | undefined>();
 
   const { reference, popper, x, y, mode, update } = usePopper({
     placement: 'top',
@@ -88,13 +88,13 @@ const CustomPopper = React.forwardRef<CustomPopperInstance, CustomPopperProps>((
     ...props,
   });
 
-  React.useImperativeHandle(ref, () => {
+  useImperativeHandle(ref, () => {
     return {
       update,
     };
   });
 
-  const handleUpdate = React.useMemo(() => {
+  const handleUpdate = useMemo(() => {
     // 节流
     const throttle = () => {
       if (rafIdRef.current !== undefined) {
@@ -108,7 +108,7 @@ const CustomPopper = React.forwardRef<CustomPopperInstance, CustomPopperProps>((
     return throttle;
   }, [update]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     return () => {
       if (rafIdRef.current !== undefined) {
         cancelAnimationFrame(rafIdRef.current);
@@ -116,7 +116,7 @@ const CustomPopper = React.forwardRef<CustomPopperInstance, CustomPopperProps>((
     };
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     document.addEventListener('scroll', handleUpdate);
     return () => {
       document.removeEventListener('scroll', handleUpdate);

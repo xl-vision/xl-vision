@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useTheme } from '../ThemeProvider';
 import { Breakpoint } from '../ThemeProvider/breakpoints';
 
@@ -7,13 +7,13 @@ const useBreakPoints = () => {
 
   const { values, unit } = breakpoints;
 
-  const [media, setMedia] = React.useState<{ [key: string]: boolean }>({});
+  const [media, setMedia] = useState<{ [key: string]: boolean }>({});
 
-  const breakPointArray = React.useMemo(() => {
+  const breakPointArray = useMemo(() => {
     return Object.keys(values).sort((a, b) => values[b as Breakpoint] - values[a as Breakpoint]);
   }, [values]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handlerMap: {
       [breakPoint: string]: {
         listener: EventListener;
@@ -46,7 +46,7 @@ const useBreakPoints = () => {
     };
   }, [values, unit]);
 
-  return React.useMemo<Array<[Breakpoint, boolean]>>(
+  return useMemo<Array<[Breakpoint, boolean]>>(
     () => breakPointArray.map((key) => [key as Breakpoint, media[key]]),
     [breakPointArray, media],
   );

@@ -1,8 +1,8 @@
-import React from 'react';
 import { Input } from '@xl-vision/react';
+import { useState } from 'react';
 
 const Demo = () => {
-  const [value, handleValue] = React.useState<string>();
+  const [value, handleValue] = useState<string>();
 
   return (
     <div>

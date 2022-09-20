@@ -1,11 +1,11 @@
 import { isProduction } from '@xl-vision/utils';
-import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
+import { HTMLAttributes, FC, useMemo } from 'react';
 import { ComponentSize, useTheme, ThemeContext } from '../ThemeProvider';
 import { styled } from '../styles';
 
-export type InputGroupProps = React.HTMLAttributes<HTMLDivElement> & {
+export type InputGroupProps = HTMLAttributes<HTMLDivElement> & {
   size?: ComponentSize;
 };
 
@@ -63,7 +63,7 @@ const InputGroupRoot = styled('div', {
   };
 });
 
-const InputGroup: React.FC<InputGroupProps> = (props) => {
+const InputGroup: FC<InputGroupProps> = (props) => {
   const theme = useTheme();
 
   const { clsPrefix, componentSize } = theme;
@@ -74,7 +74,7 @@ const InputGroup: React.FC<InputGroupProps> = (props) => {
 
   const classes = clsx(rootClassName, `${rootClassName}--size-${size}`, className);
 
-  const newTheme = React.useMemo(() => {
+  const newTheme = useMemo(() => {
     return {
       ...theme,
       componentSize: size,

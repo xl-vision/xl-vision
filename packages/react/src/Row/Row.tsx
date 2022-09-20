@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import React from 'react';
 import { isProduction } from '@xl-vision/utils';
+import { HTMLAttributes, ReactElement, ComponentType, forwardRef, useMemo } from 'react';
 import { styled } from '../styles';
 import { ColProps } from './Col';
 import RowContext from './RowContext';
@@ -12,13 +12,13 @@ import { Breakpoint } from '../ThemeProvider/breakpoints';
 export type RowAlign = 'top' | 'middle' | 'bottom';
 export type RowJustify = 'start' | 'end' | 'center' | 'space-around' | 'space-between';
 
-export interface RowProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface RowProps extends HTMLAttributes<HTMLDivElement> {
   align?: RowAlign;
-  children: React.ReactElement<ColProps> | Array<React.ReactElement<ColProps>>;
+  children: ReactElement<ColProps> | Array<ReactElement<ColProps>>;
   className?: string;
   gutter?: number | Partial<Record<Breakpoint, number>>;
   justify?: RowJustify;
-  component?: keyof JSX.IntrinsicElements | React.ComponentType;
+  component?: keyof JSX.IntrinsicElements | ComponentType;
   wrap?: boolean;
   removeOnUnvisible?: boolean;
 }
@@ -67,7 +67,7 @@ const RowRoot = styled('div', {
   };
 });
 
-const Row = React.forwardRef<HTMLDivElement, RowProps>((props, ref) => {
+const Row = forwardRef<HTMLDivElement, RowProps>((props, ref) => {
   const {
     align,
     justify,
@@ -85,7 +85,7 @@ const Row = React.forwardRef<HTMLDivElement, RowProps>((props, ref) => {
 
   const breakPoints = useBreakPoints();
 
-  const computedGutter = React.useMemo(() => {
+  const computedGutter = useMemo(() => {
     if (typeof gutter === 'number') {
       return gutter;
     }
@@ -121,7 +121,7 @@ const Row = React.forwardRef<HTMLDivElement, RowProps>((props, ref) => {
     className,
   );
 
-  const memorizedValue = React.useMemo(
+  const memorizedValue = useMemo(
     () => ({ gutter: computedGutter, breakPoints, removeOnUnvisible }),
     [computedGutter, breakPoints, removeOnUnvisible],
   );

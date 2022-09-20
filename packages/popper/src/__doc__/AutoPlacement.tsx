@@ -1,13 +1,13 @@
-import React from 'react';
 import { usePopper, Middleware, autoPlacement } from '@xl-vision/popper';
 import { styled, Button, Portal } from '@xl-vision/react';
+import { useRef, useMemo, useEffect } from 'react';
 
 const container = () => document.body;
 
 const Demo = () => {
-  const rafIdRef = React.useRef<number | undefined>();
+  const rafIdRef = useRef<number | undefined>();
 
-  const middlewares: Array<Middleware> = React.useMemo(() => {
+  const middlewares: Array<Middleware> = useMemo(() => {
     return [autoPlacement()];
   }, []);
 
@@ -17,7 +17,7 @@ const Demo = () => {
     middlewares,
   });
 
-  const handleUpdate = React.useMemo(() => {
+  const handleUpdate = useMemo(() => {
     // 节流
     const throttle = () => {
       if (rafIdRef.current !== undefined) {
@@ -31,7 +31,7 @@ const Demo = () => {
     return throttle;
   }, [update]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     return () => {
       if (rafIdRef.current !== undefined) {
         cancelAnimationFrame(rafIdRef.current);
@@ -39,7 +39,7 @@ const Demo = () => {
     };
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     document.addEventListener('scroll', handleUpdate);
     return () => {
       document.removeEventListener('scroll', handleUpdate);

@@ -6,10 +6,7 @@ export type HoverOptions = {
   delay?: number | { open: number; close: number };
 };
 
-const useHover: InteractionHook<HoverOptions | void> = (
-  { refs, update, open, setOpen, eventEmitter },
-  { enablePopperEnter, delay, skip } = {},
-) => {
+const useHover: InteractionHook<HoverOptions | void> = ({ setOpen }, { skip } = {}) => {
   const handleReferenceMouseEnter = useConstantFn(() => {
     if (skip) {
       return;

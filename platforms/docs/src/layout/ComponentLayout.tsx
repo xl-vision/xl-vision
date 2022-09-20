@@ -1,4 +1,3 @@
-import React from 'react';
 import BaseLayout from '../components/BaseLayout';
 import { Layout } from './Layout';
 

@@ -1,5 +1,5 @@
-import React from 'react';
 import { Popper, Button, styled } from '@xl-vision/react';
+import { useState, useCallback } from 'react';
 
 const Wrapper = styled('div')(({ theme }) => {
   return {
@@ -34,13 +34,13 @@ const Wrapper = styled('div')(({ theme }) => {
 const popup = <span>This is popper</span>;
 
 const Trigger = () => {
-  const [visible, setVisible] = React.useState(false);
+  const [visible, setVisible] = useState(false);
 
-  const handleCustomClick = React.useCallback(() => {
+  const handleCustomClick = useCallback(() => {
     setVisible((prev) => !prev);
   }, []);
 
-  const handleVisible = React.useCallback((_visible: boolean) => {
+  const handleVisible = useCallback((_visible: boolean) => {
     console.log(_visible);
   }, []);
 

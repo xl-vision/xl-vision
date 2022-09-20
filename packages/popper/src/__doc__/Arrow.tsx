@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   arrow,
   shift,
@@ -8,6 +7,7 @@ import {
   offset,
 } from '@xl-vision/popper';
 import { styled, Button, Portal, Row } from '@xl-vision/react';
+import { useMemo, CSSProperties } from 'react';
 
 const Demo = () => {
   return (
@@ -55,7 +55,7 @@ const DemoRoot = styled('div')(({ theme }) => {
 const container = () => document.body;
 
 const CustomPopper = ({ placement: initialPlacement }: { placement: Placement }) => {
-  const middlewares: Array<Middleware> = React.useMemo(() => {
+  const middlewares: Array<Middleware> = useMemo(() => {
     return [shift(), offset(10), arrow()];
   }, []);
 
@@ -72,7 +72,7 @@ const CustomPopper = ({ placement: initialPlacement }: { placement: Placement })
     transform: `translate3d(${Math.round(x)}px, ${Math.round(y)}px, 0)`,
   };
 
-  const arrowStyle: React.CSSProperties = {
+  const arrowStyle: CSSProperties = {
     left: extra.arrow?.x ? Math.round(Math.max(extra.arrow.x - 4, 0)) : '',
     top: extra.arrow?.y ? Math.round(Math.max(extra.arrow.y - 4, 0)) : '',
   };

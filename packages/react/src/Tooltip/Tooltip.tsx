@@ -1,28 +1,40 @@
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import React from 'react';
 import { isProduction, isServer, oneOf } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
+import {
+  Children,
+  cloneElement,
+  forwardRef,
+  ReactElement,
+  ReactNode,
+  TouchEventHandler,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import Popper, { PopperChildrenProps, PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
 import usePropChange from '../hooks/usePropChange';
 import { useTheme } from '../ThemeProvider';
 
 export interface TooltipChildrenProps extends PopperChildrenProps {
-  onTouchStart?: React.TouchEventHandler<any>;
-  onTouchEnd?: React.TouchEventHandler<any>;
+  onTouchStart?: TouchEventHandler<any>;
+  onTouchEnd?: TouchEventHandler<any>;
 }
 
 export type TooltipTrigger = PopperTrigger | 'touch';
 
 export interface TooltipProps
   extends Omit<PopperProps, 'popup' | 'arrow' | 'transitionClasses' | 'children' | 'trigger'> {
-  content: React.ReactNode;
+  content: ReactNode;
   transitionClassName?: string;
   bgColor?: string;
   maxWidth?: number | string;
   showArrow?: boolean;
-  children: React.ReactElement<TooltipChildrenProps>;
+  children: ReactElement<TooltipChildrenProps>;
   trigger?: TooltipTrigger | Array<TooltipTrigger>;
   touchShowDelay?: number;
   touchHideDelay?: number;
@@ -116,7 +128,7 @@ const defaultTrigger: Array<TooltipTrigger> = ['hover', 'touch'];
 
 const TIME_DELAY = 300;
 
-const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
+const Tooltip = forwardRef<unknown, TooltipProps>((props, ref) => {
   const { clsPrefix, color } = useTheme();
 
   const {
@@ -140,13 +152,13 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
     ...others
   } = props;
 
-  const child = React.Children.only<React.ReactElement<TooltipChildrenProps>>(children);
+  const child = Children.only<ReactElement<TooltipChildrenProps>>(children);
 
   const [visible, setVisible] = usePropChange(defaultVisible, visibleProp, onVisibleChange);
 
-  const [touch, setTouch] = React.useState(false);
+  const [touch, setTouch] = useState(false);
 
-  const extraTriggers = React.useMemo(() => {
+  const extraTriggers = useMemo(() => {
     const triggers = Array.isArray(trigger) ? trigger : [trigger];
     return triggers.filter((it) => it !== 'touch') as Array<PopperTrigger>;
   }, [trigger]);
@@ -159,11 +171,11 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
     setVisible(_visible);
   });
 
-  const touchDelayTimerRef = React.useRef<NodeJS.Timeout>();
+  const touchDelayTimerRef = useRef<NodeJS.Timeout>();
 
-  const prevUserSelectRef = React.useRef<string>();
+  const prevUserSelectRef = useRef<string>();
 
-  const stopTouchInteraction = React.useCallback(() => {
+  const stopTouchInteraction = useCallback(() => {
     if (prevUserSelectRef.current !== undefined) {
       document.body.style.webkitUserSelect = prevUserSelectRef.current;
       prevUserSelectRef.current = undefined;
@@ -182,7 +194,7 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
     return oneOf(triggers, 'touch');
   });
 
-  const handleReferenceTouchStart: React.TouchEventHandler<any> = useConstantFn((e) => {
+  const handleReferenceTouchStart: TouchEventHandler<any> = useConstantFn((e) => {
     if (isTouchTrigger()) {
       stopTouchInteraction();
       prevUserSelectRef.current = document.body.style.webkitUserSelect;
@@ -198,7 +210,7 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
     child.props?.onTouchStart?.(e);
   });
 
-  const handleReferenceTouchEnd: React.TouchEventHandler<any> = useConstantFn((e) => {
+  const handleReferenceTouchEnd: TouchEventHandler<any> = useConstantFn((e) => {
     if (isTouchTrigger()) {
       // call after mouseenter
       stopTouchInteraction();
@@ -218,7 +230,7 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
     onAfterClosed?.();
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     return () => {
       stopTouchInteraction();
     };
@@ -266,7 +278,7 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
       popupContainer={popupContainer}
       transitionClassName={transitionClassName || rootClassName}
     >
-      {React.cloneElement(child, {
+      {cloneElement(child, {
         onTouchStart: handleReferenceTouchStart,
         onTouchEnd: handleReferenceTouchEnd,
       })}

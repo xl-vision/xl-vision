@@ -1,6 +1,6 @@
 import { useAutoUpdatePopper } from '@xl-vision/popper';
 import { Button, Portal, styled } from '@xl-vision/react';
-import React from 'react';
+import { useState } from 'react';
 
 const DemoRoot = styled('div')(({ theme }) => {
   const { color } = theme;
@@ -32,7 +32,7 @@ const DemoRoot = styled('div')(({ theme }) => {
 const container = () => document.body;
 
 const Demo = () => {
-  const [enable, setEnable] = React.useState(true);
+  const [enable, setEnable] = useState(true);
 
   const { reference, popper, x, y, mode } = useAutoUpdatePopper({
     placement: 'top',

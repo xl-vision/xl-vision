@@ -1,4 +1,3 @@
-import React from 'react';
 import { Tooltip, Button, styled } from '@xl-vision/react';
 
 const Wrapper = styled('div')(() => {

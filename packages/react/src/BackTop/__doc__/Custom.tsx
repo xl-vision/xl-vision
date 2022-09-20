@@ -1,6 +1,5 @@
 import { ToTopOutlined } from '@xl-vision/icons';
 import { BackTop, Button } from '@xl-vision/react';
-import React from 'react';
 
 const Basic = () => {
   return (

@@ -1,5 +1,4 @@
 import { GetStaticProps, NextPage } from 'next';
-import React from 'react';
 import Docs from '@xl-vision/react/Popper/__doc__/index.en-US.mdx?locale';
 import { LayoutKey } from '../../layout';
 

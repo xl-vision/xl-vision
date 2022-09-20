@@ -1,4 +1,3 @@
-import React from 'react';
 import { Input } from '@xl-vision/react';
 import { SettingOutlined } from '@xl-vision/icons';
 

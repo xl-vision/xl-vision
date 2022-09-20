@@ -1,6 +1,6 @@
 import { warning } from '@xl-vision/utils';
 import { ReactInstance, RefCallback, useCallback, useRef, useState } from 'react';
-// eslint-disable-next-line camelcase
+
 import { findDOMNode } from 'react-dom';
 import useConstantFn from '../useConstantFn';
 import useIsomorphicLayoutEffect from '../useIsomorphicLayoutEffect';

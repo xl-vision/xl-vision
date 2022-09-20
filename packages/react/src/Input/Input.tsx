@@ -1,10 +1,19 @@
 import { contains, isProduction } from '@xl-vision/utils';
-import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { useConstantFn, useForkRef, useUnmount } from '@xl-vision/hooks';
 import { CloseCircleFilled } from '@xl-vision/icons';
 import { CSSObject } from '@xl-vision/styled-engine';
+import {
+  InputHTMLAttributes,
+  ReactNode,
+  forwardRef,
+  useState,
+  useRef,
+  ChangeEvent,
+  useEffect,
+  FocusEvent,
+} from 'react';
 import { styled } from '../styles';
 import usePropChange from '../hooks/usePropChange';
 import { alpha } from '../utils/color';
@@ -12,13 +21,13 @@ import { ComponentSize, useTheme } from '../ThemeProvider';
 import useInput from '../hooks/useInput';
 
 export type InputProps = Omit<
-  React.InputHTMLAttributes<HTMLInputElement>,
+  InputHTMLAttributes<HTMLInputElement>,
   'type' | 'onChange' | 'value' | 'defaultValue' | 'prefix' | 'size'
 > & {
-  prefix?: React.ReactNode;
-  suffix?: React.ReactNode;
-  addonAfter?: React.ReactNode;
-  addonBefore?: React.ReactNode;
+  prefix?: ReactNode;
+  suffix?: ReactNode;
+  addonAfter?: ReactNode;
+  addonBefore?: ReactNode;
   onChange?: (value: string) => void;
   value?: string;
   defaultValue?: string;
@@ -225,7 +234,7 @@ const InputSuffix = styled(InputPrefix, {
   };
 });
 
-const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
+const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
   const { clsPrefix, componentSize } = useTheme();
 
   const {
@@ -258,15 +267,15 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     getWordInfo,
   } = useInput<HTMLInputElement>({ setValue: handleValueChange, maxLength });
 
-  const [focused, setFocused] = React.useState(false);
+  const [focused, setFocused] = useState(false);
 
-  const rootRef = React.useRef<HTMLSpanElement>(null);
+  const rootRef = useRef<HTMLSpanElement>(null);
 
   const forkRef = useForkRef(rootRef, ref);
 
-  const removePasswordTimerRef = React.useRef<NodeJS.Timeout>();
+  const removePasswordTimerRef = useRef<NodeJS.Timeout>();
 
-  const handleChange = useConstantFn((e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = useConstantFn((e: ChangeEvent<HTMLInputElement>) => {
     let v = e.target.value;
     if (typeof v === 'undefined' || v === null) {
       v = '';
@@ -283,7 +292,7 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     }
   });
 
-  const handleMouseUp = useConstantFn((e: React.MouseEvent) => {
+  const handleMouseUp = useConstantFn((e: MouseEvent) => {
     const el = rootRef.current;
     if (!el) {
       return;
@@ -293,14 +302,14 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     }
   });
 
-  const handleFocus = useConstantFn((e: React.FocusEvent<HTMLInputElement>) => {
+  const handleFocus = useConstantFn((e: FocusEvent<HTMLInputElement>) => {
     if (!disabled && !readOnly) {
       setFocused(true);
     }
     onFocus?.(e);
   });
 
-  const handleBlur = useConstantFn((e: React.FocusEvent<HTMLInputElement>) => {
+  const handleBlur = useConstantFn((e: FocusEvent<HTMLInputElement>) => {
     setFocused(false);
     onBlur?.(e);
   });
@@ -310,20 +319,20 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
   });
 
   // 将input focus绑定到span上
-  React.useEffect(() => {
+  useEffect(() => {
     if (rootRef.current) {
       rootRef.current.focus = focus;
     }
   }, [focus]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (disabled || readOnly) {
       setFocused(false);
     }
   }, [disabled, readOnly]);
 
   // 检测是否type=password,并删除value，避免密码泄露
-  React.useEffect(() => {
+  useEffect(() => {
     removePasswordTimerRef.current = setTimeout(() => {
       const input = inputRef.current;
       if (input && input.getAttribute('type') === 'password' && input.hasAttribute('value')) {
@@ -352,7 +361,7 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     className,
   );
 
-  let showCountNode: React.ReactNode;
+  let showCountNode: ReactNode;
 
   // 始终按照受控显示
   const { value: actualValue, wordCount } = getWordInfo(value, true);
@@ -367,7 +376,7 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     showCountNode = <span className={countClasses}>{msg}</span>;
   }
 
-  let allowClearNode: React.ReactNode;
+  let allowClearNode: ReactNode;
 
   if (!disabled && !readOnly && allowClear && actualValue.length) {
     const clearClasses = clsx(`${rootClassName}__suffix-clear`, {

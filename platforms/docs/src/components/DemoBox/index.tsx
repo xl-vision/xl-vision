@@ -1,18 +1,18 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { styled, CollapseTransition, Button, Tooltip } from '@xl-vision/react';
 import { CodeOutlined, DownOutlined } from '@xl-vision/icons';
 import { useRouter } from 'next/router';
 import { useConstantFn } from '@xl-vision/hooks';
+import { ReactNode, FC, useState, useCallback } from 'react';
 import Code from './Code';
 import useIsDebugMode from '../../hooks/useIsDebugMode';
 
 export type DemoBoxProps = {
-  children: [React.ReactNode, React.ReactNode, React.ReactNode];
+  children: [ReactNode, ReactNode, ReactNode];
   jsCode: string;
   // tsCode: string;
-  tsCodeNode: React.ReactNode;
-  jsCodeNode: React.ReactNode;
+  tsCodeNode: ReactNode;
+  jsCodeNode: ReactNode;
   debug?: boolean;
   id?: string;
 };
@@ -105,7 +105,7 @@ const ExpandWrapper = styled(DownOutlined)<{ expand: boolean }>(({ theme, styleP
   };
 });
 
-const DemoBox: React.FC<DemoBoxProps> = ({
+const DemoBox: FC<DemoBoxProps> = ({
   id,
   jsCodeNode,
   tsCodeNode,
@@ -117,7 +117,7 @@ const DemoBox: React.FC<DemoBoxProps> = ({
 
   const router = useRouter();
 
-  const [isExpand, setExpand] = React.useState(false);
+  const [isExpand, setExpand] = useState(false);
 
   const handleCode = useConstantFn(() => {
     router
@@ -130,7 +130,7 @@ const DemoBox: React.FC<DemoBoxProps> = ({
       .catch(console.error);
   });
 
-  const handleExpand = React.useCallback(() => {
+  const handleExpand = useCallback(() => {
     setExpand((prev) => !prev);
   }, []);
 

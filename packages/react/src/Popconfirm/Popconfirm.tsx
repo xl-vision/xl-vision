@@ -1,9 +1,9 @@
 import clsx from 'clsx';
-import React from 'react';
 import PropTypes from 'prop-types';
 import { ExclamationCircleOutlined } from '@xl-vision/icons';
 import { isProduction, isServer } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
+import { ReactNode, forwardRef } from 'react';
 import Popper, { PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
 import Button, { ButtonProps } from '../Button';
@@ -14,8 +14,8 @@ import { useConfig } from '../ConfigProvider';
 export type PopconfirmButtonProps = Omit<ButtonProps, 'children' | 'onClick'>;
 export interface PopconfirmProps
   extends Omit<PopperProps, 'popup' | 'arrow' | 'transitionClasses' | 'title'> {
-  title: React.ReactNode;
-  icon?: React.ReactNode;
+  title: ReactNode;
+  icon?: ReactNode;
   onConfirm?: () => void;
   onCancel?: () => void;
   confirmButtonProps?: PopconfirmButtonProps;
@@ -119,7 +119,7 @@ const PopconfirmPopup = styled('div', {
 
 const defaultIcon = <ExclamationCircleOutlined />;
 
-const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
+const Popconfirm = forwardRef<unknown, PopconfirmProps>((props, ref) => {
   const { clsPrefix } = useTheme();
   const { locale } = useConfig();
 

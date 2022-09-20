@@ -1,10 +1,10 @@
-import React from 'react';
 import { Button, Input } from '@xl-vision/react';
+import { useState } from 'react';
 
 const { Group } = Input;
 
 const Demo = () => {
-  const [value, handleValue] = React.useState<string>();
+  const [value, handleValue] = useState<string>();
 
   return (
     <div>

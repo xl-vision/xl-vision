@@ -1,15 +1,15 @@
 import clsx from 'clsx';
-import React from 'react';
 import PropTypes from 'prop-types';
 import { isProduction, isServer } from '@xl-vision/utils';
+import { ReactNode, forwardRef } from 'react';
 import Popper, { PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 
 export interface PopoverProps
   extends Omit<PopperProps, 'popup' | 'arrow' | 'transitionClasses' | 'title'> {
-  title?: React.ReactNode;
-  content: React.ReactNode;
+  title?: ReactNode;
+  content: ReactNode;
   transitionClassName?: string;
   showArrow?: boolean;
 }
@@ -107,7 +107,7 @@ const PopoverContent = styled('div', {
   };
 });
 
-const Popover = React.forwardRef<unknown, PopoverProps>((props, ref) => {
+const Popover = forwardRef<unknown, PopoverProps>((props, ref) => {
   const {
     title,
     content,

@@ -1,8 +1,8 @@
 import { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
-import React from 'react';
 import { styled } from '@xl-vision/react';
 import { useRouter } from 'next/router';
+import { useContext, useMemo } from 'react';
 import { LocalizationContext } from '../../components/LocalizationProvider';
 import Playground from '../../components/Playground';
 import { LayoutKey } from '../../layout';
@@ -17,16 +17,16 @@ const Main = styled('div')(() => {
 });
 
 const PlaygroundPage: NextPage = () => {
-  const { locale } = React.useContext(LocalizationContext);
+  const { locale } = useContext(LocalizationContext);
 
   const { query } = useRouter();
 
   const defaultCode = query.code as string;
 
-  const code = React.useMemo(() => {
+  const code = useMemo(() => {
     if (!defaultCode) {
       return [
-        `import React from 'react';`,
+        ``,
         `import { Button } from '@xl-vision/react';`,
         '',
         `export default () => {`,
@@ -37,7 +37,7 @@ const PlaygroundPage: NextPage = () => {
     return Buffer.from(defaultCode, 'base64').toString();
   }, [defaultCode]);
 
-  const scripts = React.useMemo(() => {
+  const scripts = useMemo(() => {
     return {};
   }, []);
 

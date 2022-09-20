@@ -1,18 +1,16 @@
-/* eslint-disable react/jsx-handler-names */
 import { Button, Dialog } from '@xl-vision/react';
-import React from 'react';
 
 const Basic = () => {
-  const [visible, setVisible] = React.useState(false);
+  const [visible, setVisible] = useState(false);
 
-  const handleClick = React.useCallback(() => {
+  const handleClick = useCallback(() => {
     setVisible(true);
   }, []);
 
-  const handleConfirm = React.useCallback(() => {
+  const handleConfirm = useCallback(() => {
     console.log('confirm');
   }, []);
-  const handleCancel = React.useCallback(() => {
+  const handleCancel = useCallback(() => {
     console.log('cancel');
   }, []);
 

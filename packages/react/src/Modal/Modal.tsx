@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import {
@@ -12,6 +11,15 @@ import {
   warning,
 } from '@xl-vision/utils';
 import { useForkRef } from '@xl-vision/hooks';
+import {
+  HTMLAttributes,
+  ReactNode,
+  forwardRef,
+  useState,
+  useRef,
+  useCallback,
+  useEffect,
+} from 'react';
 import Portal, { PortalContainerType } from '../Portal';
 import usePropChange from '../hooks/usePropChange';
 import Transition from '../Transition';
@@ -22,9 +30,9 @@ import ScrollLocker from '../utils/ScrollLocker';
 import { useTheme } from '../ThemeProvider';
 import getContainer from '../utils/getContainer';
 
-export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ModalProps extends HTMLAttributes<HTMLDivElement> {
   container?: PortalContainerType<HTMLElement>;
-  children: React.ReactNode;
+  children: ReactNode;
   defaultVisible?: boolean;
   visible?: boolean;
   onVisibleChange?: (visible: boolean) => void;
@@ -145,7 +153,7 @@ let modalManagers: Array<HTMLElement> = [];
 
 const defaultGetContainer = () => document.body;
 
-const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
+const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   const {
     container: containerProp = defaultGetContainer,
     children,
@@ -167,32 +175,32 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
   const [visible, setVisible] = usePropChange(defaultVisible, visibleProp, onVisibleChange);
 
-  const [animatedVisible, setAnimatedVisible] = React.useState(visible);
+  const [animatedVisible, setAnimatedVisible] = useState(visible);
 
-  const [zIndex, setZIndex] = React.useState<number>();
+  const [zIndex, setZIndex] = useState<number>();
 
-  const bodyRef = React.useRef<HTMLDivElement>(null);
-  const isFirstMountRef = React.useRef(true);
+  const bodyRef = useRef<HTMLDivElement>(null);
+  const isFirstMountRef = useRef(true);
 
-  const modalRef = React.useRef<HTMLDivElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
 
   const forkRef = useForkRef(modalRef, ref);
 
-  const innerFocusRef = React.useRef(false);
+  const innerFocusRef = useRef(false);
 
-  const scrollLockerRef = React.useRef<ScrollLocker>();
+  const scrollLockerRef = useRef<ScrollLocker>();
 
-  const [container, setContainer] = React.useState<HTMLElement | null>();
+  const [container, setContainer] = useState<HTMLElement | null>();
 
-  const isTop = React.useCallback(() => {
+  const isTop = useCallback(() => {
     return modalManagers[modalManagers.length - 1] === bodyRef.current;
   }, []);
 
   const inProp = visible && animatedVisible;
 
-  const transitionCount = React.useRef(inProp ? (mask ? 2 : 1) : 0);
+  const transitionCount = useRef(inProp ? (mask ? 2 : 1) : 0);
 
-  React.useEffect(() => {
+  useEffect(() => {
     let node: HTMLElement | null | undefined = getContainer(containerProp);
 
     if (node == null) {
@@ -203,7 +211,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     setContainer(node);
   }, [containerProp]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const body = bodyRef.current;
     const modalNode = modalRef.current;
 
@@ -249,7 +257,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     };
   }, [inProp, isTop]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!container) {
       return;
     }
@@ -262,7 +270,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     };
   }, [container]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!visible) {
       return;
     }
@@ -273,14 +281,14 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
   const rootClassName = `${clsPrefix}-modal`;
 
-  const handleEnter = React.useCallback((el: Element) => {
+  const handleEnter = useCallback((el: Element) => {
     (el as HTMLElement).style.display = '';
     transitionCount.current++;
   }, []);
 
   const bodyClassName = `${rootClassName}__body`;
 
-  const handleModalEnter = React.useCallback(
+  const handleModalEnter = useCallback(
     (nativeEl: Element) => {
       const el = nativeEl as HTMLElement;
       handleEnter(el);
@@ -299,7 +307,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     [bodyClassName, handleEnter],
   );
 
-  const handleExited = React.useCallback(
+  const handleExited = useCallback(
     (el: Element) => {
       transitionCount.current--;
       if (transitionCount.current <= 0) {
@@ -314,15 +322,15 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     [setAnimatedVisible, onAfterClosed],
   );
 
-  const handleMaskClick = React.useCallback(() => {
+  const handleMaskClick = useCallback(() => {
     if (!maskClosable) {
       return;
     }
     setVisible(false);
   }, [setVisible, maskClosable]);
 
-  const handleKeyDown = React.useCallback(
-    (e: React.KeyboardEvent) => {
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent) => {
       if (escClosable && e.key === 'Escape' && isTop()) {
         setVisible(false);
       }
@@ -330,7 +338,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     [isTop, escClosable, setVisible],
   );
 
-  const handleClick = React.useCallback((e: React.MouseEvent) => {
+  const handleClick = useCallback((e: MouseEvent) => {
     const target = e.target as HTMLElement;
     if (bodyRef.current && contains(bodyRef.current, target)) {
       return;
@@ -338,7 +346,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     bodyRef.current?.focus();
   }, []);
 
-  const handleInnerFocus = React.useCallback(() => {
+  const handleInnerFocus = useCallback(() => {
     innerFocusRef.current = true;
   }, []);
 

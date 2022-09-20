@@ -1,8 +1,8 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { isProduction } from '@xl-vision/utils';
 import { CSSObject } from '@xl-vision/styled-engine';
+import { HTMLAttributes, ReactNode, forwardRef, useContext } from 'react';
 import { styled } from '../styles';
 import RowContext from './RowContext';
 import { useTheme } from '../ThemeProvider';
@@ -10,8 +10,8 @@ import { Breakpoint } from '../ThemeProvider/breakpoints';
 
 export type ColSpanType = number | Partial<Record<Breakpoint, number>>;
 
-export interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
-  children?: React.ReactNode;
+export interface ColProps extends HTMLAttributes<HTMLDivElement> {
+  children?: ReactNode;
   className?: string;
   offset?: ColSpanType;
   order?: ColSpanType;
@@ -90,10 +90,10 @@ const ColRoot = styled('div', {
   };
 });
 
-const Col = React.forwardRef<HTMLDivElement, ColProps>((props, ref) => {
+const Col = forwardRef<HTMLDivElement, ColProps>((props, ref) => {
   const { children, className, offset, order, pull, push, column, style, ...others } = props;
 
-  const { gutter, breakPoints, removeOnUnvisible } = React.useContext(RowContext);
+  const { gutter, breakPoints, removeOnUnvisible } = useContext(RowContext);
   const { clsPrefix } = useTheme();
 
   if (removeOnUnvisible && breakPoints) {

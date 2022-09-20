@@ -1,16 +1,16 @@
 import { defaultLanguage } from '@xl-vision/react/locale';
-import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useConstantFn } from '@xl-vision/hooks';
 import { Anchor, Row } from '@xl-vision/react';
+import { ComponentType, FC, useState, useEffect } from 'react';
 import { useLocale } from '../LocalizationProvider';
 import routes, { Route, RouteType } from '../../routes';
 import { height } from '../Header';
 import useIsDebugMode from '../../hooks/useIsDebugMode';
 
 export type DocsProps = {
-  locales: Record<string, { component: React.ComponentType; outlinePromise: Promise<Outline> }>;
+  locales: Record<string, { component: ComponentType; outlinePromise: Promise<Outline> }>;
 };
 
 export type Outline = Array<{
@@ -45,12 +45,12 @@ Object.keys(routes).forEach((baseName) => {
   visitRoute(name, route, routeMap);
 });
 
-const Docs: React.FC<DocsProps> = ({ locales }) => {
+const Docs: FC<DocsProps> = ({ locales }) => {
   const { language } = useLocale();
 
   const { pathname } = useRouter();
 
-  const [outline, setOutline] = React.useState<Outline>([]);
+  const [outline, setOutline] = useState<Outline>([]);
 
   const titleMap = routeMap[pathname];
 
@@ -69,7 +69,7 @@ const Docs: React.FC<DocsProps> = ({ locales }) => {
     }).catch((e) => console.error(e));
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     updateOutline(outlinePromise);
   }, [updateOutline, outlinePromise]);
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Anchor } from '@xl-vision/react';
 import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';

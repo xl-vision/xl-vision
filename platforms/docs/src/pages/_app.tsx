@@ -1,5 +1,4 @@
 import { createGlobalStyles, CssBaseline } from '@xl-vision/react';
-import React from 'react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import LocalizationProvider, { useLocale } from '../components/LocalizationProvider';

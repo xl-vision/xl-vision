@@ -1,4 +1,3 @@
-import React from 'react';
 import { mount } from 'enzyme';
 import { Avatar } from '@xl-vision/react';
 

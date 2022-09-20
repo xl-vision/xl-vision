@@ -1,5 +1,13 @@
-import React from 'react';
 import { isProduction, warning as warningLog } from '@xl-vision/utils';
+import {
+  forwardRef,
+  useState,
+  useImperativeHandle,
+  ReactElement,
+  useCallback,
+  createRef,
+  useMemo,
+} from 'react';
 import createMessageDialog, { MessageDialogProps, MessageDialogType } from './message';
 import { MessageDialogFunctionProps } from './methods';
 
@@ -26,10 +34,10 @@ export type MessageDialogHookReturnType = {
 const createHookMessageDialog = (props: MessageDialogProps, type?: MessageDialogType) => {
   const Dialog = createMessageDialog(type);
 
-  const HookMessageDialog = React.forwardRef<HookMessageDialogRef>((_, ref) => {
-    const [innerConfig, setInnerConfig] = React.useState<MessageDialogProps>(props);
+  const HookMessageDialog = forwardRef<HookMessageDialogRef>((_, ref) => {
+    const [innerConfig, setInnerConfig] = useState<MessageDialogProps>(props);
 
-    React.useImperativeHandle(ref, () => {
+    useImperativeHandle(ref, () => {
       return {
         update(updateProps) {
           setInnerConfig(updateProps);
@@ -50,9 +58,9 @@ const createHookMessageDialog = (props: MessageDialogProps, type?: MessageDialog
 let uuid = 0;
 
 const useDialog = () => {
-  const [dialogs, setDialogs] = React.useState<Array<React.ReactElement>>([]);
+  const [dialogs, setDialogs] = useState<Array<ReactElement>>([]);
 
-  const method = React.useCallback(
+  const method = useCallback(
     (props: MessageDialogHookProps, type?: MessageDialogType): MessageDialogHookReturnType => {
       let currentProps: MessageDialogProps = {
         ...props,
@@ -65,7 +73,7 @@ const useDialog = () => {
       };
       const Dialog = createHookMessageDialog(currentProps, type);
 
-      const ref = React.createRef<HookMessageDialogRef>();
+      const ref = createRef<HookMessageDialogRef>();
 
       let destroyState = false;
 
@@ -121,7 +129,7 @@ const useDialog = () => {
     [],
   );
 
-  const methods = React.useMemo(
+  const methods = useMemo(
     () => ({
       open: (props: MessageDialogFunctionProps) => method(props),
       confirm: (props: MessageDialogFunctionProps) => method(props, 'confirm'),

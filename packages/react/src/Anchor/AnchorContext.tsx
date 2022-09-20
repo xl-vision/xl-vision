@@ -1,5 +1,5 @@
-import React from 'react';
 import { noop } from '@xl-vision/utils';
+import { createContext } from 'react';
 
 export type AnchorContextProps = {
   registerLink: (link: string) => void;
@@ -8,7 +8,7 @@ export type AnchorContextProps = {
   activeLink: string;
 };
 
-export default React.createContext<AnchorContextProps>({
+export default createContext<AnchorContextProps>({
   registerLink: noop,
   unregisterLink: noop,
   scrollTo: noop,

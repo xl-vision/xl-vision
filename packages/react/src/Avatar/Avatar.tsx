@@ -1,9 +1,21 @@
-import { CSSObject } from '@xl-vision/styled-engine';
+import { CSSObject, CSSProperties } from '@xl-vision/styled-engine';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { isProduction } from '@xl-vision/utils';
 import { useConstantFn, useForkRef } from '@xl-vision/hooks';
-import React from 'react';
+import {
+  HTMLAttributes,
+  ReactElement,
+  SVGAttributes,
+  ReactNode,
+  forwardRef,
+  useContext,
+  useRef,
+  useState,
+  useEffect,
+  isValidElement,
+  useMemo,
+} from 'react';
 import { styled } from '../styles';
 import AvatarContext from './AvatarContext';
 import { ComponentSize, useTheme } from '../ThemeProvider';
@@ -13,11 +25,11 @@ export type AvatarShape = 'circle' | 'square' | 'round';
 
 export type AvatarSize = ComponentSize | number;
 
-export type AvatarProps = React.HTMLAttributes<HTMLSpanElement> & {
-  icon?: React.ReactElement<React.SVGAttributes<SVGSVGElement>>;
+export type AvatarProps = HTMLAttributes<HTMLSpanElement> & {
+  icon?: ReactElement<SVGAttributes<SVGSVGElement>>;
   shape?: AvatarShape;
   size?: AvatarSize;
-  src?: React.ReactNode;
+  src?: ReactNode;
   gap?: number;
   srcSet?: string;
   alt?: string;
@@ -83,8 +95,8 @@ const AvatarInner = styled('span', {
   };
 });
 
-const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
-  const { size: contextSize, shape: contextShape } = React.useContext(AvatarContext);
+const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
+  const { size: contextSize, shape: contextShape } = useContext(AvatarContext);
   const { clsPrefix, componentSize } = useTheme();
 
   const {
@@ -102,12 +114,12 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
     ...others
   } = props;
 
-  const nodeRef = React.useRef<HTMLSpanElement>(null);
+  const nodeRef = useRef<HTMLSpanElement>(null);
   const forkRef = useForkRef(nodeRef, ref);
 
-  const [scale, setScale] = React.useState(1);
+  const [scale, setScale] = useState(1);
 
-  const [isImgExist, setImgExist] = React.useState(true);
+  const [isImgExist, setImgExist] = useState(true);
 
   const handleResize = useConstantFn(() => {
     const node = nodeRef.current;
@@ -129,9 +141,9 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
     setScale(Math.min(scaleX, scaleY));
   });
 
-  const childRef = React.useRef<HTMLSpanElement>(null);
+  const childRef = useRef<HTMLSpanElement>(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     handleResize();
   }, [gap, handleResize]);
 
@@ -142,11 +154,11 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
     }
   });
 
-  let childNode: React.ReactNode;
+  let childNode: ReactNode;
 
   const rootClassName = `${clsPrefix}-avatar`;
 
-  const hasImageElement = React.isValidElement(src);
+  const hasImageElement = isValidElement(src);
 
   const isImage = (src && isImgExist) || hasImageElement;
 
@@ -166,7 +178,7 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
     childNode = src;
   } else if (icon || children) {
     const transformString = `scale(${scale})`;
-    const childrenStyle: React.CSSProperties = {
+    const childrenStyle: CSSProperties = {
       msTransform: transformString,
       WebkitTransform: transformString,
       transform: transformString,
@@ -180,7 +192,7 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
     );
   }
 
-  const rootSizeStyle = React.useMemo(() => {
+  const rootSizeStyle = useMemo(() => {
     if (typeof size === 'number') {
       return {
         width: `${size}px`,
@@ -190,7 +202,7 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
     return {};
   }, [size]);
 
-  const rootSize = React.useMemo(() => {
+  const rootSize = useMemo(() => {
     return (typeof size === 'string' && size) as ComponentSize;
   }, [size]);
 

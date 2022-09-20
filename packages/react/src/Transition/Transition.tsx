@@ -1,18 +1,27 @@
 import PropTypes from 'prop-types';
-import React from 'react';
 import { isProduction, warning } from '@xl-vision/utils';
 import { CssTransitionOptions, useCssTransition, useForkRef } from '@xl-vision/hooks';
+import {
+  ReactElement,
+  FC,
+  Children,
+  isValidElement,
+  ReactInstance,
+  Ref,
+  useRef,
+  cloneElement,
+} from 'react';
 import { supportRef } from '../utils/ref';
 
 export type TransitionProps = CssTransitionOptions & {
-  children: React.ReactElement | ((show: boolean) => React.ReactElement);
+  children: ReactElement | ((show: boolean) => ReactElement);
   mountOnEnter?: boolean;
   unmountOnExit?: boolean;
 };
 
 const displayName = 'Transition';
 
-const Transition: React.FC<TransitionProps> = (props) => {
+const Transition: FC<TransitionProps> = (props) => {
   const { children, mountOnEnter, unmountOnExit, in: inProp, ...others } = props;
 
   const { nodeRef, show } = useCssTransition({
@@ -20,21 +29,19 @@ const Transition: React.FC<TransitionProps> = (props) => {
     in: inProp,
   });
 
-  const child = React.Children.only(
-    typeof children === 'function' ? children(show) : (children as React.ReactElement),
+  const child = Children.only(
+    typeof children === 'function' ? children(show) : (children as ReactElement),
   );
 
   warning(!supportRef(child), '<%s>: child does not support ref', displayName);
 
   const forkRef = useForkRef(
-    React.isValidElement<React.ReactInstance>(child)
-      ? (child as { ref?: React.Ref<unknown> }).ref
-      : null,
+    isValidElement<ReactInstance>(child) ? (child as { ref?: Ref<unknown> }).ref : null,
     nodeRef,
   );
 
   // 判断是否是第一次挂载
-  const isFirstMountRef = React.useRef(true);
+  const isFirstMountRef = useRef(true);
 
   if (!show) {
     if (mountOnEnter && isFirstMountRef.current) {
@@ -46,7 +53,7 @@ const Transition: React.FC<TransitionProps> = (props) => {
   }
   isFirstMountRef.current = false;
 
-  return React.cloneElement(child, {
+  return cloneElement(child, {
     ref: forkRef,
   });
 };

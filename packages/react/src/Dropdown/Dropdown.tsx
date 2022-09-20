@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import React from 'react';
 import { isProduction, isServer } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
+import { ReactElement, ReactNode, forwardRef, useContext, useRef, useEffect, useMemo } from 'react';
 import usePropChange from '../hooks/usePropChange';
 import Popper, { PopperPlacement, PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
@@ -11,8 +11,8 @@ import DropdownContext from './DropdownContext';
 
 export interface DropdownProps
   extends Omit<PopperProps, 'popup' | 'arrow' | 'transitionClasses' | 'disablePopupEnter'> {
-  children: React.ReactElement;
-  menus: React.ReactNode;
+  children: ReactElement;
+  menus: ReactNode;
   transitionClassName?: string;
 }
 
@@ -50,7 +50,7 @@ const DropdownPopup = styled('ul', {
 });
 
 // TODO [2022-06-01]: tab快捷键支持
-const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
+const Dropdown = forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
   const {
     menus,
     children,
@@ -66,9 +66,9 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) =>
     ...others
   } = props;
 
-  const { clsPrefix } = React.useContext(ThemeContext);
+  const { clsPrefix } = useContext(ThemeContext);
 
-  const submenuCloseHandlersRef = React.useRef<Array<() => void>>([]);
+  const submenuCloseHandlersRef = useRef<Array<() => void>>([]);
 
   const [visible, setVisible] = usePropChange(defaultVisible, visibleProp, onVisibleChange);
 
@@ -79,7 +79,7 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) =>
     setVisible(newVisible);
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!visible) {
       submenuCloseHandlersRef.current.forEach((it) => it());
     }
@@ -89,7 +89,7 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) =>
 
   const rootClasses = clsx(rootClassName, className);
 
-  const memorizedValue = React.useMemo(() => {
+  const memorizedValue = useMemo(() => {
     return {
       submenuCloseHandlers: submenuCloseHandlersRef.current,
       setVisible: setVisibleWrapper,

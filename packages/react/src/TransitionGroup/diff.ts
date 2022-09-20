@@ -1,8 +1,9 @@
 import { warning } from '@xl-vision/utils';
+import { ReactElement } from 'react';
 
 export type DiffData = {
-  prev: Array<React.ReactElement>;
-  next: Array<React.ReactElement>;
+  prev: Array<ReactElement>;
+  next: Array<ReactElement>;
   same?: boolean;
 };
 
@@ -15,7 +16,7 @@ export type DiffData = {
  * 4、前后对比，节点是添加的，需要做添加标记，位置不变
  * 5、前后对比，相同位置上，原节点删除，新节点添加，需要标记为替换，位置不变
  */
-const diff = (prevChildren: Array<React.ReactElement>, nextChildren: Array<React.ReactElement>) => {
+const diff = (prevChildren: Array<ReactElement>, nextChildren: Array<ReactElement>) => {
   const quene: Array<DiffData> = [];
 
   // 记录前后都存在的key
@@ -47,8 +48,8 @@ const diff = (prevChildren: Array<React.ReactElement>, nextChildren: Array<React
     }
   }
 
-  let prevPendingArray: Array<React.ReactElement> = [];
-  let nextPendingArray: Array<React.ReactElement> = [];
+  let prevPendingArray: Array<ReactElement> = [];
+  let nextPendingArray: Array<ReactElement> = [];
 
   const sameKeys = Object.keys(sameKeyObj);
 

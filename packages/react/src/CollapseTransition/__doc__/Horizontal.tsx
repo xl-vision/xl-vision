@@ -1,5 +1,5 @@
-import React from 'react';
 import { Button, CollapseTransition, styled } from '@xl-vision/react';
+import { useState } from 'react';
 
 const Div = styled('div')`
   display: flex;
@@ -29,7 +29,7 @@ const Div = styled('div')`
 `;
 
 const Horizontal = () => {
-  const [active, setActive] = React.useState(false);
+  const [active, setActive] = useState(false);
 
   return (
     <div className='wrapper'>

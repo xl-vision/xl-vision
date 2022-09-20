@@ -190,6 +190,7 @@ module.exports = {
     {
       files: ['test/__test__/**', 'packages/**/__test__/**', 'packages/**/__doc__/**'],
       rules: {
+        'react/jsx-handler-names': 'off',
         'react/display-name': 'off',
         'react/button-has-type': 'off',
         'import/no-unresolved': 'off',

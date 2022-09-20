@@ -1,36 +1,35 @@
 import { Button, Dialog } from '@xl-vision/react';
-import React from 'react';
 
 const Tips = () => {
-  const handleInfo = React.useCallback(() => {
+  const handleInfo = useCallback(() => {
     Dialog.info({
       title: 'some messages...some messages...',
       content: 'content',
     });
   }, []);
 
-  const handleSuccess = React.useCallback(() => {
+  const handleSuccess = useCallback(() => {
     Dialog.success({
       title: 'some messages...some messages...',
       content: 'content',
     });
   }, []);
 
-  const handleError = React.useCallback(() => {
+  const handleError = useCallback(() => {
     Dialog.error({
       title: 'some messages...some messages...',
       content: 'content',
     });
   }, []);
 
-  const handleWarning = React.useCallback(() => {
+  const handleWarning = useCallback(() => {
     Dialog.warning({
       title: 'some messages...some messages...',
       content: 'content',
     });
   }, []);
 
-  const handleConfirm = React.useCallback(() => {
+  const handleConfirm = useCallback(() => {
     Dialog.confirm({
       title: 'some messages...some messages...',
       content: 'content',

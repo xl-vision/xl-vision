@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import { ReactNode, FC } from 'react';
 
 export type StyledEngineProviderProps = {
   injectFirst?: boolean;
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
-const StyledEngineProvider: React.FC<StyledEngineProviderProps> = (props) => {
+const StyledEngineProvider: FC<StyledEngineProviderProps> = (props) => {
   const { injectFirst, children } = props;
 
   if (injectFirst && typeof window !== 'undefined') {

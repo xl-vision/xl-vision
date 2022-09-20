@@ -1,13 +1,13 @@
-import React from 'react';
 import { ConfigProvider } from '@xl-vision/react';
 import { isProduction, warning } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import { defaultLanguage } from '@xl-vision/react/locale';
+import { ReactNode, createContext, useContext, FC, useMemo } from 'react';
 import locales, { Locale } from './locales';
 
 export type LocalizationProviderProps = {
-  children?: React.ReactNode;
+  children?: ReactNode;
 };
 
 export type LocalizationContextProps = {
@@ -16,22 +16,22 @@ export type LocalizationContextProps = {
   locale: Locale;
 };
 
-export const LocalizationContext = React.createContext<LocalizationContextProps>({
+export const LocalizationContext = createContext<LocalizationContextProps>({
   language: defaultLanguage,
   supportLocales: locales,
   locale: locales[defaultLanguage],
 });
 
 export const useLocale = () => {
-  return React.useContext(LocalizationContext);
+  return useContext(LocalizationContext);
 };
 
-const LocalizationProvider: React.FC<LocalizationProviderProps> = (props) => {
+const LocalizationProvider: FC<LocalizationProviderProps> = (props) => {
   const { children } = props;
 
   const { locale: language = defaultLanguage } = useRouter();
 
-  const locale = React.useMemo(() => {
+  const locale = useMemo(() => {
     if (locales[language]) {
       return locales[language];
     }
@@ -43,7 +43,7 @@ const LocalizationProvider: React.FC<LocalizationProviderProps> = (props) => {
     return locales[defaultLanguage];
   }, [language]);
 
-  const ctx = React.useMemo<LocalizationContextProps>(
+  const ctx = useMemo<LocalizationContextProps>(
     () => ({ language, supportLocales: locales, locale }),
     [language, locale],
   );

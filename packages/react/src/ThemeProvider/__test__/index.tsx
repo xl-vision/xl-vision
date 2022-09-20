@@ -1,5 +1,4 @@
 import { mount } from 'enzyme';
-import React from 'react';
 import { BaseTheme } from '..';
 import ThemeProvider from '../ThemeProvider';
 import useTheme from '../useTheme';

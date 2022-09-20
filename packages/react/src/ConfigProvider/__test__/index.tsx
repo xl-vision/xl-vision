@@ -1,6 +1,5 @@
 import { defaultLanguage } from '@xl-vision/react/locale';
 import { mount } from 'enzyme';
-import React from 'react';
 import { ConfigProvider, useConfig } from '@xl-vision/react';
 
 describe('ConfigProvider', () => {
@@ -10,7 +9,7 @@ describe('ConfigProvider', () => {
     const Demo = () => {
       const { language, locale } = useConfig();
 
-      React.useEffect(() => {
+      useEffect(() => {
         fn(language, locale);
       }, [language, locale]);
 

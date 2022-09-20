@@ -1,10 +1,10 @@
-import React from 'react';
 import { Popconfirm, Button } from '@xl-vision/react';
+import { useState, useCallback } from 'react';
 
 const Promise = () => {
-  const [visible, setVisible] = React.useState(false);
-  const [confirmLoading, setConfirmLoading] = React.useState(false);
-  const handleConfirm = React.useCallback(() => {
+  const [visible, setVisible] = useState(false);
+  const [confirmLoading, setConfirmLoading] = useState(false);
+  const handleConfirm = useCallback(() => {
     setConfirmLoading(true);
     setVisible(true);
     setTimeout(() => {
