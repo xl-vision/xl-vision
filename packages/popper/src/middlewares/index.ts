@@ -6,3 +6,4 @@ export { default as shift } from './shift';
 export * from './shift';
 export { default as hide } from './hide';
 export * from './hide';
+export { default as arrow } from './arrow';

@@ -1,5 +1,3 @@
-import { MutableRefObject } from 'react';
-
 export type PopperMode = 'fixed' | 'absolute';
 
 export type VirtualElement = {
@@ -42,6 +40,10 @@ export type MiddlewareExtra = {
   };
   hide?: {
     referenceHidden: boolean;
+  };
+  arrow?: {
+    x?: number;
+    y?: number;
   };
 };
 
