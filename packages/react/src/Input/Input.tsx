@@ -13,6 +13,7 @@ import {
   ChangeEvent,
   useEffect,
   FocusEvent,
+  MouseEvent,
 } from 'react';
 import { styled } from '../styles';
 import usePropChange from '../hooks/usePropChange';

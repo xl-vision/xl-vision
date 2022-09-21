@@ -1,4 +1,4 @@
-import { CSSObject, CSSProperties } from '@xl-vision/styled-engine';
+import { CSSObject } from '@xl-vision/styled-engine';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { isProduction } from '@xl-vision/utils';
@@ -15,6 +15,7 @@ import {
   useEffect,
   isValidElement,
   useMemo,
+  CSSProperties,
 } from 'react';
 import { styled } from '../styles';
 import AvatarContext from './AvatarContext';

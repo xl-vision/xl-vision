@@ -8,7 +8,7 @@ export type CSSProperties = CSS.PropertiesFallback<string | number>;
 export type CSSPseudos = { [K in CSS.Pseudos]?: CSSObject };
 
 export type CSSOthersObject = {
-  [K: Exclude<string, keyof CSSProperties | keyof CSSPseudos>]: CSSObject;
+  [K in string]: SimpleInterpolation;
 };
 
 export type CSSObject = CSSProperties & CSSPseudos & CSSOthersObject;
@@ -19,20 +19,26 @@ export type FalsyInterpolation = false | null | undefined;
 
 export type Keyframes = {};
 
-export type InterpolationPrimitive = number | string | Keyframes | CSSObject | FalsyInterpolation;
+export type InterpolationPrimitive =
+  | number
+  | string
+  | Keyframes
+  | CSSObject
+  | FalsyInterpolation
+  | StyledComponentInterpolation;
+
+export type ArrayCSSInterpolation = Array<SimpleInterpolation>;
+
+export type SimpleInterpolation = InterpolationPrimitive | ArrayCSSInterpolation;
 
 export type FunctionInterpolation<P extends object> = (props: P) => Interpolation<P>;
 
-export type SimpleInterpolation =
-  | InterpolationPrimitive
-  | StyledComponentInterpolation
-  | Array<SimpleInterpolation>;
+export type ArrayInterpolation<P extends object> = Array<Interpolation<P>>;
 
 export type Interpolation<P extends object> =
   | InterpolationPrimitive
-  | Array<Interpolation<P>>
-  | FunctionInterpolation<P>
-  | StyledComponentInterpolation;
+  | ArrayInterpolation<P>
+  | FunctionInterpolation<P>;
 
 // remove the call signature from StyledComponent so Interpolation can still infer InterpolationFunction
 type StyledComponentInterpolation = Pick<
@@ -92,5 +98,6 @@ export type CreateGlobalStyle = {
 
 export type CreateKeyframes = (
   first: TemplateStringsArray | CSSKeyframes,
+  // keyframes not support to pass props
   ...interpolations: Array<SimpleInterpolation>
 ) => Keyframes;

@@ -19,6 +19,8 @@ import {
   useRef,
   useCallback,
   useEffect,
+  KeyboardEvent,
+  MouseEvent as ReactMouseEvent,
 } from 'react';
 import Portal, { PortalContainerType } from '../Portal';
 import usePropChange from '../hooks/usePropChange';
@@ -338,7 +340,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     [isTop, escClosable, setVisible],
   );
 
-  const handleClick = useCallback((e: MouseEvent) => {
+  const handleClick = useCallback((e: ReactMouseEvent) => {
     const target = e.target as HTMLElement;
     if (bodyRef.current && contains(bodyRef.current, target)) {
       return;

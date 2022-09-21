@@ -11,12 +11,13 @@ const createGlobalStyles = <
   S extends {} | undefined = undefined,
   P extends {} = {},
   ST = S extends undefined ? { theme: Theme } : { styleProps: S; theme: Theme },
+  SPT = S extends undefined ? { theme?: Theme } : { styleProps: S; theme?: Theme },
 >(
   first: TemplateStringsArray | CSSObject | FunctionInterpolation<P & ST>,
   ...styles: Array<Interpolation<P & ST>>
 ) => {
   const [newFirst, ...newStyles] = [first, ...styles].map(applyTheme);
 
-  return innerCreateGlobalStyles<P & ST>(newFirst, ...newStyles);
+  return innerCreateGlobalStyles<P & SPT>(newFirst, ...newStyles);
 };
 export default createGlobalStyles;
