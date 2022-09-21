@@ -7,9 +7,9 @@ export type CSSProperties = CSS.PropertiesFallback<string | number>;
 
 export type CSSPseudos = { [K in CSS.Pseudos]?: CSSObject };
 
-export interface CSSOthersObject {
-  [propertiesName: string]: unknown | SimpleInterpolation;
-}
+export type CSSOthersObject = {
+  [K: Exclude<string, keyof CSSProperties | keyof CSSPseudos>]: CSSObject;
+};
 
 export type CSSObject = CSSProperties & CSSPseudos & CSSOthersObject;
 
