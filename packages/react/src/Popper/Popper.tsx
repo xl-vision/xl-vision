@@ -28,6 +28,7 @@ import {
   useEffect,
   cloneElement,
   CSSProperties,
+  useRef,
 } from 'react';
 import Transition, { TransitionProps } from '../Transition';
 import Portal, { PortalContainerType } from '../Portal';
@@ -52,7 +53,9 @@ export interface PopperProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactElement<PopperChildrenProps>;
   popup: ReactElement;
   popupContainer?: PortalContainerType;
-  transitionClassName?: TransitionProps['transitionClassName'];
+  transitionClassName?:
+    | TransitionProps['transitionClassName']
+    | ((placement: PopperPlacement) => TransitionProps['transitionClassName']);
   trigger?: PopperTrigger | Array<PopperTrigger>;
   placement?: PopperPlacement;
   disablePopupEnter?: boolean;
@@ -190,6 +193,8 @@ const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
     transform: `translate3D(${Math.round(x)}px, ${Math.round(y)}px, 0)`,
   };
 
+  const show = visible || transitionVisible;
+
   const portal = (
     <Portal container={popupContainer}>
       <div
@@ -201,16 +206,19 @@ const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
       >
         <Transition
           mountOnEnter={mountOnShow}
-          unmountOnExit={unmountOnHide}
           onExited={handleTransitionExit}
-          in={visible || transitionVisible}
-          transitionClassName={transitionClassName}
+          in={show}
+          transitionClassName={
+            typeof transitionClassName === 'function'
+              ? transitionClassName(placement)
+              : transitionClassName
+          }
         >
-          {(show) => (
+          {(showValue) => (
             <div
               style={{
                 position: 'relative',
-                display: show ? '' : 'none',
+                display: showValue ? '' : 'none',
               }}
               className={innerClassName}
             >
@@ -228,10 +236,22 @@ const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
     ...getReferenceProps({}),
   });
 
+  const isFirstMountRef = useRef(true);
+
+  if (!show) {
+    if (mountOnShow && isFirstMountRef.current) {
+      return cloneChild;
+    }
+    if (unmountOnHide) {
+      return cloneChild;
+    }
+  }
+  isFirstMountRef.current = false;
+
   return (
     <>
       {cloneChild}
-      {visible && portal}
+      {portal}
     </>
   );
 });
@@ -257,7 +277,7 @@ if (!isProduction) {
       PropTypes.string,
       isServer ? PropTypes.any : PropTypes.instanceOf(Element),
     ]),
-    transitionClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    transitionClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.func]),
     trigger: PropTypes.oneOfType([triggerPropType, PropTypes.arrayOf(triggerPropType)]),
     disablePopupEnter: PropTypes.bool,
     offset: PropTypes.number,
