@@ -7,42 +7,37 @@ export type CSSProperties = CSS.PropertiesFallback<string | number>;
 
 export type CSSPseudos = { [K in CSS.Pseudos]?: CSSObject };
 
-export type CSSObject = CSSProperties &
-  CSSPseudos & {
-    [key: string]: CSSObject | string | number | undefined;
-  };
+export interface CSSOthersObject {
+  [propertiesName: string]: unknown | SimpleInterpolation;
+}
+
+export type CSSObject = CSSProperties & CSSPseudos & CSSOthersObject;
 
 export type CSSKeyframes = object & { [key: string]: CSSObject };
 
-export type InterpolationPrimitive =
-  | null
-  | undefined
-  | boolean
-  | number
-  | string
-  | Keyframes
-  | CSSObject;
+export type FalsyInterpolation = false | null | undefined;
 
 export type Keyframes = {};
 
-export type FunctionInterpolation<P extends object, S extends object> = (
-  props: P & S,
-) => Interpolation<P, S>;
+export type InterpolationPrimitive = number | string | Keyframes | CSSObject | FalsyInterpolation;
 
-export type SimpleInterpolation<P extends object, S extends object> =
+export type FunctionInterpolation<P extends object> = (props: P) => Interpolation<P>;
+
+export type SimpleInterpolation =
   | InterpolationPrimitive
-  | StyledComponentInterpolation<P, S>
-  | Array<SimpleInterpolation<P, S>>;
+  | StyledComponentInterpolation
+  | Array<SimpleInterpolation>;
 
-export type Interpolation<P extends object, S extends object> =
+export type Interpolation<P extends object> =
   | InterpolationPrimitive
-  | Array<Interpolation<P, S>>
-  | FunctionInterpolation<P, S>
-  | StyledComponentInterpolation<P, S>;
+  | Array<Interpolation<P>>
+  | FunctionInterpolation<P>
+  | StyledComponentInterpolation;
 
-type StyledComponentInterpolation<P extends object, S extends object> = Pick<
-  StyledComponent<P, S>,
-  keyof StyledComponent<P, S>
+// remove the call signature from StyledComponent so Interpolation can still infer InterpolationFunction
+type StyledComponentInterpolation = Pick<
+  StyledComponent<any, any>,
+  keyof StyledComponent<any, any>
 >;
 
 export type PropsOf<C extends keyof JSX.IntrinsicElements | JSXElementConstructor<any>> =
@@ -60,8 +55,8 @@ export type StyledComponent<InnerProps extends object, StyleProps extends object
 
 export type CreateStyledComponent<ComponentProps extends object> = {
   <StyleProps extends object = {}>(
-    first: TemplateStringsArray | CSSObject | FunctionInterpolation<ComponentProps, StyleProps>,
-    ...styles: Array<Interpolation<ComponentProps, StyleProps>>
+    first: TemplateStringsArray | CSSObject | FunctionInterpolation<ComponentProps & StyleProps>,
+    ...styles: Array<Interpolation<ComponentProps & StyleProps>>
   ): StyledComponent<ComponentProps, StyleProps>;
 };
 
@@ -89,13 +84,13 @@ export type Styled = {
 export type GlobalStyleComponent<P> = ComponentType<P>;
 
 export type CreateGlobalStyle = {
-  <P extends object = {}, S extends object = {}>(
-    first: TemplateStringsArray | CSSObject | FunctionInterpolation<P, S>,
-    ...styles: Array<Interpolation<P, S>>
-  ): GlobalStyleComponent<P & S>;
+  <P extends object = {}>(
+    first: TemplateStringsArray | CSSObject | FunctionInterpolation<P>,
+    ...styles: Array<Interpolation<P>>
+  ): GlobalStyleComponent<P>;
 };
 
 export type CreateKeyframes = (
   first: TemplateStringsArray | CSSKeyframes,
-  ...interpolations: Array<SimpleInterpolation<{}, {}>>
+  ...interpolations: Array<SimpleInterpolation>
 ) => Keyframes;

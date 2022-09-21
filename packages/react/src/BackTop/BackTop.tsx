@@ -3,7 +3,7 @@ import { VerticalAlignTopOutlined } from '@xl-vision/icons';
 import { isProduction, isServer, off, on } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { HTMLAttributes, forwardRef, useState, useEffect, CSSProperties } from 'react';
+import { HTMLAttributes, forwardRef, useState, useEffect, CSSProperties, MouseEvent } from 'react';
 import Transition from '../Transition';
 import usePropChange from '../hooks/usePropChange';
 import Portal from '../Portal';

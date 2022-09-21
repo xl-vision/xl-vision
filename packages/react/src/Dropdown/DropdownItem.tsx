@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { isProduction } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
-import { forwardRef, HTMLAttributes, ReactNode, useContext } from 'react';
+import { forwardRef, HTMLAttributes, ReactNode, useContext, MouseEvent } from 'react';
 import BaseButton from '../BaseButton';
 import { styled } from '../styles';
 import DropdownContext from './DropdownContext';

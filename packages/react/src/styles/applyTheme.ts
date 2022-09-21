@@ -1,22 +1,22 @@
-import { Interpolation } from '@xl-vision/styled-engine';
+import { FunctionInterpolation, Interpolation } from '@xl-vision/styled-engine';
 import { Theme } from '../ThemeProvider';
 import defaultTheme from '../ThemeProvider/defaultTheme';
 
 const applyTheme =
-  <P extends {}, S extends { theme?: Theme }>(
-    style: Interpolation<P, Omit<S, 'theme'> & { theme: Theme }>,
-  ) =>
-  (props: P & S) => {
+  <P extends { theme?: Theme }>(style: Interpolation<Omit<P, 'theme'> & { theme: Theme }>) =>
+  (props: P): Interpolation<Omit<P, 'theme'> & { theme: Theme }> => {
     if (typeof style === 'function') {
       const { theme, ...others } = props;
       const newTheme = isEmpty(theme) ? defaultTheme : theme;
-      // TODO [2022-06-01]: types fixed
+      // TODO [2022-12-01]: types fixed
       const newProps = {
         theme: newTheme,
         ...others,
-      } as unknown as P & Omit<S, 'theme'> & { theme: Theme };
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-      return style(newProps);
+      } as const;
+      return (style as FunctionInterpolation<Omit<P, 'theme'> & { theme: Theme }>)(newProps);
+    }
+    if (Array.isArray(style)) {
+      return (style as Array<Interpolation<Omit<P, 'theme'> & { theme: Theme }>>).map(applyTheme);
     }
     return style;
   };

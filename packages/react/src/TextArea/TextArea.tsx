@@ -1,7 +1,7 @@
 import { isProduction } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { CSSObject, CSSProperties } from '@xl-vision/styled-engine';
+import { CSSObject } from '@xl-vision/styled-engine';
 import { useConstantFn, useForkRef, usePrevious } from '@xl-vision/hooks';
 import { CloseCircleFilled } from '@xl-vision/icons';
 import {
@@ -12,6 +12,8 @@ import {
   useEffect,
   ChangeEvent,
   ReactNode,
+  FocusEvent,
+  CSSProperties,
 } from 'react';
 import { styled } from '../styles';
 import { ComponentSize, useTheme } from '../ThemeProvider';
@@ -111,7 +113,7 @@ const TextAreaRoot = styled('span', {
         styles.borderColor = focusColor;
         styles.boxShadow = `0 0 0 2px ${alpha(focusColor, 0.2)}`;
       } else {
-        styles['&:hover'] = {
+        styles[':hover'] = {
           borderColor: color.themes.primary.hover,
         };
       }
@@ -345,7 +347,7 @@ if (!isProduction) {
     maxLength: PropTypes.number,
     disabled: PropTypes.bool,
     readOnly: PropTypes.bool,
-    // TODO [2022-06-01]: types fix
+    // TODO [2022-12-01]: types fix
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     autoHeight: PropTypes.oneOfType([

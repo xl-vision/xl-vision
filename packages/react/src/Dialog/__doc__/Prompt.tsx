@@ -1,4 +1,5 @@
 import { Button, Dialog } from '@xl-vision/react';
+import { useState, useCallback } from 'react';
 
 const Prompt = () => {
   const [visible, setVisible] = useState(false);

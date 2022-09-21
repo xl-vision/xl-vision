@@ -1,5 +1,6 @@
 import { WarningOutlined } from '@xl-vision/icons';
 import { Button, Dialog } from '@xl-vision/react';
+import { useCallback } from 'react';
 
 const Methods = () => {
   const handleClick = useCallback(() => {

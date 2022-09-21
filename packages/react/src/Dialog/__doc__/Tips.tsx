@@ -1,4 +1,5 @@
 import { Button, Dialog } from '@xl-vision/react';
+import { useCallback } from 'react';
 
 const Tips = () => {
   const handleInfo = useCallback(() => {
