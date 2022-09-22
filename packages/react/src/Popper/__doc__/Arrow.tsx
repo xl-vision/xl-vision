@@ -14,26 +14,15 @@ const PopperRoot = styled(Popper)(({ theme }) => {
     '.popup': {
       borderRadius: '3px',
       backgroundColor: theme.color.grey[300],
-      padding: '5px 10px',
-      ...theme.elevations(5),
+      // padding: '5px 10px',
+      lineHeight: 1,
+      // ...theme.elevations(5),
     },
     '.arrow': {
-      position: 'absolute',
-      left: '0px',
-      bottom: '-2px',
-      '&::before': {
-        position: 'absolute',
-        display: 'block',
-        boxSizing: 'border-box',
-        content: '""',
-        width: '10px',
-        height: '10px',
-        transform: 'rotate(45deg)',
-        zIndex: -1,
-        left: '-5px',
-        bottom: '-5px',
-        backgroundColor: theme.color.grey[300],
-      },
+      width: 8,
+      height: 8,
+      // transform: 'translate(-4px, -4px)',
+      background: 'red',
     },
     '.slide': {
       '&-enter-active, &-exit-active': {

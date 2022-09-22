@@ -7,3 +7,4 @@ export * from './shift';
 export { default as hide } from './hide';
 export * from './hide';
 export { default as arrow } from './arrow';
+export * from './arrow';

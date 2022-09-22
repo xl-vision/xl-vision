@@ -1,32 +1,52 @@
 import { Popper, Button, styled } from '@xl-vision/react';
 import { useState, useCallback } from 'react';
 
-const Wrapper = styled('div')(({ theme }) => {
+const PopperRoot = styled(Popper)(({ theme }) => {
+  return {
+    '.slide': {
+      '&-enter-active, &-exit-active': {
+        transition: theme.transition.standard('transform'),
+        '&[data-placement^="left"]': {
+          transform: 'scaleX(1)',
+          transformOrigin: '100% 0',
+        },
+        '&[data-placement^="right"]': {
+          transform: 'scaleX(1)',
+          transformOrigin: '0 0',
+        },
+        '&[data-placement^="top"]': {
+          transform: 'scaleY(1)',
+          transformOrigin: '0 100%',
+        },
+        '&[data-placement^="bottom"]': {
+          transform: 'scaleY(1)',
+          transformOrigin: '0 0',
+        },
+      },
+
+      '&-enter-from, &-exit-to': {
+        '&[data-placement^="left"]': {
+          transform: 'scaleX(0)',
+        },
+        '&[data-placement^="right"]': {
+          transform: 'scaleX(0)',
+        },
+        '&[data-placement^="top"]': {
+          transform: 'scaleY(0)',
+        },
+        '&[data-placement^="bottom"]': {
+          transform: 'scaleY(0)',
+        },
+      },
+    },
+  };
+});
+
+const Wrapper = styled('div')(() => {
   return {
     button: {
       marginRight: '16px',
       marginBottom: '16px',
-    },
-    '.slide': {
-      '&-enter-active, &-exit-active': {
-        transition: theme.transition.standard('transform'),
-        '&[data-placement^="top"]': {
-          transformOrigin: '0 100%',
-          transform: 'scaleY(1)',
-        },
-        '&[data-placement^="bottom"]': {
-          transformOrigin: '0 0',
-          transform: 'scaleY(1)',
-        },
-      },
-      '&-enter-from,&-exit-to': {
-        '&[data-placement^="top"]': {
-          transform: 'scaleY(0)',
-        },
-        '&[data-placement^="bottom"]': {
-          transform: 'scaleY(0)',
-        },
-      },
     },
   };
 });
@@ -46,19 +66,19 @@ const Trigger = () => {
 
   return (
     <Wrapper>
-      <Popper trigger='hover' transitionClassName='slide' placement='top' popup={popup}>
+      <PopperRoot trigger='hover' transitionClassName='slide' placement='top' popup={popup}>
         <Button color='primary'>hover</Button>
-      </Popper>
-      <Popper trigger='click' transitionClassName='slide' placement='top' popup={popup}>
+      </PopperRoot>
+      <PopperRoot trigger='click' transitionClassName='slide' placement='top' popup={popup}>
         <Button color='primary'>click</Button>
-      </Popper>
-      <Popper trigger='focus' transitionClassName='slide' placement='top' popup={popup}>
+      </PopperRoot>
+      <PopperRoot trigger='focus' transitionClassName='slide' placement='top' popup={popup}>
         <Button color='primary'>focus</Button>
-      </Popper>
-      <Popper trigger='contextMenu' transitionClassName='slide' placement='top' popup={popup}>
+      </PopperRoot>
+      <PopperRoot trigger='contextMenu' transitionClassName='slide' placement='top' popup={popup}>
         <Button color='primary'>contextMenu</Button>
-      </Popper>
-      <Popper
+      </PopperRoot>
+      <PopperRoot
         trigger='custom'
         visible={visible}
         onVisibleChange={handleVisible}
@@ -69,7 +89,7 @@ const Trigger = () => {
         <Button color='primary' onClick={handleCustomClick}>
           custom(click twice)
         </Button>
-      </Popper>
+      </PopperRoot>
     </Wrapper>
   );
 };

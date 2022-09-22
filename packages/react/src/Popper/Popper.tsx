@@ -13,8 +13,9 @@ import {
   OffsetOptions,
   useInteraction,
   useHover,
+  Side,
 } from '@xl-vision/popper';
-import { useForkRef } from '@xl-vision/hooks';
+import { CssTransitionClassNameRecord, useForkRef } from '@xl-vision/hooks';
 import {
   MouseEventHandler,
   Ref,
@@ -30,7 +31,7 @@ import {
   CSSProperties,
   useRef,
 } from 'react';
-import Transition, { TransitionProps } from '../Transition';
+import Transition from '../Transition';
 import Portal, { PortalContainerType } from '../Portal';
 import usePropChange from '../hooks/usePropChange';
 import { useTheme } from '../ThemeProvider';
@@ -53,9 +54,7 @@ export interface PopperProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactElement<PopperChildrenProps>;
   popup: ReactElement;
   popupContainer?: PortalContainerType;
-  transitionClassName?:
-    | TransitionProps['transitionClassName']
-    | ((placement: PopperPlacement) => TransitionProps['transitionClassName']);
+  transitionClassName?: string;
   trigger?: PopperTrigger | Array<PopperTrigger>;
   placement?: PopperPlacement;
   disablePopupEnter?: boolean;
@@ -79,8 +78,6 @@ export interface PopperProps extends HTMLAttributes<HTMLDivElement> {
 
 const displayName = 'Popper';
 
-const TIME_DELAY = 200;
-
 const defaultGetPopupContainer = () => document.body;
 
 const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
@@ -95,7 +92,7 @@ const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
     placement: initialPlacement = 'top',
     showDelay = 0,
     hideDelay = 0,
-    visible: visibleProp,
+    visible: visibleProp = true,
     onVisibleChange,
     className,
     arrow: arrowProp,
@@ -114,6 +111,24 @@ const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
   const triggers = useMemo(() => {
     return Array.isArray(trigger) ? trigger : [trigger];
   }, [trigger]);
+
+  const transitionClassNameObject = useMemo(() => {
+    const ret: Required<CssTransitionClassNameRecord> = {
+      appearActive: `${transitionClassName}-enter-active`,
+      appearFrom: `${transitionClassName}-enter-from`,
+      appearTo: `${transitionClassName}-enter-to`,
+      enterActive: `${transitionClassName}-enter-active`,
+      enterFrom: `${transitionClassName}-enter-from`,
+      enterTo: `${transitionClassName}-enter-to`,
+      disappearActive: `${transitionClassName}-exit-active`,
+      disappearFrom: `${transitionClassName}-exit-from`,
+      disappearTo: `${transitionClassName}-exit-to`,
+      exitActive: `${transitionClassName}-exit-active`,
+      exitFrom: `${transitionClassName}-exit-from`,
+      exitTo: `${transitionClassName}-exit-to`,
+    };
+    return ret;
+  }, [transitionClassName]);
 
   const child: ReactElement<PopperChildrenProps> = Children.only(children);
 
@@ -156,29 +171,35 @@ const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
 
   const forkRef = useForkRef((child as { ref?: Ref<unknown> }).ref, ref, reference);
 
-  const handleTransitionExit = useCallback(() => {
-    setVisible(false);
-  }, [setVisible]);
-
   useEffect(() => {
     if (visible) {
       setTransitionVisible(true);
     }
   }, [visible]);
 
-  const arrowStyle = {
+  const arrowStyle: CSSProperties = {
     position: 'absolute',
     left: extra.arrow?.x,
     top: extra.arrow?.y,
   };
 
-  const arrowNode =
-    arrowProp &&
-    cloneElement(arrowProp, {
-      'aria-hidden': true,
-      ...(arrowProp as { props?: {} }).props,
-      style: arrowStyle,
-    });
+  const side = placement.split('-')[0] as Side;
+
+  if (side === 'top') {
+    arrowStyle.top = '100%';
+  } else if (side === 'bottom') {
+    arrowStyle.top = 0;
+  } else if (side === 'left') {
+    arrowStyle.left = '100%';
+  } else {
+    arrowStyle.left = 0;
+  }
+
+  const arrowNode = arrowProp && (
+    <div aria-hidden='true' style={arrowStyle}>
+      {arrowProp}
+    </div>
+  );
 
   const rootClassName = `${clsPrefix}-popper`;
 
@@ -193,12 +214,16 @@ const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
     transform: `translate3D(${Math.round(x)}px, ${Math.round(y)}px, 0)`,
   };
 
+  const handleExited = useCallback(() => {
+    setTransitionVisible(false);
+  }, []);
+
   const show = visible || transitionVisible;
 
   const portal = (
     <Portal container={popupContainer}>
       <div
-        aria-hidden={!visible}
+        aria-hidden={!show}
         {...others}
         {...getPopperProps({ style: popperStyle })}
         ref={getPopper}
@@ -206,21 +231,19 @@ const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
       >
         <Transition
           mountOnEnter={mountOnShow}
-          onExited={handleTransitionExit}
-          in={show}
-          transitionClassName={
-            typeof transitionClassName === 'function'
-              ? transitionClassName(placement)
-              : transitionClassName
-          }
+          in={visible}
+          onExited={handleExited}
+          transitionOnFirst={true}
+          transitionClassName={transitionClassNameObject}
         >
           {(showValue) => (
             <div
               style={{
-                position: 'relative',
                 display: showValue ? '' : 'none',
+                position: 'relative',
               }}
               className={innerClassName}
+              data-placement={placement}
             >
               {arrowNode}
               {popup}
