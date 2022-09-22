@@ -3,7 +3,6 @@ import clsx from 'clsx';
 import { isProduction, isServer, oneOf } from '@xl-vision/utils';
 import {
   Placement,
-  PopperMode,
   useConnectInteraction,
   useAutoUpdatePopper,
   shift,
@@ -14,6 +13,15 @@ import {
   useInteraction,
   useHover,
   Side,
+  ShiftOptions,
+  autoPlacement,
+  AutoPlacementOptions,
+  useClick,
+  useFocus,
+  HoverOptions,
+  ClickOptions,
+  ContextMenuOptions,
+  useContextMenu,
 } from '@xl-vision/popper';
 import { CssTransitionClassNameRecord, useForkRef } from '@xl-vision/hooks';
 import {
@@ -36,7 +44,7 @@ import Portal, { PortalContainerType } from '../Portal';
 import usePropChange from '../hooks/usePropChange';
 import { useTheme } from '../ThemeProvider';
 
-export type PopperTrigger = 'hover' | 'focus' | 'click' | 'contextMenu' | 'custom';
+export type PopperTrigger = 'hover' | 'focus' | 'click' | 'contextMenu';
 
 export type PopperPlacement = Placement;
 
@@ -50,31 +58,29 @@ export type PopperChildrenProps = {
   ref?: Ref<any>;
 };
 
-export interface PopperProps extends HTMLAttributes<HTMLDivElement> {
+export type PopperProps = HTMLAttributes<HTMLDivElement> & {
   children: ReactElement<PopperChildrenProps>;
   popup: ReactElement;
   popupContainer?: PortalContainerType;
   transitionClassName?: string;
-  trigger?: PopperTrigger | Array<PopperTrigger>;
+  trigger?: PopperTrigger | Array<PopperTrigger> | false;
   placement?: PopperPlacement;
-  disablePopupEnter?: boolean;
-  offset?: OffsetOptions;
-  showDelay?: number;
-  hideDelay?: number;
+  hoverOptions?: HoverOptions;
+  clickOptions?: ClickOptions;
+  focusOptions?: FocusOptions;
+  contextMenuOptions?: ContextMenuOptions;
   visible?: boolean;
   defaultVisible?: boolean;
   onVisibleChange?: (visible: boolean) => void;
+  offset?: OffsetOptions;
+  shiftOptions?: ShiftOptions & { enable?: boolean };
+  autoPlacementOptions?: AutoPlacementOptions & { enable?: boolean };
   arrow?: ReactElement;
   className?: string;
-  destroyOnHide?: boolean;
-  flip?: boolean | Record<string, any>;
-  preventOverflow?: boolean | Record<string, any>;
-  transformOrigin?: boolean;
   mountOnShow?: boolean;
   unmountOnHide?: boolean;
   onAfterClosed?: () => void;
-  mode?: PopperMode;
-}
+};
 
 const displayName = 'Popper';
 
@@ -87,19 +93,19 @@ const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
     popupContainer = defaultGetPopupContainer,
     transitionClassName,
     trigger = 'hover',
-    disablePopupEnter,
     offset: offsetProp = 0,
     placement: initialPlacement = 'top',
-    showDelay = 0,
-    hideDelay = 0,
-    visible: visibleProp = true,
+    hoverOptions,
+    clickOptions,
+    focusOptions,
+    contextMenuOptions,
+    visible: visibleProp,
     onVisibleChange,
     className,
     arrow: arrowProp,
-    flip = true,
-    preventOverflow = true,
-    transformOrigin = true,
     defaultVisible = false,
+    shiftOptions,
+    autoPlacementOptions,
     mountOnShow = true,
     unmountOnHide,
     onAfterClosed,
@@ -108,9 +114,7 @@ const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
 
   const { clsPrefix } = useTheme();
 
-  const triggers = useMemo(() => {
-    return Array.isArray(trigger) ? trigger : [trigger];
-  }, [trigger]);
+  const triggers = Array.isArray(trigger) ? trigger : trigger ? [trigger] : [];
 
   const transitionClassNameObject = useMemo(() => {
     const ret: Required<CssTransitionClassNameRecord> = {
@@ -136,9 +140,18 @@ const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
 
   const [transitionVisible, setTransitionVisible] = useState(visible);
 
-  const middlewares = useMemo<Array<Middleware>>(() => {
-    return [shift(), offset(offsetProp), arrow()];
-  }, [offsetProp]);
+  const middlewares = useMemo(() => {
+    const { enable: shiftEnable, ...otherShiftOptions } = shiftOptions || {};
+    const { enable: autoPlacementEnable, ...otherAutoPlacementOptions } =
+      autoPlacementOptions || {};
+
+    return [
+      shiftEnable && shift(otherShiftOptions),
+      autoPlacementEnable && autoPlacement(otherAutoPlacementOptions),
+      offset(offsetProp),
+      arrow(),
+    ].filter(Boolean) as Array<Middleware>;
+  }, [offsetProp, shiftOptions, autoPlacementOptions]);
 
   const { reference, popper, x, y, mode, context, extra, placement } = useConnectInteraction(
     useAutoUpdatePopper({
@@ -166,6 +179,19 @@ const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
   const { getPopperProps, getReferenceProps } = useInteraction(
     useHover(context, {
       skip: !oneOf(triggers, 'hover'),
+      ...hoverOptions,
+    }),
+    useClick(context, {
+      skip: !oneOf(triggers, 'click'),
+      ...clickOptions,
+    }),
+    useFocus(context, {
+      skip: !oneOf(triggers, 'focus'),
+      ...focusOptions,
+    }),
+    useContextMenu(context, {
+      skip: !oneOf(triggers, 'contextMenu'),
+      ...contextMenuOptions,
     }),
   );
 
@@ -216,7 +242,8 @@ const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
 
   const handleExited = useCallback(() => {
     setTransitionVisible(false);
-  }, []);
+    onAfterClosed?.();
+  }, [onAfterClosed]);
 
   const show = visible || transitionVisible;
 
@@ -285,14 +312,13 @@ if (!isProduction) {
   const triggerPropType = PropTypes.oneOf<PopperTrigger>([
     'click',
     'contextMenu',
-    'custom',
     'focus',
     'hover',
   ]).isRequired;
 
+  const FalsePropType = PropTypes.checkPropTypes();
+
   Popper.propTypes = {
-    mountOnShow: PropTypes.bool,
-    unmountOnHide: PropTypes.bool,
     children: PropTypes.element.isRequired,
     popup: PropTypes.element.isRequired,
     popupContainer: PropTypes.oneOfType([
@@ -301,9 +327,7 @@ if (!isProduction) {
       isServer ? PropTypes.any : PropTypes.instanceOf(Element),
     ]),
     transitionClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.func]),
-    trigger: PropTypes.oneOfType([triggerPropType, PropTypes.arrayOf(triggerPropType)]),
-    disablePopupEnter: PropTypes.bool,
-    offset: PropTypes.number,
+    trigger: PropTypes.oneOfType([triggerPropType, PropTypes.arrayOf(triggerPropType), false]),
     placement: PropTypes.oneOf<PopperPlacement>([
       'top',
       'top-start',
@@ -318,17 +342,20 @@ if (!isProduction) {
       'right-start',
       'right-end',
     ]),
-    showDelay: PropTypes.number,
-    hideDelay: PropTypes.number,
+    hoverOptions: PropTypes.object,
+    clickOptions: PropTypes.object,
+    focusOptions: PropTypes.object,
+    contextMenuOptions: PropTypes.object,
     visible: PropTypes.bool,
+    defaultVisible: PropTypes.bool,
     onVisibleChange: PropTypes.func,
+    offset: PropTypes.number,
+    shiftOptions: PropTypes.object,
+    autoPlacementOptions: PropTypes.object,
     arrow: PropTypes.element,
     className: PropTypes.string,
-    destroyOnHide: PropTypes.bool,
-    flip: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
-    preventOverflow: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
-    defaultVisible: PropTypes.bool,
-    transformOrigin: PropTypes.bool,
+    mountOnShow: PropTypes.bool,
+    unmountOnHide: PropTypes.bool,
     onAfterClosed: PropTypes.func,
   };
 }

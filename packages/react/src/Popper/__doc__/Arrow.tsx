@@ -10,48 +10,71 @@ const Wrapper = styled('div')(() => {
 });
 
 const PopperRoot = styled(Popper)(({ theme }) => {
+  const { color } = theme;
+
+  const bgColor = color.emphasize(color.modes.dark.background.paper, 0.1);
+
   return {
     '.popup': {
       borderRadius: '3px',
-      backgroundColor: theme.color.grey[300],
-      // padding: '5px 10px',
-      lineHeight: 1,
-      // ...theme.elevations(5),
+      backgroundColor: bgColor,
+      color: color.getContrastColor(bgColor).text.primary,
+      padding: '5px 10px',
+      ...theme.elevations(5),
     },
     '.arrow': {
       width: 8,
       height: 8,
-      // transform: 'translate(-4px, -4px)',
-      background: 'red',
+      transform: 'translate(-4px, -4px) rotate(45deg)',
+      background: bgColor,
     },
     '.slide': {
       '&-enter-active, &-exit-active': {
-        transition: theme.transition.standard('all'),
+        transition: theme.transition.standard('transform'),
+        '&[data-placement^="left"]': {
+          transform: 'scaleX(1)',
+          transformOrigin: '100% 0',
+        },
+        '&[data-placement^="right"]': {
+          transform: 'scaleX(1)',
+          transformOrigin: '0 0',
+        },
         '&[data-placement^="top"]': {
+          transform: 'scaleY(1)',
           transformOrigin: '0 100%',
         },
         '&[data-placement^="bottom"]': {
+          transform: 'scaleY(1)',
           transformOrigin: '0 0',
         },
       },
-      '&-enter-from,&-exit-to': {
-        transform: 'scaleY(0)',
-      },
-      '&-enter-to,&-exit-from': {
-        transform: 'scaleY(1)',
+
+      '&-enter-from, &-exit-to': {
+        '&[data-placement^="left"]': {
+          transform: 'scaleX(0)',
+        },
+        '&[data-placement^="right"]': {
+          transform: 'scaleX(0)',
+        },
+        '&[data-placement^="top"]': {
+          transform: 'scaleY(0)',
+        },
+        '&[data-placement^="bottom"]': {
+          transform: 'scaleY(0)',
+        },
       },
     },
   };
 });
 
-const popup = <span className='popup'>This is popper</span>;
+const popup = <div className='popup'>This is popper</div>;
 
 const Arrow = () => {
   return (
     <Wrapper>
       <PopperRoot
         transitionClassName='slide'
-        placement='top'
+        placement='right'
         popup={popup}
         arrow={<div className='arrow' />}
         offset={10}

@@ -8,7 +8,7 @@ export type InteractionReturn = {
   popper?: HTMLProps<Element>;
 };
 
-export type InteractionHook<T extends any | void = void> = (
+export type InteractionHook<T> = (
   ctx: InteractionContext,
   options?: T & { skip?: boolean },
 ) => InteractionReturn | void;
