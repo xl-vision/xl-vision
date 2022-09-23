@@ -34,7 +34,7 @@ const useContextMenu: InteractionHook<ContextMenuOptions> = (
       });
     };
 
-    window.addEventListener('click', fn, { capture: true });
+    window.addEventListener('click', fn, true);
 
     return () => {
       window.removeEventListener('click', fn);

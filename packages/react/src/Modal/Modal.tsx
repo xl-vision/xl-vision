@@ -222,10 +222,10 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     }
     modalManagers.push(body);
 
-    let activeElement: HTMLElement;
-    if (!contains(modalNode, document.activeElement)) {
-      activeElement = document.activeElement as HTMLElement;
-    }
+    // record last active element
+    const lastActiveElement = document.activeElement as HTMLElement;
+
+    body.focus();
 
     const handleFocusIn = (e: FocusEvent) => {
       if (innerFocusRef.current) {
@@ -248,13 +248,14 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
       document.removeEventListener('focusin', handleFocusIn, true);
       if (modalManagers.length) {
         const modalEl = modalManagers[modalManagers.length - 1];
-        if (contains(modalEl, activeElement)) {
-          activeElement.focus();
+        // if last active element in modal, focus on it again
+        if (contains(modalEl, lastActiveElement)) {
+          lastActiveElement.focus();
         } else {
           modalEl.focus();
         }
       } else {
-        activeElement?.focus();
+        lastActiveElement?.focus();
       }
     };
   }, [inProp, isTop]);
@@ -283,8 +284,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
   const rootClassName = `${clsPrefix}-modal`;
 
-  const handleEnter = useCallback((el: Element) => {
-    (el as HTMLElement).style.display = '';
+  const handleEnter = useCallback(() => {
     transitionCount.current++;
   }, []);
 
@@ -293,7 +293,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   const handleModalEnter = useCallback(
     (nativeEl: Element) => {
       const el = nativeEl as HTMLElement;
-      handleEnter(el);
+      handleEnter();
       removeClass(el, `${bodyClassName}-enter-from`);
       removeClass(el, `${bodyClassName}-enter-active`);
       const { x, y } = getBoundingClientRect(el);
@@ -303,26 +303,21 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
       addClass(el, `${bodyClassName}-enter-from`);
       forceReflow();
       addClass(el, `${bodyClassName}-enter-active`);
-
-      el.focus();
     },
     [bodyClassName, handleEnter],
   );
 
-  const handleExited = useCallback(
-    (el: Element) => {
-      transitionCount.current--;
-      if (transitionCount.current <= 0) {
-        transitionCount.current = 0;
-        setAnimatedVisible(false);
-        onAfterClosed?.();
-        // 动画结束后解除锁定
-        scrollLockerRef.current?.unlock();
-      }
-      (el as HTMLElement).style.display = 'none';
-    },
-    [setAnimatedVisible, onAfterClosed],
-  );
+  const handleExited = useCallback(() => {
+    transitionCount.current--;
+    // 确保遮罩动画和modal动画都完成后再解锁
+    if (transitionCount.current <= 0) {
+      transitionCount.current = 0;
+      setAnimatedVisible(false);
+      onAfterClosed?.();
+      // 动画结束后解除锁定
+      scrollLockerRef.current?.unlock();
+    }
+  }, [setAnimatedVisible, onAfterClosed]);
 
   const handleMaskClick = useCallback(() => {
     if (!maskClosable) {
@@ -385,11 +380,16 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
             onEnter={handleEnter}
             onExited={handleExited}
           >
-            <ModalMask
-              aria-hidden={true}
-              className={`${rootClassName}__mask`}
-              onClick={handleMaskClick}
-            />
+            {(show) => (
+              <ModalMask
+                aria-hidden={true}
+                className={`${rootClassName}__mask`}
+                onClick={handleMaskClick}
+                style={{
+                  display: show ? '' : 'none',
+                }}
+              />
+            )}
           </Transition>
         )}
         <Transition
@@ -399,14 +399,19 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
           onEnter={handleModalEnter}
           onExited={handleExited}
         >
-          <ModalContent
-            {...others}
-            tabIndex={-1}
-            className={clsx(bodyClassName, className)}
-            ref={bodyRef}
-          >
-            {children}
-          </ModalContent>
+          {(show) => (
+            <ModalContent
+              {...others}
+              tabIndex={-1}
+              className={clsx(bodyClassName, className)}
+              ref={bodyRef}
+              style={{
+                display: show ? '' : 'none',
+              }}
+            >
+              {children}
+            </ModalContent>
+          )}
         </Transition>
       </ModalRoot>
     </Portal>
