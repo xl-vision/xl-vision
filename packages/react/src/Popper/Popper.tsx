@@ -40,11 +40,13 @@ import {
   cloneElement,
   CSSProperties,
   useRef,
+  ReactNode,
 } from 'react';
 import Transition from '../Transition';
 import Portal, { PortalContainerType } from '../Portal';
 import usePropChange from '../hooks/usePropChange';
 import { useTheme } from '../ThemeProvider';
+import { increaseZindex } from '../utils/zIndexManger';
 
 export type PopperTrigger = 'hover' | 'focus' | 'click' | 'contextMenu';
 
@@ -79,7 +81,7 @@ export type PopperProps = HTMLAttributes<HTMLDivElement> & {
   shiftOptions?: ShiftOptions & { enable?: boolean };
   autoPlacementOptions?: AutoPlacementOptions & { enable?: boolean };
   arrowOptions?: ArrowOptions;
-  arrow?: ReactElement;
+  arrow?: ReactNode;
   className?: string;
   mountOnShow?: boolean;
   unmountOnHide?: boolean;
@@ -144,6 +146,8 @@ const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
 
   const [visible, setVisible] = usePropChange(defaultVisible, visibleProp, onVisibleChange);
 
+  const [zIndex, setZIndex] = useState<number>();
+
   const [transitionVisible, setTransitionVisible] = useState(visible);
 
   const middlewares = useMemo(() => {
@@ -207,6 +211,7 @@ const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
   useEffect(() => {
     if (visible) {
       setTransitionVisible(true);
+      setZIndex(increaseZindex());
     }
   }, [visible]);
 
@@ -245,6 +250,7 @@ const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
     left: 0,
     top: 0,
     transform: `translate3D(${Math.round(x)}px, ${Math.round(y)}px, 0)`,
+    zIndex,
   };
 
   const handleExited = useCallback(() => {
@@ -365,7 +371,7 @@ if (!isProduction) {
     visible: PropTypes.bool,
     defaultVisible: PropTypes.bool,
     onVisibleChange: PropTypes.func,
-    offset: PropTypes.number,
+    offset: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
     shiftOptions: PropTypes.object,
     autoPlacementOptions: PropTypes.object,
     arrowOptions: PropTypes.object,

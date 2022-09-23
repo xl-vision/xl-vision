@@ -1,5 +1,11 @@
+import { isServer } from '@xl-vision/utils';
+
 let zIndex = 1000;
 
-// TODO [2022-12-01]: ssr支持
 // eslint-disable-next-line import/prefer-default-export
-export const increaseZindex = () => zIndex++;
+export const increaseZindex = () => {
+  if (isServer) {
+    return zIndex;
+  }
+  return zIndex++;
+};
