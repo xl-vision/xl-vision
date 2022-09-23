@@ -22,6 +22,8 @@ import {
   ClickOptions,
   ContextMenuOptions,
   useContextMenu,
+  AutoUpdateOptions,
+  ArrowOptions,
 } from '@xl-vision/popper';
 import { CssTransitionClassNameRecord, useForkRef } from '@xl-vision/hooks';
 import {
@@ -73,8 +75,10 @@ export type PopperProps = HTMLAttributes<HTMLDivElement> & {
   defaultVisible?: boolean;
   onVisibleChange?: (visible: boolean) => void;
   offset?: OffsetOptions;
+  autoUpdateOptions?: AutoUpdateOptions;
   shiftOptions?: ShiftOptions & { enable?: boolean };
   autoPlacementOptions?: AutoPlacementOptions & { enable?: boolean };
+  arrowOptions?: ArrowOptions;
   arrow?: ReactElement;
   className?: string;
   mountOnShow?: boolean;
@@ -105,8 +109,10 @@ const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
     arrow: arrowProp,
     defaultVisible = false,
     shiftOptions,
+    arrowOptions,
     autoPlacementOptions,
     mountOnShow = true,
+    autoUpdateOptions,
     unmountOnHide,
     onAfterClosed,
     ...others
@@ -149,12 +155,13 @@ const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
       shiftEnable && shift(otherShiftOptions),
       autoPlacementEnable && autoPlacement(otherAutoPlacementOptions),
       offset(offsetProp),
-      arrow(),
+      arrow(arrowOptions),
     ].filter(Boolean) as Array<Middleware>;
-  }, [offsetProp, shiftOptions, autoPlacementOptions]);
+  }, [offsetProp, shiftOptions, autoPlacementOptions, arrowOptions]);
 
   const { reference, popper, x, y, mode, context, extra, placement } = useConnectInteraction(
     useAutoUpdatePopper({
+      ...autoUpdateOptions,
       placement: initialPlacement,
       mode: 'absolute',
       middlewares,
@@ -316,8 +323,6 @@ if (!isProduction) {
     'hover',
   ]).isRequired;
 
-  const FalsePropType = PropTypes.checkPropTypes();
-
   Popper.propTypes = {
     children: PropTypes.element.isRequired,
     popup: PropTypes.element.isRequired,
@@ -327,7 +332,18 @@ if (!isProduction) {
       isServer ? PropTypes.any : PropTypes.instanceOf(Element),
     ]),
     transitionClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.func]),
-    trigger: PropTypes.oneOfType([triggerPropType, PropTypes.arrayOf(triggerPropType), false]),
+    trigger: PropTypes.oneOfType([
+      triggerPropType,
+      PropTypes.arrayOf(triggerPropType),
+      (props, propName, componentName) => {
+        if (!props[propName]) {
+          return null;
+        }
+        throw new Error(
+          `Invalid prop '${propName}' supplied to '${componentName}'. Validation failed.`,
+        );
+      },
+    ]),
     placement: PropTypes.oneOf<PopperPlacement>([
       'top',
       'top-start',
@@ -352,6 +368,8 @@ if (!isProduction) {
     offset: PropTypes.number,
     shiftOptions: PropTypes.object,
     autoPlacementOptions: PropTypes.object,
+    arrowOptions: PropTypes.object,
+    autoUpdateOptions: PropTypes.object,
     arrow: PropTypes.element,
     className: PropTypes.string,
     mountOnShow: PropTypes.bool,

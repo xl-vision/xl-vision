@@ -79,7 +79,7 @@ const Trigger = () => {
         <Button color='primary'>contextMenu</Button>
       </PopperRoot>
       <PopperRoot
-        trigger='custom'
+        trigger={false}
         visible={visible}
         onVisibleChange={handleVisible}
         transitionClassName='slide'

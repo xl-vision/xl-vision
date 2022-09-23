@@ -1,5 +1,5 @@
 import { useConstantFn } from '@xl-vision/hooks';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { InteractionHook } from '../useInteraction';
 
 export type FocusOptions = {
