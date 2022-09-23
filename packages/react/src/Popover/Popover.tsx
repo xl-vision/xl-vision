@@ -21,6 +21,20 @@ const PopoverRoot = styled(Popper, {
   const { clsPrefix, transition } = theme;
 
   return {
+    [`.${clsPrefix}-popper__inner`]: {
+      '&[data-placement^="left"]': {
+        transformOrigin: '100% 50%',
+      },
+      '&[data-placement^="right"]': {
+        transformOrigin: '0 50%',
+      },
+      '&[data-placement^="top"]': {
+        transformOrigin: '50% 100%',
+      },
+      '&[data-placement^="bottom"]': {
+        transformOrigin: '50% 0',
+      },
+    },
     [`.${clsPrefix}-popover`]: {
       ...transition.fadeIn('&'),
       ...transition.fadeOut('&'),

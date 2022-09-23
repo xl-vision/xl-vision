@@ -92,7 +92,7 @@ const displayName = 'Popper';
 
 const defaultGetPopupContainer = () => document.body;
 
-const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
+const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
   const {
     children,
     popup,
@@ -177,7 +177,7 @@ const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
   );
 
   const getPopper = useCallback(
-    (el: HTMLElement | null) => {
+    (el: HTMLDivElement | null) => {
       if (visible) {
         popper(el);
       } else {
@@ -206,7 +206,9 @@ const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
     }),
   );
 
-  const forkRef = useForkRef((child as { ref?: Ref<unknown> }).ref, ref, reference);
+  const forkPopperRef = useForkRef(ref, getPopper);
+
+  const forkReferenceRef = useForkRef((child as { ref?: Ref<unknown> }).ref, reference);
 
   useEffect(() => {
     if (visible) {
@@ -266,7 +268,7 @@ const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
         aria-hidden={!show}
         {...others}
         {...getPopperProps({ style: popperStyle })}
-        ref={getPopper}
+        ref={forkPopperRef}
         className={rootClasses}
       >
         <Transition
@@ -295,7 +297,7 @@ const Popper = forwardRef<unknown, PopperProps>((props, ref) => {
   );
 
   const cloneChild = cloneElement(child, {
-    ref: forkRef,
+    ref: forkReferenceRef,
     ...getReferenceProps({}),
   });
 

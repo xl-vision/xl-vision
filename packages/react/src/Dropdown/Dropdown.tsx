@@ -4,16 +4,14 @@ import { isProduction, isServer } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
 import { ReactElement, ReactNode, forwardRef, useContext, useRef, useEffect, useMemo } from 'react';
 import usePropChange from '../hooks/usePropChange';
-import Popper, { PopperPlacement, PopperProps, PopperTrigger } from '../Popper';
+import Popper, { PopperPlacement, PopperProps } from '../Popper';
 import { styled } from '../styles';
 import ThemeContext from '../ThemeProvider/ThemeContext';
 import DropdownContext from './DropdownContext';
 
-export interface DropdownProps
-  extends Omit<PopperProps, 'popup' | 'arrow' | 'transitionClasses' | 'disablePopupEnter'> {
+export interface DropdownProps extends Omit<PopperProps, 'popup' | 'arrow'> {
   children: ReactElement;
   menus: ReactNode;
-  transitionClassName?: string;
 }
 
 const displayName = 'Dropdown';
@@ -107,7 +105,6 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
       {...others}
       ref={ref}
       className={rootClasses}
-      // disablePopupEnter={false}
       visible={visible}
       // eslint-disable-next-line react/jsx-handler-names
       onVisibleChange={setVisible}
@@ -125,13 +122,6 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
 
 if (!isProduction) {
   Dropdown.displayName = displayName;
-
-  const triggerPropType = PropTypes.oneOf<PopperTrigger>([
-    'click',
-    'contextMenu',
-    'focus',
-    'hover',
-  ]).isRequired;
 
   Dropdown.propTypes = {
     menus: PropTypes.node.isRequired,
@@ -153,7 +143,7 @@ if (!isProduction) {
     transitionClassName: PropTypes.string,
     className: PropTypes.string,
     offset: PropTypes.number,
-    trigger: PropTypes.oneOfType([triggerPropType, PropTypes.arrayOf(triggerPropType)]),
+
     visible: PropTypes.bool,
     defaultVisible: PropTypes.bool,
     onVisibleChange: PropTypes.func,

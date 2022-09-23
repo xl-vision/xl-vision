@@ -81,12 +81,14 @@ const createTransition = (transition: Transition = {}) => {
   const fadeOut = (className: string, duration = defaultDurations.exit): CSSObject => {
     return {
       [`${className}-exit-active`]: {
-        transition: exitPermanent(['opacity'], duration),
+        transition: exitPermanent(['opacity', 'transform'], duration),
       },
       [`${className}-exit-from`]: {
+        transform: 'scale(1)',
         opacity: 1,
       },
       [`${className}-exit-to`]: {
+        transform: 'scale(0.8)',
         opacity: 0,
       },
     };
