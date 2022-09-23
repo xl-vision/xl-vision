@@ -174,7 +174,7 @@ const DropdownSubmenu = forwardRef<HTMLDivElement, DropdownSubmenuProps>((props,
       {...others}
       ref={ref}
       className={rootClasses}
-      disablePopupEnter={false}
+      // disablePopupEnter={false}
       visible={visible}
       onVisibleChange={handleVisibleChange}
       trigger={trigger}
@@ -208,7 +208,7 @@ if (!isProduction) {
   const triggerPropType = PropTypes.oneOf<PopperTrigger>([
     'click',
     'contextMenu',
-    'custom',
+    // 'custom',
     'focus',
     'hover',
   ]).isRequired;

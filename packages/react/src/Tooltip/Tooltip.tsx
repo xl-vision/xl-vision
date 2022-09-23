@@ -292,7 +292,6 @@ if (!isProduction) {
   const triggerPropType = PropTypes.oneOf<TooltipTrigger>([
     'click',
     'contextMenu',
-    'custom',
     'focus',
     'hover',
     'touch',

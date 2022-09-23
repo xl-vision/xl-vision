@@ -1,9 +1,9 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "module": "CommonJS",
+    "module": "ESNext",
     "target": "ES6",
-    "jsx": "react",
+    "jsx": "preserve",
     "esModuleInterop": true
   },
   "include": ["./test/types"]

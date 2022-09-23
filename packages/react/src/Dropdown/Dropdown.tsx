@@ -107,7 +107,7 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
       {...others}
       ref={ref}
       className={rootClasses}
-      disablePopupEnter={false}
+      // disablePopupEnter={false}
       visible={visible}
       // eslint-disable-next-line react/jsx-handler-names
       onVisibleChange={setVisible}
@@ -129,7 +129,6 @@ if (!isProduction) {
   const triggerPropType = PropTypes.oneOf<PopperTrigger>([
     'click',
     'contextMenu',
-    'custom',
     'focus',
     'hover',
   ]).isRequired;

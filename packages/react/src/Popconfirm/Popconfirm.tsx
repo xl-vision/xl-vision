@@ -219,7 +219,6 @@ if (!isProduction) {
   const triggerPropType = PropTypes.oneOf<PopperTrigger>([
     'click',
     'contextMenu',
-    'custom',
     'focus',
     'hover',
   ]).isRequired;

@@ -139,7 +139,7 @@ describe('Popper', () => {
 
     const wrapper = mount(
       <Popper
-        trigger='custom'
+        trigger={false}
         popup={<div id='popup'>popup</div>}
         onVisibleChange={handleVisibleChange}
         popupContainer={() => document.body}
