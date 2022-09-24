@@ -16,7 +16,7 @@ export type PopconfirmProps = Omit<PopperProps, 'popup' | 'arrow' | 'title'> & {
   title: ReactNode;
   icon?: ReactNode;
   onConfirm?: () => void | Promise<any>;
-  onCancel?: () => void;
+  onCancel?: () => void | Promise<any>;
   confirmButtonProps?: PopconfirmButtonProps;
   cancelButtonProps?: PopconfirmButtonProps;
   confirmText?: string;
@@ -121,24 +121,40 @@ const Popconfirm = forwardRef<HTMLDivElement, PopconfirmProps>((props, ref) => {
 
   const [visible, setVisible] = usePropChange(defaultVisible, visibleProp, onVisibleChange);
 
-  const [loading, setLoading] = useState(false);
+  const [confirmLoading, setConfirmLoading] = useState(false);
+  const [cancelLoading, setCancelLoading] = useState(false);
 
   const handleCancel = useConstantFn(() => {
-    onCancel?.();
-    setVisible(false);
+    new Promise((resolve) => {
+      setCancelLoading(true);
+      resolve(onCancel?.());
+    })
+      .then(() => {
+        setVisible(false);
+      })
+      .finally(() => {
+        setCancelLoading(false);
+      });
   });
 
   const handleConfirm = useConstantFn(() => {
     new Promise((resolve) => {
-      setLoading(true);
+      setConfirmLoading(true);
       resolve(onConfirm?.());
     })
       .then(() => {
         setVisible(false);
       })
       .finally(() => {
-        setLoading(false);
+        setConfirmLoading(false);
       });
+  });
+
+  const handleVisibleChange = useConstantFn((value: boolean) => {
+    if (confirmLoading || cancelLoading) {
+      return;
+    }
+    setVisible(value);
   });
 
   const rootClassName = `${clsPrefix}-popconfirm`;
@@ -156,6 +172,8 @@ const Popconfirm = forwardRef<HTMLDivElement, PopconfirmProps>((props, ref) => {
           color='primary'
           variant='text'
           {...(cancelButtonProps as ButtonProps)}
+          loading={cancelLoading}
+          disabled={confirmLoading}
           onClick={handleCancel}
         >
           {cancelText}
@@ -166,8 +184,9 @@ const Popconfirm = forwardRef<HTMLDivElement, PopconfirmProps>((props, ref) => {
           color='primary'
           variant='text'
           disableElevation={true}
-          loading={loading}
           {...(confirmButtonProps as ButtonProps)}
+          loading={confirmLoading}
+          disabled={cancelLoading}
           onClick={handleConfirm}
         >
           {confirmText}
@@ -186,7 +205,7 @@ const Popconfirm = forwardRef<HTMLDivElement, PopconfirmProps>((props, ref) => {
       {...others}
       visible={visible}
       // eslint-disable-next-line react/jsx-handler-names
-      onVisibleChange={setVisible}
+      onVisibleChange={handleVisibleChange}
       ref={ref}
       trigger={trigger}
       className={rootClasses}

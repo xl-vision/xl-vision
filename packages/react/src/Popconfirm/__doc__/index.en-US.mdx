@@ -28,7 +28,7 @@ Asynchronous hide
 | --- | --- | --- | --- | --- |
 | title | Title | React.ReactNode | - | true |
 | icon | Custom icon | React.ReactNode | - | false |
-| onCancel | Click to cancel the event | () => void | - | false |
+| onCancel | Click to cancel the event | () => void \| Promise\<void\> | - | false |
 | onConfirm | Click to confirm event | () => void \| Promise\<void\> | - | false |
 | cancelButtonProps | The props of the cancel button, refer to [Button](/components/Button) | object | - | false |
 | confirmButtonProps | The props of the confirm button, refer to [Button](/components/Button) | object | - | false |

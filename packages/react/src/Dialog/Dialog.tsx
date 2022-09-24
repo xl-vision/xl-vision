@@ -133,35 +133,29 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
   }, [clsPrefix]);
 
   const handleConfirm = useConstantFn(() => {
-    if (onConfirm) {
-      const p = onConfirm();
-      if (p && p.then) {
-        setConfirmLoading(true);
-        p.then(() => {
-          setVisible(false);
-        }).finally(() => {
-          setConfirmLoading(false);
-        });
-        return;
-      }
-    }
-    setVisible(false);
+    new Promise((resolve) => {
+      setConfirmLoading(true);
+      resolve(onConfirm?.());
+    })
+      .then(() => {
+        setVisible(false);
+      })
+      .finally(() => {
+        setConfirmLoading(false);
+      });
   });
 
   const handleCancel = useConstantFn(() => {
-    if (onCancel) {
-      const p = onCancel();
-      if (p && p.then) {
-        setCancelLoading(true);
-        p.then(() => {
-          setVisible(false);
-        }).finally(() => {
-          setCancelLoading(false);
-        });
-        return;
-      }
-    }
-    setVisible(false);
+    new Promise((resolve) => {
+      setCancelLoading(true);
+      resolve(onCancel?.());
+    })
+      .then(() => {
+        setVisible(false);
+      })
+      .finally(() => {
+        setCancelLoading(false);
+      });
   });
 
   const handleVisibleChange = useConstantFn((_visible: boolean) => {
