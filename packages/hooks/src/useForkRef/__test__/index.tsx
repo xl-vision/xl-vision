@@ -3,7 +3,7 @@ import { renderHook } from '../../../../../test/utils';
 
 describe('useForkRef', () => {
   it('Test all ref is set value', () => {
-    const ref1 = jest.fn();
+    const ref1 = jest.fn<void, Array<number>>();
 
     const ref2 = {
       current: null,

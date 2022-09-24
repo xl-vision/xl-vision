@@ -2,7 +2,6 @@ export { default as useLatestRef } from './useLatestRef';
 export { default as useConstantFn } from './useConstantFn';
 export { default as useForkRef } from './useForkRef';
 export { default as useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
-export { default as useMedia } from './useMedia';
 export { default as usePrevious } from './usePrevious';
 
 export { default as useLifecycleState, LifecycleState } from './useLifecycleState';

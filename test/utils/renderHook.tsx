@@ -1,11 +1,13 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { render } from '@testing-library/react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { FC, MutableRefObject, useRef } from 'react';
 
 export type RenderHookOptions<P> = Partial<{
   initialProps: P;
 }>;
 
-export const renderHook = <P, R extends any>(
+export const renderHook = <P, R>(
   useHook: (p: P) => R,
   { initialProps }: RenderHookOptions<P> = {},
 ) => {
