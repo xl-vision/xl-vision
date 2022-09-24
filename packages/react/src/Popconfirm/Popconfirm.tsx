@@ -108,7 +108,7 @@ const PopconfirmPopup = styled('div', {
 
 const defaultIcon = <ExclamationCircleOutlined />;
 
-const Popconfirm = forwardRef<unknown, PopconfirmProps>((props, ref) => {
+const Popconfirm = forwardRef<HTMLDivElement, PopconfirmProps>((props, ref) => {
   const { clsPrefix } = useTheme();
   const { locale } = useConfig();
 

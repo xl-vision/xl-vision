@@ -90,7 +90,7 @@ const TooltipArrow = styled('div', {
   };
 });
 
-const Tooltip = forwardRef<unknown, TooltipProps>((props, ref) => {
+const Tooltip = forwardRef<HTMLDivElement, TooltipProps>((props, ref) => {
   const { clsPrefix, color } = useTheme();
 
   const {

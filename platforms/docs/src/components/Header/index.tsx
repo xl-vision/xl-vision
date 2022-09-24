@@ -224,7 +224,11 @@ const Header: FC<HTMLAttributes<HTMLElement>> = (props) => {
               <span className='sm-up'>{locale.name}</span>
             </Button>
           </Dropdown>
-          <Tooltip content={locale.header.themeTooltip} placement='bottom' showDelay={1500}>
+          <Tooltip
+            content={locale.header.themeTooltip}
+            placement='bottom'
+            hoverOptions={{ delay: { open: 1500 } }}
+          >
             <Button
               aria-label='Theme'
               variant='text'
@@ -232,7 +236,11 @@ const Header: FC<HTMLAttributes<HTMLElement>> = (props) => {
               prefixIcon={isDark ? <LightTheme /> : <DarkTheme />}
             />
           </Tooltip>
-          <Tooltip content={locale.header.githubTooltip} placement='bottom' showDelay={1500}>
+          <Tooltip
+            content={locale.header.githubTooltip}
+            placement='bottom'
+            hoverOptions={{ delay: { open: 1500 } }}
+          >
             <Button
               aria-label='Github'
               variant='text'

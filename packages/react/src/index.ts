@@ -54,12 +54,7 @@ export { default as Popper } from './Popper';
 export type { PopperChildrenProps, PopperProps, PopperTrigger, PopperPlacement } from './Popper';
 
 export { default as Tooltip } from './Tooltip';
-export type {
-  TooltipChildrenProps,
-  TooltipPopupStyleProps,
-  TooltipProps,
-  TooltipTrigger,
-} from './Tooltip';
+export type { TooltipChildrenProps, TooltipPopupStyleProps, TooltipProps } from './Tooltip';
 
 export { default as Popover } from './Popover';
 export type { PopoverProps } from './Popover';

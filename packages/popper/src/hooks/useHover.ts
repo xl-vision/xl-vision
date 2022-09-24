@@ -6,7 +6,7 @@ const MIN_TIME_DELAY = 200;
 
 export type HoverOptions = {
   disablePopperEnter?: boolean;
-  delay?: number | { open: number; close: number };
+  delay?: number | { open?: number; close?: number };
 };
 
 const useHover: InteractionHook<HoverOptions> = (
@@ -15,7 +15,8 @@ const useHover: InteractionHook<HoverOptions> = (
 ) => {
   const timerRef = useRef<number>();
 
-  const delay = typeof delayProp === 'object' ? delayProp : { open: delayProp, close: delayProp };
+  const closeDelay = typeof delayProp === 'object' ? delayProp.close || 0 : delayProp;
+  const openDelay = typeof delayProp === 'object' ? delayProp.open || 0 : delayProp;
 
   const handleReferenceMouseEnter = useConstantFn(() => {
     const timer = timerRef.current;
@@ -23,7 +24,7 @@ const useHover: InteractionHook<HoverOptions> = (
 
     timerRef.current = window.setTimeout(() => {
       setOpen(true);
-    }, Math.max(delay.open, MIN_TIME_DELAY));
+    }, Math.max(openDelay, MIN_TIME_DELAY));
   });
 
   const handleReferenceMouseLeave = useConstantFn(() => {
@@ -32,7 +33,7 @@ const useHover: InteractionHook<HoverOptions> = (
 
     timerRef.current = window.setTimeout(() => {
       setOpen(false);
-    }, Math.max(delay.close, MIN_TIME_DELAY));
+    }, Math.max(closeDelay, MIN_TIME_DELAY));
   });
 
   const handlePopperMouseEnter = useConstantFn(() => {
@@ -48,7 +49,7 @@ const useHover: InteractionHook<HoverOptions> = (
 
     timerRef.current = window.setTimeout(() => {
       setOpen(false);
-    }, Math.max(delay.close, MIN_TIME_DELAY));
+    }, Math.max(closeDelay, MIN_TIME_DELAY));
   });
 
   if (skip) {

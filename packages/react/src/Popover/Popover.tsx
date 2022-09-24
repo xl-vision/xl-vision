@@ -96,7 +96,7 @@ const PopoverContent = styled('div', {
   };
 });
 
-const Popover = forwardRef<unknown, PopoverProps>((props, ref) => {
+const Popover = forwardRef<HTMLDivElement, PopoverProps>((props, ref) => {
   const {
     title,
     content,
