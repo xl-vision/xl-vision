@@ -1,4 +1,4 @@
-import { useConstantFn, useForkRef } from '@xl-vision/hooks';
+import { LifecycleState, useConstantFn, useForkRef, useLifecycleState } from '@xl-vision/hooks';
 import clsx from 'clsx';
 
 import PropTypes from 'prop-types';
@@ -127,6 +127,7 @@ const Anchor = forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
   const isScollingRef = useRef(false);
 
   const inkNodeRef = useRef<HTMLDivElement>(null);
+  const lifecycleStateRef = useLifecycleState();
 
   useEffect(() => {
     const nextScrollTarget = typeof scrollTarget === 'function' ? scrollTarget() : scrollTarget;
@@ -135,6 +136,10 @@ const Anchor = forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
   }, [scrollTarget]);
 
   const handleScroll = useConstantFn(() => {
+    if (lifecycleStateRef.current === LifecycleState.DESTORYED) {
+      return;
+    }
+
     if (isScollingRef.current) {
       return;
     }

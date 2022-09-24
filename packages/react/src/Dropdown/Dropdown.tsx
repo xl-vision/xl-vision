@@ -23,6 +23,20 @@ const DropdownRoot = styled(Popper, {
   const { clsPrefix, transition } = theme;
 
   return {
+    [`.${clsPrefix}-popper__inner`]: {
+      '&[data-placement^="left"]': {
+        transformOrigin: '100% 50%',
+      },
+      '&[data-placement^="right"]': {
+        transformOrigin: '0 50%',
+      },
+      '&[data-placement^="top"]': {
+        transformOrigin: '50% 100%',
+      },
+      '&[data-placement^="bottom"]': {
+        transformOrigin: '50% 0',
+      },
+    },
     [`.${clsPrefix}-dropdown`]: {
       ...transition.fadeIn('&'),
       ...transition.fadeOut('&'),
@@ -55,7 +69,6 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
     placement = 'bottom',
     transitionClassName,
     offset = 12,
-    trigger = 'hover',
     visible: visibleProp,
     defaultVisible = false,
     onVisibleChange,
@@ -108,7 +121,6 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
       visible={visible}
       // eslint-disable-next-line react/jsx-handler-names
       onVisibleChange={setVisible}
-      trigger={trigger}
       placement={placement}
       popup={popup}
       offset={offset}

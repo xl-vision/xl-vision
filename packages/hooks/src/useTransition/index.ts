@@ -4,6 +4,7 @@ import { ReactInstance, RefCallback, useCallback, useRef, useState } from 'react
 import { findDOMNode } from 'react-dom';
 import useConstantFn from '../useConstantFn';
 import useIsomorphicLayoutEffect from '../useIsomorphicLayoutEffect';
+import useLifecycleState, { LifecycleState } from '../useLifecycleState';
 
 export type TransitionStartHook<T extends Element = Element> = (
   el: T,
@@ -54,13 +55,7 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
   // 保存回调
   const cbRef = useRef<() => void>();
 
-  const isDestoryedRef = useRef(false);
-
-  useIsomorphicLayoutEffect(() => {
-    return () => {
-      isDestoryedRef.current = true;
-    };
-  }, []);
+  const lifecycleStatRef = useLifecycleState();
 
   const doTransition = useCallback(
     (
@@ -82,7 +77,7 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
       };
 
       const cancelCallback = () => {
-        if (isDestoryedRef.current) {
+        if (lifecycleStatRef.current === LifecycleState.DESTORYED) {
           return;
         }
         cancelHook?.(el, isFirst);
@@ -92,7 +87,8 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
 
       cbRef.current = cancelCallback;
 
-      const isCancelled = () => isDestoryedRef.current || cancelCallback !== cbRef.current;
+      const isCancelled = () =>
+        lifecycleStatRef.current === LifecycleState.DESTORYED || cancelCallback !== cbRef.current;
 
       startHook?.(el, isFirst);
       if (startingHook) {
@@ -101,7 +97,7 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
         wrapCallback();
       }
     },
-    [],
+    [lifecycleStatRef],
   );
 
   const elementRef = useRef<T | null>();
@@ -150,7 +146,7 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
         onExiting,
         (elOption, transitionOnFirstOption) => {
           onExited?.(elOption, transitionOnFirstOption);
-          if (!isDestoryedRef.current) {
+          if (lifecycleStatRef.current !== LifecycleState.DESTORYED) {
             setInTransition(false);
           }
         },

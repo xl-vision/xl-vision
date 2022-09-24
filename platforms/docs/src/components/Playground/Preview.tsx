@@ -1,5 +1,4 @@
 import { styled } from '@xl-vision/react';
-import { useUnmount } from '@xl-vision/hooks';
 import { LoadingOutlined } from '@xl-vision/icons';
 import { keyframes } from '@xl-vision/styled-engine';
 import { FC, useState, useRef, useMemo, useEffect, useCallback } from 'react';
@@ -186,9 +185,11 @@ const Preview: FC<PreviewProps> = (props) => {
     }
   }, [code]);
 
-  useUnmount(() => {
-    window.clearTimeout(timerRef.current);
-  });
+  useEffect(() => {
+    return () => {
+      window.clearTimeout(timerRef.current);
+    };
+  }, []);
 
   const handleLoad = useCallback((win: Window) => {
     const onError = (err: Error, info: { componentStack: string }) => {

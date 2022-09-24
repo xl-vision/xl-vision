@@ -1,5 +1,11 @@
 import PropTypes from 'prop-types';
-import { useConstantFn, useForkRef, useIsomorphicLayoutEffect } from '@xl-vision/hooks';
+import {
+  LifecycleState,
+  useConstantFn,
+  useForkRef,
+  useIsomorphicLayoutEffect,
+  useLifecycleState,
+} from '@xl-vision/hooks';
 import clsx from 'clsx';
 import { getBoundingClientRect, isProduction, isServer } from '@xl-vision/utils';
 import {
@@ -85,6 +91,8 @@ const Affix = forwardRef<AffixIntance, AffixProps>((props, ref) => {
 
   const [status, setStatus] = useState(AffixStatus.NONE);
 
+  const lifecycleStateRef = useLifecycleState();
+
   const measure = useConstantFn(() => {
     const affixNode = rootRef.current;
     if (!affixNode || !currentTarget) {
@@ -134,17 +142,23 @@ const Affix = forwardRef<AffixIntance, AffixProps>((props, ref) => {
   // 当尺寸信息发生变化时，需要清空样式重新计算
   const handleSizeChange = useMemo(() => {
     return throttleByAnimationFrame(() => {
+      if (lifecycleStateRef.current === LifecycleState.DESTORYED) {
+        return;
+      }
       setPlaceholderStyle(undefined);
       setAffixStyle(undefined);
       setStatus(AffixStatus.PREPARE);
     });
-  }, []);
+  }, [lifecycleStateRef]);
 
   const handleEventEmit = useMemo(() => {
     return throttleByAnimationFrame(() => {
+      if (lifecycleStateRef.current === LifecycleState.DESTORYED) {
+        return;
+      }
       setStatus(AffixStatus.PREPARE);
     });
-  }, []);
+  }, [lifecycleStateRef]);
 
   useEffect(() => {
     const node = rootRef.current;

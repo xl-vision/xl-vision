@@ -1,5 +1,5 @@
-import { useIsomorphicLayoutEffect } from '@xl-vision/hooks';
 import { useRef } from 'react';
+import useIsomorphicLayoutEffect from '../useIsomorphicLayoutEffect';
 
 export enum LifecycleState {
   BEFORE_MOUNTED,

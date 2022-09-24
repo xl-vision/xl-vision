@@ -1,7 +1,7 @@
 import { contains, isProduction } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { useConstantFn, useForkRef, useUnmount } from '@xl-vision/hooks';
+import { useConstantFn, useForkRef } from '@xl-vision/hooks';
 import { CloseCircleFilled } from '@xl-vision/icons';
 import { CSSObject } from '@xl-vision/styled-engine';
 import {
@@ -342,12 +342,14 @@ const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     });
   });
 
-  useUnmount(() => {
-    const timer = removePasswordTimerRef.current;
-    if (timer) {
-      clearTimeout(timer);
-    }
-  });
+  useEffect(() => {
+    return () => {
+      const timer = removePasswordTimerRef.current;
+      if (timer) {
+        clearTimeout(timer);
+      }
+    };
+  }, []);
 
   const rootClassName = `${clsPrefix}-input`;
 

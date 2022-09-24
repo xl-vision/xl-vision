@@ -1,4 +1,4 @@
-import { useConstantFn, useUnmount } from '@xl-vision/hooks';
+import { useConstantFn } from '@xl-vision/hooks';
 import clsx from 'clsx';
 import { getComputedStyle, isProduction, raf } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
@@ -54,9 +54,11 @@ const TextAreaSuffix: FC<TextAreaSuffixProps> = (props) => {
     handleOverflow();
   }, [value, handleOverflow]);
 
-  useUnmount(() => {
-    rafCancelFnRef.current?.();
-  });
+  useEffect(() => {
+    return () => {
+      rafCancelFnRef.current?.();
+    };
+  }, []);
 
   const rootClassName = clsx(`${clsPrefix}-textarea__suffix`);
 
