@@ -1,9 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 import { mount } from 'enzyme';
-import React from 'react';
 import { noop } from '@xl-vision/utils';
+import * as utils from '@xl-vision/utils';
 import TransitionGroup from '..';
-import * as nextFrame from '../../utils/nextFrame';
 
 describe('TransitionGroup', () => {
   it('测试顺序是否正确', () => {
@@ -13,7 +12,7 @@ describe('TransitionGroup', () => {
     const Comp = (props: { arr: Array<number> }) => {
       const { arr } = props;
       const children = arr.map((it) => <div key={it}>{it}</div>);
-      return <TransitionGroup transitionClasses='demo'>{children}</TransitionGroup>;
+      return <TransitionGroup transitionClassName='demo'>{children}</TransitionGroup>;
     };
     const wrapper = mount(<Comp arr={prevArr} />);
     expect(wrapper.text()).toBe(prevArr.map((it) => it.toString()).reduce((a, b) => a + b));
@@ -24,7 +23,7 @@ describe('TransitionGroup', () => {
   });
 
   it('test hooks', () => {
-    const nextFrameSpy = jest.spyOn(nextFrame, 'default');
+    const nextFrameSpy = jest.spyOn(utils, 'nextFrame');
     nextFrameSpy.mockImplementation((fn: () => void) => {
       fn();
       return noop;
@@ -37,17 +36,17 @@ describe('TransitionGroup', () => {
     const Comp = (props: { arr: Array<number> }) => {
       const { arr } = props;
       const children = arr.map((it) => (
-        // 阻止执行leave动作
+        // 阻止执行exit动作
         <div key={it}>{it}</div>
       ));
       return (
         <TransitionGroup
-          beforeEnter={() => fn('beforeEnter')}
-          enter={() => fn('enter')}
-          afterEnter={() => fn('afterEnter')}
-          beforeLeave={() => fn('beforeLeave')}
-          leave={() => fn('leave')}
-          afterLeave={() => fn('afterLeave')}
+          onEnter={() => fn('beforeEnter')}
+          onEntering={() => fn('enter')}
+          onEntered={() => fn('afterEnter')}
+          onExit={() => fn('beforeExit')}
+          onExiting={() => fn('exit')}
+          onExited={() => fn('afterExit')}
         >
           {children}
         </TransitionGroup>

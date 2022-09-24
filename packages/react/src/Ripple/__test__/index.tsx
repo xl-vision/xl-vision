@@ -1,11 +1,11 @@
 import { mount } from 'enzyme';
-import React from 'react';
 import { Ripple, RippleRef } from '@xl-vision/react';
+import { useRef, useMemo } from 'react';
 
-const Demo = ({ leaveAfterEnter }: { leaveAfterEnter?: boolean }) => {
-  const rippleRef = React.useRef<RippleRef>(null);
+const Demo = ({ exitAfterEnter }: { exitAfterEnter?: boolean }) => {
+  const rippleRef = useRef<RippleRef>(null);
 
-  const events = React.useMemo(() => {
+  const events = useMemo(() => {
     const start = (e: any) => {
       rippleRef.current?.start(e);
     };
@@ -27,7 +27,7 @@ const Demo = ({ leaveAfterEnter }: { leaveAfterEnter?: boolean }) => {
   return (
     <div className='box' {...events}>
       click me
-      <Ripple leaveAfterEnter={leaveAfterEnter} transitionClasses='ripple' ref={rippleRef} />
+      <Ripple exitAfterEnter={exitAfterEnter} transitionClassName='ripple' ref={rippleRef} />
     </div>
   );
 };
@@ -41,7 +41,7 @@ describe('Ripple', () => {
     const wrapper = mount(
       <div>
         click me
-        <Ripple transitionClasses='ripple' />
+        <Ripple transitionClassName='ripple' />
       </div>,
     );
     jest.runAllTimers();

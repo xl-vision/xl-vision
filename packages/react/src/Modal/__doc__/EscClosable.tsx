@@ -1,6 +1,5 @@
-/* eslint-disable react/jsx-handler-names */
-import React from 'react';
 import { Button, Modal, styled } from '@xl-vision/react';
+import { useState } from 'react';
 
 const Body = styled('div')(({ theme }) => {
   const { color } = theme;
@@ -12,7 +11,7 @@ const Body = styled('div')(({ theme }) => {
 });
 
 const EscClosable = () => {
-  const [visible, setVisible] = React.useState(false);
+  const [visible, setVisible] = useState(false);
 
   return (
     <>

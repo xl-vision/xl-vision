@@ -1,7 +1,7 @@
 // Thanks to https://github.com/react-component/textarea/blob/master/src/calculateNodeHeight.tsx
 
 import { getComputedStyle } from '@xl-vision/utils';
-import React from 'react';
+import { CSSProperties } from 'react';
 
 const HIDDEN_TEXTAREA_STYLE = `
   min-height:0 !important;
@@ -41,7 +41,7 @@ export default (
   node: HTMLTextAreaElement,
   minRows: number | null = null,
   maxRows: number | null = null,
-): React.CSSProperties => {
+): CSSProperties => {
   if (!hiddenTextarea) {
     hiddenTextarea = document.createElement('textarea');
     hiddenTextarea.setAttribute('tab-index', '-1');
@@ -65,7 +65,7 @@ export default (
   let minHeight = Number.MIN_SAFE_INTEGER;
   let maxHeight = Number.MAX_SAFE_INTEGER;
   let height = hiddenTextarea.scrollHeight;
-  let overflowY: React.CSSProperties['overflowY'];
+  let overflowY: CSSProperties['overflowY'];
 
   if (boxSizing === 'border-box') {
     // border-box: add border, since height = content + padding + border

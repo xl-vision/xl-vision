@@ -1,24 +1,4 @@
-export type {
-  ShouldForwardProp,
-  SimpleInterpolation,
-  StyledComponent,
-  CSSKeyframes,
-  CSSObject,
-  CSSProperties,
-  CSSPseudos,
-  CreateGlobalStyle,
-  CreateKeyframes,
-  CreateStyledComponent,
-  PropsOf,
-  Styled,
-  GlobalStyleComponent,
-  FilteringStyledOptions,
-  Interpolation,
-  InterpolationPrimitive,
-  Keyframes,
-  FunctionInterpolation,
-  ExtractProps,
-} from '@xl-vision/styled-engine-types';
+export * from '@xl-vision/styled-engine-types';
 
 export { default as createGlobalStyles } from './createGlobalStyles';
 export { default as keyframes } from './keyframes';

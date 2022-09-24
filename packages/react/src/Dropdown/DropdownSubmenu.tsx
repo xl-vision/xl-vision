@@ -1,10 +1,10 @@
 import { CSSObject } from '@xl-vision/styled-engine';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import React from 'react';
 import { RightOutlined } from '@xl-vision/icons';
 import { isProduction, isServer } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
+import { ReactNode, forwardRef, useContext, useCallback, useEffect } from 'react';
 import BaseButton from '../BaseButton';
 import usePropChange from '../hooks/usePropChange';
 import Popper, { PopperPlacement, PopperProps, PopperTrigger } from '../Popper';
@@ -17,9 +17,9 @@ export interface DropdownSubmenuProps
     PopperProps,
     'popup' | 'arrow' | 'transitionClasses' | 'disablePopupEnter' | 'children' | 'title'
   > {
-  children: React.ReactNode;
+  children: ReactNode;
   transitionClassName?: string;
-  title: React.ReactNode;
+  title: ReactNode;
   disabled?: boolean;
 }
 
@@ -112,7 +112,7 @@ const DropdownSubmenuPopup = styled('ul', {
 const defaultTrigger: Array<PopperTrigger> = ['click', 'hover'];
 const defaultGetPopupContainer = () => document.body;
 
-const DropdownSubmenu = React.forwardRef<HTMLDivElement, DropdownSubmenuProps>((props, ref) => {
+const DropdownSubmenu = forwardRef<HTMLDivElement, DropdownSubmenuProps>((props, ref) => {
   const {
     title,
     children,
@@ -132,7 +132,7 @@ const DropdownSubmenu = React.forwardRef<HTMLDivElement, DropdownSubmenuProps>((
   const [visible, setVisible] = usePropChange(defaultVisible, visibleProp, onVisibleChange);
 
   const { clsPrefix } = useTheme();
-  const { submenuCloseHandlers } = React.useContext(DropdownContext);
+  const { submenuCloseHandlers } = useContext(DropdownContext);
 
   const handleVisibleChange = useConstantFn((newVisible: boolean) => {
     if (disabled) {
@@ -141,11 +141,11 @@ const DropdownSubmenu = React.forwardRef<HTMLDivElement, DropdownSubmenuProps>((
     setVisible(newVisible);
   });
 
-  const closeHandler = React.useCallback(() => {
+  const closeHandler = useCallback(() => {
     return setVisible(false);
   }, [setVisible]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     submenuCloseHandlers.push(closeHandler);
     return () => {
       const index = submenuCloseHandlers.indexOf(closeHandler);
@@ -174,7 +174,7 @@ const DropdownSubmenu = React.forwardRef<HTMLDivElement, DropdownSubmenuProps>((
       {...others}
       ref={ref}
       className={rootClasses}
-      disablePopupEnter={false}
+      // disablePopupEnter={false}
       visible={visible}
       onVisibleChange={handleVisibleChange}
       trigger={trigger}
@@ -182,7 +182,7 @@ const DropdownSubmenu = React.forwardRef<HTMLDivElement, DropdownSubmenuProps>((
       popup={popup}
       offset={offset}
       popupContainer={popupContainer}
-      transitionClasses={clsx(rootClassName, transitionClassName)}
+      transitionClassName={clsx(rootClassName, transitionClassName)}
     >
       <li className={`${rootClassName}__inner`}>
         <DropdownSubmenuItemButton
@@ -208,7 +208,7 @@ if (!isProduction) {
   const triggerPropType = PropTypes.oneOf<PopperTrigger>([
     'click',
     'contextMenu',
-    'custom',
+    // 'custom',
     'focus',
     'hover',
   ]).isRequired;
@@ -229,9 +229,6 @@ if (!isProduction) {
       'right',
       'right-start',
       'right-end',
-      'auto',
-      'auto-start',
-      'auto-end',
     ]),
     transitionClassName: PropTypes.string,
     offset: PropTypes.number,

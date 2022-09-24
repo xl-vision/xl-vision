@@ -1,5 +1,5 @@
-import React from 'react';
 import { Button, styled, TransitionGroup } from '@xl-vision/react';
+import { useRef, useState, useCallback } from 'react';
 
 const Wrapper = styled('div')({
   marginTop: 20,
@@ -8,31 +8,31 @@ const Wrapper = styled('div')({
 const Demo = styled('span')({
   display: 'inline-block',
   marginRight: 10,
-  '&.slide-enter-active,&.slide-leave-active': {
+  '&.slide-enter-active,&.slide-exit-active': {
     transition: 'all 1s ease-in-out',
   },
 
-  '&.slide-leave-to, &.slide-enter-from': {
+  '&.slide-exit-to, &.slide-enter-from': {
     opacity: 0,
   },
-  ' &.slide-leave-from, &.slide-enter-to': {
+  ' &.slide-exit-from, &.slide-enter-to': {
     opacity: 1,
     transform: 'translateY(0px)',
   },
   '&.slide-enter-from': {
     transform: 'translateY(-30px)',
   },
-  '&.slide-leave-to': {
+  '&.slide-exit-to': {
     transform: 'translateY(30px)',
   },
 });
 
 const Basic = () => {
-  const nextNumRef = React.useRef(10);
+  const nextNumRef = useRef(10);
 
-  const [items, setItems] = React.useState([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  const [items, setItems] = useState([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 
-  const handleAdd = React.useCallback(() => {
+  const handleAdd = useCallback(() => {
     setItems((prev) => {
       const index = Math.round(Math.random() * prev.length);
       prev.splice(index, 0, nextNumRef.current++);
@@ -40,7 +40,7 @@ const Basic = () => {
     });
   }, []);
 
-  const handleRemove = React.useCallback(() => {
+  const handleRemove = useCallback(() => {
     setItems((prev) => {
       const index = Math.round(Math.random() * prev.length);
       prev.splice(index, 1);
@@ -59,7 +59,7 @@ const Basic = () => {
         </Button>
       </div>
       <Wrapper>
-        <TransitionGroup transitionClasses='slide'>
+        <TransitionGroup transitionClassName='slide'>
           {items.map((it) => (
             <Demo key={it}>{it}</Demo>
           ))}

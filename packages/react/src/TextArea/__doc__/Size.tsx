@@ -1,4 +1,3 @@
-import React from 'react';
 import { TextArea } from '@xl-vision/react';
 
 const Demo = () => {

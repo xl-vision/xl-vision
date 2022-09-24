@@ -1,9 +1,8 @@
-/* eslint-disable react/jsx-handler-names */
 import { Button, Popover } from '@xl-vision/react';
-import React from 'react';
+import { useState } from 'react';
 
 const ClickInner = () => {
-  const [visible, setVisible] = React.useState(false);
+  const [visible, setVisible] = useState(false);
 
   const content = (
     <Button variant='text' onClick={() => setVisible(false)} color='primary'>

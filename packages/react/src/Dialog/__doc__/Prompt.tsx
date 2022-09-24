@@ -1,11 +1,10 @@
-/* eslint-disable react/jsx-handler-names */
 import { Button, Dialog } from '@xl-vision/react';
-import React from 'react';
+import { useState, useCallback } from 'react';
 
 const Prompt = () => {
-  const [visible, setVisible] = React.useState(false);
+  const [visible, setVisible] = useState(false);
 
-  const handleClick = React.useCallback(() => {
+  const handleClick = useCallback(() => {
     setVisible(true);
   }, []);
 

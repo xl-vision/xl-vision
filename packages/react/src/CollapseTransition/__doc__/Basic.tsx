@@ -1,5 +1,5 @@
-import React from 'react';
 import { Button, CollapseTransition, styled } from '@xl-vision/react';
+import { useState } from 'react';
 
 const Div = styled('div')`
   display: flex;
@@ -13,23 +13,23 @@ const Div = styled('div')`
   margin-top: 16px;
 
   &.slide-enter-active,
-  &.slide-leave-active {
+  &.slide-exit-active {
     transition: all 2s ease;
   }
 
   &.slide-enter-from,
-  &.slide-leave-to {
+  &.slide-exit-to {
     opacity: 0;
   }
 
   &.slide-enter-to,
-  &.slide-leave-from {
+  &.slide-exit-from {
     opacity: 1;
   }
 `;
 
 const Basic = () => {
-  const [active, setActive] = React.useState(false);
+  const [active, setActive] = useState(false);
 
   return (
     <div className='wrapper'>
@@ -41,7 +41,7 @@ const Basic = () => {
       >
         Click
       </Button>
-      <CollapseTransition in={active} transitionClasses='slide'>
+      <CollapseTransition in={active} transitionClassName='slide'>
         <Div>DEMO</Div>
       </CollapseTransition>
     </div>

@@ -1,6 +1,6 @@
 import { styled } from '@xl-vision/react';
 import dynamic from 'next/dynamic';
-import React from 'react';
+import { FC, useState, useEffect } from 'react';
 import Preview from './Preview';
 
 const Editor = dynamic(() => import('./Editor'), { ssr: false });
@@ -28,12 +28,12 @@ const Root = styled('div')(({ theme }) => {
   };
 });
 
-const Playground: React.FunctionComponent<PlaygroundProps> = (props) => {
+const Playground: FC<PlaygroundProps> = (props) => {
   const { code: codeProp, scripts } = props;
 
-  const [code, handleChange] = React.useState('');
+  const [code, handleChange] = useState('');
 
-  React.useEffect(() => {
+  useEffect(() => {
     handleChange(codeProp);
   }, [codeProp]);
 

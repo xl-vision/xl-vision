@@ -1,5 +1,4 @@
 import { Button, Dropdown } from '@xl-vision/react';
-import React from 'react';
 
 const Basic = () => {
   const menus = (

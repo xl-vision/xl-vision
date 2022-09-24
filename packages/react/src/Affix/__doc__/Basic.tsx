@@ -1,4 +1,3 @@
-import React from 'react';
 import { Affix, Button } from '@xl-vision/react';
 
 const Demo = () => {

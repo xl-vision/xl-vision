@@ -1,4 +1,4 @@
-import React from 'react';
+import { createContext } from 'react';
 import { defaultLanguage, defaultLocale, Locale } from '../locale';
 
 export type ConfigContextProps = {
@@ -11,4 +11,4 @@ export const defaultConfigContext: ConfigContextProps = {
   language: defaultLanguage,
 };
 
-export default React.createContext<ConfigContextProps>(defaultConfigContext);
+export default createContext<ConfigContextProps>(defaultConfigContext);

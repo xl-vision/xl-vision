@@ -1,6 +1,5 @@
-import React from 'react';
-import { Transition, styled, Button } from '@xl-vision/react';
-import { BeforeEventHook, EventHook } from '@xl-vision/react/Transition';
+import { Button, Transition, styled } from '@xl-vision/react';
+import { useState } from 'react';
 
 const Div = styled('div')`
   display: flex;
@@ -12,70 +11,27 @@ const Div = styled('div')`
   background-color: #007bff;
   overflow: hidden;
   margin-top: 16px;
+
+  &.slide-enter-active,
+  &.slide-exit-active {
+    transition: all 2s ease;
+  }
+
+  &.slide-enter-from,
+  &.slide-exit-to {
+    height: 0;
+  }
 `;
 
 const Basic = () => {
-  const [show, setShow] = React.useState(false);
-
-  const beforeEnter: BeforeEventHook = React.useCallback((el) => {
-    el.style.height = el.style.height || '0';
-  }, []);
-
-  const enter: EventHook = React.useCallback((el, done, isCancelled) => {
-    let height = Number(el.style.height.substring(0, el.style.height.indexOf('px')) || 0);
-    const callback = () => {
-      const id = requestAnimationFrame(() => {
-        if (isCancelled()) {
-          cancelAnimationFrame(id);
-          return;
-        }
-        if (height >= 200) {
-          cancelAnimationFrame(id);
-          done();
-          return;
-        }
-        height += 2;
-        el.style.height = `${height}px`;
-        callback();
-      });
-    };
-    callback();
-  }, []);
-
-  const leave: EventHook = React.useCallback((el, done, isCancelled) => {
-    let height = Number(el.style.height.substring(0, el.style.height.indexOf('px')) || 200);
-    const callback = () => {
-      const id = requestAnimationFrame(() => {
-        if (isCancelled()) {
-          cancelAnimationFrame(id);
-          return;
-        }
-        if (height <= 0) {
-          cancelAnimationFrame(id);
-          done();
-          return;
-        }
-        height -= 2;
-        el.style.height = `${height}px`;
-        callback();
-      });
-    };
-    callback();
-  }, []);
+  const [show, setShow] = useState(false);
 
   return (
     <div>
       <Button color='primary' onClick={() => setShow(!show)}>
         Click
       </Button>
-      <Transition
-        in={show}
-        beforeEnter={beforeEnter}
-        enter={enter}
-        leave={leave}
-        mountOnEnter={true}
-        unmountOnLeave={true}
-      >
+      <Transition in={show} transitionClassName='slide' mountOnEnter={true} unmountOnExit={true}>
         <Div>DEMO</Div>
       </Transition>
     </div>

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Popper, Button, styled } from '@xl-vision/react';
 
 const Wrapper = styled('div')(() => {
@@ -11,59 +10,71 @@ const Wrapper = styled('div')(() => {
 });
 
 const PopperRoot = styled(Popper)(({ theme }) => {
+  const { color } = theme;
+
+  const bgColor = color.emphasize(color.modes.dark.background.paper, 0.1);
+
   return {
     '.popup': {
       borderRadius: '3px',
-      backgroundColor: theme.color.grey[300],
+      backgroundColor: bgColor,
+      color: color.getContrastColor(bgColor).text.primary,
       padding: '5px 10px',
       ...theme.elevations(5),
     },
     '.arrow': {
-      position: 'absolute',
-      left: '0px',
-      bottom: '-2px',
-      '&::before': {
-        position: 'absolute',
-        display: 'block',
-        boxSizing: 'border-box',
-        content: '""',
-        width: '10px',
-        height: '10px',
-        transform: 'rotate(45deg)',
-        zIndex: -1,
-        left: '-5px',
-        bottom: '-5px',
-        backgroundColor: theme.color.grey[300],
-      },
+      width: 8,
+      height: 8,
+      transform: 'translate(-4px, -4px) rotate(45deg)',
+      background: bgColor,
     },
     '.slide': {
-      '&-enter-active, &-leave-active': {
-        transition: theme.transition.standard('all'),
+      '&-enter-active, &-exit-active': {
+        transition: theme.transition.standard('transform'),
+        '&[data-placement^="left"]': {
+          transform: 'scaleX(1)',
+          transformOrigin: '100% 0',
+        },
+        '&[data-placement^="right"]': {
+          transform: 'scaleX(1)',
+          transformOrigin: '0 0',
+        },
         '&[data-placement^="top"]': {
+          transform: 'scaleY(1)',
           transformOrigin: '0 100%',
         },
         '&[data-placement^="bottom"]': {
+          transform: 'scaleY(1)',
           transformOrigin: '0 0',
         },
       },
-      '&-enter-from,&-leave-to': {
-        transform: 'scaleY(0)',
-      },
-      '&-enter-to,&-leave-from': {
-        transform: 'scaleY(1)',
+
+      '&-enter-from, &-exit-to': {
+        '&[data-placement^="left"]': {
+          transform: 'scaleX(0)',
+        },
+        '&[data-placement^="right"]': {
+          transform: 'scaleX(0)',
+        },
+        '&[data-placement^="top"]': {
+          transform: 'scaleY(0)',
+        },
+        '&[data-placement^="bottom"]': {
+          transform: 'scaleY(0)',
+        },
       },
     },
   };
 });
 
-const popup = <span className='popup'>This is popper</span>;
+const popup = <div className='popup'>This is popper</div>;
 
 const Arrow = () => {
   return (
     <Wrapper>
       <PopperRoot
-        transitionClasses='slide'
-        placement='top'
+        transitionClassName='slide'
+        placement='right'
         popup={popup}
         arrow={<div className='arrow' />}
         offset={10}

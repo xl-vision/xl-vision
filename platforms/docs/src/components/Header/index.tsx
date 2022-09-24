@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button, styled, Tooltip, Dropdown } from '@xl-vision/react';
 import { DownOutlined, GithubFilled, MenuOutlined } from '@xl-vision/icons';
 import Link from 'next/link';
@@ -7,6 +6,7 @@ import { useRouter } from 'next/router';
 import Cookie from 'js-cookie';
 import { alpha } from '@xl-vision/react/utils/color';
 import { noop } from '@xl-vision/utils';
+import { FC, HTMLAttributes, useContext, useCallback, useMemo } from 'react';
 import LightTheme from './LightTheme';
 import DarkTheme from './DarkTheme';
 import Translate from './Translate';
@@ -124,18 +124,18 @@ const MobileDropdownItem = styled(Dropdown.Item)(({ theme }) => {
   };
 });
 
-const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (props) => {
-  const theme = React.useContext(ThemeContext);
+const Header: FC<HTMLAttributes<HTMLElement>> = (props) => {
+  const theme = useContext(ThemeContext);
   const { supportLocales, locale } = useLocale();
   const router = useRouter();
 
   const { isDark, setDark } = theme;
 
-  const handleTheme = React.useCallback(() => {
+  const handleTheme = useCallback(() => {
     setDark((prev) => !prev);
   }, [setDark]);
 
-  const langs = React.useMemo(() => Object.keys(supportLocales), [supportLocales]);
+  const langs = useMemo(() => Object.keys(supportLocales), [supportLocales]);
 
   const handleLangChange = useConstantFn((lang: string) => {
     const { pathname, asPath, query } = router;
@@ -224,7 +224,11 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
               <span className='sm-up'>{locale.name}</span>
             </Button>
           </Dropdown>
-          <Tooltip content={locale.header.themeTooltip} placement='bottom' showDelay={1500}>
+          <Tooltip
+            content={locale.header.themeTooltip}
+            placement='bottom'
+            hoverOptions={{ delay: { open: 1500 } }}
+          >
             <Button
               aria-label='Theme'
               variant='text'
@@ -232,7 +236,11 @@ const Header: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (prop
               prefixIcon={isDark ? <LightTheme /> : <DarkTheme />}
             />
           </Tooltip>
-          <Tooltip content={locale.header.githubTooltip} placement='bottom' showDelay={1500}>
+          <Tooltip
+            content={locale.header.githubTooltip}
+            placement='bottom'
+            hoverOptions={{ delay: { open: 1500 } }}
+          >
             <Button
               aria-label='Github'
               variant='text'

@@ -1,7 +1,7 @@
-import React from 'react';
+import { createContext } from 'react';
 import { Breakpoint } from '../ThemeProvider/breakpoints';
 
-export default React.createContext<{
+export default createContext<{
   gutter: number;
   breakPoints?: Array<[Breakpoint, boolean]>;
   removeOnUnvisible?: boolean;

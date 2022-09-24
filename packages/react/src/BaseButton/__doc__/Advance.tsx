@@ -1,4 +1,3 @@
-import React from 'react';
 import { BaseButton, styled } from '@xl-vision/react';
 import Breakfast from './breakfast.jpg';
 import Burgers from './burgers.jpg';

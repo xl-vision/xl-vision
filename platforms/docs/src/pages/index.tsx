@@ -1,8 +1,8 @@
 import { styled, Button } from '@xl-vision/react';
-import React from 'react';
 import Link from 'next/link';
 import { NextPage } from 'next';
 import Head from 'next/head';
+import { useContext } from 'react';
 import Logo from '../components/Logo';
 import Header from '../components/Header';
 import { LocalizationContext } from '../components/LocalizationProvider';
@@ -78,7 +78,7 @@ const FooterWrapper = styled(Footer)(({ theme }) => {
 });
 
 const Home: NextPage = () => {
-  const { locale } = React.useContext(LocalizationContext);
+  const { locale } = useContext(LocalizationContext);
 
   return (
     <>

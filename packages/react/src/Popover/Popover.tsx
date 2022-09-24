@@ -1,18 +1,16 @@
 import clsx from 'clsx';
-import React from 'react';
 import PropTypes from 'prop-types';
 import { isProduction, isServer } from '@xl-vision/utils';
+import { ReactNode, forwardRef } from 'react';
 import Popper, { PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 
-export interface PopoverProps
-  extends Omit<PopperProps, 'popup' | 'arrow' | 'transitionClasses' | 'title'> {
-  title?: React.ReactNode;
-  content: React.ReactNode;
-  transitionClassName?: string;
-  showArrow?: boolean;
-}
+export type PopoverProps = Omit<PopperProps, 'popup' | 'arrow' | 'title'> & {
+  title?: ReactNode;
+  content: ReactNode;
+  hideArrow?: boolean;
+};
 
 const displayName = 'Popover';
 
@@ -38,33 +36,10 @@ const PopoverArrow = styled('div', {
   const bgColor = color.background.paper;
 
   return {
-    position: 'absolute',
-    width: 0,
-    height: 0,
+    width: 8,
+    height: 8,
     backgroundColor: bgColor,
-
-    ':before': {
-      position: 'absolute',
-      content: '""',
-      width: '8px',
-      height: '8px',
-      left: '-4px',
-      top: '-4px',
-      transform: 'rotate(45deg)',
-      backgroundColor: 'inherit',
-    },
-    '&[data-placement^="left"]': {
-      right: 0,
-    },
-    '&[data-placement^="right"]': {
-      left: 0,
-    },
-    '&[data-placement^="top"]': {
-      bottom: 0,
-    },
-    '&[data-placement^="bottom"]': {
-      top: 0,
-    },
+    transform: 'translate(-4px, -4px) rotate(45deg)',
   };
 });
 
@@ -107,7 +82,7 @@ const PopoverContent = styled('div', {
   };
 });
 
-const Popover = React.forwardRef<unknown, PopoverProps>((props, ref) => {
+const Popover = forwardRef<HTMLDivElement, PopoverProps>((props, ref) => {
   const {
     title,
     content,
@@ -117,7 +92,7 @@ const Popover = React.forwardRef<unknown, PopoverProps>((props, ref) => {
     offset = 12,
     // 支持触屏设备
     trigger = 'click',
-    showArrow,
+    hideArrow,
     ...others
   } = props;
 
@@ -144,10 +119,10 @@ const Popover = React.forwardRef<unknown, PopoverProps>((props, ref) => {
       trigger={trigger}
       className={rootClasses}
       offset={offset}
-      arrow={showArrow ? arrow : undefined}
+      arrow={!hideArrow && arrow}
       popup={popup}
       popupContainer={popupContainer}
-      transitionClasses={transitionClassName || rootClassName}
+      transitionClassName={transitionClassName || rootClassName}
     />
   );
 });
@@ -158,7 +133,6 @@ if (!isProduction) {
   const triggerPropType = PropTypes.oneOf<PopperTrigger>([
     'click',
     'contextMenu',
-    'custom',
     'focus',
     'hover',
   ]).isRequired;
@@ -175,7 +149,7 @@ if (!isProduction) {
     transitionClassName: PropTypes.string,
     offset: PropTypes.number,
     trigger: PropTypes.oneOfType([triggerPropType, PropTypes.arrayOf(triggerPropType)]),
-    showArrow: PropTypes.bool,
+    hideArrow: PropTypes.bool,
   };
 }
 

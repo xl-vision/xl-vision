@@ -1,88 +1,120 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events */
-import React from 'react';
 import PropTypes from 'prop-types';
-import { Instance, Placement, createPopper, Modifier } from '@popperjs/core';
 import clsx from 'clsx';
-import { isProduction, isServer, noop, oneOf } from '@xl-vision/utils';
-import { useForkRef, useConstantFn } from '@xl-vision/hooks';
-import CssTransition, { CssTransitionElement, CssTransitionProps } from '../CssTransition';
+import { isProduction, isServer, oneOf } from '@xl-vision/utils';
+import {
+  Placement,
+  useConnectInteraction,
+  useAutoUpdatePopper,
+  shift,
+  offset,
+  arrow,
+  Middleware,
+  OffsetOptions,
+  useInteraction,
+  useHover,
+  Side,
+  ShiftOptions,
+  autoPlacement,
+  AutoPlacementOptions,
+  useClick,
+  useFocus,
+  HoverOptions,
+  ClickOptions,
+  ContextMenuOptions,
+  useContextMenu,
+  AutoUpdateOptions,
+  ArrowOptions,
+} from '@xl-vision/popper';
+import { CssTransitionClassNameRecord, useForkRef } from '@xl-vision/hooks';
+import {
+  MouseEventHandler,
+  Ref,
+  HTMLAttributes,
+  ReactElement,
+  forwardRef,
+  useMemo,
+  Children,
+  useState,
+  useCallback,
+  useEffect,
+  cloneElement,
+  CSSProperties,
+  useRef,
+  ReactNode,
+} from 'react';
+import Transition from '../Transition';
 import Portal, { PortalContainerType } from '../Portal';
-import { addClass, removeClass } from '../utils/class';
-import { forceReflow } from '../utils/dom';
-import { off, on } from '../utils/event';
-import useLifecycleState, { LifecycleState } from '../hooks/useLifecycleState';
-import { increaseZindex } from '../utils/zIndexManger';
-import computeTransformOrigin from './computeTransformOrigin';
 import usePropChange from '../hooks/usePropChange';
-import findDomNode from '../utils/findDomNode';
 import { useTheme } from '../ThemeProvider';
+import { increaseZindex } from '../utils/zIndexManger';
 
-export type PopperTrigger = 'hover' | 'focus' | 'click' | 'contextMenu' | 'custom';
+export type PopperTrigger = 'hover' | 'focus' | 'click' | 'contextMenu';
 
 export type PopperPlacement = Placement;
 
 export type PopperChildrenProps = {
-  onClick?: React.MouseEventHandler<any>;
-  onMouseEnter?: React.MouseEventHandler<any>;
-  onMouseLeave?: React.MouseEventHandler<any>;
-  onFocus?: React.MouseEventHandler<any>;
-  onBlur?: React.MouseEventHandler<any>;
-  onContextMenu?: React.MouseEventHandler<any>;
-  ref?: React.Ref<any>;
+  onClick?: MouseEventHandler<any>;
+  onMouseEnter?: MouseEventHandler<any>;
+  onMouseLeave?: MouseEventHandler<any>;
+  onFocus?: MouseEventHandler<any>;
+  onBlur?: MouseEventHandler<any>;
+  onContextMenu?: MouseEventHandler<any>;
+  ref?: Ref<any>;
 };
 
-export interface PopperProps extends React.HTMLAttributes<HTMLDivElement> {
-  children: React.ReactElement<PopperChildrenProps>;
-  popup: React.ReactElement;
+export type PopperProps = HTMLAttributes<HTMLDivElement> & {
+  children: ReactElement<PopperChildrenProps>;
+  popup: ReactElement;
   popupContainer?: PortalContainerType;
-  transitionClasses?: CssTransitionProps['transitionClasses'];
-  trigger?: PopperTrigger | Array<PopperTrigger>;
+  transitionClassName?: string;
+  trigger?: PopperTrigger | Array<PopperTrigger> | false;
   placement?: PopperPlacement;
-  disablePopupEnter?: boolean;
-  offset?: number;
-  showDelay?: number;
-  hideDelay?: number;
+  hoverOptions?: HoverOptions;
+  clickOptions?: ClickOptions;
+  focusOptions?: FocusOptions;
+  contextMenuOptions?: ContextMenuOptions;
   visible?: boolean;
   defaultVisible?: boolean;
   onVisibleChange?: (visible: boolean) => void;
-  arrow?: React.ReactElement;
+  offset?: OffsetOptions;
+  autoUpdateOptions?: AutoUpdateOptions;
+  shiftOptions?: ShiftOptions | false;
+  autoPlacementOptions?: AutoPlacementOptions | false;
+  arrowOptions?: ArrowOptions;
+  arrow?: ReactNode;
   className?: string;
-  destroyOnHide?: boolean;
-  flip?: boolean | Record<string, any>;
-  preventOverflow?: boolean | Record<string, any>;
-  transformOrigin?: boolean;
   mountOnShow?: boolean;
   unmountOnHide?: boolean;
   onAfterClosed?: () => void;
-}
+};
 
 const displayName = 'Popper';
 
-const TIME_DELAY = 200;
-
 const defaultGetPopupContainer = () => document.body;
 
-const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
+const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
   const {
     children,
     popup,
     popupContainer = defaultGetPopupContainer,
-    transitionClasses,
+    transitionClassName,
     trigger = 'hover',
-    disablePopupEnter,
-    offset = 0,
-    placement = 'auto',
-    showDelay = 0,
-    hideDelay = 0,
+    offset: offsetProp = 0,
+    placement: initialPlacement = 'top',
+    hoverOptions,
+    clickOptions,
+    focusOptions,
+    contextMenuOptions,
     visible: visibleProp,
     onVisibleChange,
     className,
-    arrow,
-    flip = true,
-    preventOverflow = true,
-    transformOrigin = true,
+    arrow: arrowProp,
     defaultVisible = false,
+    shiftOptions,
+    arrowOptions,
+    autoPlacementOptions,
     mountOnShow = true,
+    autoUpdateOptions,
     unmountOnHide,
     onAfterClosed,
     ...others
@@ -90,369 +122,124 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
 
   const { clsPrefix } = useTheme();
 
-  const child = React.Children.only<React.ReactElement<PopperChildrenProps>>(children);
+  const triggers = Array.isArray(trigger) ? trigger : trigger ? [trigger] : [];
+
+  const transitionClassNameObject = useMemo(() => {
+    const ret: Required<CssTransitionClassNameRecord> = {
+      appearActive: `${transitionClassName}-enter-active`,
+      appearFrom: `${transitionClassName}-enter-from`,
+      appearTo: `${transitionClassName}-enter-to`,
+      enterActive: `${transitionClassName}-enter-active`,
+      enterFrom: `${transitionClassName}-enter-from`,
+      enterTo: `${transitionClassName}-enter-to`,
+      disappearActive: `${transitionClassName}-exit-active`,
+      disappearFrom: `${transitionClassName}-exit-from`,
+      disappearTo: `${transitionClassName}-exit-to`,
+      exitActive: `${transitionClassName}-exit-active`,
+      exitFrom: `${transitionClassName}-exit-from`,
+      exitTo: `${transitionClassName}-exit-to`,
+    };
+    return ret;
+  }, [transitionClassName]);
+
+  const child: ReactElement<PopperChildrenProps> = Children.only(children);
 
   const [visible, setVisible] = usePropChange(defaultVisible, visibleProp, onVisibleChange);
 
-  const [animatedVisible, setAnimatedVisible] = React.useState(visible);
+  const [zIndex, setZIndex] = useState<number>();
 
-  const inProp = visible && animatedVisible;
+  const [transitionVisible, setTransitionVisible] = useState(visible);
 
-  const lifecycleStateRef = useLifecycleState();
+  const middlewares = useMemo(() => {
+    return [
+      shiftOptions !== false && shift(shiftOptions),
+      autoPlacementOptions !== false && autoPlacement(autoPlacementOptions),
+      offset(offsetProp),
+      arrow(arrowOptions),
+    ].filter(Boolean) as Array<Middleware>;
+  }, [offsetProp, shiftOptions, autoPlacementOptions, arrowOptions]);
 
-  const popupNodeRef = React.useRef<HTMLDivElement>(null);
-  const popupInnerNodeRef = React.useRef<HTMLDivElement>(null);
-  const referenceRef = React.useRef<React.ReactInstance>();
-  const arrowRef = React.useRef<HTMLDivElement>();
-
-  const popperInstanceRef = React.useRef<Instance>();
-
-  const isFirstMountRef = React.useRef(true);
-
-  // 触发变更计时器
-  const timerRef = React.useRef<NodeJS.Timeout>();
-  const delayTimeRef = React.useRef<Array<NodeJS.Timeout>>([]);
-
-  const forkReferenceRef = useForkRef(
-    React.isValidElement(child) ? (child as { ref?: React.Ref<unknown> }).ref : null,
-    referenceRef,
-    ref,
+  const { reference, popper, x, y, mode, context, extra, placement } = useConnectInteraction(
+    useAutoUpdatePopper({
+      ...autoUpdateOptions,
+      placement: initialPlacement,
+      mode: 'absolute',
+      middlewares,
+    }),
+    {
+      open: visible,
+      setOpen: setVisible,
+    },
   );
 
-  const forkArrowRef = useForkRef(
-    React.isValidElement(arrow) ? (arrow as { ref?: React.Ref<unknown> }).ref : null,
-    arrowRef,
+  const getPopper = useCallback(
+    (el: HTMLDivElement | null) => {
+      if (visible) {
+        popper(el);
+      } else {
+        popper(null);
+      }
+    },
+    [visible, popper],
   );
 
-  const findReferenceDOM = React.useCallback(() => {
-    return findDomNode<HTMLElement>(referenceRef.current);
-  }, []);
+  const { getPopperProps, getReferenceProps } = useInteraction(
+    useHover(context, {
+      skip: !oneOf(triggers, 'hover'),
+      ...hoverOptions,
+    }),
+    useClick(context, {
+      skip: !oneOf(triggers, 'click'),
+      ...clickOptions,
+    }),
+    useFocus(context, {
+      skip: !oneOf(triggers, 'focus'),
+      ...focusOptions,
+    }),
+    useContextMenu(context, {
+      skip: !oneOf(triggers, 'contextMenu'),
+      ...contextMenuOptions,
+    }),
+  );
 
-  const show = useConstantFn(() => {
-    const popupEl = popupNodeRef.current!;
+  const forkPopperRef = useForkRef(ref, getPopper);
 
-    const modifiers: Array<Partial<Modifier<any, any>>> = [
-      {
-        name: 'offset',
-        options: {
-          offset: [0, offset],
-        },
-      },
-      {
-        name: 'arrow',
-        options: {
-          element: arrowRef.current,
-        },
-      },
-      {
-        name: 'eventListeners',
-        enabled: true,
-      },
+  const forkReferenceRef = useForkRef((child as { ref?: Ref<unknown> }).ref, reference);
 
-      {
-        name: 'applyPosition',
-        enabled: true,
-        phase: 'afterWrite',
-        fn({ state }) {
-          const popupInner = popupInnerNodeRef.current;
-          if (popupInner) {
-            popupInner.dataset.placement = state.placement;
-          }
-
-          if (arrowRef.current) {
-            arrowRef.current.dataset.placement = state.placement;
-          }
-        },
-      },
-    ];
-
-    if (transformOrigin) {
-      modifiers.push({
-        name: 'transformOrigin',
-        phase: 'main',
-        enabled: true,
-        fn(options) {
-          const transformOriginStyle = computeTransformOrigin(options);
-          const popupInner = popupInnerNodeRef.current;
-          if (popupInner) {
-            popupInner.style.transformOrigin = transformOriginStyle;
-          }
-        },
-      });
-    }
-
-    const preventOverflowObj: Partial<Modifier<any, any>> = {
-      name: 'preventOverflow',
-      enabled: false,
-    };
-
-    if (preventOverflow) {
-      preventOverflowObj.enabled = true;
-      if (typeof preventOverflow === 'object') {
-        preventOverflowObj.options = preventOverflow;
-      }
-    }
-
-    modifiers.push(preventOverflowObj);
-
-    const flipObj: Partial<Modifier<any, any>> = {
-      name: 'flip',
-      enabled: false,
-    };
-
-    if (flip) {
-      flipObj.enabled = true;
-      if (typeof flip === 'object') {
-        flipObj.options = flip;
-      }
-    }
-
-    modifiers.push(flipObj);
-
-    const referenceEl = findReferenceDOM();
-    if (!popperInstanceRef.current) {
-      popperInstanceRef.current = createPopper(referenceEl, popupEl, {
-        placement,
-        modifiers,
-      });
-    } else {
-      popperInstanceRef.current.setOptions({ placement, modifiers }).then(noop, noop);
-    }
-
-    // 强制计算位置，同步完成
-    popperInstanceRef.current.forceUpdate();
-
-    popupEl.style.zIndex = `${increaseZindex()}`;
-  });
-
-  const close = useConstantFn(() => {
-    popperInstanceRef.current?.destroy();
-    popperInstanceRef.current = undefined;
-    if (popupNodeRef.current) {
-      popupNodeRef.current.style.position = 'absolute';
-    }
-    onAfterClosed?.();
-  });
-
-  const setVisibleWrapper = useConstantFn((newVisible: boolean) => {
-    if (timerRef.current !== undefined) {
-      clearTimeout(timerRef.current);
-    }
-    timerRef.current = setTimeout(() => {
-      timerRef.current = undefined;
-      if (lifecycleStateRef.current === LifecycleState.DESTORYED) {
-        return;
-      }
-
-      if (newVisible !== visible) {
-        // 如果有外部传入，则不处理
-        if (visibleProp === undefined) {
-          setVisible(newVisible);
-        }
-        onVisibleChange?.(newVisible);
-      }
-    }, Math.max(TIME_DELAY, newVisible ? showDelay : hideDelay));
-  });
-
-  const isTrigger = useConstantFn((checkedTrigger: PopperTrigger) => {
-    const triggers = Array.isArray(trigger) ? trigger : [trigger];
-    if (oneOf(triggers, 'custom')) {
-      return false;
-    }
-    return oneOf(triggers, checkedTrigger);
-  });
-
-  const handleReferenceClick: React.MouseEventHandler<any> = useConstantFn((e) => {
-    if (isTrigger('click')) {
-      // 保证在handleClickOutside和handleContextMenuOutside后执行
-      const timer = setTimeout(() => {
-        setVisibleWrapper(true);
-        delayTimeRef.current = delayTimeRef.current.filter((it) => it !== timer);
-      }, 0);
-
-      delayTimeRef.current.push(timer);
-    }
-    child.props?.onClick?.(e);
-  });
-
-  const handleReferenceMouseEnter: React.MouseEventHandler<any> = useConstantFn((e) => {
-    if (isTrigger('hover')) {
-      setVisibleWrapper(true);
-    }
-    child.props?.onMouseEnter?.(e);
-  });
-
-  const handleReferenceMouseLeave: React.MouseEventHandler<any> = useConstantFn((e) => {
-    if (isTrigger('hover')) {
-      setVisibleWrapper(false);
-    }
-    child.props?.onMouseLeave?.(e);
-  });
-
-  const handleReferenceFocus: React.MouseEventHandler<any> = useConstantFn((e) => {
-    if (isTrigger('focus')) {
-      setVisibleWrapper(true);
-    }
-    child.props?.onFocus?.(e);
-  });
-
-  const handleReferenceBlur: React.MouseEventHandler<any> = useConstantFn((e) => {
-    if (isTrigger('focus')) {
-      setVisibleWrapper(false);
-    }
-    child.props?.onBlur?.(e);
-  });
-
-  const handleReferenceContextMenu: React.MouseEventHandler<any> = useConstantFn((e) => {
-    if (isTrigger('contextMenu')) {
-      // 保证在handleClickOutside和handleContextMenuOutside后执行
-      const timer = setTimeout(() => {
-        setVisibleWrapper(true);
-        delayTimeRef.current = delayTimeRef.current.filter((it) => it !== timer);
-      }, 0);
-
-      delayTimeRef.current.push(timer);
-    }
-    child.props?.onContextMenu?.(e);
-  });
-
-  const handleClickOutside = useConstantFn(() => {
-    if (isTrigger('click') || isTrigger('contextMenu')) {
-      setVisibleWrapper(false);
-    }
-  });
-
-  const handleContextMenuOutside = handleClickOutside;
-
-  const handlePopupClick = useConstantFn(() => {
-    if (disablePopupEnter) {
-      return;
-    }
-    if (isTrigger('click') || isTrigger('contextMenu')) {
-      // 保证在handleClickOutside和handleContextMenuOutside后执行
-      const timer = setTimeout(() => {
-        delayTimeRef.current = delayTimeRef.current.filter((it) => it !== timer);
-        setVisibleWrapper(true);
-      }, 0);
-      delayTimeRef.current.push(timer);
-    }
-  });
-
-  const handlePopupContextClick = handlePopupClick;
-
-  const handlePopupMouseEnter = useConstantFn(() => {
-    if (disablePopupEnter) {
-      setVisibleWrapper(false);
-      return;
-    }
-    if (isTrigger('hover')) {
-      setVisibleWrapper(true);
-    }
-  });
-
-  const handlePopupMouseLeave = useConstantFn(() => {
-    if (isTrigger('hover')) {
-      setVisibleWrapper(false);
-    }
-  });
-
-  React.useEffect(() => {
-    return () => {
-      popperInstanceRef.current?.destroy();
-      popperInstanceRef.current = undefined;
-      if (timerRef.current) {
-        clearTimeout(timerRef.current);
-        timerRef.current = undefined;
-      }
-      delayTimeRef.current.forEach((it) => {
-        clearTimeout(it);
-      });
-    };
-  }, []);
-
-  const isFirstVisibleRef = React.useRef(false);
-
-  React.useEffect(() => {
+  useEffect(() => {
     if (visible) {
-      setAnimatedVisible(true);
-    }
-
-    // 清除所有延时操作
-    delayTimeRef.current.forEach(clearTimeout);
-    delayTimeRef.current = [];
-    if (timerRef.current) {
-      clearTimeout(timerRef.current);
-      timerRef.current = undefined;
+      setTransitionVisible(true);
+      setZIndex(increaseZindex());
     }
   }, [visible]);
 
-  React.useEffect(() => {
-    // 第一次的时候，Popper不存在,触发一次
-    if (inProp && !isFirstVisibleRef.current) {
-      show();
-    }
-    isFirstVisibleRef.current = true;
-  }, [inProp, show]);
+  let originX: number | string | undefined = extra.arrow?.x;
+  let originY: number | string | undefined = extra.arrow?.y;
 
-  React.useEffect(() => {
-    // 在捕获阶段拦截，防止元素禁止冒泡导致监听不到
-    on(window, 'click', handleClickOutside, true);
-    on(window, 'contextmenu', handleContextMenuOutside, true);
-    return () => {
-      off(window, 'click', handleClickOutside, true);
-      off(window, 'contextmenu', handleContextMenuOutside, true);
-    };
-  }, [handleClickOutside, handleContextMenuOutside]);
+  const side = placement.split('-')[0] as Side;
 
-  const beforeEnter = useConstantFn((el: CssTransitionElement) => {
-    // 移除transition class对定位的干扰
-    removeClass(el, el._ctc?.enterActive || '');
-    removeClass(el, el._ctc?.enterFrom || '');
-
-    el.style.display = '';
-    show();
-    addClass(el, el._ctc?.enterFrom || '');
-    forceReflow();
-    addClass(el, el._ctc?.enterActive || '');
-  });
-
-  const afterLeave = useConstantFn((el: HTMLElement) => {
-    close();
-    el.style.display = 'none';
-    setAnimatedVisible(false);
-  });
-
-  const cloneChild = React.cloneElement(child, {
-    ref: forkReferenceRef,
-    onClick: handleReferenceClick,
-    onMouseEnter: handleReferenceMouseEnter,
-    onMouseLeave: handleReferenceMouseLeave,
-    onFocus: handleReferenceFocus,
-    onBlur: handleReferenceBlur,
-    onContextMenu: handleReferenceContextMenu,
-  });
-
-  const hidden = !visible && !animatedVisible;
-
-  if (!hidden) {
-    isFirstMountRef.current = false;
+  if (side === 'top') {
+    originY = '100%';
+  } else if (side === 'bottom') {
+    originY = 0;
+  } else if (side === 'left') {
+    originX = '100%';
+  } else {
+    originX = 0;
   }
 
-  if (isFirstMountRef.current) {
-    if (mountOnShow && hidden) {
-      return cloneChild;
-    }
-  } else if (unmountOnHide && hidden) {
-    return cloneChild;
-  }
-
-  const arrowNode =
-    arrow &&
-    React.cloneElement(arrow, {
-      ref: forkArrowRef,
-      'aria-hidden': true,
-      ...(arrow as { props?: {} }).props,
-    });
+  const arrowNode = arrowProp && (
+    <div
+      aria-hidden='true'
+      style={{
+        position: 'absolute',
+        left: originX,
+        top: originY,
+      }}
+    >
+      {arrowProp}
+    </div>
+  );
 
   const rootClassName = `${clsPrefix}-popper`;
 
@@ -460,40 +247,74 @@ const Popper = React.forwardRef<unknown, PopperProps>((props, ref) => {
 
   const rootClasses = clsx(rootClassName, className);
 
+  const popperStyle: CSSProperties = {
+    position: mode,
+    left: 0,
+    top: 0,
+    transform: `translate3D(${Math.round(x)}px, ${Math.round(y)}px, 0)`,
+    zIndex,
+  };
+
+  const handleExited = useCallback(() => {
+    setTransitionVisible(false);
+    onAfterClosed?.();
+  }, [onAfterClosed]);
+
+  const show = visible || transitionVisible;
+
   const portal = (
     <Portal container={popupContainer}>
       <div
-        aria-hidden={!visible}
+        aria-hidden={!show}
         {...others}
-        ref={popupNodeRef}
-        style={{ position: 'absolute', display: hidden ? 'none' : '' }}
+        {...getPopperProps({ style: popperStyle })}
+        ref={forkPopperRef}
         className={rootClasses}
-        onMouseEnter={handlePopupMouseEnter}
-        onMouseLeave={handlePopupMouseLeave}
-        onClick={handlePopupClick}
-        onContextMenu={handlePopupContextClick}
       >
-        <CssTransition
-          in={inProp}
-          transitionClasses={transitionClasses}
-          beforeEnter={beforeEnter}
-          afterLeave={afterLeave}
+        <Transition
           mountOnEnter={mountOnShow}
+          in={visible}
+          onExited={handleExited}
+          transitionOnFirst={true}
+          transitionClassName={transitionClassNameObject}
         >
-          <div
-            ref={popupInnerNodeRef}
-            style={{
-              position: 'relative',
-            }}
-            className={innerClassName}
-          >
-            {arrowNode}
-            {popup}
-          </div>
-        </CssTransition>
+          {(showValue) => (
+            <div
+              style={{
+                display: showValue ? '' : 'none',
+                position: 'relative',
+                transformOrigin: `${typeof originX === 'number' ? `${originX}px` : originX} ${
+                  typeof originY === 'number' ? `${originY}px` : originY
+                }`,
+              }}
+              className={innerClassName}
+              data-placement={placement}
+            >
+              {arrowNode}
+              {popup}
+            </div>
+          )}
+        </Transition>
       </div>
     </Portal>
   );
+
+  const cloneChild = cloneElement(child, {
+    ref: forkReferenceRef,
+    ...getReferenceProps({}),
+  });
+
+  const isFirstMountRef = useRef(true);
+
+  if (!show) {
+    if (mountOnShow && isFirstMountRef.current) {
+      return cloneChild;
+    }
+    if (unmountOnHide) {
+      return cloneChild;
+    }
+  }
+  isFirstMountRef.current = false;
 
   return (
     <>
@@ -509,14 +330,11 @@ if (!isProduction) {
   const triggerPropType = PropTypes.oneOf<PopperTrigger>([
     'click',
     'contextMenu',
-    'custom',
     'focus',
     'hover',
   ]).isRequired;
 
   Popper.propTypes = {
-    mountOnShow: PropTypes.bool,
-    unmountOnHide: PropTypes.bool,
     children: PropTypes.element.isRequired,
     popup: PropTypes.element.isRequired,
     popupContainer: PropTypes.oneOfType([
@@ -524,10 +342,19 @@ if (!isProduction) {
       PropTypes.string,
       isServer ? PropTypes.any : PropTypes.instanceOf(Element),
     ]),
-    transitionClasses: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-    trigger: PropTypes.oneOfType([triggerPropType, PropTypes.arrayOf(triggerPropType)]),
-    disablePopupEnter: PropTypes.bool,
-    offset: PropTypes.number,
+    transitionClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.func]),
+    trigger: PropTypes.oneOfType([
+      triggerPropType,
+      PropTypes.arrayOf(triggerPropType),
+      (props, propName, componentName) => {
+        if (!props[propName]) {
+          return null;
+        }
+        throw new Error(
+          `Invalid prop '${propName}' supplied to '${componentName}'. Validation failed.`,
+        );
+      },
+    ]),
     placement: PropTypes.oneOf<PopperPlacement>([
       'top',
       'top-start',
@@ -541,21 +368,23 @@ if (!isProduction) {
       'right',
       'right-start',
       'right-end',
-      'auto',
-      'auto-start',
-      'auto-end',
     ]),
-    showDelay: PropTypes.number,
-    hideDelay: PropTypes.number,
+    hoverOptions: PropTypes.object,
+    clickOptions: PropTypes.object,
+    focusOptions: PropTypes.object,
+    contextMenuOptions: PropTypes.object,
     visible: PropTypes.bool,
+    defaultVisible: PropTypes.bool,
     onVisibleChange: PropTypes.func,
+    offset: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
+    shiftOptions: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+    autoPlacementOptions: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+    arrowOptions: PropTypes.object,
+    autoUpdateOptions: PropTypes.object,
     arrow: PropTypes.element,
     className: PropTypes.string,
-    destroyOnHide: PropTypes.bool,
-    flip: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
-    preventOverflow: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
-    defaultVisible: PropTypes.bool,
-    transformOrigin: PropTypes.bool,
+    mountOnShow: PropTypes.bool,
+    unmountOnHide: PropTypes.bool,
     onAfterClosed: PropTypes.func,
   };
 }

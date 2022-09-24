@@ -2,16 +2,17 @@
 
 exports[`Entry @xl-vision/hooks 1`] = `
 Array [
+  "useLatestRef",
   "useConstantFn",
   "useForkRef",
   "useIsomorphicLayoutEffect",
   "useMedia",
   "usePrevious",
-  "useMount",
-  "useUnmount",
+  "useLifecycleState",
+  "LifecycleState",
   "useResizeObserver",
-  "usePopper",
-  "popperMiddlewares",
+  "useTransition",
+  "useCssTransition",
 ]
 `;
 
@@ -659,6 +660,24 @@ Array [
 ]
 `;
 
+exports[`Entry @xl-vision/popper 1`] = `
+Array [
+  "usePopper",
+  "useAutoUpdatePopper",
+  "useConnectInteraction",
+  "useInteraction",
+  "offset",
+  "autoPlacement",
+  "shift",
+  "hide",
+  "arrow",
+  "useHover",
+  "useClick",
+  "useFocus",
+  "useContextMenu",
+]
+`;
+
 exports[`Entry @xl-vision/react 1`] = `
 Array [
   "styled",
@@ -671,7 +690,6 @@ Array [
   "useConfig",
   "defaultConfigContext",
   "Transition",
-  "CssTransition",
   "CollapseTransition",
   "TransitionGroup",
   "Row",
@@ -712,10 +730,21 @@ Array [
   "warning",
   "noop",
   "raf",
+  "nextFrame",
   "getComputedStyle",
   "getDocumentElement",
   "getBoundingClientRect",
   "deepMerge",
+  "onTransitionEnd",
+  "getTransitionInfo",
+  "addClass",
+  "getClasses",
+  "removeClass",
+  "containClass",
+  "on",
+  "off",
+  "setRef",
+  "EventEmitter",
   "isBrowser",
   "isServer",
   "isProduction",

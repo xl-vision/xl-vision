@@ -1,16 +1,16 @@
 /* eslint-disable no-return-assign */
 import { locales } from '@xl-vision/react/locale';
 import { mount } from 'enzyme';
-import React from 'react';
 import { act } from 'react-dom/test-utils';
 import { Dialog, MessageDialogHookReturnType, ConfigProvider } from '@xl-vision/react';
+import { forwardRef, useImperativeHandle } from 'react';
 
 const { useDialog } = Dialog;
 
-const Demo = React.forwardRef<ReturnType<typeof useDialog>[0], {}>((_, ref) => {
+const Demo = forwardRef<ReturnType<typeof useDialog>[0], {}>((_, ref) => {
   const [dialog, holder] = useDialog();
 
-  React.useImperativeHandle(ref, () => {
+  useImperativeHandle(ref, () => {
     return { ...dialog };
   });
 

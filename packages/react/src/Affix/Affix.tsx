@@ -1,8 +1,22 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import { useConstantFn, useForkRef, useIsomorphicLayoutEffect } from '@xl-vision/hooks';
+import {
+  LifecycleState,
+  useConstantFn,
+  useForkRef,
+  useIsomorphicLayoutEffect,
+  useLifecycleState,
+} from '@xl-vision/hooks';
 import clsx from 'clsx';
 import { getBoundingClientRect, isProduction, isServer } from '@xl-vision/utils';
+import {
+  HTMLAttributes,
+  forwardRef,
+  useState,
+  CSSProperties,
+  useRef,
+  useMemo,
+  useEffect,
+} from 'react';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 import {
@@ -15,7 +29,7 @@ import {
 import { throttleByAnimationFrame } from '../utils/perf';
 import ResizeObserver from '../ResizeObserver';
 
-export type AffixProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'target' | 'onChange'> & {
+export type AffixProps = Omit<HTMLAttributes<HTMLDivElement>, 'target' | 'onChange'> & {
   target?: Window | HTMLElement | (() => Window | HTMLElement);
   offsetTop?: number;
   offsetBottom?: number;
@@ -51,7 +65,7 @@ export type AffixIntance = HTMLDivElement & {
   handleSizeChange: () => void;
 };
 
-const Affix = React.forwardRef<AffixIntance, AffixProps>((props, ref) => {
+const Affix = forwardRef<AffixIntance, AffixProps>((props, ref) => {
   const { clsPrefix } = useTheme();
 
   const {
@@ -64,18 +78,20 @@ const Affix = React.forwardRef<AffixIntance, AffixProps>((props, ref) => {
     ...others
   } = props;
 
-  const [affixStyle, setAffixStyle] = React.useState<React.CSSProperties>();
-  const [placeholderStyle, setPlaceholderStyle] = React.useState<React.CSSProperties>();
+  const [affixStyle, setAffixStyle] = useState<CSSProperties>();
+  const [placeholderStyle, setPlaceholderStyle] = useState<CSSProperties>();
 
-  const rootRef = React.useRef<AffixIntance>(null);
+  const rootRef = useRef<AffixIntance>(null);
 
   const forkRef = useForkRef(ref, rootRef);
 
-  const [currentTarget, setCurrentTarget] = React.useState<Window | HTMLElement>();
+  const [currentTarget, setCurrentTarget] = useState<Window | HTMLElement>();
 
-  const [isAffixed, setAffixed] = React.useState<boolean>();
+  const [isAffixed, setAffixed] = useState<boolean>();
 
-  const [status, setStatus] = React.useState(AffixStatus.NONE);
+  const [status, setStatus] = useState(AffixStatus.NONE);
+
+  const lifecycleStateRef = useLifecycleState();
 
   const measure = useConstantFn(() => {
     const affixNode = rootRef.current;
@@ -124,21 +140,27 @@ const Affix = React.forwardRef<AffixIntance, AffixProps>((props, ref) => {
   });
 
   // 当尺寸信息发生变化时，需要清空样式重新计算
-  const handleSizeChange = React.useMemo(() => {
+  const handleSizeChange = useMemo(() => {
     return throttleByAnimationFrame(() => {
+      if (lifecycleStateRef.current === LifecycleState.DESTORYED) {
+        return;
+      }
       setPlaceholderStyle(undefined);
       setAffixStyle(undefined);
       setStatus(AffixStatus.PREPARE);
     });
-  }, []);
+  }, [lifecycleStateRef]);
 
-  const handleEventEmit = React.useMemo(() => {
+  const handleEventEmit = useMemo(() => {
     return throttleByAnimationFrame(() => {
+      if (lifecycleStateRef.current === LifecycleState.DESTORYED) {
+        return;
+      }
       setStatus(AffixStatus.PREPARE);
     });
-  }, []);
+  }, [lifecycleStateRef]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const node = rootRef.current;
     if (!node) {
       return;
@@ -147,13 +169,13 @@ const Affix = React.forwardRef<AffixIntance, AffixProps>((props, ref) => {
     node.handleSizeChange = handleSizeChange;
   }, [handleEventEmit, handleSizeChange]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     return () => {
       handleSizeChange.cancel?.();
     };
   }, [handleSizeChange]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     return () => {
       handleEventEmit.cancel?.();
     };
@@ -167,12 +189,12 @@ const Affix = React.forwardRef<AffixIntance, AffixProps>((props, ref) => {
     }
   }, [status, measure]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const nextTarget = typeof target === 'function' ? target() : target;
     setCurrentTarget(nextTarget);
   }, [target]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!currentTarget) {
       return;
     }

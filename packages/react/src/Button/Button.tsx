@@ -1,9 +1,17 @@
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import React from 'react';
 import { LoadingOutlined } from '@xl-vision/icons';
 import { keyframes, CSSObject } from '@xl-vision/styled-engine';
 import { isProduction } from '@xl-vision/utils';
+import {
+  ReactElement,
+  SVGAttributes,
+  forwardRef,
+  useState,
+  ComponentType,
+  useEffect,
+  useCallback,
+} from 'react';
 import BaseButton, { BaseButtonProps } from '../BaseButton';
 import { styled } from '../styles';
 import { ThemeColors } from '../ThemeProvider/color/themeColor';
@@ -19,8 +27,8 @@ export type ButtonProps = BaseButtonProps & {
   color?: ButtonColor;
   disableElevation?: boolean;
   size?: ComponentSize;
-  prefixIcon?: React.ReactElement<React.SVGAttributes<SVGSVGElement>>;
-  suffixIcon?: React.ReactElement<React.SVGAttributes<SVGSVGElement>>;
+  prefixIcon?: ReactElement<SVGAttributes<SVGSVGElement>>;
+  suffixIcon?: ReactElement<SVGAttributes<SVGSVGElement>>;
   variant?: ButtonVariant;
   long?: boolean;
   round?: boolean;
@@ -220,125 +228,123 @@ const DefaultLoadingIcon = styled(LoadingOutlined, {
   animation: ${loadingKeyframes} 1s linear infinite;
 `;
 
-const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
-  (props, ref) => {
-    const { clsPrefix, componentSize } = useTheme();
+const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((props, ref) => {
+  const { clsPrefix, componentSize } = useTheme();
 
-    const {
-      color = 'default',
-      disableElevation = false,
-      size = componentSize,
-      disabled,
-      loading,
-      prefixIcon,
-      suffixIcon,
-      children,
-      variant = 'contained',
-      long,
-      round,
-      className,
-      ...others
-    } = props;
+  const {
+    color = 'default',
+    disableElevation = false,
+    size = componentSize,
+    disabled,
+    loading,
+    prefixIcon,
+    suffixIcon,
+    children,
+    variant = 'contained',
+    long,
+    round,
+    className,
+    ...others
+  } = props;
 
-    const [LoadingIcon, setLoadingIcon] = React.useState<React.ComponentType<any>>();
+  const [LoadingIcon, setLoadingIcon] = useState<ComponentType<any>>();
 
-    const icon = !children;
+  const icon = !children;
 
-    React.useEffect(() => {
-      if (loading) {
-        setLoadingIcon(DefaultLoadingIcon);
-      } else if (prefixIcon) {
-        setLoadingIcon(undefined);
-      }
-    }, [loading, prefixIcon]);
-
-    const afterLoadingFinished = React.useCallback(() => {
-      setLoadingIcon(undefined);
-    }, []);
-
-    const rootClassName = `${clsPrefix}-button`;
-
-    const rootClasses = clsx(
-      rootClassName,
-      `${rootClassName}--size-${size}`,
-      `${rootClassName}--color-${color}`,
-      `${rootClassName}--variant-${variant}`,
-      {
-        [`${rootClassName}--elevation`]: !disableElevation && variant === 'contained',
-        [`${rootClassName}--disabled`]: disabled,
-        [`${rootClassName}--loading`]: loading,
-        [`${rootClassName}--long`]: long,
-        [`${rootClassName}--round`]: round,
-        [`${rootClassName}--icon`]: icon,
-      },
-      className,
-    );
-
-    const prefixClassName = `${rootClassName}__prefix`;
-
-    let prefix: React.ReactElement<any> | undefined;
-
-    if (LoadingIcon) {
-      prefix = (
-        <ButtonPrefix styleProps={{ icon }} className={prefixClassName}>
-          <LoadingIcon className={`${prefixClassName}--loading`} />
-        </ButtonPrefix>
-      );
-      if (!prefixIcon) {
-        prefix = (
-          <CollapseTransition
-            horizontal={true}
-            transitionOnFirst={true}
-            in={!!loading}
-            afterLeave={afterLoadingFinished}
-            transitionClasses={prefixClassName}
-          >
-            {prefix}
-          </CollapseTransition>
-        );
-      }
+  useEffect(() => {
+    if (loading) {
+      setLoadingIcon(DefaultLoadingIcon);
     } else if (prefixIcon) {
+      setLoadingIcon(undefined);
+    }
+  }, [loading, prefixIcon]);
+
+  const handleLoadingFinished = useCallback(() => {
+    setLoadingIcon(undefined);
+  }, []);
+
+  const rootClassName = `${clsPrefix}-button`;
+
+  const rootClasses = clsx(
+    rootClassName,
+    `${rootClassName}--size-${size}`,
+    `${rootClassName}--color-${color}`,
+    `${rootClassName}--variant-${variant}`,
+    {
+      [`${rootClassName}--elevation`]: !disableElevation && variant === 'contained',
+      [`${rootClassName}--disabled`]: disabled,
+      [`${rootClassName}--loading`]: loading,
+      [`${rootClassName}--long`]: long,
+      [`${rootClassName}--round`]: round,
+      [`${rootClassName}--icon`]: icon,
+    },
+    className,
+  );
+
+  const prefixClassName = `${rootClassName}__prefix`;
+
+  let prefix: ReactElement<any> | undefined;
+
+  if (LoadingIcon) {
+    prefix = (
+      <ButtonPrefix styleProps={{ icon }} className={prefixClassName}>
+        <LoadingIcon className={`${prefixClassName}--loading`} />
+      </ButtonPrefix>
+    );
+    if (!prefixIcon) {
       prefix = (
-        <ButtonPrefix styleProps={{ icon }} className={prefixClassName}>
-          {prefixIcon}
-        </ButtonPrefix>
+        <CollapseTransition
+          horizontal={true}
+          transitionOnFirst={true}
+          in={!!loading}
+          onExited={handleLoadingFinished}
+          transitionClassName={prefixClassName}
+        >
+          {prefix}
+        </CollapseTransition>
       );
     }
-
-    const suffixClassName = `${rootClassName}__suffix`;
-
-    const suffix = suffixIcon && (
-      <ButtonSuffix styleProps={{ icon }} className={suffixClassName}>
-        {suffixIcon}
-      </ButtonSuffix>
+  } else if (prefixIcon) {
+    prefix = (
+      <ButtonPrefix styleProps={{ icon }} className={prefixClassName}>
+        {prefixIcon}
+      </ButtonPrefix>
     );
+  }
 
-    return (
-      <ButtonRoot
-        {...others}
-        ref={ref}
-        className={rootClasses}
-        loading={loading}
-        disabled={disabled}
-        styleProps={{
-          color,
-          disableElevation,
-          size,
-          disabled,
-          loading,
-          variant,
-          long,
-          round,
-          icon,
-        }}
-      >
-        {prefix}
-        {children && <span className={`${rootClassName}__inner`}>{children}</span>}
-        {suffix}
-      </ButtonRoot>
-    );
-  },
-);
+  const suffixClassName = `${rootClassName}__suffix`;
+
+  const suffix = suffixIcon && (
+    <ButtonSuffix styleProps={{ icon }} className={suffixClassName}>
+      {suffixIcon}
+    </ButtonSuffix>
+  );
+
+  return (
+    <ButtonRoot
+      {...others}
+      ref={ref}
+      className={rootClasses}
+      loading={loading}
+      disabled={disabled}
+      styleProps={{
+        color,
+        disableElevation,
+        size,
+        disabled,
+        loading,
+        variant,
+        long,
+        round,
+        icon,
+      }}
+    >
+      {prefix}
+      {children && <span className={`${rootClassName}__inner`}>{children}</span>}
+      {suffix}
+    </ButtonRoot>
+  );
+});
 
 if (!isProduction) {
   Button.displayName = displayName;

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button, styled } from '@xl-vision/react';
 import { SearchOutlined } from '@xl-vision/icons';
 

@@ -16,6 +16,7 @@
     "@babel/standalone": "^7.17.11",
     "@mdx-js/react": "^2.1.1",
     "@xl-vision/hooks": "workspace:^",
+    "@xl-vision/popper": "workspace:^",
     "@xl-vision/icons": "workspace:^",
     "@xl-vision/react": "workspace:^",
     "@xl-vision/styled-engine": "workspace:^",

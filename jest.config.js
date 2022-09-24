@@ -1,6 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 const { pathsToModuleNameMapper } = require('ts-jest');
 const { compilerOptions } = require('./tsconfig.json');
+const getBabelConfig = require('./scripts/getBabelConfig');
 
 /**
  * @type {import('@jest/types').Config.InitialOptions}
@@ -30,6 +31,9 @@ module.exports = {
     'ts-jest': {
       tsconfig: 'tsconfig.test.json',
       diagnostics: true,
+      babelConfig: {
+        ...getBabelConfig(),
+      },
     },
   },
   testEnvironmentOptions: {

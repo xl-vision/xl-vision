@@ -1,5 +1,5 @@
 import { styled } from '@xl-vision/react';
-import React from 'react';
+import { FC, HTMLAttributes } from 'react';
 
 const Wrapper = styled('footer')(() => {
   return {
@@ -8,7 +8,7 @@ const Wrapper = styled('footer')(() => {
   };
 });
 
-const Footer: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (props) => {
+const Footer: FC<HTMLAttributes<HTMLElement>> = (props) => {
   return (
     <Wrapper {...props}>
       <span>Copyright © 2020-2021 Rhys Xia</span>

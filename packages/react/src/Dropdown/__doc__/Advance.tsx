@@ -1,16 +1,16 @@
 import { Button, Dropdown, Tooltip, TooltipProps } from '@xl-vision/react';
-import React from 'react';
+import { ReactElement, forwardRef, cloneElement } from 'react';
 
 export type WrapperProps = {
   tooltipProps: Omit<TooltipProps, 'children'>;
-  children: React.ReactElement;
+  children: ReactElement;
   [key: string]: any;
 };
 
-const Wrapper = React.forwardRef<unknown, WrapperProps>((props, ref) => {
+const Wrapper = forwardRef<unknown, WrapperProps>((props, ref) => {
   const { tooltipProps, children, ...others } = props;
 
-  return <Tooltip {...tooltipProps}>{React.cloneElement(children, { ...others, ref })}</Tooltip>;
+  return <Tooltip {...tooltipProps}>{cloneElement(children, { ...others, ref })}</Tooltip>;
 });
 
 const Advance = () => {

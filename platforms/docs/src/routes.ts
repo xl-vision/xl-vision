@@ -205,13 +205,6 @@ const route: Route = {
         },
         {
           titleMap: {
-            'en-US': 'CssTransition',
-            'zh-CN': 'CSS过渡动画',
-          },
-          path: '/CssTransition',
-        },
-        {
-          titleMap: {
             'en-US': 'TransitionGroup',
             'zh-CN': '过渡动画组',
           },
@@ -327,7 +320,21 @@ const route: Route = {
         'en-US': 'usePopper',
         'zh-CN': 'usePopper',
       },
-      path: '/UsePopper',
+      path: '/usePopper',
+    },
+    {
+      titleMap: {
+        'en-US': 'useTransition',
+        'zh-CN': 'useTransition',
+      },
+      path: '/useTransition',
+    },
+    {
+      titleMap: {
+        'en-US': 'useCssTransition',
+        'zh-CN': 'useCssTransition',
+      },
+      path: '/useCssTransition',
     },
   ],
 };

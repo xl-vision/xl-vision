@@ -6,7 +6,6 @@
 
 import glob from 'glob';
 import { mount } from 'enzyme';
-import React from 'react';
 
 describe('Demo', () => {
   const files = glob.sync(`./packages/*/src/**/__doc__/*.ts?(x)`);

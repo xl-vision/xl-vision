@@ -1,5 +1,5 @@
 import { mount, render } from 'enzyme';
-import React from 'react';
+
 import { Row } from '@xl-vision/react';
 
 describe('Row', () => {

@@ -51,15 +51,15 @@ const styled = <
   });
 
   const overrideCreateStyledComponent = <
-    S extends {} | undefined = undefined,
+    S extends object | undefined = undefined,
     P extends Pick<ExtractProps<Tag>, ForwardedProps> = Pick<ExtractProps<Tag>, ForwardedProps>,
-    E = S extends undefined ? { theme: Theme } : { styleProps: S; theme: Theme },
-    V = Omit<E, 'theme'> & { theme?: Theme },
+    ST = S extends undefined ? { theme: Theme } : { styleProps: S; theme: Theme },
+    SPT = S extends undefined ? { theme?: Theme } : { styleProps: S; theme?: Theme },
   >(
-    first: TemplateStringsArray | CSSObject | FunctionInterpolation<P, E>,
-    ...styles: Array<Interpolation<P, E>>
+    first: TemplateStringsArray | CSSObject | FunctionInterpolation<P & ST>,
+    ...styles: Array<Interpolation<P & ST>>
   ) => {
-    const applyOverrideStyle = (props: P & E & { theme: Theme }) => {
+    const applyOverrideStyle = (props: P & ST & { theme: Theme }) => {
       const { theme } = props;
       if (!name || !slot) {
         return;
@@ -76,8 +76,7 @@ const styled = <
         return;
       }
       if (typeof overrideSlotStyle === 'function') {
-        // TODO [2022-06-01]: type fix
-        return (overrideSlotStyle as unknown as FunctionInterpolation<P, E>)(props);
+        return (overrideSlotStyle as FunctionInterpolation<P & ST>)(props);
       }
       return overrideSlotStyle;
     };
@@ -100,8 +99,8 @@ const styled = <
       newFirst = applyTheme(newFirst);
     }
 
-    const DefaultComponent = defaultCreateStyledComponent<P & V>(
-      newFirst as TemplateStringsArray | CSSObject | FunctionInterpolation<P, V>,
+    const DefaultComponent = defaultCreateStyledComponent<P & SPT>(
+      newFirst as TemplateStringsArray | CSSObject | FunctionInterpolation<P & SPT>,
       ...newStyles,
     );
 

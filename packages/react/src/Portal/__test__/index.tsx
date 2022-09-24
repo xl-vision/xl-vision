@@ -1,5 +1,4 @@
 import { mount } from 'enzyme';
-import React from 'react';
 import { Portal } from '@xl-vision/react';
 
 describe('Portal', () => {

@@ -1,8 +1,8 @@
-import React from 'react';
 import clsx from 'clsx';
 import Proptypes from 'prop-types';
 import { isProduction, noop } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
+import { ReactNode, forwardRef, useState, useContext, useEffect } from 'react';
 import Modal, { ModalProps } from '../Modal';
 import ThemeContext from '../ThemeProvider/ThemeContext';
 import { styled } from '../styles';
@@ -13,9 +13,9 @@ import { useConfig } from '../ConfigProvider';
 export type DialogButtonProps = Omit<ButtonProps, 'children' | 'onClick'>;
 
 export interface DialogProps extends Omit<ModalProps, 'bodyProps' | 'title' | 'children'> {
-  title: React.ReactNode;
-  children?: React.ReactNode;
-  footer?: React.ReactNode;
+  title: ReactNode;
+  children?: ReactNode;
+  footer?: ReactNode;
   prompt?: boolean;
   confirmButtonProps?: DialogButtonProps;
   cancelButtonProps?: DialogButtonProps;
@@ -98,7 +98,7 @@ const DialogActions = styled('div', {
 
 let uuid = 0;
 
-const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
+const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
   const { locale } = useConfig();
 
   const {
@@ -120,14 +120,14 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
   } = props;
 
   const [visible, setVisible] = usePropChange(defaultVisibleProp, visibleProp, onVisibleChangeProp);
-  const [confirmLoading, setConfirmLoading] = React.useState(false);
-  const [cancelLoading, setCancelLoading] = React.useState(false);
+  const [confirmLoading, setConfirmLoading] = useState(false);
+  const [cancelLoading, setCancelLoading] = useState(false);
 
-  const { clsPrefix } = React.useContext(ThemeContext);
+  const { clsPrefix } = useContext(ThemeContext);
 
-  const [dialogTitleId, setDialogTitleId] = React.useState('');
+  const [dialogTitleId, setDialogTitleId] = useState('');
 
-  React.useEffect(() => {
+  useEffect(() => {
     setDialogTitleId(`${clsPrefix}DialogTitle${uuid}`);
     uuid++;
   }, [clsPrefix]);

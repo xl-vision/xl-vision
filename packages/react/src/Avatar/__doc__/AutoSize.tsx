@@ -1,5 +1,5 @@
-import React from 'react';
 import { Avatar, Button, styled } from '@xl-vision/react';
+import { useState, useCallback } from 'react';
 
 const Wrapper = styled('div')(() => {
   return {
@@ -14,14 +14,14 @@ const textArray = ['Tom', 'Green', 'U', 'xl-vision'];
 const gapArray = [1, 2, 3, 4, 5];
 
 const AutoSize = () => {
-  const [index, setIndex] = React.useState(0);
-  const [gapIndex, setGapIndex] = React.useState(0);
+  const [index, setIndex] = useState(0);
+  const [gapIndex, setGapIndex] = useState(0);
 
-  const handleChangeContent = React.useCallback(() => {
+  const handleChangeContent = useCallback(() => {
     setIndex((prev) => (prev + 1) % textArray.length);
   }, []);
 
-  const handleChangeGap = React.useCallback(() => {
+  const handleChangeGap = useCallback(() => {
     setGapIndex((prev) => (prev + 1) % textArray.length);
   }, []);
 

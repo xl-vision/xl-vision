@@ -1,4 +1,3 @@
-import React from 'react';
 import { Avatar, styled } from '@xl-vision/react';
 import { UserOutlined } from '@xl-vision/icons';
 

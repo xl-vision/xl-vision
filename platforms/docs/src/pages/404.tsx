@@ -3,7 +3,7 @@ import { keyframes } from '@xl-vision/styled-engine';
 import { NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import React from 'react';
+import { useContext } from 'react';
 import { LocalizationContext } from '../components/LocalizationProvider';
 import useSizeBelow from '../hooks/useSizeBelow';
 
@@ -186,7 +186,7 @@ const Root = styled('div')`
 `;
 
 const NotFound: NextPage = () => {
-  const { locale } = React.useContext(LocalizationContext);
+  const { locale } = useContext(LocalizationContext);
 
   const isBelowMd = useSizeBelow('md');
 

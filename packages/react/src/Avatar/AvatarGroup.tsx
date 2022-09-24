@@ -1,7 +1,15 @@
-import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { isProduction } from '@xl-vision/utils';
+import {
+  HTMLAttributes,
+  ReactElement,
+  CSSProperties,
+  forwardRef,
+  Children,
+  cloneElement,
+  useMemo,
+} from 'react';
 import Avatar, { AvatarProps, AvatarShape, AvatarSize } from './Avatar';
 import Popover from '../Popover';
 import { styled } from '../styles';
@@ -10,12 +18,12 @@ import { ComponentSize, useTheme } from '../ThemeProvider';
 
 export type AvatarGroupPopupPlacement = 'none' | 'top' | 'bottom';
 
-export type AvatarGroupProps = React.HTMLAttributes<HTMLDivElement> & {
+export type AvatarGroupProps = HTMLAttributes<HTMLDivElement> & {
   maxCount?: number;
   popupPlacement?: AvatarGroupPopupPlacement;
   size?: AvatarSize;
-  children: React.ReactElement<AvatarProps> | Array<React.ReactElement<AvatarProps>>;
-  maxStyle?: React.CSSProperties;
+  children: ReactElement<AvatarProps> | Array<ReactElement<AvatarProps>>;
+  maxStyle?: CSSProperties;
   shape?: AvatarShape;
 };
 
@@ -52,7 +60,7 @@ const AvatarPopup = styled(Popover, {
   };
 });
 
-const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>((props, ref) => {
+const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>((props, ref) => {
   const { clsPrefix, componentSize } = useTheme();
 
   const {
@@ -66,10 +74,10 @@ const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>((props, r
     ...others
   } = props;
 
-  const childArray = React.Children.map<React.ReactElement, React.ReactElement>(
+  const childArray = Children.map<ReactElement, ReactElement>(
     children,
     // eslint-disable-next-line react/no-array-index-key
-    (it, index) => React.cloneElement(it, { key: index }),
+    (it, index) => cloneElement(it, { key: index }),
   );
 
   const rootClassName = `${clsPrefix}-avatar-group`;
@@ -113,7 +121,7 @@ const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>((props, r
     className,
   );
 
-  const contextValue = React.useMemo<AvatarContextProps>(() => ({ size, shape }), [size, shape]);
+  const contextValue = useMemo<AvatarContextProps>(() => ({ size, shape }), [size, shape]);
 
   return (
     <AvatarContext.Provider value={contextValue}>

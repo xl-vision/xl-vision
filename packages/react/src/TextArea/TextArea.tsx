@@ -1,10 +1,20 @@
 import { isProduction } from '@xl-vision/utils';
-import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { CSSObject } from '@xl-vision/styled-engine';
 import { useConstantFn, useForkRef, usePrevious } from '@xl-vision/hooks';
 import { CloseCircleFilled } from '@xl-vision/icons';
+import {
+  TextareaHTMLAttributes,
+  forwardRef,
+  useState,
+  useRef,
+  useEffect,
+  ChangeEvent,
+  ReactNode,
+  FocusEvent,
+  CSSProperties,
+} from 'react';
 import { styled } from '../styles';
 import { ComponentSize, useTheme } from '../ThemeProvider';
 import { alpha } from '../utils/color';
@@ -14,7 +24,7 @@ import calculateNodeHeight from './calculateNodeHeight';
 import TextAreaSuffix from './TextAreaSuffix';
 
 export type TextAreaProps = Omit<
-  React.TextareaHTMLAttributes<HTMLTextAreaElement>,
+  TextareaHTMLAttributes<HTMLTextAreaElement>,
   'onChange' | 'value' | 'defaultValue'
 > & {
   onChange?: (value: string) => void;
@@ -103,7 +113,7 @@ const TextAreaRoot = styled('span', {
         styles.borderColor = focusColor;
         styles.boxShadow = `0 0 0 2px ${alpha(focusColor, 0.2)}`;
       } else {
-        styles['&:hover'] = {
+        styles[':hover'] = {
           borderColor: color.themes.primary.hover,
         };
       }
@@ -147,7 +157,7 @@ export enum ResizeStatus {
   RESIZED,
 }
 
-const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => {
+const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => {
   const { clsPrefix, componentSize } = useTheme();
 
   const {
@@ -172,9 +182,9 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
 
   const prevValue = usePrevious(value);
 
-  const [focused, setFocused] = React.useState(false);
+  const [focused, setFocused] = useState(false);
 
-  const [textAreaStyles, setTextAreaStyle] = React.useState<React.CSSProperties>();
+  const [textAreaStyles, setTextAreaStyle] = useState<CSSProperties>();
 
   const {
     hasMaxLength,
@@ -182,7 +192,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
     getWordInfo,
   } = useInput<HTMLTextAreaElement>({ setValue: handleValueChange, maxLength });
 
-  const rootRef = React.useRef<HTMLSpanElement>(null);
+  const rootRef = useRef<HTMLSpanElement>(null);
 
   const forkRef = useForkRef(rootRef, ref);
 
@@ -193,13 +203,13 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
   });
 
   // 将textarea focus绑定到span上
-  React.useEffect(() => {
+  useEffect(() => {
     if (rootRef.current) {
       rootRef.current.focus = focus;
     }
   }, [focus]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (disabled || readOnly) {
       setFocused(false);
     }
@@ -223,7 +233,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
     setTextAreaStyle(styles);
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (autoHeight) {
       handleResize(value);
     } else {
@@ -232,19 +242,19 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
     }
   }, [value, autoHeight, handleResize]);
 
-  const handleFocus = useConstantFn((e: React.FocusEvent<HTMLTextAreaElement>) => {
+  const handleFocus = useConstantFn((e: FocusEvent<HTMLTextAreaElement>) => {
     if (!disabled && !readOnly) {
       setFocused(true);
     }
     onFocus?.(e);
   });
 
-  const handleBlur = useConstantFn((e: React.FocusEvent<HTMLTextAreaElement>) => {
+  const handleBlur = useConstantFn((e: FocusEvent<HTMLTextAreaElement>) => {
     setFocused(false);
     onBlur?.(e);
   });
 
-  const handleChange = useConstantFn((e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleChange = useConstantFn((e: ChangeEvent<HTMLTextAreaElement>) => {
     let v = e.target.value;
     if (typeof v === 'undefined' || v === null) {
       v = '';
@@ -276,7 +286,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
   // 始终按照受控显示
   const { value: actualValue, wordCount } = getWordInfo(value, true);
 
-  let showCountNode: React.ReactNode;
+  let showCountNode: ReactNode;
 
   if (showCount) {
     const msg = `${wordCount}${hasMaxLength ? `/${maxLength}` : ''}`;
@@ -337,7 +347,7 @@ if (!isProduction) {
     maxLength: PropTypes.number,
     disabled: PropTypes.bool,
     readOnly: PropTypes.bool,
-    // TODO [2022-06-01]: types fix
+    // TODO [2022-12-01]: types fix
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     autoHeight: PropTypes.oneOfType([

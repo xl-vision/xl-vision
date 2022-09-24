@@ -1,6 +1,6 @@
-import { useConstantFn, useForkRef } from '@xl-vision/hooks';
+import { LifecycleState, useConstantFn, useForkRef, useLifecycleState } from '@xl-vision/hooks';
 import clsx from 'clsx';
-import React from 'react';
+
 import PropTypes from 'prop-types';
 import { CSSObject } from '@xl-vision/styled-engine';
 import {
@@ -10,18 +10,29 @@ import {
   isServer,
   isWindow,
   oneOf,
+  off,
+  on,
 } from '@xl-vision/utils';
+import {
+  HTMLAttributes,
+  forwardRef,
+  useRef,
+  useState,
+  useEffect,
+  useMemo,
+  useCallback,
+  LegacyRef,
+} from 'react';
 import Affix from '../Affix';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
-import { off, on } from '../utils/event';
 import { throttleByAnimationFrame } from '../utils/perf';
 import { getScroll, scrollTo } from '../utils/scroll';
 import AnchorContext from './AnchorContext';
 
 export type AnchorType = 'block' | 'rail';
 
-export type AnchorProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> & {
+export type AnchorProps = Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> & {
   affix?: boolean;
   scrollTarget?: Window | HTMLElement | (() => Window | HTMLElement);
   affixTarget?: Window | HTMLElement | (() => Window | HTMLElement);
@@ -81,7 +92,7 @@ export type AnchorInstance = Omit<HTMLDivElement, 'scrollTo'> & {
   scrollTo: (link: string) => void;
 };
 
-const Anchor = React.forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
+const Anchor = forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
   const { clsPrefix } = useTheme();
 
   const {
@@ -103,27 +114,32 @@ const Anchor = React.forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
   const affixTarget = affixTargetProp || scrollTargetProp || getDefaultTarget;
   const scrollTarget = scrollTargetProp || affixTarget;
 
-  const rootRef = React.useRef<AnchorInstance>(null);
+  const rootRef = useRef<AnchorInstance>(null);
 
   const forkRef = useForkRef(ref, rootRef);
 
-  const [currentScrollTarget, setCurrentScrollTarget] = React.useState<Window | HTMLElement>();
+  const [currentScrollTarget, setCurrentScrollTarget] = useState<Window | HTMLElement>();
 
-  const [links, setLinks] = React.useState<Array<string>>([]);
+  const [links, setLinks] = useState<Array<string>>([]);
 
-  const [activeLink, setActiveLink] = React.useState('');
+  const [activeLink, setActiveLink] = useState('');
 
-  const isScollingRef = React.useRef(false);
+  const isScollingRef = useRef(false);
 
-  const inkNodeRef = React.useRef<HTMLDivElement>(null);
+  const inkNodeRef = useRef<HTMLDivElement>(null);
+  const lifecycleStateRef = useLifecycleState();
 
-  React.useEffect(() => {
+  useEffect(() => {
     const nextScrollTarget = typeof scrollTarget === 'function' ? scrollTarget() : scrollTarget;
 
     setCurrentScrollTarget(nextScrollTarget);
   }, [scrollTarget]);
 
   const handleScroll = useConstantFn(() => {
+    if (lifecycleStateRef.current === LifecycleState.DESTORYED) {
+      return;
+    }
+
     if (isScollingRef.current) {
       return;
     }
@@ -163,16 +179,16 @@ const Anchor = React.forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
     setActiveLink(activeLinkInfo ? activeLinkInfo.link : '');
   });
 
-  const throttleHandleScroll = React.useMemo(
+  const throttleHandleScroll = useMemo(
     () => throttleByAnimationFrame(handleScroll),
     [handleScroll],
   );
 
-  const registerLink = React.useCallback((link: string) => {
+  const registerLink = useCallback((link: string) => {
     setLinks((prev) => [...prev, link]);
   }, []);
 
-  const unregisterLink = React.useCallback((link: string) => {
+  const unregisterLink = useCallback((link: string) => {
     setLinks((prev) => prev.filter((it) => it !== link));
     setActiveLink((prev) => (prev === link ? '' : prev));
   }, []);
@@ -239,18 +255,18 @@ const Anchor = React.forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
     updateInkNode();
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     handleActiveLinkChange(activeLink);
   }, [activeLink, handleActiveLinkChange]);
 
   // 将input focus绑定到span上
-  React.useEffect(() => {
+  useEffect(() => {
     if (rootRef.current) {
       rootRef.current.scrollTo = throttleHandleScroll;
     }
   }, [throttleHandleScroll]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!currentScrollTarget) {
       return;
     }
@@ -264,11 +280,11 @@ const Anchor = React.forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
   }, [currentScrollTarget, throttleHandleScroll]);
 
   // 内容改变时，需要重新定位
-  React.useEffect(() => {
+  useEffect(() => {
     throttleHandleScroll();
   }, [children, throttleHandleScroll]);
 
-  const value = React.useMemo(() => {
+  const value = useMemo(() => {
     return {
       registerLink,
       unregisterLink,
@@ -291,7 +307,7 @@ const Anchor = React.forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
       {...others}
       styleProps={{ type }}
       className={rootClasses}
-      ref={forkRef as React.LegacyRef<HTMLDivElement>}
+      ref={forkRef as LegacyRef<HTMLDivElement>}
     >
       {inkNode}
       {children}

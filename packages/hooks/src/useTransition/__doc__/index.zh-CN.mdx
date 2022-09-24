@@ -1,0 +1,63 @@
+# useTransition
+
+可以很方便地实现过渡动画。
+
+## 示例
+
+:::demo ./Basic
+
+基本用法
+
+基础用法
+
+:::
+
+:::demo ./Appear
+
+立即过渡
+
+组件实例化的时候就进行过渡动画
+
+:::
+
+## API
+
+```ts
+type TransitionOptions<T extends Element> = {
+  onEnter?: TransitionStartHook<T>;
+  onEntering?: TransitionStartingHook<T>;
+  onEntered?: TransitionEndHook<T>;
+  onEnterCancelled?: TransitionCancelledHook<T>;
+  onExit?: TransitionStartHook<T>;
+  onExiting?: TransitionStartingHook<T>;
+  onExited?: TransitionEndHook<T>;
+  onExitCancelled?: TransitionCancelledHook<T>;
+  in: boolean;
+  transitionOnFirst?: boolean;
+};
+
+const {show: boolean, nodeRef: Ref} = useTransition(options: TransitionOptions)
+
+```
+
+### 参数
+
+| 参数 | 说明 | 类型 | 默认值 | 是否必填 |
+| --- | --- | --- | --- | --- |
+| in | 触发进出场动画,`true`表示进场，`false`表示出场 | boolean | - | true |
+| transitionOnFirst | 是否触发初次进出场钩子函数 | boolean | false | false |
+| onEnter | 进场前钩子 | (el: Element, transitionOnFirst: boolean) => void | - |
+| onEntering | 进场时钩子 | (el: Element, done: (() => void), transitionOnFirst: boolean, isCancelled: () => boolean) => void | - | false |
+| onEntered | 进场后钩子 | (el:Element, transitionOnFirst: boolean) => void | - | false |
+| onEnterCancelled | 取消进场钩子 | (el:Element, transitionOnFirst: boolean) => void | - | false |
+| onExit | 出场前钩子 | (el: Element, transitionOnFirst: boolean) => void | - | false |
+| onExiting | 出场时钩子 | (el: Element, done: (() => void), transitionOnFirst: boolean, isCancelled: () => boolean) => void | - | false |
+| onExited | 出场后钩子 | (el:Element, transitionOnFirst: boolean) => void | - | false |
+| onExitCancelled | 取消出场钩子 | (el: Element, transitionOnFirst: boolean) => void | - | false |
+
+### 返回值
+
+| 返回值  | 说明                             | 类型    |
+| ------- | -------------------------------- | ------- |
+| show    | 是否处于展示过程中，控制组件显隐 | boolean |
+| nodeRef | 绑定到元素上，指定动画元素       | boolean |

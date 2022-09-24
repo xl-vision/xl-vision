@@ -1,18 +1,18 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { styled, CollapseTransition, Button, Tooltip } from '@xl-vision/react';
 import { CodeOutlined, DownOutlined } from '@xl-vision/icons';
 import { useRouter } from 'next/router';
 import { useConstantFn } from '@xl-vision/hooks';
+import { ReactNode, FC, useState, useCallback } from 'react';
 import Code from './Code';
 import useIsDebugMode from '../../hooks/useIsDebugMode';
 
 export type DemoBoxProps = {
-  children: [React.ReactNode, React.ReactNode, React.ReactNode];
+  children: [ReactNode, ReactNode, ReactNode];
   jsCode: string;
   // tsCode: string;
-  tsCodeNode: React.ReactNode;
-  jsCodeNode: React.ReactNode;
+  tsCodeNode: ReactNode;
+  jsCodeNode: ReactNode;
   debug?: boolean;
   id?: string;
 };
@@ -73,17 +73,17 @@ const CodeWrapper = styled('div')(
   border-top: ${theme.styleSize.middle.border}px solid ${theme.color.divider};
 
   &.slide-enter-active,
-  &.slide-leave-active {
-    transition: ${theme.transition.standard('all')};
+  &.slide-exit-active {
+    transition: all 1s ease-in-out;
   }
 
   &.slide-enter-from,
-  &.slide-leave-to {
+  &.slide-exit-to {
     opacity: 0.4;
   }
 
   &.slide-enter-to,
-  &.slide-leave-from {
+  &.slide-exit {
     opacity: 1;
   }
 `,
@@ -105,7 +105,7 @@ const ExpandWrapper = styled(DownOutlined)<{ expand: boolean }>(({ theme, styleP
   };
 });
 
-const DemoBox: React.FunctionComponent<DemoBoxProps> = ({
+const DemoBox: FC<DemoBoxProps> = ({
   id,
   jsCodeNode,
   tsCodeNode,
@@ -117,7 +117,7 @@ const DemoBox: React.FunctionComponent<DemoBoxProps> = ({
 
   const router = useRouter();
 
-  const [isExpand, setExpand] = React.useState(false);
+  const [isExpand, setExpand] = useState(false);
 
   const handleCode = useConstantFn(() => {
     router
@@ -130,7 +130,7 @@ const DemoBox: React.FunctionComponent<DemoBoxProps> = ({
       .catch(console.error);
   });
 
-  const handleExpand = React.useCallback(() => {
+  const handleExpand = useCallback(() => {
     setExpand((prev) => !prev);
   }, []);
 
@@ -166,7 +166,7 @@ const DemoBox: React.FunctionComponent<DemoBoxProps> = ({
           />
         </ButtonWrapper>
       </InfoWrapper>
-      <CollapseTransition in={isExpand} transitionClasses='slide'>
+      <CollapseTransition in={isExpand} transitionClassName='slide'>
         <CodeWrapper>
           <Code>
             {tsCodeNode}

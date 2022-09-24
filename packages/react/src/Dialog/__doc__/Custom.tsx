@@ -1,7 +1,6 @@
-/* eslint-disable react/jsx-handler-names */
 import { CloseOutlined } from '@xl-vision/icons';
 import { Button, Dialog, styled } from '@xl-vision/react';
-import React from 'react';
+import { useState, useCallback } from 'react';
 
 const CustomHeader = styled('div')(({ theme }) => {
   const { typography, color, styleSize } = theme;
@@ -32,13 +31,13 @@ const CustomFooter = styled('div')(({ theme }) => {
 });
 
 const Custom = () => {
-  const [visible, setVisible] = React.useState(false);
+  const [visible, setVisible] = useState(false);
 
-  const handleClick = React.useCallback(() => {
+  const handleClick = useCallback(() => {
     setVisible(true);
   }, []);
 
-  const handleClose = React.useCallback(() => {
+  const handleClose = useCallback(() => {
     setVisible(false);
   }, []);
 

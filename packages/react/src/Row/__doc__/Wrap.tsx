@@ -1,4 +1,3 @@
-import React from 'react';
 import { Row, styled } from '@xl-vision/react';
 
 const Box = styled('div')(

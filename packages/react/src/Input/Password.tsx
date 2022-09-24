@@ -2,12 +2,12 @@ import { EyeInvisibleOutlined, EyeOutlined } from '@xl-vision/icons';
 import { isProduction } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
 import PropTypes from 'prop-types';
-import React from 'react';
+import { ReactNode, forwardRef, useState, MouseEvent } from 'react';
 import Input, { InputProps } from './Input';
 import { styled } from '../styles';
 
 export type PasswordProps = Omit<InputProps, 'type' | 'suffix'> & {
-  renderIcon?: (visible: boolean) => React.ReactNode;
+  renderIcon?: (visible: boolean) => ReactNode;
 };
 
 const displayName = 'Password';
@@ -34,10 +34,10 @@ const PasswordIcon = styled('span', {
 const defaultRenderIcon = (visible: boolean) =>
   visible ? <EyeInvisibleOutlined /> : <EyeOutlined />;
 
-const Password = React.forwardRef<HTMLSpanElement, PasswordProps>((props, ref) => {
+const Password = forwardRef<HTMLSpanElement, PasswordProps>((props, ref) => {
   const { renderIcon = defaultRenderIcon, ...others } = props;
 
-  const [visible, setVisible] = React.useState(false);
+  const [visible, setVisible] = useState(false);
 
   const type = visible ? 'text' : 'password';
 
@@ -45,7 +45,7 @@ const Password = React.forwardRef<HTMLSpanElement, PasswordProps>((props, ref) =
     setVisible((prev) => !prev);
   });
 
-  const handlePrevent = useConstantFn((e: React.MouseEvent) => {
+  const handlePrevent = useConstantFn((e: MouseEvent) => {
     e.preventDefault();
   });
 

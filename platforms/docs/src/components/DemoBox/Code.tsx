@@ -1,5 +1,5 @@
 import { Button, styled } from '@xl-vision/react';
-import React from 'react';
+import { ReactNode, FC, useState } from 'react';
 
 enum CodeType {
   TYPESCRIPT,
@@ -7,7 +7,7 @@ enum CodeType {
 }
 
 export type CodeProps = {
-  children: [React.ReactNode, React.ReactNode];
+  children: [ReactNode, ReactNode];
 };
 
 const Wrapper = styled('div')``;
@@ -32,12 +32,12 @@ const Content = styled('div')(() => {
   };
 });
 
-const Code: React.FunctionComponent<CodeProps> = (props) => {
+const Code: FC<CodeProps> = (props) => {
   const { children } = props;
 
   const [tsx, jsx] = children;
 
-  const [codeType, setCodeType] = React.useState(CodeType.TYPESCRIPT);
+  const [codeType, setCodeType] = useState(CodeType.TYPESCRIPT);
 
   return (
     <Wrapper>

@@ -1,5 +1,4 @@
 import { BackTop } from '@xl-vision/react';
-import React from 'react';
 
 const Basic = () => {
   return (

@@ -1,4 +1,3 @@
-import React from 'react';
 import { mount } from 'enzyme';
 import { ThemeProvider, Input, Button } from '@xl-vision/react';
 

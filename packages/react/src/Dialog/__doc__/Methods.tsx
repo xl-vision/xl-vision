@@ -1,9 +1,9 @@
 import { WarningOutlined } from '@xl-vision/icons';
 import { Button, Dialog } from '@xl-vision/react';
-import React from 'react';
+import { useCallback } from 'react';
 
 const Methods = () => {
-  const handleClick = React.useCallback(() => {
+  const handleClick = useCallback(() => {
     let i = 5;
     const { destroy, update } = Dialog.open({
       title: 'This is a method dialog',

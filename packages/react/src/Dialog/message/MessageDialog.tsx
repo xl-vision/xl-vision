@@ -1,16 +1,16 @@
-import React from 'react';
 import Proptypes from 'prop-types';
 import clsx from 'clsx';
 import { CSSObject } from '@xl-vision/styled-engine';
 import { isProduction } from '@xl-vision/utils';
+import { ReactNode, FC, useState, useEffect } from 'react';
 import Dialog, { DialogProps } from '../Dialog';
 import { styled } from '../../styles';
 import usePropChange from '../../hooks/usePropChange';
 import { useTheme } from '../../ThemeProvider';
 
 export interface MessageDialogProps extends Omit<DialogProps, 'children'> {
-  content?: React.ReactNode;
-  icon?: React.ReactNode;
+  content?: ReactNode;
+  icon?: ReactNode;
 }
 
 const displayName = 'MessageDialog';
@@ -66,7 +66,7 @@ const MessageDialogContent = styled('div', {
   return styles;
 });
 
-const MessageDialog: React.FunctionComponent<MessageDialogProps> = (props) => {
+const MessageDialog: FC<MessageDialogProps> = (props) => {
   const {
     visible: visibleProp,
     defaultVisible: defaultVisibleProp = false,
@@ -84,12 +84,12 @@ const MessageDialog: React.FunctionComponent<MessageDialogProps> = (props) => {
     onVisibleChangeProp,
   );
 
-  const [first, setFirst] = React.useState(true);
+  const [first, setFirst] = useState(true);
 
   const { clsPrefix } = useTheme();
 
   // 保证有对话框弹出的动画效果
-  React.useEffect(() => {
+  useEffect(() => {
     setFirst(false);
   }, []);
 

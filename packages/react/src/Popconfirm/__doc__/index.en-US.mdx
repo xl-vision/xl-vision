@@ -29,10 +29,9 @@ Asynchronous hide
 | title | Title | React.ReactNode | - | true |
 | icon | Custom icon | React.ReactNode | - | false |
 | onCancel | Click to cancel the event | () => void | - | false |
-| onConfirm | Click to confirm event | () => void | - | false |
+| onConfirm | Click to confirm event | () => void \| Promise\<void\> | - | false |
 | cancelButtonProps | The props of the cancel button, refer to [Button](/components/Button) | object | - | false |
 | confirmButtonProps | The props of the confirm button, refer to [Button](/components/Button) | object | - | false |
 | cancelText | Cancel button text, support `i18n` | string | 取消 | false |
 | confirmText | Confirm button text, support `i18n` | string | 确认 | false |
-| showArrow | Show arrow | boolean | - | false |
-| transitionClassName | Animation class, will override default animation, see [CssTransition](/components/CssTransition) | string | 'xl-popconfirm' | false |
+| hideArrow | Show arrow | boolean | - | false |

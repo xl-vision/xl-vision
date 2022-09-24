@@ -30,6 +30,14 @@ Arrow
 
 :::
 
+:::demo ./Nest
+
+Nest
+
+Nest
+
+:::
+
 ## Popper API
 
 > To use this component, the child component needs to expose the `ref` instance and the events of `onClick`, `onMouseEnter`, `onMouseLeave`, `onFocus`, `onBlur`, and `onContextMenu`.
@@ -43,17 +51,19 @@ Arrow
 | visible | Whether to show pop-up box | boolean | - | false |
 | defaultVisible | Whether the default pop-up box is displayed, when `visible` exists, the option is invalid | boolean | false | false |
 | onVisibleChange | Callback when the status of the popup box changes | (visible: boolean) => void | - | false |
-| hideDelay | Delay hide | number | - | false |
-| showDelay | Delay show | number | - | false |
-| trigger | Trigger method | `hover` \| `focus` \| `click` \| `contextMenu` \| `custom` \| array | `hover` | false |
-| disablePopupEnter | Prevent the mouse from entering the pop-up box | boolean | - | false |
-| transitionClasses | Animation class, see [CssTransition](/components/CssTransition) | boolean | - | false |
-| arrow | Arrow | React.ReactElement | - | false |
-| offset | Pop-up box offset | number | 0 | false |
+| trigger | Trigger method | `hover` \| `focus` \| `click` \| `contextMenu` \| `false` \| array | `hover` | false |
+| transitionClassName | Animation class name, see [CssTransition](/components/CssTransition) | string | - | false |
 | className | Pop-up box class name | string | 0 | false |
-| flip | Reference [popperjs](https://popper.js.org/docs/v2/modifiers/flip/) | boolean \| object | true | false |
-| preventOverflow | Reference [popperjs](https://popper.js.org/docs/v2/modifiers/prevent-overflow/) | boolean \| object | true | false |
-| transformOrigin | Automatic calculation of transformOrigin position | boolean | true | false |
 | onAfterClosed | Callback when popup is closed | () => void | - | false |
 | mountOnShow | Dom will mount when popper shows | boolean | true | false |
 | unmountOnHide | Dom will unmount when popper hides | boolean | - | false |
+| hoverOptions | options for hover action, see [usePopper](/hooks/usePopper) | HoverOptions | - | false |
+| clickOptions | options for click action, see [usePopper](/hooks/usePopper) | ClickOptions | - | false |
+| focusOptions | options for focus action, see [usePopper](/hooks/usePopper) | FocusOptions | - | false |
+| contextMenuOptions | options for contextMenu action, see [usePopper](/hooks/usePopper) | ContextMenuOptions | - | false |
+| shiftOptions | controls the popper's offset behavior when it encounters occlusion, see [usePopper](/hooks/usePopper) | ShiftOptions \| false | - | false |
+| autoPlacementOptions | controls the behavior of the popper to switch positioning when it encounters occlusion, see [usePopper](/hooks/usePopper) | AutoPlacementOptions \| false | - | false |
+| arrowOptions | control arrow behavior, see [usePopper](/hooks/usePopper) | ArrowOptions | - | false |
+| autoUpdateOptions | control how automatic positioning, see [usePopper](/hooks/usePopper) | AutoUpdateOptions | - | false |
+| arrow | Arrow | React.ReactElement | - | false |
+| offset | Pop-up box offset, see [usePopper](/hooks/usePopper) | OffsetOptions | 0 | false |

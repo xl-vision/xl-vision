@@ -1,5 +1,4 @@
-import { CSSObject } from '@xl-vision/styled-engine';
-import React from 'react';
+import { CSSObject, CSSProperties } from '@xl-vision/styled-engine';
 
 const defaultFunctions = {
   deceleration: 'cubic-bezier(0, 0, 0.2, 1)',
@@ -15,7 +14,7 @@ const defaultDurations = {
   standard: '300ms',
   complex: '375',
   enter: '225ms',
-  leave: '195ms',
+  exit: '195ms',
 };
 
 export type Transition = Partial<{
@@ -24,7 +23,7 @@ export type Transition = Partial<{
 }>;
 
 const genTransition = (
-  name: keyof React.CSSProperties | Array<keyof React.CSSProperties>,
+  name: keyof CSSProperties | Array<keyof CSSProperties>,
   duration: string,
   func: string,
   delay = '',
@@ -40,26 +39,26 @@ const createTransition = (transition: Transition = {}) => {
   const { functions = defaultFunctions, durations = defaultDurations } = transition;
 
   const standard = (
-    name: keyof React.CSSProperties | Array<keyof React.CSSProperties>,
+    name: keyof CSSProperties | Array<keyof CSSProperties>,
     duration = durations.standard,
     delay = '0ms',
   ) => genTransition(name, duration, functions.standard, delay);
 
   const enter = (
-    name: keyof React.CSSProperties | Array<keyof React.CSSProperties>,
+    name: keyof CSSProperties | Array<keyof CSSProperties>,
     duration = durations.enter,
     delay = '0ms',
   ) => genTransition(name, duration, functions.deceleration, delay);
 
-  const leavePermanent = (
-    name: keyof React.CSSProperties | Array<keyof React.CSSProperties>,
-    duration = durations.leave,
+  const exitPermanent = (
+    name: keyof CSSProperties | Array<keyof CSSProperties>,
+    duration = durations.exit,
     delay = '0ms',
   ) => genTransition(name, duration, functions.acceleration, delay);
 
-  const leaveTemporary = (
-    name: keyof React.CSSProperties | Array<keyof React.CSSProperties>,
-    duration = durations.leave,
+  const exitTemporary = (
+    name: keyof CSSProperties | Array<keyof CSSProperties>,
+    duration = durations.exit,
     delay = '0ms',
   ) => genTransition(name, duration, functions.sharp, delay);
 
@@ -79,15 +78,17 @@ const createTransition = (transition: Transition = {}) => {
     };
   };
 
-  const fadeOut = (className: string, duration = defaultDurations.leave): CSSObject => {
+  const fadeOut = (className: string, duration = defaultDurations.exit): CSSObject => {
     return {
-      [`${className}-leave-active`]: {
-        transition: leavePermanent(['opacity'], duration),
+      [`${className}-exit-active`]: {
+        transition: exitPermanent(['opacity', 'transform'], duration),
       },
-      [`${className}-leave-from`]: {
+      [`${className}-exit-from`]: {
+        transform: 'scale(1)',
         opacity: 1,
       },
-      [`${className}-leave-to`]: {
+      [`${className}-exit-to`]: {
+        transform: 'scale(0.8)',
         opacity: 0,
       },
     };
@@ -98,8 +99,8 @@ const createTransition = (transition: Transition = {}) => {
     durations,
     standard,
     enter,
-    leavePermanent,
-    leaveTemporary,
+    exitPermanent,
+    exitTemporary,
     fadeIn,
     fadeOut,
   } as const;

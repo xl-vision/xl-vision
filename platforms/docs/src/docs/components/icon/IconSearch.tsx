@@ -1,11 +1,11 @@
-import React from 'react';
 import * as Icons from '@xl-vision/icons';
 import { Button, Input, styled } from '@xl-vision/react';
 import ClipboardJs from 'clipboard';
+import { ComponentType, FC, useState, useCallback, useMemo, MouseEvent } from 'react';
 import { useLocale } from '../../../components/LocalizationProvider';
 
 export type IconComponentMap = {
-  [key: string]: React.ComponentType;
+  [key: string]: ComponentType;
 };
 
 const keys = Object.keys(Icons);
@@ -46,13 +46,13 @@ const IconWrapper = styled('div')(({ theme }) => {
   };
 });
 
-const IconSearch: React.FunctionComponent<void> = () => {
+const IconSearch: FC<void> = () => {
   const { locale } = useLocale();
-  const [iconType, setIconType] = React.useState<IconType>(IconType.OUTLINED);
+  const [iconType, setIconType] = useState<IconType>(IconType.OUTLINED);
 
-  const [search, setSearch] = React.useState('');
+  const [search, setSearch] = useState('');
 
-  const handleCopy = React.useCallback((e: React.MouseEvent) => {
+  const handleCopy = useCallback((e: MouseEvent) => {
     const target = e.currentTarget as HTMLDivElement;
     const clipboard = new ClipboardJs(target);
 
@@ -63,7 +63,7 @@ const IconSearch: React.FunctionComponent<void> = () => {
     });
   }, []);
 
-  const icons = React.useMemo(() => {
+  const icons = useMemo(() => {
     return keys
       .filter((iconName) => {
         if (iconName === 'createIcon') {
@@ -97,7 +97,7 @@ const IconSearch: React.FunctionComponent<void> = () => {
       });
   }, [iconType, search, handleCopy]);
 
-  const handleSearch = React.useCallback((value: string) => {
+  const handleSearch = useCallback((value: string) => {
     setSearch(value);
   }, []);
 

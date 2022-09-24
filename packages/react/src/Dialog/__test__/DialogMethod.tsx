@@ -1,4 +1,3 @@
-import React from 'react';
 import { open, info, success, error, warning, confirm } from '../methods';
 
 describe('DialogMethod', () => {

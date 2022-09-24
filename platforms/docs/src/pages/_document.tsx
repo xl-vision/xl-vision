@@ -1,6 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
-import React from 'react';
 
 class MyDocument extends Document {
   render() {
@@ -31,12 +30,7 @@ MyDocument.getInitialProps = async (ctx) => {
     const initialProps = await Document.getInitialProps(ctx);
     return {
       ...initialProps,
-      styles: (
-        <>
-          {initialProps.styles}
-          {sheet.getStyleElement()}
-        </>
-      ),
+      styles: [initialProps.styles, sheet.getStyleElement()],
     };
   } finally {
     sheet.seal();

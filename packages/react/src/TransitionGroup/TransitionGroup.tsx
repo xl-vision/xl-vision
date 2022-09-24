@@ -1,162 +1,144 @@
 import PropTypes from 'prop-types';
-import React from 'react';
 import { isProduction, warning } from '@xl-vision/utils';
-import { useIsomorphicLayoutEffect } from '@xl-vision/hooks';
-import CssTransition, { CssTransitionClassesObject, CssTransitionProps } from '../CssTransition';
-import { AfterEventHook } from '../Transition';
-import { omit } from '../utils/function';
-import diff, { DiffData } from './diff';
+import {
+  CssTransitionClassNameRecord,
+  TransitionEndHook,
+  useConstantFn,
+  useIsomorphicLayoutEffect,
+} from '@xl-vision/hooks';
+import { ReactElement, FC, useMemo, useState, useCallback, Key, cloneElement } from 'react';
+import Transition, { TransitionProps } from '../Transition';
+import diff from './diff';
 
-export interface TransitionGroupClassesObject
+export interface TransitionGroupClassNameRecord
   extends Omit<
-    CssTransitionClassesObject,
+    CssTransitionClassNameRecord,
     'appearFrom' | 'appearActive' | 'appearTo' | 'disappearFrom' | 'disappearActive' | 'disappearTo'
   > {
   move?: string;
 }
 
-export type TransitionGroupClasses = string | TransitionGroupClassesObject;
+export type TransitionGroupClassName = string | TransitionGroupClassNameRecord;
 
 export interface TransitionGroupProps
   extends Omit<
-    CssTransitionProps,
-    'children' | 'transitionOnFirst' | 'in' | 'classNames' | 'mountOnEnter' | 'unmountOnLeave'
+    TransitionProps,
+    | 'children'
+    | 'transitionOnFirst'
+    | 'in'
+    | 'transitionClassName'
+    | 'mountOnEnter'
+    | 'unmountOnExit'
   > {
-  children: Array<CssTransitionProps['children']>;
-  transitionClasses?: TransitionGroupClasses;
+  children: Array<ReactElement>;
+  transitionClassName?: TransitionGroupClassName;
 }
 
-const TransitionGroup: React.FunctionComponent<TransitionGroupProps> = (props) => {
-  const { children, transitionClasses, afterLeave, ..._others } = props;
+const TransitionGroup: FC<TransitionGroupProps> = (props) => {
+  const { children, transitionClassName: transitionClasses, onExited, ...others } = props;
 
-  // 阻止用户故意传入appear和disappear钩子
-  const others = omit(_others as CssTransitionProps, 'in');
-
-  const transitionClassesObj = React.useMemo(() => {
-    let obj: CssTransitionClassesObject = {};
+  const transitionClassesRecord = useMemo(() => {
+    let obj: CssTransitionClassNameRecord = {};
 
     if (!transitionClasses) {
       return {};
     }
     // 组件实际上是使用CssTransition的appear和disappear钩子实现动画，但是向用户隐藏实现细节，
-    // 所以这里需要将enter和leave的class设置到appear和disappear上
+    // 所以这里需要将enter和exit的class设置到appear和disappear上
     if (typeof transitionClasses === 'object') {
       obj = { ...transitionClasses };
       obj.appearFrom = obj.enterFrom;
       obj.appearActive = obj.enterActive;
       obj.appearTo = obj.enterTo;
 
-      obj.disappearFrom = obj.leaveFrom;
-      obj.disappearActive = obj.leaveActive;
-      obj.disappearTo = obj.leaveTo;
+      obj.disappearFrom = obj.exitFrom;
+      obj.disappearActive = obj.exitActive;
+      obj.disappearTo = obj.exitTo;
     } else {
       obj.appearFrom = obj.enterFrom = `${transitionClasses}-enter-from`;
       obj.appearTo = obj.enterTo = `${transitionClasses}-enter-to`;
       obj.appearActive = obj.enterActive = `${transitionClasses}-enter-active`;
-      obj.disappearFrom = obj.leaveFrom = `${transitionClasses}-leave-from`;
-      obj.disappearTo = obj.leaveTo = `${transitionClasses}-leave-to`;
-      obj.disappearActive = obj.leaveActive = `${transitionClasses}-leave-active`;
+      obj.disappearFrom = obj.exitFrom = `${transitionClasses}-exit-from`;
+      obj.disappearTo = obj.exitTo = `${transitionClasses}-exit-to`;
+      obj.disappearActive = obj.exitActive = `${transitionClasses}-exit-active`;
     }
 
     return obj;
   }, [transitionClasses]);
 
-  const prevChildrenRef = React.useRef<Array<React.ReactElement>>();
+  const [nodes, setNodes] = useState<Array<ReactElement>>();
 
-  const [diffArray, setDiffArray] = React.useState<Array<DiffData>>([]);
-
-  const callAfterLeave = React.useCallback(
-    (key: React.Key | null) => {
+  const handleExited = useCallback(
+    (key: Key | null) => {
       warning(!key, `<TransitioGroup> must has a key`);
-      const hook: AfterEventHook = (e, transitionOnFirst) => {
-        afterLeave?.(e, transitionOnFirst);
-        prevChildrenRef.current = prevChildrenRef.current?.filter((it) => it.key !== key);
+      const hook: TransitionEndHook = (e, transitionOnFirst) => {
+        onExited?.(e, transitionOnFirst);
+        setNodes((prev) =>
+          prev?.filter((it) => {
+            return it.key !== key;
+          }),
+        );
       };
 
       return hook;
     },
-    [afterLeave],
+    [onExited],
   );
 
-  useIsomorphicLayoutEffect(() => {
-    const prevChildren = prevChildrenRef.current;
-    const array = prevChildren
-      ? diff(prevChildren, children)
-      : React.Children.map<DiffData, React.ReactElement>(children, (it) => ({
-          prev: [it],
-          next: [it],
-          same: true,
-        }));
+  const handleChildrenChange = useConstantFn((value: Array<ReactElement>) => {
+    const nextChildren = value.map((it) => {
+      return (
+        <Transition
+          {...others}
+          key={it.key}
+          in={true}
+          transitionClassName={transitionClassesRecord}
+          mountOnEnter={true}
+          unmountOnExit={true}
+          onExited={handleExited(it.key)}
+          // transitionOnFirst={true}
+        >
+          {it}
+        </Transition>
+      );
+    });
 
-    setDiffArray(array);
+    const array = nodes
+      ? diff(nodes, nextChildren)
+      : nextChildren.map((it) => {
+          return {
+            prev: [it],
+            next: [it],
+            same: true,
+          };
+        });
 
-    const nodes: Array<React.ReactElement> = [];
+    const nextNodes: Array<ReactElement> = [];
     array.forEach((it) => {
       if (it.same) {
-        nodes.push(...it.next);
+        nextNodes.push(...it.next);
       } else {
-        nodes.push(...it.prev, ...it.next);
+        const prev = it.prev.map((item) => {
+          return cloneElement(item, {
+            in: false,
+          });
+        });
+        const next = it.next.map((item) => {
+          return cloneElement(item, {
+            in: true,
+            transitionOnFirst: true,
+          });
+        });
+        nextNodes.push(...prev, ...next);
       }
     });
 
-    prevChildrenRef.current = nodes;
-  }, [children]);
-
-  const nodes: Array<React.ReactElement<CssTransitionProps>> = [];
-  diffArray.forEach((it) => {
-    if (it.same) {
-      const array = it.next.map((item) => {
-        return (
-          <CssTransition
-            {...others}
-            key={item.key}
-            in={true}
-            transitionClasses={transitionClassesObj}
-            mountOnEnter={true}
-            unmountOnLeave={true}
-          >
-            {item}
-          </CssTransition>
-        );
-      });
-      nodes.push(...array);
-    } else {
-      const prev = it.prev.map((item) => {
-        return (
-          <CssTransition
-            {...others}
-            key={item.key}
-            in={false}
-            transitionOnFirst={true}
-            mountOnEnter={true}
-            unmountOnLeave={true}
-            transitionClasses={transitionClassesObj}
-            afterLeave={callAfterLeave(item.key)}
-          >
-            {item}
-          </CssTransition>
-        );
-      });
-
-      const next = it.next.map((item) => {
-        return (
-          <CssTransition
-            {...others}
-            key={item.key}
-            in={true}
-            transitionOnFirst={true}
-            mountOnEnter={true}
-            unmountOnLeave={true}
-            transitionClasses={transitionClassesObj}
-          >
-            {item}
-          </CssTransition>
-        );
-      });
-
-      nodes.push(...prev, ...next);
-    }
+    setNodes(nextNodes);
   });
+
+  useIsomorphicLayoutEffect(() => {
+    handleChildrenChange(children);
+  }, [children, handleChildrenChange]);
 
   return <>{nodes}</>;
 };
@@ -166,8 +148,8 @@ if (!isProduction) {
 
   TransitionGroup.propTypes = {
     children: PropTypes.arrayOf(PropTypes.element.isRequired).isRequired,
-    transitionClasses: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-    afterLeave: PropTypes.func,
+    transitionClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    onExited: PropTypes.func,
   };
 }
 

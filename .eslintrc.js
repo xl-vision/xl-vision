@@ -82,11 +82,13 @@ module.exports = {
         treatUndefinedAsUnspecified: true,
       },
     ],
+    'react/jsx-uses-react': 'off',
+    'react/react-in-jsx-scope': 'off',
     'react-hooks/exhaustive-deps': [
       'error',
       {
         // custom hooks
-        additionalHooks: '(useLayoutEffect|useUpdated)',
+        additionalHooks: '(useIsomorphicLayoutEffect)',
       },
     ],
     'react/jsx-handler-names': [
@@ -188,6 +190,7 @@ module.exports = {
     {
       files: ['test/__test__/**', 'packages/**/__test__/**', 'packages/**/__doc__/**'],
       rules: {
+        'react/jsx-handler-names': 'off',
         'react/display-name': 'off',
         'react/button-has-type': 'off',
         'import/no-unresolved': 'off',

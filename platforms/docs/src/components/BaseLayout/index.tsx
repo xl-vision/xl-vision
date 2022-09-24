@@ -1,13 +1,13 @@
 import { styled, Row, Affix, BackTop } from '@xl-vision/react';
 import { useRouter } from 'next/router';
-import React from 'react';
+import { ReactNode, FC, useRef, useEffect } from 'react';
 import { Route } from '../../routes';
 import Aside from '../Aside';
 import Footer from '../Footer';
 import Header, { height } from '../Header';
 
 export type BaseLayoutProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   appendEn?: boolean;
   routeName: keyof Route;
 };
@@ -34,7 +34,7 @@ const Root = styled('div')(({ theme }) => {
     //   zIndex: 10,
     // },
     // '.aside': {
-    //   '&-enter-active, &-leave-active': {
+    //   '&-enter-active, &-exit-active': {
     //     transition: 'height 0.4s ease',
     //   },
     // },
@@ -93,32 +93,28 @@ const MainWrapper = styled('div')(({ theme }) => {
   };
 });
 
-const BaseLayout: React.FunctionComponent<BaseLayoutProps> = ({
-  children,
-  routeName,
-  appendEn,
-}) => {
+const BaseLayout: FC<BaseLayoutProps> = ({ children, routeName, appendEn }) => {
   // const { locale } = useLocale();
 
-  const asideRef = React.useRef<HTMLDivElement>(null);
+  const asideRef = useRef<HTMLDivElement>(null);
 
   const { pathname } = useRouter();
 
-  // const [asideVisible, setAsideVisible] = React.useState(false);
+  // const [asideVisible, setAsideVisible] = useState(false);
 
   // const theme = useTheme();
 
-  // const handleAsideVisible = React.useCallback((e: React.MouseEvent) => {
+  // const handleAsideVisible = useCallback((e: MouseEvent) => {
   //   setAsideVisible((prev) => !prev);
   //   e.stopPropagation();
   // }, []);
 
   // 滚回顶部
-  React.useEffect(() => {
+  useEffect(() => {
     asideRef.current?.scrollTo({ top: 0, left: 0 });
   }, [pathname]);
 
-  // React.useEffect(() => {
+  // useEffect(() => {
   //   const fn = () => {
   //     setAsideVisible(false);
   //   };

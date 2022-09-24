@@ -1,4 +1,3 @@
-import React from 'react';
 import { Row } from '@xl-vision/react';
 
 const { useBreakPoints } = Row;

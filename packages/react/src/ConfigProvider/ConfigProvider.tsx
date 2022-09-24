@@ -1,19 +1,19 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { isProduction, warning } from '@xl-vision/utils';
+import { ReactNode, FC, useMemo } from 'react';
 import ConfigContext, { defaultConfigContext } from './ConfigContext';
 import { defaultLanguage, locales, Locales } from '../locale';
 
 export type ConfigProviderProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   customLocales?: Locales;
   language?: string;
 };
 
-const ConfigProvider: React.FunctionComponent<ConfigProviderProps> = (props) => {
+const ConfigProvider: FC<ConfigProviderProps> = (props) => {
   const { customLocales, language = defaultConfigContext.language, children } = props;
 
-  const memorizedValue = React.useMemo(() => {
+  const memorizedValue = useMemo(() => {
     let actualLanguage = language;
     let actualLocale = customLocales?.[actualLanguage] || locales[actualLanguage];
 

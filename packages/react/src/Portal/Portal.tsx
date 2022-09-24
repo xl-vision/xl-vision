@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-import React from 'react';
 import { isProduction, isServer } from '@xl-vision/utils';
+import { ReactNode, FC } from 'react';
 import getContainer, { ContainerReturnType, ContainerType } from '../utils/getContainer';
 
 export type {
@@ -10,7 +10,7 @@ export type {
 };
 
 export interface PortalProp {
-  children?: React.ReactNode;
+  children?: ReactNode;
   container?: ContainerType;
 }
 
@@ -22,7 +22,7 @@ export interface PortalProp {
  * @param props
  * @constructor
  */
-const Portal: React.FunctionComponent<PortalProp> = (props) => {
+const Portal: FC<PortalProp> = (props) => {
   const { children, container: containerProp } = props;
 
   if (isServer) {

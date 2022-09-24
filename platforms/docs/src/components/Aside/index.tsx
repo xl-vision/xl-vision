@@ -3,8 +3,8 @@ import { defaultLanguage } from '@xl-vision/react/locale';
 import { mix } from '@xl-vision/react/utils/color';
 import Link, { LinkProps } from 'next/link';
 import { useRouter } from 'next/router';
-import React from 'react';
 import clsx from 'clsx';
+import { FC, Children, cloneElement, HTMLAttributes, forwardRef, useMemo } from 'react';
 import route, { BaseRoute, Route, RouteType } from '../../routes';
 import { useLocale } from '../LocalizationProvider';
 
@@ -33,11 +33,11 @@ const NodeWrapper = styled('ul')(() => {
   };
 });
 
-const ActiveLink: React.FunctionComponent<LinkProps> = (props) => {
+const ActiveLink: FC<LinkProps> = (props) => {
   const { children, href, ...others } = props;
   const { pathname } = useRouter();
 
-  const child: any = React.Children.only(children);
+  const child: any = Children.only(children);
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
   const classes = clsx(child.className, {
@@ -45,7 +45,7 @@ const ActiveLink: React.FunctionComponent<LinkProps> = (props) => {
   });
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-  const newChild = React.cloneElement(child, {
+  const newChild = cloneElement(child, {
     className: classes,
   });
 
@@ -136,31 +136,29 @@ const Wrapper = styled('div')(() => {
   };
 });
 
-export type AsideProps = React.HTMLAttributes<HTMLDivElement> & {
+export type AsideProps = HTMLAttributes<HTMLDivElement> & {
   routeName: keyof Route;
   appendEn?: boolean;
 };
 
-const Aside: React.FunctionComponent<AsideProps> = React.forwardRef<HTMLDivElement, AsideProps>(
-  (props, ref) => {
-    const { language } = useLocale();
+const Aside: FC<AsideProps> = forwardRef<HTMLDivElement, AsideProps>((props, ref) => {
+  const { language } = useLocale();
 
-    const { routeName, appendEn = true, ...others } = props;
+  const { routeName, appendEn = true, ...others } = props;
 
-    const nodes = React.useMemo(() => {
-      return traverseRoutes(routeName, route[routeName], language, appendEn);
-    }, [routeName, language, appendEn]);
+  const nodes = useMemo(() => {
+    return traverseRoutes(routeName, route[routeName], language, appendEn);
+  }, [routeName, language, appendEn]);
 
-    if (!nodes) {
-      return null;
-    }
+  if (!nodes) {
+    return null;
+  }
 
-    return (
-      <Wrapper {...others} ref={ref}>
-        {nodes}
-      </Wrapper>
-    );
-  },
-);
+  return (
+    <Wrapper {...others} ref={ref}>
+      {nodes}
+    </Wrapper>
+  );
+});
 
 export default Aside;

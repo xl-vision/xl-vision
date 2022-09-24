@@ -1,5 +1,4 @@
 /* eslint-disable */
-import React from 'react';
 import { isProduction } from '@xl-vision/utils';
 import createIcon from './utils/createIcon';
 

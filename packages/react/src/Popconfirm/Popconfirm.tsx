@@ -1,9 +1,9 @@
 import clsx from 'clsx';
-import React from 'react';
 import PropTypes from 'prop-types';
 import { ExclamationCircleOutlined } from '@xl-vision/icons';
 import { isProduction, isServer } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
+import { ReactNode, forwardRef, useState } from 'react';
 import Popper, { PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
 import Button, { ButtonProps } from '../Button';
@@ -12,19 +12,17 @@ import { useTheme } from '../ThemeProvider';
 import { useConfig } from '../ConfigProvider';
 
 export type PopconfirmButtonProps = Omit<ButtonProps, 'children' | 'onClick'>;
-export interface PopconfirmProps
-  extends Omit<PopperProps, 'popup' | 'arrow' | 'transitionClasses' | 'title'> {
-  title: React.ReactNode;
-  icon?: React.ReactNode;
-  onConfirm?: () => void;
+export type PopconfirmProps = Omit<PopperProps, 'popup' | 'arrow' | 'title'> & {
+  title: ReactNode;
+  icon?: ReactNode;
+  onConfirm?: () => void | Promise<any>;
   onCancel?: () => void;
   confirmButtonProps?: PopconfirmButtonProps;
   cancelButtonProps?: PopconfirmButtonProps;
   confirmText?: string;
   cancelText?: string;
-  showArrow?: boolean;
-  transitionClassName?: string;
-}
+  hideArrow?: boolean;
+};
 
 const displayName = 'Popconfirm';
 
@@ -50,33 +48,10 @@ const PopconfirmArrow = styled('div', {
   const bgColor = color.background.paper;
 
   return {
-    position: 'absolute',
-    width: 0,
-    height: 0,
+    width: 8,
+    height: 8,
     backgroundColor: bgColor,
-
-    ':before': {
-      position: 'absolute',
-      content: '""',
-      width: '8px',
-      height: '8px',
-      left: '-4px',
-      top: '-4px',
-      transform: 'rotate(45deg)',
-      backgroundColor: 'inherit',
-    },
-    '&[data-placement^="left"]': {
-      right: 0,
-    },
-    '&[data-placement^="right"]': {
-      left: 0,
-    },
-    '&[data-placement^="top"]': {
-      bottom: 0,
-    },
-    '&[data-placement^="bottom"]': {
-      top: 0,
-    },
+    transform: 'translate(-4px, -4px) rotate(45deg)',
   };
 });
 
@@ -119,7 +94,7 @@ const PopconfirmPopup = styled('div', {
 
 const defaultIcon = <ExclamationCircleOutlined />;
 
-const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
+const Popconfirm = forwardRef<HTMLDivElement, PopconfirmProps>((props, ref) => {
   const { clsPrefix } = useTheme();
   const { locale } = useConfig();
 
@@ -139,21 +114,31 @@ const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
     confirmButtonProps,
     cancelText = locale.Popconfirm.cancelText,
     confirmText = locale.Popconfirm.confirmText,
-    showArrow,
+    hideArrow,
     transitionClassName,
     ...others
   } = props;
 
   const [visible, setVisible] = usePropChange(defaultVisible, visibleProp, onVisibleChange);
 
+  const [loading, setLoading] = useState(false);
+
   const handleCancel = useConstantFn(() => {
-    setVisible(false);
     onCancel?.();
+    setVisible(false);
   });
 
   const handleConfirm = useConstantFn(() => {
-    setVisible(false);
-    onConfirm?.();
+    new Promise((resolve) => {
+      setLoading(true);
+      resolve(onConfirm?.());
+    })
+      .then(() => {
+        setVisible(false);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   });
 
   const rootClassName = `${clsPrefix}-popconfirm`;
@@ -181,6 +166,7 @@ const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
           color='primary'
           variant='text'
           disableElevation={true}
+          loading={loading}
           {...(confirmButtonProps as ButtonProps)}
           onClick={handleConfirm}
         >
@@ -205,10 +191,10 @@ const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
       trigger={trigger}
       className={rootClasses}
       offset={offset}
-      arrow={showArrow ? arrow : undefined}
+      arrow={!hideArrow && arrow}
       popup={popup}
       popupContainer={popupContainer}
-      transitionClasses={transitionClassName || rootClassName}
+      transitionClassName={transitionClassName || rootClassName}
     />
   );
 });
@@ -219,7 +205,6 @@ if (!isProduction) {
   const triggerPropType = PropTypes.oneOf<PopperTrigger>([
     'click',
     'contextMenu',
-    'custom',
     'focus',
     'hover',
   ]).isRequired;
@@ -244,7 +229,7 @@ if (!isProduction) {
     cancelText: PropTypes.string,
     confirmText: PropTypes.string,
     defaultVisible: PropTypes.bool,
-    showArrow: PropTypes.bool,
+    hideArrow: PropTypes.bool,
     transitionClassName: PropTypes.string,
   };
 }

@@ -1,6 +1,5 @@
 import { TextArea, ThemeProvider } from '@xl-vision/react';
 import { mount } from 'enzyme';
-import React from 'react';
 
 describe('TextArea', () => {
   it('test component size', () => {

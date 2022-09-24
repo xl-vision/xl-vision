@@ -1,224 +1,305 @@
 import PropTypes from 'prop-types';
-import React from 'react';
-import { getComputedStyle, isProduction } from '@xl-vision/utils';
-import { useConstantFn } from '@xl-vision/hooks';
-import CssTransition, { CssTransitionProps, CssTransitionElement } from '../CssTransition';
+import { addClass, getComputedStyle, isProduction, removeClass, warning } from '@xl-vision/utils';
+import {
+  CssTransitionOptions,
+  TransitionCancelledHook,
+  TransitionEndHook,
+  TransitionStartHook,
+  TransitionStartingHook,
+  useConstantFn,
+  useCssTransition,
+  useForkRef,
+} from '@xl-vision/hooks';
+import {
+  ReactElement,
+  FC,
+  Children,
+  useMemo,
+  CSSProperties,
+  useRef,
+  isValidElement,
+  ReactInstance,
+  Ref,
+  cloneElement,
+} from 'react';
+import { supportRef } from '../utils/ref';
 import { forceReflow } from '../utils/dom';
-import { removeClass, addClass } from '../utils/class';
-import { AfterEventHook, BeforeEventHook, EventCancelledHook, EventHook } from '../Transition';
 
-export interface CollapseTransitionProp extends Omit<CssTransitionProps, 'mountOnEnter'> {
-  children: React.ReactElement<React.HTMLAttributes<HTMLElement>>;
-  horizontal?: boolean;
-}
+export type CollapseTransitionProp = CssTransitionOptions & {
+  children: ReactElement;
+  horizontal?: true;
+  unmountOnExit?: boolean;
+};
 
-export interface CollapseTransitionElement extends CssTransitionElement {
-  _cancelled__?: boolean;
-}
+const displayName = 'CollapseTransition';
 
-const CollapseTransition: React.FunctionComponent<CollapseTransitionProp> = (props) => {
+const CollapseTransition: FC<CollapseTransitionProp> = (props) => {
   const {
     horizontal,
-    beforeEnter,
-    enter,
-    enterCancelled,
-    afterEnter,
-    beforeLeave,
-    leave,
-    leaveCancelled,
-    afterLeave,
-
+    onEnter,
+    onEntering,
+    onEntered,
+    onEnterCancelled,
+    onExit,
+    onExiting,
+    onExited,
+    onExitCancelled,
+    unmountOnExit,
+    children,
     ...others
   } = props;
 
-  const mappings = React.useMemo(() => {
-    const padding1: keyof React.CSSProperties = horizontal ? 'paddingLeft' : 'paddingTop';
-    const padding2: keyof React.CSSProperties = horizontal ? 'paddingRight' : 'paddingBottom';
-    const size: keyof React.CSSProperties = horizontal ? 'width' : 'height';
-    const actualSize = horizontal ? 'actualWidth' : 'actualHeight';
+  const child = Children.only(children);
+
+  warning(!supportRef(child), '<%s>: child does not support ref', displayName);
+
+  const mappings = useMemo(() => {
+    const padding1: keyof CSSProperties = horizontal ? 'paddingLeft' : 'paddingTop';
+    const padding2: keyof CSSProperties = horizontal ? 'paddingRight' : 'paddingBottom';
+    const size: keyof CSSProperties = horizontal ? 'width' : 'height';
 
     return {
       padding1,
       padding2,
       size,
-      actualSize,
     };
   }, [horizontal]);
 
-  const beforeEnterWrapper: BeforeEventHook = useConstantFn(
-    (el: CollapseTransitionElement, transitionOnFirst) => {
-      const { padding1, padding2, size, actualSize } = mappings;
+  const actualSizeRef = useRef<string>();
+  const padding1Ref = useRef<string>();
+  const padding2Ref = useRef<string>();
+  const sizeRef = useRef<string>();
+  const overflowRef = useRef<string>();
 
-      const className1 = transitionOnFirst ? 'appearFrom' : 'enterFrom';
-      const className2 = transitionOnFirst ? 'appearActive' : 'enterActive';
+  const isCancelledRef = useRef(false);
 
-      el.dataset[padding1] = el.style[padding1];
-      el.dataset[padding2] = el.style[padding2];
-      el.dataset[size] = el.style[size];
-      el.dataset.overflow = el.style.overflow;
+  const handleEnter: TransitionStartHook = useConstantFn((nativeEl, transitionOnFirst) => {
+    const el = nativeEl as HTMLElement;
 
-      const { display } = el.dataset;
+    const { padding1, padding2, size } = mappings;
 
-      if (display !== undefined) {
-        el.style.display = display;
-        el.dataset.display = undefined;
-      }
+    padding1Ref.current = el.style[padding1];
+    padding2Ref.current = el.style[padding2];
+    sizeRef.current = el.style[size];
+    overflowRef.current = el.style.overflow;
 
-      if (!el._cancelled__) {
-        removeClass(el, el._ctc?.[className1] || '');
-        removeClass(el, el._ctc?.[className2] || '');
-        el.dataset[actualSize] = getComputedStyle(el)[size];
-      }
-      el.style.overflow = 'hidden';
-      el.style[size] = '0';
-      el.style[padding1] = '0';
-      el.style[padding2] = '0';
+    if (!isCancelledRef.current) {
+      removeClass(el, transitionClassesRef.current.activeClass || '');
+      removeClass(el, transitionClassesRef.current.fromClass || '');
+      actualSizeRef.current = getComputedStyle(el)[size];
+    }
 
-      if (!el._cancelled__) {
-        addClass(el, el._ctc?.[className1] || '');
-        forceReflow();
-        addClass(el, el._ctc?.[className2] || '');
-      }
+    el.style.overflow = 'hidden';
+    el.style[padding1] = '0';
+    el.style[padding2] = '0';
+    el.style[size] = '0';
 
-      el._cancelled__ = false;
+    if (!isCancelledRef.current) {
+      addClass(el, transitionClassesRef.current.fromClass || '');
+      forceReflow();
+      addClass(el, transitionClassesRef.current.activeClass || '');
+    }
 
-      beforeEnter?.(el, transitionOnFirst);
-    },
-  );
+    isCancelledRef.current = false;
+    onEnter?.(nativeEl, transitionOnFirst);
+  });
 
-  const enterWrapper: EventHook = useConstantFn(
-    (
-      el: CollapseTransitionElement,
-      done: () => void,
-      isCancelled: () => boolean,
-      transitionOnFirst,
-    ) => {
-      const { padding1, padding2, size, actualSize } = mappings;
-
-      el.style[size] = `${el.dataset[actualSize]!}`;
-      el.style[padding1] = el.dataset[padding1]!;
-      el.style[padding2] = el.dataset[padding2]!;
-
-      enter?.(el, done, isCancelled, transitionOnFirst);
-    },
-  );
-
-  const afterEnterWrapper: AfterEventHook = useConstantFn(
-    (el: CollapseTransitionElement, transitionOnFirst) => {
-      const { size } = mappings;
-
-      el.style[size] = el.dataset[size]!;
-      el.style.overflow = el.dataset.overflow!;
-
-      afterEnter?.(el, transitionOnFirst);
-    },
-  );
-
-  const enterCancelledWrapper: EventCancelledHook = useConstantFn(
-    (el: CollapseTransitionElement, transitionOnFirst) => {
+  const handleEntering: TransitionStartingHook = useConstantFn(
+    (nativeEl, done, transitionOnFirst, isCancelled) => {
+      const el = nativeEl as HTMLElement;
       const { padding1, padding2, size } = mappings;
-      el._cancelled__ = true;
-      el.style[padding1] = el.dataset[padding1]!;
-      el.style[padding2] = el.dataset[padding2]!;
-      el.style[size] = el.dataset[size]!;
-      el.style.overflow = el.dataset.overflow!;
-      enterCancelled?.(el, transitionOnFirst);
+
+      el.style[size] = actualSizeRef.current!;
+      el.style[padding1] = padding1Ref.current!;
+      el.style[padding2] = padding2Ref.current!;
+
+      onEntering?.(nativeEl, done, transitionOnFirst, isCancelled);
     },
   );
 
-  const beforeLeaveWrapper: BeforeEventHook = useConstantFn(
-    (el: CollapseTransitionElement, transitionOnFirst) => {
-      const { padding1, padding2, size, actualSize } = mappings;
+  const handleEntered: TransitionEndHook = useConstantFn((nativeEl, transitionOnFirst) => {
+    const el = nativeEl as HTMLElement;
+    const { size } = mappings;
 
-      el.dataset[padding1] = el.style[padding1];
-      el.dataset[padding2] = el.style[padding2];
-      el.dataset[size] = el.style[size];
-      el.dataset.overflow = el.style.overflow;
+    el.style[size] = sizeRef.current!;
+    el.style.overflow = overflowRef.current!;
 
-      if (!el._cancelled__) {
-        el.dataset[actualSize] = getComputedStyle(el)[size];
-      }
-      el.style[size] = `${el.dataset[actualSize]!}`;
-      el.style.overflow = 'hidden';
+    onEntered?.(nativeEl, transitionOnFirst);
+  });
 
-      el._cancelled__ = false;
-      beforeLeave?.(el, transitionOnFirst);
+  const handleEnterCancelled: TransitionCancelledHook = useConstantFn(
+    (nativeEl, transitionOnFirst) => {
+      const el = nativeEl as HTMLElement;
+      const { padding1, padding2, size } = mappings;
+
+      isCancelledRef.current = true;
+
+      el.style[padding1] = padding1Ref.current!;
+      el.style[padding2] = padding2Ref.current!;
+      el.style[size] = sizeRef.current!;
+      el.style.overflow = overflowRef.current!;
+
+      onEnterCancelled?.(nativeEl, transitionOnFirst);
     },
   );
 
-  const leaveWrapper: EventHook = useConstantFn(
-    (
-      el: CollapseTransitionElement,
-      done: () => void,
-      isCancelled: () => boolean,
-      transitionOnFirst,
-    ) => {
+  const handleExit: TransitionStartHook = useConstantFn((nativeEl, transitionOnFirst) => {
+    const el = nativeEl as HTMLElement;
+
+    const { padding1, padding2, size } = mappings;
+
+    padding1Ref.current = el.style[padding1];
+    padding2Ref.current = el.style[padding2];
+    sizeRef.current = el.style[size];
+    overflowRef.current = el.style.overflow;
+
+    if (!isCancelledRef.current) {
+      actualSizeRef.current = getComputedStyle(el)[size];
+    }
+    el.style[size] = actualSizeRef.current!;
+    el.style.overflow = 'hidden';
+
+    isCancelledRef.current = false;
+
+    onExit?.(nativeEl, transitionOnFirst);
+  });
+
+  const handleExiting: TransitionStartingHook = useConstantFn(
+    (nativeEl, done, transitionOnFirst, isCancelled) => {
+      const el = nativeEl as HTMLElement;
+
       const { padding1, padding2, size } = mappings;
 
       forceReflow();
       el.style[padding1] = '0';
       el.style[padding2] = '0';
       el.style[size] = '0';
-      leave?.(el, done, isCancelled, transitionOnFirst);
+
+      onExiting?.(nativeEl, done, transitionOnFirst, isCancelled);
     },
   );
 
-  const afterLeaveWrapper: AfterEventHook = useConstantFn(
-    (el: CollapseTransitionElement, transitionOnFirst) => {
+  const handleExited: TransitionEndHook = useConstantFn((nativeEl, transitionOnFirst) => {
+    const el = nativeEl as HTMLElement;
+
+    const { padding1, padding2, size } = mappings;
+
+    el.style[padding1] = padding1Ref.current!;
+    el.style[padding2] = padding2Ref.current!;
+    el.style[size] = sizeRef.current!;
+    el.style.overflow = overflowRef.current!;
+
+    onExited?.(nativeEl, transitionOnFirst);
+
+    // setTransitionStyle({});
+  });
+
+  const handleExitCancelled: TransitionCancelledHook = useConstantFn(
+    (nativeEl, transitionOnFirst) => {
+      const el = nativeEl as HTMLElement;
       const { padding1, padding2, size } = mappings;
 
-      el.style[padding1] = el.dataset[padding1]!;
-      el.style[padding2] = el.dataset[padding2]!;
-      el.style[size] = el.dataset[size]!;
-      el.style.overflow = el.dataset.overflow!;
-      el.dataset.display = el.style.display || '';
-      el.style.display = 'none';
-      afterLeave?.(el, transitionOnFirst);
+      isCancelledRef.current = true;
+      el.style[padding1] = padding1Ref.current!;
+      el.style[padding2] = padding2Ref.current!;
+      el.style[size] = sizeRef.current!;
+      el.style.overflow = overflowRef.current!;
+
+      onExitCancelled?.(nativeEl, transitionOnFirst);
     },
   );
 
-  const leaveCancelledWrapper: EventCancelledHook = useConstantFn(
-    (el: CollapseTransitionElement, transitionOnFirst) => {
-      const { padding1, padding2, size } = mappings;
+  const { nodeRef, show, transitionClassesRef } = useCssTransition({
+    ...others,
+    onEnter: handleEnter,
+    onEntering: handleEntering,
+    onEntered: handleEntered,
+    onEnterCancelled: handleEnterCancelled,
+    onExit: handleExit,
+    onExiting: handleExiting,
+    onExited: handleExited,
+    onExitCancelled: handleExitCancelled,
+  });
 
-      el._cancelled__ = true;
-      el.style[padding1] = el.dataset[padding1]!;
-      el.style[padding2] = el.dataset[padding2]!;
-      el.style[size] = el.dataset[size]!;
-      el.style.overflow = el.dataset.overflow!;
-      leaveCancelled?.(el, transitionOnFirst);
-    },
+  const forkRef = useForkRef(
+    isValidElement<ReactInstance>(child) ? (child as { ref?: Ref<unknown> }).ref : null,
+    nodeRef,
   );
 
-  return (
-    <CssTransition
-      {...others}
-      beforeEnter={beforeEnterWrapper}
-      enter={enterWrapper}
-      afterEnter={afterEnterWrapper}
-      enterCancelled={enterCancelledWrapper}
-      beforeLeave={beforeLeaveWrapper}
-      leave={leaveWrapper}
-      afterLeave={afterLeaveWrapper}
-      leaveCancelled={leaveCancelledWrapper}
-      mountOnEnter={true}
-    />
-  );
+  // 判断是否是第一次挂载
+  const isFirstMountRef = useRef(true);
+
+  if (show) {
+    isFirstMountRef.current = false;
+  } else {
+    if (isFirstMountRef.current) {
+      return null;
+    }
+    if (unmountOnExit) {
+      return null;
+    }
+  }
+
+  const style = { ...(child.props as { style?: {} }).style, display: show ? '' : 'none' };
+
+  return cloneElement(child, {
+    ref: forkRef,
+    style,
+  });
 };
 
 if (!isProduction) {
-  CollapseTransition.displayName = 'CollapseTransition';
+  CollapseTransition.displayName = displayName;
 
   CollapseTransition.propTypes = {
     horizontal: PropTypes.bool,
-    beforeEnter: PropTypes.func,
-    enter: PropTypes.func,
-    enterCancelled: PropTypes.func,
-    afterEnter: PropTypes.func,
-    beforeLeave: PropTypes.func,
-    leave: PropTypes.func,
-    leaveCancelled: PropTypes.func,
-    afterLeave: PropTypes.func,
+  };
+}
+
+if (!isProduction) {
+  CollapseTransition.displayName = displayName;
+
+  CollapseTransition.propTypes = {
+    children: PropTypes.element,
+    unmountOnExit: PropTypes.bool,
+    onEnter: PropTypes.func,
+    onEntering: PropTypes.func,
+    onEntered: PropTypes.func,
+    onEnterCancelled: PropTypes.func,
+    onExit: PropTypes.func,
+    onExiting: PropTypes.func,
+    onExited: PropTypes.func,
+    onExitCancelled: PropTypes.func,
+
+    in: PropTypes.bool,
+    transitionOnFirst: PropTypes.bool,
+    disableCss: PropTypes.bool,
+    timeout: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.exact({
+        appear: PropTypes.number,
+        enter: PropTypes.number,
+        exit: PropTypes.number,
+        disappear: PropTypes.number,
+      }),
+    ]),
+    transitionClassName: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.exact({
+        appearActive: PropTypes.string,
+        appearFrom: PropTypes.string,
+        appearTo: PropTypes.string,
+        enterActive: PropTypes.string,
+        enterFrom: PropTypes.string,
+        enterTo: PropTypes.string,
+        exitActive: PropTypes.string,
+        exitFrom: PropTypes.string,
+        exitTo: PropTypes.string,
+        disappearActive: PropTypes.string,
+        disappearFrom: PropTypes.string,
+        disappearTo: PropTypes.string,
+      }),
+    ]),
   };
 }
 

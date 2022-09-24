@@ -1,8 +1,8 @@
-import React from 'react';
+import { HTMLAttributes, FC } from 'react';
 
-export type LogoProps = React.HTMLAttributes<HTMLOrSVGElement>;
+export type LogoProps = HTMLAttributes<HTMLOrSVGElement>;
 
-const Logo: React.FunctionComponent<LogoProps> = (props) => {
+const Logo: FC<LogoProps> = (props) => {
   return (
     <svg
       {...props}

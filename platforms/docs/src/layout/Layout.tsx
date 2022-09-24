@@ -1,7 +1,7 @@
-import React from 'react';
+import { FC, ReactNode } from 'react';
 
 export type LayoutProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
-export type Layout<T extends LayoutProps = LayoutProps> = React.FunctionComponent<T>;
+export type Layout<T extends LayoutProps = LayoutProps> = FC<T>;

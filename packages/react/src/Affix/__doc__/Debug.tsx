@@ -1,8 +1,8 @@
-import React from 'react';
 import { Affix, Button } from '@xl-vision/react';
+import { useState } from 'react';
 
 const Demo = () => {
-  const [count, setCount] = React.useState(1);
+  const [count, setCount] = useState(1);
 
   const content = [];
 

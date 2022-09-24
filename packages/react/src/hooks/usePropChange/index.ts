@@ -10,14 +10,19 @@ const usePropChange = <T>(
 
   const hasProp = typeof prop !== 'undefined';
 
+  const actualValue = hasProp ? prop : value;
+
   const handleChange = useConstantFn((newValue: T) => {
+    if (newValue === actualValue) {
+      return;
+    }
+
     if (!hasProp) {
       setValue(newValue);
     }
+
     onChange?.(newValue);
   });
-
-  const actualValue = hasProp ? prop : value;
 
   return [actualValue, handleChange] as const;
 };

@@ -1,4 +1,3 @@
-import React from 'react';
 import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
 import { Popper } from '@xl-vision/react';
@@ -140,7 +139,7 @@ describe('Popper', () => {
 
     const wrapper = mount(
       <Popper
-        trigger='custom'
+        trigger={false}
         popup={<div id='popup'>popup</div>}
         onVisibleChange={handleVisibleChange}
         popupContainer={() => document.body}

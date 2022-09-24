@@ -1,45 +1,30 @@
 # 过渡动画
 
-基础的过渡动画组件，通过此组件可以灵活地控制`React`组件过渡状态。
-
-> **NOTE**
-
-> 使用此组件时，务必注意要及时调用`appear`、`enter`、`leave`、`disappear`中的最后的回调函数，以表示动画的结束，否则动画会阻塞在中间状态。
+过渡动画
 
 ## 示例
 
-:::demo ./Basic
+::: demo ./Basic
 
-基础用法
+基本用法
 
-通过传入`beforeEnter`、`enter`、`afterEnter`、`enterCancelled`、`beforeLeave`、`leave`、`afterLeave`、`leaveCancelled`等钩子函数，触发相应的动画。通过改变属性`show`触发进出场钩子
+基本的使用方式，如果不希望一开始组件就渲染出来，请设置`mountOnEnter=true`
 
 :::
 
-:::demo ./Appear
+::: demo ./Advance
 
-自动触发进出场动画
+不卸载组件
 
-设置`transitionOnFirst`，会自动触发进出场动画。如果`in=true`，会触发`beforeAppear`、`apper`、`afterAppear`、`appearCancelled`钩子，如果不设置，会使用`beforeEnter`、`enter`、`afterEnter`、`enterCancelled`钩子。
-
-如果`in=false`，会触发`beforeDisappear`、`disapper`、`afterDisappear`、`disappearCancelled`钩子，如果不设置，会使用`beforeLeave`、`leave`、`afteLeave`、`leaveCancelled`钩子。
+如果希望组件出场后不卸载组件，可以通过不设置`unmountOnLeave`，配合 css 实现
 
 :::
 
 ## Transition API
 
-| 参数 | 说明 | 类型 | 默认值 | 是否必填 |
-| --- | --- | --- | --- | --- |
-| in | 触发进出场动画,`true`表示进场，`false`表示出场 | boolean | - | true |
-| transitionOnFirst | 是否触发初次进出场钩子函数 | boolean | false | false |
-| beforeEnter | 进场前钩子 | (el: HTMLElement, transitionOnFirst: boolean) => void | - |
-| enter | 进场时钩子 | (el: HTMLElement, done: (() => void), isCancelled: () => boolean, transitionOnFirst: boolean) => void | - | false |
-| afterEnter | 进场后钩子 | (el: HTMLElement, transitionOnFirst: boolean) => void | - | false |
-| enterCancelled | 取消进场钩子 | (el: HTMLElement, transitionOnFirst: boolean) => void | - | false |
-| beforeLeave | 出场前钩子 | (el: HTMLElement, transitionOnFirst: boolean) => void | - | false |
-| leave | 出场时钩子 | (el: HTMLElement, done: (() => void), isCancelled: () => boolean, transitionOnFirst: boolean) => void | - | false |
-| afterLeave | 出场后钩子 | (el: HTMLElement, transitionOnFirst: boolean) => void | - | false |
-| leaveCancelled | 取消出场钩子 | (el: HTMLElement, transitionOnFirst: boolean) => void | - | false |
-| children | 子元素 | React.ReactElement | - | true |
-| mountOnEnter | 当第一次进场动画时才挂载子节点，后续组件会一直挂载在 dom 上，即使进行出场动画， 除非又设置了`unmountOnLeave` | boolean | false | false |
-| unmountOnLeave | 当出场动画后就卸载子节点 | boolean | false | false |
+> Transition 继承所有[useCssTransition](/hooks/useCssTransition)属性
+
+| 参数          | 说明                   | 类型    | 默认值 | 是否必填 |
+| ------------- | ---------------------- | ------- | ------ | -------- |
+| mountOnEnter  | 第一次执行进入过渡时才挂载子元素，后续会保持挂载状态，除非使用`unmountOnExit` | boolean | -      | false    |
+| unmountOnExit | 离开过渡时会卸载子元素 | boolean | -      | false    |

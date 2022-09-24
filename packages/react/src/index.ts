@@ -13,28 +13,15 @@ export {
 export type { ConfigProviderProps, ConfigContextProps } from './ConfigProvider';
 
 export { default as Transition } from './Transition';
-export type {
-  TransitionProps,
-  BeforeEventHook,
-  EventHook,
-  AfterEventHook,
-  EventCancelledHook,
-} from './Transition';
-
-export { default as CssTransition } from './CssTransition';
-export type {
-  CssTransitionClasses,
-  CssTransitionClassesObject,
-  CssTransitionProps,
-} from './CssTransition';
+export type { TransitionProps } from './Transition';
 
 export { default as CollapseTransition } from './CollapseTransition';
 export type { CollapseTransitionProp } from './CollapseTransition';
 
 export { default as TransitionGroup } from './TransitionGroup';
 export type {
-  TransitionGroupClasses,
-  TransitionGroupClassesObject,
+  TransitionGroupClassName,
+  TransitionGroupClassNameRecord,
   TransitionGroupProps,
 } from './TransitionGroup';
 
@@ -64,15 +51,10 @@ export { default as CssBaseline } from './CssBaseline';
 export type { CssBaselineProps, CssBaselineStyleProps } from './CssBaseline';
 
 export { default as Popper } from './Popper';
-export type { PopperChildrenProps, PopperPlacement, PopperProps, PopperTrigger } from './Popper';
+export type { PopperChildrenProps, PopperProps, PopperTrigger, PopperPlacement } from './Popper';
 
 export { default as Tooltip } from './Tooltip';
-export type {
-  TooltipChildrenProps,
-  TooltipPopupStyleProps,
-  TooltipProps,
-  TooltipTrigger,
-} from './Tooltip';
+export type { TooltipChildrenProps, TooltipPopupStyleProps, TooltipProps } from './Tooltip';
 
 export { default as Popover } from './Popover';
 export type { PopoverProps } from './Popover';

@@ -35,8 +35,8 @@
     "url": "https://github.com/xl-vision/xl-vision/issues"
   },
   "dependencies": {
-    "@popperjs/core": "^2.11.4",
     "@xl-vision/hooks": "workspace:^",
+    "@xl-vision/popper": "workspace:^",
     "@xl-vision/icons": "workspace:^",
     "@xl-vision/styled-engine": "workspace:^",
     "@xl-vision/utils": "workspace:^",
@@ -50,12 +50,16 @@
   },
   "peerDependencies": {
     "@babel/runtime": "^7.15.4",
-    "@types/react": ">=16.8.0",
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
+    "@types/react": ">=17.0.0",
+    "@types/react-dom": ">=17.0.0",
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0"
   },
   "peerDependenciesMeta": {
     "@types/react": {
+      "optional": true
+    },
+    "@types/react-dom": {
       "optional": true
     }
   },

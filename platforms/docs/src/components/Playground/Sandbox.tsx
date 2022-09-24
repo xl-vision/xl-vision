@@ -1,6 +1,6 @@
 import { useConstantFn } from '@xl-vision/hooks';
 import { styled } from '@xl-vision/react';
-import React from 'react';
+import { FC, useRef, useMemo } from 'react';
 
 export type SandboxProps = {
   demo: string;
@@ -20,12 +20,12 @@ const Root = styled('iframe')(() => {
   };
 });
 
-const Sandbox: React.FunctionComponent<SandboxProps> = (props) => {
+const Sandbox: FC<SandboxProps> = (props) => {
   const { demo, scripts, exec, onLoad } = props;
-  const ref = React.useRef<HTMLIFrameElement>(null);
+  const ref = useRef<HTMLIFrameElement>(null);
 
-  const srcDoc = React.useMemo(() => {
-    // TODO [2022-06-01]: styled components在iframe中全局样式不生效
+  const srcDoc = useMemo(() => {
+    // TODO [2022-12-01]: styled components在iframe中全局样式不生效
     return `
 <style>
 html {

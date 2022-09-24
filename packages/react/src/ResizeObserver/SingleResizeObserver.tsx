@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   ResizeObserverHandler,
   useConstantFn,
@@ -7,16 +6,17 @@ import {
 } from '@xl-vision/hooks';
 import { isProduction, warning } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
+import { ReactElement, forwardRef, Children, Ref, cloneElement } from 'react';
 import { supportRef } from '../utils/ref';
 
 export type SingleResizeObserverProps = {
-  children: React.ReactElement;
+  children: ReactElement;
   onResizeObserver?: ResizeObserverHandler;
 };
 
 const displayName = 'SingleResizeObserver';
 
-const SingleResizeObserver = React.forwardRef<unknown, SingleResizeObserverProps>((props, ref) => {
+const SingleResizeObserver = forwardRef<unknown, SingleResizeObserverProps>((props, ref) => {
   const { children, onResizeObserver } = props;
 
   const handleResizeObserver: ResizeObserverHandler = useConstantFn((state, target) => {
@@ -25,17 +25,13 @@ const SingleResizeObserver = React.forwardRef<unknown, SingleResizeObserverProps
 
   const resizeRef = useResizeObserver(handleResizeObserver);
 
-  const child: React.ReactElement = React.Children.only(children);
+  const child: ReactElement = Children.only(children);
 
   warning(!supportRef(child), '<%s>: child does not support ref', displayName);
 
-  const forkRef = useForkRef(
-    resizeRef,
-    ref,
-    (child as unknown as { ref?: React.Ref<unknown> }).ref,
-  );
+  const forkRef = useForkRef(resizeRef, ref, (child as unknown as { ref?: Ref<unknown> }).ref);
 
-  return React.cloneElement(child, {
+  return cloneElement(child, {
     ref: forkRef,
   });
 });

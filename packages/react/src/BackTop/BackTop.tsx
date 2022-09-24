@@ -1,20 +1,19 @@
 import { useConstantFn } from '@xl-vision/hooks';
 import { VerticalAlignTopOutlined } from '@xl-vision/icons';
-import { isProduction, isServer } from '@xl-vision/utils';
+import { isProduction, isServer, off, on } from '@xl-vision/utils';
 import clsx from 'clsx';
-import React from 'react';
 import PropTypes from 'prop-types';
-import CssTransition from '../CssTransition';
+import { HTMLAttributes, forwardRef, useState, useEffect, CSSProperties, MouseEvent } from 'react';
+import Transition from '../Transition';
 import usePropChange from '../hooks/usePropChange';
 import Portal from '../Portal';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 import { alpha } from '../utils/color';
 import { getScroll, scrollTo } from '../utils/scroll';
-import { off, on } from '../utils/event';
 import { throttleByAnimationFrame } from '../utils/perf';
 
-export type BackTopProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'target' | 'onChange'> & {
+export type BackTopProps = Omit<HTMLAttributes<HTMLDivElement>, 'target' | 'onChange'> & {
   target?: Window | HTMLElement | (() => Window | HTMLElement);
   container?: Element | (() => Element);
   bottom?: number | string;
@@ -65,7 +64,7 @@ const Root = styled('div', {
 const getDefaultTarget = () => window;
 const getDefaultContainer = () => document.body;
 
-const BackTop = React.forwardRef<HTMLDivElement, BackTopProps>((props, ref) => {
+const BackTop = forwardRef<HTMLDivElement, BackTopProps>((props, ref) => {
   const { clsPrefix } = useTheme();
 
   const {
@@ -85,15 +84,15 @@ const BackTop = React.forwardRef<HTMLDivElement, BackTopProps>((props, ref) => {
 
   const [show, setShow] = usePropChange(false, showProp, onChange);
 
-  const [currentTarget, setCurrentTarget] = React.useState<Window | HTMLElement>();
+  const [currentTarget, setCurrentTarget] = useState<Window | HTMLElement>();
 
-  React.useEffect(() => {
+  useEffect(() => {
     const nextTarget = typeof target === 'function' ? target() : target;
 
     setCurrentTarget(nextTarget);
   }, [target]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!currentTarget) {
       return;
     }
@@ -113,7 +112,7 @@ const BackTop = React.forwardRef<HTMLDivElement, BackTopProps>((props, ref) => {
     };
   }, [currentTarget, visibilityHeight, setShow]);
 
-  const handleClick = useConstantFn((e: React.MouseEvent<HTMLDivElement>) => {
+  const handleClick = useConstantFn((e: MouseEvent<HTMLDivElement>) => {
     onClick?.(e);
 
     if (!currentTarget) {
@@ -134,17 +133,17 @@ const BackTop = React.forwardRef<HTMLDivElement, BackTopProps>((props, ref) => {
     </div>
   );
 
-  const fixedStyle: React.CSSProperties = {
+  const fixedStyle: CSSProperties = {
     right,
     bottom,
   };
 
   const node = (
-    <CssTransition
+    <Transition
       in={show}
       mountOnEnter={true}
-      unmountOnLeave={true}
-      transitionClasses={rootClassName}
+      unmountOnExit={true}
+      transitionClassName={rootClassName}
     >
       <Root
         {...others}
@@ -155,7 +154,7 @@ const BackTop = React.forwardRef<HTMLDivElement, BackTopProps>((props, ref) => {
       >
         {children || defaultElement}
       </Root>
-    </CssTransition>
+    </Transition>
   );
 
   return <Portal container={containerProp}>{node}</Portal>;

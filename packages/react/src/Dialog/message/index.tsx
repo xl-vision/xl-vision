@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   CheckCircleOutlined,
   CloseCircleOutlined,
@@ -6,6 +5,7 @@ import {
   InfoCircleOutlined,
 } from '@xl-vision/icons';
 import { isProduction } from '@xl-vision/utils';
+import { FC, useMemo } from 'react';
 import MessageDialog, { MessageDialogProps } from './MessageDialog';
 import { useTheme } from '../../ThemeProvider';
 import { useConfig } from '../../ConfigProvider';
@@ -15,11 +15,11 @@ export type MessageDialogType = 'success' | 'error' | 'warning' | 'info' | 'conf
 export * from './MessageDialog';
 
 const createMessageDialog = (type?: MessageDialogType) => {
-  const Dialog: React.FunctionComponent<MessageDialogProps> = (props) => {
+  const Dialog: FC<MessageDialogProps> = (props) => {
     const { color } = useTheme();
     const { locale } = useConfig();
 
-    const defaultProps: Partial<MessageDialogProps> = React.useMemo(() => {
+    const defaultProps: Partial<MessageDialogProps> = useMemo(() => {
       switch (type) {
         case 'success': {
           return {

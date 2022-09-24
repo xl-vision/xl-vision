@@ -1,7 +1,7 @@
 import { styled } from '@xl-vision/react';
-import React from 'react';
 import { LoadingOutlined } from '@xl-vision/icons';
 import { keyframes } from '@xl-vision/styled-engine';
+import { FC, HTMLAttributes } from 'react';
 
 const Root = styled('div')(({ theme }) => {
   return {
@@ -29,7 +29,7 @@ const Icon = styled(LoadingOutlined)`
   font-size: 48px;
 `;
 
-const Loading: React.FunctionComponent<React.HTMLAttributes<HTMLDivElement>> = (props) => {
+const Loading: FC<HTMLAttributes<HTMLDivElement>> = (props) => {
   return (
     <Root {...props}>
       <Icon />

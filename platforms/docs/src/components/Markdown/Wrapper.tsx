@@ -1,11 +1,11 @@
 import { styled } from '@xl-vision/react';
 import PropTypes from 'prop-types';
-import React from 'react';
+import { ReactNode, FC } from 'react';
 import code from './code';
 import pre from './pre';
 
 export type WrapperProps = {
-  children?: React.ReactNode;
+  children?: ReactNode;
   className?: string;
 };
 
@@ -28,7 +28,7 @@ const Root = styled('main')(
 `,
 );
 
-const Wrapper: React.FunctionComponent<WrapperProps> = (props) => {
+const Wrapper: FC<WrapperProps> = (props) => {
   const { children, ...others } = props;
 
   return <Root {...others}>{children}</Root>;

@@ -1,45 +1,30 @@
 # Transition
 
-The basic transition animation component, through which the transition state of the `React` component can be flexibly controlled.
-
-> **NOTE**
-
-> When using this component, be sure to call the last callback function in `appear`, `enter`, `leave`, and `disappear` in time to indicate the end of the animation, otherwise the animation will be blocked in an intermediate state.
+Transition animation
 
 ## Examples
 
-:::demo ./Basic
+::: demo ./Basic
 
 Basic
 
-By passing in hook functions such as `beforeEnter`, `enter`, `afterEnter`, `enterCancelled`, `beforeLeave`, `leave`, `afterLeave`, and `leaveCancelled` to trigger the corresponding animation. Trigger the entry and exit hooks by changing the attribute `show`.
+Basic usage, if you don’t want the component to be rendered at the beginning, please set mountOnEnter=true.
 
 :::
 
-:::demo ./Appear
+::: demo ./Advance
 
-Automatically trigger entry and exit animations
+Do not uninstall components
 
-Setting `transitionOnFirst` will automatically trigger the in and out animation. If `in=true`, the hooks of `beforeAppear`, `apper`, `afterAppear`, and `appearCancelled` will be triggered. If not set, the hooks of `beforeEnter`, `enter`, `afterEnter`, and `enterCancelled` will be used.
-
-If `in=false`, the hooks of `beforeDisappear`, `disapper`, `afterDisappear`, and `disappearCancelled` will be triggered. If not set, the hooks of `beforeLeave`, `leave`, `afteLeave`, and `leaveCancelled` will be used.
+If you want the component not to be unloaded after it comes out, you can do this by not setting `unmountOnLeave` and cooperating with css.
 
 :::
 
 ## Transition API
 
+> Transition inherits all [useCssTransition](/hooks/useCssTransition) properties
+
 | Property | Description | Type | Default | Require |
 | --- | --- | --- | --- | --- |
-| in | Trigger the entering and exiting animation, `true` means entering, `false` means leaving | boolean | - | true |
-| transitionOnFirst | Whether to trigger the first entry and exit hook function | boolean | - | false |
-| beforeEnter | Before enter hook | (el: HTMLElement, transitionOnFirst: boolean) => void | - | false |
-| enter | Enter hook | (el: HTMLElement, done: (() => void), isCancelled: () => boolean, transitionOnFirst: boolean) => void | - | false |
-| afterEnter | After enter hook | (el: HTMLElement, transitionOnFirst: boolean) => void | - | false |
-| enterCancelled | Enter cancelled hook | (el: HTMLElement, transitionOnFirst: boolean) => void | - | false |
-| beforeLeave | Before leave hook | (el: HTMLElement, transitionOnFirst: boolean) => void | - | false |
-| leave | Leave hook | (el: HTMLElement, done: (() => void), isCancelled: () => boolean, transitionOnFirst: boolean) => void | - | false |
-| afterLeave | After leave hook | (el: HTMLElement, transitionOnFirst: boolean) => void | - | false |
-| leaveCancelled | Leave cancelled hook | (el: HTMLElement, transitionOnFirst: boolean) => void | - | false |
-| children | Child node | React.ReactElement | - | true |
-| mountOnEnter | The child node is only mounted when the animation is entered for the first time, and subsequent components will always be mounted on the dom, even if the animation is performed, unless `unmountOnLeave` is also set | boolean | false | false |
-| unmountOnLeave | Unload the child node after the animation | boolean | false | false |
+| mountOnEnter | The child element is only mounted when the transition is executed for the first time, and will remain mounted unless `unmountOnExit` is used. | boolean | - | false |
+| unmountOnExit | Unmount child element when leaving transition | boolean | - | false |

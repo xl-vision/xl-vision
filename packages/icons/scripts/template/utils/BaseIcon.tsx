@@ -1,18 +1,18 @@
-import React from 'react';
 import clsx from 'clsx';
 import { isProduction } from '@xl-vision/utils';
 import { styled } from '@xl-vision/styled-engine';
+import { forwardRef, ReactElement, SVGProps, cloneElement } from 'react';
 
-export interface IconProps extends React.SVGProps<SVGSVGElement> {
-  children: React.ReactElement<React.SVGProps<SVGSVGElement>>;
+export interface IconProps extends SVGProps<SVGSVGElement> {
+  children: ReactElement<SVGProps<SVGSVGElement>>;
 }
 
-const InnerIcon = React.forwardRef<SVGSVGElement, IconProps>((props, ref) => {
+const InnerIcon = forwardRef<SVGSVGElement, IconProps>((props, ref) => {
   const { children, className, ...others } = props;
 
   const classes = clsx('xl-base-icon', className);
 
-  return React.cloneElement(children, {
+  return cloneElement(children, {
     ...others,
     className: classes,
     ref,

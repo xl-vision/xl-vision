@@ -1,5 +1,5 @@
-import React from 'react';
 import { Ripple, RippleRef, styled } from '@xl-vision/react';
+import { useRef, useMemo, SyntheticEvent } from 'react';
 
 const Box = styled('div')(
   ({ theme }) => `
@@ -15,26 +15,26 @@ const Box = styled('div')(
     opacity: 0.5;
   }
   .ripple-enter-active,
-  .ripple-leave-active {
+  .ripple-exit-active {
     transition: all 0.4s ease;
   }
   .ripple-enter-from,
-  .ripple-leave-to {
+  .ripple-exit-to {
     transform: scale(0);
     opacity: 0.1;
   }
   .ripple-enter-to,
-  .ripple-leave-from {
+  .ripple-exit-from {
     transform: scale(1);
   }
 `,
 );
 
 const Advance = () => {
-  const rippleRef = React.useRef<RippleRef>(null);
+  const rippleRef = useRef<RippleRef>(null);
 
-  const events = React.useMemo(() => {
-    const start = (e: React.SyntheticEvent) => {
+  const events = useMemo(() => {
+    const start = (e: SyntheticEvent) => {
       rippleRef.current?.start(e);
     };
     const stop = () => {
@@ -54,7 +54,7 @@ const Advance = () => {
   return (
     <Box {...events}>
       click me
-      <Ripple transitionClasses='ripple' ref={rippleRef} leaveAfterEnter={true} />
+      <Ripple transitionClassName='ripple' ref={rippleRef} exitAfterEnter={true} />
     </Box>
   );
 };
