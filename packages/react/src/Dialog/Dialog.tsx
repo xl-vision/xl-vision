@@ -139,8 +139,7 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
         setConfirmLoading(true);
         p.then(() => {
           setVisible(false);
-          setConfirmLoading(false);
-        }).catch(() => {
+        }).finally(() => {
           setConfirmLoading(false);
         });
         return;
@@ -156,8 +155,7 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
         setCancelLoading(true);
         p.then(() => {
           setVisible(false);
-          setCancelLoading(false);
-        }).catch(() => {
+        }).finally(() => {
           setCancelLoading(false);
         });
         return;
@@ -167,6 +165,10 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
   });
 
   const handleVisibleChange = useConstantFn((_visible: boolean) => {
+    // 在loading时，必须等待结果，而不能直接关闭
+    if (confirmLoading || cancelLoading) {
+      return;
+    }
     setVisible(_visible);
     if (!_visible) {
       onCancel?.()?.catch(noop);
@@ -181,6 +183,7 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
           variant='text'
           {...(cancelButtonProps as ButtonProps)}
           loading={cancelLoading}
+          disabled={confirmLoading}
           onClick={handleCancel}
         >
           {cancelText}
@@ -191,6 +194,7 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
         variant='text'
         {...(confirmButtonProps as ButtonProps)}
         loading={confirmLoading}
+        disabled={cancelLoading}
         onClick={handleConfirm}
       >
         {confirmText}
