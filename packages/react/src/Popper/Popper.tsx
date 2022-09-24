@@ -78,8 +78,8 @@ export type PopperProps = HTMLAttributes<HTMLDivElement> & {
   onVisibleChange?: (visible: boolean) => void;
   offset?: OffsetOptions;
   autoUpdateOptions?: AutoUpdateOptions;
-  shiftOptions?: ShiftOptions & { enable?: boolean };
-  autoPlacementOptions?: AutoPlacementOptions & { enable?: boolean };
+  shiftOptions?: ShiftOptions | false;
+  autoPlacementOptions?: AutoPlacementOptions | false;
   arrowOptions?: ArrowOptions;
   arrow?: ReactNode;
   className?: string;
@@ -151,13 +151,9 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
   const [transitionVisible, setTransitionVisible] = useState(visible);
 
   const middlewares = useMemo(() => {
-    const { enable: shiftEnable, ...otherShiftOptions } = shiftOptions || {};
-    const { enable: autoPlacementEnable, ...otherAutoPlacementOptions } =
-      autoPlacementOptions || {};
-
     return [
-      shiftEnable && shift(otherShiftOptions),
-      autoPlacementEnable && autoPlacement(otherAutoPlacementOptions),
+      shiftOptions !== false && shift(shiftOptions),
+      autoPlacementOptions !== false && autoPlacement(autoPlacementOptions),
       offset(offsetProp),
       arrow(arrowOptions),
     ].filter(Boolean) as Array<Middleware>;
@@ -217,26 +213,30 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     }
   }, [visible]);
 
-  const arrowStyle: CSSProperties = {
-    position: 'absolute',
-    left: extra.arrow?.x,
-    top: extra.arrow?.y,
-  };
+  let originX: number | string | undefined = extra.arrow?.x;
+  let originY: number | string | undefined = extra.arrow?.y;
 
   const side = placement.split('-')[0] as Side;
 
   if (side === 'top') {
-    arrowStyle.top = '100%';
+    originY = '100%';
   } else if (side === 'bottom') {
-    arrowStyle.top = 0;
+    originY = 0;
   } else if (side === 'left') {
-    arrowStyle.left = '100%';
+    originX = '100%';
   } else {
-    arrowStyle.left = 0;
+    originX = 0;
   }
 
   const arrowNode = arrowProp && (
-    <div aria-hidden='true' style={arrowStyle}>
+    <div
+      aria-hidden='true'
+      style={{
+        position: 'absolute',
+        left: originX,
+        top: originY,
+      }}
+    >
       {arrowProp}
     </div>
   );
@@ -283,6 +283,9 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
               style={{
                 display: showValue ? '' : 'none',
                 position: 'relative',
+                transformOrigin: `${typeof originX === 'number' ? `${originX}px` : originX} ${
+                  typeof originY === 'number' ? `${originY}px` : originY
+                }`,
               }}
               className={innerClassName}
               data-placement={placement}
@@ -374,8 +377,8 @@ if (!isProduction) {
     defaultVisible: PropTypes.bool,
     onVisibleChange: PropTypes.func,
     offset: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
-    shiftOptions: PropTypes.object,
-    autoPlacementOptions: PropTypes.object,
+    shiftOptions: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+    autoPlacementOptions: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
     arrowOptions: PropTypes.object,
     autoUpdateOptions: PropTypes.object,
     arrow: PropTypes.element,

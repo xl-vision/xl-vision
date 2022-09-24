@@ -19,59 +19,59 @@ const Basic = () => {
     <Wrapper>
       <div className='column'>
         <div />
-        <Tooltip placement='top-start' content={content} flip={false}>
+        <Tooltip placement='top-start' content={content} autoPlacementOptions={false}>
           <Button color='primary'>TS</Button>
         </Tooltip>
-        <Tooltip placement='top' content={content} flip={false}>
+        <Tooltip placement='top' content={content} autoPlacementOptions={false}>
           <Button color='primary'>T</Button>
         </Tooltip>
-        <Tooltip placement='top-end' content={content} flip={false}>
+        <Tooltip placement='top-end' content={content} autoPlacementOptions={false}>
           <Button color='primary'>TE</Button>
         </Tooltip>
         <div />
       </div>
       <div className='column'>
-        <Tooltip placement='left-start' content={content} flip={false}>
+        <Tooltip placement='left-start' content={content} autoPlacementOptions={false}>
           <Button color='primary'>LS</Button>
         </Tooltip>
         <div />
         <div />
         <div />
-        <Tooltip placement='right-start' content={content} flip={false}>
+        <Tooltip placement='right-start' content={content} autoPlacementOptions={false}>
           <Button color='primary'>RS</Button>
         </Tooltip>
       </div>
       <div className='column'>
-        <Tooltip placement='left' content={content} flip={false}>
+        <Tooltip placement='left' content={content} autoPlacementOptions={false}>
           <Button color='primary'>L</Button>
         </Tooltip>
         <div />
         <div />
         <div />
-        <Tooltip placement='right' content={content} flip={false}>
+        <Tooltip placement='right' content={content} autoPlacementOptions={false}>
           <Button color='primary'>R</Button>
         </Tooltip>
       </div>
       <div className='column'>
-        <Tooltip placement='left-end' content={content} flip={false}>
+        <Tooltip placement='left-end' content={content} autoPlacementOptions={false}>
           <Button color='primary'>LE</Button>
         </Tooltip>
         <div />
         <div />
         <div />
-        <Tooltip placement='right-end' content={content} flip={false}>
+        <Tooltip placement='right-end' content={content} autoPlacementOptions={false}>
           <Button color='primary'>RE</Button>
         </Tooltip>
       </div>
       <div className='column'>
         <div />
-        <Tooltip placement='bottom-start' content={content} flip={false}>
+        <Tooltip placement='bottom-start' content={content} autoPlacementOptions={false}>
           <Button color='primary'>BS</Button>
         </Tooltip>
-        <Tooltip placement='bottom' content={content} flip={false}>
+        <Tooltip placement='bottom' content={content} autoPlacementOptions={false}>
           <Button color='primary'>B</Button>
         </Tooltip>
-        <Tooltip placement='bottom-end' content={content} flip={false}>
+        <Tooltip placement='bottom-end' content={content} autoPlacementOptions={false}>
           <Button color='primary'>BE</Button>
         </Tooltip>
         <div />
