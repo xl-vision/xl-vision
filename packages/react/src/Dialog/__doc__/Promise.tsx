@@ -9,9 +9,9 @@ const PromiseComponent = () => {
   }, []);
 
   const handleConfirm = useCallback(() => {
-    return new Promise<void>((resolve, reject) => {
+    return new Promise<void>((resolve) => {
       setTimeout(() => {
-        reject();
+        resolve();
       }, 3000);
     });
   }, []);
