@@ -204,7 +204,6 @@ const Popconfirm = forwardRef<HTMLDivElement, PopconfirmProps>((props, ref) => {
       role='tooltip'
       {...others}
       visible={visible}
-      // eslint-disable-next-line react/jsx-handler-names
       onVisibleChange={handleVisibleChange}
       ref={ref}
       trigger={trigger}
