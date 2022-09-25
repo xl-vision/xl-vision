@@ -42,7 +42,7 @@
     "@xl-vision/utils": "workspace:^",
     "clsx": "^1.1.1",
     "prop-types": "^15.8.1",
-    "react-is": "^18.1.0"
+    "react-is": "^18.2.0"
   },
   "devDependencies": {
     "@types/prop-types": "^15.7.5",
