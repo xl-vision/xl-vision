@@ -1,13 +1,9 @@
-import { act, cleanup } from '@testing-library/react';
-import { open, info, warning, error, confirm, success } from '../methods';
+import { act } from '@testing-library/react';
+import { open, info, success, error, warning, confirm } from '../methods';
 
 describe('DialogMethod', () => {
   beforeAll(() => {
     jest.useFakeTimers();
-  });
-
-  afterEach(() => {
-    cleanup();
   });
 
   it('Test method', () => {
@@ -221,6 +217,7 @@ describe('DialogMethod', () => {
     expect(el!.querySelector<HTMLDivElement>('#content')!.textContent).toBe('content2');
 
     destroy();
+
     act(() => {
       jest.runAllTimers();
     });
