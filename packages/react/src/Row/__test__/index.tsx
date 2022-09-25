@@ -1,10 +1,9 @@
-import { mount, render } from 'enzyme';
-
+import { render } from '@testing-library/react';
 import { Row } from '@xl-vision/react';
 
 describe('Row', () => {
-  it('基本用法', () => {
-    const wrapper = render(
+  it('Test basic render', () => {
+    const { container } = render(
       <div>
         <div className='box'>
           <Row gutter={10}>
@@ -56,11 +55,10 @@ describe('Row', () => {
         </div>
       </div>,
     );
-    expect(wrapper).toMatchSnapshot();
-    // wrapper.unmount()
+    expect(container).toMatchSnapshot();
   });
   it('偏移布局', () => {
-    const wrapper = render(
+    const { container } = render(
       <div>
         <div className='box'>
           <Row gutter={10}>
@@ -106,11 +104,11 @@ describe('Row', () => {
         </div>
       </div>,
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('响应式布局', () => {
-    const wrapper = render(
+    const { container } = render(
       <div className='box'>
         <Row gutter={{ xs: 8, sm: 10, md: 15, lg: 20, xl: 25, xxl: 30 }}>
           <Row.Col column={{ xs: 8, sm: 6, md: 4, lg: 6 }}>
@@ -128,11 +126,11 @@ describe('Row', () => {
         </Row>
       </div>,
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('响应式偏移', () => {
-    const wrapper = render(
+    const { container } = render(
       <div>
         <div className='box'>
           <Row gutter={10}>
@@ -175,34 +173,34 @@ describe('Row', () => {
         </div>
       </div>,
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('自定义标签', () => {
-    const wrapper = render(
+    const { container } = render(
       <Row component='header'>
         <Row.Col column={5}>hello</Row.Col>
       </Row>,
     );
 
-    expect(wrapper.is('header')).toBe(true);
+    expect(container.querySelectorAll('header').length).toBe(1);
   });
 
   it('test removeOnUnvisible', () => {
-    const wrapper = mount(
+    const { container, rerender } = render(
       <Row component='header'>
         <Row.Col column={0}>hello</Row.Col>
       </Row>,
     );
 
-    expect(wrapper.exists('.xl-col')).toBe(true);
+    expect(container.querySelectorAll('.xl-col').length).toBe(1);
 
-    wrapper
-      .setProps({
-        removeOnUnvisible: true,
-      })
-      .update();
+    rerender(
+      <Row component='header' removeOnUnvisible={true}>
+        <Row.Col column={0}>hello</Row.Col>
+      </Row>,
+    );
 
-    expect(wrapper.exists('.xl-col')).toBe(false);
+    expect(container.querySelectorAll('.xl-col').length).toBe(0);
   });
 });

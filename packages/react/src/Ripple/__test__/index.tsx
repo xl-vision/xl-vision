@@ -1,6 +1,6 @@
-import { mount } from 'enzyme';
 import { Ripple, RippleRef } from '@xl-vision/react';
 import { useRef, useMemo } from 'react';
+import { fireEvent, render } from '@testing-library/react';
 
 const Demo = ({ exitAfterEnter }: { exitAfterEnter?: boolean }) => {
   const rippleRef = useRef<RippleRef>(null);
@@ -38,7 +38,7 @@ describe('Ripple', () => {
   });
 
   it('test render', () => {
-    const wrapper = mount(
+    const { container } = render(
       <div>
         click me
         <Ripple transitionClassName='ripple' />
@@ -46,28 +46,32 @@ describe('Ripple', () => {
     );
     jest.runAllTimers();
 
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('test event', () => {
-    const wrapper = mount(<Demo />);
-    wrapper.find('.box').simulate('mousedown');
+    const { container } = render(<Demo />);
+
+    const div = container.querySelector('.box')!;
+
+    fireEvent.mouseDown(div);
 
     jest.runAllTimers();
 
-    const doms = wrapper.getDOMNode().querySelectorAll<HTMLElement>('.xl-ripple__inner');
+    const doms = container.querySelectorAll<HTMLElement>('.xl-ripple__inner');
     expect(doms.length).toBe(1);
     expect(doms[0].style.display).toBe('');
 
-    wrapper.find('.box').simulate('mouseup');
+    fireEvent.mouseUp(div);
 
     jest.runAllTimers();
 
-    expect(wrapper.getDOMNode().querySelectorAll<HTMLElement>('.xl-ripple__inner').length).toBe(0);
+    expect(container.querySelectorAll<HTMLElement>('.xl-ripple__inner').length).toBe(0);
 
-    wrapper.find('.box').simulate('blur');
+    fireEvent.blur(div);
+
     jest.runAllTimers();
 
-    expect(wrapper.getDOMNode().querySelectorAll<HTMLElement>('.xl-ripple__inner').length).toBe(0);
+    expect(container.querySelectorAll<HTMLElement>('.xl-ripple__inner').length).toBe(0);
   });
 });

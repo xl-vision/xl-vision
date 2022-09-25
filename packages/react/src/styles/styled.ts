@@ -72,6 +72,7 @@ const styled = <
         return;
       }
       const overrideSlotStyle = overrideStyle[slot];
+
       if (!overrideSlotStyle) {
         return;
       }
