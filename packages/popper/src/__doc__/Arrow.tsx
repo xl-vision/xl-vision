@@ -56,7 +56,7 @@ const container = () => document.body;
 
 const CustomPopper = ({ placement: initialPlacement }: { placement: Placement }) => {
   const middlewares: Array<Middleware> = useMemo(() => {
-    return [shift(), offset(10), arrow()];
+    return [shift(), offset(10), arrow({ padding: 8 })];
   }, []);
 
   const { reference, popper, placement, x, y, mode, extra } = useAutoUpdatePopper({
