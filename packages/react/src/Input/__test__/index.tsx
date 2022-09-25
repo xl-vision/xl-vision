@@ -1,83 +1,97 @@
-import { mount } from 'enzyme';
-import { ThemeProvider, Input, Button } from '@xl-vision/react';
+import { fireEvent, render } from '@testing-library/react';
+import { ThemeProvider, Input, Button, ComponentSize } from '@xl-vision/react';
 
 describe('Input', () => {
   it('test component size', () => {
-    const componentSizes = ['small', 'middle', 'large'];
+    const componentSizes: Array<ComponentSize> = ['small', 'middle', 'large'];
 
-    const wrapper = mount(
+    const { container, rerender } = render(
       <ThemeProvider>
         <Input />
       </ThemeProvider>,
     );
 
     componentSizes.forEach((componentSize) => {
-      wrapper.setProps({
-        theme: { componentSize },
-      });
-      expect(wrapper.find(`.xl-input--size-${componentSize}`)).not.toBe(null);
+      rerender(
+        <ThemeProvider theme={{ componentSize }}>
+          <Input />
+        </ThemeProvider>,
+      );
+
+      expect(container.querySelector(`.xl-input--size-${componentSize}`)).not.toBe(null);
     });
   });
 
   it('test disabled state', () => {
-    const wrapper = mount(<Input />);
+    const { rerender, container } = render(<Input />);
 
-    wrapper.find('input').simulate('focus');
+    const input = container.querySelector('input')!;
 
-    expect(wrapper.find('.xl-input--focused').exists()).toBe(true);
-    expect(wrapper.find('.xl-input--disabled').exists()).toBe(false);
+    fireEvent.focus(input);
 
-    wrapper
-      .setProps({
-        disabled: true,
-      })
-      .update();
+    expect(container.querySelector('.xl-input--focused')).not.toBe(null);
+    expect(container.querySelector('.xl-input--disabled')).toBe(null);
 
-    expect(wrapper.find('.xl-input--disabled').exists()).toBe(true);
-    expect(wrapper.find('.xl-input--focused').exists()).toBe(false);
+    rerender(<Input disabled={true} />);
+
+    expect(container.querySelector('.xl-input--disabled')).not.toBe(null);
+    expect(container.querySelector('.xl-input--focused')).toBe(null);
   });
 
   it('test default value', () => {
     const msg = 'msg';
 
-    const wrapper = mount(<Input defaultValue={msg} />);
+    const { container } = render(<Input defaultValue={msg} />);
 
-    const input = wrapper.find('input');
+    const input = container.querySelector('input')!;
 
-    expect(input.getDOMNode<HTMLInputElement>().value).toBe(msg);
+    expect(input.value).toBe(msg);
 
     const newMsg = 'new msg';
 
-    input.simulate('change', { target: { value: newMsg } });
-    expect(input.getDOMNode<HTMLInputElement>().value).toBe(newMsg);
+    fireEvent.change(input, {
+      target: {
+        value: newMsg,
+      },
+    });
+
+    expect(input.value).toBe(newMsg);
   });
 
   it('test controlled and uncontrolled state', () => {
     const msg = 'msg';
 
-    const wrapper = mount(<Input />);
+    const { container, rerender } = render(<Input />);
 
-    const input = wrapper.find('input');
+    const input = container.querySelector('input')!;
 
-    input.simulate('change', { target: { value: msg } });
+    fireEvent.change(input, {
+      target: {
+        value: msg,
+      },
+    });
 
-    expect(input.getDOMNode<HTMLInputElement>().value).toBe(msg);
+    expect(input.value).toBe(msg);
 
     const newMsg = 'new msg';
 
-    wrapper.setProps({ value: newMsg });
+    rerender(<Input value={newMsg} />);
 
-    input.simulate('change', { target: { value: msg } });
+    fireEvent.change(input, {
+      target: {
+        value: msg,
+      },
+    });
 
-    expect(input.getDOMNode<HTMLInputElement>().value).toBe(newMsg);
+    expect(input.value).toBe(newMsg);
   });
 });
 
 describe('InputGroup', () => {
   it('test size', () => {
-    const componentSizes = ['small', 'middle', 'large'];
+    const componentSizes: Array<ComponentSize> = ['small', 'middle', 'large'];
 
-    const wrapper = mount(
+    const { rerender, container } = render(
       <Input.Group>
         <Button>button</Button>
         <Input />
@@ -85,11 +99,15 @@ describe('InputGroup', () => {
     );
 
     componentSizes.forEach((componentSize) => {
-      wrapper.setProps({
-        size: componentSize,
-      });
-      expect(wrapper.find(`.xl-input--size-${componentSize}`)).not.toBe(null);
-      expect(wrapper.find(`.xl-button--size-${componentSize}`)).not.toBe(null);
+      rerender(
+        <Input.Group size={componentSize}>
+          <Button>button</Button>
+          <Input />
+        </Input.Group>,
+      );
+
+      expect(container.querySelector(`.xl-input--size-${componentSize}`)).not.toBe(null);
+      expect(container.querySelector(`.xl-button--size-${componentSize}`)).not.toBe(null);
     });
   });
 });
