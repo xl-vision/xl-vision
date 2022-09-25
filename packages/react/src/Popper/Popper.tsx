@@ -125,6 +125,9 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
   const triggers = Array.isArray(trigger) ? trigger : trigger ? [trigger] : [];
 
   const transitionClassNameObject = useMemo(() => {
+    if (!transitionClassName) {
+      return undefined;
+    }
     const ret: Required<CssTransitionClassNameRecord> = {
       appearActive: `${transitionClassName}-enter-active`,
       appearFrom: `${transitionClassName}-enter-from`,

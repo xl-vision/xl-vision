@@ -1,14 +1,15 @@
-import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
 import { Popover } from '@xl-vision/react';
+import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 describe('Popover', () => {
   beforeAll(() => {
     jest.useFakeTimers();
   });
 
-  it('test trigger click', () => {
-    const wrapper = mount(
+  it('test trigger click', async () => {
+    const { container } = render(
       <Popover content={<span id='content'>content</span>}>
         <button id='btn'>button</button>
       </Popover>,
@@ -19,7 +20,11 @@ describe('Popover', () => {
 
     expect(document.querySelector('#content')).toBe(null);
 
-    wrapper.find('#btn').simulate('click');
+    const btn = container.querySelector('#btn')!;
+
+    const user = userEvent.setup({ delay: null });
+
+    await user.click(btn);
 
     act(() => {
       jest.runAllTimers();
