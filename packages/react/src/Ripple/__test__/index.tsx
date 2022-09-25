@@ -1,6 +1,6 @@
 import { Ripple, RippleRef } from '@xl-vision/react';
 import { useRef, useMemo } from 'react';
-import { fireEvent, render } from '@testing-library/react';
+import { act, fireEvent, render } from '@testing-library/react';
 
 const Demo = ({ exitAfterEnter }: { exitAfterEnter?: boolean }) => {
   const rippleRef = useRef<RippleRef>(null);
@@ -44,7 +44,9 @@ describe('Ripple', () => {
         <Ripple transitionClassName='ripple' />
       </div>,
     );
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
 
     expect(container).toMatchSnapshot();
   });
@@ -56,7 +58,9 @@ describe('Ripple', () => {
 
     fireEvent.mouseDown(div);
 
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
 
     const doms = container.querySelectorAll<HTMLElement>('.xl-ripple__inner');
     expect(doms.length).toBe(1);
@@ -64,13 +68,17 @@ describe('Ripple', () => {
 
     fireEvent.mouseUp(div);
 
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
 
     expect(container.querySelectorAll<HTMLElement>('.xl-ripple__inner').length).toBe(0);
 
     fireEvent.blur(div);
 
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
 
     expect(container.querySelectorAll<HTMLElement>('.xl-ripple__inner').length).toBe(0);
   });

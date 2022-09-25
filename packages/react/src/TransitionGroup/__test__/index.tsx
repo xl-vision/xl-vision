@@ -25,8 +25,7 @@ describe('TransitionGroup', () => {
   });
 
   it('test hooks', () => {
-    const nextFrameSpy = jest.spyOn(utils, 'nextFrame');
-    nextFrameSpy.mockImplementation((fn: () => void) => {
+    jest.spyOn(utils, 'nextFrame').mockImplementation((fn: () => void) => {
       fn();
       return noop;
     });

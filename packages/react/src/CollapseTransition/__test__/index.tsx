@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import { CollapseTransition } from '@xl-vision/react';
 import * as utils from '@xl-vision/utils';
 
@@ -42,8 +42,12 @@ describe('CollapseTransition', () => {
     expect(el.style.overflow).toEqual('hidden');
     expect(el.style.height).toEqual('100px');
 
-    nextFrame.mock.calls[0][0]();
-    onTransitionEnd.mock.calls[0][1]();
+    act(() => {
+      nextFrame.mock.calls[0][0]();
+    });
+    act(() => {
+      onTransitionEnd.mock.calls[0][1]();
+    });
 
     expect(el.style.overflow).toEqual('');
     expect(el.style.height).toEqual('');
@@ -69,8 +73,12 @@ describe('CollapseTransition', () => {
     expect(el.style.overflow).toEqual('hidden');
     expect(el.style.width).toEqual('100px');
 
-    nextFrame.mock.calls[0][0]();
-    onTransitionEnd.mock.calls[0][1]();
+    act(() => {
+      nextFrame.mock.calls[0][0]();
+    });
+    act(() => {
+      onTransitionEnd.mock.calls[0][1]();
+    });
 
     expect(el.style.overflow).toEqual('');
     expect(el.style.width).toEqual('');

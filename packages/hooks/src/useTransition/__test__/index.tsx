@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import { FC } from 'react';
 import useTransition from '..';
 
@@ -269,7 +269,9 @@ describe('useTransition', () => {
 
     expect(el.dataset.show).toEqual('true');
 
-    fn.mock.calls[0][0]();
+    act(() => {
+      fn.mock.calls[0][0]();
+    });
 
     expect(el.dataset.show).toEqual('false');
   });

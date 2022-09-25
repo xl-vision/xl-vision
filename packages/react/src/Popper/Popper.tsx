@@ -384,7 +384,7 @@ if (!isProduction) {
     autoPlacementOptions: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
     arrowOptions: PropTypes.object,
     autoUpdateOptions: PropTypes.object,
-    arrow: PropTypes.element,
+    arrow: PropTypes.node,
     className: PropTypes.string,
     mountOnShow: PropTypes.bool,
     unmountOnHide: PropTypes.bool,

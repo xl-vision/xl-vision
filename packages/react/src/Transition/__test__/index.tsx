@@ -762,7 +762,9 @@ describe('Transition', () => {
     expect(div.classList).toContain('test-appear-active');
     expect(div.classList).toContain('test-appear-to');
 
-    jest.runOnlyPendingTimers();
+    act(() => {
+      jest.runOnlyPendingTimers();
+    });
 
     expect(div.classList).not.toContain('test-appear-active');
     expect(div.classList).not.toContain('test-appear-to');
@@ -784,7 +786,9 @@ describe('Transition', () => {
     expect(div.classList).toContain('test-exit-active');
     expect(div.classList).toContain('test-exit-to');
 
-    jest.runOnlyPendingTimers();
+    act(() => {
+      jest.runOnlyPendingTimers();
+    });
 
     expect(div.classList).not.toContain('test-exit-active');
     expect(div.classList).not.toContain('test-exit-to');
@@ -806,7 +810,9 @@ describe('Transition', () => {
     expect(div.classList).toContain('test-enter-active');
     expect(div.classList).toContain('test-enter-to');
 
-    jest.runOnlyPendingTimers();
+    act(() => {
+      jest.runOnlyPendingTimers();
+    });
 
     expect(div.classList).not.toContain('test-enter-active');
     expect(div.classList).not.toContain('test-enter-to');

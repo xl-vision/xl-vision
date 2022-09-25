@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import { FC } from 'react';
 import * as utils from '@xl-vision/utils';
 import useCssTransition from '..';
@@ -33,7 +33,9 @@ describe('useCssTransition', () => {
     expect(el.classList.contains('demo-enter-from')).toBe(true);
     expect(el.classList.contains('demo-enter-active')).toBe(true);
 
-    nextFrame.mock.calls[0][0]();
+    act(() => {
+      nextFrame.mock.calls[0][0]();
+    });
 
     nextFrame.mockClear();
 
@@ -41,7 +43,10 @@ describe('useCssTransition', () => {
     expect(el.classList.contains('demo-enter-to')).toBe(true);
     expect(el.classList.contains('demo-enter-active')).toBe(true);
 
-    onTransitionEnd.mock.calls[0][1]();
+    act(() => {
+      onTransitionEnd.mock.calls[0][1]();
+    });
+
     onTransitionEnd.mockClear();
 
     expect(el.classList.length).toBe(0);
@@ -52,7 +57,9 @@ describe('useCssTransition', () => {
     expect(el.classList.contains('demo-exit-from')).toBe(true);
     expect(el.classList.contains('demo-exit-active')).toBe(true);
 
-    nextFrame.mock.calls[0][0]();
+    act(() => {
+      nextFrame.mock.calls[0][0]();
+    });
 
     nextFrame.mockClear();
 
@@ -60,7 +67,9 @@ describe('useCssTransition', () => {
     expect(el.classList.contains('demo-exit-to')).toBe(true);
     expect(el.classList.contains('demo-exit-active')).toBe(true);
 
-    onTransitionEnd.mock.calls[0][1]();
+    act(() => {
+      onTransitionEnd.mock.calls[0][1]();
+    });
     onTransitionEnd.mockClear();
 
     expect(el.classList.length).toBe(0);
@@ -87,7 +96,9 @@ describe('useCssTransition', () => {
     expect(el.classList.contains('demo-enter-from')).toBe(true);
     expect(el.classList.contains('demo-enter-active')).toBe(true);
 
-    nextFrame.mock.calls[0][0]();
+    act(() => {
+      nextFrame.mock.calls[0][0]();
+    });
 
     nextFrame.mockClear();
 
@@ -126,7 +137,9 @@ describe('useCssTransition', () => {
     expect(el.classList.contains('demo-enter-from')).toBe(true);
     expect(el.classList.contains('demo-enter-active')).toBe(true);
 
-    nextFrame.mock.calls[0][0]();
+    act(() => {
+      nextFrame.mock.calls[0][0]();
+    });
 
     nextFrame.mockClear();
 
@@ -134,7 +147,10 @@ describe('useCssTransition', () => {
     expect(el.classList.contains('demo-enter-to')).toBe(true);
     expect(el.classList.contains('demo-enter-active')).toBe(true);
 
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
+
     expect(el.classList.length).toBe(0);
 
     rerender(<Demo in={false} />);
@@ -142,7 +158,9 @@ describe('useCssTransition', () => {
     expect(el.classList.contains('demo-exit-from')).toBe(true);
     expect(el.classList.contains('demo-exit-active')).toBe(true);
 
-    nextFrame.mock.calls[0][0]();
+    act(() => {
+      nextFrame.mock.calls[0][0]();
+    });
 
     nextFrame.mockClear();
 
@@ -150,7 +168,10 @@ describe('useCssTransition', () => {
     expect(el.classList.contains('demo-exit-to')).toBe(true);
     expect(el.classList.contains('demo-exit-active')).toBe(true);
 
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
+
     expect(el.classList.length).toBe(0);
   });
 
@@ -182,7 +203,9 @@ describe('useCssTransition', () => {
     expect(el.classList.contains('demo-enter-from')).toBe(true);
     expect(el.classList.contains('demo-enter-active')).toBe(true);
 
-    nextFrame.mock.calls[0][0]();
+    act(() => {
+      nextFrame.mock.calls[0][0]();
+    });
 
     nextFrame.mockClear();
 
@@ -205,7 +228,9 @@ describe('useCssTransition', () => {
     expect(el.classList.contains('demo-exit-from')).toBe(true);
     expect(el.classList.contains('demo-exit-active')).toBe(true);
 
-    nextFrame.mock.calls[0][0]();
+    act(() => {
+      nextFrame.mock.calls[0][0]();
+    });
 
     nextFrame.mockClear();
 
@@ -217,7 +242,10 @@ describe('useCssTransition', () => {
 
     expect(fn.mock.calls.length).toBe(1);
 
-    fn.mock.calls[0][1]();
+    act(() => {
+      fn.mock.calls[0][1]();
+    });
+
     expect(el.classList.length).toBe(0);
   });
 });
