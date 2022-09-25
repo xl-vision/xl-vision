@@ -1,5 +1,5 @@
+import { renderHook } from 'test/utils';
 import useConstantFn from '..';
-import { renderHook } from '../../../../../test/utils';
 
 describe('useConstantFn', () => {
   it('Test function reference unchanged', () => {

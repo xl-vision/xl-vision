@@ -1,5 +1,5 @@
+import { renderHook } from 'test/utils';
 import usePrevious from '..';
-import { renderHook } from '../../../../../test/utils';
 
 describe('usePrevious', () => {
   it('Test always get last value', () => {

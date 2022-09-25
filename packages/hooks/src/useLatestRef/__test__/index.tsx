@@ -1,5 +1,5 @@
+import { renderHook } from 'test/utils';
 import useLatestRef from '..';
-import { renderHook } from '../../../../../test/utils';
 
 describe('useLatestRef', () => {
   it('Test value is always kept up to date', () => {
