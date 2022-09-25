@@ -1,4 +1,4 @@
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import { BaseTheme } from '..';
 import ThemeProvider from '../ThemeProvider';
 import useTheme from '../useTheme';
@@ -32,7 +32,7 @@ describe('ThemeProvider', () => {
       return <div />;
     };
 
-    mount(
+    render(
       <ThemeProvider theme={theme1}>
         <Demo1 />
         <ThemeProvider theme={theme2}>

@@ -1,17 +1,17 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import { DeleteFilled } from '../src';
 
 describe('Icon', () => {
   it('test render', () => {
-    const wrapper = mount(<DeleteFilled />);
+    const { container } = render(<DeleteFilled />);
 
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('test ref', () => {
     const fn = jest.fn();
-    mount(<DeleteFilled ref={fn} />);
+    render(<DeleteFilled ref={fn} />);
 
     expect((fn.mock.calls[0] as Array<any>)[0]).toBeInstanceOf(SVGSVGElement);
   });

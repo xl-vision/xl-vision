@@ -44,12 +44,12 @@ describe('BackTop', () => {
   });
 
   it('test controlled state', () => {
-    const { container, rerender } = render(<BackTop show={false} />);
+    const { rerender } = render(<BackTop show={false} />);
 
-    expect(container.querySelectorAll('div.xl-back-top').length).toBe(0);
+    expect(document.querySelectorAll('div.xl-back-top').length).toBe(0);
 
     rerender(<BackTop show={true} />);
 
-    expect(container.querySelectorAll('div.xl-back-top').length).toBe(1);
+    expect(document.querySelectorAll('div.xl-back-top').length).toBe(1);
   });
 });

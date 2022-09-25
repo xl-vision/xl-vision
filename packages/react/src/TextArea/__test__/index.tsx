@@ -1,74 +1,76 @@
-import { TextArea, ThemeProvider } from '@xl-vision/react';
-import { mount } from 'enzyme';
+import { fireEvent, render } from '@testing-library/react';
+import { ComponentSize, TextArea, ThemeProvider } from '@xl-vision/react';
 
 describe('TextArea', () => {
   it('test component size', () => {
-    const componentSizes = ['small', 'middle', 'large'];
+    const componentSizes: Array<ComponentSize> = ['small', 'middle', 'large'];
 
-    const wrapper = mount(
+    const { container, rerender } = render(
       <ThemeProvider>
         <TextArea />
       </ThemeProvider>,
     );
 
     componentSizes.forEach((componentSize) => {
-      wrapper.setProps({
-        theme: { componentSize },
-      });
-      expect(wrapper.find(`.xl-textarea--size-${componentSize}`)).not.toBe(null);
+      rerender(
+        <ThemeProvider theme={{ componentSize }}>
+          <TextArea />
+        </ThemeProvider>,
+      );
+
+      expect(container.querySelector(`.xl-textarea--size-${componentSize}`)).not.toBe(null);
     });
   });
 
   it('test disabled state', () => {
-    const wrapper = mount(<TextArea />);
+    const { container, rerender } = render(<TextArea />);
 
-    wrapper.find('textarea').simulate('focus');
+    const el = container.querySelector('textarea')!;
 
-    expect(wrapper.find('.xl-textarea--focused').exists()).toBe(true);
-    expect(wrapper.find('.xl-textarea--disabled').exists()).toBe(false);
+    fireEvent.focus(el);
 
-    wrapper
-      .setProps({
-        disabled: true,
-      })
-      .update();
+    expect(container.querySelector('.xl-textarea--focused')).not.toBeNull();
+    expect(container.querySelector('.xl-textarea--disabled')).toBeNull();
 
-    expect(wrapper.find('.xl-textarea--disabled').exists()).toBe(true);
-    expect(wrapper.find('.xl-textarea--focused').exists()).toBe(false);
+    rerender(<TextArea disabled={true} />);
+
+    expect(container.querySelector('.xl-textarea--disabled')).not.toBeNull();
+    expect(container.querySelector('.xl-textarea--focused')).toBeNull();
   });
 
   it('test default value', () => {
     const msg = 'msg';
 
-    const wrapper = mount(<TextArea defaultValue={msg} />);
+    const { container } = render(<TextArea defaultValue={msg} />);
 
-    const input = wrapper.find('textarea');
+    const el = container.querySelector('textarea')!;
 
-    expect(input.getDOMNode<HTMLTextAreaElement>().value).toBe(msg);
+    expect(el.value).toBe(msg);
 
     const newMsg = 'new msg';
 
-    input.simulate('change', { target: { value: newMsg } });
-    expect(input.getDOMNode<HTMLTextAreaElement>().value).toBe(newMsg);
+    fireEvent.change(el, { target: { value: newMsg } });
+
+    expect(el.value).toBe(newMsg);
   });
 
   it('test controlled and uncontrolled state', () => {
     const msg = 'msg';
 
-    const wrapper = mount(<TextArea />);
+    const { container, rerender } = render(<TextArea />);
 
-    const input = wrapper.find('textarea');
+    const el = container.querySelector('textarea')!;
 
-    input.simulate('change', { target: { value: msg } });
+    fireEvent.change(el, { target: { value: msg } });
 
-    expect(input.getDOMNode<HTMLTextAreaElement>().value).toBe(msg);
+    expect(el.value).toBe(msg);
 
     const newMsg = 'new msg';
 
-    wrapper.setProps({ value: newMsg });
+    rerender(<TextArea value={newMsg} />);
 
-    input.simulate('change', { target: { value: msg } });
+    fireEvent.change(el, { target: { value: msg } });
 
-    expect(input.getDOMNode<HTMLTextAreaElement>().value).toBe(newMsg);
+    expect(el.value).toBe(newMsg);
   });
 });

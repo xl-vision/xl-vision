@@ -6,7 +6,6 @@ Array [
   "useConstantFn",
   "useForkRef",
   "useIsomorphicLayoutEffect",
-  "useMedia",
   "usePrevious",
   "useLifecycleState",
   "LifecycleState",
