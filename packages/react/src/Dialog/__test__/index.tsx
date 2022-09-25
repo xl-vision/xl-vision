@@ -1,40 +1,48 @@
-import { mount } from 'enzyme';
+import { act, render } from '@testing-library/react';
 import Dialog from '..';
 
 describe('Dialog', () => {
   beforeAll(() => {
     jest.useFakeTimers();
   });
-  it('test prop visible', () => {
-    const wrapper = mount(
+  it('Test prop visible', () => {
+    const { rerender } = render(
       <Dialog title='title'>
         <div>body</div>
       </Dialog>,
     );
 
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
 
     expect(document.querySelector('.xl-dialog')).toBe(null);
 
-    wrapper.setProps({
-      visible: true,
-    });
+    rerender(
+      <Dialog title='title' visible={true}>
+        <div>body</div>
+      </Dialog>,
+    );
 
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
     expect(document.querySelector('.xl-dialog')).not.toBe(null);
     expect(document.querySelector<HTMLElement>('.xl-dialog')?.style.display).toBe('');
 
-    wrapper.setProps({
-      visible: false,
-    });
+    rerender(
+      <Dialog title='title' visible={false}>
+        <div>body</div>
+      </Dialog>,
+    );
 
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
 
     expect(document.querySelector('.xl-dialog')).not.toBe(null);
     expect(document.querySelector<HTMLElement>('.xl-dialog')?.style.display).toBe('none');
-
-    wrapper.unmount();
   });
 
-  it.todo('test delay close');
+  it.todo('Test delay close');
 });
