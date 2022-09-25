@@ -1,60 +1,79 @@
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import { CollapseTransition } from '@xl-vision/react';
+import * as utils from '@xl-vision/utils';
+import { screen } from '@testing-library/dom';
+
+const temp = window.getComputedStyle;
+
+window.getComputedStyle = (e: Element, p?: string | null) => {
+  const styles = temp(e, p);
+
+  styles.width = '100px';
+  styles.height = '100px';
+
+  return styles;
+};
 
 describe('CollapseTransition', () => {
+  const nextFrame = jest.spyOn(utils, 'nextFrame').mockImplementation();
+  const onTransitionEnd = jest.spyOn(utils, 'onTransitionEnd').mockImplementation();
+
   beforeEach(() => {
-    jest.useFakeTimers();
+    nextFrame.mockClear();
+    onTransitionEnd.mockClear();
   });
 
-  it('test render', () => {
-    const wrapper = mount(
+  it('Test expand state', () => {
+    const { rerender } = render(
       <CollapseTransition in={false}>
-        <div />
+        <div data-testid='demo' />
       </CollapseTransition>,
     );
 
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(screen.queryByTestId('demo')).toBe(null);
 
-    wrapper.setProps({
-      in: true,
-    });
+    rerender(
+      <CollapseTransition in={true}>
+        <div data-testid='demo' />
+      </CollapseTransition>,
+    );
 
-    jest.runAllTimers();
+    const el = screen.getByTestId('demo');
 
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(el.style.overflow).toEqual('hidden');
+    expect(el.style.height).toEqual('100px');
 
-    wrapper.setProps({
-      in: false,
-    });
+    nextFrame.mock.calls[0][0]();
+    onTransitionEnd.mock.calls[0][1]();
 
-    jest.runAllTimers();
-
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(el.style.overflow).toEqual('');
+    expect(el.style.height).toEqual('');
   });
 
-  it('test horizontal', () => {
-    const wrapper = mount(
+  it('Test horizontal expand state', () => {
+    const { rerender } = render(
       <CollapseTransition in={false} horizontal={true}>
-        <div />
+        <div data-testid='demo' />
       </CollapseTransition>,
     );
 
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(screen.queryByTestId('demo')).toBe(null);
 
-    wrapper.setProps({
-      in: true,
-    });
+    rerender(
+      <CollapseTransition in={true} horizontal={true}>
+        <div data-testid='demo' />
+      </CollapseTransition>,
+    );
 
-    jest.runAllTimers();
+    const el = screen.getByTestId('demo');
 
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(el.style.overflow).toEqual('hidden');
+    expect(el.style.width).toEqual('100px');
 
-    wrapper.setProps({
-      in: false,
-    });
+    nextFrame.mock.calls[0][0]();
+    onTransitionEnd.mock.calls[0][1]();
 
-    jest.runAllTimers();
-
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(el.style.overflow).toEqual('');
+    expect(el.style.width).toEqual('');
   });
 });

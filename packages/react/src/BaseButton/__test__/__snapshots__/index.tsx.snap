@@ -75,6 +75,68 @@ exports[`BaseButton Test basic render 1`] = `
   opacity: 0;
 }
 
+.c3 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: not-allowed;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.c3::-moz-focus-inner {
+  border-style: none;
+}
+
+.c3 svg {
+  pointer-events: none;
+}
+
+.c3 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+}
+
+.c3 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c3 .xl-base-button__ripple-exit-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c3 .xl-base-button__ripple-enter-from {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c3 .xl-base-button__ripple-exit-to {
+  opacity: 0;
+}
+
 .c1 {
   position: relative;
   display: inline-block;
@@ -85,6 +147,33 @@ exports[`BaseButton Test basic render 1`] = `
 <div>
   <button
     class="c0 xl-base-button"
+  >
+    <span
+      class="c1 xl-base-button__inner"
+    >
+      button
+    </span>
+    <div
+      class="c2 xl-ripple xl-base-button__ripple"
+    />
+  </button>
+  <button
+    class="c3 xl-base-button xl-base-button--disabled"
+    disabled=""
+    tabindex="-1"
+  >
+    <span
+      class="c1 xl-base-button__inner"
+    >
+      button
+    </span>
+    <div
+      class="c2 xl-ripple xl-base-button__ripple"
+    />
+  </button>
+  <button
+    class="c3 xl-base-button xl-base-button--loading"
+    tabindex="-1"
   >
     <span
       class="c1 xl-base-button__inner"

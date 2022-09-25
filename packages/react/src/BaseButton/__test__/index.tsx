@@ -4,7 +4,13 @@ import userEvent from '@testing-library/user-event';
 
 describe('BaseButton', () => {
   it('Test basic render', () => {
-    const { container } = render(<BaseButton>button</BaseButton>);
+    const { container } = render(
+      <>
+        <BaseButton>button</BaseButton>
+        <BaseButton disabled={true}>button</BaseButton>
+        <BaseButton loading={true}>button</BaseButton>
+      </>,
+    );
 
     expect(container).toMatchSnapshot();
   });
