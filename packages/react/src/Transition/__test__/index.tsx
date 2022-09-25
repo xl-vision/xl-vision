@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { mount } from 'enzyme';
-
 import { Transition } from '@xl-vision/react';
 import { noop } from '@xl-vision/utils';
 import * as utils from '@xl-vision/utils';
 import { CssTransitionClassNameRecord } from '@xl-vision/hooks';
+import { act, render, screen } from '@testing-library/react';
 
 const classnameMap: CssTransitionClassNameRecord = {
   appearFrom: 'appearFrom',
@@ -21,9 +20,10 @@ const classnameMap: CssTransitionClassNameRecord = {
   disappearTo: 'disappearTo',
 };
 
+const onTransitionEndSpy = jest.spyOn(utils, 'onTransitionEnd').mockImplementation();
+const nextFrameSpy = jest.spyOn(utils, 'nextFrame').mockImplementation();
+
 describe('Transition', () => {
-  const onTransitionEndSpy = jest.spyOn(utils, 'onTransitionEnd').mockImplementation();
-  const nextFrameSpy = jest.spyOn(utils, 'nextFrame').mockImplementation();
   const call = jest.fn();
 
   afterEach(() => {
@@ -32,54 +32,62 @@ describe('Transition', () => {
     call.mockClear();
   });
 
-  it('测试设置transitionOnFirst为true且in为true生命周期', () => {
-    const wrapper = mount(
-      <Transition
-        in={true}
-        transitionOnFirst={true}
-        onEnter={(_el, transitionOnFirst) => {
-          call(transitionOnFirst ? 'beforeAppear' : 'beforeEnter');
-        }}
-        onEntering={(_el, _done, transitionOnFirst, isCancelled) => {
-          if (!isCancelled()) {
-            call(transitionOnFirst ? 'appear' : 'enter');
-          }
-        }}
-        onEntered={(_el, transitionOnFirst) => {
-          call(transitionOnFirst ? 'afterAppear' : 'afterEnter');
-        }}
-        onEnterCancelled={(_el, transitionOnFirst) => {
-          call(transitionOnFirst ? 'appearCancelled' : 'enterCancelled');
-        }}
-        onExit={(_el, transitionOnFirst) => {
-          call(transitionOnFirst ? 'beforeDisappear' : 'beforeExit');
-        }}
-        onExiting={(_el, _done, transitionOnFirst, isCancelled) => {
-          if (!isCancelled()) {
-            call(transitionOnFirst ? 'disappear' : 'exit');
-          }
-        }}
-        onExited={(_el, transitionOnFirst) => {
-          call(transitionOnFirst ? 'afterDisappear' : 'afterExit');
-        }}
-        onExitCancelled={(_el, transitionOnFirst) => {
-          call(transitionOnFirst ? 'disappearCancelled' : 'exitCancelled');
-        }}
-      >
-        <div />
-      </Transition>,
-    );
+  it('Test lifecycle when transitionOnFirst is true and in is true', () => {
+    const Demo = ({ in: inProp }: { in: boolean }) => {
+      return (
+        <Transition
+          in={inProp}
+          transitionOnFirst={true}
+          onEnter={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'beforeAppear' : 'beforeEnter');
+          }}
+          onEntering={(_el, _done, transitionOnFirst, isCancelled) => {
+            if (!isCancelled()) {
+              call(transitionOnFirst ? 'appear' : 'enter');
+            }
+          }}
+          onEntered={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'afterAppear' : 'afterEnter');
+          }}
+          onEnterCancelled={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'appearCancelled' : 'enterCancelled');
+          }}
+          onExit={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'beforeDisappear' : 'beforeExit');
+          }}
+          onExiting={(_el, _done, transitionOnFirst, isCancelled) => {
+            if (!isCancelled()) {
+              call(transitionOnFirst ? 'disappear' : 'exit');
+            }
+          }}
+          onExited={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'afterDisappear' : 'afterExit');
+          }}
+          onExitCancelled={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'disappearCancelled' : 'exitCancelled');
+          }}
+        >
+          <div />
+        </Transition>
+      );
+    };
+
+    const { rerender } = render(<Demo in={true} />);
 
     let nextFrameCalls = nextFrameSpy.mock.calls;
 
     expect(nextFrameCalls.length).toBe(1);
 
-    nextFrameCalls[0][0]();
+    act(() => {
+      nextFrameCalls[0][0]();
+    });
 
     let onTransitionEndCalls = onTransitionEndSpy.mock.calls;
     expect(onTransitionEndCalls.length).toBe(1);
 
-    onTransitionEndCalls[0][1]();
+    act(() => {
+      onTransitionEndCalls[0][1]();
+    });
 
     expect(call.mock.calls.length).toBe(3);
     expect(call.mock.calls[0][0]).toBe('beforeAppear');
@@ -89,20 +97,22 @@ describe('Transition', () => {
     nextFrameSpy.mockClear();
     onTransitionEndSpy.mockClear();
 
-    wrapper.setProps({
-      in: false,
-    });
+    rerender(<Demo in={false} />);
 
     nextFrameCalls = nextFrameSpy.mock.calls;
 
     expect(nextFrameCalls.length).toBe(1);
 
-    nextFrameCalls[0][0]();
+    act(() => {
+      nextFrameCalls[0][0]();
+    });
 
     onTransitionEndCalls = onTransitionEndSpy.mock.calls;
     expect(onTransitionEndCalls.length).toBe(1);
 
-    onTransitionEndCalls[0][1]();
+    act(() => {
+      onTransitionEndCalls[0][1]();
+    });
 
     expect(call.mock.calls.length).toBe(3);
     expect(call.mock.calls[0][0]).toBe('beforeExit');
@@ -112,20 +122,22 @@ describe('Transition', () => {
     nextFrameSpy.mockClear();
     onTransitionEndSpy.mockClear();
 
-    wrapper.setProps({
-      in: true,
-    });
+    rerender(<Demo in={true} />);
 
     nextFrameCalls = nextFrameSpy.mock.calls;
 
     expect(nextFrameCalls.length).toBe(1);
 
-    nextFrameCalls[0][0]();
+    act(() => {
+      nextFrameCalls[0][0]();
+    });
 
     onTransitionEndCalls = onTransitionEndSpy.mock.calls;
     expect(onTransitionEndCalls.length).toBe(1);
 
-    onTransitionEndCalls[0][1]();
+    act(() => {
+      onTransitionEndCalls[0][1]();
+    });
 
     expect(call.mock.calls.length).toBe(3);
     expect(call.mock.calls[0][0]).toBe('beforeEnter');
@@ -134,55 +146,63 @@ describe('Transition', () => {
     call.mockClear();
   });
 
-  it('测试设置transitionOnFirst为true且in为false生命周期', () => {
-    const wrapper = mount(
-      <Transition
-        in={false}
-        transitionOnFirst={true}
-        transitionClassName={classnameMap}
-        onEnter={(_el, transitionOnFirst) => {
-          call(transitionOnFirst ? 'beforeAppear' : 'beforeEnter');
-        }}
-        onEntering={(_el, _done, transitionOnFirst, isCancelled) => {
-          if (!isCancelled()) {
-            call(transitionOnFirst ? 'appear' : 'enter');
-          }
-        }}
-        onEntered={(_el, transitionOnFirst) => {
-          call(transitionOnFirst ? 'afterAppear' : 'afterEnter');
-        }}
-        onEnterCancelled={(_el, transitionOnFirst) => {
-          call(transitionOnFirst ? 'appearCancelled' : 'enterCancelled');
-        }}
-        onExit={(_el, transitionOnFirst) => {
-          call(transitionOnFirst ? 'beforeDisappear' : 'beforeExit');
-        }}
-        onExiting={(_el, _done, transitionOnFirst, isCancelled) => {
-          if (!isCancelled()) {
-            call(transitionOnFirst ? 'disappear' : 'exit');
-          }
-        }}
-        onExited={(_el, transitionOnFirst) => {
-          call(transitionOnFirst ? 'afterDisappear' : 'afterExit');
-        }}
-        onExitCancelled={(_el, transitionOnFirst) => {
-          call(transitionOnFirst ? 'disappearCancelled' : 'exitCancelled');
-        }}
-      >
-        <div />
-      </Transition>,
-    );
+  it('Test lifecycle when transitionOnFirst is true and in is false', () => {
+    const Demo = ({ in: inProp }: { in: boolean }) => {
+      return (
+        <Transition
+          in={inProp}
+          transitionOnFirst={true}
+          transitionClassName={classnameMap}
+          onEnter={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'beforeAppear' : 'beforeEnter');
+          }}
+          onEntering={(_el, _done, transitionOnFirst, isCancelled) => {
+            if (!isCancelled()) {
+              call(transitionOnFirst ? 'appear' : 'enter');
+            }
+          }}
+          onEntered={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'afterAppear' : 'afterEnter');
+          }}
+          onEnterCancelled={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'appearCancelled' : 'enterCancelled');
+          }}
+          onExit={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'beforeDisappear' : 'beforeExit');
+          }}
+          onExiting={(_el, _done, transitionOnFirst, isCancelled) => {
+            if (!isCancelled()) {
+              call(transitionOnFirst ? 'disappear' : 'exit');
+            }
+          }}
+          onExited={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'afterDisappear' : 'afterExit');
+          }}
+          onExitCancelled={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'disappearCancelled' : 'exitCancelled');
+          }}
+        >
+          <div />
+        </Transition>
+      );
+    };
+
+    const { rerender } = render(<Demo in={false} />);
 
     let nextFrameCalls = nextFrameSpy.mock.calls;
 
     expect(nextFrameCalls.length).toBe(1);
 
-    nextFrameCalls[0][0]();
+    act(() => {
+      nextFrameCalls[0][0]();
+    });
 
     let onTransitionEndCalls = onTransitionEndSpy.mock.calls;
     expect(onTransitionEndCalls.length).toBe(1);
 
-    onTransitionEndCalls[0][1]();
+    act(() => {
+      onTransitionEndCalls[0][1]();
+    });
 
     expect(call.mock.calls.length).toBe(3);
     expect(call.mock.calls[0][0]).toBe('beforeDisappear');
@@ -193,20 +213,22 @@ describe('Transition', () => {
     nextFrameSpy.mockClear();
     onTransitionEndSpy.mockClear();
 
-    wrapper.setProps({
-      in: true,
-    });
+    rerender(<Demo in={true} />);
 
     nextFrameCalls = nextFrameSpy.mock.calls;
 
     expect(nextFrameCalls.length).toBe(1);
 
-    nextFrameCalls[0][0]();
+    act(() => {
+      nextFrameCalls[0][0]();
+    });
 
     onTransitionEndCalls = onTransitionEndSpy.mock.calls;
     expect(onTransitionEndCalls.length).toBe(1);
 
-    onTransitionEndCalls[0][1]();
+    act(() => {
+      onTransitionEndCalls[0][1]();
+    });
 
     expect(call.mock.calls[0][0]).toBe('beforeEnter');
     expect(call.mock.calls[1][0]).toBe('enter');
@@ -216,20 +238,22 @@ describe('Transition', () => {
     nextFrameSpy.mockClear();
     onTransitionEndSpy.mockClear();
 
-    wrapper.setProps({
-      in: false,
-    });
+    rerender(<Demo in={false} />);
 
     nextFrameCalls = nextFrameSpy.mock.calls;
 
     expect(nextFrameCalls.length).toBe(1);
 
-    nextFrameCalls[0][0]();
+    act(() => {
+      nextFrameCalls[0][0]();
+    });
 
     onTransitionEndCalls = onTransitionEndSpy.mock.calls;
     expect(onTransitionEndCalls.length).toBe(1);
 
-    onTransitionEndCalls[0][1]();
+    act(() => {
+      onTransitionEndCalls[0][1]();
+    });
 
     expect(call.mock.calls.length).toBe(3);
     expect(call.mock.calls[0][0]).toBe('beforeExit');
@@ -240,20 +264,22 @@ describe('Transition', () => {
     nextFrameSpy.mockClear();
     onTransitionEndSpy.mockClear();
 
-    wrapper.setProps({
-      in: true,
-    });
+    rerender(<Demo in={true} />);
 
     nextFrameCalls = nextFrameSpy.mock.calls;
 
     expect(nextFrameCalls.length).toBe(1);
 
-    nextFrameCalls[0][0]();
+    act(() => {
+      nextFrameCalls[0][0]();
+    });
 
     onTransitionEndCalls = onTransitionEndSpy.mock.calls;
     expect(onTransitionEndCalls.length).toBe(1);
 
-    onTransitionEndCalls[0][1]();
+    act(() => {
+      onTransitionEndCalls[0][1]();
+    });
     expect(call.mock.calls.length).toBe(3);
     expect(call.mock.calls[0][0]).toBe('beforeEnter');
     expect(call.mock.calls[1][0]).toBe('enter');
@@ -261,43 +287,46 @@ describe('Transition', () => {
     call.mockClear();
   });
 
-  it('测试不设置transitionOnFirst且in为false时的生命周期', () => {
-    const wrapper = mount(
-      <Transition
-        in={false}
-        transitionClassName={classnameMap}
-        onEnter={(_el, transitionOnFirst) => {
-          call(transitionOnFirst ? 'beforeAppear' : 'beforeEnter');
-        }}
-        onEntering={(_el, _done, transitionOnFirst, isCancelled) => {
-          if (!isCancelled()) {
-            call(transitionOnFirst ? 'appear' : 'enter');
-          }
-        }}
-        onEntered={(_el, transitionOnFirst) => {
-          call(transitionOnFirst ? 'afterAppear' : 'afterEnter');
-        }}
-        onEnterCancelled={(_el, transitionOnFirst) => {
-          call(transitionOnFirst ? 'appearCancelled' : 'enterCancelled');
-        }}
-        onExit={(_el, transitionOnFirst) => {
-          call(transitionOnFirst ? 'beforeDisappear' : 'beforeExit');
-        }}
-        onExiting={(_el, _done, transitionOnFirst, isCancelled) => {
-          if (!isCancelled()) {
-            call(transitionOnFirst ? 'disappear' : 'exit');
-          }
-        }}
-        onExited={(_el, transitionOnFirst) => {
-          call(transitionOnFirst ? 'afterDisappear' : 'afterExit');
-        }}
-        onExitCancelled={(_el, transitionOnFirst) => {
-          call(transitionOnFirst ? 'disappearCancelled' : 'exitCancelled');
-        }}
-      >
-        <div />
-      </Transition>,
-    );
+  it('Test lifycycle when in is false and transitionOnFirst is not set', () => {
+    const Demo = ({ in: inProp }: { in: boolean }) => {
+      return (
+        <Transition
+          in={inProp}
+          transitionClassName={classnameMap}
+          onEnter={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'beforeAppear' : 'beforeEnter');
+          }}
+          onEntering={(_el, _done, transitionOnFirst, isCancelled) => {
+            if (!isCancelled()) {
+              call(transitionOnFirst ? 'appear' : 'enter');
+            }
+          }}
+          onEntered={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'afterAppear' : 'afterEnter');
+          }}
+          onEnterCancelled={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'appearCancelled' : 'enterCancelled');
+          }}
+          onExit={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'beforeDisappear' : 'beforeExit');
+          }}
+          onExiting={(_el, _done, transitionOnFirst, isCancelled) => {
+            if (!isCancelled()) {
+              call(transitionOnFirst ? 'disappear' : 'exit');
+            }
+          }}
+          onExited={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'afterDisappear' : 'afterExit');
+          }}
+          onExitCancelled={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'disappearCancelled' : 'exitCancelled');
+          }}
+        >
+          <div />
+        </Transition>
+      );
+    };
+    const { rerender } = render(<Demo in={false} />);
 
     let nextFrameCalls = nextFrameSpy.mock.calls;
     expect(nextFrameCalls.length).toBe(0);
@@ -307,20 +336,22 @@ describe('Transition', () => {
 
     expect(call.mock.calls.length).toBe(0);
 
-    wrapper.setProps({
-      in: true,
-    });
+    rerender(<Demo in={true} />);
 
     nextFrameCalls = nextFrameSpy.mock.calls;
 
     expect(nextFrameCalls.length).toBe(1);
 
-    nextFrameCalls[0][0]();
+    act(() => {
+      nextFrameCalls[0][0]();
+    });
 
     onTransitionEndCalls = onTransitionEndSpy.mock.calls;
     expect(onTransitionEndCalls.length).toBe(1);
 
-    onTransitionEndCalls[0][1]();
+    act(() => {
+      onTransitionEndCalls[0][1]();
+    });
 
     expect(call.mock.calls[0][0]).toBe('beforeEnter');
     expect(call.mock.calls[1][0]).toBe('enter');
@@ -330,20 +361,22 @@ describe('Transition', () => {
     nextFrameSpy.mockClear();
     onTransitionEndSpy.mockClear();
 
-    wrapper.setProps({
-      in: false,
-    });
+    rerender(<Demo in={false} />);
 
     nextFrameCalls = nextFrameSpy.mock.calls;
 
     expect(nextFrameCalls.length).toBe(1);
 
-    nextFrameCalls[0][0]();
+    act(() => {
+      nextFrameCalls[0][0]();
+    });
 
     onTransitionEndCalls = onTransitionEndSpy.mock.calls;
     expect(onTransitionEndCalls.length).toBe(1);
 
-    onTransitionEndCalls[0][1]();
+    act(() => {
+      onTransitionEndCalls[0][1]();
+    });
 
     expect(call.mock.calls.length).toBe(3);
     expect(call.mock.calls[0][0]).toBe('beforeExit');
@@ -354,20 +387,22 @@ describe('Transition', () => {
     nextFrameSpy.mockClear();
     onTransitionEndSpy.mockClear();
 
-    wrapper.setProps({
-      in: true,
-    });
+    rerender(<Demo in={true} />);
 
     nextFrameCalls = nextFrameSpy.mock.calls;
 
     expect(nextFrameCalls.length).toBe(1);
 
-    nextFrameCalls[0][0]();
+    act(() => {
+      nextFrameCalls[0][0]();
+    });
 
     onTransitionEndCalls = onTransitionEndSpy.mock.calls;
     expect(onTransitionEndCalls.length).toBe(1);
 
-    onTransitionEndCalls[0][1]();
+    act(() => {
+      onTransitionEndCalls[0][1]();
+    });
 
     expect(call.mock.calls.length).toBe(3);
     expect(call.mock.calls[0][0]).toBe('beforeEnter');
@@ -375,43 +410,46 @@ describe('Transition', () => {
     expect(call.mock.calls[2][0]).toBe('afterEnter');
   });
 
-  it('测试不设置transitionOnFirst且in为true生命周期', () => {
-    const wrapper = mount(
-      <Transition
-        in={true}
-        transitionClassName={classnameMap}
-        onEnter={(_el, transitionOnFirst) => {
-          call(transitionOnFirst ? 'beforeAppear' : 'beforeEnter');
-        }}
-        onEntering={(_el, _done, transitionOnFirst, isCancelled) => {
-          if (!isCancelled()) {
-            call(transitionOnFirst ? 'appear' : 'enter');
-          }
-        }}
-        onEntered={(_el, transitionOnFirst) => {
-          call(transitionOnFirst ? 'afterAppear' : 'afterEnter');
-        }}
-        onEnterCancelled={(_el, transitionOnFirst) => {
-          call(transitionOnFirst ? 'appearCancelled' : 'enterCancelled');
-        }}
-        onExit={(_el, transitionOnFirst) => {
-          call(transitionOnFirst ? 'beforeDisappear' : 'beforeExit');
-        }}
-        onExiting={(_el, _done, transitionOnFirst, isCancelled) => {
-          if (!isCancelled()) {
-            call(transitionOnFirst ? 'disappear' : 'exit');
-          }
-        }}
-        onExited={(_el, transitionOnFirst) => {
-          call(transitionOnFirst ? 'afterDisappear' : 'afterExit');
-        }}
-        onExitCancelled={(_el, transitionOnFirst) => {
-          call(transitionOnFirst ? 'disappearCancelled' : 'exitCancelled');
-        }}
-      >
-        <div />
-      </Transition>,
-    );
+  it('Test lifecycle when in is true and transitionOnFirst is not set', () => {
+    const Demo = ({ in: inProp }: { in: boolean }) => {
+      return (
+        <Transition
+          in={inProp}
+          transitionClassName={classnameMap}
+          onEnter={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'beforeAppear' : 'beforeEnter');
+          }}
+          onEntering={(_el, _done, transitionOnFirst, isCancelled) => {
+            if (!isCancelled()) {
+              call(transitionOnFirst ? 'appear' : 'enter');
+            }
+          }}
+          onEntered={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'afterAppear' : 'afterEnter');
+          }}
+          onEnterCancelled={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'appearCancelled' : 'enterCancelled');
+          }}
+          onExit={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'beforeDisappear' : 'beforeExit');
+          }}
+          onExiting={(_el, _done, transitionOnFirst, isCancelled) => {
+            if (!isCancelled()) {
+              call(transitionOnFirst ? 'disappear' : 'exit');
+            }
+          }}
+          onExited={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'afterDisappear' : 'afterExit');
+          }}
+          onExitCancelled={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'disappearCancelled' : 'exitCancelled');
+          }}
+        >
+          <div />
+        </Transition>
+      );
+    };
+    const { rerender } = render(<Demo in={true} />);
 
     let nextFrameCalls = nextFrameSpy.mock.calls;
     expect(nextFrameCalls.length).toBe(0);
@@ -421,20 +459,22 @@ describe('Transition', () => {
 
     expect(call.mock.calls.length).toBe(0);
 
-    wrapper.setProps({
-      in: false,
-    });
+    rerender(<Demo in={false} />);
 
     nextFrameCalls = nextFrameSpy.mock.calls;
 
     expect(nextFrameCalls.length).toBe(1);
 
-    nextFrameCalls[0][0]();
+    act(() => {
+      nextFrameCalls[0][0]();
+    });
 
     onTransitionEndCalls = onTransitionEndSpy.mock.calls;
     expect(onTransitionEndCalls.length).toBe(1);
 
-    onTransitionEndCalls[0][1]();
+    act(() => {
+      onTransitionEndCalls[0][1]();
+    });
 
     expect(call.mock.calls.length).toBe(3);
     expect(call.mock.calls[0][0]).toBe('beforeExit');
@@ -444,20 +484,22 @@ describe('Transition', () => {
     nextFrameSpy.mockClear();
     onTransitionEndSpy.mockClear();
 
-    wrapper.setProps({
-      in: true,
-    });
+    rerender(<Demo in={true} />);
 
     nextFrameCalls = nextFrameSpy.mock.calls;
 
     expect(nextFrameCalls.length).toBe(1);
 
-    nextFrameCalls[0][0]();
+    act(() => {
+      nextFrameCalls[0][0]();
+    });
 
     onTransitionEndCalls = onTransitionEndSpy.mock.calls;
     expect(onTransitionEndCalls.length).toBe(1);
 
-    onTransitionEndCalls[0][1]();
+    act(() => {
+      onTransitionEndCalls[0][1]();
+    });
 
     expect(call.mock.calls.length).toBe(3);
     expect(call.mock.calls[0][0]).toBe('beforeEnter');
@@ -465,49 +507,55 @@ describe('Transition', () => {
     expect(call.mock.calls[2][0]).toBe('afterEnter');
   });
 
-  it('测试包含cancelled的生命周期', () => {
-    const wrapper = mount(
-      <Transition
-        in={true}
-        transitionOnFirst={true}
-        transitionClassName={classnameMap}
-        onEnter={(_el, transitionOnFirst) => {
-          call(transitionOnFirst ? 'beforeAppear' : 'beforeEnter');
-        }}
-        onEntering={(_el, _done, transitionOnFirst, isCancelled) => {
-          if (!isCancelled()) {
-            call(transitionOnFirst ? 'appear' : 'enter');
-          }
-        }}
-        onEntered={(_el, transitionOnFirst) => {
-          call(transitionOnFirst ? 'afterAppear' : 'afterEnter');
-        }}
-        onEnterCancelled={(_el, transitionOnFirst) => {
-          call(transitionOnFirst ? 'appearCancelled' : 'enterCancelled');
-        }}
-        onExit={(_el, transitionOnFirst) => {
-          call(transitionOnFirst ? 'beforeDisappear' : 'beforeExit');
-        }}
-        onExiting={(_el, _done, transitionOnFirst, isCancelled) => {
-          if (!isCancelled()) {
-            call(transitionOnFirst ? 'disappear' : 'exit');
-          }
-        }}
-        onExited={(_el, transitionOnFirst) => {
-          call(transitionOnFirst ? 'afterDisappear' : 'afterExit');
-        }}
-        onExitCancelled={(_el, transitionOnFirst) => {
-          call(transitionOnFirst ? 'disappearCancelled' : 'exitCancelled');
-        }}
-      >
-        <div />
-      </Transition>,
-    );
+  it('Test lifecycle include cancel event', () => {
+    const Demo = ({ in: inProp }: { in: boolean }) => {
+      return (
+        <Transition
+          in={inProp}
+          transitionOnFirst={true}
+          transitionClassName={classnameMap}
+          onEnter={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'beforeAppear' : 'beforeEnter');
+          }}
+          onEntering={(_el, _done, transitionOnFirst, isCancelled) => {
+            if (!isCancelled()) {
+              call(transitionOnFirst ? 'appear' : 'enter');
+            }
+          }}
+          onEntered={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'afterAppear' : 'afterEnter');
+          }}
+          onEnterCancelled={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'appearCancelled' : 'enterCancelled');
+          }}
+          onExit={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'beforeDisappear' : 'beforeExit');
+          }}
+          onExiting={(_el, _done, transitionOnFirst, isCancelled) => {
+            if (!isCancelled()) {
+              call(transitionOnFirst ? 'disappear' : 'exit');
+            }
+          }}
+          onExited={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'afterDisappear' : 'afterExit');
+          }}
+          onExitCancelled={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'disappearCancelled' : 'exitCancelled');
+          }}
+        >
+          <div />
+        </Transition>
+      );
+    };
+
+    const { rerender } = render(<Demo in={true} />);
 
     let nextFrameCalls = nextFrameSpy.mock.calls;
     expect(nextFrameCalls.length).toBe(1);
 
-    nextFrameCalls[0][0]();
+    act(() => {
+      nextFrameCalls[0][0]();
+    });
 
     let onTransitionEndCalls = onTransitionEndSpy.mock.calls;
     expect(onTransitionEndCalls.length).toBe(1);
@@ -520,14 +568,14 @@ describe('Transition', () => {
     nextFrameSpy.mockClear();
     onTransitionEndSpy.mockClear();
 
-    wrapper.setProps({
-      in: false,
-    });
+    rerender(<Demo in={false} />);
 
     nextFrameCalls = nextFrameSpy.mock.calls;
     expect(nextFrameCalls.length).toBe(1);
 
-    nextFrameCalls[0][0]();
+    act(() => {
+      nextFrameCalls[0][0]();
+    });
 
     onTransitionEndCalls = onTransitionEndSpy.mock.calls;
     expect(onTransitionEndCalls.length).toBe(1);
@@ -542,14 +590,14 @@ describe('Transition', () => {
     nextFrameSpy.mockClear();
     onTransitionEndSpy.mockClear();
 
-    wrapper.setProps({
-      in: true,
-    });
+    rerender(<Demo in={true} />);
 
     nextFrameCalls = nextFrameSpy.mock.calls;
     expect(nextFrameCalls.length).toBe(1);
 
-    nextFrameCalls[0][0]();
+    act(() => {
+      nextFrameCalls[0][0]();
+    });
 
     onTransitionEndCalls = onTransitionEndSpy.mock.calls;
     expect(onTransitionEndCalls.length).toBe(1);
@@ -563,18 +611,20 @@ describe('Transition', () => {
     nextFrameSpy.mockClear();
     onTransitionEndSpy.mockClear();
 
-    wrapper.setProps({
-      in: false,
-    });
+    rerender(<Demo in={false} />);
 
     nextFrameCalls = nextFrameSpy.mock.calls;
     expect(nextFrameCalls.length).toBe(1);
 
-    nextFrameCalls[0][0]();
+    act(() => {
+      nextFrameCalls[0][0]();
+    });
 
     onTransitionEndCalls = onTransitionEndSpy.mock.calls;
     expect(onTransitionEndCalls.length).toBe(1);
-    onTransitionEndCalls[0][1]();
+    act(() => {
+      onTransitionEndCalls[0][1]();
+    });
 
     expect(call.mock.calls.length).toBe(4);
     expect(call.mock.calls[0][0]).toBe('enterCancelled');
@@ -583,158 +633,188 @@ describe('Transition', () => {
     expect(call.mock.calls[3][0]).toBe('afterExit');
   });
 
-  it('测试包含className调用时机', () => {
-    const wrapper = mount(
+  it('Test contains className call timing', () => {
+    const { rerender } = render(
+      <Transition transitionOnFirst={true} in={true} transitionClassName='test'>
+        <div data-testid='demo' />
+      </Transition>,
+    );
+
+    const div = screen.getByTestId('demo');
+
+    // nextFrame未执行
+    expect(div.classList).toContain('test-appear-from');
+    expect(div.classList).toContain('test-appear-active');
+
+    let nextFrameCalls = nextFrameSpy.mock.calls;
+    expect(nextFrameCalls.length).toBe(1);
+
+    act(() => {
+      nextFrameCalls[0][0]();
+    });
+
+    let onTransitionEndCalls = onTransitionEndSpy.mock.calls;
+    expect(onTransitionEndCalls.length).toBe(1);
+
+    expect(div.classList).not.toContain('test-appear-from');
+    expect(div.classList).toContain('test-appear-active');
+    expect(div.classList).toContain('test-appear-to');
+
+    act(() => {
+      onTransitionEndCalls[0][1]();
+    });
+
+    expect(div.classList).not.toContain('test-appear-active');
+    expect(div.classList).not.toContain('test-appear-to');
+
+    onTransitionEndSpy.mockClear();
+    nextFrameSpy.mockClear();
+
+    rerender(
+      <Transition transitionOnFirst={true} in={false} transitionClassName='test'>
+        <div />
+      </Transition>,
+    );
+
+    // nextFrame未执行
+    expect(div.classList).toContain('test-exit-from');
+    expect(div.classList).toContain('test-exit-active');
+
+    nextFrameCalls = nextFrameSpy.mock.calls;
+    expect(nextFrameCalls.length).toBe(1);
+
+    act(() => {
+      nextFrameCalls[0][0]();
+    });
+
+    onTransitionEndCalls = onTransitionEndSpy.mock.calls;
+    expect(onTransitionEndCalls.length).toBe(1);
+
+    expect(div.classList).not.toContain('test-exit-from');
+    expect(div.classList).toContain('test-exit-active');
+    expect(div.classList).toContain('test-exit-to');
+
+    act(() => {
+      onTransitionEndCalls[0][1]();
+    });
+
+    expect(div.classList).not.toContain('test-exit-active');
+    expect(div.classList).not.toContain('test-exit-to');
+
+    onTransitionEndSpy.mockClear();
+    nextFrameSpy.mockClear();
+
+    rerender(
       <Transition transitionOnFirst={true} in={true} transitionClassName='test'>
         <div />
       </Transition>,
     );
     // nextFrame未执行
-    expect(wrapper.getDOMNode().classList).toContain('test-appear-from');
-    expect(wrapper.getDOMNode().classList).toContain('test-appear-active');
-
-    let nextFrameCalls = nextFrameSpy.mock.calls;
-    expect(nextFrameCalls.length).toBe(1);
-
-    nextFrameCalls[0][0]();
-
-    let onTransitionEndCalls = onTransitionEndSpy.mock.calls;
-    expect(onTransitionEndCalls.length).toBe(1);
-
-    expect(wrapper.getDOMNode().classList).not.toContain('test-appear-from');
-    expect(wrapper.getDOMNode().classList).toContain('test-appear-active');
-    expect(wrapper.getDOMNode().classList).toContain('test-appear-to');
-
-    onTransitionEndCalls[0][1]();
-
-    expect(wrapper.getDOMNode().classList).not.toContain('test-appear-active');
-    expect(wrapper.getDOMNode().classList).not.toContain('test-appear-to');
-
-    onTransitionEndSpy.mockClear();
-    nextFrameSpy.mockClear();
-
-    wrapper.setProps({
-      in: false,
-    });
-
-    // nextFrame未执行
-    expect(wrapper.getDOMNode().classList).toContain('test-exit-from');
-    expect(wrapper.getDOMNode().classList).toContain('test-exit-active');
+    expect(div.classList).toContain('test-enter-from');
+    expect(div.classList).toContain('test-enter-active');
 
     nextFrameCalls = nextFrameSpy.mock.calls;
     expect(nextFrameCalls.length).toBe(1);
 
-    nextFrameCalls[0][0]();
-
-    onTransitionEndCalls = onTransitionEndSpy.mock.calls;
-    expect(onTransitionEndCalls.length).toBe(1);
-
-    expect(wrapper.getDOMNode().classList).not.toContain('test-exit-from');
-    expect(wrapper.getDOMNode().classList).toContain('test-exit-active');
-    expect(wrapper.getDOMNode().classList).toContain('test-exit-to');
-
-    onTransitionEndCalls[0][1]();
-
-    expect(wrapper.getDOMNode().classList).not.toContain('test-exit-active');
-    expect(wrapper.getDOMNode().classList).not.toContain('test-exit-to');
-
-    onTransitionEndSpy.mockClear();
-    nextFrameSpy.mockClear();
-
-    wrapper.setProps({
-      in: true,
+    act(() => {
+      nextFrameCalls[0][0]();
     });
 
-    // nextFrame未执行
-    expect(wrapper.getDOMNode().classList).toContain('test-enter-from');
-    expect(wrapper.getDOMNode().classList).toContain('test-enter-active');
-
-    nextFrameCalls = nextFrameSpy.mock.calls;
-    expect(nextFrameCalls.length).toBe(1);
-
-    nextFrameCalls[0][0]();
-
     onTransitionEndCalls = onTransitionEndSpy.mock.calls;
     expect(onTransitionEndCalls.length).toBe(1);
 
-    expect(wrapper.getDOMNode().classList).not.toContain('test-enter-from');
-    expect(wrapper.getDOMNode().classList).toContain('test-enter-active');
-    expect(wrapper.getDOMNode().classList).toContain('test-enter-to');
+    expect(div.classList).not.toContain('test-enter-from');
+    expect(div.classList).toContain('test-enter-active');
+    expect(div.classList).toContain('test-enter-to');
 
-    onTransitionEndCalls[0][1]();
+    act(() => {
+      onTransitionEndCalls[0][1]();
+    });
 
-    expect(wrapper.getDOMNode().classList).not.toContain('test-enter-active');
-    expect(wrapper.getDOMNode().classList).not.toContain('test-enter-to');
+    expect(div.classList).not.toContain('test-enter-active');
+    expect(div.classList).not.toContain('test-enter-to');
 
     onTransitionEndSpy.mockClear();
     nextFrameSpy.mockClear();
   });
 
-  it('测试timeout调用时机', () => {
+  it('Test timeout call timing', () => {
     onTransitionEndSpy.mockImplementation((_, cb) => {
       cb();
       return noop;
     });
 
     jest.useFakeTimers();
-    const wrapper = mount(
+    const { rerender } = render(
+      <Transition transitionOnFirst={true} in={true} transitionClassName='test' timeout={20}>
+        <div data-testid='demo' />
+      </Transition>,
+    );
+
+    const div = screen.getByTestId('demo');
+
+    expect(div.classList).toContain('test-appear-from');
+    expect(div.classList).toContain('test-appear-active');
+
+    nextFrameSpy.mock.calls[0][0]();
+
+    expect(div.classList).not.toContain('test-appear-from');
+    expect(div.classList).toContain('test-appear-active');
+    expect(div.classList).toContain('test-appear-to');
+
+    act(() => {
+      jest.runOnlyPendingTimers();
+    });
+
+    expect(div.classList).not.toContain('test-appear-active');
+    expect(div.classList).not.toContain('test-appear-to');
+
+    nextFrameSpy.mockClear();
+
+    rerender(
+      <Transition transitionOnFirst={true} in={false} transitionClassName='test' timeout={20}>
+        <div />
+      </Transition>,
+    );
+
+    expect(div.classList).toContain('test-exit-from');
+    expect(div.classList).toContain('test-exit-active');
+
+    nextFrameSpy.mock.calls[0][0]();
+
+    expect(div.classList).not.toContain('test-exit-from');
+    expect(div.classList).toContain('test-exit-active');
+    expect(div.classList).toContain('test-exit-to');
+
+    act(() => {
+      jest.runOnlyPendingTimers();
+    });
+
+    expect(div.classList).not.toContain('test-exit-active');
+    expect(div.classList).not.toContain('test-exit-to');
+
+    nextFrameSpy.mockClear();
+
+    rerender(
       <Transition transitionOnFirst={true} in={true} transitionClassName='test' timeout={20}>
         <div />
       </Transition>,
     );
 
-    expect(wrapper.getDOMNode().classList).toContain('test-appear-from');
-    expect(wrapper.getDOMNode().classList).toContain('test-appear-active');
+    expect(div.classList).toContain('test-enter-from');
+    expect(div.classList).toContain('test-enter-active');
 
     nextFrameSpy.mock.calls[0][0]();
 
-    expect(wrapper.getDOMNode().classList).not.toContain('test-appear-from');
-    expect(wrapper.getDOMNode().classList).toContain('test-appear-active');
-    expect(wrapper.getDOMNode().classList).toContain('test-appear-to');
+    expect(div.classList).not.toContain('test-enter-from');
+    expect(div.classList).toContain('test-enter-active');
+    expect(div.classList).toContain('test-enter-to');
 
-    jest.runOnlyPendingTimers();
-
-    expect(wrapper.getDOMNode().classList).not.toContain('test-appear-active');
-    expect(wrapper.getDOMNode().classList).not.toContain('test-appear-to');
-
-    nextFrameSpy.mockClear();
-
-    wrapper.setProps({
-      in: false,
+    act(() => {
+      jest.runOnlyPendingTimers();
     });
 
-    expect(wrapper.getDOMNode().classList).toContain('test-exit-from');
-    expect(wrapper.getDOMNode().classList).toContain('test-exit-active');
-
-    nextFrameSpy.mock.calls[0][0]();
-
-    expect(wrapper.getDOMNode().classList).not.toContain('test-exit-from');
-    expect(wrapper.getDOMNode().classList).toContain('test-exit-active');
-    expect(wrapper.getDOMNode().classList).toContain('test-exit-to');
-
-    jest.runOnlyPendingTimers();
-
-    expect(wrapper.getDOMNode().classList).not.toContain('test-exit-active');
-    expect(wrapper.getDOMNode().classList).not.toContain('test-exit-to');
-
-    nextFrameSpy.mockClear();
-
-    wrapper.setProps({
-      in: true,
-    });
-
-    expect(wrapper.getDOMNode().classList).toContain('test-enter-from');
-    expect(wrapper.getDOMNode().classList).toContain('test-enter-active');
-
-    nextFrameSpy.mock.calls[0][0]();
-
-    expect(wrapper.getDOMNode().classList).not.toContain('test-enter-from');
-    expect(wrapper.getDOMNode().classList).toContain('test-enter-active');
-    expect(wrapper.getDOMNode().classList).toContain('test-enter-to');
-
-    jest.runOnlyPendingTimers();
-
-    expect(wrapper.getDOMNode().classList).not.toContain('test-enter-active');
-    expect(wrapper.getDOMNode().classList).not.toContain('test-enter-to');
+    expect(div.classList).not.toContain('test-enter-active');
+    expect(div.classList).not.toContain('test-enter-to');
   });
 });

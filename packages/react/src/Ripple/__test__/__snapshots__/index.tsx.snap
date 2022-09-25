@@ -14,9 +14,11 @@ exports[`Ripple test render 1`] = `
 }
 
 <div>
-  click me
-  <div
-    class="c0 xl-ripple"
-  />
+  <div>
+    click me
+    <div
+      class="c0 xl-ripple"
+    />
+  </div>
 </div>
 `;

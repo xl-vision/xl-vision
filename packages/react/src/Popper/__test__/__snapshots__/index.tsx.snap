@@ -1,80 +1,189 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Popper test trigger click 1`] = `
-<button
-  id="btn"
->
-  button
-</button>
+<body>
+  <div>
+    <button
+      id="btn"
+    >
+      button
+    </button>
+  </div>
+</body>
 `;
 
 exports[`Popper test trigger click 2`] = `
-<button
-  id="btn"
->
-  button
-</button>
+<body>
+  <div>
+    <button
+      id="btn"
+    >
+      button
+    </button>
+  </div>
+  <div
+    aria-hidden="false"
+    class="xl-popper"
+    style="position: absolute; left: 0px; top: 0px; transform: translate3D(0px, 0px, 0); z-index: 1001;"
+  >
+    <div
+      class="xl-popper__inner"
+      data-placement="top"
+      style="position: relative; transform-origin: 0px 100%;"
+    >
+      <div>
+        popup
+      </div>
+    </div>
+  </div>
+</body>
 `;
 
 exports[`Popper test trigger click 3`] = `
-<button
-  id="btn"
->
-  button
-</button>
+<body>
+  <div>
+    <button
+      id="btn"
+    >
+      button
+    </button>
+  </div>
+  <div
+    aria-hidden="true"
+    class="xl-popper"
+    style="position: absolute; left: 0px; top: 0px; transform: translate3D(0px, 0px, 0); z-index: 1001;"
+  >
+    <div
+      class="xl-popper__inner"
+      data-placement="top"
+      style="position: relative; transform-origin: 0px 100%; display: none;"
+    >
+      <div>
+        popup
+      </div>
+    </div>
+  </div>
+</body>
 `;
 
 exports[`Popper test trigger contextMenu 1`] = `
-<button
-  id="btn"
->
-  button
-</button>
+<body>
+  <div>
+    <button
+      id="btn"
+    >
+      button
+    </button>
+  </div>
+</body>
 `;
 
 exports[`Popper test trigger contextMenu 2`] = `
-<button
-  id="btn"
->
-  button
-</button>
+<body>
+  <div>
+    <button
+      id="btn"
+    >
+      button
+    </button>
+  </div>
+  <div
+    aria-hidden="false"
+    class="xl-popper"
+    style="position: absolute; left: 0px; top: 0px; transform: translate3D(0px, 0px, 0); z-index: 1002;"
+  >
+    <div
+      class="xl-popper__inner"
+      data-placement="top"
+      style="position: relative; transform-origin: 0px 100%;"
+    >
+      <div>
+        popup
+      </div>
+    </div>
+  </div>
+</body>
 `;
 
 exports[`Popper test trigger contextMenu 3`] = `
-<button
-  id="btn"
->
-  button
-</button>
+<body>
+  <div>
+    <button
+      id="btn"
+    >
+      button
+    </button>
+  </div>
+  <div
+    aria-hidden="true"
+    class="xl-popper"
+    style="position: absolute; left: 0px; top: 0px; transform: translate3D(0px, 0px, 0); z-index: 1002;"
+  >
+    <div
+      class="xl-popper__inner"
+      data-placement="top"
+      style="position: relative; transform-origin: 0px 100%; display: none;"
+    >
+      <div>
+        popup
+      </div>
+    </div>
+  </div>
+</body>
 `;
 
 exports[`Popper test trigger focus 1`] = `
-<button
-  id="btn"
->
-  button
-</button>
+<body>
+  <div>
+    <button
+      id="btn"
+    >
+      button
+    </button>
+  </div>
+</body>
 `;
 
 exports[`Popper test trigger focus 2`] = `
-<button
-  id="btn"
->
-  button
-</button>
+<body>
+  <div>
+    <button
+      id="btn"
+    >
+      button
+    </button>
+  </div>
+  <div
+    aria-hidden="false"
+    class="xl-popper"
+    style="position: absolute; left: 0px; top: 0px; transform: translate3D(0px, 0px, 0); z-index: 1003;"
+  >
+    <div
+      class="xl-popper__inner"
+      data-placement="top"
+      style="position: relative; transform-origin: 0px 100%;"
+    >
+      <div>
+        popup
+      </div>
+    </div>
+  </div>
+</body>
 `;
 
 exports[`Popper test trigger focus 3`] = `
-Array [
-  <button
-    id="btn"
-  >
-    button
-  </button>,
+<body>
+  <div>
+    <button
+      id="btn"
+    >
+      button
+    </button>
+  </div>
   <div
     aria-hidden="true"
     class="xl-popper"
-    style="z-index: 1003; position: absolute; display: none;"
+    style="position: absolute; left: 0px; top: 0px; transform: translate3D(0px, 0px, 0); z-index: 1003;"
   >
     <div
       class="xl-popper__inner"
@@ -85,37 +194,62 @@ Array [
         popup
       </div>
     </div>
-  </div>,
-]
+  </div>
+</body>
 `;
 
 exports[`Popper test trigger hover 1`] = `
-<button
-  id="btn"
->
-  button
-</button>
+<body>
+  <div>
+    <button
+      id="btn"
+    >
+      button
+    </button>
+  </div>
+</body>
 `;
 
 exports[`Popper test trigger hover 2`] = `
-<button
-  id="btn"
->
-  button
-</button>
+<body>
+  <div>
+    <button
+      id="btn"
+    >
+      button
+    </button>
+  </div>
+  <div
+    aria-hidden="false"
+    class="xl-popper"
+    style="position: absolute; left: 0px; top: 0px; transform: translate3D(0px, 0px, 0); z-index: 1000;"
+  >
+    <div
+      class="xl-popper__inner"
+      data-placement="top"
+      style="position: relative; transform-origin: 0px 100%;"
+    >
+      <div>
+        popup
+      </div>
+    </div>
+  </div>
+</body>
 `;
 
 exports[`Popper test trigger hover 3`] = `
-Array [
-  <button
-    id="btn"
-  >
-    button
-  </button>,
+<body>
+  <div>
+    <button
+      id="btn"
+    >
+      button
+    </button>
+  </div>
   <div
     aria-hidden="true"
     class="xl-popper"
-    style="z-index: 1000; position: absolute; display: none;"
+    style="position: absolute; left: 0px; top: 0px; transform: translate3D(0px, 0px, 0); z-index: 1000;"
   >
     <div
       class="xl-popper__inner"
@@ -126,6 +260,6 @@ Array [
         popup
       </div>
     </div>
-  </div>,
-]
+  </div>
+</body>
 `;

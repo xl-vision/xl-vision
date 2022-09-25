@@ -1,45 +1,66 @@
-import { mount } from 'enzyme';
 import { BaseButton } from '@xl-vision/react';
+import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 describe('BaseButton', () => {
-  it('basic test', () => {
-    const handleClick = jest.fn();
+  it('Test basic render', () => {
+    const { container } = render(
+      <>
+        <BaseButton>button</BaseButton>
+        <BaseButton disabled={true}>button</BaseButton>
+        <BaseButton loading={true}>button</BaseButton>
+      </>,
+    );
 
-    const wrapper = mount(<BaseButton onClick={handleClick}>button</BaseButton>);
-
-    wrapper.find(BaseButton).simulate('click');
-
-    expect(handleClick.mock.calls.length).toBe(1);
-
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
-  it('测试disabled', () => {
+  it('Test onClick event', async () => {
     const handleClick = jest.fn();
 
-    const wrapper = mount(
+    const { container } = render(<BaseButton onClick={handleClick}>button</BaseButton>);
+
+    const el = container.querySelector('button')!;
+
+    const user = userEvent.setup();
+
+    await user.click(el);
+
+    expect(handleClick.mock.calls.length).toBe(1);
+  });
+
+  it('Test disable state', async () => {
+    const handleClick = jest.fn();
+
+    const { container } = render(
       <BaseButton disabled={true} onClick={handleClick}>
         button
       </BaseButton>,
     );
 
-    wrapper.find(BaseButton).simulate('click');
-    wrapper.update();
+    const el = container.querySelector('button')!;
+
+    const user = userEvent.setup();
+
+    await user.click(el);
 
     expect(handleClick.mock.calls.length).toBe(0);
   });
 
-  it('测试loading', () => {
+  it('Test loading state', async () => {
     const handleClick = jest.fn();
 
-    const wrapper = mount(
+    const { container } = render(
       <BaseButton loading={true} onClick={handleClick}>
         button
       </BaseButton>,
     );
 
-    wrapper.find(BaseButton).simulate('click');
-    wrapper.update();
+    const el = container.querySelector('button')!;
+
+    const user = userEvent.setup();
+
+    await user.click(el);
 
     expect(handleClick.mock.calls.length).toBe(0);
   });

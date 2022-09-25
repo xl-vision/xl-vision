@@ -4,16 +4,16 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-var-requires */
 
+import { render } from '@testing-library/react';
 import glob from 'glob';
-import { mount } from 'enzyme';
 
 describe('Demo', () => {
   const files = glob.sync(`./packages/*/src/**/__doc__/*.ts?(x)`);
   files.forEach((file) => {
     test(`renders ${file} correctly`, () => {
       const Demo = require(`../.${file}`).default;
-      const wrapper = mount(<Demo />);
-      expect(wrapper.render()).toMatchSnapshot();
+      const { container } = render(<Demo />);
+      expect(container).toMatchSnapshot();
     });
   });
 });

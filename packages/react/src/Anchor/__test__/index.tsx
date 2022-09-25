@@ -1,9 +1,8 @@
 import { Anchor } from '@xl-vision/react';
-import { mount } from 'enzyme';
-import { act } from 'react-dom/test-utils';
 import { noop } from '@xl-vision/utils';
+import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import * as perf from '../../utils/perf';
-import wait from '../../../../../test/wait';
 
 describe('Anchor', () => {
   const link = 'link';
@@ -48,18 +47,19 @@ describe('Anchor', () => {
   it('Anchor render perfectly for complete href - click', async () => {
     const handleChange = jest.fn();
 
-    const wrapper = mount(
+    const { container } = render(
       <Anchor onChange={handleChange}>
         <Anchor.Link href={`#${link}`} title={link} />
       </Anchor>,
     );
-    wrapper.find(`a[href="#${link}"]`).simulate('click');
 
-    wrapper.update();
+    const user = userEvent.setup();
 
-    await act(() => wait(0));
+    const el = container.querySelector(`a[href="#${link}"]`)!;
 
-    expect(wrapper.find(`a.xl-anchor-link__title--active`).text()).toBe(link);
+    await user.click(el);
+
+    expect(el.classList.contains('xl-anchor-link__title--active')).toBe(true);
 
     expect(handleChange).lastCalledWith(`#${link}`);
   });

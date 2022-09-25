@@ -90,7 +90,7 @@ jobs:
         run: pnpm install
 
       - name: run test
-        run: npm run test -- --coverage --bail
+        run: npm run test -- --coverage
 
       - name: codecov
         run: bash <(curl -s https://codecov.io/bash)

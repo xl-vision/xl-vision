@@ -1,5 +1,5 @@
+import { renderHook } from 'test/utils';
 import useForkRef from '..';
-import { renderHook } from '../../../../../test/utils';
 
 describe('useForkRef', () => {
   it('Test all ref is set value', () => {

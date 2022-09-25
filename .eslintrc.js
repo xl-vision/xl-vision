@@ -188,7 +188,12 @@ module.exports = {
       },
     },
     {
-      files: ['test/__test__/**', 'packages/**/__test__/**', 'packages/**/__doc__/**'],
+      files: [
+        'test/utils/**',
+        'test/__test__/**',
+        'packages/**/__test__/**',
+        'packages/**/__doc__/**',
+      ],
       rules: {
         'react/jsx-handler-names': 'off',
         'react/display-name': 'off',
@@ -201,7 +206,7 @@ module.exports = {
       },
     },
     {
-      files: ['test/__test__/**', 'packages/**/__test__/**'],
+      files: ['test/utils/**', 'test/__test__/**', 'packages/**/__test__/**'],
       rules: {
         'react/jsx-handler-names': 'off',
         'jsx-a11y/click-events-have-key-events': 'off',

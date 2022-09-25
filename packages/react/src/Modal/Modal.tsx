@@ -205,8 +205,8 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   useEffect(() => {
     let node: HTMLElement | null | undefined = getContainer(containerProp);
 
-    if (node == null) {
-      node = modalRef.current?.parentElement;
+    if (node == null && modalRef.current) {
+      node = modalRef.current.parentElement;
       warning(!node, `<Modal> parentElement is undefined`);
     }
 
@@ -279,7 +279,12 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     }
     setAnimatedVisible(true);
     setZIndex(increaseZindex());
-    scrollLockerRef.current?.lock();
+
+    const scrollLocker = scrollLockerRef.current;
+
+    if (scrollLocker && !scrollLocker.locked) {
+      scrollLocker.lock();
+    }
   }, [visible]);
 
   const rootClassName = `${clsPrefix}-modal`;
@@ -315,7 +320,10 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
       setAnimatedVisible(false);
       onAfterClosed?.();
       // 动画结束后解除锁定
-      scrollLockerRef.current?.unlock();
+      const scrollLocker = scrollLockerRef.current;
+      if (scrollLocker && scrollLocker.locked) {
+        scrollLocker.unlock();
+      }
     }
   }, [setAnimatedVisible, onAfterClosed]);
 

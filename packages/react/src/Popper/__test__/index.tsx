@@ -1,17 +1,16 @@
-import { mount } from 'enzyme';
-import { act } from 'react-dom/test-utils';
 import { Popper } from '@xl-vision/react';
-import wait from '../../../../../test/wait';
+import { act, fireEvent, render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 describe('Popper', () => {
-  beforeEach(() => {
-    jest.useRealTimers();
+  beforeAll(() => {
+    jest.useFakeTimers();
   });
 
-  it('test trigger hover', async () => {
+  it('test trigger hover', () => {
     const handleVisibleChange = jest.fn();
 
-    const wrapper = mount(
+    const { container } = render(
       <Popper
         trigger='hover'
         popup={<div>popup</div>}
@@ -22,28 +21,34 @@ describe('Popper', () => {
       </Popper>,
     );
 
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(document.body).toMatchSnapshot();
 
-    wrapper.find('#btn').simulate('mouseenter');
+    const btn = container.querySelector('#btn')!;
 
-    await act(() => wait(300));
+    fireEvent.mouseEnter(btn);
+
+    act(() => {
+      jest.runAllTimers();
+    });
 
     expect(handleVisibleChange).toHaveBeenLastCalledWith(true);
-    expect(wrapper.render()).toMatchSnapshot();
 
-    wrapper.find('#btn').simulate('mouseleave');
+    expect(document.body).toMatchSnapshot();
 
-    await act(() => wait(300));
+    fireEvent.mouseLeave(btn);
+
+    act(() => {
+      jest.runAllTimers();
+    });
 
     expect(handleVisibleChange).toHaveBeenLastCalledWith(false);
-    expect(wrapper.render()).toMatchSnapshot();
 
-    wrapper.unmount();
+    expect(document.body).toMatchSnapshot();
   });
   it('test trigger click', async () => {
     const handleVisibleChange = jest.fn();
 
-    const wrapper = mount(
+    const { container } = render(
       <Popper
         trigger='click'
         popup={<div>popup</div>}
@@ -54,27 +59,34 @@ describe('Popper', () => {
       </Popper>,
     );
 
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(document.body).toMatchSnapshot();
 
-    wrapper.find('#btn').simulate('click');
+    const btn = container.querySelector('#btn')!;
 
-    await act(() => wait(300));
+    const user = userEvent.setup({ delay: null });
+
+    await user.click(btn);
+
+    act(() => {
+      jest.runAllTimers();
+    });
 
     expect(handleVisibleChange).toHaveBeenLastCalledWith(true);
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(document.body).toMatchSnapshot();
 
     document.body.click();
 
-    await act(() => wait(300));
+    act(() => {
+      jest.runAllTimers();
+    });
 
     expect(handleVisibleChange).toHaveBeenLastCalledWith(false);
-    expect(wrapper.render()).toMatchSnapshot();
-    wrapper.unmount();
+    expect(document.body).toMatchSnapshot();
   });
-  it('test trigger contextMenu', async () => {
+  it('test trigger contextMenu', () => {
     const handleVisibleChange = jest.fn();
 
-    const wrapper = mount(
+    const { container } = render(
       <Popper
         trigger='contextMenu'
         popup={<div>popup</div>}
@@ -85,27 +97,32 @@ describe('Popper', () => {
       </Popper>,
     );
 
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(document.body).toMatchSnapshot();
 
-    wrapper.find('#btn').simulate('contextMenu');
+    const btn = container.querySelector('#btn')!;
 
-    await act(() => wait(300));
+    fireEvent.contextMenu(btn);
+
+    act(() => {
+      jest.runAllTimers();
+    });
 
     expect(handleVisibleChange).toHaveBeenLastCalledWith(true);
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(document.body).toMatchSnapshot();
 
     document.body.click();
 
-    await act(() => wait(300));
+    act(() => {
+      jest.runAllTimers();
+    });
 
     expect(handleVisibleChange).toHaveBeenLastCalledWith(false);
-    expect(wrapper.render()).toMatchSnapshot();
-    wrapper.unmount();
+    expect(document.body).toMatchSnapshot();
   });
-  it('test trigger focus', async () => {
+  it('test trigger focus', () => {
     const handleVisibleChange = jest.fn();
 
-    const wrapper = mount(
+    const { container } = render(
       <Popper
         trigger='focus'
         popup={<div>popup</div>}
@@ -116,28 +133,33 @@ describe('Popper', () => {
       </Popper>,
     );
 
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(document.body).toMatchSnapshot();
 
-    wrapper.find('#btn').simulate('focus');
+    const btn = container.querySelector('#btn')!;
 
-    await act(() => wait(300));
+    fireEvent.focus(btn);
+
+    act(() => {
+      jest.runAllTimers();
+    });
 
     expect(handleVisibleChange).toHaveBeenLastCalledWith(true);
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(document.body).toMatchSnapshot();
 
-    wrapper.find('#btn').simulate('blur');
+    fireEvent.blur(btn);
 
-    await act(() => wait(300));
+    act(() => {
+      jest.runAllTimers();
+    });
 
     expect(handleVisibleChange).toHaveBeenLastCalledWith(false);
-    expect(wrapper.render()).toMatchSnapshot();
-    wrapper.unmount();
+    expect(document.body).toMatchSnapshot();
   });
-  it('test trigger custom', async () => {
+  it('test trigger custom', () => {
     // 外部修改不触发visibleChange
     const handleVisibleChange = jest.fn();
 
-    const wrapper = mount(
+    const { container, rerender } = render(
       <Popper
         trigger={false}
         popup={<div id='popup'>popup</div>}
@@ -151,37 +173,62 @@ describe('Popper', () => {
     expect(handleVisibleChange.mock.calls.length).toBe(0);
     expect(document.querySelector('#popup')).toBeNull();
 
-    wrapper.find('#btn').simulate('mouseenter');
+    const btn = container.querySelector('#btn')!;
 
-    await act(() => wait(300));
+    fireEvent.mouseEnter(btn);
+
+    act(() => {
+      jest.runAllTimers();
+    });
 
     expect(handleVisibleChange.mock.calls.length).toBe(0);
     expect(document.querySelector('#popup')).toBeNull();
 
-    wrapper.setProps({
-      visible: true,
-    });
+    rerender(
+      <Popper
+        trigger={false}
+        popup={<div id='popup'>popup</div>}
+        onVisibleChange={handleVisibleChange}
+        popupContainer={() => document.body}
+        visible={true}
+      >
+        <button id='btn'>button</button>
+      </Popper>,
+    );
 
-    await act(() => wait(300));
+    act(() => {
+      jest.runAllTimers();
+    });
 
     expect(handleVisibleChange.mock.calls.length).toBe(0);
     let el = document.querySelector('#popup')!.parentElement!;
     expect(el).not.toBeNull();
     expect(el.style.display).toBe('');
 
-    wrapper.setProps({
-      visible: false,
+    rerender(
+      <Popper
+        trigger={false}
+        popup={<div id='popup'>popup</div>}
+        onVisibleChange={handleVisibleChange}
+        popupContainer={() => document.body}
+        visible={false}
+      >
+        <button id='btn'>button</button>
+      </Popper>,
+    );
+
+    act(() => {
+      jest.runAllTimers();
     });
-    await act(() => wait(300));
+
     expect(handleVisibleChange.mock.calls.length).toBe(0);
     el = document.querySelector('#popup')!.parentElement!;
     expect(el).not.toBeNull();
     expect(el.style.display).toBe('none');
-    wrapper.unmount();
   });
-  it('test prop disablePopupEnter', async () => {
+  it('test disablePopupEnter', () => {
     const handleVisibleChange = jest.fn();
-    const wrapper = mount(
+    const { container, rerender } = render(
       <Popper
         trigger='hover'
         className='popup'
@@ -193,47 +240,74 @@ describe('Popper', () => {
       </Popper>,
     );
 
-    wrapper.find('#btn').simulate('mouseenter');
+    const btn = container.querySelector('#btn')!;
 
-    await act(() => wait(300));
-    expect(handleVisibleChange).toHaveBeenLastCalledWith(true);
+    fireEvent.mouseEnter(btn);
 
-    wrapper.find('#btn').simulate('mouseleave');
-
-    wrapper.find('div.popup').simulate('mouseenter');
-
-    await act(() => wait(300));
-    expect(handleVisibleChange).toHaveBeenLastCalledWith(true);
-
-    wrapper.find('div.popup').simulate('mouseleave');
-    await act(() => wait(300));
-    expect(handleVisibleChange).toHaveBeenLastCalledWith(false);
-
-    wrapper.setProps({
-      disablePopupEnter: true,
+    act(() => {
+      jest.runAllTimers();
     });
 
-    wrapper.find('#btn').simulate('mouseenter');
-
-    await act(() => wait(300));
     expect(handleVisibleChange).toHaveBeenLastCalledWith(true);
 
-    wrapper.find('#btn').simulate('mouseleave');
-    wrapper.find('div.popup').simulate('mouseenter');
+    fireEvent.mouseLeave(btn);
 
-    await act(() => wait(300));
+    const popup = document.querySelector('div.popup')!;
+
+    fireEvent.mouseEnter(popup);
+
+    act(() => {
+      jest.runAllTimers();
+    });
+
+    expect(handleVisibleChange).toHaveBeenLastCalledWith(true);
+
+    fireEvent.mouseLeave(popup);
+
+    act(() => {
+      jest.runAllTimers();
+    });
+
     expect(handleVisibleChange).toHaveBeenLastCalledWith(false);
-    wrapper.unmount();
+
+    rerender(
+      <Popper
+        trigger='hover'
+        className='popup'
+        popup={<div>popup</div>}
+        onVisibleChange={handleVisibleChange}
+        popupContainer={() => document.body}
+        hoverOptions={{ disablePopperEnter: true }}
+      >
+        <button id='btn'>button</button>
+      </Popper>,
+    );
+
+    fireEvent.mouseEnter(btn);
+
+    act(() => {
+      jest.runAllTimers();
+    });
+
+    expect(handleVisibleChange).toHaveBeenLastCalledWith(true);
+
+    fireEvent.mouseLeave(btn);
+    fireEvent.mouseEnter(popup);
+
+    act(() => {
+      jest.runAllTimers();
+    });
+    expect(handleVisibleChange).toHaveBeenLastCalledWith(false);
   });
 
   it('test mountOnShow', () => {
-    jest.useFakeTimers();
-    const wrapper = mount(
+    const { container } = render(
       <Popper
         trigger='hover'
         id='popup'
         popup={<div>popup</div>}
         popupContainer={() => document.body}
+        mountOnShow={false}
       >
         <button id='btn'>button</button>
       </Popper>,
@@ -245,40 +319,28 @@ describe('Popper', () => {
 
     let el = document.querySelector('#popup');
 
-    expect(el).toBe(null);
+    expect(el).not.toBe(null);
 
-    wrapper.find('#btn').simulate('mouseenter');
+    const btn = container.querySelector('#btn')!;
+
+    fireEvent.mouseEnter(btn);
+
     act(() => {
       jest.runAllTimers();
     });
 
     el = document.querySelector('#popup');
     expect(el).not.toBe(null);
-
-    wrapper.unmount();
-
-    wrapper.setProps({
-      mountOnShow: false,
-    });
-    wrapper.mount();
-    act(() => {
-      jest.runAllTimers();
-    });
-    el = document.querySelector('#popup');
-
-    expect(el).not.toBe(null);
-
-    wrapper.unmount();
   });
 
   it('test unmountOnHide', () => {
-    jest.useFakeTimers();
-    const wrapper = mount(
+    const { container } = render(
       <Popper
         trigger='hover'
         id='popup'
         popup={<div>popup</div>}
         popupContainer={() => document.body}
+        unmountOnHide={true}
       >
         <button id='btn'>button</button>
       </Popper>,
@@ -292,45 +354,21 @@ describe('Popper', () => {
 
     expect(el).toBe(null);
 
-    wrapper.find('#btn').simulate('mouseenter');
+    const btn = container.querySelector('#btn')!;
+
+    fireEvent.mouseEnter(btn);
+
     act(() => {
       jest.runAllTimers();
     });
 
-    wrapper.find('#btn').simulate('mouseleave');
-    act(() => {
-      jest.runAllTimers();
-    });
+    fireEvent.mouseLeave(btn);
 
-    el = document.querySelector('#popup');
-    expect(el).not.toBe(null);
-
-    wrapper.unmount();
-
-    wrapper.setProps({
-      unmountOnHide: true,
-    });
-    wrapper.mount();
-    act(() => {
-      jest.runAllTimers();
-    });
-    el = document.querySelector('#popup');
-
-    expect(el).toBe(null);
-
-    wrapper.find('#btn').simulate('mouseenter');
-    act(() => {
-      jest.runAllTimers();
-    });
-
-    wrapper.find('#btn').simulate('mouseleave');
     act(() => {
       jest.runAllTimers();
     });
 
     el = document.querySelector('#popup');
     expect(el).toBe(null);
-
-    wrapper.unmount();
   });
 });

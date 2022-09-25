@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
-import { mount } from 'enzyme';
 import { noop } from '@xl-vision/utils';
 import * as utils from '@xl-vision/utils';
+import { render } from '@testing-library/react';
 import TransitionGroup from '..';
 
 describe('TransitionGroup', () => {
-  it('测试顺序是否正确', () => {
+  it('Check if the order is correct', () => {
     const prevArr = [1, 2, 3, 4, 5];
     const nextArr = [2, 1, 4, 6, 5];
     const expectArr = [2, 1, 3, 4, 6, 5];
@@ -14,17 +14,18 @@ describe('TransitionGroup', () => {
       const children = arr.map((it) => <div key={it}>{it}</div>);
       return <TransitionGroup transitionClassName='demo'>{children}</TransitionGroup>;
     };
-    const wrapper = mount(<Comp arr={prevArr} />);
-    expect(wrapper.text()).toBe(prevArr.map((it) => it.toString()).reduce((a, b) => a + b));
-    wrapper.setProps({ arr: nextArr });
-    wrapper.update();
+    const { rerender, container } = render(<Comp arr={prevArr} />);
+    expect(container.textContent).toBe(prevArr.map((it) => it.toString()).reduce((a, b) => a + b));
 
-    expect(wrapper.text()).toBe(expectArr.map((it) => it.toString()).reduce((a, b) => a + b));
+    rerender(<Comp arr={nextArr} />);
+
+    expect(container.textContent).toBe(
+      expectArr.map((it) => it.toString()).reduce((a, b) => a + b),
+    );
   });
 
   it('test hooks', () => {
-    const nextFrameSpy = jest.spyOn(utils, 'nextFrame');
-    nextFrameSpy.mockImplementation((fn: () => void) => {
+    jest.spyOn(utils, 'nextFrame').mockImplementation((fn: () => void) => {
       fn();
       return noop;
     });
@@ -52,14 +53,15 @@ describe('TransitionGroup', () => {
         </TransitionGroup>
       );
     };
-    const wrapper = mount(<Comp arr={prevArr} />);
+    const { rerender } = render(<Comp arr={prevArr} />);
     expect(fn.mock.calls.length).toBe(0);
-    wrapper.setProps({ arr: nextArr });
+
+    rerender(<Comp arr={nextArr} />);
     expect(fn.mock.calls.length).toBe(6);
-    wrapper.setProps({ arr: nextArr });
+    rerender(<Comp arr={nextArr} />);
     expect(fn.mock.calls.length).toBe(6);
 
-    wrapper.setProps({ arr: nextArr2 });
+    rerender(<Comp arr={nextArr2} />);
     expect(fn.mock.calls.length).toBe(6 * 2);
   });
 });

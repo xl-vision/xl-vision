@@ -76,21 +76,22 @@ const method = (
   };
 
   const update: MessageDialogFunctionUpdate = (updateProps) => {
-    const newProps = typeof updateProps === 'function' ? updateProps(currentProps) : updateProps;
+    const { onAfterClosed, ...otherProps } =
+      typeof updateProps === 'function' ? updateProps(currentProps) : updateProps;
 
     currentProps = {
       ...currentProps,
-      ...newProps,
+      ...otherProps,
       visible: undefined,
       defaultVisible: true,
     };
 
-    const { onAfterClosed: afterClose } = currentProps;
-
-    currentProps.onAfterClosed = () => {
-      afterClose?.();
-      destroyDOM();
-    };
+    if (onAfterClosed) {
+      currentProps.onAfterClosed = () => {
+        onAfterClosed?.();
+        destroyDOM();
+      };
+    }
 
     render(currentProps);
   };
@@ -107,14 +108,9 @@ const method = (
   };
 
   const destroy = () => {
-    const { onAfterClosed: afterClose } = currentProps;
     render({
       ...currentProps,
       visible: false,
-      onAfterClosed: () => {
-        afterClose?.();
-        destroyDOM();
-      },
     });
     destroyState = true;
   };

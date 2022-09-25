@@ -1,5 +1,4 @@
-import { mount } from 'enzyme';
-import { act } from 'react-dom/test-utils';
+import { act, fireEvent, render } from '@testing-library/react';
 import { Tooltip } from '@xl-vision/react';
 
 describe('Tooltip', () => {
@@ -8,57 +7,26 @@ describe('Tooltip', () => {
   });
 
   it('test trigger hover', () => {
-    const wrapper = mount(
+    const { container } = render(
       <Tooltip content={<span id='content'>content</span>}>
         <button id='btn'>button</button>
       </Tooltip>,
     );
+
     act(() => {
       jest.runAllTimers();
     });
 
     expect(document.querySelector('#content')).toBe(null);
 
-    wrapper.find('#btn').simulate('mouseenter');
+    const btn = container.querySelector('#btn')!;
+
+    fireEvent.mouseEnter(btn);
 
     act(() => {
       jest.runAllTimers();
     });
 
     expect(document.querySelector('#content')).not.toBe(null);
-    wrapper.unmount();
-  });
-
-  it('test trigger touch', () => {
-    const wrapper = mount(
-      <Tooltip content={<span id='content'>content</span>}>
-        <button id='btn'>button</button>
-      </Tooltip>,
-    );
-    act(() => {
-      jest.runAllTimers();
-    });
-
-    expect(document.querySelector('#content')).toBe(null);
-
-    wrapper.find('#btn').simulate('touchstart');
-
-    act(() => {
-      jest.runAllTimers();
-    });
-
-    expect(document.querySelector('#content')).not.toBe(null);
-
-    wrapper.find('#btn').simulate('touchend');
-
-    act(() => {
-      jest.runAllTimers();
-    });
-
-    expect(
-      (document.querySelector('#content')?.parentNode?.parentNode as HTMLElement).style.display,
-    ).toBe('none');
-
-    wrapper.unmount();
   });
 });

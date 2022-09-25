@@ -1,12 +1,13 @@
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { CloseCircleFilled } from '@xl-vision/icons';
-import { ThemeProvider, Button } from '@xl-vision/react';
+import { ThemeProvider, Button, ComponentSize } from '@xl-vision/react';
 
 const CloseWrapper = <CloseCircleFilled />;
 
 describe('Button', () => {
-  it('test basic render', () => {
-    const wrapper = mount(
+  it('Test basic render', () => {
+    const { container } = render(
       <div>
         <Button>button</Button>
         <Button color='error'>button</Button>
@@ -24,48 +25,61 @@ describe('Button', () => {
       </div>,
     );
 
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
-  it('test click', () => {
+  it('Test click', async () => {
     const handleClick = jest.fn();
-    const wrapper = mount(<Button onClick={handleClick}>button</Button>);
+    const { container, rerender } = render(<Button onClick={handleClick}>button</Button>);
 
-    wrapper.simulate('click');
+    const el = container.querySelector('button')!;
 
-    expect(handleClick.mock.calls.length).toBe(1);
+    const user = userEvent.setup();
 
-    wrapper.setProps({
-      disabled: true,
-    });
-
-    wrapper.simulate('click');
+    await user.click(el);
 
     expect(handleClick.mock.calls.length).toBe(1);
+    handleClick.mockClear();
 
-    wrapper.setProps({
-      loading: true,
-    });
+    rerender(
+      <Button disabled={true} onClick={handleClick}>
+        button
+      </Button>,
+    );
 
-    wrapper.simulate('click');
+    await user.click(el);
 
-    expect(handleClick.mock.calls.length).toBe(1);
+    expect(handleClick.mock.calls.length).toBe(0);
+    handleClick.mockClear();
+
+    rerender(
+      <Button loading={true} onClick={handleClick}>
+        button
+      </Button>,
+    );
+
+    await user.click(el);
+
+    expect(handleClick.mock.calls.length).toBe(0);
+    handleClick.mockClear();
   });
 
-  it('test component size', () => {
-    const componentSizes = ['small', 'middle', 'large'];
+  it('Test component size', () => {
+    const componentSizes: Array<ComponentSize> = ['small', 'middle', 'large'];
 
-    const wrapper = mount(
+    const { container, rerender } = render(
       <ThemeProvider>
         <Button>button</Button>
       </ThemeProvider>,
     );
 
     componentSizes.forEach((componentSize) => {
-      wrapper.setProps({
-        theme: { componentSize },
-      });
-      expect(wrapper.find(`.xl-button--size-${componentSize}`)).not.toBe(null);
+      rerender(
+        <ThemeProvider theme={{ componentSize }}>
+          <Button>button</Button>
+        </ThemeProvider>,
+      );
+      expect(container.querySelector(`.xl-button--size-${componentSize}`)).not.toBe(null);
     });
   });
 });

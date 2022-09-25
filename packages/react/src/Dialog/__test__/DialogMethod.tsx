@@ -1,10 +1,12 @@
+import { act } from '@testing-library/react';
 import { open, info, success, error, warning, confirm } from '../methods';
 
 describe('DialogMethod', () => {
   beforeAll(() => {
     jest.useFakeTimers();
   });
-  it('test method', () => {
+
+  it('Test method', () => {
     let el = document.querySelector('#method');
     expect(el).toBe(null);
 
@@ -14,7 +16,9 @@ describe('DialogMethod', () => {
       id: 'method',
     });
 
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
 
     el = document.querySelector('#method');
 
@@ -23,14 +27,16 @@ describe('DialogMethod', () => {
 
     destroy();
 
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
 
     el = document.querySelector('#method');
 
     expect(el).toBe(null);
   });
 
-  it('test info', () => {
+  it('Test info', () => {
     let el = document.querySelector('#info');
     expect(el).toBe(null);
 
@@ -40,7 +46,9 @@ describe('DialogMethod', () => {
       id: 'info',
     });
 
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
 
     el = document.querySelector('#info');
 
@@ -49,7 +57,9 @@ describe('DialogMethod', () => {
 
     destroy();
 
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
 
     el = document.querySelector('#info');
 
@@ -66,7 +76,9 @@ describe('DialogMethod', () => {
       id: 'success',
     });
 
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
 
     el = document.querySelector('#success');
 
@@ -75,7 +87,9 @@ describe('DialogMethod', () => {
 
     destroy();
 
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
 
     el = document.querySelector('#success');
 
@@ -92,7 +106,9 @@ describe('DialogMethod', () => {
       id: 'error',
     });
 
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
 
     el = document.querySelector('#error');
 
@@ -101,7 +117,9 @@ describe('DialogMethod', () => {
 
     destroy();
 
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
 
     el = document.querySelector('#error');
 
@@ -118,7 +136,9 @@ describe('DialogMethod', () => {
       id: 'warning',
     });
 
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
 
     el = document.querySelector('#warning');
 
@@ -127,7 +147,9 @@ describe('DialogMethod', () => {
 
     destroy();
 
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
 
     el = document.querySelector('#warning');
 
@@ -144,7 +166,9 @@ describe('DialogMethod', () => {
       id: 'confirm',
     });
 
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
 
     el = document.querySelector('#confirm');
 
@@ -153,7 +177,9 @@ describe('DialogMethod', () => {
 
     destroy();
 
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
 
     el = document.querySelector('#confirm');
 
@@ -170,7 +196,9 @@ describe('DialogMethod', () => {
       id: 'confirm',
     });
 
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
 
     el = document.querySelector('#confirm');
 
@@ -182,12 +210,17 @@ describe('DialogMethod', () => {
       content: <div id='content'>content2</div>,
     });
 
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
 
     expect(el!.querySelector<HTMLDivElement>('#content')!.textContent).toBe('content2');
 
     destroy();
-    jest.runAllTimers();
+
+    act(() => {
+      jest.runAllTimers();
+    });
 
     el = document.querySelector('#confirm');
     expect(el).toBe(null);

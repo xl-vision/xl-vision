@@ -1,5 +1,5 @@
+import { renderHook } from 'test/utils';
 import useLifecycleState, { LifecycleState } from '..';
-import { renderHook } from '../../../../../test/utils';
 
 describe('useLifecycleState', () => {
   it('Test state change', () => {

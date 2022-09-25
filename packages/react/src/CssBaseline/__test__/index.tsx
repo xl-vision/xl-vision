@@ -1,15 +1,15 @@
-import { mount } from 'enzyme';
 import { ThemeProvider, CssBaseline, BaseTheme } from '@xl-vision/react';
+import { render } from '@testing-library/react';
 
 describe('CssBaseline', () => {
-  it.todo('todo here');
   it('basic renders', () => {
-    mount(
+    render(
       <CssBaseline>
         <div />
       </CssBaseline>,
     );
 
+    // TODO [2022-12-01] render css
     expect(document.head).toMatchSnapshot();
   });
 
@@ -28,7 +28,7 @@ describe('CssBaseline', () => {
       },
     };
 
-    mount(
+    render(
       <ThemeProvider theme={baseTheme}>
         <CssBaseline>
           <div />
@@ -36,6 +36,7 @@ describe('CssBaseline', () => {
       </ThemeProvider>,
     );
 
+    // TODO [2022-12-01] render css
     expect(document.head).toMatchSnapshot();
   });
 });

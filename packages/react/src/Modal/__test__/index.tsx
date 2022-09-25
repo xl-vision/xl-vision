@@ -1,68 +1,85 @@
-import { mount } from 'enzyme';
-import { act } from 'react-dom/test-utils';
 import { Modal } from '@xl-vision/react';
+import { act, render } from '@testing-library/react';
 
 describe('Modal', () => {
-  beforeAll(() => {
+  beforeEach(() => {
     jest.useFakeTimers();
   });
-  it('test prop visible', () => {
-    const wrapper = mount(
+
+  it('Test prop visible', () => {
+    const { rerender } = render(
       <Modal>
         <div>body</div>
       </Modal>,
     );
 
-    jest.runAllTimers();
-
     expect(document.querySelector('.xl-modal')).toBe(null);
 
-    wrapper.setProps({
-      visible: true,
+    rerender(
+      <Modal visible={true}>
+        <div>body</div>
+      </Modal>,
+    );
+
+    act(() => {
+      jest.runAllTimers();
     });
 
-    jest.runAllTimers();
     expect(document.querySelector('.xl-modal')).not.toBe(null);
     expect(document.querySelector<HTMLElement>('.xl-modal__mask')?.style.display).toBe('');
     expect(document.querySelector<HTMLElement>('.xl-modal__body')?.style.display).toBe('');
 
-    wrapper.setProps({
-      visible: false,
-    });
+    rerender(
+      <Modal visible={false}>
+        <div>body</div>
+      </Modal>,
+    );
 
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
 
     expect(document.querySelector('.xl-modal')).not.toBe(null);
     expect(document.querySelector<HTMLElement>('.xl-modal__mask')?.style.display).toBe('none');
     expect(document.querySelector<HTMLElement>('.xl-modal__body')?.style.display).toBe('none');
-
-    wrapper.unmount();
   });
 
-  it('test onClosed', () => {
+  it('Test onClosed', () => {
     const fn = jest.fn();
-    const wrapper = mount(
+    const { rerender } = render(
       <Modal visible={true} onAfterClosed={fn}>
         <div>body</div>
       </Modal>,
     );
 
-    jest.runAllTimers();
     expect(fn.mock.calls.length).toBe(0);
 
-    wrapper.setProps({
-      visible: false,
-    });
+    rerender(
+      <Modal visible={false} onAfterClosed={fn}>
+        <div>body</div>
+      </Modal>,
+    );
 
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
 
     expect(fn.mock.calls.length).toBe(1);
-    wrapper.unmount();
   });
 
-  it('test mountOnShow', () => {
-    const wrapper = mount(
-      <Modal>
+  it('Test mountOnShow', () => {
+    const { rerender } = render(
+      <Modal mountOnShow={true}>
+        <div>body</div>
+      </Modal>,
+    );
+
+    let el = document.querySelector('.xl-modal');
+
+    expect(el).toBe(null);
+
+    rerender(
+      <Modal visible={true} mountOnShow={true}>
         <div>body</div>
       </Modal>,
     );
@@ -71,90 +88,61 @@ describe('Modal', () => {
       jest.runAllTimers();
     });
 
-    let el = document.querySelector('.xl-modal');
-
-    expect(el).toBe(null);
-
-    wrapper.setProps({
-      visible: true,
-    });
-
-    act(() => {
-      jest.runAllTimers();
-    });
-
     el = document.querySelector('.xl-modal');
     expect(el).not.toBe(null);
-
-    wrapper.unmount();
   });
 
-  it('test unmountOnHide', () => {
-    const wrapper = mount(
-      <Modal>
+  it('Test unmountOnHide', () => {
+    const { rerender } = render(
+      <Modal unmountOnHide={true}>
         <div>body</div>
       </Modal>,
     );
 
     act(() => {
-      jest.runAllTimers();
+      act(() => {
+        jest.runAllTimers();
+      });
     });
 
     let el = document.querySelector('.xl-modal');
 
     expect(el).toBe(null);
 
-    wrapper.setProps({
-      visible: true,
-    });
+    rerender(
+      <Modal visible={true} unmountOnHide={true}>
+        <div>body</div>
+      </Modal>,
+    );
 
     act(() => {
-      jest.runAllTimers();
+      act(() => {
+        jest.runAllTimers();
+      });
     });
 
-    wrapper.setProps({
-      visible: false,
-    });
+    rerender(
+      <Modal visible={false} unmountOnHide={true}>
+        <div>body</div>
+      </Modal>,
+    );
 
     el = document.querySelector('.xl-modal');
 
     expect(el).not.toBe(null);
+  });
 
-    wrapper.unmount();
+  it('Test container', () => {
+    const div = document.createElement('div');
 
-    wrapper.setProps({
-      unmountOnHide: true,
-    });
-    wrapper.mount();
+    document.body.appendChild(div);
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    render(
+      <Modal container={div} visible={true}>
+        <div>body</div>
+      </Modal>,
+    );
 
-    wrapper.setProps({
-      visible: true,
-    });
-
-    act(() => {
-      jest.runAllTimers();
-    });
-
-    el = document.querySelector('.xl-modal');
-
-    expect(el).not.toBe(null);
-
-    wrapper.setProps({
-      visible: false,
-    });
-
-    act(() => {
-      jest.runAllTimers();
-    });
-
-    el = document.querySelector('.xl-modal');
-
-    expect(el).toBe(null);
-
-    wrapper.unmount();
+    expect(div.querySelector('.xl-modal')).not.toBe(null);
   });
 });

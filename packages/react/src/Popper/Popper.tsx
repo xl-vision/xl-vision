@@ -125,6 +125,9 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
   const triggers = Array.isArray(trigger) ? trigger : trigger ? [trigger] : [];
 
   const transitionClassNameObject = useMemo(() => {
+    if (!transitionClassName) {
+      return undefined;
+    }
     const ret: Required<CssTransitionClassNameRecord> = {
       appearActive: `${transitionClassName}-enter-active`,
       appearFrom: `${transitionClassName}-enter-from`,
@@ -381,7 +384,7 @@ if (!isProduction) {
     autoPlacementOptions: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
     arrowOptions: PropTypes.object,
     autoUpdateOptions: PropTypes.object,
-    arrow: PropTypes.element,
+    arrow: PropTypes.node,
     className: PropTypes.string,
     mountOnShow: PropTypes.bool,
     unmountOnHide: PropTypes.bool,

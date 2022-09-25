@@ -1,39 +1,47 @@
-import { mount } from 'enzyme';
 import { useMemo } from 'react';
-import { DeleteFilled } from '@xl-vision/icons';
+import { render } from '@testing-library/react';
 import ThemeProvder, { BaseTheme } from '../../ThemeProvider';
+import styled from '../styled';
+
+const Button = styled('button', {
+  name: 'DemoButton',
+  slot: 'Root',
+})(() => {
+  return {
+    color: 'red',
+  };
+});
 
 describe('styled', () => {
   it('test styled overrideStyles', () => {
-    const Demo = ({ transition }: { transition?: string }) => {
-      const theme: BaseTheme = useMemo(() => {
-        if (!transition) {
+    const Demo = ({ color }: { color?: string }) => {
+      const theme = useMemo(() => {
+        if (!color) {
           return {};
         }
         return {
           overrideStyles: {
-            Icon: {
+            DemoButton: {
               Root: {
-                transition,
+                color,
               },
             },
           },
-        };
-      }, [transition]);
+        } as BaseTheme;
+      }, [color]);
       return (
         <ThemeProvder theme={theme}>
-          <DeleteFilled />
+          <Button>click</Button>
         </ThemeProvder>
       );
     };
 
-    const wrapper = mount(<Demo />);
+    const { container, rerender } = render(<Demo />);
 
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
 
-    wrapper.setProps({
-      transition: 'none',
-    });
-    expect(wrapper.render()).toMatchSnapshot();
+    rerender(<Demo color='blue' />);
+
+    expect(container).toMatchSnapshot();
   });
 });

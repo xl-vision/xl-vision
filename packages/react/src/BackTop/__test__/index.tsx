@@ -1,9 +1,8 @@
-import { mount } from 'enzyme';
-import { act } from 'react-dom/test-utils';
 import { noop } from '@xl-vision/utils';
 import * as utils from '@xl-vision/utils';
+import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import BackTop from '../BackTop';
-import wait from '../../../../../test/wait';
 
 jest.spyOn(window, 'scrollTo').mockImplementation((x, y) => {
   if (typeof x === 'object') {
@@ -28,19 +27,16 @@ describe('BackTop', () => {
   it('scroll top when click', async () => {
     const call = jest.fn();
 
-    const wrapper = mount(<BackTop visibilityHeight={-1} onChange={call} />);
+    const { container } = render(<BackTop visibilityHeight={-1} onChange={call} />);
 
     window.scrollTo(0, 400);
     document.dispatchEvent(new Event('scroll', { bubbles: true }));
 
-    // 等待事件触发
-    await act(() => wait(0));
+    const el = container.querySelector('div.xl-back-top')!;
 
-    wrapper.update();
+    const user = userEvent.setup();
 
-    // expect(document.documentElement.scrollTop).toBe(400);
-
-    wrapper.find('div.xl-back-top').simulate('click');
+    await user.click(el);
 
     // expect(document.documentElement.scrollTop).toBe(0);
     expect(call).toBeCalledTimes(1);
@@ -48,15 +44,12 @@ describe('BackTop', () => {
   });
 
   it('test controlled state', () => {
-    const wrapper = mount(<BackTop show={false} />);
+    const { rerender } = render(<BackTop show={false} />);
 
-    expect(wrapper.exists('div.xl-back-top')).toBe(false);
+    expect(document.querySelectorAll('div.xl-back-top').length).toBe(0);
 
-    wrapper.setProps({
-      show: true,
-    });
+    rerender(<BackTop show={true} />);
 
-    wrapper.update();
-    expect(wrapper.exists('div.xl-back-top')).toBe(true);
+    expect(document.querySelectorAll('div.xl-back-top').length).toBe(1);
   });
 });
