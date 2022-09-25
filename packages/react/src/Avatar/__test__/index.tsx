@@ -1,64 +1,77 @@
-import { mount } from 'enzyme';
 import { Avatar } from '@xl-vision/react';
+import { render } from '@testing-library/react';
+import { fireEvent } from '@testing-library/dom';
 
 describe('Avatar', () => {
   it('Render string', () => {
-    const wrapper = mount(<Avatar>TestString</Avatar>);
-    const render = wrapper.render();
-    const children = render.find('.xl-avatar__inner');
-    expect(children.text()).toBe('TestString');
-    wrapper.unmount();
+    const { container } = render(<Avatar>TestString</Avatar>);
+    const el = container.querySelector('.xl-avatar__inner')!;
+    expect(el.textContent).toBe('TestString');
   });
 
   it('Render fallback string', () => {
-    const wrapper = mount(<Avatar src='http://error.url'>Fallback</Avatar>);
+    const { container } = render(<Avatar src='http://error.url'>Fallback</Avatar>);
 
-    wrapper.find('img').simulate('error');
+    const img = container.querySelector('img')!;
 
-    expect(wrapper.find('img').length).toBe(0);
+    fireEvent.error(img);
 
-    const children = wrapper.find('span.xl-avatar__inner');
-    expect(children.text()).toBe('Fallback');
-    wrapper.unmount();
+    expect(container.querySelectorAll('img').length).toBe(0);
+
+    const el = container.querySelector('span.xl-avatar__inner')!;
+
+    expect(el.textContent).toBe('Fallback');
   });
 
   it('Custom onError function', () => {
-    const fn = jest.fn();
-    fn.mockReturnValue(false);
-    const wrapper = mount(
-      <Avatar src='http://error.url' onError={fn}>
+    const { container, rerender } = render(
+      <Avatar src='http://error.url' onError={() => false}>
         Fallback
       </Avatar>,
     );
 
-    wrapper.find('img').simulate('error');
+    const img = container.querySelector('img')!;
 
-    expect(wrapper.find('img').length).toBe(1);
-    expect(wrapper.find('span.xl-avatar__inner').length).toBe(0);
-    wrapper.unmount();
+    fireEvent.error(img);
+
+    expect(container.querySelectorAll('img').length).toBe(1);
+
+    expect(container.querySelectorAll('span.xl-avatar__inner').length).toBe(0);
+
+    rerender(
+      <Avatar src='http://error.url' onError={() => true}>
+        Fallback
+      </Avatar>,
+    );
+
+    fireEvent.error(img);
+
+    expect(container.querySelectorAll('img').length).toBe(0);
+
+    expect(container.querySelector('span.xl-avatar__inner')!.textContent).toBe('Fallback');
   });
 });
 
 describe('AvatarGroup', () => {
   it('render size', () => {
-    const wrapper = mount(
+    const { container } = render(
       <Avatar.Group size='large'>
         <Avatar>TestString</Avatar>
         <Avatar>TestString</Avatar>
       </Avatar.Group>,
     );
 
-    expect(wrapper.find('span.xl-avatar--size-large').length).toBe(2);
+    expect(container.querySelectorAll('span.xl-avatar--size-large').length).toBe(2);
   });
 
   it('render shape', () => {
-    const wrapper = mount(
+    const { container } = render(
       <Avatar.Group shape='square'>
         <Avatar>TestString</Avatar>
         <Avatar>TestString</Avatar>
       </Avatar.Group>,
     );
 
-    expect(wrapper.find('span.xl-avatar--shape-square').length).toBe(2);
+    expect(container.querySelectorAll('span.xl-avatar--shape-square').length).toBe(2);
   });
 });

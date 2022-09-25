@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BaseButton basic test 1`] = `
+exports[`BaseButton Test basic render 1`] = `
 .c2 {
   position: absolute;
   top: 0;
@@ -82,16 +82,18 @@ exports[`BaseButton basic test 1`] = `
   height: 100%;
 }
 
-<button
-  class="c0 xl-base-button"
->
-  <span
-    class="c1 xl-base-button__inner"
+<div>
+  <button
+    class="c0 xl-base-button"
   >
-    button
-  </span>
-  <div
-    class="c2 xl-ripple xl-base-button__ripple"
-  />
-</button>
+    <span
+      class="c1 xl-base-button__inner"
+    >
+      button
+    </span>
+    <div
+      class="c2 xl-ripple xl-base-button__ripple"
+    />
+  </button>
+</div>
 `;
