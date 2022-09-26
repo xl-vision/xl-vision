@@ -1,6 +1,6 @@
 name: Auto Assign
 on:
-  pull_request_target:
+  pull_request:
     types:
       - opened
       - ready_for_review
