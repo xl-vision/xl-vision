@@ -50,7 +50,7 @@
     "@types/node": "17.0.4",
     "@types/react": "^17.0.24",
     "@types/react-dom": "^17.0.9",
-    "@types/styled-components": "^5.1.25",
+    "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^5.38.0",
     "@typescript-eslint/parser": "^5.38.0",
     "chalk": "^4.1.2",
