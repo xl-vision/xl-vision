@@ -63,6 +63,7 @@ module.exports = async () => {
                       loader: require.resolve('@mdx-js/loader'),
                       /** @type {import('@mdx-js/loader').Options} */
                       options: {
+                        jsx: true,
                         providerImportSource: '@mdx-js/react',
                         rehypePlugins: [rehypePrism],
                         remarkPlugins: [remarkGfm, remarkEmoji, demoPlugin],
