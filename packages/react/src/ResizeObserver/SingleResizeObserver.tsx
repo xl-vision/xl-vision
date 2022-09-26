@@ -39,7 +39,9 @@ const SingleResizeObserver = forwardRef<unknown, SingleResizeObserverProps>((pro
 if (!isProduction) {
   SingleResizeObserver.displayName = displayName;
   SingleResizeObserver.propTypes = {
+    // eslint-disable-next-line react/no-unused-prop-types
     children: PropTypes.element.isRequired,
+    // eslint-disable-next-line react/no-unused-prop-types
     onResizeObserver: PropTypes.func,
   };
 }
