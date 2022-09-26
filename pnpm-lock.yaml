@@ -15,7 +15,7 @@ importers:
       '@commitlint/format': ^17.0.0
       '@rollup/plugin-alias': ^3.1.9
       '@rollup/plugin-babel': ^5.3.1
-      '@rollup/plugin-commonjs': ^22.0.0
+      '@rollup/plugin-commonjs': ^22.0.2
       '@rollup/plugin-node-resolve': ^13.3.0
       '@rollup/plugin-replace': ^4.0.0
       '@testing-library/jest-dom': ^5.16.5
@@ -80,7 +80,7 @@ importers:
       '@commitlint/format': 17.0.0
       '@rollup/plugin-alias': 3.1.9_rollup@2.74.1
       '@rollup/plugin-babel': 5.3.1_yrmgggz47bmtjrqv3seqtltrpy
-      '@rollup/plugin-commonjs': 22.0.0_rollup@2.74.1
+      '@rollup/plugin-commonjs': 22.0.2_rollup@2.74.1
       '@rollup/plugin-node-resolve': 13.3.0_rollup@2.74.1
       '@rollup/plugin-replace': 4.0.0_rollup@2.74.1
       '@testing-library/jest-dom': 5.16.5
@@ -2397,8 +2397,8 @@ packages:
       rollup: 2.74.1
     dev: true
 
-  /@rollup/plugin-commonjs/22.0.0_rollup@2.74.1:
-    resolution: {integrity: sha512-Ktvf2j+bAO+30awhbYoCaXpBcyPmJbaEUYClQns/+6SNCYFURbvBiNbWgHITEsIgDDWCDUclWRKEuf8cwZCFoQ==}
+  /@rollup/plugin-commonjs/22.0.2_rollup@2.74.1:
+    resolution: {integrity: sha512-//NdP6iIwPbMTcazYsiBMbJW7gfmpHom33u1beiIoHDEM0Q9clvtQB1T0efvMqHeKsGohiHo97BCPCkBXdscwg==}
     engines: {node: '>= 12.0.0'}
     peerDependencies:
       rollup: ^2.68.0
@@ -2621,11 +2621,11 @@ packages:
     dev: true
 
   /@types/estree/0.0.46:
-    resolution: {integrity: sha1-D7a/u+q9ejCIBQSZM2nEvx3qsf4=}
+    resolution: {integrity: sha512-laIjwTQaD+5DukBZaygQ79K1Z0jb1bPEMRrkXSLjtCcZm+abyp5YbrqpSLzD42FwWW6gK/aS4NYpJ804nG2brg==}
     dev: true
 
   /@types/estree/0.0.50:
-    resolution: {integrity: sha1-Hgyqk2TT/M0pMcPtlv2+ql1MyoM=}
+    resolution: {integrity: sha512-C6N5s2ZFtuZRj54k2/zyRhNDjJwwcViAM3Nbm8zjBpbqAdZ00mr0CFxvSKeO8Y/e03WVFLpQMdHYVfUd6SB+Hw==}
     dev: true
 
   /@types/estree/0.0.51:
@@ -4144,7 +4144,7 @@ packages:
     dev: true
 
   /commondir/1.0.1:
-    resolution: {integrity: sha1-3dgA2gxmEnOTzKWVDqloo6rxJTs=}
+    resolution: {integrity: sha512-W9pAhw0ja1Edb5GVdIF1mjZw/ASI0AlShXM83UUGe2DVr5TdAPEA1OA8m/g8zWp9x6On7gqufY+FatDbC3MDQg==}
     dev: true
 
   /compare-func/2.0.0:
@@ -6928,7 +6928,7 @@ packages:
     dev: true
 
   /is-reference/3.0.0:
-    resolution: {integrity: sha1-sTgMA9lt33CJcJeB4yCPzrDJLNY=}
+    resolution: {integrity: sha512-Eo1W3wUoHWoCoVM4GVl/a+K0IgiqE5aIo4kJABFyMum1ZORlPkC+UC357sSQUL5w5QCE5kCC9upl75b7+7CY/Q==}
     dependencies:
       '@types/estree': 0.0.51
     dev: true
