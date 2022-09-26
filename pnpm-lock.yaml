@@ -239,7 +239,7 @@ importers:
       cross-env: ^7.0.3
       js-cookie: ^3.0.1
       next: ^12.3.1
-      next-sitemap: ^2.5.28
+      next-sitemap: ^3.1.22
       pinyin: ^2.11.2
       prismjs: ^1.29.0
       prop-types: ^15.8.1
@@ -281,7 +281,7 @@ importers:
       '@types/node': 17.0.4
       '@types/prop-types': 15.7.5
       cross-env: 7.0.3
-      next-sitemap: 2.5.28_next@12.3.1
+      next-sitemap: 3.1.22_next@12.3.1
       pinyin: 2.11.2
       prismjs: 1.29.0
       remark-emoji: 3.0.2
@@ -1810,8 +1810,8 @@ packages:
       chalk: 4.1.2
     dev: true
 
-  /@corex/deepmerge/2.6.148:
-    resolution: {integrity: sha512-6QMz0/2h5C3ua51iAnXMPWFbb1QOU1UvSM4bKBw5mzdT+WtLgjbETBBIQZ+Sh9WvEcGwlAt/DEdRpIC3XlDBMA==}
+  /@corex/deepmerge/4.0.29:
+    resolution: {integrity: sha512-q/yVUnqckA8Do+EvAfpy7RLdumnBy9ZsducMUtZTvpdbJC7azEf1hGtnYYxm0QfphYxjwggv6XtH64prvS1W+A==}
     dev: true
 
   /@cspotcode/source-map-support/0.8.1:
@@ -8830,14 +8830,15 @@ packages:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
 
-  /next-sitemap/2.5.28_next@12.3.1:
-    resolution: {integrity: sha512-rDMTa7nLE0ikYnu8JDCrwQufIRm4b4Sg8BK11DGdDAmYpXmcmw4Qvm+oVBR8gUL97E6i2ihTM+cRx8mgENDACA==}
+  /next-sitemap/3.1.22_next@12.3.1:
+    resolution: {integrity: sha512-aykbwYTNJ2GKSuxYpXgKK7m/a1Qao03ekUlsNLHvO8XuTTVZDAOe2hGcJtr2vQfXnLeZuSpNUs2IP6hCr4xVZA==}
     engines: {node: '>=14.18'}
     hasBin: true
     peerDependencies:
+      '@next/env': '*'
       next: '*'
     dependencies:
-      '@corex/deepmerge': 2.6.148
+      '@corex/deepmerge': 4.0.29
       minimist: 1.2.6
       next: 12.3.1_sfoxds7t5ydpegc3knd667wn6m
     dev: true
