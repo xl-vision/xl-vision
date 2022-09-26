@@ -47,7 +47,7 @@ importers:
       eslint-plugin-unicorn: ^43.0.2
       fs-extra: ^10.1.0
       glob: ^8.0.3
-      gsap: ^3.10.4
+      gsap: ^3.11.1
       gulp: ^4.0.2
       gulp-babel: ^8.0.0
       gulp-typescript: ^5.0.1
@@ -67,7 +67,7 @@ importers:
       ts-jest: ^29.0.2
       typescript: ^4.8.3
     dependencies:
-      gsap: 3.10.4
+      gsap: 3.11.1
     devDependencies:
       '@babel/core': 7.19.1
       '@babel/eslint-parser': 7.19.1_op5x3ff46ho6s4i3iwvsb24u2e
@@ -6139,8 +6139,8 @@ packages:
     resolution: {integrity: sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==}
     dev: true
 
-  /gsap/3.10.4:
-    resolution: {integrity: sha512-6QatdkKxXCMfvCW4rM++0RqyLQAzFX5nwl3yHS0XPgkZBkiSEY3VZVbMltrdtsbER/xZonLtyHt684wRp4erlQ==}
+  /gsap/3.11.1:
+    resolution: {integrity: sha512-UKuJ0UPhntFHMwT6URFQ4cTQv88xc7Kd9Dhxt7qX9IPhC+d+/a5wKW5E5Vn33hZ53nBI1JfApcEbzKgXkcuPZw==}
     dev: false
 
   /gulp-babel/8.0.0_@babel+core@7.19.1:
