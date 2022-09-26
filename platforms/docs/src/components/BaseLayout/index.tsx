@@ -4,7 +4,7 @@ import { ReactNode, FC, useRef, useEffect } from 'react';
 import { Route } from '../../routes';
 import Aside from '../Aside';
 import Footer from '../Footer';
-import Header, { height } from '../Header';
+import Header, { HEADER_HEIGHT } from '../Header';
 
 export type BaseLayoutProps = {
   children: ReactNode;
@@ -50,7 +50,7 @@ const AsideWrapper = styled(Aside)(({ theme }) => {
     // width: '100%',
     backgroundColor: theme.color.background.paper,
     height: '100%',
-    maxHeight: `calc(100vh - ${height}px)`,
+    maxHeight: `calc(100vh - ${HEADER_HEIGHT}px)`,
     overflowY: 'hidden',
     ':hover': {
       overflowY: 'auto',
@@ -144,7 +144,7 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children, routeName, appendEn }) => {
       <BackTop />
       <Row removeOnUnvisible={true}>
         <Row.Col column={{ xs: 0, md: 6, xl: 5, xxl: 4 }}>
-          <Affix offsetTop={height}>
+          <Affix offsetTop={HEADER_HEIGHT}>
             <div>
               <AsideWrapper routeName={routeName} appendEn={appendEn} />
             </div>

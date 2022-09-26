@@ -4,7 +4,7 @@ import { NextPage } from 'next';
 import Head from 'next/head';
 import { useContext } from 'react';
 import Logo from '../components/Logo';
-import Header from '../components/Header';
+import Header, { HEADER_HEIGHT } from '../components/Header';
 import { LocalizationContext } from '../components/LocalizationProvider';
 import Sponsorship from '../components/Sponsorship';
 import Footer from '../components/Footer';
@@ -28,6 +28,7 @@ const Main = styled('div')(({ theme }) => {
     flexDirection: 'column',
     justifyContent: 'center',
     background: theme.color.background.paper,
+    marginTop: -HEADER_HEIGHT,
     '.logo': {
       height: 90,
       display: 'inline-flex',

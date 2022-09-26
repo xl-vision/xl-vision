@@ -6,7 +6,7 @@ import { Anchor, Row } from '@xl-vision/react';
 import { ComponentType, FC, useState, useEffect } from 'react';
 import { useLocale } from '../LocalizationProvider';
 import routes, { Route, RouteType } from '../../routes';
-import { height } from '../Header';
+import { HEADER_HEIGHT } from '../Header';
 import useIsDebugMode from '../../hooks/useIsDebugMode';
 
 export type DocsProps = {
@@ -81,7 +81,7 @@ const Docs: FC<DocsProps> = ({ locales }) => {
       <Row removeOnUnvisible={true}>
         <Row.Col column={{ xs: 24, lg: 20, xxl: 21 }}>{Instance}</Row.Col>
         <Row.Col column={{ xs: 0, lg: 4, xxl: 3 }}>
-          <Anchor offsetTop={height + 20} targetOffset={height}>
+          <Anchor offsetTop={HEADER_HEIGHT + 20} targetOffset={HEADER_HEIGHT}>
             {genMenus(outline, isDebugMode)}
           </Anchor>
         </Row.Col>

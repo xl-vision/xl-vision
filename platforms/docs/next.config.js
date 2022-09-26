@@ -16,6 +16,7 @@ module.exports = async () => {
    * @type {import('next').NextConfig}
    */
   const nextConfig = {
+    reactStrictMode: true,
     swcMinify: true,
     compiler: {
       styledComponents: true,
@@ -28,7 +29,6 @@ module.exports = async () => {
       locales: ['en-US', 'zh-CN'],
       defaultLocale: 'en-US',
     },
-    reactStrictMode: true,
     webpack: (config, { defaultLoaders }) => {
       const alias = resolvePackageAlias();
 

@@ -14,14 +14,14 @@ import { ThemeContext } from '../ThemeProvider';
 import { useLocale } from '../LocalizationProvider';
 import Logo from '../Logo';
 
-export const height = 60;
+export const HEADER_HEIGHT = 60;
 
 const Container = styled('div')(() => {
   return {
     position: 'sticky',
     top: 0,
     width: '100%',
-    height,
+    height: HEADER_HEIGHT,
     zIndex: 1000,
   };
 });
@@ -38,7 +38,7 @@ const HeaderNav = styled('header')(({ theme }) => {
     alignItems: 'center',
     justifyContent: 'space-between',
     margin: 0,
-    height,
+    height: HEADER_HEIGHT,
     width: '100%',
     padding: '0 16px',
     backgroundColor: alpha(background, 0.72),
