@@ -56,8 +56,7 @@ const GlobalStyle = createGlobalStyles(({ theme }) => {
   };
 });
 
-const App = ({ Component, pageProps }: AppProps) => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+const App = ({ Component, pageProps }: AppProps<{ [key: string]: unknown }>) => {
   const { layout = 'default', ...others } = pageProps;
 
   const Layout = LayoutMap[layout as LayoutKey];
