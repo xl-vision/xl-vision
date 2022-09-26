@@ -28,14 +28,17 @@ module.exports = {
     '\\.(css|less)$': '<rootDir>/test/mocks/styleMock.js',
     'test/utils': '<rootDir>/test/utils/index.ts',
   },
-  globals: {
-    'ts-jest': {
-      tsconfig: 'tsconfig.test.json',
-      diagnostics: true,
-      babelConfig: {
-        ...getBabelConfig(),
+  transform: {
+    '^.+\\.tsx?$': [
+      'ts-jest',
+      {
+        tsconfig: 'tsconfig.test.json',
+        diagnostics: true,
+        babelConfig: {
+          ...getBabelConfig(),
+        },
       },
-    },
+    ],
   },
   testEnvironmentOptions: {
     url: 'http://localhost',

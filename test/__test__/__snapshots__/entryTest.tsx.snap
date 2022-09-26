@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Entry @xl-vision/hooks 1`] = `
-Array [
+[
   "useLatestRef",
   "useConstantFn",
   "useForkRef",
@@ -16,7 +16,7 @@ Array [
 `;
 
 exports[`Entry @xl-vision/icons 1`] = `
-Array [
+[
   "createIcon",
   "AccountBookFilled",
   "AlertFilled",
@@ -660,7 +660,7 @@ Array [
 `;
 
 exports[`Entry @xl-vision/popper 1`] = `
-Array [
+[
   "usePopper",
   "useAutoUpdatePopper",
   "useConnectInteraction",
@@ -678,7 +678,7 @@ Array [
 `;
 
 exports[`Entry @xl-vision/react 1`] = `
-Array [
+[
   "styled",
   "createGlobalStyles",
   "ThemeProvider",
@@ -715,7 +715,7 @@ Array [
 `;
 
 exports[`Entry @xl-vision/styled-engine 1`] = `
-Array [
+[
   "createGlobalStyles",
   "keyframes",
   "StyledEngineProvider",
@@ -725,7 +725,7 @@ Array [
 `;
 
 exports[`Entry @xl-vision/utils 1`] = `
-Array [
+[
   "warning",
   "noop",
   "raf",
