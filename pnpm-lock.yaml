@@ -19,7 +19,7 @@ importers:
       '@rollup/plugin-node-resolve': ^13.3.0
       '@rollup/plugin-replace': ^4.0.0
       '@testing-library/jest-dom': ^5.16.5
-      '@testing-library/react': ^12.1.5
+      '@testing-library/react': ^13.4.0
       '@testing-library/user-event': ^14.4.3
       '@types/glob': ^7.2.0
       '@types/jest': ^29.0.3
@@ -84,7 +84,7 @@ importers:
       '@rollup/plugin-node-resolve': 13.3.0_rollup@2.79.1
       '@rollup/plugin-replace': 4.0.0_rollup@2.79.1
       '@testing-library/jest-dom': 5.16.5
-      '@testing-library/react': 12.1.5_sfoxds7t5ydpegc3knd667wn6m
+      '@testing-library/react': 13.4.0_sfoxds7t5ydpegc3knd667wn6m
       '@testing-library/user-event': 14.4.3
       '@types/glob': 7.2.0
       '@types/jest': 29.0.3
@@ -2512,16 +2512,16 @@ packages:
       redent: 3.0.0
     dev: true
 
-  /@testing-library/react/12.1.5_sfoxds7t5ydpegc3knd667wn6m:
-    resolution: {integrity: sha512-OfTXCJUFgjd/digLUuPxa0+/3ZxsQmE7ub9kcbW/wi96Bh3o/p5vrETcBGfP17NWPGqeYYl5LTRpwyGoMC4ysg==}
+  /@testing-library/react/13.4.0_sfoxds7t5ydpegc3knd667wn6m:
+    resolution: {integrity: sha512-sXOGON+WNTh3MLE9rve97ftaZukN3oNf2KjDy7YTx6hcTO2uuLHuCGynMDhFwGw/jYf4OJ2Qk0i4i79qMNNkyw==}
     engines: {node: '>=12'}
     peerDependencies:
-      react: <18.0.0
-      react-dom: <18.0.0
+      react: ^18.0.0
+      react-dom: ^18.0.0
     dependencies:
-      '@babel/runtime': 7.16.5
+      '@babel/runtime': 7.19.0
       '@testing-library/dom': 8.18.1
-      '@types/react-dom': 17.0.11
+      '@types/react-dom': 18.0.6
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     dev: true
@@ -2761,6 +2761,12 @@ packages:
 
   /@types/react-dom/17.0.11:
     resolution: {integrity: sha512-f96K3k+24RaLGVu/Y2Ng3e1EbZ8/cVJvypZWd7cy0ofCBaf2lcM46xNhycMZ2xGwbBjRql7hOlZ+e2WlJ5MH3Q==}
+    dependencies:
+      '@types/react': 17.0.38
+    dev: true
+
+  /@types/react-dom/18.0.6:
+    resolution: {integrity: sha512-/5OFZgfIPSwy+YuIBP/FgJnQnsxhZhjjrnxudMddeblOouIodEQ75X14Rr4wGSG/bknL+Omy9iWlLo1u/9GzAA==}
     dependencies:
       '@types/react': 17.0.38
     dev: true
@@ -9915,7 +9921,7 @@ packages:
   /regenerator-transform/0.15.0:
     resolution: {integrity: sha512-LsrGtPmbYg19bcPHwdtmXwbW+TqNvtY4riE3P83foeHRroMbH6/2ddFBfab3t7kbzc7v7p4wbkIecHImqt0QNg==}
     dependencies:
-      '@babel/runtime': 7.16.5
+      '@babel/runtime': 7.19.0
     dev: true
 
   /regex-not/1.0.2:
