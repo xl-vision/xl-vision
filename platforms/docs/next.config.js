@@ -39,14 +39,14 @@ module.exports = async () => {
             '@mdx-js/react': require.resolve('@mdx-js/react'),
             react: path.resolve(__dirname, '../../node_modules/react'),
             'react-dom': path.resolve(__dirname, '../../node_modules/react-dom'),
-            'styled-components': path.resolve(__dirname, '../../node_modules/styled-components'),
+            'styled-components': require.resolve('../../node_modules/styled-components'),
           },
         },
         module: {
           rules: [
             {
               test: /\.mdx?$/,
-              exclude: '/node_modules/',
+              exclude: /node_modules/,
               oneOf: [
                 {
                   resourceQuery: /locale/,
@@ -76,7 +76,6 @@ module.exports = async () => {
             },
             {
               test: /\.(tsx|ts|js|jsx)$/,
-              include: [path.join(__dirname, '../../packages')],
               exclude: /node_module/,
               use: defaultLoaders.babel,
             },
