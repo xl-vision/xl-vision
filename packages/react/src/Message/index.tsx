@@ -1,5 +1,5 @@
-import Message from './Message';
+import Message from './createMessage/Message';
 
-export * from './Message';
+export * from './createMessage/Message';
 
 export default Message;
