@@ -6,20 +6,20 @@ import {
 } from '@xl-vision/icons';
 import { isProduction } from '@xl-vision/utils';
 import { FC, useMemo } from 'react';
-import MessageDialog, { MessageDialogProps } from './MessageDialog';
+import MethodDialog, { MethodDialogProps } from './MethodDialog';
 import { useTheme } from '../../ThemeProvider';
 import { useConfig } from '../../ConfigProvider';
 
-export type MessageDialogType = 'success' | 'error' | 'warning' | 'info' | 'confirm';
+export type DialogType = 'success' | 'error' | 'warning' | 'info' | 'confirm';
 
-export * from './MessageDialog';
+export * from './MethodDialog';
 
-const createMessageDialog = (type?: MessageDialogType) => {
-  const Dialog: FC<MessageDialogProps> = (props) => {
+const createDialog = (type?: DialogType) => {
+  const Dialog: FC<MethodDialogProps> = (props) => {
     const { color } = useTheme();
     const { locale } = useConfig();
 
-    const defaultProps: Partial<MessageDialogProps> = useMemo(() => {
+    const defaultProps: Partial<MethodDialogProps> = useMemo(() => {
       switch (type) {
         case 'success': {
           return {
@@ -62,7 +62,7 @@ const createMessageDialog = (type?: MessageDialogType) => {
       }
     }, [color, locale]);
 
-    return <MessageDialog {...defaultProps} {...props} />;
+    return <MethodDialog {...defaultProps} {...props} />;
   };
 
   if (!isProduction) {
@@ -75,4 +75,4 @@ const createMessageDialog = (type?: MessageDialogType) => {
   return Dialog;
 };
 
-export default createMessageDialog;
+export default createDialog;

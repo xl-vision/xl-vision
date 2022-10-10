@@ -1,35 +1,28 @@
 import ReactDOM from 'react-dom';
 import { isServer, noop, warning as warningLog } from '@xl-vision/utils';
-import createMessageDialog, { MessageDialogType, MessageDialogProps } from './message';
+import createDialog, { DialogType, MethodDialogProps } from './createDialog';
 import ThemeProvider, { ThemeProviderProps } from '../ThemeProvider';
 import ConfigProvider, { ConfigProviderProps } from '../ConfigProvider';
 
-export interface MessageDialogFunctionRenderProps extends MessageDialogProps, MessageDialogProps {
+export type BaseDialogMethodProps = MethodDialogProps & {
   themeProviderProps?: Omit<ThemeProviderProps, 'children'>;
   configProviderProps?: Omit<ConfigProviderProps, 'children'>;
-}
-export type MessageDialogFunctionProps = Omit<
-  MessageDialogFunctionRenderProps,
-  'visible' | 'defaultVisible'
->;
+};
 
-export type MessageDialogFunctionUpdate = (
-  props:
-    | Partial<MessageDialogFunctionProps>
-    | ((prev: MessageDialogFunctionProps) => Partial<MessageDialogFunctionProps>),
+export type DialogMethodProps = Omit<BaseDialogMethodProps, 'visible' | 'defaultVisible'>;
+
+export type DialogMethodUpdate = (
+  props: Partial<MethodDialogProps> | ((prev: MethodDialogProps) => Partial<MethodDialogProps>),
 ) => void;
 
-export type MessageDialogFunctionReturnType = {
+export type DialogMethodReturnType = {
   destroy: () => void;
-  update: MessageDialogFunctionUpdate;
+  update: DialogMethodUpdate;
 };
 
 const destroyFunctions: Array<() => void> = [];
 
-const method = (
-  props: MessageDialogFunctionProps,
-  type?: MessageDialogType,
-): MessageDialogFunctionReturnType => {
+const method = (props: DialogMethodProps, type?: DialogType): DialogMethodReturnType => {
   if (isServer) {
     return {
       destroy: noop,
@@ -37,12 +30,12 @@ const method = (
     };
   }
 
-  const Dialog = createMessageDialog(type);
+  const Dialog = createDialog(type);
 
   const div = document.createElement('div');
   document.body.appendChild(div);
 
-  let currentProps: MessageDialogFunctionRenderProps = {
+  let currentProps: BaseDialogMethodProps = {
     ...props,
     visible: undefined,
     defaultVisible: true,
@@ -54,7 +47,7 @@ const method = (
 
   let destroyState = false;
 
-  const render = (renderProps: MessageDialogFunctionRenderProps) => {
+  const render = (renderProps: BaseDialogMethodProps) => {
     if (destroyState) {
       return warningLog(
         true,
@@ -75,7 +68,7 @@ const method = (
     });
   };
 
-  const update: MessageDialogFunctionUpdate = (updateProps) => {
+  const update: DialogMethodUpdate = (updateProps) => {
     const { onAfterClosed, ...otherProps } =
       typeof updateProps === 'function' ? updateProps(currentProps) : updateProps;
 
@@ -125,12 +118,12 @@ const method = (
   };
 };
 
-export const open = (props: MessageDialogFunctionProps) => method(props);
-export const info = (props: MessageDialogFunctionProps) => method(props, 'info');
-export const success = (props: MessageDialogFunctionProps) => method(props, 'success');
-export const warning = (props: MessageDialogFunctionProps) => method(props, 'warning');
-export const error = (props: MessageDialogFunctionProps) => method(props, 'error');
-export const confirm = (props: MessageDialogFunctionProps) => method(props, 'confirm');
+export const open = (props: DialogMethodProps) => method(props);
+export const info = (props: DialogMethodProps) => method(props, 'info');
+export const success = (props: DialogMethodProps) => method(props, 'success');
+export const warning = (props: DialogMethodProps) => method(props, 'warning');
+export const error = (props: DialogMethodProps) => method(props, 'error');
+export const confirm = (props: DialogMethodProps) => method(props, 'confirm');
 
 export const destroyAll = () => {
   let fn = destroyFunctions.pop();

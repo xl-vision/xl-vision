@@ -188,6 +188,13 @@ const route: Route = {
           },
           path: '/Dialog',
         },
+        {
+          titleMap: {
+            'en-US': 'Message',
+            'zh-CN': '消息提醒',
+          },
+          path: '/Message',
+        },
       ],
     },
     {

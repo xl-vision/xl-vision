@@ -3,13 +3,13 @@ import { open, destroyAll, success, info, error, warning, confirm } from './meth
 import useDialog from './useDialog';
 
 export * from './Dialog';
-export * from './message';
+export * from './createDialog';
 export * from './useDialog';
 export type {
-  MessageDialogFunctionUpdate,
-  MessageDialogFunctionProps,
-  MessageDialogFunctionRenderProps,
-  MessageDialogFunctionReturnType,
+  DialogMethodUpdate,
+  DialogMethodProps,
+  BaseDialogMethodProps,
+  DialogMethodReturnType,
 } from './methods';
 
 const DialogEnhancer = Dialog as typeof Dialog & {

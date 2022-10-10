@@ -8,14 +8,14 @@ import { styled } from '../../styles';
 import usePropChange from '../../hooks/usePropChange';
 import { useTheme } from '../../ThemeProvider';
 
-export interface MessageDialogProps extends Omit<DialogProps, 'children'> {
+export interface MethodDialogProps extends Omit<DialogProps, 'children'> {
   content?: ReactNode;
   icon?: ReactNode;
 }
 
-const displayName = 'MessageDialog';
+const displayName = 'MethodDialog';
 
-const MessageDialogHeader = styled('h6', {
+const MethodDialogHeader = styled('h6', {
   name: displayName,
   slot: 'Header',
 })(({ theme }) => {
@@ -27,7 +27,7 @@ const MessageDialogHeader = styled('h6', {
   };
 });
 
-const MessageDialogTitle = styled('span', {
+const MethodDialogTitle = styled('span', {
   name: displayName,
   slot: 'Title',
 })(() => {
@@ -36,7 +36,7 @@ const MessageDialogTitle = styled('span', {
   };
 });
 
-const MessageDialogIcon = styled('span', {
+const MethodDialogIcon = styled('span', {
   name: displayName,
   slot: 'Icon',
 })(() => {
@@ -48,14 +48,14 @@ const MessageDialogIcon = styled('span', {
   };
 });
 
-export type MessageDialogContentStyleProps = {
+export type MethodDialogContentStyleProps = {
   icon: boolean;
 };
 
-const MessageDialogContent = styled('div', {
+const MethodDialogContent = styled('div', {
   name: displayName,
   slot: 'Content',
-})<MessageDialogContentStyleProps>(({ styleProps }) => {
+})<MethodDialogContentStyleProps>(({ styleProps }) => {
   const { icon } = styleProps;
   const styles: CSSObject = {};
 
@@ -66,7 +66,7 @@ const MessageDialogContent = styled('div', {
   return styles;
 });
 
-const MessageDialog: FC<MessageDialogProps> = (props) => {
+const MethodDialog: FC<MethodDialogProps> = (props) => {
   const {
     visible: visibleProp,
     defaultVisible: defaultVisibleProp = false,
@@ -96,10 +96,10 @@ const MessageDialog: FC<MessageDialogProps> = (props) => {
   const rootClassName = `${clsPrefix}-message-dialog`;
 
   const headerWrapper = (
-    <MessageDialogHeader className={`${rootClassName}__title`}>
-      {icon && <MessageDialogIcon className={`${rootClassName}__icon`}>{icon}</MessageDialogIcon>}
-      <MessageDialogTitle>{title}</MessageDialogTitle>
-    </MessageDialogHeader>
+    <MethodDialogHeader className={`${rootClassName}__title`}>
+      {icon && <MethodDialogIcon className={`${rootClassName}__icon`}>{icon}</MethodDialogIcon>}
+      <MethodDialogTitle>{title}</MethodDialogTitle>
+    </MethodDialogHeader>
   );
 
   return (
@@ -111,15 +111,15 @@ const MessageDialog: FC<MessageDialogProps> = (props) => {
       onVisibleChange={handleVisibleChange}
     >
       {content && (
-        <MessageDialogContent styleProps={{ icon: !!icon }}>{content}</MessageDialogContent>
+        <MethodDialogContent styleProps={{ icon: !!icon }}>{content}</MethodDialogContent>
       )}
     </Dialog>
   );
 };
 
 if (!isProduction) {
-  MessageDialog.displayName = displayName;
-  MessageDialog.propTypes = {
+  MethodDialog.displayName = displayName;
+  MethodDialog.propTypes = {
     visible: Proptypes.bool,
     defaultVisible: Proptypes.bool,
     onVisibleChange: Proptypes.func,
@@ -130,4 +130,4 @@ if (!isProduction) {
   };
 }
 
-export default MessageDialog;
+export default MethodDialog;

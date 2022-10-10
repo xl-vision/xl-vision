@@ -8,34 +8,28 @@ import {
   createRef,
   useMemo,
 } from 'react';
-import createMessageDialog, { MessageDialogProps, MessageDialogType } from './message';
-import { MessageDialogFunctionProps } from './methods';
+import createDialog, { MethodDialogProps, DialogType } from './createDialog';
 
-type HookMessageDialogRef = {
-  update: (updateProps: MessageDialogProps) => void;
+type DialogHookRef = {
+  update: (updateProps: MethodDialogProps) => void;
 };
 
-export type MessageDialogHookProps = Omit<
-  MessageDialogFunctionProps,
-  'themeContext' | 'localizationContext'
->;
+export type DialogHookProps = Omit<MethodDialogProps, 'visible' | 'defaultVisible'>;
 
-export type MethodDialogHookUpdate = (
-  props:
-    | Partial<MessageDialogHookProps>
-    | ((prev: MessageDialogHookProps) => Partial<MessageDialogHookProps>),
+export type DialogHookUpdate = (
+  props: Partial<DialogHookProps> | ((prev: DialogHookProps) => Partial<DialogHookProps>),
 ) => void;
 
-export type MessageDialogHookReturnType = {
+export type DialogHookReturnType = {
   destroy: () => void;
-  update: MethodDialogHookUpdate;
+  update: DialogHookUpdate;
 };
 
-const createHookMessageDialog = (props: MessageDialogProps, type?: MessageDialogType) => {
-  const Dialog = createMessageDialog(type);
+const createHookMessageDialog = (props: MethodDialogProps, type?: DialogType) => {
+  const Dialog = createDialog(type);
 
-  const HookMessageDialog = forwardRef<HookMessageDialogRef>((_, ref) => {
-    const [innerConfig, setInnerConfig] = useState<MessageDialogProps>(props);
+  const HookMessageDialog = forwardRef<DialogHookRef>((_, ref) => {
+    const [innerConfig, setInnerConfig] = useState<MethodDialogProps>(props);
 
     useImperativeHandle(ref, () => {
       return {
@@ -60,83 +54,83 @@ let uuid = 0;
 const useDialog = () => {
   const [dialogs, setDialogs] = useState<Array<ReactElement>>([]);
 
-  const method = useCallback(
-    (props: MessageDialogHookProps, type?: MessageDialogType): MessageDialogHookReturnType => {
-      let currentProps: MessageDialogProps = {
-        ...props,
+  const method = useCallback((props: DialogHookProps, type?: DialogType): DialogHookReturnType => {
+    let currentProps: MethodDialogProps = {
+      ...props,
+      visible: undefined,
+      defaultVisible: true,
+      onAfterClosed: () => {
+        props.onAfterClosed?.();
+        destroyDOM();
+      },
+    };
+    const Dialog = createHookMessageDialog(currentProps, type);
+
+    const ref = createRef<DialogHookRef>();
+
+    let destroyState = false;
+
+    const dialog = <Dialog key={`dialog${uuid++}`} ref={ref} />;
+
+    const destroyDOM = () => {
+      setDialogs((prev) => prev.filter((it) => it !== dialog));
+    };
+
+    const render = (renderProps: MethodDialogProps) => {
+      if (destroyState) {
+        return warningLog(
+          true,
+          `The dialog instance was destroyed, please do not update or destroy it again.`,
+        );
+      }
+      ref.current?.update(renderProps);
+    };
+
+    const update: DialogHookUpdate = (updateProps) => {
+      const { onAfterClosed, ...otherProps } =
+        typeof updateProps === 'function' ? updateProps(currentProps) : updateProps;
+
+      currentProps = {
+        ...currentProps,
+        ...otherProps,
         visible: undefined,
         defaultVisible: true,
-        onAfterClosed: () => {
-          props.onAfterClosed?.();
-          destroyDOM();
-        },
-      };
-      const Dialog = createHookMessageDialog(currentProps, type);
-
-      const ref = createRef<HookMessageDialogRef>();
-
-      let destroyState = false;
-
-      const dialog = <Dialog key={`dialog${uuid++}`} ref={ref} />;
-
-      const destroyDOM = () => {
-        setDialogs((prev) => prev.filter((it) => it !== dialog));
       };
 
-      const render = (renderProps: MessageDialogProps) => {
-        if (destroyState) {
-          return warningLog(
-            true,
-            `The dialog instance was destroyed, please do not update or destroy it again.`,
-          );
-        }
-        ref.current?.update(renderProps);
-      };
-
-      const update: MethodDialogHookUpdate = (updateProps) => {
-        const newProps =
-          typeof updateProps === 'function' ? updateProps(currentProps) : updateProps;
-        currentProps = { ...currentProps, ...newProps, visible: undefined, defaultVisible: true };
-
-        const { onAfterClosed } = currentProps;
-
+      if (onAfterClosed) {
         currentProps.onAfterClosed = () => {
           onAfterClosed?.();
           destroyDOM();
         };
-        render(currentProps);
-      };
+      }
 
-      const destroy = () => {
-        render({
-          ...currentProps,
-          visible: false,
-          onAfterClosed() {
-            currentProps.onAfterClosed?.();
-            destroyDOM();
-          },
-        });
-        destroyState = true;
-      };
+      render(currentProps);
+    };
 
-      setDialogs((prev) => [...prev, dialog]);
+    const destroy = () => {
+      render({
+        ...currentProps,
+        visible: false,
+      });
+      destroyState = true;
+    };
 
-      return {
-        update,
-        destroy,
-      };
-    },
-    [],
-  );
+    setDialogs((prev) => [...prev, dialog]);
+
+    return {
+      update,
+      destroy,
+    };
+  }, []);
 
   const methods = useMemo(
     () => ({
-      open: (props: MessageDialogFunctionProps) => method(props),
-      confirm: (props: MessageDialogFunctionProps) => method(props, 'confirm'),
-      error: (props: MessageDialogFunctionProps) => method(props, 'error'),
-      info: (props: MessageDialogFunctionProps) => method(props, 'info'),
-      success: (props: MessageDialogFunctionProps) => method(props, 'success'),
-      warning: (props: MessageDialogFunctionProps) => method(props, 'warning'),
+      open: (props: DialogHookProps) => method(props),
+      confirm: (props: DialogHookProps) => method(props, 'confirm'),
+      error: (props: DialogHookProps) => method(props, 'error'),
+      info: (props: DialogHookProps) => method(props, 'info'),
+      success: (props: DialogHookProps) => method(props, 'success'),
+      warning: (props: DialogHookProps) => method(props, 'warning'),
     }),
     [method],
   );
