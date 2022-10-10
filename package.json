@@ -68,7 +68,7 @@
     "eslint-plugin-promise": "^6.0.1",
     "eslint-plugin-react": "^7.31.9",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-unicorn": "^44.0.1",
+    "eslint-plugin-unicorn": "^44.0.2",
     "fs-extra": "^10.1.0",
     "glob": "^8.0.3",
     "gulp": "^4.0.2",
