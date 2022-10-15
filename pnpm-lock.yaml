@@ -219,8 +219,8 @@ importers:
     specifiers:
       '@babel/standalone': ^7.19.5
       '@mapbox/rehype-prism': ^0.8.0
-      '@mdx-js/loader': ^2.1.4
-      '@mdx-js/react': ^2.1.4
+      '@mdx-js/loader': ^2.1.5
+      '@mdx-js/react': ^2.1.5
       '@next/bundle-analyzer': ^12.3.1
       '@next/eslint-plugin-next': ^12.3.1
       '@types/codemirror': ^5.60.5
@@ -253,7 +253,7 @@ importers:
       webpack-merge: ^5.8.0
     dependencies:
       '@babel/standalone': 7.19.5
-      '@mdx-js/react': 2.1.4_react@17.0.2
+      '@mdx-js/react': 2.1.5_react@17.0.2
       '@xl-vision/hooks': link:../../packages/hooks
       '@xl-vision/icons': link:../../packages/icons
       '@xl-vision/popper': link:../../packages/popper
@@ -273,7 +273,7 @@ importers:
       styled-components: 5.3.5_v5ja746gkdtknuc6tj46sve3be
     devDependencies:
       '@mapbox/rehype-prism': 0.8.0
-      '@mdx-js/loader': 2.1.4
+      '@mdx-js/loader': 2.1.5
       '@next/bundle-analyzer': 12.3.1
       '@next/eslint-plugin-next': 12.3.1
       '@types/codemirror': 5.60.5
@@ -2177,8 +2177,8 @@ packages:
       unist-util-visit: 2.0.3
     dev: true
 
-  /@mdx-js/loader/2.1.4:
-    resolution: {integrity: sha512-7k2I1vYht89cONaAkThmbq6CW0yyaEZOHDFngAMj6jqfpMfUnCE+zIbpKYJNPlgmWCR9T5r/deVNvH3BcokbKw==}
+  /@mdx-js/loader/2.1.5:
+    resolution: {integrity: sha512-oXjfTa/iAcMmW8DdQ+hQFodPCLqw5VKT2yoZkLwrZfPVVpUgKrI+5/ZePYq328xxtAUStZmR3ed0PWJrwd5Pkg==}
     peerDependencies:
       webpack: '>=4'
     dependencies:
@@ -2212,8 +2212,8 @@ packages:
       - supports-color
     dev: true
 
-  /@mdx-js/react/2.1.4_react@17.0.2:
-    resolution: {integrity: sha512-PRwLjoAxhSA6xTB2+FA5CPGUCOsIK3bJD0RYsoju+nUIyOpIZUSw6SJChfILByLizzxqslE0R+l8IjARo0N+hA==}
+  /@mdx-js/react/2.1.5_react@17.0.2:
+    resolution: {integrity: sha512-3Az1I6SAWA9R38rYjz5rXBrGKeZhq96CSSyQtqY+maPj8stBsoUH5pNcmIixuGkufYsh8F5+ka2CVPo2fycWZw==}
     peerDependencies:
       react: '>=16'
     dependencies:
