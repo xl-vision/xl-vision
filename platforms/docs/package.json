@@ -13,7 +13,7 @@
     "analyze": "cross-env ANALYZE=true npm run docs"
   },
   "dependencies": {
-    "@babel/standalone": "^7.19.5",
+    "@babel/standalone": "^7.19.6",
     "@mdx-js/react": "^2.1.5",
     "@xl-vision/hooks": "workspace:^",
     "@xl-vision/icons": "workspace:^",
