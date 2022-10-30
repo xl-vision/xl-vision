@@ -13,7 +13,7 @@ importers:
       '@commitlint/cli': ^17.1.2
       '@commitlint/config-conventional': ^17.1.0
       '@commitlint/format': ^17.0.0
-      '@rollup/plugin-alias': ^4.0.0
+      '@rollup/plugin-alias': ^4.0.2
       '@rollup/plugin-babel': ^6.0.0
       '@rollup/plugin-commonjs': ^23.0.2
       '@rollup/plugin-node-resolve': ^15.0.0
@@ -78,7 +78,7 @@ importers:
       '@commitlint/cli': 17.1.2
       '@commitlint/config-conventional': 17.1.0
       '@commitlint/format': 17.0.0
-      '@rollup/plugin-alias': 4.0.0_rollup@3.2.3
+      '@rollup/plugin-alias': 4.0.2_rollup@3.2.3
       '@rollup/plugin-babel': 6.0.0_hzbtxqmlb77ffvbsyivirv6yk4
       '@rollup/plugin-commonjs': 23.0.2_rollup@3.2.3
       '@rollup/plugin-node-resolve': 15.0.0_rollup@3.2.3
@@ -2376,8 +2376,8 @@ packages:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
 
-  /@rollup/plugin-alias/4.0.0_rollup@3.2.3:
-    resolution: {integrity: sha512-fGRWzM2F6wXnzAqn4Db8SdB/2Ree0u2XOQaaTy9mhqA35NmUzJXevMBUcpZywPF2MIUUAw+SKfWogKxFSPh+Qw==}
+  /@rollup/plugin-alias/4.0.2_rollup@3.2.3:
+    resolution: {integrity: sha512-1hv7dBOZZwo3SEupxn4UA2N0EDThqSSS+wI1St1TNTBtOZvUchyIClyHcnDcjjrReTPZ47Faedrhblv4n+T5UQ==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^1.20.0||^2.0.0||^3.0.0
