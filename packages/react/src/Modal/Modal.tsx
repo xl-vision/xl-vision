@@ -261,10 +261,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   }, [inProp, isTop]);
 
   useEffect(() => {
-    if (!container) {
-      return;
-    }
-    const scrollLocker = new ScrollLocker({ getContainer: () => container });
+    const scrollLocker = new ScrollLocker({ getContainer: () => container || document.body });
     scrollLockerRef.current = scrollLocker;
     return () => {
       if (scrollLocker.locked) {

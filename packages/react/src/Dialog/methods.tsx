@@ -22,6 +22,7 @@ export type MessageDialogFunctionUpdate = (
 export type MessageDialogFunctionReturnType = {
   destroy: () => void;
   update: MessageDialogFunctionUpdate;
+  isDestoryed: () => boolean;
 };
 
 const destroyFunctions: Array<() => void> = [];
@@ -34,6 +35,7 @@ const method = (
     return {
       destroy: noop,
       update: noop,
+      isDestoryed: () => false,
     };
   }
 
@@ -97,6 +99,7 @@ const method = (
   };
 
   const destroyDOM = () => {
+    destroyState = true;
     const unmountResult = ReactDOM.unmountComponentAtNode(div);
     if (unmountResult && div.parentNode) {
       div.parentNode.removeChild(div);
@@ -112,7 +115,6 @@ const method = (
       ...currentProps,
       visible: false,
     });
-    destroyState = true;
   };
 
   destroyFunctions.push(destroy);
@@ -122,6 +124,7 @@ const method = (
   return {
     destroy,
     update,
+    isDestoryed: () => destroyState,
   };
 };
 

@@ -29,6 +29,7 @@ export type MethodDialogHookUpdate = (
 export type MessageDialogHookReturnType = {
   destroy: () => void;
   update: MethodDialogHookUpdate;
+  isDestoryed: () => boolean;
 };
 
 const createHookMessageDialog = (props: MessageDialogProps, type?: MessageDialogType) => {
@@ -81,6 +82,7 @@ const useDialog = () => {
 
       const destroyDOM = () => {
         setDialogs((prev) => prev.filter((it) => it !== dialog));
+        destroyState = true;
       };
 
       const render = (renderProps: MessageDialogProps) => {
@@ -116,7 +118,6 @@ const useDialog = () => {
             destroyDOM();
           },
         });
-        destroyState = true;
       };
 
       setDialogs((prev) => [...prev, dialog]);
@@ -124,6 +125,7 @@ const useDialog = () => {
       return {
         update,
         destroy,
+        isDestoryed: () => destroyState,
       };
     },
     [],
