@@ -239,7 +239,7 @@ importers:
       cross-env: ^7.0.3
       js-cookie: ^3.0.1
       next: ^12.3.2
-      next-sitemap: ^3.1.29
+      next-sitemap: ^3.1.30
       pinyin: ^2.11.2
       prismjs: ^1.29.0
       prop-types: ^15.8.1
@@ -281,7 +281,7 @@ importers:
       '@types/node': 17.0.4
       '@types/prop-types': 15.7.5
       cross-env: 7.0.3
-      next-sitemap: 3.1.29_next@12.3.2
+      next-sitemap: 3.1.30_next@12.3.2
       pinyin: 2.11.2
       prismjs: 1.29.0
       remark-emoji: 3.0.2
@@ -1729,29 +1729,6 @@ packages:
       '@commitlint/rules': 17.2.0
       '@commitlint/types': 17.0.0
     dev: true
-
-  /@commitlint/load/17.1.2:
-    resolution: {integrity: sha512-sk2p/jFYAWLChIfOIp/MGSIn/WzZ0vkc3afw+l4X8hGEYkvDe4gQUUAVxjl/6xMRn0HgnSLMZ04xXh5pkTsmgg==}
-    engines: {node: '>=v14'}
-    requiresBuild: true
-    dependencies:
-      '@commitlint/config-validator': 17.1.0
-      '@commitlint/execute-rule': 17.0.0
-      '@commitlint/resolve-extends': 17.1.0
-      '@commitlint/types': 17.0.0
-      '@types/node': 14.18.30
-      chalk: 4.1.2
-      cosmiconfig: 7.0.1
-      cosmiconfig-typescript-loader: 4.1.0_ygtf2nqoivg3vbrl2ynevd2eda
-      lodash: 4.17.21
-      resolve-from: 5.0.0
-      ts-node: 10.9.1_monkgsxveuqszkft6gddtee5aa
-      typescript: 4.8.4
-    transitivePeerDependencies:
-      - '@swc/core'
-      - '@swc/wasm'
-    dev: true
-    optional: true
 
   /@commitlint/load/17.2.0:
     resolution: {integrity: sha512-HDD57qSqNrk399R4TIjw31AWBG8dBjNj1MrDKZKmC/wvimtnIFlqzcu1+sxfXIOHj/+M6tcMWDtvknGUd7SU+g==}
@@ -4487,7 +4464,7 @@ packages:
       longest: 2.0.1
       word-wrap: 1.2.3
     optionalDependencies:
-      '@commitlint/load': 17.1.2
+      '@commitlint/load': 17.2.0
     transitivePeerDependencies:
       - '@swc/core'
       - '@swc/wasm'
@@ -8905,8 +8882,8 @@ packages:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
 
-  /next-sitemap/3.1.29_next@12.3.2:
-    resolution: {integrity: sha512-7UQyfpI7obOdB11aCswWYfqRn5CR0YSmWHo1r/uarrFfZD5PyyAWtQlgP6jNqDW0eX1ZJWERBwmJ2dLjl4nT8Q==}
+  /next-sitemap/3.1.30_next@12.3.2:
+    resolution: {integrity: sha512-mZqq9xWrTp/tgUM7+Oz/qxT6x2vnJhwQ3AGke2GjypRbUo44QaTb+4Cp1uX9GwXBaiuuuXDoWyS5VxJP3pJljw==}
     engines: {node: '>=14.18'}
     hasBin: true
     peerDependencies:
