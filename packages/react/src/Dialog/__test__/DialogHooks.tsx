@@ -1,4 +1,4 @@
-import { ConfigProvider, Dialog, MessageDialogHookReturnType } from '@xl-vision/react';
+import { ConfigProvider, Dialog, DialogHookReturnType } from '@xl-vision/react';
 import { forwardRef, useImperativeHandle } from 'react';
 import { render, act } from '@testing-library/react';
 import { locales } from '@xl-vision/react/locale';
@@ -37,7 +37,7 @@ describe('DialogHooks', () => {
 
     expect(el).toBe(null);
 
-    let confirmRet: MessageDialogHookReturnType;
+    let confirmRet: DialogHookReturnType;
 
     act(() => {
       confirmRet = dialogRef.confirm({
@@ -67,7 +67,7 @@ describe('DialogHooks', () => {
     el = document.querySelector('#info');
     expect(el).toBe(null);
 
-    let infoRet: MessageDialogHookReturnType;
+    let infoRet: DialogHookReturnType;
     act(() => {
       infoRet = dialogRef.info({
         title: 'title',
@@ -96,7 +96,7 @@ describe('DialogHooks', () => {
     el = document.querySelector('#success');
     expect(el).toBe(null);
 
-    let successRet: MessageDialogHookReturnType;
+    let successRet: DialogHookReturnType;
 
     act(() => {
       successRet = dialogRef.success({
@@ -126,7 +126,7 @@ describe('DialogHooks', () => {
     el = document.querySelector('#error');
     expect(el).toBe(null);
 
-    let errorRet: MessageDialogHookReturnType;
+    let errorRet: DialogHookReturnType;
 
     act(() => {
       errorRet = dialogRef.error({
@@ -156,7 +156,7 @@ describe('DialogHooks', () => {
     el = document.querySelector('#warning');
     expect(el).toBe(null);
 
-    let warningRet: MessageDialogHookReturnType;
+    let warningRet: DialogHookReturnType;
     act(() => {
       warningRet = dialogRef.warning({
         title: 'title',
@@ -257,9 +257,7 @@ describe('DialogHooks', () => {
     el = document.querySelector('#info');
 
     expect(el).not.toBe(null);
-    expect(el!.querySelector('button')!.textContent).toBe(
-      locales['en-US'].Dialog.methods.infoText,
-    );
+    expect(el!.querySelector('button')!.textContent).toBe(locales['en-US'].Dialog.methods.infoText);
 
     rerender(
       <ConfigProvider language='zh-CN'>
@@ -276,9 +274,7 @@ describe('DialogHooks', () => {
     });
 
     el = document.querySelector('#info');
-    expect(el!.querySelector('button')!.textContent).toBe(
-      locales['zh-CN'].Dialog.methods.infoText,
-    );
+    expect(el!.querySelector('button')!.textContent).toBe(locales['zh-CN'].Dialog.methods.infoText);
 
     unmount();
 

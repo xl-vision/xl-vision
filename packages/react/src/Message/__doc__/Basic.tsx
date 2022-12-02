@@ -1,5 +1,5 @@
 const Demo = () => {
-  return
-}
+  return;
+};
 
-export default Demo
+export default Demo;
