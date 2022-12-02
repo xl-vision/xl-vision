@@ -18,6 +18,7 @@ export type DialogMethodUpdate = (
 export type DialogMethodReturnType = {
   destroy: () => void;
   update: DialogMethodUpdate;
+  isDestoryed: () => boolean;
 };
 
 const destroyFunctions: Array<() => void> = [];
@@ -27,6 +28,7 @@ const method = (props: DialogMethodProps, type?: DialogType): DialogMethodReturn
     return {
       destroy: noop,
       update: noop,
+      isDestoryed: () => false,
     };
   }
 
@@ -90,6 +92,7 @@ const method = (props: DialogMethodProps, type?: DialogType): DialogMethodReturn
   };
 
   const destroyDOM = () => {
+    destroyState = true;
     const unmountResult = ReactDOM.unmountComponentAtNode(div);
     if (unmountResult && div.parentNode) {
       div.parentNode.removeChild(div);
@@ -105,7 +108,6 @@ const method = (props: DialogMethodProps, type?: DialogType): DialogMethodReturn
       ...currentProps,
       visible: false,
     });
-    destroyState = true;
   };
 
   destroyFunctions.push(destroy);
@@ -115,6 +117,7 @@ const method = (props: DialogMethodProps, type?: DialogType): DialogMethodReturn
   return {
     destroy,
     update,
+    isDestoryed: () => destroyState,
   };
 };
 

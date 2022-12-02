@@ -24,36 +24,36 @@ const createDialog = (type?: DialogType) => {
         case 'success': {
           return {
             icon: <CheckCircleOutlined style={{ color: color.themes.primary.color }} />,
-            confirmText: locale.Dialog.messages.successText,
+            confirmText: locale.Dialog.methods.successText,
             prompt: true,
           };
         }
         case 'error': {
           return {
             icon: <CloseCircleOutlined style={{ color: color.themes.error.color }} />,
-            confirmText: locale.Dialog.messages.errorText,
+            confirmText: locale.Dialog.methods.errorText,
             prompt: true,
           };
         }
         case 'warning': {
           return {
             icon: <ExclamationCircleOutlined style={{ color: color.themes.warning.color }} />,
-            confirmText: locale.Dialog.messages.warningText,
+            confirmText: locale.Dialog.methods.warningText,
             prompt: true,
           };
         }
         case 'info': {
           return {
             icon: <InfoCircleOutlined style={{ color: color.themes.info.color }} />,
-            confirmText: locale.Dialog.messages.infoText,
+            confirmText: locale.Dialog.methods.infoText,
             prompt: true,
           };
         }
         case 'confirm': {
           return {
             icon: <ExclamationCircleOutlined style={{ color: color.themes.primary.color }} />,
-            confirmText: locale.Dialog.messages.confirm.confirmText,
-            cancelText: locale.Dialog.messages.confirm.cancelText,
+            confirmText: locale.Dialog.methods.confirm.confirmText,
+            cancelText: locale.Dialog.methods.confirm.cancelText,
           };
         }
         default: {

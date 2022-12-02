@@ -258,7 +258,7 @@ describe('DialogHooks', () => {
 
     expect(el).not.toBe(null);
     expect(el!.querySelector('button')!.textContent).toBe(
-      locales['en-US'].Dialog.messages.infoText,
+      locales['en-US'].Dialog.methods.infoText,
     );
 
     rerender(
@@ -277,7 +277,7 @@ describe('DialogHooks', () => {
 
     el = document.querySelector('#info');
     expect(el!.querySelector('button')!.textContent).toBe(
-      locales['zh-CN'].Dialog.messages.infoText,
+      locales['zh-CN'].Dialog.methods.infoText,
     );
 
     unmount();

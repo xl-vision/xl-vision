@@ -6,7 +6,7 @@ export type Locale = {
   Dialog: {
     confirmText: string;
     cancelText: string;
-    messages: {
+    methods: {
       successText: string;
       infoText: string;
       errorText: string;

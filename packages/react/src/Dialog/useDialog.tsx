@@ -8,27 +8,28 @@ import {
   createRef,
   useMemo,
 } from 'react';
-import createDialog, { MethodDialogProps, DialogType } from './createDialog';
+import createDialog, { DialogType, MethodDialogProps } from './createDialog';
 
-type DialogHookRef = {
+type HookDialogRef = {
   update: (updateProps: MethodDialogProps) => void;
 };
 
-export type DialogHookProps = Omit<MethodDialogProps, 'visible' | 'defaultVisible'>;
+export type DialogHookProps = Omit<MethodDialogProps, 'themeContext' | 'localizationContext'>;
 
-export type DialogHookUpdate = (
+export type MethodDialogHookUpdate = (
   props: Partial<DialogHookProps> | ((prev: DialogHookProps) => Partial<DialogHookProps>),
 ) => void;
 
 export type DialogHookReturnType = {
   destroy: () => void;
-  update: DialogHookUpdate;
+  update: MethodDialogHookUpdate;
+  isDestoryed: () => boolean;
 };
 
-const createHookMessageDialog = (props: MethodDialogProps, type?: DialogType) => {
+const createHookDialog = (props: MethodDialogProps, type?: DialogType) => {
   const Dialog = createDialog(type);
 
-  const HookMessageDialog = forwardRef<DialogHookRef>((_, ref) => {
+  const HookDialog = forwardRef<HookDialogRef>((_, ref) => {
     const [innerConfig, setInnerConfig] = useState<MethodDialogProps>(props);
 
     useImperativeHandle(ref, () => {
@@ -43,10 +44,10 @@ const createHookMessageDialog = (props: MethodDialogProps, type?: DialogType) =>
   });
 
   if (!isProduction) {
-    HookMessageDialog.displayName = 'HookMessageDialog';
+    HookDialog.displayName = 'HookDialog';
   }
 
-  return HookMessageDialog;
+  return HookDialog;
 };
 
 let uuid = 0;
@@ -64,9 +65,9 @@ const useDialog = () => {
         destroyDOM();
       },
     };
-    const Dialog = createHookMessageDialog(currentProps, type);
+    const Dialog = createHookDialog(currentProps, type);
 
-    const ref = createRef<DialogHookRef>();
+    const ref = createRef<HookDialogRef>();
 
     let destroyState = false;
 
@@ -74,6 +75,7 @@ const useDialog = () => {
 
     const destroyDOM = () => {
       setDialogs((prev) => prev.filter((it) => it !== dialog));
+      destroyState = true;
     };
 
     const render = (renderProps: MethodDialogProps) => {
@@ -86,24 +88,16 @@ const useDialog = () => {
       ref.current?.update(renderProps);
     };
 
-    const update: DialogHookUpdate = (updateProps) => {
-      const { onAfterClosed, ...otherProps } =
-        typeof updateProps === 'function' ? updateProps(currentProps) : updateProps;
+    const update: MethodDialogHookUpdate = (updateProps) => {
+      const newProps = typeof updateProps === 'function' ? updateProps(currentProps) : updateProps;
+      currentProps = { ...currentProps, ...newProps, visible: undefined, defaultVisible: true };
 
-      currentProps = {
-        ...currentProps,
-        ...otherProps,
-        visible: undefined,
-        defaultVisible: true,
+      const { onAfterClosed } = currentProps;
+
+      currentProps.onAfterClosed = () => {
+        onAfterClosed?.();
+        destroyDOM();
       };
-
-      if (onAfterClosed) {
-        currentProps.onAfterClosed = () => {
-          onAfterClosed?.();
-          destroyDOM();
-        };
-      }
-
       render(currentProps);
     };
 
@@ -111,8 +105,11 @@ const useDialog = () => {
       render({
         ...currentProps,
         visible: false,
+        onAfterClosed() {
+          currentProps.onAfterClosed?.();
+          destroyDOM();
+        },
       });
-      destroyState = true;
     };
 
     setDialogs((prev) => [...prev, dialog]);
@@ -120,6 +117,7 @@ const useDialog = () => {
     return {
       update,
       destroy,
+      isDestoryed: () => destroyState,
     };
   }, []);
 

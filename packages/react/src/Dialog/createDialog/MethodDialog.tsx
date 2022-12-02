@@ -93,7 +93,7 @@ const MethodDialog: FC<MethodDialogProps> = (props) => {
     setFirst(false);
   }, []);
 
-  const rootClassName = `${clsPrefix}-message-dialog`;
+  const rootClassName = `${clsPrefix}-method-dialog`;
 
   const headerWrapper = (
     <MethodDialogHeader className={`${rootClassName}__title`}>
