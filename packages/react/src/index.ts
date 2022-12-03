@@ -81,12 +81,11 @@ export type {
   DialogButtonProps,
   MethodDialogContentStyleProps,
   MethodDialogProps,
-  MethodDialogHookUpdate,
+  DialogHookUpdate,
   DialogType,
   DialogMethodProps,
   DialogMethodReturnType,
   DialogMethodUpdate,
-  BaseDialogMethodProps,
   DialogHookProps,
   DialogHookReturnType,
 } from './Dialog';

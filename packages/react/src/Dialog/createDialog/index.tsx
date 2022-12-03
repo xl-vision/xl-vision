@@ -23,7 +23,7 @@ const createDialog = (type?: DialogType) => {
       switch (type) {
         case 'success': {
           return {
-            icon: <CheckCircleOutlined style={{ color: color.themes.primary.color }} />,
+            icon: <CheckCircleOutlined style={{ color: color.themes.success.color }} />,
             confirmText: locale.Dialog.methods.successText,
             prompt: true,
           };

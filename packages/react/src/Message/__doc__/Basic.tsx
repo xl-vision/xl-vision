@@ -1,15 +1,56 @@
-import { Button, Message } from '@xl-vision/react';
+import { Button, Message, styled } from '@xl-vision/react';
 import { useCallback } from 'react';
 
+const Root = styled('div')(() => {
+  return {
+    '> *': {
+      marginRight: 8,
+    },
+  };
+});
+
 const Demo = () => {
-  const handleOpen = useCallback(() => {
-    Message.info({ content: 'hello world' });
-  }, []);
+  const [message, holder] = Message.useMessage();
+
+  const handleInfo = useCallback(() => {
+    message.info({ content: 'hello world' });
+  }, [message]);
+
+  const handleWarning = useCallback(() => {
+    message.warning({ content: 'hello world' });
+  }, [message]);
+
+  const handleError = useCallback(() => {
+    message.error({ content: 'hello world' });
+  }, [message]);
+
+  const handleSuccess = useCallback(() => {
+    message.success({ content: 'hello world' });
+  }, [message]);
+
+  const handleLoading = useCallback(() => {
+    message.loading({ content: 'hello world' });
+  }, [message]);
 
   return (
-    <div>
-      <Button onClick={handleOpen}>INFO</Button>
-    </div>
+    <Root>
+      {holder}
+      <Button color='info' onClick={handleInfo}>
+        Info
+      </Button>
+      <Button color='warning' onClick={handleWarning}>
+        Warn
+      </Button>
+      <Button color='error' onClick={handleError}>
+        Error
+      </Button>
+      <Button color='success' onClick={handleSuccess}>
+        Success
+      </Button>
+      <Button color='primary' onClick={handleLoading}>
+        Loading
+      </Button>
+    </Root>
   );
 };
 

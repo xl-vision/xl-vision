@@ -1,12 +1,13 @@
 import { useConstantFn } from '@xl-vision/hooks';
 import { isProduction } from '@xl-vision/utils';
-import { forwardRef, ReactNode, useEffect } from 'react';
+import { forwardRef, HTMLAttributes, ReactNode, useEffect } from 'react';
+import { clsx } from 'clsx';
 import Transition from '../../Transition';
 import { styled } from '../../styles';
 import usePropChange from '../../hooks/usePropChange';
 import { useTheme } from '../../ThemeProvider';
 
-export type MessageProps = {
+export type MessageProps = HTMLAttributes<HTMLDivElement> & {
   defaultVisible?: boolean;
   visible?: boolean;
   content: ReactNode;
@@ -23,30 +24,44 @@ const MessageRoot = styled('div', {
 })(({ theme }) => {
   const { clsPrefix, transition, color, elevations, styleSize } = theme;
 
-  return {
-    display: 'flex',
-    alignItems: 'center',
-    backgroundColor: color.background.paper,
-    borderRadius: styleSize.middle.borderRadius,
-    padding: `${styleSize.middle.padding.y}px ${styleSize.middle.padding.x}px`,
-    marginTop: 8,
-    ...elevations(24),
+  const rootClassName = `${clsPrefix}-message`;
 
-    [`&.${clsPrefix}-message`]: {
+  return {
+    padding: `8px 0`,
+
+    [`&.${rootClassName}`]: {
       '&-appear-active, &-enter-active': {
         transition: transition.standard('all'),
       },
       '&-exit-active': {
         transition: transition.standard('all'),
       },
-      '&-enter-from,&-appear-from,&-exit-to': {
+      '&-enter-from, &-appear-from': {
         opacity: 0,
-        marginTop: 0,
+        transform: 'translateY(-100%)',
       },
-      '&-exit-from,&-appear-to,&-enter-to': {
+      '&-appear-to, &-enter-to': {
         opacity: 1,
-        marginTop: 8,
+        transform: 'translateY(0px)',
       },
+      '&-exit-from': {
+        opacity: 1,
+        maxHeight: 150,
+      },
+      '&-exit-to': {
+        opacity: 0,
+        padding: 0,
+        maxHeight: 0,
+      },
+    },
+
+    [`.${rootClassName}__inner`]: {
+      display: 'flex',
+      alignItems: 'center',
+      backgroundColor: color.background.paper,
+      borderRadius: styleSize.middle.borderRadius,
+      padding: `${styleSize.middle.padding.y}px ${styleSize.middle.padding.x}px`,
+      ...elevations(12),
     },
   };
 });
@@ -72,6 +87,7 @@ const Message = forwardRef<HTMLDivElement, MessageProps>((props, ref) => {
     visible: visibleProp,
     icon,
     onAfterClosed,
+    className,
   } = props;
 
   const { clsPrefix } = useTheme();
@@ -99,14 +115,16 @@ const Message = forwardRef<HTMLDivElement, MessageProps>((props, ref) => {
 
   return (
     <Transition
-      transitionClassName={rootClassName}
+      transitionClassName={clsx(rootClassName, className)}
       transitionOnFirst={true}
       in={visible}
       onExited={handleExit}
     >
       <MessageRoot className={rootClassName} ref={ref}>
-        {icon && <MessageIcon className={`${rootClassName}__icon`}>{icon}</MessageIcon>}
-        <div>{content}</div>
+        <div className={`${rootClassName}__inner`}>
+          {icon && <MessageIcon className={`${rootClassName}__icon`}>{icon}</MessageIcon>}
+          <div>{content}</div>
+        </div>
       </MessageRoot>
     </Transition>
   );

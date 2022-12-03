@@ -16,13 +16,13 @@ type HookDialogRef = {
 
 export type DialogHookProps = Omit<MethodDialogProps, 'visible' | 'defaultVisible'>;
 
-export type MethodDialogHookUpdate = (
+export type DialogHookUpdate = (
   props: Partial<DialogHookProps> | ((prev: DialogHookProps) => Partial<DialogHookProps>),
 ) => void;
 
 export type DialogHookReturnType = {
   destroy: () => void;
-  update: MethodDialogHookUpdate;
+  update: DialogHookUpdate;
   isDestoryed: () => boolean;
 };
 
@@ -88,7 +88,7 @@ const useDialog = () => {
       ref.current?.update(renderProps);
     };
 
-    const update: MethodDialogHookUpdate = (updateProps) => {
+    const update: DialogHookUpdate = (updateProps) => {
       const newProps = typeof updateProps === 'function' ? updateProps(currentProps) : updateProps;
       currentProps = { ...currentProps, ...newProps, visible: undefined, defaultVisible: true };
 
