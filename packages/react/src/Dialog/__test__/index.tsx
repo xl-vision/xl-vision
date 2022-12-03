@@ -1,5 +1,5 @@
 import { act, render } from '@testing-library/react';
-import Dialog from '..';
+import MethodDialog from '..';
 
 describe('Dialog', () => {
   beforeAll(() => {
@@ -7,9 +7,9 @@ describe('Dialog', () => {
   });
   it('Test prop visible', () => {
     const { rerender } = render(
-      <Dialog title='title'>
+      <MethodDialog title='title'>
         <div>body</div>
-      </Dialog>,
+      </MethodDialog>,
     );
 
     act(() => {
@@ -19,9 +19,9 @@ describe('Dialog', () => {
     expect(document.querySelector('.xl-dialog')).toBe(null);
 
     rerender(
-      <Dialog title='title' visible={true}>
+      <MethodDialog title='title' visible={true}>
         <div>body</div>
-      </Dialog>,
+      </MethodDialog>,
     );
 
     act(() => {
@@ -31,9 +31,9 @@ describe('Dialog', () => {
     expect(document.querySelector<HTMLElement>('.xl-dialog')?.style.display).toBe('');
 
     rerender(
-      <Dialog title='title' visible={false}>
+      <MethodDialog title='title' visible={false}>
         <div>body</div>
-      </Dialog>,
+      </MethodDialog>,
     );
 
     act(() => {

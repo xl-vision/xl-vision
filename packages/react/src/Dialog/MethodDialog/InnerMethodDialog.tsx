@@ -8,14 +8,14 @@ import { styled } from '../../styles';
 import usePropChange from '../../hooks/usePropChange';
 import { useTheme } from '../../ThemeProvider';
 
-export interface MethodDialogProps extends Omit<DialogProps, 'children'> {
+export interface InnerMethodDialogProps extends Omit<DialogProps, 'children'> {
   content?: ReactNode;
   icon?: ReactNode;
 }
 
-const displayName = 'MethodDialog';
+const displayName = 'InnerMethodDialog';
 
-const MethodDialogHeader = styled('h6', {
+const InnerMethodDialogHeader = styled('h6', {
   name: displayName,
   slot: 'Header',
 })(({ theme }) => {
@@ -29,7 +29,7 @@ const MethodDialogHeader = styled('h6', {
   };
 });
 
-const MethodDialogTitle = styled('span', {
+const InnerMethodDialogTitle = styled('span', {
   name: displayName,
   slot: 'Title',
 })(() => {
@@ -38,7 +38,7 @@ const MethodDialogTitle = styled('span', {
   };
 });
 
-const MethodDialogIcon = styled('span', {
+const InnerMethodDialogIcon = styled('span', {
   name: displayName,
   slot: 'Icon',
 })(() => {
@@ -51,14 +51,12 @@ const MethodDialogIcon = styled('span', {
   };
 });
 
-export type MethodDialogContentStyleProps = {
-  icon: boolean;
-};
-
-const MethodDialogContent = styled('div', {
+const InnerMethodDialogContent = styled('div', {
   name: displayName,
   slot: 'Content',
-})<MethodDialogContentStyleProps>(({ styleProps }) => {
+})<{
+  icon: boolean;
+}>(({ styleProps }) => {
   const { icon } = styleProps;
   const styles: CSSObject = {};
 
@@ -69,7 +67,7 @@ const MethodDialogContent = styled('div', {
   return styles;
 });
 
-const MethodDialog: FC<MethodDialogProps> = (props) => {
+const InnerMethodDialog: FC<InnerMethodDialogProps> = (props) => {
   const {
     visible: visibleProp,
     defaultVisible: defaultVisibleProp = false,
@@ -96,13 +94,15 @@ const MethodDialog: FC<MethodDialogProps> = (props) => {
     setFirst(false);
   }, []);
 
-  const rootClassName = `${clsPrefix}-method-dialog`;
+  const rootClassName = `${clsPrefix}-inner-method-dialog`;
 
   const headerWrapper = (
-    <MethodDialogHeader className={`${rootClassName}__title`}>
-      {icon && <MethodDialogIcon className={`${rootClassName}__icon`}>{icon}</MethodDialogIcon>}
-      <MethodDialogTitle>{title}</MethodDialogTitle>
-    </MethodDialogHeader>
+    <InnerMethodDialogHeader className={`${rootClassName}__title`}>
+      {icon && (
+        <InnerMethodDialogIcon className={`${rootClassName}__icon`}>{icon}</InnerMethodDialogIcon>
+      )}
+      <InnerMethodDialogTitle>{title}</InnerMethodDialogTitle>
+    </InnerMethodDialogHeader>
   );
 
   return (
@@ -114,15 +114,15 @@ const MethodDialog: FC<MethodDialogProps> = (props) => {
       onVisibleChange={handleVisibleChange}
     >
       {content && (
-        <MethodDialogContent styleProps={{ icon: !!icon }}>{content}</MethodDialogContent>
+        <InnerMethodDialogContent styleProps={{ icon: !!icon }}>{content}</InnerMethodDialogContent>
       )}
     </Dialog>
   );
 };
 
 if (!isProduction) {
-  MethodDialog.displayName = displayName;
-  MethodDialog.propTypes = {
+  InnerMethodDialog.displayName = displayName;
+  InnerMethodDialog.propTypes = {
     visible: Proptypes.bool,
     defaultVisible: Proptypes.bool,
     onVisibleChange: Proptypes.func,
@@ -133,4 +133,4 @@ if (!isProduction) {
   };
 }
 
-export default MethodDialog;
+export default InnerMethodDialog;

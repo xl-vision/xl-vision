@@ -3,9 +3,9 @@ import { open, destroyAll, success, info, error, warning, confirm } from './meth
 import useDialog from './useDialog';
 
 export * from './Dialog';
-export * from './createDialog';
+export * from './MethodDialog';
 export * from './useDialog';
-export type { DialogMethodUpdate, DialogMethodProps, DialogMethodReturnType } from './methods';
+export * from './methods';
 
 const DialogEnhancer = Dialog as typeof Dialog & {
   open: typeof open;

@@ -79,8 +79,8 @@ export { default as Dialog } from './Dialog';
 export type {
   DialogProps,
   DialogButtonProps,
-  MethodDialogContentStyleProps,
   MethodDialogProps,
+  InnerMethodDialogProps,
   DialogHookUpdate,
   DialogType,
   DialogMethodProps,
@@ -118,4 +118,4 @@ export { default as Anchor } from './Anchor';
 export type { AnchorProps, AnchorLinkProps, AnchorType, AnchorInstance } from './Anchor';
 
 export { default as Message } from './Message';
-export type { MessageProps } from './Message';
+export type { MessageProps, MessageType, InnerMessageProps } from './Message';

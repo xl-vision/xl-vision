@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import ThemeProvider, { ThemeProviderProps } from '../ThemeProvider';
 import ConfigProvider, { ConfigProviderProps } from '../ConfigProvider';
 import useDialog, { DialogHookProps } from './useDialog';
-import { DialogType } from './createDialog';
+import { DialogType } from './MethodDialog';
 
 export type DialogMethodProps = DialogHookProps & {
   themeProviderProps?: Omit<ThemeProviderProps, 'children'>;

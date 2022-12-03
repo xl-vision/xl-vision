@@ -8,7 +8,7 @@ import {
   createRef,
   useMemo,
 } from 'react';
-import createDialog, { DialogType, MethodDialogProps } from './createDialog';
+import MethodDialog, { MethodDialogProps } from './MethodDialog';
 
 type HookDialogRef = {
   update: (updateProps: MethodDialogProps) => void;
@@ -26,21 +26,19 @@ export type DialogHookReturnType = {
   isDestoryed: () => boolean;
 };
 
-const createHookDialog = (props: MethodDialogProps, type?: DialogType) => {
-  const Dialog = createDialog(type);
-
+const createHookDialog = (props: MethodDialogProps) => {
   const HookDialog = forwardRef<HookDialogRef>((_, ref) => {
-    const [innerConfig, setInnerConfig] = useState<MethodDialogProps>(props);
+    const [methodDialogProps, setMethodDialogProps] = useState<MethodDialogProps>(props);
 
     useImperativeHandle(ref, () => {
       return {
         update(updateProps) {
-          setInnerConfig(updateProps);
+          setMethodDialogProps(updateProps);
         },
       };
     });
 
-    return <Dialog {...innerConfig} />;
+    return <MethodDialog {...methodDialogProps} />;
   });
 
   if (!isProduction) {
@@ -55,7 +53,7 @@ let uuid = 0;
 const useDialog = () => {
   const [dialogs, setDialogs] = useState<Array<ReactElement>>([]);
 
-  const method = useCallback((props: DialogHookProps, type?: DialogType): DialogHookReturnType => {
+  const method = useCallback((props: DialogHookProps): DialogHookReturnType => {
     let currentProps: MethodDialogProps = {
       ...props,
       visible: undefined,
@@ -65,7 +63,7 @@ const useDialog = () => {
         destroyDOM();
       },
     };
-    const Dialog = createHookDialog(currentProps, type);
+    const Dialog = createHookDialog(currentProps);
 
     const ref = createRef<HookDialogRef>();
 
@@ -124,11 +122,11 @@ const useDialog = () => {
   const methods = useMemo(
     () => ({
       open: (props: DialogHookProps) => method(props),
-      confirm: (props: DialogHookProps) => method(props, 'confirm'),
-      error: (props: DialogHookProps) => method(props, 'error'),
-      info: (props: DialogHookProps) => method(props, 'info'),
-      success: (props: DialogHookProps) => method(props, 'success'),
-      warning: (props: DialogHookProps) => method(props, 'warning'),
+      confirm: (props: Omit<DialogHookProps, 'type'>) => method({ ...props, type: 'confirm' }),
+      error: (props: Omit<DialogHookProps, 'type'>) => method({ ...props, type: 'error' }),
+      info: (props: Omit<DialogHookProps, 'type'>) => method({ ...props, type: 'info' }),
+      success: (props: Omit<DialogHookProps, 'type'>) => method({ ...props, type: 'success' }),
+      warning: (props: Omit<DialogHookProps, 'type'>) => method({ ...props, type: 'warning' }),
     }),
     [method],
   );

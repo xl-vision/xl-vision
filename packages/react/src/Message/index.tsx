@@ -4,7 +4,7 @@ import { setConfig } from './config';
 import { destroyAll, info, success, error, open, loading } from './methods';
 import useMessage from './useMessage';
 
-export * from './createMessage';
+export * from './Message';
 
 const Message = {
   open,

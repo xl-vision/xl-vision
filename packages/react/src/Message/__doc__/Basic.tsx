@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 import { Button, Message, styled } from '@xl-vision/react';
 import { useCallback } from 'react';
 
@@ -13,23 +14,23 @@ const Demo = () => {
   const [message, holder] = Message.useMessage();
 
   const handleInfo = useCallback(() => {
-    message.info({ content: 'hello world' });
+    message.info('hello world');
   }, [message]);
 
   const handleWarning = useCallback(() => {
-    message.warning({ content: 'hello world' });
+    message.warning('hello world');
   }, [message]);
 
   const handleError = useCallback(() => {
-    message.error({ content: 'hello world' });
+    message.error('hello world');
   }, [message]);
 
   const handleSuccess = useCallback(() => {
-    message.success({ content: 'hello world' });
+    message.success('hello world');
   }, [message]);
 
   const handleLoading = useCallback(() => {
-    message.loading({ content: 'hello world' });
+    message.loading('hello world');
   }, [message]);
 
   return (

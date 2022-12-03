@@ -1,13 +1,13 @@
 import { useConstantFn } from '@xl-vision/hooks';
 import { isProduction } from '@xl-vision/utils';
-import { forwardRef, HTMLAttributes, ReactNode, useEffect } from 'react';
+import { forwardRef, HTMLAttributes, MouseEvent, ReactNode, useEffect, useRef } from 'react';
 import { clsx } from 'clsx';
 import Transition from '../../Transition';
 import { styled } from '../../styles';
 import usePropChange from '../../hooks/usePropChange';
 import { useTheme } from '../../ThemeProvider';
 
-export type MessageProps = HTMLAttributes<HTMLDivElement> & {
+export type InnerMessageProps = HTMLAttributes<HTMLDivElement> & {
   defaultVisible?: boolean;
   visible?: boolean;
   content: ReactNode;
@@ -16,15 +16,15 @@ export type MessageProps = HTMLAttributes<HTMLDivElement> & {
   onAfterClosed?: () => void;
 };
 
-const displayName = 'Message';
+const displayName = 'InnerMessage';
 
-const MessageRoot = styled('div', {
+const InnerMessageRoot = styled('div', {
   name: displayName,
   slot: 'Root',
 })(({ theme }) => {
   const { clsPrefix, transition, color, elevations, styleSize } = theme;
 
-  const rootClassName = `${clsPrefix}-message`;
+  const rootClassName = `${clsPrefix}-inner-message`;
 
   return {
     padding: `8px 0`,
@@ -66,7 +66,7 @@ const MessageRoot = styled('div', {
   };
 });
 
-const MessageIcon = styled('span', {
+const InnerMessageIcon = styled('span', {
   name: displayName,
   slot: 'Icon',
 })(() => {
@@ -79,7 +79,7 @@ const MessageIcon = styled('span', {
   };
 });
 
-const Message = forwardRef<HTMLDivElement, MessageProps>((props, ref) => {
+const InnerMessage = forwardRef<HTMLDivElement, InnerMessageProps>((props, ref) => {
   const {
     duration = 3000,
     content,
@@ -88,28 +88,45 @@ const Message = forwardRef<HTMLDivElement, MessageProps>((props, ref) => {
     icon,
     onAfterClosed,
     className,
+    onMouseEnter,
+    onMouseLeave,
+    ...others
   } = props;
 
   const { clsPrefix } = useTheme();
 
-  const rootClassName = `${clsPrefix}-message`;
+  const rootClassName = `${clsPrefix}-inner-message`;
 
   const [visible, setVisible] = usePropChange(defaultVisible, visibleProp);
 
+  const timerRef = useRef<number>();
+
   const handleExit = useConstantFn(() => {
     onAfterClosed?.();
+  });
+
+  const handleMouseEnter = useConstantFn((e: MouseEvent<HTMLDivElement>) => {
+    onMouseEnter?.(e);
+    window.clearTimeout(timerRef.current);
+  });
+
+  const handleMouseLeave = useConstantFn((e: MouseEvent<HTMLDivElement>) => {
+    onMouseLeave?.(e);
+    timerRef.current = window.setTimeout(() => {
+      setVisible(false);
+    }, duration);
   });
 
   useEffect(() => {
     if (!duration) {
       return;
     }
-    const timer = setTimeout(() => {
+    timerRef.current = window.setTimeout(() => {
       setVisible(false);
     }, duration);
 
     return () => {
-      clearTimeout(timer);
+      window.clearTimeout(timerRef.current);
     };
   }, [duration, setVisible]);
 
@@ -120,19 +137,25 @@ const Message = forwardRef<HTMLDivElement, MessageProps>((props, ref) => {
       in={visible}
       onExited={handleExit}
     >
-      <MessageRoot className={rootClassName} ref={ref}>
+      <InnerMessageRoot
+        ref={ref}
+        {...others}
+        className={rootClassName}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         <div className={`${rootClassName}__inner`}>
-          {icon && <MessageIcon className={`${rootClassName}__icon`}>{icon}</MessageIcon>}
+          {icon && <InnerMessageIcon className={`${rootClassName}__icon`}>{icon}</InnerMessageIcon>}
           <div>{content}</div>
         </div>
-      </MessageRoot>
+      </InnerMessageRoot>
     </Transition>
   );
 });
 
 if (!isProduction) {
-  Message.displayName = displayName;
-  Message.propTypes = {};
+  InnerMessage.displayName = displayName;
+  InnerMessage.propTypes = {};
 }
 
-export default Message;
+export default InnerMessage;

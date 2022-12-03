@@ -3,11 +3,11 @@ import { isServer, noop, warning as warningLog } from '@xl-vision/utils';
 import { ReactElement } from 'react';
 import ThemeProvider, { ThemeProviderProps } from '../ThemeProvider';
 import ConfigProvider, { ConfigProviderProps } from '../ConfigProvider';
-import createMessage, { MessageProps, MessageType } from './createMessage';
 import MessageList from './MessageList';
 import messageConfig from './config';
+import { MessageHookProps } from './useMessage';
 
-export type BasicMessageMethodProps = MessageProps & {
+export type BasicMessageMethodProps = MessageHookProps & {
   themeProviderProps?: Omit<ThemeProviderProps, 'children'>;
   configProviderProps?: Omit<ConfigProviderProps, 'children'>;
 };
