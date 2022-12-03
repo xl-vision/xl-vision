@@ -24,6 +24,8 @@ const MethodDialogHeader = styled('h6', {
   return {
     ...typography.h6.style,
     margin: 0,
+    display: 'flex',
+    alignItems: 'center',
   };
 });
 
@@ -42,6 +44,7 @@ const MethodDialogIcon = styled('span', {
 })(() => {
   return {
     paddingRight: 5,
+    lineHeight: 1,
     svg: {
       verticalAlign: 'middle',
     },

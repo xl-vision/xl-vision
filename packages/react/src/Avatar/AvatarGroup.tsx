@@ -32,12 +32,13 @@ const displayName = 'AvatarGroup';
 const AvatarGroupRoot = styled('div', {
   name: displayName,
   slot: 'Root',
-})(({ theme }) => {
-  const { clsPrefix, color, styleSize } = theme;
+})<{ size: ComponentSize }>(({ styleProps, theme }) => {
+  const { size } = styleProps;
+  const { clsPrefix, color, styleSize, componentSize } = theme;
 
   return {
     [`.${clsPrefix}-avatar`]: {
-      border: `${styleSize.middle.border}px solid ${color.background.paper}`,
+      border: `${styleSize[size || componentSize].border}px solid ${color.background.paper}`,
       '&:not(:first-child)': {
         marginLeft: -8,
       },
@@ -123,9 +124,18 @@ const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>((props, ref) =>
 
   const contextValue = useMemo<AvatarContextProps>(() => ({ size, shape }), [size, shape]);
 
+  const rootSize = useMemo(() => {
+    return (typeof size === 'string' && size) as ComponentSize;
+  }, [size]);
+
   return (
     <AvatarContext.Provider value={contextValue}>
-      <AvatarGroupRoot {...others} className={rootClasses} ref={ref}>
+      <AvatarGroupRoot
+        {...others}
+        styleProps={{ size: rootSize }}
+        className={rootClasses}
+        ref={ref}
+      >
         {showedChildren}
       </AvatarGroupRoot>
     </AvatarContext.Provider>

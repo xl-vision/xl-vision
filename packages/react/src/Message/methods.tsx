@@ -1,13 +1,18 @@
 import ReactDOM from 'react-dom';
 import { isServer, noop, warning as warningLog } from '@xl-vision/utils';
+import { ReactElement } from 'react';
 import ThemeProvider, { ThemeProviderProps } from '../ThemeProvider';
 import ConfigProvider, { ConfigProviderProps } from '../ConfigProvider';
 import createMessage, { MessageProps, MessageType } from './createMessage';
+import MessageList from './MessageList';
+import messageConfig from './config';
 
-export type MessageMethodProps = MessageProps & {
+export type BasicMessageMethodProps = MessageProps & {
   themeProviderProps?: Omit<ThemeProviderProps, 'children'>;
   configProviderProps?: Omit<ConfigProviderProps, 'children'>;
 };
+
+export type MessageMethodProps = Omit<BasicMessageMethodProps, 'visible' | 'defaultVisible'>;
 
 export type MessageMethodUpdate = (
   props: Partial<MessageMethodProps> | ((prev: MessageMethodProps) => Partial<MessageMethodProps>),
@@ -16,24 +21,27 @@ export type MessageMethodUpdate = (
 export type MessageMethodReturnType = {
   destroy: () => void;
   update: MessageMethodUpdate;
+  isDestoryed: () => boolean;
 };
 
 const destroyFunctions: Array<() => void> = [];
+
+let nodes: Array<ReactElement> = [];
+
+let rootNode: HTMLElement | undefined;
 
 const method = (props: MessageMethodProps, type?: MessageType): MessageMethodReturnType => {
   if (isServer) {
     return {
       destroy: noop,
       update: noop,
+      isDestoryed: () => false,
     };
   }
 
   const Message = createMessage(type);
 
-  const div = document.createElement('div');
-  document.body.appendChild(div);
-
-  let currentProps: MessageMethodProps = {
+  let currentProps: BasicMessageMethodProps = {
     ...props,
     visible: undefined,
     defaultVisible: true,
@@ -45,23 +53,49 @@ const method = (props: MessageMethodProps, type?: MessageType): MessageMethodRet
 
   let destroyState = false;
 
-  const render = (renderProps: MessageMethodProps) => {
+  let currentNode: ReactElement;
+
+  const render = (renderProps: BasicMessageMethodProps) => {
     if (destroyState) {
       return warningLog(
         true,
-        `The dialog instance was destroyed, please do not update or destroy it again.`,
+        `The message instance was destroyed, please do not update or destroy it again.`,
       );
     }
+
+    if (!rootNode) {
+      rootNode = document.createElement('div');
+      document.body.appendChild(rootNode);
+    }
+
     const { configProviderProps, themeProviderProps, ...others } = renderProps;
+
+    const index = nodes.findIndex((it) => it === currentNode);
+
+    currentNode = (
+      <ConfigProvider {...configProviderProps}>
+        <ThemeProvider {...themeProviderProps}>
+          <Message {...others} />
+        </ThemeProvider>
+      </ConfigProvider>
+    );
+
+    if (index > -1) {
+      nodes[index] = currentNode;
+    } else {
+      if (messageConfig.maxCount && nodes.length >= messageConfig.maxCount) {
+        const destoryFns = destroyFunctions.splice(0, nodes.length - messageConfig.maxCount + 1);
+        destoryFns.forEach((it) => it());
+      }
+      nodes.push(currentNode);
+    }
 
     setTimeout(() => {
       ReactDOM.render(
-        <ConfigProvider {...configProviderProps}>
-          <ThemeProvider {...themeProviderProps}>
-            <Message container={null} {...others} />
-          </ThemeProvider>
-        </ConfigProvider>,
-        div,
+        <MessageList container={messageConfig.container} top={messageConfig.top}>
+          {nodes}
+        </MessageList>,
+        rootNode!,
       );
     });
   };
@@ -88,13 +122,34 @@ const method = (props: MessageMethodProps, type?: MessageType): MessageMethodRet
   };
 
   const destroyDOM = () => {
-    const unmountResult = ReactDOM.unmountComponentAtNode(div);
-    if (unmountResult && div.parentNode) {
-      div.parentNode.removeChild(div);
+    nodes = nodes.filter((it) => it !== currentNode);
+
+    const index = destroyFunctions.indexOf(destroy);
+    if (index > -1) {
+      destroyFunctions.splice(index, 1);
     }
-    const i = destroyFunctions.indexOf(destroy);
-    if (i > -1) {
-      destroyFunctions.splice(i, 1);
+
+    if (nodes.length) {
+      setTimeout(() => {
+        ReactDOM.render(
+          <MessageList container={messageConfig.container} top={messageConfig.top}>
+            {nodes}
+          </MessageList>,
+          rootNode!,
+        );
+      });
+
+      return;
+    }
+
+    if (!rootNode) {
+      return;
+    }
+
+    const unmountResult = ReactDOM.unmountComponentAtNode(rootNode);
+    if (unmountResult && rootNode.parentNode) {
+      rootNode.parentNode.removeChild(rootNode);
+      rootNode = undefined;
     }
   };
 
@@ -113,6 +168,7 @@ const method = (props: MessageMethodProps, type?: MessageType): MessageMethodRet
   return {
     destroy,
     update,
+    isDestoryed: () => destroyState,
   };
 };
 
@@ -121,7 +177,7 @@ export const info = (props: MessageMethodProps) => method(props, 'info');
 export const success = (props: MessageMethodProps) => method(props, 'success');
 export const warning = (props: MessageMethodProps) => method(props, 'warning');
 export const error = (props: MessageMethodProps) => method(props, 'error');
-export const confirm = (props: MessageMethodProps) => method(props, 'confirm');
+export const loading = (props: MessageMethodProps) => method(props, 'loading');
 
 export const destroyAll = () => {
   let fn = destroyFunctions.pop();

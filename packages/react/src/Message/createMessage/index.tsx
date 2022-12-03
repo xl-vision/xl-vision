@@ -3,13 +3,14 @@ import {
   CloseCircleOutlined,
   ExclamationCircleOutlined,
   InfoCircleOutlined,
+  LoadingOutlined,
 } from '@xl-vision/icons';
 import { isProduction } from '@xl-vision/utils';
 import { FC, useMemo } from 'react';
 import { useTheme } from '../../ThemeProvider';
 import Message, { MessageProps } from './Message';
 
-export type MessageType = 'success' | 'error' | 'warning' | 'info' | 'confirm';
+export type MessageType = 'success' | 'error' | 'warning' | 'info' | 'loading';
 
 export * from './Message';
 
@@ -39,9 +40,9 @@ const createMessage = (type?: MessageType) => {
             icon: <InfoCircleOutlined style={{ color: color.themes.info.color }} />,
           };
         }
-        case 'confirm': {
+        case 'loading': {
           return {
-            icon: <ExclamationCircleOutlined style={{ color: color.themes.primary.color }} />,
+            icon: <LoadingOutlined style={{ color: color.themes.primary.color }} />,
           };
         }
         default: {

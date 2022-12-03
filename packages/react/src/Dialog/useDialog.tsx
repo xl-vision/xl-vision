@@ -14,7 +14,7 @@ type HookDialogRef = {
   update: (updateProps: MethodDialogProps) => void;
 };
 
-export type DialogHookProps = Omit<MethodDialogProps, 'themeContext' | 'localizationContext'>;
+export type DialogHookProps = Omit<MethodDialogProps, 'visible' | 'defaultVisible'>;
 
 export type MethodDialogHookUpdate = (
   props: Partial<DialogHookProps> | ((prev: DialogHookProps) => Partial<DialogHookProps>),
