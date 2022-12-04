@@ -11,6 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: auto-assign
-        uses: kentaro-m/auto-assign-action@v1.2.3
+        uses: kentaro-m/auto-assign-action@v1.2.4
         # with:
         #   configuration-path: '.github/some_name_for_configs.yml' # Only needed if you use something other than .github/auto_assign.yml
