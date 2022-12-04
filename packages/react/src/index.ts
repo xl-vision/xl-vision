@@ -118,4 +118,13 @@ export { default as Anchor } from './Anchor';
 export type { AnchorProps, AnchorLinkProps, AnchorType, AnchorInstance } from './Anchor';
 
 export { default as Message } from './Message';
-export type { MessageProps, MessageType, InnerMessageProps } from './Message';
+export type {
+  MessageProps,
+  MessageType,
+  InnerMessageProps,
+  MessageHookOptions,
+  MessageHookProps,
+  MessageHookReturnType,
+  MessageHookUpdate,
+  MessageListProps,
+} from './Message';

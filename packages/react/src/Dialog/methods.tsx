@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import ThemeProvider, { ThemeProviderProps } from '../ThemeProvider';
 import ConfigProvider, { ConfigProviderProps } from '../ConfigProvider';
 import useDialog, { DialogHookProps } from './useDialog';
-import { DialogType } from './MethodDialog';
 
 export type DialogMethodProps = DialogHookProps & {
   themeProviderProps?: Omit<ThemeProviderProps, 'children'>;
@@ -22,10 +21,13 @@ export type DialogMethodReturnType = {
 
 const destroyFunctions: Array<() => void> = [];
 
-const method = (
-  { themeProviderProps, configProviderProps, onAfterClosed, ...others }: DialogMethodProps,
-  dialogType?: DialogType,
-): DialogMethodReturnType => {
+const method = ({
+  themeProviderProps,
+  configProviderProps,
+  onAfterClosed,
+  type,
+  ...others
+}: DialogMethodProps): DialogMethodReturnType => {
   let hookMethods: DialogMethodReturnType | undefined;
 
   const div = document.createElement('div');
@@ -58,7 +60,7 @@ const method = (
     const [methods, holder] = useDialog();
 
     useEffect(() => {
-      hookMethods = methods[dialogType || 'open']({ ...others, onAfterClosed: onAfterClosedWrap });
+      hookMethods = methods[type || 'open']({ ...others, onAfterClosed: onAfterClosedWrap });
     }, [methods]);
 
     return (
@@ -82,11 +84,15 @@ const method = (
 };
 
 export const open = (props: DialogMethodProps) => method(props);
-export const info = (props: DialogMethodProps) => method(props, 'info');
-export const success = (props: DialogMethodProps) => method(props, 'success');
-export const warning = (props: DialogMethodProps) => method(props, 'warning');
-export const error = (props: DialogMethodProps) => method(props, 'error');
-export const confirm = (props: DialogMethodProps) => method(props, 'confirm');
+export const info = (props: Omit<DialogMethodProps, 'type'>) => method({ ...props, type: 'info' });
+export const success = (props: Omit<DialogMethodProps, 'type'>) =>
+  method({ ...props, type: 'success' });
+export const warning = (props: Omit<DialogMethodProps, 'type'>) =>
+  method({ ...props, type: 'warning' });
+export const error = (props: Omit<DialogMethodProps, 'type'>) =>
+  method({ ...props, type: 'error' });
+export const confirm = (props: Omit<DialogMethodProps, 'type'>) =>
+  method({ ...props, type: 'confirm' });
 
 export const destroyAll = () => {
   let fn = destroyFunctions.pop();

@@ -7,9 +7,10 @@ import {
   createRef,
   useCallback,
   useMemo,
+  useRef,
 } from 'react';
+import { PortalContainerType } from '../Portal';
 import { increaseZindex } from '../utils/zIndexManger';
-import messageConfig from './config';
 import Message, { MessageProps } from './Message';
 import MessageList from './MessageList';
 
@@ -51,87 +52,114 @@ const createHookMessage = (props: MessageHookProps) => {
   return HookMessage;
 };
 
+export type MessageHookOptions = Partial<{
+  top: number;
+  maxCount: number;
+  container: PortalContainerType<HTMLElement>;
+}>;
+
 let uuid = 0;
 
-const useMessage = () => {
+const DEFAULT_CONTAINER = () => document.body;
+
+const useMessage = ({
+  top = 8,
+  container = DEFAULT_CONTAINER,
+  maxCount = 0,
+}: MessageHookOptions = {}) => {
   const [messages, setMessages] = useState<Array<ReactElement>>([]);
+  const destorysRef = useRef<Array<() => void>>([]);
 
-  const method = useCallback((props: MessageHookProps): MessageHookReturnType => {
-    let promiseResolve: () => void | undefined;
+  const method = useCallback(
+    (props: MessageHookProps): MessageHookReturnType => {
+      let promiseResolve: () => void | undefined;
 
-    let currentProps: MessageProps = {
-      ...props,
-      visible: undefined,
-      defaultVisible: true,
-      style: {
-        zIndex: increaseZindex(),
-        ...props.style,
-      },
-      onAfterClosed: () => {
-        props.onAfterClosed?.();
-        destroyDOM();
-        promiseResolve?.();
-      },
-    };
-    const HookMessage = createHookMessage(currentProps);
-
-    const ref = createRef<HookMessageRef>();
-
-    let destroyState = false;
-
-    const message = <HookMessage key={`message${uuid++}`} ref={ref} />;
-
-    const destroyDOM = () => {
-      setMessages((prev) => prev.filter((it) => it !== message));
-      destroyState = true;
-    };
-
-    const render = (renderProps: MessageProps) => {
-      if (destroyState) {
-        return warningLog(
-          true,
-          `The message instance was destroyed, please do not update or destroy it again.`,
-        );
-      }
-      ref.current?.update(renderProps);
-    };
-
-    const update: MessageHookUpdate = (updateProps) => {
-      const newProps = typeof updateProps === 'function' ? updateProps(currentProps) : updateProps;
-      currentProps = { ...currentProps, ...newProps, visible: undefined, defaultVisible: true };
-
-      const { onAfterClosed } = currentProps;
-
-      currentProps.onAfterClosed = () => {
-        onAfterClosed?.();
-        destroyDOM();
-      };
-      render(currentProps);
-    };
-
-    const destroy = () => {
-      render({
-        ...currentProps,
-        visible: false,
-        onAfterClosed() {
-          currentProps.onAfterClosed?.();
-          destroyDOM();
+      let currentProps: MessageProps = {
+        ...props,
+        visible: undefined,
+        defaultVisible: true,
+        style: {
+          zIndex: increaseZindex(),
+          ...props.style,
         },
-      });
-    };
+        onAfterClosed: () => {
+          props.onAfterClosed?.();
+          destroyDOM();
+          promiseResolve?.();
+        },
+      };
+      const HookMessage = createHookMessage(currentProps);
 
-    setMessages((prev) => [...prev, message]);
+      const ref = createRef<HookMessageRef>();
 
-    const promise = new Promise<void>((resolve) => {
-      promiseResolve = resolve;
-    }) as MessageHookReturnType;
+      let destroyState = false;
 
-    promise.update = update;
-    promise.destroy = destroy;
-    promise.isDestoryed = () => destroyState;
+      const message = <HookMessage key={`message${uuid++}`} ref={ref} />;
 
-    return promise;
-  }, []);
+      const destroyDOM = () => {
+        setMessages((prev) => prev.filter((it) => it !== message));
+        destroyState = true;
+      };
+
+      const render = (renderProps: MessageProps) => {
+        if (destroyState) {
+          return warningLog(
+            true,
+            `The message instance was destroyed, please do not update or destroy it again.`,
+          );
+        }
+        ref.current?.update(renderProps);
+      };
+
+      const update: MessageHookUpdate = (updateProps) => {
+        const newProps =
+          typeof updateProps === 'function' ? updateProps(currentProps) : updateProps;
+        currentProps = { ...currentProps, ...newProps, visible: undefined, defaultVisible: true };
+
+        const { onAfterClosed } = currentProps;
+
+        currentProps.onAfterClosed = () => {
+          onAfterClosed?.();
+          destroyDOM();
+        };
+        render(currentProps);
+      };
+
+      const destroy = () => {
+        render({
+          ...currentProps,
+          visible: false,
+          onAfterClosed() {
+            currentProps.onAfterClosed?.();
+            destroyDOM();
+          },
+        });
+      };
+
+      destorysRef.current.push(destroy);
+
+      setMessages((prev) => [...prev, message]);
+
+      const destroyFns = destorysRef.current;
+
+      if (maxCount < destroyFns.length) {
+        const needDestroyedMessages = destroyFns.slice(0, destroyFns.length - maxCount);
+
+        needDestroyedMessages.forEach((it) => it());
+      }
+
+      const promise = new Promise<void>((resolve) => {
+        promiseResolve = resolve;
+      }) as MessageHookReturnType;
+
+      promise.update = update;
+      promise.destroy = destroy;
+      promise.isDestoryed = () => destroyState;
+
+      return promise;
+    },
+    [maxCount],
+  );
 
   const methods = useMemo(
     () => ({
@@ -170,7 +198,7 @@ const useMessage = () => {
   );
 
   const holder = (
-    <MessageList top={messageConfig.top} container={messageConfig.container}>
+    <MessageList top={top} container={container}>
       {messages}
     </MessageList>
   );
