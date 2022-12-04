@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { Children, FC, ReactNode } from 'react';
 import Portal, { PortalContainerType } from '../Portal';
 import { styled } from '../styles';
 import { increaseZindex } from '../utils/zIndexManger';
@@ -23,6 +23,10 @@ const MessageListRoot = styled('div', {
 });
 
 const MessageList: FC<MessageListProps> = ({ top, container, children }) => {
+  if (!Children.count(children)) {
+    return null;
+  }
+
   return (
     <Portal container={container}>
       <MessageListRoot style={{ top, zIndex: increaseZindex() }}>{children}</MessageListRoot>

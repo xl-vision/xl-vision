@@ -7,6 +7,7 @@ import {
   useCallback,
   createRef,
   useMemo,
+  useRef,
 } from 'react';
 import DedicatedDialog, { DedicatedDialogProps } from './DedicatedDialog';
 
@@ -52,6 +53,7 @@ let uuid = 0;
 
 const useDialog = () => {
   const [dialogs, setDialogs] = useState<Array<ReactElement>>([]);
+  const destorysRef = useRef<Array<() => void>>([]);
 
   const method = useCallback((props: DialogHookProps): DialogHookReturnType => {
     let currentProps: DedicatedDialogProps = {
@@ -59,12 +61,16 @@ const useDialog = () => {
       visible: undefined,
       defaultVisible: true,
     };
+
+    const onAfterClosedWrap = (onAfterClosed?: () => void) => () => {
+      destroyDOM();
+      destorysRef.current = destorysRef.current.filter((it) => it !== destroy);
+      onAfterClosed?.();
+    };
+
     const Dialog = createHookDialog({
       ...currentProps,
-      onAfterClosed() {
-        destroyDOM();
-        currentProps.onAfterClosed?.();
-      },
+      onAfterClosed: onAfterClosedWrap(currentProps.onAfterClosed),
     });
 
     const ref = createRef<HookDialogRef>();
@@ -88,10 +94,7 @@ const useDialog = () => {
 
       ref.current?.update({
         ...renderProps,
-        onAfterClosed() {
-          destroyDOM();
-          renderProps.onAfterClosed?.();
-        },
+        onAfterClosed: onAfterClosedWrap(renderProps.onAfterClosed),
       });
     };
 
@@ -115,6 +118,8 @@ const useDialog = () => {
       });
     };
 
+    destorysRef.current.push(destroy);
+
     setDialogs((prev) => [...prev, dialog]);
 
     return {
@@ -132,6 +137,14 @@ const useDialog = () => {
       info: (props: Omit<DialogHookProps, 'type'>) => method({ ...props, type: 'info' }),
       success: (props: Omit<DialogHookProps, 'type'>) => method({ ...props, type: 'success' }),
       warning: (props: Omit<DialogHookProps, 'type'>) => method({ ...props, type: 'warning' }),
+      destroyAll: () => {
+        const destroyFns = destorysRef.current;
+        let fn = destroyFns.pop();
+        while (fn) {
+          fn();
+          fn = destroyFns.pop();
+        }
+      },
     }),
     [method],
   );

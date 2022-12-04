@@ -127,4 +127,8 @@ export type {
   MessageHookReturnType,
   MessageHookUpdate,
   MessageListProps,
+  MessageConfig,
+  MessageMethodProps,
+  MessageMethodReturnType,
+  MessageMethodUpdate,
 } from './Message';

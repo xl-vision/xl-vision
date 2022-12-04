@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-floating-promises */
 import { Button, Message, styled } from '@xl-vision/react';
 import { useCallback } from 'react';
 

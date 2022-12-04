@@ -1,103 +1,157 @@
 import ReactDOM from 'react-dom';
-import { useEffect } from 'react';
+import { createRef, forwardRef, useImperativeHandle, useState } from 'react';
+import { isProduction } from '@xl-vision/utils';
 import ThemeProvider, { ThemeProviderProps } from '../ThemeProvider';
+import useMessage, { MessageHookOptions, MessageHookProps } from './useMessage';
 import ConfigProvider, { ConfigProviderProps } from '../ConfigProvider';
-import useMessage, { MessageHookProps } from './useMessage';
+import { MessageType } from './Message';
 
-export type MessageMethodProps = MessageHookProps & {
-  themeProviderProps?: Omit<ThemeProviderProps, 'children'>;
-  configProviderProps?: Omit<ConfigProviderProps, 'children'>;
-};
+export type MessageMethodProps = MessageHookProps;
 
 export type MessageMethodUpdate = (
   props: Partial<MessageMethodProps> | ((prev: MessageMethodProps) => Partial<MessageMethodProps>),
 ) => void;
 
-export type MessageMethodReturnType = {
+export type MessageMethodReturnType = Promise<void> & {
   destroy: () => void;
   update: MessageMethodUpdate;
   isDestoryed: () => boolean;
 };
 
-const destroyFunctions: Array<() => void> = [];
+export type MessageConfig = Partial<
+  MessageHookOptions & {
+    themeProviderProps: Omit<ThemeProviderProps, 'children'>;
+    configProviderProps: Omit<ConfigProviderProps, 'children'>;
+  }
+>;
 
-const method = ({
-  themeProviderProps,
-  configProviderProps,
-  onAfterClosed,
-  type,
-  ...others
-}: MessageMethodProps): MessageMethodReturnType => {
-  let hookMethods: MessageMethodReturnType | undefined;
+type MethodMessage = {
+  instance: ReturnType<typeof useMessage>[0];
+  sync: () => void;
+};
 
-  const div = document.createElement('div');
-  document.body.appendChild(div);
+let messageConfig: MessageConfig = {};
 
-  const doDestroy = () => {
-    if (!hookMethods) {
-      return;
-    }
-    if (!hookMethods.isDestoryed) {
-      return;
-    }
-    hookMethods.destroy();
-  };
+export const setConfig = (config: MessageConfig) => {
+  messageConfig = config;
+  messageRef.current?.sync();
+};
 
-  const onAfterClosedWrap = () => {
-    onAfterClosed?.();
-    const unmountResult = ReactDOM.unmountComponentAtNode(div);
-    if (unmountResult && div.parentNode) {
-      div.parentNode.removeChild(div);
-    }
+const MethodMessage = forwardRef<MethodMessage>((_, ref) => {
+  const { configProviderProps, themeProviderProps, ...others } = messageConfig;
 
-    const i = destroyFunctions.indexOf(doDestroy);
-    if (i > -1) {
-      destroyFunctions.splice(i, 1);
-    }
-  };
+  const [configProps, setConfigProps] = useState(configProviderProps);
+  const [themeProps, setThemeProps] = useState(themeProviderProps);
+  const [hookProps, setHookProps] = useState<Partial<MessageHookOptions>>(others);
 
-  const GlobalHookMessage = () => {
-    const [methods, holder] = useMessage();
+  const [methods, holder] = useMessage(hookProps);
 
-    useEffect(() => {
-      hookMethods = methods[type || 'open']({ ...others, onAfterClosed: onAfterClosedWrap });
-    }, [methods]);
+  useImperativeHandle(ref, () => {
+    return {
+      instance: methods,
+      sync() {
+        const {
+          configProviderProps: newConfigProps,
+          themeProviderProps: newThemeProps,
+          ...newOthers
+        } = messageConfig;
 
-    return (
-      <ConfigProvider {...configProviderProps}>
-        <ThemeProvider {...themeProviderProps}>{holder} </ThemeProvider>
-      </ConfigProvider>
-    );
-  };
-
-  destroyFunctions.push(doDestroy);
-
-  setTimeout(() => {
-    ReactDOM.render(<GlobalHookMessage />, div);
+        setConfigProps(newConfigProps);
+        setThemeProps(newThemeProps);
+        setHookProps(newOthers);
+      },
+    };
   });
 
-  return {
-    destroy: () => hookMethods?.destroy(),
-    update: (props) => hookMethods?.update(props),
-    isDestoryed: () => hookMethods?.isDestoryed() || false,
-  };
+  return (
+    <ConfigProvider {...configProps}>
+      <ThemeProvider {...themeProps}>{holder} </ThemeProvider>
+    </ConfigProvider>
+  );
+});
+
+if (!isProduction) {
+  MethodMessage.displayName = 'MethodMessage';
+}
+
+let rootEl: HTMLElement | undefined;
+
+const messageRef = createRef<MethodMessage>();
+
+let count = 0;
+
+const destroyDOM = () => {
+  if (!rootEl) {
+    return;
+  }
+  const unmountResult = ReactDOM.unmountComponentAtNode(rootEl);
+  if (unmountResult && rootEl.parentNode) {
+    rootEl.parentNode.removeChild(rootEl);
+  }
+
+  rootEl = undefined;
+};
+
+const method = (
+  props: MessageMethodProps | string,
+  type?: MessageType,
+): MessageMethodReturnType => {
+  const currentProps: MessageMethodProps =
+    typeof props === 'string' ? { content: props } : { ...props };
+
+  if (type) {
+    currentProps.type = type;
+  }
+
+  let hookMethods: MessageMethodReturnType | undefined;
+
+  let promiseResolve: () => void | undefined;
+
+  if (!rootEl) {
+    const div = document.createElement('div');
+    document.body.appendChild(div);
+    rootEl = div;
+
+    setTimeout(() => {
+      ReactDOM.render(<MethodMessage ref={messageRef} />, div);
+    });
+  }
+
+  count++;
+
+  setTimeout(() => {
+    hookMethods = messageRef.current?.instance.open({
+      ...currentProps,
+      onAfterClosed() {
+        count--;
+        if (count <= 0) {
+          destroyDOM();
+        }
+        currentProps.onAfterClosed?.();
+        promiseResolve?.();
+      },
+    });
+  });
+
+  const promise = new Promise<void>((resolve) => {
+    promiseResolve = resolve;
+  }) as MessageMethodReturnType;
+
+  promise.update = (updateProps) => hookMethods?.update(updateProps);
+  promise.destroy = () => hookMethods?.destroy();
+  promise.isDestoryed = () => hookMethods?.destroy() || false;
+
+  return promise;
 };
 
 export const open = (props: MessageMethodProps) => method(props);
-export const info = (props: Omit<MessageMethodProps, 'type'>) => method({ ...props, type: 'info' });
-export const success = (props: Omit<MessageMethodProps, 'type'>) =>
-  method({ ...props, type: 'success' });
-export const warning = (props: Omit<MessageMethodProps, 'type'>) =>
-  method({ ...props, type: 'warning' });
-export const error = (props: Omit<MessageMethodProps, 'type'>) =>
-  method({ ...props, type: 'error' });
-export const loading = (props: Omit<MessageMethodProps, 'type'>) =>
-  method({ ...props, type: 'loading' });
+export const info = (props: Omit<MessageMethodProps, 'type'> | string) => method(props, 'info');
+export const success = (props: Omit<MessageMethodProps, 'type'> | string) =>
+  method(props, 'success');
+export const warning = (props: Omit<MessageMethodProps, 'type'> | string) =>
+  method(props, 'warning');
+export const error = (props: Omit<MessageMethodProps, 'type'> | string) => method(props, 'error');
+export const loading = (props: Omit<MessageMethodProps, 'type'> | string) =>
+  method(props, 'loading');
 
-export const destroyAll = () => {
-  let fn = destroyFunctions.pop();
-  while (fn) {
-    fn();
-    fn = destroyFunctions.pop();
-  }
-};
+export const destroyAll = () => messageRef.current?.instance.destroyAll();

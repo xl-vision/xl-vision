@@ -11,7 +11,7 @@ import {
 } from 'react';
 import { PortalContainerType } from '../Portal';
 import { increaseZindex } from '../utils/zIndexManger';
-import Message, { MessageProps } from './Message';
+import Message, { MessageProps, MessageType } from './Message';
 import MessageList from './MessageList';
 
 type HookMessageRef = {
@@ -52,11 +52,11 @@ const createHookMessage = (props: MessageHookProps) => {
   return HookMessage;
 };
 
-export type MessageHookOptions = Partial<{
+export type MessageHookOptions = {
   top: number;
   maxCount: number;
   container: PortalContainerType<HTMLElement>;
-}>;
+};
 
 let uuid = 0;
 
@@ -66,30 +66,40 @@ const useMessage = ({
   top = 8,
   container = DEFAULT_CONTAINER,
   maxCount = 0,
-}: MessageHookOptions = {}) => {
+}: Partial<MessageHookOptions> = {}) => {
   const [messages, setMessages] = useState<Array<ReactElement>>([]);
   const destorysRef = useRef<Array<() => void>>([]);
 
   const method = useCallback(
-    (props: MessageHookProps): MessageHookReturnType => {
-      let promiseResolve: () => void | undefined;
+    (props: MessageHookProps | string, type?: MessageType): MessageHookReturnType => {
+      const parsedProps = typeof props === 'string' ? { content: props } : { ...props };
+
+      if (type) {
+        parsedProps.type = type;
+      }
 
       let currentProps: MessageProps = {
-        ...props,
+        ...parsedProps,
         visible: undefined,
         defaultVisible: true,
         style: {
           zIndex: increaseZindex(),
-          ...props.style,
+          ...parsedProps.style,
         },
       };
+
+      let promiseResolve: () => void | undefined;
+
+      const onAfterClosedWrap = (onAfterClosed?: () => void) => () => {
+        destroyDOM();
+        destorysRef.current = destorysRef.current.filter((it) => it !== destroy);
+        promiseResolve?.();
+        onAfterClosed?.();
+      };
+
       const HookMessage = createHookMessage({
         ...currentProps,
-        onAfterClosed: () => {
-          destroyDOM();
-          props.onAfterClosed?.();
-          promiseResolve?.();
-        },
+        onAfterClosed: onAfterClosedWrap(currentProps.onAfterClosed),
       });
 
       const ref = createRef<HookMessageRef>();
@@ -112,11 +122,7 @@ const useMessage = ({
         }
         ref.current?.update({
           ...renderProps,
-          onAfterClosed: () => {
-            destroyDOM();
-            renderProps.onAfterClosed?.();
-            promiseResolve?.();
-          },
+          onAfterClosed: onAfterClosedWrap(renderProps.onAfterClosed),
         });
       };
 
@@ -141,7 +147,7 @@ const useMessage = ({
 
       const destroyFns = destorysRef.current;
 
-      if (maxCount < destroyFns.length) {
+      if (maxCount > 0 && maxCount < destroyFns.length) {
         const needDestroyedMessages = destroyFns.slice(0, destroyFns.length - maxCount);
 
         needDestroyedMessages.forEach((it) => it());
@@ -162,36 +168,20 @@ const useMessage = ({
 
   const methods = useMemo(
     () => ({
-      open: (props: MessageHookProps | string) =>
-        method(typeof props === 'string' ? { content: props } : props),
-      loading: (props: Omit<MessageHookProps, 'type'> | string) =>
-        method(
-          typeof props === 'string'
-            ? { content: props, type: 'loading' }
-            : { ...props, type: 'loading' },
-        ),
-      error: (props: Omit<MessageHookProps, 'type'> | string) =>
-        method(
-          typeof props === 'string'
-            ? { content: props, type: 'error' }
-            : { ...props, type: 'error' },
-        ),
-      info: (props: Omit<MessageHookProps, 'type'> | string) =>
-        method(
-          typeof props === 'string' ? { content: props, type: 'info' } : { ...props, type: 'info' },
-        ),
-      success: (props: Omit<MessageHookProps, 'type'> | string) =>
-        method(
-          typeof props === 'string'
-            ? { content: props, type: 'success' }
-            : { ...props, type: 'success' },
-        ),
-      warning: (props: Omit<MessageHookProps, 'type'> | string) =>
-        method(
-          typeof props === 'string'
-            ? { content: props, type: 'warning' }
-            : { ...props, type: 'warning' },
-        ),
+      open: (props: MessageHookProps) => method(props),
+      loading: (props: Omit<MessageHookProps, 'type'> | string) => method(props, 'loading'),
+      error: (props: Omit<MessageHookProps, 'type'> | string) => method(props, 'error'),
+      info: (props: Omit<MessageHookProps, 'type'> | string) => method(props, 'info'),
+      success: (props: Omit<MessageHookProps, 'type'> | string) => method(props, 'success'),
+      warning: (props: Omit<MessageHookProps, 'type'> | string) => method(props, 'warning'),
+      destroyAll: () => {
+        const destroyFns = destorysRef.current;
+        let fn = destroyFns.pop();
+        while (fn) {
+          fn();
+          fn = destroyFns.pop();
+        }
+      },
     }),
     [method],
   );

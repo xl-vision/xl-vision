@@ -74,6 +74,7 @@ const createMethodDialog = ({
 
   return MethodDialog;
 };
+
 const destroyFunctions: Array<() => void> = [];
 
 const method = (props: DialogMethodProps): DialogMethodReturnType => {
