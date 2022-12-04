@@ -17,7 +17,7 @@ export * from './Message';
 export * from './MessageList';
 export * from './useMessage';
 
-export { MessageConfig, MessageMethodProps, MessageMethodReturnType, MessageMethodUpdate };
+export type { MessageConfig, MessageMethodProps, MessageMethodReturnType, MessageMethodUpdate };
 
 const Message = {
   useMessage,

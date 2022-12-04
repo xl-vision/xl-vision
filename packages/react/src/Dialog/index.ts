@@ -17,7 +17,7 @@ export * from './Dialog';
 export * from './DedicatedDialog';
 export * from './useDialog';
 
-export { DialogMethodProps, DialogMethodReturnType, DialogMethodUpdate };
+export type { DialogMethodProps, DialogMethodReturnType, DialogMethodUpdate };
 
 const DialogEnhancer = Dialog as typeof Dialog & {
   destroyAll: typeof destroyAll;
