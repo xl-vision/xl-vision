@@ -2,21 +2,13 @@ import ReactDOM from 'react-dom';
 import { createRef, forwardRef, useImperativeHandle, useState } from 'react';
 import { isProduction } from '@xl-vision/utils';
 import ThemeProvider, { ThemeProviderProps } from '../ThemeProvider';
-import useMessage, { MessageHookOptions, MessageHookProps } from './useMessage';
+import useMessage, {
+  MessageHookOptions,
+  MessageHookProps,
+  MessageHookReturnType,
+} from './useMessage';
 import ConfigProvider, { ConfigProviderProps } from '../ConfigProvider';
 import { MessageType } from './Message';
-
-export type MessageMethodProps = MessageHookProps;
-
-export type MessageMethodUpdate = (
-  props: Partial<MessageMethodProps> | ((prev: MessageMethodProps) => Partial<MessageMethodProps>),
-) => void;
-
-export type MessageMethodReturnType = Promise<void> & {
-  destroy: () => void;
-  update: MessageMethodUpdate;
-  isDestoryed: () => boolean;
-};
 
 export type MessageConfig = Partial<
   MessageHookOptions & {
@@ -25,7 +17,7 @@ export type MessageConfig = Partial<
   }
 >;
 
-type MethodMessage = {
+type MethodMessageRef = {
   instance: ReturnType<typeof useMessage>[0];
   sync: () => void;
 };
@@ -37,7 +29,7 @@ export const setConfig = (config: MessageConfig) => {
   messageRef.current?.sync();
 };
 
-const MethodMessage = forwardRef<MethodMessage>((_, ref) => {
+const MethodMessage = forwardRef<MethodMessageRef>((_, ref) => {
   const { configProviderProps, themeProviderProps, ...others } = messageConfig;
 
   const [configProps, setConfigProps] = useState(configProviderProps);
@@ -76,7 +68,7 @@ if (!isProduction) {
 
 let rootEl: HTMLElement | undefined;
 
-const messageRef = createRef<MethodMessage>();
+const messageRef = createRef<MethodMessageRef>();
 
 let count = 0;
 
@@ -92,18 +84,15 @@ const destroyDOM = () => {
   rootEl = undefined;
 };
 
-const method = (
-  props: MessageMethodProps | string,
-  type?: MessageType,
-): MessageMethodReturnType => {
-  const currentProps: MessageMethodProps =
+const method = (props: MessageHookProps | string, type?: MessageType): MessageHookReturnType => {
+  const currentProps: MessageHookProps =
     typeof props === 'string' ? { content: props } : { ...props };
 
   if (type) {
     currentProps.type = type;
   }
 
-  let hookMethods: MessageMethodReturnType | undefined;
+  let hookMethods: MessageHookReturnType | undefined;
 
   let promiseResolve: () => void | undefined;
 
@@ -127,15 +116,15 @@ const method = (
         if (count <= 0) {
           destroyDOM();
         }
-        currentProps.onAfterClosed?.();
         promiseResolve?.();
+        currentProps.onAfterClosed?.();
       },
     });
   });
 
   const promise = new Promise<void>((resolve) => {
     promiseResolve = resolve;
-  }) as MessageMethodReturnType;
+  }) as MessageHookReturnType;
 
   promise.update = (updateProps) => hookMethods?.update(updateProps);
   promise.destroy = () => hookMethods?.destroy();
@@ -144,14 +133,11 @@ const method = (
   return promise;
 };
 
-export const open = (props: MessageMethodProps) => method(props);
-export const info = (props: Omit<MessageMethodProps, 'type'> | string) => method(props, 'info');
-export const success = (props: Omit<MessageMethodProps, 'type'> | string) =>
-  method(props, 'success');
-export const warning = (props: Omit<MessageMethodProps, 'type'> | string) =>
-  method(props, 'warning');
-export const error = (props: Omit<MessageMethodProps, 'type'> | string) => method(props, 'error');
-export const loading = (props: Omit<MessageMethodProps, 'type'> | string) =>
-  method(props, 'loading');
+export const open = (props: MessageHookProps) => method(props);
+export const info = (props: Omit<MessageHookProps, 'type'> | string) => method(props, 'info');
+export const success = (props: Omit<MessageHookProps, 'type'> | string) => method(props, 'success');
+export const warning = (props: Omit<MessageHookProps, 'type'> | string) => method(props, 'warning');
+export const error = (props: Omit<MessageHookProps, 'type'> | string) => method(props, 'error');
+export const loading = (props: Omit<MessageHookProps, 'type'> | string) => method(props, 'loading');
 
 export const destroyAll = () => messageRef.current?.instance.destroyAll();

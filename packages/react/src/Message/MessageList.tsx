@@ -1,12 +1,12 @@
 import { Children, FC, ReactNode } from 'react';
 import Portal, { PortalContainerType } from '../Portal';
 import { styled } from '../styles';
-import { increaseZindex } from '../utils/zIndexManger';
 
 export type MessageListProps = {
   top: number;
   container: PortalContainerType<HTMLElement>;
   children: ReactNode;
+  zIndex: number;
 };
 
 const displayName = 'MessageList';
@@ -22,14 +22,14 @@ const MessageListRoot = styled('div', {
   };
 });
 
-const MessageList: FC<MessageListProps> = ({ top, container, children }) => {
+const MessageList: FC<MessageListProps> = ({ top, container, children, zIndex }) => {
   if (!Children.count(children)) {
     return null;
   }
 
   return (
     <Portal container={container}>
-      <MessageListRoot style={{ top, zIndex: increaseZindex() }}>{children}</MessageListRoot>
+      <MessageListRoot style={{ top, zIndex }}>{children}</MessageListRoot>
     </Portal>
   );
 };

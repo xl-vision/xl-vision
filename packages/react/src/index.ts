@@ -125,10 +125,6 @@ export type {
   MessageHookOptions,
   MessageHookProps,
   MessageHookReturnType,
-  MessageHookUpdate,
   MessageListProps,
   MessageConfig,
-  MessageMethodProps,
-  MessageMethodReturnType,
-  MessageMethodUpdate,
 } from './Message';
