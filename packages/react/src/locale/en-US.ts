@@ -8,7 +8,7 @@ const locale: Locale = {
   Dialog: {
     cancelText: 'No',
     confirmText: 'Yes',
-    messages: {
+    methods: {
       successText: 'OK',
       infoText: 'OK',
       errorText: 'OK',

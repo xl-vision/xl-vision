@@ -7,138 +7,144 @@ import {
   useCallback,
   createRef,
   useMemo,
+  useRef,
 } from 'react';
-import createMessageDialog, { MessageDialogProps, MessageDialogType } from './message';
-import { MessageDialogFunctionProps } from './methods';
+import DedicatedDialog, { DedicatedDialogProps } from './DedicatedDialog';
 
-type HookMessageDialogRef = {
-  update: (updateProps: MessageDialogProps) => void;
+type HookDialogRef = {
+  update: (updateProps: DedicatedDialogProps) => void;
 };
 
-export type MessageDialogHookProps = Omit<
-  MessageDialogFunctionProps,
-  'themeContext' | 'localizationContext'
->;
+export type DialogHookProps = Omit<DedicatedDialogProps, 'visible' | 'defaultVisible'>;
 
-export type MethodDialogHookUpdate = (
-  props:
-    | Partial<MessageDialogHookProps>
-    | ((prev: MessageDialogHookProps) => Partial<MessageDialogHookProps>),
+export type DialogHookUpdate = (
+  props: Partial<DialogHookProps> | ((prev: DialogHookProps) => Partial<DialogHookProps>),
 ) => void;
 
-export type MessageDialogHookReturnType = {
+export type DialogHookReturnType = {
   destroy: () => void;
-  update: MethodDialogHookUpdate;
+  update: DialogHookUpdate;
   isDestoryed: () => boolean;
 };
 
-const createHookMessageDialog = (props: MessageDialogProps, type?: MessageDialogType) => {
-  const Dialog = createMessageDialog(type);
-
-  const HookMessageDialog = forwardRef<HookMessageDialogRef>((_, ref) => {
-    const [innerConfig, setInnerConfig] = useState<MessageDialogProps>(props);
+const createHookDialog = (props: DedicatedDialogProps) => {
+  const HookDialog = forwardRef<HookDialogRef>((_, ref) => {
+    const [dialogProps, setDialogProps] = useState<DedicatedDialogProps>(props);
 
     useImperativeHandle(ref, () => {
       return {
         update(updateProps) {
-          setInnerConfig(updateProps);
+          setDialogProps(updateProps);
         },
       };
     });
 
-    return <Dialog {...innerConfig} />;
+    return <DedicatedDialog {...dialogProps} />;
   });
 
   if (!isProduction) {
-    HookMessageDialog.displayName = 'HookMessageDialog';
+    HookDialog.displayName = 'HookDialog';
   }
 
-  return HookMessageDialog;
+  return HookDialog;
 };
 
 let uuid = 0;
 
 const useDialog = () => {
   const [dialogs, setDialogs] = useState<Array<ReactElement>>([]);
+  const destorysRef = useRef<Array<() => void>>([]);
 
-  const method = useCallback(
-    (props: MessageDialogHookProps, type?: MessageDialogType): MessageDialogHookReturnType => {
-      let currentProps: MessageDialogProps = {
-        ...props,
+  const method = useCallback((props: DialogHookProps): DialogHookReturnType => {
+    let currentProps: DedicatedDialogProps = {
+      ...props,
+      visible: undefined,
+      defaultVisible: true,
+    };
+
+    const onAfterClosedWrap = (onAfterClosed?: () => void) => () => {
+      destroyDOM();
+      destorysRef.current = destorysRef.current.filter((it) => it !== destroy);
+      onAfterClosed?.();
+    };
+
+    const Dialog = createHookDialog({
+      ...currentProps,
+      onAfterClosed: onAfterClosedWrap(currentProps.onAfterClosed),
+    });
+
+    const ref = createRef<HookDialogRef>();
+
+    let destroyState = false;
+
+    const dialog = <Dialog key={`dialog${uuid++}`} ref={ref} />;
+
+    const destroyDOM = () => {
+      setDialogs((prev) => prev.filter((it) => it !== dialog));
+      destroyState = true;
+    };
+
+    const render = (renderProps: DedicatedDialogProps) => {
+      if (destroyState) {
+        return warningLog(
+          true,
+          `The dialog instance was destroyed, please do not update or destroy it again.`,
+        );
+      }
+
+      ref.current?.update({
+        ...renderProps,
+        onAfterClosed: onAfterClosedWrap(renderProps.onAfterClosed),
+      });
+    };
+
+    const update: DialogHookUpdate = (updateProps) => {
+      const newProps = typeof updateProps === 'function' ? updateProps(currentProps) : updateProps;
+
+      currentProps = {
+        ...currentProps,
+        ...newProps,
         visible: undefined,
         defaultVisible: true,
-        onAfterClosed: () => {
-          props.onAfterClosed?.();
-          destroyDOM();
-        },
-      };
-      const Dialog = createHookMessageDialog(currentProps, type);
-
-      const ref = createRef<HookMessageDialogRef>();
-
-      let destroyState = false;
-
-      const dialog = <Dialog key={`dialog${uuid++}`} ref={ref} />;
-
-      const destroyDOM = () => {
-        setDialogs((prev) => prev.filter((it) => it !== dialog));
-        destroyState = true;
       };
 
-      const render = (renderProps: MessageDialogProps) => {
-        if (destroyState) {
-          return warningLog(
-            true,
-            `The dialog instance was destroyed, please do not update or destroy it again.`,
-          );
-        }
-        ref.current?.update(renderProps);
-      };
+      render(currentProps);
+    };
 
-      const update: MethodDialogHookUpdate = (updateProps) => {
-        const newProps =
-          typeof updateProps === 'function' ? updateProps(currentProps) : updateProps;
-        currentProps = { ...currentProps, ...newProps, visible: undefined, defaultVisible: true };
+    const destroy = () => {
+      render({
+        ...currentProps,
+        visible: false,
+      });
+    };
 
-        const { onAfterClosed } = currentProps;
+    destorysRef.current.push(destroy);
 
-        currentProps.onAfterClosed = () => {
-          onAfterClosed?.();
-          destroyDOM();
-        };
-        render(currentProps);
-      };
+    setDialogs((prev) => [...prev, dialog]);
 
-      const destroy = () => {
-        render({
-          ...currentProps,
-          visible: false,
-          onAfterClosed() {
-            currentProps.onAfterClosed?.();
-            destroyDOM();
-          },
-        });
-      };
-
-      setDialogs((prev) => [...prev, dialog]);
-
-      return {
-        update,
-        destroy,
-        isDestoryed: () => destroyState,
-      };
-    },
-    [],
-  );
+    return {
+      update,
+      destroy,
+      isDestoryed: () => destroyState,
+    };
+  }, []);
 
   const methods = useMemo(
     () => ({
-      open: (props: MessageDialogFunctionProps) => method(props),
-      confirm: (props: MessageDialogFunctionProps) => method(props, 'confirm'),
-      error: (props: MessageDialogFunctionProps) => method(props, 'error'),
-      info: (props: MessageDialogFunctionProps) => method(props, 'info'),
-      success: (props: MessageDialogFunctionProps) => method(props, 'success'),
-      warning: (props: MessageDialogFunctionProps) => method(props, 'warning'),
+      open: (props: DialogHookProps) => method(props),
+      confirm: (props: Omit<DialogHookProps, 'type'>) => method({ ...props, type: 'confirm' }),
+      error: (props: Omit<DialogHookProps, 'type'>) => method({ ...props, type: 'error' }),
+      info: (props: Omit<DialogHookProps, 'type'>) => method({ ...props, type: 'info' }),
+      success: (props: Omit<DialogHookProps, 'type'>) => method({ ...props, type: 'success' }),
+      warning: (props: Omit<DialogHookProps, 'type'>) => method({ ...props, type: 'warning' }),
+      destroyAll: () => {
+        const destroyFns = destorysRef.current;
+        let fn = destroyFns.pop();
+        while (fn) {
+          fn();
+          fn = destroyFns.pop();
+        }
+      },
     }),
     [method],
   );

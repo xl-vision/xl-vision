@@ -44,7 +44,7 @@ const AvatarRoot = styled('span', {
   slot: 'Root',
 })<{ shape: AvatarShape; size?: ComponentSize; isImage: boolean }>(({ theme, styleProps }) => {
   const { shape: shapeType, size, isImage } = styleProps;
-  const { color, styleSize } = theme;
+  const { color, styleSize, componentSize } = theme;
   const style: CSSObject = {
     position: 'relative',
     display: 'inline-flex',
@@ -73,13 +73,11 @@ const AvatarRoot = styled('span', {
   if (shapeType === 'circle') {
     style.borderRadius = '50%';
   } else if (shapeType === 'round') {
-    style.borderRadius = styleSize[size || 'middle'].borderRadius;
+    style.borderRadius = styleSize[size || componentSize].borderRadius;
   }
 
-  if (size) {
-    const themeSize = styleSize[size];
-    style.width = style.height = 32 * themeSize.fontSize;
-  }
+  const themeSize = styleSize[size || componentSize];
+  style.width = style.height = 32 * themeSize.fontSize;
 
   return style;
 });

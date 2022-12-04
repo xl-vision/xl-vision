@@ -347,7 +347,7 @@ if (!isProduction) {
     maxLength: PropTypes.number,
     disabled: PropTypes.bool,
     readOnly: PropTypes.bool,
-    // TODO [2022-12-01]: types fix
+    // TODO [2023-01-01]: types fix
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     autoHeight: PropTypes.oneOfType([

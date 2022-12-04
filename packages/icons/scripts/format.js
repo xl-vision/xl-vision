@@ -28,7 +28,7 @@ const config = {
     'removeUnknownsAndDefaults',
     'removeNonInheritableGroupAttrs',
     'removeUnusedNS',
-    'cleanupIDs',
+    'cleanupIds',
     'cleanupNumericValues',
     'cleanupListOfValues',
     'moveElemsAttrsToGroup',

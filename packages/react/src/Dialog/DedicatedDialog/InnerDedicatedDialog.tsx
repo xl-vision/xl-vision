@@ -8,54 +8,46 @@ import { styled } from '../../styles';
 import usePropChange from '../../hooks/usePropChange';
 import { useTheme } from '../../ThemeProvider';
 
-export interface MessageDialogProps extends Omit<DialogProps, 'children'> {
+export interface InnerDedicatedDialogProps extends Omit<DialogProps, 'children'> {
   content?: ReactNode;
   icon?: ReactNode;
 }
 
-const displayName = 'MessageDialog';
+const displayName = 'InnerDedicatedDialog';
 
-const MessageDialogHeader = styled('h6', {
+const InnerDedicatedDialogHeader = styled('h6', {
   name: displayName,
   slot: 'Header',
 })(({ theme }) => {
-  const { typography } = theme;
+  const { typography, clsPrefix } = theme;
+
+  const rootClassName = `${clsPrefix}-inner-dedicated-dialog`;
 
   return {
     ...typography.h6.style,
     margin: 0,
-  };
-});
+    display: 'flex',
+    alignItems: 'center',
 
-const MessageDialogTitle = styled('span', {
-  name: displayName,
-  slot: 'Title',
-})(() => {
-  return {
-    verticalAlign: 'middle',
-  };
-});
-
-const MessageDialogIcon = styled('span', {
-  name: displayName,
-  slot: 'Icon',
-})(() => {
-  return {
-    paddingRight: 5,
-    svg: {
+    [`.${rootClassName}__icon`]: {
+      paddingRight: 5,
+      lineHeight: 1,
+      svg: {
+        verticalAlign: 'middle',
+      },
+    },
+    [`.${rootClassName}__title`]: {
       verticalAlign: 'middle',
     },
   };
 });
 
-export type MessageDialogContentStyleProps = {
-  icon: boolean;
-};
-
-const MessageDialogContent = styled('div', {
+const InnerDedicatedDialogContent = styled('div', {
   name: displayName,
   slot: 'Content',
-})<MessageDialogContentStyleProps>(({ styleProps }) => {
+})<{
+  icon: boolean;
+}>(({ styleProps }) => {
   const { icon } = styleProps;
   const styles: CSSObject = {};
 
@@ -66,7 +58,7 @@ const MessageDialogContent = styled('div', {
   return styles;
 });
 
-const MessageDialog: FC<MessageDialogProps> = (props) => {
+const InnerDedicatedDialog: FC<InnerDedicatedDialogProps> = (props) => {
   const {
     visible: visibleProp,
     defaultVisible: defaultVisibleProp = false,
@@ -93,13 +85,13 @@ const MessageDialog: FC<MessageDialogProps> = (props) => {
     setFirst(false);
   }, []);
 
-  const rootClassName = `${clsPrefix}-message-dialog`;
+  const rootClassName = `${clsPrefix}-inner-dedicated-dialog`;
 
   const headerWrapper = (
-    <MessageDialogHeader className={`${rootClassName}__title`}>
-      {icon && <MessageDialogIcon className={`${rootClassName}__icon`}>{icon}</MessageDialogIcon>}
-      <MessageDialogTitle>{title}</MessageDialogTitle>
-    </MessageDialogHeader>
+    <InnerDedicatedDialogHeader className={`${rootClassName}__header`}>
+      {icon && <span className={`${rootClassName}__icon`}>{icon}</span>}
+      <span className={`${rootClassName}__title`}>{title}</span>
+    </InnerDedicatedDialogHeader>
   );
 
   return (
@@ -111,15 +103,20 @@ const MessageDialog: FC<MessageDialogProps> = (props) => {
       onVisibleChange={handleVisibleChange}
     >
       {content && (
-        <MessageDialogContent styleProps={{ icon: !!icon }}>{content}</MessageDialogContent>
+        <InnerDedicatedDialogContent
+          className={`${rootClassName}__content`}
+          styleProps={{ icon: !!icon }}
+        >
+          {content}
+        </InnerDedicatedDialogContent>
       )}
     </Dialog>
   );
 };
 
 if (!isProduction) {
-  MessageDialog.displayName = displayName;
-  MessageDialog.propTypes = {
+  InnerDedicatedDialog.displayName = displayName;
+  InnerDedicatedDialog.propTypes = {
     visible: Proptypes.bool,
     defaultVisible: Proptypes.bool,
     onVisibleChange: Proptypes.func,
@@ -130,4 +127,4 @@ if (!isProduction) {
   };
 }
 
-export default MessageDialog;
+export default InnerDedicatedDialog;

@@ -1,139 +1,158 @@
 import ReactDOM from 'react-dom';
-import { isServer, noop, warning as warningLog } from '@xl-vision/utils';
-import createMessageDialog, { MessageDialogType, MessageDialogProps } from './message';
+import { createRef, forwardRef, useImperativeHandle, useState } from 'react';
+import { isProduction } from '@xl-vision/utils';
 import ThemeProvider, { ThemeProviderProps } from '../ThemeProvider';
 import ConfigProvider, { ConfigProviderProps } from '../ConfigProvider';
+import useDialog, { DialogHookProps } from './useDialog';
 
-export interface MessageDialogFunctionRenderProps extends MessageDialogProps, MessageDialogProps {
+export type DialogMethodProps = DialogHookProps & {
   themeProviderProps?: Omit<ThemeProviderProps, 'children'>;
   configProviderProps?: Omit<ConfigProviderProps, 'children'>;
-}
-export type MessageDialogFunctionProps = Omit<
-  MessageDialogFunctionRenderProps,
-  'visible' | 'defaultVisible'
->;
+};
 
-export type MessageDialogFunctionUpdate = (
-  props:
-    | Partial<MessageDialogFunctionProps>
-    | ((prev: MessageDialogFunctionProps) => Partial<MessageDialogFunctionProps>),
+export type DialogMethodUpdate = (
+  props: Partial<DialogMethodProps> | ((prev: DialogMethodProps) => Partial<DialogMethodProps>),
 ) => void;
 
-export type MessageDialogFunctionReturnType = {
+export type DialogMethodReturnType = {
   destroy: () => void;
-  update: MessageDialogFunctionUpdate;
+  update: DialogMethodUpdate;
   isDestoryed: () => boolean;
+};
+
+type MethodDialogRef = {
+  destroy: () => void;
+  isDestoryed: () => boolean;
+  update: (updateProps: DialogMethodProps) => void;
+};
+
+const createMethodDialog = ({
+  configProviderProps,
+  themeProviderProps,
+  ...others
+}: DialogMethodProps) => {
+  const MethodDialog = forwardRef<MethodDialogRef>((_, ref) => {
+    const [methods, holder] = useDialog();
+
+    const [configProps, setConfigProps] = useState(configProviderProps);
+    const [themeProps, setThemeProps] = useState(themeProviderProps);
+
+    const [dialogResult] = useState(() => methods.open(others));
+
+    useImperativeHandle(ref, () => {
+      return {
+        ...dialogResult,
+        update(updateProps) {
+          const {
+            configProviderProps: newConfigProviderProps,
+            themeProviderProps: newThemeProviderProps,
+            ...newOthers
+          } = updateProps;
+
+          if (newConfigProviderProps) {
+            setConfigProps(newConfigProviderProps);
+          }
+
+          if (newThemeProviderProps) {
+            setThemeProps(newThemeProviderProps);
+          }
+          dialogResult.update(newOthers);
+        },
+      };
+    });
+
+    return (
+      <ConfigProvider {...configProps}>
+        <ThemeProvider {...themeProps}>{holder} </ThemeProvider>
+      </ConfigProvider>
+    );
+  });
+
+  if (!isProduction) {
+    MethodDialog.displayName = 'MethodDialog';
+  }
+
+  return MethodDialog;
 };
 
 const destroyFunctions: Array<() => void> = [];
 
-const method = (
-  props: MessageDialogFunctionProps,
-  type?: MessageDialogType,
-): MessageDialogFunctionReturnType => {
-  if (isServer) {
-    return {
-      destroy: noop,
-      update: noop,
-      isDestoryed: () => false,
-    };
-  }
+const method = (props: DialogMethodProps): DialogMethodReturnType => {
+  let currentProps = {
+    ...props,
+  };
 
-  const Dialog = createMessageDialog(type);
+  const ref = createRef<MethodDialogRef>();
+
+  const Dialog = createMethodDialog({
+    ...currentProps,
+    onAfterClosed() {
+      destroyDOM();
+      currentProps.onAfterClosed?.();
+    },
+  });
+
+  const doDestroy = () => {
+    const value = ref.current;
+    if (!value) {
+      return;
+    }
+    if (value.isDestoryed()) {
+      return;
+    }
+    value.destroy();
+  };
 
   const div = document.createElement('div');
   document.body.appendChild(div);
 
-  let currentProps: MessageDialogFunctionRenderProps = {
-    ...props,
-    visible: undefined,
-    defaultVisible: true,
-    onAfterClosed: () => {
-      props.onAfterClosed?.();
-      destroyDOM();
-    },
-  };
-
-  let destroyState = false;
-
-  const render = (renderProps: MessageDialogFunctionRenderProps) => {
-    if (destroyState) {
-      return warningLog(
-        true,
-        `The dialog instance was destroyed, please do not update or destroy it again.`,
-      );
-    }
-    const { configProviderProps, themeProviderProps, ...others } = renderProps;
-
-    setTimeout(() => {
-      ReactDOM.render(
-        <ConfigProvider {...configProviderProps}>
-          <ThemeProvider {...themeProviderProps}>
-            <Dialog container={null} {...others} />
-          </ThemeProvider>
-        </ConfigProvider>,
-        div,
-      );
-    });
-  };
-
-  const update: MessageDialogFunctionUpdate = (updateProps) => {
-    const { onAfterClosed, ...otherProps } =
-      typeof updateProps === 'function' ? updateProps(currentProps) : updateProps;
-
-    currentProps = {
-      ...currentProps,
-      ...otherProps,
-      visible: undefined,
-      defaultVisible: true,
-    };
-
-    if (onAfterClosed) {
-      currentProps.onAfterClosed = () => {
-        onAfterClosed?.();
-        destroyDOM();
-      };
-    }
-
-    render(currentProps);
-  };
-
   const destroyDOM = () => {
-    destroyState = true;
     const unmountResult = ReactDOM.unmountComponentAtNode(div);
     if (unmountResult && div.parentNode) {
       div.parentNode.removeChild(div);
     }
-    const i = destroyFunctions.indexOf(destroy);
+
+    const i = destroyFunctions.indexOf(doDestroy);
     if (i > -1) {
       destroyFunctions.splice(i, 1);
     }
   };
 
-  const destroy = () => {
-    render({
-      ...currentProps,
-      visible: false,
+  const render = () => {
+    setTimeout(() => {
+      ReactDOM.render(<Dialog ref={ref} />, div);
     });
   };
 
-  destroyFunctions.push(destroy);
+  destroyFunctions.push(doDestroy);
 
-  render(currentProps);
+  render();
 
   return {
-    destroy,
-    update,
-    isDestoryed: () => destroyState,
+    destroy: () => ref.current?.destroy(),
+    update: (updateProps) => {
+      const parsedProps =
+        typeof updateProps === 'function' ? updateProps(currentProps) : updateProps;
+      currentProps = {
+        ...currentProps,
+        ...parsedProps,
+      };
+      ref.current?.update(currentProps);
+    },
+    isDestoryed: () => ref.current?.isDestoryed() || false,
   };
 };
 
-export const open = (props: MessageDialogFunctionProps) => method(props);
-export const info = (props: MessageDialogFunctionProps) => method(props, 'info');
-export const success = (props: MessageDialogFunctionProps) => method(props, 'success');
-export const warning = (props: MessageDialogFunctionProps) => method(props, 'warning');
-export const error = (props: MessageDialogFunctionProps) => method(props, 'error');
-export const confirm = (props: MessageDialogFunctionProps) => method(props, 'confirm');
+export const open = (props: DialogMethodProps) => method(props);
+export const info = (props: Omit<DialogMethodProps, 'type'>) => method({ ...props, type: 'info' });
+export const success = (props: Omit<DialogMethodProps, 'type'>) =>
+  method({ ...props, type: 'success' });
+export const warning = (props: Omit<DialogMethodProps, 'type'>) =>
+  method({ ...props, type: 'warning' });
+export const error = (props: Omit<DialogMethodProps, 'type'>) =>
+  method({ ...props, type: 'error' });
+export const confirm = (props: Omit<DialogMethodProps, 'type'>) =>
+  method({ ...props, type: 'confirm' });
 
 export const destroyAll = () => {
   let fn = destroyFunctions.pop();

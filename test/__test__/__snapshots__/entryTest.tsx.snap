@@ -711,6 +711,7 @@ exports[`Entry @xl-vision/react 1`] = `
   "ResizeObserver",
   "BackTop",
   "Anchor",
+  "Message",
 ]
 `;
 

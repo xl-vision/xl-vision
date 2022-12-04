@@ -1,20 +1,27 @@
 import Dialog from './Dialog';
-import { open, destroyAll, success, info, error, warning, confirm } from './methods';
+import {
+  open,
+  destroyAll,
+  success,
+  info,
+  error,
+  warning,
+  confirm,
+  DialogMethodProps,
+  DialogMethodReturnType,
+  DialogMethodUpdate,
+} from './methods';
 import useDialog from './useDialog';
 
 export * from './Dialog';
-export * from './message';
+export * from './DedicatedDialog';
 export * from './useDialog';
-export type {
-  MessageDialogFunctionUpdate,
-  MessageDialogFunctionProps,
-  MessageDialogFunctionRenderProps,
-  MessageDialogFunctionReturnType,
-} from './methods';
+
+export type { DialogMethodProps, DialogMethodReturnType, DialogMethodUpdate };
 
 const DialogEnhancer = Dialog as typeof Dialog & {
-  open: typeof open;
   destroyAll: typeof destroyAll;
+  open: typeof open;
   info: typeof info;
   success: typeof success;
   error: typeof error;

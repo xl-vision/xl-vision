@@ -1,5 +1,5 @@
 import { act } from '@testing-library/react';
-import { open, info, success, error, warning, confirm } from '../methods';
+import { open, info, success, error, warning, confirm, destroyAll } from '../methods';
 
 describe('DialogMethod', () => {
   beforeAll(() => {
@@ -25,7 +25,9 @@ describe('DialogMethod', () => {
     expect(el).not.toBe(null);
     expect(el).toMatchSnapshot();
 
-    destroy();
+    act(() => {
+      destroy();
+    });
 
     act(() => {
       jest.runAllTimers();
@@ -55,7 +57,9 @@ describe('DialogMethod', () => {
     expect(el).not.toBe(null);
     expect(el).toMatchSnapshot();
 
-    destroy();
+    act(() => {
+      destroy();
+    });
 
     act(() => {
       jest.runAllTimers();
@@ -85,7 +89,9 @@ describe('DialogMethod', () => {
     expect(el).not.toBe(null);
     expect(el).toMatchSnapshot();
 
-    destroy();
+    act(() => {
+      destroy();
+    });
 
     act(() => {
       jest.runAllTimers();
@@ -115,7 +121,9 @@ describe('DialogMethod', () => {
     expect(el).not.toBe(null);
     expect(el).toMatchSnapshot();
 
-    destroy();
+    act(() => {
+      destroy();
+    });
 
     act(() => {
       jest.runAllTimers();
@@ -145,7 +153,9 @@ describe('DialogMethod', () => {
     expect(el).not.toBe(null);
     expect(el).toMatchSnapshot();
 
-    destroy();
+    act(() => {
+      destroy();
+    });
 
     act(() => {
       jest.runAllTimers();
@@ -175,7 +185,9 @@ describe('DialogMethod', () => {
     expect(el).not.toBe(null);
     expect(el).toMatchSnapshot();
 
-    destroy();
+    act(() => {
+      destroy();
+    });
 
     act(() => {
       jest.runAllTimers();
@@ -184,6 +196,50 @@ describe('DialogMethod', () => {
     el = document.querySelector('#confirm');
 
     expect(el).toBe(null);
+  });
+
+  it('test destroyAll', () => {
+    info({
+      title: 'title',
+      content: 'content',
+      id: 'info1',
+    });
+
+    act(() => {
+      jest.runAllTimers();
+    });
+
+    let el1 = document.querySelector('#info1');
+
+    expect(el1).not.toBe(null);
+
+    info({
+      title: 'title',
+      content: 'content',
+      id: 'info2',
+    });
+
+    act(() => {
+      jest.runAllTimers();
+    });
+
+    let el2 = document.querySelector('#info2');
+
+    expect(el2).not.toBe(null);
+
+    act(() => {
+      destroyAll();
+    });
+
+    act(() => {
+      jest.runAllTimers();
+    });
+
+    el1 = document.querySelector('#info1');
+    el2 = document.querySelector('#info2');
+
+    expect(el1).toBe(null);
+    expect(el2).toBe(null);
   });
 
   it('test update', () => {
@@ -206,8 +262,10 @@ describe('DialogMethod', () => {
 
     expect(el!.querySelector<HTMLDivElement>('#content')!.textContent).toBe('content');
 
-    update({
-      content: <div id='content'>content2</div>,
+    act(() => {
+      update({
+        content: <div id='content'>content2</div>,
+      });
     });
 
     act(() => {
@@ -216,7 +274,9 @@ describe('DialogMethod', () => {
 
     expect(el!.querySelector<HTMLDivElement>('#content')!.textContent).toBe('content2');
 
-    destroy();
+    act(() => {
+      destroy();
+    });
 
     act(() => {
       jest.runAllTimers();

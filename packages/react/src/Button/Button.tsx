@@ -357,6 +357,7 @@ if (!isProduction) {
       'secondary',
       'warning',
       'info',
+      'success',
     ]),
     disableElevation: PropTypes.bool,
     loading: PropTypes.bool,

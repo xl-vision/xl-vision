@@ -8,7 +8,7 @@ const applyTheme =
     if (typeof style === 'function') {
       const { theme, ...others } = props;
       const newTheme = isEmpty(theme) ? defaultTheme : theme;
-      // TODO [2022-12-01]: types fixed
+      // TODO [2023-01-01]: types fixed
       const newProps = {
         theme: newTheme,
         ...others,

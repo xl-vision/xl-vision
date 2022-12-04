@@ -8,7 +8,7 @@ const locale: Locale = {
   Dialog: {
     cancelText: '取消',
     confirmText: '确认',
-    messages: {
+    methods: {
       successText: '知道了',
       infoText: '知道了',
       errorText: '知道了',

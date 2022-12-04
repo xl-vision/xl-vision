@@ -79,16 +79,15 @@ export { default as Dialog } from './Dialog';
 export type {
   DialogProps,
   DialogButtonProps,
-  MessageDialogContentStyleProps,
-  MessageDialogProps,
-  MessageDialogType,
-  MessageDialogFunctionProps,
-  MessageDialogFunctionRenderProps,
-  MessageDialogFunctionReturnType,
-  MessageDialogFunctionUpdate,
-  MessageDialogHookProps,
-  MethodDialogHookUpdate,
-  MessageDialogHookReturnType,
+  DedicatedDialogProps,
+  InnerDedicatedDialogProps,
+  DialogHookUpdate,
+  DialogType,
+  DialogMethodProps,
+  DialogMethodReturnType,
+  DialogMethodUpdate,
+  DialogHookProps,
+  DialogHookReturnType,
 } from './Dialog';
 
 export { default as Avatar } from './Avatar';
@@ -117,3 +116,19 @@ export type { BackTopProps } from './BackTop';
 
 export { default as Anchor } from './Anchor';
 export type { AnchorProps, AnchorLinkProps, AnchorType, AnchorInstance } from './Anchor';
+
+export { default as Message } from './Message';
+export type {
+  MessageProps,
+  MessageType,
+  InnerMessageProps,
+  MessageHookOptions,
+  MessageHookProps,
+  MessageHookReturnType,
+  MessageHookUpdate,
+  MessageListProps,
+  MessageConfig,
+  MessageMethodProps,
+  MessageMethodReturnType,
+  MessageMethodUpdate,
+} from './Message';
