@@ -1,5 +1,6 @@
 import ReactDOM from 'react-dom';
-import { useEffect, useState } from 'react';
+import { createRef, forwardRef, useImperativeHandle, useState } from 'react';
+import { isProduction } from '@xl-vision/utils';
 import ThemeProvider, { ThemeProviderProps } from '../ThemeProvider';
 import ConfigProvider, { ConfigProviderProps } from '../ConfigProvider';
 import useDialog, { DialogHookProps } from './useDialog';
@@ -19,6 +20,60 @@ export type DialogMethodReturnType = {
   isDestoryed: () => boolean;
 };
 
+type MethodDialogRef = {
+  destroy: () => void;
+  isDestoryed: () => boolean;
+  update: (updateProps: DialogMethodProps) => void;
+};
+
+const createMethodDialog = ({
+  configProviderProps,
+  themeProviderProps,
+  ...others
+}: DialogMethodProps) => {
+  const MethodDialog = forwardRef<MethodDialogRef>((_, ref) => {
+    const [methods, holder] = useDialog();
+
+    const [configProps, setConfigProps] = useState(configProviderProps);
+    const [themeProps, setThemeProps] = useState(themeProviderProps);
+
+    const [dialogResult] = useState(() => methods.open(others));
+
+    useImperativeHandle(ref, () => {
+      return {
+        ...dialogResult,
+        update(updateProps) {
+          const {
+            configProviderProps: newConfigProviderProps,
+            themeProviderProps: newThemeProviderProps,
+            ...newOthers
+          } = updateProps;
+
+          if (newConfigProviderProps) {
+            setConfigProps(newConfigProviderProps);
+          }
+
+          if (newThemeProviderProps) {
+            setThemeProps(newThemeProviderProps);
+          }
+          dialogResult.update(newOthers);
+        },
+      };
+    });
+
+    return (
+      <ConfigProvider {...configProps}>
+        <ThemeProvider {...themeProps}>{holder} </ThemeProvider>
+      </ConfigProvider>
+    );
+  });
+
+  if (!isProduction) {
+    MethodDialog.displayName = 'MethodDialog';
+  }
+
+  return MethodDialog;
+};
 const destroyFunctions: Array<() => void> = [];
 
 const method = (props: DialogMethodProps): DialogMethodReturnType => {
@@ -26,22 +81,31 @@ const method = (props: DialogMethodProps): DialogMethodReturnType => {
     ...props,
   };
 
-  let hookMethods: DialogMethodReturnType | undefined;
+  const ref = createRef<MethodDialogRef>();
+
+  const Dialog = createMethodDialog({
+    ...currentProps,
+    onAfterClosed() {
+      destroyDOM();
+      currentProps.onAfterClosed?.();
+    },
+  });
+
+  const doDestroy = () => {
+    const value = ref.current;
+    if (!value) {
+      return;
+    }
+    if (value.isDestoryed()) {
+      return;
+    }
+    value.destroy();
+  };
 
   const div = document.createElement('div');
   document.body.appendChild(div);
 
-  const doDestroy = () => {
-    if (!hookMethods) {
-      return;
-    }
-    if (hookMethods.isDestoryed()) {
-      return;
-    }
-    hookMethods.destroy();
-  };
-
-  const onAfterClosedWrap = (closed?: () => void) => () => {
+  const destroyDOM = () => {
     const unmountResult = ReactDOM.unmountComponentAtNode(div);
     if (unmountResult && div.parentNode) {
       div.parentNode.removeChild(div);
@@ -51,80 +115,30 @@ const method = (props: DialogMethodProps): DialogMethodReturnType => {
     if (i > -1) {
       destroyFunctions.splice(i, 1);
     }
-    closed?.();
   };
 
-  const GlobalHookDialog = () => {
-    const [configProps, setConfigProps] = useState(currentProps.configProviderProps);
-    const [themeProps, setThemeProps] = useState(currentProps.themeProviderProps);
-
-    const [methods, holder] = useDialog();
-
-    useEffect(() => {
-      const {
-        type,
-        onAfterClosed,
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        configProviderProps: _1,
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        themeProviderProps: _2,
-        ...others
-      } = currentProps;
-
-      const result = methods[type || 'open']({
-        ...others,
-        onAfterClosed: onAfterClosedWrap(onAfterClosed),
-      });
-
-      hookMethods = {
-        destroy: result.destroy,
-        isDestoryed: result.isDestoryed,
-        update(updateProps) {
-          const newProps =
-            typeof updateProps === 'function' ? updateProps(currentProps) : updateProps;
-
-          currentProps = {
-            ...currentProps,
-            ...newProps,
-          };
-
-          const {
-            onAfterClosed: newOnAfterClosed,
-            configProviderProps: newConfigProviderProps,
-            themeProviderProps: newThemeProviderProps,
-            ...newOthers
-          } = currentProps;
-
-          if (newConfigProviderProps) {
-            setConfigProps(newConfigProviderProps);
-          }
-
-          if (newThemeProviderProps) {
-            setThemeProps(newThemeProviderProps);
-          }
-
-          result.update({ ...newOthers, onAfterClosed: onAfterClosedWrap(newOnAfterClosed) });
-        },
-      };
-    }, [methods]);
-
-    return (
-      <ConfigProvider {...configProps}>
-        <ThemeProvider {...themeProps}>{holder} </ThemeProvider>
-      </ConfigProvider>
-    );
+  const render = () => {
+    setTimeout(() => {
+      ReactDOM.render(<Dialog ref={ref} />, div);
+    });
   };
 
   destroyFunctions.push(doDestroy);
 
-  setTimeout(() => {
-    ReactDOM.render(<GlobalHookDialog />, div);
-  });
+  render();
 
   return {
-    destroy: () => hookMethods?.destroy(),
-    update: (updateProps) => hookMethods?.update(updateProps),
-    isDestoryed: () => hookMethods?.isDestoryed() || false,
+    destroy: () => ref.current?.destroy(),
+    update: (updateProps) => {
+      const parsedProps =
+        typeof updateProps === 'function' ? updateProps(currentProps) : updateProps;
+      currentProps = {
+        ...currentProps,
+        ...parsedProps,
+      };
+      ref.current?.update(currentProps);
+    },
+    isDestoryed: () => ref.current?.isDestoryed() || false,
   };
 };
 

@@ -79,8 +79,8 @@ export { default as Dialog } from './Dialog';
 export type {
   DialogProps,
   DialogButtonProps,
-  MethodDialogProps,
-  InnerMethodDialogProps,
+  DedicatedDialogProps,
+  InnerDedicatedDialogProps,
   DialogHookUpdate,
   DialogType,
   DialogMethodProps,

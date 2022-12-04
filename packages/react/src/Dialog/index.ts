@@ -3,7 +3,7 @@ import { open, destroyAll, success, info, error, warning, confirm } from './meth
 import useDialog from './useDialog';
 
 export * from './Dialog';
-export * from './MethodDialog';
+export * from './DedicatedDialog';
 export * from './useDialog';
 export * from './methods';
 

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DialogMethod Test info 1`] = `
-.c5 {
+.c4 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -54,7 +54,7 @@ exports[`DialogMethod Test info 1`] = `
   transform: scale(1);
 }
 
-.c14 {
+.c12 {
   position: absolute;
   top: 0;
   right: 0;
@@ -66,7 +66,7 @@ exports[`DialogMethod Test info 1`] = `
   pointer-events: none;
 }
 
-.c11 {
+.c9 {
   position: relative;
   display: inline-block;
   box-sizing: border-box;
@@ -92,50 +92,50 @@ exports[`DialogMethod Test info 1`] = `
   -webkit-appearance: none;
 }
 
-.c11::-moz-focus-inner {
+.c9::-moz-focus-inner {
   border-style: none;
 }
 
-.c11 svg {
+.c9 svg {
   pointer-events: none;
 }
 
-.c11 .xl-base-button__ripple {
+.c9 .xl-base-button__ripple {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
   opacity: 0.12;
 }
 
-.c11 .xl-base-button__ripple-enter-active {
+.c9 .xl-base-button__ripple-enter-active {
   -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
   transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
 }
 
-.c11 .xl-base-button__ripple-exit-active {
+.c9 .xl-base-button__ripple-exit-active {
   -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c11 .xl-base-button__ripple-enter-from {
+.c9 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
   opacity: 0.1;
 }
 
-.c11 .xl-base-button__ripple-exit-to {
+.c9 .xl-base-button__ripple-exit-to {
   opacity: 0;
 }
 
-.c13 {
+.c11 {
   position: relative;
   display: inline-block;
   width: 100%;
   height: 100%;
 }
 
-.c12 {
+.c10 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
@@ -156,11 +156,11 @@ exports[`DialogMethod Test info 1`] = `
   padding: 6px 12px;
 }
 
-.c12:hover {
+.c10:hover {
   background-color: rgba(33,150,243,0.08);
 }
 
-.c12:focus {
+.c10:focus {
   background-color: rgba(33,150,243,0.12);
 }
 
@@ -200,7 +200,7 @@ exports[`DialogMethod Test info 1`] = `
   margin: 0;
 }
 
-.c7 {
+.c5 {
   padding: 8px 24px;
   overflow-y: auto;
   -webkit-flex: 1;
@@ -220,12 +220,12 @@ exports[`DialogMethod Test info 1`] = `
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
 }
 
-.c9 {
+.c7 {
   padding: 8px;
   text-align: right;
 }
 
-.c10 {
+.c8 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -266,26 +266,26 @@ exports[`DialogMethod Test info 1`] = `
   align-items: center;
 }
 
-.c6 {
-  vertical-align: middle;
-}
-
-.c4 {
+.c3 .xl-inner-dedicated-dialog__icon {
   padding-right: 5px;
   line-height: 1;
 }
 
-.c4 svg {
+.c3 .xl-inner-dedicated-dialog__icon svg {
   vertical-align: middle;
 }
 
-.c8 {
+.c3 .xl-inner-dedicated-dialog__title {
+  vertical-align: middle;
+}
+
+.c6 {
   padding-left: 25px;
 }
 
 <div
   aria-labelledby="xlDialogTitle1"
-  class="c0 xl-modal__body c1 xl-dialog xl-inner-method-dialog"
+  class="c0 xl-modal__body c1 xl-dialog xl-inner-dedicated-dialog"
   id="info"
   style="transform-origin: 50% 50%;"
   tabindex="-1"
@@ -295,13 +295,13 @@ exports[`DialogMethod Test info 1`] = `
     id="xlDialogTitle1"
   >
     <h6
-      class="c3 xl-inner-method-dialog__title"
+      class="c3 xl-inner-dedicated-dialog__header"
     >
       <span
-        class="c4 xl-inner-method-dialog__icon"
+        class="xl-inner-dedicated-dialog__icon"
       >
         <svg
-          class="xl-base-icon c5"
+          class="xl-base-icon c4"
           style="color: rgb(96, 125, 139);"
           viewBox="0 0 1024 1024"
         >
@@ -314,32 +314,32 @@ exports[`DialogMethod Test info 1`] = `
         </svg>
       </span>
       <span
-        class="c6"
+        class="xl-inner-dedicated-dialog__title"
       >
         title
       </span>
     </h6>
   </div>
   <div
-    class="c7 xl-dialog__content"
+    class="c5 xl-dialog__content"
   >
     <div
-      class="c8"
+      class="c6 xl-inner-dedicated-dialog__content"
     >
       content
     </div>
   </div>
   <div
-    class="c9 xl-dialog__footer"
+    class="c7 xl-dialog__footer"
   >
     <div
-      class="c10"
+      class="c8"
     >
       <button
-        class="c11 xl-base-button c12 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-text"
+        class="c9 xl-base-button c10 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-text"
       >
         <span
-          class="c13 xl-base-button__inner"
+          class="c11 xl-base-button__inner"
         >
           <span
             class="xl-button__inner"
@@ -348,7 +348,7 @@ exports[`DialogMethod Test info 1`] = `
           </span>
         </span>
         <div
-          class="c14 xl-ripple xl-base-button__ripple"
+          class="c12 xl-ripple xl-base-button__ripple"
         />
       </button>
     </div>
@@ -396,7 +396,7 @@ exports[`DialogMethod Test method 1`] = `
   transform: scale(1);
 }
 
-.c11 {
+.c10 {
   position: absolute;
   top: 0;
   right: 0;
@@ -408,7 +408,7 @@ exports[`DialogMethod Test method 1`] = `
   pointer-events: none;
 }
 
-.c8 {
+.c7 {
   position: relative;
   display: inline-block;
   box-sizing: border-box;
@@ -434,50 +434,50 @@ exports[`DialogMethod Test method 1`] = `
   -webkit-appearance: none;
 }
 
-.c8::-moz-focus-inner {
+.c7::-moz-focus-inner {
   border-style: none;
 }
 
-.c8 svg {
+.c7 svg {
   pointer-events: none;
 }
 
-.c8 .xl-base-button__ripple {
+.c7 .xl-base-button__ripple {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
   opacity: 0.12;
 }
 
-.c8 .xl-base-button__ripple-enter-active {
+.c7 .xl-base-button__ripple-enter-active {
   -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
   transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
 }
 
-.c8 .xl-base-button__ripple-exit-active {
+.c7 .xl-base-button__ripple-exit-active {
   -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c8 .xl-base-button__ripple-enter-from {
+.c7 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
   opacity: 0.1;
 }
 
-.c8 .xl-base-button__ripple-exit-to {
+.c7 .xl-base-button__ripple-exit-to {
   opacity: 0;
 }
 
-.c10 {
+.c9 {
   position: relative;
   display: inline-block;
   width: 100%;
   height: 100%;
 }
 
-.c9 {
+.c8 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
@@ -498,11 +498,11 @@ exports[`DialogMethod Test method 1`] = `
   padding: 6px 12px;
 }
 
-.c9:hover {
+.c8:hover {
   background-color: rgba(33,150,243,0.08);
 }
 
-.c9:focus {
+.c8:focus {
   background-color: rgba(33,150,243,0.12);
 }
 
@@ -542,7 +542,7 @@ exports[`DialogMethod Test method 1`] = `
   margin: 0;
 }
 
-.c5 {
+.c4 {
   padding: 8px 24px;
   overflow-y: auto;
   -webkit-flex: 1;
@@ -562,12 +562,12 @@ exports[`DialogMethod Test method 1`] = `
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
 }
 
-.c6 {
+.c5 {
   padding: 8px;
   text-align: right;
 }
 
-.c7 {
+.c6 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -608,13 +608,22 @@ exports[`DialogMethod Test method 1`] = `
   align-items: center;
 }
 
-.c4 {
+.c3 .xl-inner-dedicated-dialog__icon {
+  padding-right: 5px;
+  line-height: 1;
+}
+
+.c3 .xl-inner-dedicated-dialog__icon svg {
+  vertical-align: middle;
+}
+
+.c3 .xl-inner-dedicated-dialog__title {
   vertical-align: middle;
 }
 
 <div
   aria-labelledby="xlDialogTitle0"
-  class="c0 xl-modal__body c1 xl-dialog xl-inner-method-dialog"
+  class="c0 xl-modal__body c1 xl-dialog xl-inner-dedicated-dialog"
   id="method"
   style="transform-origin: 50% 50%;"
   tabindex="-1"
@@ -624,35 +633,35 @@ exports[`DialogMethod Test method 1`] = `
     id="xlDialogTitle0"
   >
     <h6
-      class="c3 xl-inner-method-dialog__title"
+      class="c3 xl-inner-dedicated-dialog__header"
     >
       <span
-        class="c4"
+        class="xl-inner-dedicated-dialog__title"
       >
         title
       </span>
     </h6>
   </div>
   <div
-    class="c5 xl-dialog__content"
+    class="c4 xl-dialog__content"
   >
     <div
-      class=""
+      class="xl-inner-dedicated-dialog__content"
     >
       content
     </div>
   </div>
   <div
-    class="c6 xl-dialog__footer"
+    class="c5 xl-dialog__footer"
   >
     <div
-      class="c7"
+      class="c6"
     >
       <button
-        class="c8 xl-base-button c9 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-text"
+        class="c7 xl-base-button c8 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-text"
       >
         <span
-          class="c10 xl-base-button__inner"
+          class="c9 xl-base-button__inner"
         >
           <span
             class="xl-button__inner"
@@ -661,14 +670,14 @@ exports[`DialogMethod Test method 1`] = `
           </span>
         </span>
         <div
-          class="c11 xl-ripple xl-base-button__ripple"
+          class="c10 xl-ripple xl-base-button__ripple"
         />
       </button>
       <button
-        class="c8 xl-base-button c9 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-text"
+        class="c7 xl-base-button c8 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-text"
       >
         <span
-          class="c10 xl-base-button__inner"
+          class="c9 xl-base-button__inner"
         >
           <span
             class="xl-button__inner"
@@ -677,7 +686,7 @@ exports[`DialogMethod Test method 1`] = `
           </span>
         </span>
         <div
-          class="c11 xl-ripple xl-base-button__ripple"
+          class="c10 xl-ripple xl-base-button__ripple"
         />
       </button>
     </div>
@@ -686,7 +695,7 @@ exports[`DialogMethod Test method 1`] = `
 `;
 
 exports[`DialogMethod test confirm 1`] = `
-.c5 {
+.c4 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -739,7 +748,7 @@ exports[`DialogMethod test confirm 1`] = `
   transform: scale(1);
 }
 
-.c14 {
+.c12 {
   position: absolute;
   top: 0;
   right: 0;
@@ -751,7 +760,7 @@ exports[`DialogMethod test confirm 1`] = `
   pointer-events: none;
 }
 
-.c11 {
+.c9 {
   position: relative;
   display: inline-block;
   box-sizing: border-box;
@@ -777,50 +786,50 @@ exports[`DialogMethod test confirm 1`] = `
   -webkit-appearance: none;
 }
 
-.c11::-moz-focus-inner {
+.c9::-moz-focus-inner {
   border-style: none;
 }
 
-.c11 svg {
+.c9 svg {
   pointer-events: none;
 }
 
-.c11 .xl-base-button__ripple {
+.c9 .xl-base-button__ripple {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
   opacity: 0.12;
 }
 
-.c11 .xl-base-button__ripple-enter-active {
+.c9 .xl-base-button__ripple-enter-active {
   -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
   transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
 }
 
-.c11 .xl-base-button__ripple-exit-active {
+.c9 .xl-base-button__ripple-exit-active {
   -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c11 .xl-base-button__ripple-enter-from {
+.c9 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
   opacity: 0.1;
 }
 
-.c11 .xl-base-button__ripple-exit-to {
+.c9 .xl-base-button__ripple-exit-to {
   opacity: 0;
 }
 
-.c13 {
+.c11 {
   position: relative;
   display: inline-block;
   width: 100%;
   height: 100%;
 }
 
-.c12 {
+.c10 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
@@ -841,11 +850,11 @@ exports[`DialogMethod test confirm 1`] = `
   padding: 6px 12px;
 }
 
-.c12:hover {
+.c10:hover {
   background-color: rgba(33,150,243,0.08);
 }
 
-.c12:focus {
+.c10:focus {
   background-color: rgba(33,150,243,0.12);
 }
 
@@ -885,7 +894,7 @@ exports[`DialogMethod test confirm 1`] = `
   margin: 0;
 }
 
-.c7 {
+.c5 {
   padding: 8px 24px;
   overflow-y: auto;
   -webkit-flex: 1;
@@ -905,12 +914,12 @@ exports[`DialogMethod test confirm 1`] = `
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
 }
 
-.c9 {
+.c7 {
   padding: 8px;
   text-align: right;
 }
 
-.c10 {
+.c8 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -951,26 +960,26 @@ exports[`DialogMethod test confirm 1`] = `
   align-items: center;
 }
 
-.c6 {
-  vertical-align: middle;
-}
-
-.c4 {
+.c3 .xl-inner-dedicated-dialog__icon {
   padding-right: 5px;
   line-height: 1;
 }
 
-.c4 svg {
+.c3 .xl-inner-dedicated-dialog__icon svg {
   vertical-align: middle;
 }
 
-.c8 {
+.c3 .xl-inner-dedicated-dialog__title {
+  vertical-align: middle;
+}
+
+.c6 {
   padding-left: 25px;
 }
 
 <div
   aria-labelledby="xlDialogTitle5"
-  class="c0 xl-modal__body c1 xl-dialog xl-inner-method-dialog"
+  class="c0 xl-modal__body c1 xl-dialog xl-inner-dedicated-dialog"
   id="confirm"
   style="transform-origin: 50% 50%;"
   tabindex="-1"
@@ -980,13 +989,13 @@ exports[`DialogMethod test confirm 1`] = `
     id="xlDialogTitle5"
   >
     <h6
-      class="c3 xl-inner-method-dialog__title"
+      class="c3 xl-inner-dedicated-dialog__header"
     >
       <span
-        class="c4 xl-inner-method-dialog__icon"
+        class="xl-inner-dedicated-dialog__icon"
       >
         <svg
-          class="xl-base-icon c5"
+          class="xl-base-icon c4"
           style="color: rgb(33, 150, 243);"
           viewBox="0 0 1024 1024"
         >
@@ -999,32 +1008,32 @@ exports[`DialogMethod test confirm 1`] = `
         </svg>
       </span>
       <span
-        class="c6"
+        class="xl-inner-dedicated-dialog__title"
       >
         title
       </span>
     </h6>
   </div>
   <div
-    class="c7 xl-dialog__content"
+    class="c5 xl-dialog__content"
   >
     <div
-      class="c8"
+      class="c6 xl-inner-dedicated-dialog__content"
     >
       content
     </div>
   </div>
   <div
-    class="c9 xl-dialog__footer"
+    class="c7 xl-dialog__footer"
   >
     <div
-      class="c10"
+      class="c8"
     >
       <button
-        class="c11 xl-base-button c12 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-text"
+        class="c9 xl-base-button c10 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-text"
       >
         <span
-          class="c13 xl-base-button__inner"
+          class="c11 xl-base-button__inner"
         >
           <span
             class="xl-button__inner"
@@ -1033,14 +1042,14 @@ exports[`DialogMethod test confirm 1`] = `
           </span>
         </span>
         <div
-          class="c14 xl-ripple xl-base-button__ripple"
+          class="c12 xl-ripple xl-base-button__ripple"
         />
       </button>
       <button
-        class="c11 xl-base-button c12 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-text"
+        class="c9 xl-base-button c10 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-text"
       >
         <span
-          class="c13 xl-base-button__inner"
+          class="c11 xl-base-button__inner"
         >
           <span
             class="xl-button__inner"
@@ -1049,7 +1058,7 @@ exports[`DialogMethod test confirm 1`] = `
           </span>
         </span>
         <div
-          class="c14 xl-ripple xl-base-button__ripple"
+          class="c12 xl-ripple xl-base-button__ripple"
         />
       </button>
     </div>
@@ -1058,7 +1067,7 @@ exports[`DialogMethod test confirm 1`] = `
 `;
 
 exports[`DialogMethod test error 1`] = `
-.c5 {
+.c4 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1111,7 +1120,7 @@ exports[`DialogMethod test error 1`] = `
   transform: scale(1);
 }
 
-.c14 {
+.c12 {
   position: absolute;
   top: 0;
   right: 0;
@@ -1123,7 +1132,7 @@ exports[`DialogMethod test error 1`] = `
   pointer-events: none;
 }
 
-.c11 {
+.c9 {
   position: relative;
   display: inline-block;
   box-sizing: border-box;
@@ -1149,50 +1158,50 @@ exports[`DialogMethod test error 1`] = `
   -webkit-appearance: none;
 }
 
-.c11::-moz-focus-inner {
+.c9::-moz-focus-inner {
   border-style: none;
 }
 
-.c11 svg {
+.c9 svg {
   pointer-events: none;
 }
 
-.c11 .xl-base-button__ripple {
+.c9 .xl-base-button__ripple {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
   opacity: 0.12;
 }
 
-.c11 .xl-base-button__ripple-enter-active {
+.c9 .xl-base-button__ripple-enter-active {
   -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
   transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
 }
 
-.c11 .xl-base-button__ripple-exit-active {
+.c9 .xl-base-button__ripple-exit-active {
   -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c11 .xl-base-button__ripple-enter-from {
+.c9 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
   opacity: 0.1;
 }
 
-.c11 .xl-base-button__ripple-exit-to {
+.c9 .xl-base-button__ripple-exit-to {
   opacity: 0;
 }
 
-.c13 {
+.c11 {
   position: relative;
   display: inline-block;
   width: 100%;
   height: 100%;
 }
 
-.c12 {
+.c10 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
@@ -1213,11 +1222,11 @@ exports[`DialogMethod test error 1`] = `
   padding: 6px 12px;
 }
 
-.c12:hover {
+.c10:hover {
   background-color: rgba(33,150,243,0.08);
 }
 
-.c12:focus {
+.c10:focus {
   background-color: rgba(33,150,243,0.12);
 }
 
@@ -1257,7 +1266,7 @@ exports[`DialogMethod test error 1`] = `
   margin: 0;
 }
 
-.c7 {
+.c5 {
   padding: 8px 24px;
   overflow-y: auto;
   -webkit-flex: 1;
@@ -1277,12 +1286,12 @@ exports[`DialogMethod test error 1`] = `
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
 }
 
-.c9 {
+.c7 {
   padding: 8px;
   text-align: right;
 }
 
-.c10 {
+.c8 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1323,26 +1332,26 @@ exports[`DialogMethod test error 1`] = `
   align-items: center;
 }
 
-.c6 {
-  vertical-align: middle;
-}
-
-.c4 {
+.c3 .xl-inner-dedicated-dialog__icon {
   padding-right: 5px;
   line-height: 1;
 }
 
-.c4 svg {
+.c3 .xl-inner-dedicated-dialog__icon svg {
   vertical-align: middle;
 }
 
-.c8 {
+.c3 .xl-inner-dedicated-dialog__title {
+  vertical-align: middle;
+}
+
+.c6 {
   padding-left: 25px;
 }
 
 <div
   aria-labelledby="xlDialogTitle3"
-  class="c0 xl-modal__body c1 xl-dialog xl-inner-method-dialog"
+  class="c0 xl-modal__body c1 xl-dialog xl-inner-dedicated-dialog"
   id="error"
   style="transform-origin: 50% 50%;"
   tabindex="-1"
@@ -1352,13 +1361,13 @@ exports[`DialogMethod test error 1`] = `
     id="xlDialogTitle3"
   >
     <h6
-      class="c3 xl-inner-method-dialog__title"
+      class="c3 xl-inner-dedicated-dialog__header"
     >
       <span
-        class="c4 xl-inner-method-dialog__icon"
+        class="xl-inner-dedicated-dialog__icon"
       >
         <svg
-          class="xl-base-icon c5"
+          class="xl-base-icon c4"
           style="color: rgb(239, 83, 80);"
           viewBox="0 0 1024 1024"
         >
@@ -1371,32 +1380,32 @@ exports[`DialogMethod test error 1`] = `
         </svg>
       </span>
       <span
-        class="c6"
+        class="xl-inner-dedicated-dialog__title"
       >
         title
       </span>
     </h6>
   </div>
   <div
-    class="c7 xl-dialog__content"
+    class="c5 xl-dialog__content"
   >
     <div
-      class="c8"
+      class="c6 xl-inner-dedicated-dialog__content"
     >
       content
     </div>
   </div>
   <div
-    class="c9 xl-dialog__footer"
+    class="c7 xl-dialog__footer"
   >
     <div
-      class="c10"
+      class="c8"
     >
       <button
-        class="c11 xl-base-button c12 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-text"
+        class="c9 xl-base-button c10 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-text"
       >
         <span
-          class="c13 xl-base-button__inner"
+          class="c11 xl-base-button__inner"
         >
           <span
             class="xl-button__inner"
@@ -1405,7 +1414,7 @@ exports[`DialogMethod test error 1`] = `
           </span>
         </span>
         <div
-          class="c14 xl-ripple xl-base-button__ripple"
+          class="c12 xl-ripple xl-base-button__ripple"
         />
       </button>
     </div>
@@ -1414,7 +1423,7 @@ exports[`DialogMethod test error 1`] = `
 `;
 
 exports[`DialogMethod test success 1`] = `
-.c5 {
+.c4 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1467,7 +1476,7 @@ exports[`DialogMethod test success 1`] = `
   transform: scale(1);
 }
 
-.c14 {
+.c12 {
   position: absolute;
   top: 0;
   right: 0;
@@ -1479,7 +1488,7 @@ exports[`DialogMethod test success 1`] = `
   pointer-events: none;
 }
 
-.c11 {
+.c9 {
   position: relative;
   display: inline-block;
   box-sizing: border-box;
@@ -1505,50 +1514,50 @@ exports[`DialogMethod test success 1`] = `
   -webkit-appearance: none;
 }
 
-.c11::-moz-focus-inner {
+.c9::-moz-focus-inner {
   border-style: none;
 }
 
-.c11 svg {
+.c9 svg {
   pointer-events: none;
 }
 
-.c11 .xl-base-button__ripple {
+.c9 .xl-base-button__ripple {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
   opacity: 0.12;
 }
 
-.c11 .xl-base-button__ripple-enter-active {
+.c9 .xl-base-button__ripple-enter-active {
   -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
   transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
 }
 
-.c11 .xl-base-button__ripple-exit-active {
+.c9 .xl-base-button__ripple-exit-active {
   -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c11 .xl-base-button__ripple-enter-from {
+.c9 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
   opacity: 0.1;
 }
 
-.c11 .xl-base-button__ripple-exit-to {
+.c9 .xl-base-button__ripple-exit-to {
   opacity: 0;
 }
 
-.c13 {
+.c11 {
   position: relative;
   display: inline-block;
   width: 100%;
   height: 100%;
 }
 
-.c12 {
+.c10 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
@@ -1569,11 +1578,11 @@ exports[`DialogMethod test success 1`] = `
   padding: 6px 12px;
 }
 
-.c12:hover {
+.c10:hover {
   background-color: rgba(33,150,243,0.08);
 }
 
-.c12:focus {
+.c10:focus {
   background-color: rgba(33,150,243,0.12);
 }
 
@@ -1613,7 +1622,7 @@ exports[`DialogMethod test success 1`] = `
   margin: 0;
 }
 
-.c7 {
+.c5 {
   padding: 8px 24px;
   overflow-y: auto;
   -webkit-flex: 1;
@@ -1633,12 +1642,12 @@ exports[`DialogMethod test success 1`] = `
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
 }
 
-.c9 {
+.c7 {
   padding: 8px;
   text-align: right;
 }
 
-.c10 {
+.c8 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1679,26 +1688,26 @@ exports[`DialogMethod test success 1`] = `
   align-items: center;
 }
 
-.c6 {
-  vertical-align: middle;
-}
-
-.c4 {
+.c3 .xl-inner-dedicated-dialog__icon {
   padding-right: 5px;
   line-height: 1;
 }
 
-.c4 svg {
+.c3 .xl-inner-dedicated-dialog__icon svg {
   vertical-align: middle;
 }
 
-.c8 {
+.c3 .xl-inner-dedicated-dialog__title {
+  vertical-align: middle;
+}
+
+.c6 {
   padding-left: 25px;
 }
 
 <div
   aria-labelledby="xlDialogTitle2"
-  class="c0 xl-modal__body c1 xl-dialog xl-inner-method-dialog"
+  class="c0 xl-modal__body c1 xl-dialog xl-inner-dedicated-dialog"
   id="success"
   style="transform-origin: 50% 50%;"
   tabindex="-1"
@@ -1708,13 +1717,13 @@ exports[`DialogMethod test success 1`] = `
     id="xlDialogTitle2"
   >
     <h6
-      class="c3 xl-inner-method-dialog__title"
+      class="c3 xl-inner-dedicated-dialog__header"
     >
       <span
-        class="c4 xl-inner-method-dialog__icon"
+        class="xl-inner-dedicated-dialog__icon"
       >
         <svg
-          class="xl-base-icon c5"
+          class="xl-base-icon c4"
           style="color: rgb(56, 142, 60);"
           viewBox="0 0 1024 1024"
         >
@@ -1727,32 +1736,32 @@ exports[`DialogMethod test success 1`] = `
         </svg>
       </span>
       <span
-        class="c6"
+        class="xl-inner-dedicated-dialog__title"
       >
         title
       </span>
     </h6>
   </div>
   <div
-    class="c7 xl-dialog__content"
+    class="c5 xl-dialog__content"
   >
     <div
-      class="c8"
+      class="c6 xl-inner-dedicated-dialog__content"
     >
       content
     </div>
   </div>
   <div
-    class="c9 xl-dialog__footer"
+    class="c7 xl-dialog__footer"
   >
     <div
-      class="c10"
+      class="c8"
     >
       <button
-        class="c11 xl-base-button c12 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-text"
+        class="c9 xl-base-button c10 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-text"
       >
         <span
-          class="c13 xl-base-button__inner"
+          class="c11 xl-base-button__inner"
         >
           <span
             class="xl-button__inner"
@@ -1761,7 +1770,7 @@ exports[`DialogMethod test success 1`] = `
           </span>
         </span>
         <div
-          class="c14 xl-ripple xl-base-button__ripple"
+          class="c12 xl-ripple xl-base-button__ripple"
         />
       </button>
     </div>
@@ -1770,7 +1779,7 @@ exports[`DialogMethod test success 1`] = `
 `;
 
 exports[`DialogMethod test warning 1`] = `
-.c5 {
+.c4 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1823,7 +1832,7 @@ exports[`DialogMethod test warning 1`] = `
   transform: scale(1);
 }
 
-.c14 {
+.c12 {
   position: absolute;
   top: 0;
   right: 0;
@@ -1835,7 +1844,7 @@ exports[`DialogMethod test warning 1`] = `
   pointer-events: none;
 }
 
-.c11 {
+.c9 {
   position: relative;
   display: inline-block;
   box-sizing: border-box;
@@ -1861,50 +1870,50 @@ exports[`DialogMethod test warning 1`] = `
   -webkit-appearance: none;
 }
 
-.c11::-moz-focus-inner {
+.c9::-moz-focus-inner {
   border-style: none;
 }
 
-.c11 svg {
+.c9 svg {
   pointer-events: none;
 }
 
-.c11 .xl-base-button__ripple {
+.c9 .xl-base-button__ripple {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
   opacity: 0.12;
 }
 
-.c11 .xl-base-button__ripple-enter-active {
+.c9 .xl-base-button__ripple-enter-active {
   -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
   transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
 }
 
-.c11 .xl-base-button__ripple-exit-active {
+.c9 .xl-base-button__ripple-exit-active {
   -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
   transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
 }
 
-.c11 .xl-base-button__ripple-enter-from {
+.c9 .xl-base-button__ripple-enter-from {
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
   opacity: 0.1;
 }
 
-.c11 .xl-base-button__ripple-exit-to {
+.c9 .xl-base-button__ripple-exit-to {
   opacity: 0;
 }
 
-.c13 {
+.c11 {
   position: relative;
   display: inline-block;
   width: 100%;
   height: 100%;
 }
 
-.c12 {
+.c10 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
@@ -1925,11 +1934,11 @@ exports[`DialogMethod test warning 1`] = `
   padding: 6px 12px;
 }
 
-.c12:hover {
+.c10:hover {
   background-color: rgba(33,150,243,0.08);
 }
 
-.c12:focus {
+.c10:focus {
   background-color: rgba(33,150,243,0.12);
 }
 
@@ -1969,7 +1978,7 @@ exports[`DialogMethod test warning 1`] = `
   margin: 0;
 }
 
-.c7 {
+.c5 {
   padding: 8px 24px;
   overflow-y: auto;
   -webkit-flex: 1;
@@ -1989,12 +1998,12 @@ exports[`DialogMethod test warning 1`] = `
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
 }
 
-.c9 {
+.c7 {
   padding: 8px;
   text-align: right;
 }
 
-.c10 {
+.c8 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -2035,26 +2044,26 @@ exports[`DialogMethod test warning 1`] = `
   align-items: center;
 }
 
-.c6 {
-  vertical-align: middle;
-}
-
-.c4 {
+.c3 .xl-inner-dedicated-dialog__icon {
   padding-right: 5px;
   line-height: 1;
 }
 
-.c4 svg {
+.c3 .xl-inner-dedicated-dialog__icon svg {
   vertical-align: middle;
 }
 
-.c8 {
+.c3 .xl-inner-dedicated-dialog__title {
+  vertical-align: middle;
+}
+
+.c6 {
   padding-left: 25px;
 }
 
 <div
   aria-labelledby="xlDialogTitle4"
-  class="c0 xl-modal__body c1 xl-dialog xl-inner-method-dialog"
+  class="c0 xl-modal__body c1 xl-dialog xl-inner-dedicated-dialog"
   id="warning"
   style="transform-origin: 50% 50%;"
   tabindex="-1"
@@ -2064,13 +2073,13 @@ exports[`DialogMethod test warning 1`] = `
     id="xlDialogTitle4"
   >
     <h6
-      class="c3 xl-inner-method-dialog__title"
+      class="c3 xl-inner-dedicated-dialog__header"
     >
       <span
-        class="c4 xl-inner-method-dialog__icon"
+        class="xl-inner-dedicated-dialog__icon"
       >
         <svg
-          class="xl-base-icon c5"
+          class="xl-base-icon c4"
           style="color: rgb(255, 152, 0);"
           viewBox="0 0 1024 1024"
         >
@@ -2083,32 +2092,32 @@ exports[`DialogMethod test warning 1`] = `
         </svg>
       </span>
       <span
-        class="c6"
+        class="xl-inner-dedicated-dialog__title"
       >
         title
       </span>
     </h6>
   </div>
   <div
-    class="c7 xl-dialog__content"
+    class="c5 xl-dialog__content"
   >
     <div
-      class="c8"
+      class="c6 xl-inner-dedicated-dialog__content"
     >
       content
     </div>
   </div>
   <div
-    class="c9 xl-dialog__footer"
+    class="c7 xl-dialog__footer"
   >
     <div
-      class="c10"
+      class="c8"
     >
       <button
-        class="c11 xl-base-button c12 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-text"
+        class="c9 xl-base-button c10 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-text"
       >
         <span
-          class="c13 xl-base-button__inner"
+          class="c11 xl-base-button__inner"
         >
           <span
             class="xl-button__inner"
@@ -2117,7 +2126,7 @@ exports[`DialogMethod test warning 1`] = `
           </span>
         </span>
         <div
-          class="c14 xl-ripple xl-base-button__ripple"
+          class="c12 xl-ripple xl-base-button__ripple"
         />
       </button>
     </div>

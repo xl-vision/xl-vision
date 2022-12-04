@@ -25,7 +25,9 @@ describe('DialogMethod', () => {
     expect(el).not.toBe(null);
     expect(el).toMatchSnapshot();
 
-    destroy();
+    act(() => {
+      destroy();
+    });
 
     act(() => {
       jest.runAllTimers();
@@ -55,7 +57,9 @@ describe('DialogMethod', () => {
     expect(el).not.toBe(null);
     expect(el).toMatchSnapshot();
 
-    destroy();
+    act(() => {
+      destroy();
+    });
 
     act(() => {
       jest.runAllTimers();
@@ -85,7 +89,9 @@ describe('DialogMethod', () => {
     expect(el).not.toBe(null);
     expect(el).toMatchSnapshot();
 
-    destroy();
+    act(() => {
+      destroy();
+    });
 
     act(() => {
       jest.runAllTimers();
@@ -115,7 +121,9 @@ describe('DialogMethod', () => {
     expect(el).not.toBe(null);
     expect(el).toMatchSnapshot();
 
-    destroy();
+    act(() => {
+      destroy();
+    });
 
     act(() => {
       jest.runAllTimers();
@@ -145,7 +153,9 @@ describe('DialogMethod', () => {
     expect(el).not.toBe(null);
     expect(el).toMatchSnapshot();
 
-    destroy();
+    act(() => {
+      destroy();
+    });
 
     act(() => {
       jest.runAllTimers();
@@ -175,7 +185,9 @@ describe('DialogMethod', () => {
     expect(el).not.toBe(null);
     expect(el).toMatchSnapshot();
 
-    destroy();
+    act(() => {
+      destroy();
+    });
 
     act(() => {
       jest.runAllTimers();
@@ -215,7 +227,9 @@ describe('DialogMethod', () => {
 
     expect(el2).not.toBe(null);
 
-    destroyAll();
+    act(() => {
+      destroyAll();
+    });
 
     act(() => {
       jest.runAllTimers();
@@ -248,8 +262,10 @@ describe('DialogMethod', () => {
 
     expect(el!.querySelector<HTMLDivElement>('#content')!.textContent).toBe('content');
 
-    update({
-      content: <div id='content'>content2</div>,
+    act(() => {
+      update({
+        content: <div id='content'>content2</div>,
+      });
     });
 
     act(() => {
@@ -258,7 +274,9 @@ describe('DialogMethod', () => {
 
     expect(el!.querySelector<HTMLDivElement>('#content')!.textContent).toBe('content2');
 
-    destroy();
+    act(() => {
+      destroy();
+    });
 
     act(() => {
       jest.runAllTimers();

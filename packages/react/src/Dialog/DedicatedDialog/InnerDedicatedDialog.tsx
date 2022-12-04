@@ -8,50 +8,41 @@ import { styled } from '../../styles';
 import usePropChange from '../../hooks/usePropChange';
 import { useTheme } from '../../ThemeProvider';
 
-export interface InnerMethodDialogProps extends Omit<DialogProps, 'children'> {
+export interface InnerDedicatedDialogProps extends Omit<DialogProps, 'children'> {
   content?: ReactNode;
   icon?: ReactNode;
 }
 
-const displayName = 'InnerMethodDialog';
+const displayName = 'InnerDedicatedDialog';
 
-const InnerMethodDialogHeader = styled('h6', {
+const InnerDedicatedDialogHeader = styled('h6', {
   name: displayName,
   slot: 'Header',
 })(({ theme }) => {
-  const { typography } = theme;
+  const { typography, clsPrefix } = theme;
+
+  const rootClassName = `${clsPrefix}-inner-dedicated-dialog`;
 
   return {
     ...typography.h6.style,
     margin: 0,
     display: 'flex',
     alignItems: 'center',
-  };
-});
 
-const InnerMethodDialogTitle = styled('span', {
-  name: displayName,
-  slot: 'Title',
-})(() => {
-  return {
-    verticalAlign: 'middle',
-  };
-});
-
-const InnerMethodDialogIcon = styled('span', {
-  name: displayName,
-  slot: 'Icon',
-})(() => {
-  return {
-    paddingRight: 5,
-    lineHeight: 1,
-    svg: {
+    [`.${rootClassName}__icon`]: {
+      paddingRight: 5,
+      lineHeight: 1,
+      svg: {
+        verticalAlign: 'middle',
+      },
+    },
+    [`.${rootClassName}__title`]: {
       verticalAlign: 'middle',
     },
   };
 });
 
-const InnerMethodDialogContent = styled('div', {
+const InnerDedicatedDialogContent = styled('div', {
   name: displayName,
   slot: 'Content',
 })<{
@@ -67,7 +58,7 @@ const InnerMethodDialogContent = styled('div', {
   return styles;
 });
 
-const InnerMethodDialog: FC<InnerMethodDialogProps> = (props) => {
+const InnerDedicatedDialog: FC<InnerDedicatedDialogProps> = (props) => {
   const {
     visible: visibleProp,
     defaultVisible: defaultVisibleProp = false,
@@ -94,15 +85,13 @@ const InnerMethodDialog: FC<InnerMethodDialogProps> = (props) => {
     setFirst(false);
   }, []);
 
-  const rootClassName = `${clsPrefix}-inner-method-dialog`;
+  const rootClassName = `${clsPrefix}-inner-dedicated-dialog`;
 
   const headerWrapper = (
-    <InnerMethodDialogHeader className={`${rootClassName}__title`}>
-      {icon && (
-        <InnerMethodDialogIcon className={`${rootClassName}__icon`}>{icon}</InnerMethodDialogIcon>
-      )}
-      <InnerMethodDialogTitle>{title}</InnerMethodDialogTitle>
-    </InnerMethodDialogHeader>
+    <InnerDedicatedDialogHeader className={`${rootClassName}__header`}>
+      {icon && <span className={`${rootClassName}__icon`}>{icon}</span>}
+      <span className={`${rootClassName}__title`}>{title}</span>
+    </InnerDedicatedDialogHeader>
   );
 
   return (
@@ -114,15 +103,20 @@ const InnerMethodDialog: FC<InnerMethodDialogProps> = (props) => {
       onVisibleChange={handleVisibleChange}
     >
       {content && (
-        <InnerMethodDialogContent styleProps={{ icon: !!icon }}>{content}</InnerMethodDialogContent>
+        <InnerDedicatedDialogContent
+          className={`${rootClassName}__content`}
+          styleProps={{ icon: !!icon }}
+        >
+          {content}
+        </InnerDedicatedDialogContent>
       )}
     </Dialog>
   );
 };
 
 if (!isProduction) {
-  InnerMethodDialog.displayName = displayName;
-  InnerMethodDialog.propTypes = {
+  InnerDedicatedDialog.displayName = displayName;
+  InnerDedicatedDialog.propTypes = {
     visible: Proptypes.bool,
     defaultVisible: Proptypes.bool,
     onVisibleChange: Proptypes.func,
@@ -133,4 +127,4 @@ if (!isProduction) {
   };
 }
 
-export default InnerMethodDialog;
+export default InnerDedicatedDialog;

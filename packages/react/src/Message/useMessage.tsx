@@ -82,13 +82,15 @@ const useMessage = ({
           zIndex: increaseZindex(),
           ...props.style,
         },
+      };
+      const HookMessage = createHookMessage({
+        ...currentProps,
         onAfterClosed: () => {
-          props.onAfterClosed?.();
           destroyDOM();
+          props.onAfterClosed?.();
           promiseResolve?.();
         },
-      };
-      const HookMessage = createHookMessage(currentProps);
+      });
 
       const ref = createRef<HookMessageRef>();
 
@@ -108,7 +110,14 @@ const useMessage = ({
             `The message instance was destroyed, please do not update or destroy it again.`,
           );
         }
-        ref.current?.update(renderProps);
+        ref.current?.update({
+          ...renderProps,
+          onAfterClosed: () => {
+            destroyDOM();
+            renderProps.onAfterClosed?.();
+            promiseResolve?.();
+          },
+        });
       };
 
       const update: MessageHookUpdate = (updateProps) => {
@@ -116,12 +125,6 @@ const useMessage = ({
           typeof updateProps === 'function' ? updateProps(currentProps) : updateProps;
         currentProps = { ...currentProps, ...newProps, visible: undefined, defaultVisible: true };
 
-        const { onAfterClosed } = currentProps;
-
-        currentProps.onAfterClosed = () => {
-          onAfterClosed?.();
-          destroyDOM();
-        };
         render(currentProps);
       };
 
@@ -129,10 +132,6 @@ const useMessage = ({
         render({
           ...currentProps,
           visible: false,
-          onAfterClosed() {
-            currentProps.onAfterClosed?.();
-            destroyDOM();
-          },
         });
       };
 

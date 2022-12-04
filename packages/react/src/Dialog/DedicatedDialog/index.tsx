@@ -6,25 +6,25 @@ import {
 } from '@xl-vision/icons';
 import { FC, useMemo } from 'react';
 import { isProduction } from '@xl-vision/utils';
-import InnerMethodDialog, { InnerMethodDialogProps } from './InnerMethodDialog';
+import InnerDedicatedDialog, { InnerDedicatedDialogProps } from './InnerDedicatedDialog';
 import { useTheme } from '../../ThemeProvider';
 import { useConfig } from '../../ConfigProvider';
 
-export * from './InnerMethodDialog';
+export * from './InnerDedicatedDialog';
 
 export type DialogType = 'success' | 'error' | 'warning' | 'info' | 'confirm';
 
-export type MethodDialogProps = InnerMethodDialogProps & {
+export type DedicatedDialogProps = InnerDedicatedDialogProps & {
   type?: DialogType;
 };
 
-const displayName = 'MethodDialog';
+const displayName = 'DedicatedDialog';
 
-const MethodDialog: FC<MethodDialogProps> = ({ type, ...others }) => {
+const DedicatedDialog: FC<DedicatedDialogProps> = ({ type, ...others }) => {
   const { color } = useTheme();
   const { locale } = useConfig();
 
-  const defaultProps: Partial<InnerMethodDialogProps> = useMemo(() => {
+  const defaultProps: Partial<InnerDedicatedDialogProps> = useMemo(() => {
     switch (type) {
       case 'success': {
         return {
@@ -67,11 +67,11 @@ const MethodDialog: FC<MethodDialogProps> = ({ type, ...others }) => {
     }
   }, [type, color, locale]);
 
-  return <InnerMethodDialog {...defaultProps} {...others} />;
+  return <InnerDedicatedDialog {...defaultProps} {...others} />;
 };
 
 if (!isProduction) {
-  MethodDialog.displayName = displayName;
+  DedicatedDialog.displayName = displayName;
 }
 
-export default MethodDialog;
+export default DedicatedDialog;

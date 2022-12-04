@@ -8,13 +8,13 @@ import {
   createRef,
   useMemo,
 } from 'react';
-import MethodDialog, { MethodDialogProps } from './MethodDialog';
+import DedicatedDialog, { DedicatedDialogProps } from './DedicatedDialog';
 
 type HookDialogRef = {
-  update: (updateProps: MethodDialogProps) => void;
+  update: (updateProps: DedicatedDialogProps) => void;
 };
 
-export type DialogHookProps = Omit<MethodDialogProps, 'visible' | 'defaultVisible'>;
+export type DialogHookProps = Omit<DedicatedDialogProps, 'visible' | 'defaultVisible'>;
 
 export type DialogHookUpdate = (
   props: Partial<DialogHookProps> | ((prev: DialogHookProps) => Partial<DialogHookProps>),
@@ -26,19 +26,19 @@ export type DialogHookReturnType = {
   isDestoryed: () => boolean;
 };
 
-const createHookDialog = (props: MethodDialogProps) => {
+const createHookDialog = (props: DedicatedDialogProps) => {
   const HookDialog = forwardRef<HookDialogRef>((_, ref) => {
-    const [methodDialogProps, setMethodDialogProps] = useState<MethodDialogProps>(props);
+    const [dialogProps, setDialogProps] = useState<DedicatedDialogProps>(props);
 
     useImperativeHandle(ref, () => {
       return {
         update(updateProps) {
-          setMethodDialogProps(updateProps);
+          setDialogProps(updateProps);
         },
       };
     });
 
-    return <MethodDialog {...methodDialogProps} />;
+    return <DedicatedDialog {...dialogProps} />;
   });
 
   if (!isProduction) {
@@ -54,7 +54,7 @@ const useDialog = () => {
   const [dialogs, setDialogs] = useState<Array<ReactElement>>([]);
 
   const method = useCallback((props: DialogHookProps): DialogHookReturnType => {
-    let currentProps: MethodDialogProps = {
+    let currentProps: DedicatedDialogProps = {
       ...props,
       visible: undefined,
       defaultVisible: true,
@@ -78,7 +78,7 @@ const useDialog = () => {
       destroyState = true;
     };
 
-    const render = (renderProps: MethodDialogProps) => {
+    const render = (renderProps: DedicatedDialogProps) => {
       if (destroyState) {
         return warningLog(
           true,
