@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import ThemeProvider, { ThemeProviderProps } from '../ThemeProvider';
 import ConfigProvider, { ConfigProviderProps } from '../ConfigProvider';
 import useDialog, { DialogHookProps } from './useDialog';
@@ -21,13 +21,11 @@ export type DialogMethodReturnType = {
 
 const destroyFunctions: Array<() => void> = [];
 
-const method = ({
-  themeProviderProps,
-  configProviderProps,
-  onAfterClosed,
-  type,
-  ...others
-}: DialogMethodProps): DialogMethodReturnType => {
+const method = (props: DialogMethodProps): DialogMethodReturnType => {
+  let currentProps = {
+    ...props,
+  };
+
   let hookMethods: DialogMethodReturnType | undefined;
 
   const div = document.createElement('div');
@@ -37,14 +35,13 @@ const method = ({
     if (!hookMethods) {
       return;
     }
-    if (!hookMethods.isDestoryed) {
+    if (hookMethods.isDestoryed()) {
       return;
     }
     hookMethods.destroy();
   };
 
-  const onAfterClosedWrap = () => {
-    onAfterClosed?.();
+  const onAfterClosedWrap = (closed?: () => void) => () => {
     const unmountResult = ReactDOM.unmountComponentAtNode(div);
     if (unmountResult && div.parentNode) {
       div.parentNode.removeChild(div);
@@ -54,18 +51,66 @@ const method = ({
     if (i > -1) {
       destroyFunctions.splice(i, 1);
     }
+    closed?.();
   };
 
   const GlobalHookDialog = () => {
+    const [configProps, setConfigProps] = useState(currentProps.configProviderProps);
+    const [themeProps, setThemeProps] = useState(currentProps.themeProviderProps);
+
     const [methods, holder] = useDialog();
 
     useEffect(() => {
-      hookMethods = methods[type || 'open']({ ...others, onAfterClosed: onAfterClosedWrap });
+      const {
+        type,
+        onAfterClosed,
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        configProviderProps: _1,
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        themeProviderProps: _2,
+        ...others
+      } = currentProps;
+
+      const result = methods[type || 'open']({
+        ...others,
+        onAfterClosed: onAfterClosedWrap(onAfterClosed),
+      });
+
+      hookMethods = {
+        destroy: result.destroy,
+        isDestoryed: result.isDestoryed,
+        update(updateProps) {
+          const newProps =
+            typeof updateProps === 'function' ? updateProps(currentProps) : updateProps;
+
+          currentProps = {
+            ...currentProps,
+            ...newProps,
+          };
+
+          const {
+            onAfterClosed: newOnAfterClosed,
+            configProviderProps: newConfigProviderProps,
+            themeProviderProps: newThemeProviderProps,
+            ...newOthers
+          } = currentProps;
+
+          if (newConfigProviderProps) {
+            setConfigProps(newConfigProviderProps);
+          }
+
+          if (newThemeProviderProps) {
+            setThemeProps(newThemeProviderProps);
+          }
+
+          result.update({ ...newOthers, onAfterClosed: onAfterClosedWrap(newOnAfterClosed) });
+        },
+      };
     }, [methods]);
 
     return (
-      <ConfigProvider {...configProviderProps}>
-        <ThemeProvider {...themeProviderProps}>{holder} </ThemeProvider>
+      <ConfigProvider {...configProps}>
+        <ThemeProvider {...themeProps}>{holder} </ThemeProvider>
       </ConfigProvider>
     );
   };
@@ -78,7 +123,7 @@ const method = ({
 
   return {
     destroy: () => hookMethods?.destroy(),
-    update: (props) => hookMethods?.update(props),
+    update: (updateProps) => hookMethods?.update(updateProps),
     isDestoryed: () => hookMethods?.isDestoryed() || false,
   };
 };

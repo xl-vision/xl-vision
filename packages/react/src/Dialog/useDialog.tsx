@@ -58,12 +58,14 @@ const useDialog = () => {
       ...props,
       visible: undefined,
       defaultVisible: true,
-      onAfterClosed: () => {
-        props.onAfterClosed?.();
-        destroyDOM();
-      },
     };
-    const Dialog = createHookDialog(currentProps);
+    const Dialog = createHookDialog({
+      ...currentProps,
+      onAfterClosed() {
+        destroyDOM();
+        currentProps.onAfterClosed?.();
+      },
+    });
 
     const ref = createRef<HookDialogRef>();
 
@@ -83,19 +85,26 @@ const useDialog = () => {
           `The dialog instance was destroyed, please do not update or destroy it again.`,
         );
       }
-      ref.current?.update(renderProps);
+
+      ref.current?.update({
+        ...renderProps,
+        onAfterClosed() {
+          destroyDOM();
+          renderProps.onAfterClosed?.();
+        },
+      });
     };
 
     const update: DialogHookUpdate = (updateProps) => {
       const newProps = typeof updateProps === 'function' ? updateProps(currentProps) : updateProps;
-      currentProps = { ...currentProps, ...newProps, visible: undefined, defaultVisible: true };
 
-      const { onAfterClosed } = currentProps;
-
-      currentProps.onAfterClosed = () => {
-        onAfterClosed?.();
-        destroyDOM();
+      currentProps = {
+        ...currentProps,
+        ...newProps,
+        visible: undefined,
+        defaultVisible: true,
       };
+
       render(currentProps);
     };
 
@@ -103,10 +112,6 @@ const useDialog = () => {
       render({
         ...currentProps,
         visible: false,
-        onAfterClosed() {
-          currentProps.onAfterClosed?.();
-          destroyDOM();
-        },
       });
     };
 
