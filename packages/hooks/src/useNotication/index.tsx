@@ -10,6 +10,7 @@ import {
   useRef,
   ComponentType,
   ReactNode,
+  ReactFragment,
 } from 'react';
 
 export type NoticationProps<P> = P & {
@@ -72,7 +73,7 @@ const createRefNotication = <P,>(
 let uuid = 0;
 
 const useNotication = <P extends object, LP extends object>(
-  NoticationList: ComponentType<NoticationListProps<LP>>,
+  NoticationList: ComponentType<NoticationListProps<LP>> | string | ReactFragment,
   Notication: ComponentType<NoticationProps<P>>,
   options: NoticationOptions<LP>,
 ) => {

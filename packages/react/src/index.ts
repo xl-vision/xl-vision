@@ -81,7 +81,6 @@ export type {
   DialogButtonProps,
   DedicatedDialogProps,
   InnerDedicatedDialogProps,
-  DialogHookUpdate,
   DialogType,
   DialogMethodProps,
   DialogMethodReturnType,

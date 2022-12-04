@@ -41,6 +41,7 @@ const createMethodDialog = ({
 
     useImperativeHandle(ref, () => {
       return {
+        // eslint-disable-next-line @typescript-eslint/no-misused-promises
         ...dialogResult,
         update(updateProps) {
           const {
