@@ -8,19 +8,11 @@ export type MessageHookOptions = NoticationOptions<Omit<MessageContainerProps, '
 
 export type MessageHookReturnType = NoticationHookReturnType<MessageProps>;
 
-const DEFAULT_CONTAINER = () => document.body;
-
-const useMessage = ({
-  top = 8,
-  container = DEFAULT_CONTAINER,
-  maxCount,
-}: Partial<MessageHookOptions> = {}) => {
-  const [zIndex, setZIndex] = useState<number>(0);
+const useMessage = (options: Partial<MessageHookOptions> = {}) => {
+  const [zIndex, setZIndex] = useState<number>();
 
   const [instance, holder] = useNotication(Message, MessageList, {
-    top,
-    container,
-    maxCount,
+    ...options,
     zIndex,
   });
 

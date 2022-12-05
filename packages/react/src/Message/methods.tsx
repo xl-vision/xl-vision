@@ -25,17 +25,11 @@ const MessageListWrap: FC<MethodMessageContainerProps> = ({
   );
 };
 
-const DEFAULT_CONTAINER = () => document.body;
-
 const {
   open: innerOpen,
   destroyAll,
   setGlobalConfig: setInnerGlobalConfig,
-} = createNotication(Message, MessageListWrap, {
-  top: 8,
-  container: DEFAULT_CONTAINER,
-  zIndex: 0,
-});
+} = createNotication(Message, MessageListWrap, {});
 
 export type MessageGlobalConfig = Partial<Omit<MethodMessageContainerProps, 'zIndex'>>;
 

@@ -4,9 +4,9 @@ import Portal, { PortalContainerType } from '../Portal';
 import { styled } from '../styles';
 
 export type MessageContainerProps = NoticationContainerProps<{
-  top: number;
-  container: PortalContainerType<HTMLElement>;
-  zIndex: number;
+  top?: number;
+  container?: PortalContainerType<HTMLElement>;
+  zIndex?: number;
 }>;
 
 const displayName = 'MessageContainer';
@@ -25,7 +25,14 @@ const MessageContainerRoot = styled('div', {
   };
 });
 
-const MessageContainer: FC<MessageContainerProps> = ({ top, container, children, zIndex }) => {
+const DEFAULT_CONTAINER = () => document.body;
+
+const MessageContainer: FC<MessageContainerProps> = ({
+  top = 8,
+  container = DEFAULT_CONTAINER,
+  children,
+  zIndex,
+}) => {
   if (!Children.count(children)) {
     return null;
   }

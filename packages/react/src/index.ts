@@ -123,3 +123,5 @@ export type {
   MessageContainerProps,
   MethodMessageContainerProps,
 } from './Message';
+
+export { default as Notication } from './Notication';

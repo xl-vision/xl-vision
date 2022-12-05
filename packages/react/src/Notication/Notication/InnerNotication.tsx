@@ -6,7 +6,7 @@ import {
   MouseEvent,
   ReactNode,
   useCallback,
-  useEffect,
+  useContext,
   useRef,
 } from 'react';
 import { clsx } from 'clsx';
@@ -15,25 +15,27 @@ import Transition from '../../Transition';
 import { styled } from '../../styles';
 import usePropChange from '../../hooks/usePropChange';
 import { useTheme } from '../../ThemeProvider';
+import NoticationContext from '../context';
 
-export type InnerMessageProps = NoticationProps<
+export type InnerNoticationProps = NoticationProps<
   HTMLAttributes<HTMLDivElement> & {
-    content: ReactNode;
+    message: ReactNode;
+    description?: ReactNode;
     icon?: ReactNode;
     duration?: number;
-    showClose?: boolean;
+    hideClose?: boolean;
   }
 >;
 
-const displayName = 'InnerMessage';
+const displayName = 'InnerNotication';
 
-const InnerMessageRoot = styled('div', {
+const InnerNoticationRoot = styled('div', {
   name: displayName,
   slot: 'Root',
 })(({ theme }) => {
-  const { clsPrefix, transition, color, elevations, styleSize } = theme;
+  const { clsPrefix, transition, color, elevations, styleSize, typography } = theme;
 
-  const rootClassName = `${clsPrefix}-inner-message`;
+  const rootClassName = `${clsPrefix}-inner-notication`;
 
   return {
     display: 'inline-block',
@@ -67,10 +69,12 @@ const InnerMessageRoot = styled('div', {
 
     [`.${rootClassName}__inner`]: {
       display: 'flex',
-      alignItems: 'center',
+      flexDirection: 'row',
+      alignItems: 'flex-start',
       backgroundColor: color.background.paper,
       borderRadius: styleSize.middle.borderRadius,
-      padding: `${styleSize.middle.padding.y}px ${styleSize.middle.padding.x}px`,
+      padding: `${styleSize.large.padding.x}px ${styleSize.large.padding.x}px`,
+      width: 384,
       ...elevations(12),
     },
     [`.${rootClassName}__status, .${rootClassName}__close`]: {
@@ -80,26 +84,28 @@ const InnerMessageRoot = styled('div', {
       },
     },
     [`.${rootClassName}__status`]: {
-      paddingRight: 5,
+      paddingRight: 8,
+      fontSize: '1.5rem',
     },
+    [`.${rootClassName}__content`]: {
+      display: 'block',
+    },
+    [`.${rootClassName}__message`]: {
+      ...typography.subtitle1.style,
+    },
+    [`.${rootClassName}__description`]: {
+      ...typography.body2.style,
+      marginTop: 8,
+    },
+
     [`.${rootClassName}__close`]: {
+      display: 'inline-block',
       padding: 0,
-      marginLeft: 5,
+      marginLeft: 'auto',
+      lineHeight: typography.subtitle1.info.lineHeight,
       cursor: 'pointer',
       color: color.text.icon,
       transition: transition.standard('color'),
-      outline: 0,
-      border: 0,
-      backgroundColor: 'transparent',
-      borderRadius: 0,
-      userSelect: 'none',
-      touchAction: 'manipulation',
-      WebkitTapHighlightColor: 'transparent',
-      MozAppearance: 'none',
-      WebkitAppearance: 'none',
-      '&::-moz-focus-inner': {
-        borderStyle: 'none', // Remove Firefox dotted outline.
-      },
 
       '&:hover, &:focus': {
         color: color.text.primary,
@@ -108,10 +114,9 @@ const InnerMessageRoot = styled('div', {
   };
 });
 
-const InnerMessage = forwardRef<HTMLDivElement, InnerMessageProps>((props, ref) => {
+const InnerNotication = forwardRef<HTMLDivElement, InnerNoticationProps>((props, ref) => {
   const {
     duration = 3000,
-    content,
     defaultVisible = true,
     visible: visibleProp,
     icon,
@@ -119,9 +124,13 @@ const InnerMessage = forwardRef<HTMLDivElement, InnerMessageProps>((props, ref) 
     className,
     onMouseEnter,
     onMouseLeave,
-    showClose,
+    message,
+    description,
+    hideClose,
     ...others
   } = props;
+
+  const { placement } = useContext(NoticationContext);
 
   const { clsPrefix } = useTheme();
 
@@ -144,29 +153,29 @@ const InnerMessage = forwardRef<HTMLDivElement, InnerMessageProps>((props, ref) 
     if (!duration) {
       return;
     }
-    timerRef.current = window.setTimeout(() => {
-      setVisible(false);
-    }, duration);
+    // timerRef.current = window.setTimeout(() => {
+    //   setVisible(false);
+    // }, duration);
   });
 
   const handleClose = useCallback(() => {
     setVisible(false);
   }, [setVisible]);
 
-  useEffect(() => {
-    if (!duration) {
-      return;
-    }
-    timerRef.current = window.setTimeout(() => {
-      setVisible(false);
-    }, duration);
+  // useEffect(() => {
+  //   if (!duration) {
+  //     return;
+  //   }
+  //   timerRef.current = window.setTimeout(() => {
+  //     setVisible(false);
+  //   }, duration);
 
-    return () => {
-      window.clearTimeout(timerRef.current);
-    };
-  }, [duration, setVisible]);
+  //   return () => {
+  //     window.clearTimeout(timerRef.current);
+  //   };
+  // }, [duration, setVisible]);
 
-  const rootClassName = `${clsPrefix}-inner-message`;
+  const rootClassName = `${clsPrefix}-inner-notication`;
 
   return (
     <Transition
@@ -175,30 +184,33 @@ const InnerMessage = forwardRef<HTMLDivElement, InnerMessageProps>((props, ref) 
       in={visible}
       onExited={handleExit}
     >
-      <InnerMessageRoot
+      <InnerNoticationRoot
         ref={ref}
         {...others}
-        className={clsx(rootClassName, className)}
+        className={clsx(rootClassName, `${rootClassName}--${placement}`, className)}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
         <div className={`${rootClassName}__inner`}>
           {icon && <span className={`${rootClassName}__status`}>{icon}</span>}
-          <div className={`${rootClassName}__content`}>{content}</div>
-          {showClose && (
-            <button type='button' onClick={handleClose} className={`${rootClassName}__close`}>
+          <div className={`${rootClassName}__content`}>
+            <div className={`${rootClassName}__message`}>{message}</div>
+            <div className={`${rootClassName}__description`}>{description}</div>
+          </div>
+          {!hideClose && (
+            <span onClick={handleClose} className={`${rootClassName}__close`}>
               <CloseOutlined />
-            </button>
+            </span>
           )}
         </div>
-      </InnerMessageRoot>
+      </InnerNoticationRoot>
     </Transition>
   );
 });
 
 if (!isProduction) {
-  InnerMessage.displayName = displayName;
-  InnerMessage.propTypes = {};
+  InnerNotication.displayName = displayName;
+  InnerNotication.propTypes = {};
 }
 
-export default InnerMessage;
+export default InnerNotication;
