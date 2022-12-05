@@ -93,8 +93,8 @@ const createNotication = <P, NCP>(
           if (count <= 0) {
             destroyDOM();
           }
-          promiseResolve?.();
           currentProps.onAfterClosed?.();
+          promiseResolve?.();
         },
       });
     });
@@ -105,7 +105,7 @@ const createNotication = <P, NCP>(
 
     promise.update = (updateProps) => hookMethods?.update(updateProps);
     promise.destroy = () => hookMethods?.destroy();
-    promise.isDestoryed = () => hookMethods?.destroy() || false;
+    promise.isDestroyed = () => hookMethods?.isDestroyed() || false;
 
     return promise;
   };

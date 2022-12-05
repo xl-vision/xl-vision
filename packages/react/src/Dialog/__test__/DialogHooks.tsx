@@ -1,7 +1,14 @@
-import { ConfigProvider, Dialog, DialogHookReturnType } from '@xl-vision/react';
+import { ConfigProvider, DedicatedDialogProps, Dialog } from '@xl-vision/react';
 import { forwardRef, useImperativeHandle } from 'react';
 import { render, act } from '@testing-library/react';
 import { locales } from '@xl-vision/react/locale';
+import { NoticationHookUpdate } from '@xl-vision/hooks';
+
+type DialogHookReturnType = {
+  destroy: () => void;
+  update: NoticationHookUpdate<DedicatedDialogProps>;
+  isDestroyed: () => boolean;
+};
 
 const { useDialog } = Dialog;
 

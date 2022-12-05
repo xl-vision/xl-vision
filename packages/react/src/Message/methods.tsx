@@ -34,7 +34,7 @@ const {
 } = createNotication(Message, MessageListWrap, {
   top: 8,
   container: DEFAULT_CONTAINER,
-  zIndex: increaseZindex(),
+  zIndex: 0,
 });
 
 export type MessageGlobalConfig = Partial<Omit<MethodMessageContainerProps, 'zIndex'>>;

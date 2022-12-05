@@ -19,6 +19,9 @@ const MessageContainerRoot = styled('div', {
     position: 'fixed',
     left: '50%',
     transform: 'translateX(-50%)',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
   };
 });
 

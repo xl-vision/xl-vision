@@ -32,7 +32,13 @@ export const method = (props: MethodDialogProps, type?: DialogType) => {
     currentProps.type = type;
   }
 
-  return innerOpen(currentProps);
+  const ret = innerOpen(currentProps);
+
+  return {
+    update: ret.update,
+    destroy: ret.destroy,
+    isDestroyed: ret.isDestroyed,
+  };
 };
 
 export const open = (props: MethodDialogProps) => method(props);

@@ -65,7 +65,7 @@ const InnerMessageRoot = styled('div', {
     },
 
     [`.${rootClassName}__inner`]: {
-      display: 'flex',
+      display: 'inline-flex',
       alignItems: 'center',
       backgroundColor: color.background.paper,
       borderRadius: styleSize.middle.borderRadius,

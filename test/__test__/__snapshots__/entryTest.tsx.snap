@@ -12,6 +12,7 @@ exports[`Entry @xl-vision/hooks 1`] = `
   "useResizeObserver",
   "useTransition",
   "useCssTransition",
+  "useNotication",
 ]
 `;
 

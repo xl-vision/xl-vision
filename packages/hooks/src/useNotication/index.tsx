@@ -43,7 +43,7 @@ export type NoticationHookUpdate<P> = (
 export type NoticationHookReturnType<P> = Promise<void> & {
   destroy: () => void;
   update: NoticationHookUpdate<P>;
-  isDestoryed: () => boolean;
+  isDestroyed: () => boolean;
 };
 
 type NoticationRef<P> = {
@@ -101,8 +101,8 @@ const useNotication = <P, NCP>(
 
       const onAfterClosedWrap = (onAfterClosed?: () => void) => () => {
         destroyDOM();
-        promiseResolve?.();
         onAfterClosed?.();
+        promiseResolve?.();
       };
 
       const RefNotication = createRefNotication(Notication, {
@@ -168,7 +168,7 @@ const useNotication = <P, NCP>(
 
       promise.update = update;
       promise.destroy = destroy;
-      promise.isDestoryed = () => destroyState;
+      promise.isDestroyed = () => destroyState;
 
       return promise;
     },
