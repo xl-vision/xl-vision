@@ -1,44 +1,39 @@
-import { act, render } from '@testing-library/react';
-import DedicatedDialog from '..';
+import { render } from '@testing-library/react';
+import { Dialog } from '@xl-vision/react';
+import { triggerTransitionEnd } from 'test/utils';
 
 describe('Dialog', () => {
   beforeAll(() => {
     jest.useFakeTimers();
   });
-  it('Test prop visible', () => {
+  it('Test prop visible', async () => {
     const { rerender } = render(
-      <DedicatedDialog title='title'>
+      <Dialog title='title'>
         <div>body</div>
-      </DedicatedDialog>,
+      </Dialog>,
     );
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     expect(document.querySelector('.xl-dialog')).toBe(null);
 
     rerender(
-      <DedicatedDialog title='title' visible={true}>
+      <Dialog title='title' visible={true}>
         <div>body</div>
-      </DedicatedDialog>,
+      </Dialog>,
     );
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
     expect(document.querySelector('.xl-dialog')).not.toBe(null);
     expect(document.querySelector<HTMLElement>('.xl-dialog')?.style.display).toBe('');
 
     rerender(
-      <DedicatedDialog title='title' visible={false}>
+      <Dialog title='title' visible={false}>
         <div>body</div>
-      </DedicatedDialog>,
+      </Dialog>,
     );
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     expect(document.querySelector('.xl-dialog')).not.toBe(null);
     expect(document.querySelector<HTMLElement>('.xl-dialog')?.style.display).toBe('none');

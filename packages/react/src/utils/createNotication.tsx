@@ -78,14 +78,16 @@ const createNotication = <P, NCP>(
       document.body.appendChild(div);
       rootEl = div;
 
-      setTimeout(() => {
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      Promise.resolve().then(() => {
         ReactDOM.render(<MethodRefNotication ref={noticationRef} />, div);
       });
     }
 
     count++;
 
-    setTimeout(() => {
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    Promise.resolve().then(() => {
       hookMethods = noticationRef.current?.instance.open({
         ...currentProps,
         onAfterClosed() {

@@ -1,12 +1,15 @@
 import { act } from '@testing-library/react';
-import { open, info, success, error, warning, confirm, destroyAll } from '../methods';
+import { Dialog } from '@xl-vision/react';
+import { awaitPromise, triggerTransitionEnd } from 'test/utils';
+
+const { destroyAll, error, info, open, success, warning, confirm } = Dialog;
 
 describe('DialogMethod', () => {
   beforeAll(() => {
     jest.useFakeTimers();
   });
 
-  it('Test method', () => {
+  it('Test method', async () => {
     let el = document.querySelector('#method');
     expect(el).toBe(null);
 
@@ -16,29 +19,28 @@ describe('DialogMethod', () => {
       id: 'method',
     });
 
-    act(() => {
-      jest.runAllTimers();
+    await act(async () => {
+      await awaitPromise();
     });
+
+    await triggerTransitionEnd();
 
     el = document.querySelector('#method');
 
     expect(el).not.toBe(null);
-    expect(el).toMatchSnapshot();
 
     act(() => {
       destroy();
     });
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     el = document.querySelector('#method');
 
     expect(el).toBe(null);
   });
 
-  it('Test info', () => {
+  it('Test info', async () => {
     let el = document.querySelector('#info');
     expect(el).toBe(null);
 
@@ -48,29 +50,27 @@ describe('DialogMethod', () => {
       id: 'info',
     });
 
-    act(() => {
+    await act(async () => {
+      await awaitPromise();
       jest.runAllTimers();
     });
 
     el = document.querySelector('#info');
 
     expect(el).not.toBe(null);
-    expect(el).toMatchSnapshot();
 
     act(() => {
       destroy();
     });
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     el = document.querySelector('#info');
 
     expect(el).toBe(null);
   });
 
-  it('test success', () => {
+  it('test success', async () => {
     let el = document.querySelector('#success');
     expect(el).toBe(null);
 
@@ -80,29 +80,27 @@ describe('DialogMethod', () => {
       id: 'success',
     });
 
-    act(() => {
+    await act(async () => {
+      await awaitPromise();
       jest.runAllTimers();
     });
 
     el = document.querySelector('#success');
 
     expect(el).not.toBe(null);
-    expect(el).toMatchSnapshot();
 
     act(() => {
       destroy();
     });
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     el = document.querySelector('#success');
 
     expect(el).toBe(null);
   });
 
-  it('test error', () => {
+  it('test error', async () => {
     let el = document.querySelector('#error');
     expect(el).toBe(null);
 
@@ -112,29 +110,27 @@ describe('DialogMethod', () => {
       id: 'error',
     });
 
-    act(() => {
+    await act(async () => {
+      await awaitPromise();
       jest.runAllTimers();
     });
 
     el = document.querySelector('#error');
 
     expect(el).not.toBe(null);
-    expect(el).toMatchSnapshot();
 
     act(() => {
       destroy();
     });
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     el = document.querySelector('#error');
 
     expect(el).toBe(null);
   });
 
-  it('test warning', () => {
+  it('test warning', async () => {
     let el = document.querySelector('#warning');
     expect(el).toBe(null);
 
@@ -144,29 +140,27 @@ describe('DialogMethod', () => {
       id: 'warning',
     });
 
-    act(() => {
+    await act(async () => {
+      await awaitPromise();
       jest.runAllTimers();
     });
 
     el = document.querySelector('#warning');
 
     expect(el).not.toBe(null);
-    expect(el).toMatchSnapshot();
 
     act(() => {
       destroy();
     });
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     el = document.querySelector('#warning');
 
     expect(el).toBe(null);
   });
 
-  it('test confirm', () => {
+  it('test confirm', async () => {
     let el = document.querySelector('#confirm');
     expect(el).toBe(null);
 
@@ -176,36 +170,35 @@ describe('DialogMethod', () => {
       id: 'confirm',
     });
 
-    act(() => {
+    await act(async () => {
+      await awaitPromise();
       jest.runAllTimers();
     });
 
     el = document.querySelector('#confirm');
 
     expect(el).not.toBe(null);
-    expect(el).toMatchSnapshot();
 
     act(() => {
       destroy();
     });
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     el = document.querySelector('#confirm');
 
     expect(el).toBe(null);
   });
 
-  it('test destroyAll', () => {
+  it('test destroyAll', async () => {
     info({
       title: 'title',
       content: 'content',
       id: 'info1',
     });
 
-    act(() => {
+    await act(async () => {
+      await awaitPromise();
       jest.runAllTimers();
     });
 
@@ -219,7 +212,8 @@ describe('DialogMethod', () => {
       id: 'info2',
     });
 
-    act(() => {
+    await act(async () => {
+      await awaitPromise();
       jest.runAllTimers();
     });
 
@@ -231,9 +225,7 @@ describe('DialogMethod', () => {
       destroyAll();
     });
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     el1 = document.querySelector('#info1');
     el2 = document.querySelector('#info2');
@@ -242,7 +234,7 @@ describe('DialogMethod', () => {
     expect(el2).toBe(null);
   });
 
-  it('test update', () => {
+  it('test update', async () => {
     let el = document.querySelector('#confirm');
     expect(el).toBe(null);
 
@@ -252,7 +244,8 @@ describe('DialogMethod', () => {
       id: 'confirm',
     });
 
-    act(() => {
+    await act(async () => {
+      await awaitPromise();
       jest.runAllTimers();
     });
 
@@ -268,9 +261,7 @@ describe('DialogMethod', () => {
       });
     });
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     expect(el!.querySelector<HTMLDivElement>('#content')!.textContent).toBe('content2');
 
@@ -278,9 +269,7 @@ describe('DialogMethod', () => {
       destroy();
     });
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     el = document.querySelector('#confirm');
     expect(el).toBe(null);
