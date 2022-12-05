@@ -1,4 +1,4 @@
-import { useConstantFn } from '@xl-vision/hooks';
+import { NoticationProps, useConstantFn } from '@xl-vision/hooks';
 import { isProduction } from '@xl-vision/utils';
 import {
   forwardRef,
@@ -16,15 +16,14 @@ import { styled } from '../../styles';
 import usePropChange from '../../hooks/usePropChange';
 import { useTheme } from '../../ThemeProvider';
 
-export type InnerMessageProps = HTMLAttributes<HTMLDivElement> & {
-  defaultVisible?: boolean;
-  visible?: boolean;
-  content: ReactNode;
-  icon?: ReactNode;
-  duration?: number;
-  onAfterClosed?: () => void;
-  showClose?: boolean;
-};
+export type InnerMessageProps = NoticationProps<
+  HTMLAttributes<HTMLDivElement> & {
+    content: ReactNode;
+    icon?: ReactNode;
+    duration?: number;
+    showClose?: boolean;
+  }
+>;
 
 const displayName = 'InnerMessage';
 

@@ -1,143 +1,64 @@
-import ReactDOM from 'react-dom';
-import { createRef, forwardRef, useImperativeHandle, useState } from 'react';
-import { isProduction } from '@xl-vision/utils';
+import { FC } from 'react';
 import ThemeProvider, { ThemeProviderProps } from '../ThemeProvider';
-import useMessage, {
-  MessageHookOptions,
-  MessageHookProps,
-  MessageHookReturnType,
-} from './useMessage';
 import ConfigProvider, { ConfigProviderProps } from '../ConfigProvider';
-import { MessageType } from './Message';
+import Message, { MessageProps, MessageType } from './Message';
+import MessageList, { MessageContainerProps } from './MessageContainer';
+import createNotication from '../utils/createNotication';
+import { increaseZindex } from '../utils/zIndexManger';
 
-export type MessageConfig = Partial<
-  MessageHookOptions & {
-    themeProviderProps: Omit<ThemeProviderProps, 'children'>;
-    configProviderProps: Omit<ConfigProviderProps, 'children'>;
-  }
->;
-
-type MethodMessageRef = {
-  instance: ReturnType<typeof useMessage>[0];
-  sync: () => void;
+export type MethodMessageContainerProps = MessageContainerProps & {
+  themeProviderProps?: Omit<ThemeProviderProps, 'children'>;
+  configProviderProps?: Omit<ConfigProviderProps, 'children'>;
 };
 
-let messageConfig: MessageConfig = {};
-
-export const setConfig = (config: MessageConfig) => {
-  messageConfig = config;
-  messageRef.current?.sync();
-};
-
-const MethodMessage = forwardRef<MethodMessageRef>((_, ref) => {
-  const { configProviderProps, themeProviderProps, ...others } = messageConfig;
-
-  const [configProps, setConfigProps] = useState(configProviderProps);
-  const [themeProps, setThemeProps] = useState(themeProviderProps);
-  const [hookProps, setHookProps] = useState<Partial<MessageHookOptions>>(others);
-
-  const [methods, holder] = useMessage(hookProps);
-
-  useImperativeHandle(ref, () => {
-    return {
-      instance: methods,
-      sync() {
-        const {
-          configProviderProps: newConfigProps,
-          themeProviderProps: newThemeProps,
-          ...newOthers
-        } = messageConfig;
-
-        setConfigProps(newConfigProps);
-        setThemeProps(newThemeProps);
-        setHookProps(newOthers);
-      },
-    };
-  });
-
+const MessageListWrap: FC<MethodMessageContainerProps> = ({
+  themeProviderProps,
+  configProviderProps,
+  ...others
+}) => {
   return (
-    <ConfigProvider {...configProps}>
-      <ThemeProvider {...themeProps}>{holder} </ThemeProvider>
+    <ConfigProvider {...configProviderProps}>
+      <ThemeProvider {...themeProviderProps}>
+        <MessageList {...others} />
+      </ThemeProvider>
     </ConfigProvider>
   );
+};
+
+const DEFAULT_CONTAINER = () => document.body;
+
+const {
+  open: innerOpen,
+  destroyAll,
+  setGlobalConfig: setInnerGlobalConfig,
+} = createNotication(Message, MessageListWrap, {
+  top: 8,
+  container: DEFAULT_CONTAINER,
+  zIndex: increaseZindex(),
 });
 
-if (!isProduction) {
-  MethodMessage.displayName = 'MethodMessage';
-}
+export type MessageGlobalConfig = Partial<Omit<MethodMessageContainerProps, 'zIndex'>>;
 
-let rootEl: HTMLElement | undefined;
+export const setGlobalConfig = (props: MessageGlobalConfig) => setInnerGlobalConfig(props);
 
-const messageRef = createRef<MethodMessageRef>();
-
-let count = 0;
-
-const destroyDOM = () => {
-  if (!rootEl) {
-    return;
-  }
-  const unmountResult = ReactDOM.unmountComponentAtNode(rootEl);
-  if (unmountResult && rootEl.parentNode) {
-    rootEl.parentNode.removeChild(rootEl);
-  }
-
-  rootEl = undefined;
-};
-
-const method = (props: MessageHookProps | string, type?: MessageType): MessageHookReturnType => {
-  const currentProps: MessageHookProps =
-    typeof props === 'string' ? { content: props } : { ...props };
-
-  if (type) {
-    currentProps.type = type;
-  }
-
-  let hookMethods: MessageHookReturnType | undefined;
-
-  let promiseResolve: () => void | undefined;
-
-  if (!rootEl) {
-    const div = document.createElement('div');
-    document.body.appendChild(div);
-    rootEl = div;
-
-    setTimeout(() => {
-      ReactDOM.render(<MethodMessage ref={messageRef} />, div);
-    });
-  }
-
-  count++;
-
-  setTimeout(() => {
-    hookMethods = messageRef.current?.instance.open({
-      ...currentProps,
-      onAfterClosed() {
-        count--;
-        if (count <= 0) {
-          destroyDOM();
-        }
-        promiseResolve?.();
-        currentProps.onAfterClosed?.();
-      },
-    });
+export const method = (props: MessageProps | string, type?: MessageType) => {
+  setInnerGlobalConfig({
+    zIndex: increaseZindex(),
   });
 
-  const promise = new Promise<void>((resolve) => {
-    promiseResolve = resolve;
-  }) as MessageHookReturnType;
+  const parsedProps: MessageProps = typeof props === 'string' ? { content: props } : { ...props };
 
-  promise.update = (updateProps) => hookMethods?.update(updateProps);
-  promise.destroy = () => hookMethods?.destroy();
-  promise.isDestoryed = () => hookMethods?.destroy() || false;
+  if (type) {
+    parsedProps.type = type;
+  }
 
-  return promise;
+  return innerOpen(parsedProps);
 };
 
-export const open = (props: MessageHookProps) => method(props);
-export const info = (props: Omit<MessageHookProps, 'type'> | string) => method(props, 'info');
-export const success = (props: Omit<MessageHookProps, 'type'> | string) => method(props, 'success');
-export const warning = (props: Omit<MessageHookProps, 'type'> | string) => method(props, 'warning');
-export const error = (props: Omit<MessageHookProps, 'type'> | string) => method(props, 'error');
-export const loading = (props: Omit<MessageHookProps, 'type'> | string) => method(props, 'loading');
-
-export const destroyAll = () => messageRef.current?.instance.destroyAll();
+export const open = (props: MessageProps) => method(props);
+export const loading = (props: Omit<MessageProps, 'type'> | string) => method(props, 'loading');
+export const info = (props: Omit<MessageProps, 'type'> | string) => method(props, 'info');
+export const warning = (props: Omit<MessageProps, 'type'> | string) => method(props, 'warning');
+export const error = (props: Omit<MessageProps, 'type'> | string) => method(props, 'error');
+export const success = (props: Omit<MessageProps, 'type'> | string) => method(props, 'success');
+export { destroyAll };

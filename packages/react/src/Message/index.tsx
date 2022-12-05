@@ -1,11 +1,21 @@
 import useMessage from './useMessage';
-import { MessageConfig, info, warning, error, success, open, loading, setConfig } from './methods';
+import {
+  MessageGlobalConfig,
+  MethodMessageContainerProps,
+  info,
+  warning,
+  error,
+  success,
+  open,
+  loading,
+  setGlobalConfig,
+} from './methods';
 
 export * from './Message';
-export * from './MessageList';
+export * from './MessageContainer';
 export * from './useMessage';
 
-export type { MessageConfig };
+export type { MessageGlobalConfig, MethodMessageContainerProps };
 
 const Message = {
   useMessage,
@@ -15,7 +25,7 @@ const Message = {
   success,
   open,
   loading,
-  setConfig,
+  setGlobalConfig,
 };
 
 export default Message;

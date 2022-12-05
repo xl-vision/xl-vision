@@ -1,24 +1,22 @@
-import { NoticationHookProps, NoticationHookReturnType, useNotication } from '@xl-vision/hooks';
+import { useNotication } from '@xl-vision/hooks';
 import { useMemo, Fragment } from 'react';
 import DedicatedDialog, { DedicatedDialogProps } from './DedicatedDialog';
 
-export type DialogHookProps = NoticationHookProps<DedicatedDialogProps>;
-
-export type DialogHookReturnType = NoticationHookReturnType<DedicatedDialogProps>;
-
 const useDialog = () => {
-  const [instance, holder] = useNotication(Fragment, DedicatedDialog, {});
+  const [instance, holder] = useNotication(DedicatedDialog, Fragment, {});
 
   const methods = useMemo(
     () => ({
-      open: (props: DialogHookProps) => instance.open(props),
-      confirm: (props: Omit<DialogHookProps, 'type'>) =>
+      open: (props: DedicatedDialogProps) => instance.open(props),
+      confirm: (props: Omit<DedicatedDialogProps, 'type'>) =>
         instance.open({ ...props, type: 'confirm' }),
-      error: (props: Omit<DialogHookProps, 'type'>) => instance.open({ ...props, type: 'error' }),
-      info: (props: Omit<DialogHookProps, 'type'>) => instance.open({ ...props, type: 'info' }),
-      success: (props: Omit<DialogHookProps, 'type'>) =>
+      error: (props: Omit<DedicatedDialogProps, 'type'>) =>
+        instance.open({ ...props, type: 'error' }),
+      info: (props: Omit<DedicatedDialogProps, 'type'>) =>
+        instance.open({ ...props, type: 'info' }),
+      success: (props: Omit<DedicatedDialogProps, 'type'>) =>
         instance.open({ ...props, type: 'success' }),
-      warning: (props: Omit<DialogHookProps, 'type'>) =>
+      warning: (props: Omit<DedicatedDialogProps, 'type'>) =>
         instance.open({ ...props, type: 'warning' }),
       destroyAll: instance.destroyAll,
     }),

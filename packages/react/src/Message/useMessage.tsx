@@ -1,23 +1,12 @@
-import {
-  NoticationHookProps,
-  NoticationHookReturnType,
-  NoticationOptions,
-  useNotication,
-} from '@xl-vision/hooks';
+import { NoticationHookReturnType, NoticationOptions, useNotication } from '@xl-vision/hooks';
 import { useCallback, useMemo, useState } from 'react';
-import { PortalContainerType } from '../Portal';
 import { increaseZindex } from '../utils/zIndexManger';
 import Message, { MessageProps, MessageType } from './Message';
-import MessageList from './MessageList';
+import MessageList, { MessageContainerProps } from './MessageContainer';
 
-export type MessageHookOptions = NoticationOptions<{
-  top: number;
-  container: PortalContainerType<HTMLElement>;
-}>;
+export type MessageHookOptions = NoticationOptions<Omit<MessageContainerProps, 'zIndex'>>;
 
-export type MessageHookProps = NoticationHookProps<MessageProps>;
-
-export type MessageHookReturnType = NoticationHookReturnType<MessageHookProps>;
+export type MessageHookReturnType = NoticationHookReturnType<MessageProps>;
 
 const DEFAULT_CONTAINER = () => document.body;
 
@@ -26,9 +15,9 @@ const useMessage = ({
   container = DEFAULT_CONTAINER,
   maxCount,
 }: Partial<MessageHookOptions> = {}) => {
-  const [zIndex] = useState(() => increaseZindex());
+  const [zIndex, setZIndex] = useState<number>(0);
 
-  const [instance, holder] = useNotication(MessageList, Message, {
+  const [instance, holder] = useNotication(Message, MessageList, {
     top,
     container,
     maxCount,
@@ -36,8 +25,10 @@ const useMessage = ({
   });
 
   const method = useCallback(
-    (props: MessageHookProps | string, type?: MessageType): MessageHookReturnType => {
-      const parsedProps: MessageHookProps =
+    (props: MessageProps | string, type?: MessageType): MessageHookReturnType => {
+      setZIndex(() => increaseZindex());
+
+      const parsedProps: MessageProps =
         typeof props === 'string' ? { content: props } : { ...props };
 
       if (type) {
@@ -50,12 +41,12 @@ const useMessage = ({
 
   const methods = useMemo(
     () => ({
-      open: (props: MessageHookProps) => method(props),
-      loading: (props: Omit<MessageHookProps, 'type'> | string) => method(props, 'loading'),
-      error: (props: Omit<MessageHookProps, 'type'> | string) => method(props, 'error'),
-      info: (props: Omit<MessageHookProps, 'type'> | string) => method(props, 'info'),
-      success: (props: Omit<MessageHookProps, 'type'> | string) => method(props, 'success'),
-      warning: (props: Omit<MessageHookProps, 'type'> | string) => method(props, 'warning'),
+      open: (props: MessageProps) => method(props),
+      loading: (props: Omit<MessageProps, 'type'> | string) => method(props, 'loading'),
+      error: (props: Omit<MessageProps, 'type'> | string) => method(props, 'error'),
+      info: (props: Omit<MessageProps, 'type'> | string) => method(props, 'info'),
+      success: (props: Omit<MessageProps, 'type'> | string) => method(props, 'success'),
+      warning: (props: Omit<MessageProps, 'type'> | string) => method(props, 'warning'),
       destroyAll: () => {
         instance.destroyAll();
       },

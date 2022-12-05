@@ -21,11 +21,16 @@ export type NoticationProps<P> = P & {
 
 export type NoticationHookProps<P> = Omit<NoticationProps<P>, 'visible' | 'defaultVisible'>;
 
-export type NoticationListProps<P> = P & {
+export type NoticationContainerProps<NCP> = NCP & {
   children: ReactNode;
 };
 
-export type NoticationOptions<P> = Omit<NoticationListProps<P>, 'children'> & {
+export type NoticationContainerType<NCP> =
+  | ComponentType<NoticationContainerProps<NCP>>
+  | string
+  | ReactFragment;
+
+export type NoticationOptions<NCP> = Omit<NoticationContainerProps<NCP>, 'children'> & {
   maxCount?: number;
 };
 
@@ -72,10 +77,10 @@ const createRefNotication = <P,>(
 
 let uuid = 0;
 
-const useNotication = <P extends object, LP extends object>(
-  NoticationList: ComponentType<NoticationListProps<LP>> | string | ReactFragment,
+const useNotication = <P, NCP>(
   Notication: ComponentType<NoticationProps<P>>,
-  options: NoticationOptions<LP>,
+  NoticationContainer: NoticationContainerType<NCP>,
+  options: NoticationOptions<NCP>,
 ) => {
   const [notications, setNotications] = useState<Array<ReactElement>>([]);
   const destorysRef = useRef<Array<() => void>>([]);
@@ -187,7 +192,7 @@ const useNotication = <P extends object, LP extends object>(
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  const holder = <NoticationList {...otherOptions}>{notications}</NoticationList>;
+  const holder = <NoticationContainer {...otherOptions}>{notications}</NoticationContainer>;
 
   return [methods, holder] as const;
 };

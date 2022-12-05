@@ -82,11 +82,7 @@ export type {
   DedicatedDialogProps,
   InnerDedicatedDialogProps,
   DialogType,
-  DialogMethodProps,
-  DialogMethodReturnType,
-  DialogMethodUpdate,
-  DialogHookProps,
-  DialogHookReturnType,
+  MethodDialogProps,
 } from './Dialog';
 
 export { default as Avatar } from './Avatar';
@@ -122,8 +118,8 @@ export type {
   MessageType,
   InnerMessageProps,
   MessageHookOptions,
-  MessageHookProps,
   MessageHookReturnType,
-  MessageListProps,
-  MessageConfig,
+  MessageGlobalConfig,
+  MessageContainerProps,
+  MethodMessageContainerProps,
 } from './Message';
