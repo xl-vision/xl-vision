@@ -7,6 +7,7 @@ import {
   ReactNode,
   useCallback,
   useContext,
+  useEffect,
   useRef,
 } from 'react';
 import { clsx } from 'clsx';
@@ -48,22 +49,26 @@ const InnerNoticationRoot = styled('div', {
       '&-exit-active': {
         transition: transition.standard('all'),
       },
-      '&-enter-from, &-appear-from': {
-        opacity: 0,
-        transform: 'translateY(-100%)',
-      },
-      '&-appear-to, &-enter-to': {
-        opacity: 1,
-        transform: 'translateY(0px)',
-      },
       '&-exit-from': {
         opacity: 1,
         maxHeight: 150,
       },
       '&-exit-to': {
         opacity: 0,
-        padding: 0,
         maxHeight: 0,
+      },
+      '&-enter-from, &-appear-from': {
+        opacity: 0,
+        [`&.${rootClassName}--top-right, &.${rootClassName}--bottom-right`]: {
+          transform: 'translateX(100%)',
+        },
+        [`&.${rootClassName}--top-left, &.${rootClassName}--bottom-left`]: {
+          transform: 'translateX(-100%)',
+        },
+      },
+      '&-appear-to, &-enter-to': {
+        opacity: 1,
+        transform: 'translateX(0)',
       },
     },
 
@@ -153,27 +158,27 @@ const InnerNotication = forwardRef<HTMLDivElement, InnerNoticationProps>((props,
     if (!duration) {
       return;
     }
-    // timerRef.current = window.setTimeout(() => {
-    //   setVisible(false);
-    // }, duration);
+    timerRef.current = window.setTimeout(() => {
+      setVisible(false);
+    }, duration);
   });
 
   const handleClose = useCallback(() => {
     setVisible(false);
   }, [setVisible]);
 
-  // useEffect(() => {
-  //   if (!duration) {
-  //     return;
-  //   }
-  //   timerRef.current = window.setTimeout(() => {
-  //     setVisible(false);
-  //   }, duration);
+  useEffect(() => {
+    if (!duration) {
+      return;
+    }
+    timerRef.current = window.setTimeout(() => {
+      setVisible(false);
+    }, duration);
 
-  //   return () => {
-  //     window.clearTimeout(timerRef.current);
-  //   };
-  // }, [duration, setVisible]);
+    return () => {
+      window.clearTimeout(timerRef.current);
+    };
+  }, [duration, setVisible]);
 
   const rootClassName = `${clsPrefix}-inner-notication`;
 

@@ -1,5 +1,5 @@
 import { NoticationContainerProps as InnerNoticationContainerProps } from '@xl-vision/hooks';
-import { Children, FC, useMemo } from 'react';
+import { Children, CSSProperties, FC, useMemo } from 'react';
 import Portal, { PortalContainerType } from '../Portal';
 import { styled } from '../styles';
 import NoticationContext from './context';
@@ -22,7 +22,6 @@ const NoticationContainerRoot = styled('div', {
   return {
     position: 'fixed',
     display: 'flex',
-    flexDirection: 'column',
     alignItems: 'center',
   };
 });
@@ -44,9 +43,10 @@ const NoticationContainer: FC<NoticationContainerProps> = ({
 
   const [direction, position] = placement.split('-');
 
-  const style = {
+  const style: CSSProperties = {
     zIndex,
     padding: `${distance}px 20px`,
+    flexDirection: direction === 'top' ? 'column' : 'column-reverse',
     [direction]: 0,
     [position]: 0,
   };
