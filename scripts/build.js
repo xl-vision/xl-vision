@@ -7,7 +7,7 @@ const commonjs = require('@rollup/plugin-commonjs');
 const argv = require('minimist')(process.argv.slice(2));
 const path = require('path');
 const glob = require('glob');
-const { terser } = require('rollup-plugin-terser');
+const terser = require('@rollup/plugin-terser');
 const fs = require('fs-extra');
 const getBabelConfig = require('./getBabelConfig');
 
@@ -81,7 +81,7 @@ function build(isProd) {
           isProd ? 'index.production.min.js' : 'index.development.js',
         ),
         sourcemap: true,
-        plugins: [isProd && terser()].filter(Boolean),
+        plugins: [isProd && terser({ sourceMap: true })].filter(Boolean),
       }),
     );
 }

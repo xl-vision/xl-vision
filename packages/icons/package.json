@@ -45,7 +45,7 @@
   "devDependencies": {
     "fs-extra": "^10.1.0",
     "mustache": "^4.2.0",
-    "svgo": "^3.0.1"
+    "svgo": "^3.0.2"
   },
   "peerDependencies": {
     "@babel/runtime": "^7.15.4",
