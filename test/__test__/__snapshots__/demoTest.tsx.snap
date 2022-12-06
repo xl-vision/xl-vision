@@ -25309,7 +25309,7 @@ exports[`Demo renders ./packages/react/src/Avatar/__doc__/Basic.tsx correctly 1`
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  border-radius: 4px;
+  border-radius: 6px;
   height: 36.8px;
   width: 36.8px;
 }
@@ -25346,7 +25346,7 @@ exports[`Demo renders ./packages/react/src/Avatar/__doc__/Basic.tsx correctly 1`
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  border-radius: 4px;
+  border-radius: 3px;
   height: 24px;
   width: 24px;
 }
@@ -33224,7 +33224,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Group.tsx correctly 1`]
 .c6 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  border-radius: 4px;
+  border-radius: 3px;
   min-width: 64px;
   font-size: 0.656rem;
   line-height: 1.75;
@@ -33253,7 +33253,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Group.tsx correctly 1`]
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
-.c12 {
+.c13 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   border-radius: 4px;
@@ -33275,20 +33275,20 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Group.tsx correctly 1`]
   padding: 6px 12px;
 }
 
-.c12:hover {
+.c13:hover {
   background-color: rgb(30,138,224);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
-.c12:focus {
+.c13:focus {
   background-color: rgb(29,132,214);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
 
-.c16 {
+.c18 {
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  border-radius: 4px;
+  border-radius: 6px;
   min-width: 64px;
   font-size: 1.006rem;
   line-height: 1.75;
@@ -33307,12 +33307,12 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Group.tsx correctly 1`]
   padding: 8px 22px;
 }
 
-.c16:hover {
+.c18:hover {
   background-color: rgb(30,138,224);
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
-.c16:focus {
+.c18:focus {
   background-color: rgb(29,132,214);
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
 }
@@ -33336,7 +33336,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Group.tsx correctly 1`]
   display: inline-flex;
 }
 
-.c9 {
+.c10 {
   font-size: 1.000rem;
   line-height: 1.5;
   font-weight: 400;
@@ -33355,7 +33355,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Group.tsx correctly 1`]
   display: inline-flex;
 }
 
-.c13 {
+.c15 {
   font-size: 1.150rem;
   line-height: 1.5;
   font-weight: 400;
@@ -33390,11 +33390,11 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Group.tsx correctly 1`]
   padding: 0 10px;
   border: 1px solid rgba(0,0,0,0.12);
   border-right-width: 0;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
 }
 
-.c10 {
+.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -33414,7 +33414,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Group.tsx correctly 1`]
   border-bottom-left-radius: 4px;
 }
 
-.c14 {
+.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -33430,8 +33430,8 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Group.tsx correctly 1`]
   padding: 0 22px;
   border: 1px solid rgba(0,0,0,0.12);
   border-right-width: 0;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
 }
 
 .c3 {
@@ -33439,7 +33439,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Group.tsx correctly 1`]
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  border-radius: 4px;
+  border-radius: 3px;
   border: 1px solid rgba(0,0,0,0.12);
   width: 100%;
   padding: 4px 10px;
@@ -33465,7 +33465,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Group.tsx correctly 1`]
   border-color: rgb(30,138,224);
 }
 
-.c11 {
+.c12 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -33482,26 +33482,26 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Group.tsx correctly 1`]
   font-size: inherit;
 }
 
-.c11:not(:first-child) {
+.c12:not(:first-child) {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.c11:not(:last-child) {
+.c12:not(:last-child) {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-.c11:hover {
+.c12:hover {
   border-color: rgb(30,138,224);
 }
 
-.c15 {
+.c17 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  border-radius: 4px;
+  border-radius: 6px;
   border: 1px solid rgba(0,0,0,0.12);
   width: 100%;
   padding: 8px 22px;
@@ -33513,17 +33513,17 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Group.tsx correctly 1`]
   font-size: inherit;
 }
 
-.c15:not(:first-child) {
+.c17:not(:first-child) {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.c15:not(:last-child) {
+.c17:not(:last-child) {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-.c15:hover {
+.c17:hover {
   border-color: rgb(30,138,224);
 }
 
@@ -33614,13 +33614,13 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Group.tsx correctly 1`]
 }
 
 .c0 > *:first-child {
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
 }
 
 .c0 > *:last-child {
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
 }
 
 .c0 .xl-input > * {
@@ -33628,13 +33628,97 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Group.tsx correctly 1`]
 }
 
 .c0 .xl-input:first-child > *:first-child {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.c0 .xl-input:last-child > *:last-child {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c9 > * {
+  border-radius: 0;
+}
+
+.c9 > *:not(:last-child) {
+  margin-right: -1px;
+}
+
+.c9 > *:first-child {
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
 }
 
-.c0 .xl-input:last-child > *:last-child {
+.c9 > *:last-child {
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
+}
+
+.c9 .xl-input > * {
+  border-radius: 0;
+}
+
+.c9 .xl-input:first-child > *:first-child {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.c9 .xl-input:last-child > *:last-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.c14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c14 > * {
+  border-radius: 0;
+}
+
+.c14 > *:not(:last-child) {
+  margin-right: -1px;
+}
+
+.c14 > *:first-child {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.c14 > *:last-child {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.c14 .xl-input > * {
+  border-radius: 0;
+}
+
+.c14 .xl-input:first-child > *:first-child {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.c14 .xl-input:last-child > *:last-child {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
 }
 
 <div>
@@ -33679,19 +33763,19 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Group.tsx correctly 1`]
       </button>
     </div>
     <div
-      class="c0 xl-input-group xl-input-group--size-middle"
+      class="c9 xl-input-group xl-input-group--size-middle"
       style="margin-top: 10px;"
     >
       <span
-        class="c9 xl-input xl-input--size-middle"
+        class="c10 xl-input xl-input--size-middle"
       >
         <span
-          class="c10 xl-input__addon-before"
+          class="c11 xl-input__addon-before"
         >
           URL
         </span>
         <span
-          class="c11 xl-input__wrapper"
+          class="c12 xl-input__wrapper"
         >
           <input
             class="c4 xl-input__inner"
@@ -33702,7 +33786,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Group.tsx correctly 1`]
         </span>
       </span>
       <button
-        class="c5 xl-base-button c12 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
+        class="c5 xl-base-button c13 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
       >
         <span
           class="c7 xl-base-button__inner"
@@ -33719,19 +33803,19 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Group.tsx correctly 1`]
       </button>
     </div>
     <div
-      class="c0 xl-input-group xl-input-group--size-large"
+      class="c14 xl-input-group xl-input-group--size-large"
       style="margin-top: 10px;"
     >
       <span
-        class="c13 xl-input xl-input--size-large"
+        class="c15 xl-input xl-input--size-large"
       >
         <span
-          class="c14 xl-input__addon-before"
+          class="c16 xl-input__addon-before"
         >
           URL
         </span>
         <span
-          class="c15 xl-input__wrapper"
+          class="c17 xl-input__wrapper"
         >
           <input
             class="c4 xl-input__inner"
@@ -33742,7 +33826,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Group.tsx correctly 1`]
         </span>
       </span>
       <button
-        class="c5 xl-base-button c16 xl-button xl-button--size-large xl-button--color-primary xl-button--variant-contained xl-button--elevation"
+        class="c5 xl-base-button c18 xl-button xl-button--size-large xl-button--color-primary xl-button--variant-contained xl-button--elevation"
       >
         <span
           class="c7 xl-base-button__inner"
@@ -34550,7 +34634,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Size.tsx correctly 1`] 
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  border-radius: 4px;
+  border-radius: 3px;
   border: 1px solid rgba(0,0,0,0.12);
   width: 100%;
   padding: 4px 10px;
@@ -34612,7 +34696,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Size.tsx correctly 1`] 
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  border-radius: 4px;
+  border-radius: 6px;
   border: 1px solid rgba(0,0,0,0.12);
   width: 100%;
   padding: 8px 22px;
@@ -35264,6 +35348,148 @@ exports[`Demo renders ./packages/react/src/Message/__doc__/Basic.tsx correctly 1
           class="xl-button__inner"
         >
           Loading
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple xl-base-button__ripple"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Demo renders ./packages/react/src/Message/__doc__/DebugMethod.tsx correctly 1`] = `
+.c4 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.c1::-moz-focus-inner {
+  border-style: none;
+}
+
+.c1 svg {
+  pointer-events: none;
+}
+
+.c1 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+}
+
+.c1 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c1 .xl-base-button__ripple-exit-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c1 .xl-base-button__ripple-enter-from {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c1 .xl-base-button__ripple-exit-to {
+  opacity: 0;
+}
+
+.c3 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c2 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #607d8b;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 12px;
+}
+
+.c2:hover {
+  background-color: rgb(88,115,128);
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c2:focus {
+  background-color: rgb(84,110,122);
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c0 > * {
+  margin-right: 8px;
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <button
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-info xl-button--variant-contained xl-button--elevation"
+    >
+      <span
+        class="c3 xl-base-button__inner"
+      >
+        <span
+          class="xl-button__inner"
+        >
+          Info
         </span>
       </span>
       <div
@@ -36977,6 +37203,1620 @@ exports[`Demo renders ./packages/react/src/Modal/__doc__/Shortcut.tsx correctly 
       class="c3 xl-ripple xl-base-button__ripple"
     />
   </button>
+</div>
+`;
+
+exports[`Demo renders ./packages/react/src/Notication/__doc__/Basic.tsx correctly 1`] = `
+.c4 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.c1::-moz-focus-inner {
+  border-style: none;
+}
+
+.c1 svg {
+  pointer-events: none;
+}
+
+.c1 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+}
+
+.c1 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c1 .xl-base-button__ripple-exit-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c1 .xl-base-button__ripple-enter-from {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c1 .xl-base-button__ripple-exit-to {
+  opacity: 0;
+}
+
+.c3 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c2 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #607d8b;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 12px;
+}
+
+.c2:hover {
+  background-color: rgb(88,115,128);
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c2:focus {
+  background-color: rgb(84,110,122);
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c5 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: rgba(0,0,0,0.87);
+  background-color: #ff9800;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 12px;
+}
+
+.c5:hover {
+  background-color: rgb(235,140,0);
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c5:focus {
+  background-color: rgb(224,134,0);
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c6 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #ef5350;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 12px;
+}
+
+.c6:hover {
+  background-color: rgb(220,76,74);
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c6:focus {
+  background-color: rgb(210,73,70);
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c7 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #388e3c;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 12px;
+}
+
+.c7:hover {
+  background-color: rgb(52,131,55);
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c7:focus {
+  background-color: rgb(49,125,53);
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c0 > * {
+  margin-right: 8px;
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <button
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-info xl-button--variant-contained xl-button--elevation"
+    >
+      <span
+        class="c3 xl-base-button__inner"
+      >
+        <span
+          class="xl-button__inner"
+        >
+          Info
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple xl-base-button__ripple"
+      />
+    </button>
+    <button
+      class="c1 xl-base-button c5 xl-button xl-button--size-middle xl-button--color-warning xl-button--variant-contained xl-button--elevation"
+    >
+      <span
+        class="c3 xl-base-button__inner"
+      >
+        <span
+          class="xl-button__inner"
+        >
+          Warn
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple xl-base-button__ripple"
+      />
+    </button>
+    <button
+      class="c1 xl-base-button c6 xl-button xl-button--size-middle xl-button--color-error xl-button--variant-contained xl-button--elevation"
+    >
+      <span
+        class="c3 xl-base-button__inner"
+      >
+        <span
+          class="xl-button__inner"
+        >
+          Error
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple xl-base-button__ripple"
+      />
+    </button>
+    <button
+      class="c1 xl-base-button c7 xl-button xl-button--size-middle xl-button--color-success xl-button--variant-contained xl-button--elevation"
+    >
+      <span
+        class="c3 xl-base-button__inner"
+      >
+        <span
+          class="xl-button__inner"
+        >
+          Success
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple xl-base-button__ripple"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Demo renders ./packages/react/src/Notication/__doc__/DebugMethod.tsx correctly 1`] = `
+.c4 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.c1::-moz-focus-inner {
+  border-style: none;
+}
+
+.c1 svg {
+  pointer-events: none;
+}
+
+.c1 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+}
+
+.c1 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c1 .xl-base-button__ripple-exit-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c1 .xl-base-button__ripple-enter-from {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c1 .xl-base-button__ripple-exit-to {
+  opacity: 0;
+}
+
+.c3 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c2 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #607d8b;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 12px;
+}
+
+.c2:hover {
+  background-color: rgb(88,115,128);
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c2:focus {
+  background-color: rgb(84,110,122);
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c0 > * {
+  margin-right: 8px;
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <button
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-info xl-button--variant-contained xl-button--elevation"
+    >
+      <span
+        class="c3 xl-base-button__inner"
+      >
+        <span
+          class="xl-button__inner"
+        >
+          Info
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple xl-base-button__ripple"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Demo renders ./packages/react/src/Notication/__doc__/Footer.tsx correctly 1`] = `
+.c4 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.c1::-moz-focus-inner {
+  border-style: none;
+}
+
+.c1 svg {
+  pointer-events: none;
+}
+
+.c1 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+}
+
+.c1 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c1 .xl-base-button__ripple-exit-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c1 .xl-base-button__ripple-enter-from {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c1 .xl-base-button__ripple-exit-to {
+  opacity: 0;
+}
+
+.c3 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c2 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #607d8b;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 12px;
+}
+
+.c2:hover {
+  background-color: rgb(88,115,128);
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c2:focus {
+  background-color: rgb(84,110,122);
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c0 > * {
+  margin-right: 8px;
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <button
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-info xl-button--variant-contained xl-button--elevation"
+    >
+      <span
+        class="c3 xl-base-button__inner"
+      >
+        <span
+          class="xl-button__inner"
+        >
+          click
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple xl-base-button__ripple"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Demo renders ./packages/react/src/Notication/__doc__/HideClose.tsx correctly 1`] = `
+.c4 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.c1::-moz-focus-inner {
+  border-style: none;
+}
+
+.c1 svg {
+  pointer-events: none;
+}
+
+.c1 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+}
+
+.c1 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c1 .xl-base-button__ripple-exit-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c1 .xl-base-button__ripple-enter-from {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c1 .xl-base-button__ripple-exit-to {
+  opacity: 0;
+}
+
+.c3 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c2 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #607d8b;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 12px;
+}
+
+.c2:hover {
+  background-color: rgb(88,115,128);
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c2:focus {
+  background-color: rgb(84,110,122);
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c0 > * {
+  margin-right: 8px;
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <button
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-info xl-button--variant-contained xl-button--elevation"
+    >
+      <span
+        class="c3 xl-base-button__inner"
+      >
+        <span
+          class="xl-button__inner"
+        >
+          click
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple xl-base-button__ripple"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Demo renders ./packages/react/src/Notication/__doc__/MaxCount.tsx correctly 1`] = `
+.c4 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.c1::-moz-focus-inner {
+  border-style: none;
+}
+
+.c1 svg {
+  pointer-events: none;
+}
+
+.c1 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+}
+
+.c1 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c1 .xl-base-button__ripple-exit-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c1 .xl-base-button__ripple-enter-from {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c1 .xl-base-button__ripple-exit-to {
+  opacity: 0;
+}
+
+.c3 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c2 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #607d8b;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 12px;
+}
+
+.c2:hover {
+  background-color: rgb(88,115,128);
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c2:focus {
+  background-color: rgb(84,110,122);
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c0 > * {
+  margin-right: 8px;
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <button
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-info xl-button--variant-contained xl-button--elevation"
+    >
+      <span
+        class="c3 xl-base-button__inner"
+      >
+        <span
+          class="xl-button__inner"
+        >
+          click
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple xl-base-button__ripple"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Demo renders ./packages/react/src/Notication/__doc__/Method.tsx correctly 1`] = `
+.c4 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.c1::-moz-focus-inner {
+  border-style: none;
+}
+
+.c1 svg {
+  pointer-events: none;
+}
+
+.c1 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+}
+
+.c1 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c1 .xl-base-button__ripple-exit-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c1 .xl-base-button__ripple-enter-from {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c1 .xl-base-button__ripple-exit-to {
+  opacity: 0;
+}
+
+.c3 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c2 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #607d8b;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 12px;
+}
+
+.c2:hover {
+  background-color: rgb(88,115,128);
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c2:focus {
+  background-color: rgb(84,110,122);
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c5 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: rgba(0,0,0,0.87);
+  background-color: #ff9800;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 12px;
+}
+
+.c5:hover {
+  background-color: rgb(235,140,0);
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c5:focus {
+  background-color: rgb(224,134,0);
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c6 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #ef5350;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 12px;
+}
+
+.c6:hover {
+  background-color: rgb(220,76,74);
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c6:focus {
+  background-color: rgb(210,73,70);
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c7 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #388e3c;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 12px;
+}
+
+.c7:hover {
+  background-color: rgb(52,131,55);
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c7:focus {
+  background-color: rgb(49,125,53);
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c0 > * {
+  margin-right: 8px;
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <button
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-info xl-button--variant-contained xl-button--elevation"
+    >
+      <span
+        class="c3 xl-base-button__inner"
+      >
+        <span
+          class="xl-button__inner"
+        >
+          Info
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple xl-base-button__ripple"
+      />
+    </button>
+    <button
+      class="c1 xl-base-button c5 xl-button xl-button--size-middle xl-button--color-warning xl-button--variant-contained xl-button--elevation"
+    >
+      <span
+        class="c3 xl-base-button__inner"
+      >
+        <span
+          class="xl-button__inner"
+        >
+          Warn
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple xl-base-button__ripple"
+      />
+    </button>
+    <button
+      class="c1 xl-base-button c6 xl-button xl-button--size-middle xl-button--color-error xl-button--variant-contained xl-button--elevation"
+    >
+      <span
+        class="c3 xl-base-button__inner"
+      >
+        <span
+          class="xl-button__inner"
+        >
+          Error
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple xl-base-button__ripple"
+      />
+    </button>
+    <button
+      class="c1 xl-base-button c7 xl-button xl-button--size-middle xl-button--color-success xl-button--variant-contained xl-button--elevation"
+    >
+      <span
+        class="c3 xl-base-button__inner"
+      >
+        <span
+          class="xl-button__inner"
+        >
+          Success
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple xl-base-button__ripple"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Demo renders ./packages/react/src/Notication/__doc__/Placement.tsx correctly 1`] = `
+.c4 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.c1::-moz-focus-inner {
+  border-style: none;
+}
+
+.c1 svg {
+  pointer-events: none;
+}
+
+.c1 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+}
+
+.c1 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c1 .xl-base-button__ripple-exit-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c1 .xl-base-button__ripple-enter-from {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c1 .xl-base-button__ripple-exit-to {
+  opacity: 0;
+}
+
+.c3 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c2 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #2196f3;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 12px;
+}
+
+.c2:hover {
+  background-color: rgb(30,138,224);
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c2:focus {
+  background-color: rgb(29,132,214);
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c0 > * {
+  margin-right: 8px;
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <button
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
+    >
+      <span
+        class="c3 xl-base-button__inner"
+      >
+        <span
+          class="xl-button__inner"
+        >
+          top-right
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple xl-base-button__ripple"
+      />
+    </button>
+    <button
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
+    >
+      <span
+        class="c3 xl-base-button__inner"
+      >
+        <span
+          class="xl-button__inner"
+        >
+          top-left
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple xl-base-button__ripple"
+      />
+    </button>
+    <button
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
+    >
+      <span
+        class="c3 xl-base-button__inner"
+      >
+        <span
+          class="xl-button__inner"
+        >
+          bottom-right
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple xl-base-button__ripple"
+      />
+    </button>
+    <button
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation"
+    >
+      <span
+        class="c3 xl-base-button__inner"
+      >
+        <span
+          class="xl-button__inner"
+        >
+          bottom-left
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple xl-base-button__ripple"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Demo renders ./packages/react/src/Notication/__doc__/Promise.tsx correctly 1`] = `
+.c4 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.c1::-moz-focus-inner {
+  border-style: none;
+}
+
+.c1 svg {
+  pointer-events: none;
+}
+
+.c1 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+}
+
+.c1 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c1 .xl-base-button__ripple-exit-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c1 .xl-base-button__ripple-enter-from {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c1 .xl-base-button__ripple-exit-to {
+  opacity: 0;
+}
+
+.c3 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c2 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #607d8b;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 12px;
+}
+
+.c2:hover {
+  background-color: rgb(88,115,128);
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c2:focus {
+  background-color: rgb(84,110,122);
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c0 > * {
+  margin-right: 8px;
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <button
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-info xl-button--variant-contained xl-button--elevation"
+    >
+      <span
+        class="c3 xl-base-button__inner"
+      >
+        <span
+          class="xl-button__inner"
+        >
+          click
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple xl-base-button__ripple"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Demo renders ./packages/react/src/Notication/__doc__/Update.tsx correctly 1`] = `
+.c4 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.c1::-moz-focus-inner {
+  border-style: none;
+}
+
+.c1 svg {
+  pointer-events: none;
+}
+
+.c1 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.12;
+}
+
+.c1 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 225ms 0ms cubic-bezier(0,0,0.2,1);
+}
+
+.c1 .xl-base-button__ripple-exit-active {
+  -webkit-transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 195ms 0ms cubic-bezier(0.4,0,1,1);
+}
+
+.c1 .xl-base-button__ripple-enter-from {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0.1;
+}
+
+.c1 .xl-base-button__ripple-exit-to {
+  opacity: 0;
+}
+
+.c3 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.c2 {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  -webkit-letter-spacing: 0.089em;
+  -moz-letter-spacing: 0.089em;
+  -ms-letter-spacing: 0.089em;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  color: #fff;
+  background-color: #607d8b;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  padding: 6px 12px;
+}
+
+.c2:hover {
+  background-color: rgb(88,115,128);
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.c2:focus {
+  background-color: rgb(84,110,122);
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.c0 > * {
+  margin-right: 8px;
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <button
+      class="c1 xl-base-button c2 xl-button xl-button--size-middle xl-button--color-info xl-button--variant-contained xl-button--elevation"
+    >
+      <span
+        class="c3 xl-base-button__inner"
+      >
+        <span
+          class="xl-button__inner"
+        >
+          click
+        </span>
+      </span>
+      <div
+        class="c4 xl-ripple xl-base-button__ripple"
+      />
+    </button>
+  </div>
 </div>
 `;
 
@@ -66532,7 +68372,7 @@ exports[`Demo renders ./packages/react/src/TextArea/__doc__/Size.tsx correctly 1
   position: relative;
   background-color: #fff;
   border: 1px solid rgba(0,0,0,0.12);
-  border-radius: 4px;
+  border-radius: 3px;
   -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
 }
@@ -66722,7 +68562,7 @@ exports[`Demo renders ./packages/react/src/TextArea/__doc__/Size.tsx correctly 1
   position: relative;
   background-color: #fff;
   border: 1px solid rgba(0,0,0,0.12);
-  border-radius: 4px;
+  border-radius: 6px;
   -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
   transition: border-color 300ms 0ms cubic-bezier(0.4,0,0.2,1),box-shadow 300ms 0ms cubic-bezier(0.4,0,0.2,1);
 }

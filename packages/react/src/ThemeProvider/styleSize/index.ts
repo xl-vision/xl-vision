@@ -14,7 +14,7 @@ export type FullStyleSize = Record<ComponentSize, StyleItem>;
 
 const defaultStyleSize: FullStyleSize = {
   small: {
-    borderRadius: 4,
+    borderRadius: 3,
     border: 1,
     padding: { y: 4, x: 10 },
     fontSize: 0.75,
@@ -26,7 +26,7 @@ const defaultStyleSize: FullStyleSize = {
     fontSize: 1,
   },
   large: {
-    borderRadius: 4,
+    borderRadius: 6,
     border: 1,
     padding: { y: 8, x: 22 },
     fontSize: 1.15,

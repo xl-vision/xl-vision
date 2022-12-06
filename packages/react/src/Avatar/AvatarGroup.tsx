@@ -154,7 +154,7 @@ if (!isProduction) {
       PropTypes.oneOf<ComponentSize>(['small', 'middle', 'large']),
     ]),
     shape: PropTypes.oneOf<AvatarShape>(['round', 'circle', 'square']),
-    maxStyle: PropTypes.object,
+    maxStyle: PropTypes.shape({}),
   };
 }
 

@@ -27,3 +27,14 @@ export type {
   CssTransitionTimeout,
   CssTransitionTimeoutRecord,
 } from './useCssTransition';
+
+export { default as useNotication } from './useNotication';
+export type {
+  NoticationHookProps,
+  NoticationHookReturnType,
+  NoticationHookUpdate,
+  NoticationContainerProps,
+  NoticationOptions,
+  NoticationProps,
+  NoticationContainerType,
+} from './useNotication';

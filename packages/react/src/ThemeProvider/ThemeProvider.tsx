@@ -42,7 +42,7 @@ if (!isProduction) {
 
   ThemeProvider.propTypes = {
     children: PropTypes.node.isRequired,
-    theme: PropTypes.object,
+    theme: PropTypes.shape({}),
   };
 }
 

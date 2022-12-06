@@ -41,7 +41,7 @@ if (!isProduction) {
   ConfigProvider.propTypes = {
     children: PropTypes.node.isRequired,
     language: PropTypes.string,
-    customLocales: PropTypes.objectOf(PropTypes.any),
+    customLocales: PropTypes.shape({}),
   };
 }
 

@@ -155,7 +155,7 @@ if (!isProduction) {
     order: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired]),
     className: PropTypes.string,
     children: PropTypes.node,
-    style: PropTypes.object,
+    style: PropTypes.shape({}),
   };
 }
 

@@ -438,7 +438,7 @@ if (!isProduction) {
     unmountOnHide: PropTypes.bool,
     mountOnShow: PropTypes.bool,
     className: PropTypes.string,
-    style: PropTypes.object,
+    style: PropTypes.shape({}),
     mask: PropTypes.bool,
     maskClosable: PropTypes.bool,
     escClosable: PropTypes.bool,

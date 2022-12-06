@@ -73,7 +73,6 @@ if (!isProduction) {
     onExiting: PropTypes.func,
     onExited: PropTypes.func,
     onExitCancelled: PropTypes.func,
-
     in: PropTypes.bool,
     transitionOnFirst: PropTypes.bool,
     disableCss: PropTypes.bool,

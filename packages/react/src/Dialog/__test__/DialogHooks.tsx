@@ -1,7 +1,15 @@
-import { ConfigProvider, Dialog, DialogHookReturnType } from '@xl-vision/react';
+import { ConfigProvider, DedicatedDialogProps, Dialog } from '@xl-vision/react';
 import { forwardRef, useImperativeHandle } from 'react';
 import { render, act } from '@testing-library/react';
 import { locales } from '@xl-vision/react/locale';
+import { NoticationHookUpdate } from '@xl-vision/hooks';
+import { triggerTransitionEnd } from 'test/utils';
+
+type DialogHookReturnType = {
+  destroy: () => void;
+  update: NoticationHookUpdate<DedicatedDialogProps>;
+  isDestroyed: () => boolean;
+};
 
 const { useDialog } = Dialog;
 
@@ -20,7 +28,7 @@ describe('DialogHooks', () => {
     jest.useFakeTimers();
   });
 
-  it('Test hooks', () => {
+  it('Test hooks', async () => {
     let dialogRef!: ReturnType<typeof useDialog>[0];
 
     render(
@@ -47,9 +55,7 @@ describe('DialogHooks', () => {
       });
     });
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     el = document.querySelector('#confirm');
     expect(el).not.toBe(null);
@@ -57,9 +63,7 @@ describe('DialogHooks', () => {
     act(() => {
       confirmRet.destroy();
     });
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     el = document.querySelector('#confirm');
     expect(el).toBe(null);
@@ -76,9 +80,7 @@ describe('DialogHooks', () => {
       });
     });
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     el = document.querySelector('#info');
     expect(el).not.toBe(null);
@@ -86,9 +88,7 @@ describe('DialogHooks', () => {
     act(() => {
       infoRet.destroy();
     });
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     el = document.querySelector('#info');
     expect(el).toBe(null);
@@ -106,9 +106,7 @@ describe('DialogHooks', () => {
       });
     });
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     el = document.querySelector('#success');
     expect(el).not.toBe(null);
@@ -116,9 +114,7 @@ describe('DialogHooks', () => {
     act(() => {
       successRet.destroy();
     });
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     el = document.querySelector('#success');
     expect(el).toBe(null);
@@ -136,9 +132,7 @@ describe('DialogHooks', () => {
       });
     });
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     el = document.querySelector('#error');
     expect(el).not.toBe(null);
@@ -146,9 +140,7 @@ describe('DialogHooks', () => {
     act(() => {
       errorRet.destroy();
     });
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     el = document.querySelector('#error');
     expect(el).toBe(null);
@@ -165,9 +157,7 @@ describe('DialogHooks', () => {
       });
     });
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     el = document.querySelector('#warning');
     expect(el).not.toBe(null);
@@ -175,15 +165,13 @@ describe('DialogHooks', () => {
     act(() => {
       warningRet.destroy();
     });
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     el = document.querySelector('#warning');
     expect(el).toBe(null);
   });
 
-  it('Test destroy automic', () => {
+  it('Test destroy automic', async () => {
     let dialogRef!: ReturnType<typeof useDialog>[0];
 
     const { unmount } = render(
@@ -207,24 +195,20 @@ describe('DialogHooks', () => {
       });
     });
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     el = document.querySelector('#confirm');
     expect(el).not.toBe(null);
 
     unmount();
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     el = document.querySelector('#confirm');
     expect(el).toBe(null);
   });
 
-  it('Test context update', () => {
+  it('Test context update', async () => {
     let dialogRef!: ReturnType<typeof useDialog>[0];
 
     const { rerender, unmount } = render(
@@ -250,9 +234,7 @@ describe('DialogHooks', () => {
       });
     });
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     el = document.querySelector('#info');
 
@@ -269,18 +251,14 @@ describe('DialogHooks', () => {
       </ConfigProvider>,
     );
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     el = document.querySelector('#info');
     expect(el!.querySelector('button')!.textContent).toBe(locales['zh-CN'].Dialog.methods.infoText);
 
     unmount();
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     el = document.querySelector('#info');
     expect(el).toBe(null);

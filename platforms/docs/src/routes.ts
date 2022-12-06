@@ -195,6 +195,13 @@ const route: Route = {
           },
           path: '/Message',
         },
+        {
+          titleMap: {
+            'en-US': 'Notication',
+            'zh-CN': '消息提醒框',
+          },
+          path: '/Notication',
+        },
       ],
     },
     {
