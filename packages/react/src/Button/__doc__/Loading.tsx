@@ -38,16 +38,16 @@ const Loading = () => {
       <Button loading={loading} onClick={handleLoading}>
         click me
       </Button>
-      <Button variant='text' loading={loading} prefixIcon={IconWrapper} color='primary'>
+      <Button color='primary' loading={loading} prefixIcon={IconWrapper} variant='text'>
         button
       </Button>
-      <Button loading={loading} color='secondary'>
+      <Button color='secondary' loading={loading}>
         button
       </Button>
-      <Button variant='text' loading={loading} color='error'>
+      <Button color='error' loading={loading} variant='text'>
         button
       </Button>
-      <Button variant='outlined' loading={loading} color='warning'>
+      <Button color='warning' loading={loading} variant='outlined'>
         button
       </Button>
     </Wrapper>

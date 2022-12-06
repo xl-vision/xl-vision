@@ -173,10 +173,10 @@ const Header: FC<HTMLAttributes<HTMLElement>> = (props) => {
         <div className='left'>
           <Dropdown menus={mobileMenus} trigger='click'>
             <Button
-              className='md-down'
               aria-label='Menus'
-              variant='text'
+              className='md-down'
               prefixIcon={<MenuOutlined />}
+              variant='text'
             />
           </Dropdown>
           <Link href='/' passHref={true}>
@@ -208,7 +208,7 @@ const Header: FC<HTMLAttributes<HTMLElement>> = (props) => {
             menus={
               <>
                 {langs.map((lang) => (
-                  <Dropdown.Item onClick={() => handleLangChange(lang)} key={lang}>
+                  <Dropdown.Item key={lang} onClick={() => handleLangChange(lang)}>
                     {supportLocales[lang].name}
                   </Dropdown.Item>
                 ))}
@@ -217,37 +217,37 @@ const Header: FC<HTMLAttributes<HTMLElement>> = (props) => {
           >
             <Button
               aria-label='Language'
-              variant='text'
               prefixIcon={<Translate />}
               suffixIcon={<DownOutlined />}
+              variant='text'
             >
               <span className='sm-up'>{locale.name}</span>
             </Button>
           </Dropdown>
           <Tooltip
             content={locale.header.themeTooltip}
-            placement='bottom'
             hoverOptions={{ delay: { open: 1500 } }}
+            placement='bottom'
           >
             <Button
               aria-label='Theme'
+              prefixIcon={isDark ? <LightTheme /> : <DarkTheme />}
               variant='text'
               onClick={handleTheme}
-              prefixIcon={isDark ? <LightTheme /> : <DarkTheme />}
             />
           </Tooltip>
           <Tooltip
             content={locale.header.githubTooltip}
-            placement='bottom'
             hoverOptions={{ delay: { open: 1500 } }}
+            placement='bottom'
           >
             <Button
               aria-label='Github'
-              variant='text'
-              target='_black'
               href='https://github.com/xl-vision/xl-vision'
-              rel='noopener'
               prefixIcon={<GithubFilled />}
+              rel='noopener'
+              target='_black'
+              variant='text'
             />
           </Tooltip>
         </div>

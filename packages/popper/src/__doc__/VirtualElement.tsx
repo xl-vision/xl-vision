@@ -46,7 +46,7 @@ const Demo = () => {
   return (
     <DemoRoot onMouseMove={handleMouseMove}>
       <Portal container={getContainer}>
-        <PortalContent style={style} ref={popper}>
+        <PortalContent ref={popper} style={style}>
           Lorem ipsum dolor sit amet.
         </PortalContent>
       </Portal>

@@ -296,7 +296,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => 
 
   const showClearNode = !disabled && !readOnly && allowClear && wordCount > 0 && (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-    <span role='button' tabIndex={-1} className={`${rootClassName}__clear`} onClick={handleReset}>
+    <span className={`${rootClassName}__clear`} role='button' tabIndex={-1} onClick={handleReset}>
       <CloseCircleFilled />
     </span>
   );
@@ -310,26 +310,26 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => 
 
   return (
     <TextAreaRoot
+      className={rootClasses}
       ref={forkRef}
       style={style}
       styleProps={{ focused, size, disabled, readOnly }}
-      className={rootClasses}
     >
       <TextAreaInner
         aria-disabled={disabled}
         aria-readonly={readOnly}
         {...others}
         // 取消autoHeight时，立刻移除样式
+        className={`${rootClassName}__inner`}
+        disabled={disabled}
+        readOnly={readOnly}
+        ref={textareaRef}
         style={autoHeight ? textAreaStyles : {}}
         styleProps={{ autoHeight: !!autoHeight }}
-        ref={textareaRef}
-        className={`${rootClassName}__inner`}
         value={actualValue}
-        readOnly={readOnly}
-        disabled={disabled}
+        onBlur={handleBlur}
         onChange={handleChange}
         onFocus={handleFocus}
-        onBlur={handleBlur}
       />
       {suffixNode}
     </TextAreaRoot>

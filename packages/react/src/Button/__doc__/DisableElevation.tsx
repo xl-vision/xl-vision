@@ -13,16 +13,16 @@ const DisableElevation = () => {
   return (
     <Wrapper>
       <Button disableElevation={true}>button</Button>
-      <Button disableElevation={true} color='primary'>
+      <Button color='primary' disableElevation={true}>
         button
       </Button>
-      <Button disableElevation={true} color='secondary'>
+      <Button color='secondary' disableElevation={true}>
         button
       </Button>
-      <Button disableElevation={true} color='error'>
+      <Button color='error' disableElevation={true}>
         button
       </Button>
-      <Button disableElevation={true} color='warning'>
+      <Button color='warning' disableElevation={true}>
         button
       </Button>
     </Wrapper>

@@ -166,7 +166,7 @@ describe('Row', () => {
             <Row.Col column={6}>
               <div className='col'>col2</div>
             </Row.Col>
-            <Row.Col column={6} pull={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 5, xxl: 6 }} offset={6}>
+            <Row.Col column={6} offset={6} pull={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 5, xxl: 6 }}>
               <div className='col'>col3</div>
             </Row.Col>
           </Row>

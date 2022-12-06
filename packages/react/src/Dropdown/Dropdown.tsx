@@ -102,16 +102,16 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
   return (
     <DropdownRoot
       {...others}
-      ref={ref}
       className={rootClasses}
+      offset={offset}
+      placement={placement}
+      popup={popup}
+      popupContainer={popupContainer}
+      ref={ref}
+      transitionClassName={transitionClassName || rootClassName}
       visible={visible}
       // eslint-disable-next-line react/jsx-handler-names
       onVisibleChange={setVisible}
-      placement={placement}
-      popup={popup}
-      offset={offset}
-      popupContainer={popupContainer}
-      transitionClassName={transitionClassName || rootClassName}
     >
       {children}
     </DropdownRoot>

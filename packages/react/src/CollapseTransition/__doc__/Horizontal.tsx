@@ -41,7 +41,7 @@ const Horizontal = () => {
       >
         Click
       </Button>
-      <CollapseTransition in={active} horizontal={true} transitionClassName='slide'>
+      <CollapseTransition horizontal={true} in={active} transitionClassName='slide'>
         <Div>DEMO</Div>
       </CollapseTransition>
     </div>

@@ -115,14 +115,14 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>((props, ref) => {
     <PopoverRoot
       role='tooltip'
       {...others}
-      ref={ref}
-      trigger={trigger}
+      arrow={!hideArrow && arrow}
       className={rootClasses}
       offset={offset}
-      arrow={!hideArrow && arrow}
       popup={popup}
       popupContainer={popupContainer}
+      ref={ref}
       transitionClassName={transitionClassName || rootClassName}
+      trigger={trigger}
     />
   );
 });

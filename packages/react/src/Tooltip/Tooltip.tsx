@@ -103,19 +103,19 @@ const Tooltip = forwardRef<HTMLDivElement, TooltipProps>((props, ref) => {
 
   const popup = (
     <TooltipPopup
-      styleProps={{
-        hasWidth: maxWidth !== undefined,
-      }}
       className={clsx(`${rootClassName}__popup`, {
         [`${rootClassName}--width`]: maxWidth !== undefined,
       })}
       style={{ maxWidth, ...colorStyle }}
+      styleProps={{
+        hasWidth: maxWidth !== undefined,
+      }}
     >
       {content}
     </TooltipPopup>
   );
 
-  const arrow = <TooltipArrow style={{ ...colorStyle }} className={`${rootClassName}__arrow`} />;
+  const arrow = <TooltipArrow className={`${rootClassName}__arrow`} style={{ ...colorStyle }} />;
 
   const rootClasses = clsx(rootClassName, className);
 
@@ -123,12 +123,12 @@ const Tooltip = forwardRef<HTMLDivElement, TooltipProps>((props, ref) => {
     <TooltipRoot
       role='tooltip'
       {...others}
-      ref={ref}
+      arrow={!hideArrow && arrow}
       className={rootClasses}
       offset={offset}
       popup={popup}
-      arrow={!hideArrow && arrow}
       popupContainer={popupContainer}
+      ref={ref}
       transitionClassName={transitionClassName || rootClassName}
     >
       {child}

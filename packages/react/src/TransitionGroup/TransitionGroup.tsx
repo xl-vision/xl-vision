@@ -90,10 +90,10 @@ const TransitionGroup: FC<TransitionGroupProps> = (props) => {
       return (
         <Transition
           {...others}
-          key={it.key}
           in={true}
-          transitionClassName={transitionClassesRecord}
+          key={it.key}
           mountOnEnter={true}
+          transitionClassName={transitionClassesRecord}
           unmountOnExit={true}
           onExited={handleExited(it.key)}
           // transitionOnFirst={true}

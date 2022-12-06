@@ -55,7 +55,7 @@ describe('CollapseTransition', () => {
 
   it('Test horizontal expand state', () => {
     const { rerender } = render(
-      <CollapseTransition in={false} horizontal={true}>
+      <CollapseTransition horizontal={true} in={false}>
         <div data-testid='demo' />
       </CollapseTransition>,
     );
@@ -63,7 +63,7 @@ describe('CollapseTransition', () => {
     expect(screen.queryByTestId('demo')).toBe(null);
 
     rerender(
-      <CollapseTransition in={true} horizontal={true}>
+      <CollapseTransition horizontal={true} in={true}>
         <div data-testid='demo' />
       </CollapseTransition>,
     );

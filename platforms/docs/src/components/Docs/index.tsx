@@ -98,7 +98,7 @@ const genMenus = (outline: Outline, isDebugMode: boolean) => {
   }
 
   return outline.map((it) => (
-    <Anchor.Link key={it.id} href={`#${it.id}`} title={it.title}>
+    <Anchor.Link href={`#${it.id}`} key={it.id} title={it.title}>
       {genMenus(it.children || [], isDebugMode)}
     </Anchor.Link>
   ));

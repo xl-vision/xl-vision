@@ -14,14 +14,14 @@ const Width = () => {
         click
       </Button>
       <Dialog
-        confirmText='Turn on the switch'
         cancelText='Cancel'
-        title='Are you sure?'
-        visible={visible}
-        onVisibleChange={setVisible}
+        confirmText='Turn on the switch'
         style={{
           width: 250,
         }}
+        title='Are you sure?'
+        visible={visible}
+        onVisibleChange={setVisible}
       >
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod maiores quidem fugiat
         aspernatur, odio, quo esse molestias porro maxime sit itaque quam soluta autem illo,

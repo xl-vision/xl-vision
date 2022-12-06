@@ -137,7 +137,7 @@ const Col = forwardRef<HTMLDivElement, ColProps>((props, ref) => {
   );
 
   return (
-    <ColRoot {...others} style={colStyle} className={rootClasses} ref={ref}>
+    <ColRoot {...others} className={rootClasses} ref={ref} style={colStyle}>
       {children}
     </ColRoot>
   );

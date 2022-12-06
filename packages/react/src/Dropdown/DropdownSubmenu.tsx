@@ -172,17 +172,17 @@ const DropdownSubmenu = forwardRef<HTMLDivElement, DropdownSubmenuProps>((props,
   return (
     <DropdownSubmenuRoot
       {...others}
+      offset={offset}
+      placement={placement}
+      popup={popup}
+      popupContainer={popupContainer}
       ref={ref}
+      transitionClassName={clsx(rootClassName, transitionClassName)}
+      trigger={trigger}
+      onVisibleChange={handleVisibleChange}
       className={rootClasses}
       // disablePopupEnter={false}
       visible={visible}
-      onVisibleChange={handleVisibleChange}
-      trigger={trigger}
-      placement={placement}
-      popup={popup}
-      offset={offset}
-      popupContainer={popupContainer}
-      transitionClassName={clsx(rootClassName, transitionClassName)}
     >
       <li className={`${rootClassName}__inner`}>
         <DropdownSubmenuItemButton
@@ -191,8 +191,8 @@ const DropdownSubmenu = forwardRef<HTMLDivElement, DropdownSubmenuProps>((props,
           // see https://github.com/facebook/react/issues/10109
           // disabled={disabled}
           aria-disabled={disabled}
-          disableRipple={disabled}
           className={`${rootClassName}__button`}
+          disableRipple={disabled}
         >
           {title}
           <DropdownSubmenuIcon className={`${rootClassName}__icon`} />

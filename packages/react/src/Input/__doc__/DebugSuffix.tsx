@@ -3,11 +3,11 @@ import { Input } from '@xl-vision/react';
 const Demo = () => {
   return (
     <Input
-      placeholder='Basic usage'
+      allowClear={true}
       maxLength={20}
+      placeholder='Basic usage'
       showCount={true}
       suffix='RMB'
-      allowClear={true}
     />
   );
 };

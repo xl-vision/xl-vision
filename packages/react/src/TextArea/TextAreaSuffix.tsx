@@ -72,7 +72,7 @@ const TextAreaSuffix: FC<TextAreaSuffixProps> = (props) => {
 
   return (
     <ResizeObserver onResizeObserver={handleOverflow}>
-      <span {...others} className={classes} style={{ height: '100%', ...style }} ref={ref} />
+      <span {...others} className={classes} ref={ref} style={{ height: '100%', ...style }} />
     </ResizeObserver>
   );
 };

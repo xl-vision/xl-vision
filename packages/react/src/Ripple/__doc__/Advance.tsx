@@ -54,7 +54,7 @@ const Advance = () => {
   return (
     <Box {...events}>
       click me
-      <Ripple transitionClassName='ripple' ref={rippleRef} exitAfterEnter={true} />
+      <Ripple exitAfterEnter={true} ref={rippleRef} transitionClassName='ripple' />
     </Box>
   );
 };

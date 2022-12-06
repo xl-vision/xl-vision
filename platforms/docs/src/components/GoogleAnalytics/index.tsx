@@ -9,13 +9,13 @@ const GoogleAnalytics = () => {
   return (
     <>
       <Script
-        strategy='afterInteractive'
         src='https://www.googletagmanager.com/gtag/js?id=G-HJ6F44LG42'
+        strategy='afterInteractive'
       />
       <Script
+        dangerouslySetInnerHTML={{ __html: script }}
         id='google-analytics'
         strategy='afterInteractive'
-        dangerouslySetInnerHTML={{ __html: script }}
       />
     </>
   );

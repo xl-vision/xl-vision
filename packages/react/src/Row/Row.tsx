@@ -128,7 +128,7 @@ const Row = forwardRef<HTMLDivElement, RowProps>((props, ref) => {
 
   return (
     <RowContext.Provider value={memorizedValue}>
-      <RowRoot {...others} style={rowStyle} className={rootClasses} ref={ref} as={component}>
+      <RowRoot {...others} as={component} className={rootClasses} ref={ref} style={rowStyle}>
         {children}
       </RowRoot>
     </RowContext.Provider>

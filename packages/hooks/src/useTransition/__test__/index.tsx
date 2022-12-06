@@ -31,7 +31,7 @@ describe('useTransition', () => {
         },
       });
 
-      return <div ref={nodeRef} data-testid='demo' />;
+      return <div data-testid='demo' ref={nodeRef} />;
     };
 
     const { rerender } = render(<Demo in={false} />);
@@ -86,7 +86,7 @@ describe('useTransition', () => {
         },
       });
 
-      return <div ref={nodeRef} data-testid='demo' />;
+      return <div data-testid='demo' ref={nodeRef} />;
     };
 
     const { rerender } = render(<Demo in={true} />);
@@ -137,7 +137,7 @@ describe('useTransition', () => {
         },
       });
 
-      return <div ref={nodeRef} data-testid='demo' />;
+      return <div data-testid='demo' ref={nodeRef} />;
     };
 
     const { rerender } = render(<Demo in={false} />);
@@ -195,7 +195,7 @@ describe('useTransition', () => {
         },
       });
 
-      return <div ref={nodeRef} data-testid='demo' />;
+      return <div data-testid='demo' ref={nodeRef} />;
     };
 
     const { rerender } = render(<Demo in={false} />);
@@ -252,7 +252,7 @@ describe('useTransition', () => {
         },
       });
 
-      return <div ref={nodeRef} data-testid='demo' data-show={show} />;
+      return <div data-show={show} data-testid='demo' ref={nodeRef} />;
     };
 
     const { rerender } = render(<Demo in={false} />);

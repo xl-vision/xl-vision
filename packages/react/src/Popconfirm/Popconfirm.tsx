@@ -167,26 +167,26 @@ const Popconfirm = forwardRef<HTMLDivElement, PopconfirmProps>((props, ref) => {
       </div>
       <div className={`${rootClassName}__footer`}>
         <Button
-          style={{ minWidth: 0 }}
-          size='small'
           color='primary'
+          size='small'
+          style={{ minWidth: 0 }}
           variant='text'
           {...(cancelButtonProps as ButtonProps)}
-          loading={cancelLoading}
           disabled={confirmLoading}
+          loading={cancelLoading}
           onClick={handleCancel}
         >
           {cancelText}
         </Button>
         <Button
-          style={{ minWidth: 0 }}
-          size='small'
           color='primary'
-          variant='text'
           disableElevation={true}
+          size='small'
+          style={{ minWidth: 0 }}
+          variant='text'
           {...(confirmButtonProps as ButtonProps)}
-          loading={confirmLoading}
           disabled={cancelLoading}
+          loading={confirmLoading}
           onClick={handleConfirm}
         >
           {confirmText}
@@ -203,16 +203,16 @@ const Popconfirm = forwardRef<HTMLDivElement, PopconfirmProps>((props, ref) => {
     <PopconfirmRoot
       role='tooltip'
       {...others}
-      visible={visible}
-      onVisibleChange={handleVisibleChange}
-      ref={ref}
-      trigger={trigger}
+      arrow={!hideArrow && arrow}
       className={rootClasses}
       offset={offset}
-      arrow={!hideArrow && arrow}
       popup={popup}
       popupContainer={popupContainer}
+      ref={ref}
       transitionClassName={transitionClassName || rootClassName}
+      trigger={trigger}
+      visible={visible}
+      onVisibleChange={handleVisibleChange}
     />
   );
 });

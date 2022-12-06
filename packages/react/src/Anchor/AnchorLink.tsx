@@ -87,11 +87,11 @@ const AnchorLink = forwardRef<HTMLDivElement, AnchorLinkProps>((props, ref) => {
   return (
     <AnchorLinkRoot {...others} className={rootClasses} ref={ref}>
       <AnchorLinkTitle
+        className={titleClasses}
+        href={href}
         styleProps={{ isActive }}
         title={typeof title === 'string' ? title : ''}
-        className={titleClasses}
         onClick={handleClick}
-        href={href}
       >
         {title}
       </AnchorLinkTitle>

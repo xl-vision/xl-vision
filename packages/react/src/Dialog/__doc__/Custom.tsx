@@ -45,10 +45,10 @@ const Custom = () => {
     <CustomHeader>
       <h6>Custom Header</h6>
       <Button
-        onClick={handleClose}
         className='close-btn'
-        variant='text'
         prefixIcon={<CloseOutlined />}
+        variant='text'
+        onClick={handleClose}
       />
     </CustomHeader>
   );
@@ -61,8 +61,8 @@ const Custom = () => {
       <Button
         color='primary'
         disableElevation={true}
-        onClick={handleClose}
         style={{ marginRight: 8 }}
+        onClick={handleClose}
       >
         Submit
       </Button>
@@ -74,7 +74,7 @@ const Custom = () => {
       <Button color='primary' onClick={handleClick}>
         click
       </Button>
-      <Dialog title={title} visible={visible} onVisibleChange={setVisible} footer={footer}>
+      <Dialog footer={footer} title={title} visible={visible} onVisibleChange={setVisible}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod maiores quidem fugiat
         aspernatur, odio, quo esse molestias porro maxime sit itaque quam soluta autem illo,
         corporis nihil alias sint tempora.

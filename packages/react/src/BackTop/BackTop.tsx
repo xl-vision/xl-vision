@@ -142,15 +142,15 @@ const BackTop = forwardRef<HTMLDivElement, BackTopProps>((props, ref) => {
     <Transition
       in={show}
       mountOnEnter={true}
-      unmountOnExit={true}
       transitionClassName={rootClassName}
+      unmountOnExit={true}
     >
       <Root
         {...others}
-        onClick={handleClick}
-        style={{ ...style, ...fixedStyle }}
         className={classes}
         ref={ref}
+        style={{ ...style, ...fixedStyle }}
+        onClick={handleClick}
       >
         {children || defaultElement}
       </Root>

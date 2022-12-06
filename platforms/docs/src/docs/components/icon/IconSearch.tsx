@@ -86,9 +86,9 @@ const IconSearch: FC<void> = () => {
         const Comp = (Icons as unknown as IconComponentMap)[iconName];
         return (
           <IconWrapper
+            data-clipboard-text={`<${iconName} />`}
             key={iconName}
             onMouseDown={handleCopy}
-            data-clipboard-text={`<${iconName} />`}
           >
             <Comp />
             <div>{iconName}</div>
@@ -117,12 +117,12 @@ const IconSearch: FC<void> = () => {
           Filled
         </Button>
         <Input
+          placeholder={locale.pages.Icons.seachPlaceholder}
           style={{
             flex: 1,
           }}
           value={search}
           onChange={handleSearch}
-          placeholder={locale.pages.Icons.seachPlaceholder}
         />
       </Input.Group>
       <div className='bottom'>{icons}</div>

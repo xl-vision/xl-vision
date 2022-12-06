@@ -13,8 +13,8 @@ const Demo = () => {
 
   return (
     <>
-      <Input readOnly={true} addonBefore='height' addonAfter='px' value={`${size.height}`} />
-      <Input readOnly={true} addonBefore='width' addonAfter='px' value={`${size.width}`} />
+      <Input addonAfter='px' addonBefore='height' readOnly={true} value={`${size.height}`} />
+      <Input addonAfter='px' addonBefore='width' readOnly={true} value={`${size.width}`} />
       <ResizeObserver onResizeObserver={handleResize}>
         <textarea placeholder='drag me' />
       </ResizeObserver>

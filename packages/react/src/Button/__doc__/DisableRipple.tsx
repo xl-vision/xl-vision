@@ -13,16 +13,16 @@ const DisableRipple = () => {
   return (
     <Wrapper>
       <Button disableRipple={true}>button</Button>
-      <Button variant='text' disableRipple={true} color='primary'>
+      <Button color='primary' disableRipple={true} variant='text'>
         button
       </Button>
-      <Button disableRipple={true} color='secondary'>
+      <Button color='secondary' disableRipple={true}>
         button
       </Button>
-      <Button variant='text' disableRipple={true} color='error'>
+      <Button color='error' disableRipple={true} variant='text'>
         button
       </Button>
-      <Button variant='outlined' disableRipple={true} color='warning'>
+      <Button color='warning' disableRipple={true} variant='outlined'>
         button
       </Button>
     </Wrapper>

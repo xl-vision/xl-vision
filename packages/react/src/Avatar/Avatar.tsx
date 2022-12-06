@@ -172,7 +172,7 @@ const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
   );
 
   if (typeof src === 'string' && src && isImgExist) {
-    childNode = <img src={src} srcSet={srcSet} alt={alt} onError={handleImgError} />;
+    childNode = <img alt={alt} src={src} srcSet={srcSet} onError={handleImgError} />;
   } else if (hasImageElement) {
     childNode = src;
   } else if (icon || children) {
@@ -184,7 +184,7 @@ const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
     };
     childNode = (
       <ResizeObserver onResizeObserver={handleResize}>
-        <AvatarInner ref={childRef} style={childrenStyle} className={`${rootClassName}__inner`}>
+        <AvatarInner className={`${rootClassName}__inner`} ref={childRef} style={childrenStyle}>
           {icon || children}
         </AvatarInner>
       </ResizeObserver>
@@ -209,16 +209,16 @@ const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
     <AvatarRoot
       {...others}
       className={rootClasses}
+      ref={forkRef}
+      style={{
+        ...rootSizeStyle,
+        ...style,
+      }}
       styleProps={{
         shape,
         size: rootSize,
         isImage,
       }}
-      style={{
-        ...rootSizeStyle,
-        ...style,
-      }}
-      ref={forkRef}
     >
       {childNode}
     </AvatarRoot>

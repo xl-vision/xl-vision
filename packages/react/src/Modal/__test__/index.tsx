@@ -79,7 +79,7 @@ describe('Modal', () => {
     expect(el).toBe(null);
 
     rerender(
-      <Modal visible={true} mountOnShow={true}>
+      <Modal mountOnShow={true} visible={true}>
         <div>body</div>
       </Modal>,
     );
@@ -110,7 +110,7 @@ describe('Modal', () => {
     expect(el).toBe(null);
 
     rerender(
-      <Modal visible={true} unmountOnHide={true}>
+      <Modal unmountOnHide={true} visible={true}>
         <div>body</div>
       </Modal>,
     );
@@ -122,7 +122,7 @@ describe('Modal', () => {
     });
 
     rerender(
-      <Modal visible={false} unmountOnHide={true}>
+      <Modal unmountOnHide={true} visible={false}>
         <div>body</div>
       </Modal>,
     );

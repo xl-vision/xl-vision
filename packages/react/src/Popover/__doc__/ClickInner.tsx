@@ -5,18 +5,18 @@ const ClickInner = () => {
   const [visible, setVisible] = useState(false);
 
   const content = (
-    <Button variant='text' onClick={() => setVisible(false)} color='primary'>
+    <Button color='primary' variant='text' onClick={() => setVisible(false)}>
       close
     </Button>
   );
 
   return (
     <Popover
+      content={content}
+      title='title'
       trigger='click'
       visible={visible}
       onVisibleChange={setVisible}
-      title='title'
-      content={content}
     >
       <Button color='primary'>click</Button>
     </Popover>

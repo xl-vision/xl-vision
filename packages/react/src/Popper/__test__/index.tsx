@@ -12,10 +12,10 @@ describe('Popper', () => {
 
     const { container } = render(
       <Popper
-        trigger='hover'
         popup={<div>popup</div>}
-        onVisibleChange={handleVisibleChange}
         popupContainer={() => document.body}
+        trigger='hover'
+        onVisibleChange={handleVisibleChange}
       >
         <button id='btn'>button</button>
       </Popper>,
@@ -50,10 +50,10 @@ describe('Popper', () => {
 
     const { container } = render(
       <Popper
-        trigger='click'
         popup={<div>popup</div>}
-        onVisibleChange={handleVisibleChange}
         popupContainer={() => document.body}
+        trigger='click'
+        onVisibleChange={handleVisibleChange}
       >
         <button id='btn'>button</button>
       </Popper>,
@@ -88,10 +88,10 @@ describe('Popper', () => {
 
     const { container } = render(
       <Popper
-        trigger='contextMenu'
         popup={<div>popup</div>}
-        onVisibleChange={handleVisibleChange}
         popupContainer={() => document.body}
+        trigger='contextMenu'
+        onVisibleChange={handleVisibleChange}
       >
         <button id='btn'>button</button>
       </Popper>,
@@ -124,10 +124,10 @@ describe('Popper', () => {
 
     const { container } = render(
       <Popper
-        trigger='focus'
         popup={<div>popup</div>}
-        onVisibleChange={handleVisibleChange}
         popupContainer={() => document.body}
+        trigger='focus'
+        onVisibleChange={handleVisibleChange}
       >
         <button id='btn'>button</button>
       </Popper>,
@@ -161,11 +161,11 @@ describe('Popper', () => {
 
     const { container, rerender } = render(
       <Popper
-        trigger={false}
         popup={<div id='popup'>popup</div>}
-        onVisibleChange={handleVisibleChange}
         popupContainer={() => document.body}
+        trigger={false}
         visible={false}
+        onVisibleChange={handleVisibleChange}
       >
         <button id='btn'>button</button>
       </Popper>,
@@ -186,11 +186,11 @@ describe('Popper', () => {
 
     rerender(
       <Popper
-        trigger={false}
         popup={<div id='popup'>popup</div>}
-        onVisibleChange={handleVisibleChange}
         popupContainer={() => document.body}
+        trigger={false}
         visible={true}
+        onVisibleChange={handleVisibleChange}
       >
         <button id='btn'>button</button>
       </Popper>,
@@ -207,11 +207,11 @@ describe('Popper', () => {
 
     rerender(
       <Popper
-        trigger={false}
         popup={<div id='popup'>popup</div>}
-        onVisibleChange={handleVisibleChange}
         popupContainer={() => document.body}
+        trigger={false}
         visible={false}
+        onVisibleChange={handleVisibleChange}
       >
         <button id='btn'>button</button>
       </Popper>,
@@ -230,11 +230,11 @@ describe('Popper', () => {
     const handleVisibleChange = jest.fn();
     const { container, rerender } = render(
       <Popper
-        trigger='hover'
         className='popup'
         popup={<div>popup</div>}
-        onVisibleChange={handleVisibleChange}
         popupContainer={() => document.body}
+        trigger='hover'
+        onVisibleChange={handleVisibleChange}
       >
         <button id='btn'>button</button>
       </Popper>,
@@ -272,12 +272,12 @@ describe('Popper', () => {
 
     rerender(
       <Popper
-        trigger='hover'
         className='popup'
-        popup={<div>popup</div>}
-        onVisibleChange={handleVisibleChange}
-        popupContainer={() => document.body}
         hoverOptions={{ disablePopperEnter: true }}
+        popup={<div>popup</div>}
+        popupContainer={() => document.body}
+        trigger='hover'
+        onVisibleChange={handleVisibleChange}
       >
         <button id='btn'>button</button>
       </Popper>,
@@ -303,11 +303,11 @@ describe('Popper', () => {
   it('test mountOnShow', () => {
     const { container } = render(
       <Popper
-        trigger='hover'
         id='popup'
+        mountOnShow={false}
         popup={<div>popup</div>}
         popupContainer={() => document.body}
-        mountOnShow={false}
+        trigger='hover'
       >
         <button id='btn'>button</button>
       </Popper>,
@@ -336,10 +336,10 @@ describe('Popper', () => {
   it('test unmountOnHide', () => {
     const { container } = render(
       <Popper
-        trigger='hover'
         id='popup'
         popup={<div>popup</div>}
         popupContainer={() => document.body}
+        trigger='hover'
         unmountOnHide={true}
       >
         <button id='btn'>button</button>

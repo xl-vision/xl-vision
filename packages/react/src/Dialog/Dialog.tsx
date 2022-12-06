@@ -176,8 +176,8 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
           color='primary'
           variant='text'
           {...(cancelButtonProps as ButtonProps)}
-          loading={cancelLoading}
           disabled={confirmLoading}
+          loading={cancelLoading}
           onClick={handleCancel}
         >
           {cancelText}
@@ -187,8 +187,8 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
         color='primary'
         variant='text'
         {...(confirmButtonProps as ButtonProps)}
-        loading={confirmLoading}
         disabled={cancelLoading}
+        loading={confirmLoading}
         onClick={handleConfirm}
       >
         {confirmText}
@@ -200,14 +200,14 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
 
   return (
     <DialogRoot
-      ref={ref}
       aria-labelledby={dialogTitleId}
+      ref={ref}
       {...others}
       className={clsx(rootClassName, className)}
-      onVisibleChange={handleVisibleChange}
       visible={visible}
+      onVisibleChange={handleVisibleChange}
     >
-      <DialogHeader id={dialogTitleId} className={`${rootClassName}__header`}>
+      <DialogHeader className={`${rootClassName}__header`} id={dialogTitleId}>
         {typeof title === 'string' ? <h6 className={`${rootClassName}__title`}>{title}</h6> : title}
       </DialogHeader>
       {children && (

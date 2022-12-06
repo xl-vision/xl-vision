@@ -388,16 +388,16 @@ const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
 
     allowClearNode = (
       // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-      <span role='button' tabIndex={-1} className={clearClasses} onClick={handleReset}>
+      <span className={clearClasses} role='button' tabIndex={-1} onClick={handleReset}>
         <CloseCircleFilled />
       </span>
     );
   }
 
   return (
-    <InputRoot style={style} styleProps={{ size }} className={rootClasses} ref={forkRef}>
+    <InputRoot className={rootClasses} ref={forkRef} style={style} styleProps={{ size }}>
       {typeof addonBefore !== 'undefined' && (
-        <InputAddonBefore styleProps={{ size }} className={`${rootClassName}__addon-before`}>
+        <InputAddonBefore className={`${rootClassName}__addon-before`} styleProps={{ size }}>
           {addonBefore}
         </InputAddonBefore>
       )}
@@ -413,15 +413,15 @@ const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
           aria-disabled={disabled}
           aria-readonly={readOnly}
           {...others}
+          className={`${rootClassName}__inner`}
           disabled={disabled}
           readOnly={readOnly}
           ref={inputRef}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
           type={type}
-          className={`${rootClassName}__inner`}
           value={actualValue}
+          onBlur={handleBlur}
           onChange={handleChange}
+          onFocus={handleFocus}
         />
         {(allowClearNode || showCountNode || typeof suffix !== 'undefined') && (
           <InputSuffix className={`${rootClassName}__suffix`}>
@@ -432,7 +432,7 @@ const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
         )}
       </InputWrapper>
       {typeof addonAfter !== 'undefined' && (
-        <InputAddonAfter styleProps={{ size }} className={`${rootClassName}__addon-after`}>
+        <InputAddonAfter className={`${rootClassName}__addon-after`} styleProps={{ size }}>
           {addonAfter}
         </InputAddonAfter>
       )}

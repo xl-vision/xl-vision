@@ -54,7 +54,13 @@ module.exports = {
       plugins: [],
     },
   },
-  extends: ['airbnb', 'airbnb/hooks', 'plugin:prettier/recommended', 'prettier'],
+  extends: [
+    'airbnb',
+    'airbnb/hooks',
+    'plugin:react/jsx-runtime',
+    'plugin:prettier/recommended',
+    'prettier',
+  ],
   plugins: ['unicorn'],
   rules: {
     'import/no-extraneous-dependencies': [
@@ -106,6 +112,18 @@ module.exports = {
     'react/display-name': 'error',
     'react/jsx-props-no-spreading': 'off',
     'react/require-default-props': 'off',
+    'react/jsx-sort-props': [
+      'error',
+      {
+        callbacksLast: true,
+      },
+    ],
+    'react/sort-prop-types': [
+      'error',
+      {
+        callbacksLast: true,
+      },
+    ],
     'unicorn/filename-case': [
       'error',
       {

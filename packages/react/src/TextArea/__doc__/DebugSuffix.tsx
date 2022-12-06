@@ -11,13 +11,13 @@ const Demo = () => {
   return (
     <div>
       <TextArea
+        allowClear={true}
+        autoHeight={true}
+        maxLength={20}
         placeholder='Basic usage'
+        showCount={true}
         value={value}
         onChange={handleValue}
-        allowClear={true}
-        maxLength={20}
-        showCount={true}
-        autoHeight={true}
       />
     </div>
   );

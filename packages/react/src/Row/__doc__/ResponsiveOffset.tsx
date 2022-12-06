@@ -81,6 +81,7 @@ const ResponsiveOffset = () => {
           </Row.Col>
           <Row.Col
             column={6}
+            offset={6}
             pull={{
               xs: 1,
               sm: 2,
@@ -89,7 +90,6 @@ const ResponsiveOffset = () => {
               xl: 5,
               xxl: 6,
             }}
-            offset={6}
           >
             <Box>col3</Box>
           </Row.Col>

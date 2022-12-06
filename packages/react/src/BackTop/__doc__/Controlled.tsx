@@ -4,7 +4,7 @@ const Basic = () => {
   return (
     <>
       BackTop keeps showing
-      <BackTop visibilityHeight={10} show={true} right={100} bottom={100} />
+      <BackTop bottom={100} right={100} show={true} visibilityHeight={10} />
     </>
   );
 };

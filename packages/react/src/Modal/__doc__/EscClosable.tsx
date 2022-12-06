@@ -18,7 +18,7 @@ const EscClosable = () => {
       <Button color='primary' onClick={() => setVisible(true)}>
         show
       </Button>
-      <Modal visible={visible} onVisibleChange={setVisible} escClosable={false}>
+      <Modal escClosable={false} visible={visible} onVisibleChange={setVisible}>
         <Body>
           <p>This is modal content</p>
         </Body>

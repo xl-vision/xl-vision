@@ -31,7 +31,7 @@ const Basic = () => {
       <Button color='primary' onClick={() => setShow(!show)}>
         Click
       </Button>
-      <Transition in={show} transitionClassName='slide' mountOnEnter={true} unmountOnExit={true}>
+      <Transition in={show} mountOnEnter={true} transitionClassName='slide' unmountOnExit={true}>
         <Div>DEMO</Div>
       </Transition>
     </div>

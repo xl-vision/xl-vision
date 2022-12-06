@@ -43,17 +43,17 @@ const Code: FC<CodeProps> = (props) => {
     <Wrapper>
       <Bar>
         <Button
-          variant='text'
-          size='small'
           color={codeType === CodeType.TYPESCRIPT ? 'primary' : 'default'}
+          size='small'
+          variant='text'
           onClick={() => setCodeType(CodeType.TYPESCRIPT)}
         >
           Typescript
         </Button>
         <Button
-          variant='text'
-          size='small'
           color={codeType === CodeType.JAVASCRIPT ? 'primary' : 'default'}
+          size='small'
+          variant='text'
           onClick={() => setCodeType(CodeType.JAVASCRIPT)}
         >
           Javascript

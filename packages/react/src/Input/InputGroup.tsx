@@ -84,7 +84,7 @@ const InputGroup: FC<InputGroupProps> = (props) => {
   return (
     // 内部组件都需要根据size大小变化
     <ThemeContext.Provider value={newTheme}>
-      <InputGroupRoot {...others} styleProps={{ size }} className={classes}>
+      <InputGroupRoot {...others} className={classes} styleProps={{ size }}>
         {children}
       </InputGroupRoot>
     </ThemeContext.Provider>

@@ -18,7 +18,7 @@ const content = (
 const Rich = () => {
   return (
     <Wrapper>
-      <Tooltip placement='top' content={content}>
+      <Tooltip content={content} placement='top'>
         <Button color='primary'>button</Button>
       </Tooltip>
     </Wrapper>

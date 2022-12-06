@@ -220,12 +220,12 @@ const Affix = forwardRef<AffixIntance, AffixProps>((props, ref) => {
       <AffixRoot {...others} className={classes} ref={forkRef}>
         {placeholderStyle && (
           <div
+            aria-hidden={true}
             className={`${rootClassName}__placeholder`}
             style={placeholderStyle}
-            aria-hidden={true}
           />
         )}
-        <div style={affixStyle} className={`${rootClassName}__inner`}>
+        <div className={`${rootClassName}__inner`} style={affixStyle}>
           <ResizeObserver onResizeObserver={handleSizeChange}>{children}</ResizeObserver>
         </div>
       </AffixRoot>

@@ -5,8 +5,8 @@ const Basic = () => {
     <div>
       <Popconfirm
         title='Are you sure to do it?'
-        onConfirm={() => console.log('confirm')}
         onCancel={() => console.log('cancel')}
+        onConfirm={() => console.log('confirm')}
       >
         <Button color='primary'>button</Button>
       </Popconfirm>

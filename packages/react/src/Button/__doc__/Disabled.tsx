@@ -16,19 +16,19 @@ const Disabled = () => {
   return (
     <Wrapper>
       <Button disabled={true}>button</Button>
-      <Button disabled={true} color='primary'>
+      <Button color='primary' disabled={true}>
         button
       </Button>
-      <Button disabled={true} color='secondary'>
+      <Button color='secondary' disabled={true}>
         button
       </Button>
-      <Button disabled={true} color='error'>
+      <Button color='error' disabled={true}>
         button
       </Button>
-      <Button disabled={true} round={true} color='warning'>
+      <Button color='warning' disabled={true} round={true}>
         button
       </Button>
-      <Button disabled={true} color='primary' prefixIcon={IconWrapper}>
+      <Button color='primary' disabled={true} prefixIcon={IconWrapper}>
         button
       </Button>
     </Wrapper>

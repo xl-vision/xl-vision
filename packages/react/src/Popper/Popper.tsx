@@ -271,18 +271,20 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
         aria-hidden={!show}
         {...others}
         {...getPopperProps({ style: popperStyle })}
-        ref={forkPopperRef}
         className={rootClasses}
+        ref={forkPopperRef}
       >
         <Transition
-          mountOnEnter={mountOnShow}
           in={visible}
-          onExited={handleExited}
-          transitionOnFirst={true}
+          mountOnEnter={mountOnShow}
           transitionClassName={transitionClassNameObject}
+          transitionOnFirst={true}
+          onExited={handleExited}
         >
           {(showValue) => (
             <div
+              className={innerClassName}
+              data-placement={placement}
               style={{
                 display: showValue ? '' : 'none',
                 position: 'relative',
@@ -290,8 +292,6 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
                   typeof originY === 'number' ? `${originY}px` : originY
                 }`,
               }}
-              className={innerClassName}
-              data-placement={placement}
             >
               {arrowNode}
               {popup}

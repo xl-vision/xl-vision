@@ -304,9 +304,9 @@ const Anchor = forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
   const content = (
     <AnchorRoot
       {...others}
-      styleProps={{ type }}
       className={rootClasses}
       ref={forkRef as LegacyRef<HTMLDivElement>}
+      styleProps={{ type }}
     >
       {inkNode}
       {children}
@@ -316,7 +316,7 @@ const Anchor = forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
   return (
     <AnchorContext.Provider value={value}>
       {affix ? (
-        <Affix {...others} target={affixTarget} offsetBottom={offsetBottom} offsetTop={offsetTop}>
+        <Affix {...others} offsetBottom={offsetBottom} offsetTop={offsetTop} target={affixTarget}>
           {content}
         </Affix>
       ) : (

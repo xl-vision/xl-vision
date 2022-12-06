@@ -4,16 +4,16 @@ const Demo = () => {
   return (
     <div>
       <TextArea
+        allowClear={true}
+        maxLength={20}
         placeholder='Default one row'
         rows={1}
-        maxLength={20}
-        allowClear={true}
         showCount={true}
       />
       <TextArea
-        placeholder='Default mutiple rows'
         allowClear={true}
         maxLength={20}
+        placeholder='Default mutiple rows'
         showCount={true}
         style={{ marginTop: 10 }}
       />

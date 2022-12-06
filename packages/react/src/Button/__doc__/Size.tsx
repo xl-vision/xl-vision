@@ -30,27 +30,27 @@ const Size = () => {
 
   return (
     <Wrapper>
-      <Button onClick={handleSizeChange} size={size}>
+      <Button size={size} onClick={handleSizeChange}>
         change size
       </Button>
-      <Button variant='text' color='primary' size={size}>
+      <Button color='primary' size={size} variant='text'>
         button
       </Button>
-      <Button variant='outlined' color='secondary' size={size}>
+      <Button color='secondary' size={size} variant='outlined'>
         button
       </Button>
-      <Button variant='text' color='error' size={size}>
+      <Button color='error' size={size} variant='text'>
         button
       </Button>
       <Button color='warning' size={size}>
         button
       </Button>
-      <Button round={true} color='primary' size={size}>
+      <Button color='primary' round={true} size={size}>
         button
       </Button>
-      <Button color='primary' size={size} prefixIcon={IconWrapper} />
+      <Button color='primary' prefixIcon={IconWrapper} size={size} />
       <Button color='primary' size={size} suffixIcon={IconWrapper} />
-      <Button round={true} color='primary' size={size} prefixIcon={IconWrapper} />
+      <Button color='primary' prefixIcon={IconWrapper} round={true} size={size} />
     </Wrapper>
   );
 };

@@ -1,4 +1,4 @@
-import React, { CSSProperties, useEffect, useMemo, useRef } from 'react';
+import { CSSProperties, useEffect, useMemo, useRef } from 'react';
 import { usePopper, hide, Middleware } from '@xl-vision/popper';
 import { styled, Button, Portal, Row } from '@xl-vision/react';
 

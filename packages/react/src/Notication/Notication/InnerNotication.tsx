@@ -203,9 +203,9 @@ const InnerNotication = forwardRef<HTMLDivElement, InnerNoticationProps>((props,
 
   return (
     <Transition
+      in={visible}
       transitionClassName={rootClassName}
       transitionOnFirst={true}
-      in={visible}
       onExited={handleExit}
     >
       <InnerNoticationRoot
@@ -224,11 +224,11 @@ const InnerNotication = forwardRef<HTMLDivElement, InnerNoticationProps>((props,
           </div>
           {!hideClose && (
             <span
-              tabIndex={0}
-              role='button'
-              onKeyDown={handleCloseKeyDown}
-              onClick={handleClose}
               className={`${rootClassName}__close`}
+              role='button'
+              tabIndex={0}
+              onClick={handleClose}
+              onKeyDown={handleCloseKeyDown}
             >
               {closeIcon || <CloseOutlined />}
             </span>

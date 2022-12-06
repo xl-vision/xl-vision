@@ -19,23 +19,23 @@ const Basic = () => {
     <Wrapper>
       <div className='column'>
         <div />
-        <Popover placement='top-start' title='title' content={content} autoPlacementOptions={false}>
+        <Popover autoPlacementOptions={false} content={content} placement='top-start' title='title'>
           <Button color='primary'>TS</Button>
         </Popover>
-        <Popover placement='top' title='title' content={content} autoPlacementOptions={false}>
+        <Popover autoPlacementOptions={false} content={content} placement='top' title='title'>
           <Button color='primary'>T</Button>
         </Popover>
-        <Popover placement='top-end' title='title' content={content} autoPlacementOptions={false}>
+        <Popover autoPlacementOptions={false} content={content} placement='top-end' title='title'>
           <Button color='primary'>TE</Button>
         </Popover>
         <div />
       </div>
       <div className='column'>
         <Popover
+          autoPlacementOptions={false}
+          content={content}
           placement='left-start'
           title='title'
-          content={content}
-          autoPlacementOptions={false}
         >
           <Button color='primary'>LS</Button>
         </Popover>
@@ -43,54 +43,54 @@ const Basic = () => {
         <div />
         <div />
         <Popover
+          autoPlacementOptions={false}
+          content={content}
           placement='right-start'
           title='title'
-          content={content}
-          autoPlacementOptions={false}
         >
           <Button color='primary'>RS</Button>
         </Popover>
       </div>
       <div className='column'>
-        <Popover placement='left' title='title' content={content} autoPlacementOptions={false}>
+        <Popover autoPlacementOptions={false} content={content} placement='left' title='title'>
           <Button color='primary'>L</Button>
         </Popover>
         <div />
         <div />
         <div />
-        <Popover placement='right' title='title' content={content} autoPlacementOptions={false}>
+        <Popover autoPlacementOptions={false} content={content} placement='right' title='title'>
           <Button color='primary'>R</Button>
         </Popover>
       </div>
       <div className='column'>
-        <Popover placement='left-end' title='title' content={content} autoPlacementOptions={false}>
+        <Popover autoPlacementOptions={false} content={content} placement='left-end' title='title'>
           <Button color='primary'>LE</Button>
         </Popover>
         <div />
         <div />
         <div />
-        <Popover placement='right-end' title='title' content={content} autoPlacementOptions={false}>
+        <Popover autoPlacementOptions={false} content={content} placement='right-end' title='title'>
           <Button color='primary'>RE</Button>
         </Popover>
       </div>
       <div className='column'>
         <div />
         <Popover
+          autoPlacementOptions={false}
+          content={content}
           placement='bottom-start'
           title='title'
-          content={content}
-          autoPlacementOptions={false}
         >
           <Button color='primary'>BS</Button>
         </Popover>
-        <Popover placement='bottom' title='title' content={content} autoPlacementOptions={false}>
+        <Popover autoPlacementOptions={false} content={content} placement='bottom' title='title'>
           <Button color='primary'>B</Button>
         </Popover>
         <Popover
+          autoPlacementOptions={false}
+          content={content}
           placement='bottom-end'
           title='title'
-          content={content}
-          autoPlacementOptions={false}
         >
           <Button color='primary'>BE</Button>
         </Popover>
