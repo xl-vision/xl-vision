@@ -8,6 +8,7 @@ import {
   useCallback,
   useEffect,
   useRef,
+  KeyboardEvent,
 } from 'react';
 import { clsx } from 'clsx';
 import { CloseOutlined } from '@xl-vision/icons';
@@ -22,6 +23,7 @@ export type InnerMessageProps = NoticationProps<
     icon?: ReactNode;
     duration?: number;
     showClose?: boolean;
+    closeIcon?: ReactNode;
   }
 >;
 
@@ -83,24 +85,12 @@ const InnerMessageRoot = styled('div', {
       paddingRight: 5,
     },
     [`.${rootClassName}__close`]: {
+      display: 'inline-block',
       padding: 0,
       marginLeft: 5,
       cursor: 'pointer',
       color: color.text.icon,
       transition: transition.standard('color'),
-      outline: 0,
-      border: 0,
-      backgroundColor: 'transparent',
-      borderRadius: 0,
-      userSelect: 'none',
-      touchAction: 'manipulation',
-      WebkitTapHighlightColor: 'transparent',
-      MozAppearance: 'none',
-      WebkitAppearance: 'none',
-      '&::-moz-focus-inner': {
-        borderStyle: 'none', // Remove Firefox dotted outline.
-      },
-
       '&:hover, &:focus': {
         color: color.text.primary,
       },
@@ -120,6 +110,7 @@ const InnerMessage = forwardRef<HTMLDivElement, InnerMessageProps>((props, ref) 
     onMouseEnter,
     onMouseLeave,
     showClose,
+    closeIcon,
     ...others
   } = props;
 
@@ -153,6 +144,15 @@ const InnerMessage = forwardRef<HTMLDivElement, InnerMessageProps>((props, ref) 
     setVisible(false);
   }, [setVisible]);
 
+  const handleCloseKeyDown = useCallback(
+    (e: KeyboardEvent<HTMLSpanElement>) => {
+      if (e.code === 'Space' || e.code === 'Enter') {
+        setVisible(false);
+      }
+    },
+    [setVisible],
+  );
+
   useEffect(() => {
     if (!duration) {
       return;
@@ -182,13 +182,19 @@ const InnerMessage = forwardRef<HTMLDivElement, InnerMessageProps>((props, ref) 
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <div className={`${rootClassName}__inner`}>
+        <div className={`${rootClassName}__inner`} role='alert'>
           {icon && <span className={`${rootClassName}__status`}>{icon}</span>}
           <div className={`${rootClassName}__content`}>{content}</div>
           {showClose && (
-            <button type='button' onClick={handleClose} className={`${rootClassName}__close`}>
-              <CloseOutlined />
-            </button>
+            <span
+              tabIndex={0}
+              role='button'
+              onKeyDown={handleCloseKeyDown}
+              onClick={handleClose}
+              className={`${rootClassName}__close`}
+            >
+              {closeIcon || <CloseOutlined />}
+            </span>
           )}
         </div>
       </InnerMessageRoot>

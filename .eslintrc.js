@@ -36,7 +36,7 @@ module.exports = {
   },
   settings: {
     react: {
-      version: '16.8',
+      version: 'detect',
     },
     'import/resolver': {
       'eslint-import-resolver-custom-alias': {
@@ -101,7 +101,7 @@ module.exports = {
     ],
     'react/function-component-definition': ['error', { namedComponents: 'arrow-function' }],
     'react/jsx-no-useless-fragment': ['error', { allowExpressions: true }],
-    'react/forbid-prop-types': 'off', // todo remove
+    'react/forbid-prop-types': 'error',
     'react/jsx-boolean-value': ['error', 'always'],
     'react/display-name': 'error',
     'react/jsx-props-no-spreading': 'off',
@@ -203,12 +203,7 @@ module.exports = {
         'import/no-named-as-default': 'off',
         'unicorn/consistent-function-scoping': 'off',
         'import/no-relative-packages': 'off',
-      },
-    },
-    {
-      files: ['test/utils/**', 'test/__test__/**', 'packages/**/__test__/**'],
-      rules: {
-        'react/jsx-handler-names': 'off',
+        'react/forbid-prop-types': 'off',
         'jsx-a11y/click-events-have-key-events': 'off',
         'jsx-a11y/no-static-element-interactions': 'off',
         '@typescript-eslint/no-unsafe-call': 'off',

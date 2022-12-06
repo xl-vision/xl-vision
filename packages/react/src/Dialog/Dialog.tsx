@@ -237,8 +237,8 @@ if (!isProduction) {
     onCancel: Proptypes.func,
     cancelText: Proptypes.string,
     confirmText: Proptypes.string,
-    cancelButtonProps: Proptypes.object,
-    confirmButtonProps: Proptypes.object,
+    cancelButtonProps: Proptypes.shape({}),
+    confirmButtonProps: Proptypes.shape({}),
   };
 }
 

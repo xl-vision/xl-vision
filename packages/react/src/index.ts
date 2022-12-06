@@ -125,3 +125,14 @@ export type {
 } from './Message';
 
 export { default as Notication } from './Notication';
+export type {
+  NoticationContainerProps,
+  NoticationGlobalConfig,
+  NoticationHookOptions,
+  NoticationHookReturnType,
+  NoticationPlacement,
+  NoticationProps,
+  NoticationType,
+  InnerNoticationProps,
+  MethodNoticationContainerProps,
+} from './Notication';

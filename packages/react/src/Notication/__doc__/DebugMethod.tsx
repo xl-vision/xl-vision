@@ -1,4 +1,4 @@
-import { Button, Message, styled } from '@xl-vision/react';
+import { Button, Notication, styled } from '@xl-vision/react';
 import { useCallback } from 'react';
 
 const Root = styled('div')(() => {
@@ -12,8 +12,9 @@ const Root = styled('div')(() => {
 const Demo = () => {
   const handleClick = useCallback(() => {
     let i = 5;
-    const { destroy, update, isDestroyed } = Message.open({
-      content: `This message will close after ${i}s.`,
+    const { destroy, update, isDestroyed } = Notication.open({
+      message: 'Message',
+      description: `This message will close after ${i}s.`,
       duration: 0,
     });
 
@@ -24,7 +25,7 @@ const Demo = () => {
         destroy();
         clearInterval(timer);
       } else if (!isDestroyed()) {
-        update({ content: `This message will close after ${i}s.` });
+        update({ description: `This message will close after ${i}s.` });
       }
     }, 1000);
   }, []);

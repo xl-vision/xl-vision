@@ -241,7 +241,7 @@ if (!isProduction) {
     className: PropTypes.string,
     gap: PropTypes.number,
     onError: PropTypes.func,
-    style: PropTypes.object,
+    style: PropTypes.shape({}),
   };
 }
 

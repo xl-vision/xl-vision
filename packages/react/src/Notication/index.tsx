@@ -7,7 +7,6 @@ import {
   error,
   success,
   open,
-  loading,
   setGlobalConfig,
 } from './methods';
 
@@ -24,7 +23,6 @@ const Notication = {
   error,
   success,
   open,
-  loading,
   setGlobalConfig,
 };
 

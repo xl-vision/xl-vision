@@ -81,7 +81,7 @@ if (!isProduction) {
   TextAreaSuffix.displayName = displayName;
   TextAreaSuffix.propTypes = {
     className: PropTypes.string,
-    style: PropTypes.object,
+    style: PropTypes.shape({}),
     value: PropTypes.string,
   };
 }

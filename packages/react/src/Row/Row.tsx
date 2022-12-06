@@ -147,9 +147,9 @@ if (!isProduction) {
       PropTypes.element.isRequired,
       PropTypes.arrayOf(PropTypes.element.isRequired),
     ]).isRequired,
-    style: PropTypes.object,
+    style: PropTypes.shape({}),
     className: PropTypes.string,
-    component: PropTypes.any,
+    component: PropTypes.element,
     removeOnUnvisible: PropTypes.bool,
   };
 }

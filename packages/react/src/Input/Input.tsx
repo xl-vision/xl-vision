@@ -444,7 +444,7 @@ if (!isProduction) {
   Input.displayName = displayName;
   Input.propTypes = {
     className: PropTypes.string,
-    style: PropTypes.object,
+    style: PropTypes.shape({}),
     prefix: PropTypes.node,
     suffix: PropTypes.node,
     addonBefore: PropTypes.node,

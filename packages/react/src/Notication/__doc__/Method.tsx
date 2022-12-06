@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
-import { Button, Message, styled } from '@xl-vision/react';
+import { Button, Notication, styled } from '@xl-vision/react';
 import { useCallback } from 'react';
 
 const Root = styled('div')(() => {
@@ -12,23 +12,19 @@ const Root = styled('div')(() => {
 
 const Demo = () => {
   const handleInfo = useCallback(() => {
-    Message.info('hello world');
+    Notication.info('hello world');
   }, []);
 
   const handleWarning = useCallback(() => {
-    Message.warning('hello world');
+    Notication.warning('hello world');
   }, []);
 
   const handleError = useCallback(() => {
-    Message.error('hello world');
+    Notication.error('hello world');
   }, []);
 
   const handleSuccess = useCallback(() => {
-    Message.success('hello world');
-  }, []);
-
-  const handleLoading = useCallback(() => {
-    Message.loading('hello world').then(() => Message.info('successful'));
+    Notication.success('hello world');
   }, []);
 
   return (
@@ -44,9 +40,6 @@ const Demo = () => {
       </Button>
       <Button color='success' onClick={handleSuccess}>
         Success
-      </Button>
-      <Button color='primary' onClick={handleLoading}>
-        Loading
       </Button>
     </Root>
   );

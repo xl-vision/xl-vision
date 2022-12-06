@@ -3,16 +3,13 @@ import {
   CloseCircleFilled,
   ExclamationCircleFilled,
   InfoCircleFilled,
-  LoadingOutlined,
 } from '@xl-vision/icons';
-import { keyframes } from '@xl-vision/styled-engine';
 import { isProduction } from '@xl-vision/utils';
 import { FC, useMemo } from 'react';
 import { useTheme } from '../../ThemeProvider';
 import InnerNotication, { InnerNoticationProps } from './InnerNotication';
-import { styled } from '../../styles';
 
-export type NoticationType = 'success' | 'error' | 'warning' | 'info' | 'loading';
+export type NoticationType = 'success' | 'error' | 'warning' | 'info';
 
 export * from './InnerNotication';
 
@@ -21,24 +18,6 @@ export type NoticationProps = InnerNoticationProps & {
 };
 
 const displayName = 'Notication';
-
-const loadingKeyframes = keyframes`
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-`;
-
-// This `styled()` function invokes keyframes. `styled-components` only supports keyframes
-// in string templates. Do not convert these styles in JS object as it will break.
-const DefaultLoadingIcon = styled(LoadingOutlined, {
-  name: displayName,
-  slot: 'LoadingIcon',
-})`
-  animation: ${loadingKeyframes} 1s linear infinite;
-`;
 
 const Notication: FC<NoticationProps> = ({ type, ...others }) => {
   const { color } = useTheme();
@@ -63,11 +42,6 @@ const Notication: FC<NoticationProps> = ({ type, ...others }) => {
       case 'info': {
         return {
           icon: <InfoCircleFilled style={{ color: color.themes.info.color }} />,
-        };
-      }
-      case 'loading': {
-        return {
-          icon: <DefaultLoadingIcon style={{ color: color.themes.primary.color }} />,
         };
       }
       default: {

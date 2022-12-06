@@ -51,7 +51,6 @@ export const method = (props: NoticationProps | string, type?: NoticationType) =
 };
 
 export const open = (props: NoticationProps) => method(props);
-export const loading = (props: Omit<NoticationProps, 'type'> | string) => method(props, 'loading');
 export const info = (props: Omit<NoticationProps, 'type'> | string) => method(props, 'info');
 export const warning = (props: Omit<NoticationProps, 'type'> | string) => method(props, 'warning');
 export const error = (props: Omit<NoticationProps, 'type'> | string) => method(props, 'error');

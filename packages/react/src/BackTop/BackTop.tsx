@@ -180,7 +180,7 @@ if (!isProduction) {
     onClick: PropTypes.func,
     visibilityHeight: PropTypes.number,
     className: PropTypes.string,
-    style: PropTypes.object,
+    style: PropTypes.shape({}),
     children: PropTypes.node,
   };
 }

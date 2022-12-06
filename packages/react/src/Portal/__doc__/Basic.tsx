@@ -1,6 +1,4 @@
 /* eslint-disable no-alert */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { Portal, Button, styled } from '@xl-vision/react';
 import { useCallback, useState, ReactElement, useRef, useEffect } from 'react';
 

@@ -38,7 +38,6 @@ const useNotication = (options: Partial<NoticationHookOptions> = {}) => {
   const methods = useMemo(
     () => ({
       open: (props: NoticationProps) => method(props),
-      loading: (props: Omit<NoticationProps, 'type'> | string) => method(props, 'loading'),
       error: (props: Omit<NoticationProps, 'type'> | string) => method(props, 'error'),
       info: (props: Omit<NoticationProps, 'type'> | string) => method(props, 'info'),
       success: (props: Omit<NoticationProps, 'type'> | string) => method(props, 'success'),

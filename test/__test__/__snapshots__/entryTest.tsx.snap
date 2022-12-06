@@ -713,6 +713,7 @@ exports[`Entry @xl-vision/react 1`] = `
   "BackTop",
   "Anchor",
   "Message",
+  "Notication",
 ]
 `;
 

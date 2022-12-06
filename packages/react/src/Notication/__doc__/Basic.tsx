@@ -21,19 +21,24 @@ const Demo = () => {
   }, [message]);
 
   const handleWarning = useCallback(() => {
-    message.warning('hello world');
+    message.warning({
+      message: 'message',
+      description: 'this is a message',
+    });
   }, [message]);
 
   const handleError = useCallback(() => {
-    message.error('hello world');
+    message.error({
+      message: 'message',
+      description: 'this is a message',
+    });
   }, [message]);
 
   const handleSuccess = useCallback(() => {
-    message.success('hello world');
-  }, [message]);
-
-  const handleLoading = useCallback(() => {
-    message.loading('hello world');
+    message.success({
+      message: 'message',
+      description: 'this is a message',
+    });
   }, [message]);
 
   return (
@@ -50,9 +55,6 @@ const Demo = () => {
       </Button>
       <Button color='success' onClick={handleSuccess}>
         Success
-      </Button>
-      <Button color='primary' onClick={handleLoading}>
-        Loading
       </Button>
     </Root>
   );

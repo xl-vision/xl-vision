@@ -3,6 +3,7 @@ import { isProduction } from '@xl-vision/utils';
 import {
   forwardRef,
   HTMLAttributes,
+  KeyboardEvent,
   MouseEvent,
   ReactNode,
   useCallback,
@@ -22,9 +23,11 @@ export type InnerNoticationProps = NoticationProps<
   HTMLAttributes<HTMLDivElement> & {
     message: ReactNode;
     description?: ReactNode;
+    footer?: ReactNode;
     icon?: ReactNode;
     duration?: number;
     hideClose?: boolean;
+    closeIcon?: ReactNode;
   }
 >;
 
@@ -41,6 +44,7 @@ const InnerNoticationRoot = styled('div', {
   return {
     display: 'inline-block',
     padding: `8px 0`,
+    textAlign: 'left',
 
     [`&.${rootClassName}`]: {
       '&-appear-active, &-enter-active': {
@@ -77,7 +81,7 @@ const InnerNoticationRoot = styled('div', {
       flexDirection: 'row',
       alignItems: 'flex-start',
       backgroundColor: color.background.paper,
-      borderRadius: styleSize.middle.borderRadius,
+      borderRadius: styleSize.large.borderRadius,
       padding: `${styleSize.large.padding.x}px ${styleSize.large.padding.x}px`,
       width: 384,
       ...elevations(12),
@@ -93,6 +97,7 @@ const InnerNoticationRoot = styled('div', {
       fontSize: '1.5rem',
     },
     [`.${rootClassName}__content`]: {
+      flex: 1,
       display: 'block',
     },
     [`.${rootClassName}__message`]: {
@@ -102,7 +107,10 @@ const InnerNoticationRoot = styled('div', {
       ...typography.body2.style,
       marginTop: 8,
     },
-
+    [`.${rootClassName}__footer`]: {
+      marginTop: 16,
+      float: 'right',
+    },
     [`.${rootClassName}__close`]: {
       display: 'inline-block',
       padding: 0,
@@ -121,7 +129,7 @@ const InnerNoticationRoot = styled('div', {
 
 const InnerNotication = forwardRef<HTMLDivElement, InnerNoticationProps>((props, ref) => {
   const {
-    duration = 3000,
+    duration = 4500,
     defaultVisible = true,
     visible: visibleProp,
     icon,
@@ -131,7 +139,9 @@ const InnerNotication = forwardRef<HTMLDivElement, InnerNoticationProps>((props,
     onMouseLeave,
     message,
     description,
+    footer,
     hideClose,
+    closeIcon,
     ...others
   } = props;
 
@@ -167,6 +177,15 @@ const InnerNotication = forwardRef<HTMLDivElement, InnerNoticationProps>((props,
     setVisible(false);
   }, [setVisible]);
 
+  const handleCloseKeyDown = useCallback(
+    (e: KeyboardEvent<HTMLSpanElement>) => {
+      if (e.code === 'Space' || e.code === 'Enter') {
+        setVisible(false);
+      }
+    },
+    [setVisible],
+  );
+
   useEffect(() => {
     if (!duration) {
       return;
@@ -200,11 +219,18 @@ const InnerNotication = forwardRef<HTMLDivElement, InnerNoticationProps>((props,
           {icon && <span className={`${rootClassName}__status`}>{icon}</span>}
           <div className={`${rootClassName}__content`}>
             <div className={`${rootClassName}__message`}>{message}</div>
-            <div className={`${rootClassName}__description`}>{description}</div>
+            {description && <div className={`${rootClassName}__description`}>{description}</div>}
+            {footer && <div className={`${rootClassName}__footer`}>{footer}</div>}
           </div>
           {!hideClose && (
-            <span onClick={handleClose} className={`${rootClassName}__close`}>
-              <CloseOutlined />
+            <span
+              tabIndex={0}
+              role='button'
+              onKeyDown={handleCloseKeyDown}
+              onClick={handleClose}
+              className={`${rootClassName}__close`}
+            >
+              {closeIcon || <CloseOutlined />}
             </span>
           )}
         </div>

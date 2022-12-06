@@ -361,7 +361,7 @@ if (!isProduction) {
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
     className: PropTypes.string,
-    style: PropTypes.object,
+    style: PropTypes.shape({}),
   };
 }
 

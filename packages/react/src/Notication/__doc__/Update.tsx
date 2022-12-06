@@ -1,4 +1,4 @@
-import { Button, Message, styled } from '@xl-vision/react';
+import { Button, Notication, styled } from '@xl-vision/react';
 import { useCallback } from 'react';
 
 const Root = styled('div')(() => {
@@ -10,22 +10,21 @@ const Root = styled('div')(() => {
 });
 
 const Demo = () => {
-  const [message, holder] = Message.useMessage();
+  const [notication, holder] = Notication.useNotication();
 
   const handleInfo = useCallback(() => {
-    const { update } = message.open({
-      type: 'loading',
-      content: 'hello world',
-      duration: 4000,
+    const { update } = notication.open({
+      type: 'info',
+      message: 'hello world',
     });
 
     setTimeout(() => {
       update({
-        type: 'info',
-        content: 'content is updated!',
+        type: 'success',
+        message: 'content is updated!',
       });
     }, 2000);
-  }, [message]);
+  }, [notication]);
 
   return (
     <Root>

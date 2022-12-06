@@ -22,7 +22,6 @@ const NoticationContainerRoot = styled('div', {
   return {
     position: 'fixed',
     display: 'flex',
-    alignItems: 'center',
   };
 });
 
@@ -47,6 +46,7 @@ const NoticationContainer: FC<NoticationContainerProps> = ({
     zIndex,
     padding: `${distance}px 20px`,
     flexDirection: direction === 'top' ? 'column' : 'column-reverse',
+    textAlign: position === 'left' ? 'right' : 'left',
     [direction]: 0,
     [position]: 0,
   };
