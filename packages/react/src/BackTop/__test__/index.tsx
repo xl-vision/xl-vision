@@ -1,7 +1,7 @@
-import { noop } from '@xl-vision/utils';
-import * as utils from '@xl-vision/utils';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { noop } from '@xl-vision/utils';
+import * as utils from '@xl-vision/utils';
 import BackTop from '../BackTop';
 
 jest.spyOn(window, 'scrollTo').mockImplementation((x, y) => {

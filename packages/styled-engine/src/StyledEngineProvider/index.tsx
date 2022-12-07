@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import { ReactNode, FC } from 'react';
 
 export type StyledEngineProviderProps = {
-  injectFirst?: boolean;
   children: ReactNode;
+  injectFirst?: boolean;
 };
 
 const StyledEngineProvider: FC<StyledEngineProviderProps> = (props) => {

@@ -4,11 +4,12 @@ import {
   ExclamationCircleOutlined,
   InfoCircleOutlined,
 } from '@xl-vision/icons';
-import { FC, useMemo } from 'react';
 import { isProduction } from '@xl-vision/utils';
-import InnerDedicatedDialog, { InnerDedicatedDialogProps } from './InnerDedicatedDialog';
-import { useTheme } from '../../ThemeProvider';
+import PropTypes from 'prop-types';
+import { FC, useMemo } from 'react';
 import { useConfig } from '../../ConfigProvider';
+import { useTheme } from '../../ThemeProvider';
+import InnerDedicatedDialog, { InnerDedicatedDialogProps } from './InnerDedicatedDialog';
 
 export * from './InnerDedicatedDialog';
 
@@ -72,6 +73,9 @@ const DedicatedDialog: FC<DedicatedDialogProps> = ({ type, ...others }) => {
 
 if (!isProduction) {
   DedicatedDialog.displayName = displayName;
+  DedicatedDialog.propTypes = {
+    type: PropTypes.oneOf<DialogType>(['confirm', 'error', 'info', 'success', 'warning']),
+  };
 }
 
 export default DedicatedDialog;

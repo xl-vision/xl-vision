@@ -1,9 +1,9 @@
+import { useConstantFn } from '@xl-vision/hooks';
+import { RightOutlined } from '@xl-vision/icons';
 import { CSSObject } from '@xl-vision/styled-engine';
+import { isProduction, isServer } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { RightOutlined } from '@xl-vision/icons';
-import { isProduction, isServer } from '@xl-vision/utils';
-import { useConstantFn } from '@xl-vision/hooks';
 import { ReactNode, forwardRef, useContext, useCallback, useEffect } from 'react';
 import BaseButton from '../BaseButton';
 import usePropChange from '../hooks/usePropChange';
@@ -18,9 +18,9 @@ export interface DropdownSubmenuProps
     'popup' | 'arrow' | 'transitionClasses' | 'disablePopupEnter' | 'children' | 'title'
   > {
   children: ReactNode;
-  transitionClassName?: string;
   title: ReactNode;
   disabled?: boolean;
+  transitionClassName?: string;
 }
 
 const displayName = 'DropdownSubmenu';

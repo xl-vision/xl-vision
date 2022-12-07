@@ -1,6 +1,6 @@
-import { Button, styled } from '@xl-vision/react';
 import { LockFilled } from '@xl-vision/icons';
 import { useState, useRef, useCallback, useEffect } from 'react';
+import { Button, styled } from '@xl-vision/react';
 
 const IconWrapper = <LockFilled />;
 

@@ -1,6 +1,6 @@
 import { CSSObject, Interpolation } from '@xl-vision/styled-engine';
-import { ButtonPrefixStyleProps, ButtonStyleProps, ButtonSuffixStyleProps } from '../../Button';
 import { BaseButtonStyleProps } from '../../BaseButton';
+import { ButtonPrefixStyleProps, ButtonStyleProps, ButtonSuffixStyleProps } from '../../Button';
 import { RowProps } from '../../Row';
 import { Theme } from '../createTheme';
 

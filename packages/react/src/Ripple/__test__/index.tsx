@@ -1,6 +1,6 @@
-import { Ripple, RippleRef } from '@xl-vision/react';
-import { useRef, useMemo } from 'react';
 import { act, fireEvent, render } from '@testing-library/react';
+import { useRef, useMemo } from 'react';
+import { Ripple, RippleRef } from '@xl-vision/react';
 
 const Demo = ({ exitAfterEnter }: { exitAfterEnter?: boolean }) => {
   const rippleRef = useRef<RippleRef>(null);

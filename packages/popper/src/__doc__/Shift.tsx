@@ -1,6 +1,6 @@
-import { usePopper, PopperOptions, shift, Middleware } from '@xl-vision/popper';
 import { styled, Button, Portal, Row } from '@xl-vision/react';
 import { useRef, useMemo, useCallback, forwardRef, useImperativeHandle, useEffect } from 'react';
+import { usePopper, PopperOptions, shift, Middleware } from '@xl-vision/popper';
 
 const Demo = () => {
   const popper1Ref = useRef<CustomPopperInstance>(null);

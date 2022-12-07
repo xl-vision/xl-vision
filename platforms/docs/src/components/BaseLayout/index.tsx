@@ -8,8 +8,8 @@ import Header, { HEADER_HEIGHT } from '../Header';
 
 export type BaseLayoutProps = {
   children: ReactNode;
-  appendEn?: boolean;
   routeName: keyof Route;
+  appendEn?: boolean;
 };
 
 const Root = styled('div')(({ theme }) => {

@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import { getBoundingClientRect, isProduction } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
+import { getBoundingClientRect, isProduction } from '@xl-vision/utils';
+import clsx from 'clsx';
+import PropTypes from 'prop-types';
 import {
   HTMLAttributes,
   forwardRef,
@@ -15,9 +15,9 @@ import {
   SyntheticEvent,
   TouchEvent,
 } from 'react';
-import TransitionGroup, { TransitionGroupClassName } from '../TransitionGroup';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
+import TransitionGroup, { TransitionGroupClassName } from '../TransitionGroup';
 
 export interface RippleProps extends HTMLAttributes<HTMLDivElement> {
   transitionClassName: TransitionGroupClassName;

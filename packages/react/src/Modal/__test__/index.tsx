@@ -1,5 +1,5 @@
-import { Modal } from '@xl-vision/react';
 import { act, render } from '@testing-library/react';
+import { Modal } from '@xl-vision/react';
 
 describe('Modal', () => {
   beforeEach(() => {

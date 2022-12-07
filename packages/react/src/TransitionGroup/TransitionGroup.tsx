@@ -1,11 +1,11 @@
-import PropTypes from 'prop-types';
-import { isProduction, warning } from '@xl-vision/utils';
 import {
   CssTransitionClassNameRecord,
   TransitionEndHook,
   useConstantFn,
   useIsomorphicLayoutEffect,
 } from '@xl-vision/hooks';
+import { isProduction, warning } from '@xl-vision/utils';
+import PropTypes from 'prop-types';
 import { ReactElement, FC, useMemo, useState, useCallback, Key, cloneElement } from 'react';
 import Transition, { TransitionProps } from '../Transition';
 import diff from './diff';

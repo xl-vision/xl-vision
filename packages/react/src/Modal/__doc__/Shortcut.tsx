@@ -1,5 +1,5 @@
-import { Button, Modal, Popper, styled } from '@xl-vision/react';
 import { useState } from 'react';
+import { Button, Modal, Popper, styled } from '@xl-vision/react';
 
 const Body = styled('div')(({ theme }) => {
   const { color } = theme;

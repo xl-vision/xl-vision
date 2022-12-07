@@ -1,7 +1,7 @@
-import { useTransition, TransitionStartHook, TransitionStartingHook } from '@xl-vision/hooks';
 import { Button, styled } from '@xl-vision/react';
 import { gsap } from 'gsap';
 import { useState, useCallback } from 'react';
+import { useTransition, TransitionStartHook, TransitionStartingHook } from '@xl-vision/hooks';
 
 const Box = styled('div')(({ theme }) => {
   return {

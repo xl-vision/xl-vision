@@ -1,5 +1,5 @@
-import { TextArea } from '@xl-vision/react';
 import { useState, useEffect } from 'react';
+import { TextArea } from '@xl-vision/react';
 
 const Demo = () => {
   const [value, handleValue] = useState<string>();

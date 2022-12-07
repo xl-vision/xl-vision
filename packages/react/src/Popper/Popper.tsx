@@ -1,6 +1,4 @@
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import { isProduction, isServer, oneOf } from '@xl-vision/utils';
+import { CssTransitionClassNameRecord, useForkRef } from '@xl-vision/hooks';
 import {
   Placement,
   useConnectInteraction,
@@ -25,7 +23,9 @@ import {
   AutoUpdateOptions,
   ArrowOptions,
 } from '@xl-vision/popper';
-import { CssTransitionClassNameRecord, useForkRef } from '@xl-vision/hooks';
+import { isProduction, isServer, oneOf } from '@xl-vision/utils';
+import clsx from 'clsx';
+import PropTypes from 'prop-types';
 import {
   MouseEventHandler,
   Ref,
@@ -42,10 +42,10 @@ import {
   useRef,
   ReactNode,
 } from 'react';
-import Transition from '../Transition';
-import Portal, { PortalContainerType } from '../Portal';
 import usePropChange from '../hooks/usePropChange';
+import Portal, { PortalContainerType } from '../Portal';
 import { useTheme } from '../ThemeProvider';
+import Transition from '../Transition';
 import { increaseZindex } from '../utils/zIndexManger';
 
 export type PopperTrigger = 'hover' | 'focus' | 'click' | 'contextMenu';
@@ -65,27 +65,27 @@ export type PopperChildrenProps = {
 export type PopperProps = HTMLAttributes<HTMLDivElement> & {
   children: ReactElement<PopperChildrenProps>;
   popup: ReactElement;
+  arrow?: ReactNode;
+  arrowOptions?: ArrowOptions;
+  autoPlacementOptions?: AutoPlacementOptions | false;
+  autoUpdateOptions?: AutoUpdateOptions;
+  className?: string;
+  clickOptions?: ClickOptions;
+  contextMenuOptions?: ContextMenuOptions;
+  defaultVisible?: boolean;
+  focusOptions?: FocusOptions;
+  hoverOptions?: HoverOptions;
+  mountOnShow?: boolean;
+  offset?: OffsetOptions;
+  onAfterClosed?: () => void;
+  onVisibleChange?: (visible: boolean) => void;
+  placement?: PopperPlacement;
   popupContainer?: PortalContainerType;
+  shiftOptions?: ShiftOptions | false;
   transitionClassName?: string;
   trigger?: PopperTrigger | Array<PopperTrigger> | false;
-  placement?: PopperPlacement;
-  hoverOptions?: HoverOptions;
-  clickOptions?: ClickOptions;
-  focusOptions?: FocusOptions;
-  contextMenuOptions?: ContextMenuOptions;
-  visible?: boolean;
-  defaultVisible?: boolean;
-  onVisibleChange?: (visible: boolean) => void;
-  offset?: OffsetOptions;
-  autoUpdateOptions?: AutoUpdateOptions;
-  shiftOptions?: ShiftOptions | false;
-  autoPlacementOptions?: AutoPlacementOptions | false;
-  arrowOptions?: ArrowOptions;
-  arrow?: ReactNode;
-  className?: string;
-  mountOnShow?: boolean;
   unmountOnHide?: boolean;
-  onAfterClosed?: () => void;
+  visible?: boolean;
 };
 
 const displayName = 'Popper';

@@ -1,5 +1,5 @@
-import Row from './Row';
 import Col from './Col';
+import Row from './Row';
 import useBreakPoints from './useBreakPoints';
 
 export { default as Row } from './Row';

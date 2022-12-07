@@ -1,5 +1,8 @@
 import { NoticationProps, useConstantFn } from '@xl-vision/hooks';
+import { CloseOutlined } from '@xl-vision/icons';
 import { isProduction } from '@xl-vision/utils';
+import { clsx } from 'clsx';
+import PropTypes from 'prop-types';
 import {
   forwardRef,
   HTMLAttributes,
@@ -10,20 +13,18 @@ import {
   useRef,
   KeyboardEvent,
 } from 'react';
-import { clsx } from 'clsx';
-import { CloseOutlined } from '@xl-vision/icons';
-import Transition from '../../Transition';
-import { styled } from '../../styles';
 import usePropChange from '../../hooks/usePropChange';
+import { styled } from '../../styles';
 import { useTheme } from '../../ThemeProvider';
+import Transition from '../../Transition';
 
 export type InnerMessageProps = NoticationProps<
   HTMLAttributes<HTMLDivElement> & {
     content: ReactNode;
-    icon?: ReactNode;
-    duration?: number;
-    showClose?: boolean;
     closeIcon?: ReactNode;
+    duration?: number;
+    icon?: ReactNode;
+    showClose?: boolean;
   }
 >;
 
@@ -204,7 +205,18 @@ const InnerMessage = forwardRef<HTMLDivElement, InnerMessageProps>((props, ref) 
 
 if (!isProduction) {
   InnerMessage.displayName = displayName;
-  InnerMessage.propTypes = {};
+  InnerMessage.propTypes = {
+    content: PropTypes.node.isRequired,
+    closeIcon: PropTypes.node,
+    defaultValue: PropTypes.bool,
+    duration: PropTypes.number,
+    icon: PropTypes.node,
+    showClose: PropTypes.bool,
+    visible: PropTypes.bool,
+    onAfterClosed: PropTypes.func,
+    onMouseEnter: PropTypes.func,
+    onMouseLeave: PropTypes.func,
+  };
 }
 
 export default InnerMessage;

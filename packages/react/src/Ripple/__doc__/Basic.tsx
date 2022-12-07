@@ -1,5 +1,5 @@
-import { Ripple, RippleRef, styled } from '@xl-vision/react';
 import { useRef, useMemo, SyntheticEvent } from 'react';
+import { Ripple, RippleRef, styled } from '@xl-vision/react';
 
 const Box = styled('div')(
   ({ theme }) => `

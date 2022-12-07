@@ -1,9 +1,9 @@
 import { isProduction } from '@xl-vision/utils';
-import PropTypes from 'prop-types';
 import clsx from 'clsx';
+import PropTypes from 'prop-types';
 import { HTMLAttributes, FC, useMemo } from 'react';
-import { ComponentSize, useTheme, ThemeContext } from '../ThemeProvider';
 import { styled } from '../styles';
+import { ComponentSize, useTheme, ThemeContext } from '../ThemeProvider';
 
 export type InputGroupProps = HTMLAttributes<HTMLDivElement> & {
   size?: ComponentSize;

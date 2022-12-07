@@ -1,7 +1,7 @@
+import { useConstantFn } from '@xl-vision/hooks';
+import { isProduction, isServer } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { isProduction, isServer } from '@xl-vision/utils';
-import { useConstantFn } from '@xl-vision/hooks';
 import { ReactElement, ReactNode, forwardRef, useContext, useRef, useEffect, useMemo } from 'react';
 import usePropChange from '../hooks/usePropChange';
 import Popper, { PopperPlacement, PopperProps } from '../Popper';

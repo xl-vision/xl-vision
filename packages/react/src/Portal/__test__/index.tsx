@@ -1,5 +1,5 @@
-import { Portal } from '@xl-vision/react';
 import { render } from '@testing-library/react';
+import { Portal } from '@xl-vision/react';
 
 describe('Portal', () => {
   it('test mount on body', () => {

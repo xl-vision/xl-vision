@@ -1,18 +1,18 @@
-import { Button, styled, Tooltip, Dropdown } from '@xl-vision/react';
-import { DownOutlined, GithubFilled, MenuOutlined } from '@xl-vision/icons';
-import Link from 'next/link';
 import { useConstantFn } from '@xl-vision/hooks';
-import { useRouter } from 'next/router';
-import Cookie from 'js-cookie';
+import { DownOutlined, GithubFilled, MenuOutlined } from '@xl-vision/icons';
+import { Button, styled, Tooltip, Dropdown } from '@xl-vision/react';
 import { alpha } from '@xl-vision/react/utils/color';
 import { noop } from '@xl-vision/utils';
+import Cookie from 'js-cookie';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { FC, HTMLAttributes, useContext, useCallback, useMemo } from 'react';
-import LightTheme from './LightTheme';
-import DarkTheme from './DarkTheme';
-import Translate from './Translate';
-import { ThemeContext } from '../ThemeProvider';
 import { useLocale } from '../LocalizationProvider';
 import Logo from '../Logo';
+import { ThemeContext } from '../ThemeProvider';
+import DarkTheme from './DarkTheme';
+import LightTheme from './LightTheme';
+import Translate from './Translate';
 
 export const HEADER_HEIGHT = 60;
 

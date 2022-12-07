@@ -1,8 +1,8 @@
+import { useConstantFn, useForkRef } from '@xl-vision/hooks';
 import { CSSObject } from '@xl-vision/styled-engine';
+import { isProduction } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { isProduction } from '@xl-vision/utils';
-import { useConstantFn, useForkRef } from '@xl-vision/hooks';
 import {
   HTMLAttributes,
   ReactElement,
@@ -17,10 +17,10 @@ import {
   useMemo,
   CSSProperties,
 } from 'react';
-import { styled } from '../styles';
-import AvatarContext from './AvatarContext';
-import { ComponentSize, useTheme } from '../ThemeProvider';
 import ResizeObserver from '../ResizeObserver';
+import { styled } from '../styles';
+import { ComponentSize, useTheme } from '../ThemeProvider';
+import AvatarContext from './AvatarContext';
 
 export type AvatarShape = 'circle' | 'square' | 'round';
 
@@ -42,7 +42,11 @@ const displayName = 'Avatar';
 const AvatarRoot = styled('span', {
   name: displayName,
   slot: 'Root',
-})<{ shape: AvatarShape; size?: ComponentSize; isImage: boolean }>(({ theme, styleProps }) => {
+})<{
+  isImage: boolean;
+  shape: AvatarShape;
+  size?: ComponentSize;
+}>(({ theme, styleProps }) => {
   const { shape: shapeType, size, isImage } = styleProps;
   const { color, styleSize, componentSize } = theme;
   const style: CSSObject = {

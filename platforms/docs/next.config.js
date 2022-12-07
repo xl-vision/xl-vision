@@ -1,9 +1,11 @@
 /* eslint-disable import/no-extraneous-dependencies */
-const path = require('path');
-const fs = require('fs-extra');
-const { merge } = require('webpack-merge');
 const rehypePrism = require('@mapbox/rehype-prism');
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
+const bundleAnalyzer = require('@next/bundle-analyzer');
+const fs = require('fs-extra');
+const path = require('path');
+const { merge } = require('webpack-merge');
+
+const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 });
 const demoPlugin = require('./scripts/webpack/mdx/demoPlugin');

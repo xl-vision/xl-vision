@@ -1,10 +1,10 @@
 import { useConstantFn } from '@xl-vision/hooks';
-import clsx from 'clsx';
 import { getComputedStyle, isProduction, raf } from '@xl-vision/utils';
+import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { HTMLAttributes, FC, useState, useRef, useEffect } from 'react';
-import { useTheme } from '../ThemeProvider';
 import ResizeObserver from '../ResizeObserver';
+import { useTheme } from '../ThemeProvider';
 
 export type TextAreaSuffixProps = HTMLAttributes<HTMLSpanElement> & {
   value?: string;

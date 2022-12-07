@@ -1,5 +1,4 @@
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
+import { useForkRef } from '@xl-vision/hooks';
 import {
   contains,
   getBoundingClientRect,
@@ -10,7 +9,8 @@ import {
   addClass,
   warning,
 } from '@xl-vision/utils';
-import { useForkRef } from '@xl-vision/hooks';
+import clsx from 'clsx';
+import PropTypes from 'prop-types';
 import {
   HTMLAttributes,
   ReactNode,
@@ -22,29 +22,29 @@ import {
   KeyboardEvent,
   MouseEvent as ReactMouseEvent,
 } from 'react';
-import Portal, { PortalContainerType } from '../Portal';
 import usePropChange from '../hooks/usePropChange';
-import Transition from '../Transition';
+import Portal, { PortalContainerType } from '../Portal';
 import { styled } from '../styles';
-import { increaseZindex } from '../utils/zIndexManger';
-import { forceReflow } from '../utils/dom';
-import ScrollLocker from '../utils/ScrollLocker';
 import { useTheme } from '../ThemeProvider';
+import Transition from '../Transition';
+import { forceReflow } from '../utils/dom';
 import getContainer from '../utils/getContainer';
+import ScrollLocker from '../utils/ScrollLocker';
+import { increaseZindex } from '../utils/zIndexManger';
 
 export interface ModalProps extends HTMLAttributes<HTMLDivElement> {
-  container?: PortalContainerType<HTMLElement>;
   children: ReactNode;
+  container?: PortalContainerType<HTMLElement>;
   defaultVisible?: boolean;
-  visible?: boolean;
-  onVisibleChange?: (visible: boolean) => void;
-  unmountOnHide?: boolean;
-  mountOnShow?: boolean;
   escClosable?: boolean;
   mask?: boolean;
   maskClosable?: boolean;
-  wrapperClassName?: string;
+  mountOnShow?: boolean;
   onAfterClosed?: () => void;
+  onVisibleChange?: (visible: boolean) => void;
+  unmountOnHide?: boolean;
+  visible?: boolean;
+  wrapperClassName?: string;
 }
 
 const displayName = 'Modal';

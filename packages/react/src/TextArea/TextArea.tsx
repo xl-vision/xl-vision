@@ -1,9 +1,9 @@
-import { isProduction } from '@xl-vision/utils';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import { CSSObject } from '@xl-vision/styled-engine';
 import { useConstantFn, useForkRef, usePrevious } from '@xl-vision/hooks';
 import { CloseCircleFilled } from '@xl-vision/icons';
+import { CSSObject } from '@xl-vision/styled-engine';
+import { isProduction } from '@xl-vision/utils';
+import clsx from 'clsx';
+import PropTypes from 'prop-types';
 import {
   TextareaHTMLAttributes,
   forwardRef,
@@ -15,11 +15,11 @@ import {
   FocusEvent,
   CSSProperties,
 } from 'react';
+import useInput from '../hooks/useInput';
+import usePropChange from '../hooks/usePropChange';
 import { styled } from '../styles';
 import { ComponentSize, useTheme } from '../ThemeProvider';
 import { alpha } from '../utils/color';
-import usePropChange from '../hooks/usePropChange';
-import useInput from '../hooks/useInput';
 import calculateNodeHeight from './calculateNodeHeight';
 import TextAreaSuffix from './TextAreaSuffix';
 
@@ -41,7 +41,7 @@ const displayName = 'TextArea';
 const TextAreaRoot = styled('span', {
   name: displayName,
   slot: 'Root',
-})<{ size: ComponentSize; focused: boolean; disabled?: boolean; readOnly?: boolean }>(
+})<{ focused: boolean; size: ComponentSize; disabled?: boolean; readOnly?: boolean }>(
   ({ theme, styleProps }) => {
     const { color, styleSize, typography, transition, clsPrefix } = theme;
 

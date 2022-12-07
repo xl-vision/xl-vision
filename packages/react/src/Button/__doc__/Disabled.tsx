@@ -1,5 +1,5 @@
-import { Button, styled } from '@xl-vision/react';
 import { SearchOutlined } from '@xl-vision/icons';
+import { Button, styled } from '@xl-vision/react';
 
 const IconWrapper = <SearchOutlined />;
 

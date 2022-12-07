@@ -1,14 +1,14 @@
-const rollup = require('rollup');
-const { getBabelInputPlugin } = require('@rollup/plugin-babel');
-const replace = require('@rollup/plugin-replace');
 const alias = require('@rollup/plugin-alias');
-const { nodeResolve } = require('@rollup/plugin-node-resolve');
+const { getBabelInputPlugin } = require('@rollup/plugin-babel');
 const commonjs = require('@rollup/plugin-commonjs');
-const argv = require('minimist')(process.argv.slice(2));
-const path = require('path');
-const glob = require('glob');
+const { nodeResolve } = require('@rollup/plugin-node-resolve');
+const replace = require('@rollup/plugin-replace');
 const terser = require('@rollup/plugin-terser');
 const fs = require('fs-extra');
+const glob = require('glob');
+const argv = require('minimist')(process.argv.slice(2));
+const path = require('path');
+const rollup = require('rollup');
 const getBabelConfig = require('./getBabelConfig');
 
 const entry = argv.entry || 'src/index.ts';
@@ -43,8 +43,8 @@ function build(isProd) {
 
   return rollup
     .rollup({
-      input,
       external: ['react', 'react-dom'],
+      input,
       plugins: [
         alias({
           entries: aliasEntries,
@@ -60,28 +60,28 @@ function build(isProd) {
           include: /node_modules/,
         }),
         getBabelInputPlugin({
+          babelHelpers: 'bundled',
           extensions,
           plugins: babelConfig.plugins,
           presets: [...babelConfig.presets, '@babel/preset-typescript'],
-          babelHelpers: 'bundled',
         }),
       ],
     })
     .then((it) =>
       it.write({
-        format: 'umd',
-        name: packageName,
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-        },
         file: path.resolve(
           basePath,
           'dist',
           isProd ? 'index.production.min.js' : 'index.development.js',
         ),
-        sourcemap: true,
+        format: 'umd',
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDOM',
+        },
+        name: packageName,
         plugins: [isProd && terser({ sourceMap: true })].filter(Boolean),
+        sourcemap: true,
       }),
     );
 }

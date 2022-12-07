@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
+import { render } from '@testing-library/react';
 import { noop } from '@xl-vision/utils';
 import * as utils from '@xl-vision/utils';
-import { render } from '@testing-library/react';
 import TransitionGroup from '..';
 
 describe('TransitionGroup', () => {

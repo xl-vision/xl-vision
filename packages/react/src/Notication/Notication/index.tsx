@@ -5,6 +5,7 @@ import {
   InfoCircleFilled,
 } from '@xl-vision/icons';
 import { isProduction } from '@xl-vision/utils';
+import PropTypes from 'prop-types';
 import { FC, useMemo } from 'react';
 import { useTheme } from '../../ThemeProvider';
 import InnerNotication, { InnerNoticationProps } from './InnerNotication';
@@ -55,6 +56,9 @@ const Notication: FC<NoticationProps> = ({ type, ...others }) => {
 
 if (!isProduction) {
   Notication.displayName = displayName;
+  Notication.propTypes = {
+    type: PropTypes.oneOf<NoticationType>(['error', 'info', 'success', 'warning']),
+  };
 }
 
 export default Notication;

@@ -1,11 +1,11 @@
+import { Button, Portal } from '@xl-vision/react';
+import { useState } from 'react';
 import {
   useAutoUpdatePopper,
   useConnectInteraction,
   useHover,
   useInteraction,
 } from '@xl-vision/popper';
-import { Button, Portal } from '@xl-vision/react';
-import { useState } from 'react';
 
 const container = () => document.body;
 

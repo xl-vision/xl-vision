@@ -1,6 +1,6 @@
-import { Dropdown } from '@xl-vision/react';
 import { act, fireEvent, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { Dropdown } from '@xl-vision/react';
 
 const menus = (
   <>

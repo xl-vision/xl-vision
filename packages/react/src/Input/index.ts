@@ -1,6 +1,6 @@
 import Input from './Input';
-import Password from './Password';
 import Group from './InputGroup';
+import Password from './Password';
 
 export { default as Input } from './Input';
 export * from './Input';

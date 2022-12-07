@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { Transition } from '@xl-vision/react';
+import { act, render, screen } from '@testing-library/react';
+import { CssTransitionClassNameRecord } from '@xl-vision/hooks';
 import { noop } from '@xl-vision/utils';
 import * as utils from '@xl-vision/utils';
-import { CssTransitionClassNameRecord } from '@xl-vision/hooks';
-import { act, render, screen } from '@testing-library/react';
+import { Transition } from '@xl-vision/react';
 
 const classnameMap: CssTransitionClassNameRecord = {
   appearFrom: 'appearFrom',

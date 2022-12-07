@@ -1,5 +1,5 @@
-import { Input, styled } from '@xl-vision/react';
 import { SearchOutlined, UserOutlined } from '@xl-vision/icons';
+import { Input, styled } from '@xl-vision/react';
 
 const Root = styled('div')(() => {
   return {

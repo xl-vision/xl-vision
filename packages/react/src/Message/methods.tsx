@@ -1,10 +1,10 @@
 import { FC } from 'react';
-import ThemeProvider, { ThemeProviderProps } from '../ThemeProvider';
 import ConfigProvider, { ConfigProviderProps } from '../ConfigProvider';
-import Message, { MessageProps, MessageType } from './Message';
-import MessageList, { MessageContainerProps } from './MessageContainer';
+import ThemeProvider, { ThemeProviderProps } from '../ThemeProvider';
 import createNotication from '../utils/createNotication';
 import { increaseZindex } from '../utils/zIndexManger';
+import Message, { MessageProps, MessageType } from './Message';
+import MessageList, { MessageContainerProps } from './MessageContainer';
 
 export type MethodMessageContainerProps = MessageContainerProps & {
   themeProviderProps?: Omit<ThemeProviderProps, 'children'>;

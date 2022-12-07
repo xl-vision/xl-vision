@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
 import { isProduction, isServer } from '@xl-vision/utils';
+import PropTypes from 'prop-types';
 import { ReactNode, FC } from 'react';
+import ReactDOM from 'react-dom';
 import getContainer, { ContainerReturnType, ContainerType } from '../utils/getContainer';
 
 export type {

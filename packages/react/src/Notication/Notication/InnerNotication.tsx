@@ -1,5 +1,8 @@
 import { NoticationProps, useConstantFn } from '@xl-vision/hooks';
+import { CloseOutlined } from '@xl-vision/icons';
 import { isProduction } from '@xl-vision/utils';
+import { clsx } from 'clsx';
+import PropTypes from 'prop-types';
 import {
   forwardRef,
   HTMLAttributes,
@@ -11,23 +14,21 @@ import {
   useEffect,
   useRef,
 } from 'react';
-import { clsx } from 'clsx';
-import { CloseOutlined } from '@xl-vision/icons';
-import Transition from '../../Transition';
-import { styled } from '../../styles';
 import usePropChange from '../../hooks/usePropChange';
+import { styled } from '../../styles';
 import { useTheme } from '../../ThemeProvider';
+import Transition from '../../Transition';
 import NoticationContext from '../context';
 
 export type InnerNoticationProps = NoticationProps<
   HTMLAttributes<HTMLDivElement> & {
     message: ReactNode;
-    description?: ReactNode;
-    footer?: ReactNode;
-    icon?: ReactNode;
-    duration?: number;
-    hideClose?: boolean;
     closeIcon?: ReactNode;
+    description?: ReactNode;
+    duration?: number;
+    footer?: ReactNode;
+    hideClose?: boolean;
+    icon?: ReactNode;
   }
 >;
 
@@ -241,7 +242,21 @@ const InnerNotication = forwardRef<HTMLDivElement, InnerNoticationProps>((props,
 
 if (!isProduction) {
   InnerNotication.displayName = displayName;
-  InnerNotication.propTypes = {};
+  InnerNotication.propTypes = {
+    message: PropTypes.node.isRequired,
+    className: PropTypes.string,
+    closeIcon: PropTypes.node,
+    defaultVisible: PropTypes.bool,
+    description: PropTypes.node,
+    duration: PropTypes.number,
+    footer: PropTypes.node,
+    hideClose: PropTypes.bool,
+    icon: PropTypes.node,
+    visible: PropTypes.bool,
+    onAfterClosed: PropTypes.func,
+    onMouseEnter: PropTypes.func,
+    onMouseLeave: PropTypes.func,
+  };
 }
 
 export default InnerNotication;

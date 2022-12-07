@@ -1,6 +1,6 @@
 /* eslint-disable no-alert */
-import { Portal, Button, styled } from '@xl-vision/react';
 import { useCallback, useState, ReactElement, useRef, useEffect } from 'react';
+import { Portal, Button, styled } from '@xl-vision/react';
 
 const Wrapper = styled('div')(({ theme }) => {
   return {

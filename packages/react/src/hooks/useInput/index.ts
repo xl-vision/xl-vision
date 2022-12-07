@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
 import { useConstantFn } from '@xl-vision/hooks';
+import { useEffect, useRef, useState } from 'react';
 
 export type InputProps = {
   setValue: (v: string) => void;

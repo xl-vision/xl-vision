@@ -1,28 +1,28 @@
-import clsx from 'clsx';
-import Proptypes from 'prop-types';
-import { isProduction, noop } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
+import { isProduction, noop } from '@xl-vision/utils';
+import clsx from 'clsx';
+import PropTypes from 'prop-types';
 import { ReactNode, forwardRef, useState, useContext, useEffect } from 'react';
-import Modal, { ModalProps } from '../Modal';
-import ThemeContext from '../ThemeProvider/ThemeContext';
-import { styled } from '../styles';
 import Button, { ButtonProps } from '../Button';
-import usePropChange from '../hooks/usePropChange';
 import { useConfig } from '../ConfigProvider';
+import usePropChange from '../hooks/usePropChange';
+import Modal, { ModalProps } from '../Modal';
+import { styled } from '../styles';
+import ThemeContext from '../ThemeProvider/ThemeContext';
 
 export type DialogButtonProps = Omit<ButtonProps, 'children' | 'onClick'>;
 
 export interface DialogProps extends Omit<ModalProps, 'bodyProps' | 'title' | 'children'> {
   title: ReactNode;
-  children?: ReactNode;
-  footer?: ReactNode;
-  prompt?: boolean;
-  confirmButtonProps?: DialogButtonProps;
   cancelButtonProps?: DialogButtonProps;
-  confirmText?: string;
   cancelText?: string;
-  onConfirm?: () => void | Promise<void>;
+  children?: ReactNode;
+  confirmButtonProps?: DialogButtonProps;
+  confirmText?: string;
+  footer?: ReactNode;
   onCancel?: () => void | Promise<void>;
+  onConfirm?: () => void | Promise<void>;
+  prompt?: boolean;
 }
 
 const displayName = 'Dialog';
@@ -225,20 +225,20 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
 if (!isProduction) {
   Dialog.displayName = displayName;
   Dialog.propTypes = {
-    title: Proptypes.node.isRequired,
-    cancelButtonProps: Proptypes.shape({}),
-    cancelText: Proptypes.string,
-    children: Proptypes.node,
-    className: Proptypes.string,
-    confirmButtonProps: Proptypes.shape({}),
-    confirmText: Proptypes.string,
-    defaultVisible: Proptypes.bool,
-    footer: Proptypes.node,
-    prompt: Proptypes.bool,
-    visible: Proptypes.bool,
-    onCancel: Proptypes.func,
-    onConfirm: Proptypes.func,
-    onVisibleChange: Proptypes.func,
+    title: PropTypes.node.isRequired,
+    cancelButtonProps: PropTypes.shape({}),
+    cancelText: PropTypes.string,
+    children: PropTypes.node,
+    className: PropTypes.string,
+    confirmButtonProps: PropTypes.shape({}),
+    confirmText: PropTypes.string,
+    defaultVisible: PropTypes.bool,
+    footer: PropTypes.node,
+    prompt: PropTypes.bool,
+    visible: PropTypes.bool,
+    onCancel: PropTypes.func,
+    onConfirm: PropTypes.func,
+    onVisibleChange: PropTypes.func,
   };
 }
 

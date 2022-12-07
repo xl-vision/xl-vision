@@ -1,3 +1,5 @@
+import { styled, Button, Portal, Row } from '@xl-vision/react';
+import { useMemo, CSSProperties } from 'react';
 import {
   arrow,
   shift,
@@ -6,8 +8,6 @@ import {
   Placement,
   offset,
 } from '@xl-vision/popper';
-import { styled, Button, Portal, Row } from '@xl-vision/react';
-import { useMemo, CSSProperties } from 'react';
 
 const Demo = () => {
   return (

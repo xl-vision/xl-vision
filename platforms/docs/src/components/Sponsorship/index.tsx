@@ -1,6 +1,6 @@
 import { styled } from '@xl-vision/react';
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 import { FC } from 'react';
 import { useLocale } from '../LocalizationProvider';
 

@@ -1,9 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-restricted-syntax */
-const path = require('path');
 const fs = require('fs-extra');
 const Mustache = require('mustache');
+const path = require('path');
 const format = require('./format');
 
 const basePath = path.resolve(__dirname, '../svg');

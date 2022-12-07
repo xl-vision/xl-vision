@@ -4,14 +4,14 @@ import { isProduction, isServer, off, on } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { HTMLAttributes, forwardRef, useState, useEffect, CSSProperties, MouseEvent } from 'react';
-import Transition from '../Transition';
 import usePropChange from '../hooks/usePropChange';
 import Portal from '../Portal';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
+import Transition from '../Transition';
 import { alpha } from '../utils/color';
-import { getScroll, scrollTo } from '../utils/scroll';
 import { throttleByAnimationFrame } from '../utils/perf';
+import { getScroll, scrollTo } from '../utils/scroll';
 
 export type BackTopProps = Omit<HTMLAttributes<HTMLDivElement>, 'target' | 'onChange'> & {
   target?: Window | HTMLElement | (() => Window | HTMLElement);

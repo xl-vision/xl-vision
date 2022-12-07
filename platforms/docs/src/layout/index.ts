@@ -1,6 +1,6 @@
+import ComponentLayout from './ComponentLayout';
 import DefaultLayout from './DefaultLayout';
 import HeaderLayout from './HeaderLayout';
-import ComponentLayout from './ComponentLayout';
 import HookLayout from './HookLayout';
 
 const LayoutMap = {

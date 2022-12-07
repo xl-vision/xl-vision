@@ -1,5 +1,5 @@
-import { ThemeProvider, CssBaseline, BaseTheme } from '@xl-vision/react';
 import { render } from '@testing-library/react';
+import { ThemeProvider, CssBaseline, BaseTheme } from '@xl-vision/react';
 
 describe('CssBaseline', () => {
   it('basic renders', () => {

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
-import { Button, Notication, styled } from '@xl-vision/react';
 import { useCallback } from 'react';
+import { Button, Notication, styled } from '@xl-vision/react';
 
 const Root = styled('div')(() => {
   return {

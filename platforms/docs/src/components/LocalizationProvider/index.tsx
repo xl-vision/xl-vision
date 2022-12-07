@@ -1,8 +1,8 @@
 import { ConfigProvider } from '@xl-vision/react';
-import { isProduction, warning } from '@xl-vision/utils';
-import PropTypes from 'prop-types';
-import { useRouter } from 'next/router';
 import { defaultLanguage } from '@xl-vision/react/locale';
+import { isProduction, warning } from '@xl-vision/utils';
+import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import { ReactNode, createContext, useContext, FC, useMemo } from 'react';
 import locales, { Locale } from './locales';
 

@@ -1,15 +1,15 @@
+import { isProduction, isServer } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { isProduction, isServer } from '@xl-vision/utils';
 import { ReactNode, forwardRef } from 'react';
 import Popper, { PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 
 export type PopoverProps = Omit<PopperProps, 'popup' | 'arrow' | 'title'> & {
-  title?: ReactNode;
   content: ReactNode;
   hideArrow?: boolean;
+  title?: ReactNode;
 };
 
 const displayName = 'Popover';

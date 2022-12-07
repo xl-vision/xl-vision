@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-import { addClass, getComputedStyle, isProduction, removeClass, warning } from '@xl-vision/utils';
 import {
   CssTransitionOptions,
   TransitionCancelledHook,
@@ -10,6 +8,8 @@ import {
   useCssTransition,
   useForkRef,
 } from '@xl-vision/hooks';
+import { addClass, getComputedStyle, isProduction, removeClass, warning } from '@xl-vision/utils';
+import PropTypes from 'prop-types';
 import {
   ReactElement,
   FC,
@@ -22,8 +22,8 @@ import {
   Ref,
   cloneElement,
 } from 'react';
-import { supportRef } from '../utils/ref';
 import { forceReflow } from '../utils/dom';
+import { supportRef } from '../utils/ref';
 
 export type CollapseTransitionProp = CssTransitionOptions & {
   children: ReactElement;

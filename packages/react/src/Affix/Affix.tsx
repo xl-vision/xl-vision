@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import {
   LifecycleState,
   useConstantFn,
@@ -6,8 +5,9 @@ import {
   useIsomorphicLayoutEffect,
   useLifecycleState,
 } from '@xl-vision/hooks';
-import clsx from 'clsx';
 import { getBoundingClientRect, isProduction, isServer } from '@xl-vision/utils';
+import clsx from 'clsx';
+import PropTypes from 'prop-types';
 import {
   HTMLAttributes,
   forwardRef,
@@ -17,8 +17,10 @@ import {
   useMemo,
   useEffect,
 } from 'react';
+import ResizeObserver from '../ResizeObserver';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
+import { throttleByAnimationFrame } from '../utils/perf';
 import {
   addTargetObserver,
   removeTargetObserver,
@@ -26,8 +28,6 @@ import {
   getFixedTop,
   getTargetRect,
 } from './utils';
-import { throttleByAnimationFrame } from '../utils/perf';
-import ResizeObserver from '../ResizeObserver';
 
 export type AffixProps = Omit<HTMLAttributes<HTMLDivElement>, 'target' | 'onChange'> & {
   target?: Window | HTMLElement | (() => Window | HTMLElement);

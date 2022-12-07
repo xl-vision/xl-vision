@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const babel = require('@babel/core');
-const prettier = require('prettier');
 const path = require('path');
+const prettier = require('prettier');
 const Prism = require('prismjs');
 const loadLanguages = require('prismjs/components/');
 
