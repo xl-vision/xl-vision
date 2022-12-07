@@ -87,11 +87,11 @@ const AnchorLink = forwardRef<HTMLDivElement, AnchorLinkProps>((props, ref) => {
   return (
     <AnchorLinkRoot {...others} className={rootClasses} ref={ref}>
       <AnchorLinkTitle
+        className={titleClasses}
+        href={href}
         styleProps={{ isActive }}
         title={typeof title === 'string' ? title : ''}
-        className={titleClasses}
         onClick={handleClick}
-        href={href}
       >
         {title}
       </AnchorLinkTitle>
@@ -103,11 +103,11 @@ const AnchorLink = forwardRef<HTMLDivElement, AnchorLinkProps>((props, ref) => {
 if (!isProduction) {
   AnchorLink.displayName = displayName;
   AnchorLink.propTypes = {
-    title: PropTypes.string.isRequired,
     href: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    children: PropTypes.node,
     className: PropTypes.string,
     onClick: PropTypes.func,
-    children: PropTypes.node,
   };
 }
 

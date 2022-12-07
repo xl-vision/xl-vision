@@ -30,7 +30,7 @@ const DropdownDivider = forwardRef<HTMLDivElement, DropdownDividerProps>((props,
 
   const rootClasses = clsx(rootClassName, className);
 
-  return <DropdownDividerRoot {...others} ref={ref} className={rootClasses} />;
+  return <DropdownDividerRoot {...others} className={rootClasses} ref={ref} />;
 });
 
 if (!isProduction) {

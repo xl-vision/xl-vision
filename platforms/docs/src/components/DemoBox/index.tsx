@@ -141,7 +141,7 @@ const DemoBox: FC<DemoBoxProps> = ({
   }
 
   return (
-    <Wrapper styleProps={{ debug }} id={id}>
+    <Wrapper id={id} styleProps={{ debug }}>
       <Preview>{preview}</Preview>
       <InfoWrapper styleProps={{ debug }}>
         <TitleWrapper>{titleNode}</TitleWrapper>
@@ -150,19 +150,19 @@ const DemoBox: FC<DemoBoxProps> = ({
           <Tooltip content='Playground'>
             <Button
               color='primary'
+              prefixIcon={<CodeOutlined />}
               round={true}
               variant='text'
-              prefixIcon={<CodeOutlined />}
               onClick={handleCode}
             />
           </Tooltip>
           <Button
             aria-label={isExpand ? 'Expand' : 'Close'}
             color='primary'
+            prefixIcon={<ExpandWrapper styleProps={{ expand: isExpand }} />}
             round={true}
             variant='text'
             onClick={handleExpand}
-            prefixIcon={<ExpandWrapper styleProps={{ expand: isExpand }} />}
           />
         </ButtonWrapper>
       </InfoWrapper>

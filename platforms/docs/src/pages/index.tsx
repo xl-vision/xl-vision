@@ -99,9 +99,9 @@ const Home: NextPage = () => {
           </Link>
           <Button
             color='default'
+            href='https://github.com/xl-vision/xl-vision'
             rel='noopener'
             target='_blank'
-            href='https://github.com/xl-vision/xl-vision'
           >
             {locale.pages.index.btnGithub}
           </Button>

@@ -20,7 +20,7 @@ const Demo = () => {
       duration: 0,
       footer: (
         <>
-          <Button size='small' color='primary' onClick={() => destroy()}>
+          <Button color='primary' size='small' onClick={() => destroy()}>
             confirm
           </Button>
           <Button size='small' style={{ marginLeft: 8 }} onClick={() => destroy()}>

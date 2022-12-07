@@ -170,9 +170,9 @@ const InnerMessage = forwardRef<HTMLDivElement, InnerMessageProps>((props, ref) 
 
   return (
     <Transition
+      in={visible}
       transitionClassName={rootClassName}
       transitionOnFirst={true}
-      in={visible}
       onExited={handleExit}
     >
       <InnerMessageRoot
@@ -187,11 +187,11 @@ const InnerMessage = forwardRef<HTMLDivElement, InnerMessageProps>((props, ref) 
           <div className={`${rootClassName}__content`}>{content}</div>
           {showClose && (
             <span
-              tabIndex={0}
-              role='button'
-              onKeyDown={handleCloseKeyDown}
-              onClick={handleClose}
               className={`${rootClassName}__close`}
+              role='button'
+              tabIndex={0}
+              onClick={handleClose}
+              onKeyDown={handleCloseKeyDown}
             >
               {closeIcon || <CloseOutlined />}
             </span>

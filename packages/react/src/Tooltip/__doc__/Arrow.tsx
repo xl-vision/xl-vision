@@ -2,7 +2,7 @@ import { Tooltip, Button } from '@xl-vision/react';
 
 const Arrow = () => {
   return (
-    <Tooltip placement='top' hideArrow={true} content='this is a tooltip' maxWidth={200}>
+    <Tooltip content='this is a tooltip' hideArrow={true} maxWidth={200} placement='top'>
       <Button color='primary'>button</Button>
     </Tooltip>
   );

@@ -40,8 +40,8 @@ if (!isProduction) {
 
   ConfigProvider.propTypes = {
     children: PropTypes.node.isRequired,
-    language: PropTypes.string,
     customLocales: PropTypes.shape({}),
+    language: PropTypes.string,
   };
 }
 

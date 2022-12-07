@@ -287,7 +287,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((p
 
   if (LoadingIcon) {
     prefix = (
-      <ButtonPrefix styleProps={{ icon }} className={prefixClassName}>
+      <ButtonPrefix className={prefixClassName} styleProps={{ icon }}>
         <LoadingIcon className={`${prefixClassName}--loading`} />
       </ButtonPrefix>
     );
@@ -295,10 +295,10 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((p
       prefix = (
         <CollapseTransition
           horizontal={true}
-          transitionOnFirst={true}
           in={!!loading}
-          onExited={handleLoadingFinished}
           transitionClassName={prefixClassName}
+          transitionOnFirst={true}
+          onExited={handleLoadingFinished}
         >
           {prefix}
         </CollapseTransition>
@@ -306,7 +306,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((p
     }
   } else if (prefixIcon) {
     prefix = (
-      <ButtonPrefix styleProps={{ icon }} className={prefixClassName}>
+      <ButtonPrefix className={prefixClassName} styleProps={{ icon }}>
         {prefixIcon}
       </ButtonPrefix>
     );
@@ -315,7 +315,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((p
   const suffixClassName = `${rootClassName}__suffix`;
 
   const suffix = suffixIcon && (
-    <ButtonSuffix styleProps={{ icon }} className={suffixClassName}>
+    <ButtonSuffix className={suffixClassName} styleProps={{ icon }}>
       {suffixIcon}
     </ButtonSuffix>
   );
@@ -323,10 +323,10 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((p
   return (
     <ButtonRoot
       {...others}
-      ref={ref}
       className={rootClasses}
-      loading={loading}
       disabled={disabled}
+      loading={loading}
+      ref={ref}
       styleProps={{
         color,
         disableElevation,
@@ -350,6 +350,8 @@ if (!isProduction) {
   Button.displayName = displayName;
 
   Button.propTypes = {
+    children: PropTypes.node,
+    className: PropTypes.string,
     color: PropTypes.oneOf<ButtonColor>([
       'default',
       'error',
@@ -359,17 +361,15 @@ if (!isProduction) {
       'info',
       'success',
     ]),
+    disabled: PropTypes.bool,
     disableElevation: PropTypes.bool,
     loading: PropTypes.bool,
-    disabled: PropTypes.bool,
     long: PropTypes.bool,
+    prefixIcon: PropTypes.element,
     round: PropTypes.bool,
     size: PropTypes.oneOf<ComponentSize>(['large', 'middle', 'small']),
-    children: PropTypes.node,
-    prefixIcon: PropTypes.element,
     suffixIcon: PropTypes.element,
     variant: PropTypes.oneOf<ButtonVariant>(['contained', 'outlined', 'text']),
-    className: PropTypes.string,
   };
 }
 

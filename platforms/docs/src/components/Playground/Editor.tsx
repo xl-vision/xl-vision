@@ -48,7 +48,7 @@ const Editor: FC<EditorProps> = (props) => {
     };
   }, [mode]);
 
-  return <CodeMirrorEditor value={value} options={options} onBeforeChange={handleChange} />;
+  return <CodeMirrorEditor options={options} value={value} onBeforeChange={handleChange} />;
 };
 
 export default Editor;

@@ -207,29 +207,29 @@ const BaseButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseButtonP
       <BaseButtonRoot
         {...others}
         as={Component}
-        ref={ref}
+        className={rootClasses}
         disabled={disabled}
+        ref={ref}
+        styleProps={{ loading, disabled }}
         // 非激活状态不允许选中
         tabIndex={loading || disabled ? -1 : tabIndex}
-        className={rootClasses}
+        onBlur={handleBlur}
         onClick={handleClick}
+        onDragLeave={handleDragLeave}
         onKeyDown={handleKeyDown}
         onKeyUp={handleKeyUp}
         onMouseDown={handleMouseDown}
-        onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseLeave}
-        onBlur={handleBlur}
-        onTouchStart={handleTouchStart}
+        onMouseUp={handleMouseUp}
         onTouchEnd={handleTouchEnd}
         onTouchMove={handleTouchMove}
-        onDragLeave={handleDragLeave}
-        styleProps={{ loading, disabled }}
+        onTouchStart={handleTouchStart}
       >
         <BaseButtonInner className={`${rootClassName}__inner`}>{children}</BaseButtonInner>
         <Ripple
-          ref={rippleRef}
-          exitAfterEnter={true}
           className={`${rootClassName}__ripple`}
+          exitAfterEnter={true}
+          ref={rippleRef}
           transitionClassName={`${rootClassName}__ripple`}
         />
       </BaseButtonRoot>
@@ -242,23 +242,23 @@ if (!isProduction) {
 
   BaseButton.propTypes = {
     children: PropTypes.node,
-    href: PropTypes.string,
+    className: PropTypes.string,
     disabled: PropTypes.bool,
     disableRipple: PropTypes.bool,
+    href: PropTypes.string,
     loading: PropTypes.bool,
-    className: PropTypes.string,
     tabIndex: PropTypes.number,
-    onClick: PropTypes.func,
-    onMouseDown: PropTypes.func,
-    onMouseUp: PropTypes.func,
-    onMouseLeave: PropTypes.func,
-    onTouchStart: PropTypes.func,
-    onTouchEnd: PropTypes.func,
-    onTouchMove: PropTypes.func,
-    onDragLeave: PropTypes.func,
     onBlur: PropTypes.func,
+    onClick: PropTypes.func,
+    onDragLeave: PropTypes.func,
     onKeyDown: PropTypes.func,
     onKeyUp: PropTypes.func,
+    onMouseDown: PropTypes.func,
+    onMouseLeave: PropTypes.func,
+    onMouseUp: PropTypes.func,
+    onTouchEnd: PropTypes.func,
+    onTouchMove: PropTypes.func,
+    onTouchStart: PropTypes.func,
   };
 }
 

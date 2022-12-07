@@ -128,7 +128,7 @@ const Row = forwardRef<HTMLDivElement, RowProps>((props, ref) => {
 
   return (
     <RowContext.Provider value={memorizedValue}>
-      <RowRoot {...others} style={rowStyle} className={rootClasses} ref={ref} as={component}>
+      <RowRoot {...others} as={component} className={rootClasses} ref={ref} style={rowStyle}>
         {children}
       </RowRoot>
     </RowContext.Provider>
@@ -139,18 +139,18 @@ if (!isProduction) {
   Row.displayName = displayName;
 
   Row.propTypes = {
-    align: PropTypes.oneOf(['top', 'middle', 'bottom']),
-    justify: PropTypes.oneOf(['start', 'end', 'center', 'space-around', 'space-between']),
-    gutter: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired]),
-    wrap: PropTypes.bool,
     children: PropTypes.oneOfType([
-      PropTypes.element.isRequired,
       PropTypes.arrayOf(PropTypes.element.isRequired),
+      PropTypes.element.isRequired,
     ]).isRequired,
-    style: PropTypes.shape({}),
+    align: PropTypes.oneOf(['top', 'middle', 'bottom']),
     className: PropTypes.string,
     component: PropTypes.element,
+    gutter: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired]),
+    justify: PropTypes.oneOf(['start', 'end', 'center', 'space-around', 'space-between']),
     removeOnUnvisible: PropTypes.bool,
+    style: PropTypes.shape({}),
+    wrap: PropTypes.bool,
   };
 }
 

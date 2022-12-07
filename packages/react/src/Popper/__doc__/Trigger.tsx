@@ -66,25 +66,25 @@ const Trigger = () => {
 
   return (
     <Wrapper>
-      <PopperRoot trigger='hover' transitionClassName='slide' placement='top' popup={popup}>
+      <PopperRoot placement='top' popup={popup} transitionClassName='slide' trigger='hover'>
         <Button color='primary'>hover</Button>
       </PopperRoot>
-      <PopperRoot trigger='click' transitionClassName='slide' placement='top' popup={popup}>
+      <PopperRoot placement='top' popup={popup} transitionClassName='slide' trigger='click'>
         <Button color='primary'>click</Button>
       </PopperRoot>
-      <PopperRoot trigger='focus' transitionClassName='slide' placement='top' popup={popup}>
+      <PopperRoot placement='top' popup={popup} transitionClassName='slide' trigger='focus'>
         <Button color='primary'>focus</Button>
       </PopperRoot>
-      <PopperRoot trigger='contextMenu' transitionClassName='slide' placement='top' popup={popup}>
+      <PopperRoot placement='top' popup={popup} transitionClassName='slide' trigger='contextMenu'>
         <Button color='primary'>contextMenu</Button>
       </PopperRoot>
       <PopperRoot
+        placement='top'
+        popup={popup}
+        transitionClassName='slide'
         trigger={false}
         visible={visible}
         onVisibleChange={handleVisible}
-        transitionClassName='slide'
-        placement='top'
-        popup={popup}
       >
         <Button color='primary' onClick={handleCustomClick}>
           custom(click twice)

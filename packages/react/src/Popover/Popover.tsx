@@ -115,14 +115,14 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>((props, ref) => {
     <PopoverRoot
       role='tooltip'
       {...others}
-      ref={ref}
-      trigger={trigger}
+      arrow={!hideArrow && arrow}
       className={rootClasses}
       offset={offset}
-      arrow={!hideArrow && arrow}
       popup={popup}
       popupContainer={popupContainer}
+      ref={ref}
       transitionClassName={transitionClassName || rootClassName}
+      trigger={trigger}
     />
   );
 });
@@ -138,18 +138,18 @@ if (!isProduction) {
   ]).isRequired;
 
   Popover.propTypes = {
-    title: PropTypes.node,
     content: PropTypes.node.isRequired,
+    className: PropTypes.string,
+    hideArrow: PropTypes.bool,
+    offset: PropTypes.number,
     popupContainer: PropTypes.oneOfType([
       PropTypes.func,
       PropTypes.string,
       isServer ? PropTypes.any : PropTypes.instanceOf(Element),
     ]),
-    className: PropTypes.string,
+    title: PropTypes.node,
     transitionClassName: PropTypes.string,
-    offset: PropTypes.number,
     trigger: PropTypes.oneOfType([triggerPropType, PropTypes.arrayOf(triggerPropType)]),
-    hideArrow: PropTypes.bool,
   };
 }
 

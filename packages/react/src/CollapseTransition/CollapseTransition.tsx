@@ -261,19 +261,8 @@ if (!isProduction) {
 
   CollapseTransition.propTypes = {
     children: PropTypes.element,
-    unmountOnExit: PropTypes.bool,
-    onEnter: PropTypes.func,
-    onEntering: PropTypes.func,
-    onEntered: PropTypes.func,
-    onEnterCancelled: PropTypes.func,
-    onExit: PropTypes.func,
-    onExiting: PropTypes.func,
-    onExited: PropTypes.func,
-    onExitCancelled: PropTypes.func,
-
-    in: PropTypes.bool,
-    transitionOnFirst: PropTypes.bool,
     disableCss: PropTypes.bool,
+    in: PropTypes.bool,
     timeout: PropTypes.oneOfType([
       PropTypes.number,
       PropTypes.exact({
@@ -300,6 +289,16 @@ if (!isProduction) {
         disappearTo: PropTypes.string,
       }),
     ]),
+    transitionOnFirst: PropTypes.bool,
+    unmountOnExit: PropTypes.bool,
+    onEnter: PropTypes.func,
+    onEnterCancelled: PropTypes.func,
+    onEntered: PropTypes.func,
+    onEntering: PropTypes.func,
+    onExit: PropTypes.func,
+    onExitCancelled: PropTypes.func,
+    onExited: PropTypes.func,
+    onExiting: PropTypes.func,
   };
 }
 

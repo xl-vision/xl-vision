@@ -6,18 +6,18 @@ const Demo = () => {
 
   return (
     <div>
-      <Input size='small' placeholder='Basic usage' value={value} onChange={handleValue} />{' '}
+      <Input placeholder='Basic usage' size='small' value={value} onChange={handleValue} />{' '}
       <Input
+        placeholder='Basic usage'
         size='middle'
         style={{ marginTop: 10 }}
-        placeholder='Basic usage'
         value={value}
         onChange={handleValue}
       />
       <Input
-        style={{ marginTop: 10 }}
-        size='large'
         placeholder='Basic usage'
+        size='large'
+        style={{ marginTop: 10 }}
         value={value}
         onChange={handleValue}
       />

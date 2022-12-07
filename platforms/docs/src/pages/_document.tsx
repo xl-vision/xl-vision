@@ -6,7 +6,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <link rel='icon' href='/favicon.svg' />
+          <link href='/favicon.svg' rel='icon' />
         </Head>
         <body>
           <Main />

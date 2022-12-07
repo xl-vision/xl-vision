@@ -90,8 +90,8 @@ const Meta = () => {
 
   return (
     <Head>
-      <meta name='keywords' content={meta.keywords.join(',')} />
-      <meta name='description' content={meta.description} />
+      <meta content={meta.keywords.join(',')} name='keywords' />
+      <meta content={meta.description} name='description' />
     </Head>
   );
 };

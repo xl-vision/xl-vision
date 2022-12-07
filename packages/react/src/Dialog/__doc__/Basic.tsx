@@ -23,9 +23,9 @@ const Basic = () => {
       <Dialog
         title='Are you sure?'
         visible={visible}
-        onVisibleChange={setVisible}
-        onConfirm={handleConfirm}
         onCancel={handleCancel}
+        onConfirm={handleConfirm}
+        onVisibleChange={setVisible}
       >
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod maiores quidem fugiat
         aspernatur, odio, quo esse molestias porro maxime sit itaque quam soluta autem illo,

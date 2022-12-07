@@ -112,7 +112,7 @@ const traverseRoutes = (
       title = lang === 'en-US' ? enUsName : appendEn ? `${title} ${enUsName}` : title;
 
       el = (
-        <ActiveLink passHref={true} href={fullPath}>
+        <ActiveLink href={fullPath} passHref={true}>
           <A>
             <LeftNode style={{ paddingLeft: padding * level }}>{title}</LeftNode>
           </A>

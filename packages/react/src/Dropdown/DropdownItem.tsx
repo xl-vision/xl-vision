@@ -87,15 +87,15 @@ const DropdownItem = forwardRef<HTMLLIElement, DropdownItemProps>((props, ref) =
   );
 
   return (
-    <DropdownItemRoot {...others} ref={ref} onClick={handleClick} className={rootClasses}>
+    <DropdownItemRoot {...others} className={rootClasses} ref={ref} onClick={handleClick}>
       <DropdownItemButton
-        styleProps={{ disabled }}
         // cant use prop disabled
         // see https://github.com/facebook/react/issues/10109
         // disabled={disabled}
         aria-disabled={disabled}
-        disableRipple={disabled}
         className={`${rootClassName}__button`}
+        disableRipple={disabled}
+        styleProps={{ disabled }}
       >
         {children}
       </DropdownItemButton>
@@ -107,9 +107,9 @@ if (!isProduction) {
   DropdownItem.displayName = displayName;
   DropdownItem.propTypes = {
     children: PropTypes.node.isRequired,
-    onClick: PropTypes.func,
-    disabled: PropTypes.bool,
     className: PropTypes.string,
+    disabled: PropTypes.bool,
+    onClick: PropTypes.func,
   };
 }
 

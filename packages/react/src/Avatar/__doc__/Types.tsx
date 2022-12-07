@@ -16,7 +16,7 @@ const Types = () => {
       <Avatar icon={<UserOutlined />} />
       <Avatar>User</Avatar>
       <Avatar src={avatarImg.src} />
-      <Avatar style={{ backgroundColor: 'rgb(135, 208, 104)' }} icon={<UserOutlined />} />
+      <Avatar icon={<UserOutlined />} style={{ backgroundColor: 'rgb(135, 208, 104)' }} />
     </Wrapper>
   );
 };

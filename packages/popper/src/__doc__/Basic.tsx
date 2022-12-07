@@ -17,13 +17,13 @@ const Demo = () => {
     <DemoRoot onScroll={handleScroll}>
       <Row>
         <Row.Col column={6} offset={3}>
-          <CustomPopper ref={popper1Ref} placement='left' />
+          <CustomPopper placement='left' ref={popper1Ref} />
         </Row.Col>
         <Row.Col column={6}>
-          <CustomPopper ref={popper2Ref} placement='top' />
+          <CustomPopper placement='top' ref={popper2Ref} />
         </Row.Col>
         <Row.Col column={6}>
-          <CustomPopper ref={popper3Ref} placement='right' />
+          <CustomPopper placement='right' ref={popper3Ref} />
         </Row.Col>
       </Row>
     </DemoRoot>

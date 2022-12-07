@@ -102,16 +102,16 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
   return (
     <DropdownRoot
       {...others}
-      ref={ref}
       className={rootClasses}
+      offset={offset}
+      placement={placement}
+      popup={popup}
+      popupContainer={popupContainer}
+      ref={ref}
+      transitionClassName={transitionClassName || rootClassName}
       visible={visible}
       // eslint-disable-next-line react/jsx-handler-names
       onVisibleChange={setVisible}
-      placement={placement}
-      popup={popup}
-      offset={offset}
-      popupContainer={popupContainer}
-      transitionClassName={transitionClassName || rootClassName}
     >
       {children}
     </DropdownRoot>
@@ -122,8 +122,11 @@ if (!isProduction) {
   Dropdown.displayName = displayName;
 
   Dropdown.propTypes = {
-    menus: PropTypes.node.isRequired,
     children: PropTypes.element.isRequired,
+    menus: PropTypes.node.isRequired,
+    className: PropTypes.string,
+    defaultVisible: PropTypes.bool,
+    offset: PropTypes.number,
     placement: PropTypes.oneOf<PopperPlacement>([
       'top',
       'top-start',
@@ -138,18 +141,14 @@ if (!isProduction) {
       'right-start',
       'right-end',
     ]),
-    transitionClassName: PropTypes.string,
-    className: PropTypes.string,
-    offset: PropTypes.number,
-
-    visible: PropTypes.bool,
-    defaultVisible: PropTypes.bool,
-    onVisibleChange: PropTypes.func,
     popupContainer: PropTypes.oneOfType([
       PropTypes.func,
       PropTypes.string,
       isServer ? PropTypes.any : PropTypes.instanceOf(Element),
     ]),
+    transitionClassName: PropTypes.string,
+    visible: PropTypes.bool,
+    onVisibleChange: PropTypes.func,
   };
 }
 

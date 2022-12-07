@@ -222,8 +222,8 @@ const Preview: FC<PreviewProps> = (props) => {
           <div className='demo'>
             <Sandbox
               demo={parsedCode}
-              scripts={allScripts}
               exec={DEFAULT_EXEC}
+              scripts={allScripts}
               onLoad={handleLoad}
             />
           </div>

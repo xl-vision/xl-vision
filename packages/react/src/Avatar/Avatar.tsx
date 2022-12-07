@@ -172,7 +172,7 @@ const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
   );
 
   if (typeof src === 'string' && src && isImgExist) {
-    childNode = <img src={src} srcSet={srcSet} alt={alt} onError={handleImgError} />;
+    childNode = <img alt={alt} src={src} srcSet={srcSet} onError={handleImgError} />;
   } else if (hasImageElement) {
     childNode = src;
   } else if (icon || children) {
@@ -184,7 +184,7 @@ const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
     };
     childNode = (
       <ResizeObserver onResizeObserver={handleResize}>
-        <AvatarInner ref={childRef} style={childrenStyle} className={`${rootClassName}__inner`}>
+        <AvatarInner className={`${rootClassName}__inner`} ref={childRef} style={childrenStyle}>
           {icon || children}
         </AvatarInner>
       </ResizeObserver>
@@ -209,16 +209,16 @@ const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
     <AvatarRoot
       {...others}
       className={rootClasses}
+      ref={forkRef}
+      style={{
+        ...rootSizeStyle,
+        ...style,
+      }}
       styleProps={{
         shape,
         size: rootSize,
         isImage,
       }}
-      style={{
-        ...rootSizeStyle,
-        ...style,
-      }}
-      ref={forkRef}
     >
       {childNode}
     </AvatarRoot>
@@ -228,7 +228,10 @@ const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
 if (!isProduction) {
   Avatar.displayName = displayName;
   Avatar.propTypes = {
+    alt: PropTypes.string,
     children: PropTypes.node,
+    className: PropTypes.string,
+    gap: PropTypes.number,
     icon: PropTypes.element,
     shape: PropTypes.oneOf<AvatarShape>(['round', 'circle', 'square']),
     size: PropTypes.oneOfType([
@@ -237,11 +240,8 @@ if (!isProduction) {
     ]),
     src: PropTypes.node,
     srcSet: PropTypes.string,
-    alt: PropTypes.string,
-    className: PropTypes.string,
-    gap: PropTypes.number,
-    onError: PropTypes.func,
     style: PropTypes.shape({}),
+    onError: PropTypes.func,
   };
 }
 

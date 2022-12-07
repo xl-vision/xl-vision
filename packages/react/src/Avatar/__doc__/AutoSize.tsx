@@ -27,7 +27,7 @@ const AutoSize = () => {
 
   return (
     <Wrapper>
-      <Avatar size='large' gap={gapArray[gapIndex]}>
+      <Avatar gap={gapArray[gapIndex]} size='large'>
         {textArray[index]}
       </Avatar>
 

@@ -18,7 +18,7 @@ const Demo = () => {
         suffix={<SearchOutlined style={{ color: 'rgba(0,0,0,0.2)' }} />}
       />
 
-      <Input style={{ color: 'rgba(0,0,0,0.2)' }} placeholder='Basic usage' suffix='RMB' />
+      <Input placeholder='Basic usage' style={{ color: 'rgba(0,0,0,0.2)' }} suffix='RMB' />
     </Root>
   );
 };

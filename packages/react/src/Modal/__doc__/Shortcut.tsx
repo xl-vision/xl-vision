@@ -24,22 +24,22 @@ const Shortcut = () => {
           <p>Please click button and try to press key tab</p>
           <Popper
             placement='bottom'
-            trigger='click'
             popup={
               <Body>
                 <Popper
                   placement='bottom'
-                  trigger='click'
                   popup={
                     <Body>
                       <span>popper content</span>
                     </Body>
                   }
+                  trigger='click'
                 >
                   <Button>Button</Button>
                 </Popper>
               </Body>
             }
+            trigger='click'
           >
             <Button>Button</Button>
           </Popper>

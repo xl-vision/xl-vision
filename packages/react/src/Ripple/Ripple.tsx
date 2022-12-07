@@ -227,8 +227,8 @@ if (!isProduction) {
 
   Ripple.propTypes = {
     transitionClassName: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
-    exitAfterEnter: PropTypes.bool,
     className: PropTypes.string,
+    exitAfterEnter: PropTypes.bool,
   };
 }
 

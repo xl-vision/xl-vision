@@ -43,11 +43,11 @@ describe('TransitionGroup', () => {
       return (
         <TransitionGroup
           onEnter={() => fn('beforeEnter')}
-          onEntering={() => fn('enter')}
           onEntered={() => fn('afterEnter')}
+          onEntering={() => fn('enter')}
           onExit={() => fn('beforeExit')}
-          onExiting={() => fn('exit')}
           onExited={() => fn('afterExit')}
+          onExiting={() => fn('exit')}
         >
           {children}
         </TransitionGroup>

@@ -54,7 +54,7 @@ const Basic = () => {
   return (
     <Box {...events}>
       click me
-      <Ripple transitionClassName='ripple' ref={rippleRef} />
+      <Ripple ref={rippleRef} transitionClassName='ripple' />
     </Box>
   );
 };

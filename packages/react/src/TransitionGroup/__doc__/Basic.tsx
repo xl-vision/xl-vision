@@ -51,7 +51,7 @@ const Basic = () => {
   return (
     <div>
       <div>
-        <Button color='primary' onClick={handleAdd} style={{ marginRight: 10 }}>
+        <Button color='primary' style={{ marginRight: 10 }} onClick={handleAdd}>
           add
         </Button>
         <Button color='primary' onClick={handleRemove}>

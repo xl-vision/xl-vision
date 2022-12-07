@@ -73,11 +73,11 @@ const Arrow = () => {
   return (
     <Wrapper>
       <PopperRoot
-        transitionClassName='slide'
-        placement='right'
-        popup={popup}
         arrow={<div className='arrow' />}
         offset={10}
+        placement='right'
+        popup={popup}
+        transitionClassName='slide'
       >
         <Button color='primary'>hover</Button>
       </PopperRoot>

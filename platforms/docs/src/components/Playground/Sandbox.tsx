@@ -62,7 +62,7 @@ html {
     onLoad?.(win);
   });
 
-  return <Root srcDoc={srcDoc} ref={ref} onLoad={handleLoad} />;
+  return <Root ref={ref} srcDoc={srcDoc} onLoad={handleLoad} />;
 };
 
 export default Sandbox;

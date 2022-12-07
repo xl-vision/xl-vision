@@ -3,7 +3,7 @@ import { Layout } from './Layout';
 
 const ComponentLayout: Layout = ({ children }) => {
   return (
-    <BaseLayout routeName='hooks' appendEn={false}>
+    <BaseLayout appendEn={false} routeName='hooks'>
       {children}
     </BaseLayout>
   );

@@ -37,7 +37,7 @@ const Basic = () => {
   useEffect(() => {
     const portal = (
       <Portal container={() => ref.current}>
-        <Button color='primary' className='content'>
+        <Button className='content' color='primary'>
           点击
         </Button>
       </Portal>

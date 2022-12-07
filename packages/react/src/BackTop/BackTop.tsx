@@ -142,15 +142,15 @@ const BackTop = forwardRef<HTMLDivElement, BackTopProps>((props, ref) => {
     <Transition
       in={show}
       mountOnEnter={true}
-      unmountOnExit={true}
       transitionClassName={rootClassName}
+      unmountOnExit={true}
     >
       <Root
         {...others}
-        onClick={handleClick}
-        style={{ ...style, ...fixedStyle }}
         className={classes}
         ref={ref}
+        style={{ ...style, ...fixedStyle }}
+        onClick={handleClick}
       >
         {children || defaultElement}
       </Root>
@@ -163,25 +163,25 @@ const BackTop = forwardRef<HTMLDivElement, BackTopProps>((props, ref) => {
 if (!isProduction) {
   BackTop.displayName = displayName;
   BackTop.propTypes = {
+    bottom: PropTypes.number,
+    children: PropTypes.node,
+    className: PropTypes.string,
+    container: PropTypes.oneOfType([
+      PropTypes.func,
+      ...(isServer ? [PropTypes.any] : [PropTypes.instanceOf(Element)]),
+    ]),
+    right: PropTypes.number,
+    show: PropTypes.bool,
+    style: PropTypes.shape({}),
     target: PropTypes.oneOfType([
       PropTypes.func,
       ...(isServer
         ? [PropTypes.any]
         : [PropTypes.instanceOf(Window), PropTypes.instanceOf(HTMLElement)]),
     ]),
-    container: PropTypes.oneOfType([
-      PropTypes.func,
-      ...(isServer ? [PropTypes.any] : [PropTypes.instanceOf(Element)]),
-    ]),
-    bottom: PropTypes.number,
-    right: PropTypes.number,
-    show: PropTypes.bool,
+    visibilityHeight: PropTypes.number,
     onChange: PropTypes.func,
     onClick: PropTypes.func,
-    visibilityHeight: PropTypes.number,
-    className: PropTypes.string,
-    style: PropTypes.shape({}),
-    children: PropTypes.node,
   };
 }
 

@@ -137,7 +137,7 @@ const Col = forwardRef<HTMLDivElement, ColProps>((props, ref) => {
   );
 
   return (
-    <ColRoot {...others} style={colStyle} className={rootClasses} ref={ref}>
+    <ColRoot {...others} className={rootClasses} ref={ref} style={colStyle}>
       {children}
     </ColRoot>
   );
@@ -149,12 +149,13 @@ if (!isProduction) {
   Col.propTypes = {
     column: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired])
       .isRequired,
-    offset: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired]),
-    push: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired]),
-    pull: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired]),
-    order: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired]),
-    className: PropTypes.string,
     children: PropTypes.node,
+    className: PropTypes.string,
+    offset: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired]),
+    order: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired]),
+    pull: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired]),
+    push: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired]),
+
     style: PropTypes.shape({}),
   };
 }

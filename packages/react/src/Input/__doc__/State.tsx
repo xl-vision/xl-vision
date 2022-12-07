@@ -3,12 +3,12 @@ import { Input } from '@xl-vision/react';
 const Demo = () => {
   return (
     <div>
-      <Input placeholder='Basic usage' value='disabled content' disabled={true} />
+      <Input disabled={true} placeholder='Basic usage' value='disabled content' />
       <Input
         placeholder='Basic usage'
-        value='readonly content'
         readOnly={true}
         style={{ marginTop: 10 }}
+        value='readonly content'
       />
     </div>
   );

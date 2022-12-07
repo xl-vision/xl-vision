@@ -172,27 +172,26 @@ const DropdownSubmenu = forwardRef<HTMLDivElement, DropdownSubmenuProps>((props,
   return (
     <DropdownSubmenuRoot
       {...others}
-      ref={ref}
       className={rootClasses}
-      // disablePopupEnter={false}
-      visible={visible}
-      onVisibleChange={handleVisibleChange}
-      trigger={trigger}
+      offset={offset}
       placement={placement}
       popup={popup}
-      offset={offset}
       popupContainer={popupContainer}
+      ref={ref}
       transitionClassName={clsx(rootClassName, transitionClassName)}
+      trigger={trigger}
+      visible={visible}
+      onVisibleChange={handleVisibleChange}
     >
       <li className={`${rootClassName}__inner`}>
         <DropdownSubmenuItemButton
-          styleProps={{ disabled }}
           // cant use prop disabled
           // see https://github.com/facebook/react/issues/10109
           // disabled={disabled}
           aria-disabled={disabled}
-          disableRipple={disabled}
           className={`${rootClassName}__button`}
+          disableRipple={disabled}
+          styleProps={{ disabled }}
         >
           {title}
           <DropdownSubmenuIcon className={`${rootClassName}__icon`} />
@@ -214,8 +213,12 @@ if (!isProduction) {
   ]).isRequired;
 
   DropdownSubmenu.propTypes = {
-    title: PropTypes.node.isRequired,
     children: PropTypes.node.isRequired,
+    title: PropTypes.node.isRequired,
+    className: PropTypes.string,
+    defaultVisible: PropTypes.bool,
+    disabled: PropTypes.bool,
+    offset: PropTypes.number,
     placement: PropTypes.oneOf<PopperPlacement>([
       'top',
       'top-start',
@@ -230,19 +233,15 @@ if (!isProduction) {
       'right-start',
       'right-end',
     ]),
-    transitionClassName: PropTypes.string,
-    offset: PropTypes.number,
-    trigger: PropTypes.oneOfType([triggerPropType, PropTypes.arrayOf(triggerPropType)]),
-    visible: PropTypes.bool,
-    defaultVisible: PropTypes.bool,
-    disabled: PropTypes.bool,
-    onVisibleChange: PropTypes.func,
     popupContainer: PropTypes.oneOfType([
       PropTypes.func,
       PropTypes.string,
       isServer ? PropTypes.any : PropTypes.instanceOf(Element),
     ]),
-    className: PropTypes.string,
+    transitionClassName: PropTypes.string,
+    trigger: PropTypes.oneOfType([triggerPropType, PropTypes.arrayOf(triggerPropType)]),
+    visible: PropTypes.bool,
+    onVisibleChange: PropTypes.func,
   };
 }
 

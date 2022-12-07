@@ -19,7 +19,7 @@ describe('useCssTransition', () => {
         transitionClassName: 'demo',
       });
 
-      return <div ref={nodeRef} data-testid='demo' />;
+      return <div data-testid='demo' ref={nodeRef} />;
     };
 
     const { rerender } = render(<Demo in={false} />);
@@ -82,7 +82,7 @@ describe('useCssTransition', () => {
         transitionClassName: 'demo',
       });
 
-      return <div ref={nodeRef} data-testid='demo' />;
+      return <div data-testid='demo' ref={nodeRef} />;
     };
 
     const { rerender } = render(<Demo in={false} />);
@@ -123,7 +123,7 @@ describe('useCssTransition', () => {
         transitionClassName: 'demo',
       });
 
-      return <div ref={nodeRef} data-testid='demo' />;
+      return <div data-testid='demo' ref={nodeRef} />;
     };
 
     const { rerender } = render(<Demo in={false} />);
@@ -189,7 +189,7 @@ describe('useCssTransition', () => {
         onExiting: fn,
       });
 
-      return <div ref={nodeRef} data-testid='demo' />;
+      return <div data-testid='demo' ref={nodeRef} />;
     };
 
     const { rerender } = render(<Demo in={false} />);

@@ -388,16 +388,16 @@ const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
 
     allowClearNode = (
       // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-      <span role='button' tabIndex={-1} className={clearClasses} onClick={handleReset}>
+      <span className={clearClasses} role='button' tabIndex={-1} onClick={handleReset}>
         <CloseCircleFilled />
       </span>
     );
   }
 
   return (
-    <InputRoot style={style} styleProps={{ size }} className={rootClasses} ref={forkRef}>
+    <InputRoot className={rootClasses} ref={forkRef} style={style} styleProps={{ size }}>
       {typeof addonBefore !== 'undefined' && (
-        <InputAddonBefore styleProps={{ size }} className={`${rootClassName}__addon-before`}>
+        <InputAddonBefore className={`${rootClassName}__addon-before`} styleProps={{ size }}>
           {addonBefore}
         </InputAddonBefore>
       )}
@@ -413,15 +413,15 @@ const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
           aria-disabled={disabled}
           aria-readonly={readOnly}
           {...others}
+          className={`${rootClassName}__inner`}
           disabled={disabled}
           readOnly={readOnly}
           ref={inputRef}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
           type={type}
-          className={`${rootClassName}__inner`}
           value={actualValue}
+          onBlur={handleBlur}
           onChange={handleChange}
+          onFocus={handleFocus}
         />
         {(allowClearNode || showCountNode || typeof suffix !== 'undefined') && (
           <InputSuffix className={`${rootClassName}__suffix`}>
@@ -432,7 +432,7 @@ const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
         )}
       </InputWrapper>
       {typeof addonAfter !== 'undefined' && (
-        <InputAddonAfter styleProps={{ size }} className={`${rootClassName}__addon-after`}>
+        <InputAddonAfter className={`${rootClassName}__addon-after`} styleProps={{ size }}>
           {addonAfter}
         </InputAddonAfter>
       )}
@@ -443,20 +443,19 @@ const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
 if (!isProduction) {
   Input.displayName = displayName;
   Input.propTypes = {
-    className: PropTypes.string,
-    style: PropTypes.shape({}),
-    prefix: PropTypes.node,
-    suffix: PropTypes.node,
-    addonBefore: PropTypes.node,
     addonAfter: PropTypes.node,
-    defaultValue: PropTypes.string,
-    value: PropTypes.string,
-    maxLength: PropTypes.number,
-    showCount: PropTypes.bool,
+    addonBefore: PropTypes.node,
     allowClear: PropTypes.bool,
+    className: PropTypes.string,
+    defaultValue: PropTypes.string,
     disabled: PropTypes.bool,
+    maxLength: PropTypes.number,
+    prefix: PropTypes.node,
     readOnly: PropTypes.bool,
+    showCount: PropTypes.bool,
     size: PropTypes.oneOf<ComponentSize>(['large', 'middle', 'small']),
+    style: PropTypes.shape({}),
+    suffix: PropTypes.node,
     type: PropTypes.oneOf([
       'button',
       'checkbox',
@@ -481,8 +480,9 @@ if (!isProduction) {
       'url',
       'week',
     ]),
-    onChange: PropTypes.func,
+    value: PropTypes.string,
     onBlur: PropTypes.func,
+    onChange: PropTypes.func,
     onFocus: PropTypes.func,
   };
 }

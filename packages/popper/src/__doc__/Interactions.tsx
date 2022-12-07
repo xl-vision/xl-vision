@@ -34,7 +34,7 @@ const Demo = () => {
 
   return (
     <>
-      <Button {...getReferenceProps({})} ref={reference} className='reference' color='primary'>
+      <Button {...getReferenceProps({})} className='reference' color='primary' ref={reference}>
         reference
       </Button>
       {open && (

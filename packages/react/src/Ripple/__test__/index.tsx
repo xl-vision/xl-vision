@@ -27,7 +27,7 @@ const Demo = ({ exitAfterEnter }: { exitAfterEnter?: boolean }) => {
   return (
     <div className='box' {...events}>
       click me
-      <Ripple exitAfterEnter={exitAfterEnter} transitionClassName='ripple' ref={rippleRef} />
+      <Ripple exitAfterEnter={exitAfterEnter} ref={rippleRef} transitionClassName='ripple' />
     </div>
   );
 };

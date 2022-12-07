@@ -13,19 +13,19 @@ const Link = () => {
   return (
     <Wrapper>
       <Button href='#'>button</Button>
-      <Button variant='text' href='#' color='primary'>
+      <Button color='primary' href='#' variant='text'>
         button
       </Button>
-      <Button href='#' color='secondary'>
+      <Button color='secondary' href='#'>
         button
       </Button>
-      <Button variant='text' href='#' color='error'>
+      <Button color='error' href='#' variant='text'>
         button
       </Button>
-      <Button variant='outlined' href='#' color='warning'>
+      <Button color='warning' href='#' variant='outlined'>
         button
       </Button>
-      <Button href='#' disabled={true} color='primary'>
+      <Button color='primary' disabled={true} href='#'>
         disabled
       </Button>
     </Wrapper>

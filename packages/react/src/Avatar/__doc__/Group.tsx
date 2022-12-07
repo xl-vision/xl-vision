@@ -8,33 +8,33 @@ const Group = () => {
         <Avatar src='https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png' />
         <Avatar style={{ backgroundColor: '#f56a00' }}>K</Avatar>
         <Tooltip content='Ant User' placement='top'>
-          <Avatar style={{ backgroundColor: '#87d068' }} icon={<UserOutlined />} />
+          <Avatar icon={<UserOutlined />} style={{ backgroundColor: '#87d068' }} />
         </Tooltip>
-        <Avatar style={{ backgroundColor: '#1890ff' }} icon={<DesktopOutlined />} />
+        <Avatar icon={<DesktopOutlined />} style={{ backgroundColor: '#1890ff' }} />
       </Avatar.Group>
       <Avatar.Group
         maxCount={2}
+        maxStyle={{ color: '#f56a00', backgroundColor: '#fde3cf' }}
         shape='round'
-        maxStyle={{ color: '#f56a00', backgroundColor: '#fde3cf' }}
       >
         <Avatar src='https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png' />
         <Avatar style={{ backgroundColor: '#f56a00' }}>K</Avatar>
         <Tooltip content='Ant User' placement='top'>
-          <Avatar style={{ backgroundColor: '#87d068' }} icon={<UserOutlined />} />
+          <Avatar icon={<UserOutlined />} style={{ backgroundColor: '#87d068' }} />
         </Tooltip>
-        <Avatar style={{ backgroundColor: '#1890ff' }} icon={<DesktopOutlined />} />
+        <Avatar icon={<DesktopOutlined />} style={{ backgroundColor: '#1890ff' }} />
       </Avatar.Group>
       <Avatar.Group
         maxCount={2}
-        size='large'
         maxStyle={{ color: '#f56a00', backgroundColor: '#fde3cf' }}
+        size='large'
       >
         <Avatar src='https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png' />
         <Avatar style={{ backgroundColor: '#f56a00' }}>K</Avatar>
         <Tooltip content='Ant User' placement='top'>
-          <Avatar style={{ backgroundColor: '#87d068' }} icon={<UserOutlined />} />
+          <Avatar icon={<UserOutlined />} style={{ backgroundColor: '#87d068' }} />
         </Tooltip>
-        <Avatar style={{ backgroundColor: '#1890ff' }} icon={<DesktopOutlined />} />
+        <Avatar icon={<DesktopOutlined />} style={{ backgroundColor: '#1890ff' }} />
       </Avatar.Group>
     </>
   );

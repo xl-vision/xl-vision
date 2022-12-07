@@ -38,9 +38,9 @@ const Advance = () => {
       </Button>
       <Transition
         in={inOption}
-        transitionOnFirst={true}
-        transitionClassName='slide'
         mountOnEnter={true}
+        transitionClassName='slide'
+        transitionOnFirst={true}
       >
         {(show) => <Div style={{ display: show ? '' : 'none' }}>DEMO</Div>}
       </Transition>

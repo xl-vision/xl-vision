@@ -369,19 +369,19 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   return (
     <Portal container={containerProp}>
       <ModalRoot
-        onFocus={handleInnerFocus}
         aria-hidden={!visible}
         className={clsx(rootClassName, wrapperClassName)}
         ref={forkRef}
         style={{ zIndex, display: hidden ? 'none' : '' }}
-        onKeyDown={handleKeyDown}
         onClick={handleClick}
+        onFocus={handleInnerFocus}
+        onKeyDown={handleKeyDown}
       >
         {mask && (
           <Transition
-            transitionClassName={`${rootClassName}__mask`}
             in={inProp}
             mountOnEnter={true}
+            transitionClassName={`${rootClassName}__mask`}
             onEnter={handleEnter}
             onExited={handleExited}
           >
@@ -389,30 +389,30 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
               <ModalMask
                 aria-hidden={true}
                 className={`${rootClassName}__mask`}
-                onClick={handleMaskClick}
                 style={{
                   display: show ? '' : 'none',
                 }}
+                onClick={handleMaskClick}
               />
             )}
           </Transition>
         )}
         <Transition
-          transitionClassName={bodyClassName}
           in={inProp}
           mountOnEnter={true}
+          transitionClassName={bodyClassName}
           onEnter={handleModalEnter}
           onExited={handleExited}
         >
           {(show) => (
             <ModalContent
               {...others}
-              tabIndex={-1}
               className={clsx(bodyClassName, className)}
               ref={bodyRef}
               style={{
                 display: show ? '' : 'none',
               }}
+              tabIndex={-1}
             >
               {children}
             </ModalContent>
@@ -426,24 +426,24 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 if (!isProduction) {
   Modal.displayName = displayName;
   Modal.propTypes = {
+    children: PropTypes.node.isRequired,
+    className: PropTypes.string,
     container: PropTypes.oneOfType([
       PropTypes.func,
       PropTypes.string,
       isServer ? PropTypes.any : PropTypes.instanceOf(HTMLElement),
     ]),
-    children: PropTypes.node.isRequired,
     defaultVisible: PropTypes.bool,
-    visible: PropTypes.bool,
-    onVisibleChange: PropTypes.func,
-    unmountOnHide: PropTypes.bool,
-    mountOnShow: PropTypes.bool,
-    className: PropTypes.string,
-    style: PropTypes.shape({}),
+    escClosable: PropTypes.bool,
     mask: PropTypes.bool,
     maskClosable: PropTypes.bool,
-    escClosable: PropTypes.bool,
+    mountOnShow: PropTypes.bool,
+    style: PropTypes.shape({}),
+    unmountOnHide: PropTypes.bool,
+    visible: PropTypes.bool,
     wrapperClassName: PropTypes.string,
     onAfterClosed: PropTypes.func,
+    onVisibleChange: PropTypes.func,
   };
 }
 

@@ -16,16 +16,16 @@ const Long = () => {
   return (
     <Wrapper>
       <Button long={true}>button</Button>
-      <Button long={true} variant='text' color='primary'>
+      <Button color='primary' long={true} variant='text'>
         button
       </Button>
-      <Button long={true} variant='outlined' color='secondary'>
+      <Button color='secondary' long={true} variant='outlined'>
         button
       </Button>
-      <Button long={true} round={true} color='warning'>
+      <Button color='warning' long={true} round={true}>
         button
       </Button>
-      <Button long={true} color='primary' prefixIcon={IconWrapper}>
+      <Button color='primary' long={true} prefixIcon={IconWrapper}>
         button
       </Button>
     </Wrapper>

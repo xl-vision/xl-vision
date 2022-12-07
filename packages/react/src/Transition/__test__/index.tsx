@@ -41,30 +41,30 @@ describe('Transition', () => {
           onEnter={(_el, transitionOnFirst) => {
             call(transitionOnFirst ? 'beforeAppear' : 'beforeEnter');
           }}
+          onEnterCancelled={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'appearCancelled' : 'enterCancelled');
+          }}
+          onEntered={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'afterAppear' : 'afterEnter');
+          }}
           onEntering={(_el, _done, transitionOnFirst, isCancelled) => {
             if (!isCancelled()) {
               call(transitionOnFirst ? 'appear' : 'enter');
             }
           }}
-          onEntered={(_el, transitionOnFirst) => {
-            call(transitionOnFirst ? 'afterAppear' : 'afterEnter');
-          }}
-          onEnterCancelled={(_el, transitionOnFirst) => {
-            call(transitionOnFirst ? 'appearCancelled' : 'enterCancelled');
-          }}
           onExit={(_el, transitionOnFirst) => {
             call(transitionOnFirst ? 'beforeDisappear' : 'beforeExit');
+          }}
+          onExitCancelled={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'disappearCancelled' : 'exitCancelled');
+          }}
+          onExited={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'afterDisappear' : 'afterExit');
           }}
           onExiting={(_el, _done, transitionOnFirst, isCancelled) => {
             if (!isCancelled()) {
               call(transitionOnFirst ? 'disappear' : 'exit');
             }
-          }}
-          onExited={(_el, transitionOnFirst) => {
-            call(transitionOnFirst ? 'afterDisappear' : 'afterExit');
-          }}
-          onExitCancelled={(_el, transitionOnFirst) => {
-            call(transitionOnFirst ? 'disappearCancelled' : 'exitCancelled');
           }}
         >
           <div />
@@ -151,35 +151,35 @@ describe('Transition', () => {
       return (
         <Transition
           in={inProp}
-          transitionOnFirst={true}
           transitionClassName={classnameMap}
+          transitionOnFirst={true}
           onEnter={(_el, transitionOnFirst) => {
             call(transitionOnFirst ? 'beforeAppear' : 'beforeEnter');
+          }}
+          onEnterCancelled={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'appearCancelled' : 'enterCancelled');
+          }}
+          onEntered={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'afterAppear' : 'afterEnter');
           }}
           onEntering={(_el, _done, transitionOnFirst, isCancelled) => {
             if (!isCancelled()) {
               call(transitionOnFirst ? 'appear' : 'enter');
             }
           }}
-          onEntered={(_el, transitionOnFirst) => {
-            call(transitionOnFirst ? 'afterAppear' : 'afterEnter');
-          }}
-          onEnterCancelled={(_el, transitionOnFirst) => {
-            call(transitionOnFirst ? 'appearCancelled' : 'enterCancelled');
-          }}
           onExit={(_el, transitionOnFirst) => {
             call(transitionOnFirst ? 'beforeDisappear' : 'beforeExit');
+          }}
+          onExitCancelled={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'disappearCancelled' : 'exitCancelled');
+          }}
+          onExited={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'afterDisappear' : 'afterExit');
           }}
           onExiting={(_el, _done, transitionOnFirst, isCancelled) => {
             if (!isCancelled()) {
               call(transitionOnFirst ? 'disappear' : 'exit');
             }
-          }}
-          onExited={(_el, transitionOnFirst) => {
-            call(transitionOnFirst ? 'afterDisappear' : 'afterExit');
-          }}
-          onExitCancelled={(_el, transitionOnFirst) => {
-            call(transitionOnFirst ? 'disappearCancelled' : 'exitCancelled');
           }}
         >
           <div />
@@ -296,30 +296,30 @@ describe('Transition', () => {
           onEnter={(_el, transitionOnFirst) => {
             call(transitionOnFirst ? 'beforeAppear' : 'beforeEnter');
           }}
+          onEnterCancelled={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'appearCancelled' : 'enterCancelled');
+          }}
+          onEntered={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'afterAppear' : 'afterEnter');
+          }}
           onEntering={(_el, _done, transitionOnFirst, isCancelled) => {
             if (!isCancelled()) {
               call(transitionOnFirst ? 'appear' : 'enter');
             }
           }}
-          onEntered={(_el, transitionOnFirst) => {
-            call(transitionOnFirst ? 'afterAppear' : 'afterEnter');
-          }}
-          onEnterCancelled={(_el, transitionOnFirst) => {
-            call(transitionOnFirst ? 'appearCancelled' : 'enterCancelled');
-          }}
           onExit={(_el, transitionOnFirst) => {
             call(transitionOnFirst ? 'beforeDisappear' : 'beforeExit');
+          }}
+          onExitCancelled={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'disappearCancelled' : 'exitCancelled');
+          }}
+          onExited={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'afterDisappear' : 'afterExit');
           }}
           onExiting={(_el, _done, transitionOnFirst, isCancelled) => {
             if (!isCancelled()) {
               call(transitionOnFirst ? 'disappear' : 'exit');
             }
-          }}
-          onExited={(_el, transitionOnFirst) => {
-            call(transitionOnFirst ? 'afterDisappear' : 'afterExit');
-          }}
-          onExitCancelled={(_el, transitionOnFirst) => {
-            call(transitionOnFirst ? 'disappearCancelled' : 'exitCancelled');
           }}
         >
           <div />
@@ -419,30 +419,30 @@ describe('Transition', () => {
           onEnter={(_el, transitionOnFirst) => {
             call(transitionOnFirst ? 'beforeAppear' : 'beforeEnter');
           }}
+          onEnterCancelled={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'appearCancelled' : 'enterCancelled');
+          }}
+          onEntered={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'afterAppear' : 'afterEnter');
+          }}
           onEntering={(_el, _done, transitionOnFirst, isCancelled) => {
             if (!isCancelled()) {
               call(transitionOnFirst ? 'appear' : 'enter');
             }
           }}
-          onEntered={(_el, transitionOnFirst) => {
-            call(transitionOnFirst ? 'afterAppear' : 'afterEnter');
-          }}
-          onEnterCancelled={(_el, transitionOnFirst) => {
-            call(transitionOnFirst ? 'appearCancelled' : 'enterCancelled');
-          }}
           onExit={(_el, transitionOnFirst) => {
             call(transitionOnFirst ? 'beforeDisappear' : 'beforeExit');
+          }}
+          onExitCancelled={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'disappearCancelled' : 'exitCancelled');
+          }}
+          onExited={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'afterDisappear' : 'afterExit');
           }}
           onExiting={(_el, _done, transitionOnFirst, isCancelled) => {
             if (!isCancelled()) {
               call(transitionOnFirst ? 'disappear' : 'exit');
             }
-          }}
-          onExited={(_el, transitionOnFirst) => {
-            call(transitionOnFirst ? 'afterDisappear' : 'afterExit');
-          }}
-          onExitCancelled={(_el, transitionOnFirst) => {
-            call(transitionOnFirst ? 'disappearCancelled' : 'exitCancelled');
           }}
         >
           <div />
@@ -512,35 +512,35 @@ describe('Transition', () => {
       return (
         <Transition
           in={inProp}
-          transitionOnFirst={true}
           transitionClassName={classnameMap}
+          transitionOnFirst={true}
           onEnter={(_el, transitionOnFirst) => {
             call(transitionOnFirst ? 'beforeAppear' : 'beforeEnter');
+          }}
+          onEnterCancelled={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'appearCancelled' : 'enterCancelled');
+          }}
+          onEntered={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'afterAppear' : 'afterEnter');
           }}
           onEntering={(_el, _done, transitionOnFirst, isCancelled) => {
             if (!isCancelled()) {
               call(transitionOnFirst ? 'appear' : 'enter');
             }
           }}
-          onEntered={(_el, transitionOnFirst) => {
-            call(transitionOnFirst ? 'afterAppear' : 'afterEnter');
-          }}
-          onEnterCancelled={(_el, transitionOnFirst) => {
-            call(transitionOnFirst ? 'appearCancelled' : 'enterCancelled');
-          }}
           onExit={(_el, transitionOnFirst) => {
             call(transitionOnFirst ? 'beforeDisappear' : 'beforeExit');
+          }}
+          onExitCancelled={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'disappearCancelled' : 'exitCancelled');
+          }}
+          onExited={(_el, transitionOnFirst) => {
+            call(transitionOnFirst ? 'afterDisappear' : 'afterExit');
           }}
           onExiting={(_el, _done, transitionOnFirst, isCancelled) => {
             if (!isCancelled()) {
               call(transitionOnFirst ? 'disappear' : 'exit');
             }
-          }}
-          onExited={(_el, transitionOnFirst) => {
-            call(transitionOnFirst ? 'afterDisappear' : 'afterExit');
-          }}
-          onExitCancelled={(_el, transitionOnFirst) => {
-            call(transitionOnFirst ? 'disappearCancelled' : 'exitCancelled');
           }}
         >
           <div />
@@ -635,7 +635,7 @@ describe('Transition', () => {
 
   it('Test contains className call timing', () => {
     const { rerender } = render(
-      <Transition transitionOnFirst={true} in={true} transitionClassName='test'>
+      <Transition in={true} transitionClassName='test' transitionOnFirst={true}>
         <div data-testid='demo' />
       </Transition>,
     );
@@ -671,7 +671,7 @@ describe('Transition', () => {
     nextFrameSpy.mockClear();
 
     rerender(
-      <Transition transitionOnFirst={true} in={false} transitionClassName='test'>
+      <Transition in={false} transitionClassName='test' transitionOnFirst={true}>
         <div />
       </Transition>,
     );
@@ -705,7 +705,7 @@ describe('Transition', () => {
     nextFrameSpy.mockClear();
 
     rerender(
-      <Transition transitionOnFirst={true} in={true} transitionClassName='test'>
+      <Transition in={true} transitionClassName='test' transitionOnFirst={true}>
         <div />
       </Transition>,
     );
@@ -746,7 +746,7 @@ describe('Transition', () => {
 
     jest.useFakeTimers();
     const { rerender } = render(
-      <Transition transitionOnFirst={true} in={true} transitionClassName='test' timeout={20}>
+      <Transition in={true} timeout={20} transitionClassName='test' transitionOnFirst={true}>
         <div data-testid='demo' />
       </Transition>,
     );
@@ -772,7 +772,7 @@ describe('Transition', () => {
     nextFrameSpy.mockClear();
 
     rerender(
-      <Transition transitionOnFirst={true} in={false} transitionClassName='test' timeout={20}>
+      <Transition in={false} timeout={20} transitionClassName='test' transitionOnFirst={true}>
         <div />
       </Transition>,
     );
@@ -796,7 +796,7 @@ describe('Transition', () => {
     nextFrameSpy.mockClear();
 
     rerender(
-      <Transition transitionOnFirst={true} in={true} transitionClassName='test' timeout={20}>
+      <Transition in={true} timeout={20} transitionClassName='test' transitionOnFirst={true}>
         <div />
       </Transition>,
     );

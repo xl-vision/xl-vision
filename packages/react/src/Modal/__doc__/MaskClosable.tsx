@@ -18,7 +18,7 @@ const MaskClosable = () => {
       <Button color='primary' onClick={() => setVisible(true)}>
         show
       </Button>
-      <Modal visible={visible} onVisibleChange={setVisible} maskClosable={false}>
+      <Modal maskClosable={false} visible={visible} onVisibleChange={setVisible}>
         <Body>
           <p>This is modal content</p>
         </Body>

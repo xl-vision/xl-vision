@@ -220,12 +220,12 @@ const Affix = forwardRef<AffixIntance, AffixProps>((props, ref) => {
       <AffixRoot {...others} className={classes} ref={forkRef}>
         {placeholderStyle && (
           <div
+            aria-hidden={true}
             className={`${rootClassName}__placeholder`}
             style={placeholderStyle}
-            aria-hidden={true}
           />
         )}
-        <div style={affixStyle} className={`${rootClassName}__inner`}>
+        <div className={`${rootClassName}__inner`} style={affixStyle}>
           <ResizeObserver onResizeObserver={handleSizeChange}>{children}</ResizeObserver>
         </div>
       </AffixRoot>
@@ -236,6 +236,10 @@ const Affix = forwardRef<AffixIntance, AffixProps>((props, ref) => {
 if (!isProduction) {
   Affix.displayName = displayName;
   Affix.propTypes = {
+    children: PropTypes.node,
+    className: PropTypes.string,
+    offsetBottom: PropTypes.number,
+    offsetTop: PropTypes.number,
     target: PropTypes.oneOfType([
       PropTypes.func,
       ...(isServer
@@ -243,10 +247,6 @@ if (!isProduction) {
         : [PropTypes.instanceOf(Window), PropTypes.instanceOf(HTMLElement)]),
     ]),
     onChange: PropTypes.func,
-    offsetBottom: PropTypes.number,
-    offsetTop: PropTypes.number,
-    children: PropTypes.node,
-    className: PropTypes.string,
   };
 }
 

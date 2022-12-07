@@ -22,7 +22,7 @@
     "commit": "git-cz",
     "test": "jest",
     "clean": "node scripts/clean.js",
-    "lint": "eslint . --report-unused-disable-directives --ext .js,.ts,.jsx,.tsx --max-warnings 0",
+    "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
     "build": "pnpm --parallel --filter \"@xl-vision/*\" run build",
     "updateVersion": "node ./scripts/updateVersion",
     "release": "pnpm publish --filter ./packages"

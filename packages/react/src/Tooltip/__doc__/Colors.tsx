@@ -17,7 +17,7 @@ const Colors = () => {
   return (
     <Wrapper>
       {colors.map((it) => (
-        <Tooltip placement='top' content={content} bgColor={it} key={it}>
+        <Tooltip bgColor={it} content={content} key={it} placement='top'>
           <Button color='primary'>{it}</Button>
         </Tooltip>
       ))}

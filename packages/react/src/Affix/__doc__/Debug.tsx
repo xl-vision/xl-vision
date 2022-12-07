@@ -8,7 +8,7 @@ const Demo = () => {
 
   for (let i = 0; i < count; i++) {
     content.push(
-      <p style={{ backgroundColor: 'red' }} key={i}>
+      <p key={i} style={{ backgroundColor: 'red' }}>
         content
       </p>,
     );

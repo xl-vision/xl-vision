@@ -146,7 +146,7 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children, routeName, appendEn }) => {
         <Row.Col column={{ xs: 0, md: 6, xl: 5, xxl: 4 }}>
           <Affix offsetTop={HEADER_HEIGHT}>
             <div>
-              <AsideWrapper routeName={routeName} appendEn={appendEn} />
+              <AsideWrapper appendEn={appendEn} routeName={routeName} />
             </div>
           </Affix>
         </Row.Col>

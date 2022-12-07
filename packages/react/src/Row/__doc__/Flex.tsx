@@ -28,7 +28,7 @@ const Flex = () => {
   return (
     <div>
       <Wrapper>
-        <Row gutter={10} align='top'>
+        <Row align='top' gutter={10}>
           <Row.Col column={6}>
             <Box style={{ height: 100 }}>col1</Box>
           </Row.Col>
@@ -44,7 +44,7 @@ const Flex = () => {
         </Row>
       </Wrapper>
       <Wrapper>
-        <Row gutter={10} align='middle'>
+        <Row align='middle' gutter={10}>
           <Row.Col column={6}>
             <Box style={{ height: 100 }}>col1</Box>
           </Row.Col>
@@ -60,7 +60,7 @@ const Flex = () => {
         </Row>
       </Wrapper>
       <Wrapper>
-        <Row gutter={10} align='bottom'>
+        <Row align='bottom' gutter={10}>
           <Row.Col column={6}>
             <Box style={{ height: 100 }}>col1</Box>
           </Row.Col>

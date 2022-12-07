@@ -22,37 +22,37 @@ const Basic = () => {
       </Wrapper>
       <Wrapper>
         <Button variant='text'>default</Button>
-        <Button variant='text' color='primary'>
+        <Button color='primary' variant='text'>
           primary
         </Button>
-        <Button variant='text' color='secondary'>
+        <Button color='secondary' variant='text'>
           secondary
         </Button>
-        <Button variant='text' color='info'>
+        <Button color='info' variant='text'>
           info
         </Button>
-        <Button variant='text' color='error'>
+        <Button color='error' variant='text'>
           error
         </Button>
-        <Button variant='text' color='warning'>
+        <Button color='warning' variant='text'>
           warning
         </Button>
       </Wrapper>
       <Wrapper>
         <Button variant='outlined'>default</Button>
-        <Button variant='outlined' color='primary'>
+        <Button color='primary' variant='outlined'>
           primary
         </Button>
-        <Button variant='outlined' color='secondary'>
+        <Button color='secondary' variant='outlined'>
           secondary
         </Button>
-        <Button variant='outlined' color='info'>
+        <Button color='info' variant='outlined'>
           info
         </Button>
-        <Button variant='outlined' color='error'>
+        <Button color='error' variant='outlined'>
           error
         </Button>
-        <Button variant='outlined' color='warning'>
+        <Button color='warning' variant='outlined'>
           warning
         </Button>
       </Wrapper>

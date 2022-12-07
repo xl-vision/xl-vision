@@ -20,7 +20,7 @@ const content = (
 const MaxWidth = () => {
   return (
     <Wrapper>
-      <Tooltip placement='top' content={content} maxWidth={200}>
+      <Tooltip content={content} maxWidth={200} placement='top'>
         <Button color='primary'>button</Button>
       </Tooltip>
     </Wrapper>

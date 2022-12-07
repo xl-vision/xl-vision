@@ -5,17 +5,17 @@ const Demo = () => {
   return (
     <div>
       <Input
-        placeholder='Basic usage'
-        defaultValue='xl-vision.8910'
-        addonBefore='https://'
         addonAfter='.xyz'
+        addonBefore='https://'
+        defaultValue='xl-vision.8910'
+        placeholder='Basic usage'
       />
       <Input
-        style={{ marginTop: 10 }}
-        placeholder='Basic usage'
-        defaultValue='xl-vision.8910.xyz'
-        addonBefore='https://'
         addonAfter={<SettingOutlined />}
+        addonBefore='https://'
+        defaultValue='xl-vision.8910.xyz'
+        placeholder='Basic usage'
+        style={{ marginTop: 10 }}
       />
     </div>
   );

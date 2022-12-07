@@ -5,13 +5,13 @@ import userEvent from '@testing-library/user-event';
 const menus = (
   <>
     <Dropdown.Item id='item1'>item1</Dropdown.Item>
-    <Dropdown.Item id='item2' disabled={true}>
+    <Dropdown.Item disabled={true} id='item2'>
       item2
     </Dropdown.Item>
     <Dropdown.Divider />
-    <Dropdown.Submenu title={<div id='submenu-title'>submenu</div>} id='submenu'>
+    <Dropdown.Submenu id='submenu' title={<div id='submenu-title'>submenu</div>}>
       <Dropdown.Item id='item3'>3rd menu item</Dropdown.Item>
-      <Dropdown.Item id='item4' disabled={true}>
+      <Dropdown.Item disabled={true} id='item4'>
         4th menu item
       </Dropdown.Item>
     </Dropdown.Submenu>
@@ -26,7 +26,7 @@ describe('Dropdown', () => {
 
   it('Test trigger hover', async () => {
     const { container } = render(
-      <Dropdown menus={menus} id='popup'>
+      <Dropdown id='popup' menus={menus}>
         <button id='btn'>button</button>
       </Dropdown>,
     );

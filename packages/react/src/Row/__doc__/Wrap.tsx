@@ -12,7 +12,7 @@ const Box = styled('div')(
 
 const Basic = () => {
   return (
-    <Row gutter={10} wrap={true} style={{ rowGap: 10 }}>
+    <Row gutter={10} style={{ rowGap: 10 }} wrap={true}>
       <Row.Col column={9}>
         <Box>col1</Box>
       </Row.Col>

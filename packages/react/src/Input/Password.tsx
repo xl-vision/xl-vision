@@ -61,7 +61,7 @@ const Password = forwardRef<HTMLSpanElement, PasswordProps>((props, ref) => {
     </PasswordIcon>
   );
 
-  return <Input {...others} type={type} ref={ref} suffix={suffix} />;
+  return <Input {...others} ref={ref} suffix={suffix} type={type} />;
 });
 
 if (!isProduction) {
