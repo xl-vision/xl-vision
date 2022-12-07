@@ -38,10 +38,11 @@ module.exports = async () => {
         resolve: {
           alias: {
             ...alias,
-            '@mdx-js/react': require.resolve('@mdx-js/react'),
-            react: path.resolve(__dirname, '../../node_modules/react'),
-            'react-dom': path.resolve(__dirname, '../../node_modules/react-dom'),
-            'styled-components': require.resolve('../../node_modules/styled-components'),
+            '@mdx-js/react': path.resolve(__dirname, './node_modules/@mdx-js/react'),
+            'react/jsx-dev-runtime': path.resolve(__dirname, './node_modules/react/jsx-dev-runtime'),
+            'react': path.resolve(__dirname, './node_modules/react'),
+            'react-dom': path.resolve(__dirname, './node_modules/react-dom'),
+            'styled-components': path.resolve(__dirname, './node_modules/styled-components'),
           },
         },
         module: {

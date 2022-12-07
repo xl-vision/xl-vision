@@ -41,10 +41,12 @@ const PlaygroundPage: NextPage = () => {
     return {};
   }, []);
 
+  const titleContent = `${locale.pages.playground.title} | xl-vision`
+
   return (
     <>
       <Head>
-        <title>{locale.pages.playground.title} | xl-vision</title>
+        <title>{titleContent}</title>
       </Head>
       <Main>
         <Playground code={code} scripts={scripts} />

@@ -75,9 +75,11 @@ const Docs: FC<DocsProps> = ({ locales }) => {
 
   const Instance = Component ? <Component /> : null;
 
+  const titleContent = `${title} | xl-vision`
+
   return (
     <>
-      <Head>{title && <title>{title} | xl-vision</title>}</Head>
+      <Head>{title && <title>{titleContent}</title>}</Head>
       <Row removeOnUnvisible={true}>
         <Row.Col column={{ xs: 24, lg: 20, xxl: 21 }}>{Instance}</Row.Col>
         <Row.Col column={{ xs: 0, lg: 4, xxl: 3 }}>
