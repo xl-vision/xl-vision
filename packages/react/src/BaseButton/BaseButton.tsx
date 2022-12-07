@@ -208,8 +208,11 @@ const BaseButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseButtonP
         {...others}
         as={Component}
         className={rootClasses}
+        disabled={disabled}
         ref={ref}
         styleProps={{ loading, disabled }}
+        // 非激活状态不允许选中
+        tabIndex={loading || disabled ? -1 : tabIndex}
         onBlur={handleBlur}
         onClick={handleClick}
         onDragLeave={handleDragLeave}
@@ -221,9 +224,6 @@ const BaseButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseButtonP
         onTouchEnd={handleTouchEnd}
         onTouchMove={handleTouchMove}
         onTouchStart={handleTouchStart}
-        disabled={disabled}
-        // 非激活状态不允许选中
-        tabIndex={loading || disabled ? -1 : tabIndex}
       >
         <BaseButtonInner className={`${rootClassName}__inner`}>{children}</BaseButtonInner>
         <Ripple
@@ -242,23 +242,23 @@ if (!isProduction) {
 
   BaseButton.propTypes = {
     children: PropTypes.node,
-    href: PropTypes.string,
+    className: PropTypes.string,
     disabled: PropTypes.bool,
     disableRipple: PropTypes.bool,
+    href: PropTypes.string,
     loading: PropTypes.bool,
-    className: PropTypes.string,
     tabIndex: PropTypes.number,
-    onClick: PropTypes.func,
-    onMouseDown: PropTypes.func,
-    onMouseUp: PropTypes.func,
-    onMouseLeave: PropTypes.func,
-    onTouchStart: PropTypes.func,
-    onTouchEnd: PropTypes.func,
-    onTouchMove: PropTypes.func,
-    onDragLeave: PropTypes.func,
     onBlur: PropTypes.func,
+    onClick: PropTypes.func,
+    onDragLeave: PropTypes.func,
     onKeyDown: PropTypes.func,
     onKeyUp: PropTypes.func,
+    onMouseDown: PropTypes.func,
+    onMouseLeave: PropTypes.func,
+    onMouseUp: PropTypes.func,
+    onTouchEnd: PropTypes.func,
+    onTouchMove: PropTypes.func,
+    onTouchStart: PropTypes.func,
   };
 }
 

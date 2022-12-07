@@ -228,27 +228,27 @@ if (!isProduction) {
   ]).isRequired;
 
   Popconfirm.propTypes = {
+    cancelButtonProps: PropTypes.shape({}),
+    cancelText: PropTypes.string,
+    className: PropTypes.string,
+    confirmButtonProps: PropTypes.shape({}),
+    confirmText: PropTypes.string,
+    defaultVisible: PropTypes.bool,
+    hideArrow: PropTypes.bool,
+    icon: PropTypes.node,
+    offset: PropTypes.number,
     popupContainer: PropTypes.oneOfType([
       PropTypes.func,
       PropTypes.string,
       isServer ? PropTypes.any : PropTypes.instanceOf(Element),
     ]),
-    onVisibleChange: PropTypes.func,
-    visible: PropTypes.bool,
     title: PropTypes.node,
-    className: PropTypes.string,
-    offset: PropTypes.number,
+    transitionClassName: PropTypes.string,
     trigger: PropTypes.oneOfType([triggerPropType, PropTypes.arrayOf(triggerPropType)]),
-    icon: PropTypes.node,
+    visible: PropTypes.bool,
     onCancel: PropTypes.func,
     onConfirm: PropTypes.func,
-    cancelButtonProps: PropTypes.shape({}),
-    confirmButtonProps: PropTypes.shape({}),
-    cancelText: PropTypes.string,
-    confirmText: PropTypes.string,
-    defaultVisible: PropTypes.bool,
-    hideArrow: PropTypes.bool,
-    transitionClassName: PropTypes.string,
+    onVisibleChange: PropTypes.func,
   };
 }
 

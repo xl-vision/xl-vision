@@ -225,20 +225,20 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
 if (!isProduction) {
   Dialog.displayName = displayName;
   Dialog.propTypes = {
-    children: Proptypes.node,
     title: Proptypes.node.isRequired,
-    footer: Proptypes.node,
-    className: Proptypes.string,
-    visible: Proptypes.bool,
-    onVisibleChange: Proptypes.func,
-    defaultVisible: Proptypes.bool,
-    prompt: Proptypes.bool,
-    onConfirm: Proptypes.func,
-    onCancel: Proptypes.func,
-    cancelText: Proptypes.string,
-    confirmText: Proptypes.string,
     cancelButtonProps: Proptypes.shape({}),
+    cancelText: Proptypes.string,
+    children: Proptypes.node,
+    className: Proptypes.string,
     confirmButtonProps: Proptypes.shape({}),
+    confirmText: Proptypes.string,
+    defaultVisible: Proptypes.bool,
+    footer: Proptypes.node,
+    prompt: Proptypes.bool,
+    visible: Proptypes.bool,
+    onCancel: Proptypes.func,
+    onConfirm: Proptypes.func,
+    onVisibleChange: Proptypes.func,
   };
 }
 

@@ -443,20 +443,19 @@ const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
 if (!isProduction) {
   Input.displayName = displayName;
   Input.propTypes = {
-    className: PropTypes.string,
-    style: PropTypes.shape({}),
-    prefix: PropTypes.node,
-    suffix: PropTypes.node,
-    addonBefore: PropTypes.node,
     addonAfter: PropTypes.node,
-    defaultValue: PropTypes.string,
-    value: PropTypes.string,
-    maxLength: PropTypes.number,
-    showCount: PropTypes.bool,
+    addonBefore: PropTypes.node,
     allowClear: PropTypes.bool,
+    className: PropTypes.string,
+    defaultValue: PropTypes.string,
     disabled: PropTypes.bool,
+    maxLength: PropTypes.number,
+    prefix: PropTypes.node,
     readOnly: PropTypes.bool,
+    showCount: PropTypes.bool,
     size: PropTypes.oneOf<ComponentSize>(['large', 'middle', 'small']),
+    style: PropTypes.shape({}),
+    suffix: PropTypes.node,
     type: PropTypes.oneOf([
       'button',
       'checkbox',
@@ -481,8 +480,9 @@ if (!isProduction) {
       'url',
       'week',
     ]),
-    onChange: PropTypes.func,
+    value: PropTypes.string,
     onBlur: PropTypes.func,
+    onChange: PropTypes.func,
     onFocus: PropTypes.func,
   };
 }

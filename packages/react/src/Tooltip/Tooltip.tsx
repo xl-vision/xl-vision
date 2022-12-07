@@ -140,18 +140,18 @@ if (!isProduction) {
   Tooltip.displayName = displayName;
 
   Tooltip.propTypes = {
+    children: PropTypes.element.isRequired,
+    bgColor: PropTypes.string,
+    className: PropTypes.string,
     content: PropTypes.node,
+    maxWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    offset: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
     popupContainer: PropTypes.oneOfType([
       PropTypes.func,
       PropTypes.string,
       isServer ? PropTypes.any : PropTypes.instanceOf(Element),
     ]),
-    className: PropTypes.string,
     transitionClassName: PropTypes.string,
-    bgColor: PropTypes.string,
-    maxWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    children: PropTypes.element.isRequired,
-    offset: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
   };
 }
 

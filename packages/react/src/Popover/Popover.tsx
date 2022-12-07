@@ -138,18 +138,18 @@ if (!isProduction) {
   ]).isRequired;
 
   Popover.propTypes = {
-    title: PropTypes.node,
     content: PropTypes.node.isRequired,
+    className: PropTypes.string,
+    hideArrow: PropTypes.bool,
+    offset: PropTypes.number,
     popupContainer: PropTypes.oneOfType([
       PropTypes.func,
       PropTypes.string,
       isServer ? PropTypes.any : PropTypes.instanceOf(Element),
     ]),
-    className: PropTypes.string,
+    title: PropTypes.node,
     transitionClassName: PropTypes.string,
-    offset: PropTypes.number,
     trigger: PropTypes.oneOfType([triggerPropType, PropTypes.arrayOf(triggerPropType)]),
-    hideArrow: PropTypes.bool,
   };
 }
 

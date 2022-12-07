@@ -426,24 +426,24 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 if (!isProduction) {
   Modal.displayName = displayName;
   Modal.propTypes = {
+    children: PropTypes.node.isRequired,
+    className: PropTypes.string,
     container: PropTypes.oneOfType([
       PropTypes.func,
       PropTypes.string,
       isServer ? PropTypes.any : PropTypes.instanceOf(HTMLElement),
     ]),
-    children: PropTypes.node.isRequired,
     defaultVisible: PropTypes.bool,
-    visible: PropTypes.bool,
-    onVisibleChange: PropTypes.func,
-    unmountOnHide: PropTypes.bool,
-    mountOnShow: PropTypes.bool,
-    className: PropTypes.string,
-    style: PropTypes.shape({}),
+    escClosable: PropTypes.bool,
     mask: PropTypes.bool,
     maskClosable: PropTypes.bool,
-    escClosable: PropTypes.bool,
+    mountOnShow: PropTypes.bool,
+    style: PropTypes.shape({}),
+    unmountOnHide: PropTypes.bool,
+    visible: PropTypes.bool,
     wrapperClassName: PropTypes.string,
     onAfterClosed: PropTypes.func,
+    onVisibleChange: PropTypes.func,
   };
 }
 

@@ -340,24 +340,18 @@ if (!isProduction) {
   Popper.propTypes = {
     children: PropTypes.element.isRequired,
     popup: PropTypes.element.isRequired,
-    popupContainer: PropTypes.oneOfType([
-      PropTypes.func,
-      PropTypes.string,
-      isServer ? PropTypes.any : PropTypes.instanceOf(Element),
-    ]),
-    transitionClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.func]),
-    trigger: PropTypes.oneOfType([
-      triggerPropType,
-      PropTypes.arrayOf(triggerPropType),
-      (props, propName, componentName) => {
-        if (!props[propName]) {
-          return null;
-        }
-        throw new Error(
-          `Invalid prop '${propName}' supplied to '${componentName}'. Validation failed.`,
-        );
-      },
-    ]),
+    arrow: PropTypes.node,
+    arrowOptions: PropTypes.shape({}),
+    autoPlacementOptions: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+    autoUpdateOptions: PropTypes.shape({}),
+    className: PropTypes.string,
+    clickOptions: PropTypes.shape({}),
+    contextMenuOptions: PropTypes.shape({}),
+    defaultVisible: PropTypes.bool,
+    focusOptions: PropTypes.shape({}),
+    hoverOptions: PropTypes.shape({}),
+    mountOnShow: PropTypes.bool,
+    offset: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
     placement: PropTypes.oneOf<PopperPlacement>([
       'top',
       'top-start',
@@ -372,23 +366,29 @@ if (!isProduction) {
       'right-start',
       'right-end',
     ]),
-    hoverOptions: PropTypes.shape({}),
-    clickOptions: PropTypes.shape({}),
-    focusOptions: PropTypes.shape({}),
-    contextMenuOptions: PropTypes.shape({}),
-    visible: PropTypes.bool,
-    defaultVisible: PropTypes.bool,
-    onVisibleChange: PropTypes.func,
-    offset: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
+    popupContainer: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.string,
+      isServer ? PropTypes.any : PropTypes.instanceOf(Element),
+    ]),
     shiftOptions: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
-    autoPlacementOptions: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
-    arrowOptions: PropTypes.shape({}),
-    autoUpdateOptions: PropTypes.shape({}),
-    arrow: PropTypes.node,
-    className: PropTypes.string,
-    mountOnShow: PropTypes.bool,
+    transitionClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.func]),
+    trigger: PropTypes.oneOfType([
+      triggerPropType,
+      PropTypes.arrayOf(triggerPropType),
+      (props, propName, componentName) => {
+        if (!props[propName]) {
+          return null;
+        }
+        throw new Error(
+          `Invalid prop '${propName}' supplied to '${componentName}'. Validation failed.`,
+        );
+      },
+    ]),
     unmountOnHide: PropTypes.bool,
+    visible: PropTypes.bool,
     onAfterClosed: PropTypes.func,
+    onVisibleChange: PropTypes.func,
   };
 }
 

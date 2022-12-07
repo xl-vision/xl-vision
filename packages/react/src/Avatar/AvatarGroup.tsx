@@ -148,13 +148,13 @@ if (!isProduction) {
     children: PropTypes.arrayOf(PropTypes.element.isRequired).isRequired,
     className: PropTypes.string,
     maxCount: PropTypes.number,
+    maxStyle: PropTypes.shape({}),
     popupPlacement: PropTypes.oneOf<AvatarGroupPopupPlacement>(['none', 'top', 'bottom']),
+    shape: PropTypes.oneOf<AvatarShape>(['round', 'circle', 'square']),
     size: PropTypes.oneOfType([
       PropTypes.number,
       PropTypes.oneOf<ComponentSize>(['small', 'middle', 'large']),
     ]),
-    shape: PropTypes.oneOf<AvatarShape>(['round', 'circle', 'square']),
-    maxStyle: PropTypes.shape({}),
   };
 }
 

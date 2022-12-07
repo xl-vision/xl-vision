@@ -103,11 +103,11 @@ const AnchorLink = forwardRef<HTMLDivElement, AnchorLinkProps>((props, ref) => {
 if (!isProduction) {
   AnchorLink.displayName = displayName;
   AnchorLink.propTypes = {
-    title: PropTypes.string.isRequired,
     href: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    children: PropTypes.node,
     className: PropTypes.string,
     onClick: PropTypes.func,
-    children: PropTypes.node,
   };
 }
 

@@ -117,13 +117,13 @@ const InnerDedicatedDialog: FC<InnerDedicatedDialogProps> = (props) => {
 if (!isProduction) {
   InnerDedicatedDialog.displayName = displayName;
   InnerDedicatedDialog.propTypes = {
-    visible: Proptypes.bool,
-    defaultVisible: Proptypes.bool,
-    onVisibleChange: Proptypes.func,
+    className: Proptypes.string,
     content: Proptypes.node,
+    defaultVisible: Proptypes.bool,
     icon: Proptypes.node,
     title: Proptypes.node,
-    className: Proptypes.string,
+    visible: Proptypes.bool,
+    onVisibleChange: Proptypes.func,
   };
 }
 

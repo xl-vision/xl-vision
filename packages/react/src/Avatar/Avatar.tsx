@@ -228,7 +228,10 @@ const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
 if (!isProduction) {
   Avatar.displayName = displayName;
   Avatar.propTypes = {
+    alt: PropTypes.string,
     children: PropTypes.node,
+    className: PropTypes.string,
+    gap: PropTypes.number,
     icon: PropTypes.element,
     shape: PropTypes.oneOf<AvatarShape>(['round', 'circle', 'square']),
     size: PropTypes.oneOfType([
@@ -237,11 +240,8 @@ if (!isProduction) {
     ]),
     src: PropTypes.node,
     srcSet: PropTypes.string,
-    alt: PropTypes.string,
-    className: PropTypes.string,
-    gap: PropTypes.number,
-    onError: PropTypes.func,
     style: PropTypes.shape({}),
+    onError: PropTypes.func,
   };
 }
 

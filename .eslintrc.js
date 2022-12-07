@@ -115,12 +115,16 @@ module.exports = {
     'react/jsx-sort-props': [
       'error',
       {
+        ignoreCase: true,
         callbacksLast: true,
       },
     ],
     'react/sort-prop-types': [
       'error',
       {
+        ignoreCase: true,
+        requiredFirst: true,
+        sortShapeProp: true,
         callbacksLast: true,
       },
     ],

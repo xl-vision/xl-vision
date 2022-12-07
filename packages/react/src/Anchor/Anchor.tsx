@@ -336,20 +336,20 @@ if (!isProduction) {
         ? [PropTypes.any]
         : [PropTypes.instanceOf(Window), PropTypes.instanceOf(HTMLElement)]),
     ]),
+    bounds: PropTypes.number,
+    children: PropTypes.node,
+    className: PropTypes.string,
+    offsetBottom: PropTypes.number,
+    offsetTop: PropTypes.number,
     scrollTarget: PropTypes.oneOfType([
       PropTypes.func,
       ...(isServer
         ? [PropTypes.any]
         : [PropTypes.instanceOf(Window), PropTypes.instanceOf(HTMLElement)]),
     ]),
-    offsetBottom: PropTypes.number,
-    offsetTop: PropTypes.number,
-    bounds: PropTypes.number,
     targetOffset: PropTypes.number,
-    onChange: PropTypes.func,
-    className: PropTypes.string,
     type: PropTypes.oneOf(['rail', 'block']),
-    children: PropTypes.node,
+    onChange: PropTypes.func,
   };
 }
 

@@ -350,6 +350,8 @@ if (!isProduction) {
   Button.displayName = displayName;
 
   Button.propTypes = {
+    children: PropTypes.node,
+    className: PropTypes.string,
     color: PropTypes.oneOf<ButtonColor>([
       'default',
       'error',
@@ -359,17 +361,15 @@ if (!isProduction) {
       'info',
       'success',
     ]),
+    disabled: PropTypes.bool,
     disableElevation: PropTypes.bool,
     loading: PropTypes.bool,
-    disabled: PropTypes.bool,
     long: PropTypes.bool,
+    prefixIcon: PropTypes.element,
     round: PropTypes.bool,
     size: PropTypes.oneOf<ComponentSize>(['large', 'middle', 'small']),
-    children: PropTypes.node,
-    prefixIcon: PropTypes.element,
     suffixIcon: PropTypes.element,
     variant: PropTypes.oneOf<ButtonVariant>(['contained', 'outlined', 'text']),
-    className: PropTypes.string,
   };
 }
 

@@ -63,18 +63,16 @@ if (!isProduction) {
 
   Transition.propTypes = {
     children: PropTypes.oneOfType([PropTypes.element.isRequired, PropTypes.func.isRequired]),
-    mountOnEnter: PropTypes.bool,
-    unmountOnExit: PropTypes.bool,
-    in: PropTypes.bool,
-    transitionOnFirst: PropTypes.bool,
     disableCss: PropTypes.bool,
+    in: PropTypes.bool,
+    mountOnEnter: PropTypes.bool,
     timeout: PropTypes.oneOfType([
       PropTypes.number,
       PropTypes.exact({
         appear: PropTypes.number,
+        disappear: PropTypes.number,
         enter: PropTypes.number,
         exit: PropTypes.number,
-        disappear: PropTypes.number,
       }),
     ]),
     transitionClassName: PropTypes.oneOfType([
@@ -94,14 +92,16 @@ if (!isProduction) {
         disappearTo: PropTypes.string,
       }),
     ]),
+    transitionOnFirst: PropTypes.bool,
+    unmountOnExit: PropTypes.bool,
     onEnter: PropTypes.func,
-    onEntering: PropTypes.func,
-    onEntered: PropTypes.func,
     onEnterCancelled: PropTypes.func,
+    onEntered: PropTypes.func,
+    onEntering: PropTypes.func,
     onExit: PropTypes.func,
-    onExiting: PropTypes.func,
-    onExited: PropTypes.func,
     onExitCancelled: PropTypes.func,
+    onExited: PropTypes.func,
+    onExiting: PropTypes.func,
   };
 }
 
