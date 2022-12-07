@@ -160,7 +160,9 @@ module.exports = {
   overrides: [
     {
       files: ['*.ts', '*.tsx'],
+      parser: '@typescript-eslint/parser',
       parserOptions: {
+        sourceType: 'module',
         project: './tsconfig.json',
       },
       extends: [
@@ -168,7 +170,11 @@ module.exports = {
         'plugin:@typescript-eslint/recommended',
         'plugin:import/typescript',
       ],
+      plugins: ['@typescript-eslint'],
       rules: {
+        'no-unused-vars': 'off',
+        'no-unused-expressions': 'off',
+        'no-shadow': 'off',
         'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx'] }],
         'import/extensions': [
           'error',
@@ -189,11 +195,17 @@ module.exports = {
             default: 'generic',
           },
         ],
-        'no-unused-vars': 'off',
-        '@typescript-eslint/no-unused-vars': 'error',
-        'no-unused-expressions': 'off',
+        '@typescript-eslint/member-ordering': [
+          'error',
+          {
+            default: {
+              memberTypes: ['signature', 'constructor', 'field', 'method'],
+              optionalityOrder: 'optional-first',
+              order: 'alphabetically-case-insensitive',
+            },
+          },
+        ],
         '@typescript-eslint/no-unused-expressions': 'error',
-        'no-shadow': 'off',
         '@typescript-eslint/no-shadow': 'error',
         '@typescript-eslint/ban-types': [
           'error',
@@ -206,6 +218,7 @@ module.exports = {
         ],
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
+        '@typescript-eslint/no-unused-vars': 'error',
       },
     },
     {

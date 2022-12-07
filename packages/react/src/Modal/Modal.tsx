@@ -33,18 +33,18 @@ import ScrollLocker from '../utils/ScrollLocker';
 import { increaseZindex } from '../utils/zIndexManger';
 
 export interface ModalProps extends HTMLAttributes<HTMLDivElement> {
-  container?: PortalContainerType<HTMLElement>;
   children: ReactNode;
+  container?: PortalContainerType<HTMLElement>;
   defaultVisible?: boolean;
-  visible?: boolean;
-  onVisibleChange?: (visible: boolean) => void;
-  unmountOnHide?: boolean;
-  mountOnShow?: boolean;
   escClosable?: boolean;
   mask?: boolean;
   maskClosable?: boolean;
-  wrapperClassName?: string;
+  mountOnShow?: boolean;
   onAfterClosed?: () => void;
+  onVisibleChange?: (visible: boolean) => void;
+  unmountOnHide?: boolean;
+  visible?: boolean;
+  wrapperClassName?: string;
 }
 
 const displayName = 'Modal';

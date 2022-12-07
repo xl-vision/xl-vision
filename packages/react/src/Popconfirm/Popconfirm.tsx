@@ -14,14 +14,14 @@ import { useTheme } from '../ThemeProvider';
 export type PopconfirmButtonProps = Omit<ButtonProps, 'children' | 'onClick'>;
 export type PopconfirmProps = Omit<PopperProps, 'popup' | 'arrow' | 'title'> & {
   title: ReactNode;
-  icon?: ReactNode;
-  onConfirm?: () => void | Promise<any>;
-  onCancel?: () => void | Promise<any>;
-  confirmButtonProps?: PopconfirmButtonProps;
   cancelButtonProps?: PopconfirmButtonProps;
-  confirmText?: string;
   cancelText?: string;
+  confirmButtonProps?: PopconfirmButtonProps;
+  confirmText?: string;
   hideArrow?: boolean;
+  icon?: ReactNode;
+  onCancel?: () => void | Promise<any>;
+  onConfirm?: () => void | Promise<any>;
 };
 
 const displayName = 'Popconfirm';

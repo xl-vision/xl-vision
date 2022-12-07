@@ -4,9 +4,9 @@ import { FC, useRef, useMemo } from 'react';
 
 export type SandboxProps = {
   demo: string;
-  scripts?: Record<string, string>;
   exec?: string;
   onLoad?: (win: Window) => void;
+  scripts?: Record<string, string>;
 };
 
 const Root = styled('iframe')(() => {

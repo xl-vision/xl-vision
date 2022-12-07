@@ -7,9 +7,9 @@ import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 
 export type PopoverProps = Omit<PopperProps, 'popup' | 'arrow' | 'title'> & {
-  title?: ReactNode;
   content: ReactNode;
   hideArrow?: boolean;
+  title?: ReactNode;
 };
 
 const displayName = 'Popover';

@@ -11,8 +11,8 @@ export type TooltipChildrenProps = PopperChildrenProps & {};
 export interface TooltipProps extends Omit<PopperProps, 'popup' | 'arrow'> {
   content: ReactNode;
   bgColor?: string;
-  maxWidth?: number | string;
   hideArrow?: boolean;
+  maxWidth?: number | string;
 }
 
 const displayName = 'Tooltip';

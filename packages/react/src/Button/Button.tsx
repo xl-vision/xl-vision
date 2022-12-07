@@ -39,13 +39,13 @@ const displayName = 'Button';
 export type ButtonStyleProps = {
   color: ButtonColor;
   disableElevation: boolean;
+  icon: boolean;
   size: ComponentSize;
+  variant: ButtonVariant;
   disabled?: boolean;
   loading?: boolean;
-  variant: ButtonVariant;
   long?: boolean;
   round?: boolean;
-  icon: boolean;
 };
 
 export type ButtonPrefixStyleProps = {

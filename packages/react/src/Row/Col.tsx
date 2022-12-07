@@ -11,13 +11,13 @@ import RowContext from './RowContext';
 export type ColSpanType = number | Partial<Record<Breakpoint, number>>;
 
 export interface ColProps extends HTMLAttributes<HTMLDivElement> {
+  column: ColSpanType;
   children?: ReactNode;
   className?: string;
   offset?: ColSpanType;
   order?: ColSpanType;
   pull?: ColSpanType;
   push?: ColSpanType;
-  column: ColSpanType;
 }
 
 const displayName = 'Col';

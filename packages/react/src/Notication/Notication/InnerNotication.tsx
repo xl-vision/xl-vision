@@ -23,12 +23,12 @@ import NoticationContext from '../context';
 export type InnerNoticationProps = NoticationProps<
   HTMLAttributes<HTMLDivElement> & {
     message: ReactNode;
-    description?: ReactNode;
-    footer?: ReactNode;
-    icon?: ReactNode;
-    duration?: number;
-    hideClose?: boolean;
     closeIcon?: ReactNode;
+    description?: ReactNode;
+    duration?: number;
+    footer?: ReactNode;
+    hideClose?: boolean;
+    icon?: ReactNode;
   }
 >;
 

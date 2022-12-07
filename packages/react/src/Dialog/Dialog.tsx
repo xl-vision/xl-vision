@@ -14,15 +14,15 @@ export type DialogButtonProps = Omit<ButtonProps, 'children' | 'onClick'>;
 
 export interface DialogProps extends Omit<ModalProps, 'bodyProps' | 'title' | 'children'> {
   title: ReactNode;
-  children?: ReactNode;
-  footer?: ReactNode;
-  prompt?: boolean;
-  confirmButtonProps?: DialogButtonProps;
   cancelButtonProps?: DialogButtonProps;
-  confirmText?: string;
   cancelText?: string;
-  onConfirm?: () => void | Promise<void>;
+  children?: ReactNode;
+  confirmButtonProps?: DialogButtonProps;
+  confirmText?: string;
+  footer?: ReactNode;
   onCancel?: () => void | Promise<void>;
+  onConfirm?: () => void | Promise<void>;
+  prompt?: boolean;
 }
 
 const displayName = 'Dialog';

@@ -19,12 +19,12 @@ import AvatarContext, { AvatarContextProps } from './AvatarContext';
 export type AvatarGroupPopupPlacement = 'none' | 'top' | 'bottom';
 
 export type AvatarGroupProps = HTMLAttributes<HTMLDivElement> & {
-  maxCount?: number;
-  popupPlacement?: AvatarGroupPopupPlacement;
-  size?: AvatarSize;
   children: ReactElement<AvatarProps> | Array<ReactElement<AvatarProps>>;
+  maxCount?: number;
   maxStyle?: CSSProperties;
+  popupPlacement?: AvatarGroupPopupPlacement;
   shape?: AvatarShape;
+  size?: AvatarSize;
 };
 
 const displayName = 'AvatarGroup';

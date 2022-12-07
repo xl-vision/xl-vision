@@ -11,8 +11,8 @@ export type DemoBoxProps = {
   children: [ReactNode, ReactNode, ReactNode];
   jsCode: string;
   // tsCode: string;
-  tsCodeNode: ReactNode;
   jsCodeNode: ReactNode;
+  tsCodeNode: ReactNode;
   debug?: boolean;
   id?: string;
 };

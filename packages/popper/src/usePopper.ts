@@ -10,8 +10,8 @@ export type PopperElementMountedEvent = (
 
 export type PopperOptions = {
   placement: Placement;
-  mode?: PopperMode;
   middlewares?: Array<Middleware>;
+  mode?: PopperMode;
 };
 
 const usePopper = ({ placement, mode = 'fixed', middlewares }: PopperOptions) => {

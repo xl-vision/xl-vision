@@ -42,7 +42,11 @@ const displayName = 'Avatar';
 const AvatarRoot = styled('span', {
   name: displayName,
   slot: 'Root',
-})<{ shape: AvatarShape; size?: ComponentSize; isImage: boolean }>(({ theme, styleProps }) => {
+})<{
+  isImage: boolean;
+  shape: AvatarShape;
+  size?: ComponentSize;
+}>(({ theme, styleProps }) => {
   const { shape: shapeType, size, isImage } = styleProps;
   const { color, styleSize, componentSize } = theme;
   const style: CSSObject = {

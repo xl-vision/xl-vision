@@ -13,14 +13,14 @@ export type RowAlign = 'top' | 'middle' | 'bottom';
 export type RowJustify = 'start' | 'end' | 'center' | 'space-around' | 'space-between';
 
 export interface RowProps extends HTMLAttributes<HTMLDivElement> {
-  align?: RowAlign;
   children: ReactElement<ColProps> | Array<ReactElement<ColProps>>;
+  align?: RowAlign;
   className?: string;
+  component?: keyof JSX.IntrinsicElements | ComponentType;
   gutter?: number | Partial<Record<Breakpoint, number>>;
   justify?: RowJustify;
-  component?: keyof JSX.IntrinsicElements | ComponentType;
-  wrap?: boolean;
   removeOnUnvisible?: boolean;
+  wrap?: boolean;
 }
 
 const displayName = 'Row';

@@ -18,9 +18,9 @@ export interface DropdownSubmenuProps
     'popup' | 'arrow' | 'transitionClasses' | 'disablePopupEnter' | 'children' | 'title'
   > {
   children: ReactNode;
-  transitionClassName?: string;
   title: ReactNode;
   disabled?: boolean;
+  transitionClassName?: string;
 }
 
 const displayName = 'DropdownSubmenu';

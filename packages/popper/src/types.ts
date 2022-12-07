@@ -34,16 +34,16 @@ export type OverflowRect = {
 
 export type MiddlewareExtra = {
   [key: string]: any;
+  arrow?: {
+    x?: number;
+    y?: number;
+  };
   autoPlacement?: {
     sides: Array<Side>;
     index: number;
   };
   hide?: {
     referenceHidden: boolean;
-  };
-  arrow?: {
-    x?: number;
-    y?: number;
   };
 };
 
@@ -60,12 +60,12 @@ export type MiddlewareData = Omit<PopperData, 'placement'> & {
 };
 
 export type MiddlewareContext = MiddlewareData & {
-  popper: Element;
-  reference: Reference;
-  popperRect: PopperRect;
-  referenceRect: ReferenceRect;
-  mode: PopperMode;
   initialSide: Side;
+  mode: PopperMode;
+  popper: Element;
+  popperRect: PopperRect;
+  reference: Reference;
+  referenceRect: ReferenceRect;
   initialAlignment?: Alignment;
 };
 

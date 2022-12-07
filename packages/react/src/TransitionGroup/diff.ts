@@ -2,8 +2,8 @@ import { warning } from '@xl-vision/utils';
 import { ReactElement } from 'react';
 
 export type DiffData = {
-  prev: Array<ReactElement>;
   next: Array<ReactElement>;
+  prev: Array<ReactElement>;
   same?: boolean;
 };
 

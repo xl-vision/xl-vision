@@ -41,7 +41,7 @@ const displayName = 'TextArea';
 const TextAreaRoot = styled('span', {
   name: displayName,
   slot: 'Root',
-})<{ size: ComponentSize; focused: boolean; disabled?: boolean; readOnly?: boolean }>(
+})<{ focused: boolean; size: ComponentSize; disabled?: boolean; readOnly?: boolean }>(
   ({ theme, styleProps }) => {
     const { color, styleSize, typography, transition, clsPrefix } = theme;
 

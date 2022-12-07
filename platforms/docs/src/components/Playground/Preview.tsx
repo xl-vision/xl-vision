@@ -7,9 +7,9 @@ import Sandbox from './Sandbox';
 const babelPromise = import('@babel/standalone');
 
 export type PreviewProps = {
-  reactVersion?: string;
-  libVersion?: string;
   code: string;
+  libVersion?: string;
+  reactVersion?: string;
   scripts?: Record<string, string>;
 };
 

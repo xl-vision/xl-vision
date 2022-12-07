@@ -1,14 +1,14 @@
 export type RGBColor = {
-  r: number;
-  g: number;
   b: number;
+  g: number;
+  r: number;
   a?: number;
 };
 
 export type HSLColor = {
   h: number;
-  s: number;
   l: number;
+  s: number;
   a?: number;
 };
 

@@ -26,15 +26,15 @@ export type TransitionCancelledHook<T extends Element = Element> = (
 ) => void;
 
 export type TransitionOptions<T extends Element> = {
-  onEnter?: TransitionStartHook<T>;
-  onEntering?: TransitionStartingHook<T>;
-  onEntered?: TransitionEndHook<T>;
-  onEnterCancelled?: TransitionCancelledHook<T>;
-  onExit?: TransitionStartHook<T>;
-  onExiting?: TransitionStartingHook<T>;
-  onExited?: TransitionEndHook<T>;
-  onExitCancelled?: TransitionCancelledHook<T>;
   in: boolean;
+  onEnter?: TransitionStartHook<T>;
+  onEnterCancelled?: TransitionCancelledHook<T>;
+  onEntered?: TransitionEndHook<T>;
+  onEntering?: TransitionStartingHook<T>;
+  onExit?: TransitionStartHook<T>;
+  onExitCancelled?: TransitionCancelledHook<T>;
+  onExited?: TransitionEndHook<T>;
+  onExiting?: TransitionStartingHook<T>;
   transitionOnFirst?: boolean;
 };
 

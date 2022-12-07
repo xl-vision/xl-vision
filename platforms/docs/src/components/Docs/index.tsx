@@ -14,9 +14,9 @@ export type DocsProps = {
 };
 
 export type Outline = Array<{
+  children: Outline;
   id: string;
   title: string;
-  children: Outline;
   debug?: boolean;
 }>;
 

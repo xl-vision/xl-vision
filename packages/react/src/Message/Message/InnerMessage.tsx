@@ -21,10 +21,10 @@ import Transition from '../../Transition';
 export type InnerMessageProps = NoticationProps<
   HTMLAttributes<HTMLDivElement> & {
     content: ReactNode;
-    icon?: ReactNode;
-    duration?: number;
-    showClose?: boolean;
     closeIcon?: ReactNode;
+    duration?: number;
+    icon?: ReactNode;
+    showClose?: boolean;
   }
 >;
 
