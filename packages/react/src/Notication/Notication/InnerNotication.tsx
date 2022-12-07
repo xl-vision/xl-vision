@@ -1,5 +1,7 @@
 import { NoticationProps, useConstantFn } from '@xl-vision/hooks';
+import { CloseOutlined } from '@xl-vision/icons';
 import { isProduction } from '@xl-vision/utils';
+import { clsx } from 'clsx';
 import PropTypes from 'prop-types';
 import {
   forwardRef,
@@ -12,12 +14,10 @@ import {
   useEffect,
   useRef,
 } from 'react';
-import { clsx } from 'clsx';
-import { CloseOutlined } from '@xl-vision/icons';
-import Transition from '../../Transition';
-import { styled } from '../../styles';
 import usePropChange from '../../hooks/usePropChange';
+import { styled } from '../../styles';
 import { useTheme } from '../../ThemeProvider';
+import Transition from '../../Transition';
 import NoticationContext from '../context';
 
 export type InnerNoticationProps = NoticationProps<

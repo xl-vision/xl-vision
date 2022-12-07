@@ -1,6 +1,6 @@
 const confusingBrowserGlobals = require('confusing-browser-globals');
-const path = require('path');
 const fs = require('fs-extra');
+const path = require('path');
 
 const resolveAlias = () => {
   const basePath = path.join(__dirname, 'packages');
@@ -71,6 +71,16 @@ module.exports = {
       },
     ],
     'import/no-unresolved': 'error',
+    'import/order': [
+      'error',
+      {
+        alphabetize: {
+          order: 'asc' /* sort in ascending order. Options: ['ignore', 'asc', 'desc'] */,
+          caseInsensitive: true /* ignore case. Options: [true, false] */,
+        },
+        groups: [['builtin', 'external'], 'internal'],
+      },
+    ],
     // Strict, airbnb is using warn; allow warn and error for dev environments
     'no-console': ['error', { allow: ['warn', 'error'] }],
     'nonblock-statement-body-position': 'error',

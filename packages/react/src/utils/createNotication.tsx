@@ -5,10 +5,10 @@ import {
   NoticationProps,
   useNotication,
 } from '@xl-vision/hooks';
-import ReactDOM from 'react-dom';
 
 import { isProduction } from '@xl-vision/utils';
 import { ComponentType, createRef, forwardRef, useImperativeHandle, useState } from 'react';
+import ReactDOM from 'react-dom';
 
 type MethodNoticationRef<P, NCP> = {
   instance: ReturnType<typeof useNotication<P, NCP>>[0];

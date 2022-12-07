@@ -1,13 +1,13 @@
+import { useConstantFn } from '@xl-vision/hooks';
+import { Anchor, Row } from '@xl-vision/react';
 import { defaultLanguage } from '@xl-vision/react/locale';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useConstantFn } from '@xl-vision/hooks';
-import { Anchor, Row } from '@xl-vision/react';
 import { ComponentType, FC, useState, useEffect } from 'react';
-import { useLocale } from '../LocalizationProvider';
+import useIsDebugMode from '../../hooks/useIsDebugMode';
 import routes, { Route, RouteType } from '../../routes';
 import { HEADER_HEIGHT } from '../Header';
-import useIsDebugMode from '../../hooks/useIsDebugMode';
+import { useLocale } from '../LocalizationProvider';
 
 export type DocsProps = {
   locales: Record<string, { component: ComponentType; outlinePromise: Promise<Outline> }>;

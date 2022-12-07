@@ -1,5 +1,5 @@
-import { Input } from '@xl-vision/react';
 import { SettingOutlined } from '@xl-vision/icons';
+import { Input } from '@xl-vision/react';
 
 const Demo = () => {
   return (

@@ -1,5 +1,5 @@
-import { Button, Dialog } from '@xl-vision/react';
 import { useCallback } from 'react';
+import { Button, Dialog } from '@xl-vision/react';
 
 const UseDialog = () => {
   const [dialog, holders] = Dialog.useDialog();

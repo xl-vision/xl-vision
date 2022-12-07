@@ -1,9 +1,9 @@
-import { contains, isProduction } from '@xl-vision/utils';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
 import { useConstantFn, useForkRef } from '@xl-vision/hooks';
 import { CloseCircleFilled } from '@xl-vision/icons';
 import { CSSObject } from '@xl-vision/styled-engine';
+import { contains, isProduction } from '@xl-vision/utils';
+import clsx from 'clsx';
+import PropTypes from 'prop-types';
 import {
   InputHTMLAttributes,
   ReactNode,
@@ -15,11 +15,11 @@ import {
   FocusEvent,
   MouseEvent,
 } from 'react';
-import { styled } from '../styles';
-import usePropChange from '../hooks/usePropChange';
-import { alpha } from '../utils/color';
-import { ComponentSize, useTheme } from '../ThemeProvider';
 import useInput from '../hooks/useInput';
+import usePropChange from '../hooks/usePropChange';
+import { styled } from '../styles';
+import { ComponentSize, useTheme } from '../ThemeProvider';
+import { alpha } from '../utils/color';
 
 export type InputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,

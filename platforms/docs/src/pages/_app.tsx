@@ -1,12 +1,12 @@
 import { createGlobalStyles, CssBaseline } from '@xl-vision/react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import LocalizationProvider, { useLocale } from '../components/LocalizationProvider';
-import ThemeProvider from '../components/ThemeProvider';
-import Markdown from '../components/Markdown';
-import LayoutMap, { LayoutKey } from '../layout';
 import BaiduAnalytics from '../components/BaiduAnalytics';
 import GoogleAnalytics from '../components/GoogleAnalytics';
+import LocalizationProvider, { useLocale } from '../components/LocalizationProvider';
+import Markdown from '../components/Markdown';
+import ThemeProvider from '../components/ThemeProvider';
+import LayoutMap, { LayoutKey } from '../layout';
 
 const GlobalStyle = createGlobalStyles(({ theme }) => {
   const { color, breakpoints } = theme;

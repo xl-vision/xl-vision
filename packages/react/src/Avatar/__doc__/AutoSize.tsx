@@ -1,5 +1,5 @@
-import { Avatar, Button, styled } from '@xl-vision/react';
 import { useState, useCallback } from 'react';
+import { Avatar, Button, styled } from '@xl-vision/react';
 
 const Wrapper = styled('div')(() => {
   return {

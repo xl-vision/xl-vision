@@ -1,4 +1,3 @@
-import useMessage from './useMessage';
 import {
   MessageGlobalConfig,
   MethodMessageContainerProps,
@@ -10,6 +9,7 @@ import {
   loading,
   setGlobalConfig,
 } from './methods';
+import useMessage from './useMessage';
 
 export * from './Message';
 export * from './MessageContainer';

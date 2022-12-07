@@ -4,8 +4,8 @@ import {
   ExclamationCircleFilled,
   InfoCircleFilled,
 } from '@xl-vision/icons';
-import PropTypes from 'prop-types';
 import { isProduction } from '@xl-vision/utils';
+import PropTypes from 'prop-types';
 import { FC, useMemo } from 'react';
 import { useTheme } from '../../ThemeProvider';
 import InnerNotication, { InnerNoticationProps } from './InnerNotication';

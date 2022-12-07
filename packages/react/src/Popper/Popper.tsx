@@ -1,6 +1,4 @@
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import { isProduction, isServer, oneOf } from '@xl-vision/utils';
+import { CssTransitionClassNameRecord, useForkRef } from '@xl-vision/hooks';
 import {
   Placement,
   useConnectInteraction,
@@ -25,7 +23,9 @@ import {
   AutoUpdateOptions,
   ArrowOptions,
 } from '@xl-vision/popper';
-import { CssTransitionClassNameRecord, useForkRef } from '@xl-vision/hooks';
+import { isProduction, isServer, oneOf } from '@xl-vision/utils';
+import clsx from 'clsx';
+import PropTypes from 'prop-types';
 import {
   MouseEventHandler,
   Ref,
@@ -42,10 +42,10 @@ import {
   useRef,
   ReactNode,
 } from 'react';
-import Transition from '../Transition';
-import Portal, { PortalContainerType } from '../Portal';
 import usePropChange from '../hooks/usePropChange';
+import Portal, { PortalContainerType } from '../Portal';
 import { useTheme } from '../ThemeProvider';
+import Transition from '../Transition';
 import { increaseZindex } from '../utils/zIndexManger';
 
 export type PopperTrigger = 'hover' | 'focus' | 'click' | 'contextMenu';

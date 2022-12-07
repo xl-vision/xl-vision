@@ -1,7 +1,7 @@
-import { Anchor } from '@xl-vision/react';
-import { noop } from '@xl-vision/utils';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { noop } from '@xl-vision/utils';
+import { Anchor } from '@xl-vision/react';
 import * as perf from '../../utils/perf';
 
 describe('Anchor', () => {

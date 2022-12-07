@@ -1,6 +1,6 @@
 import { act, render, screen } from '@testing-library/react';
-import { FC } from 'react';
 import * as utils from '@xl-vision/utils';
+import { FC } from 'react';
 import useCssTransition from '..';
 
 const nextFrame = jest.spyOn(utils, 'nextFrame').mockImplementation();

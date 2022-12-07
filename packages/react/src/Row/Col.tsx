@@ -1,12 +1,12 @@
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import { isProduction } from '@xl-vision/utils';
 import { CSSObject } from '@xl-vision/styled-engine';
+import { isProduction } from '@xl-vision/utils';
+import clsx from 'clsx';
+import PropTypes from 'prop-types';
 import { HTMLAttributes, ReactNode, forwardRef, useContext } from 'react';
 import { styled } from '../styles';
-import RowContext from './RowContext';
 import { useTheme } from '../ThemeProvider';
 import { Breakpoint } from '../ThemeProvider/breakpoints';
+import RowContext from './RowContext';
 
 export type ColSpanType = number | Partial<Record<Breakpoint, number>>;
 

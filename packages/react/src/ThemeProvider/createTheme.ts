@@ -1,11 +1,11 @@
-import createColors, { Color } from './color';
-import createTransition, { Transition } from './transition';
-import createTypography, { Typography } from './typography';
-import createMixins from './mixins';
-import createElevations from './elevations';
 import createBreakpoints, { Breakpoints } from './breakpoints';
+import createColors, { Color } from './color';
+import createElevations from './elevations';
+import createMixins from './mixins';
 import createOverrideStyles, { OverrideStyles } from './overrideStyles';
 import createStyleSize, { ComponentSize, StyleSize } from './styleSize';
+import createTransition, { Transition } from './transition';
+import createTypography, { Typography } from './typography';
 
 export type BaseTheme = Partial<{
   color: Color;

@@ -1,6 +1,6 @@
+import { isProduction, isServer } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { isProduction, isServer } from '@xl-vision/utils';
 import { ReactNode, forwardRef } from 'react';
 import Popper, { PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';

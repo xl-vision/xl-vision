@@ -1,12 +1,12 @@
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
 import { CSSObject } from '@xl-vision/styled-engine';
 import { isProduction } from '@xl-vision/utils';
+import clsx from 'clsx';
+import PropTypes from 'prop-types';
 import { ReactNode, FC, useState, useEffect } from 'react';
-import Dialog, { DialogProps } from '../Dialog';
-import { styled } from '../../styles';
 import usePropChange from '../../hooks/usePropChange';
+import { styled } from '../../styles';
 import { useTheme } from '../../ThemeProvider';
+import Dialog, { DialogProps } from '../Dialog';
 
 export interface InnerDedicatedDialogProps extends Omit<DialogProps, 'children'> {
   content?: ReactNode;

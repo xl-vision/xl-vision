@@ -1,12 +1,12 @@
+import { useConstantFn } from '@xl-vision/hooks';
 import { isProduction } from '@xl-vision/utils';
 
-import { useConstantFn } from '@xl-vision/hooks';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { HTMLAttributes, ReactNode, forwardRef, useContext, useEffect } from 'react';
 import { styled } from '../styles';
-import AnchorContext from './AnchorContext';
 import { useTheme } from '../ThemeProvider';
+import AnchorContext from './AnchorContext';
 
 export type AnchorLinkProps = Omit<HTMLAttributes<HTMLDivElement>, 'title'> & {
   title: ReactNode;

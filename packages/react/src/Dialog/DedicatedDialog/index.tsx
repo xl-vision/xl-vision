@@ -4,12 +4,12 @@ import {
   ExclamationCircleOutlined,
   InfoCircleOutlined,
 } from '@xl-vision/icons';
-import { FC, useMemo } from 'react';
 import { isProduction } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
-import InnerDedicatedDialog, { InnerDedicatedDialogProps } from './InnerDedicatedDialog';
-import { useTheme } from '../../ThemeProvider';
+import { FC, useMemo } from 'react';
 import { useConfig } from '../../ConfigProvider';
+import { useTheme } from '../../ThemeProvider';
+import InnerDedicatedDialog, { InnerDedicatedDialogProps } from './InnerDedicatedDialog';
 
 export * from './InnerDedicatedDialog';
 

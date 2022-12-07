@@ -1,6 +1,6 @@
+import { isProduction } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { isProduction } from '@xl-vision/utils';
 import {
   HTMLAttributes,
   ReactElement,
@@ -10,11 +10,11 @@ import {
   cloneElement,
   useMemo,
 } from 'react';
-import Avatar, { AvatarProps, AvatarShape, AvatarSize } from './Avatar';
 import Popover from '../Popover';
 import { styled } from '../styles';
-import AvatarContext, { AvatarContextProps } from './AvatarContext';
 import { ComponentSize, useTheme } from '../ThemeProvider';
+import Avatar, { AvatarProps, AvatarShape, AvatarSize } from './Avatar';
+import AvatarContext, { AvatarContextProps } from './AvatarContext';
 
 export type AvatarGroupPopupPlacement = 'none' | 'top' | 'bottom';
 

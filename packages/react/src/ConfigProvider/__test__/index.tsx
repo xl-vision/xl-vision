@@ -1,7 +1,7 @@
-import { defaultLanguage } from '@xl-vision/react/locale';
-import { ConfigProvider, useConfig } from '@xl-vision/react';
-import { useEffect } from 'react';
 import { render } from '@testing-library/react';
+import { useEffect } from 'react';
+import { ConfigProvider, useConfig } from '@xl-vision/react';
+import { defaultLanguage } from '@xl-vision/react/locale';
 
 describe('ConfigProvider', () => {
   it('Test get language', () => {

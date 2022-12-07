@@ -1,6 +1,6 @@
 import { RefCallback, useCallback, useRef, useState } from 'react';
-import computePosition from './utils/computePosition';
 import { Middleware, PopperMode, Placement, PopperData, Reference } from './types';
+import computePosition from './utils/computePosition';
 
 export type PopperElementMountedEvent = (
   reference: Reference,

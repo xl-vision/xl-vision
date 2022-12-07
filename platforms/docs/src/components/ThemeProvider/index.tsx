@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
-import { BaseTheme, ThemeProvider as XlThemeProvider } from '@xl-vision/react';
 import { useIsomorphicLayoutEffect } from '@xl-vision/hooks';
-import Cookies from 'js-cookie';
+import { BaseTheme, ThemeProvider as XlThemeProvider } from '@xl-vision/react';
 import { noop } from '@xl-vision/utils';
+import Cookies from 'js-cookie';
+import PropTypes from 'prop-types';
 import { ReactNode, createContext, FC, useState, useCallback, useMemo } from 'react';
 
 export type ThemeProviderProps = {

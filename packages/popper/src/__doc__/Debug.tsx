@@ -1,3 +1,5 @@
+import { styled, Button, Portal } from '@xl-vision/react';
+import { useMemo, useCallback, CSSProperties, useEffect } from 'react';
 import {
   usePopper,
   offset,
@@ -7,8 +9,6 @@ import {
   Side,
   PopperOptions,
 } from '@xl-vision/popper';
-import { styled, Button, Portal } from '@xl-vision/react';
-import { useMemo, useCallback, CSSProperties, useEffect } from 'react';
 import { Padding } from '../types';
 
 const Root = styled('div')(({ theme }) => {

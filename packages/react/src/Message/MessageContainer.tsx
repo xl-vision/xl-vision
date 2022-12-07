@@ -1,7 +1,7 @@
 import { NoticationContainerProps } from '@xl-vision/hooks';
-import { Children, FC } from 'react';
-import PropTypes from 'prop-types';
 import { isProduction, isServer } from '@xl-vision/utils';
+import PropTypes from 'prop-types';
+import { Children, FC } from 'react';
 import Portal, { PortalContainerType } from '../Portal';
 import { styled } from '../styles';
 

@@ -1,6 +1,6 @@
-import { Popper } from '@xl-vision/react';
 import { act, fireEvent, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { Popper } from '@xl-vision/react';
 
 describe('Popper', () => {
   beforeAll(() => {

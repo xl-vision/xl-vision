@@ -1,6 +1,6 @@
-import { BaseButton } from '@xl-vision/react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { BaseButton } from '@xl-vision/react';
 
 describe('BaseButton', () => {
   it('Test basic render', () => {

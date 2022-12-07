@@ -1,5 +1,5 @@
-import { Input } from '@xl-vision/react';
 import { useEffect, useState } from 'react';
+import { Input } from '@xl-vision/react';
 
 const Demo = () => {
   const [value, handleValue] = useState<string>();

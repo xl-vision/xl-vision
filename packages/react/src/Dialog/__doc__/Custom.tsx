@@ -1,6 +1,6 @@
 import { CloseOutlined } from '@xl-vision/icons';
-import { Button, Dialog, styled } from '@xl-vision/react';
 import { useState, useCallback } from 'react';
+import { Button, Dialog, styled } from '@xl-vision/react';
 
 const CustomHeader = styled('div')(({ theme }) => {
   const { typography, color, styleSize } = theme;

@@ -1,7 +1,7 @@
-const semver = require('semver');
-const glob = require('glob');
 const fs = require('fs-extra');
+const glob = require('glob');
 const path = require('path');
+const semver = require('semver');
 
 async function run() {
   const cwd = process.cwd();

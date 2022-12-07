@@ -1,4 +1,3 @@
-import useNotication from './useNotication';
 import {
   NoticationGlobalConfig,
   MethodNoticationContainerProps,
@@ -9,6 +8,7 @@ import {
   open,
   setGlobalConfig,
 } from './methods';
+import useNotication from './useNotication';
 
 export * from './Notication';
 export * from './NoticationContainer';

@@ -1,8 +1,8 @@
 import { useConstantFn } from '@xl-vision/hooks';
 import { styled, useTheme } from '@xl-vision/react';
-import { Controlled as CodeMirror } from 'react-codemirror2';
 import codemirror from 'codemirror';
 import { FC, useMemo } from 'react';
+import { Controlled as CodeMirror } from 'react-codemirror2';
 
 require('codemirror/mode/jsx/jsx');
 require('codemirror/lib/codemirror.css');

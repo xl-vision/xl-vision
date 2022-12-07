@@ -1,5 +1,5 @@
-import { Button, Dialog } from '@xl-vision/react';
 import { useState, useCallback } from 'react';
+import { Button, Dialog } from '@xl-vision/react';
 
 const PromiseComponent = () => {
   const [visible, setVisible] = useState(false);

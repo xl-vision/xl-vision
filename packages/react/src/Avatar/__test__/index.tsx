@@ -1,5 +1,5 @@
-import { Avatar } from '@xl-vision/react';
 import { render, fireEvent } from '@testing-library/react';
+import { Avatar } from '@xl-vision/react';
 
 describe('Avatar', () => {
   it('Render string', () => {

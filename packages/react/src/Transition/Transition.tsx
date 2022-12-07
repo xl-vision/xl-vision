@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
-import { isProduction, warning } from '@xl-vision/utils';
 import { CssTransitionOptions, useCssTransition, useForkRef } from '@xl-vision/hooks';
+import { isProduction, warning } from '@xl-vision/utils';
+import PropTypes from 'prop-types';
 import {
   ReactElement,
   FC,

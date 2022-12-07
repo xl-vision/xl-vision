@@ -1,6 +1,6 @@
+import { styled } from '@xl-vision/react';
 import { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
-import { styled } from '@xl-vision/react';
 import { useRouter } from 'next/router';
 import { useContext, useMemo } from 'react';
 import { LocalizationContext } from '../../components/LocalizationProvider';

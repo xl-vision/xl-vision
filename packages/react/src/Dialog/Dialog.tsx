@@ -1,14 +1,14 @@
+import { useConstantFn } from '@xl-vision/hooks';
+import { isProduction, noop } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { isProduction, noop } from '@xl-vision/utils';
-import { useConstantFn } from '@xl-vision/hooks';
 import { ReactNode, forwardRef, useState, useContext, useEffect } from 'react';
-import Modal, { ModalProps } from '../Modal';
-import ThemeContext from '../ThemeProvider/ThemeContext';
-import { styled } from '../styles';
 import Button, { ButtonProps } from '../Button';
-import usePropChange from '../hooks/usePropChange';
 import { useConfig } from '../ConfigProvider';
+import usePropChange from '../hooks/usePropChange';
+import Modal, { ModalProps } from '../Modal';
+import { styled } from '../styles';
+import ThemeContext from '../ThemeProvider/ThemeContext';
 
 export type DialogButtonProps = Omit<ButtonProps, 'children' | 'onClick'>;
 

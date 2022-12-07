@@ -1,6 +1,6 @@
 import { FC, Fragment } from 'react';
-import ThemeProvider, { ThemeProviderProps } from '../ThemeProvider';
 import ConfigProvider, { ConfigProviderProps } from '../ConfigProvider';
+import ThemeProvider, { ThemeProviderProps } from '../ThemeProvider';
 import createNotication from '../utils/createNotication';
 import DedicatedDialog, { DedicatedDialogProps, DialogType } from './DedicatedDialog';
 

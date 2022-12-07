@@ -1,6 +1,6 @@
-import ROP from 'resize-observer-polyfill';
-import { RefCallback, useCallback, useEffect, useRef } from 'react';
 import { noop } from '@xl-vision/utils';
+import { RefCallback, useCallback, useEffect, useRef } from 'react';
+import ROP from 'resize-observer-polyfill';
 import useConstantFn from '../useConstantFn';
 
 export type ResizeObserverHandler<T extends Element = Element> = (

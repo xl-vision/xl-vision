@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import { Dialog } from '@xl-vision/react';
 import { triggerTransitionEnd } from 'test/utils';
+import { Dialog } from '@xl-vision/react';
 
 describe('Dialog', () => {
   beforeAll(() => {

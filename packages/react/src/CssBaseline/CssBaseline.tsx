@@ -1,6 +1,6 @@
 import { CSSObject } from '@xl-vision/styled-engine';
-import PropTypes from 'prop-types';
 import { isProduction } from '@xl-vision/utils';
+import PropTypes from 'prop-types';
 import { ReactNode, FC } from 'react';
 import { createGlobalStyles } from '../styles';
 import { Theme, useTheme } from '../ThemeProvider';

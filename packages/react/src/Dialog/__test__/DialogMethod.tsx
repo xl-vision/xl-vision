@@ -1,6 +1,6 @@
 import { act } from '@testing-library/react';
-import { Dialog } from '@xl-vision/react';
 import { awaitPromise, triggerTransitionEnd } from 'test/utils';
+import { Dialog } from '@xl-vision/react';
 
 const { destroyAll, error, info, open, success, warning, confirm } = Dialog;
 

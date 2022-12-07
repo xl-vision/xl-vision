@@ -1,9 +1,9 @@
-const argv = require('minimist')(process.argv.slice(2));
-const babel = require('gulp-babel');
-const gulp = require('gulp');
-const path = require('path');
-const ts = require('gulp-typescript');
 const fs = require('fs-extra');
+const gulp = require('gulp');
+const babel = require('gulp-babel');
+const ts = require('gulp-typescript');
+const argv = require('minimist')(process.argv.slice(2));
+const path = require('path');
 const getBabelConfig = require('./getBabelConfig');
 
 const defaultReporter = ts.reporter.defaultReporter();

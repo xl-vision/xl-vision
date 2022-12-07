@@ -1,6 +1,6 @@
 import { act, render, screen } from '@testing-library/react';
-import { CollapseTransition } from '@xl-vision/react';
 import * as utils from '@xl-vision/utils';
+import { CollapseTransition } from '@xl-vision/react';
 
 const temp = window.getComputedStyle;
 

@@ -1,5 +1,5 @@
-import { Avatar, styled } from '@xl-vision/react';
 import { UserOutlined } from '@xl-vision/icons';
+import { Avatar, styled } from '@xl-vision/react';
 
 const Wrapper = styled('div')(() => {
   return {

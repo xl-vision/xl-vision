@@ -1,14 +1,14 @@
-const rollup = require('rollup');
-const { getBabelInputPlugin } = require('@rollup/plugin-babel');
-const replace = require('@rollup/plugin-replace');
 const alias = require('@rollup/plugin-alias');
-const { nodeResolve } = require('@rollup/plugin-node-resolve');
+const { getBabelInputPlugin } = require('@rollup/plugin-babel');
 const commonjs = require('@rollup/plugin-commonjs');
-const argv = require('minimist')(process.argv.slice(2));
-const path = require('path');
-const glob = require('glob');
+const { nodeResolve } = require('@rollup/plugin-node-resolve');
+const replace = require('@rollup/plugin-replace');
 const terser = require('@rollup/plugin-terser');
 const fs = require('fs-extra');
+const glob = require('glob');
+const argv = require('minimist')(process.argv.slice(2));
+const path = require('path');
+const rollup = require('rollup');
 const getBabelConfig = require('./getBabelConfig');
 
 const entry = argv.entry || 'src/index.ts';

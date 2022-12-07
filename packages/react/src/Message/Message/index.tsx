@@ -7,11 +7,11 @@ import {
 } from '@xl-vision/icons';
 import { keyframes } from '@xl-vision/styled-engine';
 import { isProduction } from '@xl-vision/utils';
-import { FC, useMemo } from 'react';
 import PropTypes from 'prop-types';
+import { FC, useMemo } from 'react';
+import { styled } from '../../styles';
 import { useTheme } from '../../ThemeProvider';
 import InnerMessage, { InnerMessageProps } from './InnerMessage';
-import { styled } from '../../styles';
 
 export type MessageType = 'success' | 'error' | 'warning' | 'info' | 'loading';
 
