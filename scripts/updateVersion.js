@@ -23,8 +23,8 @@ async function run() {
         it,
         { ...json, version: nextVersion },
         {
-          spaces: 2,
           EOL: '\n',
+          spaces: 2,
         },
       ),
     );

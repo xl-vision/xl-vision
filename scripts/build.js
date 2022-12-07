@@ -43,8 +43,8 @@ function build(isProd) {
 
   return rollup
     .rollup({
-      input,
       external: ['react', 'react-dom'],
+      input,
       plugins: [
         alias({
           entries: aliasEntries,
@@ -60,28 +60,28 @@ function build(isProd) {
           include: /node_modules/,
         }),
         getBabelInputPlugin({
+          babelHelpers: 'bundled',
           extensions,
           plugins: babelConfig.plugins,
           presets: [...babelConfig.presets, '@babel/preset-typescript'],
-          babelHelpers: 'bundled',
         }),
       ],
     })
     .then((it) =>
       it.write({
-        format: 'umd',
-        name: packageName,
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-        },
         file: path.resolve(
           basePath,
           'dist',
           isProd ? 'index.production.min.js' : 'index.development.js',
         ),
-        sourcemap: true,
+        format: 'umd',
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDOM',
+        },
+        name: packageName,
         plugins: [isProd && terser({ sourceMap: true })].filter(Boolean),
+        sourcemap: true,
       }),
     );
 }

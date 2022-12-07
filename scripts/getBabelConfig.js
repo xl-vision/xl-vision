@@ -6,8 +6,8 @@ module.exports = function getBabelConfig(style, runtime = true) {
       '@babel/preset-env',
       {
         bugfixes: true,
-        shippedProposals: style === 'modern',
         modules: useESModules ? false : 'commonjs',
+        shippedProposals: style === 'modern',
       },
     ],
     [
@@ -30,7 +30,7 @@ module.exports = function getBabelConfig(style, runtime = true) {
   ].filter(Boolean);
 
   return {
-    presets,
     plugins,
+    presets,
   };
 };
