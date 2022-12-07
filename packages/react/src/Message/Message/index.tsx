@@ -8,6 +8,7 @@ import {
 import { keyframes } from '@xl-vision/styled-engine';
 import { isProduction } from '@xl-vision/utils';
 import { FC, useMemo } from 'react';
+import PropTypes from 'prop-types';
 import { useTheme } from '../../ThemeProvider';
 import InnerMessage, { InnerMessageProps } from './InnerMessage';
 import { styled } from '../../styles';
@@ -81,6 +82,9 @@ const Message: FC<MessageProps> = ({ type, ...others }) => {
 
 if (!isProduction) {
   Message.displayName = displayName;
+  Message.propTypes = {
+    type: PropTypes.oneOf<MessageType>(['error', 'info', 'loading', 'success', 'warning']),
+  };
 }
 
 export default Message;

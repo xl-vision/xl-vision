@@ -1,4 +1,4 @@
-import Proptypes from 'prop-types';
+import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { CSSObject } from '@xl-vision/styled-engine';
 import { isProduction } from '@xl-vision/utils';
@@ -117,13 +117,13 @@ const InnerDedicatedDialog: FC<InnerDedicatedDialogProps> = (props) => {
 if (!isProduction) {
   InnerDedicatedDialog.displayName = displayName;
   InnerDedicatedDialog.propTypes = {
-    className: Proptypes.string,
-    content: Proptypes.node,
-    defaultVisible: Proptypes.bool,
-    icon: Proptypes.node,
-    title: Proptypes.node,
-    visible: Proptypes.bool,
-    onVisibleChange: Proptypes.func,
+    className: PropTypes.string,
+    content: PropTypes.node,
+    defaultVisible: PropTypes.bool,
+    icon: PropTypes.node,
+    title: PropTypes.node,
+    visible: PropTypes.bool,
+    onVisibleChange: PropTypes.func,
   };
 }
 

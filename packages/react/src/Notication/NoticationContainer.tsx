@@ -1,5 +1,7 @@
 import { NoticationContainerProps as InnerNoticationContainerProps } from '@xl-vision/hooks';
 import { Children, CSSProperties, FC, useMemo } from 'react';
+import PropTypes from 'prop-types';
+import { isProduction, isServer } from '@xl-vision/utils';
 import Portal, { PortalContainerType } from '../Portal';
 import { styled } from '../styles';
 import NoticationContext from './context';
@@ -59,5 +61,25 @@ const NoticationContainer: FC<NoticationContainerProps> = ({
     </Portal>
   );
 };
+
+if (!isProduction) {
+  NoticationContainer.displayName = displayName;
+  NoticationContainer.propTypes = {
+    children: PropTypes.node,
+    container: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.string,
+      isServer ? PropTypes.any : PropTypes.instanceOf(Element),
+    ]),
+    distance: PropTypes.number,
+    placement: PropTypes.oneOf<NoticationPlacement>([
+      'bottom-left',
+      'bottom-right',
+      'top-left',
+      'top-right',
+    ]),
+    zIndex: PropTypes.number,
+  };
+}
 
 export default NoticationContainer;

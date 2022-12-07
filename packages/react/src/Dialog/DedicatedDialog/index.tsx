@@ -6,6 +6,7 @@ import {
 } from '@xl-vision/icons';
 import { FC, useMemo } from 'react';
 import { isProduction } from '@xl-vision/utils';
+import PropTypes from 'prop-types';
 import InnerDedicatedDialog, { InnerDedicatedDialogProps } from './InnerDedicatedDialog';
 import { useTheme } from '../../ThemeProvider';
 import { useConfig } from '../../ConfigProvider';
@@ -72,6 +73,9 @@ const DedicatedDialog: FC<DedicatedDialogProps> = ({ type, ...others }) => {
 
 if (!isProduction) {
   DedicatedDialog.displayName = displayName;
+  DedicatedDialog.propTypes = {
+    type: PropTypes.oneOf<DialogType>(['confirm', 'error', 'info', 'success', 'warning']),
+  };
 }
 
 export default DedicatedDialog;

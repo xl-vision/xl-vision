@@ -1,5 +1,7 @@
 import { NoticationContainerProps } from '@xl-vision/hooks';
 import { Children, FC } from 'react';
+import PropTypes from 'prop-types';
+import { isProduction, isServer } from '@xl-vision/utils';
 import Portal, { PortalContainerType } from '../Portal';
 import { styled } from '../styles';
 
@@ -43,5 +45,19 @@ const MessageContainer: FC<MessageContainerProps> = ({
     </Portal>
   );
 };
+
+if (!isProduction) {
+  MessageContainer.displayName = displayName;
+  MessageContainer.propTypes = {
+    children: PropTypes.node,
+    container: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.string,
+      isServer ? PropTypes.any : PropTypes.instanceOf(Element),
+    ]),
+    top: PropTypes.number,
+    zIndex: PropTypes.number,
+  };
+}
 
 export default MessageContainer;

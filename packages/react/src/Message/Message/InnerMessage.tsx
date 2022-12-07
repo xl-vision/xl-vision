@@ -1,5 +1,6 @@
 import { NoticationProps, useConstantFn } from '@xl-vision/hooks';
 import { isProduction } from '@xl-vision/utils';
+import PropTypes from 'prop-types';
 import {
   forwardRef,
   HTMLAttributes,
@@ -204,7 +205,18 @@ const InnerMessage = forwardRef<HTMLDivElement, InnerMessageProps>((props, ref) 
 
 if (!isProduction) {
   InnerMessage.displayName = displayName;
-  InnerMessage.propTypes = {};
+  InnerMessage.propTypes = {
+    content: PropTypes.node.isRequired,
+    closeIcon: PropTypes.node,
+    defaultValue: PropTypes.bool,
+    duration: PropTypes.number,
+    icon: PropTypes.node,
+    showClose: PropTypes.bool,
+    visible: PropTypes.bool,
+    onAfterClosed: PropTypes.func,
+    onMouseEnter: PropTypes.func,
+    onMouseLeave: PropTypes.func,
+  };
 }
 
 export default InnerMessage;

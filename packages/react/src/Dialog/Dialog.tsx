@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import Proptypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { isProduction, noop } from '@xl-vision/utils';
 import { useConstantFn } from '@xl-vision/hooks';
 import { ReactNode, forwardRef, useState, useContext, useEffect } from 'react';
@@ -225,20 +225,20 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
 if (!isProduction) {
   Dialog.displayName = displayName;
   Dialog.propTypes = {
-    title: Proptypes.node.isRequired,
-    cancelButtonProps: Proptypes.shape({}),
-    cancelText: Proptypes.string,
-    children: Proptypes.node,
-    className: Proptypes.string,
-    confirmButtonProps: Proptypes.shape({}),
-    confirmText: Proptypes.string,
-    defaultVisible: Proptypes.bool,
-    footer: Proptypes.node,
-    prompt: Proptypes.bool,
-    visible: Proptypes.bool,
-    onCancel: Proptypes.func,
-    onConfirm: Proptypes.func,
-    onVisibleChange: Proptypes.func,
+    title: PropTypes.node.isRequired,
+    cancelButtonProps: PropTypes.shape({}),
+    cancelText: PropTypes.string,
+    children: PropTypes.node,
+    className: PropTypes.string,
+    confirmButtonProps: PropTypes.shape({}),
+    confirmText: PropTypes.string,
+    defaultVisible: PropTypes.bool,
+    footer: PropTypes.node,
+    prompt: PropTypes.bool,
+    visible: PropTypes.bool,
+    onCancel: PropTypes.func,
+    onConfirm: PropTypes.func,
+    onVisibleChange: PropTypes.func,
   };
 }
 
