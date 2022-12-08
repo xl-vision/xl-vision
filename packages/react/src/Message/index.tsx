@@ -7,6 +7,7 @@ import {
   success,
   open,
   loading,
+  destroyAll,
   setGlobalConfig,
 } from './methods';
 import useMessage from './useMessage';
@@ -18,6 +19,7 @@ export * from './useMessage';
 export type { MessageGlobalConfig, MethodMessageContainerProps };
 
 const Message = {
+  destroyAll,
   useMessage,
   info,
   warning,
