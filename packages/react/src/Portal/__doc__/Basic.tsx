@@ -1,6 +1,5 @@
-/* eslint-disable no-alert */
 import { useCallback, useState, ReactElement, useRef, useEffect } from 'react';
-import { Portal, Button, styled } from '@xl-vision/react';
+import { Portal, Button, styled, Message } from '@xl-vision/react';
 
 const Wrapper = styled('div')(({ theme }) => {
   return {
@@ -26,9 +25,11 @@ const Wrapper = styled('div')(({ theme }) => {
 });
 
 const Basic = () => {
+  const [message, holder] = Message.useMessage();
+
   const handleClick = useCallback(() => {
-    alert('You clicked container1!');
-  }, []);
+    message.success('You clicked container1!');
+  }, [message]);
 
   const [node, setNode] = useState<ReactElement>();
 
@@ -47,6 +48,7 @@ const Basic = () => {
 
   return (
     <Wrapper>
+      {holder}
       <div className='container1' onClick={handleClick}>
         <p>container1</p>
         {node}

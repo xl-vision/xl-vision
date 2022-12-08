@@ -46,6 +46,7 @@ const InnerNoticationRoot = styled('div', {
     display: 'inline-block',
     padding: `8px 0`,
     textAlign: 'left',
+    color: theme.color.text.primary,
 
     [`&.${rootClassName}`]: {
       '&-appear-active, &-enter-active': {

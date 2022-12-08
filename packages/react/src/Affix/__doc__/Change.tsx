@@ -1,15 +1,23 @@
 import { useCallback } from 'react';
-import { Affix, Button } from '@xl-vision/react';
+import { Affix, Button, Message } from '@xl-vision/react';
 
 const Demo = () => {
-  const handleChange = useCallback((affixed: boolean) => {
-    console.log(affixed);
-  }, []);
+  const [message, holder] = Message.useMessage();
+
+  const handleChange = useCallback(
+    (affixed: boolean) => {
+      message.info(`affix state change: ${affixed}`);
+    },
+    [message],
+  );
 
   return (
-    <Affix offsetTop={150} onChange={handleChange}>
-      <Button>offset top 150</Button>
-    </Affix>
+    <>
+      {holder}
+      <Affix offsetTop={150} onChange={handleChange}>
+        <Button>offset top 150</Button>
+      </Affix>
+    </>
   );
 };
 

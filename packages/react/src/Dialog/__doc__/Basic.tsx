@@ -1,22 +1,24 @@
 import { useState, useCallback } from 'react';
-import { Button, Dialog } from '@xl-vision/react';
+import { Button, Dialog, Message } from '@xl-vision/react';
 
 const Basic = () => {
   const [visible, setVisible] = useState(false);
+  const [message, holder] = Message.useMessage();
 
   const handleClick = useCallback(() => {
     setVisible(true);
   }, []);
 
   const handleConfirm = useCallback(() => {
-    console.log('confirm');
-  }, []);
+    message.info(`confirm`);
+  }, [message]);
   const handleCancel = useCallback(() => {
-    console.log('cancel');
-  }, []);
+    message.info(`cancel`);
+  }, [message]);
 
   return (
     <>
+      {holder}
       <Button color='primary' onClick={handleClick}>
         click
       </Button>

@@ -1,21 +1,27 @@
-import { Button, Dropdown } from '@xl-vision/react';
+/* eslint-disable @typescript-eslint/no-misused-promises */
+import { Button, Dropdown, Message } from '@xl-vision/react';
 
 const Basic = () => {
+  const [message, holder] = Message.useMessage();
+
   const menus = (
     <>
-      <Dropdown.Item onClick={() => console.log(1)}>1st menu item</Dropdown.Item>
-      <Dropdown.Item disabled={true} onClick={() => console.log(2)}>
+      <Dropdown.Item onClick={() => message.info('1st menu item')}>1st menu item</Dropdown.Item>
+      <Dropdown.Item disabled={true} onClick={() => message.info('2nd menu item')}>
         2nd menu item
       </Dropdown.Item>
       <Dropdown.Divider />
-      <Dropdown.Item onClick={() => console.log(3)}>3rd menu item</Dropdown.Item>
+      <Dropdown.Item onClick={() => message.info('3rd menu item')}>3rd menu item</Dropdown.Item>
     </>
   );
 
   return (
-    <Dropdown menus={menus}>
-      <Button color='primary'>button</Button>
-    </Dropdown>
+    <>
+      {holder}
+      <Dropdown menus={menus}>
+        <Button color='primary'>button</Button>
+      </Dropdown>
+    </>
   );
 };
 

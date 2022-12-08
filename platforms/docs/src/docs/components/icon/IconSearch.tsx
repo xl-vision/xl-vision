@@ -1,5 +1,5 @@
 import * as Icons from '@xl-vision/icons';
-import { Button, Input, styled } from '@xl-vision/react';
+import { Button, Input, Message, styled } from '@xl-vision/react';
 import ClipboardJs from 'clipboard';
 import { ComponentType, FC, useState, useCallback, useMemo, MouseEvent } from 'react';
 import { useLocale } from '../../../components/LocalizationProvider';
@@ -49,19 +49,23 @@ const IconWrapper = styled('div')(({ theme }) => {
 const IconSearch: FC<void> = () => {
   const { locale } = useLocale();
   const [iconType, setIconType] = useState<IconType>(IconType.OUTLINED);
+  const [message, holder] = Message.useMessage();
 
   const [search, setSearch] = useState('');
 
-  const handleCopy = useCallback((e: MouseEvent) => {
-    const target = e.currentTarget as HTMLDivElement;
-    const clipboard = new ClipboardJs(target);
+  const handleCopy = useCallback(
+    (e: MouseEvent) => {
+      const target = e.currentTarget as HTMLDivElement;
+      const clipboard = new ClipboardJs(target);
 
-    clipboard.on('success', () => {
-      clipboard.destroy();
-      // eslint-disable-next-line no-alert
-      alert('Copy success');
-    });
-  }, []);
+      clipboard.on('success', () => {
+        clipboard.destroy();
+        // eslint-disable-next-line @typescript-eslint/no-floating-promises
+        message.success('Copy success');
+      });
+    },
+    [message],
+  );
 
   const icons = useMemo(() => {
     return keys
@@ -103,6 +107,7 @@ const IconSearch: FC<void> = () => {
 
   return (
     <Wrapper>
+      {holder}
       <Input.Group style={{ marginBottom: 20 }}>
         <Button
           color={iconType === IconType.OUTLINED ? 'primary' : 'default'}

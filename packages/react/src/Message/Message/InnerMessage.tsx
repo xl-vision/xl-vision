@@ -41,6 +41,7 @@ const InnerMessageRoot = styled('div', {
   return {
     display: 'inline-block',
     padding: `8px 0`,
+    color: theme.color.text.primary,
 
     [`&.${rootClassName}`]: {
       '&-appear-active, &-enter-active': {
