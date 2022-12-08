@@ -81,7 +81,7 @@ const FooterWrapper = styled(Footer)(({ theme }) => {
 const Home: NextPage = () => {
   const { locale } = useContext(LocalizationContext);
 
-  const titleContent = `${locale.pages.index.title} | xl-vision`
+  const titleContent = `${locale.pages.index.title} | xl-vision`;
 
   return (
     <>

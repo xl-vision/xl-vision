@@ -7,10 +7,6 @@ import LocalizationProvider, { useLocale } from '../components/LocalizationProvi
 import Markdown from '../components/Markdown';
 import ThemeProvider from '../components/ThemeProvider';
 import LayoutMap, { LayoutKey } from '../layout';
-import React from 'react'
-import ReacrDOM from 'react-dom'
-
-console.log(ReacrDOM.version, React.version)
 
 const GlobalStyle = createGlobalStyles(({ theme }) => {
   const { color, breakpoints } = theme;

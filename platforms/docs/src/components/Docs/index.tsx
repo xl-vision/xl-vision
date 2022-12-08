@@ -75,7 +75,7 @@ const Docs: FC<DocsProps> = ({ locales }) => {
 
   const Instance = Component ? <Component /> : null;
 
-  const titleContent = `${title} | xl-vision`
+  const titleContent = `${title} | xl-vision`;
 
   return (
     <>

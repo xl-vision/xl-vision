@@ -194,7 +194,7 @@ const NotFound: NextPage = () => {
     transform: `scale(${isBelowMd ? 0.7 : 1})`,
   };
 
-  const titleContent = `${locale.pages[404].title} | xl-vision`
+  const titleContent = `${locale.pages[404].title} | xl-vision`;
 
   return (
     <Root>

@@ -41,7 +41,7 @@ const PlaygroundPage: NextPage = () => {
     return {};
   }, []);
 
-  const titleContent = `${locale.pages.playground.title} | xl-vision`
+  const titleContent = `${locale.pages.playground.title} | xl-vision`;
 
   return (
     <>
