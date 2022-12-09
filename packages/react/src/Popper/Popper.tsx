@@ -151,7 +151,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
 
   const [zIndex, setZIndex] = useState<number>();
 
-  const [transitionVisible, setTransitionVisible] = useState(open);
+  const [transitionOpen, setTransitionOpen] = useState(open);
 
   const middlewares = useMemo(() => {
     return [
@@ -211,7 +211,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
 
   useEffect(() => {
     if (open) {
-      setTransitionVisible(true);
+      setTransitionOpen(true);
       setZIndex(increaseZindex());
     }
   }, [open]);
@@ -259,11 +259,11 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
   };
 
   const handleExited = useCallback(() => {
-    setTransitionVisible(false);
+    setTransitionOpen(false);
     onAfterClosed?.();
   }, [onAfterClosed]);
 
-  const show = open || transitionVisible;
+  const show = open || transitionOpen;
 
   const portal = (
     <Portal container={popupContainer}>

@@ -56,7 +56,7 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
     transitionClassName,
     offset = 12,
     open: openProp,
-    defaultOpen: defaultVisible = false,
+    defaultOpen = false,
     onOpenChange,
     popupContainer,
     className,
@@ -67,13 +67,13 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
 
   const submenuCloseHandlersRef = useRef<Array<() => void>>([]);
 
-  const [open, setOpen] = usePropChange(defaultVisible, openProp, onOpenChange);
+  const [open, setOpen] = usePropChange(defaultOpen, openProp, onOpenChange);
 
-  const setOpenWrapper = useConstantFn((newVisible: boolean) => {
-    if (!newVisible) {
+  const setOpenWrapper = useConstantFn((value: boolean) => {
+    if (!value) {
       submenuCloseHandlersRef.current.forEach((it) => it());
     }
-    setOpen(newVisible);
+    setOpen(value);
   });
 
   useEffect(() => {

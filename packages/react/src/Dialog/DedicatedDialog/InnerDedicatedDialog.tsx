@@ -61,8 +61,8 @@ const InnerDedicatedDialogContent = styled('div', {
 const InnerDedicatedDialog: FC<InnerDedicatedDialogProps> = (props) => {
   const {
     open: openProp,
-    defaultOpen: defaultVisibleProp = false,
-    onOpenChange: onOpenChangeProp,
+    defaultOpen = false,
+    onOpenChange,
     content,
     icon,
     title,
@@ -70,7 +70,7 @@ const InnerDedicatedDialog: FC<InnerDedicatedDialogProps> = (props) => {
     ...others
   } = props;
 
-  const [open, handleOpenChange] = usePropChange(defaultVisibleProp, openProp, onOpenChangeProp);
+  const [open, handleOpenChange] = usePropChange(defaultOpen, openProp, onOpenChange);
 
   const [first, setFirst] = useState(true);
 

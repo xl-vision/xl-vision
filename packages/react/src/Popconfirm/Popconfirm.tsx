@@ -150,7 +150,7 @@ const Popconfirm = forwardRef<HTMLDivElement, PopconfirmProps>((props, ref) => {
       });
   });
 
-  const handleVisibleChange = useConstantFn((value: boolean) => {
+  const handleOpenChange = useConstantFn((value: boolean) => {
     if (confirmLoading || cancelLoading) {
       return;
     }
@@ -212,7 +212,7 @@ const Popconfirm = forwardRef<HTMLDivElement, PopconfirmProps>((props, ref) => {
       ref={ref}
       transitionClassName={transitionClassName || rootClassName}
       trigger={trigger}
-      onOpenChange={handleVisibleChange}
+      onOpenChange={handleOpenChange}
     />
   );
 });

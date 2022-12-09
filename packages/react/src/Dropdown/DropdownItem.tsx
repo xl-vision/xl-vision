@@ -66,13 +66,13 @@ const DropdownItem = forwardRef<HTMLLIElement, DropdownItemProps>((props, ref) =
 
   const { clsPrefix } = useTheme();
 
-  const { setOpen: setVisible } = useContext(DropdownContext);
+  const { setOpen } = useContext(DropdownContext);
 
   const handleClick = useConstantFn((e: MouseEvent<HTMLLIElement>) => {
     if (disabled) {
       return;
     }
-    setVisible(false);
+    setOpen(false);
     onClick?.(e);
   });
 

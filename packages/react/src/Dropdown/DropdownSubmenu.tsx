@@ -122,23 +122,23 @@ const DropdownSubmenu = forwardRef<HTMLDivElement, DropdownSubmenuProps>((props,
     offset = 8,
     trigger = defaultTrigger,
     open: openProp,
-    defaultOpen: defaultVisible = false,
+    defaultOpen = false,
     onOpenChange,
     popupContainer = defaultGetPopupContainer,
     disabled,
     ...others
   } = props;
 
-  const [open, setOpen] = usePropChange(defaultVisible, openProp, onOpenChange);
+  const [open, setOpen] = usePropChange(defaultOpen, openProp, onOpenChange);
 
   const { clsPrefix } = useTheme();
   const { submenuCloseHandlers } = useContext(DropdownContext);
 
-  const handleVisibleChange = useConstantFn((newVisible: boolean) => {
+  const handleOpenChange = useConstantFn((value: boolean) => {
     if (disabled) {
       return;
     }
-    setOpen(newVisible);
+    setOpen(value);
   });
 
   const closeHandler = useCallback(() => {
@@ -181,7 +181,7 @@ const DropdownSubmenu = forwardRef<HTMLDivElement, DropdownSubmenuProps>((props,
       ref={ref}
       transitionClassName={clsx(rootClassName, transitionClassName)}
       trigger={trigger}
-      onOpenChange={handleVisibleChange}
+      onOpenChange={handleOpenChange}
     >
       <li className={`${rootClassName}__inner`}>
         <DropdownSubmenuItemButton

@@ -177,7 +177,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
   const [open, setOpen] = usePropChange(defaultOpen, openProp, onOpenChange);
 
-  const [animatedVisible, setAnimatedVisible] = useState(open);
+  const [animatedOpen, setAnimatedOpen] = useState(open);
 
   const [zIndex, setZIndex] = useState<number>();
 
@@ -198,7 +198,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     return modalManagers[modalManagers.length - 1] === bodyRef.current;
   }, []);
 
-  const inProp = open && animatedVisible;
+  const inProp = open && animatedOpen;
 
   const transitionCount = useRef(inProp ? (mask ? 2 : 1) : 0);
 
@@ -274,7 +274,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     if (!open) {
       return;
     }
-    setAnimatedVisible(true);
+    setAnimatedOpen(true);
     setZIndex(increaseZindex());
 
     const scrollLocker = scrollLockerRef.current;
@@ -314,7 +314,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     // 确保遮罩动画和modal动画都完成后再解锁
     if (transitionCount.current <= 0) {
       transitionCount.current = 0;
-      setAnimatedVisible(false);
+      setAnimatedOpen(false);
       onAfterClosed?.();
       // 动画结束后解除锁定
       const scrollLocker = scrollLockerRef.current;
@@ -322,7 +322,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
         scrollLocker.unlock();
       }
     }
-  }, [setAnimatedVisible, onAfterClosed]);
+  }, [setAnimatedOpen, onAfterClosed]);
 
   const handleMaskClick = useCallback(() => {
     if (!maskClosable) {
@@ -352,7 +352,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     innerFocusRef.current = true;
   }, []);
 
-  const hidden = !open && !animatedVisible;
+  const hidden = !open && !animatedOpen;
 
   if (!hidden) {
     isFirstMountRef.current = false;
