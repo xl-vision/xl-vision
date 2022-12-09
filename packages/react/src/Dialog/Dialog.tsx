@@ -107,9 +107,9 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
     footer,
     prompt,
     className,
-    visible: visibleProp,
-    onVisibleChange: onVisibleChangeProp,
-    defaultVisible: defaultVisibleProp = false,
+    open: openProp,
+    defaultOpen = false,
+    onOpenChange: onOpenChangeProp,
     onConfirm,
     onCancel,
     cancelText = locale.Dialog.cancelText,
@@ -119,7 +119,7 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
     ...others
   } = props;
 
-  const [visible, setVisible] = usePropChange(defaultVisibleProp, visibleProp, onVisibleChangeProp);
+  const [open, setOpen] = usePropChange(defaultOpen, openProp, onOpenChangeProp);
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [cancelLoading, setCancelLoading] = useState(false);
 
@@ -138,7 +138,7 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
       resolve(onConfirm?.());
     })
       .then(() => {
-        setVisible(false);
+        setOpen(false);
       })
       .finally(() => {
         setConfirmLoading(false);
@@ -151,20 +151,20 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
       resolve(onCancel?.());
     })
       .then(() => {
-        setVisible(false);
+        setOpen(false);
       })
       .finally(() => {
         setCancelLoading(false);
       });
   });
 
-  const handleVisibleChange = useConstantFn((_visible: boolean) => {
+  const handleOpenChange = useConstantFn((v: boolean) => {
     // 在loading时，必须等待结果，而不能直接关闭
     if (confirmLoading || cancelLoading) {
       return;
     }
-    setVisible(_visible);
-    if (!_visible) {
+    setOpen(v);
+    if (!v) {
       onCancel?.()?.catch(noop);
     }
   });
@@ -204,8 +204,8 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
       ref={ref}
       {...others}
       className={clsx(rootClassName, className)}
-      visible={visible}
-      onVisibleChange={handleVisibleChange}
+      open={open}
+      onOpenChange={handleOpenChange}
     >
       <DialogHeader className={`${rootClassName}__header`} id={dialogTitleId}>
         {typeof title === 'string' ? <h6 className={`${rootClassName}__title`}>{title}</h6> : title}
@@ -232,13 +232,13 @@ if (!isProduction) {
     className: PropTypes.string,
     confirmButtonProps: PropTypes.shape({}),
     confirmText: PropTypes.string,
-    defaultVisible: PropTypes.bool,
+    defaultOpen: PropTypes.bool,
     footer: PropTypes.node,
+    open: PropTypes.bool,
     prompt: PropTypes.bool,
-    visible: PropTypes.bool,
     onCancel: PropTypes.func,
     onConfirm: PropTypes.func,
-    onVisibleChange: PropTypes.func,
+    onOpenChange: PropTypes.func,
   };
 }
 

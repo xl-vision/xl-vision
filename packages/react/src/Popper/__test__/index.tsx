@@ -8,14 +8,14 @@ describe('Popper', () => {
   });
 
   it('test trigger hover', () => {
-    const handleVisibleChange = jest.fn();
+    const handleOpenChange = jest.fn();
 
     const { container } = render(
       <Popper
         popup={<div>popup</div>}
         popupContainer={() => document.body}
         trigger='hover'
-        onVisibleChange={handleVisibleChange}
+        onOpenChange={handleOpenChange}
       >
         <button id='btn'>button</button>
       </Popper>,
@@ -31,7 +31,7 @@ describe('Popper', () => {
       jest.runAllTimers();
     });
 
-    expect(handleVisibleChange).toHaveBeenLastCalledWith(true);
+    expect(handleOpenChange).toHaveBeenLastCalledWith(true);
 
     expect(document.body).toMatchSnapshot();
 
@@ -41,19 +41,19 @@ describe('Popper', () => {
       jest.runAllTimers();
     });
 
-    expect(handleVisibleChange).toHaveBeenLastCalledWith(false);
+    expect(handleOpenChange).toHaveBeenLastCalledWith(false);
 
     expect(document.body).toMatchSnapshot();
   });
   it('test trigger click', async () => {
-    const handleVisibleChange = jest.fn();
+    const handleOpenChange = jest.fn();
 
     const { container } = render(
       <Popper
         popup={<div>popup</div>}
         popupContainer={() => document.body}
         trigger='click'
-        onVisibleChange={handleVisibleChange}
+        onOpenChange={handleOpenChange}
       >
         <button id='btn'>button</button>
       </Popper>,
@@ -71,7 +71,7 @@ describe('Popper', () => {
       jest.runAllTimers();
     });
 
-    expect(handleVisibleChange).toHaveBeenLastCalledWith(true);
+    expect(handleOpenChange).toHaveBeenLastCalledWith(true);
     expect(document.body).toMatchSnapshot();
 
     document.body.click();
@@ -80,18 +80,18 @@ describe('Popper', () => {
       jest.runAllTimers();
     });
 
-    expect(handleVisibleChange).toHaveBeenLastCalledWith(false);
+    expect(handleOpenChange).toHaveBeenLastCalledWith(false);
     expect(document.body).toMatchSnapshot();
   });
   it('test trigger contextMenu', () => {
-    const handleVisibleChange = jest.fn();
+    const handleOpenChange = jest.fn();
 
     const { container } = render(
       <Popper
         popup={<div>popup</div>}
         popupContainer={() => document.body}
         trigger='contextMenu'
-        onVisibleChange={handleVisibleChange}
+        onOpenChange={handleOpenChange}
       >
         <button id='btn'>button</button>
       </Popper>,
@@ -107,7 +107,7 @@ describe('Popper', () => {
       jest.runAllTimers();
     });
 
-    expect(handleVisibleChange).toHaveBeenLastCalledWith(true);
+    expect(handleOpenChange).toHaveBeenLastCalledWith(true);
     expect(document.body).toMatchSnapshot();
 
     document.body.click();
@@ -116,18 +116,18 @@ describe('Popper', () => {
       jest.runAllTimers();
     });
 
-    expect(handleVisibleChange).toHaveBeenLastCalledWith(false);
+    expect(handleOpenChange).toHaveBeenLastCalledWith(false);
     expect(document.body).toMatchSnapshot();
   });
   it('test trigger focus', () => {
-    const handleVisibleChange = jest.fn();
+    const handleOpenChange = jest.fn();
 
     const { container } = render(
       <Popper
         popup={<div>popup</div>}
         popupContainer={() => document.body}
         trigger='focus'
-        onVisibleChange={handleVisibleChange}
+        onOpenChange={handleOpenChange}
       >
         <button id='btn'>button</button>
       </Popper>,
@@ -143,7 +143,7 @@ describe('Popper', () => {
       jest.runAllTimers();
     });
 
-    expect(handleVisibleChange).toHaveBeenLastCalledWith(true);
+    expect(handleOpenChange).toHaveBeenLastCalledWith(true);
     expect(document.body).toMatchSnapshot();
 
     fireEvent.blur(btn);
@@ -152,25 +152,25 @@ describe('Popper', () => {
       jest.runAllTimers();
     });
 
-    expect(handleVisibleChange).toHaveBeenLastCalledWith(false);
+    expect(handleOpenChange).toHaveBeenLastCalledWith(false);
     expect(document.body).toMatchSnapshot();
   });
   it('test trigger custom', () => {
-    // 外部修改不触发visibleChange
-    const handleVisibleChange = jest.fn();
+    // 外部修改不触发onOpenChange
+    const handleOpenChange = jest.fn();
 
     const { container, rerender } = render(
       <Popper
+        open={false}
         popup={<div id='popup'>popup</div>}
         popupContainer={() => document.body}
         trigger={false}
-        visible={false}
-        onVisibleChange={handleVisibleChange}
+        onOpenChange={handleOpenChange}
       >
         <button id='btn'>button</button>
       </Popper>,
     );
-    expect(handleVisibleChange.mock.calls.length).toBe(0);
+    expect(handleOpenChange.mock.calls.length).toBe(0);
     expect(document.querySelector('#popup')).toBeNull();
 
     const btn = container.querySelector('#btn')!;
@@ -181,16 +181,16 @@ describe('Popper', () => {
       jest.runAllTimers();
     });
 
-    expect(handleVisibleChange.mock.calls.length).toBe(0);
+    expect(handleOpenChange.mock.calls.length).toBe(0);
     expect(document.querySelector('#popup')).toBeNull();
 
     rerender(
       <Popper
+        open={true}
         popup={<div id='popup'>popup</div>}
         popupContainer={() => document.body}
         trigger={false}
-        visible={true}
-        onVisibleChange={handleVisibleChange}
+        onOpenChange={handleOpenChange}
       >
         <button id='btn'>button</button>
       </Popper>,
@@ -200,18 +200,18 @@ describe('Popper', () => {
       jest.runAllTimers();
     });
 
-    expect(handleVisibleChange.mock.calls.length).toBe(0);
+    expect(handleOpenChange.mock.calls.length).toBe(0);
     let el = document.querySelector('#popup')!.parentElement!;
     expect(el).not.toBeNull();
     expect(el.style.display).toBe('');
 
     rerender(
       <Popper
+        open={false}
         popup={<div id='popup'>popup</div>}
         popupContainer={() => document.body}
         trigger={false}
-        visible={false}
-        onVisibleChange={handleVisibleChange}
+        onOpenChange={handleOpenChange}
       >
         <button id='btn'>button</button>
       </Popper>,
@@ -221,20 +221,20 @@ describe('Popper', () => {
       jest.runAllTimers();
     });
 
-    expect(handleVisibleChange.mock.calls.length).toBe(0);
+    expect(handleOpenChange.mock.calls.length).toBe(0);
     el = document.querySelector('#popup')!.parentElement!;
     expect(el).not.toBeNull();
     expect(el.style.display).toBe('none');
   });
   it('test disablePopupEnter', () => {
-    const handleVisibleChange = jest.fn();
+    const handleOpenChange = jest.fn();
     const { container, rerender } = render(
       <Popper
         className='popup'
         popup={<div>popup</div>}
         popupContainer={() => document.body}
         trigger='hover'
-        onVisibleChange={handleVisibleChange}
+        onOpenChange={handleOpenChange}
       >
         <button id='btn'>button</button>
       </Popper>,
@@ -248,7 +248,7 @@ describe('Popper', () => {
       jest.runAllTimers();
     });
 
-    expect(handleVisibleChange).toHaveBeenLastCalledWith(true);
+    expect(handleOpenChange).toHaveBeenLastCalledWith(true);
 
     fireEvent.mouseLeave(btn);
 
@@ -260,7 +260,7 @@ describe('Popper', () => {
       jest.runAllTimers();
     });
 
-    expect(handleVisibleChange).toHaveBeenLastCalledWith(true);
+    expect(handleOpenChange).toHaveBeenLastCalledWith(true);
 
     fireEvent.mouseLeave(popup);
 
@@ -268,7 +268,7 @@ describe('Popper', () => {
       jest.runAllTimers();
     });
 
-    expect(handleVisibleChange).toHaveBeenLastCalledWith(false);
+    expect(handleOpenChange).toHaveBeenLastCalledWith(false);
 
     rerender(
       <Popper
@@ -277,7 +277,7 @@ describe('Popper', () => {
         popup={<div>popup</div>}
         popupContainer={() => document.body}
         trigger='hover'
-        onVisibleChange={handleVisibleChange}
+        onOpenChange={handleOpenChange}
       >
         <button id='btn'>button</button>
       </Popper>,
@@ -289,7 +289,7 @@ describe('Popper', () => {
       jest.runAllTimers();
     });
 
-    expect(handleVisibleChange).toHaveBeenLastCalledWith(true);
+    expect(handleOpenChange).toHaveBeenLastCalledWith(true);
 
     fireEvent.mouseLeave(btn);
     fireEvent.mouseEnter(popup);
@@ -297,7 +297,7 @@ describe('Popper', () => {
     act(() => {
       jest.runAllTimers();
     });
-    expect(handleVisibleChange).toHaveBeenLastCalledWith(false);
+    expect(handleOpenChange).toHaveBeenLastCalledWith(false);
   });
 
   it('test mountOnShow', () => {

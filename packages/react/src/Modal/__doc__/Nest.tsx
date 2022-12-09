@@ -11,20 +11,20 @@ const Body = styled('div')(({ theme }) => {
 });
 
 const Nest = () => {
-  const [visible1, setVisible1] = useState(false);
-  const [visible2, setVisible2] = useState(false);
+  const [open1, setOpen1] = useState(false);
+  const [open2, setOpen2] = useState(false);
 
   return (
     <>
-      <Button color='primary' onClick={() => setVisible1(true)}>
+      <Button color='primary' onClick={() => setOpen1(true)}>
         show
       </Button>
-      <Modal visible={visible1} onVisibleChange={setVisible1}>
+      <Modal open={open1} onOpenChange={setOpen1}>
         <Body>
           <>
             <p>This is modal content</p>
-            <Button onClick={() => setVisible2(true)}>show</Button>
-            <Modal visible={visible2} onVisibleChange={setVisible2}>
+            <Button onClick={() => setOpen2(true)}>show</Button>
+            <Modal open={open2} onOpenChange={setOpen2}>
               <Body>
                 <p>This is modal content</p>
               </Body>

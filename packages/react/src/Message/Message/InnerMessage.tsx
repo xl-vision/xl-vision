@@ -104,8 +104,8 @@ const InnerMessage = forwardRef<HTMLDivElement, InnerMessageProps>((props, ref) 
   const {
     duration = 3000,
     content,
-    defaultVisible = true,
-    visible: visibleProp,
+    defaultOpen = true,
+    open: openProp,
     icon,
     onAfterClosed,
     className,
@@ -118,7 +118,7 @@ const InnerMessage = forwardRef<HTMLDivElement, InnerMessageProps>((props, ref) 
 
   const { clsPrefix } = useTheme();
 
-  const [visible, setVisible] = usePropChange(defaultVisible, visibleProp);
+  const [open, setOpen] = usePropChange(defaultOpen, openProp);
 
   const timerRef = useRef<number>();
 
@@ -138,21 +138,21 @@ const InnerMessage = forwardRef<HTMLDivElement, InnerMessageProps>((props, ref) 
       return;
     }
     timerRef.current = window.setTimeout(() => {
-      setVisible(false);
+      setOpen(false);
     }, duration);
   });
 
   const handleClose = useCallback(() => {
-    setVisible(false);
-  }, [setVisible]);
+    setOpen(false);
+  }, [setOpen]);
 
   const handleCloseKeyDown = useCallback(
     (e: KeyboardEvent<HTMLSpanElement>) => {
       if (e.code === 'Space' || e.code === 'Enter') {
-        setVisible(false);
+        setOpen(false);
       }
     },
-    [setVisible],
+    [setOpen],
   );
 
   useEffect(() => {
@@ -160,19 +160,19 @@ const InnerMessage = forwardRef<HTMLDivElement, InnerMessageProps>((props, ref) 
       return;
     }
     timerRef.current = window.setTimeout(() => {
-      setVisible(false);
+      setOpen(false);
     }, duration);
 
     return () => {
       window.clearTimeout(timerRef.current);
     };
-  }, [duration, setVisible]);
+  }, [duration, setOpen]);
 
   const rootClassName = `${clsPrefix}-inner-message`;
 
   return (
     <Transition
-      in={visible}
+      in={open}
       transitionClassName={rootClassName}
       transitionOnFirst={true}
       onExited={handleExit}
@@ -212,8 +212,8 @@ if (!isProduction) {
     defaultValue: PropTypes.bool,
     duration: PropTypes.number,
     icon: PropTypes.node,
+    open: PropTypes.bool,
     showClose: PropTypes.bool,
-    visible: PropTypes.bool,
     onAfterClosed: PropTypes.func,
     onMouseEnter: PropTypes.func,
     onMouseLeave: PropTypes.func,

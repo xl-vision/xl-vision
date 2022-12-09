@@ -31,14 +31,14 @@ const CustomFooter = styled('div')(({ theme }) => {
 });
 
 const Custom = () => {
-  const [visible, setVisible] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleClick = useCallback(() => {
-    setVisible(true);
+    setOpen(true);
   }, []);
 
   const handleClose = useCallback(() => {
-    setVisible(false);
+    setOpen(false);
   }, []);
 
   const title = (
@@ -74,7 +74,7 @@ const Custom = () => {
       <Button color='primary' onClick={handleClick}>
         click
       </Button>
-      <Dialog footer={footer} title={title} visible={visible} onVisibleChange={setVisible}>
+      <Dialog footer={footer} open={open} title={title} onOpenChange={setOpen}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod maiores quidem fugiat
         aspernatur, odio, quo esse molestias porro maxime sit itaque quam soluta autem illo,
         corporis nihil alias sint tempora.

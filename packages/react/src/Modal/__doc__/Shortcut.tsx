@@ -12,14 +12,14 @@ const Body = styled('div')(({ theme }) => {
 });
 
 const Shortcut = () => {
-  const [visible, setVisible] = useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
     <>
-      <Button color='primary' onClick={() => setVisible(true)}>
+      <Button color='primary' onClick={() => setOpen(true)}>
         show
       </Button>
-      <Modal visible={visible} onVisibleChange={setVisible}>
+      <Modal open={open} onOpenChange={setOpen}>
         <Body>
           <p>Please click button and try to press key tab</p>
           <Popper

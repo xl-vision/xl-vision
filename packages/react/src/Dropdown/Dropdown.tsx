@@ -55,9 +55,9 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
     placement = 'bottom',
     transitionClassName,
     offset = 12,
-    visible: visibleProp,
-    defaultVisible = false,
-    onVisibleChange,
+    open: openProp,
+    defaultOpen: defaultVisible = false,
+    onOpenChange,
     popupContainer,
     className,
     ...others
@@ -67,20 +67,20 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
 
   const submenuCloseHandlersRef = useRef<Array<() => void>>([]);
 
-  const [visible, setVisible] = usePropChange(defaultVisible, visibleProp, onVisibleChange);
+  const [open, setOpen] = usePropChange(defaultVisible, openProp, onOpenChange);
 
-  const setVisibleWrapper = useConstantFn((newVisible: boolean) => {
+  const setOpenWrapper = useConstantFn((newVisible: boolean) => {
     if (!newVisible) {
       submenuCloseHandlersRef.current.forEach((it) => it());
     }
-    setVisible(newVisible);
+    setOpen(newVisible);
   });
 
   useEffect(() => {
-    if (!visible) {
+    if (!open) {
       submenuCloseHandlersRef.current.forEach((it) => it());
     }
-  }, [visible]);
+  }, [open]);
 
   const rootClassName = `${clsPrefix}-dropdown`;
 
@@ -89,9 +89,9 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
   const memorizedValue = useMemo(() => {
     return {
       submenuCloseHandlers: submenuCloseHandlersRef.current,
-      setVisible: setVisibleWrapper,
+      setOpen: setOpenWrapper,
     };
-  }, [setVisibleWrapper]);
+  }, [setOpenWrapper]);
 
   const popup = (
     <DropdownPopup className={`${rootClassName}__popup`}>
@@ -104,14 +104,14 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
       {...others}
       className={rootClasses}
       offset={offset}
+      open={open}
       placement={placement}
       popup={popup}
       popupContainer={popupContainer}
       ref={ref}
       transitionClassName={transitionClassName || rootClassName}
-      visible={visible}
       // eslint-disable-next-line react/jsx-handler-names
-      onVisibleChange={setVisible}
+      onOpenChange={setOpen}
     >
       {children}
     </DropdownRoot>
@@ -125,8 +125,9 @@ if (!isProduction) {
     children: PropTypes.element.isRequired,
     menus: PropTypes.node.isRequired,
     className: PropTypes.string,
-    defaultVisible: PropTypes.bool,
+    defaultOpen: PropTypes.bool,
     offset: PropTypes.number,
+    open: PropTypes.bool,
     placement: PropTypes.oneOf<PopperPlacement>([
       'top',
       'top-start',
@@ -147,8 +148,7 @@ if (!isProduction) {
       isServer ? PropTypes.any : PropTypes.instanceOf(Element),
     ]),
     transitionClassName: PropTypes.string,
-    visible: PropTypes.bool,
-    onVisibleChange: PropTypes.func,
+    onOpenChange: PropTypes.func,
   };
 }
 

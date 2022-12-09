@@ -2,10 +2,10 @@ import { useState, useCallback } from 'react';
 import { Button, Dialog } from '@xl-vision/react';
 
 const Width = () => {
-  const [visible, setVisible] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleClick = useCallback(() => {
-    setVisible(true);
+    setOpen(true);
   }, []);
 
   return (
@@ -16,12 +16,12 @@ const Width = () => {
       <Dialog
         cancelText='Cancel'
         confirmText='Turn on the switch'
+        open={open}
         style={{
           width: 250,
         }}
         title='Are you sure?'
-        visible={visible}
-        onVisibleChange={setVisible}
+        onOpenChange={setOpen}
       >
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod maiores quidem fugiat
         aspernatur, odio, quo esse molestias porro maxime sit itaque quam soluta autem illo,

@@ -6,7 +6,7 @@ describe('Modal', () => {
     jest.useFakeTimers();
   });
 
-  it('Test prop visible', () => {
+  it('Test prop open', () => {
     const { rerender } = render(
       <Modal>
         <div>body</div>
@@ -16,7 +16,7 @@ describe('Modal', () => {
     expect(document.querySelector('.xl-modal')).toBe(null);
 
     rerender(
-      <Modal visible={true}>
+      <Modal open={true}>
         <div>body</div>
       </Modal>,
     );
@@ -30,7 +30,7 @@ describe('Modal', () => {
     expect(document.querySelector<HTMLElement>('.xl-modal__body')?.style.display).toBe('');
 
     rerender(
-      <Modal visible={false}>
+      <Modal open={false}>
         <div>body</div>
       </Modal>,
     );
@@ -47,7 +47,7 @@ describe('Modal', () => {
   it('Test onClosed', () => {
     const fn = jest.fn();
     const { rerender } = render(
-      <Modal visible={true} onAfterClosed={fn}>
+      <Modal open={true} onAfterClosed={fn}>
         <div>body</div>
       </Modal>,
     );
@@ -55,7 +55,7 @@ describe('Modal', () => {
     expect(fn.mock.calls.length).toBe(0);
 
     rerender(
-      <Modal visible={false} onAfterClosed={fn}>
+      <Modal open={false} onAfterClosed={fn}>
         <div>body</div>
       </Modal>,
     );
@@ -79,7 +79,7 @@ describe('Modal', () => {
     expect(el).toBe(null);
 
     rerender(
-      <Modal mountOnShow={true} visible={true}>
+      <Modal mountOnShow={true} open={true}>
         <div>body</div>
       </Modal>,
     );
@@ -110,7 +110,7 @@ describe('Modal', () => {
     expect(el).toBe(null);
 
     rerender(
-      <Modal unmountOnHide={true} visible={true}>
+      <Modal open={true} unmountOnHide={true}>
         <div>body</div>
       </Modal>,
     );
@@ -122,7 +122,7 @@ describe('Modal', () => {
     });
 
     rerender(
-      <Modal unmountOnHide={true} visible={false}>
+      <Modal open={false} unmountOnHide={true}>
         <div>body</div>
       </Modal>,
     );
@@ -138,7 +138,7 @@ describe('Modal', () => {
     document.body.appendChild(div);
 
     render(
-      <Modal container={div} visible={true}>
+      <Modal container={div} open={true}>
         <div>body</div>
       </Modal>,
     );

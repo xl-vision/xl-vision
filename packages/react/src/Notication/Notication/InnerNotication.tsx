@@ -132,8 +132,8 @@ const InnerNoticationRoot = styled('div', {
 const InnerNotication = forwardRef<HTMLDivElement, InnerNoticationProps>((props, ref) => {
   const {
     duration = 4500,
-    defaultVisible = true,
-    visible: visibleProp,
+    defaultOpen = true,
+    open: openProp,
     icon,
     onAfterClosed,
     className,
@@ -151,7 +151,7 @@ const InnerNotication = forwardRef<HTMLDivElement, InnerNoticationProps>((props,
 
   const { clsPrefix } = useTheme();
 
-  const [visible, setVisible] = usePropChange(defaultVisible, visibleProp);
+  const [open, setOpen] = usePropChange(defaultOpen, openProp);
 
   const timerRef = useRef<number>();
 
@@ -171,21 +171,21 @@ const InnerNotication = forwardRef<HTMLDivElement, InnerNoticationProps>((props,
       return;
     }
     timerRef.current = window.setTimeout(() => {
-      setVisible(false);
+      setOpen(false);
     }, duration);
   });
 
   const handleClose = useCallback(() => {
-    setVisible(false);
-  }, [setVisible]);
+    setOpen(false);
+  }, [setOpen]);
 
   const handleCloseKeyDown = useCallback(
     (e: KeyboardEvent<HTMLSpanElement>) => {
       if (e.code === 'Space' || e.code === 'Enter') {
-        setVisible(false);
+        setOpen(false);
       }
     },
-    [setVisible],
+    [setOpen],
   );
 
   useEffect(() => {
@@ -193,19 +193,19 @@ const InnerNotication = forwardRef<HTMLDivElement, InnerNoticationProps>((props,
       return;
     }
     timerRef.current = window.setTimeout(() => {
-      setVisible(false);
+      setOpen(false);
     }, duration);
 
     return () => {
       window.clearTimeout(timerRef.current);
     };
-  }, [duration, setVisible]);
+  }, [duration, setOpen]);
 
   const rootClassName = `${clsPrefix}-inner-notication`;
 
   return (
     <Transition
-      in={visible}
+      in={open}
       transitionClassName={rootClassName}
       transitionOnFirst={true}
       onExited={handleExit}
@@ -247,13 +247,13 @@ if (!isProduction) {
     message: PropTypes.node.isRequired,
     className: PropTypes.string,
     closeIcon: PropTypes.node,
-    defaultVisible: PropTypes.bool,
+    defaultOpen: PropTypes.bool,
     description: PropTypes.node,
     duration: PropTypes.number,
     footer: PropTypes.node,
     hideClose: PropTypes.bool,
     icon: PropTypes.node,
-    visible: PropTypes.bool,
+    open: PropTypes.bool,
     onAfterClosed: PropTypes.func,
     onMouseEnter: PropTypes.func,
     onMouseLeave: PropTypes.func,

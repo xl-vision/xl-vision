@@ -72,20 +72,20 @@ export type PopperProps = HTMLAttributes<HTMLDivElement> & {
   className?: string;
   clickOptions?: ClickOptions;
   contextMenuOptions?: ContextMenuOptions;
-  defaultVisible?: boolean;
+  defaultOpen?: boolean;
   focusOptions?: FocusOptions;
   hoverOptions?: HoverOptions;
   mountOnShow?: boolean;
   offset?: OffsetOptions;
   onAfterClosed?: () => void;
-  onVisibleChange?: (visible: boolean) => void;
+  onOpenChange?: (open: boolean) => void;
+  open?: boolean;
   placement?: PopperPlacement;
   popupContainer?: PortalContainerType;
   shiftOptions?: ShiftOptions | false;
   transitionClassName?: string;
   trigger?: PopperTrigger | Array<PopperTrigger> | false;
   unmountOnHide?: boolean;
-  visible?: boolean;
 };
 
 const displayName = 'Popper';
@@ -105,11 +105,11 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     clickOptions,
     focusOptions,
     contextMenuOptions,
-    visible: visibleProp,
-    onVisibleChange,
+    open: openProp,
+    onOpenChange,
     className,
     arrow: arrowProp,
-    defaultVisible = false,
+    defaultOpen = false,
     shiftOptions,
     arrowOptions,
     autoPlacementOptions,
@@ -147,11 +147,11 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
 
   const child: ReactElement<PopperChildrenProps> = Children.only(children);
 
-  const [visible, setVisible] = usePropChange(defaultVisible, visibleProp, onVisibleChange);
+  const [open, setOpen] = usePropChange(defaultOpen, openProp, onOpenChange);
 
   const [zIndex, setZIndex] = useState<number>();
 
-  const [transitionVisible, setTransitionVisible] = useState(visible);
+  const [transitionVisible, setTransitionVisible] = useState(open);
 
   const middlewares = useMemo(() => {
     return [
@@ -170,20 +170,20 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
       middlewares,
     }),
     {
-      open: visible,
-      setOpen: setVisible,
+      open,
+      setOpen,
     },
   );
 
   const getPopper = useCallback(
     (el: HTMLDivElement | null) => {
-      if (visible) {
+      if (open) {
         popper(el);
       } else {
         popper(null);
       }
     },
-    [visible, popper],
+    [open, popper],
   );
 
   const { getPopperProps, getReferenceProps } = useInteraction(
@@ -210,11 +210,11 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
   const forkReferenceRef = useForkRef((child as { ref?: Ref<unknown> }).ref, reference);
 
   useEffect(() => {
-    if (visible) {
+    if (open) {
       setTransitionVisible(true);
       setZIndex(increaseZindex());
     }
-  }, [visible]);
+  }, [open]);
 
   let originX: number | string | undefined = extra.arrow?.x;
   let originY: number | string | undefined = extra.arrow?.y;
@@ -263,7 +263,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     onAfterClosed?.();
   }, [onAfterClosed]);
 
-  const show = visible || transitionVisible;
+  const show = open || transitionVisible;
 
   const portal = (
     <Portal container={popupContainer}>
@@ -275,7 +275,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
         ref={forkPopperRef}
       >
         <Transition
-          in={visible}
+          in={open}
           mountOnEnter={mountOnShow}
           transitionClassName={transitionClassNameObject}
           transitionOnFirst={true}
@@ -347,11 +347,12 @@ if (!isProduction) {
     className: PropTypes.string,
     clickOptions: PropTypes.shape({}),
     contextMenuOptions: PropTypes.shape({}),
-    defaultVisible: PropTypes.bool,
+    defaultOpen: PropTypes.bool,
     focusOptions: PropTypes.shape({}),
     hoverOptions: PropTypes.shape({}),
     mountOnShow: PropTypes.bool,
     offset: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
+    open: PropTypes.bool,
     placement: PropTypes.oneOf<PopperPlacement>([
       'top',
       'top-start',
@@ -386,9 +387,8 @@ if (!isProduction) {
       },
     ]),
     unmountOnHide: PropTypes.bool,
-    visible: PropTypes.bool,
     onAfterClosed: PropTypes.func,
-    onVisibleChange: PropTypes.func,
+    onOpenChange: PropTypes.func,
   };
 }
 

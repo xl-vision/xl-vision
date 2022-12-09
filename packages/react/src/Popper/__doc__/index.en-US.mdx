@@ -48,9 +48,9 @@ Nest
 | popup | Pop-up box | React.ReactElement | - | true |
 | placement | Specify the orientation of the pop-up box | `auto` \| `auto-start` \| `auto-end` \| `top` \| `top-start` \| `top-end `\| `right` \| `right-start` \| `right-end` \| `bottom` \| `bottom-start` \| `bottom-end` \| `left` \| `left-start` \| `left-end` | `auto` | false |
 | popupContainer | Specify the parent container of the pop-up box | string \| HTMLElement \| (() => string \| HTMLElement) | () => body | false |
-| visible | Whether to show pop-up box | boolean | - | false |
-| defaultVisible | Whether the default pop-up box is displayed, when `visible` exists, the option is invalid | boolean | false | false |
-| onVisibleChange | Callback when the status of the popup box changes | (visible: boolean) => void | - | false |
+| open | Whether to show pop-up box | boolean | - | false |
+| defaultOpen | Whether the default pop-up box is displayed, when `open` exists, the option is invalid | boolean | false | false |
+| onOpenChange | Callback when the status of the popup box changes | (open: boolean) => void | - | false |
 | trigger | Trigger method | `hover` \| `focus` \| `click` \| `contextMenu` \| `false` \| array | `hover` | false |
 | transitionClassName | Animation class name, see [CssTransition](/components/CssTransition) | string | - | false |
 | className | Pop-up box class name | string | 0 | false |

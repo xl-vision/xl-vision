@@ -6,7 +6,7 @@ describe('Dialog', () => {
   beforeAll(() => {
     jest.useFakeTimers();
   });
-  it('Test prop visible', async () => {
+  it('Test prop open', async () => {
     const { rerender } = render(
       <Dialog title='title'>
         <div>body</div>
@@ -18,7 +18,7 @@ describe('Dialog', () => {
     expect(document.querySelector('.xl-dialog')).toBe(null);
 
     rerender(
-      <Dialog title='title' visible={true}>
+      <Dialog open={true} title='title'>
         <div>body</div>
       </Dialog>,
     );
@@ -28,7 +28,7 @@ describe('Dialog', () => {
     expect(document.querySelector<HTMLElement>('.xl-dialog')?.style.display).toBe('');
 
     rerender(
-      <Dialog title='title' visible={false}>
+      <Dialog open={false} title='title'>
         <div>body</div>
       </Dialog>,
     );

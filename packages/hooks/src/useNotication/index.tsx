@@ -14,12 +14,12 @@ import {
 } from 'react';
 
 export type NoticationProps<P> = P & {
-  visible?: boolean;
-  defaultVisible?: boolean;
+  open?: boolean;
+  defaultOpen?: boolean;
   onAfterClosed?: () => void;
 };
 
-export type NoticationHookProps<P> = Omit<NoticationProps<P>, 'visible' | 'defaultVisible'>;
+export type NoticationHookProps<P> = Omit<NoticationProps<P>, 'open' | 'defaultOpen'>;
 
 export type NoticationContainerProps<NCP> = NCP & {
   children: ReactNode;
@@ -93,8 +93,8 @@ const useNotication = <P, NCP>(
       // @ts-ignore
       let currentProps: NoticationProps<P> = {
         ...props,
-        visible: undefined,
-        defaultVisible: true,
+        open: undefined,
+        defaultOpen: true,
       };
 
       let promiseResolve: () => void | undefined;
@@ -138,7 +138,7 @@ const useNotication = <P, NCP>(
       const update: NoticationHookUpdate<P> = (updateProps) => {
         const newProps =
           typeof updateProps === 'function' ? updateProps(currentProps) : updateProps;
-        currentProps = { ...currentProps, ...newProps, visible: undefined, defaultVisible: true };
+        currentProps = { ...currentProps, ...newProps, open: undefined, defaultOpen: true };
 
         render(currentProps);
       };
@@ -146,7 +146,7 @@ const useNotication = <P, NCP>(
       const destroy = () => {
         render({
           ...currentProps,
-          visible: false,
+          open: false,
         });
       };
 

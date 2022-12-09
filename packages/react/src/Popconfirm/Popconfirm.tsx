@@ -105,11 +105,11 @@ const Popconfirm = forwardRef<HTMLDivElement, PopconfirmProps>((props, ref) => {
     trigger = 'click',
     title,
     icon = defaultIcon,
-    visible: visibleProp,
-    onVisibleChange,
+    open: openProp,
+    onOpenChange,
     onCancel,
     onConfirm,
-    defaultVisible = false,
+    defaultOpen = false,
     cancelButtonProps,
     confirmButtonProps,
     cancelText = locale.Popconfirm.cancelText,
@@ -119,7 +119,7 @@ const Popconfirm = forwardRef<HTMLDivElement, PopconfirmProps>((props, ref) => {
     ...others
   } = props;
 
-  const [visible, setVisible] = usePropChange(defaultVisible, visibleProp, onVisibleChange);
+  const [open, setOpen] = usePropChange(defaultOpen, openProp, onOpenChange);
 
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [cancelLoading, setCancelLoading] = useState(false);
@@ -130,7 +130,7 @@ const Popconfirm = forwardRef<HTMLDivElement, PopconfirmProps>((props, ref) => {
       resolve(onCancel?.());
     })
       .then(() => {
-        setVisible(false);
+        setOpen(false);
       })
       .finally(() => {
         setCancelLoading(false);
@@ -143,7 +143,7 @@ const Popconfirm = forwardRef<HTMLDivElement, PopconfirmProps>((props, ref) => {
       resolve(onConfirm?.());
     })
       .then(() => {
-        setVisible(false);
+        setOpen(false);
       })
       .finally(() => {
         setConfirmLoading(false);
@@ -154,7 +154,7 @@ const Popconfirm = forwardRef<HTMLDivElement, PopconfirmProps>((props, ref) => {
     if (confirmLoading || cancelLoading) {
       return;
     }
-    setVisible(value);
+    setOpen(value);
   });
 
   const rootClassName = `${clsPrefix}-popconfirm`;
@@ -206,13 +206,13 @@ const Popconfirm = forwardRef<HTMLDivElement, PopconfirmProps>((props, ref) => {
       arrow={!hideArrow && arrow}
       className={rootClasses}
       offset={offset}
+      open={open}
       popup={popup}
       popupContainer={popupContainer}
       ref={ref}
       transitionClassName={transitionClassName || rootClassName}
       trigger={trigger}
-      visible={visible}
-      onVisibleChange={handleVisibleChange}
+      onOpenChange={handleVisibleChange}
     />
   );
 });
@@ -233,10 +233,11 @@ if (!isProduction) {
     className: PropTypes.string,
     confirmButtonProps: PropTypes.shape({}),
     confirmText: PropTypes.string,
-    defaultVisible: PropTypes.bool,
+    defaultOpen: PropTypes.bool,
     hideArrow: PropTypes.bool,
     icon: PropTypes.node,
     offset: PropTypes.number,
+    open: PropTypes.bool,
     popupContainer: PropTypes.oneOfType([
       PropTypes.func,
       PropTypes.string,
@@ -245,10 +246,9 @@ if (!isProduction) {
     title: PropTypes.node,
     transitionClassName: PropTypes.string,
     trigger: PropTypes.oneOfType([triggerPropType, PropTypes.arrayOf(triggerPropType)]),
-    visible: PropTypes.bool,
     onCancel: PropTypes.func,
     onConfirm: PropTypes.func,
-    onVisibleChange: PropTypes.func,
+    onOpenChange: PropTypes.func,
   };
 }
 

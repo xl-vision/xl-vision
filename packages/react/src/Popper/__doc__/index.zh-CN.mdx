@@ -48,9 +48,9 @@
 | popup | 弹出框 | React.ReactElement | - | true |
 | placement | 指定弹出框的方位 | `auto` \| `auto-start` \| `auto-end` \| `top` \| `top-start` \| `top-end `\| `right` \| `right-start` \| `right-end` \| `bottom` \| `bottom-start` \| `bottom-end` \| `left` \| `left-start` \| `left-end` | `auto` | false |
 | popupContainer | 指定弹出框的父容器 | string \| HTMLElement \| (() => string \| HTMLElement) | () => body | false |
-| visible | 是否显示弹出框 | boolean | - | false |
-| defaultVisible | 默认弹出框是否展示，当`visible`存在时，选项失效 | boolean | false | false |
-| onVisibleChange | 弹出框状态改变时的回调 | (visible: boolean) => void | - | false |
+| open | 是否显示弹出框 | boolean | - | false |
+| defaultVisible | 默认弹出框是否展示，当`open`存在时，选项失效 | boolean | false | false |
+| onOpenChange | 弹出框状态改变时的回调 | (open: boolean) => void | - | false |
 | trigger | 触发方式 | `hover` \| `focus` \| `click` \| `contextMenu` \| `false` \| array | `hover` | false |
 | disablePopupEnter | 禁止鼠标进入弹出框 | boolean | - | false |
 | transitionClassName | 动画 class，参看[CssTransition](/components/CssTransition) | string | - | false |

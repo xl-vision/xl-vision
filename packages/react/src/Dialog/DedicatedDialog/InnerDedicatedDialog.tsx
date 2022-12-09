@@ -60,9 +60,9 @@ const InnerDedicatedDialogContent = styled('div', {
 
 const InnerDedicatedDialog: FC<InnerDedicatedDialogProps> = (props) => {
   const {
-    visible: visibleProp,
-    defaultVisible: defaultVisibleProp = false,
-    onVisibleChange: onVisibleChangeProp,
+    open: openProp,
+    defaultOpen: defaultVisibleProp = false,
+    onOpenChange: onOpenChangeProp,
     content,
     icon,
     title,
@@ -70,11 +70,7 @@ const InnerDedicatedDialog: FC<InnerDedicatedDialogProps> = (props) => {
     ...others
   } = props;
 
-  const [visible, handleVisibleChange] = usePropChange(
-    defaultVisibleProp,
-    visibleProp,
-    onVisibleChangeProp,
-  );
+  const [open, handleOpenChange] = usePropChange(defaultVisibleProp, openProp, onOpenChangeProp);
 
   const [first, setFirst] = useState(true);
 
@@ -98,9 +94,9 @@ const InnerDedicatedDialog: FC<InnerDedicatedDialogProps> = (props) => {
     <Dialog
       {...others}
       className={clsx(rootClassName, className)}
+      open={!first && open}
       title={headerWrapper}
-      visible={!first && visible}
-      onVisibleChange={handleVisibleChange}
+      onOpenChange={handleOpenChange}
     >
       {content && (
         <InnerDedicatedDialogContent
@@ -119,11 +115,11 @@ if (!isProduction) {
   InnerDedicatedDialog.propTypes = {
     className: PropTypes.string,
     content: PropTypes.node,
-    defaultVisible: PropTypes.bool,
+    defaultOpen: PropTypes.bool,
     icon: PropTypes.node,
+    open: PropTypes.bool,
     title: PropTypes.node,
-    visible: PropTypes.bool,
-    onVisibleChange: PropTypes.func,
+    onOpenChange: PropTypes.func,
   };
 }
 

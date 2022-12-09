@@ -54,14 +54,14 @@ const Wrapper = styled('div')(() => {
 const popup = <span>This is popper</span>;
 
 const Trigger = () => {
-  const [visible, setVisible] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleCustomClick = useCallback(() => {
-    setVisible((prev) => !prev);
+    setOpen((prev) => !prev);
   }, []);
 
-  const handleVisible = useCallback((_visible: boolean) => {
-    console.log(_visible);
+  const handleOpen = useCallback((v: boolean) => {
+    console.log(v);
   }, []);
 
   return (
@@ -79,12 +79,12 @@ const Trigger = () => {
         <Button color='primary'>contextMenu</Button>
       </PopperRoot>
       <PopperRoot
+        open={open}
         placement='top'
         popup={popup}
         transitionClassName='slide'
         trigger={false}
-        visible={visible}
-        onVisibleChange={handleVisible}
+        onOpenChange={handleOpen}
       >
         <Button color='primary' onClick={handleCustomClick}>
           custom(click twice)

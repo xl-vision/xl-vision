@@ -11,14 +11,14 @@ const Body = styled('div')(({ theme }) => {
 });
 
 const EscClosable = () => {
-  const [visible, setVisible] = useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
     <>
-      <Button color='primary' onClick={() => setVisible(true)}>
+      <Button color='primary' onClick={() => setOpen(true)}>
         show
       </Button>
-      <Modal escClosable={false} visible={visible} onVisibleChange={setVisible}>
+      <Modal escClosable={false} open={open} onOpenChange={setOpen}>
         <Body>
           <p>This is modal content</p>
         </Body>

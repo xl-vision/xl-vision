@@ -121,15 +121,15 @@ const DropdownSubmenu = forwardRef<HTMLDivElement, DropdownSubmenuProps>((props,
     className,
     offset = 8,
     trigger = defaultTrigger,
-    visible: visibleProp,
-    defaultVisible = false,
-    onVisibleChange,
+    open: openProp,
+    defaultOpen: defaultVisible = false,
+    onOpenChange,
     popupContainer = defaultGetPopupContainer,
     disabled,
     ...others
   } = props;
 
-  const [visible, setVisible] = usePropChange(defaultVisible, visibleProp, onVisibleChange);
+  const [open, setOpen] = usePropChange(defaultVisible, openProp, onOpenChange);
 
   const { clsPrefix } = useTheme();
   const { submenuCloseHandlers } = useContext(DropdownContext);
@@ -138,12 +138,12 @@ const DropdownSubmenu = forwardRef<HTMLDivElement, DropdownSubmenuProps>((props,
     if (disabled) {
       return;
     }
-    setVisible(newVisible);
+    setOpen(newVisible);
   });
 
   const closeHandler = useCallback(() => {
-    return setVisible(false);
-  }, [setVisible]);
+    return setOpen(false);
+  }, [setOpen]);
 
   useEffect(() => {
     submenuCloseHandlers.push(closeHandler);
@@ -174,14 +174,14 @@ const DropdownSubmenu = forwardRef<HTMLDivElement, DropdownSubmenuProps>((props,
       {...others}
       className={rootClasses}
       offset={offset}
+      open={open}
       placement={placement}
       popup={popup}
       popupContainer={popupContainer}
       ref={ref}
       transitionClassName={clsx(rootClassName, transitionClassName)}
       trigger={trigger}
-      visible={visible}
-      onVisibleChange={handleVisibleChange}
+      onOpenChange={handleVisibleChange}
     >
       <li className={`${rootClassName}__inner`}>
         <DropdownSubmenuItemButton
@@ -216,9 +216,10 @@ if (!isProduction) {
     children: PropTypes.node.isRequired,
     title: PropTypes.node.isRequired,
     className: PropTypes.string,
-    defaultVisible: PropTypes.bool,
+    defaultOpen: PropTypes.bool,
     disabled: PropTypes.bool,
     offset: PropTypes.number,
+    open: PropTypes.bool,
     placement: PropTypes.oneOf<PopperPlacement>([
       'top',
       'top-start',
@@ -240,8 +241,7 @@ if (!isProduction) {
     ]),
     transitionClassName: PropTypes.string,
     trigger: PropTypes.oneOfType([triggerPropType, PropTypes.arrayOf(triggerPropType)]),
-    visible: PropTypes.bool,
-    onVisibleChange: PropTypes.func,
+    onOpenChange: PropTypes.func,
   };
 }
 

@@ -35,15 +35,15 @@ import { increaseZindex } from '../utils/zIndexManger';
 export interface ModalProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
   container?: PortalContainerType<HTMLElement>;
-  defaultVisible?: boolean;
+  defaultOpen?: boolean;
   escClosable?: boolean;
   mask?: boolean;
   maskClosable?: boolean;
   mountOnShow?: boolean;
   onAfterClosed?: () => void;
-  onVisibleChange?: (visible: boolean) => void;
+  onOpenChange?: (open: boolean) => void;
+  open?: boolean;
   unmountOnHide?: boolean;
-  visible?: boolean;
   wrapperClassName?: string;
 }
 
@@ -159,9 +159,9 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   const {
     container: containerProp = defaultGetContainer,
     children,
-    defaultVisible = false,
-    visible: visibleProp,
-    onVisibleChange,
+    defaultOpen = false,
+    open: openProp,
+    onOpenChange,
     unmountOnHide,
     mountOnShow = true,
     mask = true,
@@ -175,9 +175,9 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
   const { clsPrefix } = useTheme();
 
-  const [visible, setVisible] = usePropChange(defaultVisible, visibleProp, onVisibleChange);
+  const [open, setOpen] = usePropChange(defaultOpen, openProp, onOpenChange);
 
-  const [animatedVisible, setAnimatedVisible] = useState(visible);
+  const [animatedVisible, setAnimatedVisible] = useState(open);
 
   const [zIndex, setZIndex] = useState<number>();
 
@@ -198,7 +198,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     return modalManagers[modalManagers.length - 1] === bodyRef.current;
   }, []);
 
-  const inProp = visible && animatedVisible;
+  const inProp = open && animatedVisible;
 
   const transitionCount = useRef(inProp ? (mask ? 2 : 1) : 0);
 
@@ -271,7 +271,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   }, [container]);
 
   useEffect(() => {
-    if (!visible) {
+    if (!open) {
       return;
     }
     setAnimatedVisible(true);
@@ -282,7 +282,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     if (scrollLocker && !scrollLocker.locked) {
       scrollLocker.lock();
     }
-  }, [visible]);
+  }, [open]);
 
   const rootClassName = `${clsPrefix}-modal`;
 
@@ -328,16 +328,16 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     if (!maskClosable) {
       return;
     }
-    setVisible(false);
-  }, [setVisible, maskClosable]);
+    setOpen(false);
+  }, [setOpen, maskClosable]);
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
       if (escClosable && e.key === 'Escape' && isTop()) {
-        setVisible(false);
+        setOpen(false);
       }
     },
-    [isTop, escClosable, setVisible],
+    [isTop, escClosable, setOpen],
   );
 
   const handleClick = useCallback((e: ReactMouseEvent) => {
@@ -352,7 +352,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     innerFocusRef.current = true;
   }, []);
 
-  const hidden = !visible && !animatedVisible;
+  const hidden = !open && !animatedVisible;
 
   if (!hidden) {
     isFirstMountRef.current = false;
@@ -369,7 +369,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   return (
     <Portal container={containerProp}>
       <ModalRoot
-        aria-hidden={!visible}
+        aria-hidden={!open}
         className={clsx(rootClassName, wrapperClassName)}
         ref={forkRef}
         style={{ zIndex, display: hidden ? 'none' : '' }}
@@ -433,17 +433,17 @@ if (!isProduction) {
       PropTypes.string,
       isServer ? PropTypes.any : PropTypes.instanceOf(HTMLElement),
     ]),
-    defaultVisible: PropTypes.bool,
+    defaultOpen: PropTypes.bool,
     escClosable: PropTypes.bool,
     mask: PropTypes.bool,
     maskClosable: PropTypes.bool,
     mountOnShow: PropTypes.bool,
+    open: PropTypes.bool,
     style: PropTypes.shape({}),
     unmountOnHide: PropTypes.bool,
-    visible: PropTypes.bool,
     wrapperClassName: PropTypes.string,
     onAfterClosed: PropTypes.func,
-    onVisibleChange: PropTypes.func,
+    onOpenChange: PropTypes.func,
   };
 }
 
