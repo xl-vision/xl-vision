@@ -1,10 +1,9 @@
-import { useConstantFn } from '@xl-vision/hooks';
+import { useConstantFn, useValueChange } from '@xl-vision/hooks';
 import { VerticalAlignTopOutlined } from '@xl-vision/icons';
 import { isProduction, isServer, off, on } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { HTMLAttributes, forwardRef, useState, useEffect, CSSProperties, MouseEvent } from 'react';
-import usePropChange from '../hooks/usePropChange';
 import Portal from '../Portal';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
@@ -82,7 +81,7 @@ const BackTop = forwardRef<HTMLDivElement, BackTopProps>((props, ref) => {
     ...others
   } = props;
 
-  const [show, setShow] = usePropChange(false, showProp, onChange);
+  const [show, setShow] = useValueChange(false, showProp, onChange);
 
   const [currentTarget, setCurrentTarget] = useState<Window | HTMLElement>();
 

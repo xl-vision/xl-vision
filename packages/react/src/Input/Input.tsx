@@ -1,4 +1,4 @@
-import { useConstantFn, useForkRef } from '@xl-vision/hooks';
+import { useConstantFn, useForkRef, useValueChange } from '@xl-vision/hooks';
 import { CloseCircleFilled } from '@xl-vision/icons';
 import { CSSObject } from '@xl-vision/styled-engine';
 import { contains, isProduction } from '@xl-vision/utils';
@@ -16,7 +16,6 @@ import {
   MouseEvent,
 } from 'react';
 import useInput from '../hooks/useInput';
-import usePropChange from '../hooks/usePropChange';
 import { styled } from '../styles';
 import { ComponentSize, useTheme } from '../ThemeProvider';
 import { alpha } from '../utils/color';
@@ -260,7 +259,7 @@ const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     ...others
   } = props;
 
-  const [value, handleValueChange] = usePropChange(defaultValue, valueProp, onChange);
+  const [value, handleValueChange] = useValueChange(defaultValue, valueProp, onChange);
 
   const {
     hasMaxLength,

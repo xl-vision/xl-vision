@@ -1,0 +1,83 @@
+# useNotication
+
+可以很方便地实现消息通知相关 API
+
+## 示例
+
+:::demo ./Basic
+
+使用方式
+
+基本使用方式
+
+:::
+
+## 用法
+
+通过两个组件（内容组件和容器组件）定义样式和逻辑，然后通过`useNotication`包装后，就可以通过方法调用来使用。
+
+基于这个 hook，可以很方便地对消息提示、对话框等形式的通知，采用`notication.open`来呼出。
+
+## API
+
+### 容器组件
+
+```ts
+export type NoticationContainerProps<NCP> = NCP & {
+  children: ReactNode;
+};
+
+export type NoticationContainerType<NCP> =
+  | ComponentType<NoticationContainerProps<NCP>>
+  | string
+  | ReactFragment;
+```
+
+容器组件用来包含内容。
+
+可以是`div`等 html 元素，也可以是`React Component`或者`Fragment`
+
+### 内容组件
+
+```ts
+export type NoticationProps<P> = P & {
+  open?: boolean;
+  defaultOpen?: boolean;
+  // 关闭（动画结束）后回调，需要组件回调
+  onAfterClosed?: () => void;
+};
+```
+
+内容组件，默认有`open`、`defaultOpen`和`onAfterClosed`三个参数
+
+### useNotication
+
+```ts
+export type NoticationHookUpdate<P> = (
+  props:
+    | Partial<NoticationHookProps<P>>
+    | ((prev: NoticationHookProps<P>) => Partial<NoticationHookProps<P>>),
+) => void;
+
+export type NoticationHookReturnType<P> = Promise<void> & {
+  destroy: () => void;
+  update: NoticationHookUpdate<P>;
+  isDestroyed: () => boolean;
+};
+
+export type NoticationOptions<NCP> = Omit<NoticationContainerProps<NCP>, 'children'> & {
+  maxCount?: number;
+};
+
+const useNotication = <P, NCP>(
+  Notication: ComponentType<NoticationProps<P>>,
+  NoticationContainer: NoticationContainerType<NCP>,
+  options: NoticationOptions<NCP>,
+) => [
+  {
+    open(props: NoticationHookProps<P>): NoticationHookReturnType,
+    destroyAll(): void,
+  },
+  ReactNode,
+];
+```

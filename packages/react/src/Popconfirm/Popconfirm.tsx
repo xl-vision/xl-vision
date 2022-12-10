@@ -1,4 +1,4 @@
-import { useConstantFn } from '@xl-vision/hooks';
+import { useConstantFn, useValueChange } from '@xl-vision/hooks';
 import { ExclamationCircleOutlined } from '@xl-vision/icons';
 import { isProduction, isServer } from '@xl-vision/utils';
 import clsx from 'clsx';
@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import { ReactNode, forwardRef, useState } from 'react';
 import Button, { ButtonProps } from '../Button';
 import { useConfig } from '../ConfigProvider';
-import usePropChange from '../hooks/usePropChange';
 import Popper, { PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
@@ -119,7 +118,7 @@ const Popconfirm = forwardRef<HTMLDivElement, PopconfirmProps>((props, ref) => {
     ...others
   } = props;
 
-  const [open, setOpen] = usePropChange(defaultOpen, openProp, onOpenChange);
+  const [open, setOpen] = useValueChange(defaultOpen, openProp, onOpenChange);
 
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [cancelLoading, setCancelLoading] = useState(false);

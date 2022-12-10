@@ -1,4 +1,4 @@
-import { NoticationProps, useConstantFn } from '@xl-vision/hooks';
+import { NoticationProps, useConstantFn, useValueChange } from '@xl-vision/hooks';
 import { CloseOutlined } from '@xl-vision/icons';
 import { isProduction } from '@xl-vision/utils';
 import { clsx } from 'clsx';
@@ -14,7 +14,6 @@ import {
   useEffect,
   useRef,
 } from 'react';
-import usePropChange from '../../hooks/usePropChange';
 import { styled } from '../../styles';
 import { useTheme } from '../../ThemeProvider';
 import Transition from '../../Transition';
@@ -151,7 +150,7 @@ const InnerNotication = forwardRef<HTMLDivElement, InnerNoticationProps>((props,
 
   const { clsPrefix } = useTheme();
 
-  const [open, setOpen] = usePropChange(defaultOpen, openProp);
+  const [open, setOpen] = useValueChange(defaultOpen, openProp);
 
   const timerRef = useRef<number>();
 

@@ -5,6 +5,7 @@ exports[`Entry @xl-vision/hooks 1`] = `
   "useLatestRef",
   "useConstantFn",
   "useForkRef",
+  "useValueChange",
   "useIsomorphicLayoutEffect",
   "usePrevious",
   "useLifecycleState",

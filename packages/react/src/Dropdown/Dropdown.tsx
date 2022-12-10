@@ -1,9 +1,8 @@
-import { useConstantFn } from '@xl-vision/hooks';
+import { useConstantFn, useValueChange } from '@xl-vision/hooks';
 import { isProduction, isServer } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { ReactElement, ReactNode, forwardRef, useContext, useRef, useEffect, useMemo } from 'react';
-import usePropChange from '../hooks/usePropChange';
 import Popper, { PopperPlacement, PopperProps } from '../Popper';
 import { styled } from '../styles';
 import ThemeContext from '../ThemeProvider/ThemeContext';
@@ -67,7 +66,7 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
 
   const submenuCloseHandlersRef = useRef<Array<() => void>>([]);
 
-  const [open, setOpen] = usePropChange(defaultOpen, openProp, onOpenChange);
+  const [open, setOpen] = useValueChange(defaultOpen, openProp, onOpenChange);
 
   const setOpenWrapper = useConstantFn((value: boolean) => {
     if (!value) {

@@ -1,4 +1,4 @@
-import { useForkRef } from '@xl-vision/hooks';
+import { useForkRef, useValueChange } from '@xl-vision/hooks';
 import {
   contains,
   getBoundingClientRect,
@@ -22,7 +22,6 @@ import {
   KeyboardEvent,
   MouseEvent as ReactMouseEvent,
 } from 'react';
-import usePropChange from '../hooks/usePropChange';
 import Portal, { PortalContainerType } from '../Portal';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
@@ -175,7 +174,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
   const { clsPrefix } = useTheme();
 
-  const [open, setOpen] = usePropChange(defaultOpen, openProp, onOpenChange);
+  const [open, setOpen] = useValueChange(defaultOpen, openProp, onOpenChange);
 
   const [animatedOpen, setAnimatedOpen] = useState(open);
 

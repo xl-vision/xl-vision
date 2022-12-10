@@ -1,4 +1,4 @@
-import { CssTransitionClassNameRecord, useForkRef } from '@xl-vision/hooks';
+import { CssTransitionClassNameRecord, useForkRef, useValueChange } from '@xl-vision/hooks';
 import {
   Placement,
   useConnectInteraction,
@@ -42,7 +42,6 @@ import {
   useRef,
   ReactNode,
 } from 'react';
-import usePropChange from '../hooks/usePropChange';
 import Portal, { PortalContainerType } from '../Portal';
 import { useTheme } from '../ThemeProvider';
 import Transition from '../Transition';
@@ -147,7 +146,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
 
   const child: ReactElement<PopperChildrenProps> = Children.only(children);
 
-  const [open, setOpen] = usePropChange(defaultOpen, openProp, onOpenChange);
+  const [open, setOpen] = useValueChange(defaultOpen, openProp, onOpenChange);
 
   const [zIndex, setZIndex] = useState<number>();
 

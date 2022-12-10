@@ -1,4 +1,4 @@
-import { useConstantFn } from '@xl-vision/hooks';
+import { useConstantFn, useValueChange } from '@xl-vision/hooks';
 import { RightOutlined } from '@xl-vision/icons';
 import { CSSObject } from '@xl-vision/styled-engine';
 import { isProduction, isServer } from '@xl-vision/utils';
@@ -6,7 +6,6 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { ReactNode, forwardRef, useContext, useCallback, useEffect } from 'react';
 import BaseButton from '../BaseButton';
-import usePropChange from '../hooks/usePropChange';
 import Popper, { PopperPlacement, PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
@@ -129,7 +128,7 @@ const DropdownSubmenu = forwardRef<HTMLDivElement, DropdownSubmenuProps>((props,
     ...others
   } = props;
 
-  const [open, setOpen] = usePropChange(defaultOpen, openProp, onOpenChange);
+  const [open, setOpen] = useValueChange(defaultOpen, openProp, onOpenChange);
 
   const { clsPrefix } = useTheme();
   const { submenuCloseHandlers } = useContext(DropdownContext);

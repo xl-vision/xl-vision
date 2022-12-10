@@ -221,17 +221,17 @@ module.exports = {
         '@typescript-eslint/no-unused-vars': 'error',
       },
     },
-    {
-      files: ['packages/*/src/**/*.ts', 'packages/*/src/**/*.tsx'],
-      rules: {
-        // 'import/no-unresolved': [
-        //   'error',
-        //   {
-        //     ignore: ['^react', '^react-dom'],
-        //   },
-        // ],
-      },
-    },
+    // {
+    //   files: ['packages/*/src/**/*.ts', 'packages/*/src/**/*.tsx'],
+    //   rules: {
+    //     // 'import/no-unresolved': [
+    //     //   'error',
+    //     //   {
+    //     //     ignore: ['^react', '^react-dom'],
+    //     //   },
+    //     // ],
+    //   },
+    // },
     {
       files: [
         'test/utils/**',

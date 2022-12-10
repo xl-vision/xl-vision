@@ -1,11 +1,10 @@
-import { useConstantFn } from '@xl-vision/hooks';
+import { useConstantFn, useValueChange } from '@xl-vision/hooks';
 import { isProduction, noop } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { ReactNode, forwardRef, useState, useContext, useEffect } from 'react';
 import Button, { ButtonProps } from '../Button';
 import { useConfig } from '../ConfigProvider';
-import usePropChange from '../hooks/usePropChange';
 import Modal, { ModalProps } from '../Modal';
 import { styled } from '../styles';
 import ThemeContext from '../ThemeProvider/ThemeContext';
@@ -109,7 +108,7 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
     className,
     open: openProp,
     defaultOpen = false,
-    onOpenChange: onOpenChangeProp,
+    onOpenChange,
     onConfirm,
     onCancel,
     cancelText = locale.Dialog.cancelText,
@@ -119,7 +118,7 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
     ...others
   } = props;
 
-  const [open, setOpen] = usePropChange(defaultOpen, openProp, onOpenChangeProp);
+  const [open, setOpen] = useValueChange(defaultOpen, openProp, onOpenChange);
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [cancelLoading, setCancelLoading] = useState(false);
 

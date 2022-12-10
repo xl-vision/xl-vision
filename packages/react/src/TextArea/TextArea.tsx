@@ -1,4 +1,4 @@
-import { useConstantFn, useForkRef, usePrevious } from '@xl-vision/hooks';
+import { useConstantFn, useForkRef, usePrevious, useValueChange } from '@xl-vision/hooks';
 import { CloseCircleFilled } from '@xl-vision/icons';
 import { CSSObject } from '@xl-vision/styled-engine';
 import { isProduction } from '@xl-vision/utils';
@@ -16,7 +16,6 @@ import {
   CSSProperties,
 } from 'react';
 import useInput from '../hooks/useInput';
-import usePropChange from '../hooks/usePropChange';
 import { styled } from '../styles';
 import { ComponentSize, useTheme } from '../ThemeProvider';
 import { alpha } from '../utils/color';
@@ -178,7 +177,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => 
     ...others
   } = props;
 
-  const [value, handleValueChange] = usePropChange(defaultValue, valueProp, onChange);
+  const [value, handleValueChange] = useValueChange(defaultValue, valueProp, onChange);
 
   const prevValue = usePrevious(value);
 

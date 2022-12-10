@@ -1,0 +1,83 @@
+# useNotication
+
+APIs related to message notification can be easily implemented
+
+## 示例
+
+:::demo ./Basic
+
+Basic usage
+
+Basic usage
+
+:::
+
+## Usage
+
+Define the style and logic through two components (content component and container component), and then wrap it with `useNotication`, it can be used through method calls.
+
+Based on this hook, it is very convenient to use `notification.open` to call out notifications in the form of message prompts and dialog boxes.
+
+## API
+
+### Container Components
+
+```ts
+export type NoticationContainerProps<NCP> = NCP & {
+  children: ReactNode;
+};
+
+export type NoticationContainerType<NCP> =
+  | ComponentType<NoticationContainerProps<NCP>>
+  | string
+  | ReactFragment;
+```
+
+Container components are used to contain content.
+
+It can be an html element such as `div`, or it can be `React Component` or `Fragment`
+
+### Content component
+
+```ts
+export type NoticationProps<P> = P & {
+  open?: boolean;
+  defaultOpen?: boolean;
+  // 关闭（动画结束）后回调，需要组件回调
+  onAfterClosed?: () => void;
+};
+```
+
+Content component, with three parameters of `open`, `defaultOpen` and `onAfterClosed` by default
+
+### useNotication
+
+```ts
+export type NoticationHookUpdate<P> = (
+  props:
+    | Partial<NoticationHookProps<P>>
+    | ((prev: NoticationHookProps<P>) => Partial<NoticationHookProps<P>>),
+) => void;
+
+export type NoticationHookReturnType<P> = Promise<void> & {
+  destroy: () => void;
+  update: NoticationHookUpdate<P>;
+  isDestroyed: () => boolean;
+};
+
+export type NoticationOptions<NCP> = Omit<NoticationContainerProps<NCP>, 'children'> & {
+  maxCount?: number;
+};
+
+const useNotication = <P, NCP>(
+  Notication: ComponentType<NoticationProps<P>>,
+  NoticationContainer: NoticationContainerType<NCP>,
+  options: NoticationOptions<NCP>,
+) => [
+  {
+    open(props: NoticationHookProps<P>): NoticationHookReturnType,
+    destroyAll(): void,
+  },
+  ReactNode,
+];
+```

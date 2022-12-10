@@ -1,9 +1,9 @@
+import { useValueChange } from '@xl-vision/hooks';
 import { CSSObject } from '@xl-vision/styled-engine';
 import { isProduction } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { ReactNode, FC, useState, useEffect } from 'react';
-import usePropChange from '../../hooks/usePropChange';
 import { styled } from '../../styles';
 import { useTheme } from '../../ThemeProvider';
 import Dialog, { DialogProps } from '../Dialog';
@@ -70,7 +70,7 @@ const InnerDedicatedDialog: FC<InnerDedicatedDialogProps> = (props) => {
     ...others
   } = props;
 
-  const [open, handleOpenChange] = usePropChange(defaultOpen, openProp, onOpenChange);
+  const [open, handleOpenChange] = useValueChange(defaultOpen, openProp, onOpenChange);
 
   const [first, setFirst] = useState(true);
 
