@@ -90,8 +90,10 @@
 
 ```ts
 Message.setGlobalConfig({
-  themeProviderProps,
-  configProviderProps,
+  themeProviderProps:  Omit<ThemeProviderProps, 'children'>,
+  configProviderProps: Omit<ConfigProviderProps, 'children'>,
+  top?: number;
+  container?: PortalContainerType<HTMLElement>;
 });
 ```
 
