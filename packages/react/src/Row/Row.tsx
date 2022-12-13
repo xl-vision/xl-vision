@@ -1,4 +1,4 @@
-import { isProduction } from '@xl-vision/utils';
+import { isObject, isProduction } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { HTMLAttributes, ComponentType, forwardRef, useMemo, ReactNode } from 'react';
@@ -88,7 +88,7 @@ const Row = forwardRef<HTMLDivElement, RowProps>((props, ref) => {
     if (typeof gutter === 'number') {
       return gutter;
     }
-    if (typeof gutter === 'object') {
+    if (isObject(gutter)) {
       for (let i = 0; i < breakPoints.length; i++) {
         const [breakPoint, match] = breakPoints[i];
         if (match && gutter[breakPoint] !== undefined) {

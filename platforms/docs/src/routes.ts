@@ -357,6 +357,13 @@ const route: Route = {
       },
       path: '/useNotication',
     },
+    {
+      titleMap: {
+        'en-US': 'useForm',
+        'zh-CN': 'useForm',
+      },
+      path: '/useForm',
+    },
   ],
 };
 

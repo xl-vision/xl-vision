@@ -1,4 +1,5 @@
 import { useConstantFn } from '@xl-vision/hooks';
+import { isObject } from '@xl-vision/utils';
 import { useRef } from 'react';
 import { InteractionHook } from '../useInteraction';
 
@@ -15,8 +16,8 @@ const useHover: InteractionHook<HoverOptions> = (
 ) => {
   const timerRef = useRef<number>();
 
-  const closeDelay = typeof delayProp === 'object' ? delayProp.close || 0 : delayProp;
-  const openDelay = typeof delayProp === 'object' ? delayProp.open || 0 : delayProp;
+  const closeDelay = isObject(delayProp) ? delayProp.close || 0 : delayProp;
+  const openDelay = isObject(delayProp) ? delayProp.open || 0 : delayProp;
 
   const handleReferenceMouseEnter = useConstantFn(() => {
     const timer = timerRef.current;

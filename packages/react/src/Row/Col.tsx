@@ -1,5 +1,5 @@
 import { CSSObject } from '@xl-vision/styled-engine';
-import { isProduction } from '@xl-vision/utils';
+import { isObject, isProduction } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { HTMLAttributes, ReactNode, forwardRef, useContext } from 'react';
@@ -97,7 +97,7 @@ const Col = forwardRef<HTMLDivElement, ColProps>((props, ref) => {
   const { clsPrefix } = useTheme();
 
   if (removeOnUnvisible && breakPoints) {
-    if (typeof column === 'object') {
+    if (isObject(column)) {
       for (let i = 0; i < breakPoints.length; i++) {
         const [breakPoint, match] = breakPoints[i];
         const col = column[breakPoint];
@@ -166,7 +166,7 @@ const getClasses = (baseClassName: string, value?: ColSpanType): string => {
   if (typeof value === 'number') {
     return `${baseClassName}-${value}`;
   }
-  if (typeof value === 'object') {
+  if (isObject(value)) {
     const classes: Array<string> = [];
     Object.keys(value).forEach((key) => {
       classes.push(`${baseClassName}-${key}-${value[key as Breakpoint]}`);
