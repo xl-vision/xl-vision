@@ -75,12 +75,12 @@ The `config` type is as follows
 
 | Property | Description | Type | Default | Require |
 | --- | --- | --- | --- | --- |
-| content | prompt content | ReactNode | - |
-| duration | Delay for automatic shutdown, in seconds. Do not close automatically when set to 0 | number | 3 |
-| icon | custom icon | ReactNode | - |
-| closeIcon | Custom close icon | ReactNode | - |
-| showClose | Whether to show the close icon | boolean | - |
-| onAfterClosed | callback after `Message` is closed | () => void | - |
+| content | prompt content | ReactNode | - | true |
+| duration | Delay for automatic shutdown, in millisecond. Do not close automatically when set to 0 | number | 3000 | - |
+| icon | custom icon | ReactNode | - | - |
+| closeIcon | Custom close icon | ReactNode | - | - |
+| showClose | Whether to show the close icon | boolean | - | - |
+| onAfterClosed | callback after `Message` is closed | () => void | - | - |
 
 > In addition to the above parameters, it also supports basic `HTMLAttributes`, such as `className`, `style`.
 

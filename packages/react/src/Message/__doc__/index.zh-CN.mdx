@@ -73,14 +73,14 @@
 
 `config` 类型如下
 
-| 参数          | 说明                                        | 类型       | 默认值 | 是否必填 |
-| ------------- | ------------------------------------------- | ---------- | ------ | -------- |
-| content       | 提示内容                                    | ReactNode  | -      |
-| duration      | 自动关闭的延时，单位秒。设为 0 时不自动关闭 | number     | 3      |
-| icon          | 自定义图标                                  | ReactNode  | -      |
-| closeIcon     | 自定义关闭图标                              | ReactNode  | -      |
-| showClose     | 是否展示关闭图标                            | boolean    | -      |
-| onAfterClosed | `Message`关闭后回调                         | () => void | -      |
+| 参数          | 说明                                          | 类型       | 默认值 | 是否必填 |
+| ------------- | --------------------------------------------- | ---------- | ------ | -------- |
+| content       | 提示内容                                      | ReactNode  | -      | true     |
+| duration      | 自动关闭的延时，单位毫秒。设为 0 时不自动关闭 | number     | 3000   | -        |
+| icon          | 自定义图标                                    | ReactNode  | -      | -        |
+| closeIcon     | 自定义关闭图标                                | ReactNode  | -      | -        |
+| showClose     | 是否展示关闭图标                              | boolean    | -      | -        |
+| onAfterClosed | `Message`关闭后回调                           | () => void | -      | -        |
 
 > 除上述参数外，也支持基本的 `HTMLAttributes`，如`className`、`style`。
 

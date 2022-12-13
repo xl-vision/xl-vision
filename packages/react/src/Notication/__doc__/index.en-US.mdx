@@ -75,3 +75,45 @@ Test method update
 Test method update.
 
 :::
+
+## Notication API
+
+The component provides some static methods, the usage and parameters are as follows:
+
+- `Notication.success(config | string)`
+- `Notication.error(config | string)`
+- `Notication.info(config | string)`
+- `Notication.warning(config | string)`
+- `Notication.loading(config | string)`
+- `Notication.open(config | string)`
+
+The `config` type is as follows
+
+| Property | Description | Type | Default | Require |
+| --- | --- | --- | --- | --- |
+| content | prompt content | ReactNode | - | true |
+| description | detail description | ReactNode | - | - |
+| footer | custom footer, such as buttons | ReactNode | - | - |
+| duration | Delay for automatic shutdown, in millisecond. Do not close automatically when set to 0 | number | 4500 | - |
+| icon | custom icon | ReactNode | - | - |
+| closeIcon | Custom close icon | ReactNode | - | - |
+| hideClose | Whether to hide the close icon | boolean | - | - |
+| onAfterClosed | callback after `Message` is closed | () => void | - | - |
+
+> In addition to the above parameters, it also supports basic `HTMLAttributes`, such as `className`, `style`.
+
+### setGlobalConfig
+
+> For the global method, `ThemeContext` and `ConfigContext` cannot be obtained through the context, so we also provide a method of manually setting
+
+```ts
+Notication.setGlobalConfig({
+  themeProviderProps:  Omit<ThemeProviderProps, 'children'>,
+  configProviderProps: Omit<ConfigProviderProps, 'children'>,
+  container?: PortalContainerType<HTMLElement>;
+  distance?: number;
+  placement?: NoticationPlacement;
+});
+```
+
+For details, please refer to [ThemeProvider](/components/ThemeProvider), [ConfigProvider](/components/ConfigProvider)

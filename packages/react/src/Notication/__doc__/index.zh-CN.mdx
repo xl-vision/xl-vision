@@ -75,3 +75,44 @@
 测试方法更新。
 
 :::
+
+## Notication API
+
+组件提供了一些静态方法，使用方式和参数如下：
+
+- `Notication.success(config | string)`
+- `Notication.error(config | string)`
+- `Notication.info(config | string)`
+- `Notication.warning(config | string)`
+- `Notication.open(config | string)`
+
+`config` 类型如下
+
+| 参数          | 说明                                          | 类型       | 默认值 | 是否必填 |
+| ------------- | --------------------------------------------- | ---------- | ------ | -------- |
+| message       | 提示内容                                      | ReactNode  | -      | true     |
+| description   | 详细描述                                      | ReactNode  | -      | -        |
+| footer        | 自定义底部内容，一般是自定义按钮              | ReactNode  | -      | -        |
+| duration      | 自动关闭的延时，单位毫秒。设为 0 时不自动关闭 | number     | 4500   | -        |
+| icon          | 自定义图标                                    | ReactNode  | -      | -        |
+| closeIcon     | 自定义关闭图标                                | ReactNode  | -      | -        |
+| hideClose     | 是否隐藏关闭图标                              | boolean    | -      | -        |
+| onAfterClosed | `Message`关闭后回调                           | () => void | -      | -        |
+
+> 除上述参数外，也支持基本的 `HTMLAttributes`，如`className`、`style`。
+
+### setGlobalConfig
+
+> 对于全局方法，无法通过上下文获取`ThemeContext`和`ConfigContext`，因此我们也提供了手动设置的方法
+
+```ts
+Notication.setGlobalConfig({
+  themeProviderProps:  Omit<ThemeProviderProps, 'children'>,
+  configProviderProps: Omit<ConfigProviderProps, 'children'>,
+  container?: PortalContainerType<HTMLElement>;
+  distance?: number;
+  placement?: NoticationPlacement;
+});
+```
+
+具体可参考[ThemeProvider](/components/ThemeProvider)、[ConfigProvider](/components/ConfigProvider)
