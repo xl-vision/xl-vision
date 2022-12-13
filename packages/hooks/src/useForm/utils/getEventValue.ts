@@ -5,7 +5,7 @@ export default <T>(event: unknown) => {
   if (isObject(event) && (event as Event).target) {
     const { target } = event as Event;
     if (isCheckBoxInput(target)) {
-      return target.checked;
+      return target.checked as T;
     }
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     return (target as any)?.value as T;

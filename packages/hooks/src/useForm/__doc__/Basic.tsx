@@ -1,7 +1,13 @@
 import { useForm } from '@xl-vision/hooks';
 
 const Demo = () => {
-  const { register } = useForm();
+  const { register } = useForm({
+    defaultValues: {
+      firstName: 'Rhys',
+      lastName: 'Xia',
+    },
+  });
+
   return (
     <form>
       <input placeholder='please input firstname' {...register('firstName')} />
