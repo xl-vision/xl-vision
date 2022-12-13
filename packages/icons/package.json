@@ -43,7 +43,7 @@
     "react-is": "^18.2.0"
   },
   "devDependencies": {
-    "fs-extra": "^10.1.0",
+    "fs-extra": "^11.1.0",
     "mustache": "^4.2.0",
     "svgo": "^3.0.2"
   },
