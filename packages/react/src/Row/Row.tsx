@@ -1,11 +1,10 @@
 import { isProduction } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { HTMLAttributes, ReactElement, ComponentType, forwardRef, useMemo } from 'react';
+import { HTMLAttributes, ComponentType, forwardRef, useMemo, ReactNode } from 'react';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 import { Breakpoint } from '../ThemeProvider/breakpoints';
-import { ColProps } from './Col';
 import RowContext from './RowContext';
 import useBreakPoints from './useBreakPoints';
 
@@ -13,7 +12,7 @@ export type RowAlign = 'top' | 'middle' | 'bottom';
 export type RowJustify = 'start' | 'end' | 'center' | 'space-around' | 'space-between';
 
 export interface RowProps extends HTMLAttributes<HTMLDivElement> {
-  children: ReactElement<ColProps> | Array<ReactElement<ColProps>>;
+  children: ReactNode;
   align?: RowAlign;
   className?: string;
   component?: keyof JSX.IntrinsicElements | ComponentType;
@@ -139,10 +138,7 @@ if (!isProduction) {
   Row.displayName = displayName;
 
   Row.propTypes = {
-    children: PropTypes.oneOfType([
-      PropTypes.arrayOf(PropTypes.element.isRequired),
-      PropTypes.element.isRequired,
-    ]).isRequired,
+    children: PropTypes.node.isRequired,
     align: PropTypes.oneOf(['top', 'middle', 'bottom']),
     className: PropTypes.string,
     component: PropTypes.element,
