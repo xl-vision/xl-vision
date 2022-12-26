@@ -18,7 +18,7 @@ importers:
       '@rollup/plugin-commonjs': ^23.0.4
       '@rollup/plugin-node-resolve': ^15.0.1
       '@rollup/plugin-replace': ^5.0.1
-      '@rollup/plugin-terser': ^0.2.0
+      '@rollup/plugin-terser': ^0.2.1
       '@testing-library/jest-dom': ^5.16.5
       '@testing-library/react': ^12.1.5
       '@testing-library/user-event': ^14.4.3
@@ -83,7 +83,7 @@ importers:
       '@rollup/plugin-commonjs': 23.0.4_rollup@3.7.4
       '@rollup/plugin-node-resolve': 15.0.1_rollup@3.7.4
       '@rollup/plugin-replace': 5.0.1_rollup@3.7.4
-      '@rollup/plugin-terser': 0.2.0_rollup@3.7.4
+      '@rollup/plugin-terser': 0.2.1_rollup@3.7.4
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': 12.1.5_sfoxds7t5ydpegc3knd667wn6m
       '@testing-library/user-event': 14.4.3
@@ -2462,8 +2462,8 @@ packages:
       rollup: 3.7.4
     dev: true
 
-  /@rollup/plugin-terser/0.2.0_rollup@3.7.4:
-    resolution: {integrity: sha512-UBr4WNXBFipKW2C2db9JIzIdq9bFZsaTZwKeAd9Y0N9Pv9G2XgRhaimGdotx1+Wf/2XTuTJ+FVS2SO+y2WyiUQ==}
+  /@rollup/plugin-terser/0.2.1_rollup@3.7.4:
+    resolution: {integrity: sha512-hV52c8Oo6/cXZZxVVoRNBb4zh+EKSHS4I1sedWV5pf0O+hTLSkrf6w86/V0AZutYtwBguB6HLKwz89WDBfwGOA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^2.x || ^3.x
