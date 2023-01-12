@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useConstantFn } from '@xl-vision/hooks';
+import useConstantFn from '../useConstantFn';
 
 /**
  * When the value is passed in from the outside, the value shall prevail.
