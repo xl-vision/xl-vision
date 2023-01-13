@@ -239,7 +239,7 @@ importers:
       cross-env: ^7.0.3
       js-cookie: ^3.0.1
       next: ^12.3.4
-      next-sitemap: ^3.1.32
+      next-sitemap: ^3.1.44
       pinyin: ^2.11.2
       prismjs: ^1.29.0
       prop-types: ^15.8.1
@@ -280,7 +280,7 @@ importers:
       '@types/node': 17.0.4
       '@types/prop-types': 15.7.5
       cross-env: 7.0.3
-      next-sitemap: 3.1.32_next@12.3.4
+      next-sitemap: 3.1.44_next@12.3.4
       pinyin: 2.11.2
       prismjs: 1.29.0
       remark-emoji: 3.0.2
@@ -8923,8 +8923,8 @@ packages:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
 
-  /next-sitemap/3.1.32_next@12.3.4:
-    resolution: {integrity: sha512-jkIKpwLXpWWTPfmDO46+6nu4+qpar4CjvUwCR9rYZHWtzE/wFfaCVFKpGtFMl6MFjpu8GjiE6kWFEa7uF3bzzg==}
+  /next-sitemap/3.1.44_next@12.3.4:
+    resolution: {integrity: sha512-dg+qGfOpQemAb+LGShJmaJHyuf36rVqsIbkCBt0ldu10sAx+eMowVx6DzEtf2HoIIGWc7J+kfy//YsBCPdj47Q==}
     engines: {node: '>=14.18'}
     hasBin: true
     peerDependencies:
