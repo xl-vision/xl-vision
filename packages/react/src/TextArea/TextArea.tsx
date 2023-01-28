@@ -339,7 +339,7 @@ if (!isProduction) {
   TextArea.displayName = displayName;
   TextArea.propTypes = {
     allowClear: PropTypes.bool,
-    // TODO [2023-01-01]: types fix
+    // TODO [2023-05-01]: types fix
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     autoHeight: PropTypes.oneOfType([
