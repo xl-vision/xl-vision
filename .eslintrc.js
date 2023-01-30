@@ -200,7 +200,7 @@ module.exports = {
           {
             default: {
               memberTypes: ['signature', 'constructor', 'field', 'method'],
-              optionalityOrder: 'optional-first',
+              optionalityOrder: 'required-first',
               order: 'alphabetically-case-insensitive',
             },
           },
