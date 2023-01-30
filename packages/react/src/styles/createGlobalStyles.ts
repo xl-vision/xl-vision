@@ -4,8 +4,8 @@ import {
   FunctionInterpolation,
   Interpolation,
 } from '@xl-vision/styled-engine';
-import { Theme } from '../ThemeProvider/createTheme';
 import applyTheme from './applyTheme';
+import { Theme } from '../ThemeProvider/createTheme';
 
 const createGlobalStyles = <
   S extends {} | undefined = undefined,

@@ -1,9 +1,9 @@
 import { isProduction } from '@xl-vision/utils';
+import { dark as defaultDark, light as defaultLight, BaseColor } from './baseColor';
+import defaultThemes, { ThemeColors } from './themeColor';
 import { darken, getContrastRatio, lighten } from '../../utils/color';
 import greyColor from '../palette/grey';
 import { Palette } from '../palette/palette';
-import { dark as defaultDark, light as defaultLight, BaseColor } from './baseColor';
-import defaultThemes, { ThemeColors } from './themeColor';
 
 export type Color = Partial<{
   modes: {

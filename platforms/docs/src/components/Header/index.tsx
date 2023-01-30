@@ -7,12 +7,12 @@ import Cookie from 'js-cookie';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { FC, HTMLAttributes, useContext, useCallback, useMemo } from 'react';
-import { useLocale } from '../LocalizationProvider';
-import Logo from '../Logo';
-import { ThemeContext } from '../ThemeProvider';
 import DarkTheme from './DarkTheme';
 import LightTheme from './LightTheme';
 import Translate from './Translate';
+import { useLocale } from '../LocalizationProvider';
+import Logo from '../Logo';
+import { ThemeContext } from '../ThemeProvider';
 
 export const HEADER_HEIGHT = 60;
 

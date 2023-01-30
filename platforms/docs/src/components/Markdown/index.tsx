@@ -1,13 +1,13 @@
 import { MDXProvider } from '@mdx-js/react';
 import PropTypes from 'prop-types';
 import { ReactNode, FC } from 'react';
-import DemoBox from '../DemoBox';
 import a from './a';
 import blockquote from './blockquote';
 import code from './code';
 import pre from './pre';
 import table from './table';
 import Wrapper from './Wrapper';
+import DemoBox from '../DemoBox';
 
 export type MarkdownProps = {
   children: ReactNode;

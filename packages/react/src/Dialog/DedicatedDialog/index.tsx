@@ -7,9 +7,9 @@ import {
 import { isProduction } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { FC, useMemo } from 'react';
+import InnerDedicatedDialog, { InnerDedicatedDialogProps } from './InnerDedicatedDialog';
 import { useConfig } from '../../ConfigProvider';
 import { useTheme } from '../../ThemeProvider';
-import InnerDedicatedDialog, { InnerDedicatedDialogProps } from './InnerDedicatedDialog';
 
 export * from './InnerDedicatedDialog';
 

@@ -1,4 +1,6 @@
 import { getBoundingClientRect, isHTMLElement, isProduction } from '@xl-vision/utils';
+import computeCoordsFromPlacement from './computeCoordsFromPlacement';
+import getOffsetParentRect from './getOffsetParentRect';
 import {
   Alignment,
   Middleware,
@@ -11,8 +13,6 @@ import {
   Side,
   Reference,
 } from '../types';
-import computeCoordsFromPlacement from './computeCoordsFromPlacement';
-import getOffsetParentRect from './getOffsetParentRect';
 
 export type Options = {
   popper: Element;

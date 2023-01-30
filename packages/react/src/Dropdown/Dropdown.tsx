@@ -3,10 +3,10 @@ import { isProduction, isServer } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { ReactElement, ReactNode, forwardRef, useContext, useRef, useEffect, useMemo } from 'react';
+import DropdownContext from './DropdownContext';
 import Popper, { PopperPlacement, PopperProps } from '../Popper';
 import { styled } from '../styles';
 import ThemeContext from '../ThemeProvider/ThemeContext';
-import DropdownContext from './DropdownContext';
 
 export interface DropdownProps extends Omit<PopperProps, 'popup' | 'arrow'> {
   children: ReactElement;

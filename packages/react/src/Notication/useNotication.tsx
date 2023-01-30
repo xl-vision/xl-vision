@@ -4,9 +4,9 @@ import {
   useNotication as useInnerNotication,
 } from '@xl-vision/hooks';
 import { useCallback, useMemo, useState } from 'react';
-import { increaseZindex } from '../utils/zIndexManger';
 import Notication, { NoticationProps, NoticationType } from './Notication';
 import NoticationList, { NoticationContainerProps } from './NoticationContainer';
+import { increaseZindex } from '../utils/zIndexManger';
 
 export type NoticationHookOptions = NoticationOptions<Omit<NoticationContainerProps, 'zIndex'>>;
 

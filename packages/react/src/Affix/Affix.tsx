@@ -17,10 +17,6 @@ import {
   useMemo,
   useEffect,
 } from 'react';
-import ResizeObserver from '../ResizeObserver';
-import { styled } from '../styles';
-import { useTheme } from '../ThemeProvider';
-import { throttleByAnimationFrame } from '../utils/perf';
 import {
   addTargetObserver,
   removeTargetObserver,
@@ -28,6 +24,10 @@ import {
   getFixedTop,
   getTargetRect,
 } from './utils';
+import ResizeObserver from '../ResizeObserver';
+import { styled } from '../styles';
+import { useTheme } from '../ThemeProvider';
+import { throttleByAnimationFrame } from '../utils/perf';
 
 export type AffixProps = Omit<HTMLAttributes<HTMLDivElement>, 'target' | 'onChange'> & {
   target?: Window | HTMLElement | (() => Window | HTMLElement);

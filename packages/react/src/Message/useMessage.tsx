@@ -1,8 +1,8 @@
 import { NoticationHookReturnType, NoticationOptions, useNotication } from '@xl-vision/hooks';
 import { useCallback, useMemo, useState } from 'react';
-import { increaseZindex } from '../utils/zIndexManger';
 import Message, { MessageProps, MessageType } from './Message';
 import MessageList, { MessageContainerProps } from './MessageContainer';
+import { increaseZindex } from '../utils/zIndexManger';
 
 export type MessageHookOptions = NoticationOptions<Omit<MessageContainerProps, 'zIndex'>>;
 

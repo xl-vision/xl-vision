@@ -1,8 +1,8 @@
 import { FC, Fragment } from 'react';
+import DedicatedDialog, { DedicatedDialogProps, DialogType } from './DedicatedDialog';
 import ConfigProvider, { ConfigProviderProps } from '../ConfigProvider';
 import ThemeProvider, { ThemeProviderProps } from '../ThemeProvider';
 import createNotication from '../utils/createNotication';
-import DedicatedDialog, { DedicatedDialogProps, DialogType } from './DedicatedDialog';
 
 export type MethodDialogProps = DedicatedDialogProps & {
   themeProviderProps?: Omit<ThemeProviderProps, 'children'>;

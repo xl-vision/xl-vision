@@ -15,12 +15,12 @@ import {
   FocusEvent,
   CSSProperties,
 } from 'react';
+import calculateNodeHeight from './calculateNodeHeight';
+import TextAreaSuffix from './TextAreaSuffix';
 import useInput from '../hooks/useInput';
 import { styled } from '../styles';
 import { ComponentSize, useTheme } from '../ThemeProvider';
 import { alpha } from '../utils/color';
-import calculateNodeHeight from './calculateNodeHeight';
-import TextAreaSuffix from './TextAreaSuffix';
 
 export type TextAreaProps = Omit<
   TextareaHTMLAttributes<HTMLTextAreaElement>,

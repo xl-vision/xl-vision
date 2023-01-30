@@ -5,11 +5,11 @@ import { isProduction, isServer } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { ReactNode, forwardRef, useContext, useCallback, useEffect } from 'react';
+import DropdownContext from './DropdownContext';
 import BaseButton from '../BaseButton';
 import Popper, { PopperPlacement, PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
-import DropdownContext from './DropdownContext';
 
 export interface DropdownSubmenuProps
   extends Omit<
