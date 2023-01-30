@@ -219,8 +219,8 @@ importers:
     specifiers:
       '@babel/standalone': ^7.20.12
       '@mapbox/rehype-prism': ^0.8.0
-      '@mdx-js/loader': ^2.1.5
-      '@mdx-js/react': ^2.1.5
+      '@mdx-js/loader': ^2.2.1
+      '@mdx-js/react': ^2.2.1
       '@next/bundle-analyzer': ^12.3.4
       '@next/eslint-plugin-next': ^12.3.4
       '@types/codemirror': ^5.60.5
@@ -252,7 +252,7 @@ importers:
       styled-components: ^5.3.6
     dependencies:
       '@babel/standalone': 7.20.12
-      '@mdx-js/react': 2.1.5_react@17.0.2
+      '@mdx-js/react': 2.2.1_react@17.0.2
       '@xl-vision/hooks': link:../../packages/hooks
       '@xl-vision/icons': link:../../packages/icons
       '@xl-vision/popper': link:../../packages/popper
@@ -272,7 +272,7 @@ importers:
       styled-components: 5.3.6_v5ja746gkdtknuc6tj46sve3be
     devDependencies:
       '@mapbox/rehype-prism': 0.8.0
-      '@mdx-js/loader': 2.1.5
+      '@mdx-js/loader': 2.2.1
       '@next/bundle-analyzer': 12.3.4
       '@next/eslint-plugin-next': 12.3.4
       '@types/codemirror': 5.60.5
@@ -2181,8 +2181,8 @@ packages:
       unist-util-visit: 2.0.3
     dev: true
 
-  /@mdx-js/loader/2.1.5:
-    resolution: {integrity: sha512-oXjfTa/iAcMmW8DdQ+hQFodPCLqw5VKT2yoZkLwrZfPVVpUgKrI+5/ZePYq328xxtAUStZmR3ed0PWJrwd5Pkg==}
+  /@mdx-js/loader/2.2.1:
+    resolution: {integrity: sha512-J4E8A5H+xtk4otZiEZ5AXl61Tj04Avm5MqLQazITdI3+puVXVnTTuZUKM1oNHTtfDIfOl0uMt+o/Ij+x6Fvf+g==}
     peerDependencies:
       webpack: '>=4'
     dependencies:
@@ -2216,8 +2216,8 @@ packages:
       - supports-color
     dev: true
 
-  /@mdx-js/react/2.1.5_react@17.0.2:
-    resolution: {integrity: sha512-3Az1I6SAWA9R38rYjz5rXBrGKeZhq96CSSyQtqY+maPj8stBsoUH5pNcmIixuGkufYsh8F5+ka2CVPo2fycWZw==}
+  /@mdx-js/react/2.2.1_react@17.0.2:
+    resolution: {integrity: sha512-YdXcMcEnqZhzql98RNrqYo9cEhTTesBiCclEtoiQUbJwx87q9453GTapYU6kJ8ZZ2ek1Vp25SiAXEFy5O/eAPw==}
     peerDependencies:
       react: '>=16'
     dependencies:
@@ -2683,7 +2683,7 @@ packages:
   /@types/hoist-non-react-statics/3.3.1:
     resolution: {integrity: sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==}
     dependencies:
-      '@types/react': 17.0.52
+      '@types/react': 18.0.26
       hoist-non-react-statics: 3.3.2
     dev: true
 
