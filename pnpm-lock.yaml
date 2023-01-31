@@ -247,7 +247,7 @@ importers:
       react-codemirror2: ^7.2.1
       react-dom: ^17.0.0
       react-is: ^18.2.0
-      remark-emoji: ^3.0.2
+      remark-emoji: ^3.1.0
       remark-gfm: ^3.0.1
       styled-components: ^5.3.6
     dependencies:
@@ -283,7 +283,7 @@ importers:
       next-sitemap: 3.1.47_next@12.3.4
       pinyin: 2.11.2
       prismjs: 1.29.0
-      remark-emoji: 3.0.2
+      remark-emoji: 3.1.0
       remark-gfm: 3.0.1
 
 packages:
@@ -8220,9 +8220,10 @@ packages:
       unist-util-visit: 4.1.1
     dev: true
 
-  /mdast-util-find-and-replace/2.2.1:
-    resolution: {integrity: sha512-SobxkQXFAdd4b5WmEakmkVoh18icjQRxGy5OWTCzgsLRm1Fu/KCtwD1HIQSsmq5ZRjVH0Ehwg6/Fn3xIUk+nKw==}
+  /mdast-util-find-and-replace/2.2.2:
+    resolution: {integrity: sha512-MTtdFRz/eMDHXzeK6W3dO7mXUlF82Gom4y0oOgvHhh/HXZAGvIQDUvQ0SuUx+j2tv44b8xTHOm8K/9OoRFnXKw==}
     dependencies:
+      '@types/mdast': 3.0.10
       escape-string-regexp: 5.0.0
       unist-util-is: 5.1.1
       unist-util-visit-parents: 5.1.1
@@ -8252,7 +8253,7 @@ packages:
     dependencies:
       '@types/mdast': 3.0.10
       ccount: 2.0.1
-      mdast-util-find-and-replace: 2.2.1
+      mdast-util-find-and-replace: 2.2.2
       micromark-util-character: 1.1.0
     dev: true
 
@@ -10138,13 +10139,13 @@ packages:
       jsesc: 0.5.0
     dev: true
 
-  /remark-emoji/3.0.2:
-    resolution: {integrity: sha512-hEgxEv2sBtvhT3tNG/tQeeFY3EbslftaOoG14dDZndLo25fWJ6Fbg4ukFbIotOWWrfXyASjXjyHT+6n366k3mg==}
+  /remark-emoji/3.1.0:
+    resolution: {integrity: sha512-KmjkU04niXFMn/H+SsPAGnXhsuq0gT/neIg1KRw8vUKZ/PNxpLDGmwVzx4a14OOd5GJ8rnCdh6DKXqHySkUHAQ==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
       emoticon: 4.0.1
+      mdast-util-find-and-replace: 2.2.2
       node-emoji: 1.11.0
-      unist-util-visit: 4.1.1
     dev: true
 
   /remark-gfm/3.0.1:
