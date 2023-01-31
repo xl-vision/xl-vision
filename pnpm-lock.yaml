@@ -15,7 +15,7 @@ importers:
       '@commitlint/format': ^17.4.0
       '@rollup/plugin-alias': ^4.0.3
       '@rollup/plugin-babel': ^6.0.3
-      '@rollup/plugin-commonjs': ^23.0.7
+      '@rollup/plugin-commonjs': ^24.0.1
       '@rollup/plugin-node-resolve': ^15.0.1
       '@rollup/plugin-replace': ^5.0.2
       '@rollup/plugin-terser': ^0.4.0
@@ -80,7 +80,7 @@ importers:
       '@commitlint/format': 17.4.0
       '@rollup/plugin-alias': 4.0.3_rollup@3.12.0
       '@rollup/plugin-babel': 6.0.3_47rlmjyel4xatve6tpwvwuyiju
-      '@rollup/plugin-commonjs': 23.0.7_rollup@3.12.0
+      '@rollup/plugin-commonjs': 24.0.1_rollup@3.12.0
       '@rollup/plugin-node-resolve': 15.0.1_rollup@3.12.0
       '@rollup/plugin-replace': 5.0.2_rollup@3.12.0
       '@rollup/plugin-terser': 0.4.0_rollup@3.12.0
@@ -2411,8 +2411,8 @@ packages:
       rollup: 3.12.0
     dev: true
 
-  /@rollup/plugin-commonjs/23.0.7_rollup@3.12.0:
-    resolution: {integrity: sha512-hsSD5Qzyuat/swzrExGG5l7EuIlPhwTsT7KwKbSCQzIcJWjRxiimi/0tyMYY2bByitNb3i1p+6JWEDGa0NvT0Q==}
+  /@rollup/plugin-commonjs/24.0.1_rollup@3.12.0:
+    resolution: {integrity: sha512-15LsiWRZk4eOGqvrJyu3z3DaBu5BhXIMeWnijSRvd8irrrg9SHpQ1pH+BUK4H6Z9wL9yOxZJMTLU+Au86XHxow==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^2.68.0||^3.0.0
