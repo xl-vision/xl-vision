@@ -5,12 +5,6 @@
   "pin": true,
   "rangeStrategy": "bump",
   "prConcurrentLimit": 5,
-  "force": {
-    "constraints": {
-      "node": ">=14.19.0",
-      "pnpm": ">=7"
-    }
-  },
   "packageRules": [
     {
       "matchDepTypes": ["peerDependencies"],
