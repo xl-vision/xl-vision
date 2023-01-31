@@ -7,7 +7,7 @@
   "prConcurrentLimit": 5,
   "packageRules": [
     {
-      "depTypeList": ["peerDependencies"],
+      "matchDepTypes": ["peerDependencies"],
       "enabled": false
     },
     {
