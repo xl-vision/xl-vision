@@ -61,7 +61,7 @@ importers:
       react: ^17.0.0
       react-dom: ^17.0.0
       react-is: ^18.2.0
-      rollup: ^3.13.0
+      rollup: ^3.14.0
       semver: ^7.3.8
       styled-components: ^5.3.6
       ts-jest: ^29.0.5
