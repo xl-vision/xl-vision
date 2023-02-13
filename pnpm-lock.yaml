@@ -217,7 +217,7 @@ importers:
 
   platforms/docs:
     specifiers:
-      '@babel/standalone': ^7.20.14
+      '@babel/standalone': ^7.20.15
       '@mapbox/rehype-prism': ^0.8.0
       '@mdx-js/loader': ^2.2.1
       '@mdx-js/react': ^2.2.1
@@ -251,7 +251,7 @@ importers:
       remark-gfm: ^3.0.1
       styled-components: ^5.3.6
     dependencies:
-      '@babel/standalone': 7.20.14
+      '@babel/standalone': 7.20.15
       '@mdx-js/react': 2.2.1_react@17.0.2
       '@xl-vision/hooks': link:../../packages/hooks
       '@xl-vision/icons': link:../../packages/icons
@@ -1567,8 +1567,8 @@ packages:
       regenerator-runtime: 0.13.11
     dev: true
 
-  /@babel/standalone/7.20.14:
-    resolution: {integrity: sha512-zxdQD6+eMQumJFPOLpOZE34JAAGrZPMXCKvHR7Mtat/l+nHDOxlit5u85HDk5WkBXmvN5PhUMeimiC95KXD9+A==}
+  /@babel/standalone/7.20.15:
+    resolution: {integrity: sha512-B3LmZ1NHlTb2eFEaw8rftZc730Wh9MlmsH8ubb6IjsNoIk9+SQ2aAA0nrm/1806+PftPRAACPClmKTu8PG7Tew==}
     engines: {node: '>=6.9.0'}
     dev: false
 
