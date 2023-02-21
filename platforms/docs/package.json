@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@babel/standalone": "^7.20.15",
-    "@mdx-js/react": "^2.2.1",
+    "@mdx-js/react": "^2.3.0",
     "@xl-vision/hooks": "workspace:^",
     "@xl-vision/icons": "workspace:^",
     "@xl-vision/popper": "workspace:^",
@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@mapbox/rehype-prism": "^0.8.0",
-    "@mdx-js/loader": "^2.2.1",
+    "@mdx-js/loader": "^2.3.0",
     "@next/bundle-analyzer": "^12.3.4",
     "@next/eslint-plugin-next": "^12.3.4",
     "@types/codemirror": "^5.60.7",
