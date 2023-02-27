@@ -10,11 +10,11 @@ import {
   cloneElement,
   useMemo,
 } from 'react';
+import Avatar, { AvatarProps, AvatarShape, AvatarSize } from './Avatar';
+import AvatarContext, { AvatarContextProps } from './AvatarContext';
 import Popover from '../Popover';
 import { styled } from '../styles';
 import { ComponentSize, useTheme } from '../ThemeProvider';
-import Avatar, { AvatarProps, AvatarShape, AvatarSize } from './Avatar';
-import AvatarContext, { AvatarContextProps } from './AvatarContext';
 
 export type AvatarGroupPopupPlacement = 'none' | 'top' | 'bottom';
 

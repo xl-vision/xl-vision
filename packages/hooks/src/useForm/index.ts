@@ -1,6 +1,6 @@
 import { useState, ChangeEvent, useCallback, useRef } from 'react';
-import useConstantFn from '../useConstantFn';
 import getEventValue from './utils/getEventValue';
+import useConstantFn from '../useConstantFn';
 
 export type FormOptions<V> = {
   defaultValues?: V;

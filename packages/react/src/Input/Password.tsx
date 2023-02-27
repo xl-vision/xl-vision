@@ -3,8 +3,8 @@ import { EyeInvisibleOutlined, EyeOutlined } from '@xl-vision/icons';
 import { isProduction } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { ReactNode, forwardRef, useState, MouseEvent } from 'react';
-import { styled } from '../styles';
 import Input, { InputProps } from './Input';
+import { styled } from '../styles';
 
 export type PasswordProps = Omit<InputProps, 'type' | 'suffix'> & {
   renderIcon?: (visible: boolean) => ReactNode;

@@ -15,12 +15,12 @@ import {
   FocusEvent,
   CSSProperties,
 } from 'react';
+import calculateNodeHeight from './calculateNodeHeight';
+import TextAreaSuffix from './TextAreaSuffix';
 import useInput from '../hooks/useInput';
 import { styled } from '../styles';
 import { ComponentSize, useTheme } from '../ThemeProvider';
 import { alpha } from '../utils/color';
-import calculateNodeHeight from './calculateNodeHeight';
-import TextAreaSuffix from './TextAreaSuffix';
 
 export type TextAreaProps = Omit<
   TextareaHTMLAttributes<HTMLTextAreaElement>,
@@ -339,7 +339,7 @@ if (!isProduction) {
   TextArea.displayName = displayName;
   TextArea.propTypes = {
     allowClear: PropTypes.bool,
-    // TODO [2023-01-01]: types fix
+    // TODO [2023-05-01]: types fix
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     autoHeight: PropTypes.oneOfType([

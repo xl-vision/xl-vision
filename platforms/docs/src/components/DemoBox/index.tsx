@@ -4,8 +4,8 @@ import { styled, CollapseTransition, Button, Tooltip } from '@xl-vision/react';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { ReactNode, FC, useState, useCallback } from 'react';
-import useIsDebugMode from '../../hooks/useIsDebugMode';
 import Code from './Code';
+import useIsDebugMode from '../../hooks/useIsDebugMode';
 
 export type DemoBoxProps = {
   children: [ReactNode, ReactNode, ReactNode];

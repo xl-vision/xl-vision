@@ -8,9 +8,9 @@ import {
 } from '@xl-vision/styled-engine';
 import { isProduction } from '@xl-vision/utils';
 import { ComponentProps, ComponentType } from 'react';
+import applyTheme from './applyTheme';
 import { Theme } from '../ThemeProvider/createTheme';
 import { Style } from '../ThemeProvider/overrideStyles';
-import applyTheme from './applyTheme';
 
 export type XlOptions = {
   name?: string;

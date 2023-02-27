@@ -17,10 +17,10 @@ import {
   useMemo,
   CSSProperties,
 } from 'react';
+import AvatarContext from './AvatarContext';
 import ResizeObserver from '../ResizeObserver';
 import { styled } from '../styles';
 import { ComponentSize, useTheme } from '../ThemeProvider';
-import AvatarContext from './AvatarContext';
 
 export type AvatarShape = 'circle' | 'square' | 'round';
 

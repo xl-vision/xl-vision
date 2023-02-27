@@ -1,10 +1,10 @@
 import { FC } from 'react';
+import Notication, { NoticationProps, NoticationType } from './Notication';
+import NoticationList, { NoticationContainerProps } from './NoticationContainer';
 import ConfigProvider, { ConfigProviderProps } from '../ConfigProvider';
 import ThemeProvider, { ThemeProviderProps } from '../ThemeProvider';
 import createNotication from '../utils/createNotication';
 import { increaseZindex } from '../utils/zIndexManger';
-import Notication, { NoticationProps, NoticationType } from './Notication';
-import NoticationList, { NoticationContainerProps } from './NoticationContainer';
 
 export type MethodNoticationContainerProps = NoticationContainerProps & {
   themeProviderProps?: Omit<ThemeProviderProps, 'children'>;

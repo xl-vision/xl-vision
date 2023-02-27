@@ -14,6 +14,7 @@ exports[`Entry @xl-vision/hooks 1`] = `
   "useTransition",
   "useCssTransition",
   "useNotication",
+  "useForm",
 ]
 `;
 
@@ -752,15 +753,18 @@ exports[`Entry @xl-vision/utils 1`] = `
   "isServer",
   "isProduction",
   "isDevelopment",
-  "isNode",
-  "isHTMLElement",
-  "isElement",
-  "isShadowRoot",
-  "isDocument",
+  "isUndefinedOrNull",
+  "isObject",
+  "isPlainObject",
   "oneOf",
   "isFirefox",
   "isWindow",
   "getWindow",
   "contains",
+  "isNode",
+  "isHTMLElement",
+  "isElement",
+  "isShadowRoot",
+  "isDocument",
 ]
 `;

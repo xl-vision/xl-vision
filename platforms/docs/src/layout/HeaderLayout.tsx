@@ -1,6 +1,6 @@
 import { styled } from '@xl-vision/react';
-import Header from '../components/Header';
 import { Layout } from './Layout';
+import Header from '../components/Header';
 
 const Root = styled('div')(() => {
   return {

@@ -166,6 +166,24 @@ exports[`Demo renders ./packages/hooks/src/useCssTransition/__doc__/Basic.tsx co
 </div>
 `;
 
+exports[`Demo renders ./packages/hooks/src/useForm/__doc__/Basic.tsx correctly 1`] = `
+<div>
+  <form>
+    <input
+      name="firstName"
+      placeholder="please input firstname"
+    />
+    <input
+      name="lastName"
+      placeholder="please input lastname"
+    />
+    <button>
+      submit
+    </button>
+  </form>
+</div>
+`;
+
 exports[`Demo renders ./packages/hooks/src/useNotication/__doc__/Basic.tsx correctly 1`] = `
 .c3 {
   position: absolute;

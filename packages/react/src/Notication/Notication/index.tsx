@@ -7,8 +7,8 @@ import {
 import { isProduction } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { FC, useMemo } from 'react';
-import { useTheme } from '../../ThemeProvider';
 import InnerNotication, { InnerNoticationProps } from './InnerNotication';
+import { useTheme } from '../../ThemeProvider';
 
 export type NoticationType = 'success' | 'error' | 'warning' | 'info';
 

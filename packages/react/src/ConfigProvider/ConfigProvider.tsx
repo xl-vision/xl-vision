@@ -1,8 +1,8 @@
 import { isProduction, warning } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { ReactNode, FC, useMemo } from 'react';
-import { defaultLanguage, locales, Locales } from '../locale';
 import ConfigContext, { defaultConfigContext } from './ConfigContext';
+import { defaultLanguage, locales, Locales } from '../locale';
 
 export type ConfigProviderProps = {
   children: ReactNode;

@@ -1,7 +1,7 @@
 import { getBoundingClientRect, isElement, off, on, raf } from '@xl-vision/utils';
 import ROP from 'resize-observer-polyfill';
-import { Reference } from '../types';
 import getOverflowAncestors from './getOverflowAncestors';
+import { Reference } from '../types';
 
 export type AutoUpdateOptions = {
   ancestorScroll?: boolean;

@@ -8,8 +8,8 @@ import {
   isHTMLElement,
   oneOf,
 } from '@xl-vision/utils';
-import { MiddlewareContext, OverflowOptions, OverflowRect, RootBoundary } from '../types';
 import getOverflowAncestors from './getOverflowAncestors';
+import { MiddlewareContext, OverflowOptions, OverflowRect, RootBoundary } from '../types';
 
 export type Options = OverflowOptions & {
   ctx: MiddlewareContext;

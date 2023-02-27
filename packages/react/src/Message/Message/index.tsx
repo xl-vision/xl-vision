@@ -9,9 +9,9 @@ import { keyframes } from '@xl-vision/styled-engine';
 import { isProduction } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { FC, useMemo } from 'react';
+import InnerMessage, { InnerMessageProps } from './InnerMessage';
 import { styled } from '../../styles';
 import { useTheme } from '../../ThemeProvider';
-import InnerMessage, { InnerMessageProps } from './InnerMessage';
 
 export type MessageType = 'success' | 'error' | 'warning' | 'info' | 'loading';
 

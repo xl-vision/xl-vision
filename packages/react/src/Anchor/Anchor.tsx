@@ -22,12 +22,12 @@ import {
   useCallback,
   LegacyRef,
 } from 'react';
+import AnchorContext from './AnchorContext';
 import Affix from '../Affix';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 import { throttleByAnimationFrame } from '../utils/perf';
 import { getScroll, scrollTo } from '../utils/scroll';
-import AnchorContext from './AnchorContext';
 
 export type AnchorType = 'block' | 'rail';
 
