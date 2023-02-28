@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, useCallback, useRef } from 'react';
+import { useState, useRef } from 'react';
 import getEventValue from './utils/getEventValue';
 import useConstantFn from '../useConstantFn';
 
@@ -9,34 +9,28 @@ export type FormOptions<V> = {
 const useForm = <V extends Record<string, string>>({ defaultValues }: FormOptions<V> = {}) => {
   const [values, setValues] = useState<Partial<V>>(defaultValues || {});
 
-  const domRefs = useRef<Partial<Record<keyof V, HTMLInputElement>>>({});
-
-  const onChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    const { target } = e;
-    const { name } = target;
-    const v = getEventValue<string>(e);
-    setValues((prev) => ({ ...prev, [name]: v }));
-
-    const currentEl = domRefs.current[name];
-
-    if (currentEl && v) {
-      currentEl.value = v;
-    }
-  }, []);
+  const changeFnStore = useRef<Partial<Record<keyof V, (e: any) => void>>>({});
 
   const register = useConstantFn(<K extends keyof V>(field: K) => {
     const value = values?.[field];
+
+    let onChange = changeFnStore.current[field];
+
+    if (!onChange) {
+      onChange = (e: any) => {
+        const v = getEventValue<string>(e);
+        setValues((prev) => ({ ...prev, [field]: v }));
+      };
+      changeFnStore.current[field] = onChange;
+    }
+
     return {
       name: field,
+      value,
       onChange,
       ref(el: HTMLInputElement | null) {
         if (!el) {
-          delete domRefs.current[field];
-          return;
-        }
-        domRefs.current[field] = el;
-        if (value) {
-          el.value = value;
+          delete changeFnStore.current[field];
         }
       },
     };
