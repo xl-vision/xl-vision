@@ -1,7 +1,8 @@
+import { Input } from '@xl-vision/react';
 import { useForm } from '@xl-vision/hooks';
 
 const Demo = () => {
-  const { register, values } = useForm({
+  const { control, values } = useForm({
     defaultValues: {
       firstName: 'Rhys',
       lastName: 'Xia',
@@ -10,8 +11,8 @@ const Demo = () => {
 
   return (
     <div>
-      <input placeholder='please input firstname' {...register('firstName')} />
-      <input placeholder='please input lastname' {...register('lastName')} />
+      <Input placeholder='please input firstname' {...control('firstName')} />
+      <Input placeholder='please input lastname' {...control('lastName')} />
       <div>{JSON.stringify(values)}</div>
     </div>
   );

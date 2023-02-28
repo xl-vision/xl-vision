@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, ChangeEvent, useCallback, useEffect } from 'react';
 import getEventValue from './utils/getEventValue';
 import useConstantFn from '../useConstantFn';
 
@@ -9,35 +9,65 @@ export type FormOptions<V> = {
 const useForm = <V extends Record<string, string>>({ defaultValues }: FormOptions<V> = {}) => {
   const [values, setValues] = useState<Partial<V>>(defaultValues || {});
 
-  const changeFnStore = useRef<Partial<Record<keyof V, (e: any) => void>>>({});
+  const controlOnChangeStore = useRef<Partial<Record<keyof V, (v: any) => void>>>({});
+
+  const controlFieldNames = useRef<Set<keyof V>>();
+
+  const handleRegisterChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    const { target } = e;
+
+    const { name } = target;
+
+    const v = getEventValue<string>(e);
+    setValues((prev) => ({ ...prev, [name]: v }));
+
+    target.value = v;
+  }, []);
+
+  const handleRegisterRef = useConstantFn((el: HTMLInputElement | null) => {
+    if (!el) {
+      return;
+    }
+
+    const { name } = el;
+
+    el.value = values[name] || '';
+  });
 
   const register = useConstantFn(<K extends keyof V>(field: K) => {
-    const value = values?.[field];
+    return {
+      name: field,
+      // value,
+      onChange: handleRegisterChange,
+      ref: handleRegisterRef,
+    };
+  });
 
-    let onChange = changeFnStore.current[field];
+  const control = useConstantFn(<K extends keyof V>(field: K) => {
+    controlFieldNames.current = controlFieldNames.current || new Set();
+
+    controlFieldNames.current.add(field);
+
+    let onChange = controlOnChangeStore.current[field];
 
     if (!onChange) {
-      onChange = (e: any) => {
-        const v = getEventValue<string>(e);
+      onChange = (v: V[K]) => {
         setValues((prev) => ({ ...prev, [field]: v }));
       };
-      changeFnStore.current[field] = onChange;
+      controlOnChangeStore.current[field] = onChange;
     }
 
     return {
       name: field,
-      value,
+      value: values[field],
       onChange,
-      ref(el: HTMLInputElement | null) {
-        if (!el) {
-          delete changeFnStore.current[field];
-        }
-      },
     };
   });
 
   return {
+    values,
     register,
+    control,
   };
 };
 
