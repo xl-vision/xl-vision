@@ -1,16 +1,24 @@
 import { useConstantFn } from '@xl-vision/hooks';
-import { ChangeEvent, useCallback, useState } from 'react';
+import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import FormStore from './FormStore';
 import isCheckBoxInput from './utils/isCheckBoxInput';
 
 export type FormOptions<T> = {
   defaultValues?: T;
+  values?: T;
 };
 
 const useForm = <T extends Record<string, any> = Record<string, any>>({
   defaultValues,
+  values,
 }: FormOptions<T> = {}) => {
-  const [formStore] = useState(() => new FormStore<T>(defaultValues || {}));
+  const [formStore] = useState(() => new FormStore<T>(values || defaultValues || {}));
+
+  useEffect(() => {
+    if (values) {
+      formStore.setValue(values);
+    }
+  }, [formStore, values]);
 
   const handleRegisterChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {

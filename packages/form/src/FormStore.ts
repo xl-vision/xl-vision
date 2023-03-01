@@ -1,3 +1,5 @@
+import { isObject } from '@xl-vision/utils';
+
 export type Watcher<V> = (v: V) => void;
 
 class FormStore<T extends Record<string, any> = Record<string, any>> {
@@ -13,11 +15,29 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
     this.globalWatchers = new Set();
   }
 
-  setValue<K extends keyof T>(field: K, value: T[K]) {
+  setValue(value: T): void;
+
+  setValue<K extends keyof T>(field: K, value: T[K]): void;
+
+  setValue<K extends keyof T>(field: K | T, value?: T[K]) {
+    if (isObject(field)) {
+      if (field === this.value) {
+        return;
+      }
+      this.value = { ...field };
+      this.dispatch();
+      return;
+    }
+
+    if (this.value[field] === value) {
+      return;
+    }
+
     this.value = {
       ...this.value,
       [field]: value,
     };
+
     this.dispatch(field);
   }
 
@@ -80,12 +100,23 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
     }
   }
 
-  private dispatch<K extends keyof T>(field: K) {
-    const value = this.value[field];
-    const set = this.watchers.get(field);
-    set?.forEach((it) => {
-      it(value);
-    });
+  private dispatch<K extends keyof T>(field?: K) {
+    if (field) {
+      const value = this.value[field];
+      const set = this.watchers.get(field);
+      set?.forEach((it) => {
+        it(value);
+      });
+    } else {
+      this.watchers.forEach((s, k) => {
+        s.forEach((it) => {
+          it(this.value[k]);
+        });
+      });
+    }
+
+    console.log('===');
+
     this.globalWatchers.forEach((it) => {
       it(this.value);
     });
