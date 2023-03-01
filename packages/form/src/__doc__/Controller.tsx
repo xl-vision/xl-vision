@@ -1,5 +1,5 @@
 import { Input } from '@xl-vision/react';
-import { useForm } from '@xl-vision/form';
+import { useForm, Controller, useWatch } from '@xl-vision/form';
 
 const Demo = () => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
@@ -10,10 +10,22 @@ const Demo = () => {
     },
   });
 
+  const value = useWatch({ formStore });
+
   return (
     <div>
-      <Input placeholder='please input firstname' />
-      <Input placeholder='please input lastname' />
+      <Controller
+        field='firstName'
+        formStore={formStore}
+        render={(props) => <Input placeholder='please input firstname' {...props} />}
+      />
+
+      <Controller
+        field='lastName'
+        formStore={formStore}
+        render={(props) => <Input placeholder='please input lastname' {...props} />}
+      />
+      <div>{typeof value === 'object' ? JSON.stringify(value) : value}</div>
     </div>
   );
 };

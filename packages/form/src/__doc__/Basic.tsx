@@ -9,12 +9,13 @@ const Demo = () => {
     },
   });
 
-  const value = useWatch({ formStore, field: 'firstName' });
+  const value = useWatch({ formStore });
 
   return (
     <div>
       <input placeholder='please input firstname' {...register('firstName')} />
       <input placeholder='please input lastname' {...register('lastName')} />
+      <div>{typeof value === 'object' ? JSON.stringify(value) : value}</div>
     </div>
   );
 };

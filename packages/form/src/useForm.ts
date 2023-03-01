@@ -1,6 +1,6 @@
 import { useConstantFn } from '@xl-vision/hooks';
-import { useRef, ChangeEvent, useCallback, useState } from 'react';
-import FormStore from './utils/FormStore';
+import { ChangeEvent, useCallback, useState } from 'react';
+import FormStore from './FormStore';
 import isCheckBoxInput from './utils/isCheckBoxInput';
 
 export type FormOptions<T> = {
@@ -10,9 +10,7 @@ export type FormOptions<T> = {
 const useForm = <T extends Record<string, any> = Record<string, any>>({
   defaultValues,
 }: FormOptions<T> = {}) => {
-  const valueStore = useRef<Partial<T>>(defaultValues || {});
-
-  const [formStore] = useState(() => new FormStore<T>(valueStore));
+  const [formStore] = useState(() => new FormStore<T>(defaultValues || {}));
 
   const handleRegisterChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
@@ -24,10 +22,7 @@ const useForm = <T extends Record<string, any> = Record<string, any>>({
 
       const v = isCheckBox ? target.checked : (target as HTMLInputElement).value;
 
-      valueStore.current = { ...valueStore.current, [name]: v };
-
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-      formStore.dispatch(v as any, name);
+      formStore.setValue(name, v as T[keyof T]);
 
       if (isCheckBox) {
         target.checked = v as boolean;
@@ -45,17 +40,16 @@ const useForm = <T extends Record<string, any> = Record<string, any>>({
 
     const { name } = el;
 
-    el.value = valueStore.current[name] || '';
+    el.value = (formStore.getValue(name as keyof T) as string | undefined) || '';
   });
 
-  const getValues = useCallback(<K extends keyof T>(field?: K) => {
-    if (field) {
+  const getValue = useCallback<typeof formStore.getValue>(
+    <K extends keyof T>(field?: K) => {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-      return valueStore.current[field];
-    }
-
-    return valueStore.current;
-  }, []);
+      return formStore.getValue(field as any);
+    },
+    [formStore],
+  );
 
   const register = useConstantFn((field: keyof T) => {
     return {
@@ -66,7 +60,7 @@ const useForm = <T extends Record<string, any> = Record<string, any>>({
   });
 
   return {
-    getValues,
+    getValue,
     register,
     formStore,
   };

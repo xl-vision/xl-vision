@@ -1,14 +1,31 @@
-import { FC } from 'react';
-import FormStore from './utils/FormStore';
+import { FC, ReactElement, useCallback } from 'react';
+import FormStore from './FormStore';
+import useWatch from './useWatch';
 
-export type ControllerProps<T extends Record<string, any> = Record<string, any>> = {
-  name: keyof T;
-  render: () => void;
-  formStore: FormStore<T>;
+export type RenderProps = {
+  value: any;
+  onChange: (value: any) => void;
 };
 
-const Controller: FC<ControllerProps> = ({ name, render, formStore }) => {
-    const
+export type ControllerProps = {
+  field: string;
+  render: (props: RenderProps) => ReactElement;
+  formStore: FormStore;
+};
+
+const Controller: FC<ControllerProps> = ({ field, render, formStore }) => {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const value = useWatch({ formStore, field });
+
+  const onChange = useCallback(
+    (v: any) => {
+      formStore.setValue(field, v);
+    },
+    [formStore, field],
+  );
+
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  return render({ value, onChange });
 };
 
 export default Controller;

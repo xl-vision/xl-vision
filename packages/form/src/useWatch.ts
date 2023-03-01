@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import FormStore, { Watcher } from './utils/FormStore';
+import FormStore, { Watcher } from './FormStore';
 
 export type WatchOptions<T extends Record<string, any>, K extends keyof T = keyof T> = {
   formStore: FormStore<T>;
@@ -12,8 +12,8 @@ function useWatch<T extends Record<string, any>, K extends keyof T>(
 
 function useWatch<T extends Record<string, any>>(o: Omit<WatchOptions<T>, 'field'>): T;
 
-const useWatch = <T extends Record<string, any>>({ formStore, field }: WatchOptions<T>) => {
-  const [value, setValue] = useState(() => formStore.getStore(field));
+function useWatch<T extends Record<string, any>>({ formStore, field }: WatchOptions<T>) {
+  const [value, setValue] = useState(() => formStore.getValue(field as any));
 
   const watcher = useCallback<Watcher<any>>((v) => {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
@@ -38,6 +38,6 @@ const useWatch = <T extends Record<string, any>>({ formStore, field }: WatchOpti
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return value;
-};
+}
 
 export default useWatch;
