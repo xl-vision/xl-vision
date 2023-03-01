@@ -1,7 +1,8 @@
-import { useForm } from '@xl-vision/hooks';
+import { useForm } from '@xl-vision/form';
 
 const Demo = () => {
-  const { register, values } = useForm({
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const { register } = useForm({
     defaultValues: {
       firstName: 'Rhys',
       lastName: 'Xia',
@@ -12,7 +13,6 @@ const Demo = () => {
     <div>
       <input placeholder='please input firstname' {...register('firstName')} />
       <input placeholder='please input lastname' {...register('lastName')} />
-      <div>{JSON.stringify(values)}</div>
     </div>
   );
 };

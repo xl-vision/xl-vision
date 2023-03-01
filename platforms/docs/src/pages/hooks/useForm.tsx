@@ -1,4 +1,4 @@
-import Docs from '@xl-vision/hooks/useForm/__doc__/index.en-US.mdx?locale';
+import Docs from '@xl-vision/form/__doc__/index.en-US.mdx?locale';
 import { GetStaticProps, NextPage } from 'next';
 import { LayoutKey } from '../../layout';
 
