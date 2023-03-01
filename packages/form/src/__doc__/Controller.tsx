@@ -3,7 +3,7 @@ import { useForm } from '@xl-vision/form';
 
 const Demo = () => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const {} = useForm({
+  const { formStore } = useForm({
     defaultValues: {
       firstName: 'Rhys',
       lastName: 'Xia',

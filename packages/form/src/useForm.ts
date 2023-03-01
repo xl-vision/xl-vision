@@ -1,6 +1,7 @@
 import { useConstantFn } from '@xl-vision/hooks';
-import { useRef, ChangeEvent, useCallback, useMemo } from 'react';
-import getEventValue from './utils/getEventValue';
+import { useRef, ChangeEvent, useCallback, useState } from 'react';
+import FormStore from './utils/FormStore';
+import isCheckBoxInput from './utils/isCheckBoxInput';
 
 export type FormOptions<T> = {
   defaultValues?: T;
@@ -11,17 +12,31 @@ const useForm = <T extends Record<string, any> = Record<string, any>>({
 }: FormOptions<T> = {}) => {
   const valueStore = useRef<Partial<T>>(defaultValues || {});
 
-  const handleRegisterChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    const { target } = e;
+  const [formStore] = useState(() => new FormStore<T>(valueStore));
 
-    const { name } = target;
+  const handleRegisterChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      const { target } = e;
 
-    const v = getEventValue<string>(e);
+      const { name } = target;
 
-    valueStore.current = { ...valueStore.current, [name]: v };
+      const isCheckBox = isCheckBoxInput(target);
 
-    target.value = v;
-  }, []);
+      const v = isCheckBox ? target.checked : (target as HTMLInputElement).value;
+
+      valueStore.current = { ...valueStore.current, [name]: v };
+
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+      formStore.dispatch(v as any, name);
+
+      if (isCheckBox) {
+        target.checked = v as boolean;
+      } else {
+        (target as HTMLInputElement).value = v as string;
+      }
+    },
+    [formStore],
+  );
 
   const handleRegisterRef = useConstantFn((el: HTMLInputElement | null) => {
     if (!el) {
@@ -50,14 +65,10 @@ const useForm = <T extends Record<string, any> = Record<string, any>>({
     };
   });
 
-  const control = useMemo(() => {
-    return {};
-  }, []);
-
   return {
     getValues,
     register,
-    control,
+    formStore,
   };
 };
 
