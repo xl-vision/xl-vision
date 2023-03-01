@@ -1,13 +1,15 @@
-import { useForm } from '@xl-vision/form';
+import { useForm, useWatch } from '@xl-vision/form';
 
 const Demo = () => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const { register } = useForm({
+  const { register, formStore } = useForm({
     defaultValues: {
       firstName: 'Rhys',
       lastName: 'Xia',
     },
   });
+
+  const value = useWatch({ formStore, field: 'firstName' });
 
   return (
     <div>

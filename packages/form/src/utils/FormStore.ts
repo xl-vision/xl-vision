@@ -1,6 +1,15 @@
 export type Watcher<V> = (v: V) => void;
 
-export default class FormStore<T extends Record<string, any>> {
+interface FormStore<T extends Record<string, any>> {
+  addWatcher<K extends keyof T>(field: K, watcher: Watcher<T[K]>): void;
+  addWatcher<K extends keyof T>(watcher: Watcher<T[K]>): void;
+  removeWatcher<K extends keyof T>(field: K, watcher: Watcher<T[K]>): void;
+  removeWatcher<K extends keyof T>(watcher: Watcher<T[K]>): void;
+  getStore<K extends keyof T>(field: K): T[K];
+  getStore(): T;
+}
+
+class FormStore<T extends Record<string, any>> {
   private watchers: Map<keyof T, Set<Watcher<any>>>;
 
   private globalWatchers: Set<Watcher<any>>;
@@ -14,17 +23,17 @@ export default class FormStore<T extends Record<string, any>> {
     this.globalWatchers = new Set();
   }
 
-  getStore(field?: keyof T) {
+  getStore<K extends keyof T>(field?: K) {
     if (field) {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-return
       return this.store.current[field];
     }
-    return this.store;
+    return this.store.current;
   }
 
-  addWatcher<K extends keyof T>(watcher: Watcher<T[K]>, field?: K) {
-    if (!field) {
-      this.globalWatchers.add(watcher);
+  addWatcher<K extends keyof T>(field: K | Watcher<T[K]>, watcher?: Watcher<T[K]>) {
+    if (typeof field === 'function') {
+      this.globalWatchers.add(field);
       return;
     }
 
@@ -35,12 +44,14 @@ export default class FormStore<T extends Record<string, any>> {
       this.watchers.set(field, set);
     }
 
-    set.add(watcher);
+    if (watcher) {
+      set.add(watcher);
+    }
   }
 
-  removeWatcher<K extends keyof T>(watcher: Watcher<T[K]>, field?: K) {
-    if (!field) {
-      this.globalWatchers.delete(watcher);
+  removeWatcher<K extends keyof T>(field: K | Watcher<T[K]>, watcher?: Watcher<T[K]>) {
+    if (typeof field === 'function') {
+      this.globalWatchers.delete(field);
       return;
     }
 
@@ -50,7 +61,9 @@ export default class FormStore<T extends Record<string, any>> {
       return;
     }
 
-    set.delete(watcher);
+    if (watcher) {
+      set.delete(watcher);
+    }
 
     if (!set.size) {
       this.watchers.delete(field);
@@ -64,3 +77,5 @@ export default class FormStore<T extends Record<string, any>> {
     });
   }
 }
+
+export default FormStore;
