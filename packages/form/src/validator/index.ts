@@ -1,8 +1,8 @@
 import MinValidator from './MinValidator';
 
-const map = {
+const validators = {
   min: MinValidator,
   max: MinValidator,
 } as const;
 
-export default map;
+export default validators;

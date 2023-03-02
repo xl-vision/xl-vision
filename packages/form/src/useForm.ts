@@ -10,7 +10,7 @@ export type FormOptions<T> = {
 };
 
 export type RegisterOptions = {
-  rules: Array<Rule> | Rule;
+  rules?: Array<Rule> | Rule;
 };
 
 const useForm = <T extends Record<string, any> = Record<string, any>>({
@@ -64,7 +64,15 @@ const useForm = <T extends Record<string, any> = Record<string, any>>({
     [formStore],
   );
 
-  const register = useConstantFn((field: keyof T, { rules }: RegisterOptions) => {
+  const validate = useCallback<typeof formStore.validate>(
+    (field?: any) => {
+      return formStore.validate(field);
+    },
+    [formStore],
+  );
+
+  const register = useConstantFn((field: keyof T, { rules }: RegisterOptions = {}) => {
+    formStore.setRules(field, rules || []);
     return {
       name: field,
       onChange: handleRegisterChange,
@@ -76,6 +84,7 @@ const useForm = <T extends Record<string, any> = Record<string, any>>({
     getValue,
     register,
     formStore,
+    validate,
   };
 };
 

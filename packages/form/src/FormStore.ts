@@ -1,9 +1,12 @@
-import { EventEmitter, isObject } from '@xl-vision/utils';
-import { Rule } from './types';
-
-export type Watcher<V> = (value: V) => void;
+import { EventEmitter, isObject, warning } from '@xl-vision/utils';
+import { Rule, ValidatorKey } from './types';
+import validators from './validator';
 
 const GLOBAL_EVENT = Symbol('GLOABL_EVENT');
+
+export type ValidateOptions = {
+  lazy?: boolean;
+};
 
 class FormStore<T extends Record<string, any> = Record<string, any>> {
   private values: Partial<T>;
@@ -56,59 +59,120 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
     return this.values;
   }
 
-  addWatcher<K extends keyof T>(field: K, watcher: Watcher<T[K]>): void;
+  on<K extends keyof T>(field: K, listener: (value: T[K]) => void): void;
 
-  addWatcher<K extends keyof T>(watcher: Watcher<T[K]>): void;
+  on(listener: (value: Partial<T>) => void): void;
 
-  addWatcher<K extends keyof T>(field: K | Watcher<Partial<T>>, watcher?: Watcher<T[K]>) {
+  on<K extends keyof T>(
+    field: K | ((value: Partial<T>) => void),
+    listener?: (value: T[K]) => void,
+  ) {
     if (typeof field === 'function') {
       this.emitter.on(GLOBAL_EVENT, field);
       return;
     }
 
-    if (watcher) {
-      this.emitter.on(field, watcher);
+    if (listener) {
+      this.emitter.on(field, listener);
     }
   }
 
-  removeWatcher<K extends keyof T>(field: K, watcher: Watcher<T[K]>): void;
+  off<K extends keyof T>(field: K, listener: (value: T[K]) => void): void;
 
-  removeWatcher<K extends keyof T>(watcher: Watcher<T[K]>): void;
+  off(listener: (value: Partial<T>) => void): void;
 
-  removeWatcher<K extends keyof T>(field: K | Watcher<Partial<T>>, watcher?: Watcher<T[K]>) {
+  off<K extends keyof T>(
+    field: K | ((value: Partial<T>) => void),
+    listener?: (value: T[K]) => void,
+  ) {
     if (typeof field === 'function') {
       this.emitter.off(GLOBAL_EVENT, field);
       return;
     }
 
-    if (watcher) {
-      this.emitter.off(field, watcher);
+    if (listener) {
+      this.emitter.off(field, listener);
     }
   }
 
-  validate(): Partial<Record<keyof T, Array<string>>>;
+  setRules<K extends keyof T>(field: K, rules: Rule | Array<Rule>) {
+    this.rules[field] = Array.isArray(rules) ? rules : [rules];
+  }
 
-  validate<K extends keyof T>(field: K): Array<string>;
+  validate(): Promise<Partial<Record<keyof T, Array<string>>>>;
 
-  validate<K extends keyof T>(field?: K) {
+  validate<K extends keyof T>(field: K): Promise<Array<string>>;
+
+  async validate<K extends keyof T>(field?: K, options: ValidateOptions = {}) {
     if (field) {
-      return this.validateField(field);
+      return this.validateField(field, options);
     }
 
     const errors: Partial<Record<keyof T, Array<string>>> = {};
 
-    Object.keys(this.values).forEach((key) => {
-      errors[key as K] = this.validateField(key);
-    });
+    await Promise.all(
+      Object.keys(this.values).map(async (key) => {
+        errors[key as K] = await this.validateField(key, options);
+      }),
+    );
 
     return errors;
   }
 
-  private validateField<K extends keyof T>(field: K): Array<string> {
-    const { values } = this;
-    const value = values[field];
+  private async validateField<K extends keyof T>(
+    field: K,
+    { lazy }: ValidateOptions = {},
+  ): Promise<Array<string>> {
+    const ruleArray = this.rules[field] || [];
 
-    return [];
+    const errors: Array<string> = [];
+
+    for (let i = 0; i < ruleArray.length; i++) {
+      if (lazy && errors.length) {
+        break;
+      }
+
+      const rule = ruleArray[i];
+      const { message, validator, ...others } = rule;
+      const keys = Object.keys(others) as Array<ValidatorKey>;
+
+      // eslint-disable-next-line no-await-in-loop
+      const error = await validator?.({
+        field: field as string,
+        values: this.values,
+      });
+
+      if (error) {
+        errors.push(message ?? error);
+        if (lazy) {
+          break;
+        }
+      }
+
+      for (let j = 0; j < keys.length; j++) {
+        const key = keys[j];
+
+        const defaultValidator = validators[key];
+        if (!defaultValidator) {
+          warning(true, 'unknown validator {}, please check whether passing a right key', key);
+          continue;
+        }
+
+        // eslint-disable-next-line no-await-in-loop
+        const defaultError = await defaultValidator({
+          field: field as string,
+          values: this.values,
+          rule: rule[key],
+        });
+
+        if (defaultError) {
+          errors.push(message ?? defaultError);
+          break;
+        }
+      }
+    }
+
+    return errors;
   }
 }
 
