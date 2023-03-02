@@ -1,18 +1,17 @@
-import { isObject } from '@xl-vision/utils';
+import { EventEmitter, isObject } from '@xl-vision/utils';
 
-export type Watcher<V> = (v: V) => void;
+export type Watcher<V> = (value: V) => void;
+
+const GLOBAL_EVENT = Symbol('GLOABL_EVENT');
 
 class FormStore<T extends Record<string, any> = Record<string, any>> {
-  private watchers: Map<keyof T, Set<Watcher<any>>>;
-
-  private globalWatchers: Set<Watcher<Partial<T>>>;
-
   private value: Partial<T>;
+
+  private emitter: EventEmitter;
 
   constructor(value: Partial<T>) {
     this.value = { ...value };
-    this.watchers = new Map();
-    this.globalWatchers = new Set();
+    this.emitter = new EventEmitter();
   }
 
   setValue(value: T): void;
@@ -25,7 +24,9 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
         return;
       }
       this.value = { ...field };
-      this.dispatch();
+
+      this.emitter.emit(GLOBAL_EVENT, this.value);
+
       return;
     }
 
@@ -38,7 +39,7 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
       [field]: value,
     };
 
-    this.dispatch(field);
+    this.emitter.emit(field as PropertyKey, value);
   }
 
   getValue<K extends keyof T>(field: K): T[K];
@@ -59,19 +60,12 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
 
   addWatcher<K extends keyof T>(field: K | Watcher<Partial<T>>, watcher?: Watcher<T[K]>) {
     if (typeof field === 'function') {
-      this.globalWatchers.add(field);
+      this.emitter.on(GLOBAL_EVENT, field);
       return;
     }
 
-    let set = this.watchers.get(field);
-
-    if (!set) {
-      set = new Set();
-      this.watchers.set(field, set);
-    }
-
     if (watcher) {
-      set.add(watcher);
+      this.emitter.on(field, watcher);
     }
   }
 
@@ -81,45 +75,13 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
 
   removeWatcher<K extends keyof T>(field: K | Watcher<Partial<T>>, watcher?: Watcher<T[K]>) {
     if (typeof field === 'function') {
-      this.globalWatchers.delete(field);
-      return;
-    }
-
-    const set = this.watchers.get(field);
-
-    if (!set) {
+      this.emitter.off(GLOBAL_EVENT, field);
       return;
     }
 
     if (watcher) {
-      set.delete(watcher);
+      this.emitter.off(field, watcher);
     }
-
-    if (!set.size) {
-      this.watchers.delete(field);
-    }
-  }
-
-  private dispatch<K extends keyof T>(field?: K) {
-    if (field) {
-      const value = this.value[field];
-      const set = this.watchers.get(field);
-      set?.forEach((it) => {
-        it(value);
-      });
-    } else {
-      this.watchers.forEach((s, k) => {
-        s.forEach((it) => {
-          it(this.value[k]);
-        });
-      });
-    }
-
-    console.log('===');
-
-    this.globalWatchers.forEach((it) => {
-      it(this.value);
-    });
   }
 }
 

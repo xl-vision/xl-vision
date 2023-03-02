@@ -1,11 +1,16 @@
-export default class EventEmitter {
-  private listeners: Map<string, Array<(...args: Array<any>) => void>>;
+export default class EventEmitter<
+  M extends Record<PropertyKey, (...args: Array<any>) => void> = Record<
+    PropertyKey,
+    (...args: Array<any>) => void
+  >,
+> {
+  private listeners: Map<keyof M, Array<M[keyof M]>>;
 
   constructor() {
     this.listeners = new Map();
   }
 
-  public on(event: string, listener: (...args: Array<any>) => void): void {
+  public on<K extends keyof M>(event: K, listener: M[K]): void {
     const listeners = this.listeners.get(event);
     if (listeners) {
       listeners.push(listener);
@@ -14,30 +19,35 @@ export default class EventEmitter {
     }
   }
 
-  public off(event: string, listener: (...args: Array<any>) => void): void {
+  public off<K extends keyof M>(event: K, listener: M[K]): void {
     const listeners = this.listeners.get(event);
-    if (listeners) {
-      const index = listeners.indexOf(listener);
-      if (index > -1) {
-        listeners.splice(index, 1);
-      }
+    if (!listeners) {
+      return;
+    }
+
+    const index = listeners.indexOf(listener);
+    if (index > -1) {
+      listeners.splice(index, 1);
+    }
+
+    if (!listeners.length) {
+      this.listeners.delete(event);
     }
   }
 
-  public emit(event: string, ...args: Array<any>): void {
+  public emit<K extends keyof M>(event: K, ...args: Parameters<M[K]>): void {
     const listeners = this.listeners.get(event);
-    if (listeners) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-      listeners.forEach((listener) => listener(...args));
+    if (!listeners) {
+      return;
     }
+    listeners.forEach((listener) => listener(...args));
   }
 
-  once(event: string, listener: (...args: Array<any>) => void): void {
-    const onceListener = (...args: Array<any>) => {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+  once<K extends keyof M>(event: K, listener: M[K]): void {
+    const onceListener = ((...args: Parameters<M[K]>) => {
       listener(...args);
       this.off(event, onceListener);
-    };
+    }) as M[K];
     this.on(event, onceListener);
   }
 }
