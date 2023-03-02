@@ -1,11 +1,16 @@
 import { useConstantFn } from '@xl-vision/hooks';
 import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import FormStore from './FormStore';
+import { Rule } from './types';
 import isCheckBoxInput from './utils/isCheckBoxInput';
 
 export type FormOptions<T> = {
   defaultValues?: T;
   values?: T;
+};
+
+export type RegisterOptions = {
+  rules: Array<Rule> | Rule;
 };
 
 const useForm = <T extends Record<string, any> = Record<string, any>>({
@@ -59,7 +64,7 @@ const useForm = <T extends Record<string, any> = Record<string, any>>({
     [formStore],
   );
 
-  const register = useConstantFn((field: keyof T) => {
+  const register = useConstantFn((field: keyof T, { rules }: RegisterOptions) => {
     return {
       name: field,
       onChange: handleRegisterChange,

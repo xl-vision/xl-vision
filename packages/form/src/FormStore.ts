@@ -1,16 +1,20 @@
 import { EventEmitter, isObject } from '@xl-vision/utils';
+import { Rule } from './types';
 
 export type Watcher<V> = (value: V) => void;
 
 const GLOBAL_EVENT = Symbol('GLOABL_EVENT');
 
 class FormStore<T extends Record<string, any> = Record<string, any>> {
-  private value: Partial<T>;
+  private values: Partial<T>;
+
+  private rules: Partial<Record<keyof T, Array<Rule>>>;
 
   private emitter: EventEmitter;
 
   constructor(value: Partial<T>) {
-    this.value = { ...value };
+    this.values = { ...value };
+    this.rules = {};
     this.emitter = new EventEmitter();
   }
 
@@ -20,26 +24,24 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
 
   setValue<K extends keyof T>(field: K | T, value?: T[K]) {
     if (isObject(field)) {
-      if (field === this.value) {
+      if (field === this.values) {
         return;
       }
-      this.value = { ...field };
+      this.values = { ...field };
+    } else {
+      if (this.values[field] === value) {
+        return;
+      }
 
-      this.emitter.emit(GLOBAL_EVENT, this.value);
+      this.values = {
+        ...this.values,
+        [field]: value,
+      };
 
-      return;
+      this.emitter.emit(field as PropertyKey, value);
     }
 
-    if (this.value[field] === value) {
-      return;
-    }
-
-    this.value = {
-      ...this.value,
-      [field]: value,
-    };
-
-    this.emitter.emit(field as PropertyKey, value);
+    this.emitter.emit(GLOBAL_EVENT, this.values);
   }
 
   getValue<K extends keyof T>(field: K): T[K];
@@ -49,9 +51,9 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
   getValue<K extends keyof T>(field?: K) {
     if (field) {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-      return this.value[field];
+      return this.values[field];
     }
-    return this.value;
+    return this.values;
   }
 
   addWatcher<K extends keyof T>(field: K, watcher: Watcher<T[K]>): void;
@@ -82,6 +84,31 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
     if (watcher) {
       this.emitter.off(field, watcher);
     }
+  }
+
+  validate(): Partial<Record<keyof T, Array<string>>>;
+
+  validate<K extends keyof T>(field: K): Array<string>;
+
+  validate<K extends keyof T>(field?: K) {
+    if (field) {
+      return this.validateField(field);
+    }
+
+    const errors: Partial<Record<keyof T, Array<string>>> = {};
+
+    Object.keys(this.values).forEach((key) => {
+      errors[key as K] = this.validateField(key);
+    });
+
+    return errors;
+  }
+
+  private validateField<K extends keyof T>(field: K): Array<string> {
+    const { values } = this;
+    const value = values[field];
+
+    return [];
   }
 }
 
