@@ -7,7 +7,7 @@ export type ValidatorOptions<P> = {
 };
 
 export type Validator<P = any> = {
-  (options: ValidatorOptions<P>): void | string | Promise<void | string>;
+  (options: ValidatorOptions<P>): void | Promise<void>;
 };
 
 export type Validators = typeof validators;
@@ -20,7 +20,7 @@ export type CustomValidatorOptions = {
 };
 
 export type CustomValidator = {
-  (options: CustomValidatorOptions): void | string | Promise<void | string>;
+  (options: CustomValidatorOptions): void | Promise<void>;
 };
 
 export type Rule = Partial<{

@@ -12,18 +12,18 @@ const Demo = () => {
 
   const value = useWatch({ formStore });
 
-  useEffect(() => {
-    validate().then((err) => {
-      console.log(err);
-    });
-  }, [value, validate]);
+  // useEffect(() => {
+  //   validate().then((err) => {
+  //     console.log(err);
+  //   });
+  // }, [value, validate]);
 
   return (
     <div>
       <input
         placeholder='please input firstname'
         {...register('firstName', {
-          rules: { min: 10 },
+          rules: { min: 10, },
         })}
       />
       <input placeholder='please input lastname' {...register('lastName')} />

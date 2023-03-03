@@ -4,7 +4,7 @@ export default class EventEmitter<
     (...args: Array<any>) => void
   >,
 > {
-  private listeners: Map<keyof M, Array<M[keyof M]>>;
+  private listeners: Map<keyof M, Set<M[keyof M]>>;
 
   constructor() {
     this.listeners = new Map();
@@ -13,9 +13,9 @@ export default class EventEmitter<
   public on<K extends keyof M>(event: K, listener: M[K]): void {
     const listeners = this.listeners.get(event);
     if (listeners) {
-      listeners.push(listener);
+      listeners.add(listener);
     } else {
-      this.listeners.set(event, [listener]);
+      this.listeners.set(event, new Set([listener]));
     }
   }
 
@@ -25,12 +25,9 @@ export default class EventEmitter<
       return;
     }
 
-    const index = listeners.indexOf(listener);
-    if (index > -1) {
-      listeners.splice(index, 1);
-    }
+    listeners.delete(listener);
 
-    if (!listeners.length) {
+    if (!listeners.size) {
       this.listeners.delete(event);
     }
   }

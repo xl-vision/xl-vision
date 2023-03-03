@@ -14,6 +14,7 @@ function useWatch<T extends Record<string, any>>(o: Omit<WatchOptions<T>, 'field
 
 function useWatch<T extends Record<string, any>>({ formStore, field }: WatchOptions<T>) {
   const [value, setValue] = useState(() => formStore.getValue(field as any));
+  const [errors, setErrors] = useState(() => formStore.getValue(field as any));
 
   const listener = useCallback((v: any) => {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
@@ -22,16 +23,16 @@ function useWatch<T extends Record<string, any>>({ formStore, field }: WatchOpti
 
   useEffect(() => {
     if (field) {
-      formStore.on(field, listener);
+      formStore.watchValue(field, listener);
     } else {
-      formStore.on(listener);
+      formStore.watchValue(listener);
     }
 
     return () => {
       if (field) {
-        formStore.off(field, listener);
+        formStore.unwatchValue(field, listener);
       } else {
-        formStore.off(listener);
+        formStore.unwatchValue(listener);
       }
     };
   }, [listener, formStore, field]);

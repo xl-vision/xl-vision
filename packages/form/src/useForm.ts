@@ -65,7 +65,11 @@ const useForm = <T extends Record<string, any> = Record<string, any>>({
   );
 
   const validate = useCallback<typeof formStore.validate>(
-    (field?: any) => {
+    // TODO [2023-12-12] fix this type error
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    (field) => {
+      formStore.validate()
       return formStore.validate(field);
     },
     [formStore],
