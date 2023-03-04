@@ -1,28 +1,44 @@
-import { FC, ReactElement, useCallback } from 'react';
-import FormStore from './FormStore';
+import { ReactElement, useCallback, useEffect } from 'react';
+import { Rule } from './types';
+import { Form } from './useForm';
 import useWatch from './useWatch';
 
-export type RenderProps = {
-  value: any;
-  onChange: (value: any) => void;
+export type RenderProps<V> = {
+  value: V;
+  onChange: (value: V) => void;
 };
 
-export type ControllerProps = {
-  field: string;
-  render: (props: RenderProps) => ReactElement;
-  formStore: FormStore;
+export type ControllerProps<T extends Record<string, any>> = {
+  field: keyof T;
+  form: Form<T>;
+  render: (props: RenderProps<T[keyof T]>) => ReactElement;
+  rule?: Rule;
 };
 
-const Controller: FC<ControllerProps> = ({ field, render, formStore }) => {
+const Controller = <T extends Record<string, any>>({
+  field,
+  render,
+  form,
+  rule,
+}: ControllerProps<T>) => {
+  const { store, setRule, trigger, validate } = form;
+
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const value = useWatch({ formStore, field });
+  const value = useWatch({ form, field });
 
   const onChange = useCallback(
-    (v: any) => {
-      formStore.setValue(field, v);
+    (v: T[keyof T]) => {
+      store.setValue(field, v);
+      if (trigger === 'change') {
+        validate(field, 'change');
+      }
     },
-    [formStore, field],
+    [store, field, trigger, validate],
   );
+
+  useEffect(() => {
+    setRule(field, rule);
+  }, [field, rule, setRule]);
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   return render({ value, onChange });

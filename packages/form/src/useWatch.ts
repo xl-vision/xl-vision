@@ -1,21 +1,23 @@
 import { useCallback, useEffect, useState } from 'react';
-import FormStore from './FormStore';
+import { Form } from './useForm';
 
 function useWatch<T extends Record<string, any>, K extends keyof T>(o: {
-  formStore: FormStore<T>;
+  form: Form<T>;
   field: K;
 }): T[K];
 
-function useWatch<T extends Record<string, any>>(o: { formStore: FormStore<T> }): T;
+function useWatch<T extends Record<string, any>>(o: { form: Form<T> }): T;
 
 function useWatch<T extends Record<string, any>, K extends keyof T>({
-  formStore,
+  form,
   field,
 }: {
-  formStore: FormStore<T>;
+  form: Form<T>;
   field?: K;
 }) {
-  const [values, setValues] = useState<T | T[K]>(() => formStore.getValue(field as any));
+  const { store } = form;
+
+  const [values, setValues] = useState<T | T[K]>(() => store.getValue(field as any));
 
   const listener = useCallback((v: any) => {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
@@ -24,20 +26,19 @@ function useWatch<T extends Record<string, any>, K extends keyof T>({
 
   useEffect(() => {
     if (field) {
-      formStore.watchValue(field, listener);
-      formStore.watchError(field, listener);
+      store.watchValue(field, listener);
     } else {
-      formStore.watchValue(listener);
+      store.watchValue(listener);
     }
 
     return () => {
       if (field) {
-        formStore.unwatchValue(field, listener);
+        store.unwatchValue(field, listener);
       } else {
-        formStore.unwatchValue(listener);
+        store.unwatchValue(listener);
       }
     };
-  }, [listener, formStore, field]);
+  }, [listener, store, field]);
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return values;

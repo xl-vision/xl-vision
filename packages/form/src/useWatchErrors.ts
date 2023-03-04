@@ -1,24 +1,27 @@
 import { useCallback, useEffect, useState } from 'react';
-import FormStore, { ErrorMap } from './FormStore';
+import { ErrorMap } from './FormStore';
+import { Form } from './useForm';
 
 function useWatchErrors<T extends Record<string, any>, K extends keyof T>(o: {
-  formStore: FormStore<T>;
+  form: Form<T>;
   field: K;
-}): Array<ErrorMap>;
+}): ErrorMap;
 
 function useWatchErrors<T extends Record<string, any>>(o: {
-  formStore: FormStore<T>;
-}): Partial<Record<keyof T, Array<ErrorMap>>>;
+  form: Form<T>;
+}): Partial<Record<keyof T, ErrorMap>>;
 
 function useWatchErrors<T extends Record<string, any>, K extends keyof T>({
-  formStore,
+  form,
   field,
 }: {
-  formStore: FormStore<T>;
+  form: Form<T>;
   field?: K;
 }) {
-  const [errors, setErrors] = useState<Array<ErrorMap> | Partial<Record<keyof T, Array<ErrorMap>>>>(
-    () => formStore.getErrors(field as any),
+  const { store } = form;
+
+  const [errors, setErrors] = useState<ErrorMap | Partial<Record<keyof T, ErrorMap>>>(() =>
+    store.getErrors(field as any),
   );
 
   const listener = useCallback((e: any) => {
@@ -28,19 +31,19 @@ function useWatchErrors<T extends Record<string, any>, K extends keyof T>({
 
   useEffect(() => {
     if (field) {
-      formStore.watchError(field, listener);
+      store.watchError(field, listener);
     } else {
-      formStore.watchError(listener);
+      store.watchError(listener);
     }
 
     return () => {
       if (field) {
-        formStore.unwatchError(field, listener);
+        store.unwatchError(field, listener);
       } else {
-        formStore.unwatchError(listener);
+        store.unwatchError(listener);
       }
     };
-  }, [listener, formStore, field]);
+  }, [listener, store, field]);
 
   return errors;
 }

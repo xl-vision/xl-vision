@@ -1,33 +1,51 @@
-import { Input } from '@xl-vision/react';
-import { useForm, Controller, useWatch } from '@xl-vision/form';
+import { Button, Input, Message, styled } from '@xl-vision/react';
+import { FormEvent, useCallback } from 'react';
+import { useForm, Controller } from '@xl-vision/form';
 
 const Demo = () => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const { formStore } = useForm({
+  const { form, getValue } = useForm({
     defaultValues: {
       firstName: 'Rhys',
       lastName: 'Xia',
     },
   });
 
-  const value = useWatch({ formStore });
+  const handleSubmit = useCallback(
+    (e: FormEvent) => {
+      e.preventDefault();
+      const value = getValue();
+      Message.success(`submit value: ${JSON.stringify(value)}`);
+    },
+    [getValue],
+  );
 
   return (
-    <div>
+    <Form onSubmit={handleSubmit}>
       <Controller
         field='firstName'
-        formStore={formStore}
+        form={form}
         render={(props) => <Input placeholder='please input firstname' {...props} />}
       />
 
       <Controller
         field='lastName'
-        formStore={formStore}
+        form={form}
         render={(props) => <Input placeholder='please input lastname' {...props} />}
       />
-      <div>{typeof value === 'object' ? JSON.stringify(value) : value}</div>
-    </div>
+      <Button color='primary' long={true}>
+        submit
+      </Button>
+    </Form>
   );
 };
 
 export default Demo;
+
+const Form = styled('form')(() => {
+  return {
+    '> *': {
+      margin: '4px 0',
+    },
+  };
+});
