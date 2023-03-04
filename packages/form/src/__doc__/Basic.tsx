@@ -1,33 +1,29 @@
-import { useEffect } from 'react';
 import { useForm, useWatch } from '@xl-vision/form';
+import useWatchErrors from '../useWatchErrors';
 
 const Demo = () => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const { register, formStore, validate } = useForm({
+  const { register, formStore } = useForm({
     defaultValues: {
       firstName: 'Rhys',
       lastName: 'Xia',
     },
   });
 
-  const value = useWatch({ formStore });
-
-  // useEffect(() => {
-  //   validate().then((err) => {
-  //     console.log(err);
-  //   });
-  // }, [value, validate]);
+  const values = useWatch({ formStore });
+  const errors = useWatchErrors({ formStore });
 
   return (
     <div>
       <input
         placeholder='please input firstname'
         {...register('firstName', {
-          rules: { min: 10, },
+          rules: { min: 10 },
         })}
       />
       <input placeholder='please input lastname' {...register('lastName')} />
-      <div>{typeof value === 'object' ? JSON.stringify(value) : value}</div>
+      <div>{typeof values === 'object' ? JSON.stringify(values) : values}</div>
+      <div>{typeof errors === 'object' ? JSON.stringify(errors) : errors}</div>
     </div>
   );
 };

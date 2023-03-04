@@ -1,4 +1,4 @@
-import validators from './validator';
+import validators from './validators';
 
 export type ValidatorOptions<P> = {
   field: string;
@@ -23,9 +23,13 @@ export type CustomValidator = {
   (options: CustomValidatorOptions): void | Promise<void>;
 };
 
+export type Trigger = 'change' | 'blur';
+
 export type Rule = Partial<{
   [k in ValidatorKey]: Validators[ValidatorKey] extends Validator<infer P> ? P : never;
 }> & {
   message?: string;
   validator?: CustomValidator;
+  trigger?: Trigger;
 };
+

@@ -6,8 +6,9 @@ const MinValidator: Validator<number> = ({ field, values, rule }) => {
   if (value === undefined) {
     return;
   }
+
   if (+value < rule) {
-    return 'min error';
+    throw new Error('min error');
   }
 };
 

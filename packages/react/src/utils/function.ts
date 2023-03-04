@@ -1,18 +1,3 @@
-import { oneOf } from '@xl-vision/utils';
-
-export const omit = <T extends {}, E extends keyof T>(obj: T, ...fields: Array<E>): Omit<T, E> => {
-  const copy = {} as Omit<T, E>;
-
-  Object.keys(obj).forEach((key) => {
-    if (oneOf(fields, key as E)) {
-      return;
-    }
-    copy[key as keyof Omit<T, E>] = obj[key as keyof Omit<T, E>];
-  });
-
-  return copy;
-};
-
 export const functionMerge = <Fn extends (...args: Array<any>) => any>(
   ...fns: Array<Fn>
 ): ((...args: Parameters<Fn>) => Array<ReturnType<Fn>>) => {

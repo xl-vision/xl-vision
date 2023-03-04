@@ -1,19 +1,19 @@
 import { EventEmitter, isObject, warning } from '@xl-vision/utils';
-import { Rule, ValidatorKey } from './types';
-import validators from './validator';
+import { Rule, Trigger, ValidatorKey } from './types';
+import validators from './validators';
+
+export type InnerValidateOptions = {
+  rules: Array<Rule>;
+  eager?: boolean;
+  trigger?: Trigger;
+};
 
 const GLOBAL_EVENT = Symbol('GLOABL_EVENT');
-
-export type ValidateOptions = {
-  lazy?: boolean;
-};
 
 class FormStore<T extends Record<string, any> = Record<string, any>> {
   private values: Partial<T>;
 
-  private rules: Partial<Record<keyof T, Array<Rule>>>;
-
-  private errors: Partial<Record<keyof T, Array<Error>>>;
+  private errors: Partial<Record<keyof T, Array<string>>>;
 
   private valueEmitter: EventEmitter;
 
@@ -21,7 +21,6 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
 
   constructor(value: Partial<T>) {
     this.values = { ...value };
-    this.rules = {};
     this.errors = {};
     this.valueEmitter = new EventEmitter();
     this.errorEmitter = new EventEmitter();
@@ -105,16 +104,15 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
     }
   }
 
-  getErrors<K extends keyof T>(field: K): T[K];
+  getErrors<K extends keyof T>(field: K): Array<string>;
 
-  getErrors(): T;
+  getErrors(): Partial<Record<keyof T, Array<string>>>;
 
   getErrors<K extends keyof T>(field?: K) {
     if (field) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-      return this.values[field];
+      return this.errors[field];
     }
-    return this.values;
+    return this.errors;
   }
 
   watchError<K extends keyof T>(field: K, listener: (errors: Array<string>) => void): void;
@@ -153,66 +151,85 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
     }
   }
 
-  setRules<K extends keyof T>(field: K, rules: Rule | Array<Rule>) {
-    this.rules[field] = Array.isArray(rules) ? rules : [rules];
-  }
+  validate<K extends keyof T>(
+    options: Omit<InnerValidateOptions, 'rules'> & {
+      rulesMap: Partial<Record<K, Array<Rule>>>;
+    },
+  ): Promise<Partial<Record<keyof T, Array<string>>>>;
 
-  validate(options?: ValidateOptions): Promise<Partial<Record<keyof T, Array<string>>>>;
+  validate<K extends keyof T>(field: K, options: InnerValidateOptions): Promise<Array<string>>;
 
-  validate<K extends keyof T>(field: K, options?: ValidateOptions): Promise<Array<string>>;
+  async validate<K extends keyof T>(
+    field:
+      | K
+      | (Omit<InnerValidateOptions, 'rules'> & {
+          rulesMap: Partial<Record<K, Array<Rule>>>;
+        }),
+    options?: InnerValidateOptions,
+  ) {
+    if (typeof field === 'string') {
+      const { eager, rules = [], trigger } = options || {};
 
-  async validate<K extends keyof T>(field?: K | ValidateOptions, options?: ValidateOptions) {
-    let lazy: boolean | undefined;
-    if (typeof field === 'object') {
-      lazy = field.lazy;
-    } else if (field) {
-      lazy = options?.lazy;
-      const errors = await this.validateField(field, { lazy });
+      const errors = await this.validateField(field, { eager, rules, trigger });
+
       this.errors = {
         ...this.errors,
         [field]: errors,
       };
 
-      this.errorEmitter.emit(field as string, errors);
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      this.errorEmitter.emit(field, errors);
+
       this.errorEmitter.emit(GLOBAL_EVENT, this.errors);
+
       return errors;
     }
 
-    const errors: Partial<Record<keyof T, Array<string>>> = {};
+    const { eager, rulesMap, trigger } = field as Omit<InnerValidateOptions, 'rules'> & {
+      rulesMap: Partial<Record<K, Array<Rule>>>;
+    };
+
+    const errorsMap: Partial<Record<keyof T, Array<string>>> = {};
+    this.errors = errorsMap;
 
     await Promise.all(
-      Object.keys(this.values).map(async (key) => {
-        errors[key as K] = await this.validateField(key, { lazy });
+      Object.keys(this.values).map(async (_key) => {
+        const key = _key as K;
+        const errors = await this.validateField(key, {
+          eager,
+          trigger,
+          rules: rulesMap[key] || [],
+        });
+        errorsMap[key] = errors;
+
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        this.errorEmitter.emit(key, errors);
       }),
     );
 
-    this.errors = errors;
-
-    Object.keys(errors).forEach((key) => {
-      this.errorEmitter.emit(key, errors[key]);
-    });
-
-    this.errorEmitter.emit(GLOBAL_EVENT, errors);
-    return errors;
+    this.errorEmitter.emit(GLOBAL_EVENT, errorsMap);
+    return errorsMap;
   }
 
-  private async validateField<K extends keyof T>(
+  async validateField<K extends keyof T>(
     field: K,
-    { lazy }: ValidateOptions = {},
-  ): Promise<Array<string>> {
-    const ruleArray = this.rules[field] || [];
+    { eager, rules = [], trigger }: InnerValidateOptions,
+  ) {
+    const errors: Array<string> = [];
 
-    const errors: Array<Error> = [];
-
-    for (let i = 0; i < ruleArray.length; i++) {
-      if (lazy && errors.length) {
+    for (let i = 0; i < rules.length; i++) {
+      if (!eager && errors.length) {
         break;
       }
 
-      const rule = ruleArray[i];
-      const { message, validator, ...others } = rule;
+      const rule = rules[i];
+      const { message, validator, trigger: ruleTrigger, ...others } = rule;
 
-      const messageError = message ? new Error(message) : undefined;
+      if (!trigger && !ruleTrigger && trigger !== ruleTrigger) {
+        continue;
+      }
 
       const keys = Object.keys(others) as Array<ValidatorKey>;
 
@@ -223,8 +240,8 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
           values: this.values,
         });
       } catch (err) {
-        errors.push(messageError ?? (err as Error));
-        if (lazy) {
+        errors.push(message ?? (err as Error).message);
+        if (!eager) {
           break;
         }
       }
@@ -246,7 +263,7 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
             rule: others[key]!,
           });
         } catch (err) {
-          errors.push(messageError ?? (err as Error));
+          errors.push(message ?? (err as Error).message);
           break;
         }
       }

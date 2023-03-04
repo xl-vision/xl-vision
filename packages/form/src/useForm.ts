@@ -1,23 +1,38 @@
 import { useConstantFn } from '@xl-vision/hooks';
-import { ChangeEvent, useCallback, useEffect, useState } from 'react';
+import { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react';
 import FormStore from './FormStore';
-import { Rule } from './types';
+import { Rule, Trigger } from './types';
 import isCheckBoxInput from './utils/isCheckBoxInput';
 
 export type FormOptions<T> = {
   defaultValues?: T;
   values?: T;
+  trigger?: Trigger;
+  eager?: boolean;
 };
 
 export type RegisterOptions = {
   rules?: Array<Rule> | Rule;
 };
 
+export type ValidateOptions = {
+  eager?: boolean;
+};
+
+export type Validate<T extends Record<string, any>> = {
+  (options?: ValidateOptions): Promise<Partial<Record<keyof T, Array<string>>>>;
+  <K extends keyof T>(field: K, options?: ValidateOptions): Promise<Array<string>>;
+};
+
 const useForm = <T extends Record<string, any> = Record<string, any>>({
   defaultValues,
   values,
+  trigger = 'change',
+  eager,
 }: FormOptions<T> = {}) => {
   const [formStore] = useState(() => new FormStore<T>(values || defaultValues || {}));
+
+  const rulesRef = useRef<Partial<Record<keyof T, Array<Rule>>>>({});
 
   useEffect(() => {
     if (values) {
@@ -42,8 +57,18 @@ const useForm = <T extends Record<string, any> = Record<string, any>>({
       } else {
         (target as HTMLInputElement).value = v as string;
       }
+
+      if (trigger === 'change') {
+        formStore
+          .validate(name, {
+            eager,
+            trigger: 'change',
+            rules: rulesRef.current[name] || [],
+          })
+          .catch((err) => console.error(err));
+      }
     },
-    [formStore],
+    [formStore, trigger, eager],
   );
 
   const handleRegisterRef = useConstantFn((el: HTMLInputElement | null) => {
@@ -64,19 +89,34 @@ const useForm = <T extends Record<string, any> = Record<string, any>>({
     [formStore],
   );
 
-  const validate = useCallback<typeof formStore.validate>(
-    // TODO [2023-12-12] fix this type error
+  const validate = useCallback<Validate<T>>(
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    (field) => {
-      formStore.validate()
-      return formStore.validate(field);
+    <K extends keyof T>(field?: K | ValidateOptions, options?: ValidateOptions) => {
+      if (!field) {
+        return formStore.validate({
+          eager,
+          rulesMap: rulesRef.current,
+        });
+      }
+
+      if (typeof field === 'object') {
+        return formStore.validate({
+          eager: field?.eager || eager,
+          rulesMap: rulesRef.current,
+        });
+      }
+
+      return formStore.validate(field, {
+        eager: options?.eager || eager,
+        rules: rulesRef.current[field] || [],
+      });
     },
-    [formStore],
+    [formStore, eager],
   );
 
   const register = useConstantFn((field: keyof T, { rules }: RegisterOptions = {}) => {
-    formStore.setRules(field, rules || []);
+    rulesRef.current[field] = Array.isArray(rules) ? rules : rules ? [rules] : [];
     return {
       name: field,
       onChange: handleRegisterChange,
