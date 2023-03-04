@@ -23,7 +23,6 @@ const Controller = <T extends Record<string, any>>({
 }: ControllerProps<T>) => {
   const { store, setRule, trigger, validate } = form;
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const value = useWatch({ form, field });
 
   const onChange = useCallback(
@@ -40,7 +39,6 @@ const Controller = <T extends Record<string, any>>({
     setRule(field, rule);
   }, [field, rule, setRule]);
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   return render({ value, onChange });
 };
 

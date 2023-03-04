@@ -231,7 +231,6 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
     const keys = Object.keys(others) as Array<ValidatorKey>;
 
     try {
-      // eslint-disable-next-line no-await-in-loop
       await validator?.({
         field: field as string,
         values: this.values,

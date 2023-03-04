@@ -101,7 +101,6 @@ const useForm = <T extends Record<string, any>>({
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     <K extends keyof T>(field?: K) => {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
       return formStore.getErrors(field as any);
     },
     [formStore],

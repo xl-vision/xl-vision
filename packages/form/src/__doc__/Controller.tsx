@@ -3,7 +3,6 @@ import { FormEvent, useCallback } from 'react';
 import { useForm, Controller } from '@xl-vision/form';
 
 const Demo = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const { form, getValue } = useForm({
     defaultValues: {
       firstName: 'Rhys',

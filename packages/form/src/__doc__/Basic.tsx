@@ -3,7 +3,6 @@ import { FormEvent, useCallback } from 'react';
 import { useForm } from '@xl-vision/form';
 
 const Demo = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const { register, getValue } = useForm({
     defaultValues: {
       firstName: 'Rhys',
@@ -22,13 +21,7 @@ const Demo = () => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <input
-        autoComplete='off'
-        placeholder='please input firstname'
-        {...register('firstName', {
-          rules: { min: 10 },
-        })}
-      />
+      <input autoComplete='off' placeholder='please input firstname' {...register('firstName')} />
       <input placeholder='please input lastname' {...register('lastName')} />
       <Button color='primary'>submit</Button>
     </Form>
