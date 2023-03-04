@@ -16,6 +16,7 @@ const Demo = () => {
   return (
     <div>
       <input
+        autoComplete='off'
         placeholder='please input firstname'
         {...register('firstName', {
           rules: { min: 10 },

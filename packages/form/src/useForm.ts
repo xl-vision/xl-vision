@@ -1,6 +1,6 @@
 import { useConstantFn } from '@xl-vision/hooks';
 import { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react';
-import FormStore from './FormStore';
+import FormStore, { ErrorMap } from './FormStore';
 import { Rule, Trigger } from './types';
 import isCheckBoxInput from './utils/isCheckBoxInput';
 
@@ -20,8 +20,8 @@ export type ValidateOptions = {
 };
 
 export type Validate<T extends Record<string, any>> = {
-  (options?: ValidateOptions): Promise<Partial<Record<keyof T, Array<string>>>>;
-  <K extends keyof T>(field: K, options?: ValidateOptions): Promise<Array<string>>;
+  (options?: ValidateOptions): Promise<Partial<Record<keyof T, Array<ErrorMap>>>>;
+  <K extends keyof T>(field: K, options?: ValidateOptions): Promise<Array<ErrorMap>>;
 };
 
 const useForm = <T extends Record<string, any> = Record<string, any>>({

@@ -1,14 +1,14 @@
 import { useCallback, useEffect, useState } from 'react';
-import FormStore from './FormStore';
+import FormStore, { ErrorMap } from './FormStore';
 
 function useWatchErrors<T extends Record<string, any>, K extends keyof T>(o: {
   formStore: FormStore<T>;
   field: K;
-}): Array<string>;
+}): Array<ErrorMap>;
 
 function useWatchErrors<T extends Record<string, any>>(o: {
   formStore: FormStore<T>;
-}): Partial<Record<keyof T, Array<string>>>;
+}): Partial<Record<keyof T, Array<ErrorMap>>>;
 
 function useWatchErrors<T extends Record<string, any>, K extends keyof T>({
   formStore,
@@ -17,7 +17,7 @@ function useWatchErrors<T extends Record<string, any>, K extends keyof T>({
   formStore: FormStore<T>;
   field?: K;
 }) {
-  const [errors, setErrors] = useState<Array<string> | Partial<Record<keyof T, Array<string>>>>(
+  const [errors, setErrors] = useState<Array<ErrorMap> | Partial<Record<keyof T, Array<ErrorMap>>>>(
     () => formStore.getErrors(field as any),
   );
 

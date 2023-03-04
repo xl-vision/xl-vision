@@ -1,5 +1,5 @@
 import { EventEmitter, isObject, warning } from '@xl-vision/utils';
-import { Rule, Trigger, ValidatorKey } from './types';
+import { Rule, Trigger, Validator, ValidatorKey } from './types';
 import validators from './validators';
 
 export type InnerValidateOptions = {
@@ -10,10 +10,12 @@ export type InnerValidateOptions = {
 
 const GLOBAL_EVENT = Symbol('GLOABL_EVENT');
 
+export type ErrorMap = Partial<Record<ValidatorKey | 'custom', string>>;
+
 class FormStore<T extends Record<string, any> = Record<string, any>> {
   private values: Partial<T>;
 
-  private errors: Partial<Record<keyof T, Array<string>>>;
+  private errors: Partial<Record<keyof T, Array<ErrorMap>>>;
 
   private valueEmitter: EventEmitter;
 
@@ -104,9 +106,13 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
     }
   }
 
-  getErrors<K extends keyof T>(field: K): Array<string>;
+  getErrors<K extends keyof T>(
+    field: K,
+  ): Array<Partial<Record<keyof ValidatorKey | 'custom', string>>>;
 
-  getErrors(): Partial<Record<keyof T, Array<string>>>;
+  getErrors(): Partial<
+    Record<keyof T, Array<Partial<Record<keyof ValidatorKey | 'custom', string>>>>
+  >;
 
   getErrors<K extends keyof T>(field?: K) {
     if (field) {
@@ -115,13 +121,13 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
     return this.errors;
   }
 
-  watchError<K extends keyof T>(field: K, listener: (errors: Array<string>) => void): void;
+  watchError<K extends keyof T>(field: K, listener: (errors: Array<ErrorMap>) => void): void;
 
-  watchError(listener: (errors: Partial<Record<keyof T, Array<string>>>) => void): void;
+  watchError(listener: (errors: Partial<Record<keyof T, Array<ErrorMap>>>) => void): void;
 
   watchError<K extends keyof T>(
-    field: K | ((errors: Partial<Record<keyof T, Array<string>>>) => void),
-    listener?: (errors: Array<string>) => void,
+    field: K | ((errors: Partial<Record<keyof T, Array<ErrorMap>>>) => void),
+    listener?: (errors: Array<ErrorMap>) => void,
   ) {
     if (typeof field === 'function') {
       this.errorEmitter.on(GLOBAL_EVENT, field);
@@ -133,13 +139,13 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
     }
   }
 
-  unwatchError<K extends keyof T>(field: K, listener: (errors: Array<string>) => void): void;
+  unwatchError<K extends keyof T>(field: K, listener: (errors: Array<ErrorMap>) => void): void;
 
-  unwatchError(listener: (errors: Partial<Record<keyof T, Array<string>>>) => void): void;
+  unwatchError(listener: (errors: Partial<Record<keyof T, Array<ErrorMap>>>) => void): void;
 
   unwatchError<K extends keyof T>(
-    field: K | ((errors: Partial<Record<keyof T, Array<string>>>) => void),
-    listener?: (errors: Array<string>) => void,
+    field: K | ((errors: Partial<Record<keyof T, Array<ErrorMap>>>) => void),
+    listener?: (errors: Array<ErrorMap>) => void,
   ) {
     if (typeof field === 'function') {
       this.errorEmitter.off(GLOBAL_EVENT, field);
@@ -155,9 +161,9 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
     options: Omit<InnerValidateOptions, 'rules'> & {
       rulesMap: Partial<Record<K, Array<Rule>>>;
     },
-  ): Promise<Partial<Record<keyof T, Array<string>>>>;
+  ): Promise<Partial<Record<keyof T, Array<ErrorMap>>>>;
 
-  validate<K extends keyof T>(field: K, options: InnerValidateOptions): Promise<Array<string>>;
+  validate<K extends keyof T>(field: K, options: InnerValidateOptions): Promise<Array<ErrorMap>>;
 
   async validate<K extends keyof T>(
     field:
@@ -170,27 +176,27 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
     if (typeof field === 'string') {
       const { eager, rules = [], trigger } = options || {};
 
-      const errors = await this.validateField(field, { eager, rules, trigger });
+      const errorMap = await this.validateField(field, { eager, rules, trigger });
 
       this.errors = {
         ...this.errors,
-        [field]: errors,
+        [field]: errorMap,
       };
 
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      this.errorEmitter.emit(field, errors);
+      this.errorEmitter.emit(field, errorMap);
 
       this.errorEmitter.emit(GLOBAL_EVENT, this.errors);
 
-      return errors;
+      return errorMap;
     }
 
     const { eager, rulesMap, trigger } = field as Omit<InnerValidateOptions, 'rules'> & {
       rulesMap: Partial<Record<K, Array<Rule>>>;
     };
 
-    const errorsMap: Partial<Record<keyof T, Array<string>>> = {};
+    const errorsMap: Partial<Record<keyof T, Array<ErrorMap>>> = {};
     this.errors = errorsMap;
 
     await Promise.all(
@@ -217,7 +223,7 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
     field: K,
     { eager, rules = [], trigger }: InnerValidateOptions,
   ) {
-    const errors: Array<string> = [];
+    const errors: Array<ErrorMap> = [];
 
     for (let i = 0; i < rules.length; i++) {
       if (!eager && errors.length) {
@@ -225,13 +231,17 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
       }
 
       const rule = rules[i];
-      const { message, validator, trigger: ruleTrigger, ...others } = rule;
+      const { message: globalMessage, validator, trigger: ruleTrigger, ...others } = rule;
 
       if (!trigger && !ruleTrigger && trigger !== ruleTrigger) {
         continue;
       }
 
       const keys = Object.keys(others) as Array<ValidatorKey>;
+
+      const errorMap: ErrorMap = {};
+
+      errors.push(errorMap);
 
       try {
         // eslint-disable-next-line no-await-in-loop
@@ -240,7 +250,7 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
           values: this.values,
         });
       } catch (err) {
-        errors.push(message ?? (err as Error).message);
+        errorMap.custom = globalMessage ?? (err as Error).message;
         if (!eager) {
           break;
         }
@@ -249,21 +259,33 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
       for (let j = 0; j < keys.length; j++) {
         const key = keys[j];
 
-        const defaultValidator = validators[key];
+        const defaultValidator = validators[key] as Validator<any>;
         if (!defaultValidator) {
           warning(true, 'unknown validator {}, please check whether passing a right key', key);
           continue;
         }
+
+        const ruleData = others[key];
+
+        const { value, message } =
+          typeof ruleData === 'object' && 'value' in ruleData
+            ? ruleData
+            : typeof ruleData === 'string'
+            ? {
+                value: true,
+                message: ruleData,
+              }
+            : { value: ruleData, message: globalMessage };
 
         try {
           // eslint-disable-next-line no-await-in-loop
           await defaultValidator({
             field: field as string,
             values: this.values,
-            rule: others[key]!,
+            rule: value!,
           });
         } catch (err) {
-          errors.push(message ?? (err as Error).message);
+          errorMap[key] = message ?? (err as Error).message;
           break;
         }
       }

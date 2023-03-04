@@ -6,7 +6,7 @@ export type ValidatorOptions<P> = {
   rule: P;
 };
 
-export type Validator<P = any> = {
+export type Validator<P> = {
   (options: ValidatorOptions<P>): void | Promise<void>;
 };
 
@@ -26,10 +26,11 @@ export type CustomValidator = {
 export type Trigger = 'change' | 'blur';
 
 export type Rule = Partial<{
-  [k in ValidatorKey]: Validators[ValidatorKey] extends Validator<infer P> ? P : never;
+  [k in ValidatorKey]: Validators[k] extends Validator<infer P>
+    ? P | { value: P; message: string } | (P extends boolean ? string : never)
+    : never;
 }> & {
   message?: string;
   validator?: CustomValidator;
   trigger?: Trigger;
 };
-
