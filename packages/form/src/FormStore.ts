@@ -291,7 +291,7 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
       }
     }
 
-    return errors;
+    return errors.filter((it) => Object.keys(it));
   }
 }
 
