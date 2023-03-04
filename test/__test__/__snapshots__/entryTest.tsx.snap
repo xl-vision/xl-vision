@@ -1,5 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Entry @xl-vision/form 1`] = `
+[
+  "useForm",
+  "useWatch",
+  "useWatchErrors",
+  "Controller",
+]
+`;
+
 exports[`Entry @xl-vision/hooks 1`] = `
 [
   "useLatestRef",
@@ -14,7 +23,6 @@ exports[`Entry @xl-vision/hooks 1`] = `
   "useTransition",
   "useCssTransition",
   "useNotication",
-  "useForm",
 ]
 `;
 
@@ -749,6 +757,7 @@ exports[`Entry @xl-vision/utils 1`] = `
   "off",
   "setRef",
   "EventEmitter",
+  "omit",
   "isBrowser",
   "isServer",
   "isProduction",
