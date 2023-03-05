@@ -4,17 +4,13 @@ import { useForm, Controller, useWatchErrors } from '@xl-vision/form';
 import { ValidatorKey } from '../types';
 
 type Value = {
-  firstName: string;
-  lastName: string;
+  field1: string;
+  field2: string;
+  field3: string;
 };
 
 const Demo = () => {
-  const { form, getValue, validate } = useForm<Value>({
-    defaultValues: {
-      firstName: '',
-      lastName: '',
-    },
-  });
+  const { form, getValue, validate } = useForm<Value>();
 
   const errors = useWatchErrors({ form });
 
@@ -47,25 +43,26 @@ const Demo = () => {
   return (
     <Form onSubmit={handleSubmit}>
       <Controller
-        field='firstName'
+        field='field1'
         form={form}
         render={(props) => <Input {...props} />}
         rules={{ required: 'value is required' }}
       />
-      {errorMap.firstName && <div className='error'>{errorMap.firstName}</div>}
+      {errorMap.field1 && <div className='error'>{errorMap.field1}</div>}
       <Controller
-        field='lastName'
+        field='field2'
         form={form}
         render={(props) => <Input type='number' {...props} />}
         rules={[{ required: true, max: 10 }]}
       />
+      {errorMap.field2 && <div className='error'>{errorMap.field2}</div>}
       <Controller
-        field='lastName'
+        field='field3'
         form={form}
         render={(props) => <Input type='number' {...props} />}
         rules={[{ required: true, max: 10, trigger: 'blur' }]}
       />
-      {errorMap.lastName && <div className='error'>{errorMap.lastName}</div>}
+      {errorMap.field3 && <div className='error'>{errorMap.field3}</div>}
       <Button color='primary' long={true}>
         submit
       </Button>

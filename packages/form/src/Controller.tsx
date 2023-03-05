@@ -9,10 +9,10 @@ export type RenderProps<V> = {
   onBlur: () => void;
 };
 
-export type ControllerProps<T extends Record<string, any>> = {
-  field: keyof T;
+export type ControllerProps<T extends Record<string, any>, K extends keyof T = keyof T> = {
+  field: K;
   form: Form<T>;
-  render: (props: RenderProps<T[keyof T]>) => ReactElement;
+  render: (props: RenderProps<T[K]>) => ReactElement;
   rules?: Rule | Array<Rule>;
 };
 
