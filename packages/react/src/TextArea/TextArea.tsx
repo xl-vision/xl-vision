@@ -1,7 +1,7 @@
 import { useConstantFn, useForkRef, usePrevious, useValueChange } from '@xl-vision/hooks';
 import { CloseCircleFilled } from '@xl-vision/icons';
 import { CSSObject } from '@xl-vision/styled-engine';
-import { isProduction } from '@xl-vision/utils';
+import { isObject, isProduction } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
@@ -225,8 +225,8 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => 
       return;
     }
 
-    const minRows = typeof autoHeight === 'object' ? autoHeight.minRows : null;
-    const maxRows = typeof autoHeight === 'object' ? autoHeight.maxRows : null;
+    const minRows = isObject(autoHeight) ? autoHeight.minRows : null;
+    const maxRows = isObject(autoHeight) ? autoHeight.maxRows : null;
 
     const styles = calculateNodeHeight(textarea, minRows, maxRows);
     setTextAreaStyle(styles);

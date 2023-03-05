@@ -1,3 +1,5 @@
+import { isObject } from '@xl-vision/utils';
+
 export type RGBColor = {
   b: number;
   g: number;
@@ -176,7 +178,7 @@ const rgbColorToHslColor: (color: RGBColor) => HSLColor = (color) => {
 };
 
 const toColor: (color: string | Color) => Color = (color) => {
-  if (typeof color === 'object') {
+  if (isObject(color)) {
     if ('r' in color) {
       const rgb: RGBColor = {
         r: Math.round(color.r),

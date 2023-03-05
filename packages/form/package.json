@@ -1,0 +1,56 @@
+{
+  "name": "@xl-vision/form",
+  "version": "0.1.1-alpha.19",
+  "description": "xl-vision useful hooks.",
+  "author": "Rhys Xia <xrs4433@outlook.com>",
+  "license": "MIT",
+  "main": "legacy/index.js",
+  "module": "modern/index.js",
+  "types": "legacy/index.d.ts",
+  "unpkg": "dist/index.production.min.js",
+  "files": [
+    "legacy",
+    "modern",
+    "dist"
+  ],
+  "keywords": [
+    "xl-vision",
+    "react",
+    "hooks"
+  ],
+  "homepage": "https://xl-vision.8910.xyz/hooks",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xl-vision/xl-vision.git",
+    "directory": "packages/hooks"
+  },
+  "scripts": {
+    "build:legacy": "node ../../scripts/compile legacy",
+    "build:modern": "node ../../scripts/compile modern",
+    "build:dist": "node ../../scripts/build",
+    "build": "npm run build:legacy && npm run build:modern && npm run build:dist",
+    "prepublishOnly": "npm run build"
+  },
+  "bugs": {
+    "url": "https://github.com/xl-vision/xl-vision/issues"
+  },
+  "dependencies": {
+    "@xl-vision/utils": "workspace:^",
+    "@xl-vision/hooks": "workspace:^"
+  },
+  "peerDependencies": {
+    "@babel/runtime": "^7.15.4",
+    "@types/react": ">=17.0.0",
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    }
+  },
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  }
+}

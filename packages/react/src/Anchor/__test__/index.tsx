@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { noop } from '@xl-vision/utils';
+import { isObject, noop } from '@xl-vision/utils';
 import { Anchor } from '@xl-vision/react';
 import * as perf from '../../utils/perf';
 
@@ -34,7 +34,7 @@ describe('Anchor', () => {
     jest.spyOn(HTMLElement.prototype, 'clientTop', 'get').mockReturnValue(1000);
 
     jest.spyOn(window, 'scrollTo').mockImplementation((x, y) => {
-      if (typeof x === 'object') {
+      if (isObject(x)) {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
         y = (x as any).top;
       }

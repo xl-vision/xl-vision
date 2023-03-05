@@ -1,11 +1,4 @@
-const isPlainObject = (item: unknown): item is Record<PropertyKey, unknown> => {
-  return (
-    item !== null &&
-    typeof item === 'object' &&
-    // TS thinks `item is possibly null` even though this was our first guard.
-    item.constructor === Object
-  );
-};
+import { isPlainObject } from './is';
 
 export type DeepmergeOptions = {
   clone?: boolean;

@@ -1,4 +1,4 @@
-import { addClass, nextFrame, onTransitionEnd, removeClass } from '@xl-vision/utils';
+import { addClass, isObject, nextFrame, onTransitionEnd, removeClass } from '@xl-vision/utils';
 import { useMemo, useRef } from 'react';
 import useConstantFn from '../useConstantFn';
 import useTransition, {
@@ -47,7 +47,7 @@ const useCssTransition = <T extends Element = Element>(options: CssTransitionOpt
     if (!transitionClassName) {
       return {};
     }
-    if (typeof transitionClassName === 'object') {
+    if (isObject(transitionClassName)) {
       return transitionClassName;
     }
     const ret: Required<CssTransitionClassNameRecord> = {
@@ -68,7 +68,7 @@ const useCssTransition = <T extends Element = Element>(options: CssTransitionOpt
   }, [transitionClassName]);
 
   const timeoutRecord: CssTransitionTimeoutRecord = useMemo(() => {
-    if (typeof timeout === 'number' || typeof timeout === 'undefined') {
+    if (timeout === undefined || typeof timeout === 'number') {
       const ret: CssTransitionTimeoutRecord = {
         appear: timeout,
         enter: timeout,

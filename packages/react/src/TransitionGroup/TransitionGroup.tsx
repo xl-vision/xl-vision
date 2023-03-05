@@ -4,7 +4,7 @@ import {
   useConstantFn,
   useIsomorphicLayoutEffect,
 } from '@xl-vision/hooks';
-import { isProduction, warning } from '@xl-vision/utils';
+import { isObject, isProduction, warning } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { ReactElement, FC, useMemo, useState, useCallback, Key, cloneElement } from 'react';
 import diff from './diff';
@@ -45,7 +45,7 @@ const TransitionGroup: FC<TransitionGroupProps> = (props) => {
     }
     // 组件实际上是使用CssTransition的appear和disappear钩子实现动画，但是向用户隐藏实现细节，
     // 所以这里需要将enter和exit的class设置到appear和disappear上
-    if (typeof transitionClasses === 'object') {
+    if (isObject(transitionClasses)) {
       obj = { ...transitionClasses };
       obj.appearFrom = obj.enterFrom;
       obj.appearActive = obj.enterActive;

@@ -13,14 +13,16 @@ jobs:
         with:
           fetch-depth: 1
 
-      - uses: pnpm/action-setup@v2.2.4
+      - uses: pnpm/action-setup@v2
         with:
           version: 7
-      - name: Use Node.js 14.19.0
+
+      - name: install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 14.19.0
+          node-version: 16
           cache: 'pnpm'
+
       - name: Install dependencies
         run: pnpm install
 
@@ -35,14 +37,16 @@ jobs:
         with:
           fetch-depth: 1
 
-      - uses: pnpm/action-setup@v2.2.4
+      - uses: pnpm/action-setup@v2
         with:
           version: 7
-      - name: Use Node.js 14.19.0
+
+      - name: install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 14.19.0
+          node-version: 16
           cache: 'pnpm'
+
       - name: Install dependencies
         run: pnpm install
 
@@ -57,14 +61,16 @@ jobs:
         with:
           fetch-depth: 1
 
-      - uses: pnpm/action-setup@v2.2.4
+      - uses: pnpm/action-setup@v2
         with:
           version: 7
-      - name: Use Node.js 14.19.0
+
+      - name: install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 14.19.0
+          node-version: 16
           cache: 'pnpm'
+
       - name: Install dependencies
         run: pnpm install
 
@@ -78,22 +84,24 @@ jobs:
         with:
           fetch-depth: 1
 
-      - uses: pnpm/action-setup@v2.2.4
+      - uses: pnpm/action-setup@v2
         with:
           version: 7
-      - name: Use Node.js 14.19.0
+
+      - name: install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 14.19.0
+          node-version: 16
           cache: 'pnpm'
+
       - name: Install dependencies
         run: pnpm install
 
       - name: run test
         run: npm run test -- --coverage
 
-      - name: codecov
-        run: bash <(curl -s https://codecov.io/bash)
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
 
       - name: codacy-coverage
         if: ${{ github.event_name == 'push' }}
