@@ -100,8 +100,8 @@ jobs:
       - name: run test
         run: npm run test -- --coverage
 
-      - name: codecov
-        run: bash <(curl -s https://codecov.io/bash)
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
 
       - name: codacy-coverage
         if: ${{ github.event_name == 'push' }}
