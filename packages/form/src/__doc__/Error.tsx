@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-misused-promises */
 import { Button, Input, Message, styled } from '@xl-vision/react';
 import { FormEvent, useCallback, useMemo } from 'react';
 import { useForm, Controller, useWatchErrors } from '@xl-vision/form';
@@ -51,14 +50,20 @@ const Demo = () => {
         field='firstName'
         form={form}
         render={(props) => <Input {...props} />}
-        rule={{ required: 'value is required' }}
+        rules={{ required: 'value is required', trigger: 'blur' }}
       />
       {errorMap.firstName && <div className='error'>{errorMap.firstName}</div>}
       <Controller
         field='lastName'
         form={form}
         render={(props) => <Input type='number' {...props} />}
-        rule={{ required: true, max: 10, min: 5 }}
+        rules={[{ required: true, max: 10 }]}
+      />
+      <Controller
+        field='lastName'
+        form={form}
+        render={(props) => <Input type='number' {...props} />}
+        rules={[{ required: true, max: 10, trigger: 'blur' }]}
       />
       {errorMap.lastName && <div className='error'>{errorMap.lastName}</div>}
       <Button color='primary' long={true}>

@@ -253,6 +253,7 @@ module.exports = {
         'jsx-a11y/no-static-element-interactions': 'off',
         '@typescript-eslint/no-unsafe-call': 'off',
         '@typescript-eslint/no-floating-promises': 'off',
+        '@typescript-eslint/no-misused-promises': 'off',
       },
     },
     {

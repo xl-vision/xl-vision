@@ -1,5 +1,5 @@
 import { useConstantFn } from '@xl-vision/hooks';
-import { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, FocusEvent, useCallback, useEffect, useRef, useState } from 'react';
 import FormStore from './FormStore';
 import { Rule, Trigger } from './types';
 import isCheckBoxInput from './utils/isCheckBoxInput';
@@ -13,7 +13,7 @@ export type FormOptions<T> = {
 };
 
 export type RegisterOptions = {
-  rule?: Rule;
+  rules?: Rule | Array<Rule>;
 };
 
 export type ValidateOptions = {
@@ -33,7 +33,7 @@ const useForm = <T extends Record<string, any>>({
 }: FormOptions<T> = {}) => {
   const [formStore] = useState(() => new FormStore<T>(values || defaultValues || {}));
 
-  const ruleRef = useRef<Partial<Record<keyof T, Rule>>>({});
+  const rulesMapRef = useRef<Partial<Record<keyof T, Array<Rule>>>>({});
 
   useEffect(() => {
     if (values) {
@@ -46,12 +46,13 @@ const useForm = <T extends Record<string, any>>({
       formStore
         .validate(name, {
           eager,
+          rules: rulesMapRef.current[name],
           trigger: triggerProps,
-          rule: ruleRef.current[name],
+          defaultTrigger: trigger,
         })
         .catch((err) => console.error(err));
     },
-    [formStore, eager],
+    [formStore, eager, trigger],
   );
 
   const handleRegisterChange = useCallback(
@@ -72,11 +73,19 @@ const useForm = <T extends Record<string, any>>({
         (target as HTMLInputElement).value = v as string;
       }
 
-      if (trigger === 'change') {
-        innerValidate(name, 'change');
-      }
+      innerValidate(name, 'change');
     },
-    [formStore, trigger, innerValidate],
+    [formStore, innerValidate],
+  );
+
+  const handleRegisterBlur = useCallback(
+    (e: FocusEvent<HTMLInputElement>) => {
+      const { target } = e;
+
+      const { name } = target;
+      innerValidate(name, 'blur');
+    },
+    [innerValidate],
   );
 
   const handleRegisterRef = useConstantFn((el: HTMLInputElement | null) => {
@@ -119,7 +128,8 @@ const useForm = <T extends Record<string, any>>({
       if (typeof field === 'object') {
         const errors = await formStore.validate({
           eager: field?.eager || eager,
-          ruleMap: ruleRef.current,
+          rulesMap: rulesMapRef.current,
+          defaultTrigger: trigger,
         });
 
         if (Object.keys(errors).some((it) => Object.keys(it).length)) {
@@ -131,27 +141,29 @@ const useForm = <T extends Record<string, any>>({
 
       const errors = await formStore.validate(field, {
         eager: options?.eager || eager,
-        rule: ruleRef.current[field],
+        rules: rulesMapRef.current[field],
+        defaultTrigger: trigger,
       });
 
       if (Object.keys(errors).length) {
         throw new ValidateError(errors);
       }
     },
-    [formStore, eager],
+    [formStore, eager, trigger],
   );
 
-  const setRule = useCallback((field: keyof T, rule?: Rule) => {
-    if (rule) {
-      ruleRef.current[field] = rule;
+  const setRules = useCallback((field: keyof T, rules?: Rule | Array<Rule>) => {
+    if (rules) {
+      rulesMapRef.current[field] = Array.isArray(rules) ? rules : [rules];
     }
   }, []);
 
-  const register = useConstantFn((field: keyof T, { rule }: RegisterOptions = {}) => {
-    setRule(field, rule);
+  const register = useConstantFn((field: keyof T, { rules }: RegisterOptions = {}) => {
+    setRules(field, rules);
     return {
       name: field,
       onChange: handleRegisterChange,
+      onBlur: handleRegisterBlur,
       ref: handleRegisterRef,
     };
   });
@@ -163,8 +175,7 @@ const useForm = <T extends Record<string, any>>({
     validate,
     form: {
       store: formStore,
-      trigger,
-      setRule,
+      setRules,
       validate: innerValidate,
     },
   };

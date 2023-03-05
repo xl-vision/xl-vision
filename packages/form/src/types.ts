@@ -23,7 +23,7 @@ export type CustomValidator = {
   (options: CustomValidatorOptions): void | Promise<void>;
 };
 
-export type Trigger = 'change' | 'blur';
+export type Trigger = 'change' | 'blur' | 'custom';
 
 export type Rule = Partial<{
   [k in ValidatorKey]: Validators[k] extends Validator<infer P>

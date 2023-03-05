@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-misused-promises */
 import { Button, Dropdown, Message } from '@xl-vision/react';
 
 const Basic = () => {
