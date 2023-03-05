@@ -720,6 +720,19 @@ exports[`Demo renders ./packages/form/src/__doc__/Error.tsx correctly 1`] = `
         />
       </span>
     </span>
+    <span
+      class="c1 xl-input xl-input--size-middle"
+    >
+      <span
+        class="c2 xl-input__wrapper"
+      >
+        <input
+          class="c3 xl-input__inner"
+          type="number"
+          value=""
+        />
+      </span>
+    </span>
     <button
       class="c4 xl-base-button c5 xl-button xl-button--size-middle xl-button--color-primary xl-button--variant-contained xl-button--elevation xl-button--long"
     >
