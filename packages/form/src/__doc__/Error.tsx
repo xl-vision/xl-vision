@@ -50,7 +50,7 @@ const Demo = () => {
         field='firstName'
         form={form}
         render={(props) => <Input {...props} />}
-        rules={{ required: 'value is required', trigger: 'blur' }}
+        rules={{ required: 'value is required' }}
       />
       {errorMap.firstName && <div className='error'>{errorMap.firstName}</div>}
       <Controller
