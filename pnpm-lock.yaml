@@ -248,7 +248,7 @@ importers:
       cross-env: ^7.0.3
       js-cookie: ^3.0.1
       next: ^12.3.4
-      next-sitemap: ^3.1.52
+      next-sitemap: ^3.1.55
       pinyin: ^2.11.2
       prismjs: ^1.29.0
       prop-types: ^15.8.1
@@ -290,7 +290,7 @@ importers:
       '@types/node': 17.0.4
       '@types/prop-types': 15.7.5
       cross-env: 7.0.3
-      next-sitemap: 3.1.52_next@12.3.4
+      next-sitemap: 3.1.55_next@12.3.4
       pinyin: 2.11.2
       prismjs: 1.29.0
       remark-emoji: 3.1.0
@@ -9010,8 +9010,8 @@ packages:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
 
-  /next-sitemap/3.1.52_next@12.3.4:
-    resolution: {integrity: sha512-tY469i4QRV1PwM9BoL+HdKYBCJ83IQl3PmUNapG/Hxp0MIYIw1hINU8E+Edf5Kr8vHXfVzPqDoul/Abu2P0vkw==}
+  /next-sitemap/3.1.55_next@12.3.4:
+    resolution: {integrity: sha512-ZjkRfkqoSLbU+e8W9TWWe0zfOGNA47lpvm35kNcUCmj73gpLX2PIn51gwHT/B6bgGVAFYY0OXixJDrxIIwcEHw==}
     engines: {node: '>=14.18'}
     hasBin: true
     peerDependencies:
@@ -9019,7 +9019,7 @@ packages:
       next: '*'
     dependencies:
       '@corex/deepmerge': 4.0.29
-      minimist: 1.2.7
+      minimist: 1.2.8
       next: 12.3.4_sfoxds7t5ydpegc3knd667wn6m
     dev: true
 
