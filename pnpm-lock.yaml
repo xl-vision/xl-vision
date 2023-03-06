@@ -256,7 +256,7 @@ importers:
       react-codemirror2: ^7.2.1
       react-dom: ^17.0.0
       react-is: ^18.2.0
-      remark-emoji: ^3.1.0
+      remark-emoji: ^3.1.1
       remark-gfm: ^3.0.1
       styled-components: ^5.3.6
     dependencies:
@@ -293,7 +293,7 @@ importers:
       next-sitemap: 3.1.52_next@12.3.4
       pinyin: 2.11.2
       prismjs: 1.29.0
-      remark-emoji: 3.1.0
+      remark-emoji: 3.1.1
       remark-gfm: 3.0.1
 
 packages:
@@ -10171,8 +10171,8 @@ packages:
       jsesc: 0.5.0
     dev: true
 
-  /remark-emoji/3.1.0:
-    resolution: {integrity: sha512-KmjkU04niXFMn/H+SsPAGnXhsuq0gT/neIg1KRw8vUKZ/PNxpLDGmwVzx4a14OOd5GJ8rnCdh6DKXqHySkUHAQ==}
+  /remark-emoji/3.1.1:
+    resolution: {integrity: sha512-kVCTaHzX+/ls67mE8JsGd3ZX511p2FlAPmKhdGpRCb5z6GSwp+3sAIB5oTySIetPh7CtqfGf7JBUt5fyMjgOHw==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
       emoticon: 4.0.1
