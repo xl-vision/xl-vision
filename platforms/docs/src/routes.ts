@@ -89,6 +89,13 @@ const route: Route = {
       children: [
         {
           titleMap: {
+            'en-US': 'Form',
+            'zh-CN': '表单',
+          },
+          path: '/Form',
+        },
+        {
+          titleMap: {
             'en-US': 'Input',
             'zh-CN': '输入框',
           },

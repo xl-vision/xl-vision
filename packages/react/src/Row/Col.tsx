@@ -11,7 +11,7 @@ import { Breakpoint } from '../ThemeProvider/breakpoints';
 export type ColSpanType = number | Partial<Record<Breakpoint, number>>;
 
 export interface ColProps extends HTMLAttributes<HTMLDivElement> {
-  column: ColSpanType;
+  column?: ColSpanType;
   children?: ReactNode;
   className?: string;
   offset?: ColSpanType;
