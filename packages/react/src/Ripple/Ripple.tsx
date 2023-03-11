@@ -1,4 +1,4 @@
-import { useConstantFn } from '@xl-vision/hooks';
+import { useEvent } from '@xl-vision/hooks';
 import { getBoundingClientRect, isProduction } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
@@ -170,7 +170,7 @@ const Ripple = forwardRef<RippleRef, RippleProps>((props, ref) => {
     [commit],
   );
 
-  const stop = useConstantFn(() => {
+  const stop = useEvent(() => {
     if (startTimerRef.current) {
       clearTimeout(startTimerRef.current);
       startTimerRef.current = undefined;
@@ -198,7 +198,7 @@ const Ripple = forwardRef<RippleRef, RippleProps>((props, ref) => {
     }
   });
 
-  const handleEnter = useConstantFn(() => {
+  const handleEnter = useEvent(() => {
     if (exitAfterEnter) {
       if (waitLeaveCountRef.current > 0) {
         waitLeaveCountRef.current--;

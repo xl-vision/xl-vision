@@ -1,4 +1,4 @@
-import { useConstantFn } from '@xl-vision/hooks';
+import { useEvent } from '@xl-vision/hooks';
 import { useEffect, useRef } from 'react';
 import { InteractionHook } from '../useInteraction';
 
@@ -12,12 +12,12 @@ const useClick: InteractionHook<ClickOptions> = (
 ) => {
   const isPopperClick = useRef(false);
 
-  const handleClick = useConstantFn(() => {
+  const handleClick = useEvent(() => {
     setOpen(true);
     isPopperClick.current = true;
   });
 
-  const handlePopperClick = useConstantFn(() => {
+  const handlePopperClick = useEvent(() => {
     if (!disablePopperClick) {
       isPopperClick.current = true;
     }

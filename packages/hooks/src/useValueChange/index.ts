@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import useConstantFn from '../useConstantFn';
+import useEvent from '../useEvent';
 
 /**
  * When the value is passed in from the outside, the value shall prevail.
@@ -24,7 +24,7 @@ const useValueChange = <T>(
 
   const actualValue = hasValue ? value : internalValue;
 
-  const handleChange = useConstantFn((newValue: T) => {
+  const handleChange = useEvent((newValue: T) => {
     if (newValue === actualValue) {
       return;
     }

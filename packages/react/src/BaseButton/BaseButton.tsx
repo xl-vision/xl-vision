@@ -1,4 +1,4 @@
-import { useConstantFn } from '@xl-vision/hooks';
+import { useEvent } from '@xl-vision/hooks';
 import { isProduction } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
@@ -150,7 +150,7 @@ const BaseButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseButtonP
       defaultEventHandler?: H,
       disableRippleAction = !shouldEnableRipple,
     ) => {
-      return useConstantFn((e: E) => {
+      return useEvent((e: E) => {
         defaultEventHandler?.(e);
 
         if (!disableRippleAction && rippleRef.current) {
@@ -168,7 +168,7 @@ const BaseButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseButtonP
     const handleTouchMove = useRippleHandler('stop', onTouchMove);
     const handleBlur = useRippleHandler('stop', onBlur, false);
 
-    const handleKeyDown: KeyboardEventHandler<any> = useConstantFn((e) => {
+    const handleKeyDown: KeyboardEventHandler<any> = useEvent((e) => {
       if (rippleRef.current && !isKeyDownRef.current && e.key === ' ') {
         isKeyDownRef.current = true;
         rippleRef.current.start();
@@ -176,7 +176,7 @@ const BaseButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseButtonP
 
       onKeyDown?.(e);
     });
-    const handleKeyUp: KeyboardEventHandler<any> = useConstantFn((e) => {
+    const handleKeyUp: KeyboardEventHandler<any> = useEvent((e) => {
       if (rippleRef.current && isKeyDownRef.current && e.key === ' ') {
         isKeyDownRef.current = false;
         rippleRef.current.stop();
@@ -184,7 +184,7 @@ const BaseButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseButtonP
       onKeyUp?.(e);
     });
 
-    const handleClick: MouseEventHandler<any> = useConstantFn((e) => {
+    const handleClick: MouseEventHandler<any> = useEvent((e) => {
       if (loading || disabled) {
         e.preventDefault();
         return;

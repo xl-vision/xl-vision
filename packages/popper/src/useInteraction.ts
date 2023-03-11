@@ -1,4 +1,4 @@
-import { useConstantFn } from '@xl-vision/hooks';
+import { useEvent } from '@xl-vision/hooks';
 import { isDevelopment } from '@xl-vision/utils';
 import { HTMLProps } from 'react';
 import { InteractionContext } from './useConnectInteraction';
@@ -14,11 +14,11 @@ export type InteractionHook<T> = (
 ) => InteractionReturn | void;
 
 const useInteraction = (...hookReturns: Array<InteractionReturn | void>) => {
-  const getReferenceProps = useConstantFn((userProps?: HTMLProps<Element>) => {
+  const getReferenceProps = useEvent((userProps?: HTMLProps<Element>) => {
     return mergeProps(userProps, hookReturns, 'reference');
   });
 
-  const getPopperProps = useConstantFn((userProps?: HTMLProps<Element>) => {
+  const getPopperProps = useEvent((userProps?: HTMLProps<Element>) => {
     return mergeProps(userProps, hookReturns, 'popper');
   });
 

@@ -1,4 +1,4 @@
-import { useConstantFn, useValueChange } from '@xl-vision/hooks';
+import { useEvent, useValueChange } from '@xl-vision/hooks';
 import { VerticalAlignTopOutlined } from '@xl-vision/icons';
 import { isProduction, isServer, off, on } from '@xl-vision/utils';
 import clsx from 'clsx';
@@ -111,7 +111,7 @@ const BackTop = forwardRef<HTMLDivElement, BackTopProps>((props, ref) => {
     };
   }, [currentTarget, visibilityHeight, setShow]);
 
-  const handleClick = useConstantFn((e: MouseEvent<HTMLDivElement>) => {
+  const handleClick = useEvent((e: MouseEvent<HTMLDivElement>) => {
     onClick?.(e);
 
     if (!currentTarget) {

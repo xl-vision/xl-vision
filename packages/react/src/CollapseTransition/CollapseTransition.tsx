@@ -4,7 +4,7 @@ import {
   TransitionEndHook,
   TransitionStartHook,
   TransitionStartingHook,
-  useConstantFn,
+  useEvent,
   useCssTransition,
   useForkRef,
 } from '@xl-vision/hooks';
@@ -73,7 +73,7 @@ const CollapseTransition: FC<CollapseTransitionProp> = (props) => {
 
   const isCancelledRef = useRef(false);
 
-  const handleEnter: TransitionStartHook = useConstantFn((nativeEl, transitionOnFirst) => {
+  const handleEnter: TransitionStartHook = useEvent((nativeEl, transitionOnFirst) => {
     const el = nativeEl as HTMLElement;
 
     const { padding1, padding2, size } = mappings;
@@ -104,7 +104,7 @@ const CollapseTransition: FC<CollapseTransitionProp> = (props) => {
     onEnter?.(nativeEl, transitionOnFirst);
   });
 
-  const handleEntering: TransitionStartingHook = useConstantFn(
+  const handleEntering: TransitionStartingHook = useEvent(
     (nativeEl, done, transitionOnFirst, isCancelled) => {
       const el = nativeEl as HTMLElement;
       const { padding1, padding2, size } = mappings;
@@ -117,7 +117,7 @@ const CollapseTransition: FC<CollapseTransitionProp> = (props) => {
     },
   );
 
-  const handleEntered: TransitionEndHook = useConstantFn((nativeEl, transitionOnFirst) => {
+  const handleEntered: TransitionEndHook = useEvent((nativeEl, transitionOnFirst) => {
     const el = nativeEl as HTMLElement;
     const { size } = mappings;
 
@@ -127,23 +127,21 @@ const CollapseTransition: FC<CollapseTransitionProp> = (props) => {
     onEntered?.(nativeEl, transitionOnFirst);
   });
 
-  const handleEnterCancelled: TransitionCancelledHook = useConstantFn(
-    (nativeEl, transitionOnFirst) => {
-      const el = nativeEl as HTMLElement;
-      const { padding1, padding2, size } = mappings;
+  const handleEnterCancelled: TransitionCancelledHook = useEvent((nativeEl, transitionOnFirst) => {
+    const el = nativeEl as HTMLElement;
+    const { padding1, padding2, size } = mappings;
 
-      isCancelledRef.current = true;
+    isCancelledRef.current = true;
 
-      el.style[padding1] = padding1Ref.current!;
-      el.style[padding2] = padding2Ref.current!;
-      el.style[size] = sizeRef.current!;
-      el.style.overflow = overflowRef.current!;
+    el.style[padding1] = padding1Ref.current!;
+    el.style[padding2] = padding2Ref.current!;
+    el.style[size] = sizeRef.current!;
+    el.style.overflow = overflowRef.current!;
 
-      onEnterCancelled?.(nativeEl, transitionOnFirst);
-    },
-  );
+    onEnterCancelled?.(nativeEl, transitionOnFirst);
+  });
 
-  const handleExit: TransitionStartHook = useConstantFn((nativeEl, transitionOnFirst) => {
+  const handleExit: TransitionStartHook = useEvent((nativeEl, transitionOnFirst) => {
     const el = nativeEl as HTMLElement;
 
     const { padding1, padding2, size } = mappings;
@@ -164,7 +162,7 @@ const CollapseTransition: FC<CollapseTransitionProp> = (props) => {
     onExit?.(nativeEl, transitionOnFirst);
   });
 
-  const handleExiting: TransitionStartingHook = useConstantFn(
+  const handleExiting: TransitionStartingHook = useEvent(
     (nativeEl, done, transitionOnFirst, isCancelled) => {
       const el = nativeEl as HTMLElement;
 
@@ -179,7 +177,7 @@ const CollapseTransition: FC<CollapseTransitionProp> = (props) => {
     },
   );
 
-  const handleExited: TransitionEndHook = useConstantFn((nativeEl, transitionOnFirst) => {
+  const handleExited: TransitionEndHook = useEvent((nativeEl, transitionOnFirst) => {
     const el = nativeEl as HTMLElement;
 
     const { padding1, padding2, size } = mappings;
@@ -194,20 +192,18 @@ const CollapseTransition: FC<CollapseTransitionProp> = (props) => {
     // setTransitionStyle({});
   });
 
-  const handleExitCancelled: TransitionCancelledHook = useConstantFn(
-    (nativeEl, transitionOnFirst) => {
-      const el = nativeEl as HTMLElement;
-      const { padding1, padding2, size } = mappings;
+  const handleExitCancelled: TransitionCancelledHook = useEvent((nativeEl, transitionOnFirst) => {
+    const el = nativeEl as HTMLElement;
+    const { padding1, padding2, size } = mappings;
 
-      isCancelledRef.current = true;
-      el.style[padding1] = padding1Ref.current!;
-      el.style[padding2] = padding2Ref.current!;
-      el.style[size] = sizeRef.current!;
-      el.style.overflow = overflowRef.current!;
+    isCancelledRef.current = true;
+    el.style[padding1] = padding1Ref.current!;
+    el.style[padding2] = padding2Ref.current!;
+    el.style[size] = sizeRef.current!;
+    el.style.overflow = overflowRef.current!;
 
-      onExitCancelled?.(nativeEl, transitionOnFirst);
-    },
-  );
+    onExitCancelled?.(nativeEl, transitionOnFirst);
+  });
 
   const { nodeRef, show, transitionClassesRef } = useCssTransition({
     ...others,

@@ -1,4 +1,4 @@
-import { useConstantFn, useValueChange } from '@xl-vision/hooks';
+import { useEvent, useValueChange } from '@xl-vision/hooks';
 import { isProduction, noop } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
@@ -131,7 +131,7 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
     uuid++;
   }, [clsPrefix]);
 
-  const handleConfirm = useConstantFn(() => {
+  const handleConfirm = useEvent(() => {
     new Promise((resolve) => {
       setConfirmLoading(true);
       resolve(onConfirm?.());
@@ -144,7 +144,7 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
       });
   });
 
-  const handleCancel = useConstantFn(() => {
+  const handleCancel = useEvent(() => {
     new Promise((resolve) => {
       setCancelLoading(true);
       resolve(onCancel?.());
@@ -157,7 +157,7 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
       });
   });
 
-  const handleOpenChange = useConstantFn((v: boolean) => {
+  const handleOpenChange = useEvent((v: boolean) => {
     // 在loading时，必须等待结果，而不能直接关闭
     if (confirmLoading || cancelLoading) {
       return;

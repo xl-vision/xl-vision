@@ -1,6 +1,6 @@
 import {
   LifecycleState,
-  useConstantFn,
+  useEvent,
   useForkRef,
   useIsomorphicLayoutEffect,
   useLifecycleState,
@@ -93,7 +93,7 @@ const Affix = forwardRef<AffixIntance, AffixProps>((props, ref) => {
 
   const lifecycleStateRef = useLifecycleState();
 
-  const measure = useConstantFn(() => {
+  const measure = useEvent(() => {
     const affixNode = rootRef.current;
     if (!affixNode || !currentTarget) {
       return;

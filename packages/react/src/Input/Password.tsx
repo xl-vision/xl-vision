@@ -1,4 +1,4 @@
-import { useConstantFn } from '@xl-vision/hooks';
+import { useEvent } from '@xl-vision/hooks';
 import { EyeInvisibleOutlined, EyeOutlined } from '@xl-vision/icons';
 import { isProduction } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
@@ -41,11 +41,11 @@ const Password = forwardRef<HTMLSpanElement, PasswordProps>((props, ref) => {
 
   const type = visible ? 'text' : 'password';
 
-  const handleClick = useConstantFn(() => {
+  const handleClick = useEvent(() => {
     setVisible((prev) => !prev);
   });
 
-  const handlePrevent = useConstantFn((e: MouseEvent) => {
+  const handlePrevent = useEvent((e: MouseEvent) => {
     e.preventDefault();
   });
 

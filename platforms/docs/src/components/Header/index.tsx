@@ -1,4 +1,4 @@
-import { useConstantFn } from '@xl-vision/hooks';
+import { useEvent } from '@xl-vision/hooks';
 import { DownOutlined, GithubFilled, MenuOutlined } from '@xl-vision/icons';
 import { Button, styled, Tooltip, Dropdown } from '@xl-vision/react';
 import { alpha } from '@xl-vision/react/utils/color';
@@ -137,13 +137,13 @@ const Header: FC<HTMLAttributes<HTMLElement>> = (props) => {
 
   const langs = useMemo(() => Object.keys(supportLocales), [supportLocales]);
 
-  const handleLangChange = useConstantFn((lang: string) => {
+  const handleLangChange = useEvent((lang: string) => {
     const { pathname, asPath, query } = router;
     router.push({ pathname, query }, asPath, { locale: lang }).catch(noop);
     Cookie.set('NEXT_LOCALE', lang, { expires: 30, sameSite: 'Strict' });
   });
 
-  const setActiveClassName = useConstantFn((pathname: string) => {
+  const setActiveClassName = useEvent((pathname: string) => {
     return router.pathname.startsWith(pathname) ? 'active' : '';
   });
 

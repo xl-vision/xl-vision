@@ -1,5 +1,5 @@
 export { default as useLatestRef } from './useLatestRef';
-export { default as useConstantFn } from './useConstantFn';
+export { default as useEvent } from './useEvent';
 export { default as useForkRef } from './useForkRef';
 export { default as useValueChange } from './useValueChange';
 export { default as useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';

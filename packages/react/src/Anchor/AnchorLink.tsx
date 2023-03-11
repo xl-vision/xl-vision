@@ -1,4 +1,4 @@
-import { useConstantFn } from '@xl-vision/hooks';
+import { useEvent } from '@xl-vision/hooks';
 import { isProduction } from '@xl-vision/utils';
 
 import clsx from 'clsx';
@@ -56,7 +56,7 @@ const AnchorLink = forwardRef<HTMLDivElement, AnchorLinkProps>((props, ref) => {
 
   const { activeLink, registerLink, unregisterLink, scrollTo } = useContext(AnchorContext);
 
-  const handleClick = useConstantFn(() => {
+  const handleClick = useEvent(() => {
     scrollTo(href);
   });
 

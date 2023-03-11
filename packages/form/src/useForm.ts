@@ -1,4 +1,4 @@
-import { useConstantFn } from '@xl-vision/hooks';
+import { useEvent } from '@xl-vision/hooks';
 import { ChangeEvent, FocusEvent, useCallback, useEffect, useRef, useState } from 'react';
 import FormStore from './FormStore';
 import { Rule, Trigger } from './types';
@@ -88,7 +88,7 @@ const useForm = <T extends Record<string, any>>({
     [innerValidate],
   );
 
-  const handleRegisterRef = useConstantFn((el: HTMLInputElement | null) => {
+  const handleRegisterRef = useEvent((el: HTMLInputElement | null) => {
     if (!el) {
       return;
     }
@@ -158,7 +158,7 @@ const useForm = <T extends Record<string, any>>({
     }
   }, []);
 
-  const register = useConstantFn((field: keyof T, { rules }: RegisterOptions = {}) => {
+  const register = useEvent((field: keyof T, { rules }: RegisterOptions = {}) => {
     setRules(field, rules);
     return {
       name: field,

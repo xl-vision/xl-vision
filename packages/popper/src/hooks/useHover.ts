@@ -1,4 +1,4 @@
-import { useConstantFn } from '@xl-vision/hooks';
+import { useEvent } from '@xl-vision/hooks';
 import { isObject } from '@xl-vision/utils';
 import { useRef } from 'react';
 import { InteractionHook } from '../useInteraction';
@@ -19,7 +19,7 @@ const useHover: InteractionHook<HoverOptions> = (
   const closeDelay = isObject(delayProp) ? delayProp.close || 0 : delayProp;
   const openDelay = isObject(delayProp) ? delayProp.open || 0 : delayProp;
 
-  const handleReferenceMouseEnter = useConstantFn(() => {
+  const handleReferenceMouseEnter = useEvent(() => {
     const timer = timerRef.current;
     clearTimeout(timer);
 
@@ -28,7 +28,7 @@ const useHover: InteractionHook<HoverOptions> = (
     }, Math.max(openDelay, MIN_TIME_DELAY));
   });
 
-  const handleReferenceMouseLeave = useConstantFn(() => {
+  const handleReferenceMouseLeave = useEvent(() => {
     const timer = timerRef.current;
     clearTimeout(timer);
 
@@ -37,14 +37,14 @@ const useHover: InteractionHook<HoverOptions> = (
     }, Math.max(closeDelay, MIN_TIME_DELAY));
   });
 
-  const handlePopperMouseEnter = useConstantFn(() => {
+  const handlePopperMouseEnter = useEvent(() => {
     if (!disablePopperEnter) {
       const timer = timerRef.current;
       clearTimeout(timer);
     }
   });
 
-  const handlePopperMouseLeave = useConstantFn(() => {
+  const handlePopperMouseLeave = useEvent(() => {
     const timer = timerRef.current;
     clearTimeout(timer);
 

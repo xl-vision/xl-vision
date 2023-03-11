@@ -1,4 +1,4 @@
-import { NoticationProps, useConstantFn, useValueChange } from '@xl-vision/hooks';
+import { NoticationProps, useEvent, useValueChange } from '@xl-vision/hooks';
 import { CloseOutlined } from '@xl-vision/icons';
 import { isProduction } from '@xl-vision/utils';
 import { clsx } from 'clsx';
@@ -154,16 +154,16 @@ const InnerNotication = forwardRef<HTMLDivElement, InnerNoticationProps>((props,
 
   const timerRef = useRef<number>();
 
-  const handleExit = useConstantFn(() => {
+  const handleExit = useEvent(() => {
     onAfterClosed?.();
   });
 
-  const handleMouseEnter = useConstantFn((e: MouseEvent<HTMLDivElement>) => {
+  const handleMouseEnter = useEvent((e: MouseEvent<HTMLDivElement>) => {
     onMouseEnter?.(e);
     window.clearTimeout(timerRef.current);
   });
 
-  const handleMouseLeave = useConstantFn((e: MouseEvent<HTMLDivElement>) => {
+  const handleMouseLeave = useEvent((e: MouseEvent<HTMLDivElement>) => {
     onMouseLeave?.(e);
 
     if (!duration) {

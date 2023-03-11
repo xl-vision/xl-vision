@@ -1,4 +1,4 @@
-import { useConstantFn } from '@xl-vision/hooks';
+import { useEvent } from '@xl-vision/hooks';
 import { styled, useTheme } from '@xl-vision/react';
 import codemirror from 'codemirror';
 import { FC, useMemo } from 'react';
@@ -31,7 +31,7 @@ const Editor: FC<EditorProps> = (props) => {
 
   const { mode } = color;
 
-  const handleChange = useConstantFn(
+  const handleChange = useEvent(
     (_1: codemirror.Editor, _2: codemirror.EditorChange, newValue: string) => {
       onChange(newValue);
     },

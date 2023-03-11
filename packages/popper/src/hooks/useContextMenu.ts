@@ -1,4 +1,4 @@
-import { useConstantFn } from '@xl-vision/hooks';
+import { useEvent } from '@xl-vision/hooks';
 import { useEffect, useRef } from 'react';
 import { InteractionHook } from '../useInteraction';
 
@@ -12,12 +12,12 @@ const useContextMenu: InteractionHook<ContextMenuOptions> = (
 ) => {
   const timerRef = useRef<number>();
 
-  const handleContextMenu = useConstantFn(() => {
+  const handleContextMenu = useEvent(() => {
     clearTimeout(timerRef.current);
     setOpen(true);
   });
 
-  const handleMouseEnter = useConstantFn(() => {
+  const handleMouseEnter = useEvent(() => {
     if (disablePopperEnter) {
       setOpen(false);
     }

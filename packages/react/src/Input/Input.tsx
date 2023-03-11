@@ -1,4 +1,4 @@
-import { useConstantFn, useForkRef, useValueChange } from '@xl-vision/hooks';
+import { useEvent, useForkRef, useValueChange } from '@xl-vision/hooks';
 import { CloseCircleFilled } from '@xl-vision/icons';
 import { CSSObject } from '@xl-vision/styled-engine';
 import { contains, isProduction } from '@xl-vision/utils';
@@ -275,7 +275,7 @@ const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
 
   const removePasswordTimerRef = useRef<NodeJS.Timeout>();
 
-  const handleChange = useConstantFn((e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = useEvent((e: ChangeEvent<HTMLInputElement>) => {
     let v = e.target.value;
     if (typeof v === 'undefined' || v === null) {
       v = '';
@@ -286,13 +286,13 @@ const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     handleValueChange(v);
   });
 
-  const focus = useConstantFn(() => {
+  const focus = useEvent(() => {
     if (!disabled && !readOnly) {
       inputRef.current?.focus();
     }
   });
 
-  const handleMouseUp = useConstantFn((e: MouseEvent) => {
+  const handleMouseUp = useEvent((e: MouseEvent) => {
     const el = rootRef.current;
     if (!el) {
       return;
@@ -302,19 +302,19 @@ const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     }
   });
 
-  const handleFocus = useConstantFn((e: FocusEvent<HTMLInputElement>) => {
+  const handleFocus = useEvent((e: FocusEvent<HTMLInputElement>) => {
     if (!disabled && !readOnly) {
       setFocused(true);
     }
     onFocus?.(e);
   });
 
-  const handleBlur = useConstantFn((e: FocusEvent<HTMLInputElement>) => {
+  const handleBlur = useEvent((e: FocusEvent<HTMLInputElement>) => {
     setFocused(false);
     onBlur?.(e);
   });
 
-  const handleReset = useConstantFn(() => {
+  const handleReset = useEvent(() => {
     handleValueChange('');
   });
 

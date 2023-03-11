@@ -5,6 +5,6 @@
 ## Usage
 
 ```
-import { useConstantFn } from '@xl-vision/hooks';
+import { useEvent } from '@xl-vision/hooks';
 
 ```

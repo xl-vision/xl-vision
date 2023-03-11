@@ -1,4 +1,4 @@
-import { useConstantFn } from '@xl-vision/hooks';
+import { useEvent } from '@xl-vision/hooks';
 import { getComputedStyle, isProduction, raf } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
@@ -23,7 +23,7 @@ const TextAreaSuffix: FC<TextAreaSuffixProps> = (props) => {
 
   const rafCancelFnRef = useRef<() => void>();
 
-  const handleOverflow = useConstantFn(() => {
+  const handleOverflow = useEvent(() => {
     rafCancelFnRef.current?.();
 
     rafCancelFnRef.current = raf(() => {

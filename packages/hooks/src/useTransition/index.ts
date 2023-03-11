@@ -2,7 +2,7 @@ import { warning } from '@xl-vision/utils';
 import { ReactInstance, RefCallback, useCallback, useRef, useState } from 'react';
 
 import { findDOMNode } from 'react-dom';
-import useConstantFn from '../useConstantFn';
+import useEvent from '../useEvent';
 import useIsomorphicLayoutEffect from '../useIsomorphicLayoutEffect';
 import useLifecycleState, { LifecycleState } from '../useLifecycleState';
 
@@ -108,7 +108,7 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
   const isFirstUpdateRef = useRef(true);
   const transitionOnFirstRef = useRef(transitionOnFirst);
 
-  const handleInOptionChange = useConstantFn((value: boolean) => {
+  const handleInOptionChange = useEvent((value: boolean) => {
     const isFirstUpdate = isFirstUpdateRef.current;
     const isTransitionOnFirst = transitionOnFirstRef.current;
 

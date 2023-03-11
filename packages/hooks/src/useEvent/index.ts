@@ -6,7 +6,7 @@ import useLatestRef from '../useLatestRef';
  * 将给定的函数常量化
  * @param value
  */
-const useConstantFn = <Fn extends (...args: any) => any>(fn: Fn) => {
+const useEvent = <Fn extends (...args: any) => any>(fn: Fn) => {
   const fnRef = useLatestRef(fn);
 
   const constantFnRef = useRef<Fn>();
@@ -19,4 +19,4 @@ const useConstantFn = <Fn extends (...args: any) => any>(fn: Fn) => {
   return constantFnRef.current;
 };
 
-export default useConstantFn;
+export default useEvent;

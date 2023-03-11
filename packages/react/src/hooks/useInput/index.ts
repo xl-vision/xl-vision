@@ -1,4 +1,4 @@
-import { useConstantFn } from '@xl-vision/hooks';
+import { useEvent } from '@xl-vision/hooks';
 import { useEffect, useRef, useState } from 'react';
 
 export type InputProps = {
@@ -18,13 +18,13 @@ const useInput = <E extends HTMLElement>({ setValue, maxLength }: InputProps) =>
 
   const hasMaxLength = Number(maxLength) > 0;
 
-  const handleCompositionStart = useConstantFn((e: CompositionEvent) => {
+  const handleCompositionStart = useEvent((e: CompositionEvent) => {
     setCompositing(true);
     oldCompositionValueRef.current = (e.target as HTMLInputElement | HTMLTextAreaElement).value;
     oldSelectionEndRef.current = (e.target as HTMLInputElement | HTMLTextAreaElement).selectionEnd!;
   });
 
-  const handleCompositionEnd = useConstantFn((e: CompositionEvent) => {
+  const handleCompositionEnd = useEvent((e: CompositionEvent) => {
     let triggerValue: string = (e.target as HTMLInputElement | HTMLTextAreaElement).value || '';
 
     if (hasMaxLength) {
@@ -61,7 +61,7 @@ const useInput = <E extends HTMLElement>({ setValue, maxLength }: InputProps) =>
     };
   }, [handleCompositionStart, handleCompositionEnd]);
 
-  const getWordInfo = useConstantFn((words: string, ignoreMaxLength?: boolean) => {
+  const getWordInfo = useEvent((words: string, ignoreMaxLength?: boolean) => {
     if (!ignoreMaxLength && !isCompositing && hasMaxLength) {
       return getFixedStringInfo(words, maxLength);
     }

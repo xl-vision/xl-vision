@@ -1,4 +1,4 @@
-import { useConstantFn, useValueChange } from '@xl-vision/hooks';
+import { useEvent, useValueChange } from '@xl-vision/hooks';
 import { ExclamationCircleOutlined } from '@xl-vision/icons';
 import { isProduction, isServer } from '@xl-vision/utils';
 import clsx from 'clsx';
@@ -123,7 +123,7 @@ const Popconfirm = forwardRef<HTMLDivElement, PopconfirmProps>((props, ref) => {
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [cancelLoading, setCancelLoading] = useState(false);
 
-  const handleCancel = useConstantFn(() => {
+  const handleCancel = useEvent(() => {
     new Promise((resolve) => {
       setCancelLoading(true);
       resolve(onCancel?.());
@@ -136,7 +136,7 @@ const Popconfirm = forwardRef<HTMLDivElement, PopconfirmProps>((props, ref) => {
       });
   });
 
-  const handleConfirm = useConstantFn(() => {
+  const handleConfirm = useEvent(() => {
     new Promise((resolve) => {
       setConfirmLoading(true);
       resolve(onConfirm?.());
@@ -149,7 +149,7 @@ const Popconfirm = forwardRef<HTMLDivElement, PopconfirmProps>((props, ref) => {
       });
   });
 
-  const handleOpenChange = useConstantFn((value: boolean) => {
+  const handleOpenChange = useEvent((value: boolean) => {
     if (confirmLoading || cancelLoading) {
       return;
     }

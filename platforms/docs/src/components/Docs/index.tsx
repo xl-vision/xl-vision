@@ -1,4 +1,4 @@
-import { useConstantFn } from '@xl-vision/hooks';
+import { useEvent } from '@xl-vision/hooks';
 import { Anchor, Row } from '@xl-vision/react';
 import { defaultLanguage } from '@xl-vision/react/locale';
 import Head from 'next/head';
@@ -62,7 +62,7 @@ const Docs: FC<DocsProps> = ({ locales }) => {
 
   const isDebugMode = useIsDebugMode();
 
-  const updateOutline = useConstantFn(async (p: Promise<Outline>) => {
+  const updateOutline = useEvent(async (p: Promise<Outline>) => {
     setOutline([]);
     const ret = await p;
     if (p !== docsInfo.outlinePromise) {

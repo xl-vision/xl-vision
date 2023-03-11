@@ -1,4 +1,4 @@
-import { useConstantFn, useValueChange } from '@xl-vision/hooks';
+import { useEvent, useValueChange } from '@xl-vision/hooks';
 import { isProduction, isServer } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
@@ -68,7 +68,7 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
 
   const [open, setOpen] = useValueChange(defaultOpen, openProp, onOpenChange);
 
-  const setOpenWrapper = useConstantFn((value: boolean) => {
+  const setOpenWrapper = useEvent((value: boolean) => {
     if (!value) {
       submenuCloseHandlersRef.current.forEach((it) => it());
     }

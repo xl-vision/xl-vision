@@ -1,4 +1,4 @@
-import { useConstantFn } from '@xl-vision/hooks';
+import { useEvent } from '@xl-vision/hooks';
 import { CodeOutlined, DownOutlined } from '@xl-vision/icons';
 import { styled, CollapseTransition, Button, Tooltip } from '@xl-vision/react';
 import { useRouter } from 'next/router';
@@ -119,7 +119,7 @@ const DemoBox: FC<DemoBoxProps> = ({
 
   const [isExpand, setExpand] = useState(false);
 
-  const handleCode = useConstantFn(() => {
+  const handleCode = useEvent(() => {
     router
       .push({
         pathname: '/playground',

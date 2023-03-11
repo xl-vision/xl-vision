@@ -1,6 +1,6 @@
 import { addClass, isObject, nextFrame, onTransitionEnd, removeClass } from '@xl-vision/utils';
 import { useMemo, useRef } from 'react';
-import useConstantFn from '../useConstantFn';
+import useEvent from '../useEvent';
 import useTransition, {
   TransitionCancelledHook,
   TransitionEndHook,
@@ -88,7 +88,7 @@ const useCssTransition = <T extends Element = Element>(options: CssTransitionOpt
     toClass?: string;
   }>({});
 
-  const handleEnter: TransitionStartHook<T> = useConstantFn((el, transitionOnFirst) => {
+  const handleEnter: TransitionStartHook<T> = useEvent((el, transitionOnFirst) => {
     const fromClass = transitionClassNameRecord[transitionOnFirst ? 'appearFrom' : 'enterFrom'];
     const activeClass =
       transitionClassNameRecord[transitionOnFirst ? 'appearActive' : 'enterActive'];
@@ -101,7 +101,7 @@ const useCssTransition = <T extends Element = Element>(options: CssTransitionOpt
     onEnter?.(el, transitionOnFirst);
   });
 
-  const handleEntering: TransitionStartingHook<T> = useConstantFn(
+  const handleEntering: TransitionStartingHook<T> = useEvent(
     (el, done, transitionOnFirst, isCancelled) => {
       const time = transitionOnFirst ? timeoutRecord.appear : timeoutRecord.enter;
 
@@ -130,7 +130,7 @@ const useCssTransition = <T extends Element = Element>(options: CssTransitionOpt
     },
   );
 
-  const handleEntered: TransitionEndHook<T> = useConstantFn((el, transitionOnFirst) => {
+  const handleEntered: TransitionEndHook<T> = useEvent((el, transitionOnFirst) => {
     const { toClass, activeClass, fromClass } = transitionClassesRef.current;
 
     removeClass(el, activeClass || '');
@@ -143,22 +143,20 @@ const useCssTransition = <T extends Element = Element>(options: CssTransitionOpt
     onEntered?.(el, transitionOnFirst);
   });
 
-  const handleEnterCancelled: TransitionCancelledHook<T> = useConstantFn(
-    (el, transitionOnFirst) => {
-      const { fromClass, activeClass, toClass } = transitionClassesRef.current;
+  const handleEnterCancelled: TransitionCancelledHook<T> = useEvent((el, transitionOnFirst) => {
+    const { fromClass, activeClass, toClass } = transitionClassesRef.current;
 
-      removeClass(el, fromClass || '');
-      delete transitionClassesRef.current.fromClass;
-      removeClass(el, activeClass || '');
-      delete transitionClassesRef.current.activeClass;
-      removeClass(el, toClass || '');
-      delete transitionClassesRef.current.toClass;
+    removeClass(el, fromClass || '');
+    delete transitionClassesRef.current.fromClass;
+    removeClass(el, activeClass || '');
+    delete transitionClassesRef.current.activeClass;
+    removeClass(el, toClass || '');
+    delete transitionClassesRef.current.toClass;
 
-      onEnterCancelled?.(el, transitionOnFirst);
-    },
-  );
+    onEnterCancelled?.(el, transitionOnFirst);
+  });
 
-  const handleExit: TransitionStartHook<T> = useConstantFn((el, transitionOnFirst) => {
+  const handleExit: TransitionStartHook<T> = useEvent((el, transitionOnFirst) => {
     const fromClass = transitionClassNameRecord[transitionOnFirst ? 'disappearFrom' : 'exitFrom'];
     const activeClass =
       transitionClassNameRecord[transitionOnFirst ? 'disappearActive' : 'exitActive'];
@@ -171,7 +169,7 @@ const useCssTransition = <T extends Element = Element>(options: CssTransitionOpt
     onExit?.(el, transitionOnFirst);
   });
 
-  const handleExiting: TransitionStartingHook<T> = useConstantFn(
+  const handleExiting: TransitionStartingHook<T> = useEvent(
     (el, done, transitionOnFirst, isCancelled) => {
       const time = transitionOnFirst ? timeoutRecord.appear : timeoutRecord.enter;
 
@@ -201,7 +199,7 @@ const useCssTransition = <T extends Element = Element>(options: CssTransitionOpt
     },
   );
 
-  const handleExited: TransitionEndHook<T> = useConstantFn((el, transitionOnFirst) => {
+  const handleExited: TransitionEndHook<T> = useEvent((el, transitionOnFirst) => {
     const { toClass, activeClass } = transitionClassesRef.current;
 
     removeClass(el, toClass || '');
@@ -212,7 +210,7 @@ const useCssTransition = <T extends Element = Element>(options: CssTransitionOpt
     onExited?.(el, transitionOnFirst);
   });
 
-  const handleExitCancelled: TransitionCancelledHook<T> = useConstantFn((el, transitionOnFirst) => {
+  const handleExitCancelled: TransitionCancelledHook<T> = useEvent((el, transitionOnFirst) => {
     const { fromClass, activeClass, toClass } = transitionClassesRef.current;
 
     removeClass(el, fromClass || '');

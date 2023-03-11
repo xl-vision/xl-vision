@@ -1,9 +1,4 @@
-import {
-  ResizeObserverHandler,
-  useConstantFn,
-  useForkRef,
-  useResizeObserver,
-} from '@xl-vision/hooks';
+import { ResizeObserverHandler, useEvent, useForkRef, useResizeObserver } from '@xl-vision/hooks';
 import { isProduction, warning } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { ReactElement, forwardRef, Children, Ref, cloneElement } from 'react';
@@ -19,7 +14,7 @@ const displayName = 'SingleResizeObserver';
 const SingleResizeObserver = forwardRef<unknown, SingleResizeObserverProps>((props, ref) => {
   const { children, onResizeObserver } = props;
 
-  const handleResizeObserver: ResizeObserverHandler = useConstantFn((state, target) => {
+  const handleResizeObserver: ResizeObserverHandler = useEvent((state, target) => {
     onResizeObserver?.(state, target);
   });
 

@@ -1,9 +1,9 @@
 import { renderHook } from 'test/utils';
-import useConstantFn from '..';
+import useEvent from '..';
 
-describe('useConstantFn', () => {
+describe('useEvent', () => {
   it('Test function reference unchanged', () => {
-    const { result, rerender } = renderHook((fn: () => any) => useConstantFn(fn), {
+    const { result, rerender } = renderHook((fn: () => any) => useEvent(fn), {
       initialProps: () => {
         return 1;
       },

@@ -1,4 +1,4 @@
-import { LifecycleState, useConstantFn, useForkRef, useLifecycleState } from '@xl-vision/hooks';
+import { LifecycleState, useEvent, useForkRef, useLifecycleState } from '@xl-vision/hooks';
 import { CSSObject } from '@xl-vision/styled-engine';
 import {
   getBoundingClientRect,
@@ -134,7 +134,7 @@ const Anchor = forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
     setCurrentScrollTarget(nextScrollTarget);
   }, [scrollTarget]);
 
-  const handleScroll = useConstantFn(() => {
+  const handleScroll = useEvent(() => {
     if (lifecycleStateRef.current === LifecycleState.DESTORYED) {
       return;
     }
@@ -192,7 +192,7 @@ const Anchor = forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
     setActiveLink((prev) => (prev === link ? '' : prev));
   }, []);
 
-  const handleScrollTo = useConstantFn((link: string) => {
+  const handleScrollTo = useEvent((link: string) => {
     if (!currentScrollTarget) {
       return;
     }
@@ -230,7 +230,7 @@ const Anchor = forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
     });
   });
 
-  const updateInkNode = useConstantFn(() => {
+  const updateInkNode = useEvent(() => {
     const rootNode = rootRef.current;
 
     const inkNode = inkNodeRef.current;
@@ -249,7 +249,7 @@ const Anchor = forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
     }
   });
 
-  const handleActiveLinkChange = useConstantFn((link: string) => {
+  const handleActiveLinkChange = useEvent((link: string) => {
     onChange?.(link);
     updateInkNode();
   });

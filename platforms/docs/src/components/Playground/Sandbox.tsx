@@ -1,4 +1,4 @@
-import { useConstantFn } from '@xl-vision/hooks';
+import { useEvent } from '@xl-vision/hooks';
 import { styled } from '@xl-vision/react';
 import { FC, useRef, useMemo } from 'react';
 
@@ -51,7 +51,7 @@ html {
 <script>${exec}</script>`;
   }, [demo, scripts, exec]);
 
-  const handleLoad = useConstantFn(() => {
+  const handleLoad = useEvent(() => {
     const iframe = ref.current;
     if (!iframe) {
       return;

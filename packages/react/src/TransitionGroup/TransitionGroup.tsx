@@ -1,7 +1,7 @@
 import {
   CssTransitionClassNameRecord,
   TransitionEndHook,
-  useConstantFn,
+  useEvent,
   useIsomorphicLayoutEffect,
 } from '@xl-vision/hooks';
 import { isObject, isProduction, warning } from '@xl-vision/utils';
@@ -85,7 +85,7 @@ const TransitionGroup: FC<TransitionGroupProps> = (props) => {
     [onExited],
   );
 
-  const handleChildrenChange = useConstantFn((value: Array<ReactElement>) => {
+  const handleChildrenChange = useEvent((value: Array<ReactElement>) => {
     const nextChildren = value.map((it) => {
       return (
         <Transition

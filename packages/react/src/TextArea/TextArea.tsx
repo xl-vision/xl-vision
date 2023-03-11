@@ -1,4 +1,4 @@
-import { useConstantFn, useForkRef, usePrevious, useValueChange } from '@xl-vision/hooks';
+import { useEvent, useForkRef, usePrevious, useValueChange } from '@xl-vision/hooks';
 import { CloseCircleFilled } from '@xl-vision/icons';
 import { CSSObject } from '@xl-vision/styled-engine';
 import { isObject, isProduction } from '@xl-vision/utils';
@@ -195,7 +195,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => 
 
   const forkRef = useForkRef(rootRef, ref);
 
-  const focus = useConstantFn(() => {
+  const focus = useEvent(() => {
     if (!disabled && !readOnly) {
       textareaRef.current?.focus();
     }
@@ -214,7 +214,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => 
     }
   }, [disabled, readOnly]);
 
-  const handleResize = useConstantFn((_value: string) => {
+  const handleResize = useEvent((_value: string) => {
     if (prevValue === _value) {
       return;
     }
@@ -241,19 +241,19 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => 
     }
   }, [value, autoHeight, handleResize]);
 
-  const handleFocus = useConstantFn((e: FocusEvent<HTMLTextAreaElement>) => {
+  const handleFocus = useEvent((e: FocusEvent<HTMLTextAreaElement>) => {
     if (!disabled && !readOnly) {
       setFocused(true);
     }
     onFocus?.(e);
   });
 
-  const handleBlur = useConstantFn((e: FocusEvent<HTMLTextAreaElement>) => {
+  const handleBlur = useEvent((e: FocusEvent<HTMLTextAreaElement>) => {
     setFocused(false);
     onBlur?.(e);
   });
 
-  const handleChange = useConstantFn((e: ChangeEvent<HTMLTextAreaElement>) => {
+  const handleChange = useEvent((e: ChangeEvent<HTMLTextAreaElement>) => {
     let v = e.target.value;
     if (typeof v === 'undefined' || v === null) {
       v = '';
@@ -264,7 +264,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => 
     handleValueChange(v);
   });
 
-  const handleReset = useConstantFn(() => {
+  const handleReset = useEvent(() => {
     handleValueChange('');
   });
 

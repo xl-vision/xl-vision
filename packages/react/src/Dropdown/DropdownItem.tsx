@@ -1,4 +1,4 @@
-import { useConstantFn } from '@xl-vision/hooks';
+import { useEvent } from '@xl-vision/hooks';
 import { CSSObject } from '@xl-vision/styled-engine';
 import { isProduction } from '@xl-vision/utils';
 import clsx from 'clsx';
@@ -68,7 +68,7 @@ const DropdownItem = forwardRef<HTMLLIElement, DropdownItemProps>((props, ref) =
 
   const { setOpen } = useContext(DropdownContext);
 
-  const handleClick = useConstantFn((e: MouseEvent<HTMLLIElement>) => {
+  const handleClick = useEvent((e: MouseEvent<HTMLLIElement>) => {
     if (disabled) {
       return;
     }

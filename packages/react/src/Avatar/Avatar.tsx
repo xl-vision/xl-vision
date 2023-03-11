@@ -1,4 +1,4 @@
-import { useConstantFn, useForkRef } from '@xl-vision/hooks';
+import { useEvent, useForkRef } from '@xl-vision/hooks';
 import { CSSObject } from '@xl-vision/styled-engine';
 import { isProduction } from '@xl-vision/utils';
 import clsx from 'clsx';
@@ -124,7 +124,7 @@ const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
 
   const [isImgExist, setImgExist] = useState(true);
 
-  const handleResize = useConstantFn(() => {
+  const handleResize = useEvent(() => {
     const node = nodeRef.current;
     const child = childRef.current;
     if (!node || !child) {
@@ -150,7 +150,7 @@ const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
     handleResize();
   }, [gap, handleResize]);
 
-  const handleImgError = useConstantFn(() => {
+  const handleImgError = useEvent(() => {
     const errorFlag = onError?.();
     if (errorFlag !== false) {
       setImgExist(false);

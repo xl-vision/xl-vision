@@ -12,7 +12,7 @@ exports[`Entry @xl-vision/form 1`] = `
 exports[`Entry @xl-vision/hooks 1`] = `
 [
   "useLatestRef",
-  "useConstantFn",
+  "useEvent",
   "useForkRef",
   "useValueChange",
   "useIsomorphicLayoutEffect",

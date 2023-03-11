@@ -1,4 +1,4 @@
-import { useConstantFn } from '@xl-vision/hooks';
+import { useEvent } from '@xl-vision/hooks';
 import { isObject } from '@xl-vision/utils';
 import { useRef } from 'react';
 import { InteractionHook } from '../useInteraction';
@@ -12,7 +12,7 @@ const useFocus: InteractionHook<FocusOptions> = ({ setOpen }, { skip, delay: del
 
   const delay = isObject(delayProp) ? delayProp : { open: delayProp, close: delayProp };
 
-  const handleFocus = useConstantFn(() => {
+  const handleFocus = useEvent(() => {
     const timer = timerRef.current;
     clearTimeout(timer);
 
@@ -21,7 +21,7 @@ const useFocus: InteractionHook<FocusOptions> = ({ setOpen }, { skip, delay: del
     }, delay.open);
   });
 
-  const handleBlur = useConstantFn(() => {
+  const handleBlur = useEvent(() => {
     const timer = timerRef.current;
     clearTimeout(timer);
 

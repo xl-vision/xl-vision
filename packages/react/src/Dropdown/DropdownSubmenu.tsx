@@ -1,4 +1,4 @@
-import { useConstantFn, useValueChange } from '@xl-vision/hooks';
+import { useEvent, useValueChange } from '@xl-vision/hooks';
 import { RightOutlined } from '@xl-vision/icons';
 import { CSSObject } from '@xl-vision/styled-engine';
 import { isProduction, isServer } from '@xl-vision/utils';
@@ -133,7 +133,7 @@ const DropdownSubmenu = forwardRef<HTMLDivElement, DropdownSubmenuProps>((props,
   const { clsPrefix } = useTheme();
   const { submenuCloseHandlers } = useContext(DropdownContext);
 
-  const handleOpenChange = useConstantFn((value: boolean) => {
+  const handleOpenChange = useEvent((value: boolean) => {
     if (disabled) {
       return;
     }
