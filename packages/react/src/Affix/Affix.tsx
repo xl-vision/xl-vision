@@ -93,7 +93,7 @@ const Affix = forwardRef<AffixIntance, AffixProps>((props, ref) => {
 
   const lifecycleStateRef = useLifecycleState();
 
-  const measure = useEvent(() => {
+  const handleMeasure = useEvent(() => {
     const affixNode = rootRef.current;
     if (!affixNode || !currentTarget) {
       return;
@@ -185,9 +185,9 @@ const Affix = forwardRef<AffixIntance, AffixProps>((props, ref) => {
   useIsomorphicLayoutEffect(() => {
     if (status === AffixStatus.PREPARE) {
       setStatus(AffixStatus.NONE);
-      measure();
+      handleMeasure();
     }
-  }, [status, measure]);
+  }, [status, handleMeasure]);
 
   useEffect(() => {
     const nextTarget = typeof target === 'function' ? target() : target;

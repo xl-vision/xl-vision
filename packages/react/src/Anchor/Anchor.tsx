@@ -230,7 +230,7 @@ const Anchor = forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
     });
   });
 
-  const updateInkNode = useEvent(() => {
+  const handleInkNodeUpdate = useEvent(() => {
     const rootNode = rootRef.current;
 
     const inkNode = inkNodeRef.current;
@@ -251,7 +251,7 @@ const Anchor = forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
 
   const handleActiveLinkChange = useEvent((link: string) => {
     onChange?.(link);
-    updateInkNode();
+    handleInkNodeUpdate();
   });
 
   useEffect(() => {
