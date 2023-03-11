@@ -113,7 +113,7 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
 
   getErrors<K extends keyof T>(field?: K) {
     if (field) {
-      return this.errors[field];
+      return this.errors[field] || {};
     }
     return this.errors;
   }

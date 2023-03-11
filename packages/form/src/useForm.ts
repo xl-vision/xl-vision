@@ -183,4 +183,6 @@ const useForm = <T extends Record<string, any>>({
 
 export default useForm;
 
-export type Form<T extends Record<string, any>> = ReturnType<typeof useForm<T>>['form'];
+export type Form<T extends Record<string, any> = Record<string, any>> = ReturnType<
+  typeof useForm<T>
+>['form'];

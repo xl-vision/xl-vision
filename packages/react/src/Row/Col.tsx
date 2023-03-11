@@ -147,8 +147,7 @@ if (!isProduction) {
   Col.displayName = displayName;
 
   Col.propTypes = {
-    column: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired])
-      .isRequired,
+    column: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired]),
     children: PropTypes.node,
     className: PropTypes.string,
     offset: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired]),

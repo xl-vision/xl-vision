@@ -1,8 +1,11 @@
 import { Form, Input } from '@xl-vision/react';
 
 const Demo = () => {
+  const { form } = Form.useForm();
+
   return (
     <Form
+      form={form}
       name='basic'
       labelCol={{ column: 8 }}
       wrapperCol={{ column: 16 }}
