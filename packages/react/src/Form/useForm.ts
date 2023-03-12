@@ -1,4 +1,4 @@
-import { useForm, Form } from '@xl-vision/form';
+import { useForm, Form } from '@xl-vision/useForm';
 
 export type { Form };
 

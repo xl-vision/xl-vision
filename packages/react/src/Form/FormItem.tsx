@@ -1,5 +1,6 @@
-import { Controller, Rule, useWatchErrors } from '@xl-vision/form';
+import { Controller, Rule, useWatchErrors } from '@xl-vision/useForm';
 import { isProduction } from '@xl-vision/utils';
+import clsx from 'clsx';
 import {
   Children,
   cloneElement,
@@ -19,13 +20,13 @@ import { ComponentSize, useTheme } from '../ThemeProvider';
 export type LabelAlign = 'left' | 'right';
 
 export type FormItemProps = HTMLAttributes<HTMLDivElement> & {
+  children: ReactElement;
   name: string;
   label?: ReactNode;
   labelAlign?: LabelAlign;
   labelCol?: ColProps;
-  wrapperCol?: ColProps;
-  children: ReactElement;
   rules?: Rule | Array<Rule>;
+  wrapperCol?: ColProps;
 };
 const displayName = 'FormItem';
 
@@ -45,6 +46,19 @@ const FormItemRoot = styled('div', {
   };
 });
 
+const FormItemMessage = styled('div', {
+  name: displayName,
+  slot: 'Message',
+})(({ theme }) => {
+  const { color, typography } = theme;
+
+  return {
+    position: 'absolute',
+    color: color.themes.error.color,
+    ...typography.caption,
+  };
+});
+
 let uuid = 0;
 
 const FormItem = forwardRef<any, FormItemProps>((props, ref) => {
@@ -56,6 +70,7 @@ const FormItem = forwardRef<any, FormItemProps>((props, ref) => {
     labelAlign: labelAlignProp,
     name,
     rules,
+    className,
     ...others
   } = props;
 
@@ -69,7 +84,9 @@ const FormItem = forwardRef<any, FormItemProps>((props, ref) => {
     form,
   } = useContext(FormContext);
 
-  const { componentSize } = useTheme();
+  const { componentSize, clsPrefix } = useTheme();
+
+  const rootClassName = `${clsPrefix}-${displayName}`;
 
   const labelCol = labelColProp || labelColContext;
   const wrapperCol = wrapperColProp || wrapperColContext;
@@ -77,7 +94,7 @@ const FormItem = forwardRef<any, FormItemProps>((props, ref) => {
 
   const size = sizeContext || componentSize;
 
-  const error = useWatchErrors({ form: form!, field: name });
+  const error = useWatchErrors({ form, field: name });
 
   const message = useMemo(() => {
     const keys = Object.keys(error);
@@ -90,23 +107,31 @@ const FormItem = forwardRef<any, FormItemProps>((props, ref) => {
   const child = Children.only(children);
 
   return (
-    <FormItemRoot ref={ref} styleProps={{ size }} {...others}>
+    <FormItemRoot
+      className={clsx(rootClassName, className)}
+      ref={ref}
+      styleProps={{ size }}
+      {...others}
+    >
       <Row>
         <Col style={{ textAlign: labelAlign }} {...labelCol}>
           {label && <label htmlFor={formItemId}>{label}</label>}
         </Col>
         <Col {...wrapperCol}>
           <Controller
-            rules={rules}
             field={name}
-            form={form!}
+            form={form}
             render={(fieldProps) =>
               cloneElement(child, {
                 id: formItemId,
                 ...fieldProps,
               })
             }
+            rules={rules}
           />
+          {message && (
+            <FormItemMessage className={`${rootClassName}__message`}>{message}</FormItemMessage>
+          )}
         </Col>
       </Row>
     </FormItemRoot>
