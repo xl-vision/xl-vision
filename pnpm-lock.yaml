@@ -244,36 +244,20 @@ importers:
 
   packages/useForm:
     specifiers:
-      '@babel/runtime': ^7.15.4
-      '@types/react': '>=17.0.0'
       '@xl-vision/hooks': workspace:^
       '@xl-vision/utils': workspace:^
-      react: '>=17.0.0'
-      react-dom: '>=17.0.0'
     dependencies:
-      '@babel/runtime': 7.20.13
-      '@types/react': 17.0.52
       '@xl-vision/hooks': link:../hooks
       '@xl-vision/utils': link:../utils
-      react: 17.0.2
-      react-dom: 17.0.2_react@17.0.2
 
   packages/usePopper:
     specifiers:
-      '@babel/runtime': ^7.15.4
-      '@types/react': '>=17.0.0'
       '@xl-vision/hooks': workspace:^
       '@xl-vision/utils': workspace:^
-      react: '>=17.0.0'
-      react-dom: '>=17.0.0'
       resize-observer-polyfill: ^1.5.1
     dependencies:
-      '@babel/runtime': 7.20.13
-      '@types/react': 17.0.52
       '@xl-vision/hooks': link:../hooks
       '@xl-vision/utils': link:../utils
-      react: 17.0.2
-      react-dom: 17.0.2_react@17.0.2
       resize-observer-polyfill: 1.5.1
 
   packages/utils:
