@@ -1,6 +1,6 @@
 import { Button, Portal, styled } from '@xl-vision/react';
 import { useState } from 'react';
-import { useAutoUpdatePopper } from '@xl-vision/popper';
+import { useAutoUpdatePopper } from '@xl-vision/usePopper';
 
 const DemoRoot = styled('div')(({ theme }) => {
   const { color } = theme;

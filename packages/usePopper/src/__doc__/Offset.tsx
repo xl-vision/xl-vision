@@ -1,11 +1,30 @@
 import { styled, Button, Portal, Row } from '@xl-vision/react';
-import { useRef, useCallback, forwardRef, useImperativeHandle, useMemo, useEffect } from 'react';
-import { usePopper, PopperOptions } from '@xl-vision/popper';
+import { useRef, useMemo, useCallback, forwardRef, useImperativeHandle, useEffect } from 'react';
+import { usePopper, PopperOptions, offset, Middleware } from '@xl-vision/usePopper';
 
 const Demo = () => {
   const popper1Ref = useRef<CustomPopperInstance>(null);
   const popper2Ref = useRef<CustomPopperInstance>(null);
   const popper3Ref = useRef<CustomPopperInstance>(null);
+
+  const middlewares1: Array<Middleware> = useMemo(() => {
+    return [offset(10)];
+  }, []);
+  const middlewares2: Array<Middleware> = useMemo(() => {
+    return [
+      offset({
+        crossAxis: 10,
+      }),
+    ];
+  }, []);
+  const middlewares3: Array<Middleware> = useMemo(() => {
+    return [
+      offset({
+        mainAxis: 10,
+        crossAxis: 10,
+      }),
+    ];
+  }, []);
 
   const handleScroll = useCallback(() => {
     popper1Ref.current?.update();
@@ -17,13 +36,13 @@ const Demo = () => {
     <DemoRoot onScroll={handleScroll}>
       <Row>
         <Row.Col column={6} offset={3}>
-          <CustomPopper placement='left' ref={popper1Ref} />
+          <CustomPopper middlewares={middlewares1} placement='top' ref={popper1Ref} />
         </Row.Col>
         <Row.Col column={6}>
-          <CustomPopper placement='top' ref={popper2Ref} />
+          <CustomPopper middlewares={middlewares2} placement='top' ref={popper2Ref} />
         </Row.Col>
         <Row.Col column={6}>
-          <CustomPopper placement='right' ref={popper3Ref} />
+          <CustomPopper middlewares={middlewares3} placement='top' ref={popper3Ref} />
         </Row.Col>
       </Row>
     </DemoRoot>

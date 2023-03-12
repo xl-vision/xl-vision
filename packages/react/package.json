@@ -36,8 +36,8 @@
   },
   "dependencies": {
     "@xl-vision/hooks": "workspace:^",
-    "@xl-vision/popper": "workspace:^",
-    "@xl-vision/form": "workspace:^",
+    "@xl-vision/usePopper": "workspace:^",
+    "@xl-vision/useForm": "workspace:^",
     "@xl-vision/icons": "workspace:^",
     "@xl-vision/styled-engine": "workspace:^",
     "@xl-vision/utils": "workspace:^",

@@ -8,7 +8,7 @@ import {
   hide,
   Side,
   PopperOptions,
-} from '@xl-vision/popper';
+} from '@xl-vision/usePopper';
 import { Padding } from '../types';
 
 const Root = styled('div')(({ theme }) => {

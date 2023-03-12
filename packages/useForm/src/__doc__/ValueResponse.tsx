@@ -1,5 +1,5 @@
 import { Input, styled } from '@xl-vision/react';
-import { Controller, useForm, useWatch } from '@xl-vision/form';
+import { Controller, useForm, useWatch } from '@xl-vision/useForm';
 
 const Demo = () => {
   const { form } = useForm({

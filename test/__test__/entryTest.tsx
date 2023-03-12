@@ -12,12 +12,12 @@ describe('Entry', () => {
     const components = require('../../packages/hooks/src');
     expect(Object.keys(components)).toMatchSnapshot();
   });
-  it('@xl-vision/popper', () => {
-    const components = require('../../packages/popper/src');
+  it('@xl-vision/usePopper', () => {
+    const components = require('../../packages/usePopper/src');
     expect(Object.keys(components)).toMatchSnapshot();
   });
-  it('@xl-vision/form', () => {
-    const components = require('../../packages/form/src');
+  it('@xl-vision/useForm', () => {
+    const components = require('../../packages/useForm/src');
     expect(Object.keys(components)).toMatchSnapshot();
   });
   it('@xl-vision/styled-engine', () => {

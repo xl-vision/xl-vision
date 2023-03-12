@@ -7,7 +7,7 @@ import {
   useAutoUpdatePopper,
   Placement,
   offset,
-} from '@xl-vision/popper';
+} from '@xl-vision/usePopper';
 
 const Demo = () => {
   return (
