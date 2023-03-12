@@ -11,7 +11,7 @@ import { Breakpoint } from '../ThemeProvider/breakpoints';
 export type ColSpanType = number | Partial<Record<Breakpoint, number>>;
 
 export interface ColProps extends HTMLAttributes<HTMLDivElement> {
-  column: ColSpanType;
+  column?: ColSpanType;
   children?: ReactNode;
   className?: string;
   offset?: ColSpanType;
@@ -147,10 +147,9 @@ if (!isProduction) {
   Col.displayName = displayName;
 
   Col.propTypes = {
-    column: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired])
-      .isRequired,
     children: PropTypes.node,
     className: PropTypes.string,
+    column: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired]),
     offset: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired]),
     order: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired]),
     pull: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired]),

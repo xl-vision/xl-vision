@@ -94,6 +94,9 @@ export type {
   AvatarGroupPopupPlacement,
 } from './Avatar';
 
+export { default as Form } from './Form';
+export type { FormProps, FormItemProps } from './Form';
+
 export { default as Input } from './Input';
 export type { InputProps, PasswordProps, InputGroupProps } from './Input';
 
