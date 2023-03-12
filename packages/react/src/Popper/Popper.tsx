@@ -22,7 +22,7 @@ import {
   useContextMenu,
   AutoUpdateOptions,
   ArrowOptions,
-} from '@xl-vision/popper';
+} from '@xl-vision/usePopper';
 import { isProduction, isServer, oneOf } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';

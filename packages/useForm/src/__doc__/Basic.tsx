@@ -1,6 +1,6 @@
 import { Button, Message, styled } from '@xl-vision/react';
 import { FormEvent, useCallback } from 'react';
-import { useForm } from '@xl-vision/form';
+import { useForm } from '@xl-vision/useForm';
 
 const Demo = () => {
   const { register, getValue } = useForm({
