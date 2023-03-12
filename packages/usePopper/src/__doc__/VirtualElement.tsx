@@ -1,6 +1,6 @@
 import { styled, Portal } from '@xl-vision/react';
 import { useRef, useEffect, useCallback, MouseEvent } from 'react';
-import { usePopper, ReferenceRect } from '@xl-vision/popper';
+import { usePopper, ReferenceRect } from '@xl-vision/usePopper';
 
 const getContainer = () => document.body;
 

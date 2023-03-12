@@ -5,7 +5,7 @@ import {
   useConnectInteraction,
   useHover,
   useInteraction,
-} from '@xl-vision/popper';
+} from '@xl-vision/usePopper';
 
 const container = () => document.body;
 
