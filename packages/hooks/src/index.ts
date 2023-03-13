@@ -4,6 +4,7 @@ export { default as useForkRef } from './useForkRef';
 export { default as useValueChange } from './useValueChange';
 export { default as useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 export { default as usePrevious } from './usePrevious';
+export { default as useSyncExternalStore } from './useSyncExternalStore';
 
 export { default as useLifecycleState, LifecycleState } from './useLifecycleState';
 
