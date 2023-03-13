@@ -227,7 +227,7 @@ importers:
 
   platforms/docs:
     specifiers:
-      '@babel/standalone': ^7.21.1
+      '@babel/standalone': ^7.21.2
       '@mapbox/rehype-prism': ^0.8.0
       '@mdx-js/loader': ^2.3.0
       '@mdx-js/react': ^2.3.0
