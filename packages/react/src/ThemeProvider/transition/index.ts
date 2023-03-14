@@ -1,4 +1,6 @@
 import { CSSObject, CSSProperties } from '@xl-vision/styled-engine';
+import { deepMerge } from '@xl-vision/utils';
+import { DeepPartial } from '../../utils/types';
 
 const defaultFunctions = {
   deceleration: 'cubic-bezier(0, 0, 0.2, 1)',
@@ -17,10 +19,10 @@ const defaultDurations = {
   exit: '195ms',
 };
 
-export type Transition = Partial<{
+export type Transition = {
   functions: typeof defaultFunctions;
   durations: typeof defaultDurations;
-}>;
+};
 
 const genTransition = (
   name: keyof CSSProperties | Array<keyof CSSProperties>,
@@ -35,8 +37,13 @@ const genTransition = (
     .join(',');
 };
 
-const createTransition = (transition: Transition = {}) => {
-  const { functions = defaultFunctions, durations = defaultDurations } = transition;
+const defaultTransition: Transition = {
+  functions: defaultFunctions,
+  durations: defaultDurations,
+};
+
+const createTransition = (transition: DeepPartial<Transition> = {}) => {
+  const { functions, durations } = deepMerge(defaultTransition, transition, { clone: true });
 
   const standard = (
     name: keyof CSSProperties | Array<keyof CSSProperties>,

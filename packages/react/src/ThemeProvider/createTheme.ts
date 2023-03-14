@@ -6,8 +6,9 @@ import createOverrideStyles, { OverrideStyles } from './overrideStyles';
 import createStyleSize, { ComponentSize, StyleSize } from './styleSize';
 import createTransition, { Transition } from './transition';
 import createTypography, { Typography } from './typography';
+import { DeepPartial } from '../utils/types';
 
-export type BaseTheme = Partial<{
+export type BaseTheme = DeepPartial<{
   color: Color;
   transition: Transition;
   typography: Typography;
@@ -57,7 +58,7 @@ const createThemeWithoutMixins = (theme: BaseTheme = {}) => {
   };
 };
 
-const createTheme = (theme: BaseTheme = {}) => {
+const createTheme = (theme: DeepPartial<BaseTheme> = {}) => {
   const themeWithoutMixins = createThemeWithoutMixins(theme);
 
   const mixins = createMixins(themeWithoutMixins);
