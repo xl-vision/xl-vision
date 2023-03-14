@@ -14,10 +14,11 @@ export type BaseTheme = DeepPartial<{
   typography: Typography;
   breakpoints: Breakpoints;
   clsPrefix: string;
-  overrideStyles: OverrideStyles;
   styleSize: StyleSize;
   componentSize: ComponentSize;
-}>;
+}> & {
+  overrideStyles: OverrideStyles;
+};
 
 export type ThemeWithoutMixins = ReturnType<typeof createThemeWithoutMixins>;
 
