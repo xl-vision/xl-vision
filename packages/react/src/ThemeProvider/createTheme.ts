@@ -17,7 +17,7 @@ export type BaseTheme = DeepPartial<{
   styleSize: StyleSize;
   componentSize: ComponentSize;
 }> & {
-  overrideStyles: OverrideStyles;
+  overrideStyles?: OverrideStyles;
 };
 
 export type ThemeWithoutMixins = ReturnType<typeof createThemeWithoutMixins>;
@@ -59,7 +59,7 @@ const createThemeWithoutMixins = (theme: BaseTheme = {}) => {
   };
 };
 
-const createTheme = (theme: DeepPartial<BaseTheme> = {}) => {
+const createTheme = (theme: BaseTheme = {}) => {
   const themeWithoutMixins = createThemeWithoutMixins(theme);
 
   const mixins = createMixins(themeWithoutMixins);
