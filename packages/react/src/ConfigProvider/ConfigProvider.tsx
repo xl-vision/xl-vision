@@ -1,36 +1,22 @@
-import { isProduction, warning } from '@xl-vision/utils';
+import { isProduction } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { ReactNode, FC, useMemo } from 'react';
-import ConfigContext, { defaultConfigContext } from './ConfigContext';
-import { defaultLanguage, locales, Locales } from '../locale';
+import ConfigContext from './ConfigContext';
+import { defaultLocale, Locale } from '../locale';
 
 export type ConfigProviderProps = {
   children: ReactNode;
-  customLocales?: Locales;
-  language?: string;
+  locale?: Locale;
 };
 
 const ConfigProvider: FC<ConfigProviderProps> = (props) => {
-  const { customLocales, language = defaultConfigContext.language, children } = props;
+  const { locale = defaultLocale, children } = props;
 
   const memorizedValue = useMemo(() => {
-    let actualLanguage = language;
-    let actualLocale = customLocales?.[actualLanguage] || locales[actualLanguage];
-
-    if (!actualLocale) {
-      warning(
-        true,
-        `The specified lang '%s' has no corresponding locale configuration, please provide the corresponding locale file, otherwise the default language (en-US) will be used`,
-        actualLanguage,
-      );
-      actualLocale = locales[defaultLanguage];
-      actualLanguage = defaultLanguage;
-    }
     return {
-      locale: actualLocale,
-      language: actualLanguage,
+      locale,
     };
-  }, [language, customLocales]);
+  }, [locale]);
 
   return <ConfigContext.Provider value={memorizedValue}>{children}</ConfigContext.Provider>;
 };
@@ -40,8 +26,7 @@ if (!isProduction) {
 
   ConfigProvider.propTypes = {
     children: PropTypes.node.isRequired,
-    customLocales: PropTypes.shape({}),
-    language: PropTypes.string,
+    locale: PropTypes.shape({}),
   };
 }
 

@@ -1,12 +1,11 @@
 import { styled } from '@xl-vision/react';
-import { defaultLanguage } from '@xl-vision/react/locale';
 import { mix } from '@xl-vision/react/utils/color';
 import clsx from 'clsx';
 import Link, { LinkProps } from 'next/link';
 import { useRouter } from 'next/router';
 import { FC, Children, cloneElement, HTMLAttributes, forwardRef, useMemo } from 'react';
 import route, { BaseRoute, Route, RouteType } from '../../routes';
-import { useLocale } from '../LocalizationProvider';
+import { defaultLanguage, useLocale } from '../LocalizationProvider';
 
 const LeftNode = styled('span')(() => {
   return {

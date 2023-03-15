@@ -1,14 +1,8 @@
 import enUS from './en-US';
-import { Locales } from './types';
-import zhCN from './zh-CN';
 
 export * from './types';
 
-export const locales: Locales = {
-  'zh-CN': zhCN,
-  'en-US': enUS,
-};
+export { default as enUS } from './en-US';
+export { default as zhCN } from './zh-CN';
 
-export const defaultLanguage = 'en-US';
-
-export const defaultLocale = locales[defaultLanguage];
+export const defaultLocale = enUS;
