@@ -2,6 +2,7 @@ import { render, act } from '@testing-library/react';
 import { forwardRef, useImperativeHandle } from 'react';
 import { awaitPromise, triggerTransitionEnd } from 'test/utils';
 import { ConfigProvider, NoticationHookReturnType, Notication } from '@xl-vision/react';
+import { enUS, zhCN } from '@xl-vision/react/locale';
 
 const { useNotication } = Notication;
 
@@ -204,7 +205,7 @@ describe('NoticationHooks', () => {
     let noticationRef!: ReturnType<typeof useNotication>[0];
 
     const { rerender, unmount } = render(
-      <ConfigProvider language='en-US'>
+      <ConfigProvider locale={enUS}>
         <Demo
           ref={(it) => {
             noticationRef = it!;
@@ -232,7 +233,7 @@ describe('NoticationHooks', () => {
     expect(el).not.toBe(null);
 
     rerender(
-      <ConfigProvider language='zh-CN'>
+      <ConfigProvider locale={zhCN}>
         <Demo
           ref={(it) => {
             noticationRef = it!;

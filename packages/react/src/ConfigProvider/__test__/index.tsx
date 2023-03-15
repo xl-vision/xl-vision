@@ -4,7 +4,7 @@ import { ConfigProvider, useConfig } from '@xl-vision/react';
 import { enUS, zhCN } from '@xl-vision/react/locale';
 
 describe('ConfigProvider', () => {
-  it('Test get language', () => {
+  it('Test swicth locale', () => {
     const fn = jest.fn<any, Array<any>>();
 
     const Demo = () => {
