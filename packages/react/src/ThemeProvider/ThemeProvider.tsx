@@ -18,7 +18,7 @@ const ThemeProvider: FC<ThemeProviderProps> = (props) => {
   // 可能存在多个主题嵌套的情况，子主题应该继承父主题
   const mergedThemeProps = useMemo(() => {
     if (parentTheme) {
-      return deepMerge(parentTheme, theme);
+      return deepMerge(parentTheme, theme, { clone: true });
     }
     return theme;
   }, [theme, parentTheme]);

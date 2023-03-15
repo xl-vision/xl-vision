@@ -1,8 +1,10 @@
 import { CSSObject, CSSProperties } from '@xl-vision/styled-engine';
+import { deepMerge } from '@xl-vision/utils';
+import { DeepPartial } from '../../utils/types';
 
 export type FontWeightKey = 'light' | 'regular' | 'medium' | 'bold';
 
-export type Typography = Partial<{
+export type Typography = {
   baseFontSize: number;
   fontFamily: string;
   fontWeight: {
@@ -11,19 +13,23 @@ export type Typography = Partial<{
     medium: number;
     bold: number;
   };
-}>;
+};
 
-const createTypography = (typography: Typography = {}) => {
-  const {
-    baseFontSize = 16,
-    fontFamily = `'Roboto', 'Helvetica Neue', 'segoe ui', 'Arial', 'noto sans', sans-serif`,
-    fontWeight = {
-      light: 300,
-      regular: 400,
-      medium: 500,
-      bold: 700,
-    },
-  } = typography;
+const defaultTypography: Typography = {
+  baseFontSize: 16,
+  fontFamily: `'Roboto', 'Helvetica Neue', 'segoe ui', 'Arial', 'noto sans', sans-serif`,
+  fontWeight: {
+    light: 300,
+    regular: 400,
+    medium: 500,
+    bold: 700,
+  },
+};
+
+const createTypography = (typography: DeepPartial<Typography> = {}) => {
+  const { baseFontSize, fontFamily, fontWeight } = deepMerge(defaultTypography, typography, {
+    clone: true,
+  });
 
   const pxToRem = (px: number) => `${(px / baseFontSize).toFixed(3)}rem`;
 

@@ -1,11 +1,12 @@
-import { isProduction } from '@xl-vision/utils';
+import { deepMerge, isProduction } from '@xl-vision/utils';
 import { dark as defaultDark, light as defaultLight, BaseColor } from './baseColor';
 import defaultThemes, { ThemeColors } from './themeColor';
 import { darken, getContrastRatio, lighten } from '../../utils/color';
+import { DeepPartial } from '../../utils/types';
 import greyColor from '../palette/grey';
 import { Palette } from '../palette/palette';
 
-export type Color = Partial<{
+export type Color = {
   modes: {
     dark: BaseColor;
     light: BaseColor;
@@ -14,7 +15,7 @@ export type Color = Partial<{
   contrastThreshold: number;
   mode: 'dark' | 'light';
   grey: Palette;
-}>;
+};
 
 export type Theme = BaseColor &
   Record<keyof BaseColor['action'], string> & {
@@ -25,17 +26,22 @@ export type Themes = {
   [key in keyof ThemeColors]: Theme;
 };
 
-const createColors = (color: Color = {}) => {
-  const {
-    modes = {
-      dark: defaultDark,
-      light: defaultLight,
-    },
-    mode = 'light',
-    contrastThreshold = 3,
-    themes = defaultThemes,
-    grey = greyColor,
-  } = color;
+const defaultColor: Color = {
+  modes: {
+    dark: defaultDark,
+    light: defaultLight,
+  },
+  mode: 'light',
+  contrastThreshold: 3,
+  themes: defaultThemes,
+  grey: greyColor,
+};
+
+const createColors = (color: DeepPartial<Color> = {}) => {
+  const { modes, mode, contrastThreshold, themes, grey } = deepMerge(defaultColor, color, {
+    clone: true,
+  });
+
   const { dark, light } = modes;
 
   const baseTheme = modes[mode];

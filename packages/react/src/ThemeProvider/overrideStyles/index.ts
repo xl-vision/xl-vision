@@ -5,8 +5,8 @@ import { RowProps } from '../../Row';
 import { Theme } from '../createTheme';
 
 export type Style<
-  S extends {} | undefined = undefined,
-  P extends {} = {},
+  S extends object | undefined = undefined,
+  P extends object = {},
   ST = S extends undefined ? { theme: Theme } : { styleProps: S; theme: Theme },
 > = Interpolation<P & ST>;
 

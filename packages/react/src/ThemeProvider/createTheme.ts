@@ -6,17 +6,19 @@ import createOverrideStyles, { OverrideStyles } from './overrideStyles';
 import createStyleSize, { ComponentSize, StyleSize } from './styleSize';
 import createTransition, { Transition } from './transition';
 import createTypography, { Typography } from './typography';
+import { DeepPartial } from '../utils/types';
 
-export type BaseTheme = Partial<{
+export type BaseTheme = DeepPartial<{
   color: Color;
   transition: Transition;
   typography: Typography;
   breakpoints: Breakpoints;
   clsPrefix: string;
-  overrideStyles: OverrideStyles;
   styleSize: StyleSize;
   componentSize: ComponentSize;
-}>;
+}> & {
+  overrideStyles?: OverrideStyles;
+};
 
 export type ThemeWithoutMixins = ReturnType<typeof createThemeWithoutMixins>;
 
