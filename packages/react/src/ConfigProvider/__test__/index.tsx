@@ -1,50 +1,41 @@
 import { render } from '@testing-library/react';
 import { useEffect } from 'react';
 import { ConfigProvider, useConfig } from '@xl-vision/react';
-import { defaultLanguage } from '@xl-vision/react/locale';
+import { enUS, zhCN } from '@xl-vision/react/locale';
 
 describe('ConfigProvider', () => {
-  it('Test get language', () => {
+  it('Test swicth locale', () => {
     const fn = jest.fn<any, Array<any>>();
 
     const Demo = () => {
-      const { language, locale } = useConfig();
+      const { locale } = useConfig();
 
       useEffect(() => {
-        fn(language, locale);
-      }, [language, locale]);
+        fn(locale);
+      }, [locale]);
 
       return <div />;
     };
 
     const { rerender } = render(
-      <ConfigProvider language='en-US'>
+      <ConfigProvider locale={enUS}>
         <Demo />
       </ConfigProvider>,
     );
 
     expect(fn.mock.calls.length).toBe(1);
-    expect(fn.mock.calls[0][0]).toBe('en-US');
+    expect(fn.mock.calls[0][0]).toBe(enUS);
 
     fn.mockClear();
 
     rerender(
-      <ConfigProvider language='zh-CN'>
+      <ConfigProvider locale={zhCN}>
         <Demo />
       </ConfigProvider>,
     );
 
     expect(fn.mock.calls.length).toBe(1);
-    expect(fn.mock.calls[0][0]).toBe('zh-CN');
+    expect(fn.mock.calls[0][0]).toBe(zhCN);
     fn.mockClear();
-
-    rerender(
-      <ConfigProvider language='aaa'>
-        <Demo />
-      </ConfigProvider>,
-    );
-
-    expect(fn.mock.calls.length).toBe(1);
-    expect(fn.mock.calls[0][0]).toBe(defaultLanguage);
   });
 });

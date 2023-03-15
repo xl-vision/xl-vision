@@ -3,7 +3,7 @@ import { NoticationHookUpdate } from '@xl-vision/hooks';
 import { forwardRef, useImperativeHandle } from 'react';
 import { triggerTransitionEnd } from 'test/utils';
 import { ConfigProvider, DedicatedDialogProps, Dialog } from '@xl-vision/react';
-import { locales } from '@xl-vision/react/locale';
+import { enUS, zhCN } from '@xl-vision/react/locale';
 
 type DialogHookReturnType = {
   destroy: () => void;
@@ -212,7 +212,7 @@ describe('DialogHooks', () => {
     let dialogRef!: ReturnType<typeof useDialog>[0];
 
     const { rerender, unmount } = render(
-      <ConfigProvider language='en-US'>
+      <ConfigProvider locale={enUS}>
         <Demo
           ref={(it) => {
             dialogRef = it!;
@@ -239,10 +239,10 @@ describe('DialogHooks', () => {
     el = document.querySelector('#info');
 
     expect(el).not.toBe(null);
-    expect(el!.querySelector('button')!.textContent).toBe(locales['en-US'].Dialog.methods.infoText);
+    expect(el!.querySelector('button')!.textContent).toBe(enUS.Dialog.methods.infoText);
 
     rerender(
-      <ConfigProvider language='zh-CN'>
+      <ConfigProvider locale={zhCN}>
         <Demo
           ref={(it) => {
             dialogRef = it!;
@@ -254,7 +254,7 @@ describe('DialogHooks', () => {
     await triggerTransitionEnd();
 
     el = document.querySelector('#info');
-    expect(el!.querySelector('button')!.textContent).toBe(locales['zh-CN'].Dialog.methods.infoText);
+    expect(el!.querySelector('button')!.textContent).toBe(zhCN.Dialog.methods.infoText);
 
     unmount();
 

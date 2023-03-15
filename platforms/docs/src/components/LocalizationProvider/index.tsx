@@ -1,5 +1,5 @@
 import { ConfigProvider } from '@xl-vision/react';
-import { defaultLanguage } from '@xl-vision/react/locale';
+import * as libLocales from '@xl-vision/react/locale';
 import { isProduction, warning } from '@xl-vision/utils';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
@@ -15,6 +15,8 @@ export type LocalizationContextProps = {
   supportLocales: Record<string, Locale>;
   locale: Locale;
 };
+
+export const defaultLanguage = 'en-US';
 
 export const LocalizationContext = createContext<LocalizationContextProps>({
   language: defaultLanguage,
@@ -48,9 +50,13 @@ const LocalizationProvider: FC<LocalizationProviderProps> = (props) => {
     [language, locale],
   );
 
+  const libLocaleKey = useMemo(() => {
+    return language.replace('-', '') as keyof typeof libLocales;
+  }, [language]);
+
   return (
     <LocalizationContext.Provider value={ctx}>
-      <ConfigProvider language={language}>{children}</ConfigProvider>
+      <ConfigProvider locale={libLocales[libLocaleKey]}>{children}</ConfigProvider>
     </LocalizationContext.Provider>
   );
 };
