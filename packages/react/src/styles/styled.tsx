@@ -7,8 +7,10 @@ import {
   ShouldForwardProp,
 } from '@xl-vision/styled-engine';
 import { isProduction } from '@xl-vision/utils';
-import { ComponentProps, ComponentType } from 'react';
+import clsx from 'clsx';
+import { ComponentProps, ComponentType, forwardRef } from 'react';
 import applyTheme from './applyTheme';
+import { useConfig } from '../ConfigProvider';
 import { Theme } from '../ThemeProvider/createTheme';
 import { Style } from '../ThemeProvider/overrideStyles';
 
@@ -40,9 +42,8 @@ const styled = <
 
   if (name) {
     displayName = name + slot;
-    if (slot === 'Root') {
-      prefix = middleline(name);
-    }
+
+    prefix = slot === 'Root' ? middleline(name) : `${middleline(name)}__${slot.toLowerCase()}`;
   }
 
   const defaultCreateStyledComponent = innerStyled<Tag, ForwardedProps>(tag, {
@@ -100,10 +101,27 @@ const styled = <
       newFirst = applyTheme(newFirst);
     }
 
-    const DefaultComponent = defaultCreateStyledComponent<P & SPT>(
+    let DefaultComponent: ComponentType<P & SPT> = defaultCreateStyledComponent<P & SPT>(
       newFirst as TemplateStringsArray | CSSObject | FunctionInterpolation<P & SPT>,
       ...newStyles,
     );
+
+    if (prefix) {
+      const InnerDefaultComponent = DefaultComponent;
+      // eslint-disable-next-line react/display-name
+      DefaultComponent = forwardRef<unknown, any>((props, ref) => {
+        const { clsPrefix } = useConfig();
+        console.log(props);
+        return (
+          <InnerDefaultComponent
+            {...props}
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
+            className={clsx(`${clsPrefix}-${prefix}`, props.className)}
+            ref={ref}
+          />
+        );
+      });
+    }
 
     if (!isProduction) {
       DefaultComponent.displayName = displayName;

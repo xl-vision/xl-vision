@@ -1,22 +1,32 @@
 import { isProduction } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { ReactNode, FC, useMemo } from 'react';
-import ConfigContext from './ConfigContext';
-import { defaultLocale, Locale } from '../locale';
+import ConfigContext, { ConfigContextProps, defaultConfigContext } from './ConfigContext';
 
-export type ConfigProviderProps = {
+export type ConfigProviderProps = Partial<ConfigContextProps> & {
   children: ReactNode;
-  locale?: Locale;
 };
 
 const ConfigProvider: FC<ConfigProviderProps> = (props) => {
-  const { locale = defaultLocale, children } = props;
+  const { locale, size, clsPrefix, children } = props;
 
   const memorizedValue = useMemo(() => {
-    return {
-      locale,
-    };
-  }, [locale]);
+    const config = { ...defaultConfigContext };
+
+    if (locale) {
+      config.locale = locale;
+    }
+
+    if (clsPrefix) {
+      config.clsPrefix = clsPrefix;
+    }
+
+    if (size) {
+      config.size = size;
+    }
+
+    return config;
+  }, [locale, size, clsPrefix]);
 
   return <ConfigContext.Provider value={memorizedValue}>{children}</ConfigContext.Provider>;
 };
