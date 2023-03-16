@@ -52,7 +52,7 @@ const DropdownSubmenuItemButton = styled(BaseButton, {
   name: displayName,
   slot: 'Button',
 })<DropdownSubmenuItemButtonStyleProps>(({ theme, styleProps }) => {
-  const { color, transition, typography, clsPrefix } = theme;
+  const { color, transition, typography } = theme;
 
   const { disabled } = styleProps;
 
@@ -64,9 +64,6 @@ const DropdownSubmenuItemButton = styled(BaseButton, {
     width: '100%',
     textAlign: 'left',
     ...typography.body2.style,
-    [`.${clsPrefix}-base-button__inner`]: {
-      paddingRight: 14 + 4,
-    },
   };
 
   if (disabled) {

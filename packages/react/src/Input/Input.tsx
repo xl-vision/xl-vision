@@ -15,9 +15,10 @@ import {
   FocusEvent,
   MouseEvent,
 } from 'react';
+import { useConfig } from '../ConfigProvider';
 import useInput from '../hooks/useInput';
 import { styled } from '../styles';
-import { ComponentSize, useTheme } from '../ThemeProvider';
+import { ComponentSize } from '../ThemeProvider';
 import { alpha } from '../utils/color';
 
 export type InputProps = Omit<
@@ -235,12 +236,12 @@ const InputSuffix = styled(InputPrefix, {
 });
 
 const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
-  const { clsPrefix, componentSize } = useTheme();
+  const { clsPrefix, size: configSize } = useConfig();
 
   const {
     className,
     style,
-    size = componentSize,
+    size = configSize,
     prefix,
     suffix,
     addonBefore,
