@@ -2,11 +2,11 @@ import { useConstantFn, useValueChange } from '@xl-vision/hooks';
 import { isProduction, isServer } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { ReactElement, ReactNode, forwardRef, useContext, useRef, useEffect, useMemo } from 'react';
+import { ReactElement, ReactNode, forwardRef, useRef, useEffect, useMemo } from 'react';
 import DropdownContext from './DropdownContext';
+import { useConfig } from '../ConfigProvider';
 import Popper, { PopperPlacement, PopperProps } from '../Popper';
 import { styled } from '../styles';
-import ThemeContext from '../ThemeProvider/ThemeContext';
 
 export interface DropdownProps extends Omit<PopperProps, 'popup' | 'arrow'> {
   children: ReactElement;
@@ -18,11 +18,12 @@ const displayName = 'Dropdown';
 const DropdownRoot = styled(Popper, {
   name: displayName,
   slot: 'Root',
-})(({ theme }) => {
-  const { clsPrefix, transition } = theme;
+})<{ transitionClassName: string }>(({ theme, styleProps }) => {
+  const { transition } = theme;
+  const { transitionClassName } = styleProps;
 
   return {
-    [`.${clsPrefix}-dropdown`]: {
+    [`.${transitionClassName}`]: {
       ...transition.fadeIn('&'),
       ...transition.fadeOut('&'),
     },
@@ -62,7 +63,7 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
     ...others
   } = props;
 
-  const { clsPrefix } = useContext(ThemeContext);
+  const { clsPrefix } = useConfig();
 
   const submenuCloseHandlersRef = useRef<Array<() => void>>([]);
 
@@ -98,6 +99,8 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
     </DropdownPopup>
   );
 
+  const actualTransitionClassName = transitionClassName || rootClassName;
+
   return (
     <DropdownRoot
       {...others}
@@ -108,7 +111,8 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
       popup={popup}
       popupContainer={popupContainer}
       ref={ref}
-      transitionClassName={transitionClassName || rootClassName}
+      styleProps={{ transitionClassName: actualTransitionClassName }}
+      transitionClassName={actualTransitionClassName}
       // eslint-disable-next-line react/jsx-handler-names
       onOpenChange={setOpen}
     >

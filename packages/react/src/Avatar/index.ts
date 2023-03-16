@@ -1,7 +1,7 @@
 import Avatar from './Avatar';
 import AvatarGroup from './AvatarGroup';
 
-export * from './Avatar';
+export { AvatarProps, AvatarShape, AvatarSize } from './Avatar';
 export * from './AvatarGroup';
 
 const AvatarWithGroup = Avatar as typeof Avatar & { Group: typeof AvatarGroup };

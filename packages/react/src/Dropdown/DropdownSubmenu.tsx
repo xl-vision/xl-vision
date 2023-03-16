@@ -7,9 +7,9 @@ import PropTypes from 'prop-types';
 import { ReactNode, forwardRef, useContext, useCallback, useEffect } from 'react';
 import DropdownContext from './DropdownContext';
 import BaseButton from '../BaseButton';
+import { useConfig } from '../ConfigProvider';
 import Popper, { PopperPlacement, PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
-import { useTheme } from '../ThemeProvider';
 
 export interface DropdownSubmenuProps
   extends Omit<
@@ -27,11 +27,12 @@ const displayName = 'DropdownSubmenu';
 const DropdownSubmenuRoot = styled(Popper, {
   name: displayName,
   slot: 'Root',
-})(({ theme }) => {
-  const { clsPrefix, transition } = theme;
+})<{ transitionClassName: string }>(({ theme, styleProps }) => {
+  const { transition } = theme;
+  const { transitionClassName } = styleProps;
 
   return {
-    [`.${clsPrefix}-dropdown-submenu`]: {
+    [`.${transitionClassName}`]: {
       ...transition.fadeIn('&'),
       ...transition.fadeOut('&'),
     },
@@ -130,7 +131,7 @@ const DropdownSubmenu = forwardRef<HTMLDivElement, DropdownSubmenuProps>((props,
 
   const [open, setOpen] = useValueChange(defaultOpen, openProp, onOpenChange);
 
-  const { clsPrefix } = useTheme();
+  const { clsPrefix } = useConfig();
   const { submenuCloseHandlers } = useContext(DropdownContext);
 
   const handleOpenChange = useConstantFn((value: boolean) => {
@@ -168,6 +169,8 @@ const DropdownSubmenu = forwardRef<HTMLDivElement, DropdownSubmenuProps>((props,
     <DropdownSubmenuPopup className={`${rootClassName}__popup`}>{children}</DropdownSubmenuPopup>
   );
 
+  const actualTransitionClassName = transitionClassName || rootClassName;
+
   return (
     <DropdownSubmenuRoot
       {...others}
@@ -178,7 +181,8 @@ const DropdownSubmenu = forwardRef<HTMLDivElement, DropdownSubmenuProps>((props,
       popup={popup}
       popupContainer={popupContainer}
       ref={ref}
-      transitionClassName={clsx(rootClassName, transitionClassName)}
+      styleProps={{ transitionClassName: actualTransitionClassName }}
+      transitionClassName={actualTransitionClassName}
       trigger={trigger}
       onOpenChange={handleOpenChange}
     >

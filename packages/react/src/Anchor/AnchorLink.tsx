@@ -5,8 +5,8 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { HTMLAttributes, ReactNode, forwardRef, useContext, useEffect } from 'react';
 import AnchorContext from './AnchorContext';
+import { useConfig } from '../ConfigProvider';
 import { styled } from '../styles';
-import { useTheme } from '../ThemeProvider';
 
 export type AnchorLinkProps = Omit<HTMLAttributes<HTMLDivElement>, 'title'> & {
   title: ReactNode;
@@ -27,7 +27,7 @@ const AnchorLinkRoot = styled('div', {
 
 const AnchorLinkTitle = styled('a', {
   name: displayName,
-  slot: 'title',
+  slot: 'Title',
 })<{ isActive: boolean }>(({ theme, styleProps }) => {
   const { color, typography, transition } = theme;
 
@@ -50,7 +50,7 @@ const AnchorLinkTitle = styled('a', {
 });
 
 const AnchorLink = forwardRef<HTMLDivElement, AnchorLinkProps>((props, ref) => {
-  const { clsPrefix } = useTheme();
+  const { clsPrefix } = useConfig();
 
   const { title, href, className, children, ...others } = props;
 

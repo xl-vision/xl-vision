@@ -4,9 +4,9 @@ import { isProduction, isServer, off, on } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { HTMLAttributes, forwardRef, useState, useEffect, CSSProperties, MouseEvent } from 'react';
+import { useConfig } from '../ConfigProvider';
 import Portal from '../Portal';
 import { styled } from '../styles';
-import { useTheme } from '../ThemeProvider';
 import Transition from '../Transition';
 import { alpha } from '../utils/color';
 import { throttleByAnimationFrame } from '../utils/perf';
@@ -24,38 +24,46 @@ export type BackTopProps = Omit<HTMLAttributes<HTMLDivElement>, 'target' | 'onCh
 
 const displayName = 'BackTop';
 
-const Root = styled('div', {
+const BackTopRoot = styled('div', {
   name: displayName,
   slot: 'Root',
+})<{ transitionClassName: string }>(({ theme, styleProps }) => {
+  const { transition } = theme;
+
+  const { transitionClassName } = styleProps;
+
+  return {
+    position: 'fixed',
+    zIndex: 10,
+    ...transition.fadeIn(`&.${transitionClassName}`),
+    ...transition.fadeOut(`&.${transitionClassName}`),
+  };
+});
+
+const BackTopInner = styled('div', {
+  name: displayName,
+  slot: 'Inner',
 })(({ theme }) => {
-  const { clsPrefix, color, transition } = theme;
+  const { color, transition } = theme;
 
   const bgColor = alpha(color.text.primary, 0.4);
 
   const contrastColor = color.getContrastColor(bgColor);
 
-  const rootClassName = `${clsPrefix}-back-top`;
-
   return {
-    position: 'fixed',
-    zIndex: 10,
-    ...transition.fadeIn(`&.${rootClassName}`),
-    ...transition.fadeOut(`&.${rootClassName}`),
-    [`.${rootClassName}__inner`]: {
-      fontSize: 24,
-      backgroundColor: bgColor,
-      color: contrastColor.text.primary,
-      width: 40,
-      height: 40,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      borderRadius: '50%',
-      cursor: 'pointer',
-      transition: transition.standard('backgroundColor'),
-      '&:hover': {
-        backgroundColor: alpha(color.text.primary, 0.7),
-      },
+    fontSize: 24,
+    backgroundColor: bgColor,
+    color: contrastColor.text.primary,
+    width: 40,
+    height: 40,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: '50%',
+    cursor: 'pointer',
+    transition: transition.standard('backgroundColor'),
+    '&:hover': {
+      backgroundColor: alpha(color.text.primary, 0.7),
     },
   };
 });
@@ -64,7 +72,7 @@ const getDefaultTarget = () => window;
 const getDefaultContainer = () => document.body;
 
 const BackTop = forwardRef<HTMLDivElement, BackTopProps>((props, ref) => {
-  const { clsPrefix } = useTheme();
+  const { clsPrefix } = useConfig();
 
   const {
     target = getDefaultTarget,
@@ -127,9 +135,9 @@ const BackTop = forwardRef<HTMLDivElement, BackTopProps>((props, ref) => {
   const classes = clsx(rootClassName, className);
 
   const defaultElement = (
-    <div className={`${rootClassName}__inner`}>
+    <BackTopInner className={`${rootClassName}__inner`}>
       <VerticalAlignTopOutlined />
-    </div>
+    </BackTopInner>
   );
 
   const fixedStyle: CSSProperties = {
@@ -144,15 +152,16 @@ const BackTop = forwardRef<HTMLDivElement, BackTopProps>((props, ref) => {
       transitionClassName={rootClassName}
       unmountOnExit={true}
     >
-      <Root
+      <BackTopRoot
         {...others}
         className={classes}
         ref={ref}
         style={{ ...style, ...fixedStyle }}
+        styleProps={{ transitionClassName: rootClassName }}
         onClick={handleClick}
       >
         {children || defaultElement}
-      </Root>
+      </BackTopRoot>
     </Transition>
   );
 

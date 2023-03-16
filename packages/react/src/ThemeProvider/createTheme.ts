@@ -13,9 +13,7 @@ export type BaseTheme = DeepPartial<{
   transition: Transition;
   typography: Typography;
   breakpoints: Breakpoints;
-  clsPrefix: string;
   styleSize: StyleSize;
-  componentSize: ComponentSize;
 }> & {
   overrideStyles?: OverrideStyles;
 };

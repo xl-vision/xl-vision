@@ -4,8 +4,8 @@ import { isProduction } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { ReactNode, FC, useState, useEffect } from 'react';
+import { useConfig } from '../../ConfigProvider';
 import { styled } from '../../styles';
-import { useTheme } from '../../ThemeProvider';
 import Dialog, { DialogProps } from '../Dialog';
 
 export interface InnerDedicatedDialogProps extends Omit<DialogProps, 'children'> {
@@ -19,26 +19,13 @@ const InnerDedicatedDialogHeader = styled('h6', {
   name: displayName,
   slot: 'Header',
 })(({ theme }) => {
-  const { typography, clsPrefix } = theme;
-
-  const rootClassName = `${clsPrefix}-inner-dedicated-dialog`;
+  const { typography } = theme;
 
   return {
     ...typography.h6.style,
     margin: 0,
     display: 'flex',
     alignItems: 'center',
-
-    [`.${rootClassName}__icon`]: {
-      paddingRight: 5,
-      lineHeight: 1,
-      svg: {
-        verticalAlign: 'middle',
-      },
-    },
-    [`.${rootClassName}__title`]: {
-      verticalAlign: 'middle',
-    },
   };
 });
 
@@ -58,6 +45,28 @@ const InnerDedicatedDialogContent = styled('div', {
   return styles;
 });
 
+const InnerDedicatedDialogTitle = styled('span', {
+  name: displayName,
+  slot: 'Title',
+})(() => {
+  return {
+    verticalAlign: 'middle',
+  };
+});
+
+const InnerDedicatedDialogIcon = styled('span', {
+  name: displayName,
+  slot: 'Icon',
+})(() => {
+  return {
+    paddingRight: 5,
+    lineHeight: 1,
+    svg: {
+      verticalAlign: 'middle',
+    },
+  };
+});
+
 const InnerDedicatedDialog: FC<InnerDedicatedDialogProps> = (props) => {
   const {
     open: openProp,
@@ -74,7 +83,7 @@ const InnerDedicatedDialog: FC<InnerDedicatedDialogProps> = (props) => {
 
   const [first, setFirst] = useState(true);
 
-  const { clsPrefix } = useTheme();
+  const { clsPrefix } = useConfig();
 
   // 保证有对话框弹出的动画效果
   useEffect(() => {
@@ -85,8 +94,14 @@ const InnerDedicatedDialog: FC<InnerDedicatedDialogProps> = (props) => {
 
   const headerWrapper = (
     <InnerDedicatedDialogHeader className={`${rootClassName}__header`}>
-      {icon && <span className={`${rootClassName}__icon`}>{icon}</span>}
-      <span className={`${rootClassName}__title`}>{title}</span>
+      {icon && (
+        <InnerDedicatedDialogIcon className={`${rootClassName}__icon`}>
+          {icon}
+        </InnerDedicatedDialogIcon>
+      )}
+      <InnerDedicatedDialogTitle className={`${rootClassName}__title`}>
+        {title}
+      </InnerDedicatedDialogTitle>
     </InnerDedicatedDialogHeader>
   );
 

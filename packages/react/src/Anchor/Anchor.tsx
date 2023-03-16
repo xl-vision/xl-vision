@@ -24,8 +24,8 @@ import {
 } from 'react';
 import AnchorContext from './AnchorContext';
 import Affix from '../Affix';
+import { useConfig } from '../ConfigProvider';
 import { styled } from '../styles';
-import { useTheme } from '../ThemeProvider';
 import { throttleByAnimationFrame } from '../utils/perf';
 import { getScroll, scrollTo } from '../utils/scroll';
 
@@ -92,7 +92,7 @@ export type AnchorInstance = Omit<HTMLDivElement, 'scrollTo'> & {
 };
 
 const Anchor = forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
-  const { clsPrefix } = useTheme();
+  const { clsPrefix } = useConfig();
 
   const {
     affix = true,

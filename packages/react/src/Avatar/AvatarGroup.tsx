@@ -10,11 +10,12 @@ import {
   cloneElement,
   useMemo,
 } from 'react';
-import Avatar, { AvatarProps, AvatarShape, AvatarSize } from './Avatar';
+import Avatar, { AvatarRoot, AvatarProps, AvatarShape, AvatarSize } from './Avatar';
 import AvatarContext, { AvatarContextProps } from './AvatarContext';
+import { useConfig } from '../ConfigProvider';
 import Popover from '../Popover';
 import { styled } from '../styles';
-import { ComponentSize, useTheme } from '../ThemeProvider';
+import { ComponentSize } from '../ThemeProvider';
 
 export type AvatarGroupPopupPlacement = 'none' | 'top' | 'bottom';
 
@@ -34,42 +35,40 @@ const AvatarGroupRoot = styled('div', {
   slot: 'Root',
 })<{ size: ComponentSize }>(({ styleProps, theme }) => {
   const { size } = styleProps;
-  const { clsPrefix, color, styleSize, componentSize } = theme;
+  const { color, styleSize } = theme;
 
-  return {
-    [`.${clsPrefix}-avatar`]: {
-      border: `${styleSize[size || componentSize].border}px solid ${color.background.paper}`,
-      '&:not(:first-child)': {
-        marginLeft: -8,
-      },
-    },
-  };
+  return `
+    ${AvatarRoot} {
+      border: ${styleSize[size].border}px solid ${color.background.paper};
+      &:not(:first-child) {
+        margin-left: -8px;
+      }
+    }
+  `;
 });
 
 const AvatarPopup = styled(Popover, {
   name: displayName,
   slot: 'Popup',
-})(({ theme }) => {
-  const { clsPrefix } = theme;
-
-  return {
-    [`.${clsPrefix}-avatar`]: {
-      '&:not(:first-child)': {
-        marginLeft: 8,
-      },
-    },
-  };
+})(() => {
+  return `
+    ${AvatarRoot} {
+      &:not(:first-child) {
+        margin-left: 8px;
+      }
+    }
+  `;
 });
 
 const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>((props, ref) => {
-  const { clsPrefix, componentSize } = useTheme();
+  const { clsPrefix, size: configSize } = useConfig();
 
   const {
     children,
     className,
     maxCount,
     popupPlacement = 'top',
-    size = componentSize,
+    size = configSize,
     shape = 'circle',
     maxStyle,
     ...others
@@ -125,8 +124,8 @@ const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>((props, ref) =>
   const contextValue = useMemo<AvatarContextProps>(() => ({ size, shape }), [size, shape]);
 
   const rootSize = useMemo(() => {
-    return (typeof size === 'string' && size) as ComponentSize;
-  }, [size]);
+    return (typeof size === 'string' && size) || configSize;
+  }, [size, configSize]);
 
   return (
     <AvatarContext.Provider value={contextValue}>

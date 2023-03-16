@@ -7,10 +7,8 @@ import {
   ShouldForwardProp,
 } from '@xl-vision/styled-engine';
 import { isProduction } from '@xl-vision/utils';
-import clsx from 'clsx';
-import { ComponentProps, ComponentType, forwardRef } from 'react';
+import { ComponentProps, ComponentType } from 'react';
 import applyTheme from './applyTheme';
-import { useConfig } from '../ConfigProvider';
 import { Theme } from '../ThemeProvider/createTheme';
 import { Style } from '../ThemeProvider/overrideStyles';
 
@@ -20,13 +18,6 @@ export type XlOptions = {
 };
 
 const shouldForwardProp = (prop: PropertyKey) => prop !== 'theme' && prop !== 'styleProps';
-
-const middleline = (str: string) => {
-  const separator = '-';
-  const split = /(?=[A-Z])/;
-
-  return str.split(split).join(separator).toLowerCase();
-};
 
 const styled = <
   Tag extends keyof JSX.IntrinsicElements | ComponentType<ComponentProps<Tag>>,
@@ -38,17 +29,16 @@ const styled = <
   const { name, slot = 'Root' } = options || {};
 
   let displayName = '';
-  let prefix = '';
 
-  if (name) {
-    displayName = name + slot;
-
-    prefix = slot === 'Root' ? middleline(name) : `${middleline(name)}__${slot.toLowerCase()}`;
+  if (!isProduction) {
+    if (name) {
+      displayName = name + slot;
+    }
   }
 
   const defaultCreateStyledComponent = innerStyled<Tag, ForwardedProps>(tag, {
     shouldForwardProp: shouldForwardProp as ShouldForwardProp<ForwardedProps>,
-    ...(!isProduction && { prefix: prefix || undefined }),
+    ...(!isProduction && { prefix: displayName }),
   });
 
   const overrideCreateStyledComponent = <
@@ -101,27 +91,10 @@ const styled = <
       newFirst = applyTheme(newFirst);
     }
 
-    let DefaultComponent: ComponentType<P & SPT> = defaultCreateStyledComponent<P & SPT>(
+    const DefaultComponent = defaultCreateStyledComponent<P & SPT>(
       newFirst as TemplateStringsArray | CSSObject | FunctionInterpolation<P & SPT>,
       ...newStyles,
     );
-
-    if (prefix) {
-      const InnerDefaultComponent = DefaultComponent;
-      // eslint-disable-next-line react/display-name
-      DefaultComponent = forwardRef<unknown, any>((props, ref) => {
-        const { clsPrefix } = useConfig();
-        console.log(props);
-        return (
-          <InnerDefaultComponent
-            {...props}
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
-            className={clsx(`${clsPrefix}-${prefix}`, props.className)}
-            ref={ref}
-          />
-        );
-      });
-    }
 
     if (!isProduction) {
       DefaultComponent.displayName = displayName;

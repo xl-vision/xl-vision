@@ -14,8 +14,9 @@ import {
 } from 'react';
 import BaseButton, { BaseButtonProps } from '../BaseButton';
 import CollapseTransition from '../CollapseTransition';
+import { useConfig } from '../ConfigProvider';
 import { styled } from '../styles';
-import { ComponentSize, useTheme } from '../ThemeProvider';
+import { ComponentSize } from '../ThemeProvider';
 import { ThemeColors } from '../ThemeProvider/color/themeColor';
 import { alpha } from '../utils/color';
 
@@ -199,7 +200,7 @@ const ButtonPrefix = styled('span', {
 const ButtonSuffix = styled(ButtonPrefix, {
   name: displayName,
   slot: 'Suffix',
-})<ButtonPrefixStyleProps>(({ styleProps }) => {
+})(({ styleProps }) => {
   const { icon } = styleProps;
 
   if (!icon) {
@@ -229,12 +230,12 @@ const DefaultLoadingIcon = styled(LoadingOutlined, {
 `;
 
 const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((props, ref) => {
-  const { clsPrefix, componentSize } = useTheme();
+  const { clsPrefix, size: configSize } = useConfig();
 
   const {
     color = 'default',
     disableElevation = false,
-    size = componentSize,
+    size = configSize,
     disabled,
     loading,
     prefixIcon,

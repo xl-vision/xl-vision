@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 import { forwardRef, HTMLAttributes, ReactNode, useContext, MouseEvent } from 'react';
 import DropdownContext from './DropdownContext';
 import BaseButton from '../BaseButton';
+import { useConfig } from '../ConfigProvider';
 import { styled } from '../styles';
-import { useTheme } from '../ThemeProvider';
 
 export interface DropdownItemProps extends HTMLAttributes<HTMLLIElement> {
   children: ReactNode;
@@ -64,7 +64,7 @@ const DropdownItemButton = styled(BaseButton, {
 const DropdownItem = forwardRef<HTMLLIElement, DropdownItemProps>((props, ref) => {
   const { children, onClick, disabled, className, ...others } = props;
 
-  const { clsPrefix } = useTheme();
+  const { clsPrefix } = useConfig();
 
   const { setOpen } = useContext(DropdownContext);
 

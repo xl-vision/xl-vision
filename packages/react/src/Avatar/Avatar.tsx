@@ -18,9 +18,10 @@ import {
   CSSProperties,
 } from 'react';
 import AvatarContext from './AvatarContext';
+import { useConfig } from '../ConfigProvider';
 import ResizeObserver from '../ResizeObserver';
 import { styled } from '../styles';
-import { ComponentSize, useTheme } from '../ThemeProvider';
+import { ComponentSize } from '../ThemeProvider';
 
 export type AvatarShape = 'circle' | 'square' | 'round';
 
@@ -39,16 +40,16 @@ export type AvatarProps = HTMLAttributes<HTMLSpanElement> & {
 
 const displayName = 'Avatar';
 
-const AvatarRoot = styled('span', {
+export const AvatarRoot = styled('span', {
   name: displayName,
   slot: 'Root',
 })<{
   isImage: boolean;
   shape: AvatarShape;
-  size?: ComponentSize;
+  size: ComponentSize;
 }>(({ theme, styleProps }) => {
   const { shape: shapeType, size, isImage } = styleProps;
-  const { color, styleSize, componentSize } = theme;
+  const { color, styleSize } = theme;
   const style: CSSObject = {
     position: 'relative',
     display: 'inline-flex',
@@ -77,10 +78,10 @@ const AvatarRoot = styled('span', {
   if (shapeType === 'circle') {
     style.borderRadius = '50%';
   } else if (shapeType === 'round') {
-    style.borderRadius = styleSize[size || componentSize].borderRadius;
+    style.borderRadius = styleSize[size].borderRadius;
   }
 
-  const themeSize = styleSize[size || componentSize];
+  const themeSize = styleSize[size];
   style.width = style.height = 32 * themeSize.fontSize;
 
   return style;
@@ -100,13 +101,13 @@ const AvatarInner = styled('span', {
 
 const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
   const { size: contextSize, shape: contextShape } = useContext(AvatarContext);
-  const { clsPrefix, componentSize } = useTheme();
+  const { clsPrefix, size: configSize } = useConfig();
 
   const {
     children,
     icon,
     shape = contextShape || 'circle',
-    size = contextSize || componentSize,
+    size = contextSize || configSize,
     src,
     srcSet,
     alt,
@@ -206,8 +207,8 @@ const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
   }, [size]);
 
   const rootSize = useMemo(() => {
-    return (typeof size === 'string' && size) as ComponentSize;
-  }, [size]);
+    return (typeof size === 'string' && size) || configSize;
+  }, [size, configSize]);
 
   return (
     <AvatarRoot

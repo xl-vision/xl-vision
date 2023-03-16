@@ -14,9 +14,9 @@ import {
   useEffect,
   useRef,
 } from 'react';
+import { useConfig } from '../ConfigProvider';
 import Ripple, { RippleRef } from '../Ripple';
 import { styled } from '../styles';
-import { useTheme } from '../ThemeProvider';
 
 export type BaseButtonCommonProps =
   | ButtonHTMLAttributes<HTMLButtonElement>
@@ -31,16 +31,17 @@ export type BaseButtonProps = BaseButtonCommonProps & {
 const displayName = 'BaseButton';
 
 export type BaseButtonStyleProps = {
-  loading?: boolean;
+  rippleTransitionClassName: string;
   disabled?: boolean;
+  loading?: boolean;
 };
 
 const BaseButtonRoot = styled('button', {
   name: displayName,
   slot: 'Root',
 })<BaseButtonStyleProps>(({ styleProps, theme }) => {
-  const { disabled, loading } = styleProps;
-  const { clsPrefix, color } = theme;
+  const { disabled, loading, rippleTransitionClassName } = styleProps;
+  const { color } = theme;
   return {
     position: 'relative',
     display: 'inline-block',
@@ -70,7 +71,7 @@ const BaseButtonRoot = styled('button', {
       pointerEvents: 'none',
     },
 
-    [`.${clsPrefix}-base-button__ripple`]: {
+    [`.${rippleTransitionClassName}`]: {
       transform: 'scale(1)',
       opacity: color.action.pressed,
       '&-enter-active': {
@@ -127,7 +128,7 @@ const BaseButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseButtonP
       ...others
     } = props;
 
-    const { clsPrefix } = useTheme();
+    const { clsPrefix } = useConfig();
 
     const Component = (others as unknown as HTMLAnchorElement).href ? 'a' : 'button';
 
@@ -203,6 +204,8 @@ const BaseButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseButtonP
       className,
     );
 
+    const rippleTransitionClassName = `${rootClassName}__ripple`;
+
     return (
       <BaseButtonRoot
         {...others}
@@ -210,7 +213,7 @@ const BaseButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseButtonP
         className={rootClasses}
         disabled={disabled}
         ref={ref}
-        styleProps={{ loading, disabled }}
+        styleProps={{ loading, disabled, rippleTransitionClassName }}
         // 非激活状态不允许选中
         tabIndex={loading || disabled ? -1 : tabIndex}
         onBlur={handleBlur}
@@ -230,7 +233,7 @@ const BaseButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseButtonP
           className={`${rootClassName}__ripple`}
           exitAfterEnter={true}
           ref={rippleRef}
-          transitionClassName={`${rootClassName}__ripple`}
+          transitionClassName={rippleTransitionClassName}
         />
       </BaseButtonRoot>
     );
