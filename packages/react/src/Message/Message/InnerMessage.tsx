@@ -13,8 +13,8 @@ import {
   useRef,
   KeyboardEvent,
 } from 'react';
+import { useConfig } from '../../ConfigProvider';
 import { styled } from '../../styles';
-import { useTheme } from '../../ThemeProvider';
 import Transition from '../../Transition';
 
 export type InnerMessageProps = NoticationProps<
@@ -115,7 +115,7 @@ const InnerMessage = forwardRef<HTMLDivElement, InnerMessageProps>((props, ref) 
     ...others
   } = props;
 
-  const { clsPrefix } = useTheme();
+  const { clsPrefix } = useConfig();
 
   const [open, setOpen] = useValueChange(defaultOpen, openProp);
 

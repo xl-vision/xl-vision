@@ -3,7 +3,7 @@ import createColors, { Color } from './color';
 import createElevations from './elevations';
 import createMixins from './mixins';
 import createOverrideStyles, { OverrideStyles } from './overrideStyles';
-import createStyleSize, { ComponentSize, StyleSize } from './styleSize';
+import createStyleSize, { StyleSize } from './styleSize';
 import createTransition, { Transition } from './transition';
 import createTypography, { Typography } from './typography';
 import { DeepPartial } from '../utils/types';

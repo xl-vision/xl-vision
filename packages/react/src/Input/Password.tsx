@@ -14,7 +14,7 @@ const displayName = 'Password';
 
 const PasswordIcon = styled('span', {
   name: displayName,
-  slot: 'PasswordIcon',
+  slot: 'Icon',
 })(({ theme }) => {
   const { color, transition } = theme;
 

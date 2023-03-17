@@ -1,9 +1,11 @@
 import { isProduction } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { HTMLAttributes, FC, useMemo } from 'react';
+import { HTMLAttributes, FC } from 'react';
+import { InputRoot } from './Input';
+import ConfigProvider, { useConfig } from '../ConfigProvider';
 import { styled } from '../styles';
-import { ComponentSize, useTheme, ThemeContext } from '../ThemeProvider';
+import { ComponentSize } from '../ThemeProvider';
 
 export type InputGroupProps = HTMLAttributes<HTMLDivElement> & {
   size?: ComponentSize;
@@ -14,80 +16,85 @@ const displayName = 'InputGroup';
 const InputGroupRoot = styled('div', {
   name: displayName,
   slot: 'Root',
-})<{ size: ComponentSize }>(({ theme, styleProps }) => {
-  const { clsPrefix, styleSize } = theme;
+})<{ size: ComponentSize }>(
+  ({ theme, styleProps }) => {
+    const { styleSize } = theme;
 
-  const { size } = styleProps;
+    const { size } = styleProps;
 
-  const themeSize = styleSize[size];
+    const themeSize = styleSize[size];
 
-  return {
-    display: 'flex',
-    flexDirection: 'row',
+    return {
+      display: 'flex',
+      flexDirection: 'row',
 
-    '& > *': {
-      borderRadius: 0,
-      '&:not(:last-child)': {
-        marginRight: -themeSize.border,
-      },
-      '&:first-child': {
-        borderTopLeftRadius: themeSize.borderRadius,
-        borderBottomLeftRadius: themeSize.borderRadius,
-      },
-      '&:last-child': {
-        borderTopRightRadius: themeSize.borderRadius,
-        borderBottomRightRadius: themeSize.borderRadius,
-      },
-    },
-    [`.${clsPrefix}-input`]: {
       '& > *': {
         borderRadius: 0,
-      },
-      '&:first-child': {
-        '& > *': {
-          '&:first-child': {
-            borderTopLeftRadius: themeSize.borderRadius,
-            borderBottomLeftRadius: themeSize.borderRadius,
-          },
+        '&:not(:last-child)': {
+          marginRight: -themeSize.border,
+        },
+        '&:first-child': {
+          borderTopLeftRadius: themeSize.borderRadius,
+          borderBottomLeftRadius: themeSize.borderRadius,
+        },
+        '&:last-child': {
+          borderTopRightRadius: themeSize.borderRadius,
+          borderBottomRightRadius: themeSize.borderRadius,
         },
       },
-      '&:last-child': {
-        '& > *': {
-          '&:last-child': {
-            borderTopRightRadius: themeSize.borderRadius,
-            borderBottomRightRadius: themeSize.borderRadius,
-          },
-        },
-      },
-    },
-  };
-});
+    };
+  },
+  ({ theme, styleProps }) => {
+    const { styleSize } = theme;
+
+    const { size } = styleProps;
+
+    const themeSize = styleSize[size];
+
+    console.log('aaa', InputRoot.toString())
+
+    return `
+  ${InputRoot} {
+    & > * {
+      border-radius: 0;
+    }
+    &:first-child {
+      & > * {
+        &:first-child {
+          border-top-left-radius: ${themeSize.borderRadius}px;
+          border-bottom-left-radius: ${themeSize.borderRadius}px;
+        }
+      }
+    }
+    &:last-child {
+      & > * {
+        &:last-child {
+          border-top-right-radius: ${themeSize.borderRadius}px;
+          border-bottom-right-radius: ${themeSize.borderRadius}px;
+        }
+      }
+    }
+  }
+  `;
+  },
+);
 
 const InputGroup: FC<InputGroupProps> = (props) => {
-  const theme = useTheme();
+  const { clsPrefix, size: configSize } = useConfig();
 
-  const { clsPrefix, componentSize } = theme;
-
-  const { className, size = componentSize, children, ...others } = props;
+  const { className, size = configSize, children, ...others } = props;
 
   const rootClassName = `${clsPrefix}-input-group`;
 
   const classes = clsx(rootClassName, `${rootClassName}--size-${size}`, className);
 
-  const newTheme = useMemo(() => {
-    return {
-      ...theme,
-      componentSize: size,
-    };
-  }, [theme, size]);
-
   return (
     // 内部组件都需要根据size大小变化
-    <ThemeContext.Provider value={newTheme}>
+    <ConfigProvider size={size}>
       <InputGroupRoot {...others} className={classes} styleProps={{ size }}>
         {children}
       </InputGroupRoot>
-    </ThemeContext.Provider>
+    </ConfigProvider>
   );
 };
 

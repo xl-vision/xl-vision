@@ -3,7 +3,7 @@ import Group from './InputGroup';
 import Password from './Password';
 
 export { default as Input } from './Input';
-export * from './Input';
+export type { InputProps } from './Input';
 
 export * from './Password';
 export { default as Password } from './Password';

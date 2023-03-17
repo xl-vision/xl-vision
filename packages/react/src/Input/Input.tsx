@@ -62,7 +62,7 @@ export type InputProps = Omit<
 
 const displayName = 'Input';
 
-const InputRoot = styled('span', {
+export const InputRoot = styled('span', {
   name: displayName,
   slot: 'Root',
 })<{ size: ComponentSize }>(({ theme, styleProps }) => {
@@ -211,26 +211,42 @@ const InputPrefix = styled('span', {
 const InputSuffix = styled(InputPrefix, {
   name: displayName,
   slot: 'Suffix',
-})(({ theme }) => {
-  const { clsPrefix, color, transition } = theme;
+})(() => {
   return {
     marginRight: 0,
     marginLeft: 4,
-    [`.${clsPrefix}-input__suffix--has-suffix`]: {
+  };
+});
+
+const InputCount = styled('span', {
+  name: displayName,
+  slot: 'SuffixCount',
+})<{ hasSuffix: boolean }>(({ theme, styleProps }) => {
+  const { color } = theme;
+  const { hasSuffix } = styleProps;
+
+  return {
+    display: 'inline-flex',
+    lineHeight: 1,
+    alignItems: 'center',
+    color: color.text.hint,
+    ...(hasSuffix && {
       marginRight: 4,
-    },
-    [`.${clsPrefix}-input__suffix-count, .${clsPrefix}-input__suffix-clear`]: {
-      display: 'inline-flex',
-      lineHeight: 1,
-      alignItems: 'center',
-      color: color.text.hint,
-    },
-    [`.${clsPrefix}-input__suffix-clear`]: {
-      cursor: 'pointer',
-      transition: transition.standard('color'),
-      '&:hover': {
-        color: color.text.secondary,
-      },
+    }),
+  };
+});
+
+const InputClear = styled(InputCount, {
+  name: displayName,
+  slot: 'SuffixClear',
+})(({ theme }) => {
+  const { color, transition } = theme;
+
+  return {
+    cursor: 'pointer',
+    transition: transition.standard('color'),
+    '&:hover': {
+      color: color.text.secondary,
     },
   };
 });
@@ -376,7 +392,14 @@ const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
       [`${rootClassName}__suffix--has-suffix`]: typeof suffix !== 'undefined',
     });
 
-    showCountNode = <span className={countClasses}>{msg}</span>;
+    showCountNode = (
+      <InputCount
+        className={countClasses}
+        styleProps={{ hasSuffix: typeof suffix !== 'undefined' }}
+      >
+        {msg}
+      </InputCount>
+    );
   }
 
   let allowClearNode: ReactNode;
@@ -388,9 +411,15 @@ const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
 
     allowClearNode = (
       // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-      <span className={clearClasses} role='button' tabIndex={-1} onClick={handleReset}>
+      <InputClear
+        className={clearClasses}
+        role='button'
+        styleProps={{ hasSuffix: !!showCountNode }}
+        tabIndex={-1}
+        onClick={handleReset}
+      >
         <CloseCircleFilled />
-      </span>
+      </InputClear>
     );
   }
 

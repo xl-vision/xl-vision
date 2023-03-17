@@ -10,7 +10,7 @@ import {
   cloneElement,
   useMemo,
 } from 'react';
-import Avatar, { AvatarRoot, AvatarProps, AvatarShape, AvatarSize } from './Avatar';
+import Avatar, { AvatarProps, AvatarShape, AvatarSize } from './Avatar';
 import AvatarContext, { AvatarContextProps } from './AvatarContext';
 import { useConfig } from '../ConfigProvider';
 import Popover from '../Popover';
@@ -33,12 +33,12 @@ const displayName = 'AvatarGroup';
 const AvatarGroupRoot = styled('div', {
   name: displayName,
   slot: 'Root',
-})<{ size: ComponentSize }>(({ styleProps, theme }) => {
+})<{ size: ComponentSize; clsPrefix: string }>(({ styleProps, theme }) => {
   const { size } = styleProps;
   const { color, styleSize } = theme;
 
   return `
-    ${AvatarRoot} {
+     {
       border: ${styleSize[size].border}px solid ${color.background.paper};
       &:not(:first-child) {
         margin-left: -8px;

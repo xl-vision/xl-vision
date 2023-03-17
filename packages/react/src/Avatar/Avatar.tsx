@@ -40,7 +40,7 @@ export type AvatarProps = HTMLAttributes<HTMLSpanElement> & {
 
 const displayName = 'Avatar';
 
-export const AvatarRoot = styled('span', {
+const AvatarRoot = styled('span', {
   name: displayName,
   slot: 'Root',
 })<{
