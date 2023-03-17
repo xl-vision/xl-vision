@@ -149,6 +149,7 @@ const styled = <
     (DefaultComponent as StyleComponent)[StyleComponentKey] = true;
 
     if (!isProduction) {
+      InnerDefaultComponent.displayName = `Inner${displayName}`;
       DefaultComponent.displayName = displayName;
     }
 

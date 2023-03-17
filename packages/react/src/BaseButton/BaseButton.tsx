@@ -14,9 +14,9 @@ import {
   useEffect,
   useRef,
 } from 'react';
+import { useConfig } from '../ConfigProvider';
 import Ripple, { RippleRef } from '../Ripple';
 import { styled } from '../styles';
-import { useTheme } from '../ThemeProvider';
 
 export type BaseButtonCommonProps =
   | ButtonHTMLAttributes<HTMLButtonElement>
@@ -38,9 +38,10 @@ export type BaseButtonStyleProps = {
 const BaseButtonRoot = styled('button', {
   name: displayName,
   slot: 'Root',
-})<BaseButtonStyleProps>(({ styleProps, theme }) => {
+})<BaseButtonStyleProps>(({ styleProps, theme, clsPrefix }) => {
   const { disabled, loading } = styleProps;
-  const { clsPrefix, color } = theme;
+  const { color } = theme;
+
   return {
     position: 'relative',
     display: 'inline-block',
@@ -127,7 +128,7 @@ const BaseButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseButtonP
       ...others
     } = props;
 
-    const { clsPrefix } = useTheme();
+    const { clsPrefix } = useConfig();
 
     const Component = (others as unknown as HTMLAnchorElement).href ? 'a' : 'button';
 
@@ -195,7 +196,6 @@ const BaseButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseButtonP
     const rootClassName = `${clsPrefix}-base-button`;
 
     const rootClasses = clsx(
-      rootClassName,
       {
         [`${rootClassName}--loading`]: loading,
         [`${rootClassName}--disabled`]: disabled,
@@ -225,7 +225,7 @@ const BaseButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseButtonP
         onTouchMove={handleTouchMove}
         onTouchStart={handleTouchStart}
       >
-        <BaseButtonInner className={`${rootClassName}__inner`}>{children}</BaseButtonInner>
+        <BaseButtonInner>{children}</BaseButtonInner>
         <Ripple
           className={`${rootClassName}__ripple`}
           exitAfterEnter={true}

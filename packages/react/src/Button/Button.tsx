@@ -14,8 +14,9 @@ import {
 } from 'react';
 import BaseButton, { BaseButtonProps } from '../BaseButton';
 import CollapseTransition from '../CollapseTransition';
+import { useConfig } from '../ConfigProvider';
 import { styled } from '../styles';
-import { ComponentSize, useTheme } from '../ThemeProvider';
+import { ComponentSize } from '../ThemeProvider';
 import { ThemeColors } from '../ThemeProvider/color/themeColor';
 import { alpha } from '../utils/color';
 
@@ -229,12 +230,12 @@ const DefaultLoadingIcon = styled(LoadingOutlined, {
 `;
 
 const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((props, ref) => {
-  const { clsPrefix, componentSize } = useTheme();
+  const { clsPrefix, size: configSize } = useConfig();
 
   const {
     color = 'default',
     disableElevation = false,
-    size = componentSize,
+    size = configSize,
     disabled,
     loading,
     prefixIcon,
@@ -266,7 +267,6 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((p
   const rootClassName = `${clsPrefix}-button`;
 
   const rootClasses = clsx(
-    rootClassName,
     `${rootClassName}--size-${size}`,
     `${rootClassName}--color-${color}`,
     `${rootClassName}--variant-${variant}`,
@@ -287,8 +287,8 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((p
 
   if (LoadingIcon) {
     prefix = (
-      <ButtonPrefix className={prefixClassName} styleProps={{ icon }}>
-        <LoadingIcon className={`${prefixClassName}--loading`} />
+      <ButtonPrefix styleProps={{ icon }}>
+        <LoadingIcon />
       </ButtonPrefix>
     );
     if (!prefixIcon) {
@@ -305,20 +305,10 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((p
       );
     }
   } else if (prefixIcon) {
-    prefix = (
-      <ButtonPrefix className={prefixClassName} styleProps={{ icon }}>
-        {prefixIcon}
-      </ButtonPrefix>
-    );
+    prefix = <ButtonPrefix styleProps={{ icon }}>{prefixIcon}</ButtonPrefix>;
   }
 
-  const suffixClassName = `${rootClassName}__suffix`;
-
-  const suffix = suffixIcon && (
-    <ButtonSuffix className={suffixClassName} styleProps={{ icon }}>
-      {suffixIcon}
-    </ButtonSuffix>
-  );
+  const suffix = suffixIcon && <ButtonSuffix styleProps={{ icon }}>{suffixIcon}</ButtonSuffix>;
 
   return (
     <ButtonRoot
