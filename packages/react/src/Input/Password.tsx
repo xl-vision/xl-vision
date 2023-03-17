@@ -1,9 +1,11 @@
 import { useConstantFn } from '@xl-vision/hooks';
 import { EyeInvisibleOutlined, EyeOutlined } from '@xl-vision/icons';
 import { isProduction } from '@xl-vision/utils';
+import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { ReactNode, forwardRef, useState, MouseEvent } from 'react';
 import Input, { InputProps } from './Input';
+import { useConfig } from '../ConfigProvider';
 import { styled } from '../styles';
 
 export type PasswordProps = Omit<InputProps, 'type' | 'suffix'> & {
@@ -14,7 +16,7 @@ const displayName = 'Password';
 
 const PasswordIcon = styled('span', {
   name: displayName,
-  slot: 'PasswordIcon',
+  slot: 'Icon',
 })(({ theme }) => {
   const { color, transition } = theme;
 
@@ -35,7 +37,8 @@ const defaultRenderIcon = (visible: boolean) =>
   visible ? <EyeInvisibleOutlined /> : <EyeOutlined />;
 
 const Password = forwardRef<HTMLSpanElement, PasswordProps>((props, ref) => {
-  const { renderIcon = defaultRenderIcon, ...others } = props;
+  const { clsPrefix } = useConfig();
+  const { renderIcon = defaultRenderIcon, className, ...others } = props;
 
   const [visible, setVisible] = useState(false);
 
@@ -61,7 +64,17 @@ const Password = forwardRef<HTMLSpanElement, PasswordProps>((props, ref) => {
     </PasswordIcon>
   );
 
-  return <Input {...others} ref={ref} suffix={suffix} type={type} />;
+  const rootClassName = `${clsPrefix}-password`;
+
+  return (
+    <Input
+      {...others}
+      className={clsx(rootClassName, className)}
+      ref={ref}
+      suffix={suffix}
+      type={type}
+    />
+  );
 });
 
 if (!isProduction) {

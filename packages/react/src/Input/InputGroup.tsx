@@ -1,9 +1,10 @@
 import { isProduction } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { HTMLAttributes, FC, useMemo } from 'react';
+import { HTMLAttributes, FC } from 'react';
+import ConfigProvider, { useConfig } from '../ConfigProvider';
 import { styled } from '../styles';
-import { ComponentSize, useTheme, ThemeContext } from '../ThemeProvider';
+import { ComponentSize } from '../ThemeProvider';
 
 export type InputGroupProps = HTMLAttributes<HTMLDivElement> & {
   size?: ComponentSize;
@@ -14,8 +15,8 @@ const displayName = 'InputGroup';
 const InputGroupRoot = styled('div', {
   name: displayName,
   slot: 'Root',
-})<{ size: ComponentSize }>(({ theme, styleProps }) => {
-  const { clsPrefix, styleSize } = theme;
+})<{ size: ComponentSize }>(({ theme, styleProps, clsPrefix }) => {
+  const { styleSize } = theme;
 
   const { size } = styleProps;
 
@@ -64,30 +65,21 @@ const InputGroupRoot = styled('div', {
 });
 
 const InputGroup: FC<InputGroupProps> = (props) => {
-  const theme = useTheme();
+  const { clsPrefix, size: configSize } = useConfig();
 
-  const { clsPrefix, componentSize } = theme;
-
-  const { className, size = componentSize, children, ...others } = props;
+  const { className, size = configSize, children, ...others } = props;
 
   const rootClassName = `${clsPrefix}-input-group`;
 
-  const classes = clsx(rootClassName, `${rootClassName}--size-${size}`, className);
-
-  const newTheme = useMemo(() => {
-    return {
-      ...theme,
-      componentSize: size,
-    };
-  }, [theme, size]);
+  const classes = clsx(`${rootClassName}--size-${size}`, className);
 
   return (
     // 内部组件都需要根据size大小变化
-    <ThemeContext.Provider value={newTheme}>
+    <ConfigProvider size={size}>
       <InputGroupRoot {...others} className={classes} styleProps={{ size }}>
         {children}
       </InputGroupRoot>
-    </ThemeContext.Provider>
+    </ConfigProvider>
   );
 };
 

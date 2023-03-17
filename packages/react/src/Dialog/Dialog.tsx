@@ -1,13 +1,11 @@
 import { useConstantFn, useValueChange } from '@xl-vision/hooks';
 import { isProduction, noop } from '@xl-vision/utils';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { ReactNode, forwardRef, useState, useContext, useEffect } from 'react';
+import { ReactNode, forwardRef, useState, useEffect } from 'react';
 import Button, { ButtonProps } from '../Button';
 import { useConfig } from '../ConfigProvider';
 import Modal, { ModalProps } from '../Modal';
 import { styled } from '../styles';
-import ThemeContext from '../ThemeProvider/ThemeContext';
 
 export type DialogButtonProps = Omit<ButtonProps, 'children' | 'onClick'>;
 
@@ -46,8 +44,8 @@ const DialogRoot = styled(Modal, {
 const DialogHeader = styled('div', {
   name: displayName,
   slot: 'Header',
-})(({ theme }) => {
-  const { clsPrefix, typography, color } = theme;
+})(({ theme, clsPrefix }) => {
+  const { typography, color } = theme;
   return {
     color: color.text.primary,
     padding: '16px 24px',
@@ -105,7 +103,6 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
     title,
     footer,
     prompt,
-    className,
     open: openProp,
     defaultOpen = false,
     onOpenChange,
@@ -122,7 +119,7 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [cancelLoading, setCancelLoading] = useState(false);
 
-  const { clsPrefix } = useContext(ThemeContext);
+  const { clsPrefix } = useConfig();
 
   const [dialogTitleId, setDialogTitleId] = useState('');
 
@@ -202,21 +199,14 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
       aria-labelledby={dialogTitleId}
       ref={ref}
       {...others}
-      className={clsx(rootClassName, className)}
       open={open}
       onOpenChange={handleOpenChange}
     >
-      <DialogHeader className={`${rootClassName}__header`} id={dialogTitleId}>
+      <DialogHeader id={dialogTitleId}>
         {typeof title === 'string' ? <h6 className={`${rootClassName}__title`}>{title}</h6> : title}
       </DialogHeader>
-      {children && (
-        <DialogContent className={`${rootClassName}__content`}>{children}</DialogContent>
-      )}
-      {footer !== null && (
-        <DialogFooter className={`${rootClassName}__footer`}>
-          {footer || defaultFooterNode}
-        </DialogFooter>
-      )}
+      {children && <DialogContent>{children}</DialogContent>}
+      {footer !== null && <DialogFooter>{footer || defaultFooterNode}</DialogFooter>}
     </DialogRoot>
   );
 });

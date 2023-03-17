@@ -15,9 +15,10 @@ import {
   FocusEvent,
   MouseEvent,
 } from 'react';
+import { useConfig } from '../ConfigProvider';
 import useInput from '../hooks/useInput';
 import { styled } from '../styles';
-import { ComponentSize, useTheme } from '../ThemeProvider';
+import { ComponentSize } from '../ThemeProvider';
 import { alpha } from '../utils/color';
 
 export type InputProps = Omit<
@@ -210,8 +211,8 @@ const InputPrefix = styled('span', {
 const InputSuffix = styled(InputPrefix, {
   name: displayName,
   slot: 'Suffix',
-})(({ theme }) => {
-  const { clsPrefix, color, transition } = theme;
+})(({ theme, clsPrefix }) => {
+  const { color, transition } = theme;
   return {
     marginRight: 0,
     marginLeft: 4,
@@ -235,12 +236,12 @@ const InputSuffix = styled(InputPrefix, {
 });
 
 const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
-  const { clsPrefix, componentSize } = useTheme();
+  const { clsPrefix, size: configSize } = useConfig();
 
   const {
     className,
     style,
-    size = componentSize,
+    size = configSize,
     prefix,
     suffix,
     addonBefore,
@@ -353,7 +354,6 @@ const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
   const rootClassName = `${clsPrefix}-input`;
 
   const rootClasses = clsx(
-    rootClassName,
     `${rootClassName}--size-${size}`,
     {
       [`${rootClassName}--focused`]: focused,
@@ -396,23 +396,14 @@ const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
   return (
     <InputRoot className={rootClasses} ref={forkRef} style={style} styleProps={{ size }}>
       {typeof addonBefore !== 'undefined' && (
-        <InputAddonBefore className={`${rootClassName}__addon-before`} styleProps={{ size }}>
-          {addonBefore}
-        </InputAddonBefore>
+        <InputAddonBefore styleProps={{ size }}>{addonBefore}</InputAddonBefore>
       )}
-      <InputWrapper
-        className={`${rootClassName}__wrapper`}
-        styleProps={{ focused, size, disabled, readOnly }}
-        onMouseUp={handleMouseUp}
-      >
-        {typeof prefix !== 'undefined' && (
-          <InputPrefix className={`${rootClassName}__prefix`}>{prefix}</InputPrefix>
-        )}
+      <InputWrapper styleProps={{ focused, size, disabled, readOnly }} onMouseUp={handleMouseUp}>
+        {typeof prefix !== 'undefined' && <InputPrefix>{prefix}</InputPrefix>}
         <InputInner
           aria-disabled={disabled}
           aria-readonly={readOnly}
           {...others}
-          className={`${rootClassName}__inner`}
           disabled={disabled}
           readOnly={readOnly}
           ref={inputRef}
@@ -423,7 +414,7 @@ const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
           onFocus={handleFocus}
         />
         {(allowClearNode || showCountNode || typeof suffix !== 'undefined') && (
-          <InputSuffix className={`${rootClassName}__suffix`}>
+          <InputSuffix>
             {allowClearNode}
             {showCountNode}
             {suffix}
@@ -431,9 +422,7 @@ const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
         )}
       </InputWrapper>
       {typeof addonAfter !== 'undefined' && (
-        <InputAddonAfter className={`${rootClassName}__addon-after`} styleProps={{ size }}>
-          {addonAfter}
-        </InputAddonAfter>
+        <InputAddonAfter styleProps={{ size }}>{addonAfter}</InputAddonAfter>
       )}
     </InputRoot>
   );

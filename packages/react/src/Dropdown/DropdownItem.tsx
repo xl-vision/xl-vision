@@ -8,6 +8,7 @@ import DropdownContext from './DropdownContext';
 import BaseButton from '../BaseButton';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
+import { useConfig } from '../ConfigProvider';
 
 export interface DropdownItemProps extends HTMLAttributes<HTMLLIElement> {
   children: ReactNode;
@@ -64,7 +65,7 @@ const DropdownItemButton = styled(BaseButton, {
 const DropdownItem = forwardRef<HTMLLIElement, DropdownItemProps>((props, ref) => {
   const { children, onClick, disabled, className, ...others } = props;
 
-  const { clsPrefix } = useTheme();
+  const { clsPrefix } = useConfig();
 
   const { setOpen } = useContext(DropdownContext);
 
@@ -79,7 +80,6 @@ const DropdownItem = forwardRef<HTMLLIElement, DropdownItemProps>((props, ref) =
   const rootClassName = `${clsPrefix}-dropdown-item`;
 
   const rootClasses = clsx(
-    rootClassName,
     {
       [`${rootClassName}--disabled`]: disabled,
     },
@@ -93,7 +93,6 @@ const DropdownItem = forwardRef<HTMLLIElement, DropdownItemProps>((props, ref) =
         // see https://github.com/facebook/react/issues/10109
         // disabled={disabled}
         aria-disabled={disabled}
-        className={`${rootClassName}__button`}
         disableRipple={disabled}
         styleProps={{ disabled }}
       >
