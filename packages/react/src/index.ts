@@ -97,8 +97,8 @@ export type {
 export { default as Input } from './Input';
 export type { InputProps, PasswordProps, InputGroupProps } from './Input';
 
-export { default as TextArea } from './TextArea';
-export type { TextAreaProps } from './TextArea';
+export { default as Textarea } from './Textarea';
+export type { TextareaProps } from './Textarea';
 
 export { default as Affix } from './Affix';
 export type { AffixProps, AffixIntance } from './Affix';

@@ -4,7 +4,9 @@ import {
   FunctionInterpolation,
   Interpolation,
 } from '@xl-vision/styled-engine';
+import { forwardRef } from 'react';
 import applyTheme from './applyTheme';
+import { useConfig } from '../ConfigProvider';
 import { Theme } from '../ThemeProvider/createTheme';
 
 const createGlobalStyles = <
@@ -18,6 +20,17 @@ const createGlobalStyles = <
 ) => {
   const [newFirst, ...newStyles] = [first, ...styles].map(applyTheme);
 
-  return innerCreateGlobalStyles<P & SPT>(newFirst, ...newStyles);
+  const InnerComponent = innerCreateGlobalStyles<P & SPT>(newFirst, ...newStyles);
+
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  // eslint-disable-next-line react/display-name
+  const DefaultComponent: typeof InnerComponent = forwardRef((props, ref) => {
+    const { clsPrefix } = useConfig();
+
+    return <InnerComponent {...props} clsPrefix={clsPrefix} ref={ref} />;
+  });
+
+  return DefaultComponent;
 };
 export default createGlobalStyles;

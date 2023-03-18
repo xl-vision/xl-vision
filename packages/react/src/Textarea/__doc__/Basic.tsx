@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { TextArea } from '@xl-vision/react';
+import { Textarea } from '@xl-vision/react';
 
 const Demo = () => {
   const [value, handleValue] = useState<string>();
@@ -10,7 +10,7 @@ const Demo = () => {
 
   return (
     <div>
-      <TextArea placeholder='Basic usage' value={value} onChange={handleValue} />
+      <Textarea placeholder='Basic usage' value={value} onChange={handleValue} />
     </div>
   );
 };

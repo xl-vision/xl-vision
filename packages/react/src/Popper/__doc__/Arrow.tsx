@@ -30,7 +30,7 @@ const PopperRoot = styled(Popper)(({ theme }) => {
     },
     '.slide': {
       '&-enter-active, &-exit-active': {
-        transition: theme.transition.standard('transform'),
+        transition: theme.transition.enter('transform'),
         '&[data-placement^="left"]': {
           transform: 'scaleX(1)',
           transformOrigin: '100% 0',

@@ -16,13 +16,14 @@ import {
   CSSProperties,
 } from 'react';
 import calculateNodeHeight from './calculateNodeHeight';
-import TextAreaSuffix from './TextAreaSuffix';
+import TextareaSuffix from './TextareaSuffix';
+import { useConfig } from '../ConfigProvider';
 import useInput from '../hooks/useInput';
 import { styled } from '../styles';
-import { ComponentSize, useTheme } from '../ThemeProvider';
+import { ComponentSize } from '../ThemeProvider';
 import { alpha } from '../utils/color';
 
-export type TextAreaProps = Omit<
+export type TextareaProps = Omit<
   TextareaHTMLAttributes<HTMLTextAreaElement>,
   'onChange' | 'value' | 'defaultValue'
 > & {
@@ -35,14 +36,14 @@ export type TextAreaProps = Omit<
   autoHeight?: boolean | { minRows?: number; maxRows?: number };
 };
 
-const displayName = 'TextArea';
+const displayName = 'Textarea';
 
 const TextAreaRoot = styled('span', {
   name: displayName,
   slot: 'Root',
 })<{ focused: boolean; size: ComponentSize; disabled?: boolean; readOnly?: boolean }>(
-  ({ theme, styleProps }) => {
-    const { color, styleSize, typography, transition, clsPrefix } = theme;
+  ({ theme, styleProps, clsPrefix }) => {
+    const { color, styleSize, typography, transition } = theme;
 
     const { size, focused, disabled, readOnly } = styleProps;
 
@@ -122,7 +123,7 @@ const TextAreaRoot = styled('span', {
   },
 );
 
-const TextAreaInner = styled('textarea', {
+const TextareaInner = styled('textarea', {
   name: displayName,
   slot: 'Inner',
 })<{ autoHeight?: boolean }>(({ theme, styleProps }) => {
@@ -156,8 +157,8 @@ export enum ResizeStatus {
   RESIZED,
 }
 
-const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => {
-  const { clsPrefix, componentSize } = useTheme();
+const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, ref) => {
+  const { clsPrefix, size: configSize } = useConfig();
 
   const {
     defaultValue = '',
@@ -168,7 +169,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => 
     allowClear,
     disabled,
     readOnly,
-    size = componentSize,
+    size = configSize,
     className,
     onFocus,
     onBlur,
@@ -271,7 +272,6 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => 
   const rootClassName = `${clsPrefix}-textarea`;
 
   const rootClasses = clsx(
-    rootClassName,
     `${rootClassName}--size-${size}`,
     {
       [`${rootClassName}--focused`]: focused,
@@ -301,10 +301,10 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => 
   );
 
   const suffixNode = (showClearNode || showCountNode) && (
-    <TextAreaSuffix value={actualValue}>
+    <TextareaSuffix value={actualValue}>
       {showClearNode}
       {showCountNode}
-    </TextAreaSuffix>
+    </TextareaSuffix>
   );
 
   return (
@@ -314,12 +314,10 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => 
       style={style}
       styleProps={{ focused, size, disabled, readOnly }}
     >
-      <TextAreaInner
+      <TextareaInner
         aria-disabled={disabled}
         aria-readonly={readOnly}
         {...others}
-        // 取消autoHeight时，立刻移除样式
-        className={`${rootClassName}__inner`}
         disabled={disabled}
         readOnly={readOnly}
         ref={textareaRef}
@@ -336,8 +334,8 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => 
 });
 
 if (!isProduction) {
-  TextArea.displayName = displayName;
-  TextArea.propTypes = {
+  Textarea.displayName = displayName;
+  Textarea.propTypes = {
     allowClear: PropTypes.bool,
     // TODO [2023-05-01]: types fix
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -364,4 +362,4 @@ if (!isProduction) {
   };
 }
 
-export default TextArea;
+export default Textarea;

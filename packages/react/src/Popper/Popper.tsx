@@ -42,8 +42,8 @@ import {
   useRef,
   ReactNode,
 } from 'react';
+import { useConfig } from '../ConfigProvider';
 import Portal, { PortalContainerType } from '../Portal';
-import { useTheme } from '../ThemeProvider';
 import Transition from '../Transition';
 import { increaseZindex } from '../utils/zIndexManger';
 
@@ -119,7 +119,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     ...others
   } = props;
 
-  const { clsPrefix } = useTheme();
+  const { clsPrefix } = useConfig();
 
   const triggers = Array.isArray(trigger) ? trigger : trigger ? [trigger] : [];
 

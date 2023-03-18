@@ -1,12 +1,11 @@
 import { useConstantFn, useValueChange } from '@xl-vision/hooks';
 import { VerticalAlignTopOutlined } from '@xl-vision/icons';
 import { isProduction, isServer, off, on } from '@xl-vision/utils';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { HTMLAttributes, forwardRef, useState, useEffect, CSSProperties, MouseEvent } from 'react';
+import { useConfig } from '../ConfigProvider';
 import Portal from '../Portal';
 import { styled } from '../styles';
-import { useTheme } from '../ThemeProvider';
 import Transition from '../Transition';
 import { alpha } from '../utils/color';
 import { throttleByAnimationFrame } from '../utils/perf';
@@ -24,11 +23,11 @@ export type BackTopProps = Omit<HTMLAttributes<HTMLDivElement>, 'target' | 'onCh
 
 const displayName = 'BackTop';
 
-const Root = styled('div', {
+const BackTopRoot = styled('div', {
   name: displayName,
   slot: 'Root',
-})(({ theme }) => {
-  const { clsPrefix, color, transition } = theme;
+})(({ theme, clsPrefix }) => {
+  const { color, transition } = theme;
 
   const bgColor = alpha(color.text.primary, 0.4);
 
@@ -64,7 +63,7 @@ const getDefaultTarget = () => window;
 const getDefaultContainer = () => document.body;
 
 const BackTop = forwardRef<HTMLDivElement, BackTopProps>((props, ref) => {
-  const { clsPrefix } = useTheme();
+  const { clsPrefix } = useConfig();
 
   const {
     target = getDefaultTarget,
@@ -74,7 +73,6 @@ const BackTop = forwardRef<HTMLDivElement, BackTopProps>((props, ref) => {
     show: showProp,
     onChange,
     visibilityHeight = 300,
-    className,
     children,
     style,
     onClick,
@@ -124,8 +122,6 @@ const BackTop = forwardRef<HTMLDivElement, BackTopProps>((props, ref) => {
 
   const rootClassName = `${clsPrefix}-back-top`;
 
-  const classes = clsx(rootClassName, className);
-
   const defaultElement = (
     <div className={`${rootClassName}__inner`}>
       <VerticalAlignTopOutlined />
@@ -144,15 +140,9 @@ const BackTop = forwardRef<HTMLDivElement, BackTopProps>((props, ref) => {
       transitionClassName={rootClassName}
       unmountOnExit={true}
     >
-      <Root
-        {...others}
-        className={classes}
-        ref={ref}
-        style={{ ...style, ...fixedStyle }}
-        onClick={handleClick}
-      >
+      <BackTopRoot {...others} ref={ref} style={{ ...style, ...fixedStyle }} onClick={handleClick}>
         {children || defaultElement}
-      </Root>
+      </BackTopRoot>
     </Transition>
   );
 

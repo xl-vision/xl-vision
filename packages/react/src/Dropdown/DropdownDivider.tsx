@@ -1,9 +1,7 @@
 import { isProduction } from '@xl-vision/utils';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { HTMLAttributes, forwardRef } from 'react';
 import { styled } from '../styles';
-import { useTheme } from '../ThemeProvider';
 
 export type DropdownDividerProps = HTMLAttributes<HTMLDivElement>;
 
@@ -22,15 +20,9 @@ const DropdownDividerRoot = styled('div', {
 });
 
 const DropdownDivider = forwardRef<HTMLDivElement, DropdownDividerProps>((props, ref) => {
-  const { className, ...others } = props;
+  const { ...others } = props;
 
-  const { clsPrefix } = useTheme();
-
-  const rootClassName = `${clsPrefix}-dropdown-divider`;
-
-  const rootClasses = clsx(rootClassName, className);
-
-  return <DropdownDividerRoot {...others} className={rootClasses} ref={ref} />;
+  return <DropdownDividerRoot {...others} ref={ref} />;
 });
 
 if (!isProduction) {

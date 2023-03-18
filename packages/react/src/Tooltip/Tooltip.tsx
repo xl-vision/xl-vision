@@ -2,6 +2,7 @@ import { isProduction, isServer } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { Children, forwardRef, ReactElement, ReactNode } from 'react';
+import { useConfig } from '../ConfigProvider';
 import Popper, { PopperChildrenProps, PopperProps } from '../Popper';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
@@ -20,11 +21,11 @@ const displayName = 'Tooltip';
 const TooltipRoot = styled(Popper, {
   name: displayName,
   slot: 'Root',
-})(({ theme }) => {
-  const { clsPrefix, transition } = theme;
+})(({ clsPrefix, theme }) => {
+  const { transition } = theme;
 
   return {
-    [`.${clsPrefix}-tooltip`]: {
+    [`.${clsPrefix}-tooltip__inner`]: {
       ...transition.fadeIn('&'),
       ...transition.fadeOut('&'),
     },
@@ -77,12 +78,12 @@ const TooltipArrow = styled('div', {
 });
 
 const Tooltip = forwardRef<HTMLDivElement, TooltipProps>((props, ref) => {
-  const { clsPrefix, color } = useTheme();
+  const { color } = useTheme();
+  const { clsPrefix } = useConfig();
 
   const {
     content,
     popupContainer,
-    className,
     transitionClassName,
     bgColor,
     maxWidth,
@@ -103,8 +104,8 @@ const Tooltip = forwardRef<HTMLDivElement, TooltipProps>((props, ref) => {
 
   const popup = (
     <TooltipPopup
-      className={clsx(`${rootClassName}__popup`, {
-        [`${rootClassName}--width`]: maxWidth !== undefined,
+      className={clsx({
+        [`${rootClassName}}__popup--width`]: maxWidth !== undefined,
       })}
       style={{ maxWidth, ...colorStyle }}
       styleProps={{
@@ -115,21 +116,18 @@ const Tooltip = forwardRef<HTMLDivElement, TooltipProps>((props, ref) => {
     </TooltipPopup>
   );
 
-  const arrow = <TooltipArrow className={`${rootClassName}__arrow`} style={{ ...colorStyle }} />;
-
-  const rootClasses = clsx(rootClassName, className);
+  const arrow = <TooltipArrow style={{ ...colorStyle }} />;
 
   return (
     <TooltipRoot
       role='tooltip'
       {...others}
       arrow={!hideArrow && arrow}
-      className={rootClasses}
       offset={offset}
       popup={popup}
       popupContainer={popupContainer}
       ref={ref}
-      transitionClassName={transitionClassName || rootClassName}
+      transitionClassName={transitionClassName || `${rootClassName}__inner`}
     >
       {child}
     </TooltipRoot>

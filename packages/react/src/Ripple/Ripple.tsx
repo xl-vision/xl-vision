@@ -1,6 +1,5 @@
 import { useConstantFn } from '@xl-vision/hooks';
 import { getBoundingClientRect, isProduction } from '@xl-vision/utils';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
   HTMLAttributes,
@@ -16,7 +15,6 @@ import {
   TouchEvent,
 } from 'react';
 import { styled } from '../styles';
-import { useTheme } from '../ThemeProvider';
 import TransitionGroup, { TransitionGroupClassName } from '../TransitionGroup';
 
 export interface RippleProps extends HTMLAttributes<HTMLDivElement> {
@@ -62,9 +60,7 @@ const RippleInner = styled('div', {
 const DELAY_RIPPLE = 80;
 
 const Ripple = forwardRef<RippleRef, RippleProps>((props, ref) => {
-  const { transitionClassName, exitAfterEnter, className, ...others } = props;
-
-  const { clsPrefix } = useTheme();
+  const { transitionClassName, exitAfterEnter, ...others } = props;
 
   const [ripples, setRipples] = useState<Array<ReactElement>>([]);
 
@@ -92,23 +88,18 @@ const Ripple = forwardRef<RippleRef, RippleProps>((props, ref) => {
     stop,
   }));
 
-  const commit = useCallback(
-    (x: number, y: number, size: number) => {
-      const key = keyRef.current;
-      const style: CSSProperties = {
-        width: size,
-        height: size,
-        top: -size / 2 + y,
-        left: -size / 2 + x,
-      };
-      const ripple = (
-        <RippleInner className={clsx(`${clsPrefix}-ripple__inner`)} key={key} style={style} />
-      );
-      setRipples((prev) => [...prev, ripple]);
-      keyRef.current++;
-    },
-    [clsPrefix],
-  );
+  const commit = useCallback((x: number, y: number, size: number) => {
+    const key = keyRef.current;
+    const style: CSSProperties = {
+      width: size,
+      height: size,
+      top: -size / 2 + y,
+      left: -size / 2 + x,
+    };
+    const ripple = <RippleInner key={key} style={style} />;
+    setRipples((prev) => [...prev, ripple]);
+    keyRef.current++;
+  }, []);
 
   const start = useCallback(
     (e: SyntheticEvent | object = {}) => {
@@ -209,12 +200,8 @@ const Ripple = forwardRef<RippleRef, RippleProps>((props, ref) => {
     }
   });
 
-  const rootClassName = `${clsPrefix}-ripple`;
-
-  const rootClasses = clsx(rootClassName, className);
-
   return (
-    <RipperRoot {...others} className={rootClasses} ref={containerRef}>
+    <RipperRoot {...others} ref={containerRef}>
       <TransitionGroup transitionClassName={transitionClassName} onEntered={handleEnter}>
         {ripples}
       </TransitionGroup>

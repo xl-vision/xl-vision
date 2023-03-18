@@ -1,7 +1,7 @@
 import { ThemeContext as StyledThemeContext } from '@xl-vision/styled-engine';
 import { isProduction, deepMerge } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
-import { ReactNode, FC, useContext, useMemo, createContext } from 'react';
+import { ReactNode, FC, useMemo, createContext, useContext } from 'react';
 import createTheme, { BaseTheme } from './createTheme';
 import ThemeContext from './ThemeContext';
 

@@ -7,9 +7,9 @@ import PropTypes from 'prop-types';
 import { ReactNode, forwardRef, useContext, useCallback, useEffect } from 'react';
 import DropdownContext from './DropdownContext';
 import BaseButton from '../BaseButton';
+import { useConfig } from '../ConfigProvider';
 import Popper, { PopperPlacement, PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
-import { useTheme } from '../ThemeProvider';
 
 export interface DropdownSubmenuProps
   extends Omit<
@@ -27,8 +27,8 @@ const displayName = 'DropdownSubmenu';
 const DropdownSubmenuRoot = styled(Popper, {
   name: displayName,
   slot: 'Root',
-})(({ theme }) => {
-  const { clsPrefix, transition } = theme;
+})(({ theme, clsPrefix }) => {
+  const { transition } = theme;
 
   return {
     [`.${clsPrefix}-dropdown-submenu`]: {
@@ -50,8 +50,8 @@ export type DropdownSubmenuItemButtonStyleProps = {
 const DropdownSubmenuItemButton = styled(BaseButton, {
   name: displayName,
   slot: 'Button',
-})<DropdownSubmenuItemButtonStyleProps>(({ theme, styleProps }) => {
-  const { color, transition, typography, clsPrefix } = theme;
+})<DropdownSubmenuItemButtonStyleProps>(({ theme, styleProps, clsPrefix }) => {
+  const { color, transition, typography } = theme;
 
   const { disabled } = styleProps;
 
@@ -130,7 +130,7 @@ const DropdownSubmenu = forwardRef<HTMLDivElement, DropdownSubmenuProps>((props,
 
   const [open, setOpen] = useValueChange(defaultOpen, openProp, onOpenChange);
 
-  const { clsPrefix } = useTheme();
+  const { clsPrefix } = useConfig();
   const { submenuCloseHandlers } = useContext(DropdownContext);
 
   const handleOpenChange = useConstantFn((value: boolean) => {
@@ -157,16 +157,13 @@ const DropdownSubmenu = forwardRef<HTMLDivElement, DropdownSubmenuProps>((props,
   const rootClassName = `${clsPrefix}-dropdown-submenu`;
 
   const rootClasses = clsx(
-    rootClassName,
     {
       [`${rootClassName}--disabled`]: disabled,
     },
     className,
   );
 
-  const popup = (
-    <DropdownSubmenuPopup className={`${rootClassName}__popup`}>{children}</DropdownSubmenuPopup>
-  );
+  const popup = <DropdownSubmenuPopup>{children}</DropdownSubmenuPopup>;
 
   return (
     <DropdownSubmenuRoot
@@ -178,7 +175,7 @@ const DropdownSubmenu = forwardRef<HTMLDivElement, DropdownSubmenuProps>((props,
       popup={popup}
       popupContainer={popupContainer}
       ref={ref}
-      transitionClassName={clsx(rootClassName, transitionClassName)}
+      transitionClassName={rootClassName || transitionClassName}
       trigger={trigger}
       onOpenChange={handleOpenChange}
     >
@@ -188,12 +185,11 @@ const DropdownSubmenu = forwardRef<HTMLDivElement, DropdownSubmenuProps>((props,
           // see https://github.com/facebook/react/issues/10109
           // disabled={disabled}
           aria-disabled={disabled}
-          className={`${rootClassName}__button`}
           disableRipple={disabled}
           styleProps={{ disabled }}
         >
           {title}
-          <DropdownSubmenuIcon className={`${rootClassName}__icon`} />
+          <DropdownSubmenuIcon />
         </DropdownSubmenuItemButton>
       </li>
     </DropdownSubmenuRoot>

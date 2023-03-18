@@ -1,12 +1,11 @@
 import { useConstantFn, useValueChange } from '@xl-vision/hooks';
 import { isProduction, isServer } from '@xl-vision/utils';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { ReactElement, ReactNode, forwardRef, useContext, useRef, useEffect, useMemo } from 'react';
+import { ReactElement, ReactNode, forwardRef, useRef, useEffect, useMemo } from 'react';
 import DropdownContext from './DropdownContext';
+import { useConfig } from '../ConfigProvider';
 import Popper, { PopperPlacement, PopperProps } from '../Popper';
 import { styled } from '../styles';
-import ThemeContext from '../ThemeProvider/ThemeContext';
 
 export interface DropdownProps extends Omit<PopperProps, 'popup' | 'arrow'> {
   children: ReactElement;
@@ -18,8 +17,8 @@ const displayName = 'Dropdown';
 const DropdownRoot = styled(Popper, {
   name: displayName,
   slot: 'Root',
-})(({ theme }) => {
-  const { clsPrefix, transition } = theme;
+})(({ theme, clsPrefix }) => {
+  const { transition } = theme;
 
   return {
     [`.${clsPrefix}-dropdown`]: {
@@ -58,11 +57,10 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
     defaultOpen = false,
     onOpenChange,
     popupContainer,
-    className,
     ...others
   } = props;
 
-  const { clsPrefix } = useContext(ThemeContext);
+  const { clsPrefix } = useConfig();
 
   const submenuCloseHandlersRef = useRef<Array<() => void>>([]);
 
@@ -83,8 +81,6 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
 
   const rootClassName = `${clsPrefix}-dropdown`;
 
-  const rootClasses = clsx(rootClassName, className);
-
   const memorizedValue = useMemo(() => {
     return {
       submenuCloseHandlers: submenuCloseHandlersRef.current,
@@ -93,7 +89,7 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
   }, [setOpenWrapper]);
 
   const popup = (
-    <DropdownPopup className={`${rootClassName}__popup`}>
+    <DropdownPopup>
       <DropdownContext.Provider value={memorizedValue}>{menus}</DropdownContext.Provider>
     </DropdownPopup>
   );
@@ -101,7 +97,6 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
   return (
     <DropdownRoot
       {...others}
-      className={rootClasses}
       offset={offset}
       open={open}
       placement={placement}

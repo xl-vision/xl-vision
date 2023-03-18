@@ -4,8 +4,8 @@ import { isProduction } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { ReactNode, FC, useState, useEffect } from 'react';
+import { useConfig } from '../../ConfigProvider';
 import { styled } from '../../styles';
-import { useTheme } from '../../ThemeProvider';
 import Dialog, { DialogProps } from '../Dialog';
 
 export interface InnerDedicatedDialogProps extends Omit<DialogProps, 'children'> {
@@ -18,8 +18,8 @@ const displayName = 'InnerDedicatedDialog';
 const InnerDedicatedDialogHeader = styled('h6', {
   name: displayName,
   slot: 'Header',
-})(({ theme }) => {
-  const { typography, clsPrefix } = theme;
+})(({ theme, clsPrefix }) => {
+  const { typography } = theme;
 
   const rootClassName = `${clsPrefix}-inner-dedicated-dialog`;
 
@@ -74,7 +74,7 @@ const InnerDedicatedDialog: FC<InnerDedicatedDialogProps> = (props) => {
 
   const [first, setFirst] = useState(true);
 
-  const { clsPrefix } = useTheme();
+  const { clsPrefix } = useConfig();
 
   // 保证有对话框弹出的动画效果
   useEffect(() => {
@@ -84,7 +84,7 @@ const InnerDedicatedDialog: FC<InnerDedicatedDialogProps> = (props) => {
   const rootClassName = `${clsPrefix}-inner-dedicated-dialog`;
 
   const headerWrapper = (
-    <InnerDedicatedDialogHeader className={`${rootClassName}__header`}>
+    <InnerDedicatedDialogHeader>
       {icon && <span className={`${rootClassName}__icon`}>{icon}</span>}
       <span className={`${rootClassName}__title`}>{title}</span>
     </InnerDedicatedDialogHeader>
@@ -99,10 +99,7 @@ const InnerDedicatedDialog: FC<InnerDedicatedDialogProps> = (props) => {
       onOpenChange={handleOpenChange}
     >
       {content && (
-        <InnerDedicatedDialogContent
-          className={`${rootClassName}__content`}
-          styleProps={{ icon: !!icon }}
-        >
+        <InnerDedicatedDialogContent styleProps={{ icon: !!icon }}>
           {content}
         </InnerDedicatedDialogContent>
       )}

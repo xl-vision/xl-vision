@@ -4,8 +4,8 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { HTMLAttributes, ReactNode, forwardRef, useContext } from 'react';
 import RowContext from './RowContext';
+import { useConfig } from '../ConfigProvider';
 import { styled } from '../styles';
-import { useTheme } from '../ThemeProvider';
 import { Breakpoint } from '../ThemeProvider/breakpoints';
 
 export type ColSpanType = number | Partial<Record<Breakpoint, number>>;
@@ -25,8 +25,8 @@ const displayName = 'Col';
 const ColRoot = styled('div', {
   name: displayName,
   slot: 'Root',
-})(({ theme }) => {
-  const { clsPrefix, breakpoints } = theme;
+})(({ clsPrefix, theme }) => {
+  const { breakpoints } = theme;
 
   const { column, unit, values, points } = breakpoints;
 
@@ -94,7 +94,7 @@ const Col = forwardRef<HTMLDivElement, ColProps>((props, ref) => {
   const { children, className, offset, order, pull, push, column, style, ...others } = props;
 
   const { gutter, breakPoints, removeOnUnvisible } = useContext(RowContext);
-  const { clsPrefix } = useTheme();
+  const { clsPrefix } = useConfig();
 
   if (removeOnUnvisible && breakPoints) {
     if (isObject(column)) {
@@ -125,7 +125,6 @@ const Col = forwardRef<HTMLDivElement, ColProps>((props, ref) => {
       : style;
 
   const rootClasses = clsx(
-    rootClassName,
     [
       getClasses(`${rootClassName}-column`, column),
       getClasses(`${rootClassName}-offset`, offset),

@@ -1,10 +1,9 @@
 import { isProduction, isServer } from '@xl-vision/utils';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { ReactNode, forwardRef } from 'react';
+import { useConfig } from '../ConfigProvider';
 import Popper, { PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
-import { useTheme } from '../ThemeProvider';
 
 export type PopoverProps = Omit<PopperProps, 'popup' | 'arrow' | 'title'> & {
   content: ReactNode;
@@ -17,11 +16,11 @@ const displayName = 'Popover';
 const PopoverRoot = styled(Popper, {
   name: displayName,
   slot: 'Root',
-})(({ theme }) => {
-  const { clsPrefix, transition } = theme;
+})(({ clsPrefix, theme }) => {
+  const { transition } = theme;
 
   return {
-    [`.${clsPrefix}-popover`]: {
+    [`.${clsPrefix}-popover__inner`]: {
       ...transition.fadeIn('&'),
       ...transition.fadeOut('&'),
     },
@@ -87,7 +86,6 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>((props, ref) => {
     title,
     content,
     popupContainer,
-    className,
     transitionClassName,
     offset = 12,
     // 支持触屏设备
@@ -96,32 +94,29 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>((props, ref) => {
     ...others
   } = props;
 
-  const { clsPrefix } = useTheme();
+  const { clsPrefix } = useConfig();
 
   const rootClassName = `${clsPrefix}-popover`;
 
   const popup = (
-    <PopoverPopup className={clsx(`${rootClassName}__popup`)}>
-      {title && <PopoverTitle className={`${rootClassName}__title`}>{title}</PopoverTitle>}
-      <PopoverContent className={`${rootClassName}__content`}>{content}</PopoverContent>
+    <PopoverPopup>
+      {title && <PopoverTitle>{title}</PopoverTitle>}
+      <PopoverContent>{content}</PopoverContent>
     </PopoverPopup>
   );
 
-  const arrow = <PopoverArrow className={`${rootClassName}__arrow`} />;
-
-  const rootClasses = clsx(rootClassName, className);
+  const arrow = <PopoverArrow />;
 
   return (
     <PopoverRoot
       role='tooltip'
       {...others}
       arrow={!hideArrow && arrow}
-      className={rootClasses}
       offset={offset}
       popup={popup}
       popupContainer={popupContainer}
       ref={ref}
-      transitionClassName={transitionClassName || rootClassName}
+      transitionClassName={transitionClassName || `${rootClassName}__inner`}
       trigger={trigger}
     />
   );

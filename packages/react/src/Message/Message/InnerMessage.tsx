@@ -1,7 +1,6 @@
 import { NoticationProps, useConstantFn, useValueChange } from '@xl-vision/hooks';
 import { CloseOutlined } from '@xl-vision/icons';
 import { isProduction } from '@xl-vision/utils';
-import { clsx } from 'clsx';
 import PropTypes from 'prop-types';
 import {
   forwardRef,
@@ -13,8 +12,8 @@ import {
   useRef,
   KeyboardEvent,
 } from 'react';
+import { useConfig } from '../../ConfigProvider';
 import { styled } from '../../styles';
-import { useTheme } from '../../ThemeProvider';
 import Transition from '../../Transition';
 
 export type InnerMessageProps = NoticationProps<
@@ -32,8 +31,8 @@ const displayName = 'InnerMessage';
 const InnerMessageRoot = styled('div', {
   name: displayName,
   slot: 'Root',
-})(({ theme }) => {
-  const { clsPrefix, transition, color, elevations, styleSize } = theme;
+})(({ theme, clsPrefix }) => {
+  const { transition, color, elevations, styleSize } = theme;
 
   const rootClassName = `${clsPrefix}-inner-message`;
 
@@ -107,7 +106,6 @@ const InnerMessage = forwardRef<HTMLDivElement, InnerMessageProps>((props, ref) 
     open: openProp,
     icon,
     onAfterClosed,
-    className,
     onMouseEnter,
     onMouseLeave,
     showClose,
@@ -115,7 +113,7 @@ const InnerMessage = forwardRef<HTMLDivElement, InnerMessageProps>((props, ref) 
     ...others
   } = props;
 
-  const { clsPrefix } = useTheme();
+  const { clsPrefix } = useConfig();
 
   const [open, setOpen] = useValueChange(defaultOpen, openProp);
 
@@ -179,7 +177,6 @@ const InnerMessage = forwardRef<HTMLDivElement, InnerMessageProps>((props, ref) 
       <InnerMessageRoot
         ref={ref}
         {...others}
-        className={clsx(rootClassName, className)}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >

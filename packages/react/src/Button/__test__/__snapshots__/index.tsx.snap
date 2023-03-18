@@ -491,7 +491,7 @@ exports[`Button Test basic render 1`] = `
           button
         </span>
         <span
-          class="c6 c8 xl-button__suffix"
+          class="c6 xl-button__prefix c8 xl-button__suffix"
         >
           <svg
             class="xl-base-icon c7"
@@ -537,7 +537,7 @@ exports[`Button Test basic render 1`] = `
         class="c2 xl-base-button__inner"
       >
         <span
-          class="c10 xl-button__suffix"
+          class="c10 xl-button__prefix xl-button__suffix"
         >
           <svg
             class="xl-base-icon c7"
@@ -581,7 +581,7 @@ exports[`Button Test basic render 1`] = `
           style="overflow: hidden; padding-left: 0px; padding-right: 0px;"
         >
           <svg
-            class="xl-base-icon c7 c14 xl-button__prefix--loading"
+            class="xl-base-icon c7 c14 xl-button__loading-icon"
             viewBox="0 0 1024 1024"
           >
             <path
@@ -610,7 +610,7 @@ exports[`Button Test basic render 1`] = `
           class="c10 xl-button__prefix"
         >
           <svg
-            class="xl-base-icon c7 c14 xl-button__prefix--loading"
+            class="xl-base-icon c7 c14 xl-button__loading-icon"
             viewBox="0 0 1024 1024"
           >
             <path
@@ -634,7 +634,7 @@ exports[`Button Test basic render 1`] = `
           class="c6 xl-button__prefix"
         >
           <svg
-            class="xl-base-icon c7 c14 xl-button__prefix--loading"
+            class="xl-base-icon c7 c14 xl-button__loading-icon"
             viewBox="0 0 1024 1024"
           >
             <path

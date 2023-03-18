@@ -6,21 +6,25 @@ import useTheme from '../useTheme';
 describe('ThemeProvider', () => {
   it('test theme prop override', () => {
     const theme1: BaseTheme = {
-      clsPrefix: 'cls1-',
       color: {
         mode: 'dark',
+      },
+      breakpoints: {
+        unit: 'px',
       },
     };
 
     const theme2: BaseTheme = {
-      clsPrefix: 'cls2-',
+      breakpoints: {
+        unit: 'rem',
+      },
     };
 
     const Demo1 = () => {
       const theme = useTheme();
 
       expect(theme.color.mode).toBe('dark');
-      expect(theme.clsPrefix).toBe('cls1-');
+      expect(theme.breakpoints.unit).toBe('px');
       return <div />;
     };
 
@@ -28,7 +32,7 @@ describe('ThemeProvider', () => {
       const theme = useTheme();
 
       expect(theme.color.mode).toBe('dark');
-      expect(theme.clsPrefix).toBe('cls2-');
+      expect(theme.breakpoints.unit).toBe('rem');
       return <div />;
     };
 

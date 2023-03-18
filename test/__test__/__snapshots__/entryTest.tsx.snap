@@ -691,7 +691,7 @@ exports[`Entry @xl-vision/react 1`] = `
   "Dialog",
   "Avatar",
   "Input",
-  "TextArea",
+  "Textarea",
   "Affix",
   "ResizeObserver",
   "BackTop",
