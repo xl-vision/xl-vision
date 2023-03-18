@@ -96,10 +96,10 @@ const route: Route = {
         },
         {
           titleMap: {
-            'en-US': 'TextArea',
+            'en-US': 'Textarea',
             'zh-CN': '多行文本框',
           },
-          path: '/TextArea',
+          path: '/Textarea',
         },
       ],
     },

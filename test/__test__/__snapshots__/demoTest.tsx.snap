@@ -7219,7 +7219,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
         class="c3 xl-base-button__inner"
       >
         <span
-          class="c11 xl-button__suffix"
+          class="c11 xl-button__prefix ButtonSuffix-fdNhfr xl-button__suffix"
         >
           <svg
             class="xl-base-icon c12"
@@ -9323,7 +9323,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Addon.tsx correctly 1`]
         />
       </span>
       <span
-        class="c1 c4 xl-input__addon-after"
+        class="c1 xl-input__addon-before c4 xl-input__addon-after"
       >
         .xyz
       </span>
@@ -9348,7 +9348,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Addon.tsx correctly 1`]
         />
       </span>
       <span
-        class="c1 c4 xl-input__addon-after"
+        class="c1 xl-input__addon-before c4 xl-input__addon-after"
       >
         <svg
           class="xl-base-icon c5"
@@ -9699,7 +9699,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Clearable.tsx correctly
           value="hello"
         />
         <span
-          class="c3 c4 xl-input__suffix"
+          class="c3 xl-input__prefix c4 xl-input__suffix"
         >
           <span
             class="xl-input__suffix-clear"
@@ -9903,7 +9903,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/DebugSuffix.tsx correct
         value=""
       />
       <span
-        class="c3 c4 xl-input__suffix"
+        class="c3 xl-input__prefix c4 xl-input__suffix"
       >
         <span
           class="xl-input__suffix-count xl-input__suffix--has-suffix"
@@ -11097,7 +11097,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Password.tsx correctly 
 <div>
   <div>
     <span
-      class="c0 xl-input xl-input--size-middle"
+      class="c0 xl-input xl-input--size-middle xl-password"
     >
       <span
         class="c1 xl-input__wrapper"
@@ -11109,10 +11109,10 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Password.tsx correctly 
           value=""
         />
         <span
-          class="c3 c4 xl-input__suffix"
+          class="c3 xl-input__prefix c4 xl-input__suffix"
         >
           <span
-            class="c5"
+            class="c5 xl-password__icon"
             role="button"
             tabindex="-1"
           >
@@ -11360,7 +11360,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/PrefixAndSuffix.tsx cor
           value=""
         />
         <span
-          class="c3 c6 xl-input__suffix"
+          class="c3 xl-input__prefix c6 xl-input__suffix"
         >
           <svg
             class="xl-base-icon c4"
@@ -11388,7 +11388,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/PrefixAndSuffix.tsx cor
           value=""
         />
         <span
-          class="c3 c6 xl-input__suffix"
+          class="c3 xl-input__prefix c6 xl-input__suffix"
         >
           RMB
         </span>
@@ -11580,7 +11580,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/ShowCount.tsx correctly
           value=""
         />
         <span
-          class="c3 c4 xl-input__suffix"
+          class="c3 xl-input__prefix c4 xl-input__suffix"
         >
           <span
             class="xl-input__suffix-count"
@@ -11604,7 +11604,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/ShowCount.tsx correctly
           value=""
         />
         <span
-          class="c3 c4 xl-input__suffix"
+          class="c3 xl-input__prefix c4 xl-input__suffix"
         >
           <span
             class="xl-input__suffix-count"
@@ -17822,7 +17822,7 @@ exports[`Demo renders ./packages/react/src/ResizeObserver/__doc__/Basic.tsx corr
       />
     </span>
     <span
-      class="c1 c4 xl-input__addon-after"
+      class="c1 xl-input__addon-before c4 xl-input__addon-after"
     >
       px
     </span>
@@ -17847,7 +17847,7 @@ exports[`Demo renders ./packages/react/src/ResizeObserver/__doc__/Basic.tsx corr
       />
     </span>
     <span
-      class="c1 c4 xl-input__addon-after"
+      class="c1 xl-input__addon-before c4 xl-input__addon-after"
     >
       px
     </span>
@@ -17879,6 +17879,10 @@ exports[`Demo renders ./packages/react/src/Ripple/__doc__/Advance.tsx correctly 
   font-size: 26px;
   text-align: center;
   line-height: 100px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .c0 .xl-ripple {
@@ -17939,6 +17943,10 @@ exports[`Demo renders ./packages/react/src/Ripple/__doc__/Basic.tsx correctly 1`
   font-size: 26px;
   text-align: center;
   line-height: 100px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .c0 .xl-ripple {
@@ -44651,7 +44659,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/useBreakPoints.tsx correc
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/TextArea/__doc__/AutoSize.tsx correctly 1`] = `
+exports[`Demo renders ./packages/react/src/Textarea/__doc__/AutoSize.tsx correctly 1`] = `
 .c1 {
   font-size: 1.000rem;
   line-height: 1.5;
@@ -44844,7 +44852,7 @@ exports[`Demo renders ./packages/react/src/TextArea/__doc__/AutoSize.tsx correct
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/TextArea/__doc__/Basic.tsx correctly 1`] = `
+exports[`Demo renders ./packages/react/src/Textarea/__doc__/Basic.tsx correctly 1`] = `
 .c1 {
   font-size: 1.000rem;
   line-height: 1.5;
@@ -45016,7 +45024,7 @@ exports[`Demo renders ./packages/react/src/TextArea/__doc__/Basic.tsx correctly 
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/TextArea/__doc__/DebugSuffix.tsx correctly 1`] = `
+exports[`Demo renders ./packages/react/src/Textarea/__doc__/DebugSuffix.tsx correctly 1`] = `
 .c1 {
   font-size: 1.000rem;
   line-height: 1.5;
@@ -45199,7 +45207,7 @@ exports[`Demo renders ./packages/react/src/TextArea/__doc__/DebugSuffix.tsx corr
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/TextArea/__doc__/ShowCount.tsx correctly 1`] = `
+exports[`Demo renders ./packages/react/src/Textarea/__doc__/ShowCount.tsx correctly 1`] = `
 .c1 {
   font-size: 1.000rem;
   line-height: 1.5;
@@ -45401,7 +45409,7 @@ exports[`Demo renders ./packages/react/src/TextArea/__doc__/ShowCount.tsx correc
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/TextArea/__doc__/Size.tsx correctly 1`] = `
+exports[`Demo renders ./packages/react/src/Textarea/__doc__/Size.tsx correctly 1`] = `
 .c1 {
   font-size: 0.750rem;
   line-height: 1.5;

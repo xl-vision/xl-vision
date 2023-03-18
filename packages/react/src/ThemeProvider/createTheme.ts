@@ -3,7 +3,7 @@ import createColors, { Color } from './color';
 import createElevations from './elevations';
 import createMixins from './mixins';
 import createOverrideStyles, { OverrideStyles } from './overrideStyles';
-import createStyleSize, { ComponentSize, StyleSize } from './styleSize';
+import createStyleSize, { StyleSize } from './styleSize';
 import createTransition, { Transition } from './transition';
 import createTypography, { Typography } from './typography';
 import { DeepPartial } from '../utils/types';
@@ -13,9 +13,7 @@ export type BaseTheme = DeepPartial<{
   transition: Transition;
   typography: Typography;
   breakpoints: Breakpoints;
-  clsPrefix: string;
   styleSize: StyleSize;
-  componentSize: ComponentSize;
 }> & {
   overrideStyles?: OverrideStyles;
 };
@@ -25,16 +23,7 @@ export type ThemeWithoutMixins = ReturnType<typeof createThemeWithoutMixins>;
 export type Theme = ReturnType<typeof createTheme>;
 
 const createThemeWithoutMixins = (theme: BaseTheme = {}) => {
-  const {
-    color,
-    transition,
-    typography,
-    breakpoints,
-    overrideStyles = {},
-    clsPrefix = 'xl',
-    componentSize = 'middle',
-    styleSize,
-  } = theme;
+  const { color, transition, typography, breakpoints, overrideStyles = {}, styleSize } = theme;
 
   const outputColor = createColors(color);
   const outputTransition = createTransition(transition);
@@ -47,13 +36,11 @@ const createThemeWithoutMixins = (theme: BaseTheme = {}) => {
   const elevations = createElevations();
 
   return {
-    componentSize,
     color: outputColor,
     transition: outputTransition,
     typography: outputTypography,
     breakpoints: outputBreakpoints,
     elevations,
-    clsPrefix,
     overrideStyles: outputOverrideStyles,
     styleSize: outputStyleSize,
   };

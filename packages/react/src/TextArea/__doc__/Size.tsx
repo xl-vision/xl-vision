@@ -1,11 +1,11 @@
-import { TextArea } from '@xl-vision/react';
+import { Textarea } from '@xl-vision/react';
 
 const Demo = () => {
   return (
     <div>
-      <TextArea placeholder='Basic usage' size='small' />
-      <TextArea placeholder='Basic usage' size='middle' style={{ marginTop: 10 }} />
-      <TextArea placeholder='Basic usage' size='large' style={{ marginTop: 10 }} />
+      <Textarea placeholder='Basic usage' size='small' />
+      <Textarea placeholder='Basic usage' size='middle' style={{ marginTop: 10 }} />
+      <Textarea placeholder='Basic usage' size='large' style={{ marginTop: 10 }} />
     </div>
   );
 };

@@ -1,21 +1,21 @@
 import { fireEvent, render } from '@testing-library/react';
-import { ComponentSize, TextArea, ThemeProvider } from '@xl-vision/react';
+import { ComponentSize, ConfigProvider, Textarea } from '@xl-vision/react';
 
-describe('TextArea', () => {
+describe('Textarea', () => {
   it('test component size', () => {
     const componentSizes: Array<ComponentSize> = ['small', 'middle', 'large'];
 
     const { container, rerender } = render(
-      <ThemeProvider>
-        <TextArea />
-      </ThemeProvider>,
+      <ConfigProvider>
+        <Textarea />
+      </ConfigProvider>,
     );
 
     componentSizes.forEach((componentSize) => {
       rerender(
-        <ThemeProvider theme={{ componentSize }}>
-          <TextArea />
-        </ThemeProvider>,
+        <ConfigProvider size={componentSize}>
+          <Textarea />
+        </ConfigProvider>,
       );
 
       expect(container.querySelector(`.xl-textarea--size-${componentSize}`)).not.toBe(null);
@@ -23,7 +23,7 @@ describe('TextArea', () => {
   });
 
   it('test disabled state', () => {
-    const { container, rerender } = render(<TextArea />);
+    const { container, rerender } = render(<Textarea />);
 
     const el = container.querySelector('textarea')!;
 
@@ -32,7 +32,7 @@ describe('TextArea', () => {
     expect(container.querySelector('.xl-textarea--focused')).not.toBeNull();
     expect(container.querySelector('.xl-textarea--disabled')).toBeNull();
 
-    rerender(<TextArea disabled={true} />);
+    rerender(<Textarea disabled={true} />);
 
     expect(container.querySelector('.xl-textarea--disabled')).not.toBeNull();
     expect(container.querySelector('.xl-textarea--focused')).toBeNull();
@@ -41,7 +41,7 @@ describe('TextArea', () => {
   it('test default value', () => {
     const msg = 'msg';
 
-    const { container } = render(<TextArea defaultValue={msg} />);
+    const { container } = render(<Textarea defaultValue={msg} />);
 
     const el = container.querySelector('textarea')!;
 
@@ -57,7 +57,7 @@ describe('TextArea', () => {
   it('test controlled and uncontrolled state', () => {
     const msg = 'msg';
 
-    const { container, rerender } = render(<TextArea />);
+    const { container, rerender } = render(<Textarea />);
 
     const el = container.querySelector('textarea')!;
 
@@ -67,7 +67,7 @@ describe('TextArea', () => {
 
     const newMsg = 'new msg';
 
-    rerender(<TextArea value={newMsg} />);
+    rerender(<Textarea value={newMsg} />);
 
     fireEvent.change(el, { target: { value: msg } });
 

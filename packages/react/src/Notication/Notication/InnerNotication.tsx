@@ -14,8 +14,8 @@ import {
   useEffect,
   useRef,
 } from 'react';
+import { useConfig } from '../../ConfigProvider';
 import { styled } from '../../styles';
-import { useTheme } from '../../ThemeProvider';
 import Transition from '../../Transition';
 import NoticationContext from '../context';
 
@@ -36,8 +36,8 @@ const displayName = 'InnerNotication';
 const InnerNoticationRoot = styled('div', {
   name: displayName,
   slot: 'Root',
-})(({ theme }) => {
-  const { clsPrefix, transition, color, elevations, styleSize, typography } = theme;
+})(({ clsPrefix, theme }) => {
+  const { transition, color, elevations, styleSize, typography } = theme;
 
   const rootClassName = `${clsPrefix}-inner-notication`;
 
@@ -148,7 +148,7 @@ const InnerNotication = forwardRef<HTMLDivElement, InnerNoticationProps>((props,
 
   const { placement } = useContext(NoticationContext);
 
-  const { clsPrefix } = useTheme();
+  const { clsPrefix } = useConfig();
 
   const [open, setOpen] = useValueChange(defaultOpen, openProp);
 
@@ -212,7 +212,7 @@ const InnerNotication = forwardRef<HTMLDivElement, InnerNoticationProps>((props,
       <InnerNoticationRoot
         ref={ref}
         {...others}
-        className={clsx(rootClassName, `${rootClassName}--${placement}`, className)}
+        className={clsx(`${rootClassName}--${placement}`, className)}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >

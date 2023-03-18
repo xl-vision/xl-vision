@@ -126,7 +126,7 @@ const styled = <
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    // eslint-disable-next-line react/display-name
+
     const DefaultComponent: typeof InnerDefaultComponent = forwardRef((props, ref) => {
       const { clsPrefix } = useConfig();
 

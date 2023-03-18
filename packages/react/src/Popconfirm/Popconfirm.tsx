@@ -1,14 +1,12 @@
 import { useConstantFn, useValueChange } from '@xl-vision/hooks';
 import { ExclamationCircleOutlined } from '@xl-vision/icons';
 import { isProduction, isServer } from '@xl-vision/utils';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { ReactNode, forwardRef, useState } from 'react';
 import Button, { ButtonProps } from '../Button';
 import { useConfig } from '../ConfigProvider';
 import Popper, { PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
-import { useTheme } from '../ThemeProvider';
 
 export type PopconfirmButtonProps = Omit<ButtonProps, 'children' | 'onClick'>;
 export type PopconfirmProps = Omit<PopperProps, 'popup' | 'arrow' | 'title'> & {
@@ -28,11 +26,11 @@ const displayName = 'Popconfirm';
 const PopconfirmRoot = styled(Popper, {
   name: displayName,
   slot: 'Root',
-})(({ theme }) => {
-  const { clsPrefix, transition } = theme;
+})(({ clsPrefix, theme }) => {
+  const { transition } = theme;
 
   return {
-    [`.${clsPrefix}-popconfirm`]: {
+    [`.${clsPrefix}-popconfirm__inner`]: {
       ...transition.fadeIn('&'),
       ...transition.fadeOut('&'),
     },
@@ -57,8 +55,8 @@ const PopconfirmArrow = styled('div', {
 const PopconfirmPopup = styled('div', {
   name: displayName,
   slot: 'Popup',
-})(({ theme }) => {
-  const { color, typography, elevations, clsPrefix, styleSize } = theme;
+})(({ clsPrefix, theme }) => {
+  const { color, typography, elevations, styleSize } = theme;
   const bgColor = color.background.paper;
 
   return {
@@ -94,12 +92,10 @@ const PopconfirmPopup = styled('div', {
 const defaultIcon = <ExclamationCircleOutlined />;
 
 const Popconfirm = forwardRef<HTMLDivElement, PopconfirmProps>((props, ref) => {
-  const { clsPrefix } = useTheme();
-  const { locale } = useConfig();
+  const { locale, clsPrefix } = useConfig();
 
   const {
     popupContainer,
-    className,
     offset = 12,
     trigger = 'click',
     title,
@@ -159,7 +155,7 @@ const Popconfirm = forwardRef<HTMLDivElement, PopconfirmProps>((props, ref) => {
   const rootClassName = `${clsPrefix}-popconfirm`;
 
   const popup = (
-    <PopconfirmPopup className={clsx(`${rootClassName}__popup`)}>
+    <PopconfirmPopup>
       <div className={`${rootClassName}__content`}>
         <span className={`${rootClassName}__icon`}>{icon}</span>
         <span className={`${rootClassName}__title`}>{title}</span>
@@ -194,22 +190,19 @@ const Popconfirm = forwardRef<HTMLDivElement, PopconfirmProps>((props, ref) => {
     </PopconfirmPopup>
   );
 
-  const arrow = <PopconfirmArrow className={`${rootClassName}__arrow`} />;
-
-  const rootClasses = clsx(rootClassName, className);
+  const arrow = <PopconfirmArrow />;
 
   return (
     <PopconfirmRoot
       role='tooltip'
       {...others}
       arrow={!hideArrow && arrow}
-      className={rootClasses}
       offset={offset}
       open={open}
       popup={popup}
       popupContainer={popupContainer}
       ref={ref}
-      transitionClassName={transitionClassName || rootClassName}
+      transitionClassName={transitionClassName || `${rootClassName}__inner`}
       trigger={trigger}
       onOpenChange={handleOpenChange}
     />

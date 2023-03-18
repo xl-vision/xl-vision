@@ -9,7 +9,6 @@ import {
   addClass,
   warning,
 } from '@xl-vision/utils';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
   HTMLAttributes,
@@ -22,9 +21,9 @@ import {
   KeyboardEvent,
   MouseEvent as ReactMouseEvent,
 } from 'react';
+import { useConfig } from '../ConfigProvider';
 import Portal, { PortalContainerType } from '../Portal';
 import { styled } from '../styles';
-import { useTheme } from '../ThemeProvider';
 import Transition from '../Transition';
 import { forceReflow } from '../utils/dom';
 import getContainer from '../utils/getContainer';
@@ -68,8 +67,8 @@ const ModalRoot = styled('div', {
 const ModalMask = styled('div', {
   name: displayName,
   slot: 'Mask',
-})(({ theme }) => {
-  const { clsPrefix, transition } = theme;
+})(({ theme, clsPrefix }) => {
+  const { transition } = theme;
   return {
     position: 'absolute',
     left: 0,
@@ -95,11 +94,11 @@ const ModalMask = styled('div', {
   };
 });
 
-const ModalContent = styled('div', {
+const ModalBody = styled('div', {
   name: displayName,
-  slot: 'Content',
-})(({ theme }) => {
-  const { clsPrefix, transition } = theme;
+  slot: 'Body',
+})(({ clsPrefix, theme }) => {
+  const { transition } = theme;
   return {
     position: 'relative',
     outline: 0,
@@ -166,13 +165,12 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     mask = true,
     maskClosable = true,
     escClosable = true,
-    className,
     wrapperClassName,
     onAfterClosed,
     ...others
   } = props;
 
-  const { clsPrefix } = useTheme();
+  const { clsPrefix } = useConfig();
 
   const [open, setOpen] = useValueChange(defaultOpen, openProp, onOpenChange);
 
@@ -369,7 +367,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     <Portal container={containerProp}>
       <ModalRoot
         aria-hidden={!open}
-        className={clsx(rootClassName, wrapperClassName)}
+        className={wrapperClassName}
         ref={forkRef}
         style={{ zIndex, display: hidden ? 'none' : '' }}
         onClick={handleClick}
@@ -387,7 +385,6 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
             {(show) => (
               <ModalMask
                 aria-hidden={true}
-                className={`${rootClassName}__mask`}
                 style={{
                   display: show ? '' : 'none',
                 }}
@@ -404,9 +401,8 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
           onExited={handleExited}
         >
           {(show) => (
-            <ModalContent
+            <ModalBody
               {...others}
-              className={clsx(bodyClassName, className)}
               ref={bodyRef}
               style={{
                 display: show ? '' : 'none',
@@ -414,7 +410,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
               tabIndex={-1}
             >
               {children}
-            </ModalContent>
+            </ModalBody>
           )}
         </Transition>
       </ModalRoot>

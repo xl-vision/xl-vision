@@ -10,6 +10,7 @@ const Box = styled('div')(
   font-size: 26px;
   text-align: center;
   line-height: 100px;
+  user-select: none;
 
   .xl-ripple {
     opacity: 0.5;

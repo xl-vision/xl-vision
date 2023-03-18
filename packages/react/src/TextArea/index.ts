@@ -1,4 +1,4 @@
-import TextArea from './TextArea';
+import Textarea from './Textarea';
 
-export default TextArea;
-export * from './TextArea';
+export default Textarea;
+export * from './Textarea';

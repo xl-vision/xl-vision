@@ -7,7 +7,7 @@ exports[`styled test styled overrideStyles 1`] = `
 
 <div>
   <button
-    class="c0"
+    class="c0 xl-demo-button"
   >
     click
   </button>
@@ -22,7 +22,7 @@ exports[`styled test styled overrideStyles 2`] = `
 
 <div>
   <button
-    class="c0"
+    class="c0 xl-demo-button"
   >
     click
   </button>

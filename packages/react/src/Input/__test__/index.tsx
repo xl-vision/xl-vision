@@ -1,21 +1,21 @@
 import { fireEvent, render } from '@testing-library/react';
-import { ThemeProvider, Input, Button, ComponentSize } from '@xl-vision/react';
+import { Input, Button, ComponentSize, ConfigProvider } from '@xl-vision/react';
 
 describe('Input', () => {
   it('test component size', () => {
     const componentSizes: Array<ComponentSize> = ['small', 'middle', 'large'];
 
     const { container, rerender } = render(
-      <ThemeProvider>
+      <ConfigProvider>
         <Input />
-      </ThemeProvider>,
+      </ConfigProvider>,
     );
 
     componentSizes.forEach((componentSize) => {
       rerender(
-        <ThemeProvider theme={{ componentSize }}>
+        <ConfigProvider size={componentSize}>
           <Input />
-        </ThemeProvider>,
+        </ConfigProvider>,
       );
 
       expect(container.querySelector(`.xl-input--size-${componentSize}`)).not.toBe(null);

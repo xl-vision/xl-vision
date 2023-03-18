@@ -1,16 +1,16 @@
-import { TextArea } from '@xl-vision/react';
+import { Textarea } from '@xl-vision/react';
 
 const Demo = () => {
   return (
     <div>
-      <TextArea
+      <Textarea
         allowClear={true}
         maxLength={20}
         placeholder='Default one row'
         rows={1}
         showCount={true}
       />
-      <TextArea
+      <Textarea
         allowClear={true}
         maxLength={20}
         placeholder='Default mutiple rows'

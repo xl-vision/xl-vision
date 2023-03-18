@@ -60,59 +60,119 @@ const Basic = () => {
     <Wrapper>
       <div className='column'>
         <div />
-        <PopperRoot placement='top-start' popup={popup} transitionClassName='slide'>
+        <PopperRoot
+          autoPlacementOptions={false}
+          placement='top-start'
+          popup={popup}
+          transitionClassName='slide'
+        >
           <Button color='primary'>TS</Button>
         </PopperRoot>
-        <PopperRoot placement='top' popup={popup} transitionClassName='slide'>
+        <PopperRoot
+          autoPlacementOptions={false}
+          placement='top'
+          popup={popup}
+          transitionClassName='slide'
+        >
           <Button color='primary'>T</Button>
         </PopperRoot>
-        <PopperRoot placement='top-end' popup={popup} transitionClassName='slide'>
+        <PopperRoot
+          autoPlacementOptions={false}
+          placement='top-end'
+          popup={popup}
+          transitionClassName='slide'
+        >
           <Button color='primary'>TE</Button>
         </PopperRoot>
         <div />
       </div>
       <div className='column'>
-        <PopperRoot placement='left-start' popup={popup} transitionClassName='slide'>
+        <PopperRoot
+          autoPlacementOptions={false}
+          placement='left-start'
+          popup={popup}
+          transitionClassName='slide'
+        >
           <Button color='primary'>LS</Button>
         </PopperRoot>
         <div />
         <div />
         <div />
-        <PopperRoot placement='right-start' popup={popup} transitionClassName='slide'>
+        <PopperRoot
+          autoPlacementOptions={false}
+          placement='right-start'
+          popup={popup}
+          transitionClassName='slide'
+        >
           <Button color='primary'>RS</Button>
         </PopperRoot>
       </div>
       <div className='column'>
-        <PopperRoot placement='left' popup={popup} transitionClassName='slide'>
+        <PopperRoot
+          autoPlacementOptions={false}
+          placement='left'
+          popup={popup}
+          transitionClassName='slide'
+        >
           <Button color='primary'>L</Button>
         </PopperRoot>
         <div />
         <div />
         <div />
-        <PopperRoot placement='right' popup={popup} transitionClassName='slide'>
+        <PopperRoot
+          autoPlacementOptions={false}
+          placement='right'
+          popup={popup}
+          transitionClassName='slide'
+        >
           <Button color='primary'>R</Button>
         </PopperRoot>
       </div>
       <div className='column'>
-        <PopperRoot placement='left-end' popup={popup} transitionClassName='slide'>
+        <PopperRoot
+          autoPlacementOptions={false}
+          placement='left-end'
+          popup={popup}
+          transitionClassName='slide'
+        >
           <Button color='primary'>LE</Button>
         </PopperRoot>
         <div />
         <div />
         <div />
-        <PopperRoot placement='right-end' popup={popup} transitionClassName='slide'>
+        <PopperRoot
+          autoPlacementOptions={false}
+          placement='right-end'
+          popup={popup}
+          transitionClassName='slide'
+        >
           <Button color='primary'>RE</Button>
         </PopperRoot>
       </div>
       <div className='column'>
         <div />
-        <PopperRoot placement='bottom-start' popup={popup} transitionClassName='slide'>
+        <PopperRoot
+          autoPlacementOptions={false}
+          placement='bottom-start'
+          popup={popup}
+          transitionClassName='slide'
+        >
           <Button color='primary'>BS</Button>
         </PopperRoot>
-        <PopperRoot placement='bottom' popup={popup} transitionClassName='slide'>
+        <PopperRoot
+          autoPlacementOptions={false}
+          placement='bottom'
+          popup={popup}
+          transitionClassName='slide'
+        >
           <Button color='primary'>B</Button>
         </PopperRoot>
-        <PopperRoot placement='bottom-end' popup={popup} transitionClassName='slide'>
+        <PopperRoot
+          autoPlacementOptions={false}
+          placement='bottom-end'
+          popup={popup}
+          transitionClassName='slide'
+        >
           <Button color='primary'>BE</Button>
         </PopperRoot>
         <div />
