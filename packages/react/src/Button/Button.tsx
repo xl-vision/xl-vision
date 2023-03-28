@@ -17,7 +17,7 @@ import CollapseTransition from '../CollapseTransition';
 import { useConfig } from '../ConfigProvider';
 import { styled } from '../styles';
 import { ComponentSize } from '../ThemeProvider';
-import { ThemeColors } from '../ThemeProvider/color/themeColor';
+import { ThemeColors } from '../ThemeProvider/colors/themeColor';
 import { alpha } from '../utils/color';
 
 export type ButtonColor = keyof ThemeColors | 'default';

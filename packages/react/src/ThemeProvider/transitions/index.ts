@@ -1,27 +1,12 @@
 import { CSSObject, CSSProperties } from '@xl-vision/styled-engine';
-import { deepMerge } from '@xl-vision/utils';
-import { DeepPartial } from '../../utils/types';
 
-const defaultFunctions = {
-  deceleration: 'cubic-bezier(0, 0, 0.2, 1)',
-  standard: 'cubic-bezier(0.4, 0, 0.2, 1)',
-  acceleration: 'cubic-bezier(0.4, 0, 1, 1)',
-  sharp: 'cubic-bezier(0.4, 0, 0.6, 1)',
-};
+export type TransitionDurationVariant = 'standard' | 'slow' | 'quick';
 
-const defaultDurations = {
-  shortest: '150ms',
-  shorter: '200ms',
-  short: '250ms',
-  standard: '300ms',
-  complex: '375',
-  enter: '225ms',
-  exit: '195ms',
-};
+export type TransitionFunctionVariant = 'standard' | 'acceleration' | 'deceleration' | 'sharp';
 
-export type Transition = {
-  functions: typeof defaultFunctions;
-  durations: typeof defaultDurations;
+export type Transitions = {
+  durations: Record<TransitionDurationVariant, string>;
+  functions: Record<TransitionFunctionVariant, string>;
 };
 
 const genTransition = (
@@ -37,14 +22,7 @@ const genTransition = (
     .join(',');
 };
 
-const defaultTransition: Transition = {
-  functions: defaultFunctions,
-  durations: defaultDurations,
-};
-
-const createTransition = (transition: DeepPartial<Transition> = {}) => {
-  const { functions, durations } = deepMerge(defaultTransition, transition, { clone: true });
-
+const createTransitions = ({ functions, durations }: Transitions) => {
   const standard = (
     name: keyof CSSProperties | Array<keyof CSSProperties>,
     duration = durations.standard,
@@ -53,23 +31,17 @@ const createTransition = (transition: DeepPartial<Transition> = {}) => {
 
   const enter = (
     name: keyof CSSProperties | Array<keyof CSSProperties>,
-    duration = durations.enter,
+    duration = durations.standard,
     delay = '0ms',
   ) => genTransition(name, duration, functions.deceleration, delay);
 
-  const exitPermanent = (
+  const exit = (
     name: keyof CSSProperties | Array<keyof CSSProperties>,
-    duration = durations.exit,
+    duration = durations.standard,
     delay = '0ms',
   ) => genTransition(name, duration, functions.acceleration, delay);
 
-  const exitTemporary = (
-    name: keyof CSSProperties | Array<keyof CSSProperties>,
-    duration = durations.exit,
-    delay = '0ms',
-  ) => genTransition(name, duration, functions.sharp, delay);
-
-  const fadeIn = (className: string, duration = defaultDurations.enter): CSSObject => {
+  const fadeIn = (className: string, duration = durations.standard): CSSObject => {
     return {
       [`${className}-enter-active`]: {
         transition: enter(['opacity', 'transform'], duration),
@@ -85,10 +57,10 @@ const createTransition = (transition: DeepPartial<Transition> = {}) => {
     };
   };
 
-  const fadeOut = (className: string, duration = defaultDurations.exit): CSSObject => {
+  const fadeOut = (className: string, duration = durations.standard): CSSObject => {
     return {
       [`${className}-exit-active`]: {
-        transition: exitPermanent(['opacity', 'transform'], duration),
+        transition: exit(['opacity', 'transform'], duration),
       },
       [`${className}-exit-from`]: {
         transform: 'scale(1)',
@@ -106,11 +78,10 @@ const createTransition = (transition: DeepPartial<Transition> = {}) => {
     durations,
     standard,
     enter,
-    exitPermanent,
-    exitTemporary,
+    exit,
     fadeIn,
     fadeOut,
   } as const;
 };
 
-export default createTransition;
+export default createTransitions;
