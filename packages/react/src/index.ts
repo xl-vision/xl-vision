@@ -1,8 +1,20 @@
 export { styled, createGlobalStyles } from './styles';
 export type { XlOptions } from './styles';
 
-export { default as ThemeProvider, ThemeContext, useTheme } from './ThemeProvider';
-export type { ThemeProviderProps, Theme, BaseTheme, ComponentSize } from './ThemeProvider';
+export { ThemeProvider, useTheme } from './ThemeProvider';
+export type {
+  ThemeProviderProps,
+  Theme,
+  BaseTheme,
+  Colors,
+  ThemeColors,
+  TextVariant,
+  ThemeVariant,
+  ActionVariant,
+  DividerVariant,
+  BackgroundVariant,
+  BackgroundActionVariant,
+} from './ThemeProvider';
 
 export {
   default as ConfigProvider,

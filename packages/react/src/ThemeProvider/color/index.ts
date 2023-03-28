@@ -1,134 +1,73 @@
-import { deepMerge, isProduction } from '@xl-vision/utils';
-import { dark as defaultDark, light as defaultLight, BaseColor } from './baseColor';
-import defaultThemes, { ThemeColors } from './themeColor';
-import { darken, getContrastRatio, lighten } from '../../utils/color';
-import { DeepPartial } from '../../utils/types';
-import greyColor from '../palette/grey';
-import { Palette } from '../palette/palette';
+import { isProduction, TinyColor, warning } from '@xl-vision/utils';
 
-export type Color = {
-  modes: {
-    dark: BaseColor;
-    light: BaseColor;
+export type ThemeVariant = 'primary' | 'error' | 'warning' | 'info' | 'success';
+
+export type ActionVariant = 'enabled' | 'hover' | 'focus' | 'active' | 'dragged' | 'disabled';
+
+export type BackgroundActionVariant = 'enabled' | 'hover' | 'focus';
+
+export type TextVariant = 'primary' | 'secondary' | 'disabled' | 'hint';
+
+export type BackgroundVariant = 'default' | 'paper' | 'mask' | 'spotlight';
+
+export type DividerVariant = 'primary' | 'secondary';
+
+export type ThemeColors = {
+  foreground: Record<ActionVariant, string>;
+  background: Record<BackgroundActionVariant, string>;
+  divider: Record<DividerVariant, string>;
+  text: Record<TextVariant, string>;
+  outline: string;
+};
+
+export type Colors = {
+  background: Record<BackgroundVariant, string>;
+  text: Record<TextVariant, string>;
+  inverseText: Record<TextVariant, string>;
+  divider: Record<DividerVariant, string>;
+  themes: Record<ThemeVariant, ThemeColors>;
+  opacity: {
+    disabled: number;
   };
-  themes: ThemeColors;
   contrastThreshold: number;
-  mode: 'dark' | 'light';
-  grey: Palette;
 };
 
-export type Theme = BaseColor &
-  Record<keyof BaseColor['action'], string> & {
-    color: string;
-  };
+const createColors = ({ inverseText, text, contrastThreshold, ...others }: Colors) => {
+  const contrastCache: Map<string, Record<TextVariant, string>> = new Map();
 
-export type Themes = {
-  [key in keyof ThemeColors]: Theme;
-};
+  const getContrastText = (bgColor: string) => {
+    const cachedColors = contrastCache.get(bgColor);
 
-const defaultColor: Color = {
-  modes: {
-    dark: defaultDark,
-    light: defaultLight,
-  },
-  mode: 'light',
-  contrastThreshold: 3,
-  themes: defaultThemes,
-  grey: greyColor,
-};
-
-const createColors = (color: DeepPartial<Color> = {}) => {
-  const { modes, mode, contrastThreshold, themes, grey } = deepMerge(defaultColor, color, {
-    clone: true,
-  });
-
-  const { dark, light } = modes;
-
-  const baseTheme = modes[mode];
-
-  const constrastColorMap = new Map<string, BaseColor>();
-
-  const getContrastColor = (background: string) => {
-    let contrastColor = constrastColorMap.get(background);
-
-    if (!contrastColor) {
-      contrastColor =
-        getContrastRatio(background, dark.text.primary) >= contrastThreshold ? dark : light;
-
-      constrastColorMap.set(background, contrastColor);
+    if (cachedColors) {
+      return cachedColors;
     }
 
+    const contrastColor =
+      TinyColor.getContrastRatio(bgColor, inverseText.primary) >= contrastThreshold
+        ? inverseText
+        : text;
+
+    contrastCache.set(bgColor, contrastColor);
+
     if (!isProduction) {
-      const contrast = getContrastRatio(background, contrastColor.text.primary);
-      if (contrast < 3) {
-        console.error(
-          [
-            `XL-VISION: The contrast ratio of ${contrast}:1 for ${contrastColor.text.primary} on ${background}`,
-            'falls below the WCAG recommended absolute minimum contrast ratio of 3:1.',
-            'https://www.w3.org/TR/2008/REC-WCAG20-20081211/#visual-audio-contrast-contrast',
-          ].join('\n'),
-        );
-      }
+      const contrast = TinyColor.getContrastRatio(bgColor, contrastColor.primary);
+      warning(
+        contrast < 3,
+        [
+          `XL-VISION: The contrast ratio of ${contrast}:1 for ${contrastColor.primary} on ${bgColor}`,
+          'falls below the WCAG recommended absolute minimum contrast ratio of 3:1.',
+          'https://www.w3.org/TR/2008/REC-WCAG20-20081211/#visual-audio-contrast-contrast',
+        ].join('\n'),
+      );
     }
 
     return contrastColor;
   };
 
-  const emphasizedMap = new Map<string, Map<number, string>>();
-
-  const emphasize = (bgColor: string, coefficient = 0.1) => {
-    let actionMap = emphasizedMap.get(bgColor);
-    if (!actionMap) {
-      actionMap = new Map();
-      emphasizedMap.set(bgColor, actionMap);
-    }
-
-    let stateColor = actionMap.get(coefficient);
-
-    if (!stateColor) {
-      const getColor = mode === 'dark' ? lighten : darken;
-      stateColor = getColor(bgColor, coefficient);
-      actionMap.set(coefficient, stateColor);
-    }
-
-    return stateColor;
-  };
-
-  const applyState = (bgColor: string, state: keyof BaseColor['action']) => {
-    return emphasize(bgColor, baseTheme.action[state]);
-  };
-
-  const newThemes = {} as Themes;
-
-  const { action } = baseTheme;
-
-  Object.keys(themes).forEach((_themeKey) => {
-    const themeKey = _themeKey as keyof ThemeColors;
-    const theme = themes[themeKey];
-    const themeColor = theme[mode];
-
-    const obj = {
-      color: themeColor,
-      ...getContrastColor(themeColor),
-    } as Theme;
-
-    Object.keys(action).forEach((key) => {
-      const actionKey = key as keyof BaseColor['action'];
-      obj[actionKey] = applyState(themeColor, actionKey);
-    });
-
-    newThemes[themeKey] = obj;
-  });
-
   return {
-    ...baseTheme,
-    mode,
-    modes,
-    themes: newThemes,
-    grey,
-    getContrastColor,
-    emphasize,
-    applyState,
+    getContrastText,
+    text,
+    ...others,
   };
 };
 

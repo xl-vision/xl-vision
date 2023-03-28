@@ -10,22 +10,18 @@ export type Style<
   ST = S extends undefined ? { theme: Theme } : { styleProps: S; theme: Theme },
 > = Interpolation<P & ST>;
 
-export type PartialOverrideStyles<T extends Record<string, any>> = Partial<{
-  [K in keyof T]: Partial<T[K]>;
-}>;
-
-export type OverrideStyles = PartialOverrideStyles<{
-  CssBaseline: {
+export type OverrideStyles = Partial<{
+  CssBaseline: Partial<{
     Root: (theme: Theme) => CSSObject;
-  };
-  Row: {
+  }>;
+  Row: Partial<{
     Root: Style<{
       align: RowProps['align'];
       justify: RowProps['justify'];
       wrap: RowProps['wrap'];
     }>;
-  };
-  Col: {
+  }>;
+  Col: Partial<{
     Root: Style<{
       column?: number;
       offset?: number;
@@ -33,27 +29,27 @@ export type OverrideStyles = PartialOverrideStyles<{
       pull?: number;
       order?: number;
     }>;
-  };
-  Ripple: {
+  }>;
+  Ripple: Partial<{
     Root: Style;
     Inner: Style;
-  };
-  Icon: {
+  }>;
+  Icon: Partial<{
     Root: Style;
-  };
-  BaseButton: {
+  }>;
+  BaseButton: Partial<{
     Root: Style<BaseButtonStyleProps>;
     Inner: Style;
-  };
-  Button: {
+  }>;
+  Button: Partial<{
     Root: Style<ButtonStyleProps>;
     Prefix: Style<ButtonPrefixStyleProps>;
     Suffix: Style<ButtonSuffixStyleProps>;
     Loading: Style;
-  };
+  }>;
 }>;
 
-const createOverrideStyles = (styles?: OverrideStyles) => {
+const createOverrideStyles = (styles: OverrideStyles) => {
   return styles;
 };
 

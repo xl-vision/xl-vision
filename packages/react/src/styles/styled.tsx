@@ -21,8 +21,7 @@ export type XlOptions = {
 
 const StyleComponentKey = Symbol('$$StyleComponent');
 
-const shouldForwardProp = (prop: PropertyKey) =>
-  prop !== 'theme' && prop !== 'styleProps' && prop !== 'clsPrefix';
+const shouldForwardProp = (prop: PropertyKey) => prop !== 'theme' && prop !== 'styleProps';
 
 const middleline = (str: string) => {
   const separator = '-';
@@ -140,7 +139,6 @@ const styled = <
             // eslint-disable-next-line react/prop-types
             (props as { className?: string }).className,
           )}
-          clsPrefix={clsPrefix}
           ref={ref}
         />
       );

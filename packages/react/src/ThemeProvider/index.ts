@@ -1,8 +1,12 @@
 import ThemeProvider from './ThemeProvider';
 
-export type { ComponentSize } from './styleSize';
-export * from './ThemeProvider';
 export * from './createTheme';
-export default ThemeProvider;
-export { default as ThemeContext } from './ThemeContext';
+export * from './ThemeProvider';
+
+export * from './color';
+export * from './overrideStyles';
+
+export { default as ThemeProvider } from './ThemeProvider';
 export { default as useTheme } from './useTheme';
+
+export default ThemeProvider;
