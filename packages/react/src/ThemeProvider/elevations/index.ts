@@ -1,4 +1,4 @@
-export type ElevationVariant = 'low' | 'high';
+export type ElevationVariant = 0 | 1 | 2 | 3;
 
 export type Elevations = Record<ElevationVariant, string>;
 

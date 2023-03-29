@@ -4,17 +4,18 @@ import createColors, { Colors } from './colors';
 import createElevations, { Elevations } from './elevations';
 import createMixins from './mixins';
 import createOverrideStyles, { OverrideStyles } from './overrideStyles';
-import createSizes, { Sizes } from './sizes';
+import createSizes, { Sizes, SizeVariant } from './sizes';
 import createTransitions, { Transitions } from './transitions';
 import createTypography, { Typography } from './typography';
 import defaultTheme from '../themes/default';
-import { DeepPartial } from '../utils/types';
+import { DeepPartial } from '../types';
 
 export type BaseTheme = {
   breakpoints: Breakpoints;
   colors: Colors;
   elevations: Elevations;
   prefixCls: string;
+  size: SizeVariant;
   sizes: Sizes;
   transitions: Transitions;
   typography: Typography;

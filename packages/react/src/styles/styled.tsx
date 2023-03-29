@@ -10,6 +10,7 @@ import { isProduction } from '@xl-vision/utils';
 import clsx from 'clsx';
 import { ComponentProps, ComponentType, forwardRef } from 'react';
 import applyTheme from './applyTheme';
+import { StyledComponentKey } from './constants';
 import { useConfig } from '../ConfigProvider';
 import { Theme } from '../ThemeProvider/createTheme';
 import { Style } from '../ThemeProvider/overrideStyles';
@@ -18,8 +19,6 @@ export type XlOptions = {
   name?: string;
   slot?: string;
 };
-
-const StyleComponentKey = Symbol('$$StyleComponent');
 
 const shouldForwardProp = (prop: PropertyKey) => prop !== 'theme' && prop !== 'styleProps';
 
@@ -30,13 +29,13 @@ const middleline = (str: string) => {
   return str.split(split).join(separator).toLowerCase();
 };
 
-type StyleComponent = { [StyleComponentKey]?: boolean };
+type StyledComponent = { [StyledComponentKey]?: boolean };
 
 const styled = <
   Tag extends keyof JSX.IntrinsicElements | ComponentType<ComponentProps<Tag>>,
   ForwardedProps extends keyof ExtractProps<Tag> = keyof ExtractProps<Tag>,
 >(
-  tag: Tag & StyleComponent,
+  tag: Tag & StyledComponent,
   options?: XlOptions,
 ) => {
   const { name, slot = 'Root' } = options || {};
@@ -52,10 +51,10 @@ const styled = <
     }
   }
 
-  const isStyleComponent = tag[StyleComponentKey] as boolean;
+  const isStyledComponent = tag[StyledComponentKey] as boolean;
 
   const defaultCreateStyledComponent = innerStyled<Tag, ForwardedProps>(tag, {
-    shouldForwardProp: isStyleComponent
+    shouldForwardProp: isStyledComponent
       ? undefined
       : (shouldForwardProp as ShouldForwardProp<ForwardedProps>),
     ...(!isProduction && { prefix: displayName || undefined }),
@@ -144,7 +143,7 @@ const styled = <
       );
     });
 
-    (DefaultComponent as StyleComponent)[StyleComponentKey] = true;
+    (DefaultComponent as StyledComponent)[StyledComponentKey] = true;
 
     if (!isProduction) {
       InnerDefaultComponent.displayName = `Inner${displayName}`;

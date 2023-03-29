@@ -1,6 +1,6 @@
 import { CSSObject, CSSProperties } from '@xl-vision/styled-engine';
 
-export type TransitionDurationVariant = 'standard' | 'slow' | 'quick';
+export type TransitionDurationVariant = 'standard' | 'short' | 'long';
 
 export type TransitionFunctionVariant = 'standard' | 'acceleration' | 'deceleration' | 'sharp';
 

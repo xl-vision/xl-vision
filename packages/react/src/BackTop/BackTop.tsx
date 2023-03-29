@@ -7,7 +7,6 @@ import { useConfig } from '../ConfigProvider';
 import Portal from '../Portal';
 import { styled } from '../styles';
 import Transition from '../Transition';
-import { alpha } from '../utils/color';
 import { throttleByAnimationFrame } from '../utils/perf';
 import { getScroll, scrollTo } from '../utils/scroll';
 
@@ -27,23 +26,19 @@ const BackTopRoot = styled('div', {
   name: displayName,
   slot: 'Root',
 })(({ theme, clsPrefix }) => {
-  const { color, transition } = theme;
-
-  const bgColor = alpha(color.text.primary, 0.4);
-
-  const contrastColor = color.getContrastColor(bgColor);
+  const { colors, transitions } = theme;
 
   const rootClassName = `${clsPrefix}-back-top`;
 
   return {
     position: 'fixed',
     zIndex: 10,
-    ...transition.fadeIn(`&.${rootClassName}`),
-    ...transition.fadeOut(`&.${rootClassName}`),
+    ...transitions.fadeIn(`&.${rootClassName}`),
+    ...transitions.fadeOut(`&.${rootClassName}`),
     [`.${rootClassName}__inner`]: {
       fontSize: 24,
-      backgroundColor: bgColor,
-      color: contrastColor.text.primary,
+      backgroundColor: colors.text.secondary,
+      color: colors.background.default,
       width: 40,
       height: 40,
       display: 'flex',
@@ -51,9 +46,9 @@ const BackTopRoot = styled('div', {
       justifyContent: 'center',
       borderRadius: '50%',
       cursor: 'pointer',
-      transition: transition.standard('backgroundColor'),
+      transition: transitions.standard('backgroundColor'),
       '&:hover': {
-        backgroundColor: alpha(color.text.primary, 0.7),
+        backgroundColor: colors.text.primary,
       },
     },
   };

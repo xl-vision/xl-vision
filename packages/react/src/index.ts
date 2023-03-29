@@ -14,6 +14,23 @@ export type {
   DividerVariant,
   BackgroundVariant,
   BackgroundActionVariant,
+  SizeVariant,
+  ElevationVariant,
+  FontWeightVariant,
+  TransitionDurationVariant,
+  TransitionFunctionVariant,
+  ThemeInput,
+  ThemeWithoutMixins,
+  Transitions,
+  Typography,
+  Breakpoint,
+  Breakpoints,
+  Elevations,
+  OverrideStyles,
+  PartialOverrideStyles,
+  Size,
+  Sizes,
+  Style,
 } from './ThemeProvider';
 
 export {

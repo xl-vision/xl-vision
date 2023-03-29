@@ -16,18 +16,16 @@ import BaseButton, { BaseButtonProps } from '../BaseButton';
 import CollapseTransition from '../CollapseTransition';
 import { useConfig } from '../ConfigProvider';
 import { styled } from '../styles';
-import { ComponentSize } from '../ThemeProvider';
-import { ThemeColors } from '../ThemeProvider/colors/themeColor';
-import { alpha } from '../utils/color';
+import { SizeVariant, ThemeVariant } from '../ThemeProvider';
 
-export type ButtonColor = keyof ThemeColors | 'default';
+export type ButtonColor = ThemeVariant | 'default';
 
 export type ButtonVariant = 'contained' | 'outlined' | 'text';
 
 export type ButtonProps = BaseButtonProps & {
   color?: ButtonColor;
   disableElevation?: boolean;
-  size?: ComponentSize;
+  size?: SizeVariant;
   prefixIcon?: ReactElement<SVGAttributes<SVGSVGElement>>;
   suffixIcon?: ReactElement<SVGAttributes<SVGSVGElement>>;
   variant?: ButtonVariant;
@@ -41,7 +39,7 @@ export type ButtonStyleProps = {
   color: ButtonColor;
   disableElevation: boolean;
   icon: boolean;
-  size: ComponentSize;
+  size: SizeVariant;
   variant: ButtonVariant;
   disabled?: boolean;
   loading?: boolean;
@@ -61,7 +59,7 @@ const ButtonRoot = styled(BaseButton, {
   name: displayName,
   slot: 'Root',
 })<ButtonStyleProps>(({ theme, styleProps }) => {
-  const { color: themeColor, transition, typography, elevations, styleSize } = theme;
+  const { colors, transitions, typography, elevations, sizes } = theme;
 
   const { info: buttonInfo, style: buttonStyle } = typography.button;
 
@@ -77,12 +75,12 @@ const ButtonRoot = styled(BaseButton, {
     icon,
   } = styleProps;
 
-  const themeSize = styleSize[size];
+  const themeSize = sizes[size];
 
   const baseFontSize = buttonInfo.size * themeSize.fontSize;
 
   const styles: CSSObject = {
-    transition: transition.standard('all'),
+    transition: transitions.standard('all'),
     borderRadius: themeSize.borderRadius,
     minWidth: icon ? '' : '64px',
     ...buttonStyle,
@@ -113,59 +111,112 @@ const ButtonRoot = styled(BaseButton, {
     styles.width = '100%';
   }
 
-  if (variant === 'text' || variant === 'outlined') {
-    styles.backgroundColor = 'transparent';
-
-    const color =
-      colorStyle === 'default' ? themeColor.text.primary : themeColor.themes[colorStyle].color;
-    styles.color = color;
-
-    if (variant === 'outlined') {
-      styles.border = `${themeSize.border}px solid ${alpha(color, 0.5)}`;
-      // 保证高度一致
-      padding = padding.map((it) => it - themeSize.border);
-    }
-
-    if (disabled || loading) {
-      styles.opacity =
-        colorStyle === 'default'
-          ? themeColor.action.disabled
-          : themeColor.themes[colorStyle].action.disabled;
-    } else {
-      styles['&:hover'] = {
-        backgroundColor: alpha(color, themeColor.action.hover),
-      };
-      styles['&:focus'] = {
-        backgroundColor: alpha(color, themeColor.action.focus),
-      };
-    }
-  } else if (variant === 'contained') {
-    // 特殊处理
-    const backgroundColor =
-      colorStyle === 'default' ? themeColor.background.paper : themeColor.themes[colorStyle].color;
-    const baseColor = themeColor.getContrastColor(backgroundColor);
-    styles.color = baseColor.text.primary;
-    styles.backgroundColor = backgroundColor;
-
-    if (disabled || loading) {
-      styles.opacity = baseColor.action.disabled;
-    } else {
-      if (!disableElevation) {
-        styles.boxShadow = elevations(2).boxShadow;
-      }
-      styles['&:hover'] = {
-        backgroundColor: themeColor.applyState(backgroundColor, 'hover'),
-        ...(!disableElevation && elevations(4)),
-      };
-      styles['&:focus'] = {
-        backgroundColor: themeColor.applyState(backgroundColor, 'focus'),
-        ...(!disableElevation && elevations(8)),
-      };
-    }
+  if (variant === 'outlined') {
+    // 保证高度一致
+    padding = padding.map((it) => it - themeSize.border);
   }
 
   styles.padding = padding.map((it) => `${it}px`).join(' ');
 
+  if (disabled || loading) {
+    styles.opacity = colors.opacity.disabled;
+  } else if (variant === 'contained') {
+    if (!disableElevation) {
+      styles.boxShadow = elevations[1];
+    }
+    styles['&:hover'] = {
+      ...(!disableElevation && {
+        boxShadow: elevations[2],
+      }),
+    };
+    styles['&:focus'] = {
+      ...(!disableElevation && {
+        boxShadow: elevations[3],
+      }),
+    };
+  }
+
+  if (colorStyle === 'default') {
+    if (!loading && !disabled) {
+      styles['&:hover'] = {
+        ...(styles['&:hover'] || {}),
+        color: colors.themes.primary.foreground.hover,
+      };
+      styles['&:focus'] = {
+        ...(styles['&:focus'] || {}),
+        color: colors.themes.primary.foreground.focus,
+      };
+    }
+
+    if (variant === 'text' || variant === 'outlined') {
+      styles.color = colors.text.primary;
+
+      if (variant === 'outlined') {
+        styles.border = `${themeSize.border}px solid ${colors.divider.primary}`;
+        if (!loading && !disabled) {
+          styles['&:hover'] = {
+            ...(styles['&:hover'] || {}),
+            color: colors.themes.primary.foreground.hover,
+            borderColor: colors.themes.primary.foreground.hover,
+          };
+
+          styles['&:focus'] = {
+            ...(styles['&:focus'] || {}),
+            borderColor: colors.themes.primary.foreground.focus,
+          };
+        }
+
+        return styles;
+      }
+
+      return styles;
+    }
+
+    if (variant === 'contained') {
+      styles.color = colors.text.primary;
+      styles.backgroundColor = colors.background.paper;
+    }
+
+    return styles;
+  }
+
+  if (variant === 'text' || variant === 'outlined') {
+    styles.backgroundColor = 'transparent';
+
+    styles.color = colors.themes[colorStyle].foreground.enabled;
+
+    if (variant === 'outlined') {
+      styles.border = `${themeSize.border}px solid ${colors.themes[colorStyle].foreground.enabled}`;
+    }
+
+    if (!disabled && !loading) {
+      styles['&:hover'] = {
+        ...(styles['&:hover'] || {}),
+        backgroundColor: colors.themes[colorStyle].background.hover,
+      };
+      styles['&:focus'] = {
+        ...(styles['&:focus'] || {}),
+        backgroundColor: colors.themes[colorStyle].background.focus,
+      };
+    }
+
+    return styles;
+  }
+  if (variant === 'contained') {
+    styles.color = colors.themes[colorStyle].text.primary;
+    styles.backgroundColor = colors.themes[colorStyle].foreground.enabled;
+
+    if (!disabled && !loading) {
+      styles['&:hover'] = {
+        ...(styles['&:hover'] || {}),
+        backgroundColor: colors.themes[colorStyle].foreground.hover,
+      };
+      styles['&:focus'] = {
+        ...(styles['&:focus'] || {}),
+        backgroundColor: colors.themes[colorStyle].foreground.focus,
+      };
+    }
+  }
   return styles;
 });
 
@@ -173,12 +224,12 @@ const ButtonPrefix = styled('span', {
   name: displayName,
   slot: 'Prefix',
 })<ButtonPrefixStyleProps>(({ theme, styleProps }) => {
-  const { transition } = theme;
+  const { transitions } = theme;
   const { icon } = styleProps;
 
   const styles: CSSObject = {
     display: 'inline-block',
-    transition: transition.standard('width'),
+    transition: transitions.standard('width'),
     padding: 0,
     lineHeight: 0,
     fontSize: `${iconSize}em`,
@@ -357,7 +408,7 @@ if (!isProduction) {
     long: PropTypes.bool,
     prefixIcon: PropTypes.element,
     round: PropTypes.bool,
-    size: PropTypes.oneOf<ComponentSize>(['large', 'middle', 'small']),
+    size: PropTypes.oneOf<SizeVariant>(['large', 'middle', 'small']),
     suffixIcon: PropTypes.element,
     variant: PropTypes.oneOf<ButtonVariant>(['contained', 'outlined', 'text']),
   };
