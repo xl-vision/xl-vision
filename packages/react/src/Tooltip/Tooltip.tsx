@@ -21,13 +21,13 @@ const displayName = 'Tooltip';
 const TooltipRoot = styled(Popper, {
   name: displayName,
   slot: 'Root',
-})(({ clsPrefix, theme }) => {
-  const { transition } = theme;
+})(({ theme }) => {
+  const { clsPrefix, transitions } = theme;
 
   return {
     [`.${clsPrefix}-tooltip__inner`]: {
-      ...transition.fadeIn('&'),
-      ...transition.fadeOut('&'),
+      ...transitions.fadeIn('&'),
+      ...transitions.fadeOut('&'),
     },
   };
 });
@@ -40,16 +40,16 @@ const TooltipPopup = styled('div', {
   name: displayName,
   slot: 'Popup',
 })<TooltipPopupStyleProps>(({ theme, styleProps }) => {
-  const { color, typography, styleSize } = theme;
+  const { colors, typography, sizes } = theme;
   const { hasWidth } = styleProps;
 
-  const bgColor = color.emphasize(color.modes.dark.background.paper, 0.1);
+  // const bgColor = colors.emphasize(colors.modes.dark.background.paper, 0.1);
 
   return {
-    backgroundColor: bgColor,
-    color: color.getContrastColor(bgColor).text.primary,
+    // backgroundColor: bgColor,
+    // color: colors.getContrastText(bgColor).primary,
     padding: '4px 8px',
-    borderRadius: styleSize.middle.borderRadius,
+    borderRadius: sizes.middle.borderRadius,
 
     ...typography.caption.style,
     ...(hasWidth && {
@@ -65,20 +65,20 @@ const TooltipArrow = styled('div', {
   name: displayName,
   slot: 'Arrow',
 })(({ theme }) => {
-  const { color } = theme;
+  const { colors } = theme;
 
-  const bgColor = color.emphasize(color.modes.dark.background.paper, 0.1);
+  // const bgColor = colors.emphasize(colors.modes.dark.background.paper, 0.1);
 
   return {
     width: 8,
     height: 8,
-    backgroundColor: bgColor,
+    // backgroundColor: bgColor,
     transform: 'translate(-4px, -4px) rotate(45deg)',
   };
 });
 
 const Tooltip = forwardRef<HTMLDivElement, TooltipProps>((props, ref) => {
-  const { color } = useTheme();
+  const { colors } = useTheme();
   const { clsPrefix } = useConfig();
 
   const {
@@ -99,7 +99,7 @@ const Tooltip = forwardRef<HTMLDivElement, TooltipProps>((props, ref) => {
 
   const colorStyle = bgColor && {
     backgroundColor: bgColor,
-    color: color.getContrastColor(bgColor).text.primary,
+    color: colors.getContrastText(bgColor).primary,
   };
 
   const popup = (

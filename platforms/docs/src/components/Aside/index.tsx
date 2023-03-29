@@ -1,5 +1,4 @@
 import { styled } from '@xl-vision/react';
-import { mix } from '@xl-vision/react/utils/color';
 import clsx from 'clsx';
 import Link, { LinkProps } from 'next/link';
 import { useRouter } from 'next/router';
@@ -19,7 +18,7 @@ const LeftNode = styled('span')(() => {
 
 const NonLeftNode = styled(LeftNode)(({ theme }) => {
   return {
-    color: `${theme.color.text.primary}`,
+    // color: `${theme.color.text.primary}`,
     fontWeight: `${theme.typography.fontWeight.bold}`,
   };
 });
@@ -56,22 +55,22 @@ const ActiveLink: FC<LinkProps> = (props) => {
 };
 
 const A = styled('a')(({ theme }) => {
-  const { themes, text } = theme.color;
+  const { themes, text } = theme.colors;
   return {
     display: 'inline-block',
     width: '100%',
     position: 'relative',
     color: `${text.primary}`,
     '&:hover': {
-      color: `${mix(
-        theme.color.themes.primary.text.primary,
-        themes.primary.color,
-        themes.primary.action.hover,
-      )}`,
+      // color: `${mix(
+      //   theme.color.themes.primary.text.primary,
+      //   themes.primary.color,
+      //   themes.primary.action.hover,
+      // )}`,
     },
     '&.active': {
-      backgroundColor: `${themes.primary.hover}`,
-      color: `${theme.color.themes.primary.text.primary}`,
+      // backgroundColor: `${themes.primary.hover}`,
+      // color: `${theme.color.themes.primary.text.primary}`,
     },
   };
 });

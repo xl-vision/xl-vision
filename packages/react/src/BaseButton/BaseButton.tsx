@@ -38,9 +38,9 @@ export type BaseButtonStyleProps = {
 const BaseButtonRoot = styled('button', {
   name: displayName,
   slot: 'Root',
-})<BaseButtonStyleProps>(({ styleProps, theme, clsPrefix }) => {
+})<BaseButtonStyleProps>(({ styleProps, theme }) => {
   const { disabled, loading } = styleProps;
-  const { color } = theme;
+  const { colors, clsPrefix } = theme;
 
   return {
     position: 'relative',
@@ -73,12 +73,12 @@ const BaseButtonRoot = styled('button', {
 
     [`.${clsPrefix}-base-button__ripple`]: {
       transform: 'scale(1)',
-      opacity: color.action.pressed,
+      // opacity: colors.action.pressed,
       '&-enter-active': {
-        transition: theme.transition.enter('all'),
+        // transition: theme.transition.enter('all'),
       },
       '&-exit-active': {
-        transition: theme.transition.exitPermanent('all'),
+        // transition: theme.transition.exitPermanent('all'),
       },
       '&-enter-from': {
         transform: 'scale(0)',

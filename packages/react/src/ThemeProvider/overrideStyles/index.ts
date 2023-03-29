@@ -54,7 +54,7 @@ export type OverrideStyles = PartialOverrideStyles<{
 }>;
 
 const createOverrideStyles = (styles?: OverrideStyles) => {
-  return styles;
+  return styles || {};
 };
 
 export default createOverrideStyles;

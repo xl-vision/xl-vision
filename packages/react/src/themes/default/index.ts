@@ -19,7 +19,7 @@ const colors = createColors({
 });
 
 const theme: BaseTheme = {
-  prefixCls: 'xl',
+  clsPrefix: 'xl',
   size: 'middle',
   colors,
   breakpoints: {

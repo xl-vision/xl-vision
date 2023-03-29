@@ -1,7 +1,6 @@
 import { useConstantFn } from '@xl-vision/hooks';
 import { DownOutlined, GithubFilled, MenuOutlined } from '@xl-vision/icons';
 import { Button, styled, Tooltip, Dropdown } from '@xl-vision/react';
-import { alpha } from '@xl-vision/react/utils/color';
 import { noop } from '@xl-vision/utils';
 import Cookie from 'js-cookie';
 import Link from 'next/link';
@@ -27,11 +26,11 @@ const Container = styled('div')(() => {
 });
 
 const HeaderNav = styled('header')(({ theme }) => {
-  const { color, styleSize } = theme;
+  const { colors, sizes } = theme;
 
-  const background = color.background.paper;
+  const background = colors.background.paper;
 
-  const fontColor = color.getContrastColor(background).text.primary;
+  const fontColor = colors.getContrastText(background).primary;
 
   return {
     display: 'flex',
@@ -41,9 +40,9 @@ const HeaderNav = styled('header')(({ theme }) => {
     height: HEADER_HEIGHT,
     width: '100%',
     padding: '0 16px',
-    backgroundColor: alpha(background, 0.72),
+    // backgroundColor: alpha(background, 0.72),
     color: fontColor,
-    borderBottom: `${styleSize.middle.border}px solid ${color.divider}`,
+    borderBottom: `${sizes.middle.border}px solid ${colors.divider}`,
     backdropFilter: 'blur(20px)',
 
     '.left': {
@@ -68,7 +67,7 @@ const LogoWrapper = styled('a')(({ theme }) => {
     height: '100%',
     alignItems: 'center',
     textDecoration: 0,
-    color: theme.color.text.primary,
+    color: theme.colors.text.primary,
 
     svg: {
       height: 32,
@@ -92,12 +91,12 @@ const Menus = styled('ul')(({ theme }) => {
       a: {
         fontSize: 14,
         display: 'block',
-        color: theme.color.text.primary,
+        color: theme.colors.text.primary,
         textDecoration: 'none',
         padding: '0 6px',
-        transition: theme.transition.standard('all'),
+        transition: theme.transitions.standard('all'),
         '&.active, &:hover': {
-          color: theme.color.themes.primary.color,
+          color: theme.colors.themes.primary.foreground.hover,
         },
       },
     },
@@ -105,7 +104,7 @@ const Menus = styled('ul')(({ theme }) => {
 });
 
 const MobileDropdownItem = styled(Dropdown.Item)(({ theme }) => {
-  const { themes } = theme.color;
+  const { themes } = theme.colors;
   return {
     minWidth: 250,
     a: {
@@ -117,7 +116,7 @@ const MobileDropdownItem = styled(Dropdown.Item)(({ theme }) => {
     },
     '&.active': {
       button: {
-        backgroundColor: themes.primary.color,
+        backgroundColor: themes.primary.foreground.active,
         color: themes.primary.text.primary,
       },
     },

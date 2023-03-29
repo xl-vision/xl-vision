@@ -17,13 +17,13 @@ const displayName = 'Dropdown';
 const DropdownRoot = styled(Popper, {
   name: displayName,
   slot: 'Root',
-})(({ theme, clsPrefix }) => {
-  const { transition } = theme;
+})(({ theme }) => {
+  const { transitions, clsPrefix } = theme;
 
   return {
     [`.${clsPrefix}-dropdown`]: {
-      ...transition.fadeIn('&'),
-      ...transition.fadeOut('&'),
+      ...transitions.fadeIn('&'),
+      ...transitions.fadeOut('&'),
     },
   };
 });
@@ -32,16 +32,16 @@ const DropdownPopup = styled('ul', {
   name: displayName,
   slot: 'Popup',
 })(({ theme }) => {
-  const { color, elevations, styleSize } = theme;
+  const { colors, elevations, sizes } = theme;
 
   return {
-    backgroundColor: color.background.paper,
-    color: color.text.primary,
-    borderRadius: styleSize.middle.borderRadius,
+    backgroundColor: colors.background.paper,
+    color: colors.text.primary,
+    borderRadius: sizes.middle.borderRadius,
     padding: '5px 0',
     listStyle: 'none',
     margin: 0,
-    ...elevations(8),
+    // ...elevations(8),
   };
 });
 

@@ -9,7 +9,7 @@ import ThemeProvider from '../components/ThemeProvider';
 import LayoutMap, { LayoutKey } from '../layout';
 
 const GlobalStyle = createGlobalStyles(({ theme }) => {
-  const { color, breakpoints } = theme;
+  const { colors, breakpoints } = theme;
 
   const { values, unit } = breakpoints;
 
@@ -30,7 +30,7 @@ const GlobalStyle = createGlobalStyles(({ theme }) => {
     //   boxShadow: 'inset 0 0 6px rgba(0, 0, 0, 0.3)',
     // },
     '::-webkit-scrollbar-thumb': {
-      backgroundColor: color.grey.A100,
+      // backgroundColor: colors.grey.A100,
       borderRadius: 5,
     },
     '.sm-down': {

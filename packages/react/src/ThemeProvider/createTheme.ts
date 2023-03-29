@@ -12,9 +12,9 @@ import { DeepPartial } from '../types';
 
 export type BaseTheme = {
   breakpoints: Breakpoints;
+  clsPrefix: string;
   colors: Colors;
   elevations: Elevations;
-  prefixCls: string;
   size: SizeVariant;
   sizes: Sizes;
   transitions: Transitions;

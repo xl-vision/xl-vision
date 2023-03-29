@@ -64,7 +64,7 @@ const styled = <
     StyleProps extends object | undefined = undefined,
     Props extends Pick<ExtractProps<Tag>, ForwardedProps> = Pick<ExtractProps<Tag>, ForwardedProps>,
     ActualStyleProps = StyleProps extends undefined ? {} : { styleProps: StyleProps },
-    ReceivedThemeProps = { theme: Theme } & ActualStyleProps & { clsPrefix: string },
+    ReceivedThemeProps = { theme: Theme } & ActualStyleProps,
     PassedThemeProps = { theme?: Theme } & ActualStyleProps,
   >(
     first: TemplateStringsArray | CSSObject | FunctionInterpolation<Props & ReceivedThemeProps>,
