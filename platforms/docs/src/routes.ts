@@ -271,21 +271,6 @@ const route: Route = {
     },
     {
       titleMap: {
-        'en-US': 'Global Config',
-        'zh-CN': '全局配置',
-      },
-      children: [
-        {
-          titleMap: {
-            'en-US': 'ConfigProvider',
-            'zh-CN': '全局配置',
-          },
-          path: '/ConfigProvider',
-        },
-      ],
-    },
-    {
-      titleMap: {
         'en-US': 'Basic Component',
         'zh-CN': '基础组件',
       },

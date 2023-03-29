@@ -3,9 +3,9 @@ import { isProduction, isServer } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { ReactElement, ReactNode, forwardRef, useRef, useEffect, useMemo } from 'react';
 import DropdownContext from './DropdownContext';
-import { useConfig } from '../ConfigProvider';
 import Popper, { PopperPlacement, PopperProps } from '../Popper';
 import { styled } from '../styles';
+import { useTheme } from '../ThemeProvider';
 
 export interface DropdownProps extends Omit<PopperProps, 'popup' | 'arrow'> {
   children: ReactElement;
@@ -60,7 +60,7 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
     ...others
   } = props;
 
-  const { clsPrefix } = useConfig();
+  const { clsPrefix } = useTheme();
 
   const submenuCloseHandlersRef = useRef<Array<() => void>>([]);
 

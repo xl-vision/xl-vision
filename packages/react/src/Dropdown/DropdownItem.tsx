@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 import { forwardRef, HTMLAttributes, ReactNode, useContext, MouseEvent } from 'react';
 import DropdownContext from './DropdownContext';
 import BaseButton from '../BaseButton';
-import { useConfig } from '../ConfigProvider';
 import { styled } from '../styles';
+import { useTheme } from '../ThemeProvider';
 
 export interface DropdownItemProps extends HTMLAttributes<HTMLLIElement> {
   children: ReactNode;
@@ -35,14 +35,14 @@ const DropdownItemButton = styled(BaseButton, {
   name: displayName,
   slot: 'Button',
 })<DropdownItemButtonStyleProps>(({ theme, styleProps }) => {
-  const { color, transition, typography } = theme;
+  const { colors, transitions, typography } = theme;
 
   const { disabled } = styleProps;
 
   const styles: CSSObject = {
     padding: '5px 12px',
-    transition: transition.standard('all'),
-    color: color.text.primary,
+    transition: transitions.standard('all'),
+    color: colors.text.primary,
     // 不设置会导致有间隙，原因未知
     width: '100%',
     textAlign: 'left',
@@ -50,11 +50,11 @@ const DropdownItemButton = styled(BaseButton, {
   };
 
   if (disabled) {
-    styles.opacity = color.action.disabled;
+    styles.opacity = colors.opacity.disabled;
   } else {
     styles[':hover'] = {
-      backgroundColor: color.themes.primary.color,
-      color: color.themes.primary.text.primary,
+      backgroundColor: colors.themes.primary.background.hover,
+      color: colors.themes.primary.text.primary,
     };
   }
 
@@ -64,7 +64,7 @@ const DropdownItemButton = styled(BaseButton, {
 const DropdownItem = forwardRef<HTMLLIElement, DropdownItemProps>((props, ref) => {
   const { children, onClick, disabled, className, ...others } = props;
 
-  const { clsPrefix } = useConfig();
+  const { clsPrefix } = useTheme();
 
   const { setOpen } = useContext(DropdownContext);
 

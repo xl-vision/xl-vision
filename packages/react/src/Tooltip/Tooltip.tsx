@@ -2,7 +2,6 @@ import { isProduction, isServer } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { Children, forwardRef, ReactElement, ReactNode } from 'react';
-import { useConfig } from '../ConfigProvider';
 import Popper, { PopperChildrenProps, PopperProps } from '../Popper';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
@@ -78,8 +77,7 @@ const TooltipArrow = styled('div', {
 });
 
 const Tooltip = forwardRef<HTMLDivElement, TooltipProps>((props, ref) => {
-  const { colors } = useTheme();
-  const { clsPrefix } = useConfig();
+  const { colors, clsPrefix } = useTheme();
 
   const {
     content,

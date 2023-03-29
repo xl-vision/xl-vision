@@ -1,25 +1,17 @@
 import { FC, Fragment } from 'react';
 import DedicatedDialog, { DedicatedDialogProps, DialogType } from './DedicatedDialog';
-import ConfigProvider, { ConfigProviderProps } from '../ConfigProvider';
-import ThemeProvider, { ThemeProviderProps } from '../ThemeProvider';
+import { ThemeProvider, ThemeProviderProps } from '../ThemeProvider';
 import createNotication from '../utils/createNotication';
 
 export type MethodDialogProps = DedicatedDialogProps & {
   themeProviderProps?: Omit<ThemeProviderProps, 'children'>;
-  configProviderProps?: Omit<ConfigProviderProps, 'children'>;
 };
 
-const MethodDialog: FC<MethodDialogProps> = ({
-  themeProviderProps,
-  configProviderProps,
-  ...others
-}) => {
+const MethodDialog: FC<MethodDialogProps> = ({ themeProviderProps, ...others }) => {
   return (
-    <ConfigProvider {...configProviderProps}>
-      <ThemeProvider {...themeProviderProps}>
-        <DedicatedDialog {...others} />
-      </ThemeProvider>
-    </ConfigProvider>
+    <ThemeProvider {...themeProviderProps}>
+      <DedicatedDialog {...others} />
+    </ThemeProvider>
   );
 };
 

@@ -16,9 +16,6 @@ const DisableElevation = () => {
       <Button color='primary' disableElevation={true}>
         button
       </Button>
-      <Button color='secondary' disableElevation={true}>
-        button
-      </Button>
       <Button color='error' disableElevation={true}>
         button
       </Button>

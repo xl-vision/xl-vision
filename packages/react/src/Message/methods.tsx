@@ -1,27 +1,19 @@
 import { FC } from 'react';
 import Message, { MessageProps, MessageType } from './Message';
 import MessageList, { MessageContainerProps } from './MessageContainer';
-import ConfigProvider, { ConfigProviderProps } from '../ConfigProvider';
-import ThemeProvider, { ThemeProviderProps } from '../ThemeProvider';
+import { ThemeProvider, ThemeProviderProps } from '../ThemeProvider';
 import createNotication from '../utils/createNotication';
 import { increaseZindex } from '../utils/zIndexManger';
 
 export type MethodMessageContainerProps = MessageContainerProps & {
   themeProviderProps?: Omit<ThemeProviderProps, 'children'>;
-  configProviderProps?: Omit<ConfigProviderProps, 'children'>;
 };
 
-const MessageListWrap: FC<MethodMessageContainerProps> = ({
-  themeProviderProps,
-  configProviderProps,
-  ...others
-}) => {
+const MessageListWrap: FC<MethodMessageContainerProps> = ({ themeProviderProps, ...others }) => {
   return (
-    <ConfigProvider {...configProviderProps}>
-      <ThemeProvider {...themeProviderProps}>
-        <MessageList {...others} />
-      </ThemeProvider>
-    </ConfigProvider>
+    <ThemeProvider {...themeProviderProps}>
+      <MessageList {...others} />
+    </ThemeProvider>
   );
 };
 

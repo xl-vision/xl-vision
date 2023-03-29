@@ -1,3 +1,4 @@
+import enUS from '../../locale/en-US';
 import { BaseTheme } from '../../ThemeProvider';
 import { createColors } from '../shared/colors';
 
@@ -21,6 +22,7 @@ const colors = createColors({
 const theme: BaseTheme = {
   clsPrefix: 'xl',
   size: 'middle',
+  locale: enUS,
   colors,
   breakpoints: {
     values: {

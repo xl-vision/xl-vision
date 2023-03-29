@@ -6,8 +6,7 @@ import {
 } from '@xl-vision/styled-engine';
 import { forwardRef } from 'react';
 import applyTheme from './applyTheme';
-import { useConfig } from '../ConfigProvider';
-import { Theme } from '../ThemeProvider/createTheme';
+import { useTheme, Theme } from '../ThemeProvider';
 
 const createGlobalStyles = <
   S extends {} | undefined = undefined,
@@ -26,7 +25,7 @@ const createGlobalStyles = <
   // @ts-ignore
   // eslint-disable-next-line react/display-name
   const DefaultComponent: typeof InnerComponent = forwardRef((props, ref) => {
-    const { clsPrefix } = useConfig();
+    const { clsPrefix } = useTheme();
 
     return <InnerComponent {...props} clsPrefix={clsPrefix} ref={ref} />;
   });

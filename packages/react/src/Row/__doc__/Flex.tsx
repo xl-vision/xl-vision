@@ -3,7 +3,7 @@ import { Row, styled } from '@xl-vision/react';
 const Wrapper = styled('div')(
   ({ theme }) => `
   padding: 0.5rem;
-  background-color: ${theme.color.divider};
+  background-color: ${theme.colors.divider.primary};
   border-radius: 4px;
 
   & + & {
@@ -16,10 +16,10 @@ const Box = styled('div')(
   ({ theme }) => `
   display: flex;
   padding: 0.5rem;
-  color: ${theme.color.themes.primary.text.primary};
+  color: ${theme.colors.themes.primary.text.primary};
   align-items: center;
   justify-content: center;
-  background-color: ${theme.color.themes.primary.color};
+  background-color: ${theme.colors.themes.primary.foreground.enabled};
   border-radius: 5px;
 `,
 );

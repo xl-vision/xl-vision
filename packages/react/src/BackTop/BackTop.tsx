@@ -3,9 +3,9 @@ import { VerticalAlignTopOutlined } from '@xl-vision/icons';
 import { isProduction, isServer, off, on } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { HTMLAttributes, forwardRef, useState, useEffect, CSSProperties, MouseEvent } from 'react';
-import { useConfig } from '../ConfigProvider';
 import Portal from '../Portal';
 import { styled } from '../styles';
+import { useTheme } from '../ThemeProvider';
 import Transition from '../Transition';
 import { throttleByAnimationFrame } from '../utils/perf';
 import { getScroll, scrollTo } from '../utils/scroll';
@@ -25,8 +25,8 @@ const displayName = 'BackTop';
 const BackTopRoot = styled('div', {
   name: displayName,
   slot: 'Root',
-})(({ theme, clsPrefix }) => {
-  const { colors, transitions } = theme;
+})(({ theme }) => {
+  const { colors, transitions, clsPrefix } = theme;
 
   const rootClassName = `${clsPrefix}-back-top`;
 
@@ -58,7 +58,7 @@ const getDefaultTarget = () => window;
 const getDefaultContainer = () => document.body;
 
 const BackTop = forwardRef<HTMLDivElement, BackTopProps>((props, ref) => {
-  const { clsPrefix } = useConfig();
+  const { clsPrefix } = useTheme();
 
   const {
     target = getDefaultTarget,

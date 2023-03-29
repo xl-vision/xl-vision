@@ -24,8 +24,8 @@ import {
 } from 'react';
 import AnchorContext from './AnchorContext';
 import Affix from '../Affix';
-import { useConfig } from '../ConfigProvider';
 import { styled } from '../styles';
+import { useTheme } from '../ThemeProvider';
 import { throttleByAnimationFrame } from '../utils/perf';
 import { getScroll, scrollTo } from '../utils/scroll';
 
@@ -51,14 +51,14 @@ const AnchorRoot = styled('div', {
 })<{ type: AnchorType }>(({ theme, styleProps }) => {
   const { type } = styleProps;
 
-  const { color } = theme;
+  const { colors } = theme;
 
   const style: CSSObject = {
     position: 'relative',
   };
 
   if (type === 'rail') {
-    style.borderLeft = `2px solid ${color.divider}`;
+    style.borderLeft = `2px solid ${colors.divider.primary}`;
   }
 
   return style;
@@ -68,18 +68,18 @@ const AnchorInk = styled('div', {
   name: displayName,
   slot: 'Ink',
 })(({ theme }) => {
-  const { color, transition } = theme;
+  const { colors, transitions } = theme;
 
   return {
     position: 'absolute',
     left: -10 / 2 - 1,
-    border: `2px solid ${color.themes.primary.color}`,
+    border: `2px solid ${colors.themes.primary.foreground.enabled}`,
     width: 10,
     height: 10,
     marginTop: -10 / 2,
     borderRadius: '50%',
-    background: color.background.paper,
-    transition: transition.standard('top'),
+    background: colors.background.paper,
+    transition: transitions.standard('top'),
   };
 });
 
@@ -92,7 +92,7 @@ export type AnchorInstance = Omit<HTMLDivElement, 'scrollTo'> & {
 };
 
 const Anchor = forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
-  const { clsPrefix } = useConfig();
+  const { clsPrefix } = useTheme();
 
   const {
     affix = true,

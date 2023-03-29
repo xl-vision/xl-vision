@@ -33,14 +33,6 @@ export type {
   Style,
 } from './ThemeProvider';
 
-export {
-  default as ConfigProvider,
-  ConfigContext,
-  useConfig,
-  defaultConfigContext,
-} from './ConfigProvider';
-export type { ConfigProviderProps, ConfigContextProps } from './ConfigProvider';
-
 export { default as Transition } from './Transition';
 export type { TransitionProps } from './Transition';
 

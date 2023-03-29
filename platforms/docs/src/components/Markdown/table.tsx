@@ -18,7 +18,7 @@ const TableWrapper = styled('table')(({ theme }) => {
     borderSpacing: 0,
     'td, th': {
       padding: '1rem 0.4rem',
-      borderBottom: `${theme.styleSize.middle.border}px solid ${theme.color.divider}`,
+      borderBottom: `${theme.sizes.middle.border}px solid ${theme.colors.divider.primary}`,
     },
     th: {
       // color: $title-color;
@@ -32,7 +32,7 @@ const TableWrapper = styled('table')(({ theme }) => {
           fontWeight: theme.typography.fontWeight.medium,
         },
         ':nth-child(3)': {
-          color: theme.color.themes.secondary.color,
+          // color: theme.color.themes.secondary.color,
         },
       },
     },

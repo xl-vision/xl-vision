@@ -3,9 +3,9 @@ import { Row, styled } from '@xl-vision/react';
 const Box = styled('div')(
   ({ theme }) => `
   padding: 0.5rem;
-  color: ${theme.color.themes.primary.text.primary};
+  color: ${theme.colors.themes.primary.text.primary};
   text-align: center;
-  background-color: ${theme.color.themes.primary.color};
+  background-color: ${theme.colors.themes.primary.foreground.enabled};
   border-radius: 5px;
 `,
 );

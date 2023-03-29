@@ -14,9 +14,8 @@ import {
 } from 'react';
 import BaseButton, { BaseButtonProps } from '../BaseButton';
 import CollapseTransition from '../CollapseTransition';
-import { useConfig } from '../ConfigProvider';
 import { styled } from '../styles';
-import { SizeVariant, ThemeVariant } from '../ThemeProvider';
+import { SizeVariant, ThemeVariant, useTheme } from '../ThemeProvider';
 
 export type ButtonColor = ThemeVariant | 'default';
 
@@ -281,7 +280,7 @@ const DefaultLoadingIcon = styled(LoadingOutlined, {
 `;
 
 const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((props, ref) => {
-  const { clsPrefix, size: configSize } = useConfig();
+  const { clsPrefix, size: configSize } = useTheme();
 
   const {
     color = 'default',
@@ -397,7 +396,6 @@ if (!isProduction) {
       'default',
       'error',
       'primary',
-      'secondary',
       'warning',
       'info',
       'success',

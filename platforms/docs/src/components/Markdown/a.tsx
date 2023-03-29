@@ -4,9 +4,9 @@ import { FC, AnchorHTMLAttributes } from 'react';
 
 const LinkWrapper = styled('a')(
   ({ theme }) => `
-  color: ${theme.color.themes.primary.color};
+  color: ${theme.colors.themes.primary.foreground.enabled};
   text-decoration: none;
-  transition: ${theme.transition.standard('all')};
+  transition: ${theme.transitions.standard('all')};
   display: inline-block;
   padding: 0 3px;
   cursor: pointer;

@@ -7,6 +7,7 @@ import createOverrideStyles, { OverrideStyles } from './overrideStyles';
 import createSizes, { Sizes, SizeVariant } from './sizes';
 import createTransitions, { Transitions } from './transitions';
 import createTypography, { Typography } from './typography';
+import { Locale } from '../locale';
 import defaultTheme from '../themes/default';
 import { DeepPartial } from '../types';
 
@@ -15,6 +16,7 @@ export type BaseTheme = {
   clsPrefix: string;
   colors: Colors;
   elevations: Elevations;
+  locale: Locale;
   size: SizeVariant;
   sizes: Sizes;
   transitions: Transitions;

@@ -11,9 +11,7 @@ import clsx from 'clsx';
 import { ComponentProps, ComponentType, forwardRef } from 'react';
 import applyTheme from './applyTheme';
 import { StyledComponentKey } from './constants';
-import { useConfig } from '../ConfigProvider';
-import { Theme } from '../ThemeProvider/createTheme';
-import { Style } from '../ThemeProvider/overrideStyles';
+import { Theme, Style, useTheme } from '../ThemeProvider';
 
 export type XlOptions = {
   name?: string;
@@ -126,7 +124,7 @@ const styled = <
     // @ts-ignore
 
     const DefaultComponent: typeof InnerDefaultComponent = forwardRef((props, ref) => {
-      const { clsPrefix } = useConfig();
+      const { clsPrefix } = useTheme();
 
       return (
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment

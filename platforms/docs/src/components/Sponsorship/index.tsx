@@ -6,8 +6,8 @@ import { useLocale } from '../LocalizationProvider';
 
 const Root = styled('div')(({ theme }) => {
   return {
-    backgroundColor: theme.color.background.default,
-    color: theme.color.text.secondary,
+    backgroundColor: theme.colors.background.default,
+    color: theme.colors.text.secondary,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',

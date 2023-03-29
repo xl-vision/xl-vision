@@ -14,9 +14,9 @@ import {
   useEffect,
   useRef,
 } from 'react';
-import { useConfig } from '../ConfigProvider';
 import Ripple, { RippleRef } from '../Ripple';
 import { styled } from '../styles';
+import { useTheme } from '../ThemeProvider';
 
 export type BaseButtonCommonProps =
   | ButtonHTMLAttributes<HTMLButtonElement>
@@ -128,7 +128,7 @@ const BaseButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseButtonP
       ...others
     } = props;
 
-    const { clsPrefix } = useConfig();
+    const { clsPrefix } = useTheme();
 
     const Component = (others as unknown as HTMLAnchorElement).href ? 'a' : 'button';
 

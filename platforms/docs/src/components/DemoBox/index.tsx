@@ -18,15 +18,15 @@ export type DemoBoxProps = {
 };
 
 const Wrapper = styled('div')<{ debug: boolean }>(({ theme, styleProps }) => {
-  const { styleSize, color } = theme;
+  const { sizes, colors } = theme;
 
   const { debug } = styleProps;
 
   return {
     borderRadius: 4,
     overflow: 'hidden',
-    border: `${styleSize.middle.border}px solid ${
-      debug ? color.themes.error.color : color.divider
+    border: `${sizes.middle.border}px solid ${
+      debug ? colors.themes.error.foreground.enabled : colors.divider
     }`,
     margin: `32px 0`,
   };
@@ -37,24 +37,24 @@ const Preview = styled('div')`
 `;
 
 const InfoWrapper = styled('div')<{ debug: boolean }>(({ theme, styleProps }) => {
-  const { styleSize, color } = theme;
+  const { sizes, colors } = theme;
 
   const { debug } = styleProps;
 
   return {
     position: 'relative',
     fontSize: 14,
-    borderTop: `${styleSize.middle.border}px solid ${
-      debug ? color.themes.error.color : color.divider
+    borderTop: `${sizes.middle.border}px solid ${
+      debug ? colors.themes.error.foreground.enabled : colors.divider
     }`,
-    color: color.text.primary,
+    color: colors.text.primary,
   };
 });
 
 const TitleWrapper = styled('div')(({ theme }) => {
   return {
     position: 'absolute',
-    backgroundColor: theme.color.background.paper,
+    backgroundColor: theme.colors.background.paper,
     top: -12,
     marginLeft: 16,
     padding: '0px 8px',
@@ -70,7 +70,7 @@ const DescWrapper = styled('div')(() => {
 
 const CodeWrapper = styled('div')(
   ({ theme }) => `
-  border-top: ${theme.styleSize.middle.border}px solid ${theme.color.divider};
+  border-top: ${theme.sizes.middle.border}px solid ${theme.colors.divider.primary};
 
   &.slide-enter-active,
   &.slide-exit-active {
@@ -100,7 +100,7 @@ const ButtonWrapper = styled('div')(() => {
 const ExpandWrapper = styled(DownOutlined)<{ expand: boolean }>(({ theme, styleProps }) => {
   const { expand } = styleProps;
   return {
-    transition: theme.transition.standard('transform'),
+    transition: theme.transitions.standard('transform'),
     transform: `rotate(${expand ? '0deg' : '-90deg'})`,
   };
 });

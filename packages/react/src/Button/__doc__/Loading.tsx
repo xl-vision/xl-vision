@@ -41,9 +41,6 @@ const Loading = () => {
       <Button color='primary' loading={loading} prefixIcon={IconWrapper} variant='text'>
         button
       </Button>
-      <Button color='secondary' loading={loading}>
-        button
-      </Button>
       <Button color='error' loading={loading} variant='text'>
         button
       </Button>

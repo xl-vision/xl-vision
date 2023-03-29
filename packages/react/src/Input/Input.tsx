@@ -15,10 +15,9 @@ import {
   FocusEvent,
   MouseEvent,
 } from 'react';
-import { useConfig } from '../ConfigProvider';
 import useInput from '../hooks/useInput';
 import { styled } from '../styles';
-import { SizeVariant } from '../ThemeProvider';
+import { SizeVariant, useTheme } from '../ThemeProvider';
 
 export type InputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
@@ -210,8 +209,8 @@ const InputPrefix = styled('span', {
 const InputSuffix = styled(InputPrefix, {
   name: displayName,
   slot: 'Suffix',
-})(({ theme, clsPrefix }) => {
-  const { colors, transitions } = theme;
+})(({ theme }) => {
+  const { colors, transitions, clsPrefix } = theme;
   return {
     marginRight: 0,
     marginLeft: 4,
@@ -235,7 +234,7 @@ const InputSuffix = styled(InputPrefix, {
 });
 
 const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
-  const { clsPrefix, size: configSize } = useConfig();
+  const { clsPrefix, size: configSize } = useTheme();
 
   const {
     className,

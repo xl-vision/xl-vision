@@ -17,11 +17,9 @@ import {
 } from 'react';
 import calculateNodeHeight from './calculateNodeHeight';
 import TextareaSuffix from './TextareaSuffix';
-import { useConfig } from '../ConfigProvider';
 import useInput from '../hooks/useInput';
 import { styled } from '../styles';
-import { ComponentSize } from '../ThemeProvider';
-import { alpha } from '../utils/color';
+import { SizeVariant, useTheme } from '../ThemeProvider';
 
 export type TextareaProps = Omit<
   TextareaHTMLAttributes<HTMLTextAreaElement>,
@@ -32,7 +30,7 @@ export type TextareaProps = Omit<
   defaultValue?: string;
   showCount?: boolean;
   allowClear?: boolean;
-  size?: ComponentSize;
+  size?: SizeVariant;
   autoHeight?: boolean | { minRows?: number; maxRows?: number };
 };
 
@@ -41,13 +39,13 @@ const displayName = 'Textarea';
 const TextAreaRoot = styled('span', {
   name: displayName,
   slot: 'Root',
-})<{ focused: boolean; size: ComponentSize; disabled?: boolean; readOnly?: boolean }>(
-  ({ theme, styleProps, clsPrefix }) => {
-    const { color, styleSize, typography, transition } = theme;
+})<{ focused: boolean; size: SizeVariant; disabled?: boolean; readOnly?: boolean }>(
+  ({ theme, styleProps }) => {
+    const { colors, sizes, typography, transitions, clsPrefix } = theme;
 
     const { size, focused, disabled, readOnly } = styleProps;
 
-    const themeSize = styleSize[size];
+    const themeSize = sizes[size];
 
     const styles: CSSObject = {
       ...typography.body1.style,
@@ -55,10 +53,10 @@ const TextAreaRoot = styled('span', {
       display: 'inline-block',
       width: '100%',
       position: 'relative',
-      backgroundColor: color.background.paper,
-      border: `${themeSize.border}px solid ${color.divider}`,
+      backgroundColor: colors.background.paper,
+      border: `${themeSize.border}px solid ${colors.divider}`,
       borderRadius: themeSize.borderRadius,
-      transition: transition.standard(['borderColor', 'boxShadow']),
+      transition: transitions.standard(['borderColor', 'boxShadow']),
       [`.${clsPrefix}-textarea__inner`]: {
         padding: `${themeSize.padding.y}px ${themeSize.padding.x}px`,
         // 高度最低为一行高度
@@ -88,33 +86,32 @@ const TextAreaRoot = styled('span', {
         },
       },
       [`.${clsPrefix}-textarea__clear`]: {
-        color: color.text.hint,
+        color: colors.text.hint,
         display: 'inline-flex',
         alignItems: 'center',
         cursor: 'pointer',
-        transition: transition.standard('color'),
+        transition: transitions.standard('color'),
         '&:hover': {
-          color: color.text.secondary,
+          color: colors.text.secondary,
         },
       },
       [`.${clsPrefix}-textarea__count`]: {
-        color: color.text.hint,
-        backgroundColor: color.background.paper,
+        color: colors.text.hint,
+        backgroundColor: colors.background.paper,
         marginLeft: 4,
       },
     };
 
     if (disabled) {
-      styles.opacity = color.action.disabled;
+      styles.opacity = colors.opacity.disabled;
       styles.cursor = 'not-allowed';
     } else if (!readOnly) {
       if (focused) {
-        const focusColor = color.themes.primary.focus;
-        styles.borderColor = focusColor;
-        styles.boxShadow = `0 0 0 2px ${alpha(focusColor, 0.2)}`;
+        styles.borderColor = colors.themes.primary.foreground.focus;
+        styles.boxShadow = `0 0 0 2px ${colors.themes.primary.outline}`;
       } else {
         styles[':hover'] = {
-          borderColor: color.themes.primary.hover,
+          borderColor: colors.themes.primary.foreground.hover,
         };
       }
     }
@@ -158,7 +155,7 @@ export enum ResizeStatus {
 }
 
 const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, ref) => {
-  const { clsPrefix, size: configSize } = useConfig();
+  const { clsPrefix, size: configSize } = useTheme();
 
   const {
     defaultValue = '',
@@ -353,7 +350,7 @@ if (!isProduction) {
     maxLength: PropTypes.number,
     readOnly: PropTypes.bool,
     showCount: PropTypes.bool,
-    size: PropTypes.oneOf<ComponentSize>(['large', 'middle', 'small']),
+    size: PropTypes.oneOf<SizeVariant>(['large', 'middle', 'small']),
     style: PropTypes.shape({}),
     value: PropTypes.string,
     onBlur: PropTypes.func,

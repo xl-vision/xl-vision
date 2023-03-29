@@ -1,6 +1,6 @@
 import { SearchOutlined } from '@xl-vision/icons';
 import { useState, useCallback } from 'react';
-import { Button, ComponentSize, styled } from '@xl-vision/react';
+import { Button, SizeVariant, styled } from '@xl-vision/react';
 
 const IconWrapper = <SearchOutlined />;
 
@@ -14,7 +14,7 @@ const Wrapper = styled('div')(() => {
 });
 
 const Size = () => {
-  const [size, setSize] = useState<ComponentSize>('middle');
+  const [size, setSize] = useState<SizeVariant>('middle');
 
   const handleSizeChange = useCallback(() => {
     setSize((prev) => {
@@ -34,9 +34,6 @@ const Size = () => {
         change size
       </Button>
       <Button color='primary' size={size} variant='text'>
-        button
-      </Button>
-      <Button color='secondary' size={size} variant='outlined'>
         button
       </Button>
       <Button color='error' size={size} variant='text'>

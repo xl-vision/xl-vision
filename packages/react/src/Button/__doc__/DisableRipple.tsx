@@ -16,9 +16,6 @@ const DisableRipple = () => {
       <Button color='primary' disableRipple={true} variant='text'>
         button
       </Button>
-      <Button color='secondary' disableRipple={true}>
-        button
-      </Button>
       <Button color='error' disableRipple={true} variant='text'>
         button
       </Button>

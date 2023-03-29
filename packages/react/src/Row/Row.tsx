@@ -4,9 +4,8 @@ import PropTypes from 'prop-types';
 import { HTMLAttributes, ComponentType, forwardRef, useMemo, ReactNode } from 'react';
 import RowContext from './RowContext';
 import useBreakPoints from './useBreakPoints';
-import { useConfig } from '../ConfigProvider';
 import { styled } from '../styles';
-import { Breakpoint } from '../ThemeProvider/breakpoints';
+import { Breakpoint, useTheme } from '../ThemeProvider';
 
 export type RowAlign = 'top' | 'middle' | 'bottom';
 export type RowJustify = 'start' | 'end' | 'center' | 'space-around' | 'space-between';
@@ -27,7 +26,7 @@ const displayName = 'Row';
 const RowRoot = styled('div', {
   name: displayName,
   slot: 'Root',
-})(({ clsPrefix }) => {
+})(({ theme: { clsPrefix } }) => {
   const rootClassName = `&.${clsPrefix}-row`;
 
   return {
@@ -78,7 +77,7 @@ const Row = forwardRef<HTMLDivElement, RowProps>((props, ref) => {
     ...others
   } = props;
 
-  const { clsPrefix } = useConfig();
+  const { clsPrefix } = useTheme();
 
   const breakPoints = useBreakPoints();
 

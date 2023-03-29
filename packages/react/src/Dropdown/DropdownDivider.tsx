@@ -11,11 +11,11 @@ const DropdownDividerRoot = styled('div', {
   name: displayName,
   slot: 'Root',
 })(({ theme }) => {
-  const { color } = theme;
+  const { colors } = theme;
   return {
     width: '100%',
     height: 1,
-    backgroundColor: color.divider,
+    backgroundColor: colors.divider.primary,
   };
 });
 

@@ -19,9 +19,6 @@ const Disabled = () => {
       <Button color='primary' disabled={true}>
         button
       </Button>
-      <Button color='secondary' disabled={true}>
-        button
-      </Button>
       <Button color='error' disabled={true}>
         button
       </Button>

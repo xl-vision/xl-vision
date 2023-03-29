@@ -19,9 +19,6 @@ const Long = () => {
       <Button color='primary' long={true} variant='text'>
         button
       </Button>
-      <Button color='secondary' long={true} variant='outlined'>
-        button
-      </Button>
       <Button color='warning' long={true} round={true}>
         button
       </Button>
