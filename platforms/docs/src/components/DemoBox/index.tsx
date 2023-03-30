@@ -26,7 +26,7 @@ const Wrapper = styled('div')<{ debug: boolean }>(({ theme, styleProps }) => {
     borderRadius: 4,
     overflow: 'hidden',
     border: `${sizes.middle.border}px solid ${
-      debug ? colors.themes.error.foreground.enabled : colors.divider
+      debug ? colors.themes.error.foreground.enabled : colors.divider.primary
     }`,
     margin: `32px 0`,
   };
@@ -45,7 +45,7 @@ const InfoWrapper = styled('div')<{ debug: boolean }>(({ theme, styleProps }) =>
     position: 'relative',
     fontSize: 14,
     borderTop: `${sizes.middle.border}px solid ${
-      debug ? colors.themes.error.foreground.enabled : colors.divider
+      debug ? colors.themes.error.foreground.enabled : colors.divider.primary
     }`,
     color: colors.text.primary,
   };

@@ -24,9 +24,9 @@ const loadingKeyframes = keyframes`
 
 const Root = styled('div')`
   ${({ theme }) => {
-    const { color, styleSize } = theme;
+    const { colors, sizes } = theme;
     return {
-      backgroundColor: color.background.paper,
+      backgroundColor: colors.background.paper,
       position: 'relative',
       overflowY: 'auto',
       width: '100%',
@@ -48,26 +48,26 @@ const Root = styled('div')`
           right: 0,
           bottom: 0,
           opacity: 0.5,
-          backgroundColor: color.background.paper,
+          backgroundColor: colors.background.paper,
         },
         svg: {
           fontSize: 50,
-          color: color.themes.primary.color,
+          color: colors.themes.primary.foreground.enabled,
         },
       },
       '.demo': {
         height: '100%',
       },
       '.error, .demo': {
-        padding: `${styleSize.middle.padding.y}px ${styleSize.middle.padding.x}px`,
+        padding: `${sizes.middle.padding.y}px ${sizes.middle.padding.x}px`,
       },
       '.error': {
         position: 'absolute',
         bottom: 0,
         width: '100%',
         margin: 0,
-        backgroundColor: color.themes.error.color,
-        color: color.themes.error.text.primary,
+        backgroundColor: colors.themes.error.foreground.enabled,
+        color: colors.themes.error.text.primary,
         overflow: 'auto',
       },
     };

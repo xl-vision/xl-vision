@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { Button, Modal, Popper, styled } from '@xl-vision/react';
 
 const Body = styled('div')(({ theme }) => {
-  const { color } = theme;
+  const { colors } = theme;
   return {
-    backgroundColor: color.background.paper,
+    backgroundColor: colors.background.paper,
     padding: '8px 16px',
     borderRadius: 4,
-    border: `1px solid ${color.divider}`,
+    border: `1px solid ${colors.divider.primary}`,
   };
 });
 

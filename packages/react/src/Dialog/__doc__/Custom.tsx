@@ -3,13 +3,13 @@ import { useState, useCallback } from 'react';
 import { Button, Dialog, styled } from '@xl-vision/react';
 
 const CustomHeader = styled('div')(({ theme }) => {
-  const { typography, color, styleSize } = theme;
+  const { typography, colors, sizes } = theme;
   return {
     position: 'relative',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    borderBottom: `${styleSize.middle.border}px solid ${color.divider}`,
+    borderBottom: `${sizes.middle.border}px solid ${colors.divider.primary}`,
     margin: '-16px -24px',
     padding: '8px 8px 8px 24px',
     h6: {
@@ -22,9 +22,9 @@ const CustomHeader = styled('div')(({ theme }) => {
 });
 
 const CustomFooter = styled('div')(({ theme }) => {
-  const { color, styleSize } = theme;
+  const { colors, sizes } = theme;
   return {
-    borderTop: `${styleSize.middle.border}px solid ${color.divider}`,
+    borderTop: `${sizes.middle.border}px solid ${colors.divider.primary}`,
     margin: -8,
     padding: 8,
   };

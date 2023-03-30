@@ -42,7 +42,7 @@ const HeaderNav = styled('header')(({ theme }) => {
     padding: '0 16px',
     // backgroundColor: alpha(background, 0.72),
     color: fontColor,
-    borderBottom: `${sizes.middle.border}px solid ${colors.divider}`,
+    borderBottom: `${sizes.middle.border}px solid ${colors.divider.primary}`,
     backdropFilter: 'blur(20px)',
 
     '.left': {

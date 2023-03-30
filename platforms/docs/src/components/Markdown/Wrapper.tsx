@@ -20,7 +20,7 @@ const Root = styled('main')(
         padding: 0 0.4em;
         font-size: 0.8em;
         font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
-        border: 1px solid ${theme.colors.divider};
+        border: 1px solid ${theme.colors.divider.primary};
         border-radius: 3px;
       }
     }

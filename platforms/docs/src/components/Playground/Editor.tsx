@@ -1,8 +1,9 @@
 import { useConstantFn } from '@xl-vision/hooks';
-import { styled, useTheme } from '@xl-vision/react';
+import { styled } from '@xl-vision/react';
 import codemirror from 'codemirror';
-import { FC, useMemo } from 'react';
+import { FC, useContext, useMemo } from 'react';
 import { Controlled as CodeMirror } from 'react-codemirror2';
+import { ThemeContext } from '../ThemeProvider';
 
 require('codemirror/mode/jsx/jsx');
 require('codemirror/lib/codemirror.css');
@@ -14,22 +15,19 @@ export type EditorProps = {
 };
 
 const CodeMirrorEditor = styled(CodeMirror)(({ theme }) => {
-  const { color } = theme;
+  const { colors } = theme;
   return {
     height: '100%',
     '.CodeMirror': {
       height: '100%',
-      background: color.background.default,
+      background: colors.background.default,
     },
   };
 });
 
 const Editor: FC<EditorProps> = (props) => {
   const { value, onChange } = props;
-
-  const { color } = useTheme();
-
-  const { mode } = color;
+  const { isDark } = useContext(ThemeContext);
 
   const handleChange = useConstantFn(
     (_1: codemirror.Editor, _2: codemirror.EditorChange, newValue: string) => {
@@ -43,10 +41,10 @@ const Editor: FC<EditorProps> = (props) => {
       indentUnit: 2,
       tabSize: 2,
       mode: 'jsx',
-      theme: mode === 'dark' ? 'material-darker' : 'default',
+      theme: isDark ? 'material-darker' : 'default',
       lineNumbers: true,
     };
-  }, [mode]);
+  }, [isDark]);
 
   return <CodeMirrorEditor options={options} value={value} onBeforeChange={handleChange} />;
 };

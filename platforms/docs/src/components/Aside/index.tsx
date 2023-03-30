@@ -60,17 +60,13 @@ const A = styled('a')(({ theme }) => {
     display: 'inline-block',
     width: '100%',
     position: 'relative',
-    color: `${text.primary}`,
+    color: text.primary,
     '&:hover': {
-      // color: `${mix(
-      //   theme.color.themes.primary.text.primary,
-      //   themes.primary.color,
-      //   themes.primary.action.hover,
-      // )}`,
+      color: themes.primary.foreground.hover,
     },
     '&.active': {
-      // backgroundColor: `${themes.primary.hover}`,
-      // color: `${theme.color.themes.primary.text.primary}`,
+      backgroundColor: themes.primary.foreground.active,
+      color: theme.colors.themes.primary.text.primary,
     },
   };
 });

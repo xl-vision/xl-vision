@@ -15,7 +15,6 @@ export type {
   BackgroundVariant,
   BackgroundActionVariant,
   SizeVariant,
-  ElevationVariant,
   FontWeightVariant,
   TransitionDurationVariant,
   TransitionFunctionVariant,

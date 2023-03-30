@@ -11,7 +11,7 @@ export type PlaygroundProps = {
 };
 
 const Root = styled('div')(({ theme }) => {
-  const { color } = theme;
+  const { colors } = theme;
   return {
     display: 'flex',
     flexDirection: 'row',
@@ -19,11 +19,11 @@ const Root = styled('div')(({ theme }) => {
     height: '100%',
     '.editor': {
       width: '50%',
-      borderRight: `1px solid ${color.divider}`,
+      borderRight: `1px solid ${colors.divider.primary}`,
     },
     '.preview': {
       width: '50%',
-      backgroundColor: color.background.paper,
+      backgroundColor: colors.background.paper,
     },
   };
 });
