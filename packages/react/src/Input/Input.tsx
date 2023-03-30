@@ -93,9 +93,9 @@ const InputAddonBefore = styled('span', {
     display: 'flex',
     flex: 'none',
     alignItems: 'center',
-    // backgroundColor: colors.emphasize(colors.background.paper, 0.05),
+    backgroundColor: colors.background.default,
     padding: `0 ${themeSize.padding.x}px`,
-    border: `${themeSize.border}px solid ${colors.divider}`,
+    border: `${themeSize.border}px solid ${colors.divider.primary}`,
     borderRightWidth: 0,
     borderTopLeftRadius: themeSize.borderRadius,
     borderBottomLeftRadius: themeSize.borderRadius,
@@ -131,7 +131,7 @@ const InputWrapper = styled('span', {
     const styles: CSSObject = {
       display: 'inline-flex',
       borderRadius: themeSize.borderRadius,
-      border: `${themeSize.border}px solid ${colors.divider}`,
+      border: `${themeSize.border}px solid ${colors.divider.primary}`,
       width: '100%',
       padding: `${themeSize.padding.y}px ${themeSize.padding.x}px`,
       color: colors.text.primary,
@@ -157,10 +157,10 @@ const InputWrapper = styled('span', {
       if (focused) {
         const focusColor = colors.themes.primary.foreground.focus;
         styles.borderColor = focusColor;
-        // styles.boxShadow = `0 0 0 2px ${alpha(focusColor, 0.2)}`;
+        styles.boxShadow = `0 0 0 2px ${colors.themes.primary.outline}`;
       } else {
         styles['&:hover'] = {
-          // borderColor: colors.themes.primary.hover,
+          borderColor: colors.themes.primary.foreground.hover,
         };
       }
     }

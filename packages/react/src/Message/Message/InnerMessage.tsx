@@ -73,7 +73,7 @@ const InnerMessageRoot = styled('div', {
       backgroundColor: colors.background.paper,
       borderRadius: sizes.middle.borderRadius,
       padding: `${sizes.middle.padding.y}px ${sizes.middle.padding.x}px`,
-      // ...elevations(12),
+      boxShadow: elevations[3],
     },
     [`.${rootClassName}__status, .${rootClassName}__close`]: {
       lineHeight: 1,

@@ -26,7 +26,7 @@ const BackTopRoot = styled('div', {
   name: displayName,
   slot: 'Root',
 })(({ theme }) => {
-  const { colors, transitions, clsPrefix } = theme;
+  const { colors, transitions, clsPrefix, elevations } = theme;
 
   const rootClassName = `${clsPrefix}-back-top`;
 
@@ -37,7 +37,7 @@ const BackTopRoot = styled('div', {
     ...transitions.fadeOut(`&.${rootClassName}`),
     [`.${rootClassName}__inner`]: {
       fontSize: 24,
-      backgroundColor: colors.text.secondary,
+      backgroundColor: colors.text.hint,
       color: colors.background.default,
       width: 40,
       height: 40,
@@ -47,8 +47,9 @@ const BackTopRoot = styled('div', {
       borderRadius: '50%',
       cursor: 'pointer',
       transition: transitions.standard('backgroundColor'),
+      boxShadow: elevations[3],
       '&:hover': {
-        backgroundColor: colors.text.primary,
+        backgroundColor: colors.text.secondary,
       },
     },
   };

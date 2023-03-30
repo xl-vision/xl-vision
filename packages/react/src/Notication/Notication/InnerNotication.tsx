@@ -85,7 +85,7 @@ const InnerNoticationRoot = styled('div', {
       borderRadius: sizes.large.borderRadius,
       padding: `${sizes.large.padding.x}px ${sizes.large.padding.x}px`,
       width: 384,
-      // ...elevations(12),
+      boxShadow: elevations[3],
     },
     [`.${rootClassName}__status, .${rootClassName}__close`]: {
       lineHeight: 1,

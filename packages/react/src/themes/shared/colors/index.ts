@@ -80,7 +80,7 @@ export const createColors = ({
         secondary: patterns[2],
       },
       text: outInverseText,
-      outline: new TinyColor(patterns[5]).setAlpha(0.1).toHexString(true),
+      outline: new TinyColor(patterns[5]).setAlpha(0.2).toHexString(true),
     };
   });
 

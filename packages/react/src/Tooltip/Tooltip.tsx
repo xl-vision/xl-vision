@@ -39,16 +39,17 @@ const TooltipPopup = styled('div', {
   name: displayName,
   slot: 'Popup',
 })<TooltipPopupStyleProps>(({ theme, styleProps }) => {
-  const { colors, typography, sizes } = theme;
+  const { colors, typography, sizes, elevations } = theme;
   const { hasWidth } = styleProps;
 
-  // const bgColor = colors.emphasize(colors.modes.dark.background.paper, 0.1);
+  const backgroundColor = colors.background.spotlight;
 
   return {
-    // backgroundColor: bgColor,
-    // color: colors.getContrastText(bgColor).primary,
+    backgroundColor,
+    color: colors.getContrastText(backgroundColor).primary,
     padding: '4px 8px',
     borderRadius: sizes.middle.borderRadius,
+    boxShadow: elevations[2],
 
     ...typography.caption.style,
     ...(hasWidth && {
@@ -66,12 +67,12 @@ const TooltipArrow = styled('div', {
 })(({ theme }) => {
   const { colors } = theme;
 
-  // const bgColor = colors.emphasize(colors.modes.dark.background.paper, 0.1);
+  const backgroundColor = colors.background.spotlight;
 
   return {
     width: 8,
     height: 8,
-    // backgroundColor: bgColor,
+    backgroundColor,
     transform: 'translate(-4px, -4px) rotate(45deg)',
   };
 });

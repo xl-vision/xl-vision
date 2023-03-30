@@ -35,7 +35,7 @@ const AnchorLinkTitle = styled('a', {
 
   return {
     ...typography.subtitle2.style,
-    color: isActive ? colors.themes.primary.foreground.enabled : colors.text.primary,
+    color: isActive ? colors.themes.primary.foreground.active : colors.text.primary,
     textDecoration: 'none',
     display: 'block',
     whiteSpace: 'nowrap',

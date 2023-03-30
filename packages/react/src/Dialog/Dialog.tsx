@@ -37,7 +37,7 @@ const DialogRoot = styled(Modal, {
     maxHeight: 'calc(100% - 64px)',
     display: 'flex',
     flexDirection: 'column',
-    // ...elevations(24),
+    boxShadow: elevations[3],
   };
 });
 

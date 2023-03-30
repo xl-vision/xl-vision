@@ -73,7 +73,7 @@ const AnchorInk = styled('div', {
   return {
     position: 'absolute',
     left: -10 / 2 - 1,
-    border: `2px solid ${colors.themes.primary.foreground.enabled}`,
+    border: `2px solid ${colors.themes.primary.foreground.active}`,
     width: 10,
     height: 10,
     marginTop: -10 / 2,

@@ -41,7 +41,7 @@ const DropdownPopup = styled('ul', {
     padding: '5px 0',
     listStyle: 'none',
     margin: 0,
-    // ...elevations(8),
+    boxShadow: elevations[3],
   };
 });
 

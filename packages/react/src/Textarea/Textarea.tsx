@@ -54,7 +54,7 @@ const TextAreaRoot = styled('span', {
       width: '100%',
       position: 'relative',
       backgroundColor: colors.background.paper,
-      border: `${themeSize.border}px solid ${colors.divider}`,
+      border: `${themeSize.border}px solid ${colors.divider.primary}`,
       borderRadius: themeSize.borderRadius,
       transition: transitions.standard(['borderColor', 'boxShadow']),
       [`.${clsPrefix}-textarea__inner`]: {
