@@ -73,16 +73,16 @@ const BaseButtonRoot = styled('button', {
 
     [`.${clsPrefix}-base-button__ripple`]: {
       transform: 'scale(1)',
-      // opacity: colors.action.pressed,
+      opacity: colors.opacity.ripple,
       '&-enter-active': {
-        // transition: theme.transition.enter('all'),
+        transition: theme.transitions.enter('all'),
       },
       '&-exit-active': {
-        // transition: theme.transition.exitPermanent('all'),
+        transition: theme.transitions.exit('all'),
       },
       '&-enter-from': {
         transform: 'scale(0)',
-        opacity: 0.1,
+        opacity: 0,
       },
       '&-exit-to': {
         opacity: 0,

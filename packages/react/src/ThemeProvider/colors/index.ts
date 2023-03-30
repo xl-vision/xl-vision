@@ -27,6 +27,7 @@ export type Colors = {
   divider: Record<DividerVariant, string>;
   themes: Record<ThemeVariant, ThemeColors>;
   opacity: {
+    ripple: number
     disabled: number;
   };
   contrastThreshold: number;

@@ -168,6 +168,15 @@ const ButtonRoot = styled(BaseButton, {
         return styles;
       }
 
+      styles['&:hover'] = {
+        ...(styles['&:hover'] || {}),
+        backgroundColor: colors.themes.primary.background.hover,
+      };
+      styles['&:focus'] = {
+        ...(styles['&:focus'] || {}),
+        backgroundColor: colors.themes.primary.background.focus,
+      };
+
       return styles;
     }
 
@@ -185,7 +194,7 @@ const ButtonRoot = styled(BaseButton, {
     styles.color = colors.themes[colorStyle].foreground.enabled;
 
     if (variant === 'outlined') {
-      styles.border = `${themeSize.border}px solid ${colors.themes[colorStyle].foreground.enabled}`;
+      styles.border = `${themeSize.border}px solid ${colors.themes[colorStyle].divider.primary}`;
     }
 
     if (!disabled && !loading) {
@@ -201,6 +210,7 @@ const ButtonRoot = styled(BaseButton, {
 
     return styles;
   }
+
   if (variant === 'contained') {
     styles.color = colors.themes[colorStyle].text.primary;
     styles.backgroundColor = colors.themes[colorStyle].foreground.enabled;

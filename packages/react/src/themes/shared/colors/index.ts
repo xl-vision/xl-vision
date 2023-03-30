@@ -16,6 +16,7 @@ export type ColorInput = {
   themes: Record<ThemeVariant, string>;
   opacity: {
     disabled: number;
+    ripple: number;
   };
   contrastThreshold: number;
 };
@@ -64,15 +65,15 @@ export const createColors = ({
       foreground: {
         enabled: patterns[5],
         hover: patterns[4],
-        active: patterns[6],
-        focus: patterns[6],
+        active: patterns[3],
+        focus: patterns[4],
         dragged: patterns[3],
         disabled: patterns[2],
       },
       background: {
-        enabled: patterns[3],
-        hover: patterns[2],
-        focus: patterns[4],
+        enabled: patterns[2],
+        hover: patterns[0],
+        focus: patterns[1],
       },
       divider: {
         primary: patterns[3],

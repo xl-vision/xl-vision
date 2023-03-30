@@ -1,6 +1,7 @@
 import enUS from '../../locale/en-US';
 import { BaseTheme } from '../../ThemeProvider';
 import { createColors } from '../shared/colors';
+import elevations from '../shared/elevations';
 
 const colors = createColors({
   contrastThreshold: 3,
@@ -9,13 +10,14 @@ const colors = createColors({
   background: '#fff',
   opacity: {
     disabled: 0.3,
+    ripple: 0.3,
   },
   themes: {
-    primary: '#1068f4',
-    error: '#eb1919',
-    warning: '#f59e0b',
+    primary: '#1976d2',
+    error: '#d32f2f',
+    warning: '#ed6c02',
     info: '#66768d',
-    success: '#22c85f',
+    success: '#2e7d32',
   },
 });
 
@@ -79,12 +81,7 @@ const theme: BaseTheme = {
       bold: 700,
     },
   },
-  elevations: {
-    0: 'none',
-    1: '',
-    2: '',
-    3: '',
-  },
+  elevations,
 };
 
 export default theme;

@@ -1,6 +1,4 @@
-export type ElevationVariant = 0 | 1 | 2 | 3;
-
-export type Elevations = Record<ElevationVariant, string>;
+export type Elevations = [string, string, string, string, string, string];
 
 const createElevations = (elevations: Elevations) => {
   return elevations;
