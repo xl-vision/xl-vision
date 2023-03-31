@@ -3,12 +3,12 @@ import { useState } from 'react';
 import { useAutoUpdatePopper } from '@xl-vision/usePopper';
 
 const DemoRoot = styled('div')(({ theme }) => {
-  const { color } = theme;
+  const { colors } = theme;
   return {
     position: 'relative',
     height: 200,
     overflow: 'auto',
-    backgroundColor: color.background.default,
+    backgroundColor: colors.background.default,
 
     '&:before': {
       display: 'block',

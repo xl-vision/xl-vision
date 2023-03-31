@@ -65,15 +65,15 @@ export const createColors = ({
       foreground: {
         enabled: patterns[5],
         hover: patterns[4],
-        active: patterns[3],
-        focus: patterns[4],
+        active: patterns[6],
+        focus: patterns[6],
         dragged: patterns[3],
         disabled: patterns[2],
       },
       background: {
-        enabled: patterns[2],
-        hover: patterns[0],
-        focus: patterns[1],
+        enabled: patterns[0],
+        hover: patterns[1],
+        focus: patterns[2],
       },
       divider: {
         primary: patterns[3],

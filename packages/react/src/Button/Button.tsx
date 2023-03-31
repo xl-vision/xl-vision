@@ -143,7 +143,7 @@ const ButtonRoot = styled(BaseButton, {
       };
       styles['&:focus'] = {
         ...(styles['&:focus'] || {}),
-        color: colors.themes.primary.foreground.focus,
+        color: colors.themes.primary.foreground.hover,
       };
     }
 
@@ -161,7 +161,7 @@ const ButtonRoot = styled(BaseButton, {
 
           styles['&:focus'] = {
             ...(styles['&:focus'] || {}),
-            borderColor: colors.themes.primary.foreground.focus,
+            borderColor: colors.themes.primary.foreground.hover,
           };
         }
 
@@ -174,7 +174,7 @@ const ButtonRoot = styled(BaseButton, {
       };
       styles['&:focus'] = {
         ...(styles['&:focus'] || {}),
-        backgroundColor: colors.themes.primary.background.focus,
+        backgroundColor: colors.themes.primary.background.hover,
       };
 
       return styles;
@@ -204,7 +204,7 @@ const ButtonRoot = styled(BaseButton, {
       };
       styles['&:focus'] = {
         ...(styles['&:focus'] || {}),
-        backgroundColor: colors.themes[colorStyle].background.focus,
+        backgroundColor: colors.themes[colorStyle].background.hover,
       };
     }
 
@@ -222,7 +222,7 @@ const ButtonRoot = styled(BaseButton, {
       };
       styles['&:focus'] = {
         ...(styles['&:focus'] || {}),
-        backgroundColor: colors.themes[colorStyle].foreground.focus,
+        backgroundColor: colors.themes[colorStyle].foreground.hover,
       };
     }
   }

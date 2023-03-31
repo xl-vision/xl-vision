@@ -18,8 +18,8 @@ const MessageRoot = styled('div')(({ theme }) => {
     '.inner': {
       padding: `4px 8px`,
       borderRadius: 4,
-      backgroundColor: theme.color.background.paper,
-      ...theme.elevations(12),
+      backgroundColor: theme.colors.background.paper,
+      boxShadow: theme.elevations[3],
     },
     '&.demo': {
       '&-appear-active, &-exit-active': {

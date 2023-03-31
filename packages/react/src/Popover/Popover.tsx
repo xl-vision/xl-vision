@@ -54,7 +54,7 @@ const PopoverPopup = styled('div', {
     color: colors.getContrastText(bgColor).primary,
     borderRadius: 4,
     minWidth: 160,
-    boxShadow: elevations[3]
+    boxShadow: elevations[3],
   };
 });
 

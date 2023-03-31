@@ -24,7 +24,7 @@ describe('ThemeProvider', () => {
     );
 
     expect(fn.mock.calls.length).toBe(1);
-    expect(fn.mock.calls[0][0]).toBe(enUS);
+    expect(fn.mock.calls[0][0]).toStrictEqual(enUS);
 
     fn.mockClear();
 
@@ -35,7 +35,7 @@ describe('ThemeProvider', () => {
     );
 
     expect(fn.mock.calls.length).toBe(1);
-    expect(fn.mock.calls[0][0]).toBe(zhCN);
+    expect(fn.mock.calls[0][0]).toStrictEqual(zhCN);
     fn.mockClear();
   });
 

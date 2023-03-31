@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { ThemeProvider, CssBaseline, BaseTheme } from '@xl-vision/react';
+import { ThemeProvider, CssBaseline, ThemeInput } from '@xl-vision/react';
 
 describe('CssBaseline', () => {
   it('basic renders', () => {
@@ -14,13 +14,13 @@ describe('CssBaseline', () => {
   });
 
   it('supports theme overrides', () => {
-    const baseTheme: BaseTheme = {
+    const baseTheme: ThemeInput = {
       overrideStyles: {
         CssBaseline: {
           Root(theme) {
             return {
               body: {
-                color: theme.color.themes.primary.color,
+                color: theme.colors.themes.primary.foreground.enabled,
               },
             };
           },
@@ -29,7 +29,7 @@ describe('CssBaseline', () => {
     };
 
     render(
-      <ThemeProvider theme={baseTheme}>
+      <ThemeProvider {...baseTheme}>
         <CssBaseline>
           <div />
         </CssBaseline>

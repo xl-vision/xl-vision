@@ -9,7 +9,7 @@ const Box = styled('div')(({ theme }) => {
     height: 30,
     borderRadius: '50%',
     marginTop: 20,
-    // backgroundColor: theme.color.themes.secondary.color,
+    backgroundColor: theme.colors.themes.primary.foreground.enabled,
   };
 });
 

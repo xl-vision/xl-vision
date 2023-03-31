@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { CloseCircleFilled } from '@xl-vision/icons';
-import { Button, ComponentSize, ConfigProvider } from '@xl-vision/react';
+import { Button, SizeVariant, ThemeProvider } from '@xl-vision/react';
 
 const CloseWrapper = <CloseCircleFilled />;
 
@@ -65,19 +65,19 @@ describe('Button', () => {
   });
 
   it('Test component size', () => {
-    const componentSizes: Array<ComponentSize> = ['small', 'middle', 'large'];
+    const componentSizes: Array<SizeVariant> = ['small', 'middle', 'large'];
 
     const { container, rerender } = render(
-      <ConfigProvider>
+      <ThemeProvider>
         <Button>button</Button>
-      </ConfigProvider>,
+      </ThemeProvider>,
     );
 
     componentSizes.forEach((componentSize) => {
       rerender(
-        <ConfigProvider size={componentSize}>
+        <ThemeProvider size={componentSize}>
           <Button>button</Button>
-        </ConfigProvider>,
+        </ThemeProvider>,
       );
       expect(container.querySelector(`.xl-button--size-${componentSize}`)).not.toBe(null);
     });

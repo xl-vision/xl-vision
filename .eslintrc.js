@@ -138,7 +138,16 @@ module.exports = {
         callbacksLast: true,
       },
     ],
-    'prefer-destructuring': ['error', { object: true, array: false }],
+    'prefer-destructuring': [
+      'error',
+      {
+        VariableDeclarator: { object: true, array: false },
+        AssignmentExpression: {
+          array: false,
+          object: false,
+        },
+      },
+    ],
     'unicorn/filename-case': [
       'error',
       {
