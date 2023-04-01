@@ -48,7 +48,7 @@ const theme: BaseTheme = {
     durations: {
       short: '250ms',
       standard: '300ms',
-      long: '375',
+      long: '375ms',
     },
   },
   sizes: {
