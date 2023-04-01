@@ -1,28 +1,21 @@
 import { styled } from '@xl-vision/react';
-import {
-  grey,
-  purple,
-  red,
-  blue,
-  indigo,
-  deepPurple,
-  yellow,
-  green,
-} from '@xl-vision/react/ThemeProvider/palette';
 
 const Pre = styled('pre')(({ theme }) => {
-  const { color, styleSize } = theme;
+  const { colors, sizes } = theme;
 
-  const isDark = color.mode === 'dark';
+  const { themes } = colors;
+
+  // const isDark = colors.mode === 'dark';
 
   return {
     '&[class*="language-"]': {
-      borderRadius: styleSize.middle.border,
       overflow: 'hidden',
       margin: 0,
       padding: '6px 12px',
-      backgroundColor: isDark ? grey.A400 : grey[100],
-      color: color.text.primary,
+      backgroundColor: colors.background.default,
+      borderRight: theme.sizes.middle.borderRadius,
+      borderRadius: sizes.middle.borderRadius,
+      color: colors.text.primary,
     },
     'code[class*="language-"]': {
       fontSize: 14,
@@ -40,46 +33,49 @@ const Pre = styled('pre')(({ theme }) => {
     },
 
     '.token': {
+      '&.property': {
+        color: themes.primary.foreground.enabled,
+      },
       '.punctuation': {
-        color: color.text.secondary,
+        color: colors.text.secondary,
       },
       '&.keyword, &.function': {
-        color: isDark ? blue[300] : red[400],
+        color: themes.error.foreground.enabled,
       },
-      '&.function .maybe-class-name': {
-        // color: isDark ? cyan[300] : purple[500],
+      '&.maybe-class-name': {
+        color: themes.primary.foreground.enabled,
       },
-      '&.function-variable': {
-        color: color.text.primary,
+      '&.function': {
+        color: themes.error.foreground.active,
       },
-      '&.property-access': {
-        color: isDark ? blue[300] : blue[500],
-      },
-      '&.builtin': {
-        color: isDark ? blue[300] : blue[500],
-      },
+      '&.property-access': {},
+      '&.builtin': {},
       '&.comment': {
-        color: color.text.hint,
+        color: colors.text.hint,
       },
       '&.imports': {
         '.maybe-class-name': {
-          color: color.text.primary,
+          color: colors.text.primary,
         },
       },
       '&.keyword + .string': {
-        color: isDark ? deepPurple[300] : grey[800],
+        color: themes.error.foreground.enabled,
       },
       '&.tag': {
-        color: isDark ? yellow[800] : green[300],
+        color: themes.success.foreground.enabled,
+
+        '.class-name': {
+          color: themes.primary.foreground.active,
+        },
 
         '.attr-name': {
-          color: isDark ? blue[300] : indigo[400],
+          color: themes.error.foreground.enabled,
         },
         '.attr-value': {
-          color: isDark ? purple[400] : indigo[400],
+          color: colors.text.primary,
         },
         '.script': {
-          color: color.text.primary,
+          color: themes.primary.foreground.enabled,
         },
       },
       '&.string, &.number, &.boolean': {},

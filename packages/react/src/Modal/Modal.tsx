@@ -21,9 +21,9 @@ import {
   KeyboardEvent,
   MouseEvent as ReactMouseEvent,
 } from 'react';
-import { useConfig } from '../ConfigProvider';
 import Portal, { PortalContainerType } from '../Portal';
 import { styled } from '../styles';
+import { useTheme } from '../ThemeProvider';
 import Transition from '../Transition';
 import { forceReflow } from '../utils/dom';
 import getContainer from '../utils/getContainer';
@@ -67,8 +67,8 @@ const ModalRoot = styled('div', {
 const ModalMask = styled('div', {
   name: displayName,
   slot: 'Mask',
-})(({ theme, clsPrefix }) => {
-  const { transition } = theme;
+})(({ theme }) => {
+  const { transitions, colors, clsPrefix } = theme;
   return {
     position: 'absolute',
     left: 0,
@@ -76,13 +76,13 @@ const ModalMask = styled('div', {
     right: 0,
     bottom: 0,
     zIndex: -1,
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    backgroundColor: colors.background.mask,
     [`&.${clsPrefix}-modal__mask`]: {
       '&-enter-active': {
-        transition: transition.enter('opacity'),
+        transition: transitions.enter('opacity'),
       },
       '&-exit-active': {
-        transition: transition.exitPermanent('opacity'),
+        transition: transitions.exit('opacity'),
       },
       '&-enter-from,&-exit-to': {
         opacity: 0,
@@ -97,17 +97,17 @@ const ModalMask = styled('div', {
 const ModalBody = styled('div', {
   name: displayName,
   slot: 'Body',
-})(({ clsPrefix, theme }) => {
-  const { transition } = theme;
+})(({ theme }) => {
+  const { clsPrefix, transitions } = theme;
   return {
     position: 'relative',
     outline: 0,
     [`&.${clsPrefix}-modal__body`]: {
       '&-enter-active': {
-        transition: transition.enter(['opacity', 'transform']),
+        transition: transitions.enter(['opacity', 'transform']),
       },
       '&-exit-active': {
-        transition: transition.exitPermanent(['opacity', 'transform']),
+        transition: transitions.exit(['opacity', 'transform']),
       },
       '&-enter-from,&-exit-to': {
         opacity: 0,
@@ -170,7 +170,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     ...others
   } = props;
 
-  const { clsPrefix } = useConfig();
+  const { clsPrefix } = useTheme();
 
   const [open, setOpen] = useValueChange(defaultOpen, openProp, onOpenChange);
 

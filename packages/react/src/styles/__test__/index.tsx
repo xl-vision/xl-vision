@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import { useMemo } from 'react';
-import ThemeProvder, { BaseTheme } from '../../ThemeProvider';
+import { ThemeProvider, ThemeInput } from '@xl-vision/react';
 import styled from '../styled';
 
 const Button = styled('button', {
@@ -27,12 +27,12 @@ describe('styled', () => {
               },
             },
           },
-        } as BaseTheme;
+        } as ThemeInput;
       }, [color]);
       return (
-        <ThemeProvder theme={theme}>
+        <ThemeProvider {...theme}>
           <Button>click</Button>
-        </ThemeProvder>
+        </ThemeProvider>
       );
     };
 

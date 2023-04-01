@@ -16,7 +16,7 @@ const Root = styled('div')(({ theme }) => {
   return {
     display: 'flex',
     flexDirection: 'column',
-    backgroundColor: theme.color.background.paper,
+    backgroundColor: theme.colors.background.paper,
     // '.menu-button': {
     //   position: 'fixed',
     //   zIndex: 1000,
@@ -48,7 +48,7 @@ const AsideWrapper = styled(Aside)(({ theme }) => {
 
   return {
     // width: '100%',
-    backgroundColor: theme.color.background.paper,
+    backgroundColor: theme.colors.background.paper,
     height: '100%',
     maxHeight: `calc(100vh - ${HEADER_HEIGHT}px)`,
     overflowY: 'hidden',
@@ -80,7 +80,7 @@ const MainWrapper = styled('div')(({ theme }) => {
   return {
     // padding: '0 16px',
     // marginTop: height,
-    backgroundColor: theme.color.background.paper,
+    backgroundColor: theme.colors.background.paper,
     overflowY: 'auto',
     // [`@media(min-width: ${mobileWidth})`]: {
     //   marginTop: 0,

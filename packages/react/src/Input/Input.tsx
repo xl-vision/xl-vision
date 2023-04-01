@@ -15,11 +15,9 @@ import {
   FocusEvent,
   MouseEvent,
 } from 'react';
-import { useConfig } from '../ConfigProvider';
 import useInput from '../hooks/useInput';
 import { styled } from '../styles';
-import { ComponentSize } from '../ThemeProvider';
-import { alpha } from '../utils/color';
+import { SizeVariant, useTheme } from '../ThemeProvider';
 
 export type InputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
@@ -34,7 +32,7 @@ export type InputProps = Omit<
   defaultValue?: string;
   showCount?: boolean;
   allowClear?: boolean;
-  size?: ComponentSize;
+  size?: SizeVariant;
   type?:
     | 'button'
     | 'checkbox'
@@ -65,11 +63,11 @@ const displayName = 'Input';
 const InputRoot = styled('span', {
   name: displayName,
   slot: 'Root',
-})<{ size: ComponentSize }>(({ theme, styleProps }) => {
-  const { typography, styleSize } = theme;
+})<{ size: SizeVariant }>(({ theme, styleProps }) => {
+  const { typography, sizes } = theme;
   const { size } = styleProps;
 
-  const themeSize = styleSize[size];
+  const themeSize = sizes[size];
 
   const styles: CSSObject = {
     ...typography.body1.style,
@@ -84,20 +82,20 @@ const InputRoot = styled('span', {
 const InputAddonBefore = styled('span', {
   name: displayName,
   slot: 'AddonBefore',
-})<{ size: ComponentSize }>(({ theme, styleProps }) => {
-  const { color, styleSize } = theme;
+})<{ size: SizeVariant }>(({ theme, styleProps }) => {
+  const { colors, sizes } = theme;
 
   const { size } = styleProps;
 
-  const themeSize = styleSize[size];
+  const themeSize = sizes[size];
 
   return {
     display: 'flex',
     flex: 'none',
     alignItems: 'center',
-    backgroundColor: color.emphasize(color.background.paper, 0.05),
+    backgroundColor: colors.background.default,
     padding: `0 ${themeSize.padding.x}px`,
-    border: `${themeSize.border}px solid ${color.divider}`,
+    border: `${themeSize.border}px solid ${colors.divider.primary}`,
     borderRightWidth: 0,
     borderTopLeftRadius: themeSize.borderRadius,
     borderBottomLeftRadius: themeSize.borderRadius,
@@ -108,37 +106,37 @@ const InputAddonAfter = styled(InputAddonBefore, {
   name: displayName,
   slot: 'AddonAfter',
 })(({ theme }) => {
-  const { styleSize } = theme;
+  const { sizes } = theme;
   return {
     borderLeftWidth: 0,
-    borderRightWidth: styleSize.middle.border,
+    borderRightWidth: sizes.middle.border,
     borderTopLeftRadius: 0,
     borderBottomLeftRadius: 0,
-    borderTopRightRadius: styleSize.middle.borderRadius,
-    borderBottomRightRadius: styleSize.middle.borderRadius,
+    borderTopRightRadius: sizes.middle.borderRadius,
+    borderBottomRightRadius: sizes.middle.borderRadius,
   };
 });
 
 const InputWrapper = styled('span', {
   name: displayName,
   slot: 'Wrapper',
-})<{ focused: boolean; size: ComponentSize; disabled?: boolean; readOnly?: boolean }>(
+})<{ focused: boolean; size: SizeVariant; disabled?: boolean; readOnly?: boolean }>(
   ({ theme, styleProps }) => {
-    const { color, styleSize, transition } = theme;
+    const { colors, sizes, transitions } = theme;
 
     const { focused, size, disabled, readOnly } = styleProps;
 
-    const themeSize = styleSize[size];
+    const themeSize = sizes[size];
 
     const styles: CSSObject = {
       display: 'inline-flex',
       borderRadius: themeSize.borderRadius,
-      border: `${themeSize.border}px solid ${color.divider}`,
+      border: `${themeSize.border}px solid ${colors.divider.primary}`,
       width: '100%',
       padding: `${themeSize.padding.y}px ${themeSize.padding.x}px`,
-      color: color.text.primary,
-      backgroundColor: color.background.paper,
-      transition: transition.standard(['borderColor', 'boxShadow']),
+      color: colors.text.primary,
+      backgroundColor: colors.background.paper,
+      transition: transitions.standard(['borderColor', 'boxShadow']),
       zIndex: 1,
       fontSize: 'inherit',
 
@@ -153,16 +151,16 @@ const InputWrapper = styled('span', {
     };
 
     if (disabled) {
-      styles.opacity = color.action.disabled;
+      styles.opacity = colors.opacity.disabled;
       styles.cursor = 'not-allowed';
     } else if (!readOnly) {
       if (focused) {
-        const focusColor = color.themes.primary.focus;
+        const focusColor = colors.themes.primary.foreground.focus;
         styles.borderColor = focusColor;
-        styles.boxShadow = `0 0 0 2px ${alpha(focusColor, 0.2)}`;
+        styles.boxShadow = `0 0 0 2px ${colors.themes.primary.outline}`;
       } else {
         styles['&:hover'] = {
-          borderColor: color.themes.primary.hover,
+          borderColor: colors.themes.primary.foreground.hover,
         };
       }
     }
@@ -175,7 +173,7 @@ const InputInner = styled('input', {
   name: displayName,
   slot: 'Inner',
 })(({ theme }) => {
-  const { color, typography, mixins, transition } = theme;
+  const { colors, typography, mixins, transitions } = theme;
   return {
     ...mixins.placeholder(),
     ...typography.body1.style,
@@ -190,9 +188,9 @@ const InputInner = styled('input', {
     outline: 0,
     padding: 0,
     WebkitAppearance: 'none',
-    color: color.text.primary,
-    backgroundColor: color.background.paper,
-    transition: transition.standard(['borderColor', 'boxShadow']),
+    color: colors.text.primary,
+    backgroundColor: colors.background.paper,
+    transition: transitions.standard(['borderColor', 'boxShadow']),
   };
 });
 
@@ -211,8 +209,8 @@ const InputPrefix = styled('span', {
 const InputSuffix = styled(InputPrefix, {
   name: displayName,
   slot: 'Suffix',
-})(({ theme, clsPrefix }) => {
-  const { color, transition } = theme;
+})(({ theme }) => {
+  const { colors, transitions, clsPrefix } = theme;
   return {
     marginRight: 0,
     marginLeft: 4,
@@ -223,20 +221,20 @@ const InputSuffix = styled(InputPrefix, {
       display: 'inline-flex',
       lineHeight: 1,
       alignItems: 'center',
-      color: color.text.hint,
+      color: colors.text.hint,
     },
     [`.${clsPrefix}-input__suffix-clear`]: {
       cursor: 'pointer',
-      transition: transition.standard('color'),
+      transition: transitions.standard('color'),
       '&:hover': {
-        color: color.text.secondary,
+        color: colors.text.secondary,
       },
     },
   };
 });
 
 const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
-  const { clsPrefix, size: configSize } = useConfig();
+  const { clsPrefix, size: configSize } = useTheme();
 
   const {
     className,
@@ -441,7 +439,7 @@ if (!isProduction) {
     prefix: PropTypes.node,
     readOnly: PropTypes.bool,
     showCount: PropTypes.bool,
-    size: PropTypes.oneOf<ComponentSize>(['large', 'middle', 'small']),
+    size: PropTypes.oneOf<SizeVariant>(['large', 'middle', 'small']),
     style: PropTypes.shape({}),
     suffix: PropTypes.node,
     type: PropTypes.oneOf([

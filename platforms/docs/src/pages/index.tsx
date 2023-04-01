@@ -27,7 +27,7 @@ const Main = styled('div')(({ theme }) => {
     alignItems: 'center',
     flexDirection: 'column',
     justifyContent: 'center',
-    background: theme.color.background.paper,
+    background: theme.colors.background.paper,
     marginTop: -HEADER_HEIGHT,
     '.logo': {
       height: 90,
@@ -73,7 +73,7 @@ const Main = styled('div')(({ theme }) => {
 
 const FooterWrapper = styled(Footer)(({ theme }) => {
   return {
-    backgroundColor: theme.color.background.paper,
+    backgroundColor: theme.colors.background.paper,
     marginTop: 32,
   };
 });

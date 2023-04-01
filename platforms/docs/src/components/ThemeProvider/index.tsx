@@ -1,5 +1,6 @@
 import { useIsomorphicLayoutEffect } from '@xl-vision/hooks';
-import { BaseTheme, ThemeProvider as XlThemeProvider } from '@xl-vision/react';
+import { ThemeInput, ThemeProvider as XlThemeProvider } from '@xl-vision/react';
+import darkTheme from '@xl-vision/react/themes/dark';
 import { noop } from '@xl-vision/utils';
 import Cookies from 'js-cookie';
 import PropTypes from 'prop-types';
@@ -40,12 +41,8 @@ const ThemeProvider: FC<ThemeProviderProps> = (props) => {
     });
   }, []);
 
-  const theme: BaseTheme = useMemo(() => {
-    return {
-      color: {
-        mode: isDark ? 'dark' : 'light',
-      },
-    };
+  const theme: ThemeInput = useMemo(() => {
+    return isDark ? darkTheme : {};
   }, [isDark]);
 
   const ctx = useMemo<ThemeContextProps>(
@@ -58,7 +55,7 @@ const ThemeProvider: FC<ThemeProviderProps> = (props) => {
 
   return (
     <ThemeContext.Provider value={ctx}>
-      <XlThemeProvider theme={theme}>{children}</XlThemeProvider>
+      <XlThemeProvider {...theme}>{children}</XlThemeProvider>
     </ThemeContext.Provider>
   );
 };

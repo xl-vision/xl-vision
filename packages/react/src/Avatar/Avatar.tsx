@@ -18,14 +18,13 @@ import {
   CSSProperties,
 } from 'react';
 import AvatarContext from './AvatarContext';
-import { useConfig } from '../ConfigProvider';
 import ResizeObserver from '../ResizeObserver';
 import { styled } from '../styles';
-import { ComponentSize } from '../ThemeProvider';
+import { SizeVariant, useTheme } from '../ThemeProvider';
 
 export type AvatarShape = 'circle' | 'square' | 'round';
 
-export type AvatarSize = ComponentSize | number;
+export type AvatarSize = SizeVariant | number;
 
 export type AvatarProps = HTMLAttributes<HTMLSpanElement> & {
   icon?: ReactElement<SVGAttributes<SVGSVGElement>>;
@@ -46,10 +45,10 @@ const AvatarRoot = styled('span', {
 })<{
   isImage: boolean;
   shape: AvatarShape;
-  size: ComponentSize;
+  size: SizeVariant;
 }>(({ theme, styleProps }) => {
   const { shape: shapeType, size, isImage } = styleProps;
-  const { color, styleSize } = theme;
+  const { colors, sizes } = theme;
   const style: CSSObject = {
     position: 'relative',
     display: 'inline-flex',
@@ -57,8 +56,8 @@ const AvatarRoot = styled('span', {
     overflow: 'hidden',
     whiteSpace: 'nowrap',
     verticalAlign: 'middle',
-    color: color.background.paper,
-    backgroundColor: color.mode === 'light' ? color.grey['400'] : color.grey['600'],
+    color: colors.background.paper,
+    backgroundColor: colors.text.hint,
     alignItems: 'center',
     justifyContent: 'center',
     userSelect: 'none',
@@ -78,10 +77,10 @@ const AvatarRoot = styled('span', {
   if (shapeType === 'circle') {
     style.borderRadius = '50%';
   } else if (shapeType === 'round') {
-    style.borderRadius = styleSize[size].borderRadius;
+    style.borderRadius = sizes[size].borderRadius;
   }
 
-  const themeSize = styleSize[size];
+  const themeSize = sizes[size];
   style.width = style.height = 32 * themeSize.fontSize;
 
   return style;
@@ -101,7 +100,7 @@ const AvatarInner = styled('span', {
 
 const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
   const { size: contextSize, shape: contextShape } = useContext(AvatarContext);
-  const { clsPrefix, size: configSize } = useConfig();
+  const { clsPrefix, size: configSize } = useTheme();
 
   const {
     children,
@@ -240,7 +239,7 @@ if (!isProduction) {
     shape: PropTypes.oneOf<AvatarShape>(['round', 'circle', 'square']),
     size: PropTypes.oneOfType([
       PropTypes.number,
-      PropTypes.oneOf<ComponentSize>(['small', 'middle', 'large']),
+      PropTypes.oneOf<SizeVariant>(['small', 'middle', 'large']),
     ]),
     src: PropTypes.node,
     srcSet: PropTypes.string,

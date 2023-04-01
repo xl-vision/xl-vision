@@ -7,6 +7,7 @@ import {
   ButtonHTMLAttributes,
   ComponentType,
   EventHandler,
+  FocusEvent,
   forwardRef,
   KeyboardEventHandler,
   MouseEventHandler,
@@ -14,9 +15,9 @@ import {
   useEffect,
   useRef,
 } from 'react';
-import { useConfig } from '../ConfigProvider';
 import Ripple, { RippleRef } from '../Ripple';
 import { styled } from '../styles';
+import { useTheme } from '../ThemeProvider';
 
 export type BaseButtonCommonProps =
   | ButtonHTMLAttributes<HTMLButtonElement>
@@ -38,9 +39,9 @@ export type BaseButtonStyleProps = {
 const BaseButtonRoot = styled('button', {
   name: displayName,
   slot: 'Root',
-})<BaseButtonStyleProps>(({ styleProps, theme, clsPrefix }) => {
+})<BaseButtonStyleProps>(({ styleProps, theme }) => {
   const { disabled, loading } = styleProps;
-  const { color } = theme;
+  const { colors, clsPrefix } = theme;
 
   return {
     position: 'relative',
@@ -73,16 +74,16 @@ const BaseButtonRoot = styled('button', {
 
     [`.${clsPrefix}-base-button__ripple`]: {
       transform: 'scale(1)',
-      opacity: color.action.pressed,
+      opacity: colors.opacity.ripple,
       '&-enter-active': {
-        transition: theme.transition.enter('all'),
+        transition: theme.transitions.enter('all'),
       },
       '&-exit-active': {
-        transition: theme.transition.exitPermanent('all'),
+        transition: theme.transitions.exit('all'),
       },
       '&-enter-from': {
         transform: 'scale(0)',
-        opacity: 0.1,
+        opacity: 0,
       },
       '&-exit-to': {
         opacity: 0,
@@ -125,10 +126,11 @@ const BaseButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseButtonP
       onBlur,
       onKeyDown,
       onKeyUp,
+      onFocus,
       ...others
     } = props;
 
-    const { clsPrefix } = useConfig();
+    const { clsPrefix } = useTheme();
 
     const Component = (others as unknown as HTMLAnchorElement).href ? 'a' : 'button';
 
@@ -146,6 +148,8 @@ const BaseButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseButtonP
 
     const shouldEnableRipple = !disableRipple && !disabled && !loading;
 
+    const isRippleRef = useRef(false);
+
     const useRippleHandler = <E extends SyntheticEvent, H extends EventHandler<E>>(
       action: keyof RippleRef,
       defaultEventHandler?: H,
@@ -156,6 +160,7 @@ const BaseButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseButtonP
 
         if (!disableRippleAction && rippleRef.current) {
           rippleRef.current[action](e);
+          isRippleRef.current = action === 'start';
         }
       });
     };
@@ -168,6 +173,17 @@ const BaseButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseButtonP
     const handleTouchEnd = useRippleHandler('stop', onTouchEnd);
     const handleTouchMove = useRippleHandler('stop', onTouchMove);
     const handleBlur = useRippleHandler('stop', onBlur, false);
+
+    const handleFocus = useConstantFn((e: FocusEvent<any>) => {
+      onFocus?.(e);
+      setTimeout(() => {
+        if (shouldEnableRipple && rippleRef.current) {
+          if (!isRippleRef.current) {
+            rippleRef.current.start({ pulsate: true });
+          }
+        }
+      });
+    });
 
     const handleKeyDown: KeyboardEventHandler<any> = useConstantFn((e) => {
       if (rippleRef.current && !isKeyDownRef.current && e.key === ' ') {
@@ -216,6 +232,7 @@ const BaseButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseButtonP
         onBlur={handleBlur}
         onClick={handleClick}
         onDragLeave={handleDragLeave}
+        onFocus={handleFocus}
         onKeyDown={handleKeyDown}
         onKeyUp={handleKeyUp}
         onMouseDown={handleMouseDown}

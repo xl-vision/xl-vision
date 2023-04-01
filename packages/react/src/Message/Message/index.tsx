@@ -42,40 +42,42 @@ const DefaultLoadingIcon = styled(LoadingOutlined, {
 `;
 
 const Message: FC<MessageProps> = ({ type, ...others }) => {
-  const { color } = useTheme();
+  const { colors } = useTheme();
 
   const defaultProps: Partial<InnerMessageProps> = useMemo(() => {
     switch (type) {
       case 'success': {
         return {
-          icon: <CheckCircleFilled style={{ color: color.themes.success.color }} />,
+          icon: <CheckCircleFilled style={{ color: colors.themes.success.foreground.enabled }} />,
         };
       }
       case 'error': {
         return {
-          icon: <CloseCircleFilled style={{ color: color.themes.error.color }} />,
+          icon: <CloseCircleFilled style={{ color: colors.themes.error.foreground.enabled }} />,
         };
       }
       case 'warning': {
         return {
-          icon: <ExclamationCircleFilled style={{ color: color.themes.warning.color }} />,
+          icon: (
+            <ExclamationCircleFilled style={{ color: colors.themes.warning.foreground.enabled }} />
+          ),
         };
       }
       case 'info': {
         return {
-          icon: <InfoCircleFilled style={{ color: color.themes.info.color }} />,
+          icon: <InfoCircleFilled style={{ color: colors.themes.info.foreground.enabled }} />,
         };
       }
       case 'loading': {
         return {
-          icon: <DefaultLoadingIcon style={{ color: color.themes.primary.color }} />,
+          icon: <DefaultLoadingIcon style={{ color: colors.themes.primary.foreground.enabled }} />,
         };
       }
       default: {
         return {};
       }
     }
-  }, [color, type]);
+  }, [colors, type]);
 
   return <InnerMessage {...defaultProps} {...others} />;
 };

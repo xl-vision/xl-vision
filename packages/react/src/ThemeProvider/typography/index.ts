@@ -1,8 +1,6 @@
 import { CSSObject, CSSProperties } from '@xl-vision/styled-engine';
-import { deepMerge } from '@xl-vision/utils';
-import { DeepPartial } from '../../utils/types';
 
-export type FontWeightKey = 'light' | 'regular' | 'medium' | 'bold';
+export type FontWeightVariant = 'light' | 'regular' | 'medium' | 'bold';
 
 export type Typography = {
   baseFontSize: number;
@@ -15,28 +13,13 @@ export type Typography = {
   };
 };
 
-const defaultTypography: Typography = {
-  baseFontSize: 16,
-  fontFamily: `'Roboto', 'Helvetica Neue', 'segoe ui', 'Arial', 'noto sans', sans-serif`,
-  fontWeight: {
-    light: 300,
-    regular: 400,
-    medium: 500,
-    bold: 700,
-  },
-};
-
-const createTypography = (typography: DeepPartial<Typography> = {}) => {
-  const { baseFontSize, fontFamily, fontWeight } = deepMerge(defaultTypography, typography, {
-    clone: true,
-  });
-
+const createTypography = ({ baseFontSize, fontFamily, fontWeight }: Typography) => {
   const pxToRem = (px: number) => `${(px / baseFontSize).toFixed(3)}rem`;
 
   const buildStyle = (
     size: number,
     lineHeight: number,
-    fontWeightKey: FontWeightKey,
+    fontWeightKey: FontWeightVariant,
     letterSpacing: number,
     textDecoration: CSSProperties['textDecoration'] = 'inherit',
     textTransform: CSSProperties['textTransform'] = 'inherit',
@@ -55,7 +38,7 @@ const createTypography = (typography: DeepPartial<Typography> = {}) => {
   const buildStyleInfo = (
     size: number,
     lineHeight: number,
-    fontWeightKey: FontWeightKey,
+    fontWeightKey: FontWeightVariant,
     letterSpacing: number,
     textDecoration: CSSProperties['textDecoration'] = 'inherit',
     textTransform: CSSProperties['textTransform'] = 'inherit',

@@ -35,11 +35,11 @@ const GlobalStyles = createGlobalStyles<CssBaselineStyleProps>(({ theme, stylePr
       },
       body: {
         ...theme.typography.body1.style,
-        color: theme.color.text.primary,
-        backgroundColor: theme.color.background.default,
+        color: theme.colors.text.primary,
+        backgroundColor: theme.colors.background.default,
         margin: 0,
         '&::backdrop': {
-          backgroundColor: theme.color.background.default,
+          backgroundColor: theme.colors.background.default,
         },
         '@media print': {
           // Save printer ink.

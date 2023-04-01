@@ -15,6 +15,7 @@ exports[`Entry @xl-vision/hooks 1`] = `
   "useTransition",
   "useCssTransition",
   "useNotication",
+  "useEnhancedMemo",
 ]
 `;
 
@@ -667,12 +668,7 @@ exports[`Entry @xl-vision/react 1`] = `
   "styled",
   "createGlobalStyles",
   "ThemeProvider",
-  "ThemeContext",
   "useTheme",
-  "ConfigProvider",
-  "ConfigContext",
-  "useConfig",
-  "defaultConfigContext",
   "Transition",
   "CollapseTransition",
   "TransitionGroup",
@@ -760,6 +756,7 @@ exports[`Entry @xl-vision/utils 1`] = `
   "EventEmitter",
   "omit",
   "isEqual",
+  "TinyColor",
   "isBrowser",
   "isServer",
   "isProduction",

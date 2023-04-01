@@ -2,7 +2,7 @@ import { render, act } from '@testing-library/react';
 import { NoticationHookUpdate } from '@xl-vision/hooks';
 import { forwardRef, useImperativeHandle } from 'react';
 import { triggerTransitionEnd } from 'test/utils';
-import { ConfigProvider, DedicatedDialogProps, Dialog } from '@xl-vision/react';
+import { ThemeProvider, DedicatedDialogProps, Dialog } from '@xl-vision/react';
 import { enUS, zhCN } from '@xl-vision/react/locale';
 
 type DialogHookReturnType = {
@@ -212,13 +212,13 @@ describe('DialogHooks', () => {
     let dialogRef!: ReturnType<typeof useDialog>[0];
 
     const { rerender, unmount } = render(
-      <ConfigProvider locale={enUS}>
+      <ThemeProvider locale={enUS}>
         <Demo
           ref={(it) => {
             dialogRef = it!;
           }}
         />
-      </ConfigProvider>,
+      </ThemeProvider>,
     );
 
     expect(dialogRef).not.toBe(null);
@@ -242,13 +242,13 @@ describe('DialogHooks', () => {
     expect(el!.querySelector('button')!.textContent).toBe(enUS.Dialog.methods.infoText);
 
     rerender(
-      <ConfigProvider locale={zhCN}>
+      <ThemeProvider locale={zhCN}>
         <Demo
           ref={(it) => {
             dialogRef = it!;
           }}
         />
-      </ConfigProvider>,
+      </ThemeProvider>,
     );
 
     await triggerTransitionEnd();

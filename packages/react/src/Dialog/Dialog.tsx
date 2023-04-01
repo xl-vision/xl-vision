@@ -3,9 +3,9 @@ import { isProduction, noop } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { ReactNode, forwardRef, useState, useEffect } from 'react';
 import Button, { ButtonProps } from '../Button';
-import { useConfig } from '../ConfigProvider';
 import Modal, { ModalProps } from '../Modal';
 import { styled } from '../styles';
+import { useTheme } from '../ThemeProvider';
 
 export type DialogButtonProps = Omit<ButtonProps, 'children' | 'onClick'>;
 
@@ -28,26 +28,26 @@ const DialogRoot = styled(Modal, {
   name: displayName,
   slot: 'Root',
 })(({ theme }) => {
-  const { color, elevations, styleSize } = theme;
+  const { colors, elevations, sizes } = theme;
   return {
-    backgroundColor: color.background.paper,
-    borderRadius: styleSize.middle.borderRadius,
+    backgroundColor: colors.background.popper,
+    borderRadius: sizes.middle.borderRadius,
     maxWidth: 560,
     margin: 32,
     maxHeight: 'calc(100% - 64px)',
     display: 'flex',
     flexDirection: 'column',
-    ...elevations(24),
+    boxShadow: elevations[3],
   };
 });
 
 const DialogHeader = styled('div', {
   name: displayName,
   slot: 'Header',
-})(({ theme, clsPrefix }) => {
-  const { typography, color } = theme;
+})(({ theme }) => {
+  const { typography, colors, clsPrefix } = theme;
   return {
-    color: color.text.primary,
+    color: colors.text.primary,
     padding: '16px 24px',
     [`.${clsPrefix}-dialog__title`]: {
       ...typography.h6.style,
@@ -60,13 +60,13 @@ const DialogContent = styled('div', {
   name: displayName,
   slot: 'Content',
 })(({ theme }) => {
-  const { typography, color } = theme;
+  const { typography, colors } = theme;
 
   return {
     padding: '8px 24px',
     overflowY: 'auto',
     flex: 1,
-    color: color.text.secondary,
+    color: colors.text.secondary,
     ...typography.body1.style,
   };
 });
@@ -96,7 +96,7 @@ const DialogActions = styled('div', {
 let uuid = 0;
 
 const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
-  const { locale } = useConfig();
+  const { clsPrefix, locale } = useTheme();
 
   const {
     children,
@@ -118,8 +118,6 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
   const [open, setOpen] = useValueChange(defaultOpen, openProp, onOpenChange);
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [cancelLoading, setCancelLoading] = useState(false);
-
-  const { clsPrefix } = useConfig();
 
   const [dialogTitleId, setDialogTitleId] = useState('');
 
@@ -181,7 +179,6 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
       )}
       <Button
         color='primary'
-        variant='text'
         {...(confirmButtonProps as ButtonProps)}
         disabled={cancelLoading}
         loading={confirmLoading}

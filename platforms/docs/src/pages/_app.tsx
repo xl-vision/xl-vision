@@ -9,7 +9,7 @@ import ThemeProvider from '../components/ThemeProvider';
 import LayoutMap, { LayoutKey } from '../layout';
 
 const GlobalStyle = createGlobalStyles(({ theme }) => {
-  const { color, breakpoints } = theme;
+  const { colors, breakpoints } = theme;
 
   const { values, unit } = breakpoints;
 
@@ -24,13 +24,13 @@ const GlobalStyle = createGlobalStyles(({ theme }) => {
     '::-webkit-scrollbar': {
       width: 8,
       height: 8,
-      // backgroundColor: color.grey[500],
+      backgroundColor: 'rgba(0, 0, 0, 0.1)',
     },
     // '::-webkit-scrollbar-track': {
     //   boxShadow: 'inset 0 0 6px rgba(0, 0, 0, 0.3)',
     // },
     '::-webkit-scrollbar-thumb': {
-      backgroundColor: color.grey.A100,
+      backgroundColor: colors.text.hint,
       borderRadius: 5,
     },
     '.sm-down': {

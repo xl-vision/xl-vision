@@ -19,7 +19,7 @@ const Wrapper = styled('div')(() => {
 });
 
 const IconWrapper = styled('div')(({ theme }) => {
-  const { typography, color, transition } = theme;
+  const { typography, colors, transitions } = theme;
   return {
     display: 'inline-flex',
     flexDirection: 'column',
@@ -27,10 +27,10 @@ const IconWrapper = styled('div')(({ theme }) => {
     justifyContent: 'center',
     width: 140,
     height: 100,
-    color: color.text.primary,
+    color: colors.text.primary,
     borderRadius: 5,
     cursor: 'pointer',
-    transition: transition.standard('all'),
+    transition: transitions.standard('all'),
     margin: 16,
 
     svg: {
@@ -40,8 +40,8 @@ const IconWrapper = styled('div')(({ theme }) => {
       ...typography.subtitle2.style,
     },
     ':hover': {
-      color: color.themes.primary.text.primary,
-      backgroundColor: color.themes.primary.color,
+      color: colors.themes.primary.text.primary,
+      backgroundColor: colors.themes.primary.foreground.hover,
     },
   };
 });

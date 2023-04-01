@@ -16,9 +16,6 @@ const Link = () => {
       <Button color='primary' href='#' variant='text'>
         button
       </Button>
-      <Button color='secondary' href='#'>
-        button
-      </Button>
       <Button color='error' href='#' variant='text'>
         button
       </Button>

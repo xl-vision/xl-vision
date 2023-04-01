@@ -33,12 +33,12 @@ const Demo = () => {
 export default Demo;
 
 const DemoRoot = styled('div')(({ theme }) => {
-  const { color } = theme;
+  const { colors } = theme;
   return {
     position: 'relative',
     height: 200,
     overflow: 'auto',
-    backgroundColor: color.background.default,
+    backgroundColor: colors.background.default,
 
     '&:before': {
       display: 'block',
@@ -133,15 +133,13 @@ const CustomPopper = forwardRef<CustomPopperInstance, CustomPopperProps>((props,
 });
 
 const Popper = styled('div')(({ theme }) => {
-  const { color } = theme;
-
-  const baseColor = color.mode === 'dark' ? color.modes.light : color.modes.dark;
+  const { colors } = theme;
 
   return {
     padding: 8,
     borderRadius: 4,
     maxWidth: 100,
-    color: baseColor.text.primary,
-    backgroundColor: color.emphasize(baseColor.background.paper, 0.1),
+    color: colors.background.paper,
+    backgroundColor: colors.text.hint,
   };
 });

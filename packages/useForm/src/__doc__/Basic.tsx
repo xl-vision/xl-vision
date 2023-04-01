@@ -37,7 +37,7 @@ const Form = styled('form')(({ theme }) => {
       margin: '4px 0',
     },
     input: {
-      border: `1px solid ${theme.color.divider}`,
+      border: `1px solid ${theme.colors.divider.primary}`,
       borderRadius: 4,
       padding: '6px 12px',
       lineHeight: 1.5,

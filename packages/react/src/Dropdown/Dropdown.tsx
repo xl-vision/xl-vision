@@ -3,9 +3,9 @@ import { isProduction, isServer } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { ReactElement, ReactNode, forwardRef, useRef, useEffect, useMemo } from 'react';
 import DropdownContext from './DropdownContext';
-import { useConfig } from '../ConfigProvider';
 import Popper, { PopperPlacement, PopperProps } from '../Popper';
 import { styled } from '../styles';
+import { useTheme } from '../ThemeProvider';
 
 export interface DropdownProps extends Omit<PopperProps, 'popup' | 'arrow'> {
   children: ReactElement;
@@ -17,13 +17,13 @@ const displayName = 'Dropdown';
 const DropdownRoot = styled(Popper, {
   name: displayName,
   slot: 'Root',
-})(({ theme, clsPrefix }) => {
-  const { transition } = theme;
+})(({ theme }) => {
+  const { transitions, clsPrefix } = theme;
 
   return {
     [`.${clsPrefix}-dropdown`]: {
-      ...transition.fadeIn('&'),
-      ...transition.fadeOut('&'),
+      ...transitions.fadeIn('&'),
+      ...transitions.fadeOut('&'),
     },
   };
 });
@@ -32,16 +32,16 @@ const DropdownPopup = styled('ul', {
   name: displayName,
   slot: 'Popup',
 })(({ theme }) => {
-  const { color, elevations, styleSize } = theme;
+  const { colors, elevations, sizes } = theme;
 
   return {
-    backgroundColor: color.background.paper,
-    color: color.text.primary,
-    borderRadius: styleSize.middle.borderRadius,
+    backgroundColor: colors.background.popper,
+    color: colors.text.primary,
+    borderRadius: sizes.middle.borderRadius,
     padding: '5px 0',
     listStyle: 'none',
     margin: 0,
-    ...elevations(8),
+    boxShadow: elevations[3],
   };
 });
 
@@ -60,7 +60,7 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
     ...others
   } = props;
 
-  const { clsPrefix } = useConfig();
+  const { clsPrefix } = useTheme();
 
   const submenuCloseHandlersRef = useRef<Array<() => void>>([]);
 

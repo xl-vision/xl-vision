@@ -15,7 +15,6 @@ const Basic = () => {
       <Wrapper>
         <Button>default</Button>
         <Button color='primary'>primary</Button>
-        <Button color='secondary'>secondary</Button>
         <Button color='info'>info</Button>
         <Button color='error'>error</Button>
         <Button color='warning'>warning</Button>
@@ -24,9 +23,6 @@ const Basic = () => {
         <Button variant='text'>default</Button>
         <Button color='primary' variant='text'>
           primary
-        </Button>
-        <Button color='secondary' variant='text'>
-          secondary
         </Button>
         <Button color='info' variant='text'>
           info
@@ -42,9 +38,6 @@ const Basic = () => {
         <Button variant='outlined'>default</Button>
         <Button color='primary' variant='outlined'>
           primary
-        </Button>
-        <Button color='secondary' variant='outlined'>
-          secondary
         </Button>
         <Button color='info' variant='outlined'>
           info

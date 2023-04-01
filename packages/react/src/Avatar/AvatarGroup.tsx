@@ -12,10 +12,9 @@ import {
 } from 'react';
 import Avatar, { AvatarProps, AvatarShape, AvatarSize } from './Avatar';
 import AvatarContext, { AvatarContextProps } from './AvatarContext';
-import { useConfig } from '../ConfigProvider';
 import Popover from '../Popover';
 import { styled } from '../styles';
-import { ComponentSize } from '../ThemeProvider';
+import { SizeVariant, useTheme } from '../ThemeProvider';
 
 export type AvatarGroupPopupPlacement = 'none' | 'top' | 'bottom';
 
@@ -33,13 +32,13 @@ const displayName = 'AvatarGroup';
 const AvatarGroupRoot = styled('div', {
   name: displayName,
   slot: 'Root',
-})<{ size: ComponentSize }>(({ styleProps, theme, clsPrefix }) => {
+})<{ size: SizeVariant }>(({ styleProps, theme }) => {
   const { size } = styleProps;
-  const { color, styleSize } = theme;
+  const { colors, sizes, clsPrefix } = theme;
 
   return {
     [`.${clsPrefix}-avatar`]: {
-      border: `${styleSize[size].border}px solid ${color.background.paper}`,
+      border: `${sizes[size].border}px solid ${colors.background.paper}`,
       '&:not(:first-child)': {
         marginLeft: -8,
       },
@@ -50,7 +49,7 @@ const AvatarGroupRoot = styled('div', {
 const AvatarPopup = styled(Popover, {
   name: displayName,
   slot: 'Popup',
-})(({ clsPrefix }) => {
+})(({ theme: { clsPrefix } }) => {
   return {
     [`.${clsPrefix}-avatar`]: {
       '&:not(:first-child)': {
@@ -61,7 +60,7 @@ const AvatarPopup = styled(Popover, {
 });
 
 const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>((props, ref) => {
-  const { clsPrefix, size: configSize } = useConfig();
+  const { clsPrefix, size: configSize } = useTheme();
 
   const {
     children,
@@ -150,7 +149,7 @@ if (!isProduction) {
     shape: PropTypes.oneOf<AvatarShape>(['round', 'circle', 'square']),
     size: PropTypes.oneOfType([
       PropTypes.number,
-      PropTypes.oneOf<ComponentSize>(['small', 'middle', 'large']),
+      PropTypes.oneOf<SizeVariant>(['small', 'middle', 'large']),
     ]),
   };
 }

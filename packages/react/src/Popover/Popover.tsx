@@ -1,9 +1,9 @@
 import { isProduction, isServer } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { ReactNode, forwardRef } from 'react';
-import { useConfig } from '../ConfigProvider';
 import Popper, { PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
+import { useTheme } from '../ThemeProvider';
 
 export type PopoverProps = Omit<PopperProps, 'popup' | 'arrow' | 'title'> & {
   content: ReactNode;
@@ -16,13 +16,13 @@ const displayName = 'Popover';
 const PopoverRoot = styled(Popper, {
   name: displayName,
   slot: 'Root',
-})(({ clsPrefix, theme }) => {
-  const { transition } = theme;
+})(({ theme }) => {
+  const { clsPrefix, transitions } = theme;
 
   return {
     [`.${clsPrefix}-popover__inner`]: {
-      ...transition.fadeIn('&'),
-      ...transition.fadeOut('&'),
+      ...transitions.fadeIn('&'),
+      ...transitions.fadeOut('&'),
     },
   };
 });
@@ -31,13 +31,12 @@ const PopoverArrow = styled('div', {
   name: displayName,
   slot: 'Arrow',
 })(({ theme }) => {
-  const { color } = theme;
-  const bgColor = color.background.paper;
+  const { colors } = theme;
 
   return {
     width: 8,
     height: 8,
-    backgroundColor: bgColor,
+    backgroundColor: colors.background.popper,
     transform: 'translate(-4px, -4px) rotate(45deg)',
   };
 });
@@ -46,15 +45,14 @@ const PopoverPopup = styled('div', {
   name: displayName,
   slot: 'Popup',
 })(({ theme }) => {
-  const { color, elevations } = theme;
-  const bgColor = color.background.paper;
+  const { colors, elevations } = theme;
 
   return {
-    backgroundColor: bgColor,
-    color: color.getContrastColor(bgColor).text.primary,
+    backgroundColor: colors.background.popper,
+    color: colors.text.primary,
     borderRadius: 4,
     minWidth: 160,
-    ...elevations(8),
+    boxShadow: elevations[3],
   };
 });
 
@@ -62,10 +60,10 @@ const PopoverTitle = styled('div', {
   name: displayName,
   slot: 'Title',
 })(({ theme }) => {
-  const { color, typography, styleSize } = theme;
+  const { colors, typography, sizes } = theme;
   return {
     padding: '4px 12px',
-    borderBottom: `${styleSize.middle.border}px solid ${color.divider}`,
+    borderBottom: `${sizes.middle.border}px solid ${colors.divider}`,
     ...typography.subtitle2.style,
   };
 });
@@ -94,7 +92,7 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>((props, ref) => {
     ...others
   } = props;
 
-  const { clsPrefix } = useConfig();
+  const { clsPrefix } = useTheme();
 
   const rootClassName = `${clsPrefix}-popover`;
 

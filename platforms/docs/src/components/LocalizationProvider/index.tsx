@@ -1,4 +1,4 @@
-import { ConfigProvider } from '@xl-vision/react';
+import { ThemeProvider } from '@xl-vision/react';
 import * as libLocales from '@xl-vision/react/locale';
 import { isProduction, warning } from '@xl-vision/utils';
 import { useRouter } from 'next/router';
@@ -56,7 +56,7 @@ const LocalizationProvider: FC<LocalizationProviderProps> = (props) => {
 
   return (
     <LocalizationContext.Provider value={ctx}>
-      <ConfigProvider locale={libLocales[libLocaleKey]}>{children}</ConfigProvider>
+      <ThemeProvider locale={libLocales[libLocaleKey]}>{children}</ThemeProvider>
     </LocalizationContext.Provider>
   );
 };

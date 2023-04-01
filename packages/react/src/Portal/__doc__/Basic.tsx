@@ -15,11 +15,11 @@ const Wrapper = styled('div')(({ theme }) => {
       },
     },
     '.container1': {
-      backgroundColor: theme.color.themes.primary.color,
+      backgroundColor: theme.colors.themes.primary.foreground.enabled,
     },
     '.container2': {
       marginTop: '16px',
-      backgroundColor: theme.color.themes.secondary.color,
+      backgroundColor: theme.colors.themes.error.foreground.enabled,
     },
   };
 });

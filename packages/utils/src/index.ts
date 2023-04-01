@@ -20,3 +20,4 @@ export { default as setRef } from './setRef';
 export { default as EventEmitter } from './EventEmitter';
 export { default as omit } from './omit';
 export { default as isEqual } from './isEqual';
+export { default as TinyColor } from './TinyColor';

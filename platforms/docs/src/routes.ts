@@ -31,6 +31,13 @@ const route: Route = {
     },
     {
       titleMap: {
+        'en-US': 'Color',
+        'zh-CN': '色彩',
+      },
+      path: '/Color',
+    },
+    {
+      titleMap: {
         'en-US': 'Getting Start',
         'zh-CN': '快速上手',
       },
@@ -259,21 +266,6 @@ const route: Route = {
             'zh-CN': 'CSS基线',
           },
           path: '/CssBaseline',
-        },
-      ],
-    },
-    {
-      titleMap: {
-        'en-US': 'Global Config',
-        'zh-CN': '全局配置',
-      },
-      children: [
-        {
-          titleMap: {
-            'en-US': 'ConfigProvider',
-            'zh-CN': '全局配置',
-          },
-          path: '/ConfigProvider',
         },
       ],
     },

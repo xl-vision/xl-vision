@@ -40,3 +40,5 @@ export type {
   NoticationProps,
   NoticationContainerType,
 } from './useNotication';
+
+export { default as useEnhancedMemo } from './useEnhancedMemo';

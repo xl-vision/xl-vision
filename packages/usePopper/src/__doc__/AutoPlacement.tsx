@@ -72,12 +72,12 @@ const Demo = () => {
 export default Demo;
 
 const Root = styled('div')(({ theme }) => {
-  const { color } = theme;
+  const { colors } = theme;
   return {
     position: 'relative',
     height: 300,
     overflow: 'auto',
-    backgroundColor: color.background.default,
+    backgroundColor: colors.background.default,
 
     '&:before': {
       display: 'block',
@@ -99,15 +99,13 @@ const Root = styled('div')(({ theme }) => {
 });
 
 const Popper = styled('div')(({ theme }) => {
-  const { color } = theme;
-
-  const baseColor = color.mode === 'dark' ? color.modes.light : color.modes.dark;
+  const { colors } = theme;
 
   return {
     padding: 8,
     borderRadius: 4,
     maxWidth: 200,
-    color: baseColor.text.primary,
-    backgroundColor: color.emphasize(baseColor.background.paper, 0.1),
+    color: colors.background.paper,
+    backgroundColor: colors.text.hint,
   };
 });

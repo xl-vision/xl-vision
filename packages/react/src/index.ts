@@ -1,16 +1,36 @@
 export { styled, createGlobalStyles } from './styles';
 export type { XlOptions } from './styles';
 
-export { default as ThemeProvider, ThemeContext, useTheme } from './ThemeProvider';
-export type { ThemeProviderProps, Theme, BaseTheme, ComponentSize } from './ThemeProvider';
-
-export {
-  default as ConfigProvider,
-  ConfigContext,
-  useConfig,
-  defaultConfigContext,
-} from './ConfigProvider';
-export type { ConfigProviderProps, ConfigContextProps } from './ConfigProvider';
+export { ThemeProvider, useTheme } from './ThemeProvider';
+export type {
+  ThemeProviderProps,
+  Theme,
+  BaseTheme,
+  Colors,
+  ThemeColors,
+  TextVariant,
+  ThemeVariant,
+  ActionVariant,
+  DividerVariant,
+  BackgroundVariant,
+  BackgroundActionVariant,
+  SizeVariant,
+  FontWeightVariant,
+  TransitionDurationVariant,
+  TransitionFunctionVariant,
+  ThemeInput,
+  ThemeWithoutMixins,
+  Transitions,
+  Typography,
+  Breakpoint,
+  Breakpoints,
+  Elevations,
+  OverrideStyles,
+  PartialOverrideStyles,
+  Size,
+  Sizes,
+  Style,
+} from './ThemeProvider';
 
 export { default as Transition } from './Transition';
 export type { TransitionProps } from './Transition';

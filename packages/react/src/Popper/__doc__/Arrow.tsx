@@ -10,17 +10,17 @@ const Wrapper = styled('div')(() => {
 });
 
 const PopperRoot = styled(Popper)(({ theme }) => {
-  const { color } = theme;
+  const { colors } = theme;
 
-  const bgColor = color.emphasize(color.modes.dark.background.paper, 0.1);
+  const bgColor = colors.text.hint;
 
   return {
     '.popup': {
       borderRadius: '3px',
-      backgroundColor: bgColor,
-      color: color.getContrastColor(bgColor).text.primary,
+      backgroundColor: colors.text.hint,
+      color: colors.text.primary,
       padding: '5px 10px',
-      ...theme.elevations(5),
+      boxShadow: theme.elevations[3],
     },
     '.arrow': {
       width: 8,
@@ -30,7 +30,7 @@ const PopperRoot = styled(Popper)(({ theme }) => {
     },
     '.slide': {
       '&-enter-active, &-exit-active': {
-        transition: theme.transition.enter('transform'),
+        transition: theme.transitions.enter('transform'),
         '&[data-placement^="left"]': {
           transform: 'scaleX(1)',
           transformOrigin: '100% 0',

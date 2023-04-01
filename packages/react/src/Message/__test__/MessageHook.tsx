@@ -1,7 +1,7 @@
 import { render, act } from '@testing-library/react';
 import { forwardRef, useImperativeHandle } from 'react';
 import { awaitPromise, triggerTransitionEnd } from 'test/utils';
-import { ConfigProvider, MessageHookReturnType, Message } from '@xl-vision/react';
+import { ThemeProvider, MessageHookReturnType, Message } from '@xl-vision/react';
 import { enUS, zhCN } from '@xl-vision/react/locale';
 
 const { useMessage } = Message;
@@ -205,13 +205,13 @@ describe('MessageHooks', () => {
     let messageRef!: ReturnType<typeof useMessage>[0];
 
     const { rerender, unmount } = render(
-      <ConfigProvider locale={enUS}>
+      <ThemeProvider locale={enUS}>
         <Demo
           ref={(it) => {
             messageRef = it!;
           }}
         />
-      </ConfigProvider>,
+      </ThemeProvider>,
     );
 
     expect(messageRef).not.toBe(null);
@@ -233,13 +233,13 @@ describe('MessageHooks', () => {
     expect(el).not.toBe(null);
 
     rerender(
-      <ConfigProvider locale={zhCN}>
+      <ThemeProvider locale={zhCN}>
         <Demo
           ref={(it) => {
             messageRef = it!;
           }}
         />
-      </ConfigProvider>,
+      </ThemeProvider>,
     );
 
     await act(() => awaitPromise());

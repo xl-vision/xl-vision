@@ -1,5 +1,7 @@
 import { useConstantFn } from '@xl-vision/hooks';
+import { keyframes } from '@xl-vision/styled-engine';
 import { getBoundingClientRect, isProduction } from '@xl-vision/utils';
+import { clsx } from 'clsx';
 import PropTypes from 'prop-types';
 import {
   HTMLAttributes,
@@ -15,19 +17,32 @@ import {
   TouchEvent,
 } from 'react';
 import { styled } from '../styles';
+import { useTheme } from '../ThemeProvider';
 import TransitionGroup, { TransitionGroupClassName } from '../TransitionGroup';
 
-export interface RippleProps extends HTMLAttributes<HTMLDivElement> {
+export type RippleProps = HTMLAttributes<HTMLDivElement> & {
   transitionClassName: TransitionGroupClassName;
   exitAfterEnter?: boolean;
-}
+};
 
-export interface RippleRef {
-  start: (e?: any) => void;
+export type RippleRef = {
+  start: (e?: { pulsate?: boolean } | any) => void;
   stop: () => void;
-}
+};
 
 const displayName = 'Ripple';
+
+const pulsateKeyframe = keyframes`
+  0% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(0.5);
+  }
+  100% {
+    transform: scale(0.8);
+  }
+`;
 
 const RipperRoot = styled('div', {
   name: displayName,
@@ -49,18 +64,24 @@ const RipperRoot = styled('div', {
 const RippleInner = styled('div', {
   name: displayName,
   slot: 'Inner',
-})(() => {
-  return {
-    position: 'absolute',
-    backgroundColor: 'currentcolor',
-    borderRadius: '50%',
-  };
-});
+})`
+  position: absolute;
+  background-color: currentColor;
+  border-radius: 50%;
+  &.${({ theme: { clsPrefix } }) => `${clsPrefix}-ripple--pulsate`} {
+    animation-name: ${pulsateKeyframe};
+    animation-duration: 2.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+`;
 
 const DELAY_RIPPLE = 80;
 
 const Ripple = forwardRef<RippleRef, RippleProps>((props, ref) => {
   const { transitionClassName, exitAfterEnter, ...others } = props;
+
+  const { clsPrefix } = useTheme();
 
   const [ripples, setRipples] = useState<Array<ReactElement>>([]);
 
@@ -75,6 +96,8 @@ const Ripple = forwardRef<RippleRef, RippleProps>((props, ref) => {
   const startTimerCommitRef = useRef<() => void>();
   const ignoreMouseDonwRef = useRef(false);
 
+  const [pulsateRipple, setPulsateRipple] = useState<ReactElement>();
+
   useEffect(() => {
     return () => {
       if (startTimerRef.current) {
@@ -88,21 +111,36 @@ const Ripple = forwardRef<RippleRef, RippleProps>((props, ref) => {
     stop,
   }));
 
-  const commit = useCallback((x: number, y: number, size: number) => {
-    const key = keyRef.current;
-    const style: CSSProperties = {
-      width: size,
-      height: size,
-      top: -size / 2 + y,
-      left: -size / 2 + x,
-    };
-    const ripple = <RippleInner key={key} style={style} />;
-    setRipples((prev) => [...prev, ripple]);
-    keyRef.current++;
-  }, []);
+  const commit = useCallback(
+    (x: number, y: number, size: number, pulsate?: boolean) => {
+      const key = keyRef.current;
+      const style: CSSProperties = {
+        width: size,
+        height: size,
+        top: -size / 2 + y,
+        left: -size / 2 + x,
+      };
+
+      const classes = clsx({
+        [`${clsPrefix}-ripple--pulsate`]: pulsate,
+      });
+
+      const ripple = <RippleInner className={classes} key={key} style={style} />;
+
+      if (pulsate) {
+        setPulsateRipple(ripple);
+      } else {
+        setPulsateRipple(undefined);
+        setRipples((prev) => [...prev, ripple]);
+      }
+
+      keyRef.current++;
+    },
+    [clsPrefix],
+  );
 
   const start = useCallback(
-    (e: SyntheticEvent | object = {}) => {
+    (e: SyntheticEvent | { pulsate?: boolean } = {}) => {
       if ((e as MouseEvent).type === 'mousedown' && ignoreMouseDonwRef.current) {
         ignoreMouseDonwRef.current = false;
         return;
@@ -137,6 +175,7 @@ const Ripple = forwardRef<RippleRef, RippleProps>((props, ref) => {
         : (e as MouseEvent);
       const x = Math.round(typeof clientX === 'undefined' ? clientWidth / 2 : clientX - rect.left);
       const y = Math.round(typeof clientY === 'undefined' ? clientHeight / 2 : clientY - rect.top);
+
       const sizeX = Math.max(Math.abs(clientWidth - x), x) * 2 + 2;
       const sizeY = Math.max(Math.abs(clientHeight - y), y) * 2 + 2;
       const size = Math.round(Math.sqrt(sizeX ** 2 + sizeY ** 2));
@@ -155,13 +194,15 @@ const Ripple = forwardRef<RippleRef, RippleProps>((props, ref) => {
           }
         }, DELAY_RIPPLE);
       } else {
-        commit(x, y, size);
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
+        commit(x, y, size, (e as any).pulsate);
       }
     },
     [commit],
   );
 
   const stop = useConstantFn(() => {
+    setPulsateRipple(undefined);
     if (startTimerRef.current) {
       clearTimeout(startTimerRef.current);
       startTimerRef.current = undefined;
@@ -202,6 +243,8 @@ const Ripple = forwardRef<RippleRef, RippleProps>((props, ref) => {
 
   return (
     <RipperRoot {...others} ref={containerRef}>
+      {pulsateRipple}
+
       <TransitionGroup transitionClassName={transitionClassName} onEntered={handleEnter}>
         {ripples}
       </TransitionGroup>

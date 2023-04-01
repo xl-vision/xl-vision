@@ -24,9 +24,9 @@ import {
   getFixedTop,
   getTargetRect,
 } from './utils';
-import { useConfig } from '../ConfigProvider';
 import ResizeObserver from '../ResizeObserver';
 import { styled } from '../styles';
+import { useTheme } from '../ThemeProvider';
 import { throttleByAnimationFrame } from '../utils/perf';
 
 export type AffixProps = Omit<HTMLAttributes<HTMLDivElement>, 'target' | 'onChange'> & {
@@ -41,7 +41,7 @@ const displayName = 'Affix';
 const AffixRoot = styled('div', {
   name: displayName,
   slot: 'Root',
-})(({ clsPrefix }) => {
+})(({ theme: { clsPrefix } }) => {
   return {
     [`.${clsPrefix}-affix__inner`]: {
       zIndex: 1,
@@ -64,7 +64,7 @@ export type AffixIntance = HTMLDivElement & {
 };
 
 const Affix = forwardRef<AffixIntance, AffixProps>((props, ref) => {
-  const { clsPrefix } = useConfig();
+  const { clsPrefix } = useTheme();
 
   const {
     target = getDefaultTarget,

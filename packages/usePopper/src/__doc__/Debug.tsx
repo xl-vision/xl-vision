@@ -12,9 +12,9 @@ import {
 import { Padding } from '../types';
 
 const Root = styled('div')(({ theme }) => {
-  const { color } = theme;
+  const { colors } = theme;
   return {
-    backgroundColor: color.grey[400],
+    backgroundColor: colors.text.hint,
     borderRadius: 4,
     height: 200,
     padding: 20,
@@ -42,8 +42,8 @@ const PopperWrapper = styled('div')(({ theme }) => {
     '.popper': {
       padding: 8,
       borderRadius: 3,
-      backgroundColor: theme.color.themes.success.color,
-      cColor: theme.color.themes.success.text.primary,
+      backgroundColor: theme.colors.themes.success.foreground.enabled,
+      cColor: theme.colors.themes.success.text.primary,
     },
   };
 });

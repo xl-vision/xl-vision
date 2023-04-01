@@ -12,8 +12,8 @@ import {
   useRef,
   KeyboardEvent,
 } from 'react';
-import { useConfig } from '../../ConfigProvider';
 import { styled } from '../../styles';
+import { useTheme } from '../../ThemeProvider';
 import Transition from '../../Transition';
 
 export type InnerMessageProps = NoticationProps<
@@ -31,22 +31,22 @@ const displayName = 'InnerMessage';
 const InnerMessageRoot = styled('div', {
   name: displayName,
   slot: 'Root',
-})(({ theme, clsPrefix }) => {
-  const { transition, color, elevations, styleSize } = theme;
+})(({ theme }) => {
+  const { transitions, colors, elevations, sizes, clsPrefix } = theme;
 
   const rootClassName = `${clsPrefix}-inner-message`;
 
   return {
     display: 'inline-block',
     padding: `8px 0`,
-    color: theme.color.text.primary,
+    color: theme.colors.text.primary,
 
     [`&.${rootClassName}`]: {
       '&-appear-active, &-enter-active': {
-        transition: transition.standard('all'),
+        transition: transitions.standard('all'),
       },
       '&-exit-active': {
-        transition: transition.standard('all'),
+        transition: transitions.standard('all'),
       },
       '&-enter-from, &-appear-from': {
         opacity: 0,
@@ -70,10 +70,10 @@ const InnerMessageRoot = styled('div', {
     [`.${rootClassName}__inner`]: {
       display: 'flex',
       alignItems: 'center',
-      backgroundColor: color.background.paper,
-      borderRadius: styleSize.middle.borderRadius,
-      padding: `${styleSize.middle.padding.y}px ${styleSize.middle.padding.x}px`,
-      ...elevations(12),
+      backgroundColor: colors.background.popper,
+      borderRadius: sizes.middle.borderRadius,
+      padding: `${sizes.middle.padding.y}px ${sizes.middle.padding.x}px`,
+      boxShadow: elevations[3],
     },
     [`.${rootClassName}__status, .${rootClassName}__close`]: {
       lineHeight: 1,
@@ -89,10 +89,10 @@ const InnerMessageRoot = styled('div', {
       padding: 0,
       marginLeft: 5,
       cursor: 'pointer',
-      color: color.text.icon,
-      transition: transition.standard('color'),
+      color: colors.text.hint,
+      transition: transitions.standard('color'),
       '&:hover, &:focus': {
-        color: color.text.primary,
+        color: colors.text.primary,
       },
     },
   };
@@ -113,7 +113,7 @@ const InnerMessage = forwardRef<HTMLDivElement, InnerMessageProps>((props, ref) 
     ...others
   } = props;
 
-  const { clsPrefix } = useConfig();
+  const { clsPrefix } = useTheme();
 
   const [open, setOpen] = useValueChange(defaultOpen, openProp);
 

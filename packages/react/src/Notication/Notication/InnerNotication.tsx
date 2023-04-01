@@ -14,8 +14,8 @@ import {
   useEffect,
   useRef,
 } from 'react';
-import { useConfig } from '../../ConfigProvider';
 import { styled } from '../../styles';
+import { useTheme } from '../../ThemeProvider';
 import Transition from '../../Transition';
 import NoticationContext from '../context';
 
@@ -36,8 +36,8 @@ const displayName = 'InnerNotication';
 const InnerNoticationRoot = styled('div', {
   name: displayName,
   slot: 'Root',
-})(({ clsPrefix, theme }) => {
-  const { transition, color, elevations, styleSize, typography } = theme;
+})(({ theme }) => {
+  const { clsPrefix, transitions, colors, elevations, sizes, typography } = theme;
 
   const rootClassName = `${clsPrefix}-inner-notication`;
 
@@ -45,14 +45,14 @@ const InnerNoticationRoot = styled('div', {
     display: 'inline-block',
     padding: `8px 0`,
     textAlign: 'left',
-    color: theme.color.text.primary,
+    color: theme.colors.text.primary,
 
     [`&.${rootClassName}`]: {
       '&-appear-active, &-enter-active': {
-        transition: transition.standard('all'),
+        transition: transitions.standard('all'),
       },
       '&-exit-active': {
-        transition: transition.standard('all'),
+        transition: transitions.standard('all'),
       },
       '&-exit-from': {
         opacity: 1,
@@ -81,11 +81,11 @@ const InnerNoticationRoot = styled('div', {
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'flex-start',
-      backgroundColor: color.background.paper,
-      borderRadius: styleSize.large.borderRadius,
-      padding: `${styleSize.large.padding.x}px ${styleSize.large.padding.x}px`,
+      backgroundColor: colors.background.popper,
+      borderRadius: sizes.large.borderRadius,
+      padding: `${sizes.large.padding.x}px ${sizes.large.padding.x}px`,
       width: 384,
-      ...elevations(12),
+      boxShadow: elevations[3],
     },
     [`.${rootClassName}__status, .${rootClassName}__close`]: {
       lineHeight: 1,
@@ -118,11 +118,11 @@ const InnerNoticationRoot = styled('div', {
       marginLeft: 'auto',
       lineHeight: typography.subtitle1.info.lineHeight,
       cursor: 'pointer',
-      color: color.text.icon,
-      transition: transition.standard('color'),
+      color: colors.text.hint,
+      transition: transitions.standard('color'),
 
       '&:hover, &:focus': {
-        color: color.text.primary,
+        color: colors.text.primary,
       },
     },
   };
@@ -148,7 +148,7 @@ const InnerNotication = forwardRef<HTMLDivElement, InnerNoticationProps>((props,
 
   const { placement } = useContext(NoticationContext);
 
-  const { clsPrefix } = useConfig();
+  const { clsPrefix } = useTheme();
 
   const [open, setOpen] = useValueChange(defaultOpen, openProp);
 

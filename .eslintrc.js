@@ -104,7 +104,7 @@ module.exports = {
       'error',
       {
         // custom hooks
-        additionalHooks: '(useIsomorphicLayoutEffect)',
+        additionalHooks: '(useIsomorphicLayoutEffect|useEnhancedMemo)',
       },
     ],
     'react/jsx-handler-names': [
@@ -136,6 +136,16 @@ module.exports = {
         requiredFirst: true,
         sortShapeProp: true,
         callbacksLast: true,
+      },
+    ],
+    'prefer-destructuring': [
+      'error',
+      {
+        VariableDeclarator: { object: true, array: false },
+        AssignmentExpression: {
+          array: false,
+          object: false,
+        },
       },
     ],
     'unicorn/filename-case': [

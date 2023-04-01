@@ -1,27 +1,37 @@
+import { useEnhancedMemo } from '@xl-vision/hooks';
 import { ThemeContext as StyledThemeContext } from '@xl-vision/styled-engine';
 import { isProduction, deepMerge } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
-import { ReactNode, FC, useMemo, createContext, useContext } from 'react';
-import createTheme, { BaseTheme } from './createTheme';
+import { ReactNode, FC, createContext, useContext, useMemo } from 'react';
+import createTheme, { ThemeInput } from './createTheme';
 import ThemeContext from './ThemeContext';
 
-export type ThemeProviderProps = {
+export type ThemeProviderProps = ThemeInput & {
   children: ReactNode;
-  theme?: BaseTheme;
 };
 
 const ThemeProvider: FC<ThemeProviderProps> = (props) => {
-  const { children, theme } = props;
+  const { children, ...others } = props;
 
   const parentTheme = useContext(ThemePropsContext);
 
+  const themeConfig = useEnhancedMemo(
+    () => others,
+    [others],
+    ([prevConfig], [currentConfig]) => {
+      const prevKeys = Object.keys(prevConfig) as Array<keyof typeof prevConfig>;
+      const currentKeys = Object.keys(currentConfig) as Array<keyof typeof prevConfig>;
+      return (
+        prevKeys.length !== currentKeys.length ||
+        prevKeys.some((key) => prevConfig[key] !== currentConfig[key])
+      );
+    },
+  );
+
   // 可能存在多个主题嵌套的情况，子主题应该继承父主题
   const mergedThemeProps = useMemo(() => {
-    if (parentTheme) {
-      return deepMerge(parentTheme, theme, { clone: true });
-    }
-    return theme;
-  }, [theme, parentTheme]);
+    return deepMerge(parentTheme, themeConfig, { clone: true });
+  }, [parentTheme, themeConfig]);
 
   const value = useMemo(() => {
     return createTheme(mergedThemeProps);
@@ -42,10 +52,9 @@ if (!isProduction) {
 
   ThemeProvider.propTypes = {
     children: PropTypes.node.isRequired,
-    theme: PropTypes.shape({}),
   };
 }
 
 export default ThemeProvider;
 
-const ThemePropsContext = createContext<BaseTheme | undefined>(undefined);
+const ThemePropsContext = createContext<ThemeInput>({});

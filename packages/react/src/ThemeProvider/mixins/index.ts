@@ -14,7 +14,7 @@ const createMixins = (theme: ThemeWithoutMixins) => {
     },
   };
 
-  const placeholder = (color: string = theme.color.text.hint) => {
+  const placeholder = (color: string = theme.colors.text.hint) => {
     return {
       '&::-moz-placeholder': {
         opacity: 1,

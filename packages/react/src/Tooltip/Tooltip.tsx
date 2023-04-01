@@ -2,7 +2,6 @@ import { isProduction, isServer } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { Children, forwardRef, ReactElement, ReactNode } from 'react';
-import { useConfig } from '../ConfigProvider';
 import Popper, { PopperChildrenProps, PopperProps } from '../Popper';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
@@ -21,13 +20,13 @@ const displayName = 'Tooltip';
 const TooltipRoot = styled(Popper, {
   name: displayName,
   slot: 'Root',
-})(({ clsPrefix, theme }) => {
-  const { transition } = theme;
+})(({ theme }) => {
+  const { clsPrefix, transitions } = theme;
 
   return {
     [`.${clsPrefix}-tooltip__inner`]: {
-      ...transition.fadeIn('&'),
-      ...transition.fadeOut('&'),
+      ...transitions.fadeIn('&'),
+      ...transitions.fadeOut('&'),
     },
   };
 });
@@ -40,16 +39,17 @@ const TooltipPopup = styled('div', {
   name: displayName,
   slot: 'Popup',
 })<TooltipPopupStyleProps>(({ theme, styleProps }) => {
-  const { color, typography, styleSize } = theme;
+  const { colors, typography, sizes, elevations } = theme;
   const { hasWidth } = styleProps;
 
-  const bgColor = color.emphasize(color.modes.dark.background.paper, 0.1);
+  const backgroundColor = colors.background.spotlight;
 
   return {
-    backgroundColor: bgColor,
-    color: color.getContrastColor(bgColor).text.primary,
+    backgroundColor,
+    color: colors.getContrastText(backgroundColor).primary,
     padding: '4px 8px',
-    borderRadius: styleSize.middle.borderRadius,
+    borderRadius: sizes.middle.borderRadius,
+    boxShadow: elevations[2],
 
     ...typography.caption.style,
     ...(hasWidth && {
@@ -65,21 +65,20 @@ const TooltipArrow = styled('div', {
   name: displayName,
   slot: 'Arrow',
 })(({ theme }) => {
-  const { color } = theme;
+  const { colors } = theme;
 
-  const bgColor = color.emphasize(color.modes.dark.background.paper, 0.1);
+  const backgroundColor = colors.background.spotlight;
 
   return {
     width: 8,
     height: 8,
-    backgroundColor: bgColor,
+    backgroundColor,
     transform: 'translate(-4px, -4px) rotate(45deg)',
   };
 });
 
 const Tooltip = forwardRef<HTMLDivElement, TooltipProps>((props, ref) => {
-  const { color } = useTheme();
-  const { clsPrefix } = useConfig();
+  const { colors, clsPrefix } = useTheme();
 
   const {
     content,
@@ -99,7 +98,7 @@ const Tooltip = forwardRef<HTMLDivElement, TooltipProps>((props, ref) => {
 
   const colorStyle = bgColor && {
     backgroundColor: bgColor,
-    color: color.getContrastColor(bgColor).text.primary,
+    color: colors.getContrastText(bgColor).primary,
   };
 
   const popup = (

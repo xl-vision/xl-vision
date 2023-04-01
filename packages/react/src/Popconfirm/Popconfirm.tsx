@@ -4,9 +4,9 @@ import { isProduction, isServer } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { ReactNode, forwardRef, useState } from 'react';
 import Button, { ButtonProps } from '../Button';
-import { useConfig } from '../ConfigProvider';
 import Popper, { PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
+import { useTheme } from '../ThemeProvider';
 
 export type PopconfirmButtonProps = Omit<ButtonProps, 'children' | 'onClick'>;
 export type PopconfirmProps = Omit<PopperProps, 'popup' | 'arrow' | 'title'> & {
@@ -26,13 +26,13 @@ const displayName = 'Popconfirm';
 const PopconfirmRoot = styled(Popper, {
   name: displayName,
   slot: 'Root',
-})(({ clsPrefix, theme }) => {
-  const { transition } = theme;
+})(({ theme }) => {
+  const { clsPrefix, transitions } = theme;
 
   return {
     [`.${clsPrefix}-popconfirm__inner`]: {
-      ...transition.fadeIn('&'),
-      ...transition.fadeOut('&'),
+      ...transitions.fadeIn('&'),
+      ...transitions.fadeOut('&'),
     },
   };
 });
@@ -41,13 +41,12 @@ const PopconfirmArrow = styled('div', {
   name: displayName,
   slot: 'Arrow',
 })(({ theme }) => {
-  const { color } = theme;
-  const bgColor = color.background.paper;
+  const { colors } = theme;
 
   return {
     width: 8,
     height: 8,
-    backgroundColor: bgColor,
+    backgroundColor: colors.background.popper,
     transform: 'translate(-4px, -4px) rotate(45deg)',
   };
 });
@@ -55,16 +54,16 @@ const PopconfirmArrow = styled('div', {
 const PopconfirmPopup = styled('div', {
   name: displayName,
   slot: 'Popup',
-})(({ clsPrefix, theme }) => {
-  const { color, typography, elevations, styleSize } = theme;
-  const bgColor = color.background.paper;
+})(({ theme }) => {
+  const { clsPrefix, colors, typography, elevations, sizes } = theme;
 
   return {
-    backgroundColor: bgColor,
-    color: color.getContrastColor(bgColor).text.primary,
-    borderRadius: styleSize.middle.borderRadius,
+    backgroundColor: colors.background.popper,
+    color: colors.text.primary,
+    borderRadius: sizes.middle.borderRadius,
     padding: '12px 16px',
-    ...elevations(8),
+    boxShadow: elevations[3],
+
     [`.${clsPrefix}-popconfirm__content`]: {
       position: 'relative',
       padding: '4px 0px 12px',
@@ -75,7 +74,7 @@ const PopconfirmPopup = styled('div', {
       position: 'absolute',
       top: typography.pxToRem(6),
       left: 0,
-      color: color.themes.warning.color,
+      color: colors.themes.warning.foreground.enabled,
     },
     [`.${clsPrefix}-popconfirm__title`]: {
       paddingLeft: 22,
@@ -92,7 +91,7 @@ const PopconfirmPopup = styled('div', {
 const defaultIcon = <ExclamationCircleOutlined />;
 
 const Popconfirm = forwardRef<HTMLDivElement, PopconfirmProps>((props, ref) => {
-  const { locale, clsPrefix } = useConfig();
+  const { locale, clsPrefix } = useTheme();
 
   const {
     popupContainer,

@@ -14,10 +14,10 @@ const Wrapper = styled('div')``;
 
 const Bar = styled('div')(
   ({ theme }) => `
-  border-bottom: ${theme.styleSize.middle.border}px solid ${theme.color.divider};
+  border-bottom: ${theme.sizes.middle.border}px solid ${theme.colors.divider.primary};
   text-align: center;
   font-size: 14px;
-  color: ${theme.color.themes.primary.color};
+  color: ${theme.colors.themes.primary.foreground.enabled};
   padding: 10px 0;
 `,
 );

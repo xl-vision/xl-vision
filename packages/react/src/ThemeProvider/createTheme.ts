@@ -1,59 +1,75 @@
+import { deepMerge } from '@xl-vision/utils';
 import createBreakpoints, { Breakpoints } from './breakpoints';
-import createColors, { Color } from './color';
-import createElevations from './elevations';
+import createColors, { Colors } from './colors';
+import createElevations, { Elevations } from './elevations';
 import createMixins from './mixins';
 import createOverrideStyles, { OverrideStyles } from './overrideStyles';
-import createStyleSize, { StyleSize } from './styleSize';
-import createTransition, { Transition } from './transition';
+import createSizes, { Sizes, SizeVariant } from './sizes';
+import createTransitions, { Transitions } from './transitions';
 import createTypography, { Typography } from './typography';
-import { DeepPartial } from '../utils/types';
+import { Locale } from '../locale';
+import defaultTheme from '../themes/default';
+import { DeepPartial } from '../types';
 
-export type BaseTheme = DeepPartial<{
-  color: Color;
-  transition: Transition;
-  typography: Typography;
+export type BaseTheme = {
   breakpoints: Breakpoints;
-  styleSize: StyleSize;
-}> & {
+  clsPrefix: string;
+  colors: Colors;
+  elevations: Elevations;
+  locale: Locale;
+  size: SizeVariant;
+  sizes: Sizes;
+  transitions: Transitions;
+  typography: Typography;
   overrideStyles?: OverrideStyles;
+};
+
+export type ThemeInput = DeepPartial<BaseTheme> & {
+  variants?: DeepPartial<ThemeWithoutMixins>;
 };
 
 export type ThemeWithoutMixins = ReturnType<typeof createThemeWithoutMixins>;
 
 export type Theme = ReturnType<typeof createTheme>;
 
-const createThemeWithoutMixins = (theme: BaseTheme = {}) => {
-  const { color, transition, typography, breakpoints, overrideStyles = {}, styleSize } = theme;
-
-  const outputColor = createColors(color);
-  const outputTransition = createTransition(transition);
-  const outputTypography = createTypography(typography);
-  const outputBreakpoints = createBreakpoints(breakpoints);
-  const outputOverrideStyles = createOverrideStyles(overrideStyles);
-
-  const outputStyleSize = createStyleSize(styleSize);
-
-  const elevations = createElevations();
+const createThemeWithoutMixins = (themeInput?: BaseTheme) => {
+  const {
+    colors,
+    overrideStyles,
+    breakpoints,
+    elevations,
+    sizes,
+    transitions,
+    typography,
+    ...others
+  } = deepMerge(defaultTheme, themeInput, {
+    clone: true,
+  });
 
   return {
-    color: outputColor,
-    transition: outputTransition,
-    typography: outputTypography,
-    breakpoints: outputBreakpoints,
-    elevations,
-    overrideStyles: outputOverrideStyles,
-    styleSize: outputStyleSize,
+    ...others,
+    colors: createColors(colors),
+    overrideStyles: createOverrideStyles(overrideStyles),
+    breakpoints: createBreakpoints(breakpoints),
+    elevations: createElevations(elevations),
+    sizes: createSizes(sizes),
+    transitions: createTransitions(transitions),
+    typography: createTypography(typography),
   };
 };
 
-const createTheme = (theme: BaseTheme = {}) => {
-  const themeWithoutMixins = createThemeWithoutMixins(theme);
+const createTheme = (theme: ThemeInput = {}) => {
+  let themeWithoutMixins = createThemeWithoutMixins(
+    deepMerge(defaultTheme, theme, { clone: true }),
+  );
 
-  const mixins = createMixins(themeWithoutMixins);
+  if (theme.variants) {
+    themeWithoutMixins = deepMerge(themeWithoutMixins, theme.variants, { clone: true });
+  }
 
   return {
     ...themeWithoutMixins,
-    mixins,
+    mixins: createMixins(themeWithoutMixins),
   };
 };
 

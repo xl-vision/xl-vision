@@ -7,9 +7,9 @@ import PropTypes from 'prop-types';
 import { ReactNode, forwardRef, useContext, useCallback, useEffect } from 'react';
 import DropdownContext from './DropdownContext';
 import BaseButton from '../BaseButton';
-import { useConfig } from '../ConfigProvider';
 import Popper, { PopperPlacement, PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
+import { useTheme } from '../ThemeProvider';
 
 export interface DropdownSubmenuProps
   extends Omit<
@@ -27,13 +27,13 @@ const displayName = 'DropdownSubmenu';
 const DropdownSubmenuRoot = styled(Popper, {
   name: displayName,
   slot: 'Root',
-})(({ theme, clsPrefix }) => {
-  const { transition } = theme;
+})(({ theme }) => {
+  const { transitions, clsPrefix } = theme;
 
   return {
     [`.${clsPrefix}-dropdown-submenu`]: {
-      ...transition.fadeIn('&'),
-      ...transition.fadeOut('&'),
+      ...transitions.fadeIn('&'),
+      ...transitions.fadeOut('&'),
     },
     '>li': {
       display: 'block',
@@ -50,15 +50,15 @@ export type DropdownSubmenuItemButtonStyleProps = {
 const DropdownSubmenuItemButton = styled(BaseButton, {
   name: displayName,
   slot: 'Button',
-})<DropdownSubmenuItemButtonStyleProps>(({ theme, styleProps, clsPrefix }) => {
-  const { color, transition, typography } = theme;
+})<DropdownSubmenuItemButtonStyleProps>(({ theme, styleProps }) => {
+  const { colors, transitions, typography, clsPrefix } = theme;
 
   const { disabled } = styleProps;
 
   const styles: CSSObject = {
     padding: '5px 12px',
-    transition: transition.standard('all'),
-    color: color.text.primary,
+    transition: transitions.standard('all'),
+    color: colors.text.primary,
     // 不设置会导致有间隙，原因未知
     width: '100%',
     textAlign: 'left',
@@ -69,11 +69,11 @@ const DropdownSubmenuItemButton = styled(BaseButton, {
   };
 
   if (disabled) {
-    styles.opacity = color.action.disabled;
+    styles.opacity = colors.opacity.disabled;
   } else {
     styles[':hover'] = {
-      backgroundColor: color.themes.primary.color,
-      color: color.themes.primary.text.primary,
+      backgroundColor: colors.themes.primary.foreground.hover,
+      color: colors.themes.primary.text.primary,
     };
   }
 
@@ -95,16 +95,16 @@ const DropdownSubmenuPopup = styled('ul', {
   name: displayName,
   slot: 'Popup',
 })(({ theme }) => {
-  const { color, elevations, styleSize } = theme;
+  const { colors, elevations, sizes } = theme;
 
   return {
-    backgroundColor: color.background.paper,
-    color: color.text.primary,
-    borderRadius: styleSize.middle.borderRadius,
+    backgroundColor: colors.background.popper,
+    color: colors.text.primary,
+    borderRadius: sizes.middle.borderRadius,
     padding: '5px 0',
     listStyle: 'none',
     margin: 0,
-    ...elevations(8),
+    boxShadow: elevations[3],
   };
 });
 
@@ -130,7 +130,7 @@ const DropdownSubmenu = forwardRef<HTMLDivElement, DropdownSubmenuProps>((props,
 
   const [open, setOpen] = useValueChange(defaultOpen, openProp, onOpenChange);
 
-  const { clsPrefix } = useConfig();
+  const { clsPrefix } = useTheme();
   const { submenuCloseHandlers } = useContext(DropdownContext);
 
   const handleOpenChange = useConstantFn((value: boolean) => {

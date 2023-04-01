@@ -3,8 +3,8 @@ import { getComputedStyle, isProduction, raf } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { HTMLAttributes, FC, useState, useRef, useEffect } from 'react';
-import { useConfig } from '../ConfigProvider';
 import ResizeObserver from '../ResizeObserver';
+import { useTheme } from '../ThemeProvider';
 
 export type TextareaSuffixProps = HTMLAttributes<HTMLSpanElement> & {
   value?: string;
@@ -15,7 +15,7 @@ const displayName = 'TextareaSuffix';
 const TextareaSuffix: FC<TextareaSuffixProps> = (props) => {
   const { className, value, style, ...others } = props;
 
-  const { clsPrefix } = useConfig();
+  const { clsPrefix } = useTheme();
 
   const [overflow, setOverflow] = useState(false);
 

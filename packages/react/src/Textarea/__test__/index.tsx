@@ -1,21 +1,21 @@
 import { fireEvent, render } from '@testing-library/react';
-import { ComponentSize, ConfigProvider, Textarea } from '@xl-vision/react';
+import { SizeVariant, ThemeProvider, Textarea } from '@xl-vision/react';
 
 describe('Textarea', () => {
   it('test component size', () => {
-    const componentSizes: Array<ComponentSize> = ['small', 'middle', 'large'];
+    const componentSizes: Array<SizeVariant> = ['small', 'middle', 'large'];
 
     const { container, rerender } = render(
-      <ConfigProvider>
+      <ThemeProvider>
         <Textarea />
-      </ConfigProvider>,
+      </ThemeProvider>,
     );
 
     componentSizes.forEach((componentSize) => {
       rerender(
-        <ConfigProvider size={componentSize}>
+        <ThemeProvider size={componentSize}>
           <Textarea />
-        </ConfigProvider>,
+        </ThemeProvider>,
       );
 
       expect(container.querySelector(`.xl-textarea--size-${componentSize}`)).not.toBe(null);

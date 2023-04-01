@@ -10,19 +10,15 @@ import { isProduction } from '@xl-vision/utils';
 import clsx from 'clsx';
 import { ComponentProps, ComponentType, forwardRef } from 'react';
 import applyTheme from './applyTheme';
-import { useConfig } from '../ConfigProvider';
-import { Theme } from '../ThemeProvider/createTheme';
-import { Style } from '../ThemeProvider/overrideStyles';
+import { StyledComponentKey } from './constants';
+import { Theme, Style, useTheme } from '../ThemeProvider';
 
 export type XlOptions = {
   name?: string;
   slot?: string;
 };
 
-const StyleComponentKey = Symbol('$$StyleComponent');
-
-const shouldForwardProp = (prop: PropertyKey) =>
-  prop !== 'theme' && prop !== 'styleProps' && prop !== 'clsPrefix';
+const shouldForwardProp = (prop: PropertyKey) => prop !== 'theme' && prop !== 'styleProps';
 
 const middleline = (str: string) => {
   const separator = '-';
@@ -31,13 +27,13 @@ const middleline = (str: string) => {
   return str.split(split).join(separator).toLowerCase();
 };
 
-type StyleComponent = { [StyleComponentKey]?: boolean };
+type StyledComponent = { [StyledComponentKey]?: boolean };
 
 const styled = <
   Tag extends keyof JSX.IntrinsicElements | ComponentType<ComponentProps<Tag>>,
   ForwardedProps extends keyof ExtractProps<Tag> = keyof ExtractProps<Tag>,
 >(
-  tag: Tag & StyleComponent,
+  tag: Tag & StyledComponent,
   options?: XlOptions,
 ) => {
   const { name, slot = 'Root' } = options || {};
@@ -53,10 +49,10 @@ const styled = <
     }
   }
 
-  const isStyleComponent = tag[StyleComponentKey] as boolean;
+  const isStyledComponent = tag[StyledComponentKey] as boolean;
 
   const defaultCreateStyledComponent = innerStyled<Tag, ForwardedProps>(tag, {
-    shouldForwardProp: isStyleComponent
+    shouldForwardProp: isStyledComponent
       ? undefined
       : (shouldForwardProp as ShouldForwardProp<ForwardedProps>),
     ...(!isProduction && { prefix: displayName || undefined }),
@@ -66,7 +62,7 @@ const styled = <
     StyleProps extends object | undefined = undefined,
     Props extends Pick<ExtractProps<Tag>, ForwardedProps> = Pick<ExtractProps<Tag>, ForwardedProps>,
     ActualStyleProps = StyleProps extends undefined ? {} : { styleProps: StyleProps },
-    ReceivedThemeProps = { theme: Theme } & ActualStyleProps & { clsPrefix: string },
+    ReceivedThemeProps = { theme: Theme } & ActualStyleProps,
     PassedThemeProps = { theme?: Theme } & ActualStyleProps,
   >(
     first: TemplateStringsArray | CSSObject | FunctionInterpolation<Props & ReceivedThemeProps>,
@@ -128,7 +124,7 @@ const styled = <
     // @ts-ignore
 
     const DefaultComponent: typeof InnerDefaultComponent = forwardRef((props, ref) => {
-      const { clsPrefix } = useConfig();
+      const { clsPrefix } = useTheme();
 
       return (
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -140,13 +136,12 @@ const styled = <
             // eslint-disable-next-line react/prop-types
             (props as { className?: string }).className,
           )}
-          clsPrefix={clsPrefix}
           ref={ref}
         />
       );
     });
 
-    (DefaultComponent as StyleComponent)[StyleComponentKey] = true;
+    (DefaultComponent as StyledComponent)[StyledComponentKey] = true;
 
     if (!isProduction) {
       InnerDefaultComponent.displayName = `Inner${displayName}`;
