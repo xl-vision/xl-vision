@@ -34,13 +34,13 @@ const displayName = 'Ripple';
 
 const pulsateKeyframe = keyframes`
   0% {
-    transform: scale(0.92);
+    transform: scale(0.8);
   }
   50% {
     transform: scale(0.5);
   }
   100% {
-    transform: scale(0.92);
+    transform: scale(0.8);
   }
 `;
 
@@ -69,10 +69,6 @@ const RippleInner = styled('div', {
   background-color: currentColor;
   border-radius: 50%;
   &.${({ theme: { clsPrefix } }) => `${clsPrefix}-ripple--pulsate`} {
-    // left: 0;
-    // top: 0;
-    // width: 100%;
-    // height: 100%;
     animation-name: ${pulsateKeyframe};
     animation-duration: 2.5s;
     animation-timing-function: ease-in-out;
