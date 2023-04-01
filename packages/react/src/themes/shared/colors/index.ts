@@ -1,4 +1,4 @@
-import { TinyColor } from '@xl-vision/utils';
+import { TinyColor, isProduction, warning } from '@xl-vision/utils';
 import createPatterns from './createPatterns';
 import {
   Colors,
@@ -11,14 +11,15 @@ import {
 
 export type ColorInput = {
   background: string;
-  text: string;
+  contrastThreshold: number;
   inverseText: string;
-  themes: Record<ThemeVariant, string>;
   opacity: {
     disabled: number;
     ripple: number;
   };
-  contrastThreshold: number;
+  text: string;
+  themes: Record<ThemeVariant, string>;
+  dark?: boolean;
 };
 
 export const createColors = ({
@@ -28,6 +29,7 @@ export const createColors = ({
   themes,
   opacity,
   contrastThreshold,
+  dark,
 }: ColorInput): Colors => {
   const textTinyColor = new TinyColor(text);
   const inverseTextTinyColor = new TinyColor(inverseText);
@@ -45,22 +47,61 @@ export const createColors = ({
     disabled: inverseTextTinyColor.setAlpha(0.25).toHexString(true),
     hint: inverseTextTinyColor.setAlpha(0.38).toHexString(true),
   };
+
+  const method = dark ? 'lighten' : 'darken';
+
   const outputBackground: Record<BackgroundVariant, string> = {
-    default: backgroundTinyColor.darken(4).toHexString(true),
-    paper: backgroundTinyColor.darken(0).toHexString(true),
+    default: backgroundTinyColor[method](4).toHexString(true),
+    paper: backgroundTinyColor[method](0).toHexString(true),
+    popper: backgroundTinyColor[method](dark ? 12 : 0).toHexString(true),
     spotlight: '#1e1e1e',
     mask: 'rgba(0, 0, 0, 0.45)',
   };
   const outputDivider: Record<DividerVariant, string> = {
-    primary: backgroundTinyColor.darken(15).toHexString(true),
-    secondary: backgroundTinyColor.darken(6).toHexString(true),
+    primary: backgroundTinyColor[method](15).toHexString(true),
+    secondary: backgroundTinyColor[method](6).toHexString(true),
   };
 
   const outputThemes = {} as Record<ThemeVariant, ThemeColors>;
 
+  const contrastCache: Map<string, Record<TextVariant, string>> = new Map();
+
+  const getContrastText = (bgColor: string) => {
+    const cachedColors = contrastCache.get(bgColor);
+
+    if (cachedColors) {
+      return cachedColors;
+    }
+
+    const contrastColor =
+      TinyColor.getContrastRatio(bgColor, outInverseText.primary) >= contrastThreshold
+        ? outInverseText
+        : outText;
+
+    contrastCache.set(bgColor, contrastColor);
+
+    if (!isProduction) {
+      const contrast = TinyColor.getContrastRatio(bgColor, contrastColor.primary);
+      warning(
+        contrast < 3,
+        [
+          `XL-VISION: The contrast ratio of ${contrast}:1 for ${contrastColor.primary} on ${bgColor}`,
+          'falls below the WCAG recommended absolute minimum contrast ratio of 3:1.',
+          'https://www.w3.org/TR/2008/REC-WCAG20-20081211/#visual-audio-contrast-contrast',
+        ].join('\n'),
+      );
+    }
+
+    return contrastColor;
+  };
+
   Object.keys(themes).forEach((key) => {
     const themeVariant = key as ThemeVariant;
-    const patterns = createPatterns(themes[themeVariant]);
+    const patterns = createPatterns(themes[themeVariant], {
+      theme: dark ? 'dark' : 'default',
+      backgroundColor: background,
+    });
+
     outputThemes[themeVariant] = {
       foreground: {
         enabled: patterns[5],
@@ -79,13 +120,13 @@ export const createColors = ({
         primary: patterns[3],
         secondary: patterns[2],
       },
-      text: outInverseText,
+      text: getContrastText(patterns[5]),
       outline: new TinyColor(patterns[5]).setAlpha(0.2).toHexString(true),
     };
   });
 
   return {
-    contrastThreshold,
+    getContrastText,
     opacity,
     text: outText,
     inverseText: outInverseText,

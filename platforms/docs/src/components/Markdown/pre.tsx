@@ -3,15 +3,18 @@ import { styled } from '@xl-vision/react';
 const Pre = styled('pre')(({ theme }) => {
   const { colors, sizes } = theme;
 
+  const { themes } = colors;
+
   // const isDark = colors.mode === 'dark';
 
   return {
     '&[class*="language-"]': {
-      borderRadius: sizes.middle.border,
       overflow: 'hidden',
       margin: 0,
       padding: '6px 12px',
-      // backgroundColor: isDark ? grey.A400 : grey[100],
+      backgroundColor: colors.background.default,
+      borderRight: theme.sizes.middle.borderRadius,
+      borderRadius: sizes.middle.borderRadius,
       color: colors.text.primary,
     },
     'code[class*="language-"]': {
@@ -30,24 +33,23 @@ const Pre = styled('pre')(({ theme }) => {
     },
 
     '.token': {
+      '&.property': {
+        color: themes.primary.foreground.enabled,
+      },
       '.punctuation': {
         color: colors.text.secondary,
       },
       '&.keyword, &.function': {
-        // color: isDark ? blue[300] : red[400],
+        color: themes.error.foreground.enabled,
       },
-      '&.function .maybe-class-name': {
-        // color: isDark ? cyan[300] : purple[500],
+      '&.maybe-class-name': {
+        color: themes.primary.foreground.enabled,
       },
-      '&.function-variable': {
-        color: colors.text.primary,
+      '&.function': {
+        color: themes.error.foreground.active,
       },
-      '&.property-access': {
-        // color: isDark ? blue[300] : blue[500],
-      },
-      '&.builtin': {
-        // color: isDark ? blue[300] : blue[500],
-      },
+      '&.property-access': {},
+      '&.builtin': {},
       '&.comment': {
         color: colors.text.hint,
       },
@@ -57,19 +59,23 @@ const Pre = styled('pre')(({ theme }) => {
         },
       },
       '&.keyword + .string': {
-        // color: isDark ? deepPurple[300] : grey[800],
+        color: themes.error.foreground.enabled,
       },
       '&.tag': {
-        // color: isDark ? yellow[800] : green[300],
+        color: themes.success.foreground.enabled,
+
+        '.class-name': {
+          color: themes.primary.foreground.active,
+        },
 
         '.attr-name': {
-          // color: isDark ? blue[300] : indigo[400],
+          color: themes.error.foreground.enabled,
         },
         '.attr-value': {
-          // color: isDark ? purple[400] : indigo[400],
+          color: colors.text.primary,
         },
         '.script': {
-          color: colors.text.primary,
+          color: themes.primary.foreground.enabled,
         },
       },
       '&.string, &.number, &.boolean': {},

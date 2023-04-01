@@ -5,8 +5,8 @@ const Blockquote = styled('blockquote')(({ theme }) => {
     margin: '1rem 0',
     padding: '0.25rem 0 0.25rem 1rem',
     lineHeight: 2,
-    // backgroundColor: theme.color.emphasize(theme.color.background.paper, 0.1),
-    borderLeft: `4px solid ${theme.colors.divider.primary}`,
+    backgroundColor: theme.colors.themes.primary.background.enabled,
+    borderLeft: `4px solid ${theme.colors.themes.primary.foreground.enabled}`,
 
     p: {
       margin: 0,

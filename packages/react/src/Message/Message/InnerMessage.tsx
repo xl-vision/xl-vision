@@ -70,7 +70,7 @@ const InnerMessageRoot = styled('div', {
     [`.${rootClassName}__inner`]: {
       display: 'flex',
       alignItems: 'center',
-      backgroundColor: colors.background.paper,
+      backgroundColor: colors.background.popper,
       borderRadius: sizes.middle.borderRadius,
       padding: `${sizes.middle.padding.y}px ${sizes.middle.padding.x}px`,
       boxShadow: elevations[3],

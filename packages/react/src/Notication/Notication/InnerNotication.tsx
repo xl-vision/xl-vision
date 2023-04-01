@@ -81,7 +81,7 @@ const InnerNoticationRoot = styled('div', {
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'flex-start',
-      backgroundColor: colors.background.paper,
+      backgroundColor: colors.background.popper,
       borderRadius: sizes.large.borderRadius,
       padding: `${sizes.large.padding.x}px ${sizes.large.padding.x}px`,
       width: 384,

@@ -30,7 +30,7 @@ const DialogRoot = styled(Modal, {
 })(({ theme }) => {
   const { colors, elevations, sizes } = theme;
   return {
-    backgroundColor: colors.background.paper,
+    backgroundColor: colors.background.popper,
     borderRadius: sizes.middle.borderRadius,
     maxWidth: 560,
     margin: 32,
@@ -179,7 +179,6 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
       )}
       <Button
         color='primary'
-        variant='text'
         {...(confirmButtonProps as ButtonProps)}
         disabled={cancelLoading}
         loading={confirmLoading}

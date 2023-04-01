@@ -35,7 +35,7 @@ const DropdownPopup = styled('ul', {
   const { colors, elevations, sizes } = theme;
 
   return {
-    backgroundColor: colors.background.paper,
+    backgroundColor: colors.background.popper,
     color: colors.text.primary,
     borderRadius: sizes.middle.borderRadius,
     padding: '5px 0',

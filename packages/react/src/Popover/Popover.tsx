@@ -32,12 +32,11 @@ const PopoverArrow = styled('div', {
   slot: 'Arrow',
 })(({ theme }) => {
   const { colors } = theme;
-  const bgColor = colors.background.paper;
 
   return {
     width: 8,
     height: 8,
-    backgroundColor: bgColor,
+    backgroundColor: colors.background.popper,
     transform: 'translate(-4px, -4px) rotate(45deg)',
   };
 });
@@ -47,11 +46,10 @@ const PopoverPopup = styled('div', {
   slot: 'Popup',
 })(({ theme }) => {
   const { colors, elevations } = theme;
-  const bgColor = colors.background.paper;
 
   return {
-    backgroundColor: bgColor,
-    color: colors.getContrastText(bgColor).primary,
+    backgroundColor: colors.background.popper,
+    color: colors.text.primary,
     borderRadius: 4,
     minWidth: 160,
     boxShadow: elevations[3],

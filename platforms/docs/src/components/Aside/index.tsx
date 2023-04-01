@@ -18,7 +18,7 @@ const LeftNode = styled('span')(() => {
 
 const NonLeftNode = styled(LeftNode)(({ theme }) => {
   return {
-    // color: `${theme.color.text.primary}`,
+    color: `${theme.colors.text.primary}`,
     fontWeight: `${theme.typography.fontWeight.bold}`,
   };
 });

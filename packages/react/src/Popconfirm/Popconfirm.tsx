@@ -42,12 +42,11 @@ const PopconfirmArrow = styled('div', {
   slot: 'Arrow',
 })(({ theme }) => {
   const { colors } = theme;
-  const bgColor = colors.background.paper;
 
   return {
     width: 8,
     height: 8,
-    backgroundColor: bgColor,
+    backgroundColor: colors.background.popper,
     transform: 'translate(-4px, -4px) rotate(45deg)',
   };
 });
@@ -57,11 +56,10 @@ const PopconfirmPopup = styled('div', {
   slot: 'Popup',
 })(({ theme }) => {
   const { clsPrefix, colors, typography, elevations, sizes } = theme;
-  const bgColor = colors.background.paper;
 
   return {
-    backgroundColor: bgColor,
-    color: colors.getContrastText(bgColor).primary,
+    backgroundColor: colors.background.popper,
+    color: colors.text.primary,
     borderRadius: sizes.middle.borderRadius,
     padding: '12px 16px',
     boxShadow: elevations[3],
