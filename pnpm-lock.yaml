@@ -5,8 +5,8 @@ importers:
   .:
     dependencies:
       gsap:
-        specifier: ^3.11.4
-        version: 3.11.4
+        specifier: ^3.11.5
+        version: 3.11.5
     devDependencies:
       '@babel/core':
         specifier: ^7.21.3
@@ -6530,8 +6530,8 @@ packages:
     resolution: {integrity: sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==}
     dev: true
 
-  /gsap@3.11.4:
-    resolution: {integrity: sha512-McHhEguHyExMMnjqKA8G+7TvxmlKQGMbjgwAilnFe1e4id7V/tFveRQ2YMZhTYu0oxHGWvbPltdVYQOu3z1SCA==}
+  /gsap@3.11.5:
+    resolution: {integrity: sha512-Q89nKCLgoX5xUjznh9LcaIUkz54k1voNucT1Rpf9SJNFIQznBwFqt5qUUQbeVInFyN/n18OUJkpeI6CNEDt74w==}
     dev: false
 
   /gulp-babel@8.0.0(@babel/core@7.21.3):
