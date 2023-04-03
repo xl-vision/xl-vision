@@ -1,7 +1,7 @@
 export type BaseRoute = {
   titleMap: {
-    'zh-CN': string;
     'en-US': string;
+    'zh-CN': string;
   };
 };
 

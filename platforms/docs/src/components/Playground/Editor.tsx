@@ -10,8 +10,8 @@ require('codemirror/lib/codemirror.css');
 require('codemirror/theme/material-darker.css');
 
 export type EditorProps = {
-  value: string;
   onChange: (value: string) => void;
+  value: string;
 };
 
 const CodeMirrorEditor = styled(CodeMirror)(({ theme }) => {

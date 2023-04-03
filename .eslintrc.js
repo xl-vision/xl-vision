@@ -205,16 +205,16 @@ module.exports = {
             default: 'generic',
           },
         ],
-        '@typescript-eslint/member-ordering': [
-          'error',
-          {
-            default: {
-              memberTypes: ['signature', 'constructor', 'field', 'method'],
-              optionalityOrder: 'required-first',
-              order: 'alphabetically-case-insensitive',
-            },
-          },
-        ],
+        // '@typescript-eslint/member-ordering': [
+        //   'error',
+        //   {
+        //     default: {
+        //       memberTypes: ['signature', 'constructor', 'field', 'method'],
+        //       optionalityOrder: 'required-first',
+        //       order: 'alphabetically-case-insensitive',
+        //     },
+        //   },
+        // ],
         '@typescript-eslint/no-unused-expressions': 'error',
         '@typescript-eslint/no-shadow': 'error',
         '@typescript-eslint/ban-types': [

@@ -22,8 +22,8 @@ export type CssTransitionTimeoutRecord = Partial<Record<CssTransitionAction, num
 export type CssTransitionTimeout = CssTransitionTimeoutRecord | number;
 
 export type CssTransitionOptions<T extends Element = Element> = TransitionOptions<T> & {
-  timeout?: CssTransitionTimeout;
   disableCss?: boolean;
+  timeout?: CssTransitionTimeout;
   transitionClassName?: CssTransitionClassName;
 };
 
