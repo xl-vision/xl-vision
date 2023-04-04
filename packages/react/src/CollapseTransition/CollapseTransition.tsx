@@ -261,8 +261,8 @@ if (!isProduction) {
 
   CollapseTransition.propTypes = {
     children: PropTypes.element.isRequired,
-    disableCss: PropTypes.bool,
     in: PropTypes.bool.isRequired,
+    disableCss: PropTypes.bool,
     timeout: PropTypes.oneOfType([
       PropTypes.number,
       PropTypes.exact({

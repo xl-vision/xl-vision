@@ -179,6 +179,7 @@ const DemoBox: FC<DemoBoxProps> = ({
 };
 
 DemoBox.propTypes = {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   children: PropTypes.arrayOf(PropTypes.node) as any,
 };
 

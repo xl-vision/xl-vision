@@ -14,7 +14,7 @@ export interface RowProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
   align?: RowAlign;
   className?: string;
-  component?: (keyof JSX.IntrinsicElements) | ComponentType;
+  component?: keyof JSX.IntrinsicElements | ComponentType;
   gutter?: number | Partial<Record<Breakpoint, number>>;
   justify?: RowJustify;
   removeOnUnvisible?: boolean;

@@ -62,9 +62,10 @@ if (!isProduction) {
   Transition.displayName = displayName;
 
   Transition.propTypes = {
-    children: PropTypes.oneOfType([PropTypes.element.isRequired, PropTypes.func.isRequired]).isRequired,
-    disableCss: PropTypes.bool,
+    children: PropTypes.oneOfType([PropTypes.element.isRequired, PropTypes.func.isRequired])
+      .isRequired,
     in: PropTypes.bool.isRequired,
+    disableCss: PropTypes.bool,
     mountOnEnter: PropTypes.bool,
     timeout: PropTypes.oneOfType([
       PropTypes.number,
