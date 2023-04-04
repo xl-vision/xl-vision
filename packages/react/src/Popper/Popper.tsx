@@ -25,7 +25,7 @@ import {
 } from '@xl-vision/usePopper';
 import { isProduction, isServer, oneOf } from '@xl-vision/utils';
 import clsx from 'clsx';
-import PropTypes from 'prop-types';
+import PropTypes, { Validator } from 'prop-types';
 import {
   MouseEventHandler,
   Ref,
@@ -341,7 +341,7 @@ if (!isProduction) {
     popup: PropTypes.element.isRequired,
     arrow: PropTypes.node,
     arrowOptions: PropTypes.shape({}),
-    autoPlacementOptions: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+    autoPlacementOptions: PropTypes.oneOfType([PropTypes.object, PropTypes.bool as any]),
     autoUpdateOptions: PropTypes.shape({}),
     className: PropTypes.string,
     clickOptions: PropTypes.shape({}),
@@ -371,19 +371,19 @@ if (!isProduction) {
       PropTypes.string,
       isServer ? PropTypes.any : PropTypes.instanceOf(Element),
     ]),
-    shiftOptions: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
-    transitionClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.func]),
+    shiftOptions: PropTypes.oneOfType([PropTypes.object, PropTypes.bool as any]),
+    transitionClassName: PropTypes.string,
     trigger: PropTypes.oneOfType([
       triggerPropType,
       PropTypes.arrayOf(triggerPropType),
-      (props, propName, componentName) => {
+      ((props, propName, componentName) => {
         if (!props[propName]) {
           return null;
         }
         throw new Error(
           `Invalid prop '${propName}' supplied to '${componentName}'. Validation failed.`,
         );
-      },
+      }) as Validator<false>,
     ]),
     unmountOnHide: PropTypes.bool,
     onAfterClosed: PropTypes.func,

@@ -91,12 +91,15 @@ function checkIfSnapshotChanged<T>(inst: { value: T; getSnapshot: () => T }): bo
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-export default typeof React.useSyncExternalStore === 'function'
-  ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    (React.useSyncExternalStore as typeof useSyncExternalStoreClient)
-  : isServer
-  ? useSyncExternalStoreServer
-  : useSyncExternalStoreClient;
+const useSyncExternalStore =
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  typeof React.useSyncExternalStore === 'function'
+    ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      (React.useSyncExternalStore as typeof useSyncExternalStoreClient)
+    : isServer
+    ? useSyncExternalStoreServer
+    : useSyncExternalStoreClient;
+
+export default useSyncExternalStore;
