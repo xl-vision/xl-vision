@@ -17,7 +17,7 @@ const colors = createColors({
     error: '#d32f2f',
     warning: '#ed6c02',
     info: '#66768d',
-    success: '#2e7d32',
+    success: '#52c41a',
   },
 });
 

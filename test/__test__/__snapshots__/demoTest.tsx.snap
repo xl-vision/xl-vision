@@ -11807,18 +11807,18 @@ exports[`Demo renders ./packages/react/src/Message/__doc__/Basic.tsx correctly 1
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
-  color: #ffffffe0;
-  background-color: #2e7d32;
+  color: #000000e0;
+  background-color: #52c41a;
 }
 
 .c7:hover {
   box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12);
-  background-color: #498a4a;
+  background-color: #73d13d;
 }
 
 .c7:focus {
   box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12);
-  background-color: #498a4a;
+  background-color: #73d13d;
 }
 
 .c8 {
@@ -12425,18 +12425,18 @@ exports[`Demo renders ./packages/react/src/Message/__doc__/Method.tsx correctly 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
-  color: #ffffffe0;
-  background-color: #2e7d32;
+  color: #000000e0;
+  background-color: #52c41a;
 }
 
 .c7:hover {
   box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12);
-  background-color: #498a4a;
+  background-color: #73d13d;
 }
 
 .c7:focus {
   box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12);
-  background-color: #498a4a;
+  background-color: #73d13d;
 }
 
 .c8 {
@@ -13989,18 +13989,18 @@ exports[`Demo renders ./packages/react/src/Notication/__doc__/Basic.tsx correctl
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
-  color: #ffffffe0;
-  background-color: #2e7d32;
+  color: #000000e0;
+  background-color: #52c41a;
 }
 
 .c7:hover {
   box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12);
-  background-color: #498a4a;
+  background-color: #73d13d;
 }
 
 .c7:focus {
   box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12);
-  background-color: #498a4a;
+  background-color: #73d13d;
 }
 
 .c0 > * {
@@ -14843,18 +14843,18 @@ exports[`Demo renders ./packages/react/src/Notication/__doc__/Method.tsx correct
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
-  color: #ffffffe0;
-  background-color: #2e7d32;
+  color: #000000e0;
+  background-color: #52c41a;
 }
 
 .c7:hover {
   box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12);
-  background-color: #498a4a;
+  background-color: #73d13d;
 }
 
 .c7:focus {
   box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12);
-  background-color: #498a4a;
+  background-color: #73d13d;
 }
 
 .c0 > * {
