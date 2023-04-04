@@ -14,7 +14,7 @@ export interface RowProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
   align?: RowAlign;
   className?: string;
-  component?: keyof JSX.IntrinsicElements | ComponentType;
+  component?: (keyof JSX.IntrinsicElements) | ComponentType;
   gutter?: number | Partial<Record<Breakpoint, number>>;
   justify?: RowJustify;
   removeOnUnvisible?: boolean;
@@ -137,7 +137,7 @@ if (!isProduction) {
     children: PropTypes.node.isRequired,
     align: PropTypes.oneOf(['top', 'middle', 'bottom']),
     className: PropTypes.string,
-    component: PropTypes.element,
+    component: PropTypes.oneOf([PropTypes.elementType.isRequired, PropTypes.string as any]),
     gutter: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired]),
     justify: PropTypes.oneOf(['start', 'end', 'center', 'space-around', 'space-between']),
     removeOnUnvisible: PropTypes.bool,

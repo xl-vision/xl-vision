@@ -205,7 +205,7 @@ if (!isProduction) {
   InnerMessage.propTypes = {
     content: PropTypes.node.isRequired,
     closeIcon: PropTypes.node,
-    defaultValue: PropTypes.bool,
+    defaultOpen: PropTypes.bool,
     duration: PropTypes.number,
     icon: PropTypes.node,
     open: PropTypes.bool,

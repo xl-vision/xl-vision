@@ -27,7 +27,7 @@ import { supportRef } from '../utils/ref';
 
 export type CollapseTransitionProp = CssTransitionOptions & {
   children: ReactElement;
-  horizontal?: true;
+  horizontal?: boolean;
   unmountOnExit?: boolean;
 };
 
@@ -260,33 +260,33 @@ if (!isProduction) {
   CollapseTransition.displayName = displayName;
 
   CollapseTransition.propTypes = {
-    children: PropTypes.element,
+    children: PropTypes.element.isRequired,
     disableCss: PropTypes.bool,
-    in: PropTypes.bool,
+    in: PropTypes.bool.isRequired,
     timeout: PropTypes.oneOfType([
       PropTypes.number,
       PropTypes.exact({
-        appear: PropTypes.number,
-        enter: PropTypes.number,
-        exit: PropTypes.number,
-        disappear: PropTypes.number,
+        appear: PropTypes.number.isRequired,
+        enter: PropTypes.number.isRequired,
+        exit: PropTypes.number.isRequired,
+        disappear: PropTypes.number.isRequired,
       }),
     ]),
     transitionClassName: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.exact({
-        appearActive: PropTypes.string,
-        appearFrom: PropTypes.string,
-        appearTo: PropTypes.string,
-        enterActive: PropTypes.string,
-        enterFrom: PropTypes.string,
-        enterTo: PropTypes.string,
-        exitActive: PropTypes.string,
-        exitFrom: PropTypes.string,
-        exitTo: PropTypes.string,
-        disappearActive: PropTypes.string,
-        disappearFrom: PropTypes.string,
-        disappearTo: PropTypes.string,
+        appearActive: PropTypes.string.isRequired,
+        appearFrom: PropTypes.string.isRequired,
+        appearTo: PropTypes.string.isRequired,
+        enterActive: PropTypes.string.isRequired,
+        enterFrom: PropTypes.string.isRequired,
+        enterTo: PropTypes.string.isRequired,
+        exitActive: PropTypes.string.isRequired,
+        exitFrom: PropTypes.string.isRequired,
+        exitTo: PropTypes.string.isRequired,
+        disappearActive: PropTypes.string.isRequired,
+        disappearFrom: PropTypes.string.isRequired,
+        disappearTo: PropTypes.string.isRequired,
       }),
     ]),
     transitionOnFirst: PropTypes.bool,

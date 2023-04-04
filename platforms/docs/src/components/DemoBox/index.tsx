@@ -179,7 +179,7 @@ const DemoBox: FC<DemoBoxProps> = ({
 };
 
 DemoBox.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.node),
+  children: PropTypes.arrayOf(PropTypes.node) as any,
 };
 
 export default DemoBox;

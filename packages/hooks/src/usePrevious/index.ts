@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import useIsomorphicLayoutEffect from '../useIsomorphicLayoutEffect';
 
-export default <T>(value: T) => {
+const usePrevious = <T>(value: T) => {
   const ref = useRef<T>();
 
   useIsomorphicLayoutEffect(() => {
@@ -10,3 +10,5 @@ export default <T>(value: T) => {
 
   return ref.current;
 };
+
+export default usePrevious
