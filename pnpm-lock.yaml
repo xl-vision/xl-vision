@@ -51,8 +51,8 @@ importers:
         specifier: ^5.0.2
         version: 5.0.2(rollup@3.20.2)
       '@rollup/plugin-terser':
-        specifier: ^0.4.0
-        version: 0.4.0(rollup@3.20.2)
+        specifier: ^0.4.1
+        version: 0.4.1(rollup@3.20.2)
       '@testing-library/jest-dom':
         specifier: ^5.16.5
         version: 5.16.5
@@ -2689,8 +2689,8 @@ packages:
       rollup: 3.20.2
     dev: true
 
-  /@rollup/plugin-terser@0.4.0(rollup@3.20.2):
-    resolution: {integrity: sha512-Ipcf3LPNerey1q9ZMjiaWHlNPEHNU/B5/uh9zXLltfEQ1lVSLLeZSgAtTPWGyw8Ip1guOeq+mDtdOlEj/wNxQw==}
+  /@rollup/plugin-terser@0.4.1(rollup@3.20.2):
+    resolution: {integrity: sha512-aKS32sw5a7hy+fEXVy+5T95aDIwjpGHCTv833HXVtyKMDoVS7pBr5K3L9hEQoNqbJFjfANPrNpIXlTQ7is00eA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^2.x || ^3.x
@@ -2699,9 +2699,9 @@ packages:
         optional: true
     dependencies:
       rollup: 3.20.2
-      serialize-javascript: 6.0.0
+      serialize-javascript: 6.0.1
       smob: 0.0.6
-      terser: 5.16.1
+      terser: 5.16.8
     dev: true
 
   /@rollup/pluginutils@5.0.2(rollup@3.20.2):
@@ -10811,12 +10811,6 @@ packages:
       lru-cache: 6.0.0
     dev: true
 
-  /serialize-javascript@6.0.0:
-    resolution: {integrity: sha512-Qr3TosvguFt8ePWqsvRfrKyQXIiW+nGbYpy8XK24NQHE83caxWt+mIymTT19DGFbNWNLfEwsrkSmN64lVWB9ag==}
-    dependencies:
-      randombytes: 2.1.0
-    dev: true
-
   /serialize-javascript@6.0.1:
     resolution: {integrity: sha512-owoXEFjWRllis8/M1Q+Cw5k8ZH40e3zhp/ovX+Xr/vi1qj6QesbyXXViFbpNvWvPNAD62SutwEXavefrLJWj7w==}
     dependencies:
@@ -11393,17 +11387,6 @@ packages:
       serialize-javascript: 6.0.1
       terser: 5.16.8
       webpack: 5.77.0
-    dev: true
-
-  /terser@5.16.1:
-    resolution: {integrity: sha512-xvQfyfA1ayT0qdK47zskQgRZeWLoOQ8JQ6mIgRGVNwZKdQMU+5FkCBjmv4QjcrTzyZquRw2FVtlJSRUmMKQslw==}
-    engines: {node: '>=10'}
-    hasBin: true
-    dependencies:
-      '@jridgewell/source-map': 0.3.2
-      acorn: 8.8.1
-      commander: 2.20.3
-      source-map-support: 0.5.21
     dev: true
 
   /terser@5.16.8:
