@@ -23,7 +23,7 @@ module.exports = async function localeLoader() {
   const dir = path.dirname(filePath);
 
   try {
-    const imports = [`import Docs from '${docsPath}'`, `import dynamic from 'next/dynamic'`];
+    const imports = [`import Docs from '${docsPath}'`];
 
     this.addDependency(docsPath);
 
@@ -48,13 +48,14 @@ module.exports = async function localeLoader() {
       })
       .forEach((it) => {
         const contentName = `Locale_${it.parts[1].replace(/-/g, '_')}`;
-        imports.push(`const ${contentName}Import = () => import('./${it.fileName}')`);
-        imports.push(`const ${contentName} = dynamic(${contentName}Import)`);
-        // TODO: [2023-05-10] 不够优雅，待改造
+        imports.push(
+          `import {default as ${contentName}, outline as ${contentName}Outline} from './${it.fileName}'`,
+        );
         locales.push(
           `'${it.parts[1]}': {
             component: ${contentName},
-            outlinePromise: ${contentName}Import().then(it => it.outline)}`,
+            outline: ${contentName}Outline
+          }`,
         );
         if (it.fileName !== fileName) {
           this.addDependency(path.join(dir, it.fileName));
