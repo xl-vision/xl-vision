@@ -334,7 +334,7 @@ if (!isProduction) {
   Textarea.displayName = displayName;
   Textarea.propTypes = {
     allowClear: PropTypes.bool,
-    // TODO [2023-05-01]: types fix
+    // TODO [2023-07-01]: types fix
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     autoHeight: PropTypes.oneOfType([

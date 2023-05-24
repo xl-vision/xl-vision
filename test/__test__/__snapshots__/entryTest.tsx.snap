@@ -16,6 +16,8 @@ exports[`Entry @xl-vision/hooks 1`] = `
   "useCssTransition",
   "useNotication",
   "useEnhancedMemo",
+  "useIsFirstMount",
+  "useUpdateEffect",
 ]
 `;
 
