@@ -96,7 +96,7 @@ const Home: NextPage = () => {
         </div>
         <div className='desc'>{locale.pages.index.desc}</div>
         <div className='action'>
-          <Link href='/components' passHref={true} legacyBehavior>
+          <Link href='/components'>
             <Button color='primary'>{locale.pages.index.btnStart}</Button>
           </Link>
           <Button

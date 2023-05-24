@@ -47,6 +47,9 @@
   "peerDependenciesMeta": {
     "@types/react": {
       "optional": true
+    },
+    "@types/react-dom": {
+      "optional": true
     }
   },
   "sideEffects": false,

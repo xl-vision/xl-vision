@@ -1,6 +1,6 @@
 import { styled } from '@xl-vision/react';
 import clsx from 'clsx';
-import Link, { LinkProps } from 'next/link';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { FC, Children, cloneElement, HTMLAttributes, forwardRef, useMemo } from 'react';
 import route, { BaseRoute, Route, RouteType } from '../../routes';
@@ -31,7 +31,24 @@ const NodeWrapper = styled('ul')(() => {
   };
 });
 
-const ActiveLink: FC<LinkProps> = (props) => {
+const StyledLink = styled(Link)(({ theme }) => {
+  const { themes, text } = theme.colors;
+  return {
+    display: 'inline-block',
+    width: '100%',
+    position: 'relative',
+    color: text.primary,
+    '&:hover': {
+      color: themes.primary.foreground.hover,
+    },
+    '&.active': {
+      backgroundColor: themes.primary.foreground.active,
+      color: theme.colors.themes.primary.text.primary,
+    },
+  };
+});
+
+const ActiveLink: FC<Record<any, any>> = (props) => {
   const { children, href, ...others } = props;
   const { pathname } = useRouter();
 
@@ -48,28 +65,12 @@ const ActiveLink: FC<LinkProps> = (props) => {
   });
 
   return (
-    <Link {...others} href={href} legacyBehavior>
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    <StyledLink {...others} href={href}>
       {newChild}
-    </Link>
+    </StyledLink>
   );
 };
-
-const A = styled('a')(({ theme }) => {
-  const { themes, text } = theme.colors;
-  return {
-    display: 'inline-block',
-    width: '100%',
-    position: 'relative',
-    color: text.primary,
-    '&:hover': {
-      color: themes.primary.foreground.hover,
-    },
-    '&.active': {
-      backgroundColor: themes.primary.foreground.active,
-      color: theme.colors.themes.primary.text.primary,
-    },
-  };
-});
 
 const padding = 12;
 
@@ -107,9 +108,7 @@ const traverseRoutes = (
 
       el = (
         <ActiveLink href={fullPath} passHref={true}>
-          <A>
-            <LeftNode style={{ paddingLeft: padding * level }}>{title}</LeftNode>
-          </A>
+          <LeftNode style={{ paddingLeft: padding * level }}>{title}</LeftNode>
         </ActiveLink>
       );
     }

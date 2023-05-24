@@ -162,6 +162,7 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
   const nodeRef: RefCallback<ReactInstance> = useCallback((el) => {
     // eslint-disable-next-line react/no-find-dom-node
     elementRef.current = findDOMNode(el) as T | null;
+    console.log(el, elementRef.current)
   }, []);
 
   // 是否展示

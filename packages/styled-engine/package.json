@@ -45,7 +45,6 @@
     "@types/react": ">=17.0.0",
     "@types/styled-components": "^5.1.13",
     "react": ">=17.0.0",
-    "react-is": ">=17.0.0",
     "styled-components": "^5.3.5"
   },
   "peerDependenciesMeta": {

@@ -61,7 +61,7 @@ const HeaderNav = styled('header')(({ theme }) => {
   };
 });
 
-const LogoWrapper = styled('a')(({ theme }) => {
+const LogoWrapper = styled(Link)(({ theme }) => {
   return {
     display: 'inline-flex',
     height: '100%',
@@ -149,19 +149,13 @@ const Header: FC<HTMLAttributes<HTMLElement>> = (props) => {
   const mobileMenus = (
     <>
       <MobileDropdownItem className={setActiveClassName('/components')}>
-        <Link href='/components' legacyBehavior>
-          <a>{locale.header.component}</a>
-        </Link>
+        <Link href='/components'>{locale.header.component}</Link>
       </MobileDropdownItem>
       <MobileDropdownItem className={setActiveClassName('/hooks')}>
-        <Link href='/hooks' legacyBehavior>
-          <a>{locale.header.hooks}</a>
-        </Link>
+        <Link href='/hooks'>{locale.header.hooks}</Link>
       </MobileDropdownItem>
       <MobileDropdownItem className={setActiveClassName('/playground')}>
-        <Link href='/playground' legacyBehavior>
-          <a>{locale.header.playground}</a>
-        </Link>
+        <Link href='/playground'>{locale.header.playground}</Link>
       </MobileDropdownItem>
     </>
   );
@@ -178,28 +172,26 @@ const Header: FC<HTMLAttributes<HTMLElement>> = (props) => {
               variant='text'
             />
           </Dropdown>
-          <Link href='/' passHref={true} legacyBehavior>
-            <LogoWrapper>
-              <Logo />
-              <span className='sm-up'>xl vision</span>
-            </LogoWrapper>
-          </Link>
+          <LogoWrapper href='/'>
+            <Logo />
+            <span className='sm-up'>xl vision</span>
+          </LogoWrapper>
         </div>
         <div className='right'>
           <Menus className='md-up'>
             <li>
-              <Link href='/components' legacyBehavior>
-                <a className={setActiveClassName('/components')}>{locale.header.component}</a>
+              <Link className={setActiveClassName('/components')} href='/components'>
+                {locale.header.component}
               </Link>
             </li>
             <li>
-              <Link href='/hooks' legacyBehavior>
-                <a className={setActiveClassName('/hooks')}>{locale.header.hooks}</a>
+              <Link className={setActiveClassName('/hooks')} href='/hooks'>
+                {locale.header.hooks}
               </Link>
             </li>
             <li>
-              <Link href='/playground' legacyBehavior>
-                <a className={setActiveClassName('/playground')}>{locale.header.playground}</a>
+              <Link className={setActiveClassName('/playground')} href='/playground'>
+                {locale.header.playground}
               </Link>
             </li>
           </Menus>
