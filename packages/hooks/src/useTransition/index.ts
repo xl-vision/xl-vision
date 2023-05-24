@@ -3,6 +3,7 @@ import { ReactInstance, RefCallback, useCallback, useRef, useState } from 'react
 
 import { findDOMNode } from 'react-dom';
 import useConstantFn from '../useConstantFn';
+import useIsFirstMount from '../useIsFirstMount';
 import useIsomorphicLayoutEffect from '../useIsomorphicLayoutEffect';
 import useLifecycleState, { LifecycleState } from '../useLifecycleState';
 
@@ -105,14 +106,12 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
   // 是否处于enter和exited之间的状态，只要children在显示中，就为true
   const [inTransition, setInTransition] = useState(inOption || transitionOnFirst);
 
-  const isFirstUpdateRef = useRef(true);
+  const isFirstUpdate = useIsFirstMount();
   const transitionOnFirstRef = useRef(transitionOnFirst);
 
   const handleInOptionChange = useConstantFn((value: boolean) => {
-    const isFirstUpdate = isFirstUpdateRef.current;
     const isTransitionOnFirst = transitionOnFirstRef.current;
 
-    isFirstUpdateRef.current = false;
     transitionOnFirstRef.current = false;
 
     if (!isTransitionOnFirst && isFirstUpdate) {
@@ -162,7 +161,6 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
   const nodeRef: RefCallback<ReactInstance> = useCallback((el) => {
     // eslint-disable-next-line react/no-find-dom-node
     elementRef.current = findDOMNode(el) as T | null;
-    console.log(el, elementRef.current)
   }, []);
 
   // 是否展示
