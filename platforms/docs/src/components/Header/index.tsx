@@ -149,17 +149,17 @@ const Header: FC<HTMLAttributes<HTMLElement>> = (props) => {
   const mobileMenus = (
     <>
       <MobileDropdownItem className={setActiveClassName('/components')}>
-        <Link href='/components'>
+        <Link href='/components' legacyBehavior>
           <a>{locale.header.component}</a>
         </Link>
       </MobileDropdownItem>
       <MobileDropdownItem className={setActiveClassName('/hooks')}>
-        <Link href='/hooks'>
+        <Link href='/hooks' legacyBehavior>
           <a>{locale.header.hooks}</a>
         </Link>
       </MobileDropdownItem>
       <MobileDropdownItem className={setActiveClassName('/playground')}>
-        <Link href='/playground'>
+        <Link href='/playground' legacyBehavior>
           <a>{locale.header.playground}</a>
         </Link>
       </MobileDropdownItem>
@@ -178,7 +178,7 @@ const Header: FC<HTMLAttributes<HTMLElement>> = (props) => {
               variant='text'
             />
           </Dropdown>
-          <Link href='/' passHref={true}>
+          <Link href='/' passHref={true} legacyBehavior>
             <LogoWrapper>
               <Logo />
               <span className='sm-up'>xl vision</span>
@@ -188,17 +188,17 @@ const Header: FC<HTMLAttributes<HTMLElement>> = (props) => {
         <div className='right'>
           <Menus className='md-up'>
             <li>
-              <Link href='/components'>
+              <Link href='/components' legacyBehavior>
                 <a className={setActiveClassName('/components')}>{locale.header.component}</a>
               </Link>
             </li>
             <li>
-              <Link href='/hooks'>
+              <Link href='/hooks' legacyBehavior>
                 <a className={setActiveClassName('/hooks')}>{locale.header.hooks}</a>
               </Link>
             </li>
             <li>
-              <Link href='/playground'>
+              <Link href='/playground' legacyBehavior>
                 <a className={setActiveClassName('/playground')}>{locale.header.playground}</a>
               </Link>
             </li>

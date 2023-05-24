@@ -48,7 +48,7 @@ const ActiveLink: FC<LinkProps> = (props) => {
   });
 
   return (
-    <Link {...others} href={href}>
+    <Link {...others} href={href} legacyBehavior>
       {newChild}
     </Link>
   );

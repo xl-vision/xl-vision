@@ -213,7 +213,7 @@ const NotFound: NextPage = () => {
         </span>
       </section>
       <div className='link-container'>
-        <Link href='/'>
+        <Link href='/' legacyBehavior>
           <a className='more-link'>{locale.pages[404].link}</a>
         </Link>
       </div>

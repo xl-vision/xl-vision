@@ -40,6 +40,8 @@ module.exports = async () => {
       config.resolve.alias = {
         ...config.resolve.alias,
         // ...alias,
+        '$react': path.resolve(__dirname, './node_modules/react'),
+        '$react-dom': path.resolve(__dirname, './node_modules/react-dom'),
         'styled-components': path.resolve(__dirname, './node_modules/styled-components'),
         '@mdx-js/react': path.resolve(__dirname, './node_modules/@mdx-js/react'),
       };
