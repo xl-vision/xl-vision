@@ -12,6 +12,7 @@ import {
   ReactNode,
   ReactFragment,
 } from 'react';
+import { flushSync } from 'react-dom';
 
 export type NoticationProps<P> = P & {
   open?: boolean;
@@ -117,7 +118,9 @@ const useNotication = <P, NCP>(
       const notication = <RefNotication key={`notication${uuid++}`} ref={ref} />;
 
       const destroyDOM = () => {
-        setNotications((prev) => prev.filter((it) => it !== notication));
+        flushSync(() => {
+          setNotications((prev) => prev.filter((it) => it !== notication));
+        });
         destorysRef.current = destorysRef.current.filter((it) => it !== destroy);
         destroyState = true;
       };

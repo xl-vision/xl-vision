@@ -8,7 +8,7 @@ import {
 
 import { isProduction } from '@xl-vision/utils';
 import { ComponentType, createRef, forwardRef, useImperativeHandle, useState } from 'react';
-import ReactDOM from 'react-dom';
+import { Root, createRoot } from 'react-dom/client';
 
 type MethodNoticationRef<P, NCP> = {
   instance: ReturnType<typeof useNotication<P, NCP>>[0];
@@ -50,18 +50,20 @@ const createNotication = <P, NCP>(
   const noticationRef = createRef<MethodNoticationRef<P, NCP>>();
 
   let rootEl: HTMLElement | undefined;
+  let root: Root | undefined;
   let count = 0;
 
   const destroyDOM = () => {
-    if (!rootEl) {
-      return;
+    if (root) {
+      root.unmount();
+      root = undefined;
     }
-    const unmountResult = ReactDOM.unmountComponentAtNode(rootEl);
-    if (unmountResult && rootEl.parentNode) {
-      rootEl.parentNode.removeChild(rootEl);
+    if (rootEl) {
+      if (rootEl.parentNode) {
+        rootEl.parentNode.removeChild(rootEl);
+      }
+      rootEl = undefined;
     }
-
-    rootEl = undefined;
   };
 
   const open = (props: NoticationProps<P>): NoticationHookReturnType<P> => {
@@ -78,10 +80,8 @@ const createNotication = <P, NCP>(
       document.body.appendChild(div);
       rootEl = div;
 
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      Promise.resolve().then(() => {
-        ReactDOM.render(<MethodRefNotication ref={noticationRef} />, div);
-      });
+      root = createRoot(div);
+      root.render(<MethodRefNotication ref={noticationRef} />);
     }
 
     count++;

@@ -1,7 +1,7 @@
 import { warning } from '@xl-vision/utils';
 import { ReactInstance, RefCallback, useCallback, useRef, useState } from 'react';
 
-import { findDOMNode } from 'react-dom';
+import { findDOMNode, flushSync } from 'react-dom';
 import useConstantFn from '../useConstantFn';
 import useIsFirstMount from '../useIsFirstMount';
 import useIsomorphicLayoutEffect from '../useIsomorphicLayoutEffect';
@@ -130,7 +130,10 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
         el,
         isTransitionOnFirst,
         (elOption, transitionOnFirstOption) => {
-          setInTransition(true);
+          // 保证dom能够及时更新
+          flushSync(() => {
+            setInTransition(true);
+          });
           onEnter?.(elOption, transitionOnFirstOption);
         },
         onEntering,
@@ -146,7 +149,10 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
         (elOption, transitionOnFirstOption) => {
           onExited?.(elOption, transitionOnFirstOption);
           if (lifecycleStatRef.current !== LifecycleState.DESTORYED) {
-            setInTransition(false);
+            // 保证dom能够及时更新
+            flushSync(() => {
+              setInTransition(false);
+            });
           }
         },
         onExitCancelled,
@@ -155,7 +161,11 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
   });
 
   useIsomorphicLayoutEffect(() => {
-    handleInOptionChange(inOption);
+    // flushSync不能直接再react的生命周期方法中使用
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    Promise.resolve().then(() => {
+      handleInOptionChange(inOption);
+    });
   }, [inOption, handleInOptionChange]);
 
   const nodeRef: RefCallback<ReactInstance> = useCallback((el) => {
