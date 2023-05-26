@@ -1,10 +1,8 @@
 import { warning } from '@xl-vision/utils';
-import { ReactInstance, RefCallback, useCallback, useRef, useState } from 'react';
-
+import { ReactInstance, RefCallback, useCallback, useEffect, useRef, useState } from 'react';
 import { findDOMNode, flushSync } from 'react-dom';
 import useConstantFn from '../useConstantFn';
 import useIsFirstMount from '../useIsFirstMount';
-import useIsomorphicLayoutEffect from '../useIsomorphicLayoutEffect';
 import useLifecycleState, { LifecycleState } from '../useLifecycleState';
 
 export type TransitionStartHook<T extends Element = Element> = (
@@ -160,7 +158,7 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
     }
   });
 
-  useIsomorphicLayoutEffect(() => {
+  useEffect(() => {
     // flushSync不能直接再react的生命周期方法中使用
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     Promise.resolve().then(() => {

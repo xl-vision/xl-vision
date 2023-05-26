@@ -23,6 +23,8 @@ const autoUpdate = (
     animationFrame = false,
   } = options;
 
+  console.log(options, '111')
+
   const ancestorResize = _ancestorResize && !animationFrame;
   const ancestorScroll = _ancestorScroll && !animationFrame;
   const elementResize = _elementResize && !animationFrame;
@@ -34,6 +36,8 @@ const autoUpdate = (
           ...getOverflowAncestors(popper),
         ]
       : [];
+
+      console.log(ancestors, '22')
 
   if (ancestorScroll) {
     ancestors.forEach((ancestor) => {

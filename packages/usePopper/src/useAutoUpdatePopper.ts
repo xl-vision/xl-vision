@@ -24,6 +24,7 @@ const useAutoUpdatePopper = (options: AutoUpdatePopperOptions) => {
 
     const referenceEl = referenceRef.current;
     const popperEl = popperRef.current;
+
     if (!referenceEl || !popperEl) {
       return;
     }
@@ -50,6 +51,7 @@ const useAutoUpdatePopper = (options: AutoUpdatePopperOptions) => {
     },
     [handleAutoUpdate, reference],
   );
+
   const setPopper: RefCallback<Element> = useCallback(
     (el) => {
       popperRef.current = el;
