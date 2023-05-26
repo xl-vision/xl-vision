@@ -200,6 +200,9 @@ importers:
       '@types/react':
         specifier: '>=18.0.0'
         version: 18.0.0
+      '@types/react-dom':
+        specifier: '>=18.0.0'
+        version: 18.0.0
       '@xl-vision/utils':
         specifier: workspace:^
         version: link:../utils
@@ -362,6 +365,9 @@ importers:
       '@types/react':
         specifier: '>=18.0.0'
         version: 18.0.0
+      '@types/react-dom':
+        specifier: '>=18.0.0'
+        version: 18.0.0
       '@xl-vision/hooks':
         specifier: workspace:^
         version: link:../hooks
@@ -371,6 +377,9 @@ importers:
       react:
         specifier: '>=18.0.0'
         version: 18.2.0
+      react-dom:
+        specifier: '>=18.0.0'
+        version: 18.2.0(react@18.2.0)
       resize-observer-polyfill:
         specifier: ^1.5.1
         version: 1.5.1
@@ -3025,7 +3034,7 @@ packages:
   /@types/react-dom@18.0.0:
     resolution: {integrity: sha512-49897Y0UiCGmxZqpC8Blrf6meL8QUla6eb+BBhn69dTXlmuOlzkfr7HHY/O8J25e1lTUMs+YYxSlVDAaGHCOLg==}
     dependencies:
-      '@types/react': 17.0.52
+      '@types/react': 18.2.0
 
   /@types/react-is@18.2.0:
     resolution: {integrity: sha512-1vz2yObaQkLL7YFe/pme2cpvDsCwI1WXIfL+5eLz0MI9gFG24Re16RzUsI8t9XZn9ZWvgLNDrJBmrqXJO7GNQQ==}

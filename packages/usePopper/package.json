@@ -42,7 +42,7 @@
   "peerDependencies": {
     "@babel/runtime": "^7.15.4",
     "@types/react": ">=18.0.0",
-    "@types-dom/react": ">=18.0.0",
+    "@types/react-dom": ">=18.0.0",
     "react": ">=18.0.0",
     "react-dom": ">=18.0.0"
   },
