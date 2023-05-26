@@ -91,7 +91,7 @@
     "typescript": "^5.0.4"
   },
   "engines": {
-    "node": ">=v14.19.0",
+    "node": ">=v18.0.0",
     "pnpm": ">=v7"
   },
   "dependencies": {
