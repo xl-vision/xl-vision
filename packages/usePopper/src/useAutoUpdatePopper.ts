@@ -38,10 +38,17 @@ const useAutoUpdatePopper = (options: AutoUpdatePopperOptions) => {
   }, [update, ancestorResize, ancestorScroll, animationFrame, elementResize]);
 
   useEffect(() => {
+    // handle strict mode
+    if (!cleanUpRef.current) {
+      handleAutoUpdate();
+    }
     return () => {
-      cleanUpRef.current?.();
+      if (cleanUpRef.current) {
+        cleanUpRef.current();
+        cleanUpRef.current = undefined;
+      }
     };
-  }, []);
+  }, [handleAutoUpdate]);
 
   const setReference: RefCallback<Reference> = useCallback(
     (el) => {
