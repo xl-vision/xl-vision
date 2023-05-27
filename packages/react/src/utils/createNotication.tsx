@@ -6,7 +6,7 @@ import {
   useNotication,
 } from '@xl-vision/hooks';
 
-import { isProduction, noop } from '@xl-vision/utils';
+import { isProduction } from '@xl-vision/utils';
 import { ComponentType, createRef, forwardRef, useImperativeHandle, useState } from 'react';
 import { Root, createRoot } from 'react-dom/client';
 
@@ -75,18 +75,23 @@ const createNotication = <P, NCP>(
 
     let promiseResolve: () => void | undefined;
 
+    let promise = Promise.resolve();
+
     if (!rootEl) {
       const div = document.createElement('div');
       document.body.appendChild(div);
       rootEl = div;
 
       root = createRoot(div);
-      root.render(<MethodRefNotication ref={noticationRef} />);
+
+      promise = promise.then(() => {
+        root?.render(<MethodRefNotication ref={noticationRef} />);
+      });
     }
 
     count++;
 
-    Promise.resolve()
+    promise
       .then(() => {
         hookMethods = noticationRef.current?.instance.open({
           ...currentProps,
@@ -100,17 +105,17 @@ const createNotication = <P, NCP>(
           },
         });
       })
-      .catch(noop);
+      .catch(console.error);
 
-    const promise = new Promise<void>((resolve) => {
+    const retPromise = new Promise<void>((resolve) => {
       promiseResolve = resolve;
     }) as NoticationHookReturnType<P>;
 
-    promise.update = (updateProps) => hookMethods?.update(updateProps);
-    promise.destroy = () => hookMethods?.destroy();
-    promise.isDestroyed = () => hookMethods?.isDestroyed() || false;
+    retPromise.update = (updateProps) => hookMethods?.update(updateProps);
+    retPromise.destroy = () => hookMethods?.destroy();
+    retPromise.isDestroyed = () => hookMethods?.isDestroyed() || false;
 
-    return promise;
+    return retPromise;
   };
 
   const setGlobalConfig = (config: Partial<NoticationOptions<NCP>>) => {

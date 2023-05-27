@@ -1,4 +1,4 @@
-import { noop, warning } from '@xl-vision/utils';
+import { warning } from '@xl-vision/utils';
 import { ReactInstance, RefCallback, useCallback, useRef, useState } from 'react';
 import { findDOMNode, flushSync } from 'react-dom';
 import useConstantFn from '../useConstantFn';
@@ -101,7 +101,7 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
             wrapCallback();
           }
         })
-        .catch(noop);
+        .catch(console.error);
     },
     [lifecycleStatRef],
   );

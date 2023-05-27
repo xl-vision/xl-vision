@@ -76,8 +76,6 @@ const createRefNotication = <P,>(
   return RefNotication;
 };
 
-let uuid = 0;
-
 const useNotication = <P, NCP>(
   Notication: ComponentType<NoticationProps<P>>,
   NoticationContainer: NoticationContainerType<NCP>,
@@ -85,6 +83,8 @@ const useNotication = <P, NCP>(
 ) => {
   const [notications, setNotications] = useState<Array<ReactElement>>([]);
   const destorysRef = useRef<Array<() => void>>([]);
+
+  const keyRef = useRef(0);
 
   const { maxCount, ...otherOptions } = options;
 
@@ -115,7 +115,7 @@ const useNotication = <P, NCP>(
 
       let destroyState = false;
 
-      const notication = <RefNotication key={`notication${uuid++}`} ref={ref} />;
+      const notication = <RefNotication key={`notication${keyRef.current++}`} ref={ref} />;
 
       const destroyDOM = () => {
         flushSync(() => {

@@ -52,7 +52,8 @@ const ActiveLink: FC<Record<any, any>> = (props) => {
   const { children, href, ...others } = props;
   const { pathname } = useRouter();
 
-  const child: any = Children.only(children);
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const child = Children.only(children);
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
   const classes = clsx(child.className, {

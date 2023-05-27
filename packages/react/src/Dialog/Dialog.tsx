@@ -1,5 +1,5 @@
 import { useConstantFn, useValueChange } from '@xl-vision/hooks';
-import { isProduction, noop } from '@xl-vision/utils';
+import { isProduction } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { ReactNode, forwardRef, useState, useEffect } from 'react';
 import Button, { ButtonProps } from '../Button';
@@ -159,7 +159,7 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
     }
     setOpen(v);
     if (!v) {
-      onCancel?.()?.catch(noop);
+      onCancel?.()?.catch(console.error);
     }
   });
 

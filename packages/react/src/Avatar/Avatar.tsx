@@ -1,6 +1,6 @@
 import { useConstantFn, useForkRef } from '@xl-vision/hooks';
 import { CSSObject } from '@xl-vision/styled-engine';
-import { isProduction, noop } from '@xl-vision/utils';
+import { isProduction } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
@@ -17,11 +17,11 @@ import {
   useMemo,
   CSSProperties,
 } from 'react';
+import { flushSync } from 'react-dom';
 import AvatarContext from './AvatarContext';
 import ResizeObserver from '../ResizeObserver';
 import { styled } from '../styles';
 import { SizeVariant, useTheme } from '../ThemeProvider';
-import { flushSync } from 'react-dom';
 
 export type AvatarShape = 'circle' | 'square' | 'round';
 
@@ -154,7 +154,7 @@ const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
       .then(() => {
         handleResize();
       })
-      .catch(noop);
+      .catch(console.error);
   }, [gap, handleResize]);
 
   const handleImgError = useConstantFn(() => {

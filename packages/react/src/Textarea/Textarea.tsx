@@ -15,12 +15,12 @@ import {
   FocusEvent,
   CSSProperties,
 } from 'react';
+import { flushSync } from 'react-dom';
 import calculateNodeHeight from './calculateNodeHeight';
 import TextareaSuffix from './TextareaSuffix';
 import useInput from '../hooks/useInput';
 import { styled } from '../styles';
 import { SizeVariant, useTheme } from '../ThemeProvider';
-import { flushSync } from 'react-dom';
 
 export type TextareaProps = Omit<
   TextareaHTMLAttributes<HTMLTextAreaElement>,
@@ -226,7 +226,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, ref) => 
 
     const minRows = isObject(autoHeight) ? autoHeight.minRows : null;
     const maxRows = isObject(autoHeight) ? autoHeight.maxRows : null;
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+
     Promise.resolve()
       .then(() => {
         const styles = calculateNodeHeight(textarea, minRows, maxRows);

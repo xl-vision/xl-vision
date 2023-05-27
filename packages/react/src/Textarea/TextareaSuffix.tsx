@@ -3,9 +3,9 @@ import { getComputedStyle, isProduction, raf } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { HTMLAttributes, FC, useState, useRef, useEffect } from 'react';
+import { flushSync } from 'react-dom';
 import ResizeObserver from '../ResizeObserver';
 import { useTheme } from '../ThemeProvider';
-import { flushSync } from 'react-dom';
 
 export type TextareaSuffixProps = HTMLAttributes<HTMLSpanElement> & {
   value?: string;
