@@ -1,9 +1,10 @@
 import { act, render, screen } from '@testing-library/react';
 import { FC } from 'react';
 import useTransition from '..';
+import { awaitPromise } from 'test/utils';
 
 describe('useTransition', () => {
-  it('Test how to call lifecycle function', () => {
+  it('Test how to call lifecycle function', async () => {
     const fn = jest.fn();
 
     const Demo: FC<{ in: boolean }> = ({ in: inProp }) => {
@@ -36,11 +37,15 @@ describe('useTransition', () => {
 
     const { rerender } = render(<Demo in={false} />);
 
+    await awaitPromise();
+
     const el = screen.getByTestId('demo');
 
     expect(fn.mock.calls.length).toEqual(0);
 
     rerender(<Demo in={true} />);
+
+    await awaitPromise();
 
     expect(fn.mock.calls.length).toEqual(3);
     expect(fn.mock.calls[0]).toEqual([el, 'onEnter', false]);
@@ -51,13 +56,15 @@ describe('useTransition', () => {
 
     rerender(<Demo in={false} />);
 
+    await awaitPromise();
+
     expect(fn.mock.calls.length).toEqual(3);
     expect(fn.mock.calls[0]).toEqual([el, 'onExit', false]);
     expect(fn.mock.calls[1]).toEqual([el, 'onExiting', false, false]);
     expect(fn.mock.calls[2]).toEqual([el, 'onExited', false]);
   });
 
-  it('Test transition on first when in transition', () => {
+  it('Test transition on first when in transition', async () => {
     const fn = jest.fn();
 
     const Demo: FC<{ in: boolean }> = ({ in: inProp }) => {
@@ -91,6 +98,8 @@ describe('useTransition', () => {
 
     const { rerender } = render(<Demo in={true} />);
 
+    await awaitPromise();
+
     const el = screen.getByTestId('demo');
 
     expect(fn.mock.calls.length).toEqual(3);
@@ -102,13 +111,15 @@ describe('useTransition', () => {
 
     rerender(<Demo in={false} />);
 
+    await awaitPromise();
+
     expect(fn.mock.calls.length).toEqual(3);
     expect(fn.mock.calls[0]).toEqual([el, 'onExit', false]);
     expect(fn.mock.calls[1]).toEqual([el, 'onExiting', false, false]);
     expect(fn.mock.calls[2]).toEqual([el, 'onExited', false]);
   });
 
-  it('Test transition on first when out transition', () => {
+  it('Test transition on first when out transition', async () => {
     const fn = jest.fn();
 
     const Demo: FC<{ in: boolean }> = ({ in: inProp }) => {
@@ -142,6 +153,8 @@ describe('useTransition', () => {
 
     const { rerender } = render(<Demo in={false} />);
 
+    await awaitPromise();
+
     const el = screen.getByTestId('demo');
 
     expect(fn.mock.calls.length).toEqual(3);
@@ -153,13 +166,15 @@ describe('useTransition', () => {
 
     rerender(<Demo in={true} />);
 
+    await awaitPromise();
+
     expect(fn.mock.calls.length).toEqual(3);
     expect(fn.mock.calls[0]).toEqual([el, 'onEnter', false]);
     expect(fn.mock.calls[1]).toEqual([el, 'onEntering', false, false]);
     expect(fn.mock.calls[2]).toEqual([el, 'onEntered', false]);
   });
 
-  it('Test transition is cancelled', () => {
+  it('Test transition is cancelled', async () => {
     const fn = jest.fn();
 
     const isCancelledFn = jest.fn<void, Array<() => boolean>>();
@@ -206,6 +221,8 @@ describe('useTransition', () => {
 
     rerender(<Demo in={true} />);
 
+    await awaitPromise();
+
     expect(fn.mock.calls.length).toEqual(2);
     expect(fn.mock.calls[0]).toEqual([el, 'onEnter', false]);
     expect(fn.mock.calls[1]).toEqual([el, 'onEntering', false]);
@@ -216,6 +233,8 @@ describe('useTransition', () => {
     fn.mockClear();
 
     rerender(<Demo in={false} />);
+
+    await awaitPromise();
 
     expect(fn.mock.calls.length).toEqual(3);
     expect(fn.mock.calls[0]).toEqual([el, 'onEnterCancelled', false]);
@@ -229,6 +248,7 @@ describe('useTransition', () => {
     fn.mockClear();
 
     rerender(<Demo in={true} />);
+    await awaitPromise();
 
     expect(fn.mock.calls.length).toEqual(3);
     expect(fn.mock.calls[0]).toEqual([el, 'onExitCancelled', false]);
@@ -241,7 +261,7 @@ describe('useTransition', () => {
     expect(isCancelledFn.mock.calls[2][0]()).toBe(false);
   });
 
-  it("test 'show' value", () => {
+  it("test 'show' value", async () => {
     const fn = jest.fn<void, Array<() => void>>();
 
     const Demo: FC<{ in: boolean }> = ({ in: inProp }) => {
@@ -268,6 +288,8 @@ describe('useTransition', () => {
     rerender(<Demo in={false} />);
 
     expect(el.dataset.show).toEqual('true');
+
+    await awaitPromise();
 
     act(() => {
       fn.mock.calls[0][0]();

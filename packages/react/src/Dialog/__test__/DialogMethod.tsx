@@ -19,9 +19,7 @@ describe('DialogMethod', () => {
       id: 'method',
     });
 
-    await act(async () => {
-      await triggerTransitionEnd();
-    });
+    await triggerTransitionEnd();
 
     screen.debug();
 

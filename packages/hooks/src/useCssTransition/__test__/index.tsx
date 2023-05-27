@@ -1,6 +1,7 @@
 import { act, render, screen } from '@testing-library/react';
 import * as utils from '@xl-vision/utils';
 import { FC } from 'react';
+import { awaitPromise } from 'test/utils';
 import useCssTransition from '..';
 
 const nextFrame = jest.spyOn(utils, 'nextFrame').mockImplementation();
@@ -12,7 +13,7 @@ describe('useCssTransition', () => {
     onTransitionEnd.mockClear();
   });
 
-  it('Test transition className', () => {
+  it('Test transition className', async () => {
     const Demo: FC<{ in: boolean }> = ({ in: inProp }) => {
       const { nodeRef } = useCssTransition({
         in: inProp,
@@ -24,11 +25,16 @@ describe('useCssTransition', () => {
 
     const { rerender } = render(<Demo in={false} />);
 
+    await awaitPromise();
+
     const el = screen.getByTestId('demo');
 
     expect(el.className).toBe('');
 
     rerender(<Demo in={true} />);
+
+    await awaitPromise();
+
     expect(el.classList.length).toBe(2);
     expect(el.classList.contains('demo-enter-from')).toBe(true);
     expect(el.classList.contains('demo-enter-active')).toBe(true);
@@ -52,6 +58,8 @@ describe('useCssTransition', () => {
     expect(el.classList.length).toBe(0);
 
     rerender(<Demo in={false} />);
+
+    await awaitPromise();
 
     expect(el.classList.length).toBe(2);
     expect(el.classList.contains('demo-exit-from')).toBe(true);
@@ -75,7 +83,7 @@ describe('useCssTransition', () => {
     expect(el.classList.length).toBe(0);
   });
 
-  it('Test transition cancelled', () => {
+  it('Test transition cancelled', async () => {
     const Demo: FC<{ in: boolean }> = ({ in: inProp }) => {
       const { nodeRef } = useCssTransition({
         in: inProp,
@@ -87,11 +95,16 @@ describe('useCssTransition', () => {
 
     const { rerender } = render(<Demo in={false} />);
 
+    await awaitPromise();
+
     const el = screen.getByTestId('demo');
 
     expect(el.className).toBe('');
 
     rerender(<Demo in={true} />);
+
+    await awaitPromise();
+
     expect(el.classList.length).toBe(2);
     expect(el.classList.contains('demo-enter-from')).toBe(true);
     expect(el.classList.contains('demo-enter-active')).toBe(true);
@@ -108,12 +121,14 @@ describe('useCssTransition', () => {
 
     rerender(<Demo in={false} />);
 
+    await awaitPromise();
+
     expect(el.classList.length).toBe(2);
     expect(el.classList.contains('demo-exit-from')).toBe(true);
     expect(el.classList.contains('demo-exit-active')).toBe(true);
   });
 
-  it('Test timeout', () => {
+  it('Test timeout', async () => {
     const Demo: FC<{ in: boolean }> = ({ in: inProp }) => {
       jest.useFakeTimers();
 
@@ -128,11 +143,16 @@ describe('useCssTransition', () => {
 
     const { rerender } = render(<Demo in={false} />);
 
+    await awaitPromise();
+
     const el = screen.getByTestId('demo');
 
     expect(el.className).toBe('');
 
     rerender(<Demo in={true} />);
+
+    await awaitPromise();
+
     expect(el.classList.length).toBe(2);
     expect(el.classList.contains('demo-enter-from')).toBe(true);
     expect(el.classList.contains('demo-enter-active')).toBe(true);
@@ -154,6 +174,9 @@ describe('useCssTransition', () => {
     expect(el.classList.length).toBe(0);
 
     rerender(<Demo in={false} />);
+
+    await awaitPromise();
+
     expect(el.classList.length).toBe(2);
     expect(el.classList.contains('demo-exit-from')).toBe(true);
     expect(el.classList.contains('demo-exit-active')).toBe(true);
@@ -175,7 +198,7 @@ describe('useCssTransition', () => {
     expect(el.classList.length).toBe(0);
   });
 
-  it('Test disableCss', () => {
+  it('Test disableCss', async () => {
     const fn = jest.fn<void, Array<any>>();
 
     const Demo: FC<{ in: boolean }> = ({ in: inProp }) => {
@@ -194,11 +217,16 @@ describe('useCssTransition', () => {
 
     const { rerender } = render(<Demo in={false} />);
 
+    await awaitPromise();
+
     const el = screen.getByTestId('demo');
 
     expect(el.className).toBe('');
 
     rerender(<Demo in={true} />);
+
+    await awaitPromise();
+
     expect(el.classList.length).toBe(2);
     expect(el.classList.contains('demo-enter-from')).toBe(true);
     expect(el.classList.contains('demo-enter-active')).toBe(true);
@@ -224,6 +252,9 @@ describe('useCssTransition', () => {
     expect(el.classList.length).toBe(0);
 
     rerender(<Demo in={false} />);
+
+    await awaitPromise();
+
     expect(el.classList.length).toBe(2);
     expect(el.classList.contains('demo-exit-from')).toBe(true);
     expect(el.classList.contains('demo-exit-active')).toBe(true);
