@@ -29,9 +29,7 @@ const Transition: FC<TransitionProps> = (props) => {
     in: inProp,
   });
 
-  const child = Children.only(
-    typeof children === 'function' ? children(show) : (children as ReactElement),
-  );
+  const child = Children.only(typeof children === 'function' ? children(show) : children);
 
   warning(!supportRef(child), '<%s>: child does not support ref', displayName);
 

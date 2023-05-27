@@ -6,7 +6,7 @@ import {
   useNotication,
 } from '@xl-vision/hooks';
 
-import { isProduction } from '@xl-vision/utils';
+import { isProduction, noop } from '@xl-vision/utils';
 import { ComponentType, createRef, forwardRef, useImperativeHandle, useState } from 'react';
 import { Root, createRoot } from 'react-dom/client';
 
@@ -86,20 +86,21 @@ const createNotication = <P, NCP>(
 
     count++;
 
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    Promise.resolve().then(() => {
-      hookMethods = noticationRef.current?.instance.open({
-        ...currentProps,
-        onAfterClosed() {
-          count--;
-          if (count <= 0) {
-            destroyDOM();
-          }
-          currentProps.onAfterClosed?.();
-          promiseResolve?.();
-        },
-      });
-    });
+    Promise.resolve()
+      .then(() => {
+        hookMethods = noticationRef.current?.instance.open({
+          ...currentProps,
+          onAfterClosed() {
+            count--;
+            if (count <= 0) {
+              destroyDOM();
+            }
+            currentProps.onAfterClosed?.();
+            promiseResolve?.();
+          },
+        });
+      })
+      .catch(noop);
 
     const promise = new Promise<void>((resolve) => {
       promiseResolve = resolve;

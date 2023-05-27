@@ -1,16 +1,12 @@
-import { CssTransitionClassNameRecord, TransitionEndHook, useConstantFn } from '@xl-vision/hooks';
+import {
+  CssTransitionClassNameRecord,
+  TransitionEndHook,
+  useConstantFn,
+  useIsomorphicLayoutEffect,
+} from '@xl-vision/hooks';
 import { isObject, isProduction, warning } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
-import {
-  ReactElement,
-  FC,
-  useMemo,
-  useState,
-  useCallback,
-  Key,
-  cloneElement,
-  useEffect,
-} from 'react';
+import { ReactElement, FC, useMemo, useState, useCallback, Key, cloneElement } from 'react';
 import diff from './diff';
 import Transition, { TransitionProps } from '../Transition';
 
@@ -140,7 +136,7 @@ const TransitionGroup: FC<TransitionGroupProps> = (props) => {
     setNodes(nextNodes);
   });
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     handleChildrenChange(children);
   }, [children, handleChildrenChange]);
 

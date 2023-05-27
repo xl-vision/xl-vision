@@ -1,8 +1,9 @@
-import { warning } from '@xl-vision/utils';
-import { ReactInstance, RefCallback, useCallback, useEffect, useRef, useState } from 'react';
+import { noop, warning } from '@xl-vision/utils';
+import { ReactInstance, RefCallback, useCallback, useRef, useState } from 'react';
 import { findDOMNode, flushSync } from 'react-dom';
 import useConstantFn from '../useConstantFn';
 import useIsFirstMount from '../useIsFirstMount';
+import useIsomorphicLayoutEffect from '../useIsomorphicLayoutEffect';
 import useLifecycleState, { LifecycleState } from '../useLifecycleState';
 
 export type TransitionStartHook<T extends Element = Element> = (
@@ -72,7 +73,9 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
         }
         // 避免多次触发
         cbRef.current = undefined;
-        endHook?.(el, isFirst);
+        flushSync(() => {
+          endHook?.(el, isFirst);
+        });
       };
 
       const cancelCallback = () => {
@@ -90,11 +93,15 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
         lifecycleStatRef.current === LifecycleState.DESTORYED || cancelCallback !== cbRef.current;
 
       startHook?.(el, isFirst);
-      if (startingHook) {
-        startingHook(el, wrapCallback, isFirst, isCancelled);
-      } else {
-        wrapCallback();
-      }
+      Promise.resolve()
+        .then(() => {
+          if (startingHook) {
+            startingHook(el, wrapCallback, isFirst, isCancelled);
+          } else {
+            wrapCallback();
+          }
+        })
+        .catch(noop);
     },
     [lifecycleStatRef],
   );
@@ -128,10 +135,7 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
         el,
         isTransitionOnFirst,
         (elOption, transitionOnFirstOption) => {
-          // 保证dom能够及时更新
-          flushSync(() => {
-            setInTransition(true);
-          });
+          setInTransition(true);
           onEnter?.(elOption, transitionOnFirstOption);
         },
         onEntering,
@@ -147,10 +151,7 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
         (elOption, transitionOnFirstOption) => {
           onExited?.(elOption, transitionOnFirstOption);
           if (lifecycleStatRef.current !== LifecycleState.DESTORYED) {
-            // 保证dom能够及时更新
-            flushSync(() => {
-              setInTransition(false);
-            });
+            setInTransition(false);
           }
         },
         onExitCancelled,
@@ -158,12 +159,14 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
     }
   });
 
-  useEffect(() => {
-    // flushSync不能直接再react的生命周期方法中使用
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    Promise.resolve().then(() => {
+  const onceRef = useRef<boolean>();
+
+  useIsomorphicLayoutEffect(() => {
+    // handle calling twice on strict mode
+    if (onceRef.current !== inOption) {
+      onceRef.current = inOption;
       handleInOptionChange(inOption);
-    });
+    }
   }, [inOption, handleInOptionChange]);
 
   const nodeRef: RefCallback<ReactInstance> = useCallback((el) => {

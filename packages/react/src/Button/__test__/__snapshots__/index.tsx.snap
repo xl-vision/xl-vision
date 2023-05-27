@@ -579,7 +579,7 @@ exports[`Button Test basic render 1`] = `
       >
         <span
           class="c6 xl-button__prefix xl-button__prefix-appear-from xl-button__prefix-appear-active"
-          style="overflow: hidden; padding-left: 0px; padding-right: 0px;"
+          style="overflow: hidden; padding-left: 0px; padding-right: 0px; width: 0px;"
         >
           <svg
             class="xl-base-icon c7 c14 xl-button__loading-icon"

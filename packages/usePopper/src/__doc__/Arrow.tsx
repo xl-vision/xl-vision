@@ -109,8 +109,8 @@ const Popper = styled('div')(({ theme }) => {
     padding: 8,
     borderRadius: 4,
     maxWidth: 100,
-    color: colors.text.primary,
-    backgroundColor: colors.background.default,
+    color: colors.getContrastText(colors.background.spotlight).primary,
+    backgroundColor: colors.background.spotlight,
   };
 });
 

@@ -1,5 +1,5 @@
 import { noop } from '@xl-vision/utils';
-import { RefCallback, useCallback, useEffect, useRef } from 'react';
+import { RefCallback, useCallback, useRef } from 'react';
 import ROP from 'resize-observer-polyfill';
 import useConstantFn from '../useConstantFn';
 
@@ -60,12 +60,6 @@ const useResizeObserver = <T extends Element>(onResizeObserver: ResizeObserverHa
     },
     [handleResizeObserver],
   );
-
-  useEffect(() => {
-    return () => {
-      resizeObserverRef.current?.disconnect();
-    };
-  }, []);
 
   return refCallback;
 };

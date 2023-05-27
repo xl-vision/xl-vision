@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { HTMLAttributes, FC, useState, useRef, useEffect } from 'react';
 import ResizeObserver from '../ResizeObserver';
 import { useTheme } from '../ThemeProvider';
+import { flushSync } from 'react-dom';
 
 export type TextareaSuffixProps = HTMLAttributes<HTMLSpanElement> & {
   value?: string;
@@ -46,7 +47,9 @@ const TextareaSuffix: FC<TextareaSuffixProps> = (props) => {
         totalHeight += (child as HTMLElement).clientHeight;
       });
 
-      setOverflow(height < totalHeight + paddingTop + paddingBottom);
+      flushSync(() => {
+        setOverflow(height < totalHeight + paddingTop + paddingBottom);
+      });
     });
   });
 
