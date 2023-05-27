@@ -1,7 +1,7 @@
 import { act, render, screen } from '@testing-library/react';
 import { FC } from 'react';
-import useTransition from '..';
 import { awaitPromise } from 'test/utils';
+import useTransition from '..';
 
 describe('useTransition', () => {
   it('Test how to call lifecycle function', async () => {

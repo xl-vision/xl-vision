@@ -41,11 +41,13 @@ export type NoticationHookUpdate<P> = (
     | ((prev: NoticationHookProps<P>) => Partial<NoticationHookProps<P>>),
 ) => void;
 
-export type NoticationHookReturnType<P> = Promise<void> & {
+export type NoticationMethods<P> = {
   destroy: () => void;
   update: NoticationHookUpdate<P>;
   isDestroyed: () => boolean;
 };
+
+export type NoticationHookReturnType<P> = Promise<NoticationMethods<P>> & NoticationMethods<P>;
 
 type NoticationRef<P> = {
   update: (updateProps: NoticationProps<P>) => void;
@@ -98,12 +100,16 @@ const useNotication = <P, NCP>(
         defaultOpen: true,
       };
 
-      let promiseResolve: () => void | undefined;
+      let promiseResolve: (props: NoticationMethods<P>) => void | undefined;
 
       const onAfterClosedWrap = (onAfterClosed?: () => void) => () => {
         destroyDOM();
         onAfterClosed?.();
-        promiseResolve?.();
+        promiseResolve?.({
+          update,
+          destroy,
+          isDestroyed: () => destroyState,
+        });
       };
 
       const RefNotication = createRefNotication(Notication, {
@@ -165,7 +171,7 @@ const useNotication = <P, NCP>(
         needDestroyedNotications.forEach((it) => it());
       }
 
-      const promise = new Promise<void>((resolve) => {
+      const promise = new Promise<NoticationMethods<P>>((resolve) => {
         promiseResolve = resolve;
       }) as NoticationHookReturnType<P>;
 

@@ -34,6 +34,7 @@ export type {
   NoticationHookProps,
   NoticationHookReturnType,
   NoticationHookUpdate,
+  NoticationMethods,
   NoticationContainerProps,
   NoticationOptions,
   NoticationProps,

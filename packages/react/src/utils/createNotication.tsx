@@ -1,11 +1,11 @@
 import {
   NoticationContainerType,
   NoticationHookReturnType,
+  NoticationMethods,
   NoticationOptions,
   NoticationProps,
   useNotication,
 } from '@xl-vision/hooks';
-
 import { isProduction } from '@xl-vision/utils';
 import { ComponentType, createRef, forwardRef, useImperativeHandle, useState } from 'react';
 import { Root, createRoot } from 'react-dom/client';
@@ -73,7 +73,7 @@ const createNotication = <P, NCP>(
 
     let hookMethods: NoticationHookReturnType<P> | undefined;
 
-    let promiseResolve: () => void | undefined;
+    let promiseResolve: (props: NoticationMethods<P>) => void | undefined;
 
     let promise = Promise.resolve();
 
@@ -101,13 +101,17 @@ const createNotication = <P, NCP>(
               destroyDOM();
             }
             currentProps.onAfterClosed?.();
-            promiseResolve?.();
+            promiseResolve?.({
+              update: (updateProps) => hookMethods?.update(updateProps),
+              destroy: () => hookMethods?.destroy(),
+              isDestroyed: () => hookMethods?.isDestroyed() || false,
+            });
           },
         });
       })
       .catch(console.error);
 
-    const retPromise = new Promise<void>((resolve) => {
+    const retPromise = new Promise<NoticationMethods<P>>((resolve) => {
       promiseResolve = resolve;
     }) as NoticationHookReturnType<P>;
 
