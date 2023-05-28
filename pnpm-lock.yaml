@@ -72,11 +72,11 @@ importers:
         specifier: 17.0.4
         version: 17.0.4
       '@types/react':
-        specifier: ^18.0.0
-        version: 18.0.0
+        specifier: '>=18.2.7'
+        version: 18.2.7
       '@types/react-dom':
-        specifier: ^18.0.0
-        version: 18.0.0
+        specifier: '>=18.2.4'
+        version: 18.2.4
       '@types/styled-components':
         specifier: ^5.1.26
         version: 5.1.26
@@ -173,9 +173,6 @@ importers:
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
-      react-is:
-        specifier: ^18.2.0
-        version: 18.2.0
       rollup:
         specifier: ^3.20.6
         version: 3.20.6
@@ -199,10 +196,10 @@ importers:
         version: 7.15.4
       '@types/react':
         specifier: '>=18.0.0'
-        version: 18.0.0
+        version: 18.2.7
       '@types/react-dom':
         specifier: '>=18.0.0'
-        version: 18.0.0
+        version: 18.2.4
       '@xl-vision/utils':
         specifier: workspace:^
         version: link:../utils
@@ -223,7 +220,7 @@ importers:
         version: 7.15.4
       '@types/react':
         specifier: '>=18.0.0'
-        version: 18.0.0
+        version: 18.2.7
       '@xl-vision/styled-engine':
         specifier: workspace:^
         version: link:../styled-engine
@@ -233,9 +230,6 @@ importers:
       clsx:
         specifier: ^1.2.1
         version: 1.2.1
-      prop-types:
-        specifier: ^15.8.1
-        version: 15.8.1
       react:
         specifier: '>=18.0.0'
         version: 18.2.0
@@ -257,13 +251,10 @@ importers:
         version: 7.15.4
       '@types/react':
         specifier: '>=18.0.0'
-        version: 18.0.0
+        version: 18.2.7
       '@types/react-dom':
         specifier: '>=18.0.0'
-        version: 18.0.0
-      '@types/react-is':
-        specifier: '>=18.0.0'
-        version: 18.2.0
+        version: 18.2.4
       '@xl-vision/hooks':
         specifier: workspace:^
         version: link:../hooks
@@ -295,12 +286,15 @@ importers:
         specifier: '>=18.0.0'
         version: 18.2.0(react@18.2.0)
       react-is:
-        specifier: '>=18.0.0'
+        specifier: ^18.0.0
         version: 18.2.0
     devDependencies:
       '@types/prop-types':
         specifier: ^15.7.5
         version: 15.7.5
+      '@types/react-is':
+        specifier: '>=18.0.0'
+        version: 18.2.0
 
   packages/styled-engine:
     dependencies:
@@ -309,9 +303,9 @@ importers:
         version: 7.15.4
       '@types/react':
         specifier: '>=18.0.0'
-        version: 18.0.0
+        version: 18.2.7
       '@types/styled-components':
-        specifier: ^5.1.13
+        specifier: ^5.1.26
         version: 5.1.26
       '@xl-vision/styled-engine-types':
         specifier: workspace:^
@@ -334,7 +328,7 @@ importers:
     dependencies:
       '@types/react':
         specifier: '>=18.0.0'
-        version: 18.0.0
+        version: 18.2.7
       csstype:
         specifier: ^3.0.8
         version: 3.0.8
@@ -346,7 +340,7 @@ importers:
         version: 7.15.4
       '@types/react':
         specifier: '>=18.0.0'
-        version: 18.0.0
+        version: 18.2.7
       '@xl-vision/hooks':
         specifier: workspace:^
         version: link:../hooks
@@ -364,7 +358,7 @@ importers:
         version: 7.15.4
       '@types/react':
         specifier: '>=18.0.0'
-        version: 18.0.0
+        version: 18.2.7
       '@xl-vision/hooks':
         specifier: workspace:^
         version: link:../hooks
@@ -432,13 +426,13 @@ importers:
         specifier: ^15.8.1
         version: 15.8.1
       react:
-        specifier: ^18.2.0
+        specifier: '>=18.0.0'
         version: 18.2.0
       react-codemirror2:
         specifier: ^7.2.1
         version: 7.2.1(codemirror@5.65.12)(react@18.2.0)
       react-dom:
-        specifier: ^18.2.0
+        specifier: '>=18.0.0'
         version: 18.2.0(react@18.2.0)
       styled-components:
         specifier: ^5.3.6
@@ -2344,7 +2338,7 @@ packages:
       nopt: 5.0.0
       npmlog: 5.0.1
       rimraf: 3.0.2
-      semver: 7.3.8
+      semver: 7.5.0
       tar: 6.1.15
     transitivePeerDependencies:
       - encoding
@@ -2404,7 +2398,7 @@ packages:
       react: '>=16'
     dependencies:
       '@types/mdx': 2.0.5
-      '@types/react': 18.0.0
+      '@types/react': 18.2.7
       react: 18.2.0
     dev: false
 
@@ -2716,7 +2710,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.22.3
       '@testing-library/dom': 9.3.0
-      '@types/react-dom': 18.0.0
+      '@types/react-dom': 18.2.4
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: true
@@ -2853,7 +2847,7 @@ packages:
   /@types/hoist-non-react-statics@3.3.1:
     resolution: {integrity: sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==}
     dependencies:
-      '@types/react': 18.0.0
+      '@types/react': 18.2.7
       hoist-non-react-statics: 3.3.2
 
   /@types/istanbul-lib-coverage@2.0.4:
@@ -2941,19 +2935,19 @@ packages:
   /@types/prop-types@15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
 
-  /@types/react-dom@18.0.0:
-    resolution: {integrity: sha512-49897Y0UiCGmxZqpC8Blrf6meL8QUla6eb+BBhn69dTXlmuOlzkfr7HHY/O8J25e1lTUMs+YYxSlVDAaGHCOLg==}
+  /@types/react-dom@18.2.4:
+    resolution: {integrity: sha512-G2mHoTMTL4yoydITgOGwWdWMVd8sNgyEP85xVmMKAPUBwQWm9wBPQUmvbeF4V3WBY1P7mmL4BkjQ0SqUpf1snw==}
     dependencies:
-      '@types/react': 18.0.0
+      '@types/react': 18.2.7
 
   /@types/react-is@18.2.0:
     resolution: {integrity: sha512-1vz2yObaQkLL7YFe/pme2cpvDsCwI1WXIfL+5eLz0MI9gFG24Re16RzUsI8t9XZn9ZWvgLNDrJBmrqXJO7GNQQ==}
     dependencies:
-      '@types/react': 18.0.0
-    dev: false
+      '@types/react': 18.2.7
+    dev: true
 
-  /@types/react@18.0.0:
-    resolution: {integrity: sha512-7+K7zEQYu7NzOwQGLR91KwWXXDzmTFODRVizJyIALf6RfLv2GDpqpknX64pvRVILXCpXi7O/pua8NGk44dLvJw==}
+  /@types/react@18.2.7:
+    resolution: {integrity: sha512-ojrXpSH2XFCmHm7Jy3q44nXDyN54+EYKP2lBhJ2bqfyPj6cIUW/FZW/Csdia34NQgq7KYcAlHi5184m4X88+yw==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.3
@@ -2984,7 +2978,7 @@ packages:
     resolution: {integrity: sha512-KuKJ9Z6xb93uJiIyxo/+ksS7yLjS1KzG6iv5i78dhVg/X3u5t1H7juRWqVmodIdz6wGVaIApo1u01kmFRdJHVw==}
     dependencies:
       '@types/hoist-non-react-statics': 3.3.1
-      '@types/react': 18.0.0
+      '@types/react': 18.2.7
       csstype: 3.0.8
 
   /@types/tern@0.23.4:
@@ -7844,7 +7838,7 @@ packages:
       jest-util: 29.5.0
       natural-compare: 1.4.0
       pretty-format: 29.5.0
-      semver: 7.3.8
+      semver: 7.5.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -9414,7 +9408,7 @@ packages:
     dependencies:
       hosted-git-info: 4.1.0
       is-core-module: 2.12.1
-      semver: 7.3.8
+      semver: 7.5.0
       validate-npm-package-license: 3.0.4
     dev: true
 
