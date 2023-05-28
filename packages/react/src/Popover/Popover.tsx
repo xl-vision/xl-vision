@@ -5,7 +5,7 @@ import Popper, { PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 
-export type PopoverProps = Omit<PopperProps, 'popup' | 'arrow' | 'title'> & {
+export type PopoverProps = Omit<PopperProps, 'popup' | 'arrow' | 'title' | 'content'> & {
   content: ReactNode;
   hideArrow?: boolean;
   title?: ReactNode;

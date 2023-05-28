@@ -12,6 +12,7 @@ import {
   ReactNode,
   ReactFragment,
 } from 'react';
+import { flushSync } from 'react-dom';
 
 export type NoticationProps<P> = P & {
   open?: boolean;
@@ -40,11 +41,13 @@ export type NoticationHookUpdate<P> = (
     | ((prev: NoticationHookProps<P>) => Partial<NoticationHookProps<P>>),
 ) => void;
 
-export type NoticationHookReturnType<P> = Promise<void> & {
+export type NoticationMethods<P> = {
   destroy: () => void;
   update: NoticationHookUpdate<P>;
   isDestroyed: () => boolean;
 };
+
+export type NoticationHookReturnType<P> = Promise<NoticationMethods<P>> & NoticationMethods<P>;
 
 type NoticationRef<P> = {
   update: (updateProps: NoticationProps<P>) => void;
@@ -75,8 +78,6 @@ const createRefNotication = <P,>(
   return RefNotication;
 };
 
-let uuid = 0;
-
 const useNotication = <P, NCP>(
   Notication: ComponentType<NoticationProps<P>>,
   NoticationContainer: NoticationContainerType<NCP>,
@@ -84,6 +85,8 @@ const useNotication = <P, NCP>(
 ) => {
   const [notications, setNotications] = useState<Array<ReactElement>>([]);
   const destorysRef = useRef<Array<() => void>>([]);
+
+  const keyRef = useRef(0);
 
   const { maxCount, ...otherOptions } = options;
 
@@ -97,12 +100,16 @@ const useNotication = <P, NCP>(
         defaultOpen: true,
       };
 
-      let promiseResolve: () => void | undefined;
+      let promiseResolve: (props: NoticationMethods<P>) => void | undefined;
 
       const onAfterClosedWrap = (onAfterClosed?: () => void) => () => {
         destroyDOM();
         onAfterClosed?.();
-        promiseResolve?.();
+        promiseResolve?.({
+          update,
+          destroy,
+          isDestroyed: () => destroyState,
+        });
       };
 
       const RefNotication = createRefNotication(Notication, {
@@ -114,10 +121,12 @@ const useNotication = <P, NCP>(
 
       let destroyState = false;
 
-      const notication = <RefNotication key={`notication${uuid++}`} ref={ref} />;
+      const notication = <RefNotication key={`notication${keyRef.current++}`} ref={ref} />;
 
       const destroyDOM = () => {
-        setNotications((prev) => prev.filter((it) => it !== notication));
+        flushSync(() => {
+          setNotications((prev) => prev.filter((it) => it !== notication));
+        });
         destorysRef.current = destorysRef.current.filter((it) => it !== destroy);
         destroyState = true;
       };
@@ -162,7 +171,7 @@ const useNotication = <P, NCP>(
         needDestroyedNotications.forEach((it) => it());
       }
 
-      const promise = new Promise<void>((resolve) => {
+      const promise = new Promise<NoticationMethods<P>>((resolve) => {
         promiseResolve = resolve;
       }) as NoticationHookReturnType<P>;
 

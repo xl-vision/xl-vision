@@ -44,7 +44,7 @@ const useClick: InteractionHook<ClickOptions> = (
     window.addEventListener('click', fn, true);
 
     return () => {
-      window.removeEventListener('click', fn);
+      window.removeEventListener('click', fn, true);
     };
   }, [skip, setOpen]);
 

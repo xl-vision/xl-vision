@@ -38,9 +38,7 @@
   "dependencies": {
     "@xl-vision/styled-engine": "workspace:^",
     "@xl-vision/utils": "workspace:^",
-    "clsx": "^1.2.1",
-    "prop-types": "^15.8.1",
-    "react-is": "^18.2.0"
+    "clsx": "^1.2.1"
   },
   "devDependencies": {
     "fs-extra": "^11.1.1",
@@ -49,8 +47,8 @@
   },
   "peerDependencies": {
     "@babel/runtime": "^7.15.4",
-    "@types/react": ">=17.0.0",
-    "react": ">=17.0.0"
+    "@types/react": ">=18.0.0",
+    "react": ">=18.0.0"
   },
   "peerDependenciesMeta": {
     "@types/react": {

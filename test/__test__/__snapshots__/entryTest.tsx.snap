@@ -8,7 +8,6 @@ exports[`Entry @xl-vision/hooks 1`] = `
   "useValueChange",
   "useIsomorphicLayoutEffect",
   "usePrevious",
-  "useSyncExternalStore",
   "useLifecycleState",
   "LifecycleState",
   "useResizeObserver",
@@ -16,6 +15,8 @@ exports[`Entry @xl-vision/hooks 1`] = `
   "useCssTransition",
   "useNotication",
   "useEnhancedMemo",
+  "useIsFirstMount",
+  "useUpdateEffect",
 ]
 `;
 

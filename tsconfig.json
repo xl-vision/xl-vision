@@ -12,9 +12,9 @@
     "noImplicitAny": true,
     "allowSyntheticDefaultImports": true,
     "declaration": true,
-    "baseUrl": ".",
     "resolveJsonModule": true,
     "skipLibCheck": true,
+    "baseUrl": ".",
     "rootDir": ".",
     "paths": {
       "csstype": ["./node_modules/csstype"],
@@ -42,5 +42,5 @@
       "@xl-vision/react/*": ["./packages/react/src/*"]
     }
   },
-  "exclude": ["**/node_modules", "**/modern", "**/legacy"]
+  "exclude": ["**/node_modules", "**/modern", "**/legacy", "**/dist"]
 }

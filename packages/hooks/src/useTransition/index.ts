@@ -1,8 +1,8 @@
 import { warning } from '@xl-vision/utils';
 import { ReactInstance, RefCallback, useCallback, useRef, useState } from 'react';
-
-import { findDOMNode } from 'react-dom';
+import { findDOMNode, flushSync } from 'react-dom';
 import useConstantFn from '../useConstantFn';
+import useIsFirstMount from '../useIsFirstMount';
 import useIsomorphicLayoutEffect from '../useIsomorphicLayoutEffect';
 import useLifecycleState, { LifecycleState } from '../useLifecycleState';
 
@@ -73,7 +73,9 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
         }
         // 避免多次触发
         cbRef.current = undefined;
-        endHook?.(el, isFirst);
+        flushSync(() => {
+          endHook?.(el, isFirst);
+        });
       };
 
       const cancelCallback = () => {
@@ -91,11 +93,15 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
         lifecycleStatRef.current === LifecycleState.DESTORYED || cancelCallback !== cbRef.current;
 
       startHook?.(el, isFirst);
-      if (startingHook) {
-        startingHook(el, wrapCallback, isFirst, isCancelled);
-      } else {
-        wrapCallback();
-      }
+      Promise.resolve()
+        .then(() => {
+          if (startingHook) {
+            startingHook(el, wrapCallback, isFirst, isCancelled);
+          } else {
+            wrapCallback();
+          }
+        })
+        .catch(console.error);
     },
     [lifecycleStatRef],
   );
@@ -105,14 +111,12 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
   // 是否处于enter和exited之间的状态，只要children在显示中，就为true
   const [inTransition, setInTransition] = useState(inOption || transitionOnFirst);
 
-  const isFirstUpdateRef = useRef(true);
+  const isFirstUpdate = useIsFirstMount();
   const transitionOnFirstRef = useRef(transitionOnFirst);
 
   const handleInOptionChange = useConstantFn((value: boolean) => {
-    const isFirstUpdate = isFirstUpdateRef.current;
     const isTransitionOnFirst = transitionOnFirstRef.current;
 
-    isFirstUpdateRef.current = false;
     transitionOnFirstRef.current = false;
 
     if (!isTransitionOnFirst && isFirstUpdate) {
@@ -155,8 +159,14 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
     }
   });
 
+  const onceRef = useRef<boolean>();
+
   useIsomorphicLayoutEffect(() => {
-    handleInOptionChange(inOption);
+    // handle calling twice on strict mode
+    if (onceRef.current !== inOption) {
+      onceRef.current = inOption;
+      handleInOptionChange(inOption);
+    }
   }, [inOption, handleInOptionChange]);
 
   const nodeRef: RefCallback<ReactInstance> = useCallback((el) => {

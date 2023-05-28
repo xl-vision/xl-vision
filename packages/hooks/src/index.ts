@@ -4,7 +4,6 @@ export { default as useForkRef } from './useForkRef';
 export { default as useValueChange } from './useValueChange';
 export { default as useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 export { default as usePrevious } from './usePrevious';
-export { default as useSyncExternalStore } from './useSyncExternalStore';
 
 export { default as useLifecycleState, LifecycleState } from './useLifecycleState';
 
@@ -35,6 +34,7 @@ export type {
   NoticationHookProps,
   NoticationHookReturnType,
   NoticationHookUpdate,
+  NoticationMethods,
   NoticationContainerProps,
   NoticationOptions,
   NoticationProps,
@@ -42,3 +42,7 @@ export type {
 } from './useNotication';
 
 export { default as useEnhancedMemo } from './useEnhancedMemo';
+
+export { default as useIsFirstMount } from './useIsFirstMount';
+
+export { default as useUpdateEffect } from './useUpdateEffect';

@@ -43,18 +43,18 @@
     "@xl-vision/utils": "workspace:^",
     "clsx": "^1.2.1",
     "prop-types": "^15.8.1",
-    "react-is": "^18.2.0"
+    "react-is": "^18.0.0"
   },
   "devDependencies": {
     "@types/prop-types": "^15.7.5",
-    "@types/react-is": "^17.0.4"
+    "@types/react-is": ">=18.0.0"
   },
   "peerDependencies": {
     "@babel/runtime": "^7.15.4",
-    "@types/react": ">=17.0.0",
-    "@types/react-dom": ">=17.0.0",
-    "react": ">=17.0.0",
-    "react-dom": ">=17.0.0"
+    "@types/react": ">=18.0.0",
+    "@types/react-dom": ">=18.0.0",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
   },
   "peerDependenciesMeta": {
     "@types/react": {

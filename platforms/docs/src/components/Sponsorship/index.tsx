@@ -39,10 +39,12 @@ const Sponsorship: FC = () => {
     <Root>
       <Title>{locale.sponsorship.title}</Title>
       <div className='list'>
-        <Link href='https://vercel.com?utm_source=xl-vision&utm_campaign=oss'>
-          <a rel='noopener' target='_black'>
-            <Image alt='vercel' height={44} src='/sponsorship/vercel.svg' width={160} />
-          </a>
+        <Link
+          href='https://vercel.com?utm_source=xl-vision&utm_campaign=oss'
+          rel='noopener'
+          target='_black'
+        >
+          <Image alt='vercel' height={44} src='/sponsorship/vercel.svg' width={160} />
         </Link>
       </div>
     </Root>

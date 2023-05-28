@@ -1,15 +1,14 @@
-import { useConstantFn } from '@xl-vision/hooks';
 import { Anchor, Row } from '@xl-vision/react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { ComponentType, FC, useState, useEffect } from 'react';
+import { ComponentType, FC } from 'react';
 import useIsDebugMode from '../../hooks/useIsDebugMode';
 import routes, { Route, RouteType } from '../../routes';
 import { HEADER_HEIGHT } from '../Header';
 import { defaultLanguage, useLocale } from '../LocalizationProvider';
 
 export type DocsProps = {
-  locales: Record<string, { component: ComponentType; outlinePromise: Promise<Outline> }>;
+  locales: Record<string, { component: ComponentType; outline: Outline }>;
 };
 
 export type Outline = Array<{
@@ -49,31 +48,15 @@ const Docs: FC<DocsProps> = ({ locales }) => {
 
   const { pathname } = useRouter();
 
-  const [outline, setOutline] = useState<Outline>([]);
-
   const titleMap = routeMap[pathname];
 
   const title = titleMap[language] || titleMap[defaultLanguage];
 
   const docsInfo = locales[language] || locales[defaultLanguage];
 
-  const { component: Component, outlinePromise } = docsInfo;
+  const { component: Component, outline } = docsInfo;
 
   const isDebugMode = useIsDebugMode();
-
-  const updateOutline = useConstantFn(async (p: Promise<Outline>) => {
-    setOutline([]);
-    const ret = await p;
-    if (p !== docsInfo.outlinePromise) {
-      return;
-    }
-    const data = ret.length === 1 ? ret[0].children : ret;
-    setOutline(data);
-  });
-
-  useEffect(() => {
-    updateOutline(outlinePromise).catch(console.error);
-  }, [updateOutline, outlinePromise]);
 
   const Instance = Component ? <Component /> : null;
 

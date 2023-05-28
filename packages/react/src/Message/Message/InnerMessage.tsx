@@ -17,7 +17,7 @@ import { useTheme } from '../../ThemeProvider';
 import Transition from '../../Transition';
 
 export type InnerMessageProps = NoticationProps<
-  HTMLAttributes<HTMLDivElement> & {
+  Omit<HTMLAttributes<HTMLDivElement>, 'content'> & {
     content: ReactNode;
     closeIcon?: ReactNode;
     duration?: number;

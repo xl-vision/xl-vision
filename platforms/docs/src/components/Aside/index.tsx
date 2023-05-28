@@ -1,6 +1,6 @@
 import { styled } from '@xl-vision/react';
 import clsx from 'clsx';
-import Link, { LinkProps } from 'next/link';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { FC, Children, cloneElement, HTMLAttributes, forwardRef, useMemo } from 'react';
 import route, { BaseRoute, Route, RouteType } from '../../routes';
@@ -31,30 +31,7 @@ const NodeWrapper = styled('ul')(() => {
   };
 });
 
-const ActiveLink: FC<LinkProps> = (props) => {
-  const { children, href, ...others } = props;
-  const { pathname } = useRouter();
-
-  const child: any = Children.only(children);
-
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
-  const classes = clsx(child.className, {
-    active: (href as string).replace(/\/$/, '') === pathname,
-  });
-
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-  const newChild = cloneElement(child, {
-    className: classes,
-  });
-
-  return (
-    <Link {...others} href={href}>
-      {newChild}
-    </Link>
-  );
-};
-
-const A = styled('a')(({ theme }) => {
+const StyledLink = styled(Link)(({ theme }) => {
   const { themes, text } = theme.colors;
   return {
     display: 'inline-block',
@@ -70,6 +47,31 @@ const A = styled('a')(({ theme }) => {
     },
   };
 });
+
+const ActiveLink: FC<Record<any, any>> = (props) => {
+  const { children, href, ...others } = props;
+  const { pathname } = useRouter();
+
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const child = Children.only(children);
+
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
+  const classes = clsx(child.className, {
+    active: (href as string).replace(/\/$/, '') === pathname,
+  });
+
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+  const newChild = cloneElement(child, {
+    className: classes,
+  });
+
+  return (
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    <StyledLink {...others} href={href}>
+      {newChild}
+    </StyledLink>
+  );
+};
 
 const padding = 12;
 
@@ -107,9 +109,7 @@ const traverseRoutes = (
 
       el = (
         <ActiveLink href={fullPath} passHref={true}>
-          <A>
-            <LeftNode style={{ paddingLeft: padding * level }}>{title}</LeftNode>
-          </A>
+          <LeftNode style={{ paddingLeft: padding * level }}>{title}</LeftNode>
         </ActiveLink>
       );
     }

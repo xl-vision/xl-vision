@@ -2,9 +2,14 @@
 import { render } from '@testing-library/react';
 import { noop } from '@xl-vision/utils';
 import * as utils from '@xl-vision/utils';
+import { triggerTransitionEnd } from 'test/utils';
 import TransitionGroup from '..';
 
 describe('TransitionGroup', () => {
+  beforeAll(() => {
+    jest.useFakeTimers();
+  });
+
   it('Check if the order is correct', () => {
     const prevArr = [1, 2, 3, 4, 5];
     const nextArr = [2, 1, 4, 6, 5];
@@ -24,7 +29,7 @@ describe('TransitionGroup', () => {
     );
   });
 
-  it('test hooks', () => {
+  it('test hooks', async () => {
     jest.spyOn(utils, 'nextFrame').mockImplementation((fn: () => void) => {
       fn();
       return noop;
@@ -54,14 +59,26 @@ describe('TransitionGroup', () => {
       );
     };
     const { rerender } = render(<Comp arr={prevArr} />);
+
+    await triggerTransitionEnd();
+
     expect(fn.mock.calls.length).toBe(0);
 
     rerender(<Comp arr={nextArr} />);
+
+    await triggerTransitionEnd();
+
     expect(fn.mock.calls.length).toBe(6);
     rerender(<Comp arr={nextArr} />);
+
+    await triggerTransitionEnd();
+
     expect(fn.mock.calls.length).toBe(6);
 
     rerender(<Comp arr={nextArr2} />);
+
+    await triggerTransitionEnd();
+
     expect(fn.mock.calls.length).toBe(6 * 2);
   });
 });

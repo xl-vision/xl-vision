@@ -51,6 +51,7 @@ const usePopper = ({ placement, mode = 'fixed', middlewares }: PopperOptions) =>
     },
     [update],
   );
+
   const setPopper: RefCallback<Element> = useCallback(
     (el) => {
       popperRef.current = el;

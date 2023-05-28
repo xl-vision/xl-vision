@@ -3,6 +3,7 @@ import { getComputedStyle, isProduction, raf } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { HTMLAttributes, FC, useState, useRef, useEffect } from 'react';
+import { flushSync } from 'react-dom';
 import ResizeObserver from '../ResizeObserver';
 import { useTheme } from '../ThemeProvider';
 
@@ -46,7 +47,9 @@ const TextareaSuffix: FC<TextareaSuffixProps> = (props) => {
         totalHeight += (child as HTMLElement).clientHeight;
       });
 
-      setOverflow(height < totalHeight + paddingTop + paddingBottom);
+      flushSync(() => {
+        setOverflow(height < totalHeight + paddingTop + paddingBottom);
+      });
     });
   });
 

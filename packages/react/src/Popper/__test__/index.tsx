@@ -1,5 +1,6 @@
 import { act, fireEvent, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { triggerTransitionEnd } from 'test/utils';
 import { Popper } from '@xl-vision/react';
 
 describe('Popper', () => {
@@ -155,7 +156,7 @@ describe('Popper', () => {
     expect(handleOpenChange).toHaveBeenLastCalledWith(false);
     expect(document.body).toMatchSnapshot();
   });
-  it('test trigger custom', () => {
+  it('test trigger custom', async () => {
     // 外部修改不触发onOpenChange
     const handleOpenChange = jest.fn();
 
@@ -177,9 +178,7 @@ describe('Popper', () => {
 
     fireEvent.mouseEnter(btn);
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     expect(handleOpenChange.mock.calls.length).toBe(0);
     expect(document.querySelector('#popup')).toBeNull();
@@ -196,9 +195,7 @@ describe('Popper', () => {
       </Popper>,
     );
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     expect(handleOpenChange.mock.calls.length).toBe(0);
     let el = document.querySelector('#popup')!.parentElement!;
@@ -217,16 +214,17 @@ describe('Popper', () => {
       </Popper>,
     );
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     expect(handleOpenChange.mock.calls.length).toBe(0);
+
     el = document.querySelector('#popup')!.parentElement!;
+
     expect(el).not.toBeNull();
+
     expect(el.style.display).toBe('none');
   });
-  it('test disablePopupEnter', () => {
+  it('test disablePopupEnter', async () => {
     const handleOpenChange = jest.fn();
     const { container, rerender } = render(
       <Popper
@@ -244,9 +242,7 @@ describe('Popper', () => {
 
     fireEvent.mouseEnter(btn);
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     expect(handleOpenChange).toHaveBeenLastCalledWith(true);
 
@@ -256,17 +252,13 @@ describe('Popper', () => {
 
     fireEvent.mouseEnter(popup);
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     expect(handleOpenChange).toHaveBeenLastCalledWith(true);
 
     fireEvent.mouseLeave(popup);
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     expect(handleOpenChange).toHaveBeenLastCalledWith(false);
 
@@ -285,18 +277,15 @@ describe('Popper', () => {
 
     fireEvent.mouseEnter(btn);
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     expect(handleOpenChange).toHaveBeenLastCalledWith(true);
 
     fireEvent.mouseLeave(btn);
     fireEvent.mouseEnter(popup);
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
+
     expect(handleOpenChange).toHaveBeenLastCalledWith(false);
   });
 
@@ -333,7 +322,7 @@ describe('Popper', () => {
     expect(el).not.toBe(null);
   });
 
-  it('test unmountOnHide', () => {
+  it('test unmountOnHide', async () => {
     const { container } = render(
       <Popper
         id='popup'
@@ -346,9 +335,7 @@ describe('Popper', () => {
       </Popper>,
     );
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     let el = document.querySelector('#popup');
 
@@ -358,15 +345,15 @@ describe('Popper', () => {
 
     fireEvent.mouseEnter(btn);
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
+
+    el = document.querySelector('#popup');
+    expect(el).not.toBe(null);
 
     fireEvent.mouseLeave(btn);
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
+    jest.runAllTimers();
 
     el = document.querySelector('#popup');
     expect(el).toBe(null);

@@ -1,5 +1,6 @@
-import { act, fireEvent, render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { useRef, useMemo } from 'react';
+import { triggerTransitionEnd } from 'test/utils';
 import { Ripple, RippleRef } from '@xl-vision/react';
 
 const Demo = ({ exitAfterEnter }: { exitAfterEnter?: boolean }) => {
@@ -37,30 +38,27 @@ describe('Ripple', () => {
     jest.useFakeTimers();
   });
 
-  it('test render', () => {
+  it('test render', async () => {
     const { container } = render(
       <div>
         click me
         <Ripple transitionClassName='ripple' />
       </div>,
     );
-    act(() => {
-      jest.runAllTimers();
-    });
+
+    await triggerTransitionEnd();
 
     expect(container).toMatchSnapshot();
   });
 
-  it('test event', () => {
+  it('test event', async () => {
     const { container } = render(<Demo />);
 
     const div = container.querySelector('.box')!;
 
     fireEvent.mouseDown(div);
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     const doms = container.querySelectorAll<HTMLElement>('.xl-ripple__inner');
     expect(doms.length).toBe(1);
@@ -68,17 +66,13 @@ describe('Ripple', () => {
 
     fireEvent.mouseUp(div);
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     expect(container.querySelectorAll<HTMLElement>('.xl-ripple__inner').length).toBe(0);
 
     fireEvent.blur(div);
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     expect(container.querySelectorAll<HTMLElement>('.xl-ripple__inner').length).toBe(0);
   });

@@ -1,5 +1,6 @@
 import { act, fireEvent, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { awaitPromise } from 'test/utils';
 import { Dropdown } from '@xl-vision/react';
 
 const menus = (
@@ -31,7 +32,8 @@ describe('Dropdown', () => {
       </Dropdown>,
     );
 
-    act(() => {
+    await act(async () => {
+      await awaitPromise();
       jest.runAllTimers();
     });
 
@@ -41,9 +43,12 @@ describe('Dropdown', () => {
 
     const btn = container.querySelector('button#btn')!;
 
-    await user.click(btn);
+    await act(async () => {
+      await user.click(btn);
+    });
 
-    act(() => {
+    await act(async () => {
+      await awaitPromise();
       jest.runAllTimers();
     });
 
@@ -52,9 +57,12 @@ describe('Dropdown', () => {
       '',
     );
 
-    (document.querySelector('li#item1') as HTMLLIElement).click();
-
     act(() => {
+      (document.querySelector('li#item1') as HTMLLIElement).click();
+    });
+
+    await act(async () => {
+      await awaitPromise();
       jest.runAllTimers();
     });
 
@@ -64,7 +72,8 @@ describe('Dropdown', () => {
 
     fireEvent.mouseEnter(btn);
 
-    act(() => {
+    await act(async () => {
+      await awaitPromise();
       jest.runAllTimers();
     });
 
@@ -72,11 +81,12 @@ describe('Dropdown', () => {
 
     const li = document.querySelector('li#item2')!;
 
-    await user.click(li);
-
-    act(() => {
+    await act(async () => {
+      await user.click(li);
+      await awaitPromise();
       jest.runAllTimers();
     });
+
     expect((document.querySelector('#popup')!.firstChild as HTMLDivElement).style.display).toBe('');
   });
 });

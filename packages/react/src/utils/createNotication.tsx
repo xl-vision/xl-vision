@@ -1,14 +1,14 @@
 import {
   NoticationContainerType,
   NoticationHookReturnType,
+  NoticationMethods,
   NoticationOptions,
   NoticationProps,
   useNotication,
 } from '@xl-vision/hooks';
-
 import { isProduction } from '@xl-vision/utils';
 import { ComponentType, createRef, forwardRef, useImperativeHandle, useState } from 'react';
-import ReactDOM from 'react-dom';
+import { Root, createRoot } from 'react-dom/client';
 
 type MethodNoticationRef<P, NCP> = {
   instance: ReturnType<typeof useNotication<P, NCP>>[0];
@@ -50,18 +50,20 @@ const createNotication = <P, NCP>(
   const noticationRef = createRef<MethodNoticationRef<P, NCP>>();
 
   let rootEl: HTMLElement | undefined;
+  let root: Root | undefined;
   let count = 0;
 
   const destroyDOM = () => {
-    if (!rootEl) {
-      return;
+    if (root) {
+      root.unmount();
+      root = undefined;
     }
-    const unmountResult = ReactDOM.unmountComponentAtNode(rootEl);
-    if (unmountResult && rootEl.parentNode) {
-      rootEl.parentNode.removeChild(rootEl);
+    if (rootEl) {
+      if (rootEl.parentNode) {
+        rootEl.parentNode.removeChild(rootEl);
+      }
+      rootEl = undefined;
     }
-
-    rootEl = undefined;
   };
 
   const open = (props: NoticationProps<P>): NoticationHookReturnType<P> => {
@@ -71,45 +73,53 @@ const createNotication = <P, NCP>(
 
     let hookMethods: NoticationHookReturnType<P> | undefined;
 
-    let promiseResolve: () => void | undefined;
+    let promiseResolve: (props: NoticationMethods<P>) => void | undefined;
+
+    let promise = Promise.resolve();
 
     if (!rootEl) {
       const div = document.createElement('div');
       document.body.appendChild(div);
       rootEl = div;
 
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      Promise.resolve().then(() => {
-        ReactDOM.render(<MethodRefNotication ref={noticationRef} />, div);
+      root = createRoot(div);
+
+      promise = promise.then(() => {
+        root?.render(<MethodRefNotication ref={noticationRef} />);
       });
     }
 
     count++;
 
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    Promise.resolve().then(() => {
-      hookMethods = noticationRef.current?.instance.open({
-        ...currentProps,
-        onAfterClosed() {
-          count--;
-          if (count <= 0) {
-            destroyDOM();
-          }
-          currentProps.onAfterClosed?.();
-          promiseResolve?.();
-        },
-      });
-    });
+    promise
+      .then(() => {
+        hookMethods = noticationRef.current?.instance.open({
+          ...currentProps,
+          onAfterClosed() {
+            count--;
+            if (count <= 0) {
+              destroyDOM();
+            }
+            currentProps.onAfterClosed?.();
+            promiseResolve?.({
+              update: (updateProps) => hookMethods?.update(updateProps),
+              destroy: () => hookMethods?.destroy(),
+              isDestroyed: () => hookMethods?.isDestroyed() || false,
+            });
+          },
+        });
+      })
+      .catch(console.error);
 
-    const promise = new Promise<void>((resolve) => {
+    const retPromise = new Promise<NoticationMethods<P>>((resolve) => {
       promiseResolve = resolve;
     }) as NoticationHookReturnType<P>;
 
-    promise.update = (updateProps) => hookMethods?.update(updateProps);
-    promise.destroy = () => hookMethods?.destroy();
-    promise.isDestroyed = () => hookMethods?.isDestroyed() || false;
+    retPromise.update = (updateProps) => hookMethods?.update(updateProps);
+    retPromise.destroy = () => hookMethods?.destroy();
+    retPromise.isDestroyed = () => hookMethods?.isDestroyed() || false;
 
-    return promise;
+    return retPromise;
   };
 
   const setGlobalConfig = (config: Partial<NoticationOptions<NCP>>) => {

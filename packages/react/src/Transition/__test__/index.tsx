@@ -3,6 +3,7 @@ import { act, render, screen } from '@testing-library/react';
 import { CssTransitionClassNameRecord } from '@xl-vision/hooks';
 import { noop } from '@xl-vision/utils';
 import * as utils from '@xl-vision/utils';
+import { awaitPromise } from 'test/utils';
 import { Transition } from '@xl-vision/react';
 
 const classnameMap: CssTransitionClassNameRecord = {
@@ -32,7 +33,7 @@ describe('Transition', () => {
     call.mockClear();
   });
 
-  it('Test lifecycle when transitionOnFirst is true and in is true', () => {
+  it('Test lifecycle when transitionOnFirst is true and in is true', async () => {
     const Demo = ({ in: inProp }: { in: boolean }) => {
       return (
         <Transition
@@ -74,6 +75,8 @@ describe('Transition', () => {
 
     const { rerender } = render(<Demo in={true} />);
 
+    await awaitPromise();
+
     let nextFrameCalls = nextFrameSpy.mock.calls;
 
     expect(nextFrameCalls.length).toBe(1);
@@ -98,6 +101,8 @@ describe('Transition', () => {
     onTransitionEndSpy.mockClear();
 
     rerender(<Demo in={false} />);
+
+    await awaitPromise();
 
     nextFrameCalls = nextFrameSpy.mock.calls;
 
@@ -124,6 +129,8 @@ describe('Transition', () => {
 
     rerender(<Demo in={true} />);
 
+    await awaitPromise();
+
     nextFrameCalls = nextFrameSpy.mock.calls;
 
     expect(nextFrameCalls.length).toBe(1);
@@ -146,7 +153,7 @@ describe('Transition', () => {
     call.mockClear();
   });
 
-  it('Test lifecycle when transitionOnFirst is true and in is false', () => {
+  it('Test lifecycle when transitionOnFirst is true and in is false', async () => {
     const Demo = ({ in: inProp }: { in: boolean }) => {
       return (
         <Transition
@@ -188,6 +195,8 @@ describe('Transition', () => {
     };
 
     const { rerender } = render(<Demo in={false} />);
+
+    await awaitPromise();
 
     let nextFrameCalls = nextFrameSpy.mock.calls;
 
@@ -215,6 +224,8 @@ describe('Transition', () => {
 
     rerender(<Demo in={true} />);
 
+    await awaitPromise();
+
     nextFrameCalls = nextFrameSpy.mock.calls;
 
     expect(nextFrameCalls.length).toBe(1);
@@ -239,6 +250,8 @@ describe('Transition', () => {
     onTransitionEndSpy.mockClear();
 
     rerender(<Demo in={false} />);
+
+    await awaitPromise();
 
     nextFrameCalls = nextFrameSpy.mock.calls;
 
@@ -266,6 +279,8 @@ describe('Transition', () => {
 
     rerender(<Demo in={true} />);
 
+    await awaitPromise();
+
     nextFrameCalls = nextFrameSpy.mock.calls;
 
     expect(nextFrameCalls.length).toBe(1);
@@ -287,7 +302,7 @@ describe('Transition', () => {
     call.mockClear();
   });
 
-  it('Test lifycycle when in is false and transitionOnFirst is not set', () => {
+  it('Test lifycycle when in is false and transitionOnFirst is not set', async () => {
     const Demo = ({ in: inProp }: { in: boolean }) => {
       return (
         <Transition
@@ -328,6 +343,8 @@ describe('Transition', () => {
     };
     const { rerender } = render(<Demo in={false} />);
 
+    await awaitPromise();
+
     let nextFrameCalls = nextFrameSpy.mock.calls;
     expect(nextFrameCalls.length).toBe(0);
 
@@ -337,6 +354,8 @@ describe('Transition', () => {
     expect(call.mock.calls.length).toBe(0);
 
     rerender(<Demo in={true} />);
+
+    await awaitPromise();
 
     nextFrameCalls = nextFrameSpy.mock.calls;
 
@@ -362,6 +381,8 @@ describe('Transition', () => {
     onTransitionEndSpy.mockClear();
 
     rerender(<Demo in={false} />);
+
+    await awaitPromise();
 
     nextFrameCalls = nextFrameSpy.mock.calls;
 
@@ -389,6 +410,8 @@ describe('Transition', () => {
 
     rerender(<Demo in={true} />);
 
+    await awaitPromise();
+
     nextFrameCalls = nextFrameSpy.mock.calls;
 
     expect(nextFrameCalls.length).toBe(1);
@@ -410,7 +433,7 @@ describe('Transition', () => {
     expect(call.mock.calls[2][0]).toBe('afterEnter');
   });
 
-  it('Test lifecycle when in is true and transitionOnFirst is not set', () => {
+  it('Test lifecycle when in is true and transitionOnFirst is not set', async () => {
     const Demo = ({ in: inProp }: { in: boolean }) => {
       return (
         <Transition
@@ -449,6 +472,9 @@ describe('Transition', () => {
         </Transition>
       );
     };
+
+    await awaitPromise();
+
     const { rerender } = render(<Demo in={true} />);
 
     let nextFrameCalls = nextFrameSpy.mock.calls;
@@ -460,6 +486,8 @@ describe('Transition', () => {
     expect(call.mock.calls.length).toBe(0);
 
     rerender(<Demo in={false} />);
+
+    await awaitPromise();
 
     nextFrameCalls = nextFrameSpy.mock.calls;
 
@@ -486,6 +514,8 @@ describe('Transition', () => {
 
     rerender(<Demo in={true} />);
 
+    await awaitPromise();
+
     nextFrameCalls = nextFrameSpy.mock.calls;
 
     expect(nextFrameCalls.length).toBe(1);
@@ -507,7 +537,7 @@ describe('Transition', () => {
     expect(call.mock.calls[2][0]).toBe('afterEnter');
   });
 
-  it('Test lifecycle include cancel event', () => {
+  it('Test lifecycle include cancel event', async () => {
     const Demo = ({ in: inProp }: { in: boolean }) => {
       return (
         <Transition
@@ -550,6 +580,8 @@ describe('Transition', () => {
 
     const { rerender } = render(<Demo in={true} />);
 
+    await awaitPromise();
+
     let nextFrameCalls = nextFrameSpy.mock.calls;
     expect(nextFrameCalls.length).toBe(1);
 
@@ -569,6 +601,8 @@ describe('Transition', () => {
     onTransitionEndSpy.mockClear();
 
     rerender(<Demo in={false} />);
+
+    await awaitPromise();
 
     nextFrameCalls = nextFrameSpy.mock.calls;
     expect(nextFrameCalls.length).toBe(1);
@@ -592,6 +626,8 @@ describe('Transition', () => {
 
     rerender(<Demo in={true} />);
 
+    await awaitPromise();
+
     nextFrameCalls = nextFrameSpy.mock.calls;
     expect(nextFrameCalls.length).toBe(1);
 
@@ -613,6 +649,8 @@ describe('Transition', () => {
 
     rerender(<Demo in={false} />);
 
+    await awaitPromise();
+
     nextFrameCalls = nextFrameSpy.mock.calls;
     expect(nextFrameCalls.length).toBe(1);
 
@@ -633,12 +671,14 @@ describe('Transition', () => {
     expect(call.mock.calls[3][0]).toBe('afterExit');
   });
 
-  it('Test contains className call timing', () => {
+  it('Test contains className call timing', async () => {
     const { rerender } = render(
       <Transition in={true} transitionClassName='test' transitionOnFirst={true}>
         <div data-testid='demo' />
       </Transition>,
     );
+
+    await awaitPromise();
 
     const div = screen.getByTestId('demo');
 
@@ -676,6 +716,8 @@ describe('Transition', () => {
       </Transition>,
     );
 
+    await awaitPromise();
+
     // nextFrame未执行
     expect(div.classList).toContain('test-exit-from');
     expect(div.classList).toContain('test-exit-active');
@@ -709,6 +751,9 @@ describe('Transition', () => {
         <div />
       </Transition>,
     );
+
+    await awaitPromise();
+
     // nextFrame未执行
     expect(div.classList).toContain('test-enter-from');
     expect(div.classList).toContain('test-enter-active');
@@ -738,7 +783,7 @@ describe('Transition', () => {
     nextFrameSpy.mockClear();
   });
 
-  it('Test timeout call timing', () => {
+  it('Test timeout call timing', async () => {
     onTransitionEndSpy.mockImplementation((_, cb) => {
       cb();
       return noop;
@@ -750,6 +795,8 @@ describe('Transition', () => {
         <div data-testid='demo' />
       </Transition>,
     );
+
+    await awaitPromise();
 
     const div = screen.getByTestId('demo');
 
@@ -777,6 +824,8 @@ describe('Transition', () => {
       </Transition>,
     );
 
+    await awaitPromise();
+
     expect(div.classList).toContain('test-exit-from');
     expect(div.classList).toContain('test-exit-active');
 
@@ -800,6 +849,8 @@ describe('Transition', () => {
         <div />
       </Transition>,
     );
+
+    await awaitPromise();
 
     expect(div.classList).toContain('test-enter-from');
     expect(div.classList).toContain('test-enter-active');

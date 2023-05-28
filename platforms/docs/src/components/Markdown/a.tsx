@@ -1,8 +1,7 @@
 import { styled } from '@xl-vision/react';
 import NextLink from 'next/link';
-import { FC, AnchorHTMLAttributes } from 'react';
 
-const LinkWrapper = styled('a')(
+const StyledLink = styled(NextLink)(
   ({ theme }) => `
   color: ${theme.colors.themes.primary.foreground.active};
   text-decoration: none;
@@ -13,20 +12,16 @@ const LinkWrapper = styled('a')(
 `,
 );
 
-const Link: FC<AnchorHTMLAttributes<HTMLAnchorElement>> = (props) => {
+const Link: typeof StyledLink = (props) => {
   const { href, ...others } = props;
 
-  if (href) {
+  if (typeof href === 'string') {
     if (/^ *\//.exec(href)) {
-      return (
-        <NextLink href={href} passHref={true}>
-          <LinkWrapper {...others} />
-        </NextLink>
-      );
+      return <StyledLink {...others} href={href} />;
     }
   }
 
-  return <LinkWrapper {...others} href={href} target='_blank' />;
+  return <StyledLink {...others} href={href} target='_blank' />;
 };
 
 export default Link;

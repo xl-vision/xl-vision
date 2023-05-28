@@ -1,5 +1,5 @@
 import { Button, Portal, styled } from '@xl-vision/react';
-import { FC, useCallback, useEffect } from 'react';
+import { FC, useCallback, useEffect, useRef } from 'react';
 import {
   NoticationContainerProps,
   NoticationProps,
@@ -87,13 +87,12 @@ const MessageContainer: FC<ContainerProps> = ({ children }) => {
   );
 };
 
-let i = 0;
-
 const Demo = () => {
   const [message, holder] = useNotication(Message, MessageContainer, { maxCount: 5 });
+  const countRef = useRef(0);
 
   const handleClick = useCallback(() => {
-    message.open({ content: `message ${i++}` });
+    message.open({ content: `message ${countRef.current++}` });
   }, [message]);
 
   return (

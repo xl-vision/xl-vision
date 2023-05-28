@@ -17,6 +17,7 @@ import {
   useMemo,
   CSSProperties,
 } from 'react';
+import { flushSync } from 'react-dom';
 import AvatarContext from './AvatarContext';
 import ResizeObserver from '../ResizeObserver';
 import { styled } from '../styles';
@@ -141,13 +142,19 @@ const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
       return;
     }
 
-    setScale(Math.min(scaleX, scaleY));
+    flushSync(() => {
+      setScale(Math.min(scaleX, scaleY));
+    });
   });
 
   const childRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    handleResize();
+    Promise.resolve()
+      .then(() => {
+        handleResize();
+      })
+      .catch(console.error);
   }, [gap, handleResize]);
 
   const handleImgError = useConstantFn(() => {

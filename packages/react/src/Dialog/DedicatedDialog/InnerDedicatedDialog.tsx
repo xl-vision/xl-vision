@@ -8,7 +8,7 @@ import { styled } from '../../styles';
 import { useTheme } from '../../ThemeProvider';
 import Dialog, { DialogProps } from '../Dialog';
 
-export interface InnerDedicatedDialogProps extends Omit<DialogProps, 'children'> {
+export interface InnerDedicatedDialogProps extends Omit<DialogProps, 'children' | 'content'> {
   content?: ReactNode;
   icon?: ReactNode;
 }

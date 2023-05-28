@@ -1,5 +1,6 @@
 import { act, render, screen } from '@testing-library/react';
 import * as utils from '@xl-vision/utils';
+import { awaitPromise } from 'test/utils';
 import { CollapseTransition } from '@xl-vision/react';
 
 const temp = window.getComputedStyle;
@@ -22,7 +23,7 @@ describe('CollapseTransition', () => {
     onTransitionEnd.mockClear();
   });
 
-  it('Test expand state', () => {
+  it('Test expand state', async () => {
     const { rerender } = render(
       <CollapseTransition in={false}>
         <div data-testid='demo' />
@@ -36,6 +37,8 @@ describe('CollapseTransition', () => {
         <div data-testid='demo' />
       </CollapseTransition>,
     );
+
+    await awaitPromise();
 
     const el = screen.getByTestId('demo');
 
@@ -53,7 +56,7 @@ describe('CollapseTransition', () => {
     expect(el.style.height).toEqual('');
   });
 
-  it('Test horizontal expand state', () => {
+  it('Test horizontal expand state', async () => {
     const { rerender } = render(
       <CollapseTransition horizontal={true} in={false}>
         <div data-testid='demo' />
@@ -67,6 +70,8 @@ describe('CollapseTransition', () => {
         <div data-testid='demo' />
       </CollapseTransition>,
     );
+
+    await awaitPromise();
 
     const el = screen.getByTestId('demo');
 

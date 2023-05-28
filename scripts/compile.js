@@ -4,6 +4,7 @@ const babel = require('gulp-babel');
 const ts = require('gulp-typescript');
 const argv = require('minimist')(process.argv.slice(2));
 const path = require('path');
+const typescript = require('typescript');
 const getBabelConfig = require('./getBabelConfig');
 
 const defaultReporter = ts.reporter.defaultReporter();
@@ -24,7 +25,9 @@ async function run() {
 
   const tsconfigPath = path.resolve(basePath, 'tsconfig.json');
 
-  const tsProject = ts.createProject(tsconfigPath);
+  const tsProject = ts.createProject(tsconfigPath, {
+    typescript,
+  });
 
   const paths = ['src/**/*.ts?(x)', '!**/__doc__/**', '!**/__test__/**'];
 

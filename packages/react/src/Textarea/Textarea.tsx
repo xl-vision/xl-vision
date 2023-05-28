@@ -1,7 +1,7 @@
 import { useConstantFn, useForkRef, usePrevious, useValueChange } from '@xl-vision/hooks';
 import { CloseCircleFilled } from '@xl-vision/icons';
 import { CSSObject } from '@xl-vision/styled-engine';
-import { isObject, isProduction } from '@xl-vision/utils';
+import { isObject, isProduction, noop } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
@@ -15,6 +15,7 @@ import {
   FocusEvent,
   CSSProperties,
 } from 'react';
+import { flushSync } from 'react-dom';
 import calculateNodeHeight from './calculateNodeHeight';
 import TextareaSuffix from './TextareaSuffix';
 import useInput from '../hooks/useInput';
@@ -226,8 +227,14 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, ref) => 
     const minRows = isObject(autoHeight) ? autoHeight.minRows : null;
     const maxRows = isObject(autoHeight) ? autoHeight.maxRows : null;
 
-    const styles = calculateNodeHeight(textarea, minRows, maxRows);
-    setTextAreaStyle(styles);
+    Promise.resolve()
+      .then(() => {
+        const styles = calculateNodeHeight(textarea, minRows, maxRows);
+        flushSync(() => {
+          setTextAreaStyle(styles);
+        });
+      })
+      .catch(noop);
   });
 
   useEffect(() => {
@@ -334,7 +341,7 @@ if (!isProduction) {
   Textarea.displayName = displayName;
   Textarea.propTypes = {
     allowClear: PropTypes.bool,
-    // TODO [2023-05-01]: types fix
+    // TODO [2023-07-01]: types fix
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     autoHeight: PropTypes.oneOfType([

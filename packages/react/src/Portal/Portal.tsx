@@ -1,7 +1,7 @@
 import { isProduction, isServer } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { ReactNode, FC } from 'react';
-import ReactDOM from 'react-dom';
+import { createPortal } from 'react-dom';
 import getContainer, { ContainerReturnType, ContainerType } from '../utils/getContainer';
 
 export type {
@@ -25,17 +25,14 @@ export interface PortalProp {
 const Portal: FC<PortalProp> = (props) => {
   const { children, container: containerProp } = props;
 
-  if (isServer) {
-    return null;
+  if (!isServer) {
+    const container = getContainer(containerProp);
+    if (container) {
+      return createPortal(children, container);
+    }
   }
 
-  const container = getContainer(containerProp);
-
-  if (!container) {
-    return <>{children}</>;
-  }
-
-  return ReactDOM.createPortal(children, container);
+  return <>{children}</>;
 };
 
 if (!isProduction) {
