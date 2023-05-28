@@ -8,7 +8,7 @@ import { useTheme } from '../ThemeProvider';
 
 export type TooltipChildrenProps = PopperChildrenProps & {};
 
-export interface TooltipProps extends Omit<PopperProps, 'popup' | 'arrow'> {
+export interface TooltipProps extends Omit<PopperProps, 'popup' | 'arrow' | 'content'> {
   content: ReactNode;
   bgColor?: string;
   hideArrow?: boolean;
