@@ -1,9 +1,13 @@
 import { act, render, screen } from '@testing-library/react';
 import { FC } from 'react';
-import { awaitPromise } from 'test/utils';
+import { triggerTransitionEnd } from 'test/utils';
 import useTransition from '..';
 
 describe('useTransition', () => {
+  beforeAll(() => {
+    jest.useFakeTimers();
+  });
+
   it('Test how to call lifecycle function', async () => {
     const fn = jest.fn();
 
@@ -37,7 +41,7 @@ describe('useTransition', () => {
 
     const { rerender } = render(<Demo in={false} />);
 
-    await awaitPromise();
+    await triggerTransitionEnd();
 
     const el = screen.getByTestId('demo');
 
@@ -45,7 +49,7 @@ describe('useTransition', () => {
 
     rerender(<Demo in={true} />);
 
-    await awaitPromise();
+    await triggerTransitionEnd();
 
     expect(fn.mock.calls.length).toEqual(3);
     expect(fn.mock.calls[0]).toEqual([el, 'onEnter', false]);
@@ -56,7 +60,7 @@ describe('useTransition', () => {
 
     rerender(<Demo in={false} />);
 
-    await awaitPromise();
+    await triggerTransitionEnd();
 
     expect(fn.mock.calls.length).toEqual(3);
     expect(fn.mock.calls[0]).toEqual([el, 'onExit', false]);
@@ -98,7 +102,7 @@ describe('useTransition', () => {
 
     const { rerender } = render(<Demo in={true} />);
 
-    await awaitPromise();
+    await triggerTransitionEnd();
 
     const el = screen.getByTestId('demo');
 
@@ -111,7 +115,7 @@ describe('useTransition', () => {
 
     rerender(<Demo in={false} />);
 
-    await awaitPromise();
+    await triggerTransitionEnd();
 
     expect(fn.mock.calls.length).toEqual(3);
     expect(fn.mock.calls[0]).toEqual([el, 'onExit', false]);
@@ -153,7 +157,7 @@ describe('useTransition', () => {
 
     const { rerender } = render(<Demo in={false} />);
 
-    await awaitPromise();
+    await triggerTransitionEnd();
 
     const el = screen.getByTestId('demo');
 
@@ -166,7 +170,7 @@ describe('useTransition', () => {
 
     rerender(<Demo in={true} />);
 
-    await awaitPromise();
+    await triggerTransitionEnd();
 
     expect(fn.mock.calls.length).toEqual(3);
     expect(fn.mock.calls[0]).toEqual([el, 'onEnter', false]);
@@ -221,7 +225,7 @@ describe('useTransition', () => {
 
     rerender(<Demo in={true} />);
 
-    await awaitPromise();
+    await triggerTransitionEnd();
 
     expect(fn.mock.calls.length).toEqual(2);
     expect(fn.mock.calls[0]).toEqual([el, 'onEnter', false]);
@@ -234,7 +238,7 @@ describe('useTransition', () => {
 
     rerender(<Demo in={false} />);
 
-    await awaitPromise();
+    await triggerTransitionEnd();
 
     expect(fn.mock.calls.length).toEqual(3);
     expect(fn.mock.calls[0]).toEqual([el, 'onEnterCancelled', false]);
@@ -248,7 +252,7 @@ describe('useTransition', () => {
     fn.mockClear();
 
     rerender(<Demo in={true} />);
-    await awaitPromise();
+    await triggerTransitionEnd();
 
     expect(fn.mock.calls.length).toEqual(3);
     expect(fn.mock.calls[0]).toEqual([el, 'onExitCancelled', false]);
@@ -289,7 +293,7 @@ describe('useTransition', () => {
 
     expect(el.dataset.show).toEqual('true');
 
-    await awaitPromise();
+    await triggerTransitionEnd();
 
     act(() => {
       fn.mock.calls[0][0]();
