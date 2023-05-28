@@ -31,6 +31,7 @@ module.exports = async () => {
       defaultLocale: 'en-US',
     },
     experimental: {
+      typedRoutes: true,
       esmExternals: true,
       externalDir: true,
     },
