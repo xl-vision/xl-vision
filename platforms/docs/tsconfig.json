@@ -1,25 +1,25 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
     "target": "es5",
     "esModuleInterop": true,
     "isolatedModules": true,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "noEmit": true,
     "incremental": true,
     "allowJs": true
   },
   "include": [
+    ".next/types/**/*.ts",
     "next-env.d.ts",
     "typings/**/*.d.ts",
     "src/**/*.ts",
     "src/**/*.tsx"
-, "src/pages/components/TextArea.tsx1"  ],
-  "exclude": [
-    "node_modules"
-  ]
+  ],
+  "exclude": ["node_modules"]
 }
