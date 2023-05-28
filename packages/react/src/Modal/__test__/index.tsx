@@ -1,4 +1,5 @@
-import { act, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import { triggerTransitionEnd } from 'test/utils';
 import { Modal } from '@xl-vision/react';
 
 describe('Modal', () => {
@@ -6,12 +7,14 @@ describe('Modal', () => {
     jest.useFakeTimers();
   });
 
-  it('Test prop open', () => {
+  it('Test prop open', async () => {
     const { rerender } = render(
       <Modal>
         <div>body</div>
       </Modal>,
     );
+
+    await triggerTransitionEnd();
 
     expect(document.querySelector('.xl-modal')).toBe(null);
 
@@ -21,9 +24,7 @@ describe('Modal', () => {
       </Modal>,
     );
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     expect(document.querySelector('.xl-modal')).not.toBe(null);
     expect(document.querySelector<HTMLElement>('.xl-modal__mask')?.style.display).toBe('');
@@ -35,22 +36,22 @@ describe('Modal', () => {
       </Modal>,
     );
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     expect(document.querySelector('.xl-modal')).not.toBe(null);
     expect(document.querySelector<HTMLElement>('.xl-modal__mask')?.style.display).toBe('none');
     expect(document.querySelector<HTMLElement>('.xl-modal__body')?.style.display).toBe('none');
   });
 
-  it('Test onClosed', () => {
+  it('Test onClosed', async () => {
     const fn = jest.fn();
     const { rerender } = render(
       <Modal open={true} onAfterClosed={fn}>
         <div>body</div>
       </Modal>,
     );
+
+    await triggerTransitionEnd();
 
     expect(fn.mock.calls.length).toBe(0);
 
@@ -60,19 +61,19 @@ describe('Modal', () => {
       </Modal>,
     );
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     expect(fn.mock.calls.length).toBe(1);
   });
 
-  it('Test mountOnShow', () => {
+  it('Test mountOnShow', async () => {
     const { rerender } = render(
       <Modal mountOnShow={true}>
         <div>body</div>
       </Modal>,
     );
+
+    await triggerTransitionEnd();
 
     let el = document.querySelector('.xl-modal');
 
@@ -84,26 +85,20 @@ describe('Modal', () => {
       </Modal>,
     );
 
-    act(() => {
-      jest.runAllTimers();
-    });
+    await triggerTransitionEnd();
 
     el = document.querySelector('.xl-modal');
     expect(el).not.toBe(null);
   });
 
-  it('Test unmountOnHide', () => {
+  it('Test unmountOnHide', async () => {
     const { rerender } = render(
       <Modal unmountOnHide={true}>
         <div>body</div>
       </Modal>,
     );
 
-    act(() => {
-      act(() => {
-        jest.runAllTimers();
-      });
-    });
+    await triggerTransitionEnd();
 
     let el = document.querySelector('.xl-modal');
 
@@ -115,11 +110,10 @@ describe('Modal', () => {
       </Modal>,
     );
 
-    act(() => {
-      act(() => {
-        jest.runAllTimers();
-      });
-    });
+    await triggerTransitionEnd();
+
+    el = document.querySelector('.xl-modal');
+    expect(el).not.toBe(null);
 
     rerender(
       <Modal open={false} unmountOnHide={true}>
@@ -127,12 +121,14 @@ describe('Modal', () => {
       </Modal>,
     );
 
+    await triggerTransitionEnd();
+
     el = document.querySelector('.xl-modal');
 
-    expect(el).not.toBe(null);
+    expect(el).toBe(null);
   });
 
-  it('Test container', () => {
+  it('Test container', async () => {
     const div = document.createElement('div');
 
     document.body.appendChild(div);
@@ -142,6 +138,8 @@ describe('Modal', () => {
         <div>body</div>
       </Modal>,
     );
+
+    await triggerTransitionEnd();
 
     expect(div.querySelector('.xl-modal')).not.toBe(null);
   });

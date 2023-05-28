@@ -44364,7 +44364,6 @@ exports[`Demo renders ./packages/react/src/Textarea/__doc__/AutoSize.tsx correct
       <textarea
         class="c2 xl-textarea__inner"
         placeholder="Basic usage"
-        style="height: 0px; min-height: -9007199254740991px; max-height: 9007199254740991px;"
       />
     </span>
     <span
@@ -44374,7 +44373,6 @@ exports[`Demo renders ./packages/react/src/Textarea/__doc__/AutoSize.tsx correct
       <textarea
         class="c2 xl-textarea__inner"
         placeholder="Basic usage"
-        style="height: -60px; min-height: -24px; max-height: -60px;"
       />
     </span>
     <span
@@ -44384,7 +44382,6 @@ exports[`Demo renders ./packages/react/src/Textarea/__doc__/AutoSize.tsx correct
       <textarea
         class="c2 xl-textarea__inner"
         placeholder="Basic usage"
-        style="height: 0px; min-height: -24px; max-height: 9007199254740991px;"
       />
     </span>
   </div>
@@ -44729,7 +44726,6 @@ exports[`Demo renders ./packages/react/src/Textarea/__doc__/DebugSuffix.tsx corr
       <textarea
         class="c2 xl-textarea__inner"
         placeholder="Basic usage"
-        style="height: 0px; min-height: -9007199254740991px; max-height: 9007199254740991px;"
       />
       <span
         class="xl-textarea__suffix"
