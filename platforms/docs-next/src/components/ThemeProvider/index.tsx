@@ -1,3 +1,5 @@
+'use client';
+
 import { useIsomorphicLayoutEffect } from '@xl-vision/hooks';
 import { ThemeInput, ThemeProvider as XlThemeProvider } from '@xl-vision/react';
 import darkTheme from '@xl-vision/react/themes/dark';

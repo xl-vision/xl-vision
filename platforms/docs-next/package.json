@@ -28,12 +28,12 @@
     "js-cookie": "^3.0.1",
     "next": "^13.4.3",
     "prop-types": "^15.8.1",
-    "react-codemirror2": "^7.2.1"
+    "react-codemirror2": "^7.2.1",
+    "styled-components": "^6.0.0-rc.1"
   },
   "peerDependencies": {
     "react": ">=18.2.0",
-    "react-dom": ">=18.2.0",
-    "styled-components": "^5.3.6"
+    "react-dom": ">=18.2.0"
   },
   "devDependencies": {
     "@mapbox/rehype-prism": "^0.8.0",
