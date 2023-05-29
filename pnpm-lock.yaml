@@ -488,7 +488,7 @@ packages:
       '@babel/compat-data': 7.22.3
       '@babel/core': 7.21.8
       '@babel/helper-validator-option': 7.21.0
-      browserslist: 4.21.5
+      browserslist: 4.21.6
       lru-cache: 5.1.1
       semver: 6.3.0
 
@@ -3631,7 +3631,6 @@ packages:
 
   /bindings@1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
-    requiresBuild: true
     dependencies:
       file-uri-to-path: 1.0.0
     dev: true
@@ -3714,15 +3713,15 @@ packages:
       fill-range: 7.0.1
     dev: true
 
-  /browserslist@4.21.5:
-    resolution: {integrity: sha512-tUkiguQGW7S3IhB7N+c2MV/HZPSCPAAiYBZXLsBhFB/PCy6ZKKsZrmBayHV9fdGV/ARIfJ14NkxKzRDjvp7L6w==}
+  /browserslist@4.21.6:
+    resolution: {integrity: sha512-PF07dKGXKR+/bljJzCB6rAYtHEu21TthLxmJagtQizx+rwiqdRDBO5971Xu1N7MgcMLi4+mr4Cnl76x7O3DHtA==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001489
       electron-to-chromium: 1.4.411
       node-releases: 2.0.12
-      update-browserslist-db: 1.0.11(browserslist@4.21.5)
+      update-browserslist-db: 1.0.11(browserslist@4.21.6)
 
   /bs-logger@0.2.6:
     resolution: {integrity: sha512-pd8DCoxmbgc7hyPKOvxtqNcjYoOsABPQdcCUjGp3d42VR2CX1ORhk2A87oqqu5R1kk+76nsxZupkmyd+MVtCog==}
@@ -4334,7 +4333,7 @@ packages:
   /core-js-compat@3.30.2:
     resolution: {integrity: sha512-nriW1nuJjUgvkEjIot1Spwakz52V9YkYHZAQG6A1eCgC8AA1p0zngrQEP9R0+V6hji5XilWKG1Bd0YRppmGimA==}
     dependencies:
-      browserslist: 4.21.5
+      browserslist: 4.21.6
     dev: true
 
   /core-util-is@1.0.3:
@@ -5631,7 +5630,6 @@ packages:
 
   /file-uri-to-path@1.0.0:
     resolution: {integrity: sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==}
-    requiresBuild: true
     dev: true
     optional: true
 
@@ -7716,7 +7714,7 @@ packages:
       http-proxy-agent: 5.0.0
       https-proxy-agent: 5.0.1
       is-potential-custom-element-name: 1.0.1
-      nwsapi: 2.2.4
+      nwsapi: 2.2.5
       parse5: 7.1.2
       saxes: 6.0.0
       symbol-tree: 3.2.4
@@ -8970,7 +8968,6 @@ packages:
 
   /nan@2.17.0:
     resolution: {integrity: sha512-2ZTgtl0nJsO0KQCjEpxcIr5D+Yv90plTitZt9JBfQvVJDS5seMl3FOvsh3+9CoYWXf/1l5OaZzzF6nDm4cagaQ==}
-    requiresBuild: true
     dev: true
     optional: true
 
@@ -9207,8 +9204,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /nwsapi@2.2.4:
-    resolution: {integrity: sha512-NHj4rzRo0tQdijE9ZqAx6kYDcoRwYwSYzCA8MY3JzfxlrvEU0jhnhJT9BhqhJs7I/dKcrDm6TyulaRqZPIhN5g==}
+  /nwsapi@2.2.5:
+    resolution: {integrity: sha512-6xpotnECFy/og7tKSBVmUNft7J3jyXAka4XvG6AUhFWRz+Q/Ljus7znJAA3bxColfQLdS+XsjoodtJfCgeTEFQ==}
     dev: true
 
   /object-assign@4.1.1:
@@ -11646,13 +11643,13 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /update-browserslist-db@1.0.11(browserslist@4.21.5):
+  /update-browserslist-db@1.0.11(browserslist@4.21.6):
     resolution: {integrity: sha512-dCwEFf0/oT85M1fHBg4F0jtLwJrutGoHSQXCh7u4o2t1drG+c0a9Flnqww6XUKSfQMPpJBRjU8d4RXB09qtvaA==}
     hasBin: true
     peerDependencies:
       browserslist: '>= 4.21.0'
     dependencies:
-      browserslist: 4.21.5
+      browserslist: 4.21.6
       escalade: 3.1.1
       picocolors: 1.0.0
 
