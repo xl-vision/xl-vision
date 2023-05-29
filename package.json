@@ -15,6 +15,7 @@
   "scripts": {
     "prepare": "husky install",
     "dev": "cd platforms/docs && npm run dev",
+    "dev-next": "cd platforms/docs-next && npm run dev",
     "docs": "cd platforms/docs && npm run docs",
     "docs:analyze": "cd platforms/docs && npm run analyze",
     "start": "cd platforms/docs && npm run start",

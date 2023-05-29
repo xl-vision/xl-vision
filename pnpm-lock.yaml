@@ -397,6 +397,100 @@ importers:
         specifier: ^3.0.1
         version: 3.0.1
 
+  platforms/docs-next:
+    dependencies:
+      '@babel/standalone':
+        specifier: ^7.21.8
+        version: 7.21.8
+      '@mdx-js/react':
+        specifier: ^2.3.0
+        version: 2.3.0(react@18.2.0)
+      '@xl-vision/hooks':
+        specifier: workspace:^
+        version: link:../../packages/hooks
+      '@xl-vision/icons':
+        specifier: workspace:^
+        version: link:../../packages/icons
+      '@xl-vision/react':
+        specifier: workspace:^
+        version: link:../../packages/react
+      '@xl-vision/styled-engine':
+        specifier: workspace:^
+        version: link:../../packages/styled-engine
+      '@xl-vision/useForm':
+        specifier: workspace:^
+        version: link:../../packages/useForm
+      '@xl-vision/usePopper':
+        specifier: workspace:^
+        version: link:../../packages/usePopper
+      '@xl-vision/utils':
+        specifier: workspace:^
+        version: link:../../packages/utils
+      clipboard:
+        specifier: ^2.0.11
+        version: 2.0.11
+      clsx:
+        specifier: ^1.2.1
+        version: 1.2.1
+      codemirror:
+        specifier: ^5.65.12
+        version: 5.65.12
+      js-cookie:
+        specifier: ^3.0.1
+        version: 3.0.1
+      next:
+        specifier: ^13.4.3
+        version: 13.4.3(@babel/core@7.21.8)(react-dom@18.2.0)(react@18.2.0)
+      prop-types:
+        specifier: ^15.8.1
+        version: 15.8.1
+      react-codemirror2:
+        specifier: ^7.2.1
+        version: 7.2.1(codemirror@5.65.12)(react@18.2.0)
+    devDependencies:
+      '@mapbox/rehype-prism':
+        specifier: ^0.8.0
+        version: 0.8.0
+      '@mdx-js/loader':
+        specifier: ^2.3.0
+        version: 2.3.0
+      '@next/bundle-analyzer':
+        specifier: ^13.4.3
+        version: 13.4.3
+      '@next/eslint-plugin-next':
+        specifier: ^13.4.3
+        version: 13.4.3
+      '@types/codemirror':
+        specifier: ^5.60.7
+        version: 5.60.7
+      '@types/js-cookie':
+        specifier: ^3.0.3
+        version: 3.0.3
+      '@types/node':
+        specifier: 17.0.4
+        version: 17.0.4
+      '@types/prop-types':
+        specifier: ^15.7.5
+        version: 15.7.5
+      cross-env:
+        specifier: ^7.0.3
+        version: 7.0.3
+      next-sitemap:
+        specifier: ^3.1.55
+        version: 3.1.55(next@13.4.3)
+      pinyin:
+        specifier: ^2.11.2
+        version: 2.11.2
+      prismjs:
+        specifier: ^1.29.0
+        version: 1.29.0
+      remark-emoji:
+        specifier: ^3.1.1
+        version: 3.1.1
+      remark-gfm:
+        specifier: ^3.0.1
+        version: 3.0.1
+
 packages:
 
   /@adobe/css-tools@4.2.0:
@@ -2252,7 +2346,7 @@ packages:
       nopt: 5.0.0
       npmlog: 5.0.1
       rimraf: 3.0.2
-      semver: 7.3.8
+      semver: 7.5.0
       tar: 6.1.15
     transitivePeerDependencies:
       - encoding
@@ -3631,6 +3725,7 @@ packages:
 
   /bindings@1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
+    requiresBuild: true
     dependencies:
       file-uri-to-path: 1.0.0
     dev: true
@@ -5630,6 +5725,7 @@ packages:
 
   /file-uri-to-path@1.0.0:
     resolution: {integrity: sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==}
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -8968,6 +9064,7 @@ packages:
 
   /nan@2.17.0:
     resolution: {integrity: sha512-2ZTgtl0nJsO0KQCjEpxcIr5D+Yv90plTitZt9JBfQvVJDS5seMl3FOvsh3+9CoYWXf/1l5OaZzzF6nDm4cagaQ==}
+    requiresBuild: true
     dev: true
     optional: true
 

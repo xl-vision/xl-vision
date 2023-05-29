@@ -16,6 +16,7 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "rootDir": ".",
+    "preserveSymlinks": true,
     "paths": {
       "csstype": ["./node_modules/csstype"],
       "react": ["./node_modules/@types/react", "./node_modules/react"],
