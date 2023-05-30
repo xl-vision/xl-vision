@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://xl-vision.8910.xyz
+
+# Sitemaps
+Sitemap: https://xl-vision.8910.xyz/sitemap.xml
