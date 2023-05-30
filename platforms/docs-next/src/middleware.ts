@@ -19,7 +19,7 @@ export const middleware = (request: NextRequest) => {
 
   const lang = negotiator.language(supportedLangs) || defaultLang;
 
-  return NextResponse.redirect(new URL(`/${lang}/${pathname}`, request.url));
+  return NextResponse.redirect(new URL(`/${lang}${pathname}`, request.url));
 };
 
 // See "Matching Paths" below to learn more

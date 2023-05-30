@@ -26,6 +26,7 @@ module.exports = async () => {
     eslint: {
       ignoreDuringBuilds: true,
     },
+    skipTrailingSlashRedirect: true,
     experimental: {
       typedRoutes: true,
       esmExternals: true,

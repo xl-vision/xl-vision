@@ -1,10 +1,10 @@
 import { Metadata } from 'next';
 import { FC, ReactNode } from 'react';
-import CssBaseline from '../components/CssBaseline';
-import LocalizationProvider from '../components/LocalizationProvider';
-import StyledComponentsRegistry from '../components/StyledComponentsRegistry';
-import ThemeProvider from '../components/ThemeProvider';
-import { defaultLang } from '../locales';
+import CssBaseline from '../../components/CssBaseline';
+import LocalizationProvider from '../../components/LocalizationProvider';
+import StyledComponentsRegistry from '../../components/StyledComponentsRegistry';
+import ThemeProvider from '../../components/ThemeProvider';
+import { defaultLang } from '../../locales';
 
 export const metadata: Metadata = {
   icons: [
