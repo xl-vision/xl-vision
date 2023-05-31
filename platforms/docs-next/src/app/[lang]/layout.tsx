@@ -4,7 +4,7 @@ import CssBaseline from '../../components/CssBaseline';
 import LocalizationProvider from '../../components/LocalizationProvider';
 import StyledComponentsRegistry from '../../components/StyledComponentsRegistry';
 import ThemeProvider from '../../components/ThemeProvider';
-import { defaultLang } from '../../locales';
+import { supportedLangs } from '../../locales';
 
 export const metadata: Metadata = {
   icons: [
@@ -15,9 +15,16 @@ export const metadata: Metadata = {
   ],
 };
 
-const App: FC<{ children: ReactNode; params: Record<string, string> }> = ({ children, params }) => {
+export const generateStaticParams = () => {
+  return supportedLangs.map((lang) => ({ lang }));
+};
+
+const RootLayout: FC<{ children: ReactNode; params: Record<string, string> }> = ({
+  children,
+  params,
+}) => {
   return (
-    <html lang={params.lang || defaultLang}>
+    <html lang={params.lang}>
       <body>
         <StyledComponentsRegistry>
           <ThemeProvider>
@@ -30,4 +37,4 @@ const App: FC<{ children: ReactNode; params: Record<string, string> }> = ({ chil
   );
 };
 
-export default App;
+export default RootLayout;
