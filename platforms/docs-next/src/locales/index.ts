@@ -40,9 +40,15 @@ export type Locale = {
   };
 };
 
-export const defaultLang = 'en-US';
+export const supportedLangs = ['en-US', 'zh-CN'] as const;
 
-export const locales: Record<string, Locale> = {
+export type TupleToUnion<T> = T extends Array<infer P> ? P : never;
+
+export type Lang = (typeof supportedLangs)[number];
+
+export const defaultLang: Lang = 'en-US';
+
+export const locales: Record<Lang, Locale> = {
   'en-US': {
     name: 'English',
 
@@ -127,5 +133,3 @@ export const locales: Record<string, Locale> = {
     },
   },
 };
-
-export const supportedLangs = Object.keys(locales);

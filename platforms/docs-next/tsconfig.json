@@ -12,14 +12,15 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "noEmit": true,
     "incremental": true,
-    "allowJs": true
+    "allowJs": true,
   },
   "include": [
     "next-env.d.ts",
     ".next/types/**/*.ts",
     "typings/**/*.d.ts",
     "src/**/*.ts",
-    "src/**/*.tsx"
-, "middleware.ts"  ],
+    "src/**/*.tsx",
+    "middleware.ts"
+  ],
   "exclude": ["node_modules"]
 }

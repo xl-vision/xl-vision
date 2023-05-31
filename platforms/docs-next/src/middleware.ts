@@ -17,18 +17,11 @@ export const middleware = (request: NextRequest) => {
 
   const negotiator = new Negotiator({ headers });
 
-  const lang = negotiator.language(supportedLangs) || defaultLang;
+  const lang = negotiator.language(supportedLangs as unknown as Array<string>) || defaultLang;
 
   return NextResponse.redirect(new URL(`/${lang}${pathname === '/' ? '' : pathname}`, request.url));
 };
 
-// See "Matching Paths" below to learn more
 export const config = {
-  matcher: [
-    // Skip all internal paths (_next)
-    '/((?!_next).*)',
-    '/((?!favicon\\.svg))',
-    // Optional: only run on root (/) URL
-    // '/'
-  ],
+  matcher: ['/((?!_next|icon.svg).*)'],
 };

@@ -1,10 +1,10 @@
 import { warning } from '@xl-vision/utils';
 import { useParams } from 'next/navigation';
 import { useMemo } from 'react';
-import { locales, defaultLang, supportedLangs } from '../locales';
+import { locales, defaultLang, supportedLangs, Lang } from '../locales';
 
 const useLocale = () => {
-  const { lang } = useParams();
+  const { lang } = useParams() as { lang: Lang };
 
   const actualLang = useMemo(() => {
     if (supportedLangs.includes(lang)) {

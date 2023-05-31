@@ -2,11 +2,13 @@
 
 import { useIsomorphicLayoutEffect } from '@xl-vision/hooks';
 import { ThemeInput, ThemeProvider as XlThemeProvider } from '@xl-vision/react';
+import * as libLocales from '@xl-vision/react/locale';
 import darkTheme from '@xl-vision/react/themes/dark';
 import { noop } from '@xl-vision/utils';
 import Cookies from 'js-cookie';
 import PropTypes from 'prop-types';
 import { ReactNode, createContext, FC, useState, useCallback, useMemo } from 'react';
+import useLocale from '../../hooks/useLocale';
 
 export type ThemeProviderProps = {
   children: ReactNode;
@@ -27,6 +29,12 @@ const KEY = 'DARK_MODE';
 const ThemeProvider: FC<ThemeProviderProps> = (props) => {
   const { children } = props;
 
+  const { lang } = useLocale();
+
+  const libLocaleKey = useMemo(() => {
+    return lang.replace('-', '') as keyof typeof libLocales;
+  }, [lang]);
+
   const [isDark, setDark] = useState(false);
 
   useIsomorphicLayoutEffect(() => {
@@ -44,8 +52,13 @@ const ThemeProvider: FC<ThemeProviderProps> = (props) => {
   }, []);
 
   const theme: ThemeInput = useMemo(() => {
-    return isDark ? darkTheme : {};
-  }, [isDark]);
+    const value = isDark ? darkTheme : {};
+
+    return {
+      ...value,
+      locale: libLocales[libLocaleKey],
+    };
+  }, [isDark, libLocaleKey]);
 
   const ctx = useMemo<ThemeContextProps>(
     () => ({

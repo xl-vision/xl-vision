@@ -1,18 +1,23 @@
 import { Metadata } from 'next';
 import { FC, ReactNode } from 'react';
 import CssBaseline from '../../components/CssBaseline';
-import LocalizationProvider from '../../components/LocalizationProvider';
 import StyledComponentsRegistry from '../../components/StyledComponentsRegistry';
 import ThemeProvider from '../../components/ThemeProvider';
-import { supportedLangs } from '../../locales';
+import { Lang, locales, supportedLangs } from '../../locales';
 
-export const metadata: Metadata = {
-  icons: [
-    {
-      rel: 'icon',
-      url: '/favicon.svg',
+export const generateMetadata = async ({ params: { lang } }: { params: { lang: Lang } }) => {
+  const locale = locales[lang];
+
+  const metadata: Metadata = {
+    keywords: locale.meta.keywords,
+    description: locale.meta.description,
+    title: {
+      template: '%s | xl-vision',
+      default: 'xl-vision',
     },
-  ],
+  };
+
+  return metadata;
 };
 
 export const generateStaticParams = () => {
@@ -29,7 +34,7 @@ const RootLayout: FC<{ children: ReactNode; params: Record<string, string> }> = 
         <StyledComponentsRegistry>
           <ThemeProvider>
             <CssBaseline />
-            <LocalizationProvider>{children}</LocalizationProvider>
+            {children}
           </ThemeProvider>
         </StyledComponentsRegistry>
       </body>
