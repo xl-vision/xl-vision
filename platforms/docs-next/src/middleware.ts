@@ -23,5 +23,5 @@ export const middleware = (request: NextRequest) => {
 };
 
 export const config = {
-  matcher: ['/((?!_next|icon.svg).*)'],
+  matcher: ['/((?!_next|icon.svg|robots.txt|sitemap|img/).*)'],
 };

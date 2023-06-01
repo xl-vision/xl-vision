@@ -1,17 +1,12 @@
 'use client';
 
 import { styled, Button } from '@xl-vision/react';
-import Head from 'next/head';
 import Link from 'next/link';
 import Footer from '../../components/Footer';
 import Header, { HEADER_HEIGHT } from '../../components/Header';
 import Logo from '../../components/Logo';
 import Sponsorship from '../../components/Sponsorship';
 import useLocale from '../../hooks/useLocale';
-
-const HeaderWrapper = styled(Header)(() => {
-  return {};
-});
 
 const Main = styled('div')(({ theme }) => {
   const { breakpoints } = theme;
@@ -81,14 +76,9 @@ const FooterWrapper = styled(Footer)(({ theme }) => {
 const Home = () => {
   const { locale } = useLocale();
 
-  const titleContent = `${locale.pages.index.title} | xl-vision`;
-
   return (
     <>
-      <Head>
-        <title>{titleContent}</title>
-      </Head>
-      <HeaderWrapper />
+      <Header />
       <Main>
         <div className='logo'>
           <Logo />

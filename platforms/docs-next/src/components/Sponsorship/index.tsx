@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
 import useLocale from '../../hooks/useLocale';
+import VercelIcon from './VercelIcon';
 
 const Root = styled('div')(({ theme }) => {
   return {
@@ -44,7 +45,7 @@ const Sponsorship: FC = () => {
           rel='noopener'
           target='_black'
         >
-          <Image alt='vercel' height={44} src='/sponsorship/vercel.svg' width={160} />
+          <VercelIcon />
         </Link>
       </div>
     </Root>

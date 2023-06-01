@@ -2,7 +2,7 @@ import { useConstantFn } from '@xl-vision/hooks';
 import { DownOutlined, GithubFilled, MenuOutlined } from '@xl-vision/icons';
 import { Button, styled, Tooltip, Dropdown } from '@xl-vision/react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 import { FC, HTMLAttributes, useContext, useCallback } from 'react';
 import DarkTheme from './DarkTheme';
 import LightTheme from './LightTheme';
@@ -125,7 +125,7 @@ const MobileDropdownItem = styled(Dropdown.Item)(({ theme }) => {
 const Header: FC<HTMLAttributes<HTMLElement>> = (props) => {
   const theme = useContext(ThemeContext);
   const { locale } = useLocale();
-  const router = useRouter();
+  // const router = useRouter();
 
   const { isDark, setDark } = theme;
 
@@ -134,13 +134,15 @@ const Header: FC<HTMLAttributes<HTMLElement>> = (props) => {
   }, [setDark]);
 
   const handleLangChange = useConstantFn((lang: string) => {
+    console.log(lang)
     // const { pathname, asPath, query } = router;
     // router.push({ pathname, query }, asPath, { locale: lang }).catch(noop);
   });
 
   const setActiveClassName = useConstantFn((pathname: string) => {
+    console.log(pathname)
     // return router.pathname.startsWith(pathname) ? 'active' : '';
-    return false;
+    return '';
   });
 
   const mobileMenus = (
@@ -169,7 +171,7 @@ const Header: FC<HTMLAttributes<HTMLElement>> = (props) => {
               variant='text'
             />
           </Dropdown>
-          <LogoWrapper href='/'>
+          <LogoWrapper href='/zh-CN'>
             <Logo />
             <span className='sm-up'>xl vision</span>
           </LogoWrapper>
