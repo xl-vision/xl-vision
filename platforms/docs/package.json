@@ -15,7 +15,7 @@
   "dependencies": {
     "@babel/standalone": "^7.22.10",
     "@mdx-js/react": "^2.3.0",
-    "@vercel/analytics": "^1.0.1",
+    "@vercel/analytics": "^1.0.2",
     "@xl-vision/hooks": "workspace:^",
     "@xl-vision/icons": "workspace:^",
     "@xl-vision/react": "workspace:^",
