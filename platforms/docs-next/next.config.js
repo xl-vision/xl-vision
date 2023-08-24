@@ -2,7 +2,6 @@
 const rehypePrism = require('@mapbox/rehype-prism');
 const bundleAnalyzer = require('@next/bundle-analyzer');
 // const fs = require('fs-extra');
-// const path = require('path');
 
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',

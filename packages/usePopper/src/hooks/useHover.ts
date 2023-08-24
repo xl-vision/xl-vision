@@ -23,18 +23,24 @@ const useHover: InteractionHook<HoverOptions> = (
     const timer = timerRef.current;
     clearTimeout(timer);
 
-    timerRef.current = window.setTimeout(() => {
-      setOpen(true);
-    }, Math.max(openDelay, MIN_TIME_DELAY));
+    timerRef.current = window.setTimeout(
+      () => {
+        setOpen(true);
+      },
+      Math.max(openDelay, MIN_TIME_DELAY),
+    );
   });
 
   const handleReferenceMouseLeave = useConstantFn(() => {
     const timer = timerRef.current;
     clearTimeout(timer);
 
-    timerRef.current = window.setTimeout(() => {
-      setOpen(false);
-    }, Math.max(closeDelay, MIN_TIME_DELAY));
+    timerRef.current = window.setTimeout(
+      () => {
+        setOpen(false);
+      },
+      Math.max(closeDelay, MIN_TIME_DELAY),
+    );
   });
 
   const handlePopperMouseEnter = useConstantFn(() => {
@@ -48,9 +54,12 @@ const useHover: InteractionHook<HoverOptions> = (
     const timer = timerRef.current;
     clearTimeout(timer);
 
-    timerRef.current = window.setTimeout(() => {
-      setOpen(false);
-    }, Math.max(closeDelay, MIN_TIME_DELAY));
+    timerRef.current = window.setTimeout(
+      () => {
+        setOpen(false);
+      },
+      Math.max(closeDelay, MIN_TIME_DELAY),
+    );
   });
 
   if (skip) {

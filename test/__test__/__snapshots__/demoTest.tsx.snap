@@ -6759,7 +6759,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
         class="c3 xl-base-button__inner"
       >
         <span
-          class="c10 xl-button__prefix ButtonSuffix-fdNhfr xl-button__suffix"
+          class="c10 xl-button__prefix ButtonSuffix-jDgGAR xl-button__suffix"
         >
           <svg
             class="xl-base-icon c11"

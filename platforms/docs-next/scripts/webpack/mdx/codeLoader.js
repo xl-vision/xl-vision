@@ -7,13 +7,17 @@ const loadLanguages = require('prismjs/components/');
 
 loadLanguages();
 
-const prettierOptions = prettier.resolveConfig.sync(process.cwd(), {
-  editorconfig: true,
-  useCache: true,
-});
+let prettierOptions;
 
 module.exports = async function demoLoader(content) {
   const callback = this.async();
+
+  if (!prettierOptions) {
+    prettierOptions = await prettier.resolveConfig(process.cwd(), {
+      editorconfig: true,
+      useCache: true,
+    });
+  }
 
   const filePath = this.resourcePath;
 
@@ -38,7 +42,7 @@ module.exports = async function demoLoader(content) {
       })
     ).code;
 
-    jsCode = prettier.format(jsCode, {
+    jsCode = await prettier.format(jsCode, {
       ...prettierOptions,
       parser: 'babel',
       filePath: absolutePath,

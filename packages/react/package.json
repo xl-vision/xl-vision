@@ -41,13 +41,13 @@
     "@xl-vision/icons": "workspace:^",
     "@xl-vision/styled-engine": "workspace:^",
     "@xl-vision/utils": "workspace:^",
-    "clsx": "^1.2.1",
+    "clsx": "^2.0.0",
     "prop-types": "^15.8.1",
     "react-is": "^18.0.0"
   },
   "devDependencies": {
     "@types/prop-types": "^15.7.5",
-    "@types/react-is": ">=18.0.0"
+    "@types/react-is": ">=18.2.1"
   },
   "peerDependencies": {
     "@babel/runtime": "^7.15.4",

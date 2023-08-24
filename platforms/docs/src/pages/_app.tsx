@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import { createGlobalStyles, CssBaseline } from '@xl-vision/react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
@@ -77,6 +78,7 @@ const App = ({ Component, pageProps }: AppProps<{ [key: string]: unknown }>) => 
       </LocalizationProvider>
       <BaiduAnalytics />
       <GoogleAnalytics />
+      <Analytics />
     </>
   );
 };

@@ -119,6 +119,7 @@ const Popconfirm = forwardRef<HTMLDivElement, PopconfirmProps>((props, ref) => {
   const [cancelLoading, setCancelLoading] = useState(false);
 
   const handleCancel = useConstantFn(() => {
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     new Promise((resolve) => {
       setCancelLoading(true);
       resolve(onCancel?.());
@@ -132,6 +133,7 @@ const Popconfirm = forwardRef<HTMLDivElement, PopconfirmProps>((props, ref) => {
   });
 
   const handleConfirm = useConstantFn(() => {
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     new Promise((resolve) => {
       setConfirmLoading(true);
       resolve(onConfirm?.());

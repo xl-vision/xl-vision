@@ -1,5 +1,5 @@
 import { fireEvent, render } from '@testing-library/react';
-import { useRef, useMemo } from 'react';
+import { useRef, useMemo, SyntheticEvent } from 'react';
 import { triggerTransitionEnd } from 'test/utils';
 import { Ripple, RippleRef } from '@xl-vision/react';
 
@@ -7,7 +7,7 @@ const Demo = ({ exitAfterEnter }: { exitAfterEnter?: boolean }) => {
   const rippleRef = useRef<RippleRef>(null);
 
   const events = useMemo(() => {
-    const start = (e: any) => {
+    const start = (e: SyntheticEvent) => {
       rippleRef.current?.start(e);
     };
     const stop = () => {

@@ -120,54 +120,55 @@ const InputAddonAfter = styled(InputAddonBefore, {
 const InputWrapper = styled('span', {
   name: displayName,
   slot: 'Wrapper',
-})<{ focused: boolean; size: SizeVariant; disabled?: boolean; readOnly?: boolean }>(
-  ({ theme, styleProps }) => {
-    const { colors, sizes, transitions } = theme;
+})<{ focused: boolean; size: SizeVariant; disabled?: boolean; readOnly?: boolean }>(({
+  theme,
+  styleProps,
+}) => {
+  const { colors, sizes, transitions } = theme;
 
-    const { focused, size, disabled, readOnly } = styleProps;
+  const { focused, size, disabled, readOnly } = styleProps;
 
-    const themeSize = sizes[size];
+  const themeSize = sizes[size];
 
-    const styles: CSSObject = {
-      display: 'inline-flex',
-      borderRadius: themeSize.borderRadius,
-      border: `${themeSize.border}px solid ${colors.divider.primary}`,
-      width: '100%',
-      padding: `${themeSize.padding.y}px ${themeSize.padding.x}px`,
-      color: colors.text.primary,
-      backgroundColor: colors.background.paper,
-      transition: transitions.standard(['borderColor', 'boxShadow']),
-      zIndex: 1,
-      fontSize: 'inherit',
+  const styles: CSSObject = {
+    display: 'inline-flex',
+    borderRadius: themeSize.borderRadius,
+    border: `${themeSize.border}px solid ${colors.divider.primary}`,
+    width: '100%',
+    padding: `${themeSize.padding.y}px ${themeSize.padding.x}px`,
+    color: colors.text.primary,
+    backgroundColor: colors.background.paper,
+    transition: transitions.standard(['borderColor', 'boxShadow']),
+    zIndex: 1,
+    fontSize: 'inherit',
 
-      '&:not(:first-child)': {
-        borderTopLeftRadius: 0,
-        borderBottomLeftRadius: 0,
-      },
-      '&:not(:last-child)': {
-        borderTopRightRadius: 0,
-        borderBottomRightRadius: 0,
-      },
-    };
+    '&:not(:first-child)': {
+      borderTopLeftRadius: 0,
+      borderBottomLeftRadius: 0,
+    },
+    '&:not(:last-child)': {
+      borderTopRightRadius: 0,
+      borderBottomRightRadius: 0,
+    },
+  };
 
-    if (disabled) {
-      styles.opacity = colors.opacity.disabled;
-      styles.cursor = 'not-allowed';
-    } else if (!readOnly) {
-      if (focused) {
-        const focusColor = colors.themes.primary.foreground.focus;
-        styles.borderColor = focusColor;
-        styles.boxShadow = `0 0 0 2px ${colors.themes.primary.outline}`;
-      } else {
-        styles['&:hover'] = {
-          borderColor: colors.themes.primary.foreground.hover,
-        };
-      }
+  if (disabled) {
+    styles.opacity = colors.opacity.disabled;
+    styles.cursor = 'not-allowed';
+  } else if (!readOnly) {
+    if (focused) {
+      const focusColor = colors.themes.primary.foreground.focus;
+      styles.borderColor = focusColor;
+      styles.boxShadow = `0 0 0 2px ${colors.themes.primary.outline}`;
+    } else {
+      styles['&:hover'] = {
+        borderColor: colors.themes.primary.foreground.hover,
+      };
     }
+  }
 
-    return styles;
-  },
-);
+  return styles;
+});
 
 const InputInner = styled('input', {
   name: displayName,

@@ -1,9 +1,8 @@
 import { styled } from '@xl-vision/react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
-import useLocale from '../../hooks/useLocale';
 import VercelIcon from './VercelIcon';
+import useLocale from '../../hooks/useLocale';
 
 const Root = styled('div')(({ theme }) => {
   return {

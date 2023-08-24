@@ -134,13 +134,15 @@ const Header: FC<HTMLAttributes<HTMLElement>> = (props) => {
   }, [setDark]);
 
   const handleLangChange = useConstantFn((lang: string) => {
-    console.log(lang)
+    // eslint-disable-next-line no-console
+    console.log(lang);
     // const { pathname, asPath, query } = router;
     // router.push({ pathname, query }, asPath, { locale: lang }).catch(noop);
   });
 
   const setActiveClassName = useConstantFn((pathname: string) => {
-    console.log(pathname)
+    // eslint-disable-next-line no-console
+    console.log(pathname);
     // return router.pathname.startsWith(pathname) ? 'active' : '';
     return '';
   });
