@@ -24,7 +24,7 @@
     "@xl-vision/usePopper": "workspace:^",
     "@xl-vision/utils": "workspace:^",
     "clipboard": "^2.0.11",
-    "clsx": "^1.2.1",
+    "clsx": "^2.0.0",
     "codemirror": "^5.65.13",
     "js-cookie": "^3.0.5",
     "next": "^13.4.19",
