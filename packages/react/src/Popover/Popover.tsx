@@ -63,7 +63,7 @@ const PopoverTitle = styled('div', {
   const { colors, typography, sizes } = theme;
   return {
     padding: '4px 12px',
-    borderBottom: `${sizes.middle.border}px solid ${colors.divider}`,
+    borderBottom: `${sizes.middle.border}px solid ${colors.divider.primary}`,
     ...typography.subtitle2.style,
   };
 });

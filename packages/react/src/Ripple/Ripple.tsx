@@ -26,7 +26,7 @@ export type RippleProps = HTMLAttributes<HTMLDivElement> & {
 };
 
 export type RippleRef = {
-  start: (e?: { pulsate?: boolean } | any) => void;
+  start: (e?: SyntheticEvent | { pulsate?: boolean }) => void;
   stop: () => void;
 };
 
