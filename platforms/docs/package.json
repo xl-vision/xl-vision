@@ -49,7 +49,7 @@
     "next-sitemap": "^4.2.2",
     "pinyin": "^2.11.2",
     "prismjs": "^1.29.0",
-    "remark-emoji": "^3.1.2",
+    "remark-emoji": "^4.0.0",
     "remark-gfm": "^3.0.1"
   }
 }
