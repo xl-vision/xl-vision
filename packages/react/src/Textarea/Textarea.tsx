@@ -40,86 +40,87 @@ const displayName = 'Textarea';
 const TextAreaRoot = styled('span', {
   name: displayName,
   slot: 'Root',
-})<{ focused: boolean; size: SizeVariant; disabled?: boolean; readOnly?: boolean }>(
-  ({ theme, styleProps }) => {
-    const { colors, sizes, typography, transitions, clsPrefix } = theme;
+})<{ focused: boolean; size: SizeVariant; disabled?: boolean; readOnly?: boolean }>(({
+  theme,
+  styleProps,
+}) => {
+  const { colors, sizes, typography, transitions, clsPrefix } = theme;
 
-    const { size, focused, disabled, readOnly } = styleProps;
+  const { size, focused, disabled, readOnly } = styleProps;
 
-    const themeSize = sizes[size];
+  const themeSize = sizes[size];
 
-    const styles: CSSObject = {
-      ...typography.body1.style,
-      fontSize: typography.pxToRem(typography.body1.info.size * themeSize.fontSize),
-      display: 'inline-block',
-      width: '100%',
-      position: 'relative',
-      backgroundColor: colors.background.paper,
-      border: `${themeSize.border}px solid ${colors.divider.primary}`,
-      borderRadius: themeSize.borderRadius,
-      transition: transitions.standard(['borderColor', 'boxShadow']),
-      [`.${clsPrefix}-textarea__inner`]: {
-        padding: `${themeSize.padding.y}px ${themeSize.padding.x}px`,
-        // 高度最低为一行高度
-        minHeight:
-          themeSize.padding.y * 2 + typography.body1.info.size * typography.body1.info.lineHeight,
-      },
-      [`.${clsPrefix}-textarea__suffix`]: {
-        position: 'absolute',
-        zIndex: 1,
-        top: 0,
-        right: themeSize.padding.x,
-        padding: `${themeSize.padding.y}px 0`,
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        alignItems: 'flex-end',
-        boxSizing: 'border-box',
-        '&--overflow': {
-          flexDirection: 'row',
-          alignItems: 'center',
-        },
-        '&:not(&--overflow)': {
-          [`.${clsPrefix}-textarea__count`]: {
-            marginTop: 'auto',
-          },
-        },
-      },
-      [`.${clsPrefix}-textarea__clear`]: {
-        color: colors.text.hint,
-        display: 'inline-flex',
+  const styles: CSSObject = {
+    ...typography.body1.style,
+    fontSize: typography.pxToRem(typography.body1.info.size * themeSize.fontSize),
+    display: 'inline-block',
+    width: '100%',
+    position: 'relative',
+    backgroundColor: colors.background.paper,
+    border: `${themeSize.border}px solid ${colors.divider.primary}`,
+    borderRadius: themeSize.borderRadius,
+    transition: transitions.standard(['borderColor', 'boxShadow']),
+    [`.${clsPrefix}-textarea__inner`]: {
+      padding: `${themeSize.padding.y}px ${themeSize.padding.x}px`,
+      // 高度最低为一行高度
+      minHeight:
+        themeSize.padding.y * 2 + typography.body1.info.size * typography.body1.info.lineHeight,
+    },
+    [`.${clsPrefix}-textarea__suffix`]: {
+      position: 'absolute',
+      zIndex: 1,
+      top: 0,
+      right: themeSize.padding.x,
+      padding: `${themeSize.padding.y}px 0`,
+      height: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      alignItems: 'flex-end',
+      boxSizing: 'border-box',
+      '&--overflow': {
+        flexDirection: 'row',
         alignItems: 'center',
-        cursor: 'pointer',
-        transition: transitions.standard('color'),
-        '&:hover': {
-          color: colors.text.secondary,
+      },
+      '&:not(&--overflow)': {
+        [`.${clsPrefix}-textarea__count`]: {
+          marginTop: 'auto',
         },
       },
-      [`.${clsPrefix}-textarea__count`]: {
-        color: colors.text.hint,
-        backgroundColor: colors.background.paper,
-        marginLeft: 4,
+    },
+    [`.${clsPrefix}-textarea__clear`]: {
+      color: colors.text.hint,
+      display: 'inline-flex',
+      alignItems: 'center',
+      cursor: 'pointer',
+      transition: transitions.standard('color'),
+      '&:hover': {
+        color: colors.text.secondary,
       },
-    };
+    },
+    [`.${clsPrefix}-textarea__count`]: {
+      color: colors.text.hint,
+      backgroundColor: colors.background.paper,
+      marginLeft: 4,
+    },
+  };
 
-    if (disabled) {
-      styles.opacity = colors.opacity.disabled;
-      styles.cursor = 'not-allowed';
-    } else if (!readOnly) {
-      if (focused) {
-        styles.borderColor = colors.themes.primary.foreground.focus;
-        styles.boxShadow = `0 0 0 2px ${colors.themes.primary.outline}`;
-      } else {
-        styles[':hover'] = {
-          borderColor: colors.themes.primary.foreground.hover,
-        };
-      }
+  if (disabled) {
+    styles.opacity = colors.opacity.disabled;
+    styles.cursor = 'not-allowed';
+  } else if (!readOnly) {
+    if (focused) {
+      styles.borderColor = colors.themes.primary.foreground.focus;
+      styles.boxShadow = `0 0 0 2px ${colors.themes.primary.outline}`;
+    } else {
+      styles[':hover'] = {
+        borderColor: colors.themes.primary.foreground.hover,
+      };
     }
+  }
 
-    return styles;
-  },
-);
+  return styles;
+});
 
 const TextareaInner = styled('textarea', {
   name: displayName,

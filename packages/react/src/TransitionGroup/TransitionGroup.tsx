@@ -73,10 +73,11 @@ const TransitionGroup: FC<TransitionGroupProps> = (props) => {
       warning(!key, `<TransitioGroup> must has a key`);
       const hook: TransitionEndHook = (e, transitionOnFirst) => {
         onExited?.(e, transitionOnFirst);
-        setNodes((prev) =>
-          prev?.filter((it) => {
-            return it.key !== key;
-          }),
+        setNodes(
+          (prev) =>
+            prev?.filter((it) => {
+              return it.key !== key;
+            }),
         );
       };
 
