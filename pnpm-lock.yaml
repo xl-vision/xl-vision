@@ -85,10 +85,10 @@ importers:
         specifier: ^5.1.26
         version: 5.1.26
       '@typescript-eslint/eslint-plugin':
-        specifier: ^6.4.0
+        specifier: ^6.4.1
         version: 6.4.1(@typescript-eslint/parser@6.4.1)(eslint@8.47.0)(typescript@5.1.6)
       '@typescript-eslint/parser':
-        specifier: ^6.4.0
+        specifier: ^6.4.1
         version: 6.4.1(eslint@8.47.0)(typescript@5.1.6)
       chalk:
         specifier: ^4.1.2
