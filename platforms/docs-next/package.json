@@ -27,20 +27,20 @@
     "codemirror": "^5.65.12",
     "js-cookie": "^3.0.5",
     "negotiator": "^0.6.3",
-    "next": "^13.4.4",
+    "next": "^13.4.19",
     "prop-types": "^15.8.1",
-    "react-codemirror2": "^7.2.1",
-    "styled-components": "^6.0.7"
+    "react-codemirror2": "^7.2.1"
   },
   "peerDependencies": {
     "react": ">=18.2.0",
-    "react-dom": ">=18.2.0"
+    "react-dom": ">=18.2.0",
+    "styled-components": ">=6.0.0"
   },
   "devDependencies": {
     "@mapbox/rehype-prism": "^0.8.0",
     "@mdx-js/loader": "^2.3.0",
-    "@next/bundle-analyzer": "^13.4.4",
-    "@next/eslint-plugin-next": "^13.4.4",
+    "@next/bundle-analyzer": "^13.4.19",
+    "@next/eslint-plugin-next": "^13.4.19",
     "@types/codemirror": "^5.60.7",
     "@types/js-cookie": "^3.0.3",
     "@types/negotiator": "^0.6.1",
