@@ -27,7 +27,7 @@ module.exports = async () => {
       ignoreDuringBuilds: true,
     },
     experimental: {
-      typedRoutes: true,
+      typedRoutes: false,
       esmExternals: true,
       externalDir: true,
     },
