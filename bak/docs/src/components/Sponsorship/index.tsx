@@ -1,8 +1,8 @@
 import { styled } from '@xl-vision/react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
-import VercelIcon from './VercelIcon';
-import useLocale from '../../hooks/useLocale';
+import { useLocale } from '../LocalizationProvider';
 
 const Root = styled('div')(({ theme }) => {
   return {
@@ -44,7 +44,7 @@ const Sponsorship: FC = () => {
           rel='noopener'
           target='_black'
         >
-          <VercelIcon />
+          <Image alt='vercel' height={44} src='/sponsorship/vercel.svg' width={160} />
         </Link>
       </div>
     </Root>

@@ -2,7 +2,7 @@
 const rehypePrism = require('@mapbox/rehype-prism');
 const bundleAnalyzer = require('@next/bundle-analyzer');
 // const fs = require('fs-extra');
-const path = require('path');
+// const path = require('path');
 
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
@@ -26,10 +26,6 @@ module.exports = async () => {
     eslint: {
       ignoreDuringBuilds: true,
     },
-    i18n: {
-      locales: ['en-US', 'zh-CN'],
-      defaultLocale: 'en-US',
-    },
     experimental: {
       typedRoutes: true,
       esmExternals: true,
@@ -41,10 +37,10 @@ module.exports = async () => {
       config.resolve.alias = {
         ...config.resolve.alias,
         // ...alias,
-        $react: path.resolve(__dirname, '../../node_modules/react'),
-        '$react-dom': path.resolve(__dirname, '../../node_modules/react-dom'),
-        '$styled-components': path.resolve(__dirname, '../../node_modules/styled-components'),
-        '@mdx-js/react': path.resolve(__dirname, './node_modules/@mdx-js/react'),
+        // 'styled-components': path.resolve(__dirname, '../../node_modules/styled-components'),
+        // '@mdx-js/react': path.resolve(__dirname, '../../node_modules/@mdx-js/react'),
+        // 'react-dom$': path.resolve(__dirname, '../../node_modules/react-dom'),
+        // react$: path.resolve(__dirname, '../../node_modules/react'),
       };
 
       config.module.rules.push({

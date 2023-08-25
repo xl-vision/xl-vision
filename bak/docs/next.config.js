@@ -26,6 +26,10 @@ module.exports = async () => {
     eslint: {
       ignoreDuringBuilds: true,
     },
+    i18n: {
+      locales: ['en-US', 'zh-CN'],
+      defaultLocale: 'en-US',
+    },
     experimental: {
       typedRoutes: true,
       esmExternals: true,
@@ -37,10 +41,10 @@ module.exports = async () => {
       config.resolve.alias = {
         ...config.resolve.alias,
         // ...alias,
-        'styled-components': path.resolve(__dirname, '../../node_modules/styled-components'),
-        '@mdx-js/react': path.resolve(__dirname, '../../node_modules/@mdx-js/react'),
-        'react-dom$': path.resolve(__dirname, '../../node_modules/react-dom'),
-        react$: path.resolve(__dirname, '../../node_modules/react'),
+        $react: path.resolve(__dirname, '../../node_modules/react'),
+        '$react-dom': path.resolve(__dirname, '../../node_modules/react-dom'),
+        '$styled-components': path.resolve(__dirname, '../../node_modules/styled-components'),
+        '@mdx-js/react': path.resolve(__dirname, './node_modules/@mdx-js/react'),
       };
 
       config.module.rules.push({

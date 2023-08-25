@@ -3,11 +3,7 @@
 import { isBrowser } from '@xl-vision/utils';
 import { useServerInsertedHTML } from 'next/navigation';
 import { FC, ReactNode, useState } from 'react';
-import React from 'react';
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
-
-
-console.log(React)
 
 const StyledComponentsRegistry: FC<{ children: ReactNode }> = ({ children }) => {
   const [styledComponentsStyleSheet] = useState(() => new ServerStyleSheet());
@@ -15,6 +11,7 @@ const StyledComponentsRegistry: FC<{ children: ReactNode }> = ({ children }) => 
   useServerInsertedHTML(() => {
     const styles = styledComponentsStyleSheet.getStyleElement();
     styledComponentsStyleSheet.instance.clearTag();
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return styles;
   });
 

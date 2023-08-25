@@ -1,15 +1,14 @@
 import { useConstantFn } from '@xl-vision/hooks';
 import { DownOutlined, GithubFilled, MenuOutlined } from '@xl-vision/icons';
 import { Button, styled, Tooltip, Dropdown } from '@xl-vision/react';
-import { noop } from '@xl-vision/utils';
-import Cookie from 'js-cookie';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { FC, HTMLAttributes, useContext, useCallback, useMemo } from 'react';
+// import { useRouter } from 'next/navigation';
+import { FC, HTMLAttributes, useContext, useCallback } from 'react';
 import DarkTheme from './DarkTheme';
 import LightTheme from './LightTheme';
 import Translate from './Translate';
-import { useLocale } from '../LocalizationProvider';
+import useLocale from '../../hooks/useLocale';
+import { locales, supportedLangs } from '../../locales';
 import Logo from '../Logo';
 import { ThemeContext } from '../ThemeProvider';
 
@@ -125,8 +124,8 @@ const MobileDropdownItem = styled(Dropdown.Item)(({ theme }) => {
 
 const Header: FC<HTMLAttributes<HTMLElement>> = (props) => {
   const theme = useContext(ThemeContext);
-  const { supportLocales, locale } = useLocale();
-  const router = useRouter();
+  const { locale } = useLocale();
+  // const router = useRouter();
 
   const { isDark, setDark } = theme;
 
@@ -134,16 +133,18 @@ const Header: FC<HTMLAttributes<HTMLElement>> = (props) => {
     setDark((prev) => !prev);
   }, [setDark]);
 
-  const langs = useMemo(() => Object.keys(supportLocales), [supportLocales]);
-
   const handleLangChange = useConstantFn((lang: string) => {
-    const { pathname, asPath, query } = router;
-    router.push({ pathname, query }, asPath, { locale: lang }).catch(noop);
-    Cookie.set('NEXT_LOCALE', lang, { expires: 30, sameSite: 'Strict' });
+    // eslint-disable-next-line no-console
+    console.log(lang);
+    // const { pathname, asPath, query } = router;
+    // router.push({ pathname, query }, asPath, { locale: lang }).catch(noop);
   });
 
   const setActiveClassName = useConstantFn((pathname: string) => {
-    return router.pathname.startsWith(pathname) ? 'active' : '';
+    // eslint-disable-next-line no-console
+    console.log(pathname);
+    // return router.pathname.startsWith(pathname) ? 'active' : '';
+    return '';
   });
 
   const mobileMenus = (
@@ -172,7 +173,7 @@ const Header: FC<HTMLAttributes<HTMLElement>> = (props) => {
               variant='text'
             />
           </Dropdown>
-          <LogoWrapper href='/'>
+          <LogoWrapper href='/zh-CN'>
             <Logo />
             <span className='sm-up'>xl vision</span>
           </LogoWrapper>
@@ -198,9 +199,9 @@ const Header: FC<HTMLAttributes<HTMLElement>> = (props) => {
           <Dropdown
             menus={
               <>
-                {langs.map((lang) => (
+                {supportedLangs.map((lang) => (
                   <Dropdown.Item key={lang} onClick={() => handleLangChange(lang)}>
-                    {supportLocales[lang].name}
+                    {locales[lang].name}
                   </Dropdown.Item>
                 ))}
               </>

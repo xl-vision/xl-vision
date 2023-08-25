@@ -9,7 +9,7 @@ export const middleware = (request: NextRequest) => {
     return NextResponse.next();
   }
 
-  const headers: Record<string, any> = {};
+  const headers: Negotiator.Headers = {};
 
   request.headers.forEach((v, k) => {
     headers[k] = v;

@@ -13,7 +13,7 @@ module.exports = {
           camelCase: true,
           pascalCase: true,
         },
-        ignore: ['not-found.tsx', 'next-env.d.ts'],
+        ignore: [/^routes\.([A-Za-z]|-)+\.tsx?$/, 'next-env.d.ts'],
       },
     ],
     '@typescript-eslint/require-await': 'off',

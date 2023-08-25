@@ -1,5 +1,5 @@
 {
-  "name": "@xl-vision/docs",
+  "name": "@xl-vision/docs-next",
   "version": "0.1.1-alpha.19",
   "description": "docs for xl-vision",
   "private": "true",
@@ -27,14 +27,15 @@
     "clsx": "^2.0.0",
     "codemirror": "^5.65.13",
     "js-cookie": "^3.0.5",
+    "negotiator": "^0.6.3",
     "next": "^13.4.19",
     "prop-types": "^15.8.1",
     "react-codemirror2": "^7.2.1",
     "sharp": "^0.32.5"
   },
   "peerDependencies": {
-    "react": ">=18.2.0",
-    "react-dom": ">=18.2.0",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0",
     "styled-components": ">=6.0.0"
   },
   "devDependencies": {
@@ -44,6 +45,7 @@
     "@next/eslint-plugin-next": "^13.4.19",
     "@types/codemirror": "^5.60.8",
     "@types/js-cookie": "^3.0.3",
+    "@types/negotiator": "^0.6.1",
     "@types/node": "17.0.4",
     "@types/prop-types": "^15.7.5",
     "cross-env": "^7.0.3",
