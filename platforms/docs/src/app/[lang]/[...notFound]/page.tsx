@@ -4,8 +4,8 @@ import { styled } from '@xl-vision/react';
 import { keyframes } from '@xl-vision/styled-engine';
 import Head from 'next/head';
 import Link from 'next/link';
-import useLocale from '../../../hooks/useLocale';
-import useSizeBelow from '../../../hooks/useSizeBelow';
+import useLocale from '@docs/hooks/useLocale';
+import useSizeBelow from '@docs/hooks/useSizeBelow';
 
 const bgShadow = keyframes`
     0% {

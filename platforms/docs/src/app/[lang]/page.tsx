@@ -2,11 +2,11 @@
 
 import { styled, Button } from '@xl-vision/react';
 import Link from 'next/link';
-import Footer from '../../components/Footer';
-import Header, { HEADER_HEIGHT } from '../../components/Header';
-import Logo from '../../components/Logo';
-import Sponsorship from '../../components/Sponsorship';
-import useLocale from '../../hooks/useLocale';
+import Footer from '@docs/components/Footer';
+import Header, { HEADER_HEIGHT } from '@docs/components/Header';
+import Logo from '@docs/components/Logo';
+import Sponsorship from '@docs/components/Sponsorship';
+import useLocale from '@docs/hooks/useLocale';
 
 const Main = styled('div')(({ theme }) => {
   const { breakpoints } = theme;

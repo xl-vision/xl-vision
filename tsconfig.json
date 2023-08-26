@@ -34,7 +34,8 @@
       "@xl-vision/icons": ["./packages/icons/src"],
       "@xl-vision/icons/*": ["./packages/icons/src/*"],
       "@xl-vision/react": ["./packages/react/src"],
-      "@xl-vision/react/*": ["./packages/react/src/*"]
+      "@xl-vision/react/*": ["./packages/react/src/*"],
+      "@docs/*": ["./platforms/docs/src/*"]
     }
   },
   "exclude": ["**/node_modules", "**/modern", "**/legacy", "**/dist"]

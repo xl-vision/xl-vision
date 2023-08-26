@@ -1,9 +1,14 @@
+// eslint-disable-next-line import/no-unresolved
+import { Analytics } from '@vercel/analytics/react';
+import { CssBaseline } from '@xl-vision/react';
 import { Metadata } from 'next';
 import { FC, ReactNode } from 'react';
-import CssBaseline from '../../components/CssBaseline';
-import StyledComponentsRegistry from '../../components/StyledComponentsRegistry';
-import ThemeProvider from '../../components/ThemeProvider';
-import { Lang, locales, supportedLangs } from '../../locales';
+import BaiduAnalytics from '@docs/components/BaiduAnalytics';
+import GlobalStyle from '@docs/components/GlobalStyle';
+import GoogleAnalytics from '@docs/components/GoogleAnalytics';
+import StyledComponentsRegistry from '@docs/components/StyledComponentsRegistry';
+import ThemeProvider from '@docs/components/ThemeProvider';
+import { Lang, locales, supportedLangs } from '@docs/locales';
 
 export const generateMetadata = async ({ params: { lang } }: { params: { lang: Lang } }) => {
   const locale = locales[lang];
@@ -24,7 +29,7 @@ export const generateStaticParams = () => {
   return supportedLangs.map((lang) => ({ lang }));
 };
 
-const RootLayout: FC<{ children: ReactNode; params: Record<string, string> }> = ({
+const Layout: FC<{ children: ReactNode; params: Record<string, string> }> = ({
   children,
   params,
 }) => {
@@ -34,12 +39,16 @@ const RootLayout: FC<{ children: ReactNode; params: Record<string, string> }> = 
         <StyledComponentsRegistry>
           <ThemeProvider>
             <CssBaseline />
+            <GlobalStyle />
             {children}
           </ThemeProvider>
         </StyledComponentsRegistry>
+        <BaiduAnalytics />
+        <GoogleAnalytics />
+        <Analytics />
       </body>
     </html>
   );
 };
 
-export default RootLayout;
+export default Layout;

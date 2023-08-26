@@ -24,7 +24,10 @@ const resolveAlias = () => {
     .reduce((a, b) => ({ ...a, [b.name]: b.path }), {});
 };
 
-const alias = resolveAlias();
+const alias = {
+  ...resolveAlias(),
+  '@docs': './platforms/docs/src',
+};
 
 module.exports = {
   root: true,
@@ -42,7 +45,7 @@ module.exports = {
       'eslint-import-resolver-custom-alias': {
         alias,
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
-        packages: ['packages/*'],
+        // packages: ['packages/*'],
       },
     },
   },
