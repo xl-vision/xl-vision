@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import useIsomorphicLayoutEffect from '../useIsomorphicLayoutEffect';
 
 /**
  * check if the first mount
@@ -6,11 +7,9 @@ import { useRef } from 'react';
 const useIsFirstMount = () => {
   const isFirst = useRef(true);
 
-  if (isFirst.current) {
+  useIsomorphicLayoutEffect(() => {
     isFirst.current = false;
-
-    return true;
-  }
+  }, []);
 
   return isFirst.current;
 };

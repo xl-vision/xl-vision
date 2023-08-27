@@ -1,8 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const rehypePrism = require('@mapbox/rehype-prism');
 const bundleAnalyzer = require('@next/bundle-analyzer');
-// const fs = require('fs-extra');
-// const path = require('path');
 
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
@@ -32,17 +30,6 @@ module.exports = async () => {
       externalDir: true,
     },
     webpack: (config, { defaultLoaders }) => {
-      // const alias = resolvePackageAlias();
-
-      config.resolve.alias = {
-        ...config.resolve.alias,
-        // ...alias,
-        // 'styled-components': path.resolve(__dirname, '../../node_modules/styled-components'),
-        // '@mdx-js/react': path.resolve(__dirname, '../../node_modules/@mdx-js/react'),
-        // 'react-dom$': path.resolve(__dirname, '../../node_modules/react-dom'),
-        // react$: path.resolve(__dirname, '../../node_modules/react'),
-      };
-
       config.module.rules.push({
         test: /\.mdx?$/,
         exclude: /node_modules/,
@@ -79,33 +66,3 @@ module.exports = async () => {
   };
   return withBundleAnalyzer(nextConfig);
 };
-
-// function resolvePackageAlias() {
-//   const basePath = path.join(__dirname, '../../packages');
-
-//   const files = fs.readdirSync(basePath);
-
-//   const packageNames = files
-//     .map((it) => path.join(basePath, it, 'package.json'))
-//     .map((it) => {
-//       const exist = fs.pathExistsSync(it);
-//       if (!exist) {
-//         return;
-//       }
-//       const json = fs.readJSONSync(it);
-//       const { name } = json;
-//       return name;
-//     });
-
-//   const srcExists = files
-//     .map((it) => path.join(basePath, it, 'src'))
-//     .map((it) => fs.pathExistsSync(it));
-
-//   const aliasMap = {};
-//   for (let i = 0; i < files.length; i++) {
-//     if (packageNames[i] && srcExists[i]) {
-//       aliasMap[packageNames[i]] = path.join(basePath, files[i], 'src');
-//     }
-//   }
-//   return aliasMap;
-// }

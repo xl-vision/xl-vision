@@ -1,10 +1,10 @@
 import { isDevelopment } from '@xl-vision/utils';
-import { useRouter } from 'next/router';
+import { useSearchParams } from 'next/navigation';
 
 const useIsDebugMode = () => {
-  const router = useRouter();
+  const params = useSearchParams();
 
-  return isDevelopment || 'debug' in router.query;
+  return isDevelopment || params.has('debug');
 };
 
 export default useIsDebugMode;

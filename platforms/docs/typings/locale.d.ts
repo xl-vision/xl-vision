@@ -1,6 +1,6 @@
 declare module '*.mdx?locale' {
-  import { ComponentType } from 'react';
+  import { LocaleComponentMap } from '@docs/components/Docs';
 
-  const component: ComponentType;
-  export default component;
+  const map: LocaleComponentMap;
+  export default map;
 }

@@ -2,7 +2,7 @@ import * as Icons from '@xl-vision/icons';
 import { Button, Input, Message, styled } from '@xl-vision/react';
 import ClipboardJs from 'clipboard';
 import { ComponentType, FC, useState, useCallback, useMemo, MouseEvent } from 'react';
-import { useLocale } from '../../../components/LocalizationProvider';
+import useLocale from '@docs/hooks/useLocale';
 
 export type IconComponentMap = {
   [key: string]: ComponentType;

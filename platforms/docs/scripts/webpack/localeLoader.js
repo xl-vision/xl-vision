@@ -1,9 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const docsPath = require
-  .resolve(path.join(__dirname, '../../src/components/Docs/index.tsx'))
-  .replace(/\\/g, '\\\\');
+// const docsPath = require
+//   .resolve(path.join(__dirname, '../../src/components/Docs/index.tsx'))
+//   .replace(/\\/g, '\\\\');
 
 module.exports = async function localeLoader() {
   const callback = this.async();
@@ -23,9 +23,11 @@ module.exports = async function localeLoader() {
   const dir = path.dirname(filePath);
 
   try {
-    const imports = [`import Docs from '${docsPath}'`];
+    const imports = [
+      // `import Docs from '${docsPath}'`
+    ];
 
-    this.addDependency(docsPath);
+    // this.addDependency(docsPath);
 
     const locales = [];
 
@@ -57,18 +59,18 @@ module.exports = async function localeLoader() {
             outline: ${contentName}Outline
           }`,
         );
-        if (it.fileName !== fileName) {
-          this.addDependency(path.join(dir, it.fileName));
-        }
+        // if (it.fileName !== fileName) {
+        //   this.addDependency(path.join(dir, it.fileName));
+        // }
       });
 
-    const relativePath = path.relative(this.rootContext, filePath);
+    // const relativePath = path.relative(this.rootContext, filePath);
 
-    const componentName = `Locale_${relativePath.replace(/([./\\-])/g, '_')}`;
+    // const componentName = `Locale_${relativePath.replace(/([./\\-])/g, '_')}`;
 
-    const result = `${imports.join('\n')}\nconst map = {\n  ${locales.join(
+    const result = `${imports.join('\n')}\nconst locales = {\n  ${locales.join(
       ',\n  ',
-    )}\n}\nconst ${componentName} = () => <Docs locales={map} />\nexport default ${componentName}`;
+    )}\n}\nexport default locales`;
 
     callback(null, result);
   } catch (err) {
