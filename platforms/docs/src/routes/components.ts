@@ -1,24 +1,7 @@
-'use client';
 
-/* eslint-disable import/no-unresolved */
-import { Lang } from './locales';
+import { RouteType } from './types';
 
-export type BaseRoute = {
-  titleMap: Record<Lang, string>;
-};
-
-export type NonLeftRoute = BaseRoute & {
-  children: Array<RouteType>;
-};
-
-export type LeftRoute = BaseRoute & {
-  name: string;
-  docs: () => Promise<typeof import('*.mdx?locale')>;
-};
-
-export type RouteType = LeftRoute | NonLeftRoute;
-
-export const componentRoutes: Array<RouteType> = [
+const componentRoutes: Array<RouteType> = [
   {
     titleMap: {
       'en-US': 'Overview',
@@ -316,47 +299,4 @@ export const componentRoutes: Array<RouteType> = [
   },
 ];
 
-export const hookRoutes: Array<RouteType> = [
-  {
-    titleMap: {
-      'en-US': 'Overview',
-      'zh-CN': '总览',
-    },
-    name: '',
-  },
-  {
-    titleMap: {
-      'en-US': 'useTransition',
-      'zh-CN': 'useTransition',
-    },
-    name: 'useTransition',
-  },
-  {
-    titleMap: {
-      'en-US': 'useCssTransition',
-      'zh-CN': 'useCssTransition',
-    },
-    name: 'useCssTransition',
-  },
-  {
-    titleMap: {
-      'en-US': 'usePopper',
-      'zh-CN': 'usePopper',
-    },
-    name: 'usePopper',
-  },
-  {
-    titleMap: {
-      'en-US': 'useNotication',
-      'zh-CN': 'useNotication',
-    },
-    name: 'useNotication',
-  },
-  {
-    titleMap: {
-      'en-US': 'useForm',
-      'zh-CN': 'useForm',
-    },
-    name: 'useForm',
-  },
-];
+export default componentRoutes;

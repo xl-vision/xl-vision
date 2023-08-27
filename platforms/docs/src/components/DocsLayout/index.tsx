@@ -3,12 +3,12 @@
 import { styled, Row, Affix, BackTop } from '@xl-vision/react';
 import { notFound, useParams } from 'next/navigation';
 import { FC, useMemo, useState, useEffect } from 'react';
+import { getRouteNameMap } from '@docs/utils/route';
 import { RouteType } from '../../routes';
 import Aside from '../Aside';
 import Docs, { LocaleComponentMap } from '../Docs';
 import Footer from '../Footer';
 import Header, { HEADER_HEIGHT } from '../Header';
-import Markdown from '../Markdown';
 
 export type BaseLayoutProps = {
   routes: Array<RouteType>;
@@ -97,26 +97,11 @@ const MainWrapper = styled('div')(({ theme }) => {
   };
 });
 
-const flatRoutes = (
-  routes: Array<RouteType>,
-  record: Record<string, () => Promise<typeof import('*.mdx?locale')>> = {},
-): Record<string, () => Promise<typeof import('*.mdx?locale')>> => {
-  routes.forEach((it) => {
-    if ('children' in it) {
-      flatRoutes(it.children, record);
-      return;
-    }
-    record[it.name] = it.docs;
-  });
-
-  return record;
-};
-
-const DocsRouteRender: FC<BaseLayoutProps> = ({ basePath, routes, appendEn }) => {
+const DocsLayout: FC<BaseLayoutProps> = ({ basePath, routes, appendEn }) => {
   const { name } = useParams();
 
-  const flattedRoutes = useMemo(() => {
-    return flatRoutes(routes);
+  const routeMap = useMemo(() => {
+    return getRouteNameMap(routes);
   }, [routes]);
 
   const lazyDocs = useMemo(() => {
@@ -128,9 +113,9 @@ const DocsRouteRender: FC<BaseLayoutProps> = ({ basePath, routes, appendEn }) =>
     }
 
     if (key !== undefined) {
-      return flattedRoutes[key];
+      return routeMap[key].docs;
     }
-  }, [flattedRoutes, name]);
+  }, [routeMap, name]);
 
   const [docs, setDocs] = useState<LocaleComponentMap>();
 
@@ -180,4 +165,4 @@ const DocsRouteRender: FC<BaseLayoutProps> = ({ basePath, routes, appendEn }) =>
   );
 };
 
-export default DocsRouteRender;
+export default DocsLayout;
