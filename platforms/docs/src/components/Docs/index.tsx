@@ -8,7 +8,7 @@ import { HEADER_HEIGHT } from '../Header';
 export type LocaleComponentMap = Record<Lang, { component: ComponentType; outline: Outline }>;
 
 export type DocsProps = {
-  map: LocaleComponentMap;
+  docs: LocaleComponentMap;
 };
 
 export type Outline = Array<{
@@ -18,10 +18,10 @@ export type Outline = Array<{
   debug?: boolean;
 }>;
 
-const Docs: FC<DocsProps> = ({ map }) => {
+const Docs: FC<DocsProps> = ({ docs }) => {
   const { lang } = useLocale();
 
-  const docsInfo = map[lang] || map[defaultLang];
+  const docsInfo = docs[lang] || docs[defaultLang];
 
   const { component: Component, outline } = docsInfo;
 

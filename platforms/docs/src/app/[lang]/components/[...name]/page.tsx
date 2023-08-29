@@ -1,5 +1,3 @@
-'use client';
-
 import DocsLayout from '@docs/components/DocsLayout';
 import { Lang } from '@docs/locales';
 import { componentRoutes } from '@docs/routes';

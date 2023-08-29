@@ -9,6 +9,7 @@ import LightTheme from './LightTheme';
 import Translate from './Translate';
 import useLocale from '../../hooks/useLocale';
 import { locales, supportedLangs } from '../../locales';
+import LocaleLink from '../LocaleLink';
 import Logo from '../Logo';
 import { ThemeContext } from '../ThemeProvider';
 
@@ -60,7 +61,7 @@ const HeaderNav = styled('header')(({ theme }) => {
   };
 });
 
-const LogoWrapper = styled(Link)(({ theme }) => {
+const LogoWrapper = styled(LocaleLink)(({ theme }) => {
   return {
     display: 'inline-flex',
     height: '100%',
@@ -150,13 +151,13 @@ const Header: FC<HTMLAttributes<HTMLElement>> = (props) => {
   const mobileMenus = (
     <>
       <MobileDropdownItem className={setActiveClassName('/components')}>
-        <Link href='/components'>{locale.header.component}</Link>
+        <LocaleLink href='/components'>{locale.header.component}</LocaleLink>
       </MobileDropdownItem>
       <MobileDropdownItem className={setActiveClassName('/hooks')}>
-        <Link href='/hooks'>{locale.header.hooks}</Link>
+        <LocaleLink href='/hooks'>{locale.header.hooks}</LocaleLink>
       </MobileDropdownItem>
       <MobileDropdownItem className={setActiveClassName('/playground')}>
-        <Link href='/playground'>{locale.header.playground}</Link>
+        <LocaleLink href='/playground'>{locale.header.playground}</LocaleLink>
       </MobileDropdownItem>
     </>
   );
@@ -173,7 +174,7 @@ const Header: FC<HTMLAttributes<HTMLElement>> = (props) => {
               variant='text'
             />
           </Dropdown>
-          <LogoWrapper href='/zh-CN'>
+          <LogoWrapper href='/'>
             <Logo />
             <span className='sm-up'>xl vision</span>
           </LogoWrapper>

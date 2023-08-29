@@ -1,9 +1,9 @@
 'use client';
 
 import { styled, Button } from '@xl-vision/react';
-import Link from 'next/link';
 import Footer from '@docs/components/Footer';
 import Header, { HEADER_HEIGHT } from '@docs/components/Header';
+import LocaleLink from '@docs/components/LocaleLink';
 import Logo from '@docs/components/Logo';
 import Sponsorship from '@docs/components/Sponsorship';
 import useLocale from '@docs/hooks/useLocale';
@@ -86,9 +86,9 @@ const Home = () => {
         </div>
         <div className='desc'>{locale.pages.index.desc}</div>
         <div className='action'>
-          <Link href='/components'>
+          <LocaleLink href='/components'>
             <Button color='primary'>{locale.pages.index.btnStart}</Button>
-          </Link>
+          </LocaleLink>
           <Button
             color='default'
             href='https://github.com/xl-vision/xl-vision'

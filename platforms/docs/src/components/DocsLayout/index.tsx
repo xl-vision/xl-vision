@@ -1,19 +1,18 @@
 'use client';
 
 import { styled, Row, Affix, BackTop } from '@xl-vision/react';
-import { notFound, useParams } from 'next/navigation';
-import { FC, useMemo, useState, useEffect } from 'react';
-import { getRouteNameMap } from '@docs/utils/route';
+import { FC } from 'react';
 import { RouteType } from '../../routes';
 import Aside from '../Aside';
 import Docs, { LocaleComponentMap } from '../Docs';
 import Footer from '../Footer';
 import Header, { HEADER_HEIGHT } from '../Header';
 
-export type BaseLayoutProps = {
+export type DocsLayoutProps = {
   routes: Array<RouteType>;
   appendEn?: boolean;
   basePath: string;
+  docs: LocaleComponentMap;
 };
 
 const Root = styled('div')(({ theme }) => {
@@ -97,37 +96,7 @@ const MainWrapper = styled('div')(({ theme }) => {
   };
 });
 
-const DocsLayout: FC<BaseLayoutProps> = ({ basePath, routes, appendEn }) => {
-  const { name } = useParams();
-
-  const routeMap = useMemo(() => {
-    return getRouteNameMap(routes);
-  }, [routes]);
-
-  const lazyDocs = useMemo(() => {
-    let key: string | undefined;
-    if (!name) {
-      key = '';
-    } else if (Array.isArray(name) && name.length === 1) {
-      key = name[0];
-    }
-
-    if (key !== undefined) {
-      return routeMap[key].docs;
-    }
-  }, [routeMap, name]);
-
-  const [docs, setDocs] = useState<LocaleComponentMap>();
-
-  useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    lazyDocs?.().then((it) => setDocs(it.default));
-  }, [lazyDocs]);
-
-  if (!lazyDocs) {
-    return notFound();
-  }
-
+const DocsLayout: FC<DocsLayoutProps> = ({ basePath, routes, appendEn, docs }) => {
   return (
     <Root>
       <Header />
@@ -156,7 +125,7 @@ const DocsLayout: FC<BaseLayoutProps> = ({ basePath, routes, appendEn }) => {
         </Row.Col>
         <Row.Col column={{ xs: 24, md: 18, xl: 19, xxl: 20 }}>
           <MainWrapper>
-            {docs && <Docs map={docs} />}
+            <Docs docs={docs} />
             <Footer />
           </MainWrapper>
         </Row.Col>

@@ -10,7 +10,7 @@ export type NonLeftRoute = BaseRoute & {
 
 export type LeftRoute = BaseRoute & {
   name: string;
-  docs: () => Promise<typeof import('*.mdx?locale')>;
+  // docs: () => Promise<typeof import('*.mdx?locale')>;
 };
 
 export type RouteType = LeftRoute | NonLeftRoute;

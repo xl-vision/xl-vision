@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { FC, Children, cloneElement, HTMLAttributes, forwardRef, useMemo } from 'react';
 import useLocale from '@docs/hooks/useLocale';
 import { Lang, defaultLang } from '@docs/locales';
+import { join } from '@docs/utils/link';
 import { RouteType } from '../../routes';
 
 const LeftNode = styled('span')(() => {
@@ -103,7 +104,7 @@ const traverseRoutes = (
     } else {
       const { name } = it;
 
-      const fullPath = `/${lang}/${basePath}/${name}`;
+      const fullPath = join(`/${lang}`, basePath, name);
 
       const enUsName = titleMap['en-US'];
       title = lang === 'en-US' ? enUsName : appendEn ? `${title} ${enUsName}` : title;

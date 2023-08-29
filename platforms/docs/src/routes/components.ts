@@ -1,4 +1,3 @@
-
 import { RouteType } from './types';
 
 const componentRoutes: Array<RouteType> = [
@@ -8,7 +7,6 @@ const componentRoutes: Array<RouteType> = [
       'zh-CN': '总览',
     },
     name: '',
-    docs: () => import('@docs/mdx/components/overview/index.en-US.mdx?locale'),
   },
   {
     titleMap: {
@@ -16,7 +14,6 @@ const componentRoutes: Array<RouteType> = [
       'zh-CN': '色彩',
     },
     name: 'Color',
-    docs: () => import('@docs/mdx/components/color/index.en-US.mdx?locale'),
   },
   {
     titleMap: {
@@ -30,7 +27,6 @@ const componentRoutes: Array<RouteType> = [
           'zh-CN': '安装',
         },
         name: 'install',
-        docs: () => import('@docs/mdx/components/install/index.en-US.mdx?locale'),
       },
     ],
   },
@@ -46,7 +42,6 @@ const componentRoutes: Array<RouteType> = [
           'zh-CN': '图标',
         },
         name: 'Icon',
-        docs: () => import('@docs/mdx/components/icon/index.en-US.mdx?locale'),
       },
       {
         titleMap: {
@@ -54,7 +49,6 @@ const componentRoutes: Array<RouteType> = [
           'zh-CN': '按钮',
         },
         name: 'Button',
-        docs: () => import('@xl-vision/react/Button/__doc__/index.en-US.mdx?locale'),
       },
     ],
   },
