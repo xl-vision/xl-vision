@@ -1,7 +1,10 @@
-export { styled, createGlobalStyles } from './styles';
+export { default as styled } from './styled';
+export { default as creatGlobalStyles } from './createGlobalStyles';
+
 export type { XlOptions } from './styles';
 
-export { ThemeProvider, useTheme } from './ThemeProvider';
+export { default as ThemeProvider } from './ThemeProvider';
+export { default as useTheme } from './useTheme';
 export type {
   ThemeProviderProps,
   Theme,
