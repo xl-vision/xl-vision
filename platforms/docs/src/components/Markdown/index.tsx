@@ -1,8 +1,7 @@
 'use client';
 
-import { MDXProvider } from '@mdx-js/react';
-import PropTypes from 'prop-types';
-import { ReactNode, FC } from 'react';
+import type { MDXComponents } from 'mdx/types';
+import { ReactNode } from 'react';
 import a from './a';
 import blockquote from './blockquote';
 import code from './code';
@@ -16,7 +15,7 @@ export type MarkdownProps = {
   className?: string;
 };
 
-const components: any = {
+const components: MDXComponents = {
   DemoBox,
   wrapper: Wrapper,
   pre,
@@ -26,18 +25,9 @@ const components: any = {
   table,
 };
 
-const Markdown: FC<MarkdownProps> = (props) => {
-  const { children, ...others } = props;
-  return (
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    <MDXProvider {...others} components={components}>
-      {children}
-    </MDXProvider>
-  );
+export const useMDXComponents = (defaultComponents: MDXComponents): MDXComponents => {
+  return {
+    ...components,
+    ...defaultComponents,
+  };
 };
-
-Markdown.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
-export default Markdown;

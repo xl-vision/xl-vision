@@ -1,11 +1,12 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const rehypePrism = require('@mapbox/rehype-prism');
 const bundleAnalyzer = require('@next/bundle-analyzer');
+const path = require('path');
+const demoPlugin = require('./scripts/webpack/mdx/demoPlugin');
 
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 });
-const demoPlugin = require('./scripts/webpack/mdx/demoPlugin');
 
 module.exports = async () => {
   const remarkGfm = (await import('remark-gfm')).default;
@@ -28,8 +29,19 @@ module.exports = async () => {
       typedRoutes: false,
       esmExternals: true,
       externalDir: true,
+      serverActions: true,
+    },
+    modularizeImports: {
+      '@xl-vision/react': {
+        transform: '@xl-vision/react/{{member}}',
+      },
     },
     webpack: (config, { defaultLoaders }) => {
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        '@mdx-components': path.resolve(__dirname, 'src/components/Markdown'),
+      };
+
       config.module.rules.push({
         test: /\.mdx?$/,
         exclude: /node_modules/,
@@ -51,7 +63,7 @@ module.exports = async () => {
                 /** @type {import('@mdx-js/loader').Options} */
                 options: {
                   jsx: true,
-                  providerImportSource: '@mdx-js/react',
+                  providerImportSource: '@mdx-components',
                   rehypePlugins: [rehypePrism],
                   remarkPlugins: [remarkGfm, remarkEmoji, demoPlugin],
                 },

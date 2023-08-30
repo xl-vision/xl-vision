@@ -1,3 +1,5 @@
+'use client';
+
 import { Anchor, Row } from '@xl-vision/react';
 import { ComponentType, FC } from 'react';
 import useLocale from '@docs/hooks/useLocale';

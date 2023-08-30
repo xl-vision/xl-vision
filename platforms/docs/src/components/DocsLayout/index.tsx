@@ -1,10 +1,9 @@
 'use client';
 
 import { styled, Row, Affix, BackTop } from '@xl-vision/react';
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import { RouteType } from '../../routes';
 import Aside from '../Aside';
-import Docs, { LocaleComponentMap } from '../Docs';
 import Footer from '../Footer';
 import Header, { HEADER_HEIGHT } from '../Header';
 
@@ -12,7 +11,7 @@ export type DocsLayoutProps = {
   routes: Array<RouteType>;
   appendEn?: boolean;
   basePath: string;
-  docs: LocaleComponentMap;
+  children: ReactNode;
 };
 
 const Root = styled('div')(({ theme }) => {
@@ -96,7 +95,7 @@ const MainWrapper = styled('div')(({ theme }) => {
   };
 });
 
-const DocsLayout: FC<DocsLayoutProps> = ({ basePath, routes, appendEn, docs }) => {
+const DocsLayout: FC<DocsLayoutProps> = ({ basePath, routes, appendEn, children }) => {
   return (
     <Root>
       <Header />
@@ -125,7 +124,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ basePath, routes, appendEn, docs }) =
         </Row.Col>
         <Row.Col column={{ xs: 24, md: 18, xl: 19, xxl: 20 }}>
           <MainWrapper>
-            <Docs docs={docs} />
+            {children}
             <Footer />
           </MainWrapper>
         </Row.Col>

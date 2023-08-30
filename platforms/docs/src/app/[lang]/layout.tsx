@@ -5,7 +5,6 @@ import BaiduAnalytics from '@docs/components/BaiduAnalytics';
 import CssBaseline from '@docs/components/CssBaseline';
 import GlobalStyle from '@docs/components/GlobalStyle';
 import GoogleAnalytics from '@docs/components/GoogleAnalytics';
-import Markdown from '@docs/components/Markdown';
 import StyledComponentsRegistry from '@docs/components/StyledComponentsRegistry';
 import ThemeProvider from '@docs/components/ThemeProvider';
 import { Lang, locales, supportedLangs } from '@docs/locales';
@@ -40,7 +39,7 @@ const Layout: FC<{ children: ReactNode; params: Record<string, string> }> = ({
           <ThemeProvider>
             <CssBaseline />
             <GlobalStyle />
-            <Markdown>{children}</Markdown>
+            {children}
           </ThemeProvider>
         </StyledComponentsRegistry>
         <BaiduAnalytics />

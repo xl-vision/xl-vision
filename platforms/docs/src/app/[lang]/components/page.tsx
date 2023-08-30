@@ -1,11 +1,16 @@
-'use client';
-
 import DocsLayout from '@docs/components/DocsLayout';
-import docs from '@docs/mdx/components/overview/index.en-US.mdx?locale';
 import { componentRoutes } from '@docs/routes';
+import createGenerateMetadata from '@docs/utils/createGenerateMetadata';
+import Docs from './(_private)/Docs';
+
+export const generateMetadata = createGenerateMetadata(componentRoutes, '');
 
 const Page = () => {
-  return <DocsLayout basePath='components' docs={docs} routes={componentRoutes} />;
+  return (
+    <DocsLayout basePath='components' routes={componentRoutes}>
+      <Docs />
+    </DocsLayout>
+  );
 };
 
 export default Page;

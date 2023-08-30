@@ -23,9 +23,7 @@ module.exports = async function localeLoader() {
   const dir = path.dirname(filePath);
 
   try {
-    const imports = [
-      // `import Docs from '${docsPath}'`
-    ];
+    const imports = [`import Docs from '@docs/components/Docs'`];
 
     // this.addDependency(docsPath);
 
@@ -70,7 +68,7 @@ module.exports = async function localeLoader() {
 
     const result = `${imports.join('\n')}\nconst locales = {\n  ${locales.join(
       ',\n  ',
-    )}\n}\nexport default locales`;
+    )}\n}\nconst LocaleDocs = () => <Docs docs={locales} />\nexport default LocaleDocs`;
 
     callback(null, result);
   } catch (err) {
