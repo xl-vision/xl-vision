@@ -66,9 +66,9 @@ module.exports = async function localeLoader() {
 
     // const componentName = `Locale_${relativePath.replace(/([./\\-])/g, '_')}`;
 
-    const result = `${imports.join('\n')}\nconst locales = {\n  ${locales.join(
+    const result = `${imports.join('\n')}\nconst docs = {\n  ${locales.join(
       ',\n  ',
-    )}\n}\nconst LocaleDocs = () => <Docs docs={locales} />\nexport default LocaleDocs`;
+    )}\n}\nconst LocaleDocs = () => <Docs docs={docs} />\nexport default LocaleDocs`;
 
     callback(null, result);
   } catch (err) {
