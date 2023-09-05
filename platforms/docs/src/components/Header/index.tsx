@@ -3,18 +3,16 @@
 import { useConstantFn } from '@xl-vision/hooks';
 import { DownOutlined, GithubFilled, MenuOutlined } from '@xl-vision/icons';
 import { Button, styled, Tooltip, Dropdown } from '@xl-vision/react';
-import Link from 'next/link';
-// import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { FC, HTMLAttributes, useContext, useCallback } from 'react';
 import DarkTheme from './DarkTheme';
 import LightTheme from './LightTheme';
 import Translate from './Translate';
 import useLocale from '../../hooks/useLocale';
-import { locales, supportedLangs } from '../../locales';
+import { Lang, locales, supportedLangs } from '../../locales';
 import LocaleLink from '../LocaleLink';
 import Logo from '../Logo';
 import { ThemeContext } from '../ThemeProvider';
-import { usePathname, useRouter } from 'next/navigation';
 
 export const HEADER_HEIGHT = 60;
 
@@ -126,7 +124,7 @@ const MobileDropdownItem = styled(Dropdown.Item)(({ theme }) => {
   };
 });
 
-const langRegex = new RegExp(`$(${supportedLangs.map(it => it.replace(/\-/g, '\-')).join('|')})`)
+const langRegex = new RegExp(`^/(${supportedLangs.map((it) => it.replace(/-/g, '-')).join('|')})`);
 
 const Header: FC<HTMLAttributes<HTMLElement>> = (props) => {
   const theme = useContext(ThemeContext);
@@ -140,17 +138,14 @@ const Header: FC<HTMLAttributes<HTMLElement>> = (props) => {
     setDark((prev) => !prev);
   }, [setDark]);
 
-  const handleLangChange = useConstantFn((lang: string) => {
+  const handleLangChange = useConstantFn((_lang: Lang) => {
+    const newPathname = pathname.replace(langRegex, `/${_lang}`);
 
-    const newPathname = pathname.replace(langRegex, lang)
-
-    console.log(newPathname, pathname)
-
-    if(newPathname === pathname) {
-      return
+    if (newPathname === pathname) {
+      return;
     }
 
-    router.push(newPathname)
+    router.push(newPathname);
   });
 
   const setActiveClassName = useConstantFn((target: string) => {
@@ -209,9 +204,9 @@ const Header: FC<HTMLAttributes<HTMLElement>> = (props) => {
           <Dropdown
             menus={
               <>
-                {supportedLangs.map((lang) => (
-                  <Dropdown.Item key={lang} onClick={() => handleLangChange(lang)}>
-                    {locales[lang].name}
+                {supportedLangs.map((it) => (
+                  <Dropdown.Item key={it} onClick={() => handleLangChange(it)}>
+                    {locales[it].name}
                   </Dropdown.Item>
                 ))}
               </>

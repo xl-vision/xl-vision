@@ -1,3 +1,5 @@
+'use client';
+
 import { styled } from '@xl-vision/react';
 import dynamic from 'next/dynamic';
 import { FC, useState, useEffect } from 'react';
