@@ -11,7 +11,7 @@ const StyledComponentsRegistry: FC<{ children: ReactNode }> = ({ children }) => 
   useServerInsertedHTML(() => {
     const styles = styledComponentsStyleSheet.getStyleElement();
     styledComponentsStyleSheet.instance.clearTag();
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+
     return styles;
   });
 

@@ -55,7 +55,7 @@ const ActiveLink: FC<Record<any, any>> = (props) => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const child = Children.only(children);
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   const classes = clsx(child.className, {
     active: (href as string).replace(/\/$/, '') === pathname,
   });

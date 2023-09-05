@@ -54,7 +54,7 @@ const AsideWrapper = styled(Aside)(({ theme }) => {
     height: '100%',
     maxHeight: `calc(100vh - ${HEADER_HEIGHT}px)`,
     overflowY: 'hidden',
-    ':hover': {
+    '&:hover': {
       overflowY: 'auto',
     },
 

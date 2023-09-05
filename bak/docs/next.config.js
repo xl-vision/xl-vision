@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 const rehypePrism = require('@mapbox/rehype-prism');
 const bundleAnalyzer = require('@next/bundle-analyzer');
 // const fs = require('fs-extra');

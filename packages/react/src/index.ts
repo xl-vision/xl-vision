@@ -1,5 +1,5 @@
 export { default as styled } from './styled';
-export { default as creatGlobalStyles } from './createGlobalStyles';
+export { default as createGlobalStyles } from './createGlobalStyles';
 
 export type { XlOptions } from './styles';
 

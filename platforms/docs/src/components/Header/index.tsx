@@ -14,6 +14,7 @@ import { locales, supportedLangs } from '../../locales';
 import LocaleLink from '../LocaleLink';
 import Logo from '../Logo';
 import { ThemeContext } from '../ThemeProvider';
+import { usePathname, useRouter } from 'next/navigation';
 
 export const HEADER_HEIGHT = 60;
 
@@ -125,10 +126,13 @@ const MobileDropdownItem = styled(Dropdown.Item)(({ theme }) => {
   };
 });
 
+const langRegex = new RegExp(`$(${supportedLangs.map(it => it.replace(/\-/g, '\-')).join('|')})`)
+
 const Header: FC<HTMLAttributes<HTMLElement>> = (props) => {
   const theme = useContext(ThemeContext);
-  const { locale } = useLocale();
-  // const router = useRouter();
+  const { locale, lang } = useLocale();
+  const pathname = usePathname();
+  const router = useRouter();
 
   const { isDark, setDark } = theme;
 
@@ -137,28 +141,31 @@ const Header: FC<HTMLAttributes<HTMLElement>> = (props) => {
   }, [setDark]);
 
   const handleLangChange = useConstantFn((lang: string) => {
-    // eslint-disable-next-line no-console
-    console.log(lang);
-    // const { pathname, asPath, query } = router;
-    // router.push({ pathname, query }, asPath, { locale: lang }).catch(noop);
+
+    const newPathname = pathname.replace(langRegex, lang)
+
+    console.log(newPathname, pathname)
+
+    if(newPathname === pathname) {
+      return
+    }
+
+    router.push(newPathname)
   });
 
-  const setActiveClassName = useConstantFn((pathname: string) => {
-    // eslint-disable-next-line no-console
-    console.log(pathname);
-    // return router.pathname.startsWith(pathname) ? 'active' : '';
-    return '';
+  const setActiveClassName = useConstantFn((target: string) => {
+    return pathname.startsWith(`/${lang}/${target}`) ? 'active' : '';
   });
 
   const mobileMenus = (
     <>
-      <MobileDropdownItem className={setActiveClassName('/components')}>
+      <MobileDropdownItem className={setActiveClassName('components')}>
         <LocaleLink href='/components'>{locale.header.component}</LocaleLink>
       </MobileDropdownItem>
-      <MobileDropdownItem className={setActiveClassName('/hooks')}>
+      <MobileDropdownItem className={setActiveClassName('hooks')}>
         <LocaleLink href='/hooks'>{locale.header.hooks}</LocaleLink>
       </MobileDropdownItem>
-      <MobileDropdownItem className={setActiveClassName('/playground')}>
+      <MobileDropdownItem className={setActiveClassName('playground')}>
         <LocaleLink href='/playground'>{locale.header.playground}</LocaleLink>
       </MobileDropdownItem>
     </>
@@ -184,19 +191,19 @@ const Header: FC<HTMLAttributes<HTMLElement>> = (props) => {
         <div className='right'>
           <Menus className='md-up'>
             <li>
-              <Link className={setActiveClassName('/components')} href='/components'>
+              <LocaleLink className={setActiveClassName('components')} href='/components'>
                 {locale.header.component}
-              </Link>
+              </LocaleLink>
             </li>
             <li>
-              <Link className={setActiveClassName('/hooks')} href='/hooks'>
+              <LocaleLink className={setActiveClassName('hooks')} href='/hooks'>
                 {locale.header.hooks}
-              </Link>
+              </LocaleLink>
             </li>
             <li>
-              <Link className={setActiveClassName('/playground')} href='/playground'>
+              <LocaleLink className={setActiveClassName('playground')} href='/playground'>
                 {locale.header.playground}
-              </Link>
+              </LocaleLink>
             </li>
           </Menus>
           <Dropdown
