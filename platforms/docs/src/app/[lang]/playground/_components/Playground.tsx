@@ -28,7 +28,7 @@ const Playground = () => {
   const code = useMemo(() => {
     if (!defaultCode) {
       return [
-        ``,
+        `import React from 'react'`,
         `import { Button } from '@xl-vision/react';`,
         '',
         `export default () => {`,

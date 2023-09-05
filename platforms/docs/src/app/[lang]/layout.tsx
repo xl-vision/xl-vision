@@ -6,7 +6,7 @@ import CssBaseline from '@docs/components/CssBaseline';
 import GlobalStyle from '@docs/components/GlobalStyle';
 import GoogleAnalytics from '@docs/components/GoogleAnalytics';
 import StyledComponentsRegistry from '@docs/components/StyledComponentsRegistry';
-import ThemeProvider from '@docs/components/ThemeProvider';
+import ThemeProvider from '@docs/components/ThemeProvider/ThemeProvider';
 import { Lang, locales, supportedLangs } from '@docs/locales';
 
 export const generateMetadata = async ({ params: { lang } }: { params: { lang: Lang } }) => {

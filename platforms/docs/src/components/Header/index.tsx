@@ -4,7 +4,7 @@ import { useConstantFn } from '@xl-vision/hooks';
 import { DownOutlined, GithubFilled, MenuOutlined } from '@xl-vision/icons';
 import { Button, styled, Tooltip, Dropdown } from '@xl-vision/react';
 import { usePathname, useRouter } from 'next/navigation';
-import { FC, HTMLAttributes, useContext, useCallback } from 'react';
+import { FC, HTMLAttributes, useCallback } from 'react';
 import DarkTheme from './DarkTheme';
 import LightTheme from './LightTheme';
 import Translate from './Translate';
@@ -12,7 +12,7 @@ import useLocale from '../../hooks/useLocale';
 import { Lang, locales, supportedLangs } from '../../locales';
 import LocaleLink from '../LocaleLink';
 import Logo from '../Logo';
-import { ThemeContext } from '../ThemeProvider';
+import useTheme from '../ThemeProvider/useTheme';
 
 export const HEADER_HEIGHT = 60;
 
@@ -127,7 +127,7 @@ const MobileDropdownItem = styled(Dropdown.Item)(({ theme }) => {
 const langRegex = new RegExp(`^/(${supportedLangs.map((it) => it.replace(/-/g, '-')).join('|')})`);
 
 const Header: FC<HTMLAttributes<HTMLElement>> = (props) => {
-  const theme = useContext(ThemeContext);
+  const theme = useTheme();
   const { locale, lang } = useLocale();
   const pathname = usePathname();
   const router = useRouter();
