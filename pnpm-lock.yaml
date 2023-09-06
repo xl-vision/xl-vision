@@ -357,7 +357,7 @@ importers:
         specifier: ^0.6.3
         version: 0.6.3
       next:
-        specifier: ^13.4.19
+        specifier: ^13.4.12
         version: 13.4.19(@babel/core@7.22.11)(react-dom@18.2.0)(react@18.2.0)
       prop-types:
         specifier: ^15.8.1
@@ -373,10 +373,10 @@ importers:
         specifier: ^2.3.0
         version: 2.3.0
       '@next/bundle-analyzer':
-        specifier: ^13.4.19
+        specifier: ^13.4.12
         version: 13.4.19
       '@next/eslint-plugin-next':
-        specifier: ^13.4.19
+        specifier: ^13.4.12
         version: 13.4.19
       '@types/js-cookie':
         specifier: ^3.0.3
