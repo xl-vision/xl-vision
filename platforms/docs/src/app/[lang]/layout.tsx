@@ -28,10 +28,7 @@ export const generateStaticParams = () => {
   return supportedLangs.map((lang) => ({ lang }));
 };
 
-const Layout: FC<{ children: ReactNode; params: Record<string, string> }> = ({
-  children,
-  params,
-}) => {
+const Layout: FC<{ children: ReactNode; params: { lang: Lang } }> = ({ children, params }) => {
   return (
     <html lang={params.lang}>
       <body>
