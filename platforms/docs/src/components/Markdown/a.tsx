@@ -1,5 +1,7 @@
 import { styled } from '@xl-vision/react';
 import NextLink from 'next/link';
+import { AnchorHTMLAttributes, FC, useMemo } from 'react';
+import useLocale from '@docs/hooks/useLocale';
 
 const StyledLink = styled(NextLink)(
   ({ theme }) => `
@@ -12,16 +14,19 @@ const StyledLink = styled(NextLink)(
 `,
 );
 
-const Link: typeof StyledLink = (props) => {
+const Link: FC<AnchorHTMLAttributes<HTMLAnchorElement>> = (props) => {
   const { href, ...others } = props;
 
-  if (typeof href === 'string') {
-    if (/^ *\//.exec(href)) {
-      return <StyledLink {...others} href={href} />;
-    }
-  }
+  const { lang } = useLocale();
 
-  return <StyledLink {...others} href={href} target='_blank' />;
+  const newHref = useMemo(() => {
+    if (href && /^\//.test(href)) {
+      return `${lang}${href}`;
+    }
+    return href || '';
+  }, [href, lang]);
+
+  return <StyledLink {...others} href={newHref} target='_blank' />;
 };
 
 export default Link;
