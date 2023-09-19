@@ -13,7 +13,7 @@
     "analyze": "cross-env ANALYZE=true npm run docs"
   },
   "dependencies": {
-    "@babel/standalone": "^7.22.10",
+    "@babel/standalone": "^7.22.19",
     "@mdx-js/react": "^2.3.0",
     "@vercel/analytics": "^1.0.2",
     "@xl-vision/hooks": "workspace:^",
