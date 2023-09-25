@@ -58,7 +58,7 @@ importers:
         specifier: ^0.4.3
         version: 0.4.3(rollup@3.28.1)
       '@testing-library/jest-dom':
-        specifier: ^5.16.5
+        specifier: ^5.17.0
         version: 5.17.0
       '@testing-library/react':
         specifier: ^14.0.0
