@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 import { locales, defaultLang, supportedLangs, Lang } from '../locales';
 
 const useLocale = () => {
-  const { lang } = useParams() as { lang: Lang };
+  const { lang } = useParams<{ lang: Lang }>();
 
   const actualLang = useMemo(() => {
     if (supportedLangs.includes(lang)) {
