@@ -258,8 +258,8 @@ importers:
         specifier: ^15.7.8
         version: 15.7.8
       '@types/react-is':
-        specifier: '>=18.2.2'
-        version: 18.2.2
+        specifier: '>=18.2.3'
+        version: 18.2.3
 
   packages/styled-engine:
     dependencies:
@@ -3068,8 +3068,8 @@ packages:
       '@types/react': 18.2.21
     dev: true
 
-  /@types/react-is@18.2.2:
-    resolution: {integrity: sha512-bNmRDADVsOivYLvqYQATYRbf60SlK++spu97SK65pSCjdtuTqczFexBQtOK+gQdG6cqOsvQZ3mR12ueEoaq5iA==}
+  /@types/react-is@18.2.3:
+    resolution: {integrity: sha512-w45BV1PsuELGu0P+y7sy+w2sY7qMfDVFrf4+30smfViAxgnOV6MGwdCTAmz32BdYRr0E87xH6L6k6qBB2jjRvA==}
     dependencies:
       '@types/react': 18.2.21
     dev: true
