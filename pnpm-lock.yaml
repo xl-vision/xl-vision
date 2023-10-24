@@ -255,8 +255,8 @@ importers:
         version: 18.2.0
     devDependencies:
       '@types/prop-types':
-        specifier: ^15.7.8
-        version: 15.7.8
+        specifier: ^15.7.9
+        version: 15.7.9
       '@types/react-is':
         specifier: '>=18.2.3'
         version: 18.2.3
@@ -271,8 +271,8 @@ importers:
         version: 15.8.1
     devDependencies:
       '@types/prop-types':
-        specifier: ^15.7.8
-        version: 15.7.8
+        specifier: ^15.7.9
+        version: 15.7.9
 
   packages/styled-engine-types:
     dependencies:
@@ -382,8 +382,8 @@ importers:
         specifier: 17.0.4
         version: 17.0.4
       '@types/prop-types':
-        specifier: ^15.7.8
-        version: 15.7.8
+        specifier: ^15.7.9
+        version: 15.7.9
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
@@ -3059,8 +3059,8 @@ packages:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
     dev: true
 
-  /@types/prop-types@15.7.8:
-    resolution: {integrity: sha512-kMpQpfZKSCBqltAJwskgePRaYRFukDkm1oItcAbC3gNELR20XIBcN9VRgg4+m8DKsTfkWeA4m4Imp4DDuWy7FQ==}
+  /@types/prop-types@15.7.9:
+    resolution: {integrity: sha512-n1yyPsugYNSmHgxDFjicaI2+gCNjsBck8UX9kuofAKlc0h1bL+20oSF72KeNaW2DUlesbEVCFgyV2dPGTiY42g==}
 
   /@types/react-dom@18.2.7:
     resolution: {integrity: sha512-GRaAEriuT4zp9N4p1i8BDBYmEyfo+xQ3yHjJU4eiK5NDa1RmUZG+unZABUTK4/Ox/M+GaHwb6Ow8rUITrtjszA==}
@@ -3077,7 +3077,7 @@ packages:
   /@types/react@18.2.21:
     resolution: {integrity: sha512-neFKG/sBAwGxHgXiIxnbm3/AAVQ/cMRS93hvBpg8xYRbeQSPVABp9U2bRnPf0iI4+Ucdv3plSxKK+3CW2ENJxA==}
     dependencies:
-      '@types/prop-types': 15.7.8
+      '@types/prop-types': 15.7.9
       '@types/scheduler': 0.16.3
       csstype: 3.1.2
 
