@@ -178,7 +178,7 @@ importers:
         specifier: '>=18.2.0'
         version: 18.2.0(react@18.2.0)
       rollup:
-        specifier: ^4.1.0
+        specifier: ^4.1.4
         version: 4.1.4
       semver:
         specifier: ^7.5.4
