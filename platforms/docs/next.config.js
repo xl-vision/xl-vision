@@ -21,16 +21,13 @@ module.exports = async () => {
     compiler: {
       styledComponents: true,
     },
-    outputFileTracing: false,
     eslint: {
       ignoreDuringBuilds: true,
     },
-    output: 'standalone',
     experimental: {
       typedRoutes: false,
       esmExternals: true,
       externalDir: true,
-      outputFileTracingRoot: path.join(__dirname, '../../'),
     },
     modularizeImports: {
       '@xl-vision/react': {
