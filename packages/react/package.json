@@ -46,8 +46,8 @@
     "react-is": "^18.0.0"
   },
   "devDependencies": {
-    "@types/prop-types": "^15.7.5",
-    "@types/react-is": ">=18.2.1"
+    "@types/prop-types": "^15.7.10",
+    "@types/react-is": ">=18.2.4"
   },
   "peerDependencies": {
     "@babel/runtime": "^7.15.4",
