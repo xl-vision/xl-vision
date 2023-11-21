@@ -30,6 +30,7 @@ module.exports = async () => {
       typedRoutes: false,
       esmExternals: true,
       externalDir: true,
+      outputFileTracingRoot: path.join(__dirname, '../../'),
     },
     modularizeImports: {
       '@xl-vision/react': {
