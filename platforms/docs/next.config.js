@@ -25,11 +25,11 @@ module.exports = async () => {
     eslint: {
       ignoreDuringBuilds: true,
     },
+    output: 'standalone',
     experimental: {
       typedRoutes: false,
       esmExternals: true,
       externalDir: true,
-      serverActions: true,
     },
     modularizeImports: {
       '@xl-vision/react': {
