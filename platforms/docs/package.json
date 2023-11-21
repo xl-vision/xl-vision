@@ -1,5 +1,5 @@
 {
-  "name": "@xl-vision/docs",
+  "name": "@xl-vision/docs-next",
   "version": "0.1.1-alpha.19",
   "description": "docs for xl-vision",
   "private": "true",
@@ -13,6 +13,8 @@
     "analyze": "cross-env ANALYZE=true npm run docs"
   },
   "dependencies": {
+    "@codemirror/lang-javascript": "^6.2.1",
+    "@uiw/react-codemirror": "^4.21.13",
     "@babel/standalone": "^7.23.3",
     "@mdx-js/react": "^2.3.0",
     "@vercel/analytics": "^1.1.1",
@@ -25,21 +27,22 @@
     "@xl-vision/utils": "workspace:^",
     "clipboard": "^2.0.11",
     "clsx": "^2.0.0",
-    "codemirror": "^5.65.13",
     "js-cookie": "^3.0.5",
+    "negotiator": "^0.6.3",
     "next": "^14.0.2",
     "prop-types": "^15.8.1",
-    "react-codemirror2": "^7.2.1",
     "sharp": "^0.32.5"
   },
   "peerDependencies": {
-    "react": ">=18.2.0",
-    "react-dom": ">=18.2.0",
-    "styled-components": "^5.3.6"
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0",
+    "styled-components": ">=6.0.0"
   },
   "devDependencies": {
     "@mapbox/rehype-prism": "^0.8.0",
     "@mdx-js/loader": "^2.3.0",
+    "@types/mdx": "^2.0.7",
+    "@types/negotiator": "^0.6.1",
     "@next/bundle-analyzer": "^14.0.2",
     "@next/eslint-plugin-next": "^14.0.2",
     "@types/codemirror": "^5.60.8",

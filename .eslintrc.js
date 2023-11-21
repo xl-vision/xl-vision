@@ -1,30 +1,4 @@
 const confusingBrowserGlobals = require('confusing-browser-globals');
-const fs = require('fs-extra');
-const path = require('path');
-
-const resolveAlias = () => {
-  const basePath = path.join(__dirname, 'packages');
-
-  const files = fs.readdirSync(basePath);
-
-  return files
-    .map((it) => path.join(basePath, it))
-    .map((it) => {
-      const pkgPath = path.join(it, 'package.json');
-      const srcPath = path.join(it, 'src');
-      if (fs.pathExistsSync(pkgPath)) {
-        return {
-          name: fs.readJSONSync(pkgPath).name,
-          path: srcPath,
-        };
-      }
-      return undefined;
-    })
-    .filter(Boolean)
-    .reduce((a, b) => ({ ...a, [b.name]: b.path }), {});
-};
-
-const alias = resolveAlias();
 
 module.exports = {
   root: true,
@@ -38,11 +12,13 @@ module.exports = {
     react: {
       version: 'detect',
     },
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
+    },
     'import/resolver': {
-      'eslint-import-resolver-custom-alias': {
-        alias,
-        extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
-        packages: ['packages/*'],
+      typescript: {
+        alwaysTryTypes: true,
+        project: ['packages/*/tsconfig.json', 'platforms/*/tsconfig.json'],
       },
     },
   },
@@ -61,7 +37,7 @@ module.exports = {
     'plugin:prettier/recommended',
     'prettier',
   ],
-  plugins: ['unicorn'],
+  plugins: ['unicorn', 'import'],
   rules: {
     'import/no-extraneous-dependencies': [
       'error',

@@ -1,10 +1,12 @@
 import { styled } from '@xl-vision/react';
 import clsx from 'clsx';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import { FC, Children, cloneElement, HTMLAttributes, forwardRef, useMemo } from 'react';
-import route, { BaseRoute, Route, RouteType } from '../../routes';
-import { defaultLanguage, useLocale } from '../LocalizationProvider';
+import useLocale from '@docs/hooks/useLocale';
+import { Lang, defaultLang } from '@docs/locales';
+import { join } from '@docs/utils/link';
+import { RouteType } from '../../routes';
 
 const LeftNode = styled('span')(() => {
   return {
@@ -50,7 +52,7 @@ const StyledLink = styled(Link)(({ theme }) => {
 
 const ActiveLink: FC<Record<any, any>> = (props) => {
   const { children, href, ...others } = props;
-  const { pathname } = useRouter();
+  const pathname = usePathname();
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const child = Children.only(children);
@@ -76,9 +78,9 @@ const ActiveLink: FC<Record<any, any>> = (props) => {
 const padding = 12;
 
 const traverseRoutes = (
-  routeName: string,
+  basePath: string,
   routesArray: Array<RouteType>,
-  language: string,
+  lang: Lang,
   appendEn: boolean,
   level = 1,
 ): JSX.Element => {
@@ -86,13 +88,13 @@ const traverseRoutes = (
   routesArray.forEach((it, index) => {
     const { titleMap } = it;
 
-    const lang = language || defaultLanguage;
+    lang = lang || defaultLang;
 
-    let title = titleMap[lang as keyof BaseRoute['titleMap']];
+    let title = titleMap[lang];
     let el: JSX.Element;
 
     if ('children' in it) {
-      const childElements = traverseRoutes(routeName, it.children, language, appendEn, level + 1);
+      const childElements = traverseRoutes(basePath, it.children, lang, appendEn, level + 1);
       el = (
         <>
           <NonLeftNode style={{ paddingLeft: padding * level }}>{title}</NonLeftNode>
@@ -100,9 +102,9 @@ const traverseRoutes = (
         </>
       );
     } else {
-      const { path } = it;
+      const { name } = it;
 
-      const fullPath = `/${routeName}${path}`;
+      const fullPath = join(`/${lang}`, basePath, name);
 
       const enUsName = titleMap['en-US'];
       title = lang === 'en-US' ? enUsName : appendEn ? `${title} ${enUsName}` : title;
@@ -131,18 +133,19 @@ const Wrapper = styled('div')(() => {
 });
 
 export type AsideProps = HTMLAttributes<HTMLDivElement> & {
-  routeName: keyof Route;
+  routes: Array<RouteType>;
   appendEn?: boolean;
+  basePath: string;
 };
 
 const Aside: FC<AsideProps> = forwardRef<HTMLDivElement, AsideProps>((props, ref) => {
-  const { language } = useLocale();
+  const { lang } = useLocale();
 
-  const { routeName, appendEn = true, ...others } = props;
+  const { routes, appendEn = true, basePath, ...others } = props;
 
   const nodes = useMemo(() => {
-    return traverseRoutes(routeName, route[routeName], language, appendEn);
-  }, [routeName, language, appendEn]);
+    return traverseRoutes(basePath, routes, lang, appendEn);
+  }, [basePath, lang, appendEn, routes]);
 
   if (!nodes) {
     return null;

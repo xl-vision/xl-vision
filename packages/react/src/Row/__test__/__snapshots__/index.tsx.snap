@@ -26,8 +26,6 @@ exports[`Row Test basic render 1`] = `
 }
 
 .c1.xl-col-order-0 {
-  -webkit-order: 0%;
-  -ms-flex-order: 0%;
   order: 0%;
 }
 
@@ -50,8 +48,6 @@ exports[`Row Test basic render 1`] = `
 }
 
 .c1.xl-col-order-1 {
-  -webkit-order: 4.166666666666666%;
-  -ms-flex-order: 4.166666666666666%;
   order: 4.166666666666666%;
 }
 
@@ -74,8 +70,6 @@ exports[`Row Test basic render 1`] = `
 }
 
 .c1.xl-col-order-2 {
-  -webkit-order: 8.333333333333332%;
-  -ms-flex-order: 8.333333333333332%;
   order: 8.333333333333332%;
 }
 
@@ -98,8 +92,6 @@ exports[`Row Test basic render 1`] = `
 }
 
 .c1.xl-col-order-3 {
-  -webkit-order: 12.5%;
-  -ms-flex-order: 12.5%;
   order: 12.5%;
 }
 
@@ -122,8 +114,6 @@ exports[`Row Test basic render 1`] = `
 }
 
 .c1.xl-col-order-4 {
-  -webkit-order: 16.666666666666664%;
-  -ms-flex-order: 16.666666666666664%;
   order: 16.666666666666664%;
 }
 
@@ -146,8 +136,6 @@ exports[`Row Test basic render 1`] = `
 }
 
 .c1.xl-col-order-5 {
-  -webkit-order: 20.833333333333336%;
-  -ms-flex-order: 20.833333333333336%;
   order: 20.833333333333336%;
 }
 
@@ -170,8 +158,6 @@ exports[`Row Test basic render 1`] = `
 }
 
 .c1.xl-col-order-6 {
-  -webkit-order: 25%;
-  -ms-flex-order: 25%;
   order: 25%;
 }
 
@@ -194,8 +180,6 @@ exports[`Row Test basic render 1`] = `
 }
 
 .c1.xl-col-order-7 {
-  -webkit-order: 29.166666666666668%;
-  -ms-flex-order: 29.166666666666668%;
   order: 29.166666666666668%;
 }
 
@@ -218,8 +202,6 @@ exports[`Row Test basic render 1`] = `
 }
 
 .c1.xl-col-order-8 {
-  -webkit-order: 33.33333333333333%;
-  -ms-flex-order: 33.33333333333333%;
   order: 33.33333333333333%;
 }
 
@@ -242,8 +224,6 @@ exports[`Row Test basic render 1`] = `
 }
 
 .c1.xl-col-order-9 {
-  -webkit-order: 37.5%;
-  -ms-flex-order: 37.5%;
   order: 37.5%;
 }
 
@@ -266,8 +246,6 @@ exports[`Row Test basic render 1`] = `
 }
 
 .c1.xl-col-order-10 {
-  -webkit-order: 41.66666666666667%;
-  -ms-flex-order: 41.66666666666667%;
   order: 41.66666666666667%;
 }
 
@@ -290,8 +268,6 @@ exports[`Row Test basic render 1`] = `
 }
 
 .c1.xl-col-order-11 {
-  -webkit-order: 45.83333333333333%;
-  -ms-flex-order: 45.83333333333333%;
   order: 45.83333333333333%;
 }
 
@@ -314,8 +290,6 @@ exports[`Row Test basic render 1`] = `
 }
 
 .c1.xl-col-order-12 {
-  -webkit-order: 50%;
-  -ms-flex-order: 50%;
   order: 50%;
 }
 
@@ -338,8 +312,6 @@ exports[`Row Test basic render 1`] = `
 }
 
 .c1.xl-col-order-13 {
-  -webkit-order: 54.166666666666664%;
-  -ms-flex-order: 54.166666666666664%;
   order: 54.166666666666664%;
 }
 
@@ -362,8 +334,6 @@ exports[`Row Test basic render 1`] = `
 }
 
 .c1.xl-col-order-14 {
-  -webkit-order: 58.333333333333336%;
-  -ms-flex-order: 58.333333333333336%;
   order: 58.333333333333336%;
 }
 
@@ -386,8 +356,6 @@ exports[`Row Test basic render 1`] = `
 }
 
 .c1.xl-col-order-15 {
-  -webkit-order: 62.5%;
-  -ms-flex-order: 62.5%;
   order: 62.5%;
 }
 
@@ -410,8 +378,6 @@ exports[`Row Test basic render 1`] = `
 }
 
 .c1.xl-col-order-16 {
-  -webkit-order: 66.66666666666666%;
-  -ms-flex-order: 66.66666666666666%;
   order: 66.66666666666666%;
 }
 
@@ -434,8 +400,6 @@ exports[`Row Test basic render 1`] = `
 }
 
 .c1.xl-col-order-17 {
-  -webkit-order: 70.83333333333334%;
-  -ms-flex-order: 70.83333333333334%;
   order: 70.83333333333334%;
 }
 
@@ -458,8 +422,6 @@ exports[`Row Test basic render 1`] = `
 }
 
 .c1.xl-col-order-18 {
-  -webkit-order: 75%;
-  -ms-flex-order: 75%;
   order: 75%;
 }
 
@@ -482,8 +444,6 @@ exports[`Row Test basic render 1`] = `
 }
 
 .c1.xl-col-order-19 {
-  -webkit-order: 79.16666666666666%;
-  -ms-flex-order: 79.16666666666666%;
   order: 79.16666666666666%;
 }
 
@@ -506,8 +466,6 @@ exports[`Row Test basic render 1`] = `
 }
 
 .c1.xl-col-order-20 {
-  -webkit-order: 83.33333333333334%;
-  -ms-flex-order: 83.33333333333334%;
   order: 83.33333333333334%;
 }
 
@@ -530,8 +488,6 @@ exports[`Row Test basic render 1`] = `
 }
 
 .c1.xl-col-order-21 {
-  -webkit-order: 87.5%;
-  -ms-flex-order: 87.5%;
   order: 87.5%;
 }
 
@@ -554,8 +510,6 @@ exports[`Row Test basic render 1`] = `
 }
 
 .c1.xl-col-order-22 {
-  -webkit-order: 91.66666666666666%;
-  -ms-flex-order: 91.66666666666666%;
   order: 91.66666666666666%;
 }
 
@@ -578,8 +532,6 @@ exports[`Row Test basic render 1`] = `
 }
 
 .c1.xl-col-order-23 {
-  -webkit-order: 95.83333333333334%;
-  -ms-flex-order: 95.83333333333334%;
   order: 95.83333333333334%;
 }
 
@@ -602,85 +554,52 @@ exports[`Row Test basic render 1`] = `
 }
 
 .c1.xl-col-order-24 {
-  -webkit-order: 100%;
-  -ms-flex-order: 100%;
   order: 100%;
 }
 
 .c0 {
   box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
   flex-direction: row;
 }
 
 .c0.xl-row--justify-start {
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
   justify-content: flex-start;
 }
 
 .c0.xl-row--justify-center {
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
 }
 
 .c0.xl-row--justify-end {
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
   justify-content: flex-end;
 }
 
 .c0.xl-row--justify-space-around {
-  -webkit-box-pack: space-around;
-  -webkit-justify-content: space-around;
-  -ms-flex-pack: space-around;
   justify-content: space-around;
 }
 
 .c0.xl-row--justify-space-between {
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
   justify-content: space-between;
 }
 
 .c0.xl-row--align-top {
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
   align-items: flex-start;
 }
 
 .c0.xl-row--align-middle {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
 }
 
 .c0.xl-row--align-bottom {
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
   align-items: flex-end;
 }
 
 .c0.xl-row--wrap {
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 }
 
-@media (min-width:0px) {
+@media (min-width: 0px) {
   .c1.xl-col-column-xs-0 {
     display: none;
     min-height: 1px;
@@ -700,8 +619,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xs-0 {
-    -webkit-order: 0%;
-    -ms-flex-order: 0%;
     order: 0%;
   }
 
@@ -724,8 +641,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xs-1 {
-    -webkit-order: 4.166666666666666%;
-    -ms-flex-order: 4.166666666666666%;
     order: 4.166666666666666%;
   }
 
@@ -748,8 +663,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xs-2 {
-    -webkit-order: 8.333333333333332%;
-    -ms-flex-order: 8.333333333333332%;
     order: 8.333333333333332%;
   }
 
@@ -772,8 +685,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xs-3 {
-    -webkit-order: 12.5%;
-    -ms-flex-order: 12.5%;
     order: 12.5%;
   }
 
@@ -796,8 +707,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xs-4 {
-    -webkit-order: 16.666666666666664%;
-    -ms-flex-order: 16.666666666666664%;
     order: 16.666666666666664%;
   }
 
@@ -820,8 +729,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xs-5 {
-    -webkit-order: 20.833333333333336%;
-    -ms-flex-order: 20.833333333333336%;
     order: 20.833333333333336%;
   }
 
@@ -844,8 +751,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xs-6 {
-    -webkit-order: 25%;
-    -ms-flex-order: 25%;
     order: 25%;
   }
 
@@ -868,8 +773,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xs-7 {
-    -webkit-order: 29.166666666666668%;
-    -ms-flex-order: 29.166666666666668%;
     order: 29.166666666666668%;
   }
 
@@ -892,8 +795,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xs-8 {
-    -webkit-order: 33.33333333333333%;
-    -ms-flex-order: 33.33333333333333%;
     order: 33.33333333333333%;
   }
 
@@ -916,8 +817,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xs-9 {
-    -webkit-order: 37.5%;
-    -ms-flex-order: 37.5%;
     order: 37.5%;
   }
 
@@ -940,8 +839,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xs-10 {
-    -webkit-order: 41.66666666666667%;
-    -ms-flex-order: 41.66666666666667%;
     order: 41.66666666666667%;
   }
 
@@ -964,8 +861,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xs-11 {
-    -webkit-order: 45.83333333333333%;
-    -ms-flex-order: 45.83333333333333%;
     order: 45.83333333333333%;
   }
 
@@ -988,8 +883,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xs-12 {
-    -webkit-order: 50%;
-    -ms-flex-order: 50%;
     order: 50%;
   }
 
@@ -1012,8 +905,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xs-13 {
-    -webkit-order: 54.166666666666664%;
-    -ms-flex-order: 54.166666666666664%;
     order: 54.166666666666664%;
   }
 
@@ -1036,8 +927,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xs-14 {
-    -webkit-order: 58.333333333333336%;
-    -ms-flex-order: 58.333333333333336%;
     order: 58.333333333333336%;
   }
 
@@ -1060,8 +949,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xs-15 {
-    -webkit-order: 62.5%;
-    -ms-flex-order: 62.5%;
     order: 62.5%;
   }
 
@@ -1084,8 +971,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xs-16 {
-    -webkit-order: 66.66666666666666%;
-    -ms-flex-order: 66.66666666666666%;
     order: 66.66666666666666%;
   }
 
@@ -1108,8 +993,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xs-17 {
-    -webkit-order: 70.83333333333334%;
-    -ms-flex-order: 70.83333333333334%;
     order: 70.83333333333334%;
   }
 
@@ -1132,8 +1015,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xs-18 {
-    -webkit-order: 75%;
-    -ms-flex-order: 75%;
     order: 75%;
   }
 
@@ -1156,8 +1037,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xs-19 {
-    -webkit-order: 79.16666666666666%;
-    -ms-flex-order: 79.16666666666666%;
     order: 79.16666666666666%;
   }
 
@@ -1180,8 +1059,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xs-20 {
-    -webkit-order: 83.33333333333334%;
-    -ms-flex-order: 83.33333333333334%;
     order: 83.33333333333334%;
   }
 
@@ -1204,8 +1081,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xs-21 {
-    -webkit-order: 87.5%;
-    -ms-flex-order: 87.5%;
     order: 87.5%;
   }
 
@@ -1228,8 +1103,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xs-22 {
-    -webkit-order: 91.66666666666666%;
-    -ms-flex-order: 91.66666666666666%;
     order: 91.66666666666666%;
   }
 
@@ -1252,8 +1125,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xs-23 {
-    -webkit-order: 95.83333333333334%;
-    -ms-flex-order: 95.83333333333334%;
     order: 95.83333333333334%;
   }
 
@@ -1276,13 +1147,11 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xs-24 {
-    -webkit-order: 100%;
-    -ms-flex-order: 100%;
     order: 100%;
   }
 }
 
-@media (min-width:576px) {
+@media (min-width: 576px) {
   .c1.xl-col-column-sm-0 {
     display: none;
     min-height: 1px;
@@ -1302,8 +1171,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-sm-0 {
-    -webkit-order: 0%;
-    -ms-flex-order: 0%;
     order: 0%;
   }
 
@@ -1326,8 +1193,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-sm-1 {
-    -webkit-order: 4.166666666666666%;
-    -ms-flex-order: 4.166666666666666%;
     order: 4.166666666666666%;
   }
 
@@ -1350,8 +1215,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-sm-2 {
-    -webkit-order: 8.333333333333332%;
-    -ms-flex-order: 8.333333333333332%;
     order: 8.333333333333332%;
   }
 
@@ -1374,8 +1237,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-sm-3 {
-    -webkit-order: 12.5%;
-    -ms-flex-order: 12.5%;
     order: 12.5%;
   }
 
@@ -1398,8 +1259,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-sm-4 {
-    -webkit-order: 16.666666666666664%;
-    -ms-flex-order: 16.666666666666664%;
     order: 16.666666666666664%;
   }
 
@@ -1422,8 +1281,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-sm-5 {
-    -webkit-order: 20.833333333333336%;
-    -ms-flex-order: 20.833333333333336%;
     order: 20.833333333333336%;
   }
 
@@ -1446,8 +1303,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-sm-6 {
-    -webkit-order: 25%;
-    -ms-flex-order: 25%;
     order: 25%;
   }
 
@@ -1470,8 +1325,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-sm-7 {
-    -webkit-order: 29.166666666666668%;
-    -ms-flex-order: 29.166666666666668%;
     order: 29.166666666666668%;
   }
 
@@ -1494,8 +1347,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-sm-8 {
-    -webkit-order: 33.33333333333333%;
-    -ms-flex-order: 33.33333333333333%;
     order: 33.33333333333333%;
   }
 
@@ -1518,8 +1369,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-sm-9 {
-    -webkit-order: 37.5%;
-    -ms-flex-order: 37.5%;
     order: 37.5%;
   }
 
@@ -1542,8 +1391,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-sm-10 {
-    -webkit-order: 41.66666666666667%;
-    -ms-flex-order: 41.66666666666667%;
     order: 41.66666666666667%;
   }
 
@@ -1566,8 +1413,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-sm-11 {
-    -webkit-order: 45.83333333333333%;
-    -ms-flex-order: 45.83333333333333%;
     order: 45.83333333333333%;
   }
 
@@ -1590,8 +1435,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-sm-12 {
-    -webkit-order: 50%;
-    -ms-flex-order: 50%;
     order: 50%;
   }
 
@@ -1614,8 +1457,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-sm-13 {
-    -webkit-order: 54.166666666666664%;
-    -ms-flex-order: 54.166666666666664%;
     order: 54.166666666666664%;
   }
 
@@ -1638,8 +1479,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-sm-14 {
-    -webkit-order: 58.333333333333336%;
-    -ms-flex-order: 58.333333333333336%;
     order: 58.333333333333336%;
   }
 
@@ -1662,8 +1501,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-sm-15 {
-    -webkit-order: 62.5%;
-    -ms-flex-order: 62.5%;
     order: 62.5%;
   }
 
@@ -1686,8 +1523,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-sm-16 {
-    -webkit-order: 66.66666666666666%;
-    -ms-flex-order: 66.66666666666666%;
     order: 66.66666666666666%;
   }
 
@@ -1710,8 +1545,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-sm-17 {
-    -webkit-order: 70.83333333333334%;
-    -ms-flex-order: 70.83333333333334%;
     order: 70.83333333333334%;
   }
 
@@ -1734,8 +1567,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-sm-18 {
-    -webkit-order: 75%;
-    -ms-flex-order: 75%;
     order: 75%;
   }
 
@@ -1758,8 +1589,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-sm-19 {
-    -webkit-order: 79.16666666666666%;
-    -ms-flex-order: 79.16666666666666%;
     order: 79.16666666666666%;
   }
 
@@ -1782,8 +1611,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-sm-20 {
-    -webkit-order: 83.33333333333334%;
-    -ms-flex-order: 83.33333333333334%;
     order: 83.33333333333334%;
   }
 
@@ -1806,8 +1633,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-sm-21 {
-    -webkit-order: 87.5%;
-    -ms-flex-order: 87.5%;
     order: 87.5%;
   }
 
@@ -1830,8 +1655,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-sm-22 {
-    -webkit-order: 91.66666666666666%;
-    -ms-flex-order: 91.66666666666666%;
     order: 91.66666666666666%;
   }
 
@@ -1854,8 +1677,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-sm-23 {
-    -webkit-order: 95.83333333333334%;
-    -ms-flex-order: 95.83333333333334%;
     order: 95.83333333333334%;
   }
 
@@ -1878,13 +1699,11 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-sm-24 {
-    -webkit-order: 100%;
-    -ms-flex-order: 100%;
     order: 100%;
   }
 }
 
-@media (min-width:768px) {
+@media (min-width: 768px) {
   .c1.xl-col-column-md-0 {
     display: none;
     min-height: 1px;
@@ -1904,8 +1723,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-md-0 {
-    -webkit-order: 0%;
-    -ms-flex-order: 0%;
     order: 0%;
   }
 
@@ -1928,8 +1745,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-md-1 {
-    -webkit-order: 4.166666666666666%;
-    -ms-flex-order: 4.166666666666666%;
     order: 4.166666666666666%;
   }
 
@@ -1952,8 +1767,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-md-2 {
-    -webkit-order: 8.333333333333332%;
-    -ms-flex-order: 8.333333333333332%;
     order: 8.333333333333332%;
   }
 
@@ -1976,8 +1789,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-md-3 {
-    -webkit-order: 12.5%;
-    -ms-flex-order: 12.5%;
     order: 12.5%;
   }
 
@@ -2000,8 +1811,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-md-4 {
-    -webkit-order: 16.666666666666664%;
-    -ms-flex-order: 16.666666666666664%;
     order: 16.666666666666664%;
   }
 
@@ -2024,8 +1833,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-md-5 {
-    -webkit-order: 20.833333333333336%;
-    -ms-flex-order: 20.833333333333336%;
     order: 20.833333333333336%;
   }
 
@@ -2048,8 +1855,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-md-6 {
-    -webkit-order: 25%;
-    -ms-flex-order: 25%;
     order: 25%;
   }
 
@@ -2072,8 +1877,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-md-7 {
-    -webkit-order: 29.166666666666668%;
-    -ms-flex-order: 29.166666666666668%;
     order: 29.166666666666668%;
   }
 
@@ -2096,8 +1899,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-md-8 {
-    -webkit-order: 33.33333333333333%;
-    -ms-flex-order: 33.33333333333333%;
     order: 33.33333333333333%;
   }
 
@@ -2120,8 +1921,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-md-9 {
-    -webkit-order: 37.5%;
-    -ms-flex-order: 37.5%;
     order: 37.5%;
   }
 
@@ -2144,8 +1943,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-md-10 {
-    -webkit-order: 41.66666666666667%;
-    -ms-flex-order: 41.66666666666667%;
     order: 41.66666666666667%;
   }
 
@@ -2168,8 +1965,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-md-11 {
-    -webkit-order: 45.83333333333333%;
-    -ms-flex-order: 45.83333333333333%;
     order: 45.83333333333333%;
   }
 
@@ -2192,8 +1987,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-md-12 {
-    -webkit-order: 50%;
-    -ms-flex-order: 50%;
     order: 50%;
   }
 
@@ -2216,8 +2009,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-md-13 {
-    -webkit-order: 54.166666666666664%;
-    -ms-flex-order: 54.166666666666664%;
     order: 54.166666666666664%;
   }
 
@@ -2240,8 +2031,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-md-14 {
-    -webkit-order: 58.333333333333336%;
-    -ms-flex-order: 58.333333333333336%;
     order: 58.333333333333336%;
   }
 
@@ -2264,8 +2053,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-md-15 {
-    -webkit-order: 62.5%;
-    -ms-flex-order: 62.5%;
     order: 62.5%;
   }
 
@@ -2288,8 +2075,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-md-16 {
-    -webkit-order: 66.66666666666666%;
-    -ms-flex-order: 66.66666666666666%;
     order: 66.66666666666666%;
   }
 
@@ -2312,8 +2097,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-md-17 {
-    -webkit-order: 70.83333333333334%;
-    -ms-flex-order: 70.83333333333334%;
     order: 70.83333333333334%;
   }
 
@@ -2336,8 +2119,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-md-18 {
-    -webkit-order: 75%;
-    -ms-flex-order: 75%;
     order: 75%;
   }
 
@@ -2360,8 +2141,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-md-19 {
-    -webkit-order: 79.16666666666666%;
-    -ms-flex-order: 79.16666666666666%;
     order: 79.16666666666666%;
   }
 
@@ -2384,8 +2163,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-md-20 {
-    -webkit-order: 83.33333333333334%;
-    -ms-flex-order: 83.33333333333334%;
     order: 83.33333333333334%;
   }
 
@@ -2408,8 +2185,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-md-21 {
-    -webkit-order: 87.5%;
-    -ms-flex-order: 87.5%;
     order: 87.5%;
   }
 
@@ -2432,8 +2207,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-md-22 {
-    -webkit-order: 91.66666666666666%;
-    -ms-flex-order: 91.66666666666666%;
     order: 91.66666666666666%;
   }
 
@@ -2456,8 +2229,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-md-23 {
-    -webkit-order: 95.83333333333334%;
-    -ms-flex-order: 95.83333333333334%;
     order: 95.83333333333334%;
   }
 
@@ -2480,13 +2251,11 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-md-24 {
-    -webkit-order: 100%;
-    -ms-flex-order: 100%;
     order: 100%;
   }
 }
 
-@media (min-width:992px) {
+@media (min-width: 992px) {
   .c1.xl-col-column-lg-0 {
     display: none;
     min-height: 1px;
@@ -2506,8 +2275,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-lg-0 {
-    -webkit-order: 0%;
-    -ms-flex-order: 0%;
     order: 0%;
   }
 
@@ -2530,8 +2297,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-lg-1 {
-    -webkit-order: 4.166666666666666%;
-    -ms-flex-order: 4.166666666666666%;
     order: 4.166666666666666%;
   }
 
@@ -2554,8 +2319,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-lg-2 {
-    -webkit-order: 8.333333333333332%;
-    -ms-flex-order: 8.333333333333332%;
     order: 8.333333333333332%;
   }
 
@@ -2578,8 +2341,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-lg-3 {
-    -webkit-order: 12.5%;
-    -ms-flex-order: 12.5%;
     order: 12.5%;
   }
 
@@ -2602,8 +2363,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-lg-4 {
-    -webkit-order: 16.666666666666664%;
-    -ms-flex-order: 16.666666666666664%;
     order: 16.666666666666664%;
   }
 
@@ -2626,8 +2385,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-lg-5 {
-    -webkit-order: 20.833333333333336%;
-    -ms-flex-order: 20.833333333333336%;
     order: 20.833333333333336%;
   }
 
@@ -2650,8 +2407,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-lg-6 {
-    -webkit-order: 25%;
-    -ms-flex-order: 25%;
     order: 25%;
   }
 
@@ -2674,8 +2429,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-lg-7 {
-    -webkit-order: 29.166666666666668%;
-    -ms-flex-order: 29.166666666666668%;
     order: 29.166666666666668%;
   }
 
@@ -2698,8 +2451,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-lg-8 {
-    -webkit-order: 33.33333333333333%;
-    -ms-flex-order: 33.33333333333333%;
     order: 33.33333333333333%;
   }
 
@@ -2722,8 +2473,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-lg-9 {
-    -webkit-order: 37.5%;
-    -ms-flex-order: 37.5%;
     order: 37.5%;
   }
 
@@ -2746,8 +2495,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-lg-10 {
-    -webkit-order: 41.66666666666667%;
-    -ms-flex-order: 41.66666666666667%;
     order: 41.66666666666667%;
   }
 
@@ -2770,8 +2517,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-lg-11 {
-    -webkit-order: 45.83333333333333%;
-    -ms-flex-order: 45.83333333333333%;
     order: 45.83333333333333%;
   }
 
@@ -2794,8 +2539,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-lg-12 {
-    -webkit-order: 50%;
-    -ms-flex-order: 50%;
     order: 50%;
   }
 
@@ -2818,8 +2561,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-lg-13 {
-    -webkit-order: 54.166666666666664%;
-    -ms-flex-order: 54.166666666666664%;
     order: 54.166666666666664%;
   }
 
@@ -2842,8 +2583,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-lg-14 {
-    -webkit-order: 58.333333333333336%;
-    -ms-flex-order: 58.333333333333336%;
     order: 58.333333333333336%;
   }
 
@@ -2866,8 +2605,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-lg-15 {
-    -webkit-order: 62.5%;
-    -ms-flex-order: 62.5%;
     order: 62.5%;
   }
 
@@ -2890,8 +2627,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-lg-16 {
-    -webkit-order: 66.66666666666666%;
-    -ms-flex-order: 66.66666666666666%;
     order: 66.66666666666666%;
   }
 
@@ -2914,8 +2649,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-lg-17 {
-    -webkit-order: 70.83333333333334%;
-    -ms-flex-order: 70.83333333333334%;
     order: 70.83333333333334%;
   }
 
@@ -2938,8 +2671,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-lg-18 {
-    -webkit-order: 75%;
-    -ms-flex-order: 75%;
     order: 75%;
   }
 
@@ -2962,8 +2693,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-lg-19 {
-    -webkit-order: 79.16666666666666%;
-    -ms-flex-order: 79.16666666666666%;
     order: 79.16666666666666%;
   }
 
@@ -2986,8 +2715,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-lg-20 {
-    -webkit-order: 83.33333333333334%;
-    -ms-flex-order: 83.33333333333334%;
     order: 83.33333333333334%;
   }
 
@@ -3010,8 +2737,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-lg-21 {
-    -webkit-order: 87.5%;
-    -ms-flex-order: 87.5%;
     order: 87.5%;
   }
 
@@ -3034,8 +2759,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-lg-22 {
-    -webkit-order: 91.66666666666666%;
-    -ms-flex-order: 91.66666666666666%;
     order: 91.66666666666666%;
   }
 
@@ -3058,8 +2781,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-lg-23 {
-    -webkit-order: 95.83333333333334%;
-    -ms-flex-order: 95.83333333333334%;
     order: 95.83333333333334%;
   }
 
@@ -3082,13 +2803,11 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-lg-24 {
-    -webkit-order: 100%;
-    -ms-flex-order: 100%;
     order: 100%;
   }
 }
 
-@media (min-width:1200px) {
+@media (min-width: 1200px) {
   .c1.xl-col-column-xl-0 {
     display: none;
     min-height: 1px;
@@ -3108,8 +2827,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xl-0 {
-    -webkit-order: 0%;
-    -ms-flex-order: 0%;
     order: 0%;
   }
 
@@ -3132,8 +2849,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xl-1 {
-    -webkit-order: 4.166666666666666%;
-    -ms-flex-order: 4.166666666666666%;
     order: 4.166666666666666%;
   }
 
@@ -3156,8 +2871,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xl-2 {
-    -webkit-order: 8.333333333333332%;
-    -ms-flex-order: 8.333333333333332%;
     order: 8.333333333333332%;
   }
 
@@ -3180,8 +2893,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xl-3 {
-    -webkit-order: 12.5%;
-    -ms-flex-order: 12.5%;
     order: 12.5%;
   }
 
@@ -3204,8 +2915,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xl-4 {
-    -webkit-order: 16.666666666666664%;
-    -ms-flex-order: 16.666666666666664%;
     order: 16.666666666666664%;
   }
 
@@ -3228,8 +2937,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xl-5 {
-    -webkit-order: 20.833333333333336%;
-    -ms-flex-order: 20.833333333333336%;
     order: 20.833333333333336%;
   }
 
@@ -3252,8 +2959,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xl-6 {
-    -webkit-order: 25%;
-    -ms-flex-order: 25%;
     order: 25%;
   }
 
@@ -3276,8 +2981,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xl-7 {
-    -webkit-order: 29.166666666666668%;
-    -ms-flex-order: 29.166666666666668%;
     order: 29.166666666666668%;
   }
 
@@ -3300,8 +3003,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xl-8 {
-    -webkit-order: 33.33333333333333%;
-    -ms-flex-order: 33.33333333333333%;
     order: 33.33333333333333%;
   }
 
@@ -3324,8 +3025,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xl-9 {
-    -webkit-order: 37.5%;
-    -ms-flex-order: 37.5%;
     order: 37.5%;
   }
 
@@ -3348,8 +3047,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xl-10 {
-    -webkit-order: 41.66666666666667%;
-    -ms-flex-order: 41.66666666666667%;
     order: 41.66666666666667%;
   }
 
@@ -3372,8 +3069,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xl-11 {
-    -webkit-order: 45.83333333333333%;
-    -ms-flex-order: 45.83333333333333%;
     order: 45.83333333333333%;
   }
 
@@ -3396,8 +3091,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xl-12 {
-    -webkit-order: 50%;
-    -ms-flex-order: 50%;
     order: 50%;
   }
 
@@ -3420,8 +3113,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xl-13 {
-    -webkit-order: 54.166666666666664%;
-    -ms-flex-order: 54.166666666666664%;
     order: 54.166666666666664%;
   }
 
@@ -3444,8 +3135,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xl-14 {
-    -webkit-order: 58.333333333333336%;
-    -ms-flex-order: 58.333333333333336%;
     order: 58.333333333333336%;
   }
 
@@ -3468,8 +3157,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xl-15 {
-    -webkit-order: 62.5%;
-    -ms-flex-order: 62.5%;
     order: 62.5%;
   }
 
@@ -3492,8 +3179,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xl-16 {
-    -webkit-order: 66.66666666666666%;
-    -ms-flex-order: 66.66666666666666%;
     order: 66.66666666666666%;
   }
 
@@ -3516,8 +3201,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xl-17 {
-    -webkit-order: 70.83333333333334%;
-    -ms-flex-order: 70.83333333333334%;
     order: 70.83333333333334%;
   }
 
@@ -3540,8 +3223,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xl-18 {
-    -webkit-order: 75%;
-    -ms-flex-order: 75%;
     order: 75%;
   }
 
@@ -3564,8 +3245,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xl-19 {
-    -webkit-order: 79.16666666666666%;
-    -ms-flex-order: 79.16666666666666%;
     order: 79.16666666666666%;
   }
 
@@ -3588,8 +3267,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xl-20 {
-    -webkit-order: 83.33333333333334%;
-    -ms-flex-order: 83.33333333333334%;
     order: 83.33333333333334%;
   }
 
@@ -3612,8 +3289,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xl-21 {
-    -webkit-order: 87.5%;
-    -ms-flex-order: 87.5%;
     order: 87.5%;
   }
 
@@ -3636,8 +3311,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xl-22 {
-    -webkit-order: 91.66666666666666%;
-    -ms-flex-order: 91.66666666666666%;
     order: 91.66666666666666%;
   }
 
@@ -3660,8 +3333,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xl-23 {
-    -webkit-order: 95.83333333333334%;
-    -ms-flex-order: 95.83333333333334%;
     order: 95.83333333333334%;
   }
 
@@ -3684,13 +3355,11 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xl-24 {
-    -webkit-order: 100%;
-    -ms-flex-order: 100%;
     order: 100%;
   }
 }
 
-@media (min-width:1600px) {
+@media (min-width: 1600px) {
   .c1.xl-col-column-xxl-0 {
     display: none;
     min-height: 1px;
@@ -3710,8 +3379,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xxl-0 {
-    -webkit-order: 0%;
-    -ms-flex-order: 0%;
     order: 0%;
   }
 
@@ -3734,8 +3401,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xxl-1 {
-    -webkit-order: 4.166666666666666%;
-    -ms-flex-order: 4.166666666666666%;
     order: 4.166666666666666%;
   }
 
@@ -3758,8 +3423,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xxl-2 {
-    -webkit-order: 8.333333333333332%;
-    -ms-flex-order: 8.333333333333332%;
     order: 8.333333333333332%;
   }
 
@@ -3782,8 +3445,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xxl-3 {
-    -webkit-order: 12.5%;
-    -ms-flex-order: 12.5%;
     order: 12.5%;
   }
 
@@ -3806,8 +3467,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xxl-4 {
-    -webkit-order: 16.666666666666664%;
-    -ms-flex-order: 16.666666666666664%;
     order: 16.666666666666664%;
   }
 
@@ -3830,8 +3489,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xxl-5 {
-    -webkit-order: 20.833333333333336%;
-    -ms-flex-order: 20.833333333333336%;
     order: 20.833333333333336%;
   }
 
@@ -3854,8 +3511,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xxl-6 {
-    -webkit-order: 25%;
-    -ms-flex-order: 25%;
     order: 25%;
   }
 
@@ -3878,8 +3533,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xxl-7 {
-    -webkit-order: 29.166666666666668%;
-    -ms-flex-order: 29.166666666666668%;
     order: 29.166666666666668%;
   }
 
@@ -3902,8 +3555,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xxl-8 {
-    -webkit-order: 33.33333333333333%;
-    -ms-flex-order: 33.33333333333333%;
     order: 33.33333333333333%;
   }
 
@@ -3926,8 +3577,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xxl-9 {
-    -webkit-order: 37.5%;
-    -ms-flex-order: 37.5%;
     order: 37.5%;
   }
 
@@ -3950,8 +3599,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xxl-10 {
-    -webkit-order: 41.66666666666667%;
-    -ms-flex-order: 41.66666666666667%;
     order: 41.66666666666667%;
   }
 
@@ -3974,8 +3621,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xxl-11 {
-    -webkit-order: 45.83333333333333%;
-    -ms-flex-order: 45.83333333333333%;
     order: 45.83333333333333%;
   }
 
@@ -3998,8 +3643,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xxl-12 {
-    -webkit-order: 50%;
-    -ms-flex-order: 50%;
     order: 50%;
   }
 
@@ -4022,8 +3665,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xxl-13 {
-    -webkit-order: 54.166666666666664%;
-    -ms-flex-order: 54.166666666666664%;
     order: 54.166666666666664%;
   }
 
@@ -4046,8 +3687,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xxl-14 {
-    -webkit-order: 58.333333333333336%;
-    -ms-flex-order: 58.333333333333336%;
     order: 58.333333333333336%;
   }
 
@@ -4070,8 +3709,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xxl-15 {
-    -webkit-order: 62.5%;
-    -ms-flex-order: 62.5%;
     order: 62.5%;
   }
 
@@ -4094,8 +3731,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xxl-16 {
-    -webkit-order: 66.66666666666666%;
-    -ms-flex-order: 66.66666666666666%;
     order: 66.66666666666666%;
   }
 
@@ -4118,8 +3753,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xxl-17 {
-    -webkit-order: 70.83333333333334%;
-    -ms-flex-order: 70.83333333333334%;
     order: 70.83333333333334%;
   }
 
@@ -4142,8 +3775,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xxl-18 {
-    -webkit-order: 75%;
-    -ms-flex-order: 75%;
     order: 75%;
   }
 
@@ -4166,8 +3797,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xxl-19 {
-    -webkit-order: 79.16666666666666%;
-    -ms-flex-order: 79.16666666666666%;
     order: 79.16666666666666%;
   }
 
@@ -4190,8 +3819,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xxl-20 {
-    -webkit-order: 83.33333333333334%;
-    -ms-flex-order: 83.33333333333334%;
     order: 83.33333333333334%;
   }
 
@@ -4214,8 +3841,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xxl-21 {
-    -webkit-order: 87.5%;
-    -ms-flex-order: 87.5%;
     order: 87.5%;
   }
 
@@ -4238,8 +3863,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xxl-22 {
-    -webkit-order: 91.66666666666666%;
-    -ms-flex-order: 91.66666666666666%;
     order: 91.66666666666666%;
   }
 
@@ -4262,8 +3885,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xxl-23 {
-    -webkit-order: 95.83333333333334%;
-    -ms-flex-order: 95.83333333333334%;
     order: 95.83333333333334%;
   }
 
@@ -4286,8 +3907,6 @@ exports[`Row Test basic render 1`] = `
   }
 
   .c1.xl-col-order-xxl-24 {
-    -webkit-order: 100%;
-    -ms-flex-order: 100%;
     order: 100%;
   }
 }
@@ -4471,8 +4090,6 @@ exports[`Row 偏移布局 1`] = `
 }
 
 .c1.xl-col-order-0 {
-  -webkit-order: 0%;
-  -ms-flex-order: 0%;
   order: 0%;
 }
 
@@ -4495,8 +4112,6 @@ exports[`Row 偏移布局 1`] = `
 }
 
 .c1.xl-col-order-1 {
-  -webkit-order: 4.166666666666666%;
-  -ms-flex-order: 4.166666666666666%;
   order: 4.166666666666666%;
 }
 
@@ -4519,8 +4134,6 @@ exports[`Row 偏移布局 1`] = `
 }
 
 .c1.xl-col-order-2 {
-  -webkit-order: 8.333333333333332%;
-  -ms-flex-order: 8.333333333333332%;
   order: 8.333333333333332%;
 }
 
@@ -4543,8 +4156,6 @@ exports[`Row 偏移布局 1`] = `
 }
 
 .c1.xl-col-order-3 {
-  -webkit-order: 12.5%;
-  -ms-flex-order: 12.5%;
   order: 12.5%;
 }
 
@@ -4567,8 +4178,6 @@ exports[`Row 偏移布局 1`] = `
 }
 
 .c1.xl-col-order-4 {
-  -webkit-order: 16.666666666666664%;
-  -ms-flex-order: 16.666666666666664%;
   order: 16.666666666666664%;
 }
 
@@ -4591,8 +4200,6 @@ exports[`Row 偏移布局 1`] = `
 }
 
 .c1.xl-col-order-5 {
-  -webkit-order: 20.833333333333336%;
-  -ms-flex-order: 20.833333333333336%;
   order: 20.833333333333336%;
 }
 
@@ -4615,8 +4222,6 @@ exports[`Row 偏移布局 1`] = `
 }
 
 .c1.xl-col-order-6 {
-  -webkit-order: 25%;
-  -ms-flex-order: 25%;
   order: 25%;
 }
 
@@ -4639,8 +4244,6 @@ exports[`Row 偏移布局 1`] = `
 }
 
 .c1.xl-col-order-7 {
-  -webkit-order: 29.166666666666668%;
-  -ms-flex-order: 29.166666666666668%;
   order: 29.166666666666668%;
 }
 
@@ -4663,8 +4266,6 @@ exports[`Row 偏移布局 1`] = `
 }
 
 .c1.xl-col-order-8 {
-  -webkit-order: 33.33333333333333%;
-  -ms-flex-order: 33.33333333333333%;
   order: 33.33333333333333%;
 }
 
@@ -4687,8 +4288,6 @@ exports[`Row 偏移布局 1`] = `
 }
 
 .c1.xl-col-order-9 {
-  -webkit-order: 37.5%;
-  -ms-flex-order: 37.5%;
   order: 37.5%;
 }
 
@@ -4711,8 +4310,6 @@ exports[`Row 偏移布局 1`] = `
 }
 
 .c1.xl-col-order-10 {
-  -webkit-order: 41.66666666666667%;
-  -ms-flex-order: 41.66666666666667%;
   order: 41.66666666666667%;
 }
 
@@ -4735,8 +4332,6 @@ exports[`Row 偏移布局 1`] = `
 }
 
 .c1.xl-col-order-11 {
-  -webkit-order: 45.83333333333333%;
-  -ms-flex-order: 45.83333333333333%;
   order: 45.83333333333333%;
 }
 
@@ -4759,8 +4354,6 @@ exports[`Row 偏移布局 1`] = `
 }
 
 .c1.xl-col-order-12 {
-  -webkit-order: 50%;
-  -ms-flex-order: 50%;
   order: 50%;
 }
 
@@ -4783,8 +4376,6 @@ exports[`Row 偏移布局 1`] = `
 }
 
 .c1.xl-col-order-13 {
-  -webkit-order: 54.166666666666664%;
-  -ms-flex-order: 54.166666666666664%;
   order: 54.166666666666664%;
 }
 
@@ -4807,8 +4398,6 @@ exports[`Row 偏移布局 1`] = `
 }
 
 .c1.xl-col-order-14 {
-  -webkit-order: 58.333333333333336%;
-  -ms-flex-order: 58.333333333333336%;
   order: 58.333333333333336%;
 }
 
@@ -4831,8 +4420,6 @@ exports[`Row 偏移布局 1`] = `
 }
 
 .c1.xl-col-order-15 {
-  -webkit-order: 62.5%;
-  -ms-flex-order: 62.5%;
   order: 62.5%;
 }
 
@@ -4855,8 +4442,6 @@ exports[`Row 偏移布局 1`] = `
 }
 
 .c1.xl-col-order-16 {
-  -webkit-order: 66.66666666666666%;
-  -ms-flex-order: 66.66666666666666%;
   order: 66.66666666666666%;
 }
 
@@ -4879,8 +4464,6 @@ exports[`Row 偏移布局 1`] = `
 }
 
 .c1.xl-col-order-17 {
-  -webkit-order: 70.83333333333334%;
-  -ms-flex-order: 70.83333333333334%;
   order: 70.83333333333334%;
 }
 
@@ -4903,8 +4486,6 @@ exports[`Row 偏移布局 1`] = `
 }
 
 .c1.xl-col-order-18 {
-  -webkit-order: 75%;
-  -ms-flex-order: 75%;
   order: 75%;
 }
 
@@ -4927,8 +4508,6 @@ exports[`Row 偏移布局 1`] = `
 }
 
 .c1.xl-col-order-19 {
-  -webkit-order: 79.16666666666666%;
-  -ms-flex-order: 79.16666666666666%;
   order: 79.16666666666666%;
 }
 
@@ -4951,8 +4530,6 @@ exports[`Row 偏移布局 1`] = `
 }
 
 .c1.xl-col-order-20 {
-  -webkit-order: 83.33333333333334%;
-  -ms-flex-order: 83.33333333333334%;
   order: 83.33333333333334%;
 }
 
@@ -4975,8 +4552,6 @@ exports[`Row 偏移布局 1`] = `
 }
 
 .c1.xl-col-order-21 {
-  -webkit-order: 87.5%;
-  -ms-flex-order: 87.5%;
   order: 87.5%;
 }
 
@@ -4999,8 +4574,6 @@ exports[`Row 偏移布局 1`] = `
 }
 
 .c1.xl-col-order-22 {
-  -webkit-order: 91.66666666666666%;
-  -ms-flex-order: 91.66666666666666%;
   order: 91.66666666666666%;
 }
 
@@ -5023,8 +4596,6 @@ exports[`Row 偏移布局 1`] = `
 }
 
 .c1.xl-col-order-23 {
-  -webkit-order: 95.83333333333334%;
-  -ms-flex-order: 95.83333333333334%;
   order: 95.83333333333334%;
 }
 
@@ -5047,85 +4618,52 @@ exports[`Row 偏移布局 1`] = `
 }
 
 .c1.xl-col-order-24 {
-  -webkit-order: 100%;
-  -ms-flex-order: 100%;
   order: 100%;
 }
 
 .c0 {
   box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
   flex-direction: row;
 }
 
 .c0.xl-row--justify-start {
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
   justify-content: flex-start;
 }
 
 .c0.xl-row--justify-center {
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
 }
 
 .c0.xl-row--justify-end {
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
   justify-content: flex-end;
 }
 
 .c0.xl-row--justify-space-around {
-  -webkit-box-pack: space-around;
-  -webkit-justify-content: space-around;
-  -ms-flex-pack: space-around;
   justify-content: space-around;
 }
 
 .c0.xl-row--justify-space-between {
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
   justify-content: space-between;
 }
 
 .c0.xl-row--align-top {
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
   align-items: flex-start;
 }
 
 .c0.xl-row--align-middle {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
 }
 
 .c0.xl-row--align-bottom {
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
   align-items: flex-end;
 }
 
 .c0.xl-row--wrap {
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 }
 
-@media (min-width:0px) {
+@media (min-width: 0px) {
   .c1.xl-col-column-xs-0 {
     display: none;
     min-height: 1px;
@@ -5145,8 +4683,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xs-0 {
-    -webkit-order: 0%;
-    -ms-flex-order: 0%;
     order: 0%;
   }
 
@@ -5169,8 +4705,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xs-1 {
-    -webkit-order: 4.166666666666666%;
-    -ms-flex-order: 4.166666666666666%;
     order: 4.166666666666666%;
   }
 
@@ -5193,8 +4727,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xs-2 {
-    -webkit-order: 8.333333333333332%;
-    -ms-flex-order: 8.333333333333332%;
     order: 8.333333333333332%;
   }
 
@@ -5217,8 +4749,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xs-3 {
-    -webkit-order: 12.5%;
-    -ms-flex-order: 12.5%;
     order: 12.5%;
   }
 
@@ -5241,8 +4771,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xs-4 {
-    -webkit-order: 16.666666666666664%;
-    -ms-flex-order: 16.666666666666664%;
     order: 16.666666666666664%;
   }
 
@@ -5265,8 +4793,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xs-5 {
-    -webkit-order: 20.833333333333336%;
-    -ms-flex-order: 20.833333333333336%;
     order: 20.833333333333336%;
   }
 
@@ -5289,8 +4815,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xs-6 {
-    -webkit-order: 25%;
-    -ms-flex-order: 25%;
     order: 25%;
   }
 
@@ -5313,8 +4837,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xs-7 {
-    -webkit-order: 29.166666666666668%;
-    -ms-flex-order: 29.166666666666668%;
     order: 29.166666666666668%;
   }
 
@@ -5337,8 +4859,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xs-8 {
-    -webkit-order: 33.33333333333333%;
-    -ms-flex-order: 33.33333333333333%;
     order: 33.33333333333333%;
   }
 
@@ -5361,8 +4881,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xs-9 {
-    -webkit-order: 37.5%;
-    -ms-flex-order: 37.5%;
     order: 37.5%;
   }
 
@@ -5385,8 +4903,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xs-10 {
-    -webkit-order: 41.66666666666667%;
-    -ms-flex-order: 41.66666666666667%;
     order: 41.66666666666667%;
   }
 
@@ -5409,8 +4925,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xs-11 {
-    -webkit-order: 45.83333333333333%;
-    -ms-flex-order: 45.83333333333333%;
     order: 45.83333333333333%;
   }
 
@@ -5433,8 +4947,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xs-12 {
-    -webkit-order: 50%;
-    -ms-flex-order: 50%;
     order: 50%;
   }
 
@@ -5457,8 +4969,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xs-13 {
-    -webkit-order: 54.166666666666664%;
-    -ms-flex-order: 54.166666666666664%;
     order: 54.166666666666664%;
   }
 
@@ -5481,8 +4991,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xs-14 {
-    -webkit-order: 58.333333333333336%;
-    -ms-flex-order: 58.333333333333336%;
     order: 58.333333333333336%;
   }
 
@@ -5505,8 +5013,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xs-15 {
-    -webkit-order: 62.5%;
-    -ms-flex-order: 62.5%;
     order: 62.5%;
   }
 
@@ -5529,8 +5035,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xs-16 {
-    -webkit-order: 66.66666666666666%;
-    -ms-flex-order: 66.66666666666666%;
     order: 66.66666666666666%;
   }
 
@@ -5553,8 +5057,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xs-17 {
-    -webkit-order: 70.83333333333334%;
-    -ms-flex-order: 70.83333333333334%;
     order: 70.83333333333334%;
   }
 
@@ -5577,8 +5079,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xs-18 {
-    -webkit-order: 75%;
-    -ms-flex-order: 75%;
     order: 75%;
   }
 
@@ -5601,8 +5101,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xs-19 {
-    -webkit-order: 79.16666666666666%;
-    -ms-flex-order: 79.16666666666666%;
     order: 79.16666666666666%;
   }
 
@@ -5625,8 +5123,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xs-20 {
-    -webkit-order: 83.33333333333334%;
-    -ms-flex-order: 83.33333333333334%;
     order: 83.33333333333334%;
   }
 
@@ -5649,8 +5145,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xs-21 {
-    -webkit-order: 87.5%;
-    -ms-flex-order: 87.5%;
     order: 87.5%;
   }
 
@@ -5673,8 +5167,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xs-22 {
-    -webkit-order: 91.66666666666666%;
-    -ms-flex-order: 91.66666666666666%;
     order: 91.66666666666666%;
   }
 
@@ -5697,8 +5189,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xs-23 {
-    -webkit-order: 95.83333333333334%;
-    -ms-flex-order: 95.83333333333334%;
     order: 95.83333333333334%;
   }
 
@@ -5721,13 +5211,11 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xs-24 {
-    -webkit-order: 100%;
-    -ms-flex-order: 100%;
     order: 100%;
   }
 }
 
-@media (min-width:576px) {
+@media (min-width: 576px) {
   .c1.xl-col-column-sm-0 {
     display: none;
     min-height: 1px;
@@ -5747,8 +5235,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-sm-0 {
-    -webkit-order: 0%;
-    -ms-flex-order: 0%;
     order: 0%;
   }
 
@@ -5771,8 +5257,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-sm-1 {
-    -webkit-order: 4.166666666666666%;
-    -ms-flex-order: 4.166666666666666%;
     order: 4.166666666666666%;
   }
 
@@ -5795,8 +5279,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-sm-2 {
-    -webkit-order: 8.333333333333332%;
-    -ms-flex-order: 8.333333333333332%;
     order: 8.333333333333332%;
   }
 
@@ -5819,8 +5301,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-sm-3 {
-    -webkit-order: 12.5%;
-    -ms-flex-order: 12.5%;
     order: 12.5%;
   }
 
@@ -5843,8 +5323,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-sm-4 {
-    -webkit-order: 16.666666666666664%;
-    -ms-flex-order: 16.666666666666664%;
     order: 16.666666666666664%;
   }
 
@@ -5867,8 +5345,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-sm-5 {
-    -webkit-order: 20.833333333333336%;
-    -ms-flex-order: 20.833333333333336%;
     order: 20.833333333333336%;
   }
 
@@ -5891,8 +5367,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-sm-6 {
-    -webkit-order: 25%;
-    -ms-flex-order: 25%;
     order: 25%;
   }
 
@@ -5915,8 +5389,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-sm-7 {
-    -webkit-order: 29.166666666666668%;
-    -ms-flex-order: 29.166666666666668%;
     order: 29.166666666666668%;
   }
 
@@ -5939,8 +5411,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-sm-8 {
-    -webkit-order: 33.33333333333333%;
-    -ms-flex-order: 33.33333333333333%;
     order: 33.33333333333333%;
   }
 
@@ -5963,8 +5433,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-sm-9 {
-    -webkit-order: 37.5%;
-    -ms-flex-order: 37.5%;
     order: 37.5%;
   }
 
@@ -5987,8 +5455,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-sm-10 {
-    -webkit-order: 41.66666666666667%;
-    -ms-flex-order: 41.66666666666667%;
     order: 41.66666666666667%;
   }
 
@@ -6011,8 +5477,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-sm-11 {
-    -webkit-order: 45.83333333333333%;
-    -ms-flex-order: 45.83333333333333%;
     order: 45.83333333333333%;
   }
 
@@ -6035,8 +5499,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-sm-12 {
-    -webkit-order: 50%;
-    -ms-flex-order: 50%;
     order: 50%;
   }
 
@@ -6059,8 +5521,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-sm-13 {
-    -webkit-order: 54.166666666666664%;
-    -ms-flex-order: 54.166666666666664%;
     order: 54.166666666666664%;
   }
 
@@ -6083,8 +5543,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-sm-14 {
-    -webkit-order: 58.333333333333336%;
-    -ms-flex-order: 58.333333333333336%;
     order: 58.333333333333336%;
   }
 
@@ -6107,8 +5565,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-sm-15 {
-    -webkit-order: 62.5%;
-    -ms-flex-order: 62.5%;
     order: 62.5%;
   }
 
@@ -6131,8 +5587,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-sm-16 {
-    -webkit-order: 66.66666666666666%;
-    -ms-flex-order: 66.66666666666666%;
     order: 66.66666666666666%;
   }
 
@@ -6155,8 +5609,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-sm-17 {
-    -webkit-order: 70.83333333333334%;
-    -ms-flex-order: 70.83333333333334%;
     order: 70.83333333333334%;
   }
 
@@ -6179,8 +5631,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-sm-18 {
-    -webkit-order: 75%;
-    -ms-flex-order: 75%;
     order: 75%;
   }
 
@@ -6203,8 +5653,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-sm-19 {
-    -webkit-order: 79.16666666666666%;
-    -ms-flex-order: 79.16666666666666%;
     order: 79.16666666666666%;
   }
 
@@ -6227,8 +5675,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-sm-20 {
-    -webkit-order: 83.33333333333334%;
-    -ms-flex-order: 83.33333333333334%;
     order: 83.33333333333334%;
   }
 
@@ -6251,8 +5697,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-sm-21 {
-    -webkit-order: 87.5%;
-    -ms-flex-order: 87.5%;
     order: 87.5%;
   }
 
@@ -6275,8 +5719,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-sm-22 {
-    -webkit-order: 91.66666666666666%;
-    -ms-flex-order: 91.66666666666666%;
     order: 91.66666666666666%;
   }
 
@@ -6299,8 +5741,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-sm-23 {
-    -webkit-order: 95.83333333333334%;
-    -ms-flex-order: 95.83333333333334%;
     order: 95.83333333333334%;
   }
 
@@ -6323,13 +5763,11 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-sm-24 {
-    -webkit-order: 100%;
-    -ms-flex-order: 100%;
     order: 100%;
   }
 }
 
-@media (min-width:768px) {
+@media (min-width: 768px) {
   .c1.xl-col-column-md-0 {
     display: none;
     min-height: 1px;
@@ -6349,8 +5787,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-md-0 {
-    -webkit-order: 0%;
-    -ms-flex-order: 0%;
     order: 0%;
   }
 
@@ -6373,8 +5809,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-md-1 {
-    -webkit-order: 4.166666666666666%;
-    -ms-flex-order: 4.166666666666666%;
     order: 4.166666666666666%;
   }
 
@@ -6397,8 +5831,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-md-2 {
-    -webkit-order: 8.333333333333332%;
-    -ms-flex-order: 8.333333333333332%;
     order: 8.333333333333332%;
   }
 
@@ -6421,8 +5853,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-md-3 {
-    -webkit-order: 12.5%;
-    -ms-flex-order: 12.5%;
     order: 12.5%;
   }
 
@@ -6445,8 +5875,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-md-4 {
-    -webkit-order: 16.666666666666664%;
-    -ms-flex-order: 16.666666666666664%;
     order: 16.666666666666664%;
   }
 
@@ -6469,8 +5897,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-md-5 {
-    -webkit-order: 20.833333333333336%;
-    -ms-flex-order: 20.833333333333336%;
     order: 20.833333333333336%;
   }
 
@@ -6493,8 +5919,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-md-6 {
-    -webkit-order: 25%;
-    -ms-flex-order: 25%;
     order: 25%;
   }
 
@@ -6517,8 +5941,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-md-7 {
-    -webkit-order: 29.166666666666668%;
-    -ms-flex-order: 29.166666666666668%;
     order: 29.166666666666668%;
   }
 
@@ -6541,8 +5963,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-md-8 {
-    -webkit-order: 33.33333333333333%;
-    -ms-flex-order: 33.33333333333333%;
     order: 33.33333333333333%;
   }
 
@@ -6565,8 +5985,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-md-9 {
-    -webkit-order: 37.5%;
-    -ms-flex-order: 37.5%;
     order: 37.5%;
   }
 
@@ -6589,8 +6007,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-md-10 {
-    -webkit-order: 41.66666666666667%;
-    -ms-flex-order: 41.66666666666667%;
     order: 41.66666666666667%;
   }
 
@@ -6613,8 +6029,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-md-11 {
-    -webkit-order: 45.83333333333333%;
-    -ms-flex-order: 45.83333333333333%;
     order: 45.83333333333333%;
   }
 
@@ -6637,8 +6051,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-md-12 {
-    -webkit-order: 50%;
-    -ms-flex-order: 50%;
     order: 50%;
   }
 
@@ -6661,8 +6073,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-md-13 {
-    -webkit-order: 54.166666666666664%;
-    -ms-flex-order: 54.166666666666664%;
     order: 54.166666666666664%;
   }
 
@@ -6685,8 +6095,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-md-14 {
-    -webkit-order: 58.333333333333336%;
-    -ms-flex-order: 58.333333333333336%;
     order: 58.333333333333336%;
   }
 
@@ -6709,8 +6117,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-md-15 {
-    -webkit-order: 62.5%;
-    -ms-flex-order: 62.5%;
     order: 62.5%;
   }
 
@@ -6733,8 +6139,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-md-16 {
-    -webkit-order: 66.66666666666666%;
-    -ms-flex-order: 66.66666666666666%;
     order: 66.66666666666666%;
   }
 
@@ -6757,8 +6161,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-md-17 {
-    -webkit-order: 70.83333333333334%;
-    -ms-flex-order: 70.83333333333334%;
     order: 70.83333333333334%;
   }
 
@@ -6781,8 +6183,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-md-18 {
-    -webkit-order: 75%;
-    -ms-flex-order: 75%;
     order: 75%;
   }
 
@@ -6805,8 +6205,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-md-19 {
-    -webkit-order: 79.16666666666666%;
-    -ms-flex-order: 79.16666666666666%;
     order: 79.16666666666666%;
   }
 
@@ -6829,8 +6227,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-md-20 {
-    -webkit-order: 83.33333333333334%;
-    -ms-flex-order: 83.33333333333334%;
     order: 83.33333333333334%;
   }
 
@@ -6853,8 +6249,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-md-21 {
-    -webkit-order: 87.5%;
-    -ms-flex-order: 87.5%;
     order: 87.5%;
   }
 
@@ -6877,8 +6271,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-md-22 {
-    -webkit-order: 91.66666666666666%;
-    -ms-flex-order: 91.66666666666666%;
     order: 91.66666666666666%;
   }
 
@@ -6901,8 +6293,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-md-23 {
-    -webkit-order: 95.83333333333334%;
-    -ms-flex-order: 95.83333333333334%;
     order: 95.83333333333334%;
   }
 
@@ -6925,13 +6315,11 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-md-24 {
-    -webkit-order: 100%;
-    -ms-flex-order: 100%;
     order: 100%;
   }
 }
 
-@media (min-width:992px) {
+@media (min-width: 992px) {
   .c1.xl-col-column-lg-0 {
     display: none;
     min-height: 1px;
@@ -6951,8 +6339,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-lg-0 {
-    -webkit-order: 0%;
-    -ms-flex-order: 0%;
     order: 0%;
   }
 
@@ -6975,8 +6361,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-lg-1 {
-    -webkit-order: 4.166666666666666%;
-    -ms-flex-order: 4.166666666666666%;
     order: 4.166666666666666%;
   }
 
@@ -6999,8 +6383,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-lg-2 {
-    -webkit-order: 8.333333333333332%;
-    -ms-flex-order: 8.333333333333332%;
     order: 8.333333333333332%;
   }
 
@@ -7023,8 +6405,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-lg-3 {
-    -webkit-order: 12.5%;
-    -ms-flex-order: 12.5%;
     order: 12.5%;
   }
 
@@ -7047,8 +6427,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-lg-4 {
-    -webkit-order: 16.666666666666664%;
-    -ms-flex-order: 16.666666666666664%;
     order: 16.666666666666664%;
   }
 
@@ -7071,8 +6449,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-lg-5 {
-    -webkit-order: 20.833333333333336%;
-    -ms-flex-order: 20.833333333333336%;
     order: 20.833333333333336%;
   }
 
@@ -7095,8 +6471,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-lg-6 {
-    -webkit-order: 25%;
-    -ms-flex-order: 25%;
     order: 25%;
   }
 
@@ -7119,8 +6493,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-lg-7 {
-    -webkit-order: 29.166666666666668%;
-    -ms-flex-order: 29.166666666666668%;
     order: 29.166666666666668%;
   }
 
@@ -7143,8 +6515,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-lg-8 {
-    -webkit-order: 33.33333333333333%;
-    -ms-flex-order: 33.33333333333333%;
     order: 33.33333333333333%;
   }
 
@@ -7167,8 +6537,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-lg-9 {
-    -webkit-order: 37.5%;
-    -ms-flex-order: 37.5%;
     order: 37.5%;
   }
 
@@ -7191,8 +6559,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-lg-10 {
-    -webkit-order: 41.66666666666667%;
-    -ms-flex-order: 41.66666666666667%;
     order: 41.66666666666667%;
   }
 
@@ -7215,8 +6581,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-lg-11 {
-    -webkit-order: 45.83333333333333%;
-    -ms-flex-order: 45.83333333333333%;
     order: 45.83333333333333%;
   }
 
@@ -7239,8 +6603,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-lg-12 {
-    -webkit-order: 50%;
-    -ms-flex-order: 50%;
     order: 50%;
   }
 
@@ -7263,8 +6625,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-lg-13 {
-    -webkit-order: 54.166666666666664%;
-    -ms-flex-order: 54.166666666666664%;
     order: 54.166666666666664%;
   }
 
@@ -7287,8 +6647,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-lg-14 {
-    -webkit-order: 58.333333333333336%;
-    -ms-flex-order: 58.333333333333336%;
     order: 58.333333333333336%;
   }
 
@@ -7311,8 +6669,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-lg-15 {
-    -webkit-order: 62.5%;
-    -ms-flex-order: 62.5%;
     order: 62.5%;
   }
 
@@ -7335,8 +6691,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-lg-16 {
-    -webkit-order: 66.66666666666666%;
-    -ms-flex-order: 66.66666666666666%;
     order: 66.66666666666666%;
   }
 
@@ -7359,8 +6713,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-lg-17 {
-    -webkit-order: 70.83333333333334%;
-    -ms-flex-order: 70.83333333333334%;
     order: 70.83333333333334%;
   }
 
@@ -7383,8 +6735,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-lg-18 {
-    -webkit-order: 75%;
-    -ms-flex-order: 75%;
     order: 75%;
   }
 
@@ -7407,8 +6757,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-lg-19 {
-    -webkit-order: 79.16666666666666%;
-    -ms-flex-order: 79.16666666666666%;
     order: 79.16666666666666%;
   }
 
@@ -7431,8 +6779,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-lg-20 {
-    -webkit-order: 83.33333333333334%;
-    -ms-flex-order: 83.33333333333334%;
     order: 83.33333333333334%;
   }
 
@@ -7455,8 +6801,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-lg-21 {
-    -webkit-order: 87.5%;
-    -ms-flex-order: 87.5%;
     order: 87.5%;
   }
 
@@ -7479,8 +6823,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-lg-22 {
-    -webkit-order: 91.66666666666666%;
-    -ms-flex-order: 91.66666666666666%;
     order: 91.66666666666666%;
   }
 
@@ -7503,8 +6845,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-lg-23 {
-    -webkit-order: 95.83333333333334%;
-    -ms-flex-order: 95.83333333333334%;
     order: 95.83333333333334%;
   }
 
@@ -7527,13 +6867,11 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-lg-24 {
-    -webkit-order: 100%;
-    -ms-flex-order: 100%;
     order: 100%;
   }
 }
 
-@media (min-width:1200px) {
+@media (min-width: 1200px) {
   .c1.xl-col-column-xl-0 {
     display: none;
     min-height: 1px;
@@ -7553,8 +6891,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xl-0 {
-    -webkit-order: 0%;
-    -ms-flex-order: 0%;
     order: 0%;
   }
 
@@ -7577,8 +6913,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xl-1 {
-    -webkit-order: 4.166666666666666%;
-    -ms-flex-order: 4.166666666666666%;
     order: 4.166666666666666%;
   }
 
@@ -7601,8 +6935,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xl-2 {
-    -webkit-order: 8.333333333333332%;
-    -ms-flex-order: 8.333333333333332%;
     order: 8.333333333333332%;
   }
 
@@ -7625,8 +6957,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xl-3 {
-    -webkit-order: 12.5%;
-    -ms-flex-order: 12.5%;
     order: 12.5%;
   }
 
@@ -7649,8 +6979,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xl-4 {
-    -webkit-order: 16.666666666666664%;
-    -ms-flex-order: 16.666666666666664%;
     order: 16.666666666666664%;
   }
 
@@ -7673,8 +7001,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xl-5 {
-    -webkit-order: 20.833333333333336%;
-    -ms-flex-order: 20.833333333333336%;
     order: 20.833333333333336%;
   }
 
@@ -7697,8 +7023,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xl-6 {
-    -webkit-order: 25%;
-    -ms-flex-order: 25%;
     order: 25%;
   }
 
@@ -7721,8 +7045,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xl-7 {
-    -webkit-order: 29.166666666666668%;
-    -ms-flex-order: 29.166666666666668%;
     order: 29.166666666666668%;
   }
 
@@ -7745,8 +7067,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xl-8 {
-    -webkit-order: 33.33333333333333%;
-    -ms-flex-order: 33.33333333333333%;
     order: 33.33333333333333%;
   }
 
@@ -7769,8 +7089,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xl-9 {
-    -webkit-order: 37.5%;
-    -ms-flex-order: 37.5%;
     order: 37.5%;
   }
 
@@ -7793,8 +7111,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xl-10 {
-    -webkit-order: 41.66666666666667%;
-    -ms-flex-order: 41.66666666666667%;
     order: 41.66666666666667%;
   }
 
@@ -7817,8 +7133,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xl-11 {
-    -webkit-order: 45.83333333333333%;
-    -ms-flex-order: 45.83333333333333%;
     order: 45.83333333333333%;
   }
 
@@ -7841,8 +7155,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xl-12 {
-    -webkit-order: 50%;
-    -ms-flex-order: 50%;
     order: 50%;
   }
 
@@ -7865,8 +7177,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xl-13 {
-    -webkit-order: 54.166666666666664%;
-    -ms-flex-order: 54.166666666666664%;
     order: 54.166666666666664%;
   }
 
@@ -7889,8 +7199,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xl-14 {
-    -webkit-order: 58.333333333333336%;
-    -ms-flex-order: 58.333333333333336%;
     order: 58.333333333333336%;
   }
 
@@ -7913,8 +7221,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xl-15 {
-    -webkit-order: 62.5%;
-    -ms-flex-order: 62.5%;
     order: 62.5%;
   }
 
@@ -7937,8 +7243,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xl-16 {
-    -webkit-order: 66.66666666666666%;
-    -ms-flex-order: 66.66666666666666%;
     order: 66.66666666666666%;
   }
 
@@ -7961,8 +7265,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xl-17 {
-    -webkit-order: 70.83333333333334%;
-    -ms-flex-order: 70.83333333333334%;
     order: 70.83333333333334%;
   }
 
@@ -7985,8 +7287,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xl-18 {
-    -webkit-order: 75%;
-    -ms-flex-order: 75%;
     order: 75%;
   }
 
@@ -8009,8 +7309,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xl-19 {
-    -webkit-order: 79.16666666666666%;
-    -ms-flex-order: 79.16666666666666%;
     order: 79.16666666666666%;
   }
 
@@ -8033,8 +7331,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xl-20 {
-    -webkit-order: 83.33333333333334%;
-    -ms-flex-order: 83.33333333333334%;
     order: 83.33333333333334%;
   }
 
@@ -8057,8 +7353,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xl-21 {
-    -webkit-order: 87.5%;
-    -ms-flex-order: 87.5%;
     order: 87.5%;
   }
 
@@ -8081,8 +7375,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xl-22 {
-    -webkit-order: 91.66666666666666%;
-    -ms-flex-order: 91.66666666666666%;
     order: 91.66666666666666%;
   }
 
@@ -8105,8 +7397,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xl-23 {
-    -webkit-order: 95.83333333333334%;
-    -ms-flex-order: 95.83333333333334%;
     order: 95.83333333333334%;
   }
 
@@ -8129,13 +7419,11 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xl-24 {
-    -webkit-order: 100%;
-    -ms-flex-order: 100%;
     order: 100%;
   }
 }
 
-@media (min-width:1600px) {
+@media (min-width: 1600px) {
   .c1.xl-col-column-xxl-0 {
     display: none;
     min-height: 1px;
@@ -8155,8 +7443,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-0 {
-    -webkit-order: 0%;
-    -ms-flex-order: 0%;
     order: 0%;
   }
 
@@ -8179,8 +7465,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-1 {
-    -webkit-order: 4.166666666666666%;
-    -ms-flex-order: 4.166666666666666%;
     order: 4.166666666666666%;
   }
 
@@ -8203,8 +7487,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-2 {
-    -webkit-order: 8.333333333333332%;
-    -ms-flex-order: 8.333333333333332%;
     order: 8.333333333333332%;
   }
 
@@ -8227,8 +7509,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-3 {
-    -webkit-order: 12.5%;
-    -ms-flex-order: 12.5%;
     order: 12.5%;
   }
 
@@ -8251,8 +7531,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-4 {
-    -webkit-order: 16.666666666666664%;
-    -ms-flex-order: 16.666666666666664%;
     order: 16.666666666666664%;
   }
 
@@ -8275,8 +7553,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-5 {
-    -webkit-order: 20.833333333333336%;
-    -ms-flex-order: 20.833333333333336%;
     order: 20.833333333333336%;
   }
 
@@ -8299,8 +7575,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-6 {
-    -webkit-order: 25%;
-    -ms-flex-order: 25%;
     order: 25%;
   }
 
@@ -8323,8 +7597,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-7 {
-    -webkit-order: 29.166666666666668%;
-    -ms-flex-order: 29.166666666666668%;
     order: 29.166666666666668%;
   }
 
@@ -8347,8 +7619,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-8 {
-    -webkit-order: 33.33333333333333%;
-    -ms-flex-order: 33.33333333333333%;
     order: 33.33333333333333%;
   }
 
@@ -8371,8 +7641,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-9 {
-    -webkit-order: 37.5%;
-    -ms-flex-order: 37.5%;
     order: 37.5%;
   }
 
@@ -8395,8 +7663,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-10 {
-    -webkit-order: 41.66666666666667%;
-    -ms-flex-order: 41.66666666666667%;
     order: 41.66666666666667%;
   }
 
@@ -8419,8 +7685,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-11 {
-    -webkit-order: 45.83333333333333%;
-    -ms-flex-order: 45.83333333333333%;
     order: 45.83333333333333%;
   }
 
@@ -8443,8 +7707,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-12 {
-    -webkit-order: 50%;
-    -ms-flex-order: 50%;
     order: 50%;
   }
 
@@ -8467,8 +7729,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-13 {
-    -webkit-order: 54.166666666666664%;
-    -ms-flex-order: 54.166666666666664%;
     order: 54.166666666666664%;
   }
 
@@ -8491,8 +7751,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-14 {
-    -webkit-order: 58.333333333333336%;
-    -ms-flex-order: 58.333333333333336%;
     order: 58.333333333333336%;
   }
 
@@ -8515,8 +7773,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-15 {
-    -webkit-order: 62.5%;
-    -ms-flex-order: 62.5%;
     order: 62.5%;
   }
 
@@ -8539,8 +7795,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-16 {
-    -webkit-order: 66.66666666666666%;
-    -ms-flex-order: 66.66666666666666%;
     order: 66.66666666666666%;
   }
 
@@ -8563,8 +7817,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-17 {
-    -webkit-order: 70.83333333333334%;
-    -ms-flex-order: 70.83333333333334%;
     order: 70.83333333333334%;
   }
 
@@ -8587,8 +7839,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-18 {
-    -webkit-order: 75%;
-    -ms-flex-order: 75%;
     order: 75%;
   }
 
@@ -8611,8 +7861,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-19 {
-    -webkit-order: 79.16666666666666%;
-    -ms-flex-order: 79.16666666666666%;
     order: 79.16666666666666%;
   }
 
@@ -8635,8 +7883,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-20 {
-    -webkit-order: 83.33333333333334%;
-    -ms-flex-order: 83.33333333333334%;
     order: 83.33333333333334%;
   }
 
@@ -8659,8 +7905,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-21 {
-    -webkit-order: 87.5%;
-    -ms-flex-order: 87.5%;
     order: 87.5%;
   }
 
@@ -8683,8 +7927,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-22 {
-    -webkit-order: 91.66666666666666%;
-    -ms-flex-order: 91.66666666666666%;
     order: 91.66666666666666%;
   }
 
@@ -8707,8 +7949,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-23 {
-    -webkit-order: 95.83333333333334%;
-    -ms-flex-order: 95.83333333333334%;
     order: 95.83333333333334%;
   }
 
@@ -8731,8 +7971,6 @@ exports[`Row 偏移布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-24 {
-    -webkit-order: 100%;
-    -ms-flex-order: 100%;
     order: 100%;
   }
 }
@@ -8896,8 +8134,6 @@ exports[`Row 响应式偏移 1`] = `
 }
 
 .c1.xl-col-order-0 {
-  -webkit-order: 0%;
-  -ms-flex-order: 0%;
   order: 0%;
 }
 
@@ -8920,8 +8156,6 @@ exports[`Row 响应式偏移 1`] = `
 }
 
 .c1.xl-col-order-1 {
-  -webkit-order: 4.166666666666666%;
-  -ms-flex-order: 4.166666666666666%;
   order: 4.166666666666666%;
 }
 
@@ -8944,8 +8178,6 @@ exports[`Row 响应式偏移 1`] = `
 }
 
 .c1.xl-col-order-2 {
-  -webkit-order: 8.333333333333332%;
-  -ms-flex-order: 8.333333333333332%;
   order: 8.333333333333332%;
 }
 
@@ -8968,8 +8200,6 @@ exports[`Row 响应式偏移 1`] = `
 }
 
 .c1.xl-col-order-3 {
-  -webkit-order: 12.5%;
-  -ms-flex-order: 12.5%;
   order: 12.5%;
 }
 
@@ -8992,8 +8222,6 @@ exports[`Row 响应式偏移 1`] = `
 }
 
 .c1.xl-col-order-4 {
-  -webkit-order: 16.666666666666664%;
-  -ms-flex-order: 16.666666666666664%;
   order: 16.666666666666664%;
 }
 
@@ -9016,8 +8244,6 @@ exports[`Row 响应式偏移 1`] = `
 }
 
 .c1.xl-col-order-5 {
-  -webkit-order: 20.833333333333336%;
-  -ms-flex-order: 20.833333333333336%;
   order: 20.833333333333336%;
 }
 
@@ -9040,8 +8266,6 @@ exports[`Row 响应式偏移 1`] = `
 }
 
 .c1.xl-col-order-6 {
-  -webkit-order: 25%;
-  -ms-flex-order: 25%;
   order: 25%;
 }
 
@@ -9064,8 +8288,6 @@ exports[`Row 响应式偏移 1`] = `
 }
 
 .c1.xl-col-order-7 {
-  -webkit-order: 29.166666666666668%;
-  -ms-flex-order: 29.166666666666668%;
   order: 29.166666666666668%;
 }
 
@@ -9088,8 +8310,6 @@ exports[`Row 响应式偏移 1`] = `
 }
 
 .c1.xl-col-order-8 {
-  -webkit-order: 33.33333333333333%;
-  -ms-flex-order: 33.33333333333333%;
   order: 33.33333333333333%;
 }
 
@@ -9112,8 +8332,6 @@ exports[`Row 响应式偏移 1`] = `
 }
 
 .c1.xl-col-order-9 {
-  -webkit-order: 37.5%;
-  -ms-flex-order: 37.5%;
   order: 37.5%;
 }
 
@@ -9136,8 +8354,6 @@ exports[`Row 响应式偏移 1`] = `
 }
 
 .c1.xl-col-order-10 {
-  -webkit-order: 41.66666666666667%;
-  -ms-flex-order: 41.66666666666667%;
   order: 41.66666666666667%;
 }
 
@@ -9160,8 +8376,6 @@ exports[`Row 响应式偏移 1`] = `
 }
 
 .c1.xl-col-order-11 {
-  -webkit-order: 45.83333333333333%;
-  -ms-flex-order: 45.83333333333333%;
   order: 45.83333333333333%;
 }
 
@@ -9184,8 +8398,6 @@ exports[`Row 响应式偏移 1`] = `
 }
 
 .c1.xl-col-order-12 {
-  -webkit-order: 50%;
-  -ms-flex-order: 50%;
   order: 50%;
 }
 
@@ -9208,8 +8420,6 @@ exports[`Row 响应式偏移 1`] = `
 }
 
 .c1.xl-col-order-13 {
-  -webkit-order: 54.166666666666664%;
-  -ms-flex-order: 54.166666666666664%;
   order: 54.166666666666664%;
 }
 
@@ -9232,8 +8442,6 @@ exports[`Row 响应式偏移 1`] = `
 }
 
 .c1.xl-col-order-14 {
-  -webkit-order: 58.333333333333336%;
-  -ms-flex-order: 58.333333333333336%;
   order: 58.333333333333336%;
 }
 
@@ -9256,8 +8464,6 @@ exports[`Row 响应式偏移 1`] = `
 }
 
 .c1.xl-col-order-15 {
-  -webkit-order: 62.5%;
-  -ms-flex-order: 62.5%;
   order: 62.5%;
 }
 
@@ -9280,8 +8486,6 @@ exports[`Row 响应式偏移 1`] = `
 }
 
 .c1.xl-col-order-16 {
-  -webkit-order: 66.66666666666666%;
-  -ms-flex-order: 66.66666666666666%;
   order: 66.66666666666666%;
 }
 
@@ -9304,8 +8508,6 @@ exports[`Row 响应式偏移 1`] = `
 }
 
 .c1.xl-col-order-17 {
-  -webkit-order: 70.83333333333334%;
-  -ms-flex-order: 70.83333333333334%;
   order: 70.83333333333334%;
 }
 
@@ -9328,8 +8530,6 @@ exports[`Row 响应式偏移 1`] = `
 }
 
 .c1.xl-col-order-18 {
-  -webkit-order: 75%;
-  -ms-flex-order: 75%;
   order: 75%;
 }
 
@@ -9352,8 +8552,6 @@ exports[`Row 响应式偏移 1`] = `
 }
 
 .c1.xl-col-order-19 {
-  -webkit-order: 79.16666666666666%;
-  -ms-flex-order: 79.16666666666666%;
   order: 79.16666666666666%;
 }
 
@@ -9376,8 +8574,6 @@ exports[`Row 响应式偏移 1`] = `
 }
 
 .c1.xl-col-order-20 {
-  -webkit-order: 83.33333333333334%;
-  -ms-flex-order: 83.33333333333334%;
   order: 83.33333333333334%;
 }
 
@@ -9400,8 +8596,6 @@ exports[`Row 响应式偏移 1`] = `
 }
 
 .c1.xl-col-order-21 {
-  -webkit-order: 87.5%;
-  -ms-flex-order: 87.5%;
   order: 87.5%;
 }
 
@@ -9424,8 +8618,6 @@ exports[`Row 响应式偏移 1`] = `
 }
 
 .c1.xl-col-order-22 {
-  -webkit-order: 91.66666666666666%;
-  -ms-flex-order: 91.66666666666666%;
   order: 91.66666666666666%;
 }
 
@@ -9448,8 +8640,6 @@ exports[`Row 响应式偏移 1`] = `
 }
 
 .c1.xl-col-order-23 {
-  -webkit-order: 95.83333333333334%;
-  -ms-flex-order: 95.83333333333334%;
   order: 95.83333333333334%;
 }
 
@@ -9472,85 +8662,52 @@ exports[`Row 响应式偏移 1`] = `
 }
 
 .c1.xl-col-order-24 {
-  -webkit-order: 100%;
-  -ms-flex-order: 100%;
   order: 100%;
 }
 
 .c0 {
   box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
   flex-direction: row;
 }
 
 .c0.xl-row--justify-start {
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
   justify-content: flex-start;
 }
 
 .c0.xl-row--justify-center {
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
 }
 
 .c0.xl-row--justify-end {
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
   justify-content: flex-end;
 }
 
 .c0.xl-row--justify-space-around {
-  -webkit-box-pack: space-around;
-  -webkit-justify-content: space-around;
-  -ms-flex-pack: space-around;
   justify-content: space-around;
 }
 
 .c0.xl-row--justify-space-between {
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
   justify-content: space-between;
 }
 
 .c0.xl-row--align-top {
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
   align-items: flex-start;
 }
 
 .c0.xl-row--align-middle {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
 }
 
 .c0.xl-row--align-bottom {
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
   align-items: flex-end;
 }
 
 .c0.xl-row--wrap {
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 }
 
-@media (min-width:0px) {
+@media (min-width: 0px) {
   .c1.xl-col-column-xs-0 {
     display: none;
     min-height: 1px;
@@ -9570,8 +8727,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xs-0 {
-    -webkit-order: 0%;
-    -ms-flex-order: 0%;
     order: 0%;
   }
 
@@ -9594,8 +8749,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xs-1 {
-    -webkit-order: 4.166666666666666%;
-    -ms-flex-order: 4.166666666666666%;
     order: 4.166666666666666%;
   }
 
@@ -9618,8 +8771,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xs-2 {
-    -webkit-order: 8.333333333333332%;
-    -ms-flex-order: 8.333333333333332%;
     order: 8.333333333333332%;
   }
 
@@ -9642,8 +8793,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xs-3 {
-    -webkit-order: 12.5%;
-    -ms-flex-order: 12.5%;
     order: 12.5%;
   }
 
@@ -9666,8 +8815,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xs-4 {
-    -webkit-order: 16.666666666666664%;
-    -ms-flex-order: 16.666666666666664%;
     order: 16.666666666666664%;
   }
 
@@ -9690,8 +8837,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xs-5 {
-    -webkit-order: 20.833333333333336%;
-    -ms-flex-order: 20.833333333333336%;
     order: 20.833333333333336%;
   }
 
@@ -9714,8 +8859,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xs-6 {
-    -webkit-order: 25%;
-    -ms-flex-order: 25%;
     order: 25%;
   }
 
@@ -9738,8 +8881,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xs-7 {
-    -webkit-order: 29.166666666666668%;
-    -ms-flex-order: 29.166666666666668%;
     order: 29.166666666666668%;
   }
 
@@ -9762,8 +8903,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xs-8 {
-    -webkit-order: 33.33333333333333%;
-    -ms-flex-order: 33.33333333333333%;
     order: 33.33333333333333%;
   }
 
@@ -9786,8 +8925,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xs-9 {
-    -webkit-order: 37.5%;
-    -ms-flex-order: 37.5%;
     order: 37.5%;
   }
 
@@ -9810,8 +8947,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xs-10 {
-    -webkit-order: 41.66666666666667%;
-    -ms-flex-order: 41.66666666666667%;
     order: 41.66666666666667%;
   }
 
@@ -9834,8 +8969,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xs-11 {
-    -webkit-order: 45.83333333333333%;
-    -ms-flex-order: 45.83333333333333%;
     order: 45.83333333333333%;
   }
 
@@ -9858,8 +8991,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xs-12 {
-    -webkit-order: 50%;
-    -ms-flex-order: 50%;
     order: 50%;
   }
 
@@ -9882,8 +9013,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xs-13 {
-    -webkit-order: 54.166666666666664%;
-    -ms-flex-order: 54.166666666666664%;
     order: 54.166666666666664%;
   }
 
@@ -9906,8 +9035,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xs-14 {
-    -webkit-order: 58.333333333333336%;
-    -ms-flex-order: 58.333333333333336%;
     order: 58.333333333333336%;
   }
 
@@ -9930,8 +9057,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xs-15 {
-    -webkit-order: 62.5%;
-    -ms-flex-order: 62.5%;
     order: 62.5%;
   }
 
@@ -9954,8 +9079,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xs-16 {
-    -webkit-order: 66.66666666666666%;
-    -ms-flex-order: 66.66666666666666%;
     order: 66.66666666666666%;
   }
 
@@ -9978,8 +9101,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xs-17 {
-    -webkit-order: 70.83333333333334%;
-    -ms-flex-order: 70.83333333333334%;
     order: 70.83333333333334%;
   }
 
@@ -10002,8 +9123,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xs-18 {
-    -webkit-order: 75%;
-    -ms-flex-order: 75%;
     order: 75%;
   }
 
@@ -10026,8 +9145,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xs-19 {
-    -webkit-order: 79.16666666666666%;
-    -ms-flex-order: 79.16666666666666%;
     order: 79.16666666666666%;
   }
 
@@ -10050,8 +9167,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xs-20 {
-    -webkit-order: 83.33333333333334%;
-    -ms-flex-order: 83.33333333333334%;
     order: 83.33333333333334%;
   }
 
@@ -10074,8 +9189,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xs-21 {
-    -webkit-order: 87.5%;
-    -ms-flex-order: 87.5%;
     order: 87.5%;
   }
 
@@ -10098,8 +9211,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xs-22 {
-    -webkit-order: 91.66666666666666%;
-    -ms-flex-order: 91.66666666666666%;
     order: 91.66666666666666%;
   }
 
@@ -10122,8 +9233,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xs-23 {
-    -webkit-order: 95.83333333333334%;
-    -ms-flex-order: 95.83333333333334%;
     order: 95.83333333333334%;
   }
 
@@ -10146,13 +9255,11 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xs-24 {
-    -webkit-order: 100%;
-    -ms-flex-order: 100%;
     order: 100%;
   }
 }
 
-@media (min-width:576px) {
+@media (min-width: 576px) {
   .c1.xl-col-column-sm-0 {
     display: none;
     min-height: 1px;
@@ -10172,8 +9279,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-sm-0 {
-    -webkit-order: 0%;
-    -ms-flex-order: 0%;
     order: 0%;
   }
 
@@ -10196,8 +9301,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-sm-1 {
-    -webkit-order: 4.166666666666666%;
-    -ms-flex-order: 4.166666666666666%;
     order: 4.166666666666666%;
   }
 
@@ -10220,8 +9323,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-sm-2 {
-    -webkit-order: 8.333333333333332%;
-    -ms-flex-order: 8.333333333333332%;
     order: 8.333333333333332%;
   }
 
@@ -10244,8 +9345,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-sm-3 {
-    -webkit-order: 12.5%;
-    -ms-flex-order: 12.5%;
     order: 12.5%;
   }
 
@@ -10268,8 +9367,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-sm-4 {
-    -webkit-order: 16.666666666666664%;
-    -ms-flex-order: 16.666666666666664%;
     order: 16.666666666666664%;
   }
 
@@ -10292,8 +9389,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-sm-5 {
-    -webkit-order: 20.833333333333336%;
-    -ms-flex-order: 20.833333333333336%;
     order: 20.833333333333336%;
   }
 
@@ -10316,8 +9411,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-sm-6 {
-    -webkit-order: 25%;
-    -ms-flex-order: 25%;
     order: 25%;
   }
 
@@ -10340,8 +9433,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-sm-7 {
-    -webkit-order: 29.166666666666668%;
-    -ms-flex-order: 29.166666666666668%;
     order: 29.166666666666668%;
   }
 
@@ -10364,8 +9455,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-sm-8 {
-    -webkit-order: 33.33333333333333%;
-    -ms-flex-order: 33.33333333333333%;
     order: 33.33333333333333%;
   }
 
@@ -10388,8 +9477,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-sm-9 {
-    -webkit-order: 37.5%;
-    -ms-flex-order: 37.5%;
     order: 37.5%;
   }
 
@@ -10412,8 +9499,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-sm-10 {
-    -webkit-order: 41.66666666666667%;
-    -ms-flex-order: 41.66666666666667%;
     order: 41.66666666666667%;
   }
 
@@ -10436,8 +9521,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-sm-11 {
-    -webkit-order: 45.83333333333333%;
-    -ms-flex-order: 45.83333333333333%;
     order: 45.83333333333333%;
   }
 
@@ -10460,8 +9543,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-sm-12 {
-    -webkit-order: 50%;
-    -ms-flex-order: 50%;
     order: 50%;
   }
 
@@ -10484,8 +9565,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-sm-13 {
-    -webkit-order: 54.166666666666664%;
-    -ms-flex-order: 54.166666666666664%;
     order: 54.166666666666664%;
   }
 
@@ -10508,8 +9587,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-sm-14 {
-    -webkit-order: 58.333333333333336%;
-    -ms-flex-order: 58.333333333333336%;
     order: 58.333333333333336%;
   }
 
@@ -10532,8 +9609,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-sm-15 {
-    -webkit-order: 62.5%;
-    -ms-flex-order: 62.5%;
     order: 62.5%;
   }
 
@@ -10556,8 +9631,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-sm-16 {
-    -webkit-order: 66.66666666666666%;
-    -ms-flex-order: 66.66666666666666%;
     order: 66.66666666666666%;
   }
 
@@ -10580,8 +9653,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-sm-17 {
-    -webkit-order: 70.83333333333334%;
-    -ms-flex-order: 70.83333333333334%;
     order: 70.83333333333334%;
   }
 
@@ -10604,8 +9675,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-sm-18 {
-    -webkit-order: 75%;
-    -ms-flex-order: 75%;
     order: 75%;
   }
 
@@ -10628,8 +9697,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-sm-19 {
-    -webkit-order: 79.16666666666666%;
-    -ms-flex-order: 79.16666666666666%;
     order: 79.16666666666666%;
   }
 
@@ -10652,8 +9719,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-sm-20 {
-    -webkit-order: 83.33333333333334%;
-    -ms-flex-order: 83.33333333333334%;
     order: 83.33333333333334%;
   }
 
@@ -10676,8 +9741,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-sm-21 {
-    -webkit-order: 87.5%;
-    -ms-flex-order: 87.5%;
     order: 87.5%;
   }
 
@@ -10700,8 +9763,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-sm-22 {
-    -webkit-order: 91.66666666666666%;
-    -ms-flex-order: 91.66666666666666%;
     order: 91.66666666666666%;
   }
 
@@ -10724,8 +9785,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-sm-23 {
-    -webkit-order: 95.83333333333334%;
-    -ms-flex-order: 95.83333333333334%;
     order: 95.83333333333334%;
   }
 
@@ -10748,13 +9807,11 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-sm-24 {
-    -webkit-order: 100%;
-    -ms-flex-order: 100%;
     order: 100%;
   }
 }
 
-@media (min-width:768px) {
+@media (min-width: 768px) {
   .c1.xl-col-column-md-0 {
     display: none;
     min-height: 1px;
@@ -10774,8 +9831,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-md-0 {
-    -webkit-order: 0%;
-    -ms-flex-order: 0%;
     order: 0%;
   }
 
@@ -10798,8 +9853,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-md-1 {
-    -webkit-order: 4.166666666666666%;
-    -ms-flex-order: 4.166666666666666%;
     order: 4.166666666666666%;
   }
 
@@ -10822,8 +9875,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-md-2 {
-    -webkit-order: 8.333333333333332%;
-    -ms-flex-order: 8.333333333333332%;
     order: 8.333333333333332%;
   }
 
@@ -10846,8 +9897,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-md-3 {
-    -webkit-order: 12.5%;
-    -ms-flex-order: 12.5%;
     order: 12.5%;
   }
 
@@ -10870,8 +9919,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-md-4 {
-    -webkit-order: 16.666666666666664%;
-    -ms-flex-order: 16.666666666666664%;
     order: 16.666666666666664%;
   }
 
@@ -10894,8 +9941,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-md-5 {
-    -webkit-order: 20.833333333333336%;
-    -ms-flex-order: 20.833333333333336%;
     order: 20.833333333333336%;
   }
 
@@ -10918,8 +9963,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-md-6 {
-    -webkit-order: 25%;
-    -ms-flex-order: 25%;
     order: 25%;
   }
 
@@ -10942,8 +9985,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-md-7 {
-    -webkit-order: 29.166666666666668%;
-    -ms-flex-order: 29.166666666666668%;
     order: 29.166666666666668%;
   }
 
@@ -10966,8 +10007,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-md-8 {
-    -webkit-order: 33.33333333333333%;
-    -ms-flex-order: 33.33333333333333%;
     order: 33.33333333333333%;
   }
 
@@ -10990,8 +10029,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-md-9 {
-    -webkit-order: 37.5%;
-    -ms-flex-order: 37.5%;
     order: 37.5%;
   }
 
@@ -11014,8 +10051,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-md-10 {
-    -webkit-order: 41.66666666666667%;
-    -ms-flex-order: 41.66666666666667%;
     order: 41.66666666666667%;
   }
 
@@ -11038,8 +10073,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-md-11 {
-    -webkit-order: 45.83333333333333%;
-    -ms-flex-order: 45.83333333333333%;
     order: 45.83333333333333%;
   }
 
@@ -11062,8 +10095,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-md-12 {
-    -webkit-order: 50%;
-    -ms-flex-order: 50%;
     order: 50%;
   }
 
@@ -11086,8 +10117,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-md-13 {
-    -webkit-order: 54.166666666666664%;
-    -ms-flex-order: 54.166666666666664%;
     order: 54.166666666666664%;
   }
 
@@ -11110,8 +10139,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-md-14 {
-    -webkit-order: 58.333333333333336%;
-    -ms-flex-order: 58.333333333333336%;
     order: 58.333333333333336%;
   }
 
@@ -11134,8 +10161,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-md-15 {
-    -webkit-order: 62.5%;
-    -ms-flex-order: 62.5%;
     order: 62.5%;
   }
 
@@ -11158,8 +10183,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-md-16 {
-    -webkit-order: 66.66666666666666%;
-    -ms-flex-order: 66.66666666666666%;
     order: 66.66666666666666%;
   }
 
@@ -11182,8 +10205,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-md-17 {
-    -webkit-order: 70.83333333333334%;
-    -ms-flex-order: 70.83333333333334%;
     order: 70.83333333333334%;
   }
 
@@ -11206,8 +10227,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-md-18 {
-    -webkit-order: 75%;
-    -ms-flex-order: 75%;
     order: 75%;
   }
 
@@ -11230,8 +10249,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-md-19 {
-    -webkit-order: 79.16666666666666%;
-    -ms-flex-order: 79.16666666666666%;
     order: 79.16666666666666%;
   }
 
@@ -11254,8 +10271,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-md-20 {
-    -webkit-order: 83.33333333333334%;
-    -ms-flex-order: 83.33333333333334%;
     order: 83.33333333333334%;
   }
 
@@ -11278,8 +10293,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-md-21 {
-    -webkit-order: 87.5%;
-    -ms-flex-order: 87.5%;
     order: 87.5%;
   }
 
@@ -11302,8 +10315,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-md-22 {
-    -webkit-order: 91.66666666666666%;
-    -ms-flex-order: 91.66666666666666%;
     order: 91.66666666666666%;
   }
 
@@ -11326,8 +10337,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-md-23 {
-    -webkit-order: 95.83333333333334%;
-    -ms-flex-order: 95.83333333333334%;
     order: 95.83333333333334%;
   }
 
@@ -11350,13 +10359,11 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-md-24 {
-    -webkit-order: 100%;
-    -ms-flex-order: 100%;
     order: 100%;
   }
 }
 
-@media (min-width:992px) {
+@media (min-width: 992px) {
   .c1.xl-col-column-lg-0 {
     display: none;
     min-height: 1px;
@@ -11376,8 +10383,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-lg-0 {
-    -webkit-order: 0%;
-    -ms-flex-order: 0%;
     order: 0%;
   }
 
@@ -11400,8 +10405,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-lg-1 {
-    -webkit-order: 4.166666666666666%;
-    -ms-flex-order: 4.166666666666666%;
     order: 4.166666666666666%;
   }
 
@@ -11424,8 +10427,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-lg-2 {
-    -webkit-order: 8.333333333333332%;
-    -ms-flex-order: 8.333333333333332%;
     order: 8.333333333333332%;
   }
 
@@ -11448,8 +10449,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-lg-3 {
-    -webkit-order: 12.5%;
-    -ms-flex-order: 12.5%;
     order: 12.5%;
   }
 
@@ -11472,8 +10471,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-lg-4 {
-    -webkit-order: 16.666666666666664%;
-    -ms-flex-order: 16.666666666666664%;
     order: 16.666666666666664%;
   }
 
@@ -11496,8 +10493,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-lg-5 {
-    -webkit-order: 20.833333333333336%;
-    -ms-flex-order: 20.833333333333336%;
     order: 20.833333333333336%;
   }
 
@@ -11520,8 +10515,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-lg-6 {
-    -webkit-order: 25%;
-    -ms-flex-order: 25%;
     order: 25%;
   }
 
@@ -11544,8 +10537,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-lg-7 {
-    -webkit-order: 29.166666666666668%;
-    -ms-flex-order: 29.166666666666668%;
     order: 29.166666666666668%;
   }
 
@@ -11568,8 +10559,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-lg-8 {
-    -webkit-order: 33.33333333333333%;
-    -ms-flex-order: 33.33333333333333%;
     order: 33.33333333333333%;
   }
 
@@ -11592,8 +10581,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-lg-9 {
-    -webkit-order: 37.5%;
-    -ms-flex-order: 37.5%;
     order: 37.5%;
   }
 
@@ -11616,8 +10603,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-lg-10 {
-    -webkit-order: 41.66666666666667%;
-    -ms-flex-order: 41.66666666666667%;
     order: 41.66666666666667%;
   }
 
@@ -11640,8 +10625,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-lg-11 {
-    -webkit-order: 45.83333333333333%;
-    -ms-flex-order: 45.83333333333333%;
     order: 45.83333333333333%;
   }
 
@@ -11664,8 +10647,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-lg-12 {
-    -webkit-order: 50%;
-    -ms-flex-order: 50%;
     order: 50%;
   }
 
@@ -11688,8 +10669,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-lg-13 {
-    -webkit-order: 54.166666666666664%;
-    -ms-flex-order: 54.166666666666664%;
     order: 54.166666666666664%;
   }
 
@@ -11712,8 +10691,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-lg-14 {
-    -webkit-order: 58.333333333333336%;
-    -ms-flex-order: 58.333333333333336%;
     order: 58.333333333333336%;
   }
 
@@ -11736,8 +10713,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-lg-15 {
-    -webkit-order: 62.5%;
-    -ms-flex-order: 62.5%;
     order: 62.5%;
   }
 
@@ -11760,8 +10735,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-lg-16 {
-    -webkit-order: 66.66666666666666%;
-    -ms-flex-order: 66.66666666666666%;
     order: 66.66666666666666%;
   }
 
@@ -11784,8 +10757,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-lg-17 {
-    -webkit-order: 70.83333333333334%;
-    -ms-flex-order: 70.83333333333334%;
     order: 70.83333333333334%;
   }
 
@@ -11808,8 +10779,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-lg-18 {
-    -webkit-order: 75%;
-    -ms-flex-order: 75%;
     order: 75%;
   }
 
@@ -11832,8 +10801,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-lg-19 {
-    -webkit-order: 79.16666666666666%;
-    -ms-flex-order: 79.16666666666666%;
     order: 79.16666666666666%;
   }
 
@@ -11856,8 +10823,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-lg-20 {
-    -webkit-order: 83.33333333333334%;
-    -ms-flex-order: 83.33333333333334%;
     order: 83.33333333333334%;
   }
 
@@ -11880,8 +10845,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-lg-21 {
-    -webkit-order: 87.5%;
-    -ms-flex-order: 87.5%;
     order: 87.5%;
   }
 
@@ -11904,8 +10867,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-lg-22 {
-    -webkit-order: 91.66666666666666%;
-    -ms-flex-order: 91.66666666666666%;
     order: 91.66666666666666%;
   }
 
@@ -11928,8 +10889,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-lg-23 {
-    -webkit-order: 95.83333333333334%;
-    -ms-flex-order: 95.83333333333334%;
     order: 95.83333333333334%;
   }
 
@@ -11952,13 +10911,11 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-lg-24 {
-    -webkit-order: 100%;
-    -ms-flex-order: 100%;
     order: 100%;
   }
 }
 
-@media (min-width:1200px) {
+@media (min-width: 1200px) {
   .c1.xl-col-column-xl-0 {
     display: none;
     min-height: 1px;
@@ -11978,8 +10935,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xl-0 {
-    -webkit-order: 0%;
-    -ms-flex-order: 0%;
     order: 0%;
   }
 
@@ -12002,8 +10957,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xl-1 {
-    -webkit-order: 4.166666666666666%;
-    -ms-flex-order: 4.166666666666666%;
     order: 4.166666666666666%;
   }
 
@@ -12026,8 +10979,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xl-2 {
-    -webkit-order: 8.333333333333332%;
-    -ms-flex-order: 8.333333333333332%;
     order: 8.333333333333332%;
   }
 
@@ -12050,8 +11001,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xl-3 {
-    -webkit-order: 12.5%;
-    -ms-flex-order: 12.5%;
     order: 12.5%;
   }
 
@@ -12074,8 +11023,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xl-4 {
-    -webkit-order: 16.666666666666664%;
-    -ms-flex-order: 16.666666666666664%;
     order: 16.666666666666664%;
   }
 
@@ -12098,8 +11045,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xl-5 {
-    -webkit-order: 20.833333333333336%;
-    -ms-flex-order: 20.833333333333336%;
     order: 20.833333333333336%;
   }
 
@@ -12122,8 +11067,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xl-6 {
-    -webkit-order: 25%;
-    -ms-flex-order: 25%;
     order: 25%;
   }
 
@@ -12146,8 +11089,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xl-7 {
-    -webkit-order: 29.166666666666668%;
-    -ms-flex-order: 29.166666666666668%;
     order: 29.166666666666668%;
   }
 
@@ -12170,8 +11111,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xl-8 {
-    -webkit-order: 33.33333333333333%;
-    -ms-flex-order: 33.33333333333333%;
     order: 33.33333333333333%;
   }
 
@@ -12194,8 +11133,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xl-9 {
-    -webkit-order: 37.5%;
-    -ms-flex-order: 37.5%;
     order: 37.5%;
   }
 
@@ -12218,8 +11155,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xl-10 {
-    -webkit-order: 41.66666666666667%;
-    -ms-flex-order: 41.66666666666667%;
     order: 41.66666666666667%;
   }
 
@@ -12242,8 +11177,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xl-11 {
-    -webkit-order: 45.83333333333333%;
-    -ms-flex-order: 45.83333333333333%;
     order: 45.83333333333333%;
   }
 
@@ -12266,8 +11199,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xl-12 {
-    -webkit-order: 50%;
-    -ms-flex-order: 50%;
     order: 50%;
   }
 
@@ -12290,8 +11221,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xl-13 {
-    -webkit-order: 54.166666666666664%;
-    -ms-flex-order: 54.166666666666664%;
     order: 54.166666666666664%;
   }
 
@@ -12314,8 +11243,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xl-14 {
-    -webkit-order: 58.333333333333336%;
-    -ms-flex-order: 58.333333333333336%;
     order: 58.333333333333336%;
   }
 
@@ -12338,8 +11265,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xl-15 {
-    -webkit-order: 62.5%;
-    -ms-flex-order: 62.5%;
     order: 62.5%;
   }
 
@@ -12362,8 +11287,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xl-16 {
-    -webkit-order: 66.66666666666666%;
-    -ms-flex-order: 66.66666666666666%;
     order: 66.66666666666666%;
   }
 
@@ -12386,8 +11309,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xl-17 {
-    -webkit-order: 70.83333333333334%;
-    -ms-flex-order: 70.83333333333334%;
     order: 70.83333333333334%;
   }
 
@@ -12410,8 +11331,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xl-18 {
-    -webkit-order: 75%;
-    -ms-flex-order: 75%;
     order: 75%;
   }
 
@@ -12434,8 +11353,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xl-19 {
-    -webkit-order: 79.16666666666666%;
-    -ms-flex-order: 79.16666666666666%;
     order: 79.16666666666666%;
   }
 
@@ -12458,8 +11375,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xl-20 {
-    -webkit-order: 83.33333333333334%;
-    -ms-flex-order: 83.33333333333334%;
     order: 83.33333333333334%;
   }
 
@@ -12482,8 +11397,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xl-21 {
-    -webkit-order: 87.5%;
-    -ms-flex-order: 87.5%;
     order: 87.5%;
   }
 
@@ -12506,8 +11419,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xl-22 {
-    -webkit-order: 91.66666666666666%;
-    -ms-flex-order: 91.66666666666666%;
     order: 91.66666666666666%;
   }
 
@@ -12530,8 +11441,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xl-23 {
-    -webkit-order: 95.83333333333334%;
-    -ms-flex-order: 95.83333333333334%;
     order: 95.83333333333334%;
   }
 
@@ -12554,13 +11463,11 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xl-24 {
-    -webkit-order: 100%;
-    -ms-flex-order: 100%;
     order: 100%;
   }
 }
 
-@media (min-width:1600px) {
+@media (min-width: 1600px) {
   .c1.xl-col-column-xxl-0 {
     display: none;
     min-height: 1px;
@@ -12580,8 +11487,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xxl-0 {
-    -webkit-order: 0%;
-    -ms-flex-order: 0%;
     order: 0%;
   }
 
@@ -12604,8 +11509,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xxl-1 {
-    -webkit-order: 4.166666666666666%;
-    -ms-flex-order: 4.166666666666666%;
     order: 4.166666666666666%;
   }
 
@@ -12628,8 +11531,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xxl-2 {
-    -webkit-order: 8.333333333333332%;
-    -ms-flex-order: 8.333333333333332%;
     order: 8.333333333333332%;
   }
 
@@ -12652,8 +11553,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xxl-3 {
-    -webkit-order: 12.5%;
-    -ms-flex-order: 12.5%;
     order: 12.5%;
   }
 
@@ -12676,8 +11575,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xxl-4 {
-    -webkit-order: 16.666666666666664%;
-    -ms-flex-order: 16.666666666666664%;
     order: 16.666666666666664%;
   }
 
@@ -12700,8 +11597,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xxl-5 {
-    -webkit-order: 20.833333333333336%;
-    -ms-flex-order: 20.833333333333336%;
     order: 20.833333333333336%;
   }
 
@@ -12724,8 +11619,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xxl-6 {
-    -webkit-order: 25%;
-    -ms-flex-order: 25%;
     order: 25%;
   }
 
@@ -12748,8 +11641,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xxl-7 {
-    -webkit-order: 29.166666666666668%;
-    -ms-flex-order: 29.166666666666668%;
     order: 29.166666666666668%;
   }
 
@@ -12772,8 +11663,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xxl-8 {
-    -webkit-order: 33.33333333333333%;
-    -ms-flex-order: 33.33333333333333%;
     order: 33.33333333333333%;
   }
 
@@ -12796,8 +11685,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xxl-9 {
-    -webkit-order: 37.5%;
-    -ms-flex-order: 37.5%;
     order: 37.5%;
   }
 
@@ -12820,8 +11707,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xxl-10 {
-    -webkit-order: 41.66666666666667%;
-    -ms-flex-order: 41.66666666666667%;
     order: 41.66666666666667%;
   }
 
@@ -12844,8 +11729,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xxl-11 {
-    -webkit-order: 45.83333333333333%;
-    -ms-flex-order: 45.83333333333333%;
     order: 45.83333333333333%;
   }
 
@@ -12868,8 +11751,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xxl-12 {
-    -webkit-order: 50%;
-    -ms-flex-order: 50%;
     order: 50%;
   }
 
@@ -12892,8 +11773,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xxl-13 {
-    -webkit-order: 54.166666666666664%;
-    -ms-flex-order: 54.166666666666664%;
     order: 54.166666666666664%;
   }
 
@@ -12916,8 +11795,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xxl-14 {
-    -webkit-order: 58.333333333333336%;
-    -ms-flex-order: 58.333333333333336%;
     order: 58.333333333333336%;
   }
 
@@ -12940,8 +11817,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xxl-15 {
-    -webkit-order: 62.5%;
-    -ms-flex-order: 62.5%;
     order: 62.5%;
   }
 
@@ -12964,8 +11839,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xxl-16 {
-    -webkit-order: 66.66666666666666%;
-    -ms-flex-order: 66.66666666666666%;
     order: 66.66666666666666%;
   }
 
@@ -12988,8 +11861,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xxl-17 {
-    -webkit-order: 70.83333333333334%;
-    -ms-flex-order: 70.83333333333334%;
     order: 70.83333333333334%;
   }
 
@@ -13012,8 +11883,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xxl-18 {
-    -webkit-order: 75%;
-    -ms-flex-order: 75%;
     order: 75%;
   }
 
@@ -13036,8 +11905,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xxl-19 {
-    -webkit-order: 79.16666666666666%;
-    -ms-flex-order: 79.16666666666666%;
     order: 79.16666666666666%;
   }
 
@@ -13060,8 +11927,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xxl-20 {
-    -webkit-order: 83.33333333333334%;
-    -ms-flex-order: 83.33333333333334%;
     order: 83.33333333333334%;
   }
 
@@ -13084,8 +11949,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xxl-21 {
-    -webkit-order: 87.5%;
-    -ms-flex-order: 87.5%;
     order: 87.5%;
   }
 
@@ -13108,8 +11971,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xxl-22 {
-    -webkit-order: 91.66666666666666%;
-    -ms-flex-order: 91.66666666666666%;
     order: 91.66666666666666%;
   }
 
@@ -13132,8 +11993,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xxl-23 {
-    -webkit-order: 95.83333333333334%;
-    -ms-flex-order: 95.83333333333334%;
     order: 95.83333333333334%;
   }
 
@@ -13156,8 +12015,6 @@ exports[`Row 响应式偏移 1`] = `
   }
 
   .c1.xl-col-order-xxl-24 {
-    -webkit-order: 100%;
-    -ms-flex-order: 100%;
     order: 100%;
   }
 }
@@ -13311,8 +12168,6 @@ exports[`Row 响应式布局 1`] = `
 }
 
 .c1.xl-col-order-0 {
-  -webkit-order: 0%;
-  -ms-flex-order: 0%;
   order: 0%;
 }
 
@@ -13335,8 +12190,6 @@ exports[`Row 响应式布局 1`] = `
 }
 
 .c1.xl-col-order-1 {
-  -webkit-order: 4.166666666666666%;
-  -ms-flex-order: 4.166666666666666%;
   order: 4.166666666666666%;
 }
 
@@ -13359,8 +12212,6 @@ exports[`Row 响应式布局 1`] = `
 }
 
 .c1.xl-col-order-2 {
-  -webkit-order: 8.333333333333332%;
-  -ms-flex-order: 8.333333333333332%;
   order: 8.333333333333332%;
 }
 
@@ -13383,8 +12234,6 @@ exports[`Row 响应式布局 1`] = `
 }
 
 .c1.xl-col-order-3 {
-  -webkit-order: 12.5%;
-  -ms-flex-order: 12.5%;
   order: 12.5%;
 }
 
@@ -13407,8 +12256,6 @@ exports[`Row 响应式布局 1`] = `
 }
 
 .c1.xl-col-order-4 {
-  -webkit-order: 16.666666666666664%;
-  -ms-flex-order: 16.666666666666664%;
   order: 16.666666666666664%;
 }
 
@@ -13431,8 +12278,6 @@ exports[`Row 响应式布局 1`] = `
 }
 
 .c1.xl-col-order-5 {
-  -webkit-order: 20.833333333333336%;
-  -ms-flex-order: 20.833333333333336%;
   order: 20.833333333333336%;
 }
 
@@ -13455,8 +12300,6 @@ exports[`Row 响应式布局 1`] = `
 }
 
 .c1.xl-col-order-6 {
-  -webkit-order: 25%;
-  -ms-flex-order: 25%;
   order: 25%;
 }
 
@@ -13479,8 +12322,6 @@ exports[`Row 响应式布局 1`] = `
 }
 
 .c1.xl-col-order-7 {
-  -webkit-order: 29.166666666666668%;
-  -ms-flex-order: 29.166666666666668%;
   order: 29.166666666666668%;
 }
 
@@ -13503,8 +12344,6 @@ exports[`Row 响应式布局 1`] = `
 }
 
 .c1.xl-col-order-8 {
-  -webkit-order: 33.33333333333333%;
-  -ms-flex-order: 33.33333333333333%;
   order: 33.33333333333333%;
 }
 
@@ -13527,8 +12366,6 @@ exports[`Row 响应式布局 1`] = `
 }
 
 .c1.xl-col-order-9 {
-  -webkit-order: 37.5%;
-  -ms-flex-order: 37.5%;
   order: 37.5%;
 }
 
@@ -13551,8 +12388,6 @@ exports[`Row 响应式布局 1`] = `
 }
 
 .c1.xl-col-order-10 {
-  -webkit-order: 41.66666666666667%;
-  -ms-flex-order: 41.66666666666667%;
   order: 41.66666666666667%;
 }
 
@@ -13575,8 +12410,6 @@ exports[`Row 响应式布局 1`] = `
 }
 
 .c1.xl-col-order-11 {
-  -webkit-order: 45.83333333333333%;
-  -ms-flex-order: 45.83333333333333%;
   order: 45.83333333333333%;
 }
 
@@ -13599,8 +12432,6 @@ exports[`Row 响应式布局 1`] = `
 }
 
 .c1.xl-col-order-12 {
-  -webkit-order: 50%;
-  -ms-flex-order: 50%;
   order: 50%;
 }
 
@@ -13623,8 +12454,6 @@ exports[`Row 响应式布局 1`] = `
 }
 
 .c1.xl-col-order-13 {
-  -webkit-order: 54.166666666666664%;
-  -ms-flex-order: 54.166666666666664%;
   order: 54.166666666666664%;
 }
 
@@ -13647,8 +12476,6 @@ exports[`Row 响应式布局 1`] = `
 }
 
 .c1.xl-col-order-14 {
-  -webkit-order: 58.333333333333336%;
-  -ms-flex-order: 58.333333333333336%;
   order: 58.333333333333336%;
 }
 
@@ -13671,8 +12498,6 @@ exports[`Row 响应式布局 1`] = `
 }
 
 .c1.xl-col-order-15 {
-  -webkit-order: 62.5%;
-  -ms-flex-order: 62.5%;
   order: 62.5%;
 }
 
@@ -13695,8 +12520,6 @@ exports[`Row 响应式布局 1`] = `
 }
 
 .c1.xl-col-order-16 {
-  -webkit-order: 66.66666666666666%;
-  -ms-flex-order: 66.66666666666666%;
   order: 66.66666666666666%;
 }
 
@@ -13719,8 +12542,6 @@ exports[`Row 响应式布局 1`] = `
 }
 
 .c1.xl-col-order-17 {
-  -webkit-order: 70.83333333333334%;
-  -ms-flex-order: 70.83333333333334%;
   order: 70.83333333333334%;
 }
 
@@ -13743,8 +12564,6 @@ exports[`Row 响应式布局 1`] = `
 }
 
 .c1.xl-col-order-18 {
-  -webkit-order: 75%;
-  -ms-flex-order: 75%;
   order: 75%;
 }
 
@@ -13767,8 +12586,6 @@ exports[`Row 响应式布局 1`] = `
 }
 
 .c1.xl-col-order-19 {
-  -webkit-order: 79.16666666666666%;
-  -ms-flex-order: 79.16666666666666%;
   order: 79.16666666666666%;
 }
 
@@ -13791,8 +12608,6 @@ exports[`Row 响应式布局 1`] = `
 }
 
 .c1.xl-col-order-20 {
-  -webkit-order: 83.33333333333334%;
-  -ms-flex-order: 83.33333333333334%;
   order: 83.33333333333334%;
 }
 
@@ -13815,8 +12630,6 @@ exports[`Row 响应式布局 1`] = `
 }
 
 .c1.xl-col-order-21 {
-  -webkit-order: 87.5%;
-  -ms-flex-order: 87.5%;
   order: 87.5%;
 }
 
@@ -13839,8 +12652,6 @@ exports[`Row 响应式布局 1`] = `
 }
 
 .c1.xl-col-order-22 {
-  -webkit-order: 91.66666666666666%;
-  -ms-flex-order: 91.66666666666666%;
   order: 91.66666666666666%;
 }
 
@@ -13863,8 +12674,6 @@ exports[`Row 响应式布局 1`] = `
 }
 
 .c1.xl-col-order-23 {
-  -webkit-order: 95.83333333333334%;
-  -ms-flex-order: 95.83333333333334%;
   order: 95.83333333333334%;
 }
 
@@ -13887,85 +12696,52 @@ exports[`Row 响应式布局 1`] = `
 }
 
 .c1.xl-col-order-24 {
-  -webkit-order: 100%;
-  -ms-flex-order: 100%;
   order: 100%;
 }
 
 .c0 {
   box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
   flex-direction: row;
 }
 
 .c0.xl-row--justify-start {
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
   justify-content: flex-start;
 }
 
 .c0.xl-row--justify-center {
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
 }
 
 .c0.xl-row--justify-end {
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
   justify-content: flex-end;
 }
 
 .c0.xl-row--justify-space-around {
-  -webkit-box-pack: space-around;
-  -webkit-justify-content: space-around;
-  -ms-flex-pack: space-around;
   justify-content: space-around;
 }
 
 .c0.xl-row--justify-space-between {
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
   justify-content: space-between;
 }
 
 .c0.xl-row--align-top {
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
   align-items: flex-start;
 }
 
 .c0.xl-row--align-middle {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
 }
 
 .c0.xl-row--align-bottom {
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
   align-items: flex-end;
 }
 
 .c0.xl-row--wrap {
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 }
 
-@media (min-width:0px) {
+@media (min-width: 0px) {
   .c1.xl-col-column-xs-0 {
     display: none;
     min-height: 1px;
@@ -13985,8 +12761,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xs-0 {
-    -webkit-order: 0%;
-    -ms-flex-order: 0%;
     order: 0%;
   }
 
@@ -14009,8 +12783,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xs-1 {
-    -webkit-order: 4.166666666666666%;
-    -ms-flex-order: 4.166666666666666%;
     order: 4.166666666666666%;
   }
 
@@ -14033,8 +12805,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xs-2 {
-    -webkit-order: 8.333333333333332%;
-    -ms-flex-order: 8.333333333333332%;
     order: 8.333333333333332%;
   }
 
@@ -14057,8 +12827,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xs-3 {
-    -webkit-order: 12.5%;
-    -ms-flex-order: 12.5%;
     order: 12.5%;
   }
 
@@ -14081,8 +12849,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xs-4 {
-    -webkit-order: 16.666666666666664%;
-    -ms-flex-order: 16.666666666666664%;
     order: 16.666666666666664%;
   }
 
@@ -14105,8 +12871,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xs-5 {
-    -webkit-order: 20.833333333333336%;
-    -ms-flex-order: 20.833333333333336%;
     order: 20.833333333333336%;
   }
 
@@ -14129,8 +12893,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xs-6 {
-    -webkit-order: 25%;
-    -ms-flex-order: 25%;
     order: 25%;
   }
 
@@ -14153,8 +12915,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xs-7 {
-    -webkit-order: 29.166666666666668%;
-    -ms-flex-order: 29.166666666666668%;
     order: 29.166666666666668%;
   }
 
@@ -14177,8 +12937,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xs-8 {
-    -webkit-order: 33.33333333333333%;
-    -ms-flex-order: 33.33333333333333%;
     order: 33.33333333333333%;
   }
 
@@ -14201,8 +12959,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xs-9 {
-    -webkit-order: 37.5%;
-    -ms-flex-order: 37.5%;
     order: 37.5%;
   }
 
@@ -14225,8 +12981,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xs-10 {
-    -webkit-order: 41.66666666666667%;
-    -ms-flex-order: 41.66666666666667%;
     order: 41.66666666666667%;
   }
 
@@ -14249,8 +13003,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xs-11 {
-    -webkit-order: 45.83333333333333%;
-    -ms-flex-order: 45.83333333333333%;
     order: 45.83333333333333%;
   }
 
@@ -14273,8 +13025,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xs-12 {
-    -webkit-order: 50%;
-    -ms-flex-order: 50%;
     order: 50%;
   }
 
@@ -14297,8 +13047,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xs-13 {
-    -webkit-order: 54.166666666666664%;
-    -ms-flex-order: 54.166666666666664%;
     order: 54.166666666666664%;
   }
 
@@ -14321,8 +13069,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xs-14 {
-    -webkit-order: 58.333333333333336%;
-    -ms-flex-order: 58.333333333333336%;
     order: 58.333333333333336%;
   }
 
@@ -14345,8 +13091,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xs-15 {
-    -webkit-order: 62.5%;
-    -ms-flex-order: 62.5%;
     order: 62.5%;
   }
 
@@ -14369,8 +13113,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xs-16 {
-    -webkit-order: 66.66666666666666%;
-    -ms-flex-order: 66.66666666666666%;
     order: 66.66666666666666%;
   }
 
@@ -14393,8 +13135,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xs-17 {
-    -webkit-order: 70.83333333333334%;
-    -ms-flex-order: 70.83333333333334%;
     order: 70.83333333333334%;
   }
 
@@ -14417,8 +13157,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xs-18 {
-    -webkit-order: 75%;
-    -ms-flex-order: 75%;
     order: 75%;
   }
 
@@ -14441,8 +13179,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xs-19 {
-    -webkit-order: 79.16666666666666%;
-    -ms-flex-order: 79.16666666666666%;
     order: 79.16666666666666%;
   }
 
@@ -14465,8 +13201,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xs-20 {
-    -webkit-order: 83.33333333333334%;
-    -ms-flex-order: 83.33333333333334%;
     order: 83.33333333333334%;
   }
 
@@ -14489,8 +13223,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xs-21 {
-    -webkit-order: 87.5%;
-    -ms-flex-order: 87.5%;
     order: 87.5%;
   }
 
@@ -14513,8 +13245,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xs-22 {
-    -webkit-order: 91.66666666666666%;
-    -ms-flex-order: 91.66666666666666%;
     order: 91.66666666666666%;
   }
 
@@ -14537,8 +13267,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xs-23 {
-    -webkit-order: 95.83333333333334%;
-    -ms-flex-order: 95.83333333333334%;
     order: 95.83333333333334%;
   }
 
@@ -14561,13 +13289,11 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xs-24 {
-    -webkit-order: 100%;
-    -ms-flex-order: 100%;
     order: 100%;
   }
 }
 
-@media (min-width:576px) {
+@media (min-width: 576px) {
   .c1.xl-col-column-sm-0 {
     display: none;
     min-height: 1px;
@@ -14587,8 +13313,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-sm-0 {
-    -webkit-order: 0%;
-    -ms-flex-order: 0%;
     order: 0%;
   }
 
@@ -14611,8 +13335,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-sm-1 {
-    -webkit-order: 4.166666666666666%;
-    -ms-flex-order: 4.166666666666666%;
     order: 4.166666666666666%;
   }
 
@@ -14635,8 +13357,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-sm-2 {
-    -webkit-order: 8.333333333333332%;
-    -ms-flex-order: 8.333333333333332%;
     order: 8.333333333333332%;
   }
 
@@ -14659,8 +13379,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-sm-3 {
-    -webkit-order: 12.5%;
-    -ms-flex-order: 12.5%;
     order: 12.5%;
   }
 
@@ -14683,8 +13401,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-sm-4 {
-    -webkit-order: 16.666666666666664%;
-    -ms-flex-order: 16.666666666666664%;
     order: 16.666666666666664%;
   }
 
@@ -14707,8 +13423,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-sm-5 {
-    -webkit-order: 20.833333333333336%;
-    -ms-flex-order: 20.833333333333336%;
     order: 20.833333333333336%;
   }
 
@@ -14731,8 +13445,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-sm-6 {
-    -webkit-order: 25%;
-    -ms-flex-order: 25%;
     order: 25%;
   }
 
@@ -14755,8 +13467,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-sm-7 {
-    -webkit-order: 29.166666666666668%;
-    -ms-flex-order: 29.166666666666668%;
     order: 29.166666666666668%;
   }
 
@@ -14779,8 +13489,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-sm-8 {
-    -webkit-order: 33.33333333333333%;
-    -ms-flex-order: 33.33333333333333%;
     order: 33.33333333333333%;
   }
 
@@ -14803,8 +13511,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-sm-9 {
-    -webkit-order: 37.5%;
-    -ms-flex-order: 37.5%;
     order: 37.5%;
   }
 
@@ -14827,8 +13533,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-sm-10 {
-    -webkit-order: 41.66666666666667%;
-    -ms-flex-order: 41.66666666666667%;
     order: 41.66666666666667%;
   }
 
@@ -14851,8 +13555,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-sm-11 {
-    -webkit-order: 45.83333333333333%;
-    -ms-flex-order: 45.83333333333333%;
     order: 45.83333333333333%;
   }
 
@@ -14875,8 +13577,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-sm-12 {
-    -webkit-order: 50%;
-    -ms-flex-order: 50%;
     order: 50%;
   }
 
@@ -14899,8 +13599,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-sm-13 {
-    -webkit-order: 54.166666666666664%;
-    -ms-flex-order: 54.166666666666664%;
     order: 54.166666666666664%;
   }
 
@@ -14923,8 +13621,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-sm-14 {
-    -webkit-order: 58.333333333333336%;
-    -ms-flex-order: 58.333333333333336%;
     order: 58.333333333333336%;
   }
 
@@ -14947,8 +13643,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-sm-15 {
-    -webkit-order: 62.5%;
-    -ms-flex-order: 62.5%;
     order: 62.5%;
   }
 
@@ -14971,8 +13665,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-sm-16 {
-    -webkit-order: 66.66666666666666%;
-    -ms-flex-order: 66.66666666666666%;
     order: 66.66666666666666%;
   }
 
@@ -14995,8 +13687,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-sm-17 {
-    -webkit-order: 70.83333333333334%;
-    -ms-flex-order: 70.83333333333334%;
     order: 70.83333333333334%;
   }
 
@@ -15019,8 +13709,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-sm-18 {
-    -webkit-order: 75%;
-    -ms-flex-order: 75%;
     order: 75%;
   }
 
@@ -15043,8 +13731,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-sm-19 {
-    -webkit-order: 79.16666666666666%;
-    -ms-flex-order: 79.16666666666666%;
     order: 79.16666666666666%;
   }
 
@@ -15067,8 +13753,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-sm-20 {
-    -webkit-order: 83.33333333333334%;
-    -ms-flex-order: 83.33333333333334%;
     order: 83.33333333333334%;
   }
 
@@ -15091,8 +13775,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-sm-21 {
-    -webkit-order: 87.5%;
-    -ms-flex-order: 87.5%;
     order: 87.5%;
   }
 
@@ -15115,8 +13797,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-sm-22 {
-    -webkit-order: 91.66666666666666%;
-    -ms-flex-order: 91.66666666666666%;
     order: 91.66666666666666%;
   }
 
@@ -15139,8 +13819,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-sm-23 {
-    -webkit-order: 95.83333333333334%;
-    -ms-flex-order: 95.83333333333334%;
     order: 95.83333333333334%;
   }
 
@@ -15163,13 +13841,11 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-sm-24 {
-    -webkit-order: 100%;
-    -ms-flex-order: 100%;
     order: 100%;
   }
 }
 
-@media (min-width:768px) {
+@media (min-width: 768px) {
   .c1.xl-col-column-md-0 {
     display: none;
     min-height: 1px;
@@ -15189,8 +13865,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-md-0 {
-    -webkit-order: 0%;
-    -ms-flex-order: 0%;
     order: 0%;
   }
 
@@ -15213,8 +13887,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-md-1 {
-    -webkit-order: 4.166666666666666%;
-    -ms-flex-order: 4.166666666666666%;
     order: 4.166666666666666%;
   }
 
@@ -15237,8 +13909,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-md-2 {
-    -webkit-order: 8.333333333333332%;
-    -ms-flex-order: 8.333333333333332%;
     order: 8.333333333333332%;
   }
 
@@ -15261,8 +13931,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-md-3 {
-    -webkit-order: 12.5%;
-    -ms-flex-order: 12.5%;
     order: 12.5%;
   }
 
@@ -15285,8 +13953,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-md-4 {
-    -webkit-order: 16.666666666666664%;
-    -ms-flex-order: 16.666666666666664%;
     order: 16.666666666666664%;
   }
 
@@ -15309,8 +13975,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-md-5 {
-    -webkit-order: 20.833333333333336%;
-    -ms-flex-order: 20.833333333333336%;
     order: 20.833333333333336%;
   }
 
@@ -15333,8 +13997,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-md-6 {
-    -webkit-order: 25%;
-    -ms-flex-order: 25%;
     order: 25%;
   }
 
@@ -15357,8 +14019,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-md-7 {
-    -webkit-order: 29.166666666666668%;
-    -ms-flex-order: 29.166666666666668%;
     order: 29.166666666666668%;
   }
 
@@ -15381,8 +14041,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-md-8 {
-    -webkit-order: 33.33333333333333%;
-    -ms-flex-order: 33.33333333333333%;
     order: 33.33333333333333%;
   }
 
@@ -15405,8 +14063,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-md-9 {
-    -webkit-order: 37.5%;
-    -ms-flex-order: 37.5%;
     order: 37.5%;
   }
 
@@ -15429,8 +14085,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-md-10 {
-    -webkit-order: 41.66666666666667%;
-    -ms-flex-order: 41.66666666666667%;
     order: 41.66666666666667%;
   }
 
@@ -15453,8 +14107,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-md-11 {
-    -webkit-order: 45.83333333333333%;
-    -ms-flex-order: 45.83333333333333%;
     order: 45.83333333333333%;
   }
 
@@ -15477,8 +14129,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-md-12 {
-    -webkit-order: 50%;
-    -ms-flex-order: 50%;
     order: 50%;
   }
 
@@ -15501,8 +14151,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-md-13 {
-    -webkit-order: 54.166666666666664%;
-    -ms-flex-order: 54.166666666666664%;
     order: 54.166666666666664%;
   }
 
@@ -15525,8 +14173,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-md-14 {
-    -webkit-order: 58.333333333333336%;
-    -ms-flex-order: 58.333333333333336%;
     order: 58.333333333333336%;
   }
 
@@ -15549,8 +14195,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-md-15 {
-    -webkit-order: 62.5%;
-    -ms-flex-order: 62.5%;
     order: 62.5%;
   }
 
@@ -15573,8 +14217,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-md-16 {
-    -webkit-order: 66.66666666666666%;
-    -ms-flex-order: 66.66666666666666%;
     order: 66.66666666666666%;
   }
 
@@ -15597,8 +14239,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-md-17 {
-    -webkit-order: 70.83333333333334%;
-    -ms-flex-order: 70.83333333333334%;
     order: 70.83333333333334%;
   }
 
@@ -15621,8 +14261,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-md-18 {
-    -webkit-order: 75%;
-    -ms-flex-order: 75%;
     order: 75%;
   }
 
@@ -15645,8 +14283,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-md-19 {
-    -webkit-order: 79.16666666666666%;
-    -ms-flex-order: 79.16666666666666%;
     order: 79.16666666666666%;
   }
 
@@ -15669,8 +14305,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-md-20 {
-    -webkit-order: 83.33333333333334%;
-    -ms-flex-order: 83.33333333333334%;
     order: 83.33333333333334%;
   }
 
@@ -15693,8 +14327,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-md-21 {
-    -webkit-order: 87.5%;
-    -ms-flex-order: 87.5%;
     order: 87.5%;
   }
 
@@ -15717,8 +14349,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-md-22 {
-    -webkit-order: 91.66666666666666%;
-    -ms-flex-order: 91.66666666666666%;
     order: 91.66666666666666%;
   }
 
@@ -15741,8 +14371,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-md-23 {
-    -webkit-order: 95.83333333333334%;
-    -ms-flex-order: 95.83333333333334%;
     order: 95.83333333333334%;
   }
 
@@ -15765,13 +14393,11 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-md-24 {
-    -webkit-order: 100%;
-    -ms-flex-order: 100%;
     order: 100%;
   }
 }
 
-@media (min-width:992px) {
+@media (min-width: 992px) {
   .c1.xl-col-column-lg-0 {
     display: none;
     min-height: 1px;
@@ -15791,8 +14417,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-lg-0 {
-    -webkit-order: 0%;
-    -ms-flex-order: 0%;
     order: 0%;
   }
 
@@ -15815,8 +14439,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-lg-1 {
-    -webkit-order: 4.166666666666666%;
-    -ms-flex-order: 4.166666666666666%;
     order: 4.166666666666666%;
   }
 
@@ -15839,8 +14461,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-lg-2 {
-    -webkit-order: 8.333333333333332%;
-    -ms-flex-order: 8.333333333333332%;
     order: 8.333333333333332%;
   }
 
@@ -15863,8 +14483,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-lg-3 {
-    -webkit-order: 12.5%;
-    -ms-flex-order: 12.5%;
     order: 12.5%;
   }
 
@@ -15887,8 +14505,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-lg-4 {
-    -webkit-order: 16.666666666666664%;
-    -ms-flex-order: 16.666666666666664%;
     order: 16.666666666666664%;
   }
 
@@ -15911,8 +14527,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-lg-5 {
-    -webkit-order: 20.833333333333336%;
-    -ms-flex-order: 20.833333333333336%;
     order: 20.833333333333336%;
   }
 
@@ -15935,8 +14549,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-lg-6 {
-    -webkit-order: 25%;
-    -ms-flex-order: 25%;
     order: 25%;
   }
 
@@ -15959,8 +14571,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-lg-7 {
-    -webkit-order: 29.166666666666668%;
-    -ms-flex-order: 29.166666666666668%;
     order: 29.166666666666668%;
   }
 
@@ -15983,8 +14593,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-lg-8 {
-    -webkit-order: 33.33333333333333%;
-    -ms-flex-order: 33.33333333333333%;
     order: 33.33333333333333%;
   }
 
@@ -16007,8 +14615,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-lg-9 {
-    -webkit-order: 37.5%;
-    -ms-flex-order: 37.5%;
     order: 37.5%;
   }
 
@@ -16031,8 +14637,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-lg-10 {
-    -webkit-order: 41.66666666666667%;
-    -ms-flex-order: 41.66666666666667%;
     order: 41.66666666666667%;
   }
 
@@ -16055,8 +14659,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-lg-11 {
-    -webkit-order: 45.83333333333333%;
-    -ms-flex-order: 45.83333333333333%;
     order: 45.83333333333333%;
   }
 
@@ -16079,8 +14681,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-lg-12 {
-    -webkit-order: 50%;
-    -ms-flex-order: 50%;
     order: 50%;
   }
 
@@ -16103,8 +14703,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-lg-13 {
-    -webkit-order: 54.166666666666664%;
-    -ms-flex-order: 54.166666666666664%;
     order: 54.166666666666664%;
   }
 
@@ -16127,8 +14725,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-lg-14 {
-    -webkit-order: 58.333333333333336%;
-    -ms-flex-order: 58.333333333333336%;
     order: 58.333333333333336%;
   }
 
@@ -16151,8 +14747,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-lg-15 {
-    -webkit-order: 62.5%;
-    -ms-flex-order: 62.5%;
     order: 62.5%;
   }
 
@@ -16175,8 +14769,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-lg-16 {
-    -webkit-order: 66.66666666666666%;
-    -ms-flex-order: 66.66666666666666%;
     order: 66.66666666666666%;
   }
 
@@ -16199,8 +14791,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-lg-17 {
-    -webkit-order: 70.83333333333334%;
-    -ms-flex-order: 70.83333333333334%;
     order: 70.83333333333334%;
   }
 
@@ -16223,8 +14813,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-lg-18 {
-    -webkit-order: 75%;
-    -ms-flex-order: 75%;
     order: 75%;
   }
 
@@ -16247,8 +14835,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-lg-19 {
-    -webkit-order: 79.16666666666666%;
-    -ms-flex-order: 79.16666666666666%;
     order: 79.16666666666666%;
   }
 
@@ -16271,8 +14857,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-lg-20 {
-    -webkit-order: 83.33333333333334%;
-    -ms-flex-order: 83.33333333333334%;
     order: 83.33333333333334%;
   }
 
@@ -16295,8 +14879,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-lg-21 {
-    -webkit-order: 87.5%;
-    -ms-flex-order: 87.5%;
     order: 87.5%;
   }
 
@@ -16319,8 +14901,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-lg-22 {
-    -webkit-order: 91.66666666666666%;
-    -ms-flex-order: 91.66666666666666%;
     order: 91.66666666666666%;
   }
 
@@ -16343,8 +14923,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-lg-23 {
-    -webkit-order: 95.83333333333334%;
-    -ms-flex-order: 95.83333333333334%;
     order: 95.83333333333334%;
   }
 
@@ -16367,13 +14945,11 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-lg-24 {
-    -webkit-order: 100%;
-    -ms-flex-order: 100%;
     order: 100%;
   }
 }
 
-@media (min-width:1200px) {
+@media (min-width: 1200px) {
   .c1.xl-col-column-xl-0 {
     display: none;
     min-height: 1px;
@@ -16393,8 +14969,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xl-0 {
-    -webkit-order: 0%;
-    -ms-flex-order: 0%;
     order: 0%;
   }
 
@@ -16417,8 +14991,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xl-1 {
-    -webkit-order: 4.166666666666666%;
-    -ms-flex-order: 4.166666666666666%;
     order: 4.166666666666666%;
   }
 
@@ -16441,8 +15013,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xl-2 {
-    -webkit-order: 8.333333333333332%;
-    -ms-flex-order: 8.333333333333332%;
     order: 8.333333333333332%;
   }
 
@@ -16465,8 +15035,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xl-3 {
-    -webkit-order: 12.5%;
-    -ms-flex-order: 12.5%;
     order: 12.5%;
   }
 
@@ -16489,8 +15057,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xl-4 {
-    -webkit-order: 16.666666666666664%;
-    -ms-flex-order: 16.666666666666664%;
     order: 16.666666666666664%;
   }
 
@@ -16513,8 +15079,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xl-5 {
-    -webkit-order: 20.833333333333336%;
-    -ms-flex-order: 20.833333333333336%;
     order: 20.833333333333336%;
   }
 
@@ -16537,8 +15101,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xl-6 {
-    -webkit-order: 25%;
-    -ms-flex-order: 25%;
     order: 25%;
   }
 
@@ -16561,8 +15123,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xl-7 {
-    -webkit-order: 29.166666666666668%;
-    -ms-flex-order: 29.166666666666668%;
     order: 29.166666666666668%;
   }
 
@@ -16585,8 +15145,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xl-8 {
-    -webkit-order: 33.33333333333333%;
-    -ms-flex-order: 33.33333333333333%;
     order: 33.33333333333333%;
   }
 
@@ -16609,8 +15167,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xl-9 {
-    -webkit-order: 37.5%;
-    -ms-flex-order: 37.5%;
     order: 37.5%;
   }
 
@@ -16633,8 +15189,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xl-10 {
-    -webkit-order: 41.66666666666667%;
-    -ms-flex-order: 41.66666666666667%;
     order: 41.66666666666667%;
   }
 
@@ -16657,8 +15211,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xl-11 {
-    -webkit-order: 45.83333333333333%;
-    -ms-flex-order: 45.83333333333333%;
     order: 45.83333333333333%;
   }
 
@@ -16681,8 +15233,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xl-12 {
-    -webkit-order: 50%;
-    -ms-flex-order: 50%;
     order: 50%;
   }
 
@@ -16705,8 +15255,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xl-13 {
-    -webkit-order: 54.166666666666664%;
-    -ms-flex-order: 54.166666666666664%;
     order: 54.166666666666664%;
   }
 
@@ -16729,8 +15277,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xl-14 {
-    -webkit-order: 58.333333333333336%;
-    -ms-flex-order: 58.333333333333336%;
     order: 58.333333333333336%;
   }
 
@@ -16753,8 +15299,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xl-15 {
-    -webkit-order: 62.5%;
-    -ms-flex-order: 62.5%;
     order: 62.5%;
   }
 
@@ -16777,8 +15321,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xl-16 {
-    -webkit-order: 66.66666666666666%;
-    -ms-flex-order: 66.66666666666666%;
     order: 66.66666666666666%;
   }
 
@@ -16801,8 +15343,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xl-17 {
-    -webkit-order: 70.83333333333334%;
-    -ms-flex-order: 70.83333333333334%;
     order: 70.83333333333334%;
   }
 
@@ -16825,8 +15365,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xl-18 {
-    -webkit-order: 75%;
-    -ms-flex-order: 75%;
     order: 75%;
   }
 
@@ -16849,8 +15387,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xl-19 {
-    -webkit-order: 79.16666666666666%;
-    -ms-flex-order: 79.16666666666666%;
     order: 79.16666666666666%;
   }
 
@@ -16873,8 +15409,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xl-20 {
-    -webkit-order: 83.33333333333334%;
-    -ms-flex-order: 83.33333333333334%;
     order: 83.33333333333334%;
   }
 
@@ -16897,8 +15431,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xl-21 {
-    -webkit-order: 87.5%;
-    -ms-flex-order: 87.5%;
     order: 87.5%;
   }
 
@@ -16921,8 +15453,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xl-22 {
-    -webkit-order: 91.66666666666666%;
-    -ms-flex-order: 91.66666666666666%;
     order: 91.66666666666666%;
   }
 
@@ -16945,8 +15475,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xl-23 {
-    -webkit-order: 95.83333333333334%;
-    -ms-flex-order: 95.83333333333334%;
     order: 95.83333333333334%;
   }
 
@@ -16969,13 +15497,11 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xl-24 {
-    -webkit-order: 100%;
-    -ms-flex-order: 100%;
     order: 100%;
   }
 }
 
-@media (min-width:1600px) {
+@media (min-width: 1600px) {
   .c1.xl-col-column-xxl-0 {
     display: none;
     min-height: 1px;
@@ -16995,8 +15521,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-0 {
-    -webkit-order: 0%;
-    -ms-flex-order: 0%;
     order: 0%;
   }
 
@@ -17019,8 +15543,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-1 {
-    -webkit-order: 4.166666666666666%;
-    -ms-flex-order: 4.166666666666666%;
     order: 4.166666666666666%;
   }
 
@@ -17043,8 +15565,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-2 {
-    -webkit-order: 8.333333333333332%;
-    -ms-flex-order: 8.333333333333332%;
     order: 8.333333333333332%;
   }
 
@@ -17067,8 +15587,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-3 {
-    -webkit-order: 12.5%;
-    -ms-flex-order: 12.5%;
     order: 12.5%;
   }
 
@@ -17091,8 +15609,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-4 {
-    -webkit-order: 16.666666666666664%;
-    -ms-flex-order: 16.666666666666664%;
     order: 16.666666666666664%;
   }
 
@@ -17115,8 +15631,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-5 {
-    -webkit-order: 20.833333333333336%;
-    -ms-flex-order: 20.833333333333336%;
     order: 20.833333333333336%;
   }
 
@@ -17139,8 +15653,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-6 {
-    -webkit-order: 25%;
-    -ms-flex-order: 25%;
     order: 25%;
   }
 
@@ -17163,8 +15675,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-7 {
-    -webkit-order: 29.166666666666668%;
-    -ms-flex-order: 29.166666666666668%;
     order: 29.166666666666668%;
   }
 
@@ -17187,8 +15697,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-8 {
-    -webkit-order: 33.33333333333333%;
-    -ms-flex-order: 33.33333333333333%;
     order: 33.33333333333333%;
   }
 
@@ -17211,8 +15719,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-9 {
-    -webkit-order: 37.5%;
-    -ms-flex-order: 37.5%;
     order: 37.5%;
   }
 
@@ -17235,8 +15741,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-10 {
-    -webkit-order: 41.66666666666667%;
-    -ms-flex-order: 41.66666666666667%;
     order: 41.66666666666667%;
   }
 
@@ -17259,8 +15763,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-11 {
-    -webkit-order: 45.83333333333333%;
-    -ms-flex-order: 45.83333333333333%;
     order: 45.83333333333333%;
   }
 
@@ -17283,8 +15785,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-12 {
-    -webkit-order: 50%;
-    -ms-flex-order: 50%;
     order: 50%;
   }
 
@@ -17307,8 +15807,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-13 {
-    -webkit-order: 54.166666666666664%;
-    -ms-flex-order: 54.166666666666664%;
     order: 54.166666666666664%;
   }
 
@@ -17331,8 +15829,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-14 {
-    -webkit-order: 58.333333333333336%;
-    -ms-flex-order: 58.333333333333336%;
     order: 58.333333333333336%;
   }
 
@@ -17355,8 +15851,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-15 {
-    -webkit-order: 62.5%;
-    -ms-flex-order: 62.5%;
     order: 62.5%;
   }
 
@@ -17379,8 +15873,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-16 {
-    -webkit-order: 66.66666666666666%;
-    -ms-flex-order: 66.66666666666666%;
     order: 66.66666666666666%;
   }
 
@@ -17403,8 +15895,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-17 {
-    -webkit-order: 70.83333333333334%;
-    -ms-flex-order: 70.83333333333334%;
     order: 70.83333333333334%;
   }
 
@@ -17427,8 +15917,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-18 {
-    -webkit-order: 75%;
-    -ms-flex-order: 75%;
     order: 75%;
   }
 
@@ -17451,8 +15939,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-19 {
-    -webkit-order: 79.16666666666666%;
-    -ms-flex-order: 79.16666666666666%;
     order: 79.16666666666666%;
   }
 
@@ -17475,8 +15961,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-20 {
-    -webkit-order: 83.33333333333334%;
-    -ms-flex-order: 83.33333333333334%;
     order: 83.33333333333334%;
   }
 
@@ -17499,8 +15983,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-21 {
-    -webkit-order: 87.5%;
-    -ms-flex-order: 87.5%;
     order: 87.5%;
   }
 
@@ -17523,8 +16005,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-22 {
-    -webkit-order: 91.66666666666666%;
-    -ms-flex-order: 91.66666666666666%;
     order: 91.66666666666666%;
   }
 
@@ -17547,8 +16027,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-23 {
-    -webkit-order: 95.83333333333334%;
-    -ms-flex-order: 95.83333333333334%;
     order: 95.83333333333334%;
   }
 
@@ -17571,8 +16049,6 @@ exports[`Row 响应式布局 1`] = `
   }
 
   .c1.xl-col-order-xxl-24 {
-    -webkit-order: 100%;
-    -ms-flex-order: 100%;
     order: 100%;
   }
 }

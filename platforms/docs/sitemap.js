@@ -6,7 +6,9 @@ let baseUrl = process.env.VERCEL_URL || 'xl-vision.8910.xyz';
 if (process.env.VERCEL_ENV === 'production') {
   baseUrl = 'xl-vision.8910.xyz';
 }
-
+/**
+ * @type {import('next-sitemap').IConfig}
+ */
 module.exports = {
   siteUrl: `https://${baseUrl}`,
   generateRobotsTxt: true,

@@ -1,17 +1,18 @@
+'use client';
+
 import { useConstantFn } from '@xl-vision/hooks';
 import { DownOutlined, GithubFilled, MenuOutlined } from '@xl-vision/icons';
 import { Button, styled, Tooltip, Dropdown } from '@xl-vision/react';
-import { noop } from '@xl-vision/utils';
-import Cookie from 'js-cookie';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { FC, HTMLAttributes, useContext, useCallback, useMemo } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import { FC, HTMLAttributes, useCallback } from 'react';
 import DarkTheme from './DarkTheme';
 import LightTheme from './LightTheme';
 import Translate from './Translate';
-import { useLocale } from '../LocalizationProvider';
+import useLocale from '../../hooks/useLocale';
+import { Lang, locales, supportedLangs } from '../../locales';
+import LocaleLink from '../LocaleLink';
 import Logo from '../Logo';
-import { ThemeContext } from '../ThemeProvider';
+import useTheme from '../ThemeProvider/useTheme';
 
 export const HEADER_HEIGHT = 60;
 
@@ -61,7 +62,7 @@ const HeaderNav = styled('header')(({ theme }) => {
   };
 });
 
-const LogoWrapper = styled(Link)(({ theme }) => {
+const LogoWrapper = styled(LocaleLink)(({ theme }) => {
   return {
     display: 'inline-flex',
     height: '100%',
@@ -123,9 +124,12 @@ const MobileDropdownItem = styled(Dropdown.Item)(({ theme }) => {
   };
 });
 
+const langRegex = new RegExp(`^/(${supportedLangs.map((it) => it.replace(/-/g, '-')).join('|')})`);
+
 const Header: FC<HTMLAttributes<HTMLElement>> = (props) => {
-  const theme = useContext(ThemeContext);
-  const { supportLocales, locale } = useLocale();
+  const theme = useTheme();
+  const { locale, lang } = useLocale();
+  const pathname = usePathname();
   const router = useRouter();
 
   const { isDark, setDark } = theme;
@@ -134,28 +138,30 @@ const Header: FC<HTMLAttributes<HTMLElement>> = (props) => {
     setDark((prev) => !prev);
   }, [setDark]);
 
-  const langs = useMemo(() => Object.keys(supportLocales), [supportLocales]);
+  const handleLangChange = useConstantFn((_lang: Lang) => {
+    const newPathname = pathname.replace(langRegex, `/${_lang}`);
 
-  const handleLangChange = useConstantFn((lang: string) => {
-    const { pathname, asPath, query } = router;
-    router.push({ pathname, query }, asPath, { locale: lang }).catch(noop);
-    Cookie.set('NEXT_LOCALE', lang, { expires: 30, sameSite: 'Strict' });
+    if (newPathname === pathname) {
+      return;
+    }
+
+    router.push(newPathname);
   });
 
-  const setActiveClassName = useConstantFn((pathname: string) => {
-    return router.pathname.startsWith(pathname) ? 'active' : '';
+  const setActiveClassName = useConstantFn((target: string) => {
+    return pathname.startsWith(`/${lang}/${target}`) ? 'active' : '';
   });
 
   const mobileMenus = (
     <>
-      <MobileDropdownItem className={setActiveClassName('/components')}>
-        <Link href='/components'>{locale.header.component}</Link>
+      <MobileDropdownItem className={setActiveClassName('components')}>
+        <LocaleLink href='/components'>{locale.header.component}</LocaleLink>
       </MobileDropdownItem>
-      <MobileDropdownItem className={setActiveClassName('/hooks')}>
-        <Link href='/hooks'>{locale.header.hooks}</Link>
+      <MobileDropdownItem className={setActiveClassName('hooks')}>
+        <LocaleLink href='/hooks'>{locale.header.hooks}</LocaleLink>
       </MobileDropdownItem>
-      <MobileDropdownItem className={setActiveClassName('/playground')}>
-        <Link href='/playground'>{locale.header.playground}</Link>
+      <MobileDropdownItem className={setActiveClassName('playground')}>
+        <LocaleLink href='/playground'>{locale.header.playground}</LocaleLink>
       </MobileDropdownItem>
     </>
   );
@@ -180,27 +186,27 @@ const Header: FC<HTMLAttributes<HTMLElement>> = (props) => {
         <div className='right'>
           <Menus className='md-up'>
             <li>
-              <Link className={setActiveClassName('/components')} href='/components'>
+              <LocaleLink className={setActiveClassName('components')} href='/components'>
                 {locale.header.component}
-              </Link>
+              </LocaleLink>
             </li>
             <li>
-              <Link className={setActiveClassName('/hooks')} href='/hooks'>
+              <LocaleLink className={setActiveClassName('hooks')} href='/hooks'>
                 {locale.header.hooks}
-              </Link>
+              </LocaleLink>
             </li>
             <li>
-              <Link className={setActiveClassName('/playground')} href='/playground'>
+              <LocaleLink className={setActiveClassName('playground')} href='/playground'>
                 {locale.header.playground}
-              </Link>
+              </LocaleLink>
             </li>
           </Menus>
           <Dropdown
             menus={
               <>
-                {langs.map((lang) => (
-                  <Dropdown.Item key={lang} onClick={() => handleLangChange(lang)}>
-                    {supportLocales[lang].name}
+                {supportedLangs.map((it) => (
+                  <Dropdown.Item key={it} onClick={() => handleLangChange(it)}>
+                    {locales[it].name}
                   </Dropdown.Item>
                 ))}
               </>

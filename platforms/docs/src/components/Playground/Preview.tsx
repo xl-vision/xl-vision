@@ -82,7 +82,7 @@ const Root = styled('div')`
 const DEFAULT_EXEC = `
 require(['react','react-dom', '@xl-vision/react', 'demo'], function(React,ReactDOM, vision, Demo) {
   // 拦截错误和加载完成事件
-  class Wrapper extends Component {
+  class Wrapper extends React.Component {
     componentDidMount() {
       window.$$onLoaded && window.$$onLoaded();
       window.$$mounted = true
@@ -97,16 +97,16 @@ require(['react','react-dom', '@xl-vision/react', 'demo'], function(React,ReactD
     }
 
     render() {
-      var demo = createElement(Demo.default);
+      var demo = React.createElement(Demo.default);
       var CssBaseline = vision.CssBaseline;
-      var css = createElement(CssBaseline, {
+      var css = React.createElement(CssBaseline, {
         children: demo
       });
       return css
     }
   }
 
-  ReactDOM.render(createElement(Wrapper), document.querySelector('#sandbox'))
+  ReactDOM.render(React.createElement(Wrapper), document.querySelector('#sandbox'))
 })
 `;
 

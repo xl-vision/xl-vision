@@ -2,16 +2,11 @@
 
 exports[`Button Test basic render 1`] = `
 .c7 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   width: 1em;
   height: 1em;
   display: inline-block;
   fill: currentcolor;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
@@ -35,16 +30,12 @@ exports[`Button Test basic render 1`] = `
   padding: 0;
   white-space: nowrap;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
   vertical-align: middle;
   background-color: transparent;
   border: 0;
   border-radius: 0;
   outline: 0;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
@@ -62,25 +53,19 @@ exports[`Button Test basic render 1`] = `
 }
 
 .c0 .xl-base-button__ripple {
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
   transform: scale(1);
   opacity: 0.3;
 }
 
 .c0 .xl-base-button__ripple-enter-active {
-  -webkit-transition: all 300ms 0ms cubic-bezier(0,0,0.2,1);
-  transition: all 300ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0, 0, 0.2, 1);
 }
 
 .c0 .xl-base-button__ripple-exit-active {
-  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,1,1);
-  transition: all 300ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 300ms 0ms cubic-bezier(0.4, 0, 1, 1);
 }
 
 .c0 .xl-base-button__ripple-enter-from {
-  -webkit-transform: scale(0);
-  -ms-transform: scale(0);
   transform: scale(0);
   opacity: 0;
 }
@@ -97,16 +82,12 @@ exports[`Button Test basic render 1`] = `
   padding: 0;
   white-space: nowrap;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
   vertical-align: middle;
   background-color: transparent;
   border: 0;
   border-radius: 0;
   outline: 0;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
@@ -124,25 +105,19 @@ exports[`Button Test basic render 1`] = `
 }
 
 .c12 .xl-base-button__ripple {
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
   transform: scale(1);
   opacity: 0.3;
 }
 
 .c12 .xl-base-button__ripple-enter-active {
-  -webkit-transition: all 300ms 0ms cubic-bezier(0,0,0.2,1);
-  transition: all 300ms 0ms cubic-bezier(0,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0, 0, 0.2, 1);
 }
 
 .c12 .xl-base-button__ripple-exit-active {
-  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,1,1);
-  transition: all 300ms 0ms cubic-bezier(0.4,0,1,1);
+  transition: all 300ms 0ms cubic-bezier(0.4, 0, 1, 1);
 }
 
 .c12 .xl-base-button__ripple-enter-from {
-  -webkit-transform: scale(0);
-  -ms-transform: scale(0);
   transform: scale(0);
   opacity: 0;
 }
@@ -159,18 +134,13 @@ exports[`Button Test basic render 1`] = `
 }
 
 .c1 {
-  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 4px;
   min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
-  -webkit-letter-spacing: 0.089em;
-  -moz-letter-spacing: 0.089em;
-  -ms-letter-spacing: 0.089em;
   letter-spacing: 0.089em;
-  -webkit-text-decoration: none;
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
@@ -191,18 +161,13 @@ exports[`Button Test basic render 1`] = `
 }
 
 .c4 {
-  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 4px;
   min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
-  -webkit-letter-spacing: 0.089em;
-  -moz-letter-spacing: 0.089em;
-  -ms-letter-spacing: 0.089em;
   letter-spacing: 0.089em;
-  -webkit-text-decoration: none;
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
@@ -223,18 +188,13 @@ exports[`Button Test basic render 1`] = `
 }
 
 .c5 {
-  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 4px;
   min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
-  -webkit-letter-spacing: 0.089em;
-  -moz-letter-spacing: 0.089em;
-  -ms-letter-spacing: 0.089em;
   letter-spacing: 0.089em;
-  -webkit-text-decoration: none;
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
@@ -254,17 +214,12 @@ exports[`Button Test basic render 1`] = `
 }
 
 .c9 {
-  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 4px;
   font-size: 0.875rem;
   line-height: 0;
   font-weight: 500;
-  -webkit-letter-spacing: 0.089em;
-  -moz-letter-spacing: 0.089em;
-  -ms-letter-spacing: 0.089em;
   letter-spacing: 0.089em;
-  -webkit-text-decoration: none;
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
@@ -285,18 +240,13 @@ exports[`Button Test basic render 1`] = `
 }
 
 .c11 {
-  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 4px;
   min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
-  -webkit-letter-spacing: 0.089em;
-  -moz-letter-spacing: 0.089em;
-  -ms-letter-spacing: 0.089em;
   letter-spacing: 0.089em;
-  -webkit-text-decoration: none;
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
@@ -318,18 +268,13 @@ exports[`Button Test basic render 1`] = `
 }
 
 .c13 {
-  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 4px;
   min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
-  -webkit-letter-spacing: 0.089em;
-  -moz-letter-spacing: 0.089em;
-  -ms-letter-spacing: 0.089em;
   letter-spacing: 0.089em;
-  -webkit-text-decoration: none;
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
@@ -340,17 +285,12 @@ exports[`Button Test basic render 1`] = `
 }
 
 .c15 {
-  -webkit-transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  transition: all 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 4px;
   font-size: 0.875rem;
   line-height: 0;
   font-weight: 500;
-  -webkit-letter-spacing: 0.089em;
-  -moz-letter-spacing: 0.089em;
-  -ms-letter-spacing: 0.089em;
   letter-spacing: 0.089em;
-  -webkit-text-decoration: none;
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
@@ -362,8 +302,7 @@ exports[`Button Test basic render 1`] = `
 
 .c6 {
   display: inline-block;
-  -webkit-transition: width 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  transition: width 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: width 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
   padding: 0;
   line-height: 0;
   font-size: 1.4em;
@@ -379,8 +318,7 @@ exports[`Button Test basic render 1`] = `
 
 .c10 {
   display: inline-block;
-  -webkit-transition: width 300ms 0ms cubic-bezier(0.4,0,0.2,1);
-  transition: width 300ms 0ms cubic-bezier(0.4,0,0.2,1);
+  transition: width 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
   padding: 0;
   line-height: 0;
   font-size: 1.4em;
@@ -398,7 +336,6 @@ exports[`Button Test basic render 1`] = `
 }
 
 .c14 {
-  -webkit-animation: cilQsd 1s linear infinite;
   animation: cilQsd 1s linear infinite;
 }
 

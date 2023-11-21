@@ -1,13 +1,12 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const rehypePrism = require('@mapbox/rehype-prism');
 const bundleAnalyzer = require('@next/bundle-analyzer');
-// const fs = require('fs-extra');
 const path = require('path');
+const demoPlugin = require('./scripts/webpack/mdx/demoPlugin');
 
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 });
-const demoPlugin = require('./scripts/webpack/mdx/demoPlugin');
 
 module.exports = async () => {
   const remarkGfm = (await import('remark-gfm')).default;
@@ -22,29 +21,23 @@ module.exports = async () => {
     compiler: {
       styledComponents: true,
     },
-    outputFileTracing: false,
     eslint: {
       ignoreDuringBuilds: true,
     },
-    i18n: {
-      locales: ['en-US', 'zh-CN'],
-      defaultLocale: 'en-US',
-    },
     experimental: {
-      typedRoutes: true,
+      typedRoutes: false,
       esmExternals: true,
       externalDir: true,
     },
+    modularizeImports: {
+      '@xl-vision/react': {
+        transform: '@xl-vision/react/{{member}}',
+      },
+    },
     webpack: (config, { defaultLoaders }) => {
-      // const alias = resolvePackageAlias();
-
       config.resolve.alias = {
         ...config.resolve.alias,
-        // ...alias,
-        $react: path.resolve(__dirname, '../../node_modules/react'),
-        '$react-dom': path.resolve(__dirname, '../../node_modules/react-dom'),
-        '$styled-components': path.resolve(__dirname, '../../node_modules/styled-components'),
-        '@mdx-js/react': path.resolve(__dirname, './node_modules/@mdx-js/react'),
+        '@mdx-components': path.resolve(__dirname, 'src/components/Markdown'),
       };
 
       config.module.rules.push({
@@ -68,7 +61,7 @@ module.exports = async () => {
                 /** @type {import('@mdx-js/loader').Options} */
                 options: {
                   jsx: true,
-                  providerImportSource: '@mdx-js/react',
+                  providerImportSource: '@mdx-components',
                   rehypePlugins: [rehypePrism],
                   remarkPlugins: [remarkGfm, remarkEmoji, demoPlugin],
                 },
@@ -83,33 +76,3 @@ module.exports = async () => {
   };
   return withBundleAnalyzer(nextConfig);
 };
-
-// function resolvePackageAlias() {
-//   const basePath = path.join(__dirname, '../../packages');
-
-//   const files = fs.readdirSync(basePath);
-
-//   const packageNames = files
-//     .map((it) => path.join(basePath, it, 'package.json'))
-//     .map((it) => {
-//       const exist = fs.pathExistsSync(it);
-//       if (!exist) {
-//         return;
-//       }
-//       const json = fs.readJSONSync(it);
-//       const { name } = json;
-//       return name;
-//     });
-
-//   const srcExists = files
-//     .map((it) => path.join(basePath, it, 'src'))
-//     .map((it) => fs.pathExistsSync(it));
-
-//   const aliasMap = {};
-//   for (let i = 0; i < files.length; i++) {
-//     if (packageNames[i] && srcExists[i]) {
-//       aliasMap[packageNames[i]] = path.join(basePath, files[i], 'src');
-//     }
-//   }
-//   return aliasMap;
-// }

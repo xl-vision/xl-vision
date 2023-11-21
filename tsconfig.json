@@ -16,14 +16,9 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "rootDir": ".",
+    "preserveSymlinks": true,
     "paths": {
       "csstype": ["./node_modules/csstype"],
-      "react": ["./node_modules/@types/react", "./node_modules/react"],
-      "react-dom": ["./node_modules/@types/react-dom", "./node_modules/react-dom"],
-      "styled-components": [
-        "./node_modules/@types/styled-components",
-        "./node_modules/styled-components"
-      ],
       "@xl-vision/styled-engine-types": ["./packages/styled-engine-types/src"],
       "@xl-vision/styled-engine-types/*": ["./packages/styled-engine-types/src/*"],
       "@xl-vision/utils": ["./packages/utils/src"],
@@ -39,7 +34,8 @@
       "@xl-vision/icons": ["./packages/icons/src"],
       "@xl-vision/icons/*": ["./packages/icons/src/*"],
       "@xl-vision/react": ["./packages/react/src"],
-      "@xl-vision/react/*": ["./packages/react/src/*"]
+      "@xl-vision/react/*": ["./packages/react/src/*"],
+      "@docs/*": ["./platforms/docs/src/*"]
     }
   },
   "exclude": ["**/node_modules", "**/modern", "**/legacy", "**/dist"]

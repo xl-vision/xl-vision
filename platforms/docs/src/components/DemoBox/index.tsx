@@ -1,11 +1,12 @@
 import { useConstantFn } from '@xl-vision/hooks';
 import { CodeOutlined, DownOutlined } from '@xl-vision/icons';
 import { styled, CollapseTransition, Button, Tooltip } from '@xl-vision/react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import PropTypes from 'prop-types';
 import { ReactNode, FC, useState, useCallback } from 'react';
+import useIsDebugMode from '@docs/hooks/useIsDebugMode';
+import useLocale from '@docs/hooks/useLocale';
 import Code from './Code';
-import useIsDebugMode from '../../hooks/useIsDebugMode';
 
 export type DemoBoxProps = {
   children: [ReactNode, ReactNode, ReactNode];
@@ -116,18 +117,12 @@ const DemoBox: FC<DemoBoxProps> = ({
   const [titleNode, descNode, preview] = children;
 
   const router = useRouter();
+  const { lang } = useLocale();
 
   const [isExpand, setExpand] = useState(false);
 
   const handleCode = useConstantFn(() => {
-    router
-      .push({
-        pathname: '/playground',
-        query: {
-          code: Buffer.from(jsCode).toString('base64'),
-        },
-      })
-      .catch(console.error);
+    router.push(`/${lang}/playground?code=${Buffer.from(jsCode).toString('base64')}`);
   });
 
   const handleExpand = useCallback(() => {
