@@ -251,7 +251,7 @@ importers:
         specifier: ^15.8.1
         version: 15.8.1
       react-is:
-        specifier: ^18.0.0
+        specifier: ^18.2.0
         version: 18.2.0
     devDependencies:
       '@types/prop-types':
