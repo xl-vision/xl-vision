@@ -255,8 +255,8 @@ importers:
         version: 18.2.0
     devDependencies:
       '@types/prop-types':
-        specifier: ^15.7.10
-        version: 15.7.10
+        specifier: ^15.7.11
+        version: 15.7.11
       '@types/react-is':
         specifier: '>=18.2.4'
         version: 18.2.4
@@ -271,8 +271,8 @@ importers:
         version: 15.8.1
     devDependencies:
       '@types/prop-types':
-        specifier: ^15.7.10
-        version: 15.7.10
+        specifier: ^15.7.11
+        version: 15.7.11
 
   packages/styled-engine-types:
     dependencies:
@@ -391,8 +391,8 @@ importers:
         specifier: 17.0.4
         version: 17.0.4
       '@types/prop-types':
-        specifier: ^15.7.10
-        version: 15.7.10
+        specifier: ^15.7.11
+        version: 15.7.11
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
@@ -3326,10 +3326,6 @@ packages:
 
   /@types/normalize-package-data@2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
-    dev: true
-
-  /@types/prop-types@15.7.10:
-    resolution: {integrity: sha512-mxSnDQxPqsZxmeShFH+uwQ4kO4gcJcGahjjMFeLbKE95IAZiiZyiEepGZjtXJ7hN/yfu0bu9xN2ajcU0JcxX6A==}
     dev: true
 
   /@types/prop-types@15.7.11:
@@ -10605,6 +10601,7 @@ packages:
   /parent-module@1.0.1:
     resolution: {integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==}
     engines: {node: '>=6'}
+    requiresBuild: true
     dependencies:
       callsites: 3.1.0
     dev: true
@@ -11486,6 +11483,7 @@ packages:
   /resolve-from@4.0.0:
     resolution: {integrity: sha512-pb/MYmXstAkysRFx8piNI1tGFNQIFA3vkE3Gq4EuA1dF6gHp/+vgZqsCGJapvy8N3Q+4o7FwvquPJcnZ7RYy4g==}
     engines: {node: '>=4'}
+    requiresBuild: true
     dev: true
 
   /resolve-from@5.0.0:
