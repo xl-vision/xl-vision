@@ -92,7 +92,7 @@
   },
   "engines": {
     "node": ">=v18.0.0",
-    "pnpm": ">=v7"
+    "pnpm": ">=v8"
   },
   "dependencies": {
     "gsap": "^3.12.2"
