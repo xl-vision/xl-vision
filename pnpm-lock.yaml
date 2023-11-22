@@ -385,8 +385,8 @@ importers:
         specifier: ^2.0.10
         version: 2.0.10
       '@types/negotiator':
-        specifier: ^0.6.1
-        version: 0.6.1
+        specifier: ^0.6.3
+        version: 0.6.3
       '@types/node':
         specifier: 17.0.4
         version: 17.0.4
@@ -3276,8 +3276,8 @@ packages:
     resolution: {integrity: sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==}
     dev: true
 
-  /@types/negotiator@0.6.1:
-    resolution: {integrity: sha512-c4mvXFByghezQ/eVGN5HvH/jI63vm3B7FiE81BUzDAWmuiohRecCO6ddU60dfq29oKUMiQujsoB2h0JQC7JHKA==}
+  /@types/negotiator@0.6.3:
+    resolution: {integrity: sha512-JkXTOdKs5MF086b/pt8C3+yVp3iDUwG635L7oCH6HvJvvr6lSUU5oe/gLXnPEfYRROHjJIPgCV6cuAg8gGkntQ==}
     dev: true
 
   /@types/node@17.0.4:
