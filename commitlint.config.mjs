@@ -1,6 +1,8 @@
-module.exports = {
+import commitlintFormatter from './scripts/commitlintFormatter';
+
+const config = {
   extends: ['@commitlint/config-conventional'],
-  formatter: require.resolve('./scripts/commitlintFormatter'),
+  formatter: commitlintFormatter,
   rules: {
     'type-enum': [
       2,
@@ -25,3 +27,5 @@ module.exports = {
     'scope-case': [2, 'always', ['pascal-case', 'camel-case']],
   },
 };
+
+export default config;
