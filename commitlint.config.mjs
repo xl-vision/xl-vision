@@ -1,8 +1,9 @@
-import commitlintFormatter from './scripts/commitlintFormatter';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import formatter from '@commitlint/format';
 
 const config = {
   extends: ['@commitlint/config-conventional'],
-  formatter: commitlintFormatter,
+  formatter,
   rules: {
     'type-enum': [
       2,
