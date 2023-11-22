@@ -376,8 +376,8 @@ importers:
         specifier: ^14.0.3
         version: 14.0.3
       '@types/codemirror':
-        specifier: ^5.60.8
-        version: 5.60.8
+        specifier: ^5.60.13
+        version: 5.60.15
       '@types/js-cookie':
         specifier: ^3.0.6
         version: 3.0.6
@@ -3166,8 +3166,8 @@ packages:
       '@babel/types': 7.23.4
     dev: true
 
-  /@types/codemirror@5.60.8:
-    resolution: {integrity: sha512-VjFgDF/eB+Aklcy15TtOTLQeMjTo07k7KAjql8OK5Dirr7a6sJY4T1uVBDuTVG9VEmn1uUsohOpYnVfgC6/jyw==}
+  /@types/codemirror@5.60.15:
+    resolution: {integrity: sha512-dTOvwEQ+ouKJ/rE9LT1Ue2hmP6H1mZv5+CCnNWu2qtiOe2LQa9lCprEY20HxiDmV/Bxh+dXjywmy5aKvoGjULA==}
     dependencies:
       '@types/tern': 0.23.8
     dev: true
