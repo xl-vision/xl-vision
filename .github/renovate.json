@@ -19,7 +19,8 @@
         "csstype",
         "styled-components",
         "node",
-        "@types/node"
+        "@types/node",
+        "pnpm"
       ],
       "enabled": false
     },
