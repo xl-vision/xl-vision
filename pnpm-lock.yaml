@@ -93,9 +93,6 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^6.11.0
         version: 6.11.0(eslint@8.51.0)(typescript@5.2.2)
-      chalk:
-        specifier: ^4.1.2
-        version: 4.1.2
       commitizen:
         specifier: ^4.3.0
         version: 4.3.0

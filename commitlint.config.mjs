@@ -1,6 +1,9 @@
-module.exports = {
+// eslint-disable-next-line import/no-extraneous-dependencies
+import formatter from '@commitlint/format';
+
+const config = {
   extends: ['@commitlint/config-conventional'],
-  formatter: require.resolve('./scripts/commitlintFormatter'),
+  formatter,
   rules: {
     'type-enum': [
       2,
@@ -25,3 +28,5 @@ module.exports = {
     'scope-case': [2, 'always', ['pascal-case', 'camel-case']],
   },
 };
+
+export default config;
