@@ -1,30 +1,20 @@
 const fs = require('fs-extra');
-const glob = require('glob');
 
 run();
 
-function run() {
-  const p = new Promise((resolve, reject) => {
-    glob(
-      '+(packages|platforms)/*/+(modern|legacy|dist|.next)',
-      {
-        cwd: process.cwd(),
-        dot: true,
-      },
-      (err, matches) => {
-        if (err) {
-          return reject(err);
-        }
-        resolve(matches);
-      },
-    );
-  });
+async function run() {
+  const glob = await import('glob');
 
-  p.then((matches) => {
-    let p2 = Promise.resolve();
-    matches.forEach((it) => {
-      p2 = p2.then(() => fs.remove(it));
+  return glob
+    .glob('+(packages|platforms)/*/+(modern|legacy|dist|.next)', {
+      cwd: process.cwd(),
+      dot: true,
+    })
+    .then((matches) => {
+      let p2 = Promise.resolve();
+      matches.forEach((it) => {
+        p2 = p2.then(() => fs.remove(it));
+      });
+      return p2;
     });
-    return p2;
-  });
 }

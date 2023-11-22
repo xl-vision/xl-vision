@@ -5,7 +5,6 @@ const { nodeResolve } = require('@rollup/plugin-node-resolve');
 const replace = require('@rollup/plugin-replace');
 const terser = require('@rollup/plugin-terser');
 const fs = require('fs-extra');
-const glob = require('glob');
 const argv = require('minimist')(process.argv.slice(2));
 const path = require('path');
 const rollup = require('rollup');
@@ -13,7 +12,9 @@ const getBabelConfig = require('./getBabelConfig');
 
 const entry = argv.entry || 'src/index.ts';
 
-function build(isProd) {
+async function build(isProd) {
+  const glob = await import('glob');
+
   const basePath = process.cwd();
 
   const input = path.resolve(basePath, entry);
@@ -27,7 +28,7 @@ function build(isProd) {
 
   const aliasEntries = {};
 
-  const packages = glob.sync('../*');
+  const packages = await glob.glob('../*');
 
   packages.forEach((it) => {
     if (it === 'packages/styled-engine-types') {

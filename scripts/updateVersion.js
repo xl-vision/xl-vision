@@ -1,5 +1,4 @@
 const fs = require('fs-extra');
-const glob = require('glob');
 const path = require('path');
 const semver = require('semver');
 
@@ -34,21 +33,12 @@ async function run() {
   await Promise.all(promises);
 }
 
-function findPackageJsons(cwd) {
-  return new Promise((resolve, reject) => {
-    glob(
-      '+(packages|platforms)/*/package.json',
-      {
-        cwd,
-        dot: true,
-      },
-      (err, matches) => {
-        if (err) {
-          return reject(err);
-        }
-        resolve(matches);
-      },
-    );
+async function findPackageJsons(cwd) {
+  const glob = await import('glob');
+
+  return glob.glob('+(packages|platforms)/*/package.json', {
+    cwd,
+    dot: true,
   });
 }
 
