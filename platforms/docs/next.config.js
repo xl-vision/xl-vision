@@ -26,13 +26,6 @@ module.exports = async () => {
     },
     experimental: {
       typedRoutes: false,
-      esmExternals: true,
-      externalDir: true,
-    },
-    modularizeImports: {
-      '@xl-vision/react': {
-        transform: '@xl-vision/react/{{member}}',
-      },
     },
     webpack: (config, { defaultLoaders }) => {
       config.resolve.alias = {
