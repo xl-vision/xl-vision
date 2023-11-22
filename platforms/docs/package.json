@@ -41,7 +41,7 @@
   "devDependencies": {
     "@mapbox/rehype-prism": "^0.8.0",
     "@mdx-js/loader": "^3.0.0",
-    "@types/mdx": "^2.0.7",
+    "@types/mdx": "^2.0.10",
     "@types/negotiator": "^0.6.1",
     "@next/bundle-analyzer": "^14.0.3",
     "@next/eslint-plugin-next": "^14.0.3",
