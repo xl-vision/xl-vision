@@ -5,13 +5,13 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
 import { act, render } from '@testing-library/react';
-import glob from 'glob';
+import * as glob from 'glob';
 
 describe('Demo', () => {
   const files = glob.sync(`./packages/*/src/**/__doc__/*.ts?(x)`);
   files.forEach((file) => {
     test(`renders ${file} correctly`, () => {
-      const Demo = require(`../.${file}`).default;
+      const Demo = require(`../../${file}`).default;
       let container: HTMLElement;
       act(() => {
         const ret = render(<Demo />);

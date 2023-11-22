@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Demo renders ./packages/hooks/src/useCssTransition/__doc__/Basic.tsx correctly 1`] = `
+exports[`Demo renders packages/hooks/src/useCssTransition/__doc__/Basic.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -148,7 +148,7 @@ exports[`Demo renders ./packages/hooks/src/useCssTransition/__doc__/Basic.tsx co
 </div>
 `;
 
-exports[`Demo renders ./packages/hooks/src/useNotication/__doc__/Basic.tsx correctly 1`] = `
+exports[`Demo renders packages/hooks/src/useNotication/__doc__/Basic.tsx correctly 1`] = `
 .c3 {
   position: absolute;
   top: 0;
@@ -269,7 +269,7 @@ exports[`Demo renders ./packages/hooks/src/useNotication/__doc__/Basic.tsx corre
 </div>
 `;
 
-exports[`Demo renders ./packages/hooks/src/useTransition/__doc__/Appear.tsx correctly 1`] = `
+exports[`Demo renders packages/hooks/src/useTransition/__doc__/Appear.tsx correctly 1`] = `
 .c3 {
   position: absolute;
   top: 0;
@@ -401,7 +401,7 @@ exports[`Demo renders ./packages/hooks/src/useTransition/__doc__/Appear.tsx corr
 </div>
 `;
 
-exports[`Demo renders ./packages/hooks/src/useTransition/__doc__/Basic.tsx correctly 1`] = `
+exports[`Demo renders packages/hooks/src/useTransition/__doc__/Basic.tsx correctly 1`] = `
 .c3 {
   position: absolute;
   top: 0;
@@ -522,7 +522,7 @@ exports[`Demo renders ./packages/hooks/src/useTransition/__doc__/Basic.tsx corre
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Affix/__doc__/Basic.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Affix/__doc__/Basic.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -677,7 +677,7 @@ exports[`Demo renders ./packages/react/src/Affix/__doc__/Basic.tsx correctly 1`]
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Affix/__doc__/Change.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Affix/__doc__/Change.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -808,7 +808,7 @@ exports[`Demo renders ./packages/react/src/Affix/__doc__/Change.tsx correctly 1`
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Affix/__doc__/Container.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Affix/__doc__/Container.tsx correctly 1`] = `
 .c5 {
   position: absolute;
   top: 0;
@@ -957,7 +957,7 @@ exports[`Demo renders ./packages/react/src/Affix/__doc__/Container.tsx correctly
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Affix/__doc__/Debug.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Affix/__doc__/Debug.tsx correctly 1`] = `
 .c3 {
   position: absolute;
   top: 0;
@@ -1093,7 +1093,7 @@ exports[`Demo renders ./packages/react/src/Affix/__doc__/Debug.tsx correctly 1`]
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Anchor/__doc__/AffixCn.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Anchor/__doc__/AffixCn.tsx correctly 1`] = `
 .c0 .xl-affix__inner {
   z-index: 1;
 }
@@ -1210,7 +1210,7 @@ exports[`Demo renders ./packages/react/src/Anchor/__doc__/AffixCn.tsx correctly 
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Anchor/__doc__/AffixEn.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Anchor/__doc__/AffixEn.tsx correctly 1`] = `
 .c0 .xl-affix__inner {
   z-index: 1;
 }
@@ -1327,7 +1327,7 @@ exports[`Demo renders ./packages/react/src/Anchor/__doc__/AffixEn.tsx correctly 
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Anchor/__doc__/TargetOffsetCn.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Anchor/__doc__/TargetOffsetCn.tsx correctly 1`] = `
 .c0 .xl-affix__inner {
   z-index: 1;
 }
@@ -1444,7 +1444,7 @@ exports[`Demo renders ./packages/react/src/Anchor/__doc__/TargetOffsetCn.tsx cor
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Anchor/__doc__/TargetOffsetEn.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Anchor/__doc__/TargetOffsetEn.tsx correctly 1`] = `
 .c0 .xl-affix__inner {
   z-index: 1;
 }
@@ -1561,7 +1561,7 @@ exports[`Demo renders ./packages/react/src/Anchor/__doc__/TargetOffsetEn.tsx cor
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Anchor/__doc__/UnAffixCn.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Anchor/__doc__/UnAffixCn.tsx correctly 1`] = `
 .c0 .xl-affix__inner {
   z-index: 1;
 }
@@ -1678,7 +1678,7 @@ exports[`Demo renders ./packages/react/src/Anchor/__doc__/UnAffixCn.tsx correctl
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Anchor/__doc__/UnAffixEn.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Anchor/__doc__/UnAffixEn.tsx correctly 1`] = `
 .c0 .xl-affix__inner {
   z-index: 1;
 }
@@ -1795,7 +1795,7 @@ exports[`Demo renders ./packages/react/src/Anchor/__doc__/UnAffixEn.tsx correctl
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Avatar/__doc__/AutoSize.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Avatar/__doc__/AutoSize.tsx correctly 1`] = `
 .c6 {
   position: absolute;
   top: 0;
@@ -1980,7 +1980,7 @@ exports[`Demo renders ./packages/react/src/Avatar/__doc__/AutoSize.tsx correctly
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Avatar/__doc__/Basic.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Avatar/__doc__/Basic.tsx correctly 1`] = `
 .c3 {
   user-select: none;
   width: 1em;
@@ -2446,7 +2446,7 @@ exports[`Demo renders ./packages/react/src/Avatar/__doc__/Basic.tsx correctly 1`
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Avatar/__doc__/Group.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Avatar/__doc__/Group.tsx correctly 1`] = `
 .c4 {
   user-select: none;
   width: 1em;
@@ -2754,7 +2754,7 @@ exports[`Demo renders ./packages/react/src/Avatar/__doc__/Group.tsx correctly 1`
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Avatar/__doc__/Types.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Avatar/__doc__/Types.tsx correctly 1`] = `
 .c3 {
   user-select: none;
   width: 1em;
@@ -2856,25 +2856,25 @@ exports[`Demo renders ./packages/react/src/Avatar/__doc__/Types.tsx correctly 1`
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/BackTop/__doc__/Basic.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/BackTop/__doc__/Basic.tsx correctly 1`] = `
 <div>
   Scroll down to see the bottom-right gray button.
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/BackTop/__doc__/Controlled.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/BackTop/__doc__/Controlled.tsx correctly 1`] = `
 <div>
   BackTop keeps showing
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/BackTop/__doc__/Custom.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/BackTop/__doc__/Custom.tsx correctly 1`] = `
 <div>
   Scroll down to see the bottom-right blue button.
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/BaseButton/__doc__/Advance.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/BaseButton/__doc__/Advance.tsx correctly 1`] = `
 .c3 {
   position: absolute;
   top: 0;
@@ -3046,7 +3046,7 @@ exports[`Demo renders ./packages/react/src/BaseButton/__doc__/Advance.tsx correc
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/BaseButton/__doc__/Basic.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/BaseButton/__doc__/Basic.tsx correctly 1`] = `
 .c3 {
   position: absolute;
   top: 0;
@@ -3149,7 +3149,7 @@ exports[`Demo renders ./packages/react/src/BaseButton/__doc__/Basic.tsx correctl
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -3867,7 +3867,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Basic.tsx correctly 1`
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Button/__doc__/DisableElevation.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -4113,7 +4113,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableElevation.tsx c
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Button/__doc__/DisableRipple.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -4363,7 +4363,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/DisableRipple.tsx corr
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Button/__doc__/Disabled.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -4644,7 +4644,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Disabled.tsx correctly
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Button/__doc__/Link.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -4986,7 +4986,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Link.tsx correctly 1`]
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Button/__doc__/Loading.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -5273,7 +5273,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Loading.tsx correctly 
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Button/__doc__/Long.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -5569,7 +5569,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Long.tsx correctly 1`]
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Button/__doc__/Size.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -6008,7 +6008,7 @@ exports[`Demo renders ./packages/react/src/Button/__doc__/Size.tsx correctly 1`]
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/CollapseTransition/__doc__/Basic.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/CollapseTransition/__doc__/Basic.tsx correctly 1`] = `
 .c3 {
   position: absolute;
   top: 0;
@@ -6131,7 +6131,7 @@ exports[`Demo renders ./packages/react/src/CollapseTransition/__doc__/Basic.tsx 
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/CollapseTransition/__doc__/Horizontal.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/CollapseTransition/__doc__/Horizontal.tsx correctly 1`] = `
 .c3 {
   position: absolute;
   top: 0;
@@ -6254,7 +6254,7 @@ exports[`Demo renders ./packages/react/src/CollapseTransition/__doc__/Horizontal
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Dialog/__doc__/Basic.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Dialog/__doc__/Basic.tsx correctly 1`] = `
 .c3 {
   position: absolute;
   top: 0;
@@ -6373,7 +6373,7 @@ exports[`Demo renders ./packages/react/src/Dialog/__doc__/Basic.tsx correctly 1`
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Dialog/__doc__/Custom.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Dialog/__doc__/Custom.tsx correctly 1`] = `
 .c3 {
   position: absolute;
   top: 0;
@@ -6492,7 +6492,7 @@ exports[`Demo renders ./packages/react/src/Dialog/__doc__/Custom.tsx correctly 1
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Dialog/__doc__/Methods.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Dialog/__doc__/Methods.tsx correctly 1`] = `
 .c3 {
   position: absolute;
   top: 0;
@@ -6611,7 +6611,7 @@ exports[`Demo renders ./packages/react/src/Dialog/__doc__/Methods.tsx correctly 
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Dialog/__doc__/Promise.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Dialog/__doc__/Promise.tsx correctly 1`] = `
 .c3 {
   position: absolute;
   top: 0;
@@ -6730,7 +6730,7 @@ exports[`Demo renders ./packages/react/src/Dialog/__doc__/Promise.tsx correctly 
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Dialog/__doc__/Prompt.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Dialog/__doc__/Prompt.tsx correctly 1`] = `
 .c3 {
   position: absolute;
   top: 0;
@@ -6849,7 +6849,7 @@ exports[`Demo renders ./packages/react/src/Dialog/__doc__/Prompt.tsx correctly 1
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Dialog/__doc__/Tips.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Dialog/__doc__/Tips.tsx correctly 1`] = `
 .c3 {
   position: absolute;
   top: 0;
@@ -7032,7 +7032,7 @@ exports[`Demo renders ./packages/react/src/Dialog/__doc__/Tips.tsx correctly 1`]
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Dialog/__doc__/UseDialog.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Dialog/__doc__/UseDialog.tsx correctly 1`] = `
 .c3 {
   position: absolute;
   top: 0;
@@ -7215,7 +7215,7 @@ exports[`Demo renders ./packages/react/src/Dialog/__doc__/UseDialog.tsx correctl
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Dialog/__doc__/Width.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Dialog/__doc__/Width.tsx correctly 1`] = `
 .c3 {
   position: absolute;
   top: 0;
@@ -7334,7 +7334,7 @@ exports[`Demo renders ./packages/react/src/Dialog/__doc__/Width.tsx correctly 1`
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Dropdown/__doc__/Advance.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Dropdown/__doc__/Advance.tsx correctly 1`] = `
 .c3 {
   position: absolute;
   top: 0;
@@ -7453,7 +7453,7 @@ exports[`Demo renders ./packages/react/src/Dropdown/__doc__/Advance.tsx correctl
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Dropdown/__doc__/Basic.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Dropdown/__doc__/Basic.tsx correctly 1`] = `
 .c3 {
   position: absolute;
   top: 0;
@@ -7572,7 +7572,7 @@ exports[`Demo renders ./packages/react/src/Dropdown/__doc__/Basic.tsx correctly 
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Dropdown/__doc__/Cascade.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Dropdown/__doc__/Cascade.tsx correctly 1`] = `
 .c3 {
   position: absolute;
   top: 0;
@@ -7691,7 +7691,7 @@ exports[`Demo renders ./packages/react/src/Dropdown/__doc__/Cascade.tsx correctl
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Input/__doc__/Addon.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Input/__doc__/Addon.tsx correctly 1`] = `
 .c5 {
   user-select: none;
   width: 1em;
@@ -7859,7 +7859,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Addon.tsx correctly 1`]
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Input/__doc__/Basic.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Input/__doc__/Basic.tsx correctly 1`] = `
 .c0 {
   font-size: 1.000rem;
   line-height: 1.5;
@@ -7955,7 +7955,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Basic.tsx correctly 1`]
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Input/__doc__/Clearable.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Input/__doc__/Clearable.tsx correctly 1`] = `
 .c5 {
   user-select: none;
   width: 1em;
@@ -8111,7 +8111,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Clearable.tsx correctly
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Input/__doc__/DebugSuffix.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Input/__doc__/DebugSuffix.tsx correctly 1`] = `
 .c0 {
   font-size: 1.000rem;
   line-height: 1.5;
@@ -8248,7 +8248,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/DebugSuffix.tsx correct
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Input/__doc__/Focus.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Input/__doc__/Focus.tsx correctly 1`] = `
 .c6 {
   position: absolute;
   top: 0;
@@ -8459,7 +8459,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Focus.tsx correctly 1`]
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Input/__doc__/Group.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Input/__doc__/Group.tsx correctly 1`] = `
 .c8 {
   position: absolute;
   top: 0;
@@ -9037,7 +9037,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Group.tsx correctly 1`]
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Input/__doc__/Password.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Input/__doc__/Password.tsx correctly 1`] = `
 .c6 {
   user-select: none;
   width: 1em;
@@ -9206,7 +9206,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Password.tsx correctly 
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Input/__doc__/PrefixAndSuffix.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Input/__doc__/PrefixAndSuffix.tsx correctly 1`] = `
 .c4 {
   user-select: none;
   width: 1em;
@@ -9409,7 +9409,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/PrefixAndSuffix.tsx cor
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Input/__doc__/ShowCount.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Input/__doc__/ShowCount.tsx correctly 1`] = `
 .c0 {
   font-size: 1.000rem;
   line-height: 1.5;
@@ -9571,7 +9571,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/ShowCount.tsx correctly
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Input/__doc__/Size.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Input/__doc__/Size.tsx correctly 1`] = `
 .c0 {
   font-size: 0.750rem;
   line-height: 1.5;
@@ -9776,7 +9776,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/Size.tsx correctly 1`] 
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Input/__doc__/State.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Input/__doc__/State.tsx correctly 1`] = `
 .c0 {
   font-size: 1.000rem;
   line-height: 1.5;
@@ -9912,7 +9912,7 @@ exports[`Demo renders ./packages/react/src/Input/__doc__/State.tsx correctly 1`]
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Message/__doc__/Basic.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Message/__doc__/Basic.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -10211,7 +10211,7 @@ exports[`Demo renders ./packages/react/src/Message/__doc__/Basic.tsx correctly 1
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Message/__doc__/DebugMethod.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Message/__doc__/DebugMethod.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -10338,7 +10338,7 @@ exports[`Demo renders ./packages/react/src/Message/__doc__/DebugMethod.tsx corre
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Message/__doc__/MaxCount.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Message/__doc__/MaxCount.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -10465,7 +10465,7 @@ exports[`Demo renders ./packages/react/src/Message/__doc__/MaxCount.tsx correctl
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Message/__doc__/Method.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Message/__doc__/Method.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -10764,7 +10764,7 @@ exports[`Demo renders ./packages/react/src/Message/__doc__/Method.tsx correctly 
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Message/__doc__/Promise.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Message/__doc__/Promise.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -10891,7 +10891,7 @@ exports[`Demo renders ./packages/react/src/Message/__doc__/Promise.tsx correctly
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Message/__doc__/ShowClose.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Message/__doc__/ShowClose.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -11018,7 +11018,7 @@ exports[`Demo renders ./packages/react/src/Message/__doc__/ShowClose.tsx correct
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Message/__doc__/Update.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Message/__doc__/Update.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -11145,7 +11145,7 @@ exports[`Demo renders ./packages/react/src/Message/__doc__/Update.tsx correctly 
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Modal/__doc__/Basic.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Modal/__doc__/Basic.tsx correctly 1`] = `
 .c3 {
   position: absolute;
   top: 0;
@@ -11264,7 +11264,7 @@ exports[`Demo renders ./packages/react/src/Modal/__doc__/Basic.tsx correctly 1`]
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Modal/__doc__/EscClosable.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Modal/__doc__/EscClosable.tsx correctly 1`] = `
 .c3 {
   position: absolute;
   top: 0;
@@ -11383,7 +11383,7 @@ exports[`Demo renders ./packages/react/src/Modal/__doc__/EscClosable.tsx correct
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Modal/__doc__/HideMask.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Modal/__doc__/HideMask.tsx correctly 1`] = `
 .c3 {
   position: absolute;
   top: 0;
@@ -11502,7 +11502,7 @@ exports[`Demo renders ./packages/react/src/Modal/__doc__/HideMask.tsx correctly 
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Modal/__doc__/MaskClosable.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Modal/__doc__/MaskClosable.tsx correctly 1`] = `
 .c3 {
   position: absolute;
   top: 0;
@@ -11621,7 +11621,7 @@ exports[`Demo renders ./packages/react/src/Modal/__doc__/MaskClosable.tsx correc
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Modal/__doc__/Nest.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Modal/__doc__/Nest.tsx correctly 1`] = `
 .c3 {
   position: absolute;
   top: 0;
@@ -11740,7 +11740,7 @@ exports[`Demo renders ./packages/react/src/Modal/__doc__/Nest.tsx correctly 1`] 
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Modal/__doc__/Shortcut.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Modal/__doc__/Shortcut.tsx correctly 1`] = `
 .c3 {
   position: absolute;
   top: 0;
@@ -11859,7 +11859,7 @@ exports[`Demo renders ./packages/react/src/Modal/__doc__/Shortcut.tsx correctly 
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Notication/__doc__/Basic.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Notication/__doc__/Basic.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -12115,7 +12115,7 @@ exports[`Demo renders ./packages/react/src/Notication/__doc__/Basic.tsx correctl
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Notication/__doc__/DebugMethod.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Notication/__doc__/DebugMethod.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -12242,7 +12242,7 @@ exports[`Demo renders ./packages/react/src/Notication/__doc__/DebugMethod.tsx co
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Notication/__doc__/Footer.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Notication/__doc__/Footer.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -12369,7 +12369,7 @@ exports[`Demo renders ./packages/react/src/Notication/__doc__/Footer.tsx correct
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Notication/__doc__/HideClose.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Notication/__doc__/HideClose.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -12496,7 +12496,7 @@ exports[`Demo renders ./packages/react/src/Notication/__doc__/HideClose.tsx corr
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Notication/__doc__/MaxCount.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Notication/__doc__/MaxCount.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -12623,7 +12623,7 @@ exports[`Demo renders ./packages/react/src/Notication/__doc__/MaxCount.tsx corre
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Notication/__doc__/Method.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Notication/__doc__/Method.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -12879,7 +12879,7 @@ exports[`Demo renders ./packages/react/src/Notication/__doc__/Method.tsx correct
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Notication/__doc__/Placement.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Notication/__doc__/Placement.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -13054,7 +13054,7 @@ exports[`Demo renders ./packages/react/src/Notication/__doc__/Placement.tsx corr
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Notication/__doc__/Promise.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Notication/__doc__/Promise.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -13181,7 +13181,7 @@ exports[`Demo renders ./packages/react/src/Notication/__doc__/Promise.tsx correc
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Notication/__doc__/Update.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Notication/__doc__/Update.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -13308,7 +13308,7 @@ exports[`Demo renders ./packages/react/src/Notication/__doc__/Update.tsx correct
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Popconfirm/__doc__/Basic.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Popconfirm/__doc__/Basic.tsx correctly 1`] = `
 .c3 {
   position: absolute;
   top: 0;
@@ -13429,7 +13429,7 @@ exports[`Demo renders ./packages/react/src/Popconfirm/__doc__/Basic.tsx correctl
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Popconfirm/__doc__/Promise.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Popconfirm/__doc__/Promise.tsx correctly 1`] = `
 .c3 {
   position: absolute;
   top: 0;
@@ -13550,7 +13550,7 @@ exports[`Demo renders ./packages/react/src/Popconfirm/__doc__/Promise.tsx correc
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Popover/__doc__/Basic.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Popover/__doc__/Basic.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -13891,7 +13891,7 @@ exports[`Demo renders ./packages/react/src/Popover/__doc__/Basic.tsx correctly 1
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Popover/__doc__/ClickInner.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Popover/__doc__/ClickInner.tsx correctly 1`] = `
 .c3 {
   position: absolute;
   top: 0;
@@ -14010,7 +14010,7 @@ exports[`Demo renders ./packages/react/src/Popover/__doc__/ClickInner.tsx correc
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Popper/__doc__/Arrow.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Popper/__doc__/Arrow.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -14138,7 +14138,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Arrow.tsx correctly 1`
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Popper/__doc__/Basic.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -14479,7 +14479,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Basic.tsx correctly 1`
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Popper/__doc__/Nest.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Popper/__doc__/Nest.tsx correctly 1`] = `
 .c3 {
   position: absolute;
   top: 0;
@@ -14598,7 +14598,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Nest.tsx correctly 1`]
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Popper/__doc__/Trigger.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -14790,7 +14790,7 @@ exports[`Demo renders ./packages/react/src/Popper/__doc__/Trigger.tsx correctly 
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Portal/__doc__/Basic.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Portal/__doc__/Basic.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -14951,7 +14951,7 @@ exports[`Demo renders ./packages/react/src/Portal/__doc__/Basic.tsx correctly 1`
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/ResizeObserver/__doc__/Basic.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/ResizeObserver/__doc__/Basic.tsx correctly 1`] = `
 .c0 {
   font-size: 1.000rem;
   line-height: 1.5;
@@ -15101,7 +15101,7 @@ exports[`Demo renders ./packages/react/src/ResizeObserver/__doc__/Basic.tsx corr
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Ripple/__doc__/Advance.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Ripple/__doc__/Advance.tsx correctly 1`] = `
 .c1 {
   position: absolute;
   top: 0;
@@ -15157,7 +15157,7 @@ exports[`Demo renders ./packages/react/src/Ripple/__doc__/Advance.tsx correctly 
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Ripple/__doc__/Basic.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Ripple/__doc__/Basic.tsx correctly 1`] = `
 .c1 {
   position: absolute;
   top: 0;
@@ -15213,7 +15213,7 @@ exports[`Demo renders ./packages/react/src/Ripple/__doc__/Basic.tsx correctly 1`
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
 .c3 {
   box-sizing: border-box;
   display: block;
@@ -19334,7 +19334,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Basic.tsx correctly 1`] =
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
 .c3 {
   box-sizing: border-box;
   display: block;
@@ -23547,7 +23547,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = 
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = `
 .c3 {
   box-sizing: border-box;
   display: block;
@@ -27609,7 +27609,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Offset.tsx correctly 1`] 
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Row/__doc__/ResponsiveColumn.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Row/__doc__/ResponsiveColumn.tsx correctly 1`] = `
 .c1 {
   box-sizing: border-box;
   display: block;
@@ -31574,7 +31574,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/ResponsiveColumn.tsx corr
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Row/__doc__/ResponsiveOffset.tsx correctly 1`] = `
 .c3 {
   box-sizing: border-box;
   display: block;
@@ -35626,7 +35626,7 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/ResponsiveOffset.tsx corr
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Row/__doc__/Wrap.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Row/__doc__/Wrap.tsx correctly 1`] = `
 .c1 {
   box-sizing: border-box;
   display: block;
@@ -39584,13 +39584,13 @@ exports[`Demo renders ./packages/react/src/Row/__doc__/Wrap.tsx correctly 1`] = 
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Row/__doc__/useBreakPoints.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Row/__doc__/useBreakPoints.tsx correctly 1`] = `
 <div>
   Current break points:
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Textarea/__doc__/AutoSize.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Textarea/__doc__/AutoSize.tsx correctly 1`] = `
 .c0 {
   font-size: 1.000rem;
   line-height: 1.5;
@@ -39721,7 +39721,7 @@ exports[`Demo renders ./packages/react/src/Textarea/__doc__/AutoSize.tsx correct
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Textarea/__doc__/Basic.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Textarea/__doc__/Basic.tsx correctly 1`] = `
 .c0 {
   font-size: 1.000rem;
   line-height: 1.5;
@@ -39834,7 +39834,7 @@ exports[`Demo renders ./packages/react/src/Textarea/__doc__/Basic.tsx correctly 
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Textarea/__doc__/DebugSuffix.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Textarea/__doc__/DebugSuffix.tsx correctly 1`] = `
 .c0 {
   font-size: 1.000rem;
   line-height: 1.5;
@@ -39957,7 +39957,7 @@ exports[`Demo renders ./packages/react/src/Textarea/__doc__/DebugSuffix.tsx corr
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Textarea/__doc__/ShowCount.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Textarea/__doc__/ShowCount.tsx correctly 1`] = `
 .c0 {
   font-size: 1.000rem;
   line-height: 1.5;
@@ -40100,7 +40100,7 @@ exports[`Demo renders ./packages/react/src/Textarea/__doc__/ShowCount.tsx correc
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Textarea/__doc__/Size.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Textarea/__doc__/Size.tsx correctly 1`] = `
 .c0 {
   font-size: 0.750rem;
   line-height: 1.5;
@@ -40365,7 +40365,7 @@ exports[`Demo renders ./packages/react/src/Textarea/__doc__/Size.tsx correctly 1
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Arrow.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Tooltip/__doc__/Arrow.tsx correctly 1`] = `
 .c3 {
   position: absolute;
   top: 0;
@@ -40484,7 +40484,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Arrow.tsx correctly 1
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -40825,7 +40825,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Colors.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Tooltip/__doc__/Colors.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -41001,7 +41001,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Colors.tsx correctly 
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Tooltip/__doc__/MaxWidth.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Tooltip/__doc__/MaxWidth.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -41129,7 +41129,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/MaxWidth.tsx correctl
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Rich.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Tooltip/__doc__/Rich.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -41257,7 +41257,7 @@ exports[`Demo renders ./packages/react/src/Tooltip/__doc__/Rich.tsx correctly 1`
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Transition/__doc__/Advance.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Transition/__doc__/Advance.tsx correctly 1`] = `
 .c3 {
   position: absolute;
   top: 0;
@@ -41409,7 +41409,7 @@ exports[`Demo renders ./packages/react/src/Transition/__doc__/Advance.tsx correc
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/Transition/__doc__/Basic.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/Transition/__doc__/Basic.tsx correctly 1`] = `
 .c3 {
   position: absolute;
   top: 0;
@@ -41530,7 +41530,7 @@ exports[`Demo renders ./packages/react/src/Transition/__doc__/Basic.tsx correctl
 </div>
 `;
 
-exports[`Demo renders ./packages/react/src/TransitionGroup/__doc__/Basic.tsx correctly 1`] = `
+exports[`Demo renders packages/react/src/TransitionGroup/__doc__/Basic.tsx correctly 1`] = `
 .c3 {
   position: absolute;
   top: 0;
@@ -41757,7 +41757,7 @@ exports[`Demo renders ./packages/react/src/TransitionGroup/__doc__/Basic.tsx cor
 </div>
 `;
 
-exports[`Demo renders ./packages/useForm/src/__doc__/Basic.tsx correctly 1`] = `
+exports[`Demo renders packages/useForm/src/__doc__/Basic.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -41902,7 +41902,7 @@ exports[`Demo renders ./packages/useForm/src/__doc__/Basic.tsx correctly 1`] = `
 </div>
 `;
 
-exports[`Demo renders ./packages/useForm/src/__doc__/Controller.tsx correctly 1`] = `
+exports[`Demo renders packages/useForm/src/__doc__/Controller.tsx correctly 1`] = `
 .c7 {
   position: absolute;
   top: 0;
@@ -42133,7 +42133,7 @@ exports[`Demo renders ./packages/useForm/src/__doc__/Controller.tsx correctly 1`
 </div>
 `;
 
-exports[`Demo renders ./packages/useForm/src/__doc__/Error.tsx correctly 1`] = `
+exports[`Demo renders packages/useForm/src/__doc__/Error.tsx correctly 1`] = `
 .c7 {
   position: absolute;
   top: 0;
@@ -42379,7 +42379,7 @@ exports[`Demo renders ./packages/useForm/src/__doc__/Error.tsx correctly 1`] = `
 </div>
 `;
 
-exports[`Demo renders ./packages/useForm/src/__doc__/ValueResponse.tsx correctly 1`] = `
+exports[`Demo renders packages/useForm/src/__doc__/ValueResponse.tsx correctly 1`] = `
 .c1 {
   font-size: 1.000rem;
   line-height: 1.5;
@@ -42533,7 +42533,7 @@ exports[`Demo renders ./packages/useForm/src/__doc__/ValueResponse.tsx correctly
 </div>
 `;
 
-exports[`Demo renders ./packages/usePopper/src/__doc__/Arrow.tsx correctly 1`] = `
+exports[`Demo renders packages/usePopper/src/__doc__/Arrow.tsx correctly 1`] = `
 .c2 {
   box-sizing: border-box;
   display: block;
@@ -46605,7 +46605,7 @@ exports[`Demo renders ./packages/usePopper/src/__doc__/Arrow.tsx correctly 1`] =
 </div>
 `;
 
-exports[`Demo renders ./packages/usePopper/src/__doc__/AutoPlacement.tsx correctly 1`] = `
+exports[`Demo renders packages/usePopper/src/__doc__/AutoPlacement.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -46753,7 +46753,7 @@ exports[`Demo renders ./packages/usePopper/src/__doc__/AutoPlacement.tsx correct
 </div>
 `;
 
-exports[`Demo renders ./packages/usePopper/src/__doc__/AutoUpdate.tsx correctly 1`] = `
+exports[`Demo renders packages/usePopper/src/__doc__/AutoUpdate.tsx correctly 1`] = `
 .c3 {
   position: absolute;
   top: 0;
@@ -46918,7 +46918,7 @@ exports[`Demo renders ./packages/usePopper/src/__doc__/AutoUpdate.tsx correctly 
 </div>
 `;
 
-exports[`Demo renders ./packages/usePopper/src/__doc__/Basic.tsx correctly 1`] = `
+exports[`Demo renders packages/usePopper/src/__doc__/Basic.tsx correctly 1`] = `
 .c2 {
   box-sizing: border-box;
   display: block;
@@ -51024,7 +51024,7 @@ exports[`Demo renders ./packages/usePopper/src/__doc__/Basic.tsx correctly 1`] =
 </div>
 `;
 
-exports[`Demo renders ./packages/usePopper/src/__doc__/Debug.tsx correctly 1`] = `
+exports[`Demo renders packages/usePopper/src/__doc__/Debug.tsx correctly 1`] = `
 .c4 {
   position: absolute;
   top: 0;
@@ -51170,7 +51170,7 @@ exports[`Demo renders ./packages/usePopper/src/__doc__/Debug.tsx correctly 1`] =
 </div>
 `;
 
-exports[`Demo renders ./packages/usePopper/src/__doc__/Hide.tsx correctly 1`] = `
+exports[`Demo renders packages/usePopper/src/__doc__/Hide.tsx correctly 1`] = `
 .c2 {
   box-sizing: border-box;
   display: block;
@@ -55236,7 +55236,7 @@ exports[`Demo renders ./packages/usePopper/src/__doc__/Hide.tsx correctly 1`] = 
 </div>
 `;
 
-exports[`Demo renders ./packages/usePopper/src/__doc__/Interactions.tsx correctly 1`] = `
+exports[`Demo renders packages/usePopper/src/__doc__/Interactions.tsx correctly 1`] = `
 .c3 {
   position: absolute;
   top: 0;
@@ -55355,7 +55355,7 @@ exports[`Demo renders ./packages/usePopper/src/__doc__/Interactions.tsx correctl
 </div>
 `;
 
-exports[`Demo renders ./packages/usePopper/src/__doc__/Offset.tsx correctly 1`] = `
+exports[`Demo renders packages/usePopper/src/__doc__/Offset.tsx correctly 1`] = `
 .c2 {
   box-sizing: border-box;
   display: block;
@@ -59461,7 +59461,7 @@ exports[`Demo renders ./packages/usePopper/src/__doc__/Offset.tsx correctly 1`] 
 </div>
 `;
 
-exports[`Demo renders ./packages/usePopper/src/__doc__/Shift.tsx correctly 1`] = `
+exports[`Demo renders packages/usePopper/src/__doc__/Shift.tsx correctly 1`] = `
 .c2 {
   box-sizing: border-box;
   display: block;
@@ -63567,7 +63567,7 @@ exports[`Demo renders ./packages/usePopper/src/__doc__/Shift.tsx correctly 1`] =
 </div>
 `;
 
-exports[`Demo renders ./packages/usePopper/src/__doc__/VirtualElement.tsx correctly 1`] = `
+exports[`Demo renders packages/usePopper/src/__doc__/VirtualElement.tsx correctly 1`] = `
 .c0 {
   position: relative;
   height: 200px;
