@@ -8091,6 +8091,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/Clearable.tsx correctly 1
           class="c3 xl-input__prefix c4 xl-input__suffix"
         >
           <span
+            aria-label="clear"
             class="xl-input__suffix-clear"
             role="button"
             tabindex="-1"

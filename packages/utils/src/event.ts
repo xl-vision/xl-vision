@@ -5,12 +5,12 @@ export type EventObject = Window | HTMLElement | Element | Document;
 export type EventMap<T extends EventObject> = T extends Window
   ? WindowEventMap
   : T extends Document
-  ? DocumentEventMap
-  : T extends HTMLElement
-  ? HTMLElementEventMap
-  : T extends Element
-  ? ElementEventMap
-  : never;
+    ? DocumentEventMap
+    : T extends HTMLElement
+      ? HTMLElementEventMap
+      : T extends Element
+        ? ElementEventMap
+        : never;
 
 export type EventType<
   T extends EventObject,
@@ -18,12 +18,12 @@ export type EventType<
 > = K extends keyof WindowEventMap
   ? WindowEventMap[K]
   : K extends keyof DocumentEventMap
-  ? DocumentEventMap[K]
-  : K extends keyof HTMLElementEventMap
-  ? HTMLElementEventMap[K]
-  : K extends keyof ElementEventMap
-  ? ElementEventMap[K]
-  : never;
+    ? DocumentEventMap[K]
+    : K extends keyof HTMLElementEventMap
+      ? HTMLElementEventMap[K]
+      : K extends keyof ElementEventMap
+        ? ElementEventMap[K]
+        : never;
 
 export type Listener<T extends EventObject, K extends keyof EventMap<T>> = (
   this: T,

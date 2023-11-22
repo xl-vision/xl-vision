@@ -300,7 +300,13 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, ref) => 
 
   const showClearNode = !disabled && !readOnly && allowClear && wordCount > 0 && (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-    <span className={`${rootClassName}__clear`} role='button' tabIndex={-1} onClick={handleReset}>
+    <span
+      aria-label='clear'
+      className={`${rootClassName}__clear`}
+      role='button'
+      tabIndex={-1}
+      onClick={handleReset}
+    >
       <CloseCircleFilled />
     </span>
   );

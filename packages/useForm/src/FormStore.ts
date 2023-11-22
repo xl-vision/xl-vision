@@ -273,11 +273,11 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
           typeof ruleData === 'object' && 'value' in ruleData
             ? ruleData
             : typeof ruleData === 'string'
-            ? {
-                value: true,
-                message: ruleData,
-              }
-            : { value: ruleData, message: globalMessage };
+              ? {
+                  value: true,
+                  message: ruleData,
+                }
+              : { value: ruleData, message: globalMessage };
 
         try {
           // eslint-disable-next-line no-await-in-loop

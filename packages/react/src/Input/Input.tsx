@@ -386,7 +386,13 @@ const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
 
     allowClearNode = (
       // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-      <span className={clearClasses} role='button' tabIndex={-1} onClick={handleReset}>
+      <span
+        aria-label='clear'
+        className={clearClasses}
+        role='button'
+        tabIndex={-1}
+        onClick={handleReset}
+      >
         <CloseCircleFilled />
       </span>
     );

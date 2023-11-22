@@ -33,8 +33,8 @@ export default ({
     boundary === 'clippingAncestors'
       ? getFiltedOverflowAncestors(element)
       : Array.isArray(boundary)
-      ? boundary
-      : [boundary];
+        ? boundary
+        : [boundary];
 
   ancestors.push(rootBoundary);
 
