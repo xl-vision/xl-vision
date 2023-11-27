@@ -45,7 +45,7 @@
     "@types/negotiator": "^0.6.3",
     "@next/bundle-analyzer": "^14.0.3",
     "@next/eslint-plugin-next": "^14.0.3",
-    "@types/codemirror": "^5.60.13",
+    "@types/codemirror": "^5.60.15",
     "@types/js-cookie": "^3.0.6",
     "@types/node": "17.0.4",
     "@types/prop-types": "^15.7.11",
