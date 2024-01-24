@@ -53,7 +53,7 @@ module.exports = async function localeLoader() {
         );
         locales.push(
           `'${it.parts[1]}': {
-            component: ${contentName},
+            node: <${contentName} />,
             outline: ${contentName}Outline
           }`,
         );

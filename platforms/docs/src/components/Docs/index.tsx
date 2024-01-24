@@ -1,13 +1,13 @@
 'use client';
 
 import { Anchor, Row } from '@xl-vision/react';
-import { ComponentType, FC } from 'react';
+import { FC, ReactNode } from 'react';
 import useLocale from '@docs/hooks/useLocale';
 import { Lang, defaultLang } from '@docs/locales';
 import useIsDebugMode from '../../hooks/useIsDebugMode';
 import { HEADER_HEIGHT } from '../Header';
 
-export type LocaleComponentMap = Record<Lang, { component: ComponentType; outline: Outline }>;
+export type LocaleComponentMap = Record<Lang, { node: ReactNode; outline: Outline }>;
 
 export type DocsProps = {
   docs: LocaleComponentMap;
@@ -25,17 +25,15 @@ const Docs: FC<DocsProps> = ({ docs }) => {
 
   const docsInfo = docs[lang] || docs[defaultLang];
 
-  const { component: Component, outline } = docsInfo;
+  const { node, outline } = docsInfo;
 
   const isDebugMode = useIsDebugMode();
-
-  const Instance = Component ? <Component /> : null;
 
   const outlineNodes = genMenus(outline, isDebugMode);
 
   return (
     <Row removeOnUnvisible={true}>
-      <Row.Col column={{ xs: 24, lg: 20, xxl: 21 }}>{Instance}</Row.Col>
+      <Row.Col column={{ xs: 24, lg: 20, xxl: 21 }}>{node}</Row.Col>
       <Row.Col column={{ xs: 0, lg: 4, xxl: 3 }}>
         {outlineNodes && (
           <Anchor offsetTop={HEADER_HEIGHT + 20} targetOffset={HEADER_HEIGHT}>

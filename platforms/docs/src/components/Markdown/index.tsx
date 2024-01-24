@@ -1,5 +1,3 @@
-'use client';
-
 import type { MDXComponents } from 'mdx/types';
 import { ReactNode } from 'react';
 import a from './a';

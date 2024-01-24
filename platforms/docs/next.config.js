@@ -28,11 +28,6 @@ module.exports = async () => {
       typedRoutes: false,
     },
     webpack: (config, { defaultLoaders }) => {
-      config.resolve.alias = {
-        ...config.resolve.alias,
-        '@mdx-components': path.resolve(__dirname, 'src/components/Markdown'),
-      };
-
       config.module.rules.push({
         test: /\.mdx?$/,
         exclude: /node_modules/,
@@ -50,6 +45,9 @@ module.exports = async () => {
             use: [
               defaultLoaders.babel,
               {
+                loader: 'next-flight-loader',
+              },
+              {
                 loader: require.resolve('@mdx-js/loader'),
                 /** @type {import('@mdx-js/loader').Options} */
                 options: {
@@ -60,6 +58,11 @@ module.exports = async () => {
                 },
               },
             ],
+            resolve: {
+              alias: {
+                '@mdx-components': path.resolve(__dirname, 'src/components/Markdown'),
+              },
+            },
           },
         ],
       });
