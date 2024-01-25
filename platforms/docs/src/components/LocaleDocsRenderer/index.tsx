@@ -7,10 +7,10 @@ import { Lang, defaultLang } from '@docs/locales';
 import useIsDebugMode from '../../hooks/useIsDebugMode';
 import { HEADER_HEIGHT } from '../Header';
 
-export type LocaleComponentMap = Record<Lang, { node: ReactNode; outline: Outline }>;
+export type LocaleDocsMap = Record<Lang, { docs: ReactNode; outline: Outline }>;
 
-export type DocsProps = {
-  docs: LocaleComponentMap;
+export type LocaleDocsRendererProps = {
+  localeDocsMap: LocaleDocsMap;
 };
 
 export type Outline = Array<{
@@ -20,12 +20,12 @@ export type Outline = Array<{
   debug?: boolean;
 }>;
 
-const Docs: FC<DocsProps> = ({ docs }) => {
+const LocaleDocsRenderer: FC<LocaleDocsRendererProps> = ({ localeDocsMap }) => {
   const { lang } = useLocale();
 
-  const docsInfo = docs[lang] || docs[defaultLang];
+  const docsInfo = localeDocsMap[lang] || localeDocsMap[defaultLang];
 
-  const { node, outline } = docsInfo;
+  const { docs, outline } = docsInfo;
 
   const isDebugMode = useIsDebugMode();
 
@@ -33,7 +33,7 @@ const Docs: FC<DocsProps> = ({ docs }) => {
 
   return (
     <Row removeOnUnvisible={true}>
-      <Row.Col column={{ xs: 24, lg: 20, xxl: 21 }}>{node}</Row.Col>
+      <Row.Col column={{ xs: 24, lg: 20, xxl: 21 }}>{docs}</Row.Col>
       <Row.Col column={{ xs: 0, lg: 4, xxl: 3 }}>
         {outlineNodes && (
           <Anchor offsetTop={HEADER_HEIGHT + 20} targetOffset={HEADER_HEIGHT}>
@@ -45,7 +45,7 @@ const Docs: FC<DocsProps> = ({ docs }) => {
   );
 };
 
-export default Docs;
+export default LocaleDocsRenderer;
 
 const genMenus = (outline: Outline, isDebugMode: boolean) => {
   if (!isDebugMode) {

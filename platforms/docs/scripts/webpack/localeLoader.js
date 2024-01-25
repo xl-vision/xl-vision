@@ -23,7 +23,7 @@ module.exports = async function localeLoader() {
   const dir = path.dirname(filePath);
 
   try {
-    const imports = [`import Docs from '@docs/components/Docs'`];
+    const imports = [`import LocaleDocsRenderer from '@docs/components/LocaleDocsRenderer'`];
 
     // this.addDependency(docsPath);
 
@@ -53,7 +53,7 @@ module.exports = async function localeLoader() {
         );
         locales.push(
           `'${it.parts[1]}': {
-            node: <${contentName} />,
+            docs: <${contentName} />,
             outline: ${contentName}Outline
           }`,
         );
@@ -66,9 +66,9 @@ module.exports = async function localeLoader() {
 
     // const componentName = `Locale_${relativePath.replace(/([./\\-])/g, '_')}`;
 
-    const result = `${imports.join('\n')}\nconst docs = {\n  ${locales.join(
+    const result = `${imports.join('\n')}\nconst localeDocsMap = {\n  ${locales.join(
       ',\n  ',
-    )}\n}\nconst LocaleDocs = () => <Docs docs={docs} />\nexport default LocaleDocs`;
+    )}\n}\nconst LocaleDocs = () => <LocaleDocsRenderer localeDocsMap={localeDocsMap} />\nexport default LocaleDocs`;
 
     callback(null, result);
   } catch (err) {
