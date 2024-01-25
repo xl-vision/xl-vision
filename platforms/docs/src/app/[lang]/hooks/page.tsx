@@ -1,7 +1,7 @@
-import { componentRoutes } from '@docs/routes';
-import createGenerateMetadata from '@docs/utils/createGenerateMetadata';
-import Docs from './_docs/index.en-US.mdx?locale';
+import { redirect } from 'next/navigation';
 
-export const generateMetadata = createGenerateMetadata(componentRoutes, '');
+const Page = () => {
+  redirect('./hooks/Overview');
+};
 
-export default Docs;
+export default Page;

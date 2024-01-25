@@ -2,13 +2,13 @@
 
 import { styled, Row, Affix, BackTop } from '@xl-vision/react';
 import { FC, ReactNode } from 'react';
-import { RouteType } from '../../routes';
+import { OmitRouteType } from '@docs/routes';
 import Aside from '../Aside';
 import Footer from '../Footer';
 import Header, { HEADER_HEIGHT } from '../Header';
 
 export type DocsLayoutProps = {
-  routes: Array<RouteType>;
+  routes: Array<OmitRouteType>;
   appendEn?: boolean;
   basePath: string;
   children: ReactNode;
