@@ -1,3 +1,5 @@
+'use client';
+
 import { useConstantFn } from '@xl-vision/hooks';
 import { CodeOutlined, DownOutlined } from '@xl-vision/icons';
 import { styled, CollapseTransition, Button, Tooltip } from '@xl-vision/react';

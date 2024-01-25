@@ -1,3 +1,5 @@
+'use client';
+
 import { Input, styled } from '@xl-vision/react';
 import { Controller, useForm, useWatch } from '@xl-vision/useForm';
 

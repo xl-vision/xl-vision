@@ -1,3 +1,5 @@
+'use client';
+
 import { useRef, useState, useCallback } from 'react';
 import { Button, styled, TransitionGroup } from '@xl-vision/react';
 

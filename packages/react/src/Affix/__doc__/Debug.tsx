@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { Affix, Button } from '@xl-vision/react';
 

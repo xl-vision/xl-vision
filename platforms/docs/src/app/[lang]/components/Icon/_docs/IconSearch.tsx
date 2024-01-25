@@ -1,3 +1,5 @@
+'use client';
+
 import * as Icons from '@xl-vision/icons';
 import { Button, Input, Message, styled } from '@xl-vision/react';
 import ClipboardJs from 'clipboard';

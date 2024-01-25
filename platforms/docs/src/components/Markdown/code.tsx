@@ -1,3 +1,5 @@
+'use client';
+
 import { styled } from '@xl-vision/react';
 
 const code = styled('code')(() => ({}));

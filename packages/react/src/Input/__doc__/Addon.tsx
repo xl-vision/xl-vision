@@ -1,3 +1,5 @@
+'use client';
+
 import { SettingOutlined } from '@xl-vision/icons';
 import { Input } from '@xl-vision/react';
 

@@ -45,9 +45,6 @@ module.exports = async () => {
             use: [
               defaultLoaders.babel,
               {
-                loader: 'next-flight-loader',
-              },
-              {
                 loader: require.resolve('@mdx-js/loader'),
                 /** @type {import('@mdx-js/loader').Options} */
                 options: {

@@ -1,3 +1,5 @@
+'use client';
+
 import { styled, useTheme } from '@xl-vision/react';
 
 const ShadowBox = () => {

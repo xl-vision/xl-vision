@@ -1,3 +1,5 @@
+'use client';
+
 import { Anchor } from '@xl-vision/react';
 
 const Demo = () => {

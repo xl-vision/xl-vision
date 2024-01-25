@@ -1,3 +1,5 @@
+'use client';
+
 import { CloseOutlined } from '@xl-vision/icons';
 import { useState, useCallback } from 'react';
 import { Button, Dialog, styled } from '@xl-vision/react';

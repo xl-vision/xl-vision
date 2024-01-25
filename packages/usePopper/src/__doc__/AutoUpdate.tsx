@@ -1,3 +1,5 @@
+'use client';
+
 import { Button, Portal, styled } from '@xl-vision/react';
 import { useState } from 'react';
 import { useAutoUpdatePopper } from '@xl-vision/usePopper';

@@ -1,3 +1,5 @@
+'use client';
+
 import { useRef, useMemo, SyntheticEvent } from 'react';
 import { Ripple, RippleRef, styled } from '@xl-vision/react';
 

@@ -1,3 +1,5 @@
+'use client';
+
 import { ReactElement, forwardRef, cloneElement } from 'react';
 import { Button, Dropdown, Tooltip, TooltipProps } from '@xl-vision/react';
 

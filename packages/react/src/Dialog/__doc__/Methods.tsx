@@ -1,3 +1,5 @@
+'use client';
+
 import { WarningOutlined } from '@xl-vision/icons';
 import { useCallback } from 'react';
 import { Button, Dialog } from '@xl-vision/react';

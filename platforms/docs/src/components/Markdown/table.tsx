@@ -1,3 +1,5 @@
+'use client';
+
 import { styled } from '@xl-vision/react';
 import { TableHTMLAttributes, FC } from 'react';
 

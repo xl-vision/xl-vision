@@ -1,3 +1,5 @@
+'use client';
+
 import { useCallback } from 'react';
 import { Affix, Button, Message } from '@xl-vision/react';
 

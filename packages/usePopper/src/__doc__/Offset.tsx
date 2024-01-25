@@ -1,3 +1,5 @@
+'use client';
+
 import { styled, Button, Portal, Row } from '@xl-vision/react';
 import { useRef, useMemo, useCallback, forwardRef, useImperativeHandle, useEffect } from 'react';
 import { usePopper, PopperOptions, offset, Middleware } from '@xl-vision/usePopper';

@@ -1,3 +1,5 @@
+'use client';
+
 import { Button, Portal, styled } from '@xl-vision/react';
 import { FC, useCallback, useEffect, useRef } from 'react';
 import {

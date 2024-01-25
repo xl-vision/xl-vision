@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { Button, CollapseTransition, styled } from '@xl-vision/react';
 

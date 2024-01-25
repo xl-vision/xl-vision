@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useCallback } from 'react';
 import { ResizeObserver, ResizeObserverHandler, Input } from '@xl-vision/react';
 

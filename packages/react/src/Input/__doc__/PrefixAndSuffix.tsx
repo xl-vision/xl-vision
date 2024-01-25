@@ -1,3 +1,5 @@
+'use client';
+
 import { SearchOutlined, UserOutlined } from '@xl-vision/icons';
 import { Input, styled } from '@xl-vision/react';
 

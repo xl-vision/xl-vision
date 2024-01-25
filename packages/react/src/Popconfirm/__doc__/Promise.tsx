@@ -1,3 +1,5 @@
+'use client';
+
 import { useCallback } from 'react';
 import { Popconfirm, Button } from '@xl-vision/react';
 

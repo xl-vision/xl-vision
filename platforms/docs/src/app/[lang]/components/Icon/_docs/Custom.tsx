@@ -1,3 +1,5 @@
+'use client';
+
 import { createIcon } from '@xl-vision/icons';
 
 const svg = (

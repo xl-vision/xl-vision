@@ -1,3 +1,5 @@
+'use client';
+
 import { Button, styled } from '@xl-vision/react';
 import { useState } from 'react';
 import { useCssTransition } from '@xl-vision/hooks';

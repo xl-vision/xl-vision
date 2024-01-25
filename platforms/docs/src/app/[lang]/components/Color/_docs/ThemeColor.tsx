@@ -1,3 +1,5 @@
+'use client';
+
 import { styled, useTheme, ThemeVariant } from '@xl-vision/react';
 import createPatterns from '@xl-vision/react/themes/shared/colors/createPatterns';
 import { FC, useMemo } from 'react';

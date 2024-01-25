@@ -1,3 +1,5 @@
+'use client';
+
 import { DeleteFilled, DeleteOutlined } from '@xl-vision/icons';
 import { Row } from '@xl-vision/react';
 

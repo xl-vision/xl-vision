@@ -1,3 +1,5 @@
+'use client';
+
 import { styled, useTheme, ThemeVariant } from '@xl-vision/react';
 import ThemeColor from './ThemeColor';
 
