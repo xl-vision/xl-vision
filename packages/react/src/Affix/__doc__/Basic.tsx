@@ -1,3 +1,5 @@
+'use client';
+
 import { Affix, Button } from '@xl-vision/react';
 
 const Demo = () => {

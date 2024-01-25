@@ -28,7 +28,7 @@ module.exports = async function demoLoader(content) {
   const absolutePath = path.isAbsolute(filePath) ? filePath : path.resolve(process.cwd(), filePath);
 
   try {
-    const tsCode = content;
+    const tsCode = content.replace(/^["'|]use client["'|];?\n+/g, '');
     let jsCode = (
       await babel.transformAsync(tsCode, {
         configFile: false,

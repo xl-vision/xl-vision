@@ -1,3 +1,5 @@
+'use client';
+
 import { Button, Input, Message, styled } from '@xl-vision/react';
 import { FormEvent, useCallback } from 'react';
 import { useForm, Controller } from '@xl-vision/useForm';

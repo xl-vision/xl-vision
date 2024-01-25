@@ -1,3 +1,5 @@
+'use client';
+
 import { Popover, Button, styled } from '@xl-vision/react';
 
 const Wrapper = styled('div')(() => {

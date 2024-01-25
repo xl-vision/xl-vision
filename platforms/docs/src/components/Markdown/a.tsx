@@ -1,3 +1,5 @@
+'use client';
+
 import { styled } from '@xl-vision/react';
 import NextLink from 'next/link';
 import { AnchorHTMLAttributes, FC, useMemo } from 'react';

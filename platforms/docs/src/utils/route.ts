@@ -1,16 +1,37 @@
-import { LeftRoute, RouteType } from '@docs/routes';
+import { LeftRoute, OmitRouteType, RouteType } from '@docs/routes';
 
-export const getRouteNameMap = (
+export const getRouteByName = (
   routes: Array<RouteType>,
-  record: Record<string, LeftRoute> = {},
-): Record<string, LeftRoute> => {
-  routes.forEach((it) => {
-    if ('children' in it) {
-      getRouteNameMap(it.children, record);
-      return;
-    }
-    record[it.name] = it;
-  });
+  currentName: string,
+): LeftRoute | undefined => {
+  for (let i = 0; i < routes.length; i++) {
+    const route = routes[i];
 
-  return record;
+    if ('children' in route) {
+      const v = getRouteByName(route.children, currentName);
+      if (v) {
+        return v;
+      }
+    } else if ('name' in route) {
+      if (route.name === currentName) {
+        return route;
+      }
+    }
+  }
+};
+
+export const extractRoutes = (routes: Array<RouteType>): Array<OmitRouteType> => {
+  return routes.map((it) => {
+    if ('children' in it) {
+      const children = extractRoutes(it.children);
+      return {
+        ...it,
+        children,
+      };
+    }
+    return {
+      name: it.name,
+      titleMap: it.titleMap,
+    };
+  });
 };

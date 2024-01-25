@@ -1,3 +1,5 @@
+'use client';
+
 import { Textarea } from '@xl-vision/react';
 
 const Demo = () => {

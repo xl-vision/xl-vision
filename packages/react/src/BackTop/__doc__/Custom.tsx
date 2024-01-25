@@ -1,3 +1,5 @@
+'use client';
+
 import { ToTopOutlined } from '@xl-vision/icons';
 import { BackTop, Button } from '@xl-vision/react';
 

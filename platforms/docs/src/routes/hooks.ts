@@ -6,7 +6,8 @@ const hookRoutes: Array<RouteType> = [
       'en-US': 'Overview',
       'zh-CN': '总览',
     },
-    name: '',
+    name: 'Overview',
+    docs: () => import('@docs/docs/hooks/Overview/index.en-US.mdx?locale'),
   },
   {
     titleMap: {
@@ -14,6 +15,7 @@ const hookRoutes: Array<RouteType> = [
       'zh-CN': 'useTransition',
     },
     name: 'useTransition',
+    docs: () => import('@xl-vision/hooks/src/useTransition/__doc__/index.en-US.mdx?locale'),
   },
   {
     titleMap: {
@@ -21,6 +23,7 @@ const hookRoutes: Array<RouteType> = [
       'zh-CN': 'useCssTransition',
     },
     name: 'useCssTransition',
+    docs: () => import('@xl-vision/hooks/src/useCssTransition/__doc__/index.en-US.mdx?locale'),
   },
   {
     titleMap: {
@@ -28,6 +31,7 @@ const hookRoutes: Array<RouteType> = [
       'zh-CN': 'usePopper',
     },
     name: 'usePopper',
+    docs: () => import('@xl-vision/usePopper/src/__doc__/index.en-US.mdx?locale'),
   },
   {
     titleMap: {
@@ -35,6 +39,7 @@ const hookRoutes: Array<RouteType> = [
       'zh-CN': 'useNotication',
     },
     name: 'useNotication',
+    docs: () => import('@xl-vision/hooks/src/useNotication/__doc__/index.en-US.mdx?locale'),
   },
   {
     titleMap: {
@@ -42,6 +47,7 @@ const hookRoutes: Array<RouteType> = [
       'zh-CN': 'useForm',
     },
     name: 'useForm',
+    docs: () => import('@xl-vision/useForm/src/__doc__/index.en-US.mdx?locale'),
   },
 ];
 

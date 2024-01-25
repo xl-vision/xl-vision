@@ -1,3 +1,5 @@
+'use client';
+
 import { Row } from '@xl-vision/react';
 
 const { useBreakPoints } = Row;

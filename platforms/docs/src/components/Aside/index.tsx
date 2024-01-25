@@ -6,7 +6,7 @@ import { FC, Children, cloneElement, HTMLAttributes, forwardRef, useMemo } from 
 import useLocale from '@docs/hooks/useLocale';
 import { Lang, defaultLang } from '@docs/locales';
 import { join } from '@docs/utils/link';
-import { RouteType } from '../../routes';
+import { OmitRouteType } from '../../routes';
 
 const LeftNode = styled('span')(() => {
   return {
@@ -79,7 +79,7 @@ const padding = 12;
 
 const traverseRoutes = (
   basePath: string,
-  routesArray: Array<RouteType>,
+  routesArray: Array<OmitRouteType>,
   lang: Lang,
   appendEn: boolean,
   level = 1,
@@ -133,7 +133,7 @@ const Wrapper = styled('div')(() => {
 });
 
 export type AsideProps = HTMLAttributes<HTMLDivElement> & {
-  routes: Array<RouteType>;
+  routes: Array<OmitRouteType>;
   appendEn?: boolean;
   basePath: string;
 };

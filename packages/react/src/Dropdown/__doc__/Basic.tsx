@@ -1,3 +1,5 @@
+'use client';
+
 import { Button, Dropdown, Message } from '@xl-vision/react';
 
 const Basic = () => {

@@ -1,3 +1,5 @@
+'use client';
+
 import { Row, styled } from '@xl-vision/react';
 
 const Wrapper = styled('div')(

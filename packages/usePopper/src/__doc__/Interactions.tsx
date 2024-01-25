@@ -1,3 +1,5 @@
+'use client';
+
 import { Button, Portal } from '@xl-vision/react';
 import { useState } from 'react';
 import {

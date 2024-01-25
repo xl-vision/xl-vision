@@ -1,3 +1,5 @@
+'use client';
+
 import { Button, styled } from '@xl-vision/react';
 import { gsap } from 'gsap';
 import { useState, useCallback } from 'react';

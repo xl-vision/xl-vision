@@ -1,3 +1,5 @@
+'use client';
+
 import { BackTop } from '@xl-vision/react';
 
 const Basic = () => {

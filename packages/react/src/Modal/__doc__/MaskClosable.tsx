@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { Button, Modal, styled } from '@xl-vision/react';
 

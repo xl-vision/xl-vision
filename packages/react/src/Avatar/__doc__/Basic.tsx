@@ -1,3 +1,5 @@
+'use client';
+
 import { UserOutlined } from '@xl-vision/icons';
 import { Avatar, styled } from '@xl-vision/react';
 

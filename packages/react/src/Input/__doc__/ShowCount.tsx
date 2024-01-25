@@ -1,3 +1,5 @@
+'use client';
+
 import { Input } from '@xl-vision/react';
 
 const Demo = () => {

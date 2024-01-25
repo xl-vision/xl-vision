@@ -1,3 +1,5 @@
+'use client';
+
 import { LockFilled } from '@xl-vision/icons';
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { Button, styled } from '@xl-vision/react';

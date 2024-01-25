@@ -1,3 +1,5 @@
+'use client';
+
 import { Button, Popper } from '@xl-vision/react';
 
 const Demo = () => {

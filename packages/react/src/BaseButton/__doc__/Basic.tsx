@@ -1,3 +1,5 @@
+'use client';
+
 import { BaseButton, styled } from '@xl-vision/react';
 
 const CustomButton = styled(BaseButton)(() => {

@@ -1,3 +1,5 @@
+'use client';
+
 import { Button, Dropdown } from '@xl-vision/react';
 
 const Cascade = () => {

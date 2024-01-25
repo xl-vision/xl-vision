@@ -1,3 +1,5 @@
+'use client';
+
 import { Tooltip, Button } from '@xl-vision/react';
 
 const Arrow = () => {

@@ -1,3 +1,5 @@
+'use client';
+
 import { Popconfirm, Button, Message } from '@xl-vision/react';
 
 const Basic = () => {
