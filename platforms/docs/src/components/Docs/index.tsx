@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation';
 import { FC, lazy, useMemo } from 'react';
 import { RouteType } from '@docs/routes';
 import { getRouteByName } from '@docs/utils/route';
@@ -14,6 +15,10 @@ const Docs: FC<DocsProps> = ({ routes, name }) => {
       return lazy(route.docs);
     }
   }, [routes, name]);
+
+  if (!Child) {
+    return notFound();
+  }
 
   const node = Child && <Child />;
 
