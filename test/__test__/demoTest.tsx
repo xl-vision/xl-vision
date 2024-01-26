@@ -8,7 +8,9 @@ import { act, render } from '@testing-library/react';
 import * as glob from 'glob';
 
 describe('Demo', () => {
-  const files = glob.sync(`./packages/*/src/**/__doc__/*.ts?(x)`);
+  const files = glob.sync(`./packages/*/src/**/__doc__/*.ts?(x)`, {
+    posix: true,
+  });
   files.forEach((file) => {
     test(`renders ${file} correctly`, () => {
       const Demo = require(`../../${file}`).default;

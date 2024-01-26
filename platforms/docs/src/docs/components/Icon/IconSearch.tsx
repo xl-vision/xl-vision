@@ -113,12 +113,20 @@ const IconSearch: FC<void> = () => {
       <Input.Group style={{ marginBottom: 20 }}>
         <Button
           color={iconType === IconType.OUTLINED ? 'primary' : 'default'}
+          style={{
+            zIndex: iconType === IconType.OUTLINED ? 100 : 0,
+          }}
+          variant='outlined'
           onClick={() => setIconType(IconType.OUTLINED)}
         >
           Outlined
         </Button>
         <Button
           color={iconType === IconType.FILLED ? 'primary' : 'default'}
+          style={{
+            zIndex: iconType === IconType.FILLED ? 100 : 0,
+          }}
+          variant='outlined'
           onClick={() => setIconType(IconType.FILLED)}
         >
           Filled
