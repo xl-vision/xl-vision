@@ -43,7 +43,7 @@ const StyledLink = styled(Link)(({ theme }) => {
     '&:hover': {
       color: themes.primary.foreground.hover,
     },
-    '&.active': {
+    '& > .active': {
       backgroundColor: themes.primary.foreground.active,
       color: theme.colors.themes.primary.text.primary,
     },

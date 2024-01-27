@@ -1,7 +1,8 @@
 'use client';
 
-import { styled, Row, Affix, BackTop } from '@xl-vision/react';
-import { FC, ReactNode } from 'react';
+import { MenuOutlined } from '@xl-vision/icons';
+import { styled, Row, Affix, BackTop, Button, Popover } from '@xl-vision/react';
+import { FC, ReactNode, useCallback, useState } from 'react';
 import { OmitRouteType } from '@docs/routes';
 import Aside from '../Aside';
 import Footer from '../Footer';
@@ -19,6 +20,7 @@ const Root = styled('div')(({ theme }) => {
     display: 'flex',
     flexDirection: 'column',
     backgroundColor: theme.colors.background.paper,
+    minHeight: '100vh',
     // '.menu-button': {
     //   position: 'fixed',
     //   zIndex: 1000,
@@ -104,26 +106,56 @@ const Content = styled('div')(() => {
   };
 });
 
+const PopoverRoot = styled(Popover)(({ theme }) => {
+  const { clsPrefix } = theme;
+
+  return {
+    [`.${clsPrefix}-popover__content`]: {
+      padding: 0,
+      overflow: 'auto',
+      maxHeight: 500,
+    },
+    '.aside': {
+      overflow: 'visible',
+      maxHeight: 'auto',
+    },
+  };
+});
+
 const DocsLayout: FC<DocsLayoutProps> = ({ basePath, routes, appendEn, children }) => {
+  const [mobileAsideVisible, setMobileAsideVisible] = useState(false);
+
+  const handleClick = useCallback(() => {
+    setMobileAsideVisible(false);
+  }, []);
+
+  const mobileMenus = (
+    <PopoverRoot
+      content={
+        <AsideWrapper
+          appendEn={appendEn}
+          basePath={basePath}
+          className='aside'
+          routes={routes}
+          onClick={handleClick}
+        />
+      }
+      mode='fixed'
+      open={mobileAsideVisible}
+      placement='bottom'
+      trigger='click'
+      // eslint-disable-next-line react/jsx-handler-names
+      onOpenChange={setMobileAsideVisible}
+    >
+      <Button prefixIcon={<MenuOutlined />} variant='text' />
+    </PopoverRoot>
+  );
+
   return (
     <Root>
-      <Header />
-      {/* <Button className='menu-button md-down' onClick={handleAsideVisible} color='primary'>
-        {locale.layout.component.mobileAsideButton}
-      </Button>
-      <div
-        className='mobile-menus md-down'
-        style={{
-          pointerEvents: asideVisible ? undefined : 'none',
-          backgroundColor: asideVisible ? theme.color.background.paper : 'transparent',
-        }}
-      >
-        <CollapseTransition in={asideVisible} transitionClasses='aside'>
-          <AsideWrapper routeName='components' />
-        </CollapseTransition>
-      </div> */}
+      <Header mobileMenus={mobileMenus} />
       <BackTop />
-      <Row removeOnUnvisible={true}>
+      <Row removeOnUnvisible={true} style={{ flex: 1 }}>
         <Row.Col column={{ xs: 0, md: 6, xl: 5, xxl: 4 }}>
           <Affix offsetTop={HEADER_HEIGHT}>
             <AsideWrapper appendEn={appendEn} basePath={basePath} routes={routes} />

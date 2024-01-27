@@ -1,10 +1,10 @@
 'use client';
 
 import { useConstantFn } from '@xl-vision/hooks';
-import { DownOutlined, GithubFilled, MenuOutlined } from '@xl-vision/icons';
+import { DownOutlined, GithubFilled } from '@xl-vision/icons';
 import { Button, styled, Tooltip, Dropdown } from '@xl-vision/react';
 import { usePathname, useRouter } from 'next/navigation';
-import { FC, HTMLAttributes, useCallback } from 'react';
+import { FC, HTMLAttributes, ReactNode, useCallback } from 'react';
 import DarkTheme from './DarkTheme';
 import LightTheme from './LightTheme';
 import Translate from './Translate';
@@ -104,29 +104,13 @@ const Menus = styled('ul')(({ theme }) => {
   };
 });
 
-const MobileDropdownItem = styled(Dropdown.Item)(({ theme }) => {
-  const { themes } = theme.colors;
-  return {
-    minWidth: 250,
-    a: {
-      display: 'block',
-      width: '100%',
-      textDecoration: 'none',
-      color: 'inherit',
-      padding: '6px 0',
-    },
-    '&.active': {
-      button: {
-        backgroundColor: themes.primary.foreground.active,
-        color: themes.primary.text.primary,
-      },
-    },
-  };
-});
-
 const langRegex = new RegExp(`^/(${supportedLangs.map((it) => it.replace(/-/g, '-')).join('|')})`);
 
-const Header: FC<HTMLAttributes<HTMLElement>> = (props) => {
+export type HeaderProps = HTMLAttributes<HTMLElement> & {
+  mobileMenus?: ReactNode;
+};
+
+const Header: FC<HeaderProps> = ({ mobileMenus, ...others }) => {
   const theme = useTheme();
   const { locale, lang } = useLocale();
   const pathname = usePathname();
@@ -152,32 +136,15 @@ const Header: FC<HTMLAttributes<HTMLElement>> = (props) => {
     return pathname.startsWith(`/${lang}/${target}`) ? 'active' : '';
   });
 
-  const mobileMenus = (
-    <>
-      <MobileDropdownItem className={setActiveClassName('components')}>
-        <LocaleLink href='/components'>{locale.header.component}</LocaleLink>
-      </MobileDropdownItem>
-      <MobileDropdownItem className={setActiveClassName('hooks')}>
-        <LocaleLink href='/hooks'>{locale.header.hooks}</LocaleLink>
-      </MobileDropdownItem>
-      <MobileDropdownItem className={setActiveClassName('playground')}>
-        <LocaleLink href='/playground'>{locale.header.playground}</LocaleLink>
-      </MobileDropdownItem>
-    </>
-  );
-
   return (
-    <Container {...props}>
+    <Container {...others}>
       <HeaderNav>
         <div className='left'>
-          <Dropdown menus={mobileMenus} trigger='click'>
-            <Button
-              aria-label='Menus'
-              className='md-down'
-              prefixIcon={<MenuOutlined />}
-              variant='text'
-            />
-          </Dropdown>
+          {mobileMenus && (
+            <div aria-label='Menus' className='md-down'>
+              {mobileMenus}
+            </div>
+          )}
           <LogoWrapper href='/'>
             <Logo />
             <span className='sm-up'>xl vision</span>
@@ -211,6 +178,7 @@ const Header: FC<HTMLAttributes<HTMLElement>> = (props) => {
                 ))}
               </>
             }
+            mode='fixed'
           >
             <Button
               aria-label='Language'

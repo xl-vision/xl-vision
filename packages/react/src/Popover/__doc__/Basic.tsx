@@ -7,7 +7,7 @@ const Wrapper = styled('div')(() => {
     '.column': {
       display: 'flex',
       justifyContent: 'space-between',
-      ':not(:last-child)': {
+      '&:not(:last-child)': {
         marginBottom: '10px',
       },
     },

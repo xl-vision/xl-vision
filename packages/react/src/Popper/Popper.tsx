@@ -22,6 +22,7 @@ import {
   useContextMenu,
   AutoUpdateOptions,
   ArrowOptions,
+  PopperMode,
 } from '@xl-vision/usePopper';
 import { isProduction, isServer, oneOf } from '@xl-vision/utils';
 import clsx from 'clsx';
@@ -68,6 +69,7 @@ export type PopperProps = HTMLAttributes<HTMLDivElement> & {
   arrowOptions?: ArrowOptions;
   autoPlacementOptions?: AutoPlacementOptions | false;
   autoUpdateOptions?: AutoUpdateOptions;
+  mode?: PopperMode;
   className?: string;
   clickOptions?: ClickOptions;
   contextMenuOptions?: ContextMenuOptions;
@@ -112,6 +114,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     shiftOptions,
     arrowOptions,
     autoPlacementOptions,
+    mode: modeProp = 'absolute',
     mountOnShow = true,
     autoUpdateOptions,
     unmountOnHide,
@@ -165,7 +168,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     useAutoUpdatePopper({
       ...autoUpdateOptions,
       placement: initialPlacement,
-      mode: 'absolute',
+      mode: modeProp,
       middlewares,
     }),
     {

@@ -1,6 +1,8 @@
 'use client';
 
-import { styled, Button } from '@xl-vision/react';
+import { MenuOutlined } from '@xl-vision/icons';
+import { styled, Button, Dropdown } from '@xl-vision/react';
+import { useRouter } from 'next/navigation';
 import Footer from '@docs/components/Footer';
 import Header, { HEADER_HEIGHT } from '@docs/components/Header';
 import LocaleLink from '@docs/components/LocaleLink';
@@ -74,11 +76,30 @@ const FooterWrapper = styled(Footer)(({ theme }) => {
 });
 
 const Home = () => {
-  const { locale } = useLocale();
+  const { locale, lang } = useLocale();
+
+  const router = useRouter();
+
+  const mobileMenus = (
+    <Dropdown
+      menus={
+        <>
+          <Dropdown.Item onClick={() => router.push(`/${lang}/components`)}>
+            {locale.header.component}
+          </Dropdown.Item>
+          <Dropdown.Item onClick={() => router.push(`/${lang}/hooks`)}>
+            {locale.header.hooks}
+          </Dropdown.Item>
+        </>
+      }
+    >
+      <Button prefixIcon={<MenuOutlined />} variant='text' />
+    </Dropdown>
+  );
 
   return (
     <>
-      <Header />
+      <Header mobileMenus={mobileMenus} />
       <Main>
         <div className='logo'>
           <Logo />

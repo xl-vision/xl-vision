@@ -13655,7 +13655,7 @@ exports[`Demo renders packages/react/src/Popover/__doc__/Basic.tsx correctly 1`]
   justify-content: space-between;
 }
 
-.c0 .column :not(:last-child) {
+.c0 .column:not(:last-child) {
   margin-bottom: 10px;
 }
 
@@ -14243,7 +14243,7 @@ exports[`Demo renders packages/react/src/Popper/__doc__/Basic.tsx correctly 1`] 
   justify-content: space-between;
 }
 
-.c0 .column :not(:last-child) {
+.c0 .column:not(:last-child) {
   margin-bottom: 10px;
 }
 
@@ -40589,7 +40589,7 @@ exports[`Demo renders packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1`]
   justify-content: space-between;
 }
 
-.c0 .column :not(:last-child) {
+.c0 .column:not(:last-child) {
   margin-bottom: 10px;
 }
 
