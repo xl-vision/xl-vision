@@ -84,6 +84,9 @@ const MainWrapper = styled('div')(({ theme }) => {
     // marginTop: height,
     backgroundColor: theme.colors.background.paper,
     overflowY: 'auto',
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '100%',
     // [`@media(min-width: ${mobileWidth})`]: {
     //   marginTop: 0,
     //   position: 'fixed',
@@ -92,6 +95,12 @@ const MainWrapper = styled('div')(({ theme }) => {
     //   left: asideWidth,
     //   right: 0,
     // },
+  };
+});
+
+const Content = styled('div')(() => {
+  return {
+    flex: 1,
   };
 });
 
@@ -117,14 +126,12 @@ const DocsLayout: FC<DocsLayoutProps> = ({ basePath, routes, appendEn, children 
       <Row removeOnUnvisible={true}>
         <Row.Col column={{ xs: 0, md: 6, xl: 5, xxl: 4 }}>
           <Affix offsetTop={HEADER_HEIGHT}>
-            <div>
-              <AsideWrapper appendEn={appendEn} basePath={basePath} routes={routes} />
-            </div>
+            <AsideWrapper appendEn={appendEn} basePath={basePath} routes={routes} />
           </Affix>
         </Row.Col>
         <Row.Col column={{ xs: 24, md: 18, xl: 19, xxl: 20 }}>
           <MainWrapper>
-            {children}
+            <Content>{children}</Content>
             <Footer />
           </MainWrapper>
         </Row.Col>
