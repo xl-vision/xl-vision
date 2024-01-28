@@ -18,7 +18,9 @@ const StyledComponentsRegistry: FC<{ children: ReactNode }> = ({ children }) => 
   if (isBrowser) return <>{children}</>;
 
   return (
-    <StyleSheetManager sheet={styledComponentsStyleSheet.instance}>{children}</StyleSheetManager>
+    <StyleSheetManager enableVendorPrefixes={true} sheet={styledComponentsStyleSheet.instance}>
+      {children}
+    </StyleSheetManager>
   );
 };
 

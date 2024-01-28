@@ -80,7 +80,7 @@ const Root = styled('div')`
 `;
 
 const DEFAULT_EXEC = `
-require(['react','react-dom', '@xl-vision/react', 'demo'], function(React,ReactDOM, vision, Demo) {
+require(['react','react-dom', '@xl-vision/react', 'demo'], function(React, ReactDOM, vision, Demo) {
   // 拦截错误和加载完成事件
   class Wrapper extends React.Component {
     componentDidMount() {

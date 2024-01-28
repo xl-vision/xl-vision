@@ -36,7 +36,7 @@ const Playground = () => {
         `}`,
       ].join('\n');
     }
-    return Buffer.from(defaultCode, 'base64').toString();
+    return decodeURIComponent(`import React from 'react';\n${defaultCode}`);
   }, [defaultCode]);
 
   const scripts = useMemo(() => {

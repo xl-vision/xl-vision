@@ -124,7 +124,7 @@ const DemoBox: FC<DemoBoxProps> = ({
   const [isExpand, setExpand] = useState(false);
 
   const handleCode = useConstantFn(() => {
-    router.push(`/${lang}/playground?code=${Buffer.from(jsCode).toString('base64')}`);
+    router.push(`/${lang}/playground?code=${encodeURIComponent(jsCode)}`);
   });
 
   const handleExpand = useCallback(() => {

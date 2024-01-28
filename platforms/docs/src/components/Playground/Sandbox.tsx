@@ -34,6 +34,9 @@ html {
   box-sizing: border-box;
   -webkit-text-size-adjust: 100%;
 }
+body {
+  margin: 0;
+}
 *, *::before, *::after {
   box-sizing: inherit;
 }
