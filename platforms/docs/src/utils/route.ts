@@ -35,3 +35,16 @@ export const extractRoutes = (routes: Array<RouteType>): Array<OmitRouteType> =>
     };
   });
 };
+
+export const getAllLeftRoute = (routes: Array<RouteType>): Array<LeftRoute> => {
+  const array: Array<LeftRoute> = [];
+  routes.forEach((it) => {
+    if ('children' in it) {
+      array.push(...getAllLeftRoute(it.children));
+    } else {
+      array.push(it);
+    }
+  });
+
+  return array;
+};
