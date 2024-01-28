@@ -84,12 +84,15 @@ const DialogFooter = styled('div', {
 const DialogActions = styled('div', {
   name: displayName,
   slot: 'Actions',
-})(() => {
+})(({ theme: { size } }) => {
   return {
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'flex-end',
     flexWrap: 'wrap-reverse',
+    button: {
+      marginLeft: size.padding.x,
+    },
   };
 });
 

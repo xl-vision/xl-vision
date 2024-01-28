@@ -75,7 +75,7 @@ describe('Button', () => {
 
     componentSizes.forEach((componentSize) => {
       rerender(
-        <ThemeProvider size={componentSize}>
+        <ThemeProvider sizeVariant={componentSize}>
           <Button>button</Button>
         </ThemeProvider>,
       );

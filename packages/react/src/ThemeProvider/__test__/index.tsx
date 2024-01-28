@@ -78,17 +78,17 @@ describe('ThemeProvider', () => {
     const fn = jest.fn<any, Array<any>>();
 
     const Demo = () => {
-      const { size } = useTheme();
+      const { sizeVariant } = useTheme();
 
       useEffect(() => {
-        fn(size);
-      }, [size]);
+        fn(sizeVariant);
+      }, [sizeVariant]);
 
       return <div />;
     };
 
     const { rerender } = render(
-      <ThemeProvider size='small'>
+      <ThemeProvider sizeVariant='small'>
         <Demo />
       </ThemeProvider>,
     );
@@ -99,7 +99,7 @@ describe('ThemeProvider', () => {
     fn.mockClear();
 
     rerender(
-      <ThemeProvider size='large'>
+      <ThemeProvider sizeVariant='large'>
         <Demo />
       </ThemeProvider>,
     );

@@ -64,9 +64,9 @@ const InputGroupRoot = styled('div', {
 });
 
 const InputGroup: FC<InputGroupProps> = (props) => {
-  const { clsPrefix, size: configSize } = useTheme();
+  const { clsPrefix, sizeVariant } = useTheme();
 
-  const { className, size = configSize, children, ...others } = props;
+  const { className, size = sizeVariant, children, ...others } = props;
 
   const rootClassName = `${clsPrefix}-input-group`;
 
@@ -74,7 +74,7 @@ const InputGroup: FC<InputGroupProps> = (props) => {
 
   return (
     // 内部组件都需要根据size大小变化
-    <ThemeProvider size={size}>
+    <ThemeProvider sizeVariant={size}>
       <InputGroupRoot {...others} className={classes} styleProps={{ size }}>
         {children}
       </InputGroupRoot>

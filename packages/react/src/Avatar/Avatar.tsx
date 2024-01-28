@@ -101,13 +101,13 @@ const AvatarInner = styled('span', {
 
 const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
   const { size: contextSize, shape: contextShape } = useContext(AvatarContext);
-  const { clsPrefix, size: configSize } = useTheme();
+  const { clsPrefix, sizeVariant } = useTheme();
 
   const {
     children,
     icon,
     shape = contextShape || 'circle',
-    size = contextSize || configSize,
+    size = contextSize || sizeVariant,
     src,
     srcSet,
     alt,
@@ -212,8 +212,8 @@ const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
   }, [size]);
 
   const rootSize = useMemo(() => {
-    return (typeof size === 'string' && size) || configSize;
-  }, [size, configSize]);
+    return (typeof size === 'string' && size) || sizeVariant;
+  }, [size, sizeVariant]);
 
   return (
     <AvatarRoot

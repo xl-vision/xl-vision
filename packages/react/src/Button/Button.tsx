@@ -290,12 +290,12 @@ const DefaultLoadingIcon = styled(LoadingOutlined, {
 `;
 
 const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((props, ref) => {
-  const { clsPrefix, size: configSize } = useTheme();
+  const { clsPrefix, sizeVariant } = useTheme();
 
   const {
     color = 'default',
     disableElevation = false,
-    size = configSize,
+    size = sizeVariant,
     disabled,
     loading,
     prefixIcon,

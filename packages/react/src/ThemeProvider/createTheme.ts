@@ -17,7 +17,7 @@ export type BaseTheme = {
   colors: Colors;
   elevations: Elevations;
   locale: Locale;
-  size: SizeVariant;
+  sizeVariant: SizeVariant;
   sizes: Sizes;
   transitions: Transitions;
   typography: Typography;
@@ -38,7 +38,8 @@ const createThemeWithoutMixins = (themeInput?: BaseTheme) => {
     overrideStyles,
     breakpoints,
     elevations,
-    sizes,
+    sizeVariant,
+    sizes: sizesProp,
     transitions,
     typography,
     ...others
@@ -46,13 +47,17 @@ const createThemeWithoutMixins = (themeInput?: BaseTheme) => {
     clone: true,
   });
 
+  const sizes = createSizes(sizesProp);
+
   return {
     ...others,
     colors: createColors(colors),
     overrideStyles: createOverrideStyles(overrideStyles),
     breakpoints: createBreakpoints(breakpoints),
     elevations: createElevations(elevations),
-    sizes: createSizes(sizes),
+    sizeVariant,
+    sizes,
+    size: sizes[sizeVariant],
     transitions: createTransitions(transitions),
     typography: createTypography(typography),
   };

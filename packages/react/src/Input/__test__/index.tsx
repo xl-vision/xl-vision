@@ -13,7 +13,7 @@ describe('Input', () => {
 
     componentSizes.forEach((componentSize) => {
       rerender(
-        <ThemeProvider size={componentSize}>
+        <ThemeProvider sizeVariant={componentSize}>
           <Input />
         </ThemeProvider>,
       );

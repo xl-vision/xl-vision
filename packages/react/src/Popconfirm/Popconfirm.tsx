@@ -54,13 +54,11 @@ const PopconfirmArrow = styled('div', {
 const PopconfirmPopup = styled('div', {
   name: displayName,
   slot: 'Popup',
-})(({ theme }) => {
-  const { clsPrefix, colors, typography, elevations, sizes } = theme;
-
+})(({ theme: { clsPrefix, colors, typography, elevations, sizes } }) => {
   return {
     backgroundColor: colors.background.popper,
     color: colors.text.primary,
-    borderRadius: sizes.middle.borderRadius,
+    borderRadius: sizes.small.borderRadius,
     padding: '12px 16px',
     boxShadow: elevations[3],
 
@@ -82,7 +80,7 @@ const PopconfirmPopup = styled('div', {
     [`.${clsPrefix}-popconfirm__footer`]: {
       textAlign: 'right',
       button: {
-        marginLeft: 8,
+        marginLeft: sizes.small.padding.x,
       },
     },
   };

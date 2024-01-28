@@ -157,7 +157,7 @@ export enum ResizeStatus {
 }
 
 const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, ref) => {
-  const { clsPrefix, size: configSize } = useTheme();
+  const { clsPrefix, sizeVariant } = useTheme();
 
   const {
     defaultValue = '',
@@ -168,7 +168,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, ref) => 
     allowClear,
     disabled,
     readOnly,
-    size = configSize,
+    size = sizeVariant,
     className,
     onFocus,
     onBlur,

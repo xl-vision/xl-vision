@@ -60,14 +60,14 @@ const AvatarPopup = styled(Popover, {
 });
 
 const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>((props, ref) => {
-  const { clsPrefix, size: configSize } = useTheme();
+  const { clsPrefix, sizeVariant } = useTheme();
 
   const {
     children,
     className,
     maxCount,
     popupPlacement = 'top',
-    size = configSize,
+    size = sizeVariant,
     shape = 'circle',
     maxStyle,
     ...others
@@ -121,8 +121,8 @@ const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>((props, ref) =>
   const contextValue = useMemo<AvatarContextProps>(() => ({ size, shape }), [size, shape]);
 
   const rootSize = useMemo(() => {
-    return (typeof size === 'string' && size) || configSize;
-  }, [size, configSize]);
+    return (typeof size === 'string' && size) || sizeVariant;
+  }, [size, sizeVariant]);
 
   return (
     <AvatarContext.Provider value={contextValue}>

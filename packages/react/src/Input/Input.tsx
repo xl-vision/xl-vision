@@ -235,12 +235,12 @@ const InputSuffix = styled(InputPrefix, {
 });
 
 const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
-  const { clsPrefix, size: configSize } = useTheme();
+  const { clsPrefix, sizeVariant } = useTheme();
 
   const {
     className,
     style,
-    size = configSize,
+    size = sizeVariant,
     prefix,
     suffix,
     addonBefore,

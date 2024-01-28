@@ -10,8 +10,12 @@ const Basic = () => {
       {holder}
       <Popconfirm
         title='Are you sure to do it?'
-        onCancel={() => message.info('cancel')}
-        onConfirm={() => message.info('confirm')}
+        onCancel={() => {
+          message.info('cancel');
+        }}
+        onConfirm={() => {
+          message.info('confirm');
+        }}
       >
         <Button color='primary'>button</Button>
       </Popconfirm>

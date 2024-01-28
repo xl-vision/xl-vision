@@ -3,7 +3,7 @@ import { SizeVariant, ThemeProvider, Textarea } from '@xl-vision/react';
 
 describe('Textarea', () => {
   it('test component size', () => {
-    const componentSizes: Array<SizeVariant> = ['small', 'middle', 'large'];
+    const componentSizeVariants: Array<SizeVariant> = ['small', 'middle', 'large'];
 
     const { container, rerender } = render(
       <ThemeProvider>
@@ -11,9 +11,9 @@ describe('Textarea', () => {
       </ThemeProvider>,
     );
 
-    componentSizes.forEach((componentSize) => {
+    componentSizeVariants.forEach((componentSize) => {
       rerender(
-        <ThemeProvider size={componentSize}>
+        <ThemeProvider sizeVariant={componentSize}>
           <Textarea />
         </ThemeProvider>,
       );
