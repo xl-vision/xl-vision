@@ -40121,7 +40121,7 @@ exports[`Demo renders packages/react/src/Textarea/__doc__/Size.tsx correctly 1`]
 
 .c0 .xl-textarea__inner {
   padding: 4px 10px;
-  min-height: 32px;
+  min-height: 26px;
 }
 
 .c0 .xl-textarea__suffix {
@@ -40255,7 +40255,7 @@ exports[`Demo renders packages/react/src/Textarea/__doc__/Size.tsx correctly 1`]
 
 .c3 .xl-textarea__inner {
   padding: 8px 22px;
-  min-height: 40px;
+  min-height: 43.599999999999994px;
 }
 
 .c3 .xl-textarea__suffix {

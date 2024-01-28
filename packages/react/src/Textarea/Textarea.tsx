@@ -50,9 +50,11 @@ const TextAreaRoot = styled('span', {
 
   const themeSize = sizes[size];
 
+  const fontSize = typography.body1.info.size * themeSize.fontSize;
+
   const styles: CSSObject = {
     ...typography.body1.style,
-    fontSize: typography.pxToRem(typography.body1.info.size * themeSize.fontSize),
+    fontSize: typography.pxToRem(fontSize),
     display: 'inline-block',
     width: '100%',
     position: 'relative',
@@ -63,8 +65,7 @@ const TextAreaRoot = styled('span', {
     [`.${clsPrefix}-textarea__inner`]: {
       padding: `${themeSize.padding.y}px ${themeSize.padding.x}px`,
       // 高度最低为一行高度
-      minHeight:
-        themeSize.padding.y * 2 + typography.body1.info.size * typography.body1.info.lineHeight,
+      minHeight: themeSize.padding.y * 2 + fontSize * typography.body1.info.lineHeight,
     },
     [`.${clsPrefix}-textarea__suffix`]: {
       position: 'absolute',
