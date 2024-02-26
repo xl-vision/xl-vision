@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@codemirror/lang-javascript": "^6.2.1",
-    "@uiw/react-codemirror": "^4.21.21",
+    "@uiw/react-codemirror": "^4.21.23",
     "@babel/standalone": "^7.23.10",
     "@mdx-js/react": "^3.0.1",
     "@vercel/analytics": "^1.2.0",
