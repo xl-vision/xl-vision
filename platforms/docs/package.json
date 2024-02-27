@@ -13,7 +13,7 @@
     "analyze": "cross-env ANALYZE=true npm run docs"
   },
   "dependencies": {
-    "@codemirror/lang-javascript": "^6.2.1",
+    "@codemirror/lang-javascript": "^6.2.2",
     "@uiw/react-codemirror": "^4.21.23",
     "@babel/standalone": "^7.23.10",
     "@mdx-js/react": "^3.0.1",
