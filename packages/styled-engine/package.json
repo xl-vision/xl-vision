@@ -38,7 +38,7 @@
     "prop-types": "^15.8.1"
   },
   "devDependencies": {
-    "@types/prop-types": "^15.7.11"
+    "@types/prop-types": "^15.7.12"
   },
   "peerDependencies": {
     "@babel/runtime": "^7.15.4",
