@@ -1,6 +1,6 @@
 import { Analytics } from '@vercel/analytics/react';
 import { Metadata } from 'next';
-import { FC, ReactNode } from 'react';
+import { FC, ReactNode, Suspense } from 'react';
 import BaiduAnalytics from '@docs/components/BaiduAnalytics';
 import CssBaseline from '@docs/components/CssBaseline';
 import GlobalStyle from '@docs/components/GlobalStyle';
@@ -36,7 +36,7 @@ const Layout: FC<{ children: ReactNode; params: { lang: Lang } }> = ({ children,
           <ThemeProvider>
             <CssBaseline />
             <GlobalStyle />
-            {children}
+            <Suspense>{children}</Suspense>
           </ThemeProvider>
         </StyledComponentsRegistry>
         <BaiduAnalytics />
