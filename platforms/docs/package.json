@@ -48,7 +48,7 @@
     "@types/codemirror": "^5.60.15",
     "@types/js-cookie": "^3.0.6",
     "@types/node": "17.0.4",
-    "@types/prop-types": "^15.7.11",
+    "@types/prop-types": "^15.7.12",
     "cross-env": "^7.0.3",
     "next-sitemap": "^4.2.3",
     "pinyin": "^2.11.2",
