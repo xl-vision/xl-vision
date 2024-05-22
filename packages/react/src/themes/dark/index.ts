@@ -11,11 +11,11 @@ const colors = createColors({
     ripple: 0.3,
   },
   themes: {
-    primary: '#1976d2',
-    error: '#d32f2f',
-    warning: '#ed6c02',
-    info: '#66768d',
-    success: '#52c41a',
+    primary: '#1d4ed8',
+    error: '#be123c',
+    warning: '#ea580c',
+    info: '#404040',
+    success: '#15803d',
   },
   dark: true,
 });

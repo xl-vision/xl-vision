@@ -20,6 +20,7 @@ const Basic = () => {
         <Button color='info'>info</Button>
         <Button color='error'>error</Button>
         <Button color='warning'>warning</Button>
+        <Button color='success'>success</Button>
       </Wrapper>
       <Wrapper>
         <Button variant='text'>default</Button>
@@ -35,6 +36,9 @@ const Basic = () => {
         <Button color='warning' variant='text'>
           warning
         </Button>
+        <Button color='success' variant='text'>
+          success
+        </Button>
       </Wrapper>
       <Wrapper>
         <Button variant='outlined'>default</Button>
@@ -49,6 +53,9 @@ const Basic = () => {
         </Button>
         <Button color='warning' variant='outlined'>
           warning
+        </Button>
+        <Button color='success' variant='outlined'>
+          success
         </Button>
       </Wrapper>
     </div>
