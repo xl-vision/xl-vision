@@ -1,6 +1,6 @@
-import { warning } from '@xl-vision/utils';
+import { findDOMNode, warning } from '@xl-vision/utils';
 import { ReactInstance, RefCallback, useCallback, useRef, useState } from 'react';
-import { findDOMNode, flushSync } from 'react-dom';
+import { flushSync } from 'react-dom';
 import useConstantFn from '../useConstantFn';
 import useIsFirstMount from '../useIsFirstMount';
 import useIsomorphicLayoutEffect from '../useIsomorphicLayoutEffect';
@@ -171,7 +171,7 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
 
   const nodeRef: RefCallback<ReactInstance> = useCallback((el) => {
     // eslint-disable-next-line react/no-find-dom-node
-    elementRef.current = findDOMNode(el) as T | null;
+    elementRef.current = findDOMNode<T>(el);
   }, []);
 
   // 是否展示

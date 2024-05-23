@@ -758,6 +758,7 @@ exports[`Entry @xl-vision/utils 1`] = `
   "omit",
   "isEqual",
   "TinyColor",
+  "findDOMNode",
   "isBrowser",
   "isServer",
   "isProduction",
@@ -775,5 +776,6 @@ exports[`Entry @xl-vision/utils 1`] = `
   "isElement",
   "isShadowRoot",
   "isDocument",
+  "isReact19",
 ]
 `;

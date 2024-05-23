@@ -32,9 +32,20 @@
     "url": "https://github.com/xl-vision/xl-vision/issues"
   },
   "peerDependencies": {
-    "@babel/runtime": "^7.15.4"
+    "@babel/runtime": "^7.15.4",
+    "@types/react": ">=18.0.0",
+    "@types/react-dom": ">=18.0.0",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
   },
-  "peerDependenciesMeta": {},
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    },
+    "@types/react-dom": {
+      "optional": true
+    }
+  },
   "sideEffects": false,
   "publishConfig": {
     "access": "public"

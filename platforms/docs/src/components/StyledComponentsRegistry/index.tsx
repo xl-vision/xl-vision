@@ -11,8 +11,7 @@ const StyledComponentsRegistry: FC<{ children: ReactNode }> = ({ children }) => 
   useServerInsertedHTML(() => {
     const styles = styledComponentsStyleSheet.getStyleElement();
     styledComponentsStyleSheet.instance.clearTag();
-
-    return styles;
+    return <>{styles}</>;
   });
 
   if (isBrowser) return <>{children}</>;
