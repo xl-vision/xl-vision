@@ -19,7 +19,7 @@ const Basic = () => {
   return (
     <>
       {holder}
-      <Dropdown menus={menus} open={true}>
+      <Dropdown menus={menus}>
         <Button color='primary'>button</Button>
       </Dropdown>
     </>

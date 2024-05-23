@@ -57,15 +57,8 @@ const Custom = () => {
 
   const footer = (
     <CustomFooter>
-      <Button disableElevation={true} onClick={handleClose}>
-        Cancel
-      </Button>
-      <Button
-        color='primary'
-        disableElevation={true}
-        style={{ marginRight: 8 }}
-        onClick={handleClose}
-      >
+      <Button onClick={handleClose}>Cancel</Button>
+      <Button color='primary' style={{ marginRight: 8 }} onClick={handleClose}>
         Submit
       </Button>
     </CustomFooter>

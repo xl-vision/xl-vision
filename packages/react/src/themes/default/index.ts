@@ -16,7 +16,7 @@ const colors = createColors({
     primary: '#1d4ed8',
     error: '#be123c',
     warning: '#ea580c',
-    info: '#404040',
+    info: '#57534e',
     success: '#15803d',
   },
 });

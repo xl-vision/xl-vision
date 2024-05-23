@@ -23,7 +23,7 @@ export type ButtonVariant = 'contained' | 'outlined' | 'text';
 
 export type ButtonProps = BaseButtonProps & {
   color?: ButtonColor;
-  disableElevation?: boolean;
+  enableElevation?: boolean;
   size?: SizeVariant;
   prefixIcon?: ReactElement<SVGAttributes<SVGSVGElement>>;
   suffixIcon?: ReactElement<SVGAttributes<SVGSVGElement>>;
@@ -36,7 +36,7 @@ const displayName = 'Button';
 
 export type ButtonStyleProps = {
   color: ButtonColor;
-  disableElevation: boolean;
+  enableElevation: boolean;
   icon: boolean;
   size: SizeVariant;
   variant: ButtonVariant;
@@ -64,7 +64,7 @@ const ButtonRoot = styled(BaseButton, {
 
   const {
     color: colorStyle,
-    disableElevation,
+    enableElevation,
     disabled,
     loading,
     size,
@@ -110,64 +110,65 @@ const ButtonRoot = styled(BaseButton, {
     styles.width = '100%';
   }
 
-  if (variant === 'outlined') {
+  if (variant === 'outlined' || colorStyle === 'default') {
     // 保证高度一致
     padding = padding.map((it) => it - themeSize.border);
   }
+
+  const isContained = variant === 'contained';
 
   styles.padding = padding.map((it) => `${it}px`).join(' ');
 
   if (disabled || loading) {
     styles.opacity = colors.opacity.disabled;
-  } else if (variant === 'contained') {
-    if (!disableElevation) {
+  } else if (isContained) {
+    if (enableElevation) {
       styles.boxShadow = elevations[1];
     }
     styles['&:hover'] = {
-      ...(!disableElevation && {
+      ...(enableElevation && {
         boxShadow: elevations[2],
       }),
     };
     styles['&:focus'] = {
-      ...(!disableElevation && {
+      ...(enableElevation && {
         boxShadow: elevations[3],
       }),
     };
   }
 
   if (colorStyle === 'default') {
+    styles.color = colors.text.primary;
+
     if (!loading && !disabled) {
       styles['&:hover'] = {
         ...(styles['&:hover'] || {}),
         color: colors.themes.primary.foreground.hover,
       };
+
       styles['&:focus'] = {
         ...(styles['&:focus'] || {}),
-        color: colors.themes.primary.foreground.hover,
+        color: colors.themes.primary.foreground.focus,
       };
     }
 
-    if (variant === 'text' || variant === 'outlined') {
-      styles.color = colors.text.primary;
+    if (isContained || variant === 'outlined') {
+      styles.border = `${themeSize.border}px solid ${colors.divider.primary}`;
 
-      if (variant === 'outlined') {
-        styles.border = `${themeSize.border}px solid ${colors.divider.primary}`;
-        if (!loading && !disabled) {
-          styles['&:hover'] = {
-            ...(styles['&:hover'] || {}),
-            color: colors.themes.primary.foreground.hover,
-            borderColor: colors.themes.primary.foreground.hover,
-          };
+      if (!loading && !disabled) {
+        styles['&:hover'] = {
+          ...(styles['&:hover'] || {}),
+          borderColor: colors.themes.primary.foreground.hover,
+        };
 
-          styles['&:focus'] = {
-            ...(styles['&:focus'] || {}),
-            borderColor: colors.themes.primary.foreground.hover,
-          };
-        }
-
-        return styles;
+        styles['&:focus'] = {
+          ...(styles['&:focus'] || {}),
+          borderColor: colors.themes.primary.foreground.focus,
+        };
       }
+    }
 
+    if (isContained || variant === 'text') {
       styles['&:hover'] = {
         ...(styles['&:hover'] || {}),
         backgroundColor: colors.themes.primary.background.hover,
@@ -176,42 +177,16 @@ const ButtonRoot = styled(BaseButton, {
         ...(styles['&:focus'] || {}),
         backgroundColor: colors.themes.primary.background.hover,
       };
-
-      return styles;
     }
 
-    if (variant === 'contained') {
-      styles.color = colors.text.primary;
+    if (isContained) {
       styles.backgroundColor = colors.background.paper;
     }
 
     return styles;
   }
 
-  if (variant === 'text' || variant === 'outlined') {
-    styles.backgroundColor = 'transparent';
-
-    styles.color = colors.themes[colorStyle].foreground.enabled;
-
-    if (variant === 'outlined') {
-      styles.border = `${themeSize.border}px solid ${colors.themes[colorStyle].divider.primary}`;
-    }
-
-    if (!disabled && !loading) {
-      styles['&:hover'] = {
-        ...(styles['&:hover'] || {}),
-        backgroundColor: colors.themes[colorStyle].background.hover,
-      };
-      styles['&:focus'] = {
-        ...(styles['&:focus'] || {}),
-        backgroundColor: colors.themes[colorStyle].background.hover,
-      };
-    }
-
-    return styles;
-  }
-
-  if (variant === 'contained') {
+  if (isContained) {
     styles.color = colors.themes[colorStyle].text.primary;
     styles.backgroundColor = colors.themes[colorStyle].foreground.enabled;
 
@@ -225,7 +200,40 @@ const ButtonRoot = styled(BaseButton, {
         backgroundColor: colors.themes[colorStyle].foreground.hover,
       };
     }
+
+    return styles;
   }
+
+  styles.backgroundColor = 'transparent';
+
+  styles.color = colors.themes[colorStyle].foreground.enabled;
+
+  if (!disabled && !loading) {
+    styles['&:hover'] = {
+      ...(styles['&:hover'] || {}),
+      backgroundColor: colors.themes[colorStyle].background.hover,
+    };
+    styles['&:focus'] = {
+      ...(styles['&:focus'] || {}),
+      backgroundColor: colors.themes[colorStyle].background.hover,
+    };
+  }
+
+  if (variant === 'outlined') {
+    styles.border = `${themeSize.border}px solid ${colors.themes[colorStyle].foreground.enabled}`;
+
+    if (!disabled && !loading) {
+      styles['&:hover'] = {
+        ...(styles['&:hover'] || {}),
+        borderColor: colors.themes[colorStyle].foreground.hover,
+      };
+      styles['&:focus'] = {
+        ...(styles['&:focus'] || {}),
+        borderColor: colors.themes[colorStyle].foreground.focus,
+      };
+    }
+  }
+
   return styles;
 });
 
@@ -294,7 +302,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((p
 
   const {
     color = 'default',
-    disableElevation = false,
+    enableElevation = false,
     size = sizeVariant,
     disabled,
     loading,
@@ -331,7 +339,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((p
     `${rootClassName}--color-${color}`,
     `${rootClassName}--variant-${variant}`,
     {
-      [`${rootClassName}--elevation`]: !disableElevation && variant === 'contained',
+      [`${rootClassName}--elevation`]: enableElevation && variant === 'contained',
       [`${rootClassName}--disabled`]: disabled,
       [`${rootClassName}--loading`]: loading,
       [`${rootClassName}--long`]: long,
@@ -379,7 +387,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((p
       ref={ref}
       styleProps={{
         color,
-        disableElevation,
+        enableElevation,
         size,
         disabled,
         loading,
@@ -411,7 +419,7 @@ if (!isProduction) {
       'success',
     ]),
     disabled: PropTypes.bool,
-    disableElevation: PropTypes.bool,
+    enableElevation: PropTypes.bool,
     loading: PropTypes.bool,
     long: PropTypes.bool,
     prefixIcon: PropTypes.element,
