@@ -41,7 +41,7 @@ const IconWrapper = styled('div')(({ theme }) => {
     div: {
       ...typography.subtitle2.style,
     },
-    ':hover': {
+    '&:hover': {
       color: colors.themes.primary.text.primary,
       backgroundColor: colors.themes.primary.foreground.hover,
     },

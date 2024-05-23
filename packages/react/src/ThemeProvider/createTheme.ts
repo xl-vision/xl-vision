@@ -68,6 +68,7 @@ const createTheme = (theme: ThemeInput = {}) => {
     deepMerge(defaultTheme, theme, { clone: true }),
   );
 
+  // 提供主题后处理能力
   if (theme.variants) {
     themeWithoutMixins = deepMerge(themeWithoutMixins, theme.variants, { clone: true });
   }

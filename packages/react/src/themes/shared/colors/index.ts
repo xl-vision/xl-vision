@@ -7,6 +7,7 @@ import {
   TextVariant,
   BackgroundVariant,
   DividerVariant,
+  BackgroundActionVariant,
 } from '../../../ThemeProvider';
 
 export type ColorInput = {
@@ -57,6 +58,13 @@ export const createColors = ({
     spotlight: '#1e1e1e',
     mask: 'rgba(0, 0, 0, 0.45)',
   };
+
+  const outputBackgroundAction: Record<BackgroundActionVariant, string> = {
+    enabled: backgroundTinyColor[method](0).toHexString(true),
+    hover: backgroundTinyColor[method](6).toHexString(true),
+    focus: backgroundTinyColor[method](10).toHexString(true),
+  };
+
   const outputDivider: Record<DividerVariant, string> = {
     primary: backgroundTinyColor[method](15).toHexString(true),
     secondary: backgroundTinyColor[method](6).toHexString(true),
@@ -133,5 +141,6 @@ export const createColors = ({
     themes: outputThemes,
     divider: outputDivider,
     background: outputBackground,
+    backgroundAction: outputBackgroundAction,
   };
 };

@@ -20,6 +20,7 @@ export type ThemeColors = {
 
 export type Colors = {
   background: Record<BackgroundVariant, string>;
+  backgroundAction: Record<BackgroundActionVariant, string>;
   text: Record<TextVariant, string>;
   inverseText: Record<TextVariant, string>;
   divider: Record<DividerVariant, string>;

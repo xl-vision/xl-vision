@@ -16,6 +16,7 @@ const DropdownDividerRoot = styled('div', {
     width: '100%',
     height: 1,
     backgroundColor: colors.divider.primary,
+    margin: '2px 0',
   };
 });
 
