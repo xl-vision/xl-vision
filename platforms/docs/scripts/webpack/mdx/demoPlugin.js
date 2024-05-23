@@ -1,6 +1,6 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable import/no-extraneous-dependencies */
-const pinyin = require('pinyin');
+const { pinyin } = require('pinyin');
 
 const DEMO_REGEX_START = /^:::[\t\f ]*demo[\t\f ]+(.+)/;
 const DEMO_REGEX_END = /^:::[\t\f ]*/;
