@@ -11,21 +11,21 @@ const Wrapper = styled('div')(() => {
   };
 });
 
-const DisableElevation = () => {
+const EnableElevation = () => {
   return (
     <Wrapper>
-      <Button disableElevation={true}>button</Button>
-      <Button color='primary' disableElevation={true}>
+      <Button enableElevation={true}>button</Button>
+      <Button color='primary' enableElevation={true}>
         button
       </Button>
-      <Button color='error' disableElevation={true}>
+      <Button color='error' enableElevation={true}>
         button
       </Button>
-      <Button color='warning' disableElevation={true}>
+      <Button color='warning' enableElevation={true}>
         button
       </Button>
     </Wrapper>
   );
 };
 
-export default DisableElevation;
+export default EnableElevation;

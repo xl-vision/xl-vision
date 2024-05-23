@@ -174,7 +174,6 @@ const Popconfirm = forwardRef<HTMLDivElement, PopconfirmProps>((props, ref) => {
         </Button>
         <Button
           color='primary'
-          disableElevation={true}
           size='small'
           style={{ minWidth: 0 }}
           variant='text'

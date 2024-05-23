@@ -114,7 +114,7 @@ const TextAreaRoot = styled('span', {
       styles.borderColor = colors.themes.primary.foreground.focus;
       styles.boxShadow = `0 0 0 2px ${colors.themes.primary.outline}`;
     } else {
-      styles[':hover'] = {
+      styles['&:hover'] = {
         borderColor: colors.themes.primary.foreground.hover,
       };
     }

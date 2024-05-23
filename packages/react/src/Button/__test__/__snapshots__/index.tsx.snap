@@ -144,20 +144,22 @@ exports[`Button Test basic render 1`] = `
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
-  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
+  padding: 5px 11px;
   color: #000000e0;
+  border: 1px solid #d9d9d9;
   background-color: #fff;
 }
 
 .c1:hover {
-  box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12);
-  color: #3e93de;
+  color: #4373e6;
+  border-color: #4373e6;
+  background-color: #c4dcff;
 }
 
 .c1:focus {
-  box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12);
-  color: #3e93de;
+  color: #0e35b3;
+  border-color: #0e35b3;
+  background-color: #c4dcff;
 }
 
 .c4 {
@@ -172,19 +174,16 @@ exports[`Button Test basic render 1`] = `
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
-  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
   color: #ffffffe0;
-  background-color: #d32f2f;
+  background-color: #be123c;
 }
 
 .c4:hover {
-  box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12);
-  background-color: #e05a55;
+  background-color: #cc3354;
 }
 
 .c4:focus {
-  box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12);
-  background-color: #e05a55;
+  background-color: #cc3354;
 }
 
 .c5 {
@@ -204,13 +203,13 @@ exports[`Button Test basic render 1`] = `
 }
 
 .c5:hover {
-  color: #3e93de;
-  border-color: #3e93de;
+  color: #4373e6;
+  border-color: #4373e6;
 }
 
 .c5:focus {
-  color: #3e93de;
-  border-color: #3e93de;
+  color: #0e35b3;
+  border-color: #0e35b3;
 }
 
 .c9 {
@@ -223,20 +222,22 @@ exports[`Button Test basic render 1`] = `
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 8.450000000000001px;
-  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
+  padding: 7.450000000000001px;
   color: #000000e0;
+  border: 1px solid #d9d9d9;
   background-color: #fff;
 }
 
 .c9:hover {
-  box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12);
-  color: #3e93de;
+  color: #4373e6;
+  border-color: #4373e6;
+  background-color: #c4dcff;
 }
 
 .c9:focus {
-  box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12);
-  color: #3e93de;
+  color: #0e35b3;
+  border-color: #0e35b3;
+  background-color: #c4dcff;
 }
 
 .c11 {
@@ -251,20 +252,22 @@ exports[`Button Test basic render 1`] = `
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   width: 100%;
-  padding: 6px 12px;
-  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
+  padding: 5px 11px;
   color: #000000e0;
+  border: 1px solid #d9d9d9;
   background-color: #fff;
 }
 
 .c11:hover {
-  box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12);
-  color: #3e93de;
+  color: #4373e6;
+  border-color: #4373e6;
+  background-color: #c4dcff;
 }
 
 .c11:focus {
-  box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12);
-  color: #3e93de;
+  color: #0e35b3;
+  border-color: #0e35b3;
+  background-color: #c4dcff;
 }
 
 .c13 {
@@ -278,10 +281,19 @@ exports[`Button Test basic render 1`] = `
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 5px 11px;
   opacity: 0.3;
   color: #000000e0;
+  border: 1px solid #d9d9d9;
   background-color: #fff;
+}
+
+.c13:hover {
+  background-color: #c4dcff;
+}
+
+.c13:focus {
+  background-color: #c4dcff;
 }
 
 .c15 {
@@ -294,10 +306,19 @@ exports[`Button Test basic render 1`] = `
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 8.450000000000001px;
+  padding: 7.450000000000001px;
   opacity: 0.3;
   color: #000000e0;
+  border: 1px solid #d9d9d9;
   background-color: #fff;
+}
+
+.c15:hover {
+  background-color: #c4dcff;
+}
+
+.c15:focus {
+  background-color: #c4dcff;
 }
 
 .c6 {
@@ -342,7 +363,7 @@ exports[`Button Test basic render 1`] = `
 <div>
   <div>
     <button
-      class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--elevation"
+      class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained"
     >
       <span
         class="c2 xl-base-button__inner"
@@ -358,7 +379,7 @@ exports[`Button Test basic render 1`] = `
       />
     </button>
     <button
-      class="c0 xl-base-button c4 xl-button xl-button--size-middle xl-button--color-error xl-button--variant-contained xl-button--elevation"
+      class="c0 xl-base-button c4 xl-button xl-button--size-middle xl-button--color-error xl-button--variant-contained"
     >
       <span
         class="c2 xl-base-button__inner"
@@ -390,7 +411,7 @@ exports[`Button Test basic render 1`] = `
       />
     </button>
     <button
-      class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--elevation"
+      class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained"
     >
       <span
         class="c2 xl-base-button__inner"
@@ -418,7 +439,7 @@ exports[`Button Test basic render 1`] = `
       />
     </button>
     <button
-      class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--elevation"
+      class="c0 xl-base-button c1 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained"
     >
       <span
         class="c2 xl-base-button__inner"
@@ -446,7 +467,7 @@ exports[`Button Test basic render 1`] = `
       />
     </button>
     <button
-      class="c0 xl-base-button c9 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--elevation xl-button--icon"
+      class="c0 xl-base-button c9 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--icon"
     >
       <span
         class="c2 xl-base-button__inner"
@@ -469,7 +490,7 @@ exports[`Button Test basic render 1`] = `
       />
     </button>
     <button
-      class="c0 xl-base-button c9 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--elevation xl-button--icon"
+      class="c0 xl-base-button c9 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--icon"
     >
       <span
         class="c2 xl-base-button__inner"
@@ -492,7 +513,7 @@ exports[`Button Test basic render 1`] = `
       />
     </button>
     <button
-      class="c0 xl-base-button c11 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--elevation xl-button--long"
+      class="c0 xl-base-button c11 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--long"
     >
       <span
         class="c2 xl-base-button__inner"
@@ -508,7 +529,7 @@ exports[`Button Test basic render 1`] = `
       />
     </button>
     <button
-      class="c12 xl-base-button xl-base-button--loading c13 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--elevation xl-button--loading"
+      class="c12 xl-base-button xl-base-button--loading c13 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--loading"
       tabindex="-1"
     >
       <span
@@ -538,7 +559,7 @@ exports[`Button Test basic render 1`] = `
       />
     </button>
     <button
-      class="c12 xl-base-button xl-base-button--loading c15 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--elevation xl-button--loading xl-button--icon"
+      class="c12 xl-base-button xl-base-button--loading c15 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--loading xl-button--icon"
       tabindex="-1"
     >
       <span
@@ -562,7 +583,7 @@ exports[`Button Test basic render 1`] = `
       />
     </button>
     <button
-      class="c12 xl-base-button xl-base-button--loading c13 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--elevation xl-button--loading"
+      class="c12 xl-base-button xl-base-button--loading c13 xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--loading"
       tabindex="-1"
     >
       <span
