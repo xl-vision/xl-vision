@@ -20,7 +20,7 @@ const ThemeColor: FC<ThemeColorProps> = ({ themeVariant }) => {
 
   const { themes } = colors;
 
-  const themeColor = themes[themeVariant].foreground.enabled;
+  const themeColor = themes[themeVariant].foreground.default;
 
   const patterns = useMemo(() => {
     return createPatterns(themeColor);

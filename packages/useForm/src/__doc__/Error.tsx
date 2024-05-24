@@ -81,7 +81,7 @@ const Form = styled('form')(({ theme }) => {
     },
 
     '.error': {
-      color: theme.colors.themes.error.foreground.enabled,
+      color: theme.colors.themes.error.foreground.default,
     },
   };
 });

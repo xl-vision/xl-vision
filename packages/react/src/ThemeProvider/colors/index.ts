@@ -1,26 +1,25 @@
 export type ThemeVariant = 'primary' | 'error' | 'warning' | 'info' | 'success';
 
-export type ActionVariant = 'enabled' | 'hover' | 'focus' | 'active' | 'dragged' | 'disabled';
+export type ForegroundActionVariant = ActionVariant | 'focus' | 'active' | 'dragged' | 'disabled';
 
-export type BackgroundActionVariant = 'enabled' | 'hover' | 'focus';
+export type ActionVariant = 'default' | 'hover';
 
 export type TextVariant = 'primary' | 'secondary' | 'disabled' | 'hint';
 
-export type BackgroundVariant = 'default' | 'paper' | 'mask' | 'spotlight' | 'popper';
+export type BackgroundVariant = ActionVariant | 'paper' | 'mask' | 'spotlight' | 'popper';
 
 export type DividerVariant = 'primary' | 'secondary';
 
 export type ThemeColors = {
-  foreground: Record<ActionVariant, string>;
-  background: Record<BackgroundActionVariant, string>;
-  divider: Record<DividerVariant, string>;
+  foreground: Record<ForegroundActionVariant, string>;
+  background: Record<ActionVariant, string>;
+  divider: Record<ActionVariant, string>;
   text: Record<TextVariant, string>;
   outline: string;
 };
 
 export type Colors = {
   background: Record<BackgroundVariant, string>;
-  backgroundAction: Record<BackgroundActionVariant, string>;
   text: Record<TextVariant, string>;
   inverseText: Record<TextVariant, string>;
   divider: Record<DividerVariant, string>;

@@ -34,7 +34,7 @@ const TableWrapper = styled('table')(({ theme }) => {
           fontWeight: theme.typography.fontWeight.medium,
         },
         ':nth-child(3)': {
-          color: theme.colors.themes.error.foreground.enabled,
+          color: theme.colors.themes.error.foreground.default,
         },
       },
     },

@@ -17,7 +17,7 @@ const Bar = styled('div')(
   border-bottom: ${theme.sizes.middle.border}px solid ${theme.colors.divider.primary};
   text-align: center;
   font-size: 14px;
-  color: ${theme.colors.themes.primary.foreground.enabled};
+  color: ${theme.colors.themes.primary.foreground.default};
   padding: 10px 0;
 `,
 );

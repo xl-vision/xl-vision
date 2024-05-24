@@ -72,7 +72,7 @@ const PopconfirmPopup = styled('div', {
       position: 'absolute',
       top: typography.pxToRem(6),
       left: 0,
-      color: colors.themes.warning.foreground.enabled,
+      color: colors.themes.warning.foreground.default,
     },
     [`.${clsPrefix}-popconfirm__title`]: {
       paddingLeft: 22,

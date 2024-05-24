@@ -21,7 +21,7 @@ const Box = styled('div')(
   color: ${theme.colors.themes.primary.text.primary};
   align-items: center;
   justify-content: center;
-  background-color: ${theme.colors.themes.primary.foreground.enabled};
+  background-color: ${theme.colors.themes.primary.foreground.default};
   border-radius: 5px;
 `,
 );

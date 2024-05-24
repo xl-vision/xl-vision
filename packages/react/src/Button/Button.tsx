@@ -188,7 +188,7 @@ const ButtonRoot = styled(BaseButton, {
 
   if (isContained) {
     styles.color = colors.themes[colorStyle].text.primary;
-    styles.backgroundColor = colors.themes[colorStyle].foreground.enabled;
+    styles.backgroundColor = colors.themes[colorStyle].foreground.default;
 
     if (!disabled && !loading) {
       styles['&:hover'] = {
@@ -206,7 +206,7 @@ const ButtonRoot = styled(BaseButton, {
 
   styles.backgroundColor = 'transparent';
 
-  styles.color = colors.themes[colorStyle].foreground.enabled;
+  styles.color = colors.themes[colorStyle].foreground.default;
 
   if (!disabled && !loading) {
     styles['&:hover'] = {
@@ -220,7 +220,7 @@ const ButtonRoot = styled(BaseButton, {
   }
 
   if (variant === 'outlined') {
-    styles.border = `${themeSize.border}px solid ${colors.themes[colorStyle].foreground.enabled}`;
+    styles.border = `${themeSize.border}px solid ${colors.themes[colorStyle].foreground.default}`;
 
     if (!disabled && !loading) {
       styles['&:hover'] = {

@@ -7,7 +7,6 @@ import {
   TextVariant,
   BackgroundVariant,
   DividerVariant,
-  BackgroundActionVariant,
 } from '../../../ThemeProvider';
 
 export type ColorInput = {
@@ -57,12 +56,7 @@ export const createColors = ({
     popper: backgroundTinyColor[method](dark ? 12 : 0).toHexString(true),
     spotlight: '#1e1e1e',
     mask: 'rgba(0, 0, 0, 0.45)',
-  };
-
-  const outputBackgroundAction: Record<BackgroundActionVariant, string> = {
-    enabled: backgroundTinyColor[method](0).toHexString(true),
     hover: backgroundTinyColor[method](6).toHexString(true),
-    focus: backgroundTinyColor[method](10).toHexString(true),
   };
 
   const outputDivider: Record<DividerVariant, string> = {
@@ -112,7 +106,7 @@ export const createColors = ({
 
     outputThemes[themeVariant] = {
       foreground: {
-        enabled: patterns[5],
+        default: patterns[5],
         hover: patterns[4],
         active: patterns[6],
         focus: patterns[6],
@@ -120,13 +114,12 @@ export const createColors = ({
         disabled: patterns[2],
       },
       background: {
-        enabled: patterns[0],
+        default: patterns[0],
         hover: patterns[1],
-        focus: patterns[2],
       },
       divider: {
-        primary: patterns[3],
-        secondary: patterns[2],
+        default: patterns[3],
+        hover: patterns[2],
       },
       text: getContrastText(patterns[5]),
       outline: new TinyColor(patterns[5]).setAlpha(0.2).toHexString(true),
@@ -141,6 +134,5 @@ export const createColors = ({
     themes: outputThemes,
     divider: outputDivider,
     background: outputBackground,
-    backgroundAction: outputBackgroundAction,
   };
 };
