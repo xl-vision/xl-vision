@@ -20,7 +20,13 @@ const PaletteRenderer: FC<PaletteProps> = ({ palette }) => {
 
   const boxs = Object.keys(palette).map((key) => {
     const color = palette[key as unknown as PaletteVariant];
-    return <Box color={color} key={key} textColor={colors.getContrastText(color).primary} />;
+    return (
+      <Box
+        color={color}
+        key={key}
+        textColor={+key < 500 ? colors.text.primary : colors.inverseText.primary}
+      />
+    );
   });
 
   return <PaletteRoot>{boxs}</PaletteRoot>;

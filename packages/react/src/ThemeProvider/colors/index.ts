@@ -6,6 +6,8 @@ export type ActionVariant = 'default' | 'hover' | 'focus';
 
 export type TextVariant = 'primary' | 'secondary' | 'disabled' | 'hint';
 
+export type DefaultTextVariant = TextVariant | 'spotlight';
+
 export type BackgroundVariant = ActionVariant | 'paper' | 'mask' | 'spotlight' | 'popper';
 
 export type DividerVariant = 'primary' | 'secondary';
@@ -20,7 +22,7 @@ export type ThemeColors = {
 
 export type Colors = {
   background: Record<BackgroundVariant, string>;
-  text: Record<TextVariant, string>;
+  text: Record<DefaultTextVariant, string>;
   inverseText: Record<TextVariant, string>;
   divider: Record<DividerVariant, string>;
   themes: Record<ThemeVariant, ThemeColors>;
@@ -28,7 +30,6 @@ export type Colors = {
     ripple: number;
     disabled: number;
   };
-  getContrastText: (bgColor: string) => Record<TextVariant, string>;
 };
 
 const createColors = (colors: Colors) => {

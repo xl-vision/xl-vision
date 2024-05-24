@@ -18,7 +18,7 @@ const PopperRoot = styled(Popper)(({ theme }) => {
     '.popup': {
       borderRadius: '3px',
       backgroundColor: colors.background.spotlight,
-      color: colors.getContrastText(colors.background.spotlight).primary,
+      color: colors.text.spotlight,
       padding: '5px 10px',
       boxShadow: theme.elevations[3],
     },

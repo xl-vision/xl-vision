@@ -127,9 +127,11 @@ export const createColors = ({
   });
 
   return {
-    getContrastText,
     opacity,
-    text: outText,
+    text: {
+      ...outText,
+      spotlight: getContrastText(outputBackground.spotlight).primary,
+    },
     inverseText: outInverseText,
     themes: outputThemes,
     divider: outputDivider,

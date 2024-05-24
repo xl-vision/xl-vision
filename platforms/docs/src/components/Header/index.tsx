@@ -29,10 +29,6 @@ const Container = styled('div')(() => {
 const HeaderNav = styled('header')(({ theme }) => {
   const { colors, sizes } = theme;
 
-  const background = colors.background.paper;
-
-  const fontColor = colors.getContrastText(background).primary;
-
   return {
     display: 'flex',
     alignItems: 'center',
@@ -42,7 +38,7 @@ const HeaderNav = styled('header')(({ theme }) => {
     width: '100%',
     padding: '0 16px',
     // backgroundColor: alpha(background, 0.72),
-    color: fontColor,
+    color: colors.text.primary,
     borderBottom: `${sizes.middle.border}px solid ${colors.divider.primary}`,
     backdropFilter: 'blur(20px)',
 
@@ -57,7 +53,7 @@ const HeaderNav = styled('header')(({ theme }) => {
     },
 
     '.xl-button__root': {
-      color: fontColor,
+      color: colors.text.primary,
     },
   };
 });
