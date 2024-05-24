@@ -36,16 +36,16 @@ const Pre = styled('pre')(({ theme }) => {
 
     '.token': {
       '&.property': {
-        color: themes.primary.foreground.enabled,
+        color: themes.primary.foreground.default,
       },
       '.punctuation': {
         color: colors.text.secondary,
       },
       '&.keyword, &.function': {
-        color: themes.error.foreground.enabled,
+        color: themes.error.foreground.default,
       },
       '&.maybe-class-name': {
-        color: themes.primary.foreground.enabled,
+        color: themes.primary.foreground.default,
       },
       '&.function': {
         color: themes.error.foreground.active,
@@ -61,23 +61,23 @@ const Pre = styled('pre')(({ theme }) => {
         },
       },
       '&.keyword + .string': {
-        color: themes.error.foreground.enabled,
+        color: themes.error.foreground.default,
       },
       '&.tag': {
-        color: themes.success.foreground.enabled,
+        color: themes.success.foreground.default,
 
         '.class-name': {
           color: themes.primary.foreground.active,
         },
 
         '.attr-name': {
-          color: themes.error.foreground.enabled,
+          color: themes.error.foreground.default,
         },
         '.attr-value': {
           color: colors.text.primary,
         },
         '.script': {
-          color: themes.primary.foreground.enabled,
+          color: themes.primary.foreground.default,
         },
       },
       '&.string, &.number, &.boolean': {},

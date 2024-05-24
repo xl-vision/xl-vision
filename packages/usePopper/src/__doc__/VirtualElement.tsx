@@ -75,7 +75,7 @@ const PortalContent = styled('div')(({ theme }) => {
     padding: 8,
     borderRadius: 4,
     maxWidth: 100,
-    color: colors.getContrastText(colors.background.spotlight).primary,
+    color: colors.text.spotlight,
     backgroundColor: colors.background.spotlight,
   };
 });

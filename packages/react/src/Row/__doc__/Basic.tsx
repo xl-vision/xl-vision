@@ -19,7 +19,7 @@ const Box = styled('div')(
   padding: 0.5rem;
   color: ${theme.colors.themes.primary.text.primary};
   text-align: center;
-  background-color: ${theme.colors.themes.primary.foreground.enabled};
+  background-color: ${theme.colors.themes.primary.foreground.default};
   border-radius: 5px;
 `,
 );

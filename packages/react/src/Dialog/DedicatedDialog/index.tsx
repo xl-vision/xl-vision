@@ -27,14 +27,14 @@ const DedicatedDialog: FC<DedicatedDialogProps> = ({ type, ...others }) => {
     switch (type) {
       case 'success': {
         return {
-          icon: <CheckCircleOutlined style={{ color: colors.themes.success.foreground.enabled }} />,
+          icon: <CheckCircleOutlined style={{ color: colors.themes.success.foreground.default }} />,
           confirmText: locale.Dialog.methods.successText,
           prompt: true,
         };
       }
       case 'error': {
         return {
-          icon: <CloseCircleOutlined style={{ color: colors.themes.error.foreground.enabled }} />,
+          icon: <CloseCircleOutlined style={{ color: colors.themes.error.foreground.default }} />,
           confirmText: locale.Dialog.methods.errorText,
           prompt: true,
         };
@@ -43,7 +43,7 @@ const DedicatedDialog: FC<DedicatedDialogProps> = ({ type, ...others }) => {
         return {
           icon: (
             <ExclamationCircleOutlined
-              style={{ color: colors.themes.warning.foreground.enabled }}
+              style={{ color: colors.themes.warning.foreground.default }}
             />
           ),
           confirmText: locale.Dialog.methods.warningText,
@@ -52,7 +52,7 @@ const DedicatedDialog: FC<DedicatedDialogProps> = ({ type, ...others }) => {
       }
       case 'info': {
         return {
-          icon: <InfoCircleOutlined style={{ color: colors.themes.info.foreground.enabled }} />,
+          icon: <InfoCircleOutlined style={{ color: colors.themes.info.foreground.default }} />,
           confirmText: locale.Dialog.methods.infoText,
           prompt: true,
         };
@@ -61,7 +61,7 @@ const DedicatedDialog: FC<DedicatedDialogProps> = ({ type, ...others }) => {
         return {
           icon: (
             <ExclamationCircleOutlined
-              style={{ color: colors.themes.primary.foreground.enabled }}
+              style={{ color: colors.themes.primary.foreground.default }}
             />
           ),
           confirmText: locale.Dialog.methods.confirm.confirmText,

@@ -8,7 +8,7 @@ const Box = styled('div')(
   position: relative;
   height: 100px;
   background-color: ${theme.colors.divider.primary};
-  color: ${theme.colors.themes.primary.foreground.enabled};
+  color: ${theme.colors.themes.primary.foreground.default};
   font-size: 26px;
   text-align: center;
   line-height: 100px;

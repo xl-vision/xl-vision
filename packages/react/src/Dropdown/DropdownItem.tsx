@@ -53,7 +53,7 @@ const DropdownItemButton = styled(BaseButton, {
     styles.opacity = colors.opacity.disabled;
   } else {
     styles['&:hover'] = {
-      backgroundColor: colors.backgroundAction.hover,
+      backgroundColor: colors.background.hover,
       // color: colors.themes.primary.text.primary,
     };
   }

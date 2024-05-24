@@ -20,7 +20,7 @@ describe('CssBaseline', () => {
           Root(theme) {
             return {
               body: {
-                color: theme.colors.themes.primary.foreground.enabled,
+                color: theme.colors.themes.primary.foreground.default,
               },
             };
           },

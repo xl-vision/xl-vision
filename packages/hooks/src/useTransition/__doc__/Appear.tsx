@@ -11,7 +11,7 @@ const Box = styled('div')(({ theme }) => {
     height: 30,
     borderRadius: '50%',
     marginTop: 20,
-    backgroundColor: theme.colors.themes.primary.foreground.enabled,
+    backgroundColor: theme.colors.themes.primary.foreground.default,
   };
 });
 

@@ -52,7 +52,7 @@ const Root = styled('div')`
         },
         svg: {
           fontSize: 50,
-          color: colors.themes.primary.foreground.enabled,
+          color: colors.themes.primary.foreground.default,
         },
       },
       '.demo': {
@@ -66,7 +66,7 @@ const Root = styled('div')`
         bottom: 0,
         width: '100%',
         margin: 0,
-        backgroundColor: colors.themes.error.foreground.enabled,
+        backgroundColor: colors.themes.error.foreground.default,
         color: colors.themes.error.text.primary,
         overflow: 'auto',
       },

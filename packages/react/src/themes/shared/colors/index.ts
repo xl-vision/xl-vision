@@ -1,5 +1,4 @@
 import { TinyColor, isProduction, warning } from '@xl-vision/utils';
-import createPatterns from './createPatterns';
 import {
   Colors,
   ThemeVariant,
@@ -7,8 +6,8 @@ import {
   TextVariant,
   BackgroundVariant,
   DividerVariant,
-  BackgroundActionVariant,
 } from '../../../ThemeProvider';
+import { Palette } from '../../palettes';
 
 export type ColorInput = {
   background: string;
@@ -19,7 +18,7 @@ export type ColorInput = {
     ripple: number;
   };
   text: string;
-  themes: Record<ThemeVariant, string>;
+  themes: Record<ThemeVariant, Palette>;
   dark?: boolean;
 };
 
@@ -57,12 +56,8 @@ export const createColors = ({
     popper: backgroundTinyColor[method](dark ? 12 : 0).toHexString(true),
     spotlight: '#1e1e1e',
     mask: 'rgba(0, 0, 0, 0.45)',
-  };
-
-  const outputBackgroundAction: Record<BackgroundActionVariant, string> = {
-    enabled: backgroundTinyColor[method](0).toHexString(true),
     hover: backgroundTinyColor[method](6).toHexString(true),
-    focus: backgroundTinyColor[method](10).toHexString(true),
+    focus: backgroundTinyColor[method](6).toHexString(true),
   };
 
   const outputDivider: Record<DividerVariant, string> = {
@@ -105,42 +100,41 @@ export const createColors = ({
 
   Object.keys(themes).forEach((key) => {
     const themeVariant = key as ThemeVariant;
-    const patterns = createPatterns(themes[themeVariant], {
-      theme: dark ? 'dark' : 'default',
-      backgroundColor: background,
-    });
+    const patterns = themes[themeVariant];
 
     outputThemes[themeVariant] = {
       foreground: {
-        enabled: patterns[5],
-        hover: patterns[4],
-        active: patterns[6],
-        focus: patterns[6],
-        dragged: patterns[3],
-        disabled: patterns[2],
+        default: patterns[500],
+        hover: dark ? patterns[400] : patterns[600],
+        active: dark ? patterns[300] : patterns[700],
+        focus: dark ? patterns[400] : patterns[600],
+        dragged: dark ? patterns[700] : patterns[300],
+        disabled: dark ? patterns[800] : patterns[200],
       },
       background: {
-        enabled: patterns[0],
-        hover: patterns[1],
-        focus: patterns[2],
+        default: dark ? patterns[950] : patterns[50],
+        hover: dark ? patterns[900] : patterns[100],
+        focus: dark ? patterns[900] : patterns[100],
       },
       divider: {
-        primary: patterns[3],
-        secondary: patterns[2],
+        default: patterns[500],
+        hover: dark ? patterns[600] : patterns[400],
+        focus: dark ? patterns[600] : patterns[400],
       },
-      text: getContrastText(patterns[5]),
-      outline: new TinyColor(patterns[5]).setAlpha(0.2).toHexString(true),
+      text: getContrastText(patterns[500]),
+      outline: new TinyColor(patterns[500]).setAlpha(0.2).toHexString(true),
     };
   });
 
   return {
-    getContrastText,
     opacity,
-    text: outText,
+    text: {
+      ...outText,
+      spotlight: getContrastText(outputBackground.spotlight).primary,
+    },
     inverseText: outInverseText,
     themes: outputThemes,
     divider: outputDivider,
     background: outputBackground,
-    backgroundAction: outputBackgroundAction,
   };
 };

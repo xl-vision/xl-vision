@@ -38,7 +38,7 @@ const BackTopRoot = styled('div', {
     [`.${rootClassName}__inner`]: {
       fontSize: 24,
       backgroundColor: colors.text.hint,
-      color: colors.background.default,
+      color: colors.background.paper,
       width: 40,
       height: 40,
       display: 'flex',

@@ -42,11 +42,9 @@ const TooltipPopup = styled('div', {
   const { colors, typography, sizes, elevations } = theme;
   const { hasWidth } = styleProps;
 
-  const backgroundColor = colors.background.spotlight;
-
   return {
-    backgroundColor,
-    color: colors.getContrastText(backgroundColor).primary,
+    backgroundColor: colors.background.spotlight,
+    color: colors.text.spotlight,
     padding: '4px 8px',
     borderRadius: sizes.middle.borderRadius,
     boxShadow: elevations[2],
@@ -78,7 +76,7 @@ const TooltipArrow = styled('div', {
 });
 
 const Tooltip = forwardRef<HTMLDivElement, TooltipProps>((props, ref) => {
-  const { colors, clsPrefix } = useTheme();
+  const { clsPrefix } = useTheme();
 
   const {
     content,
@@ -98,7 +96,6 @@ const Tooltip = forwardRef<HTMLDivElement, TooltipProps>((props, ref) => {
 
   const colorStyle = bgColor && {
     backgroundColor: bgColor,
-    color: colors.getContrastText(bgColor).primary,
   };
 
   const popup = (

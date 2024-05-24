@@ -27,24 +27,24 @@ const Notication: FC<NoticationProps> = ({ type, ...others }) => {
     switch (type) {
       case 'success': {
         return {
-          icon: <CheckCircleFilled style={{ color: colors.themes.success.foreground.enabled }} />,
+          icon: <CheckCircleFilled style={{ color: colors.themes.success.foreground.default }} />,
         };
       }
       case 'error': {
         return {
-          icon: <CloseCircleFilled style={{ color: colors.themes.error.foreground.enabled }} />,
+          icon: <CloseCircleFilled style={{ color: colors.themes.error.foreground.default }} />,
         };
       }
       case 'warning': {
         return {
           icon: (
-            <ExclamationCircleFilled style={{ color: colors.themes.warning.foreground.enabled }} />
+            <ExclamationCircleFilled style={{ color: colors.themes.warning.foreground.default }} />
           ),
         };
       }
       case 'info': {
         return {
-          icon: <InfoCircleFilled style={{ color: colors.themes.info.foreground.enabled }} />,
+          icon: <InfoCircleFilled style={{ color: colors.themes.info.foreground.default }} />,
         };
       }
       default: {

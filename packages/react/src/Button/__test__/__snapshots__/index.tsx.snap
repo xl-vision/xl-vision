@@ -151,15 +151,15 @@ exports[`Button Test basic render 1`] = `
 }
 
 .c1:hover {
-  color: #4373e6;
-  border-color: #4373e6;
-  background-color: #c4dcff;
+  color: #2563eb;
+  border-color: #60a5fa;
+  background-color: #dbeafe;
 }
 
 .c1:focus {
-  color: #0e35b3;
-  border-color: #0e35b3;
-  background-color: #c4dcff;
+  color: #2563eb;
+  border-color: #60a5fa;
+  background-color: #dbeafe;
 }
 
 .c4 {
@@ -175,15 +175,15 @@ exports[`Button Test basic render 1`] = `
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #be123c;
+  background-color: #ef4444;
 }
 
 .c4:hover {
-  background-color: #cc3354;
+  background-color: #dc2626;
 }
 
 .c4:focus {
-  background-color: #cc3354;
+  background-color: #dc2626;
 }
 
 .c5 {
@@ -203,13 +203,13 @@ exports[`Button Test basic render 1`] = `
 }
 
 .c5:hover {
-  color: #4373e6;
-  border-color: #4373e6;
+  color: #2563eb;
+  border-color: #60a5fa;
 }
 
 .c5:focus {
-  color: #0e35b3;
-  border-color: #0e35b3;
+  color: #2563eb;
+  border-color: #60a5fa;
 }
 
 .c9 {
@@ -229,15 +229,15 @@ exports[`Button Test basic render 1`] = `
 }
 
 .c9:hover {
-  color: #4373e6;
-  border-color: #4373e6;
-  background-color: #c4dcff;
+  color: #2563eb;
+  border-color: #60a5fa;
+  background-color: #dbeafe;
 }
 
 .c9:focus {
-  color: #0e35b3;
-  border-color: #0e35b3;
-  background-color: #c4dcff;
+  color: #2563eb;
+  border-color: #60a5fa;
+  background-color: #dbeafe;
 }
 
 .c11 {
@@ -259,15 +259,15 @@ exports[`Button Test basic render 1`] = `
 }
 
 .c11:hover {
-  color: #4373e6;
-  border-color: #4373e6;
-  background-color: #c4dcff;
+  color: #2563eb;
+  border-color: #60a5fa;
+  background-color: #dbeafe;
 }
 
 .c11:focus {
-  color: #0e35b3;
-  border-color: #0e35b3;
-  background-color: #c4dcff;
+  color: #2563eb;
+  border-color: #60a5fa;
+  background-color: #dbeafe;
 }
 
 .c13 {
@@ -289,11 +289,11 @@ exports[`Button Test basic render 1`] = `
 }
 
 .c13:hover {
-  background-color: #c4dcff;
+  background-color: #dbeafe;
 }
 
 .c13:focus {
-  background-color: #c4dcff;
+  background-color: #dbeafe;
 }
 
 .c15 {
@@ -314,11 +314,11 @@ exports[`Button Test basic render 1`] = `
 }
 
 .c15:hover {
-  background-color: #c4dcff;
+  background-color: #dbeafe;
 }
 
 .c15:focus {
-  background-color: #c4dcff;
+  background-color: #dbeafe;
 }
 
 .c6 {

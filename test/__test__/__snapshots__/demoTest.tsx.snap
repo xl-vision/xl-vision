@@ -85,15 +85,15 @@ exports[`Demo renders packages/hooks/src/useCssTransition/__doc__/Basic.tsx corr
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c2:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c2:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c0 .demo-appear-active,
@@ -235,15 +235,15 @@ exports[`Demo renders packages/hooks/src/useNotication/__doc__/Basic.tsx correct
 }
 
 .c1:hover {
-  color: #4373e6;
-  border-color: #4373e6;
-  background-color: #c4dcff;
+  color: #2563eb;
+  border-color: #60a5fa;
+  background-color: #dbeafe;
 }
 
 .c1:focus {
-  color: #0e35b3;
-  border-color: #0e35b3;
-  background-color: #c4dcff;
+  color: #2563eb;
+  border-color: #60a5fa;
+  background-color: #dbeafe;
 }
 
 <div>
@@ -353,15 +353,15 @@ exports[`Demo renders packages/hooks/src/useTransition/__doc__/Appear.tsx correc
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c1:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c1:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c4 {
@@ -369,7 +369,7 @@ exports[`Demo renders packages/hooks/src/useTransition/__doc__/Appear.tsx correc
   height: 30px;
   border-radius: 50%;
   margin-top: 20px;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 <div>
@@ -482,15 +482,15 @@ exports[`Demo renders packages/hooks/src/useTransition/__doc__/Basic.tsx correct
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c1:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c1:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 <div>
@@ -605,15 +605,15 @@ exports[`Demo renders packages/react/src/Affix/__doc__/Basic.tsx correctly 1`] =
 }
 
 .c2:hover {
-  color: #4373e6;
-  border-color: #4373e6;
-  background-color: #c4dcff;
+  color: #2563eb;
+  border-color: #60a5fa;
+  background-color: #dbeafe;
 }
 
 .c2:focus {
-  color: #0e35b3;
-  border-color: #0e35b3;
-  background-color: #c4dcff;
+  color: #2563eb;
+  border-color: #60a5fa;
+  background-color: #dbeafe;
 }
 
 .c0 .xl-affix__inner {
@@ -762,15 +762,15 @@ exports[`Demo renders packages/react/src/Affix/__doc__/Change.tsx correctly 1`] 
 }
 
 .c2:hover {
-  color: #4373e6;
-  border-color: #4373e6;
-  background-color: #c4dcff;
+  color: #2563eb;
+  border-color: #60a5fa;
+  background-color: #dbeafe;
 }
 
 .c2:focus {
-  color: #0e35b3;
-  border-color: #0e35b3;
-  background-color: #c4dcff;
+  color: #2563eb;
+  border-color: #60a5fa;
+  background-color: #dbeafe;
 }
 
 .c0 .xl-affix__inner {
@@ -895,15 +895,15 @@ exports[`Demo renders packages/react/src/Affix/__doc__/Container.tsx correctly 1
 }
 
 .c3:hover {
-  color: #4373e6;
-  border-color: #4373e6;
-  background-color: #c4dcff;
+  color: #2563eb;
+  border-color: #60a5fa;
+  background-color: #dbeafe;
 }
 
 .c3:focus {
-  color: #0e35b3;
-  border-color: #0e35b3;
-  background-color: #c4dcff;
+  color: #2563eb;
+  border-color: #60a5fa;
+  background-color: #dbeafe;
 }
 
 .c1 .xl-affix__inner {
@@ -1046,15 +1046,15 @@ exports[`Demo renders packages/react/src/Affix/__doc__/Debug.tsx correctly 1`] =
 }
 
 .c1:hover {
-  color: #4373e6;
-  border-color: #4373e6;
-  background-color: #c4dcff;
+  color: #2563eb;
+  border-color: #60a5fa;
+  background-color: #dbeafe;
 }
 
 .c1:focus {
-  color: #0e35b3;
-  border-color: #0e35b3;
-  background-color: #c4dcff;
+  color: #2563eb;
+  border-color: #60a5fa;
+  background-color: #dbeafe;
 }
 
 .c4 .xl-affix__inner {
@@ -1126,7 +1126,7 @@ exports[`Demo renders packages/react/src/Anchor/__doc__/AffixCn.tsx correctly 1`
 }
 
 .c3:hover {
-  color: #4373e6;
+  color: #2563eb;
 }
 
 <div>
@@ -1243,7 +1243,7 @@ exports[`Demo renders packages/react/src/Anchor/__doc__/AffixEn.tsx correctly 1`
 }
 
 .c3:hover {
-  color: #4373e6;
+  color: #2563eb;
 }
 
 <div>
@@ -1360,7 +1360,7 @@ exports[`Demo renders packages/react/src/Anchor/__doc__/TargetOffsetCn.tsx corre
 }
 
 .c3:hover {
-  color: #4373e6;
+  color: #2563eb;
 }
 
 <div>
@@ -1477,7 +1477,7 @@ exports[`Demo renders packages/react/src/Anchor/__doc__/TargetOffsetEn.tsx corre
 }
 
 .c3:hover {
-  color: #4373e6;
+  color: #2563eb;
 }
 
 <div>
@@ -1594,7 +1594,7 @@ exports[`Demo renders packages/react/src/Anchor/__doc__/UnAffixCn.tsx correctly 
 }
 
 .c3:hover {
-  color: #4373e6;
+  color: #2563eb;
 }
 
 <div>
@@ -1711,7 +1711,7 @@ exports[`Demo renders packages/react/src/Anchor/__doc__/UnAffixEn.tsx correctly 
 }
 
 .c3:hover {
-  color: #4373e6;
+  color: #2563eb;
 }
 
 <div>
@@ -1886,15 +1886,15 @@ exports[`Demo renders packages/react/src/Avatar/__doc__/AutoSize.tsx correctly 1
 }
 
 .c4:hover {
-  color: #4373e6;
-  border-color: #4373e6;
-  background-color: #c4dcff;
+  color: #2563eb;
+  border-color: #60a5fa;
+  background-color: #dbeafe;
 }
 
 .c4:focus {
-  color: #0e35b3;
-  border-color: #0e35b3;
-  background-color: #c4dcff;
+  color: #2563eb;
+  border-color: #60a5fa;
+  background-color: #dbeafe;
 }
 
 .c1 {
@@ -3242,15 +3242,15 @@ exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] 
 }
 
 .c2:hover {
-  color: #4373e6;
-  border-color: #4373e6;
-  background-color: #c4dcff;
+  color: #2563eb;
+  border-color: #60a5fa;
+  background-color: #dbeafe;
 }
 
 .c2:focus {
-  color: #0e35b3;
-  border-color: #0e35b3;
-  background-color: #c4dcff;
+  color: #2563eb;
+  border-color: #60a5fa;
+  background-color: #dbeafe;
 }
 
 .c5 {
@@ -3266,15 +3266,15 @@ exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c5:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c5:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c6 {
@@ -3290,15 +3290,15 @@ exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #57534e;
+  background-color: #737373;
 }
 
 .c6:hover {
-  background-color: #63615d;
+  background-color: #525252;
 }
 
 .c6:focus {
-  background-color: #63615d;
+  background-color: #525252;
 }
 
 .c7 {
@@ -3314,15 +3314,15 @@ exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #be123c;
+  background-color: #ef4444;
 }
 
 .c7:hover {
-  background-color: #cc3354;
+  background-color: #dc2626;
 }
 
 .c7:focus {
-  background-color: #cc3354;
+  background-color: #dc2626;
 }
 
 .c8 {
@@ -3337,16 +3337,16 @@ exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] 
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
-  color: #ffffffe0;
-  background-color: #ea580c;
+  color: #000000e0;
+  background-color: #f59e0b;
 }
 
 .c8:hover {
-  background-color: #f77f34;
+  background-color: #d97706;
 }
 
 .c8:focus {
-  background-color: #f77f34;
+  background-color: #d97706;
 }
 
 .c9 {
@@ -3361,16 +3361,16 @@ exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] 
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
-  color: #ffffffe0;
-  background-color: #15803d;
+  color: #000000e0;
+  background-color: #22c55e;
 }
 
 .c9:hover {
-  background-color: #2d8c4d;
+  background-color: #16a34a;
 }
 
 .c9:focus {
-  background-color: #2d8c4d;
+  background-color: #16a34a;
 }
 
 .c10 {
@@ -3389,13 +3389,13 @@ exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] 
 }
 
 .c10:hover {
-  color: #4373e6;
-  background-color: #c4dcff;
+  color: #2563eb;
+  background-color: #dbeafe;
 }
 
 .c10:focus {
-  color: #0e35b3;
-  background-color: #c4dcff;
+  color: #2563eb;
+  background-color: #dbeafe;
 }
 
 .c11 {
@@ -3411,15 +3411,15 @@ exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   background-color: transparent;
-  color: #1d4ed8;
+  color: #3b82f6;
 }
 
 .c11:hover {
-  background-color: #c4dcff;
+  background-color: #dbeafe;
 }
 
 .c11:focus {
-  background-color: #c4dcff;
+  background-color: #dbeafe;
 }
 
 .c12 {
@@ -3435,15 +3435,15 @@ exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   background-color: transparent;
-  color: #57534e;
+  color: #737373;
 }
 
 .c12:hover {
-  background-color: #8a8781;
+  background-color: #f5f5f5;
 }
 
 .c12:focus {
-  background-color: #8a8781;
+  background-color: #f5f5f5;
 }
 
 .c13 {
@@ -3459,15 +3459,15 @@ exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   background-color: transparent;
-  color: #be123c;
+  color: #ef4444;
 }
 
 .c13:hover {
-  background-color: #f2b1b8;
+  background-color: #fee2e2;
 }
 
 .c13:focus {
-  background-color: #f2b1b8;
+  background-color: #fee2e2;
 }
 
 .c14 {
@@ -3483,15 +3483,15 @@ exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   background-color: transparent;
-  color: #ea580c;
+  color: #f59e0b;
 }
 
 .c14:hover {
-  background-color: #ffd6b0;
+  background-color: #fef3c7;
 }
 
 .c14:focus {
-  background-color: #ffd6b0;
+  background-color: #fef3c7;
 }
 
 .c15 {
@@ -3507,15 +3507,15 @@ exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   background-color: transparent;
-  color: #15803d;
+  color: #22c55e;
 }
 
 .c15:hover {
-  background-color: #8fb397;
+  background-color: #dcfce7;
 }
 
 .c15:focus {
-  background-color: #8fb397;
+  background-color: #dcfce7;
 }
 
 .c16 {
@@ -3535,13 +3535,13 @@ exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] 
 }
 
 .c16:hover {
-  color: #4373e6;
-  border-color: #4373e6;
+  color: #2563eb;
+  border-color: #60a5fa;
 }
 
 .c16:focus {
-  color: #0e35b3;
-  border-color: #0e35b3;
+  color: #2563eb;
+  border-color: #60a5fa;
 }
 
 .c17 {
@@ -3557,18 +3557,18 @@ exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 5px 11px;
   background-color: transparent;
-  color: #1d4ed8;
-  border: 1px solid #1d4ed8;
+  color: #3b82f6;
+  border: 1px solid #3b82f6;
 }
 
 .c17:hover {
-  background-color: #c4dcff;
-  border-color: #4373e6;
+  background-color: #dbeafe;
+  border-color: #60a5fa;
 }
 
 .c17:focus {
-  background-color: #c4dcff;
-  border-color: #0e35b3;
+  background-color: #dbeafe;
+  border-color: #60a5fa;
 }
 
 .c18 {
@@ -3584,18 +3584,18 @@ exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 5px 11px;
   background-color: transparent;
-  color: #57534e;
-  border: 1px solid #57534e;
+  color: #737373;
+  border: 1px solid #737373;
 }
 
 .c18:hover {
-  background-color: #8a8781;
-  border-color: #63615d;
+  background-color: #f5f5f5;
+  border-color: #a3a3a3;
 }
 
 .c18:focus {
-  background-color: #8a8781;
-  border-color: #302d29;
+  background-color: #f5f5f5;
+  border-color: #a3a3a3;
 }
 
 .c19 {
@@ -3611,18 +3611,18 @@ exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 5px 11px;
   background-color: transparent;
-  color: #be123c;
-  border: 1px solid #be123c;
+  color: #ef4444;
+  border: 1px solid #ef4444;
 }
 
 .c19:hover {
-  background-color: #f2b1b8;
-  border-color: #cc3354;
+  background-color: #fee2e2;
+  border-color: #f87171;
 }
 
 .c19:focus {
-  background-color: #f2b1b8;
-  border-color: #990630;
+  background-color: #fee2e2;
+  border-color: #f87171;
 }
 
 .c20 {
@@ -3638,18 +3638,18 @@ exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 5px 11px;
   background-color: transparent;
-  color: #ea580c;
-  border: 1px solid #ea580c;
+  color: #f59e0b;
+  border: 1px solid #f59e0b;
 }
 
 .c20:hover {
-  background-color: #ffd6b0;
-  border-color: #f77f34;
+  background-color: #fef3c7;
+  border-color: #fbbf24;
 }
 
 .c20:focus {
-  background-color: #ffd6b0;
-  border-color: #c43e00;
+  background-color: #fef3c7;
+  border-color: #fbbf24;
 }
 
 .c21 {
@@ -3665,18 +3665,18 @@ exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 5px 11px;
   background-color: transparent;
-  color: #15803d;
-  border: 1px solid #15803d;
+  color: #22c55e;
+  border: 1px solid #22c55e;
 }
 
 .c21:hover {
-  background-color: #8fb397;
-  border-color: #2d8c4d;
+  background-color: #dcfce7;
+  border-color: #4ade80;
 }
 
 .c21:focus {
-  background-color: #8fb397;
-  border-color: #0a592a;
+  background-color: #dcfce7;
+  border-color: #4ade80;
 }
 
 .c0 button,
@@ -4081,15 +4081,15 @@ exports[`Demo renders packages/react/src/Button/__doc__/DisableRipple.tsx correc
 }
 
 .c2:hover {
-  color: #4373e6;
-  border-color: #4373e6;
-  background-color: #c4dcff;
+  color: #2563eb;
+  border-color: #60a5fa;
+  background-color: #dbeafe;
 }
 
 .c2:focus {
-  color: #0e35b3;
-  border-color: #0e35b3;
-  background-color: #c4dcff;
+  color: #2563eb;
+  border-color: #60a5fa;
+  background-color: #dbeafe;
 }
 
 .c5 {
@@ -4105,15 +4105,15 @@ exports[`Demo renders packages/react/src/Button/__doc__/DisableRipple.tsx correc
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   background-color: transparent;
-  color: #1d4ed8;
+  color: #3b82f6;
 }
 
 .c5:hover {
-  background-color: #c4dcff;
+  background-color: #dbeafe;
 }
 
 .c5:focus {
-  background-color: #c4dcff;
+  background-color: #dbeafe;
 }
 
 .c6 {
@@ -4129,15 +4129,15 @@ exports[`Demo renders packages/react/src/Button/__doc__/DisableRipple.tsx correc
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   background-color: transparent;
-  color: #be123c;
+  color: #ef4444;
 }
 
 .c6:hover {
-  background-color: #f2b1b8;
+  background-color: #fee2e2;
 }
 
 .c6:focus {
-  background-color: #f2b1b8;
+  background-color: #fee2e2;
 }
 
 .c7 {
@@ -4153,18 +4153,18 @@ exports[`Demo renders packages/react/src/Button/__doc__/DisableRipple.tsx correc
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 5px 11px;
   background-color: transparent;
-  color: #ea580c;
-  border: 1px solid #ea580c;
+  color: #f59e0b;
+  border: 1px solid #f59e0b;
 }
 
 .c7:hover {
-  background-color: #ffd6b0;
-  border-color: #f77f34;
+  background-color: #fef3c7;
+  border-color: #fbbf24;
 }
 
 .c7:focus {
-  background-color: #ffd6b0;
-  border-color: #c43e00;
+  background-color: #fef3c7;
+  border-color: #fbbf24;
 }
 
 .c0 button,
@@ -4345,11 +4345,11 @@ exports[`Demo renders packages/react/src/Button/__doc__/Disabled.tsx correctly 1
 }
 
 .c2:hover {
-  background-color: #c4dcff;
+  background-color: #dbeafe;
 }
 
 .c2:focus {
-  background-color: #c4dcff;
+  background-color: #dbeafe;
 }
 
 .c5 {
@@ -4366,7 +4366,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Disabled.tsx correctly 1
   padding: 6px 12px;
   opacity: 0.3;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c6 {
@@ -4383,7 +4383,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Disabled.tsx correctly 1
   padding: 6px 12px;
   opacity: 0.3;
   color: #ffffffe0;
-  background-color: #be123c;
+  background-color: #ef4444;
 }
 
 .c7 {
@@ -4399,8 +4399,8 @@ exports[`Demo renders packages/react/src/Button/__doc__/Disabled.tsx correctly 1
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   opacity: 0.3;
-  color: #ffffffe0;
-  background-color: #ea580c;
+  color: #000000e0;
+  background-color: #f59e0b;
 }
 
 .c8 {
@@ -4627,16 +4627,16 @@ exports[`Demo renders packages/react/src/Button/__doc__/EnableElevation.tsx corr
 
 .c2:hover {
   box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12);
-  color: #4373e6;
-  border-color: #4373e6;
-  background-color: #c4dcff;
+  color: #2563eb;
+  border-color: #60a5fa;
+  background-color: #dbeafe;
 }
 
 .c2:focus {
   box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12);
-  color: #0e35b3;
-  border-color: #0e35b3;
-  background-color: #c4dcff;
+  color: #2563eb;
+  border-color: #60a5fa;
+  background-color: #dbeafe;
 }
 
 .c5 {
@@ -4653,17 +4653,17 @@ exports[`Demo renders packages/react/src/Button/__doc__/EnableElevation.tsx corr
   padding: 6px 12px;
   box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c5:hover {
   box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12);
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c5:focus {
   box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12);
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c6 {
@@ -4680,17 +4680,17 @@ exports[`Demo renders packages/react/src/Button/__doc__/EnableElevation.tsx corr
   padding: 6px 12px;
   box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
   color: #ffffffe0;
-  background-color: #be123c;
+  background-color: #ef4444;
 }
 
 .c6:hover {
   box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12);
-  background-color: #cc3354;
+  background-color: #dc2626;
 }
 
 .c6:focus {
   box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12);
-  background-color: #cc3354;
+  background-color: #dc2626;
 }
 
 .c7 {
@@ -4706,18 +4706,18 @@ exports[`Demo renders packages/react/src/Button/__doc__/EnableElevation.tsx corr
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
-  color: #ffffffe0;
-  background-color: #ea580c;
+  color: #000000e0;
+  background-color: #f59e0b;
 }
 
 .c7:hover {
   box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12);
-  background-color: #f77f34;
+  background-color: #d97706;
 }
 
 .c7:focus {
   box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12);
-  background-color: #f77f34;
+  background-color: #d97706;
 }
 
 .c0 button,
@@ -4940,15 +4940,15 @@ exports[`Demo renders packages/react/src/Button/__doc__/Link.tsx correctly 1`] =
 }
 
 .c2:hover {
-  color: #4373e6;
-  border-color: #4373e6;
-  background-color: #c4dcff;
+  color: #2563eb;
+  border-color: #60a5fa;
+  background-color: #dbeafe;
 }
 
 .c2:focus {
-  color: #0e35b3;
-  border-color: #0e35b3;
-  background-color: #c4dcff;
+  color: #2563eb;
+  border-color: #60a5fa;
+  background-color: #dbeafe;
 }
 
 .c5 {
@@ -4964,15 +4964,15 @@ exports[`Demo renders packages/react/src/Button/__doc__/Link.tsx correctly 1`] =
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   background-color: transparent;
-  color: #1d4ed8;
+  color: #3b82f6;
 }
 
 .c5:hover {
-  background-color: #c4dcff;
+  background-color: #dbeafe;
 }
 
 .c5:focus {
-  background-color: #c4dcff;
+  background-color: #dbeafe;
 }
 
 .c6 {
@@ -4988,15 +4988,15 @@ exports[`Demo renders packages/react/src/Button/__doc__/Link.tsx correctly 1`] =
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   background-color: transparent;
-  color: #be123c;
+  color: #ef4444;
 }
 
 .c6:hover {
-  background-color: #f2b1b8;
+  background-color: #fee2e2;
 }
 
 .c6:focus {
-  background-color: #f2b1b8;
+  background-color: #fee2e2;
 }
 
 .c7 {
@@ -5012,18 +5012,18 @@ exports[`Demo renders packages/react/src/Button/__doc__/Link.tsx correctly 1`] =
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 5px 11px;
   background-color: transparent;
-  color: #ea580c;
-  border: 1px solid #ea580c;
+  color: #f59e0b;
+  border: 1px solid #f59e0b;
 }
 
 .c7:hover {
-  background-color: #ffd6b0;
-  border-color: #f77f34;
+  background-color: #fef3c7;
+  border-color: #fbbf24;
 }
 
 .c7:focus {
-  background-color: #ffd6b0;
-  border-color: #c43e00;
+  background-color: #fef3c7;
+  border-color: #fbbf24;
 }
 
 .c9 {
@@ -5040,7 +5040,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Link.tsx correctly 1`] =
   padding: 6px 12px;
   opacity: 0.3;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c0 button,
@@ -5243,15 +5243,15 @@ exports[`Demo renders packages/react/src/Button/__doc__/Loading.tsx correctly 1`
 }
 
 .c2:hover {
-  color: #4373e6;
-  border-color: #4373e6;
-  background-color: #c4dcff;
+  color: #2563eb;
+  border-color: #60a5fa;
+  background-color: #dbeafe;
 }
 
 .c2:focus {
-  color: #0e35b3;
-  border-color: #0e35b3;
-  background-color: #c4dcff;
+  color: #2563eb;
+  border-color: #60a5fa;
+  background-color: #dbeafe;
 }
 
 .c5 {
@@ -5267,15 +5267,15 @@ exports[`Demo renders packages/react/src/Button/__doc__/Loading.tsx correctly 1`
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   background-color: transparent;
-  color: #1d4ed8;
+  color: #3b82f6;
 }
 
 .c5:hover {
-  background-color: #c4dcff;
+  background-color: #dbeafe;
 }
 
 .c5:focus {
-  background-color: #c4dcff;
+  background-color: #dbeafe;
 }
 
 .c8 {
@@ -5291,15 +5291,15 @@ exports[`Demo renders packages/react/src/Button/__doc__/Loading.tsx correctly 1`
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   background-color: transparent;
-  color: #be123c;
+  color: #ef4444;
 }
 
 .c8:hover {
-  background-color: #f2b1b8;
+  background-color: #fee2e2;
 }
 
 .c8:focus {
-  background-color: #f2b1b8;
+  background-color: #fee2e2;
 }
 
 .c9 {
@@ -5315,18 +5315,18 @@ exports[`Demo renders packages/react/src/Button/__doc__/Loading.tsx correctly 1`
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 5px 11px;
   background-color: transparent;
-  color: #ea580c;
-  border: 1px solid #ea580c;
+  color: #f59e0b;
+  border: 1px solid #f59e0b;
 }
 
 .c9:hover {
-  background-color: #ffd6b0;
-  border-color: #f77f34;
+  background-color: #fef3c7;
+  border-color: #fbbf24;
 }
 
 .c9:focus {
-  background-color: #ffd6b0;
-  border-color: #c43e00;
+  background-color: #fef3c7;
+  border-color: #fbbf24;
 }
 
 .c6 {
@@ -5535,15 +5535,15 @@ exports[`Demo renders packages/react/src/Button/__doc__/Long.tsx correctly 1`] =
 }
 
 .c2:hover {
-  color: #4373e6;
-  border-color: #4373e6;
-  background-color: #c4dcff;
+  color: #2563eb;
+  border-color: #60a5fa;
+  background-color: #dbeafe;
 }
 
 .c2:focus {
-  color: #0e35b3;
-  border-color: #0e35b3;
-  background-color: #c4dcff;
+  color: #2563eb;
+  border-color: #60a5fa;
+  background-color: #dbeafe;
 }
 
 .c5 {
@@ -5560,15 +5560,15 @@ exports[`Demo renders packages/react/src/Button/__doc__/Long.tsx correctly 1`] =
   width: 100%;
   padding: 6px 12px;
   background-color: transparent;
-  color: #1d4ed8;
+  color: #3b82f6;
 }
 
 .c5:hover {
-  background-color: #c4dcff;
+  background-color: #dbeafe;
 }
 
 .c5:focus {
-  background-color: #c4dcff;
+  background-color: #dbeafe;
 }
 
 .c6 {
@@ -5584,16 +5584,16 @@ exports[`Demo renders packages/react/src/Button/__doc__/Long.tsx correctly 1`] =
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   width: 100%;
   padding: 6px 12px;
-  color: #ffffffe0;
-  background-color: #ea580c;
+  color: #000000e0;
+  background-color: #f59e0b;
 }
 
 .c6:hover {
-  background-color: #f77f34;
+  background-color: #d97706;
 }
 
 .c6:focus {
-  background-color: #f77f34;
+  background-color: #d97706;
 }
 
 .c7 {
@@ -5610,15 +5610,15 @@ exports[`Demo renders packages/react/src/Button/__doc__/Long.tsx correctly 1`] =
   width: 100%;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c7:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c7:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c8 {
@@ -5826,15 +5826,15 @@ exports[`Demo renders packages/react/src/Button/__doc__/Size.tsx correctly 1`] =
 }
 
 .c2:hover {
-  color: #4373e6;
-  border-color: #4373e6;
-  background-color: #c4dcff;
+  color: #2563eb;
+  border-color: #60a5fa;
+  background-color: #dbeafe;
 }
 
 .c2:focus {
-  color: #0e35b3;
-  border-color: #0e35b3;
-  background-color: #c4dcff;
+  color: #2563eb;
+  border-color: #60a5fa;
+  background-color: #dbeafe;
 }
 
 .c5 {
@@ -5850,15 +5850,15 @@ exports[`Demo renders packages/react/src/Button/__doc__/Size.tsx correctly 1`] =
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   background-color: transparent;
-  color: #1d4ed8;
+  color: #3b82f6;
 }
 
 .c5:hover {
-  background-color: #c4dcff;
+  background-color: #dbeafe;
 }
 
 .c5:focus {
-  background-color: #c4dcff;
+  background-color: #dbeafe;
 }
 
 .c6 {
@@ -5874,15 +5874,15 @@ exports[`Demo renders packages/react/src/Button/__doc__/Size.tsx correctly 1`] =
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   background-color: transparent;
-  color: #be123c;
+  color: #ef4444;
 }
 
 .c6:hover {
-  background-color: #f2b1b8;
+  background-color: #fee2e2;
 }
 
 .c6:focus {
-  background-color: #f2b1b8;
+  background-color: #fee2e2;
 }
 
 .c7 {
@@ -5897,16 +5897,16 @@ exports[`Demo renders packages/react/src/Button/__doc__/Size.tsx correctly 1`] =
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
-  color: #ffffffe0;
-  background-color: #ea580c;
+  color: #000000e0;
+  background-color: #f59e0b;
 }
 
 .c7:hover {
-  background-color: #f77f34;
+  background-color: #d97706;
 }
 
 .c7:focus {
-  background-color: #f77f34;
+  background-color: #d97706;
 }
 
 .c8 {
@@ -5922,15 +5922,15 @@ exports[`Demo renders packages/react/src/Button/__doc__/Size.tsx correctly 1`] =
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c8:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c8:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c9 {
@@ -5945,15 +5945,15 @@ exports[`Demo renders packages/react/src/Button/__doc__/Size.tsx correctly 1`] =
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 8.450000000000001px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c9:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c9:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c12 {
@@ -5968,15 +5968,15 @@ exports[`Demo renders packages/react/src/Button/__doc__/Size.tsx correctly 1`] =
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 8.450000000000001px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c12:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c12:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c10 {
@@ -6241,15 +6241,15 @@ exports[`Demo renders packages/react/src/CollapseTransition/__doc__/Basic.tsx co
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c1:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c1:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 <div>
@@ -6361,15 +6361,15 @@ exports[`Demo renders packages/react/src/CollapseTransition/__doc__/Horizontal.t
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c1:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c1:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 <div>
@@ -6481,15 +6481,15 @@ exports[`Demo renders packages/react/src/Dialog/__doc__/Basic.tsx correctly 1`] 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c1:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c1:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 <div>
@@ -6597,15 +6597,15 @@ exports[`Demo renders packages/react/src/Dialog/__doc__/Custom.tsx correctly 1`]
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c1:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c1:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 <div>
@@ -6713,15 +6713,15 @@ exports[`Demo renders packages/react/src/Dialog/__doc__/Methods.tsx correctly 1`
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c1:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c1:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 <div>
@@ -6829,15 +6829,15 @@ exports[`Demo renders packages/react/src/Dialog/__doc__/Promise.tsx correctly 1`
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c1:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c1:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 <div>
@@ -6945,15 +6945,15 @@ exports[`Demo renders packages/react/src/Dialog/__doc__/Prompt.tsx correctly 1`]
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c1:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c1:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 <div>
@@ -7061,15 +7061,15 @@ exports[`Demo renders packages/react/src/Dialog/__doc__/Tips.tsx correctly 1`] =
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c1:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c1:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 <div>
@@ -7241,15 +7241,15 @@ exports[`Demo renders packages/react/src/Dialog/__doc__/UseDialog.tsx correctly 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c1:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c1:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 <div>
@@ -7421,15 +7421,15 @@ exports[`Demo renders packages/react/src/Dialog/__doc__/Width.tsx correctly 1`] 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c1:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c1:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 <div>
@@ -7537,15 +7537,15 @@ exports[`Demo renders packages/react/src/Dropdown/__doc__/Advance.tsx correctly 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c1:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c1:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 <div>
@@ -7653,15 +7653,15 @@ exports[`Demo renders packages/react/src/Dropdown/__doc__/Basic.tsx correctly 1`
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c1:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c1:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 <div>
@@ -7769,15 +7769,15 @@ exports[`Demo renders packages/react/src/Dropdown/__doc__/Cascade.tsx correctly 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c1:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c1:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 <div>
@@ -7867,7 +7867,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/Addon.tsx correctly 1`] =
 }
 
 .c2:hover {
-  border-color: #4373e6;
+  border-color: #60a5fa;
 }
 
 .c3 {
@@ -8005,7 +8005,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/Basic.tsx correctly 1`] =
 }
 
 .c1:hover {
-  border-color: #4373e6;
+  border-color: #60a5fa;
 }
 
 .c2 {
@@ -8110,7 +8110,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/Clearable.tsx correctly 1
 }
 
 .c1:hover {
-  border-color: #4373e6;
+  border-color: #60a5fa;
 }
 
 .c2 {
@@ -8258,7 +8258,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/DebugSuffix.tsx correctly
 }
 
 .c1:hover {
-  border-color: #4373e6;
+  border-color: #60a5fa;
 }
 
 .c2 {
@@ -8443,15 +8443,15 @@ exports[`Demo renders packages/react/src/Input/__doc__/Focus.tsx correctly 1`] =
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c4:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c4:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c0 {
@@ -8490,7 +8490,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/Focus.tsx correctly 1`] =
 }
 
 .c1:hover {
-  border-color: #4373e6;
+  border-color: #60a5fa;
 }
 
 .c2 {
@@ -8651,15 +8651,15 @@ exports[`Demo renders packages/react/src/Input/__doc__/Group.tsx correctly 1`] =
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 4px 10px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c6:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c6:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c13 {
@@ -8675,15 +8675,15 @@ exports[`Demo renders packages/react/src/Input/__doc__/Group.tsx correctly 1`] =
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c13:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c13:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c18 {
@@ -8699,15 +8699,15 @@ exports[`Demo renders packages/react/src/Input/__doc__/Group.tsx correctly 1`] =
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 8px 22px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c18:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c18:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c1 {
@@ -8806,7 +8806,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/Group.tsx correctly 1`] =
 }
 
 .c3:hover {
-  border-color: #4373e6;
+  border-color: #60a5fa;
 }
 
 .c12 {
@@ -8833,7 +8833,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/Group.tsx correctly 1`] =
 }
 
 .c12:hover {
-  border-color: #4373e6;
+  border-color: #60a5fa;
 }
 
 .c17 {
@@ -8860,7 +8860,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/Group.tsx correctly 1`] =
 }
 
 .c17:hover {
-  border-color: #4373e6;
+  border-color: #60a5fa;
 }
 
 .c4 {
@@ -9181,7 +9181,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/Password.tsx correctly 1`
 }
 
 .c1:hover {
-  border-color: #4373e6;
+  border-color: #60a5fa;
 }
 
 .c2 {
@@ -9350,7 +9350,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/PrefixAndSuffix.tsx corre
 }
 
 .c2:hover {
-  border-color: #4373e6;
+  border-color: #60a5fa;
 }
 
 .c5 {
@@ -9544,7 +9544,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/ShowCount.tsx correctly 1
 }
 
 .c1:hover {
-  border-color: #4373e6;
+  border-color: #60a5fa;
 }
 
 .c2 {
@@ -9730,7 +9730,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/Size.tsx correctly 1`] = 
 }
 
 .c1:hover {
-  border-color: #4373e6;
+  border-color: #60a5fa;
 }
 
 .c4 {
@@ -9757,7 +9757,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/Size.tsx correctly 1`] = 
 }
 
 .c4:hover {
-  border-color: #4373e6;
+  border-color: #60a5fa;
 }
 
 .c6 {
@@ -9784,7 +9784,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/Size.tsx correctly 1`] = 
 }
 
 .c6:hover {
-  border-color: #4373e6;
+  border-color: #60a5fa;
 }
 
 .c2 {
@@ -10095,15 +10095,15 @@ exports[`Demo renders packages/react/src/Message/__doc__/Basic.tsx correctly 1`]
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #57534e;
+  background-color: #737373;
 }
 
 .c2:hover {
-  background-color: #63615d;
+  background-color: #525252;
 }
 
 .c2:focus {
-  background-color: #63615d;
+  background-color: #525252;
 }
 
 .c5 {
@@ -10118,16 +10118,16 @@ exports[`Demo renders packages/react/src/Message/__doc__/Basic.tsx correctly 1`]
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
-  color: #ffffffe0;
-  background-color: #ea580c;
+  color: #000000e0;
+  background-color: #f59e0b;
 }
 
 .c5:hover {
-  background-color: #f77f34;
+  background-color: #d97706;
 }
 
 .c5:focus {
-  background-color: #f77f34;
+  background-color: #d97706;
 }
 
 .c6 {
@@ -10143,15 +10143,15 @@ exports[`Demo renders packages/react/src/Message/__doc__/Basic.tsx correctly 1`]
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #be123c;
+  background-color: #ef4444;
 }
 
 .c6:hover {
-  background-color: #cc3354;
+  background-color: #dc2626;
 }
 
 .c6:focus {
-  background-color: #cc3354;
+  background-color: #dc2626;
 }
 
 .c7 {
@@ -10166,16 +10166,16 @@ exports[`Demo renders packages/react/src/Message/__doc__/Basic.tsx correctly 1`]
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
-  color: #ffffffe0;
-  background-color: #15803d;
+  color: #000000e0;
+  background-color: #22c55e;
 }
 
 .c7:hover {
-  background-color: #2d8c4d;
+  background-color: #16a34a;
 }
 
 .c7:focus {
-  background-color: #2d8c4d;
+  background-color: #16a34a;
 }
 
 .c8 {
@@ -10191,15 +10191,15 @@ exports[`Demo renders packages/react/src/Message/__doc__/Basic.tsx correctly 1`]
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c8:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c8:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c0 >* {
@@ -10379,15 +10379,15 @@ exports[`Demo renders packages/react/src/Message/__doc__/DebugMethod.tsx correct
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #57534e;
+  background-color: #737373;
 }
 
 .c2:hover {
-  background-color: #63615d;
+  background-color: #525252;
 }
 
 .c2:focus {
-  background-color: #63615d;
+  background-color: #525252;
 }
 
 .c0 >* {
@@ -10503,15 +10503,15 @@ exports[`Demo renders packages/react/src/Message/__doc__/MaxCount.tsx correctly 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #57534e;
+  background-color: #737373;
 }
 
 .c2:hover {
-  background-color: #63615d;
+  background-color: #525252;
 }
 
 .c2:focus {
-  background-color: #63615d;
+  background-color: #525252;
 }
 
 .c0 >* {
@@ -10627,15 +10627,15 @@ exports[`Demo renders packages/react/src/Message/__doc__/Method.tsx correctly 1`
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #57534e;
+  background-color: #737373;
 }
 
 .c2:hover {
-  background-color: #63615d;
+  background-color: #525252;
 }
 
 .c2:focus {
-  background-color: #63615d;
+  background-color: #525252;
 }
 
 .c5 {
@@ -10650,16 +10650,16 @@ exports[`Demo renders packages/react/src/Message/__doc__/Method.tsx correctly 1`
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
-  color: #ffffffe0;
-  background-color: #ea580c;
+  color: #000000e0;
+  background-color: #f59e0b;
 }
 
 .c5:hover {
-  background-color: #f77f34;
+  background-color: #d97706;
 }
 
 .c5:focus {
-  background-color: #f77f34;
+  background-color: #d97706;
 }
 
 .c6 {
@@ -10675,15 +10675,15 @@ exports[`Demo renders packages/react/src/Message/__doc__/Method.tsx correctly 1`
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #be123c;
+  background-color: #ef4444;
 }
 
 .c6:hover {
-  background-color: #cc3354;
+  background-color: #dc2626;
 }
 
 .c6:focus {
-  background-color: #cc3354;
+  background-color: #dc2626;
 }
 
 .c7 {
@@ -10698,16 +10698,16 @@ exports[`Demo renders packages/react/src/Message/__doc__/Method.tsx correctly 1`
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
-  color: #ffffffe0;
-  background-color: #15803d;
+  color: #000000e0;
+  background-color: #22c55e;
 }
 
 .c7:hover {
-  background-color: #2d8c4d;
+  background-color: #16a34a;
 }
 
 .c7:focus {
-  background-color: #2d8c4d;
+  background-color: #16a34a;
 }
 
 .c8 {
@@ -10723,15 +10723,15 @@ exports[`Demo renders packages/react/src/Message/__doc__/Method.tsx correctly 1`
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c8:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c8:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c0 >* {
@@ -10911,15 +10911,15 @@ exports[`Demo renders packages/react/src/Message/__doc__/Promise.tsx correctly 1
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #57534e;
+  background-color: #737373;
 }
 
 .c2:hover {
-  background-color: #63615d;
+  background-color: #525252;
 }
 
 .c2:focus {
-  background-color: #63615d;
+  background-color: #525252;
 }
 
 .c0 >* {
@@ -11035,15 +11035,15 @@ exports[`Demo renders packages/react/src/Message/__doc__/ShowClose.tsx correctly
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #57534e;
+  background-color: #737373;
 }
 
 .c2:hover {
-  background-color: #63615d;
+  background-color: #525252;
 }
 
 .c2:focus {
-  background-color: #63615d;
+  background-color: #525252;
 }
 
 .c0 >* {
@@ -11159,15 +11159,15 @@ exports[`Demo renders packages/react/src/Message/__doc__/Update.tsx correctly 1`
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #57534e;
+  background-color: #737373;
 }
 
 .c2:hover {
-  background-color: #63615d;
+  background-color: #525252;
 }
 
 .c2:focus {
-  background-color: #63615d;
+  background-color: #525252;
 }
 
 .c0 >* {
@@ -11283,15 +11283,15 @@ exports[`Demo renders packages/react/src/Modal/__doc__/Basic.tsx correctly 1`] =
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c1:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c1:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 <div>
@@ -11399,15 +11399,15 @@ exports[`Demo renders packages/react/src/Modal/__doc__/EscClosable.tsx correctly
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c1:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c1:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 <div>
@@ -11515,15 +11515,15 @@ exports[`Demo renders packages/react/src/Modal/__doc__/HideMask.tsx correctly 1`
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c1:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c1:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 <div>
@@ -11631,15 +11631,15 @@ exports[`Demo renders packages/react/src/Modal/__doc__/MaskClosable.tsx correctl
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c1:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c1:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 <div>
@@ -11747,15 +11747,15 @@ exports[`Demo renders packages/react/src/Modal/__doc__/Nest.tsx correctly 1`] = 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c1:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c1:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 <div>
@@ -11863,15 +11863,15 @@ exports[`Demo renders packages/react/src/Modal/__doc__/Shortcut.tsx correctly 1`
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c1:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c1:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 <div>
@@ -11979,15 +11979,15 @@ exports[`Demo renders packages/react/src/Notication/__doc__/Basic.tsx correctly 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #57534e;
+  background-color: #737373;
 }
 
 .c2:hover {
-  background-color: #63615d;
+  background-color: #525252;
 }
 
 .c2:focus {
-  background-color: #63615d;
+  background-color: #525252;
 }
 
 .c5 {
@@ -12002,16 +12002,16 @@ exports[`Demo renders packages/react/src/Notication/__doc__/Basic.tsx correctly 
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
-  color: #ffffffe0;
-  background-color: #ea580c;
+  color: #000000e0;
+  background-color: #f59e0b;
 }
 
 .c5:hover {
-  background-color: #f77f34;
+  background-color: #d97706;
 }
 
 .c5:focus {
-  background-color: #f77f34;
+  background-color: #d97706;
 }
 
 .c6 {
@@ -12027,15 +12027,15 @@ exports[`Demo renders packages/react/src/Notication/__doc__/Basic.tsx correctly 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #be123c;
+  background-color: #ef4444;
 }
 
 .c6:hover {
-  background-color: #cc3354;
+  background-color: #dc2626;
 }
 
 .c6:focus {
-  background-color: #cc3354;
+  background-color: #dc2626;
 }
 
 .c7 {
@@ -12050,16 +12050,16 @@ exports[`Demo renders packages/react/src/Notication/__doc__/Basic.tsx correctly 
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
-  color: #ffffffe0;
-  background-color: #15803d;
+  color: #000000e0;
+  background-color: #22c55e;
 }
 
 .c7:hover {
-  background-color: #2d8c4d;
+  background-color: #16a34a;
 }
 
 .c7:focus {
-  background-color: #2d8c4d;
+  background-color: #16a34a;
 }
 
 .c0 >* {
@@ -12223,15 +12223,15 @@ exports[`Demo renders packages/react/src/Notication/__doc__/DebugMethod.tsx corr
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #57534e;
+  background-color: #737373;
 }
 
 .c2:hover {
-  background-color: #63615d;
+  background-color: #525252;
 }
 
 .c2:focus {
-  background-color: #63615d;
+  background-color: #525252;
 }
 
 .c0 >* {
@@ -12347,15 +12347,15 @@ exports[`Demo renders packages/react/src/Notication/__doc__/Footer.tsx correctly
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #57534e;
+  background-color: #737373;
 }
 
 .c2:hover {
-  background-color: #63615d;
+  background-color: #525252;
 }
 
 .c2:focus {
-  background-color: #63615d;
+  background-color: #525252;
 }
 
 .c0 >* {
@@ -12471,15 +12471,15 @@ exports[`Demo renders packages/react/src/Notication/__doc__/HideClose.tsx correc
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #57534e;
+  background-color: #737373;
 }
 
 .c2:hover {
-  background-color: #63615d;
+  background-color: #525252;
 }
 
 .c2:focus {
-  background-color: #63615d;
+  background-color: #525252;
 }
 
 .c0 >* {
@@ -12595,15 +12595,15 @@ exports[`Demo renders packages/react/src/Notication/__doc__/MaxCount.tsx correct
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #57534e;
+  background-color: #737373;
 }
 
 .c2:hover {
-  background-color: #63615d;
+  background-color: #525252;
 }
 
 .c2:focus {
-  background-color: #63615d;
+  background-color: #525252;
 }
 
 .c0 >* {
@@ -12719,15 +12719,15 @@ exports[`Demo renders packages/react/src/Notication/__doc__/Method.tsx correctly
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #57534e;
+  background-color: #737373;
 }
 
 .c2:hover {
-  background-color: #63615d;
+  background-color: #525252;
 }
 
 .c2:focus {
-  background-color: #63615d;
+  background-color: #525252;
 }
 
 .c5 {
@@ -12742,16 +12742,16 @@ exports[`Demo renders packages/react/src/Notication/__doc__/Method.tsx correctly
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
-  color: #ffffffe0;
-  background-color: #ea580c;
+  color: #000000e0;
+  background-color: #f59e0b;
 }
 
 .c5:hover {
-  background-color: #f77f34;
+  background-color: #d97706;
 }
 
 .c5:focus {
-  background-color: #f77f34;
+  background-color: #d97706;
 }
 
 .c6 {
@@ -12767,15 +12767,15 @@ exports[`Demo renders packages/react/src/Notication/__doc__/Method.tsx correctly
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #be123c;
+  background-color: #ef4444;
 }
 
 .c6:hover {
-  background-color: #cc3354;
+  background-color: #dc2626;
 }
 
 .c6:focus {
-  background-color: #cc3354;
+  background-color: #dc2626;
 }
 
 .c7 {
@@ -12790,16 +12790,16 @@ exports[`Demo renders packages/react/src/Notication/__doc__/Method.tsx correctly
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
-  color: #ffffffe0;
-  background-color: #15803d;
+  color: #000000e0;
+  background-color: #22c55e;
 }
 
 .c7:hover {
-  background-color: #2d8c4d;
+  background-color: #16a34a;
 }
 
 .c7:focus {
-  background-color: #2d8c4d;
+  background-color: #16a34a;
 }
 
 .c0 >* {
@@ -12963,15 +12963,15 @@ exports[`Demo renders packages/react/src/Notication/__doc__/Placement.tsx correc
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c2:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c2:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c0 >* {
@@ -13135,15 +13135,15 @@ exports[`Demo renders packages/react/src/Notication/__doc__/Promise.tsx correctl
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #57534e;
+  background-color: #737373;
 }
 
 .c2:hover {
-  background-color: #63615d;
+  background-color: #525252;
 }
 
 .c2:focus {
-  background-color: #63615d;
+  background-color: #525252;
 }
 
 .c0 >* {
@@ -13259,15 +13259,15 @@ exports[`Demo renders packages/react/src/Notication/__doc__/Update.tsx correctly
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #57534e;
+  background-color: #737373;
 }
 
 .c2:hover {
-  background-color: #63615d;
+  background-color: #525252;
 }
 
 .c2:focus {
-  background-color: #63615d;
+  background-color: #525252;
 }
 
 .c0 >* {
@@ -13383,15 +13383,15 @@ exports[`Demo renders packages/react/src/Popconfirm/__doc__/Basic.tsx correctly 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c1:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c1:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 <div>
@@ -13501,15 +13501,15 @@ exports[`Demo renders packages/react/src/Popconfirm/__doc__/Promise.tsx correctl
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c1:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c1:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 <div>
@@ -13619,15 +13619,15 @@ exports[`Demo renders packages/react/src/Popover/__doc__/Basic.tsx correctly 1`]
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c2:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c2:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c0 .column {
@@ -13957,15 +13957,15 @@ exports[`Demo renders packages/react/src/Popover/__doc__/ClickInner.tsx correctl
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c1:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c1:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 <div>
@@ -14073,15 +14073,15 @@ exports[`Demo renders packages/react/src/Popper/__doc__/Arrow.tsx correctly 1`] 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c2:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c2:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c0 button {
@@ -14198,15 +14198,15 @@ exports[`Demo renders packages/react/src/Popper/__doc__/Basic.tsx correctly 1`] 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c2:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c2:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c0 .column {
@@ -14536,15 +14536,15 @@ exports[`Demo renders packages/react/src/Popper/__doc__/Nest.tsx correctly 1`] =
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c1:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c1:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 <div>
@@ -14652,15 +14652,15 @@ exports[`Demo renders packages/react/src/Popper/__doc__/Trigger.tsx correctly 1`
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c2:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c2:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c0 button {
@@ -14841,15 +14841,15 @@ exports[`Demo renders packages/react/src/Portal/__doc__/Basic.tsx correctly 1`] 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c2:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c2:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c0 .container1,
@@ -14868,12 +14868,12 @@ exports[`Demo renders packages/react/src/Portal/__doc__/Basic.tsx correctly 1`] 
 }
 
 .c0 .container1 {
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c0 .container2 {
   margin-top: 16px;
-  background-color: #be123c;
+  background-color: #ef4444;
 }
 
 <div>
@@ -15081,7 +15081,7 @@ exports[`Demo renders packages/react/src/Ripple/__doc__/Advance.tsx correctly 1`
   position: relative;
   height: 100px;
   background-color: #d9d9d9;
-  color: #1d4ed8;
+  color: #3b82f6;
   font-size: 26px;
   text-align: center;
   line-height: 100px;
@@ -15137,7 +15137,7 @@ exports[`Demo renders packages/react/src/Ripple/__doc__/Basic.tsx correctly 1`] 
   position: relative;
   height: 100px;
   background-color: #d9d9d9;
-  color: #1d4ed8;
+  color: #3b82f6;
   font-size: 26px;
   text-align: center;
   line-height: 100px;
@@ -15789,7 +15789,7 @@ exports[`Demo renders packages/react/src/Row/__doc__/Basic.tsx correctly 1`] = `
   padding: 0.5rem;
   color: #ffffffe0;
   text-align: center;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
   border-radius: 5px;
 }
 
@@ -19912,7 +19912,7 @@ exports[`Demo renders packages/react/src/Row/__doc__/Flex.tsx correctly 1`] = `
   color: #ffffffe0;
   align-items: center;
   justify-content: center;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
   border-radius: 5px;
 }
 
@@ -24123,7 +24123,7 @@ exports[`Demo renders packages/react/src/Row/__doc__/Offset.tsx correctly 1`] = 
   padding: 0.5rem;
   color: #ffffffe0;
   text-align: center;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
   border-radius: 5px;
 }
 
@@ -28175,7 +28175,7 @@ exports[`Demo renders packages/react/src/Row/__doc__/ResponsiveColumn.tsx correc
   padding: 0.5rem;
   color: #ffffffe0;
   text-align: center;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
   border-radius: 5px;
 }
 
@@ -32150,7 +32150,7 @@ exports[`Demo renders packages/react/src/Row/__doc__/ResponsiveOffset.tsx correc
   padding: 0.5rem;
   color: #ffffffe0;
   text-align: center;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
   border-radius: 5px;
 }
 
@@ -36192,7 +36192,7 @@ exports[`Demo renders packages/react/src/Row/__doc__/Wrap.tsx correctly 1`] = `
   padding: 0.5rem;
   color: #ffffffe0;
   text-align: center;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
   border-radius: 5px;
 }
 
@@ -39618,7 +39618,7 @@ exports[`Demo renders packages/react/src/Textarea/__doc__/AutoSize.tsx correctly
 }
 
 .c0:hover {
-  border-color: #4373e6;
+  border-color: #60a5fa;
 }
 
 .c1 {
@@ -39749,7 +39749,7 @@ exports[`Demo renders packages/react/src/Textarea/__doc__/Basic.tsx correctly 1`
 }
 
 .c0:hover {
-  border-color: #4373e6;
+  border-color: #60a5fa;
 }
 
 .c1 {
@@ -39862,7 +39862,7 @@ exports[`Demo renders packages/react/src/Textarea/__doc__/DebugSuffix.tsx correc
 }
 
 .c0:hover {
-  border-color: #4373e6;
+  border-color: #60a5fa;
 }
 
 .c1 {
@@ -39985,7 +39985,7 @@ exports[`Demo renders packages/react/src/Textarea/__doc__/ShowCount.tsx correctl
 }
 
 .c0:hover {
-  border-color: #4373e6;
+  border-color: #60a5fa;
 }
 
 .c1 {
@@ -40128,7 +40128,7 @@ exports[`Demo renders packages/react/src/Textarea/__doc__/Size.tsx correctly 1`]
 }
 
 .c0:hover {
-  border-color: #4373e6;
+  border-color: #60a5fa;
 }
 
 .c2 {
@@ -40195,7 +40195,7 @@ exports[`Demo renders packages/react/src/Textarea/__doc__/Size.tsx correctly 1`]
 }
 
 .c2:hover {
-  border-color: #4373e6;
+  border-color: #60a5fa;
 }
 
 .c3 {
@@ -40262,7 +40262,7 @@ exports[`Demo renders packages/react/src/Textarea/__doc__/Size.tsx correctly 1`]
 }
 
 .c3:hover {
-  border-color: #4373e6;
+  border-color: #60a5fa;
 }
 
 .c1 {
@@ -40413,15 +40413,15 @@ exports[`Demo renders packages/react/src/Tooltip/__doc__/Arrow.tsx correctly 1`]
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c1:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c1:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 <div>
@@ -40529,15 +40529,15 @@ exports[`Demo renders packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1`]
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c2:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c2:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c0 .column {
@@ -40867,15 +40867,15 @@ exports[`Demo renders packages/react/src/Tooltip/__doc__/Colors.tsx correctly 1`
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c2:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c2:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c0 button {
@@ -41040,15 +41040,15 @@ exports[`Demo renders packages/react/src/Tooltip/__doc__/MaxWidth.tsx correctly 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c2:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c2:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c0 button {
@@ -41165,15 +41165,15 @@ exports[`Demo renders packages/react/src/Tooltip/__doc__/Rich.tsx correctly 1`] 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c2:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c2:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c0 button {
@@ -41290,15 +41290,15 @@ exports[`Demo renders packages/react/src/Transition/__doc__/Advance.tsx correctl
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c1:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c1:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c4 {
@@ -41439,15 +41439,15 @@ exports[`Demo renders packages/react/src/Transition/__doc__/Basic.tsx correctly 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c1:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c1:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 <div>
@@ -41557,15 +41557,15 @@ exports[`Demo renders packages/react/src/TransitionGroup/__doc__/Basic.tsx corre
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c1:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c1:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c4 {
@@ -41781,15 +41781,15 @@ exports[`Demo renders packages/useForm/src/__doc__/Basic.tsx correctly 1`] = `
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c2:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c2:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c0 >* {
@@ -41924,15 +41924,15 @@ exports[`Demo renders packages/useForm/src/__doc__/Controller.tsx correctly 1`] 
   width: 100%;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c5:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c5:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c1 {
@@ -41971,7 +41971,7 @@ exports[`Demo renders packages/useForm/src/__doc__/Controller.tsx correctly 1`] 
 }
 
 .c2:hover {
-  border-color: #4373e6;
+  border-color: #60a5fa;
 }
 
 .c3 {
@@ -42152,15 +42152,15 @@ exports[`Demo renders packages/useForm/src/__doc__/Error.tsx correctly 1`] = `
   width: 100%;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c5:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c5:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c1 {
@@ -42199,7 +42199,7 @@ exports[`Demo renders packages/useForm/src/__doc__/Error.tsx correctly 1`] = `
 }
 
 .c2:hover {
-  border-color: #4373e6;
+  border-color: #60a5fa;
 }
 
 .c3 {
@@ -42243,7 +42243,7 @@ exports[`Demo renders packages/useForm/src/__doc__/Error.tsx correctly 1`] = `
 }
 
 .c0 .error {
-  color: #be123c;
+  color: #ef4444;
 }
 
 <div>
@@ -42346,7 +42346,7 @@ exports[`Demo renders packages/useForm/src/__doc__/ValueResponse.tsx correctly 1
 }
 
 .c2:hover {
-  border-color: #4373e6;
+  border-color: #60a5fa;
 }
 
 .c3 {
@@ -43146,15 +43146,15 @@ exports[`Demo renders packages/usePopper/src/__doc__/Arrow.tsx correctly 1`] = `
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c4:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c4:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c0 {
@@ -46617,15 +46617,15 @@ exports[`Demo renders packages/usePopper/src/__doc__/AutoPlacement.tsx correctly
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c2:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c2:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c0 {
@@ -46762,15 +46762,15 @@ exports[`Demo renders packages/usePopper/src/__doc__/AutoUpdate.tsx correctly 1`
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c1:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c1:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c4 {
@@ -47522,15 +47522,15 @@ exports[`Demo renders packages/usePopper/src/__doc__/Basic.tsx correctly 1`] = `
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c4:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c4:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c0 {
@@ -51027,15 +51027,15 @@ exports[`Demo renders packages/usePopper/src/__doc__/Debug.tsx correctly 1`] = `
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c2:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c2:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c0 {
@@ -51768,15 +51768,15 @@ exports[`Demo renders packages/usePopper/src/__doc__/Hide.tsx correctly 1`] = `
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c4:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c4:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c0 {
@@ -55233,15 +55233,15 @@ exports[`Demo renders packages/usePopper/src/__doc__/Interactions.tsx correctly 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c1:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c1:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 <div>
@@ -55947,15 +55947,15 @@ exports[`Demo renders packages/usePopper/src/__doc__/Offset.tsx correctly 1`] = 
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c4:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c4:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c0 {
@@ -60050,15 +60050,15 @@ exports[`Demo renders packages/usePopper/src/__doc__/Shift.tsx correctly 1`] = `
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   padding: 6px 12px;
   color: #ffffffe0;
-  background-color: #1d4ed8;
+  background-color: #3b82f6;
 }
 
 .c4:hover {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c4:focus {
-  background-color: #4373e6;
+  background-color: #2563eb;
 }
 
 .c0 {

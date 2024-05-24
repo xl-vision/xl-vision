@@ -44,7 +44,7 @@ const PopperWrapper = styled('div')(({ theme }) => {
     '.popper': {
       padding: 8,
       borderRadius: 3,
-      backgroundColor: theme.colors.themes.success.foreground.enabled,
+      backgroundColor: theme.colors.themes.success.foreground.default,
       cColor: theme.colors.themes.success.text.primary,
     },
   };

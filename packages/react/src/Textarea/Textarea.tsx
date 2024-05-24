@@ -111,11 +111,11 @@ const TextAreaRoot = styled('span', {
     styles.cursor = 'not-allowed';
   } else if (!readOnly) {
     if (focused) {
-      styles.borderColor = colors.themes.primary.foreground.focus;
+      styles.borderColor = colors.themes.primary.divider.focus;
       styles.boxShadow = `0 0 0 2px ${colors.themes.primary.outline}`;
     } else {
       styles['&:hover'] = {
-        borderColor: colors.themes.primary.foreground.hover,
+        borderColor: colors.themes.primary.divider.hover,
       };
     }
   }

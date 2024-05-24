@@ -17,11 +17,11 @@ const Wrapper = styled('div')(({ theme }) => {
       },
     },
     '.container1': {
-      backgroundColor: theme.colors.themes.primary.foreground.enabled,
+      backgroundColor: theme.colors.themes.primary.foreground.default,
     },
     '.container2': {
       marginTop: '16px',
-      backgroundColor: theme.colors.themes.error.foreground.enabled,
+      backgroundColor: theme.colors.themes.error.foreground.default,
     },
   };
 });
