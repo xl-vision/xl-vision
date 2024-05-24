@@ -1,8 +1,9 @@
 'use client';
 
-import { styled, useTheme } from '@xl-vision/react';
+import { styled, useTheme as useLibTheme } from '@xl-vision/react';
 import { Palette, PaletteVariant } from '@xl-vision/react/themes/palettes';
 import { FC, memo } from 'react';
+import useTheme from '@docs/components/ThemeProvider/useTheme';
 
 export type PaletteProps = {
   palette: Palette;
@@ -16,7 +17,8 @@ const PaletteRoot = styled('div')(() => {
 });
 
 const PaletteRenderer: FC<PaletteProps> = ({ palette }) => {
-  const { colors } = useTheme();
+  const { isDark } = useTheme();
+  const { colors } = useLibTheme();
 
   const boxs = Object.keys(palette).map((key) => {
     const color = palette[key as unknown as PaletteVariant];
@@ -24,7 +26,9 @@ const PaletteRenderer: FC<PaletteProps> = ({ palette }) => {
       <Box
         color={color}
         key={key}
-        textColor={+key < 500 ? colors.text.primary : colors.inverseText.primary}
+        textColor={
+          (isDark ? +key > 500 : +key <= 500) ? colors.text.primary : colors.inverseText.primary
+        }
       />
     );
   });
