@@ -44,7 +44,7 @@ const StyledLink = styled(Link)(({ theme }) => {
       color: themes.primary.foreground.hover,
     },
     '& > .active': {
-      backgroundColor: themes.primary.foreground.active,
+      backgroundColor: themes.primary.foreground.default,
       color: theme.colors.themes.primary.text.primary,
     },
   };
