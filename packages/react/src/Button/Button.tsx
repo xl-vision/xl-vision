@@ -158,12 +158,12 @@ const ButtonRoot = styled(BaseButton, {
       if (!loading && !disabled) {
         styles['&:hover'] = {
           ...(styles['&:hover'] || {}),
-          borderColor: colors.themes.primary.foreground.hover,
+          borderColor: colors.themes.primary.divider.hover,
         };
 
         styles['&:focus'] = {
           ...(styles['&:focus'] || {}),
-          borderColor: colors.themes.primary.foreground.focus,
+          borderColor: colors.themes.primary.divider.focus,
         };
       }
     }
@@ -175,7 +175,7 @@ const ButtonRoot = styled(BaseButton, {
       };
       styles['&:focus'] = {
         ...(styles['&:focus'] || {}),
-        backgroundColor: colors.themes.primary.background.hover,
+        backgroundColor: colors.themes.primary.background.focus,
       };
     }
 
@@ -197,7 +197,7 @@ const ButtonRoot = styled(BaseButton, {
       };
       styles['&:focus'] = {
         ...(styles['&:focus'] || {}),
-        backgroundColor: colors.themes[colorStyle].foreground.hover,
+        backgroundColor: colors.themes[colorStyle].foreground.focus,
       };
     }
 
@@ -215,21 +215,21 @@ const ButtonRoot = styled(BaseButton, {
     };
     styles['&:focus'] = {
       ...(styles['&:focus'] || {}),
-      backgroundColor: colors.themes[colorStyle].background.hover,
+      backgroundColor: colors.themes[colorStyle].background.focus,
     };
   }
 
   if (variant === 'outlined') {
-    styles.border = `${themeSize.border}px solid ${colors.themes[colorStyle].foreground.default}`;
+    styles.border = `${themeSize.border}px solid ${colors.themes[colorStyle].divider.default}`;
 
     if (!disabled && !loading) {
       styles['&:hover'] = {
         ...(styles['&:hover'] || {}),
-        borderColor: colors.themes[colorStyle].foreground.hover,
+        borderColor: colors.themes[colorStyle].divider.hover,
       };
       styles['&:focus'] = {
         ...(styles['&:focus'] || {}),
-        borderColor: colors.themes[colorStyle].foreground.focus,
+        borderColor: colors.themes[colorStyle].divider.focus,
       };
     }
   }

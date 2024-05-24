@@ -1,5 +1,6 @@
 import enUS from '../../locale/en-US';
 import { BaseTheme } from '../../ThemeProvider';
+import { amber, blue, green, neutral, red } from '../palettes';
 import { createColors } from '../shared/colors';
 import elevations from '../shared/elevations';
 
@@ -13,11 +14,11 @@ const colors = createColors({
     ripple: 0.3,
   },
   themes: {
-    primary: '#1d4ed8',
-    error: '#be123c',
-    warning: '#ea580c',
-    info: '#57534e',
-    success: '#15803d',
+    primary: blue,
+    error: red,
+    warning: amber,
+    info: neutral,
+    success: green,
   },
 });
 

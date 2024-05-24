@@ -1,4 +1,5 @@
 import { ThemeInput } from '../../ThemeProvider';
+import { blue, red, neutral, green, amber } from '../palettes';
 import { createColors } from '../shared/colors';
 
 const colors = createColors({
@@ -11,11 +12,11 @@ const colors = createColors({
     ripple: 0.3,
   },
   themes: {
-    primary: '#1d4ed8',
-    error: '#be123c',
-    warning: '#ea580c',
-    info: '#57534e',
-    success: '#15803d',
+    primary: blue,
+    error: red,
+    warning: amber,
+    info: neutral,
+    success: green,
   },
   dark: true,
 });

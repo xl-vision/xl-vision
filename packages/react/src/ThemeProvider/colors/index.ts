@@ -1,8 +1,8 @@
 export type ThemeVariant = 'primary' | 'error' | 'warning' | 'info' | 'success';
 
-export type ForegroundActionVariant = ActionVariant | 'focus' | 'active' | 'dragged' | 'disabled';
+export type ForegroundActionVariant = ActionVariant | 'active' | 'dragged' | 'disabled';
 
-export type ActionVariant = 'default' | 'hover';
+export type ActionVariant = 'default' | 'hover' | 'focus';
 
 export type TextVariant = 'primary' | 'secondary' | 'disabled' | 'hint';
 
