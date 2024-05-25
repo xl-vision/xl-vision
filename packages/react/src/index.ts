@@ -120,6 +120,9 @@ export type {
 export { default as Input } from './Input';
 export type { InputProps, PasswordProps, InputGroupProps } from './Input';
 
+export { default as InputNumber } from './InputNumber';
+export type { InputNumberProps } from './InputNumber';
+
 export { default as Textarea } from './Textarea';
 export type { TextareaProps } from './Textarea';
 
