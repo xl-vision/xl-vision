@@ -89,6 +89,14 @@ const componentRoutes: Array<RouteType> = [
       },
       {
         titleMap: {
+          'en-US': 'InputNumber',
+          'zh-CN': '数字输入框',
+        },
+        name: 'InputNumber',
+        docs: () => import('@xl-vision/react/src/InputNumber/__doc__/index.en-US.mdx?locale'),
+      },
+      {
+        titleMap: {
           'en-US': 'Textarea',
           'zh-CN': '多行文本框',
         },
