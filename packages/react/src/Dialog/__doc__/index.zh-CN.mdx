@@ -1,5 +1,3 @@
-# 对话框
-
 弹出遮罩其他内容的模态框，承载需要用户优先考虑的操作。
 
 ## 示例
@@ -72,7 +70,7 @@ hooks
 
 :::
 
-## Dialog API
+## 属性
 
 > 更多参数请参考[Modal](/components/Modal)属性
 
@@ -89,7 +87,9 @@ hooks
 | confirmText | 确认按钮文案，支持`i18n` | string | 确认 | false |
 | prompt | 提示型对话框，只有确认按钮 | boolean | - | false |
 
-## Dialog.open
+## 方法
+
+### Dialog.open
 
 除了基础的`Dialog.open`外，还包括
 
@@ -100,8 +100,6 @@ hooks
 - `Dialog.confirm`
 
 以上均为函数，参数为 object，具体属性如下
-
-### Dialog.open API
 
 | 参数 | 说明 | 类型 | 默认值 | 是否必填 |
 | --- | --- | --- | --- | --- |
@@ -147,7 +145,7 @@ browserHistory.listen(() => {
 });
 ```
 
-## Dialog.useDialog
+### Dialog.useDialog
 
 > `Dialog.useDialog`拥有和`Dialog.open`几乎相同的参数和方法，但是不需要传入`themeProviderProps`和`configProviderProps`。
 

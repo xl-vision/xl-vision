@@ -16,19 +16,27 @@ const StyledLink = styled(NextLink)(
 `,
 );
 
+const REGEX = /^\//;
+
 const Link: FC<AnchorHTMLAttributes<HTMLAnchorElement>> = (props) => {
   const { href, ...others } = props;
 
   const { lang } = useLocale();
 
   const newHref = useMemo(() => {
-    if (href && /^\//.test(href)) {
-      return `${lang}${href}`;
+    if (href && REGEX.test(href)) {
+      return `/${lang}${href}`;
     }
     return href || '';
   }, [href, lang]);
 
-  return <StyledLink {...others} href={newHref} target='_blank' />;
+  return (
+    <StyledLink
+      {...others}
+      href={newHref}
+      target={href && !REGEX.test(href) ? '_blank' : '_self'}
+    />
+  );
 };
 
 export default Link;
