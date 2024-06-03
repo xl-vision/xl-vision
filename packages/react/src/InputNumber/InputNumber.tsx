@@ -1,6 +1,6 @@
 import { useConstantFn, useValueChange } from '@xl-vision/hooks';
 import { isProduction } from '@xl-vision/utils';
-import { InputHTMLAttributes, forwardRef, useCallback, useState } from 'react';
+import { InputHTMLAttributes, forwardRef, useState, FocusEventHandler, useEffect } from 'react';
 import { Input } from '../Input';
 import { styled } from '../styles';
 
@@ -29,31 +29,47 @@ const InputNumberRoot = styled(Input, {
 });
 
 const NUMBER_REGEX = /^-?\d+(\.\d+)?$/;
-const NUMBER_DECIMAL_START = /^-?\d+\.$/;
 
 const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) => {
-  const { onChange, value: valueProp, defaultValue = null, min, max, parser, formatter } = props;
+  const {
+    onChange,
+    value: valueProp,
+    defaultValue = null,
+    min,
+    max,
+    parser,
+    formatter,
+    onBlur,
+  } = props;
 
-  const [value, handleValueChange] = useValueChange(defaultValue, valueProp, onChange);
-  const [isDecimal, setDecimal] = useState(false);
+  const [value, setValue] = useValueChange(defaultValue, valueProp, onChange);
 
-  const handleChange = useConstantFn((newValue: string) => {
-    setDecimal(false);
+  const [internalValue, handleInternalValue] = useState('');
+
+  const handledFormatter = useConstantFn((v: InputNumberValueType) => {
+    if (formatter) {
+      return formatter(v);
+    }
+    if (v === null) {
+      return '';
+    }
+    return String(v);
+  });
+
+  useEffect(() => {
+    handleInternalValue(handledFormatter(value));
+  }, [value, handledFormatter]);
+
+  const updateValue = useConstantFn(() => {
     let v: InputNumberValueType | undefined;
     if (parser) {
-      v = parser(newValue);
+      v = parser(internalValue);
     } else {
-      const trimedValue = newValue.trim();
+      const trimedValue = internalValue.trim();
       if (!trimedValue) {
         v = null;
-      } else {
-        const isDecimalStart = NUMBER_DECIMAL_START.test(trimedValue);
-        if (isDecimalStart) {
-          setDecimal(true);
-        }
-        if (isDecimalStart || NUMBER_REGEX.test(trimedValue)) {
-          v = Number(trimedValue);
-        }
+      } else if (NUMBER_REGEX.test(trimedValue)) {
+        v = Number(trimedValue);
       }
     }
 
@@ -62,29 +78,29 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
     }
 
     if (v === null) {
-      handleValueChange(null);
+      setValue(null);
       return;
     }
 
     if ((max !== undefined && v > max) || (min !== undefined && v < min)) {
       return;
     }
-    handleValueChange(v);
+    setValue(v);
   });
 
-  const handledFormatter = useConstantFn((v: InputNumberValueType) => {
-    const suffix = isDecimal ? '.' : '';
-
-    if (formatter) {
-      return formatter(v) + suffix;
-    }
-    if (v === null) {
-      return '';
-    }
-    return String(v) + suffix;
+  const handleBlur: FocusEventHandler<HTMLInputElement> = useConstantFn((e) => {
+    onBlur?.(e);
+    updateValue();
   });
 
-  return <InputNumberRoot ref={ref} value={handledFormatter(value)} onChange={handleChange} />;
+  return (
+    <InputNumberRoot
+      ref={ref}
+      value={internalValue}
+      onBlur={handleBlur}
+      onChange={handleInternalValue}
+    />
+  );
 });
 
 if (!isProduction) {

@@ -76,6 +76,7 @@ module.exports = {
     ],
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
+    'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': [
       'error',
       {
@@ -98,6 +99,8 @@ module.exports = {
     'react/display-name': 'error',
     'react/jsx-props-no-spreading': 'off',
     'react/require-default-props': 'off',
+    'react/no-find-dom-node': 'error',
+    'react/prop-types': 'error',
     'react/jsx-sort-props': [
       'error',
       {
