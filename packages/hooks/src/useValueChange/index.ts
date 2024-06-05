@@ -24,16 +24,18 @@ const useValueChange = <T>(
 
   const actualValue = hasValue ? value : internalValue;
 
-  const handleChange = useConstantFn((newValue: T) => {
-    if (newValue === actualValue) {
+  const handleChange = useConstantFn((newValue: T | ((v: T) => T)) => {
+    const v = typeof newValue === 'function' ? (newValue as (v: T) => T)(actualValue) : newValue;
+
+    if (v === actualValue) {
       return;
     }
 
     if (!hasValue) {
-      setInternalValue(newValue);
+      setInternalValue(v);
     }
 
-    onChange?.(newValue);
+    onChange?.(v);
   });
 
   return [actualValue, handleChange] as const;

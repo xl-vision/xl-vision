@@ -12,7 +12,6 @@ import {
   useRef,
   ChangeEvent,
   useEffect,
-  FocusEvent,
   MouseEvent,
 } from 'react';
 import useInput from '../hooks/useInput';
@@ -253,8 +252,6 @@ const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     allowClear,
     type = 'text',
     onChange,
-    onBlur,
-    onFocus,
     ...others
   } = props;
 
@@ -271,6 +268,8 @@ const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
   const rootRef = useRef<HTMLSpanElement>(null);
 
   const forkRef = useForkRef(rootRef, ref);
+
+  const focusTimeoutRef = useRef<number>();
 
   const removePasswordTimerRef = useRef<NodeJS.Timeout>();
 
@@ -301,16 +300,17 @@ const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     }
   });
 
-  const handleFocus = useConstantFn((e: FocusEvent<HTMLInputElement>) => {
+  const handleFocus = useConstantFn(() => {
+    clearTimeout(focusTimeoutRef.current);
     if (!disabled && !readOnly) {
       setFocused(true);
     }
-    onFocus?.(e);
   });
 
-  const handleBlur = useConstantFn((e: FocusEvent<HTMLInputElement>) => {
-    setFocused(false);
-    onBlur?.(e);
+  const handleBlur = useConstantFn(() => {
+    focusTimeoutRef.current = window.setTimeout(() => {
+      setFocused(false);
+    }, 200);
   });
 
   const handleReset = useConstantFn(() => {
@@ -402,7 +402,12 @@ const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
       {typeof addonBefore !== 'undefined' && (
         <InputAddonBefore styleProps={{ size }}>{addonBefore}</InputAddonBefore>
       )}
-      <InputWrapper styleProps={{ focused, size, disabled, readOnly }} onMouseUp={handleMouseUp}>
+      <InputWrapper
+        styleProps={{ focused, size, disabled, readOnly }}
+        onBlur={handleBlur}
+        onFocus={handleFocus}
+        onMouseUp={handleMouseUp}
+      >
         {typeof prefix !== 'undefined' && <InputPrefix>{prefix}</InputPrefix>}
         <InputInner
           aria-disabled={disabled}
@@ -413,9 +418,7 @@ const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
           ref={inputRef}
           type={type}
           value={actualValue}
-          onBlur={handleBlur}
           onChange={handleChange}
-          onFocus={handleFocus}
         />
         {(allowClearNode || showCountNode || typeof suffix !== 'undefined') && (
           <InputSuffix>

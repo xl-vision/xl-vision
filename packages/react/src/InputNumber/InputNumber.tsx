@@ -1,14 +1,22 @@
 import { useConstantFn, useValueChange } from '@xl-vision/hooks';
-import { isProduction } from '@xl-vision/utils';
-import { InputHTMLAttributes, forwardRef, useState, FocusEventHandler, useEffect } from 'react';
-import { Input } from '../Input';
+import { CaretDownOutlined, CaretUpOutlined } from '@xl-vision/icons';
+import { isProduction, omit } from '@xl-vision/utils';
+import { forwardRef, useState, FocusEventHandler, useEffect } from 'react';
+import { Input, InputProps } from '../Input';
 import { styled } from '../styles';
 
 export type InputNumberValueType = number | null;
 
 export type InputNumberProps = Omit<
-  InputHTMLAttributes<HTMLInputElement>,
-  'type' | 'onChange' | 'value' | 'defaultValue' | 'prefix' | 'size'
+  InputProps,
+  | 'type'
+  | 'onChange'
+  | 'value'
+  | 'defaultValue'
+  | 'suffix'
+  | 'allowClear'
+  | 'showCount'
+  | 'maxLength'
 > & {
   onChange?: (value: InputNumberValueType) => void;
   value?: InputNumberValueType;
@@ -17,6 +25,8 @@ export type InputNumberProps = Omit<
   max?: number;
   parser?: (value: string) => InputNumberValueType;
   formatter?: (value: InputNumberValueType) => string;
+  step?: number;
+  precision?: number;
 };
 
 const displayName = 'InputNumber';
@@ -24,8 +34,59 @@ const displayName = 'InputNumber';
 const InputNumberRoot = styled(Input, {
   name: displayName,
   slot: 'Root',
-})(() => {
-  return {};
+})(({ theme: { clsPrefix, size: themeSize } }) => {
+  return {
+    [`&.${clsPrefix}-input--focused`]: {
+      [`.${clsPrefix}-input-number__controls`]: {
+        opacity: 1,
+      },
+    },
+    [`.${clsPrefix}-input__suffix`]: {
+      margin: `-${themeSize.padding.y}px -${themeSize.padding.x}px -${themeSize.padding.y}px 0`,
+    },
+  };
+});
+
+const InputNumberControls = styled('span', {
+  name: displayName,
+  slot: 'Controls',
+})(({ theme: { size: themeSize, colors } }) => {
+  return {
+    opacity: 0,
+    display: 'flex',
+    height: '100%',
+    borderLeft: `${themeSize.border}px solid ${colors.divider.primary}`,
+    flexDirection: 'column',
+  };
+});
+
+const InputNumberControlUp = styled('span', {
+  name: displayName,
+  slot: 'ControlUp',
+})(({ theme: { transitions } }) => {
+  return {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    cursor: 'pointer',
+    height: '40%',
+    flex: 'auto',
+    fontSize: '10px',
+    padding: `0 3px`,
+    transition: transitions.standard('all'),
+    '&:hover': {
+      height: '60%',
+    },
+  };
+});
+
+const InputNumberControlDown = styled(InputNumberControlUp, {
+  name: displayName,
+  slot: 'ControlDown',
+})(({ theme: { size: themeSize, colors } }) => {
+  return {
+    borderTop: `${themeSize.border}px solid ${colors.divider.primary}`,
+  };
 });
 
 const NUMBER_REGEX = /^-?\d+(\.\d+)?$/;
@@ -40,11 +101,22 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
     parser,
     formatter,
     onBlur,
-  } = props;
+    step = 1,
+    precision,
+    readOnly,
+    disabled,
+    ...others
+  } = omit(
+    props as InputProps,
+    'allowClear',
+    'showCount',
+    'suffix',
+    'maxLength',
+  ) as InputNumberProps;
 
   const [value, setValue] = useValueChange(defaultValue, valueProp, onChange);
 
-  const [internalValue, handleInternalValue] = useState('');
+  const [internalValue, setInternalValue] = useState('');
 
   const handleFormatter = useConstantFn((v: InputNumberValueType) => {
     if (formatter) {
@@ -53,6 +125,11 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
     if (v === null) {
       return '';
     }
+
+    if (precision) {
+      return v.toFixed(precision);
+    }
+
     return String(v);
   });
 
@@ -82,25 +159,23 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
       return parseredValue;
     }
 
-    const trimedValue = str.trim();
-    if (!trimedValue) {
-      return null;
+    const v = defaultParser(str);
+
+    if (v === null) {
+      return v;
     }
 
-    if (NUMBER_REGEX.test(trimedValue)) {
-      return Number(trimedValue);
-    }
-
-    return value;
+    return v;
   });
 
-  useEffect(() => {
-    handleInternalValue(handleFormatter(value));
-  }, [value, handleFormatter]);
+  const updateValue = useConstantFn((newValue: InputNumberValueType | string) => {
+    let v = typeof newValue === 'string' ? handleParser(newValue) : newValue;
 
-  const handleBlur: FocusEventHandler<HTMLInputElement> = useConstantFn((e) => {
-    onBlur?.(e);
-    let v = handleParser(internalValue);
+    if (v !== null && precision !== undefined) {
+      const magnification = 10 ** precision;
+
+      v = Math.round(v * magnification) / magnification;
+    }
 
     if (v !== null) {
       if (max !== undefined && v > max) {
@@ -111,15 +186,62 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
     }
 
     setValue(v);
-    handleInternalValue(handleFormatter(v));
+    return v;
   });
+
+  useEffect(() => {
+    setInternalValue(handleFormatter(value));
+  }, [value, handleFormatter]);
+
+  const handleBlur: FocusEventHandler<HTMLInputElement> = useConstantFn((e) => {
+    onBlur?.(e);
+    const v = updateValue(internalValue);
+    if (v === value) {
+      // 有可能value没有变化，导致internalValue也不会更新
+      setInternalValue(handleFormatter(v));
+    }
+  });
+
+  const handleInternalValueChange = useConstantFn((str: string) => {
+    setInternalValue(str);
+    updateValue(str);
+  });
+
+  // TODO: remove BigInt
+  const handleUp = useConstantFn(() => {
+    const ret = BigInt(value || 0) + BigInt(step);
+
+    updateValue(ret.toString());
+  });
+
+  // TODO: remove BigInt
+  const handleDown = useConstantFn(() => {
+    const ret = BigInt(value || 0) - BigInt(step);
+
+    updateValue(ret.toString());
+  });
+
+  const suffixNode = !readOnly && !disabled && (
+    <InputNumberControls>
+      <InputNumberControlUp onClick={handleUp}>
+        <CaretUpOutlined />
+      </InputNumberControlUp>
+      <InputNumberControlDown onClick={handleDown}>
+        <CaretDownOutlined />
+      </InputNumberControlDown>
+    </InputNumberControls>
+  );
 
   return (
     <InputNumberRoot
+      disabled={disabled}
+      readOnly={readOnly}
       ref={ref}
+      suffix={suffixNode}
       value={internalValue}
       onBlur={handleBlur}
-      onChange={handleInternalValue}
+      onChange={handleInternalValueChange}
+      {...others}
     />
   );
 });
