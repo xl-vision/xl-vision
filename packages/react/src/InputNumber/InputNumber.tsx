@@ -46,7 +46,7 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
 
   const [internalValue, handleInternalValue] = useState('');
 
-  const handledFormatter = useConstantFn((v: InputNumberValueType) => {
+  const handleFormatter = useConstantFn((v: InputNumberValueType) => {
     if (formatter) {
       return formatter(v);
     }
@@ -56,41 +56,62 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
     return String(v);
   });
 
-  useEffect(() => {
-    handleInternalValue(handledFormatter(value));
-  }, [value, handledFormatter]);
-
-  const updateValue = useConstantFn(() => {
-    let v: InputNumberValueType | undefined;
-    if (parser) {
-      v = parser(internalValue);
-    } else {
-      const trimedValue = internalValue.trim();
-      if (!trimedValue) {
-        v = null;
-      } else if (NUMBER_REGEX.test(trimedValue)) {
-        v = Number(trimedValue);
-      }
+  const defaultParser = useConstantFn((str: string) => {
+    // eslint-disable-next-line react/destructuring-assignment
+    const trimedValue = str.trim();
+    if (!trimedValue) {
+      return null;
     }
-
-    if (v === undefined) {
-      return;
+    if (NUMBER_REGEX.test(trimedValue)) {
+      return Number(trimedValue);
     }
-
-    if (v === null) {
-      setValue(null);
-      return;
-    }
-
-    if ((max !== undefined && v > max) || (min !== undefined && v < min)) {
-      return;
-    }
-    setValue(v);
+    return value;
   });
+
+  const handleParser = useConstantFn((str: string) => {
+    if (parser) {
+      const parseredValue = parser(str);
+
+      if (typeof parseredValue === 'string') {
+        return defaultParser(parseredValue);
+      }
+
+      if (parseredValue !== null && typeof parseredValue !== 'number') {
+        return value;
+      }
+      return parseredValue;
+    }
+
+    const trimedValue = str.trim();
+    if (!trimedValue) {
+      return null;
+    }
+
+    if (NUMBER_REGEX.test(trimedValue)) {
+      return Number(trimedValue);
+    }
+
+    return value;
+  });
+
+  useEffect(() => {
+    handleInternalValue(handleFormatter(value));
+  }, [value, handleFormatter]);
 
   const handleBlur: FocusEventHandler<HTMLInputElement> = useConstantFn((e) => {
     onBlur?.(e);
-    updateValue();
+    let v = handleParser(internalValue);
+
+    if (v !== null) {
+      if (max !== undefined && v > max) {
+        v = value;
+      } else if (min !== undefined && v < min) {
+        v = value;
+      }
+    }
+
+    setValue(v);
+    handleInternalValue(handleFormatter(v));
   });
 
   return (
