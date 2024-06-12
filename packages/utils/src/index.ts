@@ -5,6 +5,7 @@ export * from './device';
 export * from './window';
 export * from './dom';
 export * from './reactVersion';
+export * from './str';
 export { default as warning } from './warning';
 export { default as noop } from './noop';
 export { default as raf } from './raf';

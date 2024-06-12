@@ -5,7 +5,7 @@ import { forwardRef, useState, FocusEventHandler, useEffect } from 'react';
 import { Input, InputProps } from '../Input';
 import { styled } from '../styles';
 
-export type InputNumberValueType = number | null;
+export type InputNumberValueType = number | string | null;
 
 export type InputNumberProps = Omit<
   InputProps,
@@ -27,6 +27,7 @@ export type InputNumberProps = Omit<
   formatter?: (value: InputNumberValueType) => string;
   step?: number;
   precision?: number;
+  stringMode?: boolean;
 };
 
 const displayName = 'InputNumber';
