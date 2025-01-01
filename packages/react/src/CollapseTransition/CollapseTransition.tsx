@@ -10,20 +10,9 @@ import {
 } from '@xl-vision/hooks';
 import { addClass, getComputedStyle, isProduction, removeClass, warning } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
-import {
-  ReactElement,
-  FC,
-  Children,
-  useMemo,
-  CSSProperties,
-  useRef,
-  isValidElement,
-  ReactInstance,
-  Ref,
-  cloneElement,
-} from 'react';
+import { ReactElement, FC, Children, useMemo, CSSProperties, useRef, cloneElement } from 'react';
 import { forceReflow } from '../utils/dom';
-import { supportRef } from '../utils/ref';
+import { getNodeRef, supportRef } from '../utils/ref';
 
 export type CollapseTransitionProp = CssTransitionOptions & {
   children: ReactElement;
@@ -221,10 +210,7 @@ const CollapseTransition: FC<CollapseTransitionProp> = (props) => {
     onExitCancelled: handleExitCancelled,
   });
 
-  const forkRef = useForkRef(
-    isValidElement<ReactInstance>(child) ? (child as { ref?: Ref<unknown> }).ref : null,
-    nodeRef,
-  );
+  const forkRef = useForkRef(getNodeRef(child), nodeRef);
 
   // 判断是否是第一次挂载
   const isFirstMountRef = useRef(true);
