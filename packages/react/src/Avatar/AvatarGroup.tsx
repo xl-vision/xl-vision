@@ -73,7 +73,7 @@ const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>((props, ref) =>
     ...others
   } = props;
 
-  const childArray = Children.map<ReactElement, ReactElement>(
+  const childArray = Children.map<ReactElement<AvatarProps>, ReactElement<AvatarProps>>(
     children,
     // eslint-disable-next-line react/no-array-index-key
     (it, index) => cloneElement(it, { key: index }),

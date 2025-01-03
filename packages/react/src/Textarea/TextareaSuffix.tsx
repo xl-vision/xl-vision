@@ -22,7 +22,7 @@ const TextareaSuffix: FC<TextareaSuffixProps> = (props) => {
 
   const ref = useRef<HTMLSpanElement>(null);
 
-  const rafCancelFnRef = useRef<() => void>();
+  const rafCancelFnRef = useRef<() => void>(null);
 
   const handleOverflow = useConstantFn(() => {
     rafCancelFnRef.current?.();

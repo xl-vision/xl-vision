@@ -11,15 +11,15 @@ const useAutoUpdatePopper = (options: AutoUpdatePopperOptions) => {
 
   const { reference, popper, update, ...others } = usePopper(otherOptions);
 
-  const referenceRef = useRef<Reference | null>();
-  const popperRef = useRef<Element | null>();
+  const referenceRef = useRef<Reference>(null);
+  const popperRef = useRef<Element>(null);
 
-  const cleanUpRef = useRef<() => void>();
+  const cleanUpRef = useRef<() => void>(null);
 
   const handleAutoUpdate = useCallback(() => {
     if (cleanUpRef.current) {
       cleanUpRef.current();
-      cleanUpRef.current = undefined;
+      cleanUpRef.current = null;
     }
 
     const referenceEl = referenceRef.current;
@@ -45,7 +45,7 @@ const useAutoUpdatePopper = (options: AutoUpdatePopperOptions) => {
     return () => {
       if (cleanUpRef.current) {
         cleanUpRef.current();
-        cleanUpRef.current = undefined;
+        cleanUpRef.current = null;
       }
     };
   }, [handleAutoUpdate]);

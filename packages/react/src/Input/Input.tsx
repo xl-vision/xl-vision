@@ -272,7 +272,7 @@ const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
 
   const forkRef = useForkRef(rootRef, ref);
 
-  const removePasswordTimerRef = useRef<NodeJS.Timeout>();
+  const removePasswordTimerRef = useRef<NodeJS.Timeout>(null);
 
   const handleChange = useConstantFn((e: ChangeEvent<HTMLInputElement>) => {
     let v = e.target.value;

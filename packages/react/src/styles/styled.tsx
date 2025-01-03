@@ -8,7 +8,7 @@ import {
 } from '@xl-vision/styled-engine';
 import { isProduction } from '@xl-vision/utils';
 import clsx from 'clsx';
-import { ComponentProps, ComponentType, forwardRef } from 'react';
+import { ComponentProps, ComponentType, forwardRef, JSX } from 'react';
 import applyTheme from './applyTheme';
 import { StyledComponentKey } from './constants';
 import { Theme, Style, useTheme } from '../ThemeProvider';

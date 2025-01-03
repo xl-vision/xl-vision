@@ -152,7 +152,7 @@ const InnerNotication = forwardRef<HTMLDivElement, InnerNoticationProps>((props,
 
   const [open, setOpen] = useValueChange(defaultOpen, openProp);
 
-  const timerRef = useRef<number>();
+  const timerRef = useRef<number>(null);
 
   const handleExit = useConstantFn(() => {
     onAfterClosed?.();
@@ -160,7 +160,7 @@ const InnerNotication = forwardRef<HTMLDivElement, InnerNoticationProps>((props,
 
   const handleMouseEnter = useConstantFn((e: MouseEvent<HTMLDivElement>) => {
     onMouseEnter?.(e);
-    window.clearTimeout(timerRef.current);
+    timerRef.current && clearTimeout(timerRef.current);
   });
 
   const handleMouseLeave = useConstantFn((e: MouseEvent<HTMLDivElement>) => {
@@ -196,7 +196,7 @@ const InnerNotication = forwardRef<HTMLDivElement, InnerNoticationProps>((props,
     }, duration);
 
     return () => {
-      window.clearTimeout(timerRef.current);
+      timerRef.current && clearTimeout(timerRef.current);
     };
   }, [duration, setOpen]);
 

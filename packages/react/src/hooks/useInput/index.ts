@@ -13,8 +13,8 @@ const useInput = <E extends HTMLElement>({ setValue, maxLength }: InputProps) =>
   const ref = useRef<E>(null);
   const [isCompositing, setCompositing] = useState(false);
 
-  const oldCompositionValueRef = useRef<string>();
-  const oldSelectionEndRef = useRef<number>();
+  const oldCompositionValueRef = useRef<string>(null);
+  const oldSelectionEndRef = useRef<number>(null);
 
   const hasMaxLength = Number(maxLength) > 0;
 

@@ -2,7 +2,7 @@ import { styled } from '@xl-vision/react';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { FC, Children, cloneElement, HTMLAttributes, forwardRef, useMemo } from 'react';
+import { FC, Children, cloneElement, HTMLAttributes, forwardRef, useMemo, JSX } from 'react';
 import useLocale from '@docs/hooks/useLocale';
 import { Lang, defaultLang } from '@docs/locales';
 import { join } from '@docs/utils/link';

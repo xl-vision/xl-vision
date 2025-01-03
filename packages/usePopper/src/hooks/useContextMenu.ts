@@ -10,10 +10,10 @@ const useContextMenu: InteractionHook<ContextMenuOptions> = (
   { setOpen },
   { skip, disablePopperEnter } = {},
 ) => {
-  const timerRef = useRef<number>();
+  const timerRef = useRef<number>(null);
 
   const handleContextMenu = useConstantFn(() => {
-    clearTimeout(timerRef.current);
+    timerRef.current && clearTimeout(timerRef.current);
     setOpen(true);
   });
 

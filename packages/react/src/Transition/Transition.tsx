@@ -5,7 +5,7 @@ import { ReactElement, FC, Children, useRef, cloneElement } from 'react';
 import { getNodeRef, supportRef } from '../utils/ref';
 
 export type TransitionProps = CssTransitionOptions & {
-  children: ReactElement | ((show: boolean) => ReactElement);
+  children: ReactElement<any> | ((show: boolean) => ReactElement<any>);
   mountOnEnter?: boolean;
   unmountOnExit?: boolean;
 };

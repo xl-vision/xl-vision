@@ -15,7 +15,7 @@ import { forceReflow } from '../utils/dom';
 import { getNodeRef, supportRef } from '../utils/ref';
 
 export type CollapseTransitionProp = CssTransitionOptions & {
-  children: ReactElement;
+  children: ReactElement<any>;
   horizontal?: boolean;
   unmountOnExit?: boolean;
 };
@@ -54,11 +54,11 @@ const CollapseTransition: FC<CollapseTransitionProp> = (props) => {
     };
   }, [horizontal]);
 
-  const actualSizeRef = useRef<string>();
-  const padding1Ref = useRef<string>();
-  const padding2Ref = useRef<string>();
-  const sizeRef = useRef<string>();
-  const overflowRef = useRef<string>();
+  const actualSizeRef = useRef<string>(null);
+  const padding1Ref = useRef<string>(null);
+  const padding2Ref = useRef<string>(null);
+  const sizeRef = useRef<string>(null);
+  const overflowRef = useRef<string>(null);
 
   const isCancelledRef = useRef(false);
 

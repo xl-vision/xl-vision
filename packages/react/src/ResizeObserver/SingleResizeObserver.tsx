@@ -10,7 +10,7 @@ import { ReactElement, forwardRef, Children, cloneElement } from 'react';
 import { getNodeRef, supportRef } from '../utils/ref';
 
 export type SingleResizeObserverProps = {
-  children: ReactElement;
+  children: ReactElement<any>;
   onResizeObserver?: ResizeObserverHandler;
 };
 
@@ -25,7 +25,7 @@ const SingleResizeObserver = forwardRef<unknown, SingleResizeObserverProps>((pro
 
   const resizeRef = useResizeObserver(handleResizeObserver);
 
-  const child: ReactElement = Children.only(children);
+  const child = Children.only(children);
 
   warning(!supportRef(child), '<%s>: child does not support ref', displayName);
 

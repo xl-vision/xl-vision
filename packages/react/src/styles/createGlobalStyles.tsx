@@ -4,9 +4,8 @@ import {
   FunctionInterpolation,
   Interpolation,
 } from '@xl-vision/styled-engine';
-import { forwardRef } from 'react';
 import applyTheme from './applyTheme';
-import { useTheme, Theme } from '../ThemeProvider';
+import { Theme } from '../ThemeProvider';
 
 const createGlobalStyles = <
   S extends {} | undefined = undefined,
@@ -19,17 +18,17 @@ const createGlobalStyles = <
 ) => {
   const [newFirst, ...newStyles] = [first, ...styles].map(applyTheme);
 
-  const InnerComponent = innerCreateGlobalStyles<P & SPT>(newFirst, ...newStyles);
+  return innerCreateGlobalStyles<P & SPT>(newFirst, ...newStyles);
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  // eslint-disable-next-line react/display-name
-  const DefaultComponent: typeof InnerComponent = forwardRef((props, ref) => {
-    const { clsPrefix } = useTheme();
+  // // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // // @ts-ignore
+  // // eslint-disable-next-line react/display-name
+  // const DefaultComponent: typeof InnerComponent = forwardRef((props, ref) => {
+  //   const { clsPrefix } = useTheme();
 
-    return <InnerComponent {...props} clsPrefix={clsPrefix} ref={ref} />;
-  });
+  //   return <InnerComponent {...props} clsPrefix={clsPrefix} ref={ref} />;
+  // });
 
-  return DefaultComponent;
+  // return DefaultComponent;
 };
 export default createGlobalStyles;

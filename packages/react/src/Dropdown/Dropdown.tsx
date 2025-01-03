@@ -8,7 +8,7 @@ import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 
 export interface DropdownProps extends Omit<PopperProps, 'popup' | 'arrow'> {
-  children: ReactElement;
+  children: ReactElement<any>;
   menus: ReactNode;
 }
 
