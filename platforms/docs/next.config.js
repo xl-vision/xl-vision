@@ -26,10 +26,14 @@ module.exports = async () => {
     experimental: {
       typedRoutes: false,
     },
+    // pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
     webpack: (config, { defaultLoaders }) => {
-      config.module.rules.push({
+
+      // config.resolve.alias = {
+      //   ...config.resolve.alias,
+      // }
+      config.module.rules.unshift({
         test: /\.mdx?$/,
-        exclude: /node_modules/,
         oneOf: [
           {
             resourceQuery: /locale/,
@@ -61,6 +65,12 @@ module.exports = async () => {
             },
           },
         ],
+        resolve: {
+          alias: {
+            'react-dom': 'next/dist/compiled/react-dom',
+            'react': 'next/dist/compiled/react'
+          }
+        }
       });
 
       return config;

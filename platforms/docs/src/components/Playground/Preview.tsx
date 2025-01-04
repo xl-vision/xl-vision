@@ -116,7 +116,7 @@ const Preview: FC<PreviewProps> = (props) => {
   const [parsedCode, setParsedCode] = useState('');
   const [error, setError] = useState<string>();
 
-  const timerRef = useRef<number>();
+  const timerRef = useRef<number>(null);
   const isFirstRef = useRef(true);
 
   const [loading, setLoading] = useState(true);
@@ -180,14 +180,15 @@ const Preview: FC<PreviewProps> = (props) => {
       isFirstRef.current = false;
     } else {
       const timer = timerRef.current;
-      window.clearTimeout(timer);
+      timer && window.clearTimeout(timer);
       timerRef.current = window.setTimeout(cb, 500);
     }
   }, [code]);
 
   useEffect(() => {
     return () => {
-      window.clearTimeout(timerRef.current);
+      const timer = timerRef.current;
+      timer && window.clearTimeout(timer);
     };
   }, []);
 
