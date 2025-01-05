@@ -17,36 +17,19 @@ module.exports = async () => {
    */
   const nextConfig = {
     reactStrictMode: true,
-    compiler: {
-      // styledComponents: true,
-      // emotion: {
-      //   importMap: {
-      //     '@xl-vision/react': {
-      //       styled: {
-      //           canonicalImport: ['@xl-vision/styled-engine', 'styled'],
-      //           styledBaseImport: ['@xl-vision/react/styles', 'styled'],
-      //       },
-      //     },
-      //     '@xl-vision/styled-engine': {
-      //       styled: {
-      //         canonicalImport: ['@emotion/styled', 'default'],
-      //         styledBaseImport:  ['@xl-vision/styled-engine/styled', 'default'],
-      //       }
-      //     }
-      //   }
-      // }
-    },
     eslint: {
       ignoreDuringBuilds: true,
     },
     experimental: {
       typedRoutes: false,
+      typedEnv: true,
     },
-    // pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
     webpack: (config, { defaultLoaders }) => {
-      // config.resolve.alias = {
-      //   ...config.resolve.alias,
+      // const isStyledComponents = process.env.STYLE_LIB === 'styled-components';
+      // if (isStyledComponents) {
+      //   config.resolve.alias['@xl-vision/styled-engine'] = '@xl-vision/styled-engine-sc';
       // }
+
       config.module.rules.unshift({
         test: /\.mdx?$/,
         oneOf: [

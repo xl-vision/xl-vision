@@ -1,26 +1,22 @@
 'use client';
-import * as React from 'react';
+
 import createCache from '@emotion/cache';
-import { useServerInsertedHTML } from 'next/navigation';
 import { CacheProvider } from '@emotion/react';
+import { useServerInsertedHTML } from 'next/navigation';
+import * as React from 'react';
 import { FC } from 'react';
 
-export type StyleComponentRegistryProps = {
+export type EmotionRegistryProps = {
   children: React.ReactNode;
 };
 
-/**
- * Emotion works OK without this provider but it's recommended to use this provider to improve performance.
- * Without it, Emotion will generate a new <style> tag during SSR for every component.
- * See https://github.com/mui/material-ui/issues/26561#issuecomment-855286153 for why it's a problem.
- */
-const StyleComponentRegistry: FC<StyleComponentRegistryProps> = ({children}: StyleComponentRegistryProps) => {
+const EmotionRegistry: FC<EmotionRegistryProps> = ({ children }: EmotionRegistryProps) => {
   const [registry] = React.useState(() => {
     const cache = createCache({ key: 'xl' });
     cache.compat = true;
 
     const prevInsert = cache.insert;
-    let inserted: { name: string; isGlobal: boolean }[] = [];
+    let inserted: Array<{ name: string; isGlobal: boolean }> = [];
     // Override the insert method to support streaming SSR with flush().
     // @ts-expect-error
     cache.insert = (...args) => {
@@ -49,10 +45,10 @@ const StyleComponentRegistry: FC<StyleComponentRegistryProps> = ({children}: Sty
     let styles = '';
     let dataEmotionAttribute = registry.cache.key;
 
-    const globals: {
+    const globals: Array<{
       name: string;
       style: string;
-    }[] = [];
+    }> = [];
 
     inserted.forEach(({ name, isGlobal }) => {
       const style = registry.cache.inserted[name];
@@ -71,22 +67,19 @@ const StyleComponentRegistry: FC<StyleComponentRegistryProps> = ({children}: Sty
       <>
         {globals.map(({ name, style }) => (
           <style
-            key={name}
-            data-emotion={`${registry.cache.key}-global ${name}`}
             dangerouslySetInnerHTML={{ __html: style }}
+            data-emotion={`${registry.cache.key}-global ${name}`}
+            key={name}
           />
         ))}
         {styles && (
-          <style
-            data-emotion={dataEmotionAttribute}
-            dangerouslySetInnerHTML={{ __html: styles }}
-          />
+          <style dangerouslySetInnerHTML={{ __html: styles }} data-emotion={dataEmotionAttribute} />
         )}
       </>
     );
   });
 
   return <CacheProvider value={registry.cache}>{children}</CacheProvider>;
-}
+};
 
-export default StyleComponentRegistry
+export default EmotionRegistry;

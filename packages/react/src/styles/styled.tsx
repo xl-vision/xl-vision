@@ -98,16 +98,11 @@ const styled = <
 
     let newFirst: any = first;
 
-    const numOfCustomFnsApplied = newStyles.length - styles.length;
-
-    if (Array.isArray(newFirst) && numOfCustomFnsApplied > 0) {
+    if (Array.isArray(newFirst) && 'raw' in newFirst) {
       const newFirstArray = newFirst as unknown as TemplateStringsArray;
-      const placeholders = new Array<string>(numOfCustomFnsApplied).fill('');
-      const raw = [...newFirstArray.raw, ...placeholders];
-      newFirst = [...newFirstArray, ...placeholders];
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      newFirst.raw = raw;
-    } else if (typeof newFirst === 'function') {
+      newFirst = [...newFirstArray, ''];
+      newFirst.raw = [...newFirstArray.raw, ''];
+    } else {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       newFirst = applyTheme(newFirst);
     }

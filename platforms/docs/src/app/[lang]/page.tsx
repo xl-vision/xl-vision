@@ -75,6 +75,16 @@ const FooterWrapper = styled(Footer)(({ theme }) => {
   };
 });
 
+// const G = createGlobalStyles`
+//   body {
+//   font-size: 21px;
+//   backgroud-color: ${p => {
+//     console.log(p, 'theme')
+//     return 'red'
+//   }};
+//   }
+// `
+
 const Home = () => {
   const { locale, lang } = useLocale();
 

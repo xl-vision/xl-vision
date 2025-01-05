@@ -4,9 +4,8 @@ import {
   FunctionInterpolation,
   Interpolation,
 } from '@xl-vision/styled-engine';
-import { forwardRef } from 'react';
 import applyTheme from './applyTheme';
-import { Theme, useTheme } from '../ThemeProvider';
+import { Theme } from '../ThemeProvider';
 
 const createGlobalStyles = <
   S extends {} | undefined = undefined,
@@ -17,9 +16,13 @@ const createGlobalStyles = <
   first: TemplateStringsArray | CSSObject | FunctionInterpolation<P & ST>,
   ...styles: Array<Interpolation<P & ST>>
 ) => {
-  const [newFirst, ...newStyles] = [first, ...styles].map(applyTheme);
+  const newStyles = styles.map(applyTheme);
 
-  return innerCreateGlobalStyles<P & SPT>(newFirst, ...newStyles);
+  if (Array.isArray(first) && 'raw' in first) {
+    return innerCreateGlobalStyles<P & SPT>(first, ...newStyles);
+  }
+
+  return innerCreateGlobalStyles<P & SPT>(applyTheme(first), ...newStyles);
 
   // // @ts-expect-error
   // // eslint-disable-next-line react/display-name

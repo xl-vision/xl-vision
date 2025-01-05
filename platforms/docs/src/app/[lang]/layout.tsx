@@ -3,11 +3,12 @@ import { Metadata } from 'next';
 import { FC, ReactNode, Suspense } from 'react';
 import BaiduAnalytics from '@docs/components/BaiduAnalytics';
 import CssBaseline from '@docs/components/CssBaseline';
+import EmotionRegistry from '@docs/components/EmotionRegistry';
 import GlobalStyle from '@docs/components/GlobalStyle';
 import GoogleAnalytics from '@docs/components/GoogleAnalytics';
+import StyledComponentsRegistry from '@docs/components/StyledComponentsRegistry';
 import ThemeProvider from '@docs/components/ThemeProvider/ThemeProvider';
 import { Lang, locales, supportedLangs } from '@docs/locales';
-import StyleComponentRegistry from '@docs/components/StyleComponentRegistry';
 
 export const generateMetadata = async ({ params }: { params: Promise<{ lang: Lang }> }) => {
   const { lang } = await params;
@@ -30,6 +31,10 @@ export const generateStaticParams = () => {
   return supportedLangs.map((lang) => ({ lang }));
 };
 
+const isStyledComponents = process.env.STYLE_LIB === 'styled-components';
+
+const StyleRegistry = isStyledComponents ? StyledComponentsRegistry : EmotionRegistry;
+
 const Layout: FC<{ children: ReactNode; params: Promise<{ lang: Lang }> }> = async ({
   children,
   params,
@@ -39,13 +44,13 @@ const Layout: FC<{ children: ReactNode; params: Promise<{ lang: Lang }> }> = asy
   return (
     <html lang={lang}>
       <body>
-        <StyleComponentRegistry>
+        <StyleRegistry>
           <ThemeProvider>
             <CssBaseline />
             <GlobalStyle />
             <Suspense>{children}</Suspense>
           </ThemeProvider>
-        </StyleComponentRegistry>
+        </StyleRegistry>
         <BaiduAnalytics />
         <GoogleAnalytics />
         <Analytics />

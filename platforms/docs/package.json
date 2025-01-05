@@ -38,7 +38,9 @@
   "peerDependencies": {
     "react": ">=18.0.0",
     "react-dom": ">=18.0.0",
-    "styled-components": ">=6.0.0"
+    "styled-components": ">=6.0.0",
+    "@emotion/react": ">=10.0.0",
+    "@emotion/cache": ">=10.0.0"
   },
   "devDependencies": {
     "@mapbox/rehype-prism": "^0.9.0",
