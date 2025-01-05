@@ -5,7 +5,6 @@ import BaiduAnalytics from '@docs/components/BaiduAnalytics';
 import CssBaseline from '@docs/components/CssBaseline';
 import GlobalStyle from '@docs/components/GlobalStyle';
 import GoogleAnalytics from '@docs/components/GoogleAnalytics';
-import StyledComponentsRegistry from '@docs/components/StyledComponentsRegistry';
 import ThemeProvider from '@docs/components/ThemeProvider/ThemeProvider';
 import { Lang, locales, supportedLangs } from '@docs/locales';
 
@@ -39,13 +38,11 @@ const Layout: FC<{ children: ReactNode; params: Promise<{ lang: Lang }> }> = asy
   return (
     <html lang={lang}>
       <body>
-        <StyledComponentsRegistry>
           <ThemeProvider>
             <CssBaseline />
             <GlobalStyle />
             <Suspense>{children}</Suspense>
           </ThemeProvider>
-        </StyledComponentsRegistry>
         <BaiduAnalytics />
         <GoogleAnalytics />
         <Analytics />

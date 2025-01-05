@@ -55,7 +55,7 @@ const styled = <
     shouldForwardProp: isStyledComponent
       ? undefined
       : (shouldForwardProp as ShouldForwardProp<ForwardedProps>),
-    ...(!isProduction && { prefix: displayName || undefined }),
+    ...(!isProduction && { label: displayName || undefined }),
   });
 
   const overrideCreateStyledComponent = <

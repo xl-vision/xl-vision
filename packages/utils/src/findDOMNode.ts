@@ -13,7 +13,6 @@ const findDOMNode = <T = Element | Text>(
   }
   if (!isReact19) {
     // @ts-expect-error findDOMNode is deprecated
-    // eslint-disable-next-line react/no-find-dom-node
     return ReactDOM.findDOMNode(node) as unknown as T;
   }
 

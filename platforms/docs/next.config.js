@@ -18,7 +18,23 @@ module.exports = async () => {
   const nextConfig = {
     reactStrictMode: true,
     compiler: {
-      styledComponents: true,
+      // styledComponents: true,
+      // emotion: {
+      //   importMap: {
+      //     '@xl-vision/react': {
+      //       styled: {
+      //           canonicalImport: ['@xl-vision/styled-engine', 'styled'],
+      //           styledBaseImport: ['@xl-vision/react/styles', 'styled'],
+      //       },
+      //     },
+      //     '@xl-vision/styled-engine': {
+      //       styled: {
+      //         canonicalImport: ['@emotion/styled', 'default'],
+      //         styledBaseImport:  ['@xl-vision/styled-engine/styled', 'default'],
+      //       }
+      //     }
+      //   }
+      // }
     },
     eslint: {
       ignoreDuringBuilds: true,
@@ -28,7 +44,6 @@ module.exports = async () => {
     },
     // pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
     webpack: (config, { defaultLoaders }) => {
-
       // config.resolve.alias = {
       //   ...config.resolve.alias,
       // }
@@ -68,9 +83,9 @@ module.exports = async () => {
         resolve: {
           alias: {
             'react-dom': 'next/dist/compiled/react-dom',
-            'react': 'next/dist/compiled/react'
-          }
-        }
+            react: 'next/dist/compiled/react',
+          },
+        },
       });
 
       return config;

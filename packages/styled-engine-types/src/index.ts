@@ -1,6 +1,6 @@
 import CSS from 'csstype';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { ComponentProps, ComponentType, JSX, JSXElementConstructor } from 'react';
+import { ComponentProps, ComponentType, ExoticComponent, JSX, JSXElementConstructor } from 'react';
 
 export type CSSProperties = CSS.PropertiesFallback<string | number>;
 
@@ -45,6 +45,8 @@ type StyledComponentInterpolation = Pick<
   keyof StyledComponent<any, any>
 >;
 
+export type Theme = {};
+
 export type PropsOf<C extends keyof JSX.IntrinsicElements | JSXElementConstructor<any>> =
   JSX.LibraryManagedAttributes<C, ComponentProps<C>>;
 
@@ -59,7 +61,13 @@ export type StyledComponent<InnerProps extends object, StyleProps extends object
 >;
 
 export type CreateStyledComponent<ComponentProps extends object> = {
-  <StyleProps extends object = {}>(
+  <
+    StyleProps extends {
+      theme?: Theme;
+    } = {
+      theme?: Theme;
+    },
+  >(
     first: TemplateStringsArray | CSSObject | FunctionInterpolation<ComponentProps & StyleProps>,
     ...styles: Array<Interpolation<ComponentProps & StyleProps>>
   ): StyledComponent<ComponentProps, StyleProps>;
@@ -71,7 +79,7 @@ export type ShouldForwardProp<ForwardedProps extends PropertyKey> = (
 
 /** Same as StyledOptions but shouldForwardProp must be a type guard */
 export type FilteringStyledOptions<Props, ForwardedProps extends keyof Props = keyof Props> = {
-  prefix?: string;
+  label?: string;
   shouldForwardProp?: ShouldForwardProp<ForwardedProps>;
   target?: string;
 };
@@ -86,7 +94,9 @@ export type Styled = {
   ): CreateStyledComponent<Pick<ExtractProps<Tag>, ForwardedProps>>;
 };
 
-export type GlobalStyleComponent<P> = ComponentType<P>;
+export type GlobalStyleComponent<P> =
+  | ComponentType<P & { theme?: Theme }>
+  | ExoticComponent<P & { theme?: Theme }>;
 
 export type CreateGlobalStyle = {
   <P extends object = {}>(
