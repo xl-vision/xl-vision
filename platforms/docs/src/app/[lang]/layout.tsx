@@ -7,6 +7,7 @@ import GlobalStyle from '@docs/components/GlobalStyle';
 import GoogleAnalytics from '@docs/components/GoogleAnalytics';
 import ThemeProvider from '@docs/components/ThemeProvider/ThemeProvider';
 import { Lang, locales, supportedLangs } from '@docs/locales';
+import StyleComponentRegistry from '@docs/components/StyleComponentRegistry';
 
 export const generateMetadata = async ({ params }: { params: Promise<{ lang: Lang }> }) => {
   const { lang } = await params;
@@ -38,11 +39,13 @@ const Layout: FC<{ children: ReactNode; params: Promise<{ lang: Lang }> }> = asy
   return (
     <html lang={lang}>
       <body>
+        <StyleComponentRegistry>
           <ThemeProvider>
             <CssBaseline />
             <GlobalStyle />
             <Suspense>{children}</Suspense>
           </ThemeProvider>
+        </StyleComponentRegistry>
         <BaiduAnalytics />
         <GoogleAnalytics />
         <Analytics />

@@ -61,13 +61,7 @@ export type StyledComponent<InnerProps extends object, StyleProps extends object
 >;
 
 export type CreateStyledComponent<ComponentProps extends object> = {
-  <
-    StyleProps extends {
-      theme?: Theme;
-    } = {
-      theme?: Theme;
-    },
-  >(
+  <StyleProps extends object>(
     first: TemplateStringsArray | CSSObject | FunctionInterpolation<ComponentProps & StyleProps>,
     ...styles: Array<Interpolation<ComponentProps & StyleProps>>
   ): StyledComponent<ComponentProps, StyleProps>;
@@ -91,15 +85,13 @@ export type Styled = {
   >(
     tag: Tag,
     options?: FilteringStyledOptions<PropsOf<Tag>, ForwardedProps>,
-  ): CreateStyledComponent<Pick<ExtractProps<Tag>, ForwardedProps>>;
+  ): CreateStyledComponent<Pick<ExtractProps<Tag> & { theme?: Theme }, ForwardedProps>>;
 };
 
-export type GlobalStyleComponent<P> =
-  | ComponentType<P & { theme?: Theme }>
-  | ExoticComponent<P & { theme?: Theme }>;
+export type GlobalStyleComponent<P> = ComponentType<P> | ExoticComponent<P>;
 
 export type CreateGlobalStyle = {
-  <P extends object = {}>(
+  <P extends { theme?: Theme } = { theme?: Theme }>(
     first: TemplateStringsArray | CSSObject | FunctionInterpolation<P>,
     ...styles: Array<Interpolation<P>>
   ): GlobalStyleComponent<P>;
