@@ -1,20 +1,20 @@
-import { cookies } from 'next/headers'
-import { FC } from 'react';
+import { cookies } from 'next/headers';
+import { cloneElement, FC, ReactElement } from 'react';
 
 export type CookieProviderProps = {
-    cookieKey: string;
-    children: FC<{cookieValue?: string }>
+  cookiekey: string;
+  children: ReactElement<{ cookieValue?: string }>;
 };
 
+const CookieProvider: FC<CookieProviderProps> = async ({ cookiekey, children }) => {
+  const cookieStore = await cookies();
 
-const CookieProvider: FC<CookieProviderProps> = async (props) => {
-    const { children: C, cookieKey } = props;
+  const cookieValue = cookieStore.get(cookiekey)?.value;
 
-    const cookieStore = await cookies()
-
-    const value = cookieStore.get(cookieKey)?.value
-
-    return <C cookieValue={value} />
+  return cloneElement(children, {
+    ...children.props,
+    cookieValue,
+  });
 };
 
 export default CookieProvider;

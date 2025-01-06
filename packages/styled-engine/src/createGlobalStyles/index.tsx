@@ -1,6 +1,6 @@
 import { Global, css } from '@emotion/react';
-import { CreateGlobalStyle,  Interpolation } from '@xl-vision/styled-engine-types';
-import { useContext, } from 'react';
+import { CreateGlobalStyle, Interpolation } from '@xl-vision/styled-engine-types';
+import { useContext } from 'react';
 import ThemeContext from '../ThemeContext';
 
 const createGlobalStyle: CreateGlobalStyle = (first, ...styles) => {

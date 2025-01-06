@@ -3,17 +3,16 @@
 import { ThemeInput, ThemeProvider as XlThemeProvider } from '@xl-vision/react';
 import * as libLocales from '@xl-vision/react/locale';
 import darkTheme from '@xl-vision/react/themes/dark';
+import Cookie from 'js-cookie';
 import { ReactNode, FC, useState, useCallback, useMemo } from 'react';
+import { DARK_MODE_KEY } from './constants';
 import ThemeContext, { ThemeContextProps } from './ThemeContext';
 import useLocale from '../../hooks/useLocale';
-import Cookie from 'js-cookie'
 
 export type InnerThemeProviderProps = {
   cookieValue?: string;
   children: ReactNode;
 };
-
-export const KEY = 'DARK_MODE';
 
 const InnerThemeProvider: FC<InnerThemeProviderProps> = (props) => {
   const { children, cookieValue } = props;
@@ -30,7 +29,7 @@ const InnerThemeProvider: FC<InnerThemeProviderProps> = (props) => {
     const fn = typeof dark === 'function' ? dark : () => dark;
     setDark((prev) => {
       const result = fn(prev);
-      Cookie.set(KEY, result ? 'dark' : 'light', { expires: 30, sameSite: 'strict' });
+      Cookie.set(DARK_MODE_KEY, result ? 'dark' : 'light', { expires: 30, sameSite: 'strict' });
       return result;
     });
   }, []);
@@ -58,6 +57,5 @@ const InnerThemeProvider: FC<InnerThemeProviderProps> = (props) => {
     </ThemeContext.Provider>
   );
 };
-
 
 export default InnerThemeProvider;

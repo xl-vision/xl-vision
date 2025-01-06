@@ -1,18 +1,14 @@
-import { FC, } from 'react';
-import InnerThemeProvider, { KEY, InnerThemeProviderProps } from './InnerThemeProvider';
+import { FC } from 'react';
+import { DARK_MODE_KEY } from './constants';
+import InnerThemeProvider, { InnerThemeProviderProps } from './InnerThemeProvider';
 import CookieProvider from '../CookieProvider';
 
-export type ThemeProviderProps = Omit<InnerThemeProviderProps, 'value'>
+export type ThemeProviderProps = Omit<InnerThemeProviderProps, 'cookieValue'>;
 
 const ThemeProvider: FC<ThemeProviderProps> = (props) => {
-
-  const { children } = props;
-
   return (
-    <CookieProvider cookieKey={KEY}>
-      {({ cookieValue }) =>
-        <InnerThemeProvider {...props} cookieValue={cookieValue}>{children}</InnerThemeProvider>
-      }
+    <CookieProvider cookiekey={DARK_MODE_KEY}>
+      <InnerThemeProvider {...props} />
     </CookieProvider>
   );
 };
