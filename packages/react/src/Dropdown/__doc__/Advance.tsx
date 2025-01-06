@@ -9,7 +9,7 @@ export type WrapperProps = {
   [key: string]: any;
 };
 
-const Wrapper = forwardRef<unknown, WrapperProps>((props, ref) => {
+const Wrapper = forwardRef<typeof Tooltip, WrapperProps>((props, ref) => {
   const { tooltipProps, children, ...others } = props;
 
   return <Tooltip {...tooltipProps}>{cloneElement(children, { ...others, ref })}</Tooltip>;

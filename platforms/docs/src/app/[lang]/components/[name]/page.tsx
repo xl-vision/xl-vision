@@ -10,7 +10,9 @@ export const generateStaticParams = () => {
 
 export const generateMetadata = createGenerateMetadata(componentRoutes);
 
-const Page: FC<{ params: { name: string } }> = ({ params: { name } }) => {
+const Page: FC<{ params: Promise<{ name: string }> }> = async ({ params }) => {
+  const { name } = await params;
+
   return <Docs name={name} routes={componentRoutes} />;
 };
 

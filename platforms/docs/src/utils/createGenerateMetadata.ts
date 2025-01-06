@@ -3,7 +3,9 @@ import { RouteType } from '@docs/routes';
 import { getRouteByName } from './route';
 
 export default (routes: Array<RouteType>) => {
-  return ({ params: { lang, name } }: { params: { lang: Lang; name: string } }) => {
+  return async ({ params }: { params: Promise<{ lang: Lang; name: string }> }) => {
+    const { lang, name } = await params;
+
     const route = getRouteByName(routes, name);
 
     if (!route) {

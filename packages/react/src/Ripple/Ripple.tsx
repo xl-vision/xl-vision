@@ -92,8 +92,8 @@ const Ripple = forwardRef<RippleRef, RippleProps>((props, ref) => {
   // key
   const keyRef = useRef(0);
   const containerRef = useRef<HTMLDivElement>(null);
-  const startTimerRef = useRef<NodeJS.Timeout>();
-  const startTimerCommitRef = useRef<() => void>();
+  const startTimerRef = useRef<number>(null);
+  const startTimerCommitRef = useRef<() => void>(null);
   const ignoreMouseDonwRef = useRef(false);
 
   const [pulsateRipple, setPulsateRipple] = useState<ReactElement>();
@@ -152,7 +152,7 @@ const Ripple = forwardRef<RippleRef, RippleProps>((props, ref) => {
 
       if (startTimerRef.current) {
         clearTimeout(startTimerRef.current);
-        startTimerRef.current = undefined;
+        startTimerRef.current = null;
       }
 
       const el = (e as UIEvent).currentTarget
@@ -187,10 +187,10 @@ const Ripple = forwardRef<RippleRef, RippleProps>((props, ref) => {
         startTimerCommitRef.current = () => {
           commit(x, y, size);
         };
-        startTimerRef.current = setTimeout(() => {
+        startTimerRef.current = window.setTimeout(() => {
           if (startTimerCommitRef.current) {
             startTimerCommitRef.current();
-            startTimerCommitRef.current = undefined;
+            startTimerCommitRef.current = null;
           }
         }, DELAY_RIPPLE);
       } else {
@@ -205,10 +205,10 @@ const Ripple = forwardRef<RippleRef, RippleProps>((props, ref) => {
     setPulsateRipple(undefined);
     if (startTimerRef.current) {
       clearTimeout(startTimerRef.current);
-      startTimerRef.current = undefined;
+      startTimerRef.current = null;
       if (startTimerCommitRef.current) {
         startTimerCommitRef.current();
-        startTimerCommitRef.current = undefined;
+        startTimerCommitRef.current = null;
       }
     }
     if (exitAfterEnter) {

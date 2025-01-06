@@ -10,16 +10,6 @@ import useIsDebugMode from '@docs/hooks/useIsDebugMode';
 import useLocale from '@docs/hooks/useLocale';
 import Code from './Code';
 
-export type DemoBoxProps = {
-  children: [ReactNode, ReactNode, ReactNode];
-  jsCode: string;
-  // tsCode: string;
-  jsCodeNode: ReactNode;
-  tsCodeNode: ReactNode;
-  debug?: boolean;
-  id?: string;
-};
-
 const Wrapper = styled('div')<{ debug: boolean }>(({ theme, styleProps }) => {
   const { sizes, colors } = theme;
 
@@ -107,6 +97,16 @@ const ExpandWrapper = styled(DownOutlined)<{ expand: boolean }>(({ theme, styleP
     transform: `rotate(${expand ? '0deg' : '-90deg'})`,
   };
 });
+
+export type DemoBoxProps = {
+  children: [ReactNode, ReactNode, ReactNode];
+  jsCode: string;
+  // tsCode: string;
+  jsCodeNode: ReactNode;
+  tsCodeNode: ReactNode;
+  debug?: boolean;
+  id?: string;
+};
 
 const DemoBox: FC<DemoBoxProps> = ({
   id,

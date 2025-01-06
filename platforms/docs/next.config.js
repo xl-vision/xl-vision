@@ -17,20 +17,21 @@ module.exports = async () => {
    */
   const nextConfig = {
     reactStrictMode: true,
-    swcMinify: true,
-    compiler: {
-      styledComponents: true,
-    },
     eslint: {
       ignoreDuringBuilds: true,
     },
     experimental: {
       typedRoutes: false,
+      typedEnv: true,
     },
     webpack: (config, { defaultLoaders }) => {
-      config.module.rules.push({
+      // const isStyledComponents = process.env.STYLE_LIB === 'styled-components';
+      // if (isStyledComponents) {
+      //   config.resolve.alias['@xl-vision/styled-engine'] = '@xl-vision/styled-engine-sc';
+      // }
+
+      config.module.rules.unshift({
         test: /\.mdx?$/,
-        exclude: /node_modules/,
         oneOf: [
           {
             resourceQuery: /locale/,
@@ -62,6 +63,12 @@ module.exports = async () => {
             },
           },
         ],
+        resolve: {
+          alias: {
+            'react-dom': 'next/dist/compiled/react-dom',
+            react: 'next/dist/compiled/react',
+          },
+        },
       });
 
       return config;

@@ -187,7 +187,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
   const innerFocusRef = useRef(false);
 
-  const scrollLockerRef = useRef<ScrollLocker>();
+  const scrollLockerRef = useRef<ScrollLocker>(null);
 
   const [container, setContainer] = useState<HTMLElement | null>();
 

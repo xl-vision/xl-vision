@@ -8,10 +8,10 @@ export type ResizeObserverHandler<T extends Element = Element> = (
 ) => void;
 
 const useResizeObserver = <T extends Element>(onResizeObserver: ResizeObserverHandler<T>) => {
-  const resizeObserverRef = useRef<ResizeObserver>();
-  const prevElementRef = useRef<T | null>();
-  const widthRef = useRef<number>();
-  const heightRef = useRef<number>();
+  const resizeObserverRef = useRef<ResizeObserver>(null);
+  const prevElementRef = useRef<T>(null);
+  const widthRef = useRef<number>(null);
+  const heightRef = useRef<number>(null);
 
   const handleResizeObserver: ResizeObserverCallback = useConstantFn((entries) => {
     if (!entries.length) {

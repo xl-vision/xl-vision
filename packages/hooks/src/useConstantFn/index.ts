@@ -9,7 +9,7 @@ import useLatestRef from '../useLatestRef';
 const useConstantFn = <Fn extends (...args: any) => any>(fn: Fn) => {
   const fnRef = useLatestRef(fn);
 
-  const constantFnRef = useRef<Fn>();
+  const constantFnRef = useRef<Fn>(null);
 
   if (!constantFnRef.current) {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-argument

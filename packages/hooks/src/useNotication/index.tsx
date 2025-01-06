@@ -10,7 +10,7 @@ import {
   useRef,
   ComponentType,
   ReactNode,
-  ReactFragment,
+  ExoticComponent,
 } from 'react';
 import { flushSync } from 'react-dom';
 
@@ -29,7 +29,7 @@ export type NoticationContainerProps<NCP> = NCP & {
 export type NoticationContainerType<NCP> =
   | ComponentType<NoticationContainerProps<NCP>>
   | string
-  | ReactFragment;
+  | ExoticComponent;
 
 export type NoticationOptions<NCP> = Omit<NoticationContainerProps<NCP>, 'children'> & {
   maxCount?: number;

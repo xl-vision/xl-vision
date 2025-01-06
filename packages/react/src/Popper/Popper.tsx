@@ -46,6 +46,7 @@ import {
 import Portal, { PortalContainerType } from '../Portal';
 import { useTheme } from '../ThemeProvider';
 import Transition from '../Transition';
+import { getNodeRef } from '../utils/ref';
 import { increaseZindex } from '../utils/zIndexManger';
 
 export type PopperTrigger = 'hover' | 'focus' | 'click' | 'contextMenu';
@@ -209,7 +210,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
 
   const forkPopperRef = useForkRef(ref, getPopper);
 
-  const forkReferenceRef = useForkRef((child as { ref?: Ref<unknown> }).ref, reference);
+  const forkReferenceRef = useForkRef(getNodeRef(child), reference);
 
   useEffect(() => {
     if (open) {

@@ -1,0 +1,62 @@
+{
+  "name": "@xl-vision/styled-engine-sc",
+  "version": "0.1.1-alpha.19",
+  "description": "xl-vision Styles - The styling solution of xl-vision.",
+  "author": "Rhys Xia <xrs4433@outlook.com>",
+  "license": "MIT",
+  "main": "legacy/index.js",
+  "module": "modern/index.js",
+  "types": "legacy/index.d.ts",
+  "unpkg": "dist/index.production.min.js",
+  "files": [
+    "legacy",
+    "modern",
+    "dist"
+  ],
+  "keywords": [
+    "xl-vision",
+    "react",
+    "styles"
+  ],
+  "homepage": "https://xl-vision.8910.xyz/components/style",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xl-vision/xl-vision.git",
+    "directory": "packages/styled-engine"
+  },
+  "scripts": {
+    "build:legacy": "node ../../scripts/compile legacy",
+    "build:modern": "node ../../scripts/compile modern",
+    "build": "npm run build:legacy && npm run build:modern",
+    "prepublishOnly": "npm run build"
+  },
+  "bugs": {
+    "url": "https://github.com/xl-vision/xl-vision/issues"
+  },
+  "dependencies": {
+    "@xl-vision/styled-engine-types": "workspace:^",
+    "prop-types": "^15.8.1"
+  },
+  "devDependencies": {
+    "@types/prop-types": "^15.7.12"
+  },
+  "peerDependencies": {
+    "@babel/runtime": "^7.15.4",
+    "@types/react": ">=18.0.0",
+    "@types/styled-components": "^5.1.26",
+    "react": ">=18.0.0",
+    "styled-components": ">=6.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    },
+    "@types/styled-components": {
+      "optional": true
+    }
+  },
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  }
+}

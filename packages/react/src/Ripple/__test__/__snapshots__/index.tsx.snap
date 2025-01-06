@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Ripple test render 1`] = `
-.c0 {
+.emotion-0 {
   position: absolute;
   top: 0;
   right: 0;
@@ -17,7 +17,7 @@ exports[`Ripple test render 1`] = `
   <div>
     click me
     <div
-      class="c0 xl-ripple"
+      class="xl-ripple emotion-0"
     />
   </div>
 </div>
