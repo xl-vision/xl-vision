@@ -18,7 +18,9 @@ export type XlOptions = {
   slot?: string;
 };
 
-const shouldForwardProp = (prop: PropertyKey) => prop !== 'theme' && prop !== 'styleProps';
+const NOT_FORWARD_PROPS: Array<PropertyKey> = ['theme', 'styleProps', 'as'];
+
+const shouldForwardProp = (prop: PropertyKey) => NOT_FORWARD_PROPS.indexOf(prop) === -1;
 
 const middleline = (str: string) => {
   const separator = '-';

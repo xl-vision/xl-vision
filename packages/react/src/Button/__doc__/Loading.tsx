@@ -18,18 +18,18 @@ const Wrapper = styled('div')(() => {
 const Loading = () => {
   const [loading, setLoading] = useState(false);
 
-  const timerRef = useRef<NodeJS.Timeout>();
+  const timerRef = useRef<number>(null);
 
   const handleLoading = useCallback(() => {
     setLoading(true);
-    timerRef.current = setTimeout(() => {
+    timerRef.current = window.setTimeout(() => {
       setLoading(false);
     }, 3000);
   }, []);
 
   useEffect(() => {
     return () => {
-      if (timerRef.current !== undefined) {
+      if (timerRef.current) {
         clearTimeout(timerRef.current);
       }
     };

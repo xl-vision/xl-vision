@@ -1,5 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CssBaseline basic renders 1`] = `<head />`;
+exports[`CssBaseline basic renders 1`] = `
+<head>
+  <style
+    name="emotion-insertion-point"
+  />
+  <style
+    data-emotion="css-global"
+    data-s=""
+  >
+    
+  </style>
+  <style
+    data-styled="active"
+    data-styled-version="6.1.13"
+  />
+</head>
+`;
 
-exports[`CssBaseline supports theme overrides 1`] = `<head />`;
+exports[`CssBaseline supports theme overrides 1`] = `
+<head>
+  <style
+    name="emotion-insertion-point"
+  />
+  <style
+    data-emotion="css-global"
+    data-s=""
+  >
+    
+  </style>
+  <style
+    data-styled="active"
+    data-styled-version="6.1.13"
+  />
+</head>
+`;

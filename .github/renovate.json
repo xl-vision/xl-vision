@@ -18,6 +18,9 @@
         "@types/react-dom",
         "csstype",
         "styled-components",
+        "@emotion/react",
+        "@emotion/styled",
+        "@emotion/cache",
         "node",
         "@types/node",
         "pnpm"
