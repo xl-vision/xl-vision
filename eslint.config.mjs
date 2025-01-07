@@ -1,9 +1,15 @@
 import confusingBrowserGlobals from 'confusing-browser-globals';
 import globals from "globals";
 import babelParser from "@babel/eslint-parser"
-import airbnb from 'eslint-config-airbnb'
+import airbnbConfig from 'eslint-config-airbnb'
+import airbnbHookConfig from 'eslint-config-airbnb/hooks'
+import jsxRuntimConfig from 'eslint-plugin-react/configs/jsx-runtime.js'
+import prettierRecommendedConfig from 'eslint-plugin-prettier/recommended'
+import prettierConfig from 'eslint-config-prettier'
+import tseslint from 'typescript-eslint';
+import unicorn from 'eslint-plugin-unicorn'
 
-export default [airbnb, ,{
+export default [{
     ignores: [
         "**/legacy",
         "**/modern",
@@ -16,187 +22,187 @@ export default [airbnb, ,{
         "packages/icons/third",
         "packages/icons/scripts/template",
     ],
+}, {
+    ...airbnbConfig,
+    ...airbnbHookConfig,
+    ...jsxRuntimConfig,
+    ...prettierRecommendedConfig,
+    ...prettierConfig
+}, {
     languageOptions: {
-      globals:  {
-        ...globals.es2016,
-        ...globals.node,
-        ...globals.browser,
-        ...globals.jest
-      },
-      parser: babelParser,
-      parserOptions: {
-        ecmaVersion: 2018,
-        requireConfigFile: false,
-        babelOptions: {
-          plugins: [],
+        globals: {
+            ...globals.es2016,
+            ...globals.node,
+            ...globals.browser,
+            ...globals.jest
         },
-      },
-    },
-  settings: {
-    react: {
-      version: 'detect',
-    },
-    'import/parsers': {
-      '@typescript-eslint/parser': ['.ts', '.tsx'],
-    },
-    'import/resolver': {
-      typescript: {
-        alwaysTryTypes: true,
-        project: ['packages/*/tsconfig.json', 'platforms/*/tsconfig.json'],
-      },
-    },
-  },
- 
-  extends: [
-    'airbnb',
-    'airbnb/hooks',
-    'plugin:react/jsx-runtime',
-    'plugin:prettier/recommended',
-    'prettier',
-  ],
-  plugins: ['unicorn', 'import'],
-  rules: {
-    'import/no-extraneous-dependencies': [
-      'error',
-      {
-        // packageDir: __dirname,
-        devDependencies: ['scripts/**', './.*.js'],
-      },
-    ],
-    'import/no-unresolved': 'error',
-    'import/order': [
-      'error',
-      {
-        alphabetize: {
-          order: 'asc' /* sort in ascending order. Options: ['ignore', 'asc', 'desc'] */,
-          caseInsensitive: true /* ignore case. Options: [true, false] */,
+        parser: babelParser,
+        parserOptions: {
+            ecmaVersion: 2018,
+            requireConfigFile: false,
+            babelOptions: {
+                plugins: [],
+            },
         },
-        groups: [['builtin', 'external'], 'internal'],
-      },
-    ],
-    // Strict, airbnb is using warn; allow warn and error for dev environments
-    'no-console': ['error', { allow: ['warn', 'error'] }],
-    'nonblock-statement-body-position': 'error',
-    'no-plusplus': 'off',
-    'no-param-reassign': 'off',
-    'no-restricted-globals': ['error'].concat(confusingBrowserGlobals),
-    'no-underscore-dangle': 'off',
-    'no-nested-ternary': 'off',
-    'no-use-before-define': 'off',
-    'no-multi-assign': 'off',
-    'no-continue': 'off',
-    'consistent-return': [
-      'off',
-      {
-        treatUndefinedAsUnspecified: true,
-      },
-    ],
-    'react/jsx-uses-react': 'off',
-    'react/react-in-jsx-scope': 'off',
-    'react-hooks/exhaustive-deps': [
-      'error',
-      {
-        // custom hooks
-        additionalHooks: '(useIsomorphicLayoutEffect|useEnhancedMemo)',
-      },
-    ],
-    'react/jsx-handler-names': [
-      'error',
-      {
-        eventHandlerPrefix: 'handle',
-        eventHandlerPropPrefix: 'on',
-        checkLocalVariables: true,
-      },
-    ],
-    'react/function-component-definition': ['error', { namedComponents: 'arrow-function' }],
-    'react/jsx-no-useless-fragment': ['error', { allowExpressions: true }],
-    'react/forbid-prop-types': 'error',
-    'react/jsx-boolean-value': ['error', 'always'],
-    'react/display-name': 'error',
-    'react/jsx-props-no-spreading': 'off',
-    'react/require-default-props': 'off',
-    'react/jsx-sort-props': [
-      'error',
-      {
-        ignoreCase: true,
-        callbacksLast: true,
-      },
-    ],
-    'react/sort-prop-types': [
-      'error',
-      {
-        ignoreCase: true,
-        requiredFirst: true,
-        sortShapeProp: true,
-        callbacksLast: true,
-      },
-    ],
-    'prefer-destructuring': [
-      'error',
-      {
-        VariableDeclarator: { object: true, array: false },
-        AssignmentExpression: {
-          array: false,
-          object: false,
+    },
+    settings: {
+        react: {
+            version: 'detect',
         },
-      },
-    ],
-    'unicorn/filename-case': [
-      'error',
-      {
-        cases: {
-          camelCase: true,
-          pascalCase: true,
+        'import/parsers': {
+            '@typescript-eslint/parser': ['.ts', '.tsx'],
         },
-        ignore: [/^.*\.config\.js$/, /^en-US\.ts$/, /^zh-CN\.ts$/],
-      },
-    ],
-    'unicorn/better-regex': 'error',
-    'unicorn/expiring-todo-comments': 'error',
-    'unicorn/consistent-function-scoping': 'error',
-    'unicorn/import-index': 'error',
-    // forbid passing object as default value to props of function component
-    // 'unicorn/no-object-as-default-parameter': 'error',
-    'unicorn/prefer-query-selector': 'off',
-    'unicorn/no-abusive-eslint-disable': 'error',
-  },
-  overrides: [
-    {
-      files: ['*.ts', '*.tsx'],
-      parser: '@typescript-eslint/parser',
-      parserOptions: {
-        sourceType: 'module',
-        project: './tsconfig.json',
-      },
-      extends: [
+        'import/resolver': {
+            typescript: {
+                alwaysTryTypes: true,
+                project: ['packages/*/tsconfig.json', 'platforms/*/tsconfig.json'],
+            },
+        },
+    },
+    plugins: ['unicorn', 'import'],
+    rules: {
+        'import/no-extraneous-dependencies': [
+            'error',
+            {
+                // packageDir: __dirname,
+                devDependencies: ['scripts/**', './.*.js'],
+            },
+        ],
+        'import/no-unresolved': 'error',
+        'import/order': [
+            'error',
+            {
+                alphabetize: {
+                    order: 'asc' /* sort in ascending order. Options: ['ignore', 'asc', 'desc'] */,
+                    caseInsensitive: true /* ignore case. Options: [true, false] */,
+                },
+                groups: [['builtin', 'external'], 'internal'],
+            },
+        ],
+        // Strict, airbnb is using warn; allow warn and error for dev environments
+        'no-console': ['error', { allow: ['warn', 'error'] }],
+        'nonblock-statement-body-position': 'error',
+        'no-plusplus': 'off',
+        'no-param-reassign': 'off',
+        'no-restricted-globals': ['error'].concat(confusingBrowserGlobals),
+        'no-underscore-dangle': 'off',
+        'no-nested-ternary': 'off',
+        'no-use-before-define': 'off',
+        'no-multi-assign': 'off',
+        'no-continue': 'off',
+        'consistent-return': [
+            'off',
+            {
+                treatUndefinedAsUnspecified: true,
+            },
+        ],
+        'react/jsx-uses-react': 'off',
+        'react/react-in-jsx-scope': 'off',
+        'react-hooks/exhaustive-deps': [
+            'error',
+            {
+                // custom hooks
+                additionalHooks: '(useIsomorphicLayoutEffect|useEnhancedMemo)',
+            },
+        ],
+        'react/jsx-handler-names': [
+            'error',
+            {
+                eventHandlerPrefix: 'handle',
+                eventHandlerPropPrefix: 'on',
+                checkLocalVariables: true,
+            },
+        ],
+        'react/function-component-definition': ['error', { namedComponents: 'arrow-function' }],
+        'react/jsx-no-useless-fragment': ['error', { allowExpressions: true }],
+        'react/forbid-prop-types': 'error',
+        'react/jsx-boolean-value': ['error', 'always'],
+        'react/display-name': 'error',
+        'react/jsx-props-no-spreading': 'off',
+        'react/require-default-props': 'off',
+        'react/jsx-sort-props': [
+            'error',
+            {
+                ignoreCase: true,
+                callbacksLast: true,
+            },
+        ],
+        'react/sort-prop-types': [
+            'error',
+            {
+                ignoreCase: true,
+                requiredFirst: true,
+                sortShapeProp: true,
+                callbacksLast: true,
+            },
+        ],
+        'prefer-destructuring': [
+            'error',
+            {
+                VariableDeclarator: { object: true, array: false },
+                AssignmentExpression: {
+                    array: false,
+                    object: false,
+                },
+            },
+        ],
+        'unicorn/filename-case': [
+            'error',
+            {
+                cases: {
+                    camelCase: true,
+                    pascalCase: true,
+                },
+                ignore: [/^.*\.config\.js$/, /^en-US\.ts$/, /^zh-CN\.ts$/],
+            },
+        ],
+        'unicorn/better-regex': 'error',
+        'unicorn/expiring-todo-comments': 'error',
+        'unicorn/consistent-function-scoping': 'error',
+        'unicorn/import-index': 'error',
+        // forbid passing object as default value to props of function component
+        // 'unicorn/no-object-as-default-parameter': 'error',
+        'unicorn/prefer-query-selector': 'off',
+        'unicorn/no-abusive-eslint-disable': 'error',
+    },
+}, {
+    files: ['*.ts', '*.tsx'],
+    languageOptions: {
+        parser: tseslint.parser,
+        parserOptions: {
+            sourceType: 'module',
+            project: './tsconfig.json',
+        },
+    },
+    extends: [
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
         'plugin:@typescript-eslint/recommended',
         'plugin:import/typescript',
-      ],
-      plugins: ['@typescript-eslint'],
-      rules: {
+    ],
+    plugins: ['@typescript-eslint'],
+    rules: {
         'no-unused-vars': 'off',
         'no-unused-expressions': 'off',
         'no-shadow': 'off',
         'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx'] }],
         'import/extensions': [
-          'error',
-          'ignorePackages',
-          {
-            js: 'never',
-            mjs: 'never',
-            jsx: 'never',
-            ts: 'never',
-            tsx: 'never',
-          },
+            'error',
+            'ignorePackages',
+            {
+                js: 'never',
+                mjs: 'never',
+                jsx: 'never',
+                ts: 'never',
+                tsx: 'never',
+            },
         ],
         'import/no-cycle': 'off',
         '@typescript-eslint/restrict-template-expressions': 'off',
         '@typescript-eslint/array-type': [
-          'error',
-          {
-            default: 'generic',
-          },
+            'error',
+            {
+                default: 'generic',
+            },
         ],
         // '@typescript-eslint/member-ordering': [
         //   'error',
@@ -211,39 +217,39 @@ export default [airbnb, ,{
         '@typescript-eslint/no-unused-expressions': 'error',
         '@typescript-eslint/no-shadow': 'error',
         '@typescript-eslint/ban-types': [
-          'error',
-          {
-            extendDefaults: true,
-            types: {
-              '{}': false,
+            'error',
+            {
+                extendDefaults: true,
+                types: {
+                    '{}': false,
+                },
             },
-          },
         ],
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
         '@typescript-eslint/no-unused-vars': 'error',
         '@typescript-eslint/no-empty-function': 'error',
-      },
     },
-    // {
-    //   files: ['packages/*/src/**/*.ts', 'packages/*/src/**/*.tsx'],
-    //   rules: {
-    //     // 'import/no-unresolved': [
-    //     //   'error',
-    //     //   {
-    //     //     ignore: ['^react', '^react-dom'],
-    //     //   },
-    //     // ],
-    //   },
-    // },
-    {
-      files: [
+},
+// {
+//   files: ['packages/*/src/**/*.ts', 'packages/*/src/**/*.tsx'],
+//   rules: {
+//     // 'import/no-unresolved': [
+//     //   'error',
+//     //   {
+//     //     ignore: ['^react', '^react-dom'],
+//     //   },
+//     // ],
+//   },
+// },
+{
+    files: [
         'test/utils/**',
         'test/__test__/**',
         'packages/**/__test__/**',
         'packages/**/__doc__/**',
-      ],
-      rules: {
+    ],
+    rules: {
         'react/jsx-handler-names': 'off',
         'react/display-name': 'off',
         'react/button-has-type': 'off',
@@ -258,13 +264,11 @@ export default [airbnb, ,{
         '@typescript-eslint/no-unsafe-call': 'off',
         '@typescript-eslint/no-floating-promises': 'off',
         '@typescript-eslint/no-misused-promises': 'off',
-      },
     },
-    {
-      files: ['packages/**/__doc__/**'],
-      rules: {
+},
+{
+    files: ['packages/**/__doc__/**'],
+    rules: {
         'no-console': 'off',
-      },
     },
-  ],
 }];
