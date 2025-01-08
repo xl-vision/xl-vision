@@ -2,7 +2,6 @@
 /* eslint-disable import/no-dynamic-require */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-var-requires */
 
 import { act, render } from '@testing-library/react';
 import * as glob from 'glob';
@@ -13,6 +12,7 @@ describe('Demo', () => {
   });
   files.forEach((file) => {
     test(`renders ${file} correctly`, () => {
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
       const Demo = require(`../../${file}`).default;
       let container: HTMLElement;
       act(() => {

@@ -51,6 +51,9 @@ importers:
       '@emotion/styled':
         specifier: '>=10.0.0'
         version: 11.14.0(@emotion/react@11.14.0(@types/react@19.0.2)(react@19.0.0))(@types/react@19.0.2)(react@19.0.0)
+      '@emotion/utils':
+        specifier: ^1.4.2
+        version: 1.4.2
       '@eslint/eslintrc':
         specifier: ^3.2.0
         version: 3.2.0

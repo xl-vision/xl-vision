@@ -179,16 +179,18 @@ const Preview: FC<PreviewProps> = (props) => {
       cb();
       isFirstRef.current = false;
     } else {
-      const timer = timerRef.current;
-      timer && window.clearTimeout(timer);
+      if (timerRef.current) {
+        window.clearTimeout(timerRef.current);
+      }
       timerRef.current = window.setTimeout(cb, 500);
     }
   }, [code]);
 
   useEffect(() => {
     return () => {
-      const timer = timerRef.current;
-      timer && window.clearTimeout(timer);
+      if (timerRef.current) {
+        window.clearTimeout(timerRef.current);
+      }
     };
   }, []);
 
