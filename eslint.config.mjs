@@ -1,14 +1,28 @@
 import confusingBrowserGlobals from 'confusing-browser-globals';
 import globals from "globals";
 import babelParser from "@babel/eslint-parser"
-import airbnbConfig from 'eslint-config-airbnb'
-import airbnbHookConfig from 'eslint-config-airbnb/hooks'
 import jsxRuntimConfig from 'eslint-plugin-react/configs/jsx-runtime.js'
 import prettierRecommendedConfig from 'eslint-plugin-prettier/recommended'
 import prettierConfig from 'eslint-config-prettier'
 import tseslint from 'typescript-eslint';
 import unicorn from 'eslint-plugin-unicorn'
+import importPlugin from 'eslint-plugin-import'
+import importPluginTypescriptConfig from 'eslint-plugin-import/config/typescript.js'
+import path from "path";
+import { FlatCompat } from "@eslint/eslintrc";
+import { fileURLToPath } from "url";
 
+// mimic CommonJS variables -- not needed if using CommonJS
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const compat = new FlatCompat({
+    baseDirectory: __dirname
+});
+
+/**
+ * @type {import('eslint').Linter.Config[]}
+ */
 export default [{
     ignores: [
         "**/legacy",
@@ -22,13 +36,13 @@ export default [{
         "packages/icons/third",
         "packages/icons/scripts/template",
     ],
-}, {
-    ...airbnbConfig,
-    ...airbnbHookConfig,
-    ...jsxRuntimConfig,
-    ...prettierRecommendedConfig,
-    ...prettierConfig
-}, {
+},
+...compat.extends('airbnb', 'airbnb/hooks'),
+    jsxRuntimConfig,
+    prettierRecommendedConfig,
+    prettierConfig,
+{
+
     languageOptions: {
         globals: {
             ...globals.es2016,
@@ -59,7 +73,10 @@ export default [{
             },
         },
     },
-    plugins: ['unicorn', 'import'],
+    plugins: {
+        unicorn,
+        import: importPlugin
+    },
     rules: {
         'import/no-extraneous-dependencies': [
             'error',
@@ -165,21 +182,20 @@ export default [{
         'unicorn/prefer-query-selector': 'off',
         'unicorn/no-abusive-eslint-disable': 'error',
     },
-}, {
-    files: ['*.ts', '*.tsx'],
+},
+...tseslint.configs.recommendedTypeChecked.map(it => ({
+    ...it,
+    files: ['**/*.ts', '**/*.tsx'],
+})),
+    importPluginTypescriptConfig,
+{
+    files: ['**/*.ts', '**/*.tsx'],
     languageOptions: {
-        parser: tseslint.parser,
         parserOptions: {
-            sourceType: 'module',
-            project: './tsconfig.json',
+            projectService: true,
+            tsconfigRootDir: __dirname,
         },
     },
-    extends: [
-        'plugin:@typescript-eslint/recommended-requiring-type-checking',
-        'plugin:@typescript-eslint/recommended',
-        'plugin:import/typescript',
-    ],
-    plugins: ['@typescript-eslint'],
     rules: {
         'no-unused-vars': 'off',
         'no-unused-expressions': 'off',
@@ -216,15 +232,9 @@ export default [{
         // ],
         '@typescript-eslint/no-unused-expressions': 'error',
         '@typescript-eslint/no-shadow': 'error',
-        '@typescript-eslint/ban-types': [
-            'error',
-            {
-                extendDefaults: true,
-                types: {
-                    '{}': false,
-                },
-            },
-        ],
+        '@typescript-eslint/no-empty-object-type': 'error',
+        '@typescript-eslint/no-unsafe-function-type': 'error',
+        '@typescript-eslint/no-wrapper-object-types': 'error',
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
         '@typescript-eslint/no-unused-vars': 'error',
