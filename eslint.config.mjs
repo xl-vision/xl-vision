@@ -1,16 +1,19 @@
-import confusingBrowserGlobals from 'confusing-browser-globals';
-import globals from 'globals';
 import babelParser from '@babel/eslint-parser';
-import jsxRuntimConfig from 'eslint-plugin-react/configs/jsx-runtime.js';
-import prettierRecommendedConfig from 'eslint-plugin-prettier/recommended';
-import prettierConfig from 'eslint-config-prettier';
-import tseslint from 'typescript-eslint';
-import unicorn from 'eslint-plugin-unicorn';
-import importPlugin from 'eslint-plugin-import';
-import importPluginTypescriptConfig from 'eslint-plugin-import/config/typescript.js';
-import path from 'path';
 import { FlatCompat } from '@eslint/eslintrc';
+import confusingBrowserGlobals from 'confusing-browser-globals';
+import prettierConfig from 'eslint-config-prettier';
+import importX from 'eslint-plugin-import-x';
+import prettierRecommendedConfig from 'eslint-plugin-prettier/recommended';
+import react from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
+import unicorn from 'eslint-plugin-unicorn';
+import globals from 'globals';
+import path from 'path';
+import tseslint from 'typescript-eslint';
 import { fileURLToPath } from 'url';
+import {
+  createTypeScriptImportResolver
+}  from 'eslint-import-resolver-typescript'
 
 // mimic CommonJS variables -- not needed if using CommonJS
 const __filename = fileURLToPath(import.meta.url);
@@ -38,17 +41,38 @@ export default [
       'packages/icons/scripts/template',
     ],
   },
-  ...compat.extends('airbnb', 'airbnb/hooks'),
-  jsxRuntimConfig,
+  unicorn.configs['flat/recommended'],
+  react.configs.flat.recommended,
+  react.configs.flat['jsx-runtime'],
+  ...compat.config(reactHooks.configs.recommended),
+  importX.flatConfigs.typescript,
+  {
+    settings: {
+      'import-x/resolver': [
+        createTypeScriptImportResolver({
+          alwaysTryTypes: true,
+          project: ['packages/*/tsconfig.json', 'platforms/*/tsconfig.json'],
+        })
+      ]
+    }
+  },
+  ...[...tseslint.configs.recommendedTypeChecked, {
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: __dirname,
+      },
+    }
+  }].map((it) => ({
+    ...it,
+    files: ['**/*.ts', '**/*.tsx'],
+  })),
   prettierRecommendedConfig,
-  prettierConfig,
   {
     languageOptions: {
       globals: {
         ...globals.es2016,
-        ...globals.node,
         ...globals.browser,
-        ...globals.jest,
       },
       parser: babelParser,
       parserOptions: {
@@ -63,19 +87,6 @@ export default [
       react: {
         version: 'detect',
       },
-      'import/parsers': {
-        '@typescript-eslint/parser': ['.ts', '.tsx'],
-      },
-      'import/resolver': {
-        typescript: {
-          alwaysTryTypes: true,
-          project: ['packages/*/tsconfig.json', 'platforms/*/tsconfig.json'],
-        },
-      },
-    },
-    plugins: {
-      unicorn,
-      import: importPlugin,
     },
     rules: {
       'import/no-extraneous-dependencies': [
@@ -183,18 +194,8 @@ export default [
       'unicorn/no-abusive-eslint-disable': 'error',
     },
   },
-  ...[...tseslint.configs.recommendedTypeChecked, importPluginTypescriptConfig].map((it) => ({
-    ...it,
-    files: ['**/*.ts', '**/*.tsx'],
-  })),
   {
     files: ['**/*.ts', '**/*.tsx'],
-    languageOptions: {
-      parserOptions: {
-        projectService: true,
-        tsconfigRootDir: __dirname,
-      },
-    },
     rules: {
       'no-unused-vars': 'off',
       'no-unused-expressions': 'off',

@@ -145,7 +145,7 @@ const Preview: FC<PreviewProps> = (props) => {
     const cb = () => {
       babelPromise
         .then((Babel) => {
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
           const result: { code: string } = Babel.transform(code, {
             presets: [
               'react',

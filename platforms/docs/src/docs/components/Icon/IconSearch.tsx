@@ -62,7 +62,7 @@ const IconSearch: FC<void> = () => {
 
       clipboard.on('success', () => {
         clipboard.destroy();
-        // eslint-disable-next-line @typescript-eslint/no-floating-promises
+
         message.success('Copy success');
       });
     },
