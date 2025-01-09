@@ -95,7 +95,7 @@ export const onTransitionEnd = (el: Element, done: () => void) => {
 const _getTimeout = (_delays: Array<string>, durations: Array<string>) => {
   let delays = _delays;
   while (delays.length < durations.length) {
-    delays = delays.concat(delays);
+    delays = [...delays, ...delays];
   }
 
   return Math.max(

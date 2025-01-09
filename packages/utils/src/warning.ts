@@ -11,7 +11,7 @@ export default !isProduction
 
 const printWarning = (format: string, args: Array<string>) => {
   let index = 0;
-  const message = `Warning: ${format.replace(/%s/g, () => args[index++])}`;
+  const message = `Warning: ${format.replaceAll('%s', () => args[index++])}`;
 
   if (typeof console !== 'undefined') {
     console.error(message);
@@ -23,5 +23,5 @@ const printWarning = (format: string, args: Array<string>) => {
     // to find the callsite that caused this warning to fire.
     throw new Error(message);
     // eslint-disable-next-line no-empty
-  } catch (x) {}
+  } catch {}
 };

@@ -1,5 +1,5 @@
 const babel = require('@babel/core');
-const path = require('path');
+const path = require('node:path');
 const prettier = require('prettier');
 const Prism = require('prismjs');
 const loadLanguages = require('prismjs/components/');

@@ -1,6 +1,6 @@
 const rehypePrism = require('@mapbox/rehype-prism');
 const bundleAnalyzer = require('@next/bundle-analyzer');
-const path = require('path');
+const path = require('node:path');
 const demoPlugin = require('./scripts/webpack/mdx/demoPlugin');
 
 const withBundleAnalyzer = bundleAnalyzer({

@@ -1,6 +1,6 @@
 import raf from './raf';
 
-export default (fn: () => void) => {
+const nextFrame = (fn: () => void) => {
   let cancel = raf(() => {
     cancel = raf(fn);
   });
@@ -11,3 +11,4 @@ export default (fn: () => void) => {
 
   return doCancel;
 };
+export default nextFrame;

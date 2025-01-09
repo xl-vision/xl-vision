@@ -169,6 +169,8 @@ export default [
       'unicorn/consistent-function-scoping': 'error',
       'unicorn/no-object-as-default-parameter': 'error',
       'unicorn/explicit-length-check': 'off',
+      'unicorn/no-this-assignment': 'off',
+      'unicorn/no-negated-condition': 'off',
       'promise/no-nesting': 'off',
       // 'import-x/no-unresolved': 'error',
       // // Strict, airbnb is using warn; allow warn and error for dev environments
@@ -237,6 +239,7 @@ export default [
         },
       ],
       '@typescript-eslint/restrict-template-expressions': 'off',
+      '@typescript-eslint/no-empty-function': 'error'
       // 'no-unused-vars': 'off',
       // 'no-unused-expressions': 'off',
       // 'no-shadow': 'off',
@@ -271,11 +274,10 @@ export default [
     },
   },
   {
-    files: ['**/scripts/**', './*.{js,mjs}'],
+    files: ['**/scripts/**', '**/*.{js,mjs}'],
     languageOptions: {
       globals: {
         ...globals.node,
-        ...globals.nodeBuiltin,
       },
     },
     rules: {
@@ -288,6 +290,7 @@ export default [
         {
           // packageDir: __dirname,
           devDependencies: true,
+
         },
       ],
     },
@@ -307,6 +310,13 @@ export default [
       'unicorn/prefer-top-level-await': 'off',
       'import-x/no-dynamic-require': 'off',
       'import-x/prefer-default-export': 'off',
+      'import-x/no-extraneous-dependencies': [
+        'error',
+        {
+          // packageDir: __dirname,
+          devDependencies: true,
+        },
+      ],
     },
   },
   {
@@ -337,6 +347,7 @@ export default [
     rules: {
       'react/display-name': 'off',
       'react/jsx-handler-names': 'off',
+      'react/prop-types': 'off',
       '@typescript-eslint/no-floating-promises': [
         'error',
         {
@@ -351,7 +362,7 @@ export default [
             camelCase: true,
             pascalCase: true,
           },
-          ignore: ['not-found.tsx'],
+          ignore: ['not-found.tsx','next-env.d.ts'],
         },
       ],
       // 'import-x/no-unresolved': [
@@ -362,7 +373,6 @@ export default [
       // ],
     },
   },
-
   {
     files: [
       'test/utils/**',
