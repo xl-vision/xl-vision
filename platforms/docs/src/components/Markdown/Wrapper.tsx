@@ -1,7 +1,7 @@
 'use client';
 
 import { styled } from '@xl-vision/react';
-import PropTypes from 'prop-types';
+import * as PropTypes from 'prop-types';
 import { ReactNode, FC } from 'react';
 import code from './code';
 import pre from './pre';

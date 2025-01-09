@@ -1,12 +1,12 @@
 const fs = require('fs-extra');
-const path = require('path');
+const path = require('node:path');
 const semver = require('semver');
 
 async function run() {
   const cwd = process.cwd();
   const basePackagePath = path.resolve(cwd, 'package.json');
 
-  const baseVersion = (await fs.readJSON(basePackagePath)).version;
+  const { version: baseVersion } = await fs.readJSON(basePackagePath);
 
   const nextVersion = semver.inc(baseVersion, 'prerelease');
 

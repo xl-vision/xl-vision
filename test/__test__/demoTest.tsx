@@ -1,5 +1,3 @@
-/* eslint-disable global-require */
-/* eslint-disable import/no-dynamic-require */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 

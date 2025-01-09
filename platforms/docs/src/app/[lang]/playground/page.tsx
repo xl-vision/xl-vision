@@ -1,5 +1,5 @@
 import { Lang, locales } from '@docs/locales';
-import Playground from './_components/Playground';
+export { default } from './_components/Playground';
 
 export const generateMetadata = async ({
   params,
@@ -14,5 +14,3 @@ export const generateMetadata = async ({
     title: locales[lang].pages.playground.title,
   };
 };
-
-export default Playground;

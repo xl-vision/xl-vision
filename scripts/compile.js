@@ -3,7 +3,7 @@ const gulp = require('gulp');
 const babel = require('gulp-babel');
 const ts = require('gulp-typescript');
 const argv = require('minimist')(process.argv.slice(2));
-const path = require('path');
+const path = require('node:path');
 const typescript = require('typescript');
 const getBabelConfig = require('./getBabelConfig');
 

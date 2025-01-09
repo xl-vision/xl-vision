@@ -1,11 +1,9 @@
-/* eslint-disable no-restricted-syntax */
-
 const { pinyin } = require('pinyin');
 
 const DEMO_REGEX_START = /^:::[\t\f ]*demo[\t\f ]+(.+)/;
 const DEMO_REGEX_END = /^:::[\t\f ]*/;
 
-const codeLoaderPath = require.resolve('./codeLoader').replace(/\\/g, '\\\\');
+const codeLoaderPath = require.resolve('./codeLoader').replaceAll('\\', '\\\\');
 
 module.exports = function demoPlugin() {
   const self = this;
@@ -127,7 +125,7 @@ function createDemoBox(nodes, start, ctx) {
 
     params = match[1]
       .trim()
-      .replace(/\s*=\s*/g, '=')
+      .replaceAll(/\s*=\s*/g, '=')
       .split(/\s+/);
     break;
   }
@@ -143,7 +141,7 @@ function createDemoBox(nodes, start, ctx) {
       continue;
     }
     const content = child.children[0].value;
-    if (content.match(DEMO_REGEX_END)) {
+    if (DEMO_REGEX_END.test(content)) {
       break;
     }
   }
@@ -202,7 +200,7 @@ function createDemoBox(nodes, start, ctx) {
 
   demoBox.id = id;
   demoBox.title = title;
-  demoBox.debug = options.indexOf('debug') > -1;
+  demoBox.debug = options.includes('debug');
 
   const demoBoxChildren = demoBox.children;
 
@@ -244,5 +242,5 @@ function getId(text) {
     style: pinyin.STYLE_NORMAL,
   })
     .join('')
-    .replace(/\s+/g, '');
+    .replaceAll(/\s+/g, '');
 }
