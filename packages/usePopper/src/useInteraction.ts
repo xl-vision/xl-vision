@@ -57,10 +57,8 @@ const mergeProps = (
 
   return [userProps || {}, ...propsList[target]].reduce((acc: Record<string, unknown>, props) => {
     Object.entries(props).forEach(([key, value]) => {
-      if (isDevelopment) {
-        if (key === 'ref') {
-          throw new Error('ref is not allowed in props');
-        }
+      if (isDevelopment && key === 'ref') {
+        throw new Error('ref is not allowed in props');
       }
       if (key.indexOf('on') === 0) {
         if (!map.has(key)) {

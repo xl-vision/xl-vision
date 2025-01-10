@@ -1,6 +1,5 @@
 export * from './env';
 export * from './is';
-export * from './array';
 export * from './device';
 export * from './window';
 export * from './dom';

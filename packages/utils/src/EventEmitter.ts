@@ -1,7 +1,7 @@
 export default class EventEmitter<
-  M extends Record<PropertyKey, (...args: Array<any>) => void> = Record<
+  M extends Record<PropertyKey, (...args: Array<unknown>) => void> = Record<
     PropertyKey,
-    (...args: Array<any>) => void
+    (...args: Array<unknown>) => void
   >,
 > {
   private listeners: Map<keyof M, Set<M[keyof M]>>;

@@ -1,4 +1,4 @@
-export default (element: Element) => {
+const getBoundingClientRect = (element: Element) => {
   const rect = element.getBoundingClientRect();
 
   // x y兼容性不佳
@@ -15,3 +15,4 @@ export default (element: Element) => {
     bottom: y + height,
   };
 };
+export default getBoundingClientRect;

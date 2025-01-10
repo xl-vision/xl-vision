@@ -1,10 +1,13 @@
-import { oneOf } from '@xl-vision/utils';
 import { Middleware, OverflowOptions, Side } from '../types';
 import computeOverflowRect from '../utils/computeOverflowRect';
 
 export type AutoPlacementOptions = OverflowOptions & {};
 
-export default ({ boundary, rootBoundary, padding }: AutoPlacementOptions = {}): Middleware => {
+const autoPlacement = ({
+  boundary,
+  rootBoundary,
+  padding,
+}: AutoPlacementOptions = {}): Middleware => {
   return {
     name: 'autoPlacement',
     fn(ctx) {
@@ -57,6 +60,7 @@ export default ({ boundary, rootBoundary, padding }: AutoPlacementOptions = {}):
     },
   };
 };
+export default autoPlacement;
 
 const sideMap: Record<Side, Side> = {
   left: 'right',
@@ -70,12 +74,10 @@ const getNextSides = (side: Side) => {
 
   sides.push(sideMap[side]);
 
-  if (oneOf(['top', 'bottom'], side)) {
-    sides.push('left');
-    sides.push('right');
+  if (['top', 'bottom'].includes(side)) {
+    sides.push('left', 'right');
   } else {
-    sides.push('top');
-    sides.push('bottom');
+    sides.push('top', 'bottom');
   }
 
   sides.push(side);

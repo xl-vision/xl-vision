@@ -53,6 +53,7 @@ const baseConfig = [
       react: {
         version: 'detect',
       },
+      'import-x/extensions': ['.js', '.jsx', '.mjs', '.cjs'],
     },
   },
 ];
@@ -111,6 +112,7 @@ export default [
       'no-console': ['error', { allow: ['warn', 'error'] }],
       'no-await-in-loop': 'error',
       'import-x/prefer-default-export': 'error',
+      'import-x/default': 'off',
       'import-x/no-dynamic-require': 'error',
       'import-x/no-extraneous-dependencies': [
         'error',
@@ -149,6 +151,8 @@ export default [
           checkLocalVariables: true,
         },
       ],
+      'unicorn/no-array-reduce': 'off',
+      'unicorn/no-for-loop': 'off',
       'unicorn/no-array-for-each': 'off',
       'unicorn/better-regex': 'error',
       'unicorn/expiring-todo-comments': 'error',
@@ -239,7 +243,8 @@ export default [
         },
       ],
       '@typescript-eslint/restrict-template-expressions': 'off',
-      '@typescript-eslint/no-empty-function': 'error'
+      '@typescript-eslint/no-empty-function': 'error',
+      'unicorn/prefer-event-target': 'off',
       // 'no-unused-vars': 'off',
       // 'no-unused-expressions': 'off',
       // 'no-shadow': 'off',
@@ -274,7 +279,7 @@ export default [
     },
   },
   {
-    files: ['**/scripts/**', '**/*.{js,mjs}'],
+    files: ['**/scripts/**', '*.{js,mjs}', '*.*.{js,mjs}', 'platforms/docs/*.{js,mjs}'],
     languageOptions: {
       globals: {
         ...globals.node,
@@ -290,7 +295,6 @@ export default [
         {
           // packageDir: __dirname,
           devDependencies: true,
-
         },
       ],
     },
@@ -328,16 +332,16 @@ export default [
       },
     },
     rules: {
-      // 'import-x/no-unresolved': [
-      //   'error',
-      //   {
-      //     ignore: ['^react', '^react-dom'],
-      //   },
-      // ],
+      'import-x/no-unresolved': [
+        'error',
+        {
+          ignore: ['^react', '^react-dom'],
+        },
+      ],
     },
   },
   {
-    files: ['platforms/docs/src/**', '**/__doc__/**'],
+    files: ['**/__doc__/**', 'platforms/docs/src/**', 'platforms/docs/next-env.d.ts'],
     languageOptions: {
       globals: {
         ...globals.browser,
@@ -362,7 +366,7 @@ export default [
             camelCase: true,
             pascalCase: true,
           },
-          ignore: ['not-found.tsx','next-env.d.ts'],
+          ignore: ['not-found.tsx', 'next-env.d.ts'],
         },
       ],
       // 'import-x/no-unresolved': [
@@ -371,6 +375,12 @@ export default [
       //     ignore: ['^react', '^react-dom'],
       //   },
       // ],
+    },
+  },
+  {
+    files: ['**/__doc__/**'],
+    rules: {
+      'import-x/no-extraneous-dependencies': 'off',
     },
   },
   {

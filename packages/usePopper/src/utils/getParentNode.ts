@@ -1,7 +1,7 @@
 import { getDocumentElement, isShadowRoot } from '@xl-vision/utils';
 import getNodeName from './getNodeName';
 
-export default (node: Node): Node => {
+const getParentNode = (node: Node): Node => {
   if (getNodeName(node) === 'html') {
     return node;
   }
@@ -15,3 +15,4 @@ export default (node: Node): Node => {
     getDocumentElement(node)
   );
 };
+export default getParentNode;

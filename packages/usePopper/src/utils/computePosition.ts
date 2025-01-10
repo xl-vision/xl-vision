@@ -22,7 +22,13 @@ export type Options = {
   mode: PopperMode;
 };
 
-export default ({ popper, reference, placement, middlewares, mode }: Options): PopperData => {
+const computePosition = ({
+  popper,
+  reference,
+  placement,
+  middlewares,
+  mode,
+}: Options): PopperData => {
   if (!isProduction) {
     const names = middlewares.map((it) => it.name);
     if (names.length !== new Set(names).size) {
@@ -94,7 +100,6 @@ export default ({ popper, reference, placement, middlewares, mode }: Options): P
     const result = fn(middlewareContext);
 
     if (result) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const { data, reset, ...others } = result;
 
       middlewareData = {
@@ -103,7 +108,6 @@ export default ({ popper, reference, placement, middlewares, mode }: Options): P
       };
 
       if (data) {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         middlewareData.extra[name] = data;
       }
 
@@ -132,6 +136,7 @@ export default ({ popper, reference, placement, middlewares, mode }: Options): P
     extra: middlewareData.extra,
   };
 };
+export default computePosition;
 
 const splitPlacement = (placement: Placement) => {
   const [side, alignment] = placement.split('-');

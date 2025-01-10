@@ -24,7 +24,7 @@ import {
   ArrowOptions,
   PopperMode,
 } from '@xl-vision/usePopper';
-import { isProduction, isServer, oneOf } from '@xl-vision/utils';
+import { isProduction, isServer } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes, { Validator } from 'prop-types';
 import {
@@ -191,19 +191,19 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
 
   const { getPopperProps, getReferenceProps } = useInteraction(
     useHover(context, {
-      skip: !oneOf(triggers, 'hover'),
+      skip: !triggers.includes('hover'),
       ...hoverOptions,
     }),
     useClick(context, {
-      skip: !oneOf(triggers, 'click'),
+      skip: !triggers.includes('click'),
       ...clickOptions,
     }),
     useFocus(context, {
-      skip: !oneOf(triggers, 'focus'),
+      skip: !triggers.includes('focus'),
       ...focusOptions,
     }),
     useContextMenu(context, {
-      skip: !oneOf(triggers, 'contextMenu'),
+      skip: !triggers.includes('contextMenu'),
       ...contextMenuOptions,
     }),
   );

@@ -47,7 +47,7 @@ module.exports = async function localeLoader() {
         return it.parts.length === 3 && it.parts[0] === name;
       })
       .forEach((it) => {
-        const contentName = `Locale_${it.parts[1].replace(/-/g, '_')}`;
+        const contentName = `Locale_${it.parts[1].replaceAll('-', '_')}`;
         imports.push(
           `import {default as ${contentName}, outline as ${contentName}Outline} from './${it.fileName}'`,
         );
@@ -71,7 +71,7 @@ module.exports = async function localeLoader() {
     )}\n}\nconst LocaleDocs = () => <LocaleDocsRenderer localeDocsMap={localeDocsMap} />\nexport default LocaleDocs`;
 
     callback(null, result);
-  } catch (err) {
-    callback(err);
+  } catch (error) {
+    callback(error);
   }
 };

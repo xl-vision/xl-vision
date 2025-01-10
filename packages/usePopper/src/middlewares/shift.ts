@@ -1,4 +1,3 @@
-import { oneOf } from '@xl-vision/utils';
 import { Middleware, OverflowOptions, Side } from '../types';
 import computeOverflowRect from '../utils/computeOverflowRect';
 
@@ -7,7 +6,7 @@ export type ShiftOptions = OverflowOptions & {
   crossAxis?: boolean;
 };
 
-export default ({
+const shift = ({
   boundary,
   rootBoundary,
   padding,
@@ -19,7 +18,7 @@ export default ({
     fn(ctx) {
       const { x, y, side, referenceRect, popperRect } = ctx;
 
-      const isVertical = oneOf(['top', 'bottom'], side);
+      const isVertical = ['top', 'bottom'].includes(side);
 
       const overflowRect = computeOverflowRect({
         boundary,
@@ -66,3 +65,4 @@ export default ({
     },
   };
 };
+export default shift;

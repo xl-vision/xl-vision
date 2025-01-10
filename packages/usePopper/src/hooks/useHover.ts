@@ -21,7 +21,9 @@ const useHover: InteractionHook<HoverOptions> = (
 
   const handleReferenceMouseEnter = useConstantFn(() => {
     const timer = timerRef.current;
-    timer && clearTimeout(timer);
+    if (timer) {
+      clearTimeout(timer);
+    }
 
     timerRef.current = window.setTimeout(
       () => {
@@ -33,7 +35,9 @@ const useHover: InteractionHook<HoverOptions> = (
 
   const handleReferenceMouseLeave = useConstantFn(() => {
     const timer = timerRef.current;
-    timer && clearTimeout(timer);
+    if (timer) {
+      clearTimeout(timer);
+    }
 
     timerRef.current = window.setTimeout(
       () => {
@@ -46,13 +50,17 @@ const useHover: InteractionHook<HoverOptions> = (
   const handlePopperMouseEnter = useConstantFn(() => {
     if (!disablePopperEnter) {
       const timer = timerRef.current;
-      timer && clearTimeout(timer);
+      if (timer) {
+        clearTimeout(timer);
+      }
     }
   });
 
   const handlePopperMouseLeave = useConstantFn(() => {
     const timer = timerRef.current;
-    timer && clearTimeout(timer);
+    if (timer) {
+      clearTimeout(timer);
+    }
 
     timerRef.current = window.setTimeout(
       () => {

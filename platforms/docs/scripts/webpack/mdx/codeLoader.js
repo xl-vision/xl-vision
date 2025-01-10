@@ -1,5 +1,7 @@
+// eslint-disable-next-line import-x/no-extraneous-dependencies
 const babel = require('@babel/core');
 const path = require('node:path');
+// eslint-disable-next-line import-x/no-extraneous-dependencies
 const prettier = require('prettier');
 const Prism = require('prismjs');
 const loadLanguages = require('prismjs/components/');
@@ -20,14 +22,14 @@ module.exports = async function demoLoader(content) {
 
   const filePath = this.resourcePath;
 
-  if (!filePath.match(/.tsx?$/)) {
+  if (!/.tsx?$/.test(filePath)) {
     throw new Error(`file is not end with '.ts' or '.tsx': ${filePath}`);
   }
 
   const absolutePath = path.isAbsolute(filePath) ? filePath : path.resolve(process.cwd(), filePath);
 
   try {
-    const tsCode = content.replace(/^["'|]use client["'|];?\n+/g, '');
+    const tsCode = content.replaceAll(/^["'|]use client["'|];?\n+/g, '');
     let jsCode = (
       await babel.transformAsync(tsCode, {
         configFile: false,
@@ -57,8 +59,8 @@ export const jsCode = ${JSON.stringify(jsCode)};
 `;
 
     return callback(null, result);
-  } catch (err) {
-    return callback(err);
+  } catch (error) {
+    return callback(error);
   }
 };
 

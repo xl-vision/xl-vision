@@ -1,1 +1,2 @@
-export default (element: Node) => (element.nodeName || '').toLowerCase();
+const getNodeName = (element: Node) => (element.nodeName || '').toLowerCase();
+export default getNodeName;
