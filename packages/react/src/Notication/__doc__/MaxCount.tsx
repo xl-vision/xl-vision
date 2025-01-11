@@ -15,7 +15,7 @@ const Demo = () => {
   const [notication, holder] = Notication.useNotication({ maxCount: 3 });
 
   const handleInfo = useCallback(() => {
-    notication.info({
+    void notication.info({
       message: 'hello world',
     });
   }, [notication]);

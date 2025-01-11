@@ -24,7 +24,7 @@ export function getFixedTop(
   if (offsetTop !== undefined && targetRect.top > placeholderReact.top - offsetTop) {
     return offsetTop + targetRect.top;
   }
-  return undefined;
+  return;
 }
 
 export function getFixedBottom(
@@ -36,7 +36,7 @@ export function getFixedBottom(
     const targetBottomOffset = window.innerHeight - targetRect.bottom;
     return offsetBottom + targetBottomOffset;
   }
-  return undefined;
+  return;
 }
 
 const TRIGGER_EVENTS = [

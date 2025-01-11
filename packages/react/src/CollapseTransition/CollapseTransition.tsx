@@ -15,7 +15,7 @@ import { forceReflow } from '../utils/dom';
 import { getNodeRef, supportRef } from '../utils/ref';
 
 export type CollapseTransitionProp = CssTransitionOptions & {
-  children: ReactElement<any>;
+  children: ReactElement<unknown>;
   horizontal?: boolean;
   unmountOnExit?: boolean;
 };
@@ -226,9 +226,9 @@ const CollapseTransition: FC<CollapseTransitionProp> = (props) => {
     }
   }
 
-  const style = { ...(child.props as { style?: {} }).style, display: show ? '' : 'none' };
+  const style = { ...(child.props as { style?: object }).style, display: show ? '' : 'none' };
 
-  return cloneElement(child, {
+  return cloneElement(child as ReactElement<{ ref?: typeof forkRef; style?: object }>, {
     ref: forkRef,
     style,
   });

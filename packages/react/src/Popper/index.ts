@@ -1,4 +1,3 @@
-import Popper from './Popper';
-
-export default Popper;
 export * from './Popper';
+
+export { default } from './Popper';

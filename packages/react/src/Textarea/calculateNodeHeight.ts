@@ -37,7 +37,7 @@ const SIZING_STYLE = [
 
 let hiddenTextarea: HTMLTextAreaElement;
 
-export default (
+const calculateNodeHeight = (
   node: HTMLTextAreaElement,
   minRows: number | null = null,
   maxRows: number | null = null,
@@ -97,6 +97,7 @@ export default (
   }
   return { height, minHeight, maxHeight, overflowY };
 };
+export default calculateNodeHeight;
 
 function calculateNodeStyling(node: HTMLElement) {
   const style = getComputedStyle(node);

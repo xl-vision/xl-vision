@@ -10,7 +10,7 @@ import { ReactElement, forwardRef, Children, cloneElement } from 'react';
 import { getNodeRef, supportRef } from '../utils/ref';
 
 export type SingleResizeObserverProps = {
-  children: ReactElement<any>;
+  children: ReactElement<unknown>;
   onResizeObserver?: ResizeObserverHandler;
 };
 
@@ -31,7 +31,7 @@ const SingleResizeObserver = forwardRef<unknown, SingleResizeObserverProps>((pro
 
   const forkRef = useForkRef(resizeRef, ref, getNodeRef(child));
 
-  return cloneElement(child, {
+  return cloneElement(child as ReactElement<{ ref?: typeof forkRef }>, {
     ref: forkRef,
   });
 });
@@ -39,9 +39,7 @@ const SingleResizeObserver = forwardRef<unknown, SingleResizeObserverProps>((pro
 if (!isProduction) {
   SingleResizeObserver.displayName = displayName;
   SingleResizeObserver.propTypes = {
-    // eslint-disable-next-line react/no-unused-prop-types
     children: PropTypes.element.isRequired,
-    // eslint-disable-next-line react/no-unused-prop-types
     onResizeObserver: PropTypes.func,
   };
 }

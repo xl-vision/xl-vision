@@ -13,7 +13,7 @@ type DialogHookReturnType = {
 
 const { useDialog } = Dialog;
 
-const Demo = forwardRef<ReturnType<typeof useDialog>[0], {}>((_, ref) => {
+const Demo = forwardRef<ReturnType<typeof useDialog>[0], unknown>((_, ref) => {
   const [dialog, holder] = useDialog();
 
   useImperativeHandle(ref, () => {

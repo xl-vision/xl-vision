@@ -19,7 +19,7 @@ const PromiseComponent = () => {
     });
   }, []);
   const handleCancel = useCallback(() => {
-    message.info(`cancel`);
+    void message.info(`cancel`);
   }, [message]);
 
   return (

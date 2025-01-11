@@ -99,11 +99,9 @@ const ButtonRoot = styled(BaseButton, {
     : [themeSize.padding.y, themeSize.padding.x];
 
   if (round) {
-    if (icon) {
-      styles.borderRadius = '50%';
-    } else {
-      styles.borderRadius = themeSize.padding.y * 2 + buttonInfo.lineHeight * baseFontSize;
-    }
+    styles.borderRadius = icon
+      ? '50%'
+      : themeSize.padding.y * 2 + buttonInfo.lineHeight * baseFontSize;
   }
 
   if (long) {
@@ -142,12 +140,12 @@ const ButtonRoot = styled(BaseButton, {
 
     if (!loading && !disabled) {
       styles['&:hover'] = {
-        ...(styles['&:hover'] || {}),
+        ...(styles['&:hover'] as object),
         color: colors.themes.primary.foreground.hover,
       };
 
       styles['&:focus'] = {
-        ...(styles['&:focus'] || {}),
+        ...(styles['&:focus'] as object),
         color: colors.themes.primary.foreground.focus,
       };
     }
@@ -157,12 +155,12 @@ const ButtonRoot = styled(BaseButton, {
 
       if (!loading && !disabled) {
         styles['&:hover'] = {
-          ...(styles['&:hover'] || {}),
+          ...(styles['&:hover'] as object),
           borderColor: colors.themes.primary.divider.hover,
         };
 
         styles['&:focus'] = {
-          ...(styles['&:focus'] || {}),
+          ...(styles['&:focus'] as object),
           borderColor: colors.themes.primary.divider.focus,
         };
       }
@@ -170,11 +168,11 @@ const ButtonRoot = styled(BaseButton, {
 
     if (isContained || variant === 'text') {
       styles['&:hover'] = {
-        ...(styles['&:hover'] || {}),
+        ...(styles['&:hover'] as object),
         backgroundColor: colors.themes.primary.background.hover,
       };
       styles['&:focus'] = {
-        ...(styles['&:focus'] || {}),
+        ...(styles['&:focus'] as object),
         backgroundColor: colors.themes.primary.background.focus,
       };
     }
@@ -192,11 +190,11 @@ const ButtonRoot = styled(BaseButton, {
 
     if (!disabled && !loading) {
       styles['&:hover'] = {
-        ...(styles['&:hover'] || {}),
+        ...(styles['&:hover'] as object),
         backgroundColor: colors.themes[colorStyle].foreground.hover,
       };
       styles['&:focus'] = {
-        ...(styles['&:focus'] || {}),
+        ...(styles['&:focus'] as object),
         backgroundColor: colors.themes[colorStyle].foreground.focus,
       };
     }
@@ -210,11 +208,11 @@ const ButtonRoot = styled(BaseButton, {
 
   if (!disabled && !loading) {
     styles['&:hover'] = {
-      ...(styles['&:hover'] || {}),
+      ...(styles['&:hover'] as object),
       backgroundColor: colors.themes[colorStyle].background.hover,
     };
     styles['&:focus'] = {
-      ...(styles['&:focus'] || {}),
+      ...(styles['&:focus'] as object),
       backgroundColor: colors.themes[colorStyle].background.focus,
     };
   }
@@ -224,11 +222,11 @@ const ButtonRoot = styled(BaseButton, {
 
     if (!disabled && !loading) {
       styles['&:hover'] = {
-        ...(styles['&:hover'] || {}),
+        ...(styles['&:hover'] as object),
         borderColor: colors.themes[colorStyle].divider.hover,
       };
       styles['&:focus'] = {
-        ...(styles['&:focus'] || {}),
+        ...(styles['&:focus'] as object),
         borderColor: colors.themes[colorStyle].divider.focus,
       };
     }
@@ -316,7 +314,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((p
     ...others
   } = props;
 
-  const [LoadingIcon, setLoadingIcon] = useState<ComponentType<any>>();
+  const [LoadingIcon, setLoadingIcon] = useState<ComponentType<object>>();
 
   const icon = !children;
 
@@ -351,7 +349,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((p
 
   const prefixClassName = `${rootClassName}__prefix`;
 
-  let prefix: ReactElement<any> | undefined;
+  let prefix: ReactElement | undefined;
 
   if (LoadingIcon) {
     prefix = (

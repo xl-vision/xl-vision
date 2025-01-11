@@ -4,13 +4,19 @@ import { ForwardRef, isFragment, isMemo } from 'react-is';
 export const supportRef = (nodeOrComponent: unknown): boolean => {
   if (
     isReactElement(nodeOrComponent) &&
-    Object.prototype.propertyIsEnumerable.call(nodeOrComponent.props as { ref?: Ref<any> }, 'ref')
+    Object.prototype.propertyIsEnumerable.call(
+      nodeOrComponent.props as { ref?: Ref<unknown> },
+      'ref',
+    )
   ) {
     return true;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-  const type = isMemo(nodeOrComponent) ? nodeOrComponent.type.type : (nodeOrComponent as any).type;
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const type = isMemo(nodeOrComponent)
+    ? // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      nodeOrComponent.type.type
+    : (nodeOrComponent as { type?: unknown }).type;
 
   // Function component node
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
@@ -23,7 +29,7 @@ export const supportRef = (nodeOrComponent: unknown): boolean => {
     typeof nodeOrComponent === 'function' &&
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     !nodeOrComponent.prototype?.render &&
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
     (nodeOrComponent as any).$$typeof !== ForwardRef
   ) {
     return false;

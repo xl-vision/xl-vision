@@ -137,7 +137,7 @@ if (!isProduction) {
     children: PropTypes.node.isRequired,
     align: PropTypes.oneOf(['top', 'middle', 'bottom']),
     className: PropTypes.string,
-    component: PropTypes.oneOf([PropTypes.elementType.isRequired, PropTypes.string as any]),
+    component: PropTypes.oneOf([PropTypes.elementType.isRequired, PropTypes.string]),
     gutter: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired]),
     justify: PropTypes.oneOf(['start', 'end', 'center', 'space-around', 'space-between']),
     removeOnUnvisible: PropTypes.bool,

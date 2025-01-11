@@ -1,5 +1,3 @@
-import ResizeObserver from './ResizeObserver';
-
 export * from './ResizeObserver';
 
-export default ResizeObserver;
+export { default } from './ResizeObserver';

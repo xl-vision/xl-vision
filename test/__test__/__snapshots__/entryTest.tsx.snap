@@ -766,7 +766,6 @@ exports[`Entry @xl-vision/utils 1`] = `
   "isUndefinedOrNull",
   "isObject",
   "isPlainObject",
-  "oneOf",
   "isFirefox",
   "isWindow",
   "getWindow",

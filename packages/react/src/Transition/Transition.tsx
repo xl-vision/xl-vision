@@ -5,7 +5,7 @@ import { ReactElement, FC, Children, useRef, cloneElement } from 'react';
 import { getNodeRef, supportRef } from '../utils/ref';
 
 export type TransitionProps = CssTransitionOptions & {
-  children: ReactElement<any> | ((show: boolean) => ReactElement<any>);
+  children: ReactElement<unknown> | ((show: boolean) => ReactElement<unknown>);
   mountOnEnter?: boolean;
   unmountOnExit?: boolean;
 };
@@ -39,7 +39,7 @@ const Transition: FC<TransitionProps> = (props) => {
   }
   isFirstMountRef.current = false;
 
-  return cloneElement(child, {
+  return cloneElement(child as ReactElement<{ ref?: typeof forkRef }>, {
     ref: forkRef,
   });
 };

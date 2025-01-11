@@ -30,18 +30,16 @@ module.exports = async function demoLoader(content) {
 
   try {
     const tsCode = content.replaceAll(/^["'|]use client["'|];?\n+/g, '');
-    let jsCode = (
-      await babel.transformAsync(tsCode, {
-        configFile: false,
-        filename: absolutePath,
-        compact: false,
-        retainLines: true,
-        presets: [
-          // '@babel/preset-react',
-          '@babel/preset-typescript',
-        ],
-      })
-    ).code;
+    let { code: jsCode } = await babel.transformAsync(tsCode, {
+      configFile: false,
+      filename: absolutePath,
+      compact: false,
+      retainLines: true,
+      presets: [
+        // '@babel/preset-react',
+        '@babel/preset-typescript',
+      ],
+    });
 
     jsCode = await prettier.format(jsCode, {
       ...prettierOptions,

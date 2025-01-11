@@ -30,7 +30,7 @@ const Basic = () => {
   const [message, holder] = Message.useMessage();
 
   const handleClick = useCallback(() => {
-    message.success('You clicked container1!');
+    void message.success('You clicked container1!');
   }, [message]);
 
   const [node, setNode] = useState<ReactElement>();

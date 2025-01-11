@@ -6,7 +6,7 @@ import { enUS, zhCN } from '@xl-vision/react/locale';
 
 const { useMessage } = Message;
 
-const Demo = forwardRef<ReturnType<typeof useMessage>[0], {}>((_, ref) => {
+const Demo = forwardRef<ReturnType<typeof useMessage>[0], unknown>((_, ref) => {
   const [message, holder] = useMessage();
 
   useImperativeHandle(ref, () => {
@@ -182,7 +182,7 @@ describe('MessageHooks', () => {
     expect(el).toBe(null);
 
     act(() => {
-      messageRef.loading({
+      void messageRef.loading({
         content: 'content',
         id: 'loading',
       });
@@ -220,7 +220,7 @@ describe('MessageHooks', () => {
     expect(el).toBe(null);
 
     act(() => {
-      messageRef.info({
+      void messageRef.info({
         content: 'content',
         id: 'info',
       });

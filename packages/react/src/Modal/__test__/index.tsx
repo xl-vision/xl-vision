@@ -131,7 +131,7 @@ describe('Modal', () => {
   it('Test container', async () => {
     const div = document.createElement('div');
 
-    document.body.appendChild(div);
+    document.body.append(div);
 
     render(
       <Modal container={div} open={true}>

@@ -15,7 +15,7 @@ const Demo = () => {
   const [message, holder] = Message.useMessage();
 
   const handleInfo = useCallback(() => {
-    message.info({
+    void message.info({
       content: 'hello world',
       duration: 0,
       showClose: true,

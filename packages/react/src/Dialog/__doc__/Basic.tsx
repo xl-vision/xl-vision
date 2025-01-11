@@ -12,10 +12,10 @@ const Basic = () => {
   }, []);
 
   const handleConfirm = useCallback(() => {
-    message.info(`confirm`);
+    void message.info(`confirm`);
   }, [message]);
   const handleCancel = useCallback(() => {
-    message.info(`cancel`);
+    void message.info(`cancel`);
   }, [message]);
 
   return (

@@ -15,23 +15,23 @@ const Demo = () => {
   const [message, holder] = Message.useMessage();
 
   const handleInfo = useCallback(() => {
-    message.info('hello world');
+    void message.info('hello world');
   }, [message]);
 
   const handleWarning = useCallback(() => {
-    message.warning('hello world');
+    void message.warning('hello world');
   }, [message]);
 
   const handleError = useCallback(() => {
-    message.error('hello world');
+    void message.error('hello world');
   }, [message]);
 
   const handleSuccess = useCallback(() => {
-    message.success('hello world');
+    void message.success('hello world');
   }, [message]);
 
   const handleLoading = useCallback(() => {
-    message.loading('hello world');
+    void message.loading('hello world');
   }, [message]);
 
   return (

@@ -13,19 +13,19 @@ const Root = styled('div')(() => {
 
 const Demo = () => {
   const handleInfo = useCallback(() => {
-    Notication.info('hello world');
+    void Notication.info('hello world');
   }, []);
 
   const handleWarning = useCallback(() => {
-    Notication.warning('hello world');
+    void Notication.warning('hello world');
   }, []);
 
   const handleError = useCallback(() => {
-    Notication.error('hello world');
+    void Notication.error('hello world');
   }, []);
 
   const handleSuccess = useCallback(() => {
-    Notication.success('hello world');
+    void Notication.success('hello world');
   }, []);
 
   return (

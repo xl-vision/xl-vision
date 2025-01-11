@@ -1,6 +1,4 @@
 import {
-  MessageGlobalConfig,
-  MethodMessageContainerProps,
   info,
   warning,
   error,
@@ -12,11 +10,10 @@ import {
 } from './methods';
 import useMessage from './useMessage';
 
+export { type MessageGlobalConfig, type MethodMessageContainerProps } from './methods';
 export * from './Message';
 export * from './MessageContainer';
 export * from './useMessage';
-
-export type { MessageGlobalConfig, MethodMessageContainerProps };
 
 const Message = {
   destroyAll,

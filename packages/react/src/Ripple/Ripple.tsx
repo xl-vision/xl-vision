@@ -173,8 +173,8 @@ const Ripple = forwardRef<RippleRef, RippleProps>((props, ref) => {
       const { clientX, clientY } = (e as TouchEvent<HTMLDivElement>).touches
         ? (e as TouchEvent).touches[0]
         : (e as MouseEvent);
-      const x = Math.round(typeof clientX === 'undefined' ? clientWidth / 2 : clientX - rect.left);
-      const y = Math.round(typeof clientY === 'undefined' ? clientHeight / 2 : clientY - rect.top);
+      const x = Math.round(clientX === undefined ? clientWidth / 2 : clientX - rect.left);
+      const y = Math.round(clientY === undefined ? clientHeight / 2 : clientY - rect.top);
 
       const sizeX = Math.max(Math.abs(clientWidth - x), x) * 2 + 2;
       const sizeY = Math.max(Math.abs(clientHeight - y), y) * 2 + 2;
@@ -194,8 +194,7 @@ const Ripple = forwardRef<RippleRef, RippleProps>((props, ref) => {
           }
         }, DELAY_RIPPLE);
       } else {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
-        commit(x, y, size, (e as any).pulsate);
+        commit(x, y, size, (e as { pulsate?: boolean }).pulsate);
       }
     },
     [commit],

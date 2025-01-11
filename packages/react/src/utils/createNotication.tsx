@@ -84,9 +84,7 @@ const createNotication = <P, NCP>(
 
       root = createRoot(div);
 
-      promise = promise.then(() => {
-        root?.render(<MethodRefNotication ref={noticationRef} />);
-      });
+      promise = promise.then(() => root?.render(<MethodRefNotication ref={noticationRef} />));
     }
 
     count++;

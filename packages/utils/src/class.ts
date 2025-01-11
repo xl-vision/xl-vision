@@ -12,7 +12,7 @@ export const addClass = (element: Element, className: string) => {
     return;
   }
   const _className = `${element.className} ${className}`;
-  element.className = _className.replaceAll(/\s+/g, ' ').trim();
+  element.className = _className.replace(/\s+/g, ' ').trim();
 };
 
 export const removeClass = (element: Element, className: string) => {
@@ -20,5 +20,5 @@ export const removeClass = (element: Element, className: string) => {
     return;
   }
   const _className = element.className.replace(className, ' ');
-  element.className = _className.replaceAll(/\s+/g, ' ').trim();
+  element.className = _className.replace(/\s+/g, ' ').trim();
 };

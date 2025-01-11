@@ -13,6 +13,7 @@ import unicorn from 'eslint-plugin-unicorn';
 import globals from 'globals';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+// eslint-disable-next-line import-x/no-unresolved
 import tseslint from 'typescript-eslint';
 
 // mimic CommonJS variables -- not needed if using CommonJS
@@ -30,7 +31,6 @@ const baseConfig = [
   eslintJs.configs.recommended,
   unicorn.configs['flat/recommended'],
   pluginPromise.configs['flat/recommended'],
-  jsxA11y.flatConfigs.recommended,
   react.configs.flat.recommended,
   react.configs.flat['jsx-runtime'],
   ...compat.config(reactHooks.configs.recommended),
@@ -111,6 +111,15 @@ export default [
       'no-restricted-globals': ['error', ...confusingBrowserGlobals],
       'no-console': ['error', { allow: ['warn', 'error'] }],
       'no-await-in-loop': 'error',
+      'consistent-return': [
+        'off',
+        {
+          treatUndefinedAsUnspecified: true,
+        },
+      ],
+      'nonblock-statement-body-position': 'error',
+      'import-x/no-named-as-default': 'off',
+      'import-x/no-named-as-default-member': 'off',
       'import-x/prefer-default-export': 'error',
       'import-x/default': 'off',
       'import-x/no-dynamic-require': 'error',
@@ -151,6 +160,27 @@ export default [
           checkLocalVariables: true,
         },
       ],
+      'react/sort-prop-types': [
+        'error',
+        {
+          ignoreCase: true,
+          requiredFirst: true,
+          sortShapeProp: true,
+          callbacksLast: true,
+        },
+      ],
+      'react/no-array-index-key': 'error',
+      'react/jsx-sort-props': [
+        'error',
+        {
+          ignoreCase: true,
+          callbacksLast: true,
+        },
+      ],
+      'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx'] }],
+      'react/jsx-no-useless-fragment': ['error', { allowExpressions: true }],
+      'react/function-component-definition': ['error', { namedComponents: 'arrow-function' }],
+      'react/jsx-boolean-value': ['error', 'always'],
       'unicorn/no-array-reduce': 'off',
       'unicorn/no-for-loop': 'off',
       'unicorn/no-array-for-each': 'off',
@@ -158,6 +188,8 @@ export default [
       'unicorn/expiring-todo-comments': 'error',
       'unicorn/import-index': 'error',
       'unicorn/prevent-abbreviations': 'off',
+      'unicorn/prefer-at': 'off',
+      'unicorn/prefer-query-selector': 'off',
       'unicorn/filename-case': [
         'error',
         {
@@ -175,62 +207,10 @@ export default [
       'unicorn/explicit-length-check': 'off',
       'unicorn/no-this-assignment': 'off',
       'unicorn/no-negated-condition': 'off',
+      'unicorn/prefer-dom-node-dataset': 'off',
+      'unicorn/no-array-callback-reference': 'off',
       'promise/no-nesting': 'off',
-      // 'import-x/no-unresolved': 'error',
-      // // Strict, airbnb is using warn; allow warn and error for dev environments
-      // 'no-console': ['error', { allow: ['warn', 'error'] }],
-      // 'nonblock-statement-body-position': 'error',
-      // 'no-plusplus': 'off',
-      // 'no-param-reassign': 'off',
-      // 'no-underscore-dangle': 'off',
-      // 'no-nested-ternary': 'off',
-      // 'no-use-before-define': 'off',
-      // 'no-multi-assign': 'off',
-      // 'no-continue': 'off',
-      // 'consistent-return': [
-      //   'off',
-      //   {
-      //     treatUndefinedAsUnspecified: true,
-      //   },
-      // ],
-      // 'react/jsx-uses-react': 'off',
-      // 'react/react-in-jsx-scope': 'off',
-      // 'react/function-component-definition': ['error', { namedComponents: 'arrow-function' }],
-      // 'react/jsx-no-useless-fragment': ['error', { allowExpressions: true }],
-      // 'react/forbid-prop-types': 'error',
-      // 'react/jsx-boolean-value': ['error', 'always'],
-      // 'react/display-name': 'error',
-      // 'react/jsx-props-no-spreading': 'off',
-      // 'react/require-default-props': 'off',
-      // 'react/jsx-sort-props': [
-      //   'error',
-      //   {
-      //     ignoreCase: true,
-      //     callbacksLast: true,
-      //   },
-      // ],
-      // 'react/sort-prop-types': [
-      //   'error',
-      //   {
-      //     ignoreCase: true,
-      //     requiredFirst: true,
-      //     sortShapeProp: true,
-      //     callbacksLast: true,
-      //   },
-      // ],
-      // 'prefer-destructuring': [
-      //   'error',
-      //   {
-      //     VariableDeclarator: { object: true, array: false },
-      //     AssignmentExpression: {
-      //       array: false,
-      //       object: false,
-      //     },
-      //   },
-      // ],
-
-      // // forbid passing object as default value to props of function component
-      // 'unicorn/prefer-query-selector': 'off',
+      'promise/always-return': 'off',
     },
   },
   {
@@ -244,40 +224,109 @@ export default [
       ],
       '@typescript-eslint/restrict-template-expressions': 'off',
       '@typescript-eslint/no-empty-function': 'error',
+      '@typescript-eslint/array-type': [
+        'error',
+        {
+          default: 'generic',
+        },
+      ],
       'unicorn/prefer-event-target': 'off',
-      // 'no-unused-vars': 'off',
-      // 'no-unused-expressions': 'off',
-      // 'no-shadow': 'off',
-      // 'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx'] }],
-      // 'import-x/no-cycle': 'off',
-      // '@typescript-eslint/restrict-template-expressions': 'off',
-      // '@typescript-eslint/array-type': [
-      //   'error',
-      //   {
-      //     default: 'generic',
-      //   },
-      // ],
-      // // '@typescript-eslint/member-ordering': [
-      // //   'error',
-      // //   {
-      // //     default: {
-      // //       memberTypes: ['signature', 'constructor', 'field', 'method'],
-      // //       optionalityOrder: 'required-first',
-      // //       order: 'alphabetically-case-insensitive',
-      // //     },
-      // //   },
-      // // ],
-      // '@typescript-eslint/no-unused-expressions': 'error',
-      // '@typescript-eslint/no-shadow': 'error',
-      // '@typescript-eslint/no-empty-object-type': 'error',
-      // '@typescript-eslint/no-unsafe-function-type': 'error',
-      // '@typescript-eslint/no-wrapper-object-types': 'error',
-      // '@typescript-eslint/no-explicit-any': 'off',
-      // '@typescript-eslint/no-non-null-assertion': 'off',
-      // '@typescript-eslint/no-unused-vars': 'error',
-      // '@typescript-eslint/no-empty-function': 'error',
     },
   },
+  ...[
+    jsxA11y.flatConfigs.recommended,
+    {
+      languageOptions: {
+        globals: {
+          ...globals.browser,
+        },
+      },
+      rules: {
+        'import-x/no-unresolved': [
+          'error',
+          {
+            ignore: ['^react', '^react-dom'],
+          },
+        ],
+        'unicorn/prefer-string-replace-all': 'off',
+        'unicorn/prefer-number-properties': 'off',
+        'unicorn/prefer-modern-math-apis': 'off',
+        'unicorn/prefer-dom-node-append': 'off',
+        'unicorn/prefer-dom-node-remove': 'off',
+        'unicorn/filename-case': [
+          'error',
+          {
+            cases: {
+              camelCase: true,
+              pascalCase: true,
+            },
+            ignore: ['en-US.ts', 'zh-CN.ts'],
+          },
+        ],
+      },
+    },
+  ].map((it) => ({
+    files: ['packages/*/src/**'],
+    ignores: ['**/__doc__/**', '**/__test__/**'],
+    ...it,
+  })),
+  // all test files
+  {
+    files: ['test/**', '**/__test__/**'],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+        ...globals.jest,
+      },
+    },
+    rules: {
+      'global-require': 'off',
+      'unicorn/prefer-module': 'off',
+      'unicorn/prefer-top-level-await': 'off',
+      'react/display-name': 'off',
+      'react/jsx-handler-names': 'off',
+      'import-x/no-dynamic-require': 'off',
+      'import-x/prefer-default-export': 'off',
+      'import-x/no-extraneous-dependencies': 'off',
+    },
+  },
+  {
+    files: ['**/__doc__/**'],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+      },
+    },
+  },
+  // test case and doc case
+  {
+    files: ['**/__doc__/**/*.{ts,tsx}', '**/__test__/**/*.{ts,tsx}'],
+    rules: {
+      'no-console': 'off',
+      'react/display-name': 'off',
+      'react/jsx-handler-names': 'off',
+      'react/no-array-index-key': 'off',
+      'import-x/no-unresolved': [
+        'error',
+        {
+          ignore: ['^react', '^react-dom'],
+        },
+      ],
+      'import-x/no-extraneous-dependencies': 'off',
+      '@typescript-eslint/no-unsafe-argument': 'off',
+      '@typescript-eslint/no-unsafe-call': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-misused-promises': 'off',
+      '@typescript-eslint/no-floating-promises': [
+        'error',
+        {
+          ignoreVoid: true,
+        },
+      ],
+    },
+  },
+  // all scripts
   {
     files: ['**/scripts/**', '*.{js,mjs}', '*.*.{js,mjs}', 'platforms/docs/*.{js,mjs}'],
     languageOptions: {
@@ -299,49 +348,9 @@ export default [
       ],
     },
   },
+  // docs src
   {
-    files: ['test/**', '**/__test__/**'],
-    languageOptions: {
-      globals: {
-        ...globals.browser,
-        ...globals.jest,
-        ...globals.node,
-      },
-    },
-    rules: {
-      'global-require': 'off',
-      'unicorn/prefer-module': 'off',
-      'unicorn/prefer-top-level-await': 'off',
-      'import-x/no-dynamic-require': 'off',
-      'import-x/prefer-default-export': 'off',
-      'import-x/no-extraneous-dependencies': [
-        'error',
-        {
-          // packageDir: __dirname,
-          devDependencies: true,
-        },
-      ],
-    },
-  },
-  {
-    files: ['packages/*/src/**'],
-    ignores: ['**/__doc__/**', '**/__test__/**'],
-    languageOptions: {
-      globals: {
-        ...globals.browser,
-      },
-    },
-    rules: {
-      'import-x/no-unresolved': [
-        'error',
-        {
-          ignore: ['^react', '^react-dom'],
-        },
-      ],
-    },
-  },
-  {
-    files: ['**/__doc__/**', 'platforms/docs/src/**', 'platforms/docs/next-env.d.ts'],
+    files: ['platforms/docs/src/**/*.{ts,tsx}', 'platforms/docs/next-env.d.ts'],
     languageOptions: {
       globals: {
         ...globals.browser,
@@ -349,15 +358,20 @@ export default [
       },
     },
     rules: {
+      'no-console': 'off',
+      'react/no-array-index-key': 'off',
       'react/display-name': 'off',
       'react/jsx-handler-names': 'off',
       'react/prop-types': 'off',
+      'promise/catch-or-return': 'off',
+      '@typescript-eslint/no-unsafe-argument': 'off',
       '@typescript-eslint/no-floating-promises': [
         'error',
         {
           ignoreVoid: true,
         },
       ],
+      '@typescript-eslint/no-explicit-any': 'off',
       'import-x/prefer-default-export': 'off',
       'unicorn/filename-case': [
         'error',
@@ -369,48 +383,6 @@ export default [
           ignore: ['not-found.tsx', 'next-env.d.ts'],
         },
       ],
-      // 'import-x/no-unresolved': [
-      //   'error',
-      //   {
-      //     ignore: ['^react', '^react-dom'],
-      //   },
-      // ],
-    },
-  },
-  {
-    files: ['**/__doc__/**'],
-    rules: {
-      'import-x/no-extraneous-dependencies': 'off',
-    },
-  },
-  {
-    files: [
-      'test/utils/**',
-      'test/__test__/**',
-      'packages/**/__test__/**',
-      'packages/**/__doc__/**',
-      'platforms/**',
-    ],
-    rules: {
-      // 'react/display-name': 'off',
-      // 'react/button-has-type': 'off',
-      // 'import-x/no-unresolved': 'off',
-      // 'import-x/no-extraneous-dependencies': 'off',
-      // 'import-x/no-named-as-default': 'off',
-      // 'unicorn/consistent-function-scoping': 'off',
-      // 'import-x/no-relative-packages': 'off',
-      // 'react/forbid-prop-types': 'off',
-      // 'jsx-a11y/click-events-have-key-events': 'off',
-      // 'jsx-a11y/no-static-element-interactions': 'off',
-      // '@typescript-eslint/no-unsafe-call': 'off',
-      // '@typescript-eslint/no-floating-promises': 'off',
-      // '@typescript-eslint/no-misused-promises': 'off',
-    },
-  },
-  {
-    files: ['packages/**/__doc__/**'],
-    rules: {
-      // 'no-console': 'off',
     },
   },
 ];

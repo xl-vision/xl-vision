@@ -68,15 +68,10 @@ const mergeProps = (
           // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
           map.get(key)?.push(value);
         }
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
         acc[key] = (...args: Array<unknown>) => {
           map.get(key)?.forEach((fn) => fn(...args));
         };
       } else {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-
         acc[key] = value;
       }
     });

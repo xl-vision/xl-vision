@@ -11,10 +11,10 @@ const Basic = () => {
       <Popconfirm
         title='Are you sure to do it?'
         onCancel={() => {
-          message.info('cancel');
+          void message.info('cancel');
         }}
         onConfirm={() => {
-          message.info('confirm');
+          void message.info('confirm');
         }}
       >
         <Button color='primary'>button</Button>

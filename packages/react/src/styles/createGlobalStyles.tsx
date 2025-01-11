@@ -8,8 +8,8 @@ import applyTheme from './applyTheme';
 import { Theme } from '../ThemeProvider';
 
 const createGlobalStyles = <
-  S extends {} | undefined = undefined,
-  P extends {} = {},
+  S extends object | undefined = undefined,
+  P extends object = object,
   ST = S extends undefined ? { theme: Theme } : { styleProps: S; theme: Theme },
   SPT = S extends undefined ? { theme?: Theme } : { styleProps: S; theme?: Theme },
 >(

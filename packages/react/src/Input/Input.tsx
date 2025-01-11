@@ -276,7 +276,7 @@ const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
 
   const handleChange = useConstantFn((e: ChangeEvent<HTMLInputElement>) => {
     let v = e.target.value;
-    if (typeof v === 'undefined' || v === null) {
+    if (v === undefined || v === null) {
       v = '';
     }
 
@@ -370,7 +370,7 @@ const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     const msg = `${wordCount}${hasMaxLength ? `/${maxLength}` : ''}`;
 
     const countClasses = clsx(`${rootClassName}__suffix-count`, {
-      [`${rootClassName}__suffix--has-suffix`]: typeof suffix !== 'undefined',
+      [`${rootClassName}__suffix--has-suffix`]: suffix !== undefined,
     });
 
     showCountNode = <span className={countClasses}>{msg}</span>;
@@ -399,11 +399,11 @@ const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
 
   return (
     <InputRoot className={rootClasses} ref={forkRef} style={style} styleProps={{ size }}>
-      {typeof addonBefore !== 'undefined' && (
+      {addonBefore !== undefined && (
         <InputAddonBefore styleProps={{ size }}>{addonBefore}</InputAddonBefore>
       )}
       <InputWrapper styleProps={{ focused, size, disabled, readOnly }} onMouseUp={handleMouseUp}>
-        {typeof prefix !== 'undefined' && <InputPrefix>{prefix}</InputPrefix>}
+        {prefix !== undefined && <InputPrefix>{prefix}</InputPrefix>}
         <InputInner
           aria-disabled={disabled}
           aria-readonly={readOnly}
@@ -417,7 +417,7 @@ const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
           onChange={handleChange}
           onFocus={handleFocus}
         />
-        {(allowClearNode || showCountNode || typeof suffix !== 'undefined') && (
+        {(allowClearNode || showCountNode || suffix !== undefined) && (
           <InputSuffix>
             {allowClearNode}
             {showCountNode}
@@ -425,7 +425,7 @@ const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
           </InputSuffix>
         )}
       </InputWrapper>
-      {typeof addonAfter !== 'undefined' && (
+      {addonAfter !== undefined && (
         <InputAddonAfter styleProps={{ size }}>{addonAfter}</InputAddonAfter>
       )}
     </InputRoot>

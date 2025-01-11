@@ -1,7 +1,7 @@
 import { useConstantFn, useForkRef, usePrevious, useValueChange } from '@xl-vision/hooks';
 import { CloseCircleFilled } from '@xl-vision/icons';
 import { CSSObject } from '@xl-vision/styled-engine';
-import { isObject, isProduction, noop } from '@xl-vision/utils';
+import { isObject, isProduction } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
@@ -236,7 +236,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, ref) => 
           setTextAreaStyle(styles);
         });
       })
-      .catch(noop);
+      .catch(console.error);
   });
 
   useEffect(() => {
@@ -262,7 +262,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, ref) => 
 
   const handleChange = useConstantFn((e: ChangeEvent<HTMLTextAreaElement>) => {
     let v = e.target.value;
-    if (typeof v === 'undefined' || v === null) {
+    if (v === undefined || v === null) {
       v = '';
     }
 
@@ -349,9 +349,6 @@ if (!isProduction) {
   Textarea.displayName = displayName;
   Textarea.propTypes = {
     allowClear: PropTypes.bool,
-    // TODO [2024-07-01]: types fix
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     autoHeight: PropTypes.oneOfType([
       PropTypes.bool.isRequired,
       PropTypes.shape({

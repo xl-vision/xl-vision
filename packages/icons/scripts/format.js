@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 const svgo = require('svgo');
 
 const config = {
@@ -46,19 +45,20 @@ const config = {
   ],
 };
 
-module.exports = async (data) => {
+const format = async (data) => {
   const result = await svgo.optimize(data, config);
 
   const svg = result.data
-    .replace(/"\/>/g, '" />')
-    .replace(/fill-opacity=/g, 'fillOpacity=')
-    .replace(/xlink:href=/g, 'xlinkHref=')
-    .replace(/clip-rule=/g, 'clipRule=')
-    .replace(/fill-rule=/g, 'fillRule=')
-    .replace(/ clip-path=".+?"/g, '') // Fix visibility issue and save some bytes.
-    .replace(/<clipPath.+?<\/clipPath>/g, '')
-    .replace(/ fill=".+?"/g, '')
-    .replace(/ class=".+?"/g, '');
+    .replaceAll('"/>', '" />')
+    .replaceAll('fill-opacity=', 'fillOpacity=')
+    .replaceAll('xlink:href=', 'xlinkHref=')
+    .replaceAll('clip-rule=', 'clipRule=')
+    .replaceAll('fill-rule=', 'fillRule=')
+    .replaceAll(/ clip-path=".+?"/g, '') // Fix visibility issue and save some bytes.
+    .replaceAll(/<clipPath.+?<\/clipPath>/g, '')
+    .replaceAll(/ fill=".+?"/g, '')
+    .replaceAll(/ class=".+?"/g, '');
 
   return svg;
 };
+module.exports = format;

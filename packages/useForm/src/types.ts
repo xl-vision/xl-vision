@@ -2,7 +2,7 @@ import validators from './validators';
 
 export type ValidatorOptions<P> = {
   field: string;
-  values: Record<string, any>;
+  values: Record<string, unknown>;
   rule: P;
 };
 
@@ -16,7 +16,7 @@ export type ValidatorKey = keyof Validators;
 
 export type CustomValidatorOptions = {
   field: string;
-  values: Record<string, any>;
+  values: Record<string, unknown>;
 };
 
 export type CustomValidator = {
