@@ -343,7 +343,7 @@ importers:
         specifier: ^6.2.2
         version: 6.2.2
       '@mdx-js/react':
-        specifier: ^3.0.1
+        specifier: ^3.1.0
         version: 3.1.0(@types/react@19.0.2)(react@19.0.0)
       '@uiw/react-codemirror':
         specifier: ^4.23.7
@@ -404,7 +404,7 @@ importers:
         specifier: ^0.9.0
         version: 0.9.0
       '@mdx-js/loader':
-        specifier: ^3.0.1
+        specifier: ^3.1.0
         version: 3.1.0(acorn@8.14.0)
       '@next/bundle-analyzer':
         specifier: 15.1.4
