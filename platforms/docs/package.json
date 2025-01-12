@@ -16,7 +16,7 @@
     "@babel/standalone": "^7.26.5",
     "@codemirror/lang-javascript": "^6.2.2",
     "@mdx-js/react": "^3.0.1",
-    "@uiw/react-codemirror": "^4.21.25",
+    "@uiw/react-codemirror": "^4.23.7",
     "@vercel/analytics": "^1.2.2",
     "@xl-vision/hooks": "workspace:^",
     "@xl-vision/icons": "workspace:^",
