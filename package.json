@@ -13,7 +13,7 @@
     "url": "git+https://github.com/xl-vision/xl-vision.git"
   },
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "husky",
     "dev": "cd platforms/docs && npm run dev",
     "dev-next": "cd platforms/docs-next && npm run dev",
     "docs": "cd platforms/docs && npm run docs",
@@ -81,7 +81,7 @@
     "gulp": "^5.0.0",
     "gulp-babel": "^8.0.0",
     "gulp-typescript": "^5.0.1",
-    "husky": "^9.0.11",
+    "husky": "^9.1.7",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "jest-styled-components": "^7.2.0",
