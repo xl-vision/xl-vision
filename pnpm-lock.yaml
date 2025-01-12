@@ -382,7 +382,7 @@ importers:
         specifier: ^3.0.5
         version: 3.0.5
       negotiator:
-        specifier: ^0.6.3
+        specifier: ^0.6.4
         version: 0.6.4
       next:
         specifier: 15.1.4
