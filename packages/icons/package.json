@@ -38,7 +38,7 @@
   "dependencies": {
     "@xl-vision/styled-engine": "workspace:^",
     "@xl-vision/utils": "workspace:^",
-    "clsx": "^2.1.0"
+    "clsx": "^2.1.1"
   },
   "devDependencies": {
     "fs-extra": "^11.2.0",
