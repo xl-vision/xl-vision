@@ -397,7 +397,7 @@ importers:
         specifier: 19.0.0
         version: 19.0.0(react@19.0.0)
       sharp:
-        specifier: ^0.33.3
+        specifier: ^0.33.5
         version: 0.33.5
     devDependencies:
       '@mapbox/rehype-prism':
