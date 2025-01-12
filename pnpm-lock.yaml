@@ -154,7 +154,7 @@ importers:
         specifier: ^11.2.0
         version: 11.2.0
       glob:
-        specifier: ^10.3.12
+        specifier: ^10.4.5
         version: 10.4.5
       globals:
         specifier: ^15.14.0
