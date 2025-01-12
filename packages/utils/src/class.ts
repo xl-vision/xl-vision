@@ -4,7 +4,7 @@ export const getClasses = (element: Element) => {
 };
 
 export const containClass = (element: Element, className: string) => {
-  return getClasses(element).some((it) => it === className);
+  return getClasses(element).includes(className);
 };
 
 export const addClass = (element: Element, className: string) => {

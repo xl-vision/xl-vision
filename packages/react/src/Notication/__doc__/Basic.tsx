@@ -15,28 +15,28 @@ const Demo = () => {
   const [message, holder] = Notication.useNotication();
 
   const handleInfo = useCallback(() => {
-    message.info({
+    void message.info({
       message: 'message',
       description: 'this is a message',
     });
   }, [message]);
 
   const handleWarning = useCallback(() => {
-    message.warning({
+    void message.warning({
       message: 'message',
       description: 'this is a message',
     });
   }, [message]);
 
   const handleError = useCallback(() => {
-    message.error({
+    void message.error({
       message: 'message',
       description: 'this is a message',
     });
   }, [message]);
 
   const handleSuccess = useCallback(() => {
-    message.success({
+    void message.success({
       message: 'message',
       description: 'this is a message',
     });

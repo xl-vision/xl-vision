@@ -144,7 +144,6 @@ const DocsLayout: FC<DocsLayoutProps> = ({ basePath, routes, appendEn, children 
       open={mobileAsideVisible}
       placement='bottom'
       trigger='click'
-      // eslint-disable-next-line react/jsx-handler-names
       onOpenChange={setMobileAsideVisible}
     >
       <Button prefixIcon={<MenuOutlined />} variant='text' />

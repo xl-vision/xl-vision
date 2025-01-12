@@ -5,7 +5,7 @@ import { Button, Dropdown, Tooltip, TooltipProps } from '@xl-vision/react';
 
 export type WrapperProps = {
   tooltipProps: Omit<TooltipProps, 'children'>;
-  children: ReactElement;
+  children: ReactElement<any>;
   [key: string]: any;
 };
 

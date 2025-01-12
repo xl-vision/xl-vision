@@ -8,10 +8,8 @@ const useForkRef = <T>(...refs: Array<Ref<T> | undefined>): Ref<T> => {
       refs.forEach((it) => {
         const ret = setRef(it, value);
 
-        if (isReact19) {
-          if (typeof ret === 'function') {
-            cbs.push(ret);
-          }
+        if (isReact19 && typeof ret === 'function') {
+          cbs.push(ret);
         }
       });
 

@@ -39,7 +39,7 @@ export const scrollTo = (y: number, options: ScrollToOptions = {}) => {
     const currentTime = Date.now();
     const time = currentTime - startTime;
 
-    const nextScrollTop = easeInOutCubic(time > duration ? duration : time, duration, scrollTop, y);
+    const nextScrollTop = easeInOutCubic(Math.min(time, duration), duration, scrollTop, y);
     if (isWindow(container)) {
       container.scrollTo(window.pageXOffset, nextScrollTop);
     } else if (isDocument(container)) {

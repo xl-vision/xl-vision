@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 const { pathsToModuleNameMapper } = require('ts-jest');
 const getBabelConfig = require('./scripts/getBabelConfig');
 const { compilerOptions } = require('./tsconfig.json');

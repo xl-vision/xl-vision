@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-empty-object-type */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import CSS from 'csstype';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentProps, ComponentType, ExoticComponent, JSX, JSXElementConstructor } from 'react';
 
 export type CSSProperties = CSS.PropertiesFallback<string | number>;

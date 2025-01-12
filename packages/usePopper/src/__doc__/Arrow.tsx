@@ -79,11 +79,11 @@ const CustomPopper = ({ placement: initialPlacement }: { placement: Placement })
     top: extra.arrow?.y ? Math.round(Math.max(extra.arrow.y - 4, 0)) : '',
   };
 
-  if (placement.match(/^top/)) {
+  if (placement.startsWith('top')) {
     arrowStyle.bottom = -4;
-  } else if (placement.match(/^bottom/)) {
+  } else if (placement.startsWith('bottom')) {
     arrowStyle.top = -4;
-  } else if (placement.match(/^left/)) {
+  } else if (placement.startsWith('left')) {
     arrowStyle.right = -4;
   } else {
     arrowStyle.left = -4;

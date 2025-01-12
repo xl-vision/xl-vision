@@ -145,7 +145,7 @@ const Preview: FC<PreviewProps> = (props) => {
     const cb = () => {
       babelPromise
         .then((Babel) => {
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
           const result: { code: string } = Babel.transform(code, {
             presets: [
               'react',
@@ -166,11 +166,12 @@ const Preview: FC<PreviewProps> = (props) => {
             return current;
           });
           setError('');
+          return result;
         })
-        .catch((err) => {
+        .catch((error) => {
           setLoading(false);
           setParsedCode('');
-          setError((err as Error).toString());
+          setError((error as Error).toString());
         });
     };
 
@@ -179,16 +180,18 @@ const Preview: FC<PreviewProps> = (props) => {
       cb();
       isFirstRef.current = false;
     } else {
-      const timer = timerRef.current;
-      timer && window.clearTimeout(timer);
+      if (timerRef.current) {
+        window.clearTimeout(timerRef.current);
+      }
       timerRef.current = window.setTimeout(cb, 500);
     }
   }, [code]);
 
   useEffect(() => {
     return () => {
-      const timer = timerRef.current;
-      timer && window.clearTimeout(timer);
+      if (timerRef.current) {
+        window.clearTimeout(timerRef.current);
+      }
     };
   }, []);
 

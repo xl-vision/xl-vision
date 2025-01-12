@@ -6,7 +6,7 @@ const replace = require('@rollup/plugin-replace');
 const terser = require('@rollup/plugin-terser');
 const fs = require('fs-extra');
 const argv = require('minimist')(process.argv.slice(2));
-const path = require('path');
+const path = require('node:path');
 const rollup = require('rollup');
 const getBabelConfig = require('./getBabelConfig');
 
@@ -19,7 +19,6 @@ async function build(isProd) {
 
   const input = path.resolve(basePath, entry);
 
-  // eslint-disable-next-line global-require, import/no-dynamic-require
   const packageName = require(path.resolve(basePath, 'package.json')).name;
 
   const extensions = ['.js', '.jsx', '.es6', '.es', '.mjs', '.ts', '.tsx'];

@@ -1,16 +1,15 @@
-/* eslint-disable import/no-extraneous-dependencies */
 const rehypePrism = require('@mapbox/rehype-prism');
 const bundleAnalyzer = require('@next/bundle-analyzer');
-const path = require('path');
+const path = require('node:path');
 const demoPlugin = require('./scripts/webpack/mdx/demoPlugin');
 
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 });
 
-module.exports = async () => {
-  const remarkGfm = (await import('remark-gfm')).default;
-  const remarkEmoji = (await import('remark-emoji')).default;
+const nextConfig = async () => {
+  const { default: remarkGfm } = await import('remark-gfm');
+  const { default: remarkEmoji } = await import('remark-emoji');
 
   /**
    * @type {import('next').NextConfig}
@@ -76,3 +75,4 @@ module.exports = async () => {
   };
   return withBundleAnalyzer(nextConfig);
 };
+module.exports = nextConfig;

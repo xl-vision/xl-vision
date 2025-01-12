@@ -4,7 +4,6 @@ import {
   isFirefox,
   isHTMLElement,
   getComputedStyle,
-  oneOf,
 } from '@xl-vision/utils';
 import getNodeName from './getNodeName';
 import getParentNode from './getParentNode';
@@ -62,7 +61,7 @@ const getOffsetParentRect = (element: Element): OffsetParentRect => {
 export default getOffsetParentRect;
 
 const isTableElement = (node: Node): node is HTMLElement => {
-  return oneOf(['table', 'td', 'th'], getNodeName(node));
+  return ['table', 'td', 'th'].includes(getNodeName(node));
 };
 
 // https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block
@@ -82,7 +81,7 @@ const isContainingBlock = (element: Element, parent: Element): boolean => {
     return true;
   }
 
-  if (oneOf(['absolute', 'fixed'], elementCss.position)) {
+  if (['absolute', 'fixed'].includes(elementCss.position)) {
     const firefox = isFirefox();
     return (
       parentCss.transform !== 'none' ||

@@ -6,7 +6,7 @@ import { enUS, zhCN } from '@xl-vision/react/locale';
 
 const { useNotication } = Notication;
 
-const Demo = forwardRef<ReturnType<typeof useNotication>[0], {}>((_, ref) => {
+const Demo = forwardRef<ReturnType<typeof useNotication>[0], unknown>((_, ref) => {
   const [notication, holder] = useNotication();
 
   useImperativeHandle(ref, () => {
@@ -182,10 +182,12 @@ describe('NoticationHooks', () => {
     expect(el).toBe(null);
 
     act(() => {
-      noticationRef.success({
-        message: 'message',
-        id: 'success',
-      });
+      noticationRef
+        .success({
+          message: 'message',
+          id: 'success',
+        })
+        .catch(console.error);
     });
 
     await act(() => awaitPromise());
@@ -220,10 +222,12 @@ describe('NoticationHooks', () => {
     expect(el).toBe(null);
 
     act(() => {
-      noticationRef.info({
-        message: 'message',
-        id: 'info',
-      });
+      noticationRef
+        .info({
+          message: 'message',
+          id: 'info',
+        })
+        .catch(console.error);
     });
 
     await act(() => awaitPromise());

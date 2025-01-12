@@ -16,7 +16,7 @@ const Demo = () => {
     (e: FormEvent) => {
       e.preventDefault();
       const value = getValue();
-      Message.success(`submit value: ${JSON.stringify(value)}`);
+      void Message.success(`submit value: ${JSON.stringify(value)}`);
     },
     [getValue],
   );

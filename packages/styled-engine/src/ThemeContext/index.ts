@@ -1,3 +1,1 @@
-import { ThemeContext } from '@emotion/react';
-
-export default ThemeContext;
+export { ThemeContext as default } from '@emotion/react';

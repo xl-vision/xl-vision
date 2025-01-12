@@ -13,7 +13,7 @@ const GLOBAL_EVENT = Symbol('GLOABL_EVENT');
 
 export type ErrorMap = Partial<Record<ValidatorKey | 'custom', string>>;
 
-class FormStore<T extends Record<string, any> = Record<string, any>> {
+class FormStore<T extends Record<string, unknown> = Record<string, unknown>> {
   private values: Partial<T>;
 
   private errors: Partial<Record<keyof T, ErrorMap>>;
@@ -41,7 +41,8 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
       this.values = { ...field };
 
       Object.keys(this.values).forEach((key) => {
-        this.valueEmitter.emit(key, this.values[key]);
+        const value = this.values[key];
+        this.valueEmitter.emit(key, value);
       });
     } else {
       if (this.values[field] === value) {
@@ -53,7 +54,8 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
         [field]: value,
       };
 
-      this.valueEmitter.emit(field as PropertyKey, value);
+      // @ts-expect-error fix types error
+      this.valueEmitter.emit(field, value);
     }
 
     this.valueEmitter.emit(GLOBAL_EVENT, this.values);
@@ -65,7 +67,6 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
 
   getValue<K extends keyof T>(field?: K) {
     if (field) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
       return this.values[field];
     }
     return this.values;
@@ -75,10 +76,7 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
 
   watchValue(listener: (value: Partial<T>) => void): void;
 
-  watchValue<K extends keyof T>(
-    field: K | ((value: Partial<T>) => void),
-    listener?: (value: T[K]) => void,
-  ) {
+  watchValue<K extends keyof T>(field: K | ((value: T) => void), listener?: (value: T[K]) => void) {
     if (typeof field === 'function') {
       this.valueEmitter.on(GLOBAL_EVENT, field);
       return;
@@ -91,10 +89,10 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
 
   unwatchValue<K extends keyof T>(field: K, listener: (value: T[K]) => void): void;
 
-  unwatchValue(listener: (value: Partial<T>) => void): void;
+  unwatchValue(listener: (value: T) => void): void;
 
   unwatchValue<K extends keyof T>(
-    field: K | ((value: Partial<T>) => void),
+    field: K | ((value: T) => void),
     listener?: (value: T[K]) => void,
   ) {
     if (typeof field === 'function') {
@@ -178,8 +176,7 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
         [field]: errorMap,
       };
 
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
+      // @ts-expect-error fix types error
       this.errorEmitter.emit(field, errorMap);
 
       this.errorEmitter.emit(GLOBAL_EVENT, this.errors);
@@ -191,20 +188,18 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
       rulesMap: Partial<Record<K, Array<Rule>>>;
     };
 
-    const errorsMap: Partial<Record<keyof T, ErrorMap>> = {};
+    const errorsMap = {} as Partial<Record<keyof T, ErrorMap>>;
     this.errors = errorsMap;
 
     await Promise.all(
-      Object.keys(this.values).map(async (_key) => {
-        const key = _key as K;
+      Object.keys(this.values).map(async (key) => {
         const errors = await this.validateField(key, {
           ...others,
-          rules: rulesMap[key],
+          rules: rulesMap[key as K],
         });
-        errorsMap[key] = errors;
 
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
+        errorsMap[key as K] = errors;
+
         this.errorEmitter.emit(key, errors);
       }),
     );
@@ -251,8 +246,8 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
           field: field as string,
           values: this.values,
         });
-      } catch (err) {
-        errorMap.custom = globalMessage || (err as Error).message;
+      } catch (error) {
+        errorMap.custom = globalMessage || (error as Error).message;
         if (!eager) {
           return errorMap;
         }
@@ -261,7 +256,7 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
       for (let j = 0; j < keys.length; j++) {
         const key = keys[j];
 
-        const defaultValidator = validators[key] as Validator<any>;
+        const defaultValidator = validators[key] as Validator<unknown>;
         if (!defaultValidator) {
           warning(true, 'unknown validator {}, please check whether passing a right key', key);
           continue;
@@ -286,8 +281,8 @@ class FormStore<T extends Record<string, any> = Record<string, any>> {
             values: this.values,
             rule: value!,
           });
-        } catch (err) {
-          errorMap[key] = message || (err as Error).message;
+        } catch (error) {
+          errorMap[key] = message || (error as Error).message;
           if (!eager) {
             return errorMap;
           }

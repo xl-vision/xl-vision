@@ -1,7 +1,9 @@
 export default class EventEmitter<
-  M extends Record<PropertyKey, (...args: Array<any>) => void> = Record<
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  M extends Record<PropertyKey, (...args: any) => void> = Record<
     PropertyKey,
-    (...args: Array<any>) => void
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (...args: any) => void
   >,
 > {
   private listeners: Map<keyof M, Set<M[keyof M]>>;

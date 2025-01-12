@@ -16,10 +16,15 @@ export const contains = (parent: Element, child: Element | null) => {
 
 declare global {
   interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     HTMLElement: any;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     Element: any;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     Node: any;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ShadowRoot: any;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     Document: any;
   }
 }

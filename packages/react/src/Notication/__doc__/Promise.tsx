@@ -15,8 +15,8 @@ const Demo = () => {
   const [notication, holder] = Notication.useNotication();
 
   const handleInfo = useCallback(() => {
-    notication.info('doing some work').then(() => {
-      notication.success('done successful');
+    void notication.info('doing some work').then(() => {
+      void notication.success('done successful');
     });
   }, [notication]);
 

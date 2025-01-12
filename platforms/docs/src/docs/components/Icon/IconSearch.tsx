@@ -62,8 +62,8 @@ const IconSearch: FC<void> = () => {
 
       clipboard.on('success', () => {
         clipboard.destroy();
-        // eslint-disable-next-line @typescript-eslint/no-floating-promises
-        message.success('Copy success');
+
+        void message.success('Copy success');
       });
     },
     [message],
@@ -75,7 +75,7 @@ const IconSearch: FC<void> = () => {
         if (iconName === 'createIcon') {
           return false;
         }
-        if (iconName.toUpperCase().indexOf(search.toUpperCase()) === -1) {
+        if (!iconName.toUpperCase().includes(search.toUpperCase())) {
           return false;
         }
         if (iconType === IconType.OUTLINED) {

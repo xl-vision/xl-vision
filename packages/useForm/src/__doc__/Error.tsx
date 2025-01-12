@@ -22,9 +22,9 @@ const Demo = () => {
       try {
         await validate();
         const value = getValue();
-        Message.success(`submit value: ${JSON.stringify(value)}`);
-      } catch (err) {
-        console.error(err);
+        void Message.success(`submit value: ${JSON.stringify(value)}`);
+      } catch (error) {
+        console.error(error);
       }
     },
     [getValue, validate],

@@ -4,12 +4,10 @@ export type DeepmergeOptions = {
   clone?: boolean;
 };
 
-const deepMerge = <T, S>(
-  target: T,
-  source: S,
-  options: DeepmergeOptions = { clone: true },
-): T & S => {
-  const output = options.clone ? { ...target } : target;
+const deepMerge = <T, S>(target: T, source: S, options?: DeepmergeOptions): T & S => {
+  const { clone = true } = options || {};
+
+  const output = clone ? { ...target } : target;
 
   if (isPlainObject(target) && isPlainObject(source)) {
     Object.keys(source).forEach((key) => {

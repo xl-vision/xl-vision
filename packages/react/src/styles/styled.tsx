@@ -18,9 +18,9 @@ export type XlOptions = {
   slot?: string;
 };
 
-const NOT_FORWARD_PROPS: Array<PropertyKey> = ['theme', 'styleProps', 'as'];
+const NOT_FORWARD_PROPS: Set<PropertyKey> = new Set(['theme', 'styleProps', 'as']);
 
-const shouldForwardProp = (prop: PropertyKey) => NOT_FORWARD_PROPS.indexOf(prop) === -1;
+const shouldForwardProp = (prop: PropertyKey) => !NOT_FORWARD_PROPS.has(prop);
 
 const middleline = (str: string) => {
   const separator = '-';
@@ -63,7 +63,7 @@ const styled = <
   const overrideCreateStyledComponent = <
     StyleProps extends object | undefined = undefined,
     Props extends Pick<ExtractProps<Tag>, ForwardedProps> = Pick<ExtractProps<Tag>, ForwardedProps>,
-    ActualStyleProps = StyleProps extends undefined ? {} : { styleProps: StyleProps },
+    ActualStyleProps = StyleProps extends undefined ? object : { styleProps: StyleProps },
     ReceivedThemeProps = { theme: Theme } & ActualStyleProps,
     PassedThemeProps = { theme?: Theme } & ActualStyleProps,
   >(
@@ -98,11 +98,13 @@ const styled = <
 
     const newStyles = [...styles, applyOverrideStyle].map(applyTheme);
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let newFirst: any = first;
 
     if (Array.isArray(newFirst) && 'raw' in newFirst) {
       const newFirstArray = newFirst as unknown as TemplateStringsArray;
       newFirst = [...newFirstArray, ''];
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       newFirst.raw = [...newFirstArray.raw, ''];
     } else {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
@@ -117,15 +119,12 @@ const styled = <
       ...newStyles,
     );
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-
+    // @ts-expect-error fix types error
     const DefaultComponent: typeof InnerDefaultComponent = forwardRef((props, ref) => {
       const { clsPrefix } = useTheme();
 
       return (
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
+        // @ts-expect-error fix types error
         <InnerDefaultComponent
           {...props}
           className={clsx(

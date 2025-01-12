@@ -130,7 +130,6 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
   }, [clsPrefix]);
 
   const handleConfirm = useConstantFn(() => {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     new Promise((resolve) => {
       setConfirmLoading(true);
       resolve(onConfirm?.());
@@ -140,11 +139,11 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
       })
       .finally(() => {
         setConfirmLoading(false);
-      });
+      })
+      .catch(console.error);
   });
 
   const handleCancel = useConstantFn(() => {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     new Promise((resolve) => {
       setCancelLoading(true);
       resolve(onCancel?.());
@@ -154,7 +153,8 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
       })
       .finally(() => {
         setCancelLoading(false);
-      });
+      })
+      .catch(console.error);
   });
 
   const handleOpenChange = useConstantFn((v: boolean) => {

@@ -125,7 +125,10 @@ const InnerMessage = forwardRef<HTMLDivElement, InnerMessageProps>((props, ref) 
 
   const handleMouseEnter = useConstantFn((e: MouseEvent<HTMLDivElement>) => {
     onMouseEnter?.(e);
-    timerRef.current && clearTimeout(timerRef.current);
+    const timer = timerRef.current;
+    if (timer) {
+      clearTimeout(timer);
+    }
   });
 
   const handleMouseLeave = useConstantFn((e: MouseEvent<HTMLDivElement>) => {
@@ -161,7 +164,10 @@ const InnerMessage = forwardRef<HTMLDivElement, InnerMessageProps>((props, ref) 
     }, duration);
 
     return () => {
-      timerRef.current && clearTimeout(timerRef.current);
+      const timer = timerRef.current;
+      if (timer) {
+        clearTimeout(timer);
+      }
     };
   }, [duration, setOpen]);
 

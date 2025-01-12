@@ -68,7 +68,7 @@ const Message: FC<MessageProps> = ({
   );
 };
 
-type ContainerProps = NoticationContainerProps<{}>;
+type ContainerProps = NoticationContainerProps<unknown>;
 
 const MessageContainerRoot = styled('div')(() => {
   return {
@@ -94,7 +94,7 @@ const Demo = () => {
   const countRef = useRef(0);
 
   const handleClick = useCallback(() => {
-    message.open({ content: `message ${countRef.current++}` });
+    void message.open({ content: `message ${countRef.current++}` });
   }, [message]);
 
   return (

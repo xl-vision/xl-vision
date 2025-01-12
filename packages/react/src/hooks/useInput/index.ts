@@ -91,7 +91,7 @@ const getCompositionValue = (
 };
 
 const getFixedStringInfo = (value: string, maxWordCount?: number) => {
-  let array = Array.from(value);
+  let array = [...value];
 
   if (maxWordCount !== undefined) {
     array = array.slice(0, maxWordCount);

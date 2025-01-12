@@ -22,7 +22,7 @@ const Demo = () => {
   const handleUpdate = useMemo(() => {
     // 节流
     const throttle = () => {
-      if (!rafIdRef.current) {
+      if (rafIdRef.current) {
         return;
       }
       rafIdRef.current = requestAnimationFrame(() => {

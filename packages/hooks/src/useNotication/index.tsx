@@ -14,13 +14,14 @@ import {
 } from 'react';
 import { flushSync } from 'react-dom';
 
-export type NoticationProps<P> = P & {
-  open?: boolean;
-  defaultOpen?: boolean;
+export type NoticationHookProps<P> = P & {
   onAfterClosed?: () => void;
 };
 
-export type NoticationHookProps<P> = Omit<NoticationProps<P>, 'open' | 'defaultOpen'>;
+export type NoticationProps<P> = NoticationHookProps<P> & {
+  open?: boolean;
+  defaultOpen?: boolean;
+};
 
 export type NoticationContainerProps<NCP> = NCP & {
   children: ReactNode;
@@ -92,8 +93,6 @@ const useNotication = <P, NCP>(
 
   const method = useCallback(
     (props: NoticationHookProps<P>): NoticationHookReturnType<P> => {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       let currentProps: NoticationProps<P> = {
         ...props,
         open: undefined,
@@ -199,8 +198,7 @@ const useNotication = <P, NCP>(
     [method],
   );
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
+  // @ts-expect-error fix types error
   const holder = <NoticationContainer {...otherOptions}>{notications}</NoticationContainer>;
 
   return [methods, holder] as const;

@@ -6,11 +6,11 @@ import { Theme } from '../createTheme';
 
 export type Style<
   S extends object | undefined = undefined,
-  P extends object = {},
+  P extends object = object,
   ST = S extends undefined ? { theme: Theme } : { styleProps: S; theme: Theme },
 > = Interpolation<P & ST>;
 
-export type PartialOverrideStyles<T extends Record<string, any>> = Partial<{
+export type PartialOverrideStyles<T extends Record<string, unknown>> = Partial<{
   [K in keyof T]: Partial<T[K]>;
 }>;
 

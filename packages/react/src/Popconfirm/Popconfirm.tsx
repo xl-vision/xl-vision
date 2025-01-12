@@ -17,8 +17,8 @@ export type PopconfirmProps = Omit<PopperProps, 'popup' | 'arrow' | 'title'> & {
   confirmText?: string;
   hideArrow?: boolean;
   icon?: ReactNode;
-  onCancel?: () => void | Promise<any>;
-  onConfirm?: () => void | Promise<any>;
+  onCancel?: () => void | Promise<void>;
+  onConfirm?: () => void | Promise<void>;
 };
 
 const displayName = 'Popconfirm';
@@ -117,7 +117,6 @@ const Popconfirm = forwardRef<HTMLDivElement, PopconfirmProps>((props, ref) => {
   const [cancelLoading, setCancelLoading] = useState(false);
 
   const handleCancel = useConstantFn(() => {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     new Promise((resolve) => {
       setCancelLoading(true);
       resolve(onCancel?.());
@@ -127,11 +126,11 @@ const Popconfirm = forwardRef<HTMLDivElement, PopconfirmProps>((props, ref) => {
       })
       .finally(() => {
         setCancelLoading(false);
-      });
+      })
+      .catch(console.error);
   });
 
   const handleConfirm = useConstantFn(() => {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     new Promise((resolve) => {
       setConfirmLoading(true);
       resolve(onConfirm?.());
@@ -141,7 +140,8 @@ const Popconfirm = forwardRef<HTMLDivElement, PopconfirmProps>((props, ref) => {
       })
       .finally(() => {
         setConfirmLoading(false);
-      });
+      })
+      .catch(console.error);
   });
 
   const handleOpenChange = useConstantFn((value: boolean) => {

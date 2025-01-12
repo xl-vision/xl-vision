@@ -6,6 +6,7 @@ import useLatestRef from '../useLatestRef';
  * 将给定的函数常量化
  * @param value
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const useConstantFn = <Fn extends (...args: any) => any>(fn: Fn) => {
   const fnRef = useLatestRef(fn);
 
@@ -13,7 +14,7 @@ const useConstantFn = <Fn extends (...args: any) => any>(fn: Fn) => {
 
   if (!constantFnRef.current) {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-argument
-    constantFnRef.current = ((...args: any) => fnRef.current(...args)) as Fn;
+    constantFnRef.current = ((...args) => fnRef.current(...args)) as Fn;
   }
 
   return constantFnRef.current;

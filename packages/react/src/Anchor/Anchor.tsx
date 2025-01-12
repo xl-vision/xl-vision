@@ -6,7 +6,6 @@ import {
   isProduction,
   isServer,
   isWindow,
-  oneOf,
   off,
   on,
 } from '@xl-vision/utils';
@@ -196,7 +195,7 @@ const Anchor = forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
     if (!currentScrollTarget) {
       return;
     }
-    if (!oneOf(links, link)) {
+    if (!links.includes(link)) {
       link = '';
     }
     setActiveLink(link);

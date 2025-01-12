@@ -18,7 +18,6 @@ const EmotionRegistry: FC<EmotionRegistryProps> = ({ children }: EmotionRegistry
     const prevInsert = cache.insert;
     let inserted: Array<{ name: string; isGlobal: boolean }> = [];
     // Override the insert method to support streaming SSR with flush().
-    // @ts-expect-error
     cache.insert = (...args) => {
       const [selector, serialized] = args;
       if (cache.inserted[serialized.name] === undefined) {

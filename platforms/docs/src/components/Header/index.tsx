@@ -100,7 +100,7 @@ const Menus = styled('ul')(({ theme }) => {
   };
 });
 
-const langRegex = new RegExp(`^/(${supportedLangs.map((it) => it.replace(/-/g, '-')).join('|')})`);
+const langRegex = new RegExp(`^/(${supportedLangs.join('|')})`);
 
 export type HeaderProps = HTMLAttributes<HTMLElement> & {
   mobileMenus?: ReactNode;

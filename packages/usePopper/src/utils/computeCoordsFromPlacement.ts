@@ -1,4 +1,3 @@
-import { oneOf } from '@xl-vision/utils';
 import { Alignment, PopperRect, ReferenceRect, Side } from '../types';
 
 export type Options = {
@@ -8,7 +7,7 @@ export type Options = {
   alignment?: Alignment;
 };
 
-export default ({ side, alignment, referenceRect, popperRect }: Options) => {
+const computeCoordsFromPlacement = ({ side, alignment, referenceRect, popperRect }: Options) => {
   let coords: { x: number; y: number };
 
   switch (side) {
@@ -48,7 +47,7 @@ export default ({ side, alignment, referenceRect, popperRect }: Options) => {
     }
   }
 
-  const isVertical = oneOf(['top', 'bottom'], side);
+  const isVertical = ['top', 'bottom'].includes(side);
 
   const mainAxis = isVertical ? 'x' : 'y';
 
@@ -68,3 +67,4 @@ export default ({ side, alignment, referenceRect, popperRect }: Options) => {
 
   return coords;
 };
+export default computeCoordsFromPlacement;

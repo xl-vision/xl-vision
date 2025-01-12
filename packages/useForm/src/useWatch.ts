@@ -1,14 +1,14 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Form } from './useForm';
 
-function useWatch<T extends Record<string, any>, K extends keyof T>(o: {
+function useWatch<T extends Record<string, unknown>, K extends keyof T>(o: {
   form: Form<T>;
   field: K;
 }): T[K];
 
-function useWatch<T extends Record<string, any>>(o: { form: Form<T> }): T;
+function useWatch<T extends Record<string, unknown>>(o: { form: Form<T> }): T;
 
-function useWatch<T extends Record<string, any>, K extends keyof T>({
+function useWatch<T extends Record<string, unknown>, K extends keyof T>({
   form,
   field,
 }: {
@@ -17,10 +17,9 @@ function useWatch<T extends Record<string, any>, K extends keyof T>({
 }) {
   const { store } = form;
 
-  const [values, setValues] = useState<T | T[K]>(() => store.getValue(field as any));
+  const [values, setValues] = useState<Partial<T> | T[K]>(() => store.getValue(field as K));
 
-  const listener = useCallback((v: any) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+  const listener = useCallback((v: Partial<T> | T[K]) => {
     setValues(v);
   }, []);
 
@@ -40,7 +39,6 @@ function useWatch<T extends Record<string, any>, K extends keyof T>({
     };
   }, [listener, store, field]);
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return values;
 }
 
