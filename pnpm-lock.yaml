@@ -196,7 +196,7 @@ importers:
         specifier: ^4.14.2
         version: 4.29.1
       semver:
-        specifier: ^7.6.0
+        specifier: ^7.6.3
         version: 7.6.3
       styled-components:
         specifier: '>=6.0.0'
