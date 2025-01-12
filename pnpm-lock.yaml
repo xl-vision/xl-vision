@@ -349,7 +349,7 @@ importers:
         specifier: ^4.23.7
         version: 4.23.7(@codemirror/view@6.36.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@vercel/analytics':
-        specifier: ^1.2.2
+        specifier: ^1.4.1
         version: 1.4.1(next@15.1.4(@babel/core@7.26.0)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
       '@xl-vision/hooks':
         specifier: workspace:^
