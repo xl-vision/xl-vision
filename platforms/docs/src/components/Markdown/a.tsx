@@ -23,12 +23,16 @@ const Link: FC<AnchorHTMLAttributes<HTMLAnchorElement>> = (props) => {
 
   const newHref = useMemo(() => {
     if (href && /^\//.test(href)) {
-      return `${lang}${href}`;
+      return `/${lang}${href}`;
     }
     return href || '';
   }, [href, lang]);
 
-  return <StyledLink {...others} href={newHref} target='_blank' />;
+  const isOtherSite = useMemo(() => {
+    return /^https?:/.test(newHref);
+  }, [newHref]);
+
+  return <StyledLink {...others} href={newHref} target={isOtherSite ? '_blank' : '_self'} />;
 };
 
 export default Link;
