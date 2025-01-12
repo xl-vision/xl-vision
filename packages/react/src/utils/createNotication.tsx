@@ -3,7 +3,6 @@ import {
   NoticationContainerType,
   NoticationHookProps,
   NoticationHookReturnType,
-  NoticationMethods,
   NoticationOptions,
   NoticationProps,
   useNotication,
@@ -75,8 +74,6 @@ const createNotication = <P extends NoticationProps, NCP extends NoticationConta
 
     let hookMethods: NoticationHookReturnType<P> | undefined;
 
-    let promiseResolve: (props: NoticationMethods<P>) => void | undefined;
-
     let promise = Promise.resolve();
 
     if (!rootEl) {
@@ -91,35 +88,25 @@ const createNotication = <P extends NoticationProps, NCP extends NoticationConta
 
     count++;
 
-    promise
-      .then(() => {
-        hookMethods = noticationRef.current?.instance.open({
-          ...currentProps,
-          onAfterClosed() {
-            count--;
-            if (count <= 0) {
-              destroyDOM();
-            }
-            currentProps.onAfterClosed?.();
-            promiseResolve?.({
-              update: (updateProps) => hookMethods?.update(updateProps),
-              destroy: () => hookMethods?.destroy(),
-              isDestroyed: () => hookMethods?.isDestroyed() || false,
-            });
-          },
-        });
-      })
-      .catch(console.error);
-
-    const retPromise = new Promise<NoticationMethods<P>>((resolve) => {
-      promiseResolve = resolve;
+    const resultPromise = promise.then(() => {
+      hookMethods = noticationRef.current?.instance.open({
+        ...currentProps,
+        onAfterClosed() {
+          count--;
+          if (count <= 0) {
+            destroyDOM();
+          }
+          currentProps.onAfterClosed?.();
+        },
+      });
+      return hookMethods;
     }) as NoticationHookReturnType<P>;
 
-    retPromise.update = (updateProps) => hookMethods?.update(updateProps);
-    retPromise.destroy = () => hookMethods?.destroy();
-    retPromise.isDestroyed = () => hookMethods?.isDestroyed() || false;
+    resultPromise.update = (updateProps) => hookMethods?.update(updateProps);
+    resultPromise.destroy = () => hookMethods?.destroy();
+    resultPromise.isDestroyed = () => hookMethods?.isDestroyed() || false;
 
-    return retPromise;
+    return resultPromise;
   };
 
   const setGlobalConfig = (config: Partial<NoticationOptions<NCP>>) => {

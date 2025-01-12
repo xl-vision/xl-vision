@@ -107,7 +107,7 @@ const useNotication = <P extends NoticationProps, NCP extends NoticationContaine
       let promiseResolve: (props: NoticationMethods<P>) => void | undefined;
 
       const onAfterClosedWrap = (onAfterClosed?: () => void) => () => {
-        destroyDOM();
+        removeNode();
         onAfterClosed?.();
         promiseResolve?.({
           update,
@@ -127,7 +127,7 @@ const useNotication = <P extends NoticationProps, NCP extends NoticationContaine
 
       const notication = <RefNotication key={`notication${keyRef.current++}`} ref={ref} />;
 
-      const destroyDOM = () => {
+      const removeNode = () => {
         flushSync(() => {
           setNotications((prev) => prev.filter((it) => it !== notication));
         });
