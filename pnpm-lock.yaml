@@ -273,7 +273,7 @@ importers:
         version: 19.0.0
     devDependencies:
       '@types/prop-types':
-        specifier: ^15.7.12
+        specifier: ^15.7.14
         version: 15.7.14
       '@types/react-is':
         specifier: '>=18.3.1'
@@ -289,7 +289,7 @@ importers:
         version: 15.8.1
     devDependencies:
       '@types/prop-types':
-        specifier: ^15.7.12
+        specifier: ^15.7.14
         version: 15.7.14
 
   packages/styled-engine-sc:
@@ -302,7 +302,7 @@ importers:
         version: 15.8.1
     devDependencies:
       '@types/prop-types':
-        specifier: ^15.7.12
+        specifier: ^15.7.14
         version: 15.7.14
 
   packages/styled-engine-types:
@@ -428,7 +428,7 @@ importers:
         specifier: 17.0.4
         version: 17.0.4
       '@types/prop-types':
-        specifier: ^15.7.12
+        specifier: ^15.7.14
         version: 15.7.14
       cross-env:
         specifier: ^7.0.3
