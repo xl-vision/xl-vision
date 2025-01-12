@@ -14,50 +14,47 @@ import {
 } from 'react';
 import { flushSync } from 'react-dom';
 
-export type NoticationHookProps<P> = P & {
+export type NoticationProps = {
+  open?: boolean;
+  onOpenChange?: (value: boolean) => void;
   onAfterClosed?: () => void;
 };
 
-export type NoticationProps<P> = NoticationHookProps<P> & {
-  open?: boolean;
-  defaultOpen?: boolean;
-};
+export type NoticationHookProps<P extends NoticationProps> = Omit<P, 'open' | 'onOpenChange'>;
 
-export type NoticationContainerProps<NCP> = NCP & {
+export type NoticationContainerProps = {
   children: ReactNode;
 };
 
-export type NoticationContainerType<NCP> =
-  | ComponentType<NoticationContainerProps<NCP>>
+export type NoticationContainerType<NCP extends NoticationContainerProps> =
+  | ComponentType<NCP>
   | string
   | ExoticComponent;
 
-export type NoticationOptions<NCP> = Omit<NoticationContainerProps<NCP>, 'children'> & {
+export type NoticationOptions<NCP extends NoticationContainerProps> = Omit<NCP, 'children'> & {
   maxCount?: number;
 };
 
-export type NoticationHookUpdate<P> = (
+export type NoticationHookUpdate<P extends NoticationProps> = (
   props:
     | Partial<NoticationHookProps<P>>
     | ((prev: NoticationHookProps<P>) => Partial<NoticationHookProps<P>>),
 ) => void;
 
-export type NoticationMethods<P> = {
+export type NoticationMethods<P extends NoticationProps> = {
   destroy: () => void;
   update: NoticationHookUpdate<P>;
   isDestroyed: () => boolean;
 };
 
-export type NoticationHookReturnType<P> = Promise<NoticationMethods<P>> & NoticationMethods<P>;
+export type NoticationHookReturnType<P extends NoticationProps> = Promise<NoticationMethods<P>> &
+  NoticationMethods<P>;
 
 type NoticationRef<P> = {
-  update: (updateProps: NoticationProps<P>) => void;
+  update: (updateProps: P) => void;
 };
 
-const createRefNotication = <P,>(
-  Notication: ComponentType<NoticationProps<P>>,
-  props: NoticationProps<P>,
-) => {
+const createRefNotication = <P extends object>(Notication: ComponentType<P>, props: P) => {
   const RefNotication = forwardRef<NoticationRef<P>>((_, ref) => {
     const [noticationProps, setNoticationProps] = useState(props);
 
@@ -79,8 +76,8 @@ const createRefNotication = <P,>(
   return RefNotication;
 };
 
-const useNotication = <P, NCP>(
-  Notication: ComponentType<NoticationProps<P>>,
+const useNotication = <P extends NoticationProps, NCP extends NoticationContainerProps>(
+  Notication: ComponentType<P>,
   NoticationContainer: NoticationContainerType<NCP>,
   options: NoticationOptions<NCP>,
 ) => {
@@ -93,11 +90,19 @@ const useNotication = <P, NCP>(
 
   const method = useCallback(
     (props: NoticationHookProps<P>): NoticationHookReturnType<P> => {
-      let currentProps: NoticationProps<P> = {
+      let currentProps = {
         ...props,
-        open: undefined,
-        defaultOpen: true,
-      };
+        open: true,
+        onOpenChange: (value) => {
+          if (value === currentProps.open) {
+            return;
+          }
+          render({
+            ...currentProps,
+            open: value,
+          });
+        },
+      } as P;
 
       let promiseResolve: (props: NoticationMethods<P>) => void | undefined;
 
@@ -130,7 +135,7 @@ const useNotication = <P, NCP>(
         destroyState = true;
       };
 
-      const render = (renderProps: NoticationProps<P>) => {
+      const render = (renderProps: P) => {
         if (destroyState) {
           return warningLog(
             true,
@@ -146,7 +151,12 @@ const useNotication = <P, NCP>(
       const update: NoticationHookUpdate<P> = (updateProps) => {
         const newProps =
           typeof updateProps === 'function' ? updateProps(currentProps) : updateProps;
-        currentProps = { ...currentProps, ...newProps, open: undefined, defaultOpen: true };
+        currentProps = {
+          ...currentProps,
+          ...newProps,
+          open: currentProps.open,
+          onOpenChange: currentProps.onOpenChange,
+        };
 
         render(currentProps);
       };
@@ -198,8 +208,9 @@ const useNotication = <P, NCP>(
     [method],
   );
 
-  // @ts-expect-error fix types error
-  const holder = <NoticationContainer {...otherOptions}>{notications}</NoticationContainer>;
+  const holder = (
+    <NoticationContainer {...(otherOptions as NCP)}>{notications}</NoticationContainer>
+  );
 
   return [methods, holder] as const;
 };

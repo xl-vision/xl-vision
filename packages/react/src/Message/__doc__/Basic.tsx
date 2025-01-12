@@ -31,7 +31,7 @@ const Demo = () => {
   }, [message]);
 
   const handleLoading = useCallback(() => {
-    void message.loading('hello world');
+    void message.loading('hello world').then(() => message.success('loading finished!'));
   }, [message]);
 
   return (

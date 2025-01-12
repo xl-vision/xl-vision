@@ -16,15 +16,14 @@ import { styled } from '../../styles';
 import { useTheme } from '../../ThemeProvider';
 import Transition from '../../Transition';
 
-export type InnerMessageProps = NoticationProps<
+export type InnerMessageProps = NoticationProps &
   Omit<HTMLAttributes<HTMLDivElement>, 'content'> & {
     content: ReactNode;
     closeIcon?: ReactNode;
     duration?: number;
     icon?: ReactNode;
     showClose?: boolean;
-  }
->;
+  };
 
 const displayName = 'InnerMessage';
 
@@ -102,7 +101,7 @@ const InnerMessage = forwardRef<HTMLDivElement, InnerMessageProps>((props, ref) 
   const {
     duration = 3000,
     content,
-    defaultOpen = true,
+    onOpenChange,
     open: openProp,
     icon,
     onAfterClosed,
@@ -115,7 +114,7 @@ const InnerMessage = forwardRef<HTMLDivElement, InnerMessageProps>((props, ref) 
 
   const { clsPrefix } = useTheme();
 
-  const [open, setOpen] = useValueChange(defaultOpen, openProp);
+  const [open, setOpen] = useValueChange(false, openProp, onOpenChange);
 
   const timerRef = useRef<number>(null);
 

@@ -1,5 +1,7 @@
 import {
+  NoticationContainerProps,
   NoticationContainerType,
+  NoticationHookProps,
   NoticationHookReturnType,
   NoticationMethods,
   NoticationOptions,
@@ -10,13 +12,13 @@ import { isProduction } from '@xl-vision/utils';
 import { ComponentType, createRef, forwardRef, useImperativeHandle, useState } from 'react';
 import { Root, createRoot } from 'react-dom/client';
 
-type MethodNoticationRef<P, NCP> = {
+type MethodNoticationRef<P extends NoticationProps, NCP extends NoticationContainerProps> = {
   instance: ReturnType<typeof useNotication<P, NCP>>[0];
   sync: () => void;
 };
 
-const createNotication = <P, NCP>(
-  Notication: ComponentType<NoticationProps<P>>,
+const createNotication = <P extends NoticationProps, NCP extends NoticationContainerProps>(
+  Notication: ComponentType<P>,
   NoticationContainer: NoticationContainerType<NCP>,
   defaultGlobalConfig: NoticationOptions<NCP>,
 ) => {
@@ -66,7 +68,7 @@ const createNotication = <P, NCP>(
     }
   };
 
-  const open = (props: NoticationProps<P>): NoticationHookReturnType<P> => {
+  const open = (props: NoticationHookProps<P>): NoticationHookReturnType<P> => {
     const currentProps = {
       ...props,
     };

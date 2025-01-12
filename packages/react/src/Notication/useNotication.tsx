@@ -1,5 +1,6 @@
 import {
   NoticationHookReturnType as InnerNoticationHookReturnType,
+  NoticationHookProps,
   NoticationOptions,
   useNotication as useInnerNotication,
 } from '@xl-vision/hooks';
@@ -21,10 +22,13 @@ const useNotication = (options: Partial<NoticationHookOptions> = {}) => {
   });
 
   const method = useCallback(
-    (props: NoticationProps | string, type?: NoticationType): NoticationHookReturnType => {
+    (
+      props: NoticationHookProps<NoticationProps> | string,
+      type?: NoticationType,
+    ): NoticationHookReturnType => {
       setZIndex(() => increaseZindex());
 
-      const parsedProps: NoticationProps =
+      const parsedProps: NoticationHookProps<NoticationProps> =
         typeof props === 'string' ? { message: props } : { ...props };
 
       if (type) {
@@ -37,11 +41,15 @@ const useNotication = (options: Partial<NoticationHookOptions> = {}) => {
 
   const methods = useMemo(
     () => ({
-      open: (props: NoticationProps) => method(props),
-      error: (props: Omit<NoticationProps, 'type'> | string) => method(props, 'error'),
-      info: (props: Omit<NoticationProps, 'type'> | string) => method(props, 'info'),
-      success: (props: Omit<NoticationProps, 'type'> | string) => method(props, 'success'),
-      warning: (props: Omit<NoticationProps, 'type'> | string) => method(props, 'warning'),
+      open: (props: NoticationHookProps<NoticationProps>) => method(props),
+      error: (props: Omit<NoticationHookProps<NoticationProps>, 'type'> | string) =>
+        method(props, 'error'),
+      info: (props: Omit<NoticationHookProps<NoticationProps>, 'type'> | string) =>
+        method(props, 'info'),
+      success: (props: Omit<NoticationHookProps<NoticationProps>, 'type'> | string) =>
+        method(props, 'success'),
+      warning: (props: Omit<NoticationHookProps<NoticationProps>, 'type'> | string) =>
+        method(props, 'warning'),
       destroyAll: () => {
         instance.destroyAll();
       },

@@ -19,7 +19,7 @@ import { useTheme } from '../../ThemeProvider';
 import Transition from '../../Transition';
 import NoticationContext from '../context';
 
-export type InnerNoticationProps = NoticationProps<
+export type InnerNoticationProps = NoticationProps &
   HTMLAttributes<HTMLDivElement> & {
     message: ReactNode;
     closeIcon?: ReactNode;
@@ -28,8 +28,7 @@ export type InnerNoticationProps = NoticationProps<
     footer?: ReactNode;
     hideClose?: boolean;
     icon?: ReactNode;
-  }
->;
+  };
 
 const displayName = 'InnerNotication';
 
@@ -131,7 +130,7 @@ const InnerNoticationRoot = styled('div', {
 const InnerNotication = forwardRef<HTMLDivElement, InnerNoticationProps>((props, ref) => {
   const {
     duration = 4500,
-    defaultOpen = true,
+    onOpenChange,
     open: openProp,
     icon,
     onAfterClosed,
@@ -150,7 +149,7 @@ const InnerNotication = forwardRef<HTMLDivElement, InnerNoticationProps>((props,
 
   const { clsPrefix } = useTheme();
 
-  const [open, setOpen] = useValueChange(defaultOpen, openProp);
+  const [open, setOpen] = useValueChange(false, openProp, onOpenChange);
 
   const timerRef = useRef<number>(null);
 

@@ -1,3 +1,4 @@
+import { NoticationHookProps } from '@xl-vision/hooks';
 import { FC, Fragment } from 'react';
 import DedicatedDialog, { DedicatedDialogProps, DialogType } from './DedicatedDialog';
 import { ThemeProvider, ThemeProviderProps } from '../ThemeProvider';
@@ -17,7 +18,7 @@ const MethodDialog: FC<MethodDialogProps> = ({ themeProviderProps, ...others }) 
 
 const { open: innerOpen, destroyAll } = createNotication(MethodDialog, Fragment, {});
 
-export const method = (props: MethodDialogProps, type?: DialogType) => {
+export const method = (props: NoticationHookProps<DedicatedDialogProps>, type?: DialogType) => {
   const currentProps = { ...props };
 
   if (type) {
@@ -27,10 +28,15 @@ export const method = (props: MethodDialogProps, type?: DialogType) => {
   return innerOpen(currentProps);
 };
 
-export const open = (props: MethodDialogProps) => method(props);
-export const confirm = (props: Omit<MethodDialogProps, 'type'>) => method(props, 'confirm');
-export const info = (props: Omit<MethodDialogProps, 'type'>) => method(props, 'info');
-export const warning = (props: Omit<MethodDialogProps, 'type'>) => method(props, 'warning');
-export const error = (props: Omit<MethodDialogProps, 'type'>) => method(props, 'error');
-export const success = (props: Omit<MethodDialogProps, 'type'>) => method(props, 'success');
+export const open = (props: NoticationHookProps<DedicatedDialogProps>) => method(props);
+export const confirm = (props: Omit<NoticationHookProps<DedicatedDialogProps>, 'type'>) =>
+  method(props, 'confirm');
+export const info = (props: Omit<NoticationHookProps<DedicatedDialogProps>, 'type'>) =>
+  method(props, 'info');
+export const warning = (props: Omit<NoticationHookProps<DedicatedDialogProps>, 'type'>) =>
+  method(props, 'warning');
+export const error = (props: Omit<NoticationHookProps<DedicatedDialogProps>, 'type'>) =>
+  method(props, 'error');
+export const success = (props: Omit<NoticationHookProps<DedicatedDialogProps>, 'type'>) =>
+  method(props, 'success');
 export { destroyAll };

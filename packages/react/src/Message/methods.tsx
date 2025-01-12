@@ -1,3 +1,4 @@
+import { NoticationHookProps } from '@xl-vision/hooks';
 import { FC } from 'react';
 import Message, { MessageProps, MessageType } from './Message';
 import MessageContainer, { MessageContainerProps } from './MessageContainer';
@@ -35,7 +36,8 @@ export const method = (props: MessageProps | string, type?: MessageType) => {
     zIndex: increaseZindex(),
   });
 
-  const parsedProps: MessageProps = typeof props === 'string' ? { content: props } : { ...props };
+  const parsedProps: NoticationHookProps<MessageProps> =
+    typeof props === 'string' ? { content: props } : { ...props };
 
   if (type) {
     parsedProps.type = type;
