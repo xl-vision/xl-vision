@@ -1,8 +1,10 @@
 {
-  "extends": ["config:base", "schedule:weekly"],
+  "extends": ["config:recommended", "schedule:weekly"],
   "labels": ["dependencies"],
   "ignorePaths": [],
-  "pin": true,
+  "pin": {
+    "enabled": true
+  },
   "rangeStrategy": "bump",
   "prConcurrentLimit": 5,
   "packageRules": [
@@ -29,7 +31,7 @@
     },
     {
       "matchDatasources": ["npm"],
-      "stabilityDays": 3
+      "minimumReleaseAge": "3 days"
     }
   ],
   "ignoreDeps": []
