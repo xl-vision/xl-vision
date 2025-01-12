@@ -346,7 +346,7 @@ importers:
         specifier: ^3.0.1
         version: 3.1.0(@types/react@19.0.2)(react@19.0.0)
       '@uiw/react-codemirror':
-        specifier: ^4.21.25
+        specifier: ^4.23.7
         version: 4.23.7(@codemirror/view@6.36.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@vercel/analytics':
         specifier: ^1.2.2
