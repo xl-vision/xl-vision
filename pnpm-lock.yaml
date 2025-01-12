@@ -67,7 +67,7 @@ importers:
         specifier: ^6.0.4
         version: 6.0.4(@babel/core@7.26.0)(@types/babel__core@7.20.5)(rollup@4.29.1)
       '@rollup/plugin-commonjs':
-        specifier: ^25.0.7
+        specifier: ^25.0.8
         version: 25.0.8(rollup@4.29.1)
       '@rollup/plugin-node-resolve':
         specifier: ^15.2.3
