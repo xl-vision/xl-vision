@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback } from 'react';
-import { Button, Notication, styled } from '@xl-vision/react';
+import { Button, Dialog, styled } from '@xl-vision/react';
 
 const Root = styled('div')(() => {
   return {
@@ -14,26 +14,30 @@ const Root = styled('div')(() => {
 const Demo = () => {
   const handleClick = useCallback(() => {
     let i = 5;
-    const notication = Notication.open({
-      message: 'Message',
-      description: `This message will close after ${i}s.`,
-      duration: 0,
+    const dialog = Dialog.open({
+      title: 'Dialog',
+      content: `This message will close after ${i}s.`,
     });
 
-    void notication.then(() => Notication.info('close successfully!'));
+    void dialog.then(() =>
+      Dialog.info({
+        title: 'Dialog',
+        content: 'close successfully!',
+      }),
+    );
 
     const timer = setInterval(() => {
-      if (notication.isDestroyed()) {
+      if (dialog.isDestroyed()) {
         return;
       }
 
       i--;
 
       if (i <= 0) {
-        notication.destroy();
+        dialog.destroy();
         clearInterval(timer);
       } else {
-        notication.update({ description: `This message will close after ${i}s.` });
+        dialog.update({ content: `This message will close after ${i}s.` });
       }
     }, 1000);
   }, []);

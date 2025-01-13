@@ -9785,6 +9785,141 @@ exports[`Demo renders packages/react/src/Dialog/__doc__/Custom.tsx correctly 1`]
 </div>
 `;
 
+exports[`Demo renders packages/react/src/Dialog/__doc__/DebugMethod.tsx correctly 1`] = `
+.emotion-0>* {
+  margin-right: 8px;
+}
+
+.emotion-1 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 4px;
+  min-width: 64px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  padding: 6px 12px;
+  color: #ffffffe0;
+  background-color: #737373;
+}
+
+.emotion-1::-moz-focus-inner {
+  border-style: none;
+}
+
+.emotion-1 svg {
+  pointer-events: none;
+}
+
+.emotion-1 .xl-base-button__ripple {
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 0.3;
+}
+
+.emotion-1 .xl-base-button__ripple-enter-active {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0, 0, 0.2, 1);
+  transition: all 300ms 0ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.emotion-1 .xl-base-button__ripple-exit-active {
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4, 0, 1, 1);
+  transition: all 300ms 0ms cubic-bezier(0.4, 0, 1, 1);
+}
+
+.emotion-1 .xl-base-button__ripple-enter-from {
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0;
+}
+
+.emotion-1 .xl-base-button__ripple-exit-to {
+  opacity: 0;
+}
+
+.emotion-1:hover {
+  background-color: #525252;
+}
+
+.emotion-1:focus {
+  background-color: #525252;
+}
+
+.emotion-2 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.emotion-3 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+<div>
+  <div
+    class="emotion-0"
+  >
+    <button
+      class="xl-base-button xl-button xl-button--size-middle xl-button--color-info xl-button--variant-contained emotion-1"
+    >
+      <span
+        class="xl-base-button__inner emotion-2"
+      >
+        <span
+          class="xl-button__inner"
+        >
+          Info
+        </span>
+      </span>
+      <div
+        class="xl-ripple xl-base-button__ripple emotion-3"
+      />
+    </button>
+  </div>
+</div>
+`;
+
 exports[`Demo renders packages/react/src/Dialog/__doc__/Methods.tsx correctly 1`] = `
 .emotion-0 {
   position: relative;
