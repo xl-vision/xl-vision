@@ -14,12 +14,15 @@ const Methods = () => {
     });
 
     const timer = setInterval(() => {
+      if (isDestroyed()) {
+        return;
+      }
       i--;
 
       if (i <= 0) {
         destroy();
         clearInterval(timer);
-      } else if (!isDestroyed()) {
+      } else {
         update({ content: `This dialog will close after ${i}s.` });
       }
     }, 1000);
