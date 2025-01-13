@@ -7,8 +7,15 @@ import {
   NoticationProps,
   useNotication,
 } from '@xl-vision/hooks';
-import { isProduction } from '@xl-vision/utils';
-import { ComponentType, createRef, forwardRef, useImperativeHandle, useState } from 'react';
+import { isProduction, isServer, noop } from '@xl-vision/utils';
+import {
+  ComponentType,
+  createRef,
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useState,
+} from 'react';
 import { Root, createRoot } from 'react-dom/client';
 
 type MethodNoticationRef<P extends NoticationProps, NCP extends NoticationContainerProps> = {
@@ -21,28 +28,54 @@ const createNotication = <P extends NoticationProps, NCP extends NoticationConta
   NoticationContainer: NoticationContainerType<NCP>,
   defaultGlobalConfig: NoticationOptions<NCP>,
 ) => {
+  if (isServer) {
+    return {
+      setGlobalConfig: noop,
+      open: () => {
+        const promise = Promise.resolve({
+          update: noop,
+          destroy: noop,
+          isDestroyed: () => true,
+        }) as unknown as NoticationHookReturnType<P>;
+
+        promise.update = noop;
+        promise.destroy = noop;
+        promise.destroy = () => true;
+
+        return promise;
+      },
+      destroyAll: noop,
+    };
+  }
+
   const globalConfigRef = {
     value: {
       ...defaultGlobalConfig,
     },
   };
 
-  const MethodRefNotication = forwardRef<MethodNoticationRef<P, NCP>>((_, ref) => {
-    const [noticationListState, setNoticationListState] = useState(globalConfigRef.value);
+  const MethodRefNotication = forwardRef<MethodNoticationRef<P, NCP>, { onCreated: () => void }>(
+    ({ onCreated }, ref) => {
+      const [noticationListState, setNoticationListState] = useState(globalConfigRef.value);
 
-    const [methods, holder] = useNotication(Notication, NoticationContainer, noticationListState);
+      const [methods, holder] = useNotication(Notication, NoticationContainer, noticationListState);
 
-    useImperativeHandle(ref, () => {
-      return {
-        instance: methods,
-        sync() {
-          setNoticationListState(globalConfigRef.value);
-        },
-      };
-    });
+      useImperativeHandle(ref, () => {
+        return {
+          instance: methods,
+          sync() {
+            setNoticationListState(globalConfigRef.value);
+          },
+        };
+      }, [methods]);
 
-    return holder;
-  });
+      useEffect(() => {
+        onCreated();
+      }, [onCreated]);
+
+      return holder;
+    },
+  );
 
   if (!isProduction) {
     MethodRefNotication.displayName = 'MethodRefNotication';
@@ -83,7 +116,14 @@ const createNotication = <P extends NoticationProps, NCP extends NoticationConta
 
       root = createRoot(div);
 
-      promise = promise.then(() => root?.render(<MethodRefNotication ref={noticationRef} />));
+      promise = promise.then(
+        () =>
+          new Promise<void>((resolve) => {
+            // render后不一定会设置ref值，需要通过组件创建完成事件来判断
+            // eslint-disable-next-line react/jsx-handler-names
+            root?.render(<MethodRefNotication ref={noticationRef} onCreated={resolve} />);
+          }),
+      );
     }
 
     count++;
