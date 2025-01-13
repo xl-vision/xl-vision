@@ -13,8 +13,11 @@ const GLOBAL_EVENT = Symbol('GLOABL_EVENT');
 
 export type ErrorMap = Partial<Record<ValidatorKey | 'custom', string>>;
 
-class FormStore<T extends Record<string, unknown> = Record<string, unknown>> {
-  private values: Partial<T>;
+class FormStore<
+  T extends Record<string, unknown> = Record<string, unknown>,
+  V extends Partial<T> = Partial<T>,
+> {
+  private values: V;
 
   private errors: Partial<Record<keyof T, ErrorMap>>;
 
@@ -22,7 +25,7 @@ class FormStore<T extends Record<string, unknown> = Record<string, unknown>> {
 
   private errorEmitter: EventEmitter;
 
-  constructor(value: Partial<T>) {
+  constructor(value: V) {
     this.values = { ...value };
     this.errors = {};
     this.valueEmitter = new EventEmitter();
@@ -31,9 +34,9 @@ class FormStore<T extends Record<string, unknown> = Record<string, unknown>> {
 
   setValue(value: T): void;
 
-  setValue<K extends keyof T>(field: K, value: T[K]): void;
+  setValue<K extends keyof T>(field: K, value: V[K]): void;
 
-  setValue<K extends keyof T>(field: K | T, value?: T[K]) {
+  setValue<K extends keyof T>(field: K | V, value?: V[K]) {
     if (isObject(field)) {
       if (field === this.values) {
         return;
@@ -61,9 +64,9 @@ class FormStore<T extends Record<string, unknown> = Record<string, unknown>> {
     this.valueEmitter.emit(GLOBAL_EVENT, this.values);
   }
 
-  getValue<K extends keyof T>(field: K): T[K];
+  getValue<K extends keyof T>(field: K): V[K];
 
-  getValue(): T;
+  getValue(): V;
 
   getValue<K extends keyof T>(field?: K) {
     if (field) {
@@ -72,11 +75,11 @@ class FormStore<T extends Record<string, unknown> = Record<string, unknown>> {
     return this.values;
   }
 
-  watchValue<K extends keyof T>(field: K, listener: (value: T[K]) => void): void;
+  watchValue<K extends keyof T>(field: K, listener: (value: V[K]) => void): void;
 
-  watchValue(listener: (value: Partial<T>) => void): void;
+  watchValue(listener: (value: V) => void): void;
 
-  watchValue<K extends keyof T>(field: K | ((value: T) => void), listener?: (value: T[K]) => void) {
+  watchValue<K extends keyof T>(field: K | ((value: V) => void), listener?: (value: V[K]) => void) {
     if (typeof field === 'function') {
       this.valueEmitter.on(GLOBAL_EVENT, field);
       return;
@@ -87,13 +90,13 @@ class FormStore<T extends Record<string, unknown> = Record<string, unknown>> {
     }
   }
 
-  unwatchValue<K extends keyof T>(field: K, listener: (value: T[K]) => void): void;
+  unwatchValue<K extends keyof T>(field: K, listener: (value: V[K]) => void): void;
 
-  unwatchValue(listener: (value: T) => void): void;
+  unwatchValue(listener: (value: V) => void): void;
 
   unwatchValue<K extends keyof T>(
-    field: K | ((value: T) => void),
-    listener?: (value: T[K]) => void,
+    field: K | ((value: V) => void),
+    listener?: (value: V[K]) => void,
   ) {
     if (typeof field === 'function') {
       this.valueEmitter.off(GLOBAL_EVENT, field);
@@ -111,7 +114,7 @@ class FormStore<T extends Record<string, unknown> = Record<string, unknown>> {
 
   getErrors<K extends keyof T>(field?: K) {
     if (field) {
-      return this.errors[field];
+      return this.errors[field] || {};
     }
     return this.errors;
   }

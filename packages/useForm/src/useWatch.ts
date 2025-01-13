@@ -17,9 +17,11 @@ function useWatch<T extends Record<string, unknown>, K extends keyof T>({
 }) {
   const { store } = form;
 
-  const [values, setValues] = useState<Partial<T> | T[K]>(() => store.getValue(field as K));
+  const [values, setValues] = useState<Partial<T> | T[K] | undefined>(() =>
+    store.getValue(field as K),
+  );
 
-  const listener = useCallback((v: Partial<T> | T[K]) => {
+  const listener = useCallback((v: Partial<T> | T[K] | undefined) => {
     setValues(v);
   }, []);
 

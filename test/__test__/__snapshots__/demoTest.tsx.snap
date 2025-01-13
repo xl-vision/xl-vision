@@ -56,7 +56,7 @@ exports[`Demo renders packages/hooks/src/useCssTransition/__doc__/Basic.tsx corr
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -197,7 +197,7 @@ exports[`Demo renders packages/hooks/src/useNotication/__doc__/Basic.tsx correct
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 5px 11px;
+  padding: 3px 9px;
   color: #000000e0;
   border: 1px solid #d9d9d9;
   background-color: #fff;
@@ -331,7 +331,7 @@ exports[`Demo renders packages/hooks/src/useTransition/__doc__/Appear.tsx correc
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -471,7 +471,7 @@ exports[`Demo renders packages/hooks/src/useTransition/__doc__/Basic.tsx correct
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -604,7 +604,7 @@ exports[`Demo renders packages/react/src/Affix/__doc__/Basic.tsx correctly 1`] =
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 5px 11px;
+  padding: 3px 9px;
   color: #000000e0;
   border: 1px solid #d9d9d9;
   background-color: #fff;
@@ -772,7 +772,7 @@ exports[`Demo renders packages/react/src/Affix/__doc__/Change.tsx correctly 1`] 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 5px 11px;
+  padding: 3px 9px;
   color: #000000e0;
   border: 1px solid #d9d9d9;
   background-color: #fff;
@@ -926,7 +926,7 @@ exports[`Demo renders packages/react/src/Affix/__doc__/Container.tsx correctly 1
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 5px 11px;
+  padding: 3px 9px;
   color: #000000e0;
   border: 1px solid #d9d9d9;
   background-color: #fff;
@@ -1074,7 +1074,7 @@ exports[`Demo renders packages/react/src/Affix/__doc__/Debug.tsx correctly 1`] =
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 5px 11px;
+  padding: 3px 9px;
   color: #000000e0;
   border: 1px solid #d9d9d9;
   background-color: #fff;
@@ -1994,7 +1994,7 @@ exports[`Demo renders packages/react/src/Avatar/__doc__/AutoSize.tsx correctly 1
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 5px 11px;
+  padding: 3px 9px;
   color: #000000e0;
   border: 1px solid #d9d9d9;
   background-color: #fff;
@@ -3587,7 +3587,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 5px 11px;
+  padding: 3px 9px;
   color: #000000e0;
   border: 1px solid #d9d9d9;
   background-color: #fff;
@@ -3698,7 +3698,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -3785,7 +3785,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #737373;
 }
@@ -3872,7 +3872,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #ef4444;
 }
@@ -3959,7 +3959,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #000000e0;
   background-color: #f59e0b;
 }
@@ -4046,7 +4046,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #000000e0;
   background-color: #22c55e;
 }
@@ -4133,7 +4133,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 5px 11px;
+  padding: 3px 9px;
   color: #000000e0;
 }
 
@@ -4221,7 +4221,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   background-color: transparent;
   color: #3b82f6;
 }
@@ -4308,7 +4308,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   background-color: transparent;
   color: #737373;
 }
@@ -4395,7 +4395,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   background-color: transparent;
   color: #ef4444;
 }
@@ -4482,7 +4482,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   background-color: transparent;
   color: #f59e0b;
 }
@@ -4569,7 +4569,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   background-color: transparent;
   color: #22c55e;
 }
@@ -4656,7 +4656,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 5px 11px;
+  padding: 3px 9px;
   color: #000000e0;
   border: 1px solid #d9d9d9;
 }
@@ -4745,7 +4745,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 5px 11px;
+  padding: 3px 9px;
   background-color: transparent;
   color: #3b82f6;
   border: 1px solid #3b82f6;
@@ -4835,7 +4835,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 5px 11px;
+  padding: 3px 9px;
   background-color: transparent;
   color: #737373;
   border: 1px solid #737373;
@@ -4925,7 +4925,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 5px 11px;
+  padding: 3px 9px;
   background-color: transparent;
   color: #ef4444;
   border: 1px solid #ef4444;
@@ -5015,7 +5015,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 5px 11px;
+  padding: 3px 9px;
   background-color: transparent;
   color: #f59e0b;
   border: 1px solid #f59e0b;
@@ -5105,7 +5105,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Basic.tsx correctly 1`] 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 5px 11px;
+  padding: 3px 9px;
   background-color: transparent;
   color: #22c55e;
   border: 1px solid #22c55e;
@@ -5508,7 +5508,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/DisableRipple.tsx correc
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 5px 11px;
+  padding: 3px 9px;
   color: #000000e0;
   border: 1px solid #d9d9d9;
   background-color: #fff;
@@ -5619,7 +5619,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/DisableRipple.tsx correc
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   background-color: transparent;
   color: #3b82f6;
 }
@@ -5706,7 +5706,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/DisableRipple.tsx correc
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   background-color: transparent;
   color: #ef4444;
 }
@@ -5793,7 +5793,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/DisableRipple.tsx correc
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 5px 11px;
+  padding: 3px 9px;
   background-color: transparent;
   color: #f59e0b;
   border: 1px solid #f59e0b;
@@ -5962,7 +5962,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Disabled.tsx correctly 1
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 5px 11px;
+  padding: 3px 9px;
   opacity: 0.3;
   color: #000000e0;
   border: 1px solid #d9d9d9;
@@ -6070,7 +6070,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Disabled.tsx correctly 1
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   opacity: 0.3;
   color: #ffffffe0;
   background-color: #3b82f6;
@@ -6150,7 +6150,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Disabled.tsx correctly 1
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   opacity: 0.3;
   color: #ffffffe0;
   background-color: #ef4444;
@@ -6220,7 +6220,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Disabled.tsx correctly 1
   -webkit-appearance: none;
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
   transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 36.5px;
+  border-radius: 32.5px;
   min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
@@ -6230,7 +6230,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Disabled.tsx correctly 1
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   opacity: 0.3;
   color: #000000e0;
   background-color: #f59e0b;
@@ -6458,7 +6458,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/EnableElevation.tsx corr
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 5px 11px;
+  padding: 3px 9px;
   box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
   color: #000000e0;
   border: 1px solid #d9d9d9;
@@ -6572,7 +6572,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/EnableElevation.tsx corr
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
   color: #ffffffe0;
   background-color: #3b82f6;
@@ -6662,7 +6662,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/EnableElevation.tsx corr
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
   color: #ffffffe0;
   background-color: #ef4444;
@@ -6752,7 +6752,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/EnableElevation.tsx corr
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
   color: #000000e0;
   background-color: #f59e0b;
@@ -6921,7 +6921,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Link.tsx correctly 1`] =
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 5px 11px;
+  padding: 3px 9px;
   color: #000000e0;
   border: 1px solid #d9d9d9;
   background-color: #fff;
@@ -7032,7 +7032,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Link.tsx correctly 1`] =
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   background-color: transparent;
   color: #3b82f6;
 }
@@ -7119,7 +7119,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Link.tsx correctly 1`] =
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   background-color: transparent;
   color: #ef4444;
 }
@@ -7206,7 +7206,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Link.tsx correctly 1`] =
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 5px 11px;
+  padding: 3px 9px;
   background-color: transparent;
   color: #f59e0b;
   border: 1px solid #f59e0b;
@@ -7296,7 +7296,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Link.tsx correctly 1`] =
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   opacity: 0.3;
   color: #ffffffe0;
   background-color: #3b82f6;
@@ -7478,7 +7478,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Loading.tsx correctly 1`
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 5px 11px;
+  padding: 3px 9px;
   color: #000000e0;
   border: 1px solid #d9d9d9;
   background-color: #fff;
@@ -7589,7 +7589,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Loading.tsx correctly 1`
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   background-color: transparent;
   color: #3b82f6;
 }
@@ -7707,7 +7707,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Loading.tsx correctly 1`
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   background-color: transparent;
   color: #ef4444;
 }
@@ -7794,7 +7794,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Loading.tsx correctly 1`
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 5px 11px;
+  padding: 3px 9px;
   background-color: transparent;
   color: #f59e0b;
   border: 1px solid #f59e0b;
@@ -7976,7 +7976,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Long.tsx correctly 1`] =
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   width: 100%;
-  padding: 5px 11px;
+  padding: 3px 9px;
   color: #000000e0;
   border: 1px solid #d9d9d9;
   background-color: #fff;
@@ -8088,7 +8088,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Long.tsx correctly 1`] =
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   width: 100%;
-  padding: 6px 12px;
+  padding: 4px 10px;
   background-color: transparent;
   color: #3b82f6;
 }
@@ -8165,7 +8165,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Long.tsx correctly 1`] =
   -webkit-appearance: none;
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
   transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 36.5px;
+  border-radius: 32.5px;
   min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
@@ -8176,7 +8176,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Long.tsx correctly 1`] =
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   width: 100%;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #000000e0;
   background-color: #f59e0b;
 }
@@ -8264,7 +8264,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Long.tsx correctly 1`] =
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   width: 100%;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -8473,7 +8473,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Size.tsx correctly 1`] =
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 5px 11px;
+  padding: 3px 9px;
   color: #000000e0;
   border: 1px solid #d9d9d9;
   background-color: #fff;
@@ -8584,7 +8584,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Size.tsx correctly 1`] =
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   background-color: transparent;
   color: #3b82f6;
 }
@@ -8671,7 +8671,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Size.tsx correctly 1`] =
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   background-color: transparent;
   color: #ef4444;
 }
@@ -8758,7 +8758,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Size.tsx correctly 1`] =
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #000000e0;
   background-color: #f59e0b;
 }
@@ -8835,7 +8835,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Size.tsx correctly 1`] =
   -webkit-appearance: none;
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
   transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 36.5px;
+  border-radius: 32.5px;
   min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
@@ -8845,7 +8845,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Size.tsx correctly 1`] =
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -8931,7 +8931,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Size.tsx correctly 1`] =
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 8.450000000000001px;
+  padding: 6.450000000000001px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -9061,7 +9061,7 @@ exports[`Demo renders packages/react/src/Button/__doc__/Size.tsx correctly 1`] =
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 8.450000000000001px;
+  padding: 6.450000000000001px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -9306,7 +9306,7 @@ exports[`Demo renders packages/react/src/CollapseTransition/__doc__/Basic.tsx co
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -9437,7 +9437,7 @@ exports[`Demo renders packages/react/src/CollapseTransition/__doc__/Horizontal.t
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -9568,7 +9568,7 @@ exports[`Demo renders packages/react/src/Dialog/__doc__/Basic.tsx correctly 1`] 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -9695,7 +9695,7 @@ exports[`Demo renders packages/react/src/Dialog/__doc__/Custom.tsx correctly 1`]
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -9826,7 +9826,7 @@ exports[`Demo renders packages/react/src/Dialog/__doc__/DebugMethod.tsx correctl
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #737373;
 }
@@ -9957,7 +9957,7 @@ exports[`Demo renders packages/react/src/Dialog/__doc__/Methods.tsx correctly 1`
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -10084,7 +10084,7 @@ exports[`Demo renders packages/react/src/Dialog/__doc__/Promise.tsx correctly 1`
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -10211,7 +10211,7 @@ exports[`Demo renders packages/react/src/Dialog/__doc__/Prompt.tsx correctly 1`]
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -10338,7 +10338,7 @@ exports[`Demo renders packages/react/src/Dialog/__doc__/Tips.tsx correctly 1`] =
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -10529,7 +10529,7 @@ exports[`Demo renders packages/react/src/Dialog/__doc__/UseDialog.tsx correctly 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -10720,7 +10720,7 @@ exports[`Demo renders packages/react/src/Dialog/__doc__/Width.tsx correctly 1`] 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -10847,7 +10847,7 @@ exports[`Demo renders packages/react/src/Dropdown/__doc__/Advance.tsx correctly 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -10974,7 +10974,7 @@ exports[`Demo renders packages/react/src/Dropdown/__doc__/Basic.tsx correctly 1`
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -11101,7 +11101,7 @@ exports[`Demo renders packages/react/src/Dropdown/__doc__/Cascade.tsx correctly 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -11221,7 +11221,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/Addon.tsx correctly 1`] =
   -ms-flex-align: center;
   align-items: center;
   background-color: #f5f5f5;
-  padding: 0 12px;
+  padding: 0 10px;
   border: 1px solid #d9d9d9;
   border-right-width: 0;
   border-top-left-radius: 4px;
@@ -11236,7 +11236,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/Addon.tsx correctly 1`] =
   border-radius: 4px;
   border: 1px solid #d9d9d9;
   width: 100%;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #000000e0;
   background-color: #fff;
   -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -11337,7 +11337,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/Addon.tsx correctly 1`] =
   -ms-flex-align: center;
   align-items: center;
   background-color: #f5f5f5;
-  padding: 0 12px;
+  padding: 0 10px;
   border: 1px solid #d9d9d9;
   border-right-width: 0;
   border-top-left-radius: 4px;
@@ -11451,7 +11451,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/Basic.tsx correctly 1`] =
   border-radius: 4px;
   border: 1px solid #d9d9d9;
   width: 100%;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #000000e0;
   background-color: #fff;
   -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -11584,7 +11584,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/Clearable.tsx correctly 1
   border-radius: 4px;
   border: 1px solid #d9d9d9;
   width: 100%;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #000000e0;
   background-color: #fff;
   -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -11795,7 +11795,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/DebugSuffix.tsx correctly
   border-radius: 4px;
   border: 1px solid #d9d9d9;
   width: 100%;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #000000e0;
   background-color: #fff;
   -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -11981,7 +11981,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/Focus.tsx correctly 1`] =
   border-radius: 4px;
   border: 1px solid #d9d9d9;
   width: 100%;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #000000e0;
   background-color: #fff;
   -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -12105,7 +12105,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/Focus.tsx correctly 1`] =
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -12284,7 +12284,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/Group.tsx correctly 1`] =
   -ms-flex-align: center;
   align-items: center;
   background-color: #f5f5f5;
-  padding: 0 10px;
+  padding: 0 8px;
   border: 1px solid #d9d9d9;
   border-right-width: 0;
   border-top-left-radius: 3px;
@@ -12299,7 +12299,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/Group.tsx correctly 1`] =
   border-radius: 3px;
   border: 1px solid #d9d9d9;
   width: 100%;
-  padding: 4px 10px;
+  padding: 3px 8px;
   color: #000000e0;
   background-color: #fff;
   -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -12423,7 +12423,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/Group.tsx correctly 1`] =
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 4px 10px;
+  padding: 3px 8px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -12564,7 +12564,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/Group.tsx correctly 1`] =
   -ms-flex-align: center;
   align-items: center;
   background-color: #f5f5f5;
-  padding: 0 12px;
+  padding: 0 10px;
   border: 1px solid #d9d9d9;
   border-right-width: 0;
   border-top-left-radius: 4px;
@@ -12579,7 +12579,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/Group.tsx correctly 1`] =
   border-radius: 4px;
   border: 1px solid #d9d9d9;
   width: 100%;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #000000e0;
   background-color: #fff;
   -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -12638,7 +12638,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/Group.tsx correctly 1`] =
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -12760,7 +12760,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/Group.tsx correctly 1`] =
   -ms-flex-align: center;
   align-items: center;
   background-color: #f5f5f5;
-  padding: 0 22px;
+  padding: 0 18px;
   border: 1px solid #d9d9d9;
   border-right-width: 0;
   border-top-left-radius: 6px;
@@ -12775,7 +12775,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/Group.tsx correctly 1`] =
   border-radius: 6px;
   border: 1px solid #d9d9d9;
   width: 100%;
-  padding: 8px 22px;
+  padding: 6px 18px;
   color: #000000e0;
   background-color: #fff;
   -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -12834,7 +12834,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/Group.tsx correctly 1`] =
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 8px 22px;
+  padding: 6px 18px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -13035,7 +13035,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/Password.tsx correctly 1`
   border-radius: 4px;
   border: 1px solid #d9d9d9;
   width: 100%;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #000000e0;
   background-color: #fff;
   -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -13269,7 +13269,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/PrefixAndSuffix.tsx corre
   border-radius: 4px;
   border: 1px solid #d9d9d9;
   width: 100%;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #000000e0;
   background-color: #fff;
   -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -13537,7 +13537,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/ShowCount.tsx correctly 1
   border-radius: 4px;
   border: 1px solid #d9d9d9;
   width: 100%;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #000000e0;
   background-color: #fff;
   -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -13748,7 +13748,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/Size.tsx correctly 1`] = 
   border-radius: 3px;
   border: 1px solid #d9d9d9;
   width: 100%;
-  padding: 4px 10px;
+  padding: 3px 8px;
   color: #000000e0;
   background-color: #fff;
   -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -13860,7 +13860,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/Size.tsx correctly 1`] = 
   border-radius: 4px;
   border: 1px solid #d9d9d9;
   width: 100%;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #000000e0;
   background-color: #fff;
   -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -13907,7 +13907,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/Size.tsx correctly 1`] = 
   border-radius: 6px;
   border: 1px solid #d9d9d9;
   width: 100%;
-  padding: 8px 22px;
+  padding: 6px 18px;
   color: #000000e0;
   background-color: #fff;
   -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -14006,7 +14006,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/State.tsx correctly 1`] =
   border-radius: 4px;
   border: 1px solid #d9d9d9;
   width: 100%;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #000000e0;
   background-color: #fff;
   -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -14100,7 +14100,7 @@ exports[`Demo renders packages/react/src/Input/__doc__/State.tsx correctly 1`] =
   border-radius: 4px;
   border: 1px solid #d9d9d9;
   width: 100%;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #000000e0;
   background-color: #fff;
   -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -14199,7 +14199,7 @@ exports[`Demo renders packages/react/src/Message/__doc__/Basic.tsx correctly 1`]
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #737373;
 }
@@ -14305,7 +14305,7 @@ exports[`Demo renders packages/react/src/Message/__doc__/Basic.tsx correctly 1`]
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #000000e0;
   background-color: #f59e0b;
 }
@@ -14392,7 +14392,7 @@ exports[`Demo renders packages/react/src/Message/__doc__/Basic.tsx correctly 1`]
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #ef4444;
 }
@@ -14479,7 +14479,7 @@ exports[`Demo renders packages/react/src/Message/__doc__/Basic.tsx correctly 1`]
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #000000e0;
   background-color: #22c55e;
 }
@@ -14566,7 +14566,7 @@ exports[`Demo renders packages/react/src/Message/__doc__/Basic.tsx correctly 1`]
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -14746,7 +14746,7 @@ exports[`Demo renders packages/react/src/Message/__doc__/DebugMethod.tsx correct
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #737373;
 }
@@ -14881,7 +14881,7 @@ exports[`Demo renders packages/react/src/Message/__doc__/MaxCount.tsx correctly 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #737373;
 }
@@ -15016,7 +15016,7 @@ exports[`Demo renders packages/react/src/Message/__doc__/Method.tsx correctly 1`
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #737373;
 }
@@ -15122,7 +15122,7 @@ exports[`Demo renders packages/react/src/Message/__doc__/Method.tsx correctly 1`
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #000000e0;
   background-color: #f59e0b;
 }
@@ -15209,7 +15209,7 @@ exports[`Demo renders packages/react/src/Message/__doc__/Method.tsx correctly 1`
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #ef4444;
 }
@@ -15296,7 +15296,7 @@ exports[`Demo renders packages/react/src/Message/__doc__/Method.tsx correctly 1`
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #000000e0;
   background-color: #22c55e;
 }
@@ -15383,7 +15383,7 @@ exports[`Demo renders packages/react/src/Message/__doc__/Method.tsx correctly 1`
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -15563,7 +15563,7 @@ exports[`Demo renders packages/react/src/Message/__doc__/Promise.tsx correctly 1
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #737373;
 }
@@ -15698,7 +15698,7 @@ exports[`Demo renders packages/react/src/Message/__doc__/ShowClose.tsx correctly
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #737373;
 }
@@ -15833,7 +15833,7 @@ exports[`Demo renders packages/react/src/Message/__doc__/Update.tsx correctly 1`
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #737373;
 }
@@ -15964,7 +15964,7 @@ exports[`Demo renders packages/react/src/Modal/__doc__/Basic.tsx correctly 1`] =
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -16091,7 +16091,7 @@ exports[`Demo renders packages/react/src/Modal/__doc__/EscClosable.tsx correctly
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -16218,7 +16218,7 @@ exports[`Demo renders packages/react/src/Modal/__doc__/HideMask.tsx correctly 1`
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -16345,7 +16345,7 @@ exports[`Demo renders packages/react/src/Modal/__doc__/MaskClosable.tsx correctl
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -16472,7 +16472,7 @@ exports[`Demo renders packages/react/src/Modal/__doc__/Nest.tsx correctly 1`] = 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -16599,7 +16599,7 @@ exports[`Demo renders packages/react/src/Modal/__doc__/Shortcut.tsx correctly 1`
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -16730,7 +16730,7 @@ exports[`Demo renders packages/react/src/Notication/__doc__/Basic.tsx correctly 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #737373;
 }
@@ -16836,7 +16836,7 @@ exports[`Demo renders packages/react/src/Notication/__doc__/Basic.tsx correctly 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #000000e0;
   background-color: #f59e0b;
 }
@@ -16923,7 +16923,7 @@ exports[`Demo renders packages/react/src/Notication/__doc__/Basic.tsx correctly 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #ef4444;
 }
@@ -17010,7 +17010,7 @@ exports[`Demo renders packages/react/src/Notication/__doc__/Basic.tsx correctly 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #000000e0;
   background-color: #22c55e;
 }
@@ -17174,7 +17174,7 @@ exports[`Demo renders packages/react/src/Notication/__doc__/DebugMethod.tsx corr
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #737373;
 }
@@ -17309,7 +17309,7 @@ exports[`Demo renders packages/react/src/Notication/__doc__/Footer.tsx correctly
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #737373;
 }
@@ -17444,7 +17444,7 @@ exports[`Demo renders packages/react/src/Notication/__doc__/HideClose.tsx correc
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #737373;
 }
@@ -17579,7 +17579,7 @@ exports[`Demo renders packages/react/src/Notication/__doc__/MaxCount.tsx correct
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #737373;
 }
@@ -17714,7 +17714,7 @@ exports[`Demo renders packages/react/src/Notication/__doc__/Method.tsx correctly
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #737373;
 }
@@ -17820,7 +17820,7 @@ exports[`Demo renders packages/react/src/Notication/__doc__/Method.tsx correctly
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #000000e0;
   background-color: #f59e0b;
 }
@@ -17907,7 +17907,7 @@ exports[`Demo renders packages/react/src/Notication/__doc__/Method.tsx correctly
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #ef4444;
 }
@@ -17994,7 +17994,7 @@ exports[`Demo renders packages/react/src/Notication/__doc__/Method.tsx correctly
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #000000e0;
   background-color: #22c55e;
 }
@@ -18158,7 +18158,7 @@ exports[`Demo renders packages/react/src/Notication/__doc__/Placement.tsx correc
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -18341,7 +18341,7 @@ exports[`Demo renders packages/react/src/Notication/__doc__/Promise.tsx correctl
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #737373;
 }
@@ -18476,7 +18476,7 @@ exports[`Demo renders packages/react/src/Notication/__doc__/Update.tsx correctly
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #737373;
 }
@@ -18607,7 +18607,7 @@ exports[`Demo renders packages/react/src/Popconfirm/__doc__/Basic.tsx correctly 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -18736,7 +18736,7 @@ exports[`Demo renders packages/react/src/Popconfirm/__doc__/Promise.tsx correctl
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -18879,7 +18879,7 @@ exports[`Demo renders packages/react/src/Popover/__doc__/Basic.tsx correctly 1`]
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -19219,7 +19219,7 @@ exports[`Demo renders packages/react/src/Popover/__doc__/ClickInner.tsx correctl
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -19351,7 +19351,7 @@ exports[`Demo renders packages/react/src/Popper/__doc__/Arrow.tsx correctly 1`] 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -19496,7 +19496,7 @@ exports[`Demo renders packages/react/src/Popper/__doc__/Basic.tsx correctly 1`] 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -19836,7 +19836,7 @@ exports[`Demo renders packages/react/src/Popper/__doc__/Nest.tsx correctly 1`] =
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -19968,7 +19968,7 @@ exports[`Demo renders packages/react/src/Popper/__doc__/Trigger.tsx correctly 1`
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -20187,7 +20187,7 @@ exports[`Demo renders packages/react/src/Portal/__doc__/Basic.tsx correctly 1`] 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -20325,7 +20325,7 @@ exports[`Demo renders packages/react/src/ResizeObserver/__doc__/Basic.tsx correc
   -ms-flex-align: center;
   align-items: center;
   background-color: #f5f5f5;
-  padding: 0 12px;
+  padding: 0 10px;
   border: 1px solid #d9d9d9;
   border-right-width: 0;
   border-top-left-radius: 4px;
@@ -20340,7 +20340,7 @@ exports[`Demo renders packages/react/src/ResizeObserver/__doc__/Basic.tsx correc
   border-radius: 4px;
   border: 1px solid #d9d9d9;
   width: 100%;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #000000e0;
   background-color: #fff;
   -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -20437,7 +20437,7 @@ exports[`Demo renders packages/react/src/ResizeObserver/__doc__/Basic.tsx correc
   -ms-flex-align: center;
   align-items: center;
   background-color: #f5f5f5;
-  padding: 0 12px;
+  padding: 0 10px;
   border: 1px solid #d9d9d9;
   border-right-width: 0;
   border-top-left-radius: 4px;
@@ -47332,16 +47332,16 @@ exports[`Demo renders packages/react/src/Textarea/__doc__/AutoSize.tsx correctly
 }
 
 .emotion-0 .xl-textarea__inner {
-  padding: 6px 12px;
-  min-height: 36px;
+  padding: 4px 10px;
+  min-height: 32px;
 }
 
 .emotion-0 .xl-textarea__suffix {
   position: absolute;
   z-index: 1;
   top: 0;
-  right: 12px;
-  padding: 6px 0;
+  right: 10px;
+  padding: 4px 0;
   height: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -47515,16 +47515,16 @@ exports[`Demo renders packages/react/src/Textarea/__doc__/Basic.tsx correctly 1`
 }
 
 .emotion-0 .xl-textarea__inner {
-  padding: 6px 12px;
-  min-height: 36px;
+  padding: 4px 10px;
+  min-height: 32px;
 }
 
 .emotion-0 .xl-textarea__suffix {
   position: absolute;
   z-index: 1;
   top: 0;
-  right: 12px;
-  padding: 6px 0;
+  right: 10px;
+  padding: 4px 0;
   height: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -47680,16 +47680,16 @@ exports[`Demo renders packages/react/src/Textarea/__doc__/DebugSuffix.tsx correc
 }
 
 .emotion-0 .xl-textarea__inner {
-  padding: 6px 12px;
-  min-height: 36px;
+  padding: 4px 10px;
+  min-height: 32px;
 }
 
 .emotion-0 .xl-textarea__suffix {
   position: absolute;
   z-index: 1;
   top: 0;
-  right: 12px;
-  padding: 6px 0;
+  right: 10px;
+  padding: 4px 0;
   height: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -47855,16 +47855,16 @@ exports[`Demo renders packages/react/src/Textarea/__doc__/ShowCount.tsx correctl
 }
 
 .emotion-0 .xl-textarea__inner {
-  padding: 6px 12px;
-  min-height: 36px;
+  padding: 4px 10px;
+  min-height: 32px;
 }
 
 .emotion-0 .xl-textarea__suffix {
   position: absolute;
   z-index: 1;
   top: 0;
-  right: 12px;
-  padding: 6px 0;
+  right: 10px;
+  padding: 4px 0;
   height: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -48050,16 +48050,16 @@ exports[`Demo renders packages/react/src/Textarea/__doc__/Size.tsx correctly 1`]
 }
 
 .emotion-0 .xl-textarea__inner {
-  padding: 4px 10px;
-  min-height: 26px;
+  padding: 3px 8px;
+  min-height: 24px;
 }
 
 .emotion-0 .xl-textarea__suffix {
   position: absolute;
   z-index: 1;
   top: 0;
-  right: 10px;
-  padding: 4px 0;
+  right: 8px;
+  padding: 3px 0;
   height: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -48200,16 +48200,16 @@ exports[`Demo renders packages/react/src/Textarea/__doc__/Size.tsx correctly 1`]
 }
 
 .emotion-2 .xl-textarea__inner {
-  padding: 6px 12px;
-  min-height: 36px;
+  padding: 4px 10px;
+  min-height: 32px;
 }
 
 .emotion-2 .xl-textarea__suffix {
   position: absolute;
   z-index: 1;
   top: 0;
-  right: 12px;
-  padding: 6px 0;
+  right: 10px;
+  padding: 4px 0;
   height: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -48291,16 +48291,16 @@ exports[`Demo renders packages/react/src/Textarea/__doc__/Size.tsx correctly 1`]
 }
 
 .emotion-4 .xl-textarea__inner {
-  padding: 8px 22px;
-  min-height: 43.599999999999994px;
+  padding: 6px 18px;
+  min-height: 39.599999999999994px;
 }
 
 .emotion-4 .xl-textarea__suffix {
   position: absolute;
   z-index: 1;
   top: 0;
-  right: 22px;
-  padding: 8px 0;
+  right: 18px;
+  padding: 6px 0;
   height: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -48431,7 +48431,7 @@ exports[`Demo renders packages/react/src/Tooltip/__doc__/Arrow.tsx correctly 1`]
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -48572,7 +48572,7 @@ exports[`Demo renders packages/react/src/Tooltip/__doc__/Basic.tsx correctly 1`]
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -48917,7 +48917,7 @@ exports[`Demo renders packages/react/src/Tooltip/__doc__/Colors.tsx correctly 1`
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -49101,7 +49101,7 @@ exports[`Demo renders packages/react/src/Tooltip/__doc__/MaxWidth.tsx correctly 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -49237,7 +49237,7 @@ exports[`Demo renders packages/react/src/Tooltip/__doc__/Rich.tsx correctly 1`] 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -49368,7 +49368,7 @@ exports[`Demo renders packages/react/src/Transition/__doc__/Advance.tsx correctl
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -49538,7 +49538,7 @@ exports[`Demo renders packages/react/src/Transition/__doc__/Basic.tsx correctly 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -49667,7 +49667,7 @@ exports[`Demo renders packages/react/src/TransitionGroup/__doc__/Basic.tsx corre
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -49925,7 +49925,7 @@ exports[`Demo renders packages/useForm/src/__doc__/Basic.tsx correctly 1`] = `
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -50057,7 +50057,7 @@ exports[`Demo renders packages/useForm/src/__doc__/Controller.tsx correctly 1`] 
   border-radius: 4px;
   border: 1px solid #d9d9d9;
   width: 100%;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #000000e0;
   background-color: #fff;
   -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -50182,7 +50182,7 @@ exports[`Demo renders packages/useForm/src/__doc__/Controller.tsx correctly 1`] 
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   width: 100%;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -50337,7 +50337,7 @@ exports[`Demo renders packages/useForm/src/__doc__/Error.tsx correctly 1`] = `
   border-radius: 4px;
   border: 1px solid #d9d9d9;
   width: 100%;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #000000e0;
   background-color: #fff;
   -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -50462,7 +50462,7 @@ exports[`Demo renders packages/useForm/src/__doc__/Error.tsx correctly 1`] = `
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
   width: 100%;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -50640,7 +50640,7 @@ exports[`Demo renders packages/useForm/src/__doc__/ValueResponse.tsx correctly 1
   border-radius: 4px;
   border: 1px solid #d9d9d9;
   width: 100%;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #000000e0;
   background-color: #fff;
   -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -55145,7 +55145,7 @@ exports[`Demo renders packages/usePopper/src/__doc__/Arrow.tsx correctly 1`] = `
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -55315,7 +55315,7 @@ exports[`Demo renders packages/usePopper/src/__doc__/AutoPlacement.tsx correctly
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -55446,7 +55446,7 @@ exports[`Demo renders packages/usePopper/src/__doc__/AutoUpdate.tsx correctly 1`
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -59935,7 +59935,7 @@ exports[`Demo renders packages/usePopper/src/__doc__/Basic.tsx correctly 1`] = `
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -60130,7 +60130,7 @@ exports[`Demo renders packages/usePopper/src/__doc__/Debug.tsx correctly 1`] = `
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -64584,7 +64584,7 @@ exports[`Demo renders packages/usePopper/src/__doc__/Hide.tsx correctly 1`] = `
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -64723,7 +64723,7 @@ exports[`Demo renders packages/usePopper/src/__doc__/Interactions.tsx correctly 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -69166,7 +69166,7 @@ exports[`Demo renders packages/usePopper/src/__doc__/Offset.tsx correctly 1`] = 
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
@@ -73661,7 +73661,7 @@ exports[`Demo renders packages/usePopper/src/__doc__/Shift.tsx correctly 1`] = `
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 6px 12px;
+  padding: 4px 10px;
   color: #ffffffe0;
   background-color: #3b82f6;
 }
