@@ -116,7 +116,7 @@ const useForm = <T extends Record<string, unknown>>({
 
   const validate = useCallback<Validate<T>>(
     async <K extends keyof T>(field?: K | ValidateOptions, options?: ValidateOptions) => {
-      if (typeof field === 'object') {
+      if (typeof field === 'object' || field === undefined) {
         const errors = await formStore.validate({
           eager: field?.eager || eager,
           rulesMap: rulesMapRef.current,
@@ -130,13 +130,13 @@ const useForm = <T extends Record<string, unknown>>({
         return;
       }
 
-      const errors = await formStore.validate(field as K, {
+      const errors = await formStore.validate(field, {
         eager: options?.eager || eager,
         rules: rulesMapRef.current[field],
         defaultTrigger: trigger,
       });
 
-      if (Object.keys(errors).length) {
+      if (errors) {
         throw new ValidateError(errors);
       }
     },

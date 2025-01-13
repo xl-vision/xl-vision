@@ -20,11 +20,11 @@ function useWatchErrors<T extends Record<string, unknown>, K extends keyof T>({
 }) {
   const { store } = form;
 
-  const [errors, setErrors] = useState<ErrorMap | Partial<Record<keyof T, ErrorMap>>>(() =>
-    store.getErrors(field as keyof T),
+  const [errors, setErrors] = useState<ErrorMap | undefined | Partial<Record<keyof T, ErrorMap>>>(
+    () => store.getErrors(field as keyof T),
   );
 
-  const listener = useCallback((e: ErrorMap | Partial<Record<keyof T, ErrorMap>>) => {
+  const listener = useCallback((e: ErrorMap | undefined | Partial<Record<keyof T, ErrorMap>>) => {
     setErrors(e);
   }, []);
 

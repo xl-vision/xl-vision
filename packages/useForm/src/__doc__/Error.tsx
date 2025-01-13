@@ -2,7 +2,7 @@
 
 import { Button, Input, Message, styled } from '@xl-vision/react';
 import { FormEvent, useCallback, useMemo } from 'react';
-import { useForm, Controller, useWatchErrors } from '@xl-vision/useForm';
+import { useForm, Controller, useWatchErrors, ValidateError } from '@xl-vision/useForm';
 import { ValidatorKey } from '../types';
 
 type Value = {
@@ -24,7 +24,7 @@ const Demo = () => {
         const value = getValue();
         void Message.success(`submit value: ${JSON.stringify(value)}`);
       } catch (error) {
-        console.error(error);
+        console.info((error as ValidateError<Value>).errors);
       }
     },
     [getValue, validate],
@@ -32,7 +32,6 @@ const Demo = () => {
 
   const errorMap = useMemo(() => {
     const map: Partial<Record<keyof Value, string>> = {};
-
     Object.keys(errors).forEach((key) => {
       const v = key as keyof Value;
       const o = errors[v] as Record<ValidatorKey, string>;

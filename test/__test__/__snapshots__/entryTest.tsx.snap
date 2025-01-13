@@ -710,6 +710,7 @@ exports[`Entry @xl-vision/styled-engine 1`] = `
 
 exports[`Entry @xl-vision/useForm 1`] = `
 [
+  "ValidateError",
   "useForm",
   "useWatch",
   "useWatchErrors",

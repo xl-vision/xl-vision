@@ -16,10 +16,11 @@ export type ErrorMap = Partial<Record<ValidatorKey | 'custom', string>>;
 class FormStore<
   T extends Record<string, unknown> = Record<string, unknown>,
   V extends Partial<T> = Partial<T>,
+  E extends Partial<Record<keyof T, ErrorMap>> = Partial<Record<keyof T, ErrorMap>>,
 > {
   private values: V;
 
-  private errors: Partial<Record<keyof T, ErrorMap>>;
+  private errors: E;
 
   private valueEmitter: EventEmitter;
 
@@ -27,7 +28,7 @@ class FormStore<
 
   constructor(value: V) {
     this.values = { ...value };
-    this.errors = {};
+    this.errors = {} as E;
     this.valueEmitter = new EventEmitter();
     this.errorEmitter = new EventEmitter();
   }
@@ -108,24 +109,24 @@ class FormStore<
     }
   }
 
-  getErrors<K extends keyof T>(field: K): ErrorMap;
+  getErrors<K extends keyof T>(field: K): E[K];
 
-  getErrors(): Partial<Record<keyof T, ErrorMap>>;
+  getErrors(): E;
 
   getErrors<K extends keyof T>(field?: K) {
     if (field) {
-      return this.errors[field] || {};
+      return this.errors[field];
     }
     return this.errors;
   }
 
-  watchError<K extends keyof T>(field: K, listener: (errors: ErrorMap) => void): void;
+  watchError<K extends keyof T>(field: K, listener: (errors: E[K]) => void): void;
 
   watchError(listener: (errors: Partial<Record<keyof T, ErrorMap>>) => void): void;
 
   watchError<K extends keyof T>(
     field: K | ((errors: Partial<Record<keyof T, ErrorMap>>) => void),
-    listener?: (errors: ErrorMap) => void,
+    listener?: (errors: E[K]) => void,
   ) {
     if (typeof field === 'function') {
       this.errorEmitter.on(GLOBAL_EVENT, field);
@@ -137,13 +138,13 @@ class FormStore<
     }
   }
 
-  unwatchError<K extends keyof T>(field: K, listener: (errors: ErrorMap) => void): void;
+  unwatchError<K extends keyof T>(field: K, listener: (errors: E[K]) => void): void;
 
   unwatchError(listener: (errors: Partial<Record<keyof T, ErrorMap>>) => void): void;
 
   unwatchError<K extends keyof T>(
     field: K | ((errors: Partial<Record<keyof T, ErrorMap>>) => void),
-    listener?: (errors: ErrorMap) => void,
+    listener?: (errors: E[K]) => void,
   ) {
     if (typeof field === 'function') {
       this.errorEmitter.off(GLOBAL_EVENT, field);
@@ -159,9 +160,9 @@ class FormStore<
     options: Omit<InnerValidateOptions, 'rules'> & {
       rulesMap: Partial<Record<K, Array<Rule>>>;
     },
-  ): Promise<Partial<Record<keyof T, ErrorMap>>>;
+  ): Promise<E>;
 
-  validate<K extends keyof T>(field: K, options: InnerValidateOptions): Promise<ErrorMap>;
+  validate<K extends keyof T>(field: K, options: InnerValidateOptions): Promise<E[K]>;
 
   async validate<K extends keyof T>(
     field:
@@ -174,10 +175,17 @@ class FormStore<
     if (typeof field === 'string') {
       const errorMap = await this.validateField(field, options as InnerValidateOptions);
 
-      this.errors = {
-        ...this.errors,
-        [field]: errorMap,
-      };
+      if (errorMap) {
+        this.errors = {
+          ...this.errors,
+          [field]: errorMap,
+        };
+      } else {
+        delete this.errors[field];
+        this.errors = {
+          ...this.errors,
+        };
+      }
 
       // @ts-expect-error fix types error
       this.errorEmitter.emit(field, errorMap);
@@ -191,7 +199,7 @@ class FormStore<
       rulesMap: Partial<Record<K, Array<Rule>>>;
     };
 
-    const errorsMap = {} as Partial<Record<keyof T, ErrorMap>>;
+    const errorsMap = {} as E;
     this.errors = errorsMap;
 
     await Promise.all(
@@ -201,13 +209,16 @@ class FormStore<
           rules: rulesMap[key as K],
         });
 
-        errorsMap[key as K] = errors;
+        if (errors) {
+          errorsMap[key as K] = errors as E[K];
+        }
 
         this.errorEmitter.emit(key, errors);
       }),
     );
 
     this.errorEmitter.emit(GLOBAL_EVENT, errorsMap);
+
     return errorsMap;
   }
 
@@ -216,7 +227,7 @@ class FormStore<
     { eager, rules, trigger, defaultTrigger }: InnerValidateOptions,
   ) {
     if (!rules || !rules.length) {
-      return {};
+      return;
     }
 
     const errorMap: ErrorMap = {};
@@ -293,7 +304,7 @@ class FormStore<
       }
     }
 
-    return errorMap;
+    return Object.keys(errorMap).length ? errorMap : undefined;
   }
 }
 
