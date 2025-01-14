@@ -135,7 +135,6 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
   });
 
   const defaultParser = useConstantFn((str: string) => {
-    // eslint-disable-next-line react/destructuring-assignment
     const trimedValue = str.trim();
     if (!trimedValue) {
       return null;
