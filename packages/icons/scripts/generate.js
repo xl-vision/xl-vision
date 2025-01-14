@@ -1,9 +1,8 @@
-/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-await-in-loop */
-/* eslint-disable no-restricted-syntax */
+
 const fs = require('fs-extra');
 const Mustache = require('mustache');
-const path = require('path');
+const path = require('node:path');
 const format = require('./format');
 
 const basePath = path.resolve(__dirname, '../svg');
@@ -26,7 +25,7 @@ async function generate() {
   const metadata = {};
   const files = await fs.readdir(basePath);
 
-  const template = await fs.readFile(path.resolve(templatePath, 'template.tsx'), 'utf-8');
+  const template = await fs.readFile(path.resolve(templatePath, 'template.tsx'), 'utf8');
 
   let indexContent = `/* eslint-disable */\n\nexport { default as createIcon } from './utils/createIcon'\n`;
 
@@ -43,7 +42,7 @@ async function generate() {
 
       const iconName = toCamel(`${iconBaseName}-${iconType}`);
 
-      const iconContent = await fs.readFile(iconFile, 'utf-8');
+      const iconContent = await fs.readFile(iconFile, 'utf8');
 
       const svg = await format(iconContent);
 
@@ -77,7 +76,7 @@ function num2Char(num) {
   const str = String(num);
   let newStr = '';
   for (let i = 0; i < str.length; i++) {
-    const newNum = parseInt(str[i], 10);
+    const newNum = Number.parseInt(str[i], 10);
     newStr += mapping[newNum];
   }
   return newStr;
@@ -88,12 +87,12 @@ function toCamel(name) {
   name = name.replace(/^\d+/, (match) => num2Char(match));
 
   // 下划线转驼峰
-  name = name.replace(/-(.)/g, (_, char) => {
+  name = name.replaceAll(/-(.)/g, (_, char) => {
     return char.toUpperCase();
   });
 
   // 首字母大写
-  name = name.charAt(0).toUpperCase() + name.substring(1);
+  name = name.charAt(0).toUpperCase() + name.slice(1);
 
   return name;
 }

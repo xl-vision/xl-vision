@@ -1,15 +1,14 @@
-export const functionMerge = <Fn extends (...args: Array<any>) => any>(
+export const functionMerge = <Fn extends (...args: Array<unknown>) => unknown>(
   ...fns: Array<Fn>
 ): ((...args: Parameters<Fn>) => Array<ReturnType<Fn>>) => {
   return (...args: Parameters<Fn>) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return fns.map((it) => it(...args) as ReturnType<Fn>);
   };
 };
 
-const defaultCompare = (left: any, right: any) => Object.is(left, right);
+const defaultCompare = (left: unknown, right: unknown) => Object.is(left, right);
 
-export const shallowEqual = (left: any, right: any, compare = defaultCompare) => {
+export const shallowEqual = (left: unknown, right: unknown, compare = defaultCompare) => {
   if (compare(left, right)) {
     return true;
   }
@@ -18,8 +17,8 @@ export const shallowEqual = (left: any, right: any, compare = defaultCompare) =>
     return false;
   }
 
-  const keysLeft = Object.keys(left as object);
-  const keysRight = Object.keys(right as object);
+  const keysLeft = Object.keys(left);
+  const keysRight = Object.keys(right);
 
   if (keysLeft.length !== keysRight.length) {
     return false;
@@ -32,10 +31,8 @@ export const shallowEqual = (left: any, right: any, compare = defaultCompare) =>
     if (!rightOwnProperty(key)) {
       return false;
     }
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-    const leftValue = left[key];
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-    const rightalue = right[key];
+    const leftValue = (left as Record<string, unknown>)[key];
+    const rightalue = (right as Record<string, unknown>)[key];
 
     if (!compare(leftValue, rightalue)) {
       return false;

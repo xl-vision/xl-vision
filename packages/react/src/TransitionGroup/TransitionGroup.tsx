@@ -119,12 +119,12 @@ const TransitionGroup: FC<TransitionGroupProps> = (props) => {
         nextNodes.push(...it.next);
       } else {
         const prev = it.prev.map((item) => {
-          return cloneElement(item, {
+          return cloneElement(item as ReactElement<{ in?: boolean }>, {
             in: false,
           });
         });
         const next = it.next.map((item) => {
-          return cloneElement(item, {
+          return cloneElement(item as ReactElement<{ in?: boolean; transitionOnFirst?: boolean }>, {
             in: true,
             transitionOnFirst: true,
           });

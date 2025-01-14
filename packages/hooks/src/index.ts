@@ -35,9 +35,9 @@ export type {
   NoticationHookReturnType,
   NoticationHookUpdate,
   NoticationMethods,
-  NoticationContainerProps,
-  NoticationOptions,
   NoticationProps,
+  NoticationOptions,
+  NoticationContainerProps,
   NoticationContainerType,
 } from './useNotication';
 

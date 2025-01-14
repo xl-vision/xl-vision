@@ -5,18 +5,12 @@ export type ContainerType<E extends Element = Element> =
   | ContainerReturnType<E>
   | (() => ContainerReturnType<E>);
 
-export default <E extends Element = Element>(container: ContainerType<E>): E | null => {
+const getContainer = <E extends Element = Element>(container: ContainerType<E>): E | null => {
   if (isServer) {
     return null;
   }
 
-  let actualContainer: ContainerReturnType<E>;
-
-  if (typeof container === 'function') {
-    actualContainer = container();
-  } else {
-    actualContainer = container;
-  }
+  const actualContainer = typeof container === 'function' ? container() : container;
 
   if (!actualContainer) {
     return null;
@@ -30,3 +24,4 @@ export default <E extends Element = Element>(container: ContainerType<E>): E | n
 
   return actualContainer;
 };
+export default getContainer;

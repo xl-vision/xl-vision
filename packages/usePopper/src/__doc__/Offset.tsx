@@ -89,7 +89,7 @@ type CustomPopperInstance = {
 };
 
 const CustomPopper = forwardRef<CustomPopperInstance, CustomPopperProps>((props, ref) => {
-  const rafIdRef = useRef<number | undefined>();
+  const rafIdRef = useRef<number>(null);
 
   const { reference, popper, x, y, mode, update } = usePopper({
     placement: 'top',
@@ -106,12 +106,12 @@ const CustomPopper = forwardRef<CustomPopperInstance, CustomPopperProps>((props,
   const handleUpdate = useMemo(() => {
     // 节流
     const throttle = () => {
-      if (rafIdRef.current !== undefined) {
+      if (rafIdRef.current) {
         return;
       }
       rafIdRef.current = requestAnimationFrame(() => {
         update();
-        rafIdRef.current = undefined;
+        rafIdRef.current = null;
       });
     };
     return throttle;
@@ -119,7 +119,7 @@ const CustomPopper = forwardRef<CustomPopperInstance, CustomPopperProps>((props,
 
   useEffect(() => {
     return () => {
-      if (rafIdRef.current !== undefined) {
+      if (rafIdRef.current) {
         cancelAnimationFrame(rafIdRef.current);
       }
     };

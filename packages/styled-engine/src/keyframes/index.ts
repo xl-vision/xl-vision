@@ -1,6 +1,6 @@
+import { keyframes as emKeyframes } from '@emotion/react';
 import { CreateKeyframes } from '@xl-vision/styled-engine-types';
-import { keyframes as scKeyframes } from 'styled-components';
 
-const keyframes: CreateKeyframes = scKeyframes as CreateKeyframes;
+const keyframes: CreateKeyframes = emKeyframes as CreateKeyframes;
 
 export default keyframes;

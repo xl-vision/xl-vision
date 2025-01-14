@@ -8,7 +8,7 @@ const Demo = () => {
 
   const handleChange = useCallback(
     (affixed: boolean) => {
-      message.info(`affix state change: ${affixed}`);
+      void message.info(`affix state change: ${affixed}`);
     },
     [message],
   );

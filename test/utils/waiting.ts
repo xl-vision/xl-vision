@@ -1,9 +1,11 @@
 import { waitFor } from '@testing-library/react';
 
-export default (time: number) =>
+const waiting = (time: number) =>
   waitFor(
     () =>
       new Promise((resolve) => {
         setTimeout(resolve, time);
       }),
   );
+
+export default waiting;

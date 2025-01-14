@@ -14,20 +14,26 @@ const Root = styled('div')(() => {
 const Demo = () => {
   const handleClick = useCallback(() => {
     let i = 5;
-    const { destroy, update, isDestroyed } = Notication.open({
+    const notication = Notication.open({
       message: 'Message',
       description: `This message will close after ${i}s.`,
       duration: 0,
     });
 
+    void notication.then(() => Notication.info('close successfully!'));
+
     const timer = setInterval(() => {
+      if (notication.isDestroyed()) {
+        return;
+      }
+
       i--;
 
       if (i <= 0) {
-        destroy();
+        notication.destroy();
         clearInterval(timer);
-      } else if (!isDestroyed()) {
-        update({ description: `This message will close after ${i}s.` });
+      } else {
+        notication.update({ description: `This message will close after ${i}s.` });
       }
     }, 1000);
   }, []);

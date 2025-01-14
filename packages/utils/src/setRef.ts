@@ -1,9 +1,10 @@
-type Ref<T> = ((instance: T | null) => void) | { current: T | null };
+import { Ref } from 'react';
 
-const setRef = <T>(ref: Ref<T> | undefined | null, value: T | null) => {
+const setRef = <T>(ref: Ref<T> | undefined, value: T | null) => {
   if (typeof ref === 'function') {
-    ref(value);
-  } else if (ref) {
+    return ref(value) as (() => void) | undefined;
+  }
+  if (ref) {
     ref.current = value;
   }
 };

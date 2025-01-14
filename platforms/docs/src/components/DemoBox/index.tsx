@@ -4,21 +4,11 @@ import { useConstantFn } from '@xl-vision/hooks';
 import { CodeOutlined, DownOutlined } from '@xl-vision/icons';
 import { styled, CollapseTransition, Button, Tooltip } from '@xl-vision/react';
 import { useRouter } from 'next/navigation';
-import PropTypes from 'prop-types';
+import * as PropTypes from 'prop-types';
 import { ReactNode, FC, useState, useCallback } from 'react';
 import useIsDebugMode from '@docs/hooks/useIsDebugMode';
 import useLocale from '@docs/hooks/useLocale';
 import Code from './Code';
-
-export type DemoBoxProps = {
-  children: [ReactNode, ReactNode, ReactNode];
-  jsCode: string;
-  // tsCode: string;
-  jsCodeNode: ReactNode;
-  tsCodeNode: ReactNode;
-  debug?: boolean;
-  id?: string;
-};
 
 const Wrapper = styled('div')<{ debug: boolean }>(({ theme, styleProps }) => {
   const { sizes, colors } = theme;
@@ -108,6 +98,16 @@ const ExpandWrapper = styled(DownOutlined)<{ expand: boolean }>(({ theme, styleP
   };
 });
 
+export type DemoBoxProps = {
+  children: [ReactNode, ReactNode, ReactNode];
+  jsCode: string;
+  // tsCode: string;
+  jsCodeNode: ReactNode;
+  tsCodeNode: ReactNode;
+  debug?: boolean;
+  id?: string;
+};
+
 const DemoBox: FC<DemoBoxProps> = ({
   id,
   jsCodeNode,
@@ -176,8 +176,7 @@ const DemoBox: FC<DemoBoxProps> = ({
 };
 
 DemoBox.propTypes = {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  children: PropTypes.arrayOf(PropTypes.node) as any,
+  children: PropTypes.arrayOf(PropTypes.node),
 };
 
 export default DemoBox;

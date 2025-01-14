@@ -1,18 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Icon test render 1`] = `
-.c0 {
+.emotion-0 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
   width: 1em;
   height: 1em;
   display: inline-block;
   fill: currentcolor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
 <div>
   <svg
-    class="xl-base-icon c0"
+    class="xl-base-icon emotion-0"
     viewBox="0 0 1024 1024"
   >
     <path

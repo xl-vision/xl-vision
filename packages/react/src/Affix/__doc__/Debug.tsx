@@ -1,20 +1,23 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Affix, Button } from '@xl-vision/react';
 
 const Demo = () => {
   const [count, setCount] = useState(1);
 
-  const content = [];
+  const content = useMemo(() => {
+    const arr: Array<React.ReactNode> = [];
+    for (let i = 0; i < count; i++) {
+      arr.push(
+        <p key={i} style={{ backgroundColor: 'red' }}>
+          content
+        </p>,
+      );
+    }
 
-  for (let i = 0; i < count; i++) {
-    content.push(
-      <p key={i} style={{ backgroundColor: 'red' }}>
-        content
-      </p>,
-    );
-  }
+    return arr;
+  }, [count]);
 
   return (
     <>

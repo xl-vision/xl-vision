@@ -7,7 +7,7 @@ import { usePopper, Middleware, autoPlacement } from '@xl-vision/usePopper';
 const container = () => document.body;
 
 const Demo = () => {
-  const rafIdRef = useRef<number | undefined>();
+  const rafIdRef = useRef<number>(null);
 
   const middlewares: Array<Middleware> = useMemo(() => {
     return [autoPlacement()];
@@ -22,12 +22,12 @@ const Demo = () => {
   const handleUpdate = useMemo(() => {
     // 节流
     const throttle = () => {
-      if (rafIdRef.current !== undefined) {
+      if (rafIdRef.current) {
         return;
       }
       rafIdRef.current = requestAnimationFrame(() => {
         update();
-        rafIdRef.current = undefined;
+        rafIdRef.current = null;
       });
     };
     return throttle;
@@ -35,7 +35,7 @@ const Demo = () => {
 
   useEffect(() => {
     return () => {
-      if (rafIdRef.current !== undefined) {
+      if (rafIdRef.current) {
         cancelAnimationFrame(rafIdRef.current);
       }
     };

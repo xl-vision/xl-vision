@@ -8,13 +8,15 @@ export type FocusOptions = {
 };
 
 const useFocus: InteractionHook<FocusOptions> = ({ setOpen }, { skip, delay: delayProp } = {}) => {
-  const timerRef = useRef<number>();
+  const timerRef = useRef<number>(null);
 
   const delay = isObject(delayProp) ? delayProp : { open: delayProp, close: delayProp };
 
   const handleFocus = useConstantFn(() => {
     const timer = timerRef.current;
-    clearTimeout(timer);
+    if (timer) {
+      clearTimeout(timer);
+    }
 
     timerRef.current = window.setTimeout(() => {
       setOpen(true);
@@ -23,7 +25,9 @@ const useFocus: InteractionHook<FocusOptions> = ({ setOpen }, { skip, delay: del
 
   const handleBlur = useConstantFn(() => {
     const timer = timerRef.current;
-    clearTimeout(timer);
+    if (timer) {
+      clearTimeout(timer);
+    }
 
     timerRef.current = window.setTimeout(() => {
       setOpen(false);

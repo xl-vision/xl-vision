@@ -20,12 +20,12 @@ export type ValidateOptions = {
   eager?: boolean;
 };
 
-export type Validate<T extends Record<string, any>> = {
+export type Validate<T extends Record<string, unknown>> = {
   (options?: ValidateOptions): Promise<void>;
   <K extends keyof T>(field: K, options?: ValidateOptions): Promise<void>;
 };
 
-const useForm = <T extends Record<string, any>>({
+const useForm = <T extends Record<string, unknown>>({
   defaultValues,
   values,
   trigger = 'change',
@@ -50,7 +50,7 @@ const useForm = <T extends Record<string, any>>({
           trigger: triggerProps,
           defaultTrigger: trigger,
         })
-        .catch((err) => console.error(err));
+        .catch(console.error);
     },
     [formStore, eager, trigger],
   );
@@ -99,33 +99,24 @@ const useForm = <T extends Record<string, any>>({
   });
 
   const getValue = useCallback<typeof formStore.getValue>(
+    // @ts-expect-error field is optional
     <K extends keyof T>(field?: K) => {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-      return formStore.getValue(field as any);
+      return formStore.getValue(field as K);
     },
     [formStore],
   );
 
   const getErrors = useCallback<typeof formStore.getErrors>(
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
+    // @ts-expect-error field is optional
     <K extends keyof T>(field?: K) => {
-      return formStore.getErrors(field as any);
+      return formStore.getErrors(field as K);
     },
     [formStore],
   );
 
   const validate = useCallback<Validate<T>>(
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    async <K extends keyof T>(
-      // eslint-disable-next-line default-param-last
-      field: K | ValidateOptions = {
-        eager,
-      },
-      options?: ValidateOptions,
-    ) => {
-      if (typeof field === 'object') {
+    async <K extends keyof T>(field?: K | ValidateOptions, options?: ValidateOptions) => {
+      if (typeof field === 'object' || field === undefined) {
         const errors = await formStore.validate({
           eager: field?.eager || eager,
           rulesMap: rulesMapRef.current,
@@ -145,7 +136,7 @@ const useForm = <T extends Record<string, any>>({
         defaultTrigger: trigger,
       });
 
-      if (Object.keys(errors).length) {
+      if (errors) {
         throw new ValidateError(errors);
       }
     },
@@ -183,4 +174,4 @@ const useForm = <T extends Record<string, any>>({
 
 export default useForm;
 
-export type Form<T extends Record<string, any>> = ReturnType<typeof useForm<T>>['form'];
+export type Form<T extends Record<string, unknown>> = ReturnType<typeof useForm<T>>['form'];

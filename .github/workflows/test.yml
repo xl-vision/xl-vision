@@ -15,12 +15,12 @@ jobs:
 
       - uses: pnpm/action-setup@v2
         with:
-          version: 8
+          version: 9
 
       - name: install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: v18
+          node-version: v20
           cache: 'pnpm'
 
       - name: Install dependencies
@@ -39,12 +39,12 @@ jobs:
 
       - uses: pnpm/action-setup@v2
         with:
-          version: 8
+          version: 9
 
       - name: install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: v18
+          node-version: v20
           cache: 'pnpm'
 
       - name: Install dependencies
@@ -63,12 +63,12 @@ jobs:
 
       - uses: pnpm/action-setup@v2
         with:
-          version: 8
+          version: 9
 
       - name: install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: v18
+          node-version: v20
           cache: 'pnpm'
 
       - name: Install dependencies
@@ -86,12 +86,12 @@ jobs:
 
       - uses: pnpm/action-setup@v2
         with:
-          version: 8
+          version: 9
 
       - name: install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: v18
+          node-version: v20
           cache: 'pnpm'
 
       - name: Install dependencies
@@ -101,7 +101,9 @@ jobs:
         run: npm run test -- --coverage
 
       - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
 
       - name: codacy-coverage
         if: ${{ github.event_name == 'push' }}

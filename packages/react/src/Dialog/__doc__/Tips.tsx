@@ -5,35 +5,35 @@ import { Button, Dialog } from '@xl-vision/react';
 
 const Tips = () => {
   const handleInfo = useCallback(() => {
-    Dialog.info({
+    void Dialog.info({
       title: 'some messages...some messages...',
       content: 'content',
     });
   }, []);
 
   const handleSuccess = useCallback(() => {
-    Dialog.success({
+    void Dialog.success({
       title: 'some messages...some messages...',
       content: 'content',
     });
   }, []);
 
   const handleError = useCallback(() => {
-    Dialog.error({
+    void Dialog.error({
       title: 'some messages...some messages...',
       content: 'content',
     });
   }, []);
 
   const handleWarning = useCallback(() => {
-    Dialog.warning({
+    void Dialog.warning({
       title: 'some messages...some messages...',
       content: 'content',
     });
   }, []);
 
   const handleConfirm = useCallback(() => {
-    Dialog.confirm({
+    void Dialog.confirm({
       title: 'some messages...some messages...',
       content: 'content',
     });

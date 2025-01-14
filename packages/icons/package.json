@@ -38,12 +38,12 @@
   "dependencies": {
     "@xl-vision/styled-engine": "workspace:^",
     "@xl-vision/utils": "workspace:^",
-    "clsx": "^2.1.0"
+    "clsx": "^2.1.1"
   },
   "devDependencies": {
     "fs-extra": "^11.2.0",
     "mustache": "^4.2.0",
-    "svgo": "^3.2.0"
+    "svgo": "^3.3.2"
   },
   "peerDependencies": {
     "@babel/runtime": "^7.15.4",

@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-empty-object-type */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import CSS from 'csstype';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { ComponentProps, ComponentType, JSXElementConstructor } from 'react';
+import { ComponentProps, ComponentType, ExoticComponent, JSX, JSXElementConstructor } from 'react';
 
 export type CSSProperties = CSS.PropertiesFallback<string | number>;
 
@@ -45,6 +46,8 @@ type StyledComponentInterpolation = Pick<
   keyof StyledComponent<any, any>
 >;
 
+export type Theme = {};
+
 export type PropsOf<C extends keyof JSX.IntrinsicElements | JSXElementConstructor<any>> =
   JSX.LibraryManagedAttributes<C, ComponentProps<C>>;
 
@@ -59,7 +62,7 @@ export type StyledComponent<InnerProps extends object, StyleProps extends object
 >;
 
 export type CreateStyledComponent<ComponentProps extends object> = {
-  <StyleProps extends object = {}>(
+  <StyleProps extends object>(
     first: TemplateStringsArray | CSSObject | FunctionInterpolation<ComponentProps & StyleProps>,
     ...styles: Array<Interpolation<ComponentProps & StyleProps>>
   ): StyledComponent<ComponentProps, StyleProps>;
@@ -71,7 +74,7 @@ export type ShouldForwardProp<ForwardedProps extends PropertyKey> = (
 
 /** Same as StyledOptions but shouldForwardProp must be a type guard */
 export type FilteringStyledOptions<Props, ForwardedProps extends keyof Props = keyof Props> = {
-  prefix?: string;
+  label?: string;
   shouldForwardProp?: ShouldForwardProp<ForwardedProps>;
   target?: string;
 };
@@ -83,13 +86,13 @@ export type Styled = {
   >(
     tag: Tag,
     options?: FilteringStyledOptions<PropsOf<Tag>, ForwardedProps>,
-  ): CreateStyledComponent<Pick<ExtractProps<Tag>, ForwardedProps>>;
+  ): CreateStyledComponent<Pick<ExtractProps<Tag> & { theme?: Theme }, ForwardedProps>>;
 };
 
-export type GlobalStyleComponent<P> = ComponentType<P>;
+export type GlobalStyleComponent<P> = ComponentType<P> | ExoticComponent<P>;
 
 export type CreateGlobalStyle = {
-  <P extends object = {}>(
+  <P extends { theme?: Theme } = { theme?: Theme }>(
     first: TemplateStringsArray | CSSObject | FunctionInterpolation<P>,
     ...styles: Array<Interpolation<P>>
   ): GlobalStyleComponent<P>;

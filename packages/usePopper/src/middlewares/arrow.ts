@@ -4,7 +4,7 @@ export type ArrowOptions = {
   padding?: number | { x: number; y: number };
 };
 
-export default ({ padding = 0 }: ArrowOptions = {}): Middleware => {
+const arrow = ({ padding = 0 }: ArrowOptions = {}): Middleware => {
   const paddingX = typeof padding === 'number' ? padding : padding.x;
   const paddingY = typeof padding === 'number' ? padding : padding.y;
 
@@ -46,3 +46,4 @@ export default ({ padding = 0 }: ArrowOptions = {}): Middleware => {
     },
   };
 };
+export default arrow;

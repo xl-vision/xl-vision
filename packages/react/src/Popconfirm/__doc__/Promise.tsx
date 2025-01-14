@@ -5,7 +5,7 @@ import { Popconfirm, Button } from '@xl-vision/react';
 
 const Demo = () => {
   const handleConfirm = useCallback(() => {
-    return new Promise((resolve) => {
+    return new Promise<void>((resolve) => {
       setTimeout(resolve, 2000);
     });
   }, []);

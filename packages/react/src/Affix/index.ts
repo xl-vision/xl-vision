@@ -1,5 +1,3 @@
-import Affix from './Affix';
-
 export * from './Affix';
 
-export default Affix;
+export { default } from './Affix';

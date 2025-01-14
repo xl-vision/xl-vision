@@ -7,7 +7,7 @@ export type OffsetAxes = {
 
 export type OffsetOptions = number | OffsetAxes;
 
-export default (offset: OffsetOptions): Middleware => {
+const offset = (offset: OffsetOptions): Middleware => {
   let mainAxis = 0;
   let crossAxis = 0;
 
@@ -52,3 +52,4 @@ export default (offset: OffsetOptions): Middleware => {
     },
   };
 };
+export default offset;

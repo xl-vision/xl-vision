@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
+
 'use client';
 
 import { BaseButton, styled } from '@xl-vision/react';

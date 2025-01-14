@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 const { pathsToModuleNameMapper } = require('ts-jest');
 const getBabelConfig = require('./scripts/getBabelConfig');
 const { compilerOptions } = require('./tsconfig.json');
@@ -20,7 +19,7 @@ module.exports = {
     '!<rootDir>/packages/icons/**',
     '!**/__*__/**',
   ],
-  snapshotSerializers: [],
+  snapshotSerializers: ['@emotion/jest/serializer'],
   moduleNameMapper: {
     ...pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/' }),
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':

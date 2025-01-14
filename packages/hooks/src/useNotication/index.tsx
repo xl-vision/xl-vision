@@ -10,53 +10,51 @@ import {
   useRef,
   ComponentType,
   ReactNode,
-  ReactFragment,
+  ExoticComponent,
 } from 'react';
 import { flushSync } from 'react-dom';
 
-export type NoticationProps<P> = P & {
+export type NoticationProps = {
   open?: boolean;
-  defaultOpen?: boolean;
+  onOpenChange?: (value: boolean) => void;
   onAfterClosed?: () => void;
 };
 
-export type NoticationHookProps<P> = Omit<NoticationProps<P>, 'open' | 'defaultOpen'>;
+export type NoticationHookProps<P extends NoticationProps> = Omit<P, 'open' | 'onOpenChange'>;
 
-export type NoticationContainerProps<NCP> = NCP & {
+export type NoticationContainerProps = {
   children: ReactNode;
 };
 
-export type NoticationContainerType<NCP> =
-  | ComponentType<NoticationContainerProps<NCP>>
+export type NoticationContainerType<NCP extends NoticationContainerProps> =
+  | ComponentType<NCP>
   | string
-  | ReactFragment;
+  | ExoticComponent;
 
-export type NoticationOptions<NCP> = Omit<NoticationContainerProps<NCP>, 'children'> & {
+export type NoticationOptions<NCP extends NoticationContainerProps> = Omit<NCP, 'children'> & {
   maxCount?: number;
 };
 
-export type NoticationHookUpdate<P> = (
+export type NoticationHookUpdate<P extends NoticationProps> = (
   props:
     | Partial<NoticationHookProps<P>>
     | ((prev: NoticationHookProps<P>) => Partial<NoticationHookProps<P>>),
 ) => void;
 
-export type NoticationMethods<P> = {
+export type NoticationMethods<P extends NoticationProps> = {
   destroy: () => void;
   update: NoticationHookUpdate<P>;
   isDestroyed: () => boolean;
 };
 
-export type NoticationHookReturnType<P> = Promise<NoticationMethods<P>> & NoticationMethods<P>;
+export type NoticationHookReturnType<P extends NoticationProps> = Promise<NoticationMethods<P>> &
+  NoticationMethods<P>;
 
 type NoticationRef<P> = {
-  update: (updateProps: NoticationProps<P>) => void;
+  update: (updateProps: P) => void;
 };
 
-const createRefNotication = <P,>(
-  Notication: ComponentType<NoticationProps<P>>,
-  props: NoticationProps<P>,
-) => {
+const createRefNotication = <P extends object>(Notication: ComponentType<P>, props: P) => {
   const RefNotication = forwardRef<NoticationRef<P>>((_, ref) => {
     const [noticationProps, setNoticationProps] = useState(props);
 
@@ -78,8 +76,8 @@ const createRefNotication = <P,>(
   return RefNotication;
 };
 
-const useNotication = <P, NCP>(
-  Notication: ComponentType<NoticationProps<P>>,
+const useNotication = <P extends NoticationProps, NCP extends NoticationContainerProps>(
+  Notication: ComponentType<P>,
   NoticationContainer: NoticationContainerType<NCP>,
   options: NoticationOptions<NCP>,
 ) => {
@@ -92,18 +90,24 @@ const useNotication = <P, NCP>(
 
   const method = useCallback(
     (props: NoticationHookProps<P>): NoticationHookReturnType<P> => {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      let currentProps: NoticationProps<P> = {
+      let currentProps = {
         ...props,
-        open: undefined,
-        defaultOpen: true,
-      };
+        open: true,
+        onOpenChange: (value) => {
+          if (value === currentProps.open) {
+            return;
+          }
+          render({
+            ...currentProps,
+            open: value,
+          });
+        },
+      } as P;
 
       let promiseResolve: (props: NoticationMethods<P>) => void | undefined;
 
       const onAfterClosedWrap = (onAfterClosed?: () => void) => () => {
-        destroyDOM();
+        removeNode();
         onAfterClosed?.();
         promiseResolve?.({
           update,
@@ -123,7 +127,7 @@ const useNotication = <P, NCP>(
 
       const notication = <RefNotication key={`notication${keyRef.current++}`} ref={ref} />;
 
-      const destroyDOM = () => {
+      const removeNode = () => {
         flushSync(() => {
           setNotications((prev) => prev.filter((it) => it !== notication));
         });
@@ -131,7 +135,7 @@ const useNotication = <P, NCP>(
         destroyState = true;
       };
 
-      const render = (renderProps: NoticationProps<P>) => {
+      const render = (renderProps: P) => {
         if (destroyState) {
           return warningLog(
             true,
@@ -147,7 +151,12 @@ const useNotication = <P, NCP>(
       const update: NoticationHookUpdate<P> = (updateProps) => {
         const newProps =
           typeof updateProps === 'function' ? updateProps(currentProps) : updateProps;
-        currentProps = { ...currentProps, ...newProps, open: undefined, defaultOpen: true };
+        currentProps = {
+          ...currentProps,
+          ...newProps,
+          open: currentProps.open,
+          onOpenChange: currentProps.onOpenChange,
+        };
 
         render(currentProps);
       };
@@ -199,9 +208,9 @@ const useNotication = <P, NCP>(
     [method],
   );
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  const holder = <NoticationContainer {...otherOptions}>{notications}</NoticationContainer>;
+  const holder = (
+    <NoticationContainer {...(otherOptions as NCP)}>{notications}</NoticationContainer>
+  );
 
   return [methods, holder] as const;
 };

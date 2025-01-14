@@ -84,15 +84,14 @@ The `config` type is as follows
 
 ### setGlobalConfig
 
-> For the global method, `ThemeContext` and `ConfigContext` cannot be obtained through the context, so we also provide a method of manually setting
+> For the global method, `ThemeContext` cannot be obtained through the context, so we also provide a method of manually setting
 
 ```ts
 Message.setGlobalConfig({
   themeProviderProps:  Omit<ThemeProviderProps, 'children'>,
-  configProviderProps: Omit<ConfigProviderProps, 'children'>,
   top?: number;
   container?: PortalContainerType<HTMLElement>;
 });
 ```
 
-For details, please refer to [ThemeProvider](/components/ThemeProvider), [ConfigProvider](/components/ConfigProvider)
+For details, please refer to [ThemeProvider](/components/ThemeProvider).

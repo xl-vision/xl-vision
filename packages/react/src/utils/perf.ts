@@ -1,22 +1,22 @@
 import { raf } from '@xl-vision/utils';
 
-// eslint-disable-next-line import/prefer-default-export
-export const throttleByAnimationFrame = <Fn extends (...args: Array<any>) => any>(fn: Fn) => {
+// eslint-disable-next-line import-x/prefer-default-export
+export const throttleByAnimationFrame = <Fn extends (...args: Array<unknown>) => unknown>(
+  fn: Fn,
+) => {
   let cancel: (() => void) | undefined;
 
   let ret: ReturnType<Fn> | undefined;
 
   const later = (args: Parameters<Fn>) => () => {
     cancel = undefined;
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    ret = fn(...args);
+    ret = fn(...args) as ReturnType<Fn>;
   };
 
   const throttle = (...args: Parameters<Fn>) => {
     if (cancel === undefined) {
       cancel = raf(later(args));
     }
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return ret;
   };
 

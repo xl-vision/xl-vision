@@ -33,7 +33,7 @@ export type OverflowRect = {
 };
 
 export type MiddlewareExtra = {
-  [key: string]: any;
+  [key: string]: unknown;
   arrow?: {
     x?: number;
     y?: number;
@@ -71,7 +71,7 @@ export type MiddlewareContext = MiddlewareData & {
 
 export type MiddlewareReturn = Partial<
   Omit<MiddlewareData, 'extra'> & {
-    data: any;
+    data: unknown;
     reset: boolean;
   }
 >;

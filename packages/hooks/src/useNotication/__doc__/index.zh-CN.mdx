@@ -21,27 +21,28 @@
 ### 容器组件
 
 ```ts
-export type NoticationContainerProps<NCP> = NCP & {
+export type NoticationContainerProps = {
   children: ReactNode;
 };
 
-export type NoticationContainerType<NCP> =
-  | ComponentType<NoticationContainerProps<NCP>>
+export type NoticationContainerType<NCP extends NoticationContainerProps> =
+  | ComponentType<NCP>
   | string
-  | ReactFragment;
+  | ExoticComponent;
 ```
 
 容器组件用来包含内容。
 
-可以是`div`等 html 元素，也可以是`React Component`或者`Fragment`
+可以是 `div` 等 html 元素，也可以是 `React Component` 或者 `Fragment`
+
+至少要支持 `NoticationContainerProps` 中的参数
 
 ### 内容组件
 
 ```ts
-export type NoticationProps<P> = P & {
-  open?: boolean;
-  defaultOpen?: boolean;
-  // 关闭（动画结束）后回调，需要组件回调
+export type NoticationProps = {
+  open: boolean;
+  onOpenChange: (value: boolean) => void;
   onAfterClosed?: () => void;
 };
 ```
@@ -51,24 +52,29 @@ export type NoticationProps<P> = P & {
 ### useNotication
 
 ```ts
-export type NoticationHookUpdate<P> = (
+export type NoticationHookProps<P extends NoticationProps> = Omit<P, 'open' | 'onOpenChange'>;
+
+export type NoticationHookUpdate<P extends NoticationProps> = (
   props:
     | Partial<NoticationHookProps<P>>
     | ((prev: NoticationHookProps<P>) => Partial<NoticationHookProps<P>>),
 ) => void;
 
-export type NoticationHookReturnType<P> = Promise<void> & {
+export type NoticationMethods<P extends NoticationProps> = {
   destroy: () => void;
   update: NoticationHookUpdate<P>;
   isDestroyed: () => boolean;
 };
 
-export type NoticationOptions<NCP> = Omit<NoticationContainerProps<NCP>, 'children'> & {
+export type NoticationHookReturnType<P extends NoticationProps> = Promise<NoticationMethods<P>> &
+  NoticationMethods<P>;
+
+export type NoticationOptions<NCP extends NoticationContainerProps> = Omit<NCP, 'children'> & {
   maxCount?: number;
 };
 
-const useNotication = <P, NCP>(
-  Notication: ComponentType<NoticationProps<P>>,
+const useNotication = <P extends NoticationProps, NCP extends NoticationContainerProps>(
+  Notication: ComponentType<P>,
   NoticationContainer: NoticationContainerType<NCP>,
   options: NoticationOptions<NCP>,
 ) => [

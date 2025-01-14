@@ -20,7 +20,7 @@ const useValueChange = <T>(
 ) => {
   const [internalValue, setInternalValue] = useState<T>(defaultValue);
 
-  const hasValue = typeof value !== 'undefined';
+  const hasValue = value !== undefined;
 
   const actualValue = hasValue ? value : internalValue;
 

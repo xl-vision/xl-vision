@@ -16,15 +16,14 @@ import { styled } from '../../styles';
 import { useTheme } from '../../ThemeProvider';
 import Transition from '../../Transition';
 
-export type InnerMessageProps = NoticationProps<
+export type InnerMessageProps = NoticationProps &
   Omit<HTMLAttributes<HTMLDivElement>, 'content'> & {
     content: ReactNode;
     closeIcon?: ReactNode;
     duration?: number;
     icon?: ReactNode;
     showClose?: boolean;
-  }
->;
+  };
 
 const displayName = 'InnerMessage';
 
@@ -102,7 +101,7 @@ const InnerMessage = forwardRef<HTMLDivElement, InnerMessageProps>((props, ref) 
   const {
     duration = 3000,
     content,
-    defaultOpen = true,
+    onOpenChange,
     open: openProp,
     icon,
     onAfterClosed,
@@ -115,9 +114,9 @@ const InnerMessage = forwardRef<HTMLDivElement, InnerMessageProps>((props, ref) 
 
   const { clsPrefix } = useTheme();
 
-  const [open, setOpen] = useValueChange(defaultOpen, openProp);
+  const [open, setOpen] = useValueChange(false, openProp, onOpenChange);
 
-  const timerRef = useRef<number>();
+  const timerRef = useRef<number>(null);
 
   const handleExit = useConstantFn(() => {
     onAfterClosed?.();
@@ -125,7 +124,10 @@ const InnerMessage = forwardRef<HTMLDivElement, InnerMessageProps>((props, ref) 
 
   const handleMouseEnter = useConstantFn((e: MouseEvent<HTMLDivElement>) => {
     onMouseEnter?.(e);
-    window.clearTimeout(timerRef.current);
+    const timer = timerRef.current;
+    if (timer) {
+      clearTimeout(timer);
+    }
   });
 
   const handleMouseLeave = useConstantFn((e: MouseEvent<HTMLDivElement>) => {
@@ -161,7 +163,10 @@ const InnerMessage = forwardRef<HTMLDivElement, InnerMessageProps>((props, ref) 
     }, duration);
 
     return () => {
-      window.clearTimeout(timerRef.current);
+      const timer = timerRef.current;
+      if (timer) {
+        clearTimeout(timer);
+      }
     };
   }, [duration, setOpen]);
 

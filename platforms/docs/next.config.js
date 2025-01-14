@@ -1,36 +1,36 @@
-/* eslint-disable import/no-extraneous-dependencies */
 const rehypePrism = require('@mapbox/rehype-prism');
 const bundleAnalyzer = require('@next/bundle-analyzer');
-const path = require('path');
+const path = require('node:path');
 const demoPlugin = require('./scripts/webpack/mdx/demoPlugin');
 
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 });
 
-module.exports = async () => {
-  const remarkGfm = (await import('remark-gfm')).default;
-  const remarkEmoji = (await import('remark-emoji')).default;
+const nextConfig = async () => {
+  const { default: remarkGfm } = await import('remark-gfm');
+  const { default: remarkEmoji } = await import('remark-emoji');
 
   /**
    * @type {import('next').NextConfig}
    */
   const nextConfig = {
     reactStrictMode: true,
-    swcMinify: true,
-    compiler: {
-      styledComponents: true,
-    },
     eslint: {
       ignoreDuringBuilds: true,
     },
     experimental: {
       typedRoutes: false,
+      typedEnv: true,
     },
     webpack: (config, { defaultLoaders }) => {
-      config.module.rules.push({
+      // const isStyledComponents = process.env.STYLE_LIB === 'styled-components';
+      // if (isStyledComponents) {
+      //   config.resolve.alias['@xl-vision/styled-engine'] = '@xl-vision/styled-engine-sc';
+      // }
+
+      config.module.rules.unshift({
         test: /\.mdx?$/,
-        exclude: /node_modules/,
         oneOf: [
           {
             resourceQuery: /locale/,
@@ -62,6 +62,12 @@ module.exports = async () => {
             },
           },
         ],
+        resolve: {
+          alias: {
+            'react-dom': 'next/dist/compiled/react-dom',
+            react: 'next/dist/compiled/react',
+          },
+        },
       });
 
       return config;
@@ -69,3 +75,4 @@ module.exports = async () => {
   };
   return withBundleAnalyzer(nextConfig);
 };
+module.exports = nextConfig;

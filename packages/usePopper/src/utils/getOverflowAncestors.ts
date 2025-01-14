@@ -1,4 +1,4 @@
-import { isElement, oneOf } from '@xl-vision/utils';
+import { isElement } from '@xl-vision/utils';
 import getNodeName from './getNodeName';
 import getParentNode from './getParentNode';
 
@@ -8,8 +8,7 @@ const getOverflowAncestors = (node: Node): Array<Element> => {
   const scrollableAncestor = getNearestOverflowAncestor(node);
 
   if (scrollableAncestor && scrollableAncestor !== scrollableAncestor.ownerDocument.body) {
-    list.push(scrollableAncestor);
-    list.push(...getOverflowAncestors(scrollableAncestor));
+    list.push(scrollableAncestor, ...getOverflowAncestors(scrollableAncestor));
   }
 
   return list;
@@ -19,7 +18,7 @@ export default getOverflowAncestors;
 
 const getNearestOverflowAncestor = (node: Node): Element | null => {
   const parentNode = getParentNode(node);
-  if (oneOf(['html', 'body', '#document'], getNodeName(parentNode))) {
+  if (['html', 'body', '#document'].includes(getNodeName(parentNode))) {
     const body = node.ownerDocument?.body;
     if (body && isOverflowElement(body)) {
       return body;

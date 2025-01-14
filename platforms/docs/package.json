@@ -13,11 +13,11 @@
     "analyze": "cross-env ANALYZE=true npm run docs"
   },
   "dependencies": {
+    "@babel/standalone": "^7.26.5",
     "@codemirror/lang-javascript": "^6.2.2",
-    "@uiw/react-codemirror": "^4.21.25",
-    "@babel/standalone": "^7.24.5",
-    "@mdx-js/react": "^3.0.1",
-    "@vercel/analytics": "^1.2.2",
+    "@mdx-js/react": "^3.1.0",
+    "@uiw/react-codemirror": "^4.23.7",
+    "@vercel/analytics": "^1.4.1",
     "@xl-vision/hooks": "workspace:^",
     "@xl-vision/icons": "workspace:^",
     "@xl-vision/react": "workspace:^",
@@ -26,34 +26,38 @@
     "@xl-vision/usePopper": "workspace:^",
     "@xl-vision/utils": "workspace:^",
     "clipboard": "^2.0.11",
-    "clsx": "^2.1.0",
+    "clsx": "^2.1.1",
     "js-cookie": "^3.0.5",
-    "negotiator": "^0.6.3",
-    "next": "^14.1.4",
+    "negotiator": "^1.0.0",
+    "next": "15.1.4",
     "prop-types": "^15.8.1",
-    "sharp": "^0.33.3"
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "sharp": "^0.33.5"
   },
   "peerDependencies": {
     "react": ">=18.0.0",
     "react-dom": ">=18.0.0",
-    "styled-components": ">=6.0.0"
+    "styled-components": ">=6.0.0",
+    "@emotion/react": ">=10.0.0",
+    "@emotion/cache": ">=10.0.0"
   },
   "devDependencies": {
     "@mapbox/rehype-prism": "^0.9.0",
-    "@mdx-js/loader": "^3.0.1",
-    "@types/mdx": "^2.0.13",
-    "@types/negotiator": "^0.6.3",
-    "@next/bundle-analyzer": "^14.1.4",
-    "@next/eslint-plugin-next": "^14.1.4",
+    "@mdx-js/loader": "^3.1.0",
+    "@next/bundle-analyzer": "15.1.4",
+    "@next/eslint-plugin-next": "15.1.4",
     "@types/codemirror": "^5.60.15",
     "@types/js-cookie": "^3.0.6",
+    "@types/mdx": "^2.0.13",
+    "@types/negotiator": "^0.6.3",
     "@types/node": "17.0.4",
-    "@types/prop-types": "^15.7.12",
+    "@types/prop-types": "^15.7.14",
     "cross-env": "^7.0.3",
     "next-sitemap": "^4.2.3",
     "pinyin": "^3.1.0",
     "prismjs": "^1.29.0",
-    "remark-emoji": "^4.0.1",
+    "remark-emoji": "^5.0.1",
     "remark-gfm": "^4.0.0"
   }
 }

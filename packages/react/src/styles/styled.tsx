@@ -8,7 +8,7 @@ import {
 } from '@xl-vision/styled-engine';
 import { isProduction } from '@xl-vision/utils';
 import clsx from 'clsx';
-import { ComponentProps, ComponentType, forwardRef } from 'react';
+import { ComponentProps, ComponentType, forwardRef, JSX } from 'react';
 import applyTheme from './applyTheme';
 import { StyledComponentKey } from './constants';
 import { Theme, Style, useTheme } from '../ThemeProvider';
@@ -18,7 +18,9 @@ export type XlOptions = {
   slot?: string;
 };
 
-const shouldForwardProp = (prop: PropertyKey) => prop !== 'theme' && prop !== 'styleProps';
+const NOT_FORWARD_PROPS: Set<PropertyKey> = new Set(['theme', 'styleProps', 'as']);
+
+const shouldForwardProp = (prop: PropertyKey) => !NOT_FORWARD_PROPS.has(prop);
 
 const middleline = (str: string) => {
   const separator = '-';
@@ -55,13 +57,13 @@ const styled = <
     shouldForwardProp: isStyledComponent
       ? undefined
       : (shouldForwardProp as ShouldForwardProp<ForwardedProps>),
-    ...(!isProduction && { prefix: displayName || undefined }),
+    ...(!isProduction && { label: displayName || undefined }),
   });
 
   const overrideCreateStyledComponent = <
     StyleProps extends object | undefined = undefined,
     Props extends Pick<ExtractProps<Tag>, ForwardedProps> = Pick<ExtractProps<Tag>, ForwardedProps>,
-    ActualStyleProps = StyleProps extends undefined ? {} : { styleProps: StyleProps },
+    ActualStyleProps = StyleProps extends undefined ? object : { styleProps: StyleProps },
     ReceivedThemeProps = { theme: Theme } & ActualStyleProps,
     PassedThemeProps = { theme?: Theme } & ActualStyleProps,
   >(
@@ -96,18 +98,15 @@ const styled = <
 
     const newStyles = [...styles, applyOverrideStyle].map(applyTheme);
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let newFirst: any = first;
 
-    const numOfCustomFnsApplied = newStyles.length - styles.length;
-
-    if (Array.isArray(newFirst) && numOfCustomFnsApplied > 0) {
+    if (Array.isArray(newFirst) && 'raw' in newFirst) {
       const newFirstArray = newFirst as unknown as TemplateStringsArray;
-      const placeholders = new Array<string>(numOfCustomFnsApplied).fill('');
-      const raw = [...newFirstArray.raw, ...placeholders];
-      newFirst = [...newFirstArray, ...placeholders];
+      newFirst = [...newFirstArray, ''];
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      newFirst.raw = raw;
-    } else if (typeof newFirst === 'function') {
+      newFirst.raw = [...newFirstArray.raw, ''];
+    } else {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       newFirst = applyTheme(newFirst);
     }
@@ -120,15 +119,12 @@ const styled = <
       ...newStyles,
     );
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-
+    // @ts-expect-error fix types error
     const DefaultComponent: typeof InnerDefaultComponent = forwardRef((props, ref) => {
       const { clsPrefix } = useTheme();
 
       return (
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
+        // @ts-expect-error fix types error
         <InnerDefaultComponent
           {...props}
           className={clsx(

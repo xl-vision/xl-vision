@@ -5,11 +5,11 @@ import { Children, FC } from 'react';
 import Portal, { PortalContainerType } from '../Portal';
 import { styled } from '../styles';
 
-export type MessageContainerProps = NoticationContainerProps<{
+export type MessageContainerProps = NoticationContainerProps & {
   top?: number;
   container?: PortalContainerType<HTMLElement>;
   zIndex?: number;
-}>;
+};
 
 const displayName = 'MessageContainer';
 

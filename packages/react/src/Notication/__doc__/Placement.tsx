@@ -18,28 +18,28 @@ const Demo = () => {
   const [message4, holder4] = Notication.useNotication({ placement: 'bottom-left' });
 
   const handleInfo1 = useCallback(() => {
-    message1.info({
+    void message1.info({
       message: 'message',
       description: 'this is a message',
     });
   }, [message1]);
 
   const handleInfo2 = useCallback(() => {
-    message2.info({
+    void message2.info({
       message: 'message',
       description: 'this is a message',
     });
   }, [message2]);
 
   const handleInfo3 = useCallback(() => {
-    message3.info({
+    void message3.info({
       message: 'message',
       description: 'this is a message',
     });
   }, [message3]);
 
   const handleInfo4 = useCallback(() => {
-    message4.info({
+    void message4.info({
       message: 'message',
       description: 'this is a message',
     });

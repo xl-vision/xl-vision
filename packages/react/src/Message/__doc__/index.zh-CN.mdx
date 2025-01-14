@@ -84,15 +84,14 @@
 
 ### setGlobalConfig
 
-> 对于全局方法，无法通过上下文获取`ThemeContext`和`ConfigContext`，因此我们也提供了手动设置的方法
+> 对于全局方法，无法通过上下文获取`ThemeContext`，因此我们也提供了手动设置的方法
 
 ```ts
 Message.setGlobalConfig({
   themeProviderProps:  Omit<ThemeProviderProps, 'children'>,
-  configProviderProps: Omit<ConfigProviderProps, 'children'>,
   top?: number;
   container?: PortalContainerType<HTMLElement>;
 });
 ```
 
-具体可参考[ThemeProvider](/components/ThemeProvider)、[ConfigProvider](/components/ConfigProvider)
+具体可参考[ThemeProvider](/components/ThemeProvider)。

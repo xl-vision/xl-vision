@@ -13,9 +13,10 @@ const findDOMNode = <T = Element | Text>(
   }
   if (!isReact19) {
     // eslint-disable-next-line react/no-find-dom-node
-    return ReactDOM.findDOMNode(node) as unknown as T;
+    return (ReactDOM as unknown as { findDOMNode: (n: typeof node) => T }).findDOMNode(node);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-base-to-string
   warning(true, 'Could not find DOM node for target %s', String(node));
 
   return null;

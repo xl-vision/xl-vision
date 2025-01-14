@@ -1,15 +1,10 @@
 'use client';
 
 import { styled } from '@xl-vision/react';
-import PropTypes from 'prop-types';
+import * as PropTypes from 'prop-types';
 import { ReactNode, FC } from 'react';
 import code from './code';
 import pre from './pre';
-
-export type WrapperProps = {
-  children?: ReactNode;
-  className?: string;
-};
 
 const Root = styled('main')(
   ({ theme }) => `
@@ -29,7 +24,12 @@ const Root = styled('main')(
 `,
 );
 
-const Wrapper: FC<WrapperProps> = (props) => {
+export type WrapperProps = {
+  children?: ReactNode;
+  className?: string;
+};
+
+const Wrapper: FC<WrapperProps> = (props: WrapperProps) => {
   const { children, ...others } = props;
 
   return <Root {...others}>{children}</Root>;

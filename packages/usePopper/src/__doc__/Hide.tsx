@@ -17,17 +17,17 @@ const Demo = () => {
     middlewares,
   });
 
-  const rafIdRef = useRef<number | undefined>();
+  const rafIdRef = useRef<number>(null);
 
   const handleUpdate = useMemo(() => {
     // 节流
     const throttle = () => {
-      if (rafIdRef.current !== undefined) {
+      if (rafIdRef.current) {
         return;
       }
       rafIdRef.current = requestAnimationFrame(() => {
         update();
-        rafIdRef.current = undefined;
+        rafIdRef.current = null;
       });
     };
     return throttle;

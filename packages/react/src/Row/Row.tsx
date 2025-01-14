@@ -1,7 +1,7 @@
 import { isObject, isProduction } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { HTMLAttributes, ComponentType, forwardRef, useMemo, ReactNode } from 'react';
+import { HTMLAttributes, ComponentType, forwardRef, useMemo, ReactNode, JSX } from 'react';
 import RowContext from './RowContext';
 import useBreakPoints from './useBreakPoints';
 import { styled } from '../styles';
@@ -89,7 +89,7 @@ const Row = forwardRef<HTMLDivElement, RowProps>((props, ref) => {
       for (let i = 0; i < breakPoints.length; i++) {
         const [breakPoint, match] = breakPoints[i];
         if (match && gutter[breakPoint] !== undefined) {
-          return gutter[breakPoint] as number;
+          return gutter[breakPoint];
         }
       }
     }
@@ -137,7 +137,7 @@ if (!isProduction) {
     children: PropTypes.node.isRequired,
     align: PropTypes.oneOf(['top', 'middle', 'bottom']),
     className: PropTypes.string,
-    component: PropTypes.oneOf([PropTypes.elementType.isRequired, PropTypes.string as any]),
+    component: PropTypes.oneOf([PropTypes.elementType.isRequired, PropTypes.string]),
     gutter: PropTypes.oneOfType([PropTypes.number.isRequired, PropTypes.object.isRequired]),
     justify: PropTypes.oneOf(['start', 'end', 'center', 'space-around', 'space-between']),
     removeOnUnvisible: PropTypes.bool,

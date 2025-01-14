@@ -8,12 +8,12 @@ import { styled } from '../styles';
 
 export type NoticationPlacement = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
 
-export type NoticationContainerProps = InnerNoticationContainerProps<{
+export type NoticationContainerProps = InnerNoticationContainerProps & {
   distance?: number;
   container?: PortalContainerType<HTMLElement>;
   zIndex?: number;
   placement?: NoticationPlacement;
-}>;
+};
 
 const displayName = 'NoticationContainer';
 

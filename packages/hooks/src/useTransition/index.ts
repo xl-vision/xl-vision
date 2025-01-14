@@ -53,7 +53,7 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
   } = options;
 
   // 保存回调
-  const cbRef = useRef<() => void>();
+  const cbRef = useRef<() => void>(null);
 
   const lifecycleStatRef = useLifecycleState();
 
@@ -72,7 +72,7 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
           return;
         }
         // 避免多次触发
-        cbRef.current = undefined;
+        cbRef.current = null;
         flushSync(() => {
           endHook?.(el, isFirst);
         });
@@ -106,7 +106,7 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
     [lifecycleStatRef],
   );
 
-  const elementRef = useRef<T | null>();
+  const elementRef = useRef<T>(null);
 
   // 是否处于enter和exited之间的状态，只要children在显示中，就为true
   const [inTransition, setInTransition] = useState(inOption || transitionOnFirst);
@@ -159,7 +159,7 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
     }
   });
 
-  const onceRef = useRef<boolean>();
+  const onceRef = useRef<boolean>(null);
 
   useIsomorphicLayoutEffect(() => {
     // handle calling twice on strict mode

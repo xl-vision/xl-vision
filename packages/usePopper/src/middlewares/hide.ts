@@ -3,7 +3,7 @@ import computeOverflowRect from '../utils/computeOverflowRect';
 
 export type HideOptions = OverflowOptions & {};
 
-export default ({ boundary, rootBoundary, padding }: HideOptions = {}): Middleware => {
+const hide = ({ boundary, rootBoundary, padding }: HideOptions = {}): Middleware => {
   return {
     name: 'hide',
     fn(ctx) {
@@ -31,3 +31,4 @@ export default ({ boundary, rootBoundary, padding }: HideOptions = {}): Middlewa
     },
   };
 };
+export default hide;

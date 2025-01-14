@@ -1,5 +1,3 @@
-import ThemeProvider from './ThemeProvider';
-
 export * from './createTheme';
 export * from './ThemeProvider';
 
@@ -11,7 +9,5 @@ export * from './sizes';
 export * from './transitions';
 export * from './typography';
 
-export { default as ThemeProvider } from './ThemeProvider';
+export { default as ThemeProvider, default } from './ThemeProvider';
 export { default as useTheme } from './useTheme';
-
-export default ThemeProvider;

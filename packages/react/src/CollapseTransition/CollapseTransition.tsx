@@ -10,23 +10,12 @@ import {
 } from '@xl-vision/hooks';
 import { addClass, getComputedStyle, isProduction, removeClass, warning } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
-import {
-  ReactElement,
-  FC,
-  Children,
-  useMemo,
-  CSSProperties,
-  useRef,
-  isValidElement,
-  ReactInstance,
-  Ref,
-  cloneElement,
-} from 'react';
+import { ReactElement, FC, Children, useMemo, CSSProperties, useRef, cloneElement } from 'react';
 import { forceReflow } from '../utils/dom';
-import { supportRef } from '../utils/ref';
+import { getNodeRef, supportRef } from '../utils/ref';
 
 export type CollapseTransitionProp = CssTransitionOptions & {
-  children: ReactElement;
+  children: ReactElement<unknown>;
   horizontal?: boolean;
   unmountOnExit?: boolean;
 };
@@ -65,11 +54,11 @@ const CollapseTransition: FC<CollapseTransitionProp> = (props) => {
     };
   }, [horizontal]);
 
-  const actualSizeRef = useRef<string>();
-  const padding1Ref = useRef<string>();
-  const padding2Ref = useRef<string>();
-  const sizeRef = useRef<string>();
-  const overflowRef = useRef<string>();
+  const actualSizeRef = useRef<string>(null);
+  const padding1Ref = useRef<string>(null);
+  const padding2Ref = useRef<string>(null);
+  const sizeRef = useRef<string>(null);
+  const overflowRef = useRef<string>(null);
 
   const isCancelledRef = useRef(false);
 
@@ -221,10 +210,7 @@ const CollapseTransition: FC<CollapseTransitionProp> = (props) => {
     onExitCancelled: handleExitCancelled,
   });
 
-  const forkRef = useForkRef(
-    isValidElement<ReactInstance>(child) ? (child as { ref?: Ref<unknown> }).ref : null,
-    nodeRef,
-  );
+  const forkRef = useForkRef(getNodeRef(child), nodeRef);
 
   // 判断是否是第一次挂载
   const isFirstMountRef = useRef(true);
@@ -240,9 +226,9 @@ const CollapseTransition: FC<CollapseTransitionProp> = (props) => {
     }
   }
 
-  const style = { ...(child.props as { style?: {} }).style, display: show ? '' : 'none' };
+  const style = { ...(child.props as { style?: object }).style, display: show ? '' : 'none' };
 
-  return cloneElement(child, {
+  return cloneElement(child as ReactElement<{ ref?: typeof forkRef; style?: object }>, {
     ref: forkRef,
     style,
   });

@@ -94,17 +94,16 @@ export default class TinyColor {
       pad2(Math.round(a * 255).toString(16)),
     ];
 
-    if (allowShort) {
-      if (
-        hex[0][0] === hex[0][1] &&
-        hex[1][0] === hex[1][1] &&
-        hex[2][0] === hex[2][1] &&
-        hex[3][0] === hex[3][1]
-      ) {
-        return useAlpha
-          ? `#${hex[0][0]}${hex[1][0]}${hex[2][0]}${hex[3][0]}`
-          : `#${hex[0][0]}${hex[1][0]}${hex[2][0]}`;
-      }
+    if (
+      allowShort &&
+      hex[0][0] === hex[0][1] &&
+      hex[1][0] === hex[1][1] &&
+      hex[2][0] === hex[2][1] &&
+      hex[3][0] === hex[3][1]
+    ) {
+      return useAlpha
+        ? `#${hex[0][0]}${hex[1][0]}${hex[2][0]}${hex[3][0]}`
+        : `#${hex[0][0]}${hex[1][0]}${hex[2][0]}`;
     }
 
     return useAlpha ? `#${hex[0]}${hex[1]}${hex[2]}${hex[3]}` : `#${hex[0]}${hex[1]}${hex[2]}`;
@@ -173,7 +172,7 @@ const pad2 = (v: string) => {
 
 const rgbNormalize = (val: number) => {
   val /= 255;
-  return val <= 0.03928 ? val / 12.92 : ((val + 0.055) / 1.055) ** 2.4;
+  return val <= 0.039_28 ? val / 12.92 : ((val + 0.055) / 1.055) ** 2.4;
 };
 
 const toColor: (color: string | Color) => Color = (color) => {
@@ -233,7 +232,7 @@ const toColor: (color: string | Color) => Color = (color) => {
 };
 
 const hexToColor: (color: string) => Color = (color) => {
-  const parsedColor = color.substring(1);
+  const parsedColor = color.slice(1);
 
   const re = new RegExp(`.{1,${parsedColor.length >= 6 ? 2 : 1}}`, 'g');
   let colors: Array<string> | RegExpMatchArray | null = parsedColor.match(re);
@@ -247,13 +246,13 @@ const hexToColor: (color: string) => Color = (color) => {
   }
 
   const rgbColor: RGBColor = {
-    r: parseInt(colors[0], 16),
-    g: parseInt(colors[1], 16),
-    b: parseInt(colors[2], 16),
+    r: Number.parseInt(colors[0], 16),
+    g: Number.parseInt(colors[1], 16),
+    b: Number.parseInt(colors[2], 16),
   };
 
   if (colors.length > 3) {
-    rgbColor.a = parseInt(colors[3], 16) / 255;
+    rgbColor.a = Number.parseInt(colors[3], 16) / 255;
   }
   return rgbColor;
 };
@@ -264,20 +263,20 @@ const rgbToColor: (color: string) => Color = (color) => {
     throw new Error(`The color '${color}' is illegal rgb color`);
   }
 
-  const values = color.substring(matcher + 1, color.length - 1).split(',');
+  const values = color.slice(matcher + 1).split(',');
 
   if (values.length < 3) {
     throw new Error(`The color '${color}' is illegal rgb color`);
   }
 
   const rgbColor: RGBColor = {
-    r: parseInt(values[0], 10),
-    g: parseInt(values[1], 10),
-    b: parseInt(values[2], 10),
+    r: Number.parseInt(values[0], 10),
+    g: Number.parseInt(values[1], 10),
+    b: Number.parseInt(values[2], 10),
   };
 
   if (values.length > 3) {
-    rgbColor.a = parseFloat(values[3]);
+    rgbColor.a = Number.parseFloat(values[3]);
   }
   return rgbColor;
 };
@@ -288,20 +287,20 @@ const hslToColor: (color: string) => Color = (color) => {
     throw new Error(`The color '${color}' is illegal hsl color`);
   }
 
-  const values = color.substring(matcher + 1, color.length - 1).split(',');
+  const values = color.slice(matcher + 1).split(',');
 
   if (values.length < 3) {
     throw new Error(`The color '${color}' is illegal hsl color`);
   }
 
   const hslColor: HSLColor = {
-    h: parseInt(values[0], 10),
-    s: parseFloat(values[1]),
-    l: parseFloat(values[2]),
+    h: Number.parseInt(values[0], 10),
+    s: Number.parseFloat(values[1]),
+    l: Number.parseFloat(values[2]),
   };
 
   if (values.length > 3) {
-    hslColor.a = parseFloat(values[3]);
+    hslColor.a = Number.parseFloat(values[3]);
   }
   return hslColor;
 };
@@ -312,20 +311,20 @@ const hsvToColor: (color: string) => Color = (color) => {
     throw new Error(`The color '${color}' is illegal hsv color`);
   }
 
-  const values = color.substring(matcher + 1, color.length - 1).split(',');
+  const values = color.slice(matcher + 1).split(',');
 
   if (values.length < 3) {
     throw new Error(`The color '${color}' is illegal hsv color`);
   }
 
   const hsvColor: HSVColor = {
-    h: parseInt(values[0], 10),
-    s: parseFloat(values[1]),
-    v: parseFloat(values[2]),
+    h: Number.parseInt(values[0], 10),
+    s: Number.parseFloat(values[1]),
+    v: Number.parseFloat(values[2]),
   };
 
   if (values.length > 3) {
-    hsvColor.a = parseFloat(values[3]);
+    hsvColor.a = Number.parseFloat(values[3]);
   }
   return hsvColor;
 };
@@ -431,15 +430,18 @@ const rgb2Hsl: (color: RGBColor) => HSLColor = (color) => {
     const d = max - min;
     s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
     switch (max) {
-      case r:
+      case r: {
         h = (g - b) / d + (g < b ? 6 : 0);
         break;
-      case g:
+      }
+      case g: {
         h = (b - r) / d + 2;
         break;
-      default:
+      }
+      default: {
         h = (r - g) / d + 4;
         break;
+      }
     }
     h /= 6;
   }
@@ -475,15 +477,18 @@ const rgb2Hsv: (color: RGBColor) => HSVColor = (color) => {
     h = 0; // achromatic
   } else {
     switch (max) {
-      case r:
+      case r: {
         h = (g - b) / d + (g < b ? 6 : 0);
         break;
-      case g:
+      }
+      case g: {
         h = (b - r) / d + 2;
         break;
-      default:
+      }
+      default: {
         h = (r - g) / d + 4;
         break;
+      }
     }
     h /= 6;
   }

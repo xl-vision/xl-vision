@@ -1,5 +1,5 @@
 import { EventEmitter, noop } from '@xl-vision/utils';
-import { MutableRefObject, RefCallback, useCallback, useMemo, useRef, useState } from 'react';
+import { RefObject, RefCallback, useCallback, useMemo, useRef, useState } from 'react';
 import { Reference } from './types';
 import usePopper from './usePopper';
 
@@ -9,10 +9,10 @@ export type ConnectInteractionOptions = {
 };
 
 export type InteractionContext = {
-  reference: MutableRefObject<Reference | null>;
-  popper: MutableRefObject<Element | null>;
+  reference: RefObject<Reference | null>;
+  popper: RefObject<Element | null>;
   eventEmitter: EventEmitter;
-  data: Record<string, any>;
+  data: Record<string, unknown>;
   update: () => void;
   open: boolean;
   setOpen: (open: boolean) => void;

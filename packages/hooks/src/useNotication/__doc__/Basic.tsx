@@ -3,14 +3,14 @@
 import { Button, Portal, styled } from '@xl-vision/react';
 import { FC, useCallback, useEffect, useRef } from 'react';
 import {
-  NoticationContainerProps,
-  NoticationProps,
   useCssTransition,
   useNotication,
   useValueChange,
+  NoticationProps,
+  NoticationContainerProps,
 } from '@xl-vision/hooks';
 
-type MessageProps = NoticationProps<{ content: string }>;
+type MessageProps = NoticationProps & { content: string };
 
 const MessageRoot = styled('div')(({ theme }) => {
   return {
@@ -36,13 +36,8 @@ const MessageRoot = styled('div')(({ theme }) => {
   };
 });
 
-const Message: FC<MessageProps> = ({
-  content,
-  open: openProp,
-  defaultOpen = false,
-  onAfterClosed,
-}) => {
-  const [open, setOpen] = useValueChange(defaultOpen, openProp);
+const Message: FC<MessageProps> = ({ content, open: openProp, onOpenChange, onAfterClosed }) => {
+  const [open, setOpen] = useValueChange(false, openProp, onOpenChange);
 
   const { nodeRef } = useCssTransition({
     in: open,
@@ -68,7 +63,7 @@ const Message: FC<MessageProps> = ({
   );
 };
 
-type ContainerProps = NoticationContainerProps<{}>;
+type ContainerProps = NoticationContainerProps;
 
 const MessageContainerRoot = styled('div')(() => {
   return {
@@ -94,7 +89,7 @@ const Demo = () => {
   const countRef = useRef(0);
 
   const handleClick = useCallback(() => {
-    message.open({ content: `message ${countRef.current++}` });
+    void message.open({ content: `message ${countRef.current++}` });
   }, [message]);
 
   return (

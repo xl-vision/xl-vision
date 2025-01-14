@@ -13,23 +13,23 @@ const Root = styled('div')(() => {
 
 const Demo = () => {
   const handleInfo = useCallback(() => {
-    Message.info('hello world');
+    void Message.info('hello world');
   }, []);
 
   const handleWarning = useCallback(() => {
-    Message.warning('hello world');
+    void Message.warning('hello world');
   }, []);
 
   const handleError = useCallback(() => {
-    Message.error('hello world');
+    void Message.error('hello world');
   }, []);
 
   const handleSuccess = useCallback(() => {
-    Message.success('hello world');
+    void Message.success('hello world');
   }, []);
 
   const handleLoading = useCallback(() => {
-    Message.loading('hello world').then(() => Message.info('successful'));
+    void Message.loading('hello world').then(() => Message.info('successful'));
   }, []);
 
   return (

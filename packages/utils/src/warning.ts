@@ -23,5 +23,5 @@ const printWarning = (format: string, args: Array<string>) => {
     // to find the callsite that caused this warning to fire.
     throw new Error(message);
     // eslint-disable-next-line no-empty
-  } catch (x) {}
+  } catch {}
 };

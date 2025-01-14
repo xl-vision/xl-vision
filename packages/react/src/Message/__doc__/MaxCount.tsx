@@ -15,7 +15,7 @@ const Demo = () => {
   const [message, holder] = Message.useMessage({ maxCount: 3 });
 
   const handleInfo = useCallback(() => {
-    message.info({
+    void message.info({
       content: 'hello world',
     });
   }, [message]);

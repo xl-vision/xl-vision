@@ -4,18 +4,14 @@ export const getRouteByName = (
   routes: Array<RouteType>,
   currentName: string,
 ): LeftRoute | undefined => {
-  for (let i = 0; i < routes.length; i++) {
-    const route = routes[i];
-
+  for (const route of routes) {
     if ('children' in route) {
       const v = getRouteByName(route.children, currentName);
       if (v) {
         return v;
       }
-    } else if ('name' in route) {
-      if (route.name === currentName) {
-        return route;
-      }
+    } else if ('name' in route && route.name === currentName) {
+      return route;
     }
   }
 };

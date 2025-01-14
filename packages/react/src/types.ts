@@ -7,7 +7,8 @@ export type DeepPartial<T> = T extends
   | undefined
   | symbol
   | Date
-  | ((...v: any) => any)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  | ((...v: any) => unknown)
   ? T | undefined
   : // Arrays, Sets and Maps and their readonly counterparts have their items made
     // deeply partial, but their own instances are left untouched

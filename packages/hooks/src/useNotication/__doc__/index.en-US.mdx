@@ -21,14 +21,14 @@ Based on this hook, it is very convenient to use `notification.open` to call out
 ### Container component
 
 ```ts
-export type NoticationContainerProps<NCP> = NCP & {
+export type NoticationContainerProps = {
   children: ReactNode;
 };
 
-export type NoticationContainerType<NCP> =
-  | ComponentType<NoticationContainerProps<NCP>>
+export type NoticationContainerType<NCP extends NoticationContainerProps> =
+  | ComponentType<NCP>
   | string
-  | ReactFragment;
+  | ExoticComponent;
 ```
 
 Container components are used to contain content.
@@ -38,37 +38,41 @@ It can be an html element such as `div`, or it can be `React Component` or `Frag
 ### Content component
 
 ```ts
-export type NoticationProps<P> = P & {
-  open?: boolean;
-  defaultOpen?: boolean;
-  // 关闭（动画结束）后回调，需要组件回调
+export type NoticationProps = {
+  open: boolean;
+  onOpenChange: (value: boolean) => void;
   onAfterClosed?: () => void;
 };
 ```
 
-Content component, with three parameters of `open`, `defaultOpen` and `onAfterClosed` by default
+Content component, with three parameters of `open`, `onOpenChange` and `onAfterClosed` by default
 
 ### useNotication
 
 ```ts
-export type NoticationHookUpdate<P> = (
+export type NoticationHookProps<P extends NoticationProps> = Omit<P, 'open' | 'onOpenChange'>;
+
+export type NoticationHookUpdate<P extends NoticationProps> = (
   props:
     | Partial<NoticationHookProps<P>>
     | ((prev: NoticationHookProps<P>) => Partial<NoticationHookProps<P>>),
 ) => void;
 
-export type NoticationHookReturnType<P> = Promise<void> & {
+export type NoticationMethods<P extends NoticationProps> = {
   destroy: () => void;
   update: NoticationHookUpdate<P>;
   isDestroyed: () => boolean;
 };
 
-export type NoticationOptions<NCP> = Omit<NoticationContainerProps<NCP>, 'children'> & {
+export type NoticationHookReturnType<P extends NoticationProps> = Promise<NoticationMethods<P>> &
+  NoticationMethods<P>;
+
+export type NoticationOptions<NCP extends NoticationContainerProps> = Omit<NCP, 'children'> & {
   maxCount?: number;
 };
 
-const useNotication = <P, NCP>(
-  Notication: ComponentType<NoticationProps<P>>,
+const useNotication = <P extends NoticationProps, NCP extends NoticationContainerProps>(
+  Notication: ComponentType<P>,
   NoticationContainer: NoticationContainerType<NCP>,
   options: NoticationOptions<NCP>,
 ) => [

@@ -91,6 +91,7 @@ const BaseButtonRoot = styled('button', {
     },
   };
   // fix type warning
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 }) as unknown as ComponentType<any>;
 
 const BaseButtonInner = styled('span', {
@@ -139,10 +140,8 @@ const BaseButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseButtonP
 
     // 按钮切换到loading或者disabled时，强制触发stop
     useEffect(() => {
-      if (loading || disabled) {
-        if (rippleRef.current) {
-          rippleRef.current.stop();
-        }
+      if ((loading || disabled) && rippleRef.current) {
+        rippleRef.current.stop();
       }
     }, [loading, disabled]);
 
@@ -174,17 +173,17 @@ const BaseButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseButtonP
     const handleTouchMove = useRippleHandler('stop', onTouchMove);
     const handleBlur = useRippleHandler('stop', onBlur, false);
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handleFocus = useConstantFn((e: FocusEvent<any>) => {
       onFocus?.(e);
       setTimeout(() => {
-        if (shouldEnableRipple && rippleRef.current) {
-          if (!isRippleRef.current) {
-            rippleRef.current.start({ pulsate: true });
-          }
+        if (shouldEnableRipple && rippleRef.current && !isRippleRef.current) {
+          rippleRef.current.start({ pulsate: true });
         }
       });
     });
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handleKeyDown: KeyboardEventHandler<any> = useConstantFn((e) => {
       if (rippleRef.current && !isKeyDownRef.current && e.key === ' ') {
         isKeyDownRef.current = true;
@@ -193,6 +192,7 @@ const BaseButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseButtonP
 
       onKeyDown?.(e);
     });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handleKeyUp: KeyboardEventHandler<any> = useConstantFn((e) => {
       if (rippleRef.current && isKeyDownRef.current && e.key === ' ') {
         isKeyDownRef.current = false;
@@ -201,6 +201,7 @@ const BaseButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, BaseButtonP
       onKeyUp?.(e);
     });
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handleClick: MouseEventHandler<any> = useConstantFn((e) => {
       if (loading || disabled) {
         e.preventDefault();

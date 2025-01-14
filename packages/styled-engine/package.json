@@ -38,20 +38,18 @@
     "prop-types": "^15.8.1"
   },
   "devDependencies": {
-    "@types/prop-types": "^15.7.12"
+    "@types/prop-types": "^15.7.14"
   },
   "peerDependencies": {
     "@babel/runtime": "^7.15.4",
     "@types/react": ">=18.0.0",
-    "@types/styled-components": "^5.1.26",
     "react": ">=18.0.0",
-    "styled-components": ">=6.0.0"
+    "@emotion/styled": ">=10.0.0",
+    "@emotion/react": ">=10.0.0",
+    "@emotion/cache": ">=10.0.0"
   },
   "peerDependenciesMeta": {
     "@types/react": {
-      "optional": true
-    },
-    "@types/styled-components": {
       "optional": true
     }
   },

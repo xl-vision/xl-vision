@@ -14,19 +14,24 @@ const Root = styled('div')(() => {
 const Demo = () => {
   const handleClick = useCallback(() => {
     let i = 5;
-    const { destroy, update, isDestroyed } = Message.open({
+    const message = Message.open({
       content: `This message will close after ${i}s.`,
       duration: 0,
     });
 
+    void message.then(() => Message.info('close successfully!'));
+
     const timer = setInterval(() => {
+      if (message.isDestroyed()) {
+        return;
+      }
       i--;
 
       if (i <= 0) {
-        destroy();
+        message.destroy();
         clearInterval(timer);
-      } else if (!isDestroyed()) {
-        update({ content: `This message will close after ${i}s.` });
+      } else {
+        message.update({ content: `This message will close after ${i}s.` });
       }
     }, 1000);
   }, []);

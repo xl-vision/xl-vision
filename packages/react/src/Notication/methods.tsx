@@ -1,3 +1,4 @@
+import { NoticationHookProps } from '@xl-vision/hooks';
 import { FC } from 'react';
 import Notication, { NoticationProps, NoticationType } from './Notication';
 import NoticationList, { NoticationContainerProps } from './NoticationContainer';
@@ -30,12 +31,15 @@ export type NoticationGlobalConfig = Partial<Omit<MethodNoticationContainerProps
 
 export const setGlobalConfig = (props: NoticationGlobalConfig) => setInnerGlobalConfig(props);
 
-export const method = (props: NoticationProps | string, type?: NoticationType) => {
+export const method = (
+  props: NoticationHookProps<NoticationProps> | string,
+  type?: NoticationType,
+) => {
   setInnerGlobalConfig({
     zIndex: increaseZindex(),
   });
 
-  const parsedProps: NoticationProps =
+  const parsedProps: NoticationHookProps<NoticationProps> =
     typeof props === 'string' ? { message: props } : { ...props };
 
   if (type) {
@@ -45,9 +49,13 @@ export const method = (props: NoticationProps | string, type?: NoticationType) =
   return innerOpen(parsedProps);
 };
 
-export const open = (props: NoticationProps) => method(props);
-export const info = (props: Omit<NoticationProps, 'type'> | string) => method(props, 'info');
-export const warning = (props: Omit<NoticationProps, 'type'> | string) => method(props, 'warning');
-export const error = (props: Omit<NoticationProps, 'type'> | string) => method(props, 'error');
-export const success = (props: Omit<NoticationProps, 'type'> | string) => method(props, 'success');
+export const open = (props: NoticationHookProps<NoticationProps>) => method(props);
+export const info = (props: Omit<NoticationHookProps<NoticationProps>, 'type'> | string) =>
+  method(props, 'info');
+export const warning = (props: Omit<NoticationHookProps<NoticationProps>, 'type'> | string) =>
+  method(props, 'warning');
+export const error = (props: Omit<NoticationHookProps<NoticationProps>, 'type'> | string) =>
+  method(props, 'error');
+export const success = (props: Omit<NoticationHookProps<NoticationProps>, 'type'> | string) =>
+  method(props, 'success');
 export { destroyAll };

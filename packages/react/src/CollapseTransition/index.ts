@@ -1,4 +1,3 @@
-import CollapseTransition from './CollapseTransition';
-
-export default CollapseTransition;
 export * from './CollapseTransition';
+
+export { default } from './CollapseTransition';

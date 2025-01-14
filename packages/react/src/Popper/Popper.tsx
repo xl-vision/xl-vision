@@ -24,7 +24,7 @@ import {
   ArrowOptions,
   PopperMode,
 } from '@xl-vision/usePopper';
-import { isProduction, isServer, oneOf } from '@xl-vision/utils';
+import { isProduction, isServer } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes, { Validator } from 'prop-types';
 import {
@@ -46,6 +46,7 @@ import {
 import Portal, { PortalContainerType } from '../Portal';
 import { useTheme } from '../ThemeProvider';
 import Transition from '../Transition';
+import { getNodeRef } from '../utils/ref';
 import { increaseZindex } from '../utils/zIndexManger';
 
 export type PopperTrigger = 'hover' | 'focus' | 'click' | 'contextMenu';
@@ -53,13 +54,13 @@ export type PopperTrigger = 'hover' | 'focus' | 'click' | 'contextMenu';
 export type PopperPlacement = Placement;
 
 export type PopperChildrenProps = {
-  onClick?: MouseEventHandler<any>;
-  onMouseEnter?: MouseEventHandler<any>;
-  onMouseLeave?: MouseEventHandler<any>;
-  onFocus?: MouseEventHandler<any>;
-  onBlur?: MouseEventHandler<any>;
-  onContextMenu?: MouseEventHandler<any>;
-  ref?: Ref<any>;
+  onClick?: MouseEventHandler<unknown>;
+  onMouseEnter?: MouseEventHandler<unknown>;
+  onMouseLeave?: MouseEventHandler<unknown>;
+  onFocus?: MouseEventHandler<unknown>;
+  onBlur?: MouseEventHandler<unknown>;
+  onContextMenu?: MouseEventHandler<unknown>;
+  ref?: Ref<unknown>;
 };
 
 export type PopperProps = HTMLAttributes<HTMLDivElement> & {
@@ -128,7 +129,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
 
   const transitionClassNameObject = useMemo(() => {
     if (!transitionClassName) {
-      return undefined;
+      return;
     }
     const ret: Required<CssTransitionClassNameRecord> = {
       appearActive: `${transitionClassName}-enter-active`,
@@ -190,26 +191,26 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
 
   const { getPopperProps, getReferenceProps } = useInteraction(
     useHover(context, {
-      skip: !oneOf(triggers, 'hover'),
+      skip: !triggers.includes('hover'),
       ...hoverOptions,
     }),
     useClick(context, {
-      skip: !oneOf(triggers, 'click'),
+      skip: !triggers.includes('click'),
       ...clickOptions,
     }),
     useFocus(context, {
-      skip: !oneOf(triggers, 'focus'),
+      skip: !triggers.includes('focus'),
       ...focusOptions,
     }),
     useContextMenu(context, {
-      skip: !oneOf(triggers, 'contextMenu'),
+      skip: !triggers.includes('contextMenu'),
       ...contextMenuOptions,
     }),
   );
 
   const forkPopperRef = useForkRef(ref, getPopper);
 
-  const forkReferenceRef = useForkRef((child as { ref?: Ref<unknown> }).ref, reference);
+  const forkReferenceRef = useForkRef(getNodeRef(child), reference);
 
   useEffect(() => {
     if (open) {
@@ -223,14 +224,22 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
 
   const side = placement.split('-')[0] as Side;
 
-  if (side === 'top') {
-    originY = '100%';
-  } else if (side === 'bottom') {
-    originY = 0;
-  } else if (side === 'left') {
-    originX = '100%';
-  } else {
-    originX = 0;
+  switch (side) {
+    case 'top': {
+      originY = '100%';
+      break;
+    }
+    case 'bottom': {
+      originY = 0;
+      break;
+    }
+    case 'left': {
+      originX = '100%';
+      break;
+    }
+    default: {
+      originX = 0;
+    }
   }
 
   const arrowNode = arrowProp && (
@@ -344,7 +353,7 @@ if (!isProduction) {
     popup: PropTypes.element.isRequired,
     arrow: PropTypes.node,
     arrowOptions: PropTypes.shape({}),
-    autoPlacementOptions: PropTypes.oneOfType([PropTypes.object, PropTypes.bool as any]),
+    autoPlacementOptions: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
     autoUpdateOptions: PropTypes.shape({}),
     className: PropTypes.string,
     clickOptions: PropTypes.shape({}),
@@ -374,7 +383,7 @@ if (!isProduction) {
       PropTypes.string,
       isServer ? PropTypes.any : PropTypes.instanceOf(Element),
     ]),
-    shiftOptions: PropTypes.oneOfType([PropTypes.object, PropTypes.bool as any]),
+    shiftOptions: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
     transitionClassName: PropTypes.string,
     trigger: PropTypes.oneOfType([
       triggerPropType,

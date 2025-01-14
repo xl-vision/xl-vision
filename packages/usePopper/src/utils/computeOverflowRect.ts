@@ -6,7 +6,6 @@ import {
   getWindow,
   isElement,
   isHTMLElement,
-  oneOf,
 } from '@xl-vision/utils';
 import getOverflowAncestors from './getOverflowAncestors';
 import { MiddlewareContext, OverflowOptions, OverflowRect, RootBoundary } from '../types';
@@ -16,7 +15,7 @@ export type Options = OverflowOptions & {
   target?: 'reference' | 'popper';
 };
 
-export default ({
+const computeOverflowRect = ({
   boundary = 'clippingAncestors',
   rootBoundary = 'viewport',
   padding = 0,
@@ -111,11 +110,12 @@ export default ({
     right: rect.x + rect.width - clipRect.right + paddingObject.right,
   };
 };
+export default computeOverflowRect;
 
 const getFiltedOverflowAncestors = (element: Element): Array<Element> => {
   const ancestors = getOverflowAncestors(element);
 
-  const canSkip = oneOf(['absolue', 'fixed'], getComputedStyle(element).position);
+  const canSkip = ['absolue', 'fixed'].includes(getComputedStyle(element).position);
 
   if (!canSkip || !isHTMLElement(element)) {
     return ancestors;

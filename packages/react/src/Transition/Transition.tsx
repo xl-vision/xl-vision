@@ -1,20 +1,11 @@
 import { CssTransitionOptions, useCssTransition, useForkRef } from '@xl-vision/hooks';
 import { isProduction, warning } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
-import {
-  ReactElement,
-  FC,
-  Children,
-  isValidElement,
-  ReactInstance,
-  Ref,
-  useRef,
-  cloneElement,
-} from 'react';
-import { supportRef } from '../utils/ref';
+import { ReactElement, FC, Children, useRef, cloneElement } from 'react';
+import { getNodeRef, supportRef } from '../utils/ref';
 
 export type TransitionProps = CssTransitionOptions & {
-  children: ReactElement | ((show: boolean) => ReactElement);
+  children: ReactElement<unknown> | ((show: boolean) => ReactElement<unknown>);
   mountOnEnter?: boolean;
   unmountOnExit?: boolean;
 };
@@ -33,10 +24,7 @@ const Transition: FC<TransitionProps> = (props) => {
 
   warning(!supportRef(child), '<%s>: child does not support ref', displayName);
 
-  const forkRef = useForkRef(
-    isValidElement<ReactInstance>(child) ? (child as { ref?: Ref<unknown> }).ref : null,
-    nodeRef,
-  );
+  const forkRef = useForkRef(getNodeRef(child), nodeRef);
 
   // 判断是否是第一次挂载
   const isFirstMountRef = useRef(true);
@@ -51,7 +39,7 @@ const Transition: FC<TransitionProps> = (props) => {
   }
   isFirstMountRef.current = false;
 
-  return cloneElement(child, {
+  return cloneElement(child as ReactElement<{ ref?: typeof forkRef }>, {
     ref: forkRef,
   });
 };

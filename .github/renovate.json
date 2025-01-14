@@ -1,8 +1,10 @@
 {
-  "extends": ["config:base", "schedule:weekly"],
+  "extends": ["config:recommended", "schedule:weekly"],
   "labels": ["dependencies"],
   "ignorePaths": [],
-  "pin": true,
+  "pin": {
+    "enabled": true
+  },
   "rangeStrategy": "bump",
   "prConcurrentLimit": 5,
   "packageRules": [
@@ -18,6 +20,9 @@
         "@types/react-dom",
         "csstype",
         "styled-components",
+        "@emotion/react",
+        "@emotion/styled",
+        "@emotion/cache",
         "node",
         "@types/node",
         "pnpm"
@@ -26,7 +31,7 @@
     },
     {
       "matchDatasources": ["npm"],
-      "stabilityDays": 3
+      "minimumReleaseAge": "3 days"
     }
   ],
   "ignoreDeps": []

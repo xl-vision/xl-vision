@@ -2,16 +2,16 @@ import { useCallback, useEffect, useState } from 'react';
 import { ErrorMap } from './FormStore';
 import { Form } from './useForm';
 
-function useWatchErrors<T extends Record<string, any>, K extends keyof T>(o: {
+function useWatchErrors<T extends Record<string, unknown>, K extends keyof T>(o: {
   form: Form<T>;
   field: K;
 }): ErrorMap;
 
-function useWatchErrors<T extends Record<string, any>>(o: {
+function useWatchErrors<T extends Record<string, unknown>>(o: {
   form: Form<T>;
 }): Partial<Record<keyof T, ErrorMap>>;
 
-function useWatchErrors<T extends Record<string, any>, K extends keyof T>({
+function useWatchErrors<T extends Record<string, unknown>, K extends keyof T>({
   form,
   field,
 }: {
@@ -20,12 +20,11 @@ function useWatchErrors<T extends Record<string, any>, K extends keyof T>({
 }) {
   const { store } = form;
 
-  const [errors, setErrors] = useState<ErrorMap | Partial<Record<keyof T, ErrorMap>>>(() =>
-    store.getErrors(field as any),
+  const [errors, setErrors] = useState<ErrorMap | undefined | Partial<Record<keyof T, ErrorMap>>>(
+    () => store.getErrors(field as keyof T),
   );
 
-  const listener = useCallback((e: any) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+  const listener = useCallback((e: ErrorMap | undefined | Partial<Record<keyof T, ErrorMap>>) => {
     setErrors(e);
   }, []);
 

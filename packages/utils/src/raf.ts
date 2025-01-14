@@ -1,7 +1,7 @@
 import { isServer } from './env';
 import noop from './noop';
 
-export default (fn: () => void) => {
+const raf = (fn: () => void) => {
   if (isServer) {
     fn();
     return noop;
@@ -23,3 +23,5 @@ export default (fn: () => void) => {
     id = undefined;
   };
 };
+
+export default raf;

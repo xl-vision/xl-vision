@@ -2,10 +2,9 @@ import { ResizeObserverHandler } from '@xl-vision/hooks';
 import { isProduction } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { ReactNode, FC, Children, isValidElement } from 'react';
-
 import SingleResizeObserver from './SingleResizeObserver';
 
-export type { ResizeObserverHandler };
+export { type ResizeObserverHandler } from '@xl-vision/hooks';
 
 export type ResizeObserverProps = {
   children: ReactNode;

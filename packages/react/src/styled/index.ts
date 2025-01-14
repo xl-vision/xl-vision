@@ -1,3 +1,1 @@
-import { styled } from '../styles';
-
-export default styled;
+export { styled as default } from '../styles';

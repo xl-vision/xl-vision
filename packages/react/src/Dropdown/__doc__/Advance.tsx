@@ -5,11 +5,11 @@ import { Button, Dropdown, Tooltip, TooltipProps } from '@xl-vision/react';
 
 export type WrapperProps = {
   tooltipProps: Omit<TooltipProps, 'children'>;
-  children: ReactElement;
+  children: ReactElement<any>;
   [key: string]: any;
 };
 
-const Wrapper = forwardRef<unknown, WrapperProps>((props, ref) => {
+const Wrapper = forwardRef<typeof Tooltip, WrapperProps>((props, ref) => {
   const { tooltipProps, children, ...others } = props;
 
   return <Tooltip {...tooltipProps}>{cloneElement(children, { ...others, ref })}</Tooltip>;

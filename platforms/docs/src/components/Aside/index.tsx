@@ -2,7 +2,16 @@ import { styled } from '@xl-vision/react';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { FC, Children, cloneElement, HTMLAttributes, forwardRef, useMemo } from 'react';
+import {
+  FC,
+  Children,
+  cloneElement,
+  HTMLAttributes,
+  forwardRef,
+  useMemo,
+  JSX,
+  ReactElement,
+} from 'react';
 import useLocale from '@docs/hooks/useLocale';
 import { Lang, defaultLang } from '@docs/locales';
 import { join } from '@docs/utils/link';
@@ -50,25 +59,21 @@ const StyledLink = styled(Link)(({ theme }) => {
   };
 });
 
-const ActiveLink: FC<Record<any, any>> = (props) => {
+const ActiveLink: typeof StyledLink = (props) => {
   const { children, href, ...others } = props;
   const pathname = usePathname();
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const child = Children.only(children);
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
-  const classes = clsx(child.className, {
+  const classes = clsx((child as { className?: string }).className, {
     active: (href as string).replace(/\/$/, '') === pathname,
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-  const newChild = cloneElement(child, {
+  const newChild = cloneElement(child as ReactElement<{ className?: string }>, {
     className: classes,
   });
 
   return (
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     <StyledLink {...others} href={href}>
       {newChild}
     </StyledLink>
@@ -115,10 +120,7 @@ const traverseRoutes = (
         </ActiveLink>
       );
     }
-    routeElements.push(
-      // eslint-disable-next-line react/no-array-index-key
-      <li key={index}>{el}</li>,
-    );
+    routeElements.push(<li key={index}>{el}</li>);
   });
 
   return <NodeWrapper>{routeElements}</NodeWrapper>;

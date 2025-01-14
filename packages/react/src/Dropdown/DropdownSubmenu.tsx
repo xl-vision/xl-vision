@@ -148,7 +148,7 @@ const DropdownSubmenu = forwardRef<HTMLDivElement, DropdownSubmenuProps>((props,
     submenuCloseHandlers.push(closeHandler);
     return () => {
       const index = submenuCloseHandlers.indexOf(closeHandler);
-      if (index > -1) {
+      if (index !== -1) {
         submenuCloseHandlers.splice(index, 1);
       }
     };

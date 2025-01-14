@@ -7,7 +7,7 @@ describe('usePrevious', () => {
       initialProps: 1,
     });
 
-    expect(result.current).toBe(undefined);
+    expect(result.current).toBe(null);
 
     rerender(2);
     expect(result.current).toBe(1);

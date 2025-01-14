@@ -2,12 +2,12 @@ import { isProduction, isServer } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { ReactNode, FC } from 'react';
 import { createPortal } from 'react-dom';
-import getContainer, { ContainerReturnType, ContainerType } from '../utils/getContainer';
+import getContainer, { ContainerType } from '../utils/getContainer';
 
-export type {
-  ContainerType as PortalContainerType,
-  ContainerReturnType as PortalContainerReturnType,
-};
+export {
+  type ContainerReturnType as PortalContainerReturnType,
+  type ContainerType as PortalContainerType,
+} from '../utils/getContainer';
 
 export interface PortalProp {
   children?: ReactNode;

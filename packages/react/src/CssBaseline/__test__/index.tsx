@@ -9,7 +9,7 @@ describe('CssBaseline', () => {
       </CssBaseline>,
     );
 
-    // TODO [2024-07-01] render css
+    // TODO [2025-07-01] render css
     expect(document.head).toMatchSnapshot();
   });
 
@@ -36,7 +36,7 @@ describe('CssBaseline', () => {
       </ThemeProvider>,
     );
 
-    // TODO [2024-07-01] render css
+    // TODO [2025-07-01] render css
     expect(document.head).toMatchSnapshot();
   });
 });

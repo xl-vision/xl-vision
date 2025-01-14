@@ -11,7 +11,9 @@ export const generateStaticParams = () => {
 
 export const generateMetadata = createGenerateMetadata(hookRoutes);
 
-const Page: FC<{ params: { name: string; lang: Lang } }> = ({ params: { name, lang } }) => {
+const Page: FC<{ params: Promise<{ name: string; lang: Lang }> }> = async ({ params }) => {
+  const { name, lang } = await params;
+
   return <Docs lang={lang} name={name} routes={hookRoutes} />;
 };
 

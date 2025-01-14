@@ -1,7 +1,6 @@
 import { act } from '@testing-library/react';
 import { awaitPromise } from './promise';
 
-// eslint-disable-next-line import/prefer-default-export
 export const triggerTransitionEnd = async () => {
   await act(async () => {
     await awaitPromise();
