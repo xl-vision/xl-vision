@@ -1,22 +1,31 @@
-import { padEnd, repeat } from '@xl-vision/utils';
+import { padEnd, repeat } from './string';
 
 export type ValueType = string | number | bigint | BigIntDecimal;
+
+/**
+ * +1.0
+ * -11e-1
+ * -11E+1
+ * -100.1e-1
+ * -0.1e-1
+ */
+const NUMBER_REGEX = /^[+-]?([1-9]\d+)|\d(\.\d+)?([Ee][+-]?\d+)?$/;
 
 export default class BigIntDecimal {
   private origin: string;
 
-  private _isNaN = false;
+  private nan = false;
 
-  private _integer = '';
+  private integer = '';
 
-  private _multiple = 0;
+  private multiple = 0;
 
   constructor(value: ValueType) {
     if (value instanceof BigIntDecimal) {
       this.origin = value.origin;
-      this._isNaN = value._isNaN;
-      this._integer = value._integer;
-      this._multiple = value._multiple;
+      this.nan = value.nan;
+      this.integer = value.integer;
+      this.multiple = value.multiple;
       return;
     }
 
@@ -24,10 +33,13 @@ export default class BigIntDecimal {
 
     this.origin = str;
 
-    if (!str || Number.isNaN(+str)) {
-      this._isNaN = true;
+    if (!NUMBER_REGEX.test(str) || Number.isNaN(Number(str))) {
+      this.nan = true;
       return;
     }
+
+    // 去除前面的+号
+    str = str.replace(/^\+/, '');
 
     const isE = str.includes('e');
 
@@ -36,10 +48,13 @@ export default class BigIntDecimal {
       str = this.handleScientificNotation(numStr, +suffix);
     }
 
-    const [integer, decimal = ''] = this.origin.split('.');
+    const [integer, decimal = ''] = str.split('.');
 
-    this._multiple = decimal.length;
-    this._integer = integer + decimal;
+    // 小数后面的0都去掉
+    const formatDecimal = decimal.replace(/0+$/, '');
+
+    this.multiple = formatDecimal.length;
+    this.integer = integer + formatDecimal;
   }
 
   private handleScientificNotation(numStr: string, exponent: number): string {
@@ -68,33 +83,33 @@ export default class BigIntDecimal {
   }
 
   isNaN() {
-    return this._isNaN;
+    return this.nan;
   }
 
   toString() {
-    if (this._isNaN) {
+    if (this.nan) {
       return 'NaN';
     }
-    if (this._multiple === 0) {
-      return this._integer;
+    if (this.multiple === 0) {
+      return this.integer;
     }
-    const integerPart = this._integer.slice(0, -this._multiple) || '0';
-    const decimalPart = this._integer.slice(-this._multiple);
+    const integerPart = this.integer.slice(0, -this.multiple) || '0';
+    const decimalPart = this.integer.slice(-this.multiple);
     return `${integerPart}.${decimalPart}`;
   }
 
   add(value: ValueType) {
     const v2 = toBigIntDecimal(value);
 
-    if (this.isNaN() || v2.isNaN()) {
+    if (this.nan || v2.nan) {
       return new BigIntDecimal(NaN);
     }
 
-    const maxMultiple = Math.max(this._multiple, v2._multiple);
+    const maxMultiple = Math.max(this.multiple, v2.multiple);
 
     const newBigInt =
-      BigInt(padEnd(this._integer, maxMultiple - this._multiple, '0')) +
-      BigInt(padEnd(v2._integer, maxMultiple - v2._multiple, '0'));
+      BigInt(padEnd(this.integer, maxMultiple - this.multiple, '0')) +
+      BigInt(padEnd(v2.integer, maxMultiple - v2.multiple, '0'));
 
     return this.createFromBigInt(newBigInt, maxMultiple);
   }
@@ -102,15 +117,15 @@ export default class BigIntDecimal {
   subtract(value: ValueType) {
     const v2 = toBigIntDecimal(value);
 
-    if (this.isNaN() || v2.isNaN()) {
+    if (this.nan || v2.nan) {
       return new BigIntDecimal(NaN);
     }
 
-    const maxMultiple = Math.max(this._multiple, v2._multiple);
+    const maxMultiple = Math.max(this.multiple, v2.multiple);
 
     const newBigInt =
-      BigInt(padEnd(this._integer, maxMultiple - this._multiple, '0')) -
-      BigInt(padEnd(v2._integer, maxMultiple - v2._multiple, '0'));
+      BigInt(padEnd(this.integer, maxMultiple - this.multiple, '0')) -
+      BigInt(padEnd(v2.integer, maxMultiple - v2.multiple, '0'));
 
     return this.createFromBigInt(newBigInt, maxMultiple);
   }
@@ -118,12 +133,12 @@ export default class BigIntDecimal {
   multiply(value: ValueType) {
     const v2 = toBigIntDecimal(value);
 
-    if (this.isNaN() || v2.isNaN()) {
+    if (this.nan || v2.nan) {
       return new BigIntDecimal(NaN);
     }
 
-    const newMultiple = this._multiple + v2._multiple;
-    const newBigInt = BigInt(this._integer) * BigInt(v2._integer);
+    const newMultiple = this.multiple + v2.multiple;
+    const newBigInt = BigInt(this.integer) * BigInt(v2.integer);
 
     return this.createFromBigInt(newBigInt, newMultiple);
   }
@@ -131,27 +146,27 @@ export default class BigIntDecimal {
   divide(value: ValueType, precision: number = 10) {
     const v2 = toBigIntDecimal(value);
 
-    if (this.isNaN() || v2.isNaN() || v2._integer === '0') {
+    if (this.nan || v2.nan || v2.integer === '0') {
       return new BigIntDecimal(NaN);
     }
 
     const multiplier = BigInt('1' + repeat('0', precision));
-    const dividend = BigInt(this._integer) * multiplier;
-    const divisor = BigInt(v2._integer);
+    const dividend = BigInt(this.integer) * multiplier;
+    const divisor = BigInt(v2.integer);
 
     const resultBigInt = dividend / divisor;
-    const newMultiple = precision + this._multiple - v2._multiple;
+    const newMultiple = precision + this.multiple - v2.multiple;
 
     return this.createFromBigInt(resultBigInt, newMultiple);
   }
 
   toFixed(precision: number): string {
-    if (this.isNaN()) {
+    if (this.nan) {
       return 'NaN';
     }
 
-    const integerPart = this._integer.slice(0, -this._multiple) || '0';
-    let decimalPart = this._integer.slice(-this._multiple);
+    const integerPart = this.integer.slice(0, -this.multiple) || '0';
+    let decimalPart = this.integer.slice(-this.multiple);
 
     decimalPart = padEnd(decimalPart, precision, '0');
     decimalPart = decimalPart.slice(0, precision);
