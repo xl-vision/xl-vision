@@ -95,7 +95,15 @@ const useForm = <T extends Record<string, unknown>>({
 
     const { name } = el;
 
-    el.value = (formStore.getValue(name as keyof T) as string | undefined) || '';
+    const value = formStore.getValue(name as keyof T);
+
+    const isCheckBox = isCheckBoxInput(el);
+
+    if (isCheckBox) {
+      el.checked = !!value;
+    } else {
+      el.value = (value || '') as string;
+    }
   });
 
   const getValue = useCallback<typeof formStore.getValue>(

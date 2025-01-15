@@ -1,3 +1,3 @@
-const isCheckBoxInput = (element: unknown): element is HTMLInputElement =>
+const isCheckBoxInput = (element: unknown): boolean =>
   element instanceof HTMLInputElement && element.type === 'checkbox';
 export default isCheckBoxInput;

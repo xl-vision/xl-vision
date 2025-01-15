@@ -1,6 +1,6 @@
 import { useConstantFn, useValueChange } from '@xl-vision/hooks';
 import { CaretDownOutlined, CaretUpOutlined } from '@xl-vision/icons';
-import { isProduction, omit } from '@xl-vision/utils';
+import { BigIntDecimal, isProduction, omit } from '@xl-vision/utils';
 import { forwardRef, useState, FocusEventHandler, useEffect } from 'react';
 import { Input, InputProps } from '../Input';
 import { styled } from '../styles';
@@ -21,13 +21,13 @@ export type InputNumberProps = Omit<
   onChange?: (value: InputNumberValueType) => void;
   value?: InputNumberValueType;
   defaultValue?: InputNumberValueType;
-  min?: number;
-  max?: number;
+  min?: number | string;
+  max?: number | string;
   parser?: (value: string) => InputNumberValueType;
   formatter?: (value: InputNumberValueType) => string;
   step?: number;
   precision?: number;
-  stringMode?: boolean;
+  highPrecisionMode?: boolean;
 };
 
 const displayName = 'InputNumber';
@@ -106,6 +106,7 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
     precision,
     readOnly,
     disabled,
+    highPrecisionMode,
     ...others
   } = omit(
     props as InputProps,
@@ -117,77 +118,90 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
 
   const [value, setValue] = useValueChange(defaultValue, valueProp, onChange);
 
-  const [internalValue, setInternalValue] = useState('');
+  const [internalValue, setInternalValue] = useState<number | BigIntDecimal | null>(null);
 
-  const handleFormatter = useConstantFn((v: InputNumberValueType) => {
-    if (formatter) {
-      return formatter(v);
-    }
-    if (v === null) {
-      return '';
-    }
-
-    if (precision) {
-      return v.toFixed(precision);
-    }
-
-    return String(v);
-  });
-
-  const defaultParser = useConstantFn((str: string) => {
-    const trimedValue = str.trim();
-    if (!trimedValue) {
+  const defaultParser = useConstantFn((newValue: InputNumberValueType) => {
+    if (newValue === null) {
       return null;
     }
-    if (NUMBER_REGEX.test(trimedValue)) {
-      return Number(trimedValue);
+    if (!highPrecisionMode) {
+      return +newValue;
     }
-    return value;
+    return new BigIntDecimal(newValue);
   });
 
   const handleParser = useConstantFn((str: string) => {
     if (parser) {
       const parseredValue = parser(str);
 
-      if (typeof parseredValue === 'string') {
-        return defaultParser(parseredValue);
-      }
-
-      if (parseredValue !== null && typeof parseredValue !== 'number') {
-        return value;
-      }
-      return parseredValue;
+      return defaultParser(parseredValue);
     }
 
-    const v = defaultParser(str);
-
-    if (v === null) {
-      return v;
-    }
-
-    return v;
+    return defaultParser(str);
   });
 
-  const updateValue = useConstantFn((newValue: InputNumberValueType | string) => {
-    let v = typeof newValue === 'string' ? handleParser(newValue) : newValue;
+  const handleFormatter = useConstantFn((v: InputNumberValueType) => {
+    if (formatter) {
+      return formatter(v);
+    }
+    return String(v);
+  });
 
-    if (v !== null && precision !== undefined) {
+  const updateValue = useConstantFn((newValue: string) => {
+    let v = handleParser(newValue);
+
+    if (v === null) {
+      setInternalValue(null);
+      setValue(null);
+      return;
+    }
+
+    if (v instanceof BigIntDecimal) {
+      if (precision) {
+        const magnification = 10 ** precision;
+
+        v = v.multiply(magnification).round().divide(magnification, precision);
+      }
+
+      if (max !== undefined && v.greaterThan(max)) {
+        v = internalValue;
+      } else if (min !== undefined && v.lessThan(min)) {
+        v = internalValue as BigIntDecimal;
+      }
+
+      setInternalValue(v);
+      setValue(v instanceof BigIntDecimal ? v.toString() : v);
+      return;
+    }
+
+    if (precision) {
       const magnification = 10 ** precision;
 
       v = Math.round(v * magnification) / magnification;
     }
 
-    if (v !== null) {
-      if (max !== undefined && v > max) {
-        v = value;
-      } else if (min !== undefined && v < min) {
-        v = value;
-      }
+    if (max !== undefined && v > +max) {
+      v = internalValue;
+    } else if (min !== undefined && v < +min) {
+      v = internalValue;
     }
 
-    setValue(v);
-    return v;
+    setInternalValue(v);
+    setValue(v instanceof BigIntDecimal ? v.toString() : v);
   });
+
+  useEffect(() => {
+    setInternalValue(defaultParser(value));
+  }, [value, defaultParser]);
+
+  const [displayValue, setDisplayValue] = useState<string>()
+
+
+
+
+
+
+
 
   useEffect(() => {
     setInternalValue(handleFormatter(value));
