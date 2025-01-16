@@ -14158,6 +14158,1433 @@ exports[`Demo renders packages/react/src/Input/__doc__/State.tsx correctly 1`] =
 </div>
 `;
 
+exports[`Demo renders packages/react/src/InputNumber/__doc__/Basic.tsx correctly 1`] = `
+.emotion-0 {
+  font-size: 1.000rem;
+  line-height: 1.5;
+  font-weight: 400;
+  letter-spacing: 0.031em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  width: 100%;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.emotion-0.xl-input--focused .xl-input-number__controls {
+  opacity: 1;
+}
+
+.emotion-0 .xl-input__suffix {
+  margin: -4px -10px -4px 0;
+}
+
+.emotion-1 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  border-radius: 4px;
+  border: 1px solid #d9d9d9;
+  width: 100%;
+  padding: 4px 10px;
+  color: #000000e0;
+  background-color: #fff;
+  -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+  font-size: inherit;
+}
+
+.emotion-1:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.emotion-1:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.emotion-1:hover {
+  border-color: #60a5fa;
+}
+
+.emotion-2 {
+  font-size: inherit;
+  line-height: 1.5;
+  font-weight: 400;
+  letter-spacing: 0.031em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  cursor: inherit;
+  touch-action: manipulation;
+  font-variant: tabular-nums;
+  display: inline-block;
+  min-width: 0;
+  width: 100%;
+  border: 0;
+  outline: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  color: #000000e0;
+  background-color: #fff;
+  -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.emotion-2::-moz-placeholder {
+  opacity: 1;
+}
+
+.emotion-2::-webkit-input-placeholder {
+  color: #00000061;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.emotion-2::-moz-placeholder {
+  color: #00000061;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.emotion-2:-ms-input-placeholder {
+  color: #00000061;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.emotion-2::placeholder {
+  color: #00000061;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.emotion-2:placeholder-shown {
+  text-overflow: ellipsis;
+}
+
+.emotion-3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-right: 4px;
+  margin-right: 0;
+  margin-left: 4px;
+}
+
+.emotion-3 .xl-input__suffix--has-suffix {
+  margin-right: 4px;
+}
+
+.emotion-3 .xl-input__suffix-count,
+.emotion-3 .xl-input__suffix-clear {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  line-height: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #00000061;
+}
+
+.emotion-3 .xl-input__suffix-clear {
+  cursor: pointer;
+  -webkit-transition: color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.emotion-3 .xl-input__suffix-clear:hover {
+  color: #000000a6;
+}
+
+.emotion-4 {
+  opacity: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  border-left: 1px solid #d9d9d9;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.emotion-5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 40%;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  font-size: 10px;
+  padding: 0 3px;
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.emotion-5:hover {
+  height: 60%;
+}
+
+.emotion-6 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentcolor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.emotion-7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 40%;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  font-size: 10px;
+  padding: 0 3px;
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  border-top: 1px solid #d9d9d9;
+}
+
+.emotion-7:hover {
+  height: 60%;
+}
+
+<div>
+  <span
+    class="xl-input xl-input--size-middle xl-input-number emotion-0"
+  >
+    <span
+      class="xl-input__wrapper emotion-1"
+    >
+      <input
+        class="xl-input__inner emotion-2"
+        type="text"
+        value=""
+      />
+      <span
+        class="xl-input__prefix xl-input__suffix emotion-3"
+      >
+        <span
+          class="xl-input-number__controls emotion-4"
+        >
+          <span
+            class="xl-input-number__control-up emotion-5"
+          >
+            <svg
+              class="xl-base-icon emotion-6"
+              viewBox="0 0 1024 1024"
+            >
+              <path
+                d="M858.9 689 530.5 308.2c-9.4-10.9-27.5-10.9-37 0L165.1 689c-12.2 14.2-1.2 35 18.5 35h656.8c19.7 0 30.7-20.8 18.5-35"
+              />
+            </svg>
+          </span>
+          <span
+            class="xl-input-number__control-up xl-input-number__control-down emotion-7"
+          >
+            <svg
+              class="xl-base-icon emotion-6"
+              viewBox="0 0 1024 1024"
+            >
+              <path
+                d="M840.4 300H183.6c-19.7 0-30.7 20.8-18.5 35l328.4 380.8c9.4 10.9 27.5 10.9 37 0L858.9 335c12.2-14.2 1.2-35-18.5-35"
+              />
+            </svg>
+          </span>
+        </span>
+      </span>
+    </span>
+  </span>
+</div>
+`;
+
+exports[`Demo renders packages/react/src/InputNumber/__doc__/Disable.tsx correctly 1`] = `
+.emotion-0 {
+  font-size: 1.000rem;
+  line-height: 1.5;
+  font-weight: 400;
+  letter-spacing: 0.031em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  width: 100%;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.emotion-0.xl-input--focused .xl-input-number__controls {
+  opacity: 1;
+}
+
+.emotion-0 .xl-input__suffix {
+  margin: -4px -10px -4px 0;
+}
+
+.emotion-1 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  border-radius: 4px;
+  border: 1px solid #d9d9d9;
+  width: 100%;
+  padding: 4px 10px;
+  color: #000000e0;
+  background-color: #fff;
+  -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+  font-size: inherit;
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.emotion-1:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.emotion-1:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.emotion-2 {
+  font-size: inherit;
+  line-height: 1.5;
+  font-weight: 400;
+  letter-spacing: 0.031em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  cursor: inherit;
+  touch-action: manipulation;
+  font-variant: tabular-nums;
+  display: inline-block;
+  min-width: 0;
+  width: 100%;
+  border: 0;
+  outline: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  color: #000000e0;
+  background-color: #fff;
+  -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.emotion-2::-moz-placeholder {
+  opacity: 1;
+}
+
+.emotion-2::-webkit-input-placeholder {
+  color: #00000061;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.emotion-2::-moz-placeholder {
+  color: #00000061;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.emotion-2:-ms-input-placeholder {
+  color: #00000061;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.emotion-2::placeholder {
+  color: #00000061;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.emotion-2:placeholder-shown {
+  text-overflow: ellipsis;
+}
+
+.emotion-3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-right: 4px;
+  margin-right: 0;
+  margin-left: 4px;
+}
+
+.emotion-3 .xl-input__suffix--has-suffix {
+  margin-right: 4px;
+}
+
+.emotion-3 .xl-input__suffix-count,
+.emotion-3 .xl-input__suffix-clear {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  line-height: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #00000061;
+}
+
+.emotion-3 .xl-input__suffix-clear {
+  cursor: pointer;
+  -webkit-transition: color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.emotion-3 .xl-input__suffix-clear:hover {
+  color: #000000a6;
+}
+
+.emotion-5 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  border-radius: 4px;
+  border: 1px solid #d9d9d9;
+  width: 100%;
+  padding: 4px 10px;
+  color: #000000e0;
+  background-color: #fff;
+  -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+  font-size: inherit;
+}
+
+.emotion-5:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.emotion-5:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+<div>
+  <span
+    class="xl-input xl-input--size-middle xl-input--disabled xl-input-number emotion-0"
+  >
+    <span
+      class="xl-input__wrapper emotion-1"
+    >
+      <input
+        aria-disabled="true"
+        class="xl-input__inner emotion-2"
+        disabled=""
+        type="text"
+        value="100"
+      />
+      <span
+        class="xl-input__prefix xl-input__suffix emotion-3"
+      />
+    </span>
+  </span>
+  <span
+    class="xl-input xl-input--size-middle xl-input--readonly xl-input-number emotion-0"
+  >
+    <span
+      class="xl-input__wrapper emotion-5"
+    >
+      <input
+        aria-readonly="true"
+        class="xl-input__inner emotion-2"
+        readonly=""
+        type="text"
+        value="100"
+      />
+      <span
+        class="xl-input__prefix xl-input__suffix emotion-3"
+      />
+    </span>
+  </span>
+</div>
+`;
+
+exports[`Demo renders packages/react/src/InputNumber/__doc__/Formatter.tsx correctly 1`] = `
+.emotion-0 {
+  font-size: 1.000rem;
+  line-height: 1.5;
+  font-weight: 400;
+  letter-spacing: 0.031em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  width: 100%;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.emotion-0.xl-input--focused .xl-input-number__controls {
+  opacity: 1;
+}
+
+.emotion-0 .xl-input__suffix {
+  margin: -4px -10px -4px 0;
+}
+
+.emotion-1 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  border-radius: 4px;
+  border: 1px solid #d9d9d9;
+  width: 100%;
+  padding: 4px 10px;
+  color: #000000e0;
+  background-color: #fff;
+  -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+  font-size: inherit;
+}
+
+.emotion-1:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.emotion-1:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.emotion-1:hover {
+  border-color: #60a5fa;
+}
+
+.emotion-2 {
+  font-size: inherit;
+  line-height: 1.5;
+  font-weight: 400;
+  letter-spacing: 0.031em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  cursor: inherit;
+  touch-action: manipulation;
+  font-variant: tabular-nums;
+  display: inline-block;
+  min-width: 0;
+  width: 100%;
+  border: 0;
+  outline: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  color: #000000e0;
+  background-color: #fff;
+  -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.emotion-2::-moz-placeholder {
+  opacity: 1;
+}
+
+.emotion-2::-webkit-input-placeholder {
+  color: #00000061;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.emotion-2::-moz-placeholder {
+  color: #00000061;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.emotion-2:-ms-input-placeholder {
+  color: #00000061;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.emotion-2::placeholder {
+  color: #00000061;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.emotion-2:placeholder-shown {
+  text-overflow: ellipsis;
+}
+
+.emotion-3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-right: 4px;
+  margin-right: 0;
+  margin-left: 4px;
+}
+
+.emotion-3 .xl-input__suffix--has-suffix {
+  margin-right: 4px;
+}
+
+.emotion-3 .xl-input__suffix-count,
+.emotion-3 .xl-input__suffix-clear {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  line-height: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #00000061;
+}
+
+.emotion-3 .xl-input__suffix-clear {
+  cursor: pointer;
+  -webkit-transition: color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.emotion-3 .xl-input__suffix-clear:hover {
+  color: #000000a6;
+}
+
+.emotion-4 {
+  opacity: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  border-left: 1px solid #d9d9d9;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.emotion-5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 40%;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  font-size: 10px;
+  padding: 0 3px;
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.emotion-5:hover {
+  height: 60%;
+}
+
+.emotion-6 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentcolor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.emotion-7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 40%;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  font-size: 10px;
+  padding: 0 3px;
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  border-top: 1px solid #d9d9d9;
+}
+
+.emotion-7:hover {
+  height: 60%;
+}
+
+<div>
+  <span
+    class="xl-input xl-input--size-middle xl-input-number emotion-0"
+  >
+    <span
+      class="xl-input__wrapper emotion-1"
+    >
+      <input
+        class="xl-input__inner emotion-2"
+        type="text"
+        value="$ 1,000"
+      />
+      <span
+        class="xl-input__prefix xl-input__suffix emotion-3"
+      >
+        <span
+          class="xl-input-number__controls emotion-4"
+        >
+          <span
+            class="xl-input-number__control-up emotion-5"
+          >
+            <svg
+              class="xl-base-icon emotion-6"
+              viewBox="0 0 1024 1024"
+            >
+              <path
+                d="M858.9 689 530.5 308.2c-9.4-10.9-27.5-10.9-37 0L165.1 689c-12.2 14.2-1.2 35 18.5 35h656.8c19.7 0 30.7-20.8 18.5-35"
+              />
+            </svg>
+          </span>
+          <span
+            class="xl-input-number__control-up xl-input-number__control-down emotion-7"
+          >
+            <svg
+              class="xl-base-icon emotion-6"
+              viewBox="0 0 1024 1024"
+            >
+              <path
+                d="M840.4 300H183.6c-19.7 0-30.7 20.8-18.5 35l328.4 380.8c9.4 10.9 27.5 10.9 37 0L858.9 335c12.2-14.2 1.2-35-18.5-35"
+              />
+            </svg>
+          </span>
+        </span>
+      </span>
+    </span>
+  </span>
+</div>
+`;
+
+exports[`Demo renders packages/react/src/InputNumber/__doc__/HighPrecisionMode.tsx correctly 1`] = `
+.emotion-0 {
+  font-size: 1.000rem;
+  line-height: 1.5;
+  font-weight: 400;
+  letter-spacing: 0.031em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  width: 100%;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.emotion-0.xl-input--focused .xl-input-number__controls {
+  opacity: 1;
+}
+
+.emotion-0 .xl-input__suffix {
+  margin: -4px -10px -4px 0;
+}
+
+.emotion-1 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  border-radius: 4px;
+  border: 1px solid #d9d9d9;
+  width: 100%;
+  padding: 4px 10px;
+  color: #000000e0;
+  background-color: #fff;
+  -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+  font-size: inherit;
+}
+
+.emotion-1:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.emotion-1:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.emotion-1:hover {
+  border-color: #60a5fa;
+}
+
+.emotion-2 {
+  font-size: inherit;
+  line-height: 1.5;
+  font-weight: 400;
+  letter-spacing: 0.031em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  cursor: inherit;
+  touch-action: manipulation;
+  font-variant: tabular-nums;
+  display: inline-block;
+  min-width: 0;
+  width: 100%;
+  border: 0;
+  outline: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  color: #000000e0;
+  background-color: #fff;
+  -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.emotion-2::-moz-placeholder {
+  opacity: 1;
+}
+
+.emotion-2::-webkit-input-placeholder {
+  color: #00000061;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.emotion-2::-moz-placeholder {
+  color: #00000061;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.emotion-2:-ms-input-placeholder {
+  color: #00000061;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.emotion-2::placeholder {
+  color: #00000061;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.emotion-2:placeholder-shown {
+  text-overflow: ellipsis;
+}
+
+.emotion-3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-right: 4px;
+  margin-right: 0;
+  margin-left: 4px;
+}
+
+.emotion-3 .xl-input__suffix--has-suffix {
+  margin-right: 4px;
+}
+
+.emotion-3 .xl-input__suffix-count,
+.emotion-3 .xl-input__suffix-clear {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  line-height: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #00000061;
+}
+
+.emotion-3 .xl-input__suffix-clear {
+  cursor: pointer;
+  -webkit-transition: color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.emotion-3 .xl-input__suffix-clear:hover {
+  color: #000000a6;
+}
+
+.emotion-4 {
+  opacity: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  border-left: 1px solid #d9d9d9;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.emotion-5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 40%;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  font-size: 10px;
+  padding: 0 3px;
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.emotion-5:hover {
+  height: 60%;
+}
+
+.emotion-6 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentcolor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.emotion-7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 40%;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  font-size: 10px;
+  padding: 0 3px;
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  border-top: 1px solid #d9d9d9;
+}
+
+.emotion-7:hover {
+  height: 60%;
+}
+
+<div>
+  <span
+    class="xl-input xl-input--size-middle xl-input-number emotion-0"
+  >
+    <span
+      class="xl-input__wrapper emotion-1"
+    >
+      <input
+        class="xl-input__inner emotion-2"
+        type="text"
+        value="1000000000000000000000.1"
+      />
+      <span
+        class="xl-input__prefix xl-input__suffix emotion-3"
+      >
+        <span
+          class="xl-input-number__controls emotion-4"
+        >
+          <span
+            class="xl-input-number__control-up emotion-5"
+          >
+            <svg
+              class="xl-base-icon emotion-6"
+              viewBox="0 0 1024 1024"
+            >
+              <path
+                d="M858.9 689 530.5 308.2c-9.4-10.9-27.5-10.9-37 0L165.1 689c-12.2 14.2-1.2 35 18.5 35h656.8c19.7 0 30.7-20.8 18.5-35"
+              />
+            </svg>
+          </span>
+          <span
+            class="xl-input-number__control-up xl-input-number__control-down emotion-7"
+          >
+            <svg
+              class="xl-base-icon emotion-6"
+              viewBox="0 0 1024 1024"
+            >
+              <path
+                d="M840.4 300H183.6c-19.7 0-30.7 20.8-18.5 35l328.4 380.8c9.4 10.9 27.5 10.9 37 0L858.9 335c12.2-14.2 1.2-35-18.5-35"
+              />
+            </svg>
+          </span>
+        </span>
+      </span>
+    </span>
+  </span>
+</div>
+`;
+
+exports[`Demo renders packages/react/src/InputNumber/__doc__/Range.tsx correctly 1`] = `
+.emotion-0 {
+  font-size: 1.000rem;
+  line-height: 1.5;
+  font-weight: 400;
+  letter-spacing: 0.031em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  width: 100%;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.emotion-0.xl-input--focused .xl-input-number__controls {
+  opacity: 1;
+}
+
+.emotion-0 .xl-input__suffix {
+  margin: -4px -10px -4px 0;
+}
+
+.emotion-1 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  border-radius: 4px;
+  border: 1px solid #d9d9d9;
+  width: 100%;
+  padding: 4px 10px;
+  color: #000000e0;
+  background-color: #fff;
+  -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+  font-size: inherit;
+}
+
+.emotion-1:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.emotion-1:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.emotion-1:hover {
+  border-color: #60a5fa;
+}
+
+.emotion-2 {
+  font-size: inherit;
+  line-height: 1.5;
+  font-weight: 400;
+  letter-spacing: 0.031em;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  cursor: inherit;
+  touch-action: manipulation;
+  font-variant: tabular-nums;
+  display: inline-block;
+  min-width: 0;
+  width: 100%;
+  border: 0;
+  outline: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  color: #000000e0;
+  background-color: #fff;
+  -webkit-transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.emotion-2::-moz-placeholder {
+  opacity: 1;
+}
+
+.emotion-2::-webkit-input-placeholder {
+  color: #00000061;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.emotion-2::-moz-placeholder {
+  color: #00000061;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.emotion-2:-ms-input-placeholder {
+  color: #00000061;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.emotion-2::placeholder {
+  color: #00000061;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.emotion-2:placeholder-shown {
+  text-overflow: ellipsis;
+}
+
+.emotion-3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-right: 4px;
+  margin-right: 0;
+  margin-left: 4px;
+}
+
+.emotion-3 .xl-input__suffix--has-suffix {
+  margin-right: 4px;
+}
+
+.emotion-3 .xl-input__suffix-count,
+.emotion-3 .xl-input__suffix-clear {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  line-height: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #00000061;
+}
+
+.emotion-3 .xl-input__suffix-clear {
+  cursor: pointer;
+  -webkit-transition: color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.emotion-3 .xl-input__suffix-clear:hover {
+  color: #000000a6;
+}
+
+.emotion-4 {
+  opacity: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  border-left: 1px solid #d9d9d9;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.emotion-5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 40%;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  font-size: 10px;
+  padding: 0 3px;
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.emotion-5:hover {
+  height: 60%;
+}
+
+.emotion-6 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentcolor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.emotion-7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 40%;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  font-size: 10px;
+  padding: 0 3px;
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  border-top: 1px solid #d9d9d9;
+}
+
+.emotion-7:hover {
+  height: 60%;
+}
+
+<div>
+  <span
+    class="xl-input xl-input--size-middle xl-input-number emotion-0"
+  >
+    <span
+      class="xl-input__wrapper emotion-1"
+    >
+      <input
+        class="xl-input__inner emotion-2"
+        type="text"
+        value=""
+      />
+      <span
+        class="xl-input__prefix xl-input__suffix emotion-3"
+      >
+        <span
+          class="xl-input-number__controls emotion-4"
+        >
+          <span
+            class="xl-input-number__control-up emotion-5"
+          >
+            <svg
+              class="xl-base-icon emotion-6"
+              viewBox="0 0 1024 1024"
+            >
+              <path
+                d="M858.9 689 530.5 308.2c-9.4-10.9-27.5-10.9-37 0L165.1 689c-12.2 14.2-1.2 35 18.5 35h656.8c19.7 0 30.7-20.8 18.5-35"
+              />
+            </svg>
+          </span>
+          <span
+            class="xl-input-number__control-up xl-input-number__control-down emotion-7"
+          >
+            <svg
+              class="xl-base-icon emotion-6"
+              viewBox="0 0 1024 1024"
+            >
+              <path
+                d="M840.4 300H183.6c-19.7 0-30.7 20.8-18.5 35l328.4 380.8c9.4 10.9 27.5 10.9 37 0L858.9 335c12.2-14.2 1.2-35-18.5-35"
+              />
+            </svg>
+          </span>
+        </span>
+      </span>
+    </span>
+  </span>
+</div>
+`;
+
 exports[`Demo renders packages/react/src/Message/__doc__/Basic.tsx correctly 1`] = `
 .emotion-0>* {
   margin-right: 8px;

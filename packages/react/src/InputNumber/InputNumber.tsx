@@ -1,7 +1,15 @@
 import { useConstantFn, useValueChange } from '@xl-vision/hooks';
 import { CaretDownOutlined, CaretUpOutlined } from '@xl-vision/icons';
 import { BigIntDecimal, isProduction, omit } from '@xl-vision/utils';
-import { forwardRef, useState, FocusEventHandler, useEffect } from 'react';
+import {
+  forwardRef,
+  useState,
+  FocusEventHandler,
+  useEffect,
+  KeyboardEvent,
+  useRef,
+  ReactNode,
+} from 'react';
 import { Input, InputProps } from '../Input';
 import { styled } from '../styles';
 
@@ -28,6 +36,8 @@ export type InputNumberProps = Omit<
   step?: number;
   precision?: number;
   highPrecisionMode?: boolean;
+  controls?: boolean | { upIcon?: ReactNode; downIcon?: ReactNode };
+  keyboard?: boolean;
 };
 
 const displayName = 'InputNumber';
@@ -104,6 +114,8 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
     precision,
     readOnly,
     disabled,
+    controls = true,
+    keyboard = true,
     highPrecisionMode,
     ...others
   } = omit(
@@ -118,6 +130,8 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
 
   const [internalValue, setInternalValue] = useState<string>('');
 
+  const keyTimerRef = useRef<number>(null);
+
   const handleFormatter = useConstantFn((v: InputNumberValueType) => {
     if (v === null) {
       return '';
@@ -125,12 +139,24 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
     if (formatter) {
       return formatter(v);
     }
-    return String(v);
+    if (!precision) {
+      return String(v);
+    }
+    return highPrecisionMode ? new BigIntDecimal(v).toFixed(precision) : (+v).toFixed(precision);
   });
 
   useEffect(() => {
     setInternalValue(handleFormatter(value));
   }, [value, setInternalValue, handleFormatter]);
+
+  useEffect(() => {
+    return () => {
+      const timer = keyTimerRef.current;
+      if (timer) {
+        clearInterval(timer);
+      }
+    };
+  }, []);
 
   const defaultParser = useConstantFn((newValue: InputNumberValueType) => {
     if (newValue === null) {
@@ -156,7 +182,7 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
     return defaultParser(str);
   });
 
-  const updateValue = useConstantFn((newValue: string) => {
+  const updateValue = useConstantFn((newValue: string, ignorePercision?: boolean) => {
     let v: BigIntDecimal | InputNumberValueType = handleParser(newValue);
 
     if (v === null) {
@@ -170,10 +196,16 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
     if (highPrecisionMode) {
       v = new BigIntDecimal(v);
 
-      if (precision) {
+      if (precision && !formatter) {
         const magnification = 10 ** precision;
 
-        v = v.multiply(magnification).round().divide(magnification, precision);
+        const v2 = v.multiply(magnification).round().divide(magnification, precision);
+
+        if (ignorePercision && !v.equal(v2)) {
+          return false;
+        }
+
+        v = v2;
       }
 
       if (max !== undefined && v.greaterThan(max)) {
@@ -184,10 +216,15 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
     } else {
       v = +v;
 
-      if (precision) {
+      if (precision && !formatter) {
         const magnification = 10 ** precision;
 
-        v = Math.round(+v * magnification) / magnification;
+        const v2 = Math.round(+v * magnification) / magnification;
+
+        if (ignorePercision && v !== v2) {
+          return false;
+        }
+        v = v2;
       }
 
       if (max !== undefined && v > +max) {
@@ -222,30 +259,32 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
 
   const handleBlur: FocusEventHandler<HTMLInputElement> = useConstantFn((e) => {
     onBlur?.(e);
-    console.log(value, '11111');
     if (!updateValue(internalValue)) {
-      console.log(value, '22222');
       setInternalValue(handleFormatter(value));
     }
   });
 
   const handleInternalValueChange = useConstantFn((str: string) => {
-    if (!updateValue(str)) {
+    if (!updateValue(str, true)) {
       setInternalValue(str);
     }
   });
 
   const handleUp = useConstantFn(() => {
     const ret =
-      value === null ? 0 : highPrecisionMode ? new BigIntDecimal(value).add(step) : +value + step;
+      value === null
+        ? step
+        : highPrecisionMode
+          ? new BigIntDecimal(value).add(step)
+          : +value + step;
 
-    updateValue(ret.toString());
+    updateValue(String(ret));
   });
 
   const handleDown = useConstantFn(() => {
     const ret =
       value === null
-        ? 0
+        ? -step
         : highPrecisionMode
           ? new BigIntDecimal(value).subtract(step)
           : +value - step;
@@ -253,14 +292,55 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
     updateValue(ret.toString());
   });
 
-  const suffixNode = !readOnly && !disabled && (
+  const handleKeyDown = useConstantFn((e: KeyboardEvent) => {
+    if (!keyboard) {
+      return;
+    }
+    const timer = keyTimerRef.current;
+    if (timer) {
+      clearInterval(timer);
+      keyTimerRef.current = null;
+    }
+
+    if (!['ArrowUp', 'ArrowDown'].includes(e.key)) {
+      return;
+    }
+
+    e.preventDefault();
+
+    const fn = e.key === 'ArrowUp' ? handleUp : handleDown;
+
+    fn();
+    keyTimerRef.current = window.setInterval(() => {
+      fn();
+    }, 500);
+  });
+
+  const handleKeyUp = useConstantFn(() => {
+    const timer = keyTimerRef.current;
+    if (timer) {
+      clearInterval(timer);
+      keyTimerRef.current = null;
+    }
+  });
+
+  let upIcon: ReactNode = <CaretUpOutlined />;
+  let downIcon: ReactNode = <CaretDownOutlined />;
+
+  if (typeof controls === 'object') {
+    if (controls.upIcon) {
+      upIcon = controls.upIcon;
+    }
+
+    if (controls.downIcon) {
+      downIcon = controls.downIcon;
+    }
+  }
+
+  const suffixNode = !readOnly && !disabled && controls && (
     <InputNumberControls>
-      <InputNumberControlUp onClick={handleUp}>
-        <CaretUpOutlined />
-      </InputNumberControlUp>
-      <InputNumberControlDown onClick={handleDown}>
-        <CaretDownOutlined />
-      </InputNumberControlDown>
+      <InputNumberControlUp onClick={handleUp}>{upIcon}</InputNumberControlUp>
+      <InputNumberControlDown onClick={handleDown}>{downIcon}</InputNumberControlDown>
     </InputNumberControls>
   );
 
@@ -273,6 +353,8 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
       value={internalValue}
       onBlur={handleBlur}
       onChange={handleInternalValueChange}
+      onKeyDown={handleKeyDown}
+      onKeyUp={handleKeyUp}
       {...others}
     />
   );

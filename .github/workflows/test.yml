@@ -27,7 +27,7 @@ jobs:
         run: pnpm install
 
       - name: run lint
-        run: npm run lint
+        run: npm run lint:all
 
   build_library:
     runs-on: ubuntu-latest

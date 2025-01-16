@@ -26,6 +26,14 @@
 
 :::
 
+::: demo ./HighPrecisionMode
+
+高精度模式
+
+开启高精度模式可以正确计算超过浮点型范围的数字，此时 `value` 将使用字符串表示
+
+:::
+
 ::: demo ./Disable
 
 只读和禁用
@@ -36,17 +44,24 @@
 
 ## 属性
 
-| 参数         | 说明             | 类型                           | 默认值   | 是否必填 |
-| ------------ | ---------------- | ------------------------------ | -------- | -------- |
-| prefix       | 前缀             | React.ReactNode                | -        | false    |
-| suffix       | 后缀             | React.ReactNode                | -        | false    |
-| addonBefore  | 前置元素         | React.ReactNode                | -        | false    |
-| addonAfter   | 后置元素         | React.ReactNode                | -        | false    |
-| onChange     | 值改变事件       | function                       | -        | false    |
-| value        | 值               | string                         | -        | false    |
-| defaultValue | 默认值           | string                         | -        | false    |
-| showCount    | 是否显示字数     | boolean                        | -        | false    |
-| allowClear   | 是否展示清空图标 | boolean                        | -        | false    |
-| size         | 输入框大小       | `middle` \| `large` \| `small` | `middle` | false    |
-| maxLength    | 限制最大长度     | number                         | -        | false    |
-
+| 参数 | 说明 | 类型 | 默认值 | 是否必填 |
+| --- | --- | --- | --- | --- |
+| prefix | 前缀 | React.ReactNode | - | false |
+| suffix | 后缀 | React.ReactNode | - | false |
+| addonBefore | 前置元素 | React.ReactNode | - | false |
+| addonAfter | 后置元素 | React.ReactNode | - | false |
+| highPrecisionMode | 高精度模式，开启此模式可以展示超过浮点数范围的数字，此时 `value` 将用字符串展示 | boolean | - | false |
+| onChange | 值改变事件 | function | - | false |
+| value | 值 | number \| string \| null | - | false |
+| defaultValue | 默认值 | number \| string \| null | - | false |
+| disabled | 禁用 | boolean | - | false |
+| readOnly | 只读 | boolean | - | false |
+| size | 输入框大小 | 'middle' \| 'large' \| 'small' | 'middle' | false |
+| min | 允许填写的最小数字 | number \| string | - | false |
+| max | 允许填写的最大数字 | number \| string | - | false |
+| step | 每次改变步数 | number | 1 | false |
+| precision | 保留小数位数 | number | - | false |
+| formatter | 格式化数字展示形式，开启后 `precision` 失效 | (value: number \| string) => string | - | false |
+| parser | 将 `formatter` 后的数字转成数字，与 `formatter` 搭配使用 | (value: string) => number \| string \| null | - | false |
+| keyboard | 是否允许键盘上下键改变数字 | boolean | true | false |
+| controls | 是否展示调节数字的按钮，也可以自定义 | boolean \| \{ upIcon?: ReactNode; downIcon?: ReactNode \} | true | false |
