@@ -3,7 +3,7 @@
 import { InputNumber } from '@xl-vision/react';
 
 const Demo = () => {
-  return <InputNumber onChange={(v) => console.log(v)} precision={2} />;
+  return <InputNumber precision={2} onChange={(v) => console.log(v)} />;
 };
 
 export default Demo;
