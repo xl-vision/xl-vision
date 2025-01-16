@@ -24,7 +24,7 @@ export type InputNumberProps = Omit<
   min?: number | string;
   max?: number | string;
   parser?: (value: string) => InputNumberValueType;
-  formatter?: (value: InputNumberValueType) => string;
+  formatter?: (value: number | string) => string;
   step?: number;
   precision?: number;
   highPrecisionMode?: boolean;
@@ -90,8 +90,6 @@ const InputNumberControlDown = styled(InputNumberControlUp, {
   };
 });
 
-const NUMBER_REGEX = /^-?\d+(\.\d+)?$/;
-
 const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) => {
   const {
     onChange,
@@ -118,7 +116,21 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
 
   const [value, setValue] = useValueChange(defaultValue, valueProp, onChange);
 
-  const [internalValue, setInternalValue] = useState<number | BigIntDecimal | null>(null);
+  const [internalValue, setInternalValue] = useState<string>('');
+
+  const handleFormatter = useConstantFn((v: InputNumberValueType) => {
+    if (v === null) {
+      return '';
+    }
+    if (formatter) {
+      return formatter(v);
+    }
+    return String(v);
+  });
+
+  useEffect(() => {
+    setInternalValue(handleFormatter(value));
+  }, [value, setInternalValue, handleFormatter]);
 
   const defaultParser = useConstantFn((newValue: InputNumberValueType) => {
     if (newValue === null) {
@@ -127,10 +139,14 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
     if (!highPrecisionMode) {
       return +newValue;
     }
-    return new BigIntDecimal(newValue);
+    return newValue;
   });
 
   const handleParser = useConstantFn((str: string) => {
+    if (!str) {
+      return null;
+    }
+
     if (parser) {
       const parseredValue = parser(str);
 
@@ -140,23 +156,20 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
     return defaultParser(str);
   });
 
-  const handleFormatter = useConstantFn((v: InputNumberValueType) => {
-    if (formatter) {
-      return formatter(v);
-    }
-    return String(v);
-  });
-
   const updateValue = useConstantFn((newValue: string) => {
-    let v = handleParser(newValue);
+    let v: BigIntDecimal | InputNumberValueType = handleParser(newValue);
 
     if (v === null) {
-      setInternalValue(null);
+      if (value === null) {
+        return false;
+      }
       setValue(null);
-      return;
+      return true;
     }
 
-    if (v instanceof BigIntDecimal) {
+    if (highPrecisionMode) {
+      v = new BigIntDecimal(v);
+
       if (precision) {
         const magnification = 10 ** precision;
 
@@ -164,73 +177,78 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
       }
 
       if (max !== undefined && v.greaterThan(max)) {
-        v = internalValue;
+        v = value;
       } else if (min !== undefined && v.lessThan(min)) {
-        v = internalValue as BigIntDecimal;
+        v = value;
+      }
+    } else {
+      v = +v;
+
+      if (precision) {
+        const magnification = 10 ** precision;
+
+        v = Math.round(+v * magnification) / magnification;
       }
 
-      setInternalValue(v);
-      setValue(v instanceof BigIntDecimal ? v.toString() : v);
-      return;
+      if (max !== undefined && v > +max) {
+        v = value;
+      } else if (min !== undefined && v < +min) {
+        v = value;
+      }
     }
 
-    if (precision) {
-      const magnification = 10 ** precision;
+    if (v instanceof BigIntDecimal) {
+      if (v.isNaN()) {
+        return false;
+      }
+      const str = v.toString();
 
-      v = Math.round(v * magnification) / magnification;
+      if (str === value) {
+        return false;
+      }
+      setValue(str);
+      return true;
     }
 
-    if (max !== undefined && v > +max) {
-      v = internalValue;
-    } else if (min !== undefined && v < +min) {
-      v = internalValue;
+    if (Number.isNaN(v)) {
+      return false;
     }
-
-    setInternalValue(v);
-    setValue(v instanceof BigIntDecimal ? v.toString() : v);
+    if (v === value) {
+      return false;
+    }
+    setValue(v);
+    return true;
   });
-
-  useEffect(() => {
-    setInternalValue(defaultParser(value));
-  }, [value, defaultParser]);
-
-  const [displayValue, setDisplayValue] = useState<string>()
-
-
-
-
-
-
-
-
-  useEffect(() => {
-    setInternalValue(handleFormatter(value));
-  }, [value, handleFormatter]);
 
   const handleBlur: FocusEventHandler<HTMLInputElement> = useConstantFn((e) => {
     onBlur?.(e);
-    const v = updateValue(internalValue);
-    if (v === value) {
-      // 有可能value没有变化，导致internalValue也不会更新
-      setInternalValue(handleFormatter(v));
+    console.log(value, '11111');
+    if (!updateValue(internalValue)) {
+      console.log(value, '22222');
+      setInternalValue(handleFormatter(value));
     }
   });
 
   const handleInternalValueChange = useConstantFn((str: string) => {
-    setInternalValue(str);
-    updateValue(str);
+    if (!updateValue(str)) {
+      setInternalValue(str);
+    }
   });
 
-  // TODO: remove BigInt
   const handleUp = useConstantFn(() => {
-    const ret = BigInt(value || 0) + BigInt(step);
+    const ret =
+      value === null ? 0 : highPrecisionMode ? new BigIntDecimal(value).add(step) : +value + step;
 
     updateValue(ret.toString());
   });
 
-  // TODO: remove BigInt
   const handleDown = useConstantFn(() => {
-    const ret = BigInt(value || 0) - BigInt(step);
+    const ret =
+      value === null
+        ? 0
+        : highPrecisionMode
+          ? new BigIntDecimal(value).subtract(step)
+          : +value - step;
 
     updateValue(ret.toString());
   });
