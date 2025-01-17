@@ -1,4 +1,4 @@
-import { useConstantFn, useValueChange } from '@xl-vision/hooks';
+import { useConstantFn, useForkRef, useValueChange } from '@xl-vision/hooks';
 import { CaretDownOutlined, CaretUpOutlined } from '@xl-vision/icons';
 import { BigIntDecimal, isProduction, omit } from '@xl-vision/utils';
 import {
@@ -9,9 +9,11 @@ import {
   KeyboardEvent,
   useRef,
   ReactNode,
+  CompositionEvent,
 } from 'react';
 import { Input, InputProps } from '../Input';
 import { styled } from '../styles';
+import { useTheme } from '../ThemeProvider';
 
 export type InputNumberValueType = number | string | null;
 
@@ -38,6 +40,7 @@ export type InputNumberProps = Omit<
   highPrecisionMode?: boolean;
   controls?: boolean | { upIcon?: ReactNode; downIcon?: ReactNode };
   keyboard?: boolean;
+  wheel?: boolean;
 };
 
 const displayName = 'InputNumber';
@@ -117,6 +120,11 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
     controls = true,
     keyboard = true,
     highPrecisionMode,
+    wheel,
+    onCompositionEnd,
+    onCompositionStart,
+    onKeyDown,
+    onKeyUp,
     ...others
   } = omit(
     props as InputProps,
@@ -126,11 +134,18 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
     'maxLength',
   ) as InputNumberProps;
 
+  const { clsPrefix } = useTheme();
+
+  const innerRef = useRef<HTMLSpanElement>(null);
+
+  const forkRef = useForkRef(ref, innerRef);
+
   const [value, setValue] = useValueChange(defaultValue, valueProp, onChange);
 
   const [internalValue, setInternalValue] = useState<string>('');
 
   const keyTimerRef = useRef<number>(null);
+  const isCompositionRef = useRef(false);
 
   const handleFormatter = useConstantFn((v: InputNumberValueType) => {
     if (v === null) {
@@ -292,14 +307,37 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
     updateValue(ret.toString());
   });
 
-  const handleKeyDown = useConstantFn((e: KeyboardEvent) => {
-    if (!keyboard) {
-      return;
-    }
+  const handleCompositionStart = useConstantFn((e: CompositionEvent<HTMLInputElement>) => {
+    onCompositionStart?.(e);
+    isCompositionRef.current = true;
+  });
+
+  const handleCompositionEnd = useConstantFn((e: CompositionEvent<HTMLInputElement>) => {
+    onCompositionEnd?.(e);
+    isCompositionRef.current = false;
+  });
+
+  const handleKeyDown = useConstantFn((e: KeyboardEvent<HTMLInputElement>) => {
+    onKeyDown?.(e);
     const timer = keyTimerRef.current;
     if (timer) {
       clearInterval(timer);
       keyTimerRef.current = null;
+    }
+
+    if (isCompositionRef.current) {
+      return;
+    }
+
+    if (e.key === 'Enter') {
+      if (!updateValue(internalValue)) {
+        setInternalValue(handleFormatter(value));
+      }
+      return;
+    }
+
+    if (!keyboard) {
+      return;
     }
 
     if (!['ArrowUp', 'ArrowDown'].includes(e.key)) {
@@ -316,13 +354,48 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
     }, 500);
   });
 
-  const handleKeyUp = useConstantFn(() => {
+  const handleKeyUp = useConstantFn((e: KeyboardEvent<HTMLInputElement>) => {
+    onKeyUp?.(e);
     const timer = keyTimerRef.current;
     if (timer) {
       clearInterval(timer);
       keyTimerRef.current = null;
     }
   });
+
+  useEffect(() => {
+    if (!wheel) {
+      return;
+    }
+
+    const wrappEl = innerRef.current;
+
+    if (!wrappEl) {
+      return;
+    }
+
+    const input = wrappEl.querySelector<HTMLInputElement>(`input.${clsPrefix}-input__inner`);
+
+    if (!input) {
+      return;
+    }
+
+    const handleWheel = (e: WheelEvent) => {
+      e.preventDefault();
+
+      if (e.deltaY > 0) {
+        handleUp();
+      } else if (e.deltaY < 0) {
+        handleDown();
+      }
+    };
+
+    input.addEventListener('wheel', handleWheel, { passive: false });
+
+    return () => {
+      input.removeEventListener('wheel', handleWheel);
+    };
+  }, [clsPrefix, handleUp, handleDown, wheel]);
 
   let upIcon: ReactNode = <CaretUpOutlined />;
   let downIcon: ReactNode = <CaretDownOutlined />;
@@ -348,11 +421,13 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
     <InputNumberRoot
       disabled={disabled}
       readOnly={readOnly}
-      ref={ref}
+      ref={forkRef}
       suffix={suffixNode}
       value={internalValue}
       onBlur={handleBlur}
       onChange={handleInternalValueChange}
+      onCompositionEnd={handleCompositionEnd}
+      onCompositionStart={handleCompositionStart}
       onKeyDown={handleKeyDown}
       onKeyUp={handleKeyUp}
       {...others}

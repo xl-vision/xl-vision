@@ -34,6 +34,14 @@
 
 :::
 
+::: demo ./Wheel
+
+滚轮滚动
+
+通过鼠标滚轮调节数字大小
+
+:::
+
 ::: demo ./Disable
 
 只读和禁用
@@ -63,5 +71,6 @@
 | precision | 保留小数位数 | number | - | false |
 | formatter | 格式化数字展示形式，开启后 `precision` 失效 | (value: number \| string) => string | - | false |
 | parser | 将 `formatter` 后的数字转成数字，与 `formatter` 搭配使用 | (value: string) => number \| string \| null | - | false |
-| keyboard | 是否允许键盘上下键改变数字 | boolean | true | false |
+| keyboard | 是否允许键盘上下键调节数字 | boolean | true | false |
+| wheel | 是否允许滚轮调节数字 | boolean | - | false |
 | controls | 是否展示调节数字的按钮，也可以自定义 | boolean \| \{ upIcon?: ReactNode; downIcon?: ReactNode \} | true | false |
