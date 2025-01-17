@@ -17,7 +17,7 @@ const Types = () => {
     <Wrapper>
       <Avatar icon={<UserOutlined />} />
       <Avatar>User</Avatar>
-      {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */}
+      {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
       <Avatar src={avatarImg.src} />
       <Avatar icon={<UserOutlined />} style={{ backgroundColor: 'rgb(135, 208, 104)' }} />
     </Wrapper>

@@ -101,6 +101,7 @@ export default [
       'packages/icons/src',
       'packages/icons/third',
       'packages/icons/scripts/template',
+      '**/__snapshots__',
     ],
   },
   ...baseConfig,

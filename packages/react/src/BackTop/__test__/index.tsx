@@ -6,7 +6,7 @@ import BackTop from '../BackTop';
 
 jest.spyOn(window, 'scrollTo').mockImplementation((x, y) => {
   if (isObject(x)) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     y = (x as any).top;
   }
   window.scrollY = y;
