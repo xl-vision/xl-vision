@@ -3,8 +3,25 @@
 
 import { render } from '@testing-library/react';
 import * as glob from 'glob';
+import { act } from 'react';
+import ReactDOM from 'react-dom';
 
 describe('Demo', () => {
+  let mockFn: jest.SpyInstance;
+  beforeAll(() => {
+    const flushSync = ReactDOM.flushSync;
+    mockFn = jest.spyOn(ReactDOM, 'flushSync');
+    mockFn.mockImplementation((fn) => {
+      act(() => {
+        flushSync(fn);
+      });
+    });
+  });
+
+  afterAll(() => {
+    mockFn.mockClear();
+  });
+
   const files = glob.sync(`./packages/*/src/**/__doc__/*.ts?(x)`, {
     posix: true,
   });
