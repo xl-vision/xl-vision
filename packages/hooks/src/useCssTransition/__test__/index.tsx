@@ -1,6 +1,6 @@
-import { act, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import * as utils from '@xl-vision/utils';
-import { FC } from 'react';
+import { FC, act } from 'react';
 import { awaitPromise } from 'test/utils';
 import useCssTransition from '..';
 

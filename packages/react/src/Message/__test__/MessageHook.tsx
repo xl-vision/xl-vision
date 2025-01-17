@@ -1,5 +1,5 @@
-import { render, act } from '@testing-library/react';
-import { forwardRef, useImperativeHandle } from 'react';
+import { render } from '@testing-library/react';
+import { forwardRef, useImperativeHandle, act } from 'react';
 import { awaitPromise, triggerTransitionEnd } from 'test/utils';
 import { ThemeProvider, MessageHookReturnType, Message } from '@xl-vision/react';
 import { enUS, zhCN } from '@xl-vision/react/locale';

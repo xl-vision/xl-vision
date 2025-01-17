@@ -98,7 +98,7 @@ jobs:
         run: pnpm install
 
       - name: run test
-        run: JEST_JUNIT_CLASSNAME="{filepath}" npm run test -- --reporters=jest-junit
+        run: JEST_JUNIT_CLASSNAME="{filepath}" npm run test -- --coverage --reporters=jest-junit
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v5

@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { act, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { CssTransitionClassNameRecord } from '@xl-vision/hooks';
 import { noop } from '@xl-vision/utils';
 import * as utils from '@xl-vision/utils';
+import { act } from 'react';
 import { awaitPromise } from 'test/utils';
 import { Transition } from '@xl-vision/react';
 

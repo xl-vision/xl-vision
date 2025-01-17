@@ -1,5 +1,6 @@
-import { act, fireEvent, render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { act } from 'react';
 import { triggerTransitionEnd } from 'test/utils';
 import { Popper } from '@xl-vision/react';
 

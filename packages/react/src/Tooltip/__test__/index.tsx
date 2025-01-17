@@ -1,4 +1,5 @@
-import { act, fireEvent, render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
+import { act } from 'react';
 import { Tooltip } from '@xl-vision/react';
 
 describe('Tooltip', () => {

@@ -1,5 +1,6 @@
-import { act, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import * as utils from '@xl-vision/utils';
+import { act } from 'react';
 import { awaitPromise } from 'test/utils';
 import { CollapseTransition } from '@xl-vision/react';
 

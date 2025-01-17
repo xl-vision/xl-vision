@@ -1,6 +1,6 @@
-import { render, act } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { NoticationHookUpdate } from '@xl-vision/hooks';
-import { forwardRef, useImperativeHandle } from 'react';
+import { forwardRef, useImperativeHandle, act } from 'react';
 import { triggerTransitionEnd } from 'test/utils';
 import { ThemeProvider, DedicatedDialogProps, Dialog } from '@xl-vision/react';
 import { enUS, zhCN } from '@xl-vision/react/locale';

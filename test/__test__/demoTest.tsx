@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 
-import { act, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import * as glob from 'glob';
+import { act } from 'react';
 
 describe('Demo', () => {
   const files = glob.sync(`./packages/*/src/**/__doc__/*.ts?(x)`, {
