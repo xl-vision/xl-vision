@@ -1,6 +1,7 @@
 import { useConstantFn, useForkRef, useValueChange } from '@xl-vision/hooks';
 import { CaretDownOutlined, CaretUpOutlined } from '@xl-vision/icons';
 import { BigIntDecimal, isProduction, omit } from '@xl-vision/utils';
+import clsx from 'clsx';
 import {
   forwardRef,
   useState,
@@ -10,6 +11,7 @@ import {
   useRef,
   ReactNode,
   CompositionEvent,
+  useMemo,
 } from 'react';
 import { Input, InputProps } from '../Input';
 import { styled } from '../styles';
@@ -48,15 +50,20 @@ const displayName = 'InputNumber';
 const InputNumberRoot = styled(Input, {
   name: displayName,
   slot: 'Root',
-})(({ theme: { clsPrefix, size: themeSize } }) => {
+})(({ theme: { clsPrefix, size: themeSize, transitions } }) => {
   return {
-    [`&.${clsPrefix}-input--focused`]: {
-      [`.${clsPrefix}-input-number__controls`]: {
-        opacity: 1,
-      },
-    },
     [`.${clsPrefix}-input__suffix`]: {
       margin: `-${themeSize.padding.y}px -${themeSize.padding.x}px -${themeSize.padding.y}px 0`,
+      transform: 'scaleX(0)',
+      transformOrigin: '100% 50%',
+      transition: transitions.enter('transform'),
+      overflow: 'hidden',
+    },
+
+    [`&:hover, &.${clsPrefix}-input--focused`]: {
+      [`.${clsPrefix}-input__suffix`]: {
+        transform: 'scaleX(1)',
+      },
     },
   };
 });
@@ -66,7 +73,6 @@ const InputNumberControls = styled('span', {
   slot: 'Controls',
 })(({ theme: { size: themeSize, colors } }) => {
   return {
-    opacity: 0,
     display: 'flex',
     height: '100%',
     borderLeft: `${themeSize.border}px solid ${colors.divider.primary}`,
@@ -77,7 +83,7 @@ const InputNumberControls = styled('span', {
 const InputNumberControlUp = styled('span', {
   name: displayName,
   slot: 'ControlUp',
-})(({ theme: { transitions } }) => {
+})(({ theme: { transitions, clsPrefix, colors } }) => {
   return {
     display: 'flex',
     alignItems: 'center',
@@ -90,6 +96,14 @@ const InputNumberControlUp = styled('span', {
     transition: transitions.standard('all'),
     '&:hover': {
       height: '60%',
+    },
+
+    [`&.${clsPrefix}-input-number__control--disabled`]: {
+      cursor: 'not-allowed',
+      opacity: colors.opacity.disabled,
+      '&:hover': {
+        height: '40%',
+      },
     },
   };
 });
@@ -198,6 +212,10 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
   });
 
   const updateValue = useConstantFn((newValue: string, ignorePercision?: boolean) => {
+    if (disabled || readOnly) {
+      return true;
+    }
+
     let v: BigIntDecimal | InputNumberValueType = handleParser(newValue);
 
     if (v === null) {
@@ -410,18 +428,67 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
     }
   }
 
+  const isArrowUpDisabled = useMemo(() => {
+    if (max === undefined || value === null) {
+      return false;
+    }
+
+    if (highPrecisionMode) {
+      const v = new BigIntDecimal(value);
+
+      return v.equal(max) || v.greaterThan(max);
+    }
+
+    return +value >= +max;
+  }, [max, value, highPrecisionMode]);
+
+  const isArrowDownDisabled = useMemo(() => {
+    if (min === undefined || value === null) {
+      return false;
+    }
+
+    if (highPrecisionMode) {
+      const v = new BigIntDecimal(value);
+
+      return v.equal(min) || v.lessThan(min);
+    }
+
+    return +value <= +min;
+  }, [min, value, highPrecisionMode]);
+
+  const rootClassName = `${clsPrefix}-input-number`;
+
   const suffixNode = !readOnly && !disabled && controls && (
     <InputNumberControls>
-      <InputNumberControlUp onClick={handleUp}>{upIcon}</InputNumberControlUp>
-      <InputNumberControlDown onClick={handleDown}>{downIcon}</InputNumberControlDown>
+      <InputNumberControlUp
+        className={clsx({
+          [`${rootClassName}__control--disabled`]: isArrowUpDisabled,
+        })}
+        onClick={handleUp}
+      >
+        {upIcon}
+      </InputNumberControlUp>
+      <InputNumberControlDown
+        className={clsx({
+          [`${rootClassName}__control--disabled`]: isArrowDownDisabled,
+        })}
+        onClick={handleDown}
+      >
+        {downIcon}
+      </InputNumberControlDown>
     </InputNumberControls>
   );
 
   return (
     <InputNumberRoot
+      aria-valuemax={max as number}
+      aria-valuemin={min as number}
+      autoComplete='off'
       disabled={disabled}
       readOnly={readOnly}
       ref={forkRef}
+      role='spinbutton'
+      step={step}
       suffix={suffixNode}
       value={internalValue}
       onBlur={handleBlur}

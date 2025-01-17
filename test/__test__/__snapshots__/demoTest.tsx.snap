@@ -14175,12 +14175,24 @@ exports[`Demo renders packages/react/src/InputNumber/__doc__/Basic.tsx correctly
   display: inline-flex;
 }
 
-.emotion-0.xl-input--focused .xl-input-number__controls {
-  opacity: 1;
-}
-
 .emotion-0 .xl-input__suffix {
   margin: -4px -10px -4px 0;
+  -webkit-transform: scaleX(0);
+  -moz-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  transform: scaleX(0);
+  transform-origin: 100% 50%;
+  -webkit-transition: -webkit-transform 300ms 0ms cubic-bezier(0, 0, 0.2, 1);
+  transition: transform 300ms 0ms cubic-bezier(0, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.emotion-0:hover .xl-input__suffix,
+.emotion-0.xl-input--focused .xl-input__suffix {
+  -webkit-transform: scaleX(1);
+  -moz-transform: scaleX(1);
+  -ms-transform: scaleX(1);
+  transform: scaleX(1);
 }
 
 .emotion-1 {
@@ -14325,7 +14337,6 @@ exports[`Demo renders packages/react/src/InputNumber/__doc__/Basic.tsx correctly
 }
 
 .emotion-4 {
-  opacity: 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -14363,6 +14374,15 @@ exports[`Demo renders packages/react/src/InputNumber/__doc__/Basic.tsx correctly
 
 .emotion-5:hover {
   height: 60%;
+}
+
+.emotion-5.xl-input-number__control--disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+.emotion-5.xl-input-number__control--disabled:hover {
+  height: 40%;
 }
 
 .emotion-6 {
@@ -14408,6 +14428,15 @@ exports[`Demo renders packages/react/src/InputNumber/__doc__/Basic.tsx correctly
   height: 60%;
 }
 
+.emotion-7.xl-input-number__control--disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+.emotion-7.xl-input-number__control--disabled:hover {
+  height: 40%;
+}
+
 <div>
   <span
     class="xl-input xl-input--size-middle xl-input-number emotion-0"
@@ -14416,7 +14445,10 @@ exports[`Demo renders packages/react/src/InputNumber/__doc__/Basic.tsx correctly
       class="xl-input__wrapper emotion-1"
     >
       <input
+        autocomplete="off"
         class="xl-input__inner emotion-2"
+        role="spinbutton"
+        step="1"
         type="text"
         value="3.00"
       />
@@ -14474,12 +14506,24 @@ exports[`Demo renders packages/react/src/InputNumber/__doc__/Disable.tsx correct
   display: inline-flex;
 }
 
-.emotion-0.xl-input--focused .xl-input-number__controls {
-  opacity: 1;
-}
-
 .emotion-0 .xl-input__suffix {
   margin: -4px -10px -4px 0;
+  -webkit-transform: scaleX(0);
+  -moz-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  transform: scaleX(0);
+  transform-origin: 100% 50%;
+  -webkit-transition: -webkit-transform 300ms 0ms cubic-bezier(0, 0, 0.2, 1);
+  transition: transform 300ms 0ms cubic-bezier(0, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.emotion-0:hover .xl-input__suffix,
+.emotion-0.xl-input--focused .xl-input__suffix {
+  -webkit-transform: scaleX(1);
+  -moz-transform: scaleX(1);
+  -ms-transform: scaleX(1);
+  transform: scaleX(1);
 }
 
 .emotion-1 {
@@ -14657,8 +14701,11 @@ exports[`Demo renders packages/react/src/InputNumber/__doc__/Disable.tsx correct
     >
       <input
         aria-disabled="true"
+        autocomplete="off"
         class="xl-input__inner emotion-2"
         disabled=""
+        role="spinbutton"
+        step="1"
         type="text"
         value="100"
       />
@@ -14675,8 +14722,11 @@ exports[`Demo renders packages/react/src/InputNumber/__doc__/Disable.tsx correct
     >
       <input
         aria-readonly="true"
+        autocomplete="off"
         class="xl-input__inner emotion-2"
         readonly=""
+        role="spinbutton"
+        step="1"
         type="text"
         value="100"
       />
@@ -14705,12 +14755,24 @@ exports[`Demo renders packages/react/src/InputNumber/__doc__/Formatter.tsx corre
   display: inline-flex;
 }
 
-.emotion-0.xl-input--focused .xl-input-number__controls {
-  opacity: 1;
-}
-
 .emotion-0 .xl-input__suffix {
   margin: -4px -10px -4px 0;
+  -webkit-transform: scaleX(0);
+  -moz-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  transform: scaleX(0);
+  transform-origin: 100% 50%;
+  -webkit-transition: -webkit-transform 300ms 0ms cubic-bezier(0, 0, 0.2, 1);
+  transition: transform 300ms 0ms cubic-bezier(0, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.emotion-0:hover .xl-input__suffix,
+.emotion-0.xl-input--focused .xl-input__suffix {
+  -webkit-transform: scaleX(1);
+  -moz-transform: scaleX(1);
+  -ms-transform: scaleX(1);
+  transform: scaleX(1);
 }
 
 .emotion-1 {
@@ -14855,7 +14917,6 @@ exports[`Demo renders packages/react/src/InputNumber/__doc__/Formatter.tsx corre
 }
 
 .emotion-4 {
-  opacity: 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -14893,6 +14954,15 @@ exports[`Demo renders packages/react/src/InputNumber/__doc__/Formatter.tsx corre
 
 .emotion-5:hover {
   height: 60%;
+}
+
+.emotion-5.xl-input-number__control--disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+.emotion-5.xl-input-number__control--disabled:hover {
+  height: 40%;
 }
 
 .emotion-6 {
@@ -14938,6 +15008,15 @@ exports[`Demo renders packages/react/src/InputNumber/__doc__/Formatter.tsx corre
   height: 60%;
 }
 
+.emotion-7.xl-input-number__control--disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+.emotion-7.xl-input-number__control--disabled:hover {
+  height: 40%;
+}
+
 <div>
   <span
     class="xl-input xl-input--size-middle xl-input-number emotion-0"
@@ -14946,7 +15025,10 @@ exports[`Demo renders packages/react/src/InputNumber/__doc__/Formatter.tsx corre
       class="xl-input__wrapper emotion-1"
     >
       <input
+        autocomplete="off"
         class="xl-input__inner emotion-2"
+        role="spinbutton"
+        step="1"
         type="text"
         value="$ 1,000"
       />
@@ -15004,12 +15086,24 @@ exports[`Demo renders packages/react/src/InputNumber/__doc__/HighPrecisionMode.t
   display: inline-flex;
 }
 
-.emotion-0.xl-input--focused .xl-input-number__controls {
-  opacity: 1;
-}
-
 .emotion-0 .xl-input__suffix {
   margin: -4px -10px -4px 0;
+  -webkit-transform: scaleX(0);
+  -moz-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  transform: scaleX(0);
+  transform-origin: 100% 50%;
+  -webkit-transition: -webkit-transform 300ms 0ms cubic-bezier(0, 0, 0.2, 1);
+  transition: transform 300ms 0ms cubic-bezier(0, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.emotion-0:hover .xl-input__suffix,
+.emotion-0.xl-input--focused .xl-input__suffix {
+  -webkit-transform: scaleX(1);
+  -moz-transform: scaleX(1);
+  -ms-transform: scaleX(1);
+  transform: scaleX(1);
 }
 
 .emotion-1 {
@@ -15154,7 +15248,6 @@ exports[`Demo renders packages/react/src/InputNumber/__doc__/HighPrecisionMode.t
 }
 
 .emotion-4 {
-  opacity: 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -15192,6 +15285,15 @@ exports[`Demo renders packages/react/src/InputNumber/__doc__/HighPrecisionMode.t
 
 .emotion-5:hover {
   height: 60%;
+}
+
+.emotion-5.xl-input-number__control--disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+.emotion-5.xl-input-number__control--disabled:hover {
+  height: 40%;
 }
 
 .emotion-6 {
@@ -15237,6 +15339,15 @@ exports[`Demo renders packages/react/src/InputNumber/__doc__/HighPrecisionMode.t
   height: 60%;
 }
 
+.emotion-7.xl-input-number__control--disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+.emotion-7.xl-input-number__control--disabled:hover {
+  height: 40%;
+}
+
 <div>
   <span
     class="xl-input xl-input--size-middle xl-input-number emotion-0"
@@ -15245,7 +15356,10 @@ exports[`Demo renders packages/react/src/InputNumber/__doc__/HighPrecisionMode.t
       class="xl-input__wrapper emotion-1"
     >
       <input
+        autocomplete="off"
         class="xl-input__inner emotion-2"
+        role="spinbutton"
+        step="1"
         type="text"
         value="1000000000000000000000.1"
       />
@@ -15303,12 +15417,24 @@ exports[`Demo renders packages/react/src/InputNumber/__doc__/Range.tsx correctly
   display: inline-flex;
 }
 
-.emotion-0.xl-input--focused .xl-input-number__controls {
-  opacity: 1;
-}
-
 .emotion-0 .xl-input__suffix {
   margin: -4px -10px -4px 0;
+  -webkit-transform: scaleX(0);
+  -moz-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  transform: scaleX(0);
+  transform-origin: 100% 50%;
+  -webkit-transition: -webkit-transform 300ms 0ms cubic-bezier(0, 0, 0.2, 1);
+  transition: transform 300ms 0ms cubic-bezier(0, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.emotion-0:hover .xl-input__suffix,
+.emotion-0.xl-input--focused .xl-input__suffix {
+  -webkit-transform: scaleX(1);
+  -moz-transform: scaleX(1);
+  -ms-transform: scaleX(1);
+  transform: scaleX(1);
 }
 
 .emotion-1 {
@@ -15453,7 +15579,6 @@ exports[`Demo renders packages/react/src/InputNumber/__doc__/Range.tsx correctly
 }
 
 .emotion-4 {
-  opacity: 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -15491,6 +15616,15 @@ exports[`Demo renders packages/react/src/InputNumber/__doc__/Range.tsx correctly
 
 .emotion-5:hover {
   height: 60%;
+}
+
+.emotion-5.xl-input-number__control--disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+.emotion-5.xl-input-number__control--disabled:hover {
+  height: 40%;
 }
 
 .emotion-6 {
@@ -15536,6 +15670,15 @@ exports[`Demo renders packages/react/src/InputNumber/__doc__/Range.tsx correctly
   height: 60%;
 }
 
+.emotion-7.xl-input-number__control--disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+.emotion-7.xl-input-number__control--disabled:hover {
+  height: 40%;
+}
+
 <div>
   <span
     class="xl-input xl-input--size-middle xl-input-number emotion-0"
@@ -15544,7 +15687,12 @@ exports[`Demo renders packages/react/src/InputNumber/__doc__/Range.tsx correctly
       class="xl-input__wrapper emotion-1"
     >
       <input
+        aria-valuemax="10"
+        aria-valuemin="0"
+        autocomplete="off"
         class="xl-input__inner emotion-2"
+        role="spinbutton"
+        step="1"
         type="text"
         value="2"
       />
@@ -15602,12 +15750,24 @@ exports[`Demo renders packages/react/src/InputNumber/__doc__/Wheel.tsx correctly
   display: inline-flex;
 }
 
-.emotion-0.xl-input--focused .xl-input-number__controls {
-  opacity: 1;
-}
-
 .emotion-0 .xl-input__suffix {
   margin: -4px -10px -4px 0;
+  -webkit-transform: scaleX(0);
+  -moz-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  transform: scaleX(0);
+  transform-origin: 100% 50%;
+  -webkit-transition: -webkit-transform 300ms 0ms cubic-bezier(0, 0, 0.2, 1);
+  transition: transform 300ms 0ms cubic-bezier(0, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.emotion-0:hover .xl-input__suffix,
+.emotion-0.xl-input--focused .xl-input__suffix {
+  -webkit-transform: scaleX(1);
+  -moz-transform: scaleX(1);
+  -ms-transform: scaleX(1);
+  transform: scaleX(1);
 }
 
 .emotion-1 {
@@ -15752,7 +15912,6 @@ exports[`Demo renders packages/react/src/InputNumber/__doc__/Wheel.tsx correctly
 }
 
 .emotion-4 {
-  opacity: 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -15790,6 +15949,15 @@ exports[`Demo renders packages/react/src/InputNumber/__doc__/Wheel.tsx correctly
 
 .emotion-5:hover {
   height: 60%;
+}
+
+.emotion-5.xl-input-number__control--disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+.emotion-5.xl-input-number__control--disabled:hover {
+  height: 40%;
 }
 
 .emotion-6 {
@@ -15835,6 +16003,15 @@ exports[`Demo renders packages/react/src/InputNumber/__doc__/Wheel.tsx correctly
   height: 60%;
 }
 
+.emotion-7.xl-input-number__control--disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+.emotion-7.xl-input-number__control--disabled:hover {
+  height: 40%;
+}
+
 <div>
   <span
     class="xl-input xl-input--size-middle xl-input-number emotion-0"
@@ -15843,7 +16020,10 @@ exports[`Demo renders packages/react/src/InputNumber/__doc__/Wheel.tsx correctly
       class="xl-input__wrapper emotion-1"
     >
       <input
+        autocomplete="off"
         class="xl-input__inner emotion-2"
+        role="spinbutton"
+        step="1"
         type="text"
         value="2"
       />
