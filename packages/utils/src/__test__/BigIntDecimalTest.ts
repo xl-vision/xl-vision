@@ -124,6 +124,7 @@ describe('BigIntDecimal', () => {
     expect(new BigIntDecimal(1.111).toFixed(2)).toBe('1.11');
     expect(new BigIntDecimal(-1.111).toFixed(2)).toBe('-1.11');
     expect(new BigIntDecimal(-111.111).toFixed(2)).toBe('-111.11');
+    expect(new BigIntDecimal('a').toFixed(10)).toBe('NaN');
   });
 
   it('Test ceil', () => {
