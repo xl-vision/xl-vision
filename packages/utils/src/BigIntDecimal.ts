@@ -9,7 +9,7 @@ export type ValueType = string | number | bigint | BigIntDecimal;
  * -100.1e-1
  * -0.1e-1
  */
-const NUMBER_REGEX = /^[+-]?([1-9]\d+)|\d(\.\d+)?([Ee][+-]?\d+)?$/;
+const NUMBER_REGEX = /^[+-]?(([1-9]\d+)|\d)(\.\d+)?([Ee][+-]?\d+)?$/;
 
 export default class BigIntDecimal {
   private origin: string;
@@ -144,6 +144,14 @@ export default class BigIntDecimal {
   }
 
   divide(value: ValueType, precision: number = 10) {
+    if (precision < 0) {
+      throw new Error(`precision must be >= 0, but actual ${precision}`);
+    }
+
+    if (Math.round(precision) !== precision) {
+      throw new Error(`precision must be integer, but actual ${precision}`);
+    }
+
     if (this.nan) {
       return new BigIntDecimal(NaN);
     }
@@ -229,6 +237,10 @@ export default class BigIntDecimal {
       return false;
     }
 
+    if (ret.integer === '0') {
+      return false;
+    }
+
     return !ret.isNegative;
   }
 
@@ -236,6 +248,10 @@ export default class BigIntDecimal {
     const ret = this.subtract(value);
 
     if (ret.nan) {
+      return false;
+    }
+
+    if (ret.integer === '0') {
       return false;
     }
 
@@ -253,12 +269,30 @@ export default class BigIntDecimal {
       return false;
     }
 
-    return this.integer === v2.integer && this.multiple == v2.multiple;
+    return (
+      this.isNegative === v2.isNegative &&
+      this.integer === v2.integer &&
+      this.multiple == v2.multiple
+    );
   }
 
   toFixed(precision: number): string {
+    if (precision < 0) {
+      throw new Error(`precision must be >= 0, but actual ${precision}`);
+    }
+
+    if (Math.round(precision) !== precision) {
+      throw new Error(`precision must be integer, but actual ${precision}`);
+    }
+
     if (this.nan) {
       return 'NaN';
+    }
+
+    const prefix = this.isNegative ? '-' : '';
+
+    if (!this.multiple) {
+      return prefix + padEnd(this.integer + '.', precision, '0');
     }
 
     const integerPart = this.integer.slice(0, -this.multiple) || '0';
@@ -267,10 +301,7 @@ export default class BigIntDecimal {
     decimalPart = padEnd(decimalPart, precision, '0');
     decimalPart = decimalPart.slice(0, precision);
 
-    return (
-      (this.isNegative ? '-' : '') +
-      (precision === 0 ? integerPart : `${integerPart}.${decimalPart}`)
-    );
+    return prefix + (precision === 0 ? integerPart : `${integerPart}.${decimalPart}`);
   }
 }
 
