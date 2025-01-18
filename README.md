@@ -28,7 +28,9 @@
 # :package: Install
 
 ```
-npm install styled-components
+npm install @emotion/react
+npm install @emotion/styled
+npm install @emotion/cache
 npm install @xl-vision/react
 ```
 

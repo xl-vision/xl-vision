@@ -1,5 +1,5 @@
-import { act, render, screen } from '@testing-library/react';
-import { FC } from 'react';
+import { render, screen } from '@testing-library/react';
+import { act, FC } from 'react';
 import { triggerTransitionEnd } from 'test/utils';
 import useTransition from '..';
 

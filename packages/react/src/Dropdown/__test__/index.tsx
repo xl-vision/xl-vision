@@ -1,5 +1,6 @@
-import { act, fireEvent, render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { act } from 'react';
 import { awaitPromise } from 'test/utils';
 import { Dropdown } from '@xl-vision/react';
 

@@ -1,5 +1,3 @@
-# 锚点
-
 用于跳转到页面指定位置。
 
 ## 示例
@@ -28,7 +26,9 @@
 
 :::
 
-## Anchor API
+## 属性
+
+### Anchor
 
 > 启用`affix`时，效果同[Affix](/Affix)
 
@@ -43,15 +43,17 @@
 | targetOffset | 锚点滚动偏移量 | number | 0 | false |
 | onChange | 监听锚点链接改变 | (currentActiveLink: string) => void | - | false |
 
-## Anchor Methods
-
-| 方法     | 说明               | 类型                         | 默认值 |
-| -------- | ------------------ | ---------------------------- | ------ |
-| scrollTo | 滚动到指定的链接处 | (activeLink: string) => void | -      |
-
-## AnchorLink API
+### AnchorLink
 
 | 参数  | 说明     | 类型   | 默认值 | 是否必填 |
 | ----- | -------- | ------ | ------ | -------- |
 | title | 标题     | string | -      | true     |
 | href  | 锚点链接 | string | -      | true     |
+
+## 方法
+
+### Anchor
+
+| 方法     | 说明               | 类型                         | 默认值 |
+| -------- | ------------------ | ---------------------------- | ------ |
+| scrollTo | 滚动到指定的链接处 | (activeLink: string) => void | -      |

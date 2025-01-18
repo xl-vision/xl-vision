@@ -1,5 +1,3 @@
-# Anchor
-
 Used to jump to the specified location on the page.
 
 ## Examples
@@ -28,7 +26,9 @@ The highlight is activated when the scroll offset of the anchor target is within
 
 :::
 
-## Anchor API
+## Properties
+
+### Anchor
 
 > When `affix` is enabled, the effect is the same as [Affix](/Affix)
 
@@ -43,15 +43,17 @@ The highlight is activated when the scroll offset of the anchor target is within
 | targetOffset | Anchor scroll offset | number | 0 | false |
 | onChange | Listen for anchor link changes | (currentActiveLink: string) => void | - | false |
 
-## Anchor Methods
-
-| Method   | Description                  | Type                         | Default |
-| -------- | ---------------------------- | ---------------------------- | ------- |
-| scrollTo | scroll to the specified link | (activeLink: string) => void | -       |
-
-## AnchorLink API
+### AnchorLink
 
 | Property | Description | Type   | Default | Require |
 | -------- | ----------- | ------ | ------- | ------- |
 | title    | Title       | string | -       | true    |
 | href     | Anchor href | string | -       | true    |
+
+## Methods
+
+### Anchor
+
+| Method   | Description                  | Type                         | Default |
+| -------- | ---------------------------- | ---------------------------- | ------- |
+| scrollTo | scroll to the specified link | (activeLink: string) => void | -       |

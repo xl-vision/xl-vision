@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { act } from 'react-dom/test-utils';
+import { act } from 'react';
 import { Popover } from '@xl-vision/react';
 
 describe('Popover', () => {

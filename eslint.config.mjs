@@ -101,6 +101,7 @@ export default [
       'packages/icons/src',
       'packages/icons/third',
       'packages/icons/scripts/template',
+      '**/__snapshots__',
     ],
   },
   ...baseConfig,
@@ -318,6 +319,7 @@ export default [
       '@typescript-eslint/no-unsafe-call': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-misused-promises': 'off',
+      '@typescript-eslint/no-unsafe-member-access': 'off',
       '@typescript-eslint/no-floating-promises': [
         'error',
         {

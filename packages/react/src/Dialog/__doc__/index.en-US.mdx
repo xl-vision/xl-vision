@@ -1,5 +1,3 @@
-# Dialog
-
 A modal box that masks other content pops up, carrying operations that require the user's priority.
 
 ## Examples
@@ -80,7 +78,7 @@ Test method update.
 
 :::
 
-## Dialog API
+## Properties
 
 | Property | Description | Type | Default | Require |
 | --- | --- | --- | --- | --- |
@@ -95,7 +93,9 @@ Test method update.
 | confirmText | Confirm button text, support `i18n` | string | 确认 | false |
 | prompt | Prompt dialog, only confirm button | boolean | - | false |
 
-## Dialog.open
+## Methods
+
+### Dialog.open
 
 In addition to the basic`Dialog.open`, it also includes
 
@@ -106,8 +106,6 @@ In addition to the basic`Dialog.open`, it also includes
 - `Dialog.confirm`
 
 The above are all functions, the parameter is object, and the specific attributes are as follows
-
-### Dialog.open API
 
 | Property | Description | Type | Default | Require |
 | --- | --- | --- | --- | --- |
@@ -153,7 +151,7 @@ browserHistory.listen(() => {
 });
 ```
 
-## Dialog.useDialog
+### Dialog.useDialog
 
 > `Dialog.useDialog` has almost the same parameters and methods as `Dialog.open`, but there is no need to pass in `themeProviderProps` and `configProviderProps`.
 

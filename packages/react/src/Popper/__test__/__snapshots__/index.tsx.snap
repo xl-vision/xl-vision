@@ -49,14 +49,14 @@ exports[`Popper test trigger click 3`] = `
     </button>
   </div>
   <div
-    aria-hidden="false"
+    aria-hidden="true"
     class="xl-popper"
     style="position: absolute; left: 0px; top: 0px; transform: translate3D(0px, 0px, 0); z-index: 1001;"
   >
     <div
       class="xl-popper__inner"
       data-placement="top"
-      style="position: relative; transform-origin: 0px 100%;"
+      style="position: relative; transform-origin: 0px 100%; display: none;"
     >
       <div>
         popup
@@ -115,14 +115,14 @@ exports[`Popper test trigger contextMenu 3`] = `
     </button>
   </div>
   <div
-    aria-hidden="false"
+    aria-hidden="true"
     class="xl-popper"
     style="position: absolute; left: 0px; top: 0px; transform: translate3D(0px, 0px, 0); z-index: 1002;"
   >
     <div
       class="xl-popper__inner"
       data-placement="top"
-      style="position: relative; transform-origin: 0px 100%;"
+      style="position: relative; transform-origin: 0px 100%; display: none;"
     >
       <div>
         popup
@@ -181,14 +181,14 @@ exports[`Popper test trigger focus 3`] = `
     </button>
   </div>
   <div
-    aria-hidden="false"
+    aria-hidden="true"
     class="xl-popper"
     style="position: absolute; left: 0px; top: 0px; transform: translate3D(0px, 0px, 0); z-index: 1003;"
   >
     <div
       class="xl-popper__inner"
       data-placement="top"
-      style="position: relative; transform-origin: 0px 100%;"
+      style="position: relative; transform-origin: 0px 100%; display: none;"
     >
       <div>
         popup
@@ -247,14 +247,14 @@ exports[`Popper test trigger hover 3`] = `
     </button>
   </div>
   <div
-    aria-hidden="false"
+    aria-hidden="true"
     class="xl-popper"
     style="position: absolute; left: 0px; top: 0px; transform: translate3D(0px, 0px, 0); z-index: 1000;"
   >
     <div
       class="xl-popper__inner"
       data-placement="top"
-      style="position: relative; transform-origin: 0px 100%;"
+      style="position: relative; transform-origin: 0px 100%; display: none;"
     >
       <div>
         popup

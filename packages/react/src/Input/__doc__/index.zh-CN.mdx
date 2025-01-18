@@ -1,5 +1,3 @@
-# 输入框
-
 通过鼠标或键盘输入内容，是最基础的表单域的包装。
 
 ## 示例
@@ -92,7 +90,9 @@ focus
 
 :::
 
-## Input API
+## 属性
+
+### Input
 
 | 参数         | 说明             | 类型                           | 默认值   | 是否必填 |
 | ------------ | ---------------- | ------------------------------ | -------- | -------- |
@@ -103,12 +103,16 @@ focus
 | onChange     | 值改变事件       | function                       | -        | false    |
 | value        | 值               | string                         | -        | false    |
 | defaultValue | 默认值           | string                         | -        | false    |
+| disabled     | 禁用             | boolean                        | -        | false    |
+| readOnly     | 只读             | boolean                        | -        | false    |
 | showCount    | 是否显示字数     | boolean                        | -        | false    |
 | allowClear   | 是否展示清空图标 | boolean                        | -        | false    |
 | size         | 输入框大小       | `middle` \| `large` \| `small` | `middle` | false    |
 | maxLength    | 限制最大长度     | number                         | -        | false    |
 
-## Password API
+> `Input` 组件其他属性和普通 `input` 一致。
+
+### Password
 
 > 其余参数请参考`Input`
 
@@ -116,7 +120,7 @@ focus
 | ---------- | ----------- | ------------------------------------- | ------ | -------- |
 | renderIcon | 自定义 icon | (visible: boolean) => React.ReactNode | -      | false    |
 
-## InputGroup API
+### InputGroup
 
 > 其余参数请参考`Input`
 

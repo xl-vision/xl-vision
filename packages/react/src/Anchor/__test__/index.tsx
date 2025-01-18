@@ -16,7 +16,7 @@ describe('Anchor', () => {
 
     throttleByAnimationFrameSpy.mockImplementation((fn) => {
       const cb: any = fn;
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+
       cb.cancel = noop;
       // eslint-disable-next-line @typescript-eslint/no-unsafe-return
       return cb;
@@ -35,7 +35,7 @@ describe('Anchor', () => {
 
     jest.spyOn(window, 'scrollTo').mockImplementation((x, y) => {
       if (isObject(x)) {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         y = (x as any).top;
       }
       window.scrollY = y;
