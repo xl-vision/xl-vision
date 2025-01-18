@@ -49,7 +49,7 @@ const Layout: FC<{ children: ReactNode; params: Promise<{ lang: Lang }> }> = asy
           <ThemeProvider>
             <CssBaseline />
             <GlobalStyle />
-            <Suspense>{children}</Suspense>
+            <Suspense fallback={<div>loading</div>}>{children}</Suspense>
           </ThemeProvider>
         </StyleRegistry>
         <BaiduAnalytics />
