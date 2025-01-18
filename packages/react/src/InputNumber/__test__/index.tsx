@@ -313,6 +313,72 @@ describe('InputNumber', () => {
     expect(fn.mock.calls.length).toBe(0);
   });
 
+  it('Test highPrecisionMode with max and min', () => {
+    const value = padEnd('1', 20, '0') + '.' + padStart('1', 20, '0');
+    const max = padEnd('1', 19, '0') + '2';
+    const min = padEnd('1', 20, '0');
+
+    const fn = jest.fn();
+
+    const wrapper = render(
+      <InputNumber
+        defaultValue={value}
+        highPrecisionMode={true}
+        max={max}
+        min={min}
+        onChange={fn}
+      />,
+    );
+
+    expect(fn.mock.calls.length).toBe(0);
+
+    const input = wrapper.container.querySelector('input')!;
+
+    fireEvent.keyDown(input, {
+      key: 'ArrowUp',
+    });
+
+    expect(fn.mock.calls.length).toBe(1);
+    expect(fn.mock.calls[0][0]).toBe(padEnd('1', 19, '0') + '1' + '.' + padStart('1', 20, '0'));
+    fn.mockClear();
+
+    fireEvent.keyDown(input, {
+      key: 'ArrowUp',
+    });
+
+    expect(fn.mock.calls.length).toBe(1);
+    expect(fn.mock.calls[0][0]).toBe(max);
+    fn.mockClear();
+
+    fireEvent.keyDown(input, {
+      key: 'ArrowUp',
+    });
+
+    expect(fn.mock.calls.length).toBe(0);
+
+    fireEvent.keyDown(input, {
+      key: 'ArrowDown',
+    });
+
+    expect(fn.mock.calls.length).toBe(1);
+    expect(fn.mock.calls[0][0]).toBe(padEnd('1', 19, '0') + '1');
+    fn.mockClear();
+
+    fireEvent.keyDown(input, {
+      key: 'ArrowDown',
+    });
+
+    expect(fn.mock.calls.length).toBe(1);
+    expect(fn.mock.calls[0][0]).toBe(padEnd('1', 19, '0') + '0');
+    fn.mockClear();
+
+    fireEvent.keyDown(input, {
+      key: 'ArrowDown',
+    });
+
+    expect(fn.mock.calls.length).toBe(0);
+  });
+
   it('Test parse and formatter', () => {
     const fn = jest.fn();
 

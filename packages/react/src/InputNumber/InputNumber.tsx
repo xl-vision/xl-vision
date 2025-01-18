@@ -247,10 +247,20 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
         v = v2;
       }
 
-      if (max !== undefined && v.greaterThan(max)) {
-        v = value;
-      } else if (min !== undefined && v.lessThan(min)) {
-        v = value;
+      if (max !== undefined) {
+        const maxBigIntDecimal = new BigIntDecimal(max);
+
+        if (v.greaterThan(maxBigIntDecimal)) {
+          v = maxBigIntDecimal;
+        }
+      }
+
+      if (min !== undefined) {
+        const mminBigIntDecimal = new BigIntDecimal(min);
+
+        if (v.lessThan(mminBigIntDecimal)) {
+          v = mminBigIntDecimal;
+        }
       }
     } else {
       v = Number(v);
@@ -258,7 +268,7 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
       if (precision && !formatter) {
         const magnification = 10 ** precision;
 
-        const v2 = Math.round(+v * magnification) / magnification;
+        const v2 = Math.round(v * magnification) / magnification;
 
         if (ignorePercision && v !== v2) {
           return false;
@@ -266,10 +276,18 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
         v = v2;
       }
 
-      if (max !== undefined && v > Number(max)) {
-        v = value;
-      } else if (min !== undefined && v < Number(min)) {
-        v = value;
+      if (max !== undefined) {
+        const maxNum = Number(max);
+        if (v > maxNum) {
+          v = maxNum;
+        }
+      }
+
+      if (min !== undefined) {
+        const minNum = Number(min);
+        if (v < minNum) {
+          v = minNum;
+        }
       }
     }
 
