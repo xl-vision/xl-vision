@@ -1,3 +1,5 @@
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Metadata } from 'next';
 import { FC, ReactNode, Suspense } from 'react';
 import BaiduAnalytics from '@docs/components/BaiduAnalytics';
@@ -52,6 +54,8 @@ const Layout: FC<{ children: ReactNode; params: Promise<{ lang: Lang }> }> = asy
         </StyleRegistry>
         <BaiduAnalytics />
         <GoogleAnalytics />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
