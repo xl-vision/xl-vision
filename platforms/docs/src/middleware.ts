@@ -19,9 +19,12 @@ export const middleware = (request: NextRequest) => {
 
   const lang = negotiator.language(supportedLangs as unknown as Array<string>) || defaultLang;
 
-  return NextResponse.redirect(new URL(`/${lang}${pathname === '/' ? '' : pathname}`, request.url));
+  request.nextUrl.pathname = `/${lang}${pathname}`;
+  // e.g. incoming request is /products
+  // The new URL is now /en-US/products
+  return NextResponse.redirect(request.nextUrl);
 };
 
 export const config = {
-  matcher: ['/((?!_next|icon.svg|robots.txt|sitemap|img/).*)'],
+  matcher: ['/((?!_next|favicon.png|robots.txt|sitemap|img/).*)'],
 };
