@@ -690,6 +690,7 @@ exports[`Entry @xl-vision/react 1`] = `
   "Input",
   "InputNumber",
   "Textarea",
+  "Form",
   "Affix",
   "ResizeObserver",
   "BackTop",

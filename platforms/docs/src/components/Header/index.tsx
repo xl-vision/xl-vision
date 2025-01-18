@@ -176,12 +176,7 @@ const Header: FC<HeaderProps> = ({ mobileMenus, ...others }) => {
             }
             mode='fixed'
           >
-            <Button
-              aria-label='Language'
-              prefixIcon={<Translate />}
-              suffixIcon={<DownOutlined />}
-              variant='text'
-            >
+            <Button prefixIcon={<Translate />} suffixIcon={<DownOutlined />} variant='text'>
               <span className='sm-up'>{locale.name}</span>
             </Button>
           </Dropdown>

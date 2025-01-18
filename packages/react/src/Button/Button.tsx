@@ -11,6 +11,7 @@ import {
   ComponentType,
   useEffect,
   useCallback,
+  useRef,
 } from 'react';
 import BaseButton, { BaseButtonProps } from '../BaseButton';
 import CollapseTransition from '../CollapseTransition';
@@ -316,6 +317,10 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((p
 
   const [LoadingIcon, setLoadingIcon] = useState<ComponentType<object>>();
 
+  const childRef = useRef<HTMLSpanElement>(null);
+
+  const [defaultAriaLabel, setDefaultAriaLabel] = useState<string>();
+
   const icon = !children;
 
   useEffect(() => {
@@ -325,6 +330,22 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((p
       setLoadingIcon(undefined);
     }
   }, [loading, prefixIcon]);
+
+  useEffect(() => {
+    const el = childRef.current;
+
+    if (!el) {
+      return;
+    }
+
+    const textContent = el.textContent?.trim();
+
+    if (!textContent) {
+      return;
+    }
+
+    setDefaultAriaLabel(textContent);
+  }, [children]);
 
   const handleLoadingFinished = useCallback(() => {
     setLoadingIcon(undefined);
@@ -378,6 +399,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((p
 
   return (
     <ButtonRoot
+      aria-label={defaultAriaLabel}
       {...others}
       className={rootClasses}
       disabled={disabled}
@@ -396,7 +418,11 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((p
       }}
     >
       {prefix}
-      {children && <span className={`${rootClassName}__inner`}>{children}</span>}
+      {children && (
+        <span className={`${rootClassName}__inner`} ref={childRef}>
+          {children}
+        </span>
+      )}
       {suffix}
     </ButtonRoot>
   );

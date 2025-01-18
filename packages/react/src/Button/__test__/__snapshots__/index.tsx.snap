@@ -764,6 +764,7 @@ exports[`Button Test basic render 1`] = `
 <div>
   <div>
     <button
+      aria-label="button"
       class="xl-base-button xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained emotion-0"
     >
       <span
@@ -780,6 +781,7 @@ exports[`Button Test basic render 1`] = `
       />
     </button>
     <button
+      aria-label="button"
       class="xl-base-button xl-button xl-button--size-middle xl-button--color-error xl-button--variant-contained emotion-3"
     >
       <span
@@ -796,6 +798,7 @@ exports[`Button Test basic render 1`] = `
       />
     </button>
     <button
+      aria-label="button"
       class="xl-base-button xl-button xl-button--size-middle xl-button--color-default xl-button--variant-outlined emotion-6"
     >
       <span
@@ -812,6 +815,7 @@ exports[`Button Test basic render 1`] = `
       />
     </button>
     <button
+      aria-label="button"
       class="xl-base-button xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained emotion-0"
     >
       <span
@@ -840,6 +844,7 @@ exports[`Button Test basic render 1`] = `
       />
     </button>
     <button
+      aria-label="button"
       class="xl-base-button xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained emotion-0"
     >
       <span
@@ -914,6 +919,7 @@ exports[`Button Test basic render 1`] = `
       />
     </button>
     <button
+      aria-label="button"
       class="xl-base-button xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--long emotion-29"
     >
       <span
@@ -930,6 +936,7 @@ exports[`Button Test basic render 1`] = `
       />
     </button>
     <button
+      aria-label="button"
       class="xl-base-button xl-base-button--loading xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--loading emotion-32"
       tabindex="-1"
     >
@@ -984,6 +991,7 @@ exports[`Button Test basic render 1`] = `
       />
     </button>
     <button
+      aria-label="button"
       class="xl-base-button xl-base-button--loading xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--loading emotion-32"
       tabindex="-1"
     >
