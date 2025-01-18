@@ -7,7 +7,7 @@ const Demo = () => {
     <InputNumber
       defaultValue={1000}
       formatter={(value) => (value ? `$ ${value}`.replaceAll(/\B(?=(\d{3})+(?!\d))/g, ',') : '')}
-      parser={(value) => value?.replace(/\$\s?|(,*)/g, '') as unknown as number}
+      parser={(value) => value.replaceAll(/\$\s?|(,*)/g, '')}
       onChange={(v) => console.log(v)}
     />
   );

@@ -117,6 +117,8 @@ const InputNumberControlDown = styled(InputNumberControlUp, {
   };
 });
 
+const NUMBER_REGEX = /^-?(([1-9]\d+)|\d)(\.\d+)?$/;
+
 const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) => {
   const {
     onChange,
@@ -216,6 +218,10 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
       return true;
     }
 
+    if (!NUMBER_REGEX.test(newValue)) {
+      return false;
+    }
+
     let v: BigIntDecimal | InputNumberValueType = handleParser(newValue);
 
     if (v === null) {
@@ -247,7 +253,7 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
         v = value;
       }
     } else {
-      v = +v;
+      v = Number(v);
 
       if (precision && !formatter) {
         const magnification = 10 ** precision;
@@ -260,9 +266,9 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
         v = v2;
       }
 
-      if (max !== undefined && v > +max) {
+      if (max !== undefined && v > Number(max)) {
         v = value;
-      } else if (min !== undefined && v < +min) {
+      } else if (min !== undefined && v < Number(min)) {
         v = value;
       }
     }
@@ -402,9 +408,9 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
       e.preventDefault();
 
       if (e.deltaY > 0) {
-        handleUp();
-      } else if (e.deltaY < 0) {
         handleDown();
+      } else if (e.deltaY < 0) {
+        handleUp();
       }
     };
 
