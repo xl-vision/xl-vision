@@ -126,6 +126,9 @@ export type { InputNumberProps } from './InputNumber';
 export { default as Textarea } from './Textarea';
 export type { TextareaProps } from './Textarea';
 
+export { default as Form } from './Form';
+export type { FormProps } from './Form';
+
 export { default as Affix } from './Affix';
 export type { AffixProps, AffixIntance } from './Affix';
 

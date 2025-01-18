@@ -103,6 +103,14 @@ const componentRoutes: Array<RouteType> = [
         name: 'Textarea',
         docs: () => import('@xl-vision/react/src/Textarea/__doc__/index.en-US.mdx?locale'),
       },
+      {
+        titleMap: {
+          'en-US': 'Form',
+          'zh-CN': '表单',
+        },
+        name: 'Form',
+        docs: () => import('@xl-vision/react/src/Form/__doc__/index.en-US.mdx?locale'),
+      },
     ],
   },
   {
