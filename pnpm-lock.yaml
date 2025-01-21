@@ -139,8 +139,8 @@ importers:
         specifier: ^6.10.2
         version: 6.10.2(eslint@9.18.0(jiti@2.4.2))
       eslint-plugin-prettier:
-        specifier: ^5.2.1
-        version: 5.2.1(eslint-config-prettier@9.1.0(eslint@9.18.0(jiti@2.4.2)))(eslint@9.18.0(jiti@2.4.2))(prettier@3.4.2)
+        specifier: ^5.2.2
+        version: 5.2.3(eslint-config-prettier@9.1.0(eslint@9.18.0(jiti@2.4.2)))(eslint@9.18.0(jiti@2.4.2))(prettier@3.4.2)
       eslint-plugin-promise:
         specifier: ^7.2.1
         version: 7.2.1(eslint@9.18.0(jiti@2.4.2))
@@ -346,8 +346,8 @@ importers:
   platforms/docs:
     dependencies:
       '@babel/standalone':
-        specifier: ^7.26.5
-        version: 7.26.5
+        specifier: ^7.26.6
+        version: 7.26.6
       '@codemirror/lang-javascript':
         specifier: ^6.2.2
         version: 6.2.2
@@ -1083,8 +1083,8 @@ packages:
     resolution: {integrity: sha512-FDSOghenHTiToteC/QRlv2q3DhPZ/oOXTBoirfWNx1Cx3TMVcGWQtMMmQcSvb/JjpNeGzx8Pq/b4fKEJuWm1sw==}
     engines: {node: '>=6.9.0'}
 
-  '@babel/standalone@7.26.5':
-    resolution: {integrity: sha512-vXbSrFq1WauHvOg/XWcjkF6r7wDSHbN3+3Aro6LYjfODpGw8dCyqqbUMRX5LXlgzVAUrTSN6JkepFiHhLKHV5Q==}
+  '@babel/standalone@7.26.6':
+    resolution: {integrity: sha512-h1mkoNFYCqDkS+vTLGzsQYvp1v1qbuugk4lOtb/oyjArZ+EtreAaxcSYg3rSIzWZRQOjx4iqGe7A8NRYIMSTTw==}
     engines: {node: '>=6.9.0'}
 
   '@babel/template@7.25.9':
@@ -3245,8 +3245,8 @@ packages:
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9
 
-  eslint-plugin-prettier@5.2.1:
-    resolution: {integrity: sha512-gH3iR3g4JfF+yYPaJYkN7jEl9QbweL/YfkoRlNnuIEHEz1vHVlCmWOS+eGGiRuzHQXdJFCOTxRgvju9b8VUmrw==}
+  eslint-plugin-prettier@5.2.3:
+    resolution: {integrity: sha512-qJ+y0FfCp/mQYQ/vWQ3s7eUlFEL4PyKfAJxsnYTJ4YT73nsJBWqmEpFryxV9OeUiqmsTsYJ5Y+KDNaeP31wrRw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       '@types/eslint': '>=8.0.0'
@@ -7112,7 +7112,7 @@ snapshots:
     dependencies:
       regenerator-runtime: 0.14.1
 
-  '@babel/standalone@7.26.5': {}
+  '@babel/standalone@7.26.6': {}
 
   '@babel/template@7.25.9':
     dependencies:
@@ -9593,7 +9593,7 @@ snapshots:
       safe-regex-test: 1.1.0
       string.prototype.includes: 2.0.1
 
-  eslint-plugin-prettier@5.2.1(eslint-config-prettier@9.1.0(eslint@9.18.0(jiti@2.4.2)))(eslint@9.18.0(jiti@2.4.2))(prettier@3.4.2):
+  eslint-plugin-prettier@5.2.3(eslint-config-prettier@9.1.0(eslint@9.18.0(jiti@2.4.2)))(eslint@9.18.0(jiti@2.4.2))(prettier@3.4.2):
     dependencies:
       eslint: 9.18.0(jiti@2.4.2)
       prettier: 3.4.2
