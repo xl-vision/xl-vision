@@ -28,3 +28,10 @@ export type DeepPartial<T> = T extends
                 {
                   [K in keyof T]?: DeepPartial<T[K]>;
                 };
+
+export type RefInstance<P extends object, E extends Element | void = void> = P &
+  (E extends void
+    ? {}
+    : {
+        nativeElement: E | null;
+      });

@@ -3,10 +3,11 @@ import { isProduction } from '@xl-vision/utils';
 
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { HTMLAttributes, ReactNode, forwardRef, useContext, useEffect } from 'react';
+import { HTMLAttributes, ReactNode, forwardRef, useContext, useEffect, useImperativeHandle, useRef } from 'react';
 import AnchorContext from './AnchorContext';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
+import { RefInstance } from '../types';
 
 export type AnchorLinkProps = Omit<HTMLAttributes<HTMLDivElement>, 'title'> & {
   title: ReactNode;
@@ -49,12 +50,25 @@ const AnchorLinkTitle = styled('a', {
   };
 });
 
-const AnchorLink = forwardRef<HTMLDivElement, AnchorLinkProps>((props, ref) => {
+export type AnchorLinkInstance = RefInstance<{}, HTMLDivElement>
+
+
+const AnchorLink = forwardRef<AnchorLinkInstance, AnchorLinkProps>((props, ref) => {
   const { clsPrefix } = useTheme();
 
   const { title, href, className, children, ...others } = props;
 
+  const rootRef = useRef<HTMLDivElement>(null)
+
   const { activeLink, registerLink, unregisterLink, scrollTo } = useContext(AnchorContext);
+
+  useImperativeHandle(ref, () => {
+    return {
+      get nativeElement() {
+        return rootRef.current
+      }
+    }
+  })
 
   const handleClick = useConstantFn(() => {
     scrollTo(href);
@@ -84,7 +98,7 @@ const AnchorLink = forwardRef<HTMLDivElement, AnchorLinkProps>((props, ref) => {
   });
 
   return (
-    <AnchorLinkRoot {...others} className={rootClasses} ref={ref}>
+    <AnchorLinkRoot {...others} className={rootClasses} ref={rootRef}>
       <AnchorLinkTitle
         className={titleClasses}
         href={href}

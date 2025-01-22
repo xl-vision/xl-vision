@@ -61,9 +61,9 @@ const styled = <
   });
 
   const overrideCreateStyledComponent = <
-    StyleProps extends object | undefined = undefined,
+    StyleProps extends object | void = void,
     Props extends Pick<ExtractProps<Tag>, ForwardedProps> = Pick<ExtractProps<Tag>, ForwardedProps>,
-    ActualStyleProps = StyleProps extends undefined ? object : { styleProps: StyleProps },
+    ActualStyleProps = StyleProps extends void ? object : { styleProps: StyleProps },
     ReceivedThemeProps = { theme: Theme } & ActualStyleProps,
     PassedThemeProps = { theme?: Theme } & ActualStyleProps,
   >(

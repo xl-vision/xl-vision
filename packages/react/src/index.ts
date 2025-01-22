@@ -1,10 +1,9 @@
 export { default as styled } from './styled';
-export { default as createGlobalStyles } from './createGlobalStyles';
-
 export type { XlOptions } from './styles';
 
+export { default as createGlobalStyles } from './createGlobalStyles';
+
 export { default as ThemeProvider } from './ThemeProvider';
-export { default as useTheme } from './useTheme';
 export type {
   ThemeProviderProps,
   Theme,
@@ -34,6 +33,8 @@ export type {
   Sizes,
   Style,
 } from './ThemeProvider';
+
+export { default as useTheme } from './useTheme';
 
 export { default as Transition } from './Transition';
 export type { TransitionProps } from './Transition';
@@ -136,7 +137,7 @@ export { default as BackTop } from './BackTop';
 export type { BackTopProps } from './BackTop';
 
 export { default as Anchor } from './Anchor';
-export type { AnchorProps, AnchorLinkProps, AnchorType, AnchorInstance } from './Anchor';
+export type { AnchorProps, AnchorLinkProps, AnchorType, AnchorInstance, AnchorLinkInstance } from './Anchor';
 
 export { default as Message } from './Message';
 export type {

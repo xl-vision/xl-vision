@@ -19,7 +19,7 @@ import {
   useEffect,
   useMemo,
   useCallback,
-  LegacyRef,
+  useImperativeHandle,
 } from 'react';
 import AnchorContext from './AnchorContext';
 import Affix from '../Affix';
@@ -27,6 +27,7 @@ import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 import { throttleByAnimationFrame } from '../utils/perf';
 import { getScroll, scrollTo } from '../utils/scroll';
+import { RefInstance } from '../types';
 
 export type AnchorType = 'block' | 'rail';
 
@@ -86,9 +87,12 @@ const HREF_MATCHER_REGX = /#([\S ]+)$/;
 
 const getDefaultTarget = () => window;
 
-export type AnchorInstance = Omit<HTMLDivElement, 'scrollTo'> & {
-  scrollTo: (link: string) => void;
-};
+export type AnchorInstance = RefInstance<
+  {
+    scrollTo: (link: string) => void;
+  },
+  HTMLDivElement
+>;
 
 const Anchor = forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
   const { clsPrefix } = useTheme();
@@ -112,9 +116,7 @@ const Anchor = forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
   const affixTarget = affixTargetProp || scrollTargetProp || getDefaultTarget;
   const scrollTarget = scrollTargetProp || affixTarget;
 
-  const rootRef = useRef<AnchorInstance>(null);
-
-  const forkRef = useForkRef(ref, rootRef);
+  const rootRef = useRef<HTMLDivElement>(null);
 
   const [currentScrollTarget, setCurrentScrollTarget] = useState<Window | HTMLElement>();
 
@@ -229,6 +231,15 @@ const Anchor = forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
     });
   });
 
+  useImperativeHandle(ref, () => {
+    return {
+      scrollTo: handleScrollTo,
+      get nativeElement() {
+        return rootRef.current
+      }
+    };
+  }, [handleScrollTo]);
+
   const updateInkNode = useConstantFn(() => {
     const rootNode = rootRef.current;
 
@@ -301,7 +312,7 @@ const Anchor = forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
     <AnchorRoot
       {...others}
       className={rootClasses}
-      ref={forkRef as LegacyRef<HTMLDivElement>}
+      ref={rootRef}
       styleProps={{ type }}
     >
       {inkNode}

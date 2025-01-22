@@ -5,9 +5,9 @@ import { RowProps } from '../../Row';
 import { Theme } from '../createTheme';
 
 export type Style<
-  S extends object | undefined = undefined,
+  S extends object | void = void,
   P extends object = object,
-  ST = S extends undefined ? { theme: Theme } : { styleProps: S; theme: Theme },
+  ST = S extends void ? { theme: Theme } : { styleProps: S; theme: Theme },
 > = Interpolation<P & ST>;
 
 export type PartialOverrideStyles<T extends Record<string, unknown>> = Partial<{
