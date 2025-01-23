@@ -19,8 +19,11 @@ const ThemeProvider: FC<ThemeProviderProps> = (props) => {
     () => others,
     [others],
     ([prevConfig], [currentConfig]) => {
+      if (prevConfig === currentConfig) {
+        return false;
+      }
       const prevKeys = Object.keys(prevConfig) as Array<keyof typeof prevConfig>;
-      const currentKeys = Object.keys(currentConfig) as Array<keyof typeof prevConfig>;
+      const currentKeys = Object.keys(currentConfig) as Array<keyof typeof currentConfig>;
       return (
         prevKeys.length !== currentKeys.length ||
         prevKeys.some((key) => prevConfig[key] !== currentConfig[key])

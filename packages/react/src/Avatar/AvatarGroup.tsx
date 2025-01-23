@@ -9,12 +9,15 @@ import {
   Children,
   cloneElement,
   useMemo,
+  useRef,
+  useImperativeHandle,
 } from 'react';
 import Avatar, { AvatarProps, AvatarShape, AvatarSize } from './Avatar';
 import AvatarContext, { AvatarContextProps } from './AvatarContext';
 import Popover from '../Popover';
 import { styled } from '../styles';
 import { SizeVariant, useTheme } from '../ThemeProvider';
+import { RefInstance } from '../types';
 
 export type AvatarGroupPopupPlacement = 'none' | 'top' | 'bottom';
 
@@ -26,6 +29,8 @@ export type AvatarGroupProps = HTMLAttributes<HTMLDivElement> & {
   shape?: AvatarShape;
   size?: AvatarSize;
 };
+
+export type AvatarGroupInstance = RefInstance<HTMLDivElement>;
 
 const displayName = 'AvatarGroup';
 
@@ -59,7 +64,7 @@ const AvatarPopup = styled(Popover, {
   };
 });
 
-const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>((props, ref) => {
+const AvatarGroup = forwardRef<AvatarGroupInstance, AvatarGroupProps>((props, ref) => {
   const { clsPrefix, sizeVariant } = useTheme();
 
   const {
@@ -72,6 +77,16 @@ const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>((props, ref) =>
     maxStyle,
     ...others
   } = props;
+
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useImperativeHandle(ref, () => {
+    return {
+      get nativeElement() {
+        return rootRef.current;
+      },
+    };
+  }, []);
 
   const childArray = Children.map<ReactElement<AvatarProps>, ReactElement<AvatarProps>>(
     children,
@@ -129,7 +144,7 @@ const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>((props, ref) =>
       <AvatarGroupRoot
         {...others}
         className={rootClasses}
-        ref={ref}
+        ref={rootRef}
         styleProps={{ size: rootSize }}
       >
         {showedChildren}

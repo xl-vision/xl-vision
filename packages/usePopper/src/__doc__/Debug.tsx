@@ -1,7 +1,7 @@
 'use client';
 
-import { styled, Button, Portal } from '@xl-vision/react';
-import { useMemo, useCallback, CSSProperties, useEffect } from 'react';
+import { styled, Button, Portal, ButtonInstance } from '@xl-vision/react';
+import { useMemo, useCallback, CSSProperties, useEffect, RefCallback } from 'react';
 import {
   usePopper,
   offset,
@@ -84,6 +84,13 @@ const Demo = () => {
 
   const { reference, popper, x, y, mode, update: handleUpdate, extra } = usePopper(popperOptions);
 
+  const referenceRef = useCallback<RefCallback<ButtonInstance>>(
+    (instance) => {
+      reference(instance?.nativeElement || null);
+    },
+    [reference],
+  );
+
   const hidden = extra.hide?.referenceHidden;
 
   const container = useCallback(() => document.body, []);
@@ -106,7 +113,7 @@ const Demo = () => {
     <Root onScroll={handleUpdate}>
       <div className='container'>
         <div className='box' />
-        <Button className='reference' color='primary' ref={reference}>
+        <Button className='reference' color='primary' ref={referenceRef}>
           reference
         </Button>
         <Portal container={container}>

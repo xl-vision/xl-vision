@@ -1,4 +1,4 @@
-import { useConstantFn, useForkRef } from '@xl-vision/hooks';
+import { useConstantFn } from '@xl-vision/hooks';
 import { CSSObject } from '@xl-vision/styled-engine';
 import { isProduction } from '@xl-vision/utils';
 import clsx from 'clsx';
@@ -16,12 +16,14 @@ import {
   isValidElement,
   useMemo,
   CSSProperties,
+  useImperativeHandle,
 } from 'react';
 import { flushSync } from 'react-dom';
 import AvatarContext from './AvatarContext';
 import ResizeObserver from '../ResizeObserver';
 import { styled } from '../styles';
 import { SizeVariant, useTheme } from '../ThemeProvider';
+import { RefInstance } from '../types';
 
 export type AvatarShape = 'circle' | 'square' | 'round';
 
@@ -37,6 +39,8 @@ export type AvatarProps = HTMLAttributes<HTMLSpanElement> & {
   alt?: string;
   onError?: () => boolean;
 };
+
+export type AvatarInstance = RefInstance<HTMLSpanElement>;
 
 const displayName = 'Avatar';
 
@@ -99,7 +103,7 @@ const AvatarInner = styled('span', {
   };
 });
 
-const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
+const Avatar = forwardRef<AvatarInstance, AvatarProps>((props, ref) => {
   const { size: contextSize, shape: contextShape } = useContext(AvatarContext);
   const { clsPrefix, sizeVariant } = useTheme();
 
@@ -118,15 +122,22 @@ const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
     ...others
   } = props;
 
-  const nodeRef = useRef<HTMLSpanElement>(null);
-  const forkRef = useForkRef(nodeRef, ref);
+  const rootRef = useRef<HTMLSpanElement>(null);
 
   const [scale, setScale] = useState(1);
 
   const [isImgExist, setImgExist] = useState(true);
 
+  useImperativeHandle(ref, () => {
+    return {
+      get nativeElement() {
+        return rootRef.current;
+      },
+    };
+  }, []);
+
   const handleResize = useConstantFn(() => {
-    const node = nodeRef.current;
+    const node = rootRef.current;
     const child = childRef.current;
     if (!node || !child) {
       return;
@@ -219,7 +230,7 @@ const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
     <AvatarRoot
       {...others}
       className={rootClasses}
-      ref={forkRef}
+      ref={rootRef}
       style={{
         ...rootSizeStyle,
         ...style,

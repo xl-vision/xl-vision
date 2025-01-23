@@ -294,6 +294,14 @@ exports[`Demo renders packages/hooks/src/useNotication/__doc__/Basic.tsx correct
 </div>
 `;
 
+exports[`Demo renders packages/hooks/src/useResizeObserver/__doc__/Basic.tsx correctly 1`] = `
+<div>
+  <div>
+    <textarea />
+  </div>
+</div>
+`;
+
 exports[`Demo renders packages/hooks/src/useTransition/__doc__/Appear.tsx correctly 1`] = `
 .emotion-0 {
   position: relative;

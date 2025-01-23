@@ -1,7 +1,6 @@
 import {
   LifecycleState,
   useConstantFn,
-  useForkRef,
   useIsomorphicLayoutEffect,
   useLifecycleState,
 } from '@xl-vision/hooks';
@@ -16,6 +15,7 @@ import {
   useRef,
   useMemo,
   useEffect,
+  useImperativeHandle,
 } from 'react';
 import {
   addTargetObserver,
@@ -27,6 +27,7 @@ import {
 import ResizeObserver from '../ResizeObserver';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
+import { RefInstance } from '../types';
 import { throttleByAnimationFrame } from '../utils/perf';
 
 export type AffixProps = Omit<HTMLAttributes<HTMLDivElement>, 'target' | 'onChange'> & {
@@ -35,6 +36,8 @@ export type AffixProps = Omit<HTMLAttributes<HTMLDivElement>, 'target' | 'onChan
   offsetBottom?: number;
   onChange?: (affixed: boolean) => void;
 };
+
+export type AffixIntance = RefInstance<HTMLDivElement>;
 
 const displayName = 'Affix';
 
@@ -58,11 +61,6 @@ enum AffixStatus {
   NONE,
 }
 
-export type AffixIntance = HTMLDivElement & {
-  handleEventEmit: () => void;
-  handleSizeChange: () => void;
-};
-
 const Affix = forwardRef<AffixIntance, AffixProps>((props, ref) => {
   const { clsPrefix } = useTheme();
 
@@ -79,9 +77,7 @@ const Affix = forwardRef<AffixIntance, AffixProps>((props, ref) => {
   const [affixStyle, setAffixStyle] = useState<CSSProperties>();
   const [placeholderStyle, setPlaceholderStyle] = useState<CSSProperties>();
 
-  const rootRef = useRef<AffixIntance>(null);
-
-  const forkRef = useForkRef(ref, rootRef);
+  const rootRef = useRef<HTMLDivElement>(null);
 
   const [currentTarget, setCurrentTarget] = useState<Window | HTMLElement>();
 
@@ -90,6 +86,14 @@ const Affix = forwardRef<AffixIntance, AffixProps>((props, ref) => {
   const [status, setStatus] = useState(AffixStatus.NONE);
 
   const lifecycleStateRef = useLifecycleState();
+
+  useImperativeHandle(ref, () => {
+    return {
+      get nativeElement() {
+        return rootRef.current;
+      },
+    };
+  }, []);
 
   const measure = useConstantFn(() => {
     const affixNode = rootRef.current;
@@ -159,15 +163,6 @@ const Affix = forwardRef<AffixIntance, AffixProps>((props, ref) => {
   }, [lifecycleStateRef]);
 
   useEffect(() => {
-    const node = rootRef.current;
-    if (!node) {
-      return;
-    }
-    node.handleEventEmit = handleEventEmit;
-    node.handleSizeChange = handleSizeChange;
-  }, [handleEventEmit, handleSizeChange]);
-
-  useEffect(() => {
     return () => {
       handleSizeChange.cancel?.();
     };
@@ -214,7 +209,7 @@ const Affix = forwardRef<AffixIntance, AffixProps>((props, ref) => {
 
   return (
     <ResizeObserver onResizeObserver={handleSizeChange}>
-      <AffixRoot {...others} className={classes} ref={forkRef}>
+      <AffixRoot {...others} className={classes} ref={rootRef}>
         {placeholderStyle && (
           <div
             aria-hidden={true}

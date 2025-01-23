@@ -2,6 +2,7 @@ import { CssTransitionOptions, useCssTransition, useForkRef } from '@xl-vision/h
 import { isProduction, warning } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { ReactElement, FC, Children, useRef, cloneElement } from 'react';
+import useNativeElementRef from '../hooks/useNativeElementRef';
 import { getNodeRef, supportRef } from '../utils/ref';
 
 export type TransitionProps = CssTransitionOptions & {
@@ -24,7 +25,7 @@ const Transition: FC<TransitionProps> = (props) => {
 
   warning(!supportRef(child), '<%s>: child does not support ref', displayName);
 
-  const forkRef = useForkRef(getNodeRef(child), nodeRef);
+  const forkRef = useForkRef(getNodeRef(child), useNativeElementRef(nodeRef));
 
   // 判断是否是第一次挂载
   const isFirstMountRef = useRef(true);

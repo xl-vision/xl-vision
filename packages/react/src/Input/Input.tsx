@@ -1,4 +1,4 @@
-import { useConstantFn, useForkRef, useValueChange } from '@xl-vision/hooks';
+import { useConstantFn, useValueChange } from '@xl-vision/hooks';
 import { CloseCircleFilled } from '@xl-vision/icons';
 import { CSSObject } from '@xl-vision/styled-engine';
 import { contains, isProduction } from '@xl-vision/utils';
@@ -13,10 +13,12 @@ import {
   ChangeEvent,
   useEffect,
   MouseEvent,
+  useImperativeHandle,
 } from 'react';
 import useInput from '../hooks/useInput';
 import { styled } from '../styles';
 import { SizeVariant, useTheme } from '../ThemeProvider';
+import { RefInstance } from '../types';
 
 export type InputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
@@ -56,6 +58,13 @@ export type InputProps = Omit<
     | 'url'
     | 'week';
 };
+
+export type InputInstance = RefInstance<
+  HTMLSpanElement,
+  {
+    focus: () => void;
+  }
+>;
 
 const displayName = 'Input';
 
@@ -232,7 +241,7 @@ const InputSuffix = styled(InputPrefix, {
   };
 });
 
-const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
+const Input = forwardRef<InputInstance, InputProps>((props, ref) => {
   const { clsPrefix, sizeVariant } = useTheme();
 
   const {
@@ -265,13 +274,26 @@ const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
 
   const [focused, setFocused] = useState(false);
 
-  const rootRef = useRef<HTMLSpanElement>(null);
-
-  const forkRef = useForkRef(rootRef, ref);
-
   const focusTimeoutRef = useRef<number>(null);
 
   const removePasswordTimerRef = useRef<NodeJS.Timeout>(null);
+
+  const rootRef = useRef<HTMLSpanElement>(null);
+
+  const focus = useConstantFn(() => {
+    if (!disabled && !readOnly) {
+      inputRef.current?.focus();
+    }
+  });
+
+  useImperativeHandle(ref, () => {
+    return {
+      focus,
+      get nativeElement() {
+        return rootRef.current;
+      },
+    };
+  }, [focus]);
 
   const handleChange = useConstantFn((e: ChangeEvent<HTMLInputElement>) => {
     let v = e.target.value;
@@ -282,12 +304,6 @@ const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     v = getWordInfo(v).value;
 
     handleValueChange(v);
-  });
-
-  const focus = useConstantFn(() => {
-    if (!disabled && !readOnly) {
-      inputRef.current?.focus();
-    }
   });
 
   const handleMouseUp = useConstantFn((e: MouseEvent) => {
@@ -401,7 +417,7 @@ const Input = forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
   }
 
   return (
-    <InputRoot className={rootClasses} ref={forkRef} style={style} styleProps={{ size }}>
+    <InputRoot className={rootClasses} ref={rootRef} style={style} styleProps={{ size }}>
       {addonBefore !== undefined && (
         <InputAddonBefore styleProps={{ size }}>{addonBefore}</InputAddonBefore>
       )}

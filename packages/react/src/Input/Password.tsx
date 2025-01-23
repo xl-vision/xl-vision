@@ -4,13 +4,15 @@ import { isProduction } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { ReactNode, forwardRef, useState, MouseEvent } from 'react';
-import Input, { InputProps } from './Input';
+import Input, { InputInstance, InputProps } from './Input';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 
 export type PasswordProps = Omit<InputProps, 'type' | 'suffix'> & {
   renderIcon?: (visible: boolean) => ReactNode;
 };
+
+export type PasswordInstance = InputInstance;
 
 const displayName = 'Password';
 
@@ -36,7 +38,7 @@ const PasswordIcon = styled('span', {
 const defaultRenderIcon = (visible: boolean) =>
   visible ? <EyeInvisibleOutlined /> : <EyeOutlined />;
 
-const Password = forwardRef<HTMLSpanElement, PasswordProps>((props, ref) => {
+const Password = forwardRef<PasswordInstance, PasswordProps>((props, ref) => {
   const { clsPrefix } = useTheme();
   const { renderIcon = defaultRenderIcon, className, ...others } = props;
 

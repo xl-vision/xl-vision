@@ -760,7 +760,7 @@ exports[`Entry @xl-vision/utils 1`] = `
   "omit",
   "isEqual",
   "TinyColor",
-  "findDOMNode",
+  "findDomNode",
   "BigIntDecimal",
   "isBrowser",
   "isServer",

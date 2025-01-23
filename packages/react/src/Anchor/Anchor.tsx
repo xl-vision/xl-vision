@@ -1,4 +1,4 @@
-import { LifecycleState, useConstantFn, useForkRef, useLifecycleState } from '@xl-vision/hooks';
+import { LifecycleState, useConstantFn, useLifecycleState } from '@xl-vision/hooks';
 import { CSSObject } from '@xl-vision/styled-engine';
 import {
   getBoundingClientRect,
@@ -19,12 +19,13 @@ import {
   useEffect,
   useMemo,
   useCallback,
-  LegacyRef,
+  useImperativeHandle,
 } from 'react';
 import AnchorContext from './AnchorContext';
 import Affix from '../Affix';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
+import { RefInstance } from '../types';
 import { throttleByAnimationFrame } from '../utils/perf';
 import { getScroll, scrollTo } from '../utils/scroll';
 
@@ -41,6 +42,13 @@ export type AnchorProps = Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> & {
   targetOffset?: number;
   type?: AnchorType;
 };
+
+export type AnchorInstance = RefInstance<
+  HTMLDivElement,
+  {
+    scrollTo: (link: string) => void;
+  }
+>;
 
 const displayName = 'Anchor';
 
@@ -86,10 +94,6 @@ const HREF_MATCHER_REGX = /#([\S ]+)$/;
 
 const getDefaultTarget = () => window;
 
-export type AnchorInstance = Omit<HTMLDivElement, 'scrollTo'> & {
-  scrollTo: (link: string) => void;
-};
-
 const Anchor = forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
   const { clsPrefix } = useTheme();
 
@@ -112,9 +116,7 @@ const Anchor = forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
   const affixTarget = affixTargetProp || scrollTargetProp || getDefaultTarget;
   const scrollTarget = scrollTargetProp || affixTarget;
 
-  const rootRef = useRef<AnchorInstance>(null);
-
-  const forkRef = useForkRef(ref, rootRef);
+  const rootRef = useRef<HTMLDivElement>(null);
 
   const [currentScrollTarget, setCurrentScrollTarget] = useState<Window | HTMLElement>();
 
@@ -229,6 +231,15 @@ const Anchor = forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
     });
   });
 
+  useImperativeHandle(ref, () => {
+    return {
+      scrollTo: handleScrollTo,
+      get nativeElement() {
+        return rootRef.current;
+      },
+    };
+  }, [handleScrollTo]);
+
   const updateInkNode = useConstantFn(() => {
     const rootNode = rootRef.current;
 
@@ -298,12 +309,7 @@ const Anchor = forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
   const inkNode = type === 'rail' && activeLink ? <AnchorInk ref={inkNodeRef} /> : null;
 
   const content = (
-    <AnchorRoot
-      {...others}
-      className={rootClasses}
-      ref={forkRef as LegacyRef<HTMLDivElement>}
-      styleProps={{ type }}
-    >
+    <AnchorRoot {...others} className={rootClasses} ref={rootRef} styleProps={{ type }}>
       {inkNode}
       {children}
     </AnchorRoot>

@@ -3,16 +3,27 @@ import { CSSObject } from '@xl-vision/styled-engine';
 import { isProduction } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { forwardRef, HTMLAttributes, ReactNode, useContext, MouseEvent } from 'react';
+import {
+  forwardRef,
+  HTMLAttributes,
+  ReactNode,
+  useContext,
+  MouseEvent,
+  useRef,
+  useImperativeHandle,
+} from 'react';
 import DropdownContext from './DropdownContext';
 import BaseButton from '../BaseButton';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
+import { RefInstance } from '../types';
 
 export interface DropdownItemProps extends HTMLAttributes<HTMLLIElement> {
   children: ReactNode;
   disabled?: boolean;
 }
+
+export type DropdownItemInstance = RefInstance<HTMLLIElement>;
 
 const displayName = 'DropdownItem';
 
@@ -61,12 +72,22 @@ const DropdownItemButton = styled(BaseButton, {
   return styles;
 });
 
-const DropdownItem = forwardRef<HTMLLIElement, DropdownItemProps>((props, ref) => {
+const DropdownItem = forwardRef<DropdownItemInstance, DropdownItemProps>((props, ref) => {
   const { children, onClick, disabled, className, ...others } = props;
 
   const { clsPrefix } = useTheme();
 
   const { setOpen } = useContext(DropdownContext);
+
+  const rootRef = useRef<HTMLLIElement>(null);
+
+  useImperativeHandle(ref, () => {
+    return {
+      get nativeElement() {
+        return rootRef.current;
+      },
+    };
+  }, []);
 
   const handleClick = useConstantFn((e: MouseEvent<HTMLLIElement>) => {
     if (disabled) {
@@ -86,7 +107,7 @@ const DropdownItem = forwardRef<HTMLLIElement, DropdownItemProps>((props, ref) =
   );
 
   return (
-    <DropdownItemRoot {...others} className={rootClasses} ref={ref} onClick={handleClick}>
+    <DropdownItemRoot {...others} className={rootClasses} ref={rootRef} onClick={handleClick}>
       <DropdownItemButton
         // cant use prop disabled
         // see https://github.com/facebook/react/issues/10109

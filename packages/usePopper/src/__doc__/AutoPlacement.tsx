@@ -1,7 +1,7 @@
 'use client';
 
-import { styled, Button, Portal } from '@xl-vision/react';
-import { useRef, useMemo, useEffect } from 'react';
+import { styled, Button, Portal, ButtonInstance } from '@xl-vision/react';
+import { useRef, useMemo, useEffect, RefCallback, useCallback } from 'react';
 import { usePopper, Middleware, autoPlacement } from '@xl-vision/usePopper';
 
 const container = () => document.body;
@@ -18,6 +18,13 @@ const Demo = () => {
     mode: 'absolute',
     middlewares,
   });
+
+  const referenceRef = useCallback<RefCallback<ButtonInstance>>(
+    (instance) => {
+      reference(instance?.nativeElement || null);
+    },
+    [reference],
+  );
 
   const handleUpdate = useMemo(() => {
     // 节流
@@ -57,7 +64,7 @@ const Demo = () => {
   return (
     <>
       <Root onScroll={handleUpdate}>
-        <Button className='reference' color='primary' ref={reference}>
+        <Button className='reference' color='primary' ref={referenceRef}>
           reference
         </Button>
       </Root>

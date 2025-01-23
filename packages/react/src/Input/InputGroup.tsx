@@ -1,13 +1,16 @@
 import { isProduction } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { HTMLAttributes, FC } from 'react';
+import { HTMLAttributes, forwardRef, useImperativeHandle, useRef } from 'react';
 import { styled } from '../styles';
 import { ThemeProvider, SizeVariant, useTheme } from '../ThemeProvider';
+import { RefInstance } from '../types';
 
 export type InputGroupProps = HTMLAttributes<HTMLDivElement> & {
   size?: SizeVariant;
 };
+
+export type InputGroupInstance = RefInstance<HTMLDivElement>;
 
 const displayName = 'InputGroup';
 
@@ -63,10 +66,20 @@ const InputGroupRoot = styled('div', {
   };
 });
 
-const InputGroup: FC<InputGroupProps> = (props) => {
+const InputGroup = forwardRef<InputGroupInstance, InputGroupProps>((props, ref) => {
   const { clsPrefix, sizeVariant } = useTheme();
 
   const { className, size = sizeVariant, children, ...others } = props;
+
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useImperativeHandle(ref, () => {
+    return {
+      get nativeElement() {
+        return rootRef.current;
+      },
+    };
+  }, []);
 
   const rootClassName = `${clsPrefix}-input-group`;
 
@@ -75,12 +88,12 @@ const InputGroup: FC<InputGroupProps> = (props) => {
   return (
     // 内部组件都需要根据size大小变化
     <ThemeProvider sizeVariant={size}>
-      <InputGroupRoot {...others} className={classes} styleProps={{ size }}>
+      <InputGroupRoot {...others} className={classes} ref={rootRef} styleProps={{ size }}>
         {children}
       </InputGroupRoot>
     </ThemeProvider>
   );
-};
+});
 
 if (!isProduction) {
   InputGroup.displayName = displayName;

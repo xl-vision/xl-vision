@@ -19,16 +19,20 @@ import {
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 import TransitionGroup, { TransitionGroupClassName } from '../TransitionGroup';
+import { RefInstance } from '../types';
 
 export type RippleProps = HTMLAttributes<HTMLDivElement> & {
   transitionClassName: TransitionGroupClassName;
   exitAfterEnter?: boolean;
 };
 
-export type RippleRef = {
-  start: (e?: SyntheticEvent | { pulsate?: boolean }) => void;
-  stop: () => void;
-};
+export type RippleInstance = RefInstance<
+  HTMLDivElement,
+  {
+    start: (e?: SyntheticEvent | { pulsate?: boolean }) => void;
+    stop: () => void;
+  }
+>;
 
 const displayName = 'Ripple';
 
@@ -78,7 +82,7 @@ const RippleInner = styled('div', {
 
 const DELAY_RIPPLE = 80;
 
-const Ripple = forwardRef<RippleRef, RippleProps>((props, ref) => {
+const Ripple = forwardRef<RippleInstance, RippleProps>((props, ref) => {
   const { transitionClassName, exitAfterEnter, ...others } = props;
 
   const { clsPrefix } = useTheme();
@@ -91,12 +95,20 @@ const Ripple = forwardRef<RippleRef, RippleProps>((props, ref) => {
   const enteredCountRef = useRef(0);
   // key
   const keyRef = useRef(0);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const rootRef = useRef<HTMLDivElement>(null);
   const startTimerRef = useRef<number>(null);
   const startTimerCommitRef = useRef<() => void>(null);
   const ignoreMouseDonwRef = useRef(false);
 
   const [pulsateRipple, setPulsateRipple] = useState<ReactElement>();
+
+  useImperativeHandle(ref, () => ({
+    start,
+    stop,
+    get nativeElement() {
+      return rootRef.current;
+    },
+  }));
 
   useEffect(() => {
     return () => {
@@ -105,11 +117,6 @@ const Ripple = forwardRef<RippleRef, RippleProps>((props, ref) => {
       }
     };
   }, []);
-
-  useImperativeHandle(ref, () => ({
-    start,
-    stop,
-  }));
 
   const commit = useCallback(
     (x: number, y: number, size: number, pulsate?: boolean) => {
@@ -157,7 +164,7 @@ const Ripple = forwardRef<RippleRef, RippleProps>((props, ref) => {
 
       const el = (e as UIEvent).currentTarget
         ? ((e as UIEvent).currentTarget as HTMLElement)
-        : containerRef.current;
+        : rootRef.current;
       const rect = el
         ? getBoundingClientRect(el)
         : {
@@ -241,7 +248,7 @@ const Ripple = forwardRef<RippleRef, RippleProps>((props, ref) => {
   });
 
   return (
-    <RipperRoot {...others} ref={containerRef}>
+    <RipperRoot {...others} ref={rootRef}>
       {pulsateRipple}
 
       <TransitionGroup transitionClassName={transitionClassName} onEntered={handleEnter}>
