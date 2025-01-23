@@ -2,7 +2,7 @@ import { isProduction, isServer } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { Children, forwardRef, ReactElement, ReactNode } from 'react';
-import Popper, { PopperChildrenProps, PopperProps } from '../Popper';
+import Popper, { PopperChildrenProps, PopperInstance, PopperProps } from '../Popper';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 
@@ -14,6 +14,8 @@ export interface TooltipProps extends Omit<PopperProps, 'popup' | 'arrow' | 'con
   hideArrow?: boolean;
   maxWidth?: number | string;
 }
+
+export type TooltipInstance = PopperInstance;
 
 const displayName = 'Tooltip';
 
@@ -75,7 +77,7 @@ const TooltipArrow = styled('div', {
   };
 });
 
-const Tooltip = forwardRef<HTMLDivElement, TooltipProps>((props, ref) => {
+const Tooltip = forwardRef<TooltipInstance, TooltipProps>((props, ref) => {
   const { clsPrefix } = useTheme();
 
   const {

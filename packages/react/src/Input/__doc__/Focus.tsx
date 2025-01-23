@@ -1,10 +1,10 @@
 'use client';
 
 import { useRef, useCallback } from 'react';
-import { Button, Input } from '@xl-vision/react';
+import { Button, Input, InputInstance } from '@xl-vision/react';
 
 const Demo = () => {
-  const ref = useRef<HTMLSpanElement>(null);
+  const ref = useRef<InputInstance>(null);
 
   const handleClick = useCallback(() => {
     ref.current?.focus();

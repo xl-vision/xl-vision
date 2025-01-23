@@ -1,11 +1,21 @@
 import { isObject, isProduction } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { HTMLAttributes, ComponentType, forwardRef, useMemo, ReactNode, JSX } from 'react';
+import {
+  HTMLAttributes,
+  ComponentType,
+  forwardRef,
+  useMemo,
+  ReactNode,
+  JSX,
+  useRef,
+  useImperativeHandle,
+} from 'react';
 import RowContext from './RowContext';
 import useBreakPoints from './useBreakPoints';
 import { styled } from '../styles';
 import { Breakpoint, useTheme } from '../ThemeProvider';
+import { RefInstance } from '../types';
 
 export type RowAlign = 'top' | 'middle' | 'bottom';
 export type RowJustify = 'start' | 'end' | 'center' | 'space-around' | 'space-between';
@@ -20,6 +30,8 @@ export interface RowProps extends HTMLAttributes<HTMLDivElement> {
   removeOnUnvisible?: boolean;
   wrap?: boolean;
 }
+
+export type RowInstance = RefInstance<unknown>;
 
 const displayName = 'Row';
 
@@ -63,7 +75,7 @@ const RowRoot = styled('div', {
   };
 });
 
-const Row = forwardRef<HTMLDivElement, RowProps>((props, ref) => {
+const Row = forwardRef<RowInstance, RowProps>((props, ref) => {
   const {
     align,
     justify,
@@ -96,6 +108,16 @@ const Row = forwardRef<HTMLDivElement, RowProps>((props, ref) => {
     return 0;
   }, [breakPoints, gutter]);
 
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useImperativeHandle(ref, () => {
+    return {
+      get nativeElement() {
+        return rootRef.current;
+      },
+    };
+  }, []);
+
   const rowStyle =
     computedGutter > 0
       ? {
@@ -123,7 +145,7 @@ const Row = forwardRef<HTMLDivElement, RowProps>((props, ref) => {
 
   return (
     <RowContext.Provider value={memorizedValue}>
-      <RowRoot {...others} as={component} className={rootClasses} ref={ref} style={rowStyle}>
+      <RowRoot {...others} as={component} className={rootClasses} ref={rootRef} style={rowStyle}>
         {children}
       </RowRoot>
     </RowContext.Provider>

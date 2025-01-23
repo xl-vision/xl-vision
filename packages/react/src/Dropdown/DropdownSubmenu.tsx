@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { ReactNode, forwardRef, useContext, useCallback, useEffect } from 'react';
 import DropdownContext from './DropdownContext';
 import BaseButton from '../BaseButton';
-import Popper, { PopperPlacement, PopperProps, PopperTrigger } from '../Popper';
+import Popper, { PopperInstance, PopperPlacement, PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 
@@ -21,6 +21,8 @@ export interface DropdownSubmenuProps
   disabled?: boolean;
   transitionClassName?: string;
 }
+
+export type DropdownSubmenuInstance = PopperInstance;
 
 const displayName = 'DropdownSubmenu';
 
@@ -111,7 +113,7 @@ const DropdownSubmenuPopup = styled('ul', {
 const defaultTrigger: Array<PopperTrigger> = ['click', 'hover'];
 const defaultGetPopupContainer = () => document.body;
 
-const DropdownSubmenu = forwardRef<HTMLDivElement, DropdownSubmenuProps>((props, ref) => {
+const DropdownSubmenu = forwardRef<DropdownSubmenuInstance, DropdownSubmenuProps>((props, ref) => {
   const {
     title,
     children,

@@ -3,7 +3,12 @@ import { isProduction, isServer } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { ReactElement, ReactNode, forwardRef, useRef, useEffect, useMemo } from 'react';
 import DropdownContext from './DropdownContext';
-import Popper, { PopperChildrenProps, PopperPlacement, PopperProps } from '../Popper';
+import Popper, {
+  PopperChildrenProps,
+  PopperInstance,
+  PopperPlacement,
+  PopperProps,
+} from '../Popper';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 
@@ -11,6 +16,8 @@ export interface DropdownProps extends Omit<PopperProps, 'popup' | 'arrow'> {
   children: ReactElement<PopperChildrenProps>;
   menus: ReactNode;
 }
+
+export type DropdownInstance = PopperInstance;
 
 const displayName = 'Dropdown';
 
@@ -46,7 +53,7 @@ const DropdownPopup = styled('ul', {
 });
 
 // TODO [2025-07-01]: tab快捷键支持
-const Dropdown = forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
+const Dropdown = forwardRef<DropdownInstance, DropdownProps>((props, ref) => {
   const {
     menus,
     children,

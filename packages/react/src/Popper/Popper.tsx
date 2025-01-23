@@ -42,10 +42,12 @@ import {
   CSSProperties,
   useRef,
   ReactNode,
+  useImperativeHandle,
 } from 'react';
 import Portal, { PortalContainerType } from '../Portal';
 import { useTheme } from '../ThemeProvider';
 import Transition from '../Transition';
+import { RefInstance } from '../types';
 import { getNodeRef } from '../utils/ref';
 import { increaseZindex } from '../utils/zIndexManger';
 
@@ -90,11 +92,13 @@ export type PopperProps = HTMLAttributes<HTMLDivElement> & {
   unmountOnHide?: boolean;
 };
 
+export type PopperInstance = RefInstance<HTMLDivElement>;
+
 const displayName = 'Popper';
 
 const defaultGetPopupContainer = () => document.body;
 
-const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
+const Popper = forwardRef<PopperInstance, PopperProps>((props, ref) => {
   const {
     children,
     popup,
@@ -208,9 +212,19 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     }),
   );
 
-  const forkPopperRef = useForkRef(ref, getPopper);
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  const forkPopperRef = useForkRef(rootRef, getPopper);
 
   const forkReferenceRef = useForkRef(getNodeRef(child), reference);
+
+  useImperativeHandle(ref, () => {
+    return {
+      get nativeElement() {
+        return rootRef.current;
+      },
+    };
+  }, []);
 
   useEffect(() => {
     if (open) {

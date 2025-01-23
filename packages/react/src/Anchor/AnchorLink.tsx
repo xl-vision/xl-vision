@@ -2,7 +2,15 @@ import { useConstantFn } from '@xl-vision/hooks';
 import { isProduction } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { HTMLAttributes, ReactNode, forwardRef, useContext, useEffect, useImperativeHandle, useRef } from 'react';
+import {
+  HTMLAttributes,
+  ReactNode,
+  forwardRef,
+  useContext,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+} from 'react';
 import AnchorContext from './AnchorContext';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
@@ -12,6 +20,8 @@ export type AnchorLinkProps = Omit<HTMLAttributes<HTMLDivElement>, 'title'> & {
   title: ReactNode;
   href: string;
 };
+
+export type AnchorLinkInstance = RefInstance<HTMLDivElement>;
 
 const displayName = 'AnchorLink';
 
@@ -49,25 +59,22 @@ const AnchorLinkTitle = styled('a', {
   };
 });
 
-export type AnchorLinkInstance = RefInstance<{}, HTMLDivElement>
-
-
 const AnchorLink = forwardRef<AnchorLinkInstance, AnchorLinkProps>((props, ref) => {
   const { clsPrefix } = useTheme();
 
   const { title, href, className, children, ...others } = props;
 
-  const rootRef = useRef<HTMLDivElement>(null)
+  const rootRef = useRef<HTMLDivElement>(null);
 
   const { activeLink, registerLink, unregisterLink, scrollTo } = useContext(AnchorContext);
 
   useImperativeHandle(ref, () => {
     return {
       get nativeElement() {
-        return rootRef.current
-      }
-    }
-  })
+        return rootRef.current;
+      },
+    };
+  });
 
   const handleClick = useConstantFn(() => {
     scrollTo(href);

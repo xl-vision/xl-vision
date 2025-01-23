@@ -27,8 +27,8 @@ import {
 import ResizeObserver from '../ResizeObserver';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
-import { throttleByAnimationFrame } from '../utils/perf';
 import { RefInstance } from '../types';
+import { throttleByAnimationFrame } from '../utils/perf';
 
 export type AffixProps = Omit<HTMLAttributes<HTMLDivElement>, 'target' | 'onChange'> & {
   target?: Window | HTMLElement | (() => Window | HTMLElement);
@@ -36,6 +36,8 @@ export type AffixProps = Omit<HTMLAttributes<HTMLDivElement>, 'target' | 'onChan
   offsetBottom?: number;
   onChange?: (affixed: boolean) => void;
 };
+
+export type AffixIntance = RefInstance<HTMLDivElement>;
 
 const displayName = 'Affix';
 
@@ -58,8 +60,6 @@ enum AffixStatus {
   PREPARE,
   NONE,
 }
-
-export type AffixIntance = RefInstance<{}, HTMLDivElement>;
 
 const Affix = forwardRef<AffixIntance, AffixProps>((props, ref) => {
   const { clsPrefix } = useTheme();
@@ -90,8 +90,8 @@ const Affix = forwardRef<AffixIntance, AffixProps>((props, ref) => {
   useImperativeHandle(ref, () => {
     return {
       get nativeElement() {
-        return rootRef.current
-      }
+        return rootRef.current;
+      },
     };
   }, []);
 
@@ -161,8 +161,6 @@ const Affix = forwardRef<AffixIntance, AffixProps>((props, ref) => {
       setStatus(AffixStatus.PREPARE);
     });
   }, [lifecycleStateRef]);
-
-
 
   useEffect(() => {
     return () => {

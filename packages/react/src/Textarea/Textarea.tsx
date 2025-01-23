@@ -1,4 +1,4 @@
-import { useConstantFn, useForkRef, usePrevious, useValueChange } from '@xl-vision/hooks';
+import { useConstantFn, usePrevious, useValueChange } from '@xl-vision/hooks';
 import { CloseCircleFilled } from '@xl-vision/icons';
 import { CSSObject } from '@xl-vision/styled-engine';
 import { isObject, isProduction } from '@xl-vision/utils';
@@ -14,6 +14,7 @@ import {
   ReactNode,
   FocusEvent,
   CSSProperties,
+  useImperativeHandle,
 } from 'react';
 import { flushSync } from 'react-dom';
 import calculateNodeHeight from './calculateNodeHeight';
@@ -21,6 +22,7 @@ import TextareaSuffix from './TextareaSuffix';
 import useInput from '../hooks/useInput';
 import { styled } from '../styles';
 import { SizeVariant, useTheme } from '../ThemeProvider';
+import { RefInstance } from '../types';
 
 export type TextareaProps = Omit<
   TextareaHTMLAttributes<HTMLTextAreaElement>,
@@ -35,9 +37,11 @@ export type TextareaProps = Omit<
   autoHeight?: boolean | { minRows?: number; maxRows?: number };
 };
 
+export type TextareaInstance = RefInstance<HTMLDivElement>;
+
 const displayName = 'Textarea';
 
-const TextAreaRoot = styled('span', {
+const TextareaRoot = styled('span', {
   name: displayName,
   slot: 'Root',
 })<{ focused: boolean; size: SizeVariant; disabled?: boolean; readOnly?: boolean }>(({
@@ -157,7 +161,7 @@ export enum ResizeStatus {
   RESIZED,
 }
 
-const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, ref) => {
+const Textarea = forwardRef<TextareaInstance, TextareaProps>((props, ref) => {
   const { clsPrefix, sizeVariant } = useTheme();
 
   const {
@@ -192,9 +196,15 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, ref) => 
     getWordInfo,
   } = useInput<HTMLTextAreaElement>({ setValue: handleValueChange, maxLength });
 
-  const rootRef = useRef<HTMLSpanElement>(null);
+  const rootRef = useRef<HTMLDivElement>(null);
 
-  const forkRef = useForkRef(rootRef, ref);
+  useImperativeHandle(ref, () => {
+    return {
+      get nativeElement() {
+        return rootRef.current;
+      },
+    };
+  }, []);
 
   const focus = useConstantFn(() => {
     if (!disabled && !readOnly) {
@@ -320,9 +330,9 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, ref) => 
   );
 
   return (
-    <TextAreaRoot
+    <TextareaRoot
       className={rootClasses}
-      ref={forkRef}
+      ref={rootRef}
       style={style}
       styleProps={{ focused, size, disabled, readOnly }}
     >
@@ -341,7 +351,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, ref) => 
         onFocus={handleFocus}
       />
       {suffixNode}
-    </TextAreaRoot>
+    </TextareaRoot>
   );
 });
 

@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useMemo, SyntheticEvent } from 'react';
-import { Ripple, RippleRef, styled } from '@xl-vision/react';
+import { Ripple, RippleInstance, styled } from '@xl-vision/react';
 
 const Box = styled('div')(
   ({ theme }) => `
@@ -34,7 +34,7 @@ const Box = styled('div')(
 );
 
 const Advance = () => {
-  const rippleRef = useRef<RippleRef>(null);
+  const rippleRef = useRef<RippleInstance>(null);
 
   const events = useMemo(() => {
     const start = (e: SyntheticEvent) => {

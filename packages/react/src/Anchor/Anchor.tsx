@@ -25,9 +25,9 @@ import AnchorContext from './AnchorContext';
 import Affix from '../Affix';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
+import { RefInstance } from '../types';
 import { throttleByAnimationFrame } from '../utils/perf';
 import { getScroll, scrollTo } from '../utils/scroll';
-import { RefInstance } from '../types';
 
 export type AnchorType = 'block' | 'rail';
 
@@ -42,6 +42,13 @@ export type AnchorProps = Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> & {
   targetOffset?: number;
   type?: AnchorType;
 };
+
+export type AnchorInstance = RefInstance<
+  HTMLDivElement,
+  {
+    scrollTo: (link: string) => void;
+  }
+>;
 
 const displayName = 'Anchor';
 
@@ -86,13 +93,6 @@ const AnchorInk = styled('div', {
 const HREF_MATCHER_REGX = /#([\S ]+)$/;
 
 const getDefaultTarget = () => window;
-
-export type AnchorInstance = RefInstance<
-  {
-    scrollTo: (link: string) => void;
-  },
-  HTMLDivElement
->;
 
 const Anchor = forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
   const { clsPrefix } = useTheme();
@@ -235,8 +235,8 @@ const Anchor = forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
     return {
       scrollTo: handleScrollTo,
       get nativeElement() {
-        return rootRef.current
-      }
+        return rootRef.current;
+      },
     };
   }, [handleScrollTo]);
 
@@ -309,12 +309,7 @@ const Anchor = forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
   const inkNode = type === 'rail' && activeLink ? <AnchorInk ref={inkNodeRef} /> : null;
 
   const content = (
-    <AnchorRoot
-      {...others}
-      className={rootClasses}
-      ref={rootRef}
-      styleProps={{ type }}
-    >
+    <AnchorRoot {...others} className={rootClasses} ref={rootRef} styleProps={{ type }}>
       {inkNode}
       {children}
     </AnchorRoot>

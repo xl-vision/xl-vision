@@ -4,11 +4,12 @@ import { isProduction, isServer } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { ReactNode, forwardRef, useState } from 'react';
 import Button, { ButtonProps } from '../Button';
-import Popper, { PopperProps, PopperTrigger } from '../Popper';
+import Popper, { PopperInstance, PopperProps, PopperTrigger } from '../Popper';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 
 export type PopconfirmButtonProps = Omit<ButtonProps, 'children' | 'onClick'>;
+
 export type PopconfirmProps = Omit<PopperProps, 'popup' | 'arrow' | 'title'> & {
   title: ReactNode;
   cancelButtonProps?: PopconfirmButtonProps;
@@ -20,6 +21,8 @@ export type PopconfirmProps = Omit<PopperProps, 'popup' | 'arrow' | 'title'> & {
   onCancel?: () => void | Promise<void>;
   onConfirm?: () => void | Promise<void>;
 };
+
+export type PopconfirmInstance = PopperInstance;
 
 const displayName = 'Popconfirm';
 
@@ -88,7 +91,7 @@ const PopconfirmPopup = styled('div', {
 
 const defaultIcon = <ExclamationCircleOutlined />;
 
-const Popconfirm = forwardRef<HTMLDivElement, PopconfirmProps>((props, ref) => {
+const Popconfirm = forwardRef<PopconfirmInstance, PopconfirmProps>((props, ref) => {
   const { locale, clsPrefix } = useTheme();
 
   const {

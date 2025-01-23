@@ -12,7 +12,7 @@ import {
   useEffect,
   useCallback,
 } from 'react';
-import BaseButton, { BaseButtonProps } from '../BaseButton';
+import BaseButton, { BaseButtonInstance, BaseButtonProps } from '../BaseButton';
 import CollapseTransition from '../CollapseTransition';
 import { styled } from '../styles';
 import { SizeVariant, ThemeVariant, useTheme } from '../ThemeProvider';
@@ -20,6 +20,8 @@ import { SizeVariant, ThemeVariant, useTheme } from '../ThemeProvider';
 export type ButtonColor = ThemeVariant | 'default';
 
 export type ButtonVariant = 'contained' | 'outlined' | 'text';
+
+export type ButtonInstance = BaseButtonInstance;
 
 export type ButtonProps = BaseButtonProps & {
   color?: ButtonColor;
@@ -295,7 +297,7 @@ const DefaultLoadingIcon = styled(LoadingOutlined, {
   animation: ${loadingKeyframes} 1s linear infinite;
 `;
 
-const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((props, ref) => {
+const Button = forwardRef<ButtonInstance, ButtonProps>((props, ref) => {
   const { clsPrefix, sizeVariant } = useTheme();
 
   const {

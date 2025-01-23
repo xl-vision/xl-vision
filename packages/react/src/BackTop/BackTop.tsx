@@ -2,11 +2,21 @@ import { useConstantFn, useValueChange } from '@xl-vision/hooks';
 import { VerticalAlignTopOutlined } from '@xl-vision/icons';
 import { isProduction, isServer, off, on } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
-import { HTMLAttributes, forwardRef, useState, useEffect, CSSProperties, MouseEvent } from 'react';
+import {
+  HTMLAttributes,
+  forwardRef,
+  useState,
+  useEffect,
+  CSSProperties,
+  MouseEvent,
+  useRef,
+  useImperativeHandle,
+} from 'react';
 import Portal from '../Portal';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 import Transition from '../Transition';
+import { RefInstance } from '../types';
 import { throttleByAnimationFrame } from '../utils/perf';
 import { getScroll, scrollTo } from '../utils/scroll';
 
@@ -19,6 +29,8 @@ export type BackTopProps = Omit<HTMLAttributes<HTMLDivElement>, 'target' | 'onCh
   onChange?: (show: boolean) => void;
   visibilityHeight?: number;
 };
+
+export type BackTopInstance = RefInstance<HTMLDivElement>;
 
 const displayName = 'BackTop';
 
@@ -58,7 +70,7 @@ const BackTopRoot = styled('div', {
 const getDefaultTarget = () => window;
 const getDefaultContainer = () => document.body;
 
-const BackTop = forwardRef<HTMLDivElement, BackTopProps>((props, ref) => {
+const BackTop = forwardRef<BackTopInstance, BackTopProps>((props, ref) => {
   const { clsPrefix } = useTheme();
 
   const {
@@ -78,6 +90,16 @@ const BackTop = forwardRef<HTMLDivElement, BackTopProps>((props, ref) => {
   const [show, setShow] = useValueChange(false, showProp, onChange);
 
   const [currentTarget, setCurrentTarget] = useState<Window | HTMLElement>();
+
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useImperativeHandle(ref, () => {
+    return {
+      get nativeElement() {
+        return rootRef.current;
+      },
+    };
+  }, []);
 
   useEffect(() => {
     const nextTarget = typeof target === 'function' ? target() : target;
@@ -136,7 +158,12 @@ const BackTop = forwardRef<HTMLDivElement, BackTopProps>((props, ref) => {
       transitionClassName={rootClassName}
       unmountOnExit={true}
     >
-      <BackTopRoot {...others} ref={ref} style={{ ...style, ...fixedStyle }} onClick={handleClick}>
+      <BackTopRoot
+        {...others}
+        ref={rootRef}
+        style={{ ...style, ...fixedStyle }}
+        onClick={handleClick}
+      >
         {children || defaultElement}
       </BackTopRoot>
     </Transition>

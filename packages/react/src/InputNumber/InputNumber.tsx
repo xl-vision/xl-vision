@@ -13,7 +13,7 @@ import {
   CompositionEvent,
   useMemo,
 } from 'react';
-import { Input, InputProps } from '../Input';
+import { Input, InputInstance, InputProps } from '../Input';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 
@@ -44,6 +44,8 @@ export type InputNumberProps = Omit<
   keyboard?: boolean;
   wheel?: boolean;
 };
+
+export type InputNumberInstance = InputInstance;
 
 const displayName = 'InputNumber';
 
@@ -119,7 +121,7 @@ const InputNumberControlDown = styled(InputNumberControlUp, {
 
 const NUMBER_REGEX = /^-?(([1-9]\d+)|\d)(\.\d+)?$/;
 
-const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) => {
+const InputNumber = forwardRef<InputNumberInstance, InputNumberProps>((props, ref) => {
   const {
     onChange,
     value: valueProp,
@@ -152,7 +154,7 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
 
   const { clsPrefix } = useTheme();
 
-  const innerRef = useRef<HTMLSpanElement>(null);
+  const innerRef = useRef<InputNumberInstance>(null);
 
   const forkRef = useForkRef(ref, innerRef);
 
@@ -410,7 +412,7 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
       return;
     }
 
-    const wrappEl = innerRef.current;
+    const wrappEl = innerRef.current?.nativeElement;
 
     if (!wrappEl) {
       return;

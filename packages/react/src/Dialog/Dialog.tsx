@@ -3,7 +3,7 @@ import { isProduction } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { ReactNode, forwardRef, useState, useEffect } from 'react';
 import Button, { ButtonProps } from '../Button';
-import Modal, { ModalProps } from '../Modal';
+import Modal, { ModalInstance, ModalProps } from '../Modal';
 import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 
@@ -21,6 +21,8 @@ export interface DialogProps extends Omit<ModalProps, 'bodyProps' | 'title' | 'c
   onConfirm?: () => void | Promise<void>;
   prompt?: boolean;
 }
+
+export type DialogInstance = ModalInstance;
 
 const displayName = 'Dialog';
 
@@ -98,7 +100,7 @@ const DialogActions = styled('div', {
 
 let uuid = 0;
 
-const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
+const Dialog = forwardRef<DialogInstance, DialogProps>((props, ref) => {
   const { clsPrefix, locale } = useTheme();
 
   const {
