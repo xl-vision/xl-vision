@@ -44,6 +44,7 @@ import {
   ReactNode,
   useImperativeHandle,
 } from 'react';
+import useNativeElementRef from '../hooks/useNativeElementRef';
 import Portal, { PortalContainerType } from '../Portal';
 import { useTheme } from '../ThemeProvider';
 import Transition from '../Transition';
@@ -216,7 +217,7 @@ const Popper = forwardRef<PopperInstance, PopperProps>((props, ref) => {
 
   const forkPopperRef = useForkRef(rootRef, getPopper);
 
-  const forkReferenceRef = useForkRef(getNodeRef(child), reference);
+  const forkReferenceRef = useForkRef(getNodeRef(child), useNativeElementRef(reference));
 
   useImperativeHandle(ref, () => {
     return {

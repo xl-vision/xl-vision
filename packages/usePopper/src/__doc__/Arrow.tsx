@@ -1,7 +1,7 @@
 'use client';
 
-import { styled, Button, Portal, Row } from '@xl-vision/react';
-import { useMemo, CSSProperties } from 'react';
+import { styled, Button, Portal, Row, ButtonInstance } from '@xl-vision/react';
+import { useMemo, CSSProperties, useCallback, RefCallback } from 'react';
 import {
   arrow,
   shift,
@@ -67,6 +67,13 @@ const CustomPopper = ({ placement: initialPlacement }: { placement: Placement })
     middlewares,
   });
 
+  const referenceRef = useCallback<RefCallback<ButtonInstance>>(
+    (instance) => {
+      reference(instance?.nativeElement || null);
+    },
+    [reference],
+  );
+
   const style = {
     position: mode,
     top: 0,
@@ -91,7 +98,7 @@ const CustomPopper = ({ placement: initialPlacement }: { placement: Placement })
 
   return (
     <>
-      <Button className='reference' color='primary' ref={reference}>
+      <Button className='reference' color='primary' ref={referenceRef}>
         reference
       </Button>
       <Portal container={container}>

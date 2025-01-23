@@ -1,7 +1,15 @@
 'use client';
 
-import { styled, Button, Portal, Row } from '@xl-vision/react';
-import { useRef, useMemo, useCallback, forwardRef, useImperativeHandle, useEffect } from 'react';
+import { styled, Button, Portal, Row, ButtonInstance } from '@xl-vision/react';
+import {
+  useRef,
+  useMemo,
+  useCallback,
+  forwardRef,
+  useImperativeHandle,
+  useEffect,
+  RefCallback,
+} from 'react';
 import { usePopper, PopperOptions, shift, Middleware } from '@xl-vision/usePopper';
 
 const Demo = () => {
@@ -90,6 +98,13 @@ const CustomPopper = forwardRef<CustomPopperInstance, CustomPopperProps>((props,
     ...props,
   });
 
+  const referenceRef = useCallback<RefCallback<ButtonInstance>>(
+    (instance) => {
+      reference(instance?.nativeElement || null);
+    },
+    [reference],
+  );
+
   useImperativeHandle(ref, () => {
     return {
       update,
@@ -134,7 +149,7 @@ const CustomPopper = forwardRef<CustomPopperInstance, CustomPopperProps>((props,
 
   return (
     <>
-      <Button className='reference' color='primary' ref={reference}>
+      <Button className='reference' color='primary' ref={referenceRef}>
         reference
       </Button>
       <Portal container={container}>

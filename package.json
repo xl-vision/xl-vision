@@ -25,7 +25,7 @@
     "clean": "node scripts/clean.js",
     "lint:all": "eslint . --report-unused-disable-directives --max-warnings 0",
     "lint": "lint-staged",
-    "lint:fix": "cross-env LINT_FIX=true lint-staged",
+    "lint:fix": "cross-env LINT_FIX=true lint-staged --no-stash",
     "build": "pnpm --parallel --filter \"@xl-vision/*\" run build",
     "updateVersion": "node ./scripts/updateVersion",
     "release": "pnpm publish --filter ./packages"

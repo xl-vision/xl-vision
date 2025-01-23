@@ -1,7 +1,7 @@
 'use client';
 
-import { styled, Button, Portal, Row } from '@xl-vision/react';
-import { CSSProperties, useEffect, useMemo, useRef } from 'react';
+import { styled, Button, Portal, Row, ButtonInstance } from '@xl-vision/react';
+import { CSSProperties, RefCallback, useCallback, useEffect, useMemo, useRef } from 'react';
 import { usePopper, hide, Middleware } from '@xl-vision/usePopper';
 
 const container = () => document.body;
@@ -16,6 +16,13 @@ const Demo = () => {
     mode: 'absolute',
     middlewares,
   });
+
+  const referenceRef = useCallback<RefCallback<ButtonInstance>>(
+    (instance) => {
+      reference(instance?.nativeElement || null);
+    },
+    [reference],
+  );
 
   const rafIdRef = useRef<number>(null);
 
@@ -54,7 +61,7 @@ const Demo = () => {
     <DemoRoot onScroll={handleUpdate}>
       <Row>
         <Row.Col column={6} offset={9}>
-          <Button className='reference' color='primary' ref={reference}>
+          <Button className='reference' color='primary' ref={referenceRef}>
             reference
           </Button>
           <Portal container={container}>

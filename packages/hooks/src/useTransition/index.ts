@@ -1,4 +1,4 @@
-import { findDOMNode, warning } from '@xl-vision/utils';
+import { findDomNode, warning } from '@xl-vision/utils';
 import { ReactInstance, RefCallback, useCallback, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
 import useConstantFn from '../useConstantFn';
@@ -170,8 +170,7 @@ const useTransition = <T extends Element = Element>(options: TransitionOptions<T
   }, [inOption, handleInOptionChange]);
 
   const nodeRef: RefCallback<ReactInstance> = useCallback((el) => {
-    // eslint-disable-next-line react/no-find-dom-node
-    elementRef.current = findDOMNode<T>(el);
+    elementRef.current = findDomNode<T>(el);
   }, []);
 
   // 是否展示

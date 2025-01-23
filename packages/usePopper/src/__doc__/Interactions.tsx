@@ -1,7 +1,7 @@
 'use client';
 
-import { Button, Portal } from '@xl-vision/react';
-import { useState } from 'react';
+import { Button, ButtonInstance, Portal } from '@xl-vision/react';
+import { RefCallback, useCallback, useState } from 'react';
 import {
   useAutoUpdatePopper,
   useConnectInteraction,
@@ -25,6 +25,13 @@ const Demo = () => {
     },
   );
 
+  const referenceRef = useCallback<RefCallback<ButtonInstance>>(
+    (instance) => {
+      reference(instance?.nativeElement || null);
+    },
+    [reference],
+  );
+
   const style = {
     position: mode,
     top: 0,
@@ -36,7 +43,7 @@ const Demo = () => {
 
   return (
     <>
-      <Button {...getReferenceProps({})} className='reference' color='primary' ref={reference}>
+      <Button {...getReferenceProps({})} className='reference' color='primary' ref={referenceRef}>
         reference
       </Button>
       {open && (

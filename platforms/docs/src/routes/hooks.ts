@@ -49,6 +49,14 @@ const hookRoutes: Array<RouteType> = [
     name: 'useForm',
     docs: () => import('@xl-vision/useForm/src/__doc__/index.en-US.mdx?locale'),
   },
+  {
+    titleMap: {
+      'en-US': 'useResizeObserver',
+      'zh-CN': 'useResizeObserver',
+    },
+    name: 'useResizeObserver',
+    docs: () => import('@xl-vision/hooks/src/useResizeObserver/__doc__/index.en-US.mdx?locale'),
+  },
 ];
 
 export default hookRoutes;
