@@ -5,9 +5,14 @@ import PropTypes from 'prop-types';
 import { ReactNode, FC, createContext, useContext, useMemo } from 'react';
 import createTheme, { ThemeInput } from './createTheme';
 import ThemeContext from './ThemeContext';
+import { shallowEqual } from '../utils/function';
 
 export type ThemeProviderProps = ThemeInput & {
   children: ReactNode;
+};
+
+const DEFAULT_SHOULD_UPDATE = ([prevConfig]: [object], [currentConfig]: [object]) => {
+  return !shallowEqual(prevConfig, currentConfig);
 };
 
 const ThemeProvider: FC<ThemeProviderProps> = (props) => {
@@ -15,21 +20,7 @@ const ThemeProvider: FC<ThemeProviderProps> = (props) => {
 
   const parentTheme = useContext(ThemePropsContext);
 
-  const themeConfig = useEnhancedMemo(
-    () => others,
-    [others],
-    ([prevConfig], [currentConfig]) => {
-      if (prevConfig === currentConfig) {
-        return false;
-      }
-      const prevKeys = Object.keys(prevConfig) as Array<keyof typeof prevConfig>;
-      const currentKeys = Object.keys(currentConfig) as Array<keyof typeof currentConfig>;
-      return (
-        prevKeys.length !== currentKeys.length ||
-        prevKeys.some((key) => prevConfig[key] !== currentConfig[key])
-      );
-    },
-  );
+  const themeConfig = useEnhancedMemo(() => others, [others], DEFAULT_SHOULD_UPDATE);
 
   // 可能存在多个主题嵌套的情况，子主题应该继承父主题
   const mergedThemeProps = useMemo(() => {

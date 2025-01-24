@@ -3,7 +3,9 @@ import { Theme } from '../ThemeProvider';
 import defaultTheme from '../ThemeProvider/defaultTheme';
 
 const applyTheme =
-  <P extends { theme?: Theme }>(style: Interpolation<Omit<P, 'theme'> & { theme: Theme }>) =>
+  <P extends { theme?: Theme; styleProps?: object }>(
+    style: Interpolation<Omit<P, 'theme'> & { theme: Theme }>,
+  ) =>
   (props: P): Interpolation<Omit<P, 'theme'> & { theme: Theme }> => {
     if (typeof style === 'function') {
       const { theme, ...others } = props;

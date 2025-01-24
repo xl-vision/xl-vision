@@ -62,22 +62,21 @@ const styled = <
 
   const overrideCreateStyledComponent = <
     StyleProps extends object | void = void,
-    Props extends Pick<ExtractProps<Tag>, ForwardedProps> = Pick<ExtractProps<Tag>, ForwardedProps>,
     ActualStyleProps = StyleProps extends void ? object : { styleProps: StyleProps },
     ReceivedThemeProps = { theme: Theme } & ActualStyleProps,
     PassedThemeProps = { theme?: Theme } & ActualStyleProps,
   >(
-    first: TemplateStringsArray | CSSObject | FunctionInterpolation<Props & ReceivedThemeProps>,
-    ...styles: Array<Interpolation<Props & ReceivedThemeProps>>
+    first: TemplateStringsArray | CSSObject | FunctionInterpolation<object & ReceivedThemeProps>,
+    ...styles: Array<Interpolation<object & ReceivedThemeProps>>
   ) => {
-    const applyOverrideStyle = (props: Props & ReceivedThemeProps & { theme: Theme }) => {
+    const applyOverrideStyle = (props: ReceivedThemeProps & { theme: Theme }) => {
       const { theme } = props;
       if (!name || !slot) {
         return;
       }
       const overrideStyles = theme.overrideStyles as Record<
         string,
-        Record<string, Style<StyleProps, Props>>
+        Record<string, Style<StyleProps>>
       >;
 
       const overrideStyle = overrideStyles[name];
@@ -91,7 +90,7 @@ const styled = <
         return;
       }
       if (typeof overrideSlotStyle === 'function') {
-        return (overrideSlotStyle as FunctionInterpolation<Props & ReceivedThemeProps>)(props);
+        return (overrideSlotStyle as FunctionInterpolation<object & ReceivedThemeProps>)(props);
       }
       return overrideSlotStyle;
     };
@@ -111,11 +110,11 @@ const styled = <
       newFirst = applyTheme(newFirst);
     }
 
-    const InnerDefaultComponent = defaultCreateStyledComponent<Props & PassedThemeProps>(
+    const InnerDefaultComponent = defaultCreateStyledComponent<object & PassedThemeProps>(
       newFirst as
         | TemplateStringsArray
         | CSSObject
-        | FunctionInterpolation<Props & PassedThemeProps>,
+        | FunctionInterpolation<object & PassedThemeProps>,
       ...newStyles,
     );
 
