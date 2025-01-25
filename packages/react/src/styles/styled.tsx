@@ -171,12 +171,12 @@ const generateClassName = (baseClassName: string, styleProps?: Record<string, un
     const value = styleProps[key];
     switch (typeof value) {
       case 'string': {
-        classNames.push(`${baseClassName}--${key}-${value}`);
+        classNames.push(`${baseClassName}--${middleline(key)}-${middleline(value)}`);
         break;
       }
       case 'boolean': {
         if (value) {
-          classNames.push(`${baseClassName}--${key}`);
+          classNames.push(`${baseClassName}--${middleline(key)}`);
         }
         break;
       }

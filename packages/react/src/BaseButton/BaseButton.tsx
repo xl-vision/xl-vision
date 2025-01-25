@@ -1,6 +1,5 @@
 import { useConstantFn } from '@xl-vision/hooks';
 import { isProduction } from '@xl-vision/utils';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
   AnchorHTMLAttributes,
@@ -125,7 +124,6 @@ const BaseButton = forwardRef<BaseButtonInstance, BaseButtonProps>((props, ref) 
     disabled,
     loading,
     disableRipple,
-    className,
     tabIndex,
     onClick,
     onMouseDown,
@@ -236,19 +234,10 @@ const BaseButton = forwardRef<BaseButtonInstance, BaseButtonProps>((props, ref) 
 
   const rootClassName = `${clsPrefix}-base-button`;
 
-  const rootClasses = clsx(
-    {
-      [`${rootClassName}--loading`]: loading,
-      [`${rootClassName}--disabled`]: disabled,
-    },
-    className,
-  );
-
   return (
     <BaseButtonRoot
       {...others}
       as={Component}
-      className={rootClasses}
       disabled={disabled}
       ref={rootRef}
       styleProps={{ loading, disabled }}

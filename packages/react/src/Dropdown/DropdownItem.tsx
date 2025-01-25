@@ -1,7 +1,6 @@
 import { useConstantFn } from '@xl-vision/hooks';
 import { CSSObject } from '@xl-vision/styled-engine';
 import { isProduction } from '@xl-vision/utils';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
   forwardRef,
@@ -15,7 +14,6 @@ import {
 import DropdownContext from './DropdownContext';
 import BaseButton from '../BaseButton';
 import { styled } from '../styles';
-import { useTheme } from '../ThemeProvider';
 import { RefInstance } from '../types';
 
 export interface DropdownItemProps extends HTMLAttributes<HTMLLIElement> {
@@ -30,7 +28,7 @@ const displayName = 'DropdownItem';
 const DropdownItemRoot = styled('li', {
   name: displayName,
   slot: 'Root',
-})(() => {
+})<{ disabled?: boolean }>(() => {
   return {
     display: 'block',
     padding: 0,
@@ -73,9 +71,7 @@ const DropdownItemButton = styled(BaseButton, {
 });
 
 const DropdownItem = forwardRef<DropdownItemInstance, DropdownItemProps>((props, ref) => {
-  const { children, onClick, disabled, className, ...others } = props;
-
-  const { clsPrefix } = useTheme();
+  const { children, onClick, disabled, ...others } = props;
 
   const { setOpen } = useContext(DropdownContext);
 
@@ -97,17 +93,8 @@ const DropdownItem = forwardRef<DropdownItemInstance, DropdownItemProps>((props,
     onClick?.(e);
   });
 
-  const rootClassName = `${clsPrefix}-dropdown-item`;
-
-  const rootClasses = clsx(
-    {
-      [`${rootClassName}--disabled`]: disabled,
-    },
-    className,
-  );
-
   return (
-    <DropdownItemRoot {...others} className={rootClasses} ref={rootRef} onClick={handleClick}>
+    <DropdownItemRoot {...others} ref={rootRef} styleProps={{ disabled }} onClick={handleClick}>
       <DropdownItemButton
         // cant use prop disabled
         // see https://github.com/facebook/react/issues/10109

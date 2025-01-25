@@ -9,7 +9,6 @@ import {
   off,
   on,
 } from '@xl-vision/utils';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
   HTMLAttributes,
@@ -106,7 +105,6 @@ const Anchor = forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
     onChange,
     bounds = 5,
     targetOffset = 0,
-    className,
     type = 'rail',
     children,
     ...others
@@ -250,7 +248,7 @@ const Anchor = forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
     }
 
     const activeNode = rootNode.querySelector<HTMLAnchorElement>(
-      `.${clsPrefix}-anchor-link__title--active`,
+      `.${clsPrefix}-anchor-link__title--is-active`,
     );
 
     if (activeNode) {
@@ -302,14 +300,10 @@ const Anchor = forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
     };
   }, [activeLink, handleScrollTo, registerLink, unregisterLink]);
 
-  const rootClassName = `${clsPrefix}-anchor`;
-
-  const rootClasses = clsx(`${rootClassName}--${type}`, className);
-
   const inkNode = type === 'rail' && activeLink ? <AnchorInk ref={inkNodeRef} /> : null;
 
   const content = (
-    <AnchorRoot {...others} className={rootClasses} ref={rootRef} styleProps={{ type }}>
+    <AnchorRoot {...others} ref={rootRef} styleProps={{ type }}>
       {inkNode}
       {children}
     </AnchorRoot>

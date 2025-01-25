@@ -1,7 +1,6 @@
 import { useConstantFn } from '@xl-vision/hooks';
 import { CSSObject } from '@xl-vision/styled-engine';
 import { isProduction } from '@xl-vision/utils';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
   HTMLAttributes,
@@ -48,11 +47,11 @@ const AvatarRoot = styled('span', {
   name: displayName,
   slot: 'Root',
 })<{
-  isImage: boolean;
+  hasImage: boolean;
   shape: AvatarShape;
   size: SizeVariant;
 }>(({ theme, styleProps }) => {
-  const { shape: shapeType, size, isImage } = styleProps;
+  const { shape: shapeType, size, hasImage } = styleProps;
   const { colors, sizes } = theme;
   const style: CSSObject = {
     position: 'relative',
@@ -75,7 +74,7 @@ const AvatarRoot = styled('span', {
     },
   };
 
-  if (isImage) {
+  if (hasImage) {
     style.background = '0 0';
   }
 
@@ -105,7 +104,7 @@ const AvatarInner = styled('span', {
 
 const Avatar = forwardRef<AvatarInstance, AvatarProps>((props, ref) => {
   const { size: contextSize, shape: contextShape } = useContext(AvatarContext);
-  const { clsPrefix, sizeVariant } = useTheme();
+  const { sizeVariant } = useTheme();
 
   const {
     children,
@@ -115,7 +114,6 @@ const Avatar = forwardRef<AvatarInstance, AvatarProps>((props, ref) => {
     src,
     srcSet,
     alt,
-    className,
     gap = 4,
     onError,
     style,
@@ -177,20 +175,9 @@ const Avatar = forwardRef<AvatarInstance, AvatarProps>((props, ref) => {
 
   let childNode: ReactNode;
 
-  const rootClassName = `${clsPrefix}-avatar`;
-
   const hasImageElement = isValidElement(src);
 
-  const isImage = (src && isImgExist) || hasImageElement;
-
-  const rootClasses = clsx(
-    `${rootClassName}--shape-${shape}`,
-    {
-      [`${rootClassName}--size-${size}`]: typeof size === 'string' && size,
-      [`${rootClassName}--has-image`]: isImage,
-    },
-    className,
-  );
+  const hasImage = (src && isImgExist) || hasImageElement;
 
   if (typeof src === 'string' && src && isImgExist) {
     childNode = <img alt={alt} src={src} srcSet={srcSet} onError={handleImgError} />;
@@ -229,7 +216,6 @@ const Avatar = forwardRef<AvatarInstance, AvatarProps>((props, ref) => {
   return (
     <AvatarRoot
       {...others}
-      className={rootClasses}
       ref={rootRef}
       style={{
         ...rootSizeStyle,
@@ -238,7 +224,7 @@ const Avatar = forwardRef<AvatarInstance, AvatarProps>((props, ref) => {
       styleProps={{
         shape,
         size: rootSize,
-        isImage,
+        hasImage,
       }}
     >
       {childNode}
