@@ -5,7 +5,6 @@ import {
   useLifecycleState,
 } from '@xl-vision/hooks';
 import { getBoundingClientRect, isProduction, isServer } from '@xl-vision/utils';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
   HTMLAttributes,
@@ -26,7 +25,6 @@ import {
 } from './utils';
 import ResizeObserver from '../ResizeObserver';
 import { styled } from '../styles';
-import { useTheme } from '../ThemeProvider';
 import { RefInstance } from '../types';
 import { throttleByAnimationFrame } from '../utils/perf';
 
@@ -44,7 +42,7 @@ const displayName = 'Affix';
 const AffixRoot = styled('div', {
   name: displayName,
   slot: 'Root',
-})(() => {
+})<{ fixed: boolean }>(() => {
   return {};
 });
 
@@ -74,14 +72,11 @@ enum AffixStatus {
 }
 
 const Affix = forwardRef<AffixIntance, AffixProps>((props, ref) => {
-  const { clsPrefix } = useTheme();
-
   const {
     target = getDefaultTarget,
     onChange,
     offsetBottom,
     offsetTop,
-    className,
     children,
     ...others
   } = props;
@@ -210,18 +205,9 @@ const Affix = forwardRef<AffixIntance, AffixProps>((props, ref) => {
     };
   }, [currentTarget, handleEventEmit]);
 
-  const rootClassName = `${clsPrefix}-affix`;
-
-  const classes = clsx(
-    {
-      [`${rootClassName}--fixed`]: !!affixStyle,
-    },
-    className,
-  );
-
   return (
     <ResizeObserver onResizeObserver={handleSizeChange}>
-      <AffixRoot {...others} className={classes} ref={rootRef}>
+      <AffixRoot {...others} ref={rootRef} styleProps={{ fixed: !!affixStyle }}>
         {placeholderStyle && <AffixPlaceholder aria-hidden={true} style={placeholderStyle} />}
         <AffixInner style={affixStyle}>
           <ResizeObserver onResizeObserver={handleSizeChange}>{children}</ResizeObserver>

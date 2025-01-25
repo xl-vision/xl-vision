@@ -7,7 +7,6 @@ import {
   ShouldForwardProp,
 } from '@xl-vision/styled-engine';
 import { isProduction } from '@xl-vision/utils';
-import clsx from 'clsx';
 import { ComponentProps, ComponentType, forwardRef, JSX } from 'react';
 import { StyledComponentKey } from './constants';
 import createApplyTheme from './createApplyTheme';
@@ -124,17 +123,25 @@ const styled = <
     const DefaultComponent: typeof InnerDefaultComponent = forwardRef((props, ref) => {
       const { clsPrefix } = useTheme();
 
+      // eslint-disable-next-line react/prop-types
+      let actualClassName = (props as { className?: string }).className;
+
+      if (className) {
+        const baseClassName = `${clsPrefix}-${className}`;
+
+        // eslint-disable-next-line react/prop-types
+        const styleProps = (props as { styleProps?: Record<string, unknown> }).styleProps;
+
+        const stylePropsClassName = generateClassName(baseClassName, styleProps);
+
+        actualClassName = actualClassName
+          ? stylePropsClassName + ' ' + actualClassName
+          : stylePropsClassName;
+      }
+
       return (
         // @ts-expect-error fix types error
-        <InnerDefaultComponent
-          {...props}
-          className={clsx(
-            className && `${clsPrefix}-${className}`,
-            // eslint-disable-next-line react/prop-types
-            (props as { className?: string }).className,
-          )}
-          ref={ref}
-        />
+        <InnerDefaultComponent {...props} className={actualClassName} ref={ref} />
       );
     });
 
@@ -152,3 +159,29 @@ const styled = <
 };
 
 export default styled;
+
+const generateClassName = (baseClassName: string, styleProps?: Record<string, unknown>) => {
+  if (!styleProps) {
+    return baseClassName;
+  }
+
+  const classNames: Array<string> = [baseClassName];
+
+  Object.keys(styleProps).forEach((key) => {
+    const value = styleProps[key];
+    switch (typeof value) {
+      case 'string': {
+        classNames.push(`${baseClassName}--${key}-${value}`);
+        break;
+      }
+      case 'boolean': {
+        if (value) {
+          classNames.push(`${baseClassName}--${key}`);
+        }
+        break;
+      }
+    }
+  });
+
+  return classNames.join(' ');
+};
