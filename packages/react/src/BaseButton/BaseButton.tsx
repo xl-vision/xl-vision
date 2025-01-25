@@ -43,9 +43,8 @@ export type BaseButtonStyleProps = {
 const BaseButtonRoot = styled('button', {
   name: displayName,
   slot: 'Root',
-})<BaseButtonStyleProps>(({ styleProps, theme }) => {
+})<BaseButtonStyleProps>(({ styleProps }) => {
   const { disabled, loading } = styleProps;
-  const { colors, clsPrefix } = theme;
 
   return {
     position: 'relative',
@@ -75,24 +74,6 @@ const BaseButtonRoot = styled('button', {
     svg: {
       pointerEvents: 'none',
     },
-
-    [`.${clsPrefix}-base-button__ripple`]: {
-      transform: 'scale(1)',
-      opacity: colors.opacity.ripple,
-      '&-enter-active': {
-        transition: theme.transitions.enter('all'),
-      },
-      '&-exit-active': {
-        transition: theme.transitions.exit('all'),
-      },
-      '&-enter-from': {
-        transform: 'scale(0)',
-        opacity: 0,
-      },
-      '&-exit-to': {
-        opacity: 0,
-      },
-    },
   };
   // fix type warning
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -108,6 +89,33 @@ const BaseButtonInner = styled('span', {
     display: 'inline-block',
     width: '100%',
     height: '100%',
+  };
+});
+
+const BaseButtonRipple = styled(Ripple, {
+  name: displayName,
+  slot: 'Ripple',
+})(({ theme: { clsPrefix, colors, transitions } }) => {
+  const baseClassName = `${clsPrefix}-base-button__ripple`;
+
+  return {
+    transform: 'scale(1)',
+    opacity: colors.opacity.ripple,
+    [`.${baseClassName}`]: {
+      '&-enter-active': {
+        transition: transitions.enter('all'),
+      },
+      '&-exit-active': {
+        transition: transitions.exit('all'),
+      },
+      '&-enter-from': {
+        transform: 'scale(0)',
+        opacity: 0,
+      },
+      '&-exit-to': {
+        opacity: 0,
+      },
+    },
   };
 });
 
@@ -260,8 +268,7 @@ const BaseButton = forwardRef<BaseButtonInstance, BaseButtonProps>((props, ref) 
       onTouchStart={handleTouchStart}
     >
       <BaseButtonInner>{children}</BaseButtonInner>
-      <Ripple
-        className={`${rootClassName}__ripple`}
+      <BaseButtonRipple
         exitAfterEnter={true}
         ref={rippleRef}
         transitionClassName={`${rootClassName}__ripple`}

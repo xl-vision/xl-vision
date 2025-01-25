@@ -38,7 +38,7 @@ const BackTopRoot = styled('div', {
   name: displayName,
   slot: 'Root',
 })(({ theme }) => {
-  const { colors, transitions, clsPrefix, elevations } = theme;
+  const { transitions, clsPrefix } = theme;
 
   const rootClassName = `${clsPrefix}-back-top`;
 
@@ -47,22 +47,28 @@ const BackTopRoot = styled('div', {
     zIndex: 10,
     ...transitions.fadeIn(`&.${rootClassName}`),
     ...transitions.fadeOut(`&.${rootClassName}`),
-    [`.${rootClassName}__inner`]: {
-      fontSize: 24,
-      backgroundColor: colors.text.hint,
-      color: colors.background.paper,
-      width: 40,
-      height: 40,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      borderRadius: '50%',
-      cursor: 'pointer',
-      transition: transitions.standard('backgroundColor'),
-      boxShadow: elevations[3],
-      '&:hover': {
-        backgroundColor: colors.text.secondary,
-      },
+  };
+});
+
+const BackTopInner = styled('div', {
+  name: displayName,
+  slot: 'Inner',
+})(({ theme: { colors, transitions, elevations } }) => {
+  return {
+    fontSize: 24,
+    backgroundColor: colors.text.hint,
+    color: colors.background.paper,
+    width: 40,
+    height: 40,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: '50%',
+    cursor: 'pointer',
+    transition: transitions.standard('backgroundColor'),
+    boxShadow: elevations[3],
+    '&:hover': {
+      backgroundColor: colors.text.secondary,
     },
   };
 });
@@ -141,9 +147,9 @@ const BackTop = forwardRef<BackTopInstance, BackTopProps>((props, ref) => {
   const rootClassName = `${clsPrefix}-back-top`;
 
   const defaultElement = (
-    <div className={`${rootClassName}__inner`}>
+    <BackTopInner>
       <VerticalAlignTopOutlined />
-    </div>
+    </BackTopInner>
   );
 
   const fixedStyle: CSSProperties = {

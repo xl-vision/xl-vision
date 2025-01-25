@@ -9,8 +9,8 @@ const createGlobalStyle: CreateGlobalStyle = (first, ...styles) => {
 
     const applyTheme = (style: Interpolation<typeof props>): Interpolation<typeof props> => {
       if (typeof style === 'function') {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-return, react/prop-types
-        return style({ ...props, theme: props.theme || themeContext });
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, react/prop-types
+        return applyTheme(style({ ...props, theme: props.theme || themeContext }));
       }
       if (Array.isArray(style)) {
         return style.map(applyTheme);

@@ -168,7 +168,7 @@ const ButtonRoot = styled(BaseButton, {
       }
     }
 
-    if (isContained || variant === 'text') {
+    if ((isContained || variant === 'text') && !loading && !disabled) {
       styles['&:hover'] = {
         ...(styles['&:hover'] as object),
         backgroundColor: colors.themes.primary.background.hover,

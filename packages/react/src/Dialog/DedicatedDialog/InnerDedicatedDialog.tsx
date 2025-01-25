@@ -1,11 +1,9 @@
 import { useValueChange } from '@xl-vision/hooks';
 import { CSSObject } from '@xl-vision/styled-engine';
 import { isProduction } from '@xl-vision/utils';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { ReactNode, FC, useState, useEffect } from 'react';
 import { styled } from '../../styles';
-import { useTheme } from '../../ThemeProvider';
 import Dialog, { DialogProps } from '../Dialog';
 
 export interface InnerDedicatedDialogProps extends Omit<DialogProps, 'children' | 'content'> {
@@ -15,30 +13,46 @@ export interface InnerDedicatedDialogProps extends Omit<DialogProps, 'children' 
 
 const displayName = 'InnerDedicatedDialog';
 
+const InnerDedicatedDialogRoot = styled(Dialog, {
+  name: displayName,
+  slot: 'Root',
+})(() => {
+  return {};
+});
+
 const InnerDedicatedDialogHeader = styled('h6', {
   name: displayName,
   slot: 'Header',
 })(({ theme }) => {
-  const { typography, clsPrefix } = theme;
-
-  const rootClassName = `${clsPrefix}-inner-dedicated-dialog`;
+  const { typography } = theme;
 
   return {
     ...typography.h6.style,
     margin: 0,
     display: 'flex',
     alignItems: 'center',
+  };
+});
 
-    [`.${rootClassName}__icon`]: {
-      paddingRight: 5,
-      lineHeight: 1,
-      svg: {
-        verticalAlign: 'middle',
-      },
-    },
-    [`.${rootClassName}__title`]: {
+const InnerDedicatedDialogIcon = styled('span', {
+  name: displayName,
+  slot: 'Icon',
+})(() => {
+  return {
+    paddingRight: 5,
+    lineHeight: 1,
+    svg: {
       verticalAlign: 'middle',
     },
+  };
+});
+
+const InnerDedicatedDialogTitle = styled('span', {
+  name: displayName,
+  slot: 'Title',
+})(() => {
+  return {
+    verticalAlign: 'middle',
   };
 });
 
@@ -66,7 +80,6 @@ const InnerDedicatedDialog: FC<InnerDedicatedDialogProps> = (props) => {
     content,
     icon,
     title,
-    className,
     ...others
   } = props;
 
@@ -74,26 +87,21 @@ const InnerDedicatedDialog: FC<InnerDedicatedDialogProps> = (props) => {
 
   const [first, setFirst] = useState(true);
 
-  const { clsPrefix } = useTheme();
-
   // 保证有对话框弹出的动画效果
   useEffect(() => {
     setFirst(false);
   }, []);
 
-  const rootClassName = `${clsPrefix}-inner-dedicated-dialog`;
-
   const headerWrapper = (
     <InnerDedicatedDialogHeader>
-      {icon && <span className={`${rootClassName}__icon`}>{icon}</span>}
-      <span className={`${rootClassName}__title`}>{title}</span>
+      {icon && <InnerDedicatedDialogIcon>{icon}</InnerDedicatedDialogIcon>}
+      <InnerDedicatedDialogTitle>{title}</InnerDedicatedDialogTitle>
     </InnerDedicatedDialogHeader>
   );
 
   return (
-    <Dialog
+    <InnerDedicatedDialogRoot
       {...others}
-      className={clsx(rootClassName, className)}
       open={!first && open}
       title={headerWrapper}
       onOpenChange={handleOpenChange}
@@ -103,7 +111,7 @@ const InnerDedicatedDialog: FC<InnerDedicatedDialogProps> = (props) => {
           {content}
         </InnerDedicatedDialogContent>
       )}
-    </Dialog>
+    </InnerDedicatedDialogRoot>
   );
 };
 

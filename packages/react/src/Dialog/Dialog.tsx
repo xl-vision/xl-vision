@@ -47,14 +47,20 @@ const DialogHeader = styled('div', {
   name: displayName,
   slot: 'Header',
 })(({ theme }) => {
-  const { typography, colors, clsPrefix } = theme;
+  const { colors } = theme;
   return {
     color: colors.text.primary,
     padding: '16px 24px',
-    [`.${clsPrefix}-dialog__title`]: {
-      ...typography.h6.style,
-      margin: 0,
-    },
+  };
+});
+
+const DialogTitle = styled('h6', {
+  name: displayName,
+  slot: 'Title',
+})(({ theme: { typography } }) => {
+  return {
+    ...typography.h6.style,
+    margin: 0,
   };
 });
 
@@ -196,8 +202,6 @@ const Dialog = forwardRef<DialogInstance, DialogProps>((props, ref) => {
     </DialogActions>
   );
 
-  const rootClassName = `${clsPrefix}-dialog`;
-
   return (
     <DialogRoot
       aria-labelledby={dialogTitleId}
@@ -207,7 +211,7 @@ const Dialog = forwardRef<DialogInstance, DialogProps>((props, ref) => {
       onOpenChange={handleOpenChange}
     >
       <DialogHeader id={dialogTitleId}>
-        {typeof title === 'string' ? <h6 className={`${rootClassName}__title`}>{title}</h6> : title}
+        {typeof title === 'string' ? <DialogTitle>{title}</DialogTitle> : title}
       </DialogHeader>
       {children && <DialogContent>{children}</DialogContent>}
       {footer !== null && <DialogFooter>{footer || defaultFooterNode}</DialogFooter>}

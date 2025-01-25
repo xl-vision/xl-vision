@@ -86,7 +86,7 @@ export { default as Portal } from './Portal';
 export type { PortalContainerReturnType, PortalContainerType, PortalProp } from './Portal';
 
 export { default as CssBaseline } from './CssBaseline';
-export type { CssBaselineProps, CssBaselineStyleProps } from './CssBaseline';
+export type { CssBaselineProps } from './CssBaseline';
 
 export { default as Popper } from './Popper';
 export type {

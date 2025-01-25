@@ -37,7 +37,7 @@ const DropdownSubmenuRoot = styled(Popper, {
       ...transitions.fadeIn('&'),
       ...transitions.fadeOut('&'),
     },
-    '>li': {
+    '> li': {
       display: 'block',
       padding: 0,
       margin: 0,

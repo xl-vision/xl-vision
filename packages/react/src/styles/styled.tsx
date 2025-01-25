@@ -9,8 +9,8 @@ import {
 import { isProduction } from '@xl-vision/utils';
 import clsx from 'clsx';
 import { ComponentProps, ComponentType, forwardRef, JSX } from 'react';
-import applyTheme from './applyTheme';
 import { StyledComponentKey } from './constants';
+import createApplyTheme from './createApplyTheme';
 import { Theme, Style, useTheme } from '../ThemeProvider';
 
 export type XlOptions = {
@@ -94,6 +94,8 @@ const styled = <
       }
       return overrideSlotStyle;
     };
+
+    const applyTheme = createApplyTheme();
 
     const newStyles = [...styles, applyOverrideStyle].map(applyTheme);
 

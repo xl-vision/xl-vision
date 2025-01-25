@@ -44,12 +44,24 @@ const displayName = 'Affix';
 const AffixRoot = styled('div', {
   name: displayName,
   slot: 'Root',
-})(({ theme: { clsPrefix } }) => {
+})(() => {
+  return {};
+});
+
+const AffixInner = styled('div', {
+  name: displayName,
+  slot: 'Inner',
+})(() => {
   return {
-    [`.${clsPrefix}-affix__inner`]: {
-      zIndex: 1,
-    },
+    zIndex: 1,
   };
+});
+
+const AffixPlaceholder = styled('div', {
+  name: displayName,
+  slot: 'Placeholder',
+})(() => {
+  return {};
 });
 
 const getDefaultTarget = () => {
@@ -210,16 +222,10 @@ const Affix = forwardRef<AffixIntance, AffixProps>((props, ref) => {
   return (
     <ResizeObserver onResizeObserver={handleSizeChange}>
       <AffixRoot {...others} className={classes} ref={rootRef}>
-        {placeholderStyle && (
-          <div
-            aria-hidden={true}
-            className={`${rootClassName}__placeholder`}
-            style={placeholderStyle}
-          />
-        )}
-        <div className={`${rootClassName}__inner`} style={affixStyle}>
+        {placeholderStyle && <AffixPlaceholder aria-hidden={true} style={placeholderStyle} />}
+        <AffixInner style={affixStyle}>
           <ResizeObserver onResizeObserver={handleSizeChange}>{children}</ResizeObserver>
-        </div>
+        </AffixInner>
       </AffixRoot>
     </ResizeObserver>
   );
