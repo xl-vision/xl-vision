@@ -278,6 +278,13 @@ const ButtonSuffix = styled(ButtonPrefix, {
   }
 });
 
+const ButtonInner = styled('span', {
+  name: displayName,
+  slot: 'Inner',
+})(() => {
+  return {};
+});
+
 const loadingKeyframes = keyframes`
   0% {
     transform: rotate(0deg);
@@ -380,7 +387,7 @@ const Button = forwardRef<ButtonInstance, ButtonProps>((props, ref) => {
       }}
     >
       {prefix}
-      {children && <span className={`${rootClassName}__inner`}>{children}</span>}
+      {children && <ButtonInner>{children}</ButtonInner>}
       {suffix}
     </ButtonRoot>
   );

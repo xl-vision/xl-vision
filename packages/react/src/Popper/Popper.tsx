@@ -25,7 +25,6 @@ import {
   PopperMode,
 } from '@xl-vision/usePopper';
 import { isProduction, isServer } from '@xl-vision/utils';
-import clsx from 'clsx';
 import PropTypes, { Validator } from 'prop-types';
 import {
   MouseEventHandler,
@@ -46,6 +45,7 @@ import {
 } from 'react';
 import useNativeElementRef from '../hooks/useNativeElementRef';
 import Portal, { PortalContainerType } from '../Portal';
+import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 import Transition from '../Transition';
 import { RefInstance } from '../types';
@@ -97,6 +97,13 @@ export type PopperInstance = RefInstance<HTMLDivElement>;
 
 const displayName = 'Popper';
 
+const PopperRoot = styled('div', {
+  name: displayName,
+  slot: 'Root',
+})(() => {
+  return {};
+});
+
 const defaultGetPopupContainer = () => document.body;
 
 const Popper = forwardRef<PopperInstance, PopperProps>((props, ref) => {
@@ -114,7 +121,6 @@ const Popper = forwardRef<PopperInstance, PopperProps>((props, ref) => {
     contextMenuOptions,
     open: openProp,
     onOpenChange,
-    className,
     arrow: arrowProp,
     defaultOpen = false,
     shiftOptions,
@@ -274,8 +280,6 @@ const Popper = forwardRef<PopperInstance, PopperProps>((props, ref) => {
 
   const innerClassName = `${rootClassName}__inner`;
 
-  const rootClasses = clsx(rootClassName, className);
-
   const popperStyle: CSSProperties = {
     position: mode,
     left: 0,
@@ -293,11 +297,10 @@ const Popper = forwardRef<PopperInstance, PopperProps>((props, ref) => {
 
   const portal = (
     <Portal container={popupContainer}>
-      <div
+      <PopperRoot
         aria-hidden={!show}
         {...others}
         {...getPopperProps({ style: popperStyle })}
-        className={rootClasses}
         ref={forkPopperRef}
       >
         <Transition
@@ -324,7 +327,7 @@ const Popper = forwardRef<PopperInstance, PopperProps>((props, ref) => {
             </div>
           )}
         </Transition>
-      </div>
+      </PopperRoot>
     </Portal>
   );
 

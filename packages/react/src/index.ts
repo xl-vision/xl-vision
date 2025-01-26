@@ -185,9 +185,9 @@ export type {
 
 export { default as Message } from './Message';
 export type {
-  MessageProps,
+  MessageWrapperProps as MessageProps,
   MessageType,
-  InnerMessageProps,
+  MessageWrapperProps as InnerMessageProps,
   MessageHookOptions,
   MessageHookReturnType,
   MessageGlobalConfig,
@@ -202,8 +202,8 @@ export type {
   NoticationHookOptions,
   NoticationHookReturnType,
   NoticationPlacement,
-  NoticationProps,
+  NoticationWrapperProps as NoticationProps,
   NoticationType,
-  InnerNoticationProps,
+  NoticationProps as InnerNoticationProps,
   MethodNoticationContainerProps,
 } from './Notication';

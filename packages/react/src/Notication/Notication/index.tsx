@@ -7,23 +7,23 @@ import {
 import { isProduction } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { FC, useMemo } from 'react';
-import InnerNotication, { InnerNoticationProps } from './InnerNotication';
+import NoticationInternal, { NoticationProps } from './Notication';
 import { useTheme } from '../../ThemeProvider';
 
 export type NoticationType = 'success' | 'error' | 'warning' | 'info';
 
-export * from './InnerNotication';
+export * from './Notication';
 
-export type NoticationProps = InnerNoticationProps & {
+export type NoticationWrapperProps = NoticationProps & {
   type?: NoticationType;
 };
 
-const displayName = 'Notication';
+const displayName = 'NoticationWrapper';
 
-const Notication: FC<NoticationProps> = ({ type, ...others }) => {
+const NoticationWrapper: FC<NoticationWrapperProps> = ({ type, ...others }) => {
   const { colors } = useTheme();
 
-  const defaultProps: Partial<InnerNoticationProps> = useMemo(() => {
+  const defaultProps: Partial<NoticationProps> = useMemo(() => {
     switch (type) {
       case 'success': {
         return {
@@ -53,14 +53,14 @@ const Notication: FC<NoticationProps> = ({ type, ...others }) => {
     }
   }, [colors, type]);
 
-  return <InnerNotication {...defaultProps} {...others} />;
+  return <NoticationInternal {...defaultProps} {...others} />;
 };
 
 if (!isProduction) {
-  Notication.displayName = displayName;
-  Notication.propTypes = {
+  NoticationWrapper.displayName = displayName;
+  NoticationWrapper.propTypes = {
     type: PropTypes.oneOf<NoticationType>(['error', 'info', 'success', 'warning']),
   };
 }
 
-export default Notication;
+export default NoticationWrapper;

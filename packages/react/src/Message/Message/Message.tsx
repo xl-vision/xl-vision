@@ -16,7 +16,7 @@ import { styled } from '../../styles';
 import { useTheme } from '../../ThemeProvider';
 import Transition from '../../Transition';
 
-export type InnerMessageProps = NoticationProps &
+export type MessageProps = NoticationProps &
   Omit<HTMLAttributes<HTMLDivElement>, 'content'> & {
     content: ReactNode;
     closeIcon?: ReactNode;
@@ -25,15 +25,15 @@ export type InnerMessageProps = NoticationProps &
     showClose?: boolean;
   };
 
-const displayName = 'InnerMessage';
+const displayName = 'Message';
 
-const InnerMessageRoot = styled('div', {
+const MessageRoot = styled('div', {
   name: displayName,
   slot: 'Root',
 })(({ theme }) => {
-  const { transitions, colors, elevations, sizes, clsPrefix } = theme;
+  const { transitions, clsPrefix } = theme;
 
-  const rootClassName = `${clsPrefix}-inner-message`;
+  const rootClassName = `${clsPrefix}-message`;
 
   return {
     display: 'inline-block',
@@ -65,39 +65,69 @@ const InnerMessageRoot = styled('div', {
         maxHeight: 0,
       },
     },
+  };
+});
 
-    [`.${rootClassName}__inner`]: {
-      display: 'flex',
-      alignItems: 'center',
-      backgroundColor: colors.background.popper,
-      borderRadius: sizes.middle.borderRadius,
-      padding: `${sizes.middle.padding.y}px ${sizes.middle.padding.x}px`,
-      boxShadow: elevations[3],
-    },
-    [`.${rootClassName}__status, .${rootClassName}__close`]: {
-      lineHeight: 1,
-      svg: {
-        verticalAlign: 'middle',
-      },
-    },
-    [`.${rootClassName}__status`]: {
-      paddingRight: 5,
-    },
-    [`.${rootClassName}__close`]: {
-      display: 'inline-block',
-      padding: 0,
-      marginLeft: 5,
-      cursor: 'pointer',
-      color: colors.text.hint,
-      transition: transitions.standard('color'),
-      '&:hover, &:focus': {
-        color: colors.text.primary,
-      },
+const MessageInner = styled('div', {
+  name: displayName,
+  slot: 'Inner',
+})(({ theme: { colors, sizes, elevations } }) => {
+  return {
+    display: 'flex',
+    alignItems: 'center',
+    backgroundColor: colors.background.popper,
+    borderRadius: sizes.middle.borderRadius,
+    padding: `${sizes.middle.padding.y}px ${sizes.middle.padding.x}px`,
+    boxShadow: elevations[3],
+  };
+});
+
+const MessageIcon = styled('span', {
+  name: displayName,
+  slot: 'Icon',
+})(() => {
+  return {
+    lineHeight: 1,
+    svg: {
+      verticalAlign: 'middle',
     },
   };
 });
 
-const InnerMessage = forwardRef<HTMLDivElement, InnerMessageProps>((props, ref) => {
+const MessageIconStatus = styled(MessageIcon, {
+  name: displayName,
+  slot: 'Icon',
+})(() => {
+  return {
+    paddingRight: 5,
+  };
+});
+
+const MessageIconClose = styled(MessageIcon, {
+  name: displayName,
+  slot: 'Close',
+})(({ theme: { colors, transitions } }) => {
+  return {
+    display: 'inline-block',
+    padding: 0,
+    marginLeft: 5,
+    cursor: 'pointer',
+    color: colors.text.hint,
+    transition: transitions.standard('color'),
+    '&:hover, &:focus': {
+      color: colors.text.primary,
+    },
+  };
+});
+
+const MessageContent = styled('div', {
+  name: displayName,
+  slot: 'Content',
+})(() => {
+  return {};
+});
+
+const Message = forwardRef<HTMLDivElement, MessageProps>((props, ref) => {
   const {
     duration = 3000,
     content,
@@ -170,7 +200,7 @@ const InnerMessage = forwardRef<HTMLDivElement, InnerMessageProps>((props, ref) 
     };
   }, [duration, setOpen]);
 
-  const rootClassName = `${clsPrefix}-inner-message`;
+  const rootClassName = `${clsPrefix}-message`;
 
   return (
     <Transition
@@ -179,35 +209,34 @@ const InnerMessage = forwardRef<HTMLDivElement, InnerMessageProps>((props, ref) 
       transitionOnFirst={true}
       onExited={handleExit}
     >
-      <InnerMessageRoot
+      <MessageRoot
         ref={ref}
         {...others}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <div className={`${rootClassName}__inner`} role='alert'>
-          {icon && <span className={`${rootClassName}__status`}>{icon}</span>}
-          <div className={`${rootClassName}__content`}>{content}</div>
+        <MessageInner role='alert'>
+          {icon && <MessageIconStatus>{icon}</MessageIconStatus>}
+          <MessageContent>{content}</MessageContent>
           {showClose && (
-            <span
-              className={`${rootClassName}__close`}
+            <MessageIconClose
               role='button'
               tabIndex={0}
               onClick={handleClose}
               onKeyDown={handleCloseKeyDown}
             >
               {closeIcon || <CloseOutlined />}
-            </span>
+            </MessageIconClose>
           )}
-        </div>
-      </InnerMessageRoot>
+        </MessageInner>
+      </MessageRoot>
     </Transition>
   );
 });
 
 if (!isProduction) {
-  InnerMessage.displayName = displayName;
-  InnerMessage.propTypes = {
+  Message.displayName = displayName;
+  Message.propTypes = {
     content: PropTypes.node.isRequired,
     closeIcon: PropTypes.node,
     defaultOpen: PropTypes.bool,
@@ -221,4 +250,4 @@ if (!isProduction) {
   };
 }
 
-export default InnerMessage;
+export default Message;

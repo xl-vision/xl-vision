@@ -2,7 +2,6 @@ import { useConstantFn, useValueChange } from '@xl-vision/hooks';
 import { RightOutlined } from '@xl-vision/icons';
 import { CSSObject } from '@xl-vision/styled-engine';
 import { isProduction, isServer } from '@xl-vision/utils';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { ReactNode, forwardRef, useContext, useCallback, useEffect } from 'react';
 import DropdownContext from './DropdownContext';
@@ -29,7 +28,7 @@ const displayName = 'DropdownSubmenu';
 const DropdownSubmenuRoot = styled(Popper, {
   name: displayName,
   slot: 'Root',
-})(({ theme }) => {
+})<{ disabled?: boolean }>(({ theme }) => {
   const { transitions, clsPrefix } = theme;
 
   return {
@@ -43,6 +42,13 @@ const DropdownSubmenuRoot = styled(Popper, {
       margin: 0,
     },
   };
+});
+
+const DropdownSubmenuReference = styled('li', {
+  name: displayName,
+  slot: 'Reference',
+})(() => {
+  return {};
 });
 
 export type DropdownSubmenuItemButtonStyleProps = {
@@ -119,7 +125,6 @@ const DropdownSubmenu = forwardRef<DropdownSubmenuInstance, DropdownSubmenuProps
     children,
     placement = 'right-start',
     transitionClassName,
-    className,
     offset = 8,
     trigger = defaultTrigger,
     open: openProp,
@@ -158,30 +163,25 @@ const DropdownSubmenu = forwardRef<DropdownSubmenuInstance, DropdownSubmenuProps
 
   const rootClassName = `${clsPrefix}-dropdown-submenu`;
 
-  const rootClasses = clsx(
-    {
-      [`${rootClassName}--disabled`]: disabled,
-    },
-    className,
-  );
-
   const popup = <DropdownSubmenuPopup>{children}</DropdownSubmenuPopup>;
 
   return (
     <DropdownSubmenuRoot
       {...others}
-      className={rootClasses}
       offset={offset}
       open={open}
       placement={placement}
       popup={popup}
       popupContainer={popupContainer}
       ref={ref}
+      styleProps={{
+        disabled,
+      }}
       transitionClassName={rootClassName || transitionClassName}
       trigger={trigger}
       onOpenChange={handleOpenChange}
     >
-      <li className={`${rootClassName}__inner`}>
+      <DropdownSubmenuReference>
         <DropdownSubmenuItemButton
           // cant use prop disabled
           // see https://github.com/facebook/react/issues/10109
@@ -193,7 +193,7 @@ const DropdownSubmenu = forwardRef<DropdownSubmenuInstance, DropdownSubmenuProps
           {title}
           <DropdownSubmenuIcon />
         </DropdownSubmenuItemButton>
-      </li>
+      </DropdownSubmenuReference>
     </DropdownSubmenuRoot>
   );
 });

@@ -1,5 +1,4 @@
 import { isProduction, isServer } from '@xl-vision/utils';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { Children, forwardRef, ReactElement, ReactNode } from 'react';
 import Popper, { PopperChildrenProps, PopperInstance, PopperProps } from '../Popper';
@@ -102,9 +101,6 @@ const Tooltip = forwardRef<TooltipInstance, TooltipProps>((props, ref) => {
 
   const popup = (
     <TooltipPopup
-      className={clsx({
-        [`${rootClassName}}__popup--width`]: maxWidth !== undefined,
-      })}
       style={{ maxWidth, ...colorStyle }}
       styleProps={{
         hasWidth: maxWidth !== undefined,

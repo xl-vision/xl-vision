@@ -1,7 +1,6 @@
 import { useConstantFn, useForkRef, useValueChange } from '@xl-vision/hooks';
 import { CaretDownOutlined, CaretUpOutlined } from '@xl-vision/icons';
 import { BigIntDecimal, isProduction, omit } from '@xl-vision/utils';
-import clsx from 'clsx';
 import {
   forwardRef,
   useState,
@@ -85,29 +84,30 @@ const InputNumberControls = styled('span', {
 const InputNumberControlUp = styled('span', {
   name: displayName,
   slot: 'ControlUp',
-})(({ theme: { transitions, clsPrefix, colors } }) => {
-  return {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    cursor: 'pointer',
-    height: '40%',
-    flex: 'auto',
-    fontSize: '10px',
-    padding: `0 3px`,
-    transition: transitions.standard('all'),
-    '&:hover': {
-      height: '60%',
+})<{ disabled?: boolean }>(({ theme: { transitions, colors }, styleProps: { disabled } }) => {
+  return [
+    {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      cursor: 'pointer',
+      height: '40%',
+      flex: 'auto',
+      fontSize: '10px',
+      padding: `0 3px`,
+      transition: transitions.standard('all'),
+      '&:hover': {
+        height: '60%',
+      },
     },
-
-    [`&.${clsPrefix}-input-number__control--disabled`]: {
+    disabled && {
       cursor: 'not-allowed',
       opacity: colors.opacity.disabled,
       '&:hover': {
         height: '40%',
       },
     },
-  };
+  ];
 });
 
 const InputNumberControlDown = styled(InputNumberControlUp, {
@@ -482,24 +482,12 @@ const InputNumber = forwardRef<InputNumberInstance, InputNumberProps>((props, re
     return +value <= +min;
   }, [min, value, highPrecisionMode]);
 
-  const rootClassName = `${clsPrefix}-input-number`;
-
   const suffixNode = !readOnly && !disabled && controls && (
     <InputNumberControls>
-      <InputNumberControlUp
-        className={clsx({
-          [`${rootClassName}__control--disabled`]: isArrowUpDisabled,
-        })}
-        onClick={handleUp}
-      >
+      <InputNumberControlUp styleProps={{ disabled: isArrowUpDisabled }} onClick={handleUp}>
         {upIcon}
       </InputNumberControlUp>
-      <InputNumberControlDown
-        className={clsx({
-          [`${rootClassName}__control--disabled`]: isArrowDownDisabled,
-        })}
-        onClick={handleDown}
-      >
+      <InputNumberControlDown styleProps={{ disabled: isArrowDownDisabled }} onClick={handleDown}>
         {downIcon}
       </InputNumberControlDown>
     </InputNumberControls>
