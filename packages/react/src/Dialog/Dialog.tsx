@@ -3,8 +3,8 @@ import { isProduction } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { ReactNode, forwardRef, useState, useEffect } from 'react';
 import Button, { ButtonProps } from '../Button';
+import memoStyled from '../memoStyled';
 import Modal, { ModalInstance, ModalProps } from '../Modal';
-import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 
 export type DialogButtonProps = Omit<ButtonProps, 'children' | 'onClick'>;
@@ -26,7 +26,7 @@ export type DialogInstance = ModalInstance;
 
 const displayName = 'Dialog';
 
-const DialogRoot = styled(Modal, {
+const DialogRoot = memoStyled(Modal, {
   name: displayName,
   slot: 'Root',
 })(({ theme }) => {
@@ -43,22 +43,28 @@ const DialogRoot = styled(Modal, {
   };
 });
 
-const DialogHeader = styled('div', {
+const DialogHeader = memoStyled('div', {
   name: displayName,
   slot: 'Header',
 })(({ theme }) => {
-  const { typography, colors, clsPrefix } = theme;
+  const { colors } = theme;
   return {
     color: colors.text.primary,
     padding: '16px 24px',
-    [`.${clsPrefix}-dialog__title`]: {
-      ...typography.h6.style,
-      margin: 0,
-    },
   };
 });
 
-const DialogContent = styled('div', {
+const DialogTitle = memoStyled('h6', {
+  name: displayName,
+  slot: 'Title',
+})(({ theme: { typography } }) => {
+  return {
+    ...typography.h6.style,
+    margin: 0,
+  };
+});
+
+const DialogContent = memoStyled('div', {
   name: displayName,
   slot: 'Content',
 })(({ theme }) => {
@@ -73,7 +79,7 @@ const DialogContent = styled('div', {
   };
 });
 
-const DialogFooter = styled('div', {
+const DialogFooter = memoStyled('div', {
   name: displayName,
   slot: 'Footer',
 })(() => {
@@ -83,7 +89,7 @@ const DialogFooter = styled('div', {
   };
 });
 
-const DialogActions = styled('div', {
+const DialogActions = memoStyled('div', {
   name: displayName,
   slot: 'Actions',
 })(({ theme: { size } }) => {
@@ -196,8 +202,6 @@ const Dialog = forwardRef<DialogInstance, DialogProps>((props, ref) => {
     </DialogActions>
   );
 
-  const rootClassName = `${clsPrefix}-dialog`;
-
   return (
     <DialogRoot
       aria-labelledby={dialogTitleId}
@@ -207,7 +211,7 @@ const Dialog = forwardRef<DialogInstance, DialogProps>((props, ref) => {
       onOpenChange={handleOpenChange}
     >
       <DialogHeader id={dialogTitleId}>
-        {typeof title === 'string' ? <h6 className={`${rootClassName}__title`}>{title}</h6> : title}
+        {typeof title === 'string' ? <DialogTitle>{title}</DialogTitle> : title}
       </DialogHeader>
       {children && <DialogContent>{children}</DialogContent>}
       {footer !== null && <DialogFooter>{footer || defaultFooterNode}</DialogFooter>}

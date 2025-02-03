@@ -14,8 +14,8 @@ import {
 } from 'react';
 import Avatar, { AvatarProps, AvatarShape, AvatarSize } from './Avatar';
 import AvatarContext, { AvatarContextProps } from './AvatarContext';
+import memoStyled from '../memoStyled';
 import Popover from '../Popover';
-import { styled } from '../styles';
 import { SizeVariant, useTheme } from '../ThemeProvider';
 import { RefInstance } from '../types';
 
@@ -34,24 +34,40 @@ export type AvatarGroupInstance = RefInstance<HTMLDivElement>;
 
 const displayName = 'AvatarGroup';
 
-const AvatarGroupRoot = styled('div', {
+const AvatarGroupRoot = memoStyled('div', {
   name: displayName,
   slot: 'Root',
-})<{ size: SizeVariant }>(({ styleProps, theme }) => {
-  const { size } = styleProps;
+})<{ size: SizeVariant }>(({ theme }) => {
   const { colors, sizes, clsPrefix } = theme;
 
+  const avatarClassName = `${clsPrefix}-avatar`;
+
   return {
-    [`.${clsPrefix}-avatar`]: {
-      border: `${sizes[size].border}px solid ${colors.background.paper}`,
+    [`.${avatarClassName}`]: {
+      borderColor: colors.background.paper,
+      borderStyle: 'solid',
       '&:not(:first-child)': {
         marginLeft: -8,
       },
     },
+    variants: Object.keys(sizes).map((k) => {
+      const key = k as SizeVariant;
+      const value = sizes[key];
+      return {
+        props: {
+          size: key,
+        },
+        style: {
+          [`.${avatarClassName}`]: {
+            borderWidth: value.border,
+          },
+        },
+      };
+    }),
   };
 });
 
-const AvatarPopup = styled(Popover, {
+const AvatarPopup = memoStyled(Popover, {
   name: displayName,
   slot: 'Popup',
 })(({ theme: { clsPrefix } }) => {

@@ -1,7 +1,6 @@
 import { LoadingOutlined } from '@xl-vision/icons';
 import { keyframes, CSSObject } from '@xl-vision/styled-engine';
 import { isProduction } from '@xl-vision/utils';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
   ReactElement,
@@ -38,7 +37,7 @@ const displayName = 'Button';
 
 export type ButtonStyleProps = {
   color: ButtonColor;
-  enableElevation: boolean;
+  elevation: boolean;
   icon: boolean;
   size: SizeVariant;
   variant: ButtonVariant;
@@ -66,7 +65,7 @@ const ButtonRoot = styled(BaseButton, {
 
   const {
     color: colorStyle,
-    enableElevation,
+    elevation,
     disabled,
     loading,
     size,
@@ -122,16 +121,16 @@ const ButtonRoot = styled(BaseButton, {
   if (disabled || loading) {
     styles.opacity = colors.opacity.disabled;
   } else if (isContained) {
-    if (enableElevation) {
+    if (elevation) {
       styles.boxShadow = elevations[1];
     }
     styles['&:hover'] = {
-      ...(enableElevation && {
+      ...(elevation && {
         boxShadow: elevations[2],
       }),
     };
     styles['&:focus'] = {
-      ...(enableElevation && {
+      ...(elevation && {
         boxShadow: elevations[3],
       }),
     };
@@ -168,7 +167,7 @@ const ButtonRoot = styled(BaseButton, {
       }
     }
 
-    if (isContained || variant === 'text') {
+    if ((isContained || variant === 'text') && !loading && !disabled) {
       styles['&:hover'] = {
         ...(styles['&:hover'] as object),
         backgroundColor: colors.themes.primary.background.hover,
@@ -279,6 +278,13 @@ const ButtonSuffix = styled(ButtonPrefix, {
   }
 });
 
+const ButtonInner = styled('span', {
+  name: displayName,
+  slot: 'Inner',
+})(() => {
+  return {};
+});
+
 const loadingKeyframes = keyframes`
   0% {
     transform: rotate(0deg);
@@ -312,7 +318,6 @@ const Button = forwardRef<ButtonInstance, ButtonProps>((props, ref) => {
     variant = 'contained',
     long,
     round,
-    className,
     ...others
   } = props;
 
@@ -333,21 +338,6 @@ const Button = forwardRef<ButtonInstance, ButtonProps>((props, ref) => {
   }, []);
 
   const rootClassName = `${clsPrefix}-button`;
-
-  const rootClasses = clsx(
-    `${rootClassName}--size-${size}`,
-    `${rootClassName}--color-${color}`,
-    `${rootClassName}--variant-${variant}`,
-    {
-      [`${rootClassName}--elevation`]: enableElevation && variant === 'contained',
-      [`${rootClassName}--disabled`]: disabled,
-      [`${rootClassName}--loading`]: loading,
-      [`${rootClassName}--long`]: long,
-      [`${rootClassName}--round`]: round,
-      [`${rootClassName}--icon`]: icon,
-    },
-    className,
-  );
 
   const prefixClassName = `${rootClassName}__prefix`;
 
@@ -381,13 +371,12 @@ const Button = forwardRef<ButtonInstance, ButtonProps>((props, ref) => {
   return (
     <ButtonRoot
       {...others}
-      className={rootClasses}
       disabled={disabled}
       loading={loading}
       ref={ref}
       styleProps={{
         color,
-        enableElevation,
+        elevation: enableElevation,
         size,
         disabled,
         loading,
@@ -398,7 +387,7 @@ const Button = forwardRef<ButtonInstance, ButtonProps>((props, ref) => {
       }}
     >
       {prefix}
-      {children && <span className={`${rootClassName}__inner`}>{children}</span>}
+      {children && <ButtonInner>{children}</ButtonInner>}
       {suffix}
     </ButtonRoot>
   );

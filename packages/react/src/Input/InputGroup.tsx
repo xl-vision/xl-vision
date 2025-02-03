@@ -1,5 +1,4 @@
 import { isProduction } from '@xl-vision/utils';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { HTMLAttributes, forwardRef, useImperativeHandle, useRef } from 'react';
 import { styled } from '../styles';
@@ -67,9 +66,9 @@ const InputGroupRoot = styled('div', {
 });
 
 const InputGroup = forwardRef<InputGroupInstance, InputGroupProps>((props, ref) => {
-  const { clsPrefix, sizeVariant } = useTheme();
+  const { sizeVariant } = useTheme();
 
-  const { className, size = sizeVariant, children, ...others } = props;
+  const { size = sizeVariant, children, ...others } = props;
 
   const rootRef = useRef<HTMLDivElement>(null);
 
@@ -81,14 +80,10 @@ const InputGroup = forwardRef<InputGroupInstance, InputGroupProps>((props, ref) 
     };
   }, []);
 
-  const rootClassName = `${clsPrefix}-input-group`;
-
-  const classes = clsx(`${rootClassName}--size-${size}`, className);
-
   return (
     // 内部组件都需要根据size大小变化
     <ThemeProvider sizeVariant={size}>
-      <InputGroupRoot {...others} className={classes} ref={rootRef} styleProps={{ size }}>
+      <InputGroupRoot {...others} ref={rootRef} styleProps={{ size }}>
         {children}
       </InputGroupRoot>
     </ThemeProvider>

@@ -5,30 +5,30 @@ import {
   useNotication,
 } from '@xl-vision/hooks';
 import { useCallback, useMemo, useState } from 'react';
-import Message, { MessageProps, MessageType } from './Message';
+import MessageWrapper, { MessageWrapperProps, MessageType } from './Message';
 import MessageList, { MessageContainerProps } from './MessageContainer';
 import { increaseZindex } from '../utils/zIndexManger';
 
 export type MessageHookOptions = NoticationOptions<Omit<MessageContainerProps, 'zIndex'>>;
 
-export type MessageHookReturnType = NoticationHookReturnType<MessageProps>;
+export type MessageHookReturnType = NoticationHookReturnType<MessageWrapperProps>;
 
 const useMessage = (options: Partial<MessageHookOptions> = {}) => {
   const [zIndex, setZIndex] = useState<number>();
 
-  const [instance, holder] = useNotication(Message, MessageList, {
+  const [instance, holder] = useNotication(MessageWrapper, MessageList, {
     ...options,
     zIndex,
   });
 
   const method = useCallback(
     (
-      props: NoticationHookProps<MessageProps> | string,
+      props: NoticationHookProps<MessageWrapperProps> | string,
       type?: MessageType,
     ): MessageHookReturnType => {
       setZIndex(() => increaseZindex());
 
-      const parsedProps: NoticationHookProps<MessageProps> =
+      const parsedProps: NoticationHookProps<MessageWrapperProps> =
         typeof props === 'string' ? { content: props } : { ...props };
 
       if (type) {
@@ -41,16 +41,16 @@ const useMessage = (options: Partial<MessageHookOptions> = {}) => {
 
   const methods = useMemo(
     () => ({
-      open: (props: NoticationHookProps<MessageProps>) => method(props),
-      loading: (props: Omit<NoticationHookProps<MessageProps>, 'type'> | string) =>
+      open: (props: NoticationHookProps<MessageWrapperProps>) => method(props),
+      loading: (props: Omit<NoticationHookProps<MessageWrapperProps>, 'type'> | string) =>
         method(props, 'loading'),
-      error: (props: Omit<NoticationHookProps<MessageProps>, 'type'> | string) =>
+      error: (props: Omit<NoticationHookProps<MessageWrapperProps>, 'type'> | string) =>
         method(props, 'error'),
-      info: (props: Omit<NoticationHookProps<MessageProps>, 'type'> | string) =>
+      info: (props: Omit<NoticationHookProps<MessageWrapperProps>, 'type'> | string) =>
         method(props, 'info'),
-      success: (props: Omit<NoticationHookProps<MessageProps>, 'type'> | string) =>
+      success: (props: Omit<NoticationHookProps<MessageWrapperProps>, 'type'> | string) =>
         method(props, 'success'),
-      warning: (props: Omit<NoticationHookProps<MessageProps>, 'type'> | string) =>
+      warning: (props: Omit<NoticationHookProps<MessageWrapperProps>, 'type'> | string) =>
         method(props, 'warning'),
       destroyAll: () => {
         instance.destroyAll();

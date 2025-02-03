@@ -3,6 +3,9 @@ export type { XlOptions } from './styles';
 
 export { default as createGlobalStyles } from './createGlobalStyles';
 
+export { default as memoStyled } from './memoStyled';
+export type { ThemeStyleFunction, ThemeStyles } from './memoStyled';
+
 export { default as ThemeProvider } from './ThemeProvider';
 export type {
   ThemeProviderProps,
@@ -86,7 +89,7 @@ export { default as Portal } from './Portal';
 export type { PortalContainerReturnType, PortalContainerType, PortalProp } from './Portal';
 
 export { default as CssBaseline } from './CssBaseline';
-export type { CssBaselineProps, CssBaselineStyleProps } from './CssBaseline';
+export type { CssBaselineProps } from './CssBaseline';
 
 export { default as Popper } from './Popper';
 export type {
@@ -185,9 +188,8 @@ export type {
 
 export { default as Message } from './Message';
 export type {
-  MessageProps,
-  MessageType,
   InnerMessageProps,
+  MessageProps,
   MessageHookOptions,
   MessageHookReturnType,
   MessageGlobalConfig,
@@ -202,8 +204,8 @@ export type {
   NoticationHookOptions,
   NoticationHookReturnType,
   NoticationPlacement,
-  NoticationProps,
   NoticationType,
+  NoticationProps,
   InnerNoticationProps,
   MethodNoticationContainerProps,
 } from './Notication';

@@ -3,13 +3,13 @@ import { isProduction, isServer } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { ReactElement, ReactNode, forwardRef, useRef, useEffect, useMemo } from 'react';
 import DropdownContext from './DropdownContext';
+import memoStyled from '../memoStyled';
 import Popper, {
   PopperChildrenProps,
   PopperInstance,
   PopperPlacement,
   PopperProps,
 } from '../Popper';
-import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 
 export interface DropdownProps extends Omit<PopperProps, 'popup' | 'arrow'> {
@@ -21,7 +21,7 @@ export type DropdownInstance = PopperInstance;
 
 const displayName = 'Dropdown';
 
-const DropdownRoot = styled(Popper, {
+const DropdownRoot = memoStyled(Popper, {
   name: displayName,
   slot: 'Root',
 })(({ theme }) => {
@@ -35,7 +35,7 @@ const DropdownRoot = styled(Popper, {
   };
 });
 
-const DropdownPopup = styled('ul', {
+const DropdownPopup = memoStyled('ul', {
   name: displayName,
   slot: 'Popup',
 })(({ theme }) => {
