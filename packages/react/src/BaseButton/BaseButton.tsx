@@ -15,8 +15,8 @@ import {
   useImperativeHandle,
   useRef,
 } from 'react';
+import memoStyled from '../memoStyled';
 import Ripple, { RippleInstance } from '../Ripple';
-import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 import { RefInstance } from '../types';
 
@@ -39,12 +39,10 @@ export type BaseButtonStyleProps = {
   disabled?: boolean;
 };
 
-const BaseButtonRoot = styled('button', {
+const BaseButtonRoot = memoStyled('button', {
   name: displayName,
   slot: 'Root',
-})<BaseButtonStyleProps>(({ styleProps }) => {
-  const { disabled, loading } = styleProps;
-
+})<BaseButtonStyleProps>(() => {
   return {
     position: 'relative',
     display: 'inline-block',
@@ -62,7 +60,7 @@ const BaseButtonRoot = styled('button', {
     userSelect: 'none',
     touchAction: 'manipulation',
     WebkitTapHighlightColor: 'transparent',
-    cursor: disabled || loading ? 'not-allowed' : 'pointer',
+    cursor: 'pointer',
     MozAppearance: 'none',
     WebkitAppearance: 'none',
     '&::-moz-focus-inner': {
@@ -73,12 +71,27 @@ const BaseButtonRoot = styled('button', {
     svg: {
       pointerEvents: 'none',
     },
+    variants: [
+      {
+        props: [
+          {
+            disabled: true,
+          },
+          {
+            loading: true,
+          },
+        ],
+        style: {
+          cursor: 'not-allowed',
+        },
+      },
+    ],
   };
   // fix type warning
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
 }) as unknown as ComponentType<any>;
 
-const BaseButtonInner = styled('span', {
+const BaseButtonInner = memoStyled('span', {
   name: displayName,
   slot: 'Inner',
 })(() => {
@@ -91,7 +104,7 @@ const BaseButtonInner = styled('span', {
   };
 });
 
-const BaseButtonRipple = styled(Ripple, {
+const BaseButtonRipple = memoStyled(Ripple, {
   name: displayName,
   slot: 'Ripple',
 })(({ theme: { clsPrefix, colors, transitions } }) => {

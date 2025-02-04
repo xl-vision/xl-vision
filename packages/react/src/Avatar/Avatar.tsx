@@ -1,5 +1,4 @@
 import { useConstantFn } from '@xl-vision/hooks';
-import { CSSObject } from '@xl-vision/styled-engine';
 import { isProduction } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import {
@@ -19,8 +18,8 @@ import {
 } from 'react';
 import { flushSync } from 'react-dom';
 import AvatarContext from './AvatarContext';
+import memoStyled from '../memoStyled';
 import ResizeObserver from '../ResizeObserver';
-import { styled } from '../styles';
 import { SizeVariant, useTheme } from '../ThemeProvider';
 import { RefInstance } from '../types';
 
@@ -43,17 +42,16 @@ export type AvatarInstance = RefInstance<HTMLSpanElement>;
 
 const displayName = 'Avatar';
 
-const AvatarRoot = styled('span', {
+const AvatarRoot = memoStyled('span', {
   name: displayName,
   slot: 'Root',
 })<{
   hasImage: boolean;
   shape: AvatarShape;
   size: SizeVariant;
-}>(({ theme, styleProps }) => {
-  const { shape: shapeType, size, hasImage } = styleProps;
+}>(({ theme }) => {
   const { colors, sizes } = theme;
-  const style: CSSObject = {
+  return {
     position: 'relative',
     display: 'inline-flex',
     boxSizing: 'border-box',
@@ -72,25 +70,52 @@ const AvatarRoot = styled('span', {
       objectFit: 'cover',
       borderStyle: 'none',
     },
+    variants: [
+      {
+        props: {
+          hasImage: true,
+        },
+        style: {
+          background: '0 0',
+        },
+      },
+      {
+        props: {
+          shape: 'circle',
+        },
+        style: {
+          borderRadius: '50%',
+        },
+      },
+      ...Object.keys(sizes).flatMap((k) => {
+        const key = k as SizeVariant;
+        const value = sizes[key];
+        return [
+          {
+            props: {
+              size: key,
+            },
+            style: {
+              width: 32 * value.fontSize,
+              height: 32 * value.fontSize,
+            },
+          },
+          {
+            props: {
+              shape: 'round',
+              size: key,
+            },
+            style: {
+              borderRadius: value.borderRadius,
+            },
+          },
+        ] as const;
+      }),
+    ],
   };
-
-  if (hasImage) {
-    style.background = '0 0';
-  }
-
-  if (shapeType === 'circle') {
-    style.borderRadius = '50%';
-  } else if (shapeType === 'round') {
-    style.borderRadius = sizes[size].borderRadius;
-  }
-
-  const themeSize = sizes[size];
-  style.width = style.height = 32 * themeSize.fontSize;
-
-  return style;
 });
 
-const AvatarInner = styled('span', {
+const AvatarInner = memoStyled('span', {
   name: displayName,
   slot: 'Inner',
 })(() => {

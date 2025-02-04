@@ -3,6 +3,9 @@ export type { XlOptions } from './styles';
 
 export { default as createGlobalStyles } from './createGlobalStyles';
 
+export { default as memoStyled } from './memoStyled';
+export type { ThemeStyleFunction, ThemeStyles } from './memoStyled';
+
 export { default as ThemeProvider } from './ThemeProvider';
 export type {
   ThemeProviderProps,

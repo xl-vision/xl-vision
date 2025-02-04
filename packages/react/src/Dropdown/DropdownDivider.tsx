@@ -1,7 +1,7 @@
 import { isProduction } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { HTMLAttributes, forwardRef, useImperativeHandle, useRef } from 'react';
-import { styled } from '../styles';
+import memoStyled from '../memoStyled';
 import { RefInstance } from '../types';
 
 export type DropdownDividerProps = HTMLAttributes<HTMLDivElement>;
@@ -10,7 +10,7 @@ export type DropdownDividerInstance = RefInstance<HTMLDivElement>;
 
 const displayName = 'DropdownDivider';
 
-const DropdownDividerRoot = styled('div', {
+const DropdownDividerRoot = memoStyled('div', {
   name: displayName,
   slot: 'Root',
 })(({ theme }) => {

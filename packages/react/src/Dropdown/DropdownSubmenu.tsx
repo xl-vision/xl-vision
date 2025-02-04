@@ -1,13 +1,12 @@
 import { useConstantFn, useValueChange } from '@xl-vision/hooks';
 import { RightOutlined } from '@xl-vision/icons';
-import { CSSObject } from '@xl-vision/styled-engine';
 import { isProduction, isServer } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { ReactNode, forwardRef, useContext, useCallback, useEffect } from 'react';
 import DropdownContext from './DropdownContext';
 import BaseButton from '../BaseButton';
+import memoStyled from '../memoStyled';
 import Popper, { PopperInstance, PopperPlacement, PopperProps, PopperTrigger } from '../Popper';
-import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 
 export interface DropdownSubmenuProps
@@ -25,7 +24,7 @@ export type DropdownSubmenuInstance = PopperInstance;
 
 const displayName = 'DropdownSubmenu';
 
-const DropdownSubmenuRoot = styled(Popper, {
+const DropdownSubmenuRoot = memoStyled(Popper, {
   name: displayName,
   slot: 'Root',
 })<{ disabled?: boolean }>(({ theme }) => {
@@ -44,7 +43,7 @@ const DropdownSubmenuRoot = styled(Popper, {
   };
 });
 
-const DropdownSubmenuReference = styled('li', {
+const DropdownSubmenuReference = memoStyled('li', {
   name: displayName,
   slot: 'Reference',
 })(() => {
@@ -55,15 +54,13 @@ export type DropdownSubmenuItemButtonStyleProps = {
   disabled?: boolean;
 };
 
-const DropdownSubmenuItemButton = styled(BaseButton, {
+const DropdownSubmenuItemButton = memoStyled(BaseButton, {
   name: displayName,
   slot: 'Button',
-})<DropdownSubmenuItemButtonStyleProps>(({ theme, styleProps }) => {
+})<DropdownSubmenuItemButtonStyleProps>(({ theme }) => {
   const { colors, transitions, typography, clsPrefix } = theme;
 
-  const { disabled } = styleProps;
-
-  const styles: CSSObject = {
+  return {
     padding: '5px 12px',
     transition: transitions.standard('all'),
     color: colors.text.primary,
@@ -71,24 +68,30 @@ const DropdownSubmenuItemButton = styled(BaseButton, {
     width: '100%',
     textAlign: 'left',
     ...typography.body2.style,
+    '&:hover': {
+      backgroundColor: colors.background.hover,
+      // color: colors.themes.primary.text.primary,
+    },
     [`.${clsPrefix}-base-button__inner`]: {
       paddingRight: 14 + 4,
     },
+    variants: [
+      {
+        props: {
+          disabled: true,
+        },
+        style: {
+          opacity: colors.opacity.disabled,
+          '&:hover': {
+            backgroundColor: 'inherit',
+          },
+        },
+      },
+    ],
   };
-
-  if (disabled) {
-    styles.opacity = colors.opacity.disabled;
-  } else {
-    styles['&:hover'] = {
-      backgroundColor: colors.background.hover,
-      // color: colors.themes.primary.text.primary,
-    };
-  }
-
-  return styles;
 });
 
-const DropdownSubmenuIcon = styled(RightOutlined, {
+const DropdownSubmenuIcon = memoStyled(RightOutlined, {
   name: displayName,
   slot: 'Icon',
 })(() => {
@@ -99,7 +102,7 @@ const DropdownSubmenuIcon = styled(RightOutlined, {
   };
 });
 
-const DropdownSubmenuPopup = styled('ul', {
+const DropdownSubmenuPopup = memoStyled('ul', {
   name: displayName,
   slot: 'Popup',
 })(({ theme }) => {

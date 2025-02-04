@@ -11,7 +11,7 @@ import {
   useRef,
 } from 'react';
 import AnchorContext from './AnchorContext';
-import { styled } from '../styles';
+import memoStyled from '../memoStyled';
 import { RefInstance } from '../types';
 
 export type AnchorLinkProps = Omit<HTMLAttributes<HTMLDivElement>, 'title'> & {
@@ -23,7 +23,7 @@ export type AnchorLinkInstance = RefInstance<HTMLDivElement>;
 
 const displayName = 'AnchorLink';
 
-const AnchorLinkRoot = styled('div', {
+const AnchorLinkRoot = memoStyled('div', {
   name: displayName,
   slot: 'Root',
 })<{ active: boolean }>(() => {
@@ -33,17 +33,15 @@ const AnchorLinkRoot = styled('div', {
   };
 });
 
-const AnchorLinkTitle = styled('a', {
+const AnchorLinkTitle = memoStyled('a', {
   name: displayName,
   slot: 'Title',
-})<{ active: boolean }>(({ theme, styleProps }) => {
+})<{ active: boolean }>(({ theme }) => {
   const { colors, typography, transitions } = theme;
-
-  const { active } = styleProps;
 
   return {
     ...typography.subtitle2.style,
-    color: active ? colors.themes.primary.foreground.active : colors.text.primary,
+    color: colors.text.primary,
     textDecoration: 'none',
     display: 'block',
     whiteSpace: 'nowrap',
@@ -54,6 +52,17 @@ const AnchorLinkTitle = styled('a', {
     '&:hover': {
       color: colors.themes.primary.foreground.hover,
     },
+
+    variants: [
+      {
+        props: {
+          active: true,
+        },
+        style: {
+          color: colors.themes.primary.foreground.active,
+        },
+      },
+    ],
   };
 });
 

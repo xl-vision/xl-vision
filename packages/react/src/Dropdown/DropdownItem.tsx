@@ -1,5 +1,4 @@
 import { useConstantFn } from '@xl-vision/hooks';
-import { CSSObject } from '@xl-vision/styled-engine';
 import { isProduction } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import {
@@ -13,7 +12,7 @@ import {
 } from 'react';
 import DropdownContext from './DropdownContext';
 import BaseButton from '../BaseButton';
-import { styled } from '../styles';
+import memoStyled from '../memoStyled';
 import { RefInstance } from '../types';
 
 export interface DropdownItemProps extends HTMLAttributes<HTMLLIElement> {
@@ -25,7 +24,7 @@ export type DropdownItemInstance = RefInstance<HTMLLIElement>;
 
 const displayName = 'DropdownItem';
 
-const DropdownItemRoot = styled('li', {
+const DropdownItemRoot = memoStyled('li', {
   name: displayName,
   slot: 'Root',
 })<{ disabled?: boolean }>(() => {
@@ -40,15 +39,13 @@ export type DropdownItemButtonStyleProps = {
   disabled?: boolean;
 };
 
-const DropdownItemButton = styled(BaseButton, {
+const DropdownItemButton = memoStyled(BaseButton, {
   name: displayName,
   slot: 'Button',
-})<DropdownItemButtonStyleProps>(({ theme, styleProps }) => {
+})<DropdownItemButtonStyleProps>(({ theme }) => {
   const { colors, transitions, typography } = theme;
 
-  const { disabled } = styleProps;
-
-  const styles: CSSObject = {
+  return {
     padding: '5px 12px',
     transition: transitions.standard('all'),
     color: colors.text.primary,
@@ -56,18 +53,24 @@ const DropdownItemButton = styled(BaseButton, {
     width: '100%',
     textAlign: 'left',
     ...typography.body2.style,
-  };
-
-  if (disabled) {
-    styles.opacity = colors.opacity.disabled;
-  } else {
-    styles['&:hover'] = {
+    '&:hover': {
       backgroundColor: colors.background.hover,
-      // color: colors.themes.primary.text.primary,
-    };
-  }
-
-  return styles;
+    },
+    variants: [
+      {
+        props: {
+          disabled: true,
+        },
+        style: {
+          opacity: colors.opacity.disabled,
+          cursor: 'not-allowed',
+          '&:hover': {
+            backgroundColor: 'inherit',
+          },
+        },
+      },
+    ],
+  };
 });
 
 const DropdownItem = forwardRef<DropdownItemInstance, DropdownItemProps>((props, ref) => {

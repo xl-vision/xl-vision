@@ -3,8 +3,8 @@ import { isProduction } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { ReactNode, forwardRef, useState, useEffect } from 'react';
 import Button, { ButtonProps } from '../Button';
+import memoStyled from '../memoStyled';
 import Modal, { ModalInstance, ModalProps } from '../Modal';
-import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 
 export type DialogButtonProps = Omit<ButtonProps, 'children' | 'onClick'>;
@@ -26,7 +26,7 @@ export type DialogInstance = ModalInstance;
 
 const displayName = 'Dialog';
 
-const DialogRoot = styled(Modal, {
+const DialogRoot = memoStyled(Modal, {
   name: displayName,
   slot: 'Root',
 })(({ theme }) => {
@@ -43,7 +43,7 @@ const DialogRoot = styled(Modal, {
   };
 });
 
-const DialogHeader = styled('div', {
+const DialogHeader = memoStyled('div', {
   name: displayName,
   slot: 'Header',
 })(({ theme }) => {
@@ -54,7 +54,7 @@ const DialogHeader = styled('div', {
   };
 });
 
-const DialogTitle = styled('h6', {
+const DialogTitle = memoStyled('h6', {
   name: displayName,
   slot: 'Title',
 })(({ theme: { typography } }) => {
@@ -64,7 +64,7 @@ const DialogTitle = styled('h6', {
   };
 });
 
-const DialogContent = styled('div', {
+const DialogContent = memoStyled('div', {
   name: displayName,
   slot: 'Content',
 })(({ theme }) => {
@@ -79,7 +79,7 @@ const DialogContent = styled('div', {
   };
 });
 
-const DialogFooter = styled('div', {
+const DialogFooter = memoStyled('div', {
   name: displayName,
   slot: 'Footer',
 })(() => {
@@ -89,7 +89,7 @@ const DialogFooter = styled('div', {
   };
 });
 
-const DialogActions = styled('div', {
+const DialogActions = memoStyled('div', {
   name: displayName,
   slot: 'Actions',
 })(({ theme: { size } }) => {

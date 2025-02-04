@@ -4,7 +4,7 @@ import {
   FunctionInterpolation,
   Interpolation,
 } from '@xl-vision/styled-engine';
-import createApplyTheme from './createApplyTheme';
+import applyTheme from './applyTheme';
 import { Theme } from '../ThemeProvider';
 
 const createGlobalStyles = <
@@ -15,8 +15,6 @@ const createGlobalStyles = <
   first: TemplateStringsArray | CSSObject | FunctionInterpolation<object & ST>,
   ...styles: Array<Interpolation<object & ST>>
 ) => {
-  const applyTheme = createApplyTheme();
-
   const newStyles = styles.map(applyTheme);
 
   if (Array.isArray(first) && 'raw' in first) {

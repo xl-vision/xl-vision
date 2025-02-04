@@ -8,8 +8,9 @@ import {
 } from '@xl-vision/styled-engine';
 import { isProduction } from '@xl-vision/utils';
 import { ComponentProps, ComponentType, forwardRef, JSX } from 'react';
+import applyTheme from './applyTheme';
 import { StyledComponentKey } from './constants';
-import createApplyTheme from './createApplyTheme';
+import { StyledComponent } from './types';
 import { Theme, Style, useTheme } from '../ThemeProvider';
 
 export type XlOptions = {
@@ -27,8 +28,6 @@ const middleline = (str: string) => {
 
   return str.split(split).join(separator).toLowerCase();
 };
-
-type StyledComponent = { [StyledComponentKey]?: boolean };
 
 const styled = <
   Tag extends keyof JSX.IntrinsicElements | ComponentType<ComponentProps<Tag>>,
@@ -50,10 +49,10 @@ const styled = <
     }
   }
 
-  const isStyledComponent = tag[StyledComponentKey] as boolean;
+  const realStyledComponent = tag[StyledComponentKey];
 
   const defaultCreateStyledComponent = innerStyled<Tag, ForwardedProps>(tag, {
-    shouldForwardProp: isStyledComponent
+    shouldForwardProp: realStyledComponent
       ? undefined
       : (shouldForwardProp as ShouldForwardProp<ForwardedProps>),
     ...(!isProduction && { label: displayName || undefined }),
@@ -94,8 +93,6 @@ const styled = <
       return overrideSlotStyle;
     };
 
-    const applyTheme = createApplyTheme();
-
     const newStyles = [...styles, applyOverrideStyle].map(applyTheme);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -119,6 +116,14 @@ const styled = <
       ...newStyles,
     );
 
+    if (!isProduction) {
+      InnerDefaultComponent.displayName = displayName;
+    }
+
+    if (!className) {
+      return InnerDefaultComponent;
+    }
+
     // @ts-expect-error fix types error
     const DefaultComponent: typeof InnerDefaultComponent = forwardRef((props, ref) => {
       const { clsPrefix } = useTheme();
@@ -126,18 +131,16 @@ const styled = <
       // eslint-disable-next-line react/prop-types
       let actualClassName = (props as { className?: string }).className;
 
-      if (className) {
-        const baseClassName = `${clsPrefix}-${className}`;
+      const baseClassName = `${clsPrefix}-${className}`;
 
-        // eslint-disable-next-line react/prop-types
-        const styleProps = (props as { styleProps?: Record<string, unknown> }).styleProps;
+      // eslint-disable-next-line react/prop-types
+      const styleProps = (props as { styleProps?: Record<string, unknown> }).styleProps;
 
-        const stylePropsClassName = generateClassName(baseClassName, styleProps);
+      const stylePropsClassName = generateClassName(baseClassName, styleProps);
 
-        actualClassName = actualClassName
-          ? stylePropsClassName + ' ' + actualClassName
-          : stylePropsClassName;
-      }
+      actualClassName = actualClassName
+        ? stylePropsClassName + ' ' + actualClassName
+        : stylePropsClassName;
 
       return (
         // @ts-expect-error fix types error
@@ -145,7 +148,7 @@ const styled = <
       );
     });
 
-    (DefaultComponent as StyledComponent)[StyledComponentKey] = true;
+    (DefaultComponent as StyledComponent)[StyledComponentKey] = InnerDefaultComponent;
 
     if (!isProduction) {
       InnerDefaultComponent.displayName = `Inner${displayName}`;

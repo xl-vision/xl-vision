@@ -12,8 +12,8 @@ import {
   useRef,
   useImperativeHandle,
 } from 'react';
+import memoStyled from '../memoStyled';
 import Portal from '../Portal';
-import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 import Transition from '../Transition';
 import { RefInstance } from '../types';
@@ -34,7 +34,7 @@ export type BackTopInstance = RefInstance<HTMLDivElement>;
 
 const displayName = 'BackTop';
 
-const BackTopRoot = styled('div', {
+const BackTopRoot = memoStyled('div', {
   name: displayName,
   slot: 'Root',
 })(({ theme }) => {
@@ -50,7 +50,7 @@ const BackTopRoot = styled('div', {
   };
 });
 
-const BackTopInner = styled('div', {
+const BackTopInner = memoStyled('div', {
   name: displayName,
   slot: 'Inner',
 })(({ theme: { colors, transitions, elevations } }) => {

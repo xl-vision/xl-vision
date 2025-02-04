@@ -15,6 +15,7 @@ import {
   useImperativeHandle,
 } from 'react';
 import useInput from '../hooks/useInput';
+import memoStyled from '../memoStyled';
 import { styled } from '../styles';
 import { SizeVariant, useTheme } from '../ThemeProvider';
 import { RefInstance } from '../types';
@@ -67,52 +68,64 @@ export type InputInstance = RefInstance<
 
 const displayName = 'Input';
 
-const InputRoot = styled('span', {
+const InputRoot = memoStyled('span', {
   name: displayName,
   slot: 'Root',
 })<{ size: SizeVariant; disabled?: boolean; focused?: boolean; readOnly?: boolean }>(({
   theme,
-  styleProps,
 }) => {
   const { typography, sizes } = theme;
-  const { size } = styleProps;
-
-  const themeSize = sizes[size];
-
-  const styles: CSSObject = {
+  return {
     ...typography.body1.style,
     width: '100%',
     display: 'inline-flex',
-    fontSize: typography.pxToRem(typography.body1.info.size * themeSize.fontSize),
+    variants: Object.keys(sizes).map((k) => {
+      const key = k as SizeVariant;
+      const themeSize = sizes[key];
+      return {
+        props: {
+          size: key,
+        },
+        style: {
+          fontSize: typography.pxToRem(typography.body1.info.size * themeSize.fontSize),
+        },
+      };
+    }),
   };
-
-  return styles;
 });
 
-const InputAddonBefore = styled('span', {
+const InputAddonBefore = memoStyled('span', {
   name: displayName,
   slot: 'AddonBefore',
-})<{ size: SizeVariant }>(({ theme, styleProps }) => {
+})<{ size: SizeVariant }>(({ theme }) => {
   const { colors, sizes } = theme;
-
-  const { size } = styleProps;
-
-  const themeSize = sizes[size];
 
   return {
     display: 'flex',
     flex: 'none',
     alignItems: 'center',
     backgroundColor: colors.background.default,
-    padding: `0 ${themeSize.padding.x}px`,
-    border: `${themeSize.border}px solid ${colors.divider.primary}`,
     borderRightWidth: 0,
-    borderTopLeftRadius: themeSize.borderRadius,
-    borderBottomLeftRadius: themeSize.borderRadius,
+
+    variants: Object.keys(sizes).map((k) => {
+      const key = k as SizeVariant;
+      const themeSize = sizes[key];
+      return {
+        props: {
+          size: key,
+        },
+        style: {
+          padding: `0 ${themeSize.padding.x}px`,
+          border: `${themeSize.border}px solid ${colors.divider.primary}`,
+          borderTopLeftRadius: themeSize.borderRadius,
+          borderBottomLeftRadius: themeSize.borderRadius,
+        },
+      };
+    }),
   };
 });
 
-const InputAddonAfter = styled(InputAddonBefore, {
+const InputAddonAfter = memoStyled(InputAddonBefore, {
   name: displayName,
   slot: 'AddonAfter',
 })(({ theme }) => {
@@ -127,7 +140,7 @@ const InputAddonAfter = styled(InputAddonBefore, {
   };
 });
 
-const InputWrapper = styled('span', {
+const InputWrapper = memoStyled('span', {
   name: displayName,
   slot: 'Wrapper',
 })<{ focused: boolean; size: SizeVariant; disabled?: boolean; readOnly?: boolean }>(({
@@ -140,7 +153,7 @@ const InputWrapper = styled('span', {
 
   const themeSize = sizes[size];
 
-  const styles: CSSObject = {
+  return {
     display: 'inline-flex',
     borderRadius: themeSize.borderRadius,
     border: `${themeSize.border}px solid ${colors.divider.primary}`,
@@ -160,6 +173,15 @@ const InputWrapper = styled('span', {
       borderTopRightRadius: 0,
       borderBottomRightRadius: 0,
     },
+    variants: [{
+      props: {
+        disabled: true,
+      },
+      style: {
+        opacity: colors.opacity.disabled,
+        cursor: 'not-allowed'
+      }
+    }]
   };
 
   if (disabled) {

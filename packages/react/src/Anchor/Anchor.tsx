@@ -1,5 +1,4 @@
 import { LifecycleState, useConstantFn, useLifecycleState } from '@xl-vision/hooks';
-import { CSSObject } from '@xl-vision/styled-engine';
 import {
   getBoundingClientRect,
   getDocumentElement,
@@ -22,7 +21,7 @@ import {
 } from 'react';
 import AnchorContext from './AnchorContext';
 import Affix from '../Affix';
-import { styled } from '../styles';
+import memoStyled from '../memoStyled';
 import { useTheme } from '../ThemeProvider';
 import { RefInstance } from '../types';
 import { throttleByAnimationFrame } from '../utils/perf';
@@ -51,26 +50,27 @@ export type AnchorInstance = RefInstance<
 
 const displayName = 'Anchor';
 
-const AnchorRoot = styled('div', {
+const AnchorRoot = memoStyled('div', {
   name: displayName,
   slot: 'Root',
-})<{ type: AnchorType }>(({ theme, styleProps }) => {
-  const { type } = styleProps;
-
-  const { colors } = theme;
-
-  const style: CSSObject = {
+})<{ type: AnchorType }>(({ theme: { colors } }) => {
+  return {
     position: 'relative',
+    variants: [
+      {
+        props: {
+          type: 'rail',
+          a: '3',
+        },
+        style: {
+          borderLeft: `2px solid ${colors.divider.primary}`,
+        },
+      },
+    ],
   };
-
-  if (type === 'rail') {
-    style.borderLeft = `2px solid ${colors.divider.primary}`;
-  }
-
-  return style;
 });
 
-const AnchorInk = styled('div', {
+const AnchorInk = memoStyled('div', {
   name: displayName,
   slot: 'Ink',
 })(({ theme }) => {
@@ -248,7 +248,7 @@ const Anchor = forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
     }
 
     const activeNode = rootNode.querySelector<HTMLAnchorElement>(
-      `.${clsPrefix}-anchor-link__title--is-active`,
+      `.${clsPrefix}-anchor-link__title--active`,
     );
 
     if (activeNode) {

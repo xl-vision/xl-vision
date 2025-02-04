@@ -23,8 +23,8 @@ import {
   getFixedTop,
   getTargetRect,
 } from './utils';
+import memoStyled from '../memoStyled';
 import ResizeObserver from '../ResizeObserver';
-import { styled } from '../styles';
 import { RefInstance } from '../types';
 import { throttleByAnimationFrame } from '../utils/perf';
 
@@ -39,23 +39,21 @@ export type AffixIntance = RefInstance<HTMLDivElement>;
 
 const displayName = 'Affix';
 
-const AffixRoot = styled('div', {
+const AffixRoot = memoStyled('div', {
   name: displayName,
   slot: 'Root',
 })<{ fixed: boolean }>(() => {
   return {};
 });
 
-const AffixInner = styled('div', {
+const AffixInner = memoStyled('div', {
   name: displayName,
   slot: 'Inner',
 })(() => {
-  return {
-    zIndex: 1,
-  };
+  return {};
 });
 
-const AffixPlaceholder = styled('div', {
+const AffixPlaceholder = memoStyled('div', {
   name: displayName,
   slot: 'Placeholder',
 })(() => {
