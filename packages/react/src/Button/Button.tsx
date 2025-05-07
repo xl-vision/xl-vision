@@ -1,5 +1,5 @@
 import { LoadingOutlined } from '@xl-vision/icons';
-import { keyframes, CSSObject } from '@xl-vision/styled-engine';
+import { keyframes } from '@xl-vision/styled-engine';
 import { isProduction } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import {
@@ -311,14 +311,13 @@ const ButtonRoot = memoStyled(BaseButton, {
   };
 });
 
-const ButtonPrefix = styled('span', {
+const ButtonPrefix = memoStyled('span', {
   name: displayName,
   slot: 'Prefix',
-})<ButtonPrefixStyleProps>(({ theme, styleProps }) => {
+})<ButtonPrefixStyleProps>(({ theme }) => {
   const { transitions } = theme;
-  const { icon } = styleProps;
 
-  const styles: CSSObject = {
+  return {
     display: 'inline-block',
     transition: transitions.standard('width'),
     padding: 0,
@@ -329,31 +328,40 @@ const ButtonPrefix = styled('span', {
       lineHeight: 1,
       verticalAlign: 'middle',
     },
+    variants: [
+      {
+        props: {
+          icon: true,
+        },
+        style: {
+          marginLeft: '-2px',
+          marginRight: '2px',
+        },
+      },
+    ],
   };
-
-  if (!icon) {
-    styles.marginLeft = '-2px';
-    styles.marginRight = '2px';
-  }
-
-  return styles;
 });
 
-const ButtonSuffix = styled(ButtonPrefix, {
+const ButtonSuffix = memoStyled(ButtonPrefix, {
   name: displayName,
   slot: 'Suffix',
-})<ButtonPrefixStyleProps>(({ styleProps }) => {
-  const { icon } = styleProps;
-
-  if (!icon) {
-    return {
-      marginLeft: '2px',
-      marginRight: '-2px',
-    };
-  }
+})<ButtonPrefixStyleProps>(() => {
+  return {
+    variants: [
+      {
+        props: {
+          icon: true,
+        },
+        style: {
+          marginLeft: '2px',
+          marginRight: '-2px',
+        },
+      },
+    ],
+  };
 });
 
-const ButtonInner = styled('span', {
+const ButtonInner = memoStyled('span', {
   name: displayName,
   slot: 'Inner',
 })(() => {
