@@ -18,7 +18,7 @@ import {
 } from 'react';
 import { flushSync } from 'react-dom';
 import AvatarContext from './AvatarContext';
-import memoStyled from '../memoStyled';
+import memoStyled, { StyleVariant } from '../memoStyled';
 import ResizeObserver from '../ResizeObserver';
 import { SizeVariant, useTheme } from '../ThemeProvider';
 import { RefInstance } from '../types';
@@ -87,29 +87,36 @@ const AvatarRoot = memoStyled('span', {
           borderRadius: '50%',
         },
       },
-      ...Object.keys(sizes).flatMap((k) => {
+      ...Object.keys(sizes).flatMap<
+        StyleVariant<{
+          hasImage: boolean;
+          shape: AvatarShape;
+          size: SizeVariant;
+        }>
+      >((k) => {
         const key = k as SizeVariant;
-        const value = sizes[key];
+        const themeSize = sizes[key];
         return [
           {
             props: {
               size: key,
             },
             style: {
-              width: 32 * value.fontSize,
-              height: 32 * value.fontSize,
+              width: 32 * themeSize.fontSize,
+              height: 32 * themeSize.fontSize,
             },
+            variants: [
+              {
+                props: {
+                  shape: 'round',
+                },
+                style: {
+                  borderRadius: themeSize.borderRadius,
+                },
+              },
+            ],
           },
-          {
-            props: {
-              shape: 'round',
-              size: key,
-            },
-            style: {
-              borderRadius: value.borderRadius,
-            },
-          },
-        ] as const;
+        ];
       }),
     ],
   };

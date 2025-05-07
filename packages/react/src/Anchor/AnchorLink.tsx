@@ -48,7 +48,6 @@ const AnchorLinkTitle = memoStyled('a', {
     textOverflow: 'ellipsis',
     overflow: 'hidden',
     transition: transitions.standard('color'),
-
     '&:hover': {
       color: colors.themes.primary.foreground.hover,
     },

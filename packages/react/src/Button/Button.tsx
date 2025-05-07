@@ -13,7 +13,8 @@ import {
 } from 'react';
 import BaseButton, { BaseButtonInstance, BaseButtonProps } from '../BaseButton';
 import CollapseTransition from '../CollapseTransition';
-import { styled } from '../styles';
+import memoStyled, { StyleVariant } from '../memoStyled';
+import styled from '../styled';
 import { SizeVariant, ThemeVariant, useTheme } from '../ThemeProvider';
 
 export type ButtonColor = ThemeVariant | 'default';
@@ -41,10 +42,10 @@ export type ButtonStyleProps = {
   icon: boolean;
   size: SizeVariant;
   variant: ButtonVariant;
-  disabled?: boolean;
-  loading?: boolean;
-  long?: boolean;
-  round?: boolean;
+  disabled: boolean;
+  loading: boolean;
+  long: boolean;
+  round: boolean;
 };
 
 export type ButtonPrefixStyleProps = {
@@ -55,185 +56,272 @@ export type ButtonSuffixStyleProps = ButtonPrefixStyleProps;
 
 const iconSize = 1.4;
 
-const ButtonRoot = styled(BaseButton, {
+const ButtonRoot = memoStyled(BaseButton, {
   name: displayName,
   slot: 'Root',
-})<ButtonStyleProps>(({ theme, styleProps }) => {
+})<ButtonStyleProps>(({ theme }) => {
   const { colors, transitions, typography, elevations, sizes } = theme;
 
   const { info: buttonInfo, style: buttonStyle } = typography.button;
 
-  const {
-    color: colorStyle,
-    elevation,
-    disabled,
-    loading,
-    size,
-    variant,
-    long,
-    round,
-    icon,
-  } = styleProps;
-
-  const themeSize = sizes[size];
-
-  const baseFontSize = buttonInfo.size * themeSize.fontSize;
-
-  const styles: CSSObject = {
+  return {
     transition: transitions.standard('all'),
-    borderRadius: themeSize.borderRadius,
-    minWidth: icon ? '' : '64px',
     ...buttonStyle,
-    fontSize: typography.pxToRem(baseFontSize),
+    minWidth: 64,
+    backgroundColor: 'transparent',
+    variants: [
+      {
+        props: {
+          icon: true,
+        },
+        style: {
+          minWidth: '',
+          lineHeight: 0,
+        },
+      },
+      ...Object.keys(sizes).flatMap<StyleVariant<ButtonStyleProps>>((k) => {
+        const size = k as SizeVariant;
+        const themeSize = sizes[size];
+        const baseFontSize = buttonInfo.size * themeSize.fontSize;
+
+        const buttonHeight = themeSize.padding.y * 2 + buttonInfo.lineHeight * baseFontSize;
+
+        const iconHeight = baseFontSize * iconSize;
+
+        const padding = [themeSize.padding.y, themeSize.padding.x];
+        const iconPadding = [(buttonHeight - iconHeight) / 2];
+
+        return [
+          {
+            props: {
+              size,
+            },
+            style: {
+              borderRadius: themeSize.borderRadius,
+              fontSize: typography.pxToRem(baseFontSize),
+              padding: padding.map((it) => `${it}px`).join(' '),
+            },
+            variants: [
+              {
+                props: {
+                  round: true,
+                },
+                style: {
+                  borderRadius: themeSize.padding.y * 2 + buttonInfo.lineHeight * baseFontSize,
+                },
+              },
+              {
+                props: {
+                  icon: true,
+                },
+                style: {
+                  padding: iconPadding.map((it) => `${it}px`).join(' '),
+                },
+              },
+              {
+                props: {
+                  variant: 'outlined',
+                },
+                style: {
+                  border: `${themeSize.border}px solid transparent`,
+                },
+              },
+              {
+                props: [
+                  {
+                    variant: 'outlined',
+                  },
+                  {
+                    color: 'default',
+                  },
+                ],
+                style: {
+                  padding: padding
+                    .map((it) => it - themeSize.border)
+                    .map((it) => `${it}px`)
+                    .join(' '),
+                },
+              },
+            ],
+          },
+        ];
+      }),
+      {
+        props: {
+          round: true,
+        },
+        style: {
+          borderRadius: '50%',
+        },
+      },
+      {
+        props: {
+          long: true,
+        },
+        style: {
+          width: '100%',
+        },
+      },
+      {
+        props: [
+          {
+            disabled: true,
+          },
+          {
+            loading: true,
+          },
+        ],
+        style: {
+          opacity: colors.opacity.disabled,
+        },
+      },
+      {
+        props: [
+          {
+            variant: 'contained',
+            elevation: true,
+            disabled: false,
+          },
+          {
+            variant: 'contained',
+            elevation: true,
+            loading: false,
+          },
+        ],
+        style: {
+          boxShadow: elevations[1],
+          '&:hover': {
+            boxShadow: elevations[2],
+          },
+          '&:focus': {
+            boxShadow: elevations[3],
+          },
+        },
+      },
+      ...Object.keys(colors.themes).flatMap<StyleVariant<ButtonStyleProps>>((k) => {
+        const colorKey = k as ThemeVariant;
+        const color = colors.themes[colorKey];
+        return [
+          {
+            props: {
+              color: colorKey,
+            },
+            style: {
+              color: color.foreground.default,
+            },
+          },
+          {
+            props: [
+              {
+                color: colorKey,
+                disabled: false,
+              },
+              {
+                color: colorKey,
+                loading: false,
+              },
+            ],
+            style: {
+              '&:hover': {
+                backgroundColor: color.background.hover,
+              },
+              '&:focus': {
+                backgroundColor: color.background.focus,
+              },
+            },
+          },
+          {
+            props: {
+              color: colorKey,
+              variant: 'contained',
+            },
+            style: {
+              color: color.text.primary,
+              backgroundColor: color.foreground.default,
+            },
+          },
+          {
+            props: [
+              {
+                color: colorKey,
+                variant: 'contained',
+                disabled: false,
+              },
+              {
+                color: colorKey,
+                variant: 'contained',
+                loading: false,
+              },
+            ],
+            style: {
+              '&:hover': {
+                backgroundColor: color.foreground.hover,
+              },
+              '&:focus': {
+                backgroundColor: color.foreground.focus,
+              },
+            },
+          },
+          {
+            props: {
+              variant: 'outlined',
+            },
+            style: {
+              borderColor: color.divider.default,
+            },
+          },
+          {
+            props: [
+              {
+                variant: 'outlined',
+                loading: false,
+              },
+              {
+                variant: 'outlined',
+                disabled: false,
+              },
+            ],
+            style: {
+              '&:hover': {
+                borderColor: color.divider.hover,
+              },
+              '&:focus': {
+                borderColor: color.divider.focus,
+              },
+            },
+          },
+        ];
+      }),
+      {
+        props: {
+          color: 'default',
+        },
+        style: {
+          color: colors.text.primary,
+        },
+      },
+      {
+        props: [
+          {
+            color: 'default',
+            disabled: false,
+          },
+          {
+            color: 'default',
+            loading: false,
+          },
+        ],
+        style: {
+          '&:hover': {
+            color: colors.themes.primary.foreground.hover,
+          },
+          '&:focus': {
+            color: colors.themes.primary.foreground.focus,
+          },
+        },
+      },
+    ],
   };
-
-  if (icon) {
-    styles.lineHeight = 0;
-  }
-
-  const buttonHeight = themeSize.padding.y * 2 + buttonInfo.lineHeight * baseFontSize;
-
-  const iconHeight = baseFontSize * iconSize;
-
-  let padding = icon
-    ? [(buttonHeight - iconHeight) / 2]
-    : [themeSize.padding.y, themeSize.padding.x];
-
-  if (round) {
-    styles.borderRadius = icon
-      ? '50%'
-      : themeSize.padding.y * 2 + buttonInfo.lineHeight * baseFontSize;
-  }
-
-  if (long) {
-    styles.width = '100%';
-  }
-
-  if (variant === 'outlined' || colorStyle === 'default') {
-    // 保证高度一致
-    padding = padding.map((it) => it - themeSize.border);
-  }
-
-  const isContained = variant === 'contained';
-
-  styles.padding = padding.map((it) => `${it}px`).join(' ');
-
-  if (disabled || loading) {
-    styles.opacity = colors.opacity.disabled;
-  } else if (isContained) {
-    if (elevation) {
-      styles.boxShadow = elevations[1];
-    }
-    styles['&:hover'] = {
-      ...(elevation && {
-        boxShadow: elevations[2],
-      }),
-    };
-    styles['&:focus'] = {
-      ...(elevation && {
-        boxShadow: elevations[3],
-      }),
-    };
-  }
-
-  if (colorStyle === 'default') {
-    styles.color = colors.text.primary;
-
-    if (!loading && !disabled) {
-      styles['&:hover'] = {
-        ...(styles['&:hover'] as object),
-        color: colors.themes.primary.foreground.hover,
-      };
-
-      styles['&:focus'] = {
-        ...(styles['&:focus'] as object),
-        color: colors.themes.primary.foreground.focus,
-      };
-    }
-
-    if (isContained || variant === 'outlined') {
-      styles.border = `${themeSize.border}px solid ${colors.divider.primary}`;
-
-      if (!loading && !disabled) {
-        styles['&:hover'] = {
-          ...(styles['&:hover'] as object),
-          borderColor: colors.themes.primary.divider.hover,
-        };
-
-        styles['&:focus'] = {
-          ...(styles['&:focus'] as object),
-          borderColor: colors.themes.primary.divider.focus,
-        };
-      }
-    }
-
-    if ((isContained || variant === 'text') && !loading && !disabled) {
-      styles['&:hover'] = {
-        ...(styles['&:hover'] as object),
-        backgroundColor: colors.themes.primary.background.hover,
-      };
-      styles['&:focus'] = {
-        ...(styles['&:focus'] as object),
-        backgroundColor: colors.themes.primary.background.focus,
-      };
-    }
-
-    if (isContained) {
-      styles.backgroundColor = colors.background.paper;
-    }
-
-    return styles;
-  }
-
-  if (isContained) {
-    styles.color = colors.themes[colorStyle].text.primary;
-    styles.backgroundColor = colors.themes[colorStyle].foreground.default;
-
-    if (!disabled && !loading) {
-      styles['&:hover'] = {
-        ...(styles['&:hover'] as object),
-        backgroundColor: colors.themes[colorStyle].foreground.hover,
-      };
-      styles['&:focus'] = {
-        ...(styles['&:focus'] as object),
-        backgroundColor: colors.themes[colorStyle].foreground.focus,
-      };
-    }
-
-    return styles;
-  }
-
-  styles.backgroundColor = 'transparent';
-
-  styles.color = colors.themes[colorStyle].foreground.default;
-
-  if (!disabled && !loading) {
-    styles['&:hover'] = {
-      ...(styles['&:hover'] as object),
-      backgroundColor: colors.themes[colorStyle].background.hover,
-    };
-    styles['&:focus'] = {
-      ...(styles['&:focus'] as object),
-      backgroundColor: colors.themes[colorStyle].background.focus,
-    };
-  }
-
-  if (variant === 'outlined') {
-    styles.border = `${themeSize.border}px solid ${colors.themes[colorStyle].divider.default}`;
-
-    if (!disabled && !loading) {
-      styles['&:hover'] = {
-        ...(styles['&:hover'] as object),
-        borderColor: colors.themes[colorStyle].divider.hover,
-      };
-      styles['&:focus'] = {
-        ...(styles['&:focus'] as object),
-        borderColor: colors.themes[colorStyle].divider.focus,
-      };
-    }
-  }
-
-  return styles;
 });
 
 const ButtonPrefix = styled('span', {
@@ -378,11 +466,11 @@ const Button = forwardRef<ButtonInstance, ButtonProps>((props, ref) => {
         color,
         elevation: enableElevation,
         size,
-        disabled,
-        loading,
+        disabled: !!disabled,
+        loading: !!loading,
         variant,
-        long,
-        round,
+        long: !!long,
+        round: !!round,
         icon,
       }}
     >

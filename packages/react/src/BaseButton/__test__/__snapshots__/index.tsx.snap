@@ -102,9 +102,10 @@ exports[`BaseButton Test basic render 1`] = `
   user-select: none;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
-  cursor: not-allowed;
+  cursor: pointer;
   -moz-appearance: none;
   -webkit-appearance: none;
+  cursor: not-allowed;
 }
 
 .emotion-3::-moz-focus-inner {

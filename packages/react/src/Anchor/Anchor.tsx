@@ -60,7 +60,6 @@ const AnchorRoot = memoStyled('div', {
       {
         props: {
           type: 'rail',
-          a: '3',
         },
         style: {
           borderLeft: `2px solid ${colors.divider.primary}`,
