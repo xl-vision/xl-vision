@@ -67,16 +67,30 @@ const ButtonRoot = memoStyled(BaseButton, {
   return {
     transition: transitions.standard('all'),
     ...buttonStyle,
-    minWidth: 64,
     backgroundColor: 'transparent',
     variants: [
+      {
+        props: {
+          icon: false,
+        },
+        style: {
+          minWidth: 64,
+        },
+      },
       {
         props: {
           icon: true,
         },
         style: {
-          minWidth: '',
           lineHeight: 0,
+        },
+      },
+      {
+        props: {
+          long: true,
+        },
+        style: {
+          width: '100%',
         },
       },
       ...Object.keys(sizes).flatMap<StyleVariant<ButtonStyleProps>>((k) => {
@@ -149,17 +163,10 @@ const ButtonRoot = memoStyled(BaseButton, {
       {
         props: {
           round: true,
+          icon: true,
         },
         style: {
           borderRadius: '50%',
-        },
-      },
-      {
-        props: {
-          long: true,
-        },
-        style: {
-          width: '100%',
         },
       },
       {
@@ -176,18 +183,13 @@ const ButtonRoot = memoStyled(BaseButton, {
         },
       },
       {
-        props: [
-          {
-            variant: 'contained',
-            elevation: true,
-            disabled: false,
-          },
-          {
-            variant: 'contained',
-            elevation: true,
-            loading: false,
-          },
-        ],
+        props: {
+          variant: 'contained',
+          elevation: true,
+          disabled: false,
+          loading: false,
+        },
+
         style: {
           boxShadow: elevations[1],
           '&:hover': {
@@ -209,86 +211,74 @@ const ButtonRoot = memoStyled(BaseButton, {
             style: {
               color: color.foreground.default,
             },
-          },
-          {
-            props: [
+            variants: [
               {
-                color: colorKey,
-                disabled: false,
+                props: {
+                  disabled: false,
+                  loading: false,
+                },
+
+                style: {
+                  '&:hover': {
+                    backgroundColor: color.background.hover,
+                  },
+                  '&:focus': {
+                    backgroundColor: color.background.focus,
+                  },
+                },
               },
               {
-                color: colorKey,
-                loading: false,
+                props: {
+                  variant: 'contained',
+                },
+                style: {
+                  color: color.text.primary,
+                  backgroundColor: color.foreground.default,
+                },
+                variants: [
+                  {
+                    props: {
+                      disabled: false,
+                      loading: false,
+                    },
+
+                    style: {
+                      '&:hover': {
+                        backgroundColor: color.foreground.hover,
+                      },
+                      '&:focus': {
+                        backgroundColor: color.foreground.focus,
+                      },
+                    },
+                  },
+                ],
+              },
+              {
+                props: {
+                  variant: 'outlined',
+                },
+                style: {
+                  borderColor: color.divider.default,
+                },
+                variants: [
+                  {
+                    props: {
+                      variant: 'outlined',
+                      loading: false,
+                      disabled: false,
+                    },
+                    style: {
+                      '&:hover': {
+                        borderColor: color.divider.hover,
+                      },
+                      '&:focus': {
+                        borderColor: color.divider.focus,
+                      },
+                    },
+                  },
+                ],
               },
             ],
-            style: {
-              '&:hover': {
-                backgroundColor: color.background.hover,
-              },
-              '&:focus': {
-                backgroundColor: color.background.focus,
-              },
-            },
-          },
-          {
-            props: {
-              color: colorKey,
-              variant: 'contained',
-            },
-            style: {
-              color: color.text.primary,
-              backgroundColor: color.foreground.default,
-            },
-          },
-          {
-            props: [
-              {
-                color: colorKey,
-                variant: 'contained',
-                disabled: false,
-              },
-              {
-                color: colorKey,
-                variant: 'contained',
-                loading: false,
-              },
-            ],
-            style: {
-              '&:hover': {
-                backgroundColor: color.foreground.hover,
-              },
-              '&:focus': {
-                backgroundColor: color.foreground.focus,
-              },
-            },
-          },
-          {
-            props: {
-              variant: 'outlined',
-            },
-            style: {
-              borderColor: color.divider.default,
-            },
-          },
-          {
-            props: [
-              {
-                variant: 'outlined',
-                loading: false,
-              },
-              {
-                variant: 'outlined',
-                disabled: false,
-              },
-            ],
-            style: {
-              '&:hover': {
-                borderColor: color.divider.hover,
-              },
-              '&:focus': {
-                borderColor: color.divider.focus,
-              },
-            },
           },
         ];
       }),
@@ -305,9 +295,6 @@ const ButtonRoot = memoStyled(BaseButton, {
           {
             color: 'default',
             disabled: false,
-          },
-          {
-            color: 'default',
             loading: false,
           },
         ],
