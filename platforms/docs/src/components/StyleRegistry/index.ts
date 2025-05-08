@@ -7,6 +7,4 @@ import StyledComponentsRegistry from './StyledComponentsRegistry';
 
 const isStyledComponents = css === scCss;
 
-console.log(isStyledComponents, '======')
-
 export default isStyledComponents ? StyledComponentsRegistry : EmotionRegistry;
