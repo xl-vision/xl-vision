@@ -5,12 +5,12 @@ import {
   InfoCircleFilled,
   LoadingOutlined,
 } from '@xl-vision/icons';
-import { keyframes } from '@xl-vision/styled-engine';
+import { css, keyframes } from '@xl-vision/styled-engine';
 import { isProduction } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { FC, useMemo } from 'react';
 import Message, { MessageProps } from './Message';
-import { styled } from '../../styles';
+import memoStyled from '../../memoStyled';
 import { useTheme } from '../../ThemeProvider';
 
 export type MessageType = 'success' | 'error' | 'warning' | 'info' | 'loading';
@@ -32,14 +32,14 @@ const loadingKeyframes = keyframes`
   }
 `;
 
-// This `styled()` function invokes keyframes. `styled-components` only supports keyframes
-// in string templates. Do not convert these styles in JS object as it will break.
-const DefaultLoadingIcon = styled(LoadingOutlined, {
+const DefaultLoadingIcon = memoStyled(LoadingOutlined, {
   name: displayName,
   slot: 'LoadingIcon',
-})`
-  animation: ${loadingKeyframes} 1s linear infinite;
-`;
+})(() => {
+  return css`
+    animation: ${loadingKeyframes} 1s linear infinite;
+  `;
+});
 
 const MessageWrapper: FC<MessageWrapperProps> = ({ type, ...others }) => {
   const { colors } = useTheme();

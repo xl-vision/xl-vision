@@ -12,7 +12,7 @@ import {
   useRef,
   KeyboardEvent,
 } from 'react';
-import { styled } from '../../styles';
+import memoStyled from '../../memoStyled';
 import { useTheme } from '../../ThemeProvider';
 import Transition from '../../Transition';
 
@@ -27,7 +27,7 @@ export type MessageProps = NoticationProps &
 
 const displayName = 'Message';
 
-const MessageRoot = styled('div', {
+const MessageRoot = memoStyled('div', {
   name: displayName,
   slot: 'Root',
 })(({ theme }) => {
@@ -68,7 +68,7 @@ const MessageRoot = styled('div', {
   };
 });
 
-const MessageInner = styled('div', {
+const MessageInner = memoStyled('div', {
   name: displayName,
   slot: 'Inner',
 })(({ theme: { colors, sizes, elevations } }) => {
@@ -82,7 +82,7 @@ const MessageInner = styled('div', {
   };
 });
 
-const MessageIcon = styled('span', {
+const MessageIcon = memoStyled('span', {
   name: displayName,
   slot: 'Icon',
 })(() => {
@@ -94,7 +94,7 @@ const MessageIcon = styled('span', {
   };
 });
 
-const MessageIconStatus = styled(MessageIcon, {
+const MessageIconStatus = memoStyled(MessageIcon, {
   name: displayName,
   slot: 'Icon',
 })(() => {
@@ -103,7 +103,7 @@ const MessageIconStatus = styled(MessageIcon, {
   };
 });
 
-const MessageIconClose = styled(MessageIcon, {
+const MessageIconClose = memoStyled(MessageIcon, {
   name: displayName,
   slot: 'Close',
 })(({ theme: { colors, transitions } }) => {
@@ -120,7 +120,7 @@ const MessageIconClose = styled(MessageIcon, {
   };
 });
 
-const MessageContent = styled('div', {
+const MessageContent = memoStyled('div', {
   name: displayName,
   slot: 'Content',
 })(() => {

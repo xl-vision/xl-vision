@@ -44,8 +44,8 @@ import {
   useImperativeHandle,
 } from 'react';
 import useNativeElementRef from '../hooks/useNativeElementRef';
+import memoStyled from '../memoStyled';
 import Portal, { PortalContainerType } from '../Portal';
-import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 import Transition from '../Transition';
 import { RefInstance } from '../types';
@@ -97,7 +97,7 @@ export type PopperInstance = RefInstance<HTMLDivElement>;
 
 const displayName = 'Popper';
 
-const PopperRoot = styled('div', {
+const PopperRoot = memoStyled('div', {
   name: displayName,
   slot: 'Root',
 })(() => {

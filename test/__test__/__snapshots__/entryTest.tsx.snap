@@ -704,6 +704,18 @@ exports[`Entry @xl-vision/styled-engine 1`] = `
 [
   "createGlobalStyles",
   "keyframes",
+  "css",
+  "StyledEngineProvider",
+  "ThemeContext",
+  "styled",
+]
+`;
+
+exports[`Entry @xl-vision/styled-engine-sc 1`] = `
+[
+  "createGlobalStyles",
+  "keyframes",
+  "css",
   "StyledEngineProvider",
   "ThemeContext",
   "styled",

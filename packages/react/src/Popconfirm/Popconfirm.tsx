@@ -4,8 +4,8 @@ import { isProduction, isServer } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { ReactNode, forwardRef, useState } from 'react';
 import Button, { ButtonProps } from '../Button';
+import memoStyled from '../memoStyled';
 import Popper, { PopperInstance, PopperProps, PopperTrigger } from '../Popper';
-import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 
 export type PopconfirmButtonProps = Omit<ButtonProps, 'children' | 'onClick'>;
@@ -26,7 +26,7 @@ export type PopconfirmInstance = PopperInstance;
 
 const displayName = 'Popconfirm';
 
-const PopconfirmRoot = styled(Popper, {
+const PopconfirmRoot = memoStyled(Popper, {
   name: displayName,
   slot: 'Root',
 })(({ theme }) => {
@@ -40,7 +40,7 @@ const PopconfirmRoot = styled(Popper, {
   };
 });
 
-const PopconfirmArrow = styled('div', {
+const PopconfirmArrow = memoStyled('div', {
   name: displayName,
   slot: 'Arrow',
 })(({ theme }) => {
@@ -54,7 +54,7 @@ const PopconfirmArrow = styled('div', {
   };
 });
 
-const PopconfirmPopup = styled('div', {
+const PopconfirmPopup = memoStyled('div', {
   name: displayName,
   slot: 'Popup',
 })(({ theme: { colors, elevations, sizes } }) => {
@@ -67,7 +67,7 @@ const PopconfirmPopup = styled('div', {
   };
 });
 
-const PopconfirmContent = styled('div', {
+const PopconfirmContent = memoStyled('div', {
   name: displayName,
   slot: 'Content',
 })(({ theme: { typography } }) => {
@@ -79,7 +79,7 @@ const PopconfirmContent = styled('div', {
   };
 });
 
-const PopconfirmIcon = styled('span', {
+const PopconfirmIcon = memoStyled('span', {
   name: displayName,
   slot: 'Icon',
 })(({ theme: { typography, colors } }) => {
@@ -91,7 +91,7 @@ const PopconfirmIcon = styled('span', {
   };
 });
 
-const PopconfirmTitle = styled('span', {
+const PopconfirmTitle = memoStyled('span', {
   name: displayName,
   slot: 'Title',
 })(() => {
@@ -100,7 +100,7 @@ const PopconfirmTitle = styled('span', {
   };
 });
 
-const PopconfirmFooter = styled('div', {
+const PopconfirmFooter = memoStyled('div', {
   name: displayName,
   slot: 'Footer',
 })(({ theme: { sizes } }) => {

@@ -3,8 +3,8 @@ import { isProduction, isServer } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { Children, CSSProperties, FC, useMemo } from 'react';
 import NoticationContext from './context';
+import memoStyled from '../memoStyled';
 import Portal, { PortalContainerType } from '../Portal';
-import { styled } from '../styles';
 
 export type NoticationPlacement = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
 
@@ -17,7 +17,7 @@ export type NoticationContainerProps = InnerNoticationContainerProps & {
 
 const displayName = 'NoticationContainer';
 
-const NoticationContainerRoot = styled('div', {
+const NoticationContainerRoot = memoStyled('div', {
   name: displayName,
   slot: 'Root',
 })(() => {

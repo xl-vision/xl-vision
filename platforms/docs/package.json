@@ -7,6 +7,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
+    "dev:sc": "cross-env STYLE_LIB=styled-components next dev",
     "docs": "next build && npm run sitemap",
     "start": "next start",
     "sitemap": "next-sitemap --config sitemap.js",
@@ -22,6 +23,7 @@
     "@xl-vision/icons": "workspace:^",
     "@xl-vision/react": "workspace:^",
     "@xl-vision/styled-engine": "workspace:^",
+    "@xl-vision/styled-engine-sc": "workspace:^",
     "@xl-vision/useForm": "workspace:^",
     "@xl-vision/usePopper": "workspace:^",
     "@xl-vision/utils": "workspace:^",

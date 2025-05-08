@@ -17,7 +17,7 @@ import {
   useEffect,
   useRef,
 } from 'react';
-import { styled } from '../../styles';
+import memoStyled from '../../memoStyled';
 import { useTheme } from '../../ThemeProvider';
 import Transition from '../../Transition';
 import NoticationContext from '../context';
@@ -36,7 +36,7 @@ export type NoticationProps = NoticationHookProps &
 
 const displayName = 'Notication';
 
-const NoticationRoot = styled('div', {
+const NoticationRoot = memoStyled('div', {
   name: displayName,
   slot: 'Root',
 })<{ placement: NoticationPlacement }>(({ theme }) => {
@@ -82,7 +82,7 @@ const NoticationRoot = styled('div', {
   };
 });
 
-const NoticationInner = styled('div', {
+const NoticationInner = memoStyled('div', {
   name: displayName,
   slot: 'Inner',
 })(({ theme: { colors, sizes, elevations } }) => {
@@ -98,7 +98,7 @@ const NoticationInner = styled('div', {
   };
 });
 
-const NoticationFooter = styled('div', {
+const NoticationFooter = memoStyled('div', {
   name: displayName,
   slot: 'Footer',
 })(() => {
@@ -108,7 +108,7 @@ const NoticationFooter = styled('div', {
   };
 });
 
-const NoticationDescription = styled('div', {
+const NoticationDescription = memoStyled('div', {
   name: displayName,
   slot: 'Description',
 })(({ theme: { typography } }) => {
@@ -118,7 +118,7 @@ const NoticationDescription = styled('div', {
   };
 });
 
-const NoticationMessage = styled('div', {
+const NoticationMessage = memoStyled('div', {
   name: displayName,
   slot: 'Message',
 })(({ theme: { typography } }) => {
@@ -127,7 +127,7 @@ const NoticationMessage = styled('div', {
   };
 });
 
-const NoticationContent = styled('div', {
+const NoticationContent = memoStyled('div', {
   name: displayName,
   slot: 'Content',
 })(() => {
@@ -137,7 +137,7 @@ const NoticationContent = styled('div', {
   };
 });
 
-const NoticationIcon = styled('span', {
+const NoticationIcon = memoStyled('span', {
   name: displayName,
   slot: 'Icon',
 })(() => {
@@ -149,7 +149,7 @@ const NoticationIcon = styled('span', {
   };
 });
 
-const NoticationIconStatus = styled(NoticationIcon, {
+const NoticationIconStatus = memoStyled(NoticationIcon, {
   name: displayName,
   slot: 'Status',
 })(() => {
@@ -159,7 +159,7 @@ const NoticationIconStatus = styled(NoticationIcon, {
   };
 });
 
-const NoticationIconClose = styled(NoticationIcon, {
+const NoticationIconClose = memoStyled(NoticationIcon, {
   name: displayName,
   slot: 'Close',
 })(({ theme: { typography, colors, transitions } }) => {
