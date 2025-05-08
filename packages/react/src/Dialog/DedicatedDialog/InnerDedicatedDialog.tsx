@@ -1,9 +1,8 @@
 import { useValueChange } from '@xl-vision/hooks';
-import { CSSObject } from '@xl-vision/styled-engine';
 import { isProduction } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { ReactNode, FC, useState, useEffect } from 'react';
-import { styled } from '../../styles';
+import memoStyled from '../../memoStyled';
 import Dialog, { DialogProps } from '../Dialog';
 
 export interface InnerDedicatedDialogProps extends Omit<DialogProps, 'children' | 'content'> {
@@ -13,14 +12,14 @@ export interface InnerDedicatedDialogProps extends Omit<DialogProps, 'children' 
 
 const displayName = 'InnerDedicatedDialog';
 
-const InnerDedicatedDialogRoot = styled(Dialog, {
+const InnerDedicatedDialogRoot = memoStyled(Dialog, {
   name: displayName,
   slot: 'Root',
 })(() => {
   return {};
 });
 
-const InnerDedicatedDialogHeader = styled('h6', {
+const InnerDedicatedDialogHeader = memoStyled('h6', {
   name: displayName,
   slot: 'Header',
 })(({ theme }) => {
@@ -34,7 +33,7 @@ const InnerDedicatedDialogHeader = styled('h6', {
   };
 });
 
-const InnerDedicatedDialogIcon = styled('span', {
+const InnerDedicatedDialogIcon = memoStyled('span', {
   name: displayName,
   slot: 'Icon',
 })(() => {
@@ -47,7 +46,7 @@ const InnerDedicatedDialogIcon = styled('span', {
   };
 });
 
-const InnerDedicatedDialogTitle = styled('span', {
+const InnerDedicatedDialogTitle = memoStyled('span', {
   name: displayName,
   slot: 'Title',
 })(() => {
@@ -56,20 +55,24 @@ const InnerDedicatedDialogTitle = styled('span', {
   };
 });
 
-const InnerDedicatedDialogContent = styled('div', {
+const InnerDedicatedDialogContent = memoStyled('div', {
   name: displayName,
   slot: 'Content',
 })<{
   icon: boolean;
-}>(({ styleProps }) => {
-  const { icon } = styleProps;
-  const styles: CSSObject = {};
-
-  if (icon) {
-    styles.paddingLeft = 25;
-  }
-
-  return styles;
+}>(() => {
+  return {
+    variants: [
+      {
+        props: {
+          icon: true,
+        },
+        style: {
+          paddingLeft: 25,
+        },
+      },
+    ],
+  };
 });
 
 const InnerDedicatedDialog: FC<InnerDedicatedDialogProps> = (props) => {

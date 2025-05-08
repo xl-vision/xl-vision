@@ -1,7 +1,7 @@
 import { isProduction } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { HTMLAttributes, forwardRef, useImperativeHandle, useRef } from 'react';
-import { styled } from '../styles';
+import memoStyled from '../memoStyled';
 import { ThemeProvider, SizeVariant, useTheme } from '../ThemeProvider';
 import { RefInstance } from '../types';
 
@@ -13,55 +13,66 @@ export type InputGroupInstance = RefInstance<HTMLDivElement>;
 
 const displayName = 'InputGroup';
 
-const InputGroupRoot = styled('div', {
+const InputGroupRoot = memoStyled('div', {
   name: displayName,
   slot: 'Root',
-})<{ size: SizeVariant }>(({ theme, styleProps }) => {
+})<{ size: SizeVariant }>(({ theme }) => {
   const { sizes, clsPrefix } = theme;
-
-  const { size } = styleProps;
-
-  const themeSize = sizes[size];
 
   return {
     display: 'flex',
     flexDirection: 'row',
-
     '& > *': {
       borderRadius: 0,
-      '&:not(:last-child)': {
-        marginRight: -themeSize.border,
-      },
-      '&:first-child': {
-        borderTopLeftRadius: themeSize.borderRadius,
-        borderBottomLeftRadius: themeSize.borderRadius,
-      },
-      '&:last-child': {
-        borderTopRightRadius: themeSize.borderRadius,
-        borderBottomRightRadius: themeSize.borderRadius,
-      },
     },
     [`.${clsPrefix}-input`]: {
       '& > *': {
         borderRadius: 0,
       },
-      '&:first-child': {
-        '& > *': {
-          '&:first-child': {
-            borderTopLeftRadius: themeSize.borderRadius,
-            borderBottomLeftRadius: themeSize.borderRadius,
-          },
-        },
-      },
-      '&:last-child': {
-        '& > *': {
-          '&:last-child': {
-            borderTopRightRadius: themeSize.borderRadius,
-            borderBottomRightRadius: themeSize.borderRadius,
-          },
-        },
-      },
     },
+    variants: Object.keys(sizes).map((k) => {
+      const sizeKey = k as SizeVariant;
+      const themeSize = sizes[sizeKey];
+
+      return {
+        props: {
+          size: sizeKey,
+        },
+        style: {
+          '& > *': {
+            '&:not(:last-child)': {
+              marginRight: -themeSize.border,
+            },
+            '&:first-child': {
+              borderTopLeftRadius: themeSize.borderRadius,
+              borderBottomLeftRadius: themeSize.borderRadius,
+            },
+            '&:last-child': {
+              borderTopRightRadius: themeSize.borderRadius,
+              borderBottomRightRadius: themeSize.borderRadius,
+            },
+          },
+          [`.${clsPrefix}-input`]: {
+            '&:first-child': {
+              '& > *': {
+                '&:first-child': {
+                  borderTopLeftRadius: themeSize.borderRadius,
+                  borderBottomLeftRadius: themeSize.borderRadius,
+                },
+              },
+            },
+            '&:last-child': {
+              '& > *': {
+                '&:last-child': {
+                  borderTopRightRadius: themeSize.borderRadius,
+                  borderBottomRightRadius: themeSize.borderRadius,
+                },
+              },
+            },
+          },
+        },
+      };
+    }),
   };
 });
 

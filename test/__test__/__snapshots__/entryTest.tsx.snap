@@ -668,6 +668,7 @@ exports[`Entry @xl-vision/react 1`] = `
 [
   "styled",
   "createGlobalStyles",
+  "memoStyled",
   "ThemeProvider",
   "useTheme",
   "Transition",

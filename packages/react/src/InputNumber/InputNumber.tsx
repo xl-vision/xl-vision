@@ -13,7 +13,7 @@ import {
   useMemo,
 } from 'react';
 import { Input, InputInstance, InputProps } from '../Input';
-import { styled } from '../styles';
+import memoStyled from '../memoStyled';
 import { useTheme } from '../ThemeProvider';
 
 export type InputNumberValueType = number | string | null;
@@ -48,7 +48,7 @@ export type InputNumberInstance = InputInstance;
 
 const displayName = 'InputNumber';
 
-const InputNumberRoot = styled(Input, {
+const InputNumberRoot = memoStyled(Input, {
   name: displayName,
   slot: 'Root',
 })(({ theme: { clsPrefix, size: themeSize, transitions } }) => {
@@ -69,7 +69,7 @@ const InputNumberRoot = styled(Input, {
   };
 });
 
-const InputNumberControls = styled('span', {
+const InputNumberControls = memoStyled('span', {
   name: displayName,
   slot: 'Controls',
 })(({ theme: { size: themeSize, colors } }) => {
@@ -81,36 +81,41 @@ const InputNumberControls = styled('span', {
   };
 });
 
-const InputNumberControlUp = styled('span', {
+const InputNumberControlUp = memoStyled('span', {
   name: displayName,
   slot: 'ControlUp',
-})<{ disabled?: boolean }>(({ theme: { transitions, colors }, styleProps: { disabled } }) => {
-  return [
-    {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      cursor: 'pointer',
-      height: '40%',
-      flex: 'auto',
-      fontSize: '10px',
-      padding: `0 3px`,
-      transition: transitions.standard('all'),
-      '&:hover': {
-        height: '60%',
-      },
+})<{ disabled: boolean }>(({ theme: { transitions, colors } }) => {
+  return {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    cursor: 'pointer',
+    height: '40%',
+    flex: 'auto',
+    fontSize: '10px',
+    padding: `0 3px`,
+    transition: transitions.standard('all'),
+    '&:hover': {
+      height: '60%',
     },
-    disabled && {
-      cursor: 'not-allowed',
-      opacity: colors.opacity.disabled,
-      '&:hover': {
-        height: '40%',
+    variants: [
+      {
+        props: {
+          disabled: true,
+        },
+        style: {
+          cursor: 'not-allowed',
+          opacity: colors.opacity.disabled,
+          '&:hover': {
+            height: '40%',
+          },
+        },
       },
-    },
-  ];
+    ],
+  };
 });
 
-const InputNumberControlDown = styled(InputNumberControlUp, {
+const InputNumberControlDown = memoStyled(InputNumberControlUp, {
   name: displayName,
   slot: 'ControlDown',
 })(({ theme: { size: themeSize, colors } }) => {

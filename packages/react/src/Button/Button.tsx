@@ -289,23 +289,74 @@ const ButtonRoot = memoStyled(BaseButton, {
         style: {
           color: colors.text.primary,
         },
-      },
-      {
-        props: [
+        variants: [
           {
-            color: 'default',
-            disabled: false,
-            loading: false,
+            props: {
+              disabled: false,
+              loading: false,
+            },
+
+            style: {
+              '&:hover': {
+                backgroundColor: colors.background.hover,
+              },
+              '&:focus': {
+                backgroundColor: colors.background.focus,
+              },
+            },
+          },
+          {
+            props: {
+              variant: 'contained',
+            },
+            style: {
+              color: colors.inverseText.primary,
+              backgroundColor: colors.text.primary,
+            },
+            variants: [
+              {
+                props: {
+                  disabled: false,
+                  loading: false,
+                },
+
+                style: {
+                  '&:hover': {
+                    backgroundColor: colors.text.secondary,
+                  },
+                  '&:focus': {
+                    backgroundColor: colors.text.secondary,
+                  },
+                },
+              },
+            ],
+          },
+          {
+            props: {
+              variant: 'outlined',
+            },
+            style: {
+              borderColor: colors.divider.primary,
+            },
+            variants: [
+              {
+                props: {
+                  variant: 'outlined',
+                  loading: false,
+                  disabled: false,
+                },
+                style: {
+                  '&:hover': {
+                    borderColor: colors.divider.secondary,
+                  },
+                  '&:focus': {
+                    borderColor: colors.divider.secondary,
+                  },
+                },
+              },
+            ],
           },
         ],
-        style: {
-          '&:hover': {
-            color: colors.themes.primary.foreground.hover,
-          },
-          '&:focus': {
-            color: colors.themes.primary.foreground.focus,
-          },
-        },
       },
     ],
   };

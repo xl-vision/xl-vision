@@ -4,7 +4,7 @@ import { isProduction } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { ReactNode, forwardRef, useState, MouseEvent } from 'react';
 import Input, { InputInstance, InputProps } from './Input';
-import { styled } from '../styles';
+import memoStyled from '../memoStyled';
 
 export type PasswordProps = Omit<InputProps, 'type' | 'suffix'> & {
   renderIcon?: (visible: boolean) => ReactNode;
@@ -14,14 +14,14 @@ export type PasswordInstance = InputInstance;
 
 const displayName = 'Password';
 
-const PasswordRoot = styled(Input, {
+const PasswordRoot = memoStyled(Input, {
   name: displayName,
   slot: 'Root',
 })(() => {
   return {};
 });
 
-const PasswordIcon = styled('span', {
+const PasswordIcon = memoStyled('span', {
   name: displayName,
   slot: 'Icon',
 })(({ theme }) => {
