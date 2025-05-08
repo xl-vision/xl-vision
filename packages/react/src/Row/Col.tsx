@@ -2,10 +2,18 @@ import { CSSObject } from '@xl-vision/styled-engine';
 import { isObject, isProduction } from '@xl-vision/utils';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { HTMLAttributes, ReactNode, forwardRef, useContext } from 'react';
+import {
+  HTMLAttributes,
+  ReactNode,
+  forwardRef,
+  useContext,
+  useImperativeHandle,
+  useRef,
+} from 'react';
 import RowContext from './RowContext';
-import { styled } from '../styles';
+import memoStyled from '../memoStyled';
 import { useTheme, Breakpoint } from '../ThemeProvider';
+import { RefInstance } from '../types';
 
 export type ColSpanType = number | Partial<Record<Breakpoint, number>>;
 
@@ -19,9 +27,11 @@ export interface ColProps extends HTMLAttributes<HTMLDivElement> {
   push?: ColSpanType;
 }
 
+export type ColInstance = RefInstance<HTMLDivElement>;
+
 const displayName = 'Col';
 
-const ColRoot = styled('div', {
+const ColRoot = memoStyled('div', {
   name: displayName,
   slot: 'Root',
 })(({ theme }) => {
@@ -89,11 +99,23 @@ const ColRoot = styled('div', {
   };
 });
 
-const Col = forwardRef<HTMLDivElement, ColProps>((props, ref) => {
+const Col = forwardRef<ColInstance, ColProps>((props, ref) => {
   const { children, className, offset, order, pull, push, column, style, ...others } = props;
 
   const { gutter, breakPoints, removeOnUnvisible } = useContext(RowContext);
   const { clsPrefix } = useTheme();
+
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useImperativeHandle(
+    ref,
+    () => ({
+      get nativeElement() {
+        return rootRef.current;
+      },
+    }),
+    [],
+  );
 
   if (removeOnUnvisible && breakPoints) {
     if (isObject(column)) {
@@ -135,7 +157,7 @@ const Col = forwardRef<HTMLDivElement, ColProps>((props, ref) => {
   );
 
   return (
-    <ColRoot {...others} className={rootClasses} ref={ref} style={colStyle}>
+    <ColRoot {...others} className={rootClasses} ref={rootRef} style={colStyle}>
       {children}
     </ColRoot>
   );

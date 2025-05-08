@@ -1,9 +1,8 @@
 import { isProduction, isServer } from '@xl-vision/utils';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { Children, forwardRef, ReactElement, ReactNode } from 'react';
-import Popper, { PopperChildrenProps, PopperProps } from '../Popper';
-import { styled } from '../styles';
+import memoStyled from '../memoStyled';
+import Popper, { PopperChildrenProps, PopperInstance, PopperProps } from '../Popper';
 import { useTheme } from '../ThemeProvider';
 
 export type TooltipChildrenProps = PopperChildrenProps & {};
@@ -15,9 +14,11 @@ export interface TooltipProps extends Omit<PopperProps, 'popup' | 'arrow' | 'con
   maxWidth?: number | string;
 }
 
+export type TooltipInstance = PopperInstance;
+
 const displayName = 'Tooltip';
 
-const TooltipRoot = styled(Popper, {
+const TooltipRoot = memoStyled(Popper, {
   name: displayName,
   slot: 'Root',
 })(({ theme }) => {
@@ -35,12 +36,11 @@ export type TooltipPopupStyleProps = {
   hasWidth: boolean;
 };
 
-const TooltipPopup = styled('div', {
+const TooltipPopup = memoStyled('div', {
   name: displayName,
   slot: 'Popup',
-})<TooltipPopupStyleProps>(({ theme, styleProps }) => {
+})<TooltipPopupStyleProps>(({ theme }) => {
   const { colors, typography, sizes, elevations } = theme;
-  const { hasWidth } = styleProps;
 
   return {
     backgroundColor: colors.background.spotlight,
@@ -48,18 +48,24 @@ const TooltipPopup = styled('div', {
     padding: '4px 8px',
     borderRadius: sizes.middle.borderRadius,
     boxShadow: elevations[2],
-
     ...typography.caption.style,
-    ...(hasWidth && {
-      whiteSpace: 'pre-wrap',
-      textAlign: 'justify',
-      wordWrap: 'break-word',
-      wordBreak: 'break-all',
-    }),
+    variants: [
+      {
+        props: {
+          hasWidth: true,
+        },
+        style: {
+          whiteSpace: 'pre-wrap',
+          textAlign: 'justify',
+          wordWrap: 'break-word',
+          wordBreak: 'break-all',
+        },
+      },
+    ],
   };
 });
 
-const TooltipArrow = styled('div', {
+const TooltipArrow = memoStyled('div', {
   name: displayName,
   slot: 'Arrow',
 })(({ theme }) => {
@@ -75,7 +81,7 @@ const TooltipArrow = styled('div', {
   };
 });
 
-const Tooltip = forwardRef<HTMLDivElement, TooltipProps>((props, ref) => {
+const Tooltip = forwardRef<TooltipInstance, TooltipProps>((props, ref) => {
   const { clsPrefix } = useTheme();
 
   const {
@@ -100,9 +106,6 @@ const Tooltip = forwardRef<HTMLDivElement, TooltipProps>((props, ref) => {
 
   const popup = (
     <TooltipPopup
-      className={clsx({
-        [`${rootClassName}}__popup--width`]: maxWidth !== undefined,
-      })}
       style={{ maxWidth, ...colorStyle }}
       styleProps={{
         hasWidth: maxWidth !== undefined,

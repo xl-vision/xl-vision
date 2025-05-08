@@ -1,7 +1,10 @@
-import { NoticationProps, useConstantFn, useValueChange } from '@xl-vision/hooks';
+import {
+  NoticationProps as NoticationHookProps,
+  useConstantFn,
+  useValueChange,
+} from '@xl-vision/hooks';
 import { CloseOutlined } from '@xl-vision/icons';
 import { isProduction } from '@xl-vision/utils';
-import { clsx } from 'clsx';
 import PropTypes from 'prop-types';
 import {
   forwardRef,
@@ -14,12 +17,13 @@ import {
   useEffect,
   useRef,
 } from 'react';
-import { styled } from '../../styles';
+import memoStyled from '../../memoStyled';
 import { useTheme } from '../../ThemeProvider';
 import Transition from '../../Transition';
 import NoticationContext from '../context';
+import { NoticationPlacement } from '../NoticationContainer';
 
-export type InnerNoticationProps = NoticationProps &
+export type NoticationProps = NoticationHookProps &
   HTMLAttributes<HTMLDivElement> & {
     message: ReactNode;
     closeIcon?: ReactNode;
@@ -30,15 +34,15 @@ export type InnerNoticationProps = NoticationProps &
     icon?: ReactNode;
   };
 
-const displayName = 'InnerNotication';
+const displayName = 'Notication';
 
-const InnerNoticationRoot = styled('div', {
+const NoticationRoot = memoStyled('div', {
   name: displayName,
   slot: 'Root',
-})(({ theme }) => {
-  const { clsPrefix, transitions, colors, elevations, sizes, typography } = theme;
+})<{ placement: NoticationPlacement }>(({ theme }) => {
+  const { clsPrefix, transitions } = theme;
 
-  const rootClassName = `${clsPrefix}-inner-notication`;
+  const rootClassName = `${clsPrefix}-notication`;
 
   return {
     display: 'inline-block',
@@ -63,10 +67,10 @@ const InnerNoticationRoot = styled('div', {
       },
       '&-enter-from, &-appear-from': {
         opacity: 0,
-        [`&.${rootClassName}--top-right, &.${rootClassName}--bottom-right`]: {
+        [`&.${rootClassName}--placement-top-right, &.${rootClassName}--placement-bottom-right`]: {
           transform: 'translateX(100%)',
         },
-        [`&.${rootClassName}--top-left, &.${rootClassName}--bottom-left`]: {
+        [`&.${rootClassName}--placement-top-left, &.${rootClassName}--placement-bottom-left`]: {
           transform: 'translateX(-100%)',
         },
       },
@@ -75,66 +79,112 @@ const InnerNoticationRoot = styled('div', {
         transform: 'translateX(0)',
       },
     },
+  };
+});
 
-    [`.${rootClassName}__inner`]: {
-      display: 'flex',
-      flexDirection: 'row',
-      alignItems: 'flex-start',
-      backgroundColor: colors.background.popper,
-      borderRadius: sizes.large.borderRadius,
-      padding: `${sizes.large.padding.x}px ${sizes.large.padding.x}px`,
-      width: 384,
-      boxShadow: elevations[3],
-    },
-    [`.${rootClassName}__status, .${rootClassName}__close`]: {
-      lineHeight: 1,
-      svg: {
-        verticalAlign: 'middle',
-      },
-    },
-    [`.${rootClassName}__status`]: {
-      paddingRight: 8,
-      fontSize: '1.5rem',
-    },
-    [`.${rootClassName}__content`]: {
-      flex: 1,
-      display: 'block',
-    },
-    [`.${rootClassName}__message`]: {
-      ...typography.subtitle1.style,
-    },
-    [`.${rootClassName}__description`]: {
-      ...typography.body2.style,
-      marginTop: 8,
-    },
-    [`.${rootClassName}__footer`]: {
-      marginTop: 16,
-      float: 'right',
-    },
-    [`.${rootClassName}__close`]: {
-      display: 'inline-block',
-      padding: 0,
-      marginLeft: 'auto',
-      lineHeight: typography.subtitle1.info.lineHeight,
-      cursor: 'pointer',
-      color: colors.text.hint,
-      transition: transitions.standard('color'),
+const NoticationInner = memoStyled('div', {
+  name: displayName,
+  slot: 'Inner',
+})(({ theme: { colors, sizes, elevations } }) => {
+  return {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    backgroundColor: colors.background.popper,
+    borderRadius: sizes.large.borderRadius,
+    padding: `${sizes.large.padding.x}px ${sizes.large.padding.x}px`,
+    width: 384,
+    boxShadow: elevations[3],
+  };
+});
 
-      '&:hover, &:focus': {
-        color: colors.text.primary,
-      },
+const NoticationFooter = memoStyled('div', {
+  name: displayName,
+  slot: 'Footer',
+})(() => {
+  return {
+    marginTop: 16,
+    float: 'right',
+  };
+});
+
+const NoticationDescription = memoStyled('div', {
+  name: displayName,
+  slot: 'Description',
+})(({ theme: { typography } }) => {
+  return {
+    ...typography.body2.style,
+    marginTop: 8,
+  };
+});
+
+const NoticationMessage = memoStyled('div', {
+  name: displayName,
+  slot: 'Message',
+})(({ theme: { typography } }) => {
+  return {
+    ...typography.subtitle1.style,
+  };
+});
+
+const NoticationContent = memoStyled('div', {
+  name: displayName,
+  slot: 'Content',
+})(() => {
+  return {
+    flex: 1,
+    display: 'block',
+  };
+});
+
+const NoticationIcon = memoStyled('span', {
+  name: displayName,
+  slot: 'Icon',
+})(() => {
+  return {
+    lineHeight: 1,
+    svg: {
+      verticalAlign: 'middle',
     },
   };
 });
 
-const InnerNotication = forwardRef<HTMLDivElement, InnerNoticationProps>((props, ref) => {
+const NoticationIconStatus = memoStyled(NoticationIcon, {
+  name: displayName,
+  slot: 'Status',
+})(() => {
+  return {
+    paddingRight: 8,
+    fontSize: '1.5rem',
+  };
+});
+
+const NoticationIconClose = memoStyled(NoticationIcon, {
+  name: displayName,
+  slot: 'Close',
+})(({ theme: { typography, colors, transitions } }) => {
+  return {
+    display: 'inline-block',
+    padding: 0,
+    marginLeft: 'auto',
+    lineHeight: typography.subtitle1.info.lineHeight,
+    cursor: 'pointer',
+    color: colors.text.hint,
+    transition: transitions.standard('color'),
+
+    '&:hover, &:focus': {
+      color: colors.text.primary,
+    },
+  };
+});
+
+const NoticationInternal = forwardRef<HTMLDivElement, NoticationProps>((props, ref) => {
   const {
     duration = 4500,
     onOpenChange,
     open: openProp,
     icon,
     onAfterClosed,
-    className,
     onMouseEnter,
     onMouseLeave,
     message,
@@ -153,7 +203,7 @@ const InnerNotication = forwardRef<HTMLDivElement, InnerNoticationProps>((props,
 
   const timerRef = useRef<number>(null);
 
-  const handleExit = useConstantFn(() => {
+  const handleExited = useConstantFn(() => {
     onAfterClosed?.();
   });
 
@@ -206,49 +256,48 @@ const InnerNotication = forwardRef<HTMLDivElement, InnerNoticationProps>((props,
     };
   }, [duration, setOpen]);
 
-  const rootClassName = `${clsPrefix}-inner-notication`;
+  const rootClassName = `${clsPrefix}-notication`;
 
   return (
     <Transition
       in={open}
       transitionClassName={rootClassName}
       transitionOnFirst={true}
-      onExited={handleExit}
+      onExited={handleExited}
     >
-      <InnerNoticationRoot
+      <NoticationRoot
         ref={ref}
         {...others}
-        className={clsx(`${rootClassName}--${placement}`, className)}
+        styleProps={{ placement }}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <div className={`${rootClassName}__inner`}>
-          {icon && <span className={`${rootClassName}__status`}>{icon}</span>}
-          <div className={`${rootClassName}__content`}>
-            <div className={`${rootClassName}__message`}>{message}</div>
-            {description && <div className={`${rootClassName}__description`}>{description}</div>}
-            {footer && <div className={`${rootClassName}__footer`}>{footer}</div>}
-          </div>
+        <NoticationInner>
+          {icon && <NoticationIconStatus>{icon}</NoticationIconStatus>}
+          <NoticationContent>
+            <NoticationMessage>{message}</NoticationMessage>
+            {description && <NoticationDescription>{description}</NoticationDescription>}
+            {footer && <NoticationFooter>{footer}</NoticationFooter>}
+          </NoticationContent>
           {!hideClose && (
-            <span
-              className={`${rootClassName}__close`}
+            <NoticationIconClose
               role='button'
               tabIndex={0}
               onClick={handleClose}
               onKeyDown={handleCloseKeyDown}
             >
               {closeIcon || <CloseOutlined />}
-            </span>
+            </NoticationIconClose>
           )}
-        </div>
-      </InnerNoticationRoot>
+        </NoticationInner>
+      </NoticationRoot>
     </Transition>
   );
 });
 
 if (!isProduction) {
-  InnerNotication.displayName = displayName;
-  InnerNotication.propTypes = {
+  NoticationInternal.displayName = displayName;
+  NoticationInternal.propTypes = {
     message: PropTypes.node.isRequired,
     className: PropTypes.string,
     closeIcon: PropTypes.node,
@@ -265,4 +314,4 @@ if (!isProduction) {
   };
 }
 
-export default InnerNotication;
+export default NoticationInternal;

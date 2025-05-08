@@ -1,5 +1,5 @@
 import { useConstantFn } from '@xl-vision/hooks';
-import { keyframes } from '@xl-vision/styled-engine';
+import { css, keyframes } from '@xl-vision/styled-engine';
 import { getBoundingClientRect, isProduction } from '@xl-vision/utils';
 import { clsx } from 'clsx';
 import PropTypes from 'prop-types';
@@ -16,19 +16,23 @@ import {
   SyntheticEvent,
   TouchEvent,
 } from 'react';
-import { styled } from '../styles';
+import memoStyled from '../memoStyled';
 import { useTheme } from '../ThemeProvider';
 import TransitionGroup, { TransitionGroupClassName } from '../TransitionGroup';
+import { RefInstance } from '../types';
 
 export type RippleProps = HTMLAttributes<HTMLDivElement> & {
   transitionClassName: TransitionGroupClassName;
   exitAfterEnter?: boolean;
 };
 
-export type RippleRef = {
-  start: (e?: SyntheticEvent | { pulsate?: boolean }) => void;
-  stop: () => void;
-};
+export type RippleInstance = RefInstance<
+  HTMLDivElement,
+  {
+    start: (e?: SyntheticEvent | { pulsate?: boolean }) => void;
+    stop: () => void;
+  }
+>;
 
 const displayName = 'Ripple';
 
@@ -44,7 +48,7 @@ const pulsateKeyframe = keyframes`
   }
 `;
 
-const RipperRoot = styled('div', {
+const RipperRoot = memoStyled('div', {
   name: displayName,
   slot: 'Root',
 })(() => {
@@ -61,24 +65,27 @@ const RipperRoot = styled('div', {
   };
 });
 
-const RippleInner = styled('div', {
+const RippleInner = memoStyled('div', {
   name: displayName,
   slot: 'Inner',
-})`
-  position: absolute;
-  background-color: currentColor;
-  border-radius: 50%;
-  &.${({ theme: { clsPrefix } }) => `${clsPrefix}-ripple--pulsate`} {
-    animation-name: ${pulsateKeyframe};
-    animation-duration: 2.5s;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-  }
-`;
+})(({ theme }) => {
+  const { clsPrefix } = theme;
+  return css`
+    position: absolute;
+    background-color: currentColor;
+    border-radius: 50%;
+    &.${`${clsPrefix}-ripple--pulsate`} {
+      animation-name: ${pulsateKeyframe};
+      animation-duration: 2.5s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+    }
+  `;
+});
 
 const DELAY_RIPPLE = 80;
 
-const Ripple = forwardRef<RippleRef, RippleProps>((props, ref) => {
+const Ripple = forwardRef<RippleInstance, RippleProps>((props, ref) => {
   const { transitionClassName, exitAfterEnter, ...others } = props;
 
   const { clsPrefix } = useTheme();
@@ -91,12 +98,20 @@ const Ripple = forwardRef<RippleRef, RippleProps>((props, ref) => {
   const enteredCountRef = useRef(0);
   // key
   const keyRef = useRef(0);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const rootRef = useRef<HTMLDivElement>(null);
   const startTimerRef = useRef<number>(null);
   const startTimerCommitRef = useRef<() => void>(null);
   const ignoreMouseDonwRef = useRef(false);
 
   const [pulsateRipple, setPulsateRipple] = useState<ReactElement>();
+
+  useImperativeHandle(ref, () => ({
+    start,
+    stop,
+    get nativeElement() {
+      return rootRef.current;
+    },
+  }));
 
   useEffect(() => {
     return () => {
@@ -105,11 +120,6 @@ const Ripple = forwardRef<RippleRef, RippleProps>((props, ref) => {
       }
     };
   }, []);
-
-  useImperativeHandle(ref, () => ({
-    start,
-    stop,
-  }));
 
   const commit = useCallback(
     (x: number, y: number, size: number, pulsate?: boolean) => {
@@ -157,7 +167,7 @@ const Ripple = forwardRef<RippleRef, RippleProps>((props, ref) => {
 
       const el = (e as UIEvent).currentTarget
         ? ((e as UIEvent).currentTarget as HTMLElement)
-        : containerRef.current;
+        : rootRef.current;
       const rect = el
         ? getBoundingClientRect(el)
         : {
@@ -241,7 +251,7 @@ const Ripple = forwardRef<RippleRef, RippleProps>((props, ref) => {
   });
 
   return (
-    <RipperRoot {...others} ref={containerRef}>
+    <RipperRoot {...others} ref={rootRef}>
       {pulsateRipple}
 
       <TransitionGroup transitionClassName={transitionClassName} onEntered={handleEnter}>

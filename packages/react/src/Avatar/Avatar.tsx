@@ -1,7 +1,5 @@
-import { useConstantFn, useForkRef } from '@xl-vision/hooks';
-import { CSSObject } from '@xl-vision/styled-engine';
+import { useConstantFn } from '@xl-vision/hooks';
 import { isProduction } from '@xl-vision/utils';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
   HTMLAttributes,
@@ -16,12 +14,14 @@ import {
   isValidElement,
   useMemo,
   CSSProperties,
+  useImperativeHandle,
 } from 'react';
 import { flushSync } from 'react-dom';
 import AvatarContext from './AvatarContext';
+import memoStyled, { StyleVariant } from '../memoStyled';
 import ResizeObserver from '../ResizeObserver';
-import { styled } from '../styles';
 import { SizeVariant, useTheme } from '../ThemeProvider';
+import { RefInstance } from '../types';
 
 export type AvatarShape = 'circle' | 'square' | 'round';
 
@@ -38,19 +38,20 @@ export type AvatarProps = HTMLAttributes<HTMLSpanElement> & {
   onError?: () => boolean;
 };
 
+export type AvatarInstance = RefInstance<HTMLSpanElement>;
+
 const displayName = 'Avatar';
 
-const AvatarRoot = styled('span', {
+const AvatarRoot = memoStyled('span', {
   name: displayName,
   slot: 'Root',
 })<{
-  isImage: boolean;
+  hasImage: boolean;
   shape: AvatarShape;
   size: SizeVariant;
-}>(({ theme, styleProps }) => {
-  const { shape: shapeType, size, isImage } = styleProps;
+}>(({ theme }) => {
   const { colors, sizes } = theme;
-  const style: CSSObject = {
+  return {
     position: 'relative',
     display: 'inline-flex',
     boxSizing: 'border-box',
@@ -69,25 +70,59 @@ const AvatarRoot = styled('span', {
       objectFit: 'cover',
       borderStyle: 'none',
     },
+    variants: [
+      {
+        props: {
+          hasImage: true,
+        },
+        style: {
+          background: '0 0',
+        },
+      },
+      {
+        props: {
+          shape: 'circle',
+        },
+        style: {
+          borderRadius: '50%',
+        },
+      },
+      ...Object.keys(sizes).flatMap<
+        StyleVariant<{
+          hasImage: boolean;
+          shape: AvatarShape;
+          size: SizeVariant;
+        }>
+      >((k) => {
+        const key = k as SizeVariant;
+        const themeSize = sizes[key];
+        return [
+          {
+            props: {
+              size: key,
+            },
+            style: {
+              width: 32 * themeSize.fontSize,
+              height: 32 * themeSize.fontSize,
+            },
+            variants: [
+              {
+                props: {
+                  shape: 'round',
+                },
+                style: {
+                  borderRadius: themeSize.borderRadius,
+                },
+              },
+            ],
+          },
+        ];
+      }),
+    ],
   };
-
-  if (isImage) {
-    style.background = '0 0';
-  }
-
-  if (shapeType === 'circle') {
-    style.borderRadius = '50%';
-  } else if (shapeType === 'round') {
-    style.borderRadius = sizes[size].borderRadius;
-  }
-
-  const themeSize = sizes[size];
-  style.width = style.height = 32 * themeSize.fontSize;
-
-  return style;
 });
 
-const AvatarInner = styled('span', {
+const AvatarInner = memoStyled('span', {
   name: displayName,
   slot: 'Inner',
 })(() => {
@@ -99,9 +134,9 @@ const AvatarInner = styled('span', {
   };
 });
 
-const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
+const Avatar = forwardRef<AvatarInstance, AvatarProps>((props, ref) => {
   const { size: contextSize, shape: contextShape } = useContext(AvatarContext);
-  const { clsPrefix, sizeVariant } = useTheme();
+  const { sizeVariant } = useTheme();
 
   const {
     children,
@@ -111,22 +146,28 @@ const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
     src,
     srcSet,
     alt,
-    className,
     gap = 4,
     onError,
     style,
     ...others
   } = props;
 
-  const nodeRef = useRef<HTMLSpanElement>(null);
-  const forkRef = useForkRef(nodeRef, ref);
+  const rootRef = useRef<HTMLSpanElement>(null);
 
   const [scale, setScale] = useState(1);
 
   const [isImgExist, setImgExist] = useState(true);
 
+  useImperativeHandle(ref, () => {
+    return {
+      get nativeElement() {
+        return rootRef.current;
+      },
+    };
+  }, []);
+
   const handleResize = useConstantFn(() => {
-    const node = nodeRef.current;
+    const node = rootRef.current;
     const child = childRef.current;
     if (!node || !child) {
       return;
@@ -166,20 +207,9 @@ const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
 
   let childNode: ReactNode;
 
-  const rootClassName = `${clsPrefix}-avatar`;
-
   const hasImageElement = isValidElement(src);
 
-  const isImage = (src && isImgExist) || hasImageElement;
-
-  const rootClasses = clsx(
-    `${rootClassName}--shape-${shape}`,
-    {
-      [`${rootClassName}--size-${size}`]: typeof size === 'string' && size,
-      [`${rootClassName}--has-image`]: isImage,
-    },
-    className,
-  );
+  const hasImage = (src && isImgExist) || hasImageElement;
 
   if (typeof src === 'string' && src && isImgExist) {
     childNode = <img alt={alt} src={src} srcSet={srcSet} onError={handleImgError} />;
@@ -218,8 +248,7 @@ const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
   return (
     <AvatarRoot
       {...others}
-      className={rootClasses}
-      ref={forkRef}
+      ref={rootRef}
       style={{
         ...rootSizeStyle,
         ...style,
@@ -227,7 +256,7 @@ const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
       styleProps={{
         shape,
         size: rootSize,
-        isImage,
+        hasImage,
       }}
     >
       {childNode}

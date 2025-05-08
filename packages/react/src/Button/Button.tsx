@@ -1,7 +1,6 @@
 import { LoadingOutlined } from '@xl-vision/icons';
-import { keyframes, CSSObject } from '@xl-vision/styled-engine';
+import { css, keyframes } from '@xl-vision/styled-engine';
 import { isProduction } from '@xl-vision/utils';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
   ReactElement,
@@ -13,14 +12,16 @@ import {
   useCallback,
   useRef,
 } from 'react';
-import BaseButton, { BaseButtonProps } from '../BaseButton';
+import BaseButton, { BaseButtonInstance, BaseButtonProps } from '../BaseButton';
 import CollapseTransition from '../CollapseTransition';
-import { styled } from '../styles';
+import memoStyled, { StyleVariant } from '../memoStyled';
 import { SizeVariant, ThemeVariant, useTheme } from '../ThemeProvider';
 
 export type ButtonColor = ThemeVariant | 'default';
 
 export type ButtonVariant = 'contained' | 'outlined' | 'text';
+
+export type ButtonInstance = BaseButtonInstance;
 
 export type ButtonProps = BaseButtonProps & {
   color?: ButtonColor;
@@ -37,14 +38,14 @@ const displayName = 'Button';
 
 export type ButtonStyleProps = {
   color: ButtonColor;
-  enableElevation: boolean;
+  elevation: boolean;
   icon: boolean;
   size: SizeVariant;
   variant: ButtonVariant;
-  disabled?: boolean;
-  loading?: boolean;
-  long?: boolean;
-  round?: boolean;
+  disabled: boolean;
+  loading: boolean;
+  long: boolean;
+  round: boolean;
 };
 
 export type ButtonPrefixStyleProps = {
@@ -55,195 +56,319 @@ export type ButtonSuffixStyleProps = ButtonPrefixStyleProps;
 
 const iconSize = 1.4;
 
-const ButtonRoot = styled(BaseButton, {
+const ButtonRoot = memoStyled(BaseButton, {
   name: displayName,
   slot: 'Root',
-})<ButtonStyleProps>(({ theme, styleProps }) => {
+})<ButtonStyleProps>(({ theme }) => {
   const { colors, transitions, typography, elevations, sizes } = theme;
 
   const { info: buttonInfo, style: buttonStyle } = typography.button;
 
-  const {
-    color: colorStyle,
-    enableElevation,
-    disabled,
-    loading,
-    size,
-    variant,
-    long,
-    round,
-    icon,
-  } = styleProps;
-
-  const themeSize = sizes[size];
-
-  const baseFontSize = buttonInfo.size * themeSize.fontSize;
-
-  const styles: CSSObject = {
+  return {
     transition: transitions.standard('all'),
-    borderRadius: themeSize.borderRadius,
-    minWidth: icon ? '' : '64px',
     ...buttonStyle,
-    fontSize: typography.pxToRem(baseFontSize),
+    backgroundColor: 'transparent',
+    variants: [
+      {
+        props: {
+          icon: false,
+        },
+        style: {
+          minWidth: 64,
+        },
+      },
+      {
+        props: {
+          icon: true,
+        },
+        style: {
+          lineHeight: 0,
+        },
+      },
+      {
+        props: {
+          long: true,
+        },
+        style: {
+          width: '100%',
+        },
+      },
+      ...Object.keys(sizes).flatMap<StyleVariant<ButtonStyleProps>>((k) => {
+        const size = k as SizeVariant;
+        const themeSize = sizes[size];
+        const baseFontSize = buttonInfo.size * themeSize.fontSize;
+
+        const buttonHeight = themeSize.padding.y * 2 + buttonInfo.lineHeight * baseFontSize;
+
+        const iconHeight = baseFontSize * iconSize;
+
+        const padding = [themeSize.padding.y, themeSize.padding.x];
+        const iconPadding = [(buttonHeight - iconHeight) / 2];
+
+        return [
+          {
+            props: {
+              size,
+            },
+            style: {
+              borderRadius: themeSize.borderRadius,
+              fontSize: typography.pxToRem(baseFontSize),
+              padding: padding.map((it) => `${it}px`).join(' '),
+            },
+            variants: [
+              {
+                props: {
+                  round: true,
+                },
+                style: {
+                  borderRadius: themeSize.padding.y * 2 + buttonInfo.lineHeight * baseFontSize,
+                },
+              },
+              {
+                props: {
+                  icon: true,
+                },
+                style: {
+                  padding: iconPadding.map((it) => `${it}px`).join(' '),
+                },
+              },
+              {
+                props: {
+                  variant: 'outlined',
+                },
+                style: {
+                  border: `${themeSize.border}px solid transparent`,
+                },
+              },
+              {
+                props: [
+                  {
+                    variant: 'outlined',
+                  },
+                  {
+                    color: 'default',
+                  },
+                ],
+                style: {
+                  padding: padding
+                    .map((it) => it - themeSize.border)
+                    .map((it) => `${it}px`)
+                    .join(' '),
+                },
+              },
+            ],
+          },
+        ];
+      }),
+      {
+        props: {
+          round: true,
+          icon: true,
+        },
+        style: {
+          borderRadius: '50%',
+        },
+      },
+      {
+        props: [
+          {
+            disabled: true,
+          },
+          {
+            loading: true,
+          },
+        ],
+        style: {
+          opacity: colors.opacity.disabled,
+        },
+      },
+      {
+        props: {
+          variant: 'contained',
+          elevation: true,
+          disabled: false,
+          loading: false,
+        },
+
+        style: {
+          boxShadow: elevations[1],
+          '&:hover': {
+            boxShadow: elevations[2],
+          },
+          '&:focus': {
+            boxShadow: elevations[3],
+          },
+        },
+      },
+      ...Object.keys(colors.themes).flatMap<StyleVariant<ButtonStyleProps>>((k) => {
+        const colorKey = k as ThemeVariant;
+        const color = colors.themes[colorKey];
+        return [
+          {
+            props: {
+              color: colorKey,
+            },
+            style: {
+              color: color.foreground.default,
+            },
+            variants: [
+              {
+                props: {
+                  disabled: false,
+                  loading: false,
+                },
+
+                style: {
+                  '&:hover': {
+                    backgroundColor: color.background.hover,
+                  },
+                  '&:focus': {
+                    backgroundColor: color.background.focus,
+                  },
+                },
+              },
+              {
+                props: {
+                  variant: 'contained',
+                },
+                style: {
+                  color: color.text.primary,
+                  backgroundColor: color.foreground.default,
+                },
+                variants: [
+                  {
+                    props: {
+                      disabled: false,
+                      loading: false,
+                    },
+
+                    style: {
+                      '&:hover': {
+                        backgroundColor: color.foreground.hover,
+                      },
+                      '&:focus': {
+                        backgroundColor: color.foreground.focus,
+                      },
+                    },
+                  },
+                ],
+              },
+              {
+                props: {
+                  variant: 'outlined',
+                },
+                style: {
+                  borderColor: color.divider.default,
+                },
+                variants: [
+                  {
+                    props: {
+                      variant: 'outlined',
+                      loading: false,
+                      disabled: false,
+                    },
+                    style: {
+                      '&:hover': {
+                        borderColor: color.divider.hover,
+                      },
+                      '&:focus': {
+                        borderColor: color.divider.focus,
+                      },
+                    },
+                  },
+                ],
+              },
+            ],
+          },
+        ];
+      }),
+      {
+        props: {
+          color: 'default',
+        },
+        style: {
+          color: colors.text.primary,
+        },
+        variants: [
+          {
+            props: {
+              disabled: false,
+              loading: false,
+            },
+
+            style: {
+              '&:hover': {
+                backgroundColor: colors.background.hover,
+              },
+              '&:focus': {
+                backgroundColor: colors.background.focus,
+              },
+            },
+          },
+          {
+            props: {
+              variant: 'contained',
+            },
+            style: {
+              color: colors.inverseText.primary,
+              backgroundColor: colors.text.primary,
+            },
+            variants: [
+              {
+                props: {
+                  disabled: false,
+                  loading: false,
+                },
+
+                style: {
+                  '&:hover': {
+                    backgroundColor: colors.text.secondary,
+                  },
+                  '&:focus': {
+                    backgroundColor: colors.text.secondary,
+                  },
+                },
+              },
+            ],
+          },
+          {
+            props: {
+              variant: 'outlined',
+            },
+            style: {
+              borderColor: colors.divider.primary,
+            },
+            variants: [
+              {
+                props: {
+                  variant: 'outlined',
+                  loading: false,
+                  disabled: false,
+                },
+                style: {
+                  '&:hover': {
+                    borderColor: colors.divider.secondary,
+                  },
+                  '&:focus': {
+                    borderColor: colors.divider.secondary,
+                  },
+                },
+              },
+            ],
+          },
+        ],
+      },
+    ],
   };
-
-  if (icon) {
-    styles.lineHeight = 0;
-  }
-
-  const buttonHeight = themeSize.padding.y * 2 + buttonInfo.lineHeight * baseFontSize;
-
-  const iconHeight = baseFontSize * iconSize;
-
-  let padding = icon
-    ? [(buttonHeight - iconHeight) / 2]
-    : [themeSize.padding.y, themeSize.padding.x];
-
-  if (round) {
-    styles.borderRadius = icon
-      ? '50%'
-      : themeSize.padding.y * 2 + buttonInfo.lineHeight * baseFontSize;
-  }
-
-  if (long) {
-    styles.width = '100%';
-  }
-
-  if (variant === 'outlined' || colorStyle === 'default') {
-    // 保证高度一致
-    padding = padding.map((it) => it - themeSize.border);
-  }
-
-  const isContained = variant === 'contained';
-
-  styles.padding = padding.map((it) => `${it}px`).join(' ');
-
-  if (disabled || loading) {
-    styles.opacity = colors.opacity.disabled;
-  } else if (isContained) {
-    if (enableElevation) {
-      styles.boxShadow = elevations[1];
-    }
-    styles['&:hover'] = {
-      ...(enableElevation && {
-        boxShadow: elevations[2],
-      }),
-    };
-    styles['&:focus'] = {
-      ...(enableElevation && {
-        boxShadow: elevations[3],
-      }),
-    };
-  }
-
-  if (colorStyle === 'default') {
-    styles.color = colors.text.primary;
-
-    if (!loading && !disabled) {
-      styles['&:hover'] = {
-        ...(styles['&:hover'] as object),
-        color: colors.themes.primary.foreground.hover,
-      };
-
-      styles['&:focus'] = {
-        ...(styles['&:focus'] as object),
-        color: colors.themes.primary.foreground.focus,
-      };
-    }
-
-    if (isContained || variant === 'outlined') {
-      styles.border = `${themeSize.border}px solid ${colors.divider.primary}`;
-
-      if (!loading && !disabled) {
-        styles['&:hover'] = {
-          ...(styles['&:hover'] as object),
-          borderColor: colors.themes.primary.divider.hover,
-        };
-
-        styles['&:focus'] = {
-          ...(styles['&:focus'] as object),
-          borderColor: colors.themes.primary.divider.focus,
-        };
-      }
-    }
-
-    if (isContained || variant === 'text') {
-      styles['&:hover'] = {
-        ...(styles['&:hover'] as object),
-        backgroundColor: colors.themes.primary.background.hover,
-      };
-      styles['&:focus'] = {
-        ...(styles['&:focus'] as object),
-        backgroundColor: colors.themes.primary.background.focus,
-      };
-    }
-
-    if (isContained) {
-      styles.backgroundColor = colors.background.paper;
-    }
-
-    return styles;
-  }
-
-  if (isContained) {
-    styles.color = colors.themes[colorStyle].text.primary;
-    styles.backgroundColor = colors.themes[colorStyle].foreground.default;
-
-    if (!disabled && !loading) {
-      styles['&:hover'] = {
-        ...(styles['&:hover'] as object),
-        backgroundColor: colors.themes[colorStyle].foreground.hover,
-      };
-      styles['&:focus'] = {
-        ...(styles['&:focus'] as object),
-        backgroundColor: colors.themes[colorStyle].foreground.focus,
-      };
-    }
-
-    return styles;
-  }
-
-  styles.backgroundColor = 'transparent';
-
-  styles.color = colors.themes[colorStyle].foreground.default;
-
-  if (!disabled && !loading) {
-    styles['&:hover'] = {
-      ...(styles['&:hover'] as object),
-      backgroundColor: colors.themes[colorStyle].background.hover,
-    };
-    styles['&:focus'] = {
-      ...(styles['&:focus'] as object),
-      backgroundColor: colors.themes[colorStyle].background.focus,
-    };
-  }
-
-  if (variant === 'outlined') {
-    styles.border = `${themeSize.border}px solid ${colors.themes[colorStyle].divider.default}`;
-
-    if (!disabled && !loading) {
-      styles['&:hover'] = {
-        ...(styles['&:hover'] as object),
-        borderColor: colors.themes[colorStyle].divider.hover,
-      };
-      styles['&:focus'] = {
-        ...(styles['&:focus'] as object),
-        borderColor: colors.themes[colorStyle].divider.focus,
-      };
-    }
-  }
-
-  return styles;
 });
 
-const ButtonPrefix = styled('span', {
+const ButtonPrefix = memoStyled('span', {
   name: displayName,
   slot: 'Prefix',
-})<ButtonPrefixStyleProps>(({ theme, styleProps }) => {
+})<ButtonPrefixStyleProps>(({ theme }) => {
   const { transitions } = theme;
-  const { icon } = styleProps;
 
-  const styles: CSSObject = {
+  return {
     display: 'inline-block',
     transition: transitions.standard('width'),
     padding: 0,
@@ -254,28 +379,44 @@ const ButtonPrefix = styled('span', {
       lineHeight: 1,
       verticalAlign: 'middle',
     },
+    variants: [
+      {
+        props: {
+          icon: true,
+        },
+        style: {
+          marginLeft: '-2px',
+          marginRight: '2px',
+        },
+      },
+    ],
   };
-
-  if (!icon) {
-    styles.marginLeft = '-2px';
-    styles.marginRight = '2px';
-  }
-
-  return styles;
 });
 
-const ButtonSuffix = styled(ButtonPrefix, {
+const ButtonSuffix = memoStyled(ButtonPrefix, {
   name: displayName,
   slot: 'Suffix',
-})<ButtonPrefixStyleProps>(({ styleProps }) => {
-  const { icon } = styleProps;
+})<ButtonPrefixStyleProps>(() => {
+  return {
+    variants: [
+      {
+        props: {
+          icon: true,
+        },
+        style: {
+          marginLeft: '2px',
+          marginRight: '-2px',
+        },
+      },
+    ],
+  };
+});
 
-  if (!icon) {
-    return {
-      marginLeft: '2px',
-      marginRight: '-2px',
-    };
-  }
+const ButtonInner = memoStyled('span', {
+  name: displayName,
+  slot: 'Inner',
+})(() => {
+  return {};
 });
 
 const loadingKeyframes = keyframes`
@@ -289,14 +430,16 @@ const loadingKeyframes = keyframes`
 
 // This `styled()` function invokes keyframes. `styled-components` only supports keyframes
 // in string templates. Do not convert these styles in JS object as it will break.
-const DefaultLoadingIcon = styled(LoadingOutlined, {
+const DefaultLoadingIcon = memoStyled(LoadingOutlined, {
   name: displayName,
   slot: 'LoadingIcon',
-})`
-  animation: ${loadingKeyframes} 1s linear infinite;
-`;
+})(() => {
+  return css`
+    animation: ${loadingKeyframes} 1s linear infinite;
+  `;
+});
 
-const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((props, ref) => {
+const Button = forwardRef<ButtonInstance, ButtonProps>((props, ref) => {
   const { clsPrefix, sizeVariant } = useTheme();
 
   const {
@@ -311,7 +454,6 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((p
     variant = 'contained',
     long,
     round,
-    className,
     ...others
   } = props;
 
@@ -353,21 +495,6 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((p
 
   const rootClassName = `${clsPrefix}-button`;
 
-  const rootClasses = clsx(
-    `${rootClassName}--size-${size}`,
-    `${rootClassName}--color-${color}`,
-    `${rootClassName}--variant-${variant}`,
-    {
-      [`${rootClassName}--elevation`]: enableElevation && variant === 'contained',
-      [`${rootClassName}--disabled`]: disabled,
-      [`${rootClassName}--loading`]: loading,
-      [`${rootClassName}--long`]: long,
-      [`${rootClassName}--round`]: round,
-      [`${rootClassName}--icon`]: icon,
-    },
-    className,
-  );
-
   const prefixClassName = `${rootClassName}__prefix`;
 
   let prefix: ReactElement | undefined;
@@ -401,28 +528,23 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((p
     <ButtonRoot
       aria-label={defaultAriaLabel}
       {...others}
-      className={rootClasses}
       disabled={disabled}
       loading={loading}
       ref={ref}
       styleProps={{
         color,
-        enableElevation,
+        elevation: enableElevation,
         size,
-        disabled,
-        loading,
+        disabled: !!disabled,
+        loading: !!loading,
         variant,
-        long,
-        round,
+        long: !!long,
+        round: !!round,
         icon,
       }}
     >
       {prefix}
-      {children && (
-        <span className={`${rootClassName}__inner`} ref={childRef}>
-          {children}
-        </span>
-      )}
+      {children && <ButtonInner ref={childRef}>{children}</ButtonInner>}
       {suffix}
     </ButtonRoot>
   );

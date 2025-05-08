@@ -1,5 +1,4 @@
-import { LifecycleState, useConstantFn, useForkRef, useLifecycleState } from '@xl-vision/hooks';
-import { CSSObject } from '@xl-vision/styled-engine';
+import { LifecycleState, useConstantFn, useLifecycleState } from '@xl-vision/hooks';
 import {
   getBoundingClientRect,
   getDocumentElement,
@@ -9,7 +8,6 @@ import {
   off,
   on,
 } from '@xl-vision/utils';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
   HTMLAttributes,
@@ -19,12 +17,13 @@ import {
   useEffect,
   useMemo,
   useCallback,
-  LegacyRef,
+  useImperativeHandle,
 } from 'react';
 import AnchorContext from './AnchorContext';
 import Affix from '../Affix';
-import { styled } from '../styles';
+import memoStyled from '../memoStyled';
 import { useTheme } from '../ThemeProvider';
+import { RefInstance } from '../types';
 import { throttleByAnimationFrame } from '../utils/perf';
 import { getScroll, scrollTo } from '../utils/scroll';
 
@@ -42,28 +41,35 @@ export type AnchorProps = Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> & {
   type?: AnchorType;
 };
 
+export type AnchorInstance = RefInstance<
+  HTMLDivElement,
+  {
+    scrollTo: (link: string) => void;
+  }
+>;
+
 const displayName = 'Anchor';
 
-const AnchorRoot = styled('div', {
+const AnchorRoot = memoStyled('div', {
   name: displayName,
   slot: 'Root',
-})<{ type: AnchorType }>(({ theme, styleProps }) => {
-  const { type } = styleProps;
-
-  const { colors } = theme;
-
-  const style: CSSObject = {
+})<{ type: AnchorType }>(({ theme: { colors } }) => {
+  return {
     position: 'relative',
+    variants: [
+      {
+        props: {
+          type: 'rail',
+        },
+        style: {
+          borderLeft: `2px solid ${colors.divider.primary}`,
+        },
+      },
+    ],
   };
-
-  if (type === 'rail') {
-    style.borderLeft = `2px solid ${colors.divider.primary}`;
-  }
-
-  return style;
 });
 
-const AnchorInk = styled('div', {
+const AnchorInk = memoStyled('div', {
   name: displayName,
   slot: 'Ink',
 })(({ theme }) => {
@@ -86,10 +92,6 @@ const HREF_MATCHER_REGX = /#([\S ]+)$/;
 
 const getDefaultTarget = () => window;
 
-export type AnchorInstance = Omit<HTMLDivElement, 'scrollTo'> & {
-  scrollTo: (link: string) => void;
-};
-
 const Anchor = forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
   const { clsPrefix } = useTheme();
 
@@ -102,7 +104,6 @@ const Anchor = forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
     onChange,
     bounds = 5,
     targetOffset = 0,
-    className,
     type = 'rail',
     children,
     ...others
@@ -112,9 +113,7 @@ const Anchor = forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
   const affixTarget = affixTargetProp || scrollTargetProp || getDefaultTarget;
   const scrollTarget = scrollTargetProp || affixTarget;
 
-  const rootRef = useRef<AnchorInstance>(null);
-
-  const forkRef = useForkRef(ref, rootRef);
+  const rootRef = useRef<HTMLDivElement>(null);
 
   const [currentScrollTarget, setCurrentScrollTarget] = useState<Window | HTMLElement>();
 
@@ -229,6 +228,15 @@ const Anchor = forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
     });
   });
 
+  useImperativeHandle(ref, () => {
+    return {
+      scrollTo: handleScrollTo,
+      get nativeElement() {
+        return rootRef.current;
+      },
+    };
+  }, [handleScrollTo]);
+
   const updateInkNode = useConstantFn(() => {
     const rootNode = rootRef.current;
 
@@ -291,19 +299,10 @@ const Anchor = forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
     };
   }, [activeLink, handleScrollTo, registerLink, unregisterLink]);
 
-  const rootClassName = `${clsPrefix}-anchor`;
-
-  const rootClasses = clsx(`${rootClassName}--${type}`, className);
-
   const inkNode = type === 'rail' && activeLink ? <AnchorInk ref={inkNodeRef} /> : null;
 
   const content = (
-    <AnchorRoot
-      {...others}
-      className={rootClasses}
-      ref={forkRef as LegacyRef<HTMLDivElement>}
-      styleProps={{ type }}
-    >
+    <AnchorRoot {...others} ref={rootRef} styleProps={{ type }}>
       {inkNode}
       {children}
     </AnchorRoot>

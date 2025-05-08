@@ -50,7 +50,7 @@ const useAutoUpdatePopper = (options: AutoUpdatePopperOptions) => {
     };
   }, [handleAutoUpdate]);
 
-  const setReference: RefCallback<Reference> = useCallback(
+  const setReference: RefCallback<Reference | null> = useCallback(
     (el) => {
       referenceRef.current = el;
       handleAutoUpdate();
@@ -59,7 +59,7 @@ const useAutoUpdatePopper = (options: AutoUpdatePopperOptions) => {
     [handleAutoUpdate, reference],
   );
 
-  const setPopper: RefCallback<Element> = useCallback(
+  const setPopper: RefCallback<Element | null> = useCallback(
     (el) => {
       popperRef.current = el;
       handleAutoUpdate();

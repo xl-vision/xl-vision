@@ -2,8 +2,8 @@ import { NoticationContainerProps } from '@xl-vision/hooks';
 import { isProduction, isServer } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { Children, FC } from 'react';
+import memoStyled from '../memoStyled';
 import Portal, { PortalContainerType } from '../Portal';
-import { styled } from '../styles';
 
 export type MessageContainerProps = NoticationContainerProps & {
   top?: number;
@@ -13,7 +13,7 @@ export type MessageContainerProps = NoticationContainerProps & {
 
 const displayName = 'MessageContainer';
 
-const MessageContainerRoot = styled('div', {
+const MessageContainerRoot = memoStyled('div', {
   name: displayName,
   slot: 'Root',
 })(() => {

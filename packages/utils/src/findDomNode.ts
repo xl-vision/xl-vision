@@ -1,11 +1,10 @@
-/* eslint-disable unicorn/filename-case */
 import { ReactInstance } from 'react';
 import ReactDOM from 'react-dom';
 import { isElement } from './dom';
 import { isReact19 } from './reactVersion';
 import warning from './warning';
 
-const findDOMNode = <T = Element | Text>(
+const findDomNode = <T = Element | Text>(
   node: ReactInstance | Element | null | undefined,
 ): T | null => {
   if (!node || isElement(node)) {
@@ -22,4 +21,4 @@ const findDOMNode = <T = Element | Text>(
   return null;
 };
 
-export default findDOMNode;
+export default findDomNode;

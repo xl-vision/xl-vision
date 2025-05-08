@@ -1,7 +1,7 @@
 'use client';
 
-import { Button, Portal, styled } from '@xl-vision/react';
-import { useState } from 'react';
+import { Button, ButtonInstance, Portal, styled } from '@xl-vision/react';
+import { RefCallback, useCallback, useState } from 'react';
 import { useAutoUpdatePopper } from '@xl-vision/usePopper';
 
 const DemoRoot = styled('div')(({ theme }) => {
@@ -45,6 +45,13 @@ const Demo = () => {
     animationFrame: false,
   });
 
+  const referenceRef = useCallback<RefCallback<ButtonInstance>>(
+    (instance) => {
+      reference(instance?.nativeElement || null);
+    },
+    [reference],
+  );
+
   const style = {
     position: mode,
     top: 0,
@@ -62,7 +69,7 @@ const Demo = () => {
         {enable ? '禁用' : '启用'}
       </Button>
       <DemoRoot>
-        <Button className='reference' color='primary' ref={reference}>
+        <Button className='reference' color='primary' ref={referenceRef}>
           reference
         </Button>
         <Portal container={container}>

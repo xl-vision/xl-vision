@@ -1,4 +1,4 @@
-import { useForkRef, useValueChange } from '@xl-vision/hooks';
+import { useValueChange } from '@xl-vision/hooks';
 import {
   contains,
   getBoundingClientRect,
@@ -20,11 +20,13 @@ import {
   useEffect,
   KeyboardEvent,
   MouseEvent as ReactMouseEvent,
+  useImperativeHandle,
 } from 'react';
+import memoStyled from '../memoStyled';
 import Portal, { PortalContainerType } from '../Portal';
-import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 import Transition from '../Transition';
+import { RefInstance } from '../types';
 import { forceReflow } from '../utils/dom';
 import getContainer from '../utils/getContainer';
 import ScrollLocker from '../utils/ScrollLocker';
@@ -45,9 +47,11 @@ export interface ModalProps extends HTMLAttributes<HTMLDivElement> {
   wrapperClassName?: string;
 }
 
+export type ModalInstance = RefInstance<HTMLDivElement>;
+
 const displayName = 'Modal';
 
-const ModalRoot = styled('div', {
+const ModalRoot = memoStyled('div', {
   name: displayName,
   slot: 'Root',
 })(() => {
@@ -64,7 +68,7 @@ const ModalRoot = styled('div', {
   };
 });
 
-const ModalMask = styled('div', {
+const ModalMask = memoStyled('div', {
   name: displayName,
   slot: 'Mask',
 })(({ theme }) => {
@@ -94,7 +98,7 @@ const ModalMask = styled('div', {
   };
 });
 
-const ModalBody = styled('div', {
+const ModalBody = memoStyled('div', {
   name: displayName,
   slot: 'Body',
 })(({ theme }) => {
@@ -153,7 +157,7 @@ let modalManagers: Array<HTMLElement> = [];
 
 const defaultGetContainer = () => document.body;
 
-const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
+const Modal = forwardRef<ModalInstance, ModalProps>((props, ref) => {
   const {
     container: containerProp = defaultGetContainer,
     children,
@@ -181,15 +185,21 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   const bodyRef = useRef<HTMLDivElement>(null);
   const isFirstMountRef = useRef(true);
 
-  const modalRef = useRef<HTMLDivElement>(null);
-
-  const forkRef = useForkRef(modalRef, ref);
+  const rootRef = useRef<HTMLDivElement>(null);
 
   const innerFocusRef = useRef(false);
 
   const scrollLockerRef = useRef<ScrollLocker>(null);
 
   const [container, setContainer] = useState<HTMLElement | null>();
+
+  useImperativeHandle(ref, () => {
+    return {
+      get nativeElement() {
+        return rootRef.current;
+      },
+    };
+  }, []);
 
   const isTop = useCallback(() => {
     return modalManagers[modalManagers.length - 1] === bodyRef.current;
@@ -202,8 +212,8 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   useEffect(() => {
     let node: HTMLElement | null | undefined = getContainer(containerProp);
 
-    if (node == null && modalRef.current) {
-      node = modalRef.current.parentElement;
+    if (node == null && rootRef.current) {
+      node = rootRef.current.parentElement;
       warning(!node, `<Modal> parentElement is undefined`);
     }
 
@@ -212,7 +222,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
   useEffect(() => {
     const body = bodyRef.current;
-    const modalNode = modalRef.current;
+    const modalNode = rootRef.current;
 
     if (!inProp || !body || !modalNode) {
       return;
@@ -368,7 +378,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
       <ModalRoot
         aria-hidden={!open}
         className={wrapperClassName}
-        ref={forkRef}
+        ref={rootRef}
         style={{ zIndex, display: hidden ? 'none' : '' }}
         onClick={handleClick}
         onFocus={handleInnerFocus}

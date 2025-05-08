@@ -25,7 +25,6 @@ import {
   PopperMode,
 } from '@xl-vision/usePopper';
 import { isProduction, isServer } from '@xl-vision/utils';
-import clsx from 'clsx';
 import PropTypes, { Validator } from 'prop-types';
 import {
   MouseEventHandler,
@@ -42,10 +41,14 @@ import {
   CSSProperties,
   useRef,
   ReactNode,
+  useImperativeHandle,
 } from 'react';
+import useNativeElementRef from '../hooks/useNativeElementRef';
+import memoStyled from '../memoStyled';
 import Portal, { PortalContainerType } from '../Portal';
 import { useTheme } from '../ThemeProvider';
 import Transition from '../Transition';
+import { RefInstance } from '../types';
 import { getNodeRef } from '../utils/ref';
 import { increaseZindex } from '../utils/zIndexManger';
 
@@ -90,11 +93,20 @@ export type PopperProps = HTMLAttributes<HTMLDivElement> & {
   unmountOnHide?: boolean;
 };
 
+export type PopperInstance = RefInstance<HTMLDivElement>;
+
 const displayName = 'Popper';
+
+const PopperRoot = memoStyled('div', {
+  name: displayName,
+  slot: 'Root',
+})(() => {
+  return {};
+});
 
 const defaultGetPopupContainer = () => document.body;
 
-const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
+const Popper = forwardRef<PopperInstance, PopperProps>((props, ref) => {
   const {
     children,
     popup,
@@ -109,7 +121,6 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     contextMenuOptions,
     open: openProp,
     onOpenChange,
-    className,
     arrow: arrowProp,
     defaultOpen = false,
     shiftOptions,
@@ -208,9 +219,19 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     }),
   );
 
-  const forkPopperRef = useForkRef(ref, getPopper);
+  const rootRef = useRef<HTMLDivElement>(null);
 
-  const forkReferenceRef = useForkRef(getNodeRef(child), reference);
+  const forkPopperRef = useForkRef(rootRef, getPopper);
+
+  const forkReferenceRef = useForkRef(getNodeRef(child), useNativeElementRef(reference));
+
+  useImperativeHandle(ref, () => {
+    return {
+      get nativeElement() {
+        return rootRef.current;
+      },
+    };
+  }, []);
 
   useEffect(() => {
     if (open) {
@@ -259,8 +280,6 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
 
   const innerClassName = `${rootClassName}__inner`;
 
-  const rootClasses = clsx(rootClassName, className);
-
   const popperStyle: CSSProperties = {
     position: mode,
     left: 0,
@@ -278,11 +297,10 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
 
   const portal = (
     <Portal container={popupContainer}>
-      <div
+      <PopperRoot
         aria-hidden={!show}
         {...others}
         {...getPopperProps({ style: popperStyle })}
-        className={rootClasses}
         ref={forkPopperRef}
       >
         <Transition
@@ -309,7 +327,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
             </div>
           )}
         </Transition>
-      </div>
+      </PopperRoot>
     </Portal>
   );
 

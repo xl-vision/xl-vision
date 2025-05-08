@@ -9,12 +9,15 @@ import {
   Children,
   cloneElement,
   useMemo,
+  useRef,
+  useImperativeHandle,
 } from 'react';
 import Avatar, { AvatarProps, AvatarShape, AvatarSize } from './Avatar';
 import AvatarContext, { AvatarContextProps } from './AvatarContext';
+import memoStyled from '../memoStyled';
 import Popover from '../Popover';
-import { styled } from '../styles';
 import { SizeVariant, useTheme } from '../ThemeProvider';
+import { RefInstance } from '../types';
 
 export type AvatarGroupPopupPlacement = 'none' | 'top' | 'bottom';
 
@@ -27,26 +30,44 @@ export type AvatarGroupProps = HTMLAttributes<HTMLDivElement> & {
   size?: AvatarSize;
 };
 
+export type AvatarGroupInstance = RefInstance<HTMLDivElement>;
+
 const displayName = 'AvatarGroup';
 
-const AvatarGroupRoot = styled('div', {
+const AvatarGroupRoot = memoStyled('div', {
   name: displayName,
   slot: 'Root',
-})<{ size: SizeVariant }>(({ styleProps, theme }) => {
-  const { size } = styleProps;
+})<{ size: SizeVariant }>(({ theme }) => {
   const { colors, sizes, clsPrefix } = theme;
 
+  const avatarClassName = `${clsPrefix}-avatar`;
+
   return {
-    [`.${clsPrefix}-avatar`]: {
-      border: `${sizes[size].border}px solid ${colors.background.paper}`,
+    [`.${avatarClassName}`]: {
+      borderColor: colors.background.paper,
+      borderStyle: 'solid',
       '&:not(:first-child)': {
         marginLeft: -8,
       },
     },
+    variants: Object.keys(sizes).map((k) => {
+      const key = k as SizeVariant;
+      const value = sizes[key];
+      return {
+        props: {
+          size: key,
+        },
+        style: {
+          [`.${avatarClassName}`]: {
+            borderWidth: value.border,
+          },
+        },
+      };
+    }),
   };
 });
 
-const AvatarPopup = styled(Popover, {
+const AvatarPopup = memoStyled(Popover, {
   name: displayName,
   slot: 'Popup',
 })(({ theme: { clsPrefix } }) => {
@@ -59,7 +80,7 @@ const AvatarPopup = styled(Popover, {
   };
 });
 
-const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>((props, ref) => {
+const AvatarGroup = forwardRef<AvatarGroupInstance, AvatarGroupProps>((props, ref) => {
   const { clsPrefix, sizeVariant } = useTheme();
 
   const {
@@ -72,6 +93,16 @@ const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>((props, ref) =>
     maxStyle,
     ...others
   } = props;
+
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useImperativeHandle(ref, () => {
+    return {
+      get nativeElement() {
+        return rootRef.current;
+      },
+    };
+  }, []);
 
   const childArray = Children.map<ReactElement<AvatarProps>, ReactElement<AvatarProps>>(
     children,
@@ -129,7 +160,7 @@ const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>((props, ref) =>
       <AvatarGroupRoot
         {...others}
         className={rootClasses}
-        ref={ref}
+        ref={rootRef}
         styleProps={{ size: rootSize }}
       >
         {showedChildren}

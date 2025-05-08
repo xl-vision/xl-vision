@@ -1,12 +1,10 @@
 import {
   LifecycleState,
   useConstantFn,
-  useForkRef,
   useIsomorphicLayoutEffect,
   useLifecycleState,
 } from '@xl-vision/hooks';
 import { getBoundingClientRect, isProduction, isServer } from '@xl-vision/utils';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
   HTMLAttributes,
@@ -16,6 +14,7 @@ import {
   useRef,
   useMemo,
   useEffect,
+  useImperativeHandle,
 } from 'react';
 import {
   addTargetObserver,
@@ -24,9 +23,9 @@ import {
   getFixedTop,
   getTargetRect,
 } from './utils';
+import memoStyled from '../memoStyled';
 import ResizeObserver from '../ResizeObserver';
-import { styled } from '../styles';
-import { useTheme } from '../ThemeProvider';
+import { RefInstance } from '../types';
 import { throttleByAnimationFrame } from '../utils/perf';
 
 export type AffixProps = Omit<HTMLAttributes<HTMLDivElement>, 'target' | 'onChange'> & {
@@ -36,17 +35,29 @@ export type AffixProps = Omit<HTMLAttributes<HTMLDivElement>, 'target' | 'onChan
   onChange?: (affixed: boolean) => void;
 };
 
+export type AffixIntance = RefInstance<HTMLDivElement>;
+
 const displayName = 'Affix';
 
-const AffixRoot = styled('div', {
+const AffixRoot = memoStyled('div', {
   name: displayName,
   slot: 'Root',
-})(({ theme: { clsPrefix } }) => {
-  return {
-    [`.${clsPrefix}-affix__inner`]: {
-      zIndex: 1,
-    },
-  };
+})<{ fixed: boolean }>(() => {
+  return {};
+});
+
+const AffixInner = memoStyled('div', {
+  name: displayName,
+  slot: 'Inner',
+})(() => {
+  return {};
+});
+
+const AffixPlaceholder = memoStyled('div', {
+  name: displayName,
+  slot: 'Placeholder',
+})(() => {
+  return {};
 });
 
 const getDefaultTarget = () => {
@@ -58,20 +69,12 @@ enum AffixStatus {
   NONE,
 }
 
-export type AffixIntance = HTMLDivElement & {
-  handleEventEmit: () => void;
-  handleSizeChange: () => void;
-};
-
 const Affix = forwardRef<AffixIntance, AffixProps>((props, ref) => {
-  const { clsPrefix } = useTheme();
-
   const {
     target = getDefaultTarget,
     onChange,
     offsetBottom,
     offsetTop,
-    className,
     children,
     ...others
   } = props;
@@ -79,9 +82,7 @@ const Affix = forwardRef<AffixIntance, AffixProps>((props, ref) => {
   const [affixStyle, setAffixStyle] = useState<CSSProperties>();
   const [placeholderStyle, setPlaceholderStyle] = useState<CSSProperties>();
 
-  const rootRef = useRef<AffixIntance>(null);
-
-  const forkRef = useForkRef(ref, rootRef);
+  const rootRef = useRef<HTMLDivElement>(null);
 
   const [currentTarget, setCurrentTarget] = useState<Window | HTMLElement>();
 
@@ -90,6 +91,14 @@ const Affix = forwardRef<AffixIntance, AffixProps>((props, ref) => {
   const [status, setStatus] = useState(AffixStatus.NONE);
 
   const lifecycleStateRef = useLifecycleState();
+
+  useImperativeHandle(ref, () => {
+    return {
+      get nativeElement() {
+        return rootRef.current;
+      },
+    };
+  }, []);
 
   const measure = useConstantFn(() => {
     const affixNode = rootRef.current;
@@ -159,15 +168,6 @@ const Affix = forwardRef<AffixIntance, AffixProps>((props, ref) => {
   }, [lifecycleStateRef]);
 
   useEffect(() => {
-    const node = rootRef.current;
-    if (!node) {
-      return;
-    }
-    node.handleEventEmit = handleEventEmit;
-    node.handleSizeChange = handleSizeChange;
-  }, [handleEventEmit, handleSizeChange]);
-
-  useEffect(() => {
     return () => {
       handleSizeChange.cancel?.();
     };
@@ -203,28 +203,13 @@ const Affix = forwardRef<AffixIntance, AffixProps>((props, ref) => {
     };
   }, [currentTarget, handleEventEmit]);
 
-  const rootClassName = `${clsPrefix}-affix`;
-
-  const classes = clsx(
-    {
-      [`${rootClassName}--fixed`]: !!affixStyle,
-    },
-    className,
-  );
-
   return (
     <ResizeObserver onResizeObserver={handleSizeChange}>
-      <AffixRoot {...others} className={classes} ref={forkRef}>
-        {placeholderStyle && (
-          <div
-            aria-hidden={true}
-            className={`${rootClassName}__placeholder`}
-            style={placeholderStyle}
-          />
-        )}
-        <div className={`${rootClassName}__inner`} style={affixStyle}>
+      <AffixRoot {...others} ref={rootRef} styleProps={{ fixed: !!affixStyle }}>
+        {placeholderStyle && <AffixPlaceholder aria-hidden={true} style={placeholderStyle} />}
+        <AffixInner style={affixStyle}>
           <ResizeObserver onResizeObserver={handleSizeChange}>{children}</ResizeObserver>
-        </div>
+        </AffixInner>
       </AffixRoot>
     </ResizeObserver>
   );

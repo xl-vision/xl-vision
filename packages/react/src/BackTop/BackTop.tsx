@@ -2,11 +2,21 @@ import { useConstantFn, useValueChange } from '@xl-vision/hooks';
 import { VerticalAlignTopOutlined } from '@xl-vision/icons';
 import { isProduction, isServer, off, on } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
-import { HTMLAttributes, forwardRef, useState, useEffect, CSSProperties, MouseEvent } from 'react';
+import {
+  HTMLAttributes,
+  forwardRef,
+  useState,
+  useEffect,
+  CSSProperties,
+  MouseEvent,
+  useRef,
+  useImperativeHandle,
+} from 'react';
+import memoStyled from '../memoStyled';
 import Portal from '../Portal';
-import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 import Transition from '../Transition';
+import { RefInstance } from '../types';
 import { throttleByAnimationFrame } from '../utils/perf';
 import { getScroll, scrollTo } from '../utils/scroll';
 
@@ -20,13 +30,15 @@ export type BackTopProps = Omit<HTMLAttributes<HTMLDivElement>, 'target' | 'onCh
   visibilityHeight?: number;
 };
 
+export type BackTopInstance = RefInstance<HTMLDivElement>;
+
 const displayName = 'BackTop';
 
-const BackTopRoot = styled('div', {
+const BackTopRoot = memoStyled('div', {
   name: displayName,
   slot: 'Root',
 })(({ theme }) => {
-  const { colors, transitions, clsPrefix, elevations } = theme;
+  const { transitions, clsPrefix } = theme;
 
   const rootClassName = `${clsPrefix}-back-top`;
 
@@ -35,22 +47,28 @@ const BackTopRoot = styled('div', {
     zIndex: 10,
     ...transitions.fadeIn(`&.${rootClassName}`),
     ...transitions.fadeOut(`&.${rootClassName}`),
-    [`.${rootClassName}__inner`]: {
-      fontSize: 24,
-      backgroundColor: colors.text.hint,
-      color: colors.background.paper,
-      width: 40,
-      height: 40,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      borderRadius: '50%',
-      cursor: 'pointer',
-      transition: transitions.standard('backgroundColor'),
-      boxShadow: elevations[3],
-      '&:hover': {
-        backgroundColor: colors.text.secondary,
-      },
+  };
+});
+
+const BackTopInner = memoStyled('div', {
+  name: displayName,
+  slot: 'Inner',
+})(({ theme: { colors, transitions, elevations } }) => {
+  return {
+    fontSize: 24,
+    backgroundColor: colors.text.hint,
+    color: colors.background.paper,
+    width: 40,
+    height: 40,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: '50%',
+    cursor: 'pointer',
+    transition: transitions.standard('backgroundColor'),
+    boxShadow: elevations[3],
+    '&:hover': {
+      backgroundColor: colors.text.secondary,
     },
   };
 });
@@ -58,7 +76,7 @@ const BackTopRoot = styled('div', {
 const getDefaultTarget = () => window;
 const getDefaultContainer = () => document.body;
 
-const BackTop = forwardRef<HTMLDivElement, BackTopProps>((props, ref) => {
+const BackTop = forwardRef<BackTopInstance, BackTopProps>((props, ref) => {
   const { clsPrefix } = useTheme();
 
   const {
@@ -78,6 +96,16 @@ const BackTop = forwardRef<HTMLDivElement, BackTopProps>((props, ref) => {
   const [show, setShow] = useValueChange(false, showProp, onChange);
 
   const [currentTarget, setCurrentTarget] = useState<Window | HTMLElement>();
+
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useImperativeHandle(ref, () => {
+    return {
+      get nativeElement() {
+        return rootRef.current;
+      },
+    };
+  }, []);
 
   useEffect(() => {
     const nextTarget = typeof target === 'function' ? target() : target;
@@ -119,9 +147,9 @@ const BackTop = forwardRef<HTMLDivElement, BackTopProps>((props, ref) => {
   const rootClassName = `${clsPrefix}-back-top`;
 
   const defaultElement = (
-    <div className={`${rootClassName}__inner`}>
+    <BackTopInner>
       <VerticalAlignTopOutlined />
-    </div>
+    </BackTopInner>
   );
 
   const fixedStyle: CSSProperties = {
@@ -136,7 +164,12 @@ const BackTop = forwardRef<HTMLDivElement, BackTopProps>((props, ref) => {
       transitionClassName={rootClassName}
       unmountOnExit={true}
     >
-      <BackTopRoot {...others} ref={ref} style={{ ...style, ...fixedStyle }} onClick={handleClick}>
+      <BackTopRoot
+        {...others}
+        ref={rootRef}
+        style={{ ...style, ...fixedStyle }}
+        onClick={handleClick}
+      >
         {children || defaultElement}
       </BackTopRoot>
     </Transition>

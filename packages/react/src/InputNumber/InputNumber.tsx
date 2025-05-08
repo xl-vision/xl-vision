@@ -1,7 +1,6 @@
 import { useConstantFn, useForkRef, useValueChange } from '@xl-vision/hooks';
 import { CaretDownOutlined, CaretUpOutlined } from '@xl-vision/icons';
 import { BigIntDecimal, isProduction, omit } from '@xl-vision/utils';
-import clsx from 'clsx';
 import {
   forwardRef,
   useState,
@@ -13,8 +12,8 @@ import {
   CompositionEvent,
   useMemo,
 } from 'react';
-import { Input, InputProps } from '../Input';
-import { styled } from '../styles';
+import { Input, InputInstance, InputProps } from '../Input';
+import memoStyled from '../memoStyled';
 import { useTheme } from '../ThemeProvider';
 
 export type InputNumberValueType = number | string | null;
@@ -45,9 +44,11 @@ export type InputNumberProps = Omit<
   wheel?: boolean;
 };
 
+export type InputNumberInstance = InputInstance;
+
 const displayName = 'InputNumber';
 
-const InputNumberRoot = styled(Input, {
+const InputNumberRoot = memoStyled(Input, {
   name: displayName,
   slot: 'Root',
 })(({ theme: { clsPrefix, size: themeSize, transitions } }) => {
@@ -68,7 +69,7 @@ const InputNumberRoot = styled(Input, {
   };
 });
 
-const InputNumberControls = styled('span', {
+const InputNumberControls = memoStyled('span', {
   name: displayName,
   slot: 'Controls',
 })(({ theme: { size: themeSize, colors } }) => {
@@ -80,10 +81,10 @@ const InputNumberControls = styled('span', {
   };
 });
 
-const InputNumberControlUp = styled('span', {
+const InputNumberControlUp = memoStyled('span', {
   name: displayName,
   slot: 'ControlUp',
-})(({ theme: { transitions, clsPrefix, colors } }) => {
+})<{ disabled: boolean }>(({ theme: { transitions, colors } }) => {
   return {
     display: 'flex',
     alignItems: 'center',
@@ -97,18 +98,24 @@ const InputNumberControlUp = styled('span', {
     '&:hover': {
       height: '60%',
     },
-
-    [`&.${clsPrefix}-input-number__control--disabled`]: {
-      cursor: 'not-allowed',
-      opacity: colors.opacity.disabled,
-      '&:hover': {
-        height: '40%',
+    variants: [
+      {
+        props: {
+          disabled: true,
+        },
+        style: {
+          cursor: 'not-allowed',
+          opacity: colors.opacity.disabled,
+          '&:hover': {
+            height: '40%',
+          },
+        },
       },
-    },
+    ],
   };
 });
 
-const InputNumberControlDown = styled(InputNumberControlUp, {
+const InputNumberControlDown = memoStyled(InputNumberControlUp, {
   name: displayName,
   slot: 'ControlDown',
 })(({ theme: { size: themeSize, colors } }) => {
@@ -119,7 +126,7 @@ const InputNumberControlDown = styled(InputNumberControlUp, {
 
 const NUMBER_REGEX = /^-?(([1-9]\d+)|\d)(\.\d+)?$/;
 
-const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) => {
+const InputNumber = forwardRef<InputNumberInstance, InputNumberProps>((props, ref) => {
   const {
     onChange,
     value: valueProp,
@@ -152,7 +159,7 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
 
   const { clsPrefix } = useTheme();
 
-  const innerRef = useRef<HTMLSpanElement>(null);
+  const innerRef = useRef<InputNumberInstance>(null);
 
   const forkRef = useForkRef(ref, innerRef);
 
@@ -410,7 +417,7 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
       return;
     }
 
-    const wrappEl = innerRef.current;
+    const wrappEl = innerRef.current?.nativeElement;
 
     if (!wrappEl) {
       return;
@@ -480,24 +487,12 @@ const InputNumber = forwardRef<HTMLSpanElement, InputNumberProps>((props, ref) =
     return +value <= +min;
   }, [min, value, highPrecisionMode]);
 
-  const rootClassName = `${clsPrefix}-input-number`;
-
   const suffixNode = !readOnly && !disabled && controls && (
     <InputNumberControls>
-      <InputNumberControlUp
-        className={clsx({
-          [`${rootClassName}__control--disabled`]: isArrowUpDisabled,
-        })}
-        onClick={handleUp}
-      >
+      <InputNumberControlUp styleProps={{ disabled: isArrowUpDisabled }} onClick={handleUp}>
         {upIcon}
       </InputNumberControlUp>
-      <InputNumberControlDown
-        className={clsx({
-          [`${rootClassName}__control--disabled`]: isArrowDownDisabled,
-        })}
-        onClick={handleDown}
-      >
+      <InputNumberControlDown styleProps={{ disabled: isArrowDownDisabled }} onClick={handleDown}>
         {downIcon}
       </InputNumberControlDown>
     </InputNumberControls>
