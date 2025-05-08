@@ -1,8 +1,8 @@
 import { isProduction, isServer } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { ReactNode, forwardRef } from 'react';
+import memoStyled from '../memoStyled';
 import Popper, { PopperInstance, PopperProps, PopperTrigger } from '../Popper';
-import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 
 export type PopoverProps = Omit<PopperProps, 'popup' | 'arrow' | 'title' | 'content'> & {
@@ -15,7 +15,7 @@ export type PopoverInstance = PopperInstance;
 
 const displayName = 'Popover';
 
-const PopoverRoot = styled(Popper, {
+const PopoverRoot = memoStyled(Popper, {
   name: displayName,
   slot: 'Root',
 })(({ theme }) => {
@@ -29,7 +29,7 @@ const PopoverRoot = styled(Popper, {
   };
 });
 
-const PopoverArrow = styled('div', {
+const PopoverArrow = memoStyled('div', {
   name: displayName,
   slot: 'Arrow',
 })(({ theme }) => {
@@ -43,7 +43,7 @@ const PopoverArrow = styled('div', {
   };
 });
 
-const PopoverPopup = styled('div', {
+const PopoverPopup = memoStyled('div', {
   name: displayName,
   slot: 'Popup',
 })(({ theme }) => {
@@ -58,7 +58,7 @@ const PopoverPopup = styled('div', {
   };
 });
 
-const PopoverTitle = styled('div', {
+const PopoverTitle = memoStyled('div', {
   name: displayName,
   slot: 'Title',
 })(({ theme }) => {
@@ -70,7 +70,7 @@ const PopoverTitle = styled('div', {
   };
 });
 
-const PopoverContent = styled('div', {
+const PopoverContent = memoStyled('div', {
   name: displayName,
   slot: 'Content',
 })(({ theme }) => {

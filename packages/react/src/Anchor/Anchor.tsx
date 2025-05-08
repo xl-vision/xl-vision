@@ -1,5 +1,4 @@
 import { LifecycleState, useConstantFn, useLifecycleState } from '@xl-vision/hooks';
-import { CSSObject } from '@xl-vision/styled-engine';
 import {
   getBoundingClientRect,
   getDocumentElement,
@@ -9,7 +8,6 @@ import {
   off,
   on,
 } from '@xl-vision/utils';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
   HTMLAttributes,
@@ -23,7 +21,7 @@ import {
 } from 'react';
 import AnchorContext from './AnchorContext';
 import Affix from '../Affix';
-import { styled } from '../styles';
+import memoStyled from '../memoStyled';
 import { useTheme } from '../ThemeProvider';
 import { RefInstance } from '../types';
 import { throttleByAnimationFrame } from '../utils/perf';
@@ -52,26 +50,26 @@ export type AnchorInstance = RefInstance<
 
 const displayName = 'Anchor';
 
-const AnchorRoot = styled('div', {
+const AnchorRoot = memoStyled('div', {
   name: displayName,
   slot: 'Root',
-})<{ type: AnchorType }>(({ theme, styleProps }) => {
-  const { type } = styleProps;
-
-  const { colors } = theme;
-
-  const style: CSSObject = {
+})<{ type: AnchorType }>(({ theme: { colors } }) => {
+  return {
     position: 'relative',
+    variants: [
+      {
+        props: {
+          type: 'rail',
+        },
+        style: {
+          borderLeft: `2px solid ${colors.divider.primary}`,
+        },
+      },
+    ],
   };
-
-  if (type === 'rail') {
-    style.borderLeft = `2px solid ${colors.divider.primary}`;
-  }
-
-  return style;
 });
 
-const AnchorInk = styled('div', {
+const AnchorInk = memoStyled('div', {
   name: displayName,
   slot: 'Ink',
 })(({ theme }) => {
@@ -106,7 +104,6 @@ const Anchor = forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
     onChange,
     bounds = 5,
     targetOffset = 0,
-    className,
     type = 'rail',
     children,
     ...others
@@ -302,14 +299,10 @@ const Anchor = forwardRef<AnchorInstance, AnchorProps>((props, ref) => {
     };
   }, [activeLink, handleScrollTo, registerLink, unregisterLink]);
 
-  const rootClassName = `${clsPrefix}-anchor`;
-
-  const rootClasses = clsx(`${rootClassName}--${type}`, className);
-
   const inkNode = type === 'rail' && activeLink ? <AnchorInk ref={inkNodeRef} /> : null;
 
   const content = (
-    <AnchorRoot {...others} className={rootClasses} ref={rootRef} styleProps={{ type }}>
+    <AnchorRoot {...others} ref={rootRef} styleProps={{ type }}>
       {inkNode}
       {children}
     </AnchorRoot>

@@ -4,8 +4,8 @@ import { isProduction, isServer } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { ReactNode, forwardRef, useState } from 'react';
 import Button, { ButtonProps } from '../Button';
+import memoStyled from '../memoStyled';
 import Popper, { PopperInstance, PopperProps, PopperTrigger } from '../Popper';
-import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 
 export type PopconfirmButtonProps = Omit<ButtonProps, 'children' | 'onClick'>;
@@ -26,7 +26,7 @@ export type PopconfirmInstance = PopperInstance;
 
 const displayName = 'Popconfirm';
 
-const PopconfirmRoot = styled(Popper, {
+const PopconfirmRoot = memoStyled(Popper, {
   name: displayName,
   slot: 'Root',
 })(({ theme }) => {
@@ -40,7 +40,7 @@ const PopconfirmRoot = styled(Popper, {
   };
 });
 
-const PopconfirmArrow = styled('div', {
+const PopconfirmArrow = memoStyled('div', {
   name: displayName,
   slot: 'Arrow',
 })(({ theme }) => {
@@ -54,37 +54,60 @@ const PopconfirmArrow = styled('div', {
   };
 });
 
-const PopconfirmPopup = styled('div', {
+const PopconfirmPopup = memoStyled('div', {
   name: displayName,
   slot: 'Popup',
-})(({ theme: { clsPrefix, colors, typography, elevations, sizes } }) => {
+})(({ theme: { colors, elevations, sizes } }) => {
   return {
     backgroundColor: colors.background.popper,
     color: colors.text.primary,
     borderRadius: sizes.small.borderRadius,
     padding: '12px 16px',
     boxShadow: elevations[3],
+  };
+});
 
-    [`.${clsPrefix}-popconfirm__content`]: {
-      position: 'relative',
-      padding: '4px 0px 12px',
-      minWidth: 110,
-      ...typography.body1.style,
-    },
-    [`.${clsPrefix}-popconfirm__icon`]: {
-      position: 'absolute',
-      top: typography.pxToRem(6),
-      left: 0,
-      color: colors.themes.warning.foreground.default,
-    },
-    [`.${clsPrefix}-popconfirm__title`]: {
-      paddingLeft: 22,
-    },
-    [`.${clsPrefix}-popconfirm__footer`]: {
-      textAlign: 'right',
-      button: {
-        marginLeft: sizes.small.padding.x,
-      },
+const PopconfirmContent = memoStyled('div', {
+  name: displayName,
+  slot: 'Content',
+})(({ theme: { typography } }) => {
+  return {
+    position: 'relative',
+    padding: '4px 0px 12px',
+    minWidth: 110,
+    ...typography.body1.style,
+  };
+});
+
+const PopconfirmIcon = memoStyled('span', {
+  name: displayName,
+  slot: 'Icon',
+})(({ theme: { typography, colors } }) => {
+  return {
+    position: 'absolute',
+    top: typography.pxToRem(6),
+    left: 0,
+    color: colors.themes.warning.foreground.default,
+  };
+});
+
+const PopconfirmTitle = memoStyled('span', {
+  name: displayName,
+  slot: 'Title',
+})(() => {
+  return {
+    paddingLeft: 22,
+  };
+});
+
+const PopconfirmFooter = memoStyled('div', {
+  name: displayName,
+  slot: 'Footer',
+})(({ theme: { sizes } }) => {
+  return {
+    textAlign: 'right',
+    button: {
+      marginLeft: sizes.small.padding.x,
     },
   };
 });
@@ -158,11 +181,11 @@ const Popconfirm = forwardRef<PopconfirmInstance, PopconfirmProps>((props, ref) 
 
   const popup = (
     <PopconfirmPopup>
-      <div className={`${rootClassName}__content`}>
-        <span className={`${rootClassName}__icon`}>{icon}</span>
-        <span className={`${rootClassName}__title`}>{title}</span>
-      </div>
-      <div className={`${rootClassName}__footer`}>
+      <PopconfirmContent>
+        <PopconfirmIcon>{icon}</PopconfirmIcon>
+        <PopconfirmTitle>{title}</PopconfirmTitle>
+      </PopconfirmContent>
+      <PopconfirmFooter>
         <Button
           color='primary'
           size='small'
@@ -187,7 +210,7 @@ const Popconfirm = forwardRef<PopconfirmInstance, PopconfirmProps>((props, ref) 
         >
           {confirmText}
         </Button>
-      </div>
+      </PopconfirmFooter>
     </PopconfirmPopup>
   );
 

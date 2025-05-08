@@ -1,5 +1,5 @@
 import { useConstantFn } from '@xl-vision/hooks';
-import { keyframes } from '@xl-vision/styled-engine';
+import { css, keyframes } from '@xl-vision/styled-engine';
 import { getBoundingClientRect, isProduction } from '@xl-vision/utils';
 import { clsx } from 'clsx';
 import PropTypes from 'prop-types';
@@ -16,7 +16,7 @@ import {
   SyntheticEvent,
   TouchEvent,
 } from 'react';
-import { styled } from '../styles';
+import memoStyled from '../memoStyled';
 import { useTheme } from '../ThemeProvider';
 import TransitionGroup, { TransitionGroupClassName } from '../TransitionGroup';
 import { RefInstance } from '../types';
@@ -48,7 +48,7 @@ const pulsateKeyframe = keyframes`
   }
 `;
 
-const RipperRoot = styled('div', {
+const RipperRoot = memoStyled('div', {
   name: displayName,
   slot: 'Root',
 })(() => {
@@ -65,20 +65,23 @@ const RipperRoot = styled('div', {
   };
 });
 
-const RippleInner = styled('div', {
+const RippleInner = memoStyled('div', {
   name: displayName,
   slot: 'Inner',
-})`
-  position: absolute;
-  background-color: currentColor;
-  border-radius: 50%;
-  &.${({ theme: { clsPrefix } }) => `${clsPrefix}-ripple--pulsate`} {
-    animation-name: ${pulsateKeyframe};
-    animation-duration: 2.5s;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-  }
-`;
+})(({ theme }) => {
+  const { clsPrefix } = theme;
+  return css`
+    position: absolute;
+    background-color: currentColor;
+    border-radius: 50%;
+    &.${`${clsPrefix}-ripple--pulsate`} {
+      animation-name: ${pulsateKeyframe};
+      animation-duration: 2.5s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+    }
+  `;
+});
 
 const DELAY_RIPPLE = 80;
 

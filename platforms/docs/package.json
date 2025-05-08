@@ -22,6 +22,7 @@
     "@xl-vision/icons": "workspace:^",
     "@xl-vision/react": "workspace:^",
     "@xl-vision/styled-engine": "workspace:^",
+    "@xl-vision/styled-engine-sc": "workspace:^",
     "@xl-vision/useForm": "workspace:^",
     "@xl-vision/usePopper": "workspace:^",
     "@xl-vision/utils": "workspace:^",

@@ -43,8 +43,6 @@ exports[`Button Test basic render 1`] = `
   -webkit-appearance: none;
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
   transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -53,10 +51,15 @@ exports[`Button Test basic render 1`] = `
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  background-color: transparent;
+  min-width: 64px;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  padding: 4px 10px;
   padding: 3px 9px;
   color: #000000e0;
-  border: 1px solid #d9d9d9;
-  background-color: #fff;
+  color: #ffffffe0;
+  background-color: #000000e0;
 }
 
 .emotion-0::-moz-focus-inner {
@@ -67,46 +70,20 @@ exports[`Button Test basic render 1`] = `
   pointer-events: none;
 }
 
-.emotion-0 .xl-base-button__ripple {
-  -webkit-transform: scale(1);
-  -moz-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  opacity: 0.3;
-}
-
-.emotion-0 .xl-base-button__ripple-enter-active {
-  -webkit-transition: all 300ms 0ms cubic-bezier(0, 0, 0.2, 1);
-  transition: all 300ms 0ms cubic-bezier(0, 0, 0.2, 1);
-}
-
-.emotion-0 .xl-base-button__ripple-exit-active {
-  -webkit-transition: all 300ms 0ms cubic-bezier(0.4, 0, 1, 1);
-  transition: all 300ms 0ms cubic-bezier(0.4, 0, 1, 1);
-}
-
-.emotion-0 .xl-base-button__ripple-enter-from {
-  -webkit-transform: scale(0);
-  -moz-transform: scale(0);
-  -ms-transform: scale(0);
-  transform: scale(0);
-  opacity: 0;
-}
-
-.emotion-0 .xl-base-button__ripple-exit-to {
-  opacity: 0;
-}
-
 .emotion-0:hover {
-  color: #2563eb;
-  border-color: #60a5fa;
-  background-color: #dbeafe;
+  background-color: #f0f0f0;
 }
 
 .emotion-0:focus {
-  color: #2563eb;
-  border-color: #60a5fa;
-  background-color: #dbeafe;
+  background-color: #f0f0f0;
+}
+
+.emotion-0:hover {
+  background-color: #000000a6;
+}
+
+.emotion-0:focus {
+  background-color: #000000a6;
 }
 
 .emotion-1 {
@@ -116,7 +93,7 @@ exports[`Button Test basic render 1`] = `
   height: 100%;
 }
 
-.emotion-2 {
+.emotion-3 {
   position: absolute;
   top: 0;
   right: 0;
@@ -126,58 +103,6 @@ exports[`Button Test basic render 1`] = `
   overflow: hidden;
   border-radius: inherit;
   pointer-events: none;
-}
-
-.emotion-3 {
-  position: relative;
-  display: inline-block;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  white-space: nowrap;
-  text-align: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  vertical-align: middle;
-  background-color: transparent;
-  border: 0;
-  border-radius: 0;
-  outline: 0;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-  cursor: pointer;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  -webkit-transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
-  transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 4px;
-  min-width: 64px;
-  font-size: 0.875rem;
-  line-height: 1.75;
-  font-weight: 500;
-  letter-spacing: 0.089em;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 4px 10px;
-  color: #ffffffe0;
-  background-color: #ef4444;
-}
-
-.emotion-3::-moz-focus-inner {
-  border-style: none;
-}
-
-.emotion-3 svg {
-  pointer-events: none;
-}
-
-.emotion-3 .xl-base-button__ripple {
   -webkit-transform: scale(1);
   -moz-transform: scale(1);
   -ms-transform: scale(1);
@@ -207,15 +132,7 @@ exports[`Button Test basic render 1`] = `
   opacity: 0;
 }
 
-.emotion-3:hover {
-  background-color: #dc2626;
-}
-
-.emotion-3:focus {
-  background-color: #dc2626;
-}
-
-.emotion-6 {
+.emotion-4 {
   position: relative;
   display: inline-block;
   box-sizing: border-box;
@@ -241,8 +158,6 @@ exports[`Button Test basic render 1`] = `
   -webkit-appearance: none;
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
   transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -251,60 +166,110 @@ exports[`Button Test basic render 1`] = `
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 3px 9px;
-  color: #000000e0;
-  border: 1px solid #d9d9d9;
+  background-color: transparent;
+  min-width: 64px;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  padding: 4px 10px;
+  color: #ef4444;
+  color: #ffffffe0;
+  background-color: #ef4444;
 }
 
-.emotion-6::-moz-focus-inner {
+.emotion-4::-moz-focus-inner {
   border-style: none;
 }
 
-.emotion-6 svg {
+.emotion-4 svg {
   pointer-events: none;
 }
 
-.emotion-6 .xl-base-button__ripple {
-  -webkit-transform: scale(1);
-  -moz-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  opacity: 0.3;
+.emotion-4:hover {
+  background-color: #fee2e2;
 }
 
-.emotion-6 .xl-base-button__ripple-enter-active {
-  -webkit-transition: all 300ms 0ms cubic-bezier(0, 0, 0.2, 1);
-  transition: all 300ms 0ms cubic-bezier(0, 0, 0.2, 1);
+.emotion-4:focus {
+  background-color: #fee2e2;
 }
 
-.emotion-6 .xl-base-button__ripple-exit-active {
-  -webkit-transition: all 300ms 0ms cubic-bezier(0.4, 0, 1, 1);
-  transition: all 300ms 0ms cubic-bezier(0.4, 0, 1, 1);
+.emotion-4:hover {
+  background-color: #dc2626;
 }
 
-.emotion-6 .xl-base-button__ripple-enter-from {
-  -webkit-transform: scale(0);
-  -moz-transform: scale(0);
-  -ms-transform: scale(0);
-  transform: scale(0);
-  opacity: 0;
+.emotion-4:focus {
+  background-color: #dc2626;
 }
 
-.emotion-6 .xl-base-button__ripple-exit-to {
-  opacity: 0;
+.emotion-8 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  background-color: transparent;
+  min-width: 64px;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  padding: 4px 10px;
+  border: 1px solid transparent;
+  padding: 3px 9px;
+  color: #000000e0;
+  border-color: #d9d9d9;
 }
 
-.emotion-6:hover {
-  color: #2563eb;
-  border-color: #60a5fa;
+.emotion-8::-moz-focus-inner {
+  border-style: none;
 }
 
-.emotion-6:focus {
-  color: #2563eb;
-  border-color: #60a5fa;
+.emotion-8 svg {
+  pointer-events: none;
 }
 
-.emotion-11 {
+.emotion-8:hover {
+  background-color: #f0f0f0;
+}
+
+.emotion-8:focus {
+  background-color: #f0f0f0;
+}
+
+.emotion-8:hover {
+  border-color: #f0f0f0;
+}
+
+.emotion-8:focus {
+  border-color: #f0f0f0;
+}
+
+.emotion-14 {
   display: inline-block;
   -webkit-transition: width 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
   transition: width 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -312,16 +277,14 @@ exports[`Button Test basic render 1`] = `
   line-height: 0;
   font-size: 1.4em;
   vertical-align: middle;
-  margin-left: -2px;
-  margin-right: 2px;
 }
 
-.emotion-11 svg {
+.emotion-14 svg {
   line-height: 1;
   vertical-align: middle;
 }
 
-.emotion-12 {
+.emotion-15 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -333,116 +296,6 @@ exports[`Button Test basic render 1`] = `
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-}
-
-.emotion-16 {
-  display: inline-block;
-  -webkit-transition: width 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
-  transition: width 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
-  padding: 0;
-  line-height: 0;
-  font-size: 1.4em;
-  vertical-align: middle;
-  margin-left: -2px;
-  margin-right: 2px;
-  margin-left: 2px;
-  margin-right: -2px;
-}
-
-.emotion-16 svg {
-  line-height: 1;
-  vertical-align: middle;
-}
-
-.emotion-19 {
-  position: relative;
-  display: inline-block;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  white-space: nowrap;
-  text-align: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  vertical-align: middle;
-  background-color: transparent;
-  border: 0;
-  border-radius: 0;
-  outline: 0;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-  cursor: pointer;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  -webkit-transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
-  transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 4px;
-  font-size: 0.875rem;
-  line-height: 0;
-  font-weight: 500;
-  letter-spacing: 0.089em;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 5.450000000000001px;
-  color: #000000e0;
-  border: 1px solid #d9d9d9;
-  background-color: #fff;
-}
-
-.emotion-19::-moz-focus-inner {
-  border-style: none;
-}
-
-.emotion-19 svg {
-  pointer-events: none;
-}
-
-.emotion-19 .xl-base-button__ripple {
-  -webkit-transform: scale(1);
-  -moz-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  opacity: 0.3;
-}
-
-.emotion-19 .xl-base-button__ripple-enter-active {
-  -webkit-transition: all 300ms 0ms cubic-bezier(0, 0, 0.2, 1);
-  transition: all 300ms 0ms cubic-bezier(0, 0, 0.2, 1);
-}
-
-.emotion-19 .xl-base-button__ripple-exit-active {
-  -webkit-transition: all 300ms 0ms cubic-bezier(0.4, 0, 1, 1);
-  transition: all 300ms 0ms cubic-bezier(0.4, 0, 1, 1);
-}
-
-.emotion-19 .xl-base-button__ripple-enter-from {
-  -webkit-transform: scale(0);
-  -moz-transform: scale(0);
-  -ms-transform: scale(0);
-  transform: scale(0);
-  opacity: 0;
-}
-
-.emotion-19 .xl-base-button__ripple-exit-to {
-  opacity: 0;
-}
-
-.emotion-19:hover {
-  color: #2563eb;
-  border-color: #60a5fa;
-  background-color: #dbeafe;
-}
-
-.emotion-19:focus {
-  color: #2563eb;
-  border-color: #60a5fa;
-  background-color: #dbeafe;
 }
 
 .emotion-21 {
@@ -460,22 +313,7 @@ exports[`Button Test basic render 1`] = `
   vertical-align: middle;
 }
 
-.emotion-26 {
-  display: inline-block;
-  -webkit-transition: width 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
-  transition: width 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
-  padding: 0;
-  line-height: 0;
-  font-size: 1.4em;
-  vertical-align: middle;
-}
-
-.emotion-26 svg {
-  line-height: 1;
-  vertical-align: middle;
-}
-
-.emotion-29 {
+.emotion-24 {
   position: relative;
   display: inline-block;
   box-sizing: border-box;
@@ -501,8 +339,6 @@ exports[`Button Test basic render 1`] = `
   -webkit-appearance: none;
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
   transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -511,64 +347,79 @@ exports[`Button Test basic render 1`] = `
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  width: 100%;
+  background-color: transparent;
+  line-height: 0;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  padding: 4px 10px;
+  padding: 6.450000000000001px;
   padding: 3px 9px;
   color: #000000e0;
-  border: 1px solid #d9d9d9;
-  background-color: #fff;
+  color: #ffffffe0;
+  background-color: #000000e0;
 }
 
-.emotion-29::-moz-focus-inner {
+.emotion-24::-moz-focus-inner {
   border-style: none;
 }
 
-.emotion-29 svg {
+.emotion-24 svg {
   pointer-events: none;
 }
 
-.emotion-29 .xl-base-button__ripple {
-  -webkit-transform: scale(1);
-  -moz-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  opacity: 0.3;
+.emotion-24:hover {
+  background-color: #f0f0f0;
 }
 
-.emotion-29 .xl-base-button__ripple-enter-active {
-  -webkit-transition: all 300ms 0ms cubic-bezier(0, 0, 0.2, 1);
-  transition: all 300ms 0ms cubic-bezier(0, 0, 0.2, 1);
+.emotion-24:focus {
+  background-color: #f0f0f0;
 }
 
-.emotion-29 .xl-base-button__ripple-exit-active {
-  -webkit-transition: all 300ms 0ms cubic-bezier(0.4, 0, 1, 1);
-  transition: all 300ms 0ms cubic-bezier(0.4, 0, 1, 1);
+.emotion-24:hover {
+  background-color: #000000a6;
 }
 
-.emotion-29 .xl-base-button__ripple-enter-from {
-  -webkit-transform: scale(0);
-  -moz-transform: scale(0);
-  -ms-transform: scale(0);
-  transform: scale(0);
-  opacity: 0;
+.emotion-24:focus {
+  background-color: #000000a6;
 }
 
-.emotion-29 .xl-base-button__ripple-exit-to {
-  opacity: 0;
+.emotion-26 {
+  display: inline-block;
+  -webkit-transition: width 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: width 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0;
+  line-height: 0;
+  font-size: 1.4em;
+  vertical-align: middle;
+  margin-left: -2px;
+  margin-right: 2px;
 }
 
-.emotion-29:hover {
-  color: #2563eb;
-  border-color: #60a5fa;
-  background-color: #dbeafe;
+.emotion-26 svg {
+  line-height: 1;
+  vertical-align: middle;
 }
 
-.emotion-29:focus {
-  color: #2563eb;
-  border-color: #60a5fa;
-  background-color: #dbeafe;
+.emotion-31 {
+  display: inline-block;
+  -webkit-transition: width 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: width 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0;
+  line-height: 0;
+  font-size: 1.4em;
+  vertical-align: middle;
+  margin-left: -2px;
+  margin-right: 2px;
+  margin-left: 2px;
+  margin-right: -2px;
 }
 
-.emotion-32 {
+.emotion-31 svg {
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.emotion-34 {
   position: relative;
   display: inline-block;
   box-sizing: border-box;
@@ -589,13 +440,11 @@ exports[`Button Test basic render 1`] = `
   user-select: none;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
-  cursor: not-allowed;
+  cursor: pointer;
   -moz-appearance: none;
   -webkit-appearance: none;
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
   transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 4px;
-  min-width: 64px;
   font-size: 0.875rem;
   line-height: 1.75;
   font-weight: 500;
@@ -604,60 +453,98 @@ exports[`Button Test basic render 1`] = `
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  background-color: transparent;
+  min-width: 64px;
+  width: 100%;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  padding: 4px 10px;
   padding: 3px 9px;
-  opacity: 0.3;
   color: #000000e0;
-  border: 1px solid #d9d9d9;
-  background-color: #fff;
+  color: #ffffffe0;
+  background-color: #000000e0;
 }
 
-.emotion-32::-moz-focus-inner {
+.emotion-34::-moz-focus-inner {
   border-style: none;
 }
 
-.emotion-32 svg {
+.emotion-34 svg {
   pointer-events: none;
 }
 
-.emotion-32 .xl-base-button__ripple {
-  -webkit-transform: scale(1);
-  -moz-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
+.emotion-34:hover {
+  background-color: #f0f0f0;
+}
+
+.emotion-34:focus {
+  background-color: #f0f0f0;
+}
+
+.emotion-34:hover {
+  background-color: #000000a6;
+}
+
+.emotion-34:focus {
+  background-color: #000000a6;
+}
+
+.emotion-38 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  cursor: not-allowed;
+  -webkit-transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-weight: 500;
+  letter-spacing: 0.089em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
+  background-color: transparent;
+  min-width: 64px;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  padding: 4px 10px;
+  padding: 3px 9px;
   opacity: 0.3;
+  color: #000000e0;
+  color: #ffffffe0;
+  background-color: #000000e0;
 }
 
-.emotion-32 .xl-base-button__ripple-enter-active {
-  -webkit-transition: all 300ms 0ms cubic-bezier(0, 0, 0.2, 1);
-  transition: all 300ms 0ms cubic-bezier(0, 0, 0.2, 1);
+.emotion-38::-moz-focus-inner {
+  border-style: none;
 }
 
-.emotion-32 .xl-base-button__ripple-exit-active {
-  -webkit-transition: all 300ms 0ms cubic-bezier(0.4, 0, 1, 1);
-  transition: all 300ms 0ms cubic-bezier(0.4, 0, 1, 1);
+.emotion-38 svg {
+  pointer-events: none;
 }
 
-.emotion-32 .xl-base-button__ripple-enter-from {
-  -webkit-transform: scale(0);
-  -moz-transform: scale(0);
-  -ms-transform: scale(0);
-  transform: scale(0);
-  opacity: 0;
-}
-
-.emotion-32 .xl-base-button__ripple-exit-to {
-  opacity: 0;
-}
-
-.emotion-32:hover {
-  background-color: #dbeafe;
-}
-
-.emotion-32:focus {
-  background-color: #dbeafe;
-}
-
-.emotion-35 {
+.emotion-41 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -673,7 +560,7 @@ exports[`Button Test basic render 1`] = `
   animation: animation-0 1s linear infinite;
 }
 
-.emotion-37 {
+.emotion-44 {
   position: relative;
   display: inline-block;
   box-sizing: border-box;
@@ -694,134 +581,102 @@ exports[`Button Test basic render 1`] = `
   user-select: none;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
-  cursor: not-allowed;
+  cursor: pointer;
   -moz-appearance: none;
   -webkit-appearance: none;
+  cursor: not-allowed;
   -webkit-transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
   transition: all 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 4px;
   font-size: 0.875rem;
-  line-height: 0;
+  line-height: 1.75;
   font-weight: 500;
   letter-spacing: 0.089em;
   -webkit-text-decoration: none;
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto','Helvetica Neue','segoe ui','Arial','noto sans',sans-serif;
-  padding: 5.450000000000001px;
+  background-color: transparent;
+  line-height: 0;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  padding: 4px 10px;
+  padding: 6.450000000000001px;
+  padding: 3px 9px;
   opacity: 0.3;
   color: #000000e0;
-  border: 1px solid #d9d9d9;
-  background-color: #fff;
+  color: #ffffffe0;
+  background-color: #000000e0;
 }
 
-.emotion-37::-moz-focus-inner {
+.emotion-44::-moz-focus-inner {
   border-style: none;
 }
 
-.emotion-37 svg {
+.emotion-44 svg {
   pointer-events: none;
-}
-
-.emotion-37 .xl-base-button__ripple {
-  -webkit-transform: scale(1);
-  -moz-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  opacity: 0.3;
-}
-
-.emotion-37 .xl-base-button__ripple-enter-active {
-  -webkit-transition: all 300ms 0ms cubic-bezier(0, 0, 0.2, 1);
-  transition: all 300ms 0ms cubic-bezier(0, 0, 0.2, 1);
-}
-
-.emotion-37 .xl-base-button__ripple-exit-active {
-  -webkit-transition: all 300ms 0ms cubic-bezier(0.4, 0, 1, 1);
-  transition: all 300ms 0ms cubic-bezier(0.4, 0, 1, 1);
-}
-
-.emotion-37 .xl-base-button__ripple-enter-from {
-  -webkit-transform: scale(0);
-  -moz-transform: scale(0);
-  -ms-transform: scale(0);
-  transform: scale(0);
-  opacity: 0;
-}
-
-.emotion-37 .xl-base-button__ripple-exit-to {
-  opacity: 0;
-}
-
-.emotion-37:hover {
-  background-color: #dbeafe;
-}
-
-.emotion-37:focus {
-  background-color: #dbeafe;
 }
 
 <div>
   <div>
     <button
-      class="xl-base-button xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained emotion-0"
+      class="xl-base-button xl-button xl-button--color-default xl-button--size-middle xl-button--variant-contained emotion-0"
     >
       <span
         class="xl-base-button__inner emotion-1"
       >
         <span
-          class="xl-button__inner"
+          class="xl-button__inner emotion-2"
         >
           button
         </span>
       </span>
       <div
-        class="xl-ripple xl-base-button__ripple emotion-2"
+        class="xl-ripple xl-base-button__ripple emotion-3"
       />
     </button>
     <button
-      class="xl-base-button xl-button xl-button--size-middle xl-button--color-error xl-button--variant-contained emotion-3"
+      class="xl-base-button xl-button xl-button--color-error xl-button--size-middle xl-button--variant-contained emotion-4"
     >
       <span
         class="xl-base-button__inner emotion-1"
       >
         <span
-          class="xl-button__inner"
+          class="xl-button__inner emotion-2"
         >
           button
         </span>
       </span>
       <div
-        class="xl-ripple xl-base-button__ripple emotion-2"
+        class="xl-ripple xl-base-button__ripple emotion-3"
       />
     </button>
     <button
-      class="xl-base-button xl-button xl-button--size-middle xl-button--color-default xl-button--variant-outlined emotion-6"
+      class="xl-base-button xl-button xl-button--color-default xl-button--size-middle xl-button--variant-outlined emotion-8"
     >
       <span
         class="xl-base-button__inner emotion-1"
       >
         <span
-          class="xl-button__inner"
+          class="xl-button__inner emotion-2"
         >
           button
         </span>
       </span>
       <div
-        class="xl-ripple xl-base-button__ripple emotion-2"
+        class="xl-ripple xl-base-button__ripple emotion-3"
       />
     </button>
     <button
-      class="xl-base-button xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained emotion-0"
+      class="xl-base-button xl-button xl-button--color-default xl-button--size-middle xl-button--variant-contained emotion-0"
     >
       <span
         class="xl-base-button__inner emotion-1"
       >
         <span
-          class="xl-button__prefix emotion-11"
+          class="xl-button__prefix emotion-14"
         >
           <svg
-            class="xl-base-icon emotion-12"
+            class="xl-base-icon emotion-15"
             viewBox="0 0 1024 1024"
           >
             <path
@@ -830,54 +685,31 @@ exports[`Button Test basic render 1`] = `
           </svg>
         </span>
         <span
-          class="xl-button__inner"
+          class="xl-button__inner emotion-2"
         >
           button
         </span>
       </span>
       <div
-        class="xl-ripple xl-base-button__ripple emotion-2"
+        class="xl-ripple xl-base-button__ripple emotion-3"
       />
     </button>
     <button
-      class="xl-base-button xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained emotion-0"
+      class="xl-base-button xl-button xl-button--color-default xl-button--size-middle xl-button--variant-contained emotion-0"
     >
       <span
         class="xl-base-button__inner emotion-1"
       >
         <span
-          class="xl-button__inner"
+          class="xl-button__inner emotion-2"
         >
           button
         </span>
         <span
-          class="xl-button__prefix xl-button__suffix emotion-16"
+          class="xl-button__prefix xl-button__suffix emotion-21"
         >
           <svg
-            class="xl-base-icon emotion-12"
-            viewBox="0 0 1024 1024"
-          >
-            <path
-              d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64m165.4 618.2-66-.3L512 563.4l-99.3 118.4-66.1.3c-4.4 0-8-3.5-8-8 0-1.9.7-3.7 1.9-5.2l130.1-155L340.5 359a8.32 8.32 0 0 1-1.9-5.2c0-4.4 3.6-8 8-8l66.1.3L512 464.6l99.3-118.4 66-.3c4.4 0 8 3.5 8 8 0 1.9-.7 3.7-1.9 5.2L553.5 514l130 155c1.2 1.5 1.9 3.3 1.9 5.2 0 4.4-3.6 8-8 8"
-            />
-          </svg>
-        </span>
-      </span>
-      <div
-        class="xl-ripple xl-base-button__ripple emotion-2"
-      />
-    </button>
-    <button
-      class="xl-base-button xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--icon emotion-19"
-    >
-      <span
-        class="xl-base-button__inner emotion-1"
-      >
-        <span
-          class="xl-button__prefix emotion-21"
-        >
-          <svg
-            class="xl-base-icon emotion-12"
+            class="xl-base-icon emotion-15"
             viewBox="0 0 1024 1024"
           >
             <path
@@ -887,20 +719,20 @@ exports[`Button Test basic render 1`] = `
         </span>
       </span>
       <div
-        class="xl-ripple xl-base-button__ripple emotion-2"
+        class="xl-ripple xl-base-button__ripple emotion-3"
       />
     </button>
     <button
-      class="xl-base-button xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--icon emotion-19"
+      class="xl-base-button xl-button xl-button--color-default xl-button--size-middle xl-button--variant-contained xl-button--icon emotion-24"
     >
       <span
         class="xl-base-button__inner emotion-1"
       >
         <span
-          class="xl-button__prefix xl-button__suffix emotion-26"
+          class="xl-button__prefix xl-button__prefix--icon emotion-26"
         >
           <svg
-            class="xl-base-icon emotion-12"
+            class="xl-base-icon emotion-15"
             viewBox="0 0 1024 1024"
           >
             <path
@@ -910,38 +742,61 @@ exports[`Button Test basic render 1`] = `
         </span>
       </span>
       <div
-        class="xl-ripple xl-base-button__ripple emotion-2"
+        class="xl-ripple xl-base-button__ripple emotion-3"
       />
     </button>
     <button
-      class="xl-base-button xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--long emotion-29"
+      class="xl-base-button xl-button xl-button--color-default xl-button--size-middle xl-button--variant-contained xl-button--icon emotion-24"
     >
       <span
         class="xl-base-button__inner emotion-1"
       >
         <span
-          class="xl-button__inner"
+          class="xl-button__prefix xl-button__prefix--icon xl-button__suffix xl-button__suffix--icon emotion-31"
+        >
+          <svg
+            class="xl-base-icon emotion-15"
+            viewBox="0 0 1024 1024"
+          >
+            <path
+              d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64m165.4 618.2-66-.3L512 563.4l-99.3 118.4-66.1.3c-4.4 0-8-3.5-8-8 0-1.9.7-3.7 1.9-5.2l130.1-155L340.5 359a8.32 8.32 0 0 1-1.9-5.2c0-4.4 3.6-8 8-8l66.1.3L512 464.6l99.3-118.4 66-.3c4.4 0 8 3.5 8 8 0 1.9-.7 3.7-1.9 5.2L553.5 514l130 155c1.2 1.5 1.9 3.3 1.9 5.2 0 4.4-3.6 8-8 8"
+            />
+          </svg>
+        </span>
+      </span>
+      <div
+        class="xl-ripple xl-base-button__ripple emotion-3"
+      />
+    </button>
+    <button
+      class="xl-base-button xl-button xl-button--color-default xl-button--size-middle xl-button--variant-contained xl-button--long emotion-34"
+    >
+      <span
+        class="xl-base-button__inner emotion-1"
+      >
+        <span
+          class="xl-button__inner emotion-2"
         >
           button
         </span>
       </span>
       <div
-        class="xl-ripple xl-base-button__ripple emotion-2"
+        class="xl-ripple xl-base-button__ripple emotion-3"
       />
     </button>
     <button
-      class="xl-base-button xl-base-button--loading xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--loading emotion-32"
+      class="xl-base-button xl-base-button--loading xl-button xl-button--color-default xl-button--size-middle xl-button--loading xl-button--variant-contained emotion-38"
       tabindex="-1"
     >
       <span
         class="xl-base-button__inner emotion-1"
       >
         <span
-          class="xl-button__prefix emotion-11 xl-button__prefix-appear-from xl-button__prefix-appear-active"
+          class="xl-button__prefix emotion-14 xl-button__prefix-appear-from xl-button__prefix-appear-active"
           style="overflow: hidden; padding-left: 0px; padding-right: 0px; width: 0px;"
         >
           <svg
-            class="xl-base-icon xl-button__loading-icon emotion-35"
+            class="xl-base-icon xl-button__loading-icon emotion-41"
             viewBox="0 0 1024 1024"
           >
             <path
@@ -950,27 +805,27 @@ exports[`Button Test basic render 1`] = `
           </svg>
         </span>
         <span
-          class="xl-button__inner"
+          class="xl-button__inner emotion-2"
         >
           button
         </span>
       </span>
       <div
-        class="xl-ripple xl-base-button__ripple emotion-2"
+        class="xl-ripple xl-base-button__ripple emotion-3"
       />
     </button>
     <button
-      class="xl-base-button xl-base-button--loading xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--loading xl-button--icon emotion-37"
+      class="xl-base-button xl-base-button--loading xl-button xl-button--color-default xl-button--size-middle xl-button--loading xl-button--variant-contained xl-button--icon emotion-44"
       tabindex="-1"
     >
       <span
         class="xl-base-button__inner emotion-1"
       >
         <span
-          class="xl-button__prefix emotion-21"
+          class="xl-button__prefix xl-button__prefix--icon emotion-26"
         >
           <svg
-            class="xl-base-icon xl-button__loading-icon emotion-35"
+            class="xl-base-icon xl-button__loading-icon emotion-41"
             viewBox="0 0 1024 1024"
           >
             <path
@@ -980,21 +835,21 @@ exports[`Button Test basic render 1`] = `
         </span>
       </span>
       <div
-        class="xl-ripple xl-base-button__ripple emotion-2"
+        class="xl-ripple xl-base-button__ripple emotion-3"
       />
     </button>
     <button
-      class="xl-base-button xl-base-button--loading xl-button xl-button--size-middle xl-button--color-default xl-button--variant-contained xl-button--loading emotion-32"
+      class="xl-base-button xl-base-button--loading xl-button xl-button--color-default xl-button--size-middle xl-button--loading xl-button--variant-contained emotion-38"
       tabindex="-1"
     >
       <span
         class="xl-base-button__inner emotion-1"
       >
         <span
-          class="xl-button__prefix emotion-11"
+          class="xl-button__prefix emotion-14"
         >
           <svg
-            class="xl-base-icon xl-button__loading-icon emotion-35"
+            class="xl-base-icon xl-button__loading-icon emotion-41"
             viewBox="0 0 1024 1024"
           >
             <path
@@ -1003,13 +858,13 @@ exports[`Button Test basic render 1`] = `
           </svg>
         </span>
         <span
-          class="xl-button__inner"
+          class="xl-button__inner emotion-2"
         >
           button
         </span>
       </span>
       <div
-        class="xl-ripple xl-base-button__ripple emotion-2"
+        class="xl-ripple xl-base-button__ripple emotion-3"
       />
     </button>
   </div>

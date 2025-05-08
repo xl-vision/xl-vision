@@ -11,7 +11,7 @@ import {
   useRef,
 } from 'react';
 import RowContext from './RowContext';
-import { styled } from '../styles';
+import memoStyled from '../memoStyled';
 import { useTheme, Breakpoint } from '../ThemeProvider';
 import { RefInstance } from '../types';
 
@@ -31,7 +31,7 @@ export type ColInstance = RefInstance<HTMLDivElement>;
 
 const displayName = 'Col';
 
-const ColRoot = styled('div', {
+const ColRoot = memoStyled('div', {
   name: displayName,
   slot: 'Root',
 })(({ theme }) => {

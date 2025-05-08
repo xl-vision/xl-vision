@@ -1,5 +1,5 @@
+import { CSSObject } from '@xl-vision/styled-engine';
 import { isObject, isProduction } from '@xl-vision/utils';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
   HTMLAttributes,
@@ -13,8 +13,8 @@ import {
 } from 'react';
 import RowContext from './RowContext';
 import useBreakPoints from './useBreakPoints';
-import { styled } from '../styles';
-import { Breakpoint, useTheme } from '../ThemeProvider';
+import memoStyled from '../memoStyled';
+import { Breakpoint } from '../ThemeProvider';
 import { RefInstance } from '../types';
 
 export type RowAlign = 'top' | 'middle' | 'bottom';
@@ -35,43 +35,62 @@ export type RowInstance = RefInstance<unknown>;
 
 const displayName = 'Row';
 
-const RowRoot = styled('div', {
+const justifyMap: Record<RowJustify, CSSObject['justifyContent']> = {
+  start: 'flex-start',
+  center: 'center',
+  end: 'flex-end',
+  'space-around': 'space-around',
+  'space-between': 'space-between',
+};
+
+const alignMap: Record<RowAlign, CSSObject['alignItems']> = {
+  top: 'flex-start',
+  middle: 'center',
+  bottom: 'flex-end',
+};
+
+const RowRoot = memoStyled('div', {
   name: displayName,
   slot: 'Root',
-})(({ theme: { clsPrefix } }) => {
-  const rootClassName = `&.${clsPrefix}-row`;
-
+})<{ justify?: RowJustify; align?: RowAlign; wrap: boolean }>(() => {
   return {
     boxSizing: 'border-box',
     display: 'flex',
     flexDirection: 'row',
-    [`${rootClassName}--justify-start`]: {
-      justifyContent: 'flex-start',
-    },
-    [`${rootClassName}--justify-center`]: {
-      justifyContent: 'center',
-    },
-    [`${rootClassName}--justify-end`]: {
-      justifyContent: 'flex-end',
-    },
-    [`${rootClassName}--justify-space-around`]: {
-      justifyContent: 'space-around',
-    },
-    [`${rootClassName}--justify-space-between`]: {
-      justifyContent: 'space-between',
-    },
-    [`${rootClassName}--align-top`]: {
-      alignItems: 'flex-start',
-    },
-    [`${rootClassName}--align-middle`]: {
-      alignItems: 'center',
-    },
-    [`${rootClassName}--align-bottom`]: {
-      alignItems: 'flex-end',
-    },
-    [`${rootClassName}--wrap`]: {
-      flexWrap: 'wrap',
-    },
+    variants: [
+      {
+        props: {
+          wrap: true,
+        },
+        style: {
+          flexWrap: 'wrap',
+        },
+      },
+      ...Object.keys(justifyMap).map((k) => {
+        const justify = k as RowJustify;
+
+        return {
+          props: {
+            justify,
+          },
+          style: {
+            justifyContent: justifyMap[justify],
+          },
+        };
+      }),
+      ...Object.keys(alignMap).map((k) => {
+        const align = k as RowAlign;
+
+        return {
+          props: {
+            align,
+          },
+          style: {
+            alignItems: alignMap[align],
+          },
+        };
+      }),
+    ],
   };
 });
 
@@ -82,14 +101,11 @@ const Row = forwardRef<RowInstance, RowProps>((props, ref) => {
     children,
     gutter,
     style,
-    className,
     wrap,
     removeOnUnvisible,
     component = 'div',
     ...others
   } = props;
-
-  const { clsPrefix } = useTheme();
 
   const breakPoints = useBreakPoints();
 
@@ -127,17 +143,6 @@ const Row = forwardRef<RowInstance, RowProps>((props, ref) => {
         }
       : style;
 
-  const rootClassName = `${clsPrefix}-row`;
-
-  const rootClasses = clsx(
-    {
-      [`${rootClassName}--justify-${justify}`]: justify,
-      [`${rootClassName}--align-${align}`]: align,
-      [`${rootClassName}--wrap`]: wrap,
-    },
-    className,
-  );
-
   const memorizedValue = useMemo(
     () => ({ gutter: computedGutter, breakPoints, removeOnUnvisible }),
     [computedGutter, breakPoints, removeOnUnvisible],
@@ -145,7 +150,13 @@ const Row = forwardRef<RowInstance, RowProps>((props, ref) => {
 
   return (
     <RowContext.Provider value={memorizedValue}>
-      <RowRoot {...others} as={component} className={rootClasses} ref={rootRef} style={rowStyle}>
+      <RowRoot
+        {...others}
+        as={component}
+        ref={rootRef}
+        style={rowStyle}
+        styleProps={{ justify, align, wrap: !!wrap }}
+      >
         {children}
       </RowRoot>
     </RowContext.Provider>

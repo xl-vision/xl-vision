@@ -372,6 +372,9 @@ importers:
       '@xl-vision/styled-engine':
         specifier: workspace:^
         version: link:../../packages/styled-engine
+      '@xl-vision/styled-engine-sc':
+        specifier: workspace:^
+        version: link:../../packages/styled-engine-sc
       '@xl-vision/useForm':
         specifier: workspace:^
         version: link:../../packages/useForm

@@ -22,8 +22,8 @@ import {
   MouseEvent as ReactMouseEvent,
   useImperativeHandle,
 } from 'react';
+import memoStyled from '../memoStyled';
 import Portal, { PortalContainerType } from '../Portal';
-import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 import Transition from '../Transition';
 import { RefInstance } from '../types';
@@ -51,7 +51,7 @@ export type ModalInstance = RefInstance<HTMLDivElement>;
 
 const displayName = 'Modal';
 
-const ModalRoot = styled('div', {
+const ModalRoot = memoStyled('div', {
   name: displayName,
   slot: 'Root',
 })(() => {
@@ -68,7 +68,7 @@ const ModalRoot = styled('div', {
   };
 });
 
-const ModalMask = styled('div', {
+const ModalMask = memoStyled('div', {
   name: displayName,
   slot: 'Mask',
 })(({ theme }) => {
@@ -98,7 +98,7 @@ const ModalMask = styled('div', {
   };
 });
 
-const ModalBody = styled('div', {
+const ModalBody = memoStyled('div', {
   name: displayName,
   slot: 'Body',
 })(({ theme }) => {

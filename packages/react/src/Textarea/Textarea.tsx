@@ -1,8 +1,6 @@
 import { useConstantFn, usePrevious, useValueChange } from '@xl-vision/hooks';
 import { CloseCircleFilled } from '@xl-vision/icons';
-import { CSSObject } from '@xl-vision/styled-engine';
 import { isObject, isProduction } from '@xl-vision/utils';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
   TextareaHTMLAttributes,
@@ -18,9 +16,9 @@ import {
 } from 'react';
 import { flushSync } from 'react-dom';
 import calculateNodeHeight from './calculateNodeHeight';
-import TextareaSuffix from './TextareaSuffix';
+import useOverflow from './useOverflow';
 import useInput from '../hooks/useInput';
-import { styled } from '../styles';
+import memoStyled from '../memoStyled';
 import { SizeVariant, useTheme } from '../ThemeProvider';
 import { RefInstance } from '../types';
 
@@ -41,101 +39,88 @@ export type TextareaInstance = RefInstance<HTMLDivElement>;
 
 const displayName = 'Textarea';
 
-const TextareaRoot = styled('span', {
+const TextareaRoot = memoStyled('span', {
   name: displayName,
   slot: 'Root',
-})<{ focused: boolean; size: SizeVariant; disabled?: boolean; readOnly?: boolean }>(({
-  theme,
-  styleProps,
-}) => {
-  const { colors, sizes, typography, transitions, clsPrefix } = theme;
+})<{
+  focused: boolean;
+  size: SizeVariant;
+  disabled: boolean;
+  readOnly: boolean;
+  autoHeight: boolean;
+}>(({ theme }) => {
+  const { colors, sizes, typography, transitions } = theme;
 
-  const { size, focused, disabled, readOnly } = styleProps;
-
-  const themeSize = sizes[size];
-
-  const fontSize = typography.body1.info.size * themeSize.fontSize;
-
-  const styles: CSSObject = {
+  return {
     ...typography.body1.style,
-    fontSize: typography.pxToRem(fontSize),
     display: 'inline-block',
     width: '100%',
     position: 'relative',
     backgroundColor: colors.background.paper,
-    border: `${themeSize.border}px solid ${colors.divider.primary}`,
-    borderRadius: themeSize.borderRadius,
     transition: transitions.standard(['borderColor', 'boxShadow']),
-    [`.${clsPrefix}-textarea__inner`]: {
-      padding: `${themeSize.padding.y}px ${themeSize.padding.x}px`,
-      // 高度最低为一行高度
-      minHeight: themeSize.padding.y * 2 + fontSize * typography.body1.info.lineHeight,
-    },
-    [`.${clsPrefix}-textarea__suffix`]: {
-      position: 'absolute',
-      zIndex: 1,
-      top: 0,
-      right: themeSize.padding.x,
-      padding: `${themeSize.padding.y}px 0`,
-      height: '100%',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'space-between',
-      alignItems: 'flex-end',
-      boxSizing: 'border-box',
-      '&--overflow': {
-        flexDirection: 'row',
-        alignItems: 'center',
-      },
-      '&:not(&--overflow)': {
-        [`.${clsPrefix}-textarea__count`]: {
-          marginTop: 'auto',
+    variants: [
+      {
+        props: {
+          disabled: true,
+        },
+        style: {
+          opacity: colors.opacity.disabled,
+          cursor: 'not-allowed',
         },
       },
-    },
-    [`.${clsPrefix}-textarea__clear`]: {
-      color: colors.text.hint,
-      display: 'inline-flex',
-      alignItems: 'center',
-      cursor: 'pointer',
-      transition: transitions.standard('color'),
-      '&:hover': {
-        color: colors.text.secondary,
+      ...Object.keys(sizes).map((k) => {
+        const sizeKey = k as SizeVariant;
+        const themeSize = sizes[sizeKey];
+        const fontSize = typography.body1.info.size * themeSize.fontSize;
+
+        return {
+          props: {
+            size: sizeKey,
+          },
+          style: {
+            fontSize: typography.pxToRem(fontSize),
+            border: `${themeSize.border}px solid ${colors.divider.primary}`,
+            borderRadius: themeSize.borderRadius,
+          },
+        };
+      }),
+      {
+        props: {
+          disabled: false,
+          readOnly: false,
+        },
+        style: {},
+        variants: [
+          {
+            props: {
+              focused: true,
+            },
+            style: {
+              borderColor: colors.themes.primary.divider.focus,
+              boxShadow: `0 0 0 2px ${colors.themes.primary.outline}`,
+            },
+          },
+          {
+            props: {
+              focused: false,
+            },
+            style: {
+              '&:hover': {
+                borderColor: colors.themes.primary.divider.hover,
+              },
+            },
+          },
+        ],
       },
-    },
-    [`.${clsPrefix}-textarea__count`]: {
-      color: colors.text.hint,
-      backgroundColor: colors.background.paper,
-      marginLeft: 4,
-    },
+    ],
   };
-
-  if (disabled) {
-    styles.opacity = colors.opacity.disabled;
-    styles.cursor = 'not-allowed';
-  } else if (!readOnly) {
-    if (focused) {
-      styles.borderColor = colors.themes.primary.divider.focus;
-      styles.boxShadow = `0 0 0 2px ${colors.themes.primary.outline}`;
-    } else {
-      styles['&:hover'] = {
-        borderColor: colors.themes.primary.divider.hover,
-      };
-    }
-  }
-
-  return styles;
 });
 
-const TextareaInner = styled('textarea', {
+const TextareaInner = memoStyled('textarea', {
   name: displayName,
   slot: 'Inner',
-})<{ autoHeight?: boolean }>(({ theme, styleProps }) => {
-  const { mixins, typography } = theme;
-
-  const { autoHeight } = styleProps;
-
-  const styles: CSSObject = {
+})<{ autoHeight: boolean; size: SizeVariant }>(({ theme: { mixins, typography, sizes } }) => {
+  return {
     ...typography.body1.style,
     ...mixins.placeholder(),
     fontSize: 'inherit',
@@ -147,13 +132,103 @@ const TextareaInner = styled('textarea', {
     boxSizing: 'border-box',
     verticalAlign: 'bottom',
     resize: 'vertical',
+    variants: [
+      {
+        props: {
+          autoHeight: true,
+        },
+        style: {
+          resize: 'none',
+        },
+      },
+      ...Object.keys(sizes).map((k) => {
+        const sizeKey = k as SizeVariant;
+        const themeSize = sizes[sizeKey];
+
+        const fontSize = typography.body1.info.size * themeSize.fontSize;
+
+        return {
+          props: {
+            size: sizeKey,
+          },
+          style: {
+            padding: `${themeSize.padding.y}px ${themeSize.padding.x}px`,
+            // 高度最低为一行高度
+            minHeight: themeSize.padding.y * 2 + fontSize * typography.body1.info.lineHeight,
+          },
+        };
+      }),
+    ],
   };
+});
 
-  if (autoHeight) {
-    styles.resize = 'none';
-  }
+const TextareaSuffix = memoStyled('span', {
+  name: displayName,
+  slot: 'Suffix',
+})<{ overflow: boolean; size: SizeVariant }>(({ theme: { sizes } }) => {
+  return {
+    position: 'absolute',
+    zIndex: 1,
+    top: 0,
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
+    boxSizing: 'border-box',
+    variants: [
+      {
+        props: {
+          overflow: true,
+        },
+        style: {
+          flexDirection: 'row',
+          alignItems: 'center',
+        },
+      },
+      ...Object.keys(sizes).map((k) => {
+        const sizeKey = k as SizeVariant;
+        const themeSize = sizes[sizeKey];
 
-  return styles;
+        return {
+          props: {
+            size: sizeKey,
+          },
+          style: {
+            right: themeSize.padding.x,
+            padding: `${themeSize.padding.y}px 0`,
+          },
+        };
+      }),
+    ],
+  };
+});
+
+const TextareaClear = memoStyled('span', {
+  name: displayName,
+  slot: 'Clear',
+})(({ theme: { colors, transitions } }) => {
+  return {
+    color: colors.text.hint,
+    display: 'inline-flex',
+    alignItems: 'center',
+    cursor: 'pointer',
+    transition: transitions.standard('color'),
+    '&:hover': {
+      color: colors.text.secondary,
+    },
+  };
+});
+
+const TextareaCount = memoStyled('span', {
+  name: displayName,
+  slot: 'Count',
+})(({ theme: { colors } }) => {
+  return {
+    color: colors.text.hint,
+    backgroundColor: colors.background.paper,
+    marginLeft: 4,
+  };
 });
 
 export enum ResizeStatus {
@@ -162,7 +237,7 @@ export enum ResizeStatus {
 }
 
 const Textarea = forwardRef<TextareaInstance, TextareaProps>((props, ref) => {
-  const { clsPrefix, sizeVariant } = useTheme();
+  const { sizeVariant } = useTheme();
 
   const {
     defaultValue = '',
@@ -174,7 +249,6 @@ const Textarea = forwardRef<TextareaInstance, TextareaProps>((props, ref) => {
     disabled,
     readOnly,
     size = sizeVariant,
-    className,
     onFocus,
     onBlur,
     style,
@@ -197,6 +271,8 @@ const Textarea = forwardRef<TextareaInstance, TextareaProps>((props, ref) => {
   } = useInput<HTMLTextAreaElement>({ setValue: handleValueChange, maxLength });
 
   const rootRef = useRef<HTMLDivElement>(null);
+
+  const { ref: suffixRef, overflow } = useOverflow<HTMLSpanElement>({ value });
 
   useImperativeHandle(ref, () => {
     return {
@@ -285,19 +361,6 @@ const Textarea = forwardRef<TextareaInstance, TextareaProps>((props, ref) => {
     handleValueChange('');
   });
 
-  const rootClassName = `${clsPrefix}-textarea`;
-
-  const rootClasses = clsx(
-    `${rootClassName}--size-${size}`,
-    {
-      [`${rootClassName}--focused`]: focused,
-      [`${rootClassName}--disabled`]: disabled,
-      [`${rootClassName}--readonly`]: readOnly,
-      [`${rootClassName}--auto-height`]: autoHeight,
-    },
-    className,
-  );
-
   // 始终按照受控显示
   const { value: actualValue, wordCount } = getWordInfo(value, true);
 
@@ -306,24 +369,17 @@ const Textarea = forwardRef<TextareaInstance, TextareaProps>((props, ref) => {
   if (showCount) {
     const msg = `${wordCount}${hasMaxLength ? `/${maxLength}` : ''}`;
 
-    showCountNode = <span className={`${rootClassName}__count`}>{msg}</span>;
+    showCountNode = <TextareaCount>{msg}</TextareaCount>;
   }
 
   const showClearNode = !disabled && !readOnly && allowClear && wordCount > 0 && (
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-    <span
-      aria-label='clear'
-      className={`${rootClassName}__clear`}
-      role='button'
-      tabIndex={-1}
-      onClick={handleReset}
-    >
+    <TextareaClear aria-label='clear' role='button' tabIndex={-1} onClick={handleReset}>
       <CloseCircleFilled />
-    </span>
+    </TextareaClear>
   );
 
   const suffixNode = (showClearNode || showCountNode) && (
-    <TextareaSuffix value={actualValue}>
+    <TextareaSuffix ref={suffixRef} styleProps={{ overflow, size }}>
       {showClearNode}
       {showCountNode}
     </TextareaSuffix>
@@ -331,10 +387,15 @@ const Textarea = forwardRef<TextareaInstance, TextareaProps>((props, ref) => {
 
   return (
     <TextareaRoot
-      className={rootClasses}
       ref={rootRef}
       style={style}
-      styleProps={{ focused, size, disabled, readOnly }}
+      styleProps={{
+        focused,
+        size,
+        disabled: !!disabled,
+        readOnly: !!readOnly,
+        autoHeight: !!autoHeight,
+      }}
     >
       <TextareaInner
         aria-disabled={disabled}
@@ -344,7 +405,7 @@ const Textarea = forwardRef<TextareaInstance, TextareaProps>((props, ref) => {
         readOnly={readOnly}
         ref={textareaRef}
         style={autoHeight ? textAreaStyles : {}}
-        styleProps={{ autoHeight: !!autoHeight }}
+        styleProps={{ autoHeight: !!autoHeight, size }}
         value={actualValue}
         onBlur={handleBlur}
         onChange={handleChange}

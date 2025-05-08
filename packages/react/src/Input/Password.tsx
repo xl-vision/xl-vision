@@ -1,12 +1,10 @@
 import { useConstantFn } from '@xl-vision/hooks';
 import { EyeInvisibleOutlined, EyeOutlined } from '@xl-vision/icons';
 import { isProduction } from '@xl-vision/utils';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { ReactNode, forwardRef, useState, MouseEvent } from 'react';
 import Input, { InputInstance, InputProps } from './Input';
-import { styled } from '../styles';
-import { useTheme } from '../ThemeProvider';
+import memoStyled from '../memoStyled';
 
 export type PasswordProps = Omit<InputProps, 'type' | 'suffix'> & {
   renderIcon?: (visible: boolean) => ReactNode;
@@ -16,7 +14,14 @@ export type PasswordInstance = InputInstance;
 
 const displayName = 'Password';
 
-const PasswordIcon = styled('span', {
+const PasswordRoot = memoStyled(Input, {
+  name: displayName,
+  slot: 'Root',
+})(() => {
+  return {};
+});
+
+const PasswordIcon = memoStyled('span', {
   name: displayName,
   slot: 'Icon',
 })(({ theme }) => {
@@ -39,8 +44,7 @@ const defaultRenderIcon = (visible: boolean) =>
   visible ? <EyeInvisibleOutlined /> : <EyeOutlined />;
 
 const Password = forwardRef<PasswordInstance, PasswordProps>((props, ref) => {
-  const { clsPrefix } = useTheme();
-  const { renderIcon = defaultRenderIcon, className, ...others } = props;
+  const { renderIcon = defaultRenderIcon, ...others } = props;
 
   const [visible, setVisible] = useState(false);
 
@@ -66,17 +70,7 @@ const Password = forwardRef<PasswordInstance, PasswordProps>((props, ref) => {
     </PasswordIcon>
   );
 
-  const rootClassName = `${clsPrefix}-password`;
-
-  return (
-    <Input
-      {...others}
-      className={clsx(rootClassName, className)}
-      ref={ref}
-      suffix={suffix}
-      type={type}
-    />
-  );
+  return <PasswordRoot {...others} ref={ref} suffix={suffix} type={type} />;
 });
 
 if (!isProduction) {

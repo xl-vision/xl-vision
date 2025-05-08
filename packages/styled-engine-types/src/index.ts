@@ -19,10 +19,13 @@ export type FalsyInterpolation = false | null | undefined;
 
 export type Keyframes = {};
 
+export type Css = {};
+
 export type InterpolationPrimitive =
   | number
   | string
   | Keyframes
+  | Css
   | CSSObject
   | FalsyInterpolation
   | StyledComponentInterpolation;
@@ -103,3 +106,9 @@ export type CreateKeyframes = (
   // keyframes not support to pass props
   ...interpolations: Array<SimpleInterpolation>
 ) => Keyframes;
+
+export type CreateCss = (
+  first: TemplateStringsArray,
+  // keyframes not support to pass props
+  ...interpolations: Array<SimpleInterpolation>
+) => Css;

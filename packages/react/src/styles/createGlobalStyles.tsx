@@ -9,30 +9,18 @@ import { Theme } from '../ThemeProvider';
 
 const createGlobalStyles = <
   S extends object | void = void,
-  P extends object = object,
   ST = S extends void ? { theme: Theme } : { styleProps: S; theme: Theme },
   SPT = S extends void ? { theme?: Theme } : { styleProps: S; theme?: Theme },
 >(
-  first: TemplateStringsArray | CSSObject | FunctionInterpolation<P & ST>,
-  ...styles: Array<Interpolation<P & ST>>
+  first: TemplateStringsArray | CSSObject | FunctionInterpolation<object & ST>,
+  ...styles: Array<Interpolation<object & ST>>
 ) => {
   const newStyles = styles.map(applyTheme);
 
   if (Array.isArray(first) && 'raw' in first) {
-    return innerCreateGlobalStyles<P & SPT>(first, ...newStyles);
+    return innerCreateGlobalStyles<object & SPT>(first, ...newStyles);
   }
 
-  return innerCreateGlobalStyles<P & SPT>(applyTheme(first), ...newStyles);
-
-  // // @ts-expect-error
-  // // eslint-disable-next-line react/display-name
-  // const DefaultComponent: typeof InnerComponent = forwardRef((props, ref) => {
-  //   const { clsPrefix } = useTheme();
-
-  //   // @ts-expect-error
-  //   return <InnerComponent {...props} clsPrefix={clsPrefix} ref={ref} />;
-  // });
-
-  // return DefaultComponent;
+  return innerCreateGlobalStyles<object & SPT>(applyTheme(first), ...newStyles);
 };
 export default createGlobalStyles;

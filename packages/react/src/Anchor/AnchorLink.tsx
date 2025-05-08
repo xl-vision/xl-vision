@@ -1,6 +1,5 @@
 import { useConstantFn } from '@xl-vision/hooks';
 import { isProduction } from '@xl-vision/utils';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
   HTMLAttributes,
@@ -12,8 +11,7 @@ import {
   useRef,
 } from 'react';
 import AnchorContext from './AnchorContext';
-import { styled } from '../styles';
-import { useTheme } from '../ThemeProvider';
+import memoStyled from '../memoStyled';
 import { RefInstance } from '../types';
 
 export type AnchorLinkProps = Omit<HTMLAttributes<HTMLDivElement>, 'title'> & {
@@ -25,44 +23,50 @@ export type AnchorLinkInstance = RefInstance<HTMLDivElement>;
 
 const displayName = 'AnchorLink';
 
-const AnchorLinkRoot = styled('div', {
+const AnchorLinkRoot = memoStyled('div', {
   name: displayName,
   slot: 'Root',
-})(() => {
+})<{ active: boolean }>(() => {
   return {
     padding: '4px 0 4px 12px',
     lineHeight: 1,
   };
 });
 
-const AnchorLinkTitle = styled('a', {
+const AnchorLinkTitle = memoStyled('a', {
   name: displayName,
   slot: 'Title',
-})<{ isActive: boolean }>(({ theme, styleProps }) => {
+})<{ active: boolean }>(({ theme }) => {
   const { colors, typography, transitions } = theme;
-
-  const { isActive } = styleProps;
 
   return {
     ...typography.subtitle2.style,
-    color: isActive ? colors.themes.primary.foreground.active : colors.text.primary,
+    color: colors.text.primary,
     textDecoration: 'none',
     display: 'block',
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
     overflow: 'hidden',
     transition: transitions.standard('color'),
-
     '&:hover': {
       color: colors.themes.primary.foreground.hover,
     },
+
+    variants: [
+      {
+        props: {
+          active: true,
+        },
+        style: {
+          color: colors.themes.primary.foreground.active,
+        },
+      },
+    ],
   };
 });
 
 const AnchorLink = forwardRef<AnchorLinkInstance, AnchorLinkProps>((props, ref) => {
-  const { clsPrefix } = useTheme();
-
-  const { title, href, className, children, ...others } = props;
+  const { title, href, children, ...others } = props;
 
   const rootRef = useRef<HTMLDivElement>(null);
 
@@ -87,28 +91,13 @@ const AnchorLink = forwardRef<AnchorLinkInstance, AnchorLinkProps>((props, ref) 
     };
   }, [registerLink, unregisterLink, href]);
 
-  const isActive = activeLink === href;
-
-  const rootClassName = `${clsPrefix}-anchor-link`;
-
-  const rootClasses = clsx(
-    {
-      [`${rootClassName}--active`]: isActive,
-    },
-    className,
-  );
-
-  const titleClassName = `${rootClassName}__title`;
-  const titleClasses = clsx({
-    [`${titleClassName}--active`]: isActive,
-  });
+  const active = activeLink === href;
 
   return (
-    <AnchorLinkRoot {...others} className={rootClasses} ref={rootRef}>
+    <AnchorLinkRoot {...others} ref={rootRef} styleProps={{ active }}>
       <AnchorLinkTitle
-        className={titleClasses}
         href={href}
-        styleProps={{ isActive }}
+        styleProps={{ active }}
         title={typeof title === 'string' ? title : ''}
         onClick={handleClick}
       >
