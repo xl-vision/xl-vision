@@ -1,6 +1,5 @@
 import { useConstantFn, usePrevious, useValueChange } from '@xl-vision/hooks';
 import { CloseCircleFilled } from '@xl-vision/icons';
-import { CSSObject } from '@xl-vision/styled-engine';
 import { isObject, isProduction } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import {
@@ -19,7 +18,7 @@ import { flushSync } from 'react-dom';
 import calculateNodeHeight from './calculateNodeHeight';
 import useOverflow from './useOverflow';
 import useInput from '../hooks/useInput';
-import { styled } from '../styles';
+import memoStyled from '../memoStyled';
 import { SizeVariant, useTheme } from '../ThemeProvider';
 import { RefInstance } from '../types';
 
@@ -40,65 +39,88 @@ export type TextareaInstance = RefInstance<HTMLDivElement>;
 
 const displayName = 'Textarea';
 
-const TextareaRoot = styled('span', {
+const TextareaRoot = memoStyled('span', {
   name: displayName,
   slot: 'Root',
 })<{
   focused: boolean;
   size: SizeVariant;
-  disabled?: boolean;
-  readOnly?: boolean;
-  autoHeight?: boolean;
-}>(({ theme, styleProps }) => {
+  disabled: boolean;
+  readOnly: boolean;
+  autoHeight: boolean;
+}>(({ theme }) => {
   const { colors, sizes, typography, transitions } = theme;
 
-  const { size, focused, disabled, readOnly } = styleProps;
-
-  const themeSize = sizes[size];
-
-  const fontSize = typography.body1.info.size * themeSize.fontSize;
-
-  const styles: CSSObject = {
+  return {
     ...typography.body1.style,
-    fontSize: typography.pxToRem(fontSize),
     display: 'inline-block',
     width: '100%',
     position: 'relative',
     backgroundColor: colors.background.paper,
-    border: `${themeSize.border}px solid ${colors.divider.primary}`,
-    borderRadius: themeSize.borderRadius,
     transition: transitions.standard(['borderColor', 'boxShadow']),
+    variants: [
+      {
+        props: {
+          disabled: true,
+        },
+        style: {
+          opacity: colors.opacity.disabled,
+          cursor: 'not-allowed',
+        },
+      },
+      ...Object.keys(sizes).map((k) => {
+        const sizeKey = k as SizeVariant;
+        const themeSize = sizes[sizeKey];
+        const fontSize = typography.body1.info.size * themeSize.fontSize;
+
+        return {
+          props: {
+            size: sizeKey,
+          },
+          style: {
+            fontSize: typography.pxToRem(fontSize),
+            border: `${themeSize.border}px solid ${colors.divider.primary}`,
+            borderRadius: themeSize.borderRadius,
+          },
+        };
+      }),
+      {
+        props: {
+          disabled: false,
+          readOnly: false,
+        },
+        style: {},
+        variants: [
+          {
+            props: {
+              focused: true,
+            },
+            style: {
+              borderColor: colors.themes.primary.divider.focus,
+              boxShadow: `0 0 0 2px ${colors.themes.primary.outline}`,
+            },
+          },
+          {
+            props: {
+              focused: false,
+            },
+            style: {
+              '&:hover': {
+                borderColor: colors.themes.primary.divider.hover,
+              },
+            },
+          },
+        ],
+      },
+    ],
   };
-
-  if (disabled) {
-    styles.opacity = colors.opacity.disabled;
-    styles.cursor = 'not-allowed';
-  } else if (!readOnly) {
-    if (focused) {
-      styles.borderColor = colors.themes.primary.divider.focus;
-      styles.boxShadow = `0 0 0 2px ${colors.themes.primary.outline}`;
-    } else {
-      styles['&:hover'] = {
-        borderColor: colors.themes.primary.divider.hover,
-      };
-    }
-  }
-
-  return styles;
 });
 
-const TextareaInner = styled('textarea', {
+const TextareaInner = memoStyled('textarea', {
   name: displayName,
   slot: 'Inner',
-})<{ autoHeight?: boolean; size: SizeVariant }>(({
-  theme: { mixins, typography, sizes },
-  styleProps: { autoHeight, size },
-}) => {
-  const themeSize = sizes[size];
-
-  const fontSize = typography.body1.info.size * themeSize.fontSize;
-
-  const styles: CSSObject = {
+})<{ autoHeight: boolean; size: SizeVariant }>(({ theme: { mixins, typography, sizes } }) => {
+  return {
     ...typography.body1.style,
     ...mixins.placeholder(),
     fontSize: 'inherit',
@@ -110,48 +132,79 @@ const TextareaInner = styled('textarea', {
     boxSizing: 'border-box',
     verticalAlign: 'bottom',
     resize: 'vertical',
-    padding: `${themeSize.padding.y}px ${themeSize.padding.x}px`,
-    // 高度最低为一行高度
-    minHeight: themeSize.padding.y * 2 + fontSize * typography.body1.info.lineHeight,
+    variants: [
+      {
+        props: {
+          autoHeight: true,
+        },
+        style: {
+          resize: 'none',
+        },
+      },
+      ...Object.keys(sizes).map((k) => {
+        const sizeKey = k as SizeVariant;
+        const themeSize = sizes[sizeKey];
+
+        const fontSize = typography.body1.info.size * themeSize.fontSize;
+
+        return {
+          props: {
+            size: sizeKey,
+          },
+          style: {
+            padding: `${themeSize.padding.y}px ${themeSize.padding.x}px`,
+            // 高度最低为一行高度
+            minHeight: themeSize.padding.y * 2 + fontSize * typography.body1.info.lineHeight,
+          },
+        };
+      }),
+    ],
   };
-
-  if (autoHeight) {
-    styles.resize = 'none';
-  }
-
-  return styles;
 });
 
-const TextareaSuffix = styled('span', {
+const TextareaSuffix = memoStyled('span', {
   name: displayName,
   slot: 'Suffix',
-})<{ overflow?: boolean; size: SizeVariant }>(({
-  theme: { sizes },
-  styleProps: { overflow, size },
-}) => {
-  const themeSize = sizes[size];
-  return [
-    {
-      position: 'absolute',
-      zIndex: 1,
-      top: 0,
-      right: themeSize.padding.x,
-      padding: `${themeSize.padding.y}px 0`,
-      height: '100%',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'space-between',
-      alignItems: 'flex-end',
-      boxSizing: 'border-box',
-    },
-    overflow && {
-      flexDirection: 'row',
-      alignItems: 'center',
-    },
-  ];
+})<{ overflow: boolean; size: SizeVariant }>(({ theme: { sizes } }) => {
+  return {
+    position: 'absolute',
+    zIndex: 1,
+    top: 0,
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
+    boxSizing: 'border-box',
+    variants: [
+      {
+        props: {
+          overflow: true,
+        },
+        style: {
+          flexDirection: 'row',
+          alignItems: 'center',
+        },
+      },
+      ...Object.keys(sizes).map((k) => {
+        const sizeKey = k as SizeVariant;
+        const themeSize = sizes[sizeKey];
+
+        return {
+          props: {
+            size: sizeKey,
+          },
+          style: {
+            right: themeSize.padding.x,
+            padding: `${themeSize.padding.y}px 0`,
+          },
+        };
+      }),
+    ],
+  };
 });
 
-const TextareaClear = styled('span', {
+const TextareaClear = memoStyled('span', {
   name: displayName,
   slot: 'Clear',
 })(({ theme: { colors, transitions } }) => {
@@ -167,7 +220,7 @@ const TextareaClear = styled('span', {
   };
 });
 
-const TextareaCount = styled('span', {
+const TextareaCount = memoStyled('span', {
   name: displayName,
   slot: 'Count',
 })(({ theme: { colors } }) => {
@@ -336,7 +389,13 @@ const Textarea = forwardRef<TextareaInstance, TextareaProps>((props, ref) => {
     <TextareaRoot
       ref={rootRef}
       style={style}
-      styleProps={{ focused, size, disabled, readOnly, autoHeight: !!autoHeight }}
+      styleProps={{
+        focused,
+        size,
+        disabled: !!disabled,
+        readOnly: !!readOnly,
+        autoHeight: !!autoHeight,
+      }}
     >
       <TextareaInner
         aria-disabled={disabled}

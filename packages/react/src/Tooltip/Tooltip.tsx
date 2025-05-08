@@ -1,8 +1,8 @@
 import { isProduction, isServer } from '@xl-vision/utils';
 import PropTypes from 'prop-types';
 import { Children, forwardRef, ReactElement, ReactNode } from 'react';
+import memoStyled from '../memoStyled';
 import Popper, { PopperChildrenProps, PopperInstance, PopperProps } from '../Popper';
-import { styled } from '../styles';
 import { useTheme } from '../ThemeProvider';
 
 export type TooltipChildrenProps = PopperChildrenProps & {};
@@ -18,7 +18,7 @@ export type TooltipInstance = PopperInstance;
 
 const displayName = 'Tooltip';
 
-const TooltipRoot = styled(Popper, {
+const TooltipRoot = memoStyled(Popper, {
   name: displayName,
   slot: 'Root',
 })(({ theme }) => {
@@ -36,12 +36,11 @@ export type TooltipPopupStyleProps = {
   hasWidth: boolean;
 };
 
-const TooltipPopup = styled('div', {
+const TooltipPopup = memoStyled('div', {
   name: displayName,
   slot: 'Popup',
-})<TooltipPopupStyleProps>(({ theme, styleProps }) => {
+})<TooltipPopupStyleProps>(({ theme }) => {
   const { colors, typography, sizes, elevations } = theme;
-  const { hasWidth } = styleProps;
 
   return {
     backgroundColor: colors.background.spotlight,
@@ -49,18 +48,24 @@ const TooltipPopup = styled('div', {
     padding: '4px 8px',
     borderRadius: sizes.middle.borderRadius,
     boxShadow: elevations[2],
-
     ...typography.caption.style,
-    ...(hasWidth && {
-      whiteSpace: 'pre-wrap',
-      textAlign: 'justify',
-      wordWrap: 'break-word',
-      wordBreak: 'break-all',
-    }),
+    variants: [
+      {
+        props: {
+          hasWidth: true,
+        },
+        style: {
+          whiteSpace: 'pre-wrap',
+          textAlign: 'justify',
+          wordWrap: 'break-word',
+          wordBreak: 'break-all',
+        },
+      },
+    ],
   };
 });
 
-const TooltipArrow = styled('div', {
+const TooltipArrow = memoStyled('div', {
   name: displayName,
   slot: 'Arrow',
 })(({ theme }) => {

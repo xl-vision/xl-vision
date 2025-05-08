@@ -13,7 +13,7 @@ import {
 } from 'react';
 import RowContext from './RowContext';
 import useBreakPoints from './useBreakPoints';
-import { styled } from '../styles';
+import memoStyled from '../memoStyled';
 import { Breakpoint } from '../ThemeProvider';
 import { RefInstance } from '../types';
 
@@ -49,28 +49,49 @@ const alignMap: Record<RowAlign, CSSObject['alignItems']> = {
   bottom: 'flex-end',
 };
 
-const RowRoot = styled('div', {
+const RowRoot = memoStyled('div', {
   name: displayName,
   slot: 'Root',
-})<{ justify?: RowJustify; align?: RowAlign; wrap?: boolean }>(({
-  styleProps: { justify, align, wrap },
-}) => {
-  return [
-    {
-      boxSizing: 'border-box',
-      display: 'flex',
-      flexDirection: 'row',
-    },
-    justify && {
-      justifyContent: justifyMap[justify],
-    },
-    align && {
-      alignItems: alignMap[align],
-    },
-    wrap && {
-      flexWrap: 'wrap',
-    },
-  ];
+})<{ justify?: RowJustify; align?: RowAlign; wrap: boolean }>(() => {
+  return {
+    boxSizing: 'border-box',
+    display: 'flex',
+    flexDirection: 'row',
+    variants: [
+      {
+        props: {
+          wrap: true,
+        },
+        style: {
+          flexWrap: 'wrap',
+        },
+      },
+      ...Object.keys(justifyMap).map((k) => {
+        const justify = k as RowJustify;
+
+        return {
+          props: {
+            justify,
+          },
+          style: {
+            justifyContent: justifyMap[justify],
+          },
+        };
+      }),
+      ...Object.keys(alignMap).map((k) => {
+        const align = k as RowAlign;
+
+        return {
+          props: {
+            align,
+          },
+          style: {
+            alignItems: alignMap[align],
+          },
+        };
+      }),
+    ],
+  };
 });
 
 const Row = forwardRef<RowInstance, RowProps>((props, ref) => {
@@ -134,7 +155,7 @@ const Row = forwardRef<RowInstance, RowProps>((props, ref) => {
         as={component}
         ref={rootRef}
         style={rowStyle}
-        styleProps={{ justify, align, wrap }}
+        styleProps={{ justify, align, wrap: !!wrap }}
       >
         {children}
       </RowRoot>
