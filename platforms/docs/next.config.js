@@ -24,12 +24,6 @@ const nextConfig = async () => {
       typedEnv: true,
     },
     webpack: (config, { defaultLoaders }) => {
-      const isStyledComponents = process.env.STYLE_LIB === 'styled-components';
-
-      if (isStyledComponents) {
-        config.resolve.alias['@xl-vision/styled-engine'] = '@xl-vision/styled-engine-sc/src';
-      }
-
       config.module.rules.unshift({
         test: /\.mdx?$/,
         oneOf: [

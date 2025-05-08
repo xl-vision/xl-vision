@@ -15,7 +15,6 @@
   "scripts": {
     "prepare": "husky",
     "dev": "cd platforms/docs && npm run dev",
-    "dev:sc": "cd platforms/docs && npm run dev:sc",
     "dev-next": "cd platforms/docs-next && npm run dev",
     "docs": "cd platforms/docs && npm run docs",
     "docs:analyze": "cd platforms/docs && npm run analyze",
