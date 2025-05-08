@@ -59,6 +59,6 @@
     "pinyin": "^3.1.0",
     "prismjs": "^1.29.0",
     "remark-emoji": "^5.0.1",
-    "remark-gfm": "^4.0.0"
+    "remark-gfm": "^4.0.1"
   }
 }
