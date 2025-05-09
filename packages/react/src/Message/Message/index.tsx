@@ -36,9 +36,11 @@ const DefaultLoadingIcon = memoStyled(LoadingOutlined, {
   name: displayName,
   slot: 'LoadingIcon',
 })(() => {
-  return css`
-    animation: ${loadingKeyframes} 1s linear infinite;
-  `;
+  return {
+    style: css`
+      animation: ${loadingKeyframes} 1s linear infinite;
+    `,
+  };
 });
 
 const MessageWrapper: FC<MessageWrapperProps> = ({ type, ...others }) => {

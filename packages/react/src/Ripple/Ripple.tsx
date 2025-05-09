@@ -70,17 +70,19 @@ const RippleInner = memoStyled('div', {
   slot: 'Inner',
 })(({ theme }) => {
   const { clsPrefix } = theme;
-  return css`
-    position: absolute;
-    background-color: currentColor;
-    border-radius: 50%;
-    &.${`${clsPrefix}-ripple--pulsate`} {
-      animation-name: ${pulsateKeyframe};
-      animation-duration: 2.5s;
-      animation-timing-function: ease-in-out;
-      animation-iteration-count: infinite;
-    }
-  `;
+  return {
+    style: css`
+      position: absolute;
+      background-color: currentColor;
+      border-radius: 50%;
+      &.${`${clsPrefix}-ripple--pulsate`} {
+        animation-name: ${pulsateKeyframe};
+        animation-duration: 2.5s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+      }
+    `,
+  };
 });
 
 const DELAY_RIPPLE = 80;

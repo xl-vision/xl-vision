@@ -1,18 +1,21 @@
-import { CSSObject } from '@xl-vision/styled-engine';
+import { Css, CSSObject } from '@xl-vision/styled-engine';
 import { isEqual } from '@xl-vision/utils';
 import { ComponentProps, ComponentType, JSX } from 'react';
 import { styled, XlOptions } from '../styles';
 import { StyledComponent } from '../styles/types';
 import { Theme } from '../ThemeProvider';
 
-export type StyleVariant<SP> = {
+export type ThemeStyleValue = CSSObject | Css;
+
+export type ThemeStyleVariant<SP> = {
   props: Partial<SP> | Array<Partial<SP>>;
-  style: CSSObject;
-  variants?: Array<StyleVariant<SP>>;
+  style: ThemeStyleValue;
+  variants?: Array<ThemeStyleVariant<SP>>;
 };
 
 export type ThemeStyles<SP> = CSSObject & {
-  variants?: Array<StyleVariant<SP>>;
+  style?: ThemeStyleValue | Array<ThemeStyleValue>;
+  variants?: Array<ThemeStyleVariant<SP>>;
 };
 
 export type ThemeStyleFunction<SP> = (props: { theme: Theme }) => ThemeStyles<SP>;
@@ -25,7 +28,10 @@ const memoStyled = <Tag extends keyof JSX.IntrinsicElements | ComponentType<Comp
 
   return <SP extends object | void = void>(fn: ThemeStyleFunction<SP>) => {
     let lastTheme: Theme | undefined;
-    let lastValue: ThemeStyles<SP>;
+    let lastValue: {
+      styles: Array<ThemeStyleValue>;
+      variants: Array<ThemeStyleVariant<SP>>;
+    };
     return styledFn<SP>((props) => {
       const { styleProps = {}, theme } = props as {
         theme: Theme;
@@ -34,19 +40,30 @@ const memoStyled = <Tag extends keyof JSX.IntrinsicElements | ComponentType<Comp
 
       if (!lastValue || lastTheme !== theme) {
         // console.log(lastValue, 'miss cache----');
-        lastValue = fn({ theme });
+        const { style, variants, ...others } = fn({ theme });
+        const styles: Array<ThemeStyleValue> = [others];
+
+        if (style) {
+          styles.push(...(Array.isArray(style) ? style : [style]));
+        }
+
+        lastValue = {
+          styles,
+          variants: variants || [],
+        };
+
         lastTheme = theme;
       }
 
-      const { variants, ...others } = lastValue;
+      const { variants, styles } = lastValue;
 
-      if (!variants || !variants.length) {
-        return lastValue;
+      if (!variants.length) {
+        return styles;
       }
 
-      const styles = filterVariants(variants, styleProps);
+      const variantStyles = filterVariants(variants, styleProps);
 
-      return [others, ...styles];
+      return [...styles, ...variantStyles];
     });
   };
 };
@@ -54,10 +71,10 @@ const memoStyled = <Tag extends keyof JSX.IntrinsicElements | ComponentType<Comp
 export default memoStyled;
 
 const filterVariants = <SP extends object>(
-  variants: Array<StyleVariant<SP>>,
+  variants: Array<ThemeStyleVariant<SP>>,
   styleProps: SP,
-): Array<CSSObject> => {
-  const matched: Array<CSSObject> = [];
+): Array<ThemeStyleValue> => {
+  const matched: Array<ThemeStyleValue> = [];
 
   variants.forEach(({ style, props, variants: innerVariants }) => {
     const propArray: Array<Record<string, unknown>> = Array.isArray(props) ? props : [props];

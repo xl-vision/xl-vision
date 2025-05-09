@@ -18,7 +18,7 @@ import {
 } from 'react';
 import { flushSync } from 'react-dom';
 import AvatarContext from './AvatarContext';
-import memoStyled, { StyleVariant } from '../memoStyled';
+import memoStyled, { ThemeStyleVariant } from '../memoStyled';
 import ResizeObserver from '../ResizeObserver';
 import { SizeVariant, useTheme } from '../ThemeProvider';
 import { RefInstance } from '../types';
@@ -88,7 +88,7 @@ const AvatarRoot = memoStyled('span', {
         },
       },
       ...Object.keys(sizes).flatMap<
-        StyleVariant<{
+        ThemeStyleVariant<{
           hasImage: boolean;
           shape: AvatarShape;
           size: SizeVariant;

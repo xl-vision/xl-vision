@@ -13,22 +13,27 @@ export type CSSOthersObject = {
 
 export type CSSObject = CSSProperties & CSSPseudos & CSSOthersObject;
 
-export type CSSKeyframes = object & { [key: string]: CSSObject };
+export type CSSKeyframes = { [key: string]: CSSObject };
 
 export type FalsyInterpolation = false | null | undefined;
 
-export type Keyframes = {};
+export type Keyframes = {
+  readonly __internal_key__: unique symbol;
+};
 
-export type Css = {};
+export type Css = {
+  readonly __internal_key__: unique symbol;
+};
 
 export type InterpolationPrimitive =
   | number
   | string
-  | Keyframes
   | Css
+  | Keyframes
   | CSSObject
   | FalsyInterpolation
-  | StyledComponentInterpolation;
+  | StyledComponentInterpolation
+  | {};
 
 export type ArrayCSSInterpolation = Array<SimpleInterpolation>;
 
@@ -109,6 +114,5 @@ export type CreateKeyframes = (
 
 export type CreateCss = (
   first: TemplateStringsArray,
-  // keyframes not support to pass props
   ...interpolations: Array<SimpleInterpolation>
 ) => Css;

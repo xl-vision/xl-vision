@@ -13,7 +13,7 @@ import {
 } from 'react';
 import BaseButton, { BaseButtonInstance, BaseButtonProps } from '../BaseButton';
 import CollapseTransition from '../CollapseTransition';
-import memoStyled, { StyleVariant } from '../memoStyled';
+import memoStyled, { ThemeStyleVariant } from '../memoStyled';
 import { SizeVariant, ThemeVariant, useTheme } from '../ThemeProvider';
 
 export type ButtonColor = ThemeVariant | 'default';
@@ -92,7 +92,7 @@ const ButtonRoot = memoStyled(BaseButton, {
           width: '100%',
         },
       },
-      ...Object.keys(sizes).flatMap<StyleVariant<ButtonStyleProps>>((k) => {
+      ...Object.keys(sizes).flatMap<ThemeStyleVariant<ButtonStyleProps>>((k) => {
         const size = k as SizeVariant;
         const themeSize = sizes[size];
         const baseFontSize = buttonInfo.size * themeSize.fontSize;
@@ -199,7 +199,7 @@ const ButtonRoot = memoStyled(BaseButton, {
           },
         },
       },
-      ...Object.keys(colors.themes).flatMap<StyleVariant<ButtonStyleProps>>((k) => {
+      ...Object.keys(colors.themes).flatMap<ThemeStyleVariant<ButtonStyleProps>>((k) => {
         const colorKey = k as ThemeVariant;
         const color = colors.themes[colorKey];
         return [
@@ -427,15 +427,15 @@ const loadingKeyframes = keyframes`
   }
 `;
 
-// This `styled()` function invokes keyframes. `styled-components` only supports keyframes
-// in string templates. Do not convert these styles in JS object as it will break.
 const DefaultLoadingIcon = memoStyled(LoadingOutlined, {
   name: displayName,
   slot: 'LoadingIcon',
 })(() => {
-  return css`
-    animation: ${loadingKeyframes} 1s linear infinite;
-  `;
+  return {
+    style: css`
+      animation: ${loadingKeyframes} 1s linear infinite;
+    `,
+  };
 });
 
 const Button = forwardRef<ButtonInstance, ButtonProps>((props, ref) => {
