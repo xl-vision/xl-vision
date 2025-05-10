@@ -187,7 +187,6 @@ export default [
       'unicorn/no-array-for-each': 'off',
       'unicorn/better-regex': 'error',
       'unicorn/expiring-todo-comments': 'error',
-      'unicorn/import-index': 'error',
       'unicorn/prevent-abbreviations': 'off',
       'unicorn/prefer-at': 'off',
       'unicorn/prefer-query-selector': 'off',
