@@ -8,7 +8,7 @@ import { Theme } from '../ThemeProvider';
 export type ThemeStyleValue = CSSObject | Css;
 
 export type ThemeStyleVariant<SP> = {
-  props: Partial<SP> | Array<Partial<SP>>;
+  props?: Partial<SP> | Array<Partial<SP>>;
   style: ThemeStyleValue;
   variants?: Array<ThemeStyleVariant<SP>>;
 };
@@ -77,6 +77,16 @@ const filterVariants = <SP extends object>(
   const matched: Array<ThemeStyleValue> = [];
 
   variants.forEach(({ style, props, variants: innerVariants }) => {
+    if (!props) {
+      matched.push(style);
+
+      if (innerVariants) {
+        matched.push(...filterVariants(innerVariants, styleProps));
+      }
+
+      return;
+    }
+
     const propArray: Array<Record<string, unknown>> = Array.isArray(props) ? props : [props];
 
     if (

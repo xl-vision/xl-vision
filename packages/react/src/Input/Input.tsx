@@ -102,22 +102,28 @@ const InputAddonBefore = memoStyled('span', {
     flex: 'none',
     alignItems: 'center',
     backgroundColor: colors.background.default,
-    borderRightWidth: 0,
-    variants: Object.keys(sizes).map((k) => {
-      const sizeKey = k as SizeVariant;
-      const themeSize = sizes[sizeKey];
-      return {
-        props: {
-          size: sizeKey,
-        },
+    variants: [
+      ...Object.keys(sizes).map((k) => {
+        const sizeKey = k as SizeVariant;
+        const themeSize = sizes[sizeKey];
+        return {
+          props: {
+            size: sizeKey,
+          },
+          style: {
+            borderTopLeftRadius: themeSize.borderRadius,
+            borderBottomLeftRadius: themeSize.borderRadius,
+            padding: `0 ${themeSize.padding.x}px`,
+            border: `${themeSize.border}px solid ${colors.divider.primary}`,
+          },
+        };
+      }),
+      {
         style: {
-          borderTopLeftRadius: themeSize.borderRadius,
-          borderBottomLeftRadius: themeSize.borderRadius,
-          padding: `0 ${themeSize.padding.x}px`,
-          border: `${themeSize.border}px solid ${colors.divider.primary}`,
+          borderRightWidth: 0,
         },
-      };
-    }),
+      },
+    ],
   };
 });
 

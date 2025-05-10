@@ -22,7 +22,7 @@ const InputGroupRoot = memoStyled('div', {
   return {
     display: 'flex',
     flexDirection: 'row',
-    '& > *': {
+    [`& > *, & > .${clsPrefix}-button`]: {
       borderRadius: 0,
     },
     [`.${clsPrefix}-input`]: {

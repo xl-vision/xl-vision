@@ -10410,11 +10410,11 @@ exports[`Demo renders packages/react/src/Input/__doc__/Addon.tsx correctly 1`] =
   -ms-flex-align: center;
   align-items: center;
   background-color: #f5f5f5;
-  border-right-width: 0;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
   padding: 0 10px;
   border: 1px solid #d9d9d9;
+  border-right-width: 0;
 }
 
 .emotion-2 {
@@ -10526,11 +10526,11 @@ exports[`Demo renders packages/react/src/Input/__doc__/Addon.tsx correctly 1`] =
   -ms-flex-align: center;
   align-items: center;
   background-color: #f5f5f5;
-  border-right-width: 0;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
   padding: 0 10px;
   border: 1px solid #d9d9d9;
+  border-right-width: 0;
   border-left-width: 0;
   border-right-width: 1px;
   border-top-left-radius: 0;
@@ -11424,7 +11424,8 @@ exports[`Demo renders packages/react/src/Input/__doc__/Group.tsx correctly 1`] =
   flex-direction: row;
 }
 
-.emotion-0>* {
+.emotion-0>*,
+.emotion-0>.xl-button {
   border-radius: 0;
 }
 
@@ -11486,11 +11487,11 @@ exports[`Demo renders packages/react/src/Input/__doc__/Group.tsx correctly 1`] =
   -ms-flex-align: center;
   align-items: center;
   background-color: #f5f5f5;
-  border-right-width: 0;
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
   padding: 0 8px;
   border: 1px solid #d9d9d9;
+  border-right-width: 0;
 }
 
 .emotion-3 {
@@ -11713,7 +11714,8 @@ exports[`Demo renders packages/react/src/Input/__doc__/Group.tsx correctly 1`] =
   flex-direction: row;
 }
 
-.emotion-9>* {
+.emotion-9>*,
+.emotion-9>.xl-button {
   border-radius: 0;
 }
 
@@ -11775,11 +11777,11 @@ exports[`Demo renders packages/react/src/Input/__doc__/Group.tsx correctly 1`] =
   -ms-flex-align: center;
   align-items: center;
   background-color: #f5f5f5;
-  border-right-width: 0;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
   padding: 0 10px;
   border: 1px solid #d9d9d9;
+  border-right-width: 0;
 }
 
 .emotion-12 {
@@ -11891,7 +11893,8 @@ exports[`Demo renders packages/react/src/Input/__doc__/Group.tsx correctly 1`] =
   flex-direction: row;
 }
 
-.emotion-18>* {
+.emotion-18>*,
+.emotion-18>.xl-button {
   border-radius: 0;
 }
 
@@ -11953,11 +11956,11 @@ exports[`Demo renders packages/react/src/Input/__doc__/Group.tsx correctly 1`] =
   -ms-flex-align: center;
   align-items: center;
   background-color: #f5f5f5;
-  border-right-width: 0;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
   padding: 0 18px;
   border: 1px solid #d9d9d9;
+  border-right-width: 0;
 }
 
 .emotion-21 {
@@ -21311,11 +21314,11 @@ exports[`Demo renders packages/react/src/ResizeObserver/__doc__/Basic.tsx correc
   -ms-flex-align: center;
   align-items: center;
   background-color: #f5f5f5;
-  border-right-width: 0;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
   padding: 0 10px;
   border: 1px solid #d9d9d9;
+  border-right-width: 0;
 }
 
 .emotion-2 {
@@ -21423,11 +21426,11 @@ exports[`Demo renders packages/react/src/ResizeObserver/__doc__/Basic.tsx correc
   -ms-flex-align: center;
   align-items: center;
   background-color: #f5f5f5;
-  border-right-width: 0;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
   padding: 0 10px;
   border: 1px solid #d9d9d9;
+  border-right-width: 0;
   border-left-width: 0;
   border-right-width: 1px;
   border-top-left-radius: 0;
