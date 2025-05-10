@@ -160,8 +160,8 @@ importers:
         specifier: ^11.0.1
         version: 11.0.1
       globals:
-        specifier: ^15.14.0
-        version: 15.14.0
+        specifier: ^16.0.0
+        version: 16.1.0
       gulp:
         specifier: ^5.0.0
         version: 5.0.0
