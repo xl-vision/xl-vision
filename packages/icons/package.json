@@ -41,7 +41,7 @@
     "clsx": "^2.1.1"
   },
   "devDependencies": {
-    "fs-extra": "^11.2.0",
+    "fs-extra": "^11.3.0",
     "mustache": "^4.2.0",
     "svgo": "^3.3.2"
   },
