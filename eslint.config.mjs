@@ -68,6 +68,7 @@ const baseTsConfig = [
       'import-x/resolver': [
         createTypeScriptImportResolver({
           alwaysTryTypes: true,
+          noWarnOnMultipleProjects: true,
           project: ['./tsconfig.json', 'packages/*/tsconfig.json', 'platforms/*/tsconfig.json'],
         }),
       ],

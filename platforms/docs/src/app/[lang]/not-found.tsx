@@ -45,7 +45,8 @@ const Root = styled('div')`
       height: 43px;
       border-radius: 999px;
 
-      background: linear-gradient(
+      background:
+        linear-gradient(
           140deg,
           rgba(0, 0, 0, 0.1) 0%,
           rgba(0, 0, 0, 0.07) 43%,
@@ -74,7 +75,8 @@ const Root = styled('div')`
         height: 156px;
         left: 60px;
         bottom: -43px;
-        background: linear-gradient(
+        background:
+          linear-gradient(
             128deg,
             rgba(0, 0, 0, 0.1) 0%,
             rgba(0, 0, 0, 0.07) 40%,
@@ -104,7 +106,8 @@ const Root = styled('div')`
       width: 156px;
       height: 156px;
       border-radius: 999px;
-      background: linear-gradient(
+      background:
+        linear-gradient(
           -45deg,
           transparent 0%,
           rgba(0, 0, 0, 0.06) 50%,
@@ -124,7 +127,8 @@ const Root = styled('div')`
         background-color: transparent;
         left: 0px;
         bottom: 0px;
-        background: linear-gradient(
+        background:
+          linear-gradient(
             95deg,
             transparent 0%,
             transparent 8%,
