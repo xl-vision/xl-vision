@@ -13,7 +13,6 @@ import unicorn from 'eslint-plugin-unicorn';
 import globals from 'globals';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-// eslint-disable-next-line import-x/no-unresolved
 import tseslint from 'typescript-eslint';
 
 // mimic CommonJS variables -- not needed if using CommonJS
