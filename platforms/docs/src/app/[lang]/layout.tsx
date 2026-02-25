@@ -30,7 +30,7 @@ export const generateStaticParams = () => {
   return supportedLangs.map((lang) => ({ lang }));
 };
 
-const Layout: FC<{ children: ReactNode; params: Promise<{ lang: Lang }> }> = async ({
+const Layout: FC<{ children: ReactNode; params: Promise<{ lang: string }> }> = async ({
   children,
   params,
 }) => {
