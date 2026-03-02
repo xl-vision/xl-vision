@@ -45,7 +45,7 @@
     "@emotion/react": ">=10.0.0",
     "@emotion/styled": ">=10.0.0",
     "@emotion/utils": "^1.4.2",
-    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/eslintrc": "^3.3.4",
     "@eslint/js": "^9.39.3",
     "@rollup/plugin-alias": "^5.1.1",
     "@rollup/plugin-babel": "^6.1.0",
