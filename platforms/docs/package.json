@@ -48,7 +48,7 @@
     "@mdx-js/loader": "^3.1.1",
     "@next/bundle-analyzer": "15.5.12",
     "@next/eslint-plugin-next": "15.5.12",
-    "@types/codemirror": "^5.60.16",
+    "@types/codemirror": "^5.60.17",
     "@types/js-cookie": "^3.0.6",
     "@types/mdx": "^2.0.13",
     "@types/negotiator": "^0.6.4",
